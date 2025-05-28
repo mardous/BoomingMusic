@@ -609,6 +609,8 @@
     <string name="replaygain_preamp_title">Forbytt nivå</string>
     <string name="replaygain_preamp_summary">Angi volumnivå når ReplayGain er aktivert. (Automatic Translation)</string>
     <string name="queue_next_mode_title">\"Kø neste\" modus</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Husk Bland</string>
     <string name="remember_shuffle_mode_summary">Shuffle modus vil være på når du velger en ny liste over sanger.</string>
     <string name="album_shuffle_mode_title">Albumshuffle modus</string>
