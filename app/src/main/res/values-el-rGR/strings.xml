@@ -609,6 +609,8 @@
     <string name="replaygain_preamp_title">PreAmp επίπεδο</string>
     <string name="replaygain_preamp_summary">Ορίστε το επίπεδο έντασης όταν το ReplayGain είναι ενεργοποιημένο.</string>
     <string name="queue_next_mode_title">\"Ουρά επόμενη\" λειτουργία</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Απομνημόνευση Τυχαίας Αναπαραγωγής</string>
     <string name="remember_shuffle_mode_summary">Η λειτουργία ανακατέματος θα παραμείνει ενεργή κατά την επιλογή μιας νέας λίστας τραγουδιών.</string>
     <string name="album_shuffle_mode_title">Λειτουργία ανακατέματος άλμπουμ</string>
