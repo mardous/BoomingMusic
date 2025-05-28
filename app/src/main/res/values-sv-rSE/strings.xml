@@ -609,6 +609,8 @@
     <string name="replaygain_preamp_title">PreAmp nivå</string>
     <string name="replaygain_preamp_summary">Ställ in volymnivå när ReplayGain är aktiverad.</string>
     <string name="queue_next_mode_title">\"Köa nästa\" läge</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Kom ihåg att blanda</string>
     <string name="remember_shuffle_mode_summary">Blanda läget kommer att finnas kvar när du väljer en ny lista över låtar.</string>
     <string name="album_shuffle_mode_title">Skivblandningsläge</string>
