@@ -623,6 +623,8 @@
     <string name="replaygain_preamp_title">Poziom przedwzmacniacza</string>
     <string name="replaygain_preamp_summary">Ustaw poziom głośności, gdy ReplayGain jest włączony.</string>
     <string name="queue_next_mode_title">Tryb \"Kolejka dalej\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Zapamiętaj losowo</string>
     <string name="remember_shuffle_mode_summary">Tryb losowy pozostanie włączony podczas wybierania nowej listy utworów.</string>
     <string name="album_shuffle_mode_title">Tryb losowania albumu</string>
