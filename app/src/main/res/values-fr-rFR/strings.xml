@@ -609,6 +609,8 @@
     <string name="replaygain_preamp_title">Niveau de Pré-Amp</string>
     <string name="replaygain_preamp_summary">Définir le niveau de volume lorsque ReplayGain est activé.</string>
     <string name="queue_next_mode_title">Mode \"File d\'attente\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Mémoriser la lecture aléatoire</string>
     <string name="remember_shuffle_mode_summary">Le mode aléatoire restera actif lors de la sélection d\'une nouvelle liste de chansons.</string>
     <string name="album_shuffle_mode_title">Mode lecture aléatoire de l\'album</string>
