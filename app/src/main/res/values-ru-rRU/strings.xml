@@ -623,6 +623,8 @@
     <string name="replaygain_preamp_title">Уровень подготовки Amp</string>
     <string name="replaygain_preamp_summary">Установить уровень громкости при включенном ReplayGain</string>
     <string name="queue_next_mode_title">Режим \"Очередь\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Запомнить перемешивание</string>
     <string name="remember_shuffle_mode_summary">Режим перемешивания будет оставаться включенным при выборе нового списка песен.</string>
     <string name="album_shuffle_mode_title">Режим перемешивания альбома</string>
