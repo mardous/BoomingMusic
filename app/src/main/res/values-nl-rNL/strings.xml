@@ -609,6 +609,8 @@
     <string name="replaygain_preamp_title">PreAmp niveau</string>
     <string name="replaygain_preamp_summary">Stel volume niveau in als ReplayGain is ingeschakeld.</string>
     <string name="queue_next_mode_title">\"Wachtrij volgende\" modus</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Shuffle onthouden</string>
     <string name="remember_shuffle_mode_summary">Shuffle modus blijft aan bij het selecteren van een nieuwe lijst met nummers.</string>
     <string name="album_shuffle_mode_title">Album shuffle modus</string>
