@@ -609,6 +609,8 @@
     <string name="replaygain_preamp_title">Livello preamplificatore</string>
     <string name="replaygain_preamp_summary">Imposta il livello del volume quando ReplayGain è abilitato.</string>
     <string name="queue_next_mode_title">Modalità \"Accoda prossima\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Ricorda Shuffle</string>
     <string name="remember_shuffle_mode_summary">La modalità casuale rimarrà attiva quando si seleziona una nuova lista di canzoni.</string>
     <string name="album_shuffle_mode_title">Modalità mischia album</string>
