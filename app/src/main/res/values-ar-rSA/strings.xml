@@ -637,6 +637,8 @@
     <string name="replaygain_preamp_title">مستوى تمهيدي</string>
     <string name="replaygain_preamp_summary">تعيين مستوى الصوت عند تمكين إعادة التشغيل.</string>
     <string name="queue_next_mode_title">وضع \"قائمة الانتظار التالية\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">تذكر التبديل</string>
     <string name="remember_shuffle_mode_summary">سيبقى الوضع العشوائي قيد التشغيل عند تحديد قائمة جديدة من الأغنية.</string>
     <string name="album_shuffle_mode_title">وضع خلط الألبوم</string>
