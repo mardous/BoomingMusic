@@ -609,6 +609,8 @@
     <string name="replaygain_preamp_title">PreAmp level</string>
     <string name="replaygain_preamp_summary">Set volume level when ReplayGain is enabled.</string>
     <string name="queue_next_mode_title">\"Queue next\" mode</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Remember Shuffle</string>
     <string name="remember_shuffle_mode_summary">Shuffle mode will stay on when selecting a new list of songs.</string>
     <string name="album_shuffle_mode_title">Album shuffle mode</string>
