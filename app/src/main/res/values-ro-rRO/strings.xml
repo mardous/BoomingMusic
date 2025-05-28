@@ -616,6 +616,8 @@
     <string name="replaygain_preamp_title">Nivel pregatire</string>
     <string name="replaygain_preamp_summary">Setează nivelul de volum când ReplayGain este activat.</string>
     <string name="queue_next_mode_title">Modul \"Coada următoare\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Amintește-ți Shuffle</string>
     <string name="remember_shuffle_mode_summary">Modul Amestecare va rămâne activat atunci când se selectează o listă nouă de melodii.</string>
     <string name="album_shuffle_mode_title">Mod amestecare album</string>
