@@ -617,6 +617,8 @@
     <string name="prefer_album_artist_name_title">"Preferovat název albového umělce"</string>
     <string name="prefer_album_artist_name_summary">Zobrazí jméno alba-umělce místo jména skladby (pokud je k dispozici).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Přehrávání bez mezer</string>
     <string name="gapless_playback_summary">Hladký přechod mezi skladbami. Může způsobit problémy při přehrávání na některých zařízeních.</string>
     <string name="replaygain_source_mode_title">Režim zdroje</string>
