@@ -603,6 +603,8 @@
     <string name="prefer_album_artist_name_title">"Naam van Album-artiesten"</string>
     <string name="prefer_album_artist_name_summary">Toont de naam van de Album-artiesten in plaats van de naam van Song-artiesten (indien beschikbaar).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Afspelen zonder pauzes</string>
     <string name="gapless_playback_summary">Vloeiende overgang tussen liedjes. Kan afspeelproblemen veroorzaken op sommige apparaten.</string>
     <string name="replaygain_source_mode_title">Bron modus</string>
