@@ -603,6 +603,8 @@
     <string name="prefer_album_artist_name_title">"Föredrar Album-artistens namn"</string>
     <string name="prefer_album_artist_name_summary">Visar Album-artistens namn istället för Song-artistens namn (om tillgänglig).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Otillåten uppspelning</string>
     <string name="gapless_playback_summary">Smidig övergång mellan låtar. Kan orsaka uppspelningsproblem på vissa enheter.</string>
     <string name="replaygain_source_mode_title">Källa läge</string>
