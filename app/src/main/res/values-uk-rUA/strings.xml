@@ -617,6 +617,8 @@
     <string name="prefer_album_artist_name_title">"Назвати Альбома — виконавця"</string>
     <string name="prefer_album_artist_name_summary">Показує ім\'я альбома замість назви пісні (якщо доступно).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Безперервне відтворення</string>
     <string name="gapless_playback_summary">Шкідливий перехід між піснями. Може викликати проблеми відтворення на деяких пристроях.</string>
     <string name="replaygain_source_mode_title">Режим джерела</string>
