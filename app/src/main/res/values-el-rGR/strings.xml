@@ -603,6 +603,8 @@
     <string name="prefer_album_artist_name_title">"Προτιμήστε το όνομα του καλλιτέχνη Album-"</string>
     <string name="prefer_album_artist_name_summary">Εμφανίζει το όνομα του καλλιτέχνη του Album αντί για το όνομα του Song-artist\'s (αν υπάρχει).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Αναπαραγωγή χωρίς κενά</string>
     <string name="gapless_playback_summary">Ομαλή μετάβαση μεταξύ τραγουδιών. Μπορεί να προκαλέσει προβλήματα αναπαραγωγής σε ορισμένες συσκευές.</string>
     <string name="replaygain_source_mode_title">Λειτουργία πηγής</string>
