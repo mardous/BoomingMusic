@@ -617,6 +617,8 @@
     <string name="prefer_album_artist_name_title">"Предпочитать имя Альбома художника"</string>
     <string name="prefer_album_artist_name_summary">Показывает имя Альбома художника вместо названия исполнителя (если доступно).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Воспроизведение без перехвата</string>
     <string name="gapless_playback_summary">Плавный переход между песнями. Может вызвать проблемы с воспроизведением на некоторых устройствах.</string>
     <string name="replaygain_source_mode_title">Исходный режим</string>
