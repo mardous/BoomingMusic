@@ -391,12 +391,12 @@
     <string name="shuffle_mode_combined">Intelligenter Mix</string>
     <string name="shuffle_mode_pure_random_description">Komplett zufällige Wiedergabe.</string>
     <string name="shuffle_mode_most_played_description">Bevorzugt Deine meistgespielten Songs.</string>
-    <string name="shuffle_mode_most_played_artists_description">Favors songs from your top artists.</string>
-    <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
-    <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
-    <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
-    <string name="shuffle_mode_recently_added_description">Favors songs recently added to your library.</string>
-    <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
+    <string name="shuffle_mode_most_played_artists_description">Bevorzugt Lieder Deiner Top-Künstler.</string>
+    <string name="shuffle_mode_most_played_albums_description">Bevorzugt Lieder Deiner meistgespielten Alben.</string>
+    <string name="shuffle_mode_favorite_songs_description">Bevorzugt Deine Top-Titel.</string>
+    <string name="shuffle_mode_forgotten_songs_description">Bevorzugt Titel, die Du eine Weile nicht abgespielt hast.</string>
+    <string name="shuffle_mode_recently_added_description">Bevorzugt Titel, die Du kürzlich Deiner Bibliothek hinzugefügt hast.</string>
+    <string name="shuffle_mode_combined_description">Mix aus Favoriten, häufig und zuletzt gespielten.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizer</string>
     <string name="share_eq_configuration">EQ-Konfiguration teilen</string>
@@ -523,7 +523,7 @@
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Sie werden auf die Issue-Tracker Website weitergeleitet.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Speicherzugriff erforderlich</string>
-    <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
+    <string name="saf_access_required_message">Booming Music benötigt die Berechtigung auf diese Dateien zuzugreifen. Bitte wähle den übergeordneten Ordner, in dem Deine Musikdateien gespeichert sind.</string>
     <string name="saf_show_files_button">Dateien anzeigen</string>
     <string name="saf_error_uri">SAF-URI kann nicht geladen werden</string>
     <string name="saf_write_failed">Datei schreiben fehlgeschlagen: %s</string>
@@ -603,16 +603,16 @@
     <string name="prefer_album_artist_name_title">"Bevorzuge den Namen des Album-Künstlers"</string>
     <string name="prefer_album_artist_name_summary">Zeigt den Namen des Album-Künstlers anstelle des Namens des Song-Artists an (falls vorhanden).</string>
     <!-- Playback preferences -->
-    <string name="play_on_startup_title">Play on startup</string>
-    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
+    <string name="play_on_startup_title">Beim Start abspielen</string>
+    <string name="play_on_startup_summary">Wenn Du die App öffnest, beginnt das Abspiel, wo Du zuletzt aufgehört hast.</string>
     <string name="gapless_playback_title">Lückenlose Wiedergabe</string>
     <string name="gapless_playback_summary">Sanfter Übergang zwischen Songs. Kann Wiedergabeprobleme auf einigen Geräten verursachen.</string>
     <string name="replaygain_source_mode_title">Quellmodus</string>
     <string name="replaygain_preamp_title">PreAmp Level</string>
     <string name="replaygain_preamp_summary">Lautstärkepegel einstellen, wenn ReplayGain aktiviert ist.</string>
     <string name="queue_next_mode_title">\"Warteschlange\"-Modus</string>
-    <string name="search_auto_queue_title">Enqueue all search results</string>
-    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
+    <string name="search_auto_queue_title">Alle Suchergebnisse in die Warteschlange</string>
+    <string name="search_auto_queue_summary">Wenn Du einen Titel aus den Suchergebnissen abspielst, werden alle anderen Ergebnisse ebenfalls der Warteschlange hinzugefügt.</string>
     <string name="remember_shuffle_mode_title">Mische Erinnerung</string>
     <string name="remember_shuffle_mode_summary">Der Shuffle-Modus bleibt bei der Auswahl einer neuen Liste von Songs.</string>
     <string name="album_shuffle_mode_title">Albummischungsmodus</string>
