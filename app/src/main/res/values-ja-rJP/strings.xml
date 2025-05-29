@@ -596,6 +596,8 @@
     <string name="prefer_album_artist_name_title">"アルバムアーティストの名前を好みます"</string>
     <string name="prefer_album_artist_name_summary">ソングアーティストの名前の代わりにアルバムアーティストの名前を表示します (可能な場合)。</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">ギャップレス再生</string>
     <string name="gapless_playback_summary">曲間のスムーズなトランジション。一部のデバイスで再生の問題を引き起こす可能性があります。</string>
     <string name="replaygain_source_mode_title">ソースモード</string>
