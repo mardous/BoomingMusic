@@ -603,6 +603,8 @@
     <string name="prefer_album_artist_name_title">"Prefer Album-artist's name"</string>
     <string name="prefer_album_artist_name_summary">Shows the Album-artist\'s name instead of Song-artist\'s name (if available).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Gapless playback</string>
     <string name="gapless_playback_summary">Smooth transition between songs. Can cause playback issues on some devices.</string>
     <string name="replaygain_source_mode_title">Source mode</string>
