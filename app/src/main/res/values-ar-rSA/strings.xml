@@ -631,6 +631,8 @@
     <string name="prefer_album_artist_name_title">"تفضيل اسم الفنان ألبوم-"</string>
     <string name="prefer_album_artist_name_summary">يعرض اسم فنان ألبوم بدلاً من اسم فنان الأغنية (إذا كان متاحاً).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">تشغيل بلا هوادة</string>
     <string name="gapless_playback_summary">الانتقال السلس بين الأغاني. يمكن أن يسبب مشاكل في التشغيل على بعض الأجهزة.</string>
     <string name="replaygain_source_mode_title">وضع المصدر</string>
