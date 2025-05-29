@@ -3,7 +3,7 @@
     <string name="action_play">Odtwórz</string>
     <string name="action_play_all">Odtwórz wszystko</string>
     <string name="action_shuffle_play">Odtwarzaj losowo</string>
-    <string name="action_queue_next">Dodaj jako następny</string>
+    <string name="action_queue_next">Dodaj jako następne</string>
     <string name="shuffle_all_label">Losuj wszystkie</string>
     <string name="action_play_pause">Odtwórz/Wstrzymaj</string>
     <string name="action_pause">Wstrzymaj</string>
@@ -131,7 +131,7 @@
     <string name="permissions_denied">Odmowa uprawnień</string>
     <string name="permissions_needed">Wymagane uprawnienia</string>
     <string name="grant_access_action">Udziel dostępu</string>
-    <string name="action_grant">Przyznanie</string>
+    <string name="action_grant">Przyznaj</string>
     <string name="granted">Przyznane</string>
     <string name="hello_there">Witaj!</string>
     <string name="welcome_to_x">Witamy w %s</string>
@@ -247,7 +247,7 @@
     <string name="use_also_as_alarm_alert">Użyj również jako alarmu</string>
     <string name="action_details">Szczegóły</string>
     <string name="action_set_as_start_directory">Ustaw jako katalog startowy</string>
-    <string name="action_go_to_start_directory">Przejdź do katalogu startowego</string>
+    <string name="action_go_to_start_directory">Przejdź do folderu głównego</string>
     <string name="new_start_directory">Nowy katalog startowy: %s</string>
     <string name="action_scan">Skanuj</string>
     <string name="scan_media">Skanuj media</string>
@@ -582,7 +582,7 @@
     <string name="material_you_title">Material You</string>
     <string name="use_custom_font_title">Użyj czcionki Manrope</string>
     <string name="appbar_mode_title">Styl nagłówka</string>
-    <string name="library_categories_title">Kategorie bibliotek</string>
+    <string name="library_categories_title">Kategorie biblioteki</string>
     <string name="library_categories_summary">Konfiguruj widoczność i kolejność kategorii biblioteki.</string>
     <string name="remember_last_page_title">Zapamiętaj ostatnią stronę</string>
     <string name="remember_last_page_summary">Przejdź do ostatniej otwartej strony przy uruchomieniu.</string>
@@ -595,10 +595,10 @@
     <string name="extra_controls_title">Dodatkowe klawisze</string>
     <string name="extra_controls_summary">Dodatkowe klawisze dla mini odtwarzacza</string>
     <string name="swipe_to_dismiss_title">Przesuń, aby odrzucić</string>
-    <string name="swipe_to_dismiss_summary">Przesuń palcem w dół, aby zatrzymać odtwarzanie i wyczyścić kolejki odtwarzania.</string>
+    <string name="swipe_to_dismiss_summary">Przesuń palcem w dół, aby zatrzymać odtwarzanie i wyczyścić kolejkę odtwarzania.</string>
     <string name="circle_button_title">Okrągły przycisk odtwarzania</string>
     <string name="swipe_album_cover_title">Przesuń palcem okładkę albumu</string>
-    <string name="swipe_album_cover_summary">Przesuń palcem w lewo i w prawo na okładce albumu, aby pominąć piosenki.</string>
+    <string name="swipe_album_cover_summary">Przesuń palcem w lewo lub w prawo na okładce albumu, aby zmienić utwór.</string>
     <string name="double_tap_on_album_cover_title">Dwukrotne dotknięcie okładki</string>
     <string name="long_press_on_album_cover_title">Długie przytrzymanie na okładce</string>
     <string name="carousal_effect_title">Efekt karuzeli</string>
@@ -610,23 +610,23 @@
     <string name="display_album_name_title">Wyświetl nazwę albumu</string>
     <string name="display_extra_info_title">Wyświetl dodatkowe informacje</string>
     <string name="display_extra_info_summary">Wyświetl dodatkowe informacje o piosence, takie jak bitrate, format, częstotliwość próbkowania itp.</string>
-    <string name="select_extra_info_title">Extra info</string>
+    <string name="select_extra_info_title">Dodatkowe informacje</string>
     <string name="select_extra_info_summary">Wybierz dodatkowe informacje do wyświetlenia w panelu odtwarzacza.</string>
     <string name="prefer_remaining_time_title">Preferuj pozostały czas</string>
     <string name="prefer_remaining_time_summary">Wyświetlaj pozostały czas zamiast czasu trwania utworu.</string>
     <string name="prefer_album_artist_name_title">"Preferuj imię wykonawcy Albumu"</string>
     <string name="prefer_album_artist_name_summary">Pokazuje nazwę wykonawcy Albumu, zamiast nazwy wykonawcy utworu (jeśli jest dostępny).</string>
     <!-- Playback preferences -->
-    <string name="play_on_startup_title">Play on startup</string>
-    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
+    <string name="play_on_startup_title">Odtwarzaj po starcie</string>
+    <string name="play_on_startup_summary">Aplikacja po uruchomieniu, zaczyna odtwarzać ostatnio słuchany utwór.</string>
     <string name="gapless_playback_title">Odtwarzanie bez przerw</string>
     <string name="gapless_playback_summary">Gładkie przejście między utworami. Może powodować problemy z odtwarzaniem na niektórych urządzeniach.</string>
     <string name="replaygain_source_mode_title">Tryb źródłowy</string>
     <string name="replaygain_preamp_title">Poziom przedwzmacniacza</string>
     <string name="replaygain_preamp_summary">Ustaw poziom głośności, gdy ReplayGain jest włączony.</string>
     <string name="queue_next_mode_title">Tryb \"Kolejka dalej\"</string>
-    <string name="search_auto_queue_title">Enqueue all search results</string>
-    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
+    <string name="search_auto_queue_title">Odtwarzaj wszystkie wyszukane</string>
+    <string name="search_auto_queue_summary">Gdy odtwarzasz utwór z ekranu wyszukiwania, pozostałe również zostaną zakolejkowane.</string>
     <string name="remember_shuffle_mode_title">Zapamiętaj losowo</string>
     <string name="remember_shuffle_mode_summary">Tryb losowy pozostanie włączony podczas wybierania nowej listy utworów.</string>
     <string name="album_shuffle_mode_title">Tryb losowania albumu</string>
@@ -655,10 +655,10 @@
     <string name="pause_on_transient_focus_loss_summary">Wstrzymaj odtwarzanie przy przejściowej utracie ostrości (tj. powiadomień, połączeń przychodzących).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Automatyczne pobieranie metadanych</string>
-    <string name="ignore_media_store_album_covers_title">Ignoruj okładki sklepu multimedialnego</string>
+    <string name="ignore_media_store_album_covers_title">Ignoruj okładki z pamięci wewnętrznej</string>
     <string name="ignore_media_store_album_covers_summary">Może to przyczynić się do poprawy jakości obrazów, ale wymagać większej ilości pamięci.</string>
     <string name="use_folder_album_cover_title">Użyj obrazów folderów</string>
-    <string name="use_folder_album_cover_summary">Jeśli plik audio nie zawiera osadzonej okładki. Obrazy mogą zająć trochę więcej czasu.</string>
+    <string name="use_folder_album_cover_summary">Jeżeli plik audio nie zawiera osadzonej okładki, zostaną załadowane obrazy z pamięci wewnętrznej. Może zająć trochę czasu.</string>
     <string name="online_artist_images_title">Pobierz obrazy artysty</string>
     <string name="online_artist_images_summary">To zależy od zasad pobierania metadanych.</string>
     <string name="preferred_artist_image_size_title">Preferowany rozmiar obrazu</string>
@@ -700,7 +700,7 @@
     <string name="restore_backup_summary">Przywróć dane aplikacji (i stan) z poprzedniej kopii zapasowej.</string>
     <!-- Preference values -->
     <string name="advanced_label">Zaawansowane</string>
-    <string name="light_theme_name">Światło</string>
+    <string name="light_theme_name">Jasny</string>
     <string name="dark_theme_name">Ciemny</string>
     <string name="black_theme_name">Czarny</string>
     <string name="follow_system">Śledź system</string>
@@ -713,10 +713,10 @@
     <string name="full_cover">Pełna okładka</string>
     <string name="gradient">Gradient</string>
     <string name="peek">Podgląd</string>
-    <string name="plain">Plain</string>
+    <string name="plain">Czysty</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normalny</string>
-    <string name="cascading">Kaskadowe</string>
+    <string name="cascading">Kaskada</string>
     <string name="depth">Głębia</string>
     <string name="hinge">Zawias</string>
     <string name="horizontal_flip">Odwrócenie poziome</string>
@@ -750,7 +750,7 @@
     <string name="image_size_small">Mały (szybsza, niska jakość)</string>
     <string name="system_default">Domyślny system</string>
     <string name="label_never">Nigdy</string>
-    <string name="label_nothing">Nic nie</string>
+    <string name="label_nothing">Nic nie rób</string>
     <string name="label_none">Brak</string>
     <!-- Update -->
     <string name="auto_update_title">Automatyczne wyszukiwanie aktualizacji</string>
