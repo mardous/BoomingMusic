@@ -617,6 +617,8 @@
     <string name="prefer_album_artist_name_title">"Preferuj imię wykonawcy Albumu"</string>
     <string name="prefer_album_artist_name_summary">Pokazuje nazwę wykonawcy Albumu, zamiast nazwy wykonawcy utworu (jeśli jest dostępny).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Odtwarzanie bez przerw</string>
     <string name="gapless_playback_summary">Gładkie przejście między utworami. Może powodować problemy z odtwarzaniem na niektórych urządzeniach.</string>
     <string name="replaygain_source_mode_title">Tryb źródłowy</string>
