@@ -25,7 +25,7 @@
     <string name="search_list_x_label">Suchliste: %s</string>
     <string name="search_from_x_label">Suche von \"%s\"</string>
     <string name="search_year_x_label">Suchjahr: %s</string>
-    <string name="search_in_folder_x">Search in folder: %s</string>
+    <string name="search_in_folder_x">Suche im Ordner: %s</string>
     <string name="search_last_added">Neueste Musik suchen</string>
     <string name="shuffle_mode_album">Album Shuffle</string>
     <string name="shuffle_mode_artist">Interpretenmix</string>
@@ -116,7 +116,7 @@
     <string name="audio_focus_denied">Audio-Fokus abgelehnt.</string>
     <string name="no_audio_ID">Falsche Audio-ID.</string>
     <string name="unplayable_file">Dieses Lied konnte nicht abgespielt werden.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
+    <string name="unplayable_file_code_x">Dieser Titel konnte nicht abgespielt werden (Code: %d).</string>
     <string name="permission_external_storage_title">Speicherzugriff</string>
     <string name="permission_external_storage_description">Die App benötigt die Berechtigung auf Ihren Gerätespeicher zuzugreifen, um Musik abzuspielen</string>
     <string name="permission_external_storage_denied">Sie müssen die Berechtigung zum Zugriff auf externen Speicher erteilen.</string>
@@ -201,7 +201,7 @@
     <string name="album_artists_label">Album-Interpreten</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Ordner</string>
-    <string name="files_label">Files</string>
+    <string name="files_label">Dateien</string>
     <string name="playlists_label">Wiedergabelisten</string>
     <string name="playlist_label">Wiedergabeliste</string>
     <string name="composers_label">Komponisten</string>
@@ -218,7 +218,7 @@
     <string name="song_stat_one_time_label">einmal auf %s gespielt</string>
     <string name="song_stat_label">spielte %1$d Male, zuletzt auf %2$s</string>
     <string name="horizontal_albums">Horizontale Alben</string>
-    <string name="ignore_singles">Ignore singles</string>
+    <string name="ignore_singles">Singles ignorieren</string>
     <string name="action_view_type">Anzeigetyp</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Karte</string>
@@ -381,16 +381,16 @@
     <string name="recent_albums">Letzte Alben</string>
     <string name="no_suggestions">Es gibt keine Vorschläge für Sie</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">Pure random</string>
-    <string name="shuffle_mode_most_played">Most played</string>
-    <string name="shuffle_mode_most_played_artists">Most played artists</string>
-    <string name="shuffle_mode_most_played_albums">Most played albums</string>
-    <string name="shuffle_mode_favorite_songs">Favorites first</string>
-    <string name="shuffle_mode_forgotten_songs">Forgotten songs</string>
-    <string name="shuffle_mode_recently_added">Recently added</string>
-    <string name="shuffle_mode_combined">Smart mix</string>
-    <string name="shuffle_mode_pure_random_description">Completely random shuffle.</string>
-    <string name="shuffle_mode_most_played_description">Favors your most played songs.</string>
+    <string name="shuffle_mode_pure_random">Rein zufällig</string>
+    <string name="shuffle_mode_most_played">Meistgespielte</string>
+    <string name="shuffle_mode_most_played_artists">Meistgespielte Künstler</string>
+    <string name="shuffle_mode_most_played_albums">Meistgespielte Alben</string>
+    <string name="shuffle_mode_favorite_songs">Favoriten zuerst</string>
+    <string name="shuffle_mode_forgotten_songs">Vergessene Titel</string>
+    <string name="shuffle_mode_recently_added">Kürzlich hinzugefügte</string>
+    <string name="shuffle_mode_combined">Intelligenter Mix</string>
+    <string name="shuffle_mode_pure_random_description">Komplett zufällige Wiedergabe.</string>
+    <string name="shuffle_mode_most_played_description">Bevorzugt Deine meistgespielten Songs.</string>
     <string name="shuffle_mode_most_played_artists_description">Favors songs from your top artists.</string>
     <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
     <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
