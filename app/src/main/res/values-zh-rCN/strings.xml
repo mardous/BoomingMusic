@@ -596,6 +596,8 @@
     <string name="prefer_album_artist_name_title">"首选专用艺术家名称"</string>
     <string name="prefer_album_artist_name_summary">显示Album艺术家的名字，而不是歌曲艺术家的名字(如果可用的话)。</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">无缝播放</string>
     <string name="gapless_playback_summary">在歌曲之间平滑过渡。可能会导致某些设备上的播放问题。</string>
     <string name="replaygain_source_mode_title">源模式</string>
