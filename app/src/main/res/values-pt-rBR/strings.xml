@@ -136,7 +136,7 @@
     <string name="hello_there">Olá!</string>
     <string name="welcome_to_x">Bem-vindo à %s</string>
     <string name="get_started">Comece Agora</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> is not listed in the media store.]]></string>
+    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> não foi encontrado.]]></string>
     <string name="some_files_are_not_listed_in_the_media_store">Alguns arquivos não estão listados no armazenamento de mídia.</string>
     <string name="nothing_to_scan">Nada para verificar</string>
     <string name="scanned_x_of_x_files">Escaneado arquivos %1$d do %2$d.</string>
