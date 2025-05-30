@@ -218,7 +218,7 @@
     <string name="song_stat_one_time_label">jogou uma vez em %s</string>
     <string name="song_stat_label">jogado %1$d vezes, último estava em %2$s</string>
     <string name="horizontal_albums">Álbuns horizontais</string>
-    <string name="ignore_singles">Ignore singles</string>
+    <string name="ignore_singles"></string>
     <string name="action_view_type">Tipo de exibição</string>
     <string name="view_type_normal">normal</string>
     <string name="view_type_card">Carta</string>
