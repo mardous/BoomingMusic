@@ -74,7 +74,7 @@
     <string name="saved_playlist_x">Playlist salva %s.</string>
     <string name="failed_to_save_playlist">Falha ao salvar a playlist.</string>
     <string name="saved_x_playlists">Salvo %1$d playlists.</string>
-    <string name="saved_x_playlists_failed_to_save_x">Saved %1$d playlists, failed to save %2$d.</string>
+    <string name="saved_x_playlists_failed_to_save_x">%1$d lista de reprodução salva,  %2$d com falha.</string>
     <string name="delete_playlist_title">Excluir playlist</string>
     <string name="delete_playlists_title">Excluir playlists</string>
     <string name="delete_playlist_x"><![CDATA[Apagar playlist <b>%s</b>?]]></string>
