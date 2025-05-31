@@ -45,7 +45,7 @@
     <string name="close_action">बंद करना</string>
     <string name="continue_action">जारी रखना</string>
     <string name="select_all_title">सबका चयन करें</string>
-    <string name="x_selected">चुने हुए</string>
+    <string name="x_selected">%d चुने हुए</string>
     <string name="playing_notification_description">प्लेइंग अधिसूचना प्ले/पॉज़ आदि के लिए क्रियाएं प्रदान करती है।</string>
     <string name="playing_notification_name">सूचना चल रही है</string>
     <string name="action_scan_directory">निर्देशिका स्कैन करें</string>
@@ -587,6 +587,8 @@
     <string name="swipe_album_cover_summary">Swipe left and right on album cover to skip between songs.</string>
     <string name="double_tap_on_album_cover_title">Double tap on cover</string>
     <string name="long_press_on_album_cover_title">Long press on cover</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousal_effect_title">Carousel effect</string>
     <string name="album_cover_effect_title">Album cover effect</string>
     <string name="lyrics_on_album_cover_title">Lyrics on cover</string>
@@ -702,6 +704,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Depth</string>
     <string name="hinge">Hinge</string>
