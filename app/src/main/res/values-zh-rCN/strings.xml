@@ -86,7 +86,7 @@
     <string name="playlist_exists">播放列表 %s 已经存在。</string>
     <string name="remove_song_from_playlist_title">从播放列表中删除歌曲</string>
     <string name="remove_songs_from_playlist_title">从播放列表中删除歌曲</string>
-    <string name="remove_song_x_from_playlist"><![CDATA[Remove the song <b>%1$s</b> from the playlist?]]></string>
+    <string name="remove_song_x_from_playlist"><![CDATA[将<b>%1$s</b>从播放列表中移除吗？]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[从播放列表中移除 <b>%1$d</b> 歌曲？]]></string>
     <string name="playlist_empty_text">清空播放列表</string>
     <string name="action_tag_editor">标签编辑器</string>
@@ -116,7 +116,7 @@
     <string name="audio_focus_denied">音频焦点被拒绝。</string>
     <string name="no_audio_ID">错误的音频ID。</string>
     <string name="unplayable_file">无法播放这首歌曲。</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
+    <string name="unplayable_file_code_x">无法播放（错误码：%d）。</string>
     <string name="permission_external_storage_title">存储访问</string>
     <string name="permission_external_storage_description">该应用需要权限才能访问您的设备存储空间来播放音乐</string>
     <string name="permission_external_storage_denied">您必须授予访问外部存储的权限。</string>
@@ -178,8 +178,8 @@
     <string name="added_title_to_playing_queue">"添加1个标题到播放队列。"</string>
     <string name="added_x_titles_to_playing_queue">添加 %1$d 标题到播放队列。</string>
     <string name="next_song_label">下一首歌曲</string>
-    <string name="next_song_x">Next • %1$s</string>
-    <string name="next_song_x_by_artist_x">Next • %1$s by %2$s</string>
+    <string name="next_song_x">下一首・%1$s</string>
+    <string name="next_song_x_by_artist_x">下一首・%1$s - %2$s</string>
     <string name="similar_artists">类似的艺人</string>
     <string name="label_more_from_artist">更多来自艺人</string>
     <string name="label_more_from_x">更多来自 %s</string>
@@ -201,7 +201,7 @@
     <string name="album_artists_label">专辑艺人</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">文件夹</string>
-    <string name="files_label">Files</string>
+    <string name="files_label">文件</string>
     <string name="playlists_label">播放列表</string>
     <string name="playlist_label">播放列表</string>
     <string name="composers_label">作曲家</string>
@@ -262,7 +262,7 @@
     <string name="listeners_label">监听器</string>
     <string name="scrobbles_label">滚动条</string>
     <string name="save_cover">保存相册封面</string>
-    <string name="saving_cover_please_wait">Saving cover, wait…</string>
+    <string name="saving_cover_please_wait">保存中，请稍等…</string>
     <string name="save_artwork_no_artwork">没有找到相册封面</string>
     <string name="save_artwork_error">保存封面到本地存储失败</string>
     <string name="save_artwork_success">相册封面已保存</string>
@@ -374,18 +374,18 @@
     <string name="recent_albums">最近的专辑</string>
     <string name="no_suggestions">没有对您的建议</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">Pure random</string>
-    <string name="shuffle_mode_most_played">Most played</string>
-    <string name="shuffle_mode_most_played_artists">Most played artists</string>
-    <string name="shuffle_mode_most_played_albums">Most played albums</string>
-    <string name="shuffle_mode_favorite_songs">Favorites first</string>
-    <string name="shuffle_mode_forgotten_songs">Forgotten songs</string>
+    <string name="shuffle_mode_pure_random">完全随机</string>
+    <string name="shuffle_mode_most_played">随机最多播放单曲</string>
+    <string name="shuffle_mode_most_played_artists">随机最多播放艺术家</string>
+    <string name="shuffle_mode_most_played_albums">随机最多播放专辑</string>
+    <string name="shuffle_mode_favorite_songs">收藏夹优先</string>
+    <string name="shuffle_mode_forgotten_songs">随机未播放歌曲</string>
     <string name="shuffle_mode_recently_added">Recently added</string>
     <string name="shuffle_mode_combined">Smart mix</string>
-    <string name="shuffle_mode_pure_random_description">Completely random shuffle.</string>
-    <string name="shuffle_mode_most_played_description">Favors your most played songs.</string>
-    <string name="shuffle_mode_most_played_artists_description">Favors songs from your top artists.</string>
-    <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
+    <string name="shuffle_mode_pure_random_description">完全乱序地播放歌曲</string>
+    <string name="shuffle_mode_most_played_description">优先随机播放你最常听的歌曲</string>
+    <string name="shuffle_mode_most_played_artists_description">优先播放你最常听的艺人</string>
+    <string name="shuffle_mode_most_played_albums_description">优先播放你最常听的专辑</string>
     <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
     <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
     <string name="shuffle_mode_recently_added_description">Favors songs recently added to your library.</string>
