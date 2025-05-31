@@ -25,7 +25,7 @@
     <string name="search_list_x_label">搜索列表： %s</string>
     <string name="search_from_x_label">从 \"%s \" 搜索</string>
     <string name="search_year_x_label">搜索年份: %s</string>
-    <string name="search_in_folder_x">Search in folder: %s</string>
+    <string name="search_in_folder_x">在文件夹中搜索：%s</string>
     <string name="search_last_added">搜索最新音乐</string>
     <string name="shuffle_mode_album">相册随机播放</string>
     <string name="shuffle_mode_artist">小艺术家随机播放</string>
@@ -33,7 +33,7 @@
     <string name="action_save">保存</string>
     <string name="what_do_you_want_to_share">您想分享什么？</string>
     <string name="the_audio_file">音频文件</string>
-    <string name="i_am_listening">I\'m listening…</string>
+    <string name="i_am_listening">我正在听…</string>
     <string name="currently_listening_to_x_by_x">我正在用 %1$s 聆听 %2$s</string>
     <string name="share_to_stories">分享到故事</string>
     <string name="could_not_create_the_story">无法创建故事。</string>
