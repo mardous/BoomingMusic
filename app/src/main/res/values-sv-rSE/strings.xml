@@ -587,6 +587,8 @@
     <string name="swipe_album_cover_summary">Svep åt vänster och höger på skivomslaget för att hoppa mellan låtarna.</string>
     <string name="double_tap_on_album_cover_title">Dubbeltryck på omslaget</string>
     <string name="long_press_on_album_cover_title">Långtryck på omslaget</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousal_effect_title">Karusell effekt</string>
     <string name="album_cover_effect_title">Omslagseffekt för album</string>
     <string name="lyrics_on_album_cover_title">Låttexter på omslaget</string>
@@ -603,12 +605,16 @@
     <string name="prefer_album_artist_name_title">"Föredrar Album-artistens namn"</string>
     <string name="prefer_album_artist_name_summary">Visar Album-artistens namn istället för Song-artistens namn (om tillgänglig).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Otillåten uppspelning</string>
     <string name="gapless_playback_summary">Smidig övergång mellan låtar. Kan orsaka uppspelningsproblem på vissa enheter.</string>
     <string name="replaygain_source_mode_title">Källa läge</string>
     <string name="replaygain_preamp_title">PreAmp nivå</string>
     <string name="replaygain_preamp_summary">Ställ in volymnivå när ReplayGain är aktiverad.</string>
     <string name="queue_next_mode_title">\"Köa nästa\" läge</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Kom ihåg att blanda</string>
     <string name="remember_shuffle_mode_summary">Blanda läget kommer att finnas kvar när du väljer en ny lista över låtar.</string>
     <string name="album_shuffle_mode_title">Skivblandningsläge</string>
@@ -698,6 +704,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Djupet</string>
     <string name="hinge">Hinge</string>

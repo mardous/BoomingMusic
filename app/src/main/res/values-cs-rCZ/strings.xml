@@ -601,6 +601,8 @@
     <string name="swipe_album_cover_summary">Přejeďte prstem vlevo a vpravo na obal alba pro přeskočení mezi skladbami.</string>
     <string name="double_tap_on_album_cover_title">Dvojím poklepáním na obal</string>
     <string name="long_press_on_album_cover_title">Dlouhým stiskem na obalu</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousal_effect_title">Kolotoč efekt</string>
     <string name="album_cover_effect_title">Efekt obalu alba</string>
     <string name="lyrics_on_album_cover_title">Texty na obálce</string>
@@ -617,12 +619,16 @@
     <string name="prefer_album_artist_name_title">"Preferovat název albového umělce"</string>
     <string name="prefer_album_artist_name_summary">Zobrazí jméno alba-umělce místo jména skladby (pokud je k dispozici).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Přehrávání bez mezer</string>
     <string name="gapless_playback_summary">Hladký přechod mezi skladbami. Může způsobit problémy při přehrávání na některých zařízeních.</string>
     <string name="replaygain_source_mode_title">Režim zdroje</string>
     <string name="replaygain_preamp_title">Úrovně úvodů</string>
     <string name="replaygain_preamp_summary">Nastavte úroveň hlasitosti, když je aktivován ReplayGain.</string>
     <string name="queue_next_mode_title">Režim \"Další fronta\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Pamatovat náhodný výběr</string>
     <string name="remember_shuffle_mode_summary">Režim zamíchání zůstane zapnutý při výběru nového seznamu skladeb.</string>
     <string name="album_shuffle_mode_title">Režim zamíchání alb</string>
@@ -712,6 +718,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normální</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Hloubka</string>
     <string name="hinge">Hinge</string>

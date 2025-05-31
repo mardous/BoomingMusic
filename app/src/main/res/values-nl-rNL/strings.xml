@@ -587,6 +587,8 @@
     <string name="swipe_album_cover_summary">Veeg naar links en rechts op de albumhoes om tussen nummers over te slaan.</string>
     <string name="double_tap_on_album_cover_title">Dubbele tik op de afdekking</string>
     <string name="long_press_on_album_cover_title">Lang drukken op omslag</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousal_effect_title">Carrousel effect</string>
     <string name="album_cover_effect_title">Album omslageffect</string>
     <string name="lyrics_on_album_cover_title">Songteksten op cover</string>
@@ -603,12 +605,16 @@
     <string name="prefer_album_artist_name_title">"Naam van Album-artiesten"</string>
     <string name="prefer_album_artist_name_summary">Toont de naam van de Album-artiesten in plaats van de naam van Song-artiesten (indien beschikbaar).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Afspelen zonder pauzes</string>
     <string name="gapless_playback_summary">Vloeiende overgang tussen liedjes. Kan afspeelproblemen veroorzaken op sommige apparaten.</string>
     <string name="replaygain_source_mode_title">Bron modus</string>
     <string name="replaygain_preamp_title">PreAmp niveau</string>
     <string name="replaygain_preamp_summary">Stel volume niveau in als ReplayGain is ingeschakeld.</string>
     <string name="queue_next_mode_title">\"Wachtrij volgende\" modus</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Shuffle onthouden</string>
     <string name="remember_shuffle_mode_summary">Shuffle modus blijft aan bij het selecteren van een nieuwe lijst met nummers.</string>
     <string name="album_shuffle_mode_title">Album shuffle modus</string>
@@ -698,6 +704,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">normaal</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Diepte</string>
     <string name="hinge">Hinge</string>

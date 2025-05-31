@@ -580,6 +580,8 @@
     <string name="swipe_album_cover_summary">アルバムカバーを左右にスワイプして曲間をスキップします。</string>
     <string name="double_tap_on_album_cover_title">カバーをダブルタップする</string>
     <string name="long_press_on_album_cover_title">カバーを長押しする</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousal_effect_title">カルーセル効果</string>
     <string name="album_cover_effect_title">アルバムカバー効果</string>
     <string name="lyrics_on_album_cover_title">カバーに歌詞を表示</string>
@@ -596,12 +598,16 @@
     <string name="prefer_album_artist_name_title">"アルバムアーティストの名前を好みます"</string>
     <string name="prefer_album_artist_name_summary">ソングアーティストの名前の代わりにアルバムアーティストの名前を表示します (可能な場合)。</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">ギャップレス再生</string>
     <string name="gapless_playback_summary">曲間のスムーズなトランジション。一部のデバイスで再生の問題を引き起こす可能性があります。</string>
     <string name="replaygain_source_mode_title">ソースモード</string>
     <string name="replaygain_preamp_title">PreAmp レベル</string>
     <string name="replaygain_preamp_summary">ReplayGain が有効な場合、音量レベルを設定します。</string>
     <string name="queue_next_mode_title">\"キュー次\" モード</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">シャッフルを記憶する</string>
     <string name="remember_shuffle_mode_summary">曲の新しいリストを選択するとシャッフルモードはオンになります。</string>
     <string name="album_shuffle_mode_title">アルバムシャッフルモード</string>
@@ -691,6 +697,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">標準</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">深さ</string>
     <string name="hinge">Hinge</string>

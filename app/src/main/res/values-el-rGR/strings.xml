@@ -587,6 +587,8 @@
     <string name="swipe_album_cover_summary">Σύρετε αριστερά και δεξιά στο εξώφυλλο του άλμπουμ για να παραλείψετε μεταξύ τραγουδιών.</string>
     <string name="double_tap_on_album_cover_title">Διπλό χτύπημα στο εξώφυλλο</string>
     <string name="long_press_on_album_cover_title">Παρατεταμένο πάτημα στο εξώφυλλο</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousal_effect_title">Εφέ καρουσέλ</string>
     <string name="album_cover_effect_title">Εφέ εξώφυλλου άλμπουμ</string>
     <string name="lyrics_on_album_cover_title">Στίχοι στο εξώφυλλο</string>
@@ -603,12 +605,16 @@
     <string name="prefer_album_artist_name_title">"Προτιμήστε το όνομα του καλλιτέχνη Album-"</string>
     <string name="prefer_album_artist_name_summary">Εμφανίζει το όνομα του καλλιτέχνη του Album αντί για το όνομα του Song-artist\'s (αν υπάρχει).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Αναπαραγωγή χωρίς κενά</string>
     <string name="gapless_playback_summary">Ομαλή μετάβαση μεταξύ τραγουδιών. Μπορεί να προκαλέσει προβλήματα αναπαραγωγής σε ορισμένες συσκευές.</string>
     <string name="replaygain_source_mode_title">Λειτουργία πηγής</string>
     <string name="replaygain_preamp_title">PreAmp επίπεδο</string>
     <string name="replaygain_preamp_summary">Ορίστε το επίπεδο έντασης όταν το ReplayGain είναι ενεργοποιημένο.</string>
     <string name="queue_next_mode_title">\"Ουρά επόμενη\" λειτουργία</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Απομνημόνευση Τυχαίας Αναπαραγωγής</string>
     <string name="remember_shuffle_mode_summary">Η λειτουργία ανακατέματος θα παραμείνει ενεργή κατά την επιλογή μιας νέας λίστας τραγουδιών.</string>
     <string name="album_shuffle_mode_title">Λειτουργία ανακατέματος άλμπουμ</string>
@@ -698,6 +704,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Κανονικό</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Βάθος</string>
     <string name="hinge">Hinge</string>

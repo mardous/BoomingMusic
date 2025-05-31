@@ -587,6 +587,8 @@
     <string name="swipe_album_cover_summary">Glissez vers la gauche et la droite sur la pochette de l\'album pour passer entre les chansons.</string>
     <string name="double_tap_on_album_cover_title">Double appui sur la couverture</string>
     <string name="long_press_on_album_cover_title">Appui long sur la couverture</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousal_effect_title">Effet du carrousel</string>
     <string name="album_cover_effect_title">Effet de couverture de l\'album</string>
     <string name="lyrics_on_album_cover_title">Paroles sur la couverture</string>
@@ -603,12 +605,16 @@
     <string name="prefer_album_artist_name_title">"Préférer le nom de l'artiste de l'album"</string>
     <string name="prefer_album_artist_name_summary">Affiche le nom de l\'artiste de l\'album au lieu du nom de l\'artiste chanson (si disponible).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Lecture sans faille</string>
     <string name="gapless_playback_summary">Transition douce entre les morceaux. Peut causer des problèmes de lecture sur certains appareils.</string>
     <string name="replaygain_source_mode_title">Mode source</string>
     <string name="replaygain_preamp_title">Niveau de Pré-Amp</string>
     <string name="replaygain_preamp_summary">Définir le niveau de volume lorsque ReplayGain est activé.</string>
     <string name="queue_next_mode_title">Mode \"File d\'attente\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Mémoriser la lecture aléatoire</string>
     <string name="remember_shuffle_mode_summary">Le mode aléatoire restera actif lors de la sélection d\'une nouvelle liste de chansons.</string>
     <string name="album_shuffle_mode_title">Mode lecture aléatoire de l\'album</string>
@@ -698,6 +704,11 @@
     <string name="plain">Texte</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normale</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Profondeur</string>
     <string name="hinge">Hinge</string>

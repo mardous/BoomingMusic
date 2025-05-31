@@ -601,6 +601,8 @@
     <string name="swipe_album_cover_summary">Проведите пальцем влево и вправо на обложке альбома, чтобы пропустить между песнями.</string>
     <string name="double_tap_on_album_cover_title">Двойное нажатие на обложке</string>
     <string name="long_press_on_album_cover_title">Долгое нажатие на обложке</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousal_effect_title">Эффект карусели</string>
     <string name="album_cover_effect_title">Эффект обложки альбома</string>
     <string name="lyrics_on_album_cover_title">Тексты песен на обложке</string>
@@ -617,12 +619,16 @@
     <string name="prefer_album_artist_name_title">"Предпочитать имя Альбома художника"</string>
     <string name="prefer_album_artist_name_summary">Показывает имя Альбома художника вместо названия исполнителя (если доступно).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Воспроизведение без перехвата</string>
     <string name="gapless_playback_summary">Плавный переход между песнями. Может вызвать проблемы с воспроизведением на некоторых устройствах.</string>
     <string name="replaygain_source_mode_title">Исходный режим</string>
     <string name="replaygain_preamp_title">Уровень подготовки Amp</string>
     <string name="replaygain_preamp_summary">Установить уровень громкости при включенном ReplayGain</string>
     <string name="queue_next_mode_title">Режим \"Очередь\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Запомнить перемешивание</string>
     <string name="remember_shuffle_mode_summary">Режим перемешивания будет оставаться включенным при выборе нового списка песен.</string>
     <string name="album_shuffle_mode_title">Режим перемешивания альбома</string>
@@ -712,6 +718,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Обычный</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Глубина</string>
     <string name="hinge">Hinge</string>

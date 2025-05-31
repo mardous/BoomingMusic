@@ -594,6 +594,8 @@
     <string name="swipe_album_cover_summary">Glisați la stânga și la dreapta pe coperta de album pentru a sări între melodii.</string>
     <string name="double_tap_on_album_cover_title">Dublă atingere pe copertă</string>
     <string name="long_press_on_album_cover_title">Apăsare lungă pe copertă</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousal_effect_title">Efectul de carusel</string>
     <string name="album_cover_effect_title">Efect copertă album</string>
     <string name="lyrics_on_album_cover_title">Versuri pe copertă</string>
@@ -610,12 +612,16 @@
     <string name="prefer_album_artist_name_title">"Prefer numele artistului Album-artist"</string>
     <string name="prefer_album_artist_name_summary">Prezintă numele albumului artistului în locul numelui Song-artist (dacă este disponibil).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Redare fără întreruperi</string>
     <string name="gapless_playback_summary">Tranziție lentă între melodii. Poate cauza probleme de redare pe unele dispozitive.</string>
     <string name="replaygain_source_mode_title">Mod sursă</string>
     <string name="replaygain_preamp_title">Nivel pregatire</string>
     <string name="replaygain_preamp_summary">Setează nivelul de volum când ReplayGain este activat.</string>
     <string name="queue_next_mode_title">Modul \"Coada următoare\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Amintește-ți Shuffle</string>
     <string name="remember_shuffle_mode_summary">Modul Amestecare va rămâne activat atunci când se selectează o listă nouă de melodii.</string>
     <string name="album_shuffle_mode_title">Mod amestecare album</string>
@@ -705,6 +711,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normală</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Adâncime</string>
     <string name="hinge">Hinge</string>
