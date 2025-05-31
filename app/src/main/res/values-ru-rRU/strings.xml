@@ -601,6 +601,8 @@
     <string name="swipe_album_cover_summary">Проведите пальцем влево и вправо на обложке альбома, чтобы пропустить между песнями.</string>
     <string name="double_tap_on_album_cover_title">Двойное нажатие на обложке</string>
     <string name="long_press_on_album_cover_title">Долгое нажатие на обложке</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousal_effect_title">Эффект карусели</string>
     <string name="album_cover_effect_title">Эффект обложки альбома</string>
     <string name="lyrics_on_album_cover_title">Тексты песен на обложке</string>
@@ -716,6 +718,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Обычный</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Глубина</string>
     <string name="hinge">Hinge</string>
