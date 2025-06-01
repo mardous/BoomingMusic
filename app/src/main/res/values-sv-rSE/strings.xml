@@ -635,8 +635,6 @@
     <string name="resume_on_bluetooth_connect_summary">Återuppspelning när Bluetooth A2DP-headset är anslutet.</string>
     <string name="pause_on_bluetooth_disconnect_title">Pausa vid frånkoppling av Bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Pausar uppspelning när Bluetooth A2DP-headset kopplas ifrån. Rekommenderas.</string>
-    <string name="audio_ducking_title">Minska volymen vid fokusförlust</string>
-    <string name="audio_ducking_summary">Meddelanden, navigering etc.</string>
     <string name="ignore_audio_focus_title">Ignorera ljudfokus</string>
     <string name="ignore_audio_focus_summary">Spela alltid upp ljud i bakgrunden oavsett något annat som spelas.</string>
     <string name="pause_on_transient_focus_loss_title">Övergående fokusförlust</string>
