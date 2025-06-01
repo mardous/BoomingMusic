@@ -649,8 +649,6 @@
     <string name="resume_on_bluetooth_connect_summary">Obnoví přehrávání při připojení Bluetooth A2DP.</string>
     <string name="pause_on_bluetooth_disconnect_title">Pozastavit při odpojení bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Pozastavení přehrávání při odpojení Bluetooth A2DP sluchátek. Doporučeno.</string>
-    <string name="audio_ducking_title">Snížit hlasitost při ztrátě zaostření</string>
-    <string name="audio_ducking_summary">Oznámení, navigace atd.</string>
     <string name="ignore_audio_focus_title">Ignorovat zaměření zvuku</string>
     <string name="ignore_audio_focus_summary">Vždy přehrávat zvuk na pozadí bez ohledu na cokoliv jiného se přehrává.</string>
     <string name="pause_on_transient_focus_loss_title">Přechodná ztráta zaostření</string>
