@@ -628,8 +628,6 @@
     <string name="resume_on_bluetooth_connect_summary">Bluetooth A2DP ヘッドセット接続時に再生を再開します。</string>
     <string name="pause_on_bluetooth_disconnect_title">Bluetooth 接続時に一時停止</string>
     <string name="pause_on_bluetooth_disconnect_summary">Bluetooth A2DP ヘッドセットが切断されたときに再生を一時停止します。</string>
-    <string name="audio_ducking_title">フォーカス損失時の音量を減らす</string>
-    <string name="audio_ducking_summary">通知、ナビゲーションなど</string>
     <string name="ignore_audio_focus_title">オーディオフォーカスを無視</string>
     <string name="ignore_audio_focus_summary">他の再生に関係なく、常にバックグラウンドでオーディオを再生します。</string>
     <string name="pause_on_transient_focus_loss_title">一過性フォーカス損失</string>
