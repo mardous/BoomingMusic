@@ -635,8 +635,6 @@
     <string name="resume_on_bluetooth_connect_summary">Συνεχίζει την αναπαραγωγή όταν τα ακουστικά Bluetooth A2DP είναι συνδεδεμένα.</string>
     <string name="pause_on_bluetooth_disconnect_title">Παύση κατά την αποσύνδεση του Bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Παύση της αναπαραγωγής όταν αποσυνδεθούν τα ακουστικά Bluetooth A2DP. Συνιστάται.</string>
-    <string name="audio_ducking_title">Μείωση έντασης στην απώλεια εστίασης</string>
-    <string name="audio_ducking_summary">Ειδοποιήσεις, πλοήγηση κλπ.</string>
     <string name="ignore_audio_focus_title">Παράβλεψη εστίασης ήχου</string>
     <string name="ignore_audio_focus_summary">Πάντα αναπαραγωγή ήχου στο παρασκήνιο ανεξάρτητα από οτιδήποτε άλλο αναπαράγεται.</string>
     <string name="pause_on_transient_focus_loss_title">Παροδική απώλεια εστίασης</string>
