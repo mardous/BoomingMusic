@@ -635,8 +635,6 @@
     <string name="resume_on_bluetooth_connect_summary">Hervat het afspelen wanneer Bluetooth A2DP headset is aangesloten.</string>
     <string name="pause_on_bluetooth_disconnect_title">Pauzeer op bluetooth verbinding verbreken</string>
     <string name="pause_on_bluetooth_disconnect_summary">Pauzeert afspelen wanneer Bluetooth A2DP headset is losgekoppeld. Aanbevolen.</string>
-    <string name="audio_ducking_title">Verminder volume bij focusverlies</string>
-    <string name="audio_ducking_summary">Notificaties, navigatie etc.</string>
     <string name="ignore_audio_focus_title">Negeer audiofocus</string>
     <string name="ignore_audio_focus_summary">Altijd audio op de achtergrond afspelen ongeacht alles wat wordt afgespeeld.</string>
     <string name="pause_on_transient_focus_loss_title">Voorbijgaande focus verlies</string>
