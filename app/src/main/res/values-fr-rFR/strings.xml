@@ -635,8 +635,6 @@
     <string name="resume_on_bluetooth_connect_summary">Reprend la lecture lorsque le casque Bluetooth A2DP est connecté.</string>
     <string name="pause_on_bluetooth_disconnect_title">Mettre en pause lors de la déconnexion bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Met en pause la lecture lorsque le casque Bluetooth A2DP est déconnecté. Recommandé.</string>
-    <string name="audio_ducking_title">Réduire le volume en cas de perte de focus</string>
-    <string name="audio_ducking_summary">Notifications, navigation, etc.</string>
     <string name="ignore_audio_focus_title">Ignorer le focus audio</string>
     <string name="ignore_audio_focus_summary">Toujours jouer de l\'audio en arrière-plan, indépendamment de tout autre élément en cours de lecture.</string>
     <string name="pause_on_transient_focus_loss_title">Perte transitoire du focus</string>
