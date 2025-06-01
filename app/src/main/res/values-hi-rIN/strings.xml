@@ -20,12 +20,12 @@
     <string name="search_hint">अपनी लाइब्रेरी खोजें</string>
     <string name="action_voice_search">आवाज खोज</string>
     <string name="speech_not_supported">आपका डिवाइस स्पीच इनपुट का समर्थन नहीं करता है</string>
-    <string name="search_artist_x_label">कलाकार खोजें</string>
-    <string name="search_album_x_label">एल्बम खोजें</string>
-    <string name="search_list_x_label">खोज सूची</string>
-    <string name="search_from_x_label">से खोजें</string>
-    <string name="search_year_x_label">खोज वर्ष</string>
-    <string name="search_in_folder_x">फ़ोल्डर में खोजें</string>
+    <string name="search_artist_x_label">कलाकार खोजें: %s</string>
+    <string name="search_album_x_label">एल्बम खोजें: %s</string>
+    <string name="search_list_x_label">खोज सूची: %s</string>
+    <string name="search_from_x_label">\"%s\" से खोजें</string>
+    <string name="search_year_x_label">खोज वर्ष: %s</string>
+    <string name="search_in_folder_x">फ़ोल्डर में खोजें: %s</string>
     <string name="search_last_added">नवीनतम संगीत खोजें</string>
     <string name="shuffle_mode_album">एल्बम फेरबदल</string>
     <string name="shuffle_mode_artist">कलाकार फेरबदल</string>
@@ -34,7 +34,7 @@
     <string name="what_do_you_want_to_share">आप क्या साझा करना चाहते हैं?</string>
     <string name="the_audio_file">ऑडियो फ़ाइल</string>
     <string name="i_am_listening">I\'m listening…</string>
-    <string name="currently_listening_to_x_by_x">मैं सुन रहा हूँ</string>
+    <string name="currently_listening_to_x_by_x">मैं %2$s का %1$s सुन रहा हूँ</string>
     <string name="share_to_stories">कहानियों को साझा करें</string>
     <string name="could_not_create_the_story">कहानी नहीं बना सका.</string>
     <string name="rename_action">नाम बदलने</string>
@@ -51,7 +51,7 @@
     <string name="action_scan_directory">निर्देशिका स्कैन करें</string>
     <string name="no_device_playlists">कोई प्लेलिस्ट नहीं</string>
     <string name="select_songs_title">गाने चुनें</string>
-    <string name="playlist_x_is_empty"></string>
+    <string name="playlist_x_is_empty">Playlist %s is empty.</string>
     <string name="playlist_name_cannot_be_empty">प्लेलिस्ट का नाम खाली नहीं छोड़ा जा सकता</string>
     <string name="imported_playlist_x">प्लेलिस्ट \"%1$s\" आयातित की गई.</string>
     <string name="could_not_import_the_playlist_x">प्लेलिस्ट \"%s\" आयात नहीं की जा सकी</string>
