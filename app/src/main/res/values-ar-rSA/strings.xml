@@ -663,8 +663,6 @@
     <string name="resume_on_bluetooth_connect_summary">يستأنف التشغيل عند توصيل سماعة البلوتوث A2DP.</string>
     <string name="pause_on_bluetooth_disconnect_title">إيقاف عند قطع اتصال البلوتوث</string>
     <string name="pause_on_bluetooth_disconnect_summary">إيقاف التشغيل عند فصل سماعة البلوتوث A2DP. مستحسن.</string>
-    <string name="audio_ducking_title">تقليل مستوى الصوت عند فقدان التركيز</string>
-    <string name="audio_ducking_summary">الإشعارات والملاحة، إلخ.</string>
     <string name="ignore_audio_focus_title">تجاهل التركيز الصوتي</string>
     <string name="ignore_audio_focus_summary">تشغيل الصوت دائما في الخلفية بغض النظر عن أي شيء آخر يتم تشغيله.</string>
     <string name="pause_on_transient_focus_loss_title">فقدان التركيز الانتقالي</string>
