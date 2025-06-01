@@ -635,8 +635,6 @@
     <string name="resume_on_bluetooth_connect_summary">Riprende la riproduzione quando le cuffie Bluetooth A2DP sono collegate.</string>
     <string name="pause_on_bluetooth_disconnect_title">Pausa alla disconnessione bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Mette in pausa la riproduzione quando l\'auricolare Bluetooth A2DP è disconnesso. Consigliato.</string>
-    <string name="audio_ducking_title">Riduce il volume alla perdita di fuoco</string>
-    <string name="audio_ducking_summary">Notifiche, navigazione ecc.</string>
     <string name="ignore_audio_focus_title">Ignora il focus audio</string>
     <string name="ignore_audio_focus_summary">Riproduci sempre l\'audio in background indipendentemente da qualsiasi altra cosa in riproduzione.</string>
     <string name="pause_on_transient_focus_loss_title">Perdita di fuoco transitoria</string>
