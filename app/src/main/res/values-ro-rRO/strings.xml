@@ -642,8 +642,6 @@
     <string name="resume_on_bluetooth_connect_summary">Reluează redarea când căștile Bluetooth A2DP sunt conectate.</string>
     <string name="pause_on_bluetooth_disconnect_title">Pauză la deconectarea bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Întrerupe redarea când setul cu cască Bluetooth A2DP este deconectat. Recomandat.</string>
-    <string name="audio_ducking_title">Reduce volumul la pierderea focalizării</string>
-    <string name="audio_ducking_summary">Notificări, navigare etc.</string>
     <string name="ignore_audio_focus_title">Ignoră focalizarea audio</string>
     <string name="ignore_audio_focus_summary">Redă întotdeauna audio în fundal indiferent de orice altceva redat.</string>
     <string name="pause_on_transient_focus_loss_title">Pierdere tranzitorie a focalizării</string>
