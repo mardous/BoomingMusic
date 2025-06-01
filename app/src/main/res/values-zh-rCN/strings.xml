@@ -628,8 +628,6 @@
     <string name="resume_on_bluetooth_connect_summary">连接蓝牙 A2DP 耳机时恢复播放。</string>
     <string name="pause_on_bluetooth_disconnect_title">蓝牙断开时暂停</string>
     <string name="pause_on_bluetooth_disconnect_summary">当蓝牙 A2DP 耳机断开时暂停播放。推荐。</string>
-    <string name="audio_ducking_title">减少焦点丢失时的音量</string>
-    <string name="audio_ducking_summary">通知、导航等</string>
     <string name="ignore_audio_focus_title">忽略音频重点</string>
     <string name="ignore_audio_focus_summary">总是在后台播放音频，不管是否播放任何其他音频。</string>
     <string name="pause_on_transient_focus_loss_title">瞬间焦点丢失</string>
