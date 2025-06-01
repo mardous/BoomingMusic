@@ -649,8 +649,6 @@
     <string name="resume_on_bluetooth_connect_summary">Возобновляет воспроизведение при подключении Bluetooth-гарнитуры A2DP.</string>
     <string name="pause_on_bluetooth_disconnect_title">Пауза при отключении Bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Приостанавливает воспроизведение при отключении Bluetooth-гарнитуры A2DP. Рекомендуется.</string>
-    <string name="audio_ducking_title">Уменьшить громкость при потере фокуса</string>
-    <string name="audio_ducking_summary">Уведомления, навигация и т.д.</string>
     <string name="ignore_audio_focus_title">Игнорировать аудио фокус</string>
     <string name="ignore_audio_focus_summary">Всегда воспроизводить звук в фоновом режиме, независимо от того, что проигрывается.</string>
     <string name="pause_on_transient_focus_loss_title">Временные потери фокуса</string>
