@@ -649,8 +649,6 @@
     <string name="resume_on_bluetooth_connect_summary">Resumes playback when Bluetooth A2DP headset is connected.</string>
     <string name="pause_on_bluetooth_disconnect_title">Pause on bluetooth disconnect</string>
     <string name="pause_on_bluetooth_disconnect_summary">Pauses playback when Bluetooth A2DP headset is disconnected. Recommended.</string>
-    <string name="audio_ducking_title">Reduce volume on focus loss</string>
-    <string name="audio_ducking_summary">Notifications, navigation etc.</string>
     <string name="ignore_audio_focus_title">Ignore audio focus</string>
     <string name="ignore_audio_focus_summary">Always play audio in background regardless of anything else being played.</string>
     <string name="pause_on_transient_focus_loss_title">Transient focus loss</string>
