@@ -649,8 +649,6 @@
     <string name="resume_on_bluetooth_connect_summary">Wznawia odtwarzanie, gdy podłączony jest zestaw słuchawkowy Bluetooth A2DP.</string>
     <string name="pause_on_bluetooth_disconnect_title">Zatrzymaj przy rozłączeniu bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Wstrzymuje odtwarzanie, gdy zestaw słuchawkowy Bluetooth A2DP jest rozłączony. Zalecane.</string>
-    <string name="audio_ducking_title">Zmniejsz głośność przy utracie skupienia</string>
-    <string name="audio_ducking_summary">Powiadomienia, nawigacja itp.</string>
     <string name="ignore_audio_focus_title">Ignoruj ostrość dźwięku</string>
     <string name="ignore_audio_focus_summary">Zawsze odtwarzaj dźwięk w tle niezależnie od tego, co jest odtwarzane.</string>
     <string name="pause_on_transient_focus_loss_title">Przejściowa utrata ogniska</string>
