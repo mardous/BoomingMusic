@@ -69,7 +69,7 @@
     <string name="history_cleared">इतिहास साफ हो गया</string>
     <string name="create_a_playlist">एक खाली प्लेलिस्ट बनाई जाएगी। आप बाद में गाने जोड़ सकते हैं।</string>
     <string name="create_a_playlist_with_one_song">एक प्लेलिस्ट बनाई जाएगी और उसमें एक गाना जोड़ा जाएगा।</string>
-    <string name="create_a_playlist_with_x_songs">एक प्लेलिस्ट बनाई जाएगी और उसमें एक गाना जोड़ा जाएगा।</string>
+    <string name="create_a_playlist_with_x_songs">एक प्लेलिस्ट बनाई जाएगी और %d गाने स्वचालित रूप से जोड़ दिए जाएंगे।</string>
     <string name="playlist_name_empty">प्लेलिस्ट का नाम</string>
     <string name="saved_playlist_x">सहेजी गई प्लेलिस्ट %s.</string>
     <string name="failed_to_save_playlist">प्लेलिस्ट सहेजने में विफल.</string>
