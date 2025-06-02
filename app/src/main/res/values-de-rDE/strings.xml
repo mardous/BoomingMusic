@@ -587,8 +587,8 @@
     <string name="swipe_album_cover_summary">Wischen Sie links und rechts auf dem Albumcover um zwischen den Songs zu überspringen.</string>
     <string name="double_tap_on_album_cover_title">Doppeltippen auf Cover</string>
     <string name="long_press_on_album_cover_title">Langes Drücken auf Cover</string>
-    <string name="now_playing_corner_radius_title">Image corner radius</string>
-    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
+    <string name="now_playing_corner_radius_title">Album-Eckradius</string>
+    <string name="now_playing_corner_radius_summary">Legt fest, wie stark die Rundung der Albumcover-Ecken sein soll.</string>
     <string name="carousal_effect_title">Karussell-Effekt</string>
     <string name="album_cover_effect_title">Albumcover Effekt</string>
     <string name="lyrics_on_album_cover_title">Songtexte auf Cover</string>
@@ -702,11 +702,11 @@
     <string name="plain">Einfach</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>
-    <string name="corner_size_none">None</string>
-    <string name="corner_size_small">Small</string>
-    <string name="corner_size_medium">Medium</string>
-    <string name="corner_size_large">Large</string>
-    <string name="corner_size_custom">Custom</string>
+    <string name="corner_size_none">Keine</string>
+    <string name="corner_size_small">Wenig</string>
+    <string name="corner_size_medium">Mittel</string>
+    <string name="corner_size_large">Stark</string>
+    <string name="corner_size_custom">Benutzerdefiniert</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Tiefe</string>
     <string name="hinge">Hinge</string>
