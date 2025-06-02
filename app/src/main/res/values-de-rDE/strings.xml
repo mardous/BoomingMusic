@@ -373,30 +373,30 @@
         <item quantity="other">%d Wiedergaben</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Für dich</string>
-    <string name="shuffle_action">Mischen</string>
-    <string name="top_artists">Top Künstler</string>
-    <string name="top_albums">Top Alben</string>
-    <string name="recent_artists">Aktuelle Künstler</string>
-    <string name="recent_albums">Letzte Alben</string>
-    <string name="no_suggestions">Es gibt keine Vorschläge für Sie</string>
+    <string name="for_you_label">Für Dich</string>
+    <string name="shuffle_action">Zufallswiedergabe</string>
+    <string name="top_artists">Top-Interpreten</string>
+    <string name="top_albums">Top-Alben</string>
+    <string name="recent_artists">Kürzlich gehörte Interpreten</string>
+    <string name="recent_albums">Kürzlich gehörte Alben</string>
+    <string name="no_suggestions">Es gibt keine Vorschläge für Dich</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Rein zufällig</string>
     <string name="shuffle_mode_most_played">Meistgespielte</string>
-    <string name="shuffle_mode_most_played_artists">Meistgespielte Künstler</string>
+    <string name="shuffle_mode_most_played_artists">Meistgespielte Interpreten</string>
     <string name="shuffle_mode_most_played_albums">Meistgespielte Alben</string>
     <string name="shuffle_mode_favorite_songs">Favoriten zuerst</string>
     <string name="shuffle_mode_forgotten_songs">Vergessene Titel</string>
     <string name="shuffle_mode_recently_added">Kürzlich hinzugefügte</string>
     <string name="shuffle_mode_combined">Intelligenter Mix</string>
     <string name="shuffle_mode_pure_random_description">Komplett zufällige Wiedergabe.</string>
-    <string name="shuffle_mode_most_played_description">Bevorzugt Deine meistgespielten Songs.</string>
-    <string name="shuffle_mode_most_played_artists_description">Bevorzugt Lieder Deiner Top-Künstler.</string>
-    <string name="shuffle_mode_most_played_albums_description">Bevorzugt Lieder Deiner meistgespielten Alben.</string>
+    <string name="shuffle_mode_most_played_description">Bevorzugt Deine meistgespielten Titel.</string>
+    <string name="shuffle_mode_most_played_artists_description">Bevorzugt Titel Deiner Top-Interpreten.</string>
+    <string name="shuffle_mode_most_played_albums_description">Bevorzugt Titel Deiner meistgespielten Alben.</string>
     <string name="shuffle_mode_favorite_songs_description">Bevorzugt Deine Top-Titel.</string>
     <string name="shuffle_mode_forgotten_songs_description">Bevorzugt Titel, die Du eine Weile nicht abgespielt hast.</string>
     <string name="shuffle_mode_recently_added_description">Bevorzugt Titel, die Du kürzlich Deiner Bibliothek hinzugefügt hast.</string>
-    <string name="shuffle_mode_combined_description">Mix aus Favoriten, häufig und zuletzt gespielten.</string>
+    <string name="shuffle_mode_combined_description">Mix aus Favoriten, häufig und zuletzt gespielte.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizer</string>
     <string name="share_eq_configuration">EQ-Konfiguration teilen</string>
@@ -408,14 +408,14 @@
     <string name="could_not_export_configuration">Konnte Konfiguration nicht exportieren.</string>
     <string name="export_configuration">Konfiguration exportieren</string>
     <string name="import_configuration">Konfiguration importieren</string>
-    <string name="imported_x_presets">Importierte %d Vorgaben.</string>
+    <string name="imported_x_presets">%d Voreinstellungen importiert.</string>
     <string name="no_preset_imported">Keine Voreinstellung importiert.</string>
     <string name="share_configuration">Konfiguration teilen</string>
     <string name="select_configurations_to_share">Konfigurationen zum Teilen auswählen:</string>
-    <string name="reset_equalizer">Reset equalizer</string>
+    <string name="reset_equalizer">Equalizer zurücksetzen</string>
     <string name="select_configurations_to_export">Zu exportierende Konfigurationen auswählen:</string>
-    <string name="select_a_file_to_save_exported_configurations">Wählen Sie eine Datei aus, um die exportierten Konfigurationen zu speichern.</string>
-    <string name="select_a_file_containing_booming_eq_presets">Wählen Sie eine Datei, die Booming Music EQ Presets enthält.</string>
+    <string name="select_a_file_to_save_exported_configurations">Wähle eine Datei aus, um die exportierten Konfigurationen zu speichern.</string>
+    <string name="select_a_file_containing_booming_eq_presets">Wähle eine Datei, die Booming Music EQ-Voreinstellungen enthält.</string>
     <string name="select_configurations_to_import">Zu importierende Konfigurationen auswählen:</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Sind Sie sicher, dass Sie den Equalizer zurücksetzen möchten?
         \n\nDies wird alle Ihre Voreinstellungen löschen.</string>
