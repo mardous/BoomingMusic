@@ -499,7 +499,7 @@
     <string name="application">App</string>
     <string name="version">Version</string>
     <string name="changelog">Änderungsprotokoll</string>
-    <string name="fork_on_github">Fork on GitHub</string>
+    <string name="fork_on_github">Auf GitHub forken</string>
     <string name="licenses">Lizenzen</string>
     <string name="author">Autor</string>
     <string name="telegram_chat">Telegram-Chat</string>
