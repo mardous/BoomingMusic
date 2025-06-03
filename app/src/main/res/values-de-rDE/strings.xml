@@ -492,13 +492,13 @@
     <string name="sleep_timer_stop_after_x_canceled">Beenden nach %s: abgebrochen</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">Zufallswiedergabe</string>
-    <string name="app_shortcut_top_tracks_short">Top Tracks</string>
+    <string name="app_shortcut_top_tracks_short">Top-Titel</string>
     <string name="app_shortcut_last_added_short">Zuletzt hinzugefügt</string>
     <!-- About page -->
     <string name="action_about">Über</string>
-    <string name="application">Anwendung</string>
+    <string name="application">App</string>
     <string name="version">Version</string>
-    <string name="changelog">Changelog</string>
+    <string name="changelog">Änderungsprotokoll</string>
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Lizenzen</string>
     <string name="author">Autor</string>
