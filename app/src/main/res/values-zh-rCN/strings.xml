@@ -12,7 +12,7 @@
     <string name="action_cancel">取消</string>
     <string name="action_cycle_repeat">循环重复模式</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
-    <string name="reset_action">Reset</string>
+    <string name="reset_action">重置</string>
     <string name="action_more">更多</string>
     <string name="import_action">导入</string>
     <string name="create_action">创建</string>
@@ -21,7 +21,7 @@
     <string name="action_voice_search">语音搜索</string>
     <string name="speech_not_supported">您的设备不支持语音输入</string>
     <string name="search_artist_x_label">搜索艺人： %s</string>
-    <string name="search_album_x_label">搜索相册: %s</string>
+    <string name="search_album_x_label">搜索专辑: %s</string>
     <string name="search_list_x_label">搜索列表： %s</string>
     <string name="search_from_x_label">从 \"%s \" 搜索</string>
     <string name="search_year_x_label">搜索年份: %s</string>
@@ -558,7 +558,7 @@
     <!-- Interface preferences -->
     <string name="general_theme_title">一般主题</string>
     <string name="pure_black_theme_title">纯黑色</string>
-    <string name="material_you_title">您的材料</string>
+    <string name="material_you_title">启用Material</string>
     <string name="use_custom_font_title">使用 Manrope 字体</string>
     <string name="appbar_mode_title">标题样式</string>
     <string name="library_categories_title">库类别</string>
@@ -687,7 +687,7 @@
     <string name="labeled">已标记</string>
     <string name="unlabeled">取消标签</string>
     <string name="selected">已选择</string>
-    <string name="compact">紧凑的</string>
+    <string name="compact">紧凑</string>
     <string name="expanded">扩展</string>
     <string name="full_cover">完整封面</string>
     <string name="gradient">渐变</string>
