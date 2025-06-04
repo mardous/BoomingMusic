@@ -208,7 +208,7 @@
     <string name="conductors_label">Condutores</string>
     <string name="publishers_label">Editores</string>
     <string name="favorites_label">Atalhos</string>
-    <string name="last_added_label">Última adicionada</string>
+    <string name="last_added_label">Últimas Adicionadas</string>
     <string name="top_tracks_label">Melhores faixas</string>
     <string name="history_label">Histórico</string>
     <string name="not_recently_played">Não reproduzido recentemente</string>
@@ -375,7 +375,7 @@
     <string name="for_you_label">Para você</string>
     <string name="shuffle_action">Aleatório</string>
     <string name="top_artists">Artistas Populares</string>
-    <string name="top_albums">Álbuns mais populares</string>
+    <string name="top_albums">Álbuns Populares</string>
     <string name="recent_artists">Artistas recentes</string>
     <string name="recent_albums">Álbuns recentes</string>
     <string name="no_suggestions">Não há sugestões para você</string>
@@ -386,7 +386,7 @@
     <string name="shuffle_mode_most_played_albums">Álbuns mais reproduzidos</string>
     <string name="shuffle_mode_favorite_songs">Favoritos primeiro</string>
     <string name="shuffle_mode_forgotten_songs">Músicas esquecidas</string>
-    <string name="shuffle_mode_recently_added">Adicionado recentemente</string>
+    <string name="shuffle_mode_recently_added">Adicionados Recentemente</string>
     <string name="shuffle_mode_combined">Mix inteligente</string>
     <string name="shuffle_mode_pure_random_description">Totalmente aleatório.</string>
     <string name="shuffle_mode_most_played_description">Favorece suas músicas mais tocadas.</string>
@@ -491,7 +491,7 @@
     <string name="sleep_timer_stop_after_x_canceled">Parar após %s: cancelado</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">Aleatório</string>
-    <string name="app_shortcut_top_tracks_short">Melhores faixas</string>
+    <string name="app_shortcut_top_tracks_short">Melhores Faixas</string>
     <string name="app_shortcut_last_added_short">Últimas Adicionadas</string>
     <!-- About page -->
     <string name="action_about">Sobre</string>
@@ -582,23 +582,23 @@
     <string name="swipe_to_dismiss_title">Deslize para dispensar</string>
     <string name="swipe_to_dismiss_summary">Deslize para baixo o mini reprodutor para parar a reprodução e limpar as filas de reprodução.</string>
     <string name="circle_button_title">Botão de reprodução circular</string>
-    <string name="swipe_album_cover_title">Deslize capa do álbum</string>
+    <string name="swipe_album_cover_title">Deslizar capa do álbum</string>
     <string name="swipe_album_cover_summary">Deslize para a esquerda e direita na capa do álbum para pular entre as músicas.</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
     <string name="long_press_on_album_cover_title">Toque longo na capa</string>
-    <string name="now_playing_corner_radius_title">Image corner radius</string>
-    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
+    <string name="now_playing_corner_radius_title">Cantos arredondados da imagem</string>
+    <string name="now_playing_corner_radius_summary">Define o nível de arredondamento dos cantos da capa do álbum.</string>
     <string name="carousal_effect_title">Efeito do carrossel</string>
     <string name="album_cover_effect_title">Efeito da capa do álbum</string>
     <string name="lyrics_on_album_cover_title">Letra na capa</string>
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música ao invés da capa quando ela estiver disponível.</string>
     <string name="animate_controls_title">Animar controles</string>
-    <string name="animate_controls_summary">Jogado quando se abre o painel do jogador.</string>
+    <string name="animate_controls_summary">Animação ao abrir o painel do tocador.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
     <string name="select_extra_info_title">Informação extra</string>
-    <string name="select_extra_info_summary">Selecione as informações extras para exibir no painel do jogador.</string>
+    <string name="select_extra_info_summary">Selecione as informações extras para serem exibidas no painel do tocador.</string>
     <string name="prefer_remaining_time_title">Prefere tempo restante</string>
     <string name="prefer_remaining_time_summary">Exibir tempo restante ao invés da duração da música.</string>
     <string name="prefer_album_artist_name_title">"Preferir nome do álbum-artista"</string>
