@@ -603,7 +603,7 @@
     <string name="long_press_on_album_cover_title">Długie przytrzymanie na okładce</string>
     <string name="now_playing_corner_radius_title">Zaokrąglenie rogów obrazu</string>
     <string name="now_playing_corner_radius_summary">Zdefiniuj jak bardzo mają być zaokrąglone rogi okładki albumu.</string>
-    <string name="carousal_effect_title">Efekt karuzeli</string>
+    <string name="carousel_effect_title">Carousel effect</string>
     <string name="album_cover_effect_title">Efekt okładki albumu</string>
     <string name="lyrics_on_album_cover_title">Tekst na okładce</string>
     <string name="lyrics_on_album_cover_summary">Pokaż teksty piosenki zamiast okładki, gdy są dostępne.</string>
