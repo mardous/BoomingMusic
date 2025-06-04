@@ -589,7 +589,7 @@
     <string name="long_press_on_album_cover_title">Langes Drücken auf Cover</string>
     <string name="now_playing_corner_radius_title">Album-Eckradius</string>
     <string name="now_playing_corner_radius_summary">Legt fest, wie stark die Rundung der Albumcover-Ecken sein soll.</string>
-    <string name="carousal_effect_title">Karussell-Effekt</string>
+    <string name="carousel_effect_title">Carousel effect</string>
     <string name="album_cover_effect_title">Albumcover Effekt</string>
     <string name="lyrics_on_album_cover_title">Songtexte auf Cover</string>
     <string name="lyrics_on_album_cover_summary">Songtexte statt Cover anzeigen, wenn sie verfügbar sind.</string>
