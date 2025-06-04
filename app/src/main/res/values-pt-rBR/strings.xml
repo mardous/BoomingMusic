@@ -685,7 +685,7 @@
     <string name="restore_backup_summary">Restaurar dados (e estado) de um backup anterior.</string>
     <!-- Preference values -->
     <string name="advanced_label">Avançado</string>
-    <string name="light_theme_name">Fino</string>
+    <string name="light_theme_name">Claro</string>
     <string name="dark_theme_name">Escuro</string>
     <string name="black_theme_name">Preto</string>
     <string name="follow_system">Seguir sistema</string>
