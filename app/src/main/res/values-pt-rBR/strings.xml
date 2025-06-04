@@ -293,7 +293,7 @@
     <string name="label_loss_less">Perder menos</string>
     <string name="label_bit_rate">Taxa de bits</string>
     <string name="label_sampling_rate">Taxa de amostragem</string>
-    <string name="replay_gain">Ganho</string>
+    <string name="replay_gain">ReplayGain</string>
     <string name="comment">Comentar</string>
     <string name="last_played">Último jogado</string>
     <string name="played">Reproduzido</string>
@@ -553,7 +553,7 @@
     <string name="artist_image_header">Imagem do artista</string>
     <string name="exclusion_header">Exclusões</string>
     <string name="controls_header">Controles</string>
-    <string name="replaygain_header">Ganho</string>
+    <string name="replaygain_header">ReplayGain</string>
     <string name="headphones_header">Fones</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Foco em áudio</string>
@@ -564,7 +564,7 @@
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema geral</string>
     <string name="pure_black_theme_title">Preto Puro</string>
-    <string name="material_you_title">Material de que você</string>
+    <string name="material_you_title">Material You</string>
     <string name="use_custom_font_title">Usar a fonte Manrope</string>
     <string name="appbar_mode_title">Estilo do cabeçalho</string>
     <string name="library_categories_title">Categorias da biblioteca</string>
@@ -588,7 +588,7 @@
     <string name="long_press_on_album_cover_title">Toque longo na capa</string>
     <string name="now_playing_corner_radius_title">Cantos arredondados da imagem</string>
     <string name="now_playing_corner_radius_summary">Define o nível de arredondamento dos cantos da capa do álbum.</string>
-    <string name="carousel_effect_title">Carousel effect</string>
+    <string name="carousel_effect_title">Efeito carrossel</string>
     <string name="album_cover_effect_title">Efeito da capa do álbum</string>
     <string name="lyrics_on_album_cover_title">Letra na capa</string>
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música ao invés da capa quando ela estiver disponível.</string>
@@ -609,7 +609,7 @@
     <string name="gapless_playback_title">Reprodução ininterrupta</string>
     <string name="gapless_playback_summary">Transição suave entre músicas. Pode causar problemas de reprodução em alguns dispositivos.</string>
     <string name="replaygain_source_mode_title">Modo de origem</string>
-    <string name="replaygain_preamp_title">Nível de antecipação</string>
+    <string name="replaygain_preamp_title">Nível de pré-amplificação</string>
     <string name="replaygain_preamp_summary">Definir o nível de volume quando o ReplayGain estiver habilitado.</string>
     <string name="queue_next_mode_title">Modo \"Próxima Fila\"</string>
     <string name="search_auto_queue_title">Enfileirar todos os resultados da pesquisa</string>
@@ -701,10 +701,10 @@
     <string name="plain">Simples</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>
-    <string name="corner_size_none">None</string>
-    <string name="corner_size_small">Small</string>
-    <string name="corner_size_medium">Medium</string>
-    <string name="corner_size_large">Large</string>
+    <string name="corner_size_none">Nenhum</string>
+    <string name="corner_size_small">Pequeno</string>
+    <string name="corner_size_medium">Médio</string>
+    <string name="corner_size_large">Grande</string>
     <string name="corner_size_custom">Personalizar</string>
     <string name="cascading">Em cascata</string>
     <string name="depth">Profundidade</string>
@@ -742,6 +742,14 @@
     <string name="label_never">Nunca</string>
     <string name="label_nothing">Nada</string>
     <string name="label_none">Nenhuma</string>
+    <string name="player_color_mode_app_theme_title">Tema do aplicativo</string>
+    <string name="player_color_mode_app_theme_description">Use o esquema de cores do aplicativo</string>
+    <string name="player_color_mode_simple_color_title">Cor simples</string>
+    <string name="player_color_mode_simple_color_description">Extrair a cor do álbum e aplicá-la a alguns controles</string>
+    <string name="player_color_mode_vibrant_color_title">Cor vibrante</string>
+    <string name="player_color_mode_vibrant_color_description">Colorir fundo, texto e controles com a cor do álbum</string>
+    <string name="player_color_mode_material_you_title">Material You</string>
+    <string name="player_color_mode_material_you_description">Usar tons do Material You baseado na cor do álbum</string>
     <!-- Update -->
     <string name="auto_update_title">Pesquisa de atualização automática</string>
     <string name="every_day">Diariamente</string>
