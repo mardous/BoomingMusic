@@ -589,7 +589,7 @@
     <string name="long_press_on_album_cover_title">Παρατεταμένο πάτημα στο εξώφυλλο</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
-    <string name="carousal_effect_title">Εφέ καρουσέλ</string>
+    <string name="carousel_effect_title">Carousel effect</string>
     <string name="album_cover_effect_title">Εφέ εξώφυλλου άλμπουμ</string>
     <string name="lyrics_on_album_cover_title">Στίχοι στο εξώφυλλο</string>
     <string name="lyrics_on_album_cover_summary">Εμφάνιση στίχων τραγουδιών αντί για εξώφυλλο όταν είναι διαθέσιμοι.</string>
