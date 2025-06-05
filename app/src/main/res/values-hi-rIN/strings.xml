@@ -284,7 +284,7 @@
     <string name="conductor">संचालक</string>
     <string name="publisher">प्रकाशक</string>
     <string name="genre">शैली</string>
-    <string name="year">Year</string>
+    <string name="year">साल</string>
     <string name="release_years_label">साल</string>
     <string name="length">लम्बाई</string>
     <string name="label_last_modified">अंतिम संशोधित</string>
@@ -321,61 +321,61 @@
     <string name="backup_settings">सेटिंग्स</string>
     <string name="backup_synced_lyrics">सिंक की हुई लिरिक्स</string>
     <string name="backup_artist_images">कलाकारों की तस्वीरें</string>
-    <string name="backup_playlists">Playlists</string>
-    <string name="backup_successful">Backup successful!</string>
-    <string name="backup_failed">Backup failed.</string>
-    <string name="select_content_to_restore">Select content to restore:</string>
-    <string name="could_not_restore_data">Couldn\'t not restore data. Verify backup file and retry.</string>
-    <string name="data_restored_successfully">Data restored successfully.</string>
+    <string name="backup_playlists">प्लेलिस्ट्स</string>
+    <string name="backup_successful">बैकअप सफल रहा!</string>
+    <string name="backup_failed">बैकअप विफल हो गया</string>
+    <string name="select_content_to_restore">बैकअप से बहाल करने के लिए सामग्री चुनें:</string>
+    <string name="could_not_restore_data">डेटा को पुनर्स्थापित नहीं किया जा सका। बैकअप फ़ाइल सत्यापित करें और पुनः प्रयास करें।</string>
+    <string name="data_restored_successfully">डेटा सफलतापूर्वक पुनर्स्थापित किया गया।</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Output device</string>
-    <string name="audio_device_battery_level">Battery level: %d%% approx.</string>
-    <string name="audio_device_aux_line">Aux Line</string>
-    <string name="audio_device_bluetooth">Bluetooth device</string>
-    <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Speaker</string>
-    <string name="audio_device_builtin_speaker">Builtin Speaker</string>
-    <string name="audio_device_hdmi">HDMI</string>
-    <string name="audio_device_headset">Wired headset</string>
-    <string name="audio_device_usb_device">USB Device</string>
-    <string name="audio_device_usb_headset">USB Headset</string>
-    <string name="audio_device_default">System\'s default</string>
-    <string name="audio_device_unknown">Unknown</string>
+    <string name="output_device_title">आउटपुट डिवाइस</string>
+    <string name="audio_device_battery_level">बैटरी स्तर: लगभग %d%%।</string>
+    <string name="audio_device_aux_line">ऑक्स लाइन</string>
+    <string name="audio_device_bluetooth">ब्लूटूथ डिवाइस</string>
+    <string name="audio_device_bluetooth_a2dp">ब्लुटूथ A2DP</string>
+    <string name="audio_device_bluetooth_sco">ब्लूटूथ एससीओ</string>
+    <string name="audio_device_speaker">स्पीकर</string>
+    <string name="audio_device_builtin_speaker">बिल्टइन स्पीकर</string>
+    <string name="audio_device_hdmi">एचडीएमआई</string>
+    <string name="audio_device_headset">वायर्ड हेडसेट</string>
+    <string name="audio_device_usb_device">यूएसबी डिवाइस</string>
+    <string name="audio_device_usb_headset">यूएसबी हेडसेट</string>
+    <string name="audio_device_default">सिस्टम का डिफ़ॉल्ट</string>
+    <string name="audio_device_unknown">अनजान</string>
     <!-- Plurals -->
     <plurals name="songs">
-        <item quantity="one">Song</item>
-        <item quantity="other">Songs</item>
+        <item quantity="one">एक गाना</item>
+        <item quantity="other">अन्य गाने</item>
     </plurals>
     <plurals name="albums">
-        <item quantity="one">Album</item>
-        <item quantity="other">Albums</item>
+        <item quantity="one">एक एल्बम</item>
+        <item quantity="other">अन्य एल्बम</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d song</item>
         <item quantity="other">%d songs</item>
     </plurals>
     <plurals name="x_albums">
-        <item quantity="one">%d album</item>
-        <item quantity="other">%d albums</item>
+        <item quantity="one">एक %d एल्बम</item>
+        <item quantity="other">अन्य %d एल्बम</item>
     </plurals>
     <plurals name="x_artists">
-        <item quantity="one">%d artist</item>
-        <item quantity="other">%d artists</item>
+        <item quantity="one">एक %d कलाकार</item>
+        <item quantity="other">अन्य %d कलाकार</item>
     </plurals>
     <plurals name="x_times">
-        <item quantity="one">%d time</item>
-        <item quantity="other">%d times</item>
+        <item quantity="one">एक %d बार</item>
+        <item quantity="other">अन्य %d बार</item>
     </plurals>
     <plurals name="x_plays">
-        <item quantity="one">%d play</item>
-        <item quantity="other">%d plays</item>
+        <item quantity="one">चलाये</item>
+        <item quantity="other">अन्य%d चलाये</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">For you</string>
-    <string name="shuffle_action">Shuffle</string>
-    <string name="top_artists">Top artists</string>
-    <string name="top_albums">Top albums</string>
+    <string name="for_you_label">आपके लिए</string>
+    <string name="shuffle_action">शफल</string>
+    <string name="top_artists">टॉप आर्टिस्ट्स</string>
+    <string name="top_albums">सर्वश्रेष्ठ एल्बम्स</string>
     <string name="recent_artists">Recent artists</string>
     <string name="recent_albums">Recent albums</string>
     <string name="no_suggestions">There are no suggestions for you</string>
@@ -394,7 +394,7 @@
     <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
     <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
     <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
-    <string name="shuffle_mode_recently_added_description">Favors songs recently added to your library.</string>
+    <string name="shuffle_mode_recently_added_description">हाल ही में आपकी लाइब्रेरी में जोड़े पसंदीदा गीत</string>
     <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizer</string>
