@@ -33,7 +33,7 @@
     <string name="action_save">बचाना</string>
     <string name="what_do_you_want_to_share">आप क्या साझा करना चाहते हैं?</string>
     <string name="the_audio_file">ऑडियो फ़ाइल</string>
-    <string name="i_am_listening">I\'m listening…</string>
+    <string name="i_am_listening">मैं सुन रहा हूँ…</string>
     <string name="currently_listening_to_x_by_x">मैं %2$s का %1$s सुन रहा हूँ</string>
     <string name="share_to_stories">कहानियों को साझा करें</string>
     <string name="could_not_create_the_story">कहानी नहीं बना सका.</string>
@@ -51,7 +51,7 @@
     <string name="action_scan_directory">निर्देशिका स्कैन करें</string>
     <string name="no_device_playlists">कोई प्लेलिस्ट नहीं</string>
     <string name="select_songs_title">गाने चुनें</string>
-    <string name="playlist_x_is_empty">Playlist %s is empty.</string>
+    <string name="playlist_x_is_empty">प्लेलेस्ट %s खाली है।</string>
     <string name="playlist_name_cannot_be_empty">प्लेलिस्ट का नाम खाली नहीं छोड़ा जा सकता</string>
     <string name="imported_playlist_x">प्लेलिस्ट \"%1$s\" आयातित की गई.</string>
     <string name="could_not_import_the_playlist_x">प्लेलिस्ट \"%s\" आयात नहीं की जा सकी</string>
@@ -171,11 +171,11 @@
     <string name="there_is_nothing_to_reset">There is nothing to reset.</string>
     <string name="updating">Updating…</string>
     <string name="add_to_label">Add to</string>
-    <string name="go_to_label">Go to</string>
+    <string name="go_to_label">जाओ</string>
     <string name="action_go_to_album">Go to Album</string>
-    <string name="action_go_to_artist">Go to Artist</string>
+    <string name="action_go_to_artist">कलाïकार के पास जाएं</string>
     <string name="action_go_to_genre">Go to Genre</string>
-    <string name="added_title_to_playing_queue">"Added 1 title to the playing queue."</string>
+    <string name="added_title_to_playing_queue">"खेलने की कतार में 1 शीर्षक जोड़ा गया है।"</string>
     <string name="added_x_titles_to_playing_queue">Added %1$d titles to the playing queue.</string>
     <string name="next_song_label">Next Song</string>
     <string name="next_song_x">Next • %1$s</string>
