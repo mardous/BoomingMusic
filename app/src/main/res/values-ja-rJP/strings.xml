@@ -201,7 +201,6 @@
     <string name="album_artists_label">アルバムアーティスト</string>
     <string name="genres_label">ジャンル</string>
     <string name="folders_label">フォルダ</string>
-    <string name="files_label">ファイル</string>
     <string name="playlists_label">プレイリスト</string>
     <string name="playlist_label">プレイリスト</string>
     <string name="composers_label">作曲者</string>
@@ -248,6 +247,7 @@
     <string name="action_details">詳細</string>
     <string name="action_set_as_start_directory">開始ディレクトリに設定</string>
     <string name="action_go_to_start_directory">開始ディレクトリに移動</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">新しい開始ディレクトリ: %s</string>
     <string name="action_scan">スキャン</string>
     <string name="scan_media">メディアをスキャン</string>
@@ -364,6 +364,9 @@
     </plurals>
     <plurals name="x_plays">
         <item quantity="other">%d 再生</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">For you</string>
@@ -647,6 +650,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">ゴミ箱に送る</string>
     <string name="trash_music_summary">削除されたファイルをゴミ箱に送信します。</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">履歴を有効化</string>
     <string name="enable_history_summary">アプリが聴いている曲を録音することを許可します。無効にすると履歴全体が消去されます。</string>
     <string name="history_interval_title">履歴の間隔</string>
