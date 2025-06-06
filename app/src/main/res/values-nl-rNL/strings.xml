@@ -201,7 +201,6 @@
     <string name="album_artists_label">Album artiesten</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Mappen</string>
-    <string name="files_label">Files</string>
     <string name="playlists_label">Afspeellijsten</string>
     <string name="playlist_label">Afspeellijst</string>
     <string name="composers_label">componisten</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Beschrijving</string>
     <string name="action_set_as_start_directory">Instellen als startmap</string>
     <string name="action_go_to_start_directory">Ga naar de startmap</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Nieuwe startmap: %s</string>
     <string name="action_scan">Scannen</string>
     <string name="scan_media">Media scannen</string>
@@ -371,6 +371,10 @@
     <plurals name="x_plays">
         <item quantity="one">%d afspelen</item>
         <item quantity="other">%d speelt</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Voor jou</string>
@@ -654,6 +658,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Naar prullenbak verzenden</string>
     <string name="trash_music_summary">Verzend verwijderde bestanden naar de prullenbak.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Geschiedenis inschakelen</string>
     <string name="enable_history_summary">Laat de app toe om de nummers waar je naar geluisterd hebt op te nemen. Als je deze uitschakelt, wordt de hele geschiedenis gewist.</string>
     <string name="history_interval_title">Geschiedenis interval</string>
