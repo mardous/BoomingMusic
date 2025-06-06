@@ -201,7 +201,6 @@
     <string name="album_artists_label">Album artisti</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Cartelle</string>
-    <string name="files_label">Files</string>
     <string name="playlists_label">Playlist</string>
     <string name="playlist_label">Playlist</string>
     <string name="composers_label">Compositori</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Dettagli</string>
     <string name="action_set_as_start_directory">Imposta come directory iniziale</string>
     <string name="action_go_to_start_directory">Va alla directory iniziale</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Nuova directory di partenza: %s</string>
     <string name="action_scan">Scansione</string>
     <string name="scan_media">Scansiona media</string>
@@ -371,6 +371,10 @@
     <plurals name="x_plays">
         <item quantity="one">%d riproduci</item>
         <item quantity="other">%d riproduzioni</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Per te</string>
@@ -654,6 +658,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Invia al cestino</string>
     <string name="trash_music_summary">Invia i file eliminati al cestino.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Abilita Cronologia</string>
     <string name="enable_history_summary">Consente all\'applicazione di registrare i brani che hai ascoltato. Se disabilitato, l\'intera cronologia verrà cancellata.</string>
     <string name="history_interval_title">Intervallo cronologia</string>
