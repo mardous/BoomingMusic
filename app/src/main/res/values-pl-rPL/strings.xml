@@ -201,7 +201,6 @@
     <string name="album_artists_label">Artyści albumów</string>
     <string name="genres_label">Gatunki</string>
     <string name="folders_label">Foldery</string>
-    <string name="files_label">Pliki</string>
     <string name="playlists_label">Listy odtwarzania</string>
     <string name="playlist_label">Lista odtwarzania</string>
     <string name="composers_label">Kompozytorzy</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Szczegóły</string>
     <string name="action_set_as_start_directory">Ustaw jako katalog startowy</string>
     <string name="action_go_to_start_directory">Przejdź do folderu głównego</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Nowy katalog startowy: %s</string>
     <string name="action_scan">Skanuj</string>
     <string name="scan_media">Skanuj media</string>
@@ -385,6 +385,12 @@
         <item quantity="few">%d odtwarza</item>
         <item quantity="many">%d odtwarza</item>
         <item quantity="other">%d odtwarza</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="few">%d items</item>
+        <item quantity="many">%d items</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Dla Ciebie</string>
@@ -668,6 +674,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Przenieś do kosza</string>
     <string name="trash_music_summary">Przenieś usunięte pliki do kosza.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Włącz historię</string>
     <string name="enable_history_summary">Pozwala aplikacji na zapisywanie utworów, które słuchałeś. Jeśli wyłączysz, cała historia zostanie wyczyszczona.</string>
     <string name="history_interval_title">Przedział czasowy</string>
