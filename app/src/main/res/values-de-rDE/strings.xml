@@ -201,7 +201,6 @@
     <string name="album_artists_label">Album-Interpreten</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Ordner</string>
-    <string name="files_label">Dateien</string>
     <string name="playlists_label">Wiedergabelisten</string>
     <string name="playlist_label">Wiedergabeliste</string>
     <string name="composers_label">Komponisten</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Details</string>
     <string name="action_set_as_start_directory">Als Startverzeichnis festlegen</string>
     <string name="action_go_to_start_directory">Gehe zum Startverzeichnis</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Neues Startverzeichnis: %s</string>
     <string name="action_scan">Scannen</string>
     <string name="scan_media">Medieninhalte scannen</string>
@@ -371,6 +371,10 @@
     <plurals name="x_plays">
         <item quantity="one">%d spielen</item>
         <item quantity="other">%d Wiedergaben</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Für Dich</string>
@@ -583,17 +587,17 @@
     <string name="swipe_to_dismiss_title">Zum Verwerfen wischen</string>
     <string name="swipe_to_dismiss_summary">Wische über den Mini-Player nach unten, um die Wiedergabe zu stoppen und Warteschlangen zu leeren.</string>
     <string name="circle_button_title">Runde Wiedergabetaste</string>
-    <string name="swipe_album_cover_title">Album Cover wischen</string>
-    <string name="swipe_album_cover_summary">Wischen Sie links und rechts auf dem Albumcover um zwischen den Songs zu überspringen.</string>
+    <string name="swipe_album_cover_title">Album-Cover wischen</string>
+    <string name="swipe_album_cover_summary">Wische über das Album-Cover nach links und rechts, um zwischen den Titeln zu springen.</string>
     <string name="double_tap_on_album_cover_title">Doppeltippen auf Cover</string>
-    <string name="long_press_on_album_cover_title">Langes Drücken auf Cover</string>
-    <string name="now_playing_corner_radius_title">Album-Eckradius</string>
-    <string name="now_playing_corner_radius_summary">Legt fest, wie stark die Rundung der Albumcover-Ecken sein soll.</string>
-    <string name="carousel_effect_title">Karussell Effekt</string>
-    <string name="album_cover_effect_title">Albumcover Effekt</string>
-    <string name="lyrics_on_album_cover_title">Songtexte auf Cover</string>
-    <string name="lyrics_on_album_cover_summary">Songtexte statt Cover anzeigen, wenn sie verfügbar sind.</string>
-    <string name="animate_controls_title">Steuerung animieren</string>
+    <string name="long_press_on_album_cover_title">Lange Drücken auf Cover</string>
+    <string name="now_playing_corner_radius_title">Bild-Eckradius</string>
+    <string name="now_playing_corner_radius_summary">Definiert die Rundung der Album-Cover-Ecken.</string>
+    <string name="carousel_effect_title">Karussell-Effekt</string>
+    <string name="album_cover_effect_title">Album-Cover-Effekt</string>
+    <string name="lyrics_on_album_cover_title">Liedtexte auf Cover</string>
+    <string name="lyrics_on_album_cover_summary">Liedtexte statt Cover anzeigen, wenn verfügbar.</string>
+    <string name="animate_controls_title">Steuerelemente animieren</string>
     <string name="animate_controls_summary">Wird beim Öffnen des Player-Panels abgespielt.</string>
     <string name="display_album_name_title">Albumname anzeigen</string>
     <string name="display_extra_info_title">Zusätzliche Info anzeigen</string>
@@ -654,6 +658,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">In den Papierkorb senden</string>
     <string name="trash_music_summary">Gelöschte Dateien in den Papierkorb senden.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Verlauf aktivieren</string>
     <string name="enable_history_summary">Ermöglicht der App, die Lieder aufzuzeichnen, auf die Sie gerade gehört haben. Wenn Sie sie deaktivieren, wird der gesamte Verlauf gelöscht.</string>
     <string name="history_interval_title">Verlauf Intervall</string>
