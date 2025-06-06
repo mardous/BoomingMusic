@@ -201,7 +201,6 @@
     <string name="album_artists_label">专辑艺人</string>
     <string name="genres_label">流派</string>
     <string name="folders_label">文件夹</string>
-    <string name="files_label">文件</string>
     <string name="playlists_label">播放列表</string>
     <string name="playlist_label">播放列表</string>
     <string name="composers_label">作曲家</string>
@@ -248,6 +247,7 @@
     <string name="action_details">详细信息</string>
     <string name="action_set_as_start_directory">设置为起始目录</string>
     <string name="action_go_to_start_directory">转到起始目录</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">新建起始目录: %s</string>
     <string name="action_scan">扫描</string>
     <string name="scan_media">扫描媒体</string>
@@ -364,6 +364,9 @@
     </plurals>
     <plurals name="x_plays">
         <item quantity="other">%d 播放</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">推荐</string>
@@ -647,6 +650,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">发送到回收站</string>
     <string name="trash_music_summary">发送已删除的文件到回收站。</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">启用历史</string>
     <string name="enable_history_summary">允许应用程序录制您正在收听的歌曲。如果您禁用它，整个历史记录将被清除。</string>
     <string name="history_interval_title">历史间隔</string>
