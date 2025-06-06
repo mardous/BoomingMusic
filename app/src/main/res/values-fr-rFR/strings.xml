@@ -201,7 +201,6 @@
     <string name="album_artists_label">Artistes des albums</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Dossiers</string>
-    <string name="files_label">Files</string>
     <string name="playlists_label">Listes de lecture</string>
     <string name="playlist_label">Liste de lecture</string>
     <string name="composers_label">Compositeurs</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Détails du produit</string>
     <string name="action_set_as_start_directory">Définir comme répertoire de départ</string>
     <string name="action_go_to_start_directory">Aller au répertoire de démarrage</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Nouveau répertoire de démarrage : %s</string>
     <string name="action_scan">Analyser</string>
     <string name="scan_media">Analyser les médias</string>
@@ -371,6 +371,10 @@
     <plurals name="x_plays">
         <item quantity="one">%d lecture</item>
         <item quantity="other">%d lectures</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Pour vous</string>
@@ -654,6 +658,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Envoyer à la corbeille</string>
     <string name="trash_music_summary">Envoyer les fichiers supprimés à la corbeille.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Activer l\'historique</string>
     <string name="enable_history_summary">Permet à l\'application d\'enregistrer les chansons que vous avez écoutées. Si vous le désactivez, l\'ensemble de l\'historique sera effacé.</string>
     <string name="history_interval_title">Intervalle de l\'historique</string>
