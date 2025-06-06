@@ -201,7 +201,6 @@
     <string name="album_artists_label">Album artists</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Folders</string>
-    <string name="files_label">Files</string>
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
     <string name="composers_label">Composers</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Details</string>
     <string name="action_set_as_start_directory">Set as start directory</string>
     <string name="action_go_to_start_directory">Go to start directory</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">New start directory: %s</string>
     <string name="action_scan">Scan</string>
     <string name="scan_media">Scan media</string>
@@ -371,6 +371,10 @@
     <plurals name="x_plays">
         <item quantity="one">%d play</item>
         <item quantity="other">%d plays</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">For you</string>
@@ -654,6 +658,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Send to trash</string>
     <string name="trash_music_summary">Send deleted files to trash.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Enable History</string>
     <string name="enable_history_summary">Allows the application to record the songs you\'ve been listening to. If you disable it the entire history will be cleared.</string>
     <string name="history_interval_title">History interval</string>
