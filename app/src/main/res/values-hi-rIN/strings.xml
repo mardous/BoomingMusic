@@ -479,7 +479,7 @@
     <string name="lyrics_source_embedded_synced">Embedded lyrics are synced. They will have higher priority than downloaded lyrics.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep timer</string>
-    <string name="sleep_timer_cancel_current_timer">Cancel current timer</string>
+    <string name="sleep_timer_cancel_current_timer">वर्तमान टाइमर रद्द करें</string>
     <string name="sleep_timer_cancel_current_timer_x">Cancel current timer (%s)</string>
     <string name="sleep_timer_canceled">Sleep timer canceled.</string>
     <string name="sleep_timer_set_action">Set</string>
@@ -573,7 +573,7 @@
     <string name="start_page_title">Start page</string>
     <string name="tab_mode_title">Tab titles mode</string>
     <!-- Now playing preferences -->
-    <string name="now_playing_screen_title">Style</string>
+    <string name="now_playing_screen_title">स्टाइल</string>
     <string name="open_on_play_title">Open on play</string>
     <string name="open_on_play_summary">Expand the Now Playing panel automatically after start playing a song.</string>
     <string name="extra_controls_title">Extra controls</string>
