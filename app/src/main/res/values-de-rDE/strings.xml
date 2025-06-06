@@ -525,11 +525,11 @@
     <string name="saf_access_required_title">Speicherzugriff erforderlich</string>
     <string name="saf_access_required_message">Booming Music benötigt die Berechtigung auf diese Dateien zuzugreifen. Bitte wähle den übergeordneten Ordner, in dem Deine Musikdateien gespeichert sind.</string>
     <string name="saf_show_files_button">Dateien anzeigen</string>
-    <string name="saf_error_uri">SAF-URI kann nicht geladen werden</string>
-    <string name="saf_write_failed">Datei schreiben fehlgeschlagen: %s</string>
-    <string name="saf_delete_failed">Datei löschen fehlgeschlagen: %s</string>
+    <string name="saf_error_uri">SAF-URI kann nicht abgerufen werden</string>
+    <string name="saf_write_failed">Datei-Schreibvorgang fehlgeschlagen: %s</string>
+    <string name="saf_delete_failed">Datei-Löschvorgang fehlgeschlagen: %s</string>
     <string name="settings_title">Einstellungen</string>
-    <string name="appearance_title">Erscheinung</string>
+    <string name="appearance_title">Darstellung</string>
     <string name="appearance_summary">Ändern Sie das Theme und andere visuelle Einstellungen.</string>
     <string name="now_playing_title">Wird gerade gespielt</string>
     <string name="now_playing_summary">Jetzt abspielbaren Bildschirm anpassen.</string>
