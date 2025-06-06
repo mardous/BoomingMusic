@@ -160,7 +160,7 @@
     <string name="removed_from_favorites_label">Aus Favoriten entfernt</string>
     <string name="toggle_favorite">Hinzufügen/Entfernen aus Favoriten</string>
     <string name="action_add_to_playlist">Zu Wiedergabeliste hinzufügen</string>
-    <string name="action_remove_from_playlist">Aus Playliste entfernen</string>
+    <string name="action_remove_from_playlist">Aus Wiedergabeliste entfernen</string>
     <string name="action_add_to_playing_queue">Zu Warteschlange hinzufügen</string>
     <string name="action_remove_from_playing_queue">Aus Warteschlange entfernen</string>
     <string name="x_removed_from_playing_queue">%s entfernt</string>
@@ -202,8 +202,8 @@
     <string name="genres_label">Genres</string>
     <string name="folders_label">Ordner</string>
     <string name="files_label">Dateien</string>
-    <string name="playlists_label">Playlists</string>
-    <string name="playlist_label">Playliste</string>
+    <string name="playlists_label">Wiedergabelisten</string>
+    <string name="playlist_label">Wiedergabeliste</string>
     <string name="composers_label">Komponisten</string>
     <string name="conductors_label">Dirigenten</string>
     <string name="publishers_label">Herausgeber</string>
@@ -322,7 +322,7 @@
     <string name="backup_settings">Einstellungen</string>
     <string name="backup_synced_lyrics">Synchronisierte Liedtexte</string>
     <string name="backup_artist_images">Interpretenbilder</string>
-    <string name="backup_playlists">Playlists</string>
+    <string name="backup_playlists">Wiedergabelisten</string>
     <string name="backup_successful">Sicherung erfolgreich!</string>
     <string name="backup_failed">Sicherung fehlgeschlagen.</string>
     <string name="select_content_to_restore">Inhalt zum Wiederherstellen auswählen:</string>
@@ -503,24 +503,24 @@
     <string name="licenses">Lizenzen</string>
     <string name="author">Autor</string>
     <string name="telegram_chat">Telegram-Chat</string>
-    <string name="telegram_chat_summary">Melden Sie sich im Chat bei Telegram an und informieren Sie sich über Neuigkeiten und Neuigkeiten.</string>
+    <string name="telegram_chat_summary">Trete dem Chat auf Telegram bei und informiere Dich über neue Versionen und Neuigkeiten.</string>
     <string name="view_profile_on_github">Profil auf GitHub anzeigen</string>
-    <string name="follow_on_telegram">DM auf Telegramm</string>
-    <string name="write_an_email">E-Mail schreiben</string>
+    <string name="follow_on_telegram">Persönliche Nachricht auf Telegram</string>
+    <string name="write_an_email">Eine E-Mail schreiben</string>
     <string name="support_development">Entwicklung unterstützen</string>
-    <string name="help_with_translations">Hilfe bei Übersetzungen</string>
+    <string name="help_with_translations">Hilf beim Übersetzen</string>
     <string name="help_with_translations_summary">Du kannst zum Projekt beitragen, indem du dabei hilfst, Booming Music in andere Sprachen zu übersetzen.</string>
     <string name="report_bugs">Fehler melden</string>
-    <string name="report_bugs_summary">Melde Fehler oder fordere neue Funktionen an.</string>
+    <string name="report_bugs_summary">Melde Fehler oder frage neue Funktionen an.</string>
     <string name="share_app">Diese App teilen</string>
-    <string name="share_app_summary">Du kannst dieser App helfen, zu wachsen, wenn du sie mit Freunden teilst.</string>
+    <string name="share_app_summary">Du kannst dieser App helfen zu wachsen, wenn du sie mit Freunden teilst.</string>
     <string name="send_invitation_message">Einladungsnachricht senden</string>
-    <string name="invitation_message_content">Hallo. Sieh dir Booming Musik an! Die beste App um lokale Musik auf Android anzuhören. Du kannst sie hier herunterladen: %s</string>
+    <string name="invitation_message_content">Hallo! Sieh dir Booming Music an! Die beste App, um lokale Musik auf Android anzuhören. Du kannst sie hier herunterladen: %s</string>
     <!-- Bug report -->
     <string name="report_an_issue">Ein Problem melden</string>
-    <string name="device_info">Geräteinfo</string>
-    <string name="copied_device_info_to_clipboard">Geräteinformationen in die Zwischenablage kopiert.</string>
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Sie werden auf die Issue-Tracker Website weitergeleitet.</string>
+    <string name="device_info">Gerätedetails</string>
+    <string name="copied_device_info_to_clipboard">Gerätedetails in Zwischenablage kopiert.</string>
+    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Du wirst zum Issue-Tracker auf GitHub weitergeleitet.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Speicherzugriff erforderlich</string>
     <string name="saf_access_required_message">Booming Music benötigt die Berechtigung auf diese Dateien zuzugreifen. Bitte wähle den übergeordneten Ordner, in dem Deine Musikdateien gespeichert sind.</string>
