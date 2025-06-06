@@ -201,7 +201,6 @@
     <string name="album_artists_label">Umělec alba</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Složky</string>
-    <string name="files_label">Files</string>
     <string name="playlists_label">Seznamy stop</string>
     <string name="playlist_label">Seznam skladeb</string>
     <string name="composers_label">Skladatelé</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Detaily</string>
     <string name="action_set_as_start_directory">Nastavit jako počáteční adresář</string>
     <string name="action_go_to_start_directory">Přejít na počáteční adresář</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Nový adresář: %s</string>
     <string name="action_scan">Skenovat</string>
     <string name="scan_media">Skenovat média</string>
@@ -385,6 +385,12 @@
         <item quantity="few">%d přehrává</item>
         <item quantity="many">%d přehrává</item>
         <item quantity="other">%d přehrává</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="few">%d items</item>
+        <item quantity="many">%d items</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Pro vás</string>
@@ -668,6 +674,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Odeslat do koše</string>
     <string name="trash_music_summary">Odeslat smazané soubory do koše.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Povolit historii</string>
     <string name="enable_history_summary">Umožňuje aplikaci zaznamenávat skladby, které posloucháte. Pokud ji zakážete, celá historie bude vymazána.</string>
     <string name="history_interval_title">Interval historie</string>
