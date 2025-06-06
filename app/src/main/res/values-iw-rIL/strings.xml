@@ -201,7 +201,6 @@
     <string name="album_artists_label">אמני אלבומים</string>
     <string name="genres_label">ז\'אנרים</string>
     <string name="folders_label">תיקיות</string>
-    <string name="files_label">קבצים</string>
     <string name="playlists_label">רשימות השמעה</string>
     <string name="playlist_label">רשימת השמעה</string>
     <string name="composers_label">מלחינים</string>
@@ -248,6 +247,7 @@
     <string name="action_details">פרטים</string>
     <string name="action_set_as_start_directory">הגדר כתיקיית התחלה</string>
     <string name="action_go_to_start_directory">הגדר כתיקיית התחלה</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">ספריית התחלה חדשה: %s</string>
     <string name="action_scan">סרוק</string>
     <string name="scan_media">סרוק מדיה</string>
@@ -385,6 +385,12 @@
         <item quantity="two">הפעלה %d</item>
         <item quantity="many">%d הפעלות</item>
         <item quantity="other">%d הפעלות</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="two">%d items</item>
+        <item quantity="many">%d items</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">עבורך</string>
@@ -668,6 +674,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Send to trash</string>
     <string name="trash_music_summary">Send deleted files to trash.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Enable History</string>
     <string name="enable_history_summary">Allows the application to record the songs you\'ve been listening to. If you disable it the entire history will be cleared.</string>
     <string name="history_interval_title">History interval</string>
