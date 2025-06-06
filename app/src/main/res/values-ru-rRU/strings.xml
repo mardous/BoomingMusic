@@ -201,7 +201,6 @@
     <string name="album_artists_label">Образцы альбомов</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Папки</string>
-    <string name="files_label">Files</string>
     <string name="playlists_label">Плейлисты</string>
     <string name="playlist_label">Плейлист</string>
     <string name="composers_label">Композиторы</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Детали</string>
     <string name="action_set_as_start_directory">Установить как начальную директорию</string>
     <string name="action_go_to_start_directory">Перейти к начальной директории</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Новая начальная директория: %s</string>
     <string name="action_scan">Сканировать</string>
     <string name="scan_media">Сканировать медиа</string>
@@ -385,6 +385,12 @@
         <item quantity="few">%d проигрывает</item>
         <item quantity="many">%d проигрывает</item>
         <item quantity="other">%d проигрывает</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="few">%d items</item>
+        <item quantity="many">%d items</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Для вас</string>
@@ -668,6 +674,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Отправить в корзину</string>
     <string name="trash_music_summary">Отправлять удаленные файлы в корзину.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Включить историю</string>
     <string name="enable_history_summary">Позволяет приложению записывать прослушиваемые песни. Если вы отключите ее, вся история будет удалена.</string>
     <string name="history_interval_title">Интервал истории</string>
