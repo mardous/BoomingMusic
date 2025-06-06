@@ -201,7 +201,6 @@
     <string name="album_artists_label">Albumkunstnere</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Mapper</string>
-    <string name="files_label">Files</string>
     <string name="playlists_label">Afspilningslister</string>
     <string name="playlist_label">Afspilningsliste</string>
     <string name="composers_label">Komponister</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Detaljer</string>
     <string name="action_set_as_start_directory">Angiv som startmappe</string>
     <string name="action_go_to_start_directory">Gå til startmappe</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Ny startmappe: %s</string>
     <string name="action_scan">Skan</string>
     <string name="scan_media">Scan medier</string>
@@ -371,6 +371,10 @@
     <plurals name="x_plays">
         <item quantity="one">%d afspil</item>
         <item quantity="other">%d spiller</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Til dig</string>
@@ -654,6 +658,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Send til papirkurven</string>
     <string name="trash_music_summary">Send slettede filer til papirkurven.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Aktiver Historik</string>
     <string name="enable_history_summary">Tillader applikationen at optage de sange, du har lyttet til. Hvis du deaktiverer det, vil hele historikken blive ryddet.</string>
     <string name="history_interval_title">Historik interval</string>
