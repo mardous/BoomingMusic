@@ -287,7 +287,7 @@
     <string name="genre">流派</string>
     <string name="year">年份</string>
     <string name="release_years_label">年</string>
-    <string name="length">长度</string>
+    <string name="length">时长</string>
     <string name="label_last_modified">最后修改</string>
     <string name="label_audio_header">音频标题</string>
     <string name="label_variable_bitrate">可变比特率</string>
