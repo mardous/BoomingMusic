@@ -201,7 +201,6 @@
     <string name="album_artists_label">Artişti de album</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Dosare</string>
-    <string name="files_label">Files</string>
     <string name="playlists_label">Liste</string>
     <string name="playlist_label">Playlist</string>
     <string name="composers_label">Compozitori</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Detalii</string>
     <string name="action_set_as_start_directory">Setează ca director de pornire</string>
     <string name="action_go_to_start_directory">Du-te la directorul de pornire</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Directorul de start nou: %s</string>
     <string name="action_scan">Scanare</string>
     <string name="scan_media">Scanare media</string>
@@ -378,6 +378,11 @@
         <item quantity="one">Joc %d</item>
         <item quantity="few">Redare %d</item>
         <item quantity="other">Redare %d</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="few">%d items</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Pentru tine</string>
@@ -661,6 +666,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Trimite la gunoi</string>
     <string name="trash_music_summary">Trimite fişiere şterse la gunoi.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Activează Istoric</string>
     <string name="enable_history_summary">Permite aplicației să înregistreze melodiile pe care le-ați ascultat. Dacă o dezactivați, întreaga istorie va fi ștearsă.</string>
     <string name="history_interval_title">Interval istoric</string>
