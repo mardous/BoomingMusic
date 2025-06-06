@@ -201,7 +201,6 @@
     <string name="album_artists_label">فنانون الألبوم</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">مجلدات</string>
-    <string name="files_label">Files</string>
     <string name="playlists_label">قوائم التشغيل</string>
     <string name="playlist_label">قائمة التشغيل</string>
     <string name="composers_label">الملحنين</string>
@@ -248,6 +247,7 @@
     <string name="action_details">التفاصيل</string>
     <string name="action_set_as_start_directory">تعيين كدليل للبدء</string>
     <string name="action_go_to_start_directory">اذهب لبدء الدليل</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">دليل البدء الجديد: %s</string>
     <string name="action_scan">فحص</string>
     <string name="scan_media">فحص الوسائط</string>
@@ -399,6 +399,14 @@
         <item quantity="few">تشغيل %d</item>
         <item quantity="many">تشغيل %d</item>
         <item quantity="other">تشغيل %d</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="zero">%d items</item>
+        <item quantity="one">%d item</item>
+        <item quantity="two">%d items</item>
+        <item quantity="few">%d items</item>
+        <item quantity="many">%d items</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">من أجلك</string>
@@ -682,6 +690,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">إرسال إلى سلة المهملات</string>
     <string name="trash_music_summary">إرسال الملفات المحذوفة إلى سلة المهملات.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">تمكين السجل</string>
     <string name="enable_history_summary">للسماح للتطبيق بتسجيل الأغاني التي كنت تستمع إليها. إذا قمت بتعطيلها، سيتم مسح السجل بأكمله.</string>
     <string name="history_interval_title">الفاصل الزمني للتاريخ</string>
