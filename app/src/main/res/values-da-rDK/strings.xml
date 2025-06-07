@@ -247,6 +247,7 @@
     <string name="action_details">Detaljer</string>
     <string name="action_set_as_start_directory">Angiv som startmappe</string>
     <string name="action_go_to_start_directory">Gå til startmappe</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Ny startmappe: %s</string>
     <string name="action_scan">Skan</string>
     <string name="scan_media">Scan medier</string>
@@ -370,6 +371,10 @@
     <plurals name="x_plays">
         <item quantity="one">%d afspil</item>
         <item quantity="other">%d spiller</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Til dig</string>
@@ -586,6 +591,9 @@
     <string name="swipe_album_cover_summary">Stryg til venstre og højre på albumcoveret for at springe over mellem sange.</string>
     <string name="double_tap_on_album_cover_title">Dobbelttryk på coveret</string>
     <string name="long_press_on_album_cover_title">Langt tryk på omslag</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
+    <string name="carousel_effect_title">Carousel effect</string>
     <string name="carousel_effect_title">Karrusel effekt</string>
     <string name="album_cover_effect_title">Album cover effekt</string>
     <string name="lyrics_on_album_cover_title">Sangtekster på omslag</string>
@@ -602,12 +610,16 @@
     <string name="prefer_album_artist_name_title">"Foretræk Album-kunstnerens navn"</string>
     <string name="prefer_album_artist_name_summary">Viser albumkunstnerens navn i stedet for sangkunstnerens navn (hvis det er tilgængeligt).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Gapless afspilning</string>
     <string name="gapless_playback_summary">Glat overgang mellem sange. Kan forårsage afspilning problemer på nogle enheder.</string>
     <string name="replaygain_source_mode_title">Kilde tilstand</string>
     <string name="replaygain_preamp_title">PreAmp niveau</string>
     <string name="replaygain_preamp_summary">Indstil lydstyrkeniveau, når ReplayGain er aktiveret.</string>
     <string name="queue_next_mode_title">\"Kø næste\" tilstand</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Husk Blanding</string>
     <string name="remember_shuffle_mode_summary">Blandingstilstand vil forblive tændt, når du vælger en ny liste over sange.</string>
     <string name="album_shuffle_mode_title">Album shuffle mode</string>
@@ -647,6 +659,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Send til papirkurven</string>
     <string name="trash_music_summary">Send slettede filer til papirkurven.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Aktiver Historik</string>
     <string name="enable_history_summary">Tillader applikationen at optage de sange, du har lyttet til. Hvis du deaktiverer det, vil hele historikken blive ryddet.</string>
     <string name="history_interval_title">Historik interval</string>
@@ -695,6 +709,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Dybde</string>
     <string name="hinge">Hinge</string>
@@ -731,6 +750,14 @@
     <string name="label_never">Aldrig</string>
     <string name="label_nothing">Intet</string>
     <string name="label_none">Ingen</string>
+    <string name="player_color_mode_app_theme_title">App theme</string>
+    <string name="player_color_mode_app_theme_description">Use the app\'s color scheme</string>
+    <string name="player_color_mode_simple_color_title">Simple color</string>
+    <string name="player_color_mode_simple_color_description">Extract the album color and apply it to some controls</string>
+    <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
+    <string name="player_color_mode_vibrant_color_description">Tint background, text, and controls with the album color</string>
+    <string name="player_color_mode_material_you_title">Material You</string>
+    <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
     <string name="auto_update_title">Auto. opdater søgning</string>
     <string name="every_day">Hver dag</string>

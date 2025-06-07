@@ -247,6 +247,7 @@
     <string name="action_details">Detalii</string>
     <string name="action_set_as_start_directory">Setează ca director de pornire</string>
     <string name="action_go_to_start_directory">Du-te la directorul de pornire</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Directorul de start nou: %s</string>
     <string name="action_scan">Scanare</string>
     <string name="scan_media">Scanare media</string>
@@ -377,6 +378,11 @@
         <item quantity="one">Joc %d</item>
         <item quantity="few">Redare %d</item>
         <item quantity="other">Redare %d</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="few">%d items</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Pentru tine</string>
@@ -593,6 +599,9 @@
     <string name="swipe_album_cover_summary">Glisați la stânga și la dreapta pe coperta de album pentru a sări între melodii.</string>
     <string name="double_tap_on_album_cover_title">Dublă atingere pe copertă</string>
     <string name="long_press_on_album_cover_title">Apăsare lungă pe copertă</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
+    <string name="carousel_effect_title">Carousel effect</string>
     <string name="carousel_effect_title">Efectul de carusel</string>
     <string name="album_cover_effect_title">Efect copertă album</string>
     <string name="lyrics_on_album_cover_title">Versuri pe copertă</string>
@@ -609,12 +618,16 @@
     <string name="prefer_album_artist_name_title">"Prefer numele artistului Album-artist"</string>
     <string name="prefer_album_artist_name_summary">Prezintă numele albumului artistului în locul numelui Song-artist (dacă este disponibil).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Redare fără întreruperi</string>
     <string name="gapless_playback_summary">Tranziție lentă între melodii. Poate cauza probleme de redare pe unele dispozitive.</string>
     <string name="replaygain_source_mode_title">Mod sursă</string>
     <string name="replaygain_preamp_title">Nivel pregatire</string>
     <string name="replaygain_preamp_summary">Setează nivelul de volum când ReplayGain este activat.</string>
     <string name="queue_next_mode_title">Modul \"Coada următoare\"</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Amintește-ți Shuffle</string>
     <string name="remember_shuffle_mode_summary">Modul Amestecare va rămâne activat atunci când se selectează o listă nouă de melodii.</string>
     <string name="album_shuffle_mode_title">Mod amestecare album</string>
@@ -654,6 +667,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Trimite la gunoi</string>
     <string name="trash_music_summary">Trimite fişiere şterse la gunoi.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Activează Istoric</string>
     <string name="enable_history_summary">Permite aplicației să înregistreze melodiile pe care le-ați ascultat. Dacă o dezactivați, întreaga istorie va fi ștearsă.</string>
     <string name="history_interval_title">Interval istoric</string>
@@ -702,6 +717,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normală</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Adâncime</string>
     <string name="hinge">Hinge</string>
@@ -738,6 +758,14 @@
     <string name="label_never">Niciodată</string>
     <string name="label_nothing">Nimic</string>
     <string name="label_none">Niciunul</string>
+    <string name="player_color_mode_app_theme_title">App theme</string>
+    <string name="player_color_mode_app_theme_description">Use the app\'s color scheme</string>
+    <string name="player_color_mode_simple_color_title">Simple color</string>
+    <string name="player_color_mode_simple_color_description">Extract the album color and apply it to some controls</string>
+    <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
+    <string name="player_color_mode_vibrant_color_description">Tint background, text, and controls with the album color</string>
+    <string name="player_color_mode_material_you_title">Material You</string>
+    <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
     <string name="auto_update_title">Actualizați automat căutarea</string>
     <string name="every_day">În fiecare zi</string>

@@ -247,6 +247,7 @@
     <string name="action_details">פרטים</string>
     <string name="action_set_as_start_directory">הגדר כתיקיית התחלה</string>
     <string name="action_go_to_start_directory">הגדר כתיקיית התחלה</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">ספריית התחלה חדשה: %s</string>
     <string name="action_scan">סרוק</string>
     <string name="scan_media">סרוק מדיה</string>
@@ -384,6 +385,12 @@
         <item quantity="two">הפעלה %d</item>
         <item quantity="many">%d הפעלות</item>
         <item quantity="other">%d הפעלות</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="two">%d items</item>
+        <item quantity="many">%d items</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">עבורך</string>
@@ -600,6 +607,8 @@
     <string name="swipe_album_cover_summary">Swipe left and right on album cover to skip between songs.</string>
     <string name="double_tap_on_album_cover_title">Double tap on cover</string>
     <string name="long_press_on_album_cover_title">Long press on cover</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
     <string name="album_cover_effect_title">Album cover effect</string>
     <string name="lyrics_on_album_cover_title">Lyrics on cover</string>
@@ -616,12 +625,16 @@
     <string name="prefer_album_artist_name_title">"Prefer Album-artist's name"</string>
     <string name="prefer_album_artist_name_summary">Shows the Album-artist\'s name instead of Song-artist\'s name (if available).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Gapless playback</string>
     <string name="gapless_playback_summary">Smooth transition between songs. Can cause playback issues on some devices.</string>
     <string name="replaygain_source_mode_title">Source mode</string>
     <string name="replaygain_preamp_title">PreAmp level</string>
     <string name="replaygain_preamp_summary">Set volume level when ReplayGain is enabled.</string>
     <string name="queue_next_mode_title">\"Queue next\" mode</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Remember Shuffle</string>
     <string name="remember_shuffle_mode_summary">Shuffle mode will stay on when selecting a new list of songs.</string>
     <string name="album_shuffle_mode_title">Album shuffle mode</string>
@@ -661,6 +674,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Send to trash</string>
     <string name="trash_music_summary">Send deleted files to trash.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Enable History</string>
     <string name="enable_history_summary">Allows the application to record the songs you\'ve been listening to. If you disable it the entire history will be cleared.</string>
     <string name="history_interval_title">History interval</string>
@@ -709,6 +724,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Depth</string>
     <string name="hinge">Hinge</string>
@@ -745,6 +765,14 @@
     <string name="label_never">Never</string>
     <string name="label_nothing">Nothing</string>
     <string name="label_none">None</string>
+    <string name="player_color_mode_app_theme_title">App theme</string>
+    <string name="player_color_mode_app_theme_description">Use the app\'s color scheme</string>
+    <string name="player_color_mode_simple_color_title">Simple color</string>
+    <string name="player_color_mode_simple_color_description">Extract the album color and apply it to some controls</string>
+    <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
+    <string name="player_color_mode_vibrant_color_description">Tint background, text, and controls with the album color</string>
+    <string name="player_color_mode_material_you_title">Material You</string>
+    <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
     <string name="auto_update_title">Auto. update search</string>
     <string name="every_day">Every day</string>

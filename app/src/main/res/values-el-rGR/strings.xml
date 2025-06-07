@@ -247,6 +247,7 @@
     <string name="action_details">Λεπτομέρειες</string>
     <string name="action_set_as_start_directory">Ορισμός ως κατάλογος έναρξης</string>
     <string name="action_go_to_start_directory">Πηγαίνετε στον κατάλογο έναρξης</string>
+    <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Νέος κατάλογος έναρξης: %s</string>
     <string name="action_scan">Σάρωση</string>
     <string name="scan_media">Σάρωση πολυμέσων</string>
@@ -370,6 +371,10 @@
     <plurals name="x_plays">
         <item quantity="one">%d αναπαραγωγή</item>
         <item quantity="other">%d παίζει</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Για εσάς</string>
@@ -586,6 +591,9 @@
     <string name="swipe_album_cover_summary">Σύρετε αριστερά και δεξιά στο εξώφυλλο του άλμπουμ για να παραλείψετε μεταξύ τραγουδιών.</string>
     <string name="double_tap_on_album_cover_title">Διπλό χτύπημα στο εξώφυλλο</string>
     <string name="long_press_on_album_cover_title">Παρατεταμένο πάτημα στο εξώφυλλο</string>
+    <string name="now_playing_corner_radius_title">Image corner radius</string>
+    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
+    <string name="carousel_effect_title">Carousel effect</string>
     <string name="carousel_effect_title">Εφέ καρουσέλ</string>
     <string name="album_cover_effect_title">Εφέ εξώφυλλου άλμπουμ</string>
     <string name="lyrics_on_album_cover_title">Στίχοι στο εξώφυλλο</string>
@@ -602,12 +610,16 @@
     <string name="prefer_album_artist_name_title">"Προτιμήστε το όνομα του καλλιτέχνη Album-"</string>
     <string name="prefer_album_artist_name_summary">Εμφανίζει το όνομα του καλλιτέχνη του Album αντί για το όνομα του Song-artist\'s (αν υπάρχει).</string>
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
     <string name="gapless_playback_title">Αναπαραγωγή χωρίς κενά</string>
     <string name="gapless_playback_summary">Ομαλή μετάβαση μεταξύ τραγουδιών. Μπορεί να προκαλέσει προβλήματα αναπαραγωγής σε ορισμένες συσκευές.</string>
     <string name="replaygain_source_mode_title">Λειτουργία πηγής</string>
     <string name="replaygain_preamp_title">PreAmp επίπεδο</string>
     <string name="replaygain_preamp_summary">Ορίστε το επίπεδο έντασης όταν το ReplayGain είναι ενεργοποιημένο.</string>
     <string name="queue_next_mode_title">\"Ουρά επόμενη\" λειτουργία</string>
+    <string name="search_auto_queue_title">Enqueue all search results</string>
+    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Απομνημόνευση Τυχαίας Αναπαραγωγής</string>
     <string name="remember_shuffle_mode_summary">Η λειτουργία ανακατέματος θα παραμείνει ενεργή κατά την επιλογή μιας νέας λίστας τραγουδιών.</string>
     <string name="album_shuffle_mode_title">Λειτουργία ανακατέματος άλμπουμ</string>
@@ -647,6 +659,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Αποστολή στον κάδο απορριμμάτων</string>
     <string name="trash_music_summary">Αποστολή διαγραμμένων αρχείων στα απορρίμματα.</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Ενεργοποίηση Ιστορικού</string>
     <string name="enable_history_summary">Επιτρέπει στην εφαρμογή την εγγραφή των τραγουδιών που ακούτε. Εάν την απενεργοποιήσετε θα εκκαθαριστεί ολόκληρο το ιστορικό.</string>
     <string name="history_interval_title">Διάστημα ιστορικού</string>
@@ -695,6 +709,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Κανονικό</string>
+    <string name="corner_size_none">None</string>
+    <string name="corner_size_small">Small</string>
+    <string name="corner_size_medium">Medium</string>
+    <string name="corner_size_large">Large</string>
+    <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Βάθος</string>
     <string name="hinge">Hinge</string>
@@ -731,6 +750,14 @@
     <string name="label_never">Ποτέ</string>
     <string name="label_nothing">Τίποτα</string>
     <string name="label_none">Κανένα</string>
+    <string name="player_color_mode_app_theme_title">App theme</string>
+    <string name="player_color_mode_app_theme_description">Use the app\'s color scheme</string>
+    <string name="player_color_mode_simple_color_title">Simple color</string>
+    <string name="player_color_mode_simple_color_description">Extract the album color and apply it to some controls</string>
+    <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
+    <string name="player_color_mode_vibrant_color_description">Tint background, text, and controls with the album color</string>
+    <string name="player_color_mode_material_you_title">Material You</string>
+    <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
     <string name="auto_update_title">Αυτόματη ενημέρωση αναζήτησης</string>
     <string name="every_day">Κάθε μέρα</string>
