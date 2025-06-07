@@ -11,7 +11,7 @@
     <string name="action_previous">Poprzedni</string>
     <string name="action_cancel">Anuluj</string>
     <string name="action_cycle_repeat">Tryb powtarzania</string>
-    <string name="action_toggle_shuffle">Toggle shuffle mode</string>
+    <string name="action_toggle_shuffle">Przełącz tryb losowy</string>
     <string name="reset_action">Reset</string>
     <string name="action_more">Więcej</string>
     <string name="import_action">Importuj</string>
@@ -363,7 +363,7 @@
         <item quantity="other">%d utworów</item>
     </plurals>
     <plurals name="x_albums">
-        <item quantity="one">%d albumu</item>
+        <item quantity="one">%d album</item>
         <item quantity="few">%d albumów</item>
         <item quantity="many">%d albumów</item>
         <item quantity="other">%d albumów</item>
@@ -387,9 +387,9 @@
         <item quantity="other">%d odtwarza</item>
     </plurals>
     <plurals name="x_items">
-        <item quantity="one">%d item</item>
-        <item quantity="few">%d items</item>
-        <item quantity="many">%d items</item>
+        <item quantity="one">%d jedna</item>
+        <item quantity="few">%d kilka</item>
+        <item quantity="many">%d wiele</item>
         <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
@@ -588,7 +588,7 @@
     <string name="material_you_title">Material You</string>
     <string name="use_custom_font_title">Użyj czcionki Manrope</string>
     <string name="appbar_mode_title">Styl nagłówka</string>
-    <string name="library_categories_title">Kategorie biblioteki</string>
+    <string name="library_categories_title">Kategorie zakładek</string>
     <string name="library_categories_summary">Konfiguruj widoczność i kolejność kategorii biblioteki.</string>
     <string name="remember_last_page_title">Zapamiętaj ostatnią stronę</string>
     <string name="remember_last_page_summary">Przejdź do ostatniej otwartej strony przy uruchomieniu.</string>
@@ -635,18 +635,18 @@
     <string name="queue_next_mode_title">Tryb \"Kolejka dalej\"</string>
     <string name="search_auto_queue_title">Odtwarzaj wszystkie wyszukane</string>
     <string name="search_auto_queue_summary">Gdy odtwarzasz utwór z ekranu wyszukiwania, pozostałe również zostaną zakolejkowane.</string>
-    <string name="remember_shuffle_mode_title">Zapamiętaj losowo</string>
+    <string name="remember_shuffle_mode_title">Zapamiętaj tryb losowy</string>
     <string name="remember_shuffle_mode_summary">Tryb losowy pozostanie włączony podczas wybierania nowej listy utworów.</string>
     <string name="album_shuffle_mode_title">Tryb losowania albumu</string>
     <string name="artist_shuffle_mode_title">Tryb losowania artysty</string>
     <string name="auto_play_on_skip_title">Automatyczne odtwarzanie przy pominięciu</string>
-    <string name="auto_play_on_skip_summary">Jeśli odtwarzanie jest wstrzymane, naciśnięcie poprzednich lub następnych przycisków uruchomi muzykę.</string>
-    <string name="rewind_with_back_title">"Przewiń z 'Poprzedni'"</string>
-    <string name="rewind_with_back_summary">Przewiń ścieżkę odtwarzania na początek lub przenieś do poprzedniej ścieżki, jeśli bieżący jest na początku.</string>
-    <string name="fast_forward_title">Szybko do przodu</string>
-    <string name="fast_forward_summary">"Ustaw do przodu przycisk \"Pomiń\" wciśnięty."</string>
-    <string name="fast_backward_title">Szybko do tyłu</string>
-    <string name="fast_backward_summary">"Wstecz przycisk \"Poprzedni\" wciśnięty."</string>
+    <string name="auto_play_on_skip_summary">Jeśli odtwarzanie jest wstrzymane, naciśnięcie klawisza \'Następny\' lub \'Poprzedni\' uruchomi muzykę.</string>
+    <string name="rewind_with_back_title">"Przewijaj przez 'Poprzedni'"</string>
+    <string name="rewind_with_back_summary">Przewiń utwór na początek lub przejdź do poprzedniego, jeżeli aktualny jest dopiero rozpoczęty.</string>
+    <string name="fast_forward_title">Przewiń do przodu</string>
+    <string name="fast_forward_summary">"Przewiń do przodu, przytrzymując przycisk 'Następny'."</string>
+    <string name="fast_backward_title">Przewiń do tyłu</string>
+    <string name="fast_backward_summary">"Przewiń do tylu, przytrzymując przycisk \"Poprzedni\"."</string>
     <string name="resume_on_connect_title">Wznów po połączeniu</string>
     <string name="resume_on_connect_summary">Wznawia odtwarzanie, gdy słuchawka jest podłączona.</string>
     <string name="pause_on_disconnect_title">Wstrzymaj przy rozłączeniu</string>
@@ -663,10 +663,10 @@
     <string name="auto_download_metadata_title">Automatyczne pobieranie metadanych</string>
     <string name="ignore_media_store_album_covers_title">Ignoruj okładki z pamięci wewnętrznej</string>
     <string name="ignore_media_store_album_covers_summary">Może to przyczynić się do poprawy jakości obrazów, ale wymagać większej ilości pamięci.</string>
-    <string name="use_folder_album_cover_title">Użyj obrazów folderów</string>
-    <string name="use_folder_album_cover_summary">Jeżeli plik audio nie zawiera osadzonej okładki, zostaną załadowane obrazy z pamięci wewnętrznej. Może zająć trochę czasu.</string>
+    <string name="use_folder_album_cover_title">Użyj obrazów z folderów</string>
+    <string name="use_folder_album_cover_summary">Jeśli plik audio nie zawiera osadzonej okładki, zostaną załadowane obrazy z pamięci wewnętrznej. Może zająć trochę czasu.</string>
     <string name="online_artist_images_title">Pobierz obrazy artysty</string>
-    <string name="online_artist_images_summary">To zależy od zasad pobierania metadanych.</string>
+    <string name="online_artist_images_summary">Zależne od ustawień związanych z pobieraniem metadanych.</string>
     <string name="preferred_artist_image_size_title">Preferowany rozmiar obrazu</string>
     <string name="delete_downloaded_lyrics_title">Usuń pobrane teksty</string>
     <string name="delete_downloaded_lyrics_summary">Tylko teksty pobrane przez Booming Music. Nie ma wpływu na teksty osadzone w tagach ID3v2 lub plikach LRC.</string>
@@ -674,7 +674,7 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Przenieś do kosza</string>
     <string name="trash_music_summary">Przenieś usunięte pliki do kosza.</string>
-    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_title">Akcja obejmie również subfoldery</string>
     <string name="recursive_folder_actions_summary">Wybierz działania do zastosowania także w podfolderach.</string>
     <string name="enable_history_title">Włącz historię</string>
     <string name="enable_history_summary">Pozwala aplikacji na zapisywanie utworów, które słuchałeś. Jeśli wyłączysz, cała historia zostanie wyczyszczona.</string>
@@ -765,14 +765,14 @@
     <string name="label_never">Nigdy</string>
     <string name="label_nothing">Nic nie rób</string>
     <string name="label_none">Brak</string>
-    <string name="player_color_mode_app_theme_title">App theme</string>
-    <string name="player_color_mode_app_theme_description">Use the app\'s color scheme</string>
-    <string name="player_color_mode_simple_color_title">Simple color</string>
-    <string name="player_color_mode_simple_color_description">Extract the album color and apply it to some controls</string>
+    <string name="player_color_mode_app_theme_title">Motyw aplikacji</string>
+    <string name="player_color_mode_app_theme_description">Użyj kolorów aplikacji</string>
+    <string name="player_color_mode_simple_color_title">Prosty kolor</string>
+    <string name="player_color_mode_simple_color_description">Wyodrębnij kolor albumu i zastosuj go w wybranych elementach interfejsu</string>
     <string name="player_color_mode_vibrant_color_title">Żywy kolor</string>
-    <string name="player_color_mode_vibrant_color_description">Tint background, text, and controls with the album color</string>
+    <string name="player_color_mode_vibrant_color_description">Zastosuj kolor albumu do tła, tekstu i elementów interfejsu</string>
     <string name="player_color_mode_material_you_title">Material You</string>
-    <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
+    <string name="player_color_mode_material_you_description">Użyj stylu Material You na podstawie koloru okładki</string>
     <!-- Update -->
     <string name="auto_update_title">Automatyczne wyszukiwanie aktualizacji</string>
     <string name="every_day">Codziennie</string>
