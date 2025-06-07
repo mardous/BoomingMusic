@@ -140,7 +140,7 @@ fun List<ReleaseYear>.sortedYears(sortOrder: SortOrder): List<ReleaseYear> {
 
 fun List<Folder>.sortedFolders(sortOrder: SortOrder): List<Folder> {
     val folders = when (sortOrder.value) {
-        SortKeys.AZ -> sortedWith(compareBy { it.name })
+        SortKeys.AZ -> sortedWith(compareBy { it.fileName })
         SortKeys.NUMBER_OF_SONGS -> sortedWith(compareBy { it.songCount })
         else -> this
     }

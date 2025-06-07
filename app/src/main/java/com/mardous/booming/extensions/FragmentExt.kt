@@ -69,6 +69,9 @@ inline fun <R> Fragment.requestActivity(crossinline consumer: (AppCompatActivity
 inline fun <R> Fragment.requestContext(crossinline consumer: (Context) -> R) =
     context?.let(consumer)
 
+inline fun <R> Fragment.requestView(crossinline consumer: (View) -> R) =
+    view?.let(consumer)
+
 inline fun Fragment.runOnUi(crossinline consumer: (View) -> Unit) {
     view?.let { it.post { consumer(it) } }
 }

@@ -31,6 +31,7 @@ import com.mardous.booming.http.lastfm.LastFmAlbum
 import com.mardous.booming.http.lastfm.LastFmArtist
 import com.mardous.booming.http.lastfm.LastFmService
 import com.mardous.booming.model.*
+import com.mardous.booming.model.filesystem.FileSystemQuery
 import com.mardous.booming.search.SearchFilter
 import com.mardous.booming.search.SearchQuery
 import com.mardous.booming.service.MusicPlayer
@@ -44,7 +45,8 @@ interface Repository {
     suspend fun allAlbumArtists(): List<Artist>
     suspend fun allGenres(): List<Genre>
     suspend fun allYears(): List<ReleaseYear>
-    suspend fun allFolders(): List<Folder>
+    suspend fun allFolders(): FileSystemQuery
+    suspend fun filesInPath(path: String): FileSystemQuery
     suspend fun playlists(): List<PlaylistEntity>
     fun playlistSongs(playListId: Long): LiveData<List<SongEntity>>
     suspend fun playlistSongs(playlistWithSongs: PlaylistWithSongs): List<Song>
@@ -83,6 +85,7 @@ interface Repository {
     suspend fun genreBySong(song: Song): Genre
     suspend fun yearById(year: Int): ReleaseYear
     suspend fun folderByPath(path: String): Folder
+    suspend fun songsByFolder(folderPath: String, includeSubfolders: Boolean): List<Song>
     suspend fun homeSuggestions(): List<Suggestion>
     suspend fun topArtistsSuggestion(): Suggestion
     suspend fun topAlbumsSuggestion(): Suggestion
@@ -147,7 +150,9 @@ class RealRepository(
 
     override suspend fun allYears(): List<ReleaseYear> = specialRepository.releaseYears()
 
-    override suspend fun allFolders(): List<Folder> = specialRepository.musicFolders()
+    override suspend fun allFolders(): FileSystemQuery = specialRepository.musicFolders()
+
+    override suspend fun filesInPath(path: String): FileSystemQuery = specialRepository.musicFilesInPath(path)
 
     override suspend fun playlists(): List<PlaylistEntity> = playlistRepository.playlists()
 
@@ -275,6 +280,9 @@ class RealRepository(
     override suspend fun yearById(year: Int): ReleaseYear = specialRepository.releaseYear(year)
 
     override suspend fun folderByPath(path: String): Folder = specialRepository.folderByPath(path)
+
+    override suspend fun songsByFolder(folderPath: String, includeSubfolders: Boolean) =
+        specialRepository.songsByFolder(folderPath, includeSubfolders)
 
     override suspend fun homeSuggestions(): List<Suggestion> {
         return listOf(

@@ -21,7 +21,7 @@
             app:summary="@string/enable_history_summary"
             app:defaultValue="true"
             app:layout="@layout/list_item_view_switch"
-            app:key="enable_recently_played_playlist"/>
+            app:key="enable_history_playlist"/>
 
         <ListPreference
             app:iconSpaceReserved="true"
@@ -30,9 +30,9 @@
             app:entryValues="@array/pref_playlists_cutoff_values"
             app:useSimpleSummaryProvider="true"
             app:defaultValue="this_month"
-            app:dependency="enable_recently_played_playlist"
+            app:dependency="enable_history_playlist"
             app:layout="@layout/list_item_view"
-            app:key="recently_played_interval"/>
+            app:key="history_interval"/>
 
         <ListPreference
             app:iconSpaceReserved="true"
@@ -43,6 +43,21 @@
             app:defaultValue="this_month"
             app:layout="@layout/list_item_view"
             app:key="last_added_interval"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/folders_label"
+        app:layout="@layout/preference_category_title">
+
+        <MultiSelectListPreference
+            app:icon="@drawable/ic_folder_24dp"
+            app:title="@string/recursive_folder_actions_title"
+            app:summary="@string/recursive_folder_actions_summary"
+            app:entries="@array/pref_recursive_folder_action_entries"
+            app:entryValues="@array/pref_recursive_folder_action_values"
+            app:layout="@layout/list_item_view"
+            app:key="recursive_folder_actions"/>
 
     </PreferenceCategory>
 

@@ -25,7 +25,6 @@ import com.mardous.booming.BuildConfig
 class ServiceEvent {
     companion object {
         const val BOOMING_PACKAGE_NAME = BuildConfig.APPLICATION_ID
-        const val MUSIC_PACKAGE_NAME = "com.android.music"
         const val PLAY_STATE_CHANGED = "$BOOMING_PACKAGE_NAME.playstatechanged"
         const val META_CHANGED = "$BOOMING_PACKAGE_NAME.metachanged"
         const val QUEUE_CHANGED = "$BOOMING_PACKAGE_NAME.queuechanged"

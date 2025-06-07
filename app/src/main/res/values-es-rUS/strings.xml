@@ -201,7 +201,6 @@
     <string name="album_artists_label">Artistas del álbum</string>
     <string name="genres_label">Géneros</string>
     <string name="folders_label">Carpetas</string>
-    <string name="files_label">Archivos</string>
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
     <string name="composers_label">Compositores</string>
@@ -248,6 +247,7 @@
     <string name="action_details">Detalles</string>
     <string name="action_set_as_start_directory">Establecer como directorio de inicio</string>
     <string name="action_go_to_start_directory">Ir al directorio de inicio</string>
+    <string name="action_hierarchy_view">Vista de jerarquía</string>
     <string name="new_start_directory">Nuevo directorio de inicio: %s</string>
     <string name="action_scan">Escanear</string>
     <string name="scan_media">Escanear medios</string>
@@ -380,6 +380,11 @@
         <item quantity="one">%d reproducción</item>
         <item quantity="other">%d reproducciones</item>
         <item quantity="many">%d reproducciones</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d elemento</item>
+        <item quantity="other">%d elementos</item>
+        <item quantity="many">%d elementos</item>
     </plurals>
 
     <!-- Home -->
@@ -611,7 +616,9 @@
     <string name="swipe_album_cover_summary">Deslizar a izquierda/derecha para saltar entre canciones.</string>
     <string name="double_tap_on_album_cover_title">Doble toque en portada</string>
     <string name="long_press_on_album_cover_title">Presión larga en portada</string>
-    <string name="carousal_effect_title">Efecto de carrusel</string>
+    <string name="now_playing_corner_radius_title">Radio de esquinas de la imagen</string>
+    <string name="now_playing_corner_radius_summary">Elija qué tan redondeadas deben verse las esquinas de la imagen del álbum.</string>
+    <string name="carousel_effect_title">Efecto de carrusel</string>
     <string name="album_cover_effect_title">Efecto de deslizamiento de carátulas</string>
     <string name="lyrics_on_album_cover_title">Letras en portada</string>
     <string name="lyrics_on_album_cover_summary">Muestra la letra de la canción en lugar de la portada cuando esté disponible.</string>
@@ -628,6 +635,8 @@
     <string name="prefer_album_artist_name_summary">Muestra el Artista del álbum en lugar del Artista de la canción (si está disponible).</string>
 
     <!-- Playback preferences -->
+    <string name="play_on_startup_title">Reproducir al iniciar</string>
+    <string name="play_on_startup_summary">Al abrir la app, empieza a reproducir desde donde lo dejaste la última vez.</string>
     <string name="gapless_playback_title">Reproducción sin interrupciones</string>
     <string name="gapless_playback_summary">Transición rápida entre canciones. Puede causar problemas en algunos dispositivos.</string>
     <string name="replaygain_source_mode_title">Modo de origen</string>
@@ -656,8 +665,6 @@
     <string name="resume_on_bluetooth_connect_summary">Continúa con la reproducción al conectar el auricular Bluetooth A2DP.</string>
     <string name="pause_on_bluetooth_disconnect_title">Pausar al desconectar Bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Pausa la reproducción cuando se desconecte el auricular Bluetooth A2DP. Recomendado.</string>
-    <string name="audio_ducking_title">Reducir volumen al perder enfoque</string>
-    <string name="audio_ducking_summary">Por ejemplo, cuando se reciban notificaciones.</string>
     <string name="ignore_audio_focus_title">Ignorar pérdida del foco</string>
     <string name="ignore_audio_focus_summary">Mantener la reproducción aún cuando otras apps estén reproduciendo audio también.</string>
     <string name="pause_on_transient_focus_loss_title">Pérdida temporal del foco de audio</string>
@@ -679,6 +686,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Enviar a la papelera</string>
     <string name="trash_music_summary">Enviar los archivos eliminados a la papelera.</string>
+    <string name="recursive_folder_actions_title">Acciones que afectan a las subcarpetas</string>
+    <string name="recursive_folder_actions_summary">Selecciona qué acciones también deben aplicarse a las subcarpetas cuando se ejecutan sobre una carpeta.</string>
     <string name="enable_history_title">Habilitar historial</string>
     <string name="enable_history_summary">Permite a la aplicación registrar las canciones que estuvo escuchando. Si lo desactiva se borrará todo el historial.</string>
     <string name="history_interval_title">Intervalo del historial</string>
@@ -728,6 +737,11 @@
     <string name="gradient">Gradiente</string>
     <string name="peek">Lámina</string>
     <string name="normal">Normal</string>
+    <string name="corner_size_none">Ninguno</string>
+    <string name="corner_size_small">Pequeño</string>
+    <string name="corner_size_medium">Medio</string>
+    <string name="corner_size_large">Grande</string>
+    <string name="corner_size_custom">Personalizado</string>
     <string name="cascading">En cascada</string>
     <string name="depth">Profundidad</string>
     <string name="hinge">Descartar</string>
@@ -764,6 +778,15 @@
     <string name="label_never">Nunca</string>
     <string name="label_nothing">Nada</string>
     <string name="label_none">Ninguno</string>
+
+    <string name="player_color_mode_app_theme_title">Tema de la app</string>
+    <string name="player_color_mode_app_theme_description">Usar el mismo esquema de color que la app</string>
+    <string name="player_color_mode_simple_color_title">Color simple</string>
+    <string name="player_color_mode_simple_color_description">Extrae el color del álbum para aplicarlo a algunos controles</string>
+    <string name="player_color_mode_vibrant_color_title">Color vibrante</string>
+    <string name="player_color_mode_vibrant_color_description">Tinta el fondo, textos y controles con el color del álbum</string>
+    <string name="player_color_mode_material_you_title">Material You</string>
+    <string name="player_color_mode_material_you_description">Usa tonos de Material You basados en el color del álbum</string>
 
     <string name="auto_update_title">Búsqueda auto. de actualización</string>
     <string name="every_day">Diariamente</string>

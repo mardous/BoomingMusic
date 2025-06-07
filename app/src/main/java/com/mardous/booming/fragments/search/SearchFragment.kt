@@ -79,7 +79,6 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
     private lateinit var searchAdapter: SearchAdapter
     private lateinit var voiceSearchLauncher: ActivityResultLauncher<Intent>
 
-    private var searchJob: Job? = null
     private var playSongJob: Job? = null
 
     @SuppressLint("ClickableViewAccessibility")
@@ -92,27 +91,32 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
 
         view.applyScrollableContentInsets(binding.recyclerView)
 
-        viewModel.getSearchFilter().observe(viewLifecycleOwner) { searchFilter ->
-            if (searchFilter != null) {
-                val compatibleModes = searchFilter.getCompatibleModes().map { it.chipId }
+        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
+            viewModel.searchFilter.collect { searchFilter ->
+                if (searchFilter != null) {
+                    val compatibleModes = searchFilter.getCompatibleModes().map { it.chipId }
 
-                binding.chipGroup.children.map { it as Chip }
-                    .filter { !compatibleModes.contains(it.id) }
-                    .forEach { it.isVisible = false }
-                binding.chipGroup.isSelectionRequired = true
-                binding.chipGroup.check(compatibleModes.first())
+                    binding.chipGroup.children.map { it as Chip }
+                        .filter { !compatibleModes.contains(it.id) }
+                        .forEach { it.isVisible = false }
+                    binding.chipGroup.isSelectionRequired = true
+                    binding.chipGroup.check(compatibleModes.first())
 
-                binding.searchView.hint = searchFilter.getName()
-                binding.filterScrollView.isVisible = searchFilter.getCompatibleModes().size > 1
+                    binding.searchView.hint = searchFilter.getName()
+                    binding.filterScrollView.isVisible = searchFilter.getCompatibleModes().size > 1
+                }
             }
         }
-        viewModel.getSearchResult().observe(viewLifecycleOwner) { result ->
-            searchAdapter.dataSet = result
+
+        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
+            viewModel.searchResult.collect { result ->
+                searchAdapter.dataSet = result
+            }
         }
 
         // Observe playlists-related changes
         libraryViewModel.getPlaylists().observe(viewLifecycleOwner) {
-            viewModel.submitLatest()
+            viewModel.refresh()
         }
 
         binding.appBar.setupStatusBarForeground()
@@ -139,7 +143,7 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
 
         if (savedInstanceState == null) {
             binding.searchView.setText(arguments?.getString(QUERY))
-            viewModel.useSearchFilter(arguments?.let {
+            viewModel.updateFilter(arguments?.let {
                 BundleCompat.getParcelable(it, FILTER, SearchFilter::class.java)
             })
         }
@@ -185,7 +189,7 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
             checkedIds.isNotEmpty() -> SearchQuery.FilterMode.entries.firstOrNull { it.chipId == checkedIds.single() }
             else -> null
         }
-        viewModel.useFilterMode(searchMode)
+        viewModel.updateQuery(mode = searchMode)
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {}
@@ -261,8 +265,7 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
         TransitionManager.beginDelayedTransition(binding.appBar)
         binding.voiceSearch.isGone = query.isNotEmpty()
         binding.clearText.isVisible = query.isNotEmpty()
-        searchJob?.cancel()
-        searchJob = viewModel.submit(query)
+        viewModel.updateQuery(query = query)
     }
 
     private fun startVoiceSearch() {
@@ -289,11 +292,10 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
 
     override fun onMediaStoreChanged() {
         super.onMediaStoreChanged()
-        viewModel.submitLatest()
+        viewModel.refresh()
     }
 
     override fun onDestroyView() {
-        searchJob?.cancel()
         playSongJob?.cancel()
         super.onDestroyView()
         searchAdapter.unregisterAdapterDataObserver(adapterDataObserver)

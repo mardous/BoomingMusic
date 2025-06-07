@@ -139,7 +139,7 @@ fun Calendar.getCutoffTimeMillis(cutoff: String): Long {
         PlaylistCutoff.YESTERDAY -> getElapsedDays(1)
         PlaylistCutoff.THIS_WEEK -> getElapsedWeek()
         PlaylistCutoff.PAST_THREE_MONTHS -> getElapsedMonths(3)
-        PlaylistCutoff.LAST_YEAR -> getElapsedYear()
+        PlaylistCutoff.THIS_YEAR -> getElapsedYear()
         PlaylistCutoff.THIS_MONTH -> getElapsedMonth()
         else -> getElapsedMonth()
     }

@@ -78,7 +78,7 @@ val currentVersion: Version = Version.Beta(
     versionMajor = 1,
     versionMinor = 1,
     versionPatch = 0,
-    versionBuild = 1
+    versionBuild = 2
 )
 val currentVersionCode = currentVersion.code
 
@@ -91,7 +91,7 @@ android {
         targetSdk = 35
 
         applicationId = namespace
-        versionCode = 1100101
+        versionCode = 1100102
         versionName = currentVersion.name
         check(versionCode == currentVersionCode)
     }
@@ -192,6 +192,19 @@ dependencies {
     implementation(libs.core.splashscreen)
     implementation(libs.appcompat)
     implementation(libs.fragment.ktx)
+
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.material3)
+
+    // Integration with activities, ViewModels and LiveData
+    implementation(libs.compose.runtime.livedata)
+    implementation(libs.activity.compose)
+    implementation(libs.lifecycle.viewmodel.compose)
+
+    // Android Studio Preview support
+    implementation(libs.compose.ui.tooling.preview)
+    debugImplementation(libs.compose.ui.tooling)
 
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)

@@ -28,6 +28,7 @@ import com.mardous.booming.model.NowPlayingAction
 import com.mardous.booming.util.COVER_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.Preferences
 import org.koin.android.ext.android.get
+import androidx.core.content.edit
 
 /**
  * @author Christians M. A. (mardous)
@@ -51,9 +52,9 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
                 selectedIndex = selected
             }
             .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
-                get<SharedPreferences>().edit()
-                    .putString(prefKey, actions[selectedIndex].name)
-                    .apply()
+                get<SharedPreferences>().edit {
+                    putString(prefKey, actions[selectedIndex].name)
+                }
             }
             .setNegativeButton(android.R.string.cancel, null)
             .create()

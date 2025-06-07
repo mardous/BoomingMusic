@@ -61,6 +61,7 @@ class PlayingNotificationImpl24(service: MusicService, mediaSessionToken: MediaS
         val deleteIntent = PendingIntent.getService(
             context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
+        val toggleFavorite = buildFavoriteAction(false)
         val playPauseAction = buildPlayAction(true)
         val previousAction = NotificationCompat.Action(
             R.drawable.ic_previous_24dp,
@@ -82,9 +83,10 @@ class PlayingNotificationImpl24(service: MusicService, mediaSessionToken: MediaS
         setContentIntent(clickIntent)
         setDeleteIntent(deleteIntent)
         setShowWhen(false)
-        addAction(previousAction) //0
-        addAction(playPauseAction) //1
-        addAction(nextAction) //2
+        addAction(toggleFavorite) //0
+        addAction(previousAction) //1
+        addAction(playPauseAction) //2
+        addAction(nextAction) //3
         if (hasS()) {
             addAction(dismissAction) //3
         }
@@ -98,7 +100,7 @@ class PlayingNotificationImpl24(service: MusicService, mediaSessionToken: MediaS
         priority = notificationPriority
     }
 
-    override fun update(song: Song, onUpdate: () -> Unit) {
+    override fun updateMetadata(song: Song, onUpdate: () -> Unit) {
         if (song == Song.emptySong) return
 
         setContentTitle(song.title)
@@ -136,7 +138,12 @@ class PlayingNotificationImpl24(service: MusicService, mediaSessionToken: MediaS
 
     @SuppressLint("RestrictedApi")
     override fun setPlaying(isPlaying: Boolean) {
-        mActions[1] = buildPlayAction(isPlaying)
+        mActions[2] = buildPlayAction(isPlaying)
+    }
+
+    @SuppressLint("RestrictedApi")
+    override fun updateFavorite(isFavorite: Boolean) {
+        mActions[0] = buildFavoriteAction(isFavorite)
     }
 
     private fun setAlbumArtImage(image: Bitmap?) {
@@ -148,11 +155,21 @@ class PlayingNotificationImpl24(service: MusicService, mediaSessionToken: MediaS
     }
 
     private fun buildPlayAction(isPlaying: Boolean): NotificationCompat.Action {
-        val playButtonResId = if (isPlaying) R.drawable.ic_pause_24dp else R.drawable.ic_play_24dp
+        val playButtonResId = if (isPlaying) R.drawable.ic_pause_48dp else R.drawable.ic_play_48dp
         return NotificationCompat.Action.Builder(
             playButtonResId,
             context.getString(R.string.action_play_pause),
             retrievePlaybackAction(ServiceAction.ACTION_TOGGLE_PAUSE)
+        ).build()
+    }
+
+    private fun buildFavoriteAction(isFavorite: Boolean): NotificationCompat.Action {
+        val favoriteResId =
+            if (isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp
+        return NotificationCompat.Action.Builder(
+            favoriteResId,
+            context.getString(R.string.toggle_favorite),
+            retrievePlaybackAction(ServiceAction.ACTION_TOGGLE_FAVORITE)
         ).build()
     }
 

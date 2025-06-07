@@ -50,6 +50,7 @@
             app:title="@string/library_categories_title"
             app:summary="@string/library_categories_summary"
             app:layout="@layout/list_item_view"
+            app:persistent="false"
             app:key="library_categories"/>
 
         <SwitchPreferenceCompat

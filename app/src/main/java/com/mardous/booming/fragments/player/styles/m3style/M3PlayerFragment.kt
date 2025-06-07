@@ -23,23 +23,20 @@ import android.view.Menu
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
-import androidx.core.animation.doOnStart
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.updatePadding
-import com.google.android.material.color.DynamicColors
-import com.google.android.material.color.DynamicColorsOptions
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentM3PlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
-import com.mardous.booming.extensions.requestContext
-import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.extensions.whichFragment
+import com.mardous.booming.fragments.player.*
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
 import com.mardous.booming.fragments.player.base.AbsPlayerFragment
-import com.mardous.booming.helper.color.MediaNotificationProcessor
 import com.mardous.booming.model.NowPlayingAction
+import com.mardous.booming.model.theme.NowPlayingScreen
+import com.mardous.booming.util.Preferences
 
 /**
  * @author Christians M. A. (mardous)
@@ -52,10 +49,12 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
     private lateinit var controlsFragment: M3PlayerControlsFragment
 
     private var popupMenu: PopupMenu? = null
-    private var colorAnimatorSet: AnimatorSet? = null
 
     override val playerControlsFragment: AbsPlayerControlsFragment
         get() = controlsFragment
+
+    override val colorSchemeMode: PlayerColorSchemeMode
+        get() = Preferences.getNowPlayingColorSchemeMode(NowPlayingScreen.M3)
 
     override val playerToolbar: Toolbar
         get() = binding.playerToolbar
@@ -101,47 +100,17 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
         controlsFragment = whichFragment(R.id.playbackControlsFragment)
     }
 
-    override fun onColorChanged(color: MediaNotificationProcessor) {
-        if (!IsDynamicColorSupported) {
-            super.onColorChanged(color)
-            return
-        }
-
-        colorAnimatorSet?.cancel()
-
-        val wrappedContext = requestContext { nonNullContext ->
-            DynamicColors.wrapContextIfAvailable(
-                nonNullContext,
-                DynamicColorsOptions.Builder()
-                    .setContentBasedSource(color.backgroundColor)
-                    .build()
-            )
-        } ?: return
-
-        val surfaceColor = wrappedContext.surfaceColor()
-        val primaryColor = wrappedContext.primaryColor()
-        val primaryTextColor = wrappedContext.textColorPrimary()
-        val secondaryTextColor = wrappedContext.textColorSecondary()
-        val oldControlColor = binding.showLyricsButton.iconTint.defaultColor
-
-        libraryViewModel.setPaletteColor(surfaceColor)
-
-        colorAnimatorSet = AnimatorSet().apply {
-            setDuration(1000)
-
-            play(binding.root.animateBackgroundColor(surfaceColor))
-                .with(controlsFragment.animateColors(primaryColor, primaryTextColor, secondaryTextColor))
-                .before(binding.openQueueButton.animateTintColor(oldControlColor, primaryTextColor, isIconButton = true))
-                .before(binding.showLyricsButton.animateTintColor(oldControlColor, primaryTextColor, isIconButton = true))
-                .before(binding.sleepTimerAction.animateTintColor(oldControlColor, primaryTextColor, isIconButton = true))
-                .before(binding.addToPlaylistAction.animateTintColor(oldControlColor, primaryTextColor, isIconButton = true))
-                .before(binding.moreAction.animateTintColor(oldControlColor, primaryTextColor, isIconButton = true))
-
-            doOnStart {
-                playerControlsFragment.setColors(surfaceColor, primaryTextColor, secondaryTextColor)
-            }
-        }.also { animatorSet ->
-            animatorSet.start()
+    override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
+        val oldColor = binding.openQueueButton.iconTint.defaultColor
+        return mutableListOf(
+            binding.root.surfaceTintTarget(scheme.surfaceColor),
+            binding.openQueueButton.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
+            binding.showLyricsButton.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
+            binding.sleepTimerAction.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
+            binding.addToPlaylistAction.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
+            binding.moreAction.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
+        ).also {
+            it.addAll(playerControlsFragment.getTintTargets(scheme))
         }
     }
 
@@ -164,9 +133,5 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        val IsDynamicColorSupported = DynamicColors.isDynamicColorAvailable()
     }
 }

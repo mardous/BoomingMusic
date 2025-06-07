@@ -145,7 +145,6 @@ class MainActivity : AbsSlidingMusicPanelActivity() {
                 R.id.nav_songs,
                 R.id.nav_albums,
                 R.id.nav_artists,
-                R.id.nav_file_explorer,
                 R.id.nav_folders,
                 R.id.nav_playlists,
                 R.id.nav_genres,
@@ -177,20 +176,20 @@ class MainActivity : AbsSlidingMusicPanelActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        handlePlaybackIntent(intent)
+        handlePlaybackIntent(intent, false)
     }
 
     override fun onServiceConnected() {
         super.onServiceConnected()
-        intent?.let {
-            handlePlaybackIntent(it)
-        }
+        intent?.let { handlePlaybackIntent(it, true) }
     }
 
-    private fun handlePlaybackIntent(intent: Intent) {
+    private fun handlePlaybackIntent(intent: Intent, canRestorePlayback: Boolean) {
         libraryViewModel.handleIntent(intent).observe(this) { result ->
             if (result.handled) {
                 setIntent(Intent())
+            } else if (canRestorePlayback) {
+                libraryViewModel.restorePlayback()
             }
             if (result.failed) {
                 showToast(R.string.unplayable_file)

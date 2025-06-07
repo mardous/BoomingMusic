@@ -26,13 +26,11 @@ import com.mardous.booming.util.StorageUtil
 import org.jaudiotagger.audio.AudioFile
 import org.jaudiotagger.audio.AudioFileIO
 import java.io.File
-import java.io.FileFilter
 import java.io.InputStream
 import java.io.OutputStream
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.LinkedList
 import java.util.Locale
 import java.util.zip.ZipOutputStream
 import kotlin.math.log10
@@ -100,17 +98,15 @@ fun File.isMimeType(mimeType: String?, mimeTypeMap: MimeTypeMap = MimeTypeMap.ge
 fun File.getPrettyAbsolutePath(): String {
     val filePath = absolutePath
     for (storageDevice in StorageUtil.storageVolumes) {
-        if (filePath == storageDevice.path) {
-            return storageDevice.name
+        if (filePath == storageDevice.filePath) {
+            return storageDevice.fileName
         }
-        if (filePath.startsWith(storageDevice.path)) {
-            return filePath.replace(storageDevice.path, storageDevice.name)
+        if (filePath.startsWith(storageDevice.filePath)) {
+            return filePath.replace(storageDevice.filePath, storageDevice.fileName)
         }
     }
     return filePath
 }
-
-fun File.getCanonicalFileSafe(): File = runCatching { canonicalFile }.getOrDefault(absoluteFile)
 
 fun File.getCanonicalPathSafe(): String = runCatching { canonicalPath }.getOrDefault(absolutePath)
 
@@ -125,46 +121,6 @@ fun File.copyToUri(context: Context, toUri: Uri) {
     context.contentResolver.openOutputStream(toUri)?.use { output ->
         this.inputStream().use { input ->
             input.copyTo(output)
-        }
-    }
-}
-
-fun File.listFilesAsList(fileFilter: FileFilter?): List<File> {
-    val fileList = LinkedList<File>()
-    val found = this.listFiles(fileFilter)
-    if (found != null) {
-        fileList.addAll(found)
-    }
-    return fileList
-}
-
-fun File.listFilesDeep(fileFilter: FileFilter?): List<File> {
-    val files = LinkedList<File>()
-    internalListFilesDeep(files, this, fileFilter)
-    return files
-}
-
-fun List<File>.listFilesDeep(fileFilter: FileFilter?): MutableList<File> {
-    val resFiles = LinkedList<File>()
-    for (file in this) {
-        if (file.isDirectory) {
-            internalListFilesDeep(resFiles, file, fileFilter)
-        } else if (fileFilter == null || fileFilter.accept(file)) {
-            resFiles.add(file)
-        }
-    }
-    return resFiles
-}
-
-private fun internalListFilesDeep(files: MutableList<File>, directory: File, fileFilter: FileFilter?) {
-    val found = directory.listFiles(fileFilter)
-    if (found != null) {
-        for (file in found) {
-            if (file.isDirectory) {
-                internalListFilesDeep(files, file, fileFilter)
-            } else {
-                files.add(file)
-            }
         }
     }
 }

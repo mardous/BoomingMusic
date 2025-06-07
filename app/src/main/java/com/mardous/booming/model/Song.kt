@@ -18,9 +18,12 @@
 package com.mardous.booming.model
 
 import android.content.ContentUris
+import android.content.Context
 import android.net.Uri
 import android.os.Parcelable
 import android.provider.MediaStore
+import com.mardous.booming.extensions.media.songInfo
+import com.mardous.booming.model.filesystem.FileSystemItem
 import kotlinx.parcelize.Parcelize
 import java.util.Date
 import java.util.Objects
@@ -42,7 +45,7 @@ open class Song(
     open val artistName: String,
     open val albumArtistName: String?,
     open val genreName: String?
-) : Parcelable {
+) : Parcelable, FileSystemItem {
 
     val mediaStoreUri: Uri
         get() = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id)
@@ -66,6 +69,16 @@ open class Song(
     )
 
     fun getModifiedDate() = Date(dateModified * 1000)
+
+    override val fileName: String
+        get() = title
+
+    override val filePath: String
+        get() = data
+
+    override fun getFileDescription(context: Context): CharSequence {
+        return this.songInfo()
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

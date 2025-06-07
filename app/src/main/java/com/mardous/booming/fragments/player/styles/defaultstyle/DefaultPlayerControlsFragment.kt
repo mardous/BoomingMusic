@@ -19,6 +19,7 @@ package com.mardous.booming.fragments.player.styles.defaultstyle
 
 import android.animation.Animator
 import android.animation.TimeInterpolator
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
@@ -30,12 +31,19 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentDefaultPlayerPlaybackControlsBinding
+import com.mardous.booming.extensions.isNightMode
+import com.mardous.booming.extensions.resources.adjustSaturationIfTooHigh
 import com.mardous.booming.extensions.resources.centerPivot
-import com.mardous.booming.extensions.resources.controlColorNormal
-import com.mardous.booming.extensions.resources.getPrimaryTextColor
+import com.mardous.booming.extensions.resources.desaturateIfTooDarkComparedTo
+import com.mardous.booming.extensions.resources.ensureContrastAgainst
 import com.mardous.booming.extensions.resources.showBounceAnimation
 import com.mardous.booming.fragments.player.PlayerAnimator
+import com.mardous.booming.fragments.player.PlayerColorScheme
+import com.mardous.booming.fragments.player.PlayerColorSchemeMode
+import com.mardous.booming.fragments.player.PlayerTintTarget
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
+import com.mardous.booming.fragments.player.iconButtonTintTarget
+import com.mardous.booming.fragments.player.tintTarget
 import com.mardous.booming.helper.handler.PrevNextButtonOnTouchHandler
 import com.mardous.booming.model.NowPlayingAction
 import com.mardous.booming.model.Song
@@ -76,12 +84,6 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDefaultPlayerPlaybackControlsBinding.bind(view)
         binding.playPauseButton.doOnLayout { it.centerPivot() }
-
-        setColors(
-            primaryControlColor = controlColorNormal(),
-            secondaryControlColor = getPrimaryTextColor(requireContext(), isDisabled = true)
-        )
-
         binding.text.setOnClickListener(this)
         binding.playPauseButton.setOnClickListener(this)
         binding.nextButton.setOnTouchListener(PrevNextButtonOnTouchHandler(PrevNextButtonOnTouchHandler.DIRECTION_NEXT))
@@ -155,6 +157,52 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
+        val oldPlayPauseColor = binding.playPauseButton.backgroundTintList?.defaultColor
+            ?: Color.TRANSPARENT
+
+        val oldControlColor = binding.nextButton.iconTint.defaultColor
+        val oldSliderColor = binding.progressSlider.trackActiveTintList.defaultColor
+        val oldPrimaryTextColor = binding.title.currentTextColor
+        val oldSecondaryTextColor = binding.text.currentTextColor
+
+        val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
+        val newShuffleColor = getPlaybackControlsColor(
+            isShuffleModeOn,
+            scheme.primaryControlColor,
+            scheme.secondaryControlColor
+        )
+        val oldRepeatColor = getPlaybackControlsColor(isRepeatModeOn)
+        val newRepeatColor = getPlaybackControlsColor(
+            isRepeatModeOn,
+            scheme.primaryControlColor,
+            scheme.secondaryControlColor
+        )
+
+        val newEmphasisColor = if (scheme.mode == PlayerColorSchemeMode.SimpleColor) {
+            scheme.emphasisColor
+                .ensureContrastAgainst(scheme.surfaceColor, minContrastRatio = 4.5)
+                .adjustSaturationIfTooHigh(scheme.surfaceColor, requireContext().isNightMode)
+                .desaturateIfTooDarkComparedTo(scheme.surfaceColor)
+        } else {
+            scheme.emphasisColor
+        }
+
+        return listOfNotNull(
+            binding.playPauseButton.tintTarget(oldPlayPauseColor, newEmphasisColor),
+            binding.progressSlider.tintTarget(oldSliderColor, newEmphasisColor),
+            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
+            binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songInfo?.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
+        )
     }
 
     private class DefaultPlayerAnimator(

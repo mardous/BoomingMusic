@@ -45,7 +45,7 @@ import com.mardous.booming.lyrics.LrcLyrics
 import com.mardous.booming.model.GestureOnCover
 import com.mardous.booming.model.theme.NowPlayingScreen
 import com.mardous.booming.service.MusicPlayer
-import com.mardous.booming.transform.CarousalPagerTransformer
+import com.mardous.booming.transform.CarouselPagerTransformer
 import com.mardous.booming.transform.ParallaxPagerTransformer
 import com.mardous.booming.util.LEFT_RIGHT_SWIPING
 import com.mardous.booming.util.LYRICS_ON_COVER
@@ -116,6 +116,10 @@ class PlayerAlbumCoverFragment : AbsMusicServiceFragment(), ViewPager.OnPageChan
         binding.openEditor.setOnClickListener {
             goToDestination(requireActivity(), R.id.nav_lyrics)
         }
+        binding.openEditor.setOnLongClickListener {
+            hideLyrics(true)
+            true
+        }
         applyWindowInsets()
         setupPageTransformer()
         progressViewUpdateHelper = MusicProgressViewUpdateHelper(this, 500, 1000)
@@ -136,14 +140,14 @@ class PlayerAlbumCoverFragment : AbsMusicServiceFragment(), ViewPager.OnPageChan
         if (nps == NowPlayingScreen.Peek)
             return
 
-        if (nps.supportsCarouselEffect && Preferences.isCarousalEffect && !resources.isLandscape) {
+        if (nps.supportsCarouselEffect && Preferences.isCarouselEffect && !resources.isLandscape) {
             val metrics = resources.displayMetrics
             val ratio = metrics.heightPixels.toFloat() / metrics.widthPixels.toFloat()
             val padding = if (ratio >= 1.777f) 40 else 100
             viewPager.clipToPadding = false
             viewPager.setPadding(padding, 0, padding, 0)
             viewPager.pageMargin = 0
-            viewPager.setPageTransformer(false, CarousalPagerTransformer(requireContext()))
+            viewPager.setPageTransformer(false, CarouselPagerTransformer(requireContext()))
         } else if (nps == NowPlayingScreen.FullCover) {
             val transformer = ParallaxPagerTransformer(R.id.player_image)
             transformer.setSpeed(0.3f)
@@ -167,7 +171,9 @@ class PlayerAlbumCoverFragment : AbsMusicServiceFragment(), ViewPager.OnPageChan
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
-        when (key) {
+        if (Preferences.getNowPlayingColorSchemeKey(nps) == key) {
+            requestColor(currentPosition)
+        } else when (key) {
             LYRICS_ON_COVER -> {
                 val isShowLyrics = sharedPreferences.getBoolean(key, true)
                 if (isShowLyrics && !binding.lyricsLayout.isVisible) {

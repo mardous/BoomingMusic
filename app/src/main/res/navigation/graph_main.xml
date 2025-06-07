@@ -41,17 +41,6 @@
         android:label="PlaylistsFragment"/>
 
     <fragment
-        android:id="@+id/nav_file_explorer"
-        android:name="com.mardous.booming.fragments.files.FilesFragment"
-        android:label="FilesFragment">
-        <argument
-            android:name="path"
-            app:argType="java.io.File"
-            app:nullable="true"
-            android:defaultValue="@null"/>
-    </fragment>
-
-    <fragment
         android:id="@+id/nav_folders"
         android:name="com.mardous.booming.fragments.folders.FoldersListFragment"
         android:label="FoldersFragment"/>

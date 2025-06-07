@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Christians Martínez Alvarado
+ * Copyright (c) 2025 Christians Martínez Alvarado
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,8 +17,11 @@
 
 package com.mardous.booming.interfaces
 
-import com.mardous.booming.model.StorageDevice
+import android.view.MenuItem
+import com.mardous.booming.model.filesystem.FileSystemItem
 
-interface IStorageDeviceCallback {
-    fun storageDeviceClick(storage: StorageDevice)
+interface IFileCallback {
+    fun fileClick(file: FileSystemItem)
+    fun fileMenuItemClick(file: FileSystemItem, menuItem: MenuItem): Boolean
+    fun filesMenuItemClick(selection: List<FileSystemItem>, menuItem: MenuItem): Boolean
 }

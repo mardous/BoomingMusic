@@ -62,7 +62,6 @@ interface Playback {
     fun setTempo(speed: Float, pitch: Float)
     fun setBalance(left: Float, right: Float)
     fun setReplayGain(replayGain: Float)
-    fun setDuckingFactor(vol: Float)
     fun setVolume(leftVol: Float, rightVol: Float)
     fun setAudioSessionId(sessionId: Int): Boolean
     fun getAudioSessionId(): Int

@@ -594,6 +594,7 @@
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
+    <string name="carousel_effect_title">Effet du carrousel</string>
     <string name="album_cover_effect_title">Effet de couverture de l\'album</string>
     <string name="lyrics_on_album_cover_title">Paroles sur la couverture</string>
     <string name="lyrics_on_album_cover_summary">Afficher les paroles de la chanson au lieu de la couverture quand elles sont disponibles.</string>

@@ -586,6 +586,7 @@
     <string name="now_playing_corner_radius_title">图像圆角半径</string>
     <string name="now_playing_corner_radius_summary">定义专辑封面的圆角。</string>
     <string name="carousel_effect_title">轮播效果</string>
+    <string name="carousel_effect_title">旋转效果</string>
     <string name="album_cover_effect_title">专辑封面效果</string>
     <string name="lyrics_on_album_cover_title">封面上的歌词</string>
     <string name="lyrics_on_album_cover_summary">当歌词可用时，显示歌词而不是封面。</string>

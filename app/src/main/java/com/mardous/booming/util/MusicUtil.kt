@@ -38,18 +38,20 @@ typealias CompletionCallback = (deleted: Int) -> Unit
 
 object MusicUtil : KoinComponent {
 
-    suspend fun toggleFavorite(song: Song) {
-        withContext(Dispatchers.IO) {
-            val repository = get<PlaylistRepository>()
-            val playlist = repository.favoritePlaylist()
-            val songEntity = song.toSongEntity(playlist.playListId)
-            val isFavorite = repository.isSongFavorite(songEntity).isNotEmpty()
-            if (isFavorite) {
-                repository.removeSongFromPlaylist(songEntity)
-            } else {
-                repository.insertSongs(listOf(songEntity))
-            }
+    suspend fun toggleFavorite(song: Song) = withContext(Dispatchers.IO) {
+        val repository = get<PlaylistRepository>()
+        val playlist = repository.favoritePlaylist()
+        val songEntity = song.toSongEntity(playlist.playListId)
+        val isFavorite = repository.isSongFavorite(songEntity).isNotEmpty()
+        if (isFavorite) {
+            repository.removeSongFromPlaylist(songEntity)
+        } else {
+            repository.insertSongs(listOf(songEntity))
         }
+    }
+
+    suspend fun isFavorite(song: Song) = withContext(Dispatchers.IO) {
+        runCatching { get<PlaylistRepository>().isSongFavorite(song.id) }.isSuccess
     }
 
     suspend fun deleteTracks(

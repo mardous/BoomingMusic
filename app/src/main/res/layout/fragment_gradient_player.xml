@@ -75,14 +75,12 @@
                 android:background="?rectSelector"
                 tools:text="@tools:sample/lorem/random"/>
 
-            <ImageButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/volumeIcon"
-                android:layout_width="@dimen/adaptive_icon_size"
-                android:layout_height="@dimen/adaptive_icon_size"
-                android:padding="8dp"
-                android:background="?attr/roundSelector"
-                android:scaleType="center"
-                app:srcCompat="@drawable/ic_volume_up_24dp"
+                style="@style/PlayerIconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_volume_up_24dp"
                 tools:ignore="ContentDescription"/>
 
         </LinearLayout>

@@ -39,6 +39,7 @@ interface ServiceAction {
         const val ACTION_PENDING_QUIT = "${ServiceEvent.BOOMING_PACKAGE_NAME}.pendingquit"
         const val ACTION_NEXT = "${ServiceEvent.BOOMING_PACKAGE_NAME}.next"
         const val ACTION_PREVIOUS = "${ServiceEvent.BOOMING_PACKAGE_NAME}.previous"
+        const val ACTION_TOGGLE_FAVORITE = "${ServiceEvent.BOOMING_PACKAGE_NAME}.togglefavorite"
         const val ACTION_APP_WIDGET_UPDATE = "${ServiceEvent.BOOMING_PACKAGE_NAME}.appwidgetupdate"
     }
 }

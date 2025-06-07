@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Christians Martínez Alvarado
+ * Copyright (c) 2025 Christians Martínez Alvarado
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,14 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.mardous.booming.interfaces
+package com.mardous.booming.model.filesystem
 
-import android.view.MenuItem
-import android.view.View
-import java.io.File
+import android.content.Context
+import android.graphics.drawable.Drawable
 
-interface IFileCallbacks {
-    fun fileSelected(file: File)
-    fun fileMenuClick(file: File, view: View)
-    fun filesMenuClick(item: MenuItem, files: List<File>)
+interface FileSystemItem {
+
+    val fileId: Long
+        get() = filePath.hashCode().toLong()
+
+    val fileName: String
+    val filePath: String
+
+    fun getFileIcon(context: Context): Drawable? = null
+    fun getFileDescription(context: Context): CharSequence? = null
 }

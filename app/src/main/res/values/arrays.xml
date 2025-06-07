@@ -127,6 +127,33 @@
         <item>never</item>
     </string-array>
 
+    <string-array name="pref_recursive_folder_action_entries">
+        <item>@string/action_play</item>
+        <item>@string/action_shuffle_play</item>
+        <item>@string/action_queue_next</item>
+        <item>@string/action_add_to_playing_queue</item>
+        <item>@string/action_add_to_playlist</item>
+        <item>@string/action_delete_from_device</item>
+    </string-array>
+
+    <string-array name="pref_recursive_folder_action_values">
+        <item>play</item>
+        <item>shuffle_play</item>
+        <item>queue_next</item>
+        <item>queue</item>
+        <item>add_to_playlist</item>
+        <item>delete</item>
+    </string-array>
+
+    <string-array name="pref_recursive_folder_action_defaults">
+        <item>play</item>
+        <item>shuffle_play</item>
+        <item>queue_next</item>
+        <item>queue</item>
+        <item>add_to_playlist</item>
+        <item>delete</item>
+    </string-array>
+
     <string-array name="pref_playlists_cutoff_entries">
         <item>@string/today</item>
         <item>@string/yesterday</item>

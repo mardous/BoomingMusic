@@ -17,57 +17,52 @@
 
 package com.mardous.booming.fragments.search
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.repository.Repository
 import com.mardous.booming.search.SearchFilter
 import com.mardous.booming.search.SearchQuery
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.*
 
 class SearchViewModel(private val repository: Repository) : ViewModel() {
 
-    private val _searchFilter = MutableLiveData<SearchFilter?>()
-    private val _searchQuery = MutableLiveData<SearchQuery>()
-    private val _searchResult = MutableLiveData<List<Any>>(ArrayList())
+    private val searchQuery = MutableStateFlow(SearchQuery())
 
-    fun getSearchFilter(): LiveData<SearchFilter?> = _searchFilter
-    fun getSearchResult(): LiveData<List<Any>> = _searchResult
+    private val _searchFilter = MutableStateFlow<SearchFilter?>(null)
+    val searchFilter: StateFlow<SearchFilter?> = _searchFilter.asStateFlow()
 
-    fun useSearchFilter(filter: SearchFilter?) {
+    private val _searchResult = MutableStateFlow<List<Any>>(emptyList())
+    val searchResult: StateFlow<List<Any>> = _searchResult.asStateFlow()
+
+    init {
+        @OptIn(FlowPreview::class)
+        combine(searchQuery, searchFilter) { query, filter -> query to filter }
+            .debounce(300)
+            .distinctUntilChanged()
+            .onEach { (query, filter) ->
+                val result = repository.search(query, filter)
+                _searchResult.value = result
+            }
+            .flowOn(Dispatchers.IO)
+            .launchIn(viewModelScope)
+    }
+
+    fun updateFilter(filter: SearchFilter?) {
         _searchFilter.value = filter
     }
 
-    fun useFilterMode(mode: SearchQuery.FilterMode?) {
-        val value = _searchQuery.value
-        if (value != null) {
-            _searchQuery.value = value.copy(filterMode = mode)
-        } else {
-            _searchQuery.value = SearchQuery(filterMode = mode)
-        }
-        submitLatest()
+    fun updateQuery(
+        mode: SearchQuery.FilterMode? = searchQuery.value.filterMode,
+        query: String? = searchQuery.value.searched
+    ) {
+        searchQuery.value = searchQuery.value.copy(filterMode = mode, searched = query)
     }
 
-    fun submit(query: String): Job {
-        val value = _searchQuery.value
-        if (value != null) {
-            _searchQuery.value = value.copy(searched = query)
-        } else {
-            _searchQuery.value = SearchQuery(searched = query)
-        }
-        return submitLatest()
-    }
-
-    fun submitLatest() = viewModelScope.launch(Dispatchers.IO) {
-        val query = _searchQuery.value
-        if (query == null) {
-            _searchResult.postValue(arrayListOf())
-        } else {
-            _searchResult.postValue(repository.search(query, _searchFilter.value))
-        }
+    fun refresh() {
+        searchQuery.value = searchQuery.value.copy(timestamp = System.currentTimeMillis())
     }
 }
+
 

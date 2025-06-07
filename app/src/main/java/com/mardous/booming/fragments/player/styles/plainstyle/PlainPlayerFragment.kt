@@ -30,9 +30,16 @@ import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentPlainPlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.whichFragment
+import com.mardous.booming.fragments.player.PlayerColorScheme
+import com.mardous.booming.fragments.player.PlayerColorSchemeMode
+import com.mardous.booming.fragments.player.PlayerTintTarget
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
 import com.mardous.booming.fragments.player.base.AbsPlayerFragment
+import com.mardous.booming.fragments.player.surfaceTintTarget
+import com.mardous.booming.fragments.player.tintTarget
 import com.mardous.booming.model.Song
+import com.mardous.booming.model.theme.NowPlayingScreen
+import com.mardous.booming.util.Preferences
 
 /**
  * @author Christians M. A. (mardous)
@@ -43,6 +50,9 @@ class PlainPlayerFragment : AbsPlayerFragment(R.layout.fragment_plain_player) {
     private val binding get() = _binding!!
 
     private lateinit var controlsFragment: PlainPlayerControlsFragment
+
+    override val colorSchemeMode: PlayerColorSchemeMode
+        get() = Preferences.getNowPlayingColorSchemeMode(NowPlayingScreen.Plain)
 
     override val playerControlsFragment: AbsPlayerControlsFragment
         get() = controlsFragment
@@ -70,6 +80,19 @@ class PlainPlayerFragment : AbsPlayerFragment(R.layout.fragment_plain_player) {
 
         playerToolbar.setNavigationOnClickListener {
             getOnBackPressedDispatcher().onBackPressed()
+        }
+    }
+
+    override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
+        val oldPrimaryTextColor = binding.title.currentTextColor
+        val oldSecondaryTextColor = binding.text.currentTextColor
+        return mutableListOf(
+            binding.root.surfaceTintTarget(scheme.surfaceColor),
+            binding.toolbar.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
+        ).also {
+            it.addAll(playerControlsFragment.getTintTargets(scheme))
         }
     }
 

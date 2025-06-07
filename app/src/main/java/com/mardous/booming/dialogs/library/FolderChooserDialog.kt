@@ -112,7 +112,7 @@ class FolderChooserDialog : DialogFragment(), SimpleItemAdapter.Callback<String>
                 if (folder != null) {
                     val device = StorageUtil.getStorageDevice(folder)
                     if (device != null) {
-                        textView.text = device.name
+                        textView.text = device.fileName
                         textView.setCompoundDrawablesRelativeWithIntrinsicBounds(device.iconRes, 0, 0, 0)
                         return true
                     }
@@ -154,7 +154,7 @@ class FolderChooserDialog : DialogFragment(), SimpleItemAdapter.Callback<String>
 
     private fun listFiles(): Array<File>? {
         if (isEmulatedDir(parentFolder)) {
-            return StorageUtil.storageVolumes.map { File(it.path) }.toTypedArray()
+            return StorageUtil.storageVolumes.map { it.file }.toTypedArray()
         }
         val results = mutableListOf<File>()
         parentFolder?.listFiles()?.let { files ->
@@ -177,7 +177,7 @@ class FolderChooserDialog : DialogFragment(), SimpleItemAdapter.Callback<String>
             return false
 
         return StorageUtil.storageVolumes.any {
-            File(it.path).parent == folder.canonicalPath
+            it.file.parent == folder.canonicalPath
         }
     }
 
@@ -195,7 +195,7 @@ class FolderChooserDialog : DialogFragment(), SimpleItemAdapter.Callback<String>
         val device = folder?.let {
             StorageUtil.getStorageDevice(it)
         }
-        return device?.name ?: folder?.name
+        return device?.fileName ?: folder?.name
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

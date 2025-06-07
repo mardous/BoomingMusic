@@ -79,8 +79,8 @@ class FolderDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_li
         setupButtons()
         setupRecyclerView()
         detailViewModel.getFolder().observe(viewLifecycleOwner) {
-            binding.collapsingAppBarLayout.title = it.name
-            binding.title.text = it.name
+            binding.collapsingAppBarLayout.title = it.fileName
+            binding.title.text = it.fileName
             songs(it.songs)
         }
     }

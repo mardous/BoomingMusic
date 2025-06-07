@@ -24,7 +24,6 @@ import android.view.MenuItem
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
@@ -63,10 +62,6 @@ import com.mardous.booming.search.lastAddedSearchFilter
 import com.mardous.booming.search.searchFilter
 import com.mardous.booming.service.MusicPlayer
 import com.mardous.booming.util.Preferences
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list), ISongCallback, IArtistCallback,
     IAlbumCallback {
@@ -291,14 +286,11 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
 
             R.id.action_search -> {
                 if (contentType.isFavoriteContent) {
-                    lifecycleScope.launch(IO) {
-                        val favorites = libraryViewModel.favoritePlaylist()
-                        withContext(Main) {
-                            findNavController().navigate(
-                                R.id.nav_search,
-                                searchArgs(favorites.searchFilter(requireContext()))
-                            )
-                        }
+                    libraryViewModel.favoritePlaylist().observe(viewLifecycleOwner) {
+                        findNavController().navigate(
+                            R.id.nav_search,
+                            searchArgs(it.searchFilter(requireContext()))
+                        )
                     }
                 } else if (contentType.isRecentContent) {
                     findNavController().navigate(

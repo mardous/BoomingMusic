@@ -25,6 +25,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -32,6 +33,8 @@ import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
+import androidx.core.animation.doOnEnd
+import androidx.core.animation.doOnStart
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.findNavController
@@ -44,11 +47,10 @@ import com.mardous.booming.R
 import com.mardous.booming.activities.MainActivity
 import com.mardous.booming.activities.tageditor.AbsTagEditorActivity
 import com.mardous.booming.activities.tageditor.SongTagEditorActivity
-import com.mardous.booming.database.toSongEntity
 import com.mardous.booming.dialogs.LyricsDialog
 import com.mardous.booming.dialogs.SleepTimerDialog
 import com.mardous.booming.dialogs.WebSearchDialog
-import com.mardous.booming.dialogs.playlists.CreatePlaylistDialog
+import com.mardous.booming.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.dialogs.songs.ShareSongDialog
 import com.mardous.booming.extensions.currentFragment
 import com.mardous.booming.extensions.media.albumArtistName
@@ -57,14 +59,19 @@ import com.mardous.booming.extensions.navigation.albumDetailArgs
 import com.mardous.booming.extensions.navigation.artistDetailArgs
 import com.mardous.booming.extensions.navigation.genreDetailArgs
 import com.mardous.booming.extensions.openIntent
+import com.mardous.booming.extensions.resources.animateBackgroundColor
+import com.mardous.booming.extensions.resources.animateTintColor
 import com.mardous.booming.extensions.resources.inflateMenu
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.fragments.LibraryViewModel
-import com.mardous.booming.fragments.ReloadType
 import com.mardous.booming.fragments.base.AbsMusicServiceFragment
+import com.mardous.booming.fragments.lyrics.LyricsEditorFragmentArgs
 import com.mardous.booming.fragments.player.PlayerAlbumCoverFragment
+import com.mardous.booming.fragments.player.PlayerColorScheme
+import com.mardous.booming.fragments.player.PlayerColorSchemeMode
+import com.mardous.booming.fragments.player.PlayerTintTarget
 import com.mardous.booming.helper.color.MediaNotificationProcessor
 import com.mardous.booming.helper.menu.newPopupMenu
 import com.mardous.booming.helper.menu.onSongMenu
@@ -76,10 +83,10 @@ import com.mardous.booming.model.Song
 import com.mardous.booming.service.MusicPlayer
 import com.mardous.booming.service.constants.ServiceEvent
 import com.mardous.booming.util.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -98,10 +105,16 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
         CoverSaverCoroutine(requireContext(), viewLifecycleOwner.lifecycleScope, IO)
     }
 
+    protected abstract val colorSchemeMode: PlayerColorSchemeMode
     protected abstract val playerControlsFragment: AbsPlayerControlsFragment
 
     protected open val playerToolbar: Toolbar?
         get() = null
+
+    private var colorAnimatorSet: AnimatorSet? = null
+    private var colorJob: Job? = null
+
+    private var lastColorSchemeMode: PlayerColorSchemeMode? = null
 
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -215,7 +228,50 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
     }
 
     override fun onColorChanged(color: MediaNotificationProcessor) {
-        libraryViewModel.setPaletteColor(color.backgroundColor)
+        cancelOngoingColorTransition()
+
+        val newSchemeMode = colorSchemeMode
+        val currentScheme = lastColorSchemeMode?.takeIf { it == PlayerColorSchemeMode.AppTheme }
+        if (currentScheme == newSchemeMode)
+            return
+
+        colorJob = viewLifecycleOwner.lifecycleScope.launch {
+            val result = runCatching {
+                PlayerColorScheme.autoColorScheme(requireContext(), color, newSchemeMode)
+            }
+            if (isActive && result.isSuccess) {
+                val scheme = result.getOrThrow().also {
+                    lastColorSchemeMode = it.mode
+                }
+                applyColorScheme(scheme).start()
+            } else if (result.isFailure) {
+                Log.w("AbsPlayerFragment", "Failed to apply color scheme", result.exceptionOrNull())
+            }
+        }
+    }
+
+    protected abstract fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget>
+
+    private fun applyColorScheme(scheme: PlayerColorScheme): AnimatorSet {
+        return AnimatorSet()
+            .setDuration(scheme.mode.preferredAnimDuration)
+            .apply {
+                playTogether(getTintTargets(scheme).map {
+                    if (it.isSurface) {
+                        it.target.animateBackgroundColor(it.newColor)
+                    } else {
+                        it.target.animateTintColor(
+                            it.oldColor,
+                            it.newColor,
+                            isIconButton = it.isIcon
+                        )
+                    }
+                })
+                doOnStart { libraryViewModel.setPaletteColor(scheme.surfaceColor) }
+                doOnEnd { playerControlsFragment.applyColorScheme(scheme) }
+            }.also {
+                colorAnimatorSet = it
+            }
     }
 
     override fun onGestureDetected(gestureOnCover: GestureOnCover): Boolean {
@@ -249,7 +305,7 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
 
     override fun onFavoritesStoreChanged() {
         super.onFavoritesStoreChanged()
-        updateIsFavorite(true)
+        updateIsFavorite(withAnim = true)
     }
 
     override fun onServiceConnected() {
@@ -259,14 +315,14 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
         playerControlsFragment.onUpdatePlayPause(MusicPlayer.isPlaying)
         playerControlsFragment.onUpdateRepeatMode(MusicPlayer.repeatMode)
         playerControlsFragment.onUpdateShuffleMode(MusicPlayer.shuffleMode)
-        updateIsFavorite(false)
+        updateIsFavorite(withAnim = false)
     }
 
     override fun onPlayingMetaChanged() {
         super.onPlayingMetaChanged()
         onSongInfoChanged(MusicPlayer.currentSong)
         playerControlsFragment.onQueueInfoChanged(MusicPlayer.getNextSongInfo(requireContext()))
-        updateIsFavorite(false)
+        updateIsFavorite(withAnim = false)
     }
 
     override fun onPlayStateChanged() {
@@ -304,6 +360,7 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
     }
 
     override fun onDestroyView() {
+        cancelOngoingColorTransition()
         super.onDestroyView()
         Preferences.unregisterOnSharedPreferenceChangeListener(this)
     }
@@ -355,14 +412,25 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
                 true
             }
 
+            NowPlayingAction.LyricsEditor -> {
+                goToDestination(
+                    requireActivity(),
+                    R.id.nav_lyrics_editor,
+                    LyricsEditorFragmentArgs.Builder(currentSong)
+                        .build()
+                        .toBundle()
+                )
+                true
+            }
+
             NowPlayingAction.AddToPlaylist -> {
-                CreatePlaylistDialog.create(currentSong)
+                AddToPlaylistDialog.create(currentSong)
                     .show(childFragmentManager, "ADD_TO_PLAYLIST")
                 true
             }
 
             NowPlayingAction.ToggleFavoriteState -> {
-                toggleFavorite(MusicPlayer.currentSong)
+                toggleFavorite(currentSong)
                 true
             }
 
@@ -383,7 +451,7 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
                 true
             }
 
-            else -> false
+            NowPlayingAction.Nothing -> false
         }
     }
 
@@ -428,26 +496,14 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
         showToast(textId)
     }
 
-    private fun updateIsFavorite(withAnim: Boolean = false) {
-        lifecycleScope.launch(IO) {
-            val isFavorite = libraryViewModel.isSongFavorite(MusicPlayer.currentSong.id)
-            withContext(Dispatchers.Main) {
-                onIsFavoriteChanged(isFavorite, withAnim)
-            }
+    private fun updateIsFavorite(song: Song = MusicPlayer.currentSong, withAnim: Boolean = false) {
+        libraryViewModel.isSongFavorite(song).observe(viewLifecycleOwner) { isFavorite ->
+            onIsFavoriteChanged(isFavorite, withAnim)
         }
     }
 
-    private fun toggleFavorite(song: Song) {
-        lifecycleScope.launch(IO) {
-            val playlist = libraryViewModel.favoritePlaylist()
-            val songEntity = song.toSongEntity(playlist.playListId)
-            val isFavorite = libraryViewModel.isSongFavorite(song.id)
-            if (isFavorite) {
-                libraryViewModel.removeSongFromPlaylist(songEntity)
-            } else {
-                libraryViewModel.insertSongs(listOf(songEntity))
-            }
-            libraryViewModel.forceReload(ReloadType.Playlists)
+    private fun toggleFavorite(song: Song = MusicPlayer.currentSong) {
+        libraryViewModel.toggleFavorite(song).observe(viewLifecycleOwner) {
             LocalBroadcastManager.getInstance(requireContext())
                 .sendBroadcast(Intent(ServiceEvent.FAVORITE_STATE_CHANGED))
         }
@@ -471,6 +527,12 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
 
     fun getExtraInfoString(song: Song) =
         if (isExtraInfoEnabled()) song.extraInfo(Preferences.nowPlayingExtraInfoList) else null
+
+    private fun cancelOngoingColorTransition() {
+        colorJob?.cancel()
+        colorAnimatorSet?.cancel()
+        colorAnimatorSet = null
+    }
 
     private fun requestSaveCover() {
         if (!Preferences.savedArtworkCopyrightNoticeShown) {

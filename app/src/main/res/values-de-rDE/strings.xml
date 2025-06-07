@@ -598,6 +598,12 @@
     <string name="lyrics_on_album_cover_title">Liedtexte auf Cover</string>
     <string name="lyrics_on_album_cover_summary">Liedtexte statt Cover anzeigen, wenn verfügbar.</string>
     <string name="animate_controls_title">Steuerelemente animieren</string>
+    <string name="long_press_on_album_cover_title">Langes Drücken auf Cover</string>
+    <string name="carousel_effect_title">Karussell-Effekt</string>
+    <string name="album_cover_effect_title">Albumcover Effekt</string>
+    <string name="lyrics_on_album_cover_title">Songtexte auf Cover</string>
+    <string name="lyrics_on_album_cover_summary">Songtexte statt Cover anzeigen, wenn sie verfügbar sind.</string>
+    <string name="animate_controls_title">Steuerung animieren</string>
     <string name="animate_controls_summary">Wird beim Öffnen des Player-Panels abgespielt.</string>
     <string name="display_album_name_title">Albumname anzeigen</string>
     <string name="display_extra_info_title">Zusätzliche Info anzeigen</string>

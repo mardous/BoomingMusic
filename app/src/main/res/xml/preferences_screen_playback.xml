@@ -4,6 +4,14 @@
 
     <SwitchPreferenceCompat
         app:iconSpaceReserved="true"
+        app:title="@string/play_on_startup_title"
+        app:summary="@string/play_on_startup_summary"
+        app:defaultValue="false"
+        app:layout="@layout/list_item_view_switch"
+        app:key="play_on_startup"/>
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="true"
         app:title="@string/gapless_playback_title"
         app:summary="@string/gapless_playback_summary"
         app:defaultValue="false"
@@ -152,14 +160,6 @@
     <PreferenceCategory
         app:title="@string/audio_focus_header"
         app:layout="@layout/preference_category_title">
-
-        <SwitchPreferenceCompat
-            app:icon="@drawable/ic_volume_down_24dp"
-            app:title="@string/audio_ducking_title"
-            app:summary="@string/audio_ducking_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
-            app:key="audio_ducking"/>
 
         <SwitchPreferenceCompat
             app:icon="@drawable/ic_pause_24dp"

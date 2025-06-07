@@ -71,7 +71,7 @@ fun genreDetailArgs(genre: Genre) =
         .toBundle()
 
 fun folderDetailArgs(folder: Folder) =
-    FolderDetailFragmentArgs.Builder(folder.path)
+    FolderDetailFragmentArgs.Builder(folder.filePath)
         .build()
         .toBundle()
 

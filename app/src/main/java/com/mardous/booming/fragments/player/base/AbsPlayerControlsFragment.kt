@@ -19,7 +19,6 @@ package com.mardous.booming.fragments.player.base
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.animation.LinearInterpolator
@@ -36,6 +35,8 @@ import com.mardous.booming.extensions.getShapeAppearanceModel
 import com.mardous.booming.extensions.media.durationStr
 import com.mardous.booming.extensions.resources.applyColor
 import com.mardous.booming.fragments.player.PlayerAnimator
+import com.mardous.booming.fragments.player.PlayerColorScheme
+import com.mardous.booming.fragments.player.PlayerTintTarget
 import com.mardous.booming.helper.MusicProgressViewUpdateHelper
 import com.mardous.booming.model.NowPlayingAction
 import com.mardous.booming.model.Song
@@ -65,6 +66,14 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     protected open val songTotalTime: TextView? = null
     protected open val songCurrentProgress: TextView? = null
     protected open val songInfoView: TextView? = null
+
+    protected val isShuffleModeOn: Boolean
+        get() = MusicPlayer.shuffleMode == Playback.ShuffleMode.ON
+
+    protected val isRepeatModeOn: Boolean
+        get() = MusicPlayer.repeatMode.let {
+            it == Playback.RepeatMode.CURRENT || it == Playback.RepeatMode.ALL
+        }
 
     private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
@@ -254,13 +263,11 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         progressViewUpdateHelper.stop()
     }
 
-    open fun setColors(
-        backgroundColor: Int = Color.TRANSPARENT,
-        primaryControlColor: Int,
-        secondaryControlColor: Int
-    ) {
-        lastPlaybackControlsColor = primaryControlColor
-        lastDisabledPlaybackControlsColor = secondaryControlColor
+    abstract fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget>
+
+    open fun applyColorScheme(scheme: PlayerColorScheme) {
+        lastPlaybackControlsColor = scheme.primaryControlColor
+        lastDisabledPlaybackControlsColor = scheme.secondaryControlColor
     }
 
     protected fun setViewAction(view: View, action: NowPlayingAction) =
@@ -275,40 +282,30 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     protected fun getExtraInfoString(song: Song) =
         playerFragment?.getExtraInfoString(song)
 
-    protected fun updateShuffleMode(
-        shuffleMode: Int = MusicPlayer.shuffleMode,
+    protected fun getPlaybackControlsColor(
+        isEnabled: Boolean,
         controlColor: Int = lastPlaybackControlsColor,
         disabledControlColor: Int = lastDisabledPlaybackControlsColor
-    ) {
-        val newColor = when (shuffleMode) {
-            Playback.ShuffleMode.ON -> controlColor
-            else -> disabledControlColor
-        }
-        shuffleButton?.applyColor(newColor, isIconButton = true)
+    ) = if (isEnabled) controlColor else disabledControlColor
+
+    protected fun updateShuffleMode(shuffleMode: Int = MusicPlayer.shuffleMode) {
+        shuffleButton?.applyColor(
+            getPlaybackControlsColor(shuffleMode == Playback.ShuffleMode.ON),
+            isIconButton = true
+        )
     }
 
-    protected fun updateRepeatMode(
-        repeatMode: Int = MusicPlayer.repeatMode,
-        controlColor: Int = lastPlaybackControlsColor,
-        disabledControlColor: Int = lastDisabledPlaybackControlsColor
-    ) {
+    protected fun updateRepeatMode(repeatMode: Int = MusicPlayer.repeatMode) {
+        val iconResource = when (repeatMode) {
+            Playback.RepeatMode.CURRENT -> R.drawable.ic_repeat_one_24dp
+            else -> R.drawable.ic_repeat_24dp
+        }
         repeatButton?.let {
-            when (repeatMode) {
-                Playback.RepeatMode.OFF -> {
-                    it.setIconResource(R.drawable.ic_repeat_24dp)
-                    it.applyColor(disabledControlColor, isIconButton = true)
-                }
-
-                Playback.RepeatMode.ALL -> {
-                    it.setIconResource(R.drawable.ic_repeat_24dp)
-                    it.applyColor(controlColor, isIconButton = true)
-                }
-
-                Playback.RepeatMode.CURRENT -> {
-                    it.setIconResource(R.drawable.ic_repeat_one_24dp)
-                    it.applyColor(controlColor, isIconButton = true)
-                }
-            }
+            it.setIconResource(iconResource)
+            it.applyColor(
+                getPlaybackControlsColor(repeatMode != Playback.RepeatMode.OFF),
+                isIconButton = true
+            )
         }
     }
 

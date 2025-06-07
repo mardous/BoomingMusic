@@ -25,7 +25,7 @@ import androidx.core.content.getSystemService
 import com.mardous.booming.R
 import com.mardous.booming.appContext
 import com.mardous.booming.extensions.hasR
-import com.mardous.booming.model.StorageDevice
+import com.mardous.booming.model.filesystem.StorageDevice
 import com.mardous.booming.recordException
 import kotlinx.io.IOException
 import java.io.File
@@ -77,7 +77,7 @@ object StorageUtil {
     fun getStorageDevice(directory: File): StorageDevice? {
         return try {
             val canonicalPath = directory.canonicalPath
-            storageVolumes.firstOrNull { File(it.path).canonicalPath == canonicalPath }
+            storageVolumes.firstOrNull { it.file.canonicalPath == canonicalPath }
         } catch (e: IOException) {
             recordException(e)
             null

@@ -18,6 +18,7 @@ package com.mardous.booming.service.equalizer
 
 import android.media.audiofx.*
 import android.util.Log
+import com.mardous.booming.recordException
 
 /**
  * Helper class representing the full complement of effects attached to one
@@ -50,6 +51,7 @@ class EffectSet(sessionId: Int) {
             block()
         } catch (t: Throwable) {
             Log.e("EffectSet", "$tag init failed", t)
+            recordException(t)
             null
         }
     }

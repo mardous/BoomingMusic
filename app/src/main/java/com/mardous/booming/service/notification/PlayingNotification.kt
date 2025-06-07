@@ -32,9 +32,11 @@ import com.mardous.booming.util.Preferences
 abstract class PlayingNotification(protected val context: Context) :
     NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID) {
 
-    abstract fun update(song: Song, onUpdate: () -> Unit)
+    abstract fun updateMetadata(song: Song, onUpdate: () -> Unit)
 
     abstract fun setPlaying(isPlaying: Boolean)
+
+    abstract fun updateFavorite(isFavorite: Boolean)
 
     init {
         setSmallIcon(R.drawable.ic_stat_music_playback)

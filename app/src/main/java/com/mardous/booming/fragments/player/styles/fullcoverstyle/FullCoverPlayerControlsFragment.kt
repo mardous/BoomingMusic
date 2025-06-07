@@ -20,6 +20,7 @@ package com.mardous.booming.fragments.player.styles.fullcoverstyle
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.animation.TimeInterpolator
+import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
@@ -35,10 +36,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentFullCoverPlayerPlaybackControlsBinding
-import com.mardous.booming.extensions.resources.applyColor
 import com.mardous.booming.extensions.resources.showBounceAnimation
-import com.mardous.booming.extensions.resources.toColorStateList
-import com.mardous.booming.fragments.player.PlayerAnimator
+import com.mardous.booming.fragments.player.*
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
 import com.mardous.booming.helper.handler.PrevNextButtonOnTouchHandler
 import com.mardous.booming.model.NowPlayingAction
@@ -118,27 +117,43 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
         return FullCoverPlayerAnimator(binding, Preferences.animateControls)
     }
 
-    override fun setColors(backgroundColor: Int, primaryControlColor: Int, secondaryControlColor: Int) {
-        super.setColors(backgroundColor, primaryControlColor, secondaryControlColor)
-        if (_binding == null) return
-        binding.title.setTextColor(primaryControlColor)
-        binding.text.setTextColor(primaryControlColor)
-        binding.songInfo.setTextColor(secondaryControlColor)
+    override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
+        val oldPlayPauseColor = binding.playPauseButton.backgroundTintList?.defaultColor
+            ?: Color.TRANSPARENT
 
-        binding.menu.applyColor(primaryControlColor, isIconButton = true)
-        binding.favorite.applyColor(primaryControlColor, isIconButton = true)
+        val oldControlColor = binding.nextButton.iconTint.defaultColor
+        val oldSliderColor = binding.progressSlider.trackActiveTintList.defaultColor
+        val oldPrimaryTextColor = binding.title.currentTextColor
+        val oldSecondaryTextColor = binding.text.currentTextColor
 
-        binding.progressSlider.applyColor(primaryControlColor)
-        binding.songCurrentProgress.setTextColor(secondaryControlColor)
-        binding.songTotalTime.setTextColor(secondaryControlColor)
+        val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
+        val newShuffleColor = getPlaybackControlsColor(
+            isShuffleModeOn,
+            scheme.primaryControlColor,
+            scheme.secondaryControlColor
+        )
+        val oldRepeatColor = getPlaybackControlsColor(isRepeatModeOn)
+        val newRepeatColor = getPlaybackControlsColor(
+            isRepeatModeOn,
+            scheme.primaryControlColor,
+            scheme.secondaryControlColor
+        )
 
-        binding.playPauseButton.backgroundTintList = primaryControlColor.toColorStateList()
-        binding.playPauseButton.imageTintList = backgroundColor.toColorStateList()
-        binding.nextButton.applyColor(primaryControlColor, isIconButton = true)
-        binding.previousButton.applyColor(primaryControlColor, isIconButton = true)
-
-        updateRepeatMode()
-        updateShuffleMode()
+        return listOf(
+            binding.playPauseButton.tintTarget(oldPlayPauseColor, scheme.primaryControlColor),
+            binding.progressSlider.tintTarget(oldSliderColor, scheme.primaryControlColor),
+            binding.menu.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.favorite.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
+            binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
+        )
     }
 
     override fun onSongInfoChanged(song: Song) {

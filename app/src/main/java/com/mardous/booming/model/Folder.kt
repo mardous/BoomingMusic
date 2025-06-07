@@ -17,49 +17,57 @@
 
 package com.mardous.booming.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import android.content.Context
+import android.graphics.drawable.Drawable
+import androidx.appcompat.content.res.AppCompatResources
+import com.mardous.booming.R
+import com.mardous.booming.extensions.plurals
+import com.mardous.booming.model.filesystem.FileSystemItem
 import java.io.File
 
 /**
  * @author Christians M. A. (mardous)
  */
-@Parcelize
-class Folder(val path: String, override val songs: List<Song>) : Parcelable, SongProvider {
+class Folder(
+    override val filePath: String,
+    val musicFiles: List<FileSystemItem>
+) : FileSystemItem, SongProvider {
 
-    companion object {
-        val empty = Folder("", emptyList())
-    }
+    override val fileName: String
+        get() = filePath.substringAfterLast("/")
 
-    val id: Long
-        get() = path.hashCode().toLong()
-
-    val name: String
-        get() = path.substringAfterLast("/")
+    override val songs: List<Song>
+        get() = musicFiles.filterIsInstance<Song>()
 
     val file: File
-        get() = File(path)
+        get() = File(filePath)
 
     val songCount: Int
-        get() = songs.size
+        get() = musicFiles.count { it is Song }
+
+    override fun getFileIcon(context: Context): Drawable? {
+        return AppCompatResources.getDrawable(context, R.drawable.ic_folder_24dp)
+    }
+
+    override fun getFileDescription(context: Context): CharSequence {
+        return context.plurals(R.plurals.x_items, musicFiles.size)
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is Folder) return false
-
-        if (path != other.path) return false
-        if (songs != other.songs) return false
-
-        return true
+        return filePath == other.filePath && musicFiles == other.musicFiles
     }
 
     override fun hashCode(): Int {
-        var result = path.hashCode()
-        result = 31 * result + songs.hashCode()
-        return result
+        return 31 * filePath.hashCode() + musicFiles.hashCode()
     }
 
     override fun toString(): String {
-        return "Folder(path='$path', songs=$songs)"
+        return "Folder(filePath='$filePath', musicFiles=$musicFiles)"
+    }
+
+    companion object {
+        val empty = Folder("", emptyList())
     }
 }

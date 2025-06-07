@@ -56,7 +56,6 @@ open class MultiPlayer(private val context: Context) : Playback,
     // Index 0 = left volume.
     // Index 1 = right volume.
     private val mBalance = FloatArray(2)
-    private var mDuckingFactor = 1f
     private var mReplayGain = Float.NaN
 
     override fun setDataSource(path: String, completion: (success: Boolean) -> Unit) {
@@ -311,11 +310,6 @@ open class MultiPlayer(private val context: Context) : Playback,
         updateVolume()
     }
 
-    override fun setDuckingFactor(vol: Float) {
-        mDuckingFactor = vol
-        updateVolume()
-    }
-
     override fun setVolume(leftVol: Float, rightVol: Float) {
         mCurrentMediaPlayer.execSafe {
             setVolume(leftVol, rightVol)
@@ -349,9 +343,6 @@ open class MultiPlayer(private val context: Context) : Playback,
                 recordException(error)
             }
         }
-
-        leftVol *= mDuckingFactor
-        rightVol *= mDuckingFactor
 
         setVolume(leftVol, rightVol)
     }

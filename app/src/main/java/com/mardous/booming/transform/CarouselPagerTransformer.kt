@@ -19,7 +19,7 @@ import android.view.View
 import androidx.viewpager.widget.ViewPager
 import kotlin.math.abs
 
-class CarousalPagerTransformer(context: Context) : ViewPager.PageTransformer {
+class CarouselPagerTransformer(context: Context) : ViewPager.PageTransformer {
 
     private val maxTranslateOffsetX: Int
     private var viewPager: ViewPager? = null

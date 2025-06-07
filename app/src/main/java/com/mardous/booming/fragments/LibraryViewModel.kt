@@ -34,6 +34,8 @@ import com.mardous.booming.helper.UriSongResolver
 import com.mardous.booming.http.github.GitHubRelease
 import com.mardous.booming.http.github.GitHubService
 import com.mardous.booming.model.*
+import com.mardous.booming.model.filesystem.FileSystemItem
+import com.mardous.booming.model.filesystem.FileSystemQuery
 import com.mardous.booming.mvvm.*
 import com.mardous.booming.mvvm.event.Event
 import com.mardous.booming.repository.RealSmartRepository
@@ -74,7 +76,7 @@ class LibraryViewModel(
     private val playlists = MutableLiveData<List<PlaylistWithSongs>>()
     private val genres = MutableLiveData<List<Genre>>()
     private val years = MutableLiveData<List<ReleaseYear>>()
-    private val folders = MutableLiveData<List<Folder>>()
+    private val fileSystem = MutableLiveData<FileSystemQuery>()
     private val fabMargin = MutableLiveData(0)
     private val songHistory = MutableLiveData<List<Song>>()
     private val paletteColor = MutableLiveData<Int>()
@@ -87,7 +89,7 @@ class LibraryViewModel(
     fun getPlaylists(): LiveData<List<PlaylistWithSongs>> = playlists
     fun getGenres(): LiveData<List<Genre>> = genres
     fun getYears(): LiveData<List<ReleaseYear>> = years
-    fun getFolders(): LiveData<List<Folder>> = folders
+    fun getFileSystem(): LiveData<FileSystemQuery> = fileSystem
     fun getFabMargin(): LiveData<Int> = fabMargin
     fun getPaletteColor(): LiveData<Int> = paletteColor
     fun getUpdateSearchEvent(): LiveData<Event<UpdateSearchResult>> = updateSearch
@@ -173,8 +175,45 @@ class LibraryViewModel(
         years.postValue(repository.allYears())
     }
 
-    private suspend fun fetchFolders() {
-        folders.postValue(repository.allFolders())
+    private fun fetchFolders() {
+        navigateToPath()
+    }
+
+    private suspend fun filesToSongs(files: List<FileSystemItem>, includeSubfolders: Boolean): List<Song> {
+        return buildList {
+            if (includeSubfolders) {
+                val songs = files.filterIsInstance<Folder>().flatMap {
+                    repository.songsByFolder(it.filePath, true)
+                }
+                addAll(songs)
+            }
+            addAll(files.filterIsInstance<Song>())
+        }
+    }
+
+    private suspend fun songsFromCurrentFolder(): List<Song> {
+        val currentFolder = fileSystem.value
+        return if (currentFolder != null) {
+            filesToSongs(currentFolder.children, includeSubfolders = false)
+        } else {
+            emptyList()
+        }
+    }
+
+    fun navigateToPath(
+        navigateToPath: String? = null,
+        hierarchyView: Boolean = Preferences.hierarchyFolderView
+    ) = viewModelScope.launch(IO) {
+        if (hierarchyView) {
+            val path = if (navigateToPath.isNullOrEmpty()) {
+                fileSystem.value?.path ?: Preferences.startDirectory.getCanonicalPathSafe()
+            } else {
+                navigateToPath
+            }
+            fileSystem.postValue(repository.filesInPath(path))
+        } else {
+            fileSystem.postValue(repository.allFolders())
+        }
     }
 
     fun blacklistPath(file: File) = viewModelScope.launch(IO) {
@@ -182,15 +221,27 @@ class LibraryViewModel(
         forceReload(ReloadType.Folders)
     }
 
-    @JvmName("songsFromYear")
-    fun songs(years: List<ReleaseYear>): LiveData<List<Song>> = liveData(IO) {
-        val songs = years.flatMap { it.songs }
+    fun playFromFiles(
+        song: Song,
+        files: List<FileSystemItem>? = fileSystem.value?.children
+    ) = viewModelScope.launch(IO) {
+        if (!files.isNullOrEmpty()) {
+            val songs = songsFromCurrentFolder()
+            val startPos = songs.indexOfSong(song.id).coerceAtLeast(0)
+            if (isActive) {
+                MusicPlayer.openQueue(songs, position = startPos)
+            }
+        }
+    }
+
+    fun songs(providers: List<Any>): LiveData<List<Song>> = liveData(IO) {
+        val songs = providers.filterIsInstance<SongProvider>()
+            .flatMap { it.songs }
         emit(songs)
     }
 
-    @JvmName("songsFromFolder")
-    fun songs(folders: List<Folder>): LiveData<List<Song>> = liveData(IO) {
-        val songs = folders.flatMap { it.songs }
+    fun songs(files: List<FileSystemItem>, includeSubfolders: Boolean): LiveData<List<Song>> = liveData(IO) {
+        val songs = filesToSongs(files, includeSubfolders)
         emit(songs)
     }
 
@@ -207,6 +258,12 @@ class LibraryViewModel(
             ContentType.TopAlbums -> emit(repository.topAlbums())
             ContentType.RecentAlbums -> emit(repository.recentAlbums())
             else -> emit(arrayListOf())
+        }
+    }
+
+    fun restorePlayback() = viewModelScope.launch(IO) {
+        if (Preferences.playOnStartup) {
+            MusicPlayer.restorePlayback()
         }
     }
 
@@ -336,17 +393,32 @@ class LibraryViewModel(
         emit(repository.playlistsWithSongs())
     }
 
-    fun favoritePlaylistAsync(): LiveData<PlaylistEntity> = liveData(IO) {
+    fun favoritePlaylist(): LiveData<PlaylistEntity> = liveData(IO) {
         emit(repository.favoritePlaylist())
     }
 
-    suspend fun favoritePlaylist() = repository.favoritePlaylist()
-    suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song) =
+    fun toggleFavorite(song: Song): LiveData<Boolean> = liveData(IO) {
+        val playlist = repository.favoritePlaylist()
+        val songEntity = song.toSongEntity(playlist.playListId)
+        val isFavorite = repository.isSongFavorite(song.id)
+        if (isFavorite) {
+            removeSongFromPlaylist(songEntity)
+        } else {
+            insertSongs(listOf(songEntity))
+        }
+        forceReload(ReloadType.Playlists)
+        emit(!isFavorite)
+    }
+
+    fun isSongFavorite(song: Song): LiveData<Boolean> = liveData(IO) {
+        emit(repository.isSongFavorite(song.id))
+    }
+
+    private suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song) =
         repository.checkSongExistInPlaylist(playlistEntity, song)
 
-    suspend fun isSongFavorite(songId: Long) = repository.isSongFavorite(songId)
     suspend fun insertSongs(songs: List<SongEntity>) = repository.insertSongsInPlaylist(songs)
-    suspend fun removeSongFromPlaylist(songEntity: SongEntity) =
+    private suspend fun removeSongFromPlaylist(songEntity: SongEntity) =
         repository.removeSongFromPlaylist(songEntity)
 
     private suspend fun checkPlaylistExists(playlistName: String): List<PlaylistEntity> =
@@ -501,6 +573,8 @@ class LibraryViewModel(
                             emit(result)
                         }
                     }
+
+                    else -> emit(result.copy(handled = false))
                 }
             }
         }

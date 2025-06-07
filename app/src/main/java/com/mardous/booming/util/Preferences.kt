@@ -30,7 +30,9 @@ import com.mardous.booming.appContext
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasS
+import com.mardous.booming.extensions.intRes
 import com.mardous.booming.extensions.utilities.*
+import com.mardous.booming.fragments.player.PlayerColorSchemeMode
 import com.mardous.booming.model.*
 import com.mardous.booming.model.theme.AppTheme
 import com.mardous.booming.model.theme.NowPlayingScreen
@@ -154,8 +156,33 @@ object Preferences : KoinComponent {
     val allowCoverSwiping: Boolean
         get() = preferences.getBoolean(LEFT_RIGHT_SWIPING, true)
 
-    val isCarousalEffect: Boolean
-        get() = preferences.getBoolean(CAROUSAL_EFFECT, true)
+    fun getNowPlayingColorSchemeKey(nps: NowPlayingScreen) =
+        "player_${nps.name.lowercase()}_color_scheme"
+
+    fun getNowPlayingColorSchemeMode(nps: NowPlayingScreen): PlayerColorSchemeMode {
+        val defaultScheme = nps.defaultColorScheme
+        val schemeName = preferences.nullString(getNowPlayingColorSchemeKey(nps))
+            ?: defaultScheme.name
+        if (nps.supportedColorSchemes.any { it.name == schemeName }) {
+            return schemeName.toEnum<PlayerColorSchemeMode>() ?: defaultScheme
+        }
+        return defaultScheme
+    }
+
+    fun setNowPlayingColorSchemeMode(nps: NowPlayingScreen, schemeMode: PlayerColorSchemeMode) {
+        val schemeName = schemeMode.name
+        if (nps.supportedColorSchemes.any { it.name == schemeName }) {
+            preferences.edit {
+                putString(getNowPlayingColorSchemeKey(nps), schemeName)
+            }
+        }
+    }
+
+    fun getNowPlayingImageCornerRadius(context: Context): Int =
+        preferences.getInt(NOW_PLAYING_IMAGE_CORNER_RADIUS, context.intRes(R.integer.now_playing_corner_radius))
+
+    val isCarouselEffect: Boolean
+        get() = preferences.getBoolean(CAROUSEL_EFFECT, true)
 
     val coverSwipingEffect: ViewPager.PageTransformer?
         get() = when (preferences.nullString(COVER_SWIPING_EFFECT)) {
@@ -231,9 +258,6 @@ object Preferences : KoinComponent {
         else -> preferences.getFloat(REPLAYGAIN_PREAMP_WITHOUT_TAG, 0f)
     }
 
-    val audioDucking: Boolean
-        get() = preferences.getBoolean(AUDIO_DUCKING, true)
-
     val pauseOnTransientFocusLoss: Boolean
         get() = preferences.getBoolean(PAUSE_ON_TRANSIENT_FOCUS_LOSS, true)
 
@@ -242,6 +266,9 @@ object Preferences : KoinComponent {
 
     val queueNextSequentially: Boolean
         get() = preferences.requireString(QUEUE_NEXT_MODE, "1") == "1"
+
+    val playOnStartup: Boolean
+        get() = preferences.getBoolean(PLAY_ON_STARTUP, false)
 
     val searchAutoQueue: Boolean
         get() = preferences.getBoolean(SEARCH_AUTO_QUEUE, false)
@@ -295,6 +322,16 @@ object Preferences : KoinComponent {
     val trashMusicFiles: Boolean
         get() = preferences.getBoolean(TRASH_MUSIC_FILES, false)
 
+    val recursiveFolderActions: Set<FolderAction>
+        get() {
+            val notNullSet = mutableSetOf<FolderAction>()
+            preferences.getStringSet(RECURSIVE_FOLDER_ACTIONS, null)
+                ?.mapNotNullTo(notNullSet) { string ->
+                    FolderAction.entries.firstOrNull { it.preferenceValue == string }
+                }
+            return notNullSet
+        }
+
     val historyEnabled: Boolean
         get() = preferences.getBoolean(ENABLE_HISTORY, true)
 
@@ -315,7 +352,7 @@ object Preferences : KoinComponent {
             PlaylistCutoff.YESTERDAY -> context.getString(R.string.yesterday)
             PlaylistCutoff.THIS_WEEK -> context.getString(R.string.this_week)
             PlaylistCutoff.PAST_THREE_MONTHS -> context.getString(R.string.past_three_months)
-            PlaylistCutoff.LAST_YEAR -> context.getString(R.string.this_year)
+            PlaylistCutoff.THIS_YEAR -> context.getString(R.string.this_year)
             PlaylistCutoff.THIS_MONTH -> context.getString(R.string.this_month)
             else -> context.getString(R.string.this_month)
         }
@@ -383,6 +420,10 @@ object Preferences : KoinComponent {
         get() = preferences.getLong(LAST_UPDATE_ID, -1)
         set(value) = preferences.edit { putLong(LAST_UPDATE_ID, value) }
 
+    var hierarchyFolderView: Boolean
+        get() = preferences.getBoolean(HIERARCHY_FOLDER_VIEW, false)
+        set(value) = preferences.edit { putBoolean(HIERARCHY_FOLDER_VIEW, value) }
+
     var startDirectory: File
         get() = File(preferences.requireString(START_DIRECTORY, FileUtil.getDefaultStartDirectory().path))
         set(file) = preferences.edit { putString(START_DIRECTORY, file.getCanonicalPathSafe()) }
@@ -418,10 +459,6 @@ object Preferences : KoinComponent {
     private fun appBool(resid: Int): Boolean = appContext().resources.getBoolean(resid)
 
     private fun appStr(resid: Int): String = appContext().getString(resid)
-
-    fun migratePreferences() {
-        PreferenceMigrations.LIBRARY_CATEGORIES(preferences, "library_categories", LIBRARY_CATEGORIES)
-    }
 }
 
 interface GeneralTheme {
@@ -489,7 +526,7 @@ interface PlaylistCutoff {
         const val THIS_WEEK = "this_week"
         const val THIS_MONTH = "this_month"
         const val PAST_THREE_MONTHS = "past_three_months"
-        const val LAST_YEAR = "last_year"
+        const val THIS_YEAR = "this_year"
     }
 }
 
@@ -542,7 +579,7 @@ const val MATERIAL_YOU = "material_you"
 const val USE_CUSTOM_FONT = "use_custom_font"
 const val APPBAR_MODE = "appbar_mode"
 const val GENERAL_THEME = "general_theme"
-const val LIBRARY_CATEGORIES = "library_categories_v2"
+const val LIBRARY_CATEGORIES = "library_categories"
 const val REMEMBER_LAST_PAGE = "remember_last_page"
 const val TAB_TITLES_MODE = "tab_titles_mode"
 const val LAST_PAGE = "last_page"
@@ -554,7 +591,8 @@ const val ADD_EXTRA_CONTROLS = "add_extra_controls"
 const val SWIPE_TO_DISMISS = "swipe_to_dismiss"
 const val LYRICS_ON_COVER = "lyrics_on_cover"
 const val LEFT_RIGHT_SWIPING = "left_right_swiping"
-const val CAROUSAL_EFFECT = "carousal_effect"
+const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
+const val CAROUSEL_EFFECT = "carousel_effect"
 const val COVER_SWIPING_EFFECT = "cover_swiping_effect"
 const val COVER_DOUBLE_TAP_ACTION = "cover_double_tap_action"
 const val COVER_LONG_PRESS_ACTION = "cover_long_press_action"
@@ -577,6 +615,7 @@ const val REPLAYGAIN_PREAMP = "replaygain_preamp"
 const val REPLAYGAIN_PREAMP_WITH_TAG = "replaygain_preamp_with_tag"
 const val REPLAYGAIN_PREAMP_WITHOUT_TAG = "replaygain_preamp_without_tag"
 const val QUEUE_NEXT_MODE = "queue_next_mode"
+const val PLAY_ON_STARTUP = "play_on_startup"
 const val SEARCH_AUTO_QUEUE = "search_auto_queue"
 const val REMEMBER_SHUFFLE_MODE = "remember_shuffle_mode"
 const val ALBUM_SHUFFLE_MODE = "album_shuffle_mode"
@@ -585,7 +624,6 @@ const val RESUME_ON_CONNECT = "resume_on_connect"
 const val PAUSE_ON_DISCONNECT = "pause_on_disconnect"
 const val RESUME_ON_BLUETOOTH_CONNECT = "resume_on_bluetooth_connect"
 const val PAUSE_ON_BLUETOOTH_DISCONNECT = "pause_on_bluetooth_disconnect"
-const val AUDIO_DUCKING = "audio_ducking"
 const val IGNORE_AUDIO_FOCUS = "ignore_audio_focus"
 const val PAUSE_ON_TRANSIENT_FOCUS_LOSS = "pause_on_transient_focus_loss"
 const val AUTO_DOWNLOAD_METADATA_POLICY = "auto_download_metadata_policy"
@@ -595,6 +633,7 @@ const val ALLOW_ONLINE_ARTIST_IMAGES = "allow_online_artist_images"
 const val PREFERRED_ARTIST_IMAGE_SIZE = "preferred_artist_image_size"
 const val ONLY_ALBUM_ARTISTS = "only_album_artists"
 const val TRASH_MUSIC_FILES = "trash_music_files"
+const val RECURSIVE_FOLDER_ACTIONS = "recursive_folder_actions"
 const val ENABLE_HISTORY = "enable_history_playlist"
 const val HISTORY_CUTOFF = "history_interval"
 const val LAST_ADDED_CUTOFF = "last_added_interval"
@@ -624,6 +663,7 @@ const val INITIALIZED_BLACKLIST = "initialized_blacklist"
 const val LAST_SLEEP_TIMER_VALUE = "last_sleep_timer_value"
 const val NEXT_SLEEP_TIMER_ELAPSED_REALTIME = "next_sleep_timer_elapsed_real_time"
 const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
+const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SAVED_REPEAT_MODE = "SAVED_REPEAT_MODE"
 const val SAVED_SHUFFLE_MODE = "SAVED_SHUFFLE_MODE"
 const val SAVED_POSITION_IN_TRACK = "SAVED_POSITION_IN_TRACK"

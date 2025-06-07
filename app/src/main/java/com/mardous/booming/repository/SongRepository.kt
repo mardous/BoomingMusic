@@ -63,8 +63,8 @@ class RealSongRepository(private val inclExclDao: InclExclDao) : SongRepository 
     override fun songs(query: String): List<Song> {
         return songs(
             makeSongCursor(
-                "${AudioColumns.TITLE} LIKE ? OR ${AudioColumns.ARTIST} LIKE ? OR ${AudioColumns.ALBUM_ARTIST} LIKE ?",
-                arrayOf("%$query%", "%$query%", "%$query%")
+                "${AudioColumns.TITLE} LIKE ? OR ${AudioColumns.ARTIST} LIKE ?",
+                arrayOf("%$query%", "%$query%")
             )
         )
     }

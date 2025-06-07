@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<integer name="now_playing_corner_radius">16</integer>
 	<integer name="overScrollMode">2</integer>
 	<integer name="short_anim_time">150</integer>
 

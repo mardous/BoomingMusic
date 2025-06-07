@@ -46,16 +46,15 @@ import com.mardous.booming.fragments.player.base.AbsPlayerFragment
 import com.mardous.booming.fragments.player.styles.defaultstyle.DefaultPlayerFragment
 import com.mardous.booming.fragments.player.styles.fullcoverstyle.FullCoverPlayerFragment
 import com.mardous.booming.fragments.player.styles.gradientstyle.GradientPlayerFragment
+import com.mardous.booming.fragments.player.styles.m3style.M3PlayerFragment
 import com.mardous.booming.fragments.player.styles.peekplayerstyle.PeekPlayerFragment
+import com.mardous.booming.fragments.player.styles.plainstyle.PlainPlayerFragment
 import com.mardous.booming.fragments.queue.PlayingQueueFragment
 import com.mardous.booming.model.CategoryInfo
 import com.mardous.booming.model.theme.NowPlayingScreen
 import com.mardous.booming.service.MusicPlayer
 import com.mardous.booming.util.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import androidx.core.view.size
-import com.mardous.booming.fragments.player.styles.m3style.M3PlayerFragment
-import com.mardous.booming.fragments.player.styles.plainstyle.PlainPlayerFragment
 
 /**
  * @author Christians M. A. (mardous)
@@ -81,7 +80,6 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
 
     private var playerFragment: AbsPlayerFragment? = null
     private var paletteColor: Int = 0
-    private var navigationbarColor: Int = 0
 
     var panelState: Int
         get() = bottomSheetBehavior.state
@@ -120,8 +118,6 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
         setupSlidingUpPanel()
         setupBottomSheet()
         updateColor()
-
-        navigationbarColor = surfaceColor()
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
@@ -331,27 +327,21 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
 
     private fun onPaletteColorChanged() {
         if (panelState == STATE_EXPANDED) {
-            navigationbarColor = surfaceColor()
             val isColorLight = paletteColor.isColorLight
             when (nowPlayingScreen) {
                 NowPlayingScreen.Default,
                 NowPlayingScreen.Plain,
-                NowPlayingScreen.Peek-> {
-                    setLightStatusBar(navigationbarColor.isColorLight)
-                    setLightNavigationBar(navigationbarColor.isColorLight)
-                }
+                NowPlayingScreen.Peek,
                 NowPlayingScreen.M3 -> {
-                    navigationbarColor = paletteColor
-                    setLightNavigationBar(isColorLight)
                     setLightStatusBar(isColorLight)
+                    setLightNavigationBar(isColorLight)
                 }
                 NowPlayingScreen.FullCover -> {
-                    navigationbarColor = paletteColor
                     setLightNavigationBar(isColorLight)
                     setLightStatusBar(false)
                 }
                 NowPlayingScreen.Gradient -> {
-                    navigationbarColor = paletteColor.darkenColor
+                    val navigationbarColor = paletteColor.darkenColor
                     setLightNavigationBar(navigationbarColor.isColorLight)
                     setLightStatusBar(isColorLight)
                 }
@@ -399,8 +389,9 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
                 miniPlayerFragment?.setupExtraControls()
             }
 
-            CAROUSAL_EFFECT,
+            CAROUSEL_EFFECT,
             COVER_SWIPING_EFFECT,
+            NOW_PLAYING_IMAGE_CORNER_RADIUS,
             CIRCLE_PLAY_BUTTON -> {
                 chooseFragmentForTheme()
                 onServiceConnected()

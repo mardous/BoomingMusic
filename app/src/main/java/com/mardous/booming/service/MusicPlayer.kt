@@ -116,6 +116,10 @@ object MusicPlayer {
         musicService?.back(true)
     }
 
+    fun restorePlayback() {
+        musicService?.restorePlayback()
+    }
+
     fun openQueue(
         queue: List<Song>,
         position: Int = 0,

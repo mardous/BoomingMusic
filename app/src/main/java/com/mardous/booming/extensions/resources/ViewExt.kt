@@ -32,10 +32,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
-import android.widget.CompoundButton
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.MenuRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.animation.addListener
@@ -242,11 +239,14 @@ fun View.animateTintColor(
             val colorStateList = animatedColor.toColorStateList()
 
             when (this@animateTintColor) {
+                is Toolbar -> colorizeToolbar(animatedColor)
                 is Slider -> applyColor(animatedColor)
+                is SeekBar -> applyColor(animatedColor)
                 is FloatingActionButton -> applyColor(animatedColor)
                 is MaterialButton -> applyColor(animatedColor, isIconButton)
                 is ImageView -> ImageViewCompat.setImageTintList(this@animateTintColor, colorStateList)
-                is TextView -> setTextColor(animatedColor)
+                is TextView -> applyColor(animatedColor)
+                else -> backgroundTintList = colorStateList
             }
         }
     }

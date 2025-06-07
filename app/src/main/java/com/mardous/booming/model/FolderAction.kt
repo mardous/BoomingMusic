@@ -15,13 +15,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.mardous.booming.interfaces
+package com.mardous.booming.model
 
-import android.view.MenuItem
-import com.mardous.booming.model.Folder
+import androidx.annotation.IdRes
+import com.mardous.booming.R
 
-interface IFolderCallback {
-    fun folderClick(folder: Folder)
-    fun folderMenuItemClick(folder: Folder, menuItem: MenuItem): Boolean
-    fun foldersMenuItemClick(selection: List<Folder>, menuItem: MenuItem): Boolean
+enum class FolderAction(@IdRes val id: Int, val preferenceValue: String) {
+    Play(R.id.action_play, "play"),
+    ShufflePlay(R.id.action_shuffle_play, "shuffle_play"),
+    QueueNext(R.id.action_play_next, "queue_next"),
+    Queue(R.id.action_add_to_playing_queue, "queue"),
+    AddToPlaylist(R.id.action_add_to_playlist, "add_to_playlist"),
+    Delete(R.id.action_delete_from_device, "delete")
 }
+
+fun Collection<FolderAction>.isPresent(id: Int) = any { it.id == id }

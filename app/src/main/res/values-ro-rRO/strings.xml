@@ -602,6 +602,7 @@
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
+    <string name="carousel_effect_title">Efectul de carusel</string>
     <string name="album_cover_effect_title">Efect copertă album</string>
     <string name="lyrics_on_album_cover_title">Versuri pe copertă</string>
     <string name="lyrics_on_album_cover_summary">Arată versurile cântecului în loc de copertă atunci când sunt disponibile.</string>

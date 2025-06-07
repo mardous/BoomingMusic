@@ -23,7 +23,11 @@ import com.mardous.booming.R
 /**
  * @author Christians M. A. (mardous)
  */
-data class SearchQuery(val filterMode: FilterMode? = null, val searched: String? = null) {
+data class SearchQuery(
+    val filterMode: FilterMode? = null,
+    val searched: String? = null,
+    val timestamp: Long = System.currentTimeMillis()
+) {
 
     enum class FilterMode(@IdRes val chipId: Int) {
         Songs(R.id.chip_songs),

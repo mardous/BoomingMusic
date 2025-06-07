@@ -34,7 +34,11 @@ import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentGradientPlayerPlaybackControlsBinding
 import com.mardous.booming.extensions.resources.applyColor
+import com.mardous.booming.fragments.player.PlayerColorScheme
+import com.mardous.booming.fragments.player.PlayerTintTarget
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
+import com.mardous.booming.fragments.player.iconButtonTintTarget
+import com.mardous.booming.fragments.player.tintTarget
 import com.mardous.booming.helper.handler.PrevNextButtonOnTouchHandler
 import com.mardous.booming.model.NowPlayingAction
 import com.mardous.booming.model.Song
@@ -99,27 +103,40 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
         }
     }
 
-    override fun setColors(backgroundColor: Int, primaryControlColor: Int, secondaryControlColor: Int) {
-        super.setColors(backgroundColor, primaryControlColor, secondaryControlColor)
-        binding.controlContainer.setBackgroundColor(backgroundColor)
+    override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
+        val oldControlColor = binding.nextButton.iconTint.defaultColor
+        val oldSliderColor = binding.progressSlider.trackActiveTintList.defaultColor
+        val oldPrimaryTextColor = binding.title.currentTextColor
+        val oldSecondaryTextColor = binding.text.currentTextColor
 
-        binding.title.setTextColor(primaryControlColor)
-        binding.text.setTextColor(primaryControlColor)
-        binding.songInfo.setTextColor(secondaryControlColor)
+        val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
+        val newShuffleColor = getPlaybackControlsColor(
+            isShuffleModeOn,
+            scheme.primaryControlColor,
+            scheme.secondaryControlColor
+        )
+        val oldRepeatColor = getPlaybackControlsColor(isRepeatModeOn)
+        val newRepeatColor = getPlaybackControlsColor(
+            isRepeatModeOn,
+            scheme.primaryControlColor,
+            scheme.secondaryControlColor
+        )
 
-        binding.menu.applyColor(primaryControlColor, isIconButton = true)
-        binding.favorite.applyColor(primaryControlColor, isIconButton = true)
-
-        binding.progressSlider.applyColor(primaryControlColor)
-        binding.songCurrentProgress.setTextColor(secondaryControlColor)
-        binding.songTotalTime.setTextColor(secondaryControlColor)
-
-        binding.playPauseButton.applyColor(primaryControlColor, isIconButton = true)
-        binding.nextButton.applyColor(primaryControlColor, isIconButton = true)
-        binding.previousButton.applyColor(primaryControlColor, isIconButton = true)
-
-        updateRepeatMode()
-        updateShuffleMode()
+        return listOf(
+            binding.progressSlider.tintTarget(oldSliderColor, scheme.primaryControlColor),
+            binding.menu.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.favorite.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.playPauseButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
+            binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
+        )
     }
 
     override fun onSongInfoChanged(song: Song) {

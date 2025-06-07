@@ -85,7 +85,7 @@
     </style>
 
     <style name="PlayerIconButton.Medium">
-        <item name="iconSize">28dp</item>
+        <item name="iconSize">32dp</item>
     </style>
 
     <style name="PlayerIconButton.Large">

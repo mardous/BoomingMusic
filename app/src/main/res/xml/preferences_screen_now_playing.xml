@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.mardous.booming.preferences.dialog.NowPlayingScreenPreference
         app:icon="@drawable/ic_play_circle_24dp"
@@ -42,12 +44,23 @@
             app:layout="@layout/list_item_view_switch"
             app:key="left_right_swiping" />
 
+        <SeekBarPreference
+            app:icon="@drawable/ic_rounded_corner_24dp"
+            app:title="@string/now_playing_corner_radius_title"
+            app:summary="@string/now_playing_corner_radius_summary"
+            android:max="32"
+            app:min="0"
+            app:defaultValue="@integer/now_playing_corner_radius"
+            app:showSeekBarValue="true"
+            app:layout="@layout/list_item_view_seekbar"
+            app:key="now_playing_corner_radius"/>
+
         <SwitchPreferenceCompat
             app:icon="@drawable/ic_view_carousel_24dp"
-            app:title="@string/carousal_effect_title"
+            app:title="@string/carousel_effect_title"
             app:defaultValue="true"
             app:layout="@layout/list_item_view_switch_no_title"
-            app:key="carousal_effect" />
+            app:key="carousel_effect" />
 
         <ListPreference
             app:iconSpaceReserved="true"

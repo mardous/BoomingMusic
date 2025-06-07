@@ -18,8 +18,8 @@
 package com.mardous.booming.fragments.player.styles.m3style
 
 import android.animation.Animator
-import android.animation.AnimatorSet
 import android.animation.TimeInterpolator
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -29,10 +29,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentM3PlayerPlaybackControlsBinding
-import com.mardous.booming.extensions.resources.animateTintColor
-import com.mardous.booming.extensions.resources.controlColorNormal
-import com.mardous.booming.extensions.resources.getPrimaryTextColor
-import com.mardous.booming.fragments.player.PlayerAnimator
+import com.mardous.booming.fragments.player.*
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
 import com.mardous.booming.helper.handler.PrevNextButtonOnTouchHandler
 import com.mardous.booming.model.Song
@@ -77,11 +74,6 @@ class M3PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_m3_
         binding.previousButton.setOnTouchListener(PrevNextButtonOnTouchHandler(PrevNextButtonOnTouchHandler.DIRECTION_PREVIOUS))
         binding.shuffleButton.setOnClickListener(this)
         binding.repeatButton.setOnClickListener(this)
-
-        setColors(
-            primaryControlColor = controlColorNormal(),
-            secondaryControlColor = getPrimaryTextColor(requireContext(), isDisabled = true)
-        )
     }
 
     override fun onCreatePlayerAnimator(): PlayerAnimator {
@@ -111,42 +103,49 @@ class M3PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_m3_
         }
     }
 
+    override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
+        val oldPlayPauseColor = binding.playPauseButton.backgroundTintList?.defaultColor
+            ?: Color.TRANSPARENT
+
+        val oldControlColor = binding.nextButton.iconTint.defaultColor
+        val oldSliderColor = binding.progressSlider.trackActiveTintList.defaultColor
+        val oldPrimaryTextColor = binding.title.currentTextColor
+        val oldSecondaryTextColor = binding.text.currentTextColor
+
+        val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
+        val newShuffleColor = getPlaybackControlsColor(
+            isShuffleModeOn,
+            scheme.primaryControlColor,
+            scheme.secondaryControlColor
+        )
+        val oldRepeatColor = getPlaybackControlsColor(isRepeatModeOn)
+        val newRepeatColor = getPlaybackControlsColor(
+            isRepeatModeOn,
+            scheme.primaryControlColor,
+            scheme.secondaryControlColor
+        )
+
+        return listOf(
+            binding.playPauseButton.tintTarget(oldPlayPauseColor, scheme.emphasisColor),
+            binding.progressSlider.tintTarget(oldSliderColor, scheme.emphasisColor),
+            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
+            binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
+        )
+    }
+
     override fun onClick(view: View) {
         super.onClick(view)
         when (view) {
             binding.repeatButton -> MusicPlayer.cycleRepeatMode()
             binding.shuffleButton -> MusicPlayer.toggleShuffleMode()
             binding.playPauseButton -> MusicPlayer.togglePlayPause()
-        }
-    }
-
-    fun animateColors(
-        primaryColor: Int,
-        primaryTextColor: Int,
-        secondaryTextColor: Int
-    ): AnimatorSet {
-        val currentPlayPauseColor = binding.playPauseButton.backgroundTintList?.defaultColor
-            ?: primaryColor
-        val currentControlColor = binding.nextButton.iconTint.defaultColor
-        val currentSliderColor = binding.progressSlider.trackActiveTintList.defaultColor
-        val currentPrimaryTextColor = binding.title.currentTextColor
-        val currentSecondaryTextColor = binding.text.currentTextColor
-        return AnimatorSet().apply {
-            playTogether(
-                binding.title.animateTintColor(currentPrimaryTextColor, primaryTextColor),
-                binding.text.animateTintColor(currentSecondaryTextColor, secondaryTextColor),
-                binding.songInfo.animateTintColor(currentSecondaryTextColor, secondaryTextColor)
-            )
-
-            play(binding.playPauseButton.animateTintColor(currentPlayPauseColor, primaryColor))
-                .before(binding.nextButton.animateTintColor(currentControlColor, primaryTextColor, isIconButton = true))
-                .before(binding.previousButton.animateTintColor(currentControlColor, primaryTextColor, isIconButton = true))
-                .before(binding.repeatButton.animateTintColor(currentControlColor, primaryTextColor, isIconButton = true))
-                .before(binding.shuffleButton.animateTintColor(currentControlColor, primaryTextColor, isIconButton = true))
-
-            play(binding.progressSlider.animateTintColor(currentSliderColor, primaryColor))
-                .before(binding.songCurrentProgress.animateTintColor(currentSecondaryTextColor, secondaryTextColor))
-                .before(binding.songTotalTime.animateTintColor(currentSecondaryTextColor, secondaryTextColor))
         }
     }
 

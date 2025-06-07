@@ -1,23 +1,25 @@
 [versions]
 androidPluginVersion = "8.10.0"
+composeBom = "2025.06.00"
+activityCompose = "1.10.1"
 kspPluginVersion = "2.1.0-1.0.29"
 gmsPluginVersion ="4.4.2"
-crashlyticsPluginVersion = "3.0.3"
+crashlyticsPluginVersion = "3.0.4"
 kotlinVersion = "2.1.0"
 kotlinCoroutinesVersion = "1.10.2"
 kotlinDatetime = "0.6.2"
 constraintlayout = "2.2.1"
 cardview = "1.0.0"
-appcompat = "1.7.0"
+appcompat = "1.7.1"
 viewpager = "1.1.0"
 coreSplashscreen = "1.0.1"
 coreVersion = "1.16.0"
-firebaseBom = "33.13.0"
-fragmentKtx = "1.8.6"
-lifecycleVersion = "2.8.7"
+firebaseBom = "33.15.0"
+fragmentKtx = "1.8.8"
+lifecycleVersion = "2.9.1"
 material = "1.12.0"
 media = "1.7.0"
-navigationVersion = "2.8.9"
+navigationVersion = "2.9.0"
 paletteKtx = "1.0.0"
 preferenceKtx = "1.2.1"
 recyclerview = "1.4.0"
@@ -55,6 +57,16 @@ firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashly
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinDatetime" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutinesVersion" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutinesVersion" }
+
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+compose-material3 = { module = "androidx.compose.material3:material3" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata" }
+
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose" }
 
 lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleVersion" }
 lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleVersion" }

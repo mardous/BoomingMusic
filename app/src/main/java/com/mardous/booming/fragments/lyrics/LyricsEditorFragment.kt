@@ -304,9 +304,11 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
             plainLyricsModified
         ).observe(viewLifecycleOwner) {
             if (it.isPending && hasR() && it.pendingWrite != null) {
-                pendingWrite = it.pendingWrite
+                val safePendingWrite = it.pendingWrite.filter { it.second != Uri.EMPTY }.also {
+                    pendingWrite = it
+                }
                 val pendingIntent = MediaStore.createWriteRequest(
-                    requireContext().contentResolver, it.pendingWrite.map { it.second }
+                    requireContext().contentResolver, safePendingWrite.map { it.second }
                 )
                 editLyricsLauncher.launch(IntentSenderRequest.Builder(pendingIntent).build())
             } else {

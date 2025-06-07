@@ -21,6 +21,8 @@ import android.provider.MediaStore.Audio.AudioColumns
 import com.mardous.booming.model.Folder
 import com.mardous.booming.model.ReleaseYear
 import com.mardous.booming.model.Song
+import com.mardous.booming.model.filesystem.FileSystemQuery
+import com.mardous.booming.util.StorageUtil
 import com.mardous.booming.util.sort.SortOrder
 import com.mardous.booming.util.sort.sortedFolders
 import com.mardous.booming.util.sort.sortedSongs
@@ -30,9 +32,11 @@ interface SpecialRepository {
     suspend fun releaseYears(): List<ReleaseYear>
     suspend fun releaseYear(year: Int): ReleaseYear
     suspend fun songsByYear(year: Int, query: String): List<Song>
-    suspend fun musicFolders(): List<Folder>
+    suspend fun musicFolders(): FileSystemQuery
     suspend fun folderByPath(path: String): Folder
+    suspend fun songsByFolder(path: String, includeSubfolders: Boolean): List<Song>
     suspend fun songsByFolder(path: String, query: String): List<Song>
+    suspend fun musicFilesInPath(path: String): FileSystemQuery
 }
 
 class RealSpecialRepository(private val songRepository: RealSongRepository) : SpecialRepository {
@@ -64,16 +68,18 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
         )
     }
 
-    override suspend fun musicFolders(): List<Folder> {
+    override suspend fun musicFolders(): FileSystemQuery {
         val allSongs = songRepository.songs()
         val songsByFolder = allSongs.groupBy { song ->
             song.folderPath()
         }.filter {
             it.key.isNotEmpty()
         }
-        return songsByFolder.map { (folderPath, songs) ->
-            Folder(folderPath, songs)
-        }.sortedFolders(SortOrder.folderSortOrder)
+
+        val folders = songsByFolder.map { (folderPath, songs) -> Folder(folderPath, songs) }
+            .sortedFolders(SortOrder.folderSortOrder)
+
+        return FileSystemQuery.createFlatView(folders)
     }
 
     override suspend fun folderByPath(path: String): Folder {
@@ -81,6 +87,18 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
             path == song.folderPath()
         }
         return Folder(path, songs.sortedSongs(SortOrder.folderSongSortOrder))
+    }
+
+    override suspend fun songsByFolder(path: String, includeSubfolders: Boolean): List<Song> {
+        if (includeSubfolders) {
+            val dirPath = path.takeIf { it.endsWith("/") } ?: "$path/"
+            val cursor = songRepository.makeSongCursor(
+                selection = "${AudioColumns.DATA} LIKE ?",
+                selectionValues = arrayOf("$dirPath%")
+            )
+            return songRepository.songs(cursor)
+        }
+        return songRepository.songs().filter { song -> path == song.folderPath() }
     }
 
     override suspend fun songsByFolder(path: String, query: String): List<Song> {
@@ -91,6 +109,38 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
         return songRepository.songs(cursor).filter { song ->
             path == song.folderPath()
         }
+    }
+
+    override suspend fun musicFilesInPath(path: String): FileSystemQuery {
+        if (!FileSystemQuery.isNavigablePath(path)) {
+            return FileSystemQuery(path, null, StorageUtil.storageVolumes, true)
+        }
+
+        val allSongs = songRepository.songs()
+        val allFolderPaths = allSongs.map { it.folderPath() }.filterNot { it == path }.toSet()
+        val subfolderPaths = allFolderPaths
+            .filter { it.startsWith("$path/") }
+            .mapNotNull { subPath ->
+                val relative = subPath.removePrefix("$path/")
+                val firstSegment = relative.substringBefore("/")
+                if (firstSegment.isNotEmpty()) "$path/$firstSegment" else null
+            }
+            .distinct()
+
+        val subfolders = subfolderPaths.map { subPath ->
+            val innerMusicFiles = musicFilesInPath(subPath)
+            Folder(subPath, innerMusicFiles.children)
+        }
+
+        val songsInThisFolder = allSongs.filter { it.folderPath() == path }
+
+        val parentPath = path.substringBeforeLast("/")
+        val children = buildList {
+            addAll(subfolders)
+            addAll(songsInThisFolder)
+        }.sortedWith(compareBy({ it is Song }, { it.fileName.lowercase() }))
+
+        return FileSystemQuery(path, parentPath, children)
     }
 
     private fun Song.folderPath() = data.substringBeforeLast("/", missingDelimiterValue = "")

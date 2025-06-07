@@ -98,18 +98,22 @@ class RealArtistRepository(
     }
 
     override fun albumArtist(artistName: String): Artist {
-        if (artistName == Artist.VARIOUS_ARTISTS_DISPLAY_NAME) {
+        if (Artist.VARIOUS_ARTISTS_DISPLAY_NAME.equals(artistName, ignoreCase = true)) {
             // Get Various Artists
             val songs = songRepository.songs(
                 songRepository.makeSongCursor(null, null, DEFAULT_SORT_ORDER)
             )
             val albums = albumRepository.splitIntoAlbums(songs)
-                .filter { it.albumArtistName == Artist.VARIOUS_ARTISTS_DISPLAY_NAME }
+                .filter { Artist.VARIOUS_ARTISTS_DISPLAY_NAME.equals(it.albumArtistName, ignoreCase = true) }
             return Artist(Artist.VARIOUS_ARTISTS_ID, albums, filterSingles, isAlbumArtist = true)
         }
 
         val songs = songRepository.songs(
-            songRepository.makeSongCursor("${AudioColumns.ALBUM_ARTIST}=?", arrayOf(artistName), DEFAULT_SORT_ORDER)
+            songRepository.makeSongCursor(
+                "lower(${AudioColumns.ALBUM_ARTIST})=?",
+                arrayOf(artistName.lowercase()),
+                DEFAULT_SORT_ORDER
+            )
         )
         return Artist(artistName, albumRepository.splitIntoAlbums(songs), filterSingles)
     }
@@ -158,14 +162,14 @@ class RealArtistRepository(
 
     fun splitIntoAlbumArtists(albums: List<Album>): List<Artist> {
         val filterSingles = this.filterSingles
-        return albums.groupBy { it.albumArtistName }
-            .filter {
-                !it.key.isNullOrEmpty()
+        return albums.groupBy { it.albumArtistName?.lowercase() }
+            .filterNot {
+                it.key.isNullOrEmpty()
             }
             .map {
                 val currentAlbums = it.value
                 if (currentAlbums.isNotEmpty()) {
-                    if (currentAlbums[0].albumArtistName == Artist.VARIOUS_ARTISTS_DISPLAY_NAME) {
+                    if (Artist.VARIOUS_ARTISTS_DISPLAY_NAME.equals(currentAlbums[0].albumArtistName, ignoreCase = true)) {
                         Artist(Artist.VARIOUS_ARTISTS_ID, currentAlbums, filterSingles, isAlbumArtist = true)
                     } else {
                         Artist(currentAlbums[0].artistId, currentAlbums, filterSingles, isAlbumArtist = true)

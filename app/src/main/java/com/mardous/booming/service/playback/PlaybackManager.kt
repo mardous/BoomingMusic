@@ -17,16 +17,12 @@
 
 package com.mardous.booming.service.playback
 
-import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
 import android.media.audiofx.AudioEffect
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.media.AudioAttributesCompat
 import androidx.media.AudioFocusRequestCompat
@@ -35,8 +31,6 @@ import com.mardous.booming.R
 import com.mardous.booming.audio.SoundSettings
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.service.MultiPlayer
-import com.mardous.booming.service.MusicService
-import com.mardous.booming.service.constants.ServiceAction
 import com.mardous.booming.service.equalizer.EqualizerManager
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.CoroutineScope
@@ -50,21 +44,6 @@ class PlaybackManager(
 ) : AudioManager.OnAudioFocusChangeListener {
 
     private val audioManager: AudioManager? = context.getSystemService()
-
-    private var becomingNoisyReceiverRegistered = false
-    private val becomingNoisyReceiverIntentFilter = IntentFilter(AudioManager.ACTION_AUDIO_BECOMING_NOISY)
-    private val becomingNoisyReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            if (intent.action != null && intent.action == AudioManager.ACTION_AUDIO_BECOMING_NOISY) {
-                if (Preferences.isPauseOnDisconnect(false)) {
-                    val serviceIntent = Intent(context, MusicService::class.java)
-                        .setAction(ServiceAction.ACTION_PAUSE)
-                    context.startService(serviceIntent)
-                }
-            }
-        }
-    }
-
     private val audioFocusRequest: AudioFocusRequestCompat =
         AudioFocusRequestCompat.Builder(AudioManagerCompat.AUDIOFOCUS_GAIN)
             .setOnAudioFocusChangeListener(this)
@@ -131,7 +110,6 @@ class PlaybackManager(
                 updateBalance()
                 updateTempo()
 
-                registerBecomingNoisyReceiver()
                 if (equalizerEnabled) {
                     //Shutdown any existing external audio sessions
                     closeAudioEffectSession(false)
@@ -148,7 +126,6 @@ class PlaybackManager(
     fun pause(onPause: () -> Unit) {
         if (playback != null && playback!!.isPlaying()) {
             playback?.pause()
-            unregisterBecomingNoisyReceiver()
             closeAudioEffectSession(false)
             onPause()
         }
@@ -197,22 +174,7 @@ class PlaybackManager(
         playback?.release()
         playback = null
         abandonFocus()
-        unregisterBecomingNoisyReceiver()
         closeAudioEffectSession(true)
-    }
-
-    private fun unregisterBecomingNoisyReceiver() {
-        if (becomingNoisyReceiverRegistered) {
-            context.unregisterReceiver(becomingNoisyReceiver)
-            becomingNoisyReceiverRegistered = false
-        }
-    }
-
-    private fun registerBecomingNoisyReceiver() {
-        if (!becomingNoisyReceiverRegistered) {
-            ContextCompat.registerReceiver(context, becomingNoisyReceiver, becomingNoisyReceiverIntentFilter, ContextCompat.RECEIVER_EXPORTED)
-            becomingNoisyReceiverRegistered = true
-        }
     }
 
     private fun requestFocus(): Boolean {
@@ -234,7 +196,6 @@ class PlaybackManager(
                     playback?.getCallbacks()?.onPlayStateChanged()
                     isPausedByTransientLossOfFocus = false
                 }
-                playback?.setDuckingFactor(Volume.NORMAL)
             }
 
             AudioManager.AUDIOFOCUS_LOSS -> {
@@ -254,14 +215,6 @@ class PlaybackManager(
                     playback?.pause()
                     playback?.getCallbacks()?.onPlayStateChanged()
                     isPausedByTransientLossOfFocus = wasPlaying
-                }
-            }
-
-            AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK -> {
-                // Lost focus for a short time, but it's ok to keep playing
-                // at an attenuated level
-                if (Preferences.audioDucking) {
-                    playback?.setDuckingFactor(Volume.DUCK)
                 }
             }
         }

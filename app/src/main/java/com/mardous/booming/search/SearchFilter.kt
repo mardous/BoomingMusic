@@ -23,11 +23,7 @@ import android.provider.MediaStore.Audio.AudioColumns
 import com.mardous.booming.R
 import com.mardous.booming.database.PlaylistEntity
 import com.mardous.booming.extensions.media.displayName
-import com.mardous.booming.model.Album
-import com.mardous.booming.model.Artist
-import com.mardous.booming.model.Folder
-import com.mardous.booming.model.Genre
-import com.mardous.booming.model.ReleaseYear
+import com.mardous.booming.model.*
 import com.mardous.booming.search.SearchQuery.FilterMode
 import com.mardous.booming.search.filters.BasicSearchFilter
 import com.mardous.booming.search.filters.LastAddedSearchFilter
@@ -94,16 +90,28 @@ fun Artist.searchFilter(context: Context): SmartSearchFilter {
 }
 
 fun Folder.searchFilter(context: Context): SearchFilter =
-    BasicSearchFilter(context.getString(R.string.search_in_folder_x, name), this)
+    BasicSearchFilter(
+        context.getString(R.string.search_in_folder_x, fileName),
+        BasicSearchFilter.Argument(filePath, BasicSearchFilter.Argument.FOLDER)
+    )
 
 fun Genre.searchFilter(context: Context): SearchFilter =
-    BasicSearchFilter(context.getString(R.string.search_from_x_label, name), this)
+    BasicSearchFilter(
+        context.getString(R.string.search_from_x_label, name),
+        BasicSearchFilter.Argument(id, BasicSearchFilter.Argument.GENRE)
+    )
 
 fun ReleaseYear.searchFilter(context: Context): SearchFilter =
-    BasicSearchFilter(context.getString(R.string.search_year_x_label, name), this)
+    BasicSearchFilter(
+        context.getString(R.string.search_year_x_label, name),
+        BasicSearchFilter.Argument(year, BasicSearchFilter.Argument.YEAR)
+    )
 
 fun PlaylistEntity.searchFilter(context: Context): SearchFilter =
-    BasicSearchFilter(context.getString(R.string.search_list_x_label, playlistName), this)
+    BasicSearchFilter(
+        context.getString(R.string.search_list_x_label, playlistName),
+        BasicSearchFilter.Argument(playListId, BasicSearchFilter.Argument.PLAYLIST)
+    )
 
 fun lastAddedSearchFilter(context: Context): SearchFilter =
     LastAddedSearchFilter(context.getString(R.string.search_last_added))

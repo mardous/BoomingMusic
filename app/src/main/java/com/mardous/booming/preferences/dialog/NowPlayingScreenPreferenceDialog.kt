@@ -24,6 +24,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -32,20 +35,35 @@ import com.mardous.booming.R
 import com.mardous.booming.databinding.PreferenceDialogNowPlayingScreenBinding
 import com.mardous.booming.databinding.PreferenceNowPlayingScreenItemBinding
 import com.mardous.booming.extensions.dp
+import com.mardous.booming.extensions.resources.hide
+import com.mardous.booming.fragments.player.PlayerColorSchemeMode
 import com.mardous.booming.model.theme.NowPlayingScreen
 import com.mardous.booming.util.Preferences
 
-class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChangeListener {
+class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChangeListener,
+    AdapterView.OnItemSelectedListener {
+
+    private var _binding: PreferenceDialogNowPlayingScreenBinding? = null
+    private val binding get() = requireNotNull(_binding)
+
+    private var viewPagerAdapter: NowPlayingScreenAdapter? = null
+    private var colorSchemeAdapter: ColorSchemeAdapter? = null
 
     private var viewPagerPosition = 0
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val binding = PreferenceDialogNowPlayingScreenBinding.inflate(layoutInflater)
+        _binding = PreferenceDialogNowPlayingScreenBinding.inflate(layoutInflater)
 
-        binding.nowPlayingScreenViewPager.adapter = NowPlayingScreenAdapter(context)
+        viewPagerAdapter = NowPlayingScreenAdapter(requireContext())
+        binding.nowPlayingScreenViewPager.adapter = viewPagerAdapter
         binding.nowPlayingScreenViewPager.addOnPageChangeListener(this)
         binding.nowPlayingScreenViewPager.pageMargin = 32.dp(resources)
         binding.nowPlayingScreenViewPager.currentItem = Preferences.nowPlayingScreen.ordinal
+
+        colorSchemeAdapter = ColorSchemeAdapter(requireContext(), mutableListOf())
+        binding.colorScheme.setAdapter(colorSchemeAdapter)
+        binding.colorScheme.onItemSelectedListener = this
+        updateColorScheme()
 
         return MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.now_playing_screen_title)
@@ -60,15 +78,44 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
     override fun onPageSelected(position: Int) {
         viewPagerPosition = position
+        updateColorScheme()
     }
 
     override fun onPageScrollStateChanged(state: Int) {}
 
-    private class NowPlayingScreenAdapter(private val context: Context?) : PagerAdapter() {
+    override fun onItemSelected(
+        parent: AdapterView<*>?,
+        view: View?,
+        position: Int,
+        id: Long
+    ) {
+        val currentItem = NowPlayingScreen.entries.getOrNull(viewPagerPosition)
+        if (currentItem != null) {
+            val selectedScheme = colorSchemeAdapter?.schemes?.getOrNull(position)
+            if (selectedScheme != null) {
+                Preferences.setNowPlayingColorSchemeMode(currentItem, selectedScheme)
+            }
+        }
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+    private fun updateColorScheme() {
+        val currentItem = NowPlayingScreen.entries.getOrNull(viewPagerPosition)
+        if (currentItem != null) {
+            val supportedSchemes = currentItem.supportedColorSchemes
+            val selectedScheme = Preferences.getNowPlayingColorSchemeMode(currentItem)
+            colorSchemeAdapter?.submitList(supportedSchemes)
+            binding.colorScheme.isEnabled = supportedSchemes.size > 1
+            binding.colorScheme.setSelection(supportedSchemes.indexOf(selectedScheme))
+        }
+    }
+
+    private class NowPlayingScreenAdapter(private val context: Context) : PagerAdapter() {
 
         override fun instantiateItem(collection: ViewGroup, position: Int): Any {
             val nowPlayingScreen = NowPlayingScreen.entries[position]
-            val inflater = LayoutInflater.from(context)
+            val inflater = LayoutInflater.from(collection.context)
 
             val binding = PreferenceNowPlayingScreenItemBinding.inflate(inflater)
             collection.addView(binding.root)
@@ -90,7 +137,42 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
         }
 
         override fun getPageTitle(position: Int): CharSequence? {
-            return context?.getString(NowPlayingScreen.entries[position].titleRes)
+            return context.getString(NowPlayingScreen.entries[position].titleRes)
+        }
+    }
+
+    class ColorSchemeAdapter(context: Context, schemes: List<PlayerColorSchemeMode>) :
+        ArrayAdapter<PlayerColorSchemeMode>(context, android.R.layout.simple_list_item_1, schemes) {
+
+        private val inflater = LayoutInflater.from(context)
+        val schemes: List<PlayerColorSchemeMode> = schemes
+
+        override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val view = convertView ?: inflater.inflate(R.layout.item_dialog_list, parent, false)
+            val titleView = view.findViewById<TextView>(R.id.title)
+            val descriptionView = view.findViewById<TextView>(R.id.text)
+            val iconView = view.findViewById<View>(R.id.icon_view)
+            iconView?.hide()
+
+            getItem(position)?.let {
+                titleView?.setText(it.titleRes)
+                descriptionView?.setText(it.descriptionRes)
+            }
+
+            return view
+        }
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val view = super.getView(position, convertView, parent) as TextView
+            val item = getItem(position)
+            view.text = item?.titleRes?.let { view.context.getString(it) } ?: ""
+            return view
+        }
+
+        fun submitList(newList: List<PlayerColorSchemeMode>) {
+            clear()
+            addAll(newList)
+            notifyDataSetChanged()
         }
     }
 }

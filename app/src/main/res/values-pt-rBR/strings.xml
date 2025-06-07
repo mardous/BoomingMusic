@@ -593,6 +593,7 @@
     <string name="now_playing_corner_radius_title">Cantos arredondados da imagem</string>
     <string name="now_playing_corner_radius_summary">Define o nível de arredondamento dos cantos da capa do álbum.</string>
     <string name="carousel_effect_title">Efeito carrossel</string>
+    <string name="carousel_effect_title">Efeito do carrossel</string>
     <string name="album_cover_effect_title">Efeito da capa do álbum</string>
     <string name="lyrics_on_album_cover_title">Letra na capa</string>
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música ao invés da capa quando ela estiver disponível.</string>

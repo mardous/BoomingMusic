@@ -32,7 +32,6 @@ import com.mardous.booming.activities.MainActivity
 import com.mardous.booming.fragments.settings.SettingsScreen
 import com.mardous.booming.misc.ReplayGainTagExtractor
 import com.mardous.booming.util.EXPERIMENTAL_UPDATES
-import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.Preferences.getDayNightMode
 import org.jaudiotagger.tag.TagOptionSingleton
 import org.koin.android.ext.koin.androidContext
@@ -61,9 +60,6 @@ class App : Application() {
         Logger.getLogger("org.jaudiotagger.audio").level = Level.OFF
 
         TagOptionSingleton.getInstance().isPadNumbers = true
-
-        // Migrate old preferences
-        Preferences.migratePreferences()
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         // we cannot call setDefaultValues for multiple fragment based XML preference
