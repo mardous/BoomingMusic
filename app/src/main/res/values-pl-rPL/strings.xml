@@ -247,7 +247,7 @@
     <string name="action_details">Szczegóły</string>
     <string name="action_set_as_start_directory">Ustaw jako katalog startowy</string>
     <string name="action_go_to_start_directory">Przejdź do folderu głównego</string>
-    <string name="action_hierarchy_view">Hierarchy view</string>
+    <string name="action_hierarchy_view">Widok hierarchii</string>
     <string name="new_start_directory">Nowy katalog startowy: %s</string>
     <string name="action_scan">Skanuj</string>
     <string name="scan_media">Skanuj media</string>
@@ -675,7 +675,7 @@
     <string name="trash_music_title">Przenieś do kosza</string>
     <string name="trash_music_summary">Przenieś usunięte pliki do kosza.</string>
     <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
-    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
+    <string name="recursive_folder_actions_summary">Wybierz działania do zastosowania także w podfolderach.</string>
     <string name="enable_history_title">Włącz historię</string>
     <string name="enable_history_summary">Pozwala aplikacji na zapisywanie utworów, które słuchałeś. Jeśli wyłączysz, cała historia zostanie wyczyszczona.</string>
     <string name="history_interval_title">Przedział czasowy</string>
@@ -769,7 +769,7 @@
     <string name="player_color_mode_app_theme_description">Use the app\'s color scheme</string>
     <string name="player_color_mode_simple_color_title">Simple color</string>
     <string name="player_color_mode_simple_color_description">Extract the album color and apply it to some controls</string>
-    <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
+    <string name="player_color_mode_vibrant_color_title">Żywy kolor</string>
     <string name="player_color_mode_vibrant_color_description">Tint background, text, and controls with the album color</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
