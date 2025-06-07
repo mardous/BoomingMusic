@@ -17,7 +17,7 @@
     <string name="import_action">Importeren</string>
     <string name="create_action">Aanmaken</string>
     <string name="search_label">Zoeken</string>
-    <string name="search_hint">Search your library…</string>
+    <string name="search_hint">Zoek in je bibliotheek...</string>
     <string name="action_voice_search">Spraakgestuurd zoeken</string>
     <string name="speech_not_supported">Uw apparaat ondersteunt geen spraakinvoer</string>
     <string name="search_artist_x_label">Zoek artiest: %s</string>
@@ -25,7 +25,7 @@
     <string name="search_list_x_label">Zoeklijst: %s</string>
     <string name="search_from_x_label">Zoeken van \"%s\"</string>
     <string name="search_year_x_label">Zoekjaar: %s</string>
-    <string name="search_in_folder_x">Search in folder: %s</string>
+    <string name="search_in_folder_x">Zoek in map: %s</string>
     <string name="search_last_added">Zoek laatste muziek</string>
     <string name="shuffle_mode_album">Album shuffle</string>
     <string name="shuffle_mode_artist">Kunstenaar shuffle</string>
@@ -57,8 +57,8 @@
     <string name="could_not_import_the_playlist_x">De afspeellijst \"%s \" kon niet worden geïmporteerd</string>
     <string name="there_are_no_importable_playlists">Er zijn geen te importeren afspeellijsten.</string>
     <string name="playlist_x_not_imported">Afspeellijst %s niet geïmporteerd.</string>
-    <string name="action_import_playlist">Import playlist…</string>
-    <string name="action_new_playlist">New playlist…</string>
+    <string name="action_import_playlist">Importeer afspeellijst...</string>
+    <string name="action_new_playlist">Nieuwe afspeellijst...</string>
     <string name="new_playlist_title">Nieuwe afspeellijst</string>
     <string name="add_playlist_title">Toevoegen aan afspeellijst</string>
     <string name="rename_playlist_title">Hernoem afspeellijst</string>
@@ -87,7 +87,7 @@
     <string name="remove_song_from_playlist_title">Verwijder nummer uit afspeellijst</string>
     <string name="remove_songs_from_playlist_title">Verwijder nummers uit afspeellijst</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Verwijder het nummer <b>%1$s</b> uit de afspeellijst?]]></string>
-    <string name="remove_x_songs_from_playlist"><![CDATA[Remove <b>%1$d</b> songs from the playlist?]]></string>
+    <string name="remove_x_songs_from_playlist"><![CDATA[Verwijder <b>%1$d</b> liedjes uit de afspeellijst?]]></string>
     <string name="playlist_empty_text">Lege afspeellijst</string>
     <string name="action_tag_editor">Label bewerker</string>
     <string name="saving_changes">Wijzigingen opslaan</string>
@@ -109,14 +109,14 @@
     <string name="delete_songs_title">Verwijder nummers</string>
     <string name="delete_x_songs">%d nummers verwijderen?</string>
     <string name="delete_the_song_x">Verwijder het nummer %s?</string>
-    <string name="deleting_songs">Deleting songs, wait…</string>
+    <string name="deleting_songs">Liedjes aan het verwijderen, gelieve te wachten...</string>
     <string name="song_x_of_x">%1$d van %2$d • %3$s</string>
     <string name="by_artist_x">door %s</string>
     <string name="no_equalizer">Geen equalizer gevonden.</string>
     <string name="audio_focus_denied">Audiofocus geweigerd.</string>
     <string name="no_audio_ID">Slecht audio ID.</string>
     <string name="unplayable_file">Kan dit nummer niet afspelen.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
+    <string name="unplayable_file_code_x">Kon dit nummer niet afspelen (code: %d).</string>
     <string name="permission_external_storage_title">Toegang tot opslag</string>
     <string name="permission_external_storage_description">De app heeft toestemming nodig om toegang te krijgen tot je apparaatopslag om muziek te spelen</string>
     <string name="permission_external_storage_denied">U moet toestemming geven om toegang te krijgen tot externe opslag.</string>
@@ -217,7 +217,7 @@
     <string name="song_stat_one_time_label">speelde één keer op %s</string>
     <string name="song_stat_label">%1$d keer afgespeeld, laatst op %2$s</string>
     <string name="horizontal_albums">Horizontale albums</string>
-    <string name="ignore_singles">Ignore singles</string>
+    <string name="ignore_singles">Negeer singles</string>
     <string name="action_view_type">Bekijk type</string>
     <string name="view_type_normal">normaal</string>
     <string name="view_type_card">Creditcard</string>
@@ -247,7 +247,7 @@
     <string name="action_details">Beschrijving</string>
     <string name="action_set_as_start_directory">Instellen als startmap</string>
     <string name="action_go_to_start_directory">Ga naar de startmap</string>
-    <string name="action_hierarchy_view">Hierarchy view</string>
+    <string name="action_hierarchy_view">Rangorde weergeven</string>
     <string name="new_start_directory">Nieuwe startmap: %s</string>
     <string name="action_scan">Scannen</string>
     <string name="scan_media">Media scannen</string>
@@ -255,14 +255,14 @@
     <string name="update_image">Afbeelding bijwerken</string>
     <string name="restore_default">Standaardwaarde herstellen</string>
     <string name="remove_cover">Verwijder omslag</string>
-    <string name="could_not_download_album_cover">"Couldn\u2019t download a matching album cover."</string>
+    <string name="could_not_download_album_cover">"Kon geen bijpassende albumcover downloaden."</string>
     <string name="download_image">Afbeelding downloaden</string>
     <string name="pick_from_local_storage">Kies uit lokale opslag</string>
     <string name="about_x_title">Over %s</string>
     <string name="listeners_label">luisteraars</string>
     <string name="scrobbles_label">Scrobbels</string>
     <string name="save_cover">Albumhoes opslaan</string>
-    <string name="saving_cover_please_wait">Saving cover, wait…</string>
+    <string name="saving_cover_please_wait">Albumcover aan het opslaan, gelieve te wachten...</string>
     <string name="save_artwork_no_artwork">Geen albumhoes gevonden</string>
     <string name="save_artwork_error">Opslaan omslag in lokale opslag mislukt</string>
     <string name="save_artwork_success">Albumhoes opgeslagen</string>
@@ -373,8 +373,8 @@
         <item quantity="other">%d speelt</item>
     </plurals>
     <plurals name="x_items">
-        <item quantity="one">%d item</item>
-        <item quantity="other">%d items</item>
+        <item quantity="one">%d Item</item>
+        <item quantity="other">%d Items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Voor jou</string>
@@ -385,22 +385,22 @@
     <string name="recent_albums">Recente albums</string>
     <string name="no_suggestions">Er zijn geen suggesties voor u</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">Pure random</string>
-    <string name="shuffle_mode_most_played">Most played</string>
-    <string name="shuffle_mode_most_played_artists">Most played artists</string>
-    <string name="shuffle_mode_most_played_albums">Most played albums</string>
-    <string name="shuffle_mode_favorite_songs">Favorites first</string>
-    <string name="shuffle_mode_forgotten_songs">Forgotten songs</string>
-    <string name="shuffle_mode_recently_added">Recently added</string>
-    <string name="shuffle_mode_combined">Smart mix</string>
-    <string name="shuffle_mode_pure_random_description">Completely random shuffle.</string>
-    <string name="shuffle_mode_most_played_description">Favors your most played songs.</string>
-    <string name="shuffle_mode_most_played_artists_description">Favors songs from your top artists.</string>
-    <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
-    <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
-    <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
-    <string name="shuffle_mode_recently_added_description">Favors songs recently added to your library.</string>
-    <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
+    <string name="shuffle_mode_pure_random">Puur willekeurig</string>
+    <string name="shuffle_mode_most_played">Meest afgespeeld</string>
+    <string name="shuffle_mode_most_played_artists">Meest afgespeelde artiesten</string>
+    <string name="shuffle_mode_most_played_albums">Meest afgespeelde albums</string>
+    <string name="shuffle_mode_favorite_songs">Favorieten eerst</string>
+    <string name="shuffle_mode_forgotten_songs">Vergeten nummers</string>
+    <string name="shuffle_mode_recently_added">Recent toegevoegd</string>
+    <string name="shuffle_mode_combined">Slimme mix</string>
+    <string name="shuffle_mode_pure_random_description">Volledig willekeurig shuffelen.</string>
+    <string name="shuffle_mode_most_played_description">Voorkeur voor je meest afgespeelde nummers.</string>
+    <string name="shuffle_mode_most_played_artists_description">Voorkeur voor je meest afgespeelde artiesten.</string>
+    <string name="shuffle_mode_most_played_albums_description">Voorkeur voor je meest afgespeelde albums.</string>
+    <string name="shuffle_mode_favorite_songs_description">Geeft prioriteit aan je favoriete nummers.</string>
+    <string name="shuffle_mode_forgotten_songs_description">Geeft prioriteit aan liedjes die je al een tijdje niet hebt afgespeeld.</string>
+    <string name="shuffle_mode_recently_added_description">Voorkeur voor recent toegevoegde nummers in je bibliotheek.</string>
+    <string name="shuffle_mode_combined_description">Mix van favorieten, meest afgespeelde nummers, en recent afgespeelde nummers.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizer</string>
     <string name="share_eq_configuration">Deel EQ-configuratie</string>
@@ -527,7 +527,7 @@
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">U wordt doorgestuurd naar de issue tracker website.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Opslagtoegang vereist</string>
-    <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
+    <string name="saf_access_required_message">Booming Music vereist toestemming te krijgen tot deze bestanden. Selecteer de hoofdmap waar je muziekbestanden opgeslagen worden.</string>
     <string name="saf_show_files_button">Bestanden weergeven</string>
     <string name="saf_error_uri">Kan geen SAF URI verkrijgen</string>
     <string name="saf_write_failed">Bestand schrijven mislukt: %s</string>
@@ -591,9 +591,8 @@
     <string name="swipe_album_cover_summary">Veeg naar links en rechts op de albumhoes om tussen nummers over te slaan.</string>
     <string name="double_tap_on_album_cover_title">Dubbele tik op de afdekking</string>
     <string name="long_press_on_album_cover_title">Lang drukken op omslag</string>
-    <string name="now_playing_corner_radius_title">Image corner radius</string>
-    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
-    <string name="carousel_effect_title">Carousel effect</string>
+    <string name="now_playing_corner_radius_title">Hoekradius van afbeelding</string>
+    <string name="now_playing_corner_radius_summary">Definieert hoe de hoeken van de albumcover moeten verschijnen.</string>
     <string name="carousel_effect_title">Carrousel effect</string>
     <string name="album_cover_effect_title">Album omslageffect</string>
     <string name="lyrics_on_album_cover_title">Songteksten op cover</string>
@@ -610,16 +609,16 @@
     <string name="prefer_album_artist_name_title">"Naam van Album-artiesten"</string>
     <string name="prefer_album_artist_name_summary">Toont de naam van de Album-artiesten in plaats van de naam van Song-artiesten (indien beschikbaar).</string>
     <!-- Playback preferences -->
-    <string name="play_on_startup_title">Play on startup</string>
-    <string name="play_on_startup_summary">When you open the app, it starts playing from where you last left off.</string>
+    <string name="play_on_startup_title">Spelen bij opstarten</string>
+    <string name="play_on_startup_summary">Als je de app opent, begint deze te spelen vanaf waar je voor het laatst bent gestopt.</string>
     <string name="gapless_playback_title">Afspelen zonder pauzes</string>
     <string name="gapless_playback_summary">Vloeiende overgang tussen liedjes. Kan afspeelproblemen veroorzaken op sommige apparaten.</string>
     <string name="replaygain_source_mode_title">Bron modus</string>
     <string name="replaygain_preamp_title">PreAmp niveau</string>
     <string name="replaygain_preamp_summary">Stel volume niveau in als ReplayGain is ingeschakeld.</string>
     <string name="queue_next_mode_title">\"Wachtrij volgende\" modus</string>
-    <string name="search_auto_queue_title">Enqueue all search results</string>
-    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
+    <string name="search_auto_queue_title">Alle zoekresultaten in wachtrij zetten</string>
+    <string name="search_auto_queue_summary">Wanneer een nummer wordt afgespeeld vanaf het zoekscherm, worden ook alle andere resultaten opgevraagd.</string>
     <string name="remember_shuffle_mode_title">Shuffle onthouden</string>
     <string name="remember_shuffle_mode_summary">Shuffle modus blijft aan bij het selecteren van een nieuwe lijst met nummers.</string>
     <string name="album_shuffle_mode_title">Album shuffle modus</string>
@@ -659,8 +658,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Naar prullenbak verzenden</string>
     <string name="trash_music_summary">Verzend verwijderde bestanden naar de prullenbak.</string>
-    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
-    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
+    <string name="recursive_folder_actions_title">Acties die submappen beïnvloeden</string>
+    <string name="recursive_folder_actions_summary">Selecteer welke acties ook van toepassing moeten zijn op submappen wanneer deze in een map worden uitgevoerd.</string>
     <string name="enable_history_title">Geschiedenis inschakelen</string>
     <string name="enable_history_summary">Laat de app toe om de nummers waar je naar geluisterd hebt op te nemen. Als je deze uitschakelt, wordt de hele geschiedenis gewist.</string>
     <string name="history_interval_title">Geschiedenis interval</string>
@@ -706,14 +705,14 @@
     <string name="full_cover">Volledige omslag</string>
     <string name="gradient">Kleurovergang</string>
     <string name="peek">Piek</string>
-    <string name="plain">Plain</string>
+    <string name="plain">Eenvoudig</string>
     <string name="m3_style">M3</string>
     <string name="normal">normaal</string>
-    <string name="corner_size_none">None</string>
-    <string name="corner_size_small">Small</string>
+    <string name="corner_size_none">Geen</string>
+    <string name="corner_size_small">Klein</string>
     <string name="corner_size_medium">Medium</string>
-    <string name="corner_size_large">Large</string>
-    <string name="corner_size_custom">Custom</string>
+    <string name="corner_size_large">Groot</string>
+    <string name="corner_size_custom">Aangepast</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Diepte</string>
     <string name="hinge">Hinge</string>
@@ -724,8 +723,8 @@
     <string name="stack">Stapelen</string>
     <string name="add_after_playing_track">Toevoegen na het afspelen van nummer</string>
     <string name="add_tracks_sequentially">Tracks automatisch toevoegen</string>
-    <string name="albums_shuffle">Albums shuffle</string>
-    <string name="artists_shuffle">Artists shuffle</string>
+    <string name="albums_shuffle">Albums shuffelen</string>
+    <string name="artists_shuffle">Artiesten shuffelen</string>
     <string name="shuffle_albums_ordered_songs">Shuffle albums, bestelde nummers</string>
     <string name="ordered_albums_shuffle_songs">Bestelde albums, shuffle nummers</string>
     <string name="shuffle_artists_ordered_songs">Shuffle artiesten, bestelde nummers</string>
@@ -750,9 +749,9 @@
     <string name="label_never">Nooit</string>
     <string name="label_nothing">Geen</string>
     <string name="label_none">geen</string>
-    <string name="player_color_mode_app_theme_title">App theme</string>
-    <string name="player_color_mode_app_theme_description">Use the app\'s color scheme</string>
-    <string name="player_color_mode_simple_color_title">Simple color</string>
+    <string name="player_color_mode_app_theme_title">App thema</string>
+    <string name="player_color_mode_app_theme_description">Gebruik het kleurenschema van de app</string>
+    <string name="player_color_mode_simple_color_title">Eenvoudige kleur</string>
     <string name="player_color_mode_simple_color_description">Extract the album color and apply it to some controls</string>
     <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
     <string name="player_color_mode_vibrant_color_description">Tint background, text, and controls with the album color</string>
