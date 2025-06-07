@@ -247,7 +247,7 @@
     <string name="action_details">Detalhes</string>
     <string name="action_set_as_start_directory">Definir como diretório inicial</string>
     <string name="action_go_to_start_directory">Ir para o diretório inicial</string>
-    <string name="action_hierarchy_view">Hierarchy view</string>
+    <string name="action_hierarchy_view">Visualização hierárquica</string>
     <string name="new_start_directory">Nova pasta inicial: %s</string>
     <string name="action_scan">Escanear</string>
     <string name="scan_media">Varredura de mídia</string>
@@ -658,7 +658,7 @@
     <string name="trash_music_title">Enviar para lixeira</string>
     <string name="trash_music_summary">Enviar arquivos excluídos para a lixeira.</string>
     <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
-    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
+    <string name="recursive_folder_actions_summary">Selecione quais ações também serão aplicadas às subpastas quando feitas em uma pasta.</string>
     <string name="enable_history_title">Habilitar Histórico</string>
     <string name="enable_history_summary">Permite que o aplicativo grave as músicas que você estava ouvindo. Se você desativar, todo o histórico será apagado.</string>
     <string name="history_interval_title">Intervalo de histórico</string>
