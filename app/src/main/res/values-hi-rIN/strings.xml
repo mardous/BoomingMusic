@@ -251,6 +251,9 @@
     <string name="new_start_directory">नया प्रारंभ डाइरेक्टरी: %s</string>
     <string name="action_scan">स्कैन करें</string>
     <string name="scan_media">मीडिया स्कैन करें</string>
+    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_positive">Scan anyway</string>
+    <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">शीर्षक या कलाकार खाली है।</string>
     <string name="update_image">इमेज अपडेट करें</string>
     <string name="restore_default">डिफ़ॉल्ट को पुनर्स्थापित करें</string>
@@ -504,6 +507,9 @@
     <string name="fork_on_github">गिटहब पर फोर्क</string>
     <string name="licenses">लायसेंसेज़</string>
     <string name="author">लेखक</string>
+    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="translators_title">Translators</string>
+    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">टेलीग्राम चैट</string>
     <string name="telegram_chat_summary">टेलीग्राम पर चैट में शामिल हों और नए रिलीज़ और समाचारों के बारे में जानकारियाँ प्राप्त करें।</string>
     <string name="view_profile_on_github">GitHub पर प्रोफ़ाइल देखें</string>
