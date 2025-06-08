@@ -251,6 +251,9 @@
     <string name="new_start_directory">Directorul de start nou: %s</string>
     <string name="action_scan">Scanare</string>
     <string name="scan_media">Scanare media</string>
+    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_positive">Scan anyway</string>
+    <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">Titlul sau artistul este gol.</string>
     <string name="update_image">Actualizare imagine</string>
     <string name="restore_default">Restaurare implicită</string>
@@ -514,6 +517,9 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Licențe</string>
     <string name="author">Autor</string>
+    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="translators_title">Translators</string>
+    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">Telegramă chat</string>
     <string name="telegram_chat_summary">Alătură-te chat-ului în Telegramă și primești informații despre noile comunicate și știri.</string>
     <string name="view_profile_on_github">Vezi profilul pe GitHub</string>
@@ -602,7 +608,6 @@
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
-    <string name="carousel_effect_title">Efectul de carusel</string>
     <string name="album_cover_effect_title">Efect copertă album</string>
     <string name="lyrics_on_album_cover_title">Versuri pe copertă</string>
     <string name="lyrics_on_album_cover_summary">Arată versurile cântecului în loc de copertă atunci când sunt disponibile.</string>
