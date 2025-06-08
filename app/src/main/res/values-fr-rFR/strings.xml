@@ -251,6 +251,9 @@
     <string name="new_start_directory">Nouveau répertoire de démarrage : %s</string>
     <string name="action_scan">Analyser</string>
     <string name="scan_media">Analyser les médias</string>
+    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_positive">Scan anyway</string>
+    <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">Le titre ou l\'artiste est vide.</string>
     <string name="update_image">Mettre à jour l\'image</string>
     <string name="restore_default">Restaurer les valeurs par défaut</string>
@@ -506,6 +509,9 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Licences</string>
     <string name="author">Auteur</string>
+    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="translators_title">Translators</string>
+    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">Chat Telegram</string>
     <string name="telegram_chat_summary">Rejoignez le chat dans Telegram et soyez informé des nouvelles et des nouvelles nouvelles.</string>
     <string name="view_profile_on_github">Voir le profil sur GitHub</string>
@@ -594,7 +600,6 @@
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
-    <string name="carousel_effect_title">Effet du carrousel</string>
     <string name="album_cover_effect_title">Effet de couverture de l\'album</string>
     <string name="lyrics_on_album_cover_title">Paroles sur la couverture</string>
     <string name="lyrics_on_album_cover_summary">Afficher les paroles de la chanson au lieu de la couverture quand elles sont disponibles.</string>
