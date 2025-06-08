@@ -251,6 +251,9 @@
     <string name="new_start_directory">ספריית התחלה חדשה: %s</string>
     <string name="action_scan">סרוק</string>
     <string name="scan_media">סרוק מדיה</string>
+    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_positive">Scan anyway</string>
+    <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">הכותרת או האמן ריקים.</string>
     <string name="update_image">עדכון תמונה</string>
     <string name="restore_default">שחזור ברירת מחדל</string>
@@ -522,6 +525,9 @@
     <string name="fork_on_github">קוד מקור</string>
     <string name="licenses">רשיונות</string>
     <string name="author">יוצר</string>
+    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="translators_title">Translators</string>
+    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">ערוץ טלגרם</string>
     <string name="telegram_chat_summary">הצטרפו לצ\'אט בטלגרם וקבלו עדכונים על מהדורות וחידושים.</string>
     <string name="view_profile_on_github">צפה בפרופיל ב-GitHub</string>
