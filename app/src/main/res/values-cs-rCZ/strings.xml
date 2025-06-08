@@ -251,6 +251,9 @@
     <string name="new_start_directory">Nový adresář: %s</string>
     <string name="action_scan">Skenovat</string>
     <string name="scan_media">Skenovat média</string>
+    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_positive">Scan anyway</string>
+    <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">Název nebo umělce je prázdný.</string>
     <string name="update_image">Aktualizovat obrázek</string>
     <string name="restore_default">Obnovit výchozí</string>
@@ -522,6 +525,9 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Licence</string>
     <string name="author">Autor</string>
+    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="translators_title">Translators</string>
+    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">Telegram chat</string>
     <string name="telegram_chat_summary">Připojte se k chatu na Telegramu a získejte informace o nových verzích a novinkách.</string>
     <string name="view_profile_on_github">Zobrazit profil na GitHub</string>
@@ -610,7 +616,6 @@
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
-    <string name="carousel_effect_title">Kolotoč efekt</string>
     <string name="album_cover_effect_title">Efekt obalu alba</string>
     <string name="lyrics_on_album_cover_title">Texty na obálce</string>
     <string name="lyrics_on_album_cover_summary">Zobrazit text písně místo obalu, pokud jsou k dispozici.</string>
