@@ -251,6 +251,9 @@
     <string name="new_start_directory">دليل البدء الجديد: %s</string>
     <string name="action_scan">فحص</string>
     <string name="scan_media">فحص الوسائط</string>
+    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_positive">Scan anyway</string>
+    <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">العنوان أو الفنان فارغ.</string>
     <string name="update_image">تحديث الصورة</string>
     <string name="restore_default">استعادة الافتراضي</string>
@@ -538,6 +541,9 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">التراخيص</string>
     <string name="author">المؤلف</string>
+    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="translators_title">Translators</string>
+    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">دردشة تيليجرام</string>
     <string name="telegram_chat_summary">انضم إلى المحادثة في تيليجرام واحصل على معلومات عن الإصدارات والأخبار الجديدة.</string>
     <string name="view_profile_on_github">عرض الملف الشخصي على GitHub</string>
@@ -626,7 +632,6 @@
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
-    <string name="carousel_effect_title">تأثير كاروسيل</string>
     <string name="album_cover_effect_title">تأثير غلاف الألبوم</string>
     <string name="lyrics_on_album_cover_title">كلمات الأغاني على الغلاف</string>
     <string name="lyrics_on_album_cover_summary">إظهار كلمات الأغنية بدلاً من الغلاف عندما تكون متاحة.</string>
