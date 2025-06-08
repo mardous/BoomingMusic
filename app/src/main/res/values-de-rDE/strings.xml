@@ -251,6 +251,9 @@
     <string name="new_start_directory">Neues Startverzeichnis: %s</string>
     <string name="action_scan">Scannen</string>
     <string name="scan_media">Medieninhalte scannen</string>
+    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_positive">Scan anyway</string>
+    <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">Titel oder Interpret ist leer.</string>
     <string name="update_image">Bild aktualisieren</string>
     <string name="restore_default">Standard wiederherstellen</string>
@@ -506,6 +509,9 @@
     <string name="fork_on_github">Auf GitHub forken</string>
     <string name="licenses">Lizenzen</string>
     <string name="author">Autor</string>
+    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="translators_title">Translators</string>
+    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">Telegram-Chat</string>
     <string name="telegram_chat_summary">Trete dem Chat auf Telegram bei und informiere Dich über neue Versionen und Neuigkeiten.</string>
     <string name="view_profile_on_github">Profil auf GitHub anzeigen</string>
@@ -598,12 +604,6 @@
     <string name="lyrics_on_album_cover_title">Liedtexte auf Cover</string>
     <string name="lyrics_on_album_cover_summary">Liedtexte statt Cover anzeigen, wenn verfügbar.</string>
     <string name="animate_controls_title">Steuerelemente animieren</string>
-    <string name="long_press_on_album_cover_title">Langes Drücken auf Cover</string>
-    <string name="carousel_effect_title">Karussell-Effekt</string>
-    <string name="album_cover_effect_title">Albumcover Effekt</string>
-    <string name="lyrics_on_album_cover_title">Songtexte auf Cover</string>
-    <string name="lyrics_on_album_cover_summary">Songtexte statt Cover anzeigen, wenn sie verfügbar sind.</string>
-    <string name="animate_controls_title">Steuerung animieren</string>
     <string name="animate_controls_summary">Wird beim Öffnen des Player-Panels abgespielt.</string>
     <string name="display_album_name_title">Albumname anzeigen</string>
     <string name="display_extra_info_title">Zusätzliche Info anzeigen</string>
