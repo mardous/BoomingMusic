@@ -247,7 +247,7 @@
     <string name="action_details">जानकारी</string>
     <string name="action_set_as_start_directory">स्टार्ट डायरेक्टरी के रूप में सेट करें</string>
     <string name="action_go_to_start_directory">प्रारंभ निर्देशिका में जाएं</string>
-    <string name="action_hierarchy_view">Hierarchy view</string>
+    <string name="action_hierarchy_view">हाइरार्की व्यू</string>
     <string name="new_start_directory">नया प्रारंभ डाइरेक्टरी: %s</string>
     <string name="action_scan">स्कैन करें</string>
     <string name="scan_media">मीडिया स्कैन करें</string>
@@ -372,8 +372,8 @@
         <item quantity="other">अन्य%d चलाये</item>
     </plurals>
     <plurals name="x_items">
-        <item quantity="one">%d item</item>
-        <item quantity="other">%d items</item>
+        <item quantity="one">%d आइटम</item>
+        <item quantity="other">%d आइटम्स</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">आपके लिए</string>
@@ -656,8 +656,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">कचरे में भेजें</string>
     <string name="trash_music_summary">हटाए गए फ़ाइलों को कचरे में भेजें।</string>
-    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
-    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
+    <string name="recursive_folder_actions_title">सबफ़ोल्डर्स पर असर डालने वाली क्रियाएं</string>
+    <string name="recursive_folder_actions_summary">चुनें कि कौन-से क्रियाएँ फोल्डर पर किए जाने पर सबफोल्डरों पर भी लागू होनी चाहिए।</string>
     <string name="enable_history_title">इनेबल हिस्ट्री</string>
     <string name="enable_history_summary">ऐप्लिकेशन को उन गानों को रिकॉर्ड करने की अनुमति देता है जिन्हें आप सुन रहे हैं। यदि आप इसे बंद करते हैं, तो पूरी हिस्ट्री हटा दी जाएगी।</string>
     <string name="history_interval_title">हिस्ट्री इंटरवल</string>
