@@ -251,6 +251,9 @@
     <string name="new_start_directory">Новая начальная директория: %s</string>
     <string name="action_scan">Сканировать</string>
     <string name="scan_media">Сканировать медиа</string>
+    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_positive">Scan anyway</string>
+    <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">Название или художник пусто.</string>
     <string name="update_image">Обновить изображение</string>
     <string name="restore_default">Восстановить по умолчанию</string>
@@ -522,6 +525,9 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Лицензии</string>
     <string name="author">Автор</string>
+    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="translators_title">Translators</string>
+    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">Чат Telegram</string>
     <string name="telegram_chat_summary">Присоединяйтесь к чату в Telegram и узнайте о новых релизах и новостях.</string>
     <string name="view_profile_on_github">Посмотреть профиль на GitHub</string>
@@ -610,7 +616,6 @@
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
-    <string name="carousel_effect_title">Эффект карусели</string>
     <string name="album_cover_effect_title">Эффект обложки альбома</string>
     <string name="lyrics_on_album_cover_title">Тексты песен на обложке</string>
     <string name="lyrics_on_album_cover_summary">Показывать текст песни вместо обложки, когда он доступен.</string>
