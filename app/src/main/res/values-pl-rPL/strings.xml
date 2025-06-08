@@ -251,6 +251,9 @@
     <string name="new_start_directory">Nowy katalog startowy: %s</string>
     <string name="action_scan">Skanuj</string>
     <string name="scan_media">Skanuj media</string>
+    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_positive">Scan anyway</string>
+    <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">Tytuł lub artysta jest pusty.</string>
     <string name="update_image">Aktualizuj obraz</string>
     <string name="restore_default">Przywróć domyślne</string>
@@ -522,6 +525,9 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Licencje</string>
     <string name="author">Autor</string>
+    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="translators_title">Translators</string>
+    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">Czat Telegramu</string>
     <string name="telegram_chat_summary">Dołącz do czatu w Telegramie i otrzymuj informacje o nowych wersjach i wiadomościach.</string>
     <string name="view_profile_on_github">Zobacz profil na GitHub</string>
