@@ -625,13 +625,13 @@
     <string name="search_auto_queue_title">Enfileirar todos os resultados da pesquisa</string>
     <string name="search_auto_queue_summary">Ao reproduzir uma música da tela de pesquisa, todos os outros resultados também serão colocados na fila.</string>
     <string name="remember_shuffle_mode_title">Lembrar modo aleatório</string>
-    <string name="remember_shuffle_mode_summary">Modo aleatório permanecerá ao selecionar uma nova lista de músicas.</string>
+    <string name="remember_shuffle_mode_summary">O modo aleatório permanecerá ativado ao selecionar uma nova lista de músicas.</string>
     <string name="album_shuffle_mode_title">Modo aleatório do álbum</string>
     <string name="artist_shuffle_mode_title">Modo aleatório do artista</string>
-    <string name="auto_play_on_skip_title">Reproduzir automaticamente em ignorar</string>
+    <string name="auto_play_on_skip_title">Reproduzir automaticamente ao ignorar</string>
     <string name="auto_play_on_skip_summary">Se a reprodução estiver pausada, tocar em Anterior ou Próximo iniciará a música.</string>
     <string name="rewind_with_back_title">"Retroceder com 'Anterior'"</string>
-    <string name="rewind_with_back_summary">Retroceder a reprodução para o início ou mover-se para a faixa anterior se a atual estiver no início.</string>
+    <string name="rewind_with_back_summary">Retrocede para o começo da faixa ou muda para a anterior, caso esteja no início.</string>
     <string name="fast_forward_title">Avanço rápido</string>
     <string name="fast_forward_summary">"Configurar manter o botão 'Pular' pressionado."</string>
     <string name="fast_backward_title">Rápido para trás</string>
