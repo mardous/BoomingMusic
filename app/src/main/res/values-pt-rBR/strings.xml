@@ -251,7 +251,7 @@
     <string name="new_start_directory">Nova pasta inicial: %s</string>
     <string name="action_scan">Escanear</string>
     <string name="scan_media">Varredura de mídia</string>
-    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_message">Geralmente, o Android detecta e indexa automaticamente os arquivos de mídia no seu dispositivo, então o escaneamento manual normalmente não é necessário.</string>
     <string name="scan_media_positive">Scan anyway</string>
     <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">O título ou artista está vazio.</string>
@@ -509,8 +509,8 @@
     <string name="licenses">Licenças</string>
     <string name="author">Autor</string>
     <string name="acknowledgments_title">Acknowledgment</string>
-    <string name="translators_title">Translators</string>
-    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="translators_title">Tradutores</string>
+    <string name="translators_summary">Agradecemos a todos que disponibilizam o Booming Music em diversos idiomas.</string>
     <string name="telegram_chat">Chat do telegram</string>
     <string name="telegram_chat_summary">Junte-se ao chat no Telegram e receba informações sobre novos lançamentos e notícias.</string>
     <string name="view_profile_on_github">Ver perfil no GitHub</string>
