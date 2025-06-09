@@ -104,10 +104,10 @@
     <string name="do_you_want_to_clear_the_whitelist">क्या आप श्वेतसूची साफ़ करना चाहते हैं?</string>
     <string name="action_delete_from_device">डिवाइस से हटाएँ</string>
     <string name="deleted_one_song">एक गाना हटा दिया गया</string>
-    <string name="deleted_x_songs">हटाए गए %1 $ डी गाने</string>
+    <string name="deleted_x_songs">हटाए गए %1$d डी गाने</string>
     <string name="delete_song_title">गीत हटाएं</string>
     <string name="delete_songs_title">गाने हटाएं</string>
-    <string name="delete_x_songs">%1$d गीत हटाएँ?</string>
+    <string name="delete_x_songs">%d गीत हटाएँ?</string>
     <string name="delete_the_song_x">क्या आप गीत %s हटाना चाहते हैं?</string>
     <string name="deleting_songs">गाने हटा रहे हैं, रुको…</string>
     <string name="song_x_of_x">%1$d में से %2$d • %3$s</string>
@@ -371,8 +371,8 @@
         <item quantity="other">अन्य %d बार</item>
     </plurals>
     <plurals name="x_plays">
-        <item quantity="one">चलाये</item>
-        <item quantity="other">अन्य%d चलाये</item>
+        <item quantity="one">%d पुनरुत्पादन</item>
+        <item quantity="other">%d प्रतिकृतियाँ</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d आइटम</item>
