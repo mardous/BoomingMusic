@@ -621,7 +621,7 @@
     <string name="replaygain_source_mode_title">Modo de origem</string>
     <string name="replaygain_preamp_title">Nível de pré-amplificação</string>
     <string name="replaygain_preamp_summary">Definir o nível de volume quando o ReplayGain estiver habilitado.</string>
-    <string name="queue_next_mode_title">Modo \"Próxima Fila\"</string>
+    <string name="queue_next_mode_title">Modo \"Enfileirar a seguir\"</string>
     <string name="search_auto_queue_title">Enfileirar todos os resultados da pesquisa</string>
     <string name="search_auto_queue_summary">Ao reproduzir uma música da tela de pesquisa, todos os outros resultados também serão colocados na fila.</string>
     <string name="remember_shuffle_mode_title">Lembrar modo aleatório</string>
