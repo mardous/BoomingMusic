@@ -46,13 +46,13 @@
     <string name="continue_action">Continuar</string>
     <string name="select_all_title">Selecionar todos</string>
     <string name="x_selected">%d selecionado(s)</string>
-    <string name="playing_notification_description">A notificação de reprodução fornece ações para reprodução/pausa, etc.</string>
+    <string name="playing_notification_description">A notificação de reprodução fornece ações para reproduzir/pausar, etc.</string>
     <string name="playing_notification_name">Notificação de reprodução</string>
     <string name="action_scan_directory">Escanear diretório</string>
     <string name="no_device_playlists">Nenhuma playlist</string>
     <string name="select_songs_title">Selecionar músicas</string>
     <string name="playlist_x_is_empty">A playlist %s está vazia.</string>
-    <string name="playlist_name_cannot_be_empty">Nome da playlist não pode estar vazio</string>
+    <string name="playlist_name_cannot_be_empty">O nome da playlist não pode estar vazio</string>
     <string name="imported_playlist_x">Playlist importada \"%1$s\".</string>
     <string name="could_not_import_the_playlist_x">Não foi possível importar a playlist \"%s\"</string>
     <string name="there_are_no_importable_playlists">Não há listas de reprodução importáveis.</string>
@@ -82,7 +82,7 @@
     <string name="created_playlist_x">Playlist \'%1$s \' criada.</string>
     <string name="could_not_create_playlist">Não foi possível criar a playlist.</string>
     <string name="inserted_one_song_into_playlist_x">Uma música foi inserida na playlist %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Inserido músicas %1$d na playlist %2$s.</string>
+    <string name="inserted_x_songs_into_playlist_x">Inserido %1$d músicas na playlist %2$s.</string>
     <string name="playlist_exists">A playlist %s já existe.</string>
     <string name="remove_song_from_playlist_title">Remover música da playlist</string>
     <string name="remove_songs_from_playlist_title">Remover músicas da playlist</string>
@@ -107,7 +107,7 @@
     <string name="deleted_x_songs">Músicas %1$d excluídas</string>
     <string name="delete_song_title">Deletar música</string>
     <string name="delete_songs_title">Excluir músicas</string>
-    <string name="delete_x_songs">Excluir músicas %d?</string>
+    <string name="delete_x_songs">Excluir %d músicas?</string>
     <string name="delete_the_song_x">Excluir a música %s?</string>
     <string name="deleting_songs">Excluindo músicas, aguarde…</string>
     <string name="song_x_of_x">%1$d de %2$d • %3$s</string>
@@ -118,7 +118,7 @@
     <string name="unplayable_file">Não foi possível reproduzir esta música.</string>
     <string name="unplayable_file_code_x">Não foi possível reproduzir esta música (código: %d).</string>
     <string name="permission_external_storage_title">Acesso ao armazenamento</string>
-    <string name="permission_external_storage_description">O aplicativo precisa de permissão para acessar seu dispositivo de armazenamento para reproduzir músicas</string>
+    <string name="permission_external_storage_description">O aplicativo precisa de permissão para acessar o armazenamento do seu dispositivo para reproduzir músicas</string>
     <string name="permission_external_storage_denied">Você deve conceder permissão para acessar o armazenamento externo.</string>
     <string name="permission_bluetooth_title">Dispositivos próximos</string>
     <string name="permission_bluetooth_description">O aplicativo precisa de permissão de dispositivos próximos para verificar por dispositivos bluetooth</string>
@@ -252,7 +252,7 @@
     <string name="action_scan">Escanear</string>
     <string name="scan_media">Varredura de mídia</string>
     <string name="scan_media_message">Geralmente, o Android detecta e indexa automaticamente os arquivos de mídia no seu dispositivo, então o escaneamento manual normalmente não é necessário.</string>
-    <string name="scan_media_positive">Scan anyway</string>
+    <string name="scan_media_positive">Escanear mesmo assim</string>
     <string name="scan_finished">Scan finished.</string>
     <string name="album_or_artist_empty">O título ou artista está vazio.</string>
     <string name="update_image">Atualizar imagem</string>
