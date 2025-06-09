@@ -124,7 +124,7 @@
     <string name="permission_bluetooth_description">O aplicativo precisa de permissão de dispositivos próximos para verificar por dispositivos bluetooth</string>
     <string name="permission_bluetooth_denied">Permissão de dispositivos próximos negada.</string>
     <string name="permission_exact_alarms_title">Programar alarmes exatos (opcional)</string>
-    <string name="permission_exact_alarms_description">Permissão para agendar alarmes exatos é necessária para que o temporizador da suspensão funcione corretamente</string>
+    <string name="permission_exact_alarms_description">Permissão para agendar alarmes exatos é necessária para que o temporizador funcione corretamente</string>
     <string name="permission_ringtone_title">Toque (opcional)</string>
     <string name="permission_ringtone_description">O aplicativo precisa de permissão para acessar as configurações do seu dispositivo para definir músicas como toque</string>
     <string name="permission_request_write_settings"><![CDATA[Você deve permitir que o Booming Music modifique as configurações do sistema para definir <b>%s</b> como seu toque]]></string>
@@ -139,8 +139,8 @@
     <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> não foi encontrado.]]></string>
     <string name="some_files_are_not_listed_in_the_media_store">Alguns arquivos não estão listados no armazenamento de mídia.</string>
     <string name="nothing_to_scan">Nada para verificar</string>
-    <string name="scanned_x_of_x_files">Escaneado arquivos %1$d do %2$d.</string>
-    <string name="could_not_scan_files">Não foi possível verificar arquivos %d.</string>
+    <string name="scanned_x_of_x_files">Escaneado %1$d de %2$d arquivos.</string>
+    <string name="could_not_scan_files">Não foi possível escanear %d arquivos.</string>
     <string name="select_storage_title">Selecionar armazenamento</string>
     <string name="app_widget_big_name">Grande</string>
     <string name="app_widget_simple_name">Simples</string>
@@ -158,13 +158,13 @@
     <string name="action_remove_from_favorites">Remover dos Favoritos</string>
     <string name="added_to_favorites_label">Adicionado aos Favoritos</string>
     <string name="removed_from_favorites_label">Removido dos Favoritos</string>
-    <string name="toggle_favorite">Adicionar aos Favoritos</string>
+    <string name="toggle_favorite">Adicionar/remover dos Favoritos</string>
     <string name="action_add_to_playlist">Adicionar à playlist</string>
     <string name="action_remove_from_playlist">Remover da playlist</string>
     <string name="action_add_to_playing_queue">Adicionar à fila de reprodução</string>
     <string name="action_remove_from_playing_queue">Remover da fila de reprodução</string>
     <string name="x_removed_from_playing_queue">%s removido</string>
-    <string name="put_after_current_track">Colocar faixa atual</string>
+    <string name="put_after_current_track">Adicionar após a faixa atual</string>
     <string name="undo_action">Desfazer</string>
     <string name="set_artist_image">Definir imagem do artista</string>
     <string name="reset_artist_image">Redefinir imagem do artista</string>
@@ -176,7 +176,7 @@
     <string name="action_go_to_artist">Ir para o Artista</string>
     <string name="action_go_to_genre">Ir para Gênero</string>
     <string name="added_title_to_playing_queue">"Adicionado 1 título à lista de reprodução."</string>
-    <string name="added_x_titles_to_playing_queue">Títulos %1$d adicionados à fila de reprodução.</string>
+    <string name="added_x_titles_to_playing_queue">Adicionados %1$d títulos à fila de reprodução.</string>
     <string name="next_song_label">Próxima Música</string>
     <string name="next_song_x">Próximo • %1$s</string>
     <string name="next_song_x_by_artist_x">Próximo • %1$s por %2$s</string>
@@ -184,7 +184,7 @@
     <string name="label_more_from_artist">Mais do artista</string>
     <string name="label_more_from_x">Mais de %s</string>
     <string name="various_artists">Vários artistas</string>
-    <string name="unknown_artist">Artista Desconhecido</string>
+    <string name="unknown_artist">Artista desconhecido</string>
     <string name="unknown_genre">Gênero desconhecido</string>
     <string name="unknown_year">Ano desconhecido</string>
     <string name="no_songs_label">Nenhuma música</string>
@@ -215,7 +215,7 @@
     <string name="track_play_counts">Contagem de reprodução</string>
     <string name="song_stat_never_label">nunca tocado</string>
     <string name="song_stat_one_time_label">tocou uma vez em %s</string>
-    <string name="song_stat_label">tocado %1$d vezes, último estava em %2$s</string>
+    <string name="song_stat_label">tocada %1$d vezes, última vez foi em %2$s</string>
     <string name="horizontal_albums">Álbuns horizontais</string>
     <string name="ignore_singles">Ignorar singles</string>
     <string name="action_view_type">Tipo de exibição</string>
@@ -293,7 +293,7 @@
     <string name="label_last_modified">Última modificação</string>
     <string name="label_audio_header">Cabeçalho do áudio</string>
     <string name="label_variable_bitrate">Taxa de bits variável</string>
-    <string name="label_loss_less">Perder menos</string>
+    <string name="label_loss_less">Sem perda</string>
     <string name="label_bit_rate">Taxa de bits</string>
     <string name="label_sampling_rate">Taxa de amostragem</string>
     <string name="replay_gain">ReplayGain</string>
@@ -306,7 +306,7 @@
     <string name="disc">Disco</string>
     <string name="disc_total">Discos totais</string>
     <string name="lyrics">Letras</string>
-    <string name="lyricist">Letra</string>
+    <string name="lyricist">Letrista</string>
     <string name="edit_tags_action">Editar etiquetas</string>
     <string name="edit_lyrics_action">Editar letra</string>
     <string name="open_lyrics_editor">Abrir editor de letras</string>
@@ -319,7 +319,7 @@
     <string name="connection_unavailable">Conexão indisponível.</string>
     <string name="you_have_to_select_at_least_one_category">Você deve selecionar pelo menos uma categoria</string>
     <string name="you_cannot_select_more_than_five_categories">Você não pode selecionar mais de cinco categorias.</string>
-    <string name="auto_limited_listing_title">Listagem limitada enquanto dirige</string>
+    <string name="auto_limited_listing_title">Conteúdo limitado ao dirigir</string>
     <string name="auto_limited_listing_subtitle">Abra o aplicativo para ver a lista completa</string>
     <string name="backup_settings">Configurações</string>
     <string name="backup_synced_lyrics">Letras sincronizadas</string>
@@ -332,7 +332,7 @@
     <string name="data_restored_successfully">Dados restaurados com sucesso.</string>
     <!-- Audio output devices-->
     <string name="output_device_title">Dispositivo de saída</string>
-    <string name="audio_device_battery_level">Nível da bateria: %d%% aprovar.</string>
+    <string name="audio_device_battery_level">Nível da bateria: aproximadamente %d%%.</string>
     <string name="audio_device_aux_line">Linha de Aux</string>
     <string name="audio_device_bluetooth">Dispositivo Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
