@@ -387,41 +387,41 @@
     <string name="recent_albums">Álbuns recentes</string>
     <string name="no_suggestions">Não há sugestões para você</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">Puro aleatório</string>
+    <string name="shuffle_mode_pure_random">Totalmente aleatório</string>
     <string name="shuffle_mode_most_played">Mais reproduzidas</string>
     <string name="shuffle_mode_most_played_artists">Artistas mais reproduzidos</string>
     <string name="shuffle_mode_most_played_albums">Álbuns mais reproduzidos</string>
     <string name="shuffle_mode_favorite_songs">Favoritos primeiro</string>
     <string name="shuffle_mode_forgotten_songs">Músicas esquecidas</string>
-    <string name="shuffle_mode_recently_added">Adicionados Recentemente</string>
+    <string name="shuffle_mode_recently_added">Adicionados recentemente</string>
     <string name="shuffle_mode_combined">Mix inteligente</string>
     <string name="shuffle_mode_pure_random_description">Totalmente aleatório.</string>
-    <string name="shuffle_mode_most_played_description">Favorece suas músicas mais tocadas.</string>
-    <string name="shuffle_mode_most_played_artists_description">Favorece músicas de seus principais artistas.</string>
-    <string name="shuffle_mode_most_played_albums_description">Favorece músicas de seus álbuns mais reproduzidos.</string>
-    <string name="shuffle_mode_favorite_songs_description">Dá prioridade a suas músicas favoritas.</string>
-    <string name="shuffle_mode_forgotten_songs_description">Prioriza músicas que você não tocou há algum tempo.</string>
-    <string name="shuffle_mode_recently_added_description">Favorece músicas adicionadas recentemente à sua biblioteca.</string>
-    <string name="shuffle_mode_combined_description">Mix baseado em favoritos, tocados e recentes</string>
+    <string name="shuffle_mode_most_played_description">Prioriza suas músicas mais ouvidas.</string>
+    <string name="shuffle_mode_most_played_artists_description">Prioriza músicas de seus principais artistas.</string>
+    <string name="shuffle_mode_most_played_albums_description">Prioriza músicas dos álbuns mais reproduzidos.</string>
+    <string name="shuffle_mode_favorite_songs_description">Prioriza suas músicas favoritas.</string>
+    <string name="shuffle_mode_forgotten_songs_description">Prioriza músicas que você não reproduziu há algum tempo.</string>
+    <string name="shuffle_mode_recently_added_description">Prioriza músicas adicionadas recentemente à sua biblioteca.</string>
+    <string name="shuffle_mode_combined_description">Mix com base nos seus favoritos, mais tocadas e recentes.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizador</string>
     <string name="share_eq_configuration">Compartilhar configuração do EQ</string>
     <string name="there_is_nothing_to_export">Não há nada para exportar.</string>
     <string name="there_is_nothing_to_import">Não há nada para importar.</string>
     <string name="there_are_no_saved_configurations">Não há configurações salvas.</string>
-    <string name="could_not_create_configurations_file">Não foi possível criar arquivo de configurações.</string>
+    <string name="could_not_create_configurations_file">Não foi possível criar o arquivo de configurações.</string>
     <string name="configuration_exported_successfully">Configuração exportada com sucesso.</string>
     <string name="could_not_export_configuration">Falha ao exportar configuração.</string>
     <string name="export_configuration">Exportar configuração</string>
     <string name="import_configuration">Importar configuração</string>
-    <string name="imported_x_presets">Predefinições %d importadas.</string>
+    <string name="imported_x_presets">%d predefinições importadas.</string>
     <string name="no_preset_imported">Nenhuma predefinição importada.</string>
     <string name="share_configuration">Compartilhar configuração</string>
     <string name="select_configurations_to_share">Selecione as configurações para compartilhar:</string>
     <string name="reset_equalizer">Redefine o equalizador</string>
     <string name="select_configurations_to_export">Selecione as configurações para exportar:</string>
     <string name="select_a_file_to_save_exported_configurations">Selecione um arquivo para salvar as configurações exportadas.</string>
-    <string name="select_a_file_containing_booming_eq_presets">Selecione um arquivo que contenha predefinições do EQ de Música.</string>
+    <string name="select_a_file_containing_booming_eq_presets">Selecione um arquivo que contenha predefinições do EQ do Booming Music.</string>
     <string name="select_configurations_to_import">Selecione configurações para importar:</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Tem certeza que deseja redefinir o equalizador?
         \n\nIsto irá limpar todas as suas predefinições.</string>
@@ -461,7 +461,7 @@
     <string name="custom">Personalizado</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostrar letras</string>
-    <string name="action_hide_lyrics">Ocultar letra</string>
+    <string name="action_hide_lyrics">Ocultar letras</string>
     <string name="plain_lyrics">Simples</string>
     <string name="synced_lyrics">Sincronizado</string>
     <string name="embedded_lyrics">Incorporado</string>
@@ -483,13 +483,13 @@
     <string name="no_synced_lyrics_found">Nenhuma letra sincronizada encontrada</string>
     <string name="lyrics_were_updated_successfully">A letra foi atualizada com sucesso.</string>
     <string name="failed_to_update_lyrics">Falha ao atualizar a letra.</string>
-    <string name="lyrics_source_lrc_file">Letras sincronizadas vêm de um arquivo LRC. As alterações serão salvas diretamente nesse arquivo.</string>
-    <string name="lyrics_source_embedded_synced">Letras incorporadas estão sincronizadas. Elas terão prioridade maior do que as letras baixadas.</string>
+    <string name="lyrics_source_lrc_file">As letras sincronizadas vêm de um arquivo LRC. As alterações serão salvas diretamente nesse arquivo.</string>
+    <string name="lyrics_source_embedded_synced">As letras incorporadas estão sincronizadas. Elas terão maior prioridade do que as letras baixadas.</string>
     <!-- Sleep timer -->
-    <string name="action_sleep_timer">Temporizador de sono</string>
+    <string name="action_sleep_timer">Temporizador</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar o temporizador atual</string>
     <string name="sleep_timer_cancel_current_timer_x">Cancelar o temporizador atual (%s)</string>
-    <string name="sleep_timer_canceled">Temporizador cancelado</string>
+    <string name="sleep_timer_canceled">Temporizador cancelado.</string>
     <string name="sleep_timer_set_action">Definir</string>
     <string name="sleep_timer_set">Temporizador definido para %d minutos a partir de agora.</string>
     <string name="sleep_timer_finish_current_music">Terminar última música</string>
@@ -502,7 +502,7 @@
     <string name="app_shortcut_last_added_short">Últimas Adicionadas</string>
     <!-- About page -->
     <string name="action_about">Sobre</string>
-    <string name="application">Solicitação</string>
+    <string name="application">Aplicativo</string>
     <string name="version">Versão</string>
     <string name="changelog">Mudanças</string>
     <string name="fork_on_github">Crie um fork no GitHub</string>
@@ -511,7 +511,7 @@
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Tradutores</string>
     <string name="translators_summary">Agradecemos a todos que disponibilizam o Booming Music em diversos idiomas.</string>
-    <string name="telegram_chat">Chat do telegram</string>
+    <string name="telegram_chat">Chat do Telegram</string>
     <string name="telegram_chat_summary">Junte-se ao chat no Telegram e receba informações sobre novos lançamentos e notícias.</string>
     <string name="view_profile_on_github">Ver perfil no GitHub</string>
     <string name="follow_on_telegram">DM no Telegram</string>
