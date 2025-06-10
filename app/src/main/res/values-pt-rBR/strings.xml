@@ -263,7 +263,7 @@
     <string name="pick_from_local_storage">Escolher do armazenamento local</string>
     <string name="about_x_title">Sobre %s</string>
     <string name="listeners_label">Ouvintes</string>
-    <string name="scrobbles_label">Deslocamentos</string>
+    <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Salvar capa do álbum</string>
     <string name="saving_cover_please_wait">Salvando capa, aguarde…</string>
     <string name="save_artwork_no_artwork">Nenhuma capa de álbum encontrada</string>
