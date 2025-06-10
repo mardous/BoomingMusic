@@ -247,7 +247,7 @@
     <string name="action_details">פרטים</string>
     <string name="action_set_as_start_directory">הגדר כתיקיית התחלה</string>
     <string name="action_go_to_start_directory">הגדר כתיקיית התחלה</string>
-    <string name="action_hierarchy_view">Hierarchy view</string>
+    <string name="action_hierarchy_view">תצוגת היררכיה</string>
     <string name="new_start_directory">ספריית התחלה חדשה: %s</string>
     <string name="action_scan">סרוק</string>
     <string name="scan_media">סרוק מדיה</string>
