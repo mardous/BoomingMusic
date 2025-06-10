@@ -292,9 +292,9 @@
     <string name="length">Comprimento</string>
     <string name="label_last_modified">Última modificação</string>
     <string name="label_audio_header">Cabeçalho do áudio</string>
-    <string name="label_variable_bitrate">Taxa de bits variável</string>
+    <string name="label_variable_bitrate">Bitrate Variável</string>
     <string name="label_loss_less">Sem perda</string>
-    <string name="label_bit_rate">Taxa de bits</string>
+    <string name="label_bit_rate">Bitrate</string>
     <string name="label_sampling_rate">Taxa de amostragem</string>
     <string name="replay_gain">ReplayGain</string>
     <string name="comment">Comentar</string>
@@ -311,8 +311,8 @@
     <string name="edit_lyrics_action">Editar letra</string>
     <string name="open_lyrics_editor">Abrir editor de letras</string>
     <string name="could_not_load_the_song_information">"Não foi possível carregar as informações da música."</string>
-    <string name="label_with_rg_info">Com informações RG</string>
-    <string name="label_without_rg_info">Sem informações RG</string>
+    <string name="label_with_rg_info">Com informações de RG</string>
+    <string name="label_without_rg_info">Sem informações de RG</string>
     <string name="album_and_year">Álbum e ano</string>
     <string name="song_info">Informações da música.</string>
     <string name="no_results">Nenhum resultado</string>
