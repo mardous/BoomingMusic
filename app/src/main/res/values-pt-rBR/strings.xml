@@ -134,7 +134,7 @@
     <string name="action_grant">Conceder</string>
     <string name="granted">Concedido</string>
     <string name="hello_there">Olá!</string>
-    <string name="welcome_to_x">Bem-vindo à %s</string>
+    <string name="welcome_to_x">Bem-vindo ao %s</string>
     <string name="get_started">Comece Agora</string>
     <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> não foi encontrado.]]></string>
     <string name="some_files_are_not_listed_in_the_media_store">Alguns arquivos não estão listados no armazenamento de mídia.</string>
