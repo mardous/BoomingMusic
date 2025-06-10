@@ -6,7 +6,7 @@
     <string name="action_queue_next">Fila seguinte</string>
     <string name="shuffle_all_label">Misturar tudo</string>
     <string name="action_play_pause">Reproduzir/Pausar</string>
-    <string name="action_pause">Suspender</string>
+    <string name="action_pause">Pausar</string>
     <string name="action_next">Próximo</string>
     <string name="action_previous">Anterior</string>
     <string name="action_cancel">Cancelar</string>
@@ -17,7 +17,7 @@
     <string name="import_action">Importar</string>
     <string name="create_action">Criar</string>
     <string name="search_label">Pesquisa</string>
-    <string name="search_hint">Pesquisar na sua biblioteca…</string>
+    <string name="search_hint">Pesquisar na biblioteca…</string>
     <string name="action_voice_search">Pesquisa por voz</string>
     <string name="speech_not_supported">Seu dispositivo não suporta entrada de voz</string>
     <string name="search_artist_x_label">Pesquisar artista: %s</string>
