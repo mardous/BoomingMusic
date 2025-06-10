@@ -30,7 +30,7 @@
     <string name="shuffle_mode_album">Álbum aleatório</string>
     <string name="shuffle_mode_artist">Artista aleatório</string>
     <string name="action_share">Compartilhar</string>
-    <string name="action_save">Guardar</string>
+    <string name="action_save">Salvar</string>
     <string name="what_do_you_want_to_share">O que você quer compartilhar?</string>
     <string name="the_audio_file">O arquivo de áudio</string>
     <string name="i_am_listening">Estou ouvindo…</string>
@@ -74,7 +74,7 @@
     <string name="saved_playlist_x">Playlist salva %s.</string>
     <string name="failed_to_save_playlist">Falha ao salvar a playlist.</string>
     <string name="saved_x_playlists">Salvo %1$d playlists.</string>
-    <string name="saved_x_playlists_failed_to_save_x">%1$d lista de reprodução salva,  %2$d com falha.</string>
+    <string name="saved_x_playlists_failed_to_save_x">%1$d lista(s) de reprodução salva(s),  %2$d com falha(s).</string>
     <string name="delete_playlist_title">Excluir playlist</string>
     <string name="delete_playlists_title">Excluir playlists</string>
     <string name="delete_playlist_x"><![CDATA[Apagar playlist <b>%s</b>?]]></string>
@@ -105,7 +105,7 @@
     <string name="action_delete_from_device">Excluir do dispositivo</string>
     <string name="deleted_one_song">Uma música excluída</string>
     <string name="deleted_x_songs">%1$d músicas excluídas</string>
-    <string name="delete_song_title">Deletar música</string>
+    <string name="delete_song_title">Excluir música</string>
     <string name="delete_songs_title">Excluir músicas</string>
     <string name="delete_x_songs">Excluir %d músicas?</string>
     <string name="delete_the_song_x">Excluir a música %s?</string>
@@ -114,7 +114,7 @@
     <string name="by_artist_x">por %s</string>
     <string name="no_equalizer">Nenhum equalizador encontrado.</string>
     <string name="audio_focus_denied">Foco de áudio negado.</string>
-    <string name="no_audio_ID">Áudio de ID ruim.</string>
+    <string name="no_audio_ID">ID de áudio inválido.</string>
     <string name="unplayable_file">Não foi possível reproduzir esta música.</string>
     <string name="unplayable_file_code_x">Não foi possível reproduzir esta música (código: %d).</string>
     <string name="permission_external_storage_title">Acesso ao armazenamento</string>
@@ -138,7 +138,7 @@
     <string name="get_started">Comece Agora</string>
     <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> não foi encontrado.]]></string>
     <string name="some_files_are_not_listed_in_the_media_store">Alguns arquivos não estão listados no armazenamento de mídia.</string>
-    <string name="nothing_to_scan">Nada para verificar</string>
+    <string name="nothing_to_scan">Nada para escanear</string>
     <string name="scanned_x_of_x_files">Escaneado %1$d de %2$d arquivos.</string>
     <string name="could_not_scan_files">Não foi possível escanear %d arquivos.</string>
     <string name="select_storage_title">Selecionar armazenamento</string>
@@ -163,7 +163,7 @@
     <string name="action_remove_from_playlist">Remover da playlist</string>
     <string name="action_add_to_playing_queue">Adicionar à fila de reprodução</string>
     <string name="action_remove_from_playing_queue">Remover da fila de reprodução</string>
-    <string name="x_removed_from_playing_queue">%s removido</string>
+    <string name="x_removed_from_playing_queue">%s removido(s)</string>
     <string name="put_after_current_track">Adicionar após a faixa atual</string>
     <string name="undo_action">Desfazer</string>
     <string name="set_artist_image">Definir imagem do artista</string>
@@ -206,11 +206,11 @@
     <string name="composers_label">Compositores</string>
     <string name="conductors_label">Regentes</string>
     <string name="publishers_label">Editores</string>
-    <string name="favorites_label">Atalhos</string>
+    <string name="favorites_label">Favoritos</string>
     <string name="last_added_label">Últimas Adicionadas</string>
-    <string name="top_tracks_label">Melhores faixas</string>
+    <string name="top_tracks_label">Melhores Faixas</string>
     <string name="history_label">Histórico</string>
-    <string name="not_recently_played">Não reproduzido recentemente</string>
+    <string name="not_recently_played">Sem Reprodução Recente</string>
     <string name="play_info">Informações de reprodução.</string>
     <string name="track_play_counts">Contagem de reprodução</string>
     <string name="song_stat_never_label">nunca tocado</string>
@@ -253,7 +253,7 @@
     <string name="scan_media">Escanear por mídias</string>
     <string name="scan_media_message">Geralmente, o Android detecta e indexa automaticamente os arquivos de mídia no seu dispositivo, então o escaneamento manual normalmente não é necessário.</string>
     <string name="scan_media_positive">Escanear mesmo assim</string>
-    <string name="scan_finished">Scan finished.</string>
+    <string name="scan_finished">Escaneamento concluído.</string>
     <string name="album_or_artist_empty">O título ou artista está vazio.</string>
     <string name="update_image">Atualizar imagem</string>
     <string name="restore_default">Restaurar padrão</string>
@@ -282,10 +282,10 @@
     <string name="title">Título</string>
     <string name="album">Álbum</string>
     <string name="artist">Artista</string>
-    <string name="album_artist">Artista álbum-artista</string>
+    <string name="album_artist">Álbum-artista</string>
     <string name="composer">Compositor</string>
     <string name="conductor">Regente</string>
-    <string name="publisher">Editora</string>
+    <string name="publisher">Gravadora</string>
     <string name="genre">Gênero</string>
     <string name="year">Ano</string>
     <string name="release_years_label">Anos</string>
@@ -298,16 +298,16 @@
     <string name="label_sampling_rate">Taxa de amostragem</string>
     <string name="replay_gain">ReplayGain</string>
     <string name="comment">Comentar</string>
-    <string name="last_played">Último jogado</string>
+    <string name="last_played">Última reproduzida</string>
     <string name="played">Reproduzido</string>
     <string name="skipped">Ignorado</string>
-    <string name="track">Acompanhar</string>
+    <string name="track">Faixa</string>
     <string name="track_total">Total de Faixas</string>
     <string name="disc">Disco</string>
     <string name="disc_total">Discos totais</string>
     <string name="lyrics">Letras</string>
     <string name="lyricist">Letrista</string>
-    <string name="edit_tags_action">Editar etiquetas</string>
+    <string name="edit_tags_action">Editar tags</string>
     <string name="edit_lyrics_action">Editar letra</string>
     <string name="open_lyrics_editor">Abrir editor de letras</string>
     <string name="could_not_load_the_song_information">"Não foi possível carregar as informações da música."</string>
@@ -333,7 +333,7 @@
     <!-- Audio output devices-->
     <string name="output_device_title">Dispositivo de saída</string>
     <string name="audio_device_battery_level">Nível da bateria: aproximadamente %d%%.</string>
-    <string name="audio_device_aux_line">Linha de Aux</string>
+    <string name="audio_device_aux_line">Entrada Auxiliar</string>
     <string name="audio_device_bluetooth">Dispositivo Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
     <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
@@ -376,7 +376,7 @@
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d item</item>
-        <item quantity="other">%d items</item>
+        <item quantity="other">%d itens</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Para você</string>
@@ -508,7 +508,7 @@
     <string name="fork_on_github">Crie um fork no GitHub</string>
     <string name="licenses">Licenças</string>
     <string name="author">Autor</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="acknowledgments_title">Agradecimentos</string>
     <string name="translators_title">Tradutores</string>
     <string name="translators_summary">Agradecemos a todos que disponibilizam o Booming Music em diversos idiomas.</string>
     <string name="telegram_chat">Chat do Telegram</string>
@@ -663,7 +663,7 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Enviar para lixeira</string>
     <string name="trash_music_summary">Enviar arquivos excluídos para a lixeira.</string>
-    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_title">Ações aplicadas às subpastas</string>
     <string name="recursive_folder_actions_summary">Selecione quais ações também serão aplicadas às subpastas quando feitas em uma pasta.</string>
     <string name="enable_history_title">Habilitar Histórico</string>
     <string name="enable_history_summary">Permite que o aplicativo registre as músicas que você ouviu. Se você desativar, todo o histórico será apagado.</string>
@@ -672,7 +672,7 @@
     <string name="whitelist_title">Lista Branca</string>
     <string name="whitelist_summary">Apenas o conteúdo das pastas na lista branca é exibido em sua biblioteca.</string>
     <string name="blacklist_title">Lista Negra</string>
-    <string name="blacklist_summary">O conteúdo das pastas na lista negra será oculto de sua biblioteca.</string>
+    <string name="blacklist_summary">O conteúdo das pastas na lista negra não serão exibidos na sua biblioteca.</string>
     <string name="artist_min_songs_title">Número mínimo de música do artista</string>
     <string name="artist_min_songs_summary">O número de músicas (no mínimo) que um artista deve ter para aparecer na sua biblioteca.</string>
     <string name="album_min_songs_title">Contagem mínima de músicas no álbum</string>
