@@ -417,8 +417,8 @@
     <string name="imported_x_presets">%d predefinições importadas.</string>
     <string name="no_preset_imported">Nenhuma predefinição importada.</string>
     <string name="share_configuration">Compartilhar configuração</string>
-    <string name="select_configurations_to_share">Selecione as configurações para compartilhar:</string>
-    <string name="reset_equalizer">Redefine o equalizador</string>
+    <string name="select_configurations_to_share">Selecione quais configurações compartilhar:</string>
+    <string name="reset_equalizer">Redefinir o equalizador</string>
     <string name="select_configurations_to_export">Selecione as configurações para exportar:</string>
     <string name="select_a_file_to_save_exported_configurations">Selecione um arquivo para salvar as configurações exportadas.</string>
     <string name="select_a_file_containing_booming_eq_presets">Selecione um arquivo que contenha predefinições do EQ do Booming Music.</string>
@@ -524,7 +524,7 @@
     <string name="share_app">Compartilhar este aplicativo</string>
     <string name="share_app_summary">Você pode ajudar este aplicativo a crescer compartilhando-o com os amigos.</string>
     <string name="send_invitation_message">Enviar mensagem de convite</string>
-    <string name="invitation_message_content">Oi. Confira o Booming Music! O melhor aplicativo para ouvir música local no Android. Você pode baixá-lo aqui: %s</string>
+    <string name="invitation_message_content">Olá! Confira o Booming Music! O melhor aplicativo para ouvir música local no Android. Você pode baixá-lo aqui: %s</string>
     <!-- Bug report -->
     <string name="report_an_issue">Reportar um problema</string>
     <string name="device_info">Informações do dispositivo</string>
