@@ -534,9 +534,9 @@
     <string name="saf_access_required_title">Acesso ao armazenamento necessário</string>
     <string name="saf_access_required_message">O Booming Music requer permissão para acessar esses arquivos. Por favor, selecione a pasta raiz onde seus arquivos de música são armazenados.</string>
     <string name="saf_show_files_button">Mostrar arquivos</string>
-    <string name="saf_error_uri">Não é possível obter URI SAF</string>
+    <string name="saf_error_uri">Não foi possível obter o URI do SAF</string>
     <string name="saf_write_failed">Falha ao escrever arquivo: %s</string>
-    <string name="saf_delete_failed">Falha ao deletar arquivo: %s</string>
+    <string name="saf_delete_failed">Falha ao excluir arquivo: %s</string>
     <string name="settings_title">Configurações</string>
     <string name="appearance_title">Aparência</string>
     <string name="appearance_summary">Alterar o tema e outras configurações visuais.</string>
@@ -557,7 +557,7 @@
     <string name="about_title">Sobre</string>
     <string name="about_summary">Booming Music %s, toque para obter mais informações.</string>
     <!-- Preference headers -->
-    <string name="general_header">Gerais</string>
+    <string name="general_header">Geral</string>
     <string name="library_header">Biblioteca</string>
     <string name="album_cover_header">Capa</string>
     <string name="artist_image_header">Imagem do artista</string>
@@ -635,11 +635,11 @@
     <string name="fast_forward_title">Avanço rápido</string>
     <string name="fast_forward_summary">"Mantenha o botão 'Pular' pressionado para avançar."</string>
     <string name="fast_backward_title">Retrocesso rápido</string>
-    <string name="fast_backward_summary">"Botão retrógrado, mantendo 'Anterior' pressionado."</string>
+    <string name="fast_backward_summary">"Mantenha o botão 'Anterior' pressionado para retroceder."</string>
     <string name="resume_on_connect_title">Retomar ao conectar</string>
-    <string name="resume_on_connect_summary">Retoma a reprodução quando o fone de ouvido está conectado.</string>
+    <string name="resume_on_connect_summary">Retoma a reprodução quando o fone de ouvido estiver conectado.</string>
     <string name="pause_on_disconnect_title">Pausar ao desconectar</string>
-    <string name="pause_on_disconnect_summary">Pausa a reprodução quando o fone de ouvido está desconectado. Recomendado.</string>
+    <string name="pause_on_disconnect_summary">Pausa a reprodução quando o fone de ouvido estiver desconectado. Recomendado.</string>
     <string name="resume_on_bluetooth_connect_title">Retomar ao conectar bluetooth</string>
     <string name="resume_on_bluetooth_connect_summary">Retoma a reprodução quando o fone de ouvido Bluetooth A2DP é conectado.</string>
     <string name="pause_on_bluetooth_disconnect_title">Pausar ao desconectar bluetooth</string>
