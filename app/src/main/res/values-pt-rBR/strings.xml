@@ -316,9 +316,9 @@
     <string name="album_and_year">Álbum e ano</string>
     <string name="song_info">Informações da música.</string>
     <string name="no_results">Nenhum resultado</string>
-    <string name="connection_unavailable">Conexão indisponível.</string>
+    <string name="connection_unavailable">Sem conexão.</string>
     <string name="you_have_to_select_at_least_one_category">Você deve selecionar pelo menos uma categoria</string>
-    <string name="you_cannot_select_more_than_five_categories">Você não pode selecionar mais de cinco categorias.</string>
+    <string name="you_cannot_select_more_than_five_categories">Você não pode selecionar mais do que cinco categorias.</string>
     <string name="auto_limited_listing_title">Conteúdo limitado ao dirigir</string>
     <string name="auto_limited_listing_subtitle">Abra o aplicativo para ver a lista completa</string>
     <string name="backup_settings">Configurações</string>
@@ -338,7 +338,7 @@
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
     <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
     <string name="audio_device_speaker">Alto-falante</string>
-    <string name="audio_device_builtin_speaker">Alto-falante embutido</string>
+    <string name="audio_device_builtin_speaker">Alto-falante do Dispositivo</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Fone de ouvido</string>
     <string name="audio_device_usb_device">Dispositivo USB</string>
@@ -359,11 +359,11 @@
         <item quantity="other">%d músicas</item>
     </plurals>
     <plurals name="x_albums">
-        <item quantity="one">Álbum %d</item>
-        <item quantity="other">Álbuns %d</item>
+        <item quantity="one">%d álbum</item>
+        <item quantity="other">%d álbuns</item>
     </plurals>
     <plurals name="x_artists">
-        <item quantity="one">Artista %d</item>
+        <item quantity="one">%d artista</item>
         <item quantity="other">%d artistas</item>
     </plurals>
     <plurals name="x_times">
@@ -383,8 +383,8 @@
     <string name="shuffle_action">Aleatório</string>
     <string name="top_artists">Artistas Populares</string>
     <string name="top_albums">Álbuns Populares</string>
-    <string name="recent_artists">Artistas recentes</string>
-    <string name="recent_albums">Álbuns recentes</string>
+    <string name="recent_artists">Artistas Recentes</string>
+    <string name="recent_albums">Álbuns Recentes</string>
     <string name="no_suggestions">Não há sugestões para você</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Totalmente aleatório</string>
