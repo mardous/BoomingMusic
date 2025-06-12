@@ -712,7 +712,7 @@
     <string name="gradient">Degradê</string>
     <string name="peek">Espiar</string>
     <string name="plain">Plain</string>
-    <string name="m3_style"></string>
+    <string name="m3_style">M3</string>
     <string name="normal">normal</string>
     <string name="corner_size_none">None</string>
     <string name="corner_size_small">Small</string>
