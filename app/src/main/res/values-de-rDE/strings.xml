@@ -247,13 +247,13 @@
     <string name="action_details">Details</string>
     <string name="action_set_as_start_directory">Als Startverzeichnis festlegen</string>
     <string name="action_go_to_start_directory">Gehe zum Startverzeichnis</string>
-    <string name="action_hierarchy_view">Hierarchy view</string>
+    <string name="action_hierarchy_view">Hierarchie-Ansicht</string>
     <string name="new_start_directory">Neues Startverzeichnis: %s</string>
     <string name="action_scan">Scannen</string>
     <string name="scan_media">Medieninhalte scannen</string>
-    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
-    <string name="scan_media_positive">Scan anyway</string>
-    <string name="scan_finished">Scan finished.</string>
+    <string name="scan_media_message">Meist erkennt und indiziert Android automatisch die Mediendateien auf Deinem Gerät. Daher ist das manuelle Scannen normalerweise nicht erforderlich.</string>
+    <string name="scan_media_positive">Trotzdem scannen</string>
+    <string name="scan_finished">Scannen abgeschlossen.</string>
     <string name="album_or_artist_empty">Titel oder Interpret ist leer.</string>
     <string name="update_image">Bild aktualisieren</string>
     <string name="restore_default">Standard wiederherstellen</string>
@@ -377,7 +377,7 @@
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d item</item>
-        <item quantity="other">%d items</item>
+        <item quantity="other">%d Elemente</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Für Dich</string>
@@ -509,9 +509,9 @@
     <string name="fork_on_github">Auf GitHub forken</string>
     <string name="licenses">Lizenzen</string>
     <string name="author">Autor</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
-    <string name="translators_title">Translators</string>
-    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="acknowledgments_title">Danksagungen</string>
+    <string name="translators_title">Übersetzer*innen</string>
+    <string name="translators_summary">Danke an alle, die Booming Music in vielen Sprachen verfügbar machen.</string>
     <string name="telegram_chat">Telegram-Chat</string>
     <string name="telegram_chat_summary">Trete dem Chat auf Telegram bei und informiere Dich über neue Versionen und Neuigkeiten.</string>
     <string name="view_profile_on_github">Profil auf GitHub anzeigen</string>
@@ -664,8 +664,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">In den Papierkorb senden</string>
     <string name="trash_music_summary">Gelöschte Dateien in den Papierkorb senden.</string>
-    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
-    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
+    <string name="recursive_folder_actions_title">Aktionen, die Unterordner betreffen</string>
+    <string name="recursive_folder_actions_summary">Wähle aus, welche Aktionen auch für Unterordner gelten sollen, wenn sie auf einen Ordner angewendet werden.</string>
     <string name="enable_history_title">Verlauf aktivieren</string>
     <string name="enable_history_summary">Ermöglicht der App, die Lieder aufzuzeichnen, auf die Sie gerade gehört haben. Wenn Sie sie deaktivieren, wird der gesamte Verlauf gelöscht.</string>
     <string name="history_interval_title">Verlauf Intervall</string>
