@@ -593,9 +593,9 @@
     <string name="swipe_to_dismiss_title">Zum Verwerfen wischen</string>
     <string name="swipe_to_dismiss_summary">Wische über den Mini-Player nach unten, um die Wiedergabe zu stoppen und Warteschlangen zu leeren.</string>
     <string name="circle_button_title">Runde Wiedergabetaste</string>
-    <string name="swipe_album_cover_title">Album-Cover wischen</string>
+    <string name="swipe_album_cover_title">Über Album-Cover wischen</string>
     <string name="swipe_album_cover_summary">Wische über das Album-Cover nach links und rechts, um zwischen den Titeln zu springen.</string>
-    <string name="double_tap_on_album_cover_title">Doppeltippen auf Cover</string>
+    <string name="double_tap_on_album_cover_title">Auf Album-Cover doppeltippen</string>
     <string name="long_press_on_album_cover_title">Lange Drücken auf Cover</string>
     <string name="now_playing_corner_radius_title">Bild-Eckradius</string>
     <string name="now_playing_corner_radius_summary">Definiert die Rundung der Album-Cover-Ecken.</string>
