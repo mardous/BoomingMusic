@@ -709,7 +709,7 @@
     <string name="expanded">Expandido</string>
     <string name="full_cover">Capa Completa</string>
     <string name="gradient">Degradê</string>
-    <string name="peek">Espiar</string>
+    <string name="peek">Prévia</string>
     <string name="plain">Simples</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>
@@ -721,9 +721,9 @@
     <string name="cascading">Em cascata</string>
     <string name="depth">Profundidade</string>
     <string name="hinge">Dobradiça</string>
-    <string name="horizontal_flip">Inverter Horizontalmente</string>
-    <string name="vertical_flip">Inverter Verticalmente</string>
-    <string name="zoom_out">Diminuir a ampliação</string>
+    <string name="horizontal_flip">Inverter horizontalmente</string>
+    <string name="vertical_flip">Inverter verticalmente</string>
+    <string name="zoom_out">Diminuir o zoom</string>
     <string name="simple">Simples</string>
     <string name="stack">Pilha</string>
     <string name="add_after_playing_track">Reproduzir na sequência</string>
