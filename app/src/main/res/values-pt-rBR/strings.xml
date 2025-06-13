@@ -453,7 +453,7 @@
     <string name="reverb_preset_mediumroom">Sala média</string>
     <string name="reverb_preset_largeroom">Sala grande</string>
     <string name="reverb_preset_mediumhall">Salão médio</string>
-    <string name="reverb_preset_largehall">Salão grande</string>
+    <string name="reverb_preset_largehall">Sala grande</string>
     <string name="sound_settings">Configurações de som</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tempo</string>
