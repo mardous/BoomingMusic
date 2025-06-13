@@ -47,7 +47,7 @@
     <string name="select_all_title">Alles auswählen</string>
     <string name="x_selected">%d ausgewählt</string>
     <string name="playing_notification_description">Die Abspielbenachrichtigung ermöglicht Aktionen wie Wiedergabe/Pause usw.</string>
-    <string name="playing_notification_name">Abspielbenachrichtigung</string>
+    <string name="playing_notification_name">Wiedergabebenachrichtigung</string>
     <string name="action_scan_directory">Verzeichnis scannen</string>
     <string name="no_device_playlists">Keine Wiedergabelisten</string>
     <string name="select_songs_title">Titel auswählen</string>
@@ -147,8 +147,8 @@
     <string name="app_widget_small_name">Klein</string>
     <string name="now_playing">Aktuelle Wiedergabe</string>
     <string name="playing_queue_label">Warteschlange</string>
-    <string name="list_start">Anfang der Liste.</string>
-    <string name="list_end">Ende der Liste.</string>
+    <string name="list_start">Anfang der Liste</string>
+    <string name="list_end">Ende der Liste</string>
     <string name="empty_play_queue">Leere Warteschlange.</string>
     <string name="save_queue">Warteschlange speichern</string>
     <string name="clear_queue">Warteschlange leeren</string>
@@ -211,7 +211,7 @@
     <string name="top_tracks_label">Top-Titel</string>
     <string name="history_label">Verlauf</string>
     <string name="not_recently_played">Länger nicht gespielt</string>
-    <string name="play_info">Wiedergabe-Info.</string>
+    <string name="play_info">Wiedergabe-Info</string>
     <string name="track_play_counts">Abspiel-Anzahl</string>
     <string name="song_stat_never_label">noch nie abgespielt</string>
     <string name="song_stat_one_time_label">einmal auf %s abgespielt</string>
@@ -315,7 +315,7 @@
     <string name="label_with_rg_info">Mit RG-Info</string>
     <string name="label_without_rg_info">Ohne RG-Info</string>
     <string name="album_and_year">Album und Jahr</string>
-    <string name="song_info">Titel-Info.</string>
+    <string name="song_info">Titel-Info</string>
     <string name="no_results">Keine Ergebnisse</string>
     <string name="connection_unavailable">Verbindung nicht möglich.</string>
     <string name="you_have_to_select_at_least_one_category">Du musst mindestens eine Kategorie auswählen</string>
@@ -583,7 +583,7 @@
     <string name="remember_last_page_title">Letzte Ansicht merken</string>
     <string name="remember_last_page_summary">Beim Start zur zuletzt geöffnete Ansicht gehen.</string>
     <string name="start_page_title">Startseite</string>
-    <string name="tab_mode_title">Titel-Tabmodus</string>
+    <string name="tab_mode_title">Navigationsleisten-Beschriftung</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Bei Wiedergabe öffnen</string>
@@ -600,7 +600,7 @@
     <string name="now_playing_corner_radius_title">Bild-Eckradius</string>
     <string name="now_playing_corner_radius_summary">Definiert die Rundung der Album-Cover-Ecken.</string>
     <string name="carousel_effect_title">Karussell-Effekt</string>
-    <string name="album_cover_effect_title">Albumcover-Effekt</string>
+    <string name="album_cover_effect_title">Albumcover-Übergangseffekt</string>
     <string name="lyrics_on_album_cover_title">Liedtexte auf Albumcover</string>
     <string name="lyrics_on_album_cover_summary">Liedtexte statt Albumcover anzeigen, wenn verfügbar.</string>
     <string name="animate_controls_title">Steuerelemente animieren</string>
@@ -702,24 +702,24 @@
     <string name="dark_theme_name">Dunkel</string>
     <string name="black_theme_name">Schwarz</string>
     <string name="follow_system">System</string>
-    <string name="label_auto">Auto</string>
+    <string name="label_auto">Automatisch</string>
     <string name="labeled">Beschriftet</string>
     <string name="unlabeled">Unbeschriftet</string>
     <string name="selected">Auswahl beschriftet</string>
     <string name="compact">Kompakt</string>
     <string name="expanded">Erweitert</string>
-    <string name="full_cover">Gesamtes Cover</string>
+    <string name="full_cover">Vollbild-Cover</string>
     <string name="gradient">Farbverlauf</string>
-    <string name="peek">Spau</string>
+    <string name="peek">Vorschau</string>
     <string name="plain">Einfach</string>
-    <string name="m3_style">M3</string>
+    <string name="m3_style">Material 3</string>
     <string name="normal">Normal</string>
-    <string name="corner_size_none">Keine</string>
-    <string name="corner_size_small">Wenig</string>
+    <string name="corner_size_none">Keiner</string>
+    <string name="corner_size_small">Gering</string>
     <string name="corner_size_medium">Mittel</string>
     <string name="corner_size_large">Stark</string>
     <string name="corner_size_custom">Benutzerdefiniert</string>
-    <string name="cascading">Cascading</string>
+    <string name="cascading">Wasserfall</string>
     <string name="depth">Tiefe</string>
     <string name="hinge">Hinge</string>
     <string name="horizontal_flip">Horizontal spiegeln</string>
@@ -755,7 +755,7 @@
     <string name="label_never">Nie</string>
     <string name="label_nothing">Nichts</string>
     <string name="label_none">Keine</string>
-    <string name="player_color_mode_app_theme_title">App Thema</string>
+    <string name="player_color_mode_app_theme_title">App-Design</string>
     <string name="player_color_mode_app_theme_description">Verwende das Farbschema der App</string>
     <string name="player_color_mode_simple_color_title">Einfache Farbe</string>
     <string name="player_color_mode_simple_color_description">Verwende die Album-Farbe zur Einfärbung einiger Steuerelemente</string>
@@ -773,7 +773,7 @@
     <string name="only_wifi_title">Nur Wi-Fi</string>
     <string name="only_wifi_summary">Suche nur nach Updates, wenn Wi-Fi verbunden ist.</string>
     <string name="receive_experimental_updates_title">Erhalte experimentelle Updates</string>
-    <string name="receive_experimental_updates_summary">Bitte beachten Sie, dass diese Updates oft sehr instabil sind und für erfahrene Benutzer bestimmt sind.</string>
+    <string name="receive_experimental_updates_summary">Bitte beachte, dass diese Updates häufig instabil und für erfahrene Benutzer bestimmt sind.</string>
     <string name="search_for_update_title">Nach Update suchen</string>
     <string name="last_update_search_x">Letzte Prüfung: %s</string>
     <string name="checking_please_wait">Überprüfe, bitte warten…</string>
