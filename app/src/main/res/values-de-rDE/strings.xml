@@ -364,19 +364,19 @@
         <item quantity="other">%d Alben</item>
     </plurals>
     <plurals name="x_artists">
-        <item quantity="one">%d Künstler</item>
+        <item quantity="one">%d Interpret</item>
         <item quantity="other">%d Interpreten</item>
     </plurals>
     <plurals name="x_times">
-        <item quantity="one">%d Zeit</item>
+        <item quantity="one">%d-mal</item>
         <item quantity="other">%d-mal</item>
     </plurals>
     <plurals name="x_plays">
-        <item quantity="one">%d spielen</item>
+        <item quantity="one">%d Wiedergabe</item>
         <item quantity="other">%d Wiedergaben</item>
     </plurals>
     <plurals name="x_items">
-        <item quantity="one">%d item</item>
+        <item quantity="one">%d Element</item>
         <item quantity="other">%d Elemente</item>
     </plurals>
     <!-- Listen now -->
@@ -533,7 +533,7 @@
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Du wirst zum Issue-Tracker auf GitHub weitergeleitet.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Speicherzugriff erforderlich</string>
-    <string name="saf_access_required_message">Booming Music benötigt die Berechtigung auf diese Dateien zuzugreifen. Bitte wähle den übergeordneten Ordner, in dem Deine Musikdateien gespeichert sind.</string>
+    <string name="saf_access_required_message">Booming Music benötigt die Berechtigung, auf diese Dateien zuzugreifen. Bitte wähle den übergeordneten Ordner, in dem Deine Musikdateien gespeichert sind.</string>
     <string name="saf_show_files_button">Dateien anzeigen</string>
     <string name="saf_error_uri">SAF-URI kann nicht abgerufen werden</string>
     <string name="saf_write_failed">Datei-Schreibvorgang fehlgeschlagen: %s</string>
@@ -701,14 +701,14 @@
     <string name="light_theme_name">Hell</string>
     <string name="dark_theme_name">Dunkel</string>
     <string name="black_theme_name">Schwarz</string>
-    <string name="follow_system">System folgen</string>
+    <string name="follow_system">Systemstandard</string>
     <string name="label_auto">Auto</string>
     <string name="labeled">Beschriftet</string>
     <string name="unlabeled">Unbeschriftet</string>
-    <string name="selected">Ausgewählt</string>
+    <string name="selected">Auswahl beschriftet</string>
     <string name="compact">Kompakt</string>
     <string name="expanded">Erweitert</string>
-    <string name="full_cover">Voller Cover</string>
+    <string name="full_cover">Gesamtes Cover</string>
     <string name="gradient">Farbverlauf</string>
     <string name="peek">Spau</string>
     <string name="plain">Einfach</string>
