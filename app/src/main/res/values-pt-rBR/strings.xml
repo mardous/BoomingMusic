@@ -518,7 +518,7 @@
     <string name="write_an_email">Escreva um e-mail</string>
     <string name="support_development">Apoie o desenvolvimento</string>
     <string name="help_with_translations">Ajuda com traduções</string>
-    <string name="help_with_translations_summary">Você pode contribuir para o projeto ajudando a traduzir Booming Music para outros idiomas.</string>
+    <string name="help_with_translations_summary">Você pode contribuir para o projeto ajudando a traduzir o Booming Music para outros idiomas.</string>
     <string name="report_bugs">Relatar erros</string>
     <string name="report_bugs_summary">Reporte erros ou solicite novas funcionalidades.</string>
     <string name="share_app">Compartilhar este aplicativo</string>
@@ -603,7 +603,7 @@
     <string name="lyrics_on_album_cover_title">Letra na capa</string>
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música ao invés da capa quando disponível.</string>
     <string name="animate_controls_title">Animar controles</string>
-    <string name="animate_controls_summary">Animação ao abrir o painel do reprodutor.</string>
+    <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
@@ -616,7 +616,7 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reproduzir ao iniciar</string>
     <string name="play_on_startup_summary">Ao abrir o aplicativo, começa a reproduzir de onde parou.</string>
-    <string name="gapless_playback_title">Reprodução ininterrupta</string>
+    <string name="gapless_playback_title">Reprodução contínua</string>
     <string name="gapless_playback_summary">Transição suave entre músicas. Pode causar problemas de reprodução em alguns dispositivos.</string>
     <string name="replaygain_source_mode_title">Modo de origem</string>
     <string name="replaygain_preamp_title">Nível de pré-amplificação</string>
@@ -645,18 +645,18 @@
     <string name="pause_on_bluetooth_disconnect_title">Pausar ao desconectar bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Pausa a reprodução quando o fone de ouvido Bluetooth A2DP é desconectado. Recomendado.</string>
     <string name="ignore_audio_focus_title">Ignorar foco de áudio</string>
-    <string name="ignore_audio_focus_summary">Sempre reproduzir o áudio em segundo plano, independentemente de qualquer coisa que esteja sendo reproduzida.</string>
-    <string name="pause_on_transient_focus_loss_title">Perda de foco transitória</string>
-    <string name="pause_on_transient_focus_loss_summary">Pausar reprodução na perda transitória de foco (ou seja, notificações, chamadas recebidas).</string>
+    <string name="ignore_audio_focus_summary">Sempre reproduzir o áudio em segundo plano, independentemente do que já esteja sendo reproduzido.</string>
+    <string name="pause_on_transient_focus_loss_title">Perda temporária de foco de áudio</string>
+    <string name="pause_on_transient_focus_loss_summary">Pausar a reprodução na perda temporária de foco (i.e., notificações, chamadas recebidas).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Baixar metadados automaticamente</string>
-    <string name="ignore_media_store_album_covers_title">Ignorar capas do Armazenamento de Mídia</string>
+    <string name="ignore_media_store_album_covers_title">Ignorar capas Media Store</string>
     <string name="ignore_media_store_album_covers_summary">Isso pode ajudar a aumentar a qualidade das imagens, mas requer mais memória.</string>
     <string name="use_folder_album_cover_title">Usar imagens da pasta</string>
     <string name="use_folder_album_cover_summary">Se o arquivo de áudio não conter uma capa embutida, as imagens podem levar um pouco mais de tempo para carregar.</string>
     <string name="online_artist_images_title">Baixar imagens dos artistas</string>
     <string name="online_artist_images_summary">Isso depende da sua política de download de metadados.</string>
-    <string name="preferred_artist_image_size_title">Tamanho de imagem preferencial</string>
+    <string name="preferred_artist_image_size_title">Preferência do tamanho da imagem</string>
     <string name="delete_downloaded_lyrics_title">Excluir letras baixadas</string>
     <string name="delete_downloaded_lyrics_summary">Somente letras baixadas por Booming Music. Não afeta letras incorporadas em tags ID3v2 ou arquivos LRC.</string>
     <string name="lyrics_cleared">Letra apagada.</string>
