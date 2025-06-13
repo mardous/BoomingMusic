@@ -404,17 +404,17 @@
     <string name="recent_albums">אלבומים אחרונים</string>
     <string name="no_suggestions">אין הצעות עבורך</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">Pure random</string>
-    <string name="shuffle_mode_most_played">Most played</string>
-    <string name="shuffle_mode_most_played_artists">Most played artists</string>
-    <string name="shuffle_mode_most_played_albums">Most played albums</string>
-    <string name="shuffle_mode_favorite_songs">Favorites first</string>
-    <string name="shuffle_mode_forgotten_songs">Forgotten songs</string>
-    <string name="shuffle_mode_recently_added">Recently added</string>
+    <string name="shuffle_mode_pure_random">אקראי טהור</string>
+    <string name="shuffle_mode_most_played">המושמע ביותר</string>
+    <string name="shuffle_mode_most_played_artists">האמנים המושמעים ביותר</string>
+    <string name="shuffle_mode_most_played_albums">האלבומים המושמעים ביותר</string>
+    <string name="shuffle_mode_favorite_songs">מועדפים תחילה</string>
+    <string name="shuffle_mode_forgotten_songs">שירים שנשכחו</string>
+    <string name="shuffle_mode_recently_added">נוסף לאחרונה</string>
     <string name="shuffle_mode_combined">Smart mix</string>
     <string name="shuffle_mode_pure_random_description">Completely random shuffle.</string>
-    <string name="shuffle_mode_most_played_description">Favors your most played songs.</string>
-    <string name="shuffle_mode_most_played_artists_description">Favors songs from your top artists.</string>
+    <string name="shuffle_mode_most_played_description">מעדיף את השירים שאתה משמיע הכי הרבה.</string>
+    <string name="shuffle_mode_most_played_artists_description">מעדיף שירים מהאמנים המובילים שלך.</string>
     <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
     <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
     <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
