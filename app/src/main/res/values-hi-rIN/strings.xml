@@ -218,6 +218,7 @@
     <string name="song_stat_label">कुल %1$d बार खेला गया, अंतिम बार %2$s को।</string>
     <string name="horizontal_albums">क्षैतिज एल्बम</string>
     <string name="ignore_singles">एकल को अनदेखा करें</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">दृश्य प्रकार</string>
     <string name="view_type_normal">सामान्य</string>
     <string name="view_type_card">कार्ड</string>
@@ -748,6 +749,9 @@
     <string name="image_size_large">बड़ा (धीमा)</string>
     <string name="image_size_medium">माध्यम (डिफ़ॉल्ट, अनुशंसित)</string>
     <string name="image_size_small">छोटा (तेज़, कम गुणवत्ता)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">सिस्टम डिफॉल्ट</string>
     <string name="label_never">कभी नहीं</string>
     <string name="label_nothing">कुछ नहीं</string>
