@@ -218,6 +218,7 @@
     <string name="song_stat_label">reproduzida %1$d vezes, última vez foi em %2$s</string>
     <string name="horizontal_albums">Álbuns horizontais</string>
     <string name="ignore_singles">Ignorar singles</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">Tipo de exibição</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Cartão</string>
@@ -749,6 +750,9 @@
     <string name="image_size_large">Grande (mais lento)</string>
     <string name="image_size_medium">Médio (padrão, recomendado)</string>
     <string name="image_size_small">Pequeno (mais rápido, baixa qualidade)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">Padrão do sistema</string>
     <string name="label_never">Nunca</string>
     <string name="label_nothing">Nada</string>
