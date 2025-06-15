@@ -218,6 +218,7 @@
     <string name="song_stat_label">התנגן %1$d פעמים, האחרון היה ב-%2$s</string>
     <string name="horizontal_albums">אלבומים אופקיים</string>
     <string name="ignore_singles">התעלם מיחידים</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">סוג תצוגה</string>
     <string name="view_type_normal">רגיל</string>
     <string name="view_type_card">כרטיס</string>
@@ -766,6 +767,9 @@
     <string name="image_size_large">Large (slower)</string>
     <string name="image_size_medium">Medium (default, recommended)</string>
     <string name="image_size_small">Small (faster, low quality)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">System default</string>
     <string name="label_never">Never</string>
     <string name="label_nothing">Nothing</string>
