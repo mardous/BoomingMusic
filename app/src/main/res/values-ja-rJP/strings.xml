@@ -218,6 +218,7 @@
     <string name="song_stat_label">%1$d 回再生しました。最後に再生したのは %2$s でした</string>
     <string name="horizontal_albums">横方向のアルバム</string>
     <string name="ignore_singles">シングルは無視する</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">表示タイプ</string>
     <string name="view_type_normal">標準</string>
     <string name="view_type_card">カード</string>
@@ -742,6 +743,9 @@
     <string name="image_size_large">大 (遅い)</string>
     <string name="image_size_medium">中 (デフォルトで推奨)</string>
     <string name="image_size_small">小 (高速、低品質)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">システムのデフォルト</string>
     <string name="label_never">今後しない</string>
     <string name="label_nothing">なし</string>
