@@ -218,6 +218,7 @@
     <string name="song_stat_label">played %1$d times, last was on %2$s</string>
     <string name="horizontal_albums">Горизонтальні альбоми</string>
     <string name="ignore_singles">Ignore singles</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">Дивитись тип</string>
     <string name="view_type_normal">Нормальний</string>
     <string name="view_type_card">Картка</string>
@@ -766,6 +767,9 @@
     <string name="image_size_large">Великий (повільніше)</string>
     <string name="image_size_medium">Середній (за замовчуванням, рекомендовано)</string>
     <string name="image_size_small">Малий (швидкий, низька якість)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">Системні налаштування</string>
     <string name="label_never">Ніколи</string>
     <string name="label_nothing">Нічого</string>
