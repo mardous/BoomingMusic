@@ -218,6 +218,7 @@
     <string name="song_stat_label">spillede %1$d gange, sidst var på %2$s</string>
     <string name="horizontal_albums">Vandrette albummer</string>
     <string name="ignore_singles">Ignore singles</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">Vis type</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Kort</string>
@@ -750,6 +751,9 @@
     <string name="image_size_large">Stor (langsommere)</string>
     <string name="image_size_medium">Mellem (standard, anbefalet)</string>
     <string name="image_size_small">Lille (hurtigere, lav kvalitet)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">System standard</string>
     <string name="label_never">Aldrig</string>
     <string name="label_nothing">Intet</string>
