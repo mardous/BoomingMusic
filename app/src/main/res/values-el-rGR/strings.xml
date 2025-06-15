@@ -218,6 +218,7 @@
     <string name="song_stat_label">έπαιξε %1$d φορές, τελευταία ήταν στο %2$s</string>
     <string name="horizontal_albums">Οριζόντια άλμπουμ</string>
     <string name="ignore_singles">Ignore singles</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">Τύπος προβολής</string>
     <string name="view_type_normal">Κανονικό</string>
     <string name="view_type_card">Κάρτα</string>
@@ -750,6 +751,9 @@
     <string name="image_size_large">Μεγάλο (πιο αργό)</string>
     <string name="image_size_medium">Μεσαίο (προεπιλογή, συνιστάται)</string>
     <string name="image_size_small">Μικρό (ταχύτερη, χαμηλή ποιότητα)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">Προεπιλογή συστήματος</string>
     <string name="label_never">Ποτέ</string>
     <string name="label_nothing">Τίποτα</string>
