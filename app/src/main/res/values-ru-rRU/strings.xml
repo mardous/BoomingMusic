@@ -218,6 +218,7 @@
     <string name="song_stat_label">сыграно %1$d раз, последний был на %2$s</string>
     <string name="horizontal_albums">Горизонтальные альбомы</string>
     <string name="ignore_singles">Ignore singles</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">Просмотр типа</string>
     <string name="view_type_normal">Обычный</string>
     <string name="view_type_card">Карта</string>
@@ -766,6 +767,9 @@
     <string name="image_size_large">Большой (медленнее)</string>
     <string name="image_size_medium">Средний (по умолчанию, рекомендуется)</string>
     <string name="image_size_small">Маленькое (быстрее, низкое качество)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">По умолчанию</string>
     <string name="label_never">Никогда</string>
     <string name="label_nothing">Ничего</string>
