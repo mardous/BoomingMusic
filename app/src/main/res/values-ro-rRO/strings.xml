@@ -218,6 +218,7 @@
     <string name="song_stat_label">played %1$d times, last was on %2$s</string>
     <string name="horizontal_albums">Albume orizontale</string>
     <string name="ignore_singles">Ignore singles</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">Tip de vizualizare</string>
     <string name="view_type_normal">Normală</string>
     <string name="view_type_card">Card</string>
@@ -758,6 +759,9 @@
     <string name="image_size_large">Mare (mai lent)</string>
     <string name="image_size_medium">Mediu (implicit, recomandat)</string>
     <string name="image_size_small">Mici (mai rapid, de calitate inferioară)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">Implicit sistem</string>
     <string name="label_never">Niciodată</string>
     <string name="label_nothing">Nimic</string>
