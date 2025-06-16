@@ -218,6 +218,7 @@
     <string name="song_stat_label">播放了 %1$d 次，最后一次在 %2$s</string>
     <string name="horizontal_albums">水平专辑</string>
     <string name="ignore_singles">Ignore singles</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">查看类型</string>
     <string name="view_type_normal">普通的</string>
     <string name="view_type_card">卡</string>
@@ -742,6 +743,9 @@
     <string name="image_size_large">大 (较慢)</string>
     <string name="image_size_medium">中等(默认, 推荐)</string>
     <string name="image_size_small">小(快速，低质量)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">系统默认</string>
     <string name="label_never">从不使用</string>
     <string name="label_nothing">无</string>

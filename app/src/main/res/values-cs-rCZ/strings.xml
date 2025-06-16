@@ -218,6 +218,7 @@
     <string name="song_stat_label">přehrál %1$d krát, naposledy byl na %2$s</string>
     <string name="horizontal_albums">Horizontální alba</string>
     <string name="ignore_singles">Ignore singles</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">Typ zobrazení</string>
     <string name="view_type_normal">Normální</string>
     <string name="view_type_card">Karta</string>
@@ -766,6 +767,9 @@
     <string name="image_size_large">Velký (pomalejší)</string>
     <string name="image_size_medium">Střední (výchozí, doporučeno)</string>
     <string name="image_size_small">Malé (rychlejší, nízká kvalita)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">Výchozí nastavení systému</string>
     <string name="label_never">Nikdy</string>
     <string name="label_nothing">Nic</string>

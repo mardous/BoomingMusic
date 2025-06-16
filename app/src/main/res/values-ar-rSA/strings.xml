@@ -218,6 +218,7 @@
     <string name="song_stat_label">لعب %1$d مرات، آخر مرة في %2$s</string>
     <string name="horizontal_albums">ألبومات أفقية</string>
     <string name="ignore_singles">Ignore singles</string>
+    <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">نوع العرض</string>
     <string name="view_type_normal">عادي</string>
     <string name="view_type_card">بطاقة</string>
@@ -782,6 +783,9 @@
     <string name="image_size_large">كبير (أبطء)</string>
     <string name="image_size_medium">متوسط (افتراضي، موصى به)</string>
     <string name="image_size_small">صغير (أسرع، منخفض الجودة)</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">النظام الافتراضي</string>
     <string name="label_never">لا</string>
     <string name="label_nothing">لا شيء</string>
