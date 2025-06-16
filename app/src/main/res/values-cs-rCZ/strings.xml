@@ -276,6 +276,7 @@
         \n\nPouze vy máte celkovou odpovědnost za používání uložených obalů alba.</string>
     <string name="yes">Ano</string>
     <string name="no">Ne</string>
+    <string name="keyboard">Keyboard</string>
     <string name="label_file_path">Cesta k souboru</string>
     <string name="size">Velikost souboru</string>
     <string name="label_file_format">Formát</string>
@@ -601,6 +602,8 @@
     <string name="remember_last_page_summary">Přejít na poslední otevřenou stránku při spuštění.</string>
     <string name="start_page_title">Úvodní stránka</string>
     <string name="tab_mode_title">Režim názvů karet</string>
+    <string name="hold_tab_to_search_title">Hold tab to Search</string>
+    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Styl</string>
     <string name="open_on_play_title">Otevřít při přehrávání</string>
