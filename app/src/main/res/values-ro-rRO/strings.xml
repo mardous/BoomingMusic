@@ -276,6 +276,7 @@
         \n\nDoar tu ai responsabilitatea totală pentru utilizarea copertelor de album salvate.</string>
     <string name="yes">Da</string>
     <string name="no">Nr</string>
+    <string name="keyboard">Keyboard</string>
     <string name="label_file_path">Calea fișierului</string>
     <string name="size">Dimensiune fişier</string>
     <string name="label_file_format">Format</string>
@@ -593,6 +594,8 @@
     <string name="remember_last_page_summary">Mergeți la ultima pagină deschisă la lansare.</string>
     <string name="start_page_title">Pagină de pornire</string>
     <string name="tab_mode_title">Modul filă titlu</string>
+    <string name="hold_tab_to_search_title">Hold tab to Search</string>
+    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Deschide la redare</string>
