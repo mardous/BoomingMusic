@@ -276,6 +276,7 @@
         \n\n保存したアルバムカバーの使用に関しては、利用者個人の責任となります。</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
+    <string name="keyboard">Keyboard</string>
     <string name="label_file_path">ファイルパス</string>
     <string name="size">ファイルのサイズ</string>
     <string name="label_file_format">フォーマット</string>
@@ -577,6 +578,8 @@
     <string name="remember_last_page_summary">起動時に最後に開いたページに移動します。</string>
     <string name="start_page_title">スタートページ</string>
     <string name="tab_mode_title">タブのタイトルモード</string>
+    <string name="hold_tab_to_search_title">Hold tab to Search</string>
+    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">スタイル</string>
     <string name="open_on_play_title">プレイ中に開く</string>
