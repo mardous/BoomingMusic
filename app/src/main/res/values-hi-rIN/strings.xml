@@ -275,6 +275,7 @@
     <string name="save_artwork_copyright_info_message">कुछ एल्बम कवर (या उनमें से सभी) कॉपीराइट कानूनों से सुरक्षित हो सकते हैं। आप ऐसी छवियों का उपयोग व्यावसायिक या विज्ञापन उद्देश्यों के लिए नहीं कर सकते।आपके द्वारा सहेजे गए एल्बम कवर के उपयोग पर पूरी जिम्मेदारी केवल आपकी है।</string>
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
+    <string name="keyboard">Keyboard</string>
     <string name="label_file_path">फाइल पथ</string>
     <string name="size">फाइल का आकार</string>
     <string name="label_file_format">फॉर्मेट</string>
@@ -583,6 +584,8 @@
     <string name="remember_last_page_summary">लॉन्च पर अंतिम खोली गई पेज पर जाएं।</string>
     <string name="start_page_title">शुरुआत पेज</string>
     <string name="tab_mode_title">टैब शीर्षक मोड</string>
+    <string name="hold_tab_to_search_title">Hold tab to Search</string>
+    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">स्टाइल</string>
     <string name="open_on_play_title">प्ले पर खोलें</string>
