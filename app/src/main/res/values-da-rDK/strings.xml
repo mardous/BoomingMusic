@@ -276,6 +276,7 @@
         \n\nKun du har det fulde ansvar for din brug af gemte albumomslag.</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
+    <string name="keyboard">Keyboard</string>
     <string name="label_file_path">Fil sti</string>
     <string name="size">Fil størrelse</string>
     <string name="label_file_format">Formatér</string>
@@ -585,6 +586,8 @@
     <string name="remember_last_page_summary">Gå til den sidst åbnede side ved start.</string>
     <string name="start_page_title">Startside</string>
     <string name="tab_mode_title">Faneblad titler tilstand</string>
+    <string name="hold_tab_to_search_title">Hold tab to Search</string>
+    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Åbn ved afspilning</string>
