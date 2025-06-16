@@ -276,6 +276,7 @@
         \n\nSolo tu hai la responsabilità totale sull\'utilizzo delle copertine degli album salvate.</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
+    <string name="keyboard">Keyboard</string>
     <string name="label_file_path">Percorso file</string>
     <string name="size">Dimensione file</string>
     <string name="label_file_format">Formato</string>
@@ -585,6 +586,8 @@
     <string name="remember_last_page_summary">Vai all\'ultima pagina aperta all\'avvio.</string>
     <string name="start_page_title">Pagina iniziale</string>
     <string name="tab_mode_title">Modalità titoli scheda</string>
+    <string name="hold_tab_to_search_title">Hold tab to Search</string>
+    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stile</string>
     <string name="open_on_play_title">Apri in riproduzione</string>
