@@ -179,7 +179,7 @@
     <string name="added_x_titles_to_playing_queue">Adicionados %1$d títulos à fila de reprodução.</string>
     <string name="next_song_label">Próxima Música</string>
     <string name="next_song_x">Próximo • %1$s</string>
-    <string name="next_song_x_by_artist_x">Próximo • %1$s de %2$s</string>
+    <string name="next_song_x_by_artist_x">Próxima • %1$s de %2$s</string>
     <string name="similar_artists">Artistas similares</string>
     <string name="label_more_from_artist">Mais do artista</string>
     <string name="label_more_from_x">Mais de %s</string>
