@@ -154,7 +154,7 @@
     <string name="clear_queue">Limpar fila</string>
     <string name="action_move_to_current_track">Mostrar faixa atual</string>
     <string name="shuffle_queue">Misturar fila</string>
-    <string name="action_add_to_favorites">Adicionar aos Favoritos</string>
+    <string name="action_add_to_favorites">Adicionar aos favoritos</string>
     <string name="action_remove_from_favorites">Remover dos Favoritos</string>
     <string name="added_to_favorites_label">Adicionado aos Favoritos</string>
     <string name="removed_from_favorites_label">Removido dos Favoritos</string>
@@ -173,7 +173,7 @@
     <string name="add_to_label">Adicionar à</string>
     <string name="go_to_label">Ir para</string>
     <string name="action_go_to_album">Ir para o álbum</string>
-    <string name="action_go_to_artist">Ir para o Artista</string>
+    <string name="action_go_to_artist">Ir para o artista</string>
     <string name="action_go_to_genre">Ir para Gênero</string>
     <string name="added_title_to_playing_queue">"Adicionado 1 título à fila de reprodução."</string>
     <string name="added_x_titles_to_playing_queue">Adicionados %1$d títulos à fila de reprodução.</string>
@@ -597,7 +597,7 @@
     <string name="swipe_to_dismiss_summary">Deslize o mini player para baixo para parar a reprodução e limpar a fila de reprodução.</string>
     <string name="circle_button_title">Botão de reprodução redondo</string>
     <string name="swipe_album_cover_title">Deslizar capa do álbum</string>
-    <string name="swipe_album_cover_summary">Deslize a capa do álbum para a esquerda e direita para pular entre as músicas.</string>
+    <string name="swipe_album_cover_summary">Deslize a capa do álbum para a esquerda ou direita para pular entre as músicas.</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
     <string name="long_press_on_album_cover_title">Toque longo na capa</string>
     <string name="now_playing_corner_radius_title">Cantos arredondados da imagem</string>
@@ -758,7 +758,7 @@
     <string name="play_on_startup_mode_expanded">Sim, com o painel do reprodutor expandido</string>
     <string name="system_default">Padrão do sistema</string>
     <string name="label_never">Nunca</string>
-    <string name="label_nothing">Nada</string>
+    <string name="label_nothing">Nenhum</string>
     <string name="label_none">Nenhuma</string>
     <string name="player_color_mode_app_theme_title">Tema do aplicativo</string>
     <string name="player_color_mode_app_theme_description">Use o esquema de cores do aplicativo</string>
