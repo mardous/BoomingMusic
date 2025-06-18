@@ -89,7 +89,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Remover a música <b>%1$s</b> da playlist?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Remover <b>%1$d</b> músicas da playlist?]]></string>
     <string name="playlist_empty_text">Playlist vazia</string>
-    <string name="action_tag_editor">Editor de Tags</string>
+    <string name="action_tag_editor">Editor de tags</string>
     <string name="saving_changes">Salvando alterações</string>
     <string name="changes_saved_successfully">Alterações salvas com sucesso.</string>
     <string name="could_not_save_some_changes">Não foi possível salvar algumas alterações.</string>
@@ -458,7 +458,7 @@
     <string name="reverb_preset_largehall">Sala grande</string>
     <string name="sound_settings">Configurações de som</string>
     <string name="volume_label">Volume</string>
-    <string name="tempo_label">Tempo</string>
+    <string name="tempo_label">Velocidade</string>
     <string name="action_external_eq">EQ Externo</string>
     <string name="custom">Personalizado</string>
     <!-- Lyrics viewer -->
