@@ -177,7 +177,7 @@
     <string name="action_go_to_genre">Ir para Gênero</string>
     <string name="added_title_to_playing_queue">"Adicionado 1 título à fila de reprodução."</string>
     <string name="added_x_titles_to_playing_queue">Adicionados %1$d títulos à fila de reprodução.</string>
-    <string name="next_song_label">Próxima Música</string>
+    <string name="next_song_label">Próxima música</string>
     <string name="next_song_x">Próximo • %1$s</string>
     <string name="next_song_x_by_artist_x">Próxima • %1$s de %2$s</string>
     <string name="similar_artists">Artistas similares</string>
@@ -507,7 +507,7 @@
     <string name="application">Aplicativo</string>
     <string name="version">Versão</string>
     <string name="changelog">Mudanças</string>
-    <string name="fork_on_github">Crie um fork no GitHub</string>
+    <string name="fork_on_github">Crie um Fork no GitHub</string>
     <string name="licenses">Licenças</string>
     <string name="author">Autor</string>
     <string name="acknowledgments_title">Agradecimentos</string>
@@ -551,7 +551,7 @@
     <string name="library_title">Biblioteca</string>
     <string name="library_summary">Configurações de playlists e filtros de exclusão/inclusão.</string>
     <string name="notification_title">Notificação</string>
-    <string name="notification_summary">Personalizar o estilo de notificação.</string>
+    <string name="notification_summary">Personalizar o estilo da notificação.</string>
     <string name="advanced_title">Avançado</string>
     <string name="advanced_summary">Idioma do aplicativo e outras configurações para usuários avançados.</string>
     <string name="update_title">Atualização</string>
@@ -605,7 +605,7 @@
     <string name="carousel_effect_title">Efeito carrossel</string>
     <string name="album_cover_effect_title">Efeito da capa do álbum</string>
     <string name="lyrics_on_album_cover_title">Letra na capa</string>
-    <string name="lyrics_on_album_cover_summary">Mostrar letra da música ao invés da capa quando disponível.</string>
+    <string name="lyrics_on_album_cover_summary">Mostrar letra da música em vez da capa quando disponível.</string>
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
@@ -614,7 +614,7 @@
     <string name="select_extra_info_title">Informação extra</string>
     <string name="select_extra_info_summary">Selecione as informações extras a serem exibidas no painel do reprodutor.</string>
     <string name="prefer_remaining_time_title">Exibir tempo restante</string>
-    <string name="prefer_remaining_time_summary">Mostra o tempo restante ao invés da duração da música.</string>
+    <string name="prefer_remaining_time_summary">Mostrar o tempo restante em vez da duração da música.</string>
     <string name="prefer_album_artist_name_title">"Exibir nome do artista do álbum"</string>
     <string name="prefer_album_artist_name_summary">Mostra o nome do artista do álbum em vez do artista da música (se disponível).</string>
     <!-- Playback preferences -->
@@ -653,7 +653,7 @@
     <string name="pause_on_transient_focus_loss_summary">Pausar a reprodução na perda temporária de foco (i.e., notificações, chamadas recebidas).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Baixar metadados automaticamente</string>
-    <string name="ignore_media_store_album_covers_title">Ignorar capas Media Store</string>
+    <string name="ignore_media_store_album_covers_title">Ignorar capas do armazenamento de mídia</string>
     <string name="ignore_media_store_album_covers_summary">Isso pode ajudar a aumentar a qualidade das imagens, mas requer mais memória.</string>
     <string name="use_folder_album_cover_title">Usar imagens da pasta</string>
     <string name="use_folder_album_cover_summary">Se o arquivo de áudio não conter uma capa embutida, as imagens podem levar um pouco mais de tempo para carregar.</string>
@@ -668,9 +668,9 @@
     <string name="trash_music_summary">Enviar arquivos excluídos para a lixeira.</string>
     <string name="recursive_folder_actions_title">Ações aplicadas às subpastas</string>
     <string name="recursive_folder_actions_summary">Selecione quais ações também serão aplicadas às subpastas quando feitas em uma pasta.</string>
-    <string name="enable_history_title">Habilitar Histórico</string>
+    <string name="enable_history_title">Habilitar histórico</string>
     <string name="enable_history_summary">Permite que o aplicativo registre as músicas que você ouviu. Se você desativar, todo o histórico será apagado.</string>
-    <string name="history_interval_title">Intervalo de histórico</string>
+    <string name="history_interval_title">Intervalo do histórico</string>
     <string name="last_added_interval_title">Último intervalo adicionado</string>
     <string name="whitelist_title">Lista Branca</string>
     <string name="whitelist_summary">Apenas o conteúdo das pastas na lista branca é exibido em sua biblioteca.</string>
@@ -741,7 +741,7 @@
     <string name="today">Hoje</string>
     <string name="yesterday">Ontem</string>
     <string name="this_week">Esta semana</string>
-    <string name="this_month">Este mês</string>
+    <string name="this_month">Este Mês</string>
     <string name="past_three_months">Últimos três meses</string>
     <string name="this_year">Este ano</string>
     <string name="priority_maximum">Máxima</string>
@@ -752,7 +752,7 @@
     <string name="only_on_wifi">Somente Wi-Fi</string>
     <string name="image_size_large">Grande (mais lento)</string>
     <string name="image_size_medium">Médio (padrão, recomendado)</string>
-    <string name="image_size_small">Pequeno (mais rápido, baixa qualidade)</string>
+    <string name="image_size_small">Pequeno (mais rápido, porém, de baixa qualidade)</string>
     <string name="play_on_startup_mode_never">Nunca reproduzir ao iniciar</string>
     <string name="play_on_startup_mode_minimized">Sim, com o painel do reprodutor minimizado</string>
     <string name="play_on_startup_mode_expanded">Sim, com o painel do reprodutor expandido</string>
