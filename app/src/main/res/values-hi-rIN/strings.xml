@@ -218,7 +218,7 @@
     <string name="song_stat_label">कुल %1$d बार खेला गया, अंतिम बार %2$s को।</string>
     <string name="horizontal_albums">क्षैतिज एल्बम</string>
     <string name="ignore_singles">एकल को अनदेखा करें</string>
-    <string name="compact_song_view">Compact song view</string>
+    <string name="compact_song_view">संक्षिप्त गाना दृश्य</string>
     <string name="action_view_type">दृश्य प्रकार</string>
     <string name="view_type_normal">सामान्य</string>
     <string name="view_type_card">कार्ड</string>
@@ -252,9 +252,9 @@
     <string name="new_start_directory">नया प्रारंभ डाइरेक्टरी: %s</string>
     <string name="action_scan">स्कैन करें</string>
     <string name="scan_media">मीडिया स्कैन करें</string>
-    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
-    <string name="scan_media_positive">Scan anyway</string>
-    <string name="scan_finished">Scan finished.</string>
+    <string name="scan_media_message">ज़्यादातर मामलों में, एंड्रॉइड स्वचालित रूप से आपके डिवाइस पर मीडिया फ़ाइलों का पता लगाता है और उन्हें अनुक्रमित करता है, इसलिए मैन्युअल स्कैन करना आमतौर पर आवश्यक नहीं है।</string>
+    <string name="scan_media_positive">फिर भी स्कैन करें</string>
+    <string name="scan_finished">स्कैन समाप्त हुआ।</string>
     <string name="album_or_artist_empty">शीर्षक या कलाकार खाली है।</string>
     <string name="update_image">इमेज अपडेट करें</string>
     <string name="restore_default">डिफ़ॉल्ट को पुनर्स्थापित करें</string>
@@ -275,7 +275,7 @@
     <string name="save_artwork_copyright_info_message">कुछ एल्बम कवर (या उनमें से सभी) कॉपीराइट कानूनों से सुरक्षित हो सकते हैं। आप ऐसी छवियों का उपयोग व्यावसायिक या विज्ञापन उद्देश्यों के लिए नहीं कर सकते।आपके द्वारा सहेजे गए एल्बम कवर के उपयोग पर पूरी जिम्मेदारी केवल आपकी है।</string>
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
-    <string name="keyboard">Keyboard</string>
+    <string name="keyboard">कीबोर्ड</string>
     <string name="label_file_path">फाइल पथ</string>
     <string name="size">फाइल का आकार</string>
     <string name="label_file_format">फॉर्मेट</string>
@@ -509,9 +509,9 @@
     <string name="fork_on_github">गिटहब पर फोर्क</string>
     <string name="licenses">लायसेंसेज़</string>
     <string name="author">लेखक</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
-    <string name="translators_title">Translators</string>
-    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="acknowledgments_title">स्वीकृति</string>
+    <string name="translators_title">अनुवादक</string>
+    <string name="translators_summary">उन लोगों का धन्यवाद जिन्होंने बूमिंग म्यूजिक को कई भाषाओं में उपलब्ध कराया।</string>
     <string name="telegram_chat">टेलीग्राम चैट</string>
     <string name="telegram_chat_summary">टेलीग्राम पर चैट में शामिल हों और नए रिलीज़ और समाचारों के बारे में जानकारियाँ प्राप्त करें।</string>
     <string name="view_profile_on_github">GitHub पर प्रोफ़ाइल देखें</string>
@@ -584,8 +584,8 @@
     <string name="remember_last_page_summary">लॉन्च पर अंतिम खोली गई पेज पर जाएं।</string>
     <string name="start_page_title">शुरुआत पेज</string>
     <string name="tab_mode_title">टैब शीर्षक मोड</string>
-    <string name="hold_tab_to_search_title">Hold tab to Search</string>
-    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
+    <string name="hold_tab_to_search_title">खोजने के लिए टैब दबाएं</string>
+    <string name="hold_tab_to_search_summary">किसी भी नेविगेशन बार टैब को लंबे समय तक दबाने से खोज स्क्रीन खुल जाएगी।</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">स्टाइल</string>
     <string name="open_on_play_title">प्ले पर खोलें</string>
@@ -752,9 +752,9 @@
     <string name="image_size_large">बड़ा (धीमा)</string>
     <string name="image_size_medium">माध्यम (डिफ़ॉल्ट, अनुशंसित)</string>
     <string name="image_size_small">छोटा (तेज़, कम गुणवत्ता)</string>
-    <string name="play_on_startup_mode_never">Never play on startup</string>
-    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
-    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
+    <string name="play_on_startup_mode_never">स्टार्टअप पर कभी न खेलें</string>
+    <string name="play_on_startup_mode_minimized">हां, खिलाड़ी पैनल को कम करते हुए</string>
+    <string name="play_on_startup_mode_expanded">हां, विस्तारित खिलाड़ी पैनल के साथ</string>
     <string name="system_default">सिस्टम डिफॉल्ट</string>
     <string name="label_never">कभी नहीं</string>
     <string name="label_nothing">कुछ नहीं</string>
