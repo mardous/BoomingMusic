@@ -466,8 +466,8 @@
     <string name="action_hide_lyrics">Ocultar letras</string>
     <string name="plain_lyrics">Simples</string>
     <string name="synced_lyrics">Sincronizado</string>
-    <string name="embedded_lyrics">Incorporado</string>
-    <string name="downloaded_lyrics">Baixado</string>
+    <string name="embedded_lyrics">Incorporada</string>
+    <string name="downloaded_lyrics">Baixada</string>
     <string name="lrc_lyrics">Arquivo LRC</string>
     <string name="action_import_synchronized_lyrics">Importar letras sincronizadas</string>
     <string name="action_share_synchronized_lyrics">Compartilhar letras sincronizadas</string>
