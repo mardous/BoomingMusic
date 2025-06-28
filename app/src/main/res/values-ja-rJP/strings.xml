@@ -301,8 +301,8 @@
     <string name="label_sampling_rate">サンプリング率</string>
     <string name="replay_gain">リプレイゲイン</string>
     <string name="comment">コメント</string>
-    <string name="last_played">最後にプレイした回数</string>
-    <string name="played">プレイ済み</string>
+    <string name="last_played">最後に再生した回数</string>
+    <string name="played">再生済み</string>
     <string name="skipped">スキップ</string>
     <string name="track">トラック</string>
     <string name="track_total">トラックの合計</string>
