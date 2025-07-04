@@ -218,7 +218,7 @@
     <string name="song_stat_label">התנגן %1$d פעמים, האחרון היה ב-%2$s</string>
     <string name="horizontal_albums">אלבומים אופקיים</string>
     <string name="ignore_singles">התעלם מיחידים</string>
-    <string name="compact_song_view">Compact song view</string>
+    <string name="compact_song_view">תצוגת שירים קומפקטית</string>
     <string name="action_view_type">סוג תצוגה</string>
     <string name="view_type_normal">רגיל</string>
     <string name="view_type_card">כרטיס</string>
@@ -252,9 +252,9 @@
     <string name="new_start_directory">ספריית התחלה חדשה: %s</string>
     <string name="action_scan">סרוק</string>
     <string name="scan_media">סרוק מדיה</string>
-    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
-    <string name="scan_media_positive">Scan anyway</string>
-    <string name="scan_finished">Scan finished.</string>
+    <string name="scan_media_message">ברוב המקרים, אנדרואיד מזהה וממיין קבצי מדיה במכשיר שלך באופן אוטומטי, כך שסריקה ידנית אינה נחוצה בדרך כלל.</string>
+    <string name="scan_media_positive">בצע סריקה בכל מקרה</string>
+    <string name="scan_finished">הסריקה הסתיימה.</string>
     <string name="album_or_artist_empty">הכותרת או האמן ריקים.</string>
     <string name="update_image">עדכון תמונה</string>
     <string name="restore_default">שחזור ברירת מחדל</string>
@@ -276,7 +276,7 @@
 \n\nאתה אחראי באופן מלא על השימוש שלך בעטיפות האלבומים השמורות.</string>
     <string name="yes">כן</string>
     <string name="no">לא</string>
-    <string name="keyboard">Keyboard</string>
+    <string name="keyboard">מקלדת</string>
     <string name="label_file_path">נתיב הקובץ</string>
     <string name="size">גודל הקובץ</string>
     <string name="label_file_format">פורמט</string>
@@ -418,7 +418,7 @@
     <string name="shuffle_mode_most_played_description">מעדיף את השירים שאתה משמיע הכי הרבה.</string>
     <string name="shuffle_mode_most_played_artists_description">מעדיף שירים מהאמנים המובילים שלך.</string>
     <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
-    <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
+    <string name="shuffle_mode_favorite_songs_description">נותן עדיפות לשירים המועדפים עליך.</string>
     <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
     <string name="shuffle_mode_recently_added_description">Favors songs recently added to your library.</string>
     <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
@@ -434,12 +434,12 @@
     <string name="export_configuration">ייצוא תצורה</string>
     <string name="import_configuration">ייבוא תצורה</string>
     <string name="imported_x_presets">Imported %d presets.</string>
-    <string name="no_preset_imported">No preset imported.</string>
-    <string name="share_configuration">Share configuration</string>
-    <string name="select_configurations_to_share">Select configurations to share:</string>
+    <string name="no_preset_imported">לא יובא קדם הגדרה.</string>
+    <string name="share_configuration">שתף תצורה</string>
+    <string name="select_configurations_to_share">בחר תצורות לשיתוף:</string>
     <string name="reset_equalizer">Reset equalizer</string>
-    <string name="select_configurations_to_export">Select configurations to export:</string>
-    <string name="select_a_file_to_save_exported_configurations">Select a file to save exported configurations.</string>
+    <string name="select_configurations_to_export">בחר תצורות לייצוא:</string>
+    <string name="select_a_file_to_save_exported_configurations">בחר קובץ לשמירת התצורות שיוצאו.</string>
     <string name="select_a_file_containing_booming_eq_presets">Select a file containing Booming Music EQ presets.</string>
     <string name="select_configurations_to_import">Select configurations to import:</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
