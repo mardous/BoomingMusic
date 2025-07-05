@@ -394,7 +394,7 @@
     <plurals name="x_items">
         <item quantity="one">פריט %d</item>
         <item quantity="two">%d items</item>
-        <item quantity="many">%d items</item>
+        <item quantity="many">פריטים %d</item>
         <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
@@ -441,15 +441,15 @@
     <string name="select_configurations_to_export">בחר תצורות לייצוא:</string>
     <string name="select_a_file_to_save_exported_configurations">בחר קובץ לשמירת התצורות שיוצאו.</string>
     <string name="select_a_file_containing_booming_eq_presets">Select a file containing Booming Music EQ presets.</string>
-    <string name="select_configurations_to_import">Select configurations to import:</string>
+    <string name="select_configurations_to_import">בחר תצורות לייבוא:</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
         \n\nThis will clear all your presets.</string>
-    <string name="not_supported">Not supported</string>
+    <string name="not_supported">לא נתמך</string>
     <string name="enable_equalizer">Enable EQ</string>
-    <string name="select_preset">Select preset</string>
+    <string name="select_preset">בחר קדם הגדרה</string>
     <string name="please_enter_a_name_for_this_preset">Please, enter a name for this preset.</string>
     <string name="preset_name">Preset name</string>
-    <string name="that_name_is_already_in_use">That name is already in use.</string>
+    <string name="that_name_is_already_in_use">השם הזה כבר בשימוש.</string>
     <string name="save_preset">Save preset</string>
     <string name="replace_preset_with_same_name">Replace preset with same name</string>
     <string name="preset_name_is_empty">Preset name is empty</string>
@@ -493,7 +493,7 @@
     <string name="could_not_import_lyrics_for_song_x">Couldn\'t import lyrics for %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Select a LRC file containing synced lyrics.</string>
     <string name="cannot_download_lyrics">Booming Music couldn\'t find the lyrics for this song. Do you want to search manually?</string>
-    <string name="search_lyrics">Search lyrics</string>
+    <string name="search_lyrics">חפש מילות שיר</string>
     <string name="choose_lyrics">Choose the type of lyrics</string>
     <string name="download_lyrics">Download lyrics</string>
     <string name="write_lyrics_here">Write lyrics here</string>
