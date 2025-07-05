@@ -116,7 +116,7 @@
     <string name="audio_focus_denied">מיקוד שמע נדחה.</string>
     <string name="no_audio_ID">מזהה אודיו שגוי.</string>
     <string name="unplayable_file">לא הצלחנו לנגן את השיר הזה.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
+    <string name="unplayable_file_code_x">לא ניתן לנגן את השיר הזה (קוד: %d).</string>
     <string name="permission_external_storage_title">גישה לאחסון</string>
     <string name="permission_external_storage_description">האפליקציה צריכה הרשאה לגשת לאחסון המכשיר שלך כדי להשמיע מוזיקה</string>
     <string name="permission_external_storage_denied">עליך להעניק הרשאת גישה לאחסון חיצוני.</string>
@@ -392,7 +392,7 @@
         <item quantity="other">%d הפעלות</item>
     </plurals>
     <plurals name="x_items">
-        <item quantity="one">%d item</item>
+        <item quantity="one">פריט %d</item>
         <item quantity="two">%d items</item>
         <item quantity="many">%d items</item>
         <item quantity="other">%d items</item>
