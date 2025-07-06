@@ -638,6 +638,10 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">Безперервне відтворення</string>
     <string name="gapless_playback_summary">Шкідливий перехід між піснями. Може викликати проблеми відтворення на деяких пристроях.</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Режим джерела</string>
     <string name="replaygain_preamp_title">Попередній рівень</string>
     <string name="replaygain_preamp_summary">Установити рівень гучності при ввімкненому Піднятку.</string>
