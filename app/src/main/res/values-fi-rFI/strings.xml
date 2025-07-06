@@ -622,6 +622,10 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">Puutteeton toisto</string>
     <string name="gapless_playback_summary">Sileä siirtyminen kappaleiden välillä. Voi aiheuttaa toisto-ongelmia joillakin laitteilla.</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Lähde tila</string>
     <string name="replaygain_preamp_title">PreAmpin taso</string>
     <string name="replaygain_preamp_summary">Aseta äänenvoimakkuuden taso, kun ReplayGain on käytössä.</string>
