@@ -614,6 +614,10 @@
     <string name="play_on_startup_title">启动时自动播放</string>
     <string name="gapless_playback_title">无缝播放</string>
     <string name="gapless_playback_summary">在歌曲之间平滑过渡。可能会在某些设备上导致播放问题。</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">源模式</string>
     <string name="replaygain_preamp_title">预置层级</string>
     <string name="replaygain_preamp_summary">设置当ReplayGain 启用时的音量水平。</string>
