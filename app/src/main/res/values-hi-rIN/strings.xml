@@ -620,6 +620,10 @@
     <string name="play_on_startup_title">प्ले ऑन स्टार्टअप</string>
     <string name="gapless_playback_title">गैपलेस प्लेबैक</string>
     <string name="gapless_playback_summary">गानों के बीच सुचारू रूपांतरण। कुछ उपकरणों पर प्लेबैक समस्याएँ उत्पन्न कर सकता है।</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">स्रोत मोड</string>
     <string name="replaygain_preamp_title">प्रे-अम्प स्तर</string>
     <string name="replaygain_preamp_summary">जब रिप्लेगैन सक्रिय हो, तब वॉल्यूम स्तर सेट करें।</string>
