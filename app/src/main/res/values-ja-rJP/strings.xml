@@ -614,6 +614,10 @@
     <string name="play_on_startup_title">起動時に再生する</string>
     <string name="gapless_playback_title">ギャップレス再生</string>
     <string name="gapless_playback_summary">曲間のスムーズなトランジション。一部のデバイスで再生の問題を引き起こす可能性があります。</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">ソースモード</string>
     <string name="replaygain_preamp_title">PreAmp レベル</string>
     <string name="replaygain_preamp_summary">ReplayGain が有効な場合、音量レベルを設定します。</string>
