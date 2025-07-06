@@ -654,6 +654,10 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">تشغيل بلا هوادة</string>
     <string name="gapless_playback_summary">الانتقال السلس بين الأغاني. يمكن أن يسبب مشاكل في التشغيل على بعض الأجهزة.</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">وضع المصدر</string>
     <string name="replaygain_preamp_title">مستوى تمهيدي</string>
     <string name="replaygain_preamp_summary">تعيين مستوى الصوت عند تمكين إعادة التشغيل.</string>
