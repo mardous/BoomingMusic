@@ -622,6 +622,10 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">Mellomromsfri avspilling</string>
     <string name="gapless_playback_summary">Jevn overgang mellom sanger. Kan forårsake avspillingsproblemer på noen enheter.</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Kilde modus</string>
     <string name="replaygain_preamp_title">Forbytt nivå</string>
     <string name="replaygain_preamp_summary">Angi volumnivå når ReplayGain er aktivert. (Automatic Translation)</string>
