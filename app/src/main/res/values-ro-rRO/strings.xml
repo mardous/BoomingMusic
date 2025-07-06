@@ -630,6 +630,10 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">Redare fără întreruperi</string>
     <string name="gapless_playback_summary">Tranziție lentă între melodii. Poate cauza probleme de redare pe unele dispozitive.</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Mod sursă</string>
     <string name="replaygain_preamp_title">Nivel pregatire</string>
     <string name="replaygain_preamp_summary">Setează nivelul de volum când ReplayGain este activat.</string>
