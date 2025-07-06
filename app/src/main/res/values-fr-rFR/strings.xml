@@ -622,6 +622,10 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">Lecture sans faille</string>
     <string name="gapless_playback_summary">Transition douce entre les morceaux. Peut causer des problèmes de lecture sur certains appareils.</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Mode source</string>
     <string name="replaygain_preamp_title">Niveau de Pré-Amp</string>
     <string name="replaygain_preamp_summary">Définir le niveau de volume lorsque ReplayGain est activé.</string>
