@@ -494,8 +494,8 @@
     <string name="select_a_file_containing_synchronized_lyrics">Select a LRC file containing synced lyrics.</string>
     <string name="cannot_download_lyrics">Booming Music couldn\'t find the lyrics for this song. Do you want to search manually?</string>
     <string name="search_lyrics">חפש מילות שיר</string>
-    <string name="choose_lyrics">Choose the type of lyrics</string>
-    <string name="download_lyrics">Download lyrics</string>
+    <string name="choose_lyrics">בחר את סוג מילות השיר</string>
+    <string name="download_lyrics">הורד מילים</string>
     <string name="write_lyrics_here">Write lyrics here</string>
     <string name="write_synced_lyrics_here">Write synced lyrics here</string>
     <string name="no_lyrics_found">No lyrics found</string>
