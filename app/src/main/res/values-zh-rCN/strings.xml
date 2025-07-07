@@ -218,7 +218,7 @@
     <string name="song_stat_label">播放了 %1$d 次，最后一次在 %2$s</string>
     <string name="horizontal_albums">水平专辑</string>
     <string name="ignore_singles">Ignore singles</string>
-    <string name="compact_song_view">Compact song view</string>
+    <string name="compact_song_view">紧凑的歌曲视图</string>
     <string name="action_view_type">查看类型</string>
     <string name="view_type_normal">普通的</string>
     <string name="view_type_card">卡</string>
@@ -253,8 +253,8 @@
     <string name="action_scan">扫描</string>
     <string name="scan_media">扫描媒体</string>
     <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
-    <string name="scan_media_positive">Scan anyway</string>
-    <string name="scan_finished">Scan finished.</string>
+    <string name="scan_media_positive">仍进行扫描</string>
+    <string name="scan_finished">扫描已完成。</string>
     <string name="album_or_artist_empty">标题或艺术家是空的。</string>
     <string name="update_image">更新图像</string>
     <string name="restore_default">恢复默认</string>
@@ -751,7 +751,7 @@
     <string name="image_size_medium">中等(默认, 推荐)</string>
     <string name="image_size_small">小(快速，低质量)</string>
     <string name="play_on_startup_mode_never">Never play on startup</string>
-    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="play_on_startup_mode_minimized">是，</string>
     <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">系统默认</string>
     <string name="label_never">从不使用</string>
@@ -763,7 +763,7 @@
     <string name="player_color_mode_simple_color_description">提取专辑颜色并应用到某些控件</string>
     <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
     <string name="player_color_mode_vibrant_color_description">将专辑颜色应用于提示背景、文本和控件</string>
-    <string name="player_color_mode_material_you_title">Material You</string>
+    <string name="player_color_mode_material_you_title"></string>
     <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
     <string name="auto_update_title">自动更新搜索</string>
