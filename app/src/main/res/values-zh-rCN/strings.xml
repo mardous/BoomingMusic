@@ -33,11 +33,11 @@
     <string name="action_save">保存</string>
     <string name="what_do_you_want_to_share">您想分享什么？</string>
     <string name="the_audio_file">音频文件</string>
-    <string name="i_am_listening">我正在听…</string>
+    <string name="i_am_listening">正在听…</string>
     <string name="currently_listening_to_x_by_x">我正在用 %1$s 聆听 %2$s</string>
     <string name="share_to_stories">分享到故事</string>
     <string name="could_not_create_the_story">无法创建故事。</string>
-    <string name="rename_action">重命名：</string>
+    <string name="rename_action">重命名</string>
     <string name="add_action">添加</string>
     <string name="delete_action">删除</string>
     <string name="remove_action">删除</string>
@@ -54,25 +54,25 @@
     <string name="playlist_x_is_empty">播放列表 %s 为空。</string>
     <string name="playlist_name_cannot_be_empty">播放列表名称不能为空</string>
     <string name="imported_playlist_x">已导入播放列表 \"%1$s\"。</string>
-    <string name="could_not_import_the_playlist_x">无法导入播放列表 \"%s\"</string>
+    <string name="could_not_import_the_playlist_x">无法导入播放列表“%s”</string>
     <string name="there_are_no_importable_playlists">没有可导入的播放列表。</string>
-    <string name="playlist_x_not_imported">播放列表 %s 未导入。</string>
+    <string name="playlist_x_not_imported">播放列表“%s”未成功导入。</string>
     <string name="action_import_playlist">导入播放列表…</string>
-    <string name="action_new_playlist">新播放列表…</string>
+    <string name="action_new_playlist">新建播放列表…</string>
     <string name="new_playlist_title">新播放列表</string>
     <string name="add_playlist_title">添加到播放列表</string>
     <string name="rename_playlist_title">重命名播放列表</string>
     <string name="action_rename">重命名播放列表</string>
     <string name="action_delete">删除播放列表</string>
-    <string name="action_export_playlist">导出到文件</string>
+    <string name="action_export_playlist">将播放列表导出至文件</string>
     <string name="action_clear_history">清除历史记录</string>
-    <string name="history_cleared">历史记录已清除</string>
-    <string name="create_a_playlist">将创建一个空的播放列表。您可以稍后添加歌曲。</string>
+    <string name="history_cleared">已清除历史记录</string>
+    <string name="create_a_playlist">创建一个空播放列表。稍后您可以向其中添加歌曲。</string>
     <string name="create_a_playlist_with_one_song">将创建播放列表并添加一首歌曲。</string>
-    <string name="create_a_playlist_with_x_songs">将创建一个播放列表，并自动添加 %d 歌曲。</string>
+    <string name="create_a_playlist_with_x_songs">将创建一个播放列表，并自动向其中添加 %d 首歌曲。</string>
     <string name="playlist_name_empty">播放列表名称</string>
     <string name="saved_playlist_x">已保存播放列表 %s</string>
-    <string name="failed_to_save_playlist">保存播放列表失败。</string>
+    <string name="failed_to_save_playlist">播放列表保存失败。</string>
     <string name="saved_x_playlists">已保存 %1$d 播放列表。</string>
     <string name="saved_x_playlists_failed_to_save_x">保存 %1$d 播放列表。保存 %2$d 失败。</string>
     <string name="delete_playlist_title">删除播放列表</string>
@@ -125,7 +125,7 @@
     <string name="permission_bluetooth_denied">附近设备权限被拒绝。</string>
     <string name="permission_exact_alarms_title">安排准确的闹钟(可选)</string>
     <string name="permission_exact_alarms_description">睡眠计时器需要设置精确的提醒权限才能正常工作</string>
-    <string name="permission_ringtone_title">铃声(可选)</string>
+    <string name="permission_ringtone_title">铃声（可选）</string>
     <string name="permission_ringtone_description">应用需要系统设置访问权限，才能将音乐设置为铃声</string>
     <string name="permission_request_write_settings"><![CDATA[您必须允许Booming Music修改系统设置才能将 <b>%s</b> 设置为您的铃声]]></string>
     <string name="permissions_denied">权限被拒绝</string>
@@ -217,7 +217,7 @@
     <string name="song_stat_one_time_label">在 %s 上播放过一次</string>
     <string name="song_stat_label">播放了 %1$d 次，最后一次在 %2$s</string>
     <string name="horizontal_albums">水平专辑</string>
-    <string name="ignore_singles">Ignore singles</string>
+    <string name="ignore_singles">排除单曲</string>
     <string name="compact_song_view">紧凑的歌曲视图</string>
     <string name="action_view_type">查看类型</string>
     <string name="view_type_normal">普通的</string>
@@ -276,7 +276,7 @@
         \n\n只有您对您保存的相册封面的使用承担全部责任。</string>
     <string name="yes">是</string>
     <string name="no">否</string>
-    <string name="keyboard">Keyboard</string>
+    <string name="keyboard">键位</string>
     <string name="label_file_path">文件路径</string>
     <string name="size">文件大小</string>
     <string name="label_file_format">格式</string>
@@ -763,7 +763,7 @@
     <string name="player_color_mode_simple_color_description">提取专辑颜色并应用到某些控件</string>
     <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
     <string name="player_color_mode_vibrant_color_description">将专辑颜色应用于提示背景、文本和控件</string>
-    <string name="player_color_mode_material_you_title"></string>
+    <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
     <string name="auto_update_title">自动更新搜索</string>
