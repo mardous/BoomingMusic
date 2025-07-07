@@ -623,9 +623,9 @@
     <string name="gapless_playback_title">Kesintisiz çalma</string>
     <string name="gapless_playback_summary">Şarkılar arasında pürüzsüz geçiş. Bazı cihazlarda çalma sorunlarına neden olabilir.</string>
     <string name="crossfade_title">Crossfade (deneysel)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
+    <string name="crossfade_summary">Şarkılar arasında geçiş yapmak için gereken saniye sayısı (devre dışı bırakmak için 0 olarak ayarlayın).</string>
+    <string name="audio_fade_duration_title">Ses geçişi süresi (deneysel)</string>
+    <string name="audio_fade_duration_summary">Çalma başladığında veya duraklatıldığında sesin kısılıp yükselmesi için gereken saniye sayısı (devre dışı bırakmak için 0 olarak ayarlayın).</string>
     <string name="replaygain_source_mode_title">Kaynak modu</string>
     <string name="replaygain_preamp_title">PreAmp seviyesi</string>
     <string name="replaygain_preamp_summary">ReplayGain etkinleştirildiğinde ses seviyesini ayarlayın.</string>
