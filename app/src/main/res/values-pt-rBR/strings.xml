@@ -624,7 +624,7 @@
     <string name="crossfade_title">Crossfade (experimental)</string>
     <string name="crossfade_summary">Duração em segundos do crossfade entre músicas (0 para desativar).</string>
     <string name="audio_fade_duration_title">Duração do fade de áudio (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
+    <string name="audio_fade_duration_summary">Duração em segundos do fade do volume ao iniciar ou pausar a música (0 para desativar).</string>
     <string name="replaygain_source_mode_title">Modo de origem</string>
     <string name="replaygain_preamp_title">Nível de pré-amplificação</string>
     <string name="replaygain_preamp_summary">Definir o nível de volume quando o ReplayGain estiver habilitado.</string>
