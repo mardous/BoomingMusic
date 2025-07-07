@@ -217,7 +217,7 @@
     <string name="song_stat_one_time_label">joué une fois sur %s</string>
     <string name="song_stat_label">joué %1$d fois, dernière fois le %2$s</string>
     <string name="horizontal_albums">Albums horizontaux</string>
-    <string name="ignore_singles">Ignore singles</string>
+    <string name="ignore_singles">Ignorer les singles</string>
     <string name="compact_song_view">Compact song view</string>
     <string name="action_view_type">Type de vue</string>
     <string name="view_type_normal">Normale</string>
