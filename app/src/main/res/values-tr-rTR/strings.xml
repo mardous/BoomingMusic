@@ -127,7 +127,7 @@
     <string name="permission_exact_alarms_description">Uyku zamanlayıcısının düzgün çalışması için tam zamanlı alarmları planlama izni gereklidir</string>
     <string name="permission_ringtone_title">Zil Sesi (isteğe bağlı)</string>
     <string name="permission_ringtone_description">Uygulamanın, müziği Zil Sesi olarak ayarlamak için cihaz ayarlarına erişim iznine ihtiyacı var</string>
-    <string name="permission_request_write_settings"><![CDATA[<b>%s</b> şarkısını zil sesiniz olarak ayarlamak için Booming Music'in sistem ayarlarını değiştirmesine izin vermelisiniz]]></string>
+    <string name="permission_request_write_settings"><![CDATA[<b>%s</b> şarkısını zil sesiniz olarak ayarlamak için Booming Music\'in sistem ayarlarını değiştirmesine izin vermelisiniz]]></string>
     <string name="permissions_denied">İzinler reddedildi</string>
     <string name="permissions_needed">İzinler gerekli</string>
     <string name="grant_access_action">Erişim izni ver</string>
