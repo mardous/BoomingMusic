@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Додати/видалити з обраного</string>
     <string name="action_add_to_playlist">Додати до списку відтворення</string>
     <string name="action_remove_from_playlist">Видалити зі списку відтворення</string>
-    <string name="action_add_to_playing_queue">Додати до черги відтворення</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Видалити з черги відтворення</string>
     <string name="x_removed_from_playing_queue">%s видалено</string>
     <string name="put_after_current_track">Викласти після поточного маршруту</string>
