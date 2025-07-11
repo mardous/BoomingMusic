@@ -484,6 +484,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Staženo</string>
     <string name="lrc_lyrics">Soubor LRC</string>
+    <string name="ttml_lyrics">TTML file</string>
     <string name="action_import_synchronized_lyrics">Importovat synchronizované texty</string>
     <string name="action_share_synchronized_lyrics">Sdílet synchronizované texty</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Chcete importovat synchronizované texty LRC pro <b>%s</b>?]]></string>
@@ -500,6 +501,7 @@
     <string name="no_synced_lyrics_found">Nebyly nalezeny žádné synchronizované texty</string>
     <string name="lyrics_were_updated_successfully">Texty byly úspěšně aktualizovány.</string>
     <string name="failed_to_update_lyrics">Aktualizace textů se nezdařila.</string>
+    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Synchronizované texty pocházejí ze souboru LRC. Změny budou uloženy přímo do tohoto souboru.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Časovač spánku</string>
