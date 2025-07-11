@@ -159,7 +159,7 @@
     <string name="toggle_favorite">إضافة/إزالة من المفضلة</string>
     <string name="action_add_to_playlist">إضافة إلى قائمة التشغيل</string>
     <string name="action_remove_from_playlist">إزالة من قائمة التشغيل</string>
-    <string name="action_add_to_playing_queue">إضافة إلى قائمة الانتظار</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">إزالة من قائمة الانتظار</string>
     <string name="x_removed_from_playing_queue">تم حذف %s</string>
     <string name="put_after_current_track">وضع بعد المسار الحالي</string>
