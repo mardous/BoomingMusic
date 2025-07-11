@@ -460,6 +460,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Downloaded</string>
     <string name="lrc_lyrics">LRC file</string>
+    <string name="ttml_lyrics">TTML file</string>
     <string name="action_import_synchronized_lyrics">Import synced lyrics</string>
     <string name="action_share_synchronized_lyrics">Share synced lyrics</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Do you want to import synchronized LRC lyrics for <b>%s</b>?]]></string>
@@ -476,6 +477,7 @@
     <string name="no_synced_lyrics_found">No synced lyrics found</string>
     <string name="lyrics_were_updated_successfully">Lyrics were updated successfully.</string>
     <string name="failed_to_update_lyrics">Failed to update lyrics.</string>
+    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Synced lyrics come from an LRC file. Changes will be saved directly to that file.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep timer</string>
