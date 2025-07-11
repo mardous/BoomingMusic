@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Tilføj/Fjern fra favoritter</string>
     <string name="action_add_to_playlist">Føj til afspilningsliste</string>
     <string name="action_remove_from_playlist">Fjern fra afspilningsliste</string>
-    <string name="action_add_to_playing_queue">Føj til afspilningskø</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Fjern fra afspilningskø</string>
     <string name="x_removed_from_playing_queue">%s fjernet</string>
     <string name="put_after_current_track">Placér efter nuværende spor</string>
