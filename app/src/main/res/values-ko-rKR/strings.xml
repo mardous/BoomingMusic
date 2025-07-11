@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Add/Remove from Favorites</string>
     <string name="action_add_to_playlist">Add to playlist</string>
     <string name="action_remove_from_playlist">Remove from playlist</string>
-    <string name="action_add_to_playing_queue">Add to playing queue</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Remove from playing queue</string>
     <string name="x_removed_from_playing_queue">%s removed</string>
     <string name="put_after_current_track">Put after current track</string>
