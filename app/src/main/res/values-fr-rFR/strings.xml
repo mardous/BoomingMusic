@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Ajouter/Supprimer des Favoris</string>
     <string name="action_add_to_playlist">Ajouter à la playlist</string>
     <string name="action_remove_from_playlist">Retirer de la playlist</string>
-    <string name="action_add_to_playing_queue">Ajouter à la file d\'attente de lecture</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Retirer de la file de lecture</string>
     <string name="x_removed_from_playing_queue">%s supprimé</string>
     <string name="put_after_current_track">Mettre après la piste actuelle</string>
