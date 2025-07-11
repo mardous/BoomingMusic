@@ -484,6 +484,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Pobrano</string>
     <string name="lrc_lyrics">Plik LRC</string>
+    <string name="ttml_lyrics">TTML file</string>
     <string name="action_import_synchronized_lyrics">Importuj zsynchronizowane teksty</string>
     <string name="action_share_synchronized_lyrics">Udostępnij zsynchronizowane teksty</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Czy chcesz zaimportować zsynchronizowane teksty piosenek LRC dla <b>%s</b>?]]></string>
@@ -500,6 +501,7 @@
     <string name="no_synced_lyrics_found">Nie znaleziono zsynchronizowanych tekstów</string>
     <string name="lyrics_were_updated_successfully">Tekst został pomyślnie zaktualizowany.</string>
     <string name="failed_to_update_lyrics">Nie udało się zaktualizować tekstu.</string>
+    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Zsynchronizowane teksty pochodzą z pliku LRC. Zmiany zostaną zapisane bezpośrednio do tego pliku.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Czas uśpienia</string>
