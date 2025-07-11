@@ -468,6 +468,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Téléchargé</string>
     <string name="lrc_lyrics">Fichier LRC</string>
+    <string name="ttml_lyrics">TTML file</string>
     <string name="action_import_synchronized_lyrics">Importer les paroles synchronisées</string>
     <string name="action_share_synchronized_lyrics">Partager les paroles synchronisées</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Voulez-vous importer les paroles LRC synchronisées pour <b>%s</b>?]]></string>
@@ -484,6 +485,7 @@
     <string name="no_synced_lyrics_found">Aucune parole synchronisée trouvée</string>
     <string name="lyrics_were_updated_successfully">Les paroles ont été mises à jour avec succès.</string>
     <string name="failed_to_update_lyrics">Impossible de mettre à jour les paroles.</string>
+    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Les paroles synchronisées proviennent d\'un fichier LCR. Les modifications seront enregistrées directement dans ce fichier.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Minuteur de sommeil</string>
