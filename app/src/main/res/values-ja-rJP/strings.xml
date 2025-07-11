@@ -159,7 +159,7 @@
     <string name="toggle_favorite">お気に入りから追加/削除</string>
     <string name="action_add_to_playlist">プレイリストに追加</string>
     <string name="action_remove_from_playlist">プレイリストから削除</string>
-    <string name="action_add_to_playing_queue">再生キューに追加</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">再生キューから削除</string>
     <string name="x_removed_from_playing_queue">%s を削除しました</string>
     <string name="put_after_current_track">現在のトラックの後に追加する</string>
