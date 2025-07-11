@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Aggiungi/Rimuovi dai preferiti</string>
     <string name="action_add_to_playlist">Aggiungi alla playlist</string>
     <string name="action_remove_from_playlist">Rimuovi dalla playlist</string>
-    <string name="action_add_to_playing_queue">Aggiungi alla coda di riproduzione</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Rimuovi dalla coda di riproduzione</string>
     <string name="x_removed_from_playing_queue">%s rimosso</string>
     <string name="put_after_current_track">Mette dopo la traccia corrente</string>
