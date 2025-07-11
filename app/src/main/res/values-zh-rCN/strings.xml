@@ -159,7 +159,7 @@
     <string name="toggle_favorite">从收藏夹中添加/删除</string>
     <string name="action_add_to_playlist">添加到播放列表</string>
     <string name="action_remove_from_playlist">从播放列表删除</string>
-    <string name="action_add_to_playing_queue">添加到播放队列</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">从播放队列移除</string>
     <string name="x_removed_from_playing_queue">%s 已移除</string>
     <string name="put_after_current_track">放到当前曲目之后</string>
