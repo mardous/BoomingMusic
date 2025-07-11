@@ -466,6 +466,7 @@
     <string name="embedded_lyrics">एम्बेडेड</string>
     <string name="downloaded_lyrics">डाउनलोड किया गया</string>
     <string name="lrc_lyrics">एलआरसी फ़ाइल</string>
+    <string name="ttml_lyrics">TTML file</string>
     <string name="action_import_synchronized_lyrics">सिंक्रनाइज़ की गई लिरिक्स इंपोर्ट करें</string>
     <string name="action_share_synchronized_lyrics">सिंक्रोनाइज़ की गई लिरिक्स शेयर करें</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[क्या आप <b>%s</b> के लिए समलयित LRC गीत बोलों को इम्पोर्ट करना चाहते हैं?]]></string>
@@ -482,6 +483,7 @@
     <string name="no_synced_lyrics_found">कोई समन्वित गीत के बोल नहीं मिले</string>
     <string name="lyrics_were_updated_successfully">गाने के बोल सफलतापूर्वक अपडेट कर दिए गए।</string>
     <string name="failed_to_update_lyrics">गीत का अपडेट करना असफल रहा।</string>
+    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">सिंक की गई गीतों की पंक्तियाँ एक LRC फ़ाइल से आती हैं। परिवर्तन सीधे उस फ़ाइल में सहेजे जाएंगे।</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">स्लीप टाइमर</string>
