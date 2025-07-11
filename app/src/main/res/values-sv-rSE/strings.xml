@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Lägg till/ta bort från favoriter</string>
     <string name="action_add_to_playlist">Lägg till i spellistan</string>
     <string name="action_remove_from_playlist">Ta bort från spellistan</string>
-    <string name="action_add_to_playing_queue">Lägg till i uppspelningskön</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Ta bort från uppspelningskön</string>
     <string name="x_removed_from_playing_queue">%s borttaget</string>
     <string name="put_after_current_track">Sätt efter nuvarande spår</string>
