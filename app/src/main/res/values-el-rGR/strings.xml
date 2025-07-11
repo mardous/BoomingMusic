@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Προσθήκη/αφαίρεση από τα αγαπημένα</string>
     <string name="action_add_to_playlist">Προσθήκη στη λίστα αναπαραγωγής</string>
     <string name="action_remove_from_playlist">Αφαίρεση από τη λίστα αναπαραγωγής</string>
-    <string name="action_add_to_playing_queue">Προσθήκη στην ουρά αναπαραγωγής</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Αφαίρεση από την ουρά αναπαραγωγής</string>
     <string name="x_removed_from_playing_queue">%s removed</string>
     <string name="put_after_current_track">Τοποθέτηση μετά το τρέχον κομμάτι</string>
