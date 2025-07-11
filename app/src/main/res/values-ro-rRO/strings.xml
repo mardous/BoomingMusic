@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Adaugă/Elimină din favorite</string>
     <string name="action_add_to_playlist">Adaugă la playlist</string>
     <string name="action_remove_from_playlist">Elimină din playlist</string>
-    <string name="action_add_to_playing_queue">Adaugă la lista de redare</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Elimină din lista de redare</string>
     <string name="x_removed_from_playing_queue">%s eliminat</string>
     <string name="put_after_current_track">Pune după piesa curentă</string>
