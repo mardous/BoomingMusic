@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Adicionar/Remover dos Favoritos</string>
     <string name="action_add_to_playlist">Adicionar à playlist</string>
     <string name="action_remove_from_playlist">Remover da playlist</string>
-    <string name="action_add_to_playing_queue">Adicionar à fila de reprodução</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Remover da fila de reprodução</string>
     <string name="x_removed_from_playing_queue">%s removido(s)</string>
     <string name="put_after_current_track">Adicionar após a faixa atual</string>
@@ -467,7 +467,7 @@
     <string name="embedded_lyrics">Incorporada</string>
     <string name="downloaded_lyrics">Baixada</string>
     <string name="lrc_lyrics">Arquivo LRC</string>
-    <string name="ttml_lyrics">TTML file</string>
+    <string name="ttml_lyrics">Arquivo TTML</string>
     <string name="action_import_synchronized_lyrics">Importar letras sincronizadas</string>
     <string name="action_share_synchronized_lyrics">Compartilhar letras sincronizadas</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Deseja importar letras LRC sincronizadas para <b>%s</b>?]]></string>
@@ -484,7 +484,7 @@
     <string name="no_synced_lyrics_found">Nenhuma letra sincronizada encontrada</string>
     <string name="lyrics_were_updated_successfully">A letra foi atualizada com sucesso.</string>
     <string name="failed_to_update_lyrics">Falha ao atualizar a letra.</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
+    <string name="lyrics_source_ttml_file">As letras sincronizadas vêm de um arquivo TTML. A edição do conteúdo de arquivos TTML ainda não é suportada.</string>
     <string name="lyrics_source_lrc_file">As letras sincronizadas vêm de um arquivo LRC. As alterações serão salvas diretamente nesse arquivo.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporizador</string>
