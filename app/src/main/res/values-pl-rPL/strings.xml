@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Dodaj/Usuń z Ulubionych</string>
     <string name="action_add_to_playlist">Dodaj do listy odtwarzania</string>
     <string name="action_remove_from_playlist">Usuń z listy odtwarzania</string>
-    <string name="action_add_to_playing_queue">Dodaj do kolejki odtwarzania</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Usuń z kolejki odtwarzania</string>
     <string name="x_removed_from_playing_queue">Usunięto %s</string>
     <string name="put_after_current_track">Umieść po bieżącym utworze</string>
