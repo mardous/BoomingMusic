@@ -500,6 +500,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">تم التحميل</string>
     <string name="lrc_lyrics">ملف LRC</string>
+    <string name="ttml_lyrics">TTML file</string>
     <string name="action_import_synchronized_lyrics">استيراد كلمات متزامنة</string>
     <string name="action_share_synchronized_lyrics">مشاركة كلمات الأغاني المتزامنة</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[هل تريد استيراد كلمات LRC المتزامنة ل <b>%s</b>?]]></string>
@@ -516,6 +517,7 @@
     <string name="no_synced_lyrics_found">لم يتم العثور على كلمات متزامنة</string>
     <string name="lyrics_were_updated_successfully">تم تحديث الكلمات بنجاح.</string>
     <string name="failed_to_update_lyrics">فشل تحديث كلمات الأغنية.</string>
+    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">الكلمات المتزامنة تأتي من ملف LRC. سيتم حفظ التغييرات مباشرة إلى هذا الملف.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">مؤقت النوم</string>
