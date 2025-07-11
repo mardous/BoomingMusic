@@ -484,6 +484,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Завантажено</string>
     <string name="lrc_lyrics">LRC файл</string>
+    <string name="ttml_lyrics">TTML file</string>
     <string name="action_import_synchronized_lyrics">Імпорт синхронізованих текстів</string>
     <string name="action_share_synchronized_lyrics">Поділитися синхронізованими словами</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Імпортувати синхронізовані тексти пісень для <b>%s</b>?]]></string>
@@ -500,6 +501,7 @@
     <string name="no_synced_lyrics_found">Не знайдено синхронізованих слів</string>
     <string name="lyrics_were_updated_successfully">Текст успішно оновлено.</string>
     <string name="failed_to_update_lyrics">Не вдалося оновити текст пісні.</string>
+    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Синхронізовані тексти пісень беруться з LRC файлу. Зміни будуть збережені безпосередньо в цей файл.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Таймер сну</string>
