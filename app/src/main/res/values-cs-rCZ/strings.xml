@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Přidat/Odebrat z oblíbených</string>
     <string name="action_add_to_playlist">Přidat do playlistu</string>
     <string name="action_remove_from_playlist">Odstranit ze seznamu skladeb</string>
-    <string name="action_add_to_playing_queue">Přidat do fronty</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Odebrat z fronty</string>
     <string name="x_removed_from_playing_queue">%s odstraněn</string>
     <string name="put_after_current_track">Vložit po aktuální skladbě</string>
