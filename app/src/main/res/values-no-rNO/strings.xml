@@ -468,6 +468,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Nedlastet</string>
     <string name="lrc_lyrics">LRC fil</string>
+    <string name="ttml_lyrics">TTML file</string>
     <string name="action_import_synchronized_lyrics">Importer synkroniserte tekster</string>
     <string name="action_share_synchronized_lyrics">Del synkroniserte tekster</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vil du importere synkroniserte LRC-tekster for <b>%s</b>?]]></string>
@@ -484,6 +485,7 @@
     <string name="no_synced_lyrics_found">Ingen synkroniserte tekster funnet</string>
     <string name="lyrics_were_updated_successfully">Teksten ble oppdatert.</string>
     <string name="failed_to_update_lyrics">Kunne ikke oppdatere sangtekstene.</string>
+    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Synkroniserte sangtekster kommer fra en LRC-fil. Endringer vil bli lagret direkte i den filen.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep Timer</string>
