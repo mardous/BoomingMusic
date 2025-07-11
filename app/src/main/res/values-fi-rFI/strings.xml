@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Lisää/poista suosikeista</string>
     <string name="action_add_to_playlist">Lisää soittolistaan</string>
     <string name="action_remove_from_playlist">Poista soittolistalta</string>
-    <string name="action_add_to_playing_queue">Lisää soittojonoon</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Poista soittojonosta</string>
     <string name="x_removed_from_playing_queue">%s poistettu</string>
     <string name="put_after_current_track">Laita nykyisen kappaleen jälkeen</string>
