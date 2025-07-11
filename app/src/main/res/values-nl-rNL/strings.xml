@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Toevoegen/Verwijderen uit favorieten</string>
     <string name="action_add_to_playlist">Toevoegen aan afspeellijst</string>
     <string name="action_remove_from_playlist">Verwijderen uit afspeellijst</string>
-    <string name="action_add_to_playing_queue">Toevoegen aan afspeelwachtrij</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Verwijderen uit afspeelwachtrij</string>
     <string name="x_removed_from_playing_queue">%s verwijderd</string>
     <string name="put_after_current_track">Zet achter het huidige nummer</string>
