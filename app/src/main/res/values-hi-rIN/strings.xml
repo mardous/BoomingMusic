@@ -159,7 +159,7 @@
     <string name="toggle_favorite">पसंदीदा में जोड़ें/हटाएं</string>
     <string name="action_add_to_playlist">प्लेलिस्ट में जोड़ें</string>
     <string name="action_remove_from_playlist">प्लेलिस्ट से हटाएँ</string>
-    <string name="action_add_to_playing_queue">प्लेइंग क्यू में जोड़ें</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">प्लेइंग क्यू से हटा दो</string>
     <string name="x_removed_from_playing_queue">%s हटा दिया गया</string>
     <string name="put_after_current_track">वर्तमान ट्रैक के बाद डालें</string>
