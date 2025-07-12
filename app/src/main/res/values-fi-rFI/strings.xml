@@ -593,6 +593,8 @@
     <string name="open_on_play_summary">Laajenna nyt -soittopaneeli automaattisesti, kun olet aloittanut kappaleen soittamisen.</string>
     <string name="extra_controls_title">Ylimääräiset tarkastukset</string>
     <string name="extra_controls_summary">Lisää ylimääräisiä ohjaimia mininsoittimelle</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Ohita pyyhkäisemällä</string>
     <string name="swipe_to_dismiss_summary">Pyyhkäise minipelaajaa alas lopettaaksesi toiston ja poistaaksesi soittojonot.</string>
     <string name="circle_button_title">Pyöreä toistopainike</string>
