@@ -601,6 +601,8 @@
     <string name="open_on_play_summary">Extinde automat panoul de redare acum după ce pornește un cântec.</string>
     <string name="extra_controls_title">Controale suplimentare</string>
     <string name="extra_controls_summary">Adaugă controale suplimentare pentru mini player</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Glisați pentru a respinge</string>
     <string name="swipe_to_dismiss_summary">Glisați în jos Mini player pentru a opri redarea și pentru a șterge cozile de redare.</string>
     <string name="circle_button_title">Butonul de redare circulară</string>
