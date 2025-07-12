@@ -609,6 +609,8 @@
     <string name="open_on_play_summary">Po spuštění přehrávání skladby automaticky rozbalte panel Nyní.</string>
     <string name="extra_controls_title">Extra ovládací prvky</string>
     <string name="extra_controls_summary">Přidat další ovládací prvky pro mini přehrávač</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Přejeďte pro zamítnutí</string>
     <string name="swipe_to_dismiss_summary">Přejeďte prstem dolů mini přehrávač pro zastavení přehrávání a vymazání front.</string>
     <string name="circle_button_title">Kruhové tlačítko přehrávání</string>
