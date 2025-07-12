@@ -609,6 +609,8 @@
     <string name="open_on_play_summary">Rozwiń panel Teraz odtwarzany automatycznie po rozpoczęciu odtwarzania piosenki.</string>
     <string name="extra_controls_title">Dodatkowe klawisze</string>
     <string name="extra_controls_summary">Dodatkowe klawisze dla mini odtwarzacza</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Przesuń, aby odrzucić</string>
     <string name="swipe_to_dismiss_summary">Przesuń palcem w dół, aby zatrzymać odtwarzanie i wyczyścić kolejkę odtwarzania.</string>
     <string name="circle_button_title">Okrągły przycisk odtwarzania</string>
