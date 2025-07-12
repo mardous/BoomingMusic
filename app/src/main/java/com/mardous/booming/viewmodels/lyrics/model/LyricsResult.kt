@@ -39,11 +39,11 @@ class LyricsResult(
     val hasSyncedLyrics: Boolean get() = syncedLyrics.content?.hasContent == true
     val isEmpty: Boolean get() = !hasPlainLyrics && !hasSyncedLyrics
 
-    init {
-        check(sources.distinctBy { it.applicableButtonId }.size == 2) {
-            "Applicable IDs must be unique"
-        }
-    }
+//    init {
+//        check(sources.distinctBy { it.applicableButtonId }.size == 2) {
+//            "Applicable IDs must be unique"
+//        }
+//    }
 
     companion object {
         val Empty = LyricsResult(-1)

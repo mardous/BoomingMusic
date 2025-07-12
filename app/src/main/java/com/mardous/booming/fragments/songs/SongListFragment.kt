@@ -62,7 +62,7 @@ class SongListFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, Grid
     override fun onShuffleClicked() {
         super.onShuffleClicked()
         adapter?.dataSet?.let { songs ->
-            playerViewModel.openQueue(songs, shuffleMode = Playback.ShuffleMode.On)
+            playerViewModel.openAndShuffleQueue(songs, shuffleMode = Playback.ShuffleMode.On)
         }
     }
 

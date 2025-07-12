@@ -31,6 +31,7 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 @OptIn(FlowPreview::class)
 class PlayerViewModel(
@@ -184,6 +185,14 @@ class PlayerViewModel(
         shuffleMode: Playback.ShuffleMode? = null
     ) = viewModelScope.launch(IO) {
         queueManager.open(queue, position, startPlaying, shuffleMode)
+    }
+
+    fun openAndShuffleQueue(
+        queue: List<Song>,
+        startPlaying: Boolean = true,
+        shuffleMode: Playback.ShuffleMode? = null
+    ) = viewModelScope.launch(IO) {
+        queueManager.open(queue, Random.Default.nextInt(queue.size), startPlaying, shuffleMode)
     }
 
     fun openShuffle(
