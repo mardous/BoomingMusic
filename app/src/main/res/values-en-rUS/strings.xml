@@ -593,6 +593,8 @@
     <string name="open_on_play_summary">Expand the Now Playing panel automatically after start playing a song.</string>
     <string name="extra_controls_title">Extra controls</string>
     <string name="extra_controls_summary">Add extra controls for mini player</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Swipe to dismiss</string>
     <string name="swipe_to_dismiss_summary">Swipe down the mini player to stop playback and clear playing queues.</string>
     <string name="circle_button_title">Circular play button</string>
