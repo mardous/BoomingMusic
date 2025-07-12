@@ -625,6 +625,8 @@
     <string name="open_on_play_summary">قم بتوسيع لوحة التشغيل الآن تلقائيًا بعد بدء تشغيل الأغنية.</string>
     <string name="extra_controls_title">ضوابط إضافية</string>
     <string name="extra_controls_summary">إضافة عناصر تحكم إضافية للاعب المصغر</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">اسحب للإلغاء</string>
     <string name="swipe_to_dismiss_summary">اسحب لاعب صغير لأسفل لإيقاف التشغيل ومسح قائمة الانتظار.</string>
     <string name="circle_button_title">زر التشغيل الدائري</string>
