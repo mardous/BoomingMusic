@@ -593,6 +593,8 @@
     <string name="open_on_play_summary">Développez automatiquement le panneau Lecture en cours après avoir commencé à jouer une chanson.</string>
     <string name="extra_controls_title">Contrôles supplémentaires</string>
     <string name="extra_controls_summary">Ajouter des contrôles supplémentaires pour le mini-joueur</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Glisser pour rejeter</string>
     <string name="swipe_to_dismiss_summary">Glissez vers le bas le mini-lecteur pour arrêter la lecture et effacer les files d\'attente.</string>
     <string name="circle_button_title">Bouton de lecture circulaire</string>
