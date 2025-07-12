@@ -591,6 +591,8 @@
     <string name="open_on_play_summary">गाना बजाना शुरू करने के बाद अब खेलने वाले पैनल को स्वचालित रूप से फैलाएं।</string>
     <string name="extra_controls_title">अतिरिक्त कंट्रोल्स</string>
     <string name="extra_controls_summary">मिनी प्लेयर के लिए अतिरिक्त कंट्रोल जोड़ें।</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">स्वाइप करके बंद करें</string>
     <string name="swipe_to_dismiss_summary">प्ले़बैक रोकने और चल रहे कतारों को साफ करने के लिए मिनी प्लेयर को नीचे करें।</string>
     <string name="circle_button_title">गोल प्ले बटन</string>
