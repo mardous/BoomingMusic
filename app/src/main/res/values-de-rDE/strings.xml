@@ -624,7 +624,7 @@
     <string name="crossfade_title">Überblenden (experimentell)</string>
     <string name="crossfade_summary">Dauer in Sekunden, um zwischen Titeln überzublenden (wähle 0 zum Deaktivieren).</string>
     <string name="audio_fade_duration_title">Audio-Blendendauer (experimentell)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
+    <string name="audio_fade_duration_summary">Dauer in Sekunden, um bei Wiedergabestart oder -pause ein- oder auszublenden (wähle 0 zum Deaktivieren).</string>
     <string name="replaygain_source_mode_title">Quellmodus</string>
     <string name="replaygain_preamp_title">Vorverstärker-Stufe</string>
     <string name="replaygain_preamp_summary">Lautstärke-Stufe festlegen, wenn ReplayGain aktiv ist.</string>
