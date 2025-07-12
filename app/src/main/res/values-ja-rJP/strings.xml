@@ -159,7 +159,7 @@
     <string name="toggle_favorite">お気に入りから追加/削除</string>
     <string name="action_add_to_playlist">プレイリストに追加</string>
     <string name="action_remove_from_playlist">プレイリストから削除</string>
-    <string name="action_add_to_playing_queue">再生キューに追加</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">再生キューから削除</string>
     <string name="x_removed_from_playing_queue">%s を削除しました</string>
     <string name="put_after_current_track">現在のトラックの後に追加する</string>
@@ -460,6 +460,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">ダウンロード済み</string>
     <string name="lrc_lyrics">LRC ファイル</string>
+    <string name="ttml_lyrics">TTML file</string>
     <string name="action_import_synchronized_lyrics">同期した歌詞をインポート</string>
     <string name="action_share_synchronized_lyrics">同期した歌詞を共有</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> の同期したLRC歌詞をインポートしますか？]]></string>
@@ -476,6 +477,7 @@
     <string name="no_synced_lyrics_found">同期された歌詞が見つかりません</string>
     <string name="lyrics_were_updated_successfully">歌詞が更新されました。</string>
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
+    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">同期された歌詞はLRCファイルから来ています。変更内容は直接そのファイルに保存されます。</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">スリープタイマー</string>
