@@ -593,6 +593,8 @@
     <string name="open_on_play_summary">Επέκταση του πίνακα Τώρα Αναπαραγωγή αυτόματα μετά την έναρξη αναπαραγωγής ενός τραγουδιού.</string>
     <string name="extra_controls_title">Επιπλέον έλεγχοι</string>
     <string name="extra_controls_summary">Προσθήκη επιπλέον ελέγχων για μίνι παίκτη</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Σύρετε για απόρριψη</string>
     <string name="swipe_to_dismiss_summary">Σύρετε προς τα κάτω τον μίνι παίκτη για να σταματήσετε την αναπαραγωγή και να καθαρίσετε τις ουρές αναπαραγωγής.</string>
     <string name="circle_button_title">Κυκλικό κουμπί αναπαραγωγής</string>
