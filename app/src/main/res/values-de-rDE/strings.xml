@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Hinzufügen/Entfernen aus Favoriten</string>
     <string name="action_add_to_playlist">Zu Wiedergabeliste hinzufügen</string>
     <string name="action_remove_from_playlist">Aus Wiedergabeliste entfernen</string>
-    <string name="action_add_to_playing_queue">Add to queue</string>
+    <string name="action_add_to_playing_queue">Zur Warteschlange hinzufügen</string>
     <string name="action_remove_from_playing_queue">Aus Warteschlange entfernen</string>
     <string name="x_removed_from_playing_queue">%s entfernt</string>
     <string name="put_after_current_track">Nach aktuellem Titel einfügen</string>
@@ -468,7 +468,7 @@
     <string name="embedded_lyrics">Integriert</string>
     <string name="downloaded_lyrics">Heruntergeladen</string>
     <string name="lrc_lyrics">LRC-Datei</string>
-    <string name="ttml_lyrics">TTML file</string>
+    <string name="ttml_lyrics">TTML-Datei</string>
     <string name="action_import_synchronized_lyrics">Synchronisierte Liedtexte importieren</string>
     <string name="action_share_synchronized_lyrics">Synchronisierte Liedtexte teilen</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Möchtest Du synchronisierte LRC-Texte für <b>%s</b> importieren?]]></string>
@@ -485,7 +485,7 @@
     <string name="no_synced_lyrics_found">Keine synchronisierten Liedtexte gefunden</string>
     <string name="lyrics_were_updated_successfully">Liedtexte wurden erfolgreich aktualisiert.</string>
     <string name="failed_to_update_lyrics">Liedtexte konnten nicht aktualisiert werden.</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
+    <string name="lyrics_source_ttml_file">Die synchronisierten Liedtexte stammen aus einer TTML-Datei. Das Bearbeiten von Inhalten aus TTML-Dateien wird noch nicht unterstützt.</string>
     <string name="lyrics_source_lrc_file">Synchronisierte Liedtexte stammen aus einer LRC-Datei. Änderungen werden direkt in dieser Datei gespeichert.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleeptimer</string>
@@ -621,9 +621,9 @@
     <string name="play_on_startup_title">Beim App-Start fortsetzen</string>
     <string name="gapless_playback_title">Nahtlose Wiedergabe</string>
     <string name="gapless_playback_summary">Nahtloser Übergang zwischen den Titeln. Kann auf manchen Geräten zu Wiedergabeproblemen führen.</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="crossfade_title">Überblenden (experimentell)</string>
+    <string name="crossfade_summary">Dauer in Sekunden, um zwischen Titeln überzublenden (wähle 0 zum Deaktivieren).</string>
+    <string name="audio_fade_duration_title">Audio-Blendendauer (experimentell)</string>
     <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Quellmodus</string>
     <string name="replaygain_preamp_title">Vorverstärker-Stufe</string>
