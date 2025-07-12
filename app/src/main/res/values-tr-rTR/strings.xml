@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Favorilere Ekle/Kaldır</string>
     <string name="action_add_to_playlist">Çalma listesine ekle</string>
     <string name="action_remove_from_playlist">Çalma listesinden kaldır</string>
-    <string name="action_add_to_playing_queue">Add to queue</string>
+    <string name="action_add_to_playing_queue">Sıraya ekle</string>
     <string name="action_remove_from_playing_queue">Çalma sırasından kaldır</string>
     <string name="x_removed_from_playing_queue">%s kaldırıldı</string>
     <string name="put_after_current_track">Çalan parçadan sonraya koy</string>
@@ -468,7 +468,7 @@
     <string name="embedded_lyrics">Gömülü</string>
     <string name="downloaded_lyrics">İndirilmiş</string>
     <string name="lrc_lyrics">LRC dosyası</string>
-    <string name="ttml_lyrics">TTML file</string>
+    <string name="ttml_lyrics">TTML dosyası</string>
     <string name="action_import_synchronized_lyrics">Senkronize şarkı sözlerini içe aktar</string>
     <string name="action_share_synchronized_lyrics">Senkronize şarkı sözlerini paylaş</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> için senkronize LRC şarkı sözlerini içe aktarmak istiyor musunuz?]]></string>
@@ -485,7 +485,7 @@
     <string name="no_synced_lyrics_found">Senkronize şarkı sözü bulunamadı</string>
     <string name="lyrics_were_updated_successfully">Şarkı sözleri başarıyla güncellendi.</string>
     <string name="failed_to_update_lyrics">Şarkı sözleri güncellenemedi.</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
+    <string name="lyrics_source_ttml_file">Eşzamanlı (senkronize) şarkı sözleri bir TTML dosyasından alınır. TTML dosyalarının içeriğini düzenlemek şu anda desteklenmemektedir.</string>
     <string name="lyrics_source_lrc_file">Senkronize şarkı sözleri bir LRC dosyasından geliyor. Değişiklikler doğrudan o dosyaya kaydedilecek.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Uyku zamanlayıcısı</string>
