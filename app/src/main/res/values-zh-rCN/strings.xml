@@ -585,6 +585,8 @@
     <string name="open_on_play_summary">开始播放歌曲后自动展开播放面板。</string>
     <string name="extra_controls_title">额外控制</string>
     <string name="extra_controls_summary">为迷你播放器添加额外的控制</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">滑动以关闭</string>
     <string name="swipe_to_dismiss_summary">向下滑动以停止播放和清除播放队列。</string>
     <string name="circle_button_title">圆形播放按钮</string>
