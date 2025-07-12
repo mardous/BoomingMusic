@@ -593,6 +593,8 @@
     <string name="open_on_play_summary">Utvid Nå Playing panelet automatisk etter å ha startet å spille en sang.</string>
     <string name="extra_controls_title">Ekstra kontroller</string>
     <string name="extra_controls_summary">Legg til ekstra kontroller for mini spiller</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Sveip for å fjerne</string>
     <string name="swipe_to_dismiss_summary">Sveip ned mini-spilleren for å stoppe avspilling og tømme avspillingskø.</string>
     <string name="circle_button_title">Sirkulær avspillingsknapp</string>
