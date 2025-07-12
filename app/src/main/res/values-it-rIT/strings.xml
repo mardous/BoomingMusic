@@ -593,6 +593,8 @@
     <string name="open_on_play_summary">Espandere automaticamente il pannello Now Playing dopo aver iniziato a riprodurre una canzone.</string>
     <string name="extra_controls_title">Controlli aggiuntivi</string>
     <string name="extra_controls_summary">Aggiungi controlli extra per il mini player</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Scorri per respingere</string>
     <string name="swipe_to_dismiss_summary">Scorri verso il basso il mini player per fermare la riproduzione e cancellare le code di riproduzione.</string>
     <string name="circle_button_title">Pulsante di riproduzione circolare</string>
