@@ -593,6 +593,8 @@
     <string name="open_on_play_summary">Expandera panelen Nu spelas automatiskt efter att ha spelat en låt.</string>
     <string name="extra_controls_title">Extra kontroller</string>
     <string name="extra_controls_summary">Lägg till extra kontroller för minispelare</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Svep för att avfärda</string>
     <string name="swipe_to_dismiss_summary">Svep nedåt minispelaren för att stoppa uppspelning och rensa spelköerna.</string>
     <string name="circle_button_title">Cirkulär uppspelningsknapp</string>
