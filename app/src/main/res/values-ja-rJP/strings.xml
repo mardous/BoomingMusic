@@ -585,6 +585,8 @@
     <string name="open_on_play_summary">曲の再生を開始した後、自動的に「再生中」パネルを展開します。</string>
     <string name="extra_controls_title">追加コントロール</string>
     <string name="extra_controls_summary">ミニプレーヤー用の追加コントロールを追加</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">スワイプして閉じる</string>
     <string name="swipe_to_dismiss_summary">ミニプレーヤーを下にスワイプして再生を停止し、キューをクリアします。</string>
     <string name="circle_button_title">丸い再生ボタン</string>
