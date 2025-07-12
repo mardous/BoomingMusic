@@ -593,6 +593,8 @@
     <string name="open_on_play_summary">Uitvouwen van het Nu Afspelen paneel automatisch nadat u een nummer heeft afgespeeld.</string>
     <string name="extra_controls_title">Extra controles</string>
     <string name="extra_controls_summary">Extra besturingselementen voor minispeler toevoegen</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Veeg om te sluiten</string>
     <string name="swipe_to_dismiss_summary">Veeg de minispeler naar beneden om het afspelen te stoppen en de afspeellijsten leeg te maken.</string>
     <string name="circle_button_title">Circulaire afspeelknop</string>
