@@ -609,6 +609,8 @@
     <string name="open_on_play_summary">Расширьте панель Now Playing автоматически после воспроизведения песни.</string>
     <string name="extra_controls_title">Дополнительные элементы управления</string>
     <string name="extra_controls_summary">Добавить дополнительные элементы управления для мини-плеера</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Проведите для отмены</string>
     <string name="swipe_to_dismiss_summary">Смахните вниз мини-плеер, чтобы остановить воспроизведение и очистить очереди воспроизведения.</string>
     <string name="circle_button_title">Круговая кнопка</string>
