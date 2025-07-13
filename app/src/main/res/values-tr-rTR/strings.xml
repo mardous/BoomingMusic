@@ -593,8 +593,8 @@
     <string name="open_on_play_summary">Bir şarkı çalmaya başladıktan sonra Şimdi Çalıyor panelini otomatik olarak genişletin.</string>
     <string name="extra_controls_title">Ekstra kontroller</string>
     <string name="extra_controls_summary">Mini çalar için ekstra kontroller ekleyin</string>
-    <string name="adaptive_controls_title">Adaptive controls</string>
-    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
+    <string name="adaptive_controls_title">Uyarlanabilir kontroller</string>
+    <string name="adaptive_controls_summary">Mini oynatıcının üzerindeki kontroller mevcut oynatıcı stiline uyacak şekilde değişir.</string>
     <string name="swipe_to_dismiss_title">Kapatmak için kaydırın</string>
     <string name="swipe_to_dismiss_summary">Çalmayı durdurmak ve çalma sıralarını temizlemek için mini çaları aşağı kaydırın.</string>
     <string name="circle_button_title">Dairesel oynatma düğmesi</string>
