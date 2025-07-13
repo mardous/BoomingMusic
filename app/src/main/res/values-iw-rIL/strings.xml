@@ -500,7 +500,7 @@
     <string name="no_lyrics_found">לא נמצאו מילות שיר</string>
     <string name="no_synced_lyrics_found">לא נמצאו מילות שיר מסונכרנות</string>
     <string name="lyrics_were_updated_successfully">מילות השיר עודכנו בהצלחה.</string>
-    <string name="failed_to_update_lyrics">Failed to update lyrics.</string>
+    <string name="failed_to_update_lyrics">נכשל בעדכון מילות השיר.</string>
     <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Synced lyrics come from an LRC file. Changes will be saved directly to that file.</string>
     <!-- Sleep timer -->
@@ -510,8 +510,8 @@
     <string name="sleep_timer_canceled">טיימר השינה בוטל.</string>
     <string name="sleep_timer_set_action">Set</string>
     <string name="sleep_timer_set">Sleep timer set for %d minutes from now.</string>
-    <string name="sleep_timer_finish_current_music">Finish last song</string>
-    <string name="sleep_timer_stop_after_this_track">Stop after this track</string>
+    <string name="sleep_timer_finish_current_music">סיים את השיר האחרון</string>
+    <string name="sleep_timer_stop_after_this_track">עצור אחרי השיר הזה</string>
     <string name="sleep_timer_stop_after_x">עצור לאחר %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Stop after %s: canceled</string>
     <!-- App Shortcuts -->
@@ -526,8 +526,8 @@
     <string name="fork_on_github">קוד מקור</string>
     <string name="licenses">רשיונות</string>
     <string name="author">יוצר</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
-    <string name="translators_title">Translators</string>
+    <string name="acknowledgments_title">הכרה</string>
+    <string name="translators_title">מתרגמים</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">ערוץ טלגרם</string>
     <string name="telegram_chat_summary">הצטרפו לצ\'אט בטלגרם וקבלו עדכונים על מהדורות וחידושים.</string>
@@ -551,7 +551,7 @@
     <!-- SAF -->
     <string name="saf_access_required_title">נדרש גישה לאחסון</string>
     <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
-    <string name="saf_show_files_button">Show files</string>
+    <string name="saf_show_files_button">הצג קבצים</string>
     <string name="saf_error_uri">Can\'t get SAF URI</string>
     <string name="saf_write_failed">File write failed: %s</string>
     <string name="saf_delete_failed">מחיקת הקובץ נכשל: %s</string>
