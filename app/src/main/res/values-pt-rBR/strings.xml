@@ -592,8 +592,8 @@
     <string name="open_on_play_summary">Abrir o painel Reproduzindo Agora automaticamente após começar a tocar uma música.</string>
     <string name="extra_controls_title">Controles adicionais</string>
     <string name="extra_controls_summary">Adicionar controles extras no mini player</string>
-    <string name="adaptive_controls_title">Adaptive controls</string>
-    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
+    <string name="adaptive_controls_title">Controles adaptáveis</string>
+    <string name="adaptive_controls_summary">Os controles do miniplayer mudam para se adaptar ao estilo atual do player.</string>
     <string name="swipe_to_dismiss_title">Deslize para dispensar</string>
     <string name="swipe_to_dismiss_summary">Deslize o mini player para baixo para parar a reprodução e limpar a fila de reprodução.</string>
     <string name="circle_button_title">Botão de reprodução redondo</string>
