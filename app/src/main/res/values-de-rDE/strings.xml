@@ -625,6 +625,8 @@
     <string name="gapless_playback_summary">Nahtloser Übergang zwischen den Titeln. Kann auf manchen Geräten zu Wiedergabeproblemen führen.</string>
     <string name="crossfade_title">Überblenden (experimentell)</string>
     <string name="crossfade_summary">Dauer in Sekunden, um zwischen Titeln überzublenden (wähle 0 zum Deaktivieren).</string>
+    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
+    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="audio_fade_duration_title">Audio-Blendendauer (experimentell)</string>
     <string name="audio_fade_duration_summary">Dauer in Sekunden, um bei Wiedergabestart oder -pause ein- oder auszublenden (wähle 0 zum Deaktivieren).</string>
     <string name="replaygain_source_mode_title">Quellmodus</string>
