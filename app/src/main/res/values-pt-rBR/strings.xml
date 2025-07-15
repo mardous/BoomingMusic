@@ -624,6 +624,8 @@
     <string name="gapless_playback_summary">Transição suave entre músicas. Pode causar problemas de reprodução em alguns dispositivos.</string>
     <string name="crossfade_title">Crossfade (experimental)</string>
     <string name="crossfade_summary">Duração em segundos do crossfade entre músicas (0 para desativar).</string>
+    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
+    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="audio_fade_duration_title">Duração do fade de áudio (experimental)</string>
     <string name="audio_fade_duration_summary">Duração em segundos do fade do volume ao iniciar ou pausar a música (0 para desativar).</string>
     <string name="replaygain_source_mode_title">Modo de origem</string>
