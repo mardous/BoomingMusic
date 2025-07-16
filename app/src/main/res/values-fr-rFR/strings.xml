@@ -610,6 +610,8 @@
     <string name="lyrics_on_album_cover_summary">Afficher les paroles de la chanson au lieu de la couverture quand elles sont disponibles.</string>
     <string name="animate_controls_title">Animer les contrôles</string>
     <string name="animate_controls_summary">Il est joué lors de l\'ouverture du panneau du lecteur.</string>
+    <string name="swipe_controls_title">Swipe controls</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">Afficher le nom de l\'album</string>
     <string name="display_extra_info_title">Afficher les informations supplémentaires</string>
     <string name="display_extra_info_summary">Afficher des informations supplémentaires sur la chanson, comme le débit, le format, le taux d\'échantillonnage, etc.</string>
