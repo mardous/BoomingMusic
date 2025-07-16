@@ -618,6 +618,8 @@
     <string name="lyrics_on_album_cover_summary">Arată versurile cântecului în loc de copertă atunci când sunt disponibile.</string>
     <string name="animate_controls_title">Controale animate</string>
     <string name="animate_controls_summary">Se joacă când se deschide panoul jucătorului.</string>
+    <string name="swipe_controls_title">Swipe controls</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">Afişare nume album</string>
     <string name="display_extra_info_title">Afişare informaţii suplimentare</string>
     <string name="display_extra_info_summary">Afișează informații suplimentare despre melodie, cum ar fi bitrat, format, rată de eșantionare, etc.</string>
