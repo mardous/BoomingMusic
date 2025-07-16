@@ -610,6 +610,8 @@
     <string name="lyrics_on_album_cover_summary">Vis sangtekst i stedet for forsidevisning når de er tilgjengelige.</string>
     <string name="animate_controls_title">Animer kontroller</string>
     <string name="animate_controls_summary">Det spilles når spiller åpnes panelet.</string>
+    <string name="swipe_controls_title">Swipe controls</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">Vis albumnavn</string>
     <string name="display_extra_info_title">Vis ekstra informasjon</string>
     <string name="display_extra_info_summary">Vis ekstra informasjon om sangen, som bitrate, format, prøvetakingshastighet osv.</string>
