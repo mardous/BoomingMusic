@@ -625,8 +625,8 @@
     <string name="gapless_playback_summary">Şarkılar arasında pürüzsüz geçiş. Bazı cihazlarda çalma sorunlarına neden olabilir.</string>
     <string name="crossfade_title">Crossfade (deneysel)</string>
     <string name="crossfade_summary">Şarkılar arasında geçiş yapmak için gereken saniye sayısı (devre dışı bırakmak için 0 olarak ayarlayın).</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
+    <string name="no_crossfade_on_albums_title">Albümlerde geçiş efekti yok</string>
+    <string name="no_crossfade_on_albums_summary">Albümleri orijinal sırasıyla çalarken crossfade uygulama.</string>
     <string name="audio_fade_duration_title">Ses geçişi süresi (deneysel)</string>
     <string name="audio_fade_duration_summary">Çalma başladığında veya duraklatıldığında sesin kısılıp yükselmesi için gereken saniye sayısı (devre dışı bırakmak için 0 olarak ayarlayın).</string>
     <string name="replaygain_source_mode_title">Kaynak modu</string>
