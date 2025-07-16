@@ -626,6 +626,8 @@
     <string name="lyrics_on_album_cover_summary">Zobrazit text písně místo obalu, pokud jsou k dispozici.</string>
     <string name="animate_controls_title">Animovat kontroly</string>
     <string name="animate_controls_summary">Přehrává se při otevírání panelu hráčů.</string>
+    <string name="swipe_controls_title">Swipe controls</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">Zobrazit název alba</string>
     <string name="display_extra_info_title">Zobrazit další informace</string>
     <string name="display_extra_info_summary">Zobrazit další informace o skladbě, jako je bitrate, formát, vzorkovací rychlost, atd.</string>
