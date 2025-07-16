@@ -626,6 +626,8 @@
     <string name="lyrics_on_album_cover_summary">Показывать текст песни вместо обложки, когда он доступен.</string>
     <string name="animate_controls_title">Анимация элементов управления</string>
     <string name="animate_controls_summary">Это игралось при открытии панели игрока.</string>
+    <string name="swipe_controls_title">Swipe controls</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">Показывать имя альбома</string>
     <string name="display_extra_info_title">Показать дополнительную информацию</string>
     <string name="display_extra_info_summary">Дополнительные сведения о песне, такие как битрейт, формат, частота дискретизации и т.д.</string>
