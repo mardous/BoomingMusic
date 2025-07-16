@@ -609,6 +609,8 @@
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música em vez da capa quando disponível.</string>
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
+    <string name="swipe_controls_title">Swipe controls</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
