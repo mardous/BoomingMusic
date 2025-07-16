@@ -610,6 +610,8 @@
     <string name="lyrics_on_album_cover_summary">Näytä kappaleen sanoitukset kannen sijaan, kun ne ovat saatavilla.</string>
     <string name="animate_controls_title">Animoi kontrollit</string>
     <string name="animate_controls_summary">Se on pelattu, kun avataan pelaajapaneeli.</string>
+    <string name="swipe_controls_title">Swipe controls</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">Näytä albumin nimi</string>
     <string name="display_extra_info_title">Näytä lisätiedot</string>
     <string name="display_extra_info_summary">Näytä lisätiedot kappaleesta, kuten bitrate, formaatti, näytteenottotaajuus jne.</string>
