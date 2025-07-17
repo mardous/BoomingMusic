@@ -598,6 +598,7 @@
     <string name="circle_button_title">गोल प्ले बटन</string>
     <string name="swipe_album_cover_title">एल्बम का कवर स्वाइप करें</string>
     <string name="swipe_album_cover_summary">गाने के बीच में स्किप करने के लिए एल्बम कवर पर बाईं और दाईं ओर स्वाइप करें।</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">कवर पर डबल टैप करें</string>
     <string name="long_press_on_album_cover_title">कवर पर लंबे समय तक दबाएँ</string>
     <string name="now_playing_corner_radius_title">इमेज का कोना रेडियस</string>
