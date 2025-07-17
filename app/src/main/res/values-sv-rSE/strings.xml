@@ -600,6 +600,7 @@
     <string name="circle_button_title">Cirkulär uppspelningsknapp</string>
     <string name="swipe_album_cover_title">Svep albumomslag</string>
     <string name="swipe_album_cover_summary">Svep åt vänster och höger på skivomslaget för att hoppa mellan låtarna.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dubbeltryck på omslaget</string>
     <string name="long_press_on_album_cover_title">Långtryck på omslaget</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
