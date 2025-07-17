@@ -592,6 +592,7 @@
     <string name="circle_button_title">丸い再生ボタン</string>
     <string name="swipe_album_cover_title">アルバムカバーをスワイプ</string>
     <string name="swipe_album_cover_summary">アルバムカバーを左右にスワイプして曲間をスキップします。</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">カバーをダブルタップする</string>
     <string name="long_press_on_album_cover_title">カバーを長押しする</string>
     <string name="now_playing_corner_radius_title">画像の角の丸み</string>
