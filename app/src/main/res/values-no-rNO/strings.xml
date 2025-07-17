@@ -600,6 +600,7 @@
     <string name="circle_button_title">Sirkulær avspillingsknapp</string>
     <string name="swipe_album_cover_title">Swipe albumomslag</string>
     <string name="swipe_album_cover_summary">Sveip til venstre og høyre på albumomslag for å hoppe over mellom sanger.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dobbelttrykk på dekselet</string>
     <string name="long_press_on_album_cover_title">Langt trykk på deksel</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
