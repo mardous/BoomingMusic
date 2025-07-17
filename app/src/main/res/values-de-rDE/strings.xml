@@ -600,6 +600,7 @@
     <string name="circle_button_title">Runde Wiedergabetaste</string>
     <string name="swipe_album_cover_title">Über Albumcover wischen</string>
     <string name="swipe_album_cover_summary">Wische über das Albumcover nach links und rechts, um zwischen den Titeln zu springen.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Auf Albumcover doppeltippen</string>
     <string name="long_press_on_album_cover_title">Albumcover gedrückt halten</string>
     <string name="now_playing_corner_radius_title">Bild-Eckradius</string>
