@@ -608,6 +608,7 @@
     <string name="circle_button_title">Butonul de redare circulară</string>
     <string name="swipe_album_cover_title">Copertă album</string>
     <string name="swipe_album_cover_summary">Glisați la stânga și la dreapta pe coperta de album pentru a sări între melodii.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dublă atingere pe copertă</string>
     <string name="long_press_on_album_cover_title">Apăsare lungă pe copertă</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
