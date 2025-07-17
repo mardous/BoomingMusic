@@ -600,6 +600,7 @@
     <string name="circle_button_title">Dairesel oynatma düğmesi</string>
     <string name="swipe_album_cover_title">Albüm kapağını kaydırın</string>
     <string name="swipe_album_cover_summary">Şarkılar arasında geçiş yapmak için albüm kapağını sola ve sağa kaydırın.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Kapağa çift dokunun</string>
     <string name="long_press_on_album_cover_title">Kapağa uzun basın</string>
     <string name="now_playing_corner_radius_title">Görsel köşe yarıçapı</string>
