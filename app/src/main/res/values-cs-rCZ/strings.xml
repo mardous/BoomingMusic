@@ -616,6 +616,7 @@
     <string name="circle_button_title">Kruhové tlačítko přehrávání</string>
     <string name="swipe_album_cover_title">Přejeďte obal alba</string>
     <string name="swipe_album_cover_summary">Přejeďte prstem vlevo a vpravo na obal alba pro přeskočení mezi skladbami.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dvojím poklepáním na obal</string>
     <string name="long_press_on_album_cover_title">Dlouhým stiskem na obalu</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
