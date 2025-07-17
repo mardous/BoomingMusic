@@ -57,7 +57,7 @@
     <string name="could_not_import_the_playlist_x">プレイリスト\"%s\"をインポートできませんでした</string>
     <string name="there_are_no_importable_playlists">インポート可能なプレイリストはありません。</string>
     <string name="playlist_x_not_imported">プレイリスト %s はインポートされていません。</string>
-    <string name="action_import_playlist">プレイリストをインポートする…</string>
+    <string name="action_import_playlist">プレイリストをインポート…</string>
     <string name="action_new_playlist">新規プレイリスト…</string>
     <string name="new_playlist_title">新規プレイリスト</string>
     <string name="add_playlist_title">プレイリストに追加</string>
@@ -159,7 +159,7 @@
     <string name="toggle_favorite">お気に入りから追加/削除</string>
     <string name="action_add_to_playlist">プレイリストに追加</string>
     <string name="action_remove_from_playlist">プレイリストから削除</string>
-    <string name="action_add_to_playing_queue">Add to queue</string>
+    <string name="action_add_to_playing_queue">キューに追加</string>
     <string name="action_remove_from_playing_queue">再生キューから削除</string>
     <string name="x_removed_from_playing_queue">%s を削除しました</string>
     <string name="put_after_current_track">現在のトラックの後に追加する</string>
@@ -460,7 +460,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">ダウンロード済み</string>
     <string name="lrc_lyrics">LRC ファイル</string>
-    <string name="ttml_lyrics">TTML file</string>
+    <string name="ttml_lyrics">TTMLファイル</string>
     <string name="action_import_synchronized_lyrics">同期した歌詞をインポート</string>
     <string name="action_share_synchronized_lyrics">同期した歌詞を共有</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> の同期したLRC歌詞をインポートしますか？]]></string>
@@ -477,7 +477,7 @@
     <string name="no_synced_lyrics_found">同期された歌詞が見つかりません</string>
     <string name="lyrics_were_updated_successfully">歌詞が更新されました。</string>
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
+    <string name="lyrics_source_ttml_file">同期歌詞はTTMLファイルから取得されるため、現時点ではTTMLファイルの内容を編集することはできません。</string>
     <string name="lyrics_source_lrc_file">同期された歌詞はLRCファイルから来ています。変更内容は直接そのファイルに保存されます。</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">スリープタイマー</string>
@@ -585,8 +585,8 @@
     <string name="open_on_play_summary">曲の再生を開始した後、自動的に「再生中」パネルを展開します。</string>
     <string name="extra_controls_title">追加コントロール</string>
     <string name="extra_controls_summary">ミニプレーヤー用の追加コントロールを追加</string>
-    <string name="adaptive_controls_title">Adaptive controls</string>
-    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
+    <string name="adaptive_controls_title">アダプティブコントロール</string>
+    <string name="adaptive_controls_summary">ミニプレーヤーの操作は、現在のプレーヤーのスタイルに合わせて変更されます。</string>
     <string name="swipe_to_dismiss_title">スワイプして閉じる</string>
     <string name="swipe_to_dismiss_summary">ミニプレーヤーを下にスワイプして再生を停止し、キューをクリアします。</string>
     <string name="circle_button_title">丸い再生ボタン</string>
@@ -602,8 +602,8 @@
     <string name="lyrics_on_album_cover_summary">表示されている曲の代わりに歌詞を表示する。</string>
     <string name="animate_controls_title">アニメーションコントロール</string>
     <string name="animate_controls_summary">プレーヤーパネルを開くときに再生されます。</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_title">スワイプコントロール</string>
+    <string name="swipe_controls_summary">再生画面の空白の領域で左にスワイプして前の曲に移動し、右にスワイプして次の曲に移動できます。</string>
     <string name="display_album_name_title">アルバム名を表示</string>
     <string name="display_extra_info_title">追加情報を表示</string>
     <string name="display_extra_info_summary">ビットレート、フォーマット、サンプリングレートなど、曲に関する追加情報を表示する。</string>
@@ -617,12 +617,12 @@
     <string name="play_on_startup_title">起動時に再生する</string>
     <string name="gapless_playback_title">ギャップレス再生</string>
     <string name="gapless_playback_summary">曲間のスムーズなトランジション。一部のデバイスで再生の問題を引き起こす可能性があります。</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
+    <string name="crossfade_title">クロスフェード (実験的)</string>
+    <string name="crossfade_summary">曲間のクロスフェードにかかる秒数(0に設定すると無効になります)。</string>
+    <string name="no_crossfade_on_albums_title">アルバムではクロスフェードしません</string>
+    <string name="no_crossfade_on_albums_summary">アルバムを元の順序で再生するときはクロスフェードしないでください。</string>
+    <string name="audio_fade_duration_title">オーディオフェード時間（実験的）</string>
+    <string name="audio_fade_duration_summary">再生の開始時または一時停止時にボリュームをフェードインまたはフェードアウトするのにかかる秒数 (無効にするには 0 に設定)。</string>
     <string name="replaygain_source_mode_title">ソースモード</string>
     <string name="replaygain_preamp_title">PreAmp レベル</string>
     <string name="replaygain_preamp_summary">ReplayGain が有効な場合、音量レベルを設定します。</string>
@@ -746,7 +746,7 @@
     <string name="this_month">今月</string>
     <string name="past_three_months">過去3ヶ月</string>
     <string name="this_year">年</string>
-    <string name="priority_maximum">最大値</string>
+    <string name="priority_maximum">最大</string>
     <string name="priority_high">高い</string>
     <string name="priority_normal">標準</string>
     <string name="priority_low">低い</string>
