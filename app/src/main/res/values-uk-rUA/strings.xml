@@ -616,6 +616,7 @@
     <string name="circle_button_title">Кнопка кругової гри</string>
     <string name="swipe_album_cover_title">Провести обкладинку альбому</string>
     <string name="swipe_album_cover_summary">Проведіть вліво і вправо на обкладинці альбому, щоб пропустити між піснями.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Подвійне натискання на обкладинку</string>
     <string name="long_press_on_album_cover_title">Довге натискання на обкладинку</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
