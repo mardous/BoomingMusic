@@ -616,6 +616,7 @@
     <string name="circle_button_title">Okrągły przycisk odtwarzania</string>
     <string name="swipe_album_cover_title">Przesuń palcem okładkę albumu</string>
     <string name="swipe_album_cover_summary">Przesuń palcem w lewo lub w prawo na okładce albumu, aby zmienić utwór.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dwukrotne dotknięcie okładki</string>
     <string name="long_press_on_album_cover_title">Długie przytrzymanie na okładce</string>
     <string name="now_playing_corner_radius_title">Zaokrąglenie rogów obrazu</string>
