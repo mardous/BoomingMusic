@@ -592,6 +592,7 @@
     <string name="circle_button_title">圆形播放按钮</string>
     <string name="swipe_album_cover_title">滑动专辑封面</string>
     <string name="swipe_album_cover_summary">在专辑封面上向左和向右滑动以跳过歌曲。</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">双击封面</string>
     <string name="long_press_on_album_cover_title">长按封面</string>
     <string name="now_playing_corner_radius_title">图像圆角半径</string>
