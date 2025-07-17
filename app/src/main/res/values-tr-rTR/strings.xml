@@ -610,8 +610,8 @@
     <string name="lyrics_on_album_cover_summary">Şarkı sözleri mevcut olduğunda kapak yerine göster.</string>
     <string name="animate_controls_title">Kontrolleri canlandır</string>
     <string name="animate_controls_summary">Çalar panelini açarken oynatılır.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_title">Kaydırma kontrolleri</string>
+    <string name="swipe_controls_summary">Şimdi çalıyor ekranında herhangi bir boş alana sola kaydırarak önceki şarkıya, sağa kaydırarak ise sonraki şarkıya gidebilirsiniz.</string>
     <string name="display_album_name_title">Albüm adını göster</string>
     <string name="display_extra_info_title">Ek bilgileri göster</string>
     <string name="display_extra_info_summary">Bit hızı, biçim, örnekleme hızı gibi şarkı hakkında ek bilgileri gösterin.</string>
