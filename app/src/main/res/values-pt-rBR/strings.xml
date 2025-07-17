@@ -599,7 +599,7 @@
     <string name="circle_button_title">Botão de reprodução redondo</string>
     <string name="swipe_album_cover_title">Deslizar capa do álbum</string>
     <string name="swipe_album_cover_summary">Deslize a capa do álbum para a esquerda ou direita para pular entre as músicas.</string>
-    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
+    <string name="single_tap_on_album_cover_title">Toque único na capa</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
     <string name="long_press_on_album_cover_title">Toque longo na capa</string>
     <string name="now_playing_corner_radius_title">Cantos arredondados da imagem</string>
