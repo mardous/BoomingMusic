@@ -600,6 +600,7 @@
     <string name="circle_button_title">Circulaire afspeelknop</string>
     <string name="swipe_album_cover_title">Swipe albumhoes</string>
     <string name="swipe_album_cover_summary">Veeg naar links en rechts op de albumhoes om tussen nummers over te slaan.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dubbele tik op de afdekking</string>
     <string name="long_press_on_album_cover_title">Lang drukken op omslag</string>
     <string name="now_playing_corner_radius_title">Hoekradius van afbeelding</string>
