@@ -600,6 +600,7 @@
     <string name="circle_button_title">Pulsante di riproduzione circolare</string>
     <string name="swipe_album_cover_title">Scorri copertina album</string>
     <string name="swipe_album_cover_summary">Scorri verso sinistra e destra sulla copertina dell\'album per saltare tra le canzoni.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Doppio tocco sulla copertina</string>
     <string name="long_press_on_album_cover_title">Pressione prolungata sulla copertina</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
