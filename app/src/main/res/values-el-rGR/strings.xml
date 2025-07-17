@@ -600,6 +600,7 @@
     <string name="circle_button_title">Κυκλικό κουμπί αναπαραγωγής</string>
     <string name="swipe_album_cover_title">Σύρετε το εξώφυλλο άλμπουμ</string>
     <string name="swipe_album_cover_summary">Σύρετε αριστερά και δεξιά στο εξώφυλλο του άλμπουμ για να παραλείψετε μεταξύ τραγουδιών.</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Διπλό χτύπημα στο εξώφυλλο</string>
     <string name="long_press_on_album_cover_title">Παρατεταμένο πάτημα στο εξώφυλλο</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
