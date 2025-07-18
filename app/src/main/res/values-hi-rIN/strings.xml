@@ -508,6 +508,8 @@
     <string name="fork_on_github">गिटहब पर फोर्क</string>
     <string name="licenses">लायसेंसेज़</string>
     <string name="author">लेखक</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">स्वीकृति</string>
     <string name="translators_title">अनुवादक</string>
     <string name="translators_summary">उन लोगों का धन्यवाद जिन्होंने बूमिंग म्यूजिक को कई भाषाओं में उपलब्ध कराया।</string>
