@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Ακούω το %1$s από %2$s</string>
     <string name="share_to_stories">Μοιραστείτε τις ιστορίες</string>
     <string name="could_not_create_the_story">Δεν ήταν δυνατή η δημιουργία της ιστορίας.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Μετονομασία</string>
     <string name="add_action">Προσθήκη</string>
     <string name="delete_action">Διαγραφή</string>
@@ -615,7 +616,7 @@
     <string name="animate_controls_title">Εφέ κίνησης ελέγχων</string>
     <string name="animate_controls_summary">Παίζεται όταν ανοίγετε τον πίνακα του παίκτη.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Εμφάνιση ονόματος άλμπουμ</string>
     <string name="display_extra_info_title">Εμφάνιση επιπλέον πληροφοριών</string>
     <string name="display_extra_info_summary">Εμφάνιση επιπλέον πληροφοριών σχετικά με το τραγούδι, όπως bitate, μορφή, ποσοστό δειγματοληψίας, κλπ.</string>
