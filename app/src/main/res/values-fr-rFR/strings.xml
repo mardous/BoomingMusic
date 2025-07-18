@@ -151,7 +151,7 @@
     <string name="save_queue">Enregistrer la file d\'attente</string>
     <string name="clear_queue">Vider la file d\'attente</string>
     <string name="action_move_to_current_track">Afficher la piste actuelle</string>
-    <string name="shuffle_queue">Mélanger la file</string>
+    <string name="shuffle_queue">Mélanger la file d\'attente</string>
     <string name="action_add_to_favorites">Ajouter aux favoris</string>
     <string name="action_remove_from_favorites">Retirer des favoris</string>
     <string name="added_to_favorites_label">Ajouté aux favoris</string>
