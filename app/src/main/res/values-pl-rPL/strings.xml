@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Słucham %1$s przez %2$s</string>
     <string name="share_to_stories">Udostępnij w relacji</string>
     <string name="could_not_create_the_story">Nie można utworzyć relacji.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Zmień nazwę</string>
     <string name="add_action">Dodaj</string>
     <string name="delete_action">Usuń</string>
@@ -631,7 +632,7 @@
     <string name="animate_controls_title">Animacja klawiszy</string>
     <string name="animate_controls_summary">Pojawia się podczas otwierania panelu odtwarzacza.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Wyświetl nazwę albumu</string>
     <string name="display_extra_info_title">Wyświetl dodatkowe informacje</string>
     <string name="display_extra_info_summary">Wyświetl dodatkowe informacje o piosence, takie jak bitrate, format, częstotliwość próbkowania itp.</string>
