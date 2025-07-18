@@ -510,6 +510,8 @@
     <string name="fork_on_github">GitHub\'da Fork\'la</string>
     <string name="licenses">Lisanslar</string>
     <string name="author">Geliştirici</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">Teşekkür</string>
     <string name="translators_title">Çevirmenler</string>
     <string name="translators_summary">Booming Music\'i birçok dilde kullanılabilir hale getirenlere teşekkürler.</string>
