@@ -25,7 +25,7 @@
     <string name="search_list_x_label">Liste de recherche : %s</string>
     <string name="search_from_x_label">Rechercher depuis \"%s\"</string>
     <string name="search_year_x_label">Année de recherche : %s</string>
-    <string name="search_in_folder_x">Search in folder: %s</string>
+    <string name="search_in_folder_x">Rechercher dans le dossier : %s</string>
     <string name="search_last_added">Rechercher la dernière musique</string>
     <string name="shuffle_mode_album">Lecture aléatoire de l\'album</string>
     <string name="shuffle_mode_artist">Lecture aléatoire des artistes</string>
@@ -116,7 +116,7 @@
     <string name="audio_focus_denied">Focus audio refusé.</string>
     <string name="no_audio_ID">Mauvais ID audio.</string>
     <string name="unplayable_file">Impossible de lire cette chanson.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
+    <string name="unplayable_file_code_x">Impossible de jouer ce titre (code : %d).</string>
     <string name="permission_external_storage_title">Accès au stockage</string>
     <string name="permission_external_storage_description">L\'application a besoin d\'être autorisée à accéder au stockage de votre appareil pour jouer de la musique</string>
     <string name="permission_external_storage_denied">Vous devez autoriser l\'accès au stockage externe.</string>
@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Ajouter/Supprimer des Favoris</string>
     <string name="action_add_to_playlist">Ajouter à la playlist</string>
     <string name="action_remove_from_playlist">Retirer de la playlist</string>
-    <string name="action_add_to_playing_queue">Add to queue</string>
+    <string name="action_add_to_playing_queue">Ajouter à la file d\'attente</string>
     <string name="action_remove_from_playing_queue">Retirer de la file de lecture</string>
     <string name="x_removed_from_playing_queue">%s supprimé</string>
     <string name="put_after_current_track">Mettre après la piste actuelle</string>
@@ -216,7 +216,7 @@
     <string name="song_stat_label">joué %1$d fois, dernière fois le %2$s</string>
     <string name="horizontal_albums">Albums horizontaux</string>
     <string name="ignore_singles">Ignorer les singles</string>
-    <string name="compact_song_view">Compact song view</string>
+    <string name="compact_song_view">Vue compacte des titres</string>
     <string name="action_view_type">Type de vue</string>
     <string name="view_type_normal">Normale</string>
     <string name="view_type_card">Cartes</string>
@@ -246,13 +246,13 @@
     <string name="action_details">Détails du produit</string>
     <string name="action_set_as_start_directory">Définir comme répertoire de départ</string>
     <string name="action_go_to_start_directory">Aller au répertoire de démarrage</string>
-    <string name="action_hierarchy_view">Hierarchy view</string>
+    <string name="action_hierarchy_view">Vue hiérarchique</string>
     <string name="new_start_directory">Nouveau répertoire de démarrage : %s</string>
     <string name="action_scan">Analyser</string>
     <string name="scan_media">Analyser les médias</string>
-    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
-    <string name="scan_media_positive">Scan anyway</string>
-    <string name="scan_finished">Scan finished.</string>
+    <string name="scan_media_message">Dans la plupart des cas, Android détecte et indexe automatiquement les fichiers multimédias sur votre appareil, donc l\'analyse manuelle est généralement inutile.</string>
+    <string name="scan_media_positive">Analyser quand même</string>
+    <string name="scan_finished">Analyse terminée.</string>
     <string name="album_or_artist_empty">Le titre ou l\'artiste est vide.</string>
     <string name="update_image">Mettre à jour l\'image</string>
     <string name="restore_default">Restaurer les valeurs par défaut</string>
@@ -274,7 +274,7 @@
         \n\nSeulement vous avez la responsabilité totale sur votre utilisation des pochettes d\'album enregistrées.</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
-    <string name="keyboard">Keyboard</string>
+    <string name="keyboard">Clavier</string>
     <string name="label_file_path">Chemin du fichier</string>
     <string name="size">Taille du fichier</string>
     <string name="label_file_format">Formater</string>
@@ -388,22 +388,22 @@
     <string name="recent_albums">Albums récents</string>
     <string name="no_suggestions">Il n\'y a aucune suggestion pour vous</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">Pure random</string>
-    <string name="shuffle_mode_most_played">Most played</string>
-    <string name="shuffle_mode_most_played_artists">Most played artists</string>
-    <string name="shuffle_mode_most_played_albums">Most played albums</string>
-    <string name="shuffle_mode_favorite_songs">Favorites first</string>
-    <string name="shuffle_mode_forgotten_songs">Forgotten songs</string>
-    <string name="shuffle_mode_recently_added">Recently added</string>
-    <string name="shuffle_mode_combined">Smart mix</string>
-    <string name="shuffle_mode_pure_random_description">Completely random shuffle.</string>
-    <string name="shuffle_mode_most_played_description">Favors your most played songs.</string>
-    <string name="shuffle_mode_most_played_artists_description">Favors songs from your top artists.</string>
-    <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
-    <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
-    <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
-    <string name="shuffle_mode_recently_added_description">Favors songs recently added to your library.</string>
-    <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
+    <string name="shuffle_mode_pure_random">Pur hasard</string>
+    <string name="shuffle_mode_most_played">Le plus joué</string>
+    <string name="shuffle_mode_most_played_artists">Artistes les plus joués</string>
+    <string name="shuffle_mode_most_played_albums">Albums les plus joués</string>
+    <string name="shuffle_mode_favorite_songs">Les favoris d\'abord</string>
+    <string name="shuffle_mode_forgotten_songs">Titres oubliés</string>
+    <string name="shuffle_mode_recently_added">Ajouté récemment</string>
+    <string name="shuffle_mode_combined">Mélange intelligent</string>
+    <string name="shuffle_mode_pure_random_description">Mélange complètement aléatoire.</string>
+    <string name="shuffle_mode_most_played_description">Favorise vos titres les plus joués.</string>
+    <string name="shuffle_mode_most_played_artists_description">Favorise les titres de vos meilleurs artistes.</string>
+    <string name="shuffle_mode_most_played_albums_description">Favorise les titres de vos albums les plus écoutés.</string>
+    <string name="shuffle_mode_favorite_songs_description">Donne la priorité à vos titres préférés.</string>
+    <string name="shuffle_mode_forgotten_songs_description">Donne la priorité aux titres que vous n\'avez pas écoutés depuis un certain temps.</string>
+    <string name="shuffle_mode_recently_added_description">Favorise les titres récemment ajoutés à votre bibliothèque.</string>
+    <string name="shuffle_mode_combined_description">Mix basé sur les favoris, les pièces jouées et la récence.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Égaliseur</string>
     <string name="share_eq_configuration">Partager la configuration EQ</string>
@@ -468,7 +468,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Téléchargé</string>
     <string name="lrc_lyrics">Fichier LRC</string>
-    <string name="ttml_lyrics">TTML file</string>
+    <string name="ttml_lyrics">Fichier TTML</string>
     <string name="action_import_synchronized_lyrics">Importer les paroles synchronisées</string>
     <string name="action_share_synchronized_lyrics">Partager les paroles synchronisées</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Voulez-vous importer les paroles LRC synchronisées pour <b>%s</b>?]]></string>
@@ -485,7 +485,7 @@
     <string name="no_synced_lyrics_found">Aucune parole synchronisée trouvée</string>
     <string name="lyrics_were_updated_successfully">Les paroles ont été mises à jour avec succès.</string>
     <string name="failed_to_update_lyrics">Impossible de mettre à jour les paroles.</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
+    <string name="lyrics_source_ttml_file">Les paroles synchronisées proviennent d\'un fichier TTML. La modification du contenu des fichiers TTML n\'est pas encore prise en charge.</string>
     <string name="lyrics_source_lrc_file">Les paroles synchronisées proviennent d\'un fichier LCR. Les modifications seront enregistrées directement dans ce fichier.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Minuteur de sommeil</string>
@@ -511,10 +511,10 @@
     <string name="licenses">Licences</string>
     <string name="author">Auteur</string>
     <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
+    <string name="contributors">Contributeurs</string>
     <string name="acknowledgments_title">Reconnaissance</string>
-    <string name="translators_title">Translators</string>
-    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="translators_title">Traducteurs</string>
+    <string name="translators_summary">Merci à ceux qui rendent Booming Music disponible dans de nombreuses langues.</string>
     <string name="telegram_chat">Chat Telegram</string>
     <string name="telegram_chat_summary">Rejoignez le chat dans Telegram et soyez informé des nouvelles et des nouvelles nouvelles.</string>
     <string name="view_profile_on_github">Voir le profil sur GitHub</string>
@@ -536,7 +536,7 @@
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Vous allez être redirigé vers le site Web de suivi de tickets.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Accès au stockage requis</string>
-    <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
+    <string name="saf_access_required_message">Booming Music requiert une autorisation pour accéder à ces fichiers. Veuillez sélectionner le dossier racine où sont stockés vos fichiers musicaux.</string>
     <string name="saf_show_files_button">Afficher les fichiers</string>
     <string name="saf_error_uri">Impossible d\'obtenir l\'URI SAF</string>
     <string name="saf_write_failed">Échec de l\'écriture du fichier : %s</string>
@@ -587,15 +587,15 @@
     <string name="remember_last_page_summary">Aller à la dernière page ouverte au lancement.</string>
     <string name="start_page_title">Page d\'accueil</string>
     <string name="tab_mode_title">Mode de titre des onglets</string>
-    <string name="hold_tab_to_search_title">Hold tab to Search</string>
-    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
+    <string name="hold_tab_to_search_title">Maintenez la touche Tab enfoncée pour rechercher</string>
+    <string name="hold_tab_to_search_summary">Appuyez longuement sur n’importe quel onglet de la barre de navigation pour ouvrir l’écran de recherche.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir en lecture</string>
     <string name="open_on_play_summary">Développez automatiquement le panneau Lecture en cours après avoir commencé à jouer une chanson.</string>
     <string name="extra_controls_title">Contrôles supplémentaires</string>
     <string name="extra_controls_summary">Ajouter des contrôles supplémentaires pour le mini-joueur</string>
-    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_title">Contrôles adaptatifs</string>
     <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Glisser pour rejeter</string>
     <string name="swipe_to_dismiss_summary">Glissez vers le bas le mini-lecteur pour arrêter la lecture et effacer les files d\'attente.</string>
