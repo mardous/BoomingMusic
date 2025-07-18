@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">I\'m listening to %1$s by %2$s</string>
     <string name="share_to_stories">Share to stories</string>
     <string name="could_not_create_the_story">Couldn\'t create the story.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Rename</string>
     <string name="add_action">Add</string>
     <string name="delete_action">Delete</string>
@@ -607,7 +608,7 @@
     <string name="animate_controls_title">Animate controls</string>
     <string name="animate_controls_summary">It\'s played when opening the player panel.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Display album name</string>
     <string name="display_extra_info_title">Display extra info</string>
     <string name="display_extra_info_summary">Display extra info about the song, like bitrate, format, sampling rate, etc.</string>
