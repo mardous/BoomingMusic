@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Poslouchám %1$s od %2$s</string>
     <string name="share_to_stories">Sdílet s příběhy</string>
     <string name="could_not_create_the_story">Nelze vytvořit příběh.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Přejmenovat</string>
     <string name="add_action">Přidat</string>
     <string name="delete_action">Vymazat</string>
@@ -631,7 +632,7 @@
     <string name="animate_controls_title">Animovat kontroly</string>
     <string name="animate_controls_summary">Přehrává se při otevírání panelu hráčů.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Zobrazit název alba</string>
     <string name="display_extra_info_title">Zobrazit další informace</string>
     <string name="display_extra_info_summary">Zobrazit další informace o skladbě, jako je bitrate, formát, vzorkovací rychlost, atd.</string>
