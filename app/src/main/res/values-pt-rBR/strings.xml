@@ -37,7 +37,7 @@
     <string name="currently_listening_to_x_by_x">Estou ouvindo %1$s de %2$s</string>
     <string name="share_to_stories">Compartilhar nos Stories</string>
     <string name="could_not_create_the_story">Não foi possível criar o Stories.</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">Voltar</string>
     <string name="rename_action">Renomear</string>
     <string name="add_action">Adicionar</string>
     <string name="delete_action">Excluir</string>
@@ -615,7 +615,7 @@
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
     <string name="swipe_controls_title">Controles por gesto</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_controls_summary">Deslize para a esquerda em qualquer espaço vazio na tela de reprodução para ir para a próxima música e para a direita para voltar à música anterior.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
