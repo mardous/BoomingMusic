@@ -232,6 +232,7 @@
     <string name="sort_order_year">שנה</string>
     <string name="sort_order_duration">משך זמן</string>
     <string name="sort_order_date_added">תאריך הוספה</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">מספר שירים</string>
     <string name="sort_order_number_of_albums">מספר האלבומים</string>
     <string name="sort_order_last_played_date">תאריך האזנה אחרונה</string>
