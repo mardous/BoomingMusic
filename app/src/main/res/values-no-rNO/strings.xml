@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Jeg hører på %1$s av %2$s</string>
     <string name="share_to_stories">Del med historier</string>
     <string name="could_not_create_the_story">Kan ikke opprette historien.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Omdøp</string>
     <string name="add_action">Legg til</string>
     <string name="delete_action">Slett</string>
@@ -615,7 +616,7 @@
     <string name="animate_controls_title">Animer kontroller</string>
     <string name="animate_controls_summary">Det spilles når spiller åpnes panelet.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Vis albumnavn</string>
     <string name="display_extra_info_title">Vis ekstra informasjon</string>
     <string name="display_extra_info_summary">Vis ekstra informasjon om sangen, som bitrate, format, prøvetakingshastighet osv.</string>
