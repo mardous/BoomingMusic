@@ -542,6 +542,8 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">التراخيص</string>
     <string name="author">المؤلف</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
