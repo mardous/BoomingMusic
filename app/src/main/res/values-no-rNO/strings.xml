@@ -232,6 +232,7 @@
     <string name="sort_order_year">År</string>
     <string name="sort_order_duration">Varighet</string>
     <string name="sort_order_date_added">Dato lagt til</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Antall sanger</string>
     <string name="sort_order_number_of_albums">Antall album</string>
     <string name="sort_order_last_played_date">Sist avspilt dato</string>
