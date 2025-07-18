@@ -232,6 +232,7 @@
     <string name="sort_order_year">An</string>
     <string name="sort_order_duration">Durată</string>
     <string name="sort_order_date_added">Data adăugării</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Numărul de melodii</string>
     <string name="sort_order_number_of_albums">Număr de albume</string>
     <string name="sort_order_last_played_date">Data ultimei redări</string>
