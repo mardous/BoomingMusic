@@ -232,6 +232,7 @@
     <string name="sort_order_year">Rok</string>
     <string name="sort_order_duration">Doba trvání</string>
     <string name="sort_order_date_added">Datum přidání</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Počet skladeb</string>
     <string name="sort_order_number_of_albums">Počet alb</string>
     <string name="sort_order_last_played_date">Datum posledního hraní</string>
