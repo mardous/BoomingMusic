@@ -502,6 +502,8 @@
     <string name="fork_on_github">创建 GitHub 分支</string>
     <string name="licenses">许可协议</string>
     <string name="author">作者</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
