@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">मैं %2$s का %1$s सुन रहा हूँ</string>
     <string name="share_to_stories">कहानियों को साझा करें</string>
     <string name="could_not_create_the_story">कहानी नहीं बना सका.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">नाम बदलने</string>
     <string name="add_action">जोड़ना</string>
     <string name="delete_action">मिटाना</string>
@@ -613,7 +614,7 @@
     <string name="animate_controls_title">एनिमेट कंट्रोल्स</string>
     <string name="animate_controls_summary">यह प्लेयर पैनल खोलना पर बजाय जाता है।</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">एल्बम का नाम दिखाएँ</string>
     <string name="display_extra_info_title">अतिरिक्त जानकारी प्रदर्शित करें</string>
     <string name="display_extra_info_summary">गाने के बारे में अतिरिक्त जानकारी दिखाएँ, जैसे बिटरेट, फ़ॉर्मेट, सैंपलिंग दर, आदि।</string>
