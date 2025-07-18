@@ -232,6 +232,7 @@
     <string name="sort_order_year">年份</string>
     <string name="sort_order_duration">时长</string>
     <string name="sort_order_date_added">添加日期</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">歌曲数</string>
     <string name="sort_order_number_of_albums">专辑数</string>
     <string name="sort_order_last_played_date">最后播放日期</string>
