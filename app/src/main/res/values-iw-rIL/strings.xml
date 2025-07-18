@@ -526,6 +526,8 @@
     <string name="fork_on_github">קוד מקור</string>
     <string name="licenses">רשיונות</string>
     <string name="author">יוצר</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">הכרה</string>
     <string name="translators_title">מתרגמים</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
