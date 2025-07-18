@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">%1$s が %2$sを聴いています</string>
     <string name="share_to_stories">ストーリーに共有</string>
     <string name="could_not_create_the_story">ストーリーを作成できませんでした。</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">名前の変更</string>
     <string name="add_action">追加</string>
     <string name="delete_action">削除</string>
@@ -607,7 +608,7 @@
     <string name="animate_controls_title">アニメーションコントロール</string>
     <string name="animate_controls_summary">プレーヤーパネルを開くときに再生されます。</string>
     <string name="swipe_controls_title">スワイプコントロール</string>
-    <string name="swipe_controls_summary">再生画面の空白の領域で左にスワイプして前の曲に移動し、右にスワイプして次の曲に移動できます。</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">アルバム名を表示</string>
     <string name="display_extra_info_title">追加情報を表示</string>
     <string name="display_extra_info_summary">ビットレート、フォーマット、サンプリングレートなど、曲に関する追加情報を表示する。</string>
