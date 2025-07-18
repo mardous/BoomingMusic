@@ -232,6 +232,7 @@
     <string name="sort_order_year">Rok</string>
     <string name="sort_order_duration">Czas trwania</string>
     <string name="sort_order_date_added">Data dodania</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Liczba utworów</string>
     <string name="sort_order_number_of_albums">Liczba albumów</string>
     <string name="sort_order_last_played_date">Data ostatniego odtwarzania</string>
