@@ -159,7 +159,7 @@
     <string name="toggle_favorite">从收藏夹中添加/删除</string>
     <string name="action_add_to_playlist">添加到播放列表</string>
     <string name="action_remove_from_playlist">从播放列表删除</string>
-    <string name="action_add_to_playing_queue">Add to queue</string>
+    <string name="action_add_to_playing_queue">添加至队列</string>
     <string name="action_remove_from_playing_queue">从播放队列移除</string>
     <string name="x_removed_from_playing_queue">%s 已移除</string>
     <string name="put_after_current_track">放到当前曲目之后</string>
@@ -250,7 +250,7 @@
     <string name="new_start_directory">新建起始目录: %s</string>
     <string name="action_scan">扫描</string>
     <string name="scan_media">扫描媒体</string>
-    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
+    <string name="scan_media_message">在大多数情况下，安卓自动检测和索引你的设备上的媒体文件，所以通常不需要手动扫描。</string>
     <string name="scan_media_positive">仍进行扫描</string>
     <string name="scan_finished">扫描已完成。</string>
     <string name="album_or_artist_empty">标题或艺术家是空的。</string>
