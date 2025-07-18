@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">أنا أستمع إلى %1$s بواسطة %2$s</string>
     <string name="share_to_stories">شارك في القصص</string>
     <string name="could_not_create_the_story">تعذر إنشاء القصة.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">إعادة تسمية</string>
     <string name="add_action">إضافة</string>
     <string name="delete_action">حذف</string>
@@ -647,7 +648,7 @@
     <string name="animate_controls_title">التحكم المتحرك</string>
     <string name="animate_controls_summary">يتم تشغيلها عند فتح لوحة اللاعب.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">عرض اسم الألبوم</string>
     <string name="display_extra_info_title">عرض معلومات إضافية</string>
     <string name="display_extra_info_summary">عرض معلومات إضافية حول الأغنية، مثل البت، التنسيق، معدل أخذ العينات، إلخ.</string>
