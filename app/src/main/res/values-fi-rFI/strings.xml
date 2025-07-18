@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Kuuntelen %1$s esittäjältä %2$s</string>
     <string name="share_to_stories">Jaa tarinoihin</string>
     <string name="could_not_create_the_story">Tarinaa ei voitu luoda.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Uudelleennimeä</string>
     <string name="add_action">Lisää</string>
     <string name="delete_action">Poista</string>
@@ -615,7 +616,7 @@
     <string name="animate_controls_title">Animoi kontrollit</string>
     <string name="animate_controls_summary">Se on pelattu, kun avataan pelaajapaneeli.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Näytä albumin nimi</string>
     <string name="display_extra_info_title">Näytä lisätiedot</string>
     <string name="display_extra_info_summary">Näytä lisätiedot kappaleesta, kuten bitrate, formaatti, näytteenottotaajuus jne.</string>
