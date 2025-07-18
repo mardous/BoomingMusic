@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Sto ascoltando %1$s da %2$s</string>
     <string name="share_to_stories">Condividi con le storie</string>
     <string name="could_not_create_the_story">Impossibile creare la storia.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Rinomina</string>
     <string name="add_action">Aggiungi</string>
     <string name="delete_action">Elimina</string>
@@ -615,7 +616,7 @@
     <string name="animate_controls_title">Anima i controlli</string>
     <string name="animate_controls_summary">Viene riprodotto quando si apre il pannello del giocatore.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Mostra nome album</string>
     <string name="display_extra_info_title">Mostra informazioni extra</string>
     <string name="display_extra_info_summary">Visualizza informazioni extra sulla canzone, come bitrate, formato, frequenza di campionamento, ecc.</string>
