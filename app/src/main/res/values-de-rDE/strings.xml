@@ -510,6 +510,8 @@
     <string name="fork_on_github">Auf GitHub forken</string>
     <string name="licenses">Lizenzen</string>
     <string name="author">Autor</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">Danksagungen</string>
     <string name="translators_title">Übersetzer*innen</string>
     <string name="translators_summary">Danke an alle, die Booming Music in vielen Sprachen verfügbar machen.</string>
