@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Я слушаю %1$s от %2$s</string>
     <string name="share_to_stories">Поделиться с историями</string>
     <string name="could_not_create_the_story">Не удалось создать историю.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Переименовать</string>
     <string name="add_action">Добавить</string>
     <string name="delete_action">Удалить</string>
@@ -631,7 +632,7 @@
     <string name="animate_controls_title">Анимация элементов управления</string>
     <string name="animate_controls_summary">Это игралось при открытии панели игрока.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Показывать имя альбома</string>
     <string name="display_extra_info_title">Показать дополнительную информацию</string>
     <string name="display_extra_info_summary">Дополнительные сведения о песне, такие как битрейт, формат, частота дискретизации и т.д.</string>
