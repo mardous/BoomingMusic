@@ -232,6 +232,7 @@
     <string name="sort_order_year">Jaar</string>
     <string name="sort_order_duration">Duur</string>
     <string name="sort_order_date_added">Datum toegevoegd</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Nummers aantal</string>
     <string name="sort_order_number_of_albums">Aantal albums</string>
     <string name="sort_order_last_played_date">Laatst afgespeelde datum</string>
