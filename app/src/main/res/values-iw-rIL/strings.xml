@@ -666,10 +666,8 @@
     <string name="auto_play_on_skip_summary">If playback is paused, tapping Previous or Next buttons will start music.</string>
     <string name="rewind_with_back_title">"Rewind with 'Previous'"</string>
     <string name="rewind_with_back_summary">Rewind the playing track to the start or move to previous track if the current one is in the beginning.</string>
-    <string name="fast_forward_title">Fast forward</string>
-    <string name="fast_forward_summary">"Set forward keeping 'Skip' button pressed."</string>
-    <string name="fast_backward_title">Fast backward</string>
-    <string name="fast_backward_summary">"Set backward keeping 'Previous' button pressed."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Resume on connect</string>
     <string name="resume_on_connect_summary">Resumes playback when headphone is connected.</string>
     <string name="pause_on_disconnect_title">Pause on disconnect</string>
