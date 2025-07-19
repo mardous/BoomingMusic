@@ -649,10 +649,8 @@
     <string name="auto_play_on_skip_summary">Se a reprodução estiver pausada, tocar em Anterior ou Próximo iniciará a música.</string>
     <string name="rewind_with_back_title">"Retroceder com 'Anterior'"</string>
     <string name="rewind_with_back_summary">Retrocede para o começo da faixa ou muda para a anterior, caso esteja no início.</string>
-    <string name="fast_forward_title">Avanço rápido</string>
-    <string name="fast_forward_summary">"Mantenha o botão 'Pular' pressionado para avançar."</string>
-    <string name="fast_backward_title">Retrocesso rápido</string>
-    <string name="fast_backward_summary">"Mantenha o botão 'Anterior' pressionado para retroceder."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Retomar ao conectar</string>
     <string name="resume_on_connect_summary">Retoma a reprodução quando o fone de ouvido estiver conectado.</string>
     <string name="pause_on_disconnect_title">Pausar ao desconectar</string>
