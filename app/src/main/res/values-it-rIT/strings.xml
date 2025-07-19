@@ -650,10 +650,8 @@
     <string name="auto_play_on_skip_summary">Se la riproduzione è in pausa, toccando i pulsanti Precedente o Successivo avvierà la musica.</string>
     <string name="rewind_with_back_title">"Riavvolgi con 'Precedente'"</string>
     <string name="rewind_with_back_summary">Riavvolgi la traccia di riproduzione all\'inizio o passa alla traccia precedente se quella attuale è all\'inizio.</string>
-    <string name="fast_forward_title">Avanti veloce</string>
-    <string name="fast_forward_summary">"Imposta in avanti tenendo premuto il pulsante 'Salta'."</string>
-    <string name="fast_backward_title">Ritorno veloce</string>
-    <string name="fast_backward_summary">"Imposta il pulsante 'Precedente' premuto all'indietro."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Riprendi alla connessione</string>
     <string name="resume_on_connect_summary">Riprende la riproduzione quando le cuffie sono connesse.</string>
     <string name="pause_on_disconnect_title">Pausa alla disconnessione</string>
