@@ -666,10 +666,8 @@
     <string name="auto_play_on_skip_summary">Pokud je přehrávání pozastaveno, klepnutím na předchozí nebo další tlačítka spustí hudbu.</string>
     <string name="rewind_with_back_title">"Vrátit zpět s 'Předchozím'"</string>
     <string name="rewind_with_back_summary">Pokud je aktuální skladba na začátku, nebo se přesuňte na předchozí skladbu.</string>
-    <string name="fast_forward_title">Rychlé vpřed</string>
-    <string name="fast_forward_summary">"Nastav tlačítko 'Přeskočit' stisknuto."</string>
-    <string name="fast_backward_title">Rychle zpět</string>
-    <string name="fast_backward_summary">"Nastavte tlačítko 'Předchozí' zpět."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Pokračovat při připojení</string>
     <string name="resume_on_connect_summary">Obnoví přehrávání při připojení sluchátek.</string>
     <string name="pause_on_disconnect_title">Pozastavit při odpojení</string>
