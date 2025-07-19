@@ -650,10 +650,8 @@
     <string name="auto_play_on_skip_summary">Dersom avspilling er satt på pause, vil forrige eller neste knapp starte musikken.</string>
     <string name="rewind_with_back_title">"Spol tilbake med \"Forrige\""</string>
     <string name="rewind_with_back_summary">Spol tilbake spillet spillet til start eller flytt til forrige spor hvis gjeldende er i begynnelsen.</string>
-    <string name="fast_forward_title">Spol fremover</string>
-    <string name="fast_forward_summary">"Sett trykk på 'Hopp over'."</string>
-    <string name="fast_backward_title">Hurtig bakover</string>
-    <string name="fast_backward_summary">"Angi baksiden som trykkes på 'Forrige'."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Gjenoppta ved tilkobling</string>
     <string name="resume_on_connect_summary">Gjenopptar avspillingen når hodetelefonen er tilkoblet.</string>
     <string name="pause_on_disconnect_title">Pause ved frakobling</string>
