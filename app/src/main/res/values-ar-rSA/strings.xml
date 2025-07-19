@@ -682,10 +682,8 @@
     <string name="auto_play_on_skip_summary">إذا تم إيقاف التشغيل مؤقتاً، فإن الضغط على الأزرار السابقة أو التالية سيبدأ الموسيقى.</string>
     <string name="rewind_with_back_title">"إرجاع بـ 'السابقة'"</string>
     <string name="rewind_with_back_summary">إرجاع مسار التشغيل إلى البداية أو الانتقال إلى المسار السابق إذا كان المسار الحالي في البداية.</string>
-    <string name="fast_forward_title">التقدم السريع</string>
-    <string name="fast_forward_summary">"تعيين إلى الأمام زر \"تخطي\" مضغوط."</string>
-    <string name="fast_backward_title">تخلف سريع</string>
-    <string name="fast_backward_summary">"اضبط زر \"السابق\" للخلف مضغوط."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">استئناف عند الاتصال</string>
     <string name="resume_on_connect_summary">يستأنف التشغيل عند توصيل سماعة الرأس.</string>
     <string name="pause_on_disconnect_title">إيقاف عند قطع الاتصال</string>
