@@ -648,10 +648,8 @@
     <string name="auto_play_on_skip_summary">यदि प्लेबैक रोक दिया गया है, तो पिछला या अगला बटन दबाने से संगीत शुरू होगा।</string>
     <string name="rewind_with_back_title">"पिछले के साथ फिर से शुरू करें"</string>
     <string name="rewind_with_back_summary">वर्तमान ट्रैक अगर प्रारंभ में है, तो चल रहे ट्रैक को प्रारंभ पर वापस ले जाएं या पिछले ट्रैक पर जाएं।</string>
-    <string name="fast_forward_title">तेज़ आगे बढ़ें</string>
-    <string name="fast_forward_summary">"'स्किप' बटन दबाए रखते हुए आगे बढ़ें।"</string>
-    <string name="fast_backward_title">तेज़ पीछे</string>
-    <string name="fast_backward_summary">"पीछे जाने के लिए 'पिछला' बटन दबाए रखो।"</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">कनेक्ट पर फिर से शुरू करें</string>
     <string name="resume_on_connect_summary">जब हेडफ़ोन कनेक्ट होता है, तो प्लेबैक फिर से शुरू होता है।</string>
     <string name="pause_on_disconnect_title">डिस्कनेक्ट पर रुकें</string>
