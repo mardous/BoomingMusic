@@ -658,10 +658,8 @@
     <string name="auto_play_on_skip_summary">Dacă redarea este întreruptă, atingerea butoanelor anterioare sau următoare va porni muzica.</string>
     <string name="rewind_with_back_title">"Rulează cu 'Înainte'"</string>
     <string name="rewind_with_back_summary">Rulează pista de redare pentru a începe sau mută la traseul anterior în cazul în care cea curentă este la început.</string>
-    <string name="fast_forward_title">Rapidă înainte</string>
-    <string name="fast_forward_summary">"Setați păstrarea în avans a butonului \"Omite\" apăsat."</string>
-    <string name="fast_backward_title">Rapidă înapoi</string>
-    <string name="fast_backward_summary">"Setează butonul înapoi apăsat pe butonul 'Înainte'."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Reluare la conectare</string>
     <string name="resume_on_connect_summary">Reluează redarea când căștile sunt conectate.</string>
     <string name="pause_on_disconnect_title">Pauză la deconectare</string>
