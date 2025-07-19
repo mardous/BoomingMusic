@@ -650,10 +650,8 @@
     <string name="auto_play_on_skip_summary">Αν η αναπαραγωγή είναι σε παύση, πατώντας Προηγούμενο ή Επόμενο κουμπί θα ξεκινήσει μουσική.</string>
     <string name="rewind_with_back_title">"Επαναρύθμιση με 'Προηγούμενο'"</string>
     <string name="rewind_with_back_summary">Επαναφέρετε το κομμάτι αναπαραγωγής στην αρχή ή μετακινήστε το προηγούμενο κομμάτι αν το τρέχον βρίσκεται στην αρχή.</string>
-    <string name="fast_forward_title">Γρήγορη προώθηση</string>
-    <string name="fast_forward_summary">"Πιέστε το πλήκτρο \"Παράλειψη\" προς τα εμπρός."</string>
-    <string name="fast_backward_title">Γρήγορη πίσω</string>
-    <string name="fast_backward_summary">"Πατώντας το κουμπί 'Προηγούμενο' κρατώντας πίσω."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Συνέχιση κατά τη σύνδεση</string>
     <string name="resume_on_connect_summary">Συνεχίζει την αναπαραγωγή όταν τα ακουστικά είναι συνδεδεμένα.</string>
     <string name="pause_on_disconnect_title">Παύση κατά την αποσύνδεση</string>
