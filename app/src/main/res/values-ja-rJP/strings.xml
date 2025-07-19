@@ -642,10 +642,8 @@
     <string name="auto_play_on_skip_summary">一時停止中に「前へ」または「次へ」ボタンをタップすると、再生を開始します。</string>
     <string name="rewind_with_back_title">"「前へ」で巻き戻す"</string>
     <string name="rewind_with_back_summary">現在のトラックが最初にある場合は、再生トラックをスタートに戻すか、前のトラックに移動します。</string>
-    <string name="fast_forward_title">早送り</string>
-    <string name="fast_forward_summary">"スキップボタンを押し続けると進むように設定します。"</string>
-    <string name="fast_backward_title">背面へ移動</string>
-    <string name="fast_backward_summary">"\"前へ\"ボタンを押し続けると戻るように設定します。"</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">接続時に再開</string>
     <string name="resume_on_connect_summary">ヘッドフォン接続時に再生を再開します。</string>
     <string name="pause_on_disconnect_title">切断時に一時停止</string>
