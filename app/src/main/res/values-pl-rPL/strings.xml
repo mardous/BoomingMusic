@@ -666,10 +666,8 @@
     <string name="auto_play_on_skip_summary">Jeśli odtwarzanie jest wstrzymane, naciśnięcie klawisza \'Następny\' lub \'Poprzedni\' uruchomi muzykę.</string>
     <string name="rewind_with_back_title">"Przewijaj przez 'Poprzedni'"</string>
     <string name="rewind_with_back_summary">Przewiń utwór na początek lub przejdź do poprzedniego, jeżeli aktualny jest dopiero rozpoczęty.</string>
-    <string name="fast_forward_title">Przewiń do przodu</string>
-    <string name="fast_forward_summary">"Przewiń do przodu, przytrzymując przycisk 'Następny'."</string>
-    <string name="fast_backward_title">Przewiń do tyłu</string>
-    <string name="fast_backward_summary">"Przewiń do tylu, przytrzymując przycisk \"Poprzedni\"."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Wznów po połączeniu</string>
     <string name="resume_on_connect_summary">Wznawia odtwarzanie, gdy słuchawka jest podłączona.</string>
     <string name="pause_on_disconnect_title">Wstrzymaj przy rozłączeniu</string>
