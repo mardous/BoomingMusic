@@ -650,10 +650,8 @@
     <string name="auto_play_on_skip_summary">Als het afspelen wordt gepauzeerd, zal door op Vorige of Volgende knoppen te tikken de muziek starten.</string>
     <string name="rewind_with_back_title">"Terugspoelen met 'Vorige'"</string>
     <string name="rewind_with_back_summary">Terugspoelen het afgespeelde nummer naar het begin of ga naar het vorige nummer als het huidige in het begin is.</string>
-    <string name="fast_forward_title">Snel vooruit</string>
-    <string name="fast_forward_summary">"Stel in om 'Overslaan' knop ingedrukt te houden."</string>
-    <string name="fast_backward_title">Snel terug</string>
-    <string name="fast_backward_summary">"Stel achteruit in om de 'vorige' knop ingedrukt te houden."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Hervatten bij verbinden</string>
     <string name="resume_on_connect_summary">Hervat het afspelen als koptelefoon is aangesloten.</string>
     <string name="pause_on_disconnect_title">Pauzeer bij verbreken verbinding</string>
