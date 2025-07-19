@@ -666,10 +666,8 @@
     <string name="auto_play_on_skip_summary">Якщо відтворення призупинено, натиснення кнопки Попередні або Наступні запустить музику.</string>
     <string name="rewind_with_back_title">"Перемотати з 'Попередній режим'"</string>
     <string name="rewind_with_back_summary">Перемотати програвач на початок або перемістити до попереднього треку, якщо поточний є на початку.</string>
-    <string name="fast_forward_title">Швидке перемотування вперед</string>
-    <string name="fast_forward_summary">"Встановити вперед кнопку 'Пропустити'."</string>
-    <string name="fast_backward_title">Швидка назад</string>
-    <string name="fast_backward_summary">"Встановити назад кнопку 'Назад' натиснута."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Продовжити відтворення при підключенні</string>
     <string name="resume_on_connect_summary">Відновити відтворення при підключенні навушників.</string>
     <string name="pause_on_disconnect_title">Пауза при від\'єднанні</string>
