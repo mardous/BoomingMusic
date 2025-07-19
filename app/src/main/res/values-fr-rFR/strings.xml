@@ -258,22 +258,22 @@
     <string name="album_or_artist_empty">Le titre ou l\'artiste est vide.</string>
     <string name="update_image">Mettre à jour l\'image</string>
     <string name="restore_default">Restaurer les valeurs par défaut</string>
-    <string name="remove_cover">Retirer la couverture</string>
+    <string name="remove_cover">Retirer la pochette</string>
     <string name="could_not_download_album_cover">"Impossible de trouver une pochette d'album correspondante"</string>
     <string name="download_image">Télécharger l\'image</string>
     <string name="pick_from_local_storage">Choisir depuis le stockage local</string>
-    <string name="about_x_title">A propos de %s</string>
+    <string name="about_x_title">À propos de %s</string>
     <string name="listeners_label">Écouteurs</string>
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Enregistrer la pochette de l\'album</string>
-    <string name="saving_cover_please_wait">Enregistrement de la couverture, attendez…</string>
+    <string name="saving_cover_please_wait">Enregistrement de la pochette, attendez…</string>
     <string name="save_artwork_no_artwork">Aucune pochette d\'album trouvée</string>
-    <string name="save_artwork_error">Échec de l\'enregistrement de la couverture sur le stockage local</string>
+    <string name="save_artwork_error">Impossible d\'enregistrer la pochette dans le stockage local</string>
     <string name="save_artwork_success">Pochette de l\'album enregistrée</string>
     <string name="save_artwork_view_action">Voir</string>
     <string name="save_artwork_copyright_info_title">Avis de droit d\'auteur</string>
-    <string name="save_artwork_copyright_info_message">Certaines pochettes d\'album (ou toutes ces pochettes) peuvent être protégées par les lois sur le droit d\'auteur. Vous ne pouvez pas utiliser ces images à des fins commerciales ou publicitaires.
-        \n\nSeulement vous avez la responsabilité totale sur votre utilisation des pochettes d\'album enregistrées.</string>
+    <string name="save_artwork_copyright_info_message">Certaines pochettes d\'album (ou toutes) peuvent être protégées par le droit d\'auteur. Vous ne pouvez pas utiliser ces images à des fins commerciales ou publicitaires.
+        \n\nVous êtes seul responsable de l\'utilisation que vous faites des pochettes d\'album enregistrées.</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="keyboard">Clavier</string>
