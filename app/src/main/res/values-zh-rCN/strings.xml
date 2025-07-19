@@ -65,7 +65,7 @@
     <string name="rename_playlist_title">重命名播放列表</string>
     <string name="action_rename">重命名播放列表</string>
     <string name="action_delete">删除播放列表</string>
-    <string name="action_export_playlist">导出至文件</string>
+    <string name="action_export_playlist">导出歌单至文件</string>
     <string name="action_clear_history">清除历史记录</string>
     <string name="history_cleared">已清除历史记录</string>
     <string name="create_a_playlist">创建一个空播放列表。稍后您可以向其中添加歌曲。</string>
