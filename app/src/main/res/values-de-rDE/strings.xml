@@ -650,10 +650,8 @@
     <string name="auto_play_on_skip_summary">Wenn pausiert, startet das Tippen auf die jeweilige Schaltfläche die Wiedergabe des vorherigen oder nächsten Titels.</string>
     <string name="rewind_with_back_title">"Mit \"Vorheriger\" zurückspulen"</string>
     <string name="rewind_with_back_summary">Spule den wiedergegebenen Titel zurück oder springe zum vorherigen, wenn der Anfang erreicht ist.</string>
-    <string name="fast_forward_title">Vorspulen</string>
-    <string name="fast_forward_summary">"Durch Gedrückthalten der \"Nächster\"-Schaltfläche vorspulen."</string>
-    <string name="fast_backward_title">Zurückspulen</string>
-    <string name="fast_backward_summary">"Durch Gedrückthalten der \"Vorheriger\"-Schaltfläche zurückspulen."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Bei Verbindung fortsetzen</string>
     <string name="resume_on_connect_summary">Wiedergabe fortsetzen, wenn Kopfhörer verbunden werden.</string>
     <string name="pause_on_disconnect_title">Bei Trennung pausieren</string>
