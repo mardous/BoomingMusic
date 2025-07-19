@@ -650,10 +650,8 @@
     <string name="auto_play_on_skip_summary">Om uppspelningen pausas kommer knapparna Föregående eller Nästa att starta musiken.</string>
     <string name="rewind_with_back_title">"Spola tillbaka med \"Föregående\""</string>
     <string name="rewind_with_back_summary">Spola tillbaka spelspåret till start eller flytta till tidigare spår om den nuvarande är i början.</string>
-    <string name="fast_forward_title">Snabb framåt</string>
-    <string name="fast_forward_summary">"Ställ in att hålla \"Skip\" knappen tryckt."</string>
-    <string name="fast_backward_title">Snabb bakåt</string>
-    <string name="fast_backward_summary">"Ställ in bakåt att hålla knappen \"Föregående\" tryckt."</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Återuppta vid anslutning</string>
     <string name="resume_on_connect_summary">Återuppspelning när hörlurar är ansluten.</string>
     <string name="pause_on_disconnect_title">Pausa vid frånkoppling</string>
