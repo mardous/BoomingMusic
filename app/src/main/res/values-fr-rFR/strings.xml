@@ -37,7 +37,7 @@
     <string name="currently_listening_to_x_by_x">J\'écoute %1$s par %2$s</string>
     <string name="share_to_stories">Partager avec des histoires</string>
     <string name="could_not_create_the_story">Impossible de créer l\'histoire.</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">Retour</string>
     <string name="rename_action">Renommer</string>
     <string name="add_action">Ajouter</string>
     <string name="delete_action">Supprimer</string>
@@ -279,10 +279,10 @@
     <string name="keyboard">Clavier</string>
     <string name="label_file_path">Chemin du fichier</string>
     <string name="size">Taille du fichier</string>
-    <string name="label_file_format">Formater</string>
+    <string name="label_file_format">Format</string>
     <string name="title_and_artist">Titre et artiste</string>
-    <string name="song">Chanson</string>
-    <string name="title">Titre de la page</string>
+    <string name="song">Titre</string>
+    <string name="title">Titre</string>
     <string name="album">Album</string>
     <string name="artist">Artiste</string>
     <string name="album_artist">Album-artiste</string>
@@ -292,10 +292,10 @@
     <string name="genre">Genre</string>
     <string name="year">Année</string>
     <string name="release_years_label">Années</string>
-    <string name="length">Longueur</string>
+    <string name="length">Durée</string>
     <string name="label_last_modified">Dernière modification</string>
     <string name="label_audio_header">En-tête audio</string>
-    <string name="label_variable_bitrate">Débit variable</string>
+    <string name="label_variable_bitrate">Débit binaire variable</string>
     <string name="label_loss_less">Moins de perte</string>
     <string name="label_bit_rate">Débit binaire</string>
     <string name="label_sampling_rate">Taux d\'échantillonnage</string>
@@ -304,12 +304,12 @@
     <string name="last_played">Dernière lecture</string>
     <string name="played">Joué</string>
     <string name="skipped">Ignoré</string>
-    <string name="track">Piste</string>
-    <string name="track_total">Total des pistes</string>
+    <string name="track">Titre</string>
+    <string name="track_total">Nombre total de titres</string>
     <string name="disc">Disque</string>
-    <string name="disc_total">Disques totaux</string>
+    <string name="disc_total">Nombre total de disques</string>
     <string name="lyrics">Paroles</string>
-    <string name="lyricist">Paroles</string>
+    <string name="lyricist">Parolier</string>
     <string name="edit_tags_action">Modifier les tags</string>
     <string name="edit_lyrics_action">Modifier les paroles</string>
     <string name="open_lyrics_editor">Ouvrir l\'éditeur de paroles</string>
@@ -317,25 +317,25 @@
     <string name="label_with_rg_info">Avec infos RG</string>
     <string name="label_without_rg_info">Sans infos RG</string>
     <string name="album_and_year">Album et année</string>
-    <string name="song_info">Informations sur la musique</string>
+    <string name="song_info">Informations sur la musique.</string>
     <string name="no_results">Aucun résultat</string>
     <string name="connection_unavailable">Connexion indisponible.</string>
     <string name="you_have_to_select_at_least_one_category">Vous devez sélectionner au moins une catégorie</string>
     <string name="you_cannot_select_more_than_five_categories">Vous ne pouvez pas sélectionner plus de cinq catégories.</string>
-    <string name="auto_limited_listing_title">Annonce limitée en conduite</string>
+    <string name="auto_limited_listing_title">Liste limitée pendant la conduite</string>
     <string name="auto_limited_listing_subtitle">Ouvrez l\'application pour voir la liste complète</string>
-    <string name="backup_settings">Réglages</string>
+    <string name="backup_settings">Paramètres</string>
     <string name="backup_synced_lyrics">Paroles synchronisées</string>
-    <string name="backup_artist_images">Images de l\'artiste</string>
-    <string name="backup_playlists">Listes de lecture</string>
-    <string name="backup_successful">Sauvegarde réussie!</string>
+    <string name="backup_artist_images">Images d\'artistes</string>
+    <string name="backup_playlists">Playlists</string>
+    <string name="backup_successful">Sauvegarde réussie !</string>
     <string name="backup_failed">Échec de la sauvegarde.</string>
     <string name="select_content_to_restore">Sélectionner le contenu à restaurer :</string>
     <string name="could_not_restore_data">Impossible de restaurer les données. Vérifiez le fichier de sauvegarde et réessayez.</string>
     <string name="data_restored_successfully">Données restaurées avec succès.</string>
     <!-- Audio output devices-->
     <string name="output_device_title">Périphérique de sortie</string>
-    <string name="audio_device_battery_level">Niveau de la batterie: %d%% env.</string>
+    <string name="audio_device_battery_level">Niveau de batterie : %d%% environ.</string>
     <string name="audio_device_aux_line">Ligne Aux</string>
     <string name="audio_device_bluetooth">Périphérique Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -346,20 +346,20 @@
     <string name="audio_device_headset">Casque filaire</string>
     <string name="audio_device_usb_device">Périphérique USB</string>
     <string name="audio_device_usb_headset">Casque USB</string>
-    <string name="audio_device_default">Par défaut du système</string>
+    <string name="audio_device_default">Valeur par défaut du système</string>
     <string name="audio_device_unknown">Inconnu</string>
     <!-- Plurals -->
     <plurals name="songs">
-        <item quantity="one">Chanson</item>
-        <item quantity="other">Chansons</item>
+        <item quantity="one">Titre</item>
+        <item quantity="other">Titres</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Album</item>
         <item quantity="other">Albums</item>
     </plurals>
     <plurals name="x_songs">
-        <item quantity="one">%d morceau</item>
-        <item quantity="other">%d morceaux</item>
+        <item quantity="one">%d titre</item>
+        <item quantity="other">%d titres</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d album</item>
@@ -384,19 +384,19 @@
     <!-- Listen now -->
     <string name="for_you_label">Pour vous</string>
     <string name="shuffle_action">Lecture aléatoire</string>
-    <string name="top_artists">Les meilleurs artistes</string>
+    <string name="top_artists">Meilleurs artistes</string>
     <string name="top_albums">Meilleurs albums</string>
     <string name="recent_artists">Artistes récents</string>
     <string name="recent_albums">Albums récents</string>
     <string name="no_suggestions">Il n\'y a aucune suggestion pour vous</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pur hasard</string>
-    <string name="shuffle_mode_most_played">Le plus joué</string>
+    <string name="shuffle_mode_most_played">Les plus joués</string>
     <string name="shuffle_mode_most_played_artists">Artistes les plus joués</string>
     <string name="shuffle_mode_most_played_albums">Albums les plus joués</string>
     <string name="shuffle_mode_favorite_songs">Les favoris d\'abord</string>
     <string name="shuffle_mode_forgotten_songs">Titres oubliés</string>
-    <string name="shuffle_mode_recently_added">Ajouté récemment</string>
+    <string name="shuffle_mode_recently_added">Ajoutés récemment</string>
     <string name="shuffle_mode_combined">Mélange intelligent</string>
     <string name="shuffle_mode_pure_random_description">Mélange complètement aléatoire.</string>
     <string name="shuffle_mode_most_played_description">Favorise vos titres les plus joués.</string>
@@ -404,7 +404,7 @@
     <string name="shuffle_mode_most_played_albums_description">Favorise les titres de vos albums les plus écoutés.</string>
     <string name="shuffle_mode_favorite_songs_description">Donne la priorité à vos titres préférés.</string>
     <string name="shuffle_mode_forgotten_songs_description">Donne la priorité aux titres que vous n\'avez pas écoutés depuis un certain temps.</string>
-    <string name="shuffle_mode_recently_added_description">Favorise les titres récemment ajoutés à votre bibliothèque.</string>
+    <string name="shuffle_mode_recently_added_description">Favorise les titres ajoutés récemment à votre bibliothèque.</string>
     <string name="shuffle_mode_combined_description">Mix basé sur les favoris, les pièces jouées et la récence.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Égaliseur</string>
@@ -417,17 +417,17 @@
     <string name="could_not_export_configuration">Impossible d\'exporter la configuration.</string>
     <string name="export_configuration">Configuration de l\'exportation</string>
     <string name="import_configuration">Importer la configuration</string>
-    <string name="imported_x_presets">Préréglages %d importés.</string>
+    <string name="imported_x_presets">%d préréglages importés.</string>
     <string name="no_preset_imported">Aucun préréglage importé.</string>
     <string name="share_configuration">Partager la configuration</string>
-    <string name="select_configurations_to_share">Sélectionnez les configurations à partager:</string>
-    <string name="reset_equalizer">Reset equalizer</string>
+    <string name="select_configurations_to_share">Sélectionnez les configurations à partager :</string>
+    <string name="reset_equalizer">Réinitialiser l\'égaliseur</string>
     <string name="select_configurations_to_export">Sélectionnez les configurations à exporter :</string>
     <string name="select_a_file_to_save_exported_configurations">Sélectionnez un fichier pour enregistrer les configurations exportées.</string>
     <string name="select_a_file_containing_booming_eq_presets">Sélectionnez un fichier contenant des préréglages Booming Music EQ.</string>
     <string name="select_configurations_to_import">Sélectionnez les configurations à importer :</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ?
-        \n\nCeci effacera toutes vos presets.</string>
+        \n\nCela effacera tous vos préréglages.</string>
     <string name="not_supported">Non pris en charge</string>
     <string name="enable_equalizer">Activer l\'EQ</string>
     <string name="select_preset">Sélectionner le préréglage</string>
@@ -437,17 +437,17 @@
     <string name="save_preset">Enregistrer le préréglage</string>
     <string name="replace_preset_with_same_name">Remplacer le préréglage avec le même nom</string>
     <string name="preset_name_is_empty">Le nom du préréglage est vide</string>
-    <string name="could_not_save_preset">Impossible d\'enregistrer le préréglage</string>
+    <string name="could_not_save_preset">Impossible d\'enregistrer le préréglage.</string>
     <string name="preset_saved_successfully">Préréglage enregistré avec succès.</string>
     <string name="delete_preset">Supprimer le préréglage</string>
-    <string name="delete_preset_x"><![CDATA[Supprimer le préréglage <b>%s</b>?]]></string>
+    <string name="delete_preset_x"><![CDATA[Supprimer le préréglage <b>%s</b> ?]]></string>
     <string name="preset_x_deleted">Le préréglage %s a été supprimé.</string>
-    <string name="rename_preset">Rename preset</string>
+    <string name="rename_preset">Renommer le préréglage</string>
     <string name="please_enter_a_new_name_for_this_preset">Veuillez entrer un nouveau nom pour ce préréglage.</string>
     <string name="preset_renamed">Préréglage renommé.</string>
-    <string name="preset_not_renamed">Le préréglage n\'a pas été renommé.</string>
+    <string name="preset_not_renamed">Préréglage non renommé.</string>
     <string name="bassboost_label">BassBoost</string>
-    <string name="virtualizer_label">Virtualizer</string>
+    <string name="virtualizer_label">Virtualiseur</string>
     <string name="loudness_enhancer">Amplificateur</string>
     <string name="reverb_label">Réverbération</string>
     <string name="reverb_preset_none">Pas de réverbération</string>
@@ -467,22 +467,22 @@
     <string name="action_hide_lyrics">Masquer les paroles</string>
     <string name="plain_lyrics">Plaine</string>
     <string name="synced_lyrics">Synchronisé</string>
-    <string name="embedded_lyrics">Embedded</string>
+    <string name="embedded_lyrics">Intégré</string>
     <string name="downloaded_lyrics">Téléchargé</string>
     <string name="lrc_lyrics">Fichier LRC</string>
     <string name="ttml_lyrics">Fichier TTML</string>
     <string name="action_import_synchronized_lyrics">Importer les paroles synchronisées</string>
     <string name="action_share_synchronized_lyrics">Partager les paroles synchronisées</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Voulez-vous importer les paroles LRC synchronisées pour <b>%s</b>?]]></string>
-    <string name="import_lyrics_for_song_x">Paroles de paroles importées pour %s</string>
+    <string name="import_lyrics_for_song_x">Paroles importées pour %s</string>
     <string name="could_not_import_lyrics_for_song_x">Impossible d\'importer les paroles pour %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Sélectionnez un fichier LRC contenant des paroles synchronisées.</string>
-    <string name="cannot_download_lyrics">Booming Music n\'a pas pu trouver les paroles de cette chanson. Voulez-vous rechercher manuellement ?</string>
+    <string name="cannot_download_lyrics">Booming Music n\'a pas pu trouver les paroles de ce titre. Voulez-vous rechercher manuellement ?</string>
     <string name="search_lyrics">Rechercher des paroles</string>
     <string name="choose_lyrics">Choisissez le type de paroles</string>
     <string name="download_lyrics">Télécharger les paroles</string>
-    <string name="write_lyrics_here">Écrire des paroles ici</string>
-    <string name="write_synced_lyrics_here">Écrire les paroles synchronisées ici</string>
+    <string name="write_lyrics_here">Écrivez les paroles ici</string>
+    <string name="write_synced_lyrics_here">Écrivez les paroles synchronisées ici</string>
     <string name="no_lyrics_found">Aucune parole trouvée</string>
     <string name="no_synced_lyrics_found">Aucune parole synchronisée trouvée</string>
     <string name="lyrics_were_updated_successfully">Les paroles ont été mises à jour avec succès.</string>
@@ -616,7 +616,7 @@
     <string name="animate_controls_title">Animer les contrôles</string>
     <string name="animate_controls_summary">Il est joué lors de l\'ouverture du panneau du lecteur.</string>
     <string name="swipe_controls_title">Commandes de balayage</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_controls_summary">Balayez vers la gauche sur n\'importe quel espace vide de l\'écran en cours de lecture pour passer au titre suivant et balayez vers la droite pour passer au titre précédent.</string>
     <string name="display_album_name_title">Afficher le nom de l\'album</string>
     <string name="display_extra_info_title">Afficher les informations supplémentaires</string>
     <string name="display_extra_info_summary">Afficher des informations supplémentaires sur la chanson, comme le débit, le format, le taux d\'échantillonnage, etc.</string>
