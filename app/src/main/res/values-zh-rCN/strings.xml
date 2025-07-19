@@ -642,10 +642,8 @@
     <string name="auto_play_on_skip_summary">如果播放已暂停，点击上一个或下一个按钮将开始播放。</string>
     <string name="rewind_with_back_title">"带着“上一个”退货"</string>
     <string name="rewind_with_back_summary">将播放曲目退回开始或移动到上一首曲目，如果当前曲目正在开始。</string>
-    <string name="fast_forward_title">快进</string>
-    <string name="fast_forward_summary">"设置向前保持“跳过”按钮。"</string>
-    <string name="fast_backward_title">快速向后</string>
-    <string name="fast_backward_summary">"设置向后保留“以前”按钮。"</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">连接后恢复</string>
     <string name="resume_on_connect_summary">连接耳机时恢复播放。</string>
     <string name="pause_on_disconnect_title">断开时暂停</string>
