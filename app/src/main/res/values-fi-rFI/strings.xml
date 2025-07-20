@@ -595,6 +595,8 @@
     <string name="now_playing_screen_title">Tyyli</string>
     <string name="open_on_play_title">Avaa toiston aikana</string>
     <string name="open_on_play_summary">Laajenna nyt -soittopaneeli automaattisesti, kun olet aloittanut kappaleen soittamisen.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Ylimääräiset tarkastukset</string>
     <string name="extra_controls_summary">Lisää ylimääräisiä ohjaimia mininsoittimelle</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
