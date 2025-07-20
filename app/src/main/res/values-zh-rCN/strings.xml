@@ -587,6 +587,8 @@
     <string name="now_playing_screen_title">样式</string>
     <string name="open_on_play_title">播放时打开</string>
     <string name="open_on_play_summary">开始播放歌曲后自动展开播放面板。</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">额外控制</string>
     <string name="extra_controls_summary">为迷你播放器添加额外的控制</string>
     <string name="adaptive_controls_title">自适应控件</string>
