@@ -595,6 +595,8 @@
     <string name="now_playing_screen_title">Stile</string>
     <string name="open_on_play_title">Apri in riproduzione</string>
     <string name="open_on_play_summary">Espandere automaticamente il pannello Now Playing dopo aver iniziato a riprodurre una canzone.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Controlli aggiuntivi</string>
     <string name="extra_controls_summary">Aggiungi controlli extra per il mini player</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
