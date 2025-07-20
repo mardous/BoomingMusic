@@ -595,6 +595,8 @@
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Bei Wiedergabe öffnen</string>
     <string name="open_on_play_summary">Die Wiedergabe-Ansicht nach Wiedergabe-Start automatisch erweitern.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Zusätzliche Steuerelemente</string>
     <string name="extra_controls_summary">Zusätzliche Steuerelemente für Mini-Player hinzufügen</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
