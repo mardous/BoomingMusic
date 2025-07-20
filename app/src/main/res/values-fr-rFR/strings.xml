@@ -595,6 +595,8 @@
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir en lecture</string>
     <string name="open_on_play_summary">Développez automatiquement le panneau Lecture en cours après avoir commencé à jouer une chanson.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Contrôles supplémentaires</string>
     <string name="extra_controls_summary">Ajouter des contrôles supplémentaires pour le mini-joueur</string>
     <string name="adaptive_controls_title">Contrôles adaptatifs</string>
