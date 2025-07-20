@@ -611,6 +611,8 @@
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Open on play</string>
     <string name="open_on_play_summary">Expand the Now Playing panel automatically after start playing a song.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Extra controls</string>
     <string name="extra_controls_summary">Add extra controls for mini player</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
