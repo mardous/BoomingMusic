@@ -587,6 +587,8 @@
     <string name="now_playing_screen_title">スタイル</string>
     <string name="open_on_play_title">再生中に開く</string>
     <string name="open_on_play_summary">曲の再生を開始した後、自動的に「再生中」パネルを展開します。</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">追加コントロール</string>
     <string name="extra_controls_summary">ミニプレーヤー用の追加コントロールを追加</string>
     <string name="adaptive_controls_title">アダプティブコントロール</string>
