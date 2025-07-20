@@ -611,6 +611,8 @@
     <string name="now_playing_screen_title">Стиль</string>
     <string name="open_on_play_title">Открыть в игре</string>
     <string name="open_on_play_summary">Расширьте панель Now Playing автоматически после воспроизведения песни.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Дополнительные элементы управления</string>
     <string name="extra_controls_summary">Добавить дополнительные элементы управления для мини-плеера</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
