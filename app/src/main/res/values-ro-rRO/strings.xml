@@ -603,6 +603,8 @@
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Deschide la redare</string>
     <string name="open_on_play_summary">Extinde automat panoul de redare acum după ce pornește un cântec.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Controale suplimentare</string>
     <string name="extra_controls_summary">Adaugă controale suplimentare pentru mini player</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
