@@ -650,8 +650,8 @@
     <string name="auto_play_on_skip_summary">Çalma duraklatılmışsa, Önceki veya Sonraki düğmelerine dokunmak müziği başlatır.</string>
     <string name="rewind_with_back_title">"'Önceki' ile geri sar"</string>
     <string name="rewind_with_back_summary">Çalan parçayı başa sarın veya mevcut parça başlangıçtaysa önceki parçaya geçin.</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
+    <string name="rewind_fast_forward_amount_title">Geri/İleri sarma aralığı</string>
+    <string name="rewind_fast_forward_amount_summary">Kullanıcı arayüzü veya harici kontrollerle geri/ileri sarılacak süre (saniye cinsinden).</string>
     <string name="resume_on_connect_title">Bağlandığında devam et</string>
     <string name="resume_on_connect_summary">Kulaklık bağlandığında çalmaya devam eder.</string>
     <string name="pause_on_disconnect_title">Bağlantı kesildiğinde duraklat</string>
