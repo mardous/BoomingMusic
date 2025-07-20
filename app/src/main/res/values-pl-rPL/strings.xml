@@ -611,6 +611,8 @@
     <string name="now_playing_screen_title">Styl</string>
     <string name="open_on_play_title">Otwórz przy odtwarzaniu</string>
     <string name="open_on_play_summary">Rozwiń panel Teraz odtwarzany automatycznie po rozpoczęciu odtwarzania piosenki.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Dodatkowe klawisze</string>
     <string name="extra_controls_summary">Dodatkowe klawisze dla mini odtwarzacza</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
