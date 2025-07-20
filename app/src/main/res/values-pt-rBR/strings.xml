@@ -594,6 +594,8 @@
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir ao reproduzir</string>
     <string name="open_on_play_summary">Abrir o painel Reproduzindo Agora automaticamente após começar a tocar uma música.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Controles adicionais</string>
     <string name="extra_controls_summary">Adicionar controles extras no mini player</string>
     <string name="adaptive_controls_title">Controles adaptáveis</string>
