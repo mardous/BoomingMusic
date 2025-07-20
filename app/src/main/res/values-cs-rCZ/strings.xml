@@ -611,6 +611,8 @@
     <string name="now_playing_screen_title">Styl</string>
     <string name="open_on_play_title">Otevřít při přehrávání</string>
     <string name="open_on_play_summary">Po spuštění přehrávání skladby automaticky rozbalte panel Nyní.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Extra ovládací prvky</string>
     <string name="extra_controls_summary">Přidat další ovládací prvky pro mini přehrávač</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
