@@ -595,6 +595,8 @@
     <string name="now_playing_screen_title">Στυλ</string>
     <string name="open_on_play_title">Άνοιγμα κατά την αναπαραγωγή</string>
     <string name="open_on_play_summary">Επέκταση του πίνακα Τώρα Αναπαραγωγή αυτόματα μετά την έναρξη αναπαραγωγής ενός τραγουδιού.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Επιπλέον έλεγχοι</string>
     <string name="extra_controls_summary">Προσθήκη επιπλέον ελέγχων για μίνι παίκτη</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
