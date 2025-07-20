@@ -627,6 +627,8 @@
     <string name="now_playing_screen_title">النمط</string>
     <string name="open_on_play_title">فتح عند التشغيل</string>
     <string name="open_on_play_summary">قم بتوسيع لوحة التشغيل الآن تلقائيًا بعد بدء تشغيل الأغنية.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">ضوابط إضافية</string>
     <string name="extra_controls_summary">إضافة عناصر تحكم إضافية للاعب المصغر</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
