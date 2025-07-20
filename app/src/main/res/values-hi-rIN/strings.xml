@@ -593,6 +593,8 @@
     <string name="now_playing_screen_title">स्टाइल</string>
     <string name="open_on_play_title">प्ले पर खोलें</string>
     <string name="open_on_play_summary">गाना बजाना शुरू करने के बाद अब खेलने वाले पैनल को स्वचालित रूप से फैलाएं।</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">अतिरिक्त कंट्रोल्स</string>
     <string name="extra_controls_summary">मिनी प्लेयर के लिए अतिरिक्त कंट्रोल जोड़ें।</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
