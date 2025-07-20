@@ -490,26 +490,26 @@
     <string name="lyrics_source_ttml_file">Les paroles synchronisées proviennent d\'un fichier TTML. La modification du contenu des fichiers TTML n\'est pas encore prise en charge.</string>
     <string name="lyrics_source_lrc_file">Les paroles synchronisées proviennent d\'un fichier LCR. Les modifications seront enregistrées directement dans ce fichier.</string>
     <!-- Sleep timer -->
-    <string name="action_sleep_timer">Minuteur de sommeil</string>
-    <string name="sleep_timer_cancel_current_timer">Annuler le chronomètre actuel</string>
+    <string name="action_sleep_timer">Minuterie</string>
+    <string name="sleep_timer_cancel_current_timer">Annuler la minuterie actuelle</string>
     <string name="sleep_timer_cancel_current_timer_x">Annuler le minuteur actuel (%s)</string>
-    <string name="sleep_timer_canceled">La minuterie de sommeil a été annulée.</string>
+    <string name="sleep_timer_canceled">Minuterie annulée.</string>
     <string name="sleep_timer_set_action">Régler</string>
-    <string name="sleep_timer_set">Arrêt de la musique dans %d minutes.</string>
-    <string name="sleep_timer_finish_current_music">Terminer la dernière chanson</string>
-    <string name="sleep_timer_stop_after_this_track">Arrêter après cette piste</string>
+    <string name="sleep_timer_set">La minuterie est réglée sur %d minutes à partir de maintenant.</string>
+    <string name="sleep_timer_finish_current_music">Terminer le dernier titre</string>
+    <string name="sleep_timer_stop_after_this_track">Arrêter après ce titre</string>
     <string name="sleep_timer_stop_after_x">Arrêter après %s</string>
-    <string name="sleep_timer_stop_after_x_canceled">Arrêt après %s: annulé</string>
+    <string name="sleep_timer_stop_after_x_canceled">Arrêt après %s : annulé</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">Lecture aléatoire</string>
     <string name="app_shortcut_top_tracks_short">Meilleurs titres</string>
-    <string name="app_shortcut_last_added_short">Dernier ajout</string>
+    <string name="app_shortcut_last_added_short">Derniers ajouts</string>
     <!-- About page -->
-    <string name="action_about">À propos de</string>
+    <string name="action_about">À propos</string>
     <string name="application">Application</string>
     <string name="version">Version</string>
     <string name="changelog">Historique des modifications</string>
-    <string name="fork_on_github">Fork on GitHub</string>
+    <string name="fork_on_github">Fork sur GitHub</string>
     <string name="licenses">Licences</string>
     <string name="author">Auteur</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -518,7 +518,7 @@
     <string name="translators_title">Traducteurs</string>
     <string name="translators_summary">Merci à ceux qui rendent Booming Music disponible dans de nombreuses langues.</string>
     <string name="telegram_chat">Chat Telegram</string>
-    <string name="telegram_chat_summary">Rejoignez le chat dans Telegram et soyez informé des nouvelles et des nouvelles nouvelles.</string>
+    <string name="telegram_chat_summary">Rejoignez le chat sur Telegram et soyez informé des nouvelles versions et actualités.</string>
     <string name="view_profile_on_github">Voir le profil sur GitHub</string>
     <string name="follow_on_telegram">DM sur Telegram</string>
     <string name="write_an_email">Écrire un e-mail</string>
@@ -528,14 +528,14 @@
     <string name="report_bugs">Signaler des bugs</string>
     <string name="report_bugs_summary">Signaler des bugs ou demander de nouvelles fonctionnalités.</string>
     <string name="share_app">Partager cette application</string>
-    <string name="share_app_summary">Vous pouvez aider cette application à grandir si vous la partagez avec des amis.</string>
+    <string name="share_app_summary">Vous pouvez aider cette application à se développer si vous la partagez avec vos amis.</string>
     <string name="send_invitation_message">Envoyer un message d\'invitation</string>
-    <string name="invitation_message_content">Salut. Découvrez la musique en plein essor ! La meilleure application pour écouter de la musique locale sur Android. Vous pouvez la télécharger ici : %s</string>
+    <string name="invitation_message_content">Bonjour. Découvrez Booming Music ! La meilleure application pour écouter de la musique locale sur Android. Vous pouvez la télécharger ici : %s</string>
     <!-- Bug report -->
     <string name="report_an_issue">Signaler un problème</string>
-    <string name="device_info">Infos sur l\'appareil</string>
-    <string name="copied_device_info_to_clipboard">Informations de l\'appareil copiées dans le presse-papiers.</string>
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Vous allez être redirigé vers le site Web de suivi de tickets.</string>
+    <string name="device_info">Informations sur l\'appareil</string>
+    <string name="copied_device_info_to_clipboard">Informations sur l\'appareil copiées dans le presse-papiers.</string>
+    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Vous serez redirigé vers le site Web de suivi des problèmes.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Accès au stockage requis</string>
     <string name="saf_access_required_message">Booming Music requiert une autorisation pour accéder à ces fichiers. Veuillez sélectionner le dossier racine où sont stockés vos fichiers musicaux.</string>
@@ -595,8 +595,8 @@
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir en lecture</string>
     <string name="open_on_play_summary">Développez automatiquement le panneau Lecture en cours après avoir commencé à jouer une chanson.</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="squiggly_seek_bar_title">Barre de recherche ondulée</string>
+    <string name="squiggly_seek_bar_summary">Activez une barre de recherche ondulée au lieu du curseur par défaut.</string>
     <string name="extra_controls_title">Contrôles supplémentaires</string>
     <string name="extra_controls_summary">Ajouter des contrôles supplémentaires pour le mini-joueur</string>
     <string name="adaptive_controls_title">Contrôles adaptatifs</string>
@@ -652,8 +652,8 @@
     <string name="auto_play_on_skip_summary">Si la lecture est suspendue, appuyer sur les boutons Précédent ou Suivant démarrera la musique.</string>
     <string name="rewind_with_back_title">"Revenir avec 'Précédent'"</string>
     <string name="rewind_with_back_summary">Rétablir la piste de lecture au début ou la déplacer vers la piste précédente si la piste actuelle est au début.</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
+    <string name="rewind_fast_forward_amount_title">Retour/Avance Rapide</string>
+    <string name="rewind_fast_forward_amount_summary">Temps (en secondes) pour rembobiner ou avancer rapidement à l\'aide de l\'interface utilisateur ou des commandes externes.</string>
     <string name="resume_on_connect_title">Reprendre à la connexion</string>
     <string name="resume_on_connect_summary">Reprend la lecture lorsque le casque est connecté.</string>
     <string name="pause_on_disconnect_title">Mettre en pause lors de la déconnexion</string>
