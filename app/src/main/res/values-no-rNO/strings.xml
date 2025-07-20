@@ -595,6 +595,8 @@
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Åpne ved spill</string>
     <string name="open_on_play_summary">Utvid Nå Playing panelet automatisk etter å ha startet å spille en sang.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Ekstra kontroller</string>
     <string name="extra_controls_summary">Legg til ekstra kontroller for mini spiller</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
