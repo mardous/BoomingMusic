@@ -595,6 +595,8 @@
     <string name="now_playing_screen_title">Stijl</string>
     <string name="open_on_play_title">Openen bij afspelen</string>
     <string name="open_on_play_summary">Uitvouwen van het Nu Afspelen paneel automatisch nadat u een nummer heeft afgespeeld.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Extra controles</string>
     <string name="extra_controls_summary">Extra besturingselementen voor minispeler toevoegen</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
