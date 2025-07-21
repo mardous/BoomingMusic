@@ -648,10 +648,10 @@
     <string name="remember_shuffle_mode_summary">Le mode aléatoire restera actif lors de la sélection d\'une nouvelle liste de titres.</string>
     <string name="album_shuffle_mode_title">Mode de lecture aléatoire des albums</string>
     <string name="artist_shuffle_mode_title">Mode de lecture aléatoire des artistes</string>
-    <string name="auto_play_on_skip_title">Lecture automatique lors du saut</string>
-    <string name="auto_play_on_skip_summary">Si la lecture est suspendue, appuyer sur les boutons Précédent ou Suivant démarrera la musique.</string>
+    <string name="auto_play_on_skip_title">Lecture automatique en cas de saut</string>
+    <string name="auto_play_on_skip_summary">Si la lecture est en pause, appuyez sur les boutons Précédent ou Suivant pour démarrer la musique.</string>
     <string name="rewind_with_back_title">"Revenir avec 'Précédent'"</string>
-    <string name="rewind_with_back_summary">Rétablir la piste de lecture au début ou la déplacer vers la piste précédente si la piste actuelle est au début.</string>
+    <string name="rewind_with_back_summary">Rembobinez le titre en cours de lecture jusqu\'au début ou passez au titre précédent si le titre en cours est au début.</string>
     <string name="rewind_fast_forward_amount_title">Retour/Avance Rapide</string>
     <string name="rewind_fast_forward_amount_summary">Temps (en secondes) pour rembobiner ou avancer rapidement à l\'aide de l\'interface utilisateur ou des commandes externes.</string>
     <string name="resume_on_connect_title">Reprendre à la connexion</string>
