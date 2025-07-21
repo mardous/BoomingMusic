@@ -595,8 +595,8 @@
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Çalmaya başlayınca aç</string>
     <string name="open_on_play_summary">Bir şarkı çalmaya başladıktan sonra Şimdi Çalıyor panelini otomatik olarak genişletin.</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="squiggly_seek_bar_title">Dalgalı ilerleme çubuğu</string>
+    <string name="squiggly_seek_bar_summary">Varsayılan kaydırıcı yerine dalgalı bir ilerleme çubuğunu etkinleştir.</string>
     <string name="extra_controls_title">Ekstra kontroller</string>
     <string name="extra_controls_summary">Mini çalar için ekstra kontroller ekleyin</string>
     <string name="adaptive_controls_title">Uyarlanabilir kontroller</string>
