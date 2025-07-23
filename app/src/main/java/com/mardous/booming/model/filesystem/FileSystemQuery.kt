@@ -22,6 +22,7 @@ import android.os.Parcelable
 import androidx.appcompat.content.res.AppCompatResources
 import com.mardous.booming.R
 import com.mardous.booming.util.StorageUtil
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 class FileSystemQuery(
@@ -53,6 +54,12 @@ class FileSystemQuery(
         override val fileName: String,
         override val filePath: String
     ) : Parcelable, FileSystemItem {
+
+        @IgnoredOnParcel
+        override val fileDateAdded: Long = -1
+
+        @IgnoredOnParcel
+        override val fileDateModified: Long = -1
 
         override fun getFileIcon(context: Context): Drawable? {
             return AppCompatResources.getDrawable(context, R.drawable.ic_folder_24dp)

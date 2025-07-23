@@ -17,19 +17,16 @@
 
 package com.mardous.booming.fragments.player.base
 
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import android.view.animation.LinearInterpolator
-import android.widget.SeekBar
 import android.widget.TextView
 import androidx.annotation.LayoutRes
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.slider.Slider
 import com.google.android.material.snackbar.Snackbar
 import com.mardous.booming.R
 import com.mardous.booming.extensions.getShapeAppearanceModel
@@ -45,7 +42,7 @@ import com.mardous.booming.preferences.dialog.NowPlayingExtraInfoPreferenceDialo
 import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.util.*
 import com.mardous.booming.viewmodels.player.PlayerViewModel
-import com.mardous.booming.views.SquigglyProgress
+import com.mardous.booming.views.MusicSlider
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -60,8 +57,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     private var playerAnimator: PlayerAnimator? = null
 
     protected open val playPauseFab: FloatingActionButton? = null
-    protected open val progressSlider: Slider? = null
-    protected open val seekBar: SeekBar? = null
+    protected open val musicSlider: MusicSlider? = null
     protected open val repeatButton: MaterialButton? = null
     protected open val shuffleButton: MaterialButton? = null
     protected open val songTotalTime: TextView? = null
@@ -76,9 +72,6 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
 
     private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
-
-    private var isSeeking = false
-    private var progressAnimator: ObjectAnimator? = null
 
     private var isShown = false
 
@@ -114,7 +107,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.isPlayingFlow.collect { isPlaying ->
                 onUpdatePlayPause(isPlaying)
-                (seekBar?.progressDrawable as? SquigglyProgress)?.animate = isPlaying
+                musicSlider?.animateSquigglyProgress = isPlaying
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
@@ -129,7 +122,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.progressFlow.collect { progress ->
-                if (!isSeeking) {
+                if (musicSlider?.isTrackingTouch == false) {
                     onUpdateSlider(progress.progress, progress.total)
                 }
             }
@@ -179,72 +172,31 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     }
 
     private fun setUpProgressSlider() {
-        progressSlider?.addOnChangeListener { _, value, fromUser ->
-            onProgressChange(value.toLong(), fromUser)
-        }
-        progressSlider?.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
-            override fun onStartTrackingTouch(slider: Slider) {
-                onStartTrackingTouch()
+        musicSlider?.setUseSquiggly(Preferences.squigglySeekBar)
+        musicSlider?.setListener(object : MusicSlider.Listener {
+            override fun onProgressChanged(slider: MusicSlider, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    onUpdateSlider(progress.toLong(), playerViewModel.songDuration)
+                }
             }
 
-            override fun onStopTrackingTouch(slider: Slider) {
-                onStopTrackingTouch(slider.value.toInt())
-            }
-        })
+            override fun onStartTrackingTouch(slider: MusicSlider) {}
 
-        seekBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                onProgressChange(progress.toLong(), fromUser)
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                onStartTrackingTouch()
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                onStopTrackingTouch(seekBar?.progress ?: 0)
+            override fun onStopTrackingTouch(slider: MusicSlider) {
+                playerViewModel.seekTo(slider.value.toLong())
             }
         })
     }
 
     private fun onUpdateSlider(progress: Long, total: Long) {
-        if (seekBar == null) {
-            progressSlider?.valueTo = total.toFloat().coerceAtLeast(1f)
-            progressSlider?.value = progress.toFloat().coerceIn(progressSlider?.valueFrom, progressSlider?.valueTo)
-        } else {
-            seekBar?.max = total.toInt()
-            if (isSeeking) {
-                seekBar?.progress = progress.toInt()
-            } else {
-                progressAnimator = ObjectAnimator.ofInt(seekBar, "progress", progress.toInt()).apply {
-                    duration = 0
-                    interpolator = LinearInterpolator()
-                    start()
-                }
-            }
-        }
+        musicSlider?.valueTo = total.toInt()
+        musicSlider?.value = progress.toInt()
         songCurrentProgress?.text = progress.durationStr()
         songTotalTime?.text = if (Preferences.preferRemainingTime){
             (total - progress).coerceAtLeast(0L).durationStr()
         } else {
             total.durationStr()
         }
-    }
-
-    private fun onProgressChange(value: Long, fromUser: Boolean) {
-        if (fromUser) {
-            onUpdateSlider(value, playerViewModel.songDuration)
-        }
-    }
-
-    private fun onStartTrackingTouch() {
-        isSeeking = true
-        progressAnimator?.cancel()
-    }
-
-    private fun onStopTrackingTouch(value: Int) {
-        isSeeking = false
-        playerViewModel.seekTo(value.toLong())
     }
 
     protected open fun onCreatePlayerAnimator(): PlayerAnimator? = null
@@ -322,6 +274,10 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
         when (key) {
+            SQUIGGLY_SEEK_BAR -> {
+                musicSlider?.setUseSquiggly(sharedPreferences.getBoolean(key, false))
+                musicSlider?.animateSquigglyProgress = playerViewModel.isPlaying
+            }
             DISPLAY_EXTRA_INFO,
             EXTRA_INFO,
             DISPLAY_ALBUM_TITLE,

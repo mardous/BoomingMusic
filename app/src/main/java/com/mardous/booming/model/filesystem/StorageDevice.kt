@@ -21,6 +21,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import androidx.appcompat.content.res.AppCompatResources
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import java.io.File
 
@@ -36,6 +37,12 @@ class StorageDevice(
 
     val file: File
         get() = File(filePath)
+
+    @IgnoredOnParcel
+    override val fileDateAdded: Long = -1
+
+    @IgnoredOnParcel
+    override val fileDateModified: Long = -1
 
     override fun getFileIcon(context: Context): Drawable? {
         return AppCompatResources.getDrawable(context, iconRes)

@@ -19,6 +19,3 @@ class LyricsFile(val file: File, val format: Format) {
         } == true
     }
 }
-
-fun List<LyricsFile>.takeFormat(format: LyricsFile.Format) =
-    firstOrNull { it.format == format }

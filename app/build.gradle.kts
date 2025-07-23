@@ -10,6 +10,7 @@ plugins {
     id("kotlin-parcelize")
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.androidx.safeargs)
+    alias(libs.plugins.aboutlibraries)
 }
 
 if (isNormalBuild) {
@@ -233,6 +234,8 @@ dependencies {
     implementation(libs.androidx.palette.ktx)
     implementation(libs.androidx.viewpager)
     implementation(libs.material.components)
+
+    implementation(libs.aboutlibraries)
 
     implementation(libs.m3color)
     implementation(libs.balloon)

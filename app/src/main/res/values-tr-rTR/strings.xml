@@ -37,7 +37,6 @@
     <string name="currently_listening_to_x_by_x">%2$s - %1$s dinliyorum</string>
     <string name="share_to_stories">Hikayelerde paylaş</string>
     <string name="could_not_create_the_story">Hikaye oluşturulamadı.</string>
-    <string name="back_action">Geri</string>
     <string name="rename_action">Yeniden adlandır</string>
     <string name="add_action">Ekle</string>
     <string name="delete_action">Sil</string>
@@ -218,7 +217,6 @@
     <string name="horizontal_albums">Yatay albümler</string>
     <string name="ignore_singles">Teklileri yoksay</string>
     <string name="compact_song_view">Kompakt şarkı görünümü</string>
-    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Görünüm türü</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Kart</string>
@@ -234,7 +232,6 @@
     <string name="sort_order_year">Yıl</string>
     <string name="sort_order_duration">Süre</string>
     <string name="sort_order_date_added">Eklenme tarihi</string>
-    <string name="sort_order_date_modified">Değiştirilme tarihi</string>
     <string name="sort_order_number_of_songs">Şarkı sayısı</string>
     <string name="sort_order_number_of_albums">Albüm sayısı</string>
     <string name="sort_order_last_played_date">Son çalınma tarihi</string>
@@ -472,7 +469,6 @@
     <string name="downloaded_lyrics">İndirilmiş</string>
     <string name="lrc_lyrics">LRC dosyası</string>
     <string name="ttml_lyrics">TTML dosyası</string>
-    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Senkronize şarkı sözlerini içe aktar</string>
     <string name="action_share_synchronized_lyrics">Senkronize şarkı sözlerini paylaş</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> için senkronize LRC şarkı sözlerini içe aktarmak istiyor musunuz?]]></string>
@@ -491,7 +487,6 @@
     <string name="failed_to_update_lyrics">Şarkı sözleri güncellenemedi.</string>
     <string name="lyrics_source_ttml_file">Eşzamanlı (senkronize) şarkı sözleri bir TTML dosyasından alınır. TTML dosyalarının içeriğini düzenlemek şu anda desteklenmemektedir.</string>
     <string name="lyrics_source_lrc_file">Senkronize şarkı sözleri bir LRC dosyasından geliyor. Değişiklikler doğrudan o dosyaya kaydedilecek.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Uyku zamanlayıcısı</string>
     <string name="sleep_timer_cancel_current_timer">Mevcut zamanlayıcıyı iptal et</string>
@@ -515,8 +510,6 @@
     <string name="fork_on_github">GitHub\'da Fork\'la</string>
     <string name="licenses">Lisanslar</string>
     <string name="author">Geliştirici</string>
-    <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Destekçiler</string>
     <string name="acknowledgments_title">Teşekkür</string>
     <string name="translators_title">Çevirmenler</string>
     <string name="translators_summary">Booming Music\'i birçok dilde kullanılabilir hale getirenlere teşekkürler.</string>
@@ -598,8 +591,6 @@
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Çalmaya başlayınca aç</string>
     <string name="open_on_play_summary">Bir şarkı çalmaya başladıktan sonra Şimdi Çalıyor panelini otomatik olarak genişletin.</string>
-    <string name="squiggly_seek_bar_title">Dalgalı ilerleme çubuğu</string>
-    <string name="squiggly_seek_bar_summary">Varsayılan kaydırıcı yerine dalgalı bir ilerleme çubuğunu etkinleştir.</string>
     <string name="extra_controls_title">Ekstra kontroller</string>
     <string name="extra_controls_summary">Mini çalar için ekstra kontroller ekleyin</string>
     <string name="adaptive_controls_title">Uyarlanabilir kontroller</string>
@@ -609,7 +600,7 @@
     <string name="circle_button_title">Dairesel oynatma düğmesi</string>
     <string name="swipe_album_cover_title">Albüm kapağını kaydırın</string>
     <string name="swipe_album_cover_summary">Şarkılar arasında geçiş yapmak için albüm kapağını sola ve sağa kaydırın.</string>
-    <string name="single_tap_on_album_cover_title">Kapağa tek dokun</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Kapağa çift dokunun</string>
     <string name="long_press_on_album_cover_title">Kapağa uzun basın</string>
     <string name="now_playing_corner_radius_title">Görsel köşe yarıçapı</string>
@@ -621,7 +612,7 @@
     <string name="animate_controls_title">Kontrolleri canlandır</string>
     <string name="animate_controls_summary">Çalar panelini açarken oynatılır.</string>
     <string name="swipe_controls_title">Kaydırma kontrolleri</string>
-    <string name="swipe_controls_summary">Şimdi çalıyor ekranında herhangi bir boş alanda sola kaydırarak sonraki şarkıya, sağa kaydırarak önceki şarkıya geçebilirsiniz.</string>
+    <string name="swipe_controls_summary">Şimdi çalıyor ekranında herhangi bir boş alana sola kaydırarak önceki şarkıya, sağa kaydırarak ise sonraki şarkıya gidebilirsiniz.</string>
     <string name="display_album_name_title">Albüm adını göster</string>
     <string name="display_extra_info_title">Ek bilgileri göster</string>
     <string name="display_extra_info_summary">Bit hızı, biçim, örnekleme hızı gibi şarkı hakkında ek bilgileri gösterin.</string>
@@ -655,8 +646,6 @@
     <string name="auto_play_on_skip_summary">Çalma duraklatılmışsa, Önceki veya Sonraki düğmelerine dokunmak müziği başlatır.</string>
     <string name="rewind_with_back_title">"'Önceki' ile geri sar"</string>
     <string name="rewind_with_back_summary">Çalan parçayı başa sarın veya mevcut parça başlangıçtaysa önceki parçaya geçin.</string>
-    <string name="rewind_fast_forward_amount_title">Geri/İleri sarma aralığı</string>
-    <string name="rewind_fast_forward_amount_summary">Kullanıcı arayüzü veya harici kontrollerle geri/ileri sarılacak süre (saniye cinsinden).</string>
     <string name="resume_on_connect_title">Bağlandığında devam et</string>
     <string name="resume_on_connect_summary">Kulaklık bağlandığında çalmaya devam eder.</string>
     <string name="pause_on_disconnect_title">Bağlantı kesildiğinde duraklat</string>

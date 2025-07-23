@@ -17,6 +17,9 @@ class LyricsViewState(val lyrics: Lyrics?) {
     internal var currentWordIndex by mutableIntStateOf(-1)
         private set
 
+    internal var currentBackgroundIndex by mutableIntStateOf(-1)
+        private set
+
     private var shouldCrossfade by mutableStateOf(false)
 
     fun updatePosition(newPosition: Long) {
@@ -30,6 +33,7 @@ class LyricsViewState(val lyrics: Lyrics?) {
         previousLineIndex = if (lineJump <= 1) currentLineIndex else -1
         currentLineIndex = newLineIndex
         currentWordIndex = findWordIndexAt(position, currentLineIndex)
+        currentBackgroundIndex = findBackgroundIndexAt(position,  currentLineIndex)
     }
 
     private fun findLineIndexAt(position: Long): Int {
@@ -45,13 +49,26 @@ class LyricsViewState(val lyrics: Lyrics?) {
 
     private fun findWordIndexAt(position: Long, lineIndex: Int): Int {
         if (lyrics == null || lineIndex !in lyrics.lines.indices) return -1
-        val words = lyrics.lines[lineIndex].words
+        val words = lyrics.lines[lineIndex].main
         for (i in words.indices) {
             if (position < words[i].startAt) {
                 return i - 1
             }
         }
         return words.lastIndex
+    }
+
+    private fun findBackgroundIndexAt(position: Long, lineIndex: Int): Int {
+        if (lyrics == null || lineIndex !in lyrics.lines.indices) return -1
+        val line = lyrics.lines[lineIndex]
+        if (!line.hasBackground) return -1
+        val backgrounds = line.background
+        for (i in backgrounds.indices) {
+            if (position < backgrounds[i].startAt) {
+                return i - 1
+            }
+        }
+        return backgrounds.lastIndex
     }
 }
 

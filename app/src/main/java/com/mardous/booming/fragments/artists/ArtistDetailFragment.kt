@@ -385,6 +385,7 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
             menu.removeItem(R.id.action_search)
         }
         menu.findItem(R.id.action_horizontal_albums)?.isChecked = Preferences.horizontalArtistAlbums
+        menu.findItem(R.id.action_ignore_singles)?.isChecked = Preferences.ignoreSingles
         menu.findItem(R.id.action_toggle_compact_song_view)?.isChecked = Preferences.compactArtistSongView
     }
 

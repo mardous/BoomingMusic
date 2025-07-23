@@ -76,6 +76,12 @@ open class Song(
     override val filePath: String
         get() = data
 
+    override val fileDateAdded: Long
+        get() = dateAdded
+
+    override val fileDateModified: Long
+        get() = dateModified
+
     override fun getFileDescription(context: Context): CharSequence {
         return this.songInfo()
     }

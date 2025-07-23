@@ -116,7 +116,6 @@ open class MultiPlayer(context: Context) : LocalPlayback(context) {
     override fun start(): Boolean {
         return mCurrentMediaPlayer.execSafe {
             start()
-            mCallbacks?.onPlayStateChanged()
             true
         } ?: false
     }
@@ -145,7 +144,6 @@ open class MultiPlayer(context: Context) : LocalPlayback(context) {
     override fun pause(): Boolean {
         return mCurrentMediaPlayer.execSafe {
             pause()
-            mCallbacks?.onPlayStateChanged()
             true
         } ?: false
     }

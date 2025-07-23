@@ -20,21 +20,17 @@ package com.mardous.booming.fragments.player.styles.peekplayerstyle
 import android.animation.Animator
 import android.animation.TimeInterpolator
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.SeekBar
 import android.widget.TextView
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentPeekPlayerPlaybackControlsBinding
-import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.fragments.player.*
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
 import com.mardous.booming.model.Song
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.views.SquigglyProgress
+import com.mardous.booming.views.MusicSlider
 import java.util.LinkedList
 
 /**
@@ -51,7 +47,7 @@ class PeekPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_p
     override val shuffleButton: MaterialButton?
         get() = _binding?.shuffleButton
 
-    override val seekBar: SeekBar
+    override val musicSlider: MusicSlider?
         get() = binding.progressSlider
 
     override val songCurrentProgress: TextView
@@ -72,9 +68,8 @@ class PeekPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_p
     }
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
-        val desiredState = intArrayOf(android.R.attr.state_pressed)
         val oldControlColor = binding.nextButton.iconTint.defaultColor
-        val oldSliderColor = binding.progressSlider.progressTintList!!.getColorForState(desiredState, Color.BLACK)
+        val oldSliderColor = binding.progressSlider.currentColor
         val oldSecondaryTextColor = binding.songCurrentProgress.currentTextColor
         val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
         val newShuffleColor = getPlaybackControlsColor(
@@ -88,8 +83,8 @@ class PeekPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_p
             scheme.primaryControlColor,
             scheme.secondaryControlColor
         )
-        return listOf(
-            binding.progressSlider.tintTarget(oldSliderColor, scheme.emphasisColor),
+        return listOfNotNull(
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.emphasisColor),
             binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
             binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
             binding.playPauseButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),

@@ -23,7 +23,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
-import android.widget.SeekBar
 import android.widget.TextView
 import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
@@ -31,7 +30,6 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentDefaultPlayerPlaybackControlsBinding
-import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.resources.centerPivot
 import com.mardous.booming.extensions.resources.showBounceAnimation
 import com.mardous.booming.fragments.player.*
@@ -39,7 +37,7 @@ import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
 import com.mardous.booming.model.NowPlayingAction
 import com.mardous.booming.model.Song
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.views.SquigglyProgress
+import com.mardous.booming.views.MusicSlider
 import java.util.LinkedList
 
 /**
@@ -59,7 +57,7 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
     override val shuffleButton: MaterialButton?
         get() = binding.shuffleButton
 
-    override val seekBar: SeekBar
+    override val musicSlider: MusicSlider?
         get() = binding.progressSlider
 
     override val songCurrentProgress: TextView
@@ -158,12 +156,11 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
     }
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
-        val desiredState = intArrayOf(android.R.attr.state_pressed)
         val oldPlayPauseColor = binding.playPauseButton.backgroundTintList?.defaultColor
             ?: Color.TRANSPARENT
 
         val oldControlColor = binding.nextButton.iconTint.defaultColor
-        val oldSliderColor = binding.progressSlider.progressTintList!!.getColorForState(desiredState, Color.BLACK)
+        val oldSliderColor = binding.progressSlider.currentColor
         val oldPrimaryTextColor = binding.title.currentTextColor
         val oldSecondaryTextColor = binding.text.currentTextColor
 
@@ -181,7 +178,7 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
         )
         return listOfNotNull(
             binding.playPauseButton.tintTarget(oldPlayPauseColor, scheme.emphasisColor),
-            binding.progressSlider.tintTarget(oldSliderColor, scheme.emphasisColor),
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.emphasisColor),
             binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
             binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
             binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),

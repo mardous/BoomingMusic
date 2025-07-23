@@ -131,8 +131,9 @@ class SongListFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, Grid
             sortOrderSubmenu.add(0, R.id.action_sort_order_duration, 3, R.string.sort_order_duration)
             sortOrderSubmenu.add(0, R.id.action_sort_order_year, 4, R.string.sort_order_year)
             sortOrderSubmenu.add(0, R.id.action_sort_order_date_added, 5, R.string.sort_order_date_added)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_descending, 6, R.string.sort_order_descending)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_ignore_articles, 7, R.string.sort_order_ignore_articles)
+            sortOrderSubmenu.add(0, R.id.action_sort_order_date_modified, 6, R.string.sort_order_date_modified)
+            sortOrderSubmenu.add(1, R.id.action_sort_order_descending, 7, R.string.sort_order_descending)
+            sortOrderSubmenu.add(1, R.id.action_sort_order_ignore_articles, 8, R.string.sort_order_ignore_articles)
             sortOrderSubmenu.setGroupCheckable(0, true, true)
             sortOrderSubmenu.prepareSortOrder(SortOrder.songSortOrder)
         }

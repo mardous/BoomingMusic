@@ -28,7 +28,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -36,7 +35,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.mardous.booming.R
 import com.mardous.booming.model.about.Contribution
 import com.mardous.booming.service.queue.SpecialShuffleMode
 import dev.jeziellago.compose.markdowntext.MarkdownText
@@ -88,17 +86,16 @@ fun ContributionListItem(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable(enabled = !contribution.url.isNullOrEmpty()) { onClick() }
             .padding(horizontal = 16.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        val imageSize = dimensionResource(R.dimen.list_item_image_size)
         if (contribution.image != null) {
             AsyncImage(
-                model = contribution.image,
+                model = contribution.imageUrl,
                 contentDescription = null,
                 modifier = Modifier
-                    .size(imageSize)
+                    .size(40.dp)
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop
             )

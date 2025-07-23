@@ -98,6 +98,7 @@ class PlaybackManager(
                 onNotInitialized()
             } else {
                 playback?.start()
+                playback?.getCallbacks()?.onPlayStateChanged()
 
                 updateBalance()
                 updateTempo()
@@ -145,6 +146,7 @@ class PlaybackManager(
         if (playback != null && playback!!.isPlaying()) {
             if (force) {
                 playback?.pause()
+                playback?.getCallbacks()?.onPlayStateChanged()
                 stopProgressObserver()
                 closeAudioEffectSession(false)
             } else {
@@ -156,6 +158,7 @@ class PlaybackManager(
                     fadeIn = false
                 ) {
                     playback?.pause()
+                    playback?.getCallbacks()?.onPlayStateChanged()
                     stopProgressObserver()
                     closeAudioEffectSession(false)
                 }

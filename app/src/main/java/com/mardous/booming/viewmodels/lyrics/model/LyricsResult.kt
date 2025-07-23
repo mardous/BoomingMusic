@@ -22,7 +22,14 @@ import com.mardous.booming.lyrics.Lyrics
 import com.mardous.booming.lyrics.LyricsSource
 
 class DisplayableLyrics<T>(val content: T?, val source: LyricsSource) {
-    fun edit(newContent: String?) = EditableLyrics(newContent, source)
+    val isEditable = source.isEditable
+
+    fun edit(newContent: String?): EditableLyrics? {
+        if (isEditable) {
+            EditableLyrics(newContent, source)
+        }
+        return null
+    }
 }
 
 class EditableLyrics(val content: String?, val source: LyricsSource)

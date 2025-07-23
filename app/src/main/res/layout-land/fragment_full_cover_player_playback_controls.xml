@@ -84,9 +84,8 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="36dp"/>
 
-    <SeekBar
+    <com.mardous.booming.views.MusicSlider
         android:id="@+id/progressSlider"
-        style="@style/SquigglySlider"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/player_landscape_vertical_space"

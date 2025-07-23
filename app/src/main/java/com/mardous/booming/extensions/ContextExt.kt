@@ -94,25 +94,29 @@ fun Context.dip(id: Int) = resources.getDimensionPixelSize(id)
 
 fun Context.intRes(id: Int) = resources.getInteger(id)
 
-fun Context.openUrl(url: String) {
-    try {
-        startActivity(
-            Intent(Intent.ACTION_VIEW, url.toUri())
-                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        )
-    } catch (_: ActivityNotFoundException) {}
+fun Context.openUrl(url: String) =
+    tryStartActivity(
+        intent = Intent(Intent.ACTION_VIEW, url.toUri())
+            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    ) {
+        if (it is ActivityNotFoundException) {
+            showToast("No browser installed.")
+        }
+    }
+
+fun Context.tryStartActivity(intent: Intent, onError: (Throwable) -> Unit = {}) = try {
+    startActivity(intent)
+} catch (t: Throwable) {
+    onError(t)
 }
 
 fun Context.webSearch(vararg keys: String?) {
     val query = keys.filterNotNull().joinToString(" ")
-    try {
-        val intent = Intent(Intent.ACTION_WEB_SEARCH)
-        intent.putExtra(SearchManager.QUERY, query)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-    } catch (_: SecurityException) {
-        openUrl("https://google.com/search?q=${query.encodeURLParameter(spaceToPlus = true)}")
-    } catch (_: ActivityNotFoundException) {
+    tryStartActivity(
+        Intent(Intent.ACTION_WEB_SEARCH)
+            .putExtra(SearchManager.QUERY, query)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    ) {
         openUrl("https://google.com/search?q=${query.encodeURLParameter(spaceToPlus = true)}")
     }
 }

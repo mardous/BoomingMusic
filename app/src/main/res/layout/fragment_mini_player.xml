@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,24 +13,23 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_vertical"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:scaleType="centerCrop"
-        app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
-        app:layout_constraintTop_toTopOf="@+id/songInfo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/songInfo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
         tools:src="@tools:sample/backgrounds/scenic[2]"
         tools:ignore="ContentDescription"/>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/songInfo"
+        android:id="@+id/songTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        android:layout_marginStart="16dp"
+        android:layout_gravity="top"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="4dp"
         android:ellipsize="marquee"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -41,14 +40,41 @@
         android:singleLine="true"
         android:textAppearance="?textAppearanceBody2"
         android:textColor="?android:textColorPrimary"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintEnd_toStartOf="@id/actionPrevious"
+        app:layout_constraintTop_toTopOf="@id/playPause"
         tools:text="Title"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/songArtist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="4dp"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:freezesText="true"
+        android:gravity="start"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:textAppearance="?textAppearanceBody2"
+        android:textColor="?android:textColorSecondary"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintEnd_toStartOf="@id/actionPrevious"
+        app:layout_constraintBottom_toBottomOf="@id/playPause"
+        tools:text="Artist"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/actionPrevious"
         style="?materialIconButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        app:layout_constraintEnd_toStartOf="@id/playPause"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:contentDescription="@string/action_previous"
         android:visibility="gone"
         app:icon="@drawable/ic_previous_24dp"
@@ -56,9 +82,12 @@
         tools:visibility="visible"/>
 
     <FrameLayout
+        android:id="@+id/playPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical">
+        app:layout_constraintEnd_toStartOf="@id/actionNext"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/progress_bar"
@@ -87,10 +116,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:contentDescription="@string/action_next"
-        android:visibility="gone"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:icon="@drawable/ic_next_24dp"
         app:iconTint="?attr/colorControlNormal"
         tools:visibility="visible"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

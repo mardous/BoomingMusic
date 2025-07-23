@@ -67,7 +67,6 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
             if (isCrossFading) {
                 getNextPlayer()?.start()
             }
-            mCallbacks?.onPlayStateChanged()
             true
         } catch (e: IllegalStateException) {
             e.printStackTrace()
@@ -99,7 +98,6 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
                 it.pause()
             }
         }
-        mCallbacks?.onPlayStateChanged()
         return true
     }
 

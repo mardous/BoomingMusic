@@ -472,7 +472,6 @@
     <string name="downloaded_lyrics">Downloaded</string>
     <string name="lrc_lyrics">LRC file</string>
     <string name="ttml_lyrics">TTML file</string>
-    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Import synced lyrics</string>
     <string name="action_share_synchronized_lyrics">Share synced lyrics</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Do you want to import synchronized LRC lyrics for <b>%s</b>?]]></string>

@@ -37,7 +37,6 @@
     <string name="currently_listening_to_x_by_x">我正在用 %1$s 聆听 %2$s</string>
     <string name="share_to_stories">分享到故事</string>
     <string name="could_not_create_the_story">无法创建故事。</string>
-    <string name="back_action">Back</string>
     <string name="rename_action">重命名</string>
     <string name="add_action">添加</string>
     <string name="delete_action">删除</string>
@@ -45,7 +44,7 @@
     <string name="clear_action">清空</string>
     <string name="close_action">关闭</string>
     <string name="continue_action">继续</string>
-    <string name="select_all_title">全选</string>
+    <string name="select_all_title">选择所有</string>
     <string name="x_selected">已选择 %d</string>
     <string name="playing_notification_description">播放通知提供播放/暂停等动作。</string>
     <string name="playing_notification_name">播放通知</string>
@@ -57,7 +56,7 @@
     <string name="imported_playlist_x">已导入播放列表 \"%1$s\"。</string>
     <string name="could_not_import_the_playlist_x">无法导入播放列表“%s”</string>
     <string name="there_are_no_importable_playlists">没有可导入的播放列表。</string>
-    <string name="playlist_x_not_imported">未导入播放列表“%s”。</string>
+    <string name="playlist_x_not_imported">播放列表“%s”未成功导入。</string>
     <string name="action_import_playlist">导入播放列表…</string>
     <string name="action_new_playlist">新建播放列表…</string>
     <string name="new_playlist_title">新播放列表</string>
@@ -65,24 +64,24 @@
     <string name="rename_playlist_title">重命名播放列表</string>
     <string name="action_rename">重命名播放列表</string>
     <string name="action_delete">删除播放列表</string>
-    <string name="action_export_playlist">导出歌单至文件</string>
+    <string name="action_export_playlist">将播放列表导出至文件</string>
     <string name="action_clear_history">清除历史记录</string>
     <string name="history_cleared">已清除历史记录</string>
     <string name="create_a_playlist">创建一个空播放列表。稍后您可以向其中添加歌曲。</string>
     <string name="create_a_playlist_with_one_song">将创建播放列表并添加一首歌曲。</string>
     <string name="create_a_playlist_with_x_songs">将创建一个播放列表，并自动向其中添加 %d 首歌曲。</string>
     <string name="playlist_name_empty">播放列表名称</string>
-    <string name="saved_playlist_x">已保存播放列表 %s。</string>
+    <string name="saved_playlist_x">已保存播放列表 %s</string>
     <string name="failed_to_save_playlist">播放列表保存失败。</string>
     <string name="saved_x_playlists">已保存 %1$d 播放列表。</string>
     <string name="saved_x_playlists_failed_to_save_x">保存 %1$d 播放列表。保存 %2$d 失败。</string>
     <string name="delete_playlist_title">删除播放列表</string>
     <string name="delete_playlists_title">删除播放列表</string>
-    <string name="delete_playlist_x"><![CDATA[删除播放列表 <b>%s</b>？]]></string>
+    <string name="delete_playlist_x"><![CDATA[删除播放列表 <b>%s</b>?]]></string>
     <string name="delete_x_playlists"><![CDATA[删除 <b>%d</b> 播放列表吗？]]></string>
     <string name="created_playlist_x">已创建播放列表 \'%1$s\'。</string>
     <string name="could_not_create_playlist">无法创建播放列表。</string>
-    <string name="inserted_one_song_into_playlist_x">将一首歌插入播放列表 %s。</string>
+    <string name="inserted_one_song_into_playlist_x">将一首歌插入播放列表 %s</string>
     <string name="inserted_x_songs_into_playlist_x">将 %1$d 首歌曲插入播放列表 %2$s。</string>
     <string name="playlist_exists">播放列表 %s 已经存在。</string>
     <string name="remove_song_from_playlist_title">从播放列表中删除歌曲</string>
@@ -93,7 +92,7 @@
     <string name="action_tag_editor">标签编辑器</string>
     <string name="saving_changes">正在保存更改</string>
     <string name="changes_saved_successfully">更改已成功保存。</string>
-    <string name="could_not_save_some_changes">无法保存修改。</string>
+    <string name="could_not_save_some_changes">无法保存一些更改。</string>
     <string name="web_search">网页搜索</string>
     <string name="where_do_you_want_to_search">您想在哪里搜索？</string>
     <string name="configure_action">配置</string>
@@ -160,7 +159,7 @@
     <string name="toggle_favorite">从收藏夹中添加/删除</string>
     <string name="action_add_to_playlist">添加到播放列表</string>
     <string name="action_remove_from_playlist">从播放列表删除</string>
-    <string name="action_add_to_playing_queue">添加至队列</string>
+    <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">从播放队列移除</string>
     <string name="x_removed_from_playing_queue">%s 已移除</string>
     <string name="put_after_current_track">放到当前曲目之后</string>
@@ -218,7 +217,6 @@
     <string name="horizontal_albums">水平专辑</string>
     <string name="ignore_singles">排除单曲</string>
     <string name="compact_song_view">紧凑的歌曲视图</string>
-    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">查看类型</string>
     <string name="view_type_normal">普通的</string>
     <string name="view_type_card">卡</string>
@@ -234,7 +232,6 @@
     <string name="sort_order_year">年份</string>
     <string name="sort_order_duration">时长</string>
     <string name="sort_order_date_added">添加日期</string>
-    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">歌曲数</string>
     <string name="sort_order_number_of_albums">专辑数</string>
     <string name="sort_order_last_played_date">最后播放日期</string>
@@ -253,7 +250,7 @@
     <string name="new_start_directory">新建起始目录: %s</string>
     <string name="action_scan">扫描</string>
     <string name="scan_media">扫描媒体</string>
-    <string name="scan_media_message">在大多数情况下，安卓自动检测和索引你的设备上的媒体文件，所以通常不需要手动扫描。</string>
+    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
     <string name="scan_media_positive">仍进行扫描</string>
     <string name="scan_finished">扫描已完成。</string>
     <string name="album_or_artist_empty">标题或艺术家是空的。</string>
@@ -372,7 +369,7 @@
         <item quantity="other">%d 播放</item>
     </plurals>
     <plurals name="x_items">
-        <item quantity="other">%d 项</item>
+        <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">推荐</string>
@@ -398,7 +395,7 @@
     <string name="shuffle_mode_favorite_songs_description">偏向最喜欢的歌曲。</string>
     <string name="shuffle_mode_forgotten_songs_description">偏向有一段时间未播放的歌曲。</string>
     <string name="shuffle_mode_recently_added_description">偏向近期添加到曲库的歌曲。</string>
-    <string name="shuffle_mode_combined_description">根据收藏、播放记录和近期播放混合播放。</string>
+    <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">均衡器</string>
     <string name="share_eq_configuration">分享 EQ 配置</string>
@@ -463,8 +460,7 @@
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">已下载</string>
     <string name="lrc_lyrics">LRC 文件</string>
-    <string name="ttml_lyrics">TTML文件</string>
-    <string name="external_file_lyrics">External file</string>
+    <string name="ttml_lyrics">TTML file</string>
     <string name="action_import_synchronized_lyrics">导入同步歌词</string>
     <string name="action_share_synchronized_lyrics">分享同步歌词</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[您想要为 <b>%s</b> 导入同步的 LRC 歌词吗？]]></string>
@@ -481,9 +477,8 @@
     <string name="no_synced_lyrics_found">未找到同步歌词</string>
     <string name="lyrics_were_updated_successfully">歌词更新成功。</string>
     <string name="failed_to_update_lyrics">更新歌词失败。</string>
-    <string name="lyrics_source_ttml_file">同步歌词来自TTML文件。尚不支持编辑TTML文件。</string>
+    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">同步歌词来自LRC文件。更改将直接保存到该文件。</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">睡眠计时器</string>
     <string name="sleep_timer_cancel_current_timer">取消当前计时器</string>
@@ -507,11 +502,9 @@
     <string name="fork_on_github">创建 GitHub 分支</string>
     <string name="licenses">许可协议</string>
     <string name="author">作者</string>
-    <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">贡献者</string>
-    <string name="acknowledgments_title">致谢</string>
-    <string name="translators_title">译者</string>
-    <string name="translators_summary">感谢那些为Booming Music提供多种语言的人们。</string>
+    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="translators_title">Translators</string>
+    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="telegram_chat">Telegram 聊天</string>
     <string name="telegram_chat_summary">加入 Telegram 聊天室并获得新版本和新闻的通知。</string>
     <string name="view_profile_on_github">在 GitHub 上查看个人资料</string>
@@ -543,7 +536,7 @@
     <string name="appearance_summary">更改应用的主题和其他视觉设置。</string>
     <string name="now_playing_title">正在播放</string>
     <string name="now_playing_summary">自定义当前播放屏幕。</string>
-    <string name="playback_title">播放</string>
+    <string name="playback_title">回放</string>
     <string name="playback_summary">更改声音设置，蓝牙耳机等。</string>
     <string name="metadata_title">元数据</string>
     <string name="metadata_summary">与专辑和艺术家图像相关的设置。</string>
@@ -584,24 +577,22 @@
     <string name="remember_last_page_summary">在启动时转到最后打开的页面。</string>
     <string name="start_page_title">开始页面</string>
     <string name="tab_mode_title">标签标题模式</string>
-    <string name="hold_tab_to_search_title">按住标签以搜索</string>
-    <string name="hold_tab_to_search_summary">长按任意导航栏选项卡打开搜索界面。</string>
+    <string name="hold_tab_to_search_title">Hold tab to Search</string>
+    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">样式</string>
     <string name="open_on_play_title">播放时打开</string>
     <string name="open_on_play_summary">开始播放歌曲后自动展开播放面板。</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">额外控制</string>
     <string name="extra_controls_summary">为迷你播放器添加额外的控制</string>
-    <string name="adaptive_controls_title">自适应控件</string>
-    <string name="adaptive_controls_summary">改变迷你播放器的空间以适配当前播放器风格。</string>
+    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">滑动以关闭</string>
     <string name="swipe_to_dismiss_summary">向下滑动以停止播放和清除播放队列。</string>
     <string name="circle_button_title">圆形播放按钮</string>
     <string name="swipe_album_cover_title">滑动专辑封面</string>
     <string name="swipe_album_cover_summary">在专辑封面上向左和向右滑动以跳过歌曲。</string>
-    <string name="single_tap_on_album_cover_title">单击封面</string>
+    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">双击封面</string>
     <string name="long_press_on_album_cover_title">长按封面</string>
     <string name="now_playing_corner_radius_title">图像圆角半径</string>
@@ -612,8 +603,8 @@
     <string name="lyrics_on_album_cover_summary">当歌词可用时，显示歌词而不是封面。</string>
     <string name="animate_controls_title">动画控制</string>
     <string name="animate_controls_summary">打开播放器面板后即刻播放。</string>
-    <string name="swipe_controls_title">滑动控件</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_controls_title">Swipe controls</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">显示专辑名称</string>
     <string name="display_extra_info_title">显示额外信息</string>
     <string name="display_extra_info_summary">显示歌曲的额外信息，例如比特率、格式、取样率等。</string>
@@ -627,12 +618,12 @@
     <string name="play_on_startup_title">启动时自动播放</string>
     <string name="gapless_playback_title">无缝播放</string>
     <string name="gapless_playback_summary">在歌曲之间平滑过渡。可能会在某些设备上导致播放问题。</string>
-    <string name="crossfade_title">交叉淡入淡出(实验功能)</string>
-    <string name="crossfade_summary">歌曲之间交叉淡入淡出的秒数（设置为0以禁用）。</string>
-    <string name="no_crossfade_on_albums_title">专辑播放无交叉淡入淡出效果</string>
-    <string name="no_crossfade_on_albums_summary">以原始顺序播放专辑时禁用交叉淡入淡出。</string>
-    <string name="audio_fade_duration_title">音频淡入/淡出持续时间(实验功能)</string>
-    <string name="audio_fade_duration_summary">播放开始或暂停时淡入或淡出音量所需秒数(设置为0为禁用)。</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
+    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">源模式</string>
     <string name="replaygain_preamp_title">预置层级</string>
     <string name="replaygain_preamp_summary">设置当ReplayGain 启用时的音量水平。</string>
@@ -647,10 +638,8 @@
     <string name="auto_play_on_skip_summary">如果播放已暂停，点击上一个或下一个按钮将开始播放。</string>
     <string name="rewind_with_back_title">"带着“上一个”退货"</string>
     <string name="rewind_with_back_summary">将播放曲目退回开始或移动到上一首曲目，如果当前曲目正在开始。</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">连接后恢复</string>
-    <string name="resume_on_connect_summary">连接耳机时恢复播放。</string>
+    <string name="resume_on_connect_summary">连接耳机时恢复回放。</string>
     <string name="pause_on_disconnect_title">断开时暂停</string>
     <string name="pause_on_disconnect_summary">耳机断开时暂停播放。推荐。</string>
     <string name="resume_on_bluetooth_connect_title">蓝牙连接时恢复</string>
@@ -676,8 +665,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">发送到回收站</string>
     <string name="trash_music_summary">发送已删除的文件到回收站。</string>
-    <string name="recursive_folder_actions_title">影响子文件夹的操作</string>
-    <string name="recursive_folder_actions_summary">当对文件夹执行操作时，选择哪些操作也应作用于子文件夹。</string>
+    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">启用历史</string>
     <string name="enable_history_summary">允许应用程序录制您正在收听的歌曲。如果您禁用它，整个历史记录将被清除。</string>
     <string name="history_interval_title">历史间隔</string>
@@ -742,12 +731,12 @@
     <string name="add_after_playing_track">播放曲目后添加</string>
     <string name="add_tracks_sequentially">按顺序添加曲目</string>
     <string name="albums_shuffle">专辑随机播放</string>
-    <string name="artists_shuffle">艺人随机播放</string>
-    <string name="shuffle_albums_ordered_songs">专辑随机播放，歌曲顺序不变</string>
-    <string name="ordered_albums_shuffle_songs">歌曲随机播放，专辑顺序不变</string>
-    <string name="shuffle_artists_ordered_songs">艺人随机播放，歌曲顺序不变</string>
-    <string name="ordered_artists_shuffle_songs">歌曲随机播放，艺人顺序不变</string>
-    <string name="album_or_artist_shuffle_all">全部随机</string>
+    <string name="artists_shuffle">艺术家随机播放</string>
+    <string name="shuffle_albums_ordered_songs">随机播放专辑，排序歌曲</string>
+    <string name="ordered_albums_shuffle_songs">已排序专辑，随机播放歌曲</string>
+    <string name="shuffle_artists_ordered_songs">随机播放艺术家，排序歌曲</string>
+    <string name="ordered_artists_shuffle_songs">已排序艺术家，随机播放歌曲</string>
+    <string name="album_or_artist_shuffle_all">随机播放所有</string>
     <string name="today">今日：</string>
     <string name="yesterday">昨日</string>
     <string name="this_week">本周</string>
@@ -763,7 +752,7 @@
     <string name="image_size_large">大 (较慢)</string>
     <string name="image_size_medium">中等(默认, 推荐)</string>
     <string name="image_size_small">小(快速，低质量)</string>
-    <string name="play_on_startup_mode_never">启动时从不播放</string>
+    <string name="play_on_startup_mode_never">Never play on startup</string>
     <string name="play_on_startup_mode_minimized">是，</string>
     <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">系统默认</string>
@@ -777,7 +766,7 @@
     <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
     <string name="player_color_mode_vibrant_color_description">将专辑颜色应用于提示背景、文本和控件</string>
     <string name="player_color_mode_material_you_title">Material You</string>
-    <string name="player_color_mode_material_you_description">启用基于相册颜色的Material You设置</string>
+    <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
     <string name="auto_update_title">自动更新搜索</string>
     <string name="every_day">每天</string>

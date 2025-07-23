@@ -24,7 +24,6 @@ import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
-import android.widget.SeekBar
 import android.widget.TextView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -33,24 +32,21 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentFullCoverPlayerPlaybackControlsBinding
-import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.resources.showBounceAnimation
 import com.mardous.booming.fragments.player.*
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
 import com.mardous.booming.model.NowPlayingAction
 import com.mardous.booming.model.Song
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.views.SquigglyProgress
+import com.mardous.booming.views.MusicSlider
 import java.util.LinkedList
 
 /**
  * @author Christians M. A. (mardous)
  */
-class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_full_cover_player_playback_controls),
-    SeekBar.OnSeekBarChangeListener {
+class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_full_cover_player_playback_controls) {
 
     private var _binding: FragmentFullCoverPlayerPlaybackControlsBinding? = null
     private val binding get() = _binding!!
@@ -64,7 +60,7 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
     override val shuffleButton: MaterialButton?
         get() = binding.shuffleButton
 
-    override val seekBar: SeekBar
+    override val musicSlider: MusicSlider?
         get() = binding.progressSlider
 
     override val songCurrentProgress: TextView
@@ -120,12 +116,11 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
     }
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
-        val desiredState = intArrayOf(android.R.attr.state_pressed)
         val oldPlayPauseColor = binding.playPauseButton.backgroundTintList?.defaultColor
             ?: Color.TRANSPARENT
 
         val oldControlColor = binding.nextButton.iconTint.defaultColor
-        val oldSliderColor = binding.progressSlider.progressTintList!!.getColorForState(desiredState, Color.BLACK)
+        val oldSliderColor = binding.progressSlider.currentColor
         val oldPrimaryTextColor = binding.title.currentTextColor
         val oldSecondaryTextColor = binding.text.currentTextColor
 
@@ -142,9 +137,9 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
             scheme.secondaryControlColor
         )
 
-        return listOf(
+        return listOfNotNull(
             binding.playPauseButton.tintTarget(oldPlayPauseColor, scheme.primaryControlColor),
-            binding.progressSlider.tintTarget(oldSliderColor, scheme.primaryControlColor),
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.primaryControlColor),
             binding.menu.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
             binding.favorite.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
             binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
@@ -186,16 +181,6 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
             _binding?.playPauseButton?.setImageResource(R.drawable.ic_play_24dp)
         }
     }
-
-    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-        if (binding.progressSlider == seekBar && fromUser) {
-            playerViewModel.seekTo(progress.toLong())
-        }
-    }
-
-    override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-
-    override fun onStopTrackingTouch(seekBar: SeekBar?) {}
 
     internal fun setFavorite(isFavorite: Boolean, withAnimation: Boolean) {
         if (this.isFavorite != isFavorite) {

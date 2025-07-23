@@ -26,13 +26,10 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
-import android.view.GestureDetector
-import android.view.Menu
-import android.view.MenuItem
-import android.view.MotionEvent
-import android.view.View
+import android.view.*
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -51,17 +48,20 @@ import com.mardous.booming.dialogs.SleepTimerDialog
 import com.mardous.booming.dialogs.WebSearchDialog
 import com.mardous.booming.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.dialogs.songs.ShareSongDialog
-import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.currentFragment
+import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.albumArtistName
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.navigation.albumDetailArgs
 import com.mardous.booming.extensions.navigation.artistDetailArgs
 import com.mardous.booming.extensions.navigation.genreDetailArgs
+import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.resources.animateBackgroundColor
 import com.mardous.booming.extensions.resources.animateTintColor
 import com.mardous.booming.extensions.resources.inflateMenu
 import com.mardous.booming.extensions.utilities.buildInfoString
+import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.fragments.lyrics.LyricsEditorFragmentArgs
 import com.mardous.booming.fragments.player.PlayerAlbumCoverFragment
 import com.mardous.booming.fragments.player.PlayerColorScheme
@@ -281,10 +281,10 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
         val lyricsItem = findItem(R.id.action_show_lyrics)
         if (lyricsItem != null) {
             if (lyricsVisible) {
-                lyricsItem.setIcon(R.drawable.ic_lyrics_24dp)
+                lyricsItem.setIcon(getTintedDrawable(R.drawable.ic_lyrics_24dp))
                     .setTitle(R.string.action_hide_lyrics)
             } else {
-                lyricsItem.setIcon(R.drawable.ic_lyrics_outline_24dp)
+                lyricsItem.setIcon(getTintedDrawable(R.drawable.ic_lyrics_outline_24dp))
                     .setTitle(R.string.action_show_lyrics)
             }
         }
@@ -400,6 +400,13 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
         playerControlsFragment.onHide()
     }
 
+    protected fun getTintedDrawable(
+        drawableRes: Int,
+        color: Int = playerViewModel.colorScheme.primaryTextColor
+    ) = AppCompatResources.getDrawable(requireContext(), drawableRes).also {
+        it?.setTint(color)
+    }
+
     protected fun Menu.onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
         val iconRes = if (withAnimation) {
             if (isFavorite) R.drawable.avd_favorite else R.drawable.avd_unfavorite
@@ -409,9 +416,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
         val titleRes = if (isFavorite) R.string.action_remove_from_favorites else R.string.action_add_to_favorites
 
         findItem(R.id.action_favorite)?.apply {
-            setIcon(iconRes)
             setTitle(titleRes)
-            icon.also {
+            icon = getTintedDrawable(iconRes).also {
                 if (it is AnimatedVectorDrawable) {
                     it.start()
                 }
@@ -421,14 +427,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
 
     protected open fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
         playerToolbar?.menu?.onIsFavoriteChanged(isFavorite, withAnimation)
-    }
-
-    protected open fun onToggleFavorite(song: Song, isFavorite: Boolean) {
-        val textId = when {
-            isFavorite -> R.string.added_to_favorites_label
-            else -> R.string.removed_from_favorites_label
-        }
-        showToast(textId)
     }
 
     private fun updateIsFavorite(song: Song = playerViewModel.currentSong, withAnim: Boolean = false) {
@@ -519,10 +517,10 @@ class FlingPlayBackController(context: Context, playerViewModel: PlayerViewModel
                 if (Preferences.isSwipeControls) {
                     if (abs(velocityX) > abs(velocityY)) {
                         if (velocityX < 0) {
-                            playerViewModel.playPrevious()
+                            playerViewModel.playNext()
                             return true
                         } else if (velocityX > 0) {
-                            playerViewModel.playNext()
+                            playerViewModel.playPrevious()
                             return true
                         }
                     }

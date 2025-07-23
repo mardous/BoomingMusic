@@ -83,6 +83,7 @@ fun List<Song>.sortedSongs(
         SortKeys.DURATION -> sortedWith(compareBy { it.duration })
         SortKeys.YEAR -> sortedWith(compareBy { it.year })
         SortKeys.DATE_ADDED -> sortedWith(compareBy { it.dateAdded })
+        SortKeys.DATE_MODIFIED -> sortedWith(compareBy { it.dateModified })
         else -> this
     }
     return songs.applyOrder(descending)
@@ -146,6 +147,8 @@ fun List<Folder>.sortedFolders(sortOrder: SortOrder): List<Folder> {
     val folders = when (sortOrder.value) {
         SortKeys.AZ -> sortedWith(compareBy { it.fileName })
         SortKeys.NUMBER_OF_SONGS -> sortedWith(compareBy { it.songCount })
+        SortKeys.DATE_ADDED -> sortedWith(compareBy { it.fileDateAdded })
+        SortKeys.DATE_MODIFIED -> sortedWith(compareBy { it.fileDateModified })
         else -> this
     }
     return folders.applyOrder(sortOrder.isDescending)
@@ -155,6 +158,7 @@ fun List<PlaylistWithSongs>.sortedPlaylists(sortOrder: SortOrder): List<Playlist
     val playlists = when (sortOrder.value) {
         SortKeys.AZ -> sortedWith(compareBy { it.playlistEntity.playlistName })
         SortKeys.NUMBER_OF_SONGS -> sortedWith(compareBy { it.songCount })
+        // TODO SortKeys.DATE_MODIFIED
         else -> this
     }
     return playlists.applyOrder(sortOrder.isDescending)
@@ -178,6 +182,7 @@ fun Menu.prepareSortOrder(sortOrder: SortOrder) {
         SortKeys.DURATION -> menu.findItem(R.id.action_sort_order_duration)?.isChecked = true
         SortKeys.YEAR -> menu.findItem(R.id.action_sort_order_year)?.isChecked = true
         SortKeys.DATE_ADDED -> menu.findItem(R.id.action_sort_order_date_added)?.isChecked = true
+        SortKeys.DATE_MODIFIED -> menu.findItem(R.id.action_sort_order_date_modified)?.isChecked = true
         SortKeys.NUMBER_OF_SONGS -> menu.findItem(R.id.action_sort_order_number_of_songs)?.isChecked = true
         SortKeys.NUMBER_OF_ALBUMS -> menu.findItem(R.id.action_sort_order_number_of_albums)?.isChecked = true
     }
@@ -223,6 +228,12 @@ fun MenuItem.selectedSortOrder(sortOrder: SortOrder): Boolean {
 
         R.id.action_sort_order_date_added -> {
             sortOrder.value = SortKeys.DATE_ADDED
+            isChecked = true
+            true
+        }
+
+        R.id.action_sort_order_date_modified -> {
+            sortOrder.value = SortKeys.DATE_MODIFIED
             isChecked = true
             true
         }

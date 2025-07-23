@@ -31,6 +31,7 @@ import com.mardous.booming.http.lastfm.LastFmAlbum
 import com.mardous.booming.http.lastfm.LastFmArtist
 import com.mardous.booming.http.lastfm.LastFmService
 import com.mardous.booming.model.*
+import com.mardous.booming.model.about.Contribution
 import com.mardous.booming.model.filesystem.FileSystemQuery
 import com.mardous.booming.search.SearchFilter
 import com.mardous.booming.search.SearchQuery
@@ -125,6 +126,8 @@ interface Repository {
     suspend fun deezerAlbum(artist: String, name: String): Result<DeezerAlbum>
     suspend fun artistInfo(name: String, lang: String?, cache: String?): Result<LastFmArtist>
     suspend fun albumInfo(artist: String, album: String, lang: String?): Result<LastFmAlbum>
+    suspend fun contributors(): List<Contribution>
+    suspend fun translators(): List<Contribution>
 }
 
 class RealRepository(
@@ -447,4 +450,10 @@ class RealRepository(
             Error(e)
         }
     }
+
+    override suspend fun contributors(): List<Contribution> =
+        Contribution.loadContributions(context, "contributors.json")
+
+    override suspend fun translators(): List<Contribution> =
+        Contribution.loadContributions(context, "translators.json")
 }

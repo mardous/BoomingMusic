@@ -195,4 +195,9 @@
         android:name="com.mardous.booming.fragments.about.TranslatorsFragment"
         android:label="TranslatorsFragment"/>
 
+    <fragment
+        android:id="@+id/nav_licenses"
+        android:name="com.mardous.booming.fragments.about.LicensesFragment"
+        android:label="LicensesFragment"/>
+
 </navigation>

@@ -135,6 +135,14 @@
             app:layout="@layout/list_item_view_switch"
             app:key="swipe_controls" />
 
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/squiggly_seek_bar_title"
+            app:summary="@string/squiggly_seek_bar_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view_switch"
+            app:key="squiggly_seek_bar" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

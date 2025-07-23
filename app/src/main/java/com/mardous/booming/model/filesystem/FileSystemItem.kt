@@ -28,6 +28,9 @@ interface FileSystemItem {
     val fileName: String
     val filePath: String
 
+    val fileDateAdded: Long
+    val fileDateModified: Long
+
     fun getFileIcon(context: Context): Drawable? = null
     fun getFileDescription(context: Context): CharSequence? = null
 }

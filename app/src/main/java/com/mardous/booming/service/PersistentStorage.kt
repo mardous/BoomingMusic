@@ -40,8 +40,16 @@ class PersistentStorage(context: Context, private val coroutineScope: CoroutineS
     }
 
     fun restoreQueue(onCompleted: (restored: Boolean, restoredPositionInTrack: Int) -> Unit) {
-        if (queuesRestored || !queueManager.isEmpty) return
-
+        if (queuesRestored || !queueManager.isEmpty) {
+            if (!queuesRestored) {
+                onCompleted(
+                    queueManager.hasQueues,
+                    sharedPreferences.getInt(SAVED_POSITION_IN_TRACK, -1)
+                )
+                queuesRestored = true
+            }
+            return
+        }
         coroutineScope.launch(IO) {
             val restoredQueue = playbackQueueStore.getSavedPlayingQueue(songRepository)
             val restoredOriginalQueue = playbackQueueStore.getSavedOriginalPlayingQueue(songRepository)

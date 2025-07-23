@@ -138,6 +138,7 @@ class MainActivity : AbsSlidingMusicPanelActivity() {
                 R.id.nav_lyrics_editor,
                 R.id.nav_play_info,
                 R.id.nav_about,
+                R.id.nav_licenses,
                 R.id.nav_translators -> {
                     setBottomNavVisibility(visible = false, hideBottomSheet = true)
                 }

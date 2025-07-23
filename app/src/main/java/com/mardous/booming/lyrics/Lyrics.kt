@@ -41,8 +41,17 @@ data class Lyrics(
     ) {
         val isWordByWord: Boolean = words.isNotEmpty()
         val isOppositeTurn: Boolean = actor != null && actor != "v1"
+
+        val hasBackground: Boolean
+            get() = words.any { it.isBackground }
+
+        val main: List<Word>
+            get() = words.filterNot { it.isBackground }
+
+        val background: List<Word>
+            get() = words.filter { it.isBackground }
     }
 
     @Immutable
-    data class Word(val content: String, val startAt: Long)
+    data class Word(val content: String, val startAt: Long, val isBackground: Boolean = false)
 }

@@ -198,6 +198,7 @@ class PlayerViewModel(
     fun isPlayingSong(song: Song) = song.id == currentSong.id
 
     fun playSongAt(position: Int, newPlayback: Boolean = false) {
+        if (queueManager.isEmpty) return
         transportControls?.sendCustomAction(SessionCommand.PLAY_SONG_AT, bundleOf(
             SessionCommand.Extras.POSITION to position,
             SessionCommand.Extras.IS_NEW_PLAYBACK to newPlayback

@@ -1,18 +1,18 @@
 package com.mardous.booming.lyrics.parser
 
 import com.mardous.booming.lyrics.Lyrics
-import java.io.File
+import com.mardous.booming.lyrics.LyricsFile
 import java.io.IOException
 import java.io.Reader
 import java.util.Locale
 
 class LrcLyricsParser : LyricsParser {
 
-    override fun handles(file: File): Boolean {
-        return file.name.endsWith(".lrc")
+    override fun handles(file: LyricsFile): Boolean {
+        return file.format == LyricsFile.Format.LRC
     }
 
-    override fun isValid(reader: Reader): Boolean {
+    override fun handles(reader: Reader): Boolean {
         val content = reader.buffered().use { it.readText() }
         return content
             .lineSequence()
@@ -102,29 +102,8 @@ class LrcLyricsParser : LyricsParser {
                         }
                     }
                 }
-                val length = attributes["length"]?.let {
-                    parseTime(it)
-                }
-                if (lines.isNotEmpty()) {
-                    lines.sortBy { it.startAt }
-
-                    // Update durations
-                    for (i in 0 until lines.lastIndex) {
-                        lines[i] = lines[i].copy(
-                            durationMillis = lines[i + 1].startAt - lines[i].startAt,
-                        )
-                    }
-                    if (length != null) {
-                        val last = lines.last()
-                        lines[lines.lastIndex] = last.copy(
-                            durationMillis = (length - last.startAt).takeIf { it > 0L } ?: Long.MAX_VALUE,
-                        )
-                    } else {
-                        lines[lines.lastIndex] = lines.last().copy(
-                            durationMillis = Long.MAX_VALUE,
-                        )
-                    }
-                }
+                val length = attributes["length"]?.let { parseTime(it) } ?: -1
+                lines.adjustLines(length)
                 return Lyrics(
                     title = attributes["ti"],
                     artist = attributes["ar"],

@@ -128,21 +128,16 @@
             app:layout="@layout/list_item_view_switch"
             app:key="rewind_with_back"/>
 
-        <SwitchPreferenceCompat
+        <SeekBarPreference
             app:icon="@drawable/ic_fast_forward_24dp"
-            app:title="@string/fast_forward_title"
-            app:summary="@string/fast_forward_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
-            app:key="fast_forward"/>
-
-        <SwitchPreferenceCompat
-            app:icon="@drawable/ic_fast_rewind_24dp"
-            app:title="@string/fast_backward_title"
-            app:summary="@string/fast_backward_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
-            app:key="fast_backward"/>
+            app:title="@string/rewind_fast_forward_amount_title"
+            app:summary="@string/rewind_fast_forward_amount_summary"
+            android:max="60"
+            app:min="5"
+            app:defaultValue="10"
+            app:showSeekBarValue="true"
+            app:layout="@layout/list_item_view_seekbar"
+            app:key="seek_interval"/>
 
     </PreferenceCategory>
 

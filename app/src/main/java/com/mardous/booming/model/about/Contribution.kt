@@ -39,6 +39,13 @@ class Contribution(
     override val values: Sequence<Contribution>
         get() = sequenceOf(Contribution("Spanish", "mardous", null, null))
 
+    val imageUrl: String?
+        get() = image?.let {
+            if (!it.startsWith("https://")) {
+                "file:///android_asset/images/$image"
+            } else it
+        }
+
     companion object {
         fun loadContributions(context: Context, assetName: String): List<Contribution> {
             return try {

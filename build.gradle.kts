@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.compose.compiler) apply false
     alias(libs.plugins.google.ksp) apply false
     alias(libs.plugins.androidx.safeargs) apply false
+    alias(libs.plugins.aboutlibraries) apply false
 }
 
 buildscript {

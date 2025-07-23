@@ -18,11 +18,9 @@
 package com.mardous.booming.fragments.player.styles.gradientstyle
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
-import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.ViewCompat
@@ -31,10 +29,8 @@ import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentGradientPlayerPlaybackControlsBinding
-import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.fragments.player.PlayerColorScheme
 import com.mardous.booming.fragments.player.PlayerTintTarget
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
@@ -42,15 +38,14 @@ import com.mardous.booming.fragments.player.iconButtonTintTarget
 import com.mardous.booming.fragments.player.tintTarget
 import com.mardous.booming.model.NowPlayingAction
 import com.mardous.booming.model.Song
-import com.mardous.booming.views.SquigglyProgress
+import com.mardous.booming.views.MusicSlider
 
-class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_gradient_player_playback_controls),
-    SeekBar.OnSeekBarChangeListener {
+class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_gradient_player_playback_controls) {
 
     private var _binding: FragmentGradientPlayerPlaybackControlsBinding? = null
     private val binding get() = _binding!!
 
-    override val seekBar: SeekBar
+    override val musicSlider: MusicSlider?
         get() = binding.progressSlider
 
     override val repeatButton: MaterialButton
@@ -106,9 +101,8 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
     }
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
-        val desiredState = intArrayOf(android.R.attr.state_pressed)
         val oldControlColor = binding.nextButton.iconTint.defaultColor
-        val oldSliderColor = binding.progressSlider.progressTintList!!.getColorForState(desiredState, Color.BLACK)
+        val oldSliderColor = binding.progressSlider.currentColor
         val oldPrimaryTextColor = binding.title.currentTextColor
         val oldSecondaryTextColor = binding.text.currentTextColor
 
@@ -125,8 +119,8 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
             scheme.secondaryControlColor
         )
 
-        return listOf(
-            binding.progressSlider.tintTarget(oldSliderColor, scheme.primaryControlColor),
+        return listOfNotNull(
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.primaryControlColor),
             binding.menu.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
             binding.favorite.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
             binding.playPauseButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
@@ -169,16 +163,6 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
             _binding?.playPauseButton?.setIconResource(R.drawable.ic_play_24dp)
         }
     }
-
-    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-        if (binding.progressSlider == seekBar && fromUser) {
-            playerViewModel.seekTo(progress.toLong())
-        }
-    }
-
-    override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-
-    override fun onStopTrackingTouch(seekBar: SeekBar?) {}
 
     internal fun setFavorite(isFavorite: Boolean, withAnimation: Boolean) {
         if (this.isFavorite != isFavorite) {

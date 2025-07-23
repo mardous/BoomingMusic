@@ -21,7 +21,9 @@ import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.bluetooth.BluetoothA2dp
 import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothProfile
 import android.content.*
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.content.pm.ServiceInfo
@@ -289,13 +291,10 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     }
 
     override fun onLoadChildren(parentId: String, result: Result<List<MediaBrowserCompat.MediaItem>>) {
-        var resultSent = false
+        result.detach()
         serviceScope.launch(IO) {
-            result.sendResult(musicProvider.getChildren(parentId, resources))
-            resultSent = true
-        }
-        if (!resultSent) {
-            result.detach()
+            val children = runCatching { musicProvider.getChildren(parentId, resources) }
+            result.sendResult(children.getOrElse { emptyList() })
         }
     }
 
@@ -397,13 +396,15 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             super.onFastForward()
             val currentPosition = currentSongProgress
             val songDuration = currentSongDuration
-            seek((currentPosition + FAST_FORWARD_THRESHOLD).coerceAtMost(songDuration))
+            seek((currentPosition + (Preferences.seekInterval * 1000))
+                .coerceAtMost(songDuration))
         }
 
         override fun onRewind() {
             super.onRewind()
             val currentPosition = currentSongProgress
-            seek((currentPosition - REWIND_THRESHOLD).coerceAtLeast(0))
+            seek((currentPosition - (Preferences.seekInterval * 1000))
+                .coerceAtLeast(0))
         }
 
         override fun onSkipToPrevious() {
@@ -1357,12 +1358,23 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
 
     private var bluetoothConnectedRegistered = false
     private val bluetoothConnectedIntentFilter = IntentFilter().apply {
+        addAction(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED)
         addAction(BluetoothDevice.ACTION_ACL_CONNECTED)
         addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED)
     }
     private val bluetoothReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             when (intent?.action) {
+                BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED -> {
+                    when (intent.getIntExtra(BluetoothProfile.EXTRA_STATE, -1)) {
+                        BluetoothA2dp.STATE_CONNECTED -> if (Preferences.isResumeOnConnect(true)) {
+                            play()
+                        }
+                        BluetoothA2dp.STATE_DISCONNECTED -> if (Preferences.isPauseOnDisconnect(true)) {
+                            pause()
+                        }
+                    }
+                }
                 BluetoothDevice.ACTION_ACL_CONNECTED ->
                     if (context.isBluetoothA2dpConnected() && Preferences.isResumeOnConnect(true)) { play() }
                 BluetoothDevice.ACTION_ACL_DISCONNECTED ->
@@ -1425,10 +1437,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     }
 
     companion object {
-        private const val FAST_FORWARD_THRESHOLD = 5000
-        private const val REWIND_THRESHOLD = 5000
-        private const val REWIND_INSTEAD_PREVIOUS_MILLIS = REWIND_THRESHOLD
-
+        private const val REWIND_INSTEAD_PREVIOUS_MILLIS = 5000
         private const val MEDIA_SESSION_ACTIONS = (PlaybackStateCompat.ACTION_PLAY
                 or PlaybackStateCompat.ACTION_PAUSE
                 or PlaybackStateCompat.ACTION_PLAY_PAUSE

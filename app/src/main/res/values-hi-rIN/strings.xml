@@ -37,7 +37,6 @@
     <string name="currently_listening_to_x_by_x">मैं %2$s का %1$s सुन रहा हूँ</string>
     <string name="share_to_stories">कहानियों को साझा करें</string>
     <string name="could_not_create_the_story">कहानी नहीं बना सका.</string>
-    <string name="back_action">Back</string>
     <string name="rename_action">नाम बदलने</string>
     <string name="add_action">जोड़ना</string>
     <string name="delete_action">मिटाना</string>
@@ -218,7 +217,6 @@
     <string name="horizontal_albums">क्षैतिज एल्बम</string>
     <string name="ignore_singles">एकल को अनदेखा करें</string>
     <string name="compact_song_view">संक्षिप्त गाना दृश्य</string>
-    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">दृश्य प्रकार</string>
     <string name="view_type_normal">सामान्य</string>
     <string name="view_type_card">कार्ड</string>
@@ -234,7 +232,6 @@
     <string name="sort_order_year">साल</string>
     <string name="sort_order_duration">अवधि</string>
     <string name="sort_order_date_added">जोड़ने की तिथि</string>
-    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">गानों की संख्या</string>
     <string name="sort_order_number_of_albums">एल्बम की संख्या</string>
     <string name="sort_order_last_played_date">अंतिम खेलने की तारीख</string>
@@ -470,7 +467,6 @@
     <string name="downloaded_lyrics">डाउनलोड किया गया</string>
     <string name="lrc_lyrics">एलआरसी फ़ाइल</string>
     <string name="ttml_lyrics">TTML file</string>
-    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">सिंक्रनाइज़ की गई लिरिक्स इंपोर्ट करें</string>
     <string name="action_share_synchronized_lyrics">सिंक्रोनाइज़ की गई लिरिक्स शेयर करें</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[क्या आप <b>%s</b> के लिए समलयित LRC गीत बोलों को इम्पोर्ट करना चाहते हैं?]]></string>
@@ -489,7 +485,6 @@
     <string name="failed_to_update_lyrics">गीत का अपडेट करना असफल रहा।</string>
     <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">सिंक की गई गीतों की पंक्तियाँ एक LRC फ़ाइल से आती हैं। परिवर्तन सीधे उस फ़ाइल में सहेजे जाएंगे।</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">स्लीप टाइमर</string>
     <string name="sleep_timer_cancel_current_timer">वर्तमान टाइमर रद्द करें</string>
@@ -513,8 +508,6 @@
     <string name="fork_on_github">गिटहब पर फोर्क</string>
     <string name="licenses">लायसेंसेज़</string>
     <string name="author">लेखक</string>
-    <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">स्वीकृति</string>
     <string name="translators_title">अनुवादक</string>
     <string name="translators_summary">उन लोगों का धन्यवाद जिन्होंने बूमिंग म्यूजिक को कई भाषाओं में उपलब्ध कराया।</string>
@@ -596,8 +589,6 @@
     <string name="now_playing_screen_title">स्टाइल</string>
     <string name="open_on_play_title">प्ले पर खोलें</string>
     <string name="open_on_play_summary">गाना बजाना शुरू करने के बाद अब खेलने वाले पैनल को स्वचालित रूप से फैलाएं।</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">अतिरिक्त कंट्रोल्स</string>
     <string name="extra_controls_summary">मिनी प्लेयर के लिए अतिरिक्त कंट्रोल जोड़ें।</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -619,7 +610,7 @@
     <string name="animate_controls_title">एनिमेट कंट्रोल्स</string>
     <string name="animate_controls_summary">यह प्लेयर पैनल खोलना पर बजाय जाता है।</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">एल्बम का नाम दिखाएँ</string>
     <string name="display_extra_info_title">अतिरिक्त जानकारी प्रदर्शित करें</string>
     <string name="display_extra_info_summary">गाने के बारे में अतिरिक्त जानकारी दिखाएँ, जैसे बिटरेट, फ़ॉर्मेट, सैंपलिंग दर, आदि।</string>
@@ -653,8 +644,6 @@
     <string name="auto_play_on_skip_summary">यदि प्लेबैक रोक दिया गया है, तो पिछला या अगला बटन दबाने से संगीत शुरू होगा।</string>
     <string name="rewind_with_back_title">"पिछले के साथ फिर से शुरू करें"</string>
     <string name="rewind_with_back_summary">वर्तमान ट्रैक अगर प्रारंभ में है, तो चल रहे ट्रैक को प्रारंभ पर वापस ले जाएं या पिछले ट्रैक पर जाएं।</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">कनेक्ट पर फिर से शुरू करें</string>
     <string name="resume_on_connect_summary">जब हेडफ़ोन कनेक्ट होता है, तो प्लेबैक फिर से शुरू होता है।</string>
     <string name="pause_on_disconnect_title">डिस्कनेक्ट पर रुकें</string>

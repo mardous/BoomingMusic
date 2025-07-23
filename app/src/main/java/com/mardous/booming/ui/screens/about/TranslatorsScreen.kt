@@ -15,13 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.mardous.booming.ui.screens
+package com.mardous.booming.ui.screens.about
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
@@ -29,14 +32,20 @@ import androidx.compose.ui.res.stringResource
 import com.mardous.booming.R
 import com.mardous.booming.model.about.Contribution
 import com.mardous.booming.ui.components.lists.ContributionListItem
+import com.mardous.booming.viewmodels.about.AboutViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TranslatorsScreen(
-    translators: List<Contribution>,
+    viewModel: AboutViewModel,
     onBackButtonClick: () -> Unit,
     onTranslatorClick: (Contribution) -> Unit
 ) {
+    val translators by viewModel.translators.collectAsState()
+    LaunchedEffect(Unit) {
+        viewModel.loadTranslators()
+    }
+
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(
         modifier = Modifier.fillMaxSize()

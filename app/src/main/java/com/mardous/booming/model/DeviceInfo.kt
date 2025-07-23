@@ -18,17 +18,14 @@
 package com.mardous.booming.model
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Build
 import androidx.annotation.IntRange
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.pm.PackageInfoCompat
-import com.mardous.booming.extensions.packageInfo
+import com.mardous.booming.BuildConfig
 import com.mardous.booming.util.Preferences
 import java.util.Locale
 
-class DeviceInfo(context: Context) {
+class DeviceInfo {
     @SuppressLint("NewApi")
     private val abis = Build.SUPPORTED_ABIS
 
@@ -37,7 +34,7 @@ class DeviceInfo(context: Context) {
 
     @SuppressLint("NewApi")
     private val abis64Bits = Build.SUPPORTED_64_BIT_ABIS
-    private val baseTheme: String
+    private val baseTheme: String = Preferences.generalTheme
     private val brand = Build.BRAND
     private val buildID = Build.DISPLAY
     private val buildVersion = Build.VERSION.INCREMENTAL
@@ -45,15 +42,15 @@ class DeviceInfo(context: Context) {
     private val hardware = Build.HARDWARE
     private val manufacturer = Build.MANUFACTURER
     private val model = Build.MODEL
-    private val nowPlayingTheme: String
+    private val nowPlayingTheme: String = Preferences.nowPlayingScreen.name
     private val product = Build.PRODUCT
     private val releaseVersion = Build.VERSION.RELEASE
 
     @IntRange(from = 0)
     private val sdkVersion = Build.VERSION.SDK_INT
-    private var versionCode = 0L
-    private var versionName: String? = null
-    private val selectedLang: String
+    private var versionCode = BuildConfig.VERSION_CODE
+    private var versionName = BuildConfig.VERSION_NAME
+    private val selectedLang: String = AppCompatDelegate.getApplicationLocales().toLanguageTags()
     fun toMarkdown(): String {
         return """
                Device info:
@@ -102,23 +99,5 @@ class DeviceInfo(context: Context) {
             System language: ${Locale.getDefault().toLanguageTag()}
             In-App Language: $selectedLang
             """.trimIndent()
-    }
-
-    init {
-        val packageInfo = try {
-            context.packageManager.packageInfo(context.packageName)
-        } catch (e: PackageManager.NameNotFoundException) {
-            null
-        }
-        if (packageInfo != null) {
-            versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
-            versionName = packageInfo.versionName
-        } else {
-            versionCode = -1
-            versionName = null
-        }
-        baseTheme = Preferences.generalTheme
-        nowPlayingTheme = context.getString(Preferences.nowPlayingScreen.titleRes)
-        selectedLang = AppCompatDelegate.getApplicationLocales().toLanguageTags()
     }
 }

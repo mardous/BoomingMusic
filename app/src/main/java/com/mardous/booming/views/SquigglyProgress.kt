@@ -57,7 +57,7 @@ class SquigglyProgress : Drawable() {
     private val matchedWaveEndpoint = 0f
 
     // Horizontal length of the sine wave
-    var waveLength = 80f
+    var waveLength = 55f
 
     // Height of each peak of the sine wave
     var lineAmplitude = 6f
@@ -66,7 +66,7 @@ class SquigglyProgress : Drawable() {
     var phaseSpeed = 16f
 
     // Progress stroke width, both for wave and solid line
-    var strokeWidth = 16f
+    var strokeWidth = 8f
         set(value) {
             if (field == value) {
                 return
@@ -177,7 +177,7 @@ class SquigglyProgress : Drawable() {
 
         // Build the wave, incrementing by half the wavelength each time
         var currentX = waveStart
-        var waveSign = 2f
+        var waveSign = 1.2f
         var currentAmp = computeAmplitude(currentX, waveSign)
         val dist = waveLength / 2f
         while (currentX < waveEnd) {

@@ -156,11 +156,6 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
         }
     }
 
-    override fun onToggleFavorite(song: Song, isFavorite: Boolean) {
-        super.onToggleFavorite(song, isFavorite)
-        onIsFavoriteChanged(isFavorite, true)
-    }
-
     override fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
         controlsFragment.setFavorite(isFavorite, withAnimation)
     }

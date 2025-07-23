@@ -265,15 +265,13 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         animate: Boolean = false,
         isBottomNavVisible: Boolean = navigationView.isVisible && navigationView is BottomNavigationView
     ) {
-        val gesturesInsets = windowInsets.getBottomGesturesInsets()
-        val navigationBarInsets = windowInsets.getBottomInsets()
         val miniPlayerHeight = dip(R.dimen.mini_player_height)
         val bottomNavHeight = dip(R.dimen.bottom_nav_height)
 
-        val heightOfBar = gesturesInsets + navigationBarInsets + miniPlayerHeight
-        val heightOfBarWithTabs = navigationBarInsets + miniPlayerHeight + bottomNavHeight
+        val heightOfBar =  windowInsets.getBottomInsets() + miniPlayerHeight
+        val heightOfBarWithTabs = heightOfBar + bottomNavHeight
         if (hide) {
-            bottomSheetBehavior.peekHeight = (-navigationBarInsets).coerceAtLeast(0)
+            bottomSheetBehavior.peekHeight = (-windowInsets.getBottomInsets()).coerceAtLeast(0)
             panelState = STATE_COLLAPSED
             libraryViewModel.setLibraryMargins(
                 context = this,
@@ -306,8 +304,8 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                     }
                     libraryViewModel.setLibraryMargins(
                         context = this,
-                        fabBottomMargin = miniPlayerHeight + gesturesInsets,
-                        miniPlayerHeight = miniPlayerHeight + gesturesInsets
+                        fabBottomMargin = miniPlayerHeight,
+                        miniPlayerHeight = miniPlayerHeight
                     )
                 }
             }

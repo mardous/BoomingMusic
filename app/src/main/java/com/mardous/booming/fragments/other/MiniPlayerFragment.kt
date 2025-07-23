@@ -145,16 +145,11 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
     private fun updateCurrentSong() {
         val song = playerViewModel.currentSong
 
-        val builder = SpannableStringBuilder()
-        val title = SpannableString(song.title).apply {
-            setSpan(primaryColorSpan, 0, length, 0)
-        }
-        val text = SpannableString(song.displayArtistName()).apply {
-            setSpan(secondaryColorSpan, 0, length, 0)
-        }
+        binding.songTitle.isSelected = true
+        binding.songArtist.isSelected = true
 
-        binding.songInfo.isSelected = true
-        binding.songInfo.text = builder.append(title).append(DEFAULT_INFO_DELIMITER).append(text)
+        binding.songTitle.text = song.title
+        binding.songArtist.text = song.displayArtistName()
 
         target = Glide.with(this@MiniPlayerFragment)
             .asBitmap()

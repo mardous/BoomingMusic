@@ -190,7 +190,9 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
             sortOrderSubmenu.clear()
             sortOrderSubmenu.add(0, R.id.action_sort_order_az, 0, R.string.sort_order_az)
             sortOrderSubmenu.add(0, R.id.action_sort_order_number_of_songs, 1, R.string.sort_order_number_of_songs)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_descending, 2, R.string.sort_order_descending)
+            sortOrderSubmenu.add(0, R.id.action_sort_order_date_added, 2, R.string.sort_order_date_added)
+            sortOrderSubmenu.add(0, R.id.action_sort_order_date_modified, 3, R.string.sort_order_date_modified)
+            sortOrderSubmenu.add(1, R.id.action_sort_order_descending, 4, R.string.sort_order_descending)
             sortOrderSubmenu.setGroupCheckable(0, true, true)
             sortOrderSubmenu.prepareSortOrder(SortOrder.folderSortOrder)
         }

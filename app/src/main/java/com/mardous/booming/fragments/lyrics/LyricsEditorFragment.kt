@@ -129,10 +129,12 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
             binding.plainInput.doOnTextChanged { text, _, _, _ ->
                 plainLyrics = it.plainLyrics.edit(text?.toString())
             }
+            binding.plainInput.isEnabled = it.plainLyrics.isEditable
             binding.syncedInput.setText(it.syncedLyrics.content?.rawText)
             binding.syncedInput.doOnTextChanged { text, _, _, _ ->
                 syncedLyrics = it.syncedLyrics.edit(text?.toString())
             }
+            binding.syncedInput.isEnabled = it.syncedLyrics.isEditable
         }
     }
 

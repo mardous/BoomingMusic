@@ -75,11 +75,14 @@ fun LyricsView(
             val isActive = index == state.currentLineIndex
             if (line.isWordByWord) {
                 val activeWordIndex = if (isActive) state.currentWordIndex else -1
+                val activeBackgroundIndex = if (isActive) state.currentBackgroundIndex else -1
                 LyricsLineWordByWord(
-                    words = line.words,
+                    words = line.main,
+                    backgrounds = line.background,
                     isActive = isActive,
                     isOppositeTurn = line.isOppositeTurn,
                     activeWordIndex = activeWordIndex,
+                    activeBackgroundIndex = activeBackgroundIndex,
                     fontSize = fontSize,
                     fontWeight = fontWeight,
                     lineHeight = lineHeight,
@@ -183,9 +186,11 @@ private fun LyricsViewLine(
 @Composable
 fun LyricsLineWordByWord(
     words: List<Lyrics.Word>,
+    backgrounds: List<Lyrics.Word>,
     isActive: Boolean,
     isOppositeTurn: Boolean,
     activeWordIndex: Int,
+    activeBackgroundIndex: Int,
     fontSize: TextUnit,
     fontWeight: FontWeight,
     lineHeight: TextUnit,
@@ -197,9 +202,13 @@ fun LyricsLineWordByWord(
     activeAlpha: Float = 1f,
     inactiveAlpha: Float = 0.35f,
 ) {
-    var scale by remember { mutableFloatStateOf(if (isActive) activeScale else inactiveScale) }
+    val hasBackground = remember { backgrounds.isNotEmpty() }
+    val isBackgroundActive = isActive && activeBackgroundIndex > -1
 
-    LaunchedEffect(isActive) {
+    var scale by remember { mutableFloatStateOf(if (isActive) activeScale else inactiveScale) }
+    var bgScale by remember { mutableFloatStateOf(if (isBackgroundActive) 1f else 0f) }
+
+    LaunchedEffect(isActive, isBackgroundActive) {
         launch {
             animate(
                 initialValue = scale,
@@ -212,6 +221,19 @@ fun LyricsLineWordByWord(
                 scale = value
             }
         }
+
+        launch {
+            animate(
+                initialValue = bgScale,
+                targetValue = if (isBackgroundActive) activeScale else inactiveScale,
+                animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioLowBouncy,
+                    stiffness = Spring.StiffnessLow,
+                )
+            ) { value, _ ->
+                bgScale = value
+            }
+        }
     }
 
     LyricsLineBox(
@@ -220,36 +242,109 @@ fun LyricsLineWordByWord(
         contentColor = contentColor,
         onClick = onClick
     ) { pivotFractionX: Float, pivotFractionY: Float ->
-        val annotatedText = remember(words, activeWordIndex, isActive) {
-            buildAnnotatedString {
-                words.forEachIndexed { i, word ->
-                    val alpha = if (isActive && i <= activeWordIndex) activeAlpha else inactiveAlpha
-                    withStyle(SpanStyle(color = contentColor.copy(alpha = alpha))) {
-                        if (i == words.lastIndex) {
-                            append(word.content.trimEnd())
-                        } else {
-                            append(word.content)
-                        }
+        if (!hasBackground) {
+            WordByWordText(
+                words = words,
+                isOppositeTurn = isOppositeTurn,
+                isActive = isActive,
+                activeIndex = activeWordIndex,
+                fontSize = fontSize,
+                fontWeight = fontWeight,
+                lineHeight = lineHeight,
+                activeAlpha = activeAlpha,
+                inactiveAlpha = inactiveAlpha,
+                contentColor = contentColor,
+                pivotFractionX = pivotFractionX,
+                pivotFractionY = pivotFractionY,
+                scale = scale
+            )
+        } else {
+            Column(
+                modifier = Modifier.wrapContentSize(),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                WordByWordText(
+                    words = words,
+                    isOppositeTurn = isOppositeTurn,
+                    isActive = isActive,
+                    activeIndex = activeWordIndex,
+                    fontSize = fontSize,
+                    fontWeight = fontWeight,
+                    lineHeight = lineHeight,
+                    activeAlpha = activeAlpha,
+                    inactiveAlpha = inactiveAlpha,
+                    contentColor = contentColor,
+                    pivotFractionX = pivotFractionX,
+                    pivotFractionY = pivotFractionY,
+                    scale = scale
+                )
+
+                WordByWordText(
+                    words = backgrounds,
+                    isOppositeTurn = isOppositeTurn,
+                    isActive = isActive,
+                    activeIndex = activeBackgroundIndex,
+                    fontSize = fontSize / 1.65,
+                    fontWeight = fontWeight,
+                    lineHeight = lineHeight,
+                    activeAlpha = activeAlpha,
+                    inactiveAlpha = inactiveAlpha,
+                    contentColor = contentColor,
+                    pivotFractionX = pivotFractionX,
+                    pivotFractionY = pivotFractionY,
+                    scale = bgScale
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun WordByWordText(
+    words: List<Lyrics.Word>,
+    isOppositeTurn: Boolean,
+    isActive: Boolean,
+    activeIndex: Int,
+    fontSize: TextUnit,
+    fontWeight: FontWeight,
+    lineHeight: TextUnit,
+    activeAlpha: Float,
+    inactiveAlpha: Float,
+    contentColor: Color,
+    pivotFractionX: Float,
+    pivotFractionY: Float,
+    scale: Float,
+    modifier: Modifier = Modifier
+) {
+    val annotatedText = remember(words, activeIndex, isActive) {
+        buildAnnotatedString {
+            words.forEachIndexed { i, word ->
+                val alpha = if (isActive && i <= activeIndex) activeAlpha else inactiveAlpha
+                withStyle(SpanStyle(color = contentColor.copy(alpha = alpha))) {
+                    if (i == words.lastIndex) {
+                        append(word.content.trimEnd())
+                    } else {
+                        append(word.content)
                     }
                 }
             }
         }
-
-        Text(
-            text = annotatedText,
-            modifier = Modifier
-                .fillMaxWidth()
-                .graphicsLayer {
-                    transformOrigin = TransformOrigin(pivotFractionX, pivotFractionY)
-                    scaleX = scale
-                    scaleY = scale
-                },
-            textAlign = if (isOppositeTurn) TextAlign.End else TextAlign.Start,
-            fontSize = fontSize,
-            fontWeight = fontWeight,
-            lineHeight = lineHeight,
-        )
     }
+
+    Text(
+        text = annotatedText,
+        modifier = modifier
+            .fillMaxWidth()
+            .graphicsLayer {
+                transformOrigin = TransformOrigin(pivotFractionX, pivotFractionY)
+                scaleX = scale
+                scaleY = scale
+            },
+        textAlign = if (isOppositeTurn) TextAlign.End else TextAlign.Start,
+        fontSize = fontSize,
+        fontWeight = fontWeight,
+        lineHeight = lineHeight,
+    )
 }
 
 @Composable

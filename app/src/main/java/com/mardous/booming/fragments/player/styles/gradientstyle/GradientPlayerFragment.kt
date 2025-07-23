@@ -34,7 +34,6 @@ import com.mardous.booming.fragments.player.*
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
 import com.mardous.booming.fragments.player.base.AbsPlayerFragment
 import com.mardous.booming.model.NowPlayingAction
-import com.mardous.booming.model.Song
 import com.mardous.booming.model.theme.NowPlayingScreen
 import com.mardous.booming.util.Preferences
 
@@ -76,11 +75,6 @@ class GradientPlayerFragment : AbsPlayerFragment(R.layout.fragment_gradient_play
             binding.showLyricsButton -> onQuickActionEvent(NowPlayingAction.Lyrics)
             binding.volumeAction -> onQuickActionEvent(NowPlayingAction.SoundSettings)
         }
-    }
-
-    override fun onToggleFavorite(song: Song, isFavorite: Boolean) {
-        super.onToggleFavorite(song, isFavorite)
-        onIsFavoriteChanged(isFavorite, true)
     }
 
     override fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {

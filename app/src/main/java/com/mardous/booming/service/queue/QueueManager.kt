@@ -67,6 +67,9 @@ class QueueManager {
     val isLastTrack get() = position == playingQueue.lastIndex
     val isStopPosition get() = stopPosition == position
 
+    val hasQueues: Boolean
+        get() = playingQueue.isNotEmpty() && _originalPlayingQueue.isNotEmpty()
+
     private val lastUpcomingPosition: Int
         get() = synchronized(lock) {
             _playingQueue.indexOfLast { it.isUpcoming }
@@ -337,7 +340,7 @@ class QueueManager {
             } else {
                 originalPlayingQueue.remove(playingQueue.removeAt(position))
             }
-            rePosition(position)
+            rePosition(position, playingQueue)
         }
     }
 
@@ -368,8 +371,7 @@ class QueueManager {
     private fun setPositionTo(
         newPosition: Int,
         rePosition: Boolean = false,
-        realign: Boolean = false,
-        notify: Boolean = true
+        realign: Boolean = false
     ) {
         val oldPosition = this.position
         if (realign) {
@@ -394,7 +396,7 @@ class QueueManager {
         if (stopPosition < position) {
             stopPosition = NO_POSITION
         }
-        doDispatchChange(dispatch = notify) {
+        doDispatchChange {
             it.queuePositionChanged(position, rePosition)
             it.songChanged(currentSong, nextSong)
         }
@@ -408,13 +410,13 @@ class QueueManager {
      *
      * @param deletedPosition the index of the item that was removed from the queue
      */
-    private fun rePosition(deletedPosition: Int) {
+    private fun rePosition(deletedPosition: Int, playingQueue: List<Song>) {
         val currentPosition = this.position
 
         // Case 1: A song was removed before the current one.
         // Since the list shifts left, we need to decrement the position.
         if (deletedPosition < currentPosition) {
-            setPositionTo(currentPosition - 1, notify = false)
+            setPositionTo(currentPosition - 1)
         }
 
         // Case 2: The currently playing song was removed.
@@ -569,7 +571,7 @@ class QueueManager {
         val deletePosition = indexOf(song)
         if (deletePosition != -1) {
             removeAt(deletePosition)
-            rePosition(deletePosition)
+            rePosition(deletePosition, this)
         }
         return deletePosition
     }

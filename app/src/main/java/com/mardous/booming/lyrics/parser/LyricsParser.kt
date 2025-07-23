@@ -1,16 +1,14 @@
 package com.mardous.booming.lyrics.parser
 
-import android.text.format.DateUtils
 import com.mardous.booming.lyrics.Lyrics
-import java.io.File
+import com.mardous.booming.lyrics.LyricsFile
 import java.io.IOException
 import java.io.Reader
-import java.util.Locale
 
 interface LyricsParser {
 
-    fun parse(file: File): Lyrics? = try {
-        parse(reader = file.reader())
+    fun parse(file: LyricsFile): Lyrics? = try {
+        parse(reader = file.file.reader())
     } catch (e: IOException) {
         e.printStackTrace()
         null
@@ -21,20 +19,33 @@ interface LyricsParser {
 
     fun parse(reader: Reader): Lyrics?
 
-    fun handles(file: File): Boolean
+    fun handles(file: LyricsFile): Boolean
 
-    fun isValid(input: String): Boolean =
-        if (input.isNotBlank()) isValid(input.reader()) else false
+    fun handles(input: String): Boolean =
+        if (input.isNotBlank()) handles(input.reader()) else false
 
-    fun isValid(reader: Reader): Boolean
+    fun handles(reader: Reader): Boolean
+}
 
-    companion object {
-        fun formatTime(milli: Long): String {
-            val m = (milli / DateUtils.MINUTE_IN_MILLIS).toInt()
-            val s = ((milli / DateUtils.SECOND_IN_MILLIS) % 60).toInt()
-            val mm = String.format(Locale.getDefault(), "%02d", m)
-            val ss = String.format(Locale.getDefault(), "%02d", s)
-            return "$mm:$ss"
+fun MutableList<Lyrics.Line>.adjustLines(length: Long) {
+    if (isNotEmpty()) {
+        sortBy { it.startAt }
+
+        // Update durations
+        for (i in 0 until lastIndex) {
+            this[i] = this[i].copy(
+                durationMillis = this[i + 1].startAt - this[i].startAt,
+            )
+        }
+        if (length != -1L) {
+            val last = this.last()
+            this[lastIndex] = last.copy(
+                durationMillis = (length - last.startAt).takeIf { it > 0L } ?: Long.MAX_VALUE,
+            )
+        } else {
+            this[lastIndex] = this.last().copy(
+                durationMillis = Long.MAX_VALUE,
+            )
         }
     }
 }

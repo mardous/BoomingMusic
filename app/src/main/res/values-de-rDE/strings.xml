@@ -37,7 +37,6 @@
     <string name="currently_listening_to_x_by_x">Ich höre %1$s von %2$s</string>
     <string name="share_to_stories">In Stories teilen</string>
     <string name="could_not_create_the_story">Story konnte nicht erstellt werden.</string>
-    <string name="back_action">Back</string>
     <string name="rename_action">Umbenennen</string>
     <string name="add_action">Hinzufügen</string>
     <string name="delete_action">Löschen</string>
@@ -218,7 +217,6 @@
     <string name="horizontal_albums">Horizontale Alben</string>
     <string name="ignore_singles">Singles ignorieren</string>
     <string name="compact_song_view">Kompakte Titelansicht</string>
-    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Anzeigetyp</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Karte</string>
@@ -234,7 +232,6 @@
     <string name="sort_order_year">Jahr</string>
     <string name="sort_order_duration">Dauer</string>
     <string name="sort_order_date_added">Hinzufügungsdatum</string>
-    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Titelanzahl</string>
     <string name="sort_order_number_of_albums">Albenanzahl</string>
     <string name="sort_order_last_played_date">Letztes Wiedergabedatum</string>
@@ -472,7 +469,6 @@
     <string name="downloaded_lyrics">Heruntergeladen</string>
     <string name="lrc_lyrics">LRC-Datei</string>
     <string name="ttml_lyrics">TTML-Datei</string>
-    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Synchronisierte Liedtexte importieren</string>
     <string name="action_share_synchronized_lyrics">Synchronisierte Liedtexte teilen</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Möchtest Du synchronisierte LRC-Texte für <b>%s</b> importieren?]]></string>
@@ -491,7 +487,6 @@
     <string name="failed_to_update_lyrics">Liedtexte konnten nicht aktualisiert werden.</string>
     <string name="lyrics_source_ttml_file">Die synchronisierten Liedtexte stammen aus einer TTML-Datei. Das Bearbeiten von Inhalten aus TTML-Dateien wird noch nicht unterstützt.</string>
     <string name="lyrics_source_lrc_file">Synchronisierte Liedtexte stammen aus einer LRC-Datei. Änderungen werden direkt in dieser Datei gespeichert.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleeptimer</string>
     <string name="sleep_timer_cancel_current_timer">Aktuellen Timer abbrechen</string>
@@ -515,8 +510,6 @@
     <string name="fork_on_github">Auf GitHub forken</string>
     <string name="licenses">Lizenzen</string>
     <string name="author">Autor</string>
-    <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">Danksagungen</string>
     <string name="translators_title">Übersetzer*innen</string>
     <string name="translators_summary">Danke an alle, die Booming Music in vielen Sprachen verfügbar machen.</string>
@@ -598,8 +591,6 @@
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Bei Wiedergabe öffnen</string>
     <string name="open_on_play_summary">Die Wiedergabe-Ansicht nach Wiedergabe-Start automatisch erweitern.</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Zusätzliche Steuerelemente</string>
     <string name="extra_controls_summary">Zusätzliche Steuerelemente für Mini-Player hinzufügen</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -621,7 +612,7 @@
     <string name="animate_controls_title">Steuerelemente animieren</string>
     <string name="animate_controls_summary">Startet beim Öffnen der Wiedergabe-Ansicht.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">Album-Titel anzeigen</string>
     <string name="display_extra_info_title">Zusätzliche Informationen anzeigen</string>
     <string name="display_extra_info_summary">Zeigt zusätzliche Titel-Informationen an, wie Bitrate, Format, Abtastrate usw.</string>
@@ -655,8 +646,6 @@
     <string name="auto_play_on_skip_summary">Wenn pausiert, startet das Tippen auf die jeweilige Schaltfläche die Wiedergabe des vorherigen oder nächsten Titels.</string>
     <string name="rewind_with_back_title">"Mit \"Vorheriger\" zurückspulen"</string>
     <string name="rewind_with_back_summary">Spule den wiedergegebenen Titel zurück oder springe zum vorherigen, wenn der Anfang erreicht ist.</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Bei Verbindung fortsetzen</string>
     <string name="resume_on_connect_summary">Wiedergabe fortsetzen, wenn Kopfhörer verbunden werden.</string>
     <string name="pause_on_disconnect_title">Bei Trennung pausieren</string>

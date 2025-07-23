@@ -32,20 +32,23 @@
                 android:id="@+id/group_sort_order"
                 android:checkableBehavior="single">
                 <item
-                    android:id="@+id/action_sort_order_az"
+                    android:id="@id/action_sort_order_az"
                     android:title="@string/sort_order_az"/>
                 <item
-                    android:id="@+id/action_sort_order_artist"
+                    android:id="@id/action_sort_order_artist"
                     android:title="@string/sort_order_artist"/>
                 <item
-                    android:id="@+id/action_sort_order_album"
+                    android:id="@id/action_sort_order_album"
                     android:title="@string/sort_order_album"/>
                 <item
-                    android:id="@+id/action_sort_order_duration"
+                    android:id="@id/action_sort_order_duration"
                     android:title="@string/sort_order_duration"/>
                 <item
-                    android:id="@+id/action_sort_order_date_added"
+                    android:id="@id/action_sort_order_date_added"
                     android:title="@string/sort_order_date_added"/>
+                <item
+                    android:id="@id/action_sort_order_date_modified"
+                    android:title="@string/sort_order_date_modified"/>
             </group>
             <item
                 android:id="@+id/action_sort_order_descending"

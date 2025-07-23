@@ -35,9 +35,8 @@
         app:layout_constraintTop_toTopOf="@id/progressSlider"
         tools:text="00:22"/>
 
-    <SeekBar
+    <com.mardous.booming.views.MusicSlider
         android:id="@+id/progressSlider"
-        style="@style/SquigglySlider"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

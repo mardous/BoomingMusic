@@ -30,7 +30,6 @@ import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.plurals
 import com.mardous.booming.util.FileUtil
 import java.io.File
-import java.util.Locale
 
 fun createAlbumArtThumbFile(): File =
     File(
@@ -74,17 +73,26 @@ fun Int.timesStr(context: Context): String {
 }
 
 fun Long.albumCoverUri(): Uri =
-    ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"), this)
+    ContentUris.withAppendedId("content://media/external/audio/albumart".toUri(), this)
 
-fun Long.durationStr(): String {
-    var minutes: Long = this / 1000 / 60
-    val seconds: Long = this / 1000 % 60
-    return if (minutes < 60) {
-        String.format(Locale.getDefault(), "%01d:%02d", minutes, seconds)
+fun Long.durationStr(readableFormat: Boolean = false): String {
+    val totalSeconds = this / 1000
+    val hours = totalSeconds / 3600
+    val minutes = (totalSeconds % 3600) / 60
+    val seconds = totalSeconds % 60
+
+    return if (hours > 0) {
+        if (readableFormat) {
+            "%d h %d m %d s".format(hours, minutes, seconds)
+        } else {
+            "%d:%02d:%02d".format(hours, minutes, seconds)
+        }
     } else {
-        val hours = minutes / 60
-        minutes %= 60
-        String.format(Locale.getDefault(), "%d:%02d:%02d", hours, minutes, seconds)
+        if (readableFormat) {
+            "%d m %d s".format(minutes, seconds)
+        } else {
+            "%d:%02d".format(minutes, seconds)
+        }
     }
 }
 

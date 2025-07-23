@@ -163,6 +163,9 @@ object Preferences : KoinComponent {
     val adaptiveControls: Boolean
         get() = preferences.getBoolean(ADAPTIVE_CONTROLS, false)
 
+    val squigglySeekBar: Boolean
+        get() = preferences.getBoolean(SQUIGGLY_SEEK_BAR, false)
+
     val swipeDownToDismiss: Boolean
         get() = preferences.getBoolean(SWIPE_TO_DISMISS, false)
 
@@ -269,11 +272,8 @@ object Preferences : KoinComponent {
     val rewindWithBack: Boolean
         get() = preferences.getBoolean(REWIND_WITH_BACK, true)
 
-    val fastForward: Boolean
-        get() = preferences.getBoolean(FAST_FORWARD, true)
-
-    val fastBackward: Boolean
-        get() = preferences.getBoolean(FAST_BACKWARD, true)
+    val seekInterval: Int
+        get() = preferences.getInt(SEEK_INTERVAL, 10)
 
     val replayGainSourceMode: Byte
         get() = when (preferences.getString(REPLAYGAIN_SOURCE_MODE, "")) {
@@ -394,6 +394,10 @@ object Preferences : KoinComponent {
     var ignoreSingles: Boolean
         get() = preferences.getBoolean(IGNORE_SINGLES, false)
         set(value) = preferences.edit { putBoolean(IGNORE_SINGLES, value) }
+
+    var showAlbumDuration: Boolean
+        get() = preferences.getBoolean(SHOW_TOTAL_DURATION, false)
+        set(value) = preferences.edit { putBoolean(SHOW_TOTAL_DURATION, value) }
 
     val whitelistEnabled: Boolean
         get() = preferences.getBoolean(WHITELIST_ENABLED, true)
@@ -633,6 +637,7 @@ const val NOW_PLAYING_SCREEN = "now_playing_screen"
 const val OPEN_ON_PLAY = "open_on_play"
 const val ADD_EXTRA_CONTROLS = "add_extra_controls"
 const val ADAPTIVE_CONTROLS = "adaptive_controls"
+const val SQUIGGLY_SEEK_BAR = "squiggly_seek_bar"
 const val SWIPE_TO_DISMISS = "swipe_to_dismiss"
 const val LYRICS_ON_COVER = "lyrics_on_cover"
 const val LEFT_RIGHT_SWIPING = "left_right_swiping"
@@ -657,8 +662,7 @@ const val NO_CROSSFADE_ON_ALBUMS = "no_crossfade_on_albums"
 const val AUDIO_FADE_DURATION = "audio_fade_duration"
 const val AUTO_PLAY_ON_SKIP = "auto_play_on_skip"
 const val REWIND_WITH_BACK = "rewind_with_back"
-const val FAST_FORWARD = "fast_forward"
-const val FAST_BACKWARD = "fast_backward"
+const val SEEK_INTERVAL = "seek_interval"
 const val REPLAYGAIN_SOURCE_MODE = "replaygain_source_mode"
 const val REPLAYGAIN_PREAMP = "replaygain_preamp"
 const val REPLAYGAIN_PREAMP_WITH_TAG = "replaygain_preamp_with_tag"
@@ -687,6 +691,7 @@ const val ENABLE_HISTORY = "enable_history_playlist"
 const val HISTORY_CUTOFF = "history_interval"
 const val LAST_ADDED_CUTOFF = "last_added_interval"
 const val IGNORE_SINGLES = "ignore_singles"
+const val SHOW_TOTAL_DURATION = "show_total_duration"
 const val WHITELIST_ENABLED = "whitelist_enabled"
 const val BLACKLIST_ENABLED = "blacklist_enabled"
 const val ARTIST_MINIMUM_SONGS = "artist_minimum_songs"

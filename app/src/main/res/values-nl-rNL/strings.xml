@@ -37,7 +37,6 @@
     <string name="currently_listening_to_x_by_x">Ik luister naar %1$s door %2$s</string>
     <string name="share_to_stories">Deel met verhalen</string>
     <string name="could_not_create_the_story">Kon het verhaal niet aanmaken.</string>
-    <string name="back_action">Back</string>
     <string name="rename_action">Hernoem</string>
     <string name="add_action">Toevoegen</string>
     <string name="delete_action">Verwijderen</string>
@@ -218,7 +217,6 @@
     <string name="horizontal_albums">Horizontale albums</string>
     <string name="ignore_singles">Negeer singles</string>
     <string name="compact_song_view">Compact song view</string>
-    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Bekijk type</string>
     <string name="view_type_normal">Normaal</string>
     <string name="view_type_card">Creditcard</string>
@@ -234,7 +232,6 @@
     <string name="sort_order_year">Jaar</string>
     <string name="sort_order_duration">Duur</string>
     <string name="sort_order_date_added">Datum toegevoegd</string>
-    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Nummers aantal</string>
     <string name="sort_order_number_of_albums">Aantal albums</string>
     <string name="sort_order_last_played_date">Laatst afgespeelde datum</string>
@@ -472,7 +469,6 @@
     <string name="downloaded_lyrics">Gedownload</string>
     <string name="lrc_lyrics">LRC bestand</string>
     <string name="ttml_lyrics">TTML file</string>
-    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importeer gesynchroniseerde songteksten</string>
     <string name="action_share_synchronized_lyrics">Deel gesynchroniseerde songteksten</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Wil je gesynchroniseerde LRC songteksten importeren voor <b>%s</b>?]]></string>
@@ -491,7 +487,6 @@
     <string name="failed_to_update_lyrics">Songtekst bijwerken mislukt.</string>
     <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Gesynchroniseerde songteksten komen uit een LRC-bestand. Wijzigingen zullen direct in dat bestand worden opgeslagen.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Slaaptimer</string>
     <string name="sleep_timer_cancel_current_timer">Annuleer huidige timer</string>
@@ -515,8 +510,6 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Licenties</string>
     <string name="author">Auteur</string>
-    <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
@@ -598,8 +591,6 @@
     <string name="now_playing_screen_title">Stijl</string>
     <string name="open_on_play_title">Openen bij afspelen</string>
     <string name="open_on_play_summary">Uitvouwen van het Nu Afspelen paneel automatisch nadat u een nummer heeft afgespeeld.</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Extra controles</string>
     <string name="extra_controls_summary">Extra besturingselementen voor minispeler toevoegen</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -621,7 +612,7 @@
     <string name="animate_controls_title">Animeer bediening</string>
     <string name="animate_controls_summary">Wordt gespeeld bij het openen van het spelerspaneel.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
     <string name="display_album_name_title">Toon albumnaam</string>
     <string name="display_extra_info_title">Extra info weergeven</string>
     <string name="display_extra_info_summary">Extra info over het nummer weergeven, zoals bitrate, formaat, sampling rate, enz.</string>
@@ -655,8 +646,6 @@
     <string name="auto_play_on_skip_summary">Als het afspelen wordt gepauzeerd, zal door op Vorige of Volgende knoppen te tikken de muziek starten.</string>
     <string name="rewind_with_back_title">"Terugspoelen met 'Vorige'"</string>
     <string name="rewind_with_back_summary">Terugspoelen het afgespeelde nummer naar het begin of ga naar het vorige nummer als het huidige in het begin is.</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Hervatten bij verbinden</string>
     <string name="resume_on_connect_summary">Hervat het afspelen als koptelefoon is aangesloten.</string>
     <string name="pause_on_disconnect_title">Pauzeer bij verbreken verbinding</string>

@@ -24,18 +24,15 @@ enum class LyricsSource(
         applicableButtonId = R.id.externalButton,
         titleRes = R.string.downloaded_lyrics
     ),
-    Lrc(
+    File(
         applicableButtonId = R.id.externalButton,
-        titleRes = R.string.lrc_lyrics,
-        descriptionRes = R.string.lyrics_source_lrc_file,
-        helpShownKey = "lyrics_help_lrc"
-    ),
-    Ttml(
-        applicableButtonId = R.id.externalButton,
-        titleRes = R.string.ttml_lyrics,
-        descriptionRes = R.string.lyrics_source_ttml_file,
-        helpShownKey = "lyrics_help_ttml"
+        titleRes = R.string.external_file_lyrics,
+        descriptionRes = R.string.lyrics_source_external_file,
+        helpShownKey = "lyrics_help_external_file"
     );
+
+    val isEditable: Boolean
+        get() = this != File
 
     val isExternalSource: Boolean
         get() = this != Embedded

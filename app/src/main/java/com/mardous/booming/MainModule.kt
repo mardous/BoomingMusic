@@ -31,8 +31,6 @@ import com.mardous.booming.http.lastfm.LastFmService
 import com.mardous.booming.http.lyrics.LyricsDownloadService
 import com.mardous.booming.http.provideDefaultCache
 import com.mardous.booming.http.provideOkHttp
-import com.mardous.booming.lyrics.parser.LrcLyricsParser
-import com.mardous.booming.lyrics.parser.LyricsParser
 import com.mardous.booming.model.Genre
 import com.mardous.booming.providers.MediaStoreWriter
 import com.mardous.booming.repository.*
@@ -40,6 +38,7 @@ import com.mardous.booming.service.equalizer.EqualizerManager
 import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.service.queue.QueueManager
 import com.mardous.booming.taglib.EditTarget
+import com.mardous.booming.viewmodels.about.AboutViewModel
 import com.mardous.booming.viewmodels.albumdetail.AlbumDetailViewModel
 import com.mardous.booming.viewmodels.artistdetail.ArtistDetailViewModel
 import com.mardous.booming.viewmodels.equalizer.EqualizerViewModel
@@ -122,9 +121,6 @@ private val mainModule = module {
     single {
         AudioOutputObserver(context = androidContext(), playbackManager = get())
     }
-    single {
-        LrcLyricsParser()
-    } bind LyricsParser::class
 }
 
 private val roomModule = module {
@@ -227,7 +223,6 @@ private val dataModule = module {
             context = androidContext(),
             contentResolver = get(),
             lyricsDownloadService = get(),
-            lyricsParser = get(),
             lyricsDao = get()
         )
     } bind LyricsRepository::class
@@ -301,6 +296,10 @@ private val viewModule = module {
 
     viewModel {
         UpdateViewModel(updateService = get())
+    }
+
+    viewModel {
+        AboutViewModel(repository = get())
     }
 }
 

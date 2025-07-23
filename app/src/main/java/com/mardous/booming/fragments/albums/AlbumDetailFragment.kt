@@ -43,6 +43,7 @@ import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.glide.albumOptions
 import com.mardous.booming.extensions.glide.getAlbumGlideModel
 import com.mardous.booming.extensions.media.displayArtistName
+import com.mardous.booming.extensions.media.durationStr
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.navigation.*
 import com.mardous.booming.extensions.resources.*
@@ -212,16 +213,20 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
             return
         }
 
-        binding.albumTitle.text = album.name
-        val songText = plurals(R.plurals.songs, album.songCount)
-        binding.songTitle.text = (if (album.songCount > 1)
-            buildInfoString(songText, album.songCount.toString()) else songText)
         val artistName = if (albumArtistExists) album.albumArtistName else album.artistName
-        if (album.year <= 0) {
-            binding.albumText.text = artistName!!.displayArtistName()
-        } else {
-            binding.albumText.text = buildInfoString(artistName!!.displayArtistName(), album.year.toString())
-        }
+        binding.albumText.text = buildInfoString(
+            artistName?.displayArtistName(),
+            album.year.takeIf { it > 0 }?.toString(),
+            album.duration.durationStr(readableFormat = true).takeIf { Preferences.showAlbumDuration }
+        )
+        binding.albumTitle.text = album.name
+
+        val songText = plurals(R.plurals.songs, album.songCount)
+        binding.songTitle.text = buildInfoString(
+            songText,
+            album.songCount.takeIf { it > 1 }?.toString()
+        )
+
         loadAlbumCover(album)
         simpleSongAdapter.dataSet = album.songs
         loadSimilarContent(album)
@@ -334,6 +339,8 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
         }
         menu.findItem(R.id.action_toggle_compact_song_view)
             ?.isChecked = Preferences.compactAlbumSongView
+        menu.findItem(R.id.action_show_album_duration)
+            ?.isChecked = Preferences.showAlbumDuration
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -358,6 +365,14 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
                 Preferences.compactAlbumSongView = isChecked
                 menuItem.isChecked = isChecked
                 createSongAdapter()
+                true
+            }
+
+            R.id.action_show_album_duration -> {
+                val isChecked = !menuItem.isChecked
+                Preferences.showAlbumDuration = isChecked
+                menuItem.isChecked = isChecked
+                detailViewModel.loadAlbumDetail()
                 true
             }
 
