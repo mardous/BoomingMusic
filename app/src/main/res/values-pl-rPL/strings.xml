@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Słucham %1$s przez %2$s</string>
     <string name="share_to_stories">Udostępnij w relacji</string>
     <string name="could_not_create_the_story">Nie można utworzyć relacji.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Zmień nazwę</string>
     <string name="add_action">Dodaj</string>
     <string name="delete_action">Usuń</string>
@@ -217,6 +218,7 @@
     <string name="horizontal_albums">Albumy poziomo</string>
     <string name="ignore_singles">Ignoruj single</string>
     <string name="compact_song_view">Compact song view</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Typ widoku</string>
     <string name="view_type_normal">Normalny</string>
     <string name="view_type_card">Karta</string>
@@ -232,6 +234,7 @@
     <string name="sort_order_year">Rok</string>
     <string name="sort_order_duration">Czas trwania</string>
     <string name="sort_order_date_added">Data dodania</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Liczba utworów</string>
     <string name="sort_order_number_of_albums">Liczba albumów</string>
     <string name="sort_order_last_played_date">Data ostatniego odtwarzania</string>
@@ -485,6 +488,7 @@
     <string name="downloaded_lyrics">Pobrano</string>
     <string name="lrc_lyrics">Plik LRC</string>
     <string name="ttml_lyrics">TTML file</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importuj zsynchronizowane teksty</string>
     <string name="action_share_synchronized_lyrics">Udostępnij zsynchronizowane teksty</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Czy chcesz zaimportować zsynchronizowane teksty piosenek LRC dla <b>%s</b>?]]></string>
@@ -503,6 +507,7 @@
     <string name="failed_to_update_lyrics">Nie udało się zaktualizować tekstu.</string>
     <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Zsynchronizowane teksty pochodzą z pliku LRC. Zmiany zostaną zapisane bezpośrednio do tego pliku.</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Czas uśpienia</string>
     <string name="sleep_timer_cancel_current_timer">Anuluj bieżący zegar</string>
@@ -526,6 +531,8 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Licencje</string>
     <string name="author">Autor</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
@@ -607,6 +614,8 @@
     <string name="now_playing_screen_title">Styl</string>
     <string name="open_on_play_title">Otwórz przy odtwarzaniu</string>
     <string name="open_on_play_summary">Rozwiń panel Teraz odtwarzany automatycznie po rozpoczęciu odtwarzania piosenki.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Dodatkowe klawisze</string>
     <string name="extra_controls_summary">Dodatkowe klawisze dla mini odtwarzacza</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -628,7 +637,7 @@
     <string name="animate_controls_title">Animacja klawiszy</string>
     <string name="animate_controls_summary">Pojawia się podczas otwierania panelu odtwarzacza.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Wyświetl nazwę albumu</string>
     <string name="display_extra_info_title">Wyświetl dodatkowe informacje</string>
     <string name="display_extra_info_summary">Wyświetl dodatkowe informacje o piosence, takie jak bitrate, format, częstotliwość próbkowania itp.</string>
@@ -662,6 +671,8 @@
     <string name="auto_play_on_skip_summary">Jeśli odtwarzanie jest wstrzymane, naciśnięcie klawisza \'Następny\' lub \'Poprzedni\' uruchomi muzykę.</string>
     <string name="rewind_with_back_title">"Przewijaj przez 'Poprzedni'"</string>
     <string name="rewind_with_back_summary">Przewiń utwór na początek lub przejdź do poprzedniego, jeżeli aktualny jest dopiero rozpoczęty.</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Wznów po połączeniu</string>
     <string name="resume_on_connect_summary">Wznawia odtwarzanie, gdy słuchawka jest podłączona.</string>
     <string name="pause_on_disconnect_title">Wstrzymaj przy rozłączeniu</string>
