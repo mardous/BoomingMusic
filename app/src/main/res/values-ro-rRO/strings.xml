@@ -218,6 +218,7 @@
     <string name="horizontal_albums">Albume orizontale</string>
     <string name="ignore_singles">Ignore singles</string>
     <string name="compact_song_view">Compact song view</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Tip de vizualizare</string>
     <string name="view_type_normal">Normală</string>
     <string name="view_type_card">Card</string>
@@ -479,6 +480,7 @@
     <string name="downloaded_lyrics">Descărcat</string>
     <string name="lrc_lyrics">Fișier LRC</string>
     <string name="ttml_lyrics">TTML file</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importă versuri sincronizate</string>
     <string name="action_share_synchronized_lyrics">Distribuie versuri sincronizate</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Doriți să importați versuri sincronizate LRC pentru <b>%s</b>?]]></string>
@@ -497,6 +499,7 @@
     <string name="failed_to_update_lyrics">Actualizarea versurilor a eșuat.</string>
     <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Versurile sincronizate provin dintr-un fișier LRC. Modificările vor fi salvate direct în acel fișier.</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Cronometru somn</string>
     <string name="sleep_timer_cancel_current_timer">Anulează cronometrul curent</string>
