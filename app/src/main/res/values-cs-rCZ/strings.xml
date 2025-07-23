@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Poslouchám %1$s od %2$s</string>
     <string name="share_to_stories">Sdílet s příběhy</string>
     <string name="could_not_create_the_story">Nelze vytvořit příběh.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Přejmenovat</string>
     <string name="add_action">Přidat</string>
     <string name="delete_action">Vymazat</string>
@@ -217,6 +218,7 @@
     <string name="horizontal_albums">Horizontální alba</string>
     <string name="ignore_singles">Ignore singles</string>
     <string name="compact_song_view">Compact song view</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Typ zobrazení</string>
     <string name="view_type_normal">Normální</string>
     <string name="view_type_card">Karta</string>
@@ -232,6 +234,7 @@
     <string name="sort_order_year">Rok</string>
     <string name="sort_order_duration">Doba trvání</string>
     <string name="sort_order_date_added">Datum přidání</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Počet skladeb</string>
     <string name="sort_order_number_of_albums">Počet alb</string>
     <string name="sort_order_last_played_date">Datum posledního hraní</string>
@@ -485,6 +488,7 @@
     <string name="downloaded_lyrics">Staženo</string>
     <string name="lrc_lyrics">Soubor LRC</string>
     <string name="ttml_lyrics">TTML file</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importovat synchronizované texty</string>
     <string name="action_share_synchronized_lyrics">Sdílet synchronizované texty</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Chcete importovat synchronizované texty LRC pro <b>%s</b>?]]></string>
@@ -503,6 +507,7 @@
     <string name="failed_to_update_lyrics">Aktualizace textů se nezdařila.</string>
     <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Synchronizované texty pocházejí ze souboru LRC. Změny budou uloženy přímo do tohoto souboru.</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Časovač spánku</string>
     <string name="sleep_timer_cancel_current_timer">Zrušit aktuální časovač</string>
@@ -526,6 +531,8 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Licence</string>
     <string name="author">Autor</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
@@ -607,6 +614,8 @@
     <string name="now_playing_screen_title">Styl</string>
     <string name="open_on_play_title">Otevřít při přehrávání</string>
     <string name="open_on_play_summary">Po spuštění přehrávání skladby automaticky rozbalte panel Nyní.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Extra ovládací prvky</string>
     <string name="extra_controls_summary">Přidat další ovládací prvky pro mini přehrávač</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -628,7 +637,7 @@
     <string name="animate_controls_title">Animovat kontroly</string>
     <string name="animate_controls_summary">Přehrává se při otevírání panelu hráčů.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Zobrazit název alba</string>
     <string name="display_extra_info_title">Zobrazit další informace</string>
     <string name="display_extra_info_summary">Zobrazit další informace o skladbě, jako je bitrate, formát, vzorkovací rychlost, atd.</string>
@@ -662,6 +671,8 @@
     <string name="auto_play_on_skip_summary">Pokud je přehrávání pozastaveno, klepnutím na předchozí nebo další tlačítka spustí hudbu.</string>
     <string name="rewind_with_back_title">"Vrátit zpět s 'Předchozím'"</string>
     <string name="rewind_with_back_summary">Pokud je aktuální skladba na začátku, nebo se přesuňte na předchozí skladbu.</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Pokračovat při připojení</string>
     <string name="resume_on_connect_summary">Obnoví přehrávání při připojení sluchátek.</string>
     <string name="pause_on_disconnect_title">Pozastavit při odpojení</string>
