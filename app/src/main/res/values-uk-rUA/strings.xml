@@ -218,6 +218,7 @@
     <string name="horizontal_albums">Горизонтальні альбоми</string>
     <string name="ignore_singles">Ignore singles</string>
     <string name="compact_song_view">Compact song view</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Дивитись тип</string>
     <string name="view_type_normal">Нормальний</string>
     <string name="view_type_card">Картка</string>
@@ -487,6 +488,7 @@
     <string name="downloaded_lyrics">Завантажено</string>
     <string name="lrc_lyrics">LRC файл</string>
     <string name="ttml_lyrics">TTML file</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Імпорт синхронізованих текстів</string>
     <string name="action_share_synchronized_lyrics">Поділитися синхронізованими словами</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Імпортувати синхронізовані тексти пісень для <b>%s</b>?]]></string>
@@ -505,6 +507,7 @@
     <string name="failed_to_update_lyrics">Не вдалося оновити текст пісні.</string>
     <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Синхронізовані тексти пісень беруться з LRC файлу. Зміни будуть збережені безпосередньо в цей файл.</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Таймер сну</string>
     <string name="sleep_timer_cancel_current_timer">Скасувати поточний таймер</string>
