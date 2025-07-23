@@ -218,6 +218,7 @@
     <string name="horizontal_albums">横方向のアルバム</string>
     <string name="ignore_singles">シングルは無視する</string>
     <string name="compact_song_view">コンパクトな曲表示</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">表示タイプ</string>
     <string name="view_type_normal">標準</string>
     <string name="view_type_card">カード</string>
@@ -463,6 +464,7 @@
     <string name="downloaded_lyrics">ダウンロード済み</string>
     <string name="lrc_lyrics">LRC ファイル</string>
     <string name="ttml_lyrics">TTMLファイル</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">同期した歌詞をインポート</string>
     <string name="action_share_synchronized_lyrics">同期した歌詞を共有</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> の同期したLRC歌詞をインポートしますか？]]></string>
@@ -481,6 +483,7 @@
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
     <string name="lyrics_source_ttml_file">同期歌詞はTTMLファイルから取得されるため、現時点ではTTMLファイルの内容を編集することはできません。</string>
     <string name="lyrics_source_lrc_file">同期された歌詞はLRCファイルから来ています。変更内容は直接そのファイルに保存されます。</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">スリープタイマー</string>
     <string name="sleep_timer_cancel_current_timer">現在のタイマーをキャンセル</string>
