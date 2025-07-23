@@ -218,6 +218,7 @@
     <string name="horizontal_albums">Horisontale album</string>
     <string name="ignore_singles">Ignore singles</string>
     <string name="compact_song_view">Compact song view</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Vis type</string>
     <string name="view_type_normal">Vanlig</string>
     <string name="view_type_card">Kort</string>
@@ -471,6 +472,7 @@
     <string name="downloaded_lyrics">Nedlastet</string>
     <string name="lrc_lyrics">LRC fil</string>
     <string name="ttml_lyrics">TTML file</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importer synkroniserte tekster</string>
     <string name="action_share_synchronized_lyrics">Del synkroniserte tekster</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vil du importere synkroniserte LRC-tekster for <b>%s</b>?]]></string>
@@ -489,6 +491,7 @@
     <string name="failed_to_update_lyrics">Kunne ikke oppdatere sangtekstene.</string>
     <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
     <string name="lyrics_source_lrc_file">Synkroniserte sangtekster kommer fra en LRC-fil. Endringer vil bli lagret direkte i den filen.</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep Timer</string>
     <string name="sleep_timer_cancel_current_timer">Avbryt gjeldende tidtaker</string>
