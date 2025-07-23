@@ -218,6 +218,7 @@
     <string name="horizontal_albums">水平专辑</string>
     <string name="ignore_singles">排除单曲</string>
     <string name="compact_song_view">紧凑的歌曲视图</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">查看类型</string>
     <string name="view_type_normal">普通的</string>
     <string name="view_type_card">卡</string>
@@ -463,6 +464,7 @@
     <string name="downloaded_lyrics">已下载</string>
     <string name="lrc_lyrics">LRC 文件</string>
     <string name="ttml_lyrics">TTML文件</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">导入同步歌词</string>
     <string name="action_share_synchronized_lyrics">分享同步歌词</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[您想要为 <b>%s</b> 导入同步的 LRC 歌词吗？]]></string>
@@ -481,6 +483,7 @@
     <string name="failed_to_update_lyrics">更新歌词失败。</string>
     <string name="lyrics_source_ttml_file">同步歌词来自TTML文件。尚不支持编辑TTML文件。</string>
     <string name="lyrics_source_lrc_file">同步歌词来自LRC文件。更改将直接保存到该文件。</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">睡眠计时器</string>
     <string name="sleep_timer_cancel_current_timer">取消当前计时器</string>
