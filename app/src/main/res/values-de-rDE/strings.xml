@@ -218,6 +218,7 @@
     <string name="horizontal_albums">Horizontale Alben</string>
     <string name="ignore_singles">Singles ignorieren</string>
     <string name="compact_song_view">Kompakte Titelansicht</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Anzeigetyp</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Karte</string>
@@ -471,6 +472,7 @@
     <string name="downloaded_lyrics">Heruntergeladen</string>
     <string name="lrc_lyrics">LRC-Datei</string>
     <string name="ttml_lyrics">TTML-Datei</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Synchronisierte Liedtexte importieren</string>
     <string name="action_share_synchronized_lyrics">Synchronisierte Liedtexte teilen</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Möchtest Du synchronisierte LRC-Texte für <b>%s</b> importieren?]]></string>
@@ -489,6 +491,7 @@
     <string name="failed_to_update_lyrics">Liedtexte konnten nicht aktualisiert werden.</string>
     <string name="lyrics_source_ttml_file">Die synchronisierten Liedtexte stammen aus einer TTML-Datei. Das Bearbeiten von Inhalten aus TTML-Dateien wird noch nicht unterstützt.</string>
     <string name="lyrics_source_lrc_file">Synchronisierte Liedtexte stammen aus einer LRC-Datei. Änderungen werden direkt in dieser Datei gespeichert.</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleeptimer</string>
     <string name="sleep_timer_cancel_current_timer">Aktuellen Timer abbrechen</string>
