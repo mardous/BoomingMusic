@@ -218,7 +218,7 @@
     <string name="horizontal_albums">Yatay albümler</string>
     <string name="ignore_singles">Teklileri yoksay</string>
     <string name="compact_song_view">Kompakt şarkı görünümü</string>
-    <string name="show_total_duration">Show total duration</string>
+    <string name="show_total_duration">Toplam süreyi göster</string>
     <string name="action_view_type">Görünüm türü</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Kart</string>
@@ -472,7 +472,7 @@
     <string name="downloaded_lyrics">İndirilmiş</string>
     <string name="lrc_lyrics">LRC dosyası</string>
     <string name="ttml_lyrics">TTML dosyası</string>
-    <string name="external_file_lyrics">External file</string>
+    <string name="external_file_lyrics">Harici dosya</string>
     <string name="action_import_synchronized_lyrics">Senkronize şarkı sözlerini içe aktar</string>
     <string name="action_share_synchronized_lyrics">Senkronize şarkı sözlerini paylaş</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> için senkronize LRC şarkı sözlerini içe aktarmak istiyor musunuz?]]></string>
@@ -491,7 +491,7 @@
     <string name="failed_to_update_lyrics">Şarkı sözleri güncellenemedi.</string>
     <string name="lyrics_source_ttml_file">Eşzamanlı (senkronize) şarkı sözleri bir TTML dosyasından alınır. TTML dosyalarının içeriğini düzenlemek şu anda desteklenmemektedir.</string>
     <string name="lyrics_source_lrc_file">Senkronize şarkı sözleri bir LRC dosyasından geliyor. Değişiklikler doğrudan o dosyaya kaydedilecek.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
+    <string name="lyrics_source_external_file">Şarkı sözleri harici bir dosyadan alınmaktadır. Bu dosyayı Booming Music üzerinden doğrudan düzenleyemezsiniz.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Uyku zamanlayıcısı</string>
     <string name="sleep_timer_cancel_current_timer">Mevcut zamanlayıcıyı iptal et</string>
