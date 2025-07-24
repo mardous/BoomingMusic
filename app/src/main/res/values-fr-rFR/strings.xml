@@ -192,7 +192,6 @@
     <string name="empty_label">Vide</string>
     <string name="nothing_to_see">Rien à voir</string>
     <string name="show_album_artists">Seulement les artistes de l\'album</string>
-    <string name="library_label">Bibliothèque</string>
     <string name="songs_label">Titres</string>
     <string name="albums_label">Albums</string>
     <string name="artists_label">Artistes</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Dossiers</string>
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
-    <string name="composers_label">Compositeurs</string>
-    <string name="conductors_label">Chefs d\'orchestre</string>
-    <string name="publishers_label">Éditeurs</string>
     <string name="favorites_label">Favoris</string>
     <string name="last_added_label">Dernier ajout</string>
     <string name="top_tracks_label">Meilleurs titres</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Enregistrer la pochette de l\'album</string>
     <string name="saving_cover_please_wait">Enregistrement de la pochette, attendez…</string>
-    <string name="save_artwork_no_artwork">Aucune pochette d\'album trouvée</string>
     <string name="save_artwork_error">Impossible d\'enregistrer la pochette dans le stockage local</string>
     <string name="save_artwork_success">Pochette de l\'album enregistrée</string>
     <string name="save_artwork_view_action">Voir</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Impossible de restaurer les données. Vérifiez le fichier de sauvegarde et réessayez.</string>
     <string name="data_restored_successfully">Données restaurées avec succès.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Périphérique de sortie</string>
-    <string name="audio_device_battery_level">Niveau de batterie : %d%% environ.</string>
     <string name="audio_device_aux_line">Ligne Aux</string>
     <string name="audio_device_bluetooth">Périphérique Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
