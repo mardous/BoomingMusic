@@ -192,7 +192,6 @@
     <string name="empty_label">Tom</string>
     <string name="nothing_to_see">Ingenting å se</string>
     <string name="show_album_artists">Bare albumartister</string>
-    <string name="library_label">Bibliotek</string>
     <string name="songs_label">Sanger</string>
     <string name="albums_label">Album</string>
     <string name="artists_label">Artister</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Mapper</string>
     <string name="playlists_label">Spillelister</string>
     <string name="playlist_label">Spilleliste</string>
-    <string name="composers_label">komponister</string>
-    <string name="conductors_label">Dirigenter</string>
-    <string name="publishers_label">Utgiverne</string>
     <string name="favorites_label">Favoritter</string>
     <string name="last_added_label">Sist lagt til</string>
     <string name="top_tracks_label">Topp sporing</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbler</string>
     <string name="save_cover">Lagre albumomslag</string>
     <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_no_artwork">Ingen albumomslag funnet</string>
     <string name="save_artwork_error">Kunne ikke lagre forsiden på lokal lagring</string>
     <string name="save_artwork_success">Albumforsidebilde lagret</string>
     <string name="save_artwork_view_action">Vis</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Kunne ikke gjenopprette data. Kontroller sikkerhetskopifilen og prøv på nytt.</string>
     <string name="data_restored_successfully">Data ble gjenopprettet.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Utgangs enhet</string>
-    <string name="audio_device_battery_level">Batterinivå: %d%% ca.</string>
     <string name="audio_device_aux_line">Aux linje</string>
     <string name="audio_device_bluetooth">Bluetooth enhet</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
