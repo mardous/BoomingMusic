@@ -192,7 +192,6 @@
     <string name="empty_label">空的</string>
     <string name="nothing_to_see">没有可查看的</string>
     <string name="show_album_artists">仅专辑艺人</string>
-    <string name="library_label">曲库</string>
     <string name="songs_label">歌曲</string>
     <string name="albums_label">专辑</string>
     <string name="artists_label">艺人</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">文件夹</string>
     <string name="playlists_label">播放列表</string>
     <string name="playlist_label">播放列表</string>
-    <string name="composers_label">作曲家</string>
-    <string name="conductors_label">指挥</string>
-    <string name="publishers_label">发布者</string>
     <string name="favorites_label">收藏夹</string>
     <string name="last_added_label">上次添加</string>
     <string name="top_tracks_label">热门曲目</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">滚动条</string>
     <string name="save_cover">保存专辑封面</string>
     <string name="saving_cover_please_wait">保存中，请稍等…</string>
-    <string name="save_artwork_no_artwork">没有找到专辑封面</string>
     <string name="save_artwork_error">保存封面到本地存储失败</string>
     <string name="save_artwork_success">已保存专辑封面</string>
     <string name="save_artwork_view_action">查看</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">无法恢复数据。请验证备份文件并重试。</string>
     <string name="data_restored_successfully">数据已成功恢复。</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">输出设备</string>
-    <string name="audio_device_battery_level">电池电量：约%d%%。</string>
     <string name="audio_device_aux_line">Aux 行</string>
     <string name="audio_device_bluetooth">蓝牙设备</string>
     <string name="audio_device_bluetooth_a2dp">蓝牙 A2DP</string>
