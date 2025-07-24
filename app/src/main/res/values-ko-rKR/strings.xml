@@ -192,7 +192,6 @@
     <string name="empty_label">Empty</string>
     <string name="nothing_to_see">Nothing to see</string>
     <string name="show_album_artists">Only album artists</string>
-    <string name="library_label">Library</string>
     <string name="songs_label">Songs</string>
     <string name="albums_label">Albums</string>
     <string name="artists_label">Artists</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Folders</string>
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
-    <string name="composers_label">Composers</string>
-    <string name="conductors_label">Conductors</string>
-    <string name="publishers_label">Publishers</string>
     <string name="favorites_label">Favorites</string>
     <string name="last_added_label">Last added</string>
     <string name="top_tracks_label">Top Tracks</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Save album cover</string>
     <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_no_artwork">No album cover found</string>
     <string name="save_artwork_error">Failed to save cover to local storage</string>
     <string name="save_artwork_success">Album cover saved</string>
     <string name="save_artwork_view_action">View</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Couldn\'t not restore data. Verify backup file and retry.</string>
     <string name="data_restored_successfully">Data restored successfully.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Output device</string>
-    <string name="audio_device_battery_level">Battery level: %d%% approx.</string>
     <string name="audio_device_aux_line">Aux Line</string>
     <string name="audio_device_bluetooth">Bluetooth device</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
