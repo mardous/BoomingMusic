@@ -192,7 +192,6 @@
     <string name="empty_label">Vuoto</string>
     <string name="nothing_to_see">Niente da vedere</string>
     <string name="show_album_artists">Solo artisti dell\'album</string>
-    <string name="library_label">Libreria</string>
     <string name="songs_label">Brani</string>
     <string name="albums_label">Album</string>
     <string name="artists_label">Artisti</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Cartelle</string>
     <string name="playlists_label">Playlist</string>
     <string name="playlist_label">Playlist</string>
-    <string name="composers_label">Compositori</string>
-    <string name="conductors_label">Conduttori</string>
-    <string name="publishers_label">Editori</string>
     <string name="favorites_label">Preferiti</string>
     <string name="last_added_label">Ultima aggiunta</string>
     <string name="top_tracks_label">Tracce Superiori</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbling</string>
     <string name="save_cover">Salva copertina album</string>
     <string name="saving_cover_please_wait">Salvataggio copertura, attendere…</string>
-    <string name="save_artwork_no_artwork">Nessuna copertina album trovata</string>
     <string name="save_artwork_error">Impossibile salvare la copertina nella memoria locale</string>
     <string name="save_artwork_success">Copertina album salvata</string>
     <string name="save_artwork_view_action">Visualizza</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Impossibile ripristinare i dati. Verificare il file di backup e riprovare.</string>
     <string name="data_restored_successfully">Dati ripristinati con successo.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Dispositivo di uscita</string>
-    <string name="audio_device_battery_level">Livello batteria: %d%% ca.</string>
     <string name="audio_device_aux_line">Linea Aux</string>
     <string name="audio_device_bluetooth">Dispositivo Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
