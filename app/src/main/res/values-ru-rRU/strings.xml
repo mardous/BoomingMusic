@@ -192,7 +192,6 @@
     <string name="empty_label">Пусто</string>
     <string name="nothing_to_see">Нечего видеть</string>
     <string name="show_album_artists">Только исполнители альбомов</string>
-    <string name="library_label">Библиотека</string>
     <string name="songs_label">Треки</string>
     <string name="albums_label">Альбомы</string>
     <string name="artists_label">Художники</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Папки</string>
     <string name="playlists_label">Плейлисты</string>
     <string name="playlist_label">Плейлист</string>
-    <string name="composers_label">Композиторы</string>
-    <string name="conductors_label">Проводники</string>
-    <string name="publishers_label">Издатели</string>
     <string name="favorites_label">Избранное</string>
     <string name="last_added_label">Последнее добавление</string>
     <string name="top_tracks_label">Лучшие треки</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Скробблинги</string>
     <string name="save_cover">Сохранить обложку альбома</string>
     <string name="saving_cover_please_wait">Сохранение обложки, подождите…</string>
-    <string name="save_artwork_no_artwork">Обложка альбома не найдена</string>
     <string name="save_artwork_error">Не удалось сохранить обложку в локальном хранилище</string>
     <string name="save_artwork_success">Обложка альбома сохранена</string>
     <string name="save_artwork_view_action">Вид</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Не удалось восстановить данные. Проверьте файл резервной копии и повторите попытку.</string>
     <string name="data_restored_successfully">Данные успешно восстановлены.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Устройство вывода</string>
-    <string name="audio_device_battery_level">Уровень заряда батареи: %d%% примерно.</string>
     <string name="audio_device_aux_line">Строка Aux</string>
     <string name="audio_device_bluetooth">Устройство Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">A2DP Bluetooth</string>
