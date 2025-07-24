@@ -192,7 +192,6 @@
     <string name="empty_label">Κενό</string>
     <string name="nothing_to_see">Τίποτα για να δείτε</string>
     <string name="show_album_artists">Μόνο καλλιτέχνες άλμπουμ</string>
-    <string name="library_label">Βιβλιοθήκη</string>
     <string name="songs_label">Τραγούδια</string>
     <string name="albums_label">Άλμπουμ</string>
     <string name="artists_label">Καλλιτέχνες</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Φάκελοι</string>
     <string name="playlists_label">Λίστες</string>
     <string name="playlist_label">Λίστα</string>
-    <string name="composers_label">Συνθέτες</string>
-    <string name="conductors_label">Αγωγοί</string>
-    <string name="publishers_label">Εκδότες</string>
     <string name="favorites_label">Αγαπημένα</string>
     <string name="last_added_label">Τελευταία προσθήκη</string>
     <string name="top_tracks_label">Κορυφαία Κομμάτια</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Αποθήκευση εξωφύλλου άλμπουμ</string>
     <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_no_artwork">Δεν βρέθηκε εξώφυλλο άλμπουμ</string>
     <string name="save_artwork_error">Αποτυχία αποθήκευσης εξωφύλλου στην τοπική αποθήκευση</string>
     <string name="save_artwork_success">Το εξώφυλλο άλμπουμ αποθηκεύτηκε</string>
     <string name="save_artwork_view_action">Προβολή</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Αδυναμία επαναφοράς δεδομένων. Επαλήθευση αρχείου αντιγράφου ασφαλείας και επανάληψη.</string>
     <string name="data_restored_successfully">Τα δεδομένα επαναφέρθηκαν επιτυχώς.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Συσκευή εξόδου</string>
-    <string name="audio_device_battery_level">Επίπεδο μπαταρίας: %d%% περ.</string>
     <string name="audio_device_aux_line">Γραμμή Aux</string>
     <string name="audio_device_bluetooth">Συσκευή Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
