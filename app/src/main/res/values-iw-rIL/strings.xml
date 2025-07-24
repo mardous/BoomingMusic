@@ -192,7 +192,6 @@
     <string name="empty_label">ריק</string>
     <string name="nothing_to_see">אין מה להציג</string>
     <string name="show_album_artists">רק אמני אלבומים</string>
-    <string name="library_label">ספרייה</string>
     <string name="songs_label">שירים</string>
     <string name="albums_label">אלבומים</string>
     <string name="artists_label">אמנים</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">תיקיות</string>
     <string name="playlists_label">רשימות השמעה</string>
     <string name="playlist_label">רשימת השמעה</string>
-    <string name="composers_label">מלחינים</string>
-    <string name="conductors_label">מנצחים</string>
-    <string name="publishers_label">מפרסמים</string>
     <string name="favorites_label">מועדפים</string>
     <string name="last_added_label">נוספו לאחרונה</string>
     <string name="top_tracks_label">רצועות מובילות</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">סקרובלינגס</string>
     <string name="save_cover">שמור עטיפת אלבום</string>
     <string name="saving_cover_please_wait">שומר עטיפה, המתן…</string>
-    <string name="save_artwork_no_artwork">לא נמצא עטיפת אלבום</string>
     <string name="save_artwork_error">שמירת העטיפה באחסון המקומי נכשלה</string>
     <string name="save_artwork_success">עטיפת אלבום נשמרה</string>
     <string name="save_artwork_view_action">הצג</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">לא ניתן היה לשחזר את הנתונים. יש לאמת את קובץ הגיבוי ולנסות שוב.</string>
     <string name="data_restored_successfully">הנתונים שוחזרו בהצלחה.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">התקן פלט</string>
-    <string name="audio_device_battery_level">רמת סוללה: %d%% בקירוב.</string>
     <string name="audio_device_aux_line">Aux Line</string>
     <string name="audio_device_bluetooth">התקן בלוטות\'</string>
     <string name="audio_device_bluetooth_a2dp">בלוטות\' A2DP</string>
