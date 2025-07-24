@@ -192,7 +192,6 @@
     <string name="empty_label">Leer</string>
     <string name="nothing_to_see">Nichts zu sehen</string>
     <string name="show_album_artists">Nur Album-Interpreten</string>
-    <string name="library_label">Bibliothek</string>
     <string name="songs_label">Titel</string>
     <string name="albums_label">Alben</string>
     <string name="artists_label">Interpreten</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Ordner</string>
     <string name="playlists_label">Wiedergabelisten</string>
     <string name="playlist_label">Wiedergabeliste</string>
-    <string name="composers_label">Komponisten</string>
-    <string name="conductors_label">Dirigenten</string>
-    <string name="publishers_label">Herausgeber</string>
     <string name="favorites_label">Favoriten</string>
     <string name="last_added_label">Zuletzt hinzugefügt</string>
     <string name="top_tracks_label">Top-Titel</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Albumcover speichern</string>
     <string name="saving_cover_please_wait">Cover wird gespeichert, bitte warten…</string>
-    <string name="save_artwork_no_artwork">Kein Albumcover gefunden</string>
     <string name="save_artwork_error">Fehler beim Speichern des Covers im lokalen Speicher</string>
     <string name="save_artwork_success">Albumcover gespeichert</string>
     <string name="save_artwork_view_action">Ansehen</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Konnte Daten nicht wiederherstellen. Überprüfe die Sicherungsdatei und versuche es erneut.</string>
     <string name="data_restored_successfully">Daten erfolgreich wiederhergestellt.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Ausgabegerät</string>
-    <string name="audio_device_battery_level">Akkustand: ca. %d%%</string>
     <string name="audio_device_aux_line">Aux-Kabel</string>
     <string name="audio_device_bluetooth">Bluetooth-Gerät</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
