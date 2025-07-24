@@ -112,7 +112,6 @@
     <string name="delete_the_song_x">Verwijder het nummer %s?</string>
     <string name="deleting_songs">Liedjes aan het verwijderen, gelieve te wachten…</string>
     <string name="song_x_of_x">%1$d van %2$d • %3$s</string>
-    <string name="by_artist_x">door %s</string>
     <string name="no_equalizer">Geen equalizer gevonden.</string>
     <string name="audio_focus_denied">Audiofocus geweigerd.</string>
     <string name="no_audio_ID">Slecht audio ID.</string>
@@ -470,8 +469,6 @@
     <string name="synced_lyrics">Gesynchroniseerd</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Gedownload</string>
-    <string name="lrc_lyrics">LRC bestand</string>
-    <string name="ttml_lyrics">TTML file</string>
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importeer gesynchroniseerde songteksten</string>
     <string name="action_share_synchronized_lyrics">Deel gesynchroniseerde songteksten</string>
@@ -489,8 +486,6 @@
     <string name="no_synced_lyrics_found">Geen gesynchroniseerde songteksten gevonden</string>
     <string name="lyrics_were_updated_successfully">Songteksten zijn bijgewerkt.</string>
     <string name="failed_to_update_lyrics">Songtekst bijwerken mislukt.</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
-    <string name="lyrics_source_lrc_file">Gesynchroniseerde songteksten komen uit een LRC-bestand. Wijzigingen zullen direct in dat bestand worden opgeslagen.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Slaaptimer</string>
