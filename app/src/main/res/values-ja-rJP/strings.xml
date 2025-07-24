@@ -192,7 +192,6 @@
     <string name="empty_label">なし</string>
     <string name="nothing_to_see">表示するものがありません</string>
     <string name="show_album_artists">アルバムアーティストのみ</string>
-    <string name="library_label">ライブラリ</string>
     <string name="songs_label">曲</string>
     <string name="albums_label">アルバム</string>
     <string name="artists_label">アーティスト</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">フォルダ</string>
     <string name="playlists_label">プレイリスト</string>
     <string name="playlist_label">プレイリスト</string>
-    <string name="composers_label">作曲者</string>
-    <string name="conductors_label">指揮者</string>
-    <string name="publishers_label">出版者</string>
     <string name="favorites_label">お気に入り</string>
     <string name="last_added_label">最近追加された曲</string>
     <string name="top_tracks_label">トップトラック</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">アルバムカバーを保存</string>
     <string name="saving_cover_please_wait">カバーをセーブしています。お待ち下さい…</string>
-    <string name="save_artwork_no_artwork">アルバムカバーが見つかりませんでした</string>
     <string name="save_artwork_error">ローカルストレージにカバーを保存できませんでした</string>
     <string name="save_artwork_success">アルバムカバーを保存しました</string>
     <string name="save_artwork_view_action">表示</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">データを復元できませんでした。バックアップファイルを確認して再試行してください。</string>
     <string name="data_restored_successfully">データの復元に成功しました。</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">出力デバイス</string>
-    <string name="audio_device_battery_level">バッテリー残量: 約%d%%</string>
     <string name="audio_device_aux_line">Auxライン</string>
     <string name="audio_device_bluetooth">Bluetoothデバイス</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
