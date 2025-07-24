@@ -192,7 +192,6 @@
     <string name="empty_label">खाली</string>
     <string name="nothing_to_see">देखने के लिए कुछ नहीं है।</string>
     <string name="show_album_artists">केवल एल्बम कलाकार</string>
-    <string name="library_label">लायब्रेरी</string>
     <string name="songs_label">गाने</string>
     <string name="albums_label">एल्बम</string>
     <string name="artists_label">कलाकार</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">फोल्डर्स</string>
     <string name="playlists_label">प्लेलिस्ट्स</string>
     <string name="playlist_label">Playlistप्लेलिस्ट</string>
-    <string name="composers_label">संगीतकार</string>
-    <string name="conductors_label">संवाहक</string>
-    <string name="publishers_label">प्रकाशक</string>
     <string name="favorites_label">पसंदीदा</string>
     <string name="last_added_label">आखिरी जोड़ा गया</string>
     <string name="top_tracks_label">टॉप ट्रैक ...</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">स्क्रॉब्ल्स</string>
     <string name="save_cover">एल्बम कवर सेव करें</string>
     <string name="saving_cover_please_wait">सेविंग कवर, इंतज़ार करें…</string>
-    <string name="save_artwork_no_artwork">कोई एल्बम कवर नहीं मिला</string>
     <string name="save_artwork_error">लोकल स्टोरेज में कवर सेव करने में फेल हो गया</string>
     <string name="save_artwork_success">एल्बम कवर सेव कर लिया</string>
     <string name="save_artwork_view_action">दृश्य</string>
@@ -333,8 +328,6 @@
     <string name="could_not_restore_data">डेटा को पुनर्स्थापित नहीं किया जा सका। बैकअप फ़ाइल सत्यापित करें और पुनः प्रयास करें।</string>
     <string name="data_restored_successfully">डेटा सफलतापूर्वक पुनर्स्थापित किया गया।</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">आउटपुट डिवाइस</string>
-    <string name="audio_device_battery_level">बैटरी स्तर: लगभग %d%%।</string>
     <string name="audio_device_aux_line">ऑक्स लाइन</string>
     <string name="audio_device_bluetooth">ब्लूटूथ डिवाइस</string>
     <string name="audio_device_bluetooth_a2dp">ब्लुटूथ A2DP</string>
