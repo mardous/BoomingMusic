@@ -192,7 +192,6 @@
     <string name="empty_label">Boş</string>
     <string name="nothing_to_see">Görülecek bir şey yok</string>
     <string name="show_album_artists">Sadece albüm sanatçıları</string>
-    <string name="library_label">Kütüphane</string>
     <string name="songs_label">Şarkılar</string>
     <string name="albums_label">Albümler</string>
     <string name="artists_label">Sanatçılar</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Klasörler</string>
     <string name="playlists_label">Çalma Listeleri</string>
     <string name="playlist_label">Çalma Listesi</string>
-    <string name="composers_label">Besteciler</string>
-    <string name="conductors_label">Orkestra Şefleri</string>
-    <string name="publishers_label">Yayıncılar</string>
     <string name="favorites_label">Favoriler</string>
     <string name="last_added_label">Son eklenenler</string>
     <string name="top_tracks_label">En Çok Çalınanlar</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobble\'lar</string>
     <string name="save_cover">Albüm kapağını kaydet</string>
     <string name="saving_cover_please_wait">Kapak kaydediliyor, bekleyin…</string>
-    <string name="save_artwork_no_artwork">Albüm kapağı bulunamadı</string>
     <string name="save_artwork_error">Kapak yerel depolamaya kaydedilemedi</string>
     <string name="save_artwork_success">Albüm kapağı kaydedildi</string>
     <string name="save_artwork_view_action">Görüntüle</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Veriler geri yüklenemedi. Yedekleme dosyasını doğrulayıp tekrar deneyin.</string>
     <string name="data_restored_successfully">Veriler başarıyla geri yüklendi.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Çıkış cihazı</string>
-    <string name="audio_device_battery_level">Pil seviyesi: yaklaşık %d%%</string>
     <string name="audio_device_aux_line">Aux Kablosu</string>
     <string name="audio_device_bluetooth">Bluetooth cihazı</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
