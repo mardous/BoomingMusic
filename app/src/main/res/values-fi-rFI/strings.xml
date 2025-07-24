@@ -192,7 +192,6 @@
     <string name="empty_label">Tyhjä</string>
     <string name="nothing_to_see">Ei mitään nähtävää</string>
     <string name="show_album_artists">Vain levyn esittäjät</string>
-    <string name="library_label">Kirjasto</string>
     <string name="songs_label">Kappaleet</string>
     <string name="albums_label">Albumit</string>
     <string name="artists_label">Esittäjät</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Kansiot</string>
     <string name="playlists_label">Soittolistat</string>
     <string name="playlist_label">Soittolista</string>
-    <string name="composers_label">Säveltäjät</string>
-    <string name="conductors_label">Johtimet</string>
-    <string name="publishers_label">Julkaisijat</string>
     <string name="favorites_label">Suosikit</string>
     <string name="last_added_label">Viimeksi lisätty</string>
     <string name="top_tracks_label">Suosituimmat Kappaleet</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Tallenna albumin kansi</string>
     <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_no_artwork">Albumin kansiota ei löytynyt</string>
     <string name="save_artwork_error">Kansion tallentaminen paikalliseen tallennustilaan epäonnistui</string>
     <string name="save_artwork_success">Albumin kansi tallennettu</string>
     <string name="save_artwork_view_action">Näytä</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Tietoja ei voitu palauttaa. Varmista varmuuskopiotiedosto ja yritä uudelleen.</string>
     <string name="data_restored_successfully">Tiedot palautettu onnistuneesti.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Ulostulon laite</string>
-    <string name="audio_device_battery_level">Akun taso: %d%% n.</string>
     <string name="audio_device_aux_line">Aux Viiva</string>
     <string name="audio_device_bluetooth">Bluetooth-laite</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
