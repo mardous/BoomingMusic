@@ -112,7 +112,6 @@
     <string name="delete_the_song_x">曲 %sを削除しますか？</string>
     <string name="deleting_songs">音楽を削除しています。お待ち下さい…</string>
     <string name="song_x_of_x">%1$d の %2$d • %3$s</string>
-    <string name="by_artist_x">作成者： %s</string>
     <string name="no_equalizer">イコライザーが見つかりません。</string>
     <string name="audio_focus_denied">音声フォーカスが拒否されました。</string>
     <string name="no_audio_ID">音声IDが不正です。</string>
@@ -462,8 +461,6 @@
     <string name="synced_lyrics">同期済み</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">ダウンロード済み</string>
-    <string name="lrc_lyrics">LRC ファイル</string>
-    <string name="ttml_lyrics">TTMLファイル</string>
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">同期した歌詞をインポート</string>
     <string name="action_share_synchronized_lyrics">同期した歌詞を共有</string>
@@ -481,8 +478,6 @@
     <string name="no_synced_lyrics_found">同期された歌詞が見つかりません</string>
     <string name="lyrics_were_updated_successfully">歌詞が更新されました。</string>
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
-    <string name="lyrics_source_ttml_file">同期歌詞はTTMLファイルから取得されるため、現時点ではTTMLファイルの内容を編集することはできません。</string>
-    <string name="lyrics_source_lrc_file">同期された歌詞はLRCファイルから来ています。変更内容は直接そのファイルに保存されます。</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">スリープタイマー</string>
