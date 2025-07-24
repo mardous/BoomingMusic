@@ -112,7 +112,6 @@
     <string name="delete_the_song_x">%s şarkısı silinsin mi?</string>
     <string name="deleting_songs">Şarkılar siliniyor, bekleyin…</string>
     <string name="song_x_of_x">%2$d / %1$d • %3$s</string>
-    <string name="by_artist_x">sanatçı: %s</string>
     <string name="no_equalizer">Ekolayzer bulunamadı.</string>
     <string name="audio_focus_denied">Ses odağı reddedildi.</string>
     <string name="no_audio_ID">Hatalı ses kimliği.</string>
@@ -470,8 +469,6 @@
     <string name="synced_lyrics">Senkronize</string>
     <string name="embedded_lyrics">Gömülü</string>
     <string name="downloaded_lyrics">İndirilmiş</string>
-    <string name="lrc_lyrics">LRC dosyası</string>
-    <string name="ttml_lyrics">TTML dosyası</string>
     <string name="external_file_lyrics">Harici dosya</string>
     <string name="action_import_synchronized_lyrics">Senkronize şarkı sözlerini içe aktar</string>
     <string name="action_share_synchronized_lyrics">Senkronize şarkı sözlerini paylaş</string>
@@ -489,8 +486,6 @@
     <string name="no_synced_lyrics_found">Senkronize şarkı sözü bulunamadı</string>
     <string name="lyrics_were_updated_successfully">Şarkı sözleri başarıyla güncellendi.</string>
     <string name="failed_to_update_lyrics">Şarkı sözleri güncellenemedi.</string>
-    <string name="lyrics_source_ttml_file">Eşzamanlı (senkronize) şarkı sözleri bir TTML dosyasından alınır. TTML dosyalarının içeriğini düzenlemek şu anda desteklenmemektedir.</string>
-    <string name="lyrics_source_lrc_file">Senkronize şarkı sözleri bir LRC dosyasından geliyor. Değişiklikler doğrudan o dosyaya kaydedilecek.</string>
     <string name="lyrics_source_external_file">Şarkı sözleri harici bir dosyadan alınmaktadır. Bu dosyayı Booming Music üzerinden doğrudan düzenleyemezsiniz.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Uyku zamanlayıcısı</string>
