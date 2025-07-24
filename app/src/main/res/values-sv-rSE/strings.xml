@@ -192,7 +192,6 @@
     <string name="empty_label">Tom</string>
     <string name="nothing_to_see">Inget att se</string>
     <string name="show_album_artists">Endast albumartister</string>
-    <string name="library_label">Bibliotek</string>
     <string name="songs_label">Låtar</string>
     <string name="albums_label">Album</string>
     <string name="artists_label">Artister</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Mappar</string>
     <string name="playlists_label">Spellistor</string>
     <string name="playlist_label">Spellista</string>
-    <string name="composers_label">Kompositörer</string>
-    <string name="conductors_label">Dirigenter</string>
-    <string name="publishers_label">Utgivare</string>
     <string name="favorites_label">Favoriter</string>
     <string name="last_added_label">Senast tillagda</string>
     <string name="top_tracks_label">Topp spår</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Spara albumomslag</string>
     <string name="saving_cover_please_wait">Sparar omslag, vänta…</string>
-    <string name="save_artwork_no_artwork">Inget skivomslag hittades</string>
     <string name="save_artwork_error">Det gick inte att spara omslaget till lokal lagring</string>
     <string name="save_artwork_success">Skivomslag sparat</string>
     <string name="save_artwork_view_action">Visa</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Kunde inte återställa data. Verifiera säkerhetskopieringsfil och försök igen.</string>
     <string name="data_restored_successfully">Data återställdes framgångsrikt.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Utmatningsenhet</string>
-    <string name="audio_device_battery_level">Batterinivå: %d%% ca.</string>
     <string name="audio_device_aux_line">Aux Linje</string>
     <string name="audio_device_bluetooth">Bluetooth-enhet</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
