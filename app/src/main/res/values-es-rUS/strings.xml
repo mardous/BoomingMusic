@@ -112,10 +112,9 @@
     <string name="delete_the_song_x">¿Eliminar la canción %s?</string>
     <string name="deleting_songs">Eliminando canciones, espera…</string>
     <string name="song_x_of_x">%1$d de %2$d • %3$s</string>
-    <string name="by_artist_x">de %s</string>
-    <string name="no_equalizer">No se encontró ningún ecualizador</string>
-    <string name="audio_focus_denied">El foco de audio fue denegado</string>
-    <string name="no_audio_ID">ID de audio erroneo</string>
+    <string name="no_equalizer">No se encontró ningún ecualizador.</string>
+    <string name="audio_focus_denied">El foco de audio fue denegado.</string>
+    <string name="no_audio_ID">ID de audio erroneo.</string>
     <string name="unplayable_file">No se pudo reproducir este archivo.</string>
     <string name="unplayable_file_code_x">No se pudo reproducir este archivo (código: %d).</string>
     <string name="permission_external_storage_title">Acceso al almacenamiento</string>
@@ -137,8 +136,8 @@
     <string name="hello_there">¡Hola!</string>
     <string name="welcome_to_x">Bienvenido a %s</string>
     <string name="get_started">Empezar</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> no está listado en el almacén multimedia]]></string>
-    <string name="some_files_are_not_listed_in_the_media_store">Algunos archivos no están listados en el almacén multimedia</string>
+    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> no está listado en el almacén multimedia.]]></string>
+    <string name="some_files_are_not_listed_in_the_media_store">Algunos archivos no están listados en el almacén multimedia.</string>
     <string name="nothing_to_scan">Nada para escanear</string>
     <string name="select_storage_title">Elija el almacenamiento</string>
     <string name="app_widget_big_name">Grande</string>
@@ -210,7 +209,7 @@
     <string name="top_tracks_label">Más reproducidas</string>
     <string name="history_label">Historial</string>
     <string name="not_recently_played">Sin reproducción reciente</string>
-    <string name="play_info">Info. de reproducción</string>
+    <string name="play_info">Info. de reproducción.</string>
     <string name="track_play_counts">Reproducciones por pista</string>
     <string name="song_stat_never_label">nunca escuchada</string>
     <string name="song_stat_one_time_label">escuchada una vez el %s</string>
@@ -256,7 +255,7 @@
     <string name="scan_media_message">En la mayoría de los casos, Android detecta e indexa automáticamente los archivos multimedia del dispositivo, por lo que no es necesario forzar un escaneo manual.</string>
     <string name="scan_media_positive">Escanear de todos modos</string>
     <string name="scan_finished">Escaneo completado.</string>
-    <string name="album_or_artist_empty">El álbum o artista está vacío</string>
+    <string name="album_or_artist_empty">El álbum o artista está vacío.</string>
     <string name="update_image">Actualizar imagen</string>
     <string name="restore_default">Restaurar la predeterminada</string>
     <string name="remove_cover">Remover portada</string>
@@ -318,7 +317,7 @@
     <string name="label_with_rg_info">Con info. de RG</string>
     <string name="label_without_rg_info">Sin info. de RG</string>
     <string name="album_and_year">Álbum y año</string>
-    <string name="song_info">Info. adicional de la canción</string>
+    <string name="song_info">Info. adicional de la canción.</string>
     <string name="no_results">Sin resultados</string>
     <string name="connection_unavailable">Conexión a Internet no disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Debes seleccionar al menos una categoría</string>
@@ -328,7 +327,7 @@
     <string name="backup_settings">Ajustes</string>
     <string name="backup_synced_lyrics">Letras sincronizadas</string>
     <string name="backup_artist_images">Imágenes de artistas</string>
-    <string name="backup_playlists">Playlists</string>
+    <string name="backup_playlists">Listas de reproducción</string>
     <string name="backup_successful">¡Respaldo exitoso!</string>
     <string name="backup_failed">Respaldo fallido.</string>
     <string name="select_content_to_restore">Elija el contenido a restaurar:</string>
@@ -470,8 +469,6 @@
     <string name="synced_lyrics">Sincronizado</string>
     <string name="embedded_lyrics">Incrustada</string>
     <string name="downloaded_lyrics">Descargada</string>
-    <string name="lrc_lyrics">Archivo LRC</string>
-    <string name="ttml_lyrics">Archivo TTML</string>
     <string name="external_file_lyrics">Archivo externo</string>
     <string name="action_import_synchronized_lyrics">Importar letra sincronizada</string>
     <string name="action_share_synchronized_lyrics">Compartir letra sincronizada</string>
@@ -489,8 +486,6 @@
     <string name="no_synced_lyrics_found">No se encontró la letra sincronizada</string>
     <string name="lyrics_were_updated_successfully">La letra se actualizó correctamente.</string>
     <string name="failed_to_update_lyrics">La letra no se pudo actualizar.</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
-    <string name="lyrics_source_lrc_file">La letra sincronizada proviene de un archivo LRC. Los cambios se guardarán en ese archivo.</string>
     <string name="lyrics_source_external_file">La letra proviene de un archivo externo. No puedes editar esta letra directamente desde Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Programador de apagado</string>
@@ -529,7 +524,7 @@
     <string name="help_with_translations">Ayudar con las traducciones</string>
     <string name="help_with_translations_summary">Puedes contribuir al proyecto ayudando a traducir Booming Music a otros idiomas.</string>
     <string name="report_bugs">Reportar errores</string>
-    <string name="report_bugs_summary">Reportar bugs o pedir nuevas funciones</string>
+    <string name="report_bugs_summary">Reportar bugs o pedir nuevas funciones.</string>
     <string name="share_app">Compartir Booming Music</string>
     <string name="share_app_summary">Puedes ayudar a que Booming Music crezca si lo compartes con tus amigos.</string>
     <string name="send_invitation_message">Enviar invitación</string>
@@ -537,7 +532,7 @@
     <!-- Bug report -->
     <string name="report_an_issue">Notifique un problema</string>
     <string name="device_info">Info. del dispositivo</string>
-    <string name="copied_device_info_to_clipboard">Información del dispositivo copiada al portapapeles</string>
+    <string name="copied_device_info_to_clipboard">Información del dispositivo copiada al portapapeles.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Será redirigido a la página web del buscador de problemas.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Acceso al almacenamiento requerido</string>
@@ -566,13 +561,13 @@
     <string name="about_title">Acerca de</string>
     <string name="about_summary">Booming Music %s, toca para más info.</string>
     <!-- Preference headers -->
-    <string name="general_header">General</string>
+    <string name="general_header">Generales</string>
     <string name="library_header">Biblioteca</string>
     <string name="album_cover_header">Portada del álbum</string>
     <string name="artist_image_header">Imagen del artista</string>
     <string name="exclusion_header">Exclusiones</string>
     <string name="controls_header">Controles</string>
-    <string name="replaygain_header">ReplayGain</string>
+    <string name="replaygain_header">Ganancia de reproducción</string>
     <string name="headphones_header">Auriculares</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Foco de audio</string>
@@ -715,7 +710,7 @@
     <string name="backup_data_title">Respaldar datos</string>
     <string name="backup_app_data_summary">Crea un archivo que contiene los datos esenciales de la app y lo guarda en el almacenamiento.</string>
     <string name="restore_backup_title">Restaurar datos</string>
-    <string name="restore_backup_summary">Restaurar datos de la app desde un respaldo anterior.</string>
+    <string name="restore_backup_summary">Restaurar datos de la app (y su estado) desde un respaldo anterior.</string>
     <!-- Preference values -->
     <string name="advanced_label">Avanzado</string>
     <string name="light_theme_name">Claro</string>
@@ -731,7 +726,7 @@
     <string name="full_cover">Completa</string>
     <string name="gradient">Gradiente</string>
     <string name="peek">Lámina</string>
-    <string name="plain">Plain</string>
+    <string name="plain">Plano</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>
     <string name="corner_size_none">Ninguno</string>
@@ -764,7 +759,7 @@
     <string name="this_year">Este año</string>
     <string name="priority_maximum">Máxima</string>
     <string name="priority_high">Alta</string>
-    <string name="priority_normal">Normal</string>
+    <string name="priority_normal">Por defecto</string>
     <string name="priority_low">Baja</string>
     <string name="always">Siempre</string>
     <string name="only_on_wifi">Solo en Wi-Fi</string>
