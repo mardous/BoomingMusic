@@ -4,7 +4,7 @@
     <string name="action_play_all">Reproducir todo</string>
     <string name="action_shuffle_play">Reproducción aleatoria</string>
     <string name="action_queue_next">Siguiente en la fila</string>
-    <string name="shuffle_all_label">Shuffle all</string>
+    <string name="shuffle_all_label">Reproducir todo aleatoriamente</string>
     <string name="action_play_pause">Reproducir/Pausar</string>
     <string name="action_pause">Pausar</string>
     <string name="action_next">Siguiente</string>
@@ -12,7 +12,7 @@
     <string name="action_cancel">Cancelar</string>
     <string name="action_cycle_repeat">Cycle repeat mode</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
-    <string name="reset_action">Reset</string>
+    <string name="reset_action">Restablecer</string>
     <string name="action_more">Más</string>
     <string name="import_action">Importar</string>
     <string name="create_action">Crear</string>
@@ -27,8 +27,8 @@
     <string name="search_year_x_label">Buscar año: %s</string>
     <string name="search_in_folder_x">Buscar en la carpeta: %s</string>
     <string name="search_last_added">Buscar música más reciente</string>
-    <string name="shuffle_mode_album">Album shuffle</string>
-    <string name="shuffle_mode_artist">Artist shuffle</string>
+    <string name="shuffle_mode_album">Mezclar álbum</string>
+    <string name="shuffle_mode_artist">Mezclar artista</string>
     <string name="action_share">Compartir</string>
     <string name="action_save">Guardar</string>
     <string name="what_do_you_want_to_share">¿Qué quieres compartir?</string>
@@ -112,7 +112,6 @@
     <string name="delete_the_song_x">¿Eliminar la canción %s?</string>
     <string name="deleting_songs">Eliminando canciones, espera…</string>
     <string name="song_x_of_x">%1$d de %2$d • %3$s</string>
-    <string name="by_artist_x">de %s</string>
     <string name="no_equalizer">No equalizer found.</string>
     <string name="audio_focus_denied">Audio focus denied.</string>
     <string name="no_audio_ID">Bad audio ID.</string>
@@ -193,7 +192,6 @@
     <string name="empty_label">Empty</string>
     <string name="nothing_to_see">Nothing to see</string>
     <string name="show_album_artists">Only album artists</string>
-    <string name="library_label">Library</string>
     <string name="songs_label">Songs</string>
     <string name="albums_label">Albums</string>
     <string name="artists_label">Artists</string>
@@ -202,9 +200,6 @@
     <string name="folders_label">Folders</string>
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
-    <string name="composers_label">Composers</string>
-    <string name="conductors_label">Conductors</string>
-    <string name="publishers_label">Publishers</string>
     <string name="favorites_label">Favorites</string>
     <string name="last_added_label">Last added</string>
     <string name="top_tracks_label">Top Tracks</string>
@@ -268,7 +263,6 @@
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Save album cover</string>
     <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_no_artwork">No album cover found</string>
     <string name="save_artwork_error">Failed to save cover to local storage</string>
     <string name="save_artwork_success">Album cover saved</string>
     <string name="save_artwork_view_action">View</string>
@@ -335,8 +329,6 @@
     <string name="could_not_restore_data">Couldn\'t not restore data. Verify backup file and retry.</string>
     <string name="data_restored_successfully">Data restored successfully.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Output device</string>
-    <string name="audio_device_battery_level">Battery level: %d%% approx.</string>
     <string name="audio_device_aux_line">Aux Line</string>
     <string name="audio_device_bluetooth">Bluetooth device</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -470,8 +462,7 @@
     <string name="synced_lyrics">Synced</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Downloaded</string>
-    <string name="lrc_lyrics">LRC file</string>
-    <string name="ttml_lyrics">TTML file</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Import synced lyrics</string>
     <string name="action_share_synchronized_lyrics">Share synced lyrics</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Do you want to import synchronized LRC lyrics for <b>%s</b>?]]></string>
@@ -488,8 +479,6 @@
     <string name="no_synced_lyrics_found">No synced lyrics found</string>
     <string name="lyrics_were_updated_successfully">Lyrics were updated successfully.</string>
     <string name="failed_to_update_lyrics">Failed to update lyrics.</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
-    <string name="lyrics_source_lrc_file">Synced lyrics come from an LRC file. Changes will be saved directly to that file.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep timer</string>

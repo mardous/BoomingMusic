@@ -112,10 +112,9 @@
     <string name="delete_the_song_x">¿Eliminar la canción %s?</string>
     <string name="deleting_songs">Eliminando canciones, espera…</string>
     <string name="song_x_of_x">%1$d de %2$d • %3$s</string>
-    <string name="by_artist_x">de %s</string>
-    <string name="no_equalizer">No se encontró ningún ecualizador</string>
-    <string name="audio_focus_denied">El foco de audio fue denegado</string>
-    <string name="no_audio_ID">ID de audio erroneo</string>
+    <string name="no_equalizer">No se encontró ningún ecualizador.</string>
+    <string name="audio_focus_denied">El foco de audio fue denegado.</string>
+    <string name="no_audio_ID">ID de audio erroneo.</string>
     <string name="unplayable_file">No se pudo reproducir este archivo.</string>
     <string name="unplayable_file_code_x">No se pudo reproducir este archivo (código: %d).</string>
     <string name="permission_external_storage_title">Acceso al almacenamiento</string>
@@ -137,8 +136,8 @@
     <string name="hello_there">¡Hola!</string>
     <string name="welcome_to_x">Bienvenido a %s</string>
     <string name="get_started">Empezar</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> no está listado en el almacén multimedia]]></string>
-    <string name="some_files_are_not_listed_in_the_media_store">Algunos archivos no están listados en el almacén multimedia</string>
+    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> no está listado en el almacén multimedia.]]></string>
+    <string name="some_files_are_not_listed_in_the_media_store">Algunos archivos no están listados en el almacén multimedia.</string>
     <string name="nothing_to_scan">Nada para escanear</string>
     <string name="select_storage_title">Elija el almacenamiento</string>
     <string name="app_widget_big_name">Grande</string>
@@ -193,7 +192,6 @@
     <string name="empty_label">Vacío</string>
     <string name="nothing_to_see">Nada que mostrar</string>
     <string name="show_album_artists">Solo artistas del álbum</string>
-    <string name="library_label">Biblioteca</string>
     <string name="songs_label">Canciones</string>
     <string name="albums_label">Álbumes</string>
     <string name="artists_label">Artistas</string>
@@ -202,15 +200,12 @@
     <string name="folders_label">Carpetas</string>
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
-    <string name="composers_label">Compositores</string>
-    <string name="conductors_label">Productores</string>
-    <string name="publishers_label">Discografías</string>
     <string name="favorites_label">Favoritas</string>
     <string name="last_added_label">Últimas agregadas</string>
     <string name="top_tracks_label">Más reproducidas</string>
     <string name="history_label">Historial</string>
     <string name="not_recently_played">Sin reproducción reciente</string>
-    <string name="play_info">Info. de reproducción</string>
+    <string name="play_info">Info. de reproducción.</string>
     <string name="track_play_counts">Reproducciones por pista</string>
     <string name="song_stat_never_label">nunca escuchada</string>
     <string name="song_stat_one_time_label">escuchada una vez el %s</string>
@@ -256,7 +251,7 @@
     <string name="scan_media_message">En la mayoría de los casos, Android detecta e indexa automáticamente los archivos multimedia del dispositivo, por lo que no es necesario forzar un escaneo manual.</string>
     <string name="scan_media_positive">Escanear de todos modos</string>
     <string name="scan_finished">Escaneo completado.</string>
-    <string name="album_or_artist_empty">El álbum o artista está vacío</string>
+    <string name="album_or_artist_empty">El álbum o artista está vacío.</string>
     <string name="update_image">Actualizar imagen</string>
     <string name="restore_default">Restaurar la predeterminada</string>
     <string name="remove_cover">Remover portada</string>
@@ -268,7 +263,6 @@
     <string name="scrobbles_label">Envíos</string>
     <string name="save_cover">Guardar portada del álbum</string>
     <string name="saving_cover_please_wait">Guardando portada, espere…</string>
-    <string name="save_artwork_no_artwork">No se encontró una portada en el archivo</string>
     <string name="save_artwork_error">No se pudo guardar la portada en el almacenamiento</string>
     <string name="save_artwork_success">Portada del álbum guardada</string>
     <string name="save_artwork_view_action">Ver</string>
@@ -314,11 +308,11 @@
     <string name="edit_tags_action">Editar etiquetas</string>
     <string name="edit_lyrics_action">Editar letra</string>
     <string name="open_lyrics_editor">Abrir editor de letras</string>
-    <string name="could_not_load_the_song_information">No se pudo leer la información del archivo.</string>
+    <string name="could_not_load_the_song_information">"No se pudo leer la información del archivo."</string>
     <string name="label_with_rg_info">Con info. de RG</string>
     <string name="label_without_rg_info">Sin info. de RG</string>
     <string name="album_and_year">Álbum y año</string>
-    <string name="song_info">Info. adicional de la canción</string>
+    <string name="song_info">Info. adicional de la canción.</string>
     <string name="no_results">Sin resultados</string>
     <string name="connection_unavailable">Conexión a Internet no disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Debes seleccionar al menos una categoría</string>
@@ -328,16 +322,13 @@
     <string name="backup_settings">Ajustes</string>
     <string name="backup_synced_lyrics">Letras sincronizadas</string>
     <string name="backup_artist_images">Imágenes de artistas</string>
-    <string name="backup_playlists">Playlists</string>
+    <string name="backup_playlists">Listas de reproducción</string>
     <string name="backup_successful">¡Respaldo exitoso!</string>
     <string name="backup_failed">Respaldo fallido.</string>
     <string name="select_content_to_restore">Elija el contenido a restaurar:</string>
     <string name="could_not_restore_data">No se pudo restaurar. Verifique el archivo de respaldo y reintente.</string>
     <string name="data_restored_successfully">Datos restaurados con éxito.</string>
-
     <!-- Audio output devices-->
-    <string name="output_device_title">Dispositivo de salida</string>
-    <string name="audio_device_battery_level">Batería: %d%% aprox.</string>
     <string name="audio_device_aux_line">Línea auxiliar</string>
     <string name="audio_device_bluetooth">Disp. Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -350,50 +341,40 @@
     <string name="audio_device_usb_headset">Audífono USB</string>
     <string name="audio_device_default">Predeterminado del sistema</string>
     <string name="audio_device_unknown">Desconocido</string>
-
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Canción</item>
         <item quantity="other">Canciones</item>
-        <item quantity="many">Canciones</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Álbum</item>
         <item quantity="other">Álbumes</item>
-        <item quantity="many">Álbumes</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d canción</item>
         <item quantity="other">%d canciones</item>
-        <item quantity="many">%d canciones</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d álbum</item>
         <item quantity="other">%d álbumes</item>
-        <item quantity="many">%d álbumes</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
         <item quantity="other">%d artistas</item>
-        <item quantity="many">%d artistas</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d vez</item>
         <item quantity="other">%d veces</item>
-        <item quantity="many">%d veces</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d reproducción</item>
         <item quantity="other">%d reproducciones</item>
-        <item quantity="many">%d reproducciones</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d elemento</item>
         <item quantity="other">%d elementos</item>
-        <item quantity="many">%d elementos</item>
     </plurals>
-
-    <!-- Home -->
+    <!-- Listen now -->
     <string name="for_you_label">Para ti</string>
     <string name="shuffle_action">Aleatorio</string>
     <string name="top_artists">Artistas más escuchados</string>
@@ -401,7 +382,6 @@
     <string name="recent_artists">Artistas recientes</string>
     <string name="recent_albums">Álbumes recientes</string>
     <string name="no_suggestions">Aún no hay sugerencias para ti</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Aleatorio puro</string>
     <string name="shuffle_mode_most_played">Más reproducidas</string>
@@ -411,7 +391,6 @@
     <string name="shuffle_mode_forgotten_songs">Canciones olvidadas</string>
     <string name="shuffle_mode_recently_added">Añadidas recientemente</string>
     <string name="shuffle_mode_combined">Mezcla inteligente</string>
-
     <string name="shuffle_mode_pure_random_description">Mezcla completamente aleatoria.</string>
     <string name="shuffle_mode_most_played_description">Prioriza las canciones que más escuchas.</string>
     <string name="shuffle_mode_most_played_artists_description">Prioriza canciones de tus artistas más escuchados.</string>
@@ -420,7 +399,6 @@
     <string name="shuffle_mode_forgotten_songs_description">Prioriza canciones que no escuchas desde hace tiempo.</string>
     <string name="shuffle_mode_recently_added_description">Favorece las canciones más nuevas en tu biblioteca.</string>
     <string name="shuffle_mode_combined_description">Mezcla con múltiples factores: favoritas, uso, antigüedad.</string>
-
     <!-- Equalizer -->
     <string name="equalizer_label">Ecualizador</string>
     <string name="share_eq_configuration">Compartir configuración EQ</string>
@@ -477,7 +455,6 @@
     <string name="tempo_label">Velocidad y tono</string>
     <string name="action_external_eq">Ecualizador externo</string>
     <string name="custom">Personalizado</string>
-
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostrar letra</string>
     <string name="action_hide_lyrics">Ocultar letra</string>
@@ -485,8 +462,6 @@
     <string name="synced_lyrics">Sincronizado</string>
     <string name="embedded_lyrics">Incrustada</string>
     <string name="downloaded_lyrics">Descargada</string>
-    <string name="lrc_lyrics">Archivo LRC</string>
-    <string name="ttml_lyrics">Archivo TTML</string>
     <string name="external_file_lyrics">Archivo externo</string>
     <string name="action_import_synchronized_lyrics">Importar letra sincronizada</string>
     <string name="action_share_synchronized_lyrics">Compartir letra sincronizada</string>
@@ -504,9 +479,7 @@
     <string name="no_synced_lyrics_found">No se encontró la letra sincronizada</string>
     <string name="lyrics_were_updated_successfully">La letra se actualizó correctamente.</string>
     <string name="failed_to_update_lyrics">La letra no se pudo actualizar.</string>
-    <string name="lyrics_source_lrc_file">La letra sincronizada proviene de un archivo LRC. Los cambios se guardarán en ese archivo.</string>
     <string name="lyrics_source_external_file">La letra proviene de un archivo externo. No puedes editar esta letra directamente desde Booming Music.</string>
-
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Programador de apagado</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar temporizador actual</string>
@@ -518,12 +491,10 @@
     <string name="sleep_timer_stop_after_this_track">Detener despúes de esta pista</string>
     <string name="sleep_timer_stop_after_x">Detener después de %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Detener después de %s: cancelado</string>
-
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">Aleatorio</string>
     <string name="app_shortcut_top_tracks_short">Canciones más reproducidas</string>
     <string name="app_shortcut_last_added_short">Últimas agregadas</string>
-
     <!-- About page -->
     <string name="action_about">Acerca de</string>
     <string name="application">Aplicación</string>
@@ -532,12 +503,12 @@
     <string name="fork_on_github">Fork en GitHub</string>
     <string name="licenses">Licencias</string>
     <string name="author">Autor</string>
-    <string name="mardous_summary">Desarrollador principal</string>
+    <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">Colaboradores</string>
-    <string name="telegram_chat">Chat en Telegram</string>
     <string name="acknowledgments_title">Agradecimientos</string>
     <string name="translators_title">Traductores</string>
     <string name="translators_summary">Agradecimientos a quienes hacen posible que Booming Music esté disponible en muchos idiomas.</string>
+    <string name="telegram_chat">Chat en Telegram</string>
     <string name="telegram_chat_summary">Únase al chat de Telegram y obtenga nuevas actualizaciones y noticias.</string>
     <string name="view_profile_on_github">Ver perfil en GitHub</string>
     <string name="follow_on_telegram">DM en Telegram</string>
@@ -546,18 +517,16 @@
     <string name="help_with_translations">Ayudar con las traducciones</string>
     <string name="help_with_translations_summary">Puedes contribuir al proyecto ayudando a traducir Booming Music a otros idiomas.</string>
     <string name="report_bugs">Reportar errores</string>
-    <string name="report_bugs_summary">Reportar bugs o pedir nuevas funciones</string>
+    <string name="report_bugs_summary">Reportar bugs o pedir nuevas funciones.</string>
     <string name="share_app">Compartir Booming Music</string>
     <string name="share_app_summary">Puedes ayudar a que Booming Music crezca si lo compartes con tus amigos.</string>
     <string name="send_invitation_message">Enviar invitación</string>
     <string name="invitation_message_content">Hola. ¡Prueba Booming Music! La mejor app para reproducir tu música local en Android. Puedes descargarlo desde aquí: %s</string>
-
     <!-- Bug report -->
     <string name="report_an_issue">Notifique un problema</string>
     <string name="device_info">Info. del dispositivo</string>
-    <string name="copied_device_info_to_clipboard">Información del dispositivo copiada al portapapeles</string>
+    <string name="copied_device_info_to_clipboard">Información del dispositivo copiada al portapapeles.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Será redirigido a la página web del buscador de problemas.</string>
-
     <!-- SAF -->
     <string name="saf_access_required_title">Acceso al almacenamiento requerido</string>
     <string name="saf_access_required_message">Booming Music requiere permiso para acceder a tus archivos. Selecciona la carpeta raíz donde están almacenadas tus canciones.</string>
@@ -565,8 +534,6 @@
     <string name="saf_error_uri">No se puede obtener la URI de SAF</string>
     <string name="saf_write_failed">Error al escribir archivo: %s</string>
     <string name="saf_delete_failed">Error al borrar archivo: %s</string>
-
-    <!-- Preference screens -->
     <string name="settings_title">Ajustes</string>
     <string name="appearance_title">Apariencia</string>
     <string name="appearance_summary">Cambia el tema de la app y otros ajustes visuales.</string>
@@ -586,15 +553,14 @@
     <string name="update_summary">Ajustes de las actualizaciones de la app.</string>
     <string name="about_title">Acerca de</string>
     <string name="about_summary">Booming Music %s, toca para más info.</string>
-
     <!-- Preference headers -->
-    <string name="general_header">General</string>
+    <string name="general_header">Generales</string>
     <string name="library_header">Biblioteca</string>
     <string name="album_cover_header">Portada del álbum</string>
     <string name="artist_image_header">Imagen del artista</string>
     <string name="exclusion_header">Exclusiones</string>
     <string name="controls_header">Controles</string>
-    <string name="replaygain_header">ReplayGain</string>
+    <string name="replaygain_header">Ganancia de reproducción</string>
     <string name="headphones_header">Auriculares</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Foco de audio</string>
@@ -602,7 +568,6 @@
     <string name="shuffle_mode_header">Modo aleatorio</string>
     <string name="display_header">Vista</string>
     <string name="backup_restore_header">Respaldar/restaurar</string>
-
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema general</string>
     <string name="pure_black_theme_title">Completamente negro</string>
@@ -617,7 +582,6 @@
     <string name="tab_mode_title">Modo de títulos</string>
     <string name="hold_tab_to_search_title">Mantener pulsado para buscar</string>
     <string name="hold_tab_to_search_summary">Abre la pantalla de búsqueda al mantener presionada cualquier pestaña de la barra de navegación.</string>
-
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir al reproducir</string>
@@ -653,9 +617,8 @@
     <string name="select_extra_info_summary">Elija la información adicional a mostrar en el reproductor.</string>
     <string name="prefer_remaining_time_title">Preferir tiempo restante</string>
     <string name="prefer_remaining_time_summary">Muestra el tiempo restante de la canción en lugar de su duración.</string>
-    <string name="prefer_album_artist_name_title">Preferir Artista del álbum</string>
+    <string name="prefer_album_artist_name_title">"Preferir Artista del álbum"</string>
     <string name="prefer_album_artist_name_summary">Muestra el Artista del álbum en lugar del Artista de la canción (si está disponible).</string>
-
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reproducir al iniciar</string>
     <string name="gapless_playback_title">Reproducción sin interrupciones</string>
@@ -678,7 +641,7 @@
     <string name="artist_shuffle_mode_title">Modo de la mezcla de artistas</string>
     <string name="auto_play_on_skip_title">Auto-reproducir al saltar</string>
     <string name="auto_play_on_skip_summary">Si la reproducción está pausada, al presionar \"Anterior\" o \"Siguiente\" se iniciará la música.</string>
-    <string name="rewind_with_back_title">Rebobinar con \"Anterior\"</string>
+    <string name="rewind_with_back_title">"Rebobinar con \"Anterior\""</string>
     <string name="rewind_with_back_summary">Rebobina la canción al presionar \"Anterior\", o salta a la pista anterior si la actual está iniciando.</string>
     <string name="rewind_fast_forward_amount_title">Cantidad de retroceso/avance rápido</string>
     <string name="rewind_fast_forward_amount_summary">Tiempo (en segundos) para retroceder o avanzar rápidamente usando los botones de la IU o controles externos.</string>
@@ -694,7 +657,6 @@
     <string name="ignore_audio_focus_summary">Mantener la reproducción aún cuando otras apps estén reproduciendo audio también.</string>
     <string name="pause_on_transient_focus_loss_title">Pérdida temporal del foco de audio</string>
     <string name="pause_on_transient_focus_loss_summary">Pausa si se pierde temporalmente el foco de audio (ej. notificaciones, llamadas, etc.).</string>
-
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descargar metadatos automáticamente</string>
     <string name="ignore_media_store_album_covers_title">Ignorar las portadas del Almacén Multimedia</string>
@@ -707,7 +669,6 @@
     <string name="delete_downloaded_lyrics_title">Eliminar letras descargadas</string>
     <string name="delete_downloaded_lyrics_summary">Solo las letras descargadas por Booming Music. No afecta a las letras en etiquetas ID3v2 o archivos LRC.</string>
     <string name="lyrics_cleared">Letras eliminadas.</string>
-
     <!-- Library preferences -->
     <string name="trash_music_title">Enviar a la papelera</string>
     <string name="trash_music_summary">Enviar los archivos eliminados a la papelera.</string>
@@ -727,7 +688,6 @@
     <string name="album_min_songs_summary">Cuántas canciones debería (como mínimo) tener un álbum para aparecer en la biblioteca.</string>
     <string name="min_song_duration_title">Duración mínima de la canción</string>
     <string name="min_song_duration_summary">Cuántos segundos debería (como mínimo) durar una canción para aparecer en la biblioteca.</string>
-
     <!-- Remote preferences -->
     <string name="classic_notification_title">Diseño clásico</string>
     <string name="classic_notification_summary">Usar el diseño clásico de notificación.</string>
@@ -739,13 +699,11 @@
     <string name="album_art_on_lockscreen_summary">Usa la portada del álbum actual como fondo de la pantalla de bloqueo. Puede consumir más memoria. Varía según el dispositivo.</string>
     <string name="blurred_album_art_title">Difuminar portada</string>
     <string name="blurred_album_art_summary">Aplica un efecto de desenfoque a la portada del álbum en la pantalla de bloqueo. Desactívelo si tiene problemas con otras apps o widgets.</string>
-
     <string name="app_language_title">Idioma de la app</string>
     <string name="backup_data_title">Respaldar datos</string>
     <string name="backup_app_data_summary">Crea un archivo que contiene los datos esenciales de la app y lo guarda en el almacenamiento.</string>
     <string name="restore_backup_title">Restaurar datos</string>
-    <string name="restore_backup_summary">Restaurar datos de la app desde un respaldo anterior.</string>
-
+    <string name="restore_backup_summary">Restaurar datos de la app (y su estado) desde un respaldo anterior.</string>
     <!-- Preference values -->
     <string name="advanced_label">Avanzado</string>
     <string name="light_theme_name">Claro</string>
@@ -761,6 +719,8 @@
     <string name="full_cover">Completa</string>
     <string name="gradient">Gradiente</string>
     <string name="peek">Lámina</string>
+    <string name="plain">Plano</string>
+    <string name="m3_style">M3</string>
     <string name="normal">Normal</string>
     <string name="corner_size_none">Ninguno</string>
     <string name="corner_size_small">Pequeño</string>
@@ -792,7 +752,7 @@
     <string name="this_year">Este año</string>
     <string name="priority_maximum">Máxima</string>
     <string name="priority_high">Alta</string>
-    <string name="priority_normal">Normal</string>
+    <string name="priority_normal">Por defecto</string>
     <string name="priority_low">Baja</string>
     <string name="always">Siempre</string>
     <string name="only_on_wifi">Solo en Wi-Fi</string>
@@ -806,7 +766,6 @@
     <string name="label_never">Nunca</string>
     <string name="label_nothing">Nada</string>
     <string name="label_none">Ninguno</string>
-
     <string name="player_color_mode_app_theme_title">Tema de la app</string>
     <string name="player_color_mode_app_theme_description">Usar el mismo esquema de color que la app</string>
     <string name="player_color_mode_simple_color_title">Color simple</string>
@@ -815,7 +774,7 @@
     <string name="player_color_mode_vibrant_color_description">Tinta el fondo, textos y controles con el color del álbum</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Usa tonos de Material You basados en el color del álbum</string>
-
+    <!-- Update -->
     <string name="auto_update_title">Búsqueda auto. de actualización</string>
     <string name="every_day">Diariamente</string>
     <string name="weekly">Semanalmente</string>
@@ -835,7 +794,6 @@
     <string name="more_info_action">Más info.</string>
     <string name="download_action">Descargar</string>
     <string name="downloading_update">Descargando actualización de Booming Music.</string>
-
     <string name="uncaught_error_title">Ocurrió un error inesperado</string>
     <string name="uncaught_error_message">Sentimos la inconveniencia. Puedes revisar el reporte de error y reiniciar la app.</string>
     <string name="uncaught_error_restart_app">Reiniciar app</string>

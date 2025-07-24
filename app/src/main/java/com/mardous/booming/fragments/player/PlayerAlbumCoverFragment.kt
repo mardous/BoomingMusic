@@ -223,9 +223,9 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
             it.removeAllListeners()
         }
         animatorSet.doOnStart {
-            coverLyricsFragment?.let {
+            coverLyricsFragment?.let { fragment ->
                 childFragmentManager.beginTransaction()
-                    .setMaxLifecycle(it, Lifecycle.State.RESUMED)
+                    .setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
                     .commitAllowingStateLoss()
             }
             isShowLyricsOnCover = true
@@ -248,9 +248,9 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
             binding.viewPager.isInvisible = false
         }
         animatorSet.doOnEnd {
-            coverLyricsFragment?.let {
+            coverLyricsFragment?.let { fragment ->
                 childFragmentManager.beginTransaction()
-                    .setMaxLifecycle(it, Lifecycle.State.STARTED)
+                    .setMaxLifecycle(fragment, Lifecycle.State.STARTED)
                     .commitAllowingStateLoss()
             }
             if (isPermanent) {

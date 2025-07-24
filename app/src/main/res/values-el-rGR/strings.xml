@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Ακούω το %1$s από %2$s</string>
     <string name="share_to_stories">Μοιραστείτε τις ιστορίες</string>
     <string name="could_not_create_the_story">Δεν ήταν δυνατή η δημιουργία της ιστορίας.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Μετονομασία</string>
     <string name="add_action">Προσθήκη</string>
     <string name="delete_action">Διαγραφή</string>
@@ -111,7 +112,6 @@
     <string name="delete_the_song_x">Διαγραφή του τραγουδιού %s?</string>
     <string name="deleting_songs">Deleting songs, wait…</string>
     <string name="song_x_of_x">%1$d του %2$d • %3$s</string>
-    <string name="by_artist_x">από %s</string>
     <string name="no_equalizer">Δε βρέθηκε ισοσταθμιστής.</string>
     <string name="audio_focus_denied">Άρνηση εστίασης ήχου.</string>
     <string name="no_audio_ID">Λάθος ID ήχου.</string>
@@ -192,7 +192,6 @@
     <string name="empty_label">Κενό</string>
     <string name="nothing_to_see">Τίποτα για να δείτε</string>
     <string name="show_album_artists">Μόνο καλλιτέχνες άλμπουμ</string>
-    <string name="library_label">Βιβλιοθήκη</string>
     <string name="songs_label">Τραγούδια</string>
     <string name="albums_label">Άλμπουμ</string>
     <string name="artists_label">Καλλιτέχνες</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Φάκελοι</string>
     <string name="playlists_label">Λίστες</string>
     <string name="playlist_label">Λίστα</string>
-    <string name="composers_label">Συνθέτες</string>
-    <string name="conductors_label">Αγωγοί</string>
-    <string name="publishers_label">Εκδότες</string>
     <string name="favorites_label">Αγαπημένα</string>
     <string name="last_added_label">Τελευταία προσθήκη</string>
     <string name="top_tracks_label">Κορυφαία Κομμάτια</string>
@@ -217,6 +213,7 @@
     <string name="horizontal_albums">Οριζόντια άλμπουμ</string>
     <string name="ignore_singles">Ignore singles</string>
     <string name="compact_song_view">Compact song view</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Τύπος προβολής</string>
     <string name="view_type_normal">Κανονικό</string>
     <string name="view_type_card">Κάρτα</string>
@@ -232,6 +229,7 @@
     <string name="sort_order_year">Έτος</string>
     <string name="sort_order_duration">Διάρκεια</string>
     <string name="sort_order_date_added">Ημερομηνία προσθήκης</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Αριθμός τραγουδιών</string>
     <string name="sort_order_number_of_albums">Αριθμός άλμπουμ</string>
     <string name="sort_order_last_played_date">Ημερομηνία που παίχτηκε τελευταία</string>
@@ -265,7 +263,6 @@
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Αποθήκευση εξωφύλλου άλμπουμ</string>
     <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_no_artwork">Δεν βρέθηκε εξώφυλλο άλμπουμ</string>
     <string name="save_artwork_error">Αποτυχία αποθήκευσης εξωφύλλου στην τοπική αποθήκευση</string>
     <string name="save_artwork_success">Το εξώφυλλο άλμπουμ αποθηκεύτηκε</string>
     <string name="save_artwork_view_action">Προβολή</string>
@@ -332,8 +329,6 @@
     <string name="could_not_restore_data">Αδυναμία επαναφοράς δεδομένων. Επαλήθευση αρχείου αντιγράφου ασφαλείας και επανάληψη.</string>
     <string name="data_restored_successfully">Τα δεδομένα επαναφέρθηκαν επιτυχώς.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Συσκευή εξόδου</string>
-    <string name="audio_device_battery_level">Επίπεδο μπαταρίας: %d%% περ.</string>
     <string name="audio_device_aux_line">Γραμμή Aux</string>
     <string name="audio_device_bluetooth">Συσκευή Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -467,8 +462,7 @@
     <string name="synced_lyrics">Συγχρονισμένα</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Λήφθηκε</string>
-    <string name="lrc_lyrics">LRC αρχείο</string>
-    <string name="ttml_lyrics">TTML file</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Εισαγωγή συγχρονισμένων στίχων</string>
     <string name="action_share_synchronized_lyrics">Κοινοποίηση συγχρονισμένων στίχων</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Θέλετε να εισαγάγετε συγχρονισμένους στίχους LRC για <b>%s</b>?]]></string>
@@ -485,8 +479,7 @@
     <string name="no_synced_lyrics_found">Δεν βρέθηκαν συγχρονισμένοι στίχοι</string>
     <string name="lyrics_were_updated_successfully">Οι στίχοι ενημερώθηκαν με επιτυχία.</string>
     <string name="failed_to_update_lyrics">Αποτυχία ενημέρωσης στίχων.</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
-    <string name="lyrics_source_lrc_file">Οι συγχρονισμένοι στίχοι προέρχονται από ένα αρχείο LRC. Οι αλλαγές θα αποθηκευτούν απευθείας σε αυτό το αρχείο.</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Χρονοδιακόπτης ύπνου</string>
     <string name="sleep_timer_cancel_current_timer">Ακύρωση τρέχοντος χρονομέτρου</string>
@@ -510,6 +503,8 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Άδειες</string>
     <string name="author">Συγγραφέας</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
@@ -591,6 +586,8 @@
     <string name="now_playing_screen_title">Στυλ</string>
     <string name="open_on_play_title">Άνοιγμα κατά την αναπαραγωγή</string>
     <string name="open_on_play_summary">Επέκταση του πίνακα Τώρα Αναπαραγωγή αυτόματα μετά την έναρξη αναπαραγωγής ενός τραγουδιού.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Επιπλέον έλεγχοι</string>
     <string name="extra_controls_summary">Προσθήκη επιπλέον ελέγχων για μίνι παίκτη</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -612,7 +609,7 @@
     <string name="animate_controls_title">Εφέ κίνησης ελέγχων</string>
     <string name="animate_controls_summary">Παίζεται όταν ανοίγετε τον πίνακα του παίκτη.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Εμφάνιση ονόματος άλμπουμ</string>
     <string name="display_extra_info_title">Εμφάνιση επιπλέον πληροφοριών</string>
     <string name="display_extra_info_summary">Εμφάνιση επιπλέον πληροφοριών σχετικά με το τραγούδι, όπως bitate, μορφή, ποσοστό δειγματοληψίας, κλπ.</string>
@@ -646,6 +643,8 @@
     <string name="auto_play_on_skip_summary">Αν η αναπαραγωγή είναι σε παύση, πατώντας Προηγούμενο ή Επόμενο κουμπί θα ξεκινήσει μουσική.</string>
     <string name="rewind_with_back_title">"Επαναρύθμιση με 'Προηγούμενο'"</string>
     <string name="rewind_with_back_summary">Επαναφέρετε το κομμάτι αναπαραγωγής στην αρχή ή μετακινήστε το προηγούμενο κομμάτι αν το τρέχον βρίσκεται στην αρχή.</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Συνέχιση κατά τη σύνδεση</string>
     <string name="resume_on_connect_summary">Συνεχίζει την αναπαραγωγή όταν τα ακουστικά είναι συνδεδεμένα.</string>
     <string name="pause_on_disconnect_title">Παύση κατά την αποσύνδεση</string>

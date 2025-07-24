@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">%1$s が %2$sを聴いています</string>
     <string name="share_to_stories">ストーリーに共有</string>
     <string name="could_not_create_the_story">ストーリーを作成できませんでした。</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">名前の変更</string>
     <string name="add_action">追加</string>
     <string name="delete_action">削除</string>
@@ -111,7 +112,6 @@
     <string name="delete_the_song_x">曲 %sを削除しますか？</string>
     <string name="deleting_songs">音楽を削除しています。お待ち下さい…</string>
     <string name="song_x_of_x">%1$d の %2$d • %3$s</string>
-    <string name="by_artist_x">作成者： %s</string>
     <string name="no_equalizer">イコライザーが見つかりません。</string>
     <string name="audio_focus_denied">音声フォーカスが拒否されました。</string>
     <string name="no_audio_ID">音声IDが不正です。</string>
@@ -192,7 +192,6 @@
     <string name="empty_label">なし</string>
     <string name="nothing_to_see">表示するものがありません</string>
     <string name="show_album_artists">アルバムアーティストのみ</string>
-    <string name="library_label">ライブラリ</string>
     <string name="songs_label">曲</string>
     <string name="albums_label">アルバム</string>
     <string name="artists_label">アーティスト</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">フォルダ</string>
     <string name="playlists_label">プレイリスト</string>
     <string name="playlist_label">プレイリスト</string>
-    <string name="composers_label">作曲者</string>
-    <string name="conductors_label">指揮者</string>
-    <string name="publishers_label">出版者</string>
     <string name="favorites_label">お気に入り</string>
     <string name="last_added_label">最近追加された曲</string>
     <string name="top_tracks_label">トップトラック</string>
@@ -217,6 +213,7 @@
     <string name="horizontal_albums">横方向のアルバム</string>
     <string name="ignore_singles">シングルは無視する</string>
     <string name="compact_song_view">コンパクトな曲表示</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">表示タイプ</string>
     <string name="view_type_normal">標準</string>
     <string name="view_type_card">カード</string>
@@ -232,6 +229,7 @@
     <string name="sort_order_year">年</string>
     <string name="sort_order_duration">期間</string>
     <string name="sort_order_date_added">追加日</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">曲数</string>
     <string name="sort_order_number_of_albums">アルバムの数</string>
     <string name="sort_order_last_played_date">最後に再生した日時</string>
@@ -265,7 +263,6 @@
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">アルバムカバーを保存</string>
     <string name="saving_cover_please_wait">カバーをセーブしています。お待ち下さい…</string>
-    <string name="save_artwork_no_artwork">アルバムカバーが見つかりませんでした</string>
     <string name="save_artwork_error">ローカルストレージにカバーを保存できませんでした</string>
     <string name="save_artwork_success">アルバムカバーを保存しました</string>
     <string name="save_artwork_view_action">表示</string>
@@ -332,8 +329,6 @@
     <string name="could_not_restore_data">データを復元できませんでした。バックアップファイルを確認して再試行してください。</string>
     <string name="data_restored_successfully">データの復元に成功しました。</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">出力デバイス</string>
-    <string name="audio_device_battery_level">バッテリー残量: 約%d%%</string>
     <string name="audio_device_aux_line">Auxライン</string>
     <string name="audio_device_bluetooth">Bluetoothデバイス</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -459,8 +454,7 @@
     <string name="synced_lyrics">同期済み</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">ダウンロード済み</string>
-    <string name="lrc_lyrics">LRC ファイル</string>
-    <string name="ttml_lyrics">TTMLファイル</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">同期した歌詞をインポート</string>
     <string name="action_share_synchronized_lyrics">同期した歌詞を共有</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> の同期したLRC歌詞をインポートしますか？]]></string>
@@ -477,8 +471,7 @@
     <string name="no_synced_lyrics_found">同期された歌詞が見つかりません</string>
     <string name="lyrics_were_updated_successfully">歌詞が更新されました。</string>
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
-    <string name="lyrics_source_ttml_file">同期歌詞はTTMLファイルから取得されるため、現時点ではTTMLファイルの内容を編集することはできません。</string>
-    <string name="lyrics_source_lrc_file">同期された歌詞はLRCファイルから来ています。変更内容は直接そのファイルに保存されます。</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">スリープタイマー</string>
     <string name="sleep_timer_cancel_current_timer">現在のタイマーをキャンセル</string>
@@ -502,6 +495,8 @@
     <string name="fork_on_github">Githubでフォークする</string>
     <string name="licenses">ライセンス</string>
     <string name="author">作成者</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">謝辞</string>
     <string name="translators_title">翻訳者</string>
     <string name="translators_summary">Booming Musicを多くの言語で利用可能にしてくれた人たちに感謝します。</string>
@@ -583,6 +578,8 @@
     <string name="now_playing_screen_title">スタイル</string>
     <string name="open_on_play_title">再生中に開く</string>
     <string name="open_on_play_summary">曲の再生を開始した後、自動的に「再生中」パネルを展開します。</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">追加コントロール</string>
     <string name="extra_controls_summary">ミニプレーヤー用の追加コントロールを追加</string>
     <string name="adaptive_controls_title">アダプティブコントロール</string>
@@ -604,7 +601,7 @@
     <string name="animate_controls_title">アニメーションコントロール</string>
     <string name="animate_controls_summary">プレーヤーパネルを開くときに再生されます。</string>
     <string name="swipe_controls_title">スワイプコントロール</string>
-    <string name="swipe_controls_summary">再生画面の空白の領域で左にスワイプして前の曲に移動し、右にスワイプして次の曲に移動できます。</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">アルバム名を表示</string>
     <string name="display_extra_info_title">追加情報を表示</string>
     <string name="display_extra_info_summary">ビットレート、フォーマット、サンプリングレートなど、曲に関する追加情報を表示する。</string>
@@ -638,6 +635,8 @@
     <string name="auto_play_on_skip_summary">一時停止中に「前へ」または「次へ」ボタンをタップすると、再生を開始します。</string>
     <string name="rewind_with_back_title">"「前へ」で巻き戻す"</string>
     <string name="rewind_with_back_summary">現在のトラックが最初にある場合は、再生トラックをスタートに戻すか、前のトラックに移動します。</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">接続時に再開</string>
     <string name="resume_on_connect_summary">ヘッドフォン接続時に再生を再開します。</string>
     <string name="pause_on_disconnect_title">切断時に一時停止</string>

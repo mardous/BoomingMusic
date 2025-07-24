@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">אני מאזין ל-%1$s של %2$s</string>
     <string name="share_to_stories">שתף לסטורי</string>
     <string name="could_not_create_the_story">לא הצלחנו ליצור סטורי.</string>
+    <string name="back_action">חזרה</string>
     <string name="rename_action">שינוי שם</string>
     <string name="add_action">הוספה</string>
     <string name="delete_action">מחיקה</string>
@@ -111,7 +112,6 @@
     <string name="delete_the_song_x">למחוק את השיר %s?</string>
     <string name="deleting_songs">מוחק שירים, המתן…</string>
     <string name="song_x_of_x">%1$d מתוך %2$d • %3$s</string>
-    <string name="by_artist_x">על ידי %s</string>
     <string name="no_equalizer">לא נמצא אקולייזר.</string>
     <string name="audio_focus_denied">מיקוד שמע נדחה.</string>
     <string name="no_audio_ID">מזהה אודיו שגוי.</string>
@@ -192,7 +192,6 @@
     <string name="empty_label">ריק</string>
     <string name="nothing_to_see">אין מה להציג</string>
     <string name="show_album_artists">רק אמני אלבומים</string>
-    <string name="library_label">ספרייה</string>
     <string name="songs_label">שירים</string>
     <string name="albums_label">אלבומים</string>
     <string name="artists_label">אמנים</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">תיקיות</string>
     <string name="playlists_label">רשימות השמעה</string>
     <string name="playlist_label">רשימת השמעה</string>
-    <string name="composers_label">מלחינים</string>
-    <string name="conductors_label">מנצחים</string>
-    <string name="publishers_label">מפרסמים</string>
     <string name="favorites_label">מועדפים</string>
     <string name="last_added_label">נוספו לאחרונה</string>
     <string name="top_tracks_label">רצועות מובילות</string>
@@ -217,6 +213,7 @@
     <string name="horizontal_albums">אלבומים אופקיים</string>
     <string name="ignore_singles">התעלם מיחידים</string>
     <string name="compact_song_view">תצוגת שירים קומפקטית</string>
+    <string name="show_total_duration">הצג משך כולל</string>
     <string name="action_view_type">סוג תצוגה</string>
     <string name="view_type_normal">רגיל</string>
     <string name="view_type_card">כרטיס</string>
@@ -232,6 +229,7 @@
     <string name="sort_order_year">שנה</string>
     <string name="sort_order_duration">משך זמן</string>
     <string name="sort_order_date_added">תאריך הוספה</string>
+    <string name="sort_order_date_modified">תאריך שינוי</string>
     <string name="sort_order_number_of_songs">מספר שירים</string>
     <string name="sort_order_number_of_albums">מספר האלבומים</string>
     <string name="sort_order_last_played_date">תאריך האזנה אחרונה</string>
@@ -265,7 +263,6 @@
     <string name="scrobbles_label">סקרובלינגס</string>
     <string name="save_cover">שמור עטיפת אלבום</string>
     <string name="saving_cover_please_wait">שומר עטיפה, המתן…</string>
-    <string name="save_artwork_no_artwork">לא נמצא עטיפת אלבום</string>
     <string name="save_artwork_error">שמירת העטיפה באחסון המקומי נכשלה</string>
     <string name="save_artwork_success">עטיפת אלבום נשמרה</string>
     <string name="save_artwork_view_action">הצג</string>
@@ -332,8 +329,6 @@
     <string name="could_not_restore_data">לא ניתן היה לשחזר את הנתונים. יש לאמת את קובץ הגיבוי ולנסות שוב.</string>
     <string name="data_restored_successfully">הנתונים שוחזרו בהצלחה.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">התקן פלט</string>
-    <string name="audio_device_battery_level">רמת סוללה: %d%% בקירוב.</string>
     <string name="audio_device_aux_line">Aux Line</string>
     <string name="audio_device_bluetooth">התקן בלוטות\'</string>
     <string name="audio_device_bluetooth_a2dp">בלוטות\' A2DP</string>
@@ -483,8 +478,7 @@
     <string name="synced_lyrics">מסונכרן</string>
     <string name="embedded_lyrics">מוטבע</string>
     <string name="downloaded_lyrics">הורד</string>
-    <string name="lrc_lyrics">LRC file</string>
-    <string name="ttml_lyrics">TTML file</string>
+    <string name="external_file_lyrics">קובץ חיצוני</string>
     <string name="action_import_synchronized_lyrics">ייבוא ​​מילים מסונכרנות</string>
     <string name="action_share_synchronized_lyrics">שתף מילים מסונכרנות</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[האם ברצונך לייבא מילות LRC מסונכרנות עבור <b>%s</b>?]]></string>
@@ -501,14 +495,13 @@
     <string name="no_synced_lyrics_found">לא נמצאו מילות שיר מסונכרנות</string>
     <string name="lyrics_were_updated_successfully">מילות השיר עודכנו בהצלחה.</string>
     <string name="failed_to_update_lyrics">נכשל בעדכון מילות השיר.</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
-    <string name="lyrics_source_lrc_file">Synced lyrics come from an LRC file. Changes will be saved directly to that file.</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">טיימר שינה</string>
     <string name="sleep_timer_cancel_current_timer">בטל טיימר נוכחי</string>
     <string name="sleep_timer_cancel_current_timer_x">בטל טיימר נוכחי (%s)</string>
     <string name="sleep_timer_canceled">טיימר השינה בוטל.</string>
-    <string name="sleep_timer_set_action">Set</string>
+    <string name="sleep_timer_set_action">קבע</string>
     <string name="sleep_timer_set">Sleep timer set for %d minutes from now.</string>
     <string name="sleep_timer_finish_current_music">סיים את השיר האחרון</string>
     <string name="sleep_timer_stop_after_this_track">עצור אחרי השיר הזה</string>
@@ -526,9 +519,11 @@
     <string name="fork_on_github">קוד מקור</string>
     <string name="licenses">רשיונות</string>
     <string name="author">יוצר</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">תורמים</string>
     <string name="acknowledgments_title">הכרה</string>
     <string name="translators_title">מתרגמים</string>
-    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="translators_summary">תודה לאלו שעוזרים להפוך את Booming Music לזמין בשפות רבות.</string>
     <string name="telegram_chat">ערוץ טלגרם</string>
     <string name="telegram_chat_summary">הצטרפו לצ\'אט בטלגרם וקבלו עדכונים על מהדורות וחידושים.</string>
     <string name="view_profile_on_github">צפה בפרופיל ב-GitHub</string>
@@ -553,7 +548,7 @@
     <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
     <string name="saf_show_files_button">הצג קבצים</string>
     <string name="saf_error_uri">Can\'t get SAF URI</string>
-    <string name="saf_write_failed">File write failed: %s</string>
+    <string name="saf_write_failed">כתיבת הקובץ נכשלה: ‎%s</string>
     <string name="saf_delete_failed">מחיקת הקובץ נכשל: %s</string>
     <string name="settings_title">הגדרות</string>
     <string name="appearance_title">מראה</string>
@@ -561,36 +556,36 @@
     <string name="now_playing_title">מנגן כעת</string>
     <string name="now_playing_summary">התאם אישית את מסך הנגן הנוכחית.</string>
     <string name="playback_title">השמעה</string>
-    <string name="playback_summary">Change the sound settings, Bluetooth headsets, etc.</string>
-    <string name="metadata_title">Metadata</string>
-    <string name="metadata_summary">Settings related to album and artists images.</string>
-    <string name="library_title">Library</string>
-    <string name="library_summary">Settings for playlists and exclusion/inclusion filters.</string>
-    <string name="notification_title">Notification</string>
-    <string name="notification_summary">Customize the notification style.</string>
-    <string name="advanced_title">Advanced</string>
+    <string name="playback_summary">שנה את הגדרות הקול, אוזניות בלוטות\', וכו׳.</string>
+    <string name="metadata_title">מטאדטה</string>
+    <string name="metadata_summary">הגדרות הקשורות לתמונות אלבום ואמנים.</string>
+    <string name="library_title">ספרייה</string>
+    <string name="library_summary">הגדרות לרשימות השמעה ולמסנני הכללה/הוצאה.</string>
+    <string name="notification_title">הודעה</string>
+    <string name="notification_summary">התאם אישית את סגנון ההודעות.</string>
+    <string name="advanced_title">מתקדם</string>
     <string name="advanced_summary">In-app language and other settings for advanced users.</string>
     <string name="update_title">Update</string>
     <string name="update_summary">Settings for app updates.</string>
-    <string name="about_title">About</string>
+    <string name="about_title">אודות</string>
     <string name="about_summary">Booming Music %s, touch for more info.</string>
     <!-- Preference headers -->
-    <string name="general_header">General</string>
-    <string name="library_header">Library</string>
-    <string name="album_cover_header">Cover</string>
-    <string name="artist_image_header">Artist image</string>
-    <string name="exclusion_header">Exclusions</string>
-    <string name="controls_header">Controls</string>
+    <string name="general_header">כללי</string>
+    <string name="library_header">ספרייה</string>
+    <string name="album_cover_header">עטיפה</string>
+    <string name="artist_image_header">תמונת האמן</string>
+    <string name="exclusion_header">החרגות</string>
+    <string name="controls_header">פקדים</string>
     <string name="replaygain_header">ReplayGain</string>
     <string name="headphones_header">Headphones</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Audio focus</string>
-    <string name="lockscreen_header">Lockscreen</string>
+    <string name="lockscreen_header">מסך הנעילה</string>
     <string name="shuffle_mode_header">Shuffle mode</string>
     <string name="display_header">Display</string>
-    <string name="backup_restore_header">Backup/restore</string>
+    <string name="backup_restore_header">גיבוי / שחזור</string>
     <!-- Interface preferences -->
-    <string name="general_theme_title">General theme</string>
+    <string name="general_theme_title">ערכת נושא כללית</string>
     <string name="pure_black_theme_title">Pure Black</string>
     <string name="material_you_title">Material You</string>
     <string name="use_custom_font_title">Use Manrope font</string>
@@ -607,6 +602,8 @@
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Open on play</string>
     <string name="open_on_play_summary">Expand the Now Playing panel automatically after start playing a song.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Extra controls</string>
     <string name="extra_controls_summary">Add extra controls for mini player</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -628,7 +625,7 @@
     <string name="animate_controls_title">Animate controls</string>
     <string name="animate_controls_summary">It\'s played when opening the player panel.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Display album name</string>
     <string name="display_extra_info_title">Display extra info</string>
     <string name="display_extra_info_summary">Display extra info about the song, like bitrate, format, sampling rate, etc.</string>
@@ -662,6 +659,8 @@
     <string name="auto_play_on_skip_summary">If playback is paused, tapping Previous or Next buttons will start music.</string>
     <string name="rewind_with_back_title">"Rewind with 'Previous'"</string>
     <string name="rewind_with_back_summary">Rewind the playing track to the start or move to previous track if the current one is in the beginning.</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Resume on connect</string>
     <string name="resume_on_connect_summary">Resumes playback when headphone is connected.</string>
     <string name="pause_on_disconnect_title">Pause on disconnect</string>

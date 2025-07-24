@@ -20,6 +20,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mardous.booming.R
 import com.mardous.booming.fragments.player.PlayerColorScheme
 import com.mardous.booming.lyrics.Lyrics
@@ -31,6 +33,7 @@ import com.mardous.booming.viewmodels.library.LibraryViewModel
 import com.mardous.booming.viewmodels.lyrics.LyricsViewModel
 import com.mardous.booming.viewmodels.lyrics.model.LyricsResult
 import com.mardous.booming.viewmodels.player.PlayerViewModel
+import com.mardous.booming.viewmodels.player.model.PlayerProgress
 
 @Composable
 fun LyricsScreen(
@@ -98,7 +101,10 @@ fun CoverLyricsScreen(
     modifier: Modifier = Modifier
 ) {
     val lyricsResult by lyricsViewModel.lyricsResult.collectAsState()
-    val songProgress by playerViewModel.progressFlow.collectAsState()
+    val songProgress by playerViewModel.progressFlow.collectAsStateWithLifecycle(
+        initialValue = PlayerProgress.Unspecified,
+        minActiveState = Lifecycle.State.RESUMED
+    )
     val lyricsViewState = remember(lyricsResult.syncedLyrics) {
         LyricsViewState(lyricsResult.syncedLyrics.content)
     }

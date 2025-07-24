@@ -37,6 +37,7 @@
     <string name="currently_listening_to_x_by_x">Jeg hører på %1$s av %2$s</string>
     <string name="share_to_stories">Del med historier</string>
     <string name="could_not_create_the_story">Kan ikke opprette historien.</string>
+    <string name="back_action">Back</string>
     <string name="rename_action">Omdøp</string>
     <string name="add_action">Legg til</string>
     <string name="delete_action">Slett</string>
@@ -111,7 +112,6 @@
     <string name="delete_the_song_x">Slette sang %s?</string>
     <string name="deleting_songs">Sletter sanger, vent…</string>
     <string name="song_x_of_x">%1$d av %2$d • %3$s</string>
-    <string name="by_artist_x">av %s</string>
     <string name="no_equalizer">Ingen equalizer funnet.</string>
     <string name="audio_focus_denied">Lydfokus nektet.</string>
     <string name="no_audio_ID">Feil lyd-ID.</string>
@@ -192,7 +192,6 @@
     <string name="empty_label">Tom</string>
     <string name="nothing_to_see">Ingenting å se</string>
     <string name="show_album_artists">Bare albumartister</string>
-    <string name="library_label">Bibliotek</string>
     <string name="songs_label">Sanger</string>
     <string name="albums_label">Album</string>
     <string name="artists_label">Artister</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Mapper</string>
     <string name="playlists_label">Spillelister</string>
     <string name="playlist_label">Spilleliste</string>
-    <string name="composers_label">komponister</string>
-    <string name="conductors_label">Dirigenter</string>
-    <string name="publishers_label">Utgiverne</string>
     <string name="favorites_label">Favoritter</string>
     <string name="last_added_label">Sist lagt til</string>
     <string name="top_tracks_label">Topp sporing</string>
@@ -217,6 +213,7 @@
     <string name="horizontal_albums">Horisontale album</string>
     <string name="ignore_singles">Ignore singles</string>
     <string name="compact_song_view">Compact song view</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Vis type</string>
     <string name="view_type_normal">Vanlig</string>
     <string name="view_type_card">Kort</string>
@@ -232,6 +229,7 @@
     <string name="sort_order_year">År</string>
     <string name="sort_order_duration">Varighet</string>
     <string name="sort_order_date_added">Dato lagt til</string>
+    <string name="sort_order_date_modified">Date modified</string>
     <string name="sort_order_number_of_songs">Antall sanger</string>
     <string name="sort_order_number_of_albums">Antall album</string>
     <string name="sort_order_last_played_date">Sist avspilt dato</string>
@@ -265,7 +263,6 @@
     <string name="scrobbles_label">Scrobbler</string>
     <string name="save_cover">Lagre albumomslag</string>
     <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_no_artwork">Ingen albumomslag funnet</string>
     <string name="save_artwork_error">Kunne ikke lagre forsiden på lokal lagring</string>
     <string name="save_artwork_success">Albumforsidebilde lagret</string>
     <string name="save_artwork_view_action">Vis</string>
@@ -332,8 +329,6 @@
     <string name="could_not_restore_data">Kunne ikke gjenopprette data. Kontroller sikkerhetskopifilen og prøv på nytt.</string>
     <string name="data_restored_successfully">Data ble gjenopprettet.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Utgangs enhet</string>
-    <string name="audio_device_battery_level">Batterinivå: %d%% ca.</string>
     <string name="audio_device_aux_line">Aux linje</string>
     <string name="audio_device_bluetooth">Bluetooth enhet</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -467,8 +462,7 @@
     <string name="synced_lyrics">Synkronisert</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Nedlastet</string>
-    <string name="lrc_lyrics">LRC fil</string>
-    <string name="ttml_lyrics">TTML file</string>
+    <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importer synkroniserte tekster</string>
     <string name="action_share_synchronized_lyrics">Del synkroniserte tekster</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vil du importere synkroniserte LRC-tekster for <b>%s</b>?]]></string>
@@ -485,8 +479,7 @@
     <string name="no_synced_lyrics_found">Ingen synkroniserte tekster funnet</string>
     <string name="lyrics_were_updated_successfully">Teksten ble oppdatert.</string>
     <string name="failed_to_update_lyrics">Kunne ikke oppdatere sangtekstene.</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
-    <string name="lyrics_source_lrc_file">Synkroniserte sangtekster kommer fra en LRC-fil. Endringer vil bli lagret direkte i den filen.</string>
+    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep Timer</string>
     <string name="sleep_timer_cancel_current_timer">Avbryt gjeldende tidtaker</string>
@@ -510,6 +503,8 @@
     <string name="fork_on_github">Fork on GitHub</string>
     <string name="licenses">Lisenser</string>
     <string name="author">Forfatter</string>
+    <string name="mardous_summary">Lead Developer</string>
+    <string name="contributors">Contributors</string>
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
@@ -591,6 +586,8 @@
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Åpne ved spill</string>
     <string name="open_on_play_summary">Utvid Nå Playing panelet automatisk etter å ha startet å spille en sang.</string>
+    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
+    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Ekstra kontroller</string>
     <string name="extra_controls_summary">Legg til ekstra kontroller for mini spiller</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -612,7 +609,7 @@
     <string name="animate_controls_title">Animer kontroller</string>
     <string name="animate_controls_summary">Det spilles når spiller åpnes panelet.</string>
     <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the previous song and swipe right to go to the next song.</string>
+    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Vis albumnavn</string>
     <string name="display_extra_info_title">Vis ekstra informasjon</string>
     <string name="display_extra_info_summary">Vis ekstra informasjon om sangen, som bitrate, format, prøvetakingshastighet osv.</string>
@@ -646,6 +643,8 @@
     <string name="auto_play_on_skip_summary">Dersom avspilling er satt på pause, vil forrige eller neste knapp starte musikken.</string>
     <string name="rewind_with_back_title">"Spol tilbake med \"Forrige\""</string>
     <string name="rewind_with_back_summary">Spol tilbake spillet spillet til start eller flytt til forrige spor hvis gjeldende er i begynnelsen.</string>
+    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
     <string name="resume_on_connect_title">Gjenoppta ved tilkobling</string>
     <string name="resume_on_connect_summary">Gjenopptar avspillingen når hodetelefonen er tilkoblet.</string>
     <string name="pause_on_disconnect_title">Pause ved frakobling</string>

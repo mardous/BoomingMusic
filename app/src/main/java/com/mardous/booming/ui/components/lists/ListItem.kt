@@ -117,7 +117,9 @@ fun ContributionListItem(
             if (!contribution.description.isNullOrBlank()) {
                 MarkdownText(
                     markdown = contribution.description,
-                    style = MaterialTheme.typography.bodySmall
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    ),
                 )
             }
         }
