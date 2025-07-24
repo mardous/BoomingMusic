@@ -192,7 +192,6 @@
     <string name="empty_label">Golire</string>
     <string name="nothing_to_see">Nimic de văzut</string>
     <string name="show_album_artists">Doar artiştii album</string>
-    <string name="library_label">Bibliotecă</string>
     <string name="songs_label">Melodii</string>
     <string name="albums_label">Albume</string>
     <string name="artists_label">Artişti</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Dosare</string>
     <string name="playlists_label">Liste</string>
     <string name="playlist_label">Playlist</string>
-    <string name="composers_label">Compozitori</string>
-    <string name="conductors_label">Conductori</string>
-    <string name="publishers_label">Editori</string>
     <string name="favorites_label">Favorite</string>
     <string name="last_added_label">Ultima adăugare</string>
     <string name="top_tracks_label">Piese de top</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Fructuri</string>
     <string name="save_cover">Salvează coperta de album</string>
     <string name="saving_cover_please_wait">Se salvează coperta, așteptați…</string>
-    <string name="save_artwork_no_artwork">Nici o copertă de album găsită</string>
     <string name="save_artwork_error">Salvarea coperții la stocarea locală a eșuat</string>
     <string name="save_artwork_success">Copertă album salvată</string>
     <string name="save_artwork_view_action">Vizualizare</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Nu s-a putut restaura datele. Verificaţi fişierul copie de rezervă şi încercaţi din nou.</string>
     <string name="data_restored_successfully">Date restaurate cu succes.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Dispozitiv de ieșire</string>
-    <string name="audio_device_battery_level">Nivel baterie: %d%% aprox.</string>
     <string name="audio_device_aux_line">Linie automată</string>
     <string name="audio_device_bluetooth">Dispozitiv Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
