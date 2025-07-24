@@ -192,7 +192,6 @@
     <string name="empty_label">Prázdné</string>
     <string name="nothing_to_see">Nic k zobrazení</string>
     <string name="show_album_artists">Pouze umělci alba</string>
-    <string name="library_label">Knihovna</string>
     <string name="songs_label">Skladby</string>
     <string name="albums_label">Alba</string>
     <string name="artists_label">Umělci</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Složky</string>
     <string name="playlists_label">Seznamy stop</string>
     <string name="playlist_label">Seznam skladeb</string>
-    <string name="composers_label">Skladatelé</string>
-    <string name="conductors_label">Vodiče</string>
-    <string name="publishers_label">Vydavatelé</string>
     <string name="favorites_label">Oblíbené</string>
     <string name="last_added_label">Naposledy přidané</string>
     <string name="top_tracks_label">Nejlepší skladby</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobble</string>
     <string name="save_cover">Uložit obal alba</string>
     <string name="saving_cover_please_wait">Ukládání krytu, počkejte…</string>
-    <string name="save_artwork_no_artwork">Nebyl nalezen žádný obal alba</string>
     <string name="save_artwork_error">Nepodařilo se uložit obal do místního úložiště</string>
     <string name="save_artwork_success">Obal alba byl uložen</string>
     <string name="save_artwork_view_action">Zobrazit</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Nelze obnovit data. Ověřte záložní soubor a opakujte akci.</string>
     <string name="data_restored_successfully">Data byla úspěšně obnovena.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Výstupní zařízení</string>
-    <string name="audio_device_battery_level">Stav baterie: %d%% cca.</string>
     <string name="audio_device_aux_line">Automatická čára</string>
     <string name="audio_device_bluetooth">Bluetooth zařízení</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
