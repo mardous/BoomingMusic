@@ -112,7 +112,6 @@
     <string name="delete_the_song_x">Supprimer le titre %s ?</string>
     <string name="deleting_songs">Suppression des titres, attendez…</string>
     <string name="song_x_of_x">%1$d de %2$d • %3$s</string>
-    <string name="by_artist_x">par %s</string>
     <string name="no_equalizer">Aucun égaliseur trouvé.</string>
     <string name="audio_focus_denied">Mise au point audio refusée.</string>
     <string name="no_audio_ID">Mauvaise identification audio.</string>
@@ -470,8 +469,6 @@
     <string name="synced_lyrics">Synchronisé</string>
     <string name="embedded_lyrics">Intégré</string>
     <string name="downloaded_lyrics">Téléchargé</string>
-    <string name="lrc_lyrics">Fichier LRC</string>
-    <string name="ttml_lyrics">Fichier TTML</string>
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importer les paroles synchronisées</string>
     <string name="action_share_synchronized_lyrics">Partager les paroles synchronisées</string>
@@ -489,8 +486,6 @@
     <string name="no_synced_lyrics_found">Aucune parole synchronisée trouvée</string>
     <string name="lyrics_were_updated_successfully">Les paroles ont été mises à jour avec succès.</string>
     <string name="failed_to_update_lyrics">Impossible de mettre à jour les paroles.</string>
-    <string name="lyrics_source_ttml_file">Les paroles synchronisées proviennent d\'un fichier TTML. La modification du contenu des fichiers TTML n\'est pas encore prise en charge.</string>
-    <string name="lyrics_source_lrc_file">Les paroles synchronisées proviennent d\'un fichier LCR. Les modifications seront enregistrées directement dans ce fichier.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Minuterie</string>
