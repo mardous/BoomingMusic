@@ -112,7 +112,6 @@
     <string name="delete_the_song_x">删除歌曲 %s？</string>
     <string name="deleting_songs">正在删除歌曲，请等待…</string>
     <string name="song_x_of_x">%1$d / %2$d • %3$s</string>
-    <string name="by_artist_x">由 %s</string>
     <string name="no_equalizer">未找到均衡器。</string>
     <string name="audio_focus_denied">音频焦点被拒绝。</string>
     <string name="no_audio_ID">错误的音频ID。</string>
@@ -462,8 +461,6 @@
     <string name="synced_lyrics">已同步</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">已下载</string>
-    <string name="lrc_lyrics">LRC 文件</string>
-    <string name="ttml_lyrics">TTML文件</string>
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">导入同步歌词</string>
     <string name="action_share_synchronized_lyrics">分享同步歌词</string>
@@ -481,8 +478,6 @@
     <string name="no_synced_lyrics_found">未找到同步歌词</string>
     <string name="lyrics_were_updated_successfully">歌词更新成功。</string>
     <string name="failed_to_update_lyrics">更新歌词失败。</string>
-    <string name="lyrics_source_ttml_file">同步歌词来自TTML文件。尚不支持编辑TTML文件。</string>
-    <string name="lyrics_source_lrc_file">同步歌词来自LRC文件。更改将直接保存到该文件。</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">睡眠计时器</string>
