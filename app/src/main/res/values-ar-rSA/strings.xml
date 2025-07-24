@@ -192,7 +192,6 @@
     <string name="empty_label">فارغ</string>
     <string name="nothing_to_see">لا شيء لرؤيته</string>
     <string name="show_album_artists">فقط فناني الألبوم</string>
-    <string name="library_label">المكتبة</string>
     <string name="songs_label">الأغاني</string>
     <string name="albums_label">ألبومات</string>
     <string name="artists_label">الفنانون</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">مجلدات</string>
     <string name="playlists_label">قوائم التشغيل</string>
     <string name="playlist_label">قائمة التشغيل</string>
-    <string name="composers_label">الملحنين</string>
-    <string name="conductors_label">الموصلات</string>
-    <string name="publishers_label">الناشرون</string>
     <string name="favorites_label">المفضلة</string>
     <string name="last_added_label">آخر إضافة</string>
     <string name="top_tracks_label">أفضل المسارات</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">تمرير</string>
     <string name="save_cover">حفظ غلاف الألبوم</string>
     <string name="saving_cover_please_wait">حفظ الغلاف، انتظر…</string>
-    <string name="save_artwork_no_artwork">لم يتم العثور على غلاف الألبوم</string>
     <string name="save_artwork_error">فشل في حفظ الغطاء للتخزين المحلي</string>
     <string name="save_artwork_success">تم حفظ غلاف الألبوم</string>
     <string name="save_artwork_view_action">عرض</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">تعذر استعادة البيانات. تحقق من ملف النسخ الاحتياطي وإعادة المحاولة.</string>
     <string name="data_restored_successfully">تمت استعادة البيانات بنجاح.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">جهاز الإخراج</string>
-    <string name="audio_device_battery_level">مستوى البطارية: %d%% تقريبًا.</string>
     <string name="audio_device_aux_line">سطر Aux</string>
     <string name="audio_device_bluetooth">جهاز البلوتوث</string>
     <string name="audio_device_bluetooth_a2dp">البلوتوث A2DP</string>
