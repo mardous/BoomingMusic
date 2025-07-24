@@ -104,6 +104,7 @@
             android:layout_width="40dp"
             android:layout_gravity="center"
             android:contentDescription="@string/action_play_pause"
+            app:iconGravity="textStart"
             app:iconTint="?colorControlNormal"
             tools:icon="@drawable/ic_pause_24dp"/>
 

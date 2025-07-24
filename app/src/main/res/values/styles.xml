@@ -13,20 +13,12 @@
         <item name="roundSelector">@drawable/round_selector</item>
         <item name="rectSelector">@drawable/rect_selector</item>
         <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
-        <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
     </style>
 
     <style name="Theme.Booming.SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="MaterialButtonStyle" parent="Widget.Material3.Button">
-        <item name="iconGravity">textStart</item>
-        <item name="iconTint">?attr/colorControlNormal</item>
-        <item name="android:paddingTop">@dimen/button_padding_vertical</item>
-        <item name="android:paddingBottom">@dimen/button_padding_vertical</item>
     </style>
 
     <style name="ToolbarStyle" parent="Widget.Material3.Toolbar">
@@ -41,10 +33,6 @@
         <item name="thumbRadius">6dp</item>
         <item name="haloRadius">18dp</item>
         <item name="thumbHeight">36dp</item>
-    </style>
-
-    <style name="FloatingButtonStyle" parent="Widget.Material3.FloatingActionButton.Primary">
-        <item name="borderWidth">0dp</item>
     </style>
 
     <style name="Widget.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
@@ -91,15 +79,6 @@
         <item name="chipEndPadding">10dp</item>
         <item name="chipMinHeight">40dp</item>
         <item name="chipStartPadding">10dp</item>
-    </style>
-
-    <style name="MusicProgressSlider">
-        <item name="android:progressDrawable">@android:color/transparent</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:thumbOffset">0dp</item>
-        <item name="android:padding">0dp</item>
-        <item name="android:thumb">@drawable/progress_slider_thumb</item>
     </style>
 
     <style name="MenuButtonStyle" parent="Widget.Material3.Button.IconButton">

@@ -7,7 +7,6 @@
     <dimen name="m3_dialog_corner_size">28dp</dimen>
     <dimen name="m3_popup_window_corner_size">8dp</dimen>
 
-    <dimen name="button_padding_vertical">10dp</dimen>
     <dimen name="fab_margin_top_left_right">16dp</dimen>
     <dimen name="fab_custom_size">56dp</dimen>
     <dimen name="fab_size_padding">96dp</dimen>

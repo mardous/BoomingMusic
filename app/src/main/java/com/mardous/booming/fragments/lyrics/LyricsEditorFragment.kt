@@ -234,10 +234,10 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
                             showLyricsSelector(downloadedLyrics)
                         } else if (!downloadedLyrics.syncedLyrics.isNullOrEmpty()) {
                             binding.syncedInput.setText(downloadedLyrics.syncedLyrics)
-                            binding.toggleGroup.check(R.id.embeddedButton)
+                            binding.toggleGroup.check(R.id.externalButton)
                         } else if (!downloadedLyrics.plainLyrics.isNullOrEmpty()) {
                             binding.plainInput.setText(downloadedLyrics.plainLyrics)
-                            binding.toggleGroup.check(R.id.externalButton)
+                            binding.toggleGroup.check(R.id.embeddedButton)
                         } else {
                             downloadError()
                         }

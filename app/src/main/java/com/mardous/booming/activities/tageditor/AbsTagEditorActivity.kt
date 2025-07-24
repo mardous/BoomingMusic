@@ -68,7 +68,9 @@ abstract class AbsTagEditorActivity : AbsBaseActivity(),
         super.onCreate(savedInstanceState)
         imagePickerLauncher =
             registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { result ->
-                loadImageFromFile(result)
+                if (result != null) {
+                    loadImageFromFile(result)
+                }
             }
         writeRequestLauncher =
             registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
@@ -155,7 +157,7 @@ abstract class AbsTagEditorActivity : AbsBaseActivity(),
             .into(simpleGlideTarget)
     }
 
-    protected open fun loadImageFromFile(selectedFileUri: Uri?) {
+    protected open fun loadImageFromFile(selectedFileUri: Uri) {
         Glide.with(this).asBitmap()
             .load(selectedFileUri)
             .dontAnimate()

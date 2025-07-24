@@ -18,7 +18,6 @@
 package com.mardous.booming.activities.base
 
 import android.annotation.SuppressLint
-import android.content.ComponentName
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -56,8 +55,6 @@ import com.mardous.booming.interfaces.IBackConsumer
 import com.mardous.booming.model.CategoryInfo
 import com.mardous.booming.model.theme.NowPlayingScreen
 import com.mardous.booming.search.SearchQuery
-import com.mardous.booming.service.MusicService
-import com.mardous.booming.service.MusicServiceConnection
 import com.mardous.booming.util.*
 import com.mardous.booming.viewmodels.library.LibraryViewModel
 import com.mardous.booming.viewmodels.player.PlayerViewModel
@@ -73,10 +70,6 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
     protected val libraryViewModel: LibraryViewModel by viewModel()
     protected val playerViewModel: PlayerViewModel by viewModel()
-
-    private val musicServiceConnection: MusicServiceConnection by lazy {
-        MusicServiceConnection(this, ComponentName(this, MusicService::class.java))
-    }
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
     private lateinit var nowPlayingScreen: NowPlayingScreen
@@ -152,21 +145,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             }
         }
 
-        musicServiceConnection.isConnected.observe(this) { isConnected ->
-            onMediaBrowserConnectionStateChanged(isConnected)
-        }
-
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        musicServiceConnection.connect()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        musicServiceConnection.disconnect()
     }
 
     override fun onResume() {
@@ -187,9 +166,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         Preferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 
-    protected open fun onMediaBrowserConnectionStateChanged(isConnected: Boolean) {
-        playerViewModel.setMediaController(musicServiceConnection.mediaController)
-    }
+    protected open fun onMediaBrowserConnectionStateChanged(isConnected: Boolean) {}
 
     private fun setupNavigationView() {
         navigationView.labelVisibilityMode = Preferences.bottomTitlesMode

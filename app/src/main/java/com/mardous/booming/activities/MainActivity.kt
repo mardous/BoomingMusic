@@ -27,6 +27,7 @@ import com.mardous.booming.activities.base.AbsSlidingMusicPanelActivity
 import com.mardous.booming.appshortcuts.DynamicShortcutManager
 import com.mardous.booming.dialogs.UpdateDialog
 import com.mardous.booming.extensions.currentFragment
+import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.navigation.isValidCategory
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.whichFragment
@@ -55,6 +56,14 @@ class MainActivity : AbsSlidingMusicPanelActivity() {
 
         // Set up dynamic shortcuts
         DynamicShortcutManager(this).initDynamicShortcuts()
+
+        launchAndRepeatWithViewLifecycle {
+            playerViewModel.isConnected.collect { isConnected ->
+                if (isConnected) {
+                    intent?.let { handlePlaybackIntent(it, true) }
+                }
+            }
+        }
 
         prepareUpdateViewModel()
     }
@@ -157,13 +166,6 @@ class MainActivity : AbsSlidingMusicPanelActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handlePlaybackIntent(intent, false)
-    }
-
-    override fun onMediaBrowserConnectionStateChanged(isConnected: Boolean) {
-        super.onMediaBrowserConnectionStateChanged(isConnected)
-        if (isConnected) {
-            intent?.let { handlePlaybackIntent(it, true) }
-        }
     }
 
     private fun handlePlaybackIntent(intent: Intent, canRestorePlayback: Boolean) {

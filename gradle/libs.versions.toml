@@ -2,7 +2,7 @@
 androidPluginVersion = "8.11.1"
 kspPluginVersion = "2.2.0-2.0.2"
 gmsPluginVersion ="4.4.3"
-crashlyticsPluginVersion = "3.0.4"
+crashlyticsPluginVersion = "3.0.5"
 kotlinVersion = "2.2.0"
 kotlinCoroutinesVersion = "1.10.2"
 aboutlibraries = "13.0.0-a01"
@@ -58,7 +58,7 @@ core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = 
 material-components = { module = "com.google.android.material:material", version.ref = "material" }
 
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
-firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics-ktx" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
 
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinDatetime" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutinesVersion" }

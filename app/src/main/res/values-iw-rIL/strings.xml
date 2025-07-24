@@ -548,7 +548,7 @@
     <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
     <string name="saf_show_files_button">הצג קבצים</string>
     <string name="saf_error_uri">Can\'t get SAF URI</string>
-    <string name="saf_write_failed">כתיבת הקובץ נכשלה: ‎%s</string>
+    <string name="saf_write_failed">File write failed: %s</string>
     <string name="saf_delete_failed">מחיקת הקובץ נכשל: %s</string>
     <string name="settings_title">הגדרות</string>
     <string name="appearance_title">מראה</string>

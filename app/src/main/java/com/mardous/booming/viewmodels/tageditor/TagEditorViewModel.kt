@@ -36,8 +36,8 @@ class TagEditorViewModel(
     private val _tagResult = MutableLiveData<TagEditorResult>()
     val tagResult: LiveData<TagEditorResult> = _tagResult
 
-    private val _artworkResult = MutableLiveData<Picture>()
-    val artworkResult: LiveData<Picture> = _artworkResult
+    private val _artworkResult = MutableLiveData<Picture?>()
+    val artworkResult: LiveData<Picture?> = _artworkResult
 
     val uris get() = target.contents.map { it.uri }
 
@@ -82,12 +82,7 @@ class TagEditorViewModel(
                 )
                 _tagResult.postValue(newValue)
             }
-            if (metadataReader.hasPictures) {
-                val picture = metadataReader.frontCover()
-                if (picture != null) {
-                    _artworkResult.postValue(picture)
-                }
-            }
+            _artworkResult.postValue(metadataReader.frontCover())
         }
     }
 

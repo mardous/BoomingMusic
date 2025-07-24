@@ -17,6 +17,7 @@
 
 package com.mardous.booming
 
+import android.content.ComponentName
 import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.mardous.booming.androidauto.AutoMusicProvider
@@ -34,6 +35,8 @@ import com.mardous.booming.http.provideOkHttp
 import com.mardous.booming.model.Genre
 import com.mardous.booming.providers.MediaStoreWriter
 import com.mardous.booming.repository.*
+import com.mardous.booming.service.MusicService
+import com.mardous.booming.service.MusicServiceConnection
 import com.mardous.booming.service.equalizer.EqualizerManager
 import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.service.queue.QueueManager
@@ -96,6 +99,11 @@ private val mainModule = module {
     }
     single {
         PreferenceManager.getDefaultSharedPreferences(androidContext())
+    }
+    single {
+        MusicServiceConnection(
+            context = androidContext(),
+            serviceComponent = ComponentName(androidContext(), MusicService::class.java))
     }
     single {
         EqualizerManager(context = androidContext())
@@ -235,6 +243,7 @@ private val viewModule = module {
 
     viewModel {
         PlayerViewModel(
+            serviceConnection = get(),
             queueManager = get(),
             playbackManager = get(),
             saveCoverWorker = get()

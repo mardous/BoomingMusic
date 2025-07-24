@@ -213,7 +213,7 @@
     <string name="horizontal_albums">Yatay albümler</string>
     <string name="ignore_singles">Teklileri yoksay</string>
     <string name="compact_song_view">Kompakt şarkı görünümü</string>
-    <string name="show_total_duration">Toplam süreyi göster</string>
+    <string name="show_total_duration">Show total duration</string>
     <string name="action_view_type">Görünüm türü</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Kart</string>

@@ -52,8 +52,8 @@ fun List<Song>.getSpannedTitles(context: Context): List<CharSequence> {
                 append(SpannableString(it.title).apply {
                     setSpan(primaryColorSpan, 0, length, 0)
                 })
-                append(" ")
-                append(SpannableString(context.getString(R.string.by_artist_x, it.albumArtistName)).apply {
+                append(DEFAULT_INFO_DELIMITER)
+                append(SpannableString(it.albumArtistName).apply {
                     setSpan(secondaryColorSpan, 0, length, 0)
                 })
             }

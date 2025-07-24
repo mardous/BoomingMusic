@@ -130,12 +130,10 @@ class ArtistTagEditorActivity : AbsTagEditorActivity() {
         }
     }
 
-    override fun loadImageFromFile(selectedFileUri: Uri?) {
+    override fun loadImageFromFile(selectedFileUri: Uri) {
         super.loadImageFromFile(selectedFileUri)
-        if (selectedFileUri != null) {
-            viewModel.requestArtist().observe(this) { artist ->
-                artist.setCustomImage(selectedFileUri)
-            }
+        viewModel.requestArtist().observe(this) { artist ->
+            artist.setCustomImage(selectedFileUri)
         }
     }
 
