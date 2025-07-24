@@ -192,7 +192,6 @@
     <string name="empty_label">Tom</string>
     <string name="nothing_to_see">Intet at se</string>
     <string name="show_album_artists">Kun albumkunstnere</string>
-    <string name="library_label">Bibliotek</string>
     <string name="songs_label">Sange</string>
     <string name="albums_label">Albummer</string>
     <string name="artists_label">Kunstnere</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Mapper</string>
     <string name="playlists_label">Afspilningslister</string>
     <string name="playlist_label">Afspilningsliste</string>
-    <string name="composers_label">Komponister</string>
-    <string name="conductors_label">Ledere</string>
-    <string name="publishers_label">Forlag</string>
     <string name="favorites_label">Favoritter</string>
     <string name="last_added_label">Sidst tilføjet</string>
     <string name="top_tracks_label">Top Spor</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbler</string>
     <string name="save_cover">Gem albumcover</string>
     <string name="saving_cover_please_wait">Gemmer dæksel, vent…</string>
-    <string name="save_artwork_no_artwork">Intet album cover fundet</string>
     <string name="save_artwork_error">Kunne ikke gemme omslag til lokalt lager</string>
     <string name="save_artwork_success">Album cover gemt</string>
     <string name="save_artwork_view_action">Vis</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Kunne ikke gendanne data. Kontroller backupfil og prøv igen.</string>
     <string name="data_restored_successfully">Data gendannet med succes.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Output enhed</string>
-    <string name="audio_device_battery_level">Batteriniveau: %d%% ca.</string>
     <string name="audio_device_aux_line">Aux Linje</string>
     <string name="audio_device_bluetooth">Bluetooth enhed</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
