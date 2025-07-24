@@ -112,7 +112,6 @@
     <string name="delete_the_song_x">क्या आप गीत %s हटाना चाहते हैं?</string>
     <string name="deleting_songs">गाने हटा रहे हैं, रुको…</string>
     <string name="song_x_of_x">%1$d में से %2$d • %3$s</string>
-    <string name="by_artist_x">द्वारा %s</string>
     <string name="no_equalizer">कोई समानांतर नहीं मिला।</string>
     <string name="audio_focus_denied">ऑडियो फोकस अस्वीकृत।</string>
     <string name="no_audio_ID">खराब ऑडियो आईडी।</string>
@@ -468,8 +467,6 @@
     <string name="synced_lyrics">सिंक्रनाइज़ किया गया</string>
     <string name="embedded_lyrics">एम्बेडेड</string>
     <string name="downloaded_lyrics">डाउनलोड किया गया</string>
-    <string name="lrc_lyrics">एलआरसी फ़ाइल</string>
-    <string name="ttml_lyrics">TTML file</string>
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">सिंक्रनाइज़ की गई लिरिक्स इंपोर्ट करें</string>
     <string name="action_share_synchronized_lyrics">सिंक्रोनाइज़ की गई लिरिक्स शेयर करें</string>
@@ -487,8 +484,6 @@
     <string name="no_synced_lyrics_found">कोई समन्वित गीत के बोल नहीं मिले</string>
     <string name="lyrics_were_updated_successfully">गाने के बोल सफलतापूर्वक अपडेट कर दिए गए।</string>
     <string name="failed_to_update_lyrics">गीत का अपडेट करना असफल रहा।</string>
-    <string name="lyrics_source_ttml_file">Synced lyrics come from an TTML file. Editing content of TTML files is not supported yet.</string>
-    <string name="lyrics_source_lrc_file">सिंक की गई गीतों की पंक्तियाँ एक LRC फ़ाइल से आती हैं। परिवर्तन सीधे उस फ़ाइल में सहेजे जाएंगे।</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">स्लीप टाइमर</string>
