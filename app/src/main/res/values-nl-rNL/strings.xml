@@ -192,7 +192,6 @@
     <string name="empty_label">Leeg</string>
     <string name="nothing_to_see">Niets te bekijken</string>
     <string name="show_album_artists">Alleen album artiesten</string>
-    <string name="library_label">Bibliotheek</string>
     <string name="songs_label">Nummers</string>
     <string name="albums_label">Albums</string>
     <string name="artists_label">Artiesten</string>
@@ -201,9 +200,6 @@
     <string name="folders_label">Mappen</string>
     <string name="playlists_label">Afspeellijsten</string>
     <string name="playlist_label">Afspeellijst</string>
-    <string name="composers_label">Componisten</string>
-    <string name="conductors_label">Leiders</string>
-    <string name="publishers_label">Uitgevers</string>
     <string name="favorites_label">Favorieten</string>
     <string name="last_added_label">Laatst toegevoegd</string>
     <string name="top_tracks_label">Top Nummers</string>
@@ -267,7 +263,6 @@
     <string name="scrobbles_label">Scrobbels</string>
     <string name="save_cover">Albumhoes opslaan</string>
     <string name="saving_cover_please_wait">Albumcover aan het opslaan, gelieve te wachten…</string>
-    <string name="save_artwork_no_artwork">Geen albumhoes gevonden</string>
     <string name="save_artwork_error">Opslaan omslag in lokale opslag mislukt</string>
     <string name="save_artwork_success">Albumhoes opgeslagen</string>
     <string name="save_artwork_view_action">Bekijken</string>
@@ -334,8 +329,6 @@
     <string name="could_not_restore_data">Kan gegevens niet herstellen. Controleer het back-upbestand en probeer het opnieuw.</string>
     <string name="data_restored_successfully">Gegevens succesvol hersteld.</string>
     <!-- Audio output devices-->
-    <string name="output_device_title">Uitvoer apparaat</string>
-    <string name="audio_device_battery_level">Batterijniveau: %d%% ca.</string>
     <string name="audio_device_aux_line">Aux Lijn</string>
     <string name="audio_device_bluetooth">Bluetooth apparaat</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
