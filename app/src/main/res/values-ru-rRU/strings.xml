@@ -636,7 +636,7 @@
     <string name="prefer_album_artist_name_title">"Предпочитать имя исполнителя альбома"</string>
     <string name="prefer_album_artist_name_summary">Показывает имя исполнителя альбома вместо исполнителя песни (если доступно).</string>
     <!-- Playback preferences -->
-    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_title">Проигрывать при запуске</string>
     <string name="gapless_playback_title">Воспроизведение без перехвата</string>
     <string name="gapless_playback_summary">Плавный переход между песнями. Может вызвать проблемы с воспроизведением на некоторых устройствах.</string>
     <string name="crossfade_title">Перекрестный переход (экспериментально)</string>
@@ -738,7 +738,7 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Обычный</string>
-    <string name="corner_size_none">None</string>
+    <string name="corner_size_none">Нет</string>
     <string name="corner_size_small">Маленький</string>
     <string name="corner_size_medium">Средний</string>
     <string name="corner_size_large">Большой</string>
@@ -775,7 +775,7 @@
     <string name="image_size_large">Большой (медленнее)</string>
     <string name="image_size_medium">Средний (по умолчанию, рекомендуется)</string>
     <string name="image_size_small">Маленькое (быстрее, низкое качество)</string>
-    <string name="play_on_startup_mode_never">Never play on startup</string>
+    <string name="play_on_startup_mode_never">Никогда не проигрывать при запуске</string>
     <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
     <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">По умолчанию</string>
@@ -783,9 +783,9 @@
     <string name="label_nothing">Ничего</string>
     <string name="label_none">Нет</string>
     <string name="player_color_mode_app_theme_title">Тема приложения</string>
-    <string name="player_color_mode_app_theme_description">Use the app\'s color scheme</string>
+    <string name="player_color_mode_app_theme_description">Использовать цветовую схему приложения</string>
     <string name="player_color_mode_simple_color_title">Simple color</string>
-    <string name="player_color_mode_simple_color_description">Extract the album color and apply it to some controls</string>
+    <string name="player_color_mode_simple_color_description">Извлечь цвет альбома и применить его к некоторым элементам управления</string>
     <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
     <string name="player_color_mode_vibrant_color_description">Tint background, text, and controls with the album color</string>
     <string name="player_color_mode_material_you_title">Material You</string>
