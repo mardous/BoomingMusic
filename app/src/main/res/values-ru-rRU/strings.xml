@@ -25,7 +25,7 @@
     <string name="search_list_x_label">Список поиска: %s</string>
     <string name="search_from_x_label">Искать из \"%s\"</string>
     <string name="search_year_x_label">Искать год: %s</string>
-    <string name="search_in_folder_x">Search in folder: %s</string>
+    <string name="search_in_folder_x">Найти в папке: %s</string>
     <string name="search_last_added">Поиск последней музыки</string>
     <string name="shuffle_mode_album">Перемешать альбом</string>
     <string name="shuffle_mode_artist">Перемещать исполнителя</string>
@@ -37,7 +37,7 @@
     <string name="currently_listening_to_x_by_x">Я слушаю %1$s от %2$s</string>
     <string name="share_to_stories">Поделиться с историями</string>
     <string name="could_not_create_the_story">Не удалось создать историю.</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">Назад</string>
     <string name="rename_action">Переименовать</string>
     <string name="add_action">Добавить</string>
     <string name="delete_action">Удалить</string>
@@ -70,7 +70,7 @@
     <string name="history_cleared">История очищена</string>
     <string name="create_a_playlist">Будет создан пустой плейлист. Вы можете добавить песни позже.</string>
     <string name="create_a_playlist_with_one_song">Будет создан плейлист и к нему будет добавлена одна песня.</string>
-    <string name="create_a_playlist_with_x_songs">A playlist will be created and %d songs will be added automatically.</string>
+    <string name="create_a_playlist_with_x_songs">Будет создан список воспроизведения, и композиции %d будут добавлены автоматически.</string>
     <string name="playlist_name_empty">Имя плейлиста</string>
     <string name="saved_playlist_x">Сохраненный плейлист %s.</string>
     <string name="failed_to_save_playlist">Не удалось сохранить плейлист.</string>
@@ -116,7 +116,7 @@
     <string name="audio_focus_denied">Аудиофокус отклонен.</string>
     <string name="no_audio_ID">Неверный ID аудио.</string>
     <string name="unplayable_file">Не удалось воспроизвести эту песню.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
+    <string name="unplayable_file_code_x">Не удалось воспроизвести эту композицию (код: %d).</string>
     <string name="permission_external_storage_title">Доступ к памяти</string>
     <string name="permission_external_storage_description">Приложению требуется разрешение на доступ к хранилищу вашего устройства для воспроизведения музыки</string>
     <string name="permission_external_storage_denied">Вы должны предоставить разрешение на доступ к внешнему накопителю.</string>
@@ -159,7 +159,7 @@
     <string name="toggle_favorite">Добавить/Удалить из избранного</string>
     <string name="action_add_to_playlist">Добавить в плейлист</string>
     <string name="action_remove_from_playlist">Удалить из плейлиста</string>
-    <string name="action_add_to_playing_queue">Add to queue</string>
+    <string name="action_add_to_playing_queue">Добавить в очередь</string>
     <string name="action_remove_from_playing_queue">Удалить из очереди воспроизведения</string>
     <string name="x_removed_from_playing_queue">%s удалена</string>
     <string name="put_after_current_track">Поместить после текущего трека</string>
@@ -211,9 +211,9 @@
     <string name="song_stat_one_time_label">играл один раз на %s</string>
     <string name="song_stat_label">сыграно %1$d раз, последний был на %2$s</string>
     <string name="horizontal_albums">Горизонтальные альбомы</string>
-    <string name="ignore_singles">Ignore singles</string>
-    <string name="compact_song_view">Compact song view</string>
-    <string name="show_total_duration">Show total duration</string>
+    <string name="ignore_singles">Игнорировать одиночные</string>
+    <string name="compact_song_view">Компактный просмотр композиции</string>
+    <string name="show_total_duration">Показать общую продолжительность</string>
     <string name="action_view_type">Просмотр типа</string>
     <string name="view_type_normal">Обычный</string>
     <string name="view_type_card">Карта</string>
@@ -229,7 +229,7 @@
     <string name="sort_order_year">Год</string>
     <string name="sort_order_duration">Продолжительность</string>
     <string name="sort_order_date_added">Дата добавления</string>
-    <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_date_modified">Дата изменения</string>
     <string name="sort_order_number_of_songs">Количество песен</string>
     <string name="sort_order_number_of_albums">Количество альбомов</string>
     <string name="sort_order_last_played_date">Дата последнего воспроизведения</string>
@@ -248,9 +248,9 @@
     <string name="new_start_directory">Новая начальная директория: %s</string>
     <string name="action_scan">Сканировать</string>
     <string name="scan_media">Сканировать медиа</string>
-    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
-    <string name="scan_media_positive">Scan anyway</string>
-    <string name="scan_finished">Scan finished.</string>
+    <string name="scan_media_message">В большинстве случаев Android автоматически обнаруживает и индексирует медиафайлы на вашем устройстве, поэтому ручное сканирование обычно не требуется.</string>
+    <string name="scan_media_positive">Сканировать в любом случае</string>
+    <string name="scan_finished">Сканирование завершено.</string>
     <string name="album_or_artist_empty">Поля названия альбома или исполнителя пусты.</string>
     <string name="update_image">Обновить изображение</string>
     <string name="restore_default">Восстановить по умолчанию</string>
@@ -304,7 +304,7 @@
     <string name="disc">Диск</string>
     <string name="disc_total">Всего дисков</string>
     <string name="lyrics">Тексты песен</string>
-    <string name="lyricist">Авторист</string>
+    <string name="lyricist">Автор текста песни</string>
     <string name="edit_tags_action">Изменить теги</string>
     <string name="edit_lyrics_action">Изменить текст песни</string>
     <string name="open_lyrics_editor">Открыть редактор текстов</string>
@@ -358,7 +358,7 @@
         <item quantity="one">%d song</item>
         <item quantity="few">%d songs</item>
         <item quantity="many">%d songs</item>
-        <item quantity="other">%d songs</item>
+        <item quantity="other">%d композиций</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d альбом</item>
@@ -388,7 +388,7 @@
         <item quantity="one">%d item</item>
         <item quantity="few">%d items</item>
         <item quantity="many">%d items</item>
-        <item quantity="other">%d items</item>
+        <item quantity="other">%d элементы</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Для вас</string>
@@ -403,9 +403,9 @@
     <string name="shuffle_mode_most_played">Most played</string>
     <string name="shuffle_mode_most_played_artists">Самые прослушиваемые исполнители</string>
     <string name="shuffle_mode_most_played_albums">Most played albums</string>
-    <string name="shuffle_mode_favorite_songs">Favorites first</string>
+    <string name="shuffle_mode_favorite_songs">Сначала избранное</string>
     <string name="shuffle_mode_forgotten_songs">Forgotten songs</string>
-    <string name="shuffle_mode_recently_added">Recently added</string>
+    <string name="shuffle_mode_recently_added">Недавно добавленные</string>
     <string name="shuffle_mode_combined">Smart mix</string>
     <string name="shuffle_mode_pure_random_description">Completely random shuffle.</string>
     <string name="shuffle_mode_most_played_description">Favors your most played songs.</string>
@@ -478,7 +478,7 @@
     <string name="synced_lyrics">Синхронизировано</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Загружено</string>
-    <string name="external_file_lyrics">External file</string>
+    <string name="external_file_lyrics">Внешний файл</string>
     <string name="action_import_synchronized_lyrics">Импортировать синхронизированные тексты</string>
     <string name="action_share_synchronized_lyrics">Поделиться синхронизированными текстами</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Вы хотите импортировать синхронизированные тексты песен LRC для <b>%s</b>?]]></string>
@@ -495,7 +495,7 @@
     <string name="no_synced_lyrics_found">Синхронизированные тексты не найдены</string>
     <string name="lyrics_were_updated_successfully">Тексты песен были успешно обновлены.</string>
     <string name="failed_to_update_lyrics">Не удалось обновить текст песни.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
+    <string name="lyrics_source_external_file">Текст песни взят из внешнего файла. Вы не можете редактировать этот файл непосредственно из Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Таймер сна</string>
     <string name="sleep_timer_cancel_current_timer">Отменить текущий таймер</string>
@@ -545,7 +545,7 @@
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Вы будете перенаправлены на сайт отслеживания ошибок.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Требуется доступ к хранилищу</string>
-    <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
+    <string name="saf_access_required_message">Для доступа к этим файлам Booming Music требуется разрешение. Пожалуйста, выберите корневую папку, в которой хранятся ваши музыкальные файлы.</string>
     <string name="saf_show_files_button">Показать файлы</string>
     <string name="saf_error_uri">Не удалось получить SAF URI</string>
     <string name="saf_write_failed">Запись файла не удалась: %s</string>
@@ -558,7 +558,7 @@
     <string name="playback_title">Воспроизведение</string>
     <string name="playback_summary">Изменение настроек звука, гарнитуры Bluetooth и т.д.</string>
     <string name="metadata_title">Метаданные</string>
-    <string name="metadata_summary">Настройки, связанные с альбомом и изображениями исполнителей.</string>
+    <string name="metadata_summary">Настройки, связанные с альбомом и обложкой исполнителей.</string>
     <string name="library_title">Библиотека</string>
     <string name="library_summary">Настройки плейлистов и фильтров исключения/включения.</string>
     <string name="notification_title">Уведомление</string>
@@ -607,25 +607,25 @@
     <string name="extra_controls_title">Дополнительные элементы управления</string>
     <string name="extra_controls_summary">Добавить дополнительные элементы управления для мини-плеера</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
-    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
+    <string name="adaptive_controls_summary">Элементы управления на мини-плеере меняются в соответствии с текущим стилем проигрывателя.</string>
     <string name="swipe_to_dismiss_title">Проведите для отмены</string>
     <string name="swipe_to_dismiss_summary">Смахните вниз мини-плеер, чтобы остановить воспроизведение и очистить очереди воспроизведения.</string>
     <string name="circle_button_title">Круговая кнопка</string>
     <string name="swipe_album_cover_title">Смахните обложку альбома</string>
     <string name="swipe_album_cover_summary">Проведите пальцем влево и вправо на обложке альбома, чтобы пропустить между песнями.</string>
-    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
+    <string name="single_tap_on_album_cover_title">Однократное нажатие на обложку</string>
     <string name="double_tap_on_album_cover_title">Двойное нажатие на обложке</string>
     <string name="long_press_on_album_cover_title">Долгое нажатие на обложке</string>
-    <string name="now_playing_corner_radius_title">Image corner radius</string>
-    <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
-    <string name="carousel_effect_title">Carousel effect</string>
+    <string name="now_playing_corner_radius_title">Радиус угла изображения</string>
+    <string name="now_playing_corner_radius_summary">Определяет, насколько закругленными должны быть углы обложки альбома.</string>
+    <string name="carousel_effect_title">Эффект карусели</string>
     <string name="album_cover_effect_title">Эффект обложки альбома</string>
     <string name="lyrics_on_album_cover_title">Тексты песен на обложке</string>
     <string name="lyrics_on_album_cover_summary">Показывать текст песни вместо обложки, когда он доступен.</string>
     <string name="animate_controls_title">Анимация элементов управления</string>
     <string name="animate_controls_summary">Это игралось при открытии панели игрока.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_controls_title">Элементы управления жестами</string>
+    <string name="swipe_controls_summary">На экране воспроизведения любом пустом месте проведите пальцем влево, чтобы перейти к следующей песне, или проведите пальцем вправо, чтобы перейти к предыдущей песне.</string>
     <string name="display_album_name_title">Показывать имя альбома</string>
     <string name="display_extra_info_title">Показать дополнительную информацию</string>
     <string name="display_extra_info_summary">Дополнительные сведения о песне, такие как битрейт, формат, частота дискретизации и т.д.</string>
@@ -660,7 +660,7 @@
     <string name="rewind_with_back_title">"Вернуться на «Предыдущий»"</string>
     <string name="rewind_with_back_summary">Перемотать проигрывающую дорожку на начало или перемещение на предыдущий трек, если текущий трек находится в начале.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
+    <string name="rewind_fast_forward_amount_summary">Время (в секундах) для перемотки назад или перемотки вперед с помощью пользовательского интерфейса или внешних элементов управления.</string>
     <string name="resume_on_connect_title">Возобновить при подключении</string>
     <string name="resume_on_connect_summary">Возобновляет воспроизведение при подключении наушников.</string>
     <string name="pause_on_disconnect_title">Пауза при отключении</string>
@@ -679,16 +679,16 @@
     <string name="ignore_media_store_album_covers_summary">Это может помочь увеличить качество изображений, но потребовать больше памяти.</string>
     <string name="use_folder_album_cover_title">Использовать изображения папок</string>
     <string name="use_folder_album_cover_summary">Если аудио файл не содержит встроенной обложки. Загрузка изображений может занять чуть больше времени.</string>
-    <string name="online_artist_images_title">Скачать изображения исполнителя</string>
+    <string name="online_artist_images_title">Скачать изображение исполнителя</string>
     <string name="online_artist_images_summary">Это зависит от вашей политики загрузки метаданных.</string>
-    <string name="preferred_artist_image_size_title">Предпочтительный размер изображения</string>
+    <string name="preferred_artist_image_size_title">Предпочтительный размер обложки</string>
     <string name="delete_downloaded_lyrics_title">Удалить загруженные тексты песен</string>
     <string name="delete_downloaded_lyrics_summary">Только слова песни Booming Music. Не влияет на тексты, включенные в тэги ID3v2 или LRC файлы.</string>
     <string name="lyrics_cleared">Текст песни очищен.</string>
     <!-- Library preferences -->
     <string name="trash_music_title">Отправить в корзину</string>
     <string name="trash_music_summary">Отправлять удаленные файлы в корзину.</string>
-    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
+    <string name="recursive_folder_actions_title">Действия, влияющие на вложенные папки</string>
     <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
     <string name="enable_history_title">Включить историю</string>
     <string name="enable_history_summary">Позволяет приложению записывать прослушиваемые песни. Если вы отключите ее, вся история будет удалена.</string>
