@@ -558,7 +558,7 @@
     <string name="playback_title">Воспроизведение</string>
     <string name="playback_summary">Изменение настроек звука, гарнитуры Bluetooth и т.д.</string>
     <string name="metadata_title">Метаданные</string>
-    <string name="metadata_summary">Настройки, связанные с альбомом и обложкой исполнителей.</string>
+    <string name="metadata_summary">Настройки, связанные с альбомом и изображениями исполнителей.</string>
     <string name="library_title">Библиотека</string>
     <string name="library_summary">Настройки плейлистов и фильтров исключения/включения.</string>
     <string name="notification_title">Уведомление</string>
@@ -606,7 +606,7 @@
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Дополнительные элементы управления</string>
     <string name="extra_controls_summary">Добавить дополнительные элементы управления для мини-плеера</string>
-    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_title">Адаптивные элементы управления</string>
     <string name="adaptive_controls_summary">Элементы управления на мини-плеере меняются в соответствии с текущим стилем проигрывателя.</string>
     <string name="swipe_to_dismiss_title">Проведите для отмены</string>
     <string name="swipe_to_dismiss_summary">Смахните вниз мини-плеер, чтобы остановить воспроизведение и очистить очереди воспроизведения.</string>
@@ -639,11 +639,11 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">Воспроизведение без перехвата</string>
     <string name="gapless_playback_summary">Плавный переход между песнями. Может вызвать проблемы с воспроизведением на некоторых устройствах.</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
+    <string name="crossfade_title">Перекрестный переход (экспериментально)</string>
+    <string name="crossfade_summary">Переход между песнями занимает несколько секунд (установите значение 0, чтобы отключить).</string>
     <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
+    <string name="audio_fade_duration_title">Длительность затухания звука (экспериментально)</string>
     <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Исходный режим</string>
     <string name="replaygain_preamp_title">Уровень подготовки Amp</string>
@@ -681,7 +681,7 @@
     <string name="use_folder_album_cover_summary">Если аудио файл не содержит встроенной обложки. Загрузка изображений может занять чуть больше времени.</string>
     <string name="online_artist_images_title">Скачать изображение исполнителя</string>
     <string name="online_artist_images_summary">Это зависит от вашей политики загрузки метаданных.</string>
-    <string name="preferred_artist_image_size_title">Предпочтительный размер обложки</string>
+    <string name="preferred_artist_image_size_title">Предпочтительный размер изображения</string>
     <string name="delete_downloaded_lyrics_title">Удалить загруженные тексты песен</string>
     <string name="delete_downloaded_lyrics_summary">Только слова песни Booming Music. Не влияет на тексты, включенные в тэги ID3v2 или LRC файлы.</string>
     <string name="lyrics_cleared">Текст песни очищен.</string>
@@ -739,9 +739,9 @@
     <string name="m3_style">M3</string>
     <string name="normal">Обычный</string>
     <string name="corner_size_none">None</string>
-    <string name="corner_size_small">Small</string>
-    <string name="corner_size_medium">Medium</string>
-    <string name="corner_size_large">Large</string>
+    <string name="corner_size_small">Маленький</string>
+    <string name="corner_size_medium">Средний</string>
+    <string name="corner_size_large">Большой</string>
     <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Глубина</string>
@@ -782,7 +782,7 @@
     <string name="label_never">Никогда</string>
     <string name="label_nothing">Ничего</string>
     <string name="label_none">Нет</string>
-    <string name="player_color_mode_app_theme_title">App theme</string>
+    <string name="player_color_mode_app_theme_title">Тема приложения</string>
     <string name="player_color_mode_app_theme_description">Use the app\'s color scheme</string>
     <string name="player_color_mode_simple_color_title">Simple color</string>
     <string name="player_color_mode_simple_color_description">Extract the album color and apply it to some controls</string>
