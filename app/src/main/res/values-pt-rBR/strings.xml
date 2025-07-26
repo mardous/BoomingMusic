@@ -478,6 +478,7 @@
     <string name="no_synced_lyrics_found">Nenhuma letra sincronizada encontrada</string>
     <string name="lyrics_were_updated_successfully">A letra foi atualizada com sucesso.</string>
     <string name="failed_to_update_lyrics">Falha ao atualizar a letra.</string>
+    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
     <string name="lyrics_source_external_file">As letras vêm de um arquivo externo. Você não pode editar esse arquivo diretamente pelo Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporizador</string>
