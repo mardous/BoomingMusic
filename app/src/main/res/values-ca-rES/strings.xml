@@ -56,8 +56,8 @@
     <string name="playlist_name_cannot_be_empty">Cal un nom per a la llista</string>
     <string name="imported_playlist_x">Llista importada «%1$s».</string>
     <string name="could_not_import_the_playlist_x">No s\'ha pogut importar la llista «%s»</string>
-    <string name="there_are_no_importable_playlists">There are no importable playlists.</string>
-    <string name="playlist_x_not_imported">Playlist %s not imported.</string>
+    <string name="there_are_no_importable_playlists">No hi ha llistes importables.</string>
+    <string name="playlist_x_not_imported">La llista %s no s\'ha importat.</string>
     <string name="action_import_playlist">Import playlist…</string>
     <string name="action_new_playlist">New playlist…</string>
     <string name="new_playlist_title">New playlist</string>
