@@ -607,9 +607,9 @@
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Extra controls</string>
     <string name="extra_controls_summary">Add extra controls for mini player</string>
-    <string name="adaptive_controls_title">Adaptive controls</string>
-    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
-    <string name="swipe_to_dismiss_title">Swipe to dismiss</string>
+    <string name="adaptive_controls_title">פקדים אדפטיביים</string>
+    <string name="adaptive_controls_summary">הפקדים בנגן המיני משתנים כדי להתאים לסגנון הנגן הנוכחי.</string>
+    <string name="swipe_to_dismiss_title">גרור כדי לסגור</string>
     <string name="swipe_to_dismiss_summary">Swipe down the mini player to stop playback and clear playing queues.</string>
     <string name="circle_button_title">Circular play button</string>
     <string name="swipe_album_cover_title">Swipe album cover</string>
