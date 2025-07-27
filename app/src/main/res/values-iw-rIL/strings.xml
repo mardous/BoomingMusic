@@ -495,7 +495,7 @@
     <string name="no_synced_lyrics_found">לא נמצאו מילות שיר מסונכרנות</string>
     <string name="lyrics_were_updated_successfully">מילות השיר עודכנו בהצלחה.</string>
     <string name="failed_to_update_lyrics">נכשל בעדכון מילות השיר.</string>
-    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
+    <string name="there_are_no_changes_to_save">אין שינויים שצריך לשמור.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">טיימר שינה</string>
