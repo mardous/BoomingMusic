@@ -47,6 +47,9 @@
     <string name="continue_action">Doorgaan</string>
     <string name="select_all_title">Alles selecteren</string>
     <string name="x_selected">%d geselecteerd</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">De afspeelmelding biedt acties voor afspelen/pauzeren etc.</string>
     <string name="playing_notification_name">Speelt melding</string>
     <string name="action_scan_directory">Map scannen</string>
