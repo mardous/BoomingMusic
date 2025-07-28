@@ -47,6 +47,9 @@
     <string name="continue_action">Devam et</string>
     <string name="select_all_title">Tümünü seç</string>
     <string name="x_selected">%d adet seçildi</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">Çalan şarkı bildirimi, oynatma/duraklatma gibi eylemler sunar.</string>
     <string name="playing_notification_name">Çalan şarkı bildirimi</string>
     <string name="action_scan_directory">Dizini tara</string>
