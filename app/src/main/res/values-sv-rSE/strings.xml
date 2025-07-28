@@ -47,6 +47,9 @@
     <string name="continue_action">Fortsätt</string>
     <string name="select_all_title">Markera alla</string>
     <string name="x_selected">%d vald</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">Uppspelningsaviseringen innehåller åtgärder för att spela/pausa etc.</string>
     <string name="playing_notification_name">Spelar upp avisering</string>
     <string name="action_scan_directory">Skanna katalog</string>
