@@ -47,6 +47,9 @@
     <string name="continue_action">Continuar</string>
     <string name="select_all_title">Seleccionar todo</string>
     <string name="x_selected">%d seleccionados</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">The playing notification provides actions for play/pause etc.</string>
     <string name="playing_notification_name">Playing notification</string>
     <string name="action_scan_directory">Explorar carpeta</string>
