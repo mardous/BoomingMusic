@@ -47,6 +47,9 @@
     <string name="continue_action">Jatka</string>
     <string name="select_all_title">Valitse kaikki</string>
     <string name="x_selected">%d valittu</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">Soitto-ilmoituksessa on toimintoja soitto/tauko jne.</string>
     <string name="playing_notification_name">Toistetaan ilmoitusta</string>
     <string name="action_scan_directory">Skannaa kansio</string>
