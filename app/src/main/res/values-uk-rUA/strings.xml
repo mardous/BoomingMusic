@@ -47,6 +47,9 @@
     <string name="continue_action">Продовжити</string>
     <string name="select_all_title">Виділити все</string>
     <string name="x_selected">%d selected</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">Повідомлення про відтворення надає дії для відтворення/паузи тощо.</string>
     <string name="playing_notification_name">Відтворення сповіщень</string>
     <string name="action_scan_directory">Сканувати теку</string>
