@@ -47,6 +47,9 @@
     <string name="continue_action">Pokračovat</string>
     <string name="select_all_title">Vybrat vše</string>
     <string name="x_selected">%d vybráno</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">Oznámení o přehrávání obsahuje akce pro přehrávání/pozastavení, atd.</string>
     <string name="playing_notification_name">Oznámení o přehrávání</string>
     <string name="action_scan_directory">Skenovat adresář</string>
