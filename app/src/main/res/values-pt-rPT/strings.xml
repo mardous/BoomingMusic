@@ -47,6 +47,9 @@
     <string name="continue_action">Continuar</string>
     <string name="select_all_title">Selecionar todos</string>
     <string name="x_selected">%d selecionado</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">A notificação de reprodução fornece ações para reprodução/pausa, etc.</string>
     <string name="playing_notification_name">Notificação de reprodução</string>
     <string name="action_scan_directory">Escanear diretório</string>
