@@ -47,6 +47,9 @@
     <string name="continue_action">Kontynuuj</string>
     <string name="select_all_title">Zaznacz wszystkie</string>
     <string name="x_selected">%d Zaznaczonych</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">Powiadomienie o odtwarzaniu zapewnia akcje dla odtwarzania/pauzy itp.</string>
     <string name="playing_notification_name">Powiadomienie o odtwarzaniu</string>
     <string name="action_scan_directory">Skanuj katalog</string>
