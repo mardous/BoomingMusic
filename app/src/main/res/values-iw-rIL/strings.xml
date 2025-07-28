@@ -406,8 +406,8 @@
     <string name="shuffle_mode_favorite_songs">מועדפים תחילה</string>
     <string name="shuffle_mode_forgotten_songs">שירים שנשכחו</string>
     <string name="shuffle_mode_recently_added">נוסף לאחרונה</string>
-    <string name="shuffle_mode_combined">Smart mix</string>
-    <string name="shuffle_mode_pure_random_description">Completely random shuffle.</string>
+    <string name="shuffle_mode_combined">מיקס חכם</string>
+    <string name="shuffle_mode_pure_random_description">ערבוב אקראי לחלוטין.</string>
     <string name="shuffle_mode_most_played_description">מעדיף את השירים שאתה משמיע הכי הרבה.</string>
     <string name="shuffle_mode_most_played_artists_description">מעדיף שירים מהאמנים המובילים שלך.</string>
     <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
@@ -438,7 +438,7 @@
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
         \n\nThis will clear all your presets.</string>
     <string name="not_supported">לא נתמך</string>
-    <string name="enable_equalizer">Enable EQ</string>
+    <string name="enable_equalizer">הפעל את האקולייזר</string>
     <string name="select_preset">בחר קדם הגדרה</string>
     <string name="please_enter_a_name_for_this_preset">Please, enter a name for this preset.</string>
     <string name="preset_name">Preset name</string>
@@ -600,7 +600,7 @@
     <string name="hold_tab_to_search_title">Hold tab to Search</string>
     <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
     <!-- Now playing preferences -->
-    <string name="now_playing_screen_title">Style</string>
+    <string name="now_playing_screen_title">סגנון</string>
     <string name="open_on_play_title">Open on play</string>
     <string name="open_on_play_summary">Expand the Now Playing panel automatically after start playing a song.</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
