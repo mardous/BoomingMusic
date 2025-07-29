@@ -47,9 +47,9 @@
     <string name="continue_action">המשך</string>
     <string name="select_all_title">בחר הכל</string>
     <string name="x_selected">%d נבחר</string>
-    <string name="preparing_playback_title">Preparing</string>
-    <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="preparing_playback_title">בהכנה</string>
+    <string name="restoring_playback_state">משחזר את מצב הניגון ואת תור ההשמעה…</string>
+    <string name="playback_stopped_title">הניגון הופסק</string>
     <string name="playing_notification_description">התראת הניגון מספקת פעולות הפעלה/השהייה וכו\'.</string>
     <string name="playing_notification_name">התראה על הפעלה</string>
     <string name="action_scan_directory">סרוק ספרייה</string>
@@ -413,11 +413,11 @@
     <string name="shuffle_mode_pure_random_description">ערבוב אקראי לחלוטין.</string>
     <string name="shuffle_mode_most_played_description">מעדיף את השירים שאתה משמיע הכי הרבה.</string>
     <string name="shuffle_mode_most_played_artists_description">מעדיף שירים מהאמנים המובילים שלך.</string>
-    <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
+    <string name="shuffle_mode_most_played_albums_description">מעדיף שירים מהאלבומים שאתה מרבה להשמיע.</string>
     <string name="shuffle_mode_favorite_songs_description">נותן עדיפות לשירים המועדפים עליך.</string>
-    <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
-    <string name="shuffle_mode_recently_added_description">Favors songs recently added to your library.</string>
-    <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
+    <string name="shuffle_mode_forgotten_songs_description">מעדיף שירים שלא השמעת כבר זמן מה.</string>
+    <string name="shuffle_mode_recently_added_description">מעדיף שירים שנוספו לאחרונה לספרייה שלך.</string>
+    <string name="shuffle_mode_combined_description">מיקס המבוסס על מועדפים, מספר השמעות ועדכניות.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">אקולייזר</string>
     <string name="share_eq_configuration">שתף תצורת אקלוייזר</string>
@@ -429,14 +429,14 @@
     <string name="could_not_export_configuration">לא ניתן היה לייצא את התצורה.</string>
     <string name="export_configuration">ייצוא תצורה</string>
     <string name="import_configuration">ייבוא תצורה</string>
-    <string name="imported_x_presets">Imported %d presets.</string>
+    <string name="imported_x_presets">יובאו ‏%d קביעות.</string>
     <string name="no_preset_imported">לא יובא קדם הגדרה.</string>
     <string name="share_configuration">שתף תצורה</string>
     <string name="select_configurations_to_share">בחר תצורות לשיתוף:</string>
-    <string name="reset_equalizer">Reset equalizer</string>
+    <string name="reset_equalizer">אפס את האקולייזר</string>
     <string name="select_configurations_to_export">בחר תצורות לייצוא:</string>
     <string name="select_a_file_to_save_exported_configurations">בחר קובץ לשמירת התצורות שיוצאו.</string>
-    <string name="select_a_file_containing_booming_eq_presets">Select a file containing Booming Music EQ presets.</string>
+    <string name="select_a_file_containing_booming_eq_presets">בחר קובץ המכיל קביעות אקולייזר של Booming Music.</string>
     <string name="select_configurations_to_import">בחר תצורות לייבוא:</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
         \n\nThis will clear all your presets.</string>
