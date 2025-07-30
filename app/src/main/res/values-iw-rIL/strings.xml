@@ -455,7 +455,7 @@
     <string name="delete_preset_x"><![CDATA[למחוק את הקביעה <b>%s</b>?]]></string>
     <string name="preset_x_deleted">הקביעה %s נמחקה.</string>
     <string name="rename_preset">שנה שם קביעה</string>
-    <string name="please_enter_a_new_name_for_this_preset">Please, enter a new name for this preset.</string>
+    <string name="please_enter_a_new_name_for_this_preset">הזן שם חדש לקביעה.</string>
     <string name="preset_renamed">שם ההגדרה הקבועה מראש שונה.</string>
     <string name="preset_not_renamed">שם ההגדרה הקבועה מראש לא שונה.</string>
     <string name="bassboost_label">בס-בוסט</string>
@@ -487,8 +487,8 @@
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[האם ברצונך לייבא מילות LRC מסונכרנות עבור <b>%s</b>?]]></string>
     <string name="import_lyrics_for_song_x">יובאו מילות השיר עבור %s</string>
     <string name="could_not_import_lyrics_for_song_x">לא ניתן היה לייבא את מילות השיר עבור %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Select a LRC file containing synced lyrics.</string>
-    <string name="cannot_download_lyrics">Booming Music couldn\'t find the lyrics for this song. Do you want to search manually?</string>
+    <string name="select_a_file_containing_synchronized_lyrics">בחר קובץ LRC המכיל מילות שיר מסונכרנות.</string>
+    <string name="cannot_download_lyrics">Booming Music לא מצאה את מילות השיר הזה. לחפש ידנית?</string>
     <string name="search_lyrics">חפש מילות שיר</string>
     <string name="choose_lyrics">בחר את סוג מילות השיר</string>
     <string name="download_lyrics">הורד מילים</string>
