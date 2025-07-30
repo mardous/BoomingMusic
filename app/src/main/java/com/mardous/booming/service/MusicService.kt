@@ -771,6 +771,10 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     }
 
     private fun play(force: Boolean = false) {
+        // Always start foreground notification before requesting audio focus
+        playingNotificationManager.startForeground(this) {
+            displayPlayingNotification()
+        }
         if (!audioFocusMediator.requestFocus()) {
             showToast(R.string.audio_focus_denied)
             return
