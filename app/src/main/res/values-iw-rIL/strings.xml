@@ -499,14 +499,14 @@
     <string name="lyrics_were_updated_successfully">מילות השיר עודכנו בהצלחה.</string>
     <string name="failed_to_update_lyrics">נכשל בעדכון מילות השיר.</string>
     <string name="there_are_no_changes_to_save">אין שינויים שצריך לשמור.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
+    <string name="lyrics_source_external_file">מילות השיר מגיעות מקובץ חיצוני. אין אפשרות לערוך את הקובץ הזה ישירות מתוך Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">טיימר שינה</string>
     <string name="sleep_timer_cancel_current_timer">בטל טיימר נוכחי</string>
     <string name="sleep_timer_cancel_current_timer_x">בטל טיימר נוכחי (%s)</string>
     <string name="sleep_timer_canceled">טיימר השינה בוטל.</string>
     <string name="sleep_timer_set_action">קבע</string>
-    <string name="sleep_timer_set">Sleep timer set for %d minutes from now.</string>
+    <string name="sleep_timer_set">טיימר השינה הוגדר ל־%d דקות מעכשיו.</string>
     <string name="sleep_timer_finish_current_music">סיים את השיר האחרון</string>
     <string name="sleep_timer_stop_after_this_track">עצור אחרי השיר הזה</string>
     <string name="sleep_timer_stop_after_x">עצור לאחר %s</string>
