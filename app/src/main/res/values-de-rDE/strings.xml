@@ -63,7 +63,6 @@
     <string name="new_playlist_title">Neue Wiedergabeliste</string>
     <string name="add_playlist_title">Zur Wiedergabeliste hinzufügen</string>
     <string name="rename_playlist_title">Wiedergabeliste umbenennen</string>
-    <string name="action_rename">Wiedergabeliste umbenennen</string>
     <string name="action_delete">Wiedergabeliste löschen</string>
     <string name="action_export_playlist">In Datei exportieren</string>
     <string name="action_clear_history">Verlauf löschen</string>

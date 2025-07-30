@@ -63,7 +63,6 @@
     <string name="new_playlist_title">רשימת השמעה חדשה</string>
     <string name="add_playlist_title">הוסף לרשימת ההשמעה</string>
     <string name="rename_playlist_title">שנה שם לרשימת ההשמעה</string>
-    <string name="action_rename">שנה שם לרשימת ההשמעה</string>
     <string name="action_delete">מחיקת רשימת השמעה</string>
     <string name="action_export_playlist">ייצוא לקובץ</string>
     <string name="action_clear_history">ניקוי היסטוריה</string>

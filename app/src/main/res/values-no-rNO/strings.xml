@@ -63,7 +63,6 @@
     <string name="new_playlist_title">Ny spilleliste</string>
     <string name="add_playlist_title">Legg til i spilleliste</string>
     <string name="rename_playlist_title">Endre spilleliste</string>
-    <string name="action_rename">Endre spilleliste</string>
     <string name="action_delete">Slett spilleliste</string>
     <string name="action_export_playlist">Eksporter til fil</string>
     <string name="action_clear_history">Tøm logg</string>

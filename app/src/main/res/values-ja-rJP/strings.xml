@@ -63,7 +63,6 @@
     <string name="new_playlist_title">新規プレイリスト</string>
     <string name="add_playlist_title">プレイリストに追加</string>
     <string name="rename_playlist_title">プレイリストの名前を変更</string>
-    <string name="action_rename">プレイリストの名前を変更</string>
     <string name="action_delete">プレイリストを削除</string>
     <string name="action_export_playlist">ファイルにエクスポート</string>
     <string name="action_clear_history">履歴を消去</string>

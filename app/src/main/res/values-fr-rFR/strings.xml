@@ -63,7 +63,6 @@
     <string name="new_playlist_title">Nouvelle playlist</string>
     <string name="add_playlist_title">Ajouter à la playlist</string>
     <string name="rename_playlist_title">Renommer la playlist</string>
-    <string name="action_rename">Renommer la playlist</string>
     <string name="action_delete">Supprimer la playlist</string>
     <string name="action_export_playlist">Exporter vers un fichier</string>
     <string name="action_clear_history">Effacer l\'historique</string>

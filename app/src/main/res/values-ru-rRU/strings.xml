@@ -63,7 +63,6 @@
     <string name="new_playlist_title">Новый плейлист</string>
     <string name="add_playlist_title">Добавить в плейлист</string>
     <string name="rename_playlist_title">Переименовать плейлист</string>
-    <string name="action_rename">Переименовать плейлист</string>
     <string name="action_delete">Удалить плейлист</string>
     <string name="action_export_playlist">Экспорт в файл</string>
     <string name="action_clear_history">Очистить историю</string>

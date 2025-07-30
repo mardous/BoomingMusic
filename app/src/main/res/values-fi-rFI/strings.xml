@@ -63,7 +63,6 @@
     <string name="new_playlist_title">Uusi soittolista</string>
     <string name="add_playlist_title">Lisää soittolistaan</string>
     <string name="rename_playlist_title">Nimeä soittolista uudelleen</string>
-    <string name="action_rename">Nimeä soittolista uudelleen</string>
     <string name="action_delete">Poista soittolista</string>
     <string name="action_export_playlist">Vie tiedostoon</string>
     <string name="action_clear_history">Tyhjennä historia</string>

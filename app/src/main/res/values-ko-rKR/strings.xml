@@ -63,7 +63,6 @@
     <string name="new_playlist_title">New playlist</string>
     <string name="add_playlist_title">Add to playlist</string>
     <string name="rename_playlist_title">Rename playlist</string>
-    <string name="action_rename">Rename playlist</string>
     <string name="action_delete">Delete playlist</string>
     <string name="action_export_playlist">Export to file</string>
     <string name="action_clear_history">Clear history</string>

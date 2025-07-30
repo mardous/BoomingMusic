@@ -63,7 +63,6 @@
     <string name="new_playlist_title">Yeni çalma listesi</string>
     <string name="add_playlist_title">Çalma listesine ekle</string>
     <string name="rename_playlist_title">Çalma listesini yeniden adlandır</string>
-    <string name="action_rename">Çalma listesini yeniden adlandır</string>
     <string name="action_delete">Çalma listesini sil</string>
     <string name="action_export_playlist">Dosyaya aktar</string>
     <string name="action_clear_history">Geçmişi temizle</string>
