@@ -438,23 +438,23 @@
     <string name="select_a_file_to_save_exported_configurations">בחר קובץ לשמירת התצורות שיוצאו.</string>
     <string name="select_a_file_containing_booming_eq_presets">בחר קובץ המכיל קביעות אקולייזר של Booming Music.</string>
     <string name="select_configurations_to_import">בחר תצורות לייבוא:</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
-        \n\nThis will clear all your presets.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">האם אתה בטוח שברצונך לאפס את האקולייזר?
+\n\nזה ימחק את כל הקביעות שלך.</string>
     <string name="not_supported">לא נתמך</string>
     <string name="enable_equalizer">הפעל את האקולייזר</string>
     <string name="select_preset">בחר קדם הגדרה</string>
-    <string name="please_enter_a_name_for_this_preset">Please, enter a name for this preset.</string>
-    <string name="preset_name">Preset name</string>
+    <string name="please_enter_a_name_for_this_preset">הזן שם לקביעה.</string>
+    <string name="preset_name">שם הקביעה</string>
     <string name="that_name_is_already_in_use">השם הזה כבר בשימוש.</string>
-    <string name="save_preset">Save preset</string>
-    <string name="replace_preset_with_same_name">Replace preset with same name</string>
-    <string name="preset_name_is_empty">Preset name is empty</string>
-    <string name="could_not_save_preset">Couldn\'t save preset.</string>
-    <string name="preset_saved_successfully">Preset saved successfully.</string>
-    <string name="delete_preset">Delete preset</string>
-    <string name="delete_preset_x"><![CDATA[Delete preset <b>%s</b>?]]></string>
-    <string name="preset_x_deleted">Preset %s deleted.</string>
-    <string name="rename_preset">Rename preset</string>
+    <string name="save_preset">שמור קביעה</string>
+    <string name="replace_preset_with_same_name">החלף קביעה עם אותו שם</string>
+    <string name="preset_name_is_empty">שם הקביעה ריק</string>
+    <string name="could_not_save_preset">לא ניתן לשמור את הקביעה.</string>
+    <string name="preset_saved_successfully">הקביעה נשמרה בהצלחה.</string>
+    <string name="delete_preset">מחק קביעה</string>
+    <string name="delete_preset_x"><![CDATA[למחוק את הקביעה <b>%s</b>?]]></string>
+    <string name="preset_x_deleted">הקביעה %s נמחקה.</string>
+    <string name="rename_preset">שנה שם קביעה</string>
     <string name="please_enter_a_new_name_for_this_preset">Please, enter a new name for this preset.</string>
     <string name="preset_renamed">שם ההגדרה הקבועה מראש שונה.</string>
     <string name="preset_not_renamed">שם ההגדרה הקבועה מראש לא שונה.</string>
