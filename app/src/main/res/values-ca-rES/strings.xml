@@ -243,7 +243,7 @@
     <string name="sort_order_descending">Descendent</string>
     <string name="sort_order_ignore_articles">Ignora els articles</string>
     <string name="action_set_as_ringtone">Estableix com a to de trucada</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> s\'establirà com a to de trucada]]></string>
+    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> s'establirà com a to de trucada]]></string>
     <string name="x_has_been_set_as_ringtone">Estableix %s com a to de trucada</string>
     <string name="x_has_been_set_as_ringtone_and_as_alarm">Estableix %s com a to de trucada i alarma</string>
     <string name="use_also_as_alarm_alert">Fes servir també d\'alarma</string>
@@ -802,12 +802,12 @@
     <string name="more_info_action">Més informació</string>
     <string name="download_action">Descarrega</string>
     <string name="downloading_update">S\'està descarregant l\'actualització de Booming Music.</string>
-    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
-        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="uncaught_error_title">Ups! Això no hauria d\'haver passat!</string>
+    <string name="uncaught_error_message">Sembla que alguna cosa ha anat malament i s\'ha penjat l\'aplicació.
+        Seria de gran ajuda si poguéssiu enviar-nos el report d\'error al nostre grup de Telegram o per correu electrònic.</string>
+    <string name="uncaught_error_report">Report d\'error</string>
+    <string name="uncaught_error_report_copied">S\'ha copiat el report d\'error al porta-retalls.</string>
     <string name="uncaught_error_restart_app">Reinicia l\'aplicació</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_github">Obre un problema a Github</string>
+    <string name="uncaught_error_send">Envia el report</string>
 </resources>
