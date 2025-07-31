@@ -31,7 +31,6 @@
     <string name="shuffle_mode_artist">Barreja l\'artista</string>
     <string name="action_share">Comparteix</string>
     <string name="action_save">Desa</string>
-    <string name="action_rename">Canvia\'n el nom</string>
     <string name="what_do_you_want_to_share">Què voleu compartir?</string>
     <string name="the_audio_file">El fitxer d\'àudio</string>
     <string name="i_am_listening">Ara escolto…</string>
@@ -244,7 +243,7 @@
     <string name="sort_order_descending">Descendent</string>
     <string name="sort_order_ignore_articles">Ignora els articles</string>
     <string name="action_set_as_ringtone">Estableix com a to de trucada</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> s'establirà com a to de trucada]]></string>
+    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> s\'establirà com a to de trucada]]></string>
     <string name="x_has_been_set_as_ringtone">Estableix %s com a to de trucada</string>
     <string name="x_has_been_set_as_ringtone_and_as_alarm">Estableix %s com a to de trucada i alarma</string>
     <string name="use_also_as_alarm_alert">Fes servir també d\'alarma</string>
@@ -529,21 +528,21 @@
     <string name="share_app">Comparteix aquesta aplicació</string>
     <string name="share_app_summary">Podeu ajudar a créixer aquesta aplicació si la compartiu amb amics.</string>
     <string name="send_invitation_message">Envia missatge d\'invitació</string>
-    <string name="invitation_message_content">Hi. Check out Booming Music! The best app to listen local music on Android. You can download it from here: %s</string>
+    <string name="invitation_message_content">Ei. Fes un cop d\'ull a Booming Music! La millor aplicació per escoltar música fora de línia a Android. Pots descarregar-la aquí: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Report an issue</string>
-    <string name="device_info">Device info</string>
-    <string name="copied_device_info_to_clipboard">Copied device info to clipboard.</string>
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">You will be forwarded to the issue tracker website.</string>
+    <string name="report_an_issue">Informa d\'un problema</string>
+    <string name="device_info">Informació del dispositiu</string>
+    <string name="copied_device_info_to_clipboard">S\'ha copiat la informació del dispositiu al porta-retalls.</string>
+    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Se us enviarà al lloc web de seguiment de problemes.</string>
     <!-- SAF -->
-    <string name="saf_access_required_title">Storage Access Required</string>
-    <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
-    <string name="saf_show_files_button">Show files</string>
-    <string name="saf_error_uri">Can\'t get SAF URI</string>
-    <string name="saf_write_failed">File write failed: %s</string>
-    <string name="saf_delete_failed">File delete failed: %s</string>
-    <string name="settings_title">Settings</string>
-    <string name="appearance_title">Appearance</string>
+    <string name="saf_access_required_title">Cal accés a l’emmagatzematge</string>
+    <string name="saf_access_required_message">Cal permís per accedir a aquells fitxers. Seleccioneu una adreça on tingueu els fitxers de música.</string>
+    <string name="saf_show_files_button">Mostra els fitxers</string>
+    <string name="saf_error_uri">No es pot obtenir l\'URI SAF</string>
+    <string name="saf_write_failed">Error en escriure el fitxer: %s</string>
+    <string name="saf_delete_failed">Error en esborrar el fitxer: %s</string>
+    <string name="settings_title">Configuració</string>
+    <string name="appearance_title">Aparença</string>
     <string name="appearance_summary">Canvieu el tema de l\'aplicació i altres ajustos visuals.</string>
     <string name="now_playing_title">Ara sona</string>
     <string name="now_playing_summary">Personalitzeu la pantalla d\'Ara sona.</string>
