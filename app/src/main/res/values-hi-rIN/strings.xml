@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">कलाकार फेरबदल</string>
     <string name="action_share">शेयर</string>
     <string name="action_save">बचाना</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">आप क्या साझा करना चाहते हैं?</string>
     <string name="the_audio_file">ऑडियो फ़ाइल</string>
     <string name="i_am_listening">मैं सुन रहा हूँ…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">नई प्लेलिस्ट</string>
     <string name="add_playlist_title">प्लेलिस्ट में जोड़ें</string>
     <string name="rename_playlist_title">प्लेलिस्ट का नाम बदलें</string>
-    <string name="action_rename">प्लेलिस्ट का नाम बदलें</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">प्लेलिस्ट हटाएं</string>
     <string name="action_export_playlist">फ़ाइल में निर्यात करें</string>
     <string name="action_clear_history">इतिहास मिटा दें</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">एक प्लेलिस्ट बनाई जाएगी और उसमें एक गाना जोड़ा जाएगा।</string>
     <string name="create_a_playlist_with_x_songs">एक प्लेलिस्ट बनाई जाएगी और %d गाने स्वचालित रूप से जोड़ दिए जाएंगे।</string>
     <string name="playlist_name_empty">प्लेलिस्ट का नाम</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">सहेजी गई प्लेलिस्ट %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">प्लेलिस्ट सहेजने में विफल.</string>
     <string name="saved_x_playlists">%1$d प्लेलिस्ट सहेजी गईं.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d प्लेलिस्ट सहेजी गईं, %2$d सहेजने में विफल रहीं.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">प्लेलिस्ट %s में एक गाना डाला गया.</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d गाने प्लेलिस्ट %2$s में डाले गए.</string>
     <string name="playlist_exists">प्लेलिस्ट %s पहले से मौजूद है.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">प्लेलिस्ट से गाना हटाएँ</string>
     <string name="remove_songs_from_playlist_title">प्लेलिस्ट से गाना हटाएँ</string>
     <string name="remove_song_x_from_playlist"><![CDATA[प्लेलिस्ट से <b>%1$s</b> गाना हटाना चाहते हैं?]]></string>
