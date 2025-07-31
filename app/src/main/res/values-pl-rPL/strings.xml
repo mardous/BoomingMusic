@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Losuj wykonawcę</string>
     <string name="action_share">Udostępnij</string>
     <string name="action_save">Zapisz</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Co chcesz udostępnić?</string>
     <string name="the_audio_file">Plik audio</string>
     <string name="i_am_listening">Słucham…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Nowa lista odtwarzania</string>
     <string name="add_playlist_title">Dodaj do listy odtwarzania</string>
     <string name="rename_playlist_title">Zmień nazwę playlisty</string>
-    <string name="action_rename">Zmień nazwę playlisty</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Usuń listę odtwarzania</string>
     <string name="action_export_playlist">Eksportuj do pliku</string>
     <string name="action_clear_history">Wyczyść historię</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">Zostanie utworzona playlista i do niej zostanie dodana jedna piosenka.</string>
     <string name="create_a_playlist_with_x_songs">Lista odtwarzania zostanie utworzona, a utwory %d zostaną dodane automatycznie.</string>
     <string name="playlist_name_empty">Nazwa listy odtwarzania</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Zapisano listę odtwarzania %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Nie udało się zapisać listy odtwarzania.</string>
     <string name="saved_x_playlists">Zapisano %1$d playlisty.</string>
     <string name="saved_x_playlists_failed_to_save_x">Zapisano %1$d playlisty, nie udało się zapisać %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Wstawiono jeden utwór do listy odtwarzania %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Wstawiono utwory %1$d do playlisty %2$s.</string>
     <string name="playlist_exists">Lista odtwarzania %s już istnieje.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Usuń utwór z listy odtwarzania</string>
     <string name="remove_songs_from_playlist_title">Usuń utwory z listy odtwarzania</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Usunąć utwór <b>%1$s</b> z playlisty?]]></string>
