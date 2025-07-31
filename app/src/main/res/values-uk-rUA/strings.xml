@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Виконавець перемішиться</string>
     <string name="action_share">Поділитись</string>
     <string name="action_save">Зберегти</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Чим хочете поділитися?</string>
     <string name="the_audio_file">Аудіофайл</string>
     <string name="i_am_listening">Я слухаю…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Новий список відтворення</string>
     <string name="add_playlist_title">Додати до списку відтворення</string>
     <string name="rename_playlist_title">Перейменувати список відтворення</string>
-    <string name="action_rename">Перейменувати список відтворення</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Видалити список відтворення</string>
     <string name="action_export_playlist">Експорт у файл</string>
     <string name="action_clear_history">Вичистити історію</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">Список відтворення буде створений, і до неї буде додано одну пісню.</string>
     <string name="create_a_playlist_with_x_songs">Список відтворення буде створено і пісні %d будуть додані автоматично.</string>
     <string name="playlist_name_empty">Назва списку відтворення</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Збережено список відтворення %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Не вдалося зберегти список відтворення.</string>
     <string name="saved_x_playlists">Збережено плейлисти %1$d</string>
     <string name="saved_x_playlists_failed_to_save_x">Збережено списки відтворення %1$d не вдалося зберегти %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Вставлено одну пісню у список відтворення %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Вставлено %1$d до списку відтворення %2$s.</string>
     <string name="playlist_exists">Список відтворення %s вже існує.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Видалити пісню зі списку відтворення</string>
     <string name="remove_songs_from_playlist_title">Видалити пісні зі списку відтворення</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Видалити пісню <b>%1$s</b> зі списку відтворення?]]></string>
