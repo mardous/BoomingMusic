@@ -35,4 +35,5 @@ interface ISearchCallback {
     fun playlistClick(playlist: PlaylistWithSongs)
     fun playlistMenuItemClick(playlist: PlaylistWithSongs, menuItem: MenuItem): Boolean
     fun genreClick(genre: Genre)
+    fun onMultipleItemAction(menuItem: MenuItem, selection: List<Song>)
 }

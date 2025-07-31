@@ -219,7 +219,7 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
         )
         animatorSet.duration = BOOMING_ANIM_TIME
         animatorSet.doOnEnd {
-            binding.viewPager.isInvisible = true
+            _binding?.viewPager?.isInvisible = true
             it.removeAllListeners()
         }
         animatorSet.doOnStart {
@@ -229,7 +229,7 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
                     .commitAllowingStateLoss()
             }
             isShowLyricsOnCover = true
-            binding.coverLyricsFragment.isVisible = true
+            _binding?.coverLyricsFragment?.isVisible = true
         }
         callbacks?.onLyricsVisibilityChange(animatorSet, true)
         animatorSet.start()
@@ -245,7 +245,7 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
         )
         animatorSet.duration = BOOMING_ANIM_TIME
         animatorSet.doOnStart {
-            binding.viewPager.isInvisible = false
+            _binding?.viewPager?.isInvisible = false
         }
         animatorSet.doOnEnd {
             coverLyricsFragment?.let { fragment ->
@@ -256,7 +256,7 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
             if (isPermanent) {
                 isShowLyricsOnCover = false
             }
-            binding.coverLyricsFragment.isVisible = false
+            _binding?.coverLyricsFragment?.isVisible = false
             it.removeAllListeners()
         }
         callbacks?.onLyricsVisibilityChange(animatorSet, false)

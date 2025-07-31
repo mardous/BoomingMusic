@@ -17,27 +17,47 @@
 
 package com.mardous.booming.dialogs.playlists
 
+import android.app.Dialog
 import android.content.DialogInterface
+import android.net.Uri
+import android.os.Bundle
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.DialogFragment
+import com.bumptech.glide.Glide
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
-import com.mardous.booming.dialogs.InputDialog
+import com.mardous.booming.databinding.DialogCreatePlaylistBinding
 import com.mardous.booming.extensions.EXTRA_SONGS
 import com.mardous.booming.extensions.extraNotNull
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.model.Song
 import com.mardous.booming.viewmodels.library.LibraryViewModel
-import com.mardous.booming.viewmodels.player.PlayerViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class CreatePlaylistDialog : InputDialog() {
+class CreatePlaylistDialog : DialogFragment() {
 
-    private val playerViewModel: PlayerViewModel by activityViewModel()
     private val libraryViewModel: LibraryViewModel by activityViewModel()
     private val songs: List<Song> by extraNotNull(EXTRA_SONGS, arrayListOf())
 
-    private var callback: PlaylistCreatedCallback? = null
+    private var _binding: DialogCreatePlaylistBinding? = null
+    private val binding get() = _binding!!
 
-    override fun inputConfig(): InputConfig {
+    private var callback: PlaylistCreatedCallback? = null
+    private var selectedCoverUri: Uri? = null
+
+    private val imagePickerLauncher = 
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+            if (uri != null) {
+                selectedCoverUri = uri
+                loadCoverImage(uri)
+            }
+        }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        _binding = DialogCreatePlaylistBinding.inflate(layoutInflater)
+        
         val message = if (songs.isEmpty()) {
             getString(R.string.create_a_playlist)
         } else if (songs.size == 1) {
@@ -45,37 +65,74 @@ class CreatePlaylistDialog : InputDialog() {
         } else {
             getString(R.string.create_a_playlist_with_x_songs, songs.size)
         }
-        return Builder(requireContext())
-            .title(R.string.new_playlist_title)
-            .message(message)
-            .hint(R.string.playlist_name_empty)
-            .positiveText(R.string.create_action)
-            .createConfig()
+
+        setupViews()
+
+        return MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.new_playlist_title)
+            .setMessage(message)
+            .setView(binding.root)
+            .setPositiveButton(R.string.create_action, null)
+            .setNegativeButton(android.R.string.cancel, null)
+            .create().apply {
+                setOnShowListener { 
+                    getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
+                        createPlaylist()
+                    }
+                }
+            }
     }
 
-    override fun processInput(
-        dialog: DialogInterface,
-        text: String?,
-        isChecked: Boolean
-    ): Boolean {
-        val playlistName = text?.trim()
-        if (!playlistName.isNullOrBlank()) {
-            libraryViewModel.addToPlaylist(playlistName, songs).observe(this) {
-                if (it.isWorking)
-                    return@observe
-
-                if (it.playlistCreated) {
-                    showToast(getString(R.string.created_playlist_x, it.playlistName))
-                    callback?.playlistCreated()
-                } else {
-                    showToast(R.string.could_not_create_playlist)
-                }
-                dialog.dismiss()
-            }
-        } else {
-            inputLayout().error = getString(R.string.playlist_name_cannot_be_empty)
+    private fun setupViews() {
+        // Set up cover image selection
+        binding.selectCoverFab.setOnClickListener {
+            imagePickerLauncher.launch(
+                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+            )
         }
-        return false
+
+        // Load default playlist image
+        loadCoverImage(null)
+    }
+
+    private fun loadCoverImage(uri: Uri?) {
+        Glide.with(binding.playlistCoverImage)
+            .load(uri)
+            .error(R.drawable.default_audio_art)
+            .placeholder(R.drawable.default_audio_art)
+            .centerCrop()
+            .into(binding.playlistCoverImage)
+    }
+
+    private fun createPlaylist() {
+        val playlistName = binding.playlistNameEditText.text?.toString()?.trim()
+        if (playlistName.isNullOrBlank()) {
+            binding.playlistNameLayout.error = getString(R.string.playlist_name_cannot_be_empty)
+            return
+        }
+
+        val description = binding.playlistDescriptionEditText.text?.toString()?.trim()
+        val customCoverUri = selectedCoverUri?.toString()
+
+        // Use the new createCustomPlaylist method
+        libraryViewModel.createCustomPlaylist(
+            playlistName = playlistName,
+            customCoverUri = customCoverUri,
+            description = if (description.isNullOrEmpty()) null else description,
+            songs = songs
+        ).observe(this) { result ->
+            if (result.isWorking) {
+                return@observe
+            }
+
+            if (result.playlistCreated) {
+                showToast(getString(R.string.created_playlist_x, result.playlistName))
+                callback?.playlistCreated()
+                dismiss()
+            } else {
+                showToast(getString(R.string.playlist_exists, result.playlistName))
+            }
+        }
     }
 
     fun callback(playlistCreatedCallback: PlaylistCreatedCallback) =
@@ -83,6 +140,11 @@ class CreatePlaylistDialog : InputDialog() {
 
     interface PlaylistCreatedCallback {
         fun playlistCreated()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

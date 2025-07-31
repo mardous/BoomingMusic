@@ -17,6 +17,7 @@ import com.mardous.booming.model.Album
 import com.mardous.booming.model.Artist
 import com.mardous.booming.model.Song
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import kotlinx.io.IOException
 import kotlinx.parcelize.Parcelize
@@ -24,42 +25,44 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.ByteArrayOutputStream
 import java.io.File
+import kotlin.coroutines.resume
 
 class MetadataWriter : KoinComponent {
 
     private val contentResolver: ContentResolver by inject()
+    private val lock = Any()
 
     private var properties = mapOf<String, String?>()
     private var pictureBitmap: Bitmap? = null
     private var pictureDeleted = false
 
-    fun picture(pictureBitmap: Bitmap?) {
+    fun picture(pictureBitmap: Bitmap?) = synchronized(lock) {
         this.pictureBitmap = pictureBitmap
         this.pictureDeleted = false
     }
 
-    fun pictureDeleted(pictureDeleted: Boolean) {
+    fun pictureDeleted(pictureDeleted: Boolean) = synchronized(lock) {
         this.pictureDeleted = pictureDeleted
         this.pictureBitmap = if (pictureDeleted) null else pictureBitmap
     }
 
-    fun propertyMap(propertyMap: Map<String, String?>) {
+    fun propertyMap(propertyMap: Map<String, String?>) = synchronized(lock) {
         this.properties = propertyMap
     }
 
     suspend fun write(context: Context, target: EditTarget) = withContext(IO) {
-        val results = mutableListOf<WriteResult>()
+        val results = mutableListOf<WriteResultInternal>()
         val picture = createPicture(target)
         val pictureThumbFile = createPictureThumbFile(picture)
         for (content in target.contents) {
             val result = runCatching {
                 contentResolver.openFileDescriptor(content.uri, "rw")?.use { fd ->
-                    WriteResult(
+                    WriteResultInternal(
                         content = content,
                         pictureResult = writePicture(picture, fd),
                         propertiesResult = writePropertyMap(fd)
                     )
-                } ?: WriteResult(content)
+                } ?: WriteResultInternal(content)
             }
             if (result.isSuccess) {
                 results.add(result.getOrThrow())
@@ -79,14 +82,24 @@ class MetadataWriter : KoinComponent {
                 contentResolver.deleteAlbumArt(target.artworkId)
             }
         }
-        results.filter { it.isSuccess }
+        val successContents = results.filter { it.isSuccess }
             .map { it -> it.content }
-            .also {
-                val paths = it.map { content -> content.path }.toTypedArray()
-                if (paths.isNotEmpty()) {
-                    MediaScannerConnection.scanFile(context, paths, null, null)
+        val paths = successContents.map { content -> content.path }.toTypedArray()
+        if (paths.isNotEmpty()) {
+            val total = paths.size
+            val scanned = suspendCancellableCoroutine { continuation ->
+                var progress = 0
+                MediaScannerConnection.scanFile(context, paths, null) { _, _ ->
+                    progress++
+                    if (progress == total && continuation.isActive) {
+                        continuation.resume(total)
+                    }
                 }
             }
+            WriteResult(successContents, failed = total - scanned, scanned = scanned)
+        } else {
+            WriteResult(emptyList())
+        }
     }
 
     private fun createPicture(target: EditTarget): Picture? {
@@ -143,16 +156,39 @@ class MetadataWriter : KoinComponent {
     }
 
     private fun writePropertyMap(fd: ParcelFileDescriptor): Result {
-        val propertyMap = properties
-            .filterValues { !it.isNullOrBlank() }
-            .mapValuesTo(hashMapOf()) { arrayOf(it.value!!) }
-        if (TagLib.savePropertyMap(fd.dup().detachFd(), propertyMap)) {
-            return Result.Wrote
+        val currentProperties = TagLib.getMetadata(fd.dup().detachFd(), false)
+                ?.propertyMap ?: hashMapOf()
+
+        for ((key, newValueRaw) in properties) {
+            val newValue = if (newValueRaw.isNullOrBlank()) {
+                emptyArray()
+            } else {
+                arrayOf(newValueRaw)
+            }
+            currentProperties[key] = newValue
         }
-        return Result.Failed
+
+        val newProperties = currentProperties
+            .filterValues { it.isNotEmpty() }
+            .mapValuesTo(hashMapOf()) { it.value }
+
+        return if (TagLib.savePropertyMap(fd.dup().detachFd(), newProperties)) {
+            Result.Wrote
+        } else {
+            Result.Failed
+        }
     }
 
-    private class WriteResult(
+    class WriteResult(
+        val contents: List<EditTarget.Content>,
+        val failed: Int = 0,
+        val scanned: Int = 0
+    ) {
+        val isSuccess: Boolean
+            get() = contents.isNotEmpty() && scanned == contents.size
+    }
+
+    private class WriteResultInternal(
         val content: EditTarget.Content,
         val pictureResult: Result = Result.Failed,
         val propertiesResult: Result = Result.Failed
@@ -182,7 +218,7 @@ data class EditTarget(
     val first get() = contents.first()
 
     @Parcelize
-    data class Content(val uri: Uri, val path: String) : Parcelable
+    data class Content(val id: Long, val uri: Uri, val path: String) : Parcelable
 
     enum class Type {
         Song, Artist, AlbumArtist, Album
@@ -196,7 +232,7 @@ data class EditTarget(
             name = song.title,
             id = song.id,
             artworkId = song.albumId,
-            contents = listOf(Content(song.mediaStoreUri, song.data))
+            contents = listOf(Content(song.id, song.mediaStoreUri, song.data))
         )
 
         fun album(album: Album) = EditTarget(
@@ -204,7 +240,7 @@ data class EditTarget(
             name = album.name,
             id = album.id,
             artworkId = album.id,
-            contents = album.songs.map { Content(it.mediaStoreUri, it.data) }
+            contents = album.songs.map { Content(it.id, it.mediaStoreUri, it.data) }
         )
 
         fun artist(artist: Artist) = EditTarget(
@@ -212,7 +248,7 @@ data class EditTarget(
             name = artist.name,
             id = artist.id,
             artworkId = -1,
-            contents = artist.songs.map { Content(it.mediaStoreUri, it.data) }
+            contents = artist.songs.map { Content(it.id, it.mediaStoreUri, it.data) }
         )
     }
 }

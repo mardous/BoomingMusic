@@ -39,6 +39,8 @@ data class Lyrics(
         val words: List<Word>,
         val actor: String?
     ) {
+        val id: Long = 31 * (31 * startAt + durationMillis) + content.hashCode()
+
         val isWordByWord: Boolean = words.isNotEmpty()
         val isOppositeTurn: Boolean = actor != null && actor != "v1"
 

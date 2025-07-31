@@ -22,7 +22,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.findNavController
@@ -70,8 +69,6 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
     private var _binding: FragmentDetailListBinding? = null
     private val binding get() = _binding!!
 
-    private var insets: WindowInsetsCompat? = null
-
     private lateinit var contentType: ContentType
 
     private var songList: List<Song> = arrayListOf()
@@ -80,6 +77,8 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
         super.onViewCreated(view, savedInstanceState)
         contentType = args.type
         _binding = FragmentDetailListBinding.bind(view)
+        materialSharedAxis(view)
+        view.applyHorizontalWindowInsets()
 
         mainActivity.setSupportActionBar(binding.toolbar)
         binding.progressIndicator.hide()
@@ -90,12 +89,7 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
         binding.title.setText(contentType.titleRes)
 
         libraryViewModel.getMiniPlayerMargin().observe(viewLifecycleOwner) {
-            binding.recyclerView.updatePadding(bottom = it + insets.getBottomInsets())
-        }
-
-        materialSharedAxis(view)
-        view.applyScrollableContentInsets(binding.recyclerView) { _, insets ->
-            this.insets = insets
+            binding.recyclerView.updatePadding(bottom = it.getWithSpace())
         }
     }
 
@@ -312,10 +306,10 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
 
             R.id.action_clear_history -> {
                 libraryViewModel.clearHistory()
-                val translationY = -(libraryViewModel.getMiniPlayerMargin().value?.toFloat() ?: 0f)
+                val translationY = -(libraryViewModel.getMiniPlayerMargin().value?.getWithSpace() ?: 0)
                 val snackBar = Snackbar.make(binding.root, getString(R.string.history_cleared), Snackbar.LENGTH_LONG)
                 val snackBarView = snackBar.view
-                snackBarView.translationY = translationY
+                snackBarView.translationY = translationY.toFloat()
                 snackBar.show()
                 true
             }

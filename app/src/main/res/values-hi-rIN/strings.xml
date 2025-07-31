@@ -47,6 +47,9 @@
     <string name="continue_action">जारी रखना</string>
     <string name="select_all_title">सबका चयन करें</string>
     <string name="x_selected">%d चुने हुए</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">प्लेइंग अधिसूचना प्ले/पॉज़ आदि के लिए क्रियाएं प्रदान करती है।</string>
     <string name="playing_notification_name">सूचना चल रही है</string>
     <string name="action_scan_directory">निर्देशिका स्कैन करें</string>
@@ -63,7 +66,7 @@
     <string name="new_playlist_title">नई प्लेलिस्ट</string>
     <string name="add_playlist_title">प्लेलिस्ट में जोड़ें</string>
     <string name="rename_playlist_title">प्लेलिस्ट का नाम बदलें</string>
-    <string name="action_rename">प्लेलिस्ट का नाम बदलें</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">प्लेलिस्ट हटाएं</string>
     <string name="action_export_playlist">फ़ाइल में निर्यात करें</string>
     <string name="action_clear_history">इतिहास मिटा दें</string>
@@ -72,7 +75,9 @@
     <string name="create_a_playlist_with_one_song">एक प्लेलिस्ट बनाई जाएगी और उसमें एक गाना जोड़ा जाएगा।</string>
     <string name="create_a_playlist_with_x_songs">एक प्लेलिस्ट बनाई जाएगी और %d गाने स्वचालित रूप से जोड़ दिए जाएंगे।</string>
     <string name="playlist_name_empty">प्लेलिस्ट का नाम</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">सहेजी गई प्लेलिस्ट %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">प्लेलिस्ट सहेजने में विफल.</string>
     <string name="saved_x_playlists">%1$d प्लेलिस्ट सहेजी गईं.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d प्लेलिस्ट सहेजी गईं, %2$d सहेजने में विफल रहीं.</string>
@@ -85,6 +90,7 @@
     <string name="inserted_one_song_into_playlist_x">प्लेलिस्ट %s में एक गाना डाला गया.</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d गाने प्लेलिस्ट %2$s में डाले गए.</string>
     <string name="playlist_exists">प्लेलिस्ट %s पहले से मौजूद है.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">प्लेलिस्ट से गाना हटाएँ</string>
     <string name="remove_songs_from_playlist_title">प्लेलिस्ट से गाना हटाएँ</string>
     <string name="remove_song_x_from_playlist"><![CDATA[प्लेलिस्ट से <b>%1$s</b> गाना हटाना चाहते हैं?]]></string>
@@ -477,6 +483,7 @@
     <string name="no_synced_lyrics_found">कोई समन्वित गीत के बोल नहीं मिले</string>
     <string name="lyrics_were_updated_successfully">गाने के बोल सफलतापूर्वक अपडेट कर दिए गए।</string>
     <string name="failed_to_update_lyrics">गीत का अपडेट करना असफल रहा।</string>
+    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">स्लीप टाइमर</string>
@@ -717,6 +724,7 @@
     <string name="full_cover">फुल कवर</string>
     <string name="gradient">ग्रेडिएंट</string>
     <string name="peek">पीक</string>
+    <string name="peek2">Peek2</string>
     <string name="plain">सादा</string>
     <string name="m3_style">M3</string>
     <string name="normal">साधारण</string>

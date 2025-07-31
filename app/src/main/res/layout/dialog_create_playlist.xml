@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="?dialogPreferredPadding"
+    android:paddingStart="?dialogPreferredPadding"
+    android:paddingEnd="?dialogPreferredPadding">
+
+    <!-- Playlist Cover Image -->
+    <FrameLayout
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/playlist_cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/colorSurfaceVariant"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_audio_art"
+            app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/select_cover_fab"
+            style="?materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="8dp"
+            android:importantForAccessibility="no"
+            app:icon="@drawable/ic_image_24dp" />
+
+    </FrameLayout>
+
+    <!-- Playlist Name Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/playlist_name_layout"
+        style="?textInputOutlinedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/playlist_name_empty">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/playlist_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Playlist Description Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/playlist_description_layout"
+        style="?textInputOutlinedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/playlist_description_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/playlist_description_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines="4"
+            android:minLines="2" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

@@ -60,6 +60,7 @@
     </style>
 
     <style name="PlayerIconButton" parent="Widget.Material3.Button.IconButton">
+        <item name="iconGravity">textStart</item>
         <item name="iconTint">?colorControlNormal</item>
         <item name="rippleColor">?colorControlHighlight</item>
     </style>

@@ -47,6 +47,9 @@
     <string name="continue_action">続ける</string>
     <string name="select_all_title">すべて選択</string>
     <string name="x_selected">%d を選択しました</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">再生通知は再生/一時停止などのアクションを提供します。</string>
     <string name="playing_notification_name">再生中の通知</string>
     <string name="action_scan_directory">ディレクトリをスキャン</string>
@@ -63,7 +66,7 @@
     <string name="new_playlist_title">新規プレイリスト</string>
     <string name="add_playlist_title">プレイリストに追加</string>
     <string name="rename_playlist_title">プレイリストの名前を変更</string>
-    <string name="action_rename">プレイリストの名前を変更</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">プレイリストを削除</string>
     <string name="action_export_playlist">ファイルにエクスポート</string>
     <string name="action_clear_history">履歴を消去</string>
@@ -72,7 +75,9 @@
     <string name="create_a_playlist_with_one_song">プレイリストが作成され、1曲が追加されます。</string>
     <string name="create_a_playlist_with_x_songs">プレイリストが作成され、 %d 曲が自動的に追加されます。</string>
     <string name="playlist_name_empty">プレイリスト名</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">プレイリスト %sを保存しました。</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">プレイリストの保存に失敗しました。</string>
     <string name="saved_x_playlists">%1$d プレイリストを保存しました。</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d プレイリストを保存しました。 %2$d の保存に失敗しました。</string>
@@ -85,6 +90,7 @@
     <string name="inserted_one_song_into_playlist_x">%s に曲を挿入しました。</string>
     <string name="inserted_x_songs_into_playlist_x">プレイリスト %2$s に %1$d 曲を追加しました。</string>
     <string name="playlist_exists">プレイリスト %s は既に存在します。</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">プレイリストから曲を削除</string>
     <string name="remove_songs_from_playlist_title">プレイリストから曲を削除</string>
     <string name="remove_song_x_from_playlist"><![CDATA[プレイリストから曲 <b>%1$s</b> を削除しますか？]]></string>
@@ -471,6 +477,7 @@
     <string name="no_synced_lyrics_found">同期された歌詞が見つかりません</string>
     <string name="lyrics_were_updated_successfully">歌詞が更新されました。</string>
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
+    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">スリープタイマー</string>
@@ -711,6 +718,7 @@
     <string name="full_cover">フルカバー</string>
     <string name="gradient">Gradient</string>
     <string name="peek">Peek</string>
+    <string name="peek2">Peek2</string>
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">標準</string>

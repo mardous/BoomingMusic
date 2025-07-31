@@ -27,11 +27,10 @@ import android.os.Environment
 import android.provider.MediaStore
 import androidx.core.animation.doOnEnd
 import androidx.lifecycle.*
-import com.mardous.booming.R
 import com.mardous.booming.database.*
-import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.media.indexOfSong
+import com.mardous.booming.fragments.LibraryMargin
 import com.mardous.booming.helper.UriSongResolver
 import com.mardous.booming.model.*
 import com.mardous.booming.model.filesystem.FileSystemItem
@@ -68,8 +67,8 @@ class LibraryViewModel(
     private val genres = MutableLiveData<List<Genre>>()
     private val years = MutableLiveData<List<ReleaseYear>>()
     private val fileSystem = MutableLiveData<FileSystemQuery>()
-    private val fabMargin = MutableLiveData(0)
-    private val miniPlayerMargin = MutableLiveData(0)
+    private val fabMargin = MutableLiveData(LibraryMargin(0))
+    private val miniPlayerMargin = MutableLiveData(LibraryMargin(0))
     private val songHistory = MutableLiveData<List<Song>>()
 
     fun getSuggestions(): LiveData<SuggestedResult> = suggestions
@@ -80,8 +79,8 @@ class LibraryViewModel(
     fun getGenres(): LiveData<List<Genre>> = genres
     fun getYears(): LiveData<List<ReleaseYear>> = years
     fun getFileSystem(): LiveData<FileSystemQuery> = fileSystem
-    fun getFabMargin(): LiveData<Int> = fabMargin
-    fun getMiniPlayerMargin(): LiveData<Int> = miniPlayerMargin
+    fun getFabMargin(): LiveData<LibraryMargin> = fabMargin
+    fun getMiniPlayerMargin(): LiveData<LibraryMargin> = miniPlayerMargin
 
     private fun createValueAnimator(oldValue: Int, newValue: Int, setter: (Int) -> Unit): Animator {
         return ValueAnimator.ofInt(oldValue, newValue).apply {
@@ -91,13 +90,18 @@ class LibraryViewModel(
         }
     }
 
-    fun setLibraryMargins(context: Context, fabBottomMargin: Int, miniPlayerHeight: Int) {
-        val fabValue = context.dip(R.dimen.fab_margin_top_left_right) + fabBottomMargin
-        val fabAnimator = createValueAnimator(getFabMargin().value!!, fabValue) {
-            fabMargin.postValue(it)
+    fun setLibraryMargins(fabBottomMargin: LibraryMargin, bottomSheetMargin: LibraryMargin) {
+        val fabAnimator = createValueAnimator(
+            oldValue = fabMargin.value!!.margin,
+            newValue = fabBottomMargin.margin
+        ) {
+            fabMargin.postValue(fabBottomMargin.copy(margin = it))
         }
-        val miniPlayerAnimator = createValueAnimator(getMiniPlayerMargin().value!!, miniPlayerHeight) {
-            miniPlayerMargin.postValue(it)
+        val miniPlayerAnimator = createValueAnimator(
+            oldValue = miniPlayerMargin.value!!.margin,
+            newValue = bottomSheetMargin.margin
+        ) {
+            miniPlayerMargin.postValue(bottomSheetMargin.copy(margin = it))
         }
         val animatorSet = AnimatorSet()
         animatorSet.playTogether(fabAnimator, miniPlayerAnimator)
@@ -339,6 +343,15 @@ class LibraryViewModel(
         repository.renamePlaylist(playListId, name)
     }
 
+    fun updatePlaylist(
+        playlistId: Long,
+        newName: String,
+        customCoverUri: String? = null,
+        description: String? = null
+    ) = viewModelScope.launch(IO) {
+        repository.updatePlaylist(playlistId, newName, customCoverUri, description)
+    }
+
     fun deleteSongsInPlaylist(songs: List<SongEntity>) {
         viewModelScope.launch(IO) {
             repository.deleteSongsInPlaylist(songs)
@@ -394,6 +407,42 @@ class LibraryViewModel(
             }
             forceReload(ReloadType.Playlists)
         }
+
+    fun createCustomPlaylist(
+        playlistName: String,
+        customCoverUri: String? = null,
+        description: String? = null,
+        songs: List<Song> = emptyList()
+    ): LiveData<AddToPlaylistResult> = liveData(IO) {
+        emit(AddToPlaylistResult(playlistName, isWorking = true))
+
+        val playlists = checkPlaylistExists(playlistName)
+        if (playlists.isEmpty()) {
+            val playlistEntity = PlaylistEntity(
+                playlistName = playlistName,
+                customCoverUri = customCoverUri,
+                description = description
+            )
+            val playlistId: Long = createPlaylist(playlistEntity)
+            if (songs.isNotEmpty()) {
+                insertSongs(songs.map { it.toSongEntity(playlistId) })
+            }
+            val playlistCreated = (playlistId != -1L)
+            val isFavoritePlaylist = repository.checkFavoritePlaylist()?.playListId == playlistId
+            emit(
+                AddToPlaylistResult(
+                    playlistName,
+                    playlistCreated = playlistCreated,
+                    isFavoritePlaylist = isFavoritePlaylist,
+                    insertedSongs = songs.size
+                )
+            )
+        } else {
+            // Playlist already exists
+            emit(AddToPlaylistResult(playlistName, playlistCreated = false))
+        }
+        forceReload(ReloadType.Playlists)
+    }
 
     fun playlistsAsync(): LiveData<List<PlaylistWithSongs>> = liveData(IO) {
         emit(repository.playlistsWithSongs())

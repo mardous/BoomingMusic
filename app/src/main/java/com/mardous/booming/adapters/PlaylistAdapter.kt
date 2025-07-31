@@ -19,6 +19,7 @@ package com.mardous.booming.adapters
 
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,7 @@ import com.mardous.booming.database.PlaylistWithSongs
 import com.mardous.booming.extensions.getTintedDrawable
 import com.mardous.booming.extensions.glide.getDefaultGlideTransition
 import com.mardous.booming.extensions.glide.playlistOptions
+import com.mardous.booming.extensions.media.isFavorites
 import com.mardous.booming.extensions.media.songsStr
 import com.mardous.booming.extensions.resources.controlColorNormal
 import com.mardous.booming.extensions.resources.useAsIcon
@@ -136,6 +138,13 @@ class PlaylistAdapter(
             menu?.setOnClickListener(object : OnClickMenu() {
                 override val popupMenuRes: Int
                     get() = R.menu.menu_item_playlist
+
+                override fun onPreparePopup(menu: Menu) {
+                    super.onPreparePopup(menu)
+                    if (playlist.playlistEntity.isFavorites(itemView.context)) {
+                        menu.removeItem(R.id.action_edit_playlist)
+                    }
+                }
 
                 override fun onMenuItemClick(item: MenuItem): Boolean =
                     callback?.playlistMenuItemClick(playlist, item) ?: false

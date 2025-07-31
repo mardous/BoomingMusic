@@ -35,7 +35,6 @@ import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ShareCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isGone
 import androidx.core.view.iterator
 import androidx.core.view.updatePadding
@@ -73,8 +72,6 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
 
     private var _binding: FragmentEqualizerBinding? = null
     private val binding get() = _binding!!
-
-    private var windowInsets: WindowInsetsCompat? = null
 
     private val viewModel: EqualizerViewModel by viewModel {
         parametersOf(playerViewModel.audioSessionId)
@@ -166,7 +163,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
                     binding.equalizerEffects.loudnessEnhancerSwitch.isEnabled = viewModel.eqState.isEnabled
                     binding.equalizerEffects.loudnessEnhancerSwitch.isChecked = state.isUsable
                     binding.equalizerEffects.loudnessGain.isEnabled = viewModel.eqState.isEnabled && state.isUsable
-                    binding.equalizerEffects.loudnessGain.setValueAnimated(state.value.toFloat())
+                    binding.equalizerEffects.loudnessGain.setValueAnimated(state.value)
                     binding.equalizerEffects.loudnessGainDisplay.text =
                         String.format(Locale.ROOT, "%.0f mDb", state.value)
                 }
@@ -263,12 +260,11 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
 
         materialSharedAxis(view)
         setSupportActionBar(binding.appBarLayout.toolbar, getString(R.string.equalizer_label))
-        view.applyScrollableContentInsets(binding.mainEqContainer) { _, insets ->
-            this.windowInsets = insets
-        }
+
+        view.applyHorizontalWindowInsets()
 
         libraryViewModel.getMiniPlayerMargin().observe(viewLifecycleOwner) {
-            binding.mainEqContainer.updatePadding(bottom = it + windowInsets.getBottomInsets())
+            binding.mainEqContainer.updatePadding(bottom = it.getWithSpace())
         }
 
         setUpPresets()
@@ -310,7 +306,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
                         equalizer.putExtra(AudioEffect.EXTRA_AUDIO_SESSION, sessionId)
                         equalizer.putExtra(AudioEffect.EXTRA_CONTENT_TYPE, AudioEffect.CONTENT_TYPE_MUSIC)
                         startActivityForResult(equalizer, DISPLAY_AUDIO_EFFECT_CONTROL_PANEL_REQUEST)
-                    } catch (ex: ActivityNotFoundException) {
+                    } catch (_: ActivityNotFoundException) {
                         showToast(R.string.no_equalizer)
                     }
                 } else {
@@ -357,8 +353,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
                                 try {
                                     selectExportDocumentLauncher.launch(presetName)
                                     showToast(R.string.select_a_file_to_save_exported_configurations)
-                                } catch (ignored: ActivityNotFoundException) {
-                                }
+                                } catch (_: ActivityNotFoundException) {}
                             }
                         }
                     } else {

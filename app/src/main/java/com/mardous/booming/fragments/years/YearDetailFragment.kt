@@ -22,7 +22,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -35,8 +34,7 @@ import com.mardous.booming.R
 import com.mardous.booming.adapters.extension.isNullOrEmpty
 import com.mardous.booming.adapters.song.SongAdapter
 import com.mardous.booming.databinding.FragmentDetailListBinding
-import com.mardous.booming.extensions.applyScrollableContentInsets
-import com.mardous.booming.extensions.getBottomInsets
+import com.mardous.booming.extensions.applyHorizontalWindowInsets
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.media.songCountStr
 import com.mardous.booming.extensions.media.songsDurationStr
@@ -68,8 +66,6 @@ class YearDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
     private var _binding: FragmentDetailListBinding? = null
     private val binding get() = _binding!!
 
-    private var windowInsets: WindowInsetsCompat? = null
-
     private lateinit var songAdapter: SongAdapter
     private lateinit var requestManager: RequestManager
 
@@ -83,12 +79,10 @@ class YearDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
 
         setSupportActionBar(binding.toolbar)
         materialSharedAxis(view)
-        view.applyScrollableContentInsets(binding.recyclerView) { _, insets ->
-            this.windowInsets = insets
-        }
+        view.applyHorizontalWindowInsets()
 
         libraryViewModel.getMiniPlayerMargin().observe(viewLifecycleOwner) {
-            binding.recyclerView.updatePadding(bottom = it + windowInsets.getBottomInsets())
+            binding.recyclerView.updatePadding(bottom = it.getWithSpace())
         }
 
         setupButtons()

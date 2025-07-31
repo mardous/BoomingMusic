@@ -7,6 +7,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import com.mardous.booming.extensions.isNightMode
 import com.mardous.booming.extensions.media.durationStr
 import com.mardous.booming.extensions.media.extraInfo
 import com.mardous.booming.fragments.player.PlayerColorScheme
@@ -55,7 +56,7 @@ class PlayerViewModel(
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.Eagerly,
-        initialValue = false
+        initialValue = serviceConnection.currentPlaybackState == PlaybackStateCompat.STATE_PLAYING
     )
     val isPlaying get() = isPlayingFlow.value
 
@@ -114,7 +115,7 @@ class PlayerViewModel(
         queueManager.addObserver(this)
     }
 
-    override fun queueChanged(queue: List<Song>) {
+    override fun queueChanged(queue: List<Song>, reason: QueueChangeReason) {
         _playingQueueFlow.value = queue
     }
 
@@ -315,11 +316,7 @@ class PlayerViewModel(
 
     fun restorePlayback() = viewModelScope.launch(IO) {
         if (!isPlaying && Preferences.playOnStartupMode != PlayOnStartupMode.NEVER) {
-            if (queueManager.isEmpty) {
-                transportControls?.sendCustomAction(SessionCommand.RESTORE_PLAYBACK, null)
-            } else {
-                transportControls?.play()
-            }
+            transportControls?.sendCustomAction(SessionCommand.RESTORE_PLAYBACK, null)
         }
     }
 
@@ -328,8 +325,8 @@ class PlayerViewModel(
         mode: PlayerColorScheme.Mode,
         mediaColor: MediaNotificationProcessor
     ) = viewModelScope.launch(IO) {
-        val currentScheme = colorScheme?.mode?.takeIf { it == PlayerColorSchemeMode.AppTheme }
-        if (currentScheme == mode)
+        val currentScheme = colorScheme.mode.takeIf { it == PlayerColorSchemeMode.AppTheme }
+        if (currentScheme == mode && colorScheme.isDark == context.isNightMode)
             return@launch
 
         val result = runCatching {

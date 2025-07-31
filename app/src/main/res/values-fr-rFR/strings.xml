@@ -47,6 +47,9 @@
     <string name="continue_action">Continuer</string>
     <string name="select_all_title">Tout sélectionner</string>
     <string name="x_selected">%d sélectionné</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">La notification de lecture fournit des actions pour la lecture/pause, etc.</string>
     <string name="playing_notification_name">Notification de lecture</string>
     <string name="action_scan_directory">Analyser le répertoire</string>
@@ -63,7 +66,7 @@
     <string name="new_playlist_title">Nouvelle playlist</string>
     <string name="add_playlist_title">Ajouter à la playlist</string>
     <string name="rename_playlist_title">Renommer la playlist</string>
-    <string name="action_rename">Renommer la playlist</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Supprimer la playlist</string>
     <string name="action_export_playlist">Exporter vers un fichier</string>
     <string name="action_clear_history">Effacer l\'historique</string>
@@ -72,7 +75,9 @@
     <string name="create_a_playlist_with_one_song">Une playlist sera créée et un titre y sera ajoutée.</string>
     <string name="create_a_playlist_with_x_songs">Une playlist sera créée et %d titres seront ajoutées automatiquement.</string>
     <string name="playlist_name_empty">Nom de la playlist</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Playlist %s enregistrée.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Échec de l\'enregistrement de la playlist.</string>
     <string name="saved_x_playlists">%1$d playlists enregistrées.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d playlists enregistrées, échec de l\'enregistrement de %2$d.</string>
@@ -85,6 +90,7 @@
     <string name="inserted_one_song_into_playlist_x">Un titre a été inséré dans la playlist %s.</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d titres ajoutés à la playlist %2$s.</string>
     <string name="playlist_exists">La playlist %s existe déjà.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Supprimer le titre de la playlist</string>
     <string name="remove_songs_from_playlist_title">Supprimer les titres de la playlist</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Supprimer le titre <b>%1$s</b> de la playlist ?]]></string>
@@ -213,7 +219,7 @@
     <string name="horizontal_albums">Albums horizontaux</string>
     <string name="ignore_singles">Ignorer les singles</string>
     <string name="compact_song_view">Vue compacte des titres</string>
-    <string name="show_total_duration">Show total duration</string>
+    <string name="show_total_duration">Afficher la durée totale</string>
     <string name="action_view_type">Type de vue</string>
     <string name="view_type_normal">Normale</string>
     <string name="view_type_card">Cartes</string>
@@ -462,7 +468,7 @@
     <string name="synced_lyrics">Synchronisé</string>
     <string name="embedded_lyrics">Intégré</string>
     <string name="downloaded_lyrics">Téléchargé</string>
-    <string name="external_file_lyrics">External file</string>
+    <string name="external_file_lyrics">Fichier externe</string>
     <string name="action_import_synchronized_lyrics">Importer les paroles synchronisées</string>
     <string name="action_share_synchronized_lyrics">Partager les paroles synchronisées</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Voulez-vous importer les paroles LRC synchronisées pour <b>%s</b>?]]></string>
@@ -479,7 +485,8 @@
     <string name="no_synced_lyrics_found">Aucune parole synchronisée trouvée</string>
     <string name="lyrics_were_updated_successfully">Les paroles ont été mises à jour avec succès.</string>
     <string name="failed_to_update_lyrics">Impossible de mettre à jour les paroles.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
+    <string name="there_are_no_changes_to_save">Il n\'y a aucune modification à enregistrer.</string>
+    <string name="lyrics_source_external_file">Les paroles proviennent d\'un fichier externe. Vous ne pouvez pas modifier ce fichier directement depuis Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Minuterie</string>
     <string name="sleep_timer_cancel_current_timer">Annuler la minuterie actuelle</string>
@@ -719,6 +726,7 @@
     <string name="full_cover">Couverture complète</string>
     <string name="gradient">Dégradé</string>
     <string name="peek">Coup d\'œil</string>
+    <string name="peek2">Peek2</string>
     <string name="plain">Texte</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normale</string>

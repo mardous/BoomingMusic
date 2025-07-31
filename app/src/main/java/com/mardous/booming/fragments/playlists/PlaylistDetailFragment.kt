@@ -23,7 +23,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.findNavController
@@ -44,8 +43,7 @@ import com.mardous.booming.database.toSongs
 import com.mardous.booming.database.toSongsEntity
 import com.mardous.booming.databinding.FragmentDetailListBinding
 import com.mardous.booming.dialogs.playlists.RemoveFromPlaylistDialog
-import com.mardous.booming.extensions.applyScrollableContentInsets
-import com.mardous.booming.extensions.getBottomInsets
+import com.mardous.booming.extensions.applyHorizontalWindowInsets
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.media.isFavorites
 import com.mardous.booming.extensions.media.playlistInfo
@@ -76,8 +74,6 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_
         parametersOf(arguments.playlistId)
     }
 
-    private var windowInsets: WindowInsetsCompat? = null
-
     private var _binding: FragmentDetailListBinding? = null
     private val binding get() = _binding!!
 
@@ -105,20 +101,26 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_
         setupRecyclerView()
 
         materialSharedAxis(view)
-        view.applyScrollableContentInsets(binding.recyclerView) { _, insets ->
-            this.windowInsets = insets
-        }
+        view.applyHorizontalWindowInsets()
 
         setSupportActionBar(binding.toolbar)
         //binding.collapsingAppBarLayout.setupStatusBarScrim(requireContext())
 
         libraryViewModel.getMiniPlayerMargin().observe(viewLifecycleOwner) {
-            binding.recyclerView.updatePadding(bottom = it + windowInsets.getBottomInsets())
+            binding.recyclerView.updatePadding(bottom = it.getWithSpace())
         }
 
         detailViewModel.getPlaylist().observe(viewLifecycleOwner) { playlistWithSongs ->
             playlist = playlistWithSongs
             binding.title.text = playlist.playlistEntity.playlistName
+            val description = playlist.playlistEntity.description
+            if (!description.isNullOrEmpty()) {
+                binding.description.text = description
+                binding.description.isVisible = true
+            } else {
+                binding.description.text = null
+                binding.description.isVisible = false
+            }
             binding.subtitle.text = playlist.songs.toSongs().playlistInfo(requireContext())
             binding.collapsingAppBarLayout.title = playlist.playlistEntity.playlistName
         }
@@ -181,7 +183,7 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_
     override fun onPrepareMenu(menu: Menu) {
         playlist.let {
             if (it.playlistEntity.isFavorites(requireContext())) {
-                menu.removeItem(R.id.action_rename_playlist)
+                menu.removeItem(R.id.action_edit_playlist)
                 menu.removeItem(R.id.action_delete_playlist)
             }
         }

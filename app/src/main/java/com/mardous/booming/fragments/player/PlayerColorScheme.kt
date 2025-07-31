@@ -55,6 +55,7 @@ typealias PlayerColorSchemeList = List<PlayerColorSchemeMode>
 @Immutable
 data class PlayerColorScheme(
     val mode: Mode,
+    val isDark: Boolean,
     @param:ColorInt val surfaceColor: Int,
     @param:ColorInt val emphasisColor: Int,
     @param:ColorInt val primaryTextColor: Int,
@@ -94,6 +95,7 @@ data class PlayerColorScheme(
 
         val Unspecified = PlayerColorScheme(
             mode = Mode.SimpleColor,
+            isDark = false,
             surfaceColor = Color.TRANSPARENT,
             emphasisColor = Color.TRANSPARENT,
             primaryTextColor = Color.TRANSPARENT,
@@ -115,6 +117,7 @@ data class PlayerColorScheme(
             val secondaryControlColor = controlColor.withAlpha(0.2f)
             return PlayerColorScheme(
                 mode = mode,
+                isDark = context.isNightMode,
                 surfaceColor = context.surfaceColor(),
                 emphasisColor = context.primaryColor(),
                 primaryTextColor = context.textColorPrimary(),
@@ -149,6 +152,7 @@ data class PlayerColorScheme(
         fun vibrantColorScheme(color: MediaNotificationProcessor): PlayerColorScheme {
             return PlayerColorScheme(
                 mode = Mode.VibrantColor,
+                isDark = !color.backgroundColor.isColorLight,
                 surfaceColor = color.backgroundColor,
                 emphasisColor = color.backgroundColor,
                 primaryTextColor = color.primaryTextColor,
@@ -179,6 +183,7 @@ data class PlayerColorScheme(
             )
             PlayerColorScheme(
                 mode = Mode.MaterialYou,
+                isDark = colorScheme.isDark,
                 surfaceColor = colorScheme.surface,
                 emphasisColor = colorScheme.primary,
                 primaryTextColor = colorScheme.onSurface,

@@ -15,7 +15,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import kotlin.concurrent.atomics.AtomicReference
+import kotlin.concurrent.atomics.ExperimentalAtomicApi
 
+@OptIn(ExperimentalAtomicApi::class)
 class PersistentStorage(context: Context, private val coroutineScope: CoroutineScope) : KoinComponent {
 
     private val songRepository: SongRepository by inject()
@@ -25,8 +28,14 @@ class PersistentStorage(context: Context, private val coroutineScope: CoroutineS
     private val playbackQueueStore = PlaybackQueueStore(context)
     private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
-    var queuesRestored = false
-        private set
+    private var state = AtomicReference(RestorationState.Awaiting)
+    val restorationState get() = state.load()
+
+    enum class RestorationState(val isRestored: Boolean = false) {
+        Awaiting(false),
+        Restoring(false),
+        Restored(true)
+    }
 
     fun restoreState() {
         queueManager.restoreState(
@@ -39,26 +48,31 @@ class PersistentStorage(context: Context, private val coroutineScope: CoroutineS
         )
     }
 
-    fun restoreQueue(onCompleted: (restored: Boolean, restoredPositionInTrack: Int) -> Unit) {
-        if (queuesRestored || !queueManager.isEmpty) return
+    suspend fun restoreQueue(onCompleted: (restored: Boolean, restoredPositionInTrack: Int) -> Unit) {
+        val movedToRestoringState = state.compareAndSet(RestorationState.Awaiting, RestorationState.Restoring)
+        if (queueManager.isEmpty && movedToRestoringState) {
+            withContext(IO) {
+                val restoredQueue = playbackQueueStore.getSavedPlayingQueue(songRepository)
+                val restoredOriginalQueue = playbackQueueStore.getSavedOriginalPlayingQueue(songRepository)
+                val restoredPosition = sharedPreferences.getInt(SAVED_QUEUE_POSITION, -1)
+                val restoredPositionInTrack = sharedPreferences.getInt(SAVED_POSITION_IN_TRACK, -1)
 
-        coroutineScope.launch(IO) {
-            val restoredQueue = playbackQueueStore.getSavedPlayingQueue(songRepository)
-            val restoredOriginalQueue = playbackQueueStore.getSavedOriginalPlayingQueue(songRepository)
-            val restoredPosition = sharedPreferences.getInt(SAVED_QUEUE_POSITION, -1)
-            val restoredPositionInTrack = sharedPreferences.getInt(SAVED_POSITION_IN_TRACK, -1)
+                val restored = queueManager.restoreQueues(
+                    restoredQueue,
+                    restoredOriginalQueue,
+                    restoredPosition
+                )
 
-            val restored = queueManager.restoreQueues(
-                restoredQueue,
-                restoredOriginalQueue,
-                restoredPosition
-            )
+                withContext(Main) {
+                    onCompleted(restored, restoredPositionInTrack)
+                }
 
-            withContext(Main) {
-                onCompleted(restored, restoredPositionInTrack)
+                state.store(RestorationState.Restored)
             }
-
-            queuesRestored = true
+        } else {
+            withContext(Main) {
+                onCompleted(!queueManager.isEmpty, sharedPreferences.getInt(SAVED_POSITION_IN_TRACK, -1))
+            }
         }
     }
 

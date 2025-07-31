@@ -37,12 +37,14 @@ class PlaylistPreview(private val playlistWithSongs: PlaylistWithSongs) {
 
         other as PlaylistPreview
         if (other.playlistEntity.playListId != playlistEntity.playListId) return false
+        if (other.playlistEntity.customCoverUri != playlistEntity.customCoverUri) return false
         if (other.songs.size != songs.size) return false
         return true
     }
 
     override fun hashCode(): Int {
         var result = playlistEntity.playListId.hashCode()
+        result = 31 * result + (playlistEntity.customCoverUri?.hashCode() ?: 0)
         result = 31 * result + playlistWithSongs.songs.size
         println("Glide $result")
         return result

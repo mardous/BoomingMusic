@@ -222,12 +222,14 @@
     <string-array name="pref_language_names">
         <item>@string/system_default</item>
         <item>Arabic</item>
+        <item>Catalan</item>
         <item>Chinese Simplified</item>
         <item>Czech</item>
         <item>Danish</item>
         <item>Dutch</item>
         <item>English (US)</item>
         <item>Finnish</item>
+        <item>French</item>
         <item>German</item>
         <item>Greek</item>
         <item>Hebrew</item>
@@ -238,6 +240,7 @@
         <item>Norwegian</item>
         <item>Polish</item>
         <item>Portuguese</item>
+        <item>Portuguese (Brazilian)</item>
         <item>Romanian</item>
         <item>Russian</item>
         <item>Spanish</item>
@@ -250,12 +253,14 @@
     <string-array name="pref_language_codes">
         <item>auto</item>
         <item>ar</item>
+        <item>ca</item>
         <item>zh-CN</item>
         <item>cs</item>
         <item>da</item>
         <item>nl</item>
         <item>en</item>
         <item>fi</item>
+        <item>fr</item>
         <item>de</item>
         <item>el</item>
         <item>iw</item>
@@ -266,6 +271,7 @@
         <item>no</item>
         <item>pl</item>
         <item>pt</item>
+        <item>pt-BR</item>
         <item>ro</item>
         <item>ru</item>
         <item>es</item>

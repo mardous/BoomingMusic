@@ -21,10 +21,15 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mardous.booming.R
+import com.mardous.booming.adapters.base.AbsMultiSelectAdapter
 import com.mardous.booming.database.PlaylistWithSongs
 import com.mardous.booming.extensions.glide.*
 import com.mardous.booming.extensions.media.*
@@ -39,12 +44,26 @@ import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
 class SearchAdapter(
+    private val activity: FragmentActivity,
     dataSet: List<Any>,
     private val callback: ISearchCallback? = null
-) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+) : AbsMultiSelectAdapter<SearchAdapter.ViewHolder, Song>(activity, R.menu.menu_media_selection) {
 
     var dataSet by Delegates.observable(dataSet) { _: KProperty<*>, _: List<Any>, _: List<Any> ->
         notifyDataSetChanged()
+    }
+
+    override fun getIdentifier(position: Int): Song? {
+        val item = dataSet[position]
+        return if (item is Song) item else null
+    }
+
+    override fun getName(item: Song): String {
+        return item.title
+    }
+
+    override fun onMultipleItemAction(menuItem: MenuItem, selection: List<Song>) {
+        callback?.onMultipleItemAction(menuItem, selection)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -98,6 +117,9 @@ class SearchAdapter(
 
             SONG -> {
                 val song = dataSet[position] as Song
+                val isChecked = isChecked(song)
+                holder.isActivated = isChecked
+                holder.menu?.isGone = isChecked
                 holder.title?.text = song.title
                 holder.text?.text = song.songInfo()
                 holder.image?.let {
@@ -138,8 +160,26 @@ class SearchAdapter(
         return dataSet.size
     }
 
-    inner class ViewHolder(itemView: View, itemViewType: Int) :
-        com.mardous.booming.adapters.base.MediaEntryViewHolder(itemView) {
+    inner class ViewHolder(itemView: View, private val itemViewType: Int) :
+        RecyclerView.ViewHolder(itemView), View.OnClickListener, View.OnLongClickListener {
+        
+        val image: ImageView? = itemView.findViewById(R.id.image)
+        val title: TextView? = itemView.findViewById(R.id.title)
+        val text: TextView? = itemView.findViewById(R.id.text)
+        val menu: View? = itemView.findViewById(R.id.menu)
+
+        init {
+            itemView.setOnClickListener(this)
+            itemView.setOnLongClickListener(this)
+            // Ensure long click is enabled
+            itemView.isLongClickable = true
+        }
+
+        var isActivated: Boolean
+            get() = itemView.isActivated
+            set(activated) {
+                itemView.isActivated = activated
+            }
 
         private val sharedElements: Array<Pair<View, String>>
             get() = arrayOf(image!! to image.transitionName)
@@ -149,17 +189,32 @@ class SearchAdapter(
             when (itemViewType) {
                 ALBUM -> callback?.albumClick(item as Album, sharedElements)
                 ARTIST -> callback?.artistClick(item as Artist, sharedElements)
-                SONG -> callback?.songClick(item as Song, dataSet)
+                SONG -> {
+                    val song = item as Song
+                    if (isInQuickSelectMode) {
+                        toggleChecked(layoutPosition)
+                    } else {
+                        callback?.songClick(song, dataSet)
+                    }
+                }
                 GENRE -> callback?.genreClick(item as Genre)
                 PLAYLIST -> callback?.playlistClick(item as PlaylistWithSongs)
             }
         }
 
         override fun onLongClick(view: View): Boolean {
-            return menu?.let {
-                it.callOnClick()
-                true
-            } ?: false
+            val item = dataSet[layoutPosition]
+            return when (itemViewType) {
+                SONG -> {
+                    // Force toggle checked for songs
+                    val result = toggleChecked(layoutPosition)
+                    true // Always return true to consume the long click
+                }
+                else -> menu?.let {
+                    it.callOnClick()
+                    true
+                } ?: false
+            }
         }
 
         private val menuRes = when (itemViewType) {
@@ -171,8 +226,6 @@ class SearchAdapter(
         }
 
         init {
-            itemView.setOnLongClickListener(null)
-
             menu?.apply {
                 visibility = if (menuRes != 0) {
                     setOnClickListener(object : OnClickMenu() {

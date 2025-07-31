@@ -22,7 +22,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -33,8 +32,7 @@ import com.mardous.booming.R
 import com.mardous.booming.adapters.extension.isNullOrEmpty
 import com.mardous.booming.adapters.song.SongAdapter
 import com.mardous.booming.databinding.FragmentDetailListBinding
-import com.mardous.booming.extensions.applyScrollableContentInsets
-import com.mardous.booming.extensions.getBottomInsets
+import com.mardous.booming.extensions.applyHorizontalWindowInsets
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.media.songCountStr
 import com.mardous.booming.extensions.media.songsDurationStr
@@ -66,8 +64,6 @@ class GenreDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_lis
     private var _binding: FragmentDetailListBinding? = null
     private val binding get() = _binding!!
 
-    private var insets: WindowInsetsCompat? = null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDetailListBinding.bind(view)
@@ -75,9 +71,9 @@ class GenreDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_lis
 
         materialSharedAxis(view)
         setSupportActionBar(binding.toolbar)
-        view.applyScrollableContentInsets(binding.recyclerView) { _, insets ->
-            this.insets = insets
-        }
+
+        view.applyHorizontalWindowInsets()
+
         binding.collapsingAppBarLayout.title = genre.name
         binding.title.text = genre.name
 
@@ -87,7 +83,7 @@ class GenreDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_lis
             songs(it)
         }
         libraryViewModel.getMiniPlayerMargin().observe(viewLifecycleOwner) {
-            binding.recyclerView.updatePadding(bottom = it + insets.getBottomInsets())
+            binding.recyclerView.updatePadding(bottom = it.getWithSpace())
         }
     }
 

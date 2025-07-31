@@ -9,7 +9,9 @@ import com.mardous.booming.http.Result
 import com.mardous.booming.http.deezer.DeezerAlbum
 import com.mardous.booming.http.deezer.DeezerTrack
 import com.mardous.booming.model.Artist
+import com.mardous.booming.model.Song
 import com.mardous.booming.repository.Repository
+import com.mardous.booming.service.queue.QueueManager
 import com.mardous.booming.taglib.EditTarget
 import com.mardous.booming.taglib.MetadataReader
 import com.mardous.booming.taglib.MetadataWriter
@@ -24,6 +26,7 @@ import kotlinx.coroutines.launch
  */
 class TagEditorViewModel(
     private val repository: Repository,
+    private val queueManager: QueueManager,
     private val target: EditTarget
 ) : ViewModel() {
 
@@ -55,7 +58,28 @@ class TagEditorViewModel(
             metadataWriter.propertyMap(propertyMap)
             metadataWriter.write(context, target)
         }
-        emit(SaveTagsResult(isLoading = false, isSuccess = result.isSuccess))
+        if (result.isSuccess) {
+            val writeResult = result.getOrThrow()
+            if (writeResult.isSuccess) {
+                for (content in writeResult.contents) {
+                    val song = repository.songById(content.id)
+                    if (song != Song.emptySong) {
+                        queueManager.updateSong(content.id, song)
+                    }
+                }
+            }
+            emit(
+                SaveTagsResult(
+                    isLoading = false,
+                    isSuccess = true,
+                    scanned = writeResult.scanned,
+                    failed = writeResult.failed
+                )
+            )
+        } else {
+            emit(SaveTagsResult(isLoading = false, isSuccess = false))
+        }
+
     }
 
     fun loadContent() = viewModelScope.launch(Dispatchers.IO + ioHandler) {

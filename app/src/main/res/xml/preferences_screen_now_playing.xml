@@ -48,7 +48,7 @@
             app:icon="@drawable/ic_rounded_corner_24dp"
             app:title="@string/now_playing_corner_radius_title"
             app:summary="@string/now_playing_corner_radius_summary"
-            android:max="32"
+            android:max="48"
             app:min="0"
             app:defaultValue="@integer/now_playing_corner_radius"
             app:showSeekBarValue="true"

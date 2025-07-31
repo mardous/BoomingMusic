@@ -21,12 +21,12 @@ import android.annotation.SuppressLint
 import android.os.Environment
 import android.os.storage.StorageManager
 import android.os.storage.StorageVolume
+import android.util.Log
 import androidx.core.content.getSystemService
 import com.mardous.booming.R
 import com.mardous.booming.appContext
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.model.filesystem.StorageDevice
-import com.mardous.booming.recordException
 import kotlinx.io.IOException
 import java.io.File
 import java.lang.reflect.InvocationTargetException
@@ -56,7 +56,7 @@ object StorageUtil {
                 val path = try {
                     sv.getPathCompat()
                 } catch (e: Exception) {
-                    recordException(e)
+                    Log.e("StorageUtil", "refreshStorageVolumes(): cannot get storage path", e)
                     continue
                 }
 
@@ -69,7 +69,7 @@ object StorageUtil {
                 _storageVolumes.add(StorageDevice(path, description, icon))
             }
         } catch (t: Throwable) {
-            recordException(t)
+            Log.e("StorageUtil", "refreshStorageVolumes(): cannot load storages", t)
         }
         return _storageVolumes
     }
@@ -79,7 +79,7 @@ object StorageUtil {
             val canonicalPath = directory.canonicalPath
             storageVolumes.firstOrNull { it.file.canonicalPath == canonicalPath }
         } catch (e: IOException) {
-            recordException(e)
+            Log.e("StorageUtil", "getStorageDevice(): cannot get storage device for $directory", e)
             null
         }
     }

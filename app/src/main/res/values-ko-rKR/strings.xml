@@ -47,6 +47,9 @@
     <string name="continue_action">Continue</string>
     <string name="select_all_title">Select all</string>
     <string name="x_selected">%d selected</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">The playing notification provides actions for play/pause etc.</string>
     <string name="playing_notification_name">Playing notification</string>
     <string name="action_scan_directory">Scan directory</string>
@@ -63,7 +66,7 @@
     <string name="new_playlist_title">New playlist</string>
     <string name="add_playlist_title">Add to playlist</string>
     <string name="rename_playlist_title">Rename playlist</string>
-    <string name="action_rename">Rename playlist</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Delete playlist</string>
     <string name="action_export_playlist">Export to file</string>
     <string name="action_clear_history">Clear history</string>
@@ -72,7 +75,9 @@
     <string name="create_a_playlist_with_one_song">A playlist will be created and one song will be added to it.</string>
     <string name="create_a_playlist_with_x_songs">A playlist will be created and %d songs will be added automatically.</string>
     <string name="playlist_name_empty">Playlist name</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Saved playlist %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Failed to save playlist.</string>
     <string name="saved_x_playlists">Saved %1$d playlists.</string>
     <string name="saved_x_playlists_failed_to_save_x">Saved %1$d playlists, failed to save %2$d.</string>
@@ -85,6 +90,7 @@
     <string name="inserted_one_song_into_playlist_x">Inserted one song into playlist %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Inserted %1$d songs into playlist %2$s.</string>
     <string name="playlist_exists">Playlist %s already exists.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Remove song from playlist</string>
     <string name="remove_songs_from_playlist_title">Remove songs from playlist</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Remove the song <b>%1$s</b> from the playlist?]]></string>
@@ -471,6 +477,7 @@
     <string name="no_synced_lyrics_found">No synced lyrics found</string>
     <string name="lyrics_were_updated_successfully">Lyrics were updated successfully.</string>
     <string name="failed_to_update_lyrics">Failed to update lyrics.</string>
+    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep timer</string>
@@ -711,6 +718,7 @@
     <string name="full_cover">Full Cover</string>
     <string name="gradient">Gradient</string>
     <string name="peek">Peek</string>
+    <string name="peek2">Peek2</string>
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>

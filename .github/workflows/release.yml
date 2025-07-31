@@ -28,12 +28,6 @@ jobs:
       - name: Setup Android-SDK
         uses: android-actions/setup-android@v3
 
-      - name: Create Google Services JSON File
-        if: matrix.variant == 'normal'
-        env:
-          DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
-        run: echo $DATA | base64 -di > ./app/google-services.json
-
       - name: Create files for signing
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}

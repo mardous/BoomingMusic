@@ -44,12 +44,16 @@ import com.mardous.booming.database.PlaylistWithSongs
 import com.mardous.booming.databinding.FragmentSearchBinding
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.navigation.*
-import com.mardous.booming.extensions.resources.*
+import com.mardous.booming.extensions.resources.focusAndShowKeyboard
+import com.mardous.booming.extensions.resources.onVerticalScroll
+import com.mardous.booming.extensions.resources.reactionToKey
+import com.mardous.booming.extensions.resources.setupStatusBarForeground
 import com.mardous.booming.fragments.base.AbsMainActivityFragment
 import com.mardous.booming.helper.menu.onAlbumMenu
 import com.mardous.booming.helper.menu.onArtistMenu
 import com.mardous.booming.helper.menu.onPlaylistMenu
 import com.mardous.booming.helper.menu.onSongMenu
+import com.mardous.booming.helper.menu.onSongsMenu
 import com.mardous.booming.interfaces.ISearchCallback
 import com.mardous.booming.model.Album
 import com.mardous.booming.model.Artist
@@ -82,12 +86,12 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        materialSharedAxis(view)
         _binding = FragmentSearchBinding.bind(view)
         setSupportActionBar(binding.toolbar)
-        setupRecyclerView()
+        materialSharedAxis(view)
+        view.applyHorizontalWindowInsets()
 
-        view.applyScrollableContentInsets(binding.recyclerView)
+        setupRecyclerView()
 
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             viewModel.searchFilter.collect { searchFilter ->
@@ -149,12 +153,12 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
         }
 
         libraryViewModel.getMiniPlayerMargin().observe(viewLifecycleOwner) {
-            binding.recyclerView.updatePadding(bottom = it + dip(R.dimen.fab_size_padding))
+            binding.recyclerView.updatePadding(bottom = it.getWithSpace(dip(R.dimen.fab_size_padding)))
         }
 
         libraryViewModel.getFabMargin().observe(viewLifecycleOwner) {
             binding.keyboardPopup.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = it + windowInsets.getBottomInsets()
+                bottomMargin = it.getWithSpace()
             }
         }
 
@@ -199,7 +203,7 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setupRecyclerView() {
-        searchAdapter = SearchAdapter(emptyList(), this).apply {
+        searchAdapter = SearchAdapter(requireActivity(), emptyList(), this).apply {
             registerAdapterDataObserver(adapterDataObserver)
         }
         binding.recyclerView.apply {
@@ -292,6 +296,10 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
         return playlist.onPlaylistMenu(this, menuItem)
     }
 
+    override fun onMultipleItemAction(menuItem: MenuItem, selection: List<Song>) {
+        selection.onSongsMenu(this, menuItem)
+    }
+
     override fun genreClick(genre: Genre) {
         findNavController().navigate(R.id.nav_genre_detail, genreDetailArgs(genre))
     }
@@ -336,6 +344,11 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
         searchAdapter.unregisterAdapterDataObserver(adapterDataObserver)
         binding.searchView.setOnKeyListener(null)
         _binding = null
+    }
+
+    override fun onPause() {
+        super.onPause()
+        searchAdapter.actionMode?.finish()
     }
 
     companion object {

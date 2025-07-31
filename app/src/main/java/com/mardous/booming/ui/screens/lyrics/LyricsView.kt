@@ -71,7 +71,7 @@ fun LyricsView(
             .fillMaxSize()
     ) {
         val lines = state.lyrics?.lines ?: emptyList()
-        itemsIndexed(lines, key = { _, line -> line.startAt }) { index, line ->
+        itemsIndexed(lines, key = { _, line -> line.id }) { index, line ->
             val isActive = index == state.currentLineIndex
             if (line.isWordByWord) {
                 val activeWordIndex = if (isActive) state.currentWordIndex else -1

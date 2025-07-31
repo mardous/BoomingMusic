@@ -47,7 +47,6 @@ import com.mardous.booming.fragments.base.AbsMainActivityFragment
 import com.mardous.booming.helper.menu.*
 import com.mardous.booming.interfaces.*
 import com.mardous.booming.model.*
-import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.viewmodels.library.ReloadType
 import com.mardous.booming.viewmodels.library.model.SuggestedResult
 
@@ -92,7 +91,9 @@ class HomeFragment : AbsMainActivityFragment(R.layout.fragment_home),
             destroyOnDetach()
         }
         libraryViewModel.getMiniPlayerMargin().observe(viewLifecycleOwner) {
-            binding.recyclerView.updatePadding(bottom = it)
+            binding.recyclerView.updatePadding(
+                bottom = it.getWithSpace(16.dp(resources), includeInsets = false)
+            )
         }
         libraryViewModel.getSuggestions().apply {
             observe(viewLifecycleOwner) { result ->

@@ -12,7 +12,6 @@ import com.kyant.taglib.TagLib
 import org.jaudiotagger.tag.reference.GenreTypes
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
-import java.io.IOException
 
 fun Picture.toBitmap(): Bitmap? = BitmapFactory.decodeByteArray(data, 0, data.size)
 
@@ -33,8 +32,8 @@ class MetadataReader(uri: Uri, readPictures: Boolean = false) : KoinComponent {
                 metadata = TagLib.getMetadata(it.dup().detachFd(), readPictures = readPictures)
                 audioProperties = TagLib.getAudioProperties(it.dup().detachFd())
             }
-        } catch (e: IOException) {
-            Log.e("MetadataWorker", "Error reading file $uri", e)
+        } catch (t: Throwable) {
+            Log.e("MetadataWorker", "Error reading file $uri", t)
         }
     }
 
@@ -58,14 +57,8 @@ class MetadataReader(uri: Uri, readPictures: Boolean = false) : KoinComponent {
 
     fun channels() = audioProperties?.channels ?: -1
     fun channelName(): String? {
-        return when (audioProperties?.channels) {
-            1 -> "Mono"
-            2 -> "Stereo"
-            6 -> "5.1 Surround"
-            7 -> "6.1 Surround"
-            8 -> "7.1 Surround"
-            else -> null
-        }
+        val channels = channels()
+        return CHANNEL_MAP[channels] ?: "$channels channels"
     }
 
     /**
@@ -133,6 +126,19 @@ class MetadataReader(uri: Uri, readPictures: Boolean = false) : KoinComponent {
 
     companion object {
         private val DEFAULT_DELIMITERS = arrayOf("/", ";")
+        private val CHANNEL_MAP = mapOf(
+            1 to "Mono",
+            2 to "Stereo",
+            3 to "2.1 Stereo",
+            4 to "Quadraphonic",
+            5 to "5.0 Surround",
+            6 to "5.1 Surround",
+            7 to "6.1 Surround",
+            8 to "7.1 Surround",
+            10 to "9.1 Surround",
+            12 to "11.1 Surround",
+            14 to "13.1 Surround"
+        )
 
         const val TITLE = "TITLE"
         const val ARTIST = "ARTIST"

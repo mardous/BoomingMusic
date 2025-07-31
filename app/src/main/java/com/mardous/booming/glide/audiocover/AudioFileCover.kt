@@ -19,4 +19,14 @@ package com.mardous.booming.glide.audiocover
 
 import android.net.Uri
 
-class AudioFileCover(val uri: Uri, val path: String, val useFolderArt: Boolean)
+class AudioFileCover(val uri: Uri, val path: String, val useFolderArt: Boolean) {
+    override fun hashCode(): Int {
+        return path.hashCode()
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return if (other is AudioFileCover) {
+            other.path == path && other.uri == uri && other.useFolderArt == useFolderArt
+        } else false
+    }
+}

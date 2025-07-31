@@ -47,6 +47,9 @@
     <string name="continue_action">Fortsett</string>
     <string name="select_all_title">Velg alle</string>
     <string name="x_selected">%d valgt</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">Spillende varsel gir handlinger for spill/pause osv.</string>
     <string name="playing_notification_name">Spiller varsel</string>
     <string name="action_scan_directory">Søk gjennom mappen</string>
@@ -63,7 +66,7 @@
     <string name="new_playlist_title">Ny spilleliste</string>
     <string name="add_playlist_title">Legg til i spilleliste</string>
     <string name="rename_playlist_title">Endre spilleliste</string>
-    <string name="action_rename">Endre spilleliste</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Slett spilleliste</string>
     <string name="action_export_playlist">Eksporter til fil</string>
     <string name="action_clear_history">Tøm logg</string>
@@ -72,7 +75,9 @@
     <string name="create_a_playlist_with_one_song">En spilleliste vil bli opprettet og en sang vil bli lagt til den.</string>
     <string name="create_a_playlist_with_x_songs">En spilleliste vil bli opprettet og %d sanger vil bli lagt til automatisk.</string>
     <string name="playlist_name_empty">Navn på spilleliste</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Lagret spilleliste %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Kan ikke lagre spilleliste.</string>
     <string name="saved_x_playlists">Lagrede %1$d spillelister.</string>
     <string name="saved_x_playlists_failed_to_save_x">Lagret %1$d spillelister, kunne ikke lagre %2$d.</string>
@@ -85,6 +90,7 @@
     <string name="inserted_one_song_into_playlist_x">Satt inn en sang i spillelisten %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Sett inn %1$d sanger i spillelisten %2$s.</string>
     <string name="playlist_exists">Spilleliste %s finnes allerede.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Fjern sang fra spilleliste</string>
     <string name="remove_songs_from_playlist_title">Fjern sanger fra spilleliste</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Fjern sangen <b>%1$s</b> fra spillelisten?]]></string>
@@ -479,6 +485,7 @@
     <string name="no_synced_lyrics_found">Ingen synkroniserte tekster funnet</string>
     <string name="lyrics_were_updated_successfully">Teksten ble oppdatert.</string>
     <string name="failed_to_update_lyrics">Kunne ikke oppdatere sangtekstene.</string>
+    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep Timer</string>
@@ -719,6 +726,7 @@
     <string name="full_cover">Full forside</string>
     <string name="gradient">Gradert</string>
     <string name="peek">Pekeppe</string>
+    <string name="peek2">Peek2</string>
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Vanlig</string>

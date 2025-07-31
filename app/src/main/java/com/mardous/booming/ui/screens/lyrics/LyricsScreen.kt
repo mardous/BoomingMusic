@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mardous.booming.R
+import com.mardous.booming.fragments.LibraryMargin
 import com.mardous.booming.fragments.player.PlayerColorScheme
 import com.mardous.booming.lyrics.Lyrics
 import com.mardous.booming.ui.components.color.primaryTextColor
@@ -40,10 +41,9 @@ fun LyricsScreen(
     libraryViewModel: LibraryViewModel,
     lyricsViewModel: LyricsViewModel,
     playerViewModel: PlayerViewModel,
-    onEditClick: () -> Unit,
-    modifier: Modifier = Modifier
+    onEditClick: () -> Unit
 ) {
-    val miniPlayerHeight by libraryViewModel.getMiniPlayerMargin().observeAsState(0)
+    val miniPlayerMargin by libraryViewModel.getMiniPlayerMargin().observeAsState(LibraryMargin(0))
     val lyricsResult by lyricsViewModel.lyricsResult.collectAsState()
     val songProgress by playerViewModel.progressFlow.collectAsState()
 
@@ -61,12 +61,14 @@ fun LyricsScreen(
     }
 
     Scaffold(
-        modifier = modifier.padding(bottom = (miniPlayerHeight / 2).dp),
+        contentWindowInsets = WindowInsets
+            .navigationBars
+            .add(WindowInsets(bottom = miniPlayerMargin.totalMargin)),
         floatingActionButton = {
             FloatingActionButton(
                 onClick = onEditClick,
                 containerColor = MaterialTheme.colorScheme.surface,
-                contentColor = MaterialTheme.colorScheme.onSurface,
+                contentColor = MaterialTheme.colorScheme.onSurface
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_edit_note_24dp),

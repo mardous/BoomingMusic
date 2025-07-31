@@ -50,6 +50,7 @@ interface PlaylistRepository {
     suspend fun insertSongs(songs: List<SongEntity>)
     suspend fun deletePlaylistEntities(playlistEntities: List<PlaylistEntity>)
     suspend fun renamePlaylistEntity(playlistId: Long, name: String)
+    suspend fun updatePlaylist(playlistId: Long, newName: String, customCoverUri: String?, description: String?)
     suspend fun deleteSongsInPlaylist(songs: List<SongEntity>)
     suspend fun deletePlaylistSongs(playlists: List<PlaylistEntity>)
     suspend fun favoritePlaylist(): PlaylistEntity
@@ -132,6 +133,9 @@ class RealPlaylistRepository(
 
     override suspend fun renamePlaylistEntity(playlistId: Long, name: String) =
         playlistDao.renamePlaylist(playlistId, name)
+
+    override suspend fun updatePlaylist(playlistId: Long, newName: String, customCoverUri: String?, description: String?) =
+        playlistDao.updatePlaylist(playlistId, newName, customCoverUri, description)
 
     override suspend fun deleteSongsInPlaylist(songs: List<SongEntity>) {
         songs.forEach {

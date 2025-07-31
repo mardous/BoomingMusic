@@ -18,7 +18,6 @@
 package com.mardous.booming.service.notification
 
 import android.annotation.SuppressLint
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Context
@@ -51,7 +50,8 @@ import com.mardous.booming.service.constants.ServiceAction
 import com.mardous.booming.util.Preferences
 
 @SuppressLint("RestrictedApi")
-class PlayingNotificationClassic(context: Context) : PlayingNotification(context) {
+class PlayingNotificationClassic(context: Context, channelId: String) :
+    PlayingNotification(context, channelId) {
 
     private var primaryColor: Int = 0
 
@@ -257,13 +257,5 @@ class PlayingNotificationClassic(context: Context) : PlayingNotification(context
     private fun buildPendingIntent(context: Context, action: String, serviceName: ComponentName?): PendingIntent {
         return Intent(action)
             .setComponent(serviceName).let { PendingIntent.getService(context, 0, it, PendingIntent.FLAG_IMMUTABLE) }
-    }
-
-    companion object {
-
-        fun from(context: Context, notificationManager: NotificationManager): PlayingNotification {
-            createNotificationChannel(context, notificationManager)
-            return PlayingNotificationClassic(context)
-        }
     }
 }

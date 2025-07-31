@@ -24,6 +24,7 @@ class MusicServiceConnection(context: Context, serviceComponent: ComponentName) 
 
     private val _playbackState = MutableStateFlow(EMPTY_PLAYBACK_STATE)
     val playbackState = _playbackState.asStateFlow()
+    val currentPlaybackState get() = playbackState.value.state
 
     private val _isConnected = MutableStateFlow(false)
     val isConnected = _isConnected.asStateFlow()

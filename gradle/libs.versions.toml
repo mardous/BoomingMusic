@@ -1,8 +1,6 @@
 [versions]
 androidPluginVersion = "8.11.1"
 kspPluginVersion = "2.2.0-2.0.2"
-gmsPluginVersion ="4.4.3"
-crashlyticsPluginVersion = "3.0.5"
 kotlinVersion = "2.2.0"
 kotlinCoroutinesVersion = "1.10.2"
 aboutlibraries = "13.0.0-a01"
@@ -17,7 +15,6 @@ appcompat = "1.7.1"
 viewpager = "1.1.0"
 coreSplashscreen = "1.0.1"
 coreVersion = "1.16.0"
-firebaseBom = "34.0.0"
 fragmentKtx = "1.8.8"
 lifecycleVersion = "2.9.2"
 material = "1.12.0"
@@ -56,9 +53,6 @@ fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragm
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 material-components = { module = "com.google.android.material:material", version.ref = "material" }
-
-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
-firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
 
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinDatetime" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutinesVersion" }
@@ -119,9 +113,6 @@ markdown-core = { module = "io.noties.markwon:core", version.ref = "markdown" }
 markdown-html = { module = "io.noties.markwon:html", version.ref = "markdown" }
 markdown-glide = { module = "io.noties.markwon:image-glide", version.ref = "markdown" }
 markdown-linkify= { module = "io.noties.markwon:linkify", version.ref = "markdown" }
-
-gms-plugin = { module = "com.google.gms:google-services", version.ref = "gmsPluginVersion" }
-crashlytics-plugin = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "crashlyticsPluginVersion" }
 
 [bundles]
 ktor = ["ktor-client-core", "ktor-client-okhttp", "ktor-serialization-json", "ktor-client-content-negotiation", "ktor-client-encoding"]

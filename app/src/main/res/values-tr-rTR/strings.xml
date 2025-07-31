@@ -47,6 +47,9 @@
     <string name="continue_action">Devam et</string>
     <string name="select_all_title">Tümünü seç</string>
     <string name="x_selected">%d adet seçildi</string>
+    <string name="preparing_playback_title">Hazırlanıyor</string>
+    <string name="restoring_playback_state">Çalma durumu ve sırası geri yükleniyor…</string>
+    <string name="playback_stopped_title">Çalma durduruldu</string>
     <string name="playing_notification_description">Çalan şarkı bildirimi, oynatma/duraklatma gibi eylemler sunar.</string>
     <string name="playing_notification_name">Çalan şarkı bildirimi</string>
     <string name="action_scan_directory">Dizini tara</string>
@@ -63,7 +66,7 @@
     <string name="new_playlist_title">Yeni çalma listesi</string>
     <string name="add_playlist_title">Çalma listesine ekle</string>
     <string name="rename_playlist_title">Çalma listesini yeniden adlandır</string>
-    <string name="action_rename">Çalma listesini yeniden adlandır</string>
+    <string name="action_edit_playlist">Çalma listesini düzenle</string>
     <string name="action_delete">Çalma listesini sil</string>
     <string name="action_export_playlist">Dosyaya aktar</string>
     <string name="action_clear_history">Geçmişi temizle</string>
@@ -72,7 +75,9 @@
     <string name="create_a_playlist_with_one_song">Bir çalma listesi oluşturulacak ve bir şarkı eklenecektir.</string>
     <string name="create_a_playlist_with_x_songs">Bir çalma listesi oluşturulacak ve %d şarkı otomatik olarak eklenecektir.</string>
     <string name="playlist_name_empty">Çalma listesi adı</string>
+    <string name="playlist_description_hint">Çalma listesi açıklaması (isteğe bağlı)</string>
     <string name="saved_playlist_x">%s çalma listesi kaydedildi.</string>
+    <string name="playlist_updated">Çalma listesi güncellendi.</string>
     <string name="failed_to_save_playlist">Çalma listesi kaydedilemedi.</string>
     <string name="saved_x_playlists">%1$d çalma listesi kaydedildi.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d çalma listesi kaydedildi, %2$d tanesi kaydedilemedi.</string>
@@ -85,6 +90,7 @@
     <string name="inserted_one_song_into_playlist_x">%s çalma listesine bir şarkı eklendi.</string>
     <string name="inserted_x_songs_into_playlist_x">%2$s çalma listesine %1$d şarkı eklendi.</string>
     <string name="playlist_exists">%s adında bir çalma listesi zaten var.</string>
+    <string name="playlist_created">Çalma listesi %s başarıyla oluşturuldu.</string>
     <string name="remove_song_from_playlist_title">Şarkıyı çalma listesinden kaldır</string>
     <string name="remove_songs_from_playlist_title">Şarkıları çalma listesinden kaldır</string>
     <string name="remove_song_x_from_playlist"><![CDATA[<b>%1$s</b> şarkısı çalma listesinden kaldırılsın mı?]]></string>
@@ -213,7 +219,7 @@
     <string name="horizontal_albums">Yatay albümler</string>
     <string name="ignore_singles">Teklileri yoksay</string>
     <string name="compact_song_view">Kompakt şarkı görünümü</string>
-    <string name="show_total_duration">Show total duration</string>
+    <string name="show_total_duration">Toplam süreyi göster</string>
     <string name="action_view_type">Görünüm türü</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Kart</string>
@@ -479,6 +485,7 @@
     <string name="no_synced_lyrics_found">Senkronize şarkı sözü bulunamadı</string>
     <string name="lyrics_were_updated_successfully">Şarkı sözleri başarıyla güncellendi.</string>
     <string name="failed_to_update_lyrics">Şarkı sözleri güncellenemedi.</string>
+    <string name="there_are_no_changes_to_save">Kaydedilecek bir değişiklik yok.</string>
     <string name="lyrics_source_external_file">Şarkı sözleri harici bir dosyadan alınmaktadır. Bu dosyayı Booming Music üzerinden doğrudan düzenleyemezsiniz.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Uyku zamanlayıcısı</string>
@@ -719,6 +726,7 @@
     <string name="full_cover">Tam Kapak</string>
     <string name="gradient">Gradyan</string>
     <string name="peek">Gözat</string>
+    <string name="peek2">Peek2</string>
     <string name="plain">Düz</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>

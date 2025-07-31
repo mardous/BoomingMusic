@@ -36,4 +36,9 @@ data class TagEditorResult(
     val comment: String? = null
 )
 
-class SaveTagsResult(val isLoading: Boolean, val isSuccess: Boolean)
+class SaveTagsResult(
+    val isLoading: Boolean,
+    val isSuccess: Boolean,
+    val scanned: Int = 0,
+    val failed: Int = 0
+)

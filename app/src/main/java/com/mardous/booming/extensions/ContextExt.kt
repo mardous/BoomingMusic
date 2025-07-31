@@ -20,21 +20,20 @@
 package com.mardous.booming.extensions
 
 import android.annotation.SuppressLint
-import android.app.*
+import android.app.Activity
+import android.app.SearchManager
+import android.app.UiModeManager
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.Point
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Handler
 import android.os.Looper
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
@@ -162,49 +161,11 @@ fun Context.showToast(text: String?, duration: Int = Toast.LENGTH_SHORT) {
     }
 }
 
-fun Context.createNotificationChannel(
-    channelId: String,
-    channelName: String,
-    channelDescription: String?,
-    notificationManager: NotificationManager = (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
-): NotificationChannel {
-    var notificationChannel = notificationManager.getNotificationChannel(channelId)
-    if (notificationChannel == null) {
-        notificationChannel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW).apply {
-            description = channelDescription
-            enableLights(false)
-            enableVibration(false)
-        }.also {
-            notificationManager.createNotificationChannel(it)
-        }
-    }
-    return notificationChannel
-}
-
 fun Context.readStringFromAsset(assetName: String): String? =
     runCatching { assets.open(assetName).use { it.readString() } }.getOrNull()
 
 fun Context.getTintedDrawable(@DrawableRes resId: Int, @ColorInt color: Int): Drawable? =
     getDrawableCompat(resId).getTinted(color)
-
-@Suppress("DEPRECATION")
-fun Context.getScreenSize(): Point {
-    if (hasR()) {
-        val windowMetrics = (getSystemService(Context.WINDOW_SERVICE) as WindowManager).currentWindowMetrics
-        val insets = windowMetrics.windowInsets.getInsetsIgnoringVisibility(
-            WindowInsets.Type.navigationBars() or WindowInsets.Type.displayCutout()
-        )
-        val bounds = windowMetrics.bounds
-        val insetsHeight = insets.top + insets.bottom
-        val insetsWidth = insets.left + insets.right
-        return Point(bounds.width() - insetsWidth, bounds.height() - insetsHeight)
-    }
-    return (getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.let { display ->
-        Point().also { point ->
-            display.getSize(point)
-        }
-    }
-}
 
 fun Context.getShapeAppearanceModel(shapeAppearanceId: Int, shapeAppearanceOverlayId: Int = 0) =
     ShapeAppearanceModel.builder(this, shapeAppearanceId, shapeAppearanceOverlayId).build()

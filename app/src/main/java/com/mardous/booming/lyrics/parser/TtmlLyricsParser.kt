@@ -77,8 +77,7 @@ class TtmlLyricsParser : LyricsParser {
             }
             event = parser.next()
         }
-        lines.adjustLines(duration)
-        return Lyrics(null, null, null, duration, lines)
+        return Lyrics(null, null, null, duration, lines.adjustLines(duration))
     }
 
     private fun parseDiv(parser: XmlPullParser): List<Lyrics.Line> {
@@ -115,10 +114,11 @@ class TtmlLyricsParser : LyricsParser {
                     }
                 }
                 XmlPullParser.TEXT -> {
-                    val text = parser.text
-                    if (parser.isWhitespace && words.isNotEmpty()) {
-                        val last = words.last()
-                        words[words.lastIndex] = last.copy(content = "${last.content}$text")
+                    val isWhitespace = parser.isWhitespace
+                    if (isWhitespace && words.isNotEmpty()) {
+                        words[words.lastIndex] = words.last().let {
+                            it.copy(content = "${it.content} ")
+                        }
                     }
                 }
             }
@@ -157,10 +157,10 @@ class TtmlLyricsParser : LyricsParser {
                 XmlPullParser.TEXT -> {
                     val text = parser.text
                     val isBackground = (role ?: wordRole)?.contains("bg") == true
-
                     if (parser.isWhitespace && words.isNotEmpty()) {
-                        val last = words.last()
-                        words[words.lastIndex] = last.copy(content = last.content + text)
+                        words[words.lastIndex] = words.last().let {
+                            it.copy(content = "${it.content} ")
+                        }
                     } else if (!text.isNullOrBlank() && wordBegin != null && wordBegin != -1L) {
                         words.add(Lyrics.Word(text, wordBegin, isBackground))
                     }

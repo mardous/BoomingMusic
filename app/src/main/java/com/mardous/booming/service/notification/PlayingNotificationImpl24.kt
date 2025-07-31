@@ -18,9 +18,9 @@
 package com.mardous.booming.service.notification
 
 import android.annotation.SuppressLint
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -42,8 +42,11 @@ import com.mardous.booming.model.Song
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
 
-class PlayingNotificationImpl24(service: MusicService, mediaSessionToken: MediaSessionCompat.Token) :
-    PlayingNotification(service) {
+class PlayingNotificationImpl24(
+    context: Context,
+    channelId: String,
+    mediaSessionToken: MediaSessionCompat.Token
+) : PlayingNotification(context, channelId) {
 
     private var currentTarget: CustomTarget<Bitmap>? = null
 
@@ -109,7 +112,6 @@ class PlayingNotificationImpl24(service: MusicService, mediaSessionToken: MediaS
         val bigNotificationImageSize = context.dip(R.dimen.notification_big_image_size)
 
         setAlbumArtImage(null)
-        onUpdate()
 
         currentTarget?.let { Glide.with(context).clear(it) }
         currentTarget = Glide.with(context)
@@ -180,16 +182,5 @@ class PlayingNotificationImpl24(service: MusicService, mediaSessionToken: MediaS
         return PendingIntent.getService(
             context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-    }
-
-    companion object {
-        fun from(
-            context: MusicService,
-            notificationManager: NotificationManager,
-            mediaSession: MediaSessionCompat,
-        ): PlayingNotification {
-            createNotificationChannel(context, notificationManager)
-            return PlayingNotificationImpl24(context, mediaSession.sessionToken)
-        }
     }
 }

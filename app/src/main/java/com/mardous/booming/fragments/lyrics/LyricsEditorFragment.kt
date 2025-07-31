@@ -64,7 +64,6 @@ import com.mardous.booming.lyrics.LyricsSource
 import com.mardous.booming.model.DownloadedLyrics
 import com.mardous.booming.model.Song
 import com.mardous.booming.viewmodels.lyrics.LyricsViewModel
-import com.mardous.booming.viewmodels.lyrics.model.EditableLyrics
 import com.mardous.booming.viewmodels.lyrics.model.LyricsResult
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -84,8 +83,7 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
     private lateinit var permissionLauncher: ActivityResultLauncher<IntentSenderRequest>
     private lateinit var importLyricsLauncher: ActivityResultLauncher<Array<String>>
 
-    private var plainLyrics: EditableLyrics? = null
-    private var syncedLyrics: EditableLyrics? = null
+    private var lyricsResult: LyricsResult? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -118,29 +116,17 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
             .transition(getDefaultGlideTransition())
             .into(binding.image)
 
+        binding.save.isEnabled = false
         binding.progressIndicator.show()
 
         lyricsViewModel.getAllLyrics(song, fromEditor = true).observe(viewLifecycleOwner) {
-            setupButtonBehavior(it)
-            binding.progressIndicator.hide()
-            binding.embeddedButton.isEnabled = true
-            binding.externalButton.isEnabled = true
-            binding.plainInput.setText(it.plainLyrics.content)
-            binding.plainInput.doOnTextChanged { text, _, _, _ ->
-                plainLyrics = it.plainLyrics.edit(text?.toString())
-            }
-            binding.plainInput.isEnabled = it.plainLyrics.isEditable
-            binding.syncedInput.setText(it.syncedLyrics.content?.rawText)
-            binding.syncedInput.doOnTextChanged { text, _, _, _ ->
-                syncedLyrics = it.syncedLyrics.edit(text?.toString())
-            }
-            binding.syncedInput.isEnabled = it.syncedLyrics.isEditable
+            setLyricsResult(it)
         }
     }
 
     override fun onStart() {
         super.onStart()
-        view?.postDelayed(1000) {
+        view?.postDelayed(500) {
             lyricsViewModel.getWritableUris(song).observe(viewLifecycleOwner) {
                 if (hasR()) {
                     val contentResolver = get<ContentResolver>()
@@ -151,19 +137,35 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
         }
     }
 
-    private fun setupButtonBehavior(lyrics: LyricsResult) {
-        if (lyrics.loading)
-            return
+    private fun setLyricsResult(result: LyricsResult) {
+        binding.progressIndicator.hide()
 
-        lyrics.sources.forEach {
-            val button = requireView().findViewById<Button>(it.applicableButtonId)
-            button?.setText(it.titleRes)
-        }
+        binding.embeddedButton.isEnabled = true
+        binding.externalButton.isEnabled = true
 
-        binding.toggleGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
-            applyCheckedButtonState(lyrics, checkedId, isChecked)
+        binding.plainInput.setText(result.plainLyrics.content)
+        binding.syncedInput.setText(result.syncedLyrics.content?.rawText)
+
+        if (!result.loading) {
+            this.lyricsResult = result
+            if (result.plainLyrics.isEditable) {
+                binding.plainInput.doOnTextChanged { text, _, _, _ ->
+                    binding.save.isEnabled = true
+                }
+            }
+            if (result.syncedLyrics.isEditable) {
+                binding.syncedInput.doOnTextChanged { text, _, _, _ ->
+                    binding.save.isEnabled = true
+                }
+            }
+            result.sources.forEach {
+                requireView().findViewById<Button>(it.applicableButtonId)?.setText(it.titleRes)
+            }
+            binding.toggleGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
+                applyCheckedButtonState(result, checkedId, isChecked)
+            }
+            applyCheckedButtonState(result, binding.toggleGroup.checkedButtonId, true)
         }
-        applyCheckedButtonState(lyrics, binding.toggleGroup.checkedButtonId, true)
     }
 
     private fun applyCheckedButtonState(lyrics: LyricsResult, checkedId: Int, isChecked: Boolean) {
@@ -321,14 +323,21 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
     }
 
     private fun saveLyrics() {
-        lyricsViewModel.saveLyrics(song, plainLyrics, syncedLyrics)
-            .observe(viewLifecycleOwner) { isSuccess ->
-                if (isSuccess) {
+        lyricsViewModel.saveLyrics(
+            song = song,
+            plainLyrics = lyricsResult?.plainLyrics?.edit(binding.plainInput.text?.toString()),
+            syncedLyrics = lyricsResult?.syncedLyrics?.edit(binding.syncedInput.text?.toString())
+        ).observe(viewLifecycleOwner) { saveResult ->
+            if (saveResult.hasChanged) {
+                if (saveResult.isSuccess) {
                     showToast(R.string.lyrics_were_updated_successfully, Toast.LENGTH_SHORT)
                 } else {
                     showToast(R.string.failed_to_update_lyrics, Toast.LENGTH_SHORT)
                 }
+            } else {
+                showToast(R.string.there_are_no_changes_to_save)
             }
+        }
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

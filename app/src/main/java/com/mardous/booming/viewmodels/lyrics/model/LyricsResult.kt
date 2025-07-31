@@ -26,13 +26,25 @@ class DisplayableLyrics<T>(val content: T?, val source: LyricsSource) {
 
     fun edit(newContent: String?): EditableLyrics? {
         if (isEditable) {
-            EditableLyrics(newContent, source)
+            val originalContent = if (content is Lyrics) {
+                content.rawText
+            } else {
+                content?.toString().orEmpty()
+            }
+            return EditableLyrics(originalContent, newContent, source)
         }
         return null
     }
 }
 
-class EditableLyrics(val content: String?, val source: LyricsSource)
+data class EditableLyrics(
+    private val originalContent: String,
+    val content: String?,
+    val source: LyricsSource
+) {
+    val hasChanged: Boolean
+        get() = originalContent != content
+}
 
 @Immutable
 class LyricsResult(
@@ -54,5 +66,23 @@ class LyricsResult(
 
     companion object {
         val Empty = LyricsResult(-1)
+    }
+}
+
+data class SaveLyricsResult(
+    val plainLyricsState: State = State.None,
+    val syncedLyricsState: State = State.None
+) {
+
+    val hasChanged: Boolean = plainLyricsState != State.None || syncedLyricsState != State.None
+
+    val isSuccess: Boolean = when {
+        plainLyricsState == State.Failed || syncedLyricsState == State.Failed -> false
+        plainLyricsState == State.Wrote || syncedLyricsState == State.Wrote -> true
+        else -> false
+    }
+
+    enum class State {
+        Wrote, Failed, None
     }
 }

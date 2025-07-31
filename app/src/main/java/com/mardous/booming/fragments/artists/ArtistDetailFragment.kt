@@ -24,7 +24,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
-import androidx.core.view.*
+import androidx.core.view.doOnPreDraw
+import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
+import androidx.core.view.updatePaddingRelative
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -79,7 +82,6 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
         parametersOf(arguments.artistId, arguments.artistName)
     }
 
-    private var insets: WindowInsetsCompat? = null
     private var _binding: ArtistDetailBinding? = null
     private val binding get() = _binding!!
 
@@ -106,11 +108,9 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
         super.onViewCreated(view, savedInstanceState)
         _binding = ArtistDetailBinding(FragmentArtistDetailBinding.bind(view))
         setSupportActionBar(binding.toolbar, "")
-
-        view.applyScrollableContentInsets(binding.container) { _, insets ->
-            this.insets = insets
-        }
         materialSharedAxis(view, prepareTransition = false)
+
+        view.applyHorizontalWindowInsets()
 
         binding.appBarLayout.setupStatusBarForeground()
         binding.image.transitionName = if (isAlbumArtist) arguments.artistName
@@ -125,7 +125,7 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
         }
 
         libraryViewModel.getMiniPlayerMargin().observe(viewLifecycleOwner) {
-            binding.container.updatePadding(bottom = it + insets.getBottomInsets() + 16.dp(resources))
+            binding.container.updatePadding(bottom = it.getWithSpace(16.dp(resources)))
         }
 
         setupRecyclerView()

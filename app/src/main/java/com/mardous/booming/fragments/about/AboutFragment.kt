@@ -28,7 +28,6 @@ import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.ui.screens.about.AboutScreen
 import com.mardous.booming.ui.theme.BoomingMusicTheme
-import com.mardous.booming.util.Preferences
 import com.mardous.booming.viewmodels.about.AboutViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -46,7 +45,7 @@ class AboutFragment : Fragment() {
     ): View? {
         return ComposeView(requireContext()).apply {
             setContent {
-                BoomingMusicTheme(dynamicColor = Preferences.materialYou) {
+                BoomingMusicTheme {
                     AboutScreen(
                         viewModel = viewModel,
                         onBackClick = {

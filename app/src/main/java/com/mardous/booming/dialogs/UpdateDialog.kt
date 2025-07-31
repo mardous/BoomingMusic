@@ -17,7 +17,6 @@
 
 package com.mardous.booming.dialogs
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
@@ -41,15 +40,20 @@ class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
     private val binding get() = _binding!!
     private val viewModel by activityViewModel<UpdateViewModel>()
 
-    private lateinit var release: GitHubRelease
+    private var release: GitHubRelease? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val release = viewModel.latestRelease
-        if (release != null && release.isNewer(requireContext())) {
+        release = viewModel.latestRelease
+        if (release != null && release!!.isNewer(requireContext())) {
             _binding = DialogUpdateInfoBinding.inflate(layoutInflater)
             binding.infoAction.setOnClickListener(this)
             binding.downloadAction.setOnClickListener(this)
-            fillVersionInfo()
+            binding.versionName.text = release!!.name
+            if (release!!.body.isNotEmpty()) {
+                binding.versionInfo.setMarkdownText(release!!.body)
+            } else {
+                binding.versionInfo.isVisible = false
+            }
             return BottomSheetDialog(requireContext()).also {
                 it.setContentView(binding.root)
             }
@@ -62,30 +66,24 @@ class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
 
     override fun onCancel(dialog: DialogInterface) {
         super.onCancel(dialog)
-        release.setIgnored()
+        release?.setIgnored()
     }
 
     override fun onClick(view: View) {
         when (view) {
             binding.infoAction -> {
-                requireContext().openUrl(release.url)
+                release?.let {
+                    requireContext().openUrl(it.url)
+                }
             }
 
             binding.downloadAction -> {
-                viewModel.downloadUpdate(requireContext(), release)
-                showToast(R.string.downloading_update)
+                release?.let {
+                    viewModel.downloadUpdate(requireContext(), it)
+                    showToast(R.string.downloading_update)
+                }
                 dismiss()
             }
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun fillVersionInfo() {
-        binding.versionName.text = release.name
-        if (release.body.isNotEmpty()) {
-            binding.versionInfo.setMarkdownText(release.body)
-        } else {
-            binding.versionInfo.isVisible = false
         }
     }
 }

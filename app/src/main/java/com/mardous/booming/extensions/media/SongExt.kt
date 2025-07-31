@@ -47,17 +47,15 @@ fun List<Song>.getSpannedTitles(context: Context): List<CharSequence> {
     val secondaryColorSpan = context.textColorSecondary().toForegroundColorSpan()
 
     return map {
-        if (!it.albumArtistName.isArtistNameUnknown()) {
-            buildSpannedString {
-                append(SpannableString(it.title).apply {
-                    setSpan(primaryColorSpan, 0, length, 0)
-                })
-                append(DEFAULT_INFO_DELIMITER)
-                append(SpannableString(it.albumArtistName).apply {
-                    setSpan(secondaryColorSpan, 0, length, 0)
-                })
-            }
-        } else it.title
+        buildSpannedString {
+            append(SpannableString(it.title).also { title ->
+                title.setSpan(primaryColorSpan, 0, title.length, 0)
+            })
+            append(DEFAULT_INFO_DELIMITER)
+            append(SpannableString(it.displayArtistName()).also { artistName ->
+                artistName.setSpan(secondaryColorSpan, 0, artistName.length, 0)
+            })
+        }
     }
 }
 

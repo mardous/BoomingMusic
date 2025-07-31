@@ -47,6 +47,9 @@
     <string name="continue_action">Kontynuuj</string>
     <string name="select_all_title">Zaznacz wszystkie</string>
     <string name="x_selected">%d Zaznaczonych</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">Powiadomienie o odtwarzaniu zapewnia akcje dla odtwarzania/pauzy itp.</string>
     <string name="playing_notification_name">Powiadomienie o odtwarzaniu</string>
     <string name="action_scan_directory">Skanuj katalog</string>
@@ -63,7 +66,7 @@
     <string name="new_playlist_title">Nowa lista odtwarzania</string>
     <string name="add_playlist_title">Dodaj do listy odtwarzania</string>
     <string name="rename_playlist_title">Zmień nazwę playlisty</string>
-    <string name="action_rename">Zmień nazwę playlisty</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Usuń listę odtwarzania</string>
     <string name="action_export_playlist">Eksportuj do pliku</string>
     <string name="action_clear_history">Wyczyść historię</string>
@@ -72,7 +75,9 @@
     <string name="create_a_playlist_with_one_song">Zostanie utworzona playlista i do niej zostanie dodana jedna piosenka.</string>
     <string name="create_a_playlist_with_x_songs">Lista odtwarzania zostanie utworzona, a utwory %d zostaną dodane automatycznie.</string>
     <string name="playlist_name_empty">Nazwa listy odtwarzania</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Zapisano listę odtwarzania %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Nie udało się zapisać listy odtwarzania.</string>
     <string name="saved_x_playlists">Zapisano %1$d playlisty.</string>
     <string name="saved_x_playlists_failed_to_save_x">Zapisano %1$d playlisty, nie udało się zapisać %2$d.</string>
@@ -85,6 +90,7 @@
     <string name="inserted_one_song_into_playlist_x">Wstawiono jeden utwór do listy odtwarzania %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Wstawiono utwory %1$d do playlisty %2$s.</string>
     <string name="playlist_exists">Lista odtwarzania %s już istnieje.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Usuń utwór z listy odtwarzania</string>
     <string name="remove_songs_from_playlist_title">Usuń utwory z listy odtwarzania</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Usunąć utwór <b>%1$s</b> z playlisty?]]></string>
@@ -495,6 +501,7 @@
     <string name="no_synced_lyrics_found">Nie znaleziono zsynchronizowanych tekstów</string>
     <string name="lyrics_were_updated_successfully">Tekst został pomyślnie zaktualizowany.</string>
     <string name="failed_to_update_lyrics">Nie udało się zaktualizować tekstu.</string>
+    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Czas uśpienia</string>
@@ -735,6 +742,7 @@
     <string name="full_cover">Pełna okładka</string>
     <string name="gradient">Gradient</string>
     <string name="peek">Podgląd</string>
+    <string name="peek2">Peek2</string>
     <string name="plain">Czysty</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normalny</string>

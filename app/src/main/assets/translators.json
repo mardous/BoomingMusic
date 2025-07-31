@@ -1,5 +1,9 @@
 [
   {
+    "contrib_name": "Catalan",
+    "contrib_description": "[Andreu Silvestre](https://crowdin.com/profile/andreu.silvestre.pla)"
+  },
+  {
     "contrib_name": "Chinese Simplified",
     "contrib_description": "[Rongxuan](https://crowdin.com/profile/rongxuan2333), [LuDreamst](https://crowdin.com/profile/ludreamst), [Ranpo Doyle](https://crowdin.com/profile/unravelled-mystery)"
   },
@@ -38,6 +42,10 @@
   {
     "contrib_name": "Portuguese (Brazilian)",
     "contrib_description": "[Matt](https://crowdin.com/profile/me-at-the-age-of-git), [wbellato](https://crowdin.com/profile/wbellato), [Walbeg Tronael](https://crowdin.com/profile/tronael)"
+  },
+  {
+    "contrib_name": "Russian",
+    "contrib_description": "[Anton](https://crowdin.com/profile/antoon334), [Axus Wizix](https://crowdin.com/profile/axuswizix)"
   },
   {
     "contrib_name": "Spanish",

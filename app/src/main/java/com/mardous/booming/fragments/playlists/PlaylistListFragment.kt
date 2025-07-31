@@ -132,7 +132,7 @@ class PlaylistListFragment : AbsRecyclerViewCustomGridSizeFragment<PlaylistAdapt
         }
         return when (item.itemId) {
             R.id.action_new_playlist -> {
-                CreatePlaylistDialog.create()
+                CreatePlaylistDialog()
                     .show(childFragmentManager, "NEW_PLAYLIST")
                 true
             }

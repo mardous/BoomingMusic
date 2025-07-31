@@ -47,6 +47,9 @@
     <string name="continue_action">Συνέχεια</string>
     <string name="select_all_title">Επιλογή όλων</string>
     <string name="x_selected">Επιλέχθηκε %d</string>
+    <string name="preparing_playback_title">Preparing</string>
+    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="playback_stopped_title">Playback stopped</string>
     <string name="playing_notification_description">Η ειδοποίηση αναπαραγωγής παρέχει ενέργειες αναπαραγωγής/παύσης κλπ.</string>
     <string name="playing_notification_name">Αναπαραγωγή ειδοποίησης</string>
     <string name="action_scan_directory">Σάρωση καταλόγου</string>
@@ -63,7 +66,7 @@
     <string name="new_playlist_title">Νέα λίστα αναπαραγωγής</string>
     <string name="add_playlist_title">Προσθήκη στη λίστα αναπαραγωγής</string>
     <string name="rename_playlist_title">Μετονομασία λίστας αναπαραγωγής</string>
-    <string name="action_rename">Μετονομασία λίστας αναπαραγωγής</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Διαγραφή λίστας αναπαραγωγής</string>
     <string name="action_export_playlist">Εξαγωγή σε αρχείο</string>
     <string name="action_clear_history">Εκκαθάριση ιστορικού</string>
@@ -72,7 +75,9 @@
     <string name="create_a_playlist_with_one_song">Θα δημιουργηθεί μια λίστα αναπαραγωγής και ένα τραγούδι θα προστεθεί σε αυτήν.</string>
     <string name="create_a_playlist_with_x_songs">Θα δημιουργηθεί μια λίστα αναπαραγωγής και θα προστεθούν αυτόματα %d τραγούδια.</string>
     <string name="playlist_name_empty">Όνομα λίστας αναπαραγωγής</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Αποθηκεύτηκε λίστα αναπαραγωγής %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Αποτυχία αποθήκευσης λίστας αναπαραγωγής.</string>
     <string name="saved_x_playlists">Saved %1$d playlists.</string>
     <string name="saved_x_playlists_failed_to_save_x">Οι αποθηκευμένες λίστες %1$d απέτυχαν να αποθηκεύσουν το %2$d.</string>
@@ -85,6 +90,7 @@
     <string name="inserted_one_song_into_playlist_x">Εισήχθη ένα τραγούδι στη λίστα αναπαραγωγής %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Εισήχθησαν %1$d τραγούδια στη λίστα αναπαραγωγής %2$s.</string>
     <string name="playlist_exists">Η λίστα αναπαραγωγής %s υπάρχει ήδη.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Αφαίρεση τραγουδιού από τη λίστα αναπαραγωγής</string>
     <string name="remove_songs_from_playlist_title">Αφαίρεση τραγουδιών από τη λίστα αναπαραγωγής</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Αφαιρέστε το τραγούδι <b>%1$s</b> από τη λίστα αναπαραγωγής?]]></string>
@@ -479,6 +485,7 @@
     <string name="no_synced_lyrics_found">Δεν βρέθηκαν συγχρονισμένοι στίχοι</string>
     <string name="lyrics_were_updated_successfully">Οι στίχοι ενημερώθηκαν με επιτυχία.</string>
     <string name="failed_to_update_lyrics">Αποτυχία ενημέρωσης στίχων.</string>
+    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Χρονοδιακόπτης ύπνου</string>
@@ -719,6 +726,7 @@
     <string name="full_cover">Πλήρες Εξώφυλλο</string>
     <string name="gradient">Διαβάθμιση</string>
     <string name="peek">Ματιά</string>
+    <string name="peek2">Peek2</string>
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Κανονικό</string>

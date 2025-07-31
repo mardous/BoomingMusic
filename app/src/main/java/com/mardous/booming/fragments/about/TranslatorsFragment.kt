@@ -28,7 +28,6 @@ import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.ui.screens.about.TranslatorsScreen
 import com.mardous.booming.ui.theme.BoomingMusicTheme
-import com.mardous.booming.util.Preferences
 import com.mardous.booming.viewmodels.about.AboutViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -42,7 +41,7 @@ class TranslatorsFragment : Fragment() {
     ): View? {
         return ComposeView(requireContext()).apply {
             setContent {
-                BoomingMusicTheme(dynamicColor = Preferences.materialYou) {
+                BoomingMusicTheme {
                     TranslatorsScreen(
                         viewModel = viewModel,
                         onBackButtonClick = {

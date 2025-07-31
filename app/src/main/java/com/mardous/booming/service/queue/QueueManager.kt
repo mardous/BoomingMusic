@@ -33,6 +33,10 @@ const val NO_POSITION = -1
 
 private typealias MutablePlayQueue = MutableList<QueueSong>
 
+enum class QueueChangeReason {
+    Created, Modified, Cleared
+}
+
 class QueueManager {
 
     private val shuffleManager = ShuffleManager()
@@ -161,7 +165,7 @@ class QueueManager {
     }
 
     fun getDuration(position: Int) = synchronized(lock) {
-        playingQueue.drop(position).sumOf { it.duration }
+        if (position >= 0) playingQueue.drop(position).sumOf { it.duration } else 0
     }
 
     fun getNextPosition(force: Boolean): Int {
@@ -495,18 +499,21 @@ class QueueManager {
             }
         }
         this._shuffleMode = mode
-        setPlayingQueue(_playingQueue)
+        setPlayingQueue(_playingQueue, QueueChangeReason.Modified)
         doDispatchChange {
             it.shuffleModeChanged(mode)
         }
     }
 
-    private fun setPlayingQueue(playingQueue: MutableList<QueueSong>, updateSong: Boolean = true) {
+    private fun setPlayingQueue(
+        playingQueue: MutableList<QueueSong>,
+        changeReason: QueueChangeReason
+    ) {
         this.stopPosition = NO_POSITION
         this._playingQueue = playingQueue
         doDispatchChange { 
-            it.queueChanged(playingQueue.toList())
-            if (updateSong) {
+            it.queueChanged(playingQueue.toList(), changeReason)
+            if (changeReason != QueueChangeReason.Created) {
                 it.songChanged(currentSong, nextSong)
             }
         }
@@ -517,19 +524,38 @@ class QueueManager {
         _playingQueue.clear()
         setPositionTo(NO_POSITION)
         this.stopPosition = NO_POSITION
-        setPlayingQueue(_playingQueue)
+        setPlayingQueue(_playingQueue, QueueChangeReason.Cleared)
     }
 
-    fun disconnect() {
-        //stopPosition = NO_POSITION
-        //setPositionTo(NO_POSITION)
+    fun updateSong(id: Long, song: Song) {
+        modifyQueue { playingQueue, originalPlayingQueue ->
+            if (playingQueue.isNotEmpty() && originalPlayingQueue.isNotEmpty()) {
+                for (i in playingQueue.indices) {
+                    val songAt = playingQueue[i]
+                    if (songAt.id == id) {
+                        playingQueue[i] = song.toQueueSong(songAt.isUpcoming)
+                    }
+                }
+                for (i in originalPlayingQueue.indices) {
+                    val songAt = playingQueue[i]
+                    if (songAt.id == id) {
+                        playingQueue[i] = song.toQueueSong(songAt.isUpcoming)
+                    }
+                }
+            }
+        }
+        if (id == currentSong.id) {
+            doDispatchChange {
+                it.songChanged(currentSong, nextSong)
+            }
+        }
     }
 
     private fun modifyQueue(
         modifier: (playingQueue: MutablePlayQueue, originalPlayingQueue: MutablePlayQueue) -> Unit
     ) = synchronized(lock) {
         modifier(_playingQueue, _originalPlayingQueue)
-        setPlayingQueue(_playingQueue)
+        setPlayingQueue(_playingQueue, QueueChangeReason.Modified)
     }
 
     private suspend fun createQueue(
@@ -547,7 +573,7 @@ class QueueManager {
             _originalPlayingQueue = queueSongs
             setPlayingQueue(
                 playingQueue = onCreated(_originalPlayingQueue.toMutableList()).toMutableList(),
-                updateSong = false
+                changeReason = QueueChangeReason.Created
             )
             this._shuffleMode = shuffleMode
             doDispatchChange {

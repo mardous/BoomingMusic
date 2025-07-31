@@ -6,8 +6,8 @@
 		android:icon="@drawable/ic_search_24dp"
 		app:showAsAction="ifRoom"/>
 	<item
-        android:id="@+id/action_play_next"
-        android:title="@string/action_queue_next"
+		android:id="@+id/action_play_next"
+		android:title="@string/action_queue_next"
 		app:showAsAction="never"/>
 	<item
 		android:id="@+id/menu_add_to"
@@ -26,11 +26,11 @@
 		android:title="@string/action_export_playlist"
 		app:showAsAction="never"/>
 	<item
-        android:id="@+id/action_rename_playlist"
-        android:title="@string/action_rename"
+		android:id="@+id/action_edit_playlist"
+		android:title="@string/action_edit_playlist"
 		app:showAsAction="never"/>
 	<item
-        android:id="@+id/action_delete_playlist"
-        android:title="@string/action_delete"
+		android:id="@+id/action_delete_playlist"
+		android:title="@string/action_delete"
 		app:showAsAction="never"/>
 </menu>

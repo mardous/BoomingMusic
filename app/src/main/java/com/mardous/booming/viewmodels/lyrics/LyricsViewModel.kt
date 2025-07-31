@@ -13,7 +13,9 @@ import com.mardous.booming.viewmodels.lyrics.model.EditableLyrics
 import com.mardous.booming.viewmodels.lyrics.model.LyricsResult
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -25,6 +27,7 @@ class LyricsViewModel(
     private val lyricsRepository: LyricsRepository
 ) : ViewModel(), QueueObserver {
 
+    private var lyricsJob: Job? = null
     private val _lyricsResult = MutableStateFlow(LyricsResult.Companion.Empty)
     val lyricsResult = _lyricsResult.asStateFlow()
 
@@ -35,17 +38,21 @@ class LyricsViewModel(
     }
 
     override fun onCleared() {
+        lyricsJob?.cancel()
         queueManager.removeObserver(this)
         super.onCleared()
     }
 
     override fun songChanged(currentSong: Song, nextSong: Song) {
-        viewModelScope.launch {
+        lyricsJob?.cancel()
+        lyricsJob = viewModelScope.launch {
             _lyricsResult.value = LyricsResult(id = currentSong.id, loading = true)
             val result = withContext(Dispatchers.IO) {
                 lyricsRepository.allLyrics(currentSong, allowDownload = true, fromEditor = false)
             }
-            _lyricsResult.value = result
+            if (isActive) {
+                _lyricsResult.value = result
+            }
         }
     }
 

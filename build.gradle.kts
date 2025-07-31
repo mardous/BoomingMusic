@@ -7,17 +7,3 @@ plugins {
     alias(libs.plugins.androidx.safeargs) apply false
     alias(libs.plugins.aboutlibraries) apply false
 }
-
-buildscript {
-    val isNormalBuild by extra {
-        gradle.startParameter.taskNames.none { task ->
-            task.contains("fdroid", ignoreCase = true)
-        }
-    }
-    dependencies {
-        if (isNormalBuild) {
-            classpath(libs.gms.plugin)
-            classpath(libs.crashlytics.plugin)
-        }
-    }
-}

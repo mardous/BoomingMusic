@@ -70,7 +70,7 @@ class AppShortcutLauncherActivity : Activity() {
 
         intent.putExtras(bundle)
 
-        startService(intent)
+        startForegroundService(intent)
     }
 
     companion object {

@@ -134,6 +134,7 @@ private val mainModule = module {
 private val roomModule = module {
     single {
         Room.databaseBuilder(androidContext(), BoomingDatabase::class.java, "music_database.db")
+            .addMigrations(BoomingDatabase.MIGRATION_1_2)
             .build()
     }
 
@@ -288,7 +289,7 @@ private val viewModule = module {
     }
 
     viewModel { (target: EditTarget) ->
-        TagEditorViewModel(repository = get(), target = target)
+        TagEditorViewModel(repository = get(), queueManager = get(), target = target)
     }
 
     viewModel {

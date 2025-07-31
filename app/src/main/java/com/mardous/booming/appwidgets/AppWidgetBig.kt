@@ -31,7 +31,6 @@ import com.bumptech.glide.request.transition.Transition
 import com.mardous.booming.R
 import com.mardous.booming.activities.MainActivity
 import com.mardous.booming.appwidgets.base.BaseAppWidget
-import com.mardous.booming.extensions.getScreenSize
 import com.mardous.booming.extensions.getTintedDrawable
 import com.mardous.booming.extensions.glide.getDefaultGlideTransition
 import com.mardous.booming.extensions.glide.getSongGlideModel
@@ -113,20 +112,17 @@ class AppWidgetBig : BaseAppWidget() {
         linkButtons(service, appWidgetView)
 
         // Load the album cover async and push the update on completion
-        val p = service.getScreenSize()
-        val widgetImageSize = p.x.coerceAtMost(p.y)
-
-        val appContext = service.applicationContext
+        val imageSize = getImageSize(service)
         service.runOnUiThread {
             if (target != null) {
-                Glide.with(appContext).clear(target)
+                Glide.with(service).clear(target)
             }
-            target = Glide.with(appContext)
+            target = Glide.with(service)
                 .asBitmap()
                 .load(song.getSongGlideModel())
                 .transition(getDefaultGlideTransition())
                 .songOptions(song)
-                .into(object : BoomingSimpleTarget<Bitmap>(widgetImageSize, widgetImageSize) {
+                .into(object : BoomingSimpleTarget<Bitmap>(imageSize, imageSize) {
                     override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                         update(resource)
                     }
@@ -141,7 +137,7 @@ class AppWidgetBig : BaseAppWidget() {
                         } else {
                             appWidgetView.setImageViewBitmap(R.id.image, bitmap)
                         }
-                        pushUpdate(appContext, appWidgetIds, appWidgetView)
+                        pushUpdate(service, appWidgetIds, appWidgetView)
                     }
                 })
         }
@@ -172,9 +168,18 @@ class AppWidgetBig : BaseAppWidget() {
         views.setOnClickPendingIntent(R.id.button_next, pendingIntent)
     }
 
+    private fun getImageSize(context: Context): Int {
+        if (imageSize == 0) {
+            imageSize = context.resources.getDimensionPixelSize(R.dimen.app_widget_big_image_size)
+        }
+        return imageSize
+    }
+
     companion object {
         const val NAME = "app_widget_big"
         private var mInstance: AppWidgetBig? = null
+
+        private var imageSize = 0
 
         val instance: AppWidgetBig
             @Synchronized get() {

@@ -22,7 +22,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.os.bundleOf
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
@@ -30,8 +29,6 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
-import com.mardous.booming.extensions.applyBottomWindowInsets
-import com.mardous.booming.extensions.getBottomInsets
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.utilities.toEnum
@@ -42,8 +39,6 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
 open class PreferencesScreenFragment : PreferenceFragmentCompat() {
 
     private val libraryViewModel: LibraryViewModel by activityViewModel()
-
-    private var windowInsets: WindowInsetsCompat? = null
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences)
@@ -73,9 +68,8 @@ open class PreferencesScreenFragment : PreferenceFragmentCompat() {
             listView.overScrollMode = View.OVER_SCROLL_NEVER
         }
 
-        listView.applyBottomWindowInsets() { _, insets -> this.windowInsets = insets }
         libraryViewModel.getMiniPlayerMargin().observe(viewLifecycleOwner) {
-            listView.updatePadding(bottom = it + windowInsets.getBottomInsets())
+            listView.updatePadding(bottom = it.getWithSpace())
         }
 
         findPreference<Preference>("about")?.summary =

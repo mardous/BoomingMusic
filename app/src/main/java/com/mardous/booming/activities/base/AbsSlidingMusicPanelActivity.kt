@@ -41,12 +41,14 @@ import com.mardous.booming.activities.PermissionsActivity
 import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.resources.*
+import com.mardous.booming.fragments.LibraryMargin
 import com.mardous.booming.fragments.other.MiniPlayerFragment
 import com.mardous.booming.fragments.player.base.AbsPlayerFragment
 import com.mardous.booming.fragments.player.styles.defaultstyle.DefaultPlayerFragment
 import com.mardous.booming.fragments.player.styles.fullcoverstyle.FullCoverPlayerFragment
 import com.mardous.booming.fragments.player.styles.gradientstyle.GradientPlayerFragment
 import com.mardous.booming.fragments.player.styles.m3style.M3PlayerFragment
+import com.mardous.booming.fragments.player.styles.peek2playerstyle.Peek2PlayerFragment
 import com.mardous.booming.fragments.player.styles.peekplayerstyle.PeekPlayerFragment
 import com.mardous.booming.fragments.player.styles.plainstyle.PlainPlayerFragment
 import com.mardous.booming.fragments.queue.PlayingQueueFragment
@@ -94,6 +96,9 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     private var panelStateCurrent: Int? = null
     val isBottomNavVisible: Boolean
         get() = navigationView.isVisible && navigationView is BottomNavigationView
+
+    val isBottomSheetHidden: Boolean
+        get() = panelState == STATE_COLLAPSED && bottomSheetBehavior.peekHeight == 0
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -148,6 +153,18 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        if (playerViewModel.playingQueue.isEmpty() || savedInstanceState.getBoolean(BOTTOM_SHEET_HIDDEN)) {
+            hideBottomSheet(true)
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(BOTTOM_SHEET_HIDDEN, isBottomSheetHidden)
+    }
+
     override fun onResume() {
         super.onResume()
         Preferences.registerOnSharedPreferenceChangeListener(this)
@@ -165,8 +182,6 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         bottomSheetBehavior.removeBottomSheetCallback(bottomSheetCallback)
         Preferences.unregisterOnSharedPreferenceChangeListener(this)
     }
-
-    protected open fun onMediaBrowserConnectionStateChanged(isConnected: Boolean) {}
 
     private fun setupNavigationView() {
         navigationView.labelVisibilityMode = Preferences.bottomTitlesMode
@@ -188,7 +203,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 binding.sheetView.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                if (nowPlayingScreen == NowPlayingScreen.Peek) {
+                if (nowPlayingScreen == NowPlayingScreen.Peek || nowPlayingScreen == NowPlayingScreen.Peek2) {
                     slidingPanel.updateLayoutParams<ViewGroup.LayoutParams> {
                         height = ViewGroup.LayoutParams.WRAP_CONTENT
                     }
@@ -245,15 +260,19 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         val miniPlayerHeight = dip(R.dimen.mini_player_height)
         val bottomNavHeight = dip(R.dimen.bottom_nav_height)
 
-        val heightOfBar =  windowInsets.getBottomInsets() + miniPlayerHeight
+        val bottomInsets = windowInsets.getBottomInsets()
+        val heightOfBar =  bottomInsets + miniPlayerHeight
         val heightOfBarWithTabs = heightOfBar + bottomNavHeight
         if (hide) {
-            bottomSheetBehavior.peekHeight = (-windowInsets.getBottomInsets()).coerceAtLeast(0)
+            bottomSheetBehavior.peekHeight = (-bottomInsets).coerceAtLeast(0)
             panelState = STATE_COLLAPSED
             libraryViewModel.setLibraryMargins(
-                context = this,
-                fabBottomMargin = if (isBottomNavVisible) bottomNavHeight else 0,
-                miniPlayerHeight = 0
+                fabBottomMargin = LibraryMargin(
+                    margin = if (isBottomNavVisible) bottomNavHeight else 0,
+                    additionalSpace = dip(R.dimen.fab_margin_top_left_right),
+                    insets = windowInsets
+                ),
+                bottomSheetMargin = LibraryMargin(0, insets = windowInsets)
             )
         } else {
             if (playerViewModel.playingQueue.isNotEmpty()) {
@@ -266,9 +285,12 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                         bottomSheetBehavior.peekHeight = heightOfBarWithTabs
                     }
                     libraryViewModel.setLibraryMargins(
-                        context = this,
-                        fabBottomMargin = miniPlayerHeight + bottomNavHeight,
-                        miniPlayerHeight = miniPlayerHeight
+                        fabBottomMargin = LibraryMargin(
+                            margin = miniPlayerHeight + bottomNavHeight,
+                            additionalSpace = dip(R.dimen.fab_margin_top_left_right),
+                            insets = windowInsets
+                        ),
+                        bottomSheetMargin = LibraryMargin(miniPlayerHeight, insets = windowInsets)
                     )
                 } else {
                     if (animate) {
@@ -280,9 +302,12 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                         slidingPanel.bringToFront()
                     }
                     libraryViewModel.setLibraryMargins(
-                        context = this,
-                        fabBottomMargin = miniPlayerHeight,
-                        miniPlayerHeight = miniPlayerHeight
+                        fabBottomMargin = LibraryMargin(
+                            margin = miniPlayerHeight,
+                            additionalSpace = dip(R.dimen.fab_margin_top_left_right),
+                            insets = windowInsets
+                        ),
+                        bottomSheetMargin = LibraryMargin(miniPlayerHeight, insets = windowInsets)
                     )
                 }
             }
@@ -381,7 +406,8 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                 NowPlayingScreen.Default,
                 NowPlayingScreen.Plain,
                 NowPlayingScreen.Peek,
-                NowPlayingScreen.M3 -> {
+                NowPlayingScreen.M3,
+                NowPlayingScreen.Peek2 -> {
                     setLightStatusBar(isColorLight)
                     setLightNavigationBar(isColorLight)
                 }
@@ -420,7 +446,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             NOW_PLAYING_SCREEN -> {
                 chooseFragmentForTheme()
                 slidingPanel.updateLayoutParams<ViewGroup.LayoutParams> {
-                    height = if (nowPlayingScreen != NowPlayingScreen.Peek) {
+                    height = if (nowPlayingScreen != NowPlayingScreen.Peek && nowPlayingScreen != NowPlayingScreen.Peek2) {
                         ViewGroup.LayoutParams.MATCH_PARENT
                     } else {
                         ViewGroup.LayoutParams.WRAP_CONTENT
@@ -453,6 +479,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             NowPlayingScreen.Peek -> PeekPlayerFragment()
             NowPlayingScreen.Plain -> PlainPlayerFragment()
             NowPlayingScreen.M3 -> M3PlayerFragment()
+            NowPlayingScreen.Peek2 -> Peek2PlayerFragment()
             else -> DefaultPlayerFragment()
         }
 
@@ -482,5 +509,9 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
             setMiniPlayerAlphaProgress(slideOffset)
         }
+    }
+
+    companion object {
+        private const val BOTTOM_SHEET_HIDDEN = "is_bottom_sheet_hidden"
     }
 }

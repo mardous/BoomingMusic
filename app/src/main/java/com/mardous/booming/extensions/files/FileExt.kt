@@ -35,10 +35,10 @@ import java.util.zip.ZipOutputStream
 import kotlin.math.log10
 import kotlin.math.pow
 
-private val FILE_NAME_DATE_FORMAT = SimpleDateFormat("MMM_d_yyyy_HH.mm.ss", Locale.ENGLISH)
+private val FILE_NAME_DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd_HHmmss", Locale.ROOT)
 
 fun getFormattedFileName(prefix: String, extension: String, timeMillis: Long = System.currentTimeMillis()): String {
-    return String.format(Locale.ROOT, "%s_%s.%s", prefix, timeMillis.asFormattedFileTime(), extension)
+    return "%s_%s.%s".format(Locale.ROOT, prefix, timeMillis.asFormattedFileTime(), extension)
 }
 
 fun Long.asFormattedFileTime(): String {

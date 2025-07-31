@@ -17,7 +17,7 @@
 
 package com.mardous.booming.extensions.utilities
 
-import com.mardous.booming.recordException
+import android.util.Log
 import kotlinx.serialization.json.Json
 
 const val DEFAULT_INFO_DELIMITER = " • "
@@ -49,7 +49,7 @@ inline fun <reified T> String?.deserialize(defaultValue: T): T {
     }
     return if (!isNullOrEmpty())
         runCatching<T> { lenientJson.decodeFromString(this) }
-            .onFailure { recordException(it) }
+            .onFailure { Log.d("BoomingUtilities", "Json.decodeFromString($this): error", it) }
             .getOrDefault(defaultValue)
     else defaultValue
 }

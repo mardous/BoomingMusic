@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import com.mardous.booming.fragments.player.PlayerColorScheme
 import com.mardous.booming.ui.components.color.primaryTextColor
+import com.mardous.booming.util.Preferences
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,
@@ -104,23 +105,33 @@ val unspecified_scheme = ColorFamily(
 @Composable
 fun BoomingMusicTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
+    blackTheme: Boolean = Preferences.blackTheme,
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = Preferences.materialYou,
     content: @Composable() () -> Unit
 ) {
-  val colorScheme = when {
-      dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-          val context = LocalContext.current
-          if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-      }
-      darkTheme -> darkScheme
-      else -> lightScheme
-  }
+    var colorScheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            val context = LocalContext.current
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        }
 
-  MaterialTheme(
-    colorScheme = colorScheme,
-    content = content
-  )
+        darkTheme -> darkScheme
+        else -> lightScheme
+    }
+
+    if (darkTheme && blackTheme) {
+        colorScheme = colorScheme.copy(
+            background = Color.Black,
+            surface = Color.Black,
+            surfaceContainer = Color(0xFF0B0B0B)
+        )
+    }
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        content = content
+    )
 }
 
 @Composable

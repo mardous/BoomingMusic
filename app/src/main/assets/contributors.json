@@ -1,8 +1,14 @@
 [
   {
     "contrib_name": "TheTerminatorOfProgramming",
-    "contrib_description": "Has implemented some great features.",
+    "contrib_description": "Developer & Tester",
     "contrib_url": "https://github.com/TheTerminatorOfProgramming",
     "contrib_image": "ttop.png"
+  },
+  {
+    "contrib_name": "Seif Eddine Gadi ",
+    "contrib_description": "Developer",
+    "contrib_url": "https://github.com/SifouByte",
+    "contrib_image": "sifou.png"
   }
 ]

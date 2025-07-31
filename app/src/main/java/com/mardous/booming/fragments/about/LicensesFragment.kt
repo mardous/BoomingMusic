@@ -11,7 +11,6 @@ import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.ui.screens.about.OSSLicensesScreen
 import com.mardous.booming.ui.theme.BoomingMusicTheme
-import com.mardous.booming.util.Preferences
 
 class LicensesFragment : Fragment() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -22,7 +21,7 @@ class LicensesFragment : Fragment() {
     ): View? {
         return ComposeView(requireContext()).apply {
             setContent {
-                BoomingMusicTheme(dynamicColor = Preferences.materialYou) {
+                BoomingMusicTheme {
                     OSSLicensesScreen {
                         getOnBackPressedDispatcher().onBackPressed()
                     }

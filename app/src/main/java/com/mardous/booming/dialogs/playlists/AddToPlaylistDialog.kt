@@ -28,7 +28,11 @@ import com.mardous.booming.R
 import com.mardous.booming.adapters.AddToPlaylistAdapter
 import com.mardous.booming.database.PlaylistWithSongs
 import com.mardous.booming.databinding.DialogProgressRecyclerViewBinding
-import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.EXTRA_SONGS
+import com.mardous.booming.extensions.create
+import com.mardous.booming.extensions.extraNotNull
+import com.mardous.booming.extensions.showToast
+import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.model.Song
 import com.mardous.booming.viewmodels.library.LibraryViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel

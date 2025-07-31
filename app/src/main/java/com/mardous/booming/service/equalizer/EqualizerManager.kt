@@ -26,7 +26,9 @@ import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.model.EQPreset
 import com.mardous.booming.model.EQPreset.Companion.getEmptyPreset
 import com.mardous.booming.viewmodels.equalizer.model.*
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import java.util.Locale
 import java.util.UUID
@@ -106,13 +108,13 @@ class EqualizerManager internal constructor(context: Context) {
         _presetReverbFlow = MutableStateFlow(initializePresetReverb())
     }
 
-    suspend fun initializeEqualizer() {
+    suspend fun initializeEqualizer() = withContext(IO) {
         if (!isInitialized) {
             val result = runCatching { EffectSet(0) }
             if (result.isSuccess) {
                 val temp = result.getOrThrow()
                 if (temp.equalizer == null)
-                    return
+                    return@withContext
 
                 setDefaultPresets(temp, temp.equalizer)
                 numberOfBands = temp.getNumEqualizerBands().toInt()

@@ -27,25 +27,28 @@ interface LyricsParser {
     fun handles(reader: Reader): Boolean
 }
 
-fun MutableList<Lyrics.Line>.adjustLines(length: Long) {
-    if (isNotEmpty()) {
-        sortBy { it.startAt }
+fun List<Lyrics.Line>.adjustLines(length: Long): List<Lyrics.Line> {
+    return if (isNotEmpty()) {
+        toMutableList().also { newList ->
+            newList.sortBy { it.startAt }
 
-        // Update durations
-        for (i in 0 until lastIndex) {
-            this[i] = this[i].copy(
-                durationMillis = this[i + 1].startAt - this[i].startAt,
-            )
-        }
-        if (length != -1L) {
-            val last = this.last()
-            this[lastIndex] = last.copy(
-                durationMillis = (length - last.startAt).takeIf { it > 0L } ?: Long.MAX_VALUE,
-            )
-        } else {
-            this[lastIndex] = this.last().copy(
-                durationMillis = Long.MAX_VALUE,
-            )
-        }
-    }
+            // Update durations
+            for (i in 0 until lastIndex) {
+                newList[i] = newList[i].copy(
+                    durationMillis = newList[i + 1].startAt - newList[i].startAt,
+                )
+            }
+            if (length != -1L) {
+                val last = this.last()
+                newList[lastIndex] = last.copy(
+                    durationMillis = (length - last.startAt).takeIf { it > 0L }
+                        ?: Long.MAX_VALUE,
+                )
+            } else {
+                newList[lastIndex] = newList.last().copy(
+                    durationMillis = Long.MAX_VALUE,
+                )
+            }
+        }.distinctBy { it.id }
+    } else this
 }

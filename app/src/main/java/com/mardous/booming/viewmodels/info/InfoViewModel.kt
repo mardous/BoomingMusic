@@ -97,7 +97,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
 
                     // MEDIA
                     val title = metadataReader.first(MetadataReader.TITLE)
-                    val album = metadataReader.first(MetadataReader.ALBUM_ARTIST)
+                    val album = metadataReader.first(MetadataReader.ALBUM)
                     val artist = metadataReader.merge(MetadataReader.ARTIST)
                     val albumArtist = metadataReader.first(MetadataReader.ALBUM_ARTIST)
 
