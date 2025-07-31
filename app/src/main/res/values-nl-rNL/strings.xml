@@ -802,9 +802,12 @@
     <string name="more_info_action">Meer informatie.</string>
     <string name="download_action">Downloaden</string>
     <string name="downloading_update">Booming muziek update wordt gedownload.</string>
-    <string name="uncaught_error_title">Er is een onverwachte fout opgetreden</string>
-    <string name="uncaught_error_message">Sorry voor het ongemak. U kunt het foutenrapport bekijken en de app herstarten.</string>
+    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
+    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
+        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">Herstart app</string>
-    <string name="uncaught_error_view_report">Rapport bekijken</string>
-    <string name="uncaught_error_send">Verzenden</string>
+    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_send">Send report</string>
 </resources>
