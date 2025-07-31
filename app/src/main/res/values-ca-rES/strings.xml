@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Barreja l\'artista</string>
     <string name="action_share">Comparteix</string>
     <string name="action_save">Desa</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Què voleu compartir?</string>
     <string name="the_audio_file">El fitxer d\'àudio</string>
     <string name="i_am_listening">Ara escolto…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Nova llista</string>
     <string name="add_playlist_title">Afegeix a la llista</string>
     <string name="rename_playlist_title">Canvia el nom a la llista de reproducció</string>
-    <string name="action_rename">Canvia el nom a la llista</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Esborra la llista</string>
     <string name="action_export_playlist">Exporta la llista</string>
     <string name="action_clear_history">Esborra l\'historial</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">Es crearà una llista de reproducció amb una cançó.</string>
     <string name="create_a_playlist_with_x_songs">Es crearà una llista de reproducció amb %d cançons afegides automàticament.</string>
     <string name="playlist_name_empty">Nom de la llista</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">S\'ha desat la llista %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">No s\'ha pogut desar la llista.</string>
     <string name="saved_x_playlists">S\'han desat %1$d llistes.</string>
     <string name="saved_x_playlists_failed_to_save_x">S\'han desat %1$d llistes, hi ha hagut un error en desar %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">S\'ha afegit una cançó a «%s».</string>
     <string name="inserted_x_songs_into_playlist_x">S\'han afegit %1$d cançons a «%2$s».</string>
     <string name="playlist_exists">La llista «%s» ja existeix.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Treu la cançó de la llista</string>
     <string name="remove_songs_from_playlist_title">Treu les cançons de la llista</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Voleu treure la cançó «<b>%1$s</b>» de la llista?]]></string>
