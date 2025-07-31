@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Esittäjän sekoitus</string>
     <string name="action_share">Jaa</string>
     <string name="action_save">Tallenna</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Mitä sinä haluat jakaa?</string>
     <string name="the_audio_file">Äänitiedosto</string>
     <string name="i_am_listening">I\'m listening…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Uusi soittolista</string>
     <string name="add_playlist_title">Lisää soittolistaan</string>
     <string name="rename_playlist_title">Nimeä soittolista uudelleen</string>
-    <string name="action_rename">Nimeä soittolista uudelleen</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Poista soittolista</string>
     <string name="action_export_playlist">Vie tiedostoon</string>
     <string name="action_clear_history">Tyhjennä historia</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">Soittolista luodaan ja yksi kappale lisätään siihen.</string>
     <string name="create_a_playlist_with_x_songs">Soittolista luodaan ja %d kappaletta lisätään automaattisesti.</string>
     <string name="playlist_name_empty">Soittolistan nimi</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Soittolista %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Soittolistan tallennus epäonnistui.</string>
     <string name="saved_x_playlists">Tallennetut %1$d soittolistat.</string>
     <string name="saved_x_playlists_failed_to_save_x">Saved %1$d playlists, failed to save %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Lisää yksi kappale soittolistaan %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Lisää %1$d kappaletta soittolistaan %2$s.</string>
     <string name="playlist_exists">Soittolista %s on jo olemassa.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Poista kappale soittolistalta</string>
     <string name="remove_songs_from_playlist_title">Poista kappaleet soittolistalta</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Poistetaanko kappale <b>%1$s</b> soittolistalta?]]></string>
