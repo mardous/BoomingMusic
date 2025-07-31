@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Kunstner blander</string>
     <string name="action_share">Del</string>
     <string name="action_save">Lagre</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Hva ønsker du å dele?</string>
     <string name="the_audio_file">Lyd filen</string>
     <string name="i_am_listening">Jeg hører på…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Ny spilleliste</string>
     <string name="add_playlist_title">Legg til i spilleliste</string>
     <string name="rename_playlist_title">Endre spilleliste</string>
-    <string name="action_rename">Endre spilleliste</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Slett spilleliste</string>
     <string name="action_export_playlist">Eksporter til fil</string>
     <string name="action_clear_history">Tøm logg</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">En spilleliste vil bli opprettet og en sang vil bli lagt til den.</string>
     <string name="create_a_playlist_with_x_songs">En spilleliste vil bli opprettet og %d sanger vil bli lagt til automatisk.</string>
     <string name="playlist_name_empty">Navn på spilleliste</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Lagret spilleliste %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Kan ikke lagre spilleliste.</string>
     <string name="saved_x_playlists">Lagrede %1$d spillelister.</string>
     <string name="saved_x_playlists_failed_to_save_x">Lagret %1$d spillelister, kunne ikke lagre %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Satt inn en sang i spillelisten %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Sett inn %1$d sanger i spillelisten %2$s.</string>
     <string name="playlist_exists">Spilleliste %s finnes allerede.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Fjern sang fra spilleliste</string>
     <string name="remove_songs_from_playlist_title">Fjern sanger fra spilleliste</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Fjern sangen <b>%1$s</b> fra spillelisten?]]></string>
