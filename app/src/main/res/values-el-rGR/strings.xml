@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Ανακάτεμα καλλιτέχνη</string>
     <string name="action_share">Κοινοποίηση</string>
     <string name="action_save">Αποθήκευση</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Τι θέλετε να μοιραστείτε?</string>
     <string name="the_audio_file">Το αρχείο ήχου</string>
     <string name="i_am_listening">I\'m listening…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Νέα λίστα αναπαραγωγής</string>
     <string name="add_playlist_title">Προσθήκη στη λίστα αναπαραγωγής</string>
     <string name="rename_playlist_title">Μετονομασία λίστας αναπαραγωγής</string>
-    <string name="action_rename">Μετονομασία λίστας αναπαραγωγής</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Διαγραφή λίστας αναπαραγωγής</string>
     <string name="action_export_playlist">Εξαγωγή σε αρχείο</string>
     <string name="action_clear_history">Εκκαθάριση ιστορικού</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">Θα δημιουργηθεί μια λίστα αναπαραγωγής και ένα τραγούδι θα προστεθεί σε αυτήν.</string>
     <string name="create_a_playlist_with_x_songs">Θα δημιουργηθεί μια λίστα αναπαραγωγής και θα προστεθούν αυτόματα %d τραγούδια.</string>
     <string name="playlist_name_empty">Όνομα λίστας αναπαραγωγής</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Αποθηκεύτηκε λίστα αναπαραγωγής %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Αποτυχία αποθήκευσης λίστας αναπαραγωγής.</string>
     <string name="saved_x_playlists">Saved %1$d playlists.</string>
     <string name="saved_x_playlists_failed_to_save_x">Οι αποθηκευμένες λίστες %1$d απέτυχαν να αποθηκεύσουν το %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Εισήχθη ένα τραγούδι στη λίστα αναπαραγωγής %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Εισήχθησαν %1$d τραγούδια στη λίστα αναπαραγωγής %2$s.</string>
     <string name="playlist_exists">Η λίστα αναπαραγωγής %s υπάρχει ήδη.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Αφαίρεση τραγουδιού από τη λίστα αναπαραγωγής</string>
     <string name="remove_songs_from_playlist_title">Αφαίρεση τραγουδιών από τη λίστα αναπαραγωγής</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Αφαιρέστε το τραγούδι <b>%1$s</b> από τη λίστα αναπαραγωγής?]]></string>
