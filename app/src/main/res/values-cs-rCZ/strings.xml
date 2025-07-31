@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Zamíchání umělce</string>
     <string name="action_share">Sdílet</string>
     <string name="action_save">Uložit</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Co chcete sdílet?</string>
     <string name="the_audio_file">Zvukový soubor</string>
     <string name="i_am_listening">Poslouchám…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Nový seznam skladeb</string>
     <string name="add_playlist_title">Přidat do playlistu</string>
     <string name="rename_playlist_title">Přejmenovat seznam skladeb</string>
-    <string name="action_rename">Přejmenovat seznam skladeb</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Odstranit seznam skladeb</string>
     <string name="action_export_playlist">Exportovat do souboru</string>
     <string name="action_clear_history">Vymazat historii</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">Bude vytvořen seznam skladeb a bude do něj přidána jedna skladba.</string>
     <string name="create_a_playlist_with_x_songs">Bude vytvořen playlist a budou automaticky přidány %d skladby.</string>
     <string name="playlist_name_empty">Název playlistu</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Uložen playlist %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Nepodařilo se uložit playlist.</string>
     <string name="saved_x_playlists">Uloženo %1$d seznamů skladeb.</string>
     <string name="saved_x_playlists_failed_to_save_x">Saved %1$d playlists, failed to save %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Vložena jedna skladba do playlistu %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Vloženo %1$d skladeb do playlistu %2$s.</string>
     <string name="playlist_exists">Playlist %s již existuje.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Odstranit skladbu ze seznamu skladeb</string>
     <string name="remove_songs_from_playlist_title">Odstranit skladby ze seznamu skladeb</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Odstranit skladbu <b>%1$s</b> ze seznamu skladeb?]]></string>
