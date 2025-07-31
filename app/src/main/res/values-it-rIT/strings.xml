@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Mischia artista</string>
     <string name="action_share">Condividi</string>
     <string name="action_save">Salva</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Che cosa vuoi condividere?</string>
     <string name="the_audio_file">Il file audio</string>
     <string name="i_am_listening">Sto ascoltando…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Nuova playlist</string>
     <string name="add_playlist_title">Aggiungi alla playlist</string>
     <string name="rename_playlist_title">Rinomina playlist</string>
-    <string name="action_rename">Rinomina playlist</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Elimina playlist</string>
     <string name="action_export_playlist">Esporta in file</string>
     <string name="action_clear_history">Cancella cronologia</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">Verrà creata una playlist e verrà aggiunta una canzone.</string>
     <string name="create_a_playlist_with_x_songs">Verrà creata una playlist e le canzoni di %d verranno aggiunte automaticamente.</string>
     <string name="playlist_name_empty">Nome playlist</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Playlist %s salvata.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Impossibile salvare la playlist.</string>
     <string name="saved_x_playlists">Playlist %1$d salvate.</string>
     <string name="saved_x_playlists_failed_to_save_x">Playlist %1$d salvate, impossibile salvare %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Inserito un brano nella playlist %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Inserito brani %1$d nella playlist %2$s.</string>
     <string name="playlist_exists">Playlist %s esiste già.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Rimuovi brano dalla playlist</string>
     <string name="remove_songs_from_playlist_title">Rimuovi brani dalla playlist</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Rimuovere la canzone <b>%1$s</b> dalla playlist?]]></string>
