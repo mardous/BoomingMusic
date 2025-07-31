@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Künstler-Zufallswiedergabe</string>
     <string name="action_share">Teilen</string>
     <string name="action_save">Speichern</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Was möchtest Du teilen?</string>
     <string name="the_audio_file">Die Audiodatei</string>
     <string name="i_am_listening">Ich höre…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Neue Wiedergabeliste</string>
     <string name="add_playlist_title">Zur Wiedergabeliste hinzufügen</string>
     <string name="rename_playlist_title">Wiedergabeliste umbenennen</string>
-    <string name="action_rename">Wiedergabeliste umbenennen</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Wiedergabeliste löschen</string>
     <string name="action_export_playlist">In Datei exportieren</string>
     <string name="action_clear_history">Verlauf löschen</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">Es wird eine Wiedergabeliste erstellt und ein Titel hinzugefügt.</string>
     <string name="create_a_playlist_with_x_songs">Eine Wiedergabeliste wird erstellt und %d Titel werden automatisch hinzugefügt.</string>
     <string name="playlist_name_empty">Name der Wiedergabeliste</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Wiedergabeliste %s gespeichert.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Speichern der Wiedergabeliste fehlgeschlagen.</string>
     <string name="saved_x_playlists">%1$d Wiedergabelisten gespeichert.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d Wiedergabelisten gespeichert, konnte %2$d nicht speichern.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Ein Titel wurrde in Wiedergabeliste %s eingefügt.</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d Lieder in Wiedergabeliste %2$s eingefügt.</string>
     <string name="playlist_exists">Wiedergabeliste %s existiert bereits.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Titel aus Wiedergabeliste entfernen</string>
     <string name="remove_songs_from_playlist_title">Mehrere Titel aus Wiedergabeliste entfernen</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Titel <b>%1$s</b> aus Wiedergabeliste entfernen?]]></string>
