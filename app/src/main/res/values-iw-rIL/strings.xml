@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">עירבוב אמנים</string>
     <string name="action_share">שיתוף</string>
     <string name="action_save">שמירה</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">מה תרצה לשתף?</string>
     <string name="the_audio_file">קובץ האודיו</string>
     <string name="i_am_listening">אני מאזין…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">רשימת השמעה חדשה</string>
     <string name="add_playlist_title">הוסף לרשימת ההשמעה</string>
     <string name="rename_playlist_title">שנה שם לרשימת ההשמעה</string>
-    <string name="action_rename">שנה שם לרשימת ההשמעה</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">מחיקת רשימת השמעה</string>
     <string name="action_export_playlist">ייצוא לקובץ</string>
     <string name="action_clear_history">ניקוי היסטוריה</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">תיווצר רשימת השמעה ושיר אחד יתווסף אליה.</string>
     <string name="create_a_playlist_with_x_songs">תיווצר רשימת השמעה ו-%d שירים יתווספו אוטומטית.</string>
     <string name="playlist_name_empty">שם רשימת ההשמעה</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">רשימת ההשמעה %s נשמרה.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">שמירת רשימת ההשמעה נכשלה.</string>
     <string name="saved_x_playlists">נשמרו %1$d רשימות השמעה.</string>
     <string name="saved_x_playlists_failed_to_save_x">נשמרו %1$d רשימות השמעה, שמירת %2$d מהם נכשלה.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">נוסף שיר אחד לרשימת ההשמעה %s.</string>
     <string name="inserted_x_songs_into_playlist_x">נוספו %1$d שירים לרשימת ההשמעה %2$s.</string>
     <string name="playlist_exists">רשימת ההשמעה %s כבר קיימת.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">הסר שיר מרשימת ההשמעה</string>
     <string name="remove_songs_from_playlist_title">הסר שירים מרשימת ההשמעה</string>
     <string name="remove_song_x_from_playlist"><![CDATA[למחוק את השיר <b>%1$s</b> מרשימת ההשמעה?]]></string>
