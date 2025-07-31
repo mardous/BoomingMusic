@@ -810,9 +810,12 @@
     <string name="more_info_action">Mai multe informații.</string>
     <string name="download_action">Descărcare</string>
     <string name="downloading_update">Se descarcă actualizările cu muzica înfloritoare.</string>
-    <string name="uncaught_error_title">A apărut o eroare neașteptată</string>
-    <string name="uncaught_error_message">Ne cerem scuze pentru neplăceri. Puteți revizui raportul de eroare și reporni aplicația.</string>
+    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
+    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
+        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">Reporniți aplicația</string>
-    <string name="uncaught_error_view_report">Vizualizați raportul</string>
-    <string name="uncaught_error_send">Trimite</string>
+    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_send">Send report</string>
 </resources>
