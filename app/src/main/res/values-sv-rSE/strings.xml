@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Konstnären blandar</string>
     <string name="action_share">Dela</string>
     <string name="action_save">Spara</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Vad vill du dela?</string>
     <string name="the_audio_file">Ljudfilen</string>
     <string name="i_am_listening">Jag lyssnar…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Ny spellista</string>
     <string name="add_playlist_title">Lägg till i spellistan</string>
     <string name="rename_playlist_title">Döp om spellista</string>
-    <string name="action_rename">Döp om spellista</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Ta bort spellista</string>
     <string name="action_export_playlist">Exportera till fil</string>
     <string name="action_clear_history">Rensa historik</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">En spellista kommer att skapas och en låt kommer att läggas till den.</string>
     <string name="create_a_playlist_with_x_songs">En spellista kommer att skapas och %d låtar kommer att läggas automatiskt.</string>
     <string name="playlist_name_empty">Namn på spellista</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Sparade spellista %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Det gick inte att spara spellistan.</string>
     <string name="saved_x_playlists">Sparade %1$d spellistor.</string>
     <string name="saved_x_playlists_failed_to_save_x">Sparade %1$d spellistor, kunde inte spara %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Infogade en låt i spellistan %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Infogade %1$d låtar i spellistan %2$s.</string>
     <string name="playlist_exists">Spellista %s finns redan.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Ta bort låt från spellistan</string>
     <string name="remove_songs_from_playlist_title">Ta bort låtar från spellistan</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Ta bort låten <b>%1$s</b> från spellistan?]]></string>
