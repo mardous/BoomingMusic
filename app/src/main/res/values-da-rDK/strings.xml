@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Kunstner shuffle</string>
     <string name="action_share">Del</string>
     <string name="action_save">Gem</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Hvad ønsker du at dele?</string>
     <string name="the_audio_file">Lydfilen</string>
     <string name="i_am_listening">Jeg lytter til…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Ny afspilningsliste</string>
     <string name="add_playlist_title">Føj til afspilningsliste</string>
     <string name="rename_playlist_title">Omdøb afspilningsliste</string>
-    <string name="action_rename">Omdøb afspilningsliste</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Slet afspilningsliste</string>
     <string name="action_export_playlist">Eksporter til fil</string>
     <string name="action_clear_history">Ryd historik</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">En afspilningsliste vil blive oprettet og en sang vil blive tilføjet til den.</string>
     <string name="create_a_playlist_with_x_songs">En afspilningsliste vil blive oprettet og %d sange vil blive tilføjet automatisk.</string>
     <string name="playlist_name_empty">Navn på afspilningsliste</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Gemt afspilningsliste %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Kunne ikke gemme afspilningsliste.</string>
     <string name="saved_x_playlists">Gemte %1$d afspilningslister.</string>
     <string name="saved_x_playlists_failed_to_save_x">Gemte %1$d afspilningslister, kunne ikke gemme %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Indsatte en sang i afspilningsliste %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Indsatte %1$d sange i afspilningsliste %2$s.</string>
     <string name="playlist_exists">Spilleliste %s findes allerede.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Fjern sang fra afspilningsliste</string>
     <string name="remove_songs_from_playlist_title">Fjern sange fra afspilningsliste</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Fjern sangen <b>%1$s</b> fra spillelisten?]]></string>
