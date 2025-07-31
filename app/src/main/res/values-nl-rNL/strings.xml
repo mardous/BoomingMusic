@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">Kunstenaar shuffle</string>
     <string name="action_share">Delen</string>
     <string name="action_save">Opslaan</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Wat wil je delen?</string>
     <string name="the_audio_file">Het audiobestand</string>
     <string name="i_am_listening">Ik luister…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">Nieuwe afspeellijst</string>
     <string name="add_playlist_title">Toevoegen aan afspeellijst</string>
     <string name="rename_playlist_title">Hernoem afspeellijst</string>
-    <string name="action_rename">Hernoem afspeellijst</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">Afspeellijst verwijderen</string>
     <string name="action_export_playlist">Exporteren naar bestand</string>
     <string name="action_clear_history">Geschiedenis verwijderen</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">Er wordt een afspeellijst gemaakt en er wordt één nummer aan toegevoegd.</string>
     <string name="create_a_playlist_with_x_songs">Er wordt een afspeellijst gemaakt en %d nummers worden automatisch toegevoegd.</string>
     <string name="playlist_name_empty">Naam afspeellijst</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">Afspeellijst opgeslagen %s.</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">Opslaan van afspeellijst mislukt.</string>
     <string name="saved_x_playlists">%1$d afspeellijsten opgeslagen.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d afspeellijsten opgeslagen, opslaan mislukt %2$d.</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">Eén nummer toegevoegd aan afspeellijst %s.</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d nummers toegevoegd aan afspeellijst %2$s.</string>
     <string name="playlist_exists">Afspeellijst %s bestaat al.</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Verwijder nummer uit afspeellijst</string>
     <string name="remove_songs_from_playlist_title">Verwijder nummers uit afspeellijst</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Verwijder het nummer <b>%1$s</b> uit de afspeellijst?]]></string>
