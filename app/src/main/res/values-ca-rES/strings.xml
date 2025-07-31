@@ -802,9 +802,12 @@
     <string name="more_info_action">Més informació</string>
     <string name="download_action">Descarrega</string>
     <string name="downloading_update">S\'està descarregant l\'actualització de Booming Music.</string>
-    <string name="uncaught_error_title">S\'ha produït un error inesperat</string>
-    <string name="uncaught_error_message">Dispenseu les molèsties. Podeu revisar el report d\'error i reiniciar l\'aplicació.</string>
+    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
+    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
+        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">Reinicia l\'aplicació</string>
-    <string name="uncaught_error_view_report">Mostra l\'informe</string>
-    <string name="uncaught_error_send">Envia</string>
+    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_send">Send report</string>
 </resources>
