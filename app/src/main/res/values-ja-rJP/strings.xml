@@ -794,9 +794,12 @@
     <string name="more_info_action">もっと詳しく。</string>
     <string name="download_action">ダウンロード</string>
     <string name="downloading_update">Booming Musicのアップデートをダウンロードしています。</string>
-    <string name="uncaught_error_title">予期しないエラーが発生しました</string>
-    <string name="uncaught_error_message">ご不便をおかけして申し訳ありません。エラーレポートを確認し、アプリを再起動してください。</string>
+    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
+    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
+        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">アプリを再起動</string>
-    <string name="uncaught_error_view_report">レポートを表示</string>
-    <string name="uncaught_error_send">送信</string>
+    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_send">Send report</string>
 </resources>
