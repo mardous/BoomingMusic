@@ -31,7 +31,6 @@
     <string name="shuffle_mode_artist">Lecture aléatoire des artistes</string>
     <string name="action_share">Partager</string>
     <string name="action_save">Enregistrer</string>
-    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">Que voulez-vous partager ?</string>
     <string name="the_audio_file">Le fichier audio</string>
     <string name="i_am_listening">J\'écoute…</string>
