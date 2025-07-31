@@ -62,9 +62,13 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
         Preferences.nowPlayingScreen
     }
 
+    private var isAnimatingLyrics: Boolean = false
     private var isShowLyricsOnCover: Boolean
         get() = Preferences.showLyricsOnCover
         set(value) { Preferences.showLyricsOnCover = value }
+
+    val isAllowedToLoadLyrics: Boolean
+        get() = nps.supportsCoverLyrics
 
     private var gestureDetector: GestureDetector? = null
     private var callbacks: Callbacks? = null
@@ -197,10 +201,8 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
         _binding = null
     }
 
-    val isAllowedToLoadLyrics: Boolean
-        get() = nps.supportsCoverLyrics
-
     fun toggleLyrics() {
+        if (isAnimatingLyrics) return
         if (isShowLyricsOnCover) {
             hideLyrics(true)
         } else {
@@ -209,8 +211,10 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
     }
 
     fun showLyrics(isForced: Boolean = false) {
-        if (binding.coverLyricsFragment.isVisible || (!isShowLyricsOnCover && !isForced))
+        if (!isAllowedToLoadLyrics || (!isShowLyricsOnCover && !isForced) || isAnimatingLyrics)
             return
+
+        isAnimatingLyrics = true
 
         val animatorSet = AnimatorSet()
         animatorSet.playTogether(
@@ -220,6 +224,7 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
         animatorSet.duration = BOOMING_ANIM_TIME
         animatorSet.doOnEnd {
             _binding?.viewPager?.isInvisible = true
+            isAnimatingLyrics = false
             it.removeAllListeners()
         }
         animatorSet.doOnStart {
@@ -236,7 +241,9 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
     }
 
     fun hideLyrics(isPermanent: Boolean = false) {
-        if (!binding.coverLyricsFragment.isVisible) return
+        if (!isShowLyricsOnCover || isAnimatingLyrics) return
+
+        isAnimatingLyrics = true
 
         val animatorSet = AnimatorSet()
         animatorSet.playTogether(
@@ -257,6 +264,7 @@ class PlayerAlbumCoverFragment : Fragment(), ViewPager.OnPageChangeListener,
                 isShowLyricsOnCover = false
             }
             _binding?.coverLyricsFragment?.isVisible = false
+            isAnimatingLyrics = false
             it.removeAllListeners()
         }
         callbacks?.onLyricsVisibilityChange(animatorSet, false)

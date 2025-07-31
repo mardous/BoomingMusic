@@ -44,9 +44,9 @@ abstract class BoomingDatabase : RoomDatabase() {
 
     companion object {
         val MIGRATION_1_2 = object : Migration(1, 2) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE PlaylistEntity ADD COLUMN custom_cover_uri TEXT")
-                database.execSQL("ALTER TABLE PlaylistEntity ADD COLUMN description TEXT")
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE PlaylistEntity ADD COLUMN custom_cover_uri TEXT")
+                db.execSQL("ALTER TABLE PlaylistEntity ADD COLUMN description TEXT")
             }
         }
     }
