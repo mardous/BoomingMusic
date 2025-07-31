@@ -31,7 +31,6 @@
     <string name="shuffle_mode_artist">Mezclar artista</string>
     <string name="action_share">Compartir</string>
     <string name="action_save">Guardar</string>
-    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">¿Qué quieres compartir?</string>
     <string name="the_audio_file">El archivo de audio</string>
     <string name="i_am_listening">Estoy escuchando…</string>
