@@ -31,7 +31,7 @@
     <string name="shuffle_mode_artist">Sanatçı karıştırma</string>
     <string name="action_share">Paylaş</string>
     <string name="action_save">Kaydet</string>
-    <string name="action_rename">Rename</string>
+    <string name="action_rename">Yeniden adlandır</string>
     <string name="what_do_you_want_to_share">Ne paylaşmak istersiniz?</string>
     <string name="the_audio_file">Ses dosyası</string>
     <string name="i_am_listening">Dinliyorum…</string>
@@ -67,7 +67,7 @@
     <string name="new_playlist_title">Yeni çalma listesi</string>
     <string name="add_playlist_title">Çalma listesine ekle</string>
     <string name="rename_playlist_title">Çalma listesini yeniden adlandır</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Çalma listesini düzenle</string>
     <string name="action_delete">Çalma listesini sil</string>
     <string name="action_export_playlist">Dosyaya aktar</string>
     <string name="action_clear_history">Geçmişi temizle</string>
@@ -76,9 +76,9 @@
     <string name="create_a_playlist_with_one_song">Bir çalma listesi oluşturulacak ve bir şarkı eklenecektir.</string>
     <string name="create_a_playlist_with_x_songs">Bir çalma listesi oluşturulacak ve %d şarkı otomatik olarak eklenecektir.</string>
     <string name="playlist_name_empty">Çalma listesi adı</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Çalma listesi açıklaması (isteğe bağlı)</string>
     <string name="saved_playlist_x">%s çalma listesi kaydedildi.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Çalma listesi güncellendi.</string>
     <string name="failed_to_save_playlist">Çalma listesi kaydedilemedi.</string>
     <string name="saved_x_playlists">%1$d çalma listesi kaydedildi.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d çalma listesi kaydedildi, %2$d tanesi kaydedilemedi.</string>
@@ -91,7 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">%s çalma listesine bir şarkı eklendi.</string>
     <string name="inserted_x_songs_into_playlist_x">%2$s çalma listesine %1$d şarkı eklendi.</string>
     <string name="playlist_exists">%s adında bir çalma listesi zaten var.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">Çalma listesi %s başarıyla oluşturuldu.</string>
     <string name="remove_song_from_playlist_title">Şarkıyı çalma listesinden kaldır</string>
     <string name="remove_songs_from_playlist_title">Şarkıları çalma listesinden kaldır</string>
     <string name="remove_song_x_from_playlist"><![CDATA[<b>%1$s</b> şarkısı çalma listesinden kaldırılsın mı?]]></string>
