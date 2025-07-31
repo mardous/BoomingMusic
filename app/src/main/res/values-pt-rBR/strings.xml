@@ -801,12 +801,12 @@
     <string name="more_info_action">Mais informações.</string>
     <string name="download_action">Baixar</string>
     <string name="downloading_update">Baixando atualização do Booming Music.</string>
-    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
-        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="uncaught_error_title">Ops! Algo inesperado aconteceu!</string>
+    <string name="uncaught_error_message">Algo deu errado e o aplicativo foi encerrado inesperadamente. 
+Enviar o relatório de erro por Telegram ou e-mail nos ajudaria a resolver o problema.</string>
+    <string name="uncaught_error_report">Relatório de erro</string>
+    <string name="uncaught_error_report_copied">Relatório de erro copiado para a área de transferência.</string>
     <string name="uncaught_error_restart_app">Reiniciar aplicativo</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_github">Reportar problema no GitHub</string>
+    <string name="uncaught_error_send">Enviar relatório</string>
 </resources>
