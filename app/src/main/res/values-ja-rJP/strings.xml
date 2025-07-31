@@ -31,6 +31,7 @@
     <string name="shuffle_mode_artist">アーティストシャッフル</string>
     <string name="action_share">共有</string>
     <string name="action_save">保存展開</string>
+    <string name="action_rename">Rename</string>
     <string name="what_do_you_want_to_share">何を共有しますか？</string>
     <string name="the_audio_file">オーディオ ファイル</string>
     <string name="i_am_listening">私が今聴いているのは…</string>
@@ -66,7 +67,7 @@
     <string name="new_playlist_title">新規プレイリスト</string>
     <string name="add_playlist_title">プレイリストに追加</string>
     <string name="rename_playlist_title">プレイリストの名前を変更</string>
-    <string name="action_rename">プレイリストの名前を変更</string>
+    <string name="action_edit_playlist">Edit playlist</string>
     <string name="action_delete">プレイリストを削除</string>
     <string name="action_export_playlist">ファイルにエクスポート</string>
     <string name="action_clear_history">履歴を消去</string>
@@ -75,7 +76,9 @@
     <string name="create_a_playlist_with_one_song">プレイリストが作成され、1曲が追加されます。</string>
     <string name="create_a_playlist_with_x_songs">プレイリストが作成され、 %d 曲が自動的に追加されます。</string>
     <string name="playlist_name_empty">プレイリスト名</string>
+    <string name="playlist_description_hint">Playlist description (optional)</string>
     <string name="saved_playlist_x">プレイリスト %sを保存しました。</string>
+    <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">プレイリストの保存に失敗しました。</string>
     <string name="saved_x_playlists">%1$d プレイリストを保存しました。</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d プレイリストを保存しました。 %2$d の保存に失敗しました。</string>
@@ -88,6 +91,7 @@
     <string name="inserted_one_song_into_playlist_x">%s に曲を挿入しました。</string>
     <string name="inserted_x_songs_into_playlist_x">プレイリスト %2$s に %1$d 曲を追加しました。</string>
     <string name="playlist_exists">プレイリスト %s は既に存在します。</string>
+    <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">プレイリストから曲を削除</string>
     <string name="remove_songs_from_playlist_title">プレイリストから曲を削除</string>
     <string name="remove_song_x_from_playlist"><![CDATA[プレイリストから曲 <b>%1$s</b> を削除しますか？]]></string>
