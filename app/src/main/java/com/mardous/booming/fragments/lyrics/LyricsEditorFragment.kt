@@ -127,11 +127,15 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
     override fun onStart() {
         super.onStart()
         view?.postDelayed(500) {
-            lyricsViewModel.getWritableUris(song).observe(viewLifecycleOwner) {
-                if (hasR()) {
-                    val contentResolver = get<ContentResolver>()
-                    val pendingIntent = MediaStore.createWriteRequest(contentResolver, it)
-                    permissionLauncher.launch(IntentSenderRequest.Builder(pendingIntent).build())
+            if (isAdded && isVisible) {
+                lyricsViewModel.getWritableUris(song).observe(viewLifecycleOwner) {
+                    if (hasR()) {
+                        val contentResolver = get<ContentResolver>()
+                        val pendingIntent = MediaStore.createWriteRequest(contentResolver, it)
+                        permissionLauncher.launch(
+                            IntentSenderRequest.Builder(pendingIntent).build()
+                        )
+                    }
                 }
             }
         }
