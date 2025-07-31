@@ -805,6 +805,5 @@
     <string name="uncaught_error_title">Si è verificato un errore imprevisto</string>
     <string name="uncaught_error_message">Siamo spiacenti per l\'inconveniente. Puoi rivedere il rapporto di errore e riavviare l\'app.</string>
     <string name="uncaught_error_restart_app">Riavvia app</string>
-    <string name="uncaught_error_view_report">Visualizza rapporto</string>
     <string name="uncaught_error_send">Invia</string>
 </resources>

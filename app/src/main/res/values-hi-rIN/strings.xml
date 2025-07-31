@@ -803,6 +803,5 @@
     <string name="uncaught_error_title">एक अनपेक्षित त्रुटि हुई है</string>
     <string name="uncaught_error_message">असुविधा के लिए क्षमा करें। आप त्रुटि रिपोर्ट की समीक्षा कर सकते हैं और ऐप को फिर से शुरू कर सकते हैं।</string>
     <string name="uncaught_error_restart_app">ऐप को पुनः प्रारंभ करें</string>
-    <string name="uncaught_error_view_report">रिपोर्ट देखें</string>
     <string name="uncaught_error_send">भेजें</string>
 </resources>

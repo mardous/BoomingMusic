@@ -805,6 +805,5 @@
     <string name="uncaught_error_title">Ocurrió un error inesperado</string>
     <string name="uncaught_error_message">Sentimos la inconveniencia. Puedes revisar el reporte de error y reiniciar la app.</string>
     <string name="uncaught_error_restart_app">Reiniciar app</string>
-    <string name="uncaught_error_view_report">Ver reporte</string>
     <string name="uncaught_error_send">Enviar</string>
 </resources>

@@ -813,6 +813,5 @@
     <string name="uncaught_error_title">A apărut o eroare neașteptată</string>
     <string name="uncaught_error_message">Ne cerem scuze pentru neplăceri. Puteți revizui raportul de eroare și reporni aplicația.</string>
     <string name="uncaught_error_restart_app">Reporniți aplicația</string>
-    <string name="uncaught_error_view_report">Vizualizați raportul</string>
     <string name="uncaught_error_send">Trimite</string>
 </resources>

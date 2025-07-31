@@ -805,6 +805,5 @@
     <string name="uncaught_error_title">Beklenmedik bir hata oluştu</string>
     <string name="uncaught_error_message">Verdiğimiz rahatsızlıktan dolayı özür dileriz. Hata raporunu inceleyebilir ve uygulamayı yeniden başlatabilirsiniz.</string>
     <string name="uncaught_error_restart_app">Uygulamayı yeniden başlat</string>
-    <string name="uncaught_error_view_report">Raporu görüntüle</string>
     <string name="uncaught_error_send">Gönder</string>
 </resources>

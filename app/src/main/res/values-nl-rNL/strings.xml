@@ -805,6 +805,5 @@
     <string name="uncaught_error_title">Er is een onverwachte fout opgetreden</string>
     <string name="uncaught_error_message">Sorry voor het ongemak. U kunt het foutenrapport bekijken en de app herstarten.</string>
     <string name="uncaught_error_restart_app">Herstart app</string>
-    <string name="uncaught_error_view_report">Rapport bekijken</string>
     <string name="uncaught_error_send">Verzenden</string>
 </resources>

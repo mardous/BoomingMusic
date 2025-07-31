@@ -805,6 +805,5 @@
     <string name="uncaught_error_title">Odottamaton virhe tapahtui</string>
     <string name="uncaught_error_message">Pahoittelemme haittaa. Voit tarkistaa virheraportin ja käynnistää sovelluksen uudelleen.</string>
     <string name="uncaught_error_restart_app">Käynnistä sovellus uudelleen</string>
-    <string name="uncaught_error_view_report">Näytä raportti</string>
     <string name="uncaught_error_send">Lähetä</string>
 </resources>

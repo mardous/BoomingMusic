@@ -50,7 +50,7 @@ import kotlinx.coroutines.launch
 private const val AUTHOR_GITHUB_URL = "https://www.github.com/mardous"
 private const val GITHUB_URL = "$AUTHOR_GITHUB_URL/BoomingMusic"
 private const val RELEASES_LINK = "$GITHUB_URL/releases"
-private const val ISSUE_TRACKER_LINK = "$GITHUB_URL/issues"
+const val ISSUE_TRACKER_LINK = "$GITHUB_URL/issues"
 private const val AUTHOR_TELEGRAM_LINK = "https://t.me/mardeez"
 private const val APP_TELEGRAM_LINK = "https://t.me/mardousdev"
 private const val CROWDIN_PROJECT_LINK = "https://crowdin.com/project/booming-music"

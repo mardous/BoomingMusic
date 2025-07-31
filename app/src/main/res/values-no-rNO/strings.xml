@@ -805,6 +805,5 @@
     <string name="uncaught_error_title">Det oppstod en uventet feil</string>
     <string name="uncaught_error_message">Beklager ulempen. Du kan gjennomgå feilrapporten og starte appen på nytt.</string>
     <string name="uncaught_error_restart_app">Starte appen på nytt</string>
-    <string name="uncaught_error_view_report">Vis rapport</string>
     <string name="uncaught_error_send">Sende</string>
 </resources>

@@ -821,6 +821,5 @@
     <string name="uncaught_error_title">Произошла непредвиденная ошибка</string>
     <string name="uncaught_error_message">Извините за неудобства. Вы можете просмотреть отчет об ошибке и перезапустить приложение.</string>
     <string name="uncaught_error_restart_app">Перезапустить приложение</string>
-    <string name="uncaught_error_view_report">Просмотр отчета</string>
     <string name="uncaught_error_send">Отправить</string>
 </resources>

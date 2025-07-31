@@ -837,6 +837,5 @@
     <string name="uncaught_error_title">حدث خطأ غير متوقع</string>
     <string name="uncaught_error_message">عذرا على الإزعاج. يمكنك مراجعة تقرير الخطأ وإعادة تشغيل التطبيق.</string>
     <string name="uncaught_error_restart_app">إعادة تشغيل التطبيق</string>
-    <string name="uncaught_error_view_report">عرض التقرير</string>
     <string name="uncaught_error_send">إرسال</string>
 </resources>

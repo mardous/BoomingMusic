@@ -821,6 +821,5 @@
     <string name="uncaught_error_title">Wystąpił nieoczekiwany błąd</string>
     <string name="uncaught_error_message">Przepraszamy za niedogodności. Możesz przejrzeć raport o błędzie i ponownie uruchomić aplikację.</string>
     <string name="uncaught_error_restart_app">Uruchom ponownie aplikację</string>
-    <string name="uncaught_error_view_report">Zobacz raport</string>
     <string name="uncaught_error_send">Wyślij</string>
 </resources>

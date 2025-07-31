@@ -821,6 +821,5 @@
     <string name="uncaught_error_title">Сталась непередбачена помилка</string>
     <string name="uncaught_error_message">Вибачте за незручності. Ви можете переглянути звіт про помилку та перезапустити додаток.</string>
     <string name="uncaught_error_restart_app">Перезапустити додаток</string>
-    <string name="uncaught_error_view_report">Переглянути звіт</string>
     <string name="uncaught_error_send">Відправити</string>
 </resources>

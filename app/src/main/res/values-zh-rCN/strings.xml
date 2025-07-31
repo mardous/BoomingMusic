@@ -797,6 +797,5 @@
     <string name="uncaught_error_title">发生意外错误</string>
     <string name="uncaught_error_message">抱歉给您带来了不便。您可以查看错误报告并重启应用程序。</string>
     <string name="uncaught_error_restart_app">重启应用</string>
-    <string name="uncaught_error_view_report">查看报告</string>
     <string name="uncaught_error_send">发送</string>
 </resources>

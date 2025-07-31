@@ -797,6 +797,5 @@
     <string name="uncaught_error_title">予期しないエラーが発生しました</string>
     <string name="uncaught_error_message">ご不便をおかけして申し訳ありません。エラーレポートを確認し、アプリを再起動してください。</string>
     <string name="uncaught_error_restart_app">アプリを再起動</string>
-    <string name="uncaught_error_view_report">レポートを表示</string>
     <string name="uncaught_error_send">送信</string>
 </resources>
