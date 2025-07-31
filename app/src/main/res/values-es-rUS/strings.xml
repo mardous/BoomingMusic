@@ -47,9 +47,9 @@
     <string name="continue_action">Continuar</string>
     <string name="select_all_title">Seleccionar todo</string>
     <string name="x_selected">%d seleccionados</string>
-    <string name="preparing_playback_title">Preparing</string>
-    <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="preparing_playback_title">Preparando</string>
+    <string name="restoring_playback_state">Restaurando estado y cola de reproducción…</string>
+    <string name="playback_stopped_title">Reproducción detenida</string>
     <string name="playing_notification_description">La notificación de reproducción proporciona acciones para reproducir/pausar, etc.</string>
     <string name="playing_notification_name">Notificación de reproducción</string>
     <string name="action_scan_directory">Escanear directorio</string>
@@ -66,7 +66,7 @@
     <string name="new_playlist_title">Nueva playlist</string>
     <string name="add_playlist_title">Agregar a playlist</string>
     <string name="rename_playlist_title">Renombrar playlist</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Editar playlist</string>
     <string name="action_delete">Eliminar</string>
     <string name="action_export_playlist">Exportar a archivo</string>
     <string name="action_clear_history">Limpiar el historial</string>
@@ -75,9 +75,9 @@
     <string name="create_a_playlist_with_one_song">Se creará una playlist y se añadirá una canción.</string>
     <string name="create_a_playlist_with_x_songs">Se creará una playlist y se añadirán %d canciones.</string>
     <string name="playlist_name_empty">Nombre de la playlist</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Descripción de la playlist (opcional)</string>
     <string name="saved_playlist_x">Playlist %s exportada.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Se actualizó la playlist.</string>
     <string name="failed_to_save_playlist">No se pudo exportar la lista.</string>
     <string name="saved_x_playlists">Guardadas %1$d playlists.</string>
     <string name="saved_x_playlists_failed_to_save_x">Guardadas %1$d playlists, error al guardar %2$d.</string>
@@ -90,7 +90,7 @@
     <string name="inserted_one_song_into_playlist_x">Se agregó una canción a la playlist \"%s\"</string>
     <string name="inserted_x_songs_into_playlist_x">Se agregaron %1$d canciones a la playlist \"%2$s\"</string>
     <string name="playlist_exists">La playlist \"%s\" ya existe</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">Se creó la playlist %s.</string>
     <string name="remove_song_from_playlist_title">Remover canción de la playlist</string>
     <string name="remove_songs_from_playlist_title">Remover canciones de la playlist</string>
     <string name="remove_song_x_from_playlist"><![CDATA[¿Remover <b>%1$s</b> de la lista?]]></string>
@@ -485,7 +485,7 @@
     <string name="no_synced_lyrics_found">No se encontró la letra sincronizada</string>
     <string name="lyrics_were_updated_successfully">La letra se actualizó correctamente.</string>
     <string name="failed_to_update_lyrics">La letra no se pudo actualizar.</string>
-    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
+    <string name="there_are_no_changes_to_save">No hay cambios para guardar.</string>
     <string name="lyrics_source_external_file">La letra proviene de un archivo externo. No puedes editar esta letra directamente desde Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Programador de apagado</string>
@@ -802,12 +802,11 @@
     <string name="more_info_action">Más info.</string>
     <string name="download_action">Descargar</string>
     <string name="downloading_update">Descargando actualización de Booming Music.</string>
-    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
-        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="uncaught_error_title">¡Ups, eso no debió suceder!</string>
+    <string name="uncaught_error_message">Parece que algó falló y provocó que la app se cerrara. Sería de gran ayuda si nos envías el reporte de error a nuestro grupo en Telegram o a través de correo electrónico.</string>
+    <string name="uncaught_error_report">Reporte de error</string>
+    <string name="uncaught_error_report_copied">Se copió el reporte de error al portapapeles.</string>
     <string name="uncaught_error_restart_app">Reiniciar app</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_github">Abrir incidencia en GitHub</string>
+    <string name="uncaught_error_send">Enviar reporte</string>
 </resources>
