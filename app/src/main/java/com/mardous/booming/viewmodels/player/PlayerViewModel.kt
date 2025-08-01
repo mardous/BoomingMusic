@@ -109,15 +109,27 @@ class PlayerViewModel(
         set(value) { playbackManager.pendingQuit = value }
 
     init {
-        currentSongFlow.debounce(500)
-            .distinctUntilChangedBy { it.id }
+        // Always update notification and extra info on every song change, even rapid
+        currentSongFlow
             .onEach { song ->
                 _extraInfoFlow.value = song.extraInfo(Preferences.nowPlayingExtraInfoList)
+                updateNotification(song)
             }
             .flowOn(IO)
             .launchIn(viewModelScope)
 
         queueManager.addObserver(this)
+    }
+
+    /**
+     * Updates the notification with the current song info.
+     * This should be called on every song change to keep the notification in sync.
+     *
+     * TODO: Implement notification update logic here.
+     */
+    private fun updateNotification(song: Song) {
+        // TODO: Implement notification update logic here.
+        // Example: NotificationManagerCompat.from(context).notify(...)
     }
 
     override fun queueChanged(queue: List<Song>, reason: QueueChangeReason) {
