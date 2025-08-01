@@ -47,9 +47,9 @@
     <string name="continue_action">Continuer</string>
     <string name="select_all_title">Tout sélectionner</string>
     <string name="x_selected">%d sélectionné</string>
-    <string name="preparing_playback_title">Preparing</string>
-    <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="preparing_playback_title">Préparation</string>
+    <string name="restoring_playback_state">Restauration de l\'état de lecture et de la file d\'attente…</string>
+    <string name="playback_stopped_title">Lecture arrêtée</string>
     <string name="playing_notification_description">La notification de lecture fournit des actions pour la lecture/pause, etc.</string>
     <string name="playing_notification_name">Notification de lecture</string>
     <string name="action_scan_directory">Analyser le répertoire</string>
@@ -66,7 +66,7 @@
     <string name="new_playlist_title">Nouvelle playlist</string>
     <string name="add_playlist_title">Ajouter à la playlist</string>
     <string name="rename_playlist_title">Renommer la playlist</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Modifier la playlist</string>
     <string name="action_delete">Supprimer la playlist</string>
     <string name="action_export_playlist">Exporter vers un fichier</string>
     <string name="action_clear_history">Effacer l\'historique</string>
@@ -75,9 +75,9 @@
     <string name="create_a_playlist_with_one_song">Une playlist sera créée et un titre y sera ajoutée.</string>
     <string name="create_a_playlist_with_x_songs">Une playlist sera créée et %d titres seront ajoutées automatiquement.</string>
     <string name="playlist_name_empty">Nom de la playlist</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Description de la playlist (facultatif)</string>
     <string name="saved_playlist_x">Playlist %s enregistrée.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Playlist mise à jour.</string>
     <string name="failed_to_save_playlist">Échec de l\'enregistrement de la playlist.</string>
     <string name="saved_x_playlists">%1$d playlists enregistrées.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d playlists enregistrées, échec de l\'enregistrement de %2$d.</string>
@@ -90,7 +90,7 @@
     <string name="inserted_one_song_into_playlist_x">Un titre a été inséré dans la playlist %s.</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d titres ajoutés à la playlist %2$s.</string>
     <string name="playlist_exists">La playlist %s existe déjà.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">La playlist %s a été créée avec succès.</string>
     <string name="remove_song_from_playlist_title">Supprimer le titre de la playlist</string>
     <string name="remove_songs_from_playlist_title">Supprimer les titres de la playlist</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Supprimer le titre <b>%1$s</b> de la playlist ?]]></string>
@@ -802,12 +802,11 @@
     <string name="more_info_action">Plus d\'infos.</string>
     <string name="download_action">Télécharger</string>
     <string name="downloading_update">Téléchargement de la mise à jour de Booming Music.</string>
-    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
-        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="uncaught_error_title">Oups ! Ce n\'était pas censé arriver !</string>
+    <string name="uncaught_error_message">Il semble qu\'un problème soit survenu et ait provoqué le plantage de l\'application. Nous vous serions reconnaissants de bien vouloir nous envoyer le rapport d\'erreur via notre groupe Telegram ou par e-mail.</string>
+    <string name="uncaught_error_report">Rapport d\'erreur</string>
+    <string name="uncaught_error_report_copied">Rapport d\'erreur copié dans le presse-papiers.</string>
     <string name="uncaught_error_restart_app">Redémarrer l\'application</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_github">Problème ouvert sur GitHub</string>
+    <string name="uncaught_error_send">Envoyer un rapport</string>
 </resources>
