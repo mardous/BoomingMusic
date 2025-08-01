@@ -22,7 +22,7 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationBarView.LabelVisibility
 import com.mardous.booming.R
@@ -204,7 +204,7 @@ object Preferences : KoinComponent {
     val isCarouselEffect: Boolean
         get() = preferences.getBoolean(CAROUSEL_EFFECT, true)
 
-    val coverSwipingEffect: ViewPager.PageTransformer?
+    val coverSwipingEffect: ViewPager2.PageTransformer?
         get() = when (preferences.nullString(COVER_SWIPING_EFFECT)) {
             CoverSwipingEffect.CASCADING -> CascadingPageTransformer()
             CoverSwipingEffect.DEPTH -> DepthTransformation()

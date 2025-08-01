@@ -16,37 +16,26 @@ package com.mardous.booming.transform
 
 import android.content.Context
 import android.view.View
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
 
-class CarouselPagerTransformer(context: Context) : ViewPager.PageTransformer {
+class CarouselPagerTransformer(context: Context, private val pageMarginPx: Int = 0) : ViewPager2.PageTransformer {
 
-    private val maxTranslateOffsetX: Int
-    private var viewPager: ViewPager? = null
-
-    init {
-        this.maxTranslateOffsetX = dp2px(context, 180f)
-    }
+    private val maxTranslateOffsetX: Int = dp2px(context, 180f)
 
     override fun transformPage(view: View, position: Float) {
-        if (viewPager == null) {
-            viewPager = view.parent as ViewPager
-        }
-
-        val leftInScreen = view.left - viewPager!!.scrollX
-        val centerXInViewPager = leftInScreen + view.measuredWidth / 2
-        val offsetX = centerXInViewPager - viewPager!!.measuredWidth / 2
-        val offsetRate = offsetX.toFloat() * 0.30f / viewPager!!.measuredWidth
+        val offsetRate = position * 0.3f
         val scaleFactor = 1 - abs(offsetRate)
+
         if (scaleFactor > 0) {
             view.scaleX = scaleFactor
             view.scaleY = scaleFactor
-            view.translationX = -maxTranslateOffsetX * offsetRate
+            view.translationX = (-maxTranslateOffsetX * offsetRate) + (pageMarginPx * position)
         }
     }
 
     private fun dp2px(context: Context, dipValue: Float): Int {
-        val m = context.resources.displayMetrics.density
-        return (dipValue * m + 0.5f).toInt()
+        val density = context.resources.displayMetrics.density
+        return (dipValue * density + 0.5f).toInt()
     }
 }

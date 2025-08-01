@@ -1,4 +1,4 @@
-package com.mardous.booming.fragments.player
+package com.mardous.booming.fragments.player.cover
 
 import android.os.Bundle
 import android.view.LayoutInflater

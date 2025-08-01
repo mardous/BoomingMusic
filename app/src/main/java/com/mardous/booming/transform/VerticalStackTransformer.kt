@@ -15,18 +15,24 @@
 package com.mardous.booming.transform
 
 import android.view.View
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 
-class VerticalStackTransformer : ViewPager.PageTransformer {
+class VerticalStackTransformer : ViewPager2.PageTransformer {
     override fun transformPage(page: View, position: Float) {
-        page.apply {
-            if (position >= 0) {
-                scaleX = (0.9f - 0.05f * position)
-                scaleY = 0.9f
-                translationX = -width * position
-                translationY = -30 * position
-            }
-        }
+        if (position >= 0f) {
+            // Scale down the page slightly on the X axis based on its position
+            page.scaleX = 0.9f - 0.05f * position
+            page.scaleY = 0.9f // Y scaling remains constant
 
+            // Shift the page to the left and slightly upwards
+            page.translationX = -page.width * position
+            page.translationY = -30f * position
+        } else {
+            // Reset any transformation for pages to the left
+            page.scaleX = 1f
+            page.scaleY = 1f
+            page.translationX = 0f
+            page.translationY = 0f
+        }
     }
 }

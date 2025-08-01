@@ -15,38 +15,43 @@
 package com.mardous.booming.transform
 
 import android.view.View
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
 
-class CascadingPageTransformer : ViewPager.PageTransformer {
-
-    private var mScaleOffset = 40
+class CascadingPageTransformer(
+    private val scaleOffsetPx: Int = 40
+) : ViewPager2.PageTransformer {
 
     override fun transformPage(page: View, position: Float) {
-        page.apply {
-            when {
-                position < -1 -> { // [-Infinity,-1)
-                    alpha = 0f
-                }
-                position <= 0 -> {
-                    alpha = 1 - abs(position)
-                    rotation = 45 * position
-                    translationX = width / 3 * position
-                }
-                else -> {
-                    alpha = 1f
-                    rotation = 0f
+        when {
+            position < -1f -> {
+                page.alpha = 0f
+            }
 
-                    val safeWidth = if (width == 0) 1 else width
-                    val scale = (safeWidth - mScaleOffset * position) / safeWidth.toFloat()
-                    val safeScale = if (scale.isFinite() && scale > 0f) scale else 1f
+            position <= 0f -> {
+                page.alpha = 1f - abs(position)
+                page.rotation = 45f * position
+                page.translationX = page.width / 3f * position
+                page.scaleX = 1f
+                page.scaleY = 1f
+                page.translationY = 0f
+            }
 
-                    scaleX = safeScale
-                    scaleY = safeScale
+            position <= 1f -> {
+                val scale = (page.width - scaleOffsetPx * position) / page.width.toFloat()
+                val safeScale = scale.coerceIn(0.7f, 1f)
 
-                    translationX = -width * position
-                    translationY = mScaleOffset * 0.8f * position
-                }
+                page.alpha = 1f
+                page.rotation = 0f
+                page.scaleX = safeScale
+                page.scaleY = safeScale
+
+                page.translationX = -page.width * position
+                page.translationY = scaleOffsetPx * 0.8f * position
+            }
+
+            else -> {
+                page.alpha = 0f
             }
         }
     }

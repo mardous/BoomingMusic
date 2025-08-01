@@ -17,40 +17,32 @@ package com.mardous.booming.transform
 import android.view.View
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
 
-class VerticalFlipTransformation : ViewPager.PageTransformer {
+class VerticalFlipTransformation : ViewPager2.PageTransformer {
     override fun transformPage(page: View, position: Float) {
-        page.apply {
-            translationX = -position * width
-            cameraDistance = 100000f
+        val pageWidth = page.width
 
-            if (position < 0.5 && position > -0.5) {
-                isVisible = true
-            } else {
-                isInvisible = true
+        page.translationX = -position * pageWidth
+        page.cameraDistance = (pageWidth * 10).toFloat()
+        page.visibility = if (position in -0.5f..0.5f) View.VISIBLE else View.INVISIBLE
+
+        when {
+            position < -1f -> {
+                page.alpha = 0f
             }
-
-            when {
-                position < -1 -> {     // [-Infinity,-1)
-                    // This page is way off-screen to the left.
-                    alpha = 0f
-                }
-                position <= 0 -> {    // [-1,0]
-                    alpha = 1f
-                    rotationY = 180 * (1 - abs(position) + 1)
-                }
-                position <= 1 -> {    // (0,1]
-                    alpha = 1f
-                    rotationY = -180 * (1 - abs(position) + 1)
-                }
-                else -> {    // (1,+Infinity]
-                    // This page is way off-screen to the right.
-                    alpha = 0f
-                }
+            position <= 0f -> {
+                page.alpha = 1f
+                page.rotationY = 180f * (1f + position)
+            }
+            position <= 1f -> {
+                page.alpha = 1f
+                page.rotationY = -180f * (1f - position)
+            }
+            else -> {
+                page.alpha = 0f
             }
         }
-
     }
 }

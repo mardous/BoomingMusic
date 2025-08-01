@@ -63,10 +63,10 @@ import com.mardous.booming.extensions.resources.inflateMenu
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.fragments.lyrics.LyricsEditorFragmentArgs
-import com.mardous.booming.fragments.player.PlayerAlbumCoverFragment
 import com.mardous.booming.fragments.player.PlayerColorScheme
 import com.mardous.booming.fragments.player.PlayerColorSchemeMode
 import com.mardous.booming.fragments.player.PlayerTintTarget
+import com.mardous.booming.fragments.player.cover.CoverFragment
 import com.mardous.booming.helper.color.MediaNotificationProcessor
 import com.mardous.booming.helper.menu.newPopupMenu
 import com.mardous.booming.helper.menu.onSongMenu
@@ -74,6 +74,7 @@ import com.mardous.booming.model.Genre
 import com.mardous.booming.model.GestureOnCover
 import com.mardous.booming.model.NowPlayingAction
 import com.mardous.booming.model.Song
+import com.mardous.booming.model.theme.NowPlayingScreen
 import com.mardous.booming.taglib.EditTarget
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.viewmodels.library.LibraryViewModel
@@ -87,12 +88,15 @@ import kotlin.math.abs
  * @author Christians M. A. (mardous)
  */
 abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
-    Fragment(layoutRes), Toolbar.OnMenuItemClickListener, PlayerAlbumCoverFragment.Callbacks {
+    Fragment(layoutRes), Toolbar.OnMenuItemClickListener, CoverFragment.Callbacks {
 
     val playerViewModel: PlayerViewModel by activityViewModel()
     val libraryViewModel: LibraryViewModel by activityViewModel()
 
-    private var coverFragment: PlayerAlbumCoverFragment? = null
+    private val nps: NowPlayingScreen
+        get() = Preferences.nowPlayingScreen
+
+    private var coverFragment: CoverFragment? = null
 
     protected abstract val colorSchemeMode: PlayerColorSchemeMode
     protected abstract val playerControlsFragment: AbsPlayerControlsFragment
@@ -339,7 +343,7 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
             }
 
             NowPlayingAction.Lyrics -> {
-                if (coverFragment?.isAllowedToLoadLyrics == true) {
+                if (nps.supportsCoverLyrics) {
                     coverFragment?.toggleLyrics()
                 } else {
                     LyricsDialog.create(currentSong).show(childFragmentManager, "LYRICS_DIALOG")

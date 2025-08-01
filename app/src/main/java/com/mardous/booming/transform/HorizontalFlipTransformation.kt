@@ -17,37 +17,38 @@ package com.mardous.booming.transform
 import android.view.View
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
 
-class HorizontalFlipTransformation : ViewPager.PageTransformer {
+class HorizontalFlipTransformation : ViewPager2.PageTransformer {
     override fun transformPage(page: View, position: Float) {
         page.apply {
-            page.translationX = -position * page.width
-            page.cameraDistance = 20000f
-
-            if (position < 0.5 && position > -0.5) {
-                page.isVisible = true
-            } else {
-                page.isInvisible = true
-            }
+            // Move the page horizontally based on position
+            translationX = -position * width
+            cameraDistance = 20000f
+            isVisible = position in -0.5..0.5
 
             when {
-                position < -1 -> {     // [-Infinity,-1)
-                    // This page is way off-screen to the left.
-                    page.alpha = 0f
+                position < -1 -> { // [-Infinity, -1)
+                    // Page is far off to the left
+                    alpha = 0f
                 }
-                position <= 0 -> {    // [-1,0]
-                    page.alpha = 1f
-                    page.rotationX = 180 * (1 - abs(position) + 1)
+
+                position <= 0 -> { // [-1, 0]
+                    alpha = 1f
+                    // Flip along X-axis from the front
+                    rotationX = 180 * (1 - abs(position) + 1)
                 }
-                position <= 1 -> {    // (0,1]
-                    page.alpha = 1f
-                    page.rotationX = -180 * (1 - abs(position) + 1)
+
+                position <= 1 -> { // (0, 1]
+                    alpha = 1f
+                    // Flip along X-axis from the back
+                    rotationX = -180 * (1 - abs(position) + 1)
                 }
-                else -> {    // (1,+Infinity]
-                    // This page is way off-screen to the right.
-                    page.alpha = 0f
+
+                else -> { // (1, +Infinity]
+                    // Page is far off to the right
+                    alpha = 0f
                 }
             }
         }

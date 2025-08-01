@@ -17,16 +17,17 @@
 
 package com.mardous.booming.adapters.pager
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.TypedValue
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.core.os.BundleCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.card.MaterialCardView
@@ -34,7 +35,7 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.mardous.booming.R
-import com.mardous.booming.adapters.pager.AlbumCoverPagerAdapter.AlbumCoverFragment.ColorReceiver
+import com.mardous.booming.adapters.pager.AlbumCoverPagerAdapter.AlbumCoverFragment.CoverEventReceiver
 import com.mardous.booming.extensions.EXTRA_SONG
 import com.mardous.booming.extensions.glide.asBitmapPalette
 import com.mardous.booming.extensions.glide.getSongGlideModel
@@ -44,37 +45,53 @@ import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.glide.BoomingColoredTarget
 import com.mardous.booming.helper.color.MediaNotificationProcessor
+import com.mardous.booming.model.GestureOnCover
 import com.mardous.booming.model.Song
 import com.mardous.booming.model.theme.NowPlayingScreen
 import com.mardous.booming.util.Preferences
 
-class AlbumCoverPagerAdapter(fm: FragmentManager, private val dataSet: List<Song>) :
-    CustomFragmentStatePagerAdapter(fm) {
+class AlbumCoverPagerAdapter(f: Fragment) : FragmentStateAdapter(f) {
 
-    private var currentPaletteReceiver: ColorReceiver? = null
+    private val asyncListDiffer = AsyncListDiffer(this, object : DiffUtil.ItemCallback<Song>() {
+        override fun areItemsTheSame(oldItem: Song, newItem: Song): Boolean {
+            return oldItem.id == newItem.id && oldItem.dateModified == newItem.dateModified
+        }
+
+        override fun areContentsTheSame(oldItem: Song, newItem: Song): Boolean {
+            return oldItem == newItem
+        }
+    })
+
+    private val fragmentManager = f.childFragmentManager
+
+    private var currentPaletteReceiver: CoverEventReceiver? = null
     private var currentColorReceiverPosition = -1
 
-    override fun getItem(position: Int): Fragment {
-        return AlbumCoverFragment.newInstance(dataSet[position])
-    }
-
-    override fun getCount(): Int {
-        return dataSet.size
-    }
-
-    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val o = super.instantiateItem(container, position)
+    override fun createFragment(position: Int): Fragment {
+        val fragment = AlbumCoverFragment.newInstance(asyncListDiffer.currentList[position])
         if (currentPaletteReceiver != null && currentColorReceiverPosition == position) {
             receiveColor(currentPaletteReceiver!!, currentColorReceiverPosition)
         }
-        return o
+        return fragment
+    }
+
+    override fun getItemCount(): Int {
+        return asyncListDiffer.currentList.size
+    }
+
+    override fun getItemId(position: Int): Long {
+        return asyncListDiffer.currentList[position].id
+    }
+
+    override fun containsItem(itemId: Long): Boolean {
+        return asyncListDiffer.currentList.any { it.id == itemId }
     }
 
     /**
-     * Only the latest passed [AlbumCoverFragment.ColorReceiver] is guaranteed to receive a response
+     * Only the latest passed [AlbumCoverFragment.CoverEventReceiver] is guaranteed to receive a response
      */
-    fun receiveColor(paletteReceiver: ColorReceiver, @ColorInt position: Int) {
-        val fragment = getFragment(position) as AlbumCoverFragment?
+    fun receiveColor(paletteReceiver: CoverEventReceiver, @ColorInt position: Int) {
+        val fragment = fragmentManager.findFragmentByTag("f${getItemId(position)}") as? AlbumCoverFragment
         if (fragment != null) {
             currentPaletteReceiver = null
             currentColorReceiverPosition = -1
@@ -85,12 +102,18 @@ class AlbumCoverPagerAdapter(fm: FragmentManager, private val dataSet: List<Song
         }
     }
 
+    fun updateData(newData: List<Song>, onCompleted: () -> Unit) {
+        asyncListDiffer.submitList(newData, onCompleted)
+    }
+
     class AlbumCoverFragment : Fragment() {
 
         private var isColorReady = false
         private lateinit var color: MediaNotificationProcessor
         private lateinit var song: Song
-        private var colorReceiver: ColorReceiver? = null
+
+        private var gestureDetector: GestureDetector? = null
+        private var coverEventReceiver: CoverEventReceiver? = null
         private var request = 0
 
         private var target: Target<*>? = null
@@ -117,17 +140,33 @@ class AlbumCoverPagerAdapter(fm: FragmentManager, private val dataSet: List<Song
             return inflater.inflate(getLayoutWithPlayerTheme(), container, false)
         }
 
+        @SuppressLint("ClickableViewAccessibility")
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             albumCover = view.findViewById(R.id.player_image)
+            albumCover?.setOnTouchListener { _, event -> gestureDetector?.onTouchEvent(event) == true }
+            gestureDetector = GestureDetector(activity, object : GestureDetector.SimpleOnGestureListener() {
+                override fun onSingleTapConfirmed(event: MotionEvent): Boolean {
+                    return consumeGesture(GestureOnCover.Tap)
+                }
+
+                override fun onDoubleTap(event: MotionEvent): Boolean {
+                    return consumeGesture(GestureOnCover.DoubleTap)
+                }
+
+                override fun onLongPress(e: MotionEvent) {
+                    consumeGesture(GestureOnCover.LongPress)
+                }
+            })
             setupImageStyle()
             loadAlbumCover()
         }
 
         override fun onDestroyView() {
-            super.onDestroyView()
             Glide.with(this).clear(target)
-            colorReceiver = null
+            super.onDestroyView()
+            gestureDetector = null
+            coverEventReceiver = null
         }
 
         private fun setupImageStyle() {
@@ -173,22 +212,27 @@ class AlbumCoverPagerAdapter(fm: FragmentManager, private val dataSet: List<Song
         private fun setPalette(color: MediaNotificationProcessor) {
             this.color = color
             isColorReady = true
-            if (colorReceiver != null) {
-                colorReceiver!!.onColorReady(color, request)
-                colorReceiver = null
+            if (coverEventReceiver != null) {
+                coverEventReceiver!!.onColorReady(color, request)
+                coverEventReceiver = null
             }
         }
 
-        fun receivePalette(paletteReceiver: ColorReceiver, request: Int) {
+        fun receivePalette(paletteReceiver: CoverEventReceiver, request: Int) {
             if (isColorReady) {
                 paletteReceiver.onColorReady(color, request)
             } else {
-                this.colorReceiver = paletteReceiver
+                this.coverEventReceiver = paletteReceiver
                 this.request = request
             }
         }
 
-        interface ColorReceiver {
+        private fun consumeGesture(gesture: GestureOnCover): Boolean {
+            return coverEventReceiver?.onGestureEvent(gesture) ?: false
+        }
+
+        interface CoverEventReceiver {
+            fun onGestureEvent(gesture: GestureOnCover): Boolean
             fun onColorReady(color: MediaNotificationProcessor, request: Int)
         }
 
