@@ -57,6 +57,7 @@
 <img src="metadata/en-US/images/phoneScreenshots/6.jpg" width="30%" />
 <img src="metadata/en-US/images/phoneScreenshots/7.jpg" width="30%" />
 <img src="metadata/en-US/images/phoneScreenshots/8.jpg" width="30%" />
+<img src="metadata/en-US/images/phoneScreenshots/9.jpg" width="30%" />
 </div>
 
 ## ✅ Planned
