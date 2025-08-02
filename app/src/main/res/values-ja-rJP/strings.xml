@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">シャッフル再生</string>
     <string name="action_queue_next">次のキュー</string>
     <string name="shuffle_all_label">すべてシャッフル</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">再生/一時停止</string>
     <string name="action_pause">一時停止</string>
     <string name="action_next">次へ</string>
