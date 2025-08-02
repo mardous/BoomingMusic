@@ -23,6 +23,7 @@ import com.mardous.booming.service.queue.*
 import com.mardous.booming.util.PlayOnStartupMode
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.viewmodels.player.model.SaveCoverResult
+import com.mardous.booming.viewmodels.player.model.ShuffleOperationState
 import com.mardous.booming.worker.SaveCoverWorker
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.FlowPreview
@@ -30,6 +31,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
 @OptIn(FlowPreview::class)
@@ -83,6 +85,9 @@ class PlayerViewModel(
     private val _colorScheme = MutableStateFlow(PlayerColorScheme.Unspecified)
     val colorSchemeFlow = _colorScheme.asStateFlow()
     val colorScheme get() = colorSchemeFlow.value
+
+    private val _shuffleOperationState = MutableStateFlow(ShuffleOperationState())
+    val shuffleOperationState = _shuffleOperationState.asStateFlow()
 
     private val _extraInfoFlow = MutableStateFlow<String?>(null)
     val extraInfoFlow = _extraInfoFlow.asStateFlow()
@@ -232,8 +237,17 @@ class PlayerViewModel(
         emit(success)
     }
 
-    fun openSpecialShuffle(songs: List<Song>, mode: SpecialShuffleMode) = liveData(IO) {
-        emit(queueManager.specialShuffleQueue(songs, mode))
+    fun openSpecialShuffle(songs: List<Song>, mode: SpecialShuffleMode) = viewModelScope.launch {
+        if (shuffleOperationState.value.isIdle) {
+            _shuffleOperationState.value = ShuffleOperationState(mode, ShuffleOperationState.Status.InProgress)
+            val success = withContext(IO) {
+                queueManager.specialShuffleQueue(songs, mode)
+            }
+            if (success) {
+                playSongAt(queueManager.position, newPlayback = true)
+            }
+            _shuffleOperationState.value = ShuffleOperationState()
+        }
     }
 
     fun queueNext(song: Song) = liveData(IO) {
