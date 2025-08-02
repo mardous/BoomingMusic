@@ -24,10 +24,7 @@ import com.mardous.booming.appshortcuts.shortcuttype.LastAddedShortcutType
 import com.mardous.booming.appshortcuts.shortcuttype.ShuffleAllShortcutType
 import com.mardous.booming.appshortcuts.shortcuttype.TopTracksShortcutType
 import com.mardous.booming.extensions.extraNotNull
-import com.mardous.booming.model.Playlist
-import com.mardous.booming.model.smartplaylist.LastAddedPlaylist
-import com.mardous.booming.model.smartplaylist.ShuffleAllPlaylist
-import com.mardous.booming.model.smartplaylist.TopTracksPlaylist
+import com.mardous.booming.model.ContentType
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
 import com.mardous.booming.service.playback.Playback
@@ -41,36 +38,35 @@ class AppShortcutLauncherActivity : Activity() {
         super.onCreate(savedInstanceState)
         when (extraNotNull(KEY_SHORTCUT_TYPE, SHORTCUT_TYPE_NONE).value) {
             SHORTCUT_TYPE_SHUFFLE_ALL -> {
-                startServiceWithPlaylist(Playback.ShuffleMode.On, ShuffleAllPlaylist())
+                startServiceWithContent(Playback.ShuffleMode.On, null)
                 DynamicShortcutManager.reportShortcutUsed(this, ShuffleAllShortcutType.ID)
             }
 
             SHORTCUT_TYPE_TOP_TRACKS -> {
-                startServiceWithPlaylist(Playback.ShuffleMode.Off, TopTracksPlaylist())
+                startServiceWithContent(Playback.ShuffleMode.Off, ContentType.TopTracks)
                 DynamicShortcutManager.reportShortcutUsed(this, TopTracksShortcutType.ID)
             }
 
             SHORTCUT_TYPE_LAST_ADDED -> {
-                startServiceWithPlaylist(Playback.ShuffleMode.Off, LastAddedPlaylist())
+                startServiceWithContent(Playback.ShuffleMode.Off, ContentType.RecentSongs)
                 DynamicShortcutManager.reportShortcutUsed(this, LastAddedShortcutType.ID)
             }
         }
         finish()
     }
 
-    private fun startServiceWithPlaylist(shuffleMode: Playback.ShuffleMode, playlist: Playlist) {
-        val intent = Intent(this, MusicService::class.java)
-        intent.action = ServiceAction.ACTION_PLAY_PLAYLIST
-
-        val bundle = bundleOf(
-            ServiceAction.Extras.EXTRA_PLAYLIST to playlist,
-            ServiceAction.Extras.EXTRA_SHUFFLE_MODE to shuffleMode
+    private fun startServiceWithContent(shuffleMode: Playback.ShuffleMode, contentType: ContentType?) {
+        startForegroundService(
+            Intent(this, MusicService::class.java)
+                .setAction(ServiceAction.ACTION_PLAY_PLAYLIST)
+                .setPackage(packageName)
+                .putExtras(
+                    bundleOf(
+                        ServiceAction.Extras.EXTRA_CONTENT_TYPE to contentType,
+                        ServiceAction.Extras.EXTRA_SHUFFLE_MODE to shuffleMode
+                    )
+                )
         )
-        intent.setPackage(this.packageName)
-
-        intent.putExtras(bundle)
-
-        startForegroundService(intent)
     }
 
     companion object {

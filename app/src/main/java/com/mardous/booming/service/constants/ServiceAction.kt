@@ -25,7 +25,7 @@ import com.mardous.booming.BuildConfig
 interface ServiceAction {
     interface Extras {
         companion object {
-            const val EXTRA_PLAYLIST = "$BOOMING_PACKAGE_NAME.extra.playlist"
+            const val EXTRA_CONTENT_TYPE = "$BOOMING_PACKAGE_NAME.extra.contenttype"
             const val EXTRA_SHUFFLE_MODE = "$BOOMING_PACKAGE_NAME.extra.shufflemode"
             const val EXTRA_APP_WIDGET_NAME = "$BOOMING_PACKAGE_NAME.app_widget_name"
         }
