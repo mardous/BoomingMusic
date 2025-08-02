@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Odtwarzaj losowo</string>
     <string name="action_queue_next">Dodaj jako następne</string>
     <string name="shuffle_all_label">Losuj wszystkie</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Odtwórz/Wstrzymaj</string>
     <string name="action_pause">Wstrzymaj</string>
     <string name="action_next">Następny</string>
