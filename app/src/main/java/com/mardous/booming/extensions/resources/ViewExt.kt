@@ -32,7 +32,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.annotation.MenuRes
 import androidx.appcompat.widget.Toolbar
-import androidx.core.animation.addListener
 import androidx.core.animation.doOnEnd
 import androidx.core.content.getSystemService
 import androidx.core.graphics.drawable.toDrawable
@@ -74,26 +73,6 @@ val View.backgroundColor: Int
     get() = (background as? ColorDrawable)?.color
         ?: (background as? MaterialShapeDrawable)?.fillColor?.defaultColor
         ?: Color.TRANSPARENT
-
-fun View.shake() {
-    ObjectAnimator.ofFloat(this, View.TRANSLATION_X, 0f, 30f, -30f, 20f, -20f, 10f, -10f, 5f, -5f, 0f).apply {
-        duration = BOOMING_ANIM_TIME / 2
-        interpolator = AccelerateInterpolator()
-        addListener(
-            onStart = {
-                setLayerType(View.LAYER_TYPE_HARDWARE, null)
-            },
-            onEnd = {
-                setLayerType(View.LAYER_TYPE_NONE, null)
-            },
-            onCancel = {
-                setLayerType(View.LAYER_TYPE_NONE, null)
-            }
-        )
-    }.also { shakeAnimator ->
-        shakeAnimator.start()
-    }
-}
 
 fun View.showBounceAnimation() {
     clearAnimation()

@@ -120,6 +120,11 @@ fun <T : Fragment> Fragment.whichFragment(@IdRes id: Int): T {
     return childFragmentManager.findFragmentById(id) as T
 }
 
+@Suppress("UNCHECKED_CAST")
+fun <T : Fragment> Fragment.whichFragment(tag: String): T? {
+    return childFragmentManager.findFragmentByTag(tag) as? T
+}
+
 fun LifecycleOwner.launchAndRepeatWithViewLifecycle(state: Lifecycle.State = Lifecycle.State.STARTED, block: suspend CoroutineScope.() -> Unit) {
     lifecycleScope.launch {
         lifecycle.repeatOnLifecycle(state, block)
