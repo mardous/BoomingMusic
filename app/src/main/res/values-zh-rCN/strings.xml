@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">随机播放</string>
     <string name="action_queue_next">下一个队列</string>
     <string name="shuffle_all_label">全部随机</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">播放/暂停</string>
     <string name="action_pause">暂停</string>
     <string name="action_next">下一个</string>
