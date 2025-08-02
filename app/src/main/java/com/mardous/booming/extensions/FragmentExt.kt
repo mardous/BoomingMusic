@@ -80,8 +80,9 @@ inline fun <T : Fragment> T.withArgs(argsBuilder: Bundle.() -> Unit): T =
     this.apply { arguments = Bundle().apply(argsBuilder) }
 
 inline fun Fragment.createBoomingMusicBalloon(
+    tooltipId: String,
     crossinline block: Balloon.Builder.() -> Unit
-) = requestContext { it.createBoomingMusicBalloon(viewLifecycleOwner, block = block) }
+) = requestContext { it.createBoomingMusicBalloon(tooltipId, viewLifecycleOwner, block = block) }
 
 fun Fragment.plurals(resId: Int, quantity: Int) = requireContext().plurals(resId, quantity)
 

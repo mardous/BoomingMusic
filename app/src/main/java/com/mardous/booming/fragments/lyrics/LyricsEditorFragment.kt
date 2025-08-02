@@ -179,8 +179,8 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
         val button = binding.toggleGroup.findViewById<Button>(checkedId)
         if (!isChecked) return
 
-        if (source.canShowHelp(requireContext())) {
-            val balloon = createBoomingMusicBalloon {
+        if (source.tooltipKey.isNotEmpty()) {
+            val balloon = createBoomingMusicBalloon(source.tooltipKey) {
                 setDismissWhenClicked(true)
                 setText(getString(source.descriptionRes))
             }
@@ -189,7 +189,6 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
             } else {
                 balloon?.showAlignBottom(button)
             }
-            source.setHelpShown(requireContext())
         }
     }
 

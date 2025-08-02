@@ -496,6 +496,7 @@ fun Slider.setTrackingTouchListener(
 }
 
 inline fun Context.createBoomingMusicBalloon(
+    tooltipId: String,
     lifecycleOwner: LifecycleOwner,
     crossinline block: Balloon.Builder.() -> Unit
 ): Balloon {
@@ -514,6 +515,7 @@ inline fun Context.createBoomingMusicBalloon(
         setDismissWhenTouchOutside(true)
         setAutoDismissDuration(5000)
         setLifecycleOwner(lifecycleOwner)
+        setPreferenceName(tooltipId)
         block(this)
     }
 }
