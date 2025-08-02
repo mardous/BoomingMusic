@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Sekoita toisto</string>
     <string name="action_queue_next">Jono seuraava</string>
     <string name="shuffle_all_label">Sekoita kaikki</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Toista/Tauko</string>
     <string name="action_pause">Tauko</string>
     <string name="action_next">Seuraava</string>
