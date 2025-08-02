@@ -46,6 +46,7 @@ import com.mardous.booming.util.LEFT_RIGHT_SWIPING
 import com.mardous.booming.util.LYRICS_ON_COVER
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.viewmodels.player.PlayerViewModel
+import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class PlayerAlbumCoverFragment : Fragment(R.layout.fragment_player_album_cover), ViewPager.OnPageChangeListener,
@@ -148,7 +149,7 @@ class PlayerAlbumCoverFragment : Fragment(R.layout.fragment_player_album_cover),
                         val itemCount = pager.adapter?.count ?: 0
                         val lastIndex = (itemCount - 1).coerceAtLeast(0)
                         val target = playerViewModel.currentPosition.coerceIn(0, lastIndex)
-                        if (pager.currentItem != target) {
+                        if (itemCount > 0 && pager.currentItem != target) {
                             pager.setCurrentItem(target, false)
                             onPageSelected(target)
                         }
@@ -157,10 +158,12 @@ class PlayerAlbumCoverFragment : Fragment(R.layout.fragment_player_album_cover),
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.currentPositionFlow.collect { position ->
-                if (viewPager.currentItem != position) {
-                    viewPager.setCurrentItem(position, true)
-                }
+            playerViewModel.currentPositionFlow
+                .filter { it > -1 }
+                .collect { position ->
+                    if (viewPager.currentItem != position) {
+                        viewPager.setCurrentItem(position, true)
+                    }
             }
         }
     }
