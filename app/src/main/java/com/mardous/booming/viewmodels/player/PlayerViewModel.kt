@@ -215,13 +215,15 @@ class PlayerViewModel(
         queue: List<Song>,
         startPlaying: Boolean = true
     ) = viewModelScope.launch(IO) {
-        val success = queueManager.open(
-            queue = queue,
-            startPosition = Random.Default.nextInt(queue.size),
-            shuffleMode = Playback.ShuffleMode.On
-        )
-        if (success == QueueManager.SUCCESS && startPlaying) {
-            playSongAt(queueManager.position, newPlayback = true)
+        if (queue.isNotEmpty()) {
+            val success = queueManager.open(
+                queue = queue,
+                startPosition = Random.Default.nextInt(queue.size),
+                shuffleMode = Playback.ShuffleMode.On
+            )
+            if (success == QueueManager.SUCCESS && startPlaying) {
+                playSongAt(queueManager.position, newPlayback = true)
+            }
         }
     }
 
