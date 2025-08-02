@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Zufallswiedergabe</string>
     <string name="action_queue_next">An Warteschlange anhängen</string>
     <string name="shuffle_all_label">Zufallswiedergabe aller Titel</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Wiedergabe/Pause</string>
     <string name="action_pause">Pause</string>
     <string name="action_next">Nächster</string>
