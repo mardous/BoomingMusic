@@ -43,6 +43,10 @@ import com.mardous.booming.extensions.resources.toForegroundColorSpan
 import com.mardous.booming.model.theme.NowPlayingButtonStyle
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.viewmodels.player.PlayerViewModel
+import com.mardous.booming.viewmodels.player.model.PlayerProgress
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.math.abs
 
@@ -76,14 +80,15 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.totalDurationFlow.collect { duration ->
-                binding.progressBar.max = duration
-            }
-        }
-        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.currentProgressFlow.collect { progress ->
-                binding.progressBar.setProgressCompat(progress, true)
-            }
+            combine(
+                playerViewModel.currentProgressFlow,
+                playerViewModel.totalDurationFlow
+            ) { progress, duration -> PlayerProgress(progress.toLong(), duration.toLong()) }
+                .filter { progress -> progress.mayUpdateUI }
+                .collectLatest {
+                    binding.progressBar.max = it.total.toInt()
+                    binding.progressBar.setProgressCompat(it.progress.toInt(), true)
+                }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.isPlayingFlow.collect { isPlaying ->

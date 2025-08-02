@@ -45,7 +45,7 @@ import com.mardous.booming.viewmodels.player.model.PlayerProgress
 import com.mardous.booming.views.MusicSlider
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.filterNot
+import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -128,7 +128,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
                 playerViewModel.currentProgressFlow,
                 playerViewModel.totalDurationFlow
             ) { progress, duration -> PlayerProgress(progress.toLong(), duration.toLong()) }
-                .filterNot { progress -> progress.progress < 0 || progress.total < 0 }
+                .filter { progress -> progress.mayUpdateUI }
                 .collectLatest { progress ->
                     if (musicSlider?.isTrackingTouch == false) {
                         onUpdateSlider(progress.progress, progress.total)
