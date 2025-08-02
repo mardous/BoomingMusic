@@ -92,7 +92,7 @@ enum class NowPlayingScreen(
     ),
     Peek2(
         R.string.peek2,
-        R.drawable.np_peek,
+        R.drawable.np_peek2,
         R.layout.fragment_album_cover_default,
         buttonStyle = NowPlayingButtonStyle.Normal,
         supportsCoverLyrics = true,
