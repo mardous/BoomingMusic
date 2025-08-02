@@ -39,8 +39,11 @@ class PlaybackManager(
     private val soundSettings: SoundSettings
 ) {
 
-    private val _progressFlow = MutableStateFlow(-1L)
+    private val _progressFlow = MutableStateFlow(-1)
     val progressFlow = _progressFlow.asStateFlow()
+
+    private val _durationFlow = MutableStateFlow(-1)
+    val durationFlow = _durationFlow.asStateFlow()
 
     var pendingQuit = false
     var gaplessPlayback = Preferences.gaplessPlayback
@@ -172,7 +175,7 @@ class PlaybackManager(
 
     fun seek(millis: Int, force: Boolean) {
         if (!isProgressObserverRunning) {
-            _progressFlow.value = millis.toLong()
+            triggerProgressUpdate(millis, duration())
         }
         playback?.seek(millis, force)
     }
@@ -261,14 +264,19 @@ class PlaybackManager(
         progressObserver = coroutineScope.launch(Dispatchers.Default) {
             while (isActive) {
                 if (isPlaying()) {
-                    _progressFlow.value = position().toLong()
-                    playback?.setProgressState(position(), duration())
-                    delay(100L)
+                    triggerProgressUpdate(position(), duration())
+                    playback?.setProgressState(progressFlow.value, durationFlow.value)
+                    delay(50L)
                 } else {
                     delay(300L)
                 }
             }
         }
+    }
+
+    private fun triggerProgressUpdate(progress: Int, duration: Int) {
+        _progressFlow.value = progress
+        _durationFlow.value = duration
     }
 
     private fun stopProgressObserver() {

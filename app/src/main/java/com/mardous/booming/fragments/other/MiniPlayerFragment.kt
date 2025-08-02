@@ -20,8 +20,6 @@ package com.mardous.booming.fragments.other
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.GestureDetector
 import android.view.MotionEvent
@@ -42,7 +40,6 @@ import com.mardous.booming.extensions.resources.show
 import com.mardous.booming.extensions.resources.textColorPrimary
 import com.mardous.booming.extensions.resources.textColorSecondary
 import com.mardous.booming.extensions.resources.toForegroundColorSpan
-import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
 import com.mardous.booming.model.theme.NowPlayingButtonStyle
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.viewmodels.player.PlayerViewModel
@@ -79,9 +76,13 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.progressFlow.collect {
-                binding.progressBar.max = it.total.toInt()
-                binding.progressBar.setProgressCompat(it.progress.toInt(), true)
+            playerViewModel.totalDurationFlow.collect { duration ->
+                binding.progressBar.max = duration
+            }
+        }
+        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
+            playerViewModel.currentProgressFlow.collect { progress ->
+                binding.progressBar.setProgressCompat(progress, true)
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {

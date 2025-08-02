@@ -22,7 +22,6 @@ import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.service.queue.*
 import com.mardous.booming.util.PlayOnStartupMode
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.viewmodels.player.model.PlayerProgress
 import com.mardous.booming.viewmodels.player.model.SaveCoverResult
 import com.mardous.booming.worker.SaveCoverWorker
 import kotlinx.coroutines.Dispatchers.IO
@@ -47,14 +46,6 @@ class PlayerViewModel(
 
     // Prevent concurrent shuffle actions
     private val shuffleMutex = Mutex()
-
-    val progressFlow = playbackManager.progressFlow.map { progress ->
-        PlayerProgress(progress, playbackManager.duration().toLong())
-    }.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.Eagerly,
-        initialValue = PlayerProgress.Unspecified
-    )
 
     val isPlayingFlow = serviceConnection.playbackState.map { stateCompat ->
         stateCompat.state == PlaybackStateCompat.STATE_PLAYING
@@ -99,8 +90,11 @@ class PlayerViewModel(
     val queueDuration get() = queueManager.getDuration(currentPosition)
     val queueDurationAsString get() = queueDuration.durationStr()
 
-    val currentProgress get() = progressFlow.value.progress
-    val totalDuration get() = progressFlow.value.total
+    val currentProgressFlow = playbackManager.progressFlow
+    val currentProgress get() = currentProgressFlow.value
+
+    val totalDurationFlow = playbackManager.durationFlow
+    val totalDuration get() = totalDurationFlow.value
 
     val audioSessionId get() = playbackManager.getAudioSessionId()
 

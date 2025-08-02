@@ -41,7 +41,11 @@ import com.mardous.booming.preferences.dialog.NowPlayingExtraInfoPreferenceDialo
 import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.util.*
 import com.mardous.booming.viewmodels.player.PlayerViewModel
+import com.mardous.booming.viewmodels.player.model.PlayerProgress
 import com.mardous.booming.views.MusicSlider
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filterNot
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -120,11 +124,16 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.progressFlow.collect { progress ->
-                if (musicSlider?.isTrackingTouch == false) {
-                    onUpdateSlider(progress.progress, progress.total)
+            combine(
+                playerViewModel.currentProgressFlow,
+                playerViewModel.totalDurationFlow
+            ) { progress, duration -> PlayerProgress(progress.toLong(), duration.toLong()) }
+                .filterNot { progress -> progress.progress < 0 || progress.total < 0 }
+                .collectLatest { progress ->
+                    if (musicSlider?.isTrackingTouch == false) {
+                        onUpdateSlider(progress.progress, progress.total)
+                    }
                 }
-            }
         }
         Preferences.registerOnSharedPreferenceChangeListener(this)
     }
@@ -175,7 +184,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         musicSlider?.setListener(object : MusicSlider.Listener {
             override fun onProgressChanged(slider: MusicSlider, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
-                    onUpdateSlider(progress.toLong(), playerViewModel.totalDuration)
+                    onUpdateSlider(progress.toLong(), playerViewModel.totalDuration.toLong())
                 }
             }
 
