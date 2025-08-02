@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Amestecare redare</string>
     <string name="action_queue_next">Coada următoare</string>
     <string name="shuffle_all_label">Amestecare toate</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Redare/pauză</string>
     <string name="action_pause">Întrerupeți</string>
     <string name="action_next">Următoarea</string>
