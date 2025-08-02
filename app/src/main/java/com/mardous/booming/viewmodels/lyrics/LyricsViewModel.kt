@@ -14,6 +14,7 @@ import com.mardous.booming.viewmodels.lyrics.model.LyricsResult
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -79,7 +80,9 @@ class LyricsViewModel(
     }
 
     fun getWritableUris(song: Song) = liveData(Dispatchers.IO) {
-        emit(lyricsRepository.writableUris(song))
+        val uris = lyricsRepository.writableUris(song)
+        delay(500)
+        emit(uris)
     }
 
     fun saveLyrics(song: Song, plainLyrics: EditableLyrics?, syncedLyrics: EditableLyrics?) =
