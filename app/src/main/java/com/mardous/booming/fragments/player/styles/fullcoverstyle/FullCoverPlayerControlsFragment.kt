@@ -78,6 +78,7 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFullCoverPlayerPlaybackControlsBinding.bind(view)
 
+        binding.title.setOnClickListener(this)
         binding.text.setOnClickListener(this)
         binding.playPauseButton.setOnClickListener(this)
         binding.nextButton.setOnClickListener(this)

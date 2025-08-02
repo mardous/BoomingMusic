@@ -26,7 +26,6 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.mardous.booming.R
 import com.mardous.booming.extensions.getShapeAppearanceModel
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
@@ -148,7 +147,6 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             )
         }
         songTotalTime?.setOnClickListener(this)
-        songInfoView?.setOnClickListener(this)
         songInfoView?.setOnLongClickListener(this)
         setUpProgressSlider()
     }
@@ -161,12 +159,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             R.id.text -> {
                 goToArtist(requireActivity(), playerViewModel.currentSong)
             }
-            R.id.songInfo -> {
-                val playerView = this.view
-                val infoString = playerViewModel.extraInfoFlow.value
-                if (playerView != null && !infoString.isNullOrEmpty()) {
-                    Snackbar.make(playerView, infoString, Snackbar.LENGTH_LONG).show()
-                }
+            R.id.songTotalTime -> {
+                val preferRemainingTime = Preferences.preferRemainingTime
+                Preferences.preferRemainingTime = !preferRemainingTime
             }
         }
     }

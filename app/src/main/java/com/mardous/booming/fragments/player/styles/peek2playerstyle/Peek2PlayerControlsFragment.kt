@@ -62,6 +62,8 @@ class Peek2PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPeek2PlayerPlaybackControlsBinding.bind(view)
+        binding.title.setOnClickListener(this)
+        binding.text.setOnClickListener(this)
         binding.playPauseButton.setOnClickListener(this)
         binding.nextButton.setOnClickListener(this)
         binding.previousButton.setOnClickListener(this)
