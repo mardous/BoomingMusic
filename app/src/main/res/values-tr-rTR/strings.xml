@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Karıştırarak oynat</string>
     <string name="action_queue_next">Sıradakini çal</string>
     <string name="shuffle_all_label">Tümünü karıştır</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Oynat/Duraklat</string>
     <string name="action_pause">Duraklat</string>
     <string name="action_next">Sonraki</string>
