@@ -28,16 +28,11 @@ import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.ui.screens.about.AboutScreen
 import com.mardous.booming.ui.theme.BoomingMusicTheme
-import com.mardous.booming.viewmodels.about.AboutViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author Christians M. A. (mardous)
  */
 class AboutFragment : Fragment() {
-
-    private val viewModel: AboutViewModel by viewModel()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,7 +42,6 @@ class AboutFragment : Fragment() {
             setContent {
                 BoomingMusicTheme {
                     AboutScreen(
-                        viewModel = viewModel,
                         onBackClick = {
                             getOnBackPressedDispatcher().onBackPressed()
                         },

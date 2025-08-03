@@ -46,6 +46,7 @@ import com.mardous.booming.ui.components.*
 import com.mardous.booming.ui.components.lists.ContributionListItem
 import com.mardous.booming.viewmodels.about.AboutViewModel
 import kotlinx.coroutines.launch
+import org.koin.androidx.compose.koinViewModel
 
 private const val AUTHOR_GITHUB_URL = "https://www.github.com/mardous"
 private const val GITHUB_URL = "$AUTHOR_GITHUB_URL/BoomingMusic"
@@ -58,7 +59,7 @@ private const val CROWDIN_PROJECT_LINK = "https://crowdin.com/project/booming-mu
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(
-    viewModel: AboutViewModel,
+    viewModel: AboutViewModel = koinViewModel(),
     onBackClick: () -> Unit,
     onNavigateToId: (Int) -> Unit
 ) {

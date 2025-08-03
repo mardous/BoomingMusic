@@ -25,15 +25,10 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.materialSharedAxis
-import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.ui.screens.about.TranslatorsScreen
 import com.mardous.booming.ui.theme.BoomingMusicTheme
-import com.mardous.booming.viewmodels.about.AboutViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TranslatorsFragment : Fragment() {
-    private val viewModel: AboutViewModel by viewModel()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,14 +38,8 @@ class TranslatorsFragment : Fragment() {
             setContent {
                 BoomingMusicTheme {
                     TranslatorsScreen(
-                        viewModel = viewModel,
                         onBackButtonClick = {
                             getOnBackPressedDispatcher().onBackPressed()
-                        },
-                        onTranslatorClick = { contribution ->
-                            contribution.url?.let {
-                                context.openUrl(it)
-                            }
                         }
                     )
                 }
