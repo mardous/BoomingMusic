@@ -159,7 +159,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     val currentSongProgress get() = playbackManager.position()
     val currentSongDuration get() = playbackManager.duration()
 
-    private val playbackSpeed get() = playbackManager.getPlaybackSpeed()
+    private val playbackSpeed get() = playbackManager.getSpeed()
     private val shuffleMode get() = queueManager.shuffleMode
     private val repeatMode get() = queueManager.repeatMode
     private val isFirstTrack get() = queueManager.isFirstTrack
@@ -514,7 +514,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     private fun prepareRestoredPlayback(restoredPositionInTrack: Int) {
         openCurrent { success ->
             prepareNext()
-            if (restoredPositionInTrack > 0) {
+            if (restoredPositionInTrack >= 0) {
                 seek(restoredPositionInTrack)
             }
             if (needsToRestorePlayback || receivedHeadsetConnected) {
@@ -822,7 +822,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             showToast(R.string.audio_focus_denied)
             return
         }
-        playbackManager.play(force, serviceScope) {
+        playbackManager.play(force) {
             playSongAt(currentPosition)
         }
     }
@@ -882,7 +882,10 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
 
     private fun prepareSongAt(position: Int, completion: (Boolean) -> Unit = {}) {
         queueManager.setPosition(position)
-        openCurrentAndPrepareNext(completion)
+        openCurrentAndPrepareNext { success ->
+            seek(0, false)
+            completion(success)
+        }
     }
 
     private fun updateWidgets() {
