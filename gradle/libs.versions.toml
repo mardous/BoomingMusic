@@ -86,6 +86,7 @@ room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinVersion" }
 
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
