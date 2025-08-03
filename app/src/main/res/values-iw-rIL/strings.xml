@@ -612,9 +612,9 @@
     <string name="open_on_play_title">פתח בעת ניגון</string>
     <string name="open_on_play_summary">הרחב את לוח מנגן כעת באופן אוטומטי לאחר תחילת הניגון.</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
-    <string name="extra_controls_title">Extra controls</string>
-    <string name="extra_controls_summary">Add extra controls for mini player</string>
+    <string name="squiggly_seek_bar_summary">הפעל שורת חיפוש גלית במקום המחוון הרגיל.</string>
+    <string name="extra_controls_title">בקרות נוספות</string>
+    <string name="extra_controls_summary">הוסף בקרות נוספות לנגן המיני</string>
     <string name="adaptive_controls_title">פקדים אדפטיביים</string>
     <string name="adaptive_controls_summary">הפקדים בנגן המיני משתנים כדי להתאים לסגנון הנגן הנוכחי.</string>
     <string name="swipe_to_dismiss_title">גרור כדי לסגור</string>
