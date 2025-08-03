@@ -79,7 +79,7 @@
     <string name="playlist_name_empty">שם רשימת ההשמעה</string>
     <string name="playlist_description_hint">תיאור רשימת השמעה (לא חובה)</string>
     <string name="saved_playlist_x">רשימת ההשמעה %s נשמרה.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">רשימת ההשמעה עודכנה.</string>
     <string name="failed_to_save_playlist">שמירת רשימת ההשמעה נכשלה.</string>
     <string name="saved_x_playlists">נשמרו %1$d רשימות השמעה.</string>
     <string name="saved_x_playlists_failed_to_save_x">נשמרו %1$d רשימות השמעה, שמירת %2$d מהם נכשלה.</string>
@@ -92,7 +92,7 @@
     <string name="inserted_one_song_into_playlist_x">נוסף שיר אחד לרשימת ההשמעה %s.</string>
     <string name="inserted_x_songs_into_playlist_x">נוספו %1$d שירים לרשימת ההשמעה %2$s.</string>
     <string name="playlist_exists">רשימת ההשמעה %s כבר קיימת.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">רשימת ההשמעה %s נוצרה בהצלחה.</string>
     <string name="remove_song_from_playlist_title">הסר שיר מרשימת ההשמעה</string>
     <string name="remove_songs_from_playlist_title">הסר שירים מרשימת ההשמעה</string>
     <string name="remove_song_x_from_playlist"><![CDATA[למחוק את השיר <b>%1$s</b> מרשימת ההשמעה?]]></string>
@@ -515,7 +515,7 @@
     <string name="sleep_timer_finish_current_music">סיים את השיר האחרון</string>
     <string name="sleep_timer_stop_after_this_track">עצור אחרי השיר הזה</string>
     <string name="sleep_timer_stop_after_x">עצור לאחר %s</string>
-    <string name="sleep_timer_stop_after_x_canceled">Stop after %s: canceled</string>
+    <string name="sleep_timer_stop_after_x_canceled">עצור אחרי %s: בוטל</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">ערבוב</string>
     <string name="app_shortcut_top_tracks_short">רצועות מובילות</string>
@@ -554,9 +554,9 @@
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">תועברו לאתר האינטרנט למעקב הבעיות.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">נדרש גישה לאחסון</string>
-    <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
+    <string name="saf_access_required_message">האפליקציה Booming Music דורשת הרשאה לגישה לקבצים אלו. אנא בחר את התיקייה הראשית שבה מאוחסנים קבצי המוזיקה שלך.</string>
     <string name="saf_show_files_button">הצג קבצים</string>
-    <string name="saf_error_uri">Can\'t get SAF URI</string>
+    <string name="saf_error_uri">לא ניתן לקבל את מזהה ה-SAF</string>
     <string name="saf_write_failed">כתיבת הקובץ נכשלה: ‎%s</string>
     <string name="saf_delete_failed">מחיקת הקובץ נכשל: %s</string>
     <string name="settings_title">הגדרות</string>
@@ -573,9 +573,9 @@
     <string name="notification_title">הודעה</string>
     <string name="notification_summary">התאם אישית את סגנון ההודעות.</string>
     <string name="advanced_title">מתקדם</string>
-    <string name="advanced_summary">In-app language and other settings for advanced users.</string>
-    <string name="update_title">Update</string>
-    <string name="update_summary">Settings for app updates.</string>
+    <string name="advanced_summary">הגדרות שפה ואחרות באפליקציה למשתמשים מתקדמים.</string>
+    <string name="update_title">עדכן</string>
+    <string name="update_summary">הגדרות לעדכוני האפליקציה.</string>
     <string name="about_title">אודות</string>
     <string name="about_summary">Booming Music %s, touch for more info.</string>
     <!-- Preference headers -->
@@ -586,7 +586,7 @@
     <string name="exclusion_header">החרגות</string>
     <string name="controls_header">פקדים</string>
     <string name="replaygain_header">ReplayGain</string>
-    <string name="headphones_header">Headphones</string>
+    <string name="headphones_header">אוזניות</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Audio focus</string>
     <string name="lockscreen_header">מסך הנעילה</string>
