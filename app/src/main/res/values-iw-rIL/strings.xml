@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">ערבב ניגון</string>
     <string name="action_queue_next">הבא בתור</string>
     <string name="shuffle_all_label">ערבב הכל</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="advanced_shuffle_label">ערבוב מתקדם</string>
+    <string name="shuffle_button_tip">הקש להערבוב רגיל. לחיצה ארוכה תפתח אפשרויות מתקדמות.</string>
     <string name="action_play_pause">נגן/השהה</string>
     <string name="action_pause">השהה</string>
     <string name="action_next">הבא</string>
@@ -68,7 +68,7 @@
     <string name="new_playlist_title">רשימת השמעה חדשה</string>
     <string name="add_playlist_title">הוסף לרשימת ההשמעה</string>
     <string name="rename_playlist_title">שנה שם לרשימת ההשמעה</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">ערוך רשימת השמעה</string>
     <string name="action_delete">מחיקת רשימת השמעה</string>
     <string name="action_export_playlist">ייצוא לקובץ</string>
     <string name="action_clear_history">ניקוי היסטוריה</string>
@@ -77,7 +77,7 @@
     <string name="create_a_playlist_with_one_song">תיווצר רשימת השמעה ושיר אחד יתווסף אליה.</string>
     <string name="create_a_playlist_with_x_songs">תיווצר רשימת השמעה ו-%d שירים יתווספו אוטומטית.</string>
     <string name="playlist_name_empty">שם רשימת ההשמעה</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">תיאור רשימת השמעה (לא חובה)</string>
     <string name="saved_playlist_x">רשימת ההשמעה %s נשמרה.</string>
     <string name="playlist_updated">Playlist updated.</string>
     <string name="failed_to_save_playlist">שמירת רשימת ההשמעה נכשלה.</string>
