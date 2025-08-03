@@ -149,8 +149,10 @@ class PlayerAlbumCoverFragment : Fragment(R.layout.fragment_player_album_cover),
                         val itemCount = pager.adapter?.count ?: 0
                         val lastIndex = (itemCount - 1).coerceAtLeast(0)
                         val target = playerViewModel.currentPosition.coerceIn(0, lastIndex)
-                        if (itemCount > 0 && pager.currentItem != target) {
-                            pager.setCurrentItem(target, false)
+                        if (itemCount > 0) {
+                            if (pager.currentItem != target) {
+                                pager.setCurrentItem(target, false)
+                            }
                             onPageSelected(target)
                         }
                     }
