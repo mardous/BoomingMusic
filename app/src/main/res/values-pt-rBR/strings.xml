@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">Reprodução aleatória</string>
     <string name="action_queue_next">Fila seguinte</string>
     <string name="shuffle_all_label">Misturar tudo</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="advanced_shuffle_label">Mistura avançada</string>
+    <string name="shuffle_button_tip">Toque para modo aleatório normal. Mantenha pressionado para opções avançadas.</string>
     <string name="action_play_pause">Reproduzir/Pausar</string>
     <string name="action_pause">Pausar</string>
     <string name="action_next">Próximo</string>
