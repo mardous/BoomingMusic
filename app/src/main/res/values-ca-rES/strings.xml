@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">Reproducció aleatòria</string>
     <string name="action_queue_next">Afegeix a la cua</string>
     <string name="shuffle_all_label">Barreja-ho tot</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="advanced_shuffle_label">Barreja avançada</string>
+    <string name="shuffle_button_tip">Clica per fer una barreja normal. Mantén premut per accedir a opcions avançades.</string>
     <string name="action_play_pause">Reprodueix/Pausa</string>
     <string name="action_pause">Pausa</string>
     <string name="action_next">Següent</string>
