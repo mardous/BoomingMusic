@@ -397,6 +397,11 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
 
         // bump play count before anything else
         bumpPlayCount()
+
+        // Always advance queue and prepare next, regardless of how track ended
+        queueManager.setPositionToNext()
+        prepareNext()
+
         // if there is a timer finished, don't continue
         if ((queueManager.repeatMode == Playback.RepeatMode.Off && isLastTrack) || checkShouldStop(false)) {
             pause()
@@ -404,9 +409,8 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             if (checkShouldStop(true)) {
                 quit()
             }
-        } else {
-            playNextSong(false)
         }
+
         releaseWakeLock()
     }
 
