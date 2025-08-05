@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Zamíchat přehrávání</string>
     <string name="action_queue_next">Další fronta</string>
     <string name="shuffle_all_label">Zamíchat vše</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Přehrát/pozastavit</string>
     <string name="action_pause">Pozastavit</string>
     <string name="action_next">Další</string>
@@ -818,9 +820,12 @@
     <string name="more_info_action">Další informace.</string>
     <string name="download_action">Stáhnout</string>
     <string name="downloading_update">Stahování Booming aktualizace hudby.</string>
-    <string name="uncaught_error_title">Došlo k neočekávané chybě</string>
-    <string name="uncaught_error_message">Omlouváme se za nepříjemnosti. Můžete zkontrolovat zprávu o chybách a restartovat aplikaci.</string>
+    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
+    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
+        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">Restartovat aplikaci</string>
-    <string name="uncaught_error_view_report">Zobrazit report</string>
-    <string name="uncaught_error_send">Poslat</string>
+    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_send">Send report</string>
 </resources>

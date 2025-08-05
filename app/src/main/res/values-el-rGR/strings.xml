@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Τυχαία αναπαραγωγή</string>
     <string name="action_queue_next">Επόμενη ουρά</string>
     <string name="shuffle_all_label">Τυχαία αναπαραγωγή όλων</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Αναπαραγωγή/Παύση</string>
     <string name="action_pause">Παύση</string>
     <string name="action_next">Επόμενο</string>
@@ -802,9 +804,12 @@
     <string name="more_info_action">Περισσότερες πληροφορίες.</string>
     <string name="download_action">Λήψη</string>
     <string name="downloading_update">Λήψη ενημέρωσης Booming Music</string>
-    <string name="uncaught_error_title">Παρουσιάστηκε ένα μη αναμενόμενο σφάλμα</string>
-    <string name="uncaught_error_message">Συγγνώμη για την ταλαιπωρία. Μπορείτε να αναθεωρήσετε την αναφορά σφάλματος και να επανεκκινήσετε την εφαρμογή.</string>
+    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
+    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
+        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">Επανεκκίνηση εφαρμογής</string>
-    <string name="uncaught_error_view_report">Προβολή αναφοράς</string>
-    <string name="uncaught_error_send">Αποστολή</string>
+    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_send">Send report</string>
 </resources>

@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">फेरबदल खेल</string>
     <string name="action_queue_next">अगली कतार</string>
     <string name="shuffle_all_label">सभी को फेरबदल करें</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">चलाएं/रोकें</string>
     <string name="action_pause">रोकें</string>
     <string name="action_next">अगला</string>
@@ -800,9 +802,12 @@
     <string name="more_info_action">अधिक जानकारी</string>
     <string name="download_action">डाउनलोड करें</string>
     <string name="downloading_update">बूमिंग संगीत अपडेट डाउनलोड हो रहा है।</string>
-    <string name="uncaught_error_title">एक अनपेक्षित त्रुटि हुई है</string>
-    <string name="uncaught_error_message">असुविधा के लिए क्षमा करें। आप त्रुटि रिपोर्ट की समीक्षा कर सकते हैं और ऐप को फिर से शुरू कर सकते हैं।</string>
+    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
+    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
+        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">ऐप को पुनः प्रारंभ करें</string>
-    <string name="uncaught_error_view_report">रिपोर्ट देखें</string>
-    <string name="uncaught_error_send">भेजें</string>
+    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_send">Send report</string>
 </resources>

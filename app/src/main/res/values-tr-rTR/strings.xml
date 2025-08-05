@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Karıştırarak oynat</string>
     <string name="action_queue_next">Sıradakini çal</string>
     <string name="shuffle_all_label">Tümünü karıştır</string>
+    <string name="advanced_shuffle_label">Gelişmiş karıştırma</string>
+    <string name="shuffle_button_tip">Normal karıştırma için dokunun. Gelişmiş seçenekler için uzun basın.</string>
     <string name="action_play_pause">Oynat/Duraklat</string>
     <string name="action_pause">Duraklat</string>
     <string name="action_next">Sonraki</string>
@@ -802,9 +804,12 @@
     <string name="more_info_action">Daha fazla bilgi.</string>
     <string name="download_action">İndir</string>
     <string name="downloading_update">Booming Music güncellemesi indiriliyor.</string>
-    <string name="uncaught_error_title">Beklenmedik bir hata oluştu</string>
-    <string name="uncaught_error_message">Verdiğimiz rahatsızlıktan dolayı özür dileriz. Hata raporunu inceleyebilir ve uygulamayı yeniden başlatabilirsiniz.</string>
+    <string name="uncaught_error_title">Hoppala! Böyle olmaması lazımdı!</string>
+    <string name="uncaught_error_message">Bir şeyler yanlış gitti ve uygulama çöktü.
+        Hata raporunu bize Telegram grubumuza veya e-posta ile gönderirseniz çok yardımcı olur.</string>
+    <string name="uncaught_error_report">Hata raporu</string>
+    <string name="uncaught_error_report_copied">Hata raporu panoya kopyalandı.</string>
     <string name="uncaught_error_restart_app">Uygulamayı yeniden başlat</string>
-    <string name="uncaught_error_view_report">Raporu görüntüle</string>
-    <string name="uncaught_error_send">Gönder</string>
+    <string name="uncaught_error_github">Github\'da bir konu aç</string>
+    <string name="uncaught_error_send">Rapor gönder</string>
 </resources>

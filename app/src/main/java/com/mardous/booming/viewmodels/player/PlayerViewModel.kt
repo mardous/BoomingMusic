@@ -29,6 +29,8 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.random.Random
 
 @OptIn(FlowPreview::class)
@@ -42,6 +44,9 @@ class PlayerViewModel(
     private val transportControls get() = serviceConnection.transportControls
     val mediaEvent = serviceConnection.mediaSessionEvent
     val isConnected = serviceConnection.isConnected
+
+    // Prevent concurrent shuffle actions
+    private val shuffleMutex = Mutex()
 
     val progressFlow = playbackManager.progressFlow.map { progress ->
         PlayerProgress(progress, playbackManager.duration().toLong())
@@ -278,7 +283,9 @@ class PlayerViewModel(
     }
 
     fun shuffleQueue() = viewModelScope.launch(IO) {
-        queueManager.shuffleQueue()
+        shuffleMutex.withLock {
+            queueManager.shuffleQueue()
+        }
     }
 
     fun clearQueue() = viewModelScope.launch(IO) {

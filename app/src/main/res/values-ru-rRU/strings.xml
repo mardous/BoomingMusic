@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Перемешать воспроизведение</string>
     <string name="action_queue_next">Следующая очередь</string>
     <string name="shuffle_all_label">Перемешать все</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Играть/Пауза</string>
     <string name="action_pause">Пауза</string>
     <string name="action_next">Следующий</string>
@@ -818,9 +820,12 @@
     <string name="more_info_action">Больше информации.</string>
     <string name="download_action">Скачать</string>
     <string name="downloading_update">Загрузка обновления Booming Music.</string>
-    <string name="uncaught_error_title">Произошла непредвиденная ошибка</string>
-    <string name="uncaught_error_message">Извините за неудобства. Вы можете просмотреть отчет об ошибке и перезапустить приложение.</string>
+    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
+    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
+        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">Перезапустить приложение</string>
-    <string name="uncaught_error_view_report">Просмотр отчета</string>
-    <string name="uncaught_error_send">Отправить</string>
+    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_send">Send report</string>
 </resources>

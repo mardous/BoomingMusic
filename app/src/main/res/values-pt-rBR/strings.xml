@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Reprodução aleatória</string>
     <string name="action_queue_next">Fila seguinte</string>
     <string name="shuffle_all_label">Misturar tudo</string>
+    <string name="advanced_shuffle_label">Mistura avançada</string>
+    <string name="shuffle_button_tip">Toque para modo aleatório normal. Mantenha pressionado para opções avançadas.</string>
     <string name="action_play_pause">Reproduzir/Pausar</string>
     <string name="action_pause">Pausar</string>
     <string name="action_next">Próximo</string>
@@ -801,9 +803,12 @@
     <string name="more_info_action">Mais informações.</string>
     <string name="download_action">Baixar</string>
     <string name="downloading_update">Baixando atualização do Booming Music.</string>
-    <string name="uncaught_error_title">Ocorreu um erro inesperado</string>
-    <string name="uncaught_error_message">Pedimos desculpas pelo inconveniente. Você pode revisar o relatório de erro e reiniciar o aplicativo.</string>
+    <string name="uncaught_error_title">Ops! Algo inesperado aconteceu!</string>
+    <string name="uncaught_error_message">Algo deu errado e o aplicativo foi encerrado inesperadamente. 
+Enviar o relatório de erro por Telegram ou e-mail nos ajudaria a resolver o problema.</string>
+    <string name="uncaught_error_report">Relatório de erro</string>
+    <string name="uncaught_error_report_copied">Relatório de erro copiado para a área de transferência.</string>
     <string name="uncaught_error_restart_app">Reiniciar aplicativo</string>
-    <string name="uncaught_error_view_report">Ver relatório</string>
-    <string name="uncaught_error_send">Enviar</string>
+    <string name="uncaught_error_github">Reportar problema no GitHub</string>
+    <string name="uncaught_error_send">Enviar relatório</string>
 </resources>

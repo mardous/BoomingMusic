@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">随机播放</string>
     <string name="action_queue_next">下一个队列</string>
     <string name="shuffle_all_label">全部随机</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">播放/暂停</string>
     <string name="action_pause">暂停</string>
     <string name="action_next">下一个</string>
@@ -794,9 +796,12 @@
     <string name="more_info_action">更多信息。</string>
     <string name="download_action">下载</string>
     <string name="downloading_update">正在下载 Booming 音乐更新。</string>
-    <string name="uncaught_error_title">发生意外错误</string>
-    <string name="uncaught_error_message">抱歉给您带来了不便。您可以查看错误报告并重启应用程序。</string>
+    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
+    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
+        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">重启应用</string>
-    <string name="uncaught_error_view_report">查看报告</string>
-    <string name="uncaught_error_send">发送</string>
+    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_send">Send report</string>
 </resources>

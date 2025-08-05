@@ -5,39 +5,41 @@
     <string name="action_shuffle_play">Reprodução aleatória</string>
     <string name="action_queue_next">Fila seguinte</string>
     <string name="shuffle_all_label">Misturar tudo</string>
+    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Reproduzir/Pausar</string>
     <string name="action_pause">Suspender</string>
     <string name="action_next">Próximo</string>
     <string name="action_previous">Anterior</string>
-    <string name="action_cancel">cancelar</string>
+    <string name="action_cancel">Cancelar</string>
     <string name="action_cycle_repeat">Alternar modo de repetição</string>
-    <string name="action_toggle_shuffle">Toggle shuffle mode</string>
-    <string name="reset_action">Reset</string>
-    <string name="action_more">MAIS</string>
+    <string name="action_toggle_shuffle">Ligar/desligar aleatório</string>
+    <string name="reset_action">Restaurar</string>
+    <string name="action_more">Mais</string>
     <string name="import_action">Importação</string>
     <string name="create_action">Crio</string>
     <string name="search_label">Pesquisa</string>
-    <string name="search_hint">Pesquisar sua biblioteca…</string>
+    <string name="search_hint">Pesquisar a sua biblioteca…</string>
     <string name="action_voice_search">Pesquisa por voz</string>
-    <string name="speech_not_supported">Seu dispositivo não suporta entrada de fala</string>
+    <string name="speech_not_supported">O seu dispositivo não suporta entrada de fala</string>
     <string name="search_artist_x_label">Pesquisar artista: %s</string>
     <string name="search_album_x_label">Pesquisar álbum: %s</string>
     <string name="search_list_x_label">Lista de pesquisa: %s</string>
     <string name="search_from_x_label">Pesquisa de \"%s\"</string>
     <string name="search_year_x_label">Pesquisar ano: %s</string>
-    <string name="search_in_folder_x">Search in folder: %s</string>
+    <string name="search_in_folder_x">Pesquisar na pasta: %s</string>
     <string name="search_last_added">Buscar música mais recente</string>
     <string name="shuffle_mode_album">Álbum aleatório</string>
     <string name="shuffle_mode_artist">Artista aleatório</string>
     <string name="action_share">Compartilhar</string>
     <string name="action_save">Guardar</string>
-    <string name="what_do_you_want_to_share">O que você quer compartilhar?</string>
+    <string name="what_do_you_want_to_share">O que quer compartilhar?</string>
     <string name="the_audio_file">O arquivo de áudio</string>
-    <string name="i_am_listening">Estou ouvindo…</string>
-    <string name="currently_listening_to_x_by_x">Estou escutando %1$s por %2$s</string>
+    <string name="i_am_listening">Estou a ouvir…</string>
+    <string name="currently_listening_to_x_by_x">Estou a escutar %1$s por %2$s</string>
     <string name="share_to_stories">Compartilhar para histórias</string>
     <string name="could_not_create_the_story">Não foi possível criar a história.</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">Voltar</string>
     <string name="rename_action">Renomear</string>
     <string name="add_action">Adicionar</string>
     <string name="delete_action">excluir</string>
@@ -47,9 +49,9 @@
     <string name="continue_action">Continuar</string>
     <string name="select_all_title">Selecionar todos</string>
     <string name="x_selected">%d selecionado</string>
-    <string name="preparing_playback_title">Preparing</string>
+    <string name="preparing_playback_title">Preparando</string>
     <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="playback_stopped_title">Reprodução interrompida</string>
     <string name="playing_notification_description">A notificação de reprodução fornece ações para reprodução/pausa, etc.</string>
     <string name="playing_notification_name">Notificação de reprodução</string>
     <string name="action_scan_directory">Escanear diretório</string>
@@ -66,7 +68,7 @@
     <string name="new_playlist_title">Nova playlist</string>
     <string name="add_playlist_title">Adicionar à playlist</string>
     <string name="rename_playlist_title">Renomear playlist</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Editar seleção musical</string>
     <string name="action_delete">Excluir playlist</string>
     <string name="action_export_playlist">Exportar para arquivo</string>
     <string name="action_clear_history">Limpar Histórico</string>
@@ -75,12 +77,12 @@
     <string name="create_a_playlist_with_one_song">Uma playlist será criada e uma música será adicionada.</string>
     <string name="create_a_playlist_with_x_songs">Uma playlist será criada e músicas de %d serão adicionadas automaticamente.</string>
     <string name="playlist_name_empty">Nome da playlist</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Descrição da lista de reprodução (opcional)</string>
     <string name="saved_playlist_x">Playlist salva %s.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Lista de reprodução atualizada.</string>
     <string name="failed_to_save_playlist">Falha ao salvar a playlist.</string>
     <string name="saved_x_playlists">Salvo %1$d playlists.</string>
-    <string name="saved_x_playlists_failed_to_save_x">Saved %1$d playlists, failed to save %2$d.</string>
+    <string name="saved_x_playlists_failed_to_save_x">Listas de reprodução %1$d salvas, falha ao salvar %2$d.</string>
     <string name="delete_playlist_title">Excluir playlist</string>
     <string name="delete_playlists_title">Excluir playlists</string>
     <string name="delete_playlist_x"><![CDATA[Apagar playlist <b>%s</b>?]]></string>
@@ -90,7 +92,7 @@
     <string name="inserted_one_song_into_playlist_x">Uma música foi inserida na playlist %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Inserido músicas %1$d na playlist %2$s.</string>
     <string name="playlist_exists">A playlist %s já existe.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">Seleção musical %s criada com sucesso.</string>
     <string name="remove_song_from_playlist_title">Remover música da playlist</string>
     <string name="remove_songs_from_playlist_title">Remover músicas da playlist</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Remover a música <b>%1$s</b> da playlist?]]></string>
@@ -122,7 +124,7 @@
     <string name="audio_focus_denied">Foco de áudio negado.</string>
     <string name="no_audio_ID">Áudio de ID ruim.</string>
     <string name="unplayable_file">Não foi possível reproduzir esta música.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
+    <string name="unplayable_file_code_x">Não foi possível reproduzir esta música (código: %d).</string>
     <string name="permission_external_storage_title">Acesso ao armazenamento</string>
     <string name="permission_external_storage_description">O aplicativo precisa de permissão para acessar seu dispositivo de armazenamento para reproduzir músicas</string>
     <string name="permission_external_storage_denied">Você deve conceder permissão para acessar o armazenamento externo.</string>
@@ -142,7 +144,7 @@
     <string name="hello_there">Olá!</string>
     <string name="welcome_to_x">Bem-vindo à %s</string>
     <string name="get_started">Comece Agora</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> is not listed in the media store.]]></string>
+    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> não está listado na loja de mídia.]]></string>
     <string name="some_files_are_not_listed_in_the_media_store">Alguns arquivos não estão listados no armazenamento de mídia.</string>
     <string name="nothing_to_scan">Nada para verificar</string>
     <string name="select_storage_title">Selecionar armazenamento</string>
@@ -165,7 +167,7 @@
     <string name="toggle_favorite">Adicionar aos Favoritos</string>
     <string name="action_add_to_playlist">Adicionar à playlist</string>
     <string name="action_remove_from_playlist">Remover da playlist</string>
-    <string name="action_add_to_playing_queue">Add to queue</string>
+    <string name="action_add_to_playing_queue">Adicionar à fila</string>
     <string name="action_remove_from_playing_queue">Remover da fila de reprodução</string>
     <string name="x_removed_from_playing_queue">%s removido</string>
     <string name="put_after_current_track">Colocar faixa atual</string>
@@ -217,9 +219,9 @@
     <string name="song_stat_one_time_label">jogou uma vez em %s</string>
     <string name="song_stat_label">jogado %1$d vezes, último estava em %2$s</string>
     <string name="horizontal_albums">Álbuns horizontais</string>
-    <string name="ignore_singles">Ignore singles</string>
-    <string name="compact_song_view">Compact song view</string>
-    <string name="show_total_duration">Show total duration</string>
+    <string name="ignore_singles">Ignorar singles</string>
+    <string name="compact_song_view">Visualização compacta de música</string>
+    <string name="show_total_duration">Mostrar duração total</string>
     <string name="action_view_type">Tipo de exibição</string>
     <string name="view_type_normal">normal</string>
     <string name="view_type_card">Carta</string>
@@ -235,7 +237,7 @@
     <string name="sort_order_year">ano</string>
     <string name="sort_order_duration">Duração</string>
     <string name="sort_order_date_added">Data de inclusão</string>
-    <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_date_modified">Data de modificação</string>
     <string name="sort_order_number_of_songs">Número de músicas</string>
     <string name="sort_order_number_of_albums">Número de álbuns</string>
     <string name="sort_order_last_played_date">Última data de reprodução</string>
@@ -254,9 +256,9 @@
     <string name="new_start_directory">Nova pasta inicial: %s</string>
     <string name="action_scan">Escanear</string>
     <string name="scan_media">Varredura de mídia</string>
-    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
-    <string name="scan_media_positive">Scan anyway</string>
-    <string name="scan_finished">Scan finished.</string>
+    <string name="scan_media_message">Geralmente, o Android encontra automaticamente e indexa arquivos de mídia no seu dispositivo, então a verificação manual geralmente é desnecessária.</string>
+    <string name="scan_media_positive">Verificar mesmo assim</string>
+    <string name="scan_finished">Verificação concluída.</string>
     <string name="album_or_artist_empty">O título ou artista está vazio.</string>
     <string name="update_image">Atualizar imagem</string>
     <string name="restore_default">Restaurar padrão</string>
@@ -273,11 +275,10 @@
     <string name="save_artwork_success">Capa do álbum salva</string>
     <string name="save_artwork_view_action">Visualizar</string>
     <string name="save_artwork_copyright_info_title">Aviso de direitos autorais</string>
-    <string name="save_artwork_copyright_info_message">Some album covers (or all of them) might be protected by Copyright laws. You can not use such images for commercial or advertisement purposes.
-        \n\nOnly you have total responsibility over your usage of saved album covers.</string>
+    <string name="save_artwork_copyright_info_message">Algumas capas de álbuns (ou todas) podem ser protegidas por leis de direitos autorais. Não é possível usar tais imagens para fins comerciais e publicitários. \n\n Somente você tem total responsabilidade sobre o uso das capas de álbuns salvas.</string>
     <string name="yes">sim</string>
     <string name="no">Não</string>
-    <string name="keyboard">Keyboard</string>
+    <string name="keyboard">Teclado</string>
     <string name="label_file_path">Caminho do arquivo</string>
     <string name="size">Tamanho do arquivo</string>
     <string name="label_file_format">Formato</string>
@@ -357,7 +358,7 @@
         <item quantity="other">álbuns</item>
     </plurals>
     <plurals name="x_songs">
-        <item quantity="one">%d song</item>
+        <item quantity="one">%d música</item>
         <item quantity="other">%d músicas</item>
     </plurals>
     <plurals name="x_albums">
@@ -373,7 +374,7 @@
         <item quantity="other">%d times</item>
     </plurals>
     <plurals name="x_plays">
-        <item quantity="one">%d play</item>
+        <item quantity="one">%d reprodução</item>
         <item quantity="other">%d reproduções</item>
     </plurals>
     <plurals name="x_items">
@@ -390,19 +391,19 @@
     <string name="no_suggestions">Não há sugestões para você</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pure random</string>
-    <string name="shuffle_mode_most_played">Most played</string>
-    <string name="shuffle_mode_most_played_artists">Most played artists</string>
-    <string name="shuffle_mode_most_played_albums">Most played albums</string>
-    <string name="shuffle_mode_favorite_songs">Favorites first</string>
-    <string name="shuffle_mode_forgotten_songs">Forgotten songs</string>
-    <string name="shuffle_mode_recently_added">Recently added</string>
-    <string name="shuffle_mode_combined">Smart mix</string>
+    <string name="shuffle_mode_most_played">Mais reproduzidas</string>
+    <string name="shuffle_mode_most_played_artists">Artistas mais ouvidos</string>
+    <string name="shuffle_mode_most_played_albums">Álbuns mais reproduzidos</string>
+    <string name="shuffle_mode_favorite_songs">Favoritos primeiro</string>
+    <string name="shuffle_mode_forgotten_songs">Músicas esquecidas</string>
+    <string name="shuffle_mode_recently_added">Adicionado recentemente</string>
+    <string name="shuffle_mode_combined">Mix inteligente</string>
     <string name="shuffle_mode_pure_random_description">Completely random shuffle.</string>
     <string name="shuffle_mode_most_played_description">Favors your most played songs.</string>
     <string name="shuffle_mode_most_played_artists_description">Favors songs from your top artists.</string>
     <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
-    <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
-    <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
+    <string name="shuffle_mode_favorite_songs_description">Dar prioridade às músicas favoritas.</string>
+    <string name="shuffle_mode_forgotten_songs_description">Prioriza músicas que não foram tocadas há algum tempo.</string>
     <string name="shuffle_mode_recently_added_description">Favors songs recently added to your library.</string>
     <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
     <!-- Equalizer -->
@@ -468,7 +469,7 @@
     <string name="synced_lyrics">Sincronizado</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Baixado</string>
-    <string name="external_file_lyrics">External file</string>
+    <string name="external_file_lyrics">Arquivo externo</string>
     <string name="action_import_synchronized_lyrics">Importar letras sincronizadas</string>
     <string name="action_share_synchronized_lyrics">Compartilhar letras sincronizadas</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Deseja importar letras LRC sincronizadas para <b>%s</b>?]]></string>
@@ -485,8 +486,8 @@
     <string name="no_synced_lyrics_found">Nenhuma letra sincronizada encontrada</string>
     <string name="lyrics_were_updated_successfully">A letra foi atualizada com sucesso.</string>
     <string name="failed_to_update_lyrics">Falha ao atualizar a letra.</string>
-    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
+    <string name="there_are_no_changes_to_save">Não há modificações a serem salvas.</string>
+    <string name="lyrics_source_external_file">A letra vem de um arquivo externo. Não é possível editar este arquivo diretamente do Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Timer de desativação</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar o temporizador atual</string>
@@ -511,10 +512,10 @@
     <string name="licenses">Licenças</string>
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
-    <string name="translators_title">Translators</string>
-    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="contributors">Colaboradores</string>
+    <string name="acknowledgments_title">Reconhecimento</string>
+    <string name="translators_title">Tradutores</string>
+    <string name="translators_summary">Obrigado a todos que fazem Booming Music disponível em vários idiomas.</string>
     <string name="telegram_chat">Bate-papo do Telegram</string>
     <string name="telegram_chat_summary">Junte-se ao chat no Telegram e receba informações sobre novos lançamentos e notícias.</string>
     <string name="view_profile_on_github">Ver perfil no GitHub</string>
@@ -536,7 +537,7 @@
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Você será encaminhado para o site de registro de erros.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Acesso ao armazenamento necessário</string>
-    <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
+    <string name="saf_access_required_message">O Booming Music requer permissão para acessar esses arquivos. Por favor, selecione a pasta onde os seus arquivos de música são armazenados.</string>
     <string name="saf_show_files_button">Mostrar arquivos</string>
     <string name="saf_error_uri">Não é possível obter URI SAF</string>
     <string name="saf_write_failed">Falha ao escrever arquivo: %s</string>
@@ -587,7 +588,7 @@
     <string name="remember_last_page_summary">Ir para a última página aberta ao iniciar.</string>
     <string name="start_page_title">Página inicial</string>
     <string name="tab_mode_title">Modo títulos da guia</string>
-    <string name="hold_tab_to_search_title">Hold tab to Search</string>
+    <string name="hold_tab_to_search_title"></string>
     <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
@@ -597,19 +598,19 @@
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
     <string name="extra_controls_title">Controles adicionais</string>
     <string name="extra_controls_summary">Adicionar controles extras para mini jogador</string>
-    <string name="adaptive_controls_title">Adaptive controls</string>
+    <string name="adaptive_controls_title">Controles adaptativos</string>
     <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
     <string name="swipe_to_dismiss_title">Deslize para dispensar</string>
     <string name="swipe_to_dismiss_summary">Deslize para baixo o mini player para parar a reprodução e limpar as filas de reprodução.</string>
     <string name="circle_button_title">Botão circular play</string>
     <string name="swipe_album_cover_title">Deslize capa do álbum</string>
     <string name="swipe_album_cover_summary">Deslize para a esquerda e direita na capa do álbum para pular entre as músicas.</string>
-    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
+    <string name="single_tap_on_album_cover_title">Toque único na capa</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
     <string name="long_press_on_album_cover_title">Toque longo na capa</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
-    <string name="carousel_effect_title">Carousel effect</string>
+    <string name="carousel_effect_title">Efeito carrossel</string>
     <string name="album_cover_effect_title">Efeito da capa do álbum</string>
     <string name="lyrics_on_album_cover_title">Letra na capa</string>
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música ao invés da capa quando ela estiver disponível.</string>
@@ -627,12 +628,12 @@
     <string name="prefer_album_artist_name_title">"Preferir nome do álbum-artista"</string>
     <string name="prefer_album_artist_name_summary">Mostra o nome do Artista Album-artista, em vez do nome do Artista da Música (se disponível).</string>
     <!-- Playback preferences -->
-    <string name="play_on_startup_title">Play on startup</string>
+    <string name="play_on_startup_title">Reproduzir ao iniciar</string>
     <string name="gapless_playback_title">Reprodução ininterrupta</string>
     <string name="gapless_playback_summary">Transição suave entre músicas. Pode causar problemas de reprodução em alguns dispositivos.</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
+    <string name="crossfade_title">Transição (experimental)</string>
+    <string name="crossfade_summary">Segundos que leva para transição entre músicas (defina 0 para desativar).</string>
+    <string name="no_crossfade_on_albums_title">Sem transição entre álbuns</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
@@ -640,8 +641,8 @@
     <string name="replaygain_preamp_title">Nível de antecipação</string>
     <string name="replaygain_preamp_summary">Definir o nível de volume quando o ReplayGain estiver habilitado.</string>
     <string name="queue_next_mode_title">Modo \"Próxima Fila\"</string>
-    <string name="search_auto_queue_title">Enqueue all search results</string>
-    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
+    <string name="search_auto_queue_title">Enfileirar todos os resultados da busca</string>
+    <string name="search_auto_queue_summary">Ao reproduzir uma música da tela de busca, todos os outros resultados também serão colocados na fila.</string>
     <string name="remember_shuffle_mode_title">Lembrar modo aleatório</string>
     <string name="remember_shuffle_mode_summary">Modo aleatório permanecerá ao selecionar uma nova lista de músicas.</string>
     <string name="album_shuffle_mode_title">Modo aleatório do álbum</string>
@@ -679,8 +680,8 @@
     <!-- Library preferences -->
     <string name="trash_music_title">Enviar para lixeira</string>
     <string name="trash_music_summary">Enviar arquivos excluídos para a lixeira.</string>
-    <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
-    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
+    <string name="recursive_folder_actions_title">Ações que afetam subpastas</string>
+    <string name="recursive_folder_actions_summary">Selecione quais ações devem também se aplicar às subpastas quando executadas numa pasta.</string>
     <string name="enable_history_title">Habilitar Histórico</string>
     <string name="enable_history_summary">Permite que o aplicativo grave as músicas que você estava ouvindo. Se você desativar, todo o histórico será apagado.</string>
     <string name="history_interval_title">Intervalo de histórico</string>
@@ -730,11 +731,11 @@
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">normal</string>
-    <string name="corner_size_none">None</string>
-    <string name="corner_size_small">Small</string>
-    <string name="corner_size_medium">Medium</string>
-    <string name="corner_size_large">Large</string>
-    <string name="corner_size_custom">Custom</string>
+    <string name="corner_size_none">Nenhum</string>
+    <string name="corner_size_small">Pequeno</string>
+    <string name="corner_size_medium">Médio</string>
+    <string name="corner_size_large">Grande</string>
+    <string name="corner_size_custom">Personalizado</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Profundidade</string>
     <string name="hinge">Hinge</string>
@@ -767,19 +768,19 @@
     <string name="image_size_large">Grande (mais lento)</string>
     <string name="image_size_medium">Médio (padrão, recomendado)</string>
     <string name="image_size_small">Pequeno (mais rápido e de baixa qualidade)</string>
-    <string name="play_on_startup_mode_never">Never play on startup</string>
-    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
-    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
+    <string name="play_on_startup_mode_never">Nunca reproduzir ao iniciar</string>
+    <string name="play_on_startup_mode_minimized">Sim, com painel de reprodução minimizado</string>
+    <string name="play_on_startup_mode_expanded">Sim, com painel de reprodução expandido</string>
     <string name="system_default">Padrão do sistema</string>
     <string name="label_never">nunca</string>
     <string name="label_nothing">Nada</string>
     <string name="label_none">Nenhuma</string>
-    <string name="player_color_mode_app_theme_title">App theme</string>
-    <string name="player_color_mode_app_theme_description">Use the app\'s color scheme</string>
-    <string name="player_color_mode_simple_color_title">Simple color</string>
-    <string name="player_color_mode_simple_color_description">Extract the album color and apply it to some controls</string>
-    <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
-    <string name="player_color_mode_vibrant_color_description">Tint background, text, and controls with the album color</string>
+    <string name="player_color_mode_app_theme_title">Tema do aplicativo</string>
+    <string name="player_color_mode_app_theme_description">Use o esquema de cores do aplicativo</string>
+    <string name="player_color_mode_simple_color_title">Cor simples</string>
+    <string name="player_color_mode_simple_color_description">Extrair a cor do álbum e aplicá-la a alguns controles</string>
+    <string name="player_color_mode_vibrant_color_title">Cor vibrante</string>
+    <string name="player_color_mode_vibrant_color_description">Colorir fundo, texto e controles com a cor do álbum</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
@@ -802,9 +803,12 @@
     <string name="more_info_action">Mais informações.</string>
     <string name="download_action">BAIXAR</string>
     <string name="downloading_update">Baixando atualização do Booming.</string>
-    <string name="uncaught_error_title">Ocorreu um erro inesperado</string>
-    <string name="uncaught_error_message">Lamentamos o inconveniente. Você pode rever o relatório de erros e reiniciar o aplicativo.</string>
+    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
+    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
+        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">Reiniciar aplicativo</string>
-    <string name="uncaught_error_view_report">Ver relatório</string>
-    <string name="uncaught_error_send">Mandar</string>
+    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_send">Send report</string>
 </resources>
