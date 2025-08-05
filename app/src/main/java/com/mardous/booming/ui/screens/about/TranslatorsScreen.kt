@@ -27,20 +27,23 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.mardous.booming.R
-import com.mardous.booming.model.about.Contribution
+import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.ui.components.lists.ContributionListItem
 import com.mardous.booming.viewmodels.about.AboutViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TranslatorsScreen(
-    viewModel: AboutViewModel,
-    onBackButtonClick: () -> Unit,
-    onTranslatorClick: (Contribution) -> Unit
+    viewModel: AboutViewModel = koinViewModel(),
+    onBackButtonClick: () -> Unit
 ) {
+    val context = LocalContext.current
+
     val translators by viewModel.translators.collectAsState()
     LaunchedEffect(Unit) {
         viewModel.loadTranslators()
@@ -72,7 +75,9 @@ fun TranslatorsScreen(
                 ContributionListItem(
                     contribution,
                     onClick = {
-                        onTranslatorClick(contribution)
+                        contribution.url?.let {
+                            context.openUrl(it)
+                        }
                     }
                 )
             }

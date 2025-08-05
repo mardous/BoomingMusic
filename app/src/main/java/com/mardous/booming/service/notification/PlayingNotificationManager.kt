@@ -65,16 +65,14 @@ class PlayingNotificationManager(
         isFavorite: Boolean? = null
     ): Notification? {
         if (!queueManager.isEmpty && song != Song.emptySong) {
-            if (isFavorite != null) {
-                playingNotification?.updateFavorite(isFavorite)
-            }
-            playingNotification?.setPlaying(isPlaying)
             playingNotification?.updateMetadata(song) {
+                playingNotification?.setPlaying(isPlaying)
+                if (isFavorite != null) {
+                    playingNotification?.updateFavorite(isFavorite)
+                }
                 notificationManager.notify(NOTIFICATION_ID, playingNotification!!.build())
             }
-            val notification = playingNotification!!.build()
-            notificationManager.notify(NOTIFICATION_ID, notification)
-            return notification
+            return playingNotification!!.build()
         }
         return null
     }

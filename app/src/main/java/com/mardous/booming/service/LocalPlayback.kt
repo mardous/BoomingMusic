@@ -3,10 +3,7 @@ package com.mardous.booming.service
 import android.content.Context
 import android.media.AudioAttributes
 import android.media.MediaPlayer
-import android.media.audiofx.DynamicsProcessing
-import android.os.Build
 import androidx.annotation.FloatRange
-import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import com.mardous.booming.service.playback.Playback
 import kotlin.math.max
@@ -15,8 +12,6 @@ import kotlin.math.pow
 
 abstract class LocalPlayback(val context: Context) : Playback, MediaPlayer.OnErrorListener,
     MediaPlayer.OnCompletionListener {
-
-    private var mDynamicsProcessing: DynamicsProcessing? = null
 
     protected var mCallbacks: Playback.PlaybackCallbacks? = null
         private set
@@ -52,56 +47,21 @@ abstract class LocalPlayback(val context: Context) : Playback, MediaPlayer.OnErr
         mReplayGain = replayGain
     }
 
-    override fun release() {
-        mDynamicsProcessing?.release()
-        mDynamicsProcessing = null
-    }
-
-    protected fun updateVolume(player: MediaPlayer) {
+    protected fun updateVolume() {
         var leftVol = mBalance[0]
         var rightVol = mBalance[1]
 
         if (!mReplayGain.isNaN()) {
-            // setVolume uses a linear scale
-            val rgResult = (10.0f.pow((mReplayGain / 20.0f)))
-            max(0.0f, min(1.0f, rgResult)).let { volume ->
-                leftVol *= volume
-                rightVol *= volume
-            }
+            // Convert dB to linear gain
+            val gain = 10.0f.pow(mReplayGain / 20.0f)
+            val volume = max(0.0f, min(1.0f, gain))
+            leftVol *= volume
+            rightVol *= volume
         }
-
-        /*if (hasPie()) {
-            try {
-                applyReplayGainOnDynamicsProcessing(player)
-                // DynamicsProcessing is in charge of replay gain, revert volume to default values
-                leftVol = mBalance[0]
-                rightVol = mBalance[1]
-            } catch (error: RuntimeException) {
-                // This can happen with:
-                // - UnsupportedOperationException: an external equalizer is in use
-                // - RuntimeException: AudioEffect: set/get parameter error
-                // Fallback to volume modification in this case
-            }
-        }*/
 
         setVolume(leftVol, rightVol)
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.P)
-    protected fun applyReplayGainOnDynamicsProcessing(player: MediaPlayer) {
-        if (mReplayGain.isNaN()) {
-            mDynamicsProcessing?.release()
-            mDynamicsProcessing = null
-        } else {
-            if (mDynamicsProcessing == null) {
-                mDynamicsProcessing = DynamicsProcessing(player.audioSessionId).also {
-                    it.setEnabled(true)
-                }
-            }
-            // setInputGainAllChannelsTo uses a dB scale
-            mDynamicsProcessing?.setInputGainAllChannelsTo(mReplayGain)
-        }
-    }
 
     /**
      * @param player The [MediaPlayer] to use

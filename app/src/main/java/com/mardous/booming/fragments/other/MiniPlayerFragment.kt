@@ -20,8 +20,6 @@ package com.mardous.booming.fragments.other
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.GestureDetector
 import android.view.MotionEvent
@@ -42,10 +40,13 @@ import com.mardous.booming.extensions.resources.show
 import com.mardous.booming.extensions.resources.textColorPrimary
 import com.mardous.booming.extensions.resources.textColorSecondary
 import com.mardous.booming.extensions.resources.toForegroundColorSpan
-import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
 import com.mardous.booming.model.theme.NowPlayingButtonStyle
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.viewmodels.player.PlayerViewModel
+import com.mardous.booming.viewmodels.player.model.PlayerProgress
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.math.abs
 
@@ -79,10 +80,15 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.progressFlow.collect {
-                binding.progressBar.max = it.total.toInt()
-                binding.progressBar.setProgressCompat(it.progress.toInt(), true)
-            }
+            combine(
+                playerViewModel.currentProgressFlow,
+                playerViewModel.totalDurationFlow
+            ) { progress, duration -> PlayerProgress(progress.toLong(), duration.toLong()) }
+                .filter { progress -> progress.mayUpdateUI }
+                .collectLatest {
+                    binding.progressBar.max = it.total.toInt()
+                    binding.progressBar.setProgressCompat(it.progress.toInt(), true)
+                }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.isPlayingFlow.collect { isPlaying ->

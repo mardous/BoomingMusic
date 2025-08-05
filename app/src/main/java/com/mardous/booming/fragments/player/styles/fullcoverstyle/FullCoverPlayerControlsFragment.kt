@@ -37,6 +37,8 @@ import com.mardous.booming.databinding.FragmentFullCoverPlayerPlaybackControlsBi
 import com.mardous.booming.extensions.resources.showBounceAnimation
 import com.mardous.booming.fragments.player.*
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
+import com.mardous.booming.fragments.player.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
+import com.mardous.booming.fragments.player.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
 import com.mardous.booming.model.NowPlayingAction
 import com.mardous.booming.model.Song
 import com.mardous.booming.util.Preferences
@@ -78,12 +80,13 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFullCoverPlayerPlaybackControlsBinding.bind(view)
 
+        binding.title.setOnClickListener(this)
         binding.text.setOnClickListener(this)
         binding.playPauseButton.setOnClickListener(this)
-        binding.nextButton.setOnClickListener(this)
-        binding.previousButton.setOnClickListener(this)
         binding.shuffleButton.setOnClickListener(this)
         binding.repeatButton.setOnClickListener(this)
+        binding.nextButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_NEXT))
+        binding.previousButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_PREVIOUS))
 
         setViewAction(binding.favorite, NowPlayingAction.ToggleFavoriteState)
         playerFragment?.inflateMenuInView(binding.menu)
@@ -100,8 +103,6 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
     override fun onClick(view: View) {
         super.onClick(view)
         when (view) {
-            binding.nextButton -> playerViewModel.playNext()
-            binding.previousButton -> playerViewModel.playPrevious()
             binding.shuffleButton -> playerViewModel.toggleShuffleMode()
             binding.repeatButton -> playerViewModel.cycleRepeatMode()
             binding.playPauseButton -> {

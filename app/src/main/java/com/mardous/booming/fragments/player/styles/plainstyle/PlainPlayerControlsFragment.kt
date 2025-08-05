@@ -30,6 +30,8 @@ import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentPlainPlayerPlaybackControlsBinding
 import com.mardous.booming.fragments.player.*
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
+import com.mardous.booming.fragments.player.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
+import com.mardous.booming.fragments.player.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
 import com.mardous.booming.model.Song
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.views.MusicSlider
@@ -68,10 +70,10 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPlainPlayerPlaybackControlsBinding.bind(view)
         binding.playPauseButton.setOnClickListener(this)
-        binding.nextButton.setOnClickListener(this)
-        binding.previousButton.setOnClickListener(this)
         binding.shuffleButton.setOnClickListener(this)
         binding.repeatButton.setOnClickListener(this)
+        binding.nextButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_NEXT))
+        binding.previousButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_PREVIOUS))
     }
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
@@ -156,8 +158,6 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
     override fun onClick(view: View) {
         super.onClick(view)
         when (view) {
-            binding.nextButton -> playerViewModel.playNext()
-            binding.previousButton -> playerViewModel.playPrevious()
             binding.repeatButton -> playerViewModel.cycleRepeatMode()
             binding.shuffleButton -> playerViewModel.toggleShuffleMode()
             binding.playPauseButton -> playerViewModel.togglePlayPause()

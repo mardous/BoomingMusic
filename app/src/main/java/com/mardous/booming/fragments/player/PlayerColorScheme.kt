@@ -187,7 +187,8 @@ data class PlayerColorScheme(
                 surfaceColor = colorScheme.surface,
                 emphasisColor = colorScheme.primary,
                 primaryTextColor = colorScheme.onSurface,
-                secondaryTextColor = colorScheme.onSurfaceVariant
+                secondaryTextColor = colorScheme.onSurfaceVariant,
+                secondaryControlColor = colorScheme.onSurfaceVariant.withAlpha(0.45f)
             )
         }
 

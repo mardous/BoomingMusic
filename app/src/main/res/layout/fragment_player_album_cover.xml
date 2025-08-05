@@ -14,6 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        android:name="com.mardous.booming.fragments.player.CoverLyricsFragment"/>
+        android:name="com.mardous.booming.fragments.player.cover.CoverLyricsFragment"/>
 
 </FrameLayout>

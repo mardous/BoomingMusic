@@ -248,6 +248,7 @@ dependencies {
 
     implementation(libs.koin.core)
     implementation(libs.koin.android)
+    implementation(libs.koin.compose)
 
     implementation(libs.glide)
     implementation(libs.glide.okhttp3)

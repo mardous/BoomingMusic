@@ -208,14 +208,14 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
     ) {
         super.setBalance(left, right)
         if (!isCrossFading) {
-            getCurrentPlayer()?.let { updateVolume(it) }
+            updateVolume()
         }
     }
 
     override fun setReplayGain(replayGain: Float) {
         super.setReplayGain(replayGain)
         if (!isCrossFading) {
-            getCurrentPlayer()?.let { updateVolume(it) }
+            updateVolume()
         }
     }
 

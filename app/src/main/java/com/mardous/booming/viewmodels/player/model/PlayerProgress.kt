@@ -5,6 +5,9 @@ import com.mardous.booming.extensions.media.durationStr
 
 @Immutable
 class PlayerProgress(val progress: Long, val total: Long) {
+
+    val mayUpdateUI = progress > -1 && total > -1
+
     val remainingTime: Long = (total - progress).coerceAtLeast(0L)
 
     val remainingTimeAsString: String

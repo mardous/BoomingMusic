@@ -34,7 +34,6 @@ import com.mardous.booming.viewmodels.library.LibraryViewModel
 import com.mardous.booming.viewmodels.lyrics.LyricsViewModel
 import com.mardous.booming.viewmodels.lyrics.model.LyricsResult
 import com.mardous.booming.viewmodels.player.PlayerViewModel
-import com.mardous.booming.viewmodels.player.model.PlayerProgress
 
 @Composable
 fun LyricsScreen(
@@ -45,14 +44,14 @@ fun LyricsScreen(
 ) {
     val miniPlayerMargin by libraryViewModel.getMiniPlayerMargin().observeAsState(LibraryMargin(0))
     val lyricsResult by lyricsViewModel.lyricsResult.collectAsState()
-    val songProgress by playerViewModel.progressFlow.collectAsState()
+    val songProgress by playerViewModel.currentProgressFlow.collectAsState()
 
     val lyricsViewState = remember(lyricsResult.syncedLyrics) {
         LyricsViewState(lyricsResult.syncedLyrics.content)
     }
 
     LaunchedEffect(songProgress) {
-        lyricsViewState.updatePosition(songProgress.progress)
+        lyricsViewState.updatePosition(songProgress.toLong())
     }
 
     val plainScrollState = rememberScrollState()
@@ -103,8 +102,8 @@ fun CoverLyricsScreen(
     modifier: Modifier = Modifier
 ) {
     val lyricsResult by lyricsViewModel.lyricsResult.collectAsState()
-    val songProgress by playerViewModel.progressFlow.collectAsStateWithLifecycle(
-        initialValue = PlayerProgress.Unspecified,
+    val songProgress by playerViewModel.currentProgressFlow.collectAsStateWithLifecycle(
+        initialValue = 0,
         minActiveState = Lifecycle.State.RESUMED
     )
     val lyricsViewState = remember(lyricsResult.syncedLyrics) {
@@ -112,7 +111,7 @@ fun CoverLyricsScreen(
     }
 
     LaunchedEffect(songProgress) {
-        lyricsViewState.updatePosition(songProgress.progress)
+        lyricsViewState.updatePosition(songProgress.toLong())
     }
 
     val plainScrollState = rememberScrollState()

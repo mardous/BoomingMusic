@@ -30,6 +30,8 @@ import com.mardous.booming.databinding.FragmentPeek2PlayerPlaybackControlsBindin
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.fragments.player.*
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
+import com.mardous.booming.fragments.player.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
+import com.mardous.booming.fragments.player.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
 import com.mardous.booming.model.Song
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.views.MusicSlider
@@ -62,11 +64,13 @@ class Peek2PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPeek2PlayerPlaybackControlsBinding.bind(view)
+        binding.title.setOnClickListener(this)
+        binding.text.setOnClickListener(this)
         binding.playPauseButton.setOnClickListener(this)
-        binding.nextButton.setOnClickListener(this)
-        binding.previousButton.setOnClickListener(this)
         binding.shuffleButton.setOnClickListener(this)
         binding.repeatButton.setOnClickListener(this)
+        binding.nextButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_NEXT))
+        binding.previousButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_PREVIOUS))
 
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.currentSongFlow.collect { song ->
@@ -143,8 +147,6 @@ class Peek2PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
     override fun onClick(view: View) {
         super.onClick(view)
         when (view) {
-            binding.nextButton -> playerViewModel.playNext()
-            binding.previousButton -> playerViewModel.playPrevious()
             binding.repeatButton -> playerViewModel.cycleRepeatMode()
             binding.shuffleButton -> playerViewModel.toggleShuffleMode()
             binding.playPauseButton -> playerViewModel.togglePlayPause()

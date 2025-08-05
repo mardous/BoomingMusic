@@ -70,6 +70,12 @@ class MusicServiceConnection(context: Context, serviceComponent: ComponentName) 
             _playbackState.value = (state ?: EMPTY_PLAYBACK_STATE)
         }
 
+        override fun onSessionReady() {
+            if (playbackState.value == EMPTY_PLAYBACK_STATE) {
+                _playbackState.value = _mediaController?.playbackState ?: EMPTY_PLAYBACK_STATE
+            }
+        }
+
         override fun onSessionEvent(event: String?, extras: Bundle?) {
             val mediaEvent = MediaEvent.fromSessionEvent(event)
             if (mediaEvent != null) {

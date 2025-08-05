@@ -132,7 +132,6 @@ open class MultiPlayer(context: Context) : LocalPlayback(context) {
      * Releases resources associated with this MediaPlayer object.
      */
     override fun release() {
-        super.release()
         stop()
         mCurrentMediaPlayer.release()
         mNextMediaPlayer?.release()
@@ -231,12 +230,12 @@ open class MultiPlayer(context: Context) : LocalPlayback(context) {
         @FloatRange(from = 0.0, to = 1.0) right: Float
     ) {
         super.setBalance(left, right)
-        updateVolume(mCurrentMediaPlayer)
+        updateVolume()
     }
 
     override fun setReplayGain(replayGain: Float) {
         super.setReplayGain(replayGain)
-        updateVolume(mCurrentMediaPlayer)
+        updateVolume()
     }
 
     override fun setVolume(leftVol: Float, rightVol: Float) {

@@ -21,7 +21,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/playerAlbumCoverFragment"
-        android:name="com.mardous.booming.fragments.player.PlayerAlbumCoverFragment"
+        android:name="com.mardous.booming.fragments.player.cover.CoverPagerFragment"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginStart="16dp"

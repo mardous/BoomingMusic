@@ -63,7 +63,7 @@ import com.mardous.booming.extensions.resources.inflateMenu
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.fragments.lyrics.LyricsEditorFragmentArgs
-import com.mardous.booming.fragments.player.PlayerAlbumCoverFragment
+import com.mardous.booming.fragments.player.cover.CoverPagerFragment
 import com.mardous.booming.fragments.player.PlayerColorScheme
 import com.mardous.booming.fragments.player.PlayerColorSchemeMode
 import com.mardous.booming.fragments.player.PlayerTintTarget
@@ -87,12 +87,12 @@ import kotlin.math.abs
  * @author Christians M. A. (mardous)
  */
 abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
-    Fragment(layoutRes), Toolbar.OnMenuItemClickListener, PlayerAlbumCoverFragment.Callbacks {
+    Fragment(layoutRes), Toolbar.OnMenuItemClickListener, CoverPagerFragment.Callbacks {
 
     val playerViewModel: PlayerViewModel by activityViewModel()
     val libraryViewModel: LibraryViewModel by activityViewModel()
 
-    private var coverFragment: PlayerAlbumCoverFragment? = null
+    private var coverFragment: CoverPagerFragment? = null
 
     protected abstract val colorSchemeMode: PlayerColorSchemeMode
     protected abstract val playerControlsFragment: AbsPlayerControlsFragment

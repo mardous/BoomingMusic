@@ -19,16 +19,15 @@ package com.mardous.booming.fragments.base
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
+import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -36,12 +35,14 @@ import com.mardous.booming.R
 import com.mardous.booming.adapters.base.AbsMultiSelectAdapter
 import com.mardous.booming.databinding.FragmentMainRecyclerBinding
 import com.mardous.booming.dialogs.playlists.ImportPlaylistDialog
+import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.onVerticalScroll
-import com.mardous.booming.extensions.resources.shake
-import com.mardous.booming.extensions.setSupportActionBar
-import com.mardous.booming.extensions.topLevelTransition
+import com.mardous.booming.fragments.other.ShuffleModeFragment
 import com.mardous.booming.interfaces.IScrollHelper
+import com.mardous.booming.viewmodels.player.model.MediaEvent
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScroller
 import org.koin.android.ext.android.inject
 
@@ -84,8 +85,13 @@ abstract class AbsRecyclerViewFragment<A : RecyclerView.Adapter<*>, LM : Recycle
                 onScrollDown = { binding.shuffleButton.hide() },
                 onScrollUp = { binding.shuffleButton.show() }
             )
-            binding.shuffleButton.setOnClickListener {
-                onShuffleClicked()
+            binding.shuffleButton.apply {
+                setOnClickListener {
+                    onShuffleClicked()
+                }
+                setOnLongClickListener {
+                    onShuffleLongClick()
+                }
             }
         } else {
             binding.shuffleButton.isVisible = false
@@ -99,10 +105,44 @@ abstract class AbsRecyclerViewFragment<A : RecyclerView.Adapter<*>, LM : Recycle
                 bottomMargin = it.totalMargin
             }
         }
+        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
+            playerViewModel.mediaEvent.collect {
+                if (it == MediaEvent.PlaybackStarted) {
+                    whichFragment<DialogFragment>("SHUFFLE_MODE")
+                        ?.dismissAllowingStateLoss()
+                }
+            }
+        }
     }
 
-    open fun onShuffleClicked() {
-        shuffleButton.shake()
+    override fun onStart() {
+        super.onStart()
+        _binding?.shuffleButton?.doOnLayout {
+            viewLifecycleOwner.lifecycleScope.launch {
+                delay(1000)
+                val balloon = createBoomingMusicBalloon("shuffle_button_tip") {
+                    setDismissWhenClicked(true)
+                    setText(getString(R.string.shuffle_button_tip))
+                }
+                _binding?.shuffleButton?.let {
+                    if (it.isVisible && balloon?.isShowing == false) {
+                        balloon.showAlignTop(it, yOff = (-8).dp(resources))
+                    }
+                }
+            }
+        }
+    }
+
+    open fun onShuffleClicked() {}
+
+    open fun onShuffleLongClick(): Boolean {
+        var shuffleModeFragment = whichFragment<ShuffleModeFragment>("SHUFFLE_MODE")
+        if (shuffleModeFragment == null) {
+            shuffleModeFragment = ShuffleModeFragment()
+            shuffleModeFragment.show(childFragmentManager, "SHUFFLE_MODE")
+            return true
+        }
+        return false
     }
 
     private fun setupToolbar() {

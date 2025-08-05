@@ -72,13 +72,13 @@ import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.glide.transformation.BlurTransformation
 import com.mardous.booming.helper.UriSongResolver
-import com.mardous.booming.model.Playlist
+import com.mardous.booming.model.ContentType
 import com.mardous.booming.model.Song
 import com.mardous.booming.providers.databases.HistoryStore
 import com.mardous.booming.providers.databases.SongPlayCountStore
 import com.mardous.booming.repository.Repository
 import com.mardous.booming.service.constants.ServiceAction
-import com.mardous.booming.service.constants.ServiceAction.Extras.Companion.EXTRA_PLAYLIST
+import com.mardous.booming.service.constants.ServiceAction.Extras.Companion.EXTRA_CONTENT_TYPE
 import com.mardous.booming.service.constants.ServiceAction.Extras.Companion.EXTRA_SHUFFLE_MODE
 import com.mardous.booming.service.constants.SessionCommand
 import com.mardous.booming.service.constants.SessionEvent
@@ -159,7 +159,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     val currentSongProgress get() = playbackManager.position()
     val currentSongDuration get() = playbackManager.duration()
 
-    private val playbackSpeed get() = playbackManager.getPlaybackSpeed()
+    private val playbackSpeed get() = playbackManager.getSpeed()
     private val shuffleMode get() = queueManager.shuffleMode
     private val repeatMode get() = queueManager.repeatMode
     private val isFirstTrack get() = queueManager.isFirstTrack
@@ -483,33 +483,34 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     }
 
     private fun playFromPlaylist(intent: Intent) {
-        val playlist =
-            IntentCompat.getParcelableExtra(intent, EXTRA_PLAYLIST, Playlist::class.java)
+        val contentType =
+            IntentCompat.getSerializableExtra(intent, EXTRA_CONTENT_TYPE, ContentType::class.java)
         val shuffleMode =
             IntentCompat.getSerializableExtra(intent, EXTRA_SHUFFLE_MODE, Playback.ShuffleMode::class.java)
-        if (playlist != null) {
-            serviceScope.launch(IO) {
-                val playlistSongs = playlist.getSongs()
-                if (playlistSongs.isNotEmpty()) {
-                    if (shuffleMode == Playback.ShuffleMode.On) {
-                        val startPosition = Random.nextInt(playlistSongs.size)
-                        openQueue(playlistSongs, startPosition, true, shuffleMode)
-                    } else {
-                        openQueue(playlistSongs, 0, true)
-                    }
-                } else {
-                    showToast(R.string.playlist_empty_text)
-                }
+
+        serviceScope.launch(IO) {
+            val songs = when (contentType) {
+                ContentType.RecentSongs -> repository.recentSongs()
+                ContentType.TopTracks -> repository.topPlayedSongs()
+                else -> repository.allSongs()
             }
-        } else {
-            showToast(R.string.playlist_empty_text)
+            if (songs.isNotEmpty()) {
+                if (shuffleMode == Playback.ShuffleMode.On) {
+                    val startPosition = Random.nextInt(songs.size)
+                    openQueue(songs, startPosition, true, shuffleMode)
+                } else {
+                    openQueue(songs, 0, true)
+                }
+            } else {
+                showToast(R.string.playlist_empty_text)
+            }
         }
     }
 
     private fun prepareRestoredPlayback(restoredPositionInTrack: Int) {
         openCurrent { success ->
             prepareNext()
-            if (restoredPositionInTrack > 0) {
+            if (restoredPositionInTrack >= 0) {
                 seek(restoredPositionInTrack)
             }
             if (needsToRestorePlayback || receivedHeadsetConnected) {
@@ -717,6 +718,10 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
                 .songOptions(song)
                 .load(song.getSongGlideModel())
 
+            if (hasR()) {
+                request.centerCrop()
+            }
+
             if (Preferences.blurredAlbumArtAllowed) {
                 request.transform(BlurTransformation.Builder(this).build())
             }
@@ -817,7 +822,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             showToast(R.string.audio_focus_denied)
             return
         }
-        playbackManager.play(force, serviceScope) {
+        playbackManager.play(force) {
             playSongAt(currentPosition)
         }
     }
@@ -877,7 +882,10 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
 
     private fun prepareSongAt(position: Int, completion: (Boolean) -> Unit = {}) {
         queueManager.setPosition(position)
-        openCurrentAndPrepareNext(completion)
+        openCurrentAndPrepareNext { success ->
+            seek(0, false)
+            completion(success)
+        }
     }
 
     private fun updateWidgets() {

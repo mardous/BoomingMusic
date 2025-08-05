@@ -34,6 +34,8 @@ import com.mardous.booming.databinding.FragmentGradientPlayerPlaybackControlsBin
 import com.mardous.booming.fragments.player.PlayerColorScheme
 import com.mardous.booming.fragments.player.PlayerTintTarget
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
+import com.mardous.booming.fragments.player.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
+import com.mardous.booming.fragments.player.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
 import com.mardous.booming.fragments.player.iconButtonTintTarget
 import com.mardous.booming.fragments.player.tintTarget
 import com.mardous.booming.model.NowPlayingAction
@@ -81,19 +83,18 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setupListeners() {
+        binding.title.setOnClickListener(this)
         binding.text.setOnClickListener(this)
         binding.playPauseButton.setOnClickListener(this)
-        binding.nextButton.setOnClickListener(this)
-        binding.previousButton.setOnClickListener(this)
         binding.shuffleButton.setOnClickListener(this)
         binding.repeatButton.setOnClickListener(this)
+        binding.nextButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_NEXT))
+        binding.previousButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_PREVIOUS))
     }
 
     override fun onClick(view: View) {
         super.onClick(view)
         when (view) {
-            binding.nextButton -> playerViewModel.playNext()
-            binding.previousButton -> playerViewModel.playPrevious()
             binding.shuffleButton -> playerViewModel.toggleShuffleMode()
             binding.repeatButton -> playerViewModel.cycleRepeatMode()
             binding.playPauseButton -> playerViewModel.togglePlayPause()

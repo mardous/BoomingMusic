@@ -20,10 +20,12 @@ package com.mardous.booming.fragments.lyrics
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.ClipboardManager
-import android.content.ContentResolver
 import android.content.DialogInterface
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Process
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuInflater
@@ -39,7 +41,6 @@ import androidx.core.app.ShareCompat
 import androidx.core.content.getSystemService
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import androidx.core.view.postDelayed
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -65,7 +66,6 @@ import com.mardous.booming.model.DownloadedLyrics
 import com.mardous.booming.model.Song
 import com.mardous.booming.viewmodels.lyrics.LyricsViewModel
 import com.mardous.booming.viewmodels.lyrics.model.LyricsResult
-import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -126,13 +126,22 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
 
     override fun onStart() {
         super.onStart()
-        view?.postDelayed(500) {
-            lyricsViewModel.getWritableUris(song).observe(viewLifecycleOwner) {
-                if (hasR()) {
-                    val contentResolver = get<ContentResolver>()
-                    val pendingIntent = MediaStore.createWriteRequest(contentResolver, it)
-                    permissionLauncher.launch(IntentSenderRequest.Builder(pendingIntent).build())
-                }
+        lyricsViewModel.getWritableUris(song).observe(viewLifecycleOwner) { uris ->
+            requestWritePermissions(uris)
+        }
+    }
+
+    private fun requestWritePermissions(uris: Collection<Uri>) = requestContext {
+        if (uris.isNotEmpty() && hasR()) {
+            val contentResolver = it.contentResolver
+            val missingPerms = uris.filterNot { uri ->
+                it.checkUriPermission(
+                    uri, Process.myPid(), Process.myUid(), Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                ) == PackageManager.PERMISSION_GRANTED
+            }
+            if (missingPerms.isNotEmpty()) {
+                val pendingIntent = MediaStore.createWriteRequest(contentResolver, missingPerms)
+                permissionLauncher.launch(IntentSenderRequest.Builder(pendingIntent).build())
             }
         }
     }
@@ -175,8 +184,8 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
         val button = binding.toggleGroup.findViewById<Button>(checkedId)
         if (!isChecked) return
 
-        if (source.canShowHelp(requireContext())) {
-            val balloon = createBoomingMusicBalloon {
+        if (source.tooltipKey.isNotEmpty()) {
+            val balloon = createBoomingMusicBalloon(source.tooltipKey) {
                 setDismissWhenClicked(true)
                 setText(getString(source.descriptionRes))
             }
@@ -185,7 +194,6 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
             } else {
                 balloon?.showAlignBottom(button)
             }
-            source.setHelpShown(requireContext())
         }
     }
 

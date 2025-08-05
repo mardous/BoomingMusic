@@ -17,16 +17,20 @@
 
 package com.mardous.booming.fragments.player.base
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.mardous.booming.R
 import com.mardous.booming.extensions.getShapeAppearanceModel
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
@@ -41,14 +45,22 @@ import com.mardous.booming.preferences.dialog.NowPlayingExtraInfoPreferenceDialo
 import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.util.*
 import com.mardous.booming.viewmodels.player.PlayerViewModel
+import com.mardous.booming.viewmodels.player.model.PlayerProgress
 import com.mardous.booming.views.MusicSlider
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
+import java.lang.ref.WeakReference
 
 /**
  * @author Christians M. A. (mardous)
  */
 abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes),
-    View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
+    View.OnClickListener,
+    View.OnLongClickListener,
+    SharedPreferences.OnSharedPreferenceChangeListener,
+    SkipButtonTouchHandler.Callback {
 
     val playerViewModel: PlayerViewModel by activityViewModel()
 
@@ -120,11 +132,16 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.progressFlow.collect { progress ->
-                if (musicSlider?.isTrackingTouch == false) {
-                    onUpdateSlider(progress.progress, progress.total)
+            combine(
+                playerViewModel.currentProgressFlow,
+                playerViewModel.totalDurationFlow
+            ) { progress, duration -> PlayerProgress(progress.toLong(), duration.toLong()) }
+                .filter { progress -> progress.mayUpdateUI }
+                .collectLatest { progress ->
+                    if (musicSlider?.isTrackingTouch == false) {
+                        onUpdateSlider(progress.progress, progress.total)
+                    }
                 }
-            }
         }
         Preferences.registerOnSharedPreferenceChangeListener(this)
     }
@@ -139,7 +156,6 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             )
         }
         songTotalTime?.setOnClickListener(this)
-        songInfoView?.setOnClickListener(this)
         songInfoView?.setOnLongClickListener(this)
         setUpProgressSlider()
     }
@@ -152,12 +168,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             R.id.text -> {
                 goToArtist(requireActivity(), playerViewModel.currentSong)
             }
-            R.id.songInfo -> {
-                val playerView = this.view
-                val infoString = playerViewModel.extraInfoFlow.value
-                if (playerView != null && !infoString.isNullOrEmpty()) {
-                    Snackbar.make(playerView, infoString, Snackbar.LENGTH_LONG).show()
-                }
+            R.id.songTotalTime -> {
+                val preferRemainingTime = Preferences.preferRemainingTime
+                Preferences.preferRemainingTime = !preferRemainingTime
             }
         }
     }
@@ -170,12 +183,30 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         return false
     }
 
+    override fun onSkipButtonHold(direction: Int) {
+        when (direction) {
+            SkipButtonTouchHandler.DIRECTION_NEXT -> playerViewModel.fastForward()
+            SkipButtonTouchHandler.DIRECTION_PREVIOUS -> playerViewModel.rewind()
+        }
+    }
+
+    override fun onSkipButtonTap(direction: Int) {
+        when (direction) {
+            SkipButtonTouchHandler.DIRECTION_NEXT -> playerViewModel.playNext()
+            SkipButtonTouchHandler.DIRECTION_PREVIOUS -> playerViewModel.playPrevious()
+        }
+    }
+
+    protected fun getSkipButtonTouchHandler(direction: Int): SkipButtonTouchHandler {
+        return SkipButtonTouchHandler(direction, this)
+    }
+
     private fun setUpProgressSlider() {
         musicSlider?.setUseSquiggly(Preferences.squigglySeekBar)
         musicSlider?.setListener(object : MusicSlider.Listener {
             override fun onProgressChanged(slider: MusicSlider, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
-                    onUpdateSlider(progress.toLong(), playerViewModel.totalDuration)
+                    onUpdateSlider(progress.toLong(), playerViewModel.totalDuration.toLong())
                 }
             }
 
@@ -191,7 +222,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         musicSlider?.valueTo = total.toInt()
         musicSlider?.value = progress.toInt()
         songCurrentProgress?.text = progress.durationStr()
-        songTotalTime?.text = if (Preferences.preferRemainingTime){
+        songTotalTime?.text = if (Preferences.preferRemainingTime) {
             (total - progress).coerceAtLeast(0L).durationStr()
         } else {
             total.durationStr()
@@ -287,5 +318,76 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     override fun onDestroyView() {
         super.onDestroyView()
         Preferences.unregisterOnSharedPreferenceChangeListener(this)
+    }
+}
+
+class SkipButtonTouchHandler(
+    private val direction: Int,
+    private val callback: Callback
+) : OnTouchListener {
+
+    interface Callback {
+        fun onSkipButtonHold(direction: Int)
+        fun onSkipButtonTap(direction: Int)
+    }
+
+    private val handler = Handler(Looper.getMainLooper())
+    private var isHolding = false
+    private var touchedViewRef: WeakReference<View>? = null
+
+    private val repeatRunnable = object : Runnable {
+        override fun run() {
+            val view = touchedViewRef?.get()
+            if (view != null && view.isEnabled) {
+                isHolding = true
+                callback.onSkipButtonHold(direction)
+                handler.postDelayed(this, SKIP_TRIGGER_NORMAL_INTERVAL_MILLIS)
+            } else {
+                cancel()
+            }
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouch(view: View, event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                touchedViewRef = WeakReference(view)
+                isHolding = false
+                view.isPressed = true
+                handler.postDelayed(repeatRunnable, SKIP_TRIGGER_INITIAL_INTERVAL_MILLIS)
+                return true
+            }
+
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                handler.removeCallbacks(repeatRunnable)
+                view.isPressed = false
+
+                if (!isHolding) {
+                    callback.onSkipButtonTap(direction)
+                }
+
+                touchedViewRef?.clear()
+                touchedViewRef = null
+                isHolding = false
+                return true
+            }
+        }
+        return false
+    }
+
+    private fun cancel() {
+        handler.removeCallbacks(repeatRunnable)
+        touchedViewRef?.get()?.isPressed = false
+        touchedViewRef = null
+        isHolding = false
+    }
+
+    companion object {
+        private const val SKIP_TRIGGER_INITIAL_INTERVAL_MILLIS = 1000L
+        private const val SKIP_TRIGGER_NORMAL_INTERVAL_MILLIS = 250L
+
+        const val DIRECTION_NEXT = 1
+        const val DIRECTION_PREVIOUS = 2
     }
 }

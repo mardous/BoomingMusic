@@ -18,6 +18,7 @@
 package com.mardous.booming.fragments.sound
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
@@ -29,6 +30,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentSoundSettingsBinding
+import com.mardous.booming.extensions.create
 import com.mardous.booming.extensions.hasPie
 import com.mardous.booming.extensions.requireAlertDialog
 import com.mardous.booming.extensions.resources.controlColorNormal
@@ -59,7 +61,15 @@ class SoundSettingsFragment : DialogFragment(), View.OnClickListener,
             .setIcon(R.drawable.ic_volume_up_24dp)
             .setView(binding.root)
             .setPositiveButton(R.string.close_action, null)
-            .create()
+            .setNeutralButton(R.string.reset_action, null)
+            .create {
+                it.getButton(DialogInterface.BUTTON_NEUTRAL)?.setOnClickListener {
+                    viewModel.setTempo(
+                        speed = viewModel.defaultSpeed,
+                        pitch = viewModel.defaultPitch
+                    )
+                }
+            }
     }
 
     private fun launchAndRepeatWithViewLifecycle(block: suspend CoroutineScope.() -> Unit) {

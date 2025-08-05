@@ -56,7 +56,7 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
     override val colorSchemeMode: PlayerColorSchemeMode
         get() = Preferences.getNowPlayingColorSchemeMode(NowPlayingScreen.M3)
 
-    override val playerToolbar: Toolbar
+    override val playerToolbar: Toolbar?
         get() = binding.playerToolbar
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -82,7 +82,7 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
     }
 
     private fun setupToolbar() {
-        playerToolbar.setNavigationOnClickListener {
+        playerToolbar?.setNavigationOnClickListener {
             getOnBackPressedDispatcher().onBackPressed()
         }
     }

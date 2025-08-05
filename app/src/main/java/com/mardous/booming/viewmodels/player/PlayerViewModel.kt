@@ -22,8 +22,8 @@ import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.service.queue.*
 import com.mardous.booming.util.PlayOnStartupMode
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.viewmodels.player.model.PlayerProgress
 import com.mardous.booming.viewmodels.player.model.SaveCoverResult
+import com.mardous.booming.viewmodels.player.model.ShuffleOperationState
 import com.mardous.booming.worker.SaveCoverWorker
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.FlowPreview
@@ -31,6 +31,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
 @OptIn(FlowPreview::class)
@@ -47,14 +48,6 @@ class PlayerViewModel(
 
     // Prevent concurrent shuffle actions
     private val shuffleMutex = Mutex()
-
-    val progressFlow = playbackManager.progressFlow.map { progress ->
-        PlayerProgress(progress, playbackManager.duration().toLong())
-    }.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.Eagerly,
-        initialValue = PlayerProgress.Unspecified
-    )
 
     val isPlayingFlow = serviceConnection.playbackState.map { stateCompat ->
         stateCompat.state == PlaybackStateCompat.STATE_PLAYING
@@ -93,14 +86,20 @@ class PlayerViewModel(
     val colorSchemeFlow = _colorScheme.asStateFlow()
     val colorScheme get() = colorSchemeFlow.value
 
+    private val _shuffleOperationState = MutableStateFlow(ShuffleOperationState())
+    val shuffleOperationState = _shuffleOperationState.asStateFlow()
+
     private val _extraInfoFlow = MutableStateFlow<String?>(null)
     val extraInfoFlow = _extraInfoFlow.asStateFlow()
 
     val queueDuration get() = queueManager.getDuration(currentPosition)
     val queueDurationAsString get() = queueDuration.durationStr()
 
-    val currentProgress get() = progressFlow.value.progress
-    val totalDuration get() = progressFlow.value.total
+    val currentProgressFlow = playbackManager.progressFlow
+    val currentProgress get() = currentProgressFlow.value
+
+    val totalDurationFlow = playbackManager.durationFlow
+    val totalDuration get() = totalDurationFlow.value
 
     val audioSessionId get() = playbackManager.getAudioSessionId()
 
@@ -216,13 +215,15 @@ class PlayerViewModel(
         queue: List<Song>,
         startPlaying: Boolean = true
     ) = viewModelScope.launch(IO) {
-        val success = queueManager.open(
-            queue = queue,
-            startPosition = Random.Default.nextInt(queue.size),
-            shuffleMode = Playback.ShuffleMode.On
-        )
-        if (success == QueueManager.SUCCESS && startPlaying) {
-            playSongAt(queueManager.position, newPlayback = true)
+        if (queue.isNotEmpty()) {
+            val success = queueManager.open(
+                queue = queue,
+                startPosition = Random.Default.nextInt(queue.size),
+                shuffleMode = Playback.ShuffleMode.On
+            )
+            if (success == QueueManager.SUCCESS && startPlaying) {
+                playSongAt(queueManager.position, newPlayback = true)
+            }
         }
     }
 
@@ -238,8 +239,17 @@ class PlayerViewModel(
         emit(success)
     }
 
-    fun openSpecialShuffle(songs: List<Song>, mode: SpecialShuffleMode) = liveData(IO) {
-        emit(queueManager.specialShuffleQueue(songs, mode))
+    fun openSpecialShuffle(songs: List<Song>, mode: SpecialShuffleMode) = viewModelScope.launch {
+        if (shuffleOperationState.value.isIdle) {
+            _shuffleOperationState.value = ShuffleOperationState(mode, ShuffleOperationState.Status.InProgress)
+            val success = withContext(IO) {
+                queueManager.specialShuffleQueue(songs, mode)
+            }
+            if (success) {
+                playSongAt(queueManager.position, newPlayback = true)
+            }
+            _shuffleOperationState.value = ShuffleOperationState()
+        }
     }
 
     fun queueNext(song: Song) = liveData(IO) {
