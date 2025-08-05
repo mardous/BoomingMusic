@@ -618,8 +618,8 @@
     <string name="adaptive_controls_title">פקדים אדפטיביים</string>
     <string name="adaptive_controls_summary">הפקדים בנגן המיני משתנים כדי להתאים לסגנון הנגן הנוכחי.</string>
     <string name="swipe_to_dismiss_title">גרור כדי לסגור</string>
-    <string name="swipe_to_dismiss_summary">Swipe down the mini player to stop playback and clear playing queues.</string>
-    <string name="circle_button_title">Circular play button</string>
+    <string name="swipe_to_dismiss_summary">החלק את נגן המיני כלפי מטה כדי לעצור את ההשמעה ולנקות את תור ההשמעה.</string>
+    <string name="circle_button_title">כפתור ניגון עגול</string>
     <string name="swipe_album_cover_title">Swipe album cover</string>
     <string name="swipe_album_cover_summary">Swipe left and right on album cover to skip between songs.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
