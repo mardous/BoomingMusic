@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">シャッフル再生</string>
     <string name="action_queue_next">次のキュー</string>
     <string name="shuffle_all_label">すべてシャッフル</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="advanced_shuffle_label">高度なシャッフル</string>
+    <string name="shuffle_button_tip">タップして通常のシャッフルを行います。長押しで詳細オプションを選択できます。</string>
     <string name="action_play_pause">再生/一時停止</string>
     <string name="action_pause">一時停止</string>
     <string name="action_next">次へ</string>
@@ -39,7 +39,7 @@
     <string name="currently_listening_to_x_by_x">%1$s が %2$sを聴いています</string>
     <string name="share_to_stories">ストーリーに共有</string>
     <string name="could_not_create_the_story">ストーリーを作成できませんでした。</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">戻る</string>
     <string name="rename_action">名前の変更</string>
     <string name="add_action">追加</string>
     <string name="delete_action">削除</string>
@@ -49,9 +49,9 @@
     <string name="continue_action">続ける</string>
     <string name="select_all_title">すべて選択</string>
     <string name="x_selected">%d を選択しました</string>
-    <string name="preparing_playback_title">Preparing</string>
-    <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="preparing_playback_title">準備中</string>
+    <string name="restoring_playback_state">再生状態とキューを復元しています...</string>
+    <string name="playback_stopped_title">再生停止</string>
     <string name="playing_notification_description">再生通知は再生/一時停止などのアクションを提供します。</string>
     <string name="playing_notification_name">再生中の通知</string>
     <string name="action_scan_directory">ディレクトリをスキャン</string>
@@ -68,7 +68,7 @@
     <string name="new_playlist_title">新規プレイリスト</string>
     <string name="add_playlist_title">プレイリストに追加</string>
     <string name="rename_playlist_title">プレイリストの名前を変更</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">プレイリストの編集</string>
     <string name="action_delete">プレイリストを削除</string>
     <string name="action_export_playlist">ファイルにエクスポート</string>
     <string name="action_clear_history">履歴を消去</string>
@@ -77,9 +77,9 @@
     <string name="create_a_playlist_with_one_song">プレイリストが作成され、1曲が追加されます。</string>
     <string name="create_a_playlist_with_x_songs">プレイリストが作成され、 %d 曲が自動的に追加されます。</string>
     <string name="playlist_name_empty">プレイリスト名</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">プレイリストの説明 (任意)</string>
     <string name="saved_playlist_x">プレイリスト %sを保存しました。</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">プレイリストを更新しました。</string>
     <string name="failed_to_save_playlist">プレイリストの保存に失敗しました。</string>
     <string name="saved_x_playlists">%1$d プレイリストを保存しました。</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d プレイリストを保存しました。 %2$d の保存に失敗しました。</string>
@@ -92,7 +92,7 @@
     <string name="inserted_one_song_into_playlist_x">%s に曲を挿入しました。</string>
     <string name="inserted_x_songs_into_playlist_x">プレイリスト %2$s に %1$d 曲を追加しました。</string>
     <string name="playlist_exists">プレイリスト %s は既に存在します。</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">プレイリスト %s の作成に成功しました。</string>
     <string name="remove_song_from_playlist_title">プレイリストから曲を削除</string>
     <string name="remove_songs_from_playlist_title">プレイリストから曲を削除</string>
     <string name="remove_song_x_from_playlist"><![CDATA[プレイリストから曲 <b>%1$s</b> を削除しますか？]]></string>
@@ -221,7 +221,7 @@
     <string name="horizontal_albums">横方向のアルバム</string>
     <string name="ignore_singles">シングルは無視する</string>
     <string name="compact_song_view">コンパクトな曲表示</string>
-    <string name="show_total_duration">Show total duration</string>
+    <string name="show_total_duration">合計時間を表示</string>
     <string name="action_view_type">表示タイプ</string>
     <string name="view_type_normal">標準</string>
     <string name="view_type_card">カード</string>
@@ -237,7 +237,7 @@
     <string name="sort_order_year">年</string>
     <string name="sort_order_duration">期間</string>
     <string name="sort_order_date_added">追加日</string>
-    <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_date_modified">更新日時</string>
     <string name="sort_order_number_of_songs">曲数</string>
     <string name="sort_order_number_of_albums">アルバムの数</string>
     <string name="sort_order_last_played_date">最後に再生した日時</string>
@@ -462,7 +462,7 @@
     <string name="synced_lyrics">同期済み</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">ダウンロード済み</string>
-    <string name="external_file_lyrics">External file</string>
+    <string name="external_file_lyrics">外部ファイル</string>
     <string name="action_import_synchronized_lyrics">同期した歌詞をインポート</string>
     <string name="action_share_synchronized_lyrics">同期した歌詞を共有</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> の同期したLRC歌詞をインポートしますか？]]></string>
@@ -479,8 +479,8 @@
     <string name="no_synced_lyrics_found">同期された歌詞が見つかりません</string>
     <string name="lyrics_were_updated_successfully">歌詞が更新されました。</string>
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
-    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
+    <string name="there_are_no_changes_to_save">保存する変更はありません。</string>
+    <string name="lyrics_source_external_file">歌詞は外部ファイルのものです。このファイルはBooming Musicから直接編集することはできません。</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">スリープタイマー</string>
     <string name="sleep_timer_cancel_current_timer">現在のタイマーをキャンセル</string>
@@ -505,7 +505,7 @@
     <string name="licenses">ライセンス</string>
     <string name="author">作成者</string>
     <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
+    <string name="contributors">コントリビューター</string>
     <string name="acknowledgments_title">謝辞</string>
     <string name="translators_title">翻訳者</string>
     <string name="translators_summary">Booming Musicを多くの言語で利用可能にしてくれた人たちに感謝します。</string>
@@ -587,8 +587,8 @@
     <string name="now_playing_screen_title">スタイル</string>
     <string name="open_on_play_title">再生中に開く</string>
     <string name="open_on_play_summary">曲の再生を開始した後、自動的に「再生中」パネルを展開します。</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="squiggly_seek_bar_title">Squiglyシークバー</string>
+    <string name="squiggly_seek_bar_summary">デフォルトのスライダーの代わりにウェーブシークバーを有効にします。</string>
     <string name="extra_controls_title">追加コントロール</string>
     <string name="extra_controls_summary">ミニプレーヤー用の追加コントロールを追加</string>
     <string name="adaptive_controls_title">アダプティブコントロール</string>
@@ -598,7 +598,7 @@
     <string name="circle_button_title">丸い再生ボタン</string>
     <string name="swipe_album_cover_title">アルバムカバーをスワイプ</string>
     <string name="swipe_album_cover_summary">アルバムカバーを左右にスワイプして曲間をスキップします。</string>
-    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
+    <string name="single_tap_on_album_cover_title">カバーをシングルタップ</string>
     <string name="double_tap_on_album_cover_title">カバーをダブルタップする</string>
     <string name="long_press_on_album_cover_title">カバーを長押しする</string>
     <string name="now_playing_corner_radius_title">画像の角の丸み</string>
@@ -610,7 +610,7 @@
     <string name="animate_controls_title">アニメーションコントロール</string>
     <string name="animate_controls_summary">プレーヤーパネルを開くときに再生されます。</string>
     <string name="swipe_controls_title">スワイプコントロール</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_controls_summary">再生画面の空白の領域で左にスワイプして前の曲に移動し、右にスワイプして次の曲に移動できます。</string>
     <string name="display_album_name_title">アルバム名を表示</string>
     <string name="display_extra_info_title">追加情報を表示</string>
     <string name="display_extra_info_summary">ビットレート、フォーマット、サンプリングレートなど、曲に関する追加情報を表示する。</string>
@@ -629,7 +629,7 @@
     <string name="no_crossfade_on_albums_title">アルバムではクロスフェードしません</string>
     <string name="no_crossfade_on_albums_summary">アルバムを元の順序で再生するときはクロスフェードしないでください。</string>
     <string name="audio_fade_duration_title">オーディオフェード時間（実験的）</string>
-    <string name="audio_fade_duration_summary">再生の開始時または一時停止時にボリュームをフェードインまたはフェードアウトするのにかかる秒数 (無効にするには 0 に設定)。</string>
+    <string name="audio_fade_duration_summary">再生の開始時または一時停止時にボリュームをフェードインまたはフェードアウトするのにかかる秒数(0に設定すると無効になります)。</string>
     <string name="replaygain_source_mode_title">ソースモード</string>
     <string name="replaygain_preamp_title">PreAmp レベル</string>
     <string name="replaygain_preamp_summary">ReplayGain が有効な場合、音量レベルを設定します。</string>
@@ -644,12 +644,12 @@
     <string name="auto_play_on_skip_summary">一時停止中に「前へ」または「次へ」ボタンをタップすると、再生を開始します。</string>
     <string name="rewind_with_back_title">"「前へ」で巻き戻す"</string>
     <string name="rewind_with_back_summary">現在のトラックが最初にある場合は、再生トラックをスタートに戻すか、前のトラックに移動します。</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
+    <string name="rewind_fast_forward_amount_title">巻き戻し/早送りの数</string>
+    <string name="rewind_fast_forward_amount_summary">UIまたは外部コントロールを使用して巻き戻しまたは早送りする時間 (秒単位)。</string>
     <string name="resume_on_connect_title">接続時に再開</string>
     <string name="resume_on_connect_summary">ヘッドフォン接続時に再生を再開します。</string>
     <string name="pause_on_disconnect_title">切断時に一時停止</string>
-    <string name="pause_on_disconnect_summary">ヘッドフォンが切断されたときに再生を一時停止します。推奨します。</string>
+    <string name="pause_on_disconnect_summary">ヘッドフォンが切断されたときに再生を一時停止します。推奨。</string>
     <string name="resume_on_bluetooth_connect_title">Bluetooth 接続時に再開</string>
     <string name="resume_on_bluetooth_connect_summary">Bluetooth A2DP ヘッドセット接続時に再生を再開します。</string>
     <string name="pause_on_bluetooth_disconnect_title">Bluetooth 接続時に一時停止</string>
@@ -681,7 +681,7 @@
     <string name="last_added_interval_title">最後に追加した間隔</string>
     <string name="whitelist_title">ホワイトリスト</string>
     <string name="whitelist_summary">ホワイトリストに登録されたフォルダの内容のみがライブラリに表示されます。</string>
-    <string name="blacklist_title">ブラック リスト</string>
+    <string name="blacklist_title">ブラックリスト</string>
     <string name="blacklist_summary">ブラックリストに登録されているフォルダの内容はライブラリから非表示になります。</string>
     <string name="artist_min_songs_title">アーティストの最小曲数</string>
     <string name="artist_min_songs_summary">ライブラリに表示するアーティストが必要な曲数（少なくとも）。</string>
@@ -796,12 +796,12 @@
     <string name="more_info_action">もっと詳しく。</string>
     <string name="download_action">ダウンロード</string>
     <string name="downloading_update">Booming Musicのアップデートをダウンロードしています。</string>
-    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
-        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="uncaught_error_title">おっと！起きるはずのないことが起きています！</string>
+    <string name="uncaught_error_message">何か問題が発生し、アプリがクラッシュしたようです。
+        私達のTelegramグループまたはEメールでエラーレポートをお送りいただけると助かります。</string>
+    <string name="uncaught_error_report">エラーレポート</string>
+    <string name="uncaught_error_report_copied">クリップボードにエラーレポートをコピーしました。</string>
     <string name="uncaught_error_restart_app">アプリを再起動</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_github">GitHubでIssueを開く</string>
+    <string name="uncaught_error_send">レポートを送信</string>
 </resources>
