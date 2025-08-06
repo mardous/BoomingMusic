@@ -622,6 +622,8 @@
     <string name="display_album_name_title">Näytä albumin nimi</string>
     <string name="display_extra_info_title">Näytä lisätiedot</string>
     <string name="display_extra_info_summary">Näytä lisätiedot kappaleesta, kuten bitrate, formaatti, näytteenottotaajuus jne.</string>
+    <string name="display_next_song_title">Display next song</string>
+    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Valitse lisätiedot, jotka näytetään soittimen paneelissa.</string>
     <string name="prefer_remaining_time_title">Suosi jäljellä olevaa aikaa</string>
