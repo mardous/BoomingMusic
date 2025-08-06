@@ -621,6 +621,8 @@
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
+    <string name="display_next_song_title">Display next song</string>
+    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Selecione as informações extras para exibir no painel do jogador.</string>
     <string name="prefer_remaining_time_title">Prefere tempo restante</string>
