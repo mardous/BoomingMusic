@@ -622,6 +622,8 @@
     <string name="display_album_name_title">Vis albumnavn</string>
     <string name="display_extra_info_title">Vis ekstra info</string>
     <string name="display_extra_info_summary">Vis ekstra info om sangen, såsom bitrate, format, samplingfrekvens osv.</string>
+    <string name="display_next_song_title">Display next song</string>
+    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Vælg de ekstra oplysninger, der skal vises i afspillerpanelet.</string>
     <string name="prefer_remaining_time_title">Foretræk resterende tid</string>
