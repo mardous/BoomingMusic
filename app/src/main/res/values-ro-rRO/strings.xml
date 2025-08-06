@@ -630,6 +630,8 @@
     <string name="display_album_name_title">Afişare nume album</string>
     <string name="display_extra_info_title">Afişare informaţii suplimentare</string>
     <string name="display_extra_info_summary">Afișează informații suplimentare despre melodie, cum ar fi bitrat, format, rată de eșantionare, etc.</string>
+    <string name="display_next_song_title">Display next song</string>
+    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Selectează informațiile suplimentare pentru a fi afișate în panoul playerului.</string>
     <string name="prefer_remaining_time_title">Preferă timpul rămas</string>
