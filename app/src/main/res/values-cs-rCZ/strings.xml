@@ -638,6 +638,8 @@
     <string name="display_album_name_title">Zobrazit název alba</string>
     <string name="display_extra_info_title">Zobrazit další informace</string>
     <string name="display_extra_info_summary">Zobrazit další informace o skladbě, jako je bitrate, formát, vzorkovací rychlost, atd.</string>
+    <string name="display_next_song_title">Display next song</string>
+    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Vyberte další informace k zobrazení v panelu přehrávače.</string>
     <string name="prefer_remaining_time_title">Preferovat zbývající čas</string>
