@@ -245,7 +245,7 @@
     <string name="sort_order_descending">Descendent</string>
     <string name="sort_order_ignore_articles">Ignora els articles</string>
     <string name="action_set_as_ringtone">Estableix com a to de trucada</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> s'establirà com a to de trucada]]></string>
+    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> s\'establirà com a to de trucada]]></string>
     <string name="x_has_been_set_as_ringtone">Estableix %s com a to de trucada</string>
     <string name="x_has_been_set_as_ringtone_and_as_alarm">Estableix %s com a to de trucada i alarma</string>
     <string name="use_also_as_alarm_alert">Fes servir també d\'alarma</string>
