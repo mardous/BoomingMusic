@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">Reproducir en aleatorio</string>
     <string name="action_queue_next">Añadir a continuación</string>
     <string name="shuffle_all_label">Todo aleatorio</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="advanced_shuffle_label">Mezcla avanzada</string>
+    <string name="shuffle_button_tip">Toca para mezcla normal. Mantén presionado para opciones avanzadas.</string>
     <string name="action_play_pause">Reproducir/Pausar</string>
     <string name="action_pause">Pausar</string>
     <string name="action_next">Siguiente</string>
@@ -246,8 +246,8 @@
     <string name="sort_order_ignore_articles">Ignorar artículos</string>
     <string name="action_set_as_ringtone">Usar como tono de llamada</string>
     <string name="x_will_be_set_as_ringtone"><![CDATA[Se usará <b>%s</b> como tono de llamada]]></string>
-    <string name="x_has_been_set_as_ringtone">Se configuró %s como tono</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Se configuró %s como tono y como alarma</string>
+    <string name="x_has_been_set_as_ringtone">Se configuró %s como tono.</string>
+    <string name="x_has_been_set_as_ringtone_and_as_alarm">Se configuró %s como tono y como alarma.</string>
     <string name="use_also_as_alarm_alert">Usar también como alarma</string>
     <string name="action_details">Detalles</string>
     <string name="action_set_as_start_directory">Establecer como directorio de inicio</string>
@@ -622,8 +622,8 @@
     <string name="display_album_name_title">Mostrar nombre del álbum</string>
     <string name="display_extra_info_title">Mostrar información adicional</string>
     <string name="display_extra_info_summary">Muestra información adicional sobre la canción en reproducción, como tasa de bits, formato, muestreo, etc.</string>
-    <string name="display_next_song_title">Display next song</string>
-    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
+    <string name="display_next_song_title">Mostrar siguiente canción</string>
+    <string name="display_next_song_summary">Muestra la siguiente canción en cola en la parte inferior del reproductor.</string>
     <string name="select_extra_info_title">Información adicional</string>
     <string name="select_extra_info_summary">Elija la información adicional a mostrar en el reproductor.</string>
     <string name="prefer_remaining_time_title">Preferir tiempo restante</string>
