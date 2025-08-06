@@ -622,6 +622,8 @@
     <string name="display_album_name_title">Albüm adını göster</string>
     <string name="display_extra_info_title">Ek bilgileri göster</string>
     <string name="display_extra_info_summary">Bit hızı, biçim, örnekleme hızı gibi şarkı hakkında ek bilgileri gösterin.</string>
+    <string name="display_next_song_title">Display next song</string>
+    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
     <string name="select_extra_info_title">Ek bilgi</string>
     <string name="select_extra_info_summary">Çalar panelinde görüntülenecek ek bilgileri seçin.</string>
     <string name="prefer_remaining_time_title">Kalan süreyi tercih et</string>
