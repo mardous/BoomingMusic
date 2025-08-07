@@ -681,11 +681,11 @@
     <string name="pause_on_bluetooth_disconnect_title">Pause on bluetooth disconnect</string>
     <string name="pause_on_bluetooth_disconnect_summary">Pauses playback when Bluetooth A2DP headset is disconnected. Recommended.</string>
     <string name="ignore_audio_focus_title">Ignore audio focus</string>
-    <string name="ignore_audio_focus_summary">Always play audio in background regardless of anything else being played.</string>
+    <string name="ignore_audio_focus_summary">השמיע תמיד אודיו ברקע, ללא קשר למה שמתנגן במקום אחר.</string>
     <string name="pause_on_transient_focus_loss_title">Transient focus loss</string>
     <string name="pause_on_transient_focus_loss_summary">Pause playback on transient focus loss (i.e. notifications, incoming calls).</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Auto download metadata</string>
+    <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
     <string name="ignore_media_store_album_covers_title">Ignore Media Store covers</string>
     <string name="ignore_media_store_album_covers_summary">This may help to increase images quality but require more memory.</string>
     <string name="use_folder_album_cover_title">Use folder images</string>
