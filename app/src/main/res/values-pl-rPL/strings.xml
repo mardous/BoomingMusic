@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">Dane przywrócone pomyślnie.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Wyjście AUX</string>
-    <string name="audio_device_bluetooth">Urządzenie Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Głośnik</string>
     <string name="audio_device_builtin_speaker">Wbudowany głośnik</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Słuchawki przewodowe</string>
     <string name="audio_device_usb_device">Urządzenie USB</string>
     <string name="audio_device_usb_headset">Zestaw słuchawkowy USB</string>
-    <string name="audio_device_default">Domyślny system</string>
-    <string name="audio_device_unknown">Nieznane</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Utwór</item>
