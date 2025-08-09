@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">Les dades s\'han restablert correctament.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Línia auxiliar</string>
-    <string name="audio_device_bluetooth">Dispositiu bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Altaveu</string>
     <string name="audio_device_builtin_speaker">Altaveu integrat</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Auriculars amb cable</string>
     <string name="audio_device_usb_device">Dispositiu USB</string>
     <string name="audio_device_usb_headset">Auriculars USB</string>
-    <string name="audio_device_default">Predeterminat</string>
-    <string name="audio_device_unknown">Desconegut</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Cançó</item>
