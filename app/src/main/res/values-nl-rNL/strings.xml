@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">Gegevens succesvol hersteld.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Lijn</string>
-    <string name="audio_device_bluetooth">Bluetooth apparaat</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Spreker</string>
     <string name="audio_device_builtin_speaker">Ingebouwde spreker</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Bedrade koptelefoon</string>
     <string name="audio_device_usb_device">USB-apparaat</string>
     <string name="audio_device_usb_headset">USB-koptelefoon</string>
-    <string name="audio_device_default">Standaard systeem</string>
-    <string name="audio_device_unknown">Onbekend</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Nummer</item>
