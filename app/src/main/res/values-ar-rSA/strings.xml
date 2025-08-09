@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">تمت استعادة البيانات بنجاح.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">سطر Aux</string>
-    <string name="audio_device_bluetooth">جهاز البلوتوث</string>
     <string name="audio_device_bluetooth_a2dp">البلوتوث A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">مكبر</string>
     <string name="audio_device_builtin_speaker">مكبر الصوت المدمج</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">سماعة الرأس</string>
     <string name="audio_device_usb_device">جهاز USB</string>
     <string name="audio_device_usb_headset">سماعة USB</string>
-    <string name="audio_device_default">النظام الافتراضي</string>
-    <string name="audio_device_unknown">غير معروف</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="zero">الأغاني</item>
