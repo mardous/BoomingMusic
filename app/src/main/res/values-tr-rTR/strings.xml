@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">Veriler başarıyla geri yüklendi.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Kablosu</string>
-    <string name="audio_device_bluetooth">Bluetooth cihazı</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Hoparlör</string>
     <string name="audio_device_builtin_speaker">Dahili Hoparlör</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Kablolu kulaklık</string>
     <string name="audio_device_usb_device">USB Cihazı</string>
     <string name="audio_device_usb_headset">USB Kulaklık</string>
-    <string name="audio_device_default">Sistem varsayılanı</string>
-    <string name="audio_device_unknown">Bilinmeyen</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Şarkı</item>
