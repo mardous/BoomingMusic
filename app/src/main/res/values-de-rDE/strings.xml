@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">Daten erfolgreich wiederhergestellt.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux-Kabel</string>
-    <string name="audio_device_bluetooth">Bluetooth-Gerät</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Lautsprecher</string>
     <string name="audio_device_builtin_speaker">Integrierter Lautsprecher</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Kabelgebundene Kopfhörer</string>
     <string name="audio_device_usb_device">USB-Gerät</string>
     <string name="audio_device_usb_headset">USB-Kopfhörer</string>
-    <string name="audio_device_default">Systemstandard</string>
-    <string name="audio_device_unknown">Unbekannt</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Titel</item>
