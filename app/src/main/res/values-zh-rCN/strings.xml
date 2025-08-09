@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">数据已成功恢复。</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux 行</string>
-    <string name="audio_device_bluetooth">蓝牙设备</string>
     <string name="audio_device_bluetooth_a2dp">蓝牙 A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">扬声器</string>
     <string name="audio_device_builtin_speaker">内置扬声器</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">有线耳机</string>
     <string name="audio_device_usb_device">USB 设备</string>
     <string name="audio_device_usb_headset">USB 耳机</string>
-    <string name="audio_device_default">系统默认</string>
-    <string name="audio_device_unknown">未知的</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="other">歌曲</item>
