@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">Резервну копію успішно відновлено.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Лінія зв\'язку</string>
-    <string name="audio_device_bluetooth">Пристрій Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Динамік</string>
     <string name="audio_device_builtin_speaker">Вбудований гучномовець</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Дротова гарнітура</string>
     <string name="audio_device_usb_device">USB пристрій</string>
     <string name="audio_device_usb_headset">USB гарнітура</string>
-    <string name="audio_device_default">За замовчуванням системи</string>
-    <string name="audio_device_unknown">Не вказано</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Пісня</item>
