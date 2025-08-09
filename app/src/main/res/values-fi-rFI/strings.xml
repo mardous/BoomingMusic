@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">Tiedot palautettu onnistuneesti.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Viiva</string>
-    <string name="audio_device_bluetooth">Bluetooth-laite</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Kaiutin</string>
     <string name="audio_device_builtin_speaker">Sisäänrakennettu Kaiutin</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Langalliset kuulokkeet</string>
     <string name="audio_device_usb_device">Usb Laite</string>
     <string name="audio_device_usb_headset">Usb Kuulokkeet</string>
-    <string name="audio_device_default">Järjestelmän oletus</string>
-    <string name="audio_device_unknown">Tuntematon</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Kappale</item>
