@@ -337,17 +337,12 @@
     <string name="data_restored_successfully">डेटा सफलतापूर्वक पुनर्स्थापित किया गया।</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">ऑक्स लाइन</string>
-    <string name="audio_device_bluetooth">ब्लूटूथ डिवाइस</string>
     <string name="audio_device_bluetooth_a2dp">ब्लुटूथ A2DP</string>
-    <string name="audio_device_bluetooth_sco">ब्लूटूथ एससीओ</string>
-    <string name="audio_device_speaker">स्पीकर</string>
     <string name="audio_device_builtin_speaker">बिल्टइन स्पीकर</string>
     <string name="audio_device_hdmi">एचडीएमआई</string>
     <string name="audio_device_headset">वायर्ड हेडसेट</string>
     <string name="audio_device_usb_device">यूएसबी डिवाइस</string>
     <string name="audio_device_usb_headset">यूएसबी हेडसेट</string>
-    <string name="audio_device_default">सिस्टम का डिफ़ॉल्ट</string>
-    <string name="audio_device_unknown">अनजान</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">एक गाना</item>
