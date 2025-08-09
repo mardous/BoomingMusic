@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">Date restaurate cu succes.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Linie automată</string>
-    <string name="audio_device_bluetooth">Dispozitiv Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Difuzor</string>
     <string name="audio_device_builtin_speaker">Difuzor încorporat</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Set cu cască</string>
     <string name="audio_device_usb_device">Dispozitiv USB</string>
     <string name="audio_device_usb_headset">Căști USB</string>
-    <string name="audio_device_default">Sistemul implicit</string>
-    <string name="audio_device_unknown">Necunoscut</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Melodie</item>
