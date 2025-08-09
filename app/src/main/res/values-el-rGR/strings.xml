@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">Τα δεδομένα επαναφέρθηκαν επιτυχώς.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Γραμμή Aux</string>
-    <string name="audio_device_bluetooth">Συσκευή Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Ηχείο</string>
     <string name="audio_device_builtin_speaker">Ενσωματωμένο Ηχείο</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Ενσύρματα ακουστικά</string>
     <string name="audio_device_usb_device">Συσκευή USB</string>
     <string name="audio_device_usb_headset">Ακουστικά USB</string>
-    <string name="audio_device_default">Προεπιλογή συστήματος</string>
-    <string name="audio_device_unknown">Άγνωστο</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Τραγούδι</item>
