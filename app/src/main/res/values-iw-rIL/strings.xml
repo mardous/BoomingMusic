@@ -338,17 +338,12 @@
     <string name="data_restored_successfully">הנתונים שוחזרו בהצלחה.</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Line</string>
-    <string name="audio_device_bluetooth">התקן בלוטות\'</string>
     <string name="audio_device_bluetooth_a2dp">בלוטות\' A2DP</string>
-    <string name="audio_device_bluetooth_sco">בלוטות\' SCO</string>
-    <string name="audio_device_speaker">רמקול</string>
     <string name="audio_device_builtin_speaker">רמקול מובנה</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">אוזניות חוטיות</string>
     <string name="audio_device_usb_device">התקן USB</string>
     <string name="audio_device_usb_headset">אוזניות USB</string>
-    <string name="audio_device_default">ברירת המחדל של המערכת</string>
-    <string name="audio_device_unknown">לא ידוע</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">שיר</item>
