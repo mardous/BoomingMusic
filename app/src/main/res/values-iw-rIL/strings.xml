@@ -696,8 +696,8 @@
     <string name="trash_music_summary">שלח קבצים שנמחקו לסל המיחזור.</string>
     <string name="recursive_folder_actions_title">פעולות המשפיעות על תת-תיקיות</string>
     <string name="recursive_folder_actions_summary">בחר אילו פעולות יחולו גם על תת-תיקיות כאשר מבצעים אותן על תיקייה.</string>
-    <string name="enable_history_title">Enable History</string>
-    <string name="enable_history_summary">Allows the application to record the songs you\'ve been listening to. If you disable it the entire history will be cleared.</string>
+    <string name="enable_history_title">הפעל היסטוריה</string>
+    <string name="enable_history_summary">מאפשר לאפליקציה לשמור רשימה של השירים שהאזנת להם. אם תבטל אפשרות זו, כל ההיסטוריה תימחק.</string>
     <string name="history_interval_title">History interval</string>
     <string name="last_added_interval_title">Last added interval</string>
     <string name="whitelist_title">Whitelist</string>
