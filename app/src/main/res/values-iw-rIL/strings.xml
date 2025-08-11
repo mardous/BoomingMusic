@@ -698,11 +698,11 @@
     <string name="recursive_folder_actions_summary">בחר אילו פעולות יחולו גם על תת-תיקיות כאשר מבצעים אותן על תיקייה.</string>
     <string name="enable_history_title">הפעל היסטוריה</string>
     <string name="enable_history_summary">מאפשר לאפליקציה לשמור רשימה של השירים שהאזנת להם. אם תבטל אפשרות זו, כל ההיסטוריה תימחק.</string>
-    <string name="history_interval_title">History interval</string>
-    <string name="last_added_interval_title">Last added interval</string>
-    <string name="whitelist_title">Whitelist</string>
-    <string name="whitelist_summary">Only the content of whitelisted folders is shown in your library.</string>
-    <string name="blacklist_title">Blacklist</string>
+    <string name="history_interval_title">מרווח היסטוריה</string>
+    <string name="last_added_interval_title">מרווח נוסף לאחרונה</string>
+    <string name="whitelist_title">רשימת היתרים</string>
+    <string name="whitelist_summary">רק התוכן של תיקיות ברשימת ההיתרים מוצג בספרייה שלך.</string>
+    <string name="blacklist_title">רשימת חסימה</string>
     <string name="blacklist_summary">The content of blacklisted folders is hidden from your library.</string>
     <string name="artist_min_songs_title">Artist minimum song count</string>
     <string name="artist_min_songs_summary">How many songs (at least) must have an artist to be shown in your library.</string>
