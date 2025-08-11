@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">Lecture aléatoire</string>
     <string name="action_queue_next">File d\'attente suivante</string>
     <string name="shuffle_all_label">Lecture aléatoire de tout</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="advanced_shuffle_label">Lecture aléatoire avancée</string>
+    <string name="shuffle_button_tip">Appuyez pour une lecture aléatoire normale. Appuyez longuement pour accéder aux options avancées.</string>
     <string name="action_play_pause">Lecture/Pause</string>
     <string name="action_pause">Mettre en pause</string>
     <string name="action_next">Suivant</string>
@@ -617,8 +617,8 @@
     <string name="display_album_name_title">Afficher le nom de l\'album</string>
     <string name="display_extra_info_title">Afficher les informations supplémentaires</string>
     <string name="display_extra_info_summary">Affichez des informations supplémentaires sur le titre, comme le débit binaire, le format, le taux d\'échantillonnage, etc.</string>
-    <string name="display_next_song_title">Display next song</string>
-    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
+    <string name="display_next_song_title">Afficher le titre suivant</string>
+    <string name="display_next_song_summary">Affiche le titre suivant dans la file d\'attente en bas du lecteur.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Sélectionnez les informations supplémentaires à afficher dans le panneau du lecteur.</string>
     <string name="prefer_remaining_time_title">Préférer le temps restant</string>
