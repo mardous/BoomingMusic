@@ -3,7 +3,7 @@
     <string name="action_play">Reproduzir</string>
     <string name="action_play_all">Reproduzir todas</string>
     <string name="action_shuffle_play">Reprodução aleatória</string>
-    <string name="action_queue_next">Fila seguinte</string>
+    <string name="action_queue_next">Tocar em seguida</string>
     <string name="shuffle_all_label">Misturar tudo</string>
     <string name="advanced_shuffle_label">Mistura avançada</string>
     <string name="shuffle_button_tip">Toque para modo aleatório normal. Mantenha pressionado para opções avançadas.</string>
@@ -38,7 +38,7 @@
     <string name="i_am_listening">Estou ouvindo…</string>
     <string name="currently_listening_to_x_by_x">Estou ouvindo %1$s de %2$s</string>
     <string name="share_to_stories">Compartilhar nos Stories</string>
-    <string name="could_not_create_the_story">Não foi possível criar o Stories.</string>
+    <string name="could_not_create_the_story">Não foi possível criar o Story.</string>
     <string name="back_action">Voltar</string>
     <string name="rename_action">Renomear</string>
     <string name="add_action">Adicionar</string>
