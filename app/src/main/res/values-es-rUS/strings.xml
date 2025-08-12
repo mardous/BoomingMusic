@@ -336,6 +336,9 @@
     <string name="select_content_to_restore">Elija el contenido a restaurar:</string>
     <string name="could_not_restore_data">No se pudo restaurar. Verifique el archivo de respaldo y reintente.</string>
     <string name="data_restored_successfully">Datos restaurados con éxito.</string>
+    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
+    <string name="queue_locked">Queue locked</string>
+    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Línea auxiliar</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
