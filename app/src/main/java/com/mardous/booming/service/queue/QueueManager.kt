@@ -22,9 +22,14 @@ import android.support.v4.media.session.MediaSessionCompat
 import com.mardous.booming.extensions.media.albumCoverUri
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.indexOfSong
-import com.mardous.booming.model.Song
-import com.mardous.booming.model.SongProvider
-import com.mardous.booming.providers.databases.PlaybackQueueStore
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.SongProvider
+import com.mardous.booming.core.legacy.PlaybackQueueStore
+import com.mardous.booming.core.model.shuffle.GroupShuffleMode
+import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
+import com.mardous.booming.data.mapper.toQueueSong
+import com.mardous.booming.data.mapper.toQueueSongs
+import com.mardous.booming.data.model.QueueSong
 import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.sort.SortOrder

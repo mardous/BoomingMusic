@@ -17,10 +17,10 @@
 
 package com.mardous.booming.glide.playlistPreview
 
-import com.mardous.booming.database.PlaylistEntity
-import com.mardous.booming.database.PlaylistWithSongs
-import com.mardous.booming.database.toSongs
-import com.mardous.booming.model.Song
+import com.mardous.booming.data.local.room.PlaylistEntity
+import com.mardous.booming.data.local.room.PlaylistWithSongs
+import com.mardous.booming.data.mapper.toSongs
+import com.mardous.booming.data.model.Song
 
 class PlaylistPreview(private val playlistWithSongs: PlaylistWithSongs) {
 

@@ -21,7 +21,7 @@ import android.content.Context
 import androidx.core.app.NotificationCompat
 import com.mardous.booming.R
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.model.Song
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.util.NotificationExtraText
 import com.mardous.booming.util.NotificationPriority

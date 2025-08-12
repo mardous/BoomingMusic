@@ -221,7 +221,7 @@
             app:layout="@layout/list_item_view"
             app:key="replaygain_source_mode"/>
 
-        <com.mardous.booming.preferences.dialog.PreAmpPreference
+        <com.mardous.booming.ui.component.preferences.dialog.PreAmpPreference
             app:iconSpaceReserved="true"
             app:title="@string/replaygain_preamp_title"
             app:summary="@string/replaygain_preamp_summary"

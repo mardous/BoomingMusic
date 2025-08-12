@@ -23,7 +23,7 @@ import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import com.mardous.booming.R
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.model.Song
+import com.mardous.booming.data.model.Song
 
 const val MIME_TYPE_AUDIO = "audio/*"
 const val MIME_TYPE_IMAGE = "image/*"

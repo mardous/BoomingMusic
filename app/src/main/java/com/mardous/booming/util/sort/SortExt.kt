@@ -20,9 +20,14 @@ package com.mardous.booming.util.sort
 import android.view.Menu
 import android.view.MenuItem
 import com.mardous.booming.R
-import com.mardous.booming.database.PlaylistWithSongs
+import com.mardous.booming.data.local.room.PlaylistWithSongs
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.Folder
+import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.model.ReleaseYear
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.albumArtistName
-import com.mardous.booming.model.*
 import java.text.Collator
 import java.util.Locale
 

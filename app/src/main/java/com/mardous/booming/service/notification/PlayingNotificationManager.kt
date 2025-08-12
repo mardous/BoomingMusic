@@ -10,8 +10,8 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.ServiceCompat
 import androidx.core.content.getSystemService
 import com.mardous.booming.R
-import com.mardous.booming.activities.MainActivity
-import com.mardous.booming.model.Song
+import com.mardous.booming.ui.screen.MainActivity
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.service.queue.QueueManager
 import com.mardous.booming.util.Preferences

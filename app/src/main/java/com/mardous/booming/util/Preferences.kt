@@ -32,13 +32,17 @@ import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.intRes
 import com.mardous.booming.extensions.utilities.*
-import com.mardous.booming.fragments.player.PlayerColorSchemeMode
-import com.mardous.booming.model.*
-import com.mardous.booming.model.theme.AppTheme
-import com.mardous.booming.model.theme.NowPlayingScreen
-import com.mardous.booming.service.queue.GroupShuffleMode
-import com.mardous.booming.transform.*
-import com.mardous.booming.views.TopAppBarLayout
+import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.*
+import com.mardous.booming.core.model.action.FolderAction
+import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.core.model.action.QueueQuickAction
+import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.core.model.theme.AppTheme
+import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.core.model.shuffle.GroupShuffleMode
+import com.mardous.booming.ui.component.transform.*
+import com.mardous.booming.ui.component.views.TopAppBarLayout
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.File
@@ -243,7 +247,10 @@ object Preferences : KoinComponent {
 
     fun getDefaultNowPlayingInfo(): List<NowPlayingInfo> =
         NowPlayingInfo.Info.entries.map { tag ->
-            NowPlayingInfo(tag, tag == NowPlayingInfo.Info.Format || tag == NowPlayingInfo.Info.Bitrate || tag == NowPlayingInfo.Info.SampleRate)
+            NowPlayingInfo(
+                tag,
+                tag == NowPlayingInfo.Info.Format || tag == NowPlayingInfo.Info.Bitrate || tag == NowPlayingInfo.Info.SampleRate
+            )
         }
 
     var preferRemainingTime: Boolean

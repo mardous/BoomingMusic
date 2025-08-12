@@ -29,12 +29,6 @@
 -dontwarn javax.annotation.**
 -dontwarn org.commonmark.ext.gfm.strikethrough.**
 
-# RetroFit
--dontwarn retrofit.**
--keep class retrofit.** { *; }
-# Keep generic signature of Call, Response (R8 full mode strips signatures from non-kept items).
--keep,allowobfuscation,allowshrinking interface retrofit2.Call
--keep,allowobfuscation,allowshrinking class retrofit2.Response
 -keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation
 
 # With R8 full mode generic signatures are stripped for classes that are not
@@ -86,26 +80,15 @@
 -keep class com.google.android.material.bottomsheet.** { *; }
 -keep class com.google.android.material.transition.** { *; }
 
-# Keep player
--keep class com.mardous.booming.fragments.player.base.** { *; }
--keep class com.mardous.booming.fragments.player.styles.** { *; }
+-keep class com.mardous.booming.ui.component.base.** { *; }
+-keep class com.mardous.booming.ui.screen.player.styles.** { *; }
 
--keep class com.mardous.booming.model.** { *; }
--keep class com.mardous.booming.database.LyricsEntity { *; }
--keep class com.mardous.booming.http.deezer.model.** { *; }
--keep class com.mardous.booming.http.lastfm.model.** { *; }
--keep class com.mardous.booming.search.** { *; }
-
-# Gson - required after agp 8 made r8 full mode default
--keep,allowobfuscation,allowshrinking class com.google.gson.reflect.TypeToken
--keep,allowobfuscation,allowshrinking class * extends com.google.gson.reflect.TypeToken
--keep,allowobfuscation,allowshrinking public class * implements java.lang.reflect.Type
-
-# Prevent proguard from stripping interface information from TypeAdapterFactory,
-# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
--keep class * implements com.google.gson.TypeAdapterFactory
--keep class * implements com.google.gson.JsonSerializer
--keep class * implements com.google.gson.JsonDeserializer
+-keep class com.mardous.booming.core.model.** { *; }
+-keep class com.mardous.booming.data.local.room.LyricsEntity { *; }
+-keep class com.mardous.booming.data.remote.deezer.model.** { *; }
+-keep class com.mardous.booming.data.remote.lastfm.model.** { *; }
+-keep class com.mardous.booming.data.local.search.** { *; }
+-keep class com.mardous.booming.data.model.search.** { *; }
 
 # Hide an annoying compilation warning
 # http://stackoverflow.com/questions/3308010/what-is-the-ignoring-innerclasses-attribute-warning-output-during-compilation

@@ -17,7 +17,7 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:listitem="@layout/item_list"/>
 
-    <com.mardous.booming.views.TopAppBarLayout
+    <com.mardous.booming.ui.component.views.TopAppBarLayout
         android:id="@+id/appBarLayout"
         style="?appBarLayoutStyle"
         android:layout_width="match_parent"

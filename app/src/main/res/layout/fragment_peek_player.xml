@@ -21,7 +21,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/playerAlbumCoverFragment"
-        android:name="com.mardous.booming.fragments.player.cover.CoverPagerFragment"
+        android:name="com.mardous.booming.ui.screen.player.cover.CoverPagerFragment"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginStart="16dp"
@@ -92,7 +92,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playbackControlsFragment"
-            android:name="com.mardous.booming.fragments.player.styles.peekplayerstyle.PeekPlayerControlsFragment"
+            android:name="com.mardous.booming.ui.screen.player.styles.peekplayerstyle.PeekPlayerControlsFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_peek_player_playback_controls" />

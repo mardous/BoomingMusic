@@ -22,8 +22,8 @@ import android.media.AudioDeviceInfo
 import android.media.audiofx.AudioEffect
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.mardous.booming.audio.SoundSettings
-import com.mardous.booming.model.Song
+import com.mardous.booming.core.audio.SoundSettings
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.service.AudioFader
 import com.mardous.booming.service.CrossFadePlayer
 import com.mardous.booming.service.MultiPlayer

@@ -37,9 +37,9 @@ import com.mardous.booming.glide.artistimage.ArtistImage
 import com.mardous.booming.glide.audiocover.AudioFileCover
 import com.mardous.booming.glide.palette.BitmapPaletteWrapper
 import com.mardous.booming.glide.transformation.BlurTransformation
-import com.mardous.booming.model.Album
-import com.mardous.booming.model.Artist
-import com.mardous.booming.model.Song
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

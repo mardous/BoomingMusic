@@ -32,7 +32,7 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.mardous.booming.R
-import com.mardous.booming.activities.MainActivity
+import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.glide.asBitmapPalette
 import com.mardous.booming.extensions.glide.getSongGlideModel
@@ -43,8 +43,8 @@ import com.mardous.booming.extensions.resources.getSecondaryTextColor
 import com.mardous.booming.extensions.resources.isColorLight
 import com.mardous.booming.extensions.resources.toBitmap
 import com.mardous.booming.glide.palette.BitmapPaletteWrapper
-import com.mardous.booming.helper.color.MediaNotificationProcessor
-import com.mardous.booming.model.Song
+import com.mardous.booming.util.color.MediaNotificationProcessor
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
 import com.mardous.booming.util.Preferences

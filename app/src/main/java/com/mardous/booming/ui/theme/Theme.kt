@@ -10,8 +10,8 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import com.mardous.booming.fragments.player.PlayerColorScheme
-import com.mardous.booming.ui.components.color.primaryTextColor
+import com.mardous.booming.ui.screen.player.PlayerColorScheme
+import com.mardous.booming.ui.component.compose.color.primaryTextColor
 import com.mardous.booming.util.Preferences
 
 private val lightScheme = lightColorScheme(

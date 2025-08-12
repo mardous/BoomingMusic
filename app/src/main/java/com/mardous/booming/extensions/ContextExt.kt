@@ -47,7 +47,7 @@ import com.google.android.material.shape.ShapeAppearanceModel
 import com.mardous.booming.extensions.files.readString
 import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.extensions.resources.getTinted
-import com.mardous.booming.model.theme.AppTheme
+import com.mardous.booming.core.model.theme.AppTheme
 import com.mardous.booming.util.AutoDownloadMetadataPolicy
 import com.mardous.booming.util.Preferences
 import io.ktor.http.encodeURLParameter

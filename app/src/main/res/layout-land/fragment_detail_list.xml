@@ -45,7 +45,7 @@
                     tools:ignore="MissingPrefix"
                     tools:text="@tools:sample/full_names" />
 
-                <com.mardous.booming.views.BaselineGridTextView
+                <com.mardous.booming.ui.component.views.BaselineGridTextView
                     android:id="@+id/subtitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

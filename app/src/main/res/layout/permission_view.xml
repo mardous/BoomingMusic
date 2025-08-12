@@ -40,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="@string/permission_bluetooth_title"/>
 
-    <com.mardous.booming.views.BaselineGridTextView
+    <com.mardous.booming.ui.component.views.BaselineGridTextView
         android:id="@+id/text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

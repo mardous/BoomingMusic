@@ -32,11 +32,11 @@ import com.mardous.booming.extensions.resources.toForegroundColorSpan
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.model.NowPlayingInfo
-import com.mardous.booming.model.Song
-import com.mardous.booming.model.WebSearchEngine
-import com.mardous.booming.taglib.MetadataReader
-import com.mardous.booming.taglib.ReplayGainTagExtractor
+import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.core.model.WebSearchEngine
+import com.mardous.booming.data.local.MetadataReader
+import com.mardous.booming.data.local.ReplayGainTagExtractor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File

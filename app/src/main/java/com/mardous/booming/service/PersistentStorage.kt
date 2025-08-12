@@ -3,8 +3,8 @@ package com.mardous.booming.service
 import android.content.Context
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import com.mardous.booming.providers.databases.PlaybackQueueStore
-import com.mardous.booming.repository.SongRepository
+import com.mardous.booming.core.legacy.PlaybackQueueStore
+import com.mardous.booming.data.local.repository.SongRepository
 import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.service.queue.QueueManager

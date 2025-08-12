@@ -23,9 +23,13 @@ import android.media.audiofx.AudioEffect
 import android.media.audiofx.Equalizer
 import androidx.core.content.edit
 import com.mardous.booming.extensions.files.getFormattedFileName
-import com.mardous.booming.model.EQPreset
-import com.mardous.booming.model.EQPreset.Companion.getEmptyPreset
-import com.mardous.booming.viewmodels.equalizer.model.*
+import com.mardous.booming.core.model.equalizer.EQPreset
+import com.mardous.booming.core.model.equalizer.EQPreset.Companion.getEmptyPreset
+import com.mardous.booming.core.model.equalizer.EqEffectState
+import com.mardous.booming.core.model.equalizer.EqEffectUpdate
+import com.mardous.booming.core.model.equalizer.EqPresetList
+import com.mardous.booming.core.model.equalizer.EqState
+import com.mardous.booming.core.model.equalizer.EqUpdate
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.withContext

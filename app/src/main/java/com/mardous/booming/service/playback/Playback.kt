@@ -21,7 +21,7 @@ import android.media.AudioDeviceInfo
 import android.os.Build
 import android.support.v4.media.session.PlaybackStateCompat
 import androidx.annotation.RequiresApi
-import com.mardous.booming.model.Song
+import com.mardous.booming.data.model.Song
 
 interface Playback {
 

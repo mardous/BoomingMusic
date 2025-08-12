@@ -25,7 +25,7 @@
         android:defaultValue="false"
         android:key="update_only_wifi"/>
 
-    <com.mardous.booming.preferences.ProgressIndicatorPreference
+    <com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
         android:layout="@layout/list_item_view_widget"
         android:widgetLayout="@layout/preference_widget_progressbar"
         android:title="@string/search_for_update_title"

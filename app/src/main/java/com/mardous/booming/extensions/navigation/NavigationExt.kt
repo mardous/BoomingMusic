@@ -26,17 +26,23 @@ import androidx.navigation.contains
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
-import com.mardous.booming.fragments.albums.AlbumDetailFragmentArgs
-import com.mardous.booming.fragments.artists.ArtistDetailFragmentArgs
-import com.mardous.booming.fragments.folders.FolderDetailFragmentArgs
-import com.mardous.booming.fragments.genres.GenreDetailFragmentArgs
-import com.mardous.booming.fragments.info.PlayInfoFragmentArgs
-import com.mardous.booming.fragments.info.SongDetailFragmentArgs
-import com.mardous.booming.fragments.other.DetailListFragmentArgs
-import com.mardous.booming.fragments.playlists.PlaylistDetailFragmentArgs
-import com.mardous.booming.fragments.search.SearchFragmentArgs
-import com.mardous.booming.model.*
-import com.mardous.booming.search.SearchFilter
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.ContentType
+import com.mardous.booming.data.model.Folder
+import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.ui.screen.library.albums.AlbumDetailFragmentArgs
+import com.mardous.booming.ui.screen.library.artists.ArtistDetailFragmentArgs
+import com.mardous.booming.ui.screen.library.folders.FolderDetailFragmentArgs
+import com.mardous.booming.ui.screen.library.genres.GenreDetailFragmentArgs
+import com.mardous.booming.ui.screen.info.PlayInfoFragmentArgs
+import com.mardous.booming.ui.screen.info.SongDetailFragmentArgs
+import com.mardous.booming.ui.screen.other.DetailListFragmentArgs
+import com.mardous.booming.ui.screen.library.playlists.PlaylistDetailFragmentArgs
+import com.mardous.booming.ui.screen.library.search.SearchFragmentArgs
+import com.mardous.booming.core.model.*
+import com.mardous.booming.data.SearchFilter
 import com.mardous.booming.util.Preferences
 
 fun playInfoArgs(album: Album) =

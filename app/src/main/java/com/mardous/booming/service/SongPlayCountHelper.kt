@@ -17,8 +17,8 @@
 
 package com.mardous.booming.service
 
-import com.mardous.booming.helper.StopWatch
-import com.mardous.booming.model.Song
+import com.mardous.booming.util.StopWatch
+import com.mardous.booming.data.model.Song
 
 class SongPlayCountHelper {
 

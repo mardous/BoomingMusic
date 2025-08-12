@@ -1,6 +1,6 @@
 package com.mardous.booming.service.queue
 
-import com.mardous.booming.model.Song
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.service.playback.Playback
 
 interface QueueObserver {

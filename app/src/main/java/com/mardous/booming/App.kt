@@ -27,10 +27,10 @@ import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import cat.ereza.customactivityoncrash.config.CaocConfig
 import com.bumptech.glide.Glide
-import com.mardous.booming.activities.ErrorActivity
-import com.mardous.booming.activities.MainActivity
-import com.mardous.booming.fragments.settings.SettingsScreen
-import com.mardous.booming.taglib.ReplayGainTagExtractor
+import com.mardous.booming.ui.screen.error.ErrorActivity
+import com.mardous.booming.ui.screen.settings.SettingsScreen
+import com.mardous.booming.data.local.ReplayGainTagExtractor
+import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.util.EXPERIMENTAL_UPDATES
 import com.mardous.booming.util.Preferences.getDayNightMode
 import org.koin.android.ext.koin.androidContext

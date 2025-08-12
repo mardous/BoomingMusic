@@ -2,7 +2,7 @@
 <androidx.preference.PreferenceScreen
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.mardous.booming.preferences.ThemePreference
+    <com.mardous.booming.ui.component.preferences.ThemePreference
         app:icon="@drawable/ic_contrast_24dp"
         app:title="@string/general_theme_title"
         app:persistent="false"
@@ -45,7 +45,7 @@
         app:title="@string/library_header"
         app:layout="@layout/preference_category_title">
 
-        <com.mardous.booming.preferences.dialog.CategoriesPreference
+        <com.mardous.booming.ui.component.preferences.dialog.CategoriesPreference
             app:icon="@drawable/ic_tab_24dp"
             app:title="@string/library_categories_title"
             app:summary="@string/library_categories_summary"

@@ -32,13 +32,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.mardous.booming.R
-import com.mardous.booming.activities.MainActivity
+import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.glide.getSongGlideModel
 import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.model.Song
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
 

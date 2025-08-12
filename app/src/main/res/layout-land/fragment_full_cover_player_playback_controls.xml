@@ -84,7 +84,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="36dp"/>
 
-    <com.mardous.booming.views.MusicSlider
+    <com.mardous.booming.ui.component.views.MusicSlider
         android:id="@+id/progressSlider"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

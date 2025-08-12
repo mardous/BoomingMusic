@@ -16,7 +16,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playerAlbumCoverFragment"
-            android:name="com.mardous.booming.fragments.player.cover.CoverPagerFragment"
+            android:name="com.mardous.booming.ui.screen.player.cover.CoverPagerFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constrainedHeight="true"
@@ -39,7 +39,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playbackControlsFragment"
-            android:name="com.mardous.booming.fragments.player.styles.gradientstyle.GradientPlayerControlsFragment"
+            android:name="com.mardous.booming.ui.screen.player.styles.gradientstyle.GradientPlayerControlsFragment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constrainedHeight="true"

@@ -53,7 +53,7 @@
         android:theme="@style/Theme.Booming.FollowSystem"
         tools:ignore="UnusedAttribute">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/Theme.Booming.SplashScreen"
             android:exported="true">
@@ -149,25 +149,25 @@
 
         <activity
             android:label="@string/action_tag_editor"
-            android:name=".activities.tageditor.SongTagEditorActivity"/>
+            android:name="com.mardous.booming.presentation.screen.tageditor.SongTagEditorActivity"/>
 
         <activity
             android:label="@string/action_tag_editor"
-            android:name=".activities.tageditor.AlbumTagEditorActivity"/>
+            android:name="com.mardous.booming.presentation.screen.tageditor.AlbumTagEditorActivity"/>
 
         <activity
             android:label="@string/action_tag_editor"
-            android:name=".activities.tageditor.ArtistTagEditorActivity"/>
+            android:name="com.mardous.booming.presentation.screen.tageditor.ArtistTagEditorActivity"/>
 
-        <activity android:name=".activities.PermissionsActivity"/>
+        <activity android:name="com.mardous.booming.presentation.screen.permissions.PermissionsActivity"/>
 
         <activity
-            android:name=".appshortcuts.AppShortcutLauncherActivity"
+            android:name="com.mardous.booming.core.appshortcuts.AppShortcutLauncherActivity"
             android:launchMode="singleInstance"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
         <activity
-            android:name=".activities.ErrorActivity"
+            android:name="com.mardous.booming.presentation.screen.error.ErrorActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="cat.ereza.customactivityoncrash.RESTART"/>
@@ -195,7 +195,7 @@
 
         <!-- Widgets -->
         <receiver
-            android:name=".appwidgets.AppWidgetBig"
+            android:name="com.mardous.booming.core.appwidgets.AppWidgetBig"
             android:exported="false"
             android:label="@string/app_widget_big_name">
             <intent-filter>
@@ -207,7 +207,7 @@
                 android:resource="@xml/app_widget_big_info"/>
         </receiver>
         <receiver
-            android:name=".appwidgets.AppWidgetSimple"
+            android:name="com.mardous.booming.core.appwidgets.AppWidgetSimple"
             android:exported="false"
             android:label="@string/app_widget_simple_name">
             <intent-filter>
@@ -219,7 +219,7 @@
                 android:resource="@xml/app_widget_simple_info"/>
         </receiver>
         <receiver
-            android:name=".appwidgets.AppWidgetSmall"
+            android:name="com.mardous.booming.core.appwidgets.AppWidgetSmall"
             android:exported="false"
             android:label="@string/app_widget_small_name">
             <intent-filter>

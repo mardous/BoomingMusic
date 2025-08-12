@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="?colorSurface">
 
-    <com.mardous.booming.views.TopAppBarLayout
+    <com.mardous.booming.ui.component.views.TopAppBarLayout
         android:id="@+id/appBarLayout"
         style="?appBarLayoutStyle"
         android:layout_width="match_parent"

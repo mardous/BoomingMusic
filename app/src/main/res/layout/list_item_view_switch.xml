@@ -38,7 +38,7 @@
         tools:maxLines="1"
         tools:text="@tools:sample/lorem"/>
 
-    <com.mardous.booming.views.BaselineGridTextView
+    <com.mardous.booming.ui.component.views.BaselineGridTextView
         android:id="@android:id/summary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
