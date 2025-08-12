@@ -336,6 +336,9 @@
     <string name="select_content_to_restore">復元するコンテンツを選択:</string>
     <string name="could_not_restore_data">データを復元できませんでした。バックアップファイルを確認して再試行してください。</string>
     <string name="data_restored_successfully">データの復元に成功しました。</string>
+    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
+    <string name="queue_locked">Queue locked</string>
+    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Auxライン</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
