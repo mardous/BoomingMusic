@@ -336,6 +336,9 @@
     <string name="select_content_to_restore">选择要恢复的内容：</string>
     <string name="could_not_restore_data">无法恢复数据。请验证备份文件并重试。</string>
     <string name="data_restored_successfully">数据已成功恢复。</string>
+    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
+    <string name="queue_locked">Queue locked</string>
+    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux 行</string>
     <string name="audio_device_bluetooth_a2dp">蓝牙 A2DP</string>
