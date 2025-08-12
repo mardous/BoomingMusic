@@ -336,6 +336,9 @@
     <string name="select_content_to_restore">Selectaţi conţinutul pentru restaurare:</string>
     <string name="could_not_restore_data">Nu s-a putut restaura datele. Verificaţi fişierul copie de rezervă şi încercaţi din nou.</string>
     <string name="data_restored_successfully">Date restaurate cu succes.</string>
+    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
+    <string name="queue_locked">Queue locked</string>
+    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Linie automată</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
