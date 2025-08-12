@@ -335,9 +335,9 @@
     <string name="select_content_to_restore">Selecione o conteúdo para restaurar:</string>
     <string name="could_not_restore_data">Não foi possível restaurar os dados. Verifique o arquivo de backup e tente novamente.</string>
     <string name="data_restored_successfully">Dados restaurados com sucesso.</string>
-    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
+    <string name="action_toggle_queue_lock">Bloquear/desbloquear fila</string>
+    <string name="queue_locked">Fila bloqueada</string>
+    <string name="queue_unlocked">Fila desbloqueada</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Entrada Auxiliar</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
