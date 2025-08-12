@@ -336,6 +336,9 @@
     <string name="select_content_to_restore">בחר תוכן לשחזור:</string>
     <string name="could_not_restore_data">לא ניתן היה לשחזר את הנתונים. יש לאמת את קובץ הגיבוי ולנסות שוב.</string>
     <string name="data_restored_successfully">הנתונים שוחזרו בהצלחה.</string>
+    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
+    <string name="queue_locked">Queue locked</string>
+    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Line</string>
     <string name="audio_device_bluetooth_a2dp">בלוטות\' A2DP</string>
@@ -703,7 +706,7 @@
     <string name="whitelist_title">רשימת היתרים</string>
     <string name="whitelist_summary">רק התוכן של תיקיות ברשימת ההיתרים מוצג בספרייה שלך.</string>
     <string name="blacklist_title">רשימת חסימה</string>
-    <string name="blacklist_summary">The content of blacklisted folders is hidden from your library.</string>
+    <string name="blacklist_summary">התוכן של תיקיות שברשימת החסימה מוסתר מהספרייה שלך.</string>
     <string name="artist_min_songs_title">Artist minimum song count</string>
     <string name="artist_min_songs_summary">How many songs (at least) must have an artist to be shown in your library.</string>
     <string name="album_min_songs_title">Album minimum song count</string>
