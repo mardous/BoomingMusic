@@ -335,6 +335,9 @@
     <string name="select_content_to_restore">बैकअप से बहाल करने के लिए सामग्री चुनें:</string>
     <string name="could_not_restore_data">डेटा को पुनर्स्थापित नहीं किया जा सका। बैकअप फ़ाइल सत्यापित करें और पुनः प्रयास करें।</string>
     <string name="data_restored_successfully">डेटा सफलतापूर्वक पुनर्स्थापित किया गया।</string>
+    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
+    <string name="queue_locked">Queue locked</string>
+    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">ऑक्स लाइन</string>
     <string name="audio_device_bluetooth_a2dp">ब्लुटूथ A2DP</string>
