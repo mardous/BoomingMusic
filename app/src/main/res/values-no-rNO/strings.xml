@@ -336,6 +336,9 @@
     <string name="select_content_to_restore">Velg innhold som skal gjenopprette:</string>
     <string name="could_not_restore_data">Kunne ikke gjenopprette data. Kontroller sikkerhetskopifilen og prøv på nytt.</string>
     <string name="data_restored_successfully">Data ble gjenopprettet.</string>
+    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
+    <string name="queue_locked">Queue locked</string>
+    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux linje</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
