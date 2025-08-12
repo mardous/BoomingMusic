@@ -52,11 +52,45 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Booming.FollowSystem"
         tools:ignore="UnusedAttribute">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.screen.MainActivity"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.Booming.SplashScreen"
+            android:theme="@style/Theme.Booming.SplashScreen"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.SongTagEditorActivity"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.AlbumTagEditorActivity"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.ArtistTagEditorActivity"/>
+
+        <activity android:name=".ui.screen.permissions.PermissionsActivity"/>
+
+        <activity
+            android:name=".core.appshortcuts.AppShortcutLauncherActivity"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <activity
+            android:name=".ui.screen.error.ErrorActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="cat.ereza.customactivityoncrash.RESTART"/>
+            </intent-filter>
+        </activity>
+
+        <!-- In order not to break compatibility with icon-packs -->
+        <activity-alias
+            android:name=".activities.MainActivity"
+            android:targetActivity=".ui.screen.MainActivity"
+            android:exported="true"
+            android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.MUSIC_PLAYER"/>
@@ -144,35 +178,7 @@
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable"/>
-
-        </activity>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name="com.mardous.booming.presentation.screen.tageditor.SongTagEditorActivity"/>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name="com.mardous.booming.presentation.screen.tageditor.AlbumTagEditorActivity"/>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name="com.mardous.booming.presentation.screen.tageditor.ArtistTagEditorActivity"/>
-
-        <activity android:name="com.mardous.booming.presentation.screen.permissions.PermissionsActivity"/>
-
-        <activity
-            android:name="com.mardous.booming.core.appshortcuts.AppShortcutLauncherActivity"
-            android:launchMode="singleInstance"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-
-        <activity
-            android:name="com.mardous.booming.presentation.screen.error.ErrorActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="cat.ereza.customactivityoncrash.RESTART"/>
-            </intent-filter>
-        </activity>
+        </activity-alias>
 
         <service
             android:name=".service.MusicService"
