@@ -709,10 +709,10 @@
     <string name="blacklist_summary">התוכן של תיקיות שברשימת החסימה מוסתר מהספרייה שלך.</string>
     <string name="artist_min_songs_title">מספר שירים מינימלי לאמן</string>
     <string name="artist_min_songs_summary">כמה שירים (לפחות) חייב להיות לאמן כדי שיוצג בספרייה שלך.</string>
-    <string name="album_min_songs_title">Album minimum song count</string>
-    <string name="album_min_songs_summary">How many songs (at least) must have an album to be shown in your library.</string>
-    <string name="min_song_duration_title">Minimum song duration</string>
-    <string name="min_song_duration_summary">How many seconds (at least) must last a song to be shown in your library.</string>
+    <string name="album_min_songs_title">מספר שירים מינימלי לאלבום</string>
+    <string name="album_min_songs_summary">כמה שירים (לפחות) חייב להיות לאלבום כדי שיוצג בספרייה שלך.</string>
+    <string name="min_song_duration_title">משך שיר מינימלי</string>
+    <string name="min_song_duration_summary">כמה שניות (לפחות) שיר חייב להימשך כדי שיוצג בספרייה שלך.</string>
     <!-- Remote preferences -->
     <string name="classic_notification_title">Classic notification</string>
     <string name="classic_notification_summary">Use the classic notification design.</string>
