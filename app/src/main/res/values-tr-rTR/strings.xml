@@ -336,9 +336,9 @@
     <string name="select_content_to_restore">Geri yüklenecek içeriği seçin:</string>
     <string name="could_not_restore_data">Veriler geri yüklenemedi. Yedekleme dosyasını doğrulayıp tekrar deneyin.</string>
     <string name="data_restored_successfully">Veriler başarıyla geri yüklendi.</string>
-    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
+    <string name="action_toggle_queue_lock">Sırayı kilitle/aç</string>
+    <string name="queue_locked">Sıra kilitlendi</string>
+    <string name="queue_unlocked">Sıra kilidi açıldı</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Kablosu</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
