@@ -36,9 +36,9 @@
     <string name="what_do_you_want_to_share">Co chcesz udostępnić?</string>
     <string name="the_audio_file">Plik audio</string>
     <string name="i_am_listening">Słucham…</string>
-    <string name="currently_listening_to_x_by_x">Słucham %1$s przez %2$s</string>
+    <string name="currently_listening_to_x_by_x">Słucham %1$s od %2$s</string>
     <string name="share_to_stories">Udostępnij w relacji</string>
-    <string name="could_not_create_the_story">Nie można utworzyć relacji.</string>
+    <string name="could_not_create_the_story">Nie udało się utworzyć relacji.</string>
     <string name="back_action">Wróć</string>
     <string name="rename_action">Zmień nazwę</string>
     <string name="add_action">Dodaj</string>
@@ -47,7 +47,7 @@
     <string name="clear_action">Wyczyść</string>
     <string name="close_action">Zamknij</string>
     <string name="continue_action">Kontynuuj</string>
-    <string name="select_all_title">Zaznacz wszystkie</string>
+    <string name="select_all_title">Zaznacz wszystko</string>
     <string name="x_selected">Wybrano %d</string>
     <string name="preparing_playback_title">Przygotowywanie</string>
     <string name="restoring_playback_state">Przywracanie stanu odtwarzania i kolejki…</string>
@@ -158,7 +158,7 @@
     <string name="empty_play_queue">Pusta kolejka odtwarzania.</string>
     <string name="save_queue">Zapisz kolejkę</string>
     <string name="clear_queue">Wyczyść kolejkę</string>
-    <string name="action_move_to_current_track">Pokaż bieżącą ścieżkę</string>
+    <string name="action_move_to_current_track">Pokaż bieżący utwór</string>
     <string name="shuffle_queue">Losuj kolejkę</string>
     <string name="action_add_to_favorites">Dodaj do Ulubionych</string>
     <string name="action_remove_from_favorites">Usuń z Ulubionych</string>
@@ -184,8 +184,8 @@
     <string name="added_title_to_playing_queue">"Dodano 1 tytuł do kolejki odtwarzania."</string>
     <string name="added_x_titles_to_playing_queue">Dodano tytuły %1$d do kolejki odtwarzania.</string>
     <string name="next_song_label">Następny utwór</string>
-    <string name="next_song_x">Następny • %1$s</string>
-    <string name="next_song_x_by_artist_x">Następny • %1$s przez %2$s</string>
+    <string name="next_song_x">Następnie • %1$s</string>
+    <string name="next_song_x_by_artist_x">Następnie • %1$s od %2$s</string>
     <string name="similar_artists">Podobni artyści</string>
     <string name="label_more_from_artist">Więcej od artysty</string>
     <string name="label_more_from_x">Więcej od %s</string>
@@ -282,7 +282,7 @@
     <string name="keyboard">Klawiatura</string>
     <string name="label_file_path">Ścieżka pliku</string>
     <string name="size">Rozmiar pliku</string>
-    <string name="label_file_format">Formatowanie</string>
+    <string name="label_file_format">Format</string>
     <string name="title_and_artist">Tytuł i wykonawca</string>
     <string name="song">Utwór</string>
     <string name="title">Tytuł</string>
@@ -596,7 +596,7 @@
     <string name="backup_restore_header">Kopia zapasowa/przywracanie</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Motyw ogólny</string>
-    <string name="pure_black_theme_title">Czysty czarny</string>
+    <string name="pure_black_theme_title">Czysta czerń</string>
     <string name="material_you_title">Material You</string>
     <string name="use_custom_font_title">Użyj czcionki Manrope</string>
     <string name="appbar_mode_title">Styl nagłówka</string>
@@ -605,7 +605,7 @@
     <string name="remember_last_page_title">Zapamiętaj ostatnią stronę</string>
     <string name="remember_last_page_summary">Przejdź do ostatniej otwartej strony przy uruchomieniu.</string>
     <string name="start_page_title">Strona startowa</string>
-    <string name="tab_mode_title">Styl paska zakładek</string>
+    <string name="tab_mode_title">Tryb tytułów kart</string>
     <string name="hold_tab_to_search_title">Przytrzymaj zakładkę, aby wyszukać</string>
     <string name="hold_tab_to_search_summary">Przytrzymaj dowolną zakładkę paska nawigacyjnego, aby otworzyć ekran wyszukiwania.</string>
     <!-- Now playing preferences -->
@@ -739,18 +739,18 @@
     <string name="black_theme_name">Czarny</string>
     <string name="follow_system">Śledź system</string>
     <string name="label_auto">Auto</string>
-    <string name="labeled">Etykiety</string>
-    <string name="unlabeled">Bez etykiety</string>
-    <string name="selected">Wybrane</string>
+    <string name="labeled">Podpisane</string>
+    <string name="unlabeled">Ukryte</string>
+    <string name="selected">Tylko wybrana</string>
     <string name="compact">Kompaktowy</string>
     <string name="expanded">Rozszerzony</string>
     <string name="full_cover">Pełna okładka</string>
     <string name="gradient">Gradient</string>
     <string name="peek">Podgląd</string>
     <string name="peek2">Podgląd 2</string>
-    <string name="plain">Czysty</string>
+    <string name="plain">Prosty</string>
     <string name="m3_style">M3</string>
-    <string name="normal">Normalny</string>
+    <string name="normal">Standardowy</string>
     <string name="corner_size_none">Nic</string>
     <string name="corner_size_small">Mało</string>
     <string name="corner_size_medium">Średnio</string>
@@ -784,7 +784,7 @@
     <string name="priority_normal">Normalny</string>
     <string name="priority_low">Niski</string>
     <string name="always">Zawsze</string>
-    <string name="only_on_wifi">Tylko Wi-Fi</string>
+    <string name="only_on_wifi">Tylko przez Wi-Fi</string>
     <string name="image_size_large">Duży (wolny)</string>
     <string name="image_size_medium">Średni (domyślny, zalecany)</string>
     <string name="image_size_small">Mały (szybsza, niska jakość)</string>
@@ -810,7 +810,7 @@
     <string name="every_fifteen_days">Co piętnaście dni</string>
     <string name="monthly">Miesięczny</string>
     <string name="never">Nigdy</string>
-    <string name="only_wifi_title">Tylko Wi-Fi</string>
+    <string name="only_wifi_title">Tylko przez Wi-Fi</string>
     <string name="only_wifi_summary">Szukaj aktualizacji tylko po podłączeniu Wi-Fi.</string>
     <string name="receive_experimental_updates_title">Otrzymuj eksperymentalne aktualizacje</string>
     <string name="receive_experimental_updates_summary">Należy pamiętać, że te aktualizacje są często bardzo niestabilne i są przeznaczone dla doświadczonych użytkowników.</string>
