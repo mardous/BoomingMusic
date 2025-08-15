@@ -6,7 +6,7 @@
     <string name="action_queue_next">Dodaj jako następne</string>
     <string name="shuffle_all_label">Losuj wszystkie</string>
     <string name="advanced_shuffle_label">Zaawansowany tryb losowania</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="shuffle_button_tip">Naciśnij, aby włączyć zwykłe losowanie utworów. Przytrzymaj, aby pokazać opcje zaawansowane.</string>
     <string name="action_play_pause">Odtwórz/Wstrzymaj</string>
     <string name="action_pause">Wstrzymaj</string>
     <string name="action_next">Następny</string>
@@ -48,7 +48,7 @@
     <string name="close_action">Zamknij</string>
     <string name="continue_action">Kontynuuj</string>
     <string name="select_all_title">Zaznacz wszystkie</string>
-    <string name="x_selected">%d Zaznaczonych</string>
+    <string name="x_selected">Wybrano %d</string>
     <string name="preparing_playback_title">Przygotowywanie</string>
     <string name="restoring_playback_state">Przywracanie stanu odtwarzania i kolejki…</string>
     <string name="playback_stopped_title">Odtwarzanie zatrzymane</string>
@@ -210,9 +210,9 @@
     <string name="playlist_label">Lista odtwarzania</string>
     <string name="favorites_label">Ulubione</string>
     <string name="last_added_label">Ostatnio dodane</string>
-    <string name="top_tracks_label">Najlepsze utwory</string>
+    <string name="top_tracks_label">Najczęściej odtwarzane utwory</string>
     <string name="history_label">Historia</string>
-    <string name="not_recently_played">Ostatnio nieodtwarzane</string>
+    <string name="not_recently_played">Dawno nie odtwarzane</string>
     <string name="play_info">Szczegóły odtwarzania</string>
     <string name="track_play_counts">Liczba odtworzeń</string>
     <string name="song_stat_never_label">nigdy nie odtwarzano</string>
@@ -394,9 +394,9 @@
         <item quantity="other">%d odtwarza</item>
     </plurals>
     <plurals name="x_items">
-        <item quantity="one">%d jedna</item>
-        <item quantity="few">%d kilka</item>
-        <item quantity="many">%d wiele</item>
+        <item quantity="one">%d element</item>
+        <item quantity="few">%d elementów</item>
+        <item quantity="many">%d elementów</item>
         <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
@@ -404,8 +404,8 @@
     <string name="shuffle_action">Losuj</string>
     <string name="top_artists">Najlepsi artyści</string>
     <string name="top_albums">Najlepsze albumy</string>
-    <string name="recent_artists">Najnowsi artyści</string>
-    <string name="recent_albums">Najnowsze albumy</string>
+    <string name="recent_artists">Ostatnio dodani wykonawcy</string>
+    <string name="recent_albums">Ostatnio dodane albumy</string>
     <string name="no_suggestions">Brak sugestii dla Ciebie</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">W pełni losowo</string>
@@ -519,14 +519,14 @@
     <string name="sleep_timer_stop_after_x_canceled">Zatrzymaj się po %s: anulowany</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">Losuj</string>
-    <string name="app_shortcut_top_tracks_short">Najlepsze utwory</string>
+    <string name="app_shortcut_top_tracks_short">Najczęściej odtw.</string>
     <string name="app_shortcut_last_added_short">Ostatnio dodane</string>
     <!-- About page -->
     <string name="action_about">O programie</string>
     <string name="application">Aplikacja</string>
     <string name="version">Wersja</string>
     <string name="changelog">Lista zmian</string>
-    <string name="fork_on_github">Fork on GitHub</string>
+    <string name="fork_on_github">Forkuj na GitHubie</string>
     <string name="licenses">Licencje</string>
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -534,7 +534,7 @@
     <string name="acknowledgments_title">Podziękowania</string>
     <string name="translators_title">Tłumacze</string>
     <string name="translators_summary">Podziękowania dla tych, którzy umożliwiają korzystanie z Booming Music w wielu językach.</string>
-    <string name="telegram_chat">Czat Telegramu</string>
+    <string name="telegram_chat">Czat na Telegramie</string>
     <string name="telegram_chat_summary">Dołącz do czatu w Telegramie i otrzymuj informacje o nowych wersjach i wiadomościach.</string>
     <string name="view_profile_on_github">Zobacz profil na GitHub</string>
     <string name="follow_on_telegram">DM na Telegramie</string>
@@ -654,9 +654,9 @@
     <string name="crossfade_title">Płynne przejście (eksperymentalne)</string>
     <string name="crossfade_summary">Czas nakładania się dźwięku między utworami sekundach (ustaw 0, aby wyłączyć).</string>
     <string name="no_crossfade_on_albums_title">Brak płynnego przejścia w albumach</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
+    <string name="no_crossfade_on_albums_summary">Nie stosuj płynnego przejścia podczas odtwarzania albumów w ich oryginalnej kolejności.</string>
+    <string name="audio_fade_duration_title">Czas trwania zanikania dźwięku (eksperymentalne)</string>
+    <string name="audio_fade_duration_summary">Czas w sekundach, w którym głośność narasta lub opada przy rozpoczęciu lub zatrzymaniu odtwarzania (ustaw 0, aby wyłączyć).</string>
     <string name="replaygain_source_mode_title">Tryb źródłowy</string>
     <string name="replaygain_preamp_title">Poziom przedwzmacniacza</string>
     <string name="replaygain_preamp_summary">Ustaw poziom głośności, gdy ReplayGain jest włączony.</string>
@@ -671,8 +671,8 @@
     <string name="auto_play_on_skip_summary">Jeśli odtwarzanie jest wstrzymane, naciśnięcie klawisza \'Następny\' lub \'Poprzedni\' uruchomi muzykę.</string>
     <string name="rewind_with_back_title">"Przewijaj przez 'Poprzedni'"</string>
     <string name="rewind_with_back_summary">Przewiń utwór na początek lub przejdź do poprzedniego, jeżeli aktualny jest dopiero rozpoczęty.</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
+    <string name="rewind_fast_forward_amount_title">Skok w czasie odtwarzania</string>
+    <string name="rewind_fast_forward_amount_summary">Czas (w sekundach) przewijania do tyłu lub do przodu przy użyciu interfejsu lub zewnętrznych przycisków.</string>
     <string name="resume_on_connect_title">Wznów po połączeniu</string>
     <string name="resume_on_connect_summary">Wznawia odtwarzanie, gdy słuchawka jest podłączona.</string>
     <string name="pause_on_disconnect_title">Wstrzymaj przy rozłączeniu</string>
@@ -747,7 +747,7 @@
     <string name="full_cover">Pełna okładka</string>
     <string name="gradient">Gradient</string>
     <string name="peek">Podgląd</string>
-    <string name="peek2">Peek2</string>
+    <string name="peek2">Podgląd 2</string>
     <string name="plain">Czysty</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normalny</string>
@@ -788,9 +788,9 @@
     <string name="image_size_large">Duży (wolny)</string>
     <string name="image_size_medium">Średni (domyślny, zalecany)</string>
     <string name="image_size_small">Mały (szybsza, niska jakość)</string>
-    <string name="play_on_startup_mode_never">Never play on startup</string>
-    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
-    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
+    <string name="play_on_startup_mode_never">Nigdy nie odtwarzaj przy starcie</string>
+    <string name="play_on_startup_mode_minimized">Tak, ze zminimalizowanym odtwarzaczem</string>
+    <string name="play_on_startup_mode_expanded">Tak, z rozwiniętym panelem odtwarzacza</string>
     <string name="system_default">Domyślny system</string>
     <string name="label_never">Nigdy</string>
     <string name="label_nothing">Nic nie rób</string>
@@ -823,12 +823,13 @@
     <string name="more_info_action">Więcej informacji.</string>
     <string name="download_action">Pobierz</string>
     <string name="downloading_update">Pobieranie aktualizacji Booming Music.</string>
-    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
-        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="uncaught_error_title">Ups! Nie mieliśmy tego w planach!</string>
+    <string name="uncaught_error_message">Wygląda na to, że coś poszło nie tak i aplikacja uległa awarii.
+
+        Pomocne byłoby, gdybyś mógł przesłać nam raport błędu na naszą grupę na Telegramie lub e-mailem.</string>
+    <string name="uncaught_error_report">Raport błędu</string>
+    <string name="uncaught_error_report_copied">Skopiowano raport błędu do schowka.</string>
     <string name="uncaught_error_restart_app">Uruchom ponownie aplikację</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_github">Zgłoś problem na GitHub</string>
+    <string name="uncaught_error_send">Wyślij raport błędu</string>
 </resources>
