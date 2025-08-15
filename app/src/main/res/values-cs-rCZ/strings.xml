@@ -336,6 +336,9 @@
     <string name="select_content_to_restore">Vyberte obsah k obnovení:</string>
     <string name="could_not_restore_data">Nelze obnovit data. Ověřte záložní soubor a opakujte akci.</string>
     <string name="data_restored_successfully">Data byla úspěšně obnovena.</string>
+    <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
+    <string name="playlist_locked">Playlist locked</string>
+    <string name="playlist_unlocked">Playlist unlocked</string>
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
     <string name="queue_locked">Queue locked</string>
     <string name="queue_unlocked">Queue unlocked</string>
