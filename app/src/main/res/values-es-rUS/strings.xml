@@ -336,6 +336,9 @@
     <string name="select_content_to_restore">Elija el contenido a restaurar:</string>
     <string name="could_not_restore_data">No se pudo restaurar. Verifique el archivo de respaldo y reintente.</string>
     <string name="data_restored_successfully">Datos restaurados con éxito.</string>
+    <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
+    <string name="playlist_locked">Playlist locked</string>
+    <string name="playlist_unlocked">Playlist unlocked</string>
     <string name="action_toggle_queue_lock">Bloquear/desbloquear cola</string>
     <string name="queue_locked">Cola bloqueada</string>
     <string name="queue_unlocked">Cola desbloqueada</string>
