@@ -39,7 +39,7 @@
     <string name="currently_listening_to_x_by_x">Ich höre %1$s von %2$s</string>
     <string name="share_to_stories">In Stories teilen</string>
     <string name="could_not_create_the_story">Story konnte nicht erstellt werden.</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">Zurück</string>
     <string name="rename_action">Umbenennen</string>
     <string name="add_action">Hinzufügen</string>
     <string name="delete_action">Löschen</string>
