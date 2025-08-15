@@ -5,7 +5,7 @@
     <string name="action_shuffle_play">Odtwarzaj losowo</string>
     <string name="action_queue_next">Dodaj jako następne</string>
     <string name="shuffle_all_label">Losuj wszystkie</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="advanced_shuffle_label">Zaawansowany tryb losowania</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Odtwórz/Wstrzymaj</string>
     <string name="action_pause">Wstrzymaj</string>
@@ -39,7 +39,7 @@
     <string name="currently_listening_to_x_by_x">Słucham %1$s przez %2$s</string>
     <string name="share_to_stories">Udostępnij w relacji</string>
     <string name="could_not_create_the_story">Nie można utworzyć relacji.</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">Wróć</string>
     <string name="rename_action">Zmień nazwę</string>
     <string name="add_action">Dodaj</string>
     <string name="delete_action">Usuń</string>
@@ -49,9 +49,9 @@
     <string name="continue_action">Kontynuuj</string>
     <string name="select_all_title">Zaznacz wszystkie</string>
     <string name="x_selected">%d Zaznaczonych</string>
-    <string name="preparing_playback_title">Preparing</string>
-    <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="preparing_playback_title">Przygotowywanie</string>
+    <string name="restoring_playback_state">Przywracanie stanu odtwarzania i kolejki…</string>
+    <string name="playback_stopped_title">Odtwarzanie zatrzymane</string>
     <string name="playing_notification_description">Powiadomienie o odtwarzaniu zapewnia akcje dla odtwarzania/pauzy itp.</string>
     <string name="playing_notification_name">Powiadomienie o odtwarzaniu</string>
     <string name="action_scan_directory">Skanuj katalog</string>
@@ -68,7 +68,7 @@
     <string name="new_playlist_title">Nowa lista odtwarzania</string>
     <string name="add_playlist_title">Dodaj do listy odtwarzania</string>
     <string name="rename_playlist_title">Zmień nazwę playlisty</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Edytuj playlistę</string>
     <string name="action_delete">Usuń listę odtwarzania</string>
     <string name="action_export_playlist">Eksportuj do pliku</string>
     <string name="action_clear_history">Wyczyść historię</string>
@@ -77,9 +77,9 @@
     <string name="create_a_playlist_with_one_song">Zostanie utworzona playlista i do niej zostanie dodana jedna piosenka.</string>
     <string name="create_a_playlist_with_x_songs">Lista odtwarzania zostanie utworzona, a utwory %d zostaną dodane automatycznie.</string>
     <string name="playlist_name_empty">Nazwa listy odtwarzania</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Opis playlisty (opcjonalny)</string>
     <string name="saved_playlist_x">Zapisano listę odtwarzania %s.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Zaktualizowano playlistę.</string>
     <string name="failed_to_save_playlist">Nie udało się zapisać listy odtwarzania.</string>
     <string name="saved_x_playlists">Zapisano %1$d playlisty.</string>
     <string name="saved_x_playlists_failed_to_save_x">Zapisano %1$d playlisty, nie udało się zapisać %2$d.</string>
@@ -92,7 +92,7 @@
     <string name="inserted_one_song_into_playlist_x">Wstawiono jeden utwór do listy odtwarzania %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Wstawiono utwory %1$d do playlisty %2$s.</string>
     <string name="playlist_exists">Lista odtwarzania %s już istnieje.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">Utworzono playlistę %s.</string>
     <string name="remove_song_from_playlist_title">Usuń utwór z listy odtwarzania</string>
     <string name="remove_songs_from_playlist_title">Usuń utwory z listy odtwarzania</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Usunąć utwór <b>%1$s</b> z playlisty?]]></string>
@@ -167,7 +167,7 @@
     <string name="toggle_favorite">Dodaj/Usuń z Ulubionych</string>
     <string name="action_add_to_playlist">Dodaj do listy odtwarzania</string>
     <string name="action_remove_from_playlist">Usuń z listy odtwarzania</string>
-    <string name="action_add_to_playing_queue">Add to queue</string>
+    <string name="action_add_to_playing_queue">Dodaj do kolejki</string>
     <string name="action_remove_from_playing_queue">Usuń z kolejki odtwarzania</string>
     <string name="x_removed_from_playing_queue">Usunięto %s</string>
     <string name="put_after_current_track">Umieść po bieżącym utworze</string>
@@ -220,8 +220,8 @@
     <string name="song_stat_label">odtwarzane %1$d razy, ostatni był na %2$s</string>
     <string name="horizontal_albums">Albumy poziomo</string>
     <string name="ignore_singles">Ignoruj single</string>
-    <string name="compact_song_view">Compact song view</string>
-    <string name="show_total_duration">Show total duration</string>
+    <string name="compact_song_view">Kompaktowy widok utworów</string>
+    <string name="show_total_duration">Pokaż całkowity czas trwania</string>
     <string name="action_view_type">Typ widoku</string>
     <string name="view_type_normal">Normalny</string>
     <string name="view_type_card">Karta</string>
@@ -237,7 +237,7 @@
     <string name="sort_order_year">Rok</string>
     <string name="sort_order_duration">Czas trwania</string>
     <string name="sort_order_date_added">Data dodania</string>
-    <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_date_modified">Data modyfikacji</string>
     <string name="sort_order_number_of_songs">Liczba utworów</string>
     <string name="sort_order_number_of_albums">Liczba albumów</string>
     <string name="sort_order_last_played_date">Data ostatniego odtwarzania</string>
@@ -279,7 +279,7 @@
         \n\nTylko Ty ponosisz całkowitą odpowiedzialność za korzystanie z zapisanych okładek albumu.</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
-    <string name="keyboard">Keyboard</string>
+    <string name="keyboard">Klawiatura</string>
     <string name="label_file_path">Ścieżka pliku</string>
     <string name="size">Rozmiar pliku</string>
     <string name="label_file_format">Formatowanie</string>
@@ -336,12 +336,12 @@
     <string name="select_content_to_restore">Wybierz zawartość do przywrócenia:</string>
     <string name="could_not_restore_data">Nie można przywrócić danych. Zweryfikuj plik kopii zapasowej i spróbuj ponownie.</string>
     <string name="data_restored_successfully">Dane przywrócone pomyślnie.</string>
-    <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
-    <string name="playlist_locked">Playlist locked</string>
-    <string name="playlist_unlocked">Playlist unlocked</string>
-    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
+    <string name="action_toggle_playlist_lock">Zablokuj/odblokuj playlistę</string>
+    <string name="playlist_locked">Zablokowano playlistę</string>
+    <string name="playlist_unlocked">Odblokowano playlistę</string>
+    <string name="action_toggle_queue_lock">Zablokuj/odblokuj kolejkę</string>
+    <string name="queue_locked">Zablokowano kolejkę</string>
+    <string name="queue_unlocked">Odblokowano kolejkę</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Wyjście AUX</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -487,7 +487,7 @@
     <string name="synced_lyrics">Zsynchronizowano</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Pobrano</string>
-    <string name="external_file_lyrics">External file</string>
+    <string name="external_file_lyrics">Zewnętrzny plik</string>
     <string name="action_import_synchronized_lyrics">Importuj zsynchronizowane teksty</string>
     <string name="action_share_synchronized_lyrics">Udostępnij zsynchronizowane teksty</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Czy chcesz zaimportować zsynchronizowane teksty piosenek LRC dla <b>%s</b>?]]></string>
@@ -504,8 +504,8 @@
     <string name="no_synced_lyrics_found">Nie znaleziono zsynchronizowanych tekstów</string>
     <string name="lyrics_were_updated_successfully">Tekst został pomyślnie zaktualizowany.</string>
     <string name="failed_to_update_lyrics">Nie udało się zaktualizować tekstu.</string>
-    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
+    <string name="there_are_no_changes_to_save">Nie ma zmian do zapisania.</string>
+    <string name="lyrics_source_external_file">Teksty piosenek pochodzą z pliku zewnętrznego. Nie można edytować tego pliku bezpośrednio z aplikacji Booming Music.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Czas uśpienia</string>
     <string name="sleep_timer_cancel_current_timer">Anuluj bieżący zegar</string>
@@ -530,10 +530,10 @@
     <string name="licenses">Licencje</string>
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
-    <string name="translators_title">Translators</string>
-    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="contributors">Współtwórcy</string>
+    <string name="acknowledgments_title">Podziękowania</string>
+    <string name="translators_title">Tłumacze</string>
+    <string name="translators_summary">Podziękowania dla tych, którzy umożliwiają korzystanie z Booming Music w wielu językach.</string>
     <string name="telegram_chat">Czat Telegramu</string>
     <string name="telegram_chat_summary">Dołącz do czatu w Telegramie i otrzymuj informacje o nowych wersjach i wiadomościach.</string>
     <string name="view_profile_on_github">Zobacz profil na GitHub</string>
@@ -606,24 +606,24 @@
     <string name="remember_last_page_summary">Przejdź do ostatniej otwartej strony przy uruchomieniu.</string>
     <string name="start_page_title">Strona startowa</string>
     <string name="tab_mode_title">Styl paska zakładek</string>
-    <string name="hold_tab_to_search_title">Hold tab to Search</string>
-    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
+    <string name="hold_tab_to_search_title">Przytrzymaj zakładkę, aby wyszukać</string>
+    <string name="hold_tab_to_search_summary">Przytrzymaj dowolną zakładkę paska nawigacyjnego, aby otworzyć ekran wyszukiwania.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Styl</string>
     <string name="open_on_play_title">Otwórz przy odtwarzaniu</string>
     <string name="open_on_play_summary">Rozwiń panel Teraz odtwarzany automatycznie po rozpoczęciu odtwarzania piosenki.</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="squiggly_seek_bar_title">Falisty pasek postępu</string>
+    <string name="squiggly_seek_bar_summary">Włącz falisty pasek postępu zamiast domyślnego suwaka.</string>
     <string name="extra_controls_title">Dodatkowe klawisze</string>
     <string name="extra_controls_summary">Dodatkowe klawisze dla mini odtwarzacza</string>
-    <string name="adaptive_controls_title">Adaptive controls</string>
-    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
+    <string name="adaptive_controls_title">Adaptacyjne sterowanie</string>
+    <string name="adaptive_controls_summary">Sterowanie w mini odtwarzaczu dopasowuje się do wybranego stylu odtwarzacza.</string>
     <string name="swipe_to_dismiss_title">Przesuń, aby odrzucić</string>
     <string name="swipe_to_dismiss_summary">Przesuń palcem w dół, aby zatrzymać odtwarzanie i wyczyścić kolejkę odtwarzania.</string>
     <string name="circle_button_title">Okrągły przycisk odtwarzania</string>
     <string name="swipe_album_cover_title">Przesuń palcem okładkę albumu</string>
     <string name="swipe_album_cover_summary">Przesuń palcem w lewo lub w prawo na okładce albumu, aby zmienić utwór.</string>
-    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
+    <string name="single_tap_on_album_cover_title">Pojedyncze naciśnięcie okładki albumu</string>
     <string name="double_tap_on_album_cover_title">Dwukrotne dotknięcie okładki</string>
     <string name="long_press_on_album_cover_title">Długie przytrzymanie na okładce</string>
     <string name="now_playing_corner_radius_title">Zaokrąglenie rogów obrazu</string>
@@ -634,13 +634,13 @@
     <string name="lyrics_on_album_cover_summary">Pokaż tekst piosenki zamiast okładki, jeżeli jest dostępny.</string>
     <string name="animate_controls_title">Animacja klawiszy</string>
     <string name="animate_controls_summary">Pojawia się podczas otwierania panelu odtwarzacza.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_controls_title">Sterowanie gestami</string>
+    <string name="swipe_controls_summary">Przesuń w lewo po pustym obszarze odtwarzacza, aby przejść do następnego utworu, lub w prawo, aby wrócić do poprzedniego.</string>
     <string name="display_album_name_title">Wyświetl nazwę albumu</string>
     <string name="display_extra_info_title">Wyświetl dodatkowe informacje</string>
     <string name="display_extra_info_summary">Wyświetl dodatkowe informacje o piosence, takie jak bitrate, format, częstotliwość próbkowania itp.</string>
-    <string name="display_next_song_title">Display next song</string>
-    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
+    <string name="display_next_song_title">Pokazuj następny utwór</string>
+    <string name="display_next_song_summary">Wyświetlaj następny utwór w kolejce na dole odtwarzacza.</string>
     <string name="select_extra_info_title">Dodatkowe informacje</string>
     <string name="select_extra_info_summary">Wybierz dodatkowe informacje do wyświetlenia w panelu odtwarzacza.</string>
     <string name="prefer_remaining_time_title">Preferuj pozostały czas</string>
@@ -651,9 +651,9 @@
     <string name="play_on_startup_title">Odtwarzaj po starcie</string>
     <string name="gapless_playback_title">Odtwarzanie bez przerw</string>
     <string name="gapless_playback_summary">Gładkie przejście między utworami. Może powodować problemy z odtwarzaniem na niektórych urządzeniach.</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
+    <string name="crossfade_title">Płynne przejście (eksperymentalne)</string>
+    <string name="crossfade_summary">Czas nakładania się dźwięku między utworami sekundach (ustaw 0, aby wyłączyć).</string>
+    <string name="no_crossfade_on_albums_title">Brak płynnego przejścia w albumach</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
