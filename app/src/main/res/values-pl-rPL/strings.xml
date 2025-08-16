@@ -7,7 +7,7 @@
     <string name="shuffle_all_label">Losuj wszystkie</string>
     <string name="advanced_shuffle_label">Zaawansowane losowanie</string>
     <string name="shuffle_button_tip">Naciśnij, aby włączyć zwykłe losowanie utworów. Przytrzymaj, aby pokazać opcje zaawansowane.</string>
-    <string name="action_play_pause">Odtwórz/Wstrzymaj</string>
+    <string name="action_play_pause">Odtwórz/Pauza</string>
     <string name="action_pause">Pauza</string>
     <string name="action_next">Dalej</string>
     <string name="action_previous">Wstecz</string>
@@ -693,7 +693,7 @@
     <string name="use_folder_album_cover_summary">Jeśli plik audio nie zawiera osadzonej okładki, zostaną załadowane obrazy z pamięci wewnętrznej. Może zająć trochę czasu.</string>
     <string name="online_artist_images_title">Pobierz obrazy artysty</string>
     <string name="online_artist_images_summary">Zależne od ustawień związanych z pobieraniem metadanych.</string>
-    <string name="preferred_artist_image_size_title">Preferowany rozmiar obrazu</string>
+    <string name="preferred_artist_image_size_title">Preferowany rozmiar obrazu wykonawcy</string>
     <string name="delete_downloaded_lyrics_title">Usuń pobrane teksty</string>
     <string name="delete_downloaded_lyrics_summary">Tylko teksty pobrane przez Booming Music. Nie ma wpływu na teksty osadzone w tagach ID3v2 lub plikach LRC.</string>
     <string name="lyrics_cleared">Tekst został wyczyszczony.</string>
@@ -785,9 +785,9 @@
     <string name="priority_low">Niski</string>
     <string name="always">Zawsze</string>
     <string name="only_on_wifi">Tylko przez Wi-Fi</string>
-    <string name="image_size_large">Duży (wolny)</string>
+    <string name="image_size_large">Duży (wolniejszy)</string>
     <string name="image_size_medium">Średni (domyślny, zalecany)</string>
-    <string name="image_size_small">Mały (szybsza, niska jakość)</string>
+    <string name="image_size_small">Mały (szybszy, niższa jakość)</string>
     <string name="play_on_startup_mode_never">Nigdy nie odtwarzaj przy starcie</string>
     <string name="play_on_startup_mode_minimized">Tak, ze zminimalizowanym odtwarzaczem</string>
     <string name="play_on_startup_mode_expanded">Tak, z rozwiniętym panelem odtwarzacza</string>
@@ -814,7 +814,7 @@
     <string name="only_wifi_summary">Szukaj aktualizacji tylko przy połączeniu Wi-Fi.</string>
     <string name="receive_experimental_updates_title">Otrzymuj eksperymentalne aktualizacje</string>
     <string name="receive_experimental_updates_summary">Należy pamiętać, że te aktualizacje są często bardzo niestabilne i są przeznaczone dla doświadczonych użytkowników.</string>
-    <string name="search_for_update_title">Szukaj aktualizacji</string>
+    <string name="search_for_update_title">Sprawdź dostępność aktualizacji</string>
     <string name="last_update_search_x">Ostatnio sprawdzono: %s</string>
     <string name="checking_please_wait">Sprawdzanie, proszę czekać…</string>
     <string name="could_not_check_for_updates">Nie można sprawdzić aktualizacji.</string>
