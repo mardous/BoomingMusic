@@ -737,7 +737,7 @@
     <string name="light_theme_name">Jasny</string>
     <string name="dark_theme_name">Ciemny</string>
     <string name="black_theme_name">Czarny</string>
-    <string name="follow_system">Śledź system</string>
+    <string name="follow_system">Systemowy</string>
     <string name="label_auto">Auto</string>
     <string name="labeled">Podpisane</string>
     <string name="unlabeled">Ukryte</string>
