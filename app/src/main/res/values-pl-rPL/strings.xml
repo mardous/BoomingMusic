@@ -4,7 +4,7 @@
     <string name="action_play_all">Odtwórz wszystko</string>
     <string name="action_shuffle_play">Odtwarzaj losowo</string>
     <string name="action_queue_next">Dodaj jako następne</string>
-    <string name="shuffle_all_label">Losuj wszystkie</string>
+    <string name="shuffle_all_label">Losuj wszystko</string>
     <string name="advanced_shuffle_label">Zaawansowane losowanie</string>
     <string name="shuffle_button_tip">Naciśnij, aby włączyć zwykłe losowanie utworów. Przytrzymaj, aby pokazać opcje zaawansowane.</string>
     <string name="action_play_pause">Odtwórz/Pauza</string>
@@ -132,7 +132,7 @@
     <string name="permission_bluetooth_description">Dostęp do pobliskich urządzeń jest wymagany do wykrywania urządzeń Bluetooth</string>
     <string name="permission_bluetooth_denied">Nie przyznano dostępu do pobliskich urządzeń.</string>
     <string name="permission_exact_alarms_title">Alarmy i przypomnienia (opcjonalnie)</string>
-    <string name="permission_exact_alarms_description">Pozwolenie na zaplanowanie dokładnych alarmów jest wymagane, aby wyłącznik czasowy działał poprawnie</string>
+    <string name="permission_exact_alarms_description">Aby timer uśpienia działał poprawnie, potrzebna jest zgoda na ustawianie alarmów</string>
     <string name="permission_ringtone_title">Dzwonek (opcjonalnie)</string>
     <string name="permission_ringtone_description">Aplikacja potrzebuje uprawnień dostępu do ustawień urządzenia, aby ustawić muzykę jako dzwonek</string>
     <string name="permission_request_write_settings"><![CDATA[Musisz zezwolić aplikacji Booming Music na modyfikowanie ustawień systemowych, aby ustawić <b>%s</b> jako dzwonek]]></string>
@@ -179,13 +179,13 @@
     <string name="add_to_label">Dodaj do</string>
     <string name="go_to_label">Przejdź do</string>
     <string name="action_go_to_album">Przejdź do albumu</string>
-    <string name="action_go_to_artist">Przejdź do Artysty</string>
+    <string name="action_go_to_artist">Przejdź do wykonawcy</string>
     <string name="action_go_to_genre">Przejdź do gatunku</string>
     <string name="added_title_to_playing_queue">"Dodano 1 utwór do kolejki odtwarzania."</string>
     <string name="added_x_titles_to_playing_queue">Dodano %1$d utwory do kolejki odtwarzania.</string>
     <string name="next_song_label">Następny utwór</string>
     <string name="next_song_x">Następnie • %1$s</string>
-    <string name="next_song_x_by_artist_x">Następnie • %1$s od %2$s</string>
+    <string name="next_song_x_by_artist_x">Następnie • %1$s • %2$s</string>
     <string name="similar_artists">Podobni artyści</string>
     <string name="label_more_from_artist">Więcej od artysty</string>
     <string name="label_more_from_x">Więcej od %s</string>
@@ -215,10 +215,10 @@
     <string name="not_recently_played">Dawno nie odtwarzane</string>
     <string name="play_info">Szczegóły odtwarzania</string>
     <string name="track_play_counts">Liczba odtworzeń</string>
-    <string name="song_stat_never_label">nigdy nie odtwarzano</string>
+    <string name="song_stat_never_label">nigdy nie odtworzono</string>
     <string name="song_stat_one_time_label">zagrał jeden raz na %s</string>
-    <string name="song_stat_label">odtwarzane %1$d razy, ostatni był na %2$s</string>
-    <string name="horizontal_albums">Albumy poziomo</string>
+    <string name="song_stat_label">odtworzono %1$d razy, ostatnio %2$s</string>
+    <string name="horizontal_albums">Poziomy widok albumów</string>
     <string name="ignore_singles">Ignoruj single</string>
     <string name="compact_song_view">Kompaktowy widok utworów</string>
     <string name="show_total_duration">Pokaż całkowity czas trwania</string>
@@ -295,8 +295,8 @@
     <string name="genre">Gatunek</string>
     <string name="year">Rok</string>
     <string name="release_years_label">Lata</string>
-    <string name="length">Długość</string>
-    <string name="label_last_modified">Ostatnio zmodyfikowane</string>
+    <string name="length">Długość utworu</string>
+    <string name="label_last_modified">Ostatnia modyfikacja</string>
     <string name="label_audio_header">Nagłówek audio</string>
     <string name="label_variable_bitrate">Zmienna przepływność</string>
     <string name="label_loss_less">Mniej straty</string>
@@ -331,7 +331,7 @@
     <string name="backup_synced_lyrics">Zsynchronizowane teksty</string>
     <string name="backup_artist_images">Obrazy artysty</string>
     <string name="backup_playlists">Listy odtwarzania</string>
-    <string name="backup_successful">Kopia zapasowa udana!</string>
+    <string name="backup_successful">Kopia zapasowa zakończona!</string>
     <string name="backup_failed">Nie udało się stworzyć kopii zapasowej.</string>
     <string name="select_content_to_restore">Wybierz zawartość do przywrócenia:</string>
     <string name="could_not_restore_data">Nie można przywrócić danych. Zweryfikuj plik kopii zapasowej i spróbuj ponownie.</string>
@@ -395,13 +395,13 @@
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d element</item>
-        <item quantity="few">%d elementów</item>
+        <item quantity="few">%d elementy</item>
         <item quantity="many">%d elementów</item>
-        <item quantity="other">%d items</item>
+        <item quantity="other">%d elementów</item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Dla Ciebie</string>
-    <string name="shuffle_action">Losuj</string>
+    <string name="shuffle_action">Odtwarzaj losowo</string>
     <string name="top_artists">Ulubieni artyści</string>
     <string name="top_albums">Ulubione albumy</string>
     <string name="recent_artists">Ostatnio dodani wykonawcy</string>
@@ -562,23 +562,23 @@
     <string name="saf_delete_failed">Nie udało się usunąć pliku: %s</string>
     <string name="settings_title">Ustawienia</string>
     <string name="appearance_title">Wygląd</string>
-    <string name="appearance_summary">Dostosuj motyw aplikacji i pozostałe elementy wizualne.</string>
+    <string name="appearance_summary">Dostosuj motyw i wygląd aplikacji.</string>
     <string name="now_playing_title">Teraz odtwarzane</string>
-    <string name="now_playing_summary">Dostosuj ekran odtwarzania.</string>
+    <string name="now_playing_summary">Dostosuj wygląd odtwarzacza.</string>
     <string name="playback_title">Odtwarzanie</string>
-    <string name="playback_summary">Zmień ustawienia dźwięku, zestaw słuchawkowy Bluetooth itp.</string>
+    <string name="playback_summary">Ustawienia audio, urządzeń Bluetooth i nie tylko.</string>
     <string name="metadata_title">Metadane</string>
-    <string name="metadata_summary">Ustawienia związane z obrazami albumu i artystów.</string>
+    <string name="metadata_summary">Opcje związane z grafikami albumów i artystów.</string>
     <string name="library_title">Biblioteka</string>
-    <string name="library_summary">Ustawienia dla list odtwarzania i filtrów wykluczenia/włączenia.</string>
+    <string name="library_summary">Ustawienia playlist i filtrów selekcji utworów.</string>
     <string name="notification_title">Powiadomienie</string>
     <string name="notification_summary">Dostosuj styl powiadomień.</string>
     <string name="advanced_title">Zaawansowane</string>
     <string name="advanced_summary">Język aplikacji i inne ustawienia dla zaawansowanych użytkowników.</string>
-    <string name="update_title">Aktualizuj</string>
+    <string name="update_title">Aktualizacje</string>
     <string name="update_summary">Ustawienia aktualizacji aplikacji.</string>
     <string name="about_title">O programie</string>
-    <string name="about_summary">Rooming Music %s, dotknij, aby uzyskać więcej informacji.</string>
+    <string name="about_summary">Booming Music %s, naciśnij, aby dowiedzieć się więcej.</string>
     <!-- Preference headers -->
     <string name="general_header">Ogólny</string>
     <string name="library_header">Biblioteka</string>
@@ -593,23 +593,23 @@
     <string name="lockscreen_header">Ekran blokady</string>
     <string name="shuffle_mode_header">Tryb losowy</string>
     <string name="display_header">Wyświetlanie</string>
-    <string name="backup_restore_header">Kopia zapasowa/przywracanie</string>
+    <string name="backup_restore_header">Kopia zapasowa/przywracanie danych</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Motyw ogólny</string>
-    <string name="pure_black_theme_title">Czysta czerń</string>
+    <string name="pure_black_theme_title">Głęboka czerń</string>
     <string name="material_you_title">Material You</string>
     <string name="use_custom_font_title">Użyj czcionki Manrope</string>
     <string name="appbar_mode_title">Styl nagłówka</string>
-    <string name="library_categories_title">Kategorie zakładek</string>
+    <string name="library_categories_title">Karty biblioteki</string>
     <string name="library_categories_summary">Konfiguruj widoczność i kolejność kategorii biblioteki.</string>
     <string name="remember_last_page_title">Zapamiętaj ostatnią stronę</string>
     <string name="remember_last_page_summary">Przejdź do ostatniej otwartej strony przy uruchomieniu.</string>
     <string name="start_page_title">Strona startowa</string>
     <string name="tab_mode_title">Tryb tytułów kart</string>
-    <string name="hold_tab_to_search_title">Przytrzymaj zakładkę, aby wyszukać</string>
-    <string name="hold_tab_to_search_summary">Przytrzymaj dowolną zakładkę paska nawigacyjnego, aby otworzyć ekran wyszukiwania.</string>
+    <string name="hold_tab_to_search_title">Przytrzymaj kartę, aby wyszukać</string>
+    <string name="hold_tab_to_search_summary">Przytrzymaj kartę w pasku nawigacyjnym, aby przywołać ekran wyszukiwania.</string>
     <!-- Now playing preferences -->
-    <string name="now_playing_screen_title">Styl</string>
+    <string name="now_playing_screen_title">Styl odtwarzacza</string>
     <string name="open_on_play_title">Otwórz przy odtwarzaniu</string>
     <string name="open_on_play_summary">Rozwiń panel Teraz odtwarzany automatycznie po rozpoczęciu odtwarzania piosenki.</string>
     <string name="squiggly_seek_bar_title">Falisty pasek postępu</string>
@@ -665,8 +665,8 @@
     <string name="search_auto_queue_summary">Po odtworzeniu utworu z wyszukiwania wszystkie pozostałe wyniki zostaną dodane do kolejki.</string>
     <string name="remember_shuffle_mode_title">Zapamiętaj tryb losowy</string>
     <string name="remember_shuffle_mode_summary">Tryb losowy pozostanie włączony podczas wybierania nowej listy utworów.</string>
-    <string name="album_shuffle_mode_title">Tryb losowania albumu</string>
-    <string name="artist_shuffle_mode_title">Tryb losowania artysty</string>
+    <string name="album_shuffle_mode_title">Sposób losowania albumów</string>
+    <string name="artist_shuffle_mode_title">Sposób losowania wykonawców</string>
     <string name="auto_play_on_skip_title">Automatyczne odtwarzanie przy pominięciu</string>
     <string name="auto_play_on_skip_summary">Jeśli odtwarzanie jest wstrzymane, naciśnięcie klawisza \'Następny\' lub \'Poprzedni\' uruchomi muzykę.</string>
     <string name="rewind_with_back_title">"Przewijaj przez 'Poprzedni'"</string>
@@ -695,7 +695,7 @@
     <string name="online_artist_images_summary">Zależne od ustawień związanych z pobieraniem metadanych.</string>
     <string name="preferred_artist_image_size_title">Preferowany rozmiar obrazu wykonawcy</string>
     <string name="delete_downloaded_lyrics_title">Usuń pobrane teksty</string>
-    <string name="delete_downloaded_lyrics_summary">Tylko teksty pobrane przez Booming Music. Nie ma wpływu na teksty osadzone w tagach ID3v2 lub plikach LRC.</string>
+    <string name="delete_downloaded_lyrics_summary">Tylko teksty pobrane przez aplikację. Nie dotyczy tych z tagów ID3v2 ani plików LRC.</string>
     <string name="lyrics_cleared">Tekst został wyczyszczony.</string>
     <!-- Library preferences -->
     <string name="trash_music_title">Przenieś do kosza</string>
@@ -728,10 +728,10 @@
     <string name="blurred_album_art_title">Rozmyte okładki albumu</string>
     <string name="blurred_album_art_summary">Rozmywa okładkę albumu na ekranie blokady. Może powodować problemy z aplikacjami i widżetami firm trzecich.</string>
     <string name="app_language_title">Język aplikacji</string>
-    <string name="backup_data_title">Kopia zapasowa danych aplikacji</string>
-    <string name="backup_app_data_summary">Utwórz plik zawierający podstawowe dane aplikacji i zapisz go w pamięci zewnętrznej.</string>
+    <string name="backup_data_title">Stwórz kopię zapasową</string>
+    <string name="backup_app_data_summary">Utwórz plik z niezbędnymi danymi aplikacji i zapisz go w pamięci zewnętrznej.</string>
     <string name="restore_backup_title">Przywróć kopię zapasową</string>
-    <string name="restore_backup_summary">Przywróć dane aplikacji (i stan) z poprzedniej kopii zapasowej.</string>
+    <string name="restore_backup_summary">Przywróć dane aplikacji (i stan) z wcześniejszej kopii zapasowej.</string>
     <!-- Preference values -->
     <string name="advanced_label">Zaawansowane</string>
     <string name="light_theme_name">Jasny</string>
@@ -744,7 +744,7 @@
     <string name="selected">Tylko wybrana</string>
     <string name="compact">Kompaktowy</string>
     <string name="expanded">Rozszerzony</string>
-    <string name="full_cover">Pełna okładka</string>
+    <string name="full_cover">Okładka</string>
     <string name="gradient">Gradient</string>
     <string name="peek">Podgląd</string>
     <string name="peek2">Podgląd 2</string>
@@ -772,7 +772,7 @@
     <string name="ordered_albums_shuffle_songs">Zachowaj kolejność albumów, losuj utwory</string>
     <string name="shuffle_artists_ordered_songs">Losuj artystów, zamówione utwory</string>
     <string name="ordered_artists_shuffle_songs">Zamówieni artyści, losowe utwory</string>
-    <string name="album_or_artist_shuffle_all">Losuj wszystkie</string>
+    <string name="album_or_artist_shuffle_all">Losuj wszystko</string>
     <string name="today">Dziś</string>
     <string name="yesterday">Wczoraj</string>
     <string name="this_week">W tym tygodniu</string>
@@ -788,21 +788,21 @@
     <string name="image_size_large">Duży (wolniejszy)</string>
     <string name="image_size_medium">Średni (domyślny, zalecany)</string>
     <string name="image_size_small">Mały (szybszy, niższa jakość)</string>
-    <string name="play_on_startup_mode_never">Nigdy nie odtwarzaj przy starcie</string>
-    <string name="play_on_startup_mode_minimized">Tak, ze zminimalizowanym odtwarzaczem</string>
-    <string name="play_on_startup_mode_expanded">Tak, z rozwiniętym panelem odtwarzacza</string>
+    <string name="play_on_startup_mode_never">Nigdy przy starcie</string>
+    <string name="play_on_startup_mode_minimized">Ze zminimalizowanym odtwarzaczem</string>
+    <string name="play_on_startup_mode_expanded">Z rozwiniętym odtwarzaczem</string>
     <string name="system_default">Domyślny system</string>
     <string name="label_never">Nigdy</string>
     <string name="label_nothing">Nic nie rób</string>
     <string name="label_none">Brak</string>
     <string name="player_color_mode_app_theme_title">Motyw aplikacji</string>
-    <string name="player_color_mode_app_theme_description">Użyj kolorów aplikacji</string>
-    <string name="player_color_mode_simple_color_title">Prosty kolor</string>
-    <string name="player_color_mode_simple_color_description">Wyodrębnij kolor albumu i zastosuj go w wybranych elementach interfejsu</string>
+    <string name="player_color_mode_app_theme_description">Użyj schematu kolorów aplikacji</string>
+    <string name="player_color_mode_simple_color_title">Prosta kolorystyka</string>
+    <string name="player_color_mode_simple_color_description">Zastosuj kolor albumu w wybranych przyciskach</string>
     <string name="player_color_mode_vibrant_color_title">Żywy kolor</string>
     <string name="player_color_mode_vibrant_color_description">Zastosuj kolor albumu do tła, tekstu i elementów interfejsu</string>
     <string name="player_color_mode_material_you_title">Material You</string>
-    <string name="player_color_mode_material_you_description">Użyj stylu Material You na podstawie koloru okładki</string>
+    <string name="player_color_mode_material_you_description">Barwy Material You dopasowane do albumu</string>
     <!-- Update -->
     <string name="auto_update_title">Automatyczne sprawdzanie aktualizacji</string>
     <string name="every_day">Codziennie</string>
