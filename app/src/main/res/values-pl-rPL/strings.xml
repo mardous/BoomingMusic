@@ -21,7 +21,7 @@
     <string name="search_label">Szukaj</string>
     <string name="search_hint">Przeszukaj swoją bibliotekę…</string>
     <string name="action_voice_search">Wyszukiwanie głosowe</string>
-    <string name="speech_not_supported">Twoje urządzenie nie obsługuje wprowadzania mowy</string>
+    <string name="speech_not_supported">Twoje urządzenie nie obsługuje wprowadzania głosowego</string>
     <string name="search_artist_x_label">Szukaj artysty: %s</string>
     <string name="search_album_x_label">Szukaj albumu: %s</string>
     <string name="search_list_x_label">Lista wyszukiwania: %s</string>
@@ -36,7 +36,7 @@
     <string name="what_do_you_want_to_share">Co chcesz udostępnić?</string>
     <string name="the_audio_file">Plik audio</string>
     <string name="i_am_listening">Słucham…</string>
-    <string name="currently_listening_to_x_by_x">Słucham %1$s od %2$s</string>
+    <string name="currently_listening_to_x_by_x">Słucham %1$s autorstwa %2$s</string>
     <string name="share_to_stories">Udostępnij w relacji</string>
     <string name="could_not_create_the_story">Nie udało się utworzyć relacji.</string>
     <string name="back_action">Wróć</string>
@@ -126,24 +126,24 @@
     <string name="unplayable_file">Nie można odtworzyć tej piosenki.</string>
     <string name="unplayable_file_code_x">Nie udało się odtworzyć tego utworu (kod: %d).</string>
     <string name="permission_external_storage_title">Dostęp do pamięci</string>
-    <string name="permission_external_storage_description">Aplikacja potrzebuje uprawnień dostępu do pamięci urządzenia do odtwarzania muzyki</string>
-    <string name="permission_external_storage_denied">Musisz przyznać uprawnienia dostępu do pamięci zewnętrznej.</string>
-    <string name="permission_bluetooth_title">Pobliskie urządzenia</string>
-    <string name="permission_bluetooth_description">Aplikacja potrzebuje uprawnień w pobliżu urządzeń do sprawdzania urządzeń bluetooth</string>
-    <string name="permission_bluetooth_denied">Odmowa dostępu do urządzeń w pobliżu.</string>
-    <string name="permission_exact_alarms_title">Zaplanuj dokładne alarmy (opcjonalnie)</string>
+    <string name="permission_external_storage_description">Aplikacja potrzebuje pozwolenia na dostęp do pamięci urządzenia, aby odtwarzać muzykę</string>
+    <string name="permission_external_storage_denied">Musisz zezwolić na dostęp do pamięci zewnętrznej.</string>
+    <string name="permission_bluetooth_title">Urządzenia w pobliżu</string>
+    <string name="permission_bluetooth_description">Dostęp do pobliskich urządzeń jest wymagany do wykrywania urządzeń Bluetooth</string>
+    <string name="permission_bluetooth_denied">Nie przyznano dostępu do pobliskich urządzeń.</string>
+    <string name="permission_exact_alarms_title">Alarmy i przypomnienia (opcjonalnie)</string>
     <string name="permission_exact_alarms_description">Pozwolenie na zaplanowanie dokładnych alarmów jest wymagane, aby wyłącznik czasowy działał poprawnie</string>
     <string name="permission_ringtone_title">Dzwonek (opcjonalnie)</string>
     <string name="permission_ringtone_description">Aplikacja potrzebuje uprawnień dostępu do ustawień urządzenia, aby ustawić muzykę jako dzwonek</string>
     <string name="permission_request_write_settings"><![CDATA[Musisz zezwolić aplikacji Booming Music na modyfikowanie ustawień systemowych, aby ustawić <b>%s</b> jako dzwonek]]></string>
-    <string name="permissions_denied">Odmowa uprawnień</string>
+    <string name="permissions_denied">Nie przyznano uprawnień</string>
     <string name="permissions_needed">Wymagane uprawnienia</string>
-    <string name="grant_access_action">Udziel dostępu</string>
+    <string name="grant_access_action">Zezwól</string>
     <string name="action_grant">Przyznaj</string>
     <string name="granted">Przyznane</string>
-    <string name="hello_there">Witaj!</string>
+    <string name="hello_there">Cześć!</string>
     <string name="welcome_to_x">Witamy w %s</string>
-    <string name="get_started">Zacznij</string>
+    <string name="get_started">Rozpocznij</string>
     <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> nie jest wymieniony w sklepie multimedialnym.]]></string>
     <string name="some_files_are_not_listed_in_the_media_store">Niektóre pliki nie są wyświetlane w sklepie multimedialnym.</string>
     <string name="nothing_to_scan">Nic do skanowania</string>
@@ -621,8 +621,8 @@
     <string name="swipe_to_dismiss_title">Przesuń, aby odrzucić</string>
     <string name="swipe_to_dismiss_summary">Przesuń palcem w dół, aby zatrzymać odtwarzanie i wyczyścić kolejkę odtwarzania.</string>
     <string name="circle_button_title">Okrągły przycisk odtwarzania</string>
-    <string name="swipe_album_cover_title">Przesuń palcem okładkę albumu</string>
-    <string name="swipe_album_cover_summary">Przesuń palcem w lewo lub w prawo na okładce albumu, aby zmienić utwór.</string>
+    <string name="swipe_album_cover_title">Zmiana utworu gestem</string>
+    <string name="swipe_album_cover_summary">Przesuń w lewo lub w prawo na okładce albumu, aby zmienić utwór.</string>
     <string name="single_tap_on_album_cover_title">Pojedyncze naciśnięcie okładki albumu</string>
     <string name="double_tap_on_album_cover_title">Dwukrotne dotknięcie okładki</string>
     <string name="long_press_on_album_cover_title">Długie przytrzymanie na okładce</string>
@@ -650,7 +650,7 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Odtwarzaj po starcie</string>
     <string name="gapless_playback_title">Odtwarzanie bez przerw</string>
-    <string name="gapless_playback_summary">Gładkie przejście między utworami. Może powodować problemy z odtwarzaniem na niektórych urządzeniach.</string>
+    <string name="gapless_playback_summary">Płynne przejście między utworami, możliwe problemy z odtwarzaniem na niektórych urządzeniach.</string>
     <string name="crossfade_title">Płynne przejście (eksperymentalne)</string>
     <string name="crossfade_summary">Czas nakładania się dźwięku między utworami sekundach (ustaw 0, aby wyłączyć).</string>
     <string name="no_crossfade_on_albums_title">Brak płynnego przejścia w albumach</string>
@@ -662,7 +662,7 @@
     <string name="replaygain_preamp_summary">Ustaw poziom głośności, gdy ReplayGain jest włączony.</string>
     <string name="queue_next_mode_title">Tryb \"Kolejka dalej\"</string>
     <string name="search_auto_queue_title">Odtwarzaj wszystkie wyszukane</string>
-    <string name="search_auto_queue_summary">Gdy odtwarzasz utwór z ekranu wyszukiwania, pozostałe również zostaną zakolejkowane.</string>
+    <string name="search_auto_queue_summary">Po odtworzeniu utworu z wyszukiwania wszystkie pozostałe wyniki zostaną dodane do kolejki.</string>
     <string name="remember_shuffle_mode_title">Zapamiętaj tryb losowy</string>
     <string name="remember_shuffle_mode_summary">Tryb losowy pozostanie włączony podczas wybierania nowej listy utworów.</string>
     <string name="album_shuffle_mode_title">Tryb losowania albumu</string>
@@ -683,8 +683,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Wstrzymuje odtwarzanie, gdy zestaw słuchawkowy Bluetooth A2DP jest rozłączony. Zalecane.</string>
     <string name="ignore_audio_focus_title">Ignoruj ostrość dźwięku</string>
     <string name="ignore_audio_focus_summary">Zawsze odtwarzaj dźwięk w tle niezależnie od tego, co jest odtwarzane.</string>
-    <string name="pause_on_transient_focus_loss_title">Przejściowa utrata ogniska</string>
-    <string name="pause_on_transient_focus_loss_summary">Wstrzymaj odtwarzanie przy przejściowej utracie ostrości (tj. powiadomień, połączeń przychodzących).</string>
+    <string name="pause_on_transient_focus_loss_title">Tymczasowa utrata fokusu</string>
+    <string name="pause_on_transient_focus_loss_summary">Wstrzymaj odtwarzanie przy tymczasowej utracie fokusu (np. powiadomienia, połączenia przychodzące).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Automatyczne pobieranie metadanych</string>
     <string name="ignore_media_store_album_covers_title">Ignoruj okładki z pamięci wewnętrznej</string>
@@ -813,7 +813,7 @@
     <string name="only_wifi_title">Tylko przez Wi-Fi</string>
     <string name="only_wifi_summary">Szukaj aktualizacji tylko przy połączeniu Wi-Fi.</string>
     <string name="receive_experimental_updates_title">Otrzymuj eksperymentalne aktualizacje</string>
-    <string name="receive_experimental_updates_summary">Należy pamiętać, że te aktualizacje są często bardzo niestabilne i są przeznaczone dla doświadczonych użytkowników.</string>
+    <string name="receive_experimental_updates_summary">Uwaga: te aktualizacje są często niestabilne i przeznaczone dla zaawansowanych użytkowników.</string>
     <string name="search_for_update_title">Sprawdź dostępność aktualizacji</string>
     <string name="last_update_search_x">Ostatnio sprawdzono: %s</string>
     <string name="checking_please_wait">Sprawdzanie, proszę czekać…</string>
