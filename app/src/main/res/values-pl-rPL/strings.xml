@@ -19,7 +19,7 @@
     <string name="import_action">Importuj</string>
     <string name="create_action">Utwórz</string>
     <string name="search_label">Szukaj</string>
-    <string name="search_hint">Przeszukaj swoją bibliotekę…</string>
+    <string name="search_hint">Wyszukaj w swojej bibliotece…</string>
     <string name="action_voice_search">Wyszukiwanie głosowe</string>
     <string name="speech_not_supported">Twoje urządzenie nie obsługuje wprowadzania głosowego</string>
     <string name="search_artist_x_label">Szukaj artysty: %s</string>
@@ -134,7 +134,7 @@
     <string name="permission_exact_alarms_title">Alarmy i przypomnienia (opcjonalnie)</string>
     <string name="permission_exact_alarms_description">Aby timer uśpienia działał poprawnie, potrzebna jest zgoda na ustawianie alarmów</string>
     <string name="permission_ringtone_title">Dzwonek (opcjonalnie)</string>
-    <string name="permission_ringtone_description">Aplikacja potrzebuje uprawnień dostępu do ustawień urządzenia, aby ustawić muzykę jako dzwonek</string>
+    <string name="permission_ringtone_description">Potrzebna jest zgoda na dostęp do ustawień urządzenia, aby ustawić utwór jako dzwonek</string>
     <string name="permission_request_write_settings"><![CDATA[Musisz zezwolić aplikacji Booming Music na modyfikowanie ustawień systemowych, aby ustawić <b>%s</b> jako dzwonek]]></string>
     <string name="permissions_denied">Nie przyznano uprawnień</string>
     <string name="permissions_needed">Wymagane uprawnienia</string>
@@ -186,7 +186,7 @@
     <string name="next_song_label">Następny utwór</string>
     <string name="next_song_x">Następnie • %1$s</string>
     <string name="next_song_x_by_artist_x">Następnie • %1$s • %2$s</string>
-    <string name="similar_artists">Podobni artyści</string>
+    <string name="similar_artists">Podobni wykonawcy</string>
     <string name="label_more_from_artist">Więcej od artysty</string>
     <string name="label_more_from_x">Więcej od %s</string>
     <string name="various_artists">Różni artyści</string>
@@ -202,8 +202,8 @@
     <string name="show_album_artists">Tylko wykonawcy albumów</string>
     <string name="songs_label">Utwory</string>
     <string name="albums_label">Albumy</string>
-    <string name="artists_label">Artyści</string>
-    <string name="album_artists_label">Artyści albumów</string>
+    <string name="artists_label">Wykonawcy</string>
+    <string name="album_artists_label">Wykonawcy albumu</string>
     <string name="genres_label">Gatunki</string>
     <string name="folders_label">Foldery</string>
     <string name="playlists_label">Listy odtwarzania</string>
@@ -766,8 +766,8 @@
     <string name="stack">Stos</string>
     <string name="add_after_playing_track">Dodaj po odtwarzaniu utworu</string>
     <string name="add_tracks_sequentially">Dodaj ścieżki kolejno</string>
-    <string name="albums_shuffle">Losowe albumy</string>
-    <string name="artists_shuffle">Losowi artyści</string>
+    <string name="albums_shuffle">Losowe odtwarzanie albumów</string>
+    <string name="artists_shuffle">Losowe odtwarzanie wykonawców</string>
     <string name="shuffle_albums_ordered_songs">Losuj albumy, zachowaj kolejność utworów</string>
     <string name="ordered_albums_shuffle_songs">Zachowaj kolejność albumów, losuj utwory</string>
     <string name="shuffle_artists_ordered_songs">Losuj artystów, zamówione utwory</string>
