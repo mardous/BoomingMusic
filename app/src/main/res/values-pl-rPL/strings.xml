@@ -36,7 +36,7 @@
     <string name="what_do_you_want_to_share">Co chcesz udostępnić?</string>
     <string name="the_audio_file">Plik audio</string>
     <string name="i_am_listening">Słucham…</string>
-    <string name="currently_listening_to_x_by_x">Słucham %1$s autorstwa %2$s</string>
+    <string name="currently_listening_to_x_by_x">Słucham utworu %1$s autorstwa %2$s</string>
     <string name="share_to_stories">Udostępnij w relacji</string>
     <string name="could_not_create_the_story">Nie udało się utworzyć relacji.</string>
     <string name="back_action">Wróć</string>
@@ -210,7 +210,7 @@
     <string name="playlist_label">Lista odtwarzania</string>
     <string name="favorites_label">Ulubione</string>
     <string name="last_added_label">Ostatnio dodane</string>
-    <string name="top_tracks_label">Najczęściej odtwarzane utwory</string>
+    <string name="top_tracks_label">Najczęściej odtwarzane</string>
     <string name="history_label">Historia</string>
     <string name="not_recently_played">Dawno nie odtwarzane</string>
     <string name="play_info">Szczegóły odtwarzania</string>
@@ -226,7 +226,7 @@
     <string name="view_type_normal">Normalny</string>
     <string name="view_type_card">Karta</string>
     <string name="view_type_colored_card">Kolorowa karta</string>
-    <string name="view_type_circle">Okręg</string>
+    <string name="view_type_circle">Okrąg</string>
     <string name="view_type_image">Obraz</string>
     <string name="action_grid_size">Rozmiar siatki</string>
     <string name="action_grid_size_land">Grid size (land)</string>
@@ -519,14 +519,14 @@
     <string name="sleep_timer_stop_after_x_canceled">Zatrzymaj się po %s: anulowany</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">Losuj</string>
-    <string name="app_shortcut_top_tracks_short">Najczęściej odtw.</string>
+    <string name="app_shortcut_top_tracks_short">Najczęściej odtwarzane</string>
     <string name="app_shortcut_last_added_short">Ostatnio dodane</string>
     <!-- About page -->
     <string name="action_about">O programie</string>
     <string name="application">Aplikacja</string>
     <string name="version">Wersja</string>
     <string name="changelog">Lista zmian</string>
-    <string name="fork_on_github">Forkuj na GitHubie</string>
+    <string name="fork_on_github">Forkuj na GitHub</string>
     <string name="licenses">Licencje</string>
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -541,7 +541,7 @@
     <string name="write_an_email">Napisz e-mail</string>
     <string name="support_development">Wesprzyj rozwój</string>
     <string name="help_with_translations">Pomóż z tłumaczeniem</string>
-    <string name="help_with_translations_summary">Możesz przyczynić się do projektu pomagając w tłumaczeniu Booming music na inne języki.</string>
+    <string name="help_with_translations_summary">Możesz przyczynić się do rozwoju projektu pomagając w tłumaczeniu Booming Music na inne języki.</string>
     <string name="report_bugs">Zgłoś błędy</string>
     <string name="report_bugs_summary">Zgłoś błędy lub poproś o nowe funkcje.</string>
     <string name="share_app">Udostępnij tę aplikację</string>
