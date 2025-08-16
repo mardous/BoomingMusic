@@ -135,7 +135,7 @@
     <string name="permission_exact_alarms_description">Pozwolenie na zaplanowanie dokładnych alarmów jest wymagane, aby wyłącznik czasowy działał poprawnie</string>
     <string name="permission_ringtone_title">Dzwonek (opcjonalnie)</string>
     <string name="permission_ringtone_description">Aplikacja potrzebuje uprawnień dostępu do ustawień urządzenia, aby ustawić muzykę jako dzwonek</string>
-    <string name="permission_request_write_settings"><![CDATA[Musisz zezwolić Booming Music na modyfikację ustawień systemowych, aby ustawić <b>%s</b> jako dzwonek]]></string>
+    <string name="permission_request_write_settings"><![CDATA[Musisz zezwolić aplikacji Booming Music na modyfikowanie ustawień systemowych, aby ustawić %s jako dzwonek]]></string>
     <string name="permissions_denied">Odmowa uprawnień</string>
     <string name="permissions_needed">Wymagane uprawnienia</string>
     <string name="grant_access_action">Udziel dostępu</string>
@@ -162,7 +162,7 @@
     <string name="shuffle_queue">Losuj kolejkę</string>
     <string name="action_add_to_favorites">Dodaj do Ulubionych</string>
     <string name="action_remove_from_favorites">Usuń z Ulubionych</string>
-    <string name="added_to_favorites_label">Dodano do Ulubionych</string>
+    <string name="added_to_favorites_label">Dodano do ulubionych</string>
     <string name="removed_from_favorites_label">Usunięto z Ulubionych</string>
     <string name="toggle_favorite">Dodaj/Usuń z Ulubionych</string>
     <string name="action_add_to_playlist">Dodaj do listy odtwarzania</string>
@@ -181,8 +181,8 @@
     <string name="action_go_to_album">Przejdź do albumu</string>
     <string name="action_go_to_artist">Przejdź do Artysty</string>
     <string name="action_go_to_genre">Przejdź do gatunku</string>
-    <string name="added_title_to_playing_queue">"Dodano 1 tytuł do kolejki odtwarzania."</string>
-    <string name="added_x_titles_to_playing_queue">Dodano tytuły %1$d do kolejki odtwarzania.</string>
+    <string name="added_title_to_playing_queue">"Dodano 1 utwór do kolejki odtwarzania."</string>
+    <string name="added_x_titles_to_playing_queue">Dodano %1$d utwory do kolejki odtwarzania.</string>
     <string name="next_song_label">Następny utwór</string>
     <string name="next_song_x">Następnie • %1$s</string>
     <string name="next_song_x_by_artist_x">Następnie • %1$s od %2$s</string>
@@ -402,8 +402,8 @@
     <!-- Listen now -->
     <string name="for_you_label">Dla Ciebie</string>
     <string name="shuffle_action">Losuj</string>
-    <string name="top_artists">Najlepsi artyści</string>
-    <string name="top_albums">Najlepsze albumy</string>
+    <string name="top_artists">Ulubieni artyści</string>
+    <string name="top_albums">Ulubione albumy</string>
     <string name="recent_artists">Ostatnio dodani wykonawcy</string>
     <string name="recent_albums">Ostatnio dodane albumy</string>
     <string name="no_suggestions">Brak sugestii dla Ciebie</string>
@@ -415,7 +415,7 @@
     <string name="shuffle_mode_favorite_songs">Wpierw ulubione</string>
     <string name="shuffle_mode_forgotten_songs">Zapomniane utwory</string>
     <string name="shuffle_mode_recently_added">Ostatnio dodane</string>
-    <string name="shuffle_mode_combined">Inteligentny mix</string>
+    <string name="shuffle_mode_combined">Inteligentny miks</string>
     <string name="shuffle_mode_pure_random_description">Całkowicie losowe tasowanie.</string>
     <string name="shuffle_mode_most_played_description">Faworyzuje najczęściej odtwarzane utwory.</string>
     <string name="shuffle_mode_most_played_artists_description">Faworyzuje utwory ulubionych artystów.</string>
@@ -423,7 +423,7 @@
     <string name="shuffle_mode_favorite_songs_description">Nadaje priorytet Twoim ulubionym utworom.</string>
     <string name="shuffle_mode_forgotten_songs_description">Faworyzuje utwory, których ostatnio nie odtwarzałeś.</string>
     <string name="shuffle_mode_recently_added_description">Faworyzuje utwory ostatnio dodane do biblioteki.</string>
-    <string name="shuffle_mode_combined_description">Mix na podstawie ulubionych, popularności oraz ostatnich odtworzeń.</string>
+    <string name="shuffle_mode_combined_description">Miks oparty na ulubionych, liczbie odtworzeń i ostatnio słuchanych.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Korektor</string>
     <string name="share_eq_configuration">Udostępnij konfigurację EQ</string>
@@ -494,7 +494,7 @@
     <string name="import_lyrics_for_song_x">Zaimportowano tekst utworu dla %s</string>
     <string name="could_not_import_lyrics_for_song_x">Nie udało się zaimportować tekstu dla %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Wybierz plik LRC zawierający zsynchronizowane teksty.</string>
-    <string name="cannot_download_lyrics">Booming Music nie mógł znaleźć tekstu dla tej piosenki. Czy chcesz wyszukać ręcznie?</string>
+    <string name="cannot_download_lyrics">Booming Music nie udało się znaleźć tekstu dla tej piosenki. Czy chcesz wyszukać ręcznie?</string>
     <string name="search_lyrics">Szukaj tekstu piosenki</string>
     <string name="choose_lyrics">Wybierz typ tekstu piosenki</string>
     <string name="download_lyrics">Pobierz tekst</string>
@@ -718,11 +718,11 @@
     <string name="min_song_duration_summary">Ile sekund (przynajmniej) musi trwać piosenka, by wyświetlić ją twojej bibliotece.</string>
     <!-- Remote preferences -->
     <string name="classic_notification_title">Klasyczne powiadomienie</string>
-    <string name="classic_notification_summary">Użyj klasycznego wzoru powiadomień.</string>
+    <string name="classic_notification_summary">Użyj klasycznego wyglądu powiadomień.</string>
     <string name="colored_notification_title">Kolorowe powiadomienia</string>
     <string name="colored_notification_summary">Kolory powiadomień w dynamicznym kolorze okładki albumu</string>
     <string name="extra_line_of_text_title">Dodatkowy wiersz tekstu</string>
-    <string name="notification_priority_title">Priorytet powiadomień</string>
+    <string name="notification_priority_title">Priorytet powiadomienia</string>
     <string name="album_art_on_lockscreen_title">Pokaż okładkę albumu</string>
     <string name="album_art_on_lockscreen_summary">Używa okładki albumu piosenek jako tapety ekranu blokady. Może powodować duże zużycie pamięci. Zależne od urządzenia.</string>
     <string name="blurred_album_art_title">Rozmyte okładki albumu</string>
