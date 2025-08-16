@@ -8,9 +8,9 @@
     <string name="advanced_shuffle_label">Zaawansowane losowanie</string>
     <string name="shuffle_button_tip">Naciśnij, aby włączyć zwykłe losowanie utworów. Przytrzymaj, aby pokazać opcje zaawansowane.</string>
     <string name="action_play_pause">Odtwórz/Wstrzymaj</string>
-    <string name="action_pause">Wstrzymaj</string>
-    <string name="action_next">Następny</string>
-    <string name="action_previous">Poprzedni</string>
+    <string name="action_pause">Pauza</string>
+    <string name="action_next">Dalej</string>
+    <string name="action_previous">Wstecz</string>
     <string name="action_cancel">Anuluj</string>
     <string name="action_cycle_repeat">Tryb powtarzania</string>
     <string name="action_toggle_shuffle">Przełącz tryb losowy</string>
@@ -135,7 +135,7 @@
     <string name="permission_exact_alarms_description">Pozwolenie na zaplanowanie dokładnych alarmów jest wymagane, aby wyłącznik czasowy działał poprawnie</string>
     <string name="permission_ringtone_title">Dzwonek (opcjonalnie)</string>
     <string name="permission_ringtone_description">Aplikacja potrzebuje uprawnień dostępu do ustawień urządzenia, aby ustawić muzykę jako dzwonek</string>
-    <string name="permission_request_write_settings"><![CDATA[Musisz zezwolić aplikacji Booming Music na modyfikowanie ustawień systemowych, aby ustawić %s jako dzwonek]]></string>
+    <string name="permission_request_write_settings"><![CDATA[Musisz zezwolić aplikacji Booming Music na modyfikowanie ustawień systemowych, aby ustawić <b>%s</b> jako dzwonek]]></string>
     <string name="permissions_denied">Odmowa uprawnień</string>
     <string name="permissions_needed">Wymagane uprawnienia</string>
     <string name="grant_access_action">Udziel dostępu</string>
@@ -190,7 +190,7 @@
     <string name="label_more_from_artist">Więcej od artysty</string>
     <string name="label_more_from_x">Więcej od %s</string>
     <string name="various_artists">Różni artyści</string>
-    <string name="unknown_artist">Nieznany Artysta</string>
+    <string name="unknown_artist">Nieznany wykonawca</string>
     <string name="unknown_genre">Nieznany gatunek</string>
     <string name="unknown_year">Nieznany rok</string>
     <string name="no_songs_label">Brak utworów</string>
@@ -232,7 +232,7 @@
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Sortuj według</string>
     <string name="sort_order_az">A-Z</string>
-    <string name="sort_order_artist">Artysta</string>
+    <string name="sort_order_artist">Wykonawca</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">Rok</string>
     <string name="sort_order_duration">Czas trwania</string>
@@ -259,7 +259,7 @@
     <string name="scan_media_message">W większości przypadków Android automatycznie wykrywa i indeksuje pliki multimedialne, więc ręczne skanowanie zazwyczaj nie jest potrzebne.</string>
     <string name="scan_media_positive">Przeskanuj mimo to</string>
     <string name="scan_finished">Koniec skanu.</string>
-    <string name="album_or_artist_empty">Tytuł lub artysta jest pusty.</string>
+    <string name="album_or_artist_empty">Tytuł albo wykonawca nie został podany.</string>
     <string name="update_image">Aktualizuj obraz</string>
     <string name="restore_default">Przywróć domyślne</string>
     <string name="remove_cover">Usuń okładkę</string>
@@ -287,10 +287,10 @@
     <string name="song">Utwór</string>
     <string name="title">Tytuł</string>
     <string name="album">Album</string>
-    <string name="artist">Artysta</string>
-    <string name="album_artist">Album-artysta</string>
+    <string name="artist">Wykonawca</string>
+    <string name="album_artist">Wykonawca albumu</string>
     <string name="composer">Kompozytor</string>
-    <string name="conductor">Przewodnik</string>
+    <string name="conductor">Dyrygent</string>
     <string name="publisher">Wydawca</string>
     <string name="genre">Gatunek</string>
     <string name="year">Rok</string>
@@ -307,10 +307,10 @@
     <string name="last_played">Ostatnio odtwarzane</string>
     <string name="played">Odtworzono</string>
     <string name="skipped">Pominięto</string>
-    <string name="track">Ścieżka</string>
+    <string name="track">Numer utworu</string>
     <string name="track_total">Wszystkie utwory</string>
-    <string name="disc">Dysk</string>
-    <string name="disc_total">Całkowita ilość dysków</string>
+    <string name="disc">Numer płyty </string>
+    <string name="disc_total">Liczba płyt</string>
     <string name="lyrics">Tekst piosenki</string>
     <string name="lyricist">Autor tekstu</string>
     <string name="edit_tags_action">Edytuj tagi</string>
@@ -371,7 +371,7 @@
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d album</item>
-        <item quantity="few">%d albumów</item>
+        <item quantity="few">%d albumy</item>
         <item quantity="many">%d albumów</item>
         <item quantity="other">%d albumów</item>
     </plurals>
@@ -442,7 +442,7 @@
     <string name="reset_equalizer">Reset equalizer</string>
     <string name="select_configurations_to_export">Wybierz konfiguracje do eksportu:</string>
     <string name="select_a_file_to_save_exported_configurations">Wybierz plik, aby zapisać wyeksportowane konfiguracje.</string>
-    <string name="select_a_file_containing_booming_eq_presets">Wybierz plik zawierający ustawienia Booming Music EQ.</string>
+    <string name="select_a_file_containing_booming_eq_presets">Wybierz plik zawierający konfigurację EQ Booming Music.</string>
     <string name="select_configurations_to_import">Wybierz konfiguracje do importu:</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Czy na pewno chcesz zresetować korektor?
         \n\nTo wyczyści wszystkie Twoje ustawienia.</string>
@@ -460,7 +460,7 @@
     <string name="delete_preset">Usuń ustawienie wstępne</string>
     <string name="delete_preset_x"><![CDATA[Usunąć ustawienie <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Usunięto ustawienie %s.</string>
-    <string name="rename_preset">Rename preset</string>
+    <string name="rename_preset">Zmień nazwę konfiguracji</string>
     <string name="please_enter_a_new_name_for_this_preset">Wprowadź nową nazwę dla tego ustawienia.</string>
     <string name="preset_renamed">Zmieniono nazwę ustawienia.</string>
     <string name="preset_not_renamed">Ustawienie nie zmieniono nazwy.</string>
@@ -646,7 +646,7 @@
     <string name="prefer_remaining_time_title">Preferuj pozostały czas</string>
     <string name="prefer_remaining_time_summary">Wyświetlaj pozostały czas zamiast czasu trwania utworu.</string>
     <string name="prefer_album_artist_name_title">"Preferuj imię wykonawcy Albumu"</string>
-    <string name="prefer_album_artist_name_summary">Pokazuje nazwę wykonawcy Albumu, zamiast nazwy wykonawcy utworu (jeśli jest dostępny).</string>
+    <string name="prefer_album_artist_name_summary">Pokazuje nazwę wykonawcy albumu zamiast wykonawcy utworu (jeśli dostępne).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Odtwarzaj po starcie</string>
     <string name="gapless_playback_title">Odtwarzanie bez przerw</string>
