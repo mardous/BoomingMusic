@@ -74,7 +74,7 @@
     <string name="action_clear_history">Wyczyść historię</string>
     <string name="history_cleared">Historia wyczyszczona</string>
     <string name="create_a_playlist">Pusta lista odtwarzania zostanie utworzona. Możesz dodać utwory później.</string>
-    <string name="create_a_playlist_with_one_song">Zostanie utworzona playlista i do niej zostanie dodana jedna piosenka.</string>
+    <string name="create_a_playlist_with_one_song">Zostanie utworzona playlista i zostanie do niej dodany jeden utwór.</string>
     <string name="create_a_playlist_with_x_songs">Lista odtwarzania zostanie utworzona, a utwory %d zostaną dodane automatycznie.</string>
     <string name="playlist_name_empty">Nazwa listy odtwarzania</string>
     <string name="playlist_description_hint">Opis listy odtwarzania (opcjonalny)</string>
@@ -104,7 +104,7 @@
     <string name="could_not_save_some_changes">Nie można zapisać pewnych zmian.</string>
     <string name="web_search">Szukaj w Internecie</string>
     <string name="where_do_you_want_to_search">Gdzie chcesz wyszukać?</string>
-    <string name="configure_action">Skonfiguruj</string>
+    <string name="configure_action">Konfiguruj</string>
     <string name="blacklist_directory">Katalog czarnej listy</string>
     <string name="add_directory">Dodaj katalog</string>
     <string name="remove_from_blacklist">Czy chcesz usunąć ten katalog z czarnej listy?</string>
@@ -123,7 +123,7 @@
     <string name="no_equalizer">Nie znaleziono korektora.</string>
     <string name="audio_focus_denied">Odmowa skupienia dźwięku.</string>
     <string name="no_audio_ID">Błędne ID audio.</string>
-    <string name="unplayable_file">Nie można odtworzyć tej piosenki.</string>
+    <string name="unplayable_file">Nie udało się odtworzyć tego utworu.</string>
     <string name="unplayable_file_code_x">Nie udało się odtworzyć tego utworu (kod: %d).</string>
     <string name="permission_external_storage_title">Dostęp do pamięci</string>
     <string name="permission_external_storage_description">Aplikacja potrzebuje pozwolenia na dostęp do pamięci urządzenia, aby odtwarzać muzykę</string>
@@ -481,7 +481,7 @@
     <string name="action_external_eq">Zewnętrzny EQ</string>
     <string name="custom">Własny</string>
     <!-- Lyrics viewer -->
-    <string name="action_show_lyrics">Pokaż tekst piosenki</string>
+    <string name="action_show_lyrics">Pokaż tekst utworu</string>
     <string name="action_hide_lyrics">Ukryj teksty</string>
     <string name="plain_lyrics">Zwykłe</string>
     <string name="synced_lyrics">Zsynchronizowano</string>
@@ -495,7 +495,7 @@
     <string name="could_not_import_lyrics_for_song_x">Nie udało się zaimportować tekstu dla %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Wybierz plik LRC zawierający zsynchronizowane teksty.</string>
     <string name="cannot_download_lyrics">Booming Music nie udało się znaleźć tekstu dla tej piosenki. Czy chcesz wyszukać ręcznie?</string>
-    <string name="search_lyrics">Szukaj tekstu piosenki</string>
+    <string name="search_lyrics">Szukaj tekstu utworu</string>
     <string name="choose_lyrics">Wybierz typ tekstu piosenki</string>
     <string name="download_lyrics">Pobierz tekst</string>
     <string name="write_lyrics_here">Napisz tutaj tekst</string>
@@ -689,8 +689,8 @@
     <string name="auto_download_metadata_title">Automatyczne pobieranie metadanych</string>
     <string name="ignore_media_store_album_covers_title">Nie używaj okładek z magazynu multimediów</string>
     <string name="ignore_media_store_album_covers_summary">Może zwiększyć jakość obrazów kosztem zużycia pamięci.</string>
-    <string name="use_folder_album_cover_title">Użyj obrazów z folderów</string>
-    <string name="use_folder_album_cover_summary">Jeśli plik audio nie zawiera osadzonej okładki, zostaną załadowane obrazy z pamięci wewnętrznej. Może zająć trochę czasu.</string>
+    <string name="use_folder_album_cover_title">Używaj obrazów z folderu</string>
+    <string name="use_folder_album_cover_summary">Jeśli utwór nie posiada okładki albumu, aplikacja poszuka jej w folderze. Może to wydłużyć wczytywanie.</string>
     <string name="online_artist_images_title">Pobierz obrazy artysty</string>
     <string name="online_artist_images_summary">Zależne od ustawień związanych z pobieraniem metadanych.</string>
     <string name="preferred_artist_image_size_title">Preferowany rozmiar obrazu wykonawcy</string>
@@ -704,16 +704,16 @@
     <string name="recursive_folder_actions_summary">Skonfiguruj jakie działanie ma być zastosowane dla podfolderów przy wykonywaniu go na folderze.</string>
     <string name="enable_history_title">Włącz historię</string>
     <string name="enable_history_summary">Pozwala aplikacji na zapisywanie utworów, które słuchałeś. Jeśli wyłączysz, cała historia zostanie wyczyszczona.</string>
-    <string name="history_interval_title">Przedział czasowy</string>
-    <string name="last_added_interval_title">Ostatnio dodany przedział czasowy</string>
+    <string name="history_interval_title">Zakres historii</string>
+    <string name="last_added_interval_title">Zakres ostatnio dodanych</string>
     <string name="whitelist_title">Biała lista</string>
     <string name="whitelist_summary">Tylko zawartość folderów z białej listy jest wyświetlana w twojej bibliotece.</string>
     <string name="blacklist_title">Czarna lista</string>
     <string name="blacklist_summary">Zawartość z folderów czarnej listy jest ukryta w twojej bibliotece.</string>
-    <string name="artist_min_songs_title">Minimalna liczba piosenek artysty</string>
-    <string name="artist_min_songs_summary">Ile piosenek (przynajmniej) musi mieć artystę do pokazania w twojej bibliotece.</string>
-    <string name="album_min_songs_title">Minimalna liczba piosenek albumu</string>
-    <string name="album_min_songs_summary">Ile piosenek (przynajmniej) musi mieć album do wyświetlenia w twojej bibliotece.</string>
+    <string name="artist_min_songs_title">Minimalna liczba utworów wykonawcy</string>
+    <string name="artist_min_songs_summary">Minimalna liczba utworów, które musi mieć wykonawca, aby był widoczny w bibliotece.</string>
+    <string name="album_min_songs_title">Minimalna liczba utworów w albumie</string>
+    <string name="album_min_songs_summary">Minimalna liczba utworów, które muszą być w albumie, aby był widoczny w bibliotece.</string>
     <string name="min_song_duration_title">Minimalny czas trwania utworu</string>
     <string name="min_song_duration_summary">Ile sekund (przynajmniej) musi trwać piosenka, by wyświetlić ją twojej bibliotece.</string>
     <!-- Remote preferences -->
@@ -773,12 +773,12 @@
     <string name="shuffle_artists_ordered_songs">Losuj artystów, zamówione utwory</string>
     <string name="ordered_artists_shuffle_songs">Zamówieni artyści, losowe utwory</string>
     <string name="album_or_artist_shuffle_all">Losuj wszystko</string>
-    <string name="today">Dziś</string>
+    <string name="today">Dzisiaj</string>
     <string name="yesterday">Wczoraj</string>
-    <string name="this_week">W tym tygodniu</string>
-    <string name="this_month">W tym miesiącu</string>
+    <string name="this_week">Ten tydzień</string>
+    <string name="this_month">Ten miesiąc</string>
     <string name="past_three_months">Ostatnie trzy miesiące</string>
-    <string name="this_year">W tym roku</string>
+    <string name="this_year">Ten rok</string>
     <string name="priority_maximum">Maksymalny</string>
     <string name="priority_high">Wysoki</string>
     <string name="priority_normal">Normalny</string>
