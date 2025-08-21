@@ -26,9 +26,9 @@ import androidx.navigation.fragment.findNavController
 import com.mardous.booming.R
 import com.mardous.booming.extensions.keepScreenOn
 import com.mardous.booming.extensions.materialSharedAxis
-import com.mardous.booming.ui.theme.BoomingMusicTheme
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.ui.theme.BoomingMusicTheme
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**

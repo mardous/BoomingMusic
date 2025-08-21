@@ -20,11 +20,11 @@ package com.mardous.booming.ui.adapters.album
 import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Album
 import com.mardous.booming.extensions.glide.albumOptions
 import com.mardous.booming.extensions.glide.getAlbumGlideModel
 import com.mardous.booming.extensions.glide.getDefaultGlideTransition
 import com.mardous.booming.ui.IAlbumCallback
-import com.mardous.booming.data.model.Album
 
 /**
  * @author Christians M. A. (mardous)

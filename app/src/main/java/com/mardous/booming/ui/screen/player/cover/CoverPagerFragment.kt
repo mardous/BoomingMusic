@@ -34,21 +34,21 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager.widget.ViewPager
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.pager.AlbumCoverPagerAdapter
+import com.mardous.booming.core.model.player.GestureOnCover
+import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.databinding.FragmentPlayerAlbumCoverBinding
 import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.resources.BOOMING_ANIM_TIME
-import com.mardous.booming.ui.screen.player.cover.page.ImageFragment
-import com.mardous.booming.util.color.MediaNotificationProcessor
-import com.mardous.booming.core.model.player.GestureOnCover
-import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.ui.adapters.pager.AlbumCoverPagerAdapter
 import com.mardous.booming.ui.component.transform.CarouselPagerTransformer
 import com.mardous.booming.ui.component.transform.ParallaxPagerTransformer
+import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.ui.screen.player.cover.page.ImageFragment
 import com.mardous.booming.util.LEFT_RIGHT_SWIPING
 import com.mardous.booming.util.LYRICS_ON_COVER
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.util.color.MediaNotificationProcessor
 import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 

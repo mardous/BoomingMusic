@@ -30,6 +30,9 @@ import com.bumptech.glide.signature.MediaStoreSignature
 import com.bumptech.glide.signature.ObjectKey
 import com.mardous.booming.R
 import com.mardous.booming.appContext
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.albumCoverUri
 import com.mardous.booming.extensions.resources.defaultFooterColor
 import com.mardous.booming.extensions.resources.getDrawableCompat
@@ -37,9 +40,6 @@ import com.mardous.booming.glide.artistimage.ArtistImage
 import com.mardous.booming.glide.audiocover.AudioFileCover
 import com.mardous.booming.glide.palette.BitmapPaletteWrapper
 import com.mardous.booming.glide.transformation.BlurTransformation
-import com.mardous.booming.data.model.Album
-import com.mardous.booming.data.model.Artist
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

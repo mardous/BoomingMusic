@@ -3,8 +3,8 @@ package com.mardous.booming.ui.screen.about
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.BuildConfig
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.core.model.about.Contribution
+import com.mardous.booming.data.local.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

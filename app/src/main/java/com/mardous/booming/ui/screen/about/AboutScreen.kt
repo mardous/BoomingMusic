@@ -39,14 +39,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import com.mardous.booming.R
-import com.mardous.booming.extensions.*
-import com.mardous.booming.core.model.about.DeviceInfo
 import com.mardous.booming.core.model.about.Contribution
-import com.mardous.booming.ui.component.compose.AboutCard
-import com.mardous.booming.ui.component.compose.AboutListItem
-import com.mardous.booming.ui.component.compose.AboutSection
-import com.mardous.booming.ui.component.compose.ActionButton
-import com.mardous.booming.ui.component.compose.DialogTitle
+import com.mardous.booming.core.model.about.DeviceInfo
+import com.mardous.booming.extensions.*
+import com.mardous.booming.ui.component.compose.*
 import com.mardous.booming.ui.component.compose.lists.ContributionListItem
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel

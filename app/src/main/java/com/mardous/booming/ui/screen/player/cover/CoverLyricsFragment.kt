@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import com.mardous.booming.R
 import com.mardous.booming.ui.component.base.goToDestination
 import com.mardous.booming.ui.screen.lyrics.CoverLyricsScreen
-import com.mardous.booming.ui.theme.BoomingMusicTheme
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.ui.theme.BoomingMusicTheme
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class CoverLyricsFragment : Fragment() {

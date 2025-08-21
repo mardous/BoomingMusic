@@ -28,7 +28,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.animation.doOnEnd
 import androidx.core.os.bundleOf
 import androidx.core.view.*
-import androidx.core.view.get
 import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -38,15 +37,19 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.*
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
 import com.mardous.booming.R
-import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
+import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.LibraryMargin
+import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.data.model.search.SearchQuery
+import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.ui.IBackConsumer
-import com.mardous.booming.core.model.CategoryInfo
-import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.ui.screen.library.LibraryViewModel
+import com.mardous.booming.ui.screen.library.search.SearchFragment
 import com.mardous.booming.ui.screen.other.MiniPlayerFragment
 import com.mardous.booming.ui.screen.permissions.PermissionsActivity
+import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.styles.defaultstyle.DefaultPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.fullcoverstyle.FullCoverPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.gradientstyle.GradientPlayerFragment
@@ -55,11 +58,7 @@ import com.mardous.booming.ui.screen.player.styles.peek2playerstyle.Peek2PlayerF
 import com.mardous.booming.ui.screen.player.styles.peekplayerstyle.PeekPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.plainstyle.PlainPlayerFragment
 import com.mardous.booming.ui.screen.queue.PlayingQueueFragment
-import com.mardous.booming.ui.screen.library.search.SearchFragment
-import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.util.*
-import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.player.PlayerViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

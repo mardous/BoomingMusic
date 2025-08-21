@@ -19,17 +19,17 @@ package com.mardous.booming.service.queue
 
 import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.session.MediaSessionCompat
-import com.mardous.booming.extensions.media.albumCoverUri
-import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.extensions.media.indexOfSong
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.data.SongProvider
 import com.mardous.booming.core.legacy.PlaybackQueueStore
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
+import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.mapper.toQueueSong
 import com.mardous.booming.data.mapper.toQueueSongs
 import com.mardous.booming.data.model.QueueSong
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.extensions.media.albumCoverUri
+import com.mardous.booming.extensions.media.displayArtistName
+import com.mardous.booming.extensions.media.indexOfSong
 import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.sort.SortOrder
@@ -459,6 +459,10 @@ class QueueManager {
     fun restoreState(shuffleMode: Playback.ShuffleMode, repeatMode: Playback.RepeatMode) {
         this._shuffleMode = shuffleMode
         this._repeatMode = repeatMode
+        doDispatchChange {
+            it.shuffleModeChanged(shuffleMode)
+            it.repeatModeChanged(repeatMode)
+        }
     }
 
     suspend fun restoreQueues(

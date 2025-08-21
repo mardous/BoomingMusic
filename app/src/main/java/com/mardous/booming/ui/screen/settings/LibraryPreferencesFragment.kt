@@ -22,15 +22,15 @@ import android.view.View
 import androidx.preference.Preference
 import com.mardous.booming.R
 import com.mardous.booming.data.local.room.InclExclDao
-import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.preferences.SwitchWithButtonPreference
+import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
+import com.mardous.booming.ui.screen.library.LibraryViewModel
+import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.BLACKLIST_ENABLED
 import com.mardous.booming.util.LAST_ADDED_CUTOFF
 import com.mardous.booming.util.TRASH_MUSIC_FILES
 import com.mardous.booming.util.WHITELIST_ENABLED
-import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.library.ReloadType
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**

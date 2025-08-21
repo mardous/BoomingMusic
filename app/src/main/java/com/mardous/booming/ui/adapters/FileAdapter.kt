@@ -26,17 +26,17 @@ import androidx.core.view.isGone
 import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.mardous.booming.R
-import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
-import com.mardous.booming.ui.component.base.MediaEntryViewHolder
-import com.mardous.booming.extensions.isActivated
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
-import com.mardous.booming.extensions.resources.useAsIcon
-import com.mardous.booming.ui.component.menu.OnClickMenu
-import com.mardous.booming.ui.IFileCallback
+import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.data.model.Folder
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.core.model.filesystem.FileSystemItem
+import com.mardous.booming.extensions.glide.getSongGlideModel
+import com.mardous.booming.extensions.glide.songOptions
+import com.mardous.booming.extensions.isActivated
+import com.mardous.booming.extensions.resources.useAsIcon
+import com.mardous.booming.ui.IFileCallback
+import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
+import com.mardous.booming.ui.component.base.MediaEntryViewHolder
+import com.mardous.booming.ui.component.menu.OnClickMenu
 
 class FileAdapter(
     activity: FragmentActivity,

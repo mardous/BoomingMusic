@@ -28,13 +28,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.updatePadding
 import com.mardous.booming.R
-import com.mardous.booming.databinding.FragmentGradientPlayerBinding
-import com.mardous.booming.extensions.whichFragment
-import com.mardous.booming.ui.screen.player.*
-import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
-import com.mardous.booming.ui.component.base.AbsPlayerFragment
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.databinding.FragmentGradientPlayerBinding
+import com.mardous.booming.extensions.whichFragment
+import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
+import com.mardous.booming.ui.component.base.AbsPlayerFragment
+import com.mardous.booming.ui.screen.player.*
 import com.mardous.booming.util.Preferences
 
 class GradientPlayerFragment : AbsPlayerFragment(R.layout.fragment_gradient_player), View.OnClickListener {

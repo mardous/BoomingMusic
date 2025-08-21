@@ -8,7 +8,6 @@ import androidx.core.content.FileProvider
 import androidx.core.content.getSystemService
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash
 import com.mardous.booming.R
-import com.mardous.booming.ui.component.base.AbsThemeActivity
 import com.mardous.booming.appContext
 import com.mardous.booming.databinding.ActivityErrorBinding
 import com.mardous.booming.extensions.applyWindowInsets
@@ -16,6 +15,7 @@ import com.mardous.booming.extensions.fileProviderAuthority
 import com.mardous.booming.extensions.files.asFormattedFileTime
 import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.ui.component.base.AbsThemeActivity
 import com.mardous.booming.ui.screen.about.ISSUE_TRACKER_LINK
 import java.io.File
 

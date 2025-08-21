@@ -27,7 +27,6 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.mardous.booming.R
-import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.core.appwidgets.base.BaseAppWidget
 import com.mardous.booming.extensions.glide.getSongGlideModel
 import com.mardous.booming.extensions.glide.songOptions
@@ -36,6 +35,7 @@ import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.extensions.toHtml
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
+import com.mardous.booming.ui.screen.MainActivity
 
 class AppWidgetSmall : BaseAppWidget() {
     private var target: Target<Bitmap>? = null // for cancellation

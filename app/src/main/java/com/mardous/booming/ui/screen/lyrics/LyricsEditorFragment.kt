@@ -47,6 +47,10 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.core.model.task.Result
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.lyrics.LyricsSource
+import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
 import com.mardous.booming.databinding.DialogLyricsSelectorBinding
 import com.mardous.booming.databinding.DialogSongSearchBinding
 import com.mardous.booming.databinding.FragmentLyricsEditorBinding
@@ -60,10 +64,6 @@ import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.resources.animateToggle
 import com.mardous.booming.extensions.resources.requestInputMethod
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
-import com.mardous.booming.core.model.task.Result
-import com.mardous.booming.data.model.lyrics.LyricsSource
-import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
-import com.mardous.booming.data.model.Song
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**

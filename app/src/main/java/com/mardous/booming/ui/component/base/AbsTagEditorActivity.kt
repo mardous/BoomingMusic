@@ -24,13 +24,9 @@ import com.bumptech.glide.request.target.ImageViewTarget
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.databinding.ActivityTagEditorBinding
-import com.mardous.booming.extensions.applyBottomWindowInsets
-import com.mardous.booming.extensions.applyScrollableContentInsets
-import com.mardous.booming.extensions.hasR
-import com.mardous.booming.extensions.hideSoftKeyboard
+import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.resources.getResized
 import com.mardous.booming.extensions.resources.setupStatusBarForeground
-import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.screen.tageditor.TagEditorViewModel
 import org.jaudiotagger.tag.reference.GenreTypes
 

@@ -17,11 +17,11 @@
 
 package com.mardous.booming.data.remote.lyrics.api.applemusic
 
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.model.AppleLyricsResponse
 import com.mardous.booming.data.remote.lyrics.model.AppleSearchResponse
 import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lyrics.model.toDownloadedLyrics
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

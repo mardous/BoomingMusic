@@ -44,8 +44,8 @@ import com.mardous.booming.extensions.requireAlertDialog
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
-import com.mardous.booming.util.Preferences
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.util.Preferences
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class SleepTimerDialog : DialogFragment() {

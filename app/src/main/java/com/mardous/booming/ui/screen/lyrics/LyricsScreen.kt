@@ -24,14 +24,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mardous.booming.R
 import com.mardous.booming.core.model.LibraryMargin
-import com.mardous.booming.ui.screen.player.PlayerColorScheme
 import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.ui.component.compose.color.primaryTextColor
 import com.mardous.booming.ui.component.compose.decoration.FadingEdges
 import com.mardous.booming.ui.component.compose.decoration.fadingEdges
-import com.mardous.booming.ui.theme.PlayerTheme
 import com.mardous.booming.ui.screen.library.LibraryViewModel
+import com.mardous.booming.ui.screen.player.PlayerColorScheme
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.ui.theme.PlayerTheme
 
 @Composable
 fun LyricsScreen(
@@ -81,7 +81,7 @@ fun LyricsScreen(
             lyricsResult = lyricsResult,
             lyricsViewState = lyricsViewState,
             contentPadding = PaddingValues(
-                top = 72.dp,
+                top = 96.dp,
                 bottom = dimensionResource(R.dimen.fab_size_padding),
                 start = 16.dp,
                 end = 16.dp

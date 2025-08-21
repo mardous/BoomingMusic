@@ -78,6 +78,14 @@ information about MediaPlayer API file and format support.
 Our app requires only the necessary permissions for its operation, therefore, you can read [this document](PERMISSIONS.md)
 to obtain more details about each permission and why it is required.
 
+## 📌 Android Auto users
+If Booming Music does not appear in Android Auto, follow these steps to enable it:
+
+1. Open Android Auto settings.
+2. Scroll to the bottom and tap on the version several times to enable developer settings.
+3. Tap the three-dot menu in the top-right corner and select "Developer settings".
+4. Enable "Unknown sources".
+
 ## 🤝 Contributing
 Booming Music is an open-source project, and contributions are always welcome!
 See the [Contributing](CONTRIBUTING.md) document. It will be a good starting point if you are interested

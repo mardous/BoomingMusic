@@ -25,8 +25,8 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.mardous.booming.R
-import com.mardous.booming.ui.IEQPresetCallback
 import com.mardous.booming.core.model.equalizer.EQPreset
+import com.mardous.booming.ui.IEQPresetCallback
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 

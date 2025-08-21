@@ -35,8 +35,8 @@ import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.core.model.audiodevice.getDeviceType
 import com.mardous.booming.core.model.audiodevice.getMediaRouteType
-import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.core.model.equalizer.VolumeState
+import com.mardous.booming.service.playback.PlaybackManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 

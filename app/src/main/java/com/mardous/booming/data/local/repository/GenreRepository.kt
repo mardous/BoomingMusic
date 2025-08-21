@@ -25,13 +25,12 @@ import android.provider.BaseColumns
 import android.provider.MediaStore
 import android.provider.MediaStore.Audio.AudioColumns
 import android.provider.MediaStore.Audio.Genres
+import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.utilities.getLongSafe
 import com.mardous.booming.extensions.utilities.getStringSafe
 import com.mardous.booming.extensions.utilities.mapIfValid
 import com.mardous.booming.extensions.utilities.takeOrDefault
-import com.mardous.booming.data.model.Genre
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.data.local.repository.GenreRepository
 import com.mardous.booming.util.sort.SortOrder
 import com.mardous.booming.util.sort.sortedGenres
 import com.mardous.booming.util.sort.sortedSongs

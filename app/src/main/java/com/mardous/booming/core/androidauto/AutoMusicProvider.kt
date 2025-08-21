@@ -21,15 +21,11 @@ import android.content.Context
 import android.content.res.Resources
 import android.support.v4.media.MediaBrowserCompat
 import com.mardous.booming.R
-import com.mardous.booming.data.mapper.fromHistoryToSongs
-import com.mardous.booming.extensions.media.albumCoverUri
-import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.extensions.media.displayName
-import com.mardous.booming.extensions.media.playlistInfo
-import com.mardous.booming.extensions.media.songsStr
 import com.mardous.booming.core.model.CategoryInfo
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.mapper.fromHistoryToSongs
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.extensions.media.*
 import com.mardous.booming.service.queue.QueueManager
 import com.mardous.booming.util.Preferences
 

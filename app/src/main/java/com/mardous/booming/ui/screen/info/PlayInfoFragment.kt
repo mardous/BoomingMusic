@@ -28,6 +28,9 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.divider.MaterialDivider
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlayInfoBinding
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.glide.albumOptions
@@ -39,9 +42,6 @@ import com.mardous.booming.extensions.media.timesStr
 import com.mardous.booming.extensions.resources.show
 import com.mardous.booming.extensions.utilities.dateStr
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
-import com.mardous.booming.data.model.Album
-import com.mardous.booming.data.model.Artist
-import com.mardous.booming.data.model.Song
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

@@ -18,10 +18,10 @@
 package com.mardous.booming.data.local.repository
 
 import android.provider.MediaStore.Audio.AudioColumns
+import com.mardous.booming.core.model.filesystem.FileSystemQuery
 import com.mardous.booming.data.model.Folder
 import com.mardous.booming.data.model.ReleaseYear
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.core.model.filesystem.FileSystemQuery
 import com.mardous.booming.util.StorageUtil
 import com.mardous.booming.util.sort.SortOrder
 import com.mardous.booming.util.sort.sortedFolders

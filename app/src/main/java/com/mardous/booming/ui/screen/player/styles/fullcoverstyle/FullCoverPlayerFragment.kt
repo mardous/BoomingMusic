@@ -30,6 +30,9 @@ import androidx.core.view.updatePadding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.mardous.booming.R
+import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentFullCoverPlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.glide.DEFAULT_SONG_IMAGE
@@ -39,15 +42,12 @@ import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.resources.applyColor
 import com.mardous.booming.extensions.resources.getPrimaryTextColor
 import com.mardous.booming.extensions.whichFragment
+import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
+import com.mardous.booming.ui.component.base.AbsPlayerFragment
 import com.mardous.booming.ui.screen.player.PlayerColorScheme
 import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
 import com.mardous.booming.ui.screen.player.PlayerTintTarget
-import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
-import com.mardous.booming.ui.component.base.AbsPlayerFragment
 import com.mardous.booming.ui.screen.player.tintTarget
-import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.util.Preferences
 
 /**

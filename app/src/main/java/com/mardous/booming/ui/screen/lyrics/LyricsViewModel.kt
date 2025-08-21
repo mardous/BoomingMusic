@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.core.model.task.Result
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.local.repository.LyricsRepository
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.service.queue.QueueManager
 import com.mardous.booming.service.queue.QueueObserver
 import kotlinx.coroutines.*

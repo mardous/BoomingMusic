@@ -25,12 +25,12 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentSongDetailsBinding
 import com.mardous.booming.extensions.create
 import com.mardous.booming.extensions.resources.secondaryColor
 import com.mardous.booming.extensions.resources.show
 import com.mardous.booming.extensions.toHtml
-import com.mardous.booming.data.model.Song
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

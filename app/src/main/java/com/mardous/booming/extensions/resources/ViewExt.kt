@@ -33,6 +33,7 @@ import android.widget.*
 import androidx.annotation.MenuRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.animation.doOnEnd
+import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
@@ -367,8 +368,16 @@ fun RecyclerView.onVerticalScroll(
 }
 
 fun ViewGroup.createFastScroller(disablePopup: Boolean = false): FastScroller {
+    val thumbDrawable = ContextCompat.getDrawable(context, R.drawable.scroller_thumb)
+    val trackDrawable = ContextCompat.getDrawable(context, R.drawable.scroller_track)
     val fastScrollerBuilder = FastScrollerBuilder(this)
     fastScrollerBuilder.useMd2Style()
+    if (thumbDrawable != null) {
+        fastScrollerBuilder.setThumbDrawable(thumbDrawable)
+    }
+    if (trackDrawable != null) {
+        fastScrollerBuilder.setTrackDrawable(trackDrawable)
+    }
     if (disablePopup) {
         fastScrollerBuilder.setPopupTextProvider { _, _ -> "" }
     }

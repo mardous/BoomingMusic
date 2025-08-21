@@ -6,6 +6,11 @@
 		android:icon="@drawable/ic_search_24dp"
 		app:showAsAction="ifRoom"/>
 	<item
+		android:id="@+id/action_lock"
+		android:title="@string/action_toggle_playlist_lock"
+		android:icon="@drawable/ic_lock_open_24dp"
+		app:showAsAction="ifRoom"/>
+	<item
 		android:id="@+id/action_play_next"
 		android:title="@string/action_queue_next"
 		app:showAsAction="never"/>

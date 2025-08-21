@@ -1,14 +1,10 @@
 package com.mardous.booming.ui.screen.library.albums
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
-import com.mardous.booming.core.model.task.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

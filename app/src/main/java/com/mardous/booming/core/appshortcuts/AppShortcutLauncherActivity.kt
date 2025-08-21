@@ -23,8 +23,8 @@ import androidx.core.os.bundleOf
 import com.mardous.booming.core.appshortcuts.shortcuttype.LastAddedShortcutType
 import com.mardous.booming.core.appshortcuts.shortcuttype.ShuffleAllShortcutType
 import com.mardous.booming.core.appshortcuts.shortcuttype.TopTracksShortcutType
-import com.mardous.booming.extensions.extraNotNull
 import com.mardous.booming.data.model.ContentType
+import com.mardous.booming.extensions.extraNotNull
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
 import com.mardous.booming.service.playback.Playback

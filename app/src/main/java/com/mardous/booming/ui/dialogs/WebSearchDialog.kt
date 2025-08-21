@@ -24,13 +24,13 @@ import androidx.core.os.BundleCompat
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.core.model.WebSearchEngine
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.EXTRA_SONG
 import com.mardous.booming.extensions.media.searchQuery
 import com.mardous.booming.extensions.openWeb
 import com.mardous.booming.extensions.toChooser
 import com.mardous.booming.extensions.withArgs
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.core.model.WebSearchEngine
 
 class WebSearchDialog : DialogFragment() {
 

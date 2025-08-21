@@ -26,13 +26,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.preference.Preference
 import com.mardous.booming.R
-import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import com.mardous.booming.extensions.files.getFormattedFileName
-import com.mardous.booming.util.BackupContent
-import com.mardous.booming.util.BackupHelper
-import com.mardous.booming.util.BACKUP_DATA
-import com.mardous.booming.util.LANGUAGE_NAME
-import com.mardous.booming.util.RESTORE_DATA
+import com.mardous.booming.ui.dialogs.MultiCheckDialog
+import com.mardous.booming.util.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

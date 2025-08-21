@@ -17,8 +17,8 @@
 
 package com.mardous.booming.data.remote.lyrics.api
 
-import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
 
 interface LyricsApi {
     suspend fun songLyrics(song: Song, title: String, artist: String): DownloadedLyrics?

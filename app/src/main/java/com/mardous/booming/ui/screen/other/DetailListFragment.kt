@@ -30,10 +30,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.album.AlbumAdapter
-import com.mardous.booming.ui.adapters.artist.ArtistAdapter
-import com.mardous.booming.ui.adapters.song.SongAdapter
+import com.mardous.booming.data.mapper.lastAddedSearchFilter
+import com.mardous.booming.data.mapper.searchFilter
 import com.mardous.booming.data.mapper.toSongs
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.ContentType
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentDetailListBinding
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.media.playlistInfo
@@ -44,21 +47,18 @@ import com.mardous.booming.extensions.navigation.searchArgs
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.extensions.utilities.buildInfoString
+import com.mardous.booming.service.playback.Playback
+import com.mardous.booming.ui.IAlbumCallback
+import com.mardous.booming.ui.IArtistCallback
+import com.mardous.booming.ui.ISongCallback
+import com.mardous.booming.ui.adapters.album.AlbumAdapter
+import com.mardous.booming.ui.adapters.artist.ArtistAdapter
+import com.mardous.booming.ui.adapters.song.SongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
 import com.mardous.booming.ui.component.menu.onAlbumsMenu
 import com.mardous.booming.ui.component.menu.onArtistsMenu
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
-import com.mardous.booming.ui.IAlbumCallback
-import com.mardous.booming.ui.IArtistCallback
-import com.mardous.booming.ui.ISongCallback
-import com.mardous.booming.data.model.Album
-import com.mardous.booming.data.model.Artist
-import com.mardous.booming.data.model.ContentType
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.data.mapper.lastAddedSearchFilter
-import com.mardous.booming.data.mapper.searchFilter
-import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.util.Preferences
 
 class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list), ISongCallback, IArtistCallback,

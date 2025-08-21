@@ -28,12 +28,12 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.SimpleItemAdapter
 import com.mardous.booming.databinding.DialogMultiCheckBinding
 import com.mardous.booming.extensions.create
 import com.mardous.booming.extensions.extraNotNull
 import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.extensions.withArgs
+import com.mardous.booming.ui.adapters.SimpleItemAdapter
 import kotlinx.parcelize.Parcelize
 import kotlin.properties.Delegates
 

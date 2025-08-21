@@ -19,9 +19,9 @@ package com.mardous.booming.ui.adapters.preference
 
 import android.annotation.SuppressLint
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.DraggableItemAdapter
-import com.mardous.booming.extensions.showToast
 import com.mardous.booming.core.model.CategoryInfo
+import com.mardous.booming.extensions.showToast
+import com.mardous.booming.ui.adapters.DraggableItemAdapter
 
 class CategoryInfoAdapter(
     categoryInfos: MutableList<CategoryInfo>

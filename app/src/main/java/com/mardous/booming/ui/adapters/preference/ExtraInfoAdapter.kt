@@ -17,8 +17,8 @@
 
 package com.mardous.booming.ui.adapters.preference
 
-import com.mardous.booming.ui.adapters.DraggableItemAdapter
 import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.ui.adapters.DraggableItemAdapter
 
 /**
  * @author Christians M. A. (mardous)

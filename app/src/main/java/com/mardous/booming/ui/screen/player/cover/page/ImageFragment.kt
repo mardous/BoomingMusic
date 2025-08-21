@@ -15,6 +15,8 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.mardous.booming.R
+import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.EXTRA_SONG
 import com.mardous.booming.extensions.glide.asBitmapPalette
 import com.mardous.booming.extensions.glide.getSongGlideModel
@@ -23,10 +25,8 @@ import com.mardous.booming.extensions.requestContext
 import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.glide.BoomingColoredTarget
-import com.mardous.booming.util.color.MediaNotificationProcessor
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.color.MediaNotificationProcessor
 
 class ImageFragment : Fragment() {
 

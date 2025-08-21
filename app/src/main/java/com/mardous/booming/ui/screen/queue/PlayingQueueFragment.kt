@@ -17,10 +17,12 @@
 
 package com.mardous.booming.ui.screen.queue
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -34,10 +36,9 @@ import com.h6ah4i.android.widget.advrecyclerview.animator.RefactoredDefaultItemA
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager
 import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils
 import com.mardous.booming.R
-import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.ui.adapters.song.PlayingQueueSongAdapter
+import com.mardous.booming.core.model.action.QueueQuickAction
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentQueueBinding
-import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
 import com.mardous.booming.extensions.applyBottomWindowInsets
 import com.mardous.booming.extensions.applyScrollableContentInsets
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
@@ -47,11 +48,12 @@ import com.mardous.booming.extensions.resources.inflateMenu
 import com.mardous.booming.extensions.resources.onVerticalScroll
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.buildInfoString
+import com.mardous.booming.ui.adapters.song.PlayingQueueSongAdapter
 import com.mardous.booming.ui.component.menu.onSongMenu
-import com.mardous.booming.core.model.action.QueueQuickAction
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.util.Preferences
+import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
+import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.util.Preferences
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
@@ -150,7 +152,15 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
         toolbar.setNavigationIcon(R.drawable.ic_back_24dp)
         toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         toolbar.setTitle(R.string.playing_queue_label)
-        toolbar.inflateMenu(R.menu.menu_playing_queue, this@PlayingQueueFragment)
+        toolbar.inflateMenu(R.menu.menu_playing_queue, this) { menu ->
+            if (Preferences.isQueueLocked) {
+                menu.findItem(R.id.action_lock)
+                    .icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_lock_24dp)
+            }else {
+                menu.findItem(R.id.action_lock)
+                    .icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_lock_open_24dp)
+            }
+        }
         updateQuickAction(null, selectedQuickAction)
 
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
@@ -185,6 +195,7 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onMenuItemClick(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_save_playing_queue -> {
@@ -205,6 +216,19 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
 
             R.id.action_move_to_current_track -> {
                 resetToCurrentPosition()
+                true
+            }
+
+            R.id.action_lock -> {
+                Preferences.isQueueLocked = !Preferences.isQueueLocked
+                if (Preferences.isQueueLocked) {
+                    item.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_lock_24dp)
+                    showToast(ContextCompat.getString(requireContext(), R.string.queue_locked))
+                }else {
+                    item.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_lock_open_24dp)
+                    showToast(ContextCompat.getString(requireContext(), R.string.queue_unlocked))
+                }
+                playingQueueAdapter?.notifyDataSetChanged()
                 true
             }
 

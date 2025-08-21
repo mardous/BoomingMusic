@@ -31,11 +31,11 @@ import androidx.core.app.ActivityCompat.checkSelfPermission
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.SimpleItemAdapter
 import com.mardous.booming.databinding.DialogRecyclerViewBinding
 import com.mardous.booming.extensions.create
 import com.mardous.booming.extensions.hasT
 import com.mardous.booming.extensions.resources.useLinearLayout
+import com.mardous.booming.ui.adapters.SimpleItemAdapter
 import com.mardous.booming.util.StorageUtil
 import java.io.File
 import java.io.IOException

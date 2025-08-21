@@ -19,14 +19,14 @@ package com.mardous.booming.core.audio
 
 import android.content.Context
 import androidx.core.content.edit
-import com.mardous.booming.service.equalizer.EqualizerManager.Companion.PREFERENCES_NAME
-import com.mardous.booming.service.equalizer.OpenSLESConstants.*
-import com.mardous.booming.util.PLAYBACK_PITCH
-import com.mardous.booming.util.PLAYBACK_SPEED
 import com.mardous.booming.core.model.equalizer.BalanceLevel
 import com.mardous.booming.core.model.equalizer.EqEffectState
 import com.mardous.booming.core.model.equalizer.EqEffectUpdate
 import com.mardous.booming.core.model.equalizer.TempoLevel
+import com.mardous.booming.service.equalizer.EqualizerManager.Companion.PREFERENCES_NAME
+import com.mardous.booming.service.equalizer.OpenSLESConstants.*
+import com.mardous.booming.util.PLAYBACK_PITCH
+import com.mardous.booming.util.PLAYBACK_SPEED
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

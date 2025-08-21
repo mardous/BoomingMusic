@@ -25,8 +25,8 @@ import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mardous.booming.R
-import com.mardous.booming.ui.component.base.MediaEntryViewHolder
-import com.mardous.booming.extensions.setColors
+import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.model.Genre
 import com.mardous.booming.extensions.glide.asBitmapPalette
 import com.mardous.booming.extensions.glide.getSongGlideModel
 import com.mardous.booming.extensions.glide.songOptions
@@ -35,11 +35,11 @@ import com.mardous.booming.extensions.media.songsStr
 import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.extensions.resources.toColorStateList
 import com.mardous.booming.extensions.resources.useAsIcon
+import com.mardous.booming.extensions.setColors
 import com.mardous.booming.glide.BoomingColoredTarget
-import com.mardous.booming.util.color.MediaNotificationProcessor
 import com.mardous.booming.ui.IGenreCallback
-import com.mardous.booming.data.model.Genre
-import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.ui.component.base.MediaEntryViewHolder
+import com.mardous.booming.util.color.MediaNotificationProcessor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

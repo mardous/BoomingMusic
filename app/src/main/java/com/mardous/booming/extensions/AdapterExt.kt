@@ -20,8 +20,8 @@ package com.mardous.booming.extensions
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.extensions.resources.toColorStateList
+import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.util.color.MediaNotificationProcessor
 
 fun MediaEntryViewHolder.setColors(colors: MediaNotificationProcessor) {

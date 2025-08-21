@@ -1,4 +1,4 @@
-package com.mardous.booming.data.local.lyrics
+package com.mardous.booming.data.local.lyrics.lrc
 
 import android.util.Log
 import com.mardous.booming.data.LyricsParser
@@ -34,9 +34,9 @@ class LrcLyricsParser : LyricsParser {
             }
     }
 
-    override fun parse(reader: Reader): Lyrics? {
+    override fun parse(reader: Reader, trackLength: Long): Lyrics? {
         val attributes = hashMapOf<String, String>()
-        val lines = arrayListOf<Lyrics.Line>()
+        val rawLines = mutableListOf<LrcNode>()
         try {
             reader.buffered().use { br ->
                 while (true) {
@@ -59,85 +59,88 @@ class LrcLyricsParser : LyricsParser {
                             val rawText = lineResult.groupValues[2].trim()
                                 .takeUnless { it.isEmpty() } ?: continue
 
-                            val actorMatch = LINE_ACTOR_PATTERN.find(rawText)
-                            val actor = actorMatch?.groupValues?.get(1)
-                            val text = actorMatch?.groupValues?.get(2) ?: rawText
-
-                            val wordEntries = buildList {
-                                LINE_WORD_PATTERN.findAll(text).forEach { match ->
-                                    val ms = parseTime(match) ?: return@forEach
-                                    val word = match.groupValues.getOrNull(3) ?: return@forEach
-
-                                    add(Lyrics.Word(content = word, startAt = ms))
+                            val timeResult = LINE_TIME_PATTERN.find(time)
+                            if (timeResult != null) {
+                                val timeMs = parseTime(timeResult)
+                                if (timeMs > LrcNode.INVALID_DURATION) {
+                                    rawLines.add(LrcNode(timeMs, rawText))
                                 }
-                            }.sortedBy {
-                                it.startAt
-                            }
-
-                            LINE_TIME_PATTERN.findAll(time).forEach { result ->
-                                val startAt = parseTime(result) ?: return@forEach
-                                val syncedLine = if (wordEntries.isNotEmpty()) {
-                                    val wordStartAt = wordEntries.minOf { it.startAt }
-                                    val content = wordEntries.joinToString(separator = "") {
-                                        it.content
-                                    }
-                                    Lyrics.Line(
-                                        startAt = wordStartAt,
-                                        durationMillis = 0,
-                                        content = content.trim(),
-                                        rawContent = line,
-                                        words = wordEntries,
-                                        actor = actor
-                                    )
-                                } else {
-                                    Lyrics.Line(
-                                        startAt = startAt,
-                                        durationMillis = 0,
-                                        content = text,
-                                        rawContent = line,
-                                        words = emptyList(),
-                                        actor = actor
-                                    )
-                                }
-                                lines.add(syncedLine)
                             }
                         }
                     }
                 }
-                val length = attributes["length"]?.let { parseTime(it) } ?: -1
-                return Lyrics(
-                    title = attributes["ti"],
-                    artist = attributes["ar"],
-                    album = attributes["al"],
-                    durationMillis = length,
-                    lines = lines.adjustLines(length)
-                )
             }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return parse(attributes, rawLines, trackLength)
+    }
+
+    private fun parse(
+        attributes: Map<String, String>,
+        rawLines: List<LrcNode>,
+        trackLength: Long
+    ): Lyrics? {
+        val lines = mutableListOf<Lyrics.Line>()
+        val length = attributes["length"]
+            ?.let { parseTime(it) }
+            ?.takeIf { it > LrcNode.INVALID_DURATION }
+            ?: trackLength
+
+        try {
+            for (i in 0 until rawLines.size) {
+                val entry = rawLines[i]
+                entry.setEnd(rawLines.getOrNull(i + 1)?.start ?: length)
+
+                val matchResult = LINE_ACTOR_PATTERN.find(entry.text)
+                val actor = matchResult?.groupValues?.get(1)
+                entry.setActor(actor)
+
+                val text = matchResult?.groupValues?.get(2) ?: entry.text
+                LINE_WORD_PATTERN.findAll(text).forEach { match ->
+                    entry.addChildren(
+                        start = parseTime(match),
+                        text = match.groupValues.getOrNull(3),
+                    )
+                }
+
+                val line = entry.toLine()
+                if (line != null) {
+                    lines.add(line)
+                }
+            }
+            return Lyrics(
+                title = attributes["ti"],
+                artist = attributes["ar"],
+                album = attributes["al"],
+                durationMillis = length,
+                lines = lines.sortedBy { it.startAt }.distinctBy { it.id }
+            )
         } catch (e: IOException) {
             e.printStackTrace()
         }
         return null
     }
 
-    private fun parseTime(str: String): Long? {
+    private fun parseTime(str: String): Long {
         val result = TIME_PATTERN.find(str)
         if (result != null) {
             return parseTime(result)
         }
-        return null
+        return LrcNode.INVALID_DURATION
     }
 
-    private fun parseTime(result: MatchResult): Long? {
+    private fun parseTime(result: MatchResult): Long {
         try {
             val m = result.groupValues.getOrNull(1)?.toInt()
             val s = result.groupValues.getOrNull(2)?.toFloat()
             return if (m != null && s != null) {
                 (s * LRC_SECONDS_TO_MS_MULTIPLIER).toLong() + m * LRC_MINUTES_TO_MS_MULTIPLIER
-            } else null
+            } else LrcNode.INVALID_DURATION
         } catch (e: Exception) {
             Log.d("LrcLyricsParser", "LRC timestamp format is incorrect: ${result.value}", e)
         }
-        return null
+        return LrcNode.INVALID_DURATION
     }
 
     companion object {

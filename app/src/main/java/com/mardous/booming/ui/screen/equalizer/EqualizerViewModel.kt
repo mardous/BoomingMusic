@@ -8,13 +8,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.R
+import com.mardous.booming.core.model.equalizer.EQPreset
+import com.mardous.booming.core.model.equalizer.EqEffectUpdate
+import com.mardous.booming.core.model.equalizer.EqUpdate
+import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.files.getContentUri
 import com.mardous.booming.extensions.files.readString
-import com.mardous.booming.core.model.equalizer.EQPreset
-import com.mardous.booming.data.local.MediaStoreWriter
-import com.mardous.booming.core.model.equalizer.EqEffectUpdate
-import com.mardous.booming.core.model.equalizer.EqUpdate
 import com.mardous.booming.service.equalizer.EqualizerManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

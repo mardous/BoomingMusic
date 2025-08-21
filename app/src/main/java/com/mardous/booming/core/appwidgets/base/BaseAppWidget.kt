@@ -30,9 +30,9 @@ import androidx.core.graphics.createBitmap
 import androidx.core.graphics.drawable.toDrawable
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.resources.getDrawableCompat
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
 

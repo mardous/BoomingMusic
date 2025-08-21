@@ -27,26 +27,26 @@ import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.FileAdapter
+import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.core.model.action.isPresent
+import com.mardous.booming.core.model.filesystem.FileSystemItem
+import com.mardous.booming.core.model.filesystem.FileSystemQuery
+import com.mardous.booming.data.model.Folder
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.navigation.folderDetailArgs
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.ui.IBackConsumer
+import com.mardous.booming.ui.IFileCallback
+import com.mardous.booming.ui.adapters.FileAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
-import com.mardous.booming.ui.IBackConsumer
-import com.mardous.booming.ui.IFileCallback
-import com.mardous.booming.data.model.Folder
-import com.mardous.booming.core.model.GridViewType
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.core.model.filesystem.FileSystemItem
-import com.mardous.booming.core.model.filesystem.FileSystemQuery
-import com.mardous.booming.core.model.action.isPresent
+import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.sort.SortOrder
 import com.mardous.booming.util.sort.prepareSortOrder
 import com.mardous.booming.util.sort.selectedSortOrder
-import com.mardous.booming.ui.screen.library.ReloadType
 import java.io.File
 
 class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, GridLayoutManager>(),

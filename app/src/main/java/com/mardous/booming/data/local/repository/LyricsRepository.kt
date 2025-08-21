@@ -4,11 +4,12 @@ import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
 import com.mardous.booming.appContext
+import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.MetadataWriter
-import com.mardous.booming.data.local.lyrics.LrcLyricsParser
-import com.mardous.booming.data.local.lyrics.TtmlLyricsParser
+import com.mardous.booming.data.local.lyrics.lrc.LrcLyricsParser
+import com.mardous.booming.data.local.lyrics.ttml.TtmlLyricsParser
 import com.mardous.booming.data.local.room.LyricsDao
 import com.mardous.booming.data.local.room.toLyricsEntity
 import com.mardous.booming.data.model.Song
@@ -16,7 +17,6 @@ import com.mardous.booming.data.model.lyrics.LyricsFile
 import com.mardous.booming.data.model.lyrics.LyricsSource
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
 import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
-import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.extensions.files.getContentUri
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.isAllowedToDownloadMetadata
@@ -63,7 +63,7 @@ class RealLyricsRepository(
         searchTitle: String,
         searchArtist: String
     ): Result<DownloadedLyrics> {
-        return if (song.id == Song.Companion.emptySong.id) {
+        return if (song.id == Song.emptySong.id) {
             Result.Error(IllegalArgumentException("Song is not valid"))
         } else {
             if (searchArtist.isArtistNameUnknown()) {
@@ -83,17 +83,17 @@ class RealLyricsRepository(
         allowDownload: Boolean,
         fromEditor: Boolean
     ): LyricsResult {
-        if (song.id == Song.Companion.emptySong.id) {
-            return LyricsResult(song.id)
+        if (song.id == Song.emptySong.id) {
+            return LyricsResult.Empty
         }
 
         val embeddedLyrics = embeddedLyrics(song, requirePlainText = false).orEmpty()
         val embeddedLyricsParser = lyricsParsers.firstOrNull { it.handles(embeddedLyrics) }
-        val embeddedSynced = embeddedLyricsParser?.parse(embeddedLyrics)
+        val embeddedSynced = embeddedLyricsParser?.parse(embeddedLyrics, song.duration)
 
         val fileLyrics = findLyricsFiles(song).firstNotNullOfOrNull { file ->
             lyricsParsers.firstOrNull { it.handles(file) }
-                ?.parse(file)
+                ?.parse(file, song.duration)
         }
         if (fileLyrics?.hasContent == true) {
             return LyricsResult(
@@ -105,7 +105,7 @@ class RealLyricsRepository(
 
         val storedSynced = lyricsDao.getLyrics(song.id)?.let { stored ->
             lyricsParsers.firstOrNull { it.handles(stored.syncedLyrics) }
-                ?.parse(stored.syncedLyrics)
+                ?.parse(stored.syncedLyrics, song.duration)
         }
         if (embeddedSynced?.hasContent == true) {
             return if (fromEditor) {
@@ -134,7 +134,7 @@ class RealLyricsRepository(
         if (allowDownload && appContext().isAllowedToDownloadMetadata()) {
             val downloaded = runCatching { lyricsDownloadService.getLyrics(song) }.getOrNull()
             if (downloaded?.isSynced == true) {
-                val syncedData = lrcLyricsParser.parse(downloaded.syncedLyrics!!)
+                val syncedData = lrcLyricsParser.parse(downloaded.syncedLyrics!!, song.duration)
                 if (syncedData?.hasContent == true) {
                     lyricsDao.insertLyrics(
                         song.toLyricsEntity(
@@ -158,12 +158,12 @@ class RealLyricsRepository(
     }
 
     override suspend fun embeddedLyrics(song: Song, requirePlainText: Boolean): String? {
-        if (song.id != Song.Companion.emptySong.id) {
+        if (song.id != Song.emptySong.id) {
             val metadataReader = MetadataReader(song.mediaStoreUri)
-            val lyrics = metadataReader.value(MetadataReader.Companion.LYRICS)
+            val lyrics = metadataReader.value(MetadataReader.LYRICS)
             if (requirePlainText && !lyrics.isNullOrBlank()) {
                 val parser = lyricsParsers.firstOrNull { it.handles(lyrics) }
-                val syncedData = parser?.parse(lyrics)
+                val syncedData = parser?.parse(lyrics, song.duration)
                 if (syncedData?.hasContent == true) {
                     return syncedData.plainText
                 }
@@ -181,10 +181,10 @@ class RealLyricsRepository(
         var saveResult = SaveLyricsResult()
         if (plainLyrics?.hasChanged == true) {
             val result = runCatching {
-                val target = EditTarget.Companion.song(song)
+                val target = EditTarget.song(song)
                 val metadataWriter = MetadataWriter()
                 metadataWriter.propertyMap(
-                    propertyMap = hashMapOf(MetadataReader.Companion.LYRICS to plainLyrics.content)
+                    propertyMap = hashMapOf(MetadataReader.LYRICS to plainLyrics.content)
                 )
                 metadataWriter.write(this.context, target).isSuccess
             }
@@ -228,7 +228,7 @@ class RealLyricsRepository(
             return true
         } else {
             val parser = lyricsParsers.firstOrNull { it.handles(lyrics) }
-            val parsedLyrics = parser?.parse(lyrics)
+            val parsedLyrics = parser?.parse(lyrics, song.duration)
             if (parsedLyrics?.hasContent == true) {
                 lyricsDao.insertLyrics(song.toLyricsEntity(parsedLyrics.rawText))
                 return true
@@ -238,7 +238,7 @@ class RealLyricsRepository(
     }
 
     override suspend fun importLyrics(song: Song, uri: Uri): Boolean {
-        if (LyricsFile.Companion.isSupportedFormat(uri)) {
+        if (LyricsFile.isSupportedFormat(uri)) {
             return contentResolver.openInputStream(uri).use { stream ->
                 val result = runCatching { stream?.reader()?.readText() }
                 if (result.isSuccess) {
@@ -285,7 +285,7 @@ class RealLyricsRepository(
     }
 
     override suspend fun shareSyncedLyrics(song: Song): Uri? {
-        if (song.id == Song.Companion.emptySong.id) {
+        if (song.id == Song.emptySong.id) {
             return null
         } else {
             val lyrics = lyricsDao.getLyrics(song.id)

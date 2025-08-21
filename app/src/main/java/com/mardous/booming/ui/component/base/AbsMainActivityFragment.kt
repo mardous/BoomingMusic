@@ -30,15 +30,15 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.mardous.booming.R
-import com.mardous.booming.ui.screen.MainActivity
+import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.extensions.applyWindowInsets
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.isLandscape
-import com.mardous.booming.util.PlayOnStartupMode.Companion.WITH_EXPANDED_PLAYER
-import com.mardous.booming.util.Preferences
+import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.core.model.MediaEvent
+import com.mardous.booming.util.PlayOnStartupMode.Companion.WITH_EXPANDED_PLAYER
+import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 

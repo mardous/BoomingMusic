@@ -26,11 +26,12 @@ import com.h6ah4i.android.widget.advrecyclerview.draggable.DraggableItemState
 import com.h6ah4i.android.widget.advrecyclerview.draggable.DraggableItemViewHolder
 import com.h6ah4i.android.widget.advrecyclerview.draggable.ItemDraggableRange
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.resources.hitTest
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.ISongCallback
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.util.Preferences
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class PlayingQueueSongAdapter(
@@ -55,6 +56,12 @@ class PlayingQueueSongAdapter(
         super.onBindViewHolder(holder, position)
         if (holder.itemViewType == HISTORY || holder.itemViewType == CURRENT) {
             setAlpha(holder, 0.5f)
+        }
+
+        if (Preferences.isQueueLocked) {
+            holder.dragView?.visibility = View.GONE
+        }else {
+            holder.dragView?.visibility = View.VISIBLE
         }
     }
 

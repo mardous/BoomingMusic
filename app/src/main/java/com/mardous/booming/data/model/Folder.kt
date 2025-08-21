@@ -21,9 +21,9 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.appcompat.content.res.AppCompatResources
 import com.mardous.booming.R
-import com.mardous.booming.extensions.plurals
-import com.mardous.booming.data.SongProvider
 import com.mardous.booming.core.model.filesystem.FileSystemItem
+import com.mardous.booming.data.SongProvider
+import com.mardous.booming.extensions.plurals
 import java.io.File
 
 /**

@@ -29,7 +29,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.mardous.booming.R
-import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.core.appwidgets.base.BaseAppWidget
 import com.mardous.booming.extensions.getTintedDrawable
 import com.mardous.booming.extensions.glide.getDefaultGlideTransition
@@ -40,6 +39,7 @@ import com.mardous.booming.extensions.resources.toBitmap
 import com.mardous.booming.glide.BoomingSimpleTarget
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
+import com.mardous.booming.ui.screen.MainActivity
 
 class AppWidgetBig : BaseAppWidget() {
     // for cancellation

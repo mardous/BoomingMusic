@@ -27,22 +27,23 @@ import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationBarView.LabelVisibility
 import com.mardous.booming.R
 import com.mardous.booming.appContext
+import com.mardous.booming.core.model.CategoryInfo
+import com.mardous.booming.core.model.Cutoff
+import com.mardous.booming.core.model.action.FolderAction
+import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.core.model.action.QueueQuickAction
+import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.core.model.shuffle.GroupShuffleMode
+import com.mardous.booming.core.model.theme.AppTheme
+import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.intRes
 import com.mardous.booming.extensions.utilities.*
-import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
-import com.mardous.booming.core.model.*
-import com.mardous.booming.core.model.action.FolderAction
-import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.core.model.action.QueueQuickAction
-import com.mardous.booming.core.model.player.NowPlayingInfo
-import com.mardous.booming.core.model.theme.AppTheme
-import com.mardous.booming.core.model.theme.NowPlayingScreen
-import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.ui.component.transform.*
 import com.mardous.booming.ui.component.views.TopAppBarLayout
+import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.File
@@ -138,6 +139,10 @@ object Preferences : KoinComponent {
     val holdTabToSearch: Boolean
         get() = preferences.getBoolean(HOLD_TAB_TO_SEARCH, true)
 
+    var lockedPlaylists: Boolean
+        get() = preferences.getBoolean(LOCKED_PLAYLISTS, false)
+        set(value) = preferences.edit { putBoolean(LOCKED_PLAYLISTS, value) }
+
     var horizontalArtistAlbums: Boolean
         get() = preferences.getBoolean(HORIZONTAL_ARTIST_ALBUMS, true)
         set(value) = preferences.edit { putBoolean(HORIZONTAL_ARTIST_ALBUMS, value) }
@@ -179,6 +184,10 @@ object Preferences : KoinComponent {
 
     val allowCoverSwiping: Boolean
         get() = preferences.getBoolean(LEFT_RIGHT_SWIPING, true)
+
+    var isQueueLocked: Boolean
+        get() = preferences.getBoolean(LOCKED_QUEUE, false)
+        set(value) = preferences.edit { putBoolean(LOCKED_QUEUE, value) }
 
     fun getNowPlayingColorSchemeKey(nps: NowPlayingScreen) =
         "player_${nps.name.lowercase()}_color_scheme"
@@ -731,3 +740,5 @@ const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SWIPE_CONTROLS = "swipe_controls"
 const val DISPLAY_NEXT_SONG = "display_next_song"
+const val LOCKED_QUEUE = "locked_queue"
+const val LOCKED_PLAYLISTS = "locked_playlists"

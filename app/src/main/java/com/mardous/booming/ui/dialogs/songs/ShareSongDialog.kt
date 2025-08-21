@@ -24,9 +24,9 @@ import androidx.core.os.BundleCompat
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
-import com.mardous.booming.ui.dialogs.ShareStoryDialog
-import com.mardous.booming.extensions.*
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.extensions.*
+import com.mardous.booming.ui.dialogs.ShareStoryDialog
 
 class ShareSongDialog : DialogFragment() {
 

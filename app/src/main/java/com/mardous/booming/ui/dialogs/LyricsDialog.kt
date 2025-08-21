@@ -24,11 +24,11 @@ import androidx.core.os.BundleCompat
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.EXTRA_SONG
 import com.mardous.booming.extensions.create
 import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.ui.component.base.goToDestination
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 

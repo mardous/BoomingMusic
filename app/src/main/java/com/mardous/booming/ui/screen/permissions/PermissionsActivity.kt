@@ -21,11 +21,11 @@ import androidx.core.content.getSystemService
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import com.mardous.booming.R
-import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.ui.component.base.AbsBaseActivity
 import com.mardous.booming.databinding.ActivityPermissionBinding
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.resources.primaryColor
+import com.mardous.booming.ui.component.base.AbsBaseActivity
+import com.mardous.booming.ui.screen.MainActivity
 
 /**
  * @author Christians M. A. (mardous)

@@ -21,9 +21,9 @@ import android.view.ViewGroup
 import androidx.annotation.ColorInt
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment.ColorReceiver
-import com.mardous.booming.data.model.Song
 
 class AlbumCoverPagerAdapter(fm: FragmentManager, private val dataSet: List<Song>) :
     CustomFragmentStatePagerAdapter(fm) {

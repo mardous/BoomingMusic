@@ -19,9 +19,9 @@ package com.mardous.booming.data.local.repository
 
 import android.content.Context
 import com.mardous.booming.R
+import com.mardous.booming.data.SearchFilter
 import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.data.SearchFilter
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.util.Preferences
 

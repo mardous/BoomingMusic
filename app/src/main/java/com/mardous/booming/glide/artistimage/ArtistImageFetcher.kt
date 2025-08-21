@@ -21,11 +21,11 @@ import android.content.Context
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.data.DataFetcher
+import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.extensions.glide.GlideScope
 import com.mardous.booming.extensions.isAllowedToDownloadMetadata
 import com.mardous.booming.extensions.media.albumCoverUri
 import com.mardous.booming.extensions.media.isArtistNameUnknown
-import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.util.Preferences
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get

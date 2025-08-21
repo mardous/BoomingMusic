@@ -20,11 +20,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
-import android.graphics.Canvas
-import android.graphics.ColorFilter
-import android.graphics.Paint
-import android.graphics.Path
-import android.graphics.PixelFormat
+import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.os.SystemClock
 import androidx.annotation.VisibleForTesting

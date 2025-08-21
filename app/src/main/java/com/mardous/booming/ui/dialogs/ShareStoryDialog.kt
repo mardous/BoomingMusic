@@ -33,6 +33,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ImageViewTarget
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.data.local.MediaStoreWriter
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.DialogShareToStoriesBinding
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.glide.getSongGlideModel
@@ -40,8 +42,6 @@ import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.resources.toJPG
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.util.FileUtil
 import org.koin.android.ext.android.inject
 import java.util.Locale

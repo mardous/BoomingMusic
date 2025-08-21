@@ -33,12 +33,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
+import com.mardous.booming.core.model.shuffle.ShuffleOperationState
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
 import com.mardous.booming.ui.component.compose.lists.ShuffleModeItem
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.core.model.shuffle.ShuffleOperationState
 
 @Composable
 fun ShuffleModeBottomSheet(

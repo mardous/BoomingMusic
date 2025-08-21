@@ -27,16 +27,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.GenreAdapter
-import com.mardous.booming.extensions.navigation.genreDetailArgs
-import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
-import com.mardous.booming.ui.IGenreCallback
-import com.mardous.booming.data.model.Genre
 import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.data.model.Genre
+import com.mardous.booming.extensions.navigation.genreDetailArgs
+import com.mardous.booming.ui.IGenreCallback
+import com.mardous.booming.ui.adapters.GenreAdapter
+import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
+import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.sort.SortOrder
 import com.mardous.booming.util.sort.prepareSortOrder
 import com.mardous.booming.util.sort.selectedSortOrder
-import com.mardous.booming.ui.screen.library.ReloadType
 
 class GenresListFragment : AbsRecyclerViewCustomGridSizeFragment<GenreAdapter, GridLayoutManager>(),
     IGenreCallback {

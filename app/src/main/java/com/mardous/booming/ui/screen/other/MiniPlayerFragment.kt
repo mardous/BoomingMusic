@@ -29,6 +29,8 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.mardous.booming.R
+import com.mardous.booming.core.model.player.ProgressState
+import com.mardous.booming.core.model.theme.NowPlayingButtonStyle
 import com.mardous.booming.databinding.FragmentMiniPlayerBinding
 import com.mardous.booming.extensions.glide.getDefaultGlideTransition
 import com.mardous.booming.extensions.glide.getSongGlideModel
@@ -43,10 +45,8 @@ import com.mardous.booming.extensions.resources.toForegroundColorSpan
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
-import com.mardous.booming.core.model.theme.NowPlayingButtonStyle
-import com.mardous.booming.util.Preferences
 import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.core.model.player.ProgressState
+import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
@@ -108,7 +108,7 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
         setupButtonStyle()
         setupExtraControls()
         binding.actionNext.setOnTouchListener(SkipButtonTouchHandler(DIRECTION_NEXT, this))
-        binding.actionNext.setOnTouchListener(SkipButtonTouchHandler(DIRECTION_PREVIOUS, this))
+        binding.actionPrevious.setOnTouchListener(SkipButtonTouchHandler(DIRECTION_PREVIOUS, this))
         binding.actionPlayPause.setOnClickListener(this)
     }
 

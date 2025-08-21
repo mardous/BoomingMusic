@@ -25,8 +25,8 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.mardous.booming.R
-import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.extensions.isLandscape
 
 abstract class AbsRecyclerViewCustomGridSizeFragment<Adt : RecyclerView.Adapter<*>, LM : RecyclerView.LayoutManager> :
     AbsRecyclerViewFragment<Adt, LM>() {

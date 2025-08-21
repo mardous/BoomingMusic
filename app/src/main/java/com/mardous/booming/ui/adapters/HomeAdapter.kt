@@ -25,8 +25,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mardous.booming.R
-import com.mardous.booming.ui.IHomeCallback
 import com.mardous.booming.data.model.Suggestion
+import com.mardous.booming.ui.IHomeCallback
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 

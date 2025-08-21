@@ -21,6 +21,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.glide.getDefaultGlideTransition
 import com.mardous.booming.extensions.glide.getSongGlideModel
 import com.mardous.booming.extensions.glide.songOptions
@@ -29,7 +30,6 @@ import com.mardous.booming.extensions.media.durationStr
 import com.mardous.booming.extensions.media.trackNumber
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.ui.ISongCallback
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.util.sort.SortKeys
 import com.mardous.booming.util.sort.SortOrder
 

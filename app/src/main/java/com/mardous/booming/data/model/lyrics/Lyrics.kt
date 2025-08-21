@@ -33,8 +33,10 @@ data class Lyrics(
     @Immutable
     data class Line(
         val startAt: Long,
-        val durationMillis: Long,
+        val end: Long,
+        val durationMillis: Long = (end - startAt),
         val content: String,
+        val backgroundContent: String?,
         val rawContent: String,
         val words: List<Word>,
         val actor: String?
@@ -45,7 +47,7 @@ data class Lyrics(
         val isOppositeTurn: Boolean = actor != null && actor != "v1"
 
         val hasBackground: Boolean
-            get() = words.any { it.isBackground }
+            get() = words.any { it.isBackground } && !backgroundContent.isNullOrBlank()
 
         val main: List<Word>
             get() = words.filterNot { it.isBackground }
@@ -55,5 +57,13 @@ data class Lyrics(
     }
 
     @Immutable
-    data class Word(val content: String, val startAt: Long, val isBackground: Boolean = false)
+    data class Word(
+        val content: String,
+        val startMillis: Long,
+        val startIndex: Int,
+        val endMillis: Long,
+        val endIndex: Int,
+        val durationMillis: Long,
+        val isBackground: Boolean = false
+    )
 }

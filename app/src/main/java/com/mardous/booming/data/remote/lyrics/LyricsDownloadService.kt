@@ -17,13 +17,13 @@
 
 package com.mardous.booming.data.remote.lyrics
 
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lyrics.api.applemusic.AppleMusicLyricsApi
-import com.mardous.booming.extensions.media.albumArtistName
 import com.mardous.booming.data.remote.lyrics.api.lrclib.LrcLibApi
 import com.mardous.booming.data.remote.lyrics.api.spotify.SpotifyLyricsApi
 import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lyrics.model.toDownloadedLyrics
+import com.mardous.booming.extensions.media.albumArtistName
 import io.ktor.client.HttpClient
 import java.io.IOException
 

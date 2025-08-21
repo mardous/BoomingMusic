@@ -9,10 +9,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.R
-import com.mardous.booming.extensions.isOnline
-import com.mardous.booming.data.remote.github.model.GitHubRelease
-import com.mardous.booming.data.remote.github.GitHubService
 import com.mardous.booming.core.model.task.Event
+import com.mardous.booming.data.remote.github.GitHubService
+import com.mardous.booming.data.remote.github.model.GitHubRelease
+import com.mardous.booming.extensions.isOnline
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.UpdateSearchMode
 import kotlinx.coroutines.CoroutineExceptionHandler

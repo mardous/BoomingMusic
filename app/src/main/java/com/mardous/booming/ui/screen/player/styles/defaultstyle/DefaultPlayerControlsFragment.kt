@@ -30,22 +30,18 @@ import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
+import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentDefaultPlayerPlaybackControlsBinding
 import com.mardous.booming.extensions.resources.centerPivot
 import com.mardous.booming.extensions.resources.showBounceAnimation
-import com.mardous.booming.ui.screen.player.PlayerAnimator
-import com.mardous.booming.ui.screen.player.PlayerColorScheme
-import com.mardous.booming.ui.screen.player.PlayerTintTarget
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
-import com.mardous.booming.ui.screen.player.iconButtonTintTarget
-import com.mardous.booming.ui.screen.player.tintTarget
-import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.data.model.Song
+import com.mardous.booming.ui.component.views.MusicSlider
+import com.mardous.booming.ui.screen.player.*
 import com.mardous.booming.util.DISPLAY_NEXT_SONG
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.ui.component.views.MusicSlider
 import java.util.LinkedList
 
 /**

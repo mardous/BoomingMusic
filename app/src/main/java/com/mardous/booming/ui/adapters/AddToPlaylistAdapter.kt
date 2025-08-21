@@ -28,7 +28,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.mardous.booming.R
-import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.extensions.glide.getDefaultGlideTransition
 import com.mardous.booming.extensions.glide.playlistOptions
@@ -36,6 +35,7 @@ import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.extensions.resources.show
 import com.mardous.booming.glide.playlistPreview.PlaylistPreview
 import com.mardous.booming.ui.IPlaylistCallback
+import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 
 /**
  * @author Christians M. A. (mardous)

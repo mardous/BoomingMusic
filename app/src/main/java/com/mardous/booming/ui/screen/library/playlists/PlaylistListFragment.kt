@@ -27,20 +27,20 @@ import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.PlaylistAdapter
+import com.mardous.booming.core.model.GridViewType
 import com.mardous.booming.data.local.room.PlaylistWithSongs
-import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
-import com.mardous.booming.ui.dialogs.playlists.ImportPlaylistDialog
 import com.mardous.booming.extensions.navigation.playlistDetailArgs
+import com.mardous.booming.ui.IPlaylistCallback
+import com.mardous.booming.ui.adapters.PlaylistAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
 import com.mardous.booming.ui.component.menu.onPlaylistMenu
 import com.mardous.booming.ui.component.menu.onPlaylistsMenu
-import com.mardous.booming.ui.IPlaylistCallback
-import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
+import com.mardous.booming.ui.dialogs.playlists.ImportPlaylistDialog
+import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.sort.SortOrder
 import com.mardous.booming.util.sort.prepareSortOrder
 import com.mardous.booming.util.sort.selectedSortOrder
-import com.mardous.booming.ui.screen.library.ReloadType
 
 /**
  * @author Christians M. A. (mardous)

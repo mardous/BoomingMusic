@@ -18,11 +18,11 @@
 package com.mardous.booming.data.local.search
 
 import android.os.Parcelable
+import com.mardous.booming.data.SearchFilter
 import com.mardous.booming.data.local.MediaQueryDispatcher
 import com.mardous.booming.data.local.repository.RealAlbumRepository
 import com.mardous.booming.data.local.repository.RealSongRepository
 import com.mardous.booming.data.model.search.FilterSelection
-import com.mardous.booming.data.SearchFilter
 import com.mardous.booming.data.model.search.SearchQuery
 import kotlinx.parcelize.Parcelize
 import org.koin.core.component.KoinComponent

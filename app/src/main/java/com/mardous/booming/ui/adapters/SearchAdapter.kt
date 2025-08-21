@@ -29,17 +29,17 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mardous.booming.R
-import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.data.local.room.PlaylistWithSongs
-import com.mardous.booming.extensions.glide.*
-import com.mardous.booming.extensions.media.*
-import com.mardous.booming.glide.playlistPreview.PlaylistPreview
-import com.mardous.booming.ui.component.menu.OnClickMenu
-import com.mardous.booming.ui.ISearchCallback
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.extensions.glide.*
+import com.mardous.booming.extensions.media.*
+import com.mardous.booming.glide.playlistPreview.PlaylistPreview
+import com.mardous.booming.ui.ISearchCallback
+import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
+import com.mardous.booming.ui.component.menu.OnClickMenu
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 

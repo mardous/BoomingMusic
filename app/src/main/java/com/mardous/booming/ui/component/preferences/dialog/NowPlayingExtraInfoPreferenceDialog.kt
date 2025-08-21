@@ -25,10 +25,10 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.preference.ExtraInfoAdapter
+import com.mardous.booming.core.model.player.NowPlayingInfo
 import com.mardous.booming.databinding.DialogRecyclerViewBinding
 import com.mardous.booming.extensions.create
-import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.ui.adapters.preference.ExtraInfoAdapter
 import com.mardous.booming.util.Preferences
 
 class NowPlayingExtraInfoPreferenceDialog : DialogFragment() {

@@ -156,7 +156,8 @@ data class PlayerColorScheme(
                 surfaceColor = color.backgroundColor,
                 emphasisColor = color.backgroundColor,
                 primaryTextColor = color.primaryTextColor,
-                secondaryTextColor = color.secondaryTextColor
+                secondaryTextColor = color.secondaryTextColor,
+                secondaryControlColor = color.secondaryTextColor.withAlpha(0.45f)
             )
         }
 

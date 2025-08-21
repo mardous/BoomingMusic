@@ -26,22 +26,22 @@ import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.album.AlbumAdapter
+import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.data.model.Album
 import com.mardous.booming.extensions.navigation.albumDetailArgs
 import com.mardous.booming.extensions.navigation.asFragmentExtras
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.ui.IAlbumCallback
+import com.mardous.booming.ui.adapters.album.AlbumAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
 import com.mardous.booming.ui.component.menu.onAlbumMenu
 import com.mardous.booming.ui.component.menu.onAlbumsMenu
-import com.mardous.booming.ui.IAlbumCallback
-import com.mardous.booming.data.model.Album
-import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.sort.SortKeys
 import com.mardous.booming.util.sort.SortOrder
 import com.mardous.booming.util.sort.prepareSortOrder
 import com.mardous.booming.util.sort.selectedSortOrder
-import com.mardous.booming.ui.screen.library.ReloadType
 
 class AlbumListFragment : AbsRecyclerViewCustomGridSizeFragment<AlbumAdapter, GridLayoutManager>(),
     IAlbumCallback {

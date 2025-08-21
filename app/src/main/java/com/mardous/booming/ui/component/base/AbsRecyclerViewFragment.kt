@@ -32,14 +32,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
+import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.databinding.FragmentMainRecyclerBinding
-import com.mardous.booming.ui.dialogs.playlists.ImportPlaylistDialog
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.onVerticalScroll
-import com.mardous.booming.ui.screen.other.ShuffleModeFragment
 import com.mardous.booming.ui.IScrollHelper
-import com.mardous.booming.core.model.MediaEvent
+import com.mardous.booming.ui.dialogs.playlists.ImportPlaylistDialog
+import com.mardous.booming.ui.screen.other.ShuffleModeFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScroller

@@ -27,14 +27,14 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.updatePadding
 import com.mardous.booming.R
+import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.databinding.FragmentPlainPlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.whichFragment
-import com.mardous.booming.ui.screen.player.*
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.AbsPlayerFragment
-import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.ui.screen.player.*
 import com.mardous.booming.util.Preferences
 
 /**

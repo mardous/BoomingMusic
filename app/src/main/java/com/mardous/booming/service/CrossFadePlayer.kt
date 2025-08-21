@@ -12,9 +12,9 @@ import androidx.annotation.FloatRange
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.execSafe
 import com.mardous.booming.extensions.showToast
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.service.AudioFader.Companion.createFadeAnimator
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.*

@@ -24,9 +24,9 @@ import com.mardous.booming.R
 import com.mardous.booming.extensions.requestContext
 import com.mardous.booming.extensions.utilities.dateStr
 import com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
-import com.mardous.booming.util.Preferences
-import com.mardous.booming.ui.screen.update.UpdateViewModel
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
+import com.mardous.booming.ui.screen.update.UpdateViewModel
+import com.mardous.booming.util.Preferences
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class UpdatePreferencesFragment : PreferencesScreenFragment() {

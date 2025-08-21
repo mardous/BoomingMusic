@@ -25,15 +25,11 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
-import com.mardous.booming.ui.adapters.AddToPlaylistAdapter
 import com.mardous.booming.data.local.room.PlaylistWithSongs
-import com.mardous.booming.databinding.DialogProgressRecyclerViewBinding
-import com.mardous.booming.extensions.EXTRA_SONGS
-import com.mardous.booming.extensions.create
-import com.mardous.booming.extensions.extraNotNull
-import com.mardous.booming.extensions.showToast
-import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.databinding.DialogProgressRecyclerViewBinding
+import com.mardous.booming.extensions.*
+import com.mardous.booming.ui.adapters.AddToPlaylistAdapter
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 

@@ -10,12 +10,12 @@ import android.os.Parcelable
 import android.util.Log
 import com.kyant.taglib.Picture
 import com.kyant.taglib.TagLib
-import com.mardous.booming.extensions.media.createAlbumArtThumbFile
-import com.mardous.booming.extensions.media.deleteAlbumArt
-import com.mardous.booming.extensions.media.insertAlbumArt
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.extensions.media.createAlbumArtThumbFile
+import com.mardous.booming.extensions.media.deleteAlbumArt
+import com.mardous.booming.extensions.media.insertAlbumArt
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
@@ -25,7 +25,6 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.ByteArrayOutputStream
 import java.io.File
-import kotlin.collections.iterator
 import kotlin.coroutines.resume
 
 class MetadataWriter : KoinComponent {

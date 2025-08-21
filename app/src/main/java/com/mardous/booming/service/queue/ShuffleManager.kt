@@ -18,13 +18,13 @@
 package com.mardous.booming.service.queue
 
 import android.util.Log
-import com.mardous.booming.data.model.ExpandedSong
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
-import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.model.ExpandedSong
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.util.sort.sortedSongs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

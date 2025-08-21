@@ -28,12 +28,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.databinding.TagEditorArtistFieldBinding
 import com.mardous.booming.extensions.glide.*
 import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.extensions.webSearch
 import com.mardous.booming.glide.BoomingSimpleTarget
-import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.ui.component.base.AbsTagEditorActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf

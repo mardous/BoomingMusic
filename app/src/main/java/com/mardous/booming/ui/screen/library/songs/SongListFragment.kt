@@ -25,17 +25,17 @@ import android.view.View
 import androidx.core.content.edit
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
+import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.SongAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
-import com.mardous.booming.ui.ISongCallback
-import com.mardous.booming.core.model.GridViewType
-import com.mardous.booming.data.model.Song
+import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.sort.SortOrder
 import com.mardous.booming.util.sort.prepareSortOrder
 import com.mardous.booming.util.sort.selectedSortOrder
-import com.mardous.booming.ui.screen.library.ReloadType
 
 /**
  * @author Christians M. A. (mardous)

@@ -33,16 +33,16 @@ import androidx.core.view.updatePadding
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
+import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentFullCoverPlayerPlaybackControlsBinding
 import com.mardous.booming.extensions.resources.showBounceAnimation
-import com.mardous.booming.ui.screen.player.*
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
-import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.util.Preferences
 import com.mardous.booming.ui.component.views.MusicSlider
+import com.mardous.booming.ui.screen.player.*
+import com.mardous.booming.util.Preferences
 import java.util.LinkedList
 
 /**

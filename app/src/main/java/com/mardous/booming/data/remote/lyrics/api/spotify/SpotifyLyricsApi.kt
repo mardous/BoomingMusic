@@ -17,11 +17,11 @@
 
 package com.mardous.booming.data.remote.lyrics.api.spotify
 
-import com.mardous.booming.data.remote.lyrics.api.LyricsApi
-import com.mardous.booming.data.remote.lyrics.model.SyncedLinesResponse
-import com.mardous.booming.data.remote.lyrics.model.SpotifySearchResult
-import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.remote.lyrics.api.LyricsApi
+import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
+import com.mardous.booming.data.remote.lyrics.model.SpotifySearchResult
+import com.mardous.booming.data.remote.lyrics.model.SyncedLinesResponse
 import com.mardous.booming.data.remote.lyrics.model.toDownloadedLyrics
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

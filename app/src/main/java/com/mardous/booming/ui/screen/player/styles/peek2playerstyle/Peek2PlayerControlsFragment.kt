@@ -26,15 +26,15 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPeek2PlayerPlaybackControlsBinding
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
-import com.mardous.booming.ui.screen.player.*
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.util.Preferences
 import com.mardous.booming.ui.component.views.MusicSlider
+import com.mardous.booming.ui.screen.player.*
+import com.mardous.booming.util.Preferences
 import java.util.LinkedList
 
 /**
