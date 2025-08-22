@@ -592,6 +592,16 @@
     <string name="tab_mode_title">Sekme başlıkları modu</string>
     <string name="hold_tab_to_search_title">Aramak için sekmeye basılı tutun</string>
     <string name="hold_tab_to_search_summary">Arama ekranını açmak için herhangi bir gezinme çubuğu sekmesine uzun basın.</string>
+    <string name="lyrics_center_current_line_title">Center current line</string>
+    <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
+    <string name="synced_font_size_player_title">Synced lyrics font size (player)</string>
+    <string name="synced_font_size_player_summary">Adjust the font size for synced lyrics shown over the album cover in the player screen.</string>
+    <string name="unsynced_font_size_player_title">Unsynced lyrics font size (player)</string>
+    <string name="unsynced_font_size_player_summary">Adjust the font size for unsynced lyrics shown over the album cover in the player screen.</string>
+    <string name="synced_font_size_full_title">Synced lyrics font size (full view)</string>
+    <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
+    <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
+    <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Çalmaya başlayınca aç</string>
