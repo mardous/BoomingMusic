@@ -354,9 +354,9 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Песня</item>
-        <item quantity="few">Треки</item>
-        <item quantity="many">Треки</item>
-        <item quantity="other">Треки</item>
+        <item quantity="few">Песни</item>
+        <item quantity="many">Песни</item>
+        <item quantity="other">Песни</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Альбом</item>
@@ -365,28 +365,28 @@
         <item quantity="other">Альбомы</item>
     </plurals>
     <plurals name="x_songs">
-        <item quantity="one">%d song</item>
-        <item quantity="few">%d songs</item>
-        <item quantity="many">%d songs</item>
-        <item quantity="other">%d композиций</item>
+        <item quantity="one">%d песня</item>
+        <item quantity="few">%d песни</item>
+        <item quantity="many">%d песни</item>
+        <item quantity="other">%d песни</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d альбом</item>
-        <item quantity="few">%d альбомов</item>
-        <item quantity="many">%d альбомов</item>
-        <item quantity="other">%d альбомов</item>
+        <item quantity="few">%d альбома</item>
+        <item quantity="many">%d альбома</item>
+        <item quantity="other">%d альбома</item>
     </plurals>
     <plurals name="x_artists">
-        <item quantity="one">Исполнитель %d</item>
-        <item quantity="few">%d исполнителей</item>
-        <item quantity="many">%d исполнителей</item>
-        <item quantity="other">%d исполнителей</item>
+        <item quantity="one">%d исполнитель</item>
+        <item quantity="few">%d исполнителя</item>
+        <item quantity="many">%d исполнителя</item>
+        <item quantity="other">%d исполнителя</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d раз</item>
-        <item quantity="few">%d times</item>
-        <item quantity="many">%d times</item>
-        <item quantity="other">%d times</item>
+        <item quantity="few">%d раза</item>
+        <item quantity="many">%d раза</item>
+        <item quantity="other">%d раза</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d воспроизведение</item>
