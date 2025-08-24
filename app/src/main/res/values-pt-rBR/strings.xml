@@ -594,13 +594,13 @@
     <string name="lyrics_center_current_line_title">Centralizar linha atual</string>
     <string name="lyrics_center_current_line_summary">Manter a linha atual da letra centralizada na tela em vez de alinhada ao topo.</string>
     <string name="synced_font_size_player_title">Tamanho da fonte das letras sincronizadas (reprodutor)</string>
-    <string name="synced_font_size_player_summary">Ajustar o tamanho da fonte das letras sincronizadas exibidas sobre a capa do álbum na tela do reprodutor.</string>
-    <string name="unsynced_font_size_player_title">Tamanho da fonte das letras não sincronizadas (reprodutor)</string>
-    <string name="unsynced_font_size_player_summary">Ajustar o tamanho da fonte das letras não sincronizadas exibidas sobre a capa do álbum na tela do reprodutor.</string>
+    <string name="synced_font_size_player_summary">Ajustar o tamanho da fonte das letras sincronizadas exibidas sobre a capa do álbum na tela do tocador.</string>
+    <string name="unsynced_font_size_player_title">Tamanho da fonte das letras não sincronizadas (tocador)</string>
+    <string name="unsynced_font_size_player_summary">Ajustar o tamanho da fonte das letras não sincronizadas exibidas sobre a capa do álbum na tela do tocador.</string>
     <string name="synced_font_size_full_title">Tamanho da fonte das letras sincronizadas (tela cheia)</string>
-    <string name="synced_font_size_full_summary">Definir o tamanho da fonte das letras sincronizadas em tela cheia.</string>
+    <string name="synced_font_size_full_summary">Ajustar o tamanho da fonte das letras sincronizadas em tela cheia.</string>
     <string name="unsynced_font_size_full_title">Tamanho da fonte das letras não sincronizadas (tela cheia)</string>
-    <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
+    <string name="unsynced_font_size_full_summary">Ajustar o tamanho da fonte das letras não sincronizadas na tela cheia.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir ao reproduzir</string>
