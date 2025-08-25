@@ -462,6 +462,8 @@
     <string name="sound_settings">Geluidsinstellingen</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tijdelijk</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">Externe EQ</string>
     <string name="custom">Aangepaste</string>
     <!-- Lyrics viewer -->
@@ -608,6 +610,8 @@
     <string name="open_on_play_summary">Uitvouwen van het Nu Afspelen paneel automatisch nadat u een nummer heeft afgespeeld.</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Extra controles</string>
     <string name="extra_controls_summary">Extra besturingselementen voor minispeler toevoegen</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -645,12 +649,8 @@
     <string name="play_on_startup_title">Spelen bij opstarten</string>
     <string name="gapless_playback_title">Afspelen zonder pauzes</string>
     <string name="gapless_playback_summary">Vloeiende overgang tussen liedjes. Kan afspeelproblemen veroorzaken op sommige apparaten.</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
     <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Bron modus</string>
     <string name="replaygain_preamp_title">PreAmp niveau</string>
     <string name="replaygain_preamp_summary">Stel volume niveau in als ReplayGain is ingeschakeld.</string>
