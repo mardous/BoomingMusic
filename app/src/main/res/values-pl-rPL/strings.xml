@@ -478,6 +478,8 @@
     <string name="sound_settings">Ustawienia dźwięku</string>
     <string name="volume_label">Głośność</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Płynne przejście (eksperymentalne)</string>
+    <string name="audio_fade_duration_title">Czas trwania zanikania dźwięku (eksperymentalne)</string>
     <string name="action_external_eq">Zewnętrzny EQ</string>
     <string name="custom">Własny</string>
     <!-- Lyrics viewer -->
@@ -624,6 +626,8 @@
     <string name="open_on_play_summary">Rozwiń panel Teraz odtwarzany automatycznie po rozpoczęciu odtwarzania piosenki.</string>
     <string name="squiggly_seek_bar_title">Falisty pasek postępu</string>
     <string name="squiggly_seek_bar_summary">Włącz falisty pasek postępu zamiast domyślnego suwaka.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Dodatkowe przyciski</string>
     <string name="extra_controls_summary">Dodatkowe przyciski w mini odtwarzaczu</string>
     <string name="adaptive_controls_title">Adaptacyjne sterowanie</string>
@@ -661,12 +665,8 @@
     <string name="play_on_startup_title">Odtwarzaj po starcie</string>
     <string name="gapless_playback_title">Odtwarzanie bez przerw</string>
     <string name="gapless_playback_summary">Płynne przejście między utworami, możliwe problemy z odtwarzaniem na niektórych urządzeniach.</string>
-    <string name="crossfade_title">Płynne przejście (eksperymentalne)</string>
-    <string name="crossfade_summary">Czas nakładania się dźwięku między utworami sekundach (ustaw 0, aby wyłączyć).</string>
     <string name="no_crossfade_on_albums_title">Brak płynnego przejścia w albumach</string>
     <string name="no_crossfade_on_albums_summary">Nie stosuj płynnego przejścia podczas odtwarzania albumów w ich oryginalnej kolejności.</string>
-    <string name="audio_fade_duration_title">Czas trwania zanikania dźwięku (eksperymentalne)</string>
-    <string name="audio_fade_duration_summary">Czas w sekundach, w którym głośność narasta lub opada przy rozpoczęciu lub zatrzymaniu odtwarzania (ustaw 0, aby wyłączyć).</string>
     <string name="replaygain_source_mode_title">Tryb źródłowy</string>
     <string name="replaygain_preamp_title">Poziom przedwzmacniacza</string>
     <string name="replaygain_preamp_summary">Ustaw poziom głośności, gdy ReplayGain jest włączony.</string>
