@@ -460,6 +460,8 @@
     <string name="sound_settings">साउंड सेटिंग्स</string>
     <string name="volume_label">वॉल्यूम</string>
     <string name="tempo_label">गति</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">बाहरी ईक्यू</string>
     <string name="custom">कस्टम</string>
     <!-- Lyrics viewer -->
@@ -606,6 +608,8 @@
     <string name="open_on_play_summary">गाना बजाना शुरू करने के बाद अब खेलने वाले पैनल को स्वचालित रूप से फैलाएं।</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">अतिरिक्त कंट्रोल्स</string>
     <string name="extra_controls_summary">मिनी प्लेयर के लिए अतिरिक्त कंट्रोल जोड़ें।</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -643,12 +647,8 @@
     <string name="play_on_startup_title">प्ले ऑन स्टार्टअप</string>
     <string name="gapless_playback_title">गैपलेस प्लेबैक</string>
     <string name="gapless_playback_summary">गानों के बीच सुचारू रूपांतरण। कुछ उपकरणों पर प्लेबैक समस्याएँ उत्पन्न कर सकता है।</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
     <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">स्रोत मोड</string>
     <string name="replaygain_preamp_title">प्रे-अम्प स्तर</string>
     <string name="replaygain_preamp_summary">जब रिप्लेगैन सक्रिय हो, तब वॉल्यूम स्तर सेट करें।</string>
