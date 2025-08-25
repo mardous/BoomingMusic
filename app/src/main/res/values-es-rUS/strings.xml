@@ -462,6 +462,8 @@
     <string name="sound_settings">Ajustes de sonido</string>
     <string name="volume_label">Volumen</string>
     <string name="tempo_label">Velocidad y tono</string>
+    <string name="crossfade_title">Transición (experimental)</string>
+    <string name="audio_fade_duration_title">Duración del fundido de audio (experimental)</string>
     <string name="action_external_eq">Ecualizador externo</string>
     <string name="custom">Personalizado</string>
     <!-- Lyrics viewer -->
@@ -608,6 +610,8 @@
     <string name="open_on_play_summary">Abre el panel del reproductor automáticamente al empezar a reproducir una canción.</string>
     <string name="squiggly_seek_bar_title">Barra de progreso ondulada</string>
     <string name="squiggly_seek_bar_summary">Activa una barra de progreso ondulada en lugar del deslizador clásico.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Controles adicionales</string>
     <string name="extra_controls_summary">Habilita controles adicionales para el reproductor minimizado.</string>
     <string name="adaptive_controls_title">Controles adaptivos</string>
@@ -645,12 +649,8 @@
     <string name="play_on_startup_title">Reproducir al iniciar</string>
     <string name="gapless_playback_title">Reproducción sin interrupciones</string>
     <string name="gapless_playback_summary">Transición rápida entre canciones. Puede causar problemas en algunos dispositivos.</string>
-    <string name="crossfade_title">Transición (experimental)</string>
-    <string name="crossfade_summary">Cuantos segundos tarda en realizarse el fundido entre canciones (establece 0 para desactivar).</string>
     <string name="no_crossfade_on_albums_title">Sin fundido en álbumes</string>
     <string name="no_crossfade_on_albums_summary">No transicionar al reproducir álbumes en su orden original.</string>
-    <string name="audio_fade_duration_title">Duración del fundido de audio (experimental)</string>
-    <string name="audio_fade_duration_summary">Cuantos segundos tarda en subir o bajar el volumen al reproducir o pausar la música (establece 0 para desactivar).</string>
     <string name="replaygain_source_mode_title">Modo de origen</string>
     <string name="replaygain_preamp_title">Nivel de PreAmp</string>
     <string name="replaygain_preamp_summary">Elija el nivel de volumen a usar cuando ReplayGain está activado.</string>
