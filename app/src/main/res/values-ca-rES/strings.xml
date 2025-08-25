@@ -462,6 +462,8 @@
     <string name="sound_settings">Configuració de so</string>
     <string name="volume_label">Volum</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Encadenament (experimental)</string>
+    <string name="audio_fade_duration_title">Durada de la fosa d\'àudio (experimental)</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
     <!-- Lyrics viewer -->
@@ -608,6 +610,8 @@
     <string name="open_on_play_summary">Expandeix automàticament el panell d\'Ara sona en reproduir una cançó.</string>
     <string name="squiggly_seek_bar_title">Barra de reproducció ondulada</string>
     <string name="squiggly_seek_bar_summary">Activa una barra de reproducció ondulada en comptes de la clàssica.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Controls addicionals</string>
     <string name="extra_controls_summary">Afegeix controls addicionals per al mini reproductor</string>
     <string name="adaptive_controls_title">Controls adaptatius</string>
@@ -645,12 +649,8 @@
     <string name="play_on_startup_title">Reprodueix en iniciar</string>
     <string name="gapless_playback_title">Reproducció sense interrupcions</string>
     <string name="gapless_playback_summary">Transició suau entre cançons. Pot causar errors de reproducció en alguns dispositius.</string>
-    <string name="crossfade_title">Encadenament (experimental)</string>
-    <string name="crossfade_summary">Els segons que triga l\'encadenament entre dues cançons (el 0 el desactiva).</string>
     <string name="no_crossfade_on_albums_title">Sense encadenament als àlbums</string>
     <string name="no_crossfade_on_albums_summary">No es fa encadenament en reproduir àlbums en el seu ordre original.</string>
-    <string name="audio_fade_duration_title">Durada de la fosa d\'àudio (experimental)</string>
-    <string name="audio_fade_duration_summary">Els segons que triga la fosa del volum d\'entrada o sortida quan la reproducció comença o es pausa (el 0 la desactiva).</string>
     <string name="replaygain_source_mode_title">Mode d\'origen</string>
     <string name="replaygain_preamp_title">Nivell de PreAmp</string>
     <string name="replaygain_preamp_summary">Establiu el nivell de volum quan el Guany de reproducció està activat.</string>
