@@ -462,6 +462,8 @@
     <string name="sound_settings">Lydinnstillinger (Automatic Translation)</string>
     <string name="volume_label">Volum</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">Ekstern EQ</string>
     <string name="custom">Egendefinert</string>
     <!-- Lyrics viewer -->
@@ -608,6 +610,8 @@
     <string name="open_on_play_summary">Utvid Nå Playing panelet automatisk etter å ha startet å spille en sang.</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Ekstra kontroller</string>
     <string name="extra_controls_summary">Legg til ekstra kontroller for mini spiller</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -645,12 +649,8 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">Mellomromsfri avspilling</string>
     <string name="gapless_playback_summary">Jevn overgang mellom sanger. Kan forårsake avspillingsproblemer på noen enheter.</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
     <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Kilde modus</string>
     <string name="replaygain_preamp_title">Forbytt nivå</string>
     <string name="replaygain_preamp_summary">Angi volumnivå når ReplayGain er aktivert. (Automatic Translation)</string>
