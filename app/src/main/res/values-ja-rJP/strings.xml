@@ -454,6 +454,8 @@
     <string name="sound_settings">サウンドの設定</string>
     <string name="volume_label">音量</string>
     <string name="tempo_label">テンポ</string>
+    <string name="crossfade_title">クロスフェード (実験的)</string>
+    <string name="audio_fade_duration_title">オーディオフェード時間（実験的）</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">カスタム</string>
     <!-- Lyrics viewer -->
@@ -600,6 +602,8 @@
     <string name="open_on_play_summary">曲の再生を開始した後、自動的に「再生中」パネルを展開します。</string>
     <string name="squiggly_seek_bar_title">Squiglyシークバー</string>
     <string name="squiggly_seek_bar_summary">デフォルトのスライダーの代わりにウェーブシークバーを有効にします。</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">追加コントロール</string>
     <string name="extra_controls_summary">ミニプレーヤー用の追加コントロールを追加</string>
     <string name="adaptive_controls_title">アダプティブコントロール</string>
@@ -637,12 +641,8 @@
     <string name="play_on_startup_title">起動時に再生する</string>
     <string name="gapless_playback_title">ギャップレス再生</string>
     <string name="gapless_playback_summary">曲間のスムーズなトランジション。一部のデバイスで再生の問題を引き起こす可能性があります。</string>
-    <string name="crossfade_title">クロスフェード (実験的)</string>
-    <string name="crossfade_summary">曲間のクロスフェードにかかる秒数(0に設定すると無効になります)。</string>
     <string name="no_crossfade_on_albums_title">アルバムではクロスフェードしません</string>
     <string name="no_crossfade_on_albums_summary">アルバムを元の順序で再生するときはクロスフェードしないでください。</string>
-    <string name="audio_fade_duration_title">オーディオフェード時間（実験的）</string>
-    <string name="audio_fade_duration_summary">再生の開始時または一時停止時にボリュームをフェードインまたはフェードアウトするのにかかる秒数(0に設定すると無効になります)。</string>
     <string name="replaygain_source_mode_title">ソースモード</string>
     <string name="replaygain_preamp_title">PreAmp レベル</string>
     <string name="replaygain_preamp_summary">ReplayGain が有効な場合、音量レベルを設定します。</string>
