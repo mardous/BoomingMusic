@@ -478,6 +478,8 @@
     <string name="sound_settings">Nastavení zvuku</string>
     <string name="volume_label">Objem</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">Externí EQ</string>
     <string name="custom">Vlastní</string>
     <!-- Lyrics viewer -->
@@ -624,6 +626,8 @@
     <string name="open_on_play_summary">Po spuštění přehrávání skladby automaticky rozbalte panel Nyní.</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Extra ovládací prvky</string>
     <string name="extra_controls_summary">Přidat další ovládací prvky pro mini přehrávač</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -661,12 +665,8 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">Přehrávání bez mezer</string>
     <string name="gapless_playback_summary">Hladký přechod mezi skladbami. Může způsobit problémy při přehrávání na některých zařízeních.</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
     <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Režim zdroje</string>
     <string name="replaygain_preamp_title">Úrovně úvodů</string>
     <string name="replaygain_preamp_summary">Nastavte úroveň hlasitosti, když je aktivován ReplayGain.</string>
