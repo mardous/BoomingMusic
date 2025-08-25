@@ -462,6 +462,8 @@
     <string name="sound_settings">Klangeinstellungen</string>
     <string name="volume_label">Lautstärke</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Überblenden (experimentell)</string>
+    <string name="audio_fade_duration_title">Audio-Blendendauer (experimentell)</string>
     <string name="action_external_eq">Externer EQ</string>
     <string name="custom">Benutzerdefiniert</string>
     <!-- Lyrics viewer -->
@@ -608,6 +610,8 @@
     <string name="open_on_play_summary">Die Wiedergabe-Ansicht nach Wiedergabe-Start automatisch erweitern.</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Zusätzliche Steuerelemente</string>
     <string name="extra_controls_summary">Zusätzliche Steuerelemente für Mini-Player hinzufügen</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -645,12 +649,8 @@
     <string name="play_on_startup_title">Beim App-Start fortsetzen</string>
     <string name="gapless_playback_title">Nahtlose Wiedergabe</string>
     <string name="gapless_playback_summary">Nahtloser Übergang zwischen den Titeln. Kann auf manchen Geräten zu Wiedergabeproblemen führen.</string>
-    <string name="crossfade_title">Überblenden (experimentell)</string>
-    <string name="crossfade_summary">Dauer in Sekunden, um zwischen Titeln überzublenden (wähle 0 zum Deaktivieren).</string>
     <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio-Blendendauer (experimentell)</string>
-    <string name="audio_fade_duration_summary">Dauer in Sekunden, um bei Wiedergabestart oder -pause ein- oder auszublenden (wähle 0 zum Deaktivieren).</string>
     <string name="replaygain_source_mode_title">Quellmodus</string>
     <string name="replaygain_preamp_title">Vorverstärker-Stufe</string>
     <string name="replaygain_preamp_summary">Lautstärke-Stufe festlegen, wenn ReplayGain aktiv ist.</string>
