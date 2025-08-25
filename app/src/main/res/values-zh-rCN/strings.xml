@@ -454,6 +454,8 @@
     <string name="sound_settings">声音设置</string>
     <string name="volume_label">音量</string>
     <string name="tempo_label">节拍</string>
+    <string name="crossfade_title">交叉淡入淡出(实验功能)</string>
+    <string name="audio_fade_duration_title">音频淡入/淡出持续时间(实验功能)</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">自定义</string>
     <!-- Lyrics viewer -->
@@ -600,6 +602,8 @@
     <string name="open_on_play_summary">开始播放歌曲后自动展开播放面板。</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">额外控制</string>
     <string name="extra_controls_summary">为迷你播放器添加额外的控制</string>
     <string name="adaptive_controls_title">自适应控件</string>
@@ -637,12 +641,8 @@
     <string name="play_on_startup_title">启动时自动播放</string>
     <string name="gapless_playback_title">无缝播放</string>
     <string name="gapless_playback_summary">在歌曲之间平滑过渡。可能会在某些设备上导致播放问题。</string>
-    <string name="crossfade_title">交叉淡入淡出(实验功能)</string>
-    <string name="crossfade_summary">歌曲之间交叉淡入淡出的秒数（设置为0以禁用）。</string>
     <string name="no_crossfade_on_albums_title">专辑播放无交叉淡入淡出效果</string>
     <string name="no_crossfade_on_albums_summary">以原始顺序播放专辑时禁用交叉淡入淡出。</string>
-    <string name="audio_fade_duration_title">音频淡入/淡出持续时间(实验功能)</string>
-    <string name="audio_fade_duration_summary">播放开始或暂停时淡入或淡出音量所需秒数(设置为0为禁用)。</string>
     <string name="replaygain_source_mode_title">源模式</string>
     <string name="replaygain_preamp_title">预置层级</string>
     <string name="replaygain_preamp_summary">设置当ReplayGain 启用时的音量水平。</string>
