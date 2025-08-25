@@ -461,6 +461,8 @@
     <string name="sound_settings">Configurações de som</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Transição (experimental)</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">EQ Externo</string>
     <string name="custom">Personalizado</string>
     <!-- Lyrics viewer -->
@@ -607,6 +609,8 @@
     <string name="open_on_play_summary">Expanda o painel Reproduzindo Agora automaticamente após começar a tocar uma música.</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Controles adicionais</string>
     <string name="extra_controls_summary">Adicionar controles extras para mini jogador</string>
     <string name="adaptive_controls_title">Controles adaptativos</string>
@@ -644,12 +648,8 @@
     <string name="play_on_startup_title">Reproduzir ao iniciar</string>
     <string name="gapless_playback_title">Reprodução ininterrupta</string>
     <string name="gapless_playback_summary">Transição suave entre músicas. Pode causar problemas de reprodução em alguns dispositivos.</string>
-    <string name="crossfade_title">Transição (experimental)</string>
-    <string name="crossfade_summary">Segundos que leva para transição entre músicas (defina 0 para desativar).</string>
     <string name="no_crossfade_on_albums_title">Sem transição entre álbuns</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Modo de origem</string>
     <string name="replaygain_preamp_title">Nível de antecipação</string>
     <string name="replaygain_preamp_summary">Definir o nível de volume quando o ReplayGain estiver habilitado.</string>
