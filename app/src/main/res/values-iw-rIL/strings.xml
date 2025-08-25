@@ -478,6 +478,8 @@
     <string name="sound_settings">הגדרות קול</string>
     <string name="volume_label">עוצמת שמע</string>
     <string name="tempo_label">קצב</string>
+    <string name="crossfade_title">מעבר חלק בין שירים (ניסוי)</string>
+    <string name="audio_fade_duration_title">משך דעיכת האודיו (ניסיוני)</string>
     <string name="action_external_eq">איקוולייזר חיצוני</string>
     <string name="custom">מותאם אישית</string>
     <!-- Lyrics viewer -->
@@ -624,6 +626,8 @@
     <string name="open_on_play_summary">הרחב את לוח מנגן כעת באופן אוטומטי לאחר תחילת הניגון.</string>
     <string name="squiggly_seek_bar_title">פס חיפוש גלי</string>
     <string name="squiggly_seek_bar_summary">הפעל שורת חיפוש גלית במקום המחוון הרגיל.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">בקרות נוספות</string>
     <string name="extra_controls_summary">הוסף בקרות נוספות לנגן המיני</string>
     <string name="adaptive_controls_title">פקדים אדפטיביים</string>
@@ -661,12 +665,8 @@
     <string name="play_on_startup_title">השמע בהפעלה</string>
     <string name="gapless_playback_title">השמעה רציפה</string>
     <string name="gapless_playback_summary">מעבר חלק בין שירים. עלול לגרום לבעיות בהשמעה במכשירים מסוימים.</string>
-    <string name="crossfade_title">מעבר חלק בין שירים (ניסוי)</string>
-    <string name="crossfade_summary">משך הצלבה בין שירים בשניות (הגדר ל-0 כדי לבטל).</string>
     <string name="no_crossfade_on_albums_title">ללא הצלבה באלבומים</string>
     <string name="no_crossfade_on_albums_summary">אל תבצע הצלבה בעת השמעת אלבומים לפי הסדר המקורי.</string>
-    <string name="audio_fade_duration_title">משך דעיכת האודיו (ניסיוני)</string>
-    <string name="audio_fade_duration_summary">משך הזמן בשניות לדעיכת עוצמת הקול בתחילת או בהפסקת ההשמעה (הגדר ל-0 כדי לבטל).</string>
     <string name="replaygain_source_mode_title">מצב מקור</string>
     <string name="replaygain_preamp_title">PreAmp level</string>
     <string name="replaygain_preamp_summary">Set volume level when ReplayGain is enabled.</string>
