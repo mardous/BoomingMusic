@@ -470,6 +470,8 @@
     <string name="sound_settings">Setări sunet</string>
     <string name="volume_label">Volum</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalizat</string>
     <!-- Lyrics viewer -->
@@ -616,6 +618,8 @@
     <string name="open_on_play_summary">Extinde automat panoul de redare acum după ce pornește un cântec.</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Controale suplimentare</string>
     <string name="extra_controls_summary">Adaugă controale suplimentare pentru mini player</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -653,12 +657,8 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">Redare fără întreruperi</string>
     <string name="gapless_playback_summary">Tranziție lentă între melodii. Poate cauza probleme de redare pe unele dispozitive.</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
     <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Mod sursă</string>
     <string name="replaygain_preamp_title">Nivel pregatire</string>
     <string name="replaygain_preamp_summary">Setează nivelul de volum când ReplayGain este activat.</string>
