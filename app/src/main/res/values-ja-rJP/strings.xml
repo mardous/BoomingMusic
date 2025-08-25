@@ -584,16 +584,16 @@
     <string name="tab_mode_title">タブのタイトルモード</string>
     <string name="hold_tab_to_search_title">タブを長押しして検索</string>
     <string name="hold_tab_to_search_summary">ナビゲーションバーのいずれかのタブを長押しすると、検索画面が開きます。</string>
-    <string name="lyrics_center_current_line_title">Center current line</string>
-    <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
-    <string name="synced_font_size_player_title">Synced lyrics font size (player)</string>
-    <string name="synced_font_size_player_summary">Adjust the font size for synced lyrics shown over the album cover in the player screen.</string>
-    <string name="unsynced_font_size_player_title">Unsynced lyrics font size (player)</string>
-    <string name="unsynced_font_size_player_summary">Adjust the font size for unsynced lyrics shown over the album cover in the player screen.</string>
-    <string name="synced_font_size_full_title">Synced lyrics font size (full view)</string>
-    <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
-    <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
-    <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
+    <string name="lyrics_center_current_line_title">現在の行を中央に合わせる</string>
+    <string name="lyrics_center_current_line_summary">現在の歌詞の行は画面上部に揃えずに、画面中央に配置します。</string>
+    <string name="synced_font_size_player_title">同期された歌詞のフォントサイズ(プレイヤー)</string>
+    <string name="synced_font_size_player_summary">プレイヤー画面のアルバムカバーに表示される同期された歌詞のフォントサイズを調整します。</string>
+    <string name="unsynced_font_size_player_title">同期されていない歌詞のフォントサイズ（プレイヤー）</string>
+    <string name="unsynced_font_size_player_summary">プレイヤー画面のアルバムカバーに表示される同期されていない歌詞のフォントサイズを調整します。</string>
+    <string name="synced_font_size_full_title">同期された歌詞のフォントサイズ（全画面）</string>
+    <string name="synced_font_size_full_summary">全画面の歌詞表示で同期された歌詞のフォントサイズを調整します。</string>
+    <string name="unsynced_font_size_full_title">同期されていない歌詞のフォントサイズ（全画面表</string>
+    <string name="unsynced_font_size_full_summary">全画面の歌詞表示で同期されていない歌詞のフォントサイズを調整します。</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">スタイル</string>
     <string name="open_on_play_title">再生中に開く</string>
