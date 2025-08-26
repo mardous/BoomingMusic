@@ -609,8 +609,8 @@
     <string name="open_on_play_summary">Abrir o painel Reproduzindo Agora automaticamente após começar a tocar uma música.</string>
     <string name="squiggly_seek_bar_title">Barra de busca ondulada</string>
     <string name="squiggly_seek_bar_summary">Usar uma barra de busca com efeito ondulado no lugar do controle deslizante padrão.</string>
-    <string name="scrolling_text_title">Enable scrolling text</string>
-    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
+    <string name="scrolling_text_title">Habilitar rolagem de texto</string>
+    <string name="scrolling_text_summary">Rolagem de títulos de músicas muito longos podem consumir um pouco mais de bateria.</string>
     <string name="extra_controls_title">Controles adicionais</string>
     <string name="extra_controls_summary">Adicionar controles extras no mini player</string>
     <string name="adaptive_controls_title">Controles adaptáveis</string>
