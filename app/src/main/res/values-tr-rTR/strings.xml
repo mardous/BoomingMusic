@@ -610,8 +610,8 @@
     <string name="open_on_play_summary">Bir şarkı çalmaya başladıktan sonra Şimdi Çalıyor panelini otomatik olarak genişletin.</string>
     <string name="squiggly_seek_bar_title">Dalgalı ilerleme çubuğu</string>
     <string name="squiggly_seek_bar_summary">Varsayılan kaydırıcı yerine dalgalı bir ilerleme çubuğunu etkinleştir.</string>
-    <string name="scrolling_text_title">Enable scrolling text</string>
-    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
+    <string name="scrolling_text_title">Kayan yazıyı etkinleştir</string>
+    <string name="scrolling_text_summary">Şarkı adları sığmayacak kadar uzun olduğunda kaydırılır. Bu özellik biraz daha fazla pil kullanabilir.</string>
     <string name="extra_controls_title">Ekstra kontroller</string>
     <string name="extra_controls_summary">Mini çalar için ekstra kontroller ekleyin</string>
     <string name="adaptive_controls_title">Uyarlanabilir kontroller</string>
