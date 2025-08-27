@@ -610,6 +610,8 @@
     <string name="tab_mode_title">Tryb tytułów kart</string>
     <string name="hold_tab_to_search_title">Przytrzymaj kartę, aby wyszukać</string>
     <string name="hold_tab_to_search_summary">Przytrzymaj kartę w pasku nawigacyjnym, aby przywołać ekran wyszukiwania.</string>
+    <string name="larger_header_image_title">Larger header image</string>
+    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
     <string name="lyrics_center_current_line_title">Wyśrodkuj bieżący wers</string>
     <string name="lyrics_center_current_line_summary">Utrzymuj bieżący wers tekstu na środku ekranu zamiast wyrównania do góry.</string>
     <string name="synced_font_size_player_title">Rozmiar czcionki zsynchronizowanych tekstów</string>
