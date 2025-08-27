@@ -586,6 +586,8 @@
     <string name="tab_mode_title">タブのタイトルモード</string>
     <string name="hold_tab_to_search_title">タブを長押しして検索</string>
     <string name="hold_tab_to_search_summary">ナビゲーションバーのいずれかのタブを長押しすると、検索画面が開きます。</string>
+    <string name="larger_header_image_title">Larger header image</string>
+    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
     <string name="lyrics_center_current_line_title">現在の行を中央に合わせる</string>
     <string name="lyrics_center_current_line_summary">現在の歌詞の行は画面上部に揃えずに、画面中央に配置します。</string>
     <string name="synced_font_size_player_title">同期された歌詞のフォントサイズ(プレイヤー)</string>
