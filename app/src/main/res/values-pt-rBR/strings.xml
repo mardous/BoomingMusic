@@ -469,7 +469,7 @@
     <string name="action_show_lyrics">Mostrar letras</string>
     <string name="action_hide_lyrics">Ocultar letras</string>
     <string name="plain_lyrics">Simples</string>
-    <string name="synced_lyrics">Sincronizado</string>
+    <string name="synced_lyrics">Sincronizada</string>
     <string name="embedded_lyrics">Incorporada</string>
     <string name="downloaded_lyrics">Baixada</string>
     <string name="external_file_lyrics">Arquivo externo</string>
