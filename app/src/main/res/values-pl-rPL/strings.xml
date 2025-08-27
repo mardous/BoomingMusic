@@ -610,9 +610,9 @@
     <string name="tab_mode_title">Tryb tytułów kart</string>
     <string name="hold_tab_to_search_title">Przytrzymaj kartę, aby wyszukać</string>
     <string name="hold_tab_to_search_summary">Przytrzymaj kartę w pasku nawigacyjnym, aby przywołać ekran wyszukiwania.</string>
-    <string name="lyrics_center_current_line_title">Center current line</string>
+    <string name="lyrics_center_current_line_title">Wyśrodkuj bieżący wers</string>
     <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
-    <string name="synced_font_size_player_title">Synced lyrics font size (player)</string>
+    <string name="synced_font_size_player_title">Rozmiar czcionki zsynchronizowanych tekstów</string>
     <string name="synced_font_size_player_summary">Adjust the font size for synced lyrics shown over the album cover in the player screen.</string>
     <string name="unsynced_font_size_player_title">Unsynced lyrics font size (player)</string>
     <string name="unsynced_font_size_player_summary">Adjust the font size for unsynced lyrics shown over the album cover in the player screen.</string>
@@ -626,7 +626,7 @@
     <string name="open_on_play_summary">Rozwiń panel Teraz odtwarzany automatycznie po rozpoczęciu odtwarzania piosenki.</string>
     <string name="squiggly_seek_bar_title">Falisty pasek postępu</string>
     <string name="squiggly_seek_bar_summary">Włącz falisty pasek postępu zamiast domyślnego suwaka.</string>
-    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_title">Włącz przewijanie tekstu</string>
     <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Dodatkowe przyciski</string>
     <string name="extra_controls_summary">Dodatkowe przyciski w mini odtwarzaczu</string>
