@@ -594,6 +594,8 @@
     <string name="tab_mode_title">Mode de titre des onglets</string>
     <string name="hold_tab_to_search_title">Maintenez la touche Tab enfoncée pour rechercher</string>
     <string name="hold_tab_to_search_summary">Appuyez longuement sur n’importe quel onglet de la barre de navigation pour ouvrir l’écran de recherche.</string>
+    <string name="larger_header_image_title">Larger header image</string>
+    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
     <string name="lyrics_center_current_line_title">Center current line</string>
     <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
     <string name="synced_font_size_player_title">Synced lyrics font size (player)</string>
