@@ -593,6 +593,8 @@
     <string name="tab_mode_title">Modo título da guia</string>
     <string name="hold_tab_to_search_title">Pressione sobre a aba para buscar</string>
     <string name="hold_tab_to_search_summary">Pressione e segure qualquer aba da barra de navegação para abrir a tela de busca.</string>
+    <string name="larger_header_image_title">Imagem do cabeçalho ampliada</string>
+    <string name="larger_header_image_summary">Mostra uma imagem de capa maior nos detalhes de álbuns, artistas e playlists.</string>
     <string name="lyrics_center_current_line_title">Centralizar linha atual</string>
     <string name="lyrics_center_current_line_summary">Manter a linha atual da letra centralizada na tela em vez de alinhada ao topo.</string>
     <string name="synced_font_size_player_title">Tamanho da fonte das letras sincronizadas (reprodutor)</string>
