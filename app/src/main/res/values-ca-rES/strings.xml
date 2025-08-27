@@ -594,6 +594,8 @@
     <string name="tab_mode_title">Mode de títols d\'etiquetes</string>
     <string name="hold_tab_to_search_title">Mantingueu premut per cercar</string>
     <string name="hold_tab_to_search_summary">Obre la pantalla de cerca en mantenir premuda qualsevol barra de navegació.</string>
+    <string name="larger_header_image_title">Larger header image</string>
+    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
     <string name="lyrics_center_current_line_title">Centra la línia actual</string>
     <string name="lyrics_center_current_line_summary">Mantén la part de la lletra actual centrada a la pantalla en comptes de dalt.</string>
     <string name="synced_font_size_player_title">Mida de la lletra sincronitzada (reproductor)</string>
