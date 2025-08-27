@@ -4,7 +4,7 @@
     <string name="action_play_all">Odtwórz wszystko</string>
     <string name="action_shuffle_play">Odtwarzaj losowo</string>
     <string name="action_queue_next">Dodaj jako następne</string>
-    <string name="shuffle_all_label">Losuj wszystko</string>
+    <string name="shuffle_all_label">Odtwarzanie losowe</string>
     <string name="advanced_shuffle_label">Zaawansowane losowanie</string>
     <string name="shuffle_button_tip">Naciśnij, aby włączyć zwykłe losowanie utworów. Przytrzymaj, aby pokazać opcje zaawansowane.</string>
     <string name="action_play_pause">Odtwórz/Pauza</string>
