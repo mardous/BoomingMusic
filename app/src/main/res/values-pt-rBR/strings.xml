@@ -437,11 +437,11 @@
     <string name="that_name_is_already_in_use">Esse nome já está em uso.</string>
     <string name="save_preset">Salvar predefinição</string>
     <string name="replace_preset_with_same_name">Substituir predefinição com o mesmo nome</string>
-    <string name="preset_name_is_empty">Nome da predefinição está vazio</string>
+    <string name="preset_name_is_empty">Nome da predefinição vazio</string>
     <string name="could_not_save_preset">Impossível salvar predefinição.</string>
     <string name="preset_saved_successfully">Predefinição salva com sucesso.</string>
     <string name="delete_preset">Excluir predefinição</string>
-    <string name="delete_preset_x"><![CDATA[Apagar predefinição <b>%s</b>?]]></string>
+    <string name="delete_preset_x"><![CDATA[Excluir predefinição <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Predefinição %s excluída.</string>
     <string name="rename_preset">Renomear predefinição</string>
     <string name="please_enter_a_new_name_for_this_preset">Por favor, digite um novo nome para esta predefinição.</string>
