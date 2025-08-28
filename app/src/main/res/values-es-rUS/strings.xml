@@ -594,8 +594,8 @@
     <string name="tab_mode_title">Modo de títulos</string>
     <string name="hold_tab_to_search_title">Mantener pulsado para buscar</string>
     <string name="hold_tab_to_search_summary">Abre la pantalla de búsqueda al mantener presionada cualquier pestaña de la barra de navegación.</string>
-    <string name="larger_header_image_title">Larger header image</string>
-    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
+    <string name="larger_header_image_title">Imagen más grande en la cabecera</string>
+    <string name="larger_header_image_summary">Muestra una imagen de portada más grande en la vista de detalles de álbumes, artistas y playlists.</string>
     <string name="lyrics_center_current_line_title">Centrar línea actual</string>
     <string name="lyrics_center_current_line_summary">Mantiene la línea actual de la letra en el centro de la pantalla en lugar de la parte superior</string>
     <string name="synced_font_size_player_title">Tamaño de la letra sincronizada (reproductor)</string>
