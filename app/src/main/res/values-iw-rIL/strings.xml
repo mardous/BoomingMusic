@@ -766,7 +766,7 @@
     <string name="corner_size_none">ללא</string>
     <string name="corner_size_small">קטן</string>
     <string name="corner_size_medium">בינוני</string>
-    <string name="corner_size_large">Large</string>
+    <string name="corner_size_large">גדול</string>
     <string name="corner_size_custom">Custom</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Depth</string>
