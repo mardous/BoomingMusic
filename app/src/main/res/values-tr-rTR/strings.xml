@@ -594,8 +594,8 @@
     <string name="tab_mode_title">Sekme başlıkları modu</string>
     <string name="hold_tab_to_search_title">Aramak için sekmeye basılı tutun</string>
     <string name="hold_tab_to_search_summary">Arama ekranını açmak için herhangi bir gezinme çubuğu sekmesine uzun basın.</string>
-    <string name="larger_header_image_title">Larger header image</string>
-    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
+    <string name="larger_header_image_title">Daha büyük başlık görseli</string>
+    <string name="larger_header_image_summary">Albüm, sanatçı ve çalma listesi detaylarında daha büyük bir kapak görseli göster.</string>
     <string name="lyrics_center_current_line_title">Geçerli satırı ortala</string>
     <string name="lyrics_center_current_line_summary">Ekranda mevcut şarkı sözleri satırı üstte hizalanmak yerine ortada kalsın.</string>
     <string name="synced_font_size_player_title">Oynatıcıda senkronize şarkı sözleri yazı tipi boyutu</string>
