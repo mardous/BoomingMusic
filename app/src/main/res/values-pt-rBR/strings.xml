@@ -629,7 +629,7 @@
     <string name="now_playing_corner_radius_summary">Define o nível de arredondamento dos cantos da capa do álbum.</string>
     <string name="carousel_effect_title">Efeito carrossel</string>
     <string name="album_cover_effect_title">Efeito da capa do álbum</string>
-    <string name="lyrics_on_album_cover_title">Letra na capa</string>
+    <string name="lyrics_on_album_cover_title">Letras na capa</string>
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música em vez da capa quando disponível.</string>
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
@@ -640,7 +640,7 @@
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
     <string name="display_next_song_title">Mostrar próxima música</string>
     <string name="display_next_song_summary">Mostra a próxima música da fila na parte inferior do player.</string>
-    <string name="select_extra_info_title">Informação extra</string>
+    <string name="select_extra_info_title">Informações extras</string>
     <string name="select_extra_info_summary">Selecione as informações extras a serem exibidas no painel do reprodutor.</string>
     <string name="prefer_remaining_time_title">Exibir tempo restante</string>
     <string name="prefer_remaining_time_summary">Mostrar o tempo restante em vez da duração da música.</string>
