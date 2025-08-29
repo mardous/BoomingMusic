@@ -159,7 +159,7 @@
     <string name="save_queue">Zapisz kolejkę</string>
     <string name="clear_queue">Wyczyść kolejkę</string>
     <string name="action_move_to_current_track">Pokaż bieżący utwór</string>
-    <string name="shuffle_queue">Losuj kolejkę</string>
+    <string name="shuffle_queue">Przetasuj kolejkę</string>
     <string name="action_add_to_favorites">Dodaj do ulubionych</string>
     <string name="action_remove_from_favorites">Usuń z ulubionych</string>
     <string name="added_to_favorites_label">Dodano do ulubionych</string>
