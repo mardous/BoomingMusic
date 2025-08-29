@@ -598,7 +598,7 @@
     <string name="lyrics_center_current_line_title">Centralizar linha atual</string>
     <string name="lyrics_center_current_line_summary">Manter a linha atual das letras centralizadas na tela em vez de alinhada ao topo.</string>
     <string name="synced_font_size_player_title">Tamanho da fonte das letras sincronizadas (reprodutor)</string>
-    <string name="synced_font_size_player_summary">Ajustar o tamanho da fonte das letras sincronizadas exibidas sobre a capa do álbum na tela do tocador.</string>
+    <string name="synced_font_size_player_summary">Ajusta o tamanho da fonte das letras sincronizadas exibidas sobre a capa do álbum na tela do tocador.</string>
     <string name="unsynced_font_size_player_title">Tamanho da fonte das letras não sincronizadas (tocador)</string>
     <string name="unsynced_font_size_player_summary">Ajustar o tamanho da fonte das letras não sincronizadas exibidas sobre a capa do álbum na tela do tocador.</string>
     <string name="synced_font_size_full_title">Tamanho da fonte das letras sincronizadas (tela cheia)</string>
@@ -639,9 +639,9 @@
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
     <string name="display_next_song_title">Mostrar próxima música</string>
-    <string name="display_next_song_summary">Mostra a próxima música da fila na parte inferior do player.</string>
+    <string name="display_next_song_summary">Mostra a próxima música da fila na parte inferior do tocador.</string>
     <string name="select_extra_info_title">Informações extras</string>
-    <string name="select_extra_info_summary">Selecione as informações extras a serem exibidas no painel do reprodutor.</string>
+    <string name="select_extra_info_summary">Selecione as informações extras a serem exibidas no painel do tocador.</string>
     <string name="prefer_remaining_time_title">Exibir tempo restante</string>
     <string name="prefer_remaining_time_summary">Mostrar o tempo restante em vez da duração da música.</string>
     <string name="prefer_album_artist_name_title">"Exibir nome do artista do álbum"</string>
@@ -660,11 +660,11 @@
     <string name="search_auto_queue_summary">Ao reproduzir uma música da tela de pesquisa, todos os outros resultados também serão colocados na fila.</string>
     <string name="remember_shuffle_mode_title">Lembrar modo aleatório</string>
     <string name="remember_shuffle_mode_summary">O modo aleatório permanecerá ativado ao selecionar uma nova lista de músicas.</string>
-    <string name="album_shuffle_mode_title">Modo aleatório do álbum</string>
-    <string name="artist_shuffle_mode_title">Modo aleatório do artista</string>
-    <string name="auto_play_on_skip_title">Reproduzir automaticamente ao ignorar</string>
+    <string name="album_shuffle_mode_title">Álbum em modo aleatório</string>
+    <string name="artist_shuffle_mode_title">Artista em modo aleatório</string>
+    <string name="auto_play_on_skip_title">Reproduzir próxima automaticamente ao ignorar</string>
     <string name="auto_play_on_skip_summary">Se a reprodução estiver pausada, tocar em Anterior ou Próximo iniciará a música.</string>
-    <string name="rewind_with_back_title">"Retroceder com 'Anterior'"</string>
+    <string name="rewind_with_back_title">"Retroceder com botão 'Anterior'"</string>
     <string name="rewind_with_back_summary">Retrocede para o começo da faixa ou muda para a anterior, caso esteja no início.</string>
     <string name="rewind_fast_forward_amount_title">Tempo de retrocesso/avanço</string>
     <string name="rewind_fast_forward_amount_summary">Tempo (em segundos) para retroceder ou avançar usando a interface ou controles externos.</string>
