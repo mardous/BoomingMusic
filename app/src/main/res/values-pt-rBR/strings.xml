@@ -129,13 +129,13 @@
     <string name="permission_external_storage_description">O aplicativo precisa de permissão para acessar o armazenamento do seu dispositivo para reproduzir músicas</string>
     <string name="permission_external_storage_denied">Você deve conceder permissão para acessar o armazenamento externo.</string>
     <string name="permission_bluetooth_title">Dispositivos próximos</string>
-    <string name="permission_bluetooth_description">O aplicativo precisa de permissão de dispositivos próximos para buscar por dispositivos bluetooth</string>
+    <string name="permission_bluetooth_description">O aplicativo precisa da permissão de dispositivos próximos para localizar dispositivos via Bluetooth</string>
     <string name="permission_bluetooth_denied">Permissão de dispositivos próximos negada.</string>
     <string name="permission_exact_alarms_title">Agendar alarmes exatos (opcional)</string>
-    <string name="permission_exact_alarms_description">Permissão para agendar alarmes exatos é necessária para que o temporizador funcione corretamente</string>
+    <string name="permission_exact_alarms_description">É necessária a permissão para agendar alarmes precisos para que o temporizador funcione corretamente</string>
     <string name="permission_ringtone_title">Toque (opcional)</string>
     <string name="permission_ringtone_description">Para definir a música como toque, o aplicativo precisa de permissão para acessar as configurações do dispositivo.</string>
-    <string name="permission_request_write_settings"><![CDATA[Você deve permitir que o Booming Music modifique as configurações do sistema para definir <b>%s</b> como seu toque]]></string>
+    <string name="permission_request_write_settings"><![CDATA[Para definir <b>%s</b> como toque, o Booming Music precisa de permissão para modificar as configurações do sistema]]></string>
     <string name="permissions_denied">Permissão negada</string>
     <string name="permissions_needed">Permissões necessárias</string>
     <string name="grant_access_action">Conceder acesso</string>
@@ -221,7 +221,7 @@
     <string name="horizontal_albums">Álbuns horizontais</string>
     <string name="ignore_singles">Ignorar singles</string>
     <string name="compact_song_view">Visualização compacta da música</string>
-    <string name="show_total_duration">Mostrar tempo total</string>
+    <string name="show_total_duration">Mostrar duração total</string>
     <string name="action_view_type">Tipo de exibição</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Cartão</string>
