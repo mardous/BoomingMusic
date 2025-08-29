@@ -399,7 +399,7 @@
     <string name="shuffle_mode_forgotten_songs">Músicas esquecidas</string>
     <string name="shuffle_mode_recently_added">Adicionados recentemente</string>
     <string name="shuffle_mode_combined">Mix inteligente</string>
-    <string name="shuffle_mode_pure_random_description">Totalmente aleatório.</string>
+    <string name="shuffle_mode_pure_random_description">Completamente aleatório.</string>
     <string name="shuffle_mode_most_played_description">Prioriza suas músicas mais ouvidas.</string>
     <string name="shuffle_mode_most_played_artists_description">Prioriza músicas de seus principais artistas.</string>
     <string name="shuffle_mode_most_played_albums_description">Prioriza músicas dos álbuns mais reproduzidos.</string>
@@ -542,7 +542,7 @@
     <string name="saf_access_required_title">Acesso ao armazenamento necessário</string>
     <string name="saf_access_required_message">O Booming Music requer permissão para acessar esses arquivos. Por favor, selecione a pasta raiz onde seus arquivos de música são armazenados.</string>
     <string name="saf_show_files_button">Mostrar arquivos</string>
-    <string name="saf_error_uri">Não foi possível obter o URI do SAF</string>
+    <string name="saf_error_uri">Falha ao obter o URI do SAF</string>
     <string name="saf_write_failed">Falha ao escrever arquivo: %s</string>
     <string name="saf_delete_failed">Falha ao excluir arquivo: %s</string>
     <string name="settings_title">Configurações</string>
@@ -596,7 +596,7 @@
     <string name="larger_header_image_title">Imagem do cabeçalho ampliada</string>
     <string name="larger_header_image_summary">Mostra uma imagem de capa maior nos detalhes de álbuns, artistas e playlists.</string>
     <string name="lyrics_center_current_line_title">Centralizar linha atual</string>
-    <string name="lyrics_center_current_line_summary">Manter a linha atual da letra centralizada na tela em vez de alinhada ao topo.</string>
+    <string name="lyrics_center_current_line_summary">Manter a linha atual das letras centralizadas na tela em vez de alinhada ao topo.</string>
     <string name="synced_font_size_player_title">Tamanho da fonte das letras sincronizadas (reprodutor)</string>
     <string name="synced_font_size_player_summary">Ajustar o tamanho da fonte das letras sincronizadas exibidas sobre a capa do álbum na tela do tocador.</string>
     <string name="unsynced_font_size_player_title">Tamanho da fonte das letras não sincronizadas (tocador)</string>
