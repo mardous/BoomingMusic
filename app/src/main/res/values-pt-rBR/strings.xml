@@ -245,9 +245,9 @@
     <string name="sort_order_descending">Descendente</string>
     <string name="sort_order_ignore_articles">Ignorar artigos</string>
     <string name="action_set_as_ringtone">Definir como toque</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Irá definir <b>%s</b> como seu toque]]></string>
-    <string name="x_has_been_set_as_ringtone">Definir %s como seu toque</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Definir %s como toque e como som do alarme</string>
+    <string name="x_will_be_set_as_ringtone"><![CDATA[Irá definir <b>%s</b> como toque do telefone]]></string>
+    <string name="x_has_been_set_as_ringtone">Definir %s como toque do telefone</string>
+    <string name="x_has_been_set_as_ringtone_and_as_alarm">Definir %s como alarme e toque do telefone</string>
     <string name="use_also_as_alarm_alert">Usar também como som do alarme</string>
     <string name="action_details">Detalhes</string>
     <string name="action_set_as_start_directory">Definir como diretório inicial</string>
@@ -324,7 +324,7 @@
     <string name="connection_unavailable">Sem conexão.</string>
     <string name="you_have_to_select_at_least_one_category">Você deve selecionar pelo menos uma categoria</string>
     <string name="you_cannot_select_more_than_five_categories">Você não pode selecionar mais do que cinco categorias.</string>
-    <string name="auto_limited_listing_title">Conteúdo limitado ao dirigir</string>
+    <string name="auto_limited_listing_title">Exibição limitada ao dirigir</string>
     <string name="auto_limited_listing_subtitle">Abra o aplicativo para ver a lista completa</string>
     <string name="backup_settings">Configurações</string>
     <string name="backup_synced_lyrics">Letras sincronizadas</string>
@@ -477,7 +477,7 @@
     <string name="action_share_synchronized_lyrics">Compartilhar letras sincronizadas</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Deseja importar letras LRC sincronizadas para <b>%s</b>?]]></string>
     <string name="import_lyrics_for_song_x">Letras importadas para %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Não foi possível importar a letra de %s</string>
+    <string name="could_not_import_lyrics_for_song_x">Não foi possível importar as letras de %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Selecione um arquivo LRC contendo letras sincronizadas.</string>
     <string name="cannot_download_lyrics">O Booming Music não encontrou a letra desta música. Você deseja procurar manualmente?</string>
     <string name="search_lyrics">Buscar letras</string>
