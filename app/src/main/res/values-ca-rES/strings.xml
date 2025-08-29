@@ -594,8 +594,8 @@
     <string name="tab_mode_title">Mode de títols d\'etiquetes</string>
     <string name="hold_tab_to_search_title">Mantingueu premut per cercar</string>
     <string name="hold_tab_to_search_summary">Obre la pantalla de cerca en mantenir premuda qualsevol barra de navegació.</string>
-    <string name="larger_header_image_title">Larger header image</string>
-    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
+    <string name="larger_header_image_title">Capçalera d\'imatge més grossa</string>
+    <string name="larger_header_image_summary">Mostra una portada més grossa en un àlbum, artista o detalls d\'una llista.</string>
     <string name="lyrics_center_current_line_title">Centra la línia actual</string>
     <string name="lyrics_center_current_line_summary">Mantén la part de la lletra actual centrada a la pantalla en comptes de dalt.</string>
     <string name="synced_font_size_player_title">Mida de la lletra sincronitzada (reproductor)</string>
@@ -612,8 +612,8 @@
     <string name="open_on_play_summary">Expandeix automàticament el panell d\'Ara sona en reproduir una cançó.</string>
     <string name="squiggly_seek_bar_title">Barra de reproducció ondulada</string>
     <string name="squiggly_seek_bar_summary">Activa una barra de reproducció ondulada en comptes de la clàssica.</string>
-    <string name="scrolling_text_title">Enable scrolling text</string>
-    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
+    <string name="scrolling_text_title">Activa el text en desplaçament</string>
+    <string name="scrolling_text_summary">El títol de la cançó es desplaçarà si no hi cap. Podria gastar una mica més de bateria.</string>
     <string name="extra_controls_title">Controls addicionals</string>
     <string name="extra_controls_summary">Afegeix controls addicionals per al mini reproductor</string>
     <string name="adaptive_controls_title">Controls adaptatius</string>
