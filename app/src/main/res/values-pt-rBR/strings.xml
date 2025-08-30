@@ -690,8 +690,8 @@
     <string name="online_artist_images_summary">Isso depende da sua política de download de metadados.</string>
     <string name="preferred_artist_image_size_title">Preferência do tamanho da imagem</string>
     <string name="delete_downloaded_lyrics_title">Excluir letras baixadas</string>
-    <string name="delete_downloaded_lyrics_summary">Somente letras baixadas por Booming Music. Não afeta letras incorporadas em tags ID3v2 ou arquivos LRC.</string>
-    <string name="lyrics_cleared">Letra apagada.</string>
+    <string name="delete_downloaded_lyrics_summary">Somente letras baixadas pelo Booming Music. Não afeta letras incorporadas em tags ID3v2 ou arquivos LRC.</string>
+    <string name="lyrics_cleared">Letra excluída.</string>
     <!-- Library preferences -->
     <string name="trash_music_title">Enviar para lixeira</string>
     <string name="trash_music_summary">Enviar arquivos excluídos para a lixeira.</string>
@@ -705,7 +705,7 @@
     <string name="whitelist_summary">Apenas o conteúdo das pastas na lista branca é exibido em sua biblioteca.</string>
     <string name="blacklist_title">Lista Negra</string>
     <string name="blacklist_summary">O conteúdo das pastas na lista negra não serão exibidos na sua biblioteca.</string>
-    <string name="artist_min_songs_title">Número mínimo de música do artista</string>
+    <string name="artist_min_songs_title">Número mínimo de músicas do artista</string>
     <string name="artist_min_songs_summary">O número de músicas (no mínimo) que um artista deve ter para aparecer na sua biblioteca.</string>
     <string name="album_min_songs_title">Contagem mínima de músicas no álbum</string>
     <string name="album_min_songs_summary">O número de músicas (no mínimo) que um álbum deve ter para aparecer na sua biblioteca.</string>
@@ -713,10 +713,10 @@
     <string name="min_song_duration_summary">Quantos segundos (no mínimo) deve ter uma música para aparecer na sua biblioteca.</string>
     <!-- Remote preferences -->
     <string name="classic_notification_title">Notificação clássica</string>
-    <string name="classic_notification_summary">Usar o design de notificação clássico.</string>
+    <string name="classic_notification_summary">Usar o design de notificação clássica.</string>
     <string name="colored_notification_title">Notificação colorida</string>
-    <string name="colored_notification_summary">Colore a notificação com a cor vibrante da capa do álbum</string>
-    <string name="extra_line_of_text_title">Linha adicional de texto</string>
+    <string name="colored_notification_summary">Colore a notificação com a cor principal da capa do álbum</string>
+    <string name="extra_line_of_text_title">Linha de texto adicional</string>
     <string name="notification_priority_title">Prioridade da notificação</string>
     <string name="album_art_on_lockscreen_title">Mostrar capa do álbum</string>
     <string name="album_art_on_lockscreen_summary">Usa a capa do álbum da música atual como papel de parede da tela de bloqueio. Pode causar alto uso de memória, dependendo do dispositivo.</string>
@@ -724,7 +724,7 @@
     <string name="blurred_album_art_summary">Desfoca a capa do álbum na tela de bloqueio. Pode causar problemas com aplicativos de terceiros e widgets.</string>
     <string name="app_language_title">Idioma do aplicativo</string>
     <string name="backup_data_title">Backup de dados</string>
-    <string name="backup_app_data_summary">Criar um arquivo contendo dados essenciais do aplicativo e salva-o no armazenamento externo.</string>
+    <string name="backup_app_data_summary">Cria um arquivo contendo dados essenciais do aplicativo e salva-o no armazenamento externo.</string>
     <string name="restore_backup_title">Restaurar backup</string>
     <string name="restore_backup_summary">Restaurar dados (e estado) de um backup anterior.</string>
     <!-- Preference values -->
