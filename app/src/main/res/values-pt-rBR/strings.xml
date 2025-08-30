@@ -552,7 +552,7 @@
     <string name="appearance_summary">Alterar o tema e outras configurações visuais.</string>
     <string name="now_playing_title">Em execução</string>
     <string name="now_playing_summary">Personalize a tela de reprodução.</string>
-    <string name="lyrics_preferences_title">Lyrics</string>
+    <string name="lyrics_preferences_title">Letras</string>
     <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
     <string name="playback_title">Reprodução</string>
     <string name="playback_summary">Altera as configurações de som, fone de ouvido Bluetooth, etc.</string>
