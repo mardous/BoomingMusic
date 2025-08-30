@@ -484,6 +484,8 @@
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
     <string name="there_are_no_changes_to_save">保存する変更はありません。</string>
     <string name="lyrics_source_external_file">歌詞は外部ファイルのものです。このファイルはBooming Musicから直接編集することはできません。</string>
+    <string name="font_imported_successfully">Font imported successfully.</string>
+    <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">スリープタイマー</string>
     <string name="sleep_timer_cancel_current_timer">現在のタイマーをキャンセル</string>
@@ -543,6 +545,8 @@
     <string name="appearance_summary">アプリのテーマやその他のビジュアル設定を変更します。</string>
     <string name="now_playing_title">再生中</string>
     <string name="now_playing_summary">再生中の画面をカスタマイズします。</string>
+    <string name="lyrics_preferences_title">Lyrics</string>
+    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
     <string name="playback_title">再生</string>
     <string name="playback_summary">サウンド設定、Bluetooth ヘッドセットなどを変更します。</string>
     <string name="metadata_title">メタデータ</string>
@@ -590,6 +594,17 @@
     <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
     <string name="lyrics_center_current_line_title">現在の行を中央に合わせる</string>
     <string name="lyrics_center_current_line_summary">現在の歌詞の行は画面上部に揃えずに、画面中央に配置します。</string>
+    <string name="lyrics_custom_font_title">Custom font</string>
+    <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
+    <string name="lyrics_import_custom_font_title">Import custom font</string>
+    <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
+    <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
+    <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
+    <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
+    <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
+    <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
+    <string name="lyrics_line_spacing_title">Line spacing</string>
+    <string name="lyrics_line_spacing_summary">Adjust the space between lyric lines.</string>
     <string name="synced_font_size_player_title">同期された歌詞のフォントサイズ(プレイヤー)</string>
     <string name="synced_font_size_player_summary">プレイヤー画面のアルバムカバーに表示される同期された歌詞のフォントサイズを調整します。</string>
     <string name="unsynced_font_size_player_title">同期されていない歌詞のフォントサイズ（プレイヤー）</string>
