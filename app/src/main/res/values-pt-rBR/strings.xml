@@ -491,6 +491,8 @@
     <string name="failed_to_update_lyrics">Falha ao atualizar a letra.</string>
     <string name="there_are_no_changes_to_save">Não há alterações para salvar.</string>
     <string name="lyrics_source_external_file">As letras vêm de um arquivo externo. Você não pode editar esse arquivo diretamente pelo Booming Music.</string>
+    <string name="font_imported_successfully">Font imported successfully.</string>
+    <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporizador</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar o temporizador atual</string>
@@ -550,6 +552,8 @@
     <string name="appearance_summary">Alterar o tema e outras configurações visuais.</string>
     <string name="now_playing_title">Em execução</string>
     <string name="now_playing_summary">Personalize a tela de reprodução.</string>
+    <string name="lyrics_preferences_title">Lyrics</string>
+    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
     <string name="playback_title">Reprodução</string>
     <string name="playback_summary">Altera as configurações de som, fone de ouvido Bluetooth, etc.</string>
     <string name="metadata_title">Metadados</string>
@@ -597,6 +601,17 @@
     <string name="larger_header_image_summary">Mostra uma imagem de capa maior nos detalhes de álbuns, artistas e playlists.</string>
     <string name="lyrics_center_current_line_title">Centralizar linha atual</string>
     <string name="lyrics_center_current_line_summary">Manter a linha atual das letras centralizadas na tela em vez de alinhada ao topo.</string>
+    <string name="lyrics_custom_font_title">Custom font</string>
+    <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
+    <string name="lyrics_import_custom_font_title">Import custom font</string>
+    <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
+    <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
+    <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
+    <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
+    <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
+    <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
+    <string name="lyrics_line_spacing_title">Line spacing</string>
+    <string name="lyrics_line_spacing_summary">Adjust the space between lyric lines.</string>
     <string name="synced_font_size_player_title">Tamanho da fonte das letras sincronizadas (reprodutor)</string>
     <string name="synced_font_size_player_summary">Ajusta o tamanho da fonte das letras sincronizadas exibidas sobre a capa do álbum na tela do tocador.</string>
     <string name="unsynced_font_size_player_title">Tamanho da fonte das letras não sincronizadas (tocador)</string>
