@@ -554,7 +554,7 @@
     <string name="now_playing_title">Ara sona</string>
     <string name="now_playing_summary">Personalitzeu la pantalla d\'Ara sona.</string>
     <string name="lyrics_preferences_title">Lletra</string>
-    <string name="lyrics_preferences_summary">Ajusta la lletra, l\'interlineat i altres opcions per fer-te teva la pantalla de lletra.</string>
+    <string name="lyrics_preferences_summary">Ajusta la lletra, l\'interlineat i altres opcions per fer-te teves les lletres.</string>
     <string name="playback_title">Reproducció</string>
     <string name="playback_summary">Canvieu la configuració de so, els auriculars Bluetooth, etc.</string>
     <string name="metadata_title">Metadades</string>
@@ -606,10 +606,10 @@
     <string name="lyrics_custom_font_summary">Importa i fes servir la teva font de text per a la lletra.</string>
     <string name="lyrics_import_custom_font_title">Importa una font de text</string>
     <string name="lyrics_progressive_coloring_title">Acoloriment progressiu de la lletra</string>
-    <string name="lyrics_progressive_coloring_summary">Anima les línies actives amb una transició de color gradual en comptes d\'acolorir-se instantàniament.</string>
-    <string name="lyrics_bold_synced_title">Negreta per a la lletra sincronitzada</string>
+    <string name="lyrics_progressive_coloring_summary">Anima les línies actives amb una transició de color gradual en comptes d\'acolorir-les instantàniament.</string>
+    <string name="lyrics_bold_synced_title">Lletra sincronitzada en negreta</string>
     <string name="lyrics_bold_synced_summary">Mostra la lletra sincronitzada en negreta.</string>
-    <string name="lyrics_bold_unsynced_title">Negreta per a la lletra normal</string>
+    <string name="lyrics_bold_unsynced_title">Lletra normal en negreta</string>
     <string name="lyrics_bold_unsynced_summary">Mostra la lletra sense sincronitzar en negreta.</string>
     <string name="lyrics_line_spacing_title">Interlineat</string>
     <string name="lyrics_line_spacing_summary">Ajusta l\'espai entre les línies de la lletra.</string>
