@@ -492,8 +492,8 @@
     <string name="failed_to_update_lyrics">No s\'ha pogut actualitzar la lletra.</string>
     <string name="there_are_no_changes_to_save">No hi ha canvis a desar.</string>
     <string name="lyrics_source_external_file">La lletra ve d\'un fitxer extern. No podeu editar aquest fitxer directament des de Booming Music.</string>
-    <string name="font_imported_successfully">Font imported successfully.</string>
-    <string name="could_not_import_font">Could not import font.</string>
+    <string name="font_imported_successfully">S\'ha importat la font de text correctament.</string>
+    <string name="could_not_import_font">No s\'ha pogut importar la font de text.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporitzador d\'apagada</string>
     <string name="sleep_timer_cancel_current_timer">Atura el temporitzador</string>
@@ -553,8 +553,8 @@
     <string name="appearance_summary">Canvieu el tema de l\'aplicació i altres ajustos visuals.</string>
     <string name="now_playing_title">Ara sona</string>
     <string name="now_playing_summary">Personalitzeu la pantalla d\'Ara sona.</string>
-    <string name="lyrics_preferences_title">Lyrics</string>
-    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
+    <string name="lyrics_preferences_title">Lletra</string>
+    <string name="lyrics_preferences_summary">Ajusta la lletra, l\'interlineat i altres opcions per fer-te teu.</string>
     <string name="playback_title">Reproducció</string>
     <string name="playback_summary">Canvieu la configuració de so, els auriculars Bluetooth, etc.</string>
     <string name="metadata_title">Metadades</string>
@@ -611,8 +611,8 @@
     <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
     <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
     <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
-    <string name="lyrics_line_spacing_title">Line spacing</string>
-    <string name="lyrics_line_spacing_summary">Adjust the space between lyric lines.</string>
+    <string name="lyrics_line_spacing_title">Interlineat</string>
+    <string name="lyrics_line_spacing_summary">Ajusta l\'espai entre les línies de la lletra.</string>
     <string name="synced_font_size_player_title">Mida de la lletra sincronitzada (reproductor)</string>
     <string name="synced_font_size_player_summary">Ajusta la mida de la lletra sincronitzada mostrada a sobre la portada de l\'àlbum en el reproductor.</string>
     <string name="unsynced_font_size_player_title">Mida de la lletra sense sincronitzar (reproductor)</string>
