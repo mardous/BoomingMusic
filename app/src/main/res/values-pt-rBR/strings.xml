@@ -491,8 +491,8 @@
     <string name="failed_to_update_lyrics">Falha ao atualizar a letra.</string>
     <string name="there_are_no_changes_to_save">Não há alterações para salvar.</string>
     <string name="lyrics_source_external_file">As letras vêm de um arquivo externo. Você não pode editar esse arquivo diretamente pelo Booming Music.</string>
-    <string name="font_imported_successfully">Font imported successfully.</string>
-    <string name="could_not_import_font">Could not import font.</string>
+    <string name="font_imported_successfully">Fonte importada com sucesso.</string>
+    <string name="could_not_import_font">Não foi possível importar a fonte.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporizador</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar o temporizador atual</string>
@@ -553,7 +553,7 @@
     <string name="now_playing_title">Em execução</string>
     <string name="now_playing_summary">Personalize a tela de reprodução.</string>
     <string name="lyrics_preferences_title">Letras</string>
-    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
+    <string name="lyrics_preferences_summary">Ajuste a fonte, o espaçamento e outras opções para personalizar a exibição das letras.</string>
     <string name="playback_title">Reprodução</string>
     <string name="playback_summary">Altera as configurações de som, fone de ouvido Bluetooth, etc.</string>
     <string name="metadata_title">Metadados</string>
@@ -601,7 +601,7 @@
     <string name="larger_header_image_summary">Mostra uma imagem de capa maior nos detalhes de álbuns, artistas e playlists.</string>
     <string name="lyrics_center_current_line_title">Centralizar linha atual</string>
     <string name="lyrics_center_current_line_summary">Manter a linha atual das letras centralizadas na tela em vez de alinhada ao topo.</string>
-    <string name="lyrics_custom_font_title">Custom font</string>
+    <string name="lyrics_custom_font_title">Fonte personalizada</string>
     <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
     <string name="lyrics_import_custom_font_title">Import custom font</string>
     <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
