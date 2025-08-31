@@ -578,7 +578,7 @@
     <string name="replaygain_header">ReplayGain</string>
     <string name="headphones_header">Fones</string>
     <string name="bluetooth_header">Bluetooth</string>
-    <string name="audio_focus_header">Foco em áudio</string>
+    <string name="audio_focus_header">Foco de áudio</string>
     <string name="lockscreen_header">Tela de bloqueio</string>
     <string name="shuffle_mode_header">Modo aleatório</string>
     <string name="display_header">Visualização</string>
@@ -809,7 +809,7 @@
     <string name="player_color_mode_app_theme_description">Use o esquema de cores do aplicativo</string>
     <string name="player_color_mode_simple_color_title">Cor simples</string>
     <string name="player_color_mode_simple_color_description">Extrair a cor do álbum e aplicá-la aos controles</string>
-    <string name="player_color_mode_vibrant_color_title">Cor vibrante</string>
+    <string name="player_color_mode_vibrant_color_title">Cor principal</string>
     <string name="player_color_mode_vibrant_color_description">Colorir fundo, texto e controles com a cor do álbum</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Usar tons do Material You baseado na cor do álbum</string>
