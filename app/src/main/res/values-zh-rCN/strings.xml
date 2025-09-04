@@ -826,12 +826,12 @@
     <string name="more_info_action">更多信息。</string>
     <string name="download_action">下载</string>
     <string name="downloading_update">正在下载 Booming 音乐更新。</string>
-    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
-        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="uncaught_error_title">哎呀！出现了意料之外的事！</string>
+    <string name="uncaught_error_message">似乎有什么东西出错并导致了软件崩溃。
+        如果您能够向我们发送错误报告到我们的 Telegram 群组或通过电子邮件，将会很有帮助。</string>
+    <string name="uncaught_error_report">错误报告</string>
+    <string name="uncaught_error_report_copied">已复制错误报告到剪贴板。</string>
     <string name="uncaught_error_restart_app">重启应用</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_github">打开github上的issue</string>
+    <string name="uncaught_error_send">发送报告</string>
 </resources>
