@@ -604,10 +604,10 @@
     <string name="lyrics_custom_font_title">Fonte personalizada</string>
     <string name="lyrics_custom_font_summary">Importe e use sua própria fonte para as letras.</string>
     <string name="lyrics_import_custom_font_title">Importar fonte personalizada</string>
-    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
-    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
-    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
-    <string name="lyrics_gradient_background_title">Gradient background</string>
+    <string name="lyrics_syllable_mode_title">Letras palavra por palavra</string>
+    <string name="lyrics_syllable_mode_summary">Permite exibir letras com sincronização palavra por palavra. Depende da disponibilidade da letra e de um formato compatível, como LRC ou TTML.</string>
+    <string name="lyrics_effects_note">Efeitos avançados melhoram a experiência visual, mas podem exigir mais recursos do sistema e bateria.</string>
+    <string name="lyrics_gradient_background_title">Fundo em gradiente</string>
     <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
     <string name="lyrics_blur_effect_title">Blur effect</string>
     <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
