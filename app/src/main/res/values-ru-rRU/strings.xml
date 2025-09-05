@@ -623,6 +623,15 @@
     <string name="lyrics_custom_font_title">Custom font</string>
     <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
     <string name="lyrics_import_custom_font_title">Import custom font</string>
+    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
+    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
+    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
+    <string name="lyrics_gradient_background_title">Gradient background</string>
+    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
+    <string name="lyrics_blur_effect_title">Blur effect</string>
+    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
+    <string name="lyrics_shadow_effect_title">Shadow effect</string>
+    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
     <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
     <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
     <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
@@ -761,6 +770,10 @@
     <string name="backup_app_data_summary">Создает файл с основными данными приложения и сохраняет его на внешнее хранилище.</string>
     <string name="restore_backup_title">Восстановить резервную копию</string>
     <string name="restore_backup_summary">Восстановить данные приложения (и состояние) из предыдущей резервной копии.</string>
+    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
+    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
+    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
+        or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
     <string name="advanced_label">Расширенные</string>
     <string name="light_theme_name">Светлая</string>
