@@ -608,11 +608,11 @@
     <string name="lyrics_syllable_mode_summary">Permite exibir letras com sincronização palavra por palavra. Depende da disponibilidade da letra e de um formato compatível, como LRC ou TTML.</string>
     <string name="lyrics_effects_note">Efeitos avançados melhoram a experiência visual, mas podem exigir mais recursos do sistema e bateria.</string>
     <string name="lyrics_gradient_background_title">Fundo em gradiente</string>
-    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
-    <string name="lyrics_blur_effect_title">Blur effect</string>
-    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
-    <string name="lyrics_shadow_effect_title">Shadow effect</string>
-    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_gradient_background_summary">Mostrar um fundo em gradiente animado usando as cores da capa da música atual. Aplicável apenas em tela cheia.</string>
+    <string name="lyrics_blur_effect_title">Efeito de desfoque</string>
+    <string name="lyrics_blur_effect_summary">Desfocar as linhas da letra adjacentes à atual.</string>
+    <string name="lyrics_shadow_effect_title">Efeito de sombra</string>
+    <string name="lyrics_shadow_effect_summary">Adiciona uma sombra sob a linha atual para melhorar a legibilidade.</string>
     <string name="lyrics_progressive_coloring_title">Coloração progressiva das letras</string>
     <string name="lyrics_progressive_coloring_summary">Animar as linhas ativas com uma transição gradual de cor em vez de colorir instantaneamente.</string>
     <string name="lyrics_bold_synced_title">Fonte em negrito para letras sincronizadas</string>
@@ -751,10 +751,9 @@
     <string name="backup_app_data_summary">Cria um arquivo contendo dados essenciais do aplicativo e salva-o no armazenamento externo.</string>
     <string name="restore_backup_title">Restaurar backup</string>
     <string name="restore_backup_summary">Restaurar dados (e estado) de um backup anterior.</string>
-    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
-    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
-    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
-        or battery management may ignore this setting and always stop the app when removed from recents.</string>
+    <string name="stop_when_closed_from_recents_title">Parar ao ser fechado a partir dos apps recentes</string>
+    <string name="stop_when_closed_from_recents_summary">A reprodução é interrompida se o aplicativo for fechado a partir dos apps recentes.</string>
+    <string name="stop_when_closed_from_recents_note">Nota: Alguns dispositivos com gerenciamento agressivo de memória ou bateria podem ignorar esta configuração e sempre encerrar o aplicativo ao removê-lo da lista de recentes.</string>
     <!-- Preference values -->
     <string name="advanced_label">Avançado</string>
     <string name="light_theme_name">Claro</string>
