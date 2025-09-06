@@ -605,15 +605,15 @@
     <string name="lyrics_custom_font_title">Fuente personalizada</string>
     <string name="lyrics_custom_font_summary">Importa y usa tu propia fuente para las letras.</string>
     <string name="lyrics_import_custom_font_title">Importar fuente personalizada</string>
-    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
-    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
-    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
-    <string name="lyrics_gradient_background_title">Gradient background</string>
-    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
-    <string name="lyrics_blur_effect_title">Blur effect</string>
-    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
-    <string name="lyrics_shadow_effect_title">Shadow effect</string>
-    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_syllable_mode_title">Letras palabra a palabra</string>
+    <string name="lyrics_syllable_mode_summary">Permite mostrar letras sincronizadas palabra a palabra. Depende de la disponibilidad de las letras y de un formato compatible como LRC o TTML.</string>
+    <string name="lyrics_effects_note">Los efectos avanzados mejoran la experiencia visual pero podrían aumentar el consumo de recursos y/o batería.</string>
+    <string name="lyrics_gradient_background_title">Fondo de gradiente</string>
+    <string name="lyrics_gradient_background_summary">Muestra un fondo de gradientes animado usando los colores de la canción actual. Aplicable solo en la vista a pantalla completa.</string>
+    <string name="lyrics_blur_effect_title">Efecto de desenfoque</string>
+    <string name="lyrics_blur_effect_summary">Desenfoca las líneas de texto adyacentes a la actual.</string>
+    <string name="lyrics_shadow_effect_title">Efecto de sombra</string>
+    <string name="lyrics_shadow_effect_summary">Añade una sombra bajo la línea actual para mejorar la legibilidad.</string>
     <string name="lyrics_progressive_coloring_title">Coloreado progresivo de letras</string>
     <string name="lyrics_progressive_coloring_summary">Animar las líneas activas con una transición de color gradual en lugar de colorearlas al instante.</string>
     <string name="lyrics_bold_synced_title">Resaltar las letras sincronizadas</string>
@@ -752,10 +752,9 @@
     <string name="backup_app_data_summary">Crea un archivo que contiene los datos esenciales de la app y lo guarda en el almacenamiento.</string>
     <string name="restore_backup_title">Restaurar datos</string>
     <string name="restore_backup_summary">Restaurar datos de la app (y su estado) desde un respaldo anterior.</string>
-    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
-    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
-    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
-        or battery management may ignore this setting and always stop the app when removed from recents.</string>
+    <string name="stop_when_closed_from_recents_title">Detener al eliminar de recientes</string>
+    <string name="stop_when_closed_from_recents_summary">La reproducción se detiene al remover la app de la lista de aplicaciones recientes.</string>
+    <string name="stop_when_closed_from_recents_note">Nota: algunos dispositivos con gestión agresiva de recursos podrían ignorar esta configuración y siempre forzar el cierre de la app al removerla de la lista de recientes.</string>
     <!-- Preference values -->
     <string name="advanced_label">Avanzado</string>
     <string name="light_theme_name">Claro</string>
