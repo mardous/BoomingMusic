@@ -22,10 +22,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
-import com.bumptech.glide.Glide
+import coil3.SingletonImageLoader
 import com.mardous.booming.R
-import com.mardous.booming.extensions.glide.clearCache
 import com.mardous.booming.util.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
@@ -42,19 +42,19 @@ class MetadataPreferencesFragment : PreferencesScreenFragment(), SharedPreferenc
         Preferences.registerOnSharedPreferenceChangeListener(this)
         findPreference<Preference>(IGNORE_MEDIA_STORE)?.onPreferenceChangeListener =
             Preference.OnPreferenceChangeListener { _, _ ->
-                clearGlideCache()
+                clearImageLoaderCache()
                 true
             }
 
         findPreference<Preference>(PREFERRED_ARTIST_IMAGE_SIZE)?.onPreferenceChangeListener =
             Preference.OnPreferenceChangeListener { _, _ ->
-                clearGlideCache()
+                clearImageLoaderCache()
                 true
             }
 
         findPreference<Preference>(USE_FOLDER_ART)?.onPreferenceChangeListener =
             Preference.OnPreferenceChangeListener { _, _ ->
-                clearGlideCache()
+                clearImageLoaderCache()
                 true
             }
 
@@ -66,10 +66,10 @@ class MetadataPreferencesFragment : PreferencesScreenFragment(), SharedPreferenc
             Preferences.autoDownloadMetadataPolicy != AutoDownloadMetadataPolicy.NEVER
     }
 
-    private fun clearGlideCache() {
-        lifecycleScope.launch {
-            Glide.get(requireContext()).clearCache(true)
-        }
+    private fun clearImageLoaderCache() = lifecycleScope.launch(Dispatchers.IO) {
+        val imageLoader = SingletonImageLoader.get(requireContext())
+        imageLoader.memoryCache?.clear()
+        imageLoader.diskCache?.clear()
     }
 
     override fun onDestroyView() {

@@ -1,0 +1,103 @@
+package com.mardous.booming.coil.fetcher
+
+import android.content.ContentResolver
+import android.content.SharedPreferences
+import android.webkit.MimeTypeMap
+import coil3.ImageLoader
+import coil3.decode.DataSource
+import coil3.decode.ImageSource
+import coil3.fetch.FetchResult
+import coil3.fetch.Fetcher
+import coil3.fetch.SourceFetchResult
+import coil3.request.Options
+import com.mardous.booming.R
+import com.mardous.booming.coil.CustomArtistImageManager
+import com.mardous.booming.coil.model.ArtistImage
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.remote.deezer.DeezerService
+import com.mardous.booming.extensions.isAllowedToDownloadMetadata
+import com.mardous.booming.util.ALLOW_ONLINE_ARTIST_IMAGES
+import com.mardous.booming.util.ImageSize
+import com.mardous.booming.util.PREFERRED_ARTIST_IMAGE_SIZE
+import com.mardous.booming.util.Preferences.requireString
+import okio.Path.Companion.toOkioPath
+import okio.buffer
+import okio.source
+
+class ArtistImageFetcher(
+    private val loader: ImageLoader,
+    private val options: Options,
+    private val customImageManager: CustomArtistImageManager,
+    private val deezerService: DeezerService,
+    private val image: ArtistImage,
+    private val downloadImage: Boolean,
+    private val imageSize: String
+) : Fetcher {
+
+    private val contentResolver: ContentResolver
+        get() = options.context.contentResolver
+
+    override suspend fun fetch(): FetchResult? {
+        if (customImageManager.hasCustomImage(image)) {
+            val imageFile = customImageManager.getCustomImageFile(image)
+            if (imageFile?.isFile == true) {
+                return SourceFetchResult(
+                    source = ImageSource(imageFile.toOkioPath(), options.fileSystem),
+                    mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(imageFile.extension),
+                    dataSource = DataSource.DISK
+                )
+            }
+        }
+
+        if (downloadImage && !image.isNameUnknown && options.context.isAllowedToDownloadMetadata()) {
+            val deezerArtist = deezerService.artist(image.name)
+            val imageUrl = deezerArtist?.getImageUrl(imageSize)
+            if (imageUrl != null) {
+                val data = loader.components.map(imageUrl, options)
+                val output = loader.components.newFetcher(data, options, loader)
+                val (fetcher) = checkNotNull(output) { "no supported fetcher for $imageUrl" }
+                return fetcher.fetch()
+            }
+        }
+
+        check(image.id > 0 || image.id == Artist.VARIOUS_ARTISTS_ID) { "invalid artist ID (${image.id})" }
+        val stream = checkNotNull(contentResolver.openInputStream(image.coverUri)) {
+            "couldn't open stream from ${image.coverUri}"
+        }
+        return SourceFetchResult(
+            source = ImageSource(
+                source = stream.source().buffer(),
+                fileSystem = options.fileSystem,
+                metadata = null
+            ),
+            mimeType = contentResolver.getType(image.coverUri),
+            dataSource = DataSource.DISK
+        )
+    }
+
+    class Factory(
+        private val preferences: SharedPreferences,
+        private val customImageManager: CustomArtistImageManager,
+        private val deezerService: DeezerService
+    ) : Fetcher.Factory<ArtistImage> {
+        override fun create(
+            data: ArtistImage,
+            options: Options,
+            imageLoader: ImageLoader
+        ): Fetcher? {
+            val resources = options.context.resources
+            return ArtistImageFetcher(
+                loader = imageLoader,
+                options = options,
+                customImageManager = customImageManager,
+                deezerService = deezerService,
+                image = data,
+                downloadImage = preferences.getBoolean(
+                    ALLOW_ONLINE_ARTIST_IMAGES,
+                    resources.getBoolean(R.bool.default_artist_images_download)
+                ),
+                imageSize = preferences.requireString(PREFERRED_ARTIST_IMAGE_SIZE, ImageSize.MEDIUM)
+            )
+        }
+    }
+}

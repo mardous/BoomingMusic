@@ -348,18 +348,6 @@ object Preferences : KoinComponent {
     val autoDownloadMetadataPolicy: String
         get() = preferences.requireString(AUTO_DOWNLOAD_METADATA_POLICY, appStr(R.string.default_metadata_policy))
 
-    val ignoreMediaStore: Boolean
-        get() = preferences.getBoolean(IGNORE_MEDIA_STORE, false)
-
-    val useFolderImages: Boolean
-        get() = preferences.getBoolean(USE_FOLDER_ART, true)
-
-    val downloadArtistImages: Boolean
-        get() = preferences.getBoolean(ALLOW_ONLINE_ARTIST_IMAGES, appBool(R.bool.default_artist_images_download))
-
-    val preferredArtistImageSize: String
-        get() = preferences.requireString(PREFERRED_ARTIST_IMAGE_SIZE, ImageSize.MEDIUM)
-
     var onlyAlbumArtists: Boolean
         get() = preferences.getBoolean(ONLY_ALBUM_ARTISTS, true)
         set(value) = preferences.edit { putBoolean(ONLY_ALBUM_ARTISTS, value) }
@@ -509,8 +497,6 @@ object Preferences : KoinComponent {
 
     private inline fun <reified T : Enum<T>> SharedPreferences.enumValue(key: String, defaultValue: T): T =
         nullString(key)?.toEnum<T>() ?: defaultValue
-
-    private fun appBool(resid: Int): Boolean = appContext().resources.getBoolean(resid)
 
     private fun appStr(resid: Int): String = appContext().getString(resid)
 }

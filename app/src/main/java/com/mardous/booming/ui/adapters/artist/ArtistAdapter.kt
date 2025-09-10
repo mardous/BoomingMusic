@@ -24,26 +24,22 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
 import androidx.fragment.app.FragmentActivity
-import com.bumptech.glide.Glide
+import coil3.request.error
+import coil3.request.placeholder
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_ARTIST_IMAGE
 import com.mardous.booming.data.model.Artist
-import com.mardous.booming.extensions.glide.artistOptions
-import com.mardous.booming.extensions.glide.asBitmapPalette
-import com.mardous.booming.extensions.glide.getArtistGlideModel
-import com.mardous.booming.extensions.glide.getDefaultGlideTransition
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.isValidPosition
+import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.artistInfo
 import com.mardous.booming.extensions.media.displayName
 import com.mardous.booming.extensions.media.sectionName
-import com.mardous.booming.extensions.setColors
-import com.mardous.booming.glide.BoomingColoredTarget
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.color.MediaNotificationProcessor
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
@@ -89,17 +85,9 @@ open class ArtistAdapter(
     }
 
     protected open fun loadArtistImage(artist: Artist, holder: ViewHolder) {
-        if (holder.image != null) {
-            Glide.with(holder.image)
-                .asBitmapPalette()
-                .load(artist.getArtistGlideModel())
-                .transition(getDefaultGlideTransition())
-                .artistOptions(artist)
-                .into(object : BoomingColoredTarget(holder.image) {
-                    override fun onColorReady(colors: MediaNotificationProcessor) {
-                        holder.setColors(colors)
-                    }
-                })
+        holder.loadPaletteImage(artist) {
+            placeholder(DEFAULT_ARTIST_IMAGE)
+            error(DEFAULT_ARTIST_IMAGE)
         }
     }
 

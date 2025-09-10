@@ -209,11 +209,8 @@ dependencies {
     implementation(libs.room)
     ksp(libs.room.compiler)
 
-    implementation(libs.glide)
-    implementation(libs.glide.okhttp3)
-    ksp(libs.glide.ksp)
-
     implementation(libs.m3color)
+    implementation(libs.coil.transformations)
 
     implementation(libs.balloon)
     implementation(libs.compose.markdown)

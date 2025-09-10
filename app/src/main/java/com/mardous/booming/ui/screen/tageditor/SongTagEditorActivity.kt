@@ -22,11 +22,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.toBitmap
 import com.mardous.booming.databinding.TagEditorSongFieldBinding
-import com.mardous.booming.extensions.glide.DEFAULT_SONG_IMAGE
 import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.extensions.resources.getResized
 import com.mardous.booming.extensions.showToast
@@ -88,9 +88,10 @@ class SongTagEditorActivity : AbsTagEditorActivity() {
         } else songBinding.genre.setText(genre)
     }
 
-    override fun getDefaultPlaceholder(): Drawable = getDrawableCompat(DEFAULT_SONG_IMAGE)!!
+    override fun getDefaultPlaceholder(): Drawable =
+        getDrawableCompat(DEFAULT_SONG_IMAGE)!!
 
-    override fun searchLastFMImage() {
+    override fun downloadOnlineImage() {
         val songTitleStr = songBinding.title.text?.toString()
         var albumArtistNameStr = songBinding.albumArtist.text?.toString()
         if (albumArtistNameStr.isNullOrBlank()) {

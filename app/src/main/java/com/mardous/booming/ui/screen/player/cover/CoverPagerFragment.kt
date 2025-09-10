@@ -25,30 +25,35 @@ import android.os.Bundle
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
+import androidx.annotation.ColorInt
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager.widget.ViewPager
 import com.mardous.booming.R
+import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.player.GestureOnCover
 import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlayerAlbumCoverBinding
 import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.resources.BOOMING_ANIM_TIME
-import com.mardous.booming.ui.adapters.pager.AlbumCoverPagerAdapter
+import com.mardous.booming.ui.adapters.pager.CustomFragmentStatePagerAdapter
 import com.mardous.booming.ui.component.transform.CarouselPagerTransformer
 import com.mardous.booming.ui.component.transform.ParallaxPagerTransformer
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment
+import com.mardous.booming.ui.screen.player.cover.page.ImageFragment.ColorReceiver
 import com.mardous.booming.util.LEFT_RIGHT_SWIPING
 import com.mardous.booming.util.LYRICS_ON_COVER
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.color.MediaNotificationProcessor
 import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
@@ -288,16 +293,12 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
         }
     }
 
-    private val colorReceiver = object : ImageFragment.ColorReceiver {
-        override fun onColorReady(color: MediaNotificationProcessor, request: Int) {
+    private val colorReceiver = object : ColorReceiver {
+        override fun onColorReady(color: PaletteColor, request: Int) {
             if (currentPosition == request) {
-                notifyColorChange(color)
+                callbacks?.onColorChanged(color)
             }
         }
-    }
-
-    private fun notifyColorChange(color: MediaNotificationProcessor) {
-        callbacks?.onColorChanged(color)
     }
 
     private fun consumeGesture(gesture: GestureOnCover): Boolean {
@@ -309,12 +310,50 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
     }
 
     interface Callbacks {
-        fun onColorChanged(color: MediaNotificationProcessor)
+        fun onColorChanged(color: PaletteColor)
         fun onGestureDetected(gestureOnCover: GestureOnCover): Boolean
         fun onLyricsVisibilityChange(animatorSet: AnimatorSet, lyricsVisible: Boolean)
     }
 
     companion object {
         const val TAG = "PlayerAlbumCoverFragment"
+    }
+}
+
+class AlbumCoverPagerAdapter(fm: FragmentManager, private val dataSet: List<Song>) :
+    CustomFragmentStatePagerAdapter(fm) {
+
+    private var currentPaletteReceiver: ColorReceiver? = null
+    private var currentColorReceiverPosition = -1
+
+    override fun getItem(position: Int): Fragment {
+        return ImageFragment.newInstance(dataSet[position])
+    }
+
+    override fun getCount(): Int {
+        return dataSet.size
+    }
+
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        val o = super.instantiateItem(container, position)
+        if (currentPaletteReceiver != null && currentColorReceiverPosition == position) {
+            receiveColor(currentPaletteReceiver!!, currentColorReceiverPosition)
+        }
+        return o
+    }
+
+    /**
+     * Only the latest passed [ImageFragment.ColorReceiver] is guaranteed to receive a response
+     */
+    fun receiveColor(paletteReceiver: ColorReceiver, @ColorInt position: Int) {
+        val fragment = getFragment(position) as ImageFragment?
+        if (fragment != null) {
+            currentPaletteReceiver = null
+            currentColorReceiverPosition = -1
+            fragment.receivePalette(paletteReceiver, position)
+        } else {
+            currentPaletteReceiver = paletteReceiver
+            currentColorReceiverPosition = position
+        }
     }
 }

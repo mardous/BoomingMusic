@@ -40,6 +40,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.mardous.booming.R
+import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.player.GestureOnCover
@@ -77,7 +78,6 @@ import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.CoverPagerFragment
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.color.MediaNotificationProcessor
 import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.math.abs
@@ -242,8 +242,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
         }
     }
 
-    override fun onColorChanged(color: MediaNotificationProcessor) {
-        playerViewModel.loadColorScheme(requireContext(), colorSchemeMode, color)
+    override fun onColorChanged(color: PaletteColor) {
+        playerViewModel.generatePlayerScheme(requireContext(), colorSchemeMode, color)
     }
 
     protected abstract fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget>

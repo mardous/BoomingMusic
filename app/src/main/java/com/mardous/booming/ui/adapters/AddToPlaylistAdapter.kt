@@ -25,15 +25,12 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.mardous.booming.R
+import com.mardous.booming.coil.playlistImage
 import com.mardous.booming.data.local.room.PlaylistWithSongs
-import com.mardous.booming.extensions.glide.getDefaultGlideTransition
-import com.mardous.booming.extensions.glide.playlistOptions
 import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.extensions.resources.show
-import com.mardous.booming.glide.playlistPreview.PlaylistPreview
 import com.mardous.booming.ui.IPlaylistCallback
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 
@@ -77,14 +74,7 @@ class AddToPlaylistAdapter(
         if (getItemViewType(position) == TYPE_PLAYLIST) {
             val playlist = dataSet[position - 1]
             holder.title?.text = playlist.playlistEntity.playlistName
-            if (holder.image != null) {
-                Glide.with(holder.image)
-                    .asBitmap()
-                    .load(PlaylistPreview(playlist))
-                    .playlistOptions()
-                    .transition(getDefaultGlideTransition())
-                    .into(holder.image)
-            }
+            holder.image?.playlistImage(playlist)
             if (playlist.playlistEntity.playListId == addingToPlaylistId)
                 holder.progressLayout.show(true)
             else holder.progressLayout.hide(true)

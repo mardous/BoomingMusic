@@ -29,13 +29,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import com.h6ah4i.android.widget.advrecyclerview.animator.RefactoredDefaultItemAnimator
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager
 import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils
 import com.mardous.booming.R
+import com.mardous.booming.coil.playlistImage
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.mapper.searchFilter
 import com.mardous.booming.data.mapper.toSongEntity
@@ -44,14 +44,12 @@ import com.mardous.booming.data.mapper.toSongsEntity
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlaylistDetailBinding
 import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.glide.playlistOptions
 import com.mardous.booming.extensions.media.isFavorites
 import com.mardous.booming.extensions.media.playlistInfo
 import com.mardous.booming.extensions.navigation.searchArgs
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.removeHorizontalMarginIfRequired
 import com.mardous.booming.extensions.resources.surfaceColor
-import com.mardous.booming.glide.playlistPreview.PlaylistPreview
 import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.PlaylistSongAdapter
@@ -126,13 +124,7 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_playlis
             }
             binding.subtitle.text = playlist.songs.toSongs().playlistInfo(requireContext())
             binding.collapsingAppBarLayout.title = playlist.playlistEntity.playlistName
-            binding.image.let { image ->
-                Glide.with(this)
-                    .asBitmap()
-                    .load(PlaylistPreview(playlistWithSongs))
-                    .playlistOptions()
-                    .into(image)
-            }
+            binding.image.playlistImage(playlist)
         }
         detailViewModel.getSongs().observe(viewLifecycleOwner) {
             binding.progressIndicator.hide()

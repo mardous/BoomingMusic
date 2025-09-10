@@ -18,7 +18,6 @@
 package com.mardous.booming.ui.screen.player.styles.fullcoverstyle
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
@@ -27,17 +26,15 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.updatePadding
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target
+import coil3.request.Disposable
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
+import com.mardous.booming.coil.songImage
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentFullCoverPlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
-import com.mardous.booming.extensions.glide.DEFAULT_SONG_IMAGE
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.resources.applyColor
 import com.mardous.booming.extensions.resources.getPrimaryTextColor
@@ -64,7 +61,7 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
     private var playbackControlsColor = 0
     private var disabledPlaybackControlsColor = 0
 
-    private var target: Target<Bitmap>? = null
+    private var disposable: Disposable? = null
 
     override val colorSchemeMode: PlayerColorSchemeMode
         get() = Preferences.getNowPlayingColorSchemeMode(NowPlayingScreen.FullCover)
@@ -119,16 +116,10 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
     }
 
     private fun updateNextSongInfo(nextSong: Song) {
-        Glide.with(this).clear(target)
         if (nextSong != Song.emptySong) {
+            disposable?.dispose()
+            disposable = _binding?.nextSongAlbumArt?.songImage(nextSong)
             _binding?.nextSongText?.text = nextSong.title
-            target = _binding?.nextSongAlbumArt?.let {
-                Glide.with(this)
-                    .asBitmap()
-                    .load(nextSong.getSongGlideModel())
-                    .songOptions(nextSong)
-                    .into(it)
-            }
         } else {
             _binding?.nextSongText?.setText(R.string.now_playing)
             _binding?.nextSongAlbumArt?.setImageResource(DEFAULT_SONG_IMAGE)

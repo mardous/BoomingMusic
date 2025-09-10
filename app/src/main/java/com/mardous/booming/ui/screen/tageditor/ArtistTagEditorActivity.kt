@@ -18,22 +18,27 @@
 package com.mardous.booming.ui.screen.tageditor
 
 import android.content.DialogInterface
-import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.transition.Transition
+import coil3.SingletonImageLoader
+import coil3.load
+import coil3.request.CachePolicy
+import coil3.request.ImageRequest
+import coil3.request.allowHardware
+import coil3.request.crossfade
+import coil3.toBitmap
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_ARTIST_IMAGE
+import com.mardous.booming.coil.artistImage
+import com.mardous.booming.coil.onSuccess
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.databinding.TagEditorArtistFieldBinding
-import com.mardous.booming.extensions.glide.*
 import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.extensions.webSearch
-import com.mardous.booming.glide.BoomingSimpleTarget
 import com.mardous.booming.ui.component.base.AbsTagEditorActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -64,15 +69,15 @@ class ArtistTagEditorActivity : AbsTagEditorActivity() {
         }
         viewModel.loadContent()
         viewModel.requestArtist().observe(this) { artist ->
-            Glide.with(this)
-                .asBitmap()
-                .load(artist.getArtistGlideModel())
-                .artistOptions(artist)
-                .into(object : BoomingSimpleTarget<Bitmap?>() {
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
-                        setImageBitmap(resource)
-                    }
-                })
+            SingletonImageLoader.get(this)
+                .enqueue(
+                    ImageRequest.Builder(this)
+                        .artistImage(artist)
+                        .onSuccess { _, result ->
+                            setImageBitmap(result.image.toBitmap())
+                        }
+                        .build()
+                )
         }
     }
 
@@ -95,7 +100,8 @@ class ArtistTagEditorActivity : AbsTagEditorActivity() {
         } else artistBinding.genre.setText(genre)
     }
 
-    override fun getDefaultPlaceholder(): Drawable = getDrawableCompat(DEFAULT_ARTIST_IMAGE)!!
+    override fun getDefaultPlaceholder(): Drawable =
+        getDrawableCompat(DEFAULT_ARTIST_IMAGE)!!
 
     override fun selectImage() {
         val items = arrayOf(
@@ -115,7 +121,7 @@ class ArtistTagEditorActivity : AbsTagEditorActivity() {
             .show()
     }
 
-    override fun searchLastFMImage() {}
+    override fun downloadOnlineImage() {}
 
     override fun searchOnlineImage() {
         webSearch(artistName)
@@ -125,15 +131,16 @@ class ArtistTagEditorActivity : AbsTagEditorActivity() {
 
     override fun deleteImage() {
         super.deleteImage()
-        viewModel.requestArtist().observe(this) { artist ->
-            artist.resetCustomImage()
-        }
+        viewModel.resetArtistImage()
     }
 
     override fun loadImageFromFile(selectedFileUri: Uri) {
-        super.loadImageFromFile(selectedFileUri)
-        viewModel.requestArtist().observe(this) { artist ->
-            artist.setCustomImage(selectedFileUri)
+        viewModel.setArtistImage(selectedFileUri)
+        binding.image.load(selectedFileUri) {
+            crossfade(false)
+            allowHardware(false)
+            memoryCachePolicy(CachePolicy.READ_ONLY)
+            diskCachePolicy(CachePolicy.READ_ONLY)
         }
     }
 

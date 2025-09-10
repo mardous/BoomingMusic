@@ -17,6 +17,7 @@
 
 package com.mardous.booming.ui.screen.library.years
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -42,14 +43,6 @@ class YearsListFragment : AbsRecyclerViewCustomGridSizeFragment<YearAdapter, Gri
 
     override val titleRes: Int = R.string.release_years_label
     override val isShuffleVisible: Boolean = false
-
-    override val maxGridSize: Int
-        get() = if (isLandscape) resources.getInteger(R.integer.max_genre_columns_land)
-        else resources.getInteger(R.integer.max_genre_columns)
-
-    override val itemLayoutRes: Int
-        get() = if (isGridMode) R.layout.item_grid_gradient
-        else R.layout.item_list
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -94,7 +87,6 @@ class YearsListFragment : AbsRecyclerViewCustomGridSizeFragment<YearAdapter, Gri
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateMenu(menu, inflater)
-        menu.removeItem(R.id.action_view_type)
         val sortOrderSubmenu = menu.findItem(R.id.action_sort_order)?.subMenu
         if (sortOrderSubmenu != null) {
             sortOrderSubmenu.clear()
@@ -125,26 +117,31 @@ class YearsListFragment : AbsRecyclerViewCustomGridSizeFragment<YearAdapter, Gri
     }
 
     override fun getSavedViewType(): GridViewType {
-        // this value is actually ignored by the implementation
-        return GridViewType.Normal
+        return GridViewType.entries.firstOrNull {
+            it.name == sharedPreferences.getString(VIEW_TYPE, null)
+        } ?: GridViewType.Image
     }
 
-    override fun saveViewType(viewType: GridViewType) {}
+    override fun saveViewType(viewType: GridViewType) {
+        sharedPreferences.edit { putString(VIEW_TYPE, viewType.name) }
+    }
 
     override fun getSavedGridSize(): Int {
-        return sharedPreferences.getInt(YEAR_GRID_SIZE_KEY, defaultGridSize)
+        return sharedPreferences.getInt(GRID_SIZE, defaultGridSize)
     }
 
     override fun saveGridSize(newGridSize: Int) {
-        sharedPreferences.edit { putInt(YEAR_GRID_SIZE_KEY, newGridSize) }
+        sharedPreferences.edit { putInt(GRID_SIZE, newGridSize) }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onGridSizeChanged(isLand: Boolean, gridColumns: Int) {
         layoutManager?.spanCount = gridColumns
         adapter?.notifyDataSetChanged()
     }
 
     companion object {
-        private const val YEAR_GRID_SIZE_KEY = "years_grid_size"
+        private const val VIEW_TYPE = "years_view_type"
+        private const val GRID_SIZE = "years_grid_size"
     }
 }

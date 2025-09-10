@@ -22,11 +22,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_ALBUM_IMAGE
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.toBitmap
 import com.mardous.booming.databinding.TagEditorAlbumFieldBinding
-import com.mardous.booming.extensions.glide.DEFAULT_ALBUM_IMAGE
 import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.extensions.resources.getResized
 import com.mardous.booming.extensions.showToast
@@ -82,7 +82,7 @@ class AlbumTagEditorActivity : AbsTagEditorActivity() {
 
     override fun getDefaultPlaceholder(): Drawable = getDrawableCompat(DEFAULT_ALBUM_IMAGE)!!
 
-    override fun searchLastFMImage() {
+    override fun downloadOnlineImage() {
         val albumTitleStr = albumBinding.album.text?.toString()
         val albumArtistNameStr = albumBinding.albumArtist.text?.toString()
         if (albumArtistNameStr.isNullOrBlank() || albumTitleStr.isNullOrBlank()) {

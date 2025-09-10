@@ -18,36 +18,50 @@
 package com.mardous.booming.extensions
 
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import coil3.load
+import coil3.request.ImageRequest
+import coil3.request.allowHardware
+import coil3.toBitmap
 import com.google.android.material.card.MaterialCardView
+import com.mardous.booming.core.palette.PaletteProcessor
 import com.mardous.booming.extensions.resources.toColorStateList
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
-import com.mardous.booming.util.color.MediaNotificationProcessor
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-fun MediaEntryViewHolder.setColors(colors: MediaNotificationProcessor) {
-    if (paletteColorContainer != null) {
-        if (paletteColorContainer is CardView) {
-            paletteColorContainer.setCardBackgroundColor(colors.backgroundColor)
-        } else {
-            paletteColorContainer.setBackgroundColor(colors.backgroundColor)
+fun MediaEntryViewHolder.loadPaletteImage(data: Any?, builder: ImageRequest.Builder.() -> Unit = {}) =
+    image?.load(data) {
+        allowHardware(false)
+        builder()
+        listener { request, result ->
+            if (paletteColorContainer != null) {
+                itemView.findViewTreeLifecycleOwner()?.lifecycleScope?.launch {
+                    val color = withContext(Dispatchers.Default) {
+                        PaletteProcessor.getPaletteColor(itemView.context, result.image.toBitmap())
+                    }
+                    if (isActive) {
+                        if (paletteColorContainer is CardView) {
+                            paletteColorContainer.setCardBackgroundColor(color.backgroundColor)
+                        } else {
+                            paletteColorContainer.setBackgroundColor(color.backgroundColor)
+                        }
+
+                        imageGradient?.backgroundTintList = color.backgroundColor.toColorStateList()
+
+                        title?.setTextColor(color.primaryTextColor)
+                        text?.setTextColor(color.secondaryTextColor)
+                        imageText?.setTextColor(color.secondaryTextColor)
+                        menu?.iconTint = color.secondaryTextColor.toColorStateList()
+                    }
+                }
+            }
         }
-        imageGradient?.backgroundTintList = colors.backgroundColor.toColorStateList()
-    } else return
-
-    title?.setTextColor(colors.primaryTextColor)
-    text?.setTextColor(colors.secondaryTextColor)
-    imageText?.setTextColor(colors.secondaryTextColor)
-    menu?.iconTint = colors.secondaryTextColor.toColorStateList()
-}
-
-val RecyclerView.ViewHolder.isValidPosition: Boolean
-    get() = layoutPosition > -1
-
-val RecyclerView.Adapter<*>?.isNullOrEmpty: Boolean
-    get() = this == null || isEmpty
-
-val RecyclerView.Adapter<*>.isEmpty: Boolean
-    get() = itemCount == 0
+    }
 
 var MediaEntryViewHolder.isActivated: Boolean
     get() = if (itemView is MaterialCardView) (itemView as MaterialCardView).isChecked else itemView.isActivated
@@ -61,3 +75,12 @@ var MediaEntryViewHolder.isActivated: Boolean
             itemView.isActivated = activated
         }
     }
+
+val RecyclerView.ViewHolder.isValidPosition: Boolean
+    get() = layoutPosition > -1
+
+val RecyclerView.Adapter<*>?.isNullOrEmpty: Boolean
+    get() = this == null || isEmpty
+
+val RecyclerView.Adapter<*>.isEmpty: Boolean
+    get() = itemCount == 0

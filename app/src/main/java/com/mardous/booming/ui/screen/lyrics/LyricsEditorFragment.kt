@@ -44,9 +44,9 @@ import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.coil.songImage
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.LyricsSource
@@ -55,9 +55,6 @@ import com.mardous.booming.databinding.DialogLyricsSelectorBinding
 import com.mardous.booming.databinding.DialogSongSearchBinding
 import com.mardous.booming.databinding.FragmentLyricsEditorBinding
 import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.glide.getDefaultGlideTransition
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.media.albumArtistName
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
@@ -107,12 +104,7 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
         binding.title.text = song.title
         binding.text.text = song.displayArtistName()
 
-        Glide.with(this)
-            .asBitmap()
-            .load(song.getSongGlideModel())
-            .songOptions(song)
-            .transition(getDefaultGlideTransition())
-            .into(binding.image)
+        binding.image.songImage(song)
 
         binding.save.isEnabled = false
         binding.progressIndicator.show()

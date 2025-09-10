@@ -5,17 +5,20 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.RemoteViews
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.target.Target
-import com.bumptech.glide.request.transition.Transition
+import coil3.Image
+import coil3.SingletonImageLoader
+import coil3.request.Disposable
+import coil3.request.ImageRequest
+import coil3.request.allowHardware
+import coil3.request.crossfade
+import coil3.size.Scale
+import coil3.target.Target
+import coil3.toBitmap
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.core.appwidgets.base.BaseAppWidget
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
@@ -23,7 +26,7 @@ import com.mardous.booming.ui.screen.MainActivity
 
 class AppWidgetSimple : BaseAppWidget() {
 
-    private var target: Target<Bitmap>? = null // for cancellation
+    private var disposable: Disposable? = null // for cancellation
 
     /**
      * Initialize given widgets to default state, where we launch Music on default click and hide
@@ -37,7 +40,7 @@ class AppWidgetSimple : BaseAppWidget() {
         appWidgetView.setImageViewBitmap(
             R.id.image,
             createRoundedBitmap(
-                context.getDrawableCompat(R.drawable.default_audio_art),
+                context.getDrawableCompat(DEFAULT_SONG_IMAGE),
                 imageSize, imageSize, radius, 0f, radius, 0f
             )
         )
@@ -71,35 +74,37 @@ class AppWidgetSimple : BaseAppWidget() {
         // Load the album cover async and push the update on completion
         val imageSize = getImageSize(service)
         service.runOnUiThread {
-            if (target != null) {
-                Glide.with(service).clear(target)
+            if (disposable != null) {
+                disposable?.dispose()
+                disposable = null
             }
-            target = Glide.with(service)
-                .asBitmap()
-                .songOptions(song)
-                .load(song.getSongGlideModel())
-                .centerCrop()
-                .into(object : CustomTarget<Bitmap>(imageSize, imageSize) {
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                        update(resource)
-                    }
+            disposable = SingletonImageLoader.get(service).enqueue(
+                ImageRequest.Builder(service)
+                    .data(song)
+                    .size(imageSize)
+                    .scale(Scale.FILL)
+                    .crossfade(false)
+                    .allowHardware(false)
+                    .target(object : Target {
+                        override fun onError(error: Image?) {
+                            update(null)
+                        }
 
-                    override fun onLoadFailed(errorDrawable: Drawable?) {
-                        super.onLoadFailed(errorDrawable)
-                        update(null)
-                    }
+                        override fun onSuccess(result: Image) {
+                            update(result.toBitmap())
+                        }
 
-                    override fun onLoadCleared(placeholder: Drawable?) {}
+                        private fun update(bitmap: Bitmap?) {
+                            val image = getAlbumArtDrawable(service, bitmap)
+                            val widgetRadius = getWidgetRadius(service)
+                            val roundedBitmap = createRoundedBitmap(image, imageSize, imageSize, widgetRadius, 0F, widgetRadius, 0F)
+                            appWidgetView.setImageViewBitmap(R.id.image, roundedBitmap)
 
-                    private fun update(bitmap: Bitmap?) {
-                        val image = getAlbumArtDrawable(service, bitmap)
-                        val widgetRadius = getWidgetRadius(service)
-                        val roundedBitmap = createRoundedBitmap(image, imageSize, imageSize, widgetRadius, 0F, widgetRadius, 0F)
-                        appWidgetView.setImageViewBitmap(R.id.image, roundedBitmap)
-
-                        pushUpdate(service, appWidgetIds, appWidgetView)
-                    }
-                })
+                            pushUpdate(service, appWidgetIds, appWidgetView)
+                        }
+                    })
+                    .build()
+            )
         }
     }
 

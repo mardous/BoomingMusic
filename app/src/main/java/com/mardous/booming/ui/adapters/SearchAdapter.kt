@@ -27,16 +27,17 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.mardous.booming.R
+import com.mardous.booming.coil.albumImage
+import com.mardous.booming.coil.artistImage
+import com.mardous.booming.coil.playlistImage
+import com.mardous.booming.coil.songImage
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.extensions.glide.*
 import com.mardous.booming.extensions.media.*
-import com.mardous.booming.glide.playlistPreview.PlaylistPreview
 import com.mardous.booming.ui.ISearchCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.menu.OnClickMenu
@@ -44,7 +45,7 @@ import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
 class SearchAdapter(
-    private val activity: FragmentActivity,
+    activity: FragmentActivity,
     dataSet: List<Any>,
     private val callback: ISearchCallback? = null
 ) : AbsMultiSelectAdapter<SearchAdapter.ViewHolder, Song>(activity, R.menu.menu_media_selection) {
@@ -55,7 +56,7 @@ class SearchAdapter(
 
     override fun getIdentifier(position: Int): Song? {
         val item = dataSet[position]
-        return if (item is Song) item else null
+        return item as? Song
     }
 
     override fun getName(item: Song): String {
@@ -91,12 +92,7 @@ class SearchAdapter(
                 holder.text?.text = album.albumInfo()
                 holder.image?.let {
                     it.transitionName = album.id.toString()
-                    Glide.with(it)
-                        .asDrawable()
-                        .load(album.getAlbumGlideModel())
-                        .transition(getDefaultGlideTransition())
-                        .albumOptions(album)
-                        .into(it)
+                    it.albumImage(album)
                 }
             }
 
@@ -106,12 +102,7 @@ class SearchAdapter(
                 holder.text?.text = artist.artistInfo(holder.itemView.context)
                 holder.image?.let {
                     it.transitionName = if (artist.isAlbumArtist) artist.name else artist.id.toString()
-                    Glide.with(it)
-                        .asBitmap()
-                        .load(artist.getArtistGlideModel())
-                        .transition(getDefaultGlideTransition())
-                        .artistOptions(artist)
-                        .into(it)
+                    it.artistImage(artist)
                 }
             }
 
@@ -122,28 +113,14 @@ class SearchAdapter(
                 holder.menu?.isGone = isChecked
                 holder.title?.text = song.title
                 holder.text?.text = song.songInfo()
-                holder.image?.let {
-                    Glide.with(it)
-                        .asBitmap()
-                        .load(song.getSongGlideModel())
-                        .transition(getDefaultGlideTransition())
-                        .songOptions(song)
-                        .into(it)
-                }
+                holder.image?.songImage(song)
             }
 
             PLAYLIST -> {
                 val playlist = dataSet[position] as PlaylistWithSongs
                 holder.title?.text = playlist.playlistEntity.playlistName
                 holder.text?.text = playlist.songCount.songsStr(holder.itemView.context)
-                holder.image?.let {
-                    Glide.with(it)
-                        .asBitmap()
-                        .load(PlaylistPreview(playlist))
-                        .transition(getDefaultGlideTransition())
-                        .playlistOptions()
-                        .into(it)
-                }
+                holder.image?.playlistImage(playlist)
             }
 
             GENRE -> {
@@ -203,13 +180,8 @@ class SearchAdapter(
         }
 
         override fun onLongClick(view: View): Boolean {
-            val item = dataSet[layoutPosition]
             return when (itemViewType) {
-                SONG -> {
-                    // Force toggle checked for songs
-                    val result = toggleChecked(layoutPosition)
-                    true // Always return true to consume the long click
-                }
+                SONG -> toggleChecked(layoutPosition)
                 else -> menu?.let {
                     it.callOnClick()
                     true

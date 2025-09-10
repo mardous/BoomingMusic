@@ -20,6 +20,7 @@ package com.mardous.booming
 import android.content.ComponentName
 import androidx.preference.PreferenceManager
 import androidx.room.Room
+import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.core.BoomingDatabase
 import com.mardous.booming.core.androidauto.AutoMusicProvider
 import com.mardous.booming.core.audio.AudioOutputObserver
@@ -124,6 +125,9 @@ private val mainModule = module {
     }
     single {
         AudioOutputObserver(context = androidContext(), playbackManager = get())
+    }
+    single {
+        CustomArtistImageManager(context = androidContext())
     }
 }
 
@@ -285,7 +289,12 @@ private val viewModule = module {
     }
 
     viewModel { (target: EditTarget) ->
-        TagEditorViewModel(repository = get(), queueManager = get(), target = target)
+        TagEditorViewModel(
+            repository = get(),
+            customArtistImageManager = get(),
+            queueManager = get(),
+            target = target
+        )
     }
 
     viewModel {

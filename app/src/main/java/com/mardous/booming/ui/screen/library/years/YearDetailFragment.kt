@@ -28,8 +28,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
 import com.mardous.booming.R
 import com.mardous.booming.data.mapper.searchFilter
 import com.mardous.booming.data.model.ReleaseYear
@@ -66,7 +64,6 @@ class YearDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
     private val binding get() = _binding!!
 
     private lateinit var songAdapter: SongAdapter
-    private lateinit var requestManager: RequestManager
 
     private val year: ReleaseYear
         get() = detailViewModel.getYear().value ?: ReleaseYear.Empty
@@ -74,7 +71,6 @@ class YearDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDetailListBinding.bind(view)
-        requestManager = Glide.with(this)
 
         setSupportActionBar(binding.toolbar)
         materialSharedAxis(view)

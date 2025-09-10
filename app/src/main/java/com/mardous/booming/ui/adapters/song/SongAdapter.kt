@@ -25,27 +25,23 @@ import androidx.annotation.MenuRes
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
-import com.bumptech.glide.Glide
+import coil3.request.error
+import coil3.request.placeholder
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.extensions.glide.asBitmapPalette
-import com.mardous.booming.extensions.glide.getDefaultGlideTransition
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.isValidPosition
+import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.sectionName
 import com.mardous.booming.extensions.media.songInfo
-import com.mardous.booming.extensions.setColors
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.glide.BoomingColoredTarget
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
 import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.util.color.MediaNotificationProcessor
 import com.mardous.booming.util.sort.SortKeys
 import com.mardous.booming.util.sort.SortOrder
 import me.zhanghai.android.fastscroll.PopupTextProvider
@@ -94,17 +90,9 @@ open class SongAdapter(
     }
 
     protected open fun loadAlbumCover(song: Song, holder: ViewHolder) {
-        if (holder.image != null) {
-            Glide.with(holder.image)
-                .asBitmapPalette()
-                .load(song.getSongGlideModel())
-                .transition(getDefaultGlideTransition())
-                .songOptions(song)
-                .into(object : BoomingColoredTarget(holder.image) {
-                    override fun onColorReady(colors: MediaNotificationProcessor) {
-                        holder.setColors(colors)
-                    }
-                })
+        holder.loadPaletteImage(song) {
+            placeholder(DEFAULT_SONG_IMAGE)
+            error(DEFAULT_SONG_IMAGE)
         }
     }
 

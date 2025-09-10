@@ -2,9 +2,11 @@ package com.mardous.booming.ui.screen.tageditor
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.*
 import com.kyant.taglib.Picture
+import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MetadataReader
@@ -24,6 +26,7 @@ import kotlinx.coroutines.launch
  */
 class TagEditorViewModel(
     private val repository: Repository,
+    private val customArtistImageManager: CustomArtistImageManager,
     private val queueManager: QueueManager,
     private val target: EditTarget
 ) : ViewModel() {
@@ -118,6 +121,20 @@ class TagEditorViewModel(
         }
     }
 
+    fun setArtistImage(uri: Uri) = viewModelScope.launch(Dispatchers.IO) {
+        val artist = fetchArtist()
+        if (artist != Artist.empty) {
+            customArtistImageManager.setCustomImage(artist, uri)
+        }
+    }
+
+    fun resetArtistImage() = viewModelScope.launch(Dispatchers.IO) {
+        val artist = fetchArtist()
+        if (artist != Artist.empty) {
+            customArtistImageManager.removeCustomImage(artist)
+        }
+    }
+
     fun getAlbumInfo(artistName: String, albumName: String): LiveData<Result<DeezerAlbum>> =
         liveData(Dispatchers.IO) {
             emit(repository.deezerAlbum(artistName, albumName))
@@ -129,13 +146,17 @@ class TagEditorViewModel(
         }
 
     fun requestArtist(): LiveData<Artist> = liveData(Dispatchers.IO) {
-        val artist = if (target.type == EditTarget.Type.AlbumArtist) {
+        val artist = fetchArtist()
+        if (artist != Artist.Companion.empty) {
+            emit(artist)
+        }
+    }
+
+    private fun fetchArtist(): Artist {
+        return if (target.type == EditTarget.Type.AlbumArtist) {
             repository.albumArtistByName(target.name)
         } else {
             repository.artistById(target.id)
-        }
-        if (artist != Artist.Companion.empty) {
-            emit(artist)
         }
     }
 

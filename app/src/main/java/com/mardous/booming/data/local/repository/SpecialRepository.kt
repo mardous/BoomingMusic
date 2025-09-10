@@ -31,7 +31,7 @@ import com.mardous.booming.util.sort.sortedYears
 interface SpecialRepository {
     suspend fun releaseYears(): List<ReleaseYear>
     suspend fun releaseYear(year: Int): ReleaseYear
-    suspend fun songsByYear(year: Int, query: String): List<Song>
+    suspend fun songsByYear(year: Int, query: String?): List<Song>
     suspend fun musicFolders(): FileSystemQuery
     suspend fun folderByPath(path: String): Folder
     suspend fun songsByFolder(path: String, includeSubfolders: Boolean): List<Song>
@@ -59,13 +59,19 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
         return ReleaseYear(year, songs.sortedSongs(SortOrder.yearSongSortOrder))
     }
 
-    override suspend fun songsByYear(year: Int, query: String): List<Song> {
-        return songRepository.songs(
+    override suspend fun songsByYear(year: Int, query: String?): List<Song> {
+        val cursor = if (query.isNullOrEmpty()) {
+            songRepository.makeSongCursor(
+                selection = "${AudioColumns.YEAR}=?",
+                selectionValues = arrayOf(year.toString())
+            )
+        } else {
             songRepository.makeSongCursor(
                 selection = "${AudioColumns.YEAR}=? AND ${AudioColumns.TITLE} LIKE ?",
                 selectionValues = arrayOf(year.toString(), "%$query%")
             )
-        )
+        }
+        return songRepository.songs(cursor)
     }
 
     override suspend fun musicFolders(): FileSystemQuery {

@@ -16,7 +16,9 @@
  */
 package com.mardous.booming.data.model
 
+import android.net.Uri
 import com.mardous.booming.data.SongProvider
+import com.mardous.booming.extensions.media.albumCoverUri
 import java.util.Objects
 
 data class Album(val id: Long, override val songs: List<Song>) : SongProvider {
@@ -44,6 +46,9 @@ data class Album(val id: Long, override val songs: List<Song>) : SongProvider {
 
     val isSingle: Boolean
         get() = songCount == 1
+
+    val albumCover: Uri
+        get() = id.albumCoverUri()
 
     fun safeGetFirstSong(): Song {
         return songs.firstOrNull() ?: Song.emptySong

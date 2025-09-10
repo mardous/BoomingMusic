@@ -24,13 +24,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.fragment.app.FragmentActivity
-import com.bumptech.glide.Glide
+import coil3.load
+import coil3.request.error
+import coil3.request.placeholder
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.data.model.Folder
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.resources.useAsIcon
 import com.mardous.booming.ui.IFileCallback
@@ -69,13 +70,10 @@ class FileAdapter(
         holder.title?.text = file.fileName
         holder.text?.text = file.getFileDescription(holder.itemView.context)
         if (getItemViewType(position) == VIEW_TYPE_SONG) {
-            if (holder.image == null) return
-            val song = file as? Song ?: return
-            Glide.with(holder.image)
-                .asBitmap()
-                .load(song.getSongGlideModel())
-                .songOptions(song)
-                .into(holder.image)
+            holder.image?.load(file) {
+                placeholder(DEFAULT_SONG_IMAGE)
+                error(DEFAULT_SONG_IMAGE)
+            }
         } else {
             holder.image?.setImageDrawable(file.getFileIcon(holder.itemView.context))
         }

@@ -24,9 +24,14 @@ import android.os.Bundle
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.DialogFragment
-import com.bumptech.glide.Glide
+import coil3.load
+import coil3.request.error
+import coil3.request.placeholder
+import coil3.size.Precision
+import coil3.size.Scale
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.DialogCreatePlaylistBinding
 import com.mardous.booming.extensions.EXTRA_SONGS
@@ -96,12 +101,12 @@ class CreatePlaylistDialog : DialogFragment() {
     }
 
     private fun loadCoverImage(uri: Uri?) {
-        Glide.with(binding.playlistCoverImage)
-            .load(uri)
-            .error(R.drawable.default_audio_art)
-            .placeholder(R.drawable.default_audio_art)
-            .centerCrop()
-            .into(binding.playlistCoverImage)
+        binding.playlistCoverImage.load(uri) {
+            precision(Precision.INEXACT)
+            scale(Scale.FILL)
+            placeholder(DEFAULT_SONG_IMAGE)
+            error(DEFAULT_SONG_IMAGE)
+        }
     }
 
     private fun createPlaylist() {

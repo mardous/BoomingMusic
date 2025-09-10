@@ -1,6 +1,5 @@
 package com.mardous.booming.ui.component.base
 
-import android.R
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.DialogInterface
@@ -18,14 +17,18 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.IntentCompat
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.target.ImageViewTarget
+import coil3.Image
+import coil3.SingletonImageLoader
+import coil3.request.CachePolicy
+import coil3.request.ImageRequest
+import coil3.request.allowHardware
+import coil3.request.crossfade
+import coil3.target.Target
+import coil3.toBitmap
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.databinding.ActivityTagEditorBinding
 import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.resources.getResized
 import com.mardous.booming.extensions.resources.setupStatusBarForeground
 import com.mardous.booming.ui.screen.tageditor.TagEditorViewModel
 import org.jaudiotagger.tag.reference.GenreTypes
@@ -82,7 +85,7 @@ abstract class AbsTagEditorActivity : AbsBaseActivity(),
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.home) {
+        if (item.itemId == android.R.id.home) {
             onBackPressedDispatcher.onBackPressed()
             return true
         }
@@ -93,7 +96,7 @@ abstract class AbsTagEditorActivity : AbsBaseActivity(),
 
     protected open fun onDefaultGenreSelection(genre: String) {}
 
-    protected abstract fun searchLastFMImage()
+    protected abstract fun downloadOnlineImage()
 
     protected abstract fun searchOnlineImage()
 
@@ -115,7 +118,7 @@ abstract class AbsTagEditorActivity : AbsBaseActivity(),
             .setTitle(com.mardous.booming.R.string.update_image)
             .setItems(items) { _: DialogInterface, which: Int ->
                 when (which) {
-                    0 -> searchLastFMImage()
+                    0 -> downloadOnlineImage()
                     1 -> startImagePicker()
                     2 -> searchOnlineImage()
                     3 -> restoreImage()
@@ -131,34 +134,41 @@ abstract class AbsTagEditorActivity : AbsBaseActivity(),
     }
 
     protected open fun loadImageFromUrl(url: String?) {
-        Glide.with(this).asBitmap()
-            .load(url)
-            .dontAnimate()
-            .error(getDefaultPlaceholder())
-            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-            .into(simpleGlideTarget)
+        SingletonImageLoader.get(this).enqueue(
+            ImageRequest.Builder(this)
+                .data(url)
+                .crossfade(false)
+                .allowHardware(false)
+                .target(imageViewTarget)
+                .build()
+        )
     }
 
     protected open fun loadImageFromFile(selectedFileUri: Uri) {
-        Glide.with(this).asBitmap()
-            .load(selectedFileUri)
-            .dontAnimate()
-            .error(getDefaultPlaceholder())
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .skipMemoryCache(true)
-            .into(simpleGlideTarget)
+        SingletonImageLoader.get(this).enqueue(
+            ImageRequest.Builder(this)
+                .data(selectedFileUri)
+                .crossfade(false)
+                .allowHardware(false)
+                .memoryCachePolicy(CachePolicy.READ_ONLY)
+                .diskCachePolicy(CachePolicy.READ_ONLY)
+                .target(imageViewTarget)
+                .build()
+        )
     }
 
-    private val simpleGlideTarget: ImageViewTarget<Bitmap> by lazy {
-        object : ImageViewTarget<Bitmap>(binding.image) {
-            override fun setResource(resource: Bitmap?) {
-                if (resource != null) {
-                    val albumArtBitmap = resource.getResized(2048)
-                    setImageBitmap(albumArtBitmap)
-                    viewModel.setPictureBitmap(albumArtBitmap)
-                } else {
-                    setImageBitmap(null)
-                }
+    private val imageViewTarget: Target by lazy {
+        object : coil3.target.ImageViewTarget(binding.image) {
+            override fun onError(error: Image?) {
+                super.onError(error)
+                setImageBitmap(null)
+            }
+
+            override fun onSuccess(result: Image) {
+                super.onSuccess(result)
+                val albumArtBitmap = result.toBitmap(2048, 2048)
+                setImageBitmap(albumArtBitmap)
+                viewModel.setPictureBitmap(albumArtBitmap)
             }
         }
     }
@@ -205,7 +215,7 @@ abstract class AbsTagEditorActivity : AbsBaseActivity(),
 
         MaterialAlertDialogBuilder(this)
             .setItems(titles) { _: DialogInterface, i: Int -> onDefaultGenreSelection(titles[i]) }
-            .setNegativeButton(R.string.cancel, null)
+            .setNegativeButton(android.R.string.cancel, null)
             .create()
     }
 

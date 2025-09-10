@@ -17,13 +17,13 @@
 
 package com.mardous.booming.ui.screen.library.genres
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.core.content.edit
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
@@ -45,14 +45,6 @@ class GenresListFragment : AbsRecyclerViewCustomGridSizeFragment<GenreAdapter, G
     override val isShuffleVisible: Boolean = false
     override val emptyMessageRes: Int = R.string.no_genres_label
 
-    override val maxGridSize: Int
-        get() = if (isLandscape) resources.getInteger(R.integer.max_genre_columns_land)
-        else resources.getInteger(R.integer.max_genre_columns)
-
-    override val itemLayoutRes: Int
-        get() = if (isGridMode) R.layout.item_grid_gradient
-        else R.layout.item_list
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         libraryViewModel.getGenres().observe(viewLifecycleOwner) { genres ->
@@ -70,9 +62,10 @@ class GenresListFragment : AbsRecyclerViewCustomGridSizeFragment<GenreAdapter, G
     }
 
     override fun createAdapter(): GenreAdapter {
+        val itemLayoutRes = itemLayoutRes
         notifyLayoutResChanged(itemLayoutRes)
         val dataSet = adapter?.dataSet ?: ArrayList()
-        return GenreAdapter(dataSet, itemLayoutRes, lifecycleScope, this)
+        return GenreAdapter(dataSet, itemLayoutRes, this)
     }
 
     override fun genreClick(genre: Genre) {
@@ -81,7 +74,6 @@ class GenresListFragment : AbsRecyclerViewCustomGridSizeFragment<GenreAdapter, G
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateMenu(menu, inflater)
-        menu.removeItem(R.id.action_view_type)
         val sortOrderSubmenu = menu.findItem(R.id.action_sort_order)?.subMenu
         if (sortOrderSubmenu != null) {
             sortOrderSubmenu.clear()
@@ -107,28 +99,33 @@ class GenresListFragment : AbsRecyclerViewCustomGridSizeFragment<GenreAdapter, G
     }
 
     override fun getSavedViewType(): GridViewType {
-        // this value is actually ignored by the implementation
-        return GridViewType.Normal
+        return GridViewType.entries.firstOrNull {
+            it.name == sharedPreferences.getString(VIEW_TYPE, null)
+        } ?: GridViewType.Image
     }
 
-    override fun saveViewType(viewType: GridViewType) {}
+    override fun saveViewType(viewType: GridViewType) {
+        sharedPreferences.edit { putString(VIEW_TYPE, viewType.name) }
+    }
 
     override fun getSavedGridSize(): Int {
-        return sharedPreferences.getInt(GENRES_GRID_SIZE_KEY, defaultGridSize)
+        return sharedPreferences.getInt(GRID_SIZE, defaultGridSize)
     }
 
     override fun saveGridSize(newGridSize: Int) {
         sharedPreferences.edit {
-            putInt(GENRES_GRID_SIZE_KEY, newGridSize)
+            putInt(GRID_SIZE, newGridSize)
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onGridSizeChanged(isLand: Boolean, gridColumns: Int) {
         layoutManager?.spanCount = gridColumns
         adapter?.notifyDataSetChanged()
     }
 
     companion object {
-        private const val GENRES_GRID_SIZE_KEY = "genres_grid_size"
+        private const val VIEW_TYPE = "genres_view_type"
+        private const val GRID_SIZE = "genres_grid_size"
     }
 }

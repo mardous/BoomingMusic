@@ -24,26 +24,22 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
 import androidx.fragment.app.FragmentActivity
-import com.bumptech.glide.Glide
+import coil3.request.error
+import coil3.request.placeholder
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_ALBUM_IMAGE
 import com.mardous.booming.data.model.Album
-import com.mardous.booming.extensions.glide.albumOptions
-import com.mardous.booming.extensions.glide.asBitmapPalette
-import com.mardous.booming.extensions.glide.getAlbumGlideModel
-import com.mardous.booming.extensions.glide.getDefaultGlideTransition
 import com.mardous.booming.extensions.isActivated
+import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.albumInfo
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.sectionName
 import com.mardous.booming.extensions.media.songCountStr
-import com.mardous.booming.extensions.setColors
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.glide.BoomingColoredTarget
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
-import com.mardous.booming.util.color.MediaNotificationProcessor
 import com.mardous.booming.util.sort.SortKeys
 import com.mardous.booming.util.sort.SortOrder
 import me.zhanghai.android.fastscroll.PopupTextProvider
@@ -91,17 +87,9 @@ open class AlbumAdapter(
     }
 
     protected open fun loadAlbumCover(album: Album, holder: ViewHolder) {
-        if (holder.image != null) {
-            Glide.with(holder.image)
-                .asBitmapPalette()
-                .load(album.getAlbumGlideModel())
-                .transition(getDefaultGlideTransition())
-                .albumOptions(album)
-                .into(object : BoomingColoredTarget(holder.image) {
-                    override fun onColorReady(colors: MediaNotificationProcessor) {
-                        holder.setColors(colors)
-                    }
-                })
+        holder.loadPaletteImage(album) {
+            placeholder(DEFAULT_ALBUM_IMAGE)
+            error(DEFAULT_ALBUM_IMAGE)
         }
     }
 

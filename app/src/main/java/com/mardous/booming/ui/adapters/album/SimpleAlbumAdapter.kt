@@ -18,12 +18,8 @@
 package com.mardous.booming.ui.adapters.album
 
 import androidx.fragment.app.FragmentActivity
-import com.bumptech.glide.Glide
 import com.mardous.booming.R
 import com.mardous.booming.data.model.Album
-import com.mardous.booming.extensions.glide.albumOptions
-import com.mardous.booming.extensions.glide.getAlbumGlideModel
-import com.mardous.booming.extensions.glide.getDefaultGlideTransition
 import com.mardous.booming.ui.IAlbumCallback
 
 /**
@@ -36,22 +32,11 @@ class SimpleAlbumAdapter(
     callback: IAlbumCallback? = null
 ) : AlbumAdapter(activity, dataSet, itemLayoutRes, callback = callback) {
 
-    override fun loadAlbumCover(album: Album, holder: ViewHolder) {
-        if (holder.image != null) {
-            Glide.with(holder.image)
-                .asBitmap()
-                .load(album.getAlbumGlideModel())
-                .transition(getDefaultGlideTransition())
-                .albumOptions(album)
-                .into(holder.image)
-        }
-    }
-
     override fun getAlbumText(holder: ViewHolder, album: Album): String? {
         return if (album.year > 0) {
-            return album.year.toString()
+            album.year.toString()
         } else {
-            return holder.itemView.resources.getString(R.string.unknown_year)
+            holder.itemView.resources.getString(R.string.unknown_year)
         }
     }
 }

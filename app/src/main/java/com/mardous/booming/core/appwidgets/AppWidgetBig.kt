@@ -22,28 +22,30 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.RemoteViews
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target
-import com.bumptech.glide.request.transition.Transition
+import coil3.Image
+import coil3.SingletonImageLoader
+import coil3.request.Disposable
+import coil3.request.ImageRequest
+import coil3.request.allowHardware
+import coil3.request.crossfade
+import coil3.size.Scale
+import coil3.target.Target
+import coil3.toBitmap
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.core.appwidgets.base.BaseAppWidget
 import com.mardous.booming.extensions.getTintedDrawable
-import com.mardous.booming.extensions.glide.getDefaultGlideTransition
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.resources.getPrimaryTextColor
 import com.mardous.booming.extensions.resources.toBitmap
-import com.mardous.booming.glide.BoomingSimpleTarget
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.constants.ServiceAction
 import com.mardous.booming.ui.screen.MainActivity
 
 class AppWidgetBig : BaseAppWidget() {
     // for cancellation
-    private var target: Target<Bitmap>? = null
+    private var disposable: Disposable? = null
 
     /**
      * Initialize given widgets to default state, where we launch Music on
@@ -54,7 +56,7 @@ class AppWidgetBig : BaseAppWidget() {
         val primaryTextColor = getPrimaryTextColor(context, isDark = false)
 
         appWidgetView.setViewVisibility(R.id.media_titles, View.INVISIBLE)
-        appWidgetView.setImageViewResource(R.id.image, R.drawable.default_audio_art)
+        appWidgetView.setImageViewResource(R.id.image, DEFAULT_SONG_IMAGE)
         appWidgetView.setImageViewBitmap(
             R.id.button_next,
             context.getTintedDrawable(R.drawable.ic_next_24dp, primaryTextColor)!!.toBitmap()
@@ -114,32 +116,37 @@ class AppWidgetBig : BaseAppWidget() {
         // Load the album cover async and push the update on completion
         val imageSize = getImageSize(service)
         service.runOnUiThread {
-            if (target != null) {
-                Glide.with(service).clear(target)
+            if (disposable != null) {
+                disposable?.dispose()
+                disposable = null
             }
-            target = Glide.with(service)
-                .asBitmap()
-                .load(song.getSongGlideModel())
-                .transition(getDefaultGlideTransition())
-                .songOptions(song)
-                .into(object : BoomingSimpleTarget<Bitmap>(imageSize, imageSize) {
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                        update(resource)
-                    }
-
-                    override fun onLoadFailed(errorDrawable: Drawable?) {
-                        update(null)
-                    }
-
-                    private fun update(bitmap: Bitmap?) {
-                        if (bitmap == null) {
-                            appWidgetView.setImageViewResource(R.id.image, R.drawable.default_audio_art)
-                        } else {
-                            appWidgetView.setImageViewBitmap(R.id.image, bitmap)
+            disposable = SingletonImageLoader.get(service).enqueue(
+                ImageRequest.Builder(service)
+                    .data(song)
+                    .size(imageSize)
+                    .scale(Scale.FILL)
+                    .crossfade(false)
+                    .allowHardware(false)
+                    .target(object : Target {
+                        override fun onError(error: Image?) {
+                            update(null)
                         }
-                        pushUpdate(service, appWidgetIds, appWidgetView)
-                    }
-                })
+
+                        override fun onSuccess(result: Image) {
+                            update(result.toBitmap())
+                        }
+
+                        private fun update(bitmap: Bitmap?) {
+                            if (bitmap == null) {
+                                appWidgetView.setImageViewResource(R.id.image, DEFAULT_SONG_IMAGE)
+                            } else {
+                                appWidgetView.setImageViewBitmap(R.id.image, bitmap)
+                            }
+                            pushUpdate(service, appWidgetIds, appWidgetView)
+                        }
+                    })
+                    .build()
+            )
         }
     }
 

@@ -25,11 +25,11 @@ import androidx.compose.runtime.Immutable
 import com.kyant.m3color.hct.Hct
 import com.kyant.m3color.scheme.SchemeContent
 import com.mardous.booming.R
+import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.extensions.isNightMode
 import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.extensions.systemContrast
 import com.mardous.booming.ui.component.compose.color.onThis
-import com.mardous.booming.util.color.MediaNotificationProcessor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -134,10 +134,10 @@ data class PlayerColorScheme(
         /**
          * Creates a color scheme using the raw colors extracted from media (album art, etc).
          *
-         * @param color A [MediaNotificationProcessor] with extracted media colors.
+         * @param color A [PaletteColor] with extracted media colors.
          * @return A raw [PlayerColorScheme] using unmodified colors.
          */
-        fun simpleColorScheme(context: Context, color: MediaNotificationProcessor): PlayerColorScheme {
+        fun simpleColorScheme(context: Context, color: PaletteColor): PlayerColorScheme {
             val themeColorScheme = themeColorScheme(context)
             val backgroundColor = themeColorScheme.surfaceColor
             val emphasisColor = color.primaryTextColor
@@ -150,10 +150,10 @@ data class PlayerColorScheme(
         /**
          * Creates a color scheme using the raw colors extracted from media (album art, etc).
          *
-         * @param color A [MediaNotificationProcessor] with extracted media colors.
+         * @param color A [PaletteColor] with extracted media colors.
          * @return A raw [PlayerColorScheme] using unmodified colors.
          */
-        fun vibrantColorScheme(color: MediaNotificationProcessor): PlayerColorScheme {
+        fun vibrantColorScheme(color: PaletteColor): PlayerColorScheme {
             return PlayerColorScheme(
                 mode = Mode.VibrantColor,
                 isDark = !color.backgroundColor.isColorLight,
@@ -199,16 +199,16 @@ data class PlayerColorScheme(
 
         suspend fun autoColorScheme(
             context: Context,
-            mediaColor: MediaNotificationProcessor,
-            schemeMode: PlayerColorSchemeMode
+            color: PaletteColor,
+            mode: PlayerColorSchemeMode
         ): PlayerColorScheme {
-            val colorScheme = when (schemeMode) {
+            val colorScheme = when (mode) {
                 Mode.AppTheme -> themeColorScheme(context)
-                Mode.SimpleColor -> simpleColorScheme(context, mediaColor)
-                Mode.VibrantColor -> vibrantColorScheme(mediaColor)
-                Mode.MaterialYou -> dynamicColorScheme(context, mediaColor.backgroundColor)
+                Mode.SimpleColor -> simpleColorScheme(context, color)
+                Mode.VibrantColor -> vibrantColorScheme(color)
+                Mode.MaterialYou -> dynamicColorScheme(context, color.backgroundColor)
             }
-            check(schemeMode == colorScheme.mode)
+            check(mode == colorScheme.mode)
             return colorScheme
         }
     }

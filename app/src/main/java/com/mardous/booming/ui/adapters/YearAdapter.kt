@@ -22,24 +22,18 @@ import android.view.*
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
-import androidx.core.widget.TextViewCompat
-import com.bumptech.glide.Glide
+import coil3.request.error
+import coil3.request.placeholder
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.data.model.ReleaseYear
-import com.mardous.booming.extensions.glide.asBitmapPalette
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.isActivated
+import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.songsStr
-import com.mardous.booming.extensions.resources.toColorStateList
-import com.mardous.booming.extensions.resources.useAsIcon
-import com.mardous.booming.extensions.setColors
-import com.mardous.booming.glide.BoomingColoredTarget
 import com.mardous.booming.ui.IYearCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
-import com.mardous.booming.util.color.MediaNotificationProcessor
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
@@ -69,33 +63,14 @@ class YearAdapter(
         val year = dataSet[position]
         val isChecked = isChecked(year)
         holder.isActivated = isChecked
+
         holder.menu?.isGone = isChecked
         holder.title?.text = year.name
-        if (itemLayoutRes == R.layout.item_grid_gradient) {
-            holder.text?.text = year.songCount.toString()
-            loadImage(holder, year)
-        } else {
-            holder.text?.text = year.songCount.songsStr(holder.itemView.context)
-            holder.image?.setImageResource(R.drawable.ic_event_24dp)
-        }
-    }
+        holder.text?.text = year.songCount.songsStr(holder.itemView.context)
 
-    private fun loadImage(holder: ViewHolder, year: ReleaseYear) {
-        if (holder.image != null) {
-            Glide.with(holder.image)
-                .asBitmapPalette()
-                .load(year.safeGetFirstSong().getSongGlideModel())
-                .songOptions(year.safeGetFirstSong())
-                .into(object : BoomingColoredTarget(holder.image) {
-                    override fun onColorReady(colors: MediaNotificationProcessor) {
-                        holder.setColors(colors)
-                        if (holder.text != null) {
-                            TextViewCompat.setCompoundDrawableTintList(
-                                holder.text, colors.secondaryTextColor.toColorStateList()
-                            )
-                        }
-                    }
-                })
+        holder.loadPaletteImage(year) {
+            placeholder(DEFAULT_SONG_IMAGE)
+            error(DEFAULT_SONG_IMAGE)
         }
     }
 
@@ -136,10 +111,6 @@ class YearAdapter(
         }
 
         init {
-            if (itemLayoutRes == R.layout.item_list) {
-                image?.useAsIcon()
-            }
-
             // We could create a new menu for this, but I prefer to reuse the
             // Artist model menu, which includes the basic elements needed for
             // this case. We just need to remove the action_tag_editor item.

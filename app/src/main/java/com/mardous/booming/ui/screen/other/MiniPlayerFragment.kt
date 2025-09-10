@@ -18,7 +18,6 @@
 package com.mardous.booming.ui.screen.other
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.text.style.ForegroundColorSpan
 import android.view.GestureDetector
@@ -26,15 +25,12 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target
+import coil3.request.Disposable
 import com.mardous.booming.R
+import com.mardous.booming.coil.songImage
 import com.mardous.booming.core.model.player.ProgressState
 import com.mardous.booming.core.model.theme.NowPlayingButtonStyle
 import com.mardous.booming.databinding.FragmentMiniPlayerBinding
-import com.mardous.booming.extensions.glide.getDefaultGlideTransition
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.isTablet
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.displayArtistName
@@ -71,7 +67,7 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
             NowPlayingButtonStyle.Normal
         }
 
-    private var target: Target<Bitmap>? = null
+    private var disposable: Disposable? = null
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -150,7 +146,7 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
     }
 
     override fun onDestroyView() {
-        Glide.with(this).clear(target)
+        disposable?.dispose()
         super.onDestroyView()
         _binding = null
     }
@@ -172,12 +168,7 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
         binding.songTitle.text = song.title
         binding.songArtist.text = song.displayArtistName()
 
-        target = Glide.with(this@MiniPlayerFragment)
-            .asBitmap()
-            .load(song.getSongGlideModel())
-            .transition(getDefaultGlideTransition())
-            .songOptions(song)
-            .into(binding.image)
+        disposable = binding.image.songImage(song)
     }
 
     private var flingPlayBackController = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {

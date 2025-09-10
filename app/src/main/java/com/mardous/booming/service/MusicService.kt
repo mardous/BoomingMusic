@@ -25,9 +25,7 @@ import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothProfile
 import android.content.*
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.Drawable
 import android.media.AudioManager
 import android.net.Uri
 import android.os.*
@@ -49,11 +47,18 @@ import androidx.media.AudioAttributesCompat
 import androidx.media.AudioFocusRequestCompat
 import androidx.media.AudioManagerCompat
 import androidx.media.MediaBrowserServiceCompat
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
+import coil3.Image
+import coil3.SingletonImageLoader
+import coil3.request.ImageRequest
+import coil3.request.transformations
+import coil3.size.Scale
+import coil3.target.Target
+import coil3.toBitmap
+import com.commit451.coiltransformations.BlurTransformation
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
+import com.mardous.booming.coil.songImage
 import com.mardous.booming.core.androidauto.AutoMediaIDHelper
 import com.mardous.booming.core.androidauto.AutoMusicProvider
 import com.mardous.booming.core.androidauto.PackageValidator
@@ -70,13 +75,10 @@ import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.indexOfSong
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.glide.transformation.BlurTransformation
 import com.mardous.booming.service.constants.ServiceAction
 import com.mardous.booming.service.constants.ServiceAction.Extras.Companion.EXTRA_CONTENT_TYPE
 import com.mardous.booming.service.constants.ServiceAction.Extras.Companion.EXTRA_SHUFFLE_MODE
@@ -746,39 +748,34 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
         // We must send the album art in METADATA_KEY_ALBUM_ART key on A13+ or
         // else album art is blurry in notification
         if (Preferences.albumArtOnLockscreenAllowed || resources.isCarMode || hasT()) {
-            val request = Glide.with(this)
-                .asBitmap()
-                .songOptions(song)
-                .load(song.getSongGlideModel())
-
-            if (hasR()) {
-                request.centerCrop()
-            }
-
-            if (Preferences.blurredAlbumArtAllowed) {
-                request.transform(BlurTransformation.Builder(this).build())
-            }
-            runOnUiThread {
-                request.into(object : CustomTarget<Bitmap?>(SIZE_ORIGINAL, SIZE_ORIGINAL) {
-                    override fun onLoadFailed(errorDrawable: Drawable?) {
-                        super.onLoadFailed(errorDrawable)
+            val request = ImageRequest.Builder(this)
+                .songImage(song)
+                .scale(Scale.FILL)
+                .target(object : Target {
+                    override fun onError(error: Image?) {
                         metadata.putBitmap(
                             MediaMetadataCompat.METADATA_KEY_ALBUM_ART,
-                            BitmapFactory.decodeResource(resources, R.drawable.default_audio_art)
+                            BitmapFactory.decodeResource(resources, DEFAULT_SONG_IMAGE)
                         )
                         mediaSession.setMetadata(metadata.build())
                         onCompletion()
                     }
 
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
-                        metadata.putBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART, resource)
+                    override fun onSuccess(result: Image) {
+                        metadata.putBitmap(
+                            MediaMetadataCompat.METADATA_KEY_ALBUM_ART,
+                            result.toBitmap()
+                        )
                         mediaSession.setMetadata(metadata.build())
                         onCompletion()
                     }
-
-                    override fun onLoadCleared(placeholder: Drawable?) {}
                 })
+
+            if (Preferences.blurredAlbumArtAllowed) {
+                request.transformations(BlurTransformation(this))
             }
+
+            SingletonImageLoader.get(this).enqueue(request.build())
         } else {
             mediaSession.setMetadata(metadata.build())
             onCompletion()

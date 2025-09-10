@@ -31,10 +31,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
+import coil3.request.crossfade
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import com.mardous.booming.R
+import com.mardous.booming.coil.albumImage
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.mapper.searchFilter
 import com.mardous.booming.data.model.Album
@@ -42,8 +43,6 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
 import com.mardous.booming.databinding.FragmentAlbumDetailBinding
 import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.glide.albumOptions
-import com.mardous.booming.extensions.glide.getAlbumGlideModel
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.durationStr
 import com.mardous.booming.extensions.media.isArtistNameUnknown
@@ -209,6 +208,8 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
             return
         }
 
+        binding.image.albumImage(album) { crossfade(false) }
+
         val artistName = if (albumArtistExists) album.albumArtistName else album.artistName
         binding.albumText.text = buildInfoString(
             artistName?.displayArtistName(),
@@ -223,7 +224,6 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
             album.songCount.takeIf { it > 1 }?.toString()
         )
 
-        loadAlbumCover(album)
         simpleSongAdapter.dataSet = album.songs
         loadSimilarContent(album)
         if (requireContext().isAllowedToDownloadMetadata()) {
@@ -245,14 +245,6 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
                 aboutAlbum(result.data)
             }
         }
-    }
-
-    private fun loadAlbumCover(album: Album) {
-        Glide.with(this)
-            .asBitmap()
-            .albumOptions(album)
-            .load(album.getAlbumGlideModel())
-            .into(binding.image)
     }
 
     private fun moreAlbums(albums: List<Album>) {

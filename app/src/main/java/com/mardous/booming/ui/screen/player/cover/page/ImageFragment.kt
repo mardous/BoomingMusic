@@ -8,35 +8,41 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.os.BundleCompat
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target
+import androidx.lifecycle.lifecycleScope
+import coil3.dispose
+import coil3.load
+import coil3.request.Disposable
+import coil3.request.allowHardware
+import coil3.request.crossfade
+import coil3.toBitmap
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.mardous.booming.R
+import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.core.palette.PaletteProcessor
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.EXTRA_SONG
-import com.mardous.booming.extensions.glide.asBitmapPalette
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.requestContext
 import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.withArgs
-import com.mardous.booming.glide.BoomingColoredTarget
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.color.MediaNotificationProcessor
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ImageFragment : Fragment() {
 
     private var isColorReady = false
-    private lateinit var color: MediaNotificationProcessor
+    private lateinit var color: PaletteColor
     private lateinit var song: Song
     private var colorReceiver: ColorReceiver? = null
     private var request = 0
 
-    private var target: Target<*>? = null
+    private var disposable: Disposable? = null
     private var albumCover: ImageView? = null
 
     private val nowPlayingScreen: NowPlayingScreen
@@ -69,7 +75,7 @@ class ImageFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Glide.with(this).clear(target)
+        albumCover?.dispose()
         colorReceiver = null
     }
 
@@ -97,23 +103,26 @@ class ImageFragment : Fragment() {
     }
 
     private fun loadAlbumCover() {
-        Glide.with(this).clear(target)
-
-        if (albumCover != null) {
-            target = Glide.with(this)
-                .asBitmapPalette()
-                .load(song.getSongGlideModel())
-                .songOptions(song)
-                .dontAnimate()
-                .into(object : BoomingColoredTarget(albumCover!!) {
-                    override fun onColorReady(colors: MediaNotificationProcessor) {
-                        setPalette(colors)
+        disposable?.dispose()
+        disposable = albumCover?.load(song) {
+            crossfade(false)
+            allowHardware(false)
+            listener { request, result ->
+                viewLifecycleOwner.lifecycleScope.launch {
+                    val color = withContext(Dispatchers.Default) {
+                        context?.let { fragmentCtx ->
+                            PaletteProcessor.getPaletteColor(fragmentCtx, result.image.toBitmap())
+                        }
                     }
-                })
+                    if (isActive && color != null) {
+                        setPalette(color)
+                    }
+                }
+            }
         }
     }
 
-    private fun setPalette(color: MediaNotificationProcessor) {
+    private fun setPalette(color: PaletteColor) {
         this.color = color
         isColorReady = true
         if (colorReceiver != null) {
@@ -132,7 +141,7 @@ class ImageFragment : Fragment() {
     }
 
     interface ColorReceiver {
-        fun onColorReady(color: MediaNotificationProcessor, request: Int)
+        fun onColorReady(color: PaletteColor, request: Int)
     }
 
     companion object {

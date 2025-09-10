@@ -29,16 +29,13 @@ import androidx.core.os.BundleCompat
 import androidx.core.view.drawToBitmap
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.ImageViewTarget
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.coil.songImage
 import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.DialogShareToStoriesBinding
 import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.resources.toJPG
@@ -71,21 +68,16 @@ class ShareStoryDialog : DialogFragment() {
             .setNegativeButton(android.R.string.cancel, null)
             .create { dialog ->
                 dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = false
-                Glide.with(this)
-                    .asBitmap()
-                    .songOptions(song)
-                    .load(song.getSongGlideModel())
-                    .centerCrop()
-                    .into(object : ImageViewTarget<Bitmap>(binding.image) {
-                        override fun setResource(resource: Bitmap?) {
+                binding.image.songImage(song) {
+                    listener(
+                        onError = { _, _ ->
                             dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = true
-                            if (resource == null) {
-                                view.setImageResource(R.drawable.default_audio_art)
-                            } else {
-                                view.setImageBitmap(resource)
-                            }
+                        },
+                        onSuccess = { _, _ ->
+                            dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = true
                         }
-                    })
+                    )
+                }
             }
     }
 

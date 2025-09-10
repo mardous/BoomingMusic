@@ -63,7 +63,6 @@ import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
 import io.noties.markwon.core.MarkwonTheme
 import io.noties.markwon.html.HtmlPlugin
-import io.noties.markwon.image.glide.GlideImagesPlugin
 import me.zhanghai.android.fastscroll.FastScroller
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
@@ -297,7 +296,6 @@ fun TextView.setMarquee(marquee: Boolean) {
 
 fun TextView.setMarkdownText(str: String) {
     val markwon = Markwon.builder(context)
-        .usePlugin(GlideImagesPlugin.create(context)) // image loader
         .usePlugin(HtmlPlugin.create()) // basic Html tags
         .usePlugin(object : AbstractMarkwonPlugin() {
             override fun configureTheme(builder: MarkwonTheme.Builder) {

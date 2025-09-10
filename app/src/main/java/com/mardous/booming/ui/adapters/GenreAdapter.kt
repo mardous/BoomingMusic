@@ -21,32 +21,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.mardous.booming.R
-import com.mardous.booming.data.local.repository.Repository
+import coil3.request.error
+import coil3.request.placeholder
+import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.data.model.Genre
-import com.mardous.booming.extensions.glide.asBitmapPalette
-import com.mardous.booming.extensions.glide.getSongGlideModel
-import com.mardous.booming.extensions.glide.songOptions
+import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.sectionName
 import com.mardous.booming.extensions.media.songsStr
 import com.mardous.booming.extensions.resources.hide
-import com.mardous.booming.extensions.resources.toColorStateList
-import com.mardous.booming.extensions.resources.useAsIcon
-import com.mardous.booming.extensions.setColors
-import com.mardous.booming.glide.BoomingColoredTarget
 import com.mardous.booming.ui.IGenreCallback
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
-import com.mardous.booming.util.color.MediaNotificationProcessor
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
@@ -57,11 +44,8 @@ class GenreAdapter(
     dataSet: List<Genre>,
     @LayoutRes
     private val itemLayoutRes: Int,
-    private val uiScope: CoroutineScope,
     private val callback: IGenreCallback?,
 ) : RecyclerView.Adapter<GenreAdapter.ViewHolder>(), PopupTextProvider, KoinComponent {
-
-    private val repository: Repository by inject()
 
     var dataSet by Delegates.observable(dataSet) { _: KProperty<*>, _: List<Genre>, _: List<Genre> ->
         notifyDataSetChanged()
@@ -79,34 +63,11 @@ class GenreAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val genre = dataSet[position]
         holder.title?.text = genre.name
-        if (itemLayoutRes == R.layout.item_grid_gradient) {
-            loadGenreImage(holder, genre)
-            holder.text?.text = genre.songCount.toString()
-        } else {
-            holder.image?.setImageResource(R.drawable.ic_radio_24dp)
-            holder.text?.text = genre.songCount.songsStr(holder.itemView.context)
-        }
-    }
+        holder.text?.text = genre.songCount.songsStr(holder.itemView.context)
 
-    private fun loadGenreImage(holder: ViewHolder, genre: Genre) {
-        if (holder.image != null) {
-            uiScope.launch {
-                val song = withContext(Dispatchers.IO) { repository.songByGenre(genre.id) }
-                Glide.with(holder.image)
-                    .asBitmapPalette()
-                    .load(song.getSongGlideModel())
-                    .songOptions(song)
-                    .into(object : BoomingColoredTarget(holder.image) {
-                        override fun onColorReady(colors: MediaNotificationProcessor) {
-                            holder.setColors(colors)
-                            if (holder.text != null) {
-                                TextViewCompat.setCompoundDrawableTintList(
-                                    holder.text, colors.secondaryTextColor.toColorStateList()
-                                )
-                            }
-                        }
-                    })
-            }
+        holder.loadPaletteImage(genre) {
+            placeholder(DEFAULT_SONG_IMAGE)
+            error(DEFAULT_SONG_IMAGE)
         }
     }
 
@@ -130,9 +91,6 @@ class GenreAdapter(
         }
 
         init {
-            if (itemLayoutRes == R.layout.item_list) {
-                image?.useAsIcon()
-            }
             menu?.hide()
         }
     }

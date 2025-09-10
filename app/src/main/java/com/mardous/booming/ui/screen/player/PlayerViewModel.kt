@@ -7,6 +7,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.shuffle.ShuffleOperationState
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
@@ -26,7 +27,7 @@ import com.mardous.booming.service.queue.QueueManager
 import com.mardous.booming.service.queue.QueueObserver
 import com.mardous.booming.util.PlayOnStartupMode
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.color.MediaNotificationProcessor
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
@@ -343,17 +344,17 @@ class PlayerViewModel(
         }
     }
 
-    fun loadColorScheme(
+    fun generatePlayerScheme(
         context: Context,
         mode: PlayerColorScheme.Mode,
-        mediaColor: MediaNotificationProcessor
-    ) = viewModelScope.launch(IO) {
+        color: PaletteColor
+    ) = viewModelScope.launch(Dispatchers.Default) {
         val currentScheme = colorScheme.mode.takeIf { it == PlayerColorSchemeMode.AppTheme }
         if (currentScheme == mode && colorScheme.isDark == context.isNightMode)
             return@launch
 
         val result = runCatching {
-            PlayerColorScheme.autoColorScheme(context, mediaColor, mode)
+            PlayerColorScheme.autoColorScheme(context, color, mode)
         }
         if (result.isSuccess) {
             _colorScheme.value = result.getOrThrow()

@@ -25,18 +25,15 @@ import android.widget.TextView
 import androidx.core.view.updateMargins
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.google.android.material.divider.MaterialDivider
 import com.mardous.booming.R
+import com.mardous.booming.coil.albumImage
+import com.mardous.booming.coil.artistImage
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlayInfoBinding
 import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.glide.albumOptions
-import com.mardous.booming.extensions.glide.artistOptions
-import com.mardous.booming.extensions.glide.getAlbumGlideModel
-import com.mardous.booming.extensions.glide.getArtistGlideModel
 import com.mardous.booming.extensions.media.displayName
 import com.mardous.booming.extensions.media.timesStr
 import com.mardous.booming.extensions.resources.show
@@ -69,13 +66,7 @@ class PlayInfoFragment : AbsMainActivityFragment(R.layout.fragment_play_info) {
                     getOnBackPressedDispatcher().onBackPressed()
                 } else {
                     binding.itemName.text = artist.displayName()
-
-                    Glide.with(this)
-                        .asBitmap()
-                        .load(artist.getArtistGlideModel())
-                        .artistOptions(artist)
-                        .into(binding.albumCover)
-
+                    binding.albumCover.artistImage(artist)
                     loadInfo(artist.songs)
                 }
             }
@@ -85,13 +76,7 @@ class PlayInfoFragment : AbsMainActivityFragment(R.layout.fragment_play_info) {
                     getOnBackPressedDispatcher().onBackPressed()
                 } else {
                     binding.itemName.text = album.name
-
-                    Glide.with(this)
-                        .asBitmap()
-                        .load(album.getAlbumGlideModel())
-                        .albumOptions(album)
-                        .into(binding.albumCover)
-
+                    binding.albumCover.albumImage(album)
                     loadInfo(album.songs)
                 }
             }

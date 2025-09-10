@@ -28,10 +28,10 @@ compose = "2025.08.01"
 koin = "4.1.1"
 coil = "3.3.0"
 ktor = "3.2.3"
-glide = "4.16.0"
 
 markwon = "4.6.2"
 m3color = "2025.4"
+coilTransformations = "3.0.0"
 balloon = "1.6.13"
 composeMarkdown = "0.5.7"
 aboutlibraries = "13.0.0-b01"
@@ -100,16 +100,12 @@ ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-conte
 ktor-client-encoding = { group = "io.ktor", name = "ktor-client-encoding", version.ref = "ktor" }
 ktor-serialization-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
-glide-ksp = { module = "com.github.bumptech.glide:ksp", version.ref = "glide" }
-glide-okhttp3 = { module = "com.github.bumptech.glide:okhttp3-integration", version.ref = "glide" }
-
 markwon-core = { module = "io.noties.markwon:core", version.ref = "markwon" }
 markwon-html = { module = "io.noties.markwon:html", version.ref = "markwon" }
-markwon-glide = { module = "io.noties.markwon:image-glide", version.ref = "markwon" }
 markwon-linkify = { module = "io.noties.markwon:linkify", version.ref = "markwon" }
 
 m3color = { module = "com.github.Kyant0:m3color", version.ref = "m3color" }
+coil-transformations = { module = "com.github.Commit451.coil-transformations:transformations", version.ref = "coilTransformations" }
 
 balloon = { module = "com.github.skydoves:balloon", version.ref = "balloon" }
 compose-markdown = { module = "com.github.jeziellago:compose-markdown", version.ref = "composeMarkdown" }
@@ -134,7 +130,7 @@ navigation = ["navigation-common", "navigation-runtime", "navigation-fragment", 
 koin = ["koin-core", "koin-android", "koin-compose"]
 coil = ["coil", "coil-compose", "coil-network"]
 ktor = ["ktor-client-core", "ktor-client-okhttp", "ktor-serialization-json", "ktor-client-content-negotiation", "ktor-client-encoding"]
-markwon = ["markwon-core", "markwon-glide", "markwon-html", "markwon-linkify"]
+markwon = ["markwon-core", "markwon-html", "markwon-linkify"]
 
 [plugins]
 android = { id = "com.android.application", version.ref = "agp" }

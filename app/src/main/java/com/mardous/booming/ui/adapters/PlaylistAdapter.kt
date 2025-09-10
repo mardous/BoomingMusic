@@ -21,15 +21,12 @@ import android.view.*
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
-import com.bumptech.glide.Glide
 import com.mardous.booming.R
+import com.mardous.booming.coil.playlistImage
 import com.mardous.booming.data.local.room.PlaylistWithSongs
-import com.mardous.booming.extensions.glide.getDefaultGlideTransition
-import com.mardous.booming.extensions.glide.playlistOptions
 import com.mardous.booming.extensions.isValidPosition
 import com.mardous.booming.extensions.media.isFavorites
 import com.mardous.booming.extensions.media.songsStr
-import com.mardous.booming.glide.playlistPreview.PlaylistPreview
 import com.mardous.booming.ui.IPlaylistCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
@@ -81,14 +78,7 @@ class PlaylistAdapter(
         } else {
             holder.image?.transitionName = playlist.playlistEntity.playlistName
         }
-        if (holder.image != null) {
-            Glide.with(holder.image)
-                .asBitmap()
-                .load(PlaylistPreview(playlist))
-                .playlistOptions()
-                .transition(getDefaultGlideTransition())
-                .into(holder.image)
-        }
+        holder.image?.playlistImage(playlist)
     }
 
     override fun getItemId(position: Int): Long {

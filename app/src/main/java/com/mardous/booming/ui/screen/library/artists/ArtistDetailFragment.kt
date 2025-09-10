@@ -34,10 +34,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import coil3.request.crossfade
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import com.mardous.booming.R
+import com.mardous.booming.coil.artistImage
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.mapper.searchFilter
 import com.mardous.booming.data.model.Album
@@ -46,8 +47,6 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lastfm.model.LastFmArtist
 import com.mardous.booming.databinding.FragmentArtistDetailBinding
 import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.glide.artistOptions
-import com.mardous.booming.extensions.glide.getArtistGlideModel
 import com.mardous.booming.extensions.media.artistInfo
 import com.mardous.booming.extensions.media.displayName
 import com.mardous.booming.extensions.navigation.*
@@ -243,7 +242,8 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
             return
         }
 
-        loadArtistImage(artist)
+        binding.image.artistImage(artist) { crossfade(false) }
+
         if (requireContext().isAllowedToDownloadMetadata()) {
             loadBiography(artist.name)
         }
@@ -296,14 +296,6 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
         if (biography == null && lang != null) {
             loadBiography(getArtist().name, null)
         }
-    }
-
-    private fun loadArtistImage(artist: Artist) {
-        Glide.with(this)
-            .asBitmap()
-            .load(artist.getArtistGlideModel())
-            .artistOptions(artist)
-            .into(binding.image)
     }
 
     private fun loadSimilarArtists(artist: Artist) {
