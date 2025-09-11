@@ -18,8 +18,8 @@
 package com.mardous.booming.extensions.media
 
 import android.content.Context
+import com.mardous.booming.data.model.Album
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.model.Album
 
 fun Album.isArtistNameUnknown() = albumArtistName().isArtistNameUnknown()
 

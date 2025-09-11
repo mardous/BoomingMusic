@@ -5,7 +5,6 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.media.MediaPlayer
 import android.provider.Settings
-import android.util.Log
 import androidx.core.animation.doOnEnd
 import com.mardous.booming.extensions.execSafe
 import com.mardous.booming.service.playback.Playback
@@ -36,12 +35,10 @@ class AudioFader {
                     val inLeftVol = (progress * balance[0]).coerceIn(0f, 1f)
                     val inRightVol = (progress * balance[1]).coerceIn(0f, 1f)
                     fadeInMp.execSafe { setVolume(inLeftVol, inRightVol) }
-                    Log.d("AudioFader", "Volume-In: left=$inLeftVol, right=$inRightVol")
 
                     val outLeftVol = ((1f - progress) * balance[0]).coerceIn(0f, 1f)
                     val outRightVol = ((1f - progress) * balance[1]).coerceIn(0f, 1f)
                     fadeOutMp.execSafe { setVolume(outLeftVol, outRightVol) }
-                    Log.d("AudioFader", "Volume-Out: left=$outLeftVol, right=$outRightVol")
                 }
                 doOnEnd {
                     endAction(it)
@@ -57,15 +54,14 @@ class AudioFader {
             fadeIn: Boolean, /* fadeIn -> true  fadeOut -> false*/
             callback: Runnable? = null, /* Code to run when Animator Ends*/
         ) {
-            val duration = fadeDuration * 1000
-            if (duration == 0) {
+            if (fadeDuration == 0) {
                 callback?.run()
                 return
             }
             val startValue = if (fadeIn) 0.0f else 1.0f
             val endValue = if (fadeIn) 1.0f else 0.0f
             val animator = ValueAnimator.ofFloat(startValue, endValue)
-            animator.duration = duration.toLong()
+            animator.duration = fadeDuration.toLong()
             animator.addUpdateListener { animation: ValueAnimator ->
                 val progress = animation.animatedValue as Float
                 playback.setVolume(progress * balanceLeft, progress * balanceRight)

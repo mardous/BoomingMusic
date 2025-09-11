@@ -1,7 +1,5 @@
 package com.mardous.booming.ui.theme
 
-import android.app.UiModeManager
-import android.content.Context
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
@@ -10,8 +8,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import com.mardous.booming.fragments.player.PlayerColorScheme
-import com.mardous.booming.ui.components.color.primaryTextColor
+import com.mardous.booming.ui.screen.player.PlayerColorScheme
 import com.mardous.booming.util.Preferences
 
 private val lightScheme = lightColorScheme(
@@ -141,17 +138,7 @@ fun DynamicColorTheme(
     paletteStyle: PaletteStyle = PaletteStyle.TonalSpot,
     content: @Composable () -> Unit
 ) {
-    val context = LocalContext.current
-    val uiManager = remember(context) {
-        context.getSystemService(Context.UI_MODE_SERVICE) as? UiModeManager
-    }
-
-    val systemContrast = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-        uiManager?.contrast?.toDouble() ?: 0.0
-    } else {
-        0.0
-    }
-
+    val systemContrast = getSystemContrast()
     val colorScheme = remember(keyColor, isDark, paletteStyle, systemContrast) {
         dynamicColorScheme(
             keyColor = keyColor,
@@ -179,11 +166,11 @@ fun PlayerTheme(
             base
         } else {
             base.copy(
-                surface = playerColorScheme.composeColor { surfaceColor },
-                primary = playerColorScheme.composeColor { emphasisColor },
-                onPrimary = playerColorScheme.composeColor { emphasisColor }.primaryTextColor(),
-                onSurface = playerColorScheme.composeColor { primaryTextColor },
-                onSurfaceVariant = playerColorScheme.composeColor { secondaryTextColor }
+                surface = playerColorScheme.surface,
+                primary = playerColorScheme.primary,
+                onPrimary = playerColorScheme.onPrimary,
+                onSurface = playerColorScheme.onSurface,
+                onSurfaceVariant = playerColorScheme.onSurfaceVariant
             )
         }
     }

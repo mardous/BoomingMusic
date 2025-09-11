@@ -6,7 +6,7 @@
     app:startDestination="@id/nav_home_preferences">
     <fragment
         android:id="@+id/nav_home_preferences"
-        android:name="com.mardous.booming.fragments.settings.PreferencesScreenFragment"
+        android:name="com.mardous.booming.ui.screen.settings.PreferencesScreenFragment"
         android:label="@string/settings_title">
         <action
             android:id="@+id/action_to_appearancePreferences"
@@ -22,6 +22,13 @@
             app:popEnterAnim="@anim/booming_fragment_close_enter"
             app:popExitAnim="@anim/booming_fragment_close_exit"
             app:destination="@+id/nav_now_playing_preferences"/>
+        <action
+            android:id="@+id/action_to_lyricsPreferences"
+            app:enterAnim="@anim/booming_fragment_open_enter"
+            app:exitAnim="@anim/booming_fragment_open_exit"
+            app:popEnterAnim="@anim/booming_fragment_close_enter"
+            app:popExitAnim="@anim/booming_fragment_close_exit"
+            app:destination="@+id/nav_lyrics_preferences"/>
         <action
             android:id="@+id/action_to_playbackPreferences"
             app:enterAnim="@anim/booming_fragment_open_enter"
@@ -44,13 +51,6 @@
             app:popExitAnim="@anim/booming_fragment_close_exit"
             app:destination="@+id/nav_library_preferences"/>
         <action
-            android:id="@+id/action_to_notificationPreferences"
-            app:enterAnim="@anim/booming_fragment_open_enter"
-            app:exitAnim="@anim/booming_fragment_open_exit"
-            app:popEnterAnim="@anim/booming_fragment_close_enter"
-            app:popExitAnim="@anim/booming_fragment_close_exit"
-            app:destination="@+id/nav_notification_preferences"/>
-        <action
             android:id="@+id/action_to_updatePreferences"
             app:enterAnim="@anim/booming_fragment_open_enter"
             app:exitAnim="@anim/booming_fragment_open_exit"
@@ -67,34 +67,34 @@
     </fragment>
     <fragment
         android:id="@+id/nav_interface_preferences"
-        android:name="com.mardous.booming.fragments.settings.AppearancePreferencesFragment"
+        android:name="com.mardous.booming.ui.screen.settings.AppearancePreferencesFragment"
         android:label="@string/appearance_title"/>
     <fragment
         android:id="@+id/nav_now_playing_preferences"
-        android:name="com.mardous.booming.fragments.settings.NowPlayingPreferencesFragment"
+        android:name="com.mardous.booming.ui.screen.settings.NowPlayingPreferencesFragment"
         android:label="@string/now_playing_title"/>
     <fragment
+        android:id="@+id/nav_lyrics_preferences"
+        android:name="com.mardous.booming.ui.screen.settings.LyricsPreferencesFragment"
+        android:label="@string/lyrics_preferences_title"/>
+    <fragment
         android:id="@+id/nav_playback_preferences"
-        android:name="com.mardous.booming.fragments.settings.PlaybackPreferencesFragment"
+        android:name="com.mardous.booming.ui.screen.settings.PlaybackPreferencesFragment"
         android:label="@string/playback_title"/>
     <fragment
         android:id="@+id/nav_metadata_preferences"
-        android:name="com.mardous.booming.fragments.settings.MetadataPreferencesFragment"
+        android:name="com.mardous.booming.ui.screen.settings.MetadataPreferencesFragment"
         android:label="@string/metadata_title"/>
     <fragment
         android:id="@+id/nav_library_preferences"
-        android:name="com.mardous.booming.fragments.settings.LibraryPreferencesFragment"
+        android:name="com.mardous.booming.ui.screen.settings.LibraryPreferencesFragment"
         android:label="@string/library_title"/>
     <fragment
-        android:id="@+id/nav_notification_preferences"
-        android:name="com.mardous.booming.fragments.settings.NotificationPreferencesFragment"
-        android:label="@string/notification_title"/>
-    <fragment
         android:id="@+id/nav_update_preferences"
-        android:name="com.mardous.booming.fragments.settings.UpdatePreferencesFragment"
+        android:name="com.mardous.booming.ui.screen.settings.UpdatePreferencesFragment"
         android:label="@string/update_title"/>
     <fragment
         android:id="@+id/nav_advanced_preferences"
-        android:name="com.mardous.booming.fragments.settings.AdvancedPreferencesFragment"
+        android:name="com.mardous.booming.ui.screen.settings.AdvancedPreferencesFragment"
         android:label="@string/advanced_title"/>
 </navigation>

@@ -31,12 +31,13 @@
         android:layout_weight="1"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="start|center_vertical"
         android:maxLines="1"
         android:ellipsize="end"
+        android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceSubtitle1"
         android:textColor="?android:textColorPrimary"
-        tools:text="@tools:sample/lorem/random"/>
+        tools:text="@tools:sample/lorem"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"

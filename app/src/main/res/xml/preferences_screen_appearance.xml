@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.preference.PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.mardous.booming.preferences.ThemePreference
+    <com.mardous.booming.ui.component.preferences.ThemePreference
         app:icon="@drawable/ic_contrast_24dp"
         app:title="@string/general_theme_title"
         app:persistent="false"
-        app:layout="@layout/list_item_view_custom_widget"
-        app:widgetLayout="@layout/preference_widget_general_theme"
+        app:layout="@layout/list_item_view_bottom_widget"
+        app:widgetLayout="@layout/preference_general_theme"
         app:key="general_theme"/>
 
     <SwitchPreferenceCompat
         app:iconSpaceReserved="true"
         app:title="@string/material_you_title"
         app:defaultValue="@bool/md3_supported"
-        app:layout="@layout/list_item_view_switch_no_title"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
         app:key="material_you"/>
 
     <SwitchPreferenceCompat
         app:iconSpaceReserved="true"
         app:title="@string/pure_black_theme_title"
         app:defaultValue="false"
-        app:layout="@layout/list_item_view_switch_no_title"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
         app:key="black_theme"/>
 
     <SwitchPreferenceCompat
         app:icon="@drawable/ic_text_fields_24dp"
         app:title="@string/use_custom_font_title"
         app:defaultValue="true"
-        app:layout="@layout/list_item_view_switch_no_title"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
         app:key="use_custom_font"/>
 
     <ListPreference
@@ -45,7 +47,7 @@
         app:title="@string/library_header"
         app:layout="@layout/preference_category_title">
 
-        <com.mardous.booming.preferences.dialog.CategoriesPreference
+        <com.mardous.booming.ui.component.preferences.dialog.CategoriesPreference
             app:icon="@drawable/ic_tab_24dp"
             app:title="@string/library_categories_title"
             app:summary="@string/library_categories_summary"
@@ -58,7 +60,8 @@
             app:title="@string/remember_last_page_title"
             app:summary="@string/remember_last_page_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="remember_last_page"/>
 
         <ListPreference
@@ -76,8 +79,24 @@
             app:title="@string/hold_tab_to_search_title"
             app:summary="@string/hold_tab_to_search_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="hold_tab_to_search"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/display_header"
+        app:layout="@layout/preference_category_title">
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_image_24dp"
+            app:title="@string/larger_header_image_title"
+            app:summary="@string/larger_header_image_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="larger_header_image"/>
 
     </PreferenceCategory>
 
@@ -91,7 +110,8 @@
             app:title="@string/album_art_on_lockscreen_title"
             app:summary="@string/album_art_on_lockscreen_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="album_art_on_lock_screen"/>
 
         <SwitchPreferenceCompat
@@ -100,7 +120,8 @@
             app:summary="@string/blurred_album_art_summary"
             app:defaultValue="false"
             app:dependency="album_art_on_lock_screen"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="blurred_album_art"/>
 
     </PreferenceCategory>

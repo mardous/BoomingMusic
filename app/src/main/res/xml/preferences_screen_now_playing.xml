@@ -3,17 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.mardous.booming.preferences.dialog.NowPlayingScreenPreference
+    <com.mardous.booming.ui.component.preferences.dialog.NowPlayingScreenPreference
         app:icon="@drawable/ic_play_circle_24dp"
         app:title="@string/now_playing_screen_title"
-        app:layout="@layout/list_item_view_no_title"
+        app:layout="@layout/list_item_view"
         app:key="now_playing_screen" />
 
     <SwitchPreferenceCompat
         app:title="@string/swipe_to_dismiss_title"
         app:summary="@string/swipe_to_dismiss_summary"
         app:defaultValue="true"
-        app:layout="@layout/list_item_view_switch"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
         app:key="swipe_to_dismiss" />
 
     <SwitchPreferenceCompat
@@ -21,7 +22,8 @@
         app:title="@string/open_on_play_title"
         app:summary="@string/open_on_play_summary"
         app:defaultValue="false"
-        app:layout="@layout/list_item_view_switch"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
         app:key="open_on_play" />
 
     <PreferenceCategory
@@ -33,7 +35,8 @@
             app:title="@string/lyrics_on_album_cover_title"
             app:summary="@string/lyrics_on_album_cover_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="lyrics_on_cover" />
 
         <SwitchPreferenceCompat
@@ -41,7 +44,8 @@
             app:title="@string/swipe_album_cover_title"
             app:summary="@string/swipe_album_cover_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="left_right_swiping" />
 
         <SeekBarPreference
@@ -52,14 +56,16 @@
             app:min="0"
             app:defaultValue="@integer/now_playing_corner_radius"
             app:showSeekBarValue="true"
-            app:layout="@layout/list_item_view_seekbar"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
             app:key="now_playing_corner_radius"/>
 
         <SwitchPreferenceCompat
             app:icon="@drawable/ic_view_carousel_24dp"
             app:title="@string/carousel_effect_title"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch_no_title"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="carousel_effect" />
 
         <ListPreference
@@ -73,19 +79,19 @@
             app:layout="@layout/list_item_view"
             app:key="cover_swiping_effect" />
 
-        <com.mardous.booming.preferences.dialog.ActionOnCoverPreference
+        <com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreference
             app:iconSpaceReserved="true"
             app:title="@string/single_tap_on_album_cover_title"
             app:layout="@layout/list_item_view"
             app:key="cover_single_tap_action" />
 
-        <com.mardous.booming.preferences.dialog.ActionOnCoverPreference
+        <com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreference
             app:iconSpaceReserved="true"
             app:title="@string/double_tap_on_album_cover_title"
             app:layout="@layout/list_item_view"
             app:key="cover_double_tap_action" />
 
-        <com.mardous.booming.preferences.dialog.ActionOnCoverPreference
+        <com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreference
             app:iconSpaceReserved="true"
             app:title="@string/long_press_on_album_cover_title"
             app:layout="@layout/list_item_view"
@@ -102,7 +108,8 @@
             app:title="@string/extra_controls_title"
             app:summary="@string/extra_controls_summary"
             app:defaultValue="@bool/is_tablet"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="add_extra_controls" />
 
         <SwitchPreferenceCompat
@@ -110,13 +117,15 @@
             app:title="@string/adaptive_controls_title"
             app:summary="@string/adaptive_controls_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="adaptive_controls" />
 
         <SwitchPreferenceCompat
             app:title="@string/circle_button_title"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch_no_title"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="circle_play_button" />
 
         <SwitchPreferenceCompat
@@ -124,7 +133,8 @@
             app:title="@string/animate_controls_title"
             app:summary="@string/animate_controls_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="animate_player_control" />
 
         <SwitchPreferenceCompat
@@ -132,15 +142,17 @@
             app:title="@string/swipe_controls_title"
             app:summary="@string/swipe_controls_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="swipe_controls" />
 
         <SwitchPreferenceCompat
-            app:iconSpaceReserved="true"
+            app:icon="@drawable/ic_squiggly_seekbar_24dp"
             app:title="@string/squiggly_seek_bar_title"
             app:summary="@string/squiggly_seek_bar_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="squiggly_seek_bar" />
 
     </PreferenceCategory>
@@ -151,9 +163,19 @@
 
         <SwitchPreferenceCompat
             app:iconSpaceReserved="true"
+            app:title="@string/scrolling_text_title"
+            app:summary="@string/scrolling_text_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="enable_scrolling_text" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
             app:title="@string/display_album_name_title"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch_no_title"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="display_album_title" />
 
         <SwitchPreferenceCompat
@@ -161,10 +183,11 @@
             app:title="@string/display_extra_info_title"
             app:summary="@string/display_extra_info_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="display_extra_info" />
 
-        <com.mardous.booming.preferences.dialog.NowPlayingExtraInfoPreference
+        <com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPreference
             app:iconSpaceReserved="true"
             app:title="@string/select_extra_info_title"
             app:summary="@string/select_extra_info_summary"
@@ -178,7 +201,8 @@
             app:title="@string/display_next_song_title"
             app:summary="@string/display_next_song_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="display_next_song" />
 
         <SwitchPreferenceCompat
@@ -186,7 +210,8 @@
             app:title="@string/prefer_remaining_time_title"
             app:summary="@string/prefer_remaining_time_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="prefer_remaining_time" />
 
         <SwitchPreferenceCompat
@@ -194,7 +219,8 @@
             app:title="@string/prefer_album_artist_name_title"
             app:summary="@string/prefer_album_artist_name_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="prefer_album_artist_name_on_np" />
 
     </PreferenceCategory>

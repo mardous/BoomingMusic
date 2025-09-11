@@ -27,10 +27,12 @@ import android.util.Log
 import androidx.annotation.FloatRange
 import androidx.annotation.RequiresApi
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.execSafe
 import com.mardous.booming.extensions.showToast
-import com.mardous.booming.model.Song
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.withContext
 
 open class MultiPlayer(context: Context) : LocalPlayback(context) {
 
@@ -39,14 +41,20 @@ open class MultiPlayer(context: Context) : LocalPlayback(context) {
 
     private var mIsInitialized = false
 
-    override fun setDataSource(song: Song, force: Boolean, completion: (success: Boolean) -> Unit) {
+    override suspend fun setDataSource(
+        song: Song,
+        force: Boolean,
+        completion: (success: Boolean) -> Unit
+    ) {
         mIsInitialized = false
         setDataSourceImpl(mCurrentMediaPlayer, song.mediaStoreUri.toString()) { success ->
             mIsInitialized = success
             if (mIsInitialized) {
                 setNextDataSource(null)
             }
-            completion(mIsInitialized)
+            withContext(Main) {
+                completion(mIsInitialized)
+            }
         }
     }
 
@@ -56,7 +64,7 @@ open class MultiPlayer(context: Context) : LocalPlayback(context) {
      * @param song The path of the file, or the http/rtsp url of the stream
      * you want to play
      */
-    override fun setNextDataSource(song: Song?) {
+    override suspend fun setNextDataSource(song: Song?) {
         try {
             mCurrentMediaPlayer.setNextMediaPlayer(null)
         } catch (e: IllegalArgumentException) {
@@ -245,8 +253,6 @@ open class MultiPlayer(context: Context) : LocalPlayback(context) {
     }
 
     override fun setCrossFadeDuration(duration: Int) {}
-
-    override fun setProgressState(progress: Int, duration: Int) {}
 
     /**
      * {@inheritDoc}

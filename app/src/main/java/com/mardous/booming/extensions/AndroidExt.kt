@@ -22,6 +22,7 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.ResolveInfoFlags
 import android.media.MediaPlayer
 import android.os.Build
+import android.util.Log
 import androidx.core.text.HtmlCompat
 import com.mardous.booming.appContext
 
@@ -53,10 +54,8 @@ fun CharSequence.toHtml() = HtmlCompat.fromHtml(this.toString(), HtmlCompat.FROM
 fun <R> MediaPlayer.execSafe(command: MediaPlayer.() -> R): R? {
     try {
         return command()
-    } catch (e: IllegalStateException) {
-        e.printStackTrace()
-    } catch (e: IllegalArgumentException) {
-        e.printStackTrace()
+    } catch (t: Throwable) {
+        Log.e("MediaPlayer", "Failed to execute a command", t)
     }
     return null
 }

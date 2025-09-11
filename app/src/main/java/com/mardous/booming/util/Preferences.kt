@@ -27,18 +27,23 @@ import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationBarView.LabelVisibility
 import com.mardous.booming.R
 import com.mardous.booming.appContext
+import com.mardous.booming.core.model.CategoryInfo
+import com.mardous.booming.core.model.Cutoff
+import com.mardous.booming.core.model.action.FolderAction
+import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.core.model.action.QueueQuickAction
+import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.core.model.shuffle.GroupShuffleMode
+import com.mardous.booming.core.model.theme.AppTheme
+import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.intRes
 import com.mardous.booming.extensions.utilities.*
-import com.mardous.booming.fragments.player.PlayerColorSchemeMode
-import com.mardous.booming.model.*
-import com.mardous.booming.model.theme.AppTheme
-import com.mardous.booming.model.theme.NowPlayingScreen
-import com.mardous.booming.service.queue.GroupShuffleMode
-import com.mardous.booming.transform.*
-import com.mardous.booming.views.TopAppBarLayout
+import com.mardous.booming.ui.component.transform.*
+import com.mardous.booming.ui.component.views.TopAppBarLayout
+import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.File
@@ -77,7 +82,7 @@ object Preferences : KoinComponent {
         else -> AppTheme.Mode.FollowSystem
     }
 
-    fun getDayNightMode(themeName: String = Preferences.generalTheme) = when (themeName) {
+    fun getDayNightMode(themeName: String = generalTheme) = when (themeName) {
         GeneralTheme.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
         GeneralTheme.DARK,
         GeneralTheme.BLACK -> AppCompatDelegate.MODE_NIGHT_YES
@@ -134,6 +139,13 @@ object Preferences : KoinComponent {
     val holdTabToSearch: Boolean
         get() = preferences.getBoolean(HOLD_TAB_TO_SEARCH, true)
 
+    var lockedPlaylists: Boolean
+        get() = preferences.getBoolean(LOCKED_PLAYLISTS, false)
+        set(value) = preferences.edit { putBoolean(LOCKED_PLAYLISTS, value) }
+
+    val largerHeaderImage: Boolean
+        get() = preferences.getBoolean(LARGER_HEADER_IMAGE, false)
+
     var horizontalArtistAlbums: Boolean
         get() = preferences.getBoolean(HORIZONTAL_ARTIST_ALBUMS, true)
         set(value) = preferences.edit { putBoolean(HORIZONTAL_ARTIST_ALBUMS, value) }
@@ -175,6 +187,10 @@ object Preferences : KoinComponent {
 
     val allowCoverSwiping: Boolean
         get() = preferences.getBoolean(LEFT_RIGHT_SWIPING, true)
+
+    var isQueueLocked: Boolean
+        get() = preferences.getBoolean(LOCKED_QUEUE, false)
+        set(value) = preferences.edit { putBoolean(LOCKED_QUEUE, value) }
 
     fun getNowPlayingColorSchemeKey(nps: NowPlayingScreen) =
         "player_${nps.name.lowercase()}_color_scheme"
@@ -231,6 +247,9 @@ object Preferences : KoinComponent {
     val circularPlayButton: Boolean
         get() = preferences.getBoolean(CIRCLE_PLAY_BUTTON, false)
 
+    val enableScrollingText: Boolean
+        get() = preferences.getBoolean(ENABLE_SCROLLING_TEXT, false)
+
     val displayAlbumTitle
         get() = preferences.getBoolean(DISPLAY_ALBUM_TITLE, true)
 
@@ -243,7 +262,10 @@ object Preferences : KoinComponent {
 
     fun getDefaultNowPlayingInfo(): List<NowPlayingInfo> =
         NowPlayingInfo.Info.entries.map { tag ->
-            NowPlayingInfo(tag, tag == NowPlayingInfo.Info.Format || tag == NowPlayingInfo.Info.Bitrate || tag == NowPlayingInfo.Info.SampleRate)
+            NowPlayingInfo(
+                tag,
+                tag == NowPlayingInfo.Info.Format || tag == NowPlayingInfo.Info.Bitrate || tag == NowPlayingInfo.Info.SampleRate
+            )
         }
 
     var preferRemainingTime: Boolean
@@ -257,14 +279,8 @@ object Preferences : KoinComponent {
     val gaplessPlayback: Boolean
         get() = preferences.getBoolean(GAPLESS_PLAYBACK, false)
 
-    val crossFadeDuration: Int
-        get() = preferences.getInt(CROSSFADE_DURATION, 0)
-
     val noCrossFadeOnAlbums: Boolean
         get() = preferences.getBoolean(NO_CROSSFADE_ON_ALBUMS, true)
-
-    val audioFadeDuration: Int
-        get() = preferences.getInt(AUDIO_FADE_DURATION, 0)
 
     val autoPlayOnSkip: Boolean
         get() = preferences.getBoolean(AUTO_PLAY_ON_SKIP, true)
@@ -421,11 +437,8 @@ object Preferences : KoinComponent {
     val blurredAlbumArtAllowed: Boolean
         get() = preferences.getBoolean(BLURRED_ALBUM_ART, false)
 
-    val classicNotification: Boolean
-        get() = preferences.getBoolean(CLASSIC_NOTIFICATION, false)
-
-    val coloredNotification: Boolean
-        get() = preferences.getBoolean(COLORED_NOTIFICATION, false)
+    val stopWhenClosedFromRecents: Boolean
+        get() = preferences.getBoolean(STOP_WHEN_CLOSED_FROM_RECENTS, false)
 
     val notificationExtraTextLine: String
         get() = preferences.requireString(
@@ -633,6 +646,7 @@ const val REMEMBER_LAST_PAGE = "remember_last_page"
 const val TAB_TITLES_MODE = "tab_titles_mode"
 const val HOLD_TAB_TO_SEARCH = "hold_tab_to_search"
 const val LAST_PAGE = "last_page"
+const val LARGER_HEADER_IMAGE = "larger_header_image"
 const val HORIZONTAL_ARTIST_ALBUMS = "horizontal_artist_albums"
 const val COMPACT_ALBUM_SONG_VIEW = "compact_album_song_view"
 const val COMPACT_ARTIST_SONG_VIEW = "compact_artist_song_view"
@@ -653,6 +667,7 @@ const val COVER_DOUBLE_TAP_ACTION = "cover_double_tap_action"
 const val COVER_LONG_PRESS_ACTION = "cover_long_press_action"
 const val ANIMATE_PLAYER_CONTROL = "animate_player_control"
 const val CIRCLE_PLAY_BUTTON = "circle_play_button"
+const val ENABLE_SCROLLING_TEXT = "enable_scrolling_text"
 const val DISPLAY_ALBUM_TITLE = "display_album_title"
 const val DISPLAY_EXTRA_INFO = "display_extra_info"
 const val EXTRA_INFO = "now_playing_extra_info"
@@ -661,9 +676,7 @@ const val PREFER_ALBUM_ARTIST_NAME = "prefer_album_artist_name_on_np"
 const val PLAYBACK_SPEED = "playback_speed"
 const val PLAYBACK_PITCH = "playback_pitch"
 const val GAPLESS_PLAYBACK = "gapless_playback"
-const val CROSSFADE_DURATION = "crossfade_duration"
 const val NO_CROSSFADE_ON_ALBUMS = "no_crossfade_on_albums"
-const val AUDIO_FADE_DURATION = "audio_fade_duration"
 const val AUTO_PLAY_ON_SKIP = "auto_play_on_skip"
 const val REWIND_WITH_BACK = "rewind_with_back"
 const val SEEK_INTERVAL = "seek_interval"
@@ -701,8 +714,7 @@ const val BLACKLIST_ENABLED = "blacklist_enabled"
 const val ARTIST_MINIMUM_SONGS = "artist_minimum_songs"
 const val ALBUM_MINIMUM_SONGS = "album_minimum_songs"
 const val MINIMUM_SONG_DURATION = "minimum_song_duration"
-const val CLASSIC_NOTIFICATION = "classic_notification"
-const val COLORED_NOTIFICATION = "colored_notification"
+const val STOP_WHEN_CLOSED_FROM_RECENTS = "stop_when_closed_from_recents"
 const val NOTIFICATION_EXTRA_TEXT_LINE = "notification_extra_text_line"
 const val NOTIFICATION_PRIORITY = "notification_priority"
 const val ALBUM_ART_ON_LOCK_SCREEN = "album_art_on_lock_screen"
@@ -724,3 +736,5 @@ const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SWIPE_CONTROLS = "swipe_controls"
 const val DISPLAY_NEXT_SONG = "display_next_song"
+const val LOCKED_QUEUE = "locked_queue"
+const val LOCKED_PLAYLISTS = "locked_playlists"

@@ -10,17 +10,16 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.ServiceCompat
 import androidx.core.content.getSystemService
 import com.mardous.booming.R
-import com.mardous.booming.activities.MainActivity
-import com.mardous.booming.model.Song
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.service.queue.QueueManager
-import com.mardous.booming.util.Preferences
+import com.mardous.booming.ui.screen.MainActivity
 
 class PlayingNotificationManager(
     private val context: Context,
-    private val mediaSession: MediaSessionCompat,
     private val playbackManager: PlaybackManager,
-    private val queueManager: QueueManager
+    private val queueManager: QueueManager,
+    mediaSession: MediaSessionCompat
 ) {
     private var notificationManager: NotificationManager = requireNotNull(context.getSystemService())
     private var playingNotification: PlayingNotification? = null
@@ -37,26 +36,13 @@ class PlayingNotificationManager(
             }
             notificationManager.createNotificationChannel(notificationChannel)
         }
-        createNotification()
-    }
-
-    private fun createNotification() {
-        playingNotification = if (Preferences.classicNotification) {
-            PlayingNotificationClassic(context, NOTIFICATION_CHANNEL_ID)
-        } else {
-            PlayingNotificationImpl24(context, NOTIFICATION_CHANNEL_ID, mediaSession.sessionToken)
-        }
+        playingNotification = PlayingNotification(context, mediaSession.sessionToken, NOTIFICATION_CHANNEL_ID)
     }
 
     private fun createContentPendingIntent(): PendingIntent {
         val intent = Intent(context, MainActivity::class.java)
             .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
         return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
-    }
-
-    fun recreateNotification(service: Service) {
-        service.stopForeground(Service.STOP_FOREGROUND_REMOVE)
-        createNotification()
     }
 
     fun displayPlayingNotification(

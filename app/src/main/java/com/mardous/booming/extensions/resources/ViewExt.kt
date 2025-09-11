@@ -23,6 +23,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.text.TextUtils
 import android.util.TypedValue
 import android.view.*
 import android.view.animation.AccelerateInterpolator
@@ -33,13 +34,11 @@ import android.widget.*
 import androidx.annotation.MenuRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.animation.doOnEnd
+import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
-import androidx.core.view.drawToBitmap
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
-import androidx.core.view.updatePaddingRelative
+import androidx.core.view.*
 import androidx.core.widget.ImageViewCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -58,6 +57,7 @@ import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.resolveColor
+import com.mardous.booming.util.Preferences
 import com.skydoves.balloon.*
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
@@ -263,6 +263,14 @@ fun View.animateTintColor(
     }
 }
 
+fun ImageView.removeHorizontalMarginIfRequired() {
+    if (Preferences.largerHeaderImage) {
+        doOnLayout {
+            updateLayoutParams<ViewGroup.MarginLayoutParams> { marginStart = 0; marginEnd = 0; }
+        }
+    }
+}
+
 fun EditText.requestInputMethod() {
     requestFocus()
     post {
@@ -271,6 +279,20 @@ fun EditText.requestInputMethod() {
             imm?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
         }
     }
+}
+
+fun TextView.setMarquee(marquee: Boolean) {
+    isFocusable = marquee
+    isFocusableInTouchMode = marquee
+    setHorizontallyScrolling(marquee)
+    if (marquee) {
+        ellipsize = TextUtils.TruncateAt.MARQUEE
+        marqueeRepeatLimit = -1
+        isHorizontalFadingEdgeEnabled = true
+    } else {
+        ellipsize = TextUtils.TruncateAt.END
+    }
+    isSelected = marquee
 }
 
 fun TextView.setMarkdownText(str: String) {
@@ -367,8 +389,16 @@ fun RecyclerView.onVerticalScroll(
 }
 
 fun ViewGroup.createFastScroller(disablePopup: Boolean = false): FastScroller {
+    val thumbDrawable = ContextCompat.getDrawable(context, R.drawable.scroller_thumb)
+    val trackDrawable = ContextCompat.getDrawable(context, R.drawable.scroller_track)
     val fastScrollerBuilder = FastScrollerBuilder(this)
     fastScrollerBuilder.useMd2Style()
+    if (thumbDrawable != null) {
+        fastScrollerBuilder.setThumbDrawable(thumbDrawable)
+    }
+    if (trackDrawable != null) {
+        fastScrollerBuilder.setTrackDrawable(trackDrawable)
+    }
     if (disablePopup) {
         fastScrollerBuilder.setPopupTextProvider { _, _ -> "" }
     }

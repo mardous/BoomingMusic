@@ -25,8 +25,8 @@ import android.util.Log
 import androidx.core.content.getSystemService
 import com.mardous.booming.R
 import com.mardous.booming.appContext
+import com.mardous.booming.core.model.filesystem.StorageDevice
 import com.mardous.booming.extensions.hasR
-import com.mardous.booming.model.filesystem.StorageDevice
 import kotlinx.io.IOException
 import java.io.File
 import java.lang.reflect.InvocationTargetException

@@ -11,13 +11,14 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:ellipsize="end"
-        android:gravity="center"
         android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:freezesText="true"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:singleLine="true"
         android:textAppearance="?textAppearanceHeadline6"
         android:textColor="?android:attr/textColorPrimary"
         android:textStyle="bold"
@@ -30,11 +31,12 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:gravity="center"
         android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:freezesText="true"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:textAppearance="?textAppearanceBody1"
@@ -44,23 +46,32 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         tools:text="@tools:sample/lorem" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/songInfo"
+    <!-- FrameLayout prevents marquee from jittering due to ConstraintLayout re-layouts -->
+    <FrameLayout
+        android:id="@+id/songInfoContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:maxLines="2"
-        android:layout_marginTop="16dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:textColor="?android:attr/textColorSecondary"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constrainedWidth="true"
         app:layout_constraintTop_toBottomOf="@+id/text"
-        tools:text="@tools:sample/lorem/random" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/songInfo"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="16dp"
+            android:gravity="center"
+            android:freezesText="true"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceBody2"
+            android:textSize="12sp"
+            tools:text="@tools:sample/lorem" />
+
+    </FrameLayout>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/songCurrentProgress"
@@ -76,14 +87,14 @@
         app:layout_constraintTop_toTopOf="@id/progressSlider"
         tools:text="@tools:sample/date/hhmmss" />
 
-    <com.mardous.booming.views.MusicSlider
+    <com.mardous.booming.ui.component.views.MusicSlider
         android:id="@+id/progressSlider"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toStartOf="@id/songTotalTime"
         app:layout_constraintStart_toEndOf="@id/songCurrentProgress"
-        app:layout_constraintTop_toBottomOf="@id/songInfo"
+        app:layout_constraintTop_toBottomOf="@id/songInfoContainer"
         tools:progress="50" />
 
     <com.google.android.material.textview.MaterialTextView

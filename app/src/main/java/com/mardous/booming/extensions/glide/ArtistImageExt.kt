@@ -30,10 +30,10 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.bumptech.glide.signature.ObjectKey
 import com.mardous.booming.appContext
+import com.mardous.booming.data.model.Artist
 import com.mardous.booming.extensions.resources.getResized
 import com.mardous.booming.extensions.resources.toJPG
 import com.mardous.booming.extensions.showToast
-import com.mardous.booming.model.Artist
 import com.mardous.booming.util.FileUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope

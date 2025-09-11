@@ -35,7 +35,7 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.mardous.booming.BuildConfig;
 import com.mardous.booming.extensions.resources.DrawableExtKt;
-import com.mardous.booming.helper.StackBlur;
+import com.mardous.booming.util.StackBlur;
 
 import java.security.MessageDigest;
 

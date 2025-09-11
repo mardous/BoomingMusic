@@ -24,7 +24,7 @@ import com.bumptech.glide.load.model.ModelLoader.LoadData
 import com.bumptech.glide.load.model.ModelLoaderFactory
 import com.bumptech.glide.load.model.MultiModelLoaderFactory
 import com.bumptech.glide.signature.ObjectKey
-import com.mardous.booming.http.deezer.DeezerService
+import com.mardous.booming.data.remote.deezer.DeezerService
 import io.ktor.client.HttpClient
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject

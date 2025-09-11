@@ -18,38 +18,18 @@
         app:title="@string/gapless_playback_title"
         app:summary="@string/gapless_playback_summary"
         app:defaultValue="false"
-        app:layout="@layout/list_item_view_switch"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
         app:key="gapless_playback"/>
-
-    <SeekBarPreference
-        app:iconSpaceReserved="true"
-        app:title="@string/crossfade_title"
-        app:summary="@string/crossfade_summary"
-        android:max="10"
-        app:min="0"
-        app:defaultValue="0"
-        app:showSeekBarValue="true"
-        app:layout="@layout/list_item_view_seekbar"
-        app:key="crossfade_duration"/>
 
     <SwitchPreferenceCompat
         app:iconSpaceReserved="true"
         app:title="@string/no_crossfade_on_albums_title"
         app:summary="@string/no_crossfade_on_albums_summary"
         app:defaultValue="true"
-        app:layout="@layout/list_item_view_switch"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
         app:key="no_crossfade_on_albums"/>
-
-    <SeekBarPreference
-        app:iconSpaceReserved="true"
-        app:title="@string/audio_fade_duration_title"
-        app:summary="@string/audio_fade_duration_summary"
-        android:max="5"
-        app:min="0"
-        app:defaultValue="0"
-        app:showSeekBarValue="true"
-        app:layout="@layout/list_item_view_seekbar"
-        app:key="audio_fade_duration"/>
 
     <PreferenceCategory
         app:title="@string/playing_queue_label"
@@ -69,7 +49,8 @@
             app:title="@string/search_auto_queue_title"
             app:summary="@string/search_auto_queue_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="search_auto_queue"/>
 
     </PreferenceCategory>
@@ -83,7 +64,8 @@
             app:title="@string/remember_shuffle_mode_title"
             app:summary="@string/remember_shuffle_mode_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="remember_shuffle_mode"/>
 
         <ListPreference
@@ -117,7 +99,8 @@
             app:title="@string/auto_play_on_skip_title"
             app:summary="@string/auto_play_on_skip_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="auto_play_on_skip"/>
 
         <SwitchPreferenceCompat
@@ -125,7 +108,8 @@
             app:title="@string/rewind_with_back_title"
             app:summary="@string/rewind_with_back_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="rewind_with_back"/>
 
         <SeekBarPreference
@@ -136,7 +120,8 @@
             app:min="5"
             app:defaultValue="10"
             app:showSeekBarValue="true"
-            app:layout="@layout/list_item_view_seekbar"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
             app:key="seek_interval"/>
 
     </PreferenceCategory>
@@ -150,7 +135,8 @@
             app:title="@string/resume_on_connect_title"
             app:summary="@string/resume_on_connect_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="resume_on_connect"/>
 
         <SwitchPreferenceCompat
@@ -158,7 +144,8 @@
             app:title="@string/pause_on_disconnect_title"
             app:summary="@string/pause_on_disconnect_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="pause_on_disconnect"/>
 
     </PreferenceCategory>
@@ -172,7 +159,8 @@
             app:title="@string/resume_on_bluetooth_connect_title"
             app:summary="@string/resume_on_bluetooth_connect_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="resume_on_bluetooth_connect"/>
 
         <SwitchPreferenceCompat
@@ -180,7 +168,8 @@
             app:title="@string/pause_on_bluetooth_disconnect_title"
             app:summary="@string/pause_on_bluetooth_disconnect_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="pause_on_bluetooth_disconnect"/>
 
     </PreferenceCategory>
@@ -194,7 +183,8 @@
             app:title="@string/ignore_audio_focus_title"
             app:summary="@string/ignore_audio_focus_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="ignore_audio_focus"/>
 
         <SwitchPreferenceCompat
@@ -202,7 +192,8 @@
             app:title="@string/pause_on_transient_focus_loss_title"
             app:summary="@string/pause_on_transient_focus_loss_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="pause_on_transient_focus_loss"/>
 
     </PreferenceCategory>
@@ -221,7 +212,7 @@
             app:layout="@layout/list_item_view"
             app:key="replaygain_source_mode"/>
 
-        <com.mardous.booming.preferences.dialog.PreAmpPreference
+        <com.mardous.booming.ui.component.preferences.dialog.PreAmpPreference
             app:iconSpaceReserved="true"
             app:title="@string/replaygain_preamp_title"
             app:summary="@string/replaygain_preamp_summary"

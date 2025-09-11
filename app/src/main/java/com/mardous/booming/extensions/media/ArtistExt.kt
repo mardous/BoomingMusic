@@ -20,9 +20,9 @@ package com.mardous.booming.extensions.media
 import android.content.Context
 import com.mardous.booming.R
 import com.mardous.booming.appContext
+import com.mardous.booming.data.model.Artist
 import com.mardous.booming.extensions.plurals
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.model.Artist
 import java.util.regex.Pattern
 
 fun String.displayArtistName(): String =

@@ -1,92 +1,98 @@
 [versions]
-androidPluginVersion = "8.11.1"
-kspPluginVersion = "2.2.0-2.0.2"
-kotlinVersion = "2.2.0"
-kotlinCoroutinesVersion = "1.10.2"
-aboutlibraries = "13.0.0-a01"
+agp = "8.11.1"
+ksp = "2.2.0-2.0.2"
+kotlin = "2.2.0"
+
 kotlinDatetime = "0.7.1"
-constraintlayout = "2.2.1"
-composeBom = "2025.07.00"
-activityCompose = "1.10.1"
-coilCompose = "2.7.0"
-composeMarkdown = "0.5.7"
-cardview = "1.0.0"
-appcompat = "1.7.1"
-viewpager = "1.1.0"
-coreSplashscreen = "1.0.1"
-coreVersion = "1.16.0"
-fragmentKtx = "1.8.8"
-lifecycleVersion = "2.9.2"
+kotlinCoroutines = "1.10.2"
 material = "1.12.0"
-media = "1.7.0"
-navigationVersion = "2.9.2"
-paletteKtx = "1.0.0"
-preferenceKtx = "1.2.1"
-recyclerview = "1.4.0"
-roomVersion = "2.7.2"
-koinVersion = "4.1.0"
+core = "1.17.0"
+coreSplashscreen = "1.0.1"
+appcompat = "1.7.1"
+fragment = "1.8.9"
+activityCompose = "1.10.1"
+media = "1.7.1"
+mediarouter = "1.8.1"
+palette = "1.0.0"
+preference = "1.2.1"
+constraintlayout = "2.2.1"
 swiperefreshlayout = "1.1.0"
+recyclerview = "1.4.0"
+cardview = "1.0.0"
+viewpager = "1.1.0"
+lifecycle = "2.9.3"
+room = "2.7.2"
+navigation = "2.9.3"
+compose = "2025.08.01"
+
+koin = "4.1.1"
+coil = "3.3.0"
+ktor = "3.2.3"
+glide = "4.16.0"
+
+markwon = "4.6.2"
+m3color = "2025.4"
+balloon = "1.6.13"
+composeMarkdown = "0.5.7"
+aboutlibraries = "13.0.0-b01"
 fadingedgelayout = "1.0.0"
 advrecyclerview = "1.0.0"
 fastscroll = "1.3.0"
-glideVersion = "4.16.0"
-jaudiotagger = "2.3.15"
 customactivityoncrash = "2.4.0"
-versioncompare = "1.5.0"
 keyboardvisibilityevent = "3.0.0-RC3"
-markdown = "4.6.2"
-ktor = "3.2.2"
-m3color = "2025.4"
 taglib = "1.0.0-alpha25"
+jaudiotagger = "2.3.15"
+versioncompare = "1.5.0"
 
 [libraries]
-androidx-palette-ktx = { module = "androidx.palette:palette-ktx", version.ref = "paletteKtx" }
-androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
+material-components = { module = "com.google.android.material:material", version.ref = "material" }
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "core" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-media = { module = "androidx.media:media", version.ref = "media" }
+androidx-mediarouter = { module = "androidx.mediarouter:mediarouter", version.ref = "mediarouter" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+androidx-palette = { module = "androidx.palette:palette-ktx", version.ref = "palette" }
+androidx-preference = { module = "androidx.preference:preference-ktx", version.ref = "preference" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
-androidx-media = { module = "androidx.media:media", version.ref = "media" }
 androidx-viewpager = { module = "androidx.viewpager:viewpager", version.ref = "viewpager" }
-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreVersion" }
-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
-material-components = { module = "com.google.android.material:material", version.ref = "material" }
 
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinDatetime" }
-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutinesVersion" }
-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutinesVersion" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
 
-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+lifecycle-common = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycle" }
+lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose" }
+
+room = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+
+navigation-common = { module = "androidx.navigation:navigation-common-ktx", version.ref = "navigation" }
+navigation-runtime = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigation" }
+navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose" }
+compose-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
-compose-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata" }
 
-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
-compose-markdown = { module = "com.github.jeziellago:compose-markdown", version.ref = "composeMarkdown" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 
-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose" }
-
-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleVersion" }
-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleVersion" }
-lifecycle-common-java8 = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycleVersion" }
-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleVersion" }
-
-navigation-common-ktx = { module = "androidx.navigation:navigation-common-ktx", version.ref = "navigationVersion" }
-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationVersion" }
-navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationVersion" }
-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationVersion" }
-
-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
-
-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
-koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinVersion" }
+coil = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-network = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
@@ -94,35 +100,47 @@ ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-conte
 ktor-client-encoding = { group = "io.ktor", name = "ktor-client-encoding", version.ref = "ktor" }
 ktor-serialization-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
-glide-ksp = { module = "com.github.bumptech.glide:ksp", version.ref = "glideVersion" }
-glide-okhttp3 = { module = "com.github.bumptech.glide:okhttp3-integration", version.ref = "glideVersion" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-ksp = { module = "com.github.bumptech.glide:ksp", version.ref = "glide" }
+glide-okhttp3 = { module = "com.github.bumptech.glide:okhttp3-integration", version.ref = "glide" }
+
+markwon-core = { module = "io.noties.markwon:core", version.ref = "markwon" }
+markwon-html = { module = "io.noties.markwon:html", version.ref = "markwon" }
+markwon-glide = { module = "io.noties.markwon:image-glide", version.ref = "markwon" }
+markwon-linkify = { module = "io.noties.markwon:linkify", version.ref = "markwon" }
+
+m3color = { module = "com.github.Kyant0:m3color", version.ref = "m3color" }
+
+balloon = { module = "com.github.skydoves:balloon", version.ref = "balloon" }
+compose-markdown = { module = "com.github.jeziellago:compose-markdown", version.ref = "composeMarkdown" }
+aboutlibraries = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutlibraries" }
+
 fadingedgelayout = { module = "com.github.bosphere.android-fadingedgelayout:fadingedgelayout", version.ref = "fadingedgelayout" }
 advrecyclerview = { module = "com.h6ah4i.android.widget.advrecyclerview:advrecyclerview", version.ref = "advrecyclerview" }
 fastscroll = { module = "me.zhanghai.android.fastscroll:library", version.ref = "fastscroll" }
-jaudiotagger = { module = "com.github.Adonai:jaudiotagger", version.ref = "jaudiotagger" }
+
 customactivityoncrash = { module = "cat.ereza:customactivityoncrash", version.ref = "customactivityoncrash" }
-versioncompare = { module = "io.github.g00fy2:versioncompare", version.ref = "versioncompare" }
 keyboardvisibilityevent = { module = "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent", version.ref = "keyboardvisibilityevent" }
-balloon = { module = "com.github.skydoves:balloon", version = "1.6.12" }
-m3color = { module = "com.github.Kyant0:m3color", version.ref = "m3color" }
+
 taglib = { module = "com.github.Kyant0:taglib", version.ref = "taglib" }
+jaudiotagger = { module = "com.github.Adonai:jaudiotagger", version.ref = "jaudiotagger" }
 
-aboutlibraries = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutlibraries" }
-
-markdown-core = { module = "io.noties.markwon:core", version.ref = "markdown" }
-markdown-html = { module = "io.noties.markwon:html", version.ref = "markdown" }
-markdown-glide = { module = "io.noties.markwon:image-glide", version.ref = "markdown" }
-markdown-linkify= { module = "io.noties.markwon:linkify", version.ref = "markdown" }
+versioncompare = { module = "io.github.g00fy2:versioncompare", version.ref = "versioncompare" }
 
 [bundles]
+kotlinx = ["kotlinx-datetime", "kotlinx-coroutines-core", "kotlinx-coroutines-android"]
+lifecycle = ["lifecycle-common", "lifecycle-runtime", "lifecycle-livedata", "lifecycle-viewmodel", "lifecycle-viewmodel-compose"]
+navigation = ["navigation-common", "navigation-runtime", "navigation-fragment", "navigation-ui"]
+koin = ["koin-core", "koin-android", "koin-compose"]
+coil = ["coil", "coil-compose", "coil-network"]
 ktor = ["ktor-client-core", "ktor-client-okhttp", "ktor-serialization-json", "ktor-client-content-negotiation", "ktor-client-encoding"]
+markwon = ["markwon-core", "markwon-glide", "markwon-html", "markwon-linkify"]
 
 [plugins]
-agp = { id = "com.android.application", version.ref = "androidPluginVersion" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
-kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlinVersion" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
-google-ksp = { id = "com.google.devtools.ksp", version.ref = "kspPluginVersion" }
-androidx-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigationVersion" }
+android = { id = "com.android.application", version.ref = "agp" }
+android-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigation" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin.android", version.ref = "aboutlibraries" }

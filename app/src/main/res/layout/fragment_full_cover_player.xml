@@ -14,7 +14,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playerAlbumCoverFragment"
-            android:name="com.mardous.booming.fragments.player.cover.CoverPagerFragment"
+            android:name="com.mardous.booming.ui.screen.player.cover.CoverPagerFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout="@layout/fragment_album_cover"/>
@@ -25,7 +25,7 @@
         android:id="@+id/mask"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/shadow_up_full_theme"
+        android:background="@drawable/shadow_up_gradient"
         tools:backgroundTint="?colorPrimary"/>
 
     <LinearLayout
@@ -82,9 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:ellipsize="marquee"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:scrollHorizontally="true"
+                android:ellipsize="end"
                 android:textAppearance="?textAppearanceBody1"
                 android:textStyle="bold"
                 app:layout_constrainedWidth="true"
@@ -108,7 +106,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playbackControlsFragment"
-            android:name="com.mardous.booming.fragments.player.styles.fullcoverstyle.FullCoverPlayerControlsFragment"
+            android:name="com.mardous.booming.ui.screen.player.styles.fullcoverstyle.FullCoverPlayerControlsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout="@layout/fragment_full_cover_player_playback_controls"

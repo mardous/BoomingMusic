@@ -562,7 +562,6 @@
     <string name="library_title">Bibliotek</string>
     <string name="library_summary">Indstillinger for afspilningslister og udelukkelse/inklusion filtre.</string>
     <string name="notification_title">Underretning</string>
-    <string name="notification_summary">Tilpas meddelelsesstilen.</string>
     <string name="advanced_title">Avanceret</string>
     <string name="advanced_summary">In-app sprog og andre indstillinger for avancerede brugere.</string>
     <string name="update_title">Opdater</string>
@@ -737,10 +736,6 @@
     <string name="min_song_duration_title">Minimum sang varighed</string>
     <string name="min_song_duration_summary">Hvor mange sekunder (mindst) skal vare en sang for at blive vist i dit bibliotek.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Klassisk notifikation</string>
-    <string name="classic_notification_summary">Brug det klassiske notifikationsdesign.</string>
-    <string name="colored_notification_title">Farvet notifikation</string>
-    <string name="colored_notification_summary">Farver notifikationen i albumcoverets pulserende farve</string>
     <string name="extra_line_of_text_title">Yderligere tekstlinje</string>
     <string name="notification_priority_title">Notifikation prioritet</string>
     <string name="album_art_on_lockscreen_title">Vis albumcover</string>

@@ -52,11 +52,45 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Booming.FollowSystem"
         tools:ignore="UnusedAttribute">
+
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".ui.screen.MainActivity"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.Booming.SplashScreen"
+            android:theme="@style/Theme.Booming.SplashScreen"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.SongTagEditorActivity"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.AlbumTagEditorActivity"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.ArtistTagEditorActivity"/>
+
+        <activity android:name=".ui.screen.permissions.PermissionsActivity"/>
+
+        <activity
+            android:name=".core.appshortcuts.AppShortcutLauncherActivity"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <activity
+            android:name=".ui.screen.error.ErrorActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="cat.ereza.customactivityoncrash.RESTART"/>
+            </intent-filter>
+        </activity>
+
+        <!-- In order not to break compatibility with icon-packs -->
+        <activity-alias
+            android:name=".activities.MainActivity"
+            android:targetActivity=".ui.screen.MainActivity"
+            android:exported="true"
+            android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.MUSIC_PLAYER"/>
@@ -144,35 +178,7 @@
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable"/>
-
-        </activity>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name=".activities.tageditor.SongTagEditorActivity"/>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name=".activities.tageditor.AlbumTagEditorActivity"/>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name=".activities.tageditor.ArtistTagEditorActivity"/>
-
-        <activity android:name=".activities.PermissionsActivity"/>
-
-        <activity
-            android:name=".appshortcuts.AppShortcutLauncherActivity"
-            android:launchMode="singleInstance"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-
-        <activity
-            android:name=".activities.ErrorActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="cat.ereza.customactivityoncrash.RESTART"/>
-            </intent-filter>
-        </activity>
+        </activity-alias>
 
         <service
             android:name=".service.MusicService"
@@ -195,7 +201,7 @@
 
         <!-- Widgets -->
         <receiver
-            android:name=".appwidgets.AppWidgetBig"
+            android:name="com.mardous.booming.core.appwidgets.AppWidgetBig"
             android:exported="false"
             android:label="@string/app_widget_big_name">
             <intent-filter>
@@ -207,7 +213,7 @@
                 android:resource="@xml/app_widget_big_info"/>
         </receiver>
         <receiver
-            android:name=".appwidgets.AppWidgetSimple"
+            android:name="com.mardous.booming.core.appwidgets.AppWidgetSimple"
             android:exported="false"
             android:label="@string/app_widget_simple_name">
             <intent-filter>
@@ -219,7 +225,7 @@
                 android:resource="@xml/app_widget_simple_info"/>
         </receiver>
         <receiver
-            android:name=".appwidgets.AppWidgetSmall"
+            android:name="com.mardous.booming.core.appwidgets.AppWidgetSmall"
             android:exported="false"
             android:label="@string/app_widget_small_name">
             <intent-filter>

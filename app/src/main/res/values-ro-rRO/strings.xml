@@ -570,7 +570,6 @@
     <string name="library_title">Bibliotecă</string>
     <string name="library_summary">Setări pentru listele de redare și filtre de excludere/includere.</string>
     <string name="notification_title">Notificare</string>
-    <string name="notification_summary">Personalizați stilul notificărilor.</string>
     <string name="advanced_title">Avansat</string>
     <string name="advanced_summary">Limba aplicaţiei şi alte setări pentru utilizatorii avansaţi.</string>
     <string name="update_title">Actualizare</string>
@@ -745,10 +744,6 @@
     <string name="min_song_duration_title">Durata minimă a melodiei</string>
     <string name="min_song_duration_summary">Câte secunde (cel puțin) trebuie să dureze o melodie pentru a fi afișată în bibliotecă.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Notificare clasică</string>
-    <string name="classic_notification_summary">Utilizaţi design-ul clasic de notificări.</string>
-    <string name="colored_notification_title">Notificare colorată</string>
-    <string name="colored_notification_summary">Colorează notificarea în culoarea vibrantă a copertei de album</string>
     <string name="extra_line_of_text_title">Linie suplimentară de text</string>
     <string name="notification_priority_title">Prioritatea notificării</string>
     <string name="album_art_on_lockscreen_title">Arată coperta de album</string>

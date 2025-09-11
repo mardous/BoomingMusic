@@ -8,7 +8,8 @@
         app:title="@string/trash_music_title"
         app:summary="@string/trash_music_summary"
         app:defaultValue="false"
-        app:layout="@layout/list_item_view_switch"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
         app:key="trash_music_files"/>
 
     <PreferenceCategory
@@ -20,7 +21,8 @@
             app:title="@string/enable_history_title"
             app:summary="@string/enable_history_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="enable_history_playlist"/>
 
         <ListPreference
@@ -65,20 +67,22 @@
         app:title="@string/exclusion_header"
         app:layout="@layout/preference_category_title">
 
-        <com.mardous.booming.preferences.SwitchWithButtonPreference
+        <com.mardous.booming.ui.component.preferences.SwitchWithButtonPreference
             app:iconSpaceReserved="true"
             app:title="@string/whitelist_title"
             app:summary="@string/whitelist_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch_alt"
+            app:layout="@layout/list_item_view_with_button"
+            app:widgetLayout="@layout/preference_switch"
             app:key="whitelist_enabled"/>
 
-        <com.mardous.booming.preferences.SwitchWithButtonPreference
+        <com.mardous.booming.ui.component.preferences.SwitchWithButtonPreference
             app:iconSpaceReserved="true"
             app:title="@string/blacklist_title"
             app:summary="@string/blacklist_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch_alt"
+            app:layout="@layout/list_item_view_with_button"
+            app:widgetLayout="@layout/preference_switch"
             app:key="blacklist_enabled"/>
 
         <SeekBarPreference
@@ -89,7 +93,8 @@
             app:min="0"
             app:defaultValue="60"
             app:showSeekBarValue="true"
-            app:layout="@layout/list_item_view_seekbar"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
             app:key="minimum_song_duration"/>
 
         <SeekBarPreference
@@ -100,7 +105,8 @@
             app:min="1"
             app:defaultValue="1"
             app:showSeekBarValue="true"
-            app:layout="@layout/list_item_view_seekbar"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
             app:key="artist_minimum_songs"/>
 
         <SeekBarPreference
@@ -111,7 +117,8 @@
             app:min="1"
             app:defaultValue="1"
             app:showSeekBarValue="true"
-            app:layout="@layout/list_item_view_seekbar"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
             app:key="album_minimum_songs"/>
 
     </PreferenceCategory>

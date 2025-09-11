@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:icon="@drawable/ic_match_word_24dp"
+        app:title="@string/lyrics_syllable_mode_title"
+        app:summary="@string/lyrics_syllable_mode_summary"
+        app:defaultValue="false"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:key="enable_syllable_lyrics" />
+
+    <SwitchPreferenceCompat
+        app:icon="@drawable/ic_align_center_24dp"
+        app:title="@string/lyrics_center_current_line_title"
+        app:summary="@string/lyrics_center_current_line_summary"
+        app:defaultValue="false"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:key="lyrics_center_current_line" />
+
+    <SwitchPreferenceCompat
+        app:icon="@drawable/ic_custom_typography_24dp"
+        app:title="@string/lyrics_custom_font_title"
+        app:summary="@string/lyrics_custom_font_summary"
+        app:defaultValue="false"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:key="lyrics_use_custom_font" />
+
+    <Preference
+        app:icon="@drawable/ic_file_open_24dp"
+        app:title="@string/lyrics_import_custom_font_title"
+        app:persistent="false"
+        app:dependency="lyrics_use_custom_font"
+        app:layout="@layout/list_item_view"
+        app:key="lyrics_custom_font" />
+
+    <SeekBarPreference
+        app:icon="@drawable/ic_format_line_spacing_24dp"
+        app:title="@string/lyrics_line_spacing_title"
+        app:summary="@string/lyrics_line_spacing_summary"
+        android:max="@integer/lyrics_spacing_max"
+        app:min="@integer/lyrics_spacing_min"
+        app:defaultValue="40"
+        app:showSeekBarValue="true"
+        app:layout="@layout/list_item_view_bottom_widget"
+        app:widgetLayout="@layout/preference_seekbar"
+        app:key="lyrics_line_spacing"/>
+
+    <PreferenceCategory
+        app:title="@string/synced_lyrics"
+        app:layout="@layout/preference_category_title">
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_format_bold_24dp"
+            app:title="@string/lyrics_bold_synced_title"
+            app:summary="@string/lyrics_bold_synced_summary"
+            app:defaultValue="true"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="synced_lyrics_bold_font" />
+
+        <SeekBarPreference
+            app:icon="@drawable/ic_format_size_24dp"
+            app:title="@string/synced_font_size_player_title"
+            app:summary="@string/synced_font_size_player_summary"
+            android:max="@integer/lyrics_font_size_max"
+            app:min="@integer/lyrics_font_size_min"
+            app:defaultValue="24"
+            app:showSeekBarValue="true"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
+            app:key="synced_lyrics_font_size_player"/>
+
+        <SeekBarPreference
+            app:iconSpaceReserved="true"
+            app:title="@string/synced_font_size_full_title"
+            app:summary="@string/synced_font_size_full_summary"
+            android:max="@integer/lyrics_font_size_max"
+            app:min="@integer/lyrics_font_size_min"
+            app:defaultValue="30"
+            app:showSeekBarValue="true"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
+            app:key="synced_lyrics_font_size_full"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/plain_lyrics"
+        app:layout="@layout/preference_category_title">
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_format_bold_24dp"
+            app:title="@string/lyrics_bold_unsynced_title"
+            app:summary="@string/lyrics_bold_unsynced_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="unsynced_lyrics_bold_font" />
+
+        <SeekBarPreference
+            app:icon="@drawable/ic_format_size_24dp"
+            app:title="@string/unsynced_font_size_player_title"
+            app:summary="@string/unsynced_font_size_player_summary"
+            android:max="@integer/lyrics_font_size_max"
+            app:min="@integer/lyrics_font_size_min"
+            app:defaultValue="16"
+            app:showSeekBarValue="true"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
+            app:key="unsynced_lyrics_font_size_player"/>
+
+        <SeekBarPreference
+            app:iconSpaceReserved="true"
+            app:title="@string/unsynced_font_size_full_title"
+            app:summary="@string/unsynced_font_size_full_summary"
+            android:max="@integer/lyrics_font_size_max"
+            app:min="@integer/lyrics_font_size_min"
+            app:defaultValue="20"
+            app:showSeekBarValue="true"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
+            app:key="unsynced_lyrics_font_size_full"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/advanced_title"
+        app:layout="@layout/preference_category_title">
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_blur_linear_24dp"
+            app:title="@string/lyrics_progressive_coloring_title"
+            app:summary="@string/lyrics_progressive_coloring_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="lyrics_progressive_coloring" />
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_gradient_24dp"
+            app:title="@string/lyrics_gradient_background_title"
+            app:summary="@string/lyrics_gradient_background_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="lyrics_gradient_background" />
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_blur_on_24dp"
+            app:title="@string/lyrics_blur_effect_title"
+            app:summary="@string/lyrics_blur_effect_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:dependency="lyrics_gradient_background"
+            app:key="lyrics_text_blur" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/lyrics_shadow_effect_title"
+            app:summary="@string/lyrics_shadow_effect_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:dependency="lyrics_gradient_background"
+            app:key="lyrics_text_shadow" />
+
+        <Preference
+            app:summary="@string/lyrics_effects_note"
+            app:persistent="false"
+            app:selectable="false"
+            app:layout="@layout/list_item_view"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/advanced_title"
+        app:layout="@layout/preference_category_title">
+
+        <Preference
+            app:icon="@drawable/ic_delete_24dp"
+            app:title="@string/delete_downloaded_lyrics_title"
+            app:summary="@string/delete_downloaded_lyrics_summary"
+            app:layout="@layout/list_item_view"
+            app:key="clear_lyrics"/>
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

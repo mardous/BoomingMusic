@@ -33,7 +33,7 @@
   },
   {
     "contrib_name": "Polish",
-    "contrib_description": "[Szuwax](https://crowdin.com/profile/szuwax)"
+    "contrib_description": "[HackZy](https://crowdin.com/profile/hackzy), [Szuwax](https://crowdin.com/profile/szuwax)"
   },
   {
     "contrib_name": "Portuguese",
@@ -45,7 +45,7 @@
   },
   {
     "contrib_name": "Russian",
-    "contrib_description": "[Anton](https://crowdin.com/profile/antoon334), [Axus Wizix](https://crowdin.com/profile/axuswizix)"
+    "contrib_description": "elixcat, [Anton](https://crowdin.com/profile/antoon334), [Axus Wizix](https://crowdin.com/profile/axuswizix)"
   },
   {
     "contrib_name": "Spanish",
@@ -54,5 +54,9 @@
   {
     "contrib_name": "Turkish",
     "contrib_description": "[Holi](https://crowdin.com/profile/mikropsoft)"
+  },
+  {
+    "contrib_name": "Ukrainian",
+    "contrib_description": "elixcat"
   }
 ]

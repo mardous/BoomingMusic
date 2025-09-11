@@ -562,7 +562,6 @@
     <string name="library_title">Library</string>
     <string name="library_summary">Settings for playlists and exclusion/inclusion filters.</string>
     <string name="notification_title">Notification</string>
-    <string name="notification_summary">Customize the notification style.</string>
     <string name="advanced_title">Advanced</string>
     <string name="advanced_summary">In-app language and other settings for advanced users.</string>
     <string name="update_title">Update</string>
@@ -737,10 +736,6 @@
     <string name="min_song_duration_title">Minimum song duration</string>
     <string name="min_song_duration_summary">How many seconds (at least) must last a song to be shown in your library.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Classic notification</string>
-    <string name="classic_notification_summary">Use the classic notification design.</string>
-    <string name="colored_notification_title">Colored notification</string>
-    <string name="colored_notification_summary">Colors the notification in the album cover\'s vibrant color</string>
     <string name="extra_line_of_text_title">Additional line of text</string>
     <string name="notification_priority_title">Notification priority</string>
     <string name="album_art_on_lockscreen_title">Show album cover</string>

@@ -562,7 +562,6 @@
     <string name="library_title">Bibliotek</string>
     <string name="library_summary">Innstillinger for spillelister og ekskluderte/inkluderingsfiltre.</string>
     <string name="notification_title">Varsling</string>
-    <string name="notification_summary">Tilpass varslingsstilen.</string>
     <string name="advanced_title">Avansert</string>
     <string name="advanced_summary">I app-språk og andre innstillinger for avanserte brukere.</string>
     <string name="update_title">Oppdater</string>
@@ -737,10 +736,6 @@
     <string name="min_song_duration_title">Minimum sang varighet</string>
     <string name="min_song_duration_summary">Hvor mange sekunder (minst) må vare en sang for å vises i biblioteket.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Klassisk varsling</string>
-    <string name="classic_notification_summary">Bruk klassisk varslingsdesign.</string>
-    <string name="colored_notification_title">Farget varsling</string>
-    <string name="colored_notification_summary">Farger varselet i albumomslagets vibrerende farge</string>
     <string name="extra_line_of_text_title">Ytterligere linje for tekst</string>
     <string name="notification_priority_title">Notifikasjon prioritet</string>
     <string name="album_art_on_lockscreen_title">Vis albumomslag</string>

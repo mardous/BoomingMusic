@@ -17,7 +17,7 @@
 
 package com.mardous.booming.glide.artistimage
 
-import com.mardous.booming.model.Artist
+import com.mardous.booming.data.model.Artist
 
 class ArtistImage(artist: Artist) {
 

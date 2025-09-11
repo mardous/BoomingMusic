@@ -20,44 +20,43 @@ package com.mardous.booming
 import android.content.ComponentName
 import androidx.preference.PreferenceManager
 import androidx.room.Room
-import com.mardous.booming.androidauto.AutoMusicProvider
-import com.mardous.booming.audio.AudioOutputObserver
-import com.mardous.booming.audio.SoundSettings
-import com.mardous.booming.database.BoomingDatabase
-import com.mardous.booming.helper.UriSongResolver
-import com.mardous.booming.http.deezer.DeezerService
-import com.mardous.booming.http.github.GitHubService
-import com.mardous.booming.http.jsonHttpClient
-import com.mardous.booming.http.lastfm.LastFmService
-import com.mardous.booming.http.lyrics.LyricsDownloadService
-import com.mardous.booming.http.provideDefaultCache
-import com.mardous.booming.http.provideOkHttp
-import com.mardous.booming.model.Genre
-import com.mardous.booming.providers.MediaStoreWriter
-import com.mardous.booming.repository.*
+import com.mardous.booming.core.BoomingDatabase
+import com.mardous.booming.core.androidauto.AutoMusicProvider
+import com.mardous.booming.core.audio.AudioOutputObserver
+import com.mardous.booming.core.audio.SoundSettings
+import com.mardous.booming.data.local.AlbumCoverSaver
+import com.mardous.booming.data.local.EditTarget
+import com.mardous.booming.data.local.MediaStoreWriter
+import com.mardous.booming.data.local.repository.*
+import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.remote.deezer.DeezerService
+import com.mardous.booming.data.remote.github.GitHubService
+import com.mardous.booming.data.remote.jsonHttpClient
+import com.mardous.booming.data.remote.lastfm.LastFmService
+import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
+import com.mardous.booming.data.remote.provideDefaultCache
+import com.mardous.booming.data.remote.provideOkHttp
 import com.mardous.booming.service.MusicService
 import com.mardous.booming.service.MusicServiceConnection
 import com.mardous.booming.service.equalizer.EqualizerManager
 import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.service.queue.QueueManager
-import com.mardous.booming.taglib.EditTarget
-import com.mardous.booming.viewmodels.about.AboutViewModel
-import com.mardous.booming.viewmodels.albumdetail.AlbumDetailViewModel
-import com.mardous.booming.viewmodels.artistdetail.ArtistDetailViewModel
-import com.mardous.booming.viewmodels.equalizer.EqualizerViewModel
-import com.mardous.booming.viewmodels.equalizer.SoundSettingsViewModel
-import com.mardous.booming.viewmodels.folderdetail.FolderDetailViewModel
-import com.mardous.booming.viewmodels.genredetail.GenreDetailViewModel
-import com.mardous.booming.viewmodels.info.InfoViewModel
-import com.mardous.booming.viewmodels.library.LibraryViewModel
-import com.mardous.booming.viewmodels.lyrics.LyricsViewModel
-import com.mardous.booming.viewmodels.player.PlayerViewModel
-import com.mardous.booming.viewmodels.playlistdetail.PlaylistDetailViewModel
-import com.mardous.booming.viewmodels.search.SearchViewModel
-import com.mardous.booming.viewmodels.tageditor.TagEditorViewModel
-import com.mardous.booming.viewmodels.update.UpdateViewModel
-import com.mardous.booming.viewmodels.yeardetail.YearDetailViewModel
-import com.mardous.booming.worker.SaveCoverWorker
+import com.mardous.booming.ui.screen.about.AboutViewModel
+import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
+import com.mardous.booming.ui.screen.info.InfoViewModel
+import com.mardous.booming.ui.screen.library.LibraryViewModel
+import com.mardous.booming.ui.screen.library.albums.AlbumDetailViewModel
+import com.mardous.booming.ui.screen.library.artists.ArtistDetailViewModel
+import com.mardous.booming.ui.screen.library.folders.FolderDetailViewModel
+import com.mardous.booming.ui.screen.library.genres.GenreDetailViewModel
+import com.mardous.booming.ui.screen.library.playlists.PlaylistDetailViewModel
+import com.mardous.booming.ui.screen.library.search.SearchViewModel
+import com.mardous.booming.ui.screen.library.years.YearDetailViewModel
+import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
+import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.ui.screen.sound.SoundSettingsViewModel
+import com.mardous.booming.ui.screen.tageditor.TagEditorViewModel
+import com.mardous.booming.ui.screen.update.UpdateViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.bind
@@ -121,10 +120,7 @@ private val mainModule = module {
         MediaStoreWriter(context = androidContext(), contentResolver = get())
     }
     single {
-        SaveCoverWorker(context = androidContext(), mediaStoreWriter = get())
-    }
-    single {
-        UriSongResolver(context = androidContext(), contentResolver = get(), songRepository = get())
+        AlbumCoverSaver(context = androidContext(), mediaStoreWriter = get())
     }
     single {
         AudioOutputObserver(context = androidContext(), playbackManager = get())
@@ -239,7 +235,7 @@ private val dataModule = module {
 
 private val viewModule = module {
     viewModel {
-        LibraryViewModel(repository = get(), inclExclDao = get(), uriSongResolver = get())
+        LibraryViewModel(repository = get(), inclExclDao = get())
     }
 
     viewModel {
@@ -247,7 +243,7 @@ private val viewModule = module {
             serviceConnection = get(),
             queueManager = get(),
             playbackManager = get(),
-            saveCoverWorker = get()
+            albumCoverSaver = get()
         )
     }
 
@@ -293,7 +289,7 @@ private val viewModule = module {
     }
 
     viewModel {
-        LyricsViewModel(queueManager = get(), lyricsRepository = get())
+        LyricsViewModel(preferences = get(), queueManager = get(), lyricsRepository = get())
     }
 
     viewModel {

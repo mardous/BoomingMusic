@@ -21,7 +21,7 @@ import com.mardous.booming.appContext
 import com.mardous.booming.extensions.resources.defaultFooterColor
 import com.mardous.booming.glide.palette.BitmapPaletteTarget
 import com.mardous.booming.glide.palette.BitmapPaletteWrapper
-import com.mardous.booming.helper.color.MediaNotificationProcessor
+import com.mardous.booming.util.color.MediaNotificationProcessor
 
 abstract class BoomingColoredTarget(view: ImageView) : BitmapPaletteTarget(view) {
 

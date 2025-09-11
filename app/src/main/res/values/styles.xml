@@ -97,13 +97,6 @@
         <item name="shapeAppearance">?attr/shapeAppearanceCornerMedium</item>
     </style>
 
-    <!-- TEXT APPEARANCE -->
-    <style name="TextAppearance.Booming.Notification.Title"
-           parent="@android:style/TextAppearance.Material.Notification.Title"/>
-
-    <style name="TextAppearance.Booming.Notification.Line2"
-           parent="@android:style/TextAppearance.Material.Notification.Line2"/>
-
     <style name="CircularShapeAppearance" parent="">
         <item name="cornerSize">50%</item>
         <item name="cornerFamily">rounded</item>

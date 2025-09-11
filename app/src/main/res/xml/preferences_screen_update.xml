@@ -12,24 +12,26 @@
         android:key="update_search_mode"/>
 
     <SwitchPreferenceCompat
-        android:layout="@layout/list_item_view_switch"
         android:title="@string/receive_experimental_updates_title"
         android:summary="@string/receive_experimental_updates_summary"
         android:defaultValue="false"
+        android:layout="@layout/list_item_view"
+        android:widgetLayout="@layout/preference_switch"
         android:key="experimental_updates"/>
 
     <SwitchPreferenceCompat
-        android:layout="@layout/list_item_view_switch"
         android:title="@string/only_wifi_title"
         android:summary="@string/only_wifi_summary"
         android:defaultValue="false"
+        android:layout="@layout/list_item_view"
+        android:widgetLayout="@layout/preference_switch"
         android:key="update_only_wifi"/>
 
-    <com.mardous.booming.preferences.ProgressIndicatorPreference
-        android:layout="@layout/list_item_view_widget"
-        android:widgetLayout="@layout/preference_widget_progressbar"
+    <com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
         android:title="@string/search_for_update_title"
         android:persistent="false"
+        android:layout="@layout/list_item_view"
+        android:widgetLayout="@layout/preference_progressbar"
         android:key="search_for_update"/>
 
 </PreferenceScreen>

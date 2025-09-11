@@ -54,15 +54,21 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
-import com.mardous.booming.androidauto.AutoMediaIDHelper
-import com.mardous.booming.androidauto.AutoMusicProvider
-import com.mardous.booming.androidauto.PackageValidator
-import com.mardous.booming.appwidgets.AppWidgetBig
-import com.mardous.booming.appwidgets.AppWidgetSimple
-import com.mardous.booming.appwidgets.AppWidgetSmall
-import com.mardous.booming.database.fromHistoryToSongs
-import com.mardous.booming.database.toPlayCount
-import com.mardous.booming.database.toSongs
+import com.mardous.booming.core.androidauto.AutoMediaIDHelper
+import com.mardous.booming.core.androidauto.AutoMusicProvider
+import com.mardous.booming.core.androidauto.PackageValidator
+import com.mardous.booming.core.appwidgets.AppWidgetBig
+import com.mardous.booming.core.appwidgets.AppWidgetSimple
+import com.mardous.booming.core.appwidgets.AppWidgetSmall
+import com.mardous.booming.core.legacy.HistoryStore
+import com.mardous.booming.core.legacy.SongPlayCountStore
+import com.mardous.booming.data.local.ReplayGainTagExtractor
+import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.mapper.fromHistoryToSongs
+import com.mardous.booming.data.mapper.toPlayCount
+import com.mardous.booming.data.mapper.toSongs
+import com.mardous.booming.data.model.ContentType
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.glide.getSongGlideModel
 import com.mardous.booming.extensions.glide.songOptions
@@ -71,12 +77,6 @@ import com.mardous.booming.extensions.media.indexOfSong
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.glide.transformation.BlurTransformation
-import com.mardous.booming.helper.UriSongResolver
-import com.mardous.booming.model.ContentType
-import com.mardous.booming.model.Song
-import com.mardous.booming.providers.databases.HistoryStore
-import com.mardous.booming.providers.databases.SongPlayCountStore
-import com.mardous.booming.repository.Repository
 import com.mardous.booming.service.constants.ServiceAction
 import com.mardous.booming.service.constants.ServiceAction.Extras.Companion.EXTRA_CONTENT_TYPE
 import com.mardous.booming.service.constants.ServiceAction.Extras.Companion.EXTRA_SHUFFLE_MODE
@@ -91,7 +91,6 @@ import com.mardous.booming.service.queue.NO_POSITION
 import com.mardous.booming.service.queue.QueueChangeReason
 import com.mardous.booming.service.queue.QueueManager
 import com.mardous.booming.service.queue.QueueObserver
-import com.mardous.booming.taglib.ReplayGainTagExtractor
 import com.mardous.booming.util.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
@@ -108,7 +107,6 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     private val serviceScope = CoroutineScope(Job() + Main)
 
     private val repository by inject<Repository>()
-    private val uriSongResolver by inject<UriSongResolver>()
     private val queueManager by inject<QueueManager>()
     private val playbackManager by inject<PlaybackManager>()
 
@@ -197,7 +195,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             .registerReceiver(widgetIntentReceiver, IntentFilter(ServiceAction.ACTION_APP_WIDGET_UPDATE))
 
         sessionToken = mediaSession.sessionToken
-        playingNotificationManager = PlayingNotificationManager(this, mediaSession, playbackManager, queueManager)
+        playingNotificationManager = PlayingNotificationManager(this, playbackManager, queueManager, mediaSession)
 
         mediaStoreObserver = MediaStoreObserver(this, playerHandler!!)
         throttledSeekHandler = ThrottledSeekHandler(this, persistentStorage, playerHandler!!)
@@ -244,7 +242,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
                 pendingStartCommands.add(intent)
             }
         }
-        return START_NOT_STICKY
+        return START_STICKY
     }
 
     override fun onUnbind(intent: Intent?): Boolean {
@@ -285,7 +283,8 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     }
 
     override fun onTaskRemoved(rootIntent: Intent) {
-        if (!isPlaying && !mayResumeOnFocusGain) {
+        val isPaused = !isPlaying && !mayResumeOnFocusGain
+        if (isPaused || Preferences.stopWhenClosedFromRecents) {
             quit()
         }
         super.onTaskRemoved(rootIntent)
@@ -369,15 +368,19 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             HistoryStore.getInstance(this@MusicService).addSongId(currentSong.id)
             repository.upsertSongInHistory(currentSong)
             songPlayCountHelper.notifySongChanged(currentSong, isPlaying)
+
             applyReplayGain(currentSong)
+
+            playbackManager.setCrossFadeNextDataSource(nextSong)
         }
-        playbackManager.setCrossFadeNextDataSource(nextSong)
     }
 
     override fun onTrackWentToNext() {
         bumpPlayCount()
         if (checkShouldStop(false) || (queueManager.repeatMode == Playback.RepeatMode.Off && isLastTrack)) {
-            playbackManager.setNextDataSource(null)
+            serviceScope.launch {
+                playbackManager.setNextDataSource(null)
+            }
             pause(true)
             seek(0, false)
             if (checkShouldStop(true)) {
@@ -417,10 +420,10 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
 
     override fun onPlayStateChanged() {
         // We use the foreground notification handler here to slightly delay the call to stopForeground().
-        // This appears to be necessary in order to allow our notification to become dismissable if pause() is called via onStartCommand() to this service.
-        // Presumably, there is an issue in calling stopForeground() too soon after startForeground() which causes the notification to be stuck in the 'ongoing' state and not able to be dismissed.
-        //
-        // This behavior is highly inspired by S2 Music Player: https://github.com/timusus/Shuttle2
+        // This appears to be necessary in order to allow our notification to become dismissable if pause()
+        // is called via onStartCommand() to this service.
+        // Presumably, there is an issue in calling stopForeground() too soon after startForeground()
+        // which causes the notification to be stuck in the 'ongoing' state and not able to be dismissed.
 
         foregroundNotificationHandler?.removeCallbacksAndMessages(null)
         delayedShutdownHandler?.removeCallbacksAndMessages(null)
@@ -430,17 +433,23 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
 
         val isPlaying = playbackManager.isPlaying()
         if (isPlaying) {
-            playingNotificationManager.startForeground(this) {
-                displayPlayingNotification(true)
-            }
-        } else {
-            playingNotificationManager.displayPlayingNotification(false)
-            if (!mayResumeOnFocusGain) {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-                    foregroundNotificationHandler?.postDelayed(150) {
-                        stopForeground(STOP_FOREGROUND_DETACH)
-                    }
-                    postDelayedShutdown()
+            // This allows us to receive the onTaskRemoved() callback
+            // when the user removes the app from recents.
+            ContextCompat.startForegroundService(this, Intent(this, MusicService::class.java))
+        }
+
+        playingNotificationManager.startForeground(this) {
+            displayPlayingNotification(isPlaying)
+        }
+        if (!isPlaying) {
+            if (!mayResumeOnFocusGain && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                // On Android versions prior to S, we can call stopForeground(STOP_FOREGROUND_DETACH) to allow
+                // the notification to remain dismissible and later resume foreground mode with startForeground().
+                // Starting with Android 12 (S), this behavior is no longer allowed and calling startForeground()
+                // after a STOP_FOREGROUND_DETACH will throw an exception.
+
+                foregroundNotificationHandler?.postDelayed(150) {
+                    stopForeground(STOP_FOREGROUND_DETACH)
                 }
             }
             if (currentSongDuration > 0) {
@@ -449,6 +458,19 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
         }
 
         songPlayCountHelper.notifyPlayStateChanged(isPlaying)
+    }
+
+    override fun onPlaybackModeChanged(wasPlaying: Boolean, position: Int) {
+        openCurrentAndPrepareNext { success ->
+            if (success) {
+                seek(position)
+                if (wasPlaying) {
+                    play()
+                } else {
+                    pause()
+                }
+            }
+        }
     }
 
     private fun processCommand(command: Intent) {
@@ -632,6 +654,9 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
         }
     }
 
+    private var openCurrentJob: Job? = null
+    private var prepareNextJob: Job? = null
+
     private fun openCurrent(completion: (success: Boolean) -> Unit) {
         val force = if (!trackEndedByCrossfade) {
             true
@@ -639,21 +664,29 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             trackEndedByCrossfade = false
             false
         }
-        playbackManager.setDataSource(currentSong, force) { success ->
-            completion(success)
+        openCurrentJob?.cancel()
+        openCurrentJob = serviceScope.launch {
+            playbackManager.setDataSource(currentSong, force) { success ->
+                if (isActive) {
+                    completion(success)
+                }
+            }
         }
     }
 
     private fun prepareNext() {
-        try {
-            val nextPosition = getNextPosition(false)
-            if (nextPosition == queueManager.stopPosition) {
-                playbackManager.setNextDataSource(null)
-            } else {
-                playbackManager.setNextDataSource(getSongAt(nextPosition))
+        prepareNextJob?.cancel()
+        prepareNextJob = serviceScope.launch {
+            try {
+                val nextPosition = getNextPosition(false)
+                if (nextPosition == queueManager.stopPosition) {
+                    playbackManager.setNextDataSource(null)
+                } else {
+                    playbackManager.setNextDataSource(getSongAt(nextPosition))
+                }
+                queueManager.nextPosition = nextPosition
+            } catch (_: Exception) {
             }
-            queueManager.nextPosition = nextPosition
-        } catch (_: Exception) {
         }
     }
 
@@ -883,7 +916,9 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     private fun prepareSongAt(position: Int, completion: (Boolean) -> Unit = {}) {
         queueManager.setPosition(position)
         openCurrentAndPrepareNext { success ->
-            seek(0, false)
+            if (!playbackManager.isCrossfading) {
+                seek(0, false)
+            }
             completion(success)
         }
     }
@@ -996,20 +1031,6 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
         }
     }
 
-    private fun restorePlaybackState(wasPlaying: Boolean, progress: Int) {
-        playbackManager.setCallbacks(this)
-        openCurrentAndPrepareNext { success ->
-            if (success) {
-                seek(progress)
-                if (wasPlaying) {
-                    play()
-                } else {
-                    pause()
-                }
-            }
-        }
-    }
-
     override fun onSharedPreferenceChanged(preferences: SharedPreferences, key: String?) {
         when (key) {
             ENABLE_HISTORY ->
@@ -1027,24 +1048,12 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
                 updateMediaSessionPlaybackState()
             }
 
-            CROSSFADE_DURATION -> {
-                val progress = currentSongProgress
-                val wasPlaying = isPlaying
-
-                val crossFadeDuration = Preferences.crossFadeDuration
-                if (playbackManager.maybeSwitchToCrossFade(crossFadeDuration)) {
-                    restorePlaybackState(wasPlaying, progress)
-                } else {
-                    playbackManager.setCrossFadeDuration(crossFadeDuration)
-                }
-            }
-
             GAPLESS_PLAYBACK -> {
                 playbackManager.gaplessPlayback = Preferences.gaplessPlayback
                 if (playbackManager.gaplessPlayback) {
                     prepareNext()
                 } else {
-                    playbackManager.setNextDataSource(null)
+                    serviceScope.launch { playbackManager.setNextDataSource(null) }
                 }
                 playbackManager.updateBalance()
             }
@@ -1060,14 +1069,6 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
                 updateMediaSessionMetadata(::updateMediaSessionPlaybackState)
             }
 
-            CLASSIC_NOTIFICATION -> {
-                playingNotificationManager.recreateNotification(this)
-                playingNotificationManager.startForeground(this) {
-                    displayPlayingNotification()
-                }
-            }
-
-            COLORED_NOTIFICATION,
             NOTIFICATION_EXTRA_TEXT_LINE,
             NOTIFICATION_PRIORITY -> {
                 playingNotificationManager.displayPlayingNotification()
@@ -1296,7 +1297,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
 
         override fun onPlayFromUri(uri: Uri, extras: Bundle) {
             serviceScope.launch(IO) {
-                val songs = uriSongResolver.resolve(uri)
+                val songs = repository.songsByUri(uri)
                 if (songs.isNotEmpty()) {
                     openQueue(songs, 0, true)
                 }

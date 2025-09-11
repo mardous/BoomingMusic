@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="2"
+        android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceSubtitle1"
         app:layout_constrainedWidth="true"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,11 +41,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="@string/permission_bluetooth_title"/>
 
-    <com.mardous.booming.views.BaselineGridTextView
+    <com.mardous.booming.ui.component.views.BaselineGridTextView
         android:id="@+id/text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
+        android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceBody2"
         android:textColor="?android:textColorSecondary"
         app:layout_constrainedWidth="true"

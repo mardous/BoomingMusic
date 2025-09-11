@@ -21,7 +21,8 @@
 			app:title="@string/ignore_media_store_album_covers_title"
 			app:summary="@string/ignore_media_store_album_covers_summary"
 			app:defaultValue="false"
-			app:layout="@layout/list_item_view_switch"
+			app:layout="@layout/list_item_view"
+			app:widgetLayout="@layout/preference_switch"
 			app:key="ignore_media_store"/>
 
     	<SwitchPreferenceCompat
@@ -29,7 +30,8 @@
         	app:title="@string/use_folder_album_cover_title"
         	app:summary="@string/use_folder_album_cover_summary"
         	app:defaultValue="true"
-        	app:layout="@layout/list_item_view_switch"
+			app:layout="@layout/list_item_view"
+			app:widgetLayout="@layout/preference_switch"
         	app:key="use_folder_art"/>
 
 	</PreferenceCategory>
@@ -44,7 +46,8 @@
         	app:summary="@string/online_artist_images_summary"
         	app:defaultValue="@bool/default_artist_images_download"
 			app:icon="@drawable/ic_artist_24dp"
-			app:layout="@layout/list_item_view_switch"
+			app:layout="@layout/list_item_view"
+			app:widgetLayout="@layout/preference_switch"
         	app:key="allow_online_artist_images"/>
 
 		<ListPreference
@@ -57,19 +60,6 @@
 			app:dependency="allow_online_artist_images"
 			app:layout="@layout/list_item_view"
 			app:key="preferred_artist_image_size"/>
-
-	</PreferenceCategory>
-
-	<PreferenceCategory
-		app:title="@string/lyrics"
-		app:layout="@layout/preference_category_title">
-
-		<Preference
-			app:icon="@drawable/ic_lyrics_outline_24dp"
-			app:title="@string/delete_downloaded_lyrics_title"
-			app:summary="@string/delete_downloaded_lyrics_summary"
-			app:layout="@layout/list_item_view"
-			app:key="clear_lyrics"/>
 
 	</PreferenceCategory>
 

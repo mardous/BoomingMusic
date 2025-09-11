@@ -44,13 +44,14 @@
         android:layout_weight="1"
         android:maxLines="1"
         android:scrollbars="none"
+        android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceSubtitle1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/time"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image_container"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@tools:sample/lorem/random"/>
+        tools:text="@tools:sample/lorem"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/time"

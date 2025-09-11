@@ -30,12 +30,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:ellipsize="end"
-                    android:gravity="center_vertical"
+                    android:gravity="start|center_vertical"
                     android:background="@android:color/transparent"
                     android:inputType="text|textAutoComplete|textNoSuggestions"
                     android:imeOptions="actionSearch"
                     android:hint="@string/search_hint"
                     android:paddingStart="8dp"
+                    android:textAlignment="viewStart"
                     tools:ignore="Autofill,RtlSymmetry" />
 
                 <FrameLayout

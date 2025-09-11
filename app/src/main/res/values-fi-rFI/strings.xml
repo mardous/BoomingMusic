@@ -562,7 +562,6 @@
     <string name="library_title">Kirjasto</string>
     <string name="library_summary">Soittolistojen ja poissulkemis- ja sisällyttämissuodattimien asetukset.</string>
     <string name="notification_title">Ilmoitus</string>
-    <string name="notification_summary">Mukauta ilmoituksen tyyliä.</string>
     <string name="advanced_title">Lisäasetukset</string>
     <string name="advanced_summary">Sovelluksen sisäinen kieli ja muut asetukset edistyneille käyttäjille.</string>
     <string name="update_title">Päivitä</string>
@@ -737,10 +736,6 @@
     <string name="min_song_duration_title">Kappaleen vähimmäiskesto</string>
     <string name="min_song_duration_summary">Kuinka monta sekuntia (vähintään) täytyy kestää kappaletta, jotta se näkyisi kirjastossa.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Klassinen ilmoitus</string>
-    <string name="classic_notification_summary">Käytä klassista ilmoitussuunnittelua.</string>
-    <string name="colored_notification_title">Värillinen ilmoitus</string>
-    <string name="colored_notification_summary">Värittää albumin kanteen värin värin</string>
     <string name="extra_line_of_text_title">Muu rivi tekstiä</string>
     <string name="notification_priority_title">Ilmoitusten prioriteetti</string>
     <string name="album_art_on_lockscreen_title">Näytä albumin kansi</string>

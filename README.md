@@ -20,7 +20,6 @@
 <a href="https://f-droid.org/packages/com.mardous.booming/"><img src="assets/badge-fdroid.png" height="60"></a>
 <a href="https://apt.izzysoft.de/packages/com.mardous.booming/"><img src="assets/badge-izzyondroid.png" height="60"></a>
 <a href="https://www.openapk.net/boomingmusic/com.mardous.booming/"><img src="assets/badge-openapk.png" height="60"></a>
-<a href="https://www.androidfreeware.net/download-boomingmusic-apk.html"><img src="assets/badge-androidfreeware.png" height="60"></a>
 <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/"><img src="assets/badge-obtainium.png" height="60"></a>
 
 </div>
@@ -77,6 +76,14 @@ information about MediaPlayer API file and format support.
 ## 🔒 Requested permissions
 Our app requires only the necessary permissions for its operation, therefore, you can read [this document](PERMISSIONS.md)
 to obtain more details about each permission and why it is required.
+
+## 📌 Android Auto users
+If Booming Music does not appear in Android Auto, follow these steps to enable it:
+
+1. Open Android Auto settings.
+2. Scroll to the bottom and tap on the version several times to enable developer settings.
+3. Tap the three-dot menu in the top-right corner and select "Developer settings".
+4. Enable "Unknown sources".
 
 ## 🤝 Contributing
 Booming Music is an open-source project, and contributions are always welcome!

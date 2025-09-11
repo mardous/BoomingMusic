@@ -42,11 +42,12 @@
         android:layout_marginStart="16dp"
         android:singleLine="true"
         android:ellipsize="marquee"
+        android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceBody2"
         app:layout_constraintEnd_toStartOf="@+id/menu"
         app:layout_constraintStart_toEndOf="@+id/imageContainer"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@tools:sample/lorem/random" />
+        tools:text="@tools:sample/lorem" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text"
@@ -55,6 +56,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginStart="16dp"
         android:maxLines="1"
+        android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceCaption"
         app:layout_constraintStart_toEndOf="@id/imageContainer"
         app:layout_constraintEnd_toStartOf="@+id/time"

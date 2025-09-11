@@ -17,7 +17,7 @@
         android:orientation="vertical"
         tools:ignore="UnusedAttribute,UselessParent">
 
-        <com.mardous.booming.views.WidthFitSquareLayout
+        <com.mardous.booming.ui.component.views.WidthFitSquareLayout
             android:id="@+id/image_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -30,7 +30,7 @@
                 app:shapeAppearanceOverlay="?shapeAppearanceCornerLarge"
                 tools:srcCompat="@drawable/default_audio_art"/>
 
-        </com.mardous.booming.views.WidthFitSquareLayout>
+        </com.mardous.booming.ui.component.views.WidthFitSquareLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,7 +46,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/title"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:ellipsize="end"
@@ -56,7 +56,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/text"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:maxLines="1"

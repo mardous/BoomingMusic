@@ -1,11 +1,28 @@
 package com.mardous.booming.ui.theme
 
+import android.app.UiModeManager
+import android.os.Build
 import androidx.compose.material3.ColorScheme
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.getSystemService
 import com.kyant.m3color.hct.Hct
 import com.kyant.m3color.scheme.*
+
+@Stable
+@Composable
+fun getSystemContrast(): Double {
+    val context = LocalContext.current
+    val uiManager = context.getSystemService<UiModeManager>()
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        uiManager?.contrast?.toDouble() ?: 0.0
+    } else {
+        0.0
+    }
+}
 
 @Stable
 fun dynamicColorScheme(

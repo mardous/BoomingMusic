@@ -562,7 +562,6 @@
     <string name="library_title">Bibliothek</string>
     <string name="library_summary">Einstellungen für Wiedergabelisten und Filter zum Aus-/Einschließen von Inhalten.</string>
     <string name="notification_title">Benachrichtigung</string>
-    <string name="notification_summary">Benachrichtigungsstil anpassen.</string>
     <string name="advanced_title">Erweitert</string>
     <string name="advanced_summary">App-Sprache und andere Einstellungen für fortgeschrittene Benutzer.</string>
     <string name="update_title">Aktualisieren</string>
@@ -737,10 +736,6 @@
     <string name="min_song_duration_title">Titel-Mindestlänge</string>
     <string name="min_song_duration_summary">Mindestlänge eines Titels in Sekunden, um diesen in Deiner Bibliothek anzuzeigen.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Klassische Benachrichtigung</string>
-    <string name="classic_notification_summary">Verwende das klassische Benachrichtigungsdesign.</string>
-    <string name="colored_notification_title">Farbige Benachrichtigung</string>
-    <string name="colored_notification_summary">Verwende das Benachrichtigungsdesign in der lebendigen Farbe des Albumcovers</string>
     <string name="extra_line_of_text_title">Zusätzliche Textzeile</string>
     <string name="notification_priority_title">Benachrichtigungspriorität</string>
     <string name="album_art_on_lockscreen_title">Albumcover verwenden</string>

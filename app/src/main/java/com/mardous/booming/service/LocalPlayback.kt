@@ -6,6 +6,10 @@ import android.media.MediaPlayer
 import androidx.annotation.FloatRange
 import androidx.core.net.toUri
 import com.mardous.booming.service.playback.Playback
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.pow
@@ -13,6 +17,7 @@ import kotlin.math.pow
 abstract class LocalPlayback(val context: Context) : Playback, MediaPlayer.OnErrorListener,
     MediaPlayer.OnCompletionListener {
 
+    private val mutex = Mutex()
     protected var mCallbacks: Playback.PlaybackCallbacks? = null
         private set
 
@@ -68,35 +73,33 @@ abstract class LocalPlayback(val context: Context) : Playback, MediaPlayer.OnErr
      * @param path The path of the file, or the http/rtsp URL of the stream you want to play
      * @return True if the <code>player</code> has been prepared and is ready to play, false otherwise
      */
-    protected fun setDataSourceImpl(
+    protected suspend fun setDataSourceImpl(
         player: MediaPlayer,
         path: String,
-        completion: (success: Boolean) -> Unit,
-    ) {
-        player.reset()
-        try {
-            if (path.startsWith("content://")) {
-                player.setDataSource(context, path.toUri())
-            } else {
-                player.setDataSource(path)
-            }
-            player.setAudioAttributes(
-                AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_MEDIA)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                    .build()
-            )
-            player.setOnPreparedListener {
-                player.setAuxEffectSendLevel(1.0f)
-                player.setOnPreparedListener(null)
+        completion: suspend (success: Boolean) -> Unit,
+    ) = withContext(IO) {
+        mutex.withLock {
+            player.reset()
+            try {
+                if (path.startsWith("content://")) {
+                    player.setDataSource(context, path.toUri())
+                } else {
+                    player.setDataSource(path)
+                }
+                player.setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .build()
+                )
+                player.prepare()
                 completion(true)
+            } catch (e: Exception) {
+                completion(false)
+                e.printStackTrace()
             }
-            player.prepareAsync()
-        } catch (e: Exception) {
-            completion(false)
-            e.printStackTrace()
+            player.setOnCompletionListener(this@LocalPlayback)
+            player.setOnErrorListener(this@LocalPlayback)
         }
-        player.setOnCompletionListener(this)
-        player.setOnErrorListener(this)
     }
 }

@@ -12,11 +12,13 @@ import androidx.annotation.FloatRange
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.execSafe
 import com.mardous.booming.extensions.showToast
-import com.mardous.booming.model.Song
 import com.mardous.booming.service.AudioFader.Companion.createFadeAnimator
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.Main
 
 /** @author Prathamesh M */
 
@@ -33,6 +35,7 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
     private var player1 = MediaPlayer()
     private var player2 = MediaPlayer()
 
+    private var durationListener = DurationListener()
     private var crossFadeAnimator: Animator? = null
 
     private var mIsInitialized = false
@@ -42,14 +45,12 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
     private var albumDataSource: AlbumDataSource? = null
 
     private var crossFadeDuration = 0
-    private var observeProgress = true
     var isCrossFading = false
 
     init {
         player1.setWakeMode(context, PowerManager.PARTIAL_WAKE_LOCK)
         player2.setWakeMode(context, PowerManager.PARTIAL_WAKE_LOCK)
         currentPlayer = CurrentPlayer.PLAYER_ONE
-        setCrossFadeDuration(Preferences.crossFadeDuration)
     }
 
     override fun isInitialized(): Boolean {
@@ -61,6 +62,7 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
     }
 
     override fun start(): Boolean {
+        durationListener.start()
         resumeFade()
         return try {
             getCurrentPlayer()?.start()
@@ -79,6 +81,7 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
         cancelFade()
         getCurrentPlayer()?.release()
         getNextPlayer()?.release()
+        durationListener.cancel()
     }
 
     override fun stop() {
@@ -87,6 +90,7 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
     }
 
     override fun pause(): Boolean {
+        durationListener.stop()
         pauseFade()
         getCurrentPlayer()?.let {
             if (it.isPlaying) {
@@ -113,7 +117,7 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
         }
     }
 
-    override fun setDataSource(song: Song, force: Boolean, completion: (Boolean) -> Unit) {
+    override suspend fun setDataSource(song: Song, force: Boolean, completion: (Boolean) -> Unit) {
         if (force) hasDataSource = false
         mIsInitialized = false
         /* We've already set DataSource if initialized is true in setNextDataSource */
@@ -124,17 +128,21 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
                     if (mIsInitialized) {
                         albumDataSource = AlbumDataSource(song.albumId, song.trackNumber)
                     }
-                    completion(success)
+                    withContext(Main) {
+                        completion(success)
+                    }
                 }
             }
             hasDataSource = true
         } else {
-            completion(true)
+            withContext(Main) {
+                completion(true)
+            }
             mIsInitialized = true
         }
     }
 
-    override fun setNextDataSource(song: Song?) {
+    override suspend fun setNextDataSource(song: Song?) {
         nextDataSource = if (song != null && albumDataSource?.avoidCrossfade(song) == true) {
             null
         } else {
@@ -237,21 +245,6 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
         crossFadeDuration = duration
     }
 
-    override fun setProgressState(progress: Int, duration: Int) {
-        if (!mIsInitialized || !observeProgress)
-            return
-
-        if (progress > 0 && (duration - progress).div(1000) == crossFadeDuration) {
-            getNextPlayer()?.let { player ->
-                nextDataSource?.let {
-                    setDataSourceImpl(player, it.toUri().toString()) { success ->
-                        if (success) switchPlayer()
-                    }
-                }
-            }
-        }
-    }
-
     override fun onCompletion(mp: MediaPlayer?) {
         if (mp == getCurrentPlayer()) {
             mCallbacks?.onTrackEnded()
@@ -265,8 +258,23 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
         player2 = MediaPlayer()
         mIsInitialized = true
         mp?.setWakeMode(context, PowerManager.PARTIAL_WAKE_LOCK)
-        context.showToast(R.string.unplayable_file)
+        context.showToast(context.getString(R.string.unplayable_file_code_x, what))
         return false
+    }
+
+    private suspend fun onDurationUpdated(progress: Int, duration: Int) {
+        if (progress > 0 && (duration - progress).div(1000) == crossFadeDuration) {
+            getNextPlayer()?.let { player ->
+                nextDataSource?.let { dataSource ->
+                    setDataSourceImpl(player, dataSource.toUri().toString()) { success ->
+                        if (success) withContext(Main) {
+                            switchPlayer()
+                        }
+                        nextDataSource = null
+                    }
+                }
+            }
+        }
     }
 
     private fun getCurrentPlayer(): MediaPlayer? {
@@ -298,11 +306,10 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
     }
 
     private fun crossFade(fadeInMp: MediaPlayer, fadeOutMp: MediaPlayer) {
-        observeProgress = false
         isCrossFading = true
         crossFadeAnimator = createFadeAnimator(context, fadeInMp, fadeOutMp, crossFadeDuration, mBalance) {
             crossFadeAnimator = null
-            observeProgress = true
+            durationListener.start()
             isCrossFading = false
         }
         crossFadeAnimator?.start()
@@ -344,6 +351,27 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
                 CurrentPlayer.PLAYER_ONE
             }
         mCallbacks?.onTrackEndedWithCrossFade()
+    }
+
+    internal fun crossFadeScope(): CoroutineScope = CoroutineScope(Job() + Dispatchers.Default)
+
+    inner class DurationListener : CoroutineScope by crossFadeScope() {
+
+        private var job: Job? = null
+
+        fun start() {
+            job?.cancel()
+            job = launch {
+                while (isActive) {
+                    delay(250)
+                    onDurationUpdated(position(), duration())
+                }
+            }
+        }
+
+        fun stop() {
+            job?.cancel()
+        }
     }
 
     private class AlbumDataSource(private val id: Long, private val trackNumber: Int) {

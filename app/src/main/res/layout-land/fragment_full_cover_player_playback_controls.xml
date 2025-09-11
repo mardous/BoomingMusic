@@ -3,72 +3,79 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/control_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
     android:paddingStart="32dp"
-    android:paddingEnd="32dp"
-    android:layoutDirection="ltr"
-    tools:ignore="UnusedAttribute">
+    android:paddingEnd="32dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/titleContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:layout_marginBottom="@dimen/player_landscape_vertical_space"
-        android:orientation="vertical"
+        android:layoutDirection="locale"
         app:layout_constraintBottom_toTopOf="@+id/progressSlider"
-        app:layout_constraintEnd_toStartOf="@+id/menu"
-        app:layout_constraintStart_toEndOf="@+id/favorite">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/titlesGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ellipsize="marquee"
             android:gravity="center"
-            android:marqueeRepeatLimit="marquee_forever"
+            android:freezesText="true"
             android:singleLine="true"
-            android:textAppearance="?textAppearanceBody1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceHeadline6"
             android:textStyle="bold"
-            tools:text="@tools:sample/lorem/random"/>
+            app:layout_constraintBottom_toTopOf="@+id/titlesGuideline"
+            app:layout_constraintStart_toEndOf="@+id/favorite"
+            app:layout_constraintEnd_toStartOf="@+id/menu"
+            tools:text="@tools:sample/lorem" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingTop="6dp"
             android:gravity="center"
-            android:maxLines="1"
+            android:freezesText="true"
+            android:singleLine="true"
             android:ellipsize="end"
-            android:alpha="0.75"
-            android:textAppearance="?textAppearanceBody2"
-            tools:text="@tools:sample/lorem/random"/>
+            app:layout_constraintTop_toBottomOf="@+id/titlesGuideline"
+            app:layout_constraintStart_toEndOf="@+id/favorite"
+            app:layout_constraintEnd_toStartOf="@+id/menu"
+            tools:text="@tools:sample/lorem" />
 
-    </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/favorite"
+            style="@style/PlayerIconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_favorite_outline_24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/favorite"
-        style="@style/PlayerIconButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:icon="@drawable/ic_favorite_outline_24dp"
-        app:layout_constraintTop_toTopOf="@+id/titleContainer"
-        app:layout_constraintBottom_toBottomOf="@+id/titleContainer"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menu"
+            style="@style/PlayerIconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_more_vert_24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/menu"
-        style="@style/PlayerIconButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:icon="@drawable/ic_more_vert_24dp"
-        app:layout_constraintTop_toTopOf="@+id/titleContainer"
-        app:layout_constraintBottom_toBottomOf="@+id/titleContainer"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/progressGuideline"
@@ -84,11 +91,12 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="36dp"/>
 
-    <com.mardous.booming.views.MusicSlider
+    <com.mardous.booming.ui.component.views.MusicSlider
         android:id="@+id/progressSlider"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/player_landscape_vertical_space"
+        android:layout_marginVertical="@dimen/player_landscape_vertical_space"
+        app:layout_constraintTop_toBottomOf="@+id/titleContainer"
         app:layout_constraintBottom_toTopOf="@+id/playPauseButton"
         app:layout_constraintStart_toEndOf="@+id/progressGuideline"
         app:layout_constraintEnd_toStartOf="@+id/durationGuideline"
@@ -180,10 +188,10 @@
         android:layout_marginBottom="16dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:alpha="0.75"
-        android:ellipsize="end"
-        android:maxLines="1"
         android:gravity="center"
+        android:freezesText="true"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:textAlignment="center"
         android:textAppearance="?textAppearanceBody2"
         app:layout_constrainedWidth="true"

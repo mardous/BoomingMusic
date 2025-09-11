@@ -21,17 +21,8 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.getSystemService
-
-fun Activity.keepScreenOn(keepScreenOn: Boolean) {
-    if (keepScreenOn) {
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-    } else {
-        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-    }
-}
 
 fun Activity.hideSoftKeyboard() {
     val currentFocus = currentFocus

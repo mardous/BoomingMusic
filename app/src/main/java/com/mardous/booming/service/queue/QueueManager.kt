@@ -19,11 +19,17 @@ package com.mardous.booming.service.queue
 
 import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.session.MediaSessionCompat
+import com.mardous.booming.core.legacy.PlaybackQueueStore
+import com.mardous.booming.core.model.shuffle.GroupShuffleMode
+import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
+import com.mardous.booming.data.SongProvider
+import com.mardous.booming.data.mapper.toQueueSong
+import com.mardous.booming.data.mapper.toQueueSongs
+import com.mardous.booming.data.model.QueueSong
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.albumCoverUri
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.model.Song
-import com.mardous.booming.model.SongProvider
-import com.mardous.booming.providers.databases.PlaybackQueueStore
+import com.mardous.booming.extensions.media.indexOfSong
 import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.sort.SortOrder
@@ -453,6 +459,10 @@ class QueueManager {
     fun restoreState(shuffleMode: Playback.ShuffleMode, repeatMode: Playback.RepeatMode) {
         this._shuffleMode = shuffleMode
         this._repeatMode = repeatMode
+        doDispatchChange {
+            it.shuffleModeChanged(shuffleMode)
+            it.repeatModeChanged(repeatMode)
+        }
     }
 
     suspend fun restoreQueues(
@@ -564,8 +574,9 @@ class QueueManager {
         shuffleMode: Playback.ShuffleMode,
         onCreated: suspend MutableList<QueueSong>.() -> List<QueueSong>
     ): Int {
-        if (source.isNotEmpty() && startPosition >= 0 && startPosition < source.size) {
-            val queueSongs = source.toQueueSongs().toMutableList()
+        val filteredSource = source.filterNot { it == Song.emptySong }
+        if (filteredSource.isNotEmpty() && startPosition >= 0 && startPosition < filteredSource.size) {
+            val queueSongs = filteredSource.toQueueSongs().toMutableList()
             if (queueSongs == _originalPlayingQueue && shuffleMode == this.shuffleMode && !shuffleMode.isOn) {
                 return HANDLED_SOURCE
             }
@@ -590,13 +601,13 @@ class QueueManager {
         }
     }
 
-    private fun MutableList<QueueSong>.removeSong(song: Song): Int {
-        val deletePosition = indexOf(song)
-        if (deletePosition != -1) {
+    private fun MutableList<QueueSong>.removeSong(song: Song) {
+        var deletePosition = indexOfSong(song.id)
+        while (deletePosition != -1) {
             removeAt(deletePosition)
             rePosition(deletePosition, this)
+            deletePosition = indexOfSong(song.id)
         }
-        return deletePosition
     }
 
     private fun <T : Song> makeShuffleList(listToShuffle: MutableList<T>, current: Int) {

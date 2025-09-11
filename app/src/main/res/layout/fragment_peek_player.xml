@@ -21,7 +21,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/playerAlbumCoverFragment"
-        android:name="com.mardous.booming.fragments.player.cover.CoverPagerFragment"
+        android:name="com.mardous.booming.ui.screen.player.cover.CoverPagerFragment"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginStart="16dp"
@@ -36,11 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
-        android:ellipsize="marquee"
-        android:focusable="true"
+        android:ellipsize="end"
         android:freezesText="true"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:scrollHorizontally="true"
         android:singleLine="true"
         android:textAppearance="?textAppearanceSubtitle1"
         app:layout_constraintBottom_toTopOf="@+id/text"
@@ -55,8 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:freezesText="true"
+        android:singleLine="true"
         android:ellipsize="end"
-        android:maxLines="2"
         android:textAppearance="?textAppearanceBody2"
         android:textColor="?android:attr/textColorSecondary"
         app:layout_constraintBottom_toTopOf="@+id/songInfo"
@@ -72,8 +70,9 @@
         android:layout_gravity="center"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:freezesText="true"
+        android:singleLine="true"
         android:ellipsize="end"
-        android:maxLines="1"
         android:textColor="?android:attr/textColorSecondary"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/playerAlbumCoverFragment"
@@ -92,7 +91,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playbackControlsFragment"
-            android:name="com.mardous.booming.fragments.player.styles.peekplayerstyle.PeekPlayerControlsFragment"
+            android:name="com.mardous.booming.ui.screen.player.styles.peekplayerstyle.PeekPlayerControlsFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_peek_player_playback_controls" />
