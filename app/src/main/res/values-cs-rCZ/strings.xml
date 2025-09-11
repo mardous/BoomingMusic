@@ -578,7 +578,6 @@
     <string name="library_title">Knihovna</string>
     <string name="library_summary">Nastavení seznamů skladeb a filtrů pro vyloučení/zahrnutí.</string>
     <string name="notification_title">Oznamování</string>
-    <string name="notification_summary">Přizpůsobit styl oznámení.</string>
     <string name="advanced_title">Rozšířené</string>
     <string name="advanced_summary">Jazyk aplikace a další nastavení pro pokročilé uživatele.</string>
     <string name="update_title">Aktualizovat</string>
@@ -753,10 +752,6 @@
     <string name="min_song_duration_title">Minimální doba trvání skladby</string>
     <string name="min_song_duration_summary">Kolik sekund (alespoň) musí trvat skladba, aby se zobrazila ve vaší knihovně.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Klasické oznámení</string>
-    <string name="classic_notification_summary">Použijte klasický návrh oznámení.</string>
-    <string name="colored_notification_title">Barevné oznámení</string>
-    <string name="colored_notification_summary">Barvy oznámení v živé barvě obalu alba</string>
     <string name="extra_line_of_text_title">Další řádek textu</string>
     <string name="notification_priority_title">Priorita oznámení</string>
     <string name="album_art_on_lockscreen_title">Zobrazit obal alba</string>
