@@ -594,7 +594,6 @@
     <string name="library_title">المكتبة</string>
     <string name="library_summary">إعدادات قوائم التشغيل وفلاتر الاستبعاد/الإدراج.</string>
     <string name="notification_title">إشعار</string>
-    <string name="notification_summary">تخصيص نمط الإشعار.</string>
     <string name="advanced_title">متقدم</string>
     <string name="advanced_summary">لغة داخل التطبيق وغيرها من الإعدادات للمستخدمين المتقدمين.</string>
     <string name="update_title">تحديث</string>
@@ -769,10 +768,6 @@
     <string name="min_song_duration_title">الحد الأدنى من مدة الأغنية</string>
     <string name="min_song_duration_summary">كم ثانية (على الأقل) يجب أن تدوم أغنية لعرضها في مكتبتك.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">إشعار كلاسيكي</string>
-    <string name="classic_notification_summary">استخدم تصميم الإشعارات الكلاسيكية.</string>
-    <string name="colored_notification_title">إشعار ملون</string>
-    <string name="colored_notification_summary">ألوان الإشعار في لون غلاف الألبوم النشط</string>
     <string name="extra_line_of_text_title">سطر إضافي من النص</string>
     <string name="notification_priority_title">أولوية الإشعار</string>
     <string name="album_art_on_lockscreen_title">إظهار غلاف الألبوم</string>
