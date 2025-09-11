@@ -562,7 +562,6 @@
     <string name="library_title">Bibliotheek</string>
     <string name="library_summary">Instellingen voor afspeellijsten en uitsluitingen/integratiefilters.</string>
     <string name="notification_title">Notificatie</string>
-    <string name="notification_summary">Pas de notificatiestijl aan.</string>
     <string name="advanced_title">Geavanceerd</string>
     <string name="advanced_summary">In-app taal en andere instellingen voor gevorderde gebruikers.</string>
     <string name="update_title">Vernieuwen</string>
@@ -737,10 +736,6 @@
     <string name="min_song_duration_title">Minimale duur van het nummer</string>
     <string name="min_song_duration_summary">Hoeveel seconden (tenminste) moet er een nummer meegaan in je bibliotheek.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Klassieke melding</string>
-    <string name="classic_notification_summary">Gebruik het klassieke notificatieontwerp.</string>
-    <string name="colored_notification_title">Gekleurde melding</string>
-    <string name="colored_notification_summary">Notificatie wordt gekleurd in de levendige kleur van de albumhoes</string>
     <string name="extra_line_of_text_title">Extra regel tekst</string>
     <string name="notification_priority_title">Prioriteit melding</string>
     <string name="album_art_on_lockscreen_title">Toon albumhoes</string>
