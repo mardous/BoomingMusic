@@ -578,7 +578,6 @@
     <string name="library_title">Biblioteka</string>
     <string name="library_summary">Ustawienia playlist i filtrów selekcji utworów.</string>
     <string name="notification_title">Powiadomienie</string>
-    <string name="notification_summary">Dostosuj styl powiadomień.</string>
     <string name="advanced_title">Zaawansowane</string>
     <string name="advanced_summary">Język aplikacji i inne ustawienia dla zaawansowanych użytkowników.</string>
     <string name="update_title">Aktualizacje</string>
@@ -753,10 +752,6 @@
     <string name="min_song_duration_title">Minimalny czas trwania utworu</string>
     <string name="min_song_duration_summary">Ile sekund (przynajmniej) musi trwać piosenka, by wyświetlić ją twojej bibliotece.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Klasyczne powiadomienie</string>
-    <string name="classic_notification_summary">Użyj klasycznego wyglądu powiadomień.</string>
-    <string name="colored_notification_title">Kolorowe powiadomienia</string>
-    <string name="colored_notification_summary">Kolory powiadomień w dynamicznym kolorze okładki albumu</string>
     <string name="extra_line_of_text_title">Dodatkowy wiersz tekstu</string>
     <string name="notification_priority_title">Priorytet powiadomienia</string>
     <string name="album_art_on_lockscreen_title">Pokaż okładkę albumu</string>
