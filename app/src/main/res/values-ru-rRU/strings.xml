@@ -580,7 +580,6 @@
     <string name="library_title">Библиотека</string>
     <string name="library_summary">Настройки плейлистов и фильтров исключения/включения.</string>
     <string name="notification_title">Уведомление</string>
-    <string name="notification_summary">Настройте стиль уведомлений.</string>
     <string name="advanced_title">Дополнительно</string>
     <string name="advanced_summary">Язык приложения и другие настройки для опытных пользователей.</string>
     <string name="update_title">Обновление</string>
@@ -755,10 +754,6 @@
     <string name="min_song_duration_title">Минимальная длительность песни</string>
     <string name="min_song_duration_summary">Минимальная длительность песни в секундах, чтобы она отображалась в вашей библиотеке.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Классическое уведомление</string>
-    <string name="classic_notification_summary">Использовать классический дизайн уведомлений.</string>
-    <string name="colored_notification_title">Цветное уведомление</string>
-    <string name="colored_notification_summary">Окрашивает уведомление в яркий цвет обложки альбома</string>
     <string name="extra_line_of_text_title">Дополнительная строка текста</string>
     <string name="notification_priority_title">Приоритет уведомлений</string>
     <string name="album_art_on_lockscreen_title">Показывать обложку альбома</string>
