@@ -580,7 +580,7 @@
     <string name="library_title">Библиотека</string>
     <string name="library_summary">Настройки плейлистов и фильтров исключения/включения.</string>
     <string name="notification_title">Уведомление</string>
-    <string name="advanced_title">Расширенные</string>
+    <string name="advanced_title">Дополнительно</string>
     <string name="advanced_summary">Язык приложения и другие настройки для опытных пользователей.</string>
     <string name="update_title">Обновление</string>
     <string name="update_summary">Настройки обновлений приложения.</string>
