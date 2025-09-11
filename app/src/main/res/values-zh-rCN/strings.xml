@@ -554,7 +554,6 @@
     <string name="library_title">曲库</string>
     <string name="library_summary">播放列表和排除/包含过滤器的设置。</string>
     <string name="notification_title">通知</string>
-    <string name="notification_summary">自定义通知样式。</string>
     <string name="advanced_title">高级设置</string>
     <string name="advanced_summary">高级用户的应用内语言和其他设置。</string>
     <string name="update_title">更新</string>
@@ -729,10 +728,6 @@
     <string name="min_song_duration_title">最小歌曲持续时间</string>
     <string name="min_song_duration_summary">至少需要多少秒钟才能在您的知识库中显示。</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">经典通知</string>
-    <string name="classic_notification_summary">使用经典通知设计。</string>
-    <string name="colored_notification_title">着色通知</string>
-    <string name="colored_notification_summary">以专辑封面充满活力的颜色颜色</string>
     <string name="extra_line_of_text_title">增加一行文本</string>
     <string name="notification_priority_title">通知优先级</string>
     <string name="album_art_on_lockscreen_title">显示专辑封面</string>
