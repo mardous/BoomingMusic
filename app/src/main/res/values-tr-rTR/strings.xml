@@ -562,7 +562,6 @@
     <string name="library_title">Kütüphane</string>
     <string name="library_summary">Çalma listeleri ve hariç tutma/dahil etme filtreleri için ayarlar.</string>
     <string name="notification_title">Bildirim</string>
-    <string name="notification_summary">Bildirim stilini özelleştirin.</string>
     <string name="advanced_title">Gelişmiş</string>
     <string name="advanced_summary">Uygulama içi dil ve ileri düzey kullanıcılar için diğer ayarlar.</string>
     <string name="update_title">Güncelleme</string>
@@ -605,15 +604,15 @@
     <string name="lyrics_custom_font_title">Özel yazı tipi</string>
     <string name="lyrics_custom_font_summary">Şarkı sözleri için kendi yazı tipinizi içe aktarın ve kullanın.</string>
     <string name="lyrics_import_custom_font_title">Özel yazı tipi içe aktar</string>
-    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
-    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
-    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
-    <string name="lyrics_gradient_background_title">Gradient background</string>
-    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
-    <string name="lyrics_blur_effect_title">Blur effect</string>
-    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
-    <string name="lyrics_shadow_effect_title">Shadow effect</string>
-    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_syllable_mode_title">Kelime kelime şarkı sözleri</string>
+    <string name="lyrics_syllable_mode_summary">Şarkı sözlerinin kelime kelime senkronizasyonla görüntülenmesini sağlar. Şarkı sözlerinin mevcudiyetine ve LRC veya TTML gibi uyumlu bir formata bağlıdır.</string>
+    <string name="lyrics_effects_note">Gelişmiş efektler görsel deneyimi iyileştirir ancak daha fazla sistem kaynağı ve pil gerektirebilir.</string>
+    <string name="lyrics_gradient_background_title">Gradyan arka plan</string>
+    <string name="lyrics_gradient_background_summary">Mevcut şarkının kapak renklerini kullanarak animasyonlu bir gradyan arka plan göster. Yalnızca tam ekran görünümde geçerlidir.</string>
+    <string name="lyrics_blur_effect_title">Bulanıklaştırma efekti</string>
+    <string name="lyrics_blur_effect_summary">Mevcut satıra bitişik şarkı sözü satırlarını bulanıklaştır.</string>
+    <string name="lyrics_shadow_effect_title">Gölge efekti</string>
+    <string name="lyrics_shadow_effect_summary">Okunabilirliği artırmak için mevcut satırın altına bir gölge ekler.</string>
     <string name="lyrics_progressive_coloring_title">Aşamalı şarkı sözü renklendirme</string>
     <string name="lyrics_progressive_coloring_summary">Aktif satırları anında renklendirmek yerine kademeli renk geçişi ile hareketlendir.</string>
     <string name="lyrics_bold_synced_title">Senkronize şarkı sözleri için kalın yazı tipi</string>
@@ -737,10 +736,6 @@
     <string name="min_song_duration_title">Minimum şarkı süresi</string>
     <string name="min_song_duration_summary">Bir şarkının kütüphanenizde gösterilmesi için en az kaç saniye sürmesi gerekir.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Klasik bildirim</string>
-    <string name="classic_notification_summary">Klasik bildirim tasarımını kullanın.</string>
-    <string name="colored_notification_title">Renkli bildirim</string>
-    <string name="colored_notification_summary">Bildirimi albüm kapağının canlı rengiyle renklendirir</string>
     <string name="extra_line_of_text_title">Ek metin satırı</string>
     <string name="notification_priority_title">Bildirim önceliği</string>
     <string name="album_art_on_lockscreen_title">Albüm kapağını göster</string>
@@ -752,10 +747,9 @@
     <string name="backup_app_data_summary">Temel uygulama verilerini içeren bir dosya oluşturun ve harici depolamaya kaydedin.</string>
     <string name="restore_backup_title">Yedekten geri yükle</string>
     <string name="restore_backup_summary">Uygulama verilerini (ve durumunu) önceki bir yedekten geri yükleyin.</string>
-    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
-    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
-    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
-        or battery management may ignore this setting and always stop the app when removed from recents.</string>
+    <string name="stop_when_closed_from_recents_title">Son uygulamalardan kapatılınca durdur</string>
+    <string name="stop_when_closed_from_recents_summary">Uygulama son uygulamalar listesinden kapatılırsa oynatma durur.</string>
+    <string name="stop_when_closed_from_recents_note">Not: Agresif bellek veya pil yönetimine sahip bazı cihazlar bu ayarı yoksayabilir ve son uygulamalardan kaldırıldığında uygulamayı her zaman durdurabilir.</string>
     <!-- Preference values -->
     <string name="advanced_label">Gelişmiş</string>
     <string name="light_theme_name">Açık</string>
