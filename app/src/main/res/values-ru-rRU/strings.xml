@@ -690,14 +690,14 @@
     <string name="prefer_album_artist_name_summary">Показывает имя исполнителя альбома вместо имени исполнителя песни (если доступно).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Проигрывать при запуске</string>
-    <string name="gapless_playback_title">Воспроизведение без перехвата</string>
-    <string name="gapless_playback_summary">Плавный переход между песнями. Может вызвать проблемы с воспроизведением на некоторых устройствах.</string>
+    <string name="gapless_playback_title">Воспроизведение без пауз</string>
+    <string name="gapless_playback_summary">Плавный переход между песнями. Может вызывать проблемы с воспроизведением на некоторых устройствах.</string>
     <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="replaygain_source_mode_title">Исходный режим</string>
-    <string name="replaygain_preamp_title">Уровень подготовки Amp</string>
-    <string name="replaygain_preamp_summary">Установить уровень громкости при включенном ReplayGain</string>
-    <string name="queue_next_mode_title">Режим \"Очередь\"</string>
+    <string name="replaygain_source_mode_title">Режим источника</string>
+    <string name="replaygain_preamp_title">Уровень предусилителя</string>
+    <string name="replaygain_preamp_summary">Установить уровень громкости при включенном ReplayGain.</string>
+    <string name="queue_next_mode_title">Режим «Добавить в очередь»</string>
     <string name="search_auto_queue_title">Enqueue all search results</string>
     <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
     <string name="remember_shuffle_mode_title">Запомнить перемешивание</string>
@@ -754,7 +754,7 @@
     <string name="min_song_duration_title">Минимальная длительность песни</string>
     <string name="min_song_duration_summary">Минимальная длительность песни в секундах, чтобы она отображалась в вашей библиотеке.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Дополнительная линия текста</string>
+    <string name="extra_line_of_text_title">Дополнительная строка текста</string>
     <string name="notification_priority_title">Приоритет уведомлений</string>
     <string name="album_art_on_lockscreen_title">Показывать обложку альбома</string>
     <string name="album_art_on_lockscreen_summary">Использует обложку текущей песни как обои экрана блокировки. Может привести к высокому потреблению памяти. Зависит от устройства.</string>
