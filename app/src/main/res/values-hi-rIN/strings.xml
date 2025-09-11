@@ -560,7 +560,6 @@
     <string name="library_title">लायब्रेरी</string>
     <string name="library_summary">प्लेलिस्ट और निष्कासन/समावेशन फ़िल्टर के लिए सेटिंग्स।</string>
     <string name="notification_title">नोटिफिकेशन</string>
-    <string name="notification_summary">नोटिफिकेशन स्टाइल को अपनी मर्जी से सेट करें</string>
     <string name="advanced_title">आधुनिक</string>
     <string name="advanced_summary">उपयोगकर्ताओं के लिए उन्नत सेटिंग्स और इन-ऐप भाषा।</string>
     <string name="update_title">अपडेट</string>
@@ -735,10 +734,6 @@
     <string name="min_song_duration_title">न्यूनतम गाने की अवधि</string>
     <string name="min_song_duration_summary">आपकी लाइब्रेरी में दिखाने के लिए एक गाने को कितने सेकंड (कम से कम) तक चलना चाहिए?</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">क्लासिक नोटिफिकेशन</string>
-    <string name="classic_notification_summary">क्लासिक नोटिफिकेशन डिज़ाइन का इस्तेमाल करो।</string>
-    <string name="colored_notification_title">रंगीन नोटिफिकेशन</string>
-    <string name="colored_notification_summary">एल्बम कवर के ज़बरदस्त रंग में नोटिफिकेशन को रंग देता है</string>
     <string name="extra_line_of_text_title">अतिरिक्त पाठ की पंक्ति</string>
     <string name="notification_priority_title">नोटिफिकेशन प्रायोरिटी</string>
     <string name="album_art_on_lockscreen_title">एल्बम का कवर दिखाएँ</string>
