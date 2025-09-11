@@ -562,7 +562,6 @@
     <string name="library_title">Libreria</string>
     <string name="library_summary">Impostazioni per playlist e filtri esclusione/inclusione.</string>
     <string name="notification_title">Notifica</string>
-    <string name="notification_summary">Personalizza lo stile di notifica.</string>
     <string name="advanced_title">Avanzate</string>
     <string name="advanced_summary">Linguaggio in-app e altre impostazioni per gli utenti avanzati.</string>
     <string name="update_title">Aggiorna</string>
@@ -737,10 +736,6 @@
     <string name="min_song_duration_title">Durata minima del brano</string>
     <string name="min_song_duration_summary">Quanti secondi (almeno) devono durare una canzone da mostrare nella tua libreria.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Notifica classica</string>
-    <string name="classic_notification_summary">Usa il classico design delle notifiche.</string>
-    <string name="colored_notification_title">Notifica colorata</string>
-    <string name="colored_notification_summary">Colora la notifica nel colore vivace della copertina dell\'album</string>
     <string name="extra_line_of_text_title">Riga aggiuntiva di testo</string>
     <string name="notification_priority_title">Priorità di notifica</string>
     <string name="album_art_on_lockscreen_title">Mostra copertina album</string>
