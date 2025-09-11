@@ -336,19 +336,20 @@
     <string name="select_content_to_restore">Välj innehåll att återställa:</string>
     <string name="could_not_restore_data">Kunde inte återställa data. Verifiera säkerhetskopieringsfil och försök igen.</string>
     <string name="data_restored_successfully">Data återställdes framgångsrikt.</string>
+    <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
+    <string name="playlist_locked">Playlist locked</string>
+    <string name="playlist_unlocked">Playlist unlocked</string>
+    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
+    <string name="queue_locked">Queue locked</string>
+    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Linje</string>
-    <string name="audio_device_bluetooth">Bluetooth-enhet</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Högtalare</string>
     <string name="audio_device_builtin_speaker">Inbyggd högtalare</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Trådbundet headset</string>
     <string name="audio_device_usb_device">USB-enhet</string>
     <string name="audio_device_usb_headset">USB headset</string>
-    <string name="audio_device_default">Systemets standard</string>
-    <string name="audio_device_unknown">Okänd</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Lång</item>
@@ -461,6 +462,8 @@
     <string name="sound_settings">Ljud inställningar</string>
     <string name="volume_label">Volym</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Crossfade (experimental)</string>
+    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">Extern EQ</string>
     <string name="custom">Anpassad</string>
     <!-- Lyrics viewer -->
@@ -489,6 +492,8 @@
     <string name="failed_to_update_lyrics">Det gick inte att uppdatera låttexter.</string>
     <string name="there_are_no_changes_to_save">There are no changes to save.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
+    <string name="font_imported_successfully">Font imported successfully.</string>
+    <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sov timer</string>
     <string name="sleep_timer_cancel_current_timer">Avbryt nuvarande timer</string>
@@ -548,6 +553,8 @@
     <string name="appearance_summary">Ändra appens tema och andra visuella inställningar.</string>
     <string name="now_playing_title">Nu spelas</string>
     <string name="now_playing_summary">Anpassa den nu uppspelningsskärmen.</string>
+    <string name="lyrics_preferences_title">Lyrics</string>
+    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
     <string name="playback_title">Uppspelning</string>
     <string name="playback_summary">Ändra ljudinställningar, Bluetooth-headset etc.</string>
     <string name="metadata_title">Metadata</string>
@@ -591,12 +598,46 @@
     <string name="tab_mode_title">Fliken titlar läge</string>
     <string name="hold_tab_to_search_title">Hold tab to Search</string>
     <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
+    <string name="larger_header_image_title">Larger header image</string>
+    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
+    <string name="lyrics_center_current_line_title">Center current line</string>
+    <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
+    <string name="lyrics_custom_font_title">Custom font</string>
+    <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
+    <string name="lyrics_import_custom_font_title">Import custom font</string>
+    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
+    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
+    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
+    <string name="lyrics_gradient_background_title">Gradient background</string>
+    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
+    <string name="lyrics_blur_effect_title">Blur effect</string>
+    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
+    <string name="lyrics_shadow_effect_title">Shadow effect</string>
+    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
+    <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
+    <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
+    <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
+    <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
+    <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
+    <string name="lyrics_line_spacing_title">Line spacing</string>
+    <string name="lyrics_line_spacing_summary">Adjust the space between lyric lines.</string>
+    <string name="synced_font_size_player_title">Synced lyrics font size (player)</string>
+    <string name="synced_font_size_player_summary">Adjust the font size for synced lyrics shown over the album cover in the player screen.</string>
+    <string name="unsynced_font_size_player_title">Unsynced lyrics font size (player)</string>
+    <string name="unsynced_font_size_player_summary">Adjust the font size for unsynced lyrics shown over the album cover in the player screen.</string>
+    <string name="synced_font_size_full_title">Synced lyrics font size (full view)</string>
+    <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
+    <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
+    <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Öppna vid uppspelning</string>
     <string name="open_on_play_summary">Expandera panelen Nu spelas automatiskt efter att ha spelat en låt.</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Extra kontroller</string>
     <string name="extra_controls_summary">Lägg till extra kontroller för minispelare</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
@@ -622,6 +663,8 @@
     <string name="display_album_name_title">Visa albumnamn</string>
     <string name="display_extra_info_title">Visa extra information</string>
     <string name="display_extra_info_summary">Visa extra info om låten, som bitrate, format, samplingshastighet, etc.</string>
+    <string name="display_next_song_title">Display next song</string>
+    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Välj den extra information som ska visas i spelarpanelen.</string>
     <string name="prefer_remaining_time_title">Föredrar återstående tid</string>
@@ -632,12 +675,8 @@
     <string name="play_on_startup_title">Play on startup</string>
     <string name="gapless_playback_title">Otillåten uppspelning</string>
     <string name="gapless_playback_summary">Smidig övergång mellan låtar. Kan orsaka uppspelningsproblem på vissa enheter.</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="crossfade_summary">Seconds it takes to crossfade between songs (set to 0 to disable).</string>
     <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
     <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
-    <string name="audio_fade_duration_summary">Seconds it takes to fade the volume in or out when playback starts or pauses (set to 0 to disable).</string>
     <string name="replaygain_source_mode_title">Källa läge</string>
     <string name="replaygain_preamp_title">PreAmp nivå</string>
     <string name="replaygain_preamp_summary">Ställ in volymnivå när ReplayGain är aktiverad.</string>
@@ -713,6 +752,10 @@
     <string name="backup_app_data_summary">Skapa en fil som innehåller viktiga appdata och spara den till extern lagring.</string>
     <string name="restore_backup_title">Återställ säkerhetskopia</string>
     <string name="restore_backup_summary">Återställ appdata (och stat) från en tidigare säkerhetskopia.</string>
+    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
+    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
+    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
+        or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
     <string name="advanced_label">Avancerat</string>
     <string name="light_theme_name">Ljus</string>

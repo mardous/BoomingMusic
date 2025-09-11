@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">Lecture aléatoire</string>
     <string name="action_queue_next">File d\'attente suivante</string>
     <string name="shuffle_all_label">Lecture aléatoire de tout</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="advanced_shuffle_label">Lecture aléatoire avancée</string>
+    <string name="shuffle_button_tip">Appuyez pour une lecture aléatoire normale. Appuyez longuement pour accéder aux options avancées.</string>
     <string name="action_play_pause">Lecture/Pause</string>
     <string name="action_pause">Mettre en pause</string>
     <string name="action_next">Suivant</string>
@@ -336,19 +336,20 @@
     <string name="select_content_to_restore">Sélectionner le contenu à restaurer :</string>
     <string name="could_not_restore_data">Impossible de restaurer les données. Vérifiez le fichier de sauvegarde et réessayez.</string>
     <string name="data_restored_successfully">Données restaurées avec succès.</string>
+    <string name="action_toggle_playlist_lock">Verrouiller/Déverrouiller la playlist</string>
+    <string name="playlist_locked">Playlist verrouillée</string>
+    <string name="playlist_unlocked">Playlist déverrouillée</string>
+    <string name="action_toggle_queue_lock">Verrouiller/Déverrouiller la file d\'attente</string>
+    <string name="queue_locked">File d\'attente verrouillée</string>
+    <string name="queue_unlocked">File d\'attente déverrouillée</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Ligne Aux</string>
-    <string name="audio_device_bluetooth">Périphérique Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Haut-parleur</string>
     <string name="audio_device_builtin_speaker">Haut-parleur intégré</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Casque filaire</string>
     <string name="audio_device_usb_device">Périphérique USB</string>
     <string name="audio_device_usb_headset">Casque USB</string>
-    <string name="audio_device_default">Valeur par défaut du système</string>
-    <string name="audio_device_unknown">Inconnu</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Titre</item>
@@ -461,6 +462,8 @@
     <string name="sound_settings">Paramètres du son</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Fondu enchaîné (expérimental)</string>
+    <string name="audio_fade_duration_title">Durée du fondu audio (expérimental)</string>
     <string name="action_external_eq">EQ externe</string>
     <string name="custom">Personnalisé</string>
     <!-- Lyrics viewer -->
@@ -489,6 +492,8 @@
     <string name="failed_to_update_lyrics">Impossible de mettre à jour les paroles.</string>
     <string name="there_are_no_changes_to_save">Il n\'y a aucune modification à enregistrer.</string>
     <string name="lyrics_source_external_file">Les paroles proviennent d\'un fichier externe. Vous ne pouvez pas modifier ce fichier directement depuis Booming Music.</string>
+    <string name="font_imported_successfully">Font imported successfully.</string>
+    <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Minuterie</string>
     <string name="sleep_timer_cancel_current_timer">Annuler la minuterie actuelle</string>
@@ -548,6 +553,8 @@
     <string name="appearance_summary">Modifiez le thème de l\'application et d\'autres paramètres visuels.</string>
     <string name="now_playing_title">En cours de lecture</string>
     <string name="now_playing_summary">Personnalisez l\'écran de lecture en cours.</string>
+    <string name="lyrics_preferences_title">Lyrics</string>
+    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
     <string name="playback_title">Lecture</string>
     <string name="playback_summary">Modifiez les paramètres sonores, les casques Bluetooth, etc.</string>
     <string name="metadata_title">Métadonnées</string>
@@ -591,12 +598,46 @@
     <string name="tab_mode_title">Mode de titre des onglets</string>
     <string name="hold_tab_to_search_title">Maintenez la touche Tab enfoncée pour rechercher</string>
     <string name="hold_tab_to_search_summary">Appuyez longuement sur n’importe quel onglet de la barre de navigation pour ouvrir l’écran de recherche.</string>
+    <string name="larger_header_image_title">Image d\'en-tête plus grande</string>
+    <string name="larger_header_image_summary">Afficher une image de couverture plus grande dans les détails de l\'album, de l\'artiste et de la playlist.</string>
+    <string name="lyrics_center_current_line_title">Centrer la ligne actuelle</string>
+    <string name="lyrics_center_current_line_summary">Garder la ligne de paroles actuelle centrée sur l\'écran au lieu de l\'aligner vers le haut.</string>
+    <string name="lyrics_custom_font_title">Custom font</string>
+    <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
+    <string name="lyrics_import_custom_font_title">Import custom font</string>
+    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
+    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
+    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
+    <string name="lyrics_gradient_background_title">Gradient background</string>
+    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
+    <string name="lyrics_blur_effect_title">Blur effect</string>
+    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
+    <string name="lyrics_shadow_effect_title">Shadow effect</string>
+    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
+    <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
+    <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
+    <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
+    <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
+    <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
+    <string name="lyrics_line_spacing_title">Line spacing</string>
+    <string name="lyrics_line_spacing_summary">Adjust the space between lyric lines.</string>
+    <string name="synced_font_size_player_title">Taille de police des paroles synchronisées (lecteur)</string>
+    <string name="synced_font_size_player_summary">Ajuster la taille de la police pour les paroles synchronisées affichées sur la couverture de l\'album dans l\'écran du lecteur.</string>
+    <string name="unsynced_font_size_player_title">Taille de police des paroles non synchronisées (lecteur)</string>
+    <string name="unsynced_font_size_player_summary">Ajuster la taille de la police pour les paroles non synchronisées affichées sur la couverture de l\'album dans l\'écran du lecteur.</string>
+    <string name="synced_font_size_full_title">Taille de police des paroles synchronisées (vue complète)</string>
+    <string name="synced_font_size_full_summary">Ajuster la taille de la police pour les paroles synchronisées dans l\'écran des paroles complètes.</string>
+    <string name="unsynced_font_size_full_title">Taille de police des paroles non synchronisées (vue complète)</string>
+    <string name="unsynced_font_size_full_summary">Ajuster la taille de la police pour les paroles non synchronisées dans l\'écran des paroles complètes.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir en lecture</string>
     <string name="open_on_play_summary">Développez automatiquement le panneau Lecture en cours après avoir commencé à jouer une chanson.</string>
     <string name="squiggly_seek_bar_title">Barre de recherche ondulée</string>
     <string name="squiggly_seek_bar_summary">Activez une barre de recherche ondulée au lieu du curseur par défaut.</string>
+    <string name="scrolling_text_title">Activer le défilement du texte</string>
+    <string name="scrolling_text_summary">Les titres des morceaux défilent lorsqu\'ils sont trop longs. Cela peut consommer un peu plus de batterie.</string>
     <string name="extra_controls_title">Contrôles supplémentaires</string>
     <string name="extra_controls_summary">Ajouter des commandes supplémentaires pour le mini-lecteur</string>
     <string name="adaptive_controls_title">Contrôles adaptatifs</string>
@@ -622,6 +663,8 @@
     <string name="display_album_name_title">Afficher le nom de l\'album</string>
     <string name="display_extra_info_title">Afficher les informations supplémentaires</string>
     <string name="display_extra_info_summary">Affichez des informations supplémentaires sur le titre, comme le débit binaire, le format, le taux d\'échantillonnage, etc.</string>
+    <string name="display_next_song_title">Afficher le titre suivant</string>
+    <string name="display_next_song_summary">Affiche le titre suivant dans la file d\'attente en bas du lecteur.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Sélectionnez les informations supplémentaires à afficher dans le panneau du lecteur.</string>
     <string name="prefer_remaining_time_title">Préférer le temps restant</string>
@@ -632,12 +675,8 @@
     <string name="play_on_startup_title">Jouer au démarrage</string>
     <string name="gapless_playback_title">Lecture sans faille</string>
     <string name="gapless_playback_summary">Transition fluide entre les titres. Peut entraîner des problèmes de lecture sur certains appareils.</string>
-    <string name="crossfade_title">Fondu enchaîné (expérimental)</string>
-    <string name="crossfade_summary">Secondes nécessaires pour effectuer un fondu enchaîné entre les titres (défini sur 0 pour désactiver).</string>
     <string name="no_crossfade_on_albums_title">Pas de fondu enchaîné sur les albums</string>
     <string name="no_crossfade_on_albums_summary">Ne faites pas de fondu enchaîné lors de la lecture des albums dans leur ordre d\'origine.</string>
-    <string name="audio_fade_duration_title">Durée du fondu audio (expérimental)</string>
-    <string name="audio_fade_duration_summary">Secondes nécessaires pour augmenter ou diminuer progressivement le volume lorsque la lecture démarre ou s\'arrête (réglez sur 0 pour désactiver).</string>
     <string name="replaygain_source_mode_title">Mode source</string>
     <string name="replaygain_preamp_title">Niveau de Pré-Amp</string>
     <string name="replaygain_preamp_summary">Définir le niveau de volume lorsque ReplayGain est activé.</string>
@@ -713,6 +752,10 @@
     <string name="backup_app_data_summary">Créez un fichier contenant les données essentielles de l\'application et enregistrez-le sur le stockage externe.</string>
     <string name="restore_backup_title">Restaurer la sauvegarde</string>
     <string name="restore_backup_summary">Restaurer les données (et l\'état) de l\'application à partir d\'une sauvegarde précédente.</string>
+    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
+    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
+    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
+        or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
     <string name="advanced_label">Avancé</string>
     <string name="light_theme_name">Lumière</string>

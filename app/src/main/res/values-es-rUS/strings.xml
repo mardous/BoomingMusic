@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">Reproducir en aleatorio</string>
     <string name="action_queue_next">Añadir a continuación</string>
     <string name="shuffle_all_label">Todo aleatorio</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="advanced_shuffle_label">Mezcla avanzada</string>
+    <string name="shuffle_button_tip">Toca para mezcla normal. Mantén presionado para opciones avanzadas.</string>
     <string name="action_play_pause">Reproducir/Pausar</string>
     <string name="action_pause">Pausar</string>
     <string name="action_next">Siguiente</string>
@@ -246,8 +246,8 @@
     <string name="sort_order_ignore_articles">Ignorar artículos</string>
     <string name="action_set_as_ringtone">Usar como tono de llamada</string>
     <string name="x_will_be_set_as_ringtone"><![CDATA[Se usará <b>%s</b> como tono de llamada]]></string>
-    <string name="x_has_been_set_as_ringtone">Se configuró %s como tono</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Se configuró %s como tono y como alarma</string>
+    <string name="x_has_been_set_as_ringtone">Se configuró %s como tono.</string>
+    <string name="x_has_been_set_as_ringtone_and_as_alarm">Se configuró %s como tono y como alarma.</string>
     <string name="use_also_as_alarm_alert">Usar también como alarma</string>
     <string name="action_details">Detalles</string>
     <string name="action_set_as_start_directory">Establecer como directorio de inicio</string>
@@ -336,19 +336,20 @@
     <string name="select_content_to_restore">Elija el contenido a restaurar:</string>
     <string name="could_not_restore_data">No se pudo restaurar. Verifique el archivo de respaldo y reintente.</string>
     <string name="data_restored_successfully">Datos restaurados con éxito.</string>
+    <string name="action_toggle_playlist_lock">Bloquear/desbloquear playlist</string>
+    <string name="playlist_locked">Playlist bloqueada</string>
+    <string name="playlist_unlocked">Playlist desbloqueada</string>
+    <string name="action_toggle_queue_lock">Bloquear/desbloquear cola</string>
+    <string name="queue_locked">Cola bloqueada</string>
+    <string name="queue_unlocked">Cola desbloqueada</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Línea auxiliar</string>
-    <string name="audio_device_bluetooth">Disp. Bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Altavoz</string>
     <string name="audio_device_builtin_speaker">Altavoz integrado</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Audífonos cableados</string>
     <string name="audio_device_usb_device">Dispositivo USB</string>
     <string name="audio_device_usb_headset">Audífono USB</string>
-    <string name="audio_device_default">Predeterminado del sistema</string>
-    <string name="audio_device_unknown">Desconocido</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Canción</item>
@@ -461,6 +462,8 @@
     <string name="sound_settings">Ajustes de sonido</string>
     <string name="volume_label">Volumen</string>
     <string name="tempo_label">Velocidad y tono</string>
+    <string name="crossfade_title">Transición (experimental)</string>
+    <string name="audio_fade_duration_title">Duración del fundido de audio (experimental)</string>
     <string name="action_external_eq">Ecualizador externo</string>
     <string name="custom">Personalizado</string>
     <!-- Lyrics viewer -->
@@ -489,6 +492,8 @@
     <string name="failed_to_update_lyrics">La letra no se pudo actualizar.</string>
     <string name="there_are_no_changes_to_save">No hay cambios para guardar.</string>
     <string name="lyrics_source_external_file">La letra proviene de un archivo externo. No puedes editar esta letra directamente desde Booming Music.</string>
+    <string name="font_imported_successfully">Se importó la fuente.</string>
+    <string name="could_not_import_font">No se pudo importar la fuente.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Programador de apagado</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar temporizador actual</string>
@@ -548,6 +553,8 @@
     <string name="appearance_summary">Cambia el tema de la app y otros ajustes visuales.</string>
     <string name="now_playing_title">Reproduciendo ahora</string>
     <string name="now_playing_summary">Personalice la pantalla de reproducción en curso.</string>
+    <string name="lyrics_preferences_title">Letras</string>
+    <string name="lyrics_preferences_summary">Ajusta la fuente, el interlineado y otras opciones para personalizar la vista de letras.</string>
     <string name="playback_title">Audio</string>
     <string name="playback_summary">Cambie los ajustes de sonido, de audífonos, etc.</string>
     <string name="metadata_title">Metadatos</string>
@@ -591,12 +598,46 @@
     <string name="tab_mode_title">Modo de títulos</string>
     <string name="hold_tab_to_search_title">Mantener pulsado para buscar</string>
     <string name="hold_tab_to_search_summary">Abre la pantalla de búsqueda al mantener presionada cualquier pestaña de la barra de navegación.</string>
+    <string name="larger_header_image_title">Imagen más grande en la cabecera</string>
+    <string name="larger_header_image_summary">Muestra una imagen de portada más grande en la vista de detalles de álbumes, artistas y playlists.</string>
+    <string name="lyrics_center_current_line_title">Centrar línea actual</string>
+    <string name="lyrics_center_current_line_summary">Mantiene la línea actual de la letra en el centro de la pantalla en lugar de la parte superior</string>
+    <string name="lyrics_custom_font_title">Fuente personalizada</string>
+    <string name="lyrics_custom_font_summary">Importa y usa tu propia fuente para las letras.</string>
+    <string name="lyrics_import_custom_font_title">Importar fuente personalizada</string>
+    <string name="lyrics_syllable_mode_title">Letras palabra a palabra</string>
+    <string name="lyrics_syllable_mode_summary">Permite mostrar letras sincronizadas palabra a palabra. Depende de la disponibilidad de las letras y de un formato compatible como LRC o TTML.</string>
+    <string name="lyrics_effects_note">Los efectos avanzados mejoran la experiencia visual pero podrían aumentar el consumo de recursos y/o batería.</string>
+    <string name="lyrics_gradient_background_title">Fondo de gradiente</string>
+    <string name="lyrics_gradient_background_summary">Muestra un fondo de gradientes animado usando los colores de la canción actual. Aplicable solo en la vista a pantalla completa.</string>
+    <string name="lyrics_blur_effect_title">Efecto de desenfoque</string>
+    <string name="lyrics_blur_effect_summary">Desenfoca las líneas de texto adyacentes a la actual.</string>
+    <string name="lyrics_shadow_effect_title">Efecto de sombra</string>
+    <string name="lyrics_shadow_effect_summary">Añade una sombra bajo la línea actual para mejorar la legibilidad.</string>
+    <string name="lyrics_progressive_coloring_title">Coloreado progresivo de letras</string>
+    <string name="lyrics_progressive_coloring_summary">Animar las líneas activas con una transición de color gradual en lugar de colorearlas al instante.</string>
+    <string name="lyrics_bold_synced_title">Resaltar las letras sincronizadas</string>
+    <string name="lyrics_bold_synced_summary">Aplica una fuente negrita para las letras sincronizadas.</string>
+    <string name="lyrics_bold_unsynced_title">Resaltar las letras no sincronizadas</string>
+    <string name="lyrics_bold_unsynced_summary">Aplica una fuente negrita para las letras no sincronizadas.</string>
+    <string name="lyrics_line_spacing_title">Interlineado</string>
+    <string name="lyrics_line_spacing_summary">Ajusta el espacio entre líneas.</string>
+    <string name="synced_font_size_player_title">Tamaño de la letra sincronizada (reproductor)</string>
+    <string name="synced_font_size_player_summary">Ajusta el tamaño de fuente de la letra sincronizada mostrada sobre la carátula del reproductor.</string>
+    <string name="unsynced_font_size_player_title">Tamaño de la letra no sincronizada (reproductor)</string>
+    <string name="unsynced_font_size_player_summary">Ajusta el tamaño de fuente de la letra no sincronizada mostrada sobre la carátula del reproductor.</string>
+    <string name="synced_font_size_full_title">Tamaño de la letra sincronizada (pantalla completa)</string>
+    <string name="synced_font_size_full_summary">Ajusta el tamaño de fuente de la letra sincronizada mostrada a pantalla completa.</string>
+    <string name="unsynced_font_size_full_title">Tamaño de la letra no sincronizada (pantalla completa)</string>
+    <string name="unsynced_font_size_full_summary">Ajusta el tamaño de fuente de la letra no sincronizada mostrada a pantalla completa.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir al reproducir</string>
     <string name="open_on_play_summary">Abre el panel del reproductor automáticamente al empezar a reproducir una canción.</string>
     <string name="squiggly_seek_bar_title">Barra de progreso ondulada</string>
     <string name="squiggly_seek_bar_summary">Activa una barra de progreso ondulada en lugar del deslizador clásico.</string>
+    <string name="scrolling_text_title">Habilitar texto deslizante</string>
+    <string name="scrolling_text_summary">La información de la canción se desliza cuando el texto es muy largo. Podría usar un poco más de batería.</string>
     <string name="extra_controls_title">Controles adicionales</string>
     <string name="extra_controls_summary">Habilita controles adicionales para el reproductor minimizado.</string>
     <string name="adaptive_controls_title">Controles adaptivos</string>
@@ -622,6 +663,8 @@
     <string name="display_album_name_title">Mostrar nombre del álbum</string>
     <string name="display_extra_info_title">Mostrar información adicional</string>
     <string name="display_extra_info_summary">Muestra información adicional sobre la canción en reproducción, como tasa de bits, formato, muestreo, etc.</string>
+    <string name="display_next_song_title">Mostrar siguiente canción</string>
+    <string name="display_next_song_summary">Muestra la siguiente canción en cola en la parte inferior del reproductor.</string>
     <string name="select_extra_info_title">Información adicional</string>
     <string name="select_extra_info_summary">Elija la información adicional a mostrar en el reproductor.</string>
     <string name="prefer_remaining_time_title">Preferir tiempo restante</string>
@@ -632,12 +675,8 @@
     <string name="play_on_startup_title">Reproducir al iniciar</string>
     <string name="gapless_playback_title">Reproducción sin interrupciones</string>
     <string name="gapless_playback_summary">Transición rápida entre canciones. Puede causar problemas en algunos dispositivos.</string>
-    <string name="crossfade_title">Transición (experimental)</string>
-    <string name="crossfade_summary">Cuantos segundos tarda en realizarse el fundido entre canciones (establece 0 para desactivar).</string>
     <string name="no_crossfade_on_albums_title">Sin fundido en álbumes</string>
     <string name="no_crossfade_on_albums_summary">No transicionar al reproducir álbumes en su orden original.</string>
-    <string name="audio_fade_duration_title">Duración del fundido de audio (experimental)</string>
-    <string name="audio_fade_duration_summary">Cuantos segundos tarda en subir o bajar el volumen al reproducir o pausar la música (establece 0 para desactivar).</string>
     <string name="replaygain_source_mode_title">Modo de origen</string>
     <string name="replaygain_preamp_title">Nivel de PreAmp</string>
     <string name="replaygain_preamp_summary">Elija el nivel de volumen a usar cuando ReplayGain está activado.</string>
@@ -713,6 +752,9 @@
     <string name="backup_app_data_summary">Crea un archivo que contiene los datos esenciales de la app y lo guarda en el almacenamiento.</string>
     <string name="restore_backup_title">Restaurar datos</string>
     <string name="restore_backup_summary">Restaurar datos de la app (y su estado) desde un respaldo anterior.</string>
+    <string name="stop_when_closed_from_recents_title">Detener al eliminar de recientes</string>
+    <string name="stop_when_closed_from_recents_summary">La reproducción se detiene al remover la app de la lista de aplicaciones recientes.</string>
+    <string name="stop_when_closed_from_recents_note">Nota: algunos dispositivos con gestión agresiva de recursos podrían ignorar esta configuración y siempre forzar el cierre de la app al removerla de la lista de recientes.</string>
     <!-- Preference values -->
     <string name="advanced_label">Avanzado</string>
     <string name="light_theme_name">Claro</string>

@@ -336,19 +336,20 @@
     <string name="select_content_to_restore">Geri yüklenecek içeriği seçin:</string>
     <string name="could_not_restore_data">Veriler geri yüklenemedi. Yedekleme dosyasını doğrulayıp tekrar deneyin.</string>
     <string name="data_restored_successfully">Veriler başarıyla geri yüklendi.</string>
+    <string name="action_toggle_playlist_lock">Çalma listesini kilitle/aç</string>
+    <string name="playlist_locked">Çalma listesi kilitlendi</string>
+    <string name="playlist_unlocked">Çalma listesinin kilidi açıldı</string>
+    <string name="action_toggle_queue_lock">Sırayı kilitle/aç</string>
+    <string name="queue_locked">Sıra kilitlendi</string>
+    <string name="queue_unlocked">Sıra kilidi açıldı</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Kablosu</string>
-    <string name="audio_device_bluetooth">Bluetooth cihazı</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Hoparlör</string>
     <string name="audio_device_builtin_speaker">Dahili Hoparlör</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Kablolu kulaklık</string>
     <string name="audio_device_usb_device">USB Cihazı</string>
     <string name="audio_device_usb_headset">USB Kulaklık</string>
-    <string name="audio_device_default">Sistem varsayılanı</string>
-    <string name="audio_device_unknown">Bilinmeyen</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Şarkı</item>
@@ -461,6 +462,8 @@
     <string name="sound_settings">Ses ayarları</string>
     <string name="volume_label">Ses Seviyesi</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Crossfade (deneysel)</string>
+    <string name="audio_fade_duration_title">Ses geçişi süresi (deneysel)</string>
     <string name="action_external_eq">Harici Ekolayzer</string>
     <string name="custom">Özel</string>
     <!-- Lyrics viewer -->
@@ -489,6 +492,8 @@
     <string name="failed_to_update_lyrics">Şarkı sözleri güncellenemedi.</string>
     <string name="there_are_no_changes_to_save">Kaydedilecek bir değişiklik yok.</string>
     <string name="lyrics_source_external_file">Şarkı sözleri harici bir dosyadan alınmaktadır. Bu dosyayı Booming Music üzerinden doğrudan düzenleyemezsiniz.</string>
+    <string name="font_imported_successfully">Yazı tipi başarıyla içe aktarıldı.</string>
+    <string name="could_not_import_font">Yazı tipi içe aktarılamadı.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Uyku zamanlayıcısı</string>
     <string name="sleep_timer_cancel_current_timer">Mevcut zamanlayıcıyı iptal et</string>
@@ -548,6 +553,8 @@
     <string name="appearance_summary">Uygulamanın temasını ve diğer görsel ayarları değiştirin.</string>
     <string name="now_playing_title">Şimdi çalıyor</string>
     <string name="now_playing_summary">Şimdi çalıyor ekranını özelleştirin.</string>
+    <string name="lyrics_preferences_title">Şarkı sözleri</string>
+    <string name="lyrics_preferences_summary">Şarkı sözü görünümünüzü kişiselleştirmek için yazı tipi, aralık ve diğer seçenekleri ayarlayın.</string>
     <string name="playback_title">Çalma</string>
     <string name="playback_summary">Ses ayarlarını, Bluetooth kulaklıkları vb. değiştirin.</string>
     <string name="metadata_title">Üstveri</string>
@@ -591,12 +598,46 @@
     <string name="tab_mode_title">Sekme başlıkları modu</string>
     <string name="hold_tab_to_search_title">Aramak için sekmeye basılı tutun</string>
     <string name="hold_tab_to_search_summary">Arama ekranını açmak için herhangi bir gezinme çubuğu sekmesine uzun basın.</string>
+    <string name="larger_header_image_title">Daha büyük başlık görseli</string>
+    <string name="larger_header_image_summary">Albüm, sanatçı ve çalma listesi detaylarında daha büyük bir kapak görseli göster.</string>
+    <string name="lyrics_center_current_line_title">Geçerli satırı ortala</string>
+    <string name="lyrics_center_current_line_summary">Ekranda mevcut şarkı sözleri satırı üstte hizalanmak yerine ortada kalsın.</string>
+    <string name="lyrics_custom_font_title">Özel yazı tipi</string>
+    <string name="lyrics_custom_font_summary">Şarkı sözleri için kendi yazı tipinizi içe aktarın ve kullanın.</string>
+    <string name="lyrics_import_custom_font_title">Özel yazı tipi içe aktar</string>
+    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
+    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
+    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
+    <string name="lyrics_gradient_background_title">Gradient background</string>
+    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
+    <string name="lyrics_blur_effect_title">Blur effect</string>
+    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
+    <string name="lyrics_shadow_effect_title">Shadow effect</string>
+    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_progressive_coloring_title">Aşamalı şarkı sözü renklendirme</string>
+    <string name="lyrics_progressive_coloring_summary">Aktif satırları anında renklendirmek yerine kademeli renk geçişi ile hareketlendir.</string>
+    <string name="lyrics_bold_synced_title">Senkronize şarkı sözleri için kalın yazı tipi</string>
+    <string name="lyrics_bold_synced_summary">Senkronize şarkı sözlerini kalın yazı tipiyle göster.</string>
+    <string name="lyrics_bold_unsynced_title">Normal şarkı sözleri için kalın yazı tipi</string>
+    <string name="lyrics_bold_unsynced_summary">Senkronize olmayan şarkı sözlerini kalın yazı tipiyle göster.</string>
+    <string name="lyrics_line_spacing_title">Satır aralığı</string>
+    <string name="lyrics_line_spacing_summary">Şarkı sözü satırları arasındaki boşluğu ayarlayın.</string>
+    <string name="synced_font_size_player_title">Oynatıcıda senkronize şarkı sözleri yazı tipi boyutu</string>
+    <string name="synced_font_size_player_summary">Oynatıcı ekranında albüm kapağı üzerinde gösterilen senkronize şarkı sözlerinin yazı tipi boyutunu ayarla.</string>
+    <string name="unsynced_font_size_player_title">Oynatıcıda senkronize olmayan şarkı sözleri yazı tipi boyutu</string>
+    <string name="unsynced_font_size_player_summary">Oynatıcı ekranında albüm kapağı üzerinde gösterilen senkronize olmayan şarkı sözlerinin yazı tipi boyutunu ayarla.</string>
+    <string name="synced_font_size_full_title">Tam ekran görünümde senkronize şarkı sözleri yazı tipi boyutu</string>
+    <string name="synced_font_size_full_summary">Tam şarkı sözleri ekranında senkronize şarkı sözlerinin yazı tipi boyutunu ayarla.</string>
+    <string name="unsynced_font_size_full_title">Tam ekran görünümde senkronize olmayan şarkı sözleri yazı tipi boyutu</string>
+    <string name="unsynced_font_size_full_summary">Tam şarkı sözleri ekranında senkronize olmayan şarkı sözlerinin yazı tipi boyutunu ayarla.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Çalmaya başlayınca aç</string>
     <string name="open_on_play_summary">Bir şarkı çalmaya başladıktan sonra Şimdi Çalıyor panelini otomatik olarak genişletin.</string>
     <string name="squiggly_seek_bar_title">Dalgalı ilerleme çubuğu</string>
     <string name="squiggly_seek_bar_summary">Varsayılan kaydırıcı yerine dalgalı bir ilerleme çubuğunu etkinleştir.</string>
+    <string name="scrolling_text_title">Kayan yazıyı etkinleştir</string>
+    <string name="scrolling_text_summary">Şarkı adları sığmayacak kadar uzun olduğunda kaydırılır. Bu özellik biraz daha fazla pil kullanabilir.</string>
     <string name="extra_controls_title">Ekstra kontroller</string>
     <string name="extra_controls_summary">Mini çalar için ekstra kontroller ekleyin</string>
     <string name="adaptive_controls_title">Uyarlanabilir kontroller</string>
@@ -622,6 +663,8 @@
     <string name="display_album_name_title">Albüm adını göster</string>
     <string name="display_extra_info_title">Ek bilgileri göster</string>
     <string name="display_extra_info_summary">Bit hızı, biçim, örnekleme hızı gibi şarkı hakkında ek bilgileri gösterin.</string>
+    <string name="display_next_song_title">Sonraki şarkıyı göster</string>
+    <string name="display_next_song_summary">Sıradaki şarkıyı oynatıcı ekranının altında göster.</string>
     <string name="select_extra_info_title">Ek bilgi</string>
     <string name="select_extra_info_summary">Çalar panelinde görüntülenecek ek bilgileri seçin.</string>
     <string name="prefer_remaining_time_title">Kalan süreyi tercih et</string>
@@ -632,12 +675,8 @@
     <string name="play_on_startup_title">Başlangıçta oynat</string>
     <string name="gapless_playback_title">Kesintisiz çalma</string>
     <string name="gapless_playback_summary">Şarkılar arasında pürüzsüz geçiş. Bazı cihazlarda çalma sorunlarına neden olabilir.</string>
-    <string name="crossfade_title">Crossfade (deneysel)</string>
-    <string name="crossfade_summary">Şarkılar arasında geçiş yapmak için gereken saniye sayısı (devre dışı bırakmak için 0 olarak ayarlayın).</string>
     <string name="no_crossfade_on_albums_title">Albümlerde geçiş efekti yok</string>
     <string name="no_crossfade_on_albums_summary">Albümleri orijinal sırasıyla çalarken crossfade uygulama.</string>
-    <string name="audio_fade_duration_title">Ses geçişi süresi (deneysel)</string>
-    <string name="audio_fade_duration_summary">Çalma başladığında veya duraklatıldığında sesin kısılıp yükselmesi için gereken saniye sayısı (devre dışı bırakmak için 0 olarak ayarlayın).</string>
     <string name="replaygain_source_mode_title">Kaynak modu</string>
     <string name="replaygain_preamp_title">PreAmp seviyesi</string>
     <string name="replaygain_preamp_summary">ReplayGain etkinleştirildiğinde ses seviyesini ayarlayın.</string>
@@ -713,6 +752,10 @@
     <string name="backup_app_data_summary">Temel uygulama verilerini içeren bir dosya oluşturun ve harici depolamaya kaydedin.</string>
     <string name="restore_backup_title">Yedekten geri yükle</string>
     <string name="restore_backup_summary">Uygulama verilerini (ve durumunu) önceki bir yedekten geri yükleyin.</string>
+    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
+    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
+    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
+        or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
     <string name="advanced_label">Gelişmiş</string>
     <string name="light_theme_name">Açık</string>

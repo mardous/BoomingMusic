@@ -17,8 +17,10 @@
 
 package com.mardous.booming.fragments.player.styles.defaultstyle
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
@@ -28,17 +30,23 @@ import androidx.core.view.updatePadding
 import com.mardous.booming.R
 import com.mardous.booming.databinding.FragmentDefaultPlayerBinding
 import com.mardous.booming.extensions.whichFragment
-import com.mardous.booming.fragments.player.*
+import com.mardous.booming.fragments.player.PlayerColorScheme
+import com.mardous.booming.fragments.player.PlayerColorSchemeMode
+import com.mardous.booming.fragments.player.PlayerTintTarget
 import com.mardous.booming.fragments.player.base.AbsPlayerControlsFragment
 import com.mardous.booming.fragments.player.base.AbsPlayerFragment
+import com.mardous.booming.fragments.player.surfaceTintTarget
+import com.mardous.booming.fragments.player.tintTarget
 import com.mardous.booming.model.NowPlayingAction
 import com.mardous.booming.model.theme.NowPlayingScreen
+import com.mardous.booming.util.DISPLAY_NEXT_SONG
 import com.mardous.booming.util.Preferences
 
 /**
  * @author Christians M. A. (mardous)
  */
-class DefaultPlayerFragment : AbsPlayerFragment(R.layout.fragment_default_player) {
+class DefaultPlayerFragment : AbsPlayerFragment(R.layout.fragment_default_player),
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private var _binding: FragmentDefaultPlayerBinding? = null
     private val binding get() = _binding!!
@@ -68,6 +76,7 @@ class DefaultPlayerFragment : AbsPlayerFragment(R.layout.fragment_default_player
             v.updatePadding(left = displayCutout.left, right = displayCutout.right)
             WindowInsetsCompat.CONSUMED
         }
+        Preferences.registerOnSharedPreferenceChangeListener(this)
     }
 
     private fun setupToolbar() {
@@ -89,10 +98,10 @@ class DefaultPlayerFragment : AbsPlayerFragment(R.layout.fragment_default_player
 
     override fun onMenuInflated(menu: Menu) {
         super.onMenuInflated(menu)
-        menu.removeItem(R.id.action_playing_queue)
         menu.removeItem(R.id.action_sound_settings)
         menu.setShowAsAction(R.id.action_favorite)
         menu.setShowAsAction(R.id.action_show_lyrics)
+        setupQueueMenuItem(menu)
     }
 
     override fun onCreateChildFragments() {
@@ -100,7 +109,21 @@ class DefaultPlayerFragment : AbsPlayerFragment(R.layout.fragment_default_player
         controlsFragment = whichFragment(R.id.playbackControlsFragment)
     }
 
+    private fun setupQueueMenuItem(menu: Menu = playerToolbar.menu) {
+        menu.findItem(R.id.action_playing_queue)?.let {
+            it.isVisible = !Preferences.isShowNextSong
+            it.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+        }
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
+        if (key == DISPLAY_NEXT_SONG) {
+            setupQueueMenuItem()
+        }
+    }
+
     override fun onDestroyView() {
+        Preferences.unregisterOnSharedPreferenceChangeListener(this)
         super.onDestroyView()
         _binding = null
     }

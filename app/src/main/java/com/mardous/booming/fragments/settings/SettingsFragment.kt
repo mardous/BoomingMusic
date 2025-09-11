@@ -62,7 +62,6 @@ class SettingsFragment : AbsMainActivityFragment(R.layout.fragment_settings), Na
         childNavController = navHostFragment.navController.apply {
             addOnDestinationChangedListener(this@SettingsFragment)
         }
-        getOnBackPressedDispatcher().addCallback(viewLifecycleOwner, onBackPressedCallback)
     }
 
     override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
@@ -72,6 +71,11 @@ class SettingsFragment : AbsMainActivityFragment(R.layout.fragment_settings), Na
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {}
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean = false
+
+    override fun onResume() {
+        super.onResume()
+        getOnBackPressedDispatcher().addCallback(viewLifecycleOwner, onBackPressedCallback)
+    }
 
     override fun onDestroy() {
         super.onDestroy()

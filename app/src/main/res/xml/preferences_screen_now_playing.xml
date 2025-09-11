@@ -175,6 +175,14 @@
 
         <SwitchPreferenceCompat
             app:iconSpaceReserved="true"
+            app:title="@string/display_next_song_title"
+            app:summary="@string/display_next_song_summary"
+            app:defaultValue="true"
+            app:layout="@layout/list_item_view_switch"
+            app:key="display_next_song" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
             app:title="@string/prefer_remaining_time_title"
             app:summary="@string/prefer_remaining_time_summary"
             app:defaultValue="false"

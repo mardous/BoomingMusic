@@ -39,7 +39,7 @@
     <string name="currently_listening_to_x_by_x">我正在用 %1$s 聆听 %2$s</string>
     <string name="share_to_stories">分享到故事</string>
     <string name="could_not_create_the_story">无法创建故事。</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">回退</string>
     <string name="rename_action">重命名</string>
     <string name="add_action">添加</string>
     <string name="delete_action">删除</string>
@@ -49,9 +49,9 @@
     <string name="continue_action">继续</string>
     <string name="select_all_title">全选</string>
     <string name="x_selected">已选择 %d</string>
-    <string name="preparing_playback_title">Preparing</string>
-    <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="preparing_playback_title">正在准备</string>
+    <string name="restoring_playback_state">正在恢复播放状态和队列…</string>
+    <string name="playback_stopped_title">已停止播放</string>
     <string name="playing_notification_description">播放通知提供播放/暂停等动作。</string>
     <string name="playing_notification_name">播放通知</string>
     <string name="action_scan_directory">扫描目录</string>
@@ -68,7 +68,7 @@
     <string name="new_playlist_title">新播放列表</string>
     <string name="add_playlist_title">添加到播放列表</string>
     <string name="rename_playlist_title">重命名播放列表</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">编辑播放列表</string>
     <string name="action_delete">删除播放列表</string>
     <string name="action_export_playlist">导出歌单至文件</string>
     <string name="action_clear_history">清除历史记录</string>
@@ -77,9 +77,9 @@
     <string name="create_a_playlist_with_one_song">创建一个播放列表并添加一首歌曲。</string>
     <string name="create_a_playlist_with_x_songs">创建一个播放列表并自动向其中添加 %d 首歌曲。</string>
     <string name="playlist_name_empty">播放列表名称</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">播放列表描述(可选)</string>
     <string name="saved_playlist_x">已保存播放列表 %s。</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">播放列表已更新。</string>
     <string name="failed_to_save_playlist">播放列表保存失败。</string>
     <string name="saved_x_playlists">已保存 %1$d 播放列表。</string>
     <string name="saved_x_playlists_failed_to_save_x">已保存 %1$d 播放列表，未能保存 %2$d。</string>
@@ -92,7 +92,7 @@
     <string name="inserted_one_song_into_playlist_x">将一首歌插入播放列表 %s</string>
     <string name="inserted_x_songs_into_playlist_x">将 %1$d 首歌曲插入播放列表 %2$s。</string>
     <string name="playlist_exists">播放列表 %s 已经存在。</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">播放列表 %s 已成功创建。</string>
     <string name="remove_song_from_playlist_title">从播放列表中删除歌曲</string>
     <string name="remove_songs_from_playlist_title">从播放列表中删除多首歌曲</string>
     <string name="remove_song_x_from_playlist"><![CDATA[将<b>%1$s</b>从播放列表中移除吗？]]></string>
@@ -221,7 +221,7 @@
     <string name="horizontal_albums">横向相册</string>
     <string name="ignore_singles">排除单曲</string>
     <string name="compact_song_view">紧凑的歌曲视图</string>
-    <string name="show_total_duration">Show total duration</string>
+    <string name="show_total_duration">显示总时长</string>
     <string name="action_view_type">视图类型</string>
     <string name="view_type_normal">普通</string>
     <string name="view_type_card">卡片</string>
@@ -237,7 +237,7 @@
     <string name="sort_order_year">年份</string>
     <string name="sort_order_duration">时长</string>
     <string name="sort_order_date_added">添加日期</string>
-    <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_date_modified">日期已修改</string>
     <string name="sort_order_number_of_songs">歌曲数</string>
     <string name="sort_order_number_of_albums">专辑数</string>
     <string name="sort_order_last_played_date">最后播放日期</string>
@@ -336,19 +336,20 @@
     <string name="select_content_to_restore">选择要恢复的内容：</string>
     <string name="could_not_restore_data">无法恢复数据。请验证备份文件并重试。</string>
     <string name="data_restored_successfully">数据已成功恢复。</string>
+    <string name="action_toggle_playlist_lock">锁定/解锁播放列表</string>
+    <string name="playlist_locked">播放列表已锁定</string>
+    <string name="playlist_unlocked">播放列表已解锁</string>
+    <string name="action_toggle_queue_lock">锁定/解锁队列</string>
+    <string name="queue_locked">队列已锁定</string>
+    <string name="queue_unlocked">队列已解锁</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux 行</string>
-    <string name="audio_device_bluetooth">蓝牙设备</string>
     <string name="audio_device_bluetooth_a2dp">蓝牙 A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">扬声器</string>
     <string name="audio_device_builtin_speaker">内置扬声器</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">有线耳机</string>
     <string name="audio_device_usb_device">USB 设备</string>
     <string name="audio_device_usb_headset">USB 耳机</string>
-    <string name="audio_device_default">系统默认</string>
-    <string name="audio_device_unknown">未知的</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="other">歌曲</item>
@@ -453,6 +454,8 @@
     <string name="sound_settings">声音设置</string>
     <string name="volume_label">音量</string>
     <string name="tempo_label">节拍</string>
+    <string name="crossfade_title">交叉淡入淡出(实验功能)</string>
+    <string name="audio_fade_duration_title">音频淡入/淡出持续时间(实验功能)</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">自定义</string>
     <!-- Lyrics viewer -->
@@ -462,7 +465,7 @@
     <string name="synced_lyrics">已同步</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">已下载</string>
-    <string name="external_file_lyrics">External file</string>
+    <string name="external_file_lyrics">外置文件</string>
     <string name="action_import_synchronized_lyrics">导入同步歌词</string>
     <string name="action_share_synchronized_lyrics">分享同步歌词</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[您想要为 <b>%s</b> 导入同步的 LRC 歌词吗？]]></string>
@@ -479,8 +482,10 @@
     <string name="no_synced_lyrics_found">未找到同步歌词</string>
     <string name="lyrics_were_updated_successfully">歌词更新成功。</string>
     <string name="failed_to_update_lyrics">更新歌词失败。</string>
-    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
+    <string name="there_are_no_changes_to_save">没有要保存的更改。</string>
+    <string name="lyrics_source_external_file">歌词来自外部文件。您不能直接从 Booming Music 编辑此文件。</string>
+    <string name="font_imported_successfully">字体已成功导入。</string>
+    <string name="could_not_import_font">无法导入字体。</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">睡眠计时器</string>
     <string name="sleep_timer_cancel_current_timer">取消当前计时器</string>
@@ -504,7 +509,7 @@
     <string name="fork_on_github">创建 GitHub 分支</string>
     <string name="licenses">许可协议</string>
     <string name="author">作者</string>
-    <string name="mardous_summary">Lead Developer</string>
+    <string name="mardous_summary">主要开发者</string>
     <string name="contributors">贡献者</string>
     <string name="acknowledgments_title">致谢</string>
     <string name="translators_title">译者</string>
@@ -540,6 +545,8 @@
     <string name="appearance_summary">更改应用的主题和其他视觉设置。</string>
     <string name="now_playing_title">正在播放</string>
     <string name="now_playing_summary">自定义当前播放屏幕。</string>
+    <string name="lyrics_preferences_title">歌词</string>
+    <string name="lyrics_preferences_summary">调整字体、 间距和其他选项以自定义您的歌词视图。</string>
     <string name="playback_title">播放</string>
     <string name="playback_summary">更改声音设置，蓝牙耳机等。</string>
     <string name="metadata_title">元数据</string>
@@ -583,12 +590,46 @@
     <string name="tab_mode_title">标签标题模式</string>
     <string name="hold_tab_to_search_title">按住标签以搜索</string>
     <string name="hold_tab_to_search_summary">长按任意导航栏选项卡打开搜索界面。</string>
+    <string name="larger_header_image_title">Larger header image</string>
+    <string name="larger_header_image_summary">在专辑、艺人和播放列表的详细信息中显示更大的封面图像。</string>
+    <string name="lyrics_center_current_line_title">Center current line</string>
+    <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
+    <string name="lyrics_custom_font_title">Custom font</string>
+    <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
+    <string name="lyrics_import_custom_font_title">Import custom font</string>
+    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
+    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
+    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
+    <string name="lyrics_gradient_background_title">Gradient background</string>
+    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
+    <string name="lyrics_blur_effect_title">Blur effect</string>
+    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
+    <string name="lyrics_shadow_effect_title">Shadow effect</string>
+    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
+    <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
+    <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
+    <string name="lyrics_bold_synced_summary">以粗体显示同步歌词。</string>
+    <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
+    <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
+    <string name="lyrics_line_spacing_title">Line spacing</string>
+    <string name="lyrics_line_spacing_summary">Adjust the space between lyric lines.</string>
+    <string name="synced_font_size_player_title">Synced lyrics font size (player)</string>
+    <string name="synced_font_size_player_summary">Adjust the font size for synced lyrics shown over the album cover in the player screen.</string>
+    <string name="unsynced_font_size_player_title">Unsynced lyrics font size (player)</string>
+    <string name="unsynced_font_size_player_summary">Adjust the font size for unsynced lyrics shown over the album cover in the player screen.</string>
+    <string name="synced_font_size_full_title">Synced lyrics font size (full view)</string>
+    <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
+    <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
+    <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">样式</string>
     <string name="open_on_play_title">播放时打开</string>
     <string name="open_on_play_summary">开始播放歌曲后自动展开播放面板。</string>
     <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
     <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">额外控制</string>
     <string name="extra_controls_summary">为迷你播放器添加额外的控制</string>
     <string name="adaptive_controls_title">自适应控件</string>
@@ -614,6 +655,8 @@
     <string name="display_album_name_title">显示专辑名称</string>
     <string name="display_extra_info_title">显示额外信息</string>
     <string name="display_extra_info_summary">显示歌曲的额外信息，例如比特率、格式、取样率等。</string>
+    <string name="display_next_song_title">Display next song</string>
+    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">选择要在播放器面板中显示的额外信息。</string>
     <string name="prefer_remaining_time_title">偏好剩余时间</string>
@@ -624,12 +667,8 @@
     <string name="play_on_startup_title">启动时自动播放</string>
     <string name="gapless_playback_title">无缝播放</string>
     <string name="gapless_playback_summary">在歌曲之间平滑过渡。可能会在某些设备上导致播放问题。</string>
-    <string name="crossfade_title">交叉淡入淡出(实验功能)</string>
-    <string name="crossfade_summary">歌曲之间交叉淡入淡出的秒数（设置为0以禁用）。</string>
     <string name="no_crossfade_on_albums_title">专辑播放无交叉淡入淡出效果</string>
     <string name="no_crossfade_on_albums_summary">以原始顺序播放专辑时禁用交叉淡入淡出。</string>
-    <string name="audio_fade_duration_title">音频淡入/淡出持续时间(实验功能)</string>
-    <string name="audio_fade_duration_summary">播放开始或暂停时淡入或淡出音量所需秒数(设置为0为禁用)。</string>
     <string name="replaygain_source_mode_title">源模式</string>
     <string name="replaygain_preamp_title">预置层级</string>
     <string name="replaygain_preamp_summary">设置当ReplayGain 启用时的音量水平。</string>
@@ -705,6 +744,10 @@
     <string name="backup_app_data_summary">创建一个包含基本应用数据的文件并保存到外部存储。</string>
     <string name="restore_backup_title">还原备份</string>
     <string name="restore_backup_summary">从以前的备份中还原应用数据(和状态)。</string>
+    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
+    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
+    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
+        or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
     <string name="advanced_label">高级设置</string>
     <string name="light_theme_name">亮色</string>
@@ -772,7 +815,7 @@
     <string name="player_color_mode_app_theme_description">使用该应用的配色方案</string>
     <string name="player_color_mode_simple_color_title">简洁配色</string>
     <string name="player_color_mode_simple_color_description">提取专辑颜色并应用到某些控件</string>
-    <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
+    <string name="player_color_mode_vibrant_color_title">亮色</string>
     <string name="player_color_mode_vibrant_color_description">将专辑颜色应用于提示背景、文本和控件</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">启用基于相册颜色的Material You设置</string>
@@ -796,12 +839,12 @@
     <string name="more_info_action">更多信息。</string>
     <string name="download_action">下载</string>
     <string name="downloading_update">正在下载 Booming 音乐更新。</string>
-    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
-        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="uncaught_error_title">哎呀！出现了意料之外的事！</string>
+    <string name="uncaught_error_message">似乎有什么东西出错并导致了软件崩溃。
+        如果您能够向我们发送错误报告到我们的 Telegram 群组或通过电子邮件，将会很有帮助。</string>
+    <string name="uncaught_error_report">错误报告</string>
+    <string name="uncaught_error_report_copied">已复制错误报告到剪贴板。</string>
     <string name="uncaught_error_restart_app">重启应用</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_github">打开github上的issue</string>
+    <string name="uncaught_error_send">发送报告</string>
 </resources>

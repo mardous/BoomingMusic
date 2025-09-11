@@ -336,19 +336,20 @@
     <string name="select_content_to_restore">復元するコンテンツを選択:</string>
     <string name="could_not_restore_data">データを復元できませんでした。バックアップファイルを確認して再試行してください。</string>
     <string name="data_restored_successfully">データの復元に成功しました。</string>
+    <string name="action_toggle_playlist_lock">プレイリストのロック/ロック解除</string>
+    <string name="playlist_locked">プレイリストはロックされました</string>
+    <string name="playlist_unlocked">プレイリストのロックは解除されました</string>
+    <string name="action_toggle_queue_lock">キューのロック/ロック解除</string>
+    <string name="queue_locked">キューはロックされました</string>
+    <string name="queue_unlocked">キューのロックは解除されました</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Auxライン</string>
-    <string name="audio_device_bluetooth">Bluetoothデバイス</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">スピーカー</string>
     <string name="audio_device_builtin_speaker">内蔵スピーカー</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">有線ヘッドセット</string>
     <string name="audio_device_usb_device">USBデバイス</string>
     <string name="audio_device_usb_headset">USBヘッドセット</string>
-    <string name="audio_device_default">システムのデフォルト</string>
-    <string name="audio_device_unknown">不明</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="other">曲</item>
@@ -453,6 +454,8 @@
     <string name="sound_settings">サウンドの設定</string>
     <string name="volume_label">音量</string>
     <string name="tempo_label">テンポ</string>
+    <string name="crossfade_title">クロスフェード (実験的)</string>
+    <string name="audio_fade_duration_title">オーディオフェード時間（実験的）</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">カスタム</string>
     <!-- Lyrics viewer -->
@@ -481,6 +484,8 @@
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
     <string name="there_are_no_changes_to_save">保存する変更はありません。</string>
     <string name="lyrics_source_external_file">歌詞は外部ファイルのものです。このファイルはBooming Musicから直接編集することはできません。</string>
+    <string name="font_imported_successfully">Font imported successfully.</string>
+    <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">スリープタイマー</string>
     <string name="sleep_timer_cancel_current_timer">現在のタイマーをキャンセル</string>
@@ -540,6 +545,8 @@
     <string name="appearance_summary">アプリのテーマやその他のビジュアル設定を変更します。</string>
     <string name="now_playing_title">再生中</string>
     <string name="now_playing_summary">再生中の画面をカスタマイズします。</string>
+    <string name="lyrics_preferences_title">Lyrics</string>
+    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
     <string name="playback_title">再生</string>
     <string name="playback_summary">サウンド設定、Bluetooth ヘッドセットなどを変更します。</string>
     <string name="metadata_title">メタデータ</string>
@@ -583,12 +590,46 @@
     <string name="tab_mode_title">タブのタイトルモード</string>
     <string name="hold_tab_to_search_title">タブを長押しして検索</string>
     <string name="hold_tab_to_search_summary">ナビゲーションバーのいずれかのタブを長押しすると、検索画面が開きます。</string>
+    <string name="larger_header_image_title">Larger header image</string>
+    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
+    <string name="lyrics_center_current_line_title">現在の行を中央に合わせる</string>
+    <string name="lyrics_center_current_line_summary">現在の歌詞の行は画面上部に揃えずに、画面中央に配置します。</string>
+    <string name="lyrics_custom_font_title">Custom font</string>
+    <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
+    <string name="lyrics_import_custom_font_title">Import custom font</string>
+    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
+    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
+    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
+    <string name="lyrics_gradient_background_title">Gradient background</string>
+    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
+    <string name="lyrics_blur_effect_title">Blur effect</string>
+    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
+    <string name="lyrics_shadow_effect_title">Shadow effect</string>
+    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
+    <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
+    <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
+    <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
+    <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
+    <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
+    <string name="lyrics_line_spacing_title">Line spacing</string>
+    <string name="lyrics_line_spacing_summary">Adjust the space between lyric lines.</string>
+    <string name="synced_font_size_player_title">同期された歌詞のフォントサイズ(プレイヤー)</string>
+    <string name="synced_font_size_player_summary">プレイヤー画面のアルバムカバーに表示される同期された歌詞のフォントサイズを調整します。</string>
+    <string name="unsynced_font_size_player_title">同期されていない歌詞のフォントサイズ（プレイヤー）</string>
+    <string name="unsynced_font_size_player_summary">プレイヤー画面のアルバムカバーに表示される同期されていない歌詞のフォントサイズを調整します。</string>
+    <string name="synced_font_size_full_title">同期された歌詞のフォントサイズ（全画面）</string>
+    <string name="synced_font_size_full_summary">全画面の歌詞表示で同期された歌詞のフォントサイズを調整します。</string>
+    <string name="unsynced_font_size_full_title">同期されていない歌詞のフォントサイズ（全画面表</string>
+    <string name="unsynced_font_size_full_summary">全画面の歌詞表示で同期されていない歌詞のフォントサイズを調整します。</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">スタイル</string>
     <string name="open_on_play_title">再生中に開く</string>
     <string name="open_on_play_summary">曲の再生を開始した後、自動的に「再生中」パネルを展開します。</string>
     <string name="squiggly_seek_bar_title">Squiglyシークバー</string>
     <string name="squiggly_seek_bar_summary">デフォルトのスライダーの代わりにウェーブシークバーを有効にします。</string>
+    <string name="scrolling_text_title">Enable scrolling text</string>
+    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">追加コントロール</string>
     <string name="extra_controls_summary">ミニプレーヤー用の追加コントロールを追加</string>
     <string name="adaptive_controls_title">アダプティブコントロール</string>
@@ -614,6 +655,8 @@
     <string name="display_album_name_title">アルバム名を表示</string>
     <string name="display_extra_info_title">追加情報を表示</string>
     <string name="display_extra_info_summary">ビットレート、フォーマット、サンプリングレートなど、曲に関する追加情報を表示する。</string>
+    <string name="display_next_song_title">次の曲を表示</string>
+    <string name="display_next_song_summary">プレーヤーの一番下のキューに次の曲を表示します。</string>
     <string name="select_extra_info_title">追加の情報</string>
     <string name="select_extra_info_summary">プレイヤーパネルに表示する追加情報を選択します。</string>
     <string name="prefer_remaining_time_title">残り時間を優先</string>
@@ -624,12 +667,8 @@
     <string name="play_on_startup_title">起動時に再生する</string>
     <string name="gapless_playback_title">ギャップレス再生</string>
     <string name="gapless_playback_summary">曲間のスムーズなトランジション。一部のデバイスで再生の問題を引き起こす可能性があります。</string>
-    <string name="crossfade_title">クロスフェード (実験的)</string>
-    <string name="crossfade_summary">曲間のクロスフェードにかかる秒数(0に設定すると無効になります)。</string>
     <string name="no_crossfade_on_albums_title">アルバムではクロスフェードしません</string>
     <string name="no_crossfade_on_albums_summary">アルバムを元の順序で再生するときはクロスフェードしないでください。</string>
-    <string name="audio_fade_duration_title">オーディオフェード時間（実験的）</string>
-    <string name="audio_fade_duration_summary">再生の開始時または一時停止時にボリュームをフェードインまたはフェードアウトするのにかかる秒数(0に設定すると無効になります)。</string>
     <string name="replaygain_source_mode_title">ソースモード</string>
     <string name="replaygain_preamp_title">PreAmp レベル</string>
     <string name="replaygain_preamp_summary">ReplayGain が有効な場合、音量レベルを設定します。</string>
@@ -705,6 +744,10 @@
     <string name="backup_app_data_summary">重要なアプリデータを含むファイルを作成し、外部ストレージに保存します。</string>
     <string name="restore_backup_title">バックアップを復元</string>
     <string name="restore_backup_summary">前のバックアップからアプリのデータ(および状態)を復元します。</string>
+    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
+    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
+    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
+        or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
     <string name="advanced_label">高度な設定</string>
     <string name="light_theme_name">ライト</string>

@@ -245,7 +245,7 @@
     <string name="sort_order_descending">Descendent</string>
     <string name="sort_order_ignore_articles">Ignora els articles</string>
     <string name="action_set_as_ringtone">Estableix com a to de trucada</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> s'establirà com a to de trucada]]></string>
+    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> es fixarà com a to de trucada]]></string>
     <string name="x_has_been_set_as_ringtone">Estableix %s com a to de trucada</string>
     <string name="x_has_been_set_as_ringtone_and_as_alarm">Estableix %s com a to de trucada i alarma</string>
     <string name="use_also_as_alarm_alert">Fes servir també d\'alarma</string>
@@ -336,19 +336,20 @@
     <string name="select_content_to_restore">Trieu el contingut a restablir:</string>
     <string name="could_not_restore_data">No s\'han pogut restablir les dades. Comproveu el fitxer i torneu-ho a intentar.</string>
     <string name="data_restored_successfully">Les dades s\'han restablert correctament.</string>
+    <string name="action_toggle_playlist_lock">Fixa/allibera la llista</string>
+    <string name="playlist_locked">S\'ha fixat la llista</string>
+    <string name="playlist_unlocked">S\'ha alliberat la llista</string>
+    <string name="action_toggle_queue_lock">Fixa/allibera la cua</string>
+    <string name="queue_locked">S\'ha fixat la cua</string>
+    <string name="queue_unlocked">S\'ha alliberat la cua</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Línia auxiliar</string>
-    <string name="audio_device_bluetooth">Dispositiu bluetooth</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
-    <string name="audio_device_bluetooth_sco">Bluetooth SCO</string>
-    <string name="audio_device_speaker">Altaveu</string>
     <string name="audio_device_builtin_speaker">Altaveu integrat</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">Auriculars amb cable</string>
     <string name="audio_device_usb_device">Dispositiu USB</string>
     <string name="audio_device_usb_headset">Auriculars USB</string>
-    <string name="audio_device_default">Predeterminat</string>
-    <string name="audio_device_unknown">Desconegut</string>
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Cançó</item>
@@ -461,6 +462,8 @@
     <string name="sound_settings">Configuració de so</string>
     <string name="volume_label">Volum</string>
     <string name="tempo_label">Tempo</string>
+    <string name="crossfade_title">Encadenament (experimental)</string>
+    <string name="audio_fade_duration_title">Durada de la fosa d\'àudio (experimental)</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
     <!-- Lyrics viewer -->
@@ -489,6 +492,8 @@
     <string name="failed_to_update_lyrics">No s\'ha pogut actualitzar la lletra.</string>
     <string name="there_are_no_changes_to_save">No hi ha canvis a desar.</string>
     <string name="lyrics_source_external_file">La lletra ve d\'un fitxer extern. No podeu editar aquest fitxer directament des de Booming Music.</string>
+    <string name="font_imported_successfully">S\'ha importat la font de text correctament.</string>
+    <string name="could_not_import_font">No s\'ha pogut importar la font de text.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporitzador d\'apagada</string>
     <string name="sleep_timer_cancel_current_timer">Atura el temporitzador</string>
@@ -548,6 +553,8 @@
     <string name="appearance_summary">Canvieu el tema de l\'aplicació i altres ajustos visuals.</string>
     <string name="now_playing_title">Ara sona</string>
     <string name="now_playing_summary">Personalitzeu la pantalla d\'Ara sona.</string>
+    <string name="lyrics_preferences_title">Lletra</string>
+    <string name="lyrics_preferences_summary">Ajusta la lletra, l\'interlineat i altres opcions per fer-te teves les lletres.</string>
     <string name="playback_title">Reproducció</string>
     <string name="playback_summary">Canvieu la configuració de so, els auriculars Bluetooth, etc.</string>
     <string name="metadata_title">Metadades</string>
@@ -591,12 +598,46 @@
     <string name="tab_mode_title">Mode de títols d\'etiquetes</string>
     <string name="hold_tab_to_search_title">Mantingueu premut per cercar</string>
     <string name="hold_tab_to_search_summary">Obre la pantalla de cerca en mantenir premuda qualsevol barra de navegació.</string>
+    <string name="larger_header_image_title">Capçalera d\'imatge més grossa</string>
+    <string name="larger_header_image_summary">Mostra una portada més grossa en un àlbum, artista o detalls d\'una llista.</string>
+    <string name="lyrics_center_current_line_title">Centra la línia actual</string>
+    <string name="lyrics_center_current_line_summary">Mantén la part de la lletra actual centrada a la pantalla en comptes de dalt.</string>
+    <string name="lyrics_custom_font_title">Font personalitzada</string>
+    <string name="lyrics_custom_font_summary">Importa i fes servir la teva font de text per a la lletra.</string>
+    <string name="lyrics_import_custom_font_title">Importa una font de text</string>
+    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
+    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
+    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
+    <string name="lyrics_gradient_background_title">Gradient background</string>
+    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
+    <string name="lyrics_blur_effect_title">Blur effect</string>
+    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
+    <string name="lyrics_shadow_effect_title">Shadow effect</string>
+    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_progressive_coloring_title">Acoloriment progressiu de la lletra</string>
+    <string name="lyrics_progressive_coloring_summary">Anima les línies actives amb una transició de color gradual en comptes d\'acolorir-les instantàniament.</string>
+    <string name="lyrics_bold_synced_title">Lletra sincronitzada en negreta</string>
+    <string name="lyrics_bold_synced_summary">Mostra la lletra sincronitzada en negreta.</string>
+    <string name="lyrics_bold_unsynced_title">Lletra normal en negreta</string>
+    <string name="lyrics_bold_unsynced_summary">Mostra la lletra sense sincronitzar en negreta.</string>
+    <string name="lyrics_line_spacing_title">Interlineat</string>
+    <string name="lyrics_line_spacing_summary">Ajusta l\'espai entre les línies de la lletra.</string>
+    <string name="synced_font_size_player_title">Mida de la lletra sincronitzada (reproductor)</string>
+    <string name="synced_font_size_player_summary">Ajusta la mida de la lletra sincronitzada mostrada a sobre la portada de l\'àlbum en el reproductor.</string>
+    <string name="unsynced_font_size_player_title">Mida de la lletra sense sincronitzar (reproductor)</string>
+    <string name="unsynced_font_size_player_summary">Ajusta la mida de la lletra sense sincronitzar mostrada a sobre la portada de l\'àlbum en el reproductor.</string>
+    <string name="synced_font_size_full_title">Mida de la lletra sincronitzada (pantalla completa)</string>
+    <string name="synced_font_size_full_summary">Ajusta la mida de la lletra sincronitzada en pantalla completa.</string>
+    <string name="unsynced_font_size_full_title">Mida de la lletra sense sincronitzar (pantalla completa)</string>
+    <string name="unsynced_font_size_full_summary">Ajusta la mida de la lletra sense sincronitzar en pantalla completa.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estil</string>
     <string name="open_on_play_title">Obre en reproduir</string>
     <string name="open_on_play_summary">Expandeix automàticament el panell d\'Ara sona en reproduir una cançó.</string>
     <string name="squiggly_seek_bar_title">Barra de reproducció ondulada</string>
     <string name="squiggly_seek_bar_summary">Activa una barra de reproducció ondulada en comptes de la clàssica.</string>
+    <string name="scrolling_text_title">Activa el text en desplaçament</string>
+    <string name="scrolling_text_summary">El títol de la cançó es desplaçarà si no hi cap. Podria gastar una mica més de bateria.</string>
     <string name="extra_controls_title">Controls addicionals</string>
     <string name="extra_controls_summary">Afegeix controls addicionals per al mini reproductor</string>
     <string name="adaptive_controls_title">Controls adaptatius</string>
@@ -622,6 +663,8 @@
     <string name="display_album_name_title">Mostra el nom de l\'àlbum</string>
     <string name="display_extra_info_title">Mostra informació addicional</string>
     <string name="display_extra_info_summary">Mostra informació addicional de la cançó, com ara la taxa de bits, el format, el mostratge, etc.</string>
+    <string name="display_next_song_title">Mostra la següent cançó</string>
+    <string name="display_next_song_summary">Mostra la següent cançó de la cua a sota del reproductor.</string>
     <string name="select_extra_info_title">Informació addicional</string>
     <string name="select_extra_info_summary">Trieu la informació addicional a mostrar al panell de reproducció.</string>
     <string name="prefer_remaining_time_title">Mostra el temps restant</string>
@@ -632,12 +675,8 @@
     <string name="play_on_startup_title">Reprodueix en iniciar</string>
     <string name="gapless_playback_title">Reproducció sense interrupcions</string>
     <string name="gapless_playback_summary">Transició suau entre cançons. Pot causar errors de reproducció en alguns dispositius.</string>
-    <string name="crossfade_title">Encadenament (experimental)</string>
-    <string name="crossfade_summary">Els segons que triga l\'encadenament entre dues cançons (el 0 el desactiva).</string>
     <string name="no_crossfade_on_albums_title">Sense encadenament als àlbums</string>
     <string name="no_crossfade_on_albums_summary">No es fa encadenament en reproduir àlbums en el seu ordre original.</string>
-    <string name="audio_fade_duration_title">Durada de la fosa d\'àudio (experimental)</string>
-    <string name="audio_fade_duration_summary">Els segons que triga la fosa del volum d\'entrada o sortida quan la reproducció comença o es pausa (el 0 la desactiva).</string>
     <string name="replaygain_source_mode_title">Mode d\'origen</string>
     <string name="replaygain_preamp_title">Nivell de PreAmp</string>
     <string name="replaygain_preamp_summary">Establiu el nivell de volum quan el Guany de reproducció està activat.</string>
@@ -713,6 +752,10 @@
     <string name="backup_app_data_summary">Crea un fitxer amb dades essencials de l\'aplicació i el desa a l\'emmagatzematge.</string>
     <string name="restore_backup_title">Restableix la còpia de seguretat</string>
     <string name="restore_backup_summary">Restableix les dades (i estat) de l\'aplicació des d\'una còpia de seguretat.</string>
+    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
+    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
+    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
+        or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
     <string name="advanced_label">Avançat</string>
     <string name="light_theme_name">Clar</string>
