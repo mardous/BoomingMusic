@@ -562,7 +562,6 @@
     <string name="library_title">Biblioteca</string>
     <string name="library_summary">Ajustes de las listas y filtros de exclusión/inclusión.</string>
     <string name="notification_title">Notificación</string>
-    <string name="notification_summary">Personalice el estilo de la notificación.</string>
     <string name="advanced_title">Avanzado</string>
     <string name="advanced_summary">Idioma de la app y otros ajustes para usuarios expertos.</string>
     <string name="update_title">Actualización</string>
@@ -737,10 +736,6 @@
     <string name="min_song_duration_title">Duración mínima de la canción</string>
     <string name="min_song_duration_summary">Cuántos segundos debería (como mínimo) durar una canción para aparecer en la biblioteca.</string>
     <!-- Remote preferences -->
-    <string name="classic_notification_title">Diseño clásico</string>
-    <string name="classic_notification_summary">Usar el diseño clásico de notificación.</string>
-    <string name="colored_notification_title">Notificación coloreada</string>
-    <string name="colored_notification_summary">Colorea la notificación con el color vibrante de la portada del álbum</string>
     <string name="extra_line_of_text_title">Línea extra de texto</string>
     <string name="notification_priority_title">Prioridad de la notificación</string>
     <string name="album_art_on_lockscreen_title">Mostrar portada</string>
