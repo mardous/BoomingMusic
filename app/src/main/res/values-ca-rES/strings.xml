@@ -604,15 +604,15 @@
     <string name="lyrics_custom_font_title">Font personalitzada</string>
     <string name="lyrics_custom_font_summary">Importa i fes servir la teva font de text per a la lletra.</string>
     <string name="lyrics_import_custom_font_title">Importa una font de text</string>
-    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
-    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
+    <string name="lyrics_syllable_mode_title">Lletra fil per randa</string>
+    <string name="lyrics_syllable_mode_summary">Permet mostrar la lletra sincronitzada paraula per paraula. Depèn de la disponibilitat de la lletra i d\'un format compatible com LRC o TTML.</string>
     <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
-    <string name="lyrics_gradient_background_title">Gradient background</string>
-    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
-    <string name="lyrics_blur_effect_title">Blur effect</string>
-    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
-    <string name="lyrics_shadow_effect_title">Shadow effect</string>
-    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_gradient_background_title">Fons amb degradat</string>
+    <string name="lyrics_gradient_background_summary">Mostra un fons degradat animat amb els colors de la portada de la cançó actual. Només funciona en pantalla completa.</string>
+    <string name="lyrics_blur_effect_title">Efecte difuminat</string>
+    <string name="lyrics_blur_effect_summary">Difumina les línies de lletra adjacents a l\'actual.</string>
+    <string name="lyrics_shadow_effect_title">Efecte d\'ombra</string>
+    <string name="lyrics_shadow_effect_summary">Afegeix una ombra sota la línia actual per millorar la seva llegibilitat.</string>
     <string name="lyrics_progressive_coloring_title">Acoloriment progressiu de la lletra</string>
     <string name="lyrics_progressive_coloring_summary">Anima les línies actives amb una transició de color gradual en comptes d\'acolorir-les instantàniament.</string>
     <string name="lyrics_bold_synced_title">Lletra sincronitzada en negreta</string>
@@ -747,10 +747,9 @@
     <string name="backup_app_data_summary">Crea un fitxer amb dades essencials de l\'aplicació i el desa a l\'emmagatzematge.</string>
     <string name="restore_backup_title">Restableix la còpia de seguretat</string>
     <string name="restore_backup_summary">Restableix les dades (i estat) de l\'aplicació des d\'una còpia de seguretat.</string>
-    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
-    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
-    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
-        or battery management may ignore this setting and always stop the app when removed from recents.</string>
+    <string name="stop_when_closed_from_recents_title">Atura en tancar des de recents</string>
+    <string name="stop_when_closed_from_recents_summary">Atura la reproducció si l\'aplicació es tanca des de la llista de recents.</string>
+    <string name="stop_when_closed_from_recents_note">Nota: Alguns dispositius amb gestió agressiva de la memòria o la bateria podrien ignorar aquesta opció i aturar sempre l\'aplicació en treure-la de recents.</string>
     <!-- Preference values -->
     <string name="advanced_label">Avançat</string>
     <string name="light_theme_name">Clar</string>
