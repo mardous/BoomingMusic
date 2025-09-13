@@ -648,7 +648,7 @@
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Styl odtwarzacza</string>
     <string name="open_on_play_title">Otwórz przy odtwarzaniu</string>
-    <string name="open_on_play_summary">Rozwiń panel Teraz odtwarzany automatycznie po rozpoczęciu odtwarzania piosenki.</string>
+    <string name="open_on_play_summary">Automatycznie rozwiń panel Teraz Odtwarzane po rozpoczęciu piosenki.</string>
     <string name="squiggly_seek_bar_title">Falisty pasek postępu</string>
     <string name="squiggly_seek_bar_summary">Włącz falisty pasek postępu zamiast domyślnego suwaka.</string>
     <string name="scrolling_text_title">Włącz przewijanie tekstu</string>
@@ -800,7 +800,7 @@
     <string name="simple">Prosty</string>
     <string name="stack">Stos</string>
     <string name="add_after_playing_track">Dodaj po odtwarzaniu utworu</string>
-    <string name="add_tracks_sequentially">Dodaj ścieżki kolejno</string>
+    <string name="add_tracks_sequentially">Dodaj ścieżki w kolejności</string>
     <string name="albums_shuffle">Losowe odtwarzanie albumów</string>
     <string name="artists_shuffle">Losowe odtwarzanie wykonawców</string>
     <string name="shuffle_albums_ordered_songs">Losuj albumy, zachowaj kolejność utworów</string>

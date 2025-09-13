@@ -336,12 +336,12 @@
     <string name="select_content_to_restore">בחר תוכן לשחזור:</string>
     <string name="could_not_restore_data">לא ניתן היה לשחזר את הנתונים. יש לאמת את קובץ הגיבוי ולנסות שוב.</string>
     <string name="data_restored_successfully">הנתונים שוחזרו בהצלחה.</string>
-    <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
-    <string name="playlist_locked">Playlist locked</string>
-    <string name="playlist_unlocked">Playlist unlocked</string>
-    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
+    <string name="action_toggle_playlist_lock">נעל/פתח רשימת השמעה</string>
+    <string name="playlist_locked">רשימת ההשמעה ננעלה</string>
+    <string name="playlist_unlocked">רשימת ההשמעה נפתחה</string>
+    <string name="action_toggle_queue_lock">נעל/פתח תור השמעה</string>
+    <string name="queue_locked">תור ההשמעה ננעל</string>
+    <string name="queue_unlocked">תור ההשמעה נפתח</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Line</string>
     <string name="audio_device_bluetooth_a2dp">בלוטות\' A2DP</string>
@@ -395,9 +395,9 @@
     </plurals>
     <plurals name="x_items">
         <item quantity="one">פריט %d</item>
-        <item quantity="two">%d items</item>
+        <item quantity="two"></item>
         <item quantity="many">פריטים %d</item>
-        <item quantity="other">%d items</item>
+        <item quantity="other"></item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">עבורך</string>
@@ -508,8 +508,8 @@
     <string name="failed_to_update_lyrics">נכשל בעדכון מילות השיר.</string>
     <string name="there_are_no_changes_to_save">אין שינויים שצריך לשמור.</string>
     <string name="lyrics_source_external_file">מילות השיר מגיעות מקובץ חיצוני. אין אפשרות לערוך את הקובץ הזה ישירות מתוך Booming Music.</string>
-    <string name="font_imported_successfully">Font imported successfully.</string>
-    <string name="could_not_import_font">Could not import font.</string>
+    <string name="font_imported_successfully">הגופן יובא בהצלחה.</string>
+    <string name="could_not_import_font">לא ניתן היה לייבא את הגופן.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">טיימר שינה</string>
     <string name="sleep_timer_cancel_current_timer">בטל טיימר נוכחי</string>
@@ -569,8 +569,8 @@
     <string name="appearance_summary">שנה את עיצוב האפליקציה והגדרות חזותיות אחרות.</string>
     <string name="now_playing_title">מנגן כעת</string>
     <string name="now_playing_summary">התאם אישית את מסך הנגן הנוכחית.</string>
-    <string name="lyrics_preferences_title">Lyrics</string>
-    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
+    <string name="lyrics_preferences_title">מילות שיר</string>
+    <string name="lyrics_preferences_summary">התאם גופן, ריווח ואפשרויות נוספות כדי להתאים אישית את תצוגת מילות השיר שלך.</string>
     <string name="playback_title">השמעה</string>
     <string name="playback_summary">שנה את הגדרות הקול, אוזניות בלוטות\', וכו׳.</string>
     <string name="metadata_title">מטאדטה</string>
@@ -583,7 +583,7 @@
     <string name="update_title">עדכן</string>
     <string name="update_summary">הגדרות לעדכוני האפליקציה.</string>
     <string name="about_title">אודות</string>
-    <string name="about_summary">Booming Music %s, touch for more info.</string>
+    <string name="about_summary">Booming Music %s, גע לקבלת מידע נוסף.</string>
     <!-- Preference headers -->
     <string name="general_header">כללי</string>
     <string name="library_header">ספרייה</string>
@@ -591,7 +591,7 @@
     <string name="artist_image_header">תמונת האמן</string>
     <string name="exclusion_header">החרגות</string>
     <string name="controls_header">פקדים</string>
-    <string name="replaygain_header">ReplayGain</string>
+    <string name="replaygain_header">שיוויון עוצמת קול</string>
     <string name="headphones_header">אוזניות</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">מיקוד שמע</string>
@@ -613,18 +613,18 @@
     <string name="tab_mode_title">מצב כותרות ללשוניות</string>
     <string name="hold_tab_to_search_title">החזק את הלשונית כדי לחפש</string>
     <string name="hold_tab_to_search_summary">לחץ לחיצה ארוכה על כל לשונית בסרגל הניווט כדי לפתוח את מסך החיפוש.</string>
-    <string name="larger_header_image_title">Larger header image</string>
-    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
-    <string name="lyrics_center_current_line_title">Center current line</string>
-    <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
-    <string name="lyrics_custom_font_title">Custom font</string>
-    <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
-    <string name="lyrics_import_custom_font_title">Import custom font</string>
-    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
-    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
-    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
-    <string name="lyrics_gradient_background_title">Gradient background</string>
-    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
+    <string name="larger_header_image_title">תמונת כותרת גדולה יותר</string>
+    <string name="larger_header_image_summary">הצג תמונת עטיפה גדולה יותר בפרטי אלבום, אמן ורשימת השמעה.</string>
+    <string name="lyrics_center_current_line_title">מרכז שורה נוכחית</string>
+    <string name="lyrics_center_current_line_summary">שמור את שורת המילים הנוכחית במרכז המסך במקום להיות מיושרת לחלק העליון.</string>
+    <string name="lyrics_custom_font_title">גופן מותאם אישית</string>
+    <string name="lyrics_custom_font_summary">ייבא והשתמש בגופן משלך עבור מילות השיר.</string>
+    <string name="lyrics_import_custom_font_title">ייבא גופן מותאם אישית</string>
+    <string name="lyrics_syllable_mode_title">מילות שיר מילה במילה</string>
+    <string name="lyrics_syllable_mode_summary">מאפשר הצגת מילות השיר עם סינכרון מילה-מילה. תלוי בזמינות המילים ובפורמט תואם כגון LRC או TTML.</string>
+    <string name="lyrics_effects_note">אפקטים מתקדמים משפרים את החוויה החזותית אך עשויים לדרוש יותר משאבי מערכת וסוללה.</string>
+    <string name="lyrics_gradient_background_title">רקע מדורג</string>
+    <string name="lyrics_gradient_background_summary">הצג רקע מדורג מונפש באמצעות צבעי עטיפת השיר הנוכחי. חל רק במצב תצוגת מסך מלא.</string>
     <string name="lyrics_blur_effect_title">Blur effect</string>
     <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
     <string name="lyrics_shadow_effect_title">Shadow effect</string>
