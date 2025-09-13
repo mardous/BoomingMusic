@@ -336,12 +336,12 @@
     <string name="select_content_to_restore">בחר תוכן לשחזור:</string>
     <string name="could_not_restore_data">לא ניתן היה לשחזר את הנתונים. יש לאמת את קובץ הגיבוי ולנסות שוב.</string>
     <string name="data_restored_successfully">הנתונים שוחזרו בהצלחה.</string>
-    <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
-    <string name="playlist_locked">Playlist locked</string>
-    <string name="playlist_unlocked">Playlist unlocked</string>
-    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
+    <string name="action_toggle_playlist_lock">נעל/פתח רשימת השמעה</string>
+    <string name="playlist_locked">רשימת ההשמעה ננעלה</string>
+    <string name="playlist_unlocked">רשימת ההשמעה נפתחה</string>
+    <string name="action_toggle_queue_lock">נעל/פתח תור השמעה</string>
+    <string name="queue_locked">תור ההשמעה ננעל</string>
+    <string name="queue_unlocked">תור ההשמעה נפתח</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Line</string>
     <string name="audio_device_bluetooth_a2dp">בלוטות\' A2DP</string>
@@ -395,9 +395,9 @@
     </plurals>
     <plurals name="x_items">
         <item quantity="one">פריט %d</item>
-        <item quantity="two">%d items</item>
+        <item quantity="two"></item>
         <item quantity="many">פריטים %d</item>
-        <item quantity="other">%d items</item>
+        <item quantity="other"></item>
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">עבורך</string>
@@ -508,8 +508,8 @@
     <string name="failed_to_update_lyrics">נכשל בעדכון מילות השיר.</string>
     <string name="there_are_no_changes_to_save">אין שינויים שצריך לשמור.</string>
     <string name="lyrics_source_external_file">מילות השיר מגיעות מקובץ חיצוני. אין אפשרות לערוך את הקובץ הזה ישירות מתוך Booming Music.</string>
-    <string name="font_imported_successfully">Font imported successfully.</string>
-    <string name="could_not_import_font">Could not import font.</string>
+    <string name="font_imported_successfully">הגופן יובא בהצלחה.</string>
+    <string name="could_not_import_font">לא ניתן היה לייבא את הגופן.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">טיימר שינה</string>
     <string name="sleep_timer_cancel_current_timer">בטל טיימר נוכחי</string>
@@ -569,7 +569,7 @@
     <string name="appearance_summary">שנה את עיצוב האפליקציה והגדרות חזותיות אחרות.</string>
     <string name="now_playing_title">מנגן כעת</string>
     <string name="now_playing_summary">התאם אישית את מסך הנגן הנוכחית.</string>
-    <string name="lyrics_preferences_title">Lyrics</string>
+    <string name="lyrics_preferences_title">מילות שיר</string>
     <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
     <string name="playback_title">השמעה</string>
     <string name="playback_summary">שנה את הגדרות הקול, אוזניות בלוטות\', וכו׳.</string>
