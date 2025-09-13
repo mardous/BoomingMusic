@@ -593,7 +593,7 @@
     <string name="controls_header">פקדים</string>
     <string name="replaygain_header">הגברת שמע</string>
     <string name="headphones_header">אוזניות</string>
-    <string name="bluetooth_header">Bluetooth</string>
+    <string name="bluetooth_header">בלוטות\'</string>
     <string name="audio_focus_header">מיקוד שמע</string>
     <string name="lockscreen_header">מסך הנעילה</string>
     <string name="shuffle_mode_header">מצב ערבוב</string>
@@ -712,17 +712,17 @@
     <string name="resume_on_connect_summary">המשך ניגון בעת חיבור אוזניות.</string>
     <string name="pause_on_disconnect_title">הפסק ניגון בעת ניתוק אוזניות</string>
     <string name="pause_on_disconnect_summary">מפסיק את ההשמעה כאשר האוזניות מנותקות. מומלץ.</string>
-    <string name="resume_on_bluetooth_connect_title">Resume on bluetooth connect</string>
-    <string name="resume_on_bluetooth_connect_summary">Resumes playback when Bluetooth A2DP headset is connected.</string>
-    <string name="pause_on_bluetooth_disconnect_title">Pause on bluetooth disconnect</string>
-    <string name="pause_on_bluetooth_disconnect_summary">Pauses playback when Bluetooth A2DP headset is disconnected. Recommended.</string>
+    <string name="resume_on_bluetooth_connect_title">המשך בהתחברות ל־בלוטות\'</string>
+    <string name="resume_on_bluetooth_connect_summary">מחדש את ההשמעה כאשר מחובר אוזניות בלוטות\' A2DP.</string>
+    <string name="pause_on_bluetooth_disconnect_title">השהה בעת ניתוק בלוטות\'</string>
+    <string name="pause_on_bluetooth_disconnect_summary">מפסיק את הנגינה כאשר אוזניית בלוטות\' ‏A2DP מתנתקת. מומלץ.</string>
     <string name="ignore_audio_focus_title">התעלם ממיקוד שמע</string>
     <string name="ignore_audio_focus_summary">השמיע תמיד אודיו ברקע, ללא קשר למה שמתנגן במקום אחר.</string>
     <string name="pause_on_transient_focus_loss_title">אובדן מיקוד זמני</string>
-    <string name="pause_on_transient_focus_loss_summary">Pause playback on transient focus loss (i.e. notifications, incoming calls).</string>
+    <string name="pause_on_transient_focus_loss_summary">השהה נגינה באובדן מיקוד זמני (כלומר התראות, שיחות נכנסות).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
-    <string name="ignore_media_store_album_covers_title">Ignore Media Store covers</string>
+    <string name="ignore_media_store_album_covers_title">התעלם מעטיפות ממדיה סטור</string>
     <string name="ignore_media_store_album_covers_summary">זה עשוי לשפר את איכות התמונות אך דורש יותר זיכרון.</string>
     <string name="use_folder_album_cover_title">השתמש בתמונות מהתיקייה</string>
     <string name="use_folder_album_cover_summary">אם קובץ השמע אינו מכיל עטיפה משובצת, התמונות עשויות להיטען מעט לאט יותר.</string>
@@ -763,8 +763,8 @@
     <string name="backup_app_data_summary">צור קובץ המכיל נתוני אפליקציה חיוניים ושמור אותו באחסון החיצוני.</string>
     <string name="restore_backup_title">שחזר גיבוי</string>
     <string name="restore_backup_summary">שחזר נתוני אפליקציה (ומצב) מגיבוי קודם.</string>
-    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
-    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
+    <string name="stop_when_closed_from_recents_title">עצור כאשר נסגר מהאחרונים</string>
+    <string name="stop_when_closed_from_recents_summary">הניגון ייעצר אם האפליקציה תיסגר מרשימת האחרונים.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
@@ -773,8 +773,8 @@
     <string name="dark_theme_name">כהה</string>
     <string name="black_theme_name">שחור</string>
     <string name="follow_system">עקוב אחרי המערכת</string>
-    <string name="label_auto">Auto</string>
-    <string name="labeled">Labeled</string>
+    <string name="label_auto">אוטומטי</string>
+    <string name="labeled">עם תווית</string>
     <string name="unlabeled">Unlabeled</string>
     <string name="selected">Selected</string>
     <string name="compact">Compact</string>
