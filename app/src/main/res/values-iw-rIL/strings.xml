@@ -570,7 +570,7 @@
     <string name="now_playing_title">מנגן כעת</string>
     <string name="now_playing_summary">התאם אישית את מסך הנגן הנוכחית.</string>
     <string name="lyrics_preferences_title">מילות שיר</string>
-    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
+    <string name="lyrics_preferences_summary">התאם גופן, ריווח ואפשרויות נוספות כדי להתאים אישית את תצוגת מילות השיר שלך.</string>
     <string name="playback_title">השמעה</string>
     <string name="playback_summary">שנה את הגדרות הקול, אוזניות בלוטות\', וכו׳.</string>
     <string name="metadata_title">מטאדטה</string>
@@ -583,7 +583,7 @@
     <string name="update_title">עדכן</string>
     <string name="update_summary">הגדרות לעדכוני האפליקציה.</string>
     <string name="about_title">אודות</string>
-    <string name="about_summary">Booming Music %s, touch for more info.</string>
+    <string name="about_summary">Booming Music %s, גע לקבלת מידע נוסף.</string>
     <!-- Preference headers -->
     <string name="general_header">כללי</string>
     <string name="library_header">ספרייה</string>
@@ -591,7 +591,7 @@
     <string name="artist_image_header">תמונת האמן</string>
     <string name="exclusion_header">החרגות</string>
     <string name="controls_header">פקדים</string>
-    <string name="replaygain_header">ReplayGain</string>
+    <string name="replaygain_header">שיוויון עוצמת קול</string>
     <string name="headphones_header">אוזניות</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">מיקוד שמע</string>
@@ -621,7 +621,7 @@
     <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
     <string name="lyrics_import_custom_font_title">Import custom font</string>
     <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
-    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
+    <string name="lyrics_syllable_mode_summary">מאפשר הצגת מילות השיר עם סינכרון מילה-מילה. תלוי בזמינות המילים ובפורמט תואם כגון LRC או TTML.</string>
     <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
     <string name="lyrics_gradient_background_title">Gradient background</string>
     <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
