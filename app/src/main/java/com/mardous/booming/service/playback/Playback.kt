@@ -17,10 +17,7 @@
 
 package com.mardous.booming.service.playback
 
-import android.media.AudioDeviceInfo
-import android.os.Build
 import android.support.v4.media.session.PlaybackStateCompat
-import androidx.annotation.RequiresApi
 import com.mardous.booming.data.model.Song
 
 interface Playback {
@@ -48,31 +45,17 @@ interface Playback {
         }
     }
 
-    interface PlaybackCallbacks {
-        fun onTrackWentToNext()
-
-        fun onTrackEnded()
-
-        fun onTrackEndedWithCrossFade()
-
-        fun onPlayStateChanged()
-
-        fun onPlaybackModeChanged(wasPlaying: Boolean, position: Int)
-    }
-
     suspend fun setDataSource(song: Song, force: Boolean, completion: (success: Boolean) -> Unit)
     suspend fun setNextDataSource(song: Song?)
-    fun getCallbacks(): PlaybackCallbacks?
-    fun setCallbacks(callbacks: PlaybackCallbacks)
     fun isInitialized(): Boolean
     fun start(): Boolean
     fun stop()
     fun release()
     fun pause(): Boolean
     fun isPlaying(): Boolean
-    fun duration(): Int
-    fun position(): Int
-    fun seek(whereto: Int, force: Boolean)
+    fun duration(): Long
+    fun position(): Long
+    fun seek(whereto: Long, force: Boolean)
     fun setTempo(speed: Float, pitch: Float)
     fun setBalance(left: Float, right: Float)
     fun setReplayGain(replayGain: Float)
@@ -81,7 +64,4 @@ interface Playback {
     fun setAudioSessionId(sessionId: Int): Boolean
     fun getAudioSessionId(): Int
     fun getSpeed(): Float
-
-    @RequiresApi(Build.VERSION_CODES.P)
-    fun getRoutedDevice(): AudioDeviceInfo?
 }

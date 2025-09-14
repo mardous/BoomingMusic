@@ -6,7 +6,6 @@ import androidx.preference.PreferenceManager
 import com.mardous.booming.core.legacy.PlaybackQueueStore
 import com.mardous.booming.data.local.repository.SongRepository
 import com.mardous.booming.service.playback.Playback
-import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.service.queue.QueueManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -23,7 +22,6 @@ class PersistentStorage(context: Context, private val coroutineScope: CoroutineS
 
     private val songRepository: SongRepository by inject()
     private val queueManager: QueueManager by inject()
-    private val playbackManager: PlaybackManager by inject()
 
     private val playbackQueueStore = PlaybackQueueStore(context)
     private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -82,12 +80,12 @@ class PersistentStorage(context: Context, private val coroutineScope: CoroutineS
         savePositionInTrack()
     }
 
-    fun savePosition() {
-        sharedPreferences.edit { putInt(SAVED_QUEUE_POSITION, queueManager.position) }
+    fun savePosition(position: Int) {
+        sharedPreferences.edit { putInt(SAVED_QUEUE_POSITION, position) }
     }
 
-    fun savePositionInTrack() {
-        sharedPreferences.edit { putInt(SAVED_POSITION_IN_TRACK, playbackManager.position()) }
+    fun savePositionInTrack(positionInTrack: Long) {
+        sharedPreferences.edit { putLong(SAVED_POSITION_IN_TRACK, positionInTrack) }
     }
 
     fun saveRepeatMode(repeatMode: Playback.RepeatMode) {
@@ -99,9 +97,9 @@ class PersistentStorage(context: Context, private val coroutineScope: CoroutineS
     }
 
     companion object {
-        const val SAVED_REPEAT_MODE = "SAVED_REPEAT_MODE"
-        const val SAVED_SHUFFLE_MODE = "SAVED_SHUFFLE_MODE"
-        const val SAVED_POSITION_IN_TRACK = "SAVED_POSITION_IN_TRACK"
-        const val SAVED_QUEUE_POSITION = "SAVED_QUEUE_POSITION"
+        const val SAVED_REPEAT_MODE = "playback_repeat_mode"
+        const val SAVED_SHUFFLE_MODE = "playback_shuffle_mode"
+        const val SAVED_POSITION_IN_TRACK = "playback_position_in_track"
+        const val SAVED_QUEUE_POSITION = "playback_position"
     }
 }

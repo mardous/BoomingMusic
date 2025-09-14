@@ -124,7 +124,7 @@ private val mainModule = module {
         AlbumCoverSaver(context = androidContext(), mediaStoreWriter = get())
     }
     single {
-        AudioOutputObserver(context = androidContext(), playbackManager = get())
+        AudioOutputObserver(context = androidContext())
     }
     single {
         CustomArtistImageManager(context = androidContext())

@@ -37,6 +37,7 @@ import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
 import android.support.v4.media.session.PlaybackStateCompat.CustomAction
 import android.util.Log
+import androidx.annotation.OptIn
 import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
@@ -47,6 +48,12 @@ import androidx.media.AudioAttributesCompat
 import androidx.media.AudioFocusRequestCompat
 import androidx.media.AudioManagerCompat
 import androidx.media.MediaBrowserServiceCompat
+import androidx.media3.common.AudioAttributes
+import androidx.media3.common.C
+import androidx.media3.common.MediaItem
+import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.exoplayer.ExoPlayer
 import coil3.Image
 import coil3.SingletonImageLoader
 import coil3.request.ImageRequest
@@ -85,7 +92,6 @@ import com.mardous.booming.service.constants.SessionEvent
 import com.mardous.booming.service.equalizer.EqualizerManager
 import com.mardous.booming.service.notification.PlayingNotificationManager
 import com.mardous.booming.service.playback.Playback
-import com.mardous.booming.service.playback.Playback.PlaybackCallbacks
 import com.mardous.booming.service.playback.PlaybackManager
 import com.mardous.booming.service.queue.NO_POSITION
 import com.mardous.booming.service.queue.QueueChangeReason
@@ -101,7 +107,7 @@ import kotlin.math.log10
 import kotlin.math.min
 import kotlin.random.Random
 
-class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserver,
+class MusicService : MediaBrowserServiceCompat(), Player.Listener, QueueObserver,
     AudioManager.OnAudioFocusChangeListener, OnSharedPreferenceChangeListener {
 
     private val serviceScope = CoroutineScope(Job() + Main)
@@ -119,7 +125,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     private var trackEndedByCrossfade = false
     private var mayResumeOnFocusGain = false
 
-    private val sharedPreferences: SharedPreferences by inject()
+    private val preferences: SharedPreferences by inject()
     private val equalizerManager: EqualizerManager by inject()
 
     private var foregroundNotificationHandler: Handler? = null
@@ -153,9 +159,11 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
                     .build()
             ).build()
 
-    val isPlaying get() = playbackManager.isPlaying()
-    val currentSongProgress get() = playbackManager.position()
-    val currentSongDuration get() = playbackManager.duration()
+    private lateinit var player: ExoPlayer
+
+    val isPlaying get() = player.isPlaying
+    val currentSongProgress get() = player.currentPosition
+    val currentSongDuration get() = player.duration
 
     private val playbackSpeed get() = playbackManager.getSpeed()
     private val shuffleMode get() = queueManager.shuffleMode
@@ -167,6 +175,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
 
     val currentSong get() = queueManager.currentSong
 
+    @OptIn(UnstableApi::class)
     override fun onCreate() {
         super.onCreate()
         val powerManager = getSystemService<PowerManager>()
@@ -185,8 +194,20 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
 
         persistentStorage = PersistentStorage(this, serviceScope)
 
+        player = ExoPlayer.Builder(this)
+            .setAudioAttributes(AudioAttributes.Builder()
+                .setContentType(C.AUDIO_CONTENT_TYPE_MUSIC)
+                .setUsage(C.USAGE_MEDIA)
+                .build(), true)
+            .setHandleAudioBecomingNoisy(true)
+            .setMaxSeekToPreviousPositionMs(REWIND_INSTEAD_PREVIOUS_MILLIS)
+            .setSeekBackIncrementMs(preferences.getInt(SEEK_INTERVAL, 10) * 1000L)
+            .setSeekForwardIncrementMs(preferences.getInt(SEEK_INTERVAL, 10) * 1000L)
+            .build()
+
+        player.addListener(this)
         queueManager.addObserver(this)
-        playbackManager.initialize(this, serviceScope)
+
         setupMediaSession()
 
         // Create the UI-thread handler.
@@ -214,7 +235,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
         registerBluetoothConnected()
         registerBecomingNoisyReceiver()
 
-        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+        preferences.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -318,7 +339,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
         wakeLock?.release()
         queueManager.removeObserver(this)
         contentResolver.unregisterContentObserver(mediaStoreObserver)
-        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        preferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 
     override fun queueChanged(queue: List<Song>, reason: QueueChangeReason) {
@@ -370,17 +391,12 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             songPlayCountHelper.notifySongChanged(currentSong, isPlaying)
 
             applyReplayGain(currentSong)
-
-            playbackManager.setCrossFadeNextDataSource(nextSong)
         }
     }
 
-    override fun onTrackWentToNext() {
+    override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         bumpPlayCount()
         if (checkShouldStop(false) || (queueManager.repeatMode == Playback.RepeatMode.Off && isLastTrack)) {
-            serviceScope.launch {
-                playbackManager.setNextDataSource(null)
-            }
             pause(true)
             seek(0, false)
             if (checkShouldStop(true)) {
@@ -395,30 +411,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
         }
     }
 
-    override fun onTrackEnded() {
-        acquireWakeLock()
-
-        // bump play count before anything else
-        bumpPlayCount()
-        // if there is a timer finished, don't continue
-        if ((queueManager.repeatMode == Playback.RepeatMode.Off && isLastTrack) || checkShouldStop(false)) {
-            pause()
-            seek(0, false)
-            if (checkShouldStop(true)) {
-                quit()
-            }
-        } else {
-            playNextSong(false)
-        }
-        releaseWakeLock()
-    }
-
-    override fun onTrackEndedWithCrossFade() {
-        trackEndedByCrossfade = true
-        onTrackEnded()
-    }
-
-    override fun onPlayStateChanged() {
+    override fun onIsPlayingChanged(isPlaying: Boolean) {
         // We use the foreground notification handler here to slightly delay the call to stopForeground().
         // This appears to be necessary in order to allow our notification to become dismissable if pause()
         // is called via onStartCommand() to this service.
@@ -431,7 +424,6 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
         updateMediaSessionPlaybackState()
         updateWidgets()
 
-        val isPlaying = playbackManager.isPlaying()
         if (isPlaying) {
             // This allows us to receive the onTaskRemoved() callback
             // when the user removes the app from recents.
@@ -458,19 +450,6 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
         }
 
         songPlayCountHelper.notifyPlayStateChanged(isPlaying)
-    }
-
-    override fun onPlaybackModeChanged(wasPlaying: Boolean, position: Int) {
-        openCurrentAndPrepareNext { success ->
-            if (success) {
-                seek(position)
-                if (wasPlaying) {
-                    play()
-                } else {
-                    pause()
-                }
-            }
-        }
     }
 
     private fun processCommand(command: Intent) {
@@ -711,7 +690,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             .setActions(MEDIA_SESSION_ACTIONS)
             .setState(
                 if (isPlaying) PlaybackStateCompat.STATE_PLAYING else PlaybackStateCompat.STATE_PAUSED,
-                currentSongProgress.toLong(),
+                currentSongProgress,
                 playbackSpeed
             )
         setCustomAction(stateBuilder)
@@ -841,7 +820,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     }
 
     private fun pause(force: Boolean = false) {
-        playbackManager.pause(force)
+        playbackManager.pause()
     }
 
     private fun play(force: Boolean = false) {
@@ -849,7 +828,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             showToast(R.string.audio_focus_denied)
             return
         }
-        playbackManager.play(force) {
+        playbackManager.play() {
             playSongAt(currentPosition)
         }
     }
@@ -881,8 +860,8 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     }
 
     private fun back(force: Boolean) {
-        if (Preferences.rewindWithBack && currentSongProgress > REWIND_INSTEAD_PREVIOUS_MILLIS) {
-            seek(0)
+        if (preferences.getBoolean(REWIND_WITH_BACK, true)) {
+            player.seekToPrevious()
         } else {
             playPreviousSong(force)
         }
@@ -1108,17 +1087,12 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
 
         override fun onFastForward() {
             super.onFastForward()
-            val currentPosition = currentSongProgress
-            val songDuration = currentSongDuration
-            seek((currentPosition + (Preferences.seekInterval * 1000))
-                .coerceAtMost(songDuration))
+            player.seekForward()
         }
 
         override fun onRewind() {
             super.onRewind()
-            val currentPosition = currentSongProgress
-            seek((currentPosition - (Preferences.seekInterval * 1000))
-                .coerceAtLeast(0))
+            player.seekBack()
         }
 
         override fun onSkipToPrevious() {
@@ -1413,7 +1387,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     }
 
     companion object {
-        private const val REWIND_INSTEAD_PREVIOUS_MILLIS = 5000
+        private const val REWIND_INSTEAD_PREVIOUS_MILLIS = 5000L
         private const val MEDIA_SESSION_ACTIONS = (PlaybackStateCompat.ACTION_PLAY
                 or PlaybackStateCompat.ACTION_PAUSE
                 or PlaybackStateCompat.ACTION_PLAY_PAUSE

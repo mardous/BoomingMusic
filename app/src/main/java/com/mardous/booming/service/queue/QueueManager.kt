@@ -19,6 +19,7 @@ package com.mardous.booming.service.queue
 
 import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.session.MediaSessionCompat
+import androidx.media3.common.MediaItem
 import com.mardous.booming.core.legacy.PlaybackQueueStore
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
@@ -51,7 +52,7 @@ class QueueManager {
     private val observers = mutableListOf<QueueObserver>()
 
     private var _originalPlayingQueue = mutableListOf<QueueSong>()
-    private var _playingQueue = mutableListOf<QueueSong>()
+    private var _playingQueue = mutableListOf<MediaItem>()
 
     private var _repeatMode = Playback.RepeatMode.Off
     private var _shuffleMode = Playback.ShuffleMode.Off
@@ -520,7 +521,13 @@ class QueueManager {
         changeReason: QueueChangeReason
     ) {
         this.stopPosition = NO_POSITION
-        this._playingQueue = playingQueue
+        this._playingQueue = playingQueue.map {
+            MediaItem.Builder()
+                .setUri(it.mediaStoreUri)
+                .
+                .setTag(it)
+                .build()
+        }
         doDispatchChange { 
             it.queueChanged(playingQueue.toList(), changeReason)
             if (changeReason != QueueChangeReason.Created) {
@@ -580,8 +587,6 @@ class QueueManager {
             if (queueSongs == _originalPlayingQueue && shuffleMode == this.shuffleMode && !shuffleMode.isOn) {
                 return HANDLED_SOURCE
             }
-            // it is important to copy the playing queue here first as we might add/remove songs later
-            _originalPlayingQueue = queueSongs
             setPlayingQueue(
                 playingQueue = onCreated(_originalPlayingQueue.toMutableList()).toMutableList(),
                 changeReason = QueueChangeReason.Created

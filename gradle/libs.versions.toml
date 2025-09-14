@@ -12,6 +12,7 @@ appcompat = "1.7.1"
 fragment = "1.8.9"
 activityCompose = "1.11.0"
 media = "1.7.1"
+media3 = "1.8.0"
 mediarouter = "1.8.1"
 palette = "1.0.0"
 preference = "1.2.1"
@@ -70,6 +71,9 @@ lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", versi
 lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
 lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose" }
+
+media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
+media3-exoplayer-midi = { module = "androidx.media3:media3-exoplayer-midi", version.ref = "media3" }
 
 room = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }

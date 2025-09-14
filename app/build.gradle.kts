@@ -206,6 +206,10 @@ dependencies {
     implementation(libs.bundles.ktor)
     implementation(libs.bundles.markwon)
 
+    // For media playback using ExoPlayer
+    implementation(libs.media3.exoplayer)
+    implementation(libs.media3.exoplayer.midi)
+
     implementation(libs.room)
     ksp(libs.room.compiler)
 
