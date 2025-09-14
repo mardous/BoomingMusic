@@ -606,7 +606,7 @@
     <string name="lyrics_import_custom_font_title">Importa una font de text</string>
     <string name="lyrics_syllable_mode_title">Lletra fil per randa</string>
     <string name="lyrics_syllable_mode_summary">Permet mostrar la lletra sincronitzada paraula per paraula. Depèn de la disponibilitat de la lletra i d\'un format compatible com LRC o TTML.</string>
-    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
+    <string name="lyrics_effects_note">Els efectes avançats realcen l\'experiència visual, però poden consumir més recursos i bateria.</string>
     <string name="lyrics_gradient_background_title">Fons amb degradat</string>
     <string name="lyrics_gradient_background_summary">Mostra un fons degradat animat amb els colors de la portada de la cançó actual. Només funciona en pantalla completa.</string>
     <string name="lyrics_blur_effect_title">Efecte difuminat</string>
