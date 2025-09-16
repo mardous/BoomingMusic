@@ -807,9 +807,9 @@
     <string name="shuffle_artists_ordered_songs">ערבוב אמנים, שירים מסודרים</string>
     <string name="ordered_artists_shuffle_songs">אמנים מסודרים, ערבוב שירים</string>
     <string name="album_or_artist_shuffle_all">ערבוב הכל</string>
-    <string name="today">Today</string>
-    <string name="yesterday">Yesterday</string>
-    <string name="this_week">This week</string>
+    <string name="today">היום</string>
+    <string name="yesterday">אתמול</string>
+    <string name="this_week">השבוע</string>
     <string name="this_month">This month</string>
     <string name="past_three_months">Past three months</string>
     <string name="this_year">This year</string>
