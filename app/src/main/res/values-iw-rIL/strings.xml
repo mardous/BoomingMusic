@@ -819,7 +819,7 @@
     <string name="priority_low">נמוך</string>
     <string name="always">תמיד</string>
     <string name="only_on_wifi">רק וויי-פיי</string>
-    <string name="image_size_large">Large (slower)</string>
+    <string name="image_size_large">גדול (איטי יותר)</string>
     <string name="image_size_medium">Medium (default, recommended)</string>
     <string name="image_size_small">Small (faster, low quality)</string>
     <string name="play_on_startup_mode_never">Never play on startup</string>
