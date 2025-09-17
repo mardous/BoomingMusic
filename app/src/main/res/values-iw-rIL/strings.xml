@@ -816,9 +816,9 @@
     <string name="priority_maximum">מקסימום</string>
     <string name="priority_high">גבוה</string>
     <string name="priority_normal">רגיל</string>
-    <string name="priority_low">Low</string>
-    <string name="always">Always</string>
-    <string name="only_on_wifi">Only Wi-Fi</string>
+    <string name="priority_low">נמוך</string>
+    <string name="always">תמיד</string>
+    <string name="only_on_wifi">רק וויי-פיי</string>
     <string name="image_size_large">Large (slower)</string>
     <string name="image_size_medium">Medium (default, recommended)</string>
     <string name="image_size_small">Small (faster, low quality)</string>
