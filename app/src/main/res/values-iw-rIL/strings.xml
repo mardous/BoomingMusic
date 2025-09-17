@@ -811,11 +811,11 @@
     <string name="yesterday">אתמול</string>
     <string name="this_week">השבוע</string>
     <string name="this_month">החודש</string>
-    <string name="past_three_months">Past three months</string>
-    <string name="this_year">This year</string>
-    <string name="priority_maximum">Maximum</string>
-    <string name="priority_high">High</string>
-    <string name="priority_normal">Normal</string>
+    <string name="past_three_months">שלושת החודשים האחרונים</string>
+    <string name="this_year">השנה</string>
+    <string name="priority_maximum">מקסימום</string>
+    <string name="priority_high">גבוה</string>
+    <string name="priority_normal">רגיל</string>
     <string name="priority_low">Low</string>
     <string name="always">Always</string>
     <string name="only_on_wifi">Only Wi-Fi</string>
