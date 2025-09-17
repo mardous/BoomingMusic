@@ -820,10 +820,10 @@
     <string name="always">תמיד</string>
     <string name="only_on_wifi">רק וויי-פיי</string>
     <string name="image_size_large">גדול (איטי יותר)</string>
-    <string name="image_size_medium">Medium (default, recommended)</string>
-    <string name="image_size_small">Small (faster, low quality)</string>
-    <string name="play_on_startup_mode_never">Never play on startup</string>
-    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
+    <string name="image_size_medium">בינוני (ברירת מחדל, מומלץ)</string>
+    <string name="image_size_small">קטן (מהיר יותר, איכות נמוכה)</string>
+    <string name="play_on_startup_mode_never">לעולם לא להפעיל בהפעלה</string>
+    <string name="play_on_startup_mode_minimized">כן, עם לוח נגן ממוזער</string>
     <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
     <string name="system_default">System default</string>
     <string name="label_never">Never</string>
