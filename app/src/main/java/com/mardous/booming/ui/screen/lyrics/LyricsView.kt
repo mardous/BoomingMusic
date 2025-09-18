@@ -5,6 +5,7 @@ import androidx.compose.animation.core.*
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -73,17 +74,39 @@ fun LyricsView(
     LaunchedEffect(state.currentLineIndex) {
         if (state.currentLineIndex >= 0) {
             if (!isInDragGesture && !isScrollInProgress) {
-                if (settings.isCenterCurrentLine) {
-                    listState.animateScrollToItem(
-                        index = state.currentLineIndex,
-                        scrollOffset = settings.calculateCenterOffset(
-                            currentIndex = state.currentLineIndex,
-                            listState = listState,
-                            density = density
+                val layoutInfo = listState.layoutInfo
+                val viewportHeight = with(layoutInfo) { viewportEndOffset - viewportStartOffset }
+                val bottomPadding = with(density) { settings.contentPadding.calculateBottomPadding().toPx() }
+                val activeItem = layoutInfo.visibleItemsInfo.find { it.index == state.currentLineIndex }
+                if (activeItem != null) {
+                    val itemSize = activeItem.size
+                    val targetOffset = if (settings.isCenterCurrentLine) {
+                        (viewportHeight / 2) - (itemSize / 2) - bottomPadding
+                    } else {
+                        0f
+                    }
+                    listState.animateScrollBy(
+                        value = activeItem.offset - targetOffset,
+                        animationSpec = tween(
+                            run {
+                                (state.lyrics?.lines?.getOrNull(state.currentLineIndex + 1)?.startAt ?: 0) -
+                                        (state.lyrics?.lines?.getOrNull(state.currentLineIndex)?.startAt ?: 0)
+                            }.let {
+                                (it / 2).coerceIn(100, 1000).toInt()
+                            }
                         )
                     )
                 } else {
-                    listState.animateScrollToItem(state.currentLineIndex)
+                    val fontSize = with(density) { textStyle.fontSize.toPx() * 2 }
+                    val targetOffset = if (settings.isCenterCurrentLine) {
+                        (viewportHeight / 2) - fontSize - bottomPadding
+                    } else {
+                        0
+                    }
+                    listState.animateScrollToItem(
+                        index = state.currentLineIndex,
+                        scrollOffset = -targetOffset.toInt()
+                    )
                 }
                 disableBlurEffect = disableAdvancedEffects
             }
