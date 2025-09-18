@@ -110,7 +110,7 @@ class QueueManager {
             .setTitle(song.title)
             .setSubtitle(song.displayArtistName())
             .setIconUri(song.albumId.albumCoverUri())
-            .setMediaUri(song.mediaStoreUri)
+            .setMediaUri(song.uri)
             .build()
         MediaSessionCompat.QueueItem(mediaDescription, song.hashCode().toLong() * index)
     }

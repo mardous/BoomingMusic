@@ -730,7 +730,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
             .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, song.albumName)
             .putString(MediaMetadataCompat.METADATA_KEY_ALBUM_ARTIST, song.albumArtistName)
             .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, song.displayArtistName())
-            .putString(MediaMetadataCompat.METADATA_KEY_MEDIA_URI, song.mediaStoreUri.toString())
+            .putString(MediaMetadataCompat.METADATA_KEY_MEDIA_URI, song.uri.toString())
             .putString(MediaMetadataCompat.METADATA_KEY_GENRE, song.genreName)
             .putString(MediaMetadataCompat.METADATA_KEY_MEDIA_ID, song.id.toString())
             .putLong(MediaMetadataCompat.METADATA_KEY_TRACK_NUMBER, song.trackNumber.toLong())
@@ -989,7 +989,7 @@ class MusicService : MediaBrowserServiceCompat(), PlaybackCallbacks, QueueObserv
     private fun applyReplayGain(song: Song) {
         val mode = Preferences.replayGainSourceMode
         if (song != Song.emptySong && mode != ReplayGainSourceMode.MODE_NONE) {
-            val rg = ReplayGainTagExtractor.getReplayGain(song.mediaStoreUri)
+            val rg = ReplayGainTagExtractor.getReplayGain(song.uri)
             var adjustDB = 0.0f
             var peak = 1.0f
 

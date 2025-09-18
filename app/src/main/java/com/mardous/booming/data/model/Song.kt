@@ -47,7 +47,7 @@ open class Song(
     open val genreName: String?
 ) : Parcelable, FileSystemItem {
 
-    val mediaStoreUri: Uri
+    val uri: Uri
         get() = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id)
 
     protected constructor(song: Song) : this(

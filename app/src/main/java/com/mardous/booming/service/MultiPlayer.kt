@@ -47,7 +47,7 @@ open class MultiPlayer(context: Context) : LocalPlayback(context) {
         completion: (success: Boolean) -> Unit
     ) {
         mIsInitialized = false
-        setDataSourceImpl(mCurrentMediaPlayer, song.mediaStoreUri.toString()) { success ->
+        setDataSourceImpl(mCurrentMediaPlayer, song.uri.toString()) { success ->
             mIsInitialized = success
             if (mIsInitialized) {
                 setNextDataSource(null)
@@ -84,7 +84,7 @@ open class MultiPlayer(context: Context) : LocalPlayback(context) {
             mNextMediaPlayer = MediaPlayer()
             mNextMediaPlayer?.setWakeMode(context, PowerManager.PARTIAL_WAKE_LOCK)
             mNextMediaPlayer?.audioSessionId = getAudioSessionId()
-            setDataSourceImpl(mNextMediaPlayer!!, song.mediaStoreUri.toString()) { success ->
+            setDataSourceImpl(mNextMediaPlayer!!, song.uri.toString()) { success ->
                 if (success) {
                     try {
                         mCurrentMediaPlayer.setNextMediaPlayer(mNextMediaPlayer)

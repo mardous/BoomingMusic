@@ -67,7 +67,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                 val trackLength = song.songDurationStr()
                 val replayGain = song.replayGainStr(context)
 
-                val metadataReader = MetadataReader(song.mediaStoreUri)
+                val metadataReader = MetadataReader(song.uri)
                 if (!metadataReader.hasMetadata) {
                     SongInfoResult(
                         playCount = playCount,

@@ -123,7 +123,7 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
         /* We've already set DataSource if initialized is true in setNextDataSource */
         if (!hasDataSource) {
             getCurrentPlayer()?.let {
-                setDataSourceImpl(it, song.mediaStoreUri.toString()) { success ->
+                setDataSourceImpl(it, song.uri.toString()) { success ->
                     mIsInitialized = success
                     if (mIsInitialized) {
                         albumDataSource = AlbumDataSource(song.albumId, song.trackNumber)
@@ -146,7 +146,7 @@ class CrossFadePlayer(context: Context) : LocalPlayback(context) {
         nextDataSource = if (song != null && albumDataSource?.avoidCrossfade(song) == true) {
             null
         } else {
-            song?.mediaStoreUri?.toString()
+            song?.uri?.toString()
         }
     }
 

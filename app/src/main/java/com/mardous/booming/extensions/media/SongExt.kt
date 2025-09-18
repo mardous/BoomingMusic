@@ -95,7 +95,7 @@ fun Song.songInfo(isForWidget: Boolean = false): String {
 suspend fun Song.extraInfo(requestedInfo: List<NowPlayingInfo>) = withContext(Dispatchers.IO) {
     if (requestedInfo.isNotEmpty()) {
         runCatching {
-            val metadataReader = MetadataReader(mediaStoreUri)
+            val metadataReader = MetadataReader(uri)
             val audioFile = File(data).toAudioFile()
             val readableContent = requestedInfo.mapNotNull {
                 if (it.isEnabled) {
@@ -110,7 +110,7 @@ suspend fun Song.extraInfo(requestedInfo: List<NowPlayingInfo>) = withContext(Di
 }
 
 fun Song.replayGainStr(context: Context): String? {
-    val rg = ReplayGainTagExtractor.getReplayGain(mediaStoreUri)
+    val rg = ReplayGainTagExtractor.getReplayGain(uri)
     val builder = StringBuilder()
     if (rg.trackGain != 0f) {
         builder.append(String.format(Locale.ROOT, "%s: %.2f dB", context.getString(R.string.track), rg.trackGain))
@@ -127,7 +127,7 @@ fun Song.replayGainStr(context: Context): String? {
 
 fun Song.configureRingtone(context: Context, isAlarm: Boolean): Boolean {
     val resolver = context.contentResolver
-    val uri = mediaStoreUri
+    val uri = uri
 
     try {
         resolver.query(

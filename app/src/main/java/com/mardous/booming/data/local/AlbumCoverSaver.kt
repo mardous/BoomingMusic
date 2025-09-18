@@ -64,17 +64,17 @@ class AlbumCoverSaver(
 
         val retriever = MediaMetadataRetriever()
         return try {
-            retriever.setDataSource(context, song.mediaStoreUri)
+            retriever.setDataSource(context, song.uri)
             val bytes = retriever.embeddedPicture
             bytes?.let { BitmapFactory.decodeByteArray(it, 0, it.size) }
         } catch (e: IllegalArgumentException) {
-            Log.e(TAG, "Invalid URI or inaccessible mediaStoreUri: ${song.mediaStoreUri}", e)
+            Log.e(TAG, "Invalid URI or inaccessible mediaStoreUri: ${song.uri}", e)
             null
         } catch (e: SecurityException) {
-            Log.e(TAG, "Missing permission to access mediaStoreUri: ${song.mediaStoreUri}", e)
+            Log.e(TAG, "Missing permission to access mediaStoreUri: ${song.uri}", e)
             null
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to extract bitmap from ${song.mediaStoreUri}", e)
+            Log.e(TAG, "Failed to extract bitmap from ${song.uri}", e)
             null
         } finally {
             retriever.release()
