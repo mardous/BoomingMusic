@@ -21,22 +21,19 @@ import com.mardous.booming.data.SongProvider
 import com.mardous.booming.extensions.media.albumCoverUri
 import java.util.Objects
 
-data class Album(val id: Long, override val songs: List<Song>) : SongProvider {
+data class Album(
+    val id: Long,
+    val artistName: String,
+    val albumArtistName: String?,
+    val year: Int,
+    override val songs: List<Song>
+) : SongProvider {
 
     val name: String
         get() = safeGetFirstSong().albumName
 
     val artistId: Long
         get() = safeGetFirstSong().artistId
-
-    val artistName: String
-        get() = safeGetFirstSong().artistName
-
-    val albumArtistName: String?
-        get() = safeGetFirstSong().albumArtistName
-
-    val year: Int
-        get() = safeGetFirstSong().year
 
     val songCount: Int
         get() = songs.size
@@ -72,6 +69,6 @@ data class Album(val id: Long, override val songs: List<Song>) : SongProvider {
     companion object {
         const val UNKNOWN_ALBUM_DISPLAY_NAME = "Unknown Album"
 
-        val empty = Album(-1, arrayListOf())
+        val empty = Album(-1, "", "", -1, arrayListOf())
     }
 }

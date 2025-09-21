@@ -86,6 +86,7 @@ data class Artist(
     }
 
     companion object {
+        const val UNKNOWN = "<unknown>"
         const val VARIOUS_ARTISTS_DISPLAY_NAME = "Various Artists"
         const val VARIOUS_ARTISTS_ID: Long = -2
 

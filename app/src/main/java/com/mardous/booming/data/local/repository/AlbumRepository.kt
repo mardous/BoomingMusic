@@ -22,6 +22,7 @@ import android.provider.MediaStore.Audio.AudioColumns
 import com.mardous.booming.core.sort.AlbumSortMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.util.Preferences
 
@@ -43,7 +44,7 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) : Albu
         val songs = with(SongSortMode.AlbumSongs) {
             songRepository.songs(cursor).sorted()
         }
-        return Album(albumId, songs)
+        return getAlbumFromSongs(albumId, songs)
     }
 
     override fun albums(query: String): List<Album> {
@@ -67,7 +68,7 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) : Albu
         val songCursor = if (!album.albumArtistName.isNullOrEmpty()) {
             songRepository.makeSongCursor(
                 "${AudioColumns.ALBUM_ARTIST} = ? AND ${AudioColumns.ALBUM_ID} != ?",
-                arrayOf(album.albumArtistName!!, album.id.toString()),
+                arrayOf(album.albumArtistName, album.id.toString()),
                 DEFAULT_SORT_ORDER
             )
         } else {
@@ -91,9 +92,19 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) : Albu
         sorted: Boolean = true,
         sortMode: AlbumSortMode = AlbumSortMode.AllAlbums
     ): List<Album> {
-        val grouped = songs.groupBy { it.albumId }.map { Album(it.key, it.value) }
+        val grouped = songs.groupBy { it.albumId }.map { getAlbumFromSongs(it.key, it.value) }
         if (!sorted) return grouped
         return with(sortMode) { grouped.sorted() }
+    }
+
+    private fun getAlbumFromSongs(id: Long, songs: List<Song>): Album {
+        return Album(
+            id = id,
+            artistName = songs.firstNotNullOfOrNull { song -> song.artistName } ?: Artist.UNKNOWN,
+            albumArtistName = songs.firstNotNullOfOrNull { song -> song.albumArtistName },
+            year = songs.filter { song -> song.year > 0 }.minOfOrNull { song -> song.year } ?: 0,
+            songs = songs
+        )
     }
 
     companion object {
