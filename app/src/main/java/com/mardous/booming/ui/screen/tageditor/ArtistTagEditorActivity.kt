@@ -24,10 +24,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import coil3.SingletonImageLoader
-import coil3.load
-import coil3.request.CachePolicy
 import coil3.request.ImageRequest
-import coil3.request.crossfade
 import coil3.toBitmap
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
@@ -69,22 +66,7 @@ class ArtistTagEditorActivity : AbsTagEditorActivity() {
             artistBinding.discTotal.setText(it.discTotal)
         }
         viewModel.loadContent()
-        viewModel.requestArtist().observe(this) { artist ->
-            SingletonImageLoader.get(this)
-                .enqueue(
-                    ImageRequest.Builder(this)
-                        .data(artist)
-                        .listener(
-                            onError = { _, _ ->
-                                setImageBitmap(null)
-                            },
-                            onSuccess = { _, result ->
-                                setImageBitmap(result.image.toBitmap())
-                            }
-                        )
-                        .build()
-                )
-        }
+        loadCurrentArtistImage()
     }
 
     override fun onWrapFieldViews(inflater: LayoutInflater, parent: ViewGroup) {
@@ -129,15 +111,35 @@ class ArtistTagEditorActivity : AbsTagEditorActivity() {
     override fun restoreImage() {}
 
     override fun deleteImage() {
-        super.deleteImage()
-        viewModel.resetArtistImage()
+        viewModel.resetArtistImage().observe(this) { isSuccess ->
+            if (isSuccess) {
+                loadCurrentArtistImage()
+            }
+        }
+    }
+
+    private fun loadCurrentArtistImage() {
+        viewModel.requestArtist().observe(this) { artist ->
+            SingletonImageLoader.get(this)
+                .enqueue(
+                    ImageRequest.Builder(this)
+                        .data(artist)
+                        .listener(
+                            onError = { _, _ ->
+                                setImageBitmap(null)
+                            },
+                            onSuccess = { _, result ->
+                                setImageBitmap(result.image.toBitmap())
+                            }
+                        )
+                        .build()
+                )
+        }
     }
 
     override fun loadImageFromFile(selectedFileUri: Uri) {
-        viewModel.setArtistImage(selectedFileUri)
-        binding.image.load(selectedFileUri) {
-            crossfade(false)
-            memoryCachePolicy(CachePolicy.READ_ONLY)
+        viewModel.setArtistImage(selectedFileUri).observe(this) {
+            loadCurrentArtistImage()
         }
     }
 

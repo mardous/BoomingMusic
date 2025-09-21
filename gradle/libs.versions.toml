@@ -44,6 +44,7 @@ keyboardvisibilityevent = "3.0.0-RC3"
 taglib = "1.0.0-alpha25"
 jaudiotagger = "2.3.15"
 versioncompare = "1.5.0"
+commons-text = "1.14.0"
 
 [libraries]
 material-components = { module = "com.google.android.material:material", version.ref = "material" }
@@ -126,6 +127,7 @@ taglib = { module = "com.github.Kyant0:taglib", version.ref = "taglib" }
 jaudiotagger = { module = "com.github.Adonai:jaudiotagger", version.ref = "jaudiotagger" }
 
 versioncompare = { module = "io.github.g00fy2:versioncompare", version.ref = "versioncompare" }
+commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text" }
 
 [bundles]
 kotlinx = ["kotlinx-datetime", "kotlinx-coroutines-core", "kotlinx-coroutines-android"]

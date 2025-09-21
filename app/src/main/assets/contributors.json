@@ -1,7 +1,13 @@
 [
   {
+    "contrib_name": "Dawid",
+    "contrib_description": "Designer, Translator & Community Moderator",
+    "contrib_url": "https://github.com/hackzy01",
+    "contrib_image": "dawid.png"
+  },
+  {
     "contrib_name": "TheTerminatorOfProgramming",
-    "contrib_description": "Developer & Tester",
+    "contrib_description": "Contributor & Tester",
     "contrib_url": "https://github.com/TheTerminatorOfProgramming",
     "contrib_image": "ttop.png"
   },
@@ -10,11 +16,5 @@
     "contrib_description": "Contributor",
     "contrib_url": "https://github.com/SifouByte",
     "contrib_image": "sifou.png"
-  },
-  {
-    "contrib_name": "Dawid",
-    "contrib_description": "Designer of the app's monochrome icon & Translator",
-    "contrib_url": "https://github.com/hackzy01",
-    "contrib_image": "dawid.png"
   }
 ]

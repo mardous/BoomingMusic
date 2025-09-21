@@ -1,8 +1,10 @@
 package com.mardous.booming.data.remote.deezer.model
 
+import com.mardous.booming.extensions.utilities.normalize
 import com.mardous.booming.util.ImageSize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import org.apache.commons.text.similarity.JaroWinklerSimilarity
 
 @Serializable
 class DeezerArtist(
@@ -11,18 +13,35 @@ class DeezerArtist(
     val total: Int
 ) {
 
-    fun getImageUrl(requestedImageSize: String): String? {
-        return result.firstOrNull()?.let {
-            when (requestedImageSize) {
-                ImageSize.LARGE -> it.largeImage ?: it.mediumImage
-                ImageSize.SMALL -> it.smallImage ?: it.mediumImage
-                else -> it.mediumImage
+    fun getBestImage(requestedName: String, requestedImageSize: String): Pair<Boolean, String?> {
+        val normRequested = requestedName.normalize()
+        val best = result.map { artist ->
+                val normArtist = artist.artistName.normalize()
+                val score = JW_SIMILARITY.apply(normArtist, normRequested)
+                artist to score
             }
-        }?.takeIf { it.isNotBlank() && !it.contains("/images/artist//") }
+            .maxByOrNull { it.second }
+
+        if (best == null || best.second < 0.90) {
+            return false to null
+        }
+
+        val artist = best.first
+        val tentativeImage = when (requestedImageSize) {
+            ImageSize.LARGE -> artist.largeImage
+            ImageSize.SMALL -> artist.smallImage
+            else -> artist.mediumImage
+        } ?: artist.image
+        return true to tentativeImage
+            ?.takeIf { it.isNotBlank() && !it.contains("/images/artist//") }
     }
 
     @Serializable
     class Result(
+        @SerialName("name")
+        val artistName: String,
+        @SerialName("picture")
+        val image: String?,
         @SerialName("picture_small")
         val smallImage: String?,
         @SerialName("picture_medium")
@@ -30,4 +49,8 @@ class DeezerArtist(
         @SerialName("picture_big")
         val largeImage: String?
     )
+
+    companion object {
+        private val JW_SIMILARITY = JaroWinklerSimilarity()
+    }
 }

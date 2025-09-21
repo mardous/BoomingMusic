@@ -17,9 +17,6 @@
 
 package com.mardous.booming.core.model.filesystem
 
-import android.content.Context
-import android.graphics.drawable.Drawable
-
 interface FileSystemItem {
 
     val fileId: Long
@@ -30,7 +27,4 @@ interface FileSystemItem {
 
     val fileDateAdded: Long
     val fileDateModified: Long
-
-    fun getFileIcon(context: Context): Drawable? = null
-    fun getFileDescription(context: Context): CharSequence? = null
 }

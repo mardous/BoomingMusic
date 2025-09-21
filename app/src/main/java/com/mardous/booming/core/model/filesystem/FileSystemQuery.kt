@@ -16,40 +16,42 @@
  */
 package com.mardous.booming.core.model.filesystem
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import android.os.Parcelable
-import androidx.appcompat.content.res.AppCompatResources
-import com.mardous.booming.R
+import com.mardous.booming.core.sort.FileSortMode
 import com.mardous.booming.util.StorageUtil
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
+import org.koin.core.component.KoinComponent
 
 class FileSystemQuery(
     val path: String?,
     val parentPath: String?,
     val children: List<FileSystemItem>,
     val isStorageRoot: Boolean = false
-) {
+) : KoinComponent {
 
     val isFlatView: Boolean = path.isNullOrEmpty()
 
     val canGoUp: Boolean = !parentPath.isNullOrEmpty() && !isFlatView && !isStorageRoot
 
-    fun getNavigableChildren(): List<FileSystemItem> {
+    fun getSortedChildren(sortMode: FileSortMode): List<FileSystemItem> {
+        return with(sortMode) { children.sorted() }
+    }
+
+    fun getNavigableChildren(sortMode: FileSortMode): List<FileSystemItem> {
         if (isFlatView) {
-            return children
+            return getSortedChildren(sortMode)
         }
         return buildList {
             if (canGoUp) {
                 add(GoUpFileSystemItem(fileName = "...", filePath = parentPath!!))
             }
-            addAll(children)
+            addAll(getSortedChildren(sortMode))
         }
     }
 
     @Parcelize
-    private class GoUpFileSystemItem(
+    class GoUpFileSystemItem internal constructor(
         override val fileId: Long = GO_UP_ID,
         override val fileName: String,
         override val filePath: String
@@ -61,9 +63,6 @@ class FileSystemQuery(
         @IgnoredOnParcel
         override val fileDateModified: Long = -1
 
-        override fun getFileIcon(context: Context): Drawable? {
-            return AppCompatResources.getDrawable(context, R.drawable.ic_folder_24dp)
-        }
     }
 
     companion object {

@@ -19,7 +19,6 @@ package com.mardous.booming.coil.util
 import java.io.File
 import java.io.IOException
 import java.io.InputStream
-import kotlin.io.path.inputStream
 
 object AudioCoverUtils {
 
@@ -39,7 +38,7 @@ object AudioCoverUtils {
             for (fallback in FALLBACKS) {
                 val cover = File(parent, fallback)
                 if (cover.isFile) {
-                    return cover.toPath().inputStream()
+                    return cover.inputStream()
                 }
             }
         }

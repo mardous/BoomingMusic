@@ -26,11 +26,10 @@ class AudioCoverFetcher(
             return null
 
         val stream = if (cover.isIgnoreMediaStore) {
-            contentResolver.openFileDescriptor(cover.uri, "r")?.use { fd ->
-                TagLib.getFrontCover(fd.dup().detachFd())?.data
-                    ?.inputStream()
-                    ?: AudioCoverUtils.fallback(cover.path, cover.isUseFolderArt)
-            }
+            AudioCoverUtils.fallback(cover.path, cover.isUseFolderArt)
+                ?: contentResolver.openFileDescriptor(cover.uri, "r")?.use { fd ->
+                    TagLib.getFrontCover(fd.dup().detachFd())?.data?.inputStream()
+                }
         } else {
             contentResolver.openInputStream(cover.albumId.albumCoverUri())
         } ?: return null

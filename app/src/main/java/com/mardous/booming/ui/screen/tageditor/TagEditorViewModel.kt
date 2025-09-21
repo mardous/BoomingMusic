@@ -35,6 +35,7 @@ class TagEditorViewModel(
         Log.e(TAG, "Failed to read file tags", throwable)
     }
 
+    private var artist: Artist? = null
     private val metadataWriter = MetadataWriter()
 
     private val _tagResult = MutableLiveData<TagEditorResult>()
@@ -121,17 +122,23 @@ class TagEditorViewModel(
         }
     }
 
-    fun setArtistImage(uri: Uri) = viewModelScope.launch(Dispatchers.IO) {
+    fun setArtistImage(uri: Uri) = liveData(Dispatchers.IO) {
         val artist = fetchArtist()
         if (artist != Artist.empty) {
             customArtistImageManager.setCustomImage(artist, uri)
+            emit(true)
+        } else {
+            emit(false)
         }
     }
 
-    fun resetArtistImage() = viewModelScope.launch(Dispatchers.IO) {
+    fun resetArtistImage() = liveData(Dispatchers.IO) {
         val artist = fetchArtist()
         if (artist != Artist.empty) {
             customArtistImageManager.removeCustomImage(artist)
+            emit(true)
+        } else {
+            emit(false)
         }
     }
 
@@ -147,17 +154,20 @@ class TagEditorViewModel(
 
     fun requestArtist(): LiveData<Artist> = liveData(Dispatchers.IO) {
         val artist = fetchArtist()
-        if (artist != Artist.Companion.empty) {
+        if (artist != Artist.empty) {
             emit(artist)
         }
     }
 
     private fun fetchArtist(): Artist {
-        return if (target.type == EditTarget.Type.AlbumArtist) {
-            repository.albumArtistByName(target.name)
-        } else {
-            repository.artistById(target.id)
+        if (artist == null) {
+            artist = if (target.type == EditTarget.Type.AlbumArtist) {
+                repository.albumArtistByName(target.name)
+            } else {
+                repository.artistById(target.id)
+            }
         }
+        return artist!!
     }
 
     companion object {

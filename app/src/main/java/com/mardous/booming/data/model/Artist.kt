@@ -17,10 +17,8 @@
 
 package com.mardous.booming.data.model
 
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.SongProvider
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.sortedAlbums
-import com.mardous.booming.util.sort.sortedSongs
 import java.util.Objects
 
 /**
@@ -49,11 +47,10 @@ data class Artist(
         get() = albums.sumOf { it.duration }
 
     val sortedAlbums: List<Album>
-        get() = albums.let { if (filterSingles) it.filterNot { it.isSingle } else it }
-            .sortedAlbums(SortOrder.artistAlbumSortOrder)
+        get() = if (filterSingles) albums.filterNot { it.isSingle } else albums
 
     val sortedSongs: List<Song>
-        get() = songs.sortedSongs(SortOrder.artistSongSortOrder)
+        get() = with(SongSortMode.ArtistSongs) { songs.sorted() }
 
     override val songs: List<Song>
         get() = albums.flatMap { it.songs }
@@ -89,6 +86,7 @@ data class Artist(
     }
 
     companion object {
+        const val UNKNOWN = "<unknown>"
         const val VARIOUS_ARTISTS_DISPLAY_NAME = "Various Artists"
         const val VARIOUS_ARTISTS_ID: Long = -2
 

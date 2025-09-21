@@ -29,7 +29,7 @@ object FileUtil : KoinComponent {
     const val PLAYLISTS_DIRECTORY_NAME = "Playlists"
 
     // Directories that are accessible only for Booming
-    private const val CUSTOM_ARTIST_IMAGES_DIRECTORY_NAME = "/custom_artist_images/"
+    private const val CUSTOM_ARTIST_IMAGES_DIRECTORY_NAME = "custom_artist_images"
     private const val THUMBS_DIRECTORY_NAME = "Thumbs"
 
     fun externalStorageDirectory(dirType: String? = null): File {

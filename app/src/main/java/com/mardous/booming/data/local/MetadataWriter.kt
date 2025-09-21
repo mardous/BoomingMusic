@@ -232,7 +232,7 @@ data class EditTarget(
             name = song.title,
             id = song.id,
             artworkId = song.albumId,
-            contents = listOf(Content(song.id, song.mediaStoreUri, song.data))
+            contents = listOf(Content(song.id, song.uri, song.data))
         )
 
         fun album(album: Album) = EditTarget(
@@ -240,15 +240,15 @@ data class EditTarget(
             name = album.name,
             id = album.id,
             artworkId = album.id,
-            contents = album.songs.map { Content(it.id, it.mediaStoreUri, it.data) }
+            contents = album.songs.map { Content(it.id, it.uri, it.data) }
         )
 
         fun artist(artist: Artist) = EditTarget(
-            type = Type.Artist,
+            type = if (artist.isAlbumArtist) Type.AlbumArtist else Type.Artist,
             name = artist.name,
             id = artist.id,
             artworkId = -1,
-            contents = artist.songs.map { Content(it.id, it.mediaStoreUri, it.data) }
+            contents = artist.songs.map { Content(it.id, it.uri, it.data) }
         )
     }
 }

@@ -40,7 +40,6 @@ class UpdatePreferencesFragment : PreferencesScreenFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val preference = findPreference<ProgressIndicatorPreference>("search_for_update")
-        defaultState(preference, Preferences.lastUpdateSearch)
         preference?.onPreferenceClickListener = Preference.OnPreferenceClickListener {
             updateViewModel.searchForUpdate(true)
             true
@@ -53,8 +52,12 @@ class UpdatePreferencesFragment : PreferencesScreenFragment() {
                     preference?.isEnabled = false
                     preference?.summary = getString(R.string.checking_please_wait)
                 }
-                else -> {
+                UpdateSearchResult.State.Completed,
+                UpdateSearchResult.State.Failed -> {
                     defaultState(preference, result.executedAtMillis)
+                }
+                else -> {
+                    defaultState(preference, Preferences.lastUpdateSearch)
                 }
             }
         }

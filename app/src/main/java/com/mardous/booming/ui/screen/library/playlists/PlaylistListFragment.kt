@@ -28,6 +28,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
 import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.core.sort.PlaylistSortMode
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.extensions.navigation.playlistDetailArgs
 import com.mardous.booming.ui.IPlaylistCallback
@@ -38,9 +39,6 @@ import com.mardous.booming.ui.component.menu.onPlaylistsMenu
 import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.ImportPlaylistDialog
 import com.mardous.booming.ui.screen.library.ReloadType
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.prepareSortOrder
-import com.mardous.booming.util.sort.selectedSortOrder
 
 /**
  * @author Christians M. A. (mardous)
@@ -113,20 +111,11 @@ class PlaylistListFragment : AbsRecyclerViewCustomGridSizeFragment<PlaylistAdapt
         menu.removeItem(R.id.action_view_type)
         menu.add(0, R.id.action_new_playlist, 0, R.string.new_playlist_title)
         menu.add(0, R.id.action_import_playlist, 0, R.string.action_import_playlist)
-        val sortOrderSubmenu = menu.findItem(R.id.action_sort_order)?.subMenu
-        if (sortOrderSubmenu != null) {
-            sortOrderSubmenu.clear()
-            sortOrderSubmenu.add(0, R.id.action_sort_order_az, 0, R.string.sort_order_az)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_number_of_songs, 1, R.string.sort_order_number_of_songs)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_descending, 2, R.string.sort_order_descending)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_ignore_articles, 3, R.string.sort_order_ignore_articles)
-            sortOrderSubmenu.setGroupCheckable(0, true, true)
-            sortOrderSubmenu.prepareSortOrder(SortOrder.playlistSortOrder)
-        }
+        PlaylistSortMode.AllPlaylists.createMenu(menu)
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
-        if (item.selectedSortOrder(SortOrder.playlistSortOrder)) {
+        if (PlaylistSortMode.AllPlaylists.sortItemSelected(item)) {
             libraryViewModel.forceReload(ReloadType.Playlists)
             return true
         }

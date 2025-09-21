@@ -20,22 +20,22 @@ package com.mardous.booming.ui.adapters.song
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
+import com.mardous.booming.core.model.sort.SortKey
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.durationStr
 import com.mardous.booming.extensions.media.trackNumber
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.ui.ISongCallback
-import com.mardous.booming.util.sort.SortKeys
-import com.mardous.booming.util.sort.SortOrder
 
 class SimpleSongAdapter(
     context: FragmentActivity,
     songs: List<Song>,
     layoutRes: Int,
-    sortOrder: SortOrder,
+    sortMode: SongSortMode,
     callback: ISongCallback
-) : SongAdapter(context, songs, layoutRes, sortOrder, callback) {
+) : SongAdapter(context, songs, layoutRes, sortMode, callback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(itemLayoutRes, parent, false))
@@ -50,20 +50,16 @@ class SimpleSongAdapter(
     }
 
     override fun getSongText(song: Song): String {
-        when (sortOrder?.value) {
-            SortKeys.TRACK_NUMBER -> {
-                return buildInfoString(getTrackNumberString(song), song.displayArtistName())
+        return when (sortMode?.selectedKey) {
+            SortKey.Album -> buildInfoString(getTrackNumberString(song), song.albumName)
+            SortKey.Track -> buildInfoString(getTrackNumberString(song), song.displayArtistName())
+            SortKey.Year -> if (song.year > 0) {
+                buildInfoString(song.year.toString(), song.displayArtistName())
+            } else {
+                song.displayArtistName()
             }
-            SortKeys.YEAR -> {
-                if (song.year > 0) {
-                    return buildInfoString(song.year.toString(), song.displayArtistName())
-                }
-            }
-            SortKeys.ALBUM -> {
-                return buildInfoString(getTrackNumberString(song), song.albumName)
-            }
+            else -> song.displayArtistName()
         }
-        return song.displayArtistName()
     }
 
     private fun getTrackNumberString(song: Song) =

@@ -17,13 +17,8 @@
 
 package com.mardous.booming.data.model
 
-import android.content.Context
-import android.graphics.drawable.Drawable
-import androidx.appcompat.content.res.AppCompatResources
-import com.mardous.booming.R
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.data.SongProvider
-import com.mardous.booming.extensions.plurals
 import java.io.File
 
 /**
@@ -51,14 +46,6 @@ class Folder(
 
     val songCount: Int
         get() = musicFiles.count { it is Song }
-
-    override fun getFileIcon(context: Context): Drawable? {
-        return AppCompatResources.getDrawable(context, R.drawable.ic_folder_24dp)
-    }
-
-    override fun getFileDescription(context: Context): CharSequence {
-        return context.plurals(R.plurals.x_items, musicFiles.size)
-    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

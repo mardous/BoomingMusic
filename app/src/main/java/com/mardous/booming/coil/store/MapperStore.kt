@@ -18,7 +18,7 @@ class SongMapper(private val preferences: SharedPreferences) : Mapper<Song, Audi
     override fun map(data: Song, options: Options): AudioCover? {
         return AudioCover(
             albumId = data.albumId,
-            uri = data.mediaStoreUri,
+            uri = data.uri,
             path = data.data,
             lastModified = data.dateModified,
             isAlbum = false,
@@ -36,7 +36,7 @@ class AlbumMapper(private val preferences: SharedPreferences) : Mapper<Album, Au
         return data.safeGetFirstSong().let {
             AudioCover(
                 albumId = data.id,
-                uri = it.mediaStoreUri,
+                uri = it.uri,
                 path = it.data,
                 lastModified = it.dateModified,
                 isAlbum = true,
@@ -84,7 +84,7 @@ class FileMapper(private val preferences: SharedPreferences) : Mapper<FileSystem
         if (song != null) {
             return AudioCover(
                 albumId = data.albumId,
-                uri = data.mediaStoreUri,
+                uri = data.uri,
                 path = data.data,
                 lastModified = data.dateModified,
                 isAlbum = false,

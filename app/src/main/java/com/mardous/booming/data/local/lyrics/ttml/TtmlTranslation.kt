@@ -1,6 +1,7 @@
 package com.mardous.booming.data.local.lyrics.ttml
 
 import com.mardous.booming.data.model.lyrics.Lyrics
+import com.mardous.booming.extensions.utilities.collapseSpaces
 import java.util.Locale
 
 class TtmlTranslation(val lang: String) {
@@ -109,13 +110,13 @@ class TtmlTranslation(val lang: String) {
             if (!pending) return false
             if (background) {
                 if (!hasSetBackgroundContent) {
-                    this.backgroundContent = content?.trim()
+                    this.backgroundContent = content?.collapseSpaces()
                     hasSetBackgroundContent = true
                     return true
                 }
             } else {
                 if (!hasSetContent) {
-                    this.content = content?.trim()
+                    this.content = content?.collapseSpaces()
                     hasSetContent = true
                     return true
                 }

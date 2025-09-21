@@ -19,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.IntentCompat
 import coil3.Image
 import coil3.SingletonImageLoader
+import coil3.dispose
 import coil3.request.CachePolicy
 import coil3.request.ImageRequest
 import coil3.request.crossfade
@@ -76,6 +77,11 @@ abstract class AbsTagEditorActivity : AbsBaseActivity(),
         binding.image.setOnClickListener(this@AbsTagEditorActivity)
         binding.actionSave.setOnClickListener(this@AbsTagEditorActivity)
         binding.appBar.setupStatusBarForeground()
+    }
+
+    override fun onDestroy() {
+        binding.image.dispose()
+        super.onDestroy()
     }
 
     override fun onClick(view: View) {
@@ -164,7 +170,7 @@ abstract class AbsTagEditorActivity : AbsBaseActivity(),
 
             override fun onSuccess(result: Image) {
                 super.onSuccess(result)
-                val albumArtBitmap = result.toBitmap(2048, 2048)
+                val albumArtBitmap = result.toBitmap()
                 setImageBitmap(albumArtBitmap)
                 viewModel.setPictureBitmap(albumArtBitmap)
             }

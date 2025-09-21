@@ -23,6 +23,7 @@ import androidx.media3.common.MediaItem
 import com.mardous.booming.core.legacy.PlaybackQueueStore
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.mapper.toQueueSong
 import com.mardous.booming.data.mapper.toQueueSongs
@@ -33,8 +34,6 @@ import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.indexOfSong
 import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.sortedSongs
 
 const val NO_POSITION = -1
 
@@ -111,7 +110,7 @@ class QueueManager {
             .setTitle(song.title)
             .setSubtitle(song.displayArtistName())
             .setIconUri(song.albumId.albumCoverUri())
-            .setMediaUri(song.mediaStoreUri)
+            .setMediaUri(song.uri)
             .build()
         MediaSessionCompat.QueueItem(mediaDescription, song.hashCode().toLong() * index)
     }
@@ -154,11 +153,13 @@ class QueueManager {
     suspend fun shuffleUsingProviders(
         providers: List<SongProvider>,
         shuffleMode: GroupShuffleMode,
-        defaultSortKey: String? = null
+        sortMode: SongSortMode
     ): Boolean {
-        val songs = providers.flatMap { it.songs }.sortedSongs(SortOrder.songSortOrder)
+        val songs = with(SongSortMode.AllSongs) {
+            providers.flatMap { it.songs }.sorted()
+        }
         val result = createQueue(songs, 0, Playback.ShuffleMode.On) {
-            shuffleManager.shuffleByProvider(providers, shuffleMode, defaultSortKey).toQueueSongs()
+            shuffleManager.shuffleByProvider(providers, shuffleMode, sortMode).toQueueSongs()
         }
         if (result == SUCCESS) {
             setPositionTo(0)

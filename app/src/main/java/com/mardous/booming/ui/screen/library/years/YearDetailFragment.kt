@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mardous.booming.R
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.mapper.searchFilter
 import com.mardous.booming.data.model.ReleaseYear
 import com.mardous.booming.data.model.Song
@@ -47,9 +48,6 @@ import com.mardous.booming.ui.adapters.song.SongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.prepareSortOrder
-import com.mardous.booming.util.sort.selectedSortOrder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -137,26 +135,24 @@ class YearDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_genre_detail, menu)
-    }
-
-    override fun onPrepareMenu(menu: Menu) {
-        menu.prepareSortOrder(SortOrder.yearSongSortOrder)
+        SongSortMode.YearSongs.createMenu(menu)
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
-        return when {
-            item.selectedSortOrder(SortOrder.yearSongSortOrder) -> {
-                detailViewModel.loadDetail()
-                true
-            }
-            item.itemId == R.id.action_search -> {
-                findNavController().navigate(R.id.nav_search, searchArgs(year.searchFilter(requireContext())))
-                true
-            }
-            item.itemId == android.R.id.home -> {
+        return if (SongSortMode.YearSongs.sortItemSelected(item)) {
+            detailViewModel.loadDetail()
+            true
+        } else when (item.itemId) {
+            android.R.id.home -> {
                 findNavController().navigateUp()
                 true
             }
+
+            R.id.action_search -> {
+                findNavController().navigate(R.id.nav_search, searchArgs(year.searchFilter(requireContext())))
+                true
+            }
+
             else -> songAdapter.dataSet.onSongsMenu(this, item)
         }
     }

@@ -52,7 +52,7 @@ fun LyricsScreen(
     onEditClick: () -> Unit
 ) {
     val context = LocalContext.current
-    val isPowerSaveMode = remember { context.isPowerSaveMode() }
+    val isPowerSaveMode = context.isPowerSaveMode()
 
     val miniPlayerMargin by libraryViewModel.getMiniPlayerMargin().observeAsState(LibraryMargin(0))
 
@@ -94,12 +94,13 @@ fun LyricsScreen(
         }
     }
 
-    val isGradientBackground = lyricsViewSettings.gradientBackground && gradientColors.size >= 2
-    val secondaryColor = MaterialTheme.colorScheme.secondary
+    val isGradientBackground by remember {
+        derivedStateOf { lyricsViewSettings.gradientBackground && gradientColors.size >= 2 }
+    }
     val contentColor = if (isGradientBackground) {
         Color.White
     } else {
-        secondaryColor
+        MaterialTheme.colorScheme.secondary
     }
 
     Scaffold(
@@ -161,7 +162,7 @@ fun CoverLyricsScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val isPowerSaveMode = remember { context.isPowerSaveMode() }
+    val isPowerSaveMode = context.isPowerSaveMode()
 
     val lyricsViewSettings by lyricsViewModel.playerLyricsViewSettings.collectAsState()
 

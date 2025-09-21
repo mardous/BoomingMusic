@@ -27,6 +27,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
 import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.core.model.sort.SortKey
+import com.mardous.booming.core.sort.AlbumSortMode
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.extensions.navigation.albumDetailArgs
 import com.mardous.booming.extensions.navigation.asFragmentExtras
@@ -38,10 +41,6 @@ import com.mardous.booming.ui.component.menu.onAlbumMenu
 import com.mardous.booming.ui.component.menu.onAlbumsMenu
 import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.sort.SortKeys
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.prepareSortOrder
-import com.mardous.booming.util.sort.selectedSortOrder
 
 class AlbumListFragment : AbsRecyclerViewCustomGridSizeFragment<AlbumAdapter, GridLayoutManager>(),
     IAlbumCallback {
@@ -64,7 +63,7 @@ class AlbumListFragment : AbsRecyclerViewCustomGridSizeFragment<AlbumAdapter, Gr
             playerViewModel.openShuffle(
                 providers = it,
                 mode = Preferences.albumShuffleMode,
-                sortKey = SortKeys.TRACK_NUMBER
+                sortMode = SongSortMode.Dynamic(SortKey.Track)
             ).observe(viewLifecycleOwner) { success ->
                 if (success) {
                     showToast(R.string.albums_shuffle)
@@ -92,11 +91,11 @@ class AlbumListFragment : AbsRecyclerViewCustomGridSizeFragment<AlbumAdapter, Gr
         notifyLayoutResChanged(itemLayoutRes)
         val dataSet: List<Album> = adapter?.dataSet ?: ArrayList()
         return AlbumAdapter(
-            mainActivity,
-            dataSet,
-            itemLayoutRes,
-            SortOrder.albumSortOrder,
-            this
+            activity = mainActivity,
+            dataSet = dataSet,
+            itemLayoutRes = itemLayoutRes,
+            sortMode = AlbumSortMode.AllAlbums,
+            callback = this
         )
     }
 
@@ -146,22 +145,11 @@ class AlbumListFragment : AbsRecyclerViewCustomGridSizeFragment<AlbumAdapter, Gr
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateMenu(menu, inflater)
-        val sortOrderSubmenu = menu.findItem(R.id.action_sort_order)?.subMenu
-        if (sortOrderSubmenu != null) {
-            sortOrderSubmenu.clear()
-            sortOrderSubmenu.add(0, R.id.action_sort_order_az, 0, R.string.sort_order_az)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_artist, 1, R.string.sort_order_artist)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_year, 2, R.string.sort_order_year)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_number_of_songs, 3, R.string.sort_order_number_of_songs)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_descending, 4, R.string.sort_order_descending)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_ignore_articles, 5, R.string.sort_order_ignore_articles)
-            sortOrderSubmenu.setGroupCheckable(0, true, true)
-            sortOrderSubmenu.prepareSortOrder(SortOrder.albumSortOrder)
-        }
+        AlbumSortMode.AllAlbums.createMenu(menu)
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
-        if (item.selectedSortOrder(SortOrder.albumSortOrder)) {
+        if (AlbumSortMode.AllAlbums.sortItemSelected(item)) {
             libraryViewModel.forceReload(ReloadType.Albums)
             return true
         }

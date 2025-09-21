@@ -92,7 +92,7 @@ class DeleteSongsDialog : DialogFragment(), SAFDialog.SAFResultListener {
                     }
                 }
 
-            val pendingIntent = createDeleteRequest(songs.map { it.mediaStoreUri })
+            val pendingIntent = createDeleteRequest(songs.map { it.uri })
             deleteResultLauncher.launch(IntentSenderRequest.Builder(pendingIntent.intentSender).build())
             return MaterialAlertDialogBuilder(requireContext())
                 .setView(R.layout.dialog_deleting_songs)

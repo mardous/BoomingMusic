@@ -51,7 +51,7 @@ fun Context.getShareSongIntent(song: Song): Intent {
     return try {
         ShareCompat.IntentBuilder(this)
             .setType(MIME_TYPE_AUDIO)
-            .setStream(song.mediaStoreUri)
+            .setStream(song.uri)
             .setChooserTitle(R.string.action_share)
             .createChooserIntent()
     } catch (e: IllegalArgumentException) {
@@ -69,7 +69,7 @@ fun Context.getShareSongsIntent(songs: List<Song>): Intent {
             .setType(MIME_TYPE_AUDIO)
             .setChooserTitle(R.string.action_share)
         for (song in songs.filterNot { it == Song.emptySong }) {
-            intent.addStream(song.mediaStoreUri)
+            intent.addStream(song.uri)
         }
         return intent.createChooserIntent()
     }

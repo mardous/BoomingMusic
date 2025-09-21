@@ -74,6 +74,7 @@ abstract class AbsBaseActivity : AbsThemeActivity() {
     protected open fun getPermissionsToRequest(): Array<String> {
         return mutableSetOf<String>().apply {
             if (hasT()) {
+                add(READ_MEDIA_IMAGES)
                 add(READ_MEDIA_AUDIO)
                 add(POST_NOTIFICATIONS)
             } else {

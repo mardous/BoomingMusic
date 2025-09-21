@@ -23,6 +23,7 @@ import com.mardous.booming.util.Preferences.requireString
 import okio.Path.Companion.toOkioPath
 import okio.buffer
 import okio.source
+import kotlin.math.min
 
 class ArtistImageFetcher(
     private val loader: ImageLoader,
@@ -33,6 +34,12 @@ class ArtistImageFetcher(
     private val downloadImage: Boolean,
     private val imageSize: String
 ) : Fetcher {
+
+    companion object {
+        // Maximum 4 queries per artist
+        private const val MAX_RESULT_PER_PAGE = 5
+        private const val MAX_RESULT_COUNT = 20
+    }
 
     private val contentResolver: ContentResolver
         get() = options.context.contentResolver
@@ -50,13 +57,25 @@ class ArtistImageFetcher(
         }
 
         if (downloadImage && !image.isNameUnknown && options.context.isAllowedToDownloadMetadata()) {
-            val deezerArtist = deezerService.artist(image.name)
-            val imageUrl = deezerArtist?.getImageUrl(imageSize)
-            if (imageUrl != null) {
-                val data = loader.components.map(imageUrl, options)
-                val output = loader.components.newFetcher(data, options, loader)
-                val (fetcher) = checkNotNull(output) { "no supported fetcher for $imageUrl" }
-                return fetcher.fetch()
+            var pageIndex = 0
+            var revisedResults = 0
+            var deezerArtist = deezerService.artist(image.name, MAX_RESULT_PER_PAGE, pageIndex)
+            val total = min(deezerArtist?.total ?: 0, MAX_RESULT_COUNT)
+            while (deezerArtist != null && revisedResults < total) {
+                val (matched, imageUrl) = deezerArtist.getBestImage(image.name, imageSize)
+                if (matched) {
+                    if (imageUrl != null) {
+                        val data = loader.components.map(imageUrl, options)
+                        val output = loader.components.newFetcher(data, options, loader)
+                        val (fetcher) = checkNotNull(output) { "no supported fetcher for $imageUrl" }
+                        return fetcher.fetch()
+                    }
+                    break
+                }
+                revisedResults += deezerArtist.result.size
+                if (revisedResults < total) {
+                    deezerArtist = deezerService.artist(image.name, min((total - revisedResults), MAX_RESULT_PER_PAGE), pageIndex++)
+                }
             }
         }
 

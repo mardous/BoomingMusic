@@ -55,8 +55,8 @@ fun headerInterceptor(context: Context): Interceptor {
 fun provideOkHttp(context: Context, cache: Cache): OkHttpClient {
     return OkHttpClient.Builder()
         .addInterceptor(headerInterceptor(context))
-        .connectTimeout(1, TimeUnit.SECONDS)
-        .readTimeout(1, TimeUnit.SECONDS)
+        .connectTimeout(5, TimeUnit.SECONDS)
+        .readTimeout(5, TimeUnit.SECONDS)
         .cache(cache)
         .build()
 }

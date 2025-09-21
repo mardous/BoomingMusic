@@ -73,7 +73,7 @@ val currentVersion: Version = Version.Beta(
     versionMajor = 1,
     versionMinor = 1,
     versionPatch = 0,
-    versionBuild = 7
+    versionBuild = 8
 )
 val currentVersionCode = currentVersion.code
 
@@ -86,7 +86,7 @@ android {
         targetSdk = 35
 
         applicationId = namespace
-        versionCode = 1100107
+        versionCode = 1100108
         versionName = currentVersion.name
         check(versionCode == currentVersionCode)
     }
@@ -233,4 +233,5 @@ dependencies {
     implementation(libs.jaudiotagger)
 
     implementation(libs.versioncompare)
+    implementation(libs.commons.text)
 }

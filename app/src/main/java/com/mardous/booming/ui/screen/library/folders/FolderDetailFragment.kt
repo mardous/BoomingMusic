@@ -27,6 +27,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mardous.booming.R
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.mapper.searchFilter
 import com.mardous.booming.data.model.Folder
 import com.mardous.booming.data.model.Song
@@ -44,9 +45,6 @@ import com.mardous.booming.ui.adapters.song.SongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.prepareSortOrder
-import com.mardous.booming.util.sort.selectedSortOrder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -97,10 +95,10 @@ class FolderDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_li
 
     private fun setupRecyclerView() {
         songAdapter = SongAdapter(
-            requireActivity(),
-            ArrayList(),
-            R.layout.item_list,
-            SortOrder.folderSongSortOrder,
+            activity = requireActivity(),
+            dataSet = ArrayList(),
+            itemLayoutRes = R.layout.item_list,
+            sortMode = SongSortMode.FolderSongs,
             callback = this
         )
         binding.recyclerView.apply {
@@ -132,15 +130,12 @@ class FolderDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_li
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_folder_detail, menu)
-    }
-
-    override fun onPrepareMenu(menu: Menu) {
-        menu.prepareSortOrder(SortOrder.folderSongSortOrder)
+        SongSortMode.FolderSongs.createMenu(menu)
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
         return when {
-            item.selectedSortOrder(SortOrder.folderSongSortOrder) -> {
+            SongSortMode.FolderSongs.sortItemSelected(item) -> {
                 detailViewModel.loadDetail()
                 true
             }

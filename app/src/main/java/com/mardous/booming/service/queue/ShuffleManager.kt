@@ -20,12 +20,12 @@ package com.mardous.booming.service.queue
 import android.util.Log
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.ExpandedSong
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.util.sort.sortedSongs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
@@ -118,7 +118,7 @@ class ShuffleManager : KoinComponent {
     suspend fun <T : SongProvider> shuffleByProvider(
         providers: List<T>?,
         mode: GroupShuffleMode,
-        sortKey: String? = null
+        sortMode: SongSortMode
     ): List<Song> = withContext(Dispatchers.IO) {
         if (providers.isNullOrEmpty()) {
             emptyList()
@@ -126,12 +126,9 @@ class ShuffleManager : KoinComponent {
             val mutableProviders = providers.toMutableList()
             when (mode) {
                 GroupShuffleMode.ByGroup -> {
-                    requireNotNull(sortKey) {
-                        "sortKey must not be null when using GroupShuffleMode.ByGroup"
-                    }
                     mutableProviders.shuffle()
                     mutableProviders.flatMap { group ->
-                        group.songs.sortedSongs(sortKey, descending = false, ignoreArticles = true)
+                        with(sortMode) { group.songs.sorted() }
                     }
                 }
 

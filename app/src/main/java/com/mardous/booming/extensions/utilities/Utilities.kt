@@ -19,8 +19,18 @@ package com.mardous.booming.extensions.utilities
 
 import android.util.Log
 import kotlinx.serialization.json.Json
+import java.text.Normalizer
 
+private val SPACES_REGEX = Regex("\\s+")
 const val DEFAULT_INFO_DELIMITER = " • "
+
+fun String.collapseSpaces() = trim().replace(SPACES_REGEX, " ")
+
+fun String.normalize(): String =
+    Normalizer.normalize(this, Normalizer.Form.NFD)
+        .replace("\\p{M}".toRegex(), "")
+        .trim()
+        .replace(Regex("\\s+"), " ")
 
 fun buildInfoString(vararg parts: String?, delimiter: String = DEFAULT_INFO_DELIMITER): String {
     val sb = StringBuilder()

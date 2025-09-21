@@ -159,7 +159,7 @@ class RealLyricsRepository(
 
     override suspend fun embeddedLyrics(song: Song, requirePlainText: Boolean): String? {
         if (song.id != Song.emptySong.id) {
-            val metadataReader = MetadataReader(song.mediaStoreUri)
+            val metadataReader = MetadataReader(song.uri)
             val lyrics = metadataReader.value(MetadataReader.LYRICS)
             if (requirePlainText && !lyrics.isNullOrBlank()) {
                 val parser = lyricsParsers.firstOrNull { it.handles(lyrics) }
@@ -279,7 +279,7 @@ class RealLyricsRepository(
 
     override suspend fun writableUris(song: Song): List<Uri> {
         if (hasR()) {
-            return listOf(song.mediaStoreUri).filterNot { it == Uri.EMPTY }
+            return listOf(song.uri).filterNot { it == Uri.EMPTY }
         }
         return emptyList()
     }
