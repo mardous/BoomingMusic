@@ -23,7 +23,7 @@
     <string name="action_voice_search">Recherche vocale</string>
     <string name="speech_not_supported">Votre appareil ne prend pas en charge la saisie vocale</string>
     <string name="search_artist_x_label">Rechercher un artiste : %s</string>
-    <string name="search_album_x_label">Rechercher un album: %s</string>
+    <string name="search_album_x_label">Rechercher un album : %s</string>
     <string name="search_list_x_label">Liste de recherche : %s</string>
     <string name="search_from_x_label">Rechercher depuis \"%s\"</string>
     <string name="search_year_x_label">Année de recherche : %s</string>
@@ -181,7 +181,7 @@
     <string name="action_go_to_album">Aller à l\'album</string>
     <string name="action_go_to_artist">Aller à l\'artiste</string>
     <string name="action_go_to_genre">Aller au genre</string>
-    <string name="added_title_to_playing_queue">"Ajout d'un titre à la file d'attente de lecture."</string>
+    <string name="added_title_to_playing_queue">"Ajout de 1 titre à la file d'attente de lecture."</string>
     <string name="added_x_titles_to_playing_queue">Ajout de %1$d titres à la file d\'attente de lecture.</string>
     <string name="next_song_label">Titre suivant</string>
     <string name="next_song_x">Suivant • %1$s</string>
@@ -778,7 +778,7 @@
     <string name="depth">Profondeur</string>
     <string name="hinge">Charnière</string>
     <string name="horizontal_flip">Retournement horizontal</string>
-    <string name="vertical_flip">Retournement verticale</string>
+    <string name="vertical_flip">Retournement vertical</string>
     <string name="zoom_out">Zoom arrière</string>
     <string name="simple">Simple</string>
     <string name="stack">Pile</string>
