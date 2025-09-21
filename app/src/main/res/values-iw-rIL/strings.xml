@@ -238,6 +238,7 @@
     <string name="sort_order_duration">משך זמן</string>
     <string name="sort_order_date_added">תאריך הוספה</string>
     <string name="sort_order_date_modified">תאריך שינוי</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">מספר שירים</string>
     <string name="sort_order_number_of_albums">מספר האלבומים</string>
     <string name="sort_order_last_played_date">תאריך האזנה אחרונה</string>
@@ -733,6 +734,8 @@
     <string name="delete_downloaded_lyrics_summary">רק מילות שיר שהורדו על ידי Booming Music. אינו משפיע על מילות שיר המשובצות בתגי ID3v2 או בקבצי LRC.</string>
     <string name="lyrics_cleared">מילות השיר נוקו.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">שלח לסל המיחזור</string>
     <string name="trash_music_summary">שלח קבצים שנמחקו לסל המיחזור.</string>
     <string name="recursive_folder_actions_title">פעולות המשפיעות על תת-תיקיות</string>
