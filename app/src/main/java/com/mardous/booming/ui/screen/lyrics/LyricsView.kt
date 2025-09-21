@@ -291,10 +291,12 @@ fun LyricsLineContentView(
     align: TextAlign,
     modifier: Modifier = Modifier
 ) {
-    val blurRadius = if (index == selectedIndex) 0f else {
-        (abs(index - selectedIndex).toFloat() - .20f)
-            .coerceAtLeast(0f)
-    }
+    val effectDuration = ((endMillis - startMillis) / 2).coerceAtMost(500).toInt()
+    val blurRadius by animateFloatAsState(
+        targetValue = if (index == selectedIndex) 0f else
+                (abs(index - selectedIndex).toFloat() + 1.5f).coerceIn(0f, 10f),
+        animationSpec = tween(effectDuration)
+    )
 
     val blurEffect = remember(enableBlurEffect, blurRadius) {
         if (enableBlurEffect && blurRadius > 0f) {
@@ -308,7 +310,7 @@ fun LyricsLineContentView(
 
     val shadowRadius by animateFloatAsState(
         targetValue = if (selectedLine) 10f else 0f,
-        animationSpec = tween((endMillis - startMillis).toInt())
+        animationSpec = tween(effectDuration)
     )
     val shadow = if (enableShadowEffect && selectedLine) {
         Shadow(
@@ -410,7 +412,7 @@ private fun LyricsTextView(
         label = "line-gradient-origin"
     )
 
-    val textStyle by remember(selectedLine, progressiveColoring, progressFraction, textHeight) {
+    val textStyle by remember(selectedLine, progressiveColoring, animatedOrigin) {
         derivedStateOf {
             if (progressiveColoring) {
                 style.copy(
