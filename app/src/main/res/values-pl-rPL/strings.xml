@@ -238,6 +238,7 @@
     <string name="sort_order_duration">Czas trwania</string>
     <string name="sort_order_date_added">Data dodania</string>
     <string name="sort_order_date_modified">Data modyfikacji</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">Liczba utworów</string>
     <string name="sort_order_number_of_albums">Liczba albumów</string>
     <string name="sort_order_last_played_date">Data ostatniego odtwarzania</string>
@@ -733,6 +734,8 @@
     <string name="delete_downloaded_lyrics_summary">Tylko pobrane przez aplikację. Nie dotyczy tych z tagów ID3v2 ani plików LRC.</string>
     <string name="lyrics_cleared">Tekst został wyczyszczony.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">Przenieś do kosza</string>
     <string name="trash_music_summary">Przenoś usunięte pliki do kosza.</string>
     <string name="recursive_folder_actions_title">Akcja obejmie również subfoldery</string>
