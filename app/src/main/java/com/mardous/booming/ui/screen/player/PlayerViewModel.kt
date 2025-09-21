@@ -11,6 +11,7 @@ import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.shuffle.ShuffleOperationState
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.AlbumCoverSaver
 import com.mardous.booming.data.model.Song
@@ -237,9 +238,9 @@ class PlayerViewModel(
     fun openShuffle(
         providers: List<SongProvider>,
         mode: GroupShuffleMode,
-        sortKey: String? = null
+        sortMode: SongSortMode
     ) = liveData(IO) {
-        val success = queueManager.shuffleUsingProviders(providers, mode, sortKey)
+        val success = queueManager.shuffleUsingProviders(providers, mode, sortMode)
         if (success) {
             playSongAt(queueManager.position, newPlayback = true)
         }

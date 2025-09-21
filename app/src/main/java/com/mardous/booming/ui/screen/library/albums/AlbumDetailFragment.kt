@@ -37,6 +37,9 @@ import com.google.android.material.transition.MaterialContainerTransform
 import com.mardous.booming.R
 import com.mardous.booming.coil.albumImage
 import com.mardous.booming.core.model.task.Result
+import com.mardous.booming.core.sort.AlbumSortMode
+import com.mardous.booming.core.sort.SongSortMode
+import com.mardous.booming.core.sort.SortMode
 import com.mardous.booming.data.mapper.searchFilter
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Song
@@ -60,9 +63,6 @@ import com.mardous.booming.ui.component.menu.onAlbumsMenu
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.prepareSortOrder
-import com.mardous.booming.util.sort.selectedSortOrder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import java.util.Locale
@@ -156,11 +156,11 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
             R.layout.item_song_detailed
         }
         simpleSongAdapter = SimpleSongAdapter(
-            requireActivity(),
-            getAlbum().songs,
-            itemLayoutRes,
-            SortOrder.albumSongSortOrder,
-            this
+            context = requireActivity(),
+            songs = getAlbum().songs,
+            layoutRes = itemLayoutRes,
+            sortMode = SongSortMode.AlbumSongs,
+            callback = this
         )
         binding.songRecyclerView.safeUpdateWithRetry { adapter = simpleSongAdapter }
     }
@@ -176,30 +176,25 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
     }
 
     private fun setupSongSortButton() {
-        binding.songSortOrder.setOnClickListener {
-            createSortOrderMenu(it, R.menu.menu_album_song_sort_order, SortOrder.albumSongSortOrder) {
-                detailViewModel.loadAlbumDetail()
-            }
+        createSortOrderMenu(binding.songSortOrder, SongSortMode.AlbumSongs) {
+            detailViewModel.loadAlbumDetail()
         }
-        binding.similarAlbumSortOrder.setOnClickListener {
-            createSortOrderMenu(it, R.menu.menu_artist_album_sort_order, SortOrder.similarAlbumSortOrder) {
-                loadSimilarContent(getAlbum())
-            }
+        createSortOrderMenu(binding.similarAlbumSortOrder, AlbumSortMode.SimilarAlbums) {
+            loadSimilarContent(getAlbum())
         }
     }
 
-    private fun createSortOrderMenu(view: View, sortMenuRes: Int, sortOrder: SortOrder, onChanged: () -> Unit) {
-        PopupMenu(requireContext(), view).apply {
-            inflate(sortMenuRes)
-            menu.prepareSortOrder(sortOrder)
+    private fun createSortOrderMenu(view: View, sortMode: SortMode, onChanged: () -> Unit) {
+        val popupMenu = PopupMenu(view.context, view).apply {
+            sortMode.createMenu(menu, hasSubMenu = false)
             setOnMenuItemClickListener { item ->
-                if (item.selectedSortOrder(sortOrder)) {
+                if (sortMode.sortItemSelected(item)) {
                     onChanged()
                     true
                 } else false
             }
-            show()
         }
+        view.setOnClickListener { popupMenu.show() }
     }
 
     private fun showAlbum(album: Album) {

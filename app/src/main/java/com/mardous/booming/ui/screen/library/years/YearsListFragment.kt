@@ -28,15 +28,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
 import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.core.sort.YearSortMode
 import com.mardous.booming.data.model.ReleaseYear
 import com.mardous.booming.ui.IYearCallback
 import com.mardous.booming.ui.adapters.YearAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
 import com.mardous.booming.ui.component.menu.onSongsMenu
 import com.mardous.booming.ui.screen.library.ReloadType
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.prepareSortOrder
-import com.mardous.booming.util.sort.selectedSortOrder
 
 class YearsListFragment : AbsRecyclerViewCustomGridSizeFragment<YearAdapter, GridLayoutManager>(),
     IYearCallback {
@@ -87,19 +85,11 @@ class YearsListFragment : AbsRecyclerViewCustomGridSizeFragment<YearAdapter, Gri
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateMenu(menu, inflater)
-        val sortOrderSubmenu = menu.findItem(R.id.action_sort_order)?.subMenu
-        if (sortOrderSubmenu != null) {
-            sortOrderSubmenu.clear()
-            sortOrderSubmenu.add(0, R.id.action_sort_order_year, 0, R.string.sort_order_year)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_number_of_songs, 1, R.string.sort_order_number_of_songs)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_descending, 2, R.string.sort_order_descending)
-            sortOrderSubmenu.setGroupCheckable(0, true, true)
-            sortOrderSubmenu.prepareSortOrder(SortOrder.yearSortOrder)
-        }
+        YearSortMode.AllYears.createMenu(menu)
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
-        if (item.selectedSortOrder(SortOrder.yearSortOrder)) {
+        if (YearSortMode.AllYears.sortItemSelected(item)) {
             libraryViewModel.forceReload(ReloadType.Years)
             return true
         }

@@ -31,6 +31,7 @@ import com.mardous.booming.core.model.GridViewType
 import com.mardous.booming.core.model.action.isPresent
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
+import com.mardous.booming.core.sort.FileSortMode
 import com.mardous.booming.data.model.Folder
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
@@ -44,9 +45,6 @@ import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
 import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.prepareSortOrder
-import com.mardous.booming.util.sort.selectedSortOrder
 import java.io.File
 
 class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, GridLayoutManager>(),
@@ -68,6 +66,9 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
 
     override val itemLayoutRes: Int
         get() = R.layout.item_list
+
+    private val sortMode: FileSortMode
+        get() = if (isFlatView) FileSortMode.AllFolders else FileSortMode.AllFiles
 
     private val fileSystem: FileSystemQuery?
         get() = libraryViewModel.getFileSystem().value
@@ -104,7 +105,7 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
     override fun createAdapter(): FileAdapter {
         notifyLayoutResChanged(itemLayoutRes)
         val dataSet = adapter?.files ?: ArrayList()
-        return FileAdapter(mainActivity, dataSet, itemLayoutRes, this)
+        return FileAdapter(mainActivity, dataSet, itemLayoutRes, sortMode, this)
     }
 
     override fun fileClick(file: FileSystemItem) {
@@ -185,21 +186,15 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
         inflater.inflate(R.menu.menu_folders, menu)
         menu.removeItem(R.id.action_view_type)
         menu.findItem(R.id.action_hierarchy_view)?.isChecked = Preferences.hierarchyFolderView
-        val sortOrderSubmenu = menu.findItem(R.id.action_sort_order)?.subMenu
-        if (sortOrderSubmenu != null) {
-            sortOrderSubmenu.clear()
-            sortOrderSubmenu.add(0, R.id.action_sort_order_az, 0, R.string.sort_order_az)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_number_of_songs, 1, R.string.sort_order_number_of_songs)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_date_added, 2, R.string.sort_order_date_added)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_date_modified, 3, R.string.sort_order_date_modified)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_descending, 4, R.string.sort_order_descending)
-            sortOrderSubmenu.setGroupCheckable(0, true, true)
-            sortOrderSubmenu.prepareSortOrder(SortOrder.folderSortOrder)
-        }
+    }
+
+    override fun onPrepareMenu(menu: Menu) {
+        super.onPrepareMenu(menu)
+        sortMode.createMenu(menu)
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
-        if (item.selectedSortOrder(SortOrder.folderSortOrder)) {
+        if (sortMode.sortItemSelected(item)) {
             libraryViewModel.forceReload(ReloadType.Folders)
             return true
         }
@@ -226,10 +221,9 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
 
     private fun showFolders(fileSystem: FileSystemQuery) {
         toolbar.menu.let {
-            it.findItem(R.id.action_sort_order)?.isVisible = fileSystem.isFlatView
             it.findItem(R.id.action_go_to_start_directory)?.isVisible = !fileSystem.isFlatView
         }
-        adapter?.submitList(fileSystem.getNavigableChildren())
+        adapter?.submitList(fileSystem.getNavigableChildren(sortMode), sortMode)
     }
 
     override fun getSavedViewType(): GridViewType = GridViewType.Normal

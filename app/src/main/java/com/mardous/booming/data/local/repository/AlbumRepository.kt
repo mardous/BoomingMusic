@@ -19,12 +19,11 @@ package com.mardous.booming.data.local.repository
 
 import android.provider.MediaStore
 import android.provider.MediaStore.Audio.AudioColumns
+import com.mardous.booming.core.sort.AlbumSortMode
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.sortedAlbums
-import com.mardous.booming.util.sort.sortedSongs
 
 interface AlbumRepository {
     fun album(albumId: Long): Album
@@ -41,9 +40,10 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) : Albu
             arrayOf(albumId.toString()),
             DEFAULT_SORT_ORDER
         )
-        val songs = songRepository.songs(cursor)
-        val album = Album(albumId, songs)
-        return sortAlbumSongs(album)
+        val songs = with(SongSortMode.AlbumSongs) {
+            songRepository.songs(cursor).sorted()
+        }
+        return Album(albumId, songs)
     }
 
     override fun albums(query: String): List<Album> {
@@ -79,22 +79,21 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) : Albu
         }
         val minSongCount = Preferences.minimumSongCountForAlbum
         val songs = songRepository.songs(songCursor)
-        return splitIntoAlbums(songs, sortOrder = SortOrder.similarAlbumSortOrder).filter {
+        return splitIntoAlbums(songs, sortMode = AlbumSortMode.SimilarAlbums).filter {
             it.songCount >= minSongCount
         }
     }
 
     // We don't need sorted list of songs (with sortAlbumSongs())
     // cuz we are just displaying Albums(Cover Arts) anyway and not songs
-    fun splitIntoAlbums(songs: List<Song>, sorted: Boolean = true, sortOrder: SortOrder = SortOrder.albumSortOrder): List<Album> {
+    fun splitIntoAlbums(
+        songs: List<Song>,
+        sorted: Boolean = true,
+        sortMode: AlbumSortMode = AlbumSortMode.AllAlbums
+    ): List<Album> {
         val grouped = songs.groupBy { it.albumId }.map { Album(it.key, it.value) }
         if (!sorted) return grouped
-        return grouped.sortedAlbums(sortOrder)
-    }
-
-    private fun sortAlbumSongs(album: Album): Album {
-        val songs = album.songs.sortedSongs(SortOrder.albumSongSortOrder)
-        return album.copy(songs = songs)
+        return with(sortMode) { grouped.sorted() }
     }
 
     companion object {

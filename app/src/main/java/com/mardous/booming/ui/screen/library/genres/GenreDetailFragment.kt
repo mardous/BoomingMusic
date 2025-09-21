@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mardous.booming.R
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.mapper.searchFilter
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Song
@@ -47,8 +48,6 @@ import com.mardous.booming.ui.adapters.song.SongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.prepareSortOrder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -97,10 +96,10 @@ class GenreDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_lis
 
     private fun setupRecyclerView() {
         songAdapter = SongAdapter(
-            requireActivity(),
-            ArrayList(),
-            R.layout.item_list,
-            SortOrder.genreSongSortOrder,
+            activity = requireActivity(),
+            dataSet = ArrayList(),
+            itemLayoutRes = R.layout.item_list,
+            sortMode = SongSortMode.GenreSongs,
             callback = this
         )
         binding.recyclerView.apply {
@@ -143,14 +142,14 @@ class GenreDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_lis
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_genre_detail, menu)
-    }
-
-    override fun onPrepareMenu(menu: Menu) {
-        menu.prepareSortOrder(SortOrder.genreSongSortOrder)
+        SongSortMode.GenreSongs.createMenu(menu)
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+        return if (SongSortMode.GenreSongs.sortItemSelected(item)) {
+            detailViewModel.loadGenreSongs()
+            true
+        } else when (item.itemId) {
             android.R.id.home -> {
                 findNavController().navigateUp()
                 true
@@ -163,6 +162,7 @@ class GenreDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_lis
                 )
                 true
             }
+
             else -> songAdapter.dataSet.onSongsMenu(this, item)
         }
     }

@@ -27,6 +27,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
 import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.core.model.sort.SortKey
+import com.mardous.booming.core.sort.ArtistSortMode
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.extensions.navigation.artistDetailArgs
 import com.mardous.booming.extensions.navigation.asFragmentExtras
@@ -38,10 +41,6 @@ import com.mardous.booming.ui.component.menu.onArtistMenu
 import com.mardous.booming.ui.component.menu.onArtistsMenu
 import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.sort.SortKeys
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.prepareSortOrder
-import com.mardous.booming.util.sort.selectedSortOrder
 
 class ArtistListFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, GridLayoutManager>(),
     IArtistCallback {
@@ -64,7 +63,7 @@ class ArtistListFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, 
             playerViewModel.openShuffle(
                 providers = it,
                 mode = Preferences.artistShuffleMode,
-                sortKey = SortKeys.AZ
+                sortMode = SongSortMode.Dynamic(SortKey.AZ)
             ).observe(viewLifecycleOwner) { success ->
                 if (success) {
                     showToast(R.string.artists_shuffle)
@@ -112,17 +111,7 @@ class ArtistListFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, 
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateMenu(menu, inflater)
-        val sortOrderSubmenu = menu.findItem(R.id.action_sort_order)?.subMenu
-        if (sortOrderSubmenu != null) {
-            sortOrderSubmenu.clear()
-            sortOrderSubmenu.add(0, R.id.action_sort_order_az, 0, R.string.sort_order_az)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_number_of_songs, 1, R.string.sort_order_number_of_songs)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_number_of_albums, 2, R.string.sort_order_number_of_albums)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_descending, 3, R.string.sort_order_descending)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_ignore_articles, 4, R.string.sort_order_ignore_articles)
-            sortOrderSubmenu.setGroupCheckable(0, true, true)
-            sortOrderSubmenu.prepareSortOrder(SortOrder.artistSortOrder)
-        }
+        ArtistSortMode.AllArtists.createMenu(menu)
         menu.add(0, R.id.action_album_artist, 0, R.string.show_album_artists).apply {
             isCheckable = true
             isChecked = Preferences.onlyAlbumArtists
@@ -136,7 +125,7 @@ class ArtistListFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, 
             libraryViewModel.forceReload(ReloadType.Artists)
             return true
         }
-        if (item.selectedSortOrder(SortOrder.artistSortOrder)) {
+        if (ArtistSortMode.AllArtists.sortItemSelected(item)) {
             libraryViewModel.forceReload(ReloadType.Artists)
             return true
         }

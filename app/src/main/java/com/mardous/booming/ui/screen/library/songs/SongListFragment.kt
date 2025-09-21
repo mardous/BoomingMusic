@@ -26,6 +26,7 @@ import androidx.core.content.edit
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mardous.booming.R
 import com.mardous.booming.core.model.GridViewType
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.SongAdapter
@@ -33,9 +34,6 @@ import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragme
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
 import com.mardous.booming.ui.screen.library.ReloadType
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.prepareSortOrder
-import com.mardous.booming.util.sort.selectedSortOrder
 
 /**
  * @author Christians M. A. (mardous)
@@ -82,7 +80,13 @@ class SongListFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, Grid
     override fun createAdapter(): SongAdapter {
         notifyLayoutResChanged(itemLayoutRes)
         val dataSet = adapter?.dataSet ?: ArrayList()
-        return SongAdapter(mainActivity, dataSet, itemLayoutRes, SortOrder.songSortOrder, this)
+        return SongAdapter(
+            activity = mainActivity,
+            dataSet = dataSet,
+            itemLayoutRes = itemLayoutRes,
+            sortMode = SongSortMode.AllSongs,
+            callback = this
+        )
     }
 
     override fun songMenuItemClick(
@@ -122,25 +126,11 @@ class SongListFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, Grid
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateMenu(menu, inflater)
-        val sortOrderSubmenu = menu.findItem(R.id.action_sort_order)?.subMenu
-        if (sortOrderSubmenu != null) {
-            sortOrderSubmenu.clear()
-            sortOrderSubmenu.add(0, R.id.action_sort_order_az, 0, R.string.sort_order_az)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_artist, 1, R.string.sort_order_artist)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_album, 2, R.string.sort_order_album)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_duration, 3, R.string.sort_order_duration)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_year, 4, R.string.sort_order_year)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_date_added, 5, R.string.sort_order_date_added)
-            sortOrderSubmenu.add(0, R.id.action_sort_order_date_modified, 6, R.string.sort_order_date_modified)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_descending, 7, R.string.sort_order_descending)
-            sortOrderSubmenu.add(1, R.id.action_sort_order_ignore_articles, 8, R.string.sort_order_ignore_articles)
-            sortOrderSubmenu.setGroupCheckable(0, true, true)
-            sortOrderSubmenu.prepareSortOrder(SortOrder.songSortOrder)
-        }
+        SongSortMode.AllSongs.createMenu(menu)
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
-        if (item.selectedSortOrder(SortOrder.songSortOrder)) {
+        if (SongSortMode.AllSongs.sortItemSelected(item)) {
             libraryViewModel.forceReload(ReloadType.Songs)
             return true
         }

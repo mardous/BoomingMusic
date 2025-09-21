@@ -28,6 +28,7 @@ import android.provider.MediaStore.Audio.AudioColumns
 import android.provider.OpenableColumns
 import android.util.Log
 import com.mardous.booming.appInstance
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.local.MediaQueryDispatcher
 import com.mardous.booming.data.local.room.InclExclDao
 import com.mardous.booming.data.local.room.InclExclEntity
@@ -40,15 +41,12 @@ import com.mardous.booming.extensions.utilities.getStringSafe
 import com.mardous.booming.extensions.utilities.mapIfValid
 import com.mardous.booming.extensions.utilities.takeOrDefault
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.sortedSongs
 import okhttp3.internal.toLongOrDefault
 
 interface SongRepository {
     fun songs(): List<Song>
     fun songs(query: String): List<Song>
     fun songs(cursor: Cursor?): List<Song>
-    fun sortedSongs(cursor: Cursor?): List<Song>
     suspend fun songsByUri(uri: Uri): List<Song>
     fun songByFilePath(filePath: String, ignoreBlacklist: Boolean = false): Song
     fun song(cursor: Cursor?): Song
@@ -60,7 +58,8 @@ interface SongRepository {
 class RealSongRepository(private val inclExclDao: InclExclDao) : SongRepository {
 
     override fun songs(): List<Song> {
-        return sortedSongs(makeSongCursor(null, null))
+        val songs = songs(makeSongCursor(null, null))
+        return with(SongSortMode.AllSongs) { songs.sorted() }
     }
 
     override fun songs(query: String): List<Song> {
@@ -76,11 +75,6 @@ class RealSongRepository(private val inclExclDao: InclExclDao) : SongRepository 
         return cursor.use {
             it.mapIfValid { getSongFromCursorImpl(this) }
         }
-    }
-
-    override fun sortedSongs(cursor: Cursor?): List<Song> {
-        val songs = songs(cursor)
-        return songs.sortedSongs(SortOrder.songSortOrder)
     }
 
     override fun song(cursor: Cursor?): Song {

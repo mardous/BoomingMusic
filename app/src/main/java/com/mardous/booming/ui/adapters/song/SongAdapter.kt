@@ -27,6 +27,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
+import com.mardous.booming.core.model.sort.SortKey
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.isValidPosition
@@ -40,8 +42,6 @@ import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
 import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.util.sort.SortKeys
-import com.mardous.booming.util.sort.SortOrder
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import kotlin.properties.Delegates
@@ -53,7 +53,7 @@ open class SongAdapter(
     protected val activity: FragmentActivity,
     dataSet: List<Song>,
     @LayoutRes protected val itemLayoutRes: Int = R.layout.item_list,
-    protected val sortOrder: SortOrder? = null,
+    protected val sortMode: SongSortMode? = null,
     protected val callback: ISongCallback? = null,
 ) : AbsMultiSelectAdapter<SongAdapter.ViewHolder, Song>(activity, R.menu.menu_media_selection), PopupTextProvider {
 
@@ -88,19 +88,24 @@ open class SongAdapter(
     }
 
     private fun getSongTitle(song: Song): String {
-        return song.title
+        return when (sortMode?.selectedKey) {
+            SortKey.FileName -> song.fileName
+            else -> song.title
+        }
     }
 
     protected open fun getSongText(song: Song): String? {
-        if (sortOrder?.value == SortKeys.YEAR) {
-            if (song.year > 0) {
-                return buildInfoString(song.displayArtistName(), song.year.toString())
+        return when (sortMode?.selectedKey) {
+            SortKey.Year -> if (song.year > 0) {
+                buildInfoString(song.displayArtistName(), song.year.toString())
+            } else {
+                song.displayArtistName()
             }
-            return song.displayArtistName()
-        } else if (sortOrder?.value == SortKeys.ALBUM) {
-            return buildInfoString(song.displayArtistName(), song.albumName)
+
+            SortKey.Album -> buildInfoString(song.displayArtistName(), song.albumName)
+
+            else -> song.songInfo()
         }
-        return song.songInfo()
     }
 
     override fun getItemCount(): Int {
@@ -125,11 +130,12 @@ open class SongAdapter(
 
     override fun getPopupText(view: View, position: Int): CharSequence {
         val song = dataSet.getOrNull(position) ?: return ""
-        return when (sortOrder?.value) {
-            SortKeys.ALBUM -> song.albumName.sectionName()
-            SortKeys.ARTIST -> song.displayArtistName().sectionName()
-            SortKeys.AZ -> song.title.sectionName()
-            SortKeys.YEAR -> ""
+        return when (sortMode?.selectedKey) {
+            SortKey.Album -> song.albumName.sectionName()
+            SortKey.Artist -> song.displayArtistName().sectionName()
+            SortKey.AZ -> song.title.sectionName()
+            SortKey.Year -> ""
+            SortKey.FileName -> song.fileName.sectionName()
             else -> song.title.sectionName()
         }
     }

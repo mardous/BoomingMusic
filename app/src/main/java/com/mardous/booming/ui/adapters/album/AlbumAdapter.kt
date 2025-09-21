@@ -26,6 +26,8 @@ import androidx.core.view.isGone
 import androidx.fragment.app.FragmentActivity
 import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_ALBUM_IMAGE
+import com.mardous.booming.core.model.sort.SortKey
+import com.mardous.booming.core.sort.AlbumSortMode
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.loadPaletteImage
@@ -38,8 +40,6 @@ import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
-import com.mardous.booming.util.sort.SortKeys
-import com.mardous.booming.util.sort.SortOrder
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
@@ -49,7 +49,7 @@ open class AlbumAdapter(
     dataSet: List<Album>,
     @LayoutRes
     protected val itemLayoutRes: Int,
-    protected val sortOrder: SortOrder? = null,
+    protected val sortMode: AlbumSortMode? = null,
     protected val callback: IAlbumCallback? = null,
 ) : AbsMultiSelectAdapter<AlbumAdapter.ViewHolder, Album>(activity, R.menu.menu_media_selection),
     PopupTextProvider {
@@ -89,7 +89,7 @@ open class AlbumAdapter(
     }
 
     protected open fun getAlbumText(holder: ViewHolder, album: Album): String? {
-        if (sortOrder?.value == SortKeys.NUMBER_OF_SONGS) {
+        if (sortMode?.selectedKey == SortKey.SongCount) {
             return buildInfoString(album.displayArtistName(), album.songCountStr(holder.itemView.context))
         }
         return album.albumInfo()
@@ -117,9 +117,9 @@ open class AlbumAdapter(
 
     override fun getPopupText(view: View, position: Int): CharSequence {
         val album = dataSet.getOrNull(position) ?: return ""
-        return when (sortOrder?.value) {
-            SortKeys.ARTIST -> album.displayArtistName().sectionName()
-            SortKeys.AZ -> album.name.sectionName()
+        return when (sortMode?.selectedKey) {
+            SortKey.Artist -> album.displayArtistName().sectionName()
+            SortKey.AZ -> album.name.sectionName()
             else -> album.name.sectionName()
         }
     }

@@ -18,10 +18,12 @@
 package com.mardous.booming.ui.adapters
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isGone
 import androidx.fragment.app.FragmentActivity
 import coil3.load
@@ -29,10 +31,17 @@ import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.coil.placeholderDrawableRes
 import com.mardous.booming.core.model.filesystem.FileSystemItem
+import com.mardous.booming.core.model.filesystem.StorageDevice
+import com.mardous.booming.core.model.sort.SortKey
+import com.mardous.booming.core.sort.FileSortMode
 import com.mardous.booming.data.model.Folder
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.isActivated
+import com.mardous.booming.extensions.media.songInfo
+import com.mardous.booming.extensions.media.trackNumber
+import com.mardous.booming.extensions.plurals
 import com.mardous.booming.extensions.resources.useAsIcon
+import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.ui.IFileCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
@@ -42,6 +51,7 @@ class FileAdapter(
     activity: FragmentActivity,
     files: List<FileSystemItem>,
     private val itemLayoutRes: Int,
+    private var sortMode: FileSortMode,
     private val callback: IFileCallback?,
 ) : AbsMultiSelectAdapter<FileAdapter.ViewHolder, FileSystemItem>(activity, R.menu.menu_media_selection) {
 
@@ -66,15 +76,57 @@ class FileAdapter(
         val isChecked = isChecked(file)
         holder.isActivated = isChecked
         holder.menu?.isGone = isChecked || getItemViewType(position) == VIEW_TYPE_OTHER
-        holder.title?.text = file.fileName
-        holder.text?.text = file.getFileDescription(holder.itemView.context)
+        holder.title?.text = getFileTitle(file)
+        holder.text?.text = getFileText(holder, file)
         if (getItemViewType(position) == VIEW_TYPE_SONG) {
             holder.image?.load(file) {
                 placeholderDrawableRes(holder.itemView.context, DEFAULT_SONG_IMAGE)
             }
         } else {
-            holder.image?.setImageDrawable(file.getFileIcon(holder.itemView.context))
+            holder.image?.setImageDrawable(getFileIcon(holder, file))
         }
+    }
+
+    private fun getFileTitle(file: FileSystemItem): CharSequence {
+        return if (file is Song) {
+            if (sortMode.selectedKey == SortKey.FileName) {
+                file.fileName
+            } else {
+                file.title
+            }
+        } else {
+            file.fileName
+        }
+    }
+
+    private fun getFileText(holder: ViewHolder, file: FileSystemItem): CharSequence? {
+        return when (file) {
+            is Song -> when (sortMode.selectedKey) {
+                SortKey.Track -> {
+                    buildInfoString(
+                        file.trackNumber
+                            .trackNumber()
+                            .takeIf { it > 0 }?.toString() ?: "-",
+                        file.songInfo()
+                    )
+                }
+
+                else -> file.songInfo()
+            }
+            is Folder -> holder.itemView.context.plurals(R.plurals.x_items, file.musicFiles.size)
+            else -> null
+        }
+    }
+
+    private fun getFileIcon(holder: ViewHolder, file: FileSystemItem): Drawable? {
+        val iconRes = when (file) {
+            is StorageDevice -> file.iconRes
+            else -> R.drawable.ic_folder_24dp
+        }
+        if (iconRes != 0) {
+            return AppCompatResources.getDrawable(holder.itemView.context, iconRes)
+        }
+        return null
     }
 
     override fun getItemCount(): Int = files.size
@@ -103,8 +155,9 @@ class FileAdapter(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun submitList(files: List<FileSystemItem>) {
+    fun submitList(files: List<FileSystemItem>, sortMode: FileSortMode) {
         this.files = files
+        this.sortMode = sortMode
         notifyDataSetChanged()
     }
 

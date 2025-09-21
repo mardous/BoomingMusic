@@ -12,6 +12,15 @@
         app:widgetLayout="@layout/preference_switch"
         app:key="trash_music_files"/>
 
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="true"
+        app:title="@string/ignore_articles_when_sorting_title"
+        app:summary="@string/ignore_articles_when_sorting_summary"
+        app:defaultValue="false"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:key="ignore_articles_when_sorting"/>
+
     <PreferenceCategory
         app:title="@string/playlists_label"
         app:layout="@layout/preference_category_title">

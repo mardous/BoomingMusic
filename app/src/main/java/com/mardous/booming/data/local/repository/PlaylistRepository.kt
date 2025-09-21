@@ -24,6 +24,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.mardous.booming.R
+import com.mardous.booming.core.sort.PlaylistSortMode
 import com.mardous.booming.data.local.room.PlaylistDao
 import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.local.room.PlaylistWithSongs
@@ -34,8 +35,6 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.utilities.mapIfValid
 import com.mardous.booming.extensions.utilities.takeOrDefault
 import com.mardous.booming.util.cursor.SortedCursorUtil
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.sortedPlaylists
 
 interface PlaylistRepository {
     fun getSongs(playListId: Long): LiveData<List<SongEntity>>
@@ -112,8 +111,12 @@ class RealPlaylistRepository(
     override suspend fun playlists(): List<PlaylistEntity> = playlistDao.playlists()
 
     override suspend fun playlistsWithSongs(sorted: Boolean): List<PlaylistWithSongs> =
-        playlistDao.playlistsWithSongs().let {
-            if (sorted) it.sortedPlaylists(SortOrder.playlistSortOrder) else it
+        playlistDao.playlistsWithSongs().let { playlistWithSongs ->
+            if (sorted) with(PlaylistSortMode.AllPlaylists) {
+                playlistWithSongs.sorted()
+            } else {
+                playlistWithSongs
+            }
         }
 
     override suspend fun playlistWithSongs(playlistId: Long): PlaylistWithSongs =

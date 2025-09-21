@@ -19,14 +19,12 @@ package com.mardous.booming.data.local.repository
 
 import android.provider.MediaStore.Audio.AudioColumns
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
+import com.mardous.booming.core.sort.SongSortMode
+import com.mardous.booming.core.sort.YearSortMode
 import com.mardous.booming.data.model.Folder
 import com.mardous.booming.data.model.ReleaseYear
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.util.StorageUtil
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.sortedFolders
-import com.mardous.booming.util.sort.sortedSongs
-import com.mardous.booming.util.sort.sortedYears
 
 interface SpecialRepository {
     suspend fun releaseYears(): List<ReleaseYear>
@@ -46,7 +44,8 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
             songRepository.makeSongCursor("${AudioColumns.YEAR} > 0", null)
         )
         val grouped = songs.groupBy { it.year }
-        return grouped.map { ReleaseYear(it.key, it.value) }.sortedYears(SortOrder.yearSortOrder)
+        val years = grouped.map { ReleaseYear(it.key, it.value) }
+        return with(YearSortMode.AllYears) { years.sorted() }
     }
 
     override suspend fun releaseYear(year: Int): ReleaseYear {
@@ -56,7 +55,7 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
                 selectionValues = arrayOf(year.toString())
             )
         )
-        return ReleaseYear(year, songs.sortedSongs(SortOrder.yearSongSortOrder))
+        return ReleaseYear(year, with(SongSortMode.YearSongs) { songs.sorted() })
     }
 
     override suspend fun songsByYear(year: Int, query: String?): List<Song> {
@@ -82,10 +81,7 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
         }.filter {
             it.key.isNotEmpty()
         }
-
         val folders = songsByFolder.map { (folderPath, songs) -> Folder(folderPath, songs) }
-            .sortedFolders(SortOrder.folderSortOrder)
-
         return FileSystemQuery.createFlatView(folders)
     }
 
@@ -93,7 +89,7 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
         val songs = songRepository.songs().filter { song ->
             path == song.folderPath()
         }
-        return Folder(path, songs.sortedSongs(SortOrder.folderSongSortOrder))
+        return Folder(path, with(SongSortMode.FolderSongs) { songs.sorted() })
     }
 
     override suspend fun songsByFolder(path: String, includeSubfolders: Boolean): List<Song> {

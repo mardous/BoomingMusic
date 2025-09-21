@@ -24,15 +24,14 @@ import android.net.Uri
 import android.provider.BaseColumns
 import android.provider.MediaStore
 import android.provider.MediaStore.Audio.Genres
+import com.mardous.booming.core.sort.GenreSortMode
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.utilities.getLongSafe
 import com.mardous.booming.extensions.utilities.getStringSafe
 import com.mardous.booming.extensions.utilities.mapIfValid
 import com.mardous.booming.extensions.utilities.takeOrDefault
-import com.mardous.booming.util.sort.SortOrder
-import com.mardous.booming.util.sort.sortedGenres
-import com.mardous.booming.util.sort.sortedSongs
 
 interface GenreRepository {
     suspend fun genres(query: String): List<Genre>
@@ -56,7 +55,9 @@ class RealGenreRepository(
     }
 
     override suspend fun genres(): List<Genre> {
-        return getGenresFromCursor(makeGenreCursor()).sortedGenres(SortOrder.genreSortOrder)
+        return with(GenreSortMode.AllGenres) {
+            getGenresFromCursor(makeGenreCursor()).sorted()
+        }
     }
 
     override suspend fun genre(song: Song): Genre {
@@ -75,7 +76,9 @@ class RealGenreRepository(
         // so we need to get songs without a genre a different way.
         return if (genreId == -1L) {
             getSongsWithNoGenre()
-        } else songRepository.songs(makeGenreSongCursor(genreId)).sortedSongs(SortOrder.genreSongSortOrder)
+        } else with(SongSortMode.GenreSongs) {
+            songRepository.songs(makeGenreSongCursor(genreId)).sorted()
+        }
     }
 
     override suspend fun songs(genreId: Long, query: String): List<Song> {
@@ -118,8 +121,9 @@ class RealGenreRepository(
 
     private fun getSongsWithNoGenre(): List<Song> {
         val selection = "${BaseColumns._ID} NOT IN (SELECT ${Genres.Members.AUDIO_ID} FROM audio_genres_map)"
-        return songRepository.songs(songRepository.makeSongCursor(selection, null))
-            .sortedSongs(SortOrder.genreSongSortOrder)
+        return with(SongSortMode.GenreSongs) {
+            songRepository.songs(songRepository.makeSongCursor(selection, null)).sorted()
+        }
     }
 
     private fun getGenresFromCursor(cursor: Cursor?): List<Genre> {

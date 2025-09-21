@@ -18,12 +18,10 @@
 package com.mardous.booming.data.model
 
 import android.content.ContentUris
-import android.content.Context
 import android.net.Uri
 import android.os.Parcelable
 import android.provider.MediaStore
 import com.mardous.booming.core.model.filesystem.FileSystemItem
-import com.mardous.booming.extensions.media.songInfo
 import kotlinx.parcelize.Parcelize
 import java.util.Date
 import java.util.Objects
@@ -71,7 +69,7 @@ open class Song(
     fun getModifiedDate() = Date(dateModified * 1000)
 
     override val fileName: String
-        get() = title
+        get() = data.substringAfterLast("/", title)
 
     override val filePath: String
         get() = data
@@ -81,10 +79,6 @@ open class Song(
 
     override val fileDateModified: Long
         get() = dateModified
-
-    override fun getFileDescription(context: Context): CharSequence {
-        return this.songInfo()
-    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
