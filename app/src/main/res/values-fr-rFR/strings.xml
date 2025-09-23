@@ -238,7 +238,7 @@
     <string name="sort_order_duration">Durée</string>
     <string name="sort_order_date_added">Date d\'ajout</string>
     <string name="sort_order_date_modified">Date de modification</string>
-    <string name="sort_order_file_name">File name</string>
+    <string name="sort_order_file_name">Nom de fichier</string>
     <string name="sort_order_number_of_songs">Nombre de titres</string>
     <string name="sort_order_number_of_albums">Nombre d\'albums</string>
     <string name="sort_order_last_played_date">Date de dernière lecture</string>
@@ -718,8 +718,8 @@
     <string name="delete_downloaded_lyrics_summary">Seules les paroles téléchargées par Booming Music. N\'affecte pas les paroles intégrées dans les tags ID3v2 ou les fichiers LCR.</string>
     <string name="lyrics_cleared">Paroles effacées.</string>
     <!-- Library preferences -->
-    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
-    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
+    <string name="ignore_articles_when_sorting_title">Ignorer les articles lors du tri</string>
+    <string name="ignore_articles_when_sorting_summary">Ignorer les articles principaux (« the », « a », « an ») lorsque vous trier les articles.</string>
     <string name="trash_music_title">Envoyer à la corbeille</string>
     <string name="trash_music_summary">Envoyer les fichiers supprimés à la corbeille.</string>
     <string name="recursive_folder_actions_title">Actions affectant les sous-dossiers</string>
