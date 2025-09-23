@@ -154,7 +154,7 @@
     <string name="now_playing">Teraz odtwarzane</string>
     <string name="playing_queue_label">Kolejka odtwarzania</string>
     <string name="list_start">Początek listy.</string>
-    <string name="list_end">Koniec kolejki.</string>
+    <string name="list_end">To już koniec kolejki</string>
     <string name="empty_play_queue">Pusta kolejka odtwarzania.</string>
     <string name="save_queue">Zapisz kolejkę</string>
     <string name="clear_queue">Wyczyść kolejkę</string>
