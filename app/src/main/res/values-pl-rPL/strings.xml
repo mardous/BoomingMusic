@@ -768,8 +768,8 @@
     <string name="restore_backup_summary">Przywróć dane aplikacji (i stan) z wcześniejszej kopii zapasowej.</string>
     <string name="stop_when_closed_from_recents_title">Zatrzymaj po zamknięciu z ostatnich</string>
     <string name="stop_when_closed_from_recents_summary">Zatrzymuje odtwarzanie po zamknięciu aplikacji z listy ostatnich aplikacji.</string>
-    <string name="stop_when_closed_from_recents_note">Uwaga: na niektórych urządzeniach z agresywnym zarządzaniem pamięcią
-        baterią aplikacja może być zawsze zatrzymywana po usunięciu z listy ostatnich, niezależnie od tego ustawienia.</string>
+    <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią
+        lub baterią mogą ignorować to ustawienie i zawsze zatrzymywać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
     <!-- Preference values -->
     <string name="advanced_label">Zaawansowane</string>
     <string name="light_theme_name">Jasny</string>
