@@ -221,7 +221,7 @@
     <string name="horizontal_albums">Poziomy widok albumów</string>
     <string name="ignore_singles">Ignoruj single</string>
     <string name="compact_song_view">Kompaktowy widok utworów</string>
-    <string name="show_total_duration">Pokaż całkowity czas trwania</string>
+    <string name="show_total_duration">Pokaż czas trwania</string>
     <string name="action_view_type">Typ widoku</string>
     <string name="view_type_normal">Normalny</string>
     <string name="view_type_card">Karta</string>
@@ -272,11 +272,11 @@
     <string name="scrobbles_label">Zakrzywianie</string>
     <string name="save_cover">Zapisz okładkę albumu</string>
     <string name="saving_cover_please_wait">Zapisywanie okładki, czekaj…</string>
-    <string name="save_artwork_error">Nie udało się zapisać okładki w pamięci lokalnej</string>
+    <string name="save_artwork_error">Podczas zapisywania okładki albumu wystąpił błąd</string>
     <string name="save_artwork_success">Zapisano okładkę albumu</string>
     <string name="save_artwork_view_action">Wyświetl</string>
     <string name="save_artwork_copyright_info_title">Prawa autorskie</string>
-    <string name="save_artwork_copyright_info_message">Okładki albumów mogą być chronione prawem autorskim. Nie używaj ich w celach komercyjnych
+    <string name="save_artwork_copyright_info_message">Okładki albumów mogą być chronione prawem autorskim. Nie używaj ich w celach komercyjnych ani reklamowych.
         \n\nOdpowiedzialność za ich sposób wykorzystania  ponosisz wyłącznie Ty.</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
