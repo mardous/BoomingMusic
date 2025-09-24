@@ -274,10 +274,10 @@
     <string name="saving_cover_please_wait">Zapisywanie okładki, czekaj…</string>
     <string name="save_artwork_error">Nie udało się zapisać okładki w pamięci lokalnej</string>
     <string name="save_artwork_success">Zapisano okładkę albumu</string>
-    <string name="save_artwork_view_action">Widok</string>
-    <string name="save_artwork_copyright_info_title">Powiadomienie o prawach autorskich</string>
-    <string name="save_artwork_copyright_info_message">Niektóre okładki (lub wszystkie) mogą być chronione prawem autorskim. Nie możesz używać takich obrazów do celów handlowych lub reklamowych.
-        \n\nTylko Ty ponosisz całkowitą odpowiedzialność za korzystanie z zapisanych okładek albumu.</string>
+    <string name="save_artwork_view_action">Wyświetl</string>
+    <string name="save_artwork_copyright_info_title">Prawa autorskie</string>
+    <string name="save_artwork_copyright_info_message">Okładki albumów mogą być chronione prawem autorskim. Nie używaj ich w celach komercyjnych
+        \n\nOdpowiedzialność za ich sposób wykorzystania  ponosisz wyłącznie Ty.</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
     <string name="keyboard">Pokaż klawiaturę</string>
