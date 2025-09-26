@@ -238,6 +238,7 @@
     <string name="sort_order_duration">Длительность</string>
     <string name="sort_order_date_added">Дата добавления</string>
     <string name="sort_order_date_modified">Дата изменения</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">Количество песен</string>
     <string name="sort_order_number_of_albums">Количество альбомов</string>
     <string name="sort_order_last_played_date">Дата последнего воспроизведения</string>
@@ -735,6 +736,8 @@
     <string name="delete_downloaded_lyrics_summary">Только тексты песен, загруженные Booming Music. Не влияет на тексты, встроенные в теги ID3v2 или файлы LRC.</string>
     <string name="lyrics_cleared">Текст песни очищен.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">Отправить в корзину</string>
     <string name="trash_music_summary">Отправлять удаленные файлы в корзину.</string>
     <string name="recursive_folder_actions_title">Действия, влияющие на вложенные папки</string>
