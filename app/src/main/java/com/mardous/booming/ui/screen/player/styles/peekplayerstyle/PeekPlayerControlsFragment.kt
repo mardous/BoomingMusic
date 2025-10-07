@@ -101,11 +101,9 @@ class PeekPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_p
         return PeekPlayerAnimator(binding, Preferences.animateControls)
     }
 
-    override fun onSongInfoChanged(song: Song) {}
+    override fun onSongInfoChanged(currentSong: Song, nextSong: Song?) {}
 
     override fun onExtraInfoChanged(extraInfo: String?) {}
-
-    override fun onQueueInfoChanged(newInfo: String?) {}
 
     override fun onUpdatePlayPause(isPlaying: Boolean) {
         if (isPlaying) {

@@ -22,7 +22,7 @@ import android.database.Cursor
 import android.os.Parcelable
 import android.provider.MediaStore
 import com.mardous.booming.data.local.repository.PlaylistRepository
-import com.mardous.booming.extensions.media.songsStr
+import com.mardous.booming.extensions.media.asNumberOfSongs
 import kotlinx.parcelize.Parcelize
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
@@ -38,7 +38,7 @@ open class Playlist(val id: Long, val name: String) : Parcelable, KoinComponent 
 
     open fun description(context: Context): String {
         val songCount = getSongs().size
-        return songCount.songsStr(context)
+        return songCount.asNumberOfSongs(context)
     }
 
     open fun getSongs(): List<Song> {

@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Shuffle play</string>
     <string name="action_queue_next">Queue next</string>
     <string name="shuffle_all_label">Shuffle all</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Play/Pause</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">No equalizer found.</string>
     <string name="audio_focus_denied">Audio focus denied.</string>
     <string name="no_audio_ID">Bad audio ID.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Couldn\'t play this song.</string>
     <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Storage Access</string>
@@ -159,7 +162,6 @@
     <string name="save_queue">Save queue</string>
     <string name="clear_queue">Clear queue</string>
     <string name="action_move_to_current_track">Show current track</string>
-    <string name="shuffle_queue">Shuffle queue</string>
     <string name="action_add_to_favorites">Add to Favorites</string>
     <string name="action_remove_from_favorites">Remove from Favorites</string>
     <string name="added_to_favorites_label">Added to Favorites</string>
@@ -169,7 +171,6 @@
     <string name="action_remove_from_playlist">Remove from playlist</string>
     <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Remove from playing queue</string>
-    <string name="x_removed_from_playing_queue">%s removed</string>
     <string name="put_after_current_track">Put after current track</string>
     <string name="undo_action">Undo</string>
     <string name="set_artist_image">Set Artist image</string>
@@ -477,8 +478,6 @@
     <string name="sound_settings">Sound settings</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tempo</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">External EQ</string>
     <string name="custom">Custom</string>
 
@@ -602,7 +601,6 @@
     <string name="headphones_header">Headphones</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Audio focus</string>
-    <string name="lockscreen_header">Lockscreen</string>
     <string name="shuffle_mode_header">Shuffle mode</string>
     <string name="display_header">Display</string>
     <string name="backup_restore_header">Backup/restore</string>
@@ -698,10 +696,6 @@
 
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="gapless_playback_title">Gapless playback</string>
-    <string name="gapless_playback_summary">Smooth transition between songs. Can cause playback issues on some devices.</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">Source mode</string>
     <string name="replaygain_preamp_title">PreAmp level</string>
     <string name="replaygain_preamp_summary">Set volume level when ReplayGain is enabled.</string>
@@ -712,8 +706,6 @@
     <string name="remember_shuffle_mode_summary">Shuffle mode will stay on when selecting a new list of songs.</string>
     <string name="album_shuffle_mode_title">Album shuffle mode</string>
     <string name="artist_shuffle_mode_title">Artist shuffle mode</string>
-    <string name="auto_play_on_skip_title">Auto-play on skip</string>
-    <string name="auto_play_on_skip_summary">If playback is paused, tapping Previous or Next buttons will start music.</string>
     <string name="rewind_with_back_title">"Rewind with 'Previous'"</string>
     <string name="rewind_with_back_summary">Rewind the playing track to the start or move to previous track if the current one is in the beginning.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -728,8 +720,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pauses playback when Bluetooth A2DP headset is disconnected. Recommended.</string>
     <string name="ignore_audio_focus_title">Ignore audio focus</string>
     <string name="ignore_audio_focus_summary">Always play audio in background regardless of anything else being played.</string>
-    <string name="pause_on_transient_focus_loss_title">Transient focus loss</string>
-    <string name="pause_on_transient_focus_loss_summary">Pause playback on transient focus loss (i.e. notifications, incoming calls).</string>
 
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Auto download metadata</string>
@@ -768,11 +758,6 @@
 
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Additional line of text</string>
-    <string name="notification_priority_title">Notification priority</string>
-    <string name="album_art_on_lockscreen_title">Show album cover</string>
-    <string name="album_art_on_lockscreen_summary">Uses the current songs album cover as lockscreen wallpaper. May cause high memory usage. Varies with device.</string>
-    <string name="blurred_album_art_title">Blurred album art</string>
-    <string name="blurred_album_art_summary">Blurs the album cover on the lockscreen. Can cause problems with third party apps and widgets.</string>
 
     <string name="app_language_title">App language</string>
     <string name="backup_data_title">Backup app data</string>

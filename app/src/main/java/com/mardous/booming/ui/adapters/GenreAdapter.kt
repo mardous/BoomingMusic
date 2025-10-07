@@ -25,8 +25,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mardous.booming.coil.DEFAULT_GENRE_IMAGE
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.extensions.loadPaletteImage
-import com.mardous.booming.extensions.media.sectionName
-import com.mardous.booming.extensions.media.songsStr
+import com.mardous.booming.extensions.media.asSectionName
+import com.mardous.booming.extensions.media.asNumberOfSongs
 import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.ui.IGenreCallback
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
@@ -61,7 +61,7 @@ class GenreAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val genre = dataSet[position]
         holder.title?.text = genre.name
-        holder.text?.text = genre.songCount.songsStr(holder.itemView.context)
+        holder.text?.text = genre.songCount.asNumberOfSongs(holder.itemView.context)
         holder.loadPaletteImage(genre, DEFAULT_GENRE_IMAGE)
     }
 
@@ -75,7 +75,7 @@ class GenreAdapter(
 
     override fun getPopupText(view: View, position: Int): CharSequence {
         val genre = dataSet.getOrNull(position) ?: return ""
-        return if (genre.id != -1L) genre.name.sectionName() else ""
+        return if (genre.id != -1L) genre.name.asSectionName() else ""
     }
 
     inner class ViewHolder(itemView: View) : MediaEntryViewHolder(itemView) {

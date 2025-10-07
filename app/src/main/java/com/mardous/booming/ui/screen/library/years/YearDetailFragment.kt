@@ -42,7 +42,6 @@ import com.mardous.booming.extensions.media.songsDurationStr
 import com.mardous.booming.extensions.navigation.searchArgs
 import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.SongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
@@ -89,10 +88,10 @@ class YearDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
 
     private fun setupButtons() {
         binding.playAction.setOnClickListener {
-            playerViewModel.openQueue(songAdapter.dataSet, shuffleMode = Playback.ShuffleMode.Off)
+            playerViewModel.openQueue(songAdapter.dataSet, shuffleModeEnabled = false)
         }
         binding.shuffleAction.setOnClickListener {
-            playerViewModel.openQueue(songAdapter.dataSet, shuffleMode = Playback.ShuffleMode.On)
+            playerViewModel.openQueue(songAdapter.dataSet, shuffleModeEnabled = true)
         }
     }
 

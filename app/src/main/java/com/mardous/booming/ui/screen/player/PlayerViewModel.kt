@@ -1,12 +1,21 @@
 package com.mardous.booming.ui.screen.player
 
 import android.content.Context
-import android.support.v4.media.session.PlaybackStateCompat
+import android.os.Bundle
 import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import androidx.media3.common.C
+import androidx.media3.common.Player
+import androidx.media3.common.Timeline
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.session.MediaController
+import androidx.media3.session.SessionCommand
+import androidx.media3.session.SessionError
+import androidx.media3.session.SessionResult
+import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.shuffle.ShuffleOperationState
@@ -14,77 +23,75 @@ import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.AlbumCoverSaver
+import com.mardous.booming.data.local.MetadataReader
+import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.model.Queue
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.extensions.files.toAudioFile
 import com.mardous.booming.extensions.isNightMode
-import com.mardous.booming.extensions.media.durationStr
-import com.mardous.booming.extensions.media.extraInfo
-import com.mardous.booming.service.MusicServiceConnection
-import com.mardous.booming.service.constants.SessionCommand
-import com.mardous.booming.service.playback.Playback
-import com.mardous.booming.service.playback.PlaybackManager
-import com.mardous.booming.service.queue.NO_POSITION
-import com.mardous.booming.service.queue.QueueChangeReason
-import com.mardous.booming.service.queue.QueueManager
-import com.mardous.booming.service.queue.QueueObserver
-import com.mardous.booming.util.PlayOnStartupMode
+import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
+import com.mardous.booming.playback.Playback
+import com.mardous.booming.playback.actualMediaItems
+import com.mardous.booming.playback.progress.ProgressObserver
+import com.mardous.booming.playback.shuffle.ShuffleManager
+import com.mardous.booming.playback.toMediaItems
 import com.mardous.booming.util.Preferences
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.guava.await
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withContext
-import kotlin.random.Random
+import java.io.File
 
 @OptIn(FlowPreview::class)
+@androidx.annotation.OptIn(UnstableApi::class)
 class PlayerViewModel(
-    private val serviceConnection: MusicServiceConnection,
-    private val queueManager: QueueManager,
-    private val playbackManager: PlaybackManager,
+    private val repository: Repository,
     private val albumCoverSaver: AlbumCoverSaver
-) : ViewModel(), QueueObserver {
+) : ViewModel(), Player.Listener {
 
-    private val transportControls get() = serviceConnection.transportControls
-    val mediaEvent = serviceConnection.mediaSessionEvent
-    val isConnected = serviceConnection.isConnected
+    private val queueMutex = Mutex()
+    private val progressObserver = ProgressObserver()
+    private val shuffleManager = ShuffleManager()
+    private var mediaController: MediaController? = null
 
-    // Prevent concurrent shuffle actions
-    private val shuffleMutex = Mutex()
-
-    val isPlayingFlow = serviceConnection.playbackState.map { stateCompat ->
-        stateCompat.state == PlaybackStateCompat.STATE_PLAYING
-    }.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.Eagerly,
-        initialValue = serviceConnection.currentPlaybackState == PlaybackStateCompat.STATE_PLAYING
+    private val _mediaEvent = MutableSharedFlow<MediaEvent>(
+        replay = 0,
+        extraBufferCapacity = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
-    val isPlaying get() = isPlayingFlow.value
+    val mediaEvent = _mediaEvent.asSharedFlow()
 
-    private val _repeatModeFlow = MutableStateFlow(queueManager.repeatMode)
+    private val _isPlayingFlow = MutableStateFlow(false)
+    val isPlayingFlow = _isPlayingFlow.asStateFlow()
+    val isPlaying get() = _isPlayingFlow.value
+
+    private val _progressFlow = MutableStateFlow(0L)
+    val progressFlow = _progressFlow.asStateFlow()
+    val progress get() = progressFlow.value
+
+    private val _durationFlow = MutableStateFlow(0L)
+    val durationFlow = _durationFlow.asStateFlow()
+    val duration get() = durationFlow.value
+
+    private val _repeatModeFlow = MutableStateFlow(Player.REPEAT_MODE_OFF)
     val repeatModeFlow = _repeatModeFlow.asStateFlow()
     val repeatMode get() = repeatModeFlow.value
 
-    private val _shuffleModeFlow = MutableStateFlow(queueManager.shuffleMode)
+    private val _shuffleModeFlow = MutableStateFlow(false)
     val shuffleModeFlow = _shuffleModeFlow.asStateFlow()
-    val shuffleMode get() = shuffleModeFlow.value
+    val shuffleModeEnabled get() = shuffleModeFlow.value
 
-    private val _currentPositionFlow = MutableStateFlow(queueManager.position)
-    val currentPositionFlow = _currentPositionFlow.asStateFlow()
-    val currentPosition get() = currentPositionFlow.value
+    private val _queueFlow = MutableStateFlow(Queue.Empty)
+    val queueFlow = _queueFlow.asStateFlow()
+    val queue get() = queueFlow.value
 
-    private val _currentSongFlow = MutableStateFlow(queueManager.currentSong)
-    val currentSongFlow = _currentSongFlow.asStateFlow()
-    val currentSong get() = currentSongFlow.value
-
-    private val _nextSongFlow = MutableStateFlow(queueManager.nextSong)
-    val nextSongFlow = _nextSongFlow.asStateFlow()
-    val nextSong get() = nextSongFlow.value
-
-    private val _playingQueueFlow = MutableStateFlow(queueManager.playingQueue)
-    val playingQueueFlow = _playingQueueFlow.asStateFlow()
-    val playingQueue get() = playingQueueFlow.value
+    val playlist get() = queue.songs
+    val currentSong get() = queue.currentSong
+    val nextSong get() = queue.nextSong
 
     private val _colorScheme = MutableStateFlow(PlayerColorScheme.Unspecified)
     val colorSchemeFlow = _colorScheme.asStateFlow()
@@ -96,252 +103,424 @@ class PlayerViewModel(
     private val _extraInfoFlow = MutableStateFlow<String?>(null)
     val extraInfoFlow = _extraInfoFlow.asStateFlow()
 
-    val queueDuration get() = queueManager.getDuration(currentPosition)
-    val queueDurationAsString get() = queueDuration.durationStr()
+    private var mediaStoreUpdateJob: Job? = null
+    private var extraInfoJob: Job? = null
+    private var progressJob: Job? = null
 
-    val currentProgressFlow = playbackManager.progressFlow
-    val currentProgress get() = currentProgressFlow.value
+    override fun onCleared() {
+        progressObserver.stop()
+        mediaStoreUpdateJob?.cancel()
+        mediaStoreUpdateJob = null
+        extraInfoJob?.cancel()
+        extraInfoJob = null
+        progressJob?.cancel()
+        progressJob = null
+        super.onCleared()
+    }
 
-    val totalDurationFlow = playbackManager.durationFlow
-    val totalDuration get() = totalDurationFlow.value
-
-    val audioSessionId get() = playbackManager.getAudioSessionId()
-
-    var pendingQuit: Boolean
-        get() = playbackManager.pendingQuit
-        set(value) { playbackManager.pendingQuit = value }
-
-    init {
-        currentSongFlow.debounce(500)
-            .distinctUntilChangedBy { it.id }
-            .onEach { song ->
-                _extraInfoFlow.value = song.extraInfo(Preferences.nowPlayingExtraInfoList)
+    fun setMediaController(mediaController: MediaController?) {
+        this.mediaController = mediaController
+        if (mediaController != null) {
+            _isPlayingFlow.value = mediaController.isPlaying
+            _repeatModeFlow.value = mediaController.repeatMode
+            _shuffleModeFlow.value = mediaController.shuffleModeEnabled
+            if (progress == C.TIME_UNSET) {
+                _progressFlow.value = mediaController.contentPosition
             }
-            .flowOn(IO)
-            .launchIn(viewModelScope)
+            if (duration == C.TIME_UNSET) {
+                _durationFlow.value = mediaController.contentDuration
+            }
+            if (queue == Queue.Empty) {
+                onGenerateQueue(mediaController)
+            }
 
-        queueManager.addObserver(this)
+            mediaStoreUpdateJob?.cancel()
+            mediaStoreUpdateJob = mediaEvent
+                .filter { it == MediaEvent.MediaContentChanged }
+                .debounce(500)
+                .onEach { event -> onGenerateQueue(mediaController) }
+                .launchIn(viewModelScope)
+
+            extraInfoJob?.cancel()
+            extraInfoJob = queueFlow
+                .debounce(500)
+                .distinctUntilChangedBy { it.currentSong }
+                .onEach { queue -> onGenerateExtraInfo(queue.currentSong) }
+                .launchIn(viewModelScope)
+
+            progressJob?.cancel()
+            progressJob = isPlayingFlow
+                .onEach { isPlaying -> onSetIsPlaying(isPlaying) }
+                .launchIn(viewModelScope)
+        } else {
+            onCleared()
+        }
     }
 
-    override fun queueChanged(queue: List<Song>, reason: QueueChangeReason) {
-        _playingQueueFlow.value = queue
+    fun submitEvent(mediaEvent: MediaEvent) {
+        _mediaEvent.tryEmit(mediaEvent)
     }
 
-    override fun queuePositionChanged(position: Int, rePosition: Boolean) {
-        _currentPositionFlow.value = position
+    private fun onSetIsPlaying(isPlaying: Boolean) {
+        if (isPlaying) {
+            progressObserver.start {
+                mediaController?.let { controller ->
+                    _progressFlow.value = controller.contentPosition
+                    _durationFlow.value = controller.contentDuration
+                }
+            }
+        } else {
+            progressObserver.stop()
+        }
     }
 
-    override fun repeatModeChanged(repeatMode: Playback.RepeatMode) {
-        _repeatModeFlow.value = repeatMode
+    private fun onGenerateQueue(
+        player: Player,
+        timeline: Timeline = player.currentTimeline
+    ) = viewModelScope.launch {
+        queueMutex.withLock {
+            // If the timeline is empty, reset the queue and exit early.
+            if (timeline.isEmpty) {
+                _queueFlow.value = Queue.Empty
+                return@launch
+            }
+
+            // Capture the player's current state.
+            val shuffle = player.shuffleModeEnabled
+            val currentIndex = player.currentMediaItemIndex
+            val nextIndex =
+                timeline.getNextWindowIndex(currentIndex, Player.REPEAT_MODE_OFF, shuffle)
+            val playlistMediaItems = player.actualMediaItems
+
+            // Retrieve existing songs for the given MediaItems and detect missing ones.
+            val (songs, missingMediaItems) = withContext(IO) {
+                repository.songsByMediaItems(playlistMediaItems)
+            }
+
+            // Build a set of IDs representing missing (deleted) MediaItems.
+            val missingIds = missingMediaItems.mapTo(HashSet()) { it.mediaId }
+
+            // Identify contiguous ranges of missing items to remove them in grouped batches.
+            val ranges = mutableListOf<IntRange>()
+            var start = -1
+
+            for (i in playlistMediaItems.indices) {
+                val missing = playlistMediaItems[i].mediaId in missingIds
+                if (missing && start == -1) {
+                    // Beginning of a new missing range.
+                    start = i
+                } else if (!missing && start != -1) {
+                    // End of the current missing range.
+                    ranges += (start until i)
+                    start = -1
+                }
+            }
+
+            // If the last range extends to the end of the list, close it.
+            if (start != -1) ranges += (start until playlistMediaItems.size)
+
+            // Remove ranges in reverse order to avoid index shifting issues.
+            for (range in ranges.asReversed()) {
+                player.removeMediaItems(range.first, range.last + 1)
+            }
+
+            // Update the queue with the valid songs and current positions.
+            _queueFlow.value = Queue(
+                songs = songs,
+                position = currentIndex,
+                nextPosition = nextIndex
+            )
+        }
     }
 
-    override fun shuffleModeChanged(shuffleMode: Playback.ShuffleMode) {
-        _shuffleModeFlow.value = shuffleMode
+    private fun onGenerateExtraInfo(song: Song) = viewModelScope.launch(IO) {
+        val metadataReader = MetadataReader(song.uri)
+        val audioFile = File(song.data).toAudioFile()
+        _extraInfoFlow.value = if (Preferences.displayExtraInfo) {
+            Preferences.nowPlayingExtraInfoList
+                .filter { it.isEnabled }
+                .mapNotNull {
+                    it.info.toReadableFormat(metadataReader, audioFile?.audioHeader)
+                }
+                .joinToString(separator = DEFAULT_INFO_DELIMITER)
+        } else null
     }
 
-    override fun songChanged(currentSong: Song, nextSong: Song) {
-        _currentSongFlow.value = currentSong
-        _nextSongFlow.value = nextSong
+    override fun onEvents(player: Player, events: Player.Events) {
+        val isPlayStateEvent = events.containsAny(
+            Player.EVENT_PLAYBACK_STATE_CHANGED,
+            Player.EVENT_IS_PLAYING_CHANGED,
+            Player.EVENT_PLAY_WHEN_READY_CHANGED
+        )
+        if (isPlayStateEvent) {
+            _isPlayingFlow.value = player.playWhenReady && player.isPlaying
+            if (player.playbackState == Player.STATE_READY && !player.playWhenReady) {
+                _progressFlow.value = player.contentPosition
+                _durationFlow.value = player.contentDuration
+            }
+        }
+        if (events.contains(Player.EVENT_REPEAT_MODE_CHANGED)) {
+            _repeatModeFlow.value = player.repeatMode
+        }
+        if (events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED)) {
+            _shuffleModeFlow.value = player.shuffleModeEnabled
+            if (!events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+                onGenerateQueue(player)
+            }
+        }
+        if (events.contains(Player.EVENT_POSITION_DISCONTINUITY)) {
+            if (!events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+                _queueFlow.value = queue.copy(position = player.currentMediaItemIndex)
+            }
+            if (!player.playWhenReady) {
+                _progressFlow.value = player.contentPosition
+                _durationFlow.value = player.contentDuration
+            }
+        }
+        if (events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION)) {
+            val currentQueue = this.queue
+            if (currentQueue.isEmpty || events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+                onGenerateQueue(player)
+            } else {
+                _queueFlow.value = queue.copy(
+                    position = player.currentMediaItemIndex,
+                    nextPosition = player.nextMediaItemIndex
+                )
+            }
+            return
+        }
+        if (events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+            onGenerateQueue(player)
+        }
     }
 
     fun toggleFavorite() {
-        transportControls?.sendCustomAction(SessionCommand.TOGGLE_FAVORITE, null)
+        mediaController?.sendCustomCommand(SessionCommand(Playback.TOGGLE_FAVORITE, Bundle.EMPTY), Bundle.EMPTY)
     }
 
     fun cycleRepeatMode() {
-        transportControls?.sendCustomAction(SessionCommand.CYCLE_REPEAT, null)
+        mediaController?.sendCustomCommand(SessionCommand(Playback.CYCLE_REPEAT, Bundle.EMPTY), Bundle.EMPTY)
     }
 
     fun toggleShuffleMode() {
-        transportControls?.sendCustomAction(SessionCommand.TOGGLE_SHUFFLE, null)
+        mediaController?.sendCustomCommand(SessionCommand(Playback.TOGGLE_SHUFFLE, Bundle.EMPTY), Bundle.EMPTY)
     }
 
     fun togglePlayPause() {
         if (isPlaying) {
-            transportControls?.pause()
+            mediaController?.pause()
         } else {
-            transportControls?.play()
+            mediaController?.play()
         }
     }
 
-    fun playNext() {
-        transportControls?.skipToNext()
+    fun seekToNext() {
+        mediaController?.seekToNext()
     }
 
-    fun playPrevious() {
-        transportControls?.skipToPrevious()
+    fun seekToPrevious() {
+        mediaController?.seekToPrevious()
     }
 
-    fun fastForward() {
-        transportControls?.fastForward()
+    fun seekForward() {
+        mediaController?.seekForward()
     }
 
-    fun rewind() {
-        transportControls?.rewind()
+    fun seekBack() {
+        mediaController?.seekBack()
     }
 
     fun seekTo(positionMillis: Long) {
-        transportControls?.seekTo(positionMillis)
+        mediaController?.seekTo(positionMillis)
     }
 
-    fun requestExtraInfo() = viewModelScope.launch(IO) {
-        _extraInfoFlow.value = currentSong.extraInfo(Preferences.nowPlayingExtraInfoList)
+    fun generateExtraInfo() {
+        onGenerateExtraInfo(queue.currentSong)
     }
 
-    fun isPlayingSong(song: Song) = song.id == currentSong.id
-
-    fun playSongAt(position: Int, newPlayback: Boolean = false) {
-        if (queueManager.isEmpty) return
-        transportControls?.sendCustomAction(SessionCommand.PLAY_SONG_AT, bundleOf(
-            SessionCommand.Extras.POSITION to position,
-            SessionCommand.Extras.IS_NEW_PLAYBACK to newPlayback
-        ))
+    fun playSongAt(position: Int) {
+        mediaController?.let { controller ->
+            if (controller.playbackState == Player.STATE_READY) {
+                if (!controller.currentTimeline.isEmpty) {
+                    controller.seekToDefaultPosition(position)
+                }
+            }
+        }
     }
 
     fun openQueue(
         queue: List<Song>,
         position: Int = 0,
         startPlaying: Boolean = true,
-        shuffleMode: Playback.ShuffleMode? = null
-    ) = viewModelScope.launch(IO) {
-        if (shuffleMode == Playback.ShuffleMode.On) {
-            openAndShuffleQueue(queue, startPlaying = true)
-        } else {
-            val result = queueManager.open(queue, position, shuffleMode)
-            when (result) {
-                QueueManager.SUCCESS -> if (startPlaying) {
-                    playSongAt(queueManager.position, newPlayback = true)
-                }
-                QueueManager.HANDLED_SOURCE -> {
-                    playSongAt(position, newPlayback = true)
-                }
+        shuffleModeEnabled: Boolean = Preferences.rememberShuffleMode
+    ) = viewModelScope.launch {
+        mediaController?.let { controller ->
+            val isInShuffleMode = controller.shuffleModeEnabled
+            val mediaItems = withContext(IO) { queue.toMediaItems() }
+            if (mediaItems.isNotEmpty()) {
+                controller.setMediaItems(mediaItems, position, C.TIME_UNSET)
+                controller.shuffleModeEnabled = isInShuffleMode && shuffleModeEnabled
+                controller.playWhenReady = startPlaying
+                controller.prepare()
             }
         }
     }
 
-    fun openAndShuffleQueue(
-        queue: List<Song>,
-        startPlaying: Boolean = true
-    ) = viewModelScope.launch(IO) {
-        if (queue.isNotEmpty()) {
-            val success = queueManager.open(
-                queue = queue,
-                startPosition = Random.Default.nextInt(queue.size),
-                shuffleMode = Playback.ShuffleMode.On
-            )
-            if (success == QueueManager.SUCCESS && startPlaying) {
-                playSongAt(queueManager.position, newPlayback = true)
-            }
-        }
-    }
+    fun openAndShuffleQueue(queue: List<Song>, startPlaying: Boolean = true) =
+        openQueue(queue, 0, startPlaying, true)
 
     fun openShuffle(
         providers: List<SongProvider>,
         mode: GroupShuffleMode,
         sortMode: SongSortMode
     ) = liveData(IO) {
-        val success = queueManager.shuffleUsingProviders(providers, mode, sortMode)
-        if (success) {
-            playSongAt(queueManager.position, newPlayback = true)
+        val mediaItems = shuffleManager.shuffleByProvider(providers, mode, sortMode).toMediaItems()
+        if (mediaItems.isNotEmpty()) {
+            withContext(Main) {
+                mediaController?.let { controller ->
+                    controller.setMediaItems(mediaItems)
+                    val resultFuture = controller.sendCustomCommand(
+                        SessionCommand(Playback.SET_UNSHUFFLED_ORDER, bundleOf("length" to mediaItems.size)),
+                        Bundle.EMPTY
+                    )
+                    val result = runCatching { resultFuture.await() }
+                        .getOrDefault(SessionResult(SessionError.ERROR_UNKNOWN))
+                    if (result.resultCode == SessionResult.RESULT_SUCCESS) {
+                        controller.prepare()
+                        controller.playWhenReady = true
+                    } else {
+                        controller.clearMediaItems()
+                    }
+                }
+            }
+            emit(true)
+        } else {
+            emit(false)
         }
-        emit(success)
     }
 
+    @androidx.annotation.OptIn(UnstableApi::class)
     fun openSpecialShuffle(songs: List<Song>, mode: SpecialShuffleMode) = viewModelScope.launch {
         if (shuffleOperationState.value.isIdle) {
             _shuffleOperationState.value = ShuffleOperationState(mode, ShuffleOperationState.Status.InProgress)
-            val success = withContext(IO) {
-                queueManager.specialShuffleQueue(songs, mode)
+            val mediaItems = withContext(IO) {
+                shuffleManager.applySmartShuffle(songs, mode).toMediaItems()
             }
-            if (success) {
-                playSongAt(queueManager.position, newPlayback = true)
+            if (mediaItems.isNotEmpty()) {
+                mediaController?.let { controller ->
+                    controller.setMediaItems(mediaItems, 0, C.TIME_UNSET)
+                    val resultFuture = controller.sendCustomCommand(
+                        SessionCommand(Playback.SET_UNSHUFFLED_ORDER, bundleOf("length" to mediaItems.size)),
+                        Bundle.EMPTY
+                    )
+                    val result = runCatching { resultFuture.await() }
+                        .getOrDefault(SessionResult(SessionError.ERROR_UNKNOWN))
+                    if (result.resultCode == SessionResult.RESULT_SUCCESS) {
+                        controller.prepare()
+                        controller.playWhenReady = true
+                    } else {
+                        controller.clearMediaItems()
+                    }
+                }
             }
             _shuffleOperationState.value = ShuffleOperationState()
         }
     }
 
-    fun queueNext(song: Song) = liveData(IO) {
-        if (playingQueue.isNotEmpty()) {
-            queueManager.queueNext(song)
-        } else {
-            openQueue(listOf(song), startPlaying = false)
-        }
-        emit(Unit)
-    }
-
-    fun queueNext(songs: List<Song>) = liveData(IO) {
-        if (playingQueue.isNotEmpty()) {
-            queueManager.queueNext(songs)
-        } else {
-            openQueue(songs, startPlaying = false)
-        }
-        emit(songs.size)
-    }
-
-    fun enqueue(song: Song, to: Int = -1) = liveData(IO) {
-        if (playingQueue.isNotEmpty()) {
-            if (to >= 0) {
-                queueManager.addSong(to, song)
+    fun queueNext(song: Song) {
+        mediaController?.let { controller ->
+            if (controller.currentTimeline.isEmpty) {
+                openQueue(listOf(song), startPlaying = false)
             } else {
-                queueManager.addSong(song)
-            }
-        } else {
-            openQueue(listOf(song), startPlaying = false)
-        }
-        emit(Unit)
-    }
-
-    fun enqueue(songs: List<Song>) = liveData(IO) {
-        if (playingQueue.isNotEmpty()) {
-            queueManager.addSongs(songs)
-        } else {
-            openQueue(songs, startPlaying = false)
-        }
-        emit(songs.size)
-    }
-
-    fun shuffleQueue() = viewModelScope.launch(IO) {
-        shuffleMutex.withLock {
-            queueManager.shuffleQueue()
-        }
-    }
-
-    fun clearQueue() = viewModelScope.launch(IO) {
-        queueManager.clearQueue()
-    }
-
-    fun stopAt(stopPosition: Int): Pair<Song, Boolean> {
-        if ((currentPosition..playingQueue.lastIndex).contains(stopPosition)) {
-            val stopSong = queueManager.getSongAt(stopPosition)
-            if (queueManager.stopPosition == stopPosition) {
-                queueManager.stopPosition = NO_POSITION
-                return stopSong to false
-            } else {
-                queueManager.stopPosition = stopPosition
-                return stopSong to true
+                controller.addMediaItem(controller.nextMediaItemIndex, song.toMediaItem())
             }
         }
-        return Song.emptySong to false
     }
 
-    fun moveSong(from: Int, to: Int) {
-        if (playingQueue.indices.contains(from) && playingQueue.indices.contains(to)) {
-            queueManager.moveSong(from, to)
+    fun queueNext(songs: List<Song>) {
+        mediaController?.let { controller ->
+            if (controller.currentTimeline.isEmpty) {
+                openQueue(songs, startPlaying = false)
+            } else {
+                controller.addMediaItems(controller.nextMediaItemIndex, songs.toMediaItems())
+            }
         }
+    }
+
+    fun enqueue(song: Song, index: Int = -1) {
+        mediaController?.let { controller ->
+            if (controller.currentTimeline.isEmpty) {
+                openQueue(listOf(song), startPlaying = false)
+            } else {
+                if (index >= 0) {
+                    controller.addMediaItem(index, song.toMediaItem())
+                } else {
+                    controller.addMediaItem(song.toMediaItem())
+                }
+            }
+        }
+    }
+
+    fun enqueue(songs: List<Song>) {
+        mediaController?.let { controller ->
+            if (controller.currentTimeline.isEmpty) {
+                openQueue(songs, startPlaying = false)
+            } else {
+                controller.addMediaItems(songs.toMediaItems())
+            }
+        }
+    }
+
+    fun clearQueue() {
+        mediaController?.clearMediaItems()
+    }
+
+    @androidx.annotation.OptIn(UnstableApi::class)
+    fun stopAt(stopPosition: Int) = liveData {
+        mediaController?.let { controller ->
+            if (stopPosition >= 0 && stopPosition < controller.mediaItemCount) {
+                val mediaItem = controller.getMediaItemAt(stopPosition)
+                val resultFuture = controller.sendCustomCommand(
+                    SessionCommand(Playback.SET_STOP_POSITION, bundleOf("position" to stopPosition)),
+                    Bundle.EMPTY
+                )
+                val result = runCatching { resultFuture.await() }
+                    .getOrDefault(SessionResult(SessionError.ERROR_UNKNOWN))
+                if (result.resultCode == SessionResult.RESULT_SUCCESS) {
+                    val canceled = result.extras.getBoolean("canceled", false)
+                    emit(mediaItem.mediaMetadata.title to canceled)
+                } else {
+                    emit(null to false)
+                }
+            }
+        }
+    }
+
+    fun moveSong(currentIndex: Int, newIndex: Int) {
+        mediaController?.moveMediaItem(currentIndex, newIndex)
     }
 
     fun moveToNextPosition(fromPosition: Int) {
-        val nextPosition = queueManager.getNextPosition(false)
-        queueManager.moveSong(fromPosition, nextPosition)
+        mediaController?.let { controller ->
+            controller.moveMediaItem(fromPosition, controller.nextMediaItemIndex)
+        }
     }
 
     fun removePosition(position: Int) {
-        queueManager.removeSong(position)
+        mediaController?.removeMediaItem(position)
     }
 
-    fun restorePlayback() = viewModelScope.launch(IO) {
-        if (!isPlaying && Preferences.playOnStartupMode != PlayOnStartupMode.NEVER) {
-            transportControls?.sendCustomAction(SessionCommand.RESTORE_PLAYBACK, null)
+    fun restorePlayback() = viewModelScope.launch {
+        mediaController?.let { controller ->
+            val resultFuture = controller.sendCustomCommand(
+                SessionCommand(Playback.RESTORE_PLAYBACK, Bundle.EMPTY),
+                Bundle.EMPTY
+            )
+            val result = runCatching { resultFuture.await() }
+                .getOrDefault(SessionResult(SessionError.ERROR_UNKNOWN))
+            if (result.resultCode == SessionResult.RESULT_SUCCESS) {
+                controller.playWhenReady = true
+            }
         }
     }
 
@@ -364,15 +543,10 @@ class PlayerViewModel(
         }
     }
 
-    fun saveCover(song: Song) = liveData {
+    fun saveCover(song: Song) = liveData(IO) {
         emit(SaveCoverResult(true))
         val uri = albumCoverSaver.saveArtwork(song)
         emit(SaveCoverResult(false, uri))
-    }
-
-    override fun onCleared() {
-        queueManager.removeObserver(this)
-        super.onCleared()
     }
 
     companion object {

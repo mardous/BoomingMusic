@@ -27,7 +27,7 @@ import com.mardous.booming.coil.DEFAULT_YEAR_IMAGE
 import com.mardous.booming.data.model.ReleaseYear
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.loadPaletteImage
-import com.mardous.booming.extensions.media.songsStr
+import com.mardous.booming.extensions.media.asNumberOfSongs
 import com.mardous.booming.ui.IYearCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
@@ -64,7 +64,7 @@ class YearAdapter(
 
         holder.menu?.isGone = isChecked
         holder.title?.text = year.name
-        holder.text?.text = year.songCount.songsStr(holder.itemView.context)
+        holder.text?.text = year.songCount.asNumberOfSongs(holder.itemView.context)
 
         holder.loadPaletteImage(year, DEFAULT_YEAR_IMAGE)
     }

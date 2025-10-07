@@ -159,7 +159,6 @@
     <string name="save_queue">Uložit frontu</string>
     <string name="clear_queue">Vymazat frontu</string>
     <string name="action_move_to_current_track">Zobrazit aktuální skladbu</string>
-    <string name="shuffle_queue">Zamíchat frontu</string>
     <string name="action_add_to_favorites">Přidat do oblíbených</string>
     <string name="action_remove_from_favorites">Odebrat z oblíbených</string>
     <string name="added_to_favorites_label">Přidáno k oblíbeným</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">Odstranit ze seznamu skladeb</string>
     <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Odebrat z fronty</string>
-    <string name="x_removed_from_playing_queue">%s odstraněn</string>
     <string name="put_after_current_track">Vložit po aktuální skladbě</string>
     <string name="undo_action">Zpět</string>
     <string name="set_artist_image">Nastavit obrázek interpreta</string>
@@ -478,8 +476,6 @@
     <string name="sound_settings">Nastavení zvuku</string>
     <string name="volume_label">Objem</string>
     <string name="tempo_label">Tempo</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">Externí EQ</string>
     <string name="custom">Vlastní</string>
     <!-- Lyrics viewer -->
@@ -595,7 +591,6 @@
     <string name="headphones_header">Sluchátka</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Zaměření zvuku</string>
-    <string name="lockscreen_header">Zamykací obrazovka</string>
     <string name="shuffle_mode_header">Režim náhodného výběru</string>
     <string name="display_header">Zobrazení</string>
     <string name="backup_restore_header">Zálohovat/obnovit</string>
@@ -688,10 +683,6 @@
     <string name="prefer_album_artist_name_summary">Zobrazí jméno alba-umělce místo jména skladby (pokud je k dispozici).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="gapless_playback_title">Přehrávání bez mezer</string>
-    <string name="gapless_playback_summary">Hladký přechod mezi skladbami. Může způsobit problémy při přehrávání na některých zařízeních.</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">Režim zdroje</string>
     <string name="replaygain_preamp_title">Úrovně úvodů</string>
     <string name="replaygain_preamp_summary">Nastavte úroveň hlasitosti, když je aktivován ReplayGain.</string>
@@ -702,8 +693,6 @@
     <string name="remember_shuffle_mode_summary">Režim zamíchání zůstane zapnutý při výběru nového seznamu skladeb.</string>
     <string name="album_shuffle_mode_title">Režim zamíchání alb</string>
     <string name="artist_shuffle_mode_title">Režim náhodného výběru umělce</string>
-    <string name="auto_play_on_skip_title">Automatické přehrávání při přeskočení</string>
-    <string name="auto_play_on_skip_summary">Pokud je přehrávání pozastaveno, klepnutím na předchozí nebo další tlačítka spustí hudbu.</string>
     <string name="rewind_with_back_title">"Vrátit zpět s 'Předchozím'"</string>
     <string name="rewind_with_back_summary">Pokud je aktuální skladba na začátku, nebo se přesuňte na předchozí skladbu.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -718,8 +707,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pozastavení přehrávání při odpojení Bluetooth A2DP sluchátek. Doporučeno.</string>
     <string name="ignore_audio_focus_title">Ignorovat zaměření zvuku</string>
     <string name="ignore_audio_focus_summary">Vždy přehrávat zvuk na pozadí bez ohledu na cokoliv jiného se přehrává.</string>
-    <string name="pause_on_transient_focus_loss_title">Přechodná ztráta zaostření</string>
-    <string name="pause_on_transient_focus_loss_summary">Pozastavit přehrávání při dočasné ztrátě zaostření (např. oznámení, příchozí hovory).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Automaticky stahovat metadata</string>
     <string name="ignore_media_store_album_covers_title">Ignorovat obálky Media Store</string>
@@ -753,11 +740,6 @@
     <string name="min_song_duration_summary">Kolik sekund (alespoň) musí trvat skladba, aby se zobrazila ve vaší knihovně.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Další řádek textu</string>
-    <string name="notification_priority_title">Priorita oznámení</string>
-    <string name="album_art_on_lockscreen_title">Zobrazit obal alba</string>
-    <string name="album_art_on_lockscreen_summary">Používá aktuální obal alba jako tapetu zamykací obrazovky. Může způsobit vysoké využití paměti. Vede se zařízením.</string>
-    <string name="blurred_album_art_title">Rozostřený obal alba</string>
-    <string name="blurred_album_art_summary">Rozostří obal alba na zamykací obrazovce. Může způsobit problémy s aplikacemi a widgety třetích stran.</string>
     <string name="app_language_title">Jazyk aplikace</string>
     <string name="backup_data_title">Zálohovat data aplikace</string>
     <string name="backup_app_data_summary">Vytvořte soubor obsahující základní data aplikace a uložte jej do externího úložiště.</string>

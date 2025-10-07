@@ -159,7 +159,6 @@
     <string name="save_queue">Desa la cua</string>
     <string name="clear_queue">Buida la cua</string>
     <string name="action_move_to_current_track">Mostra la pista actual</string>
-    <string name="shuffle_queue">Barreja la cua</string>
     <string name="action_add_to_favorites">Afegeix a Preferits</string>
     <string name="action_remove_from_favorites">Treu de Preferits</string>
     <string name="added_to_favorites_label">S\'ha afegit a Preferits</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">Treu de la llista</string>
     <string name="action_add_to_playing_queue">Afegeix a la cua</string>
     <string name="action_remove_from_playing_queue">Treu de la cua de reproducció</string>
-    <string name="x_removed_from_playing_queue">S\'ha tret %s</string>
     <string name="put_after_current_track">Col·loca després de la pista actual</string>
     <string name="undo_action">Desfés</string>
     <string name="set_artist_image">Estableix la imatge de l\'artista</string>
@@ -462,8 +460,6 @@
     <string name="sound_settings">Configuració de so</string>
     <string name="volume_label">Volum</string>
     <string name="tempo_label">Tempo</string>
-    <string name="crossfade_title">Encadenament (experimental)</string>
-    <string name="audio_fade_duration_title">Durada de la fosa d\'àudio (experimental)</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
     <!-- Lyrics viewer -->
@@ -579,7 +575,6 @@
     <string name="headphones_header">Auriculars</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Focus d\'àudio</string>
-    <string name="lockscreen_header">Pantalla de bloqueig</string>
     <string name="shuffle_mode_header">Mode aleatori</string>
     <string name="display_header">Mostra</string>
     <string name="backup_restore_header">Fer còpia de seguretat/Restablir-la</string>
@@ -672,10 +667,6 @@
     <string name="prefer_album_artist_name_summary">Mostra el nom de l\'artista de l\'àlbum en lloc del nom de l\'artista de la cançó (si està disponible).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reprodueix en iniciar</string>
-    <string name="gapless_playback_title">Reproducció sense interrupcions</string>
-    <string name="gapless_playback_summary">Transició suau entre cançons. Pot causar errors de reproducció en alguns dispositius.</string>
-    <string name="no_crossfade_on_albums_title">Sense encadenament als àlbums</string>
-    <string name="no_crossfade_on_albums_summary">No es fa encadenament en reproduir àlbums en el seu ordre original.</string>
     <string name="replaygain_source_mode_title">Mode d\'origen</string>
     <string name="replaygain_preamp_title">Nivell de PreAmp</string>
     <string name="replaygain_preamp_summary">Establiu el nivell de volum quan el Guany de reproducció està activat.</string>
@@ -686,8 +677,6 @@
     <string name="remember_shuffle_mode_summary">El mode aleatori es mantindrà en seleccionar una nova llista de cançons.</string>
     <string name="album_shuffle_mode_title">Mode de barreja d\'àlbums</string>
     <string name="artist_shuffle_mode_title">Mode de barreja d\'artistes</string>
-    <string name="auto_play_on_skip_title">Reprodueix automàticament en saltar</string>
-    <string name="auto_play_on_skip_summary">Si la reproducció està pausada i cliques el botó «Anterior» o «Següent», la música es reproduirà.</string>
     <string name="rewind_with_back_title">"Rebobina amb «Anterior»"</string>
     <string name="rewind_with_back_summary">Rebobina la cançó a l\'inici o ves a l\'anterior si l\'actual és al principi.</string>
     <string name="rewind_fast_forward_amount_title">Quantitat de retrocés/avanç ràpid</string>
@@ -702,8 +691,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pausa la reproducció en desconnectar uns auriculars Bluetooth A2DP. Recomanat.</string>
     <string name="ignore_audio_focus_title">Ignora el focus d\'àudio</string>
     <string name="ignore_audio_focus_summary">Reprodueix sempre l\'àudio en segon pla al marge d\'altres reproduccions.</string>
-    <string name="pause_on_transient_focus_loss_title">Pèrdua temporal del focus</string>
-    <string name="pause_on_transient_focus_loss_summary">Pausa la reproducció en perdre temporalment el focus d\'àudio (com ara notificacions, trucades entrants).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descarrega metadades automàticament</string>
     <string name="ignore_media_store_album_covers_title">Ignora les portades de Media Store</string>
@@ -737,11 +724,6 @@
     <string name="min_song_duration_summary">Quants segons (pel cap baix) ha de durar una cançó per mostrar-la a la vostra biblioteca.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Línia addicional de text</string>
-    <string name="notification_priority_title">Prioritat de notificacions</string>
-    <string name="album_art_on_lockscreen_title">Mostra la portada de l\'àlbum</string>
-    <string name="album_art_on_lockscreen_summary">Fa servir la portada de l\'àlbum com a fons de pantalla de bloqueig. Empra molts recursos. Depèn del dispositiu.</string>
-    <string name="blurred_album_art_title">Portada d\'àlbum difuminada</string>
-    <string name="blurred_album_art_summary">Difumina la portada de l\'àlbum a la pantalla de bloqueig. Pot causar problemes amb aplicacions i widgets de tercers.</string>
     <string name="app_language_title">Idioma de l\'aplicació</string>
     <string name="backup_data_title">Còpia de seguretat de dades de l\'aplicació</string>
     <string name="backup_app_data_summary">Crea un fitxer amb dades essencials de l\'aplicació i el desa a l\'emmagatzematge.</string>

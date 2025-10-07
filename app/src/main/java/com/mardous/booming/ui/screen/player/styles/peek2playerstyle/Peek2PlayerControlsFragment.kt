@@ -28,7 +28,6 @@ import com.google.android.material.button.MaterialButton
 import com.mardous.booming.R
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPeek2PlayerPlaybackControlsBinding
-import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
@@ -80,27 +79,6 @@ class Peek2PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
         binding.repeatButton.setOnClickListener(this)
         binding.nextButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_NEXT))
         binding.previousButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_PREVIOUS))
-
-        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.currentSongFlow.collect { song ->
-                _binding?.let { nonNullBinding ->
-                    nonNullBinding.title.text = song.title
-                    nonNullBinding.text.text = getSongArtist(song)
-                }
-            }
-        }
-        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.extraInfoFlow.collect {
-                _binding?.let { nonNullBinding ->
-                    if (isExtraInfoEnabled()) {
-                        nonNullBinding.songInfo.text = it
-                        nonNullBinding.songInfo.isVisible = true
-                    } else {
-                        nonNullBinding.songInfo.isVisible = false
-                    }
-                }
-            }
-        }
     }
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
@@ -139,11 +117,23 @@ class Peek2PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
         return Peek2PlayerAnimator(binding, Preferences.animateControls)
     }
 
-    override fun onSongInfoChanged(song: Song) {}
+    override fun onSongInfoChanged(currentSong: Song, nextSong: Song?) {
+        _binding?.let { nonNullBinding ->
+            nonNullBinding.title.text = currentSong.title
+            nonNullBinding.text.text = getSongArtist(currentSong)
+        }
+    }
 
-    override fun onExtraInfoChanged(extraInfo: String?) {}
-
-    override fun onQueueInfoChanged(newInfo: String?) {}
+    override fun onExtraInfoChanged(extraInfo: String?) {
+        _binding?.let { nonNullBinding ->
+            if (isExtraInfoEnabled()) {
+                nonNullBinding.songInfo.text = extraInfo
+                nonNullBinding.songInfo.isVisible = true
+            } else {
+                nonNullBinding.songInfo.isVisible = false
+            }
+        }
+    }
 
     override fun onUpdatePlayPause(isPlaying: Boolean) {
         if (isPlaying) {

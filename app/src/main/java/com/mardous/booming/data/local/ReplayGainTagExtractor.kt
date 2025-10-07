@@ -19,6 +19,10 @@ package com.mardous.booming.data.local
 import android.net.Uri
 import android.util.LruCache
 
+enum class ReplayGainMode {
+    Album, Track, Off
+}
+
 data class ReplayGain(
     val albumGain: Float,
     val trackGain: Float,

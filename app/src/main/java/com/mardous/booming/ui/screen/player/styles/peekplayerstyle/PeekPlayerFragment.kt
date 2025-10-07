@@ -36,6 +36,7 @@ import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.AbsPlayerFragment
 import com.mardous.booming.ui.screen.player.*
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 /**
  * @author Christians M. A. (mardous)
@@ -69,18 +70,20 @@ class PeekPlayerFragment : AbsPlayerFragment(R.layout.fragment_peek_player) {
             insets
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.currentSongFlow.collect { song ->
+            playerViewModel.queueFlow.distinctUntilChanged { old, new ->
+                old.currentSong == new.currentSong && old.nextSong == new.nextSong
+            }.collect { queue ->
                 _binding?.let { nonNullBinding ->
-                    nonNullBinding.title.text = song.title
-                    nonNullBinding.text.text = getSongArtist(song)
+                    nonNullBinding.title.text = queue.currentSong.title
+                    nonNullBinding.text.text = getSongArtist(queue.currentSong)
                 }
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.extraInfoFlow.collect {
+            playerViewModel.extraInfoFlow.collect { extraInfo ->
                 _binding?.let { nonNullBinding ->
                     if (isExtraInfoEnabled()) {
-                        nonNullBinding.songInfo.text = it
+                        nonNullBinding.songInfo.text = extraInfo
                         nonNullBinding.songInfo.isVisible = true
                     } else {
                         nonNullBinding.songInfo.isVisible = false

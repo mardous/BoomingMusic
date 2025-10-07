@@ -18,8 +18,6 @@ import androidx.lifecycle.viewModelScope
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.repository.LyricsRepository
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.service.queue.QueueManager
-import com.mardous.booming.service.queue.QueueObserver
 import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.Key
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,11 +30,11 @@ import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.Mode as LyricsVie
  */
 class LyricsViewModel(
     private val preferences: SharedPreferences,
-    private val queueManager: QueueManager,
     private val lyricsRepository: LyricsRepository
-) : ViewModel(), QueueObserver, OnSharedPreferenceChangeListener {
+) : ViewModel(), OnSharedPreferenceChangeListener {
 
-    private var lyricsJob: Job? = null
+    private val silentHandler = CoroutineExceptionHandler { _, _ -> }
+
     private val _lyricsResult = MutableStateFlow(LyricsResult.Empty)
     val lyricsResult = _lyricsResult.asStateFlow()
 
@@ -46,25 +44,16 @@ class LyricsViewModel(
     private val _fullLyricsViewSettings = MutableStateFlow(createViewSettings(LyricsViewMode.Full))
     val fullLyricsViewSettings = _fullLyricsViewSettings.asStateFlow()
 
-    private val silentHandler = CoroutineExceptionHandler { _, _ -> }
+    private var lyricsJob: Job? = null
 
     init {
-        queueManager.addObserver(this)
         preferences.registerOnSharedPreferenceChangeListener(this)
-        if (lyricsResult.value == LyricsResult.Empty) {
-            updateSong(queueManager.currentSong)
-        }
     }
 
     override fun onCleared() {
         lyricsJob?.cancel()
-        queueManager.removeObserver(this)
         preferences.unregisterOnSharedPreferenceChangeListener(this)
         super.onCleared()
-    }
-
-    override fun songChanged(currentSong: Song, nextSong: Song) {
-        updateSong(currentSong)
     }
 
     fun getOnlineLyrics(song: Song, title: String, artist: String) = liveData(Dispatchers.IO) {
@@ -158,7 +147,7 @@ class LyricsViewModel(
         }
     }
 
-    private fun updateSong(song: Song) {
+    fun updateSong(song: Song) {
         lyricsJob?.cancel()
         lyricsJob = viewModelScope.launch {
             if (song == Song.emptySong) {

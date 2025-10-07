@@ -159,7 +159,6 @@
     <string name="save_queue">Enregistrer la file d\'attente</string>
     <string name="clear_queue">Vider la file d\'attente</string>
     <string name="action_move_to_current_track">Afficher la piste actuelle</string>
-    <string name="shuffle_queue">Mélanger la file d\'attente</string>
     <string name="action_add_to_favorites">Ajouter aux favoris</string>
     <string name="action_remove_from_favorites">Retirer des favoris</string>
     <string name="added_to_favorites_label">Ajouté aux favoris</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">Retirer de la playlist</string>
     <string name="action_add_to_playing_queue">Ajouter à la file d\'attente</string>
     <string name="action_remove_from_playing_queue">Retirer de la file de lecture</string>
-    <string name="x_removed_from_playing_queue">%s supprimé</string>
     <string name="put_after_current_track">Mettre après le titre actuel</string>
     <string name="undo_action">Annuler</string>
     <string name="set_artist_image">Définir l\'image de l\'artiste</string>
@@ -462,8 +460,6 @@
     <string name="sound_settings">Paramètres du son</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tempo</string>
-    <string name="crossfade_title">Fondu enchaîné (expérimental)</string>
-    <string name="audio_fade_duration_title">Durée du fondu audio (expérimental)</string>
     <string name="action_external_eq">EQ externe</string>
     <string name="custom">Personnalisé</string>
     <!-- Lyrics viewer -->
@@ -579,7 +575,6 @@
     <string name="headphones_header">Écouteurs</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Focus audio</string>
-    <string name="lockscreen_header">Écran de verrouillage</string>
     <string name="shuffle_mode_header">Mode aléatoire</string>
     <string name="display_header">Afficher</string>
     <string name="backup_restore_header">Sauvegarde/restauration</string>
@@ -672,10 +667,6 @@
     <string name="prefer_album_artist_name_summary">Affiche le nom de l\'artiste de l\'album au lieu du nom de l\'artiste du titre (si disponible).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Jouer au démarrage</string>
-    <string name="gapless_playback_title">Lecture sans faille</string>
-    <string name="gapless_playback_summary">Transition fluide entre les titres. Peut entraîner des problèmes de lecture sur certains appareils.</string>
-    <string name="no_crossfade_on_albums_title">Pas de fondu enchaîné sur les albums</string>
-    <string name="no_crossfade_on_albums_summary">Ne faites pas de fondu enchaîné lors de la lecture des albums dans leur ordre d\'origine.</string>
     <string name="replaygain_source_mode_title">Mode source</string>
     <string name="replaygain_preamp_title">Niveau de Pré-Amp</string>
     <string name="replaygain_preamp_summary">Définir le niveau de volume lorsque ReplayGain est activé.</string>
@@ -686,8 +677,6 @@
     <string name="remember_shuffle_mode_summary">Le mode aléatoire restera actif lors de la sélection d\'une nouvelle liste de titres.</string>
     <string name="album_shuffle_mode_title">Mode de lecture aléatoire des albums</string>
     <string name="artist_shuffle_mode_title">Mode de lecture aléatoire des artistes</string>
-    <string name="auto_play_on_skip_title">Lecture automatique en cas de saut</string>
-    <string name="auto_play_on_skip_summary">Si la lecture est en pause, appuyez sur les boutons Précédent ou Suivant pour démarrer la musique.</string>
     <string name="rewind_with_back_title">"Revenir avec 'Précédent'"</string>
     <string name="rewind_with_back_summary">Rembobinez le titre en cours de lecture jusqu\'au début ou passez au titre précédent si le titre en cours est au début.</string>
     <string name="rewind_fast_forward_amount_title">Retour/Avance Rapide</string>
@@ -702,8 +691,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Met en pause la lecture lorsque le casque Bluetooth A2DP est déconnecté. Recommandé.</string>
     <string name="ignore_audio_focus_title">Ignorer le focus audio</string>
     <string name="ignore_audio_focus_summary">Toujours jouer de l\'audio en arrière-plan, indépendamment de tout autre élément en cours de lecture.</string>
-    <string name="pause_on_transient_focus_loss_title">Perte transitoire du focus</string>
-    <string name="pause_on_transient_focus_loss_summary">Mettre en pause la lecture en cas de perte temporaire de mise au point (c\'est-à-dire les notifications, les appels entrants).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Téléchargement automatique des métadonnées</string>
     <string name="ignore_media_store_album_covers_title">Ignorer les pochettes du Media Store</string>
@@ -737,11 +724,6 @@
     <string name="min_song_duration_summary">Combien de secondes (au moins) doit durer un titre pour être affiché dans votre bibliothèque.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Ligne de texte supplémentaire</string>
-    <string name="notification_priority_title">Priorité de notification</string>
-    <string name="album_art_on_lockscreen_title">Afficher la pochette d\'album</string>
-    <string name="album_art_on_lockscreen_summary">Utilise la pochette de l\'album actuel comme fond d\'écran de verrouillage. Peut entraîner une consommation de mémoire élevée. Varie selon l\'appareil.</string>
-    <string name="blurred_album_art_title">Pochette d\'album floue</string>
-    <string name="blurred_album_art_summary">Floute la pochette de l\'album sur l\'écran de verrouillage. Peut causer des problèmes avec des applications et des widgets tiers.</string>
     <string name="app_language_title">Langue de l\'application</string>
     <string name="backup_data_title">Sauvegarder les données de l\'application</string>
     <string name="backup_app_data_summary">Créez un fichier contenant les données essentielles de l\'application et enregistrez-le sur le stockage externe.</string>

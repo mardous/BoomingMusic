@@ -159,7 +159,6 @@
     <string name="save_queue">Сохранить очередь</string>
     <string name="clear_queue">Очистить очередь</string>
     <string name="action_move_to_current_track">Показать текущий трек</string>
-    <string name="shuffle_queue">Перемешать очередь</string>
     <string name="action_add_to_favorites">Добавить в избранное</string>
     <string name="action_remove_from_favorites">Удалить из избранного</string>
     <string name="added_to_favorites_label">Добавлено в избранное</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">Удалить из плейлиста</string>
     <string name="action_add_to_playing_queue">Добавить в очередь воспроизведения</string>
     <string name="action_remove_from_playing_queue">Удалить из очереди воспроизведения</string>
-    <string name="x_removed_from_playing_queue">%s удалено</string>
     <string name="put_after_current_track">Поместить после текущего трека</string>
     <string name="undo_action">Отменить</string>
     <string name="set_artist_image">Установить изображение исполнителя</string>
@@ -480,8 +478,6 @@
     <string name="sound_settings">Настройки звука</string>
     <string name="volume_label">Громкость</string>
     <string name="tempo_label">Темп</string>
-    <string name="crossfade_title">Перекрестный переход (экспериментально)</string>
-    <string name="audio_fade_duration_title">Длительность затухания звука (экспериментально)</string>
     <string name="action_external_eq">Внешний эквалайзер</string>
     <string name="custom">Пользовательский</string>
     <!-- Lyrics viewer -->
@@ -597,7 +593,6 @@
     <string name="headphones_header">Наушники</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Фокус аудио</string>
-    <string name="lockscreen_header">Экран блокировки</string>
     <string name="shuffle_mode_header">Режим перемешивания</string>
     <string name="display_header">Отображение</string>
     <string name="backup_restore_header">Резервное копирование/восстановление</string>
@@ -690,10 +685,6 @@
     <string name="prefer_album_artist_name_summary">Показывает имя исполнителя альбома вместо имени исполнителя песни (если доступно).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Проигрывать при запуске</string>
-    <string name="gapless_playback_title">Воспроизведение без пауз</string>
-    <string name="gapless_playback_summary">Плавный переход между песнями. Может вызывать проблемы с воспроизведением на некоторых устройствах.</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">Режим источника</string>
     <string name="replaygain_preamp_title">Уровень предусилителя</string>
     <string name="replaygain_preamp_summary">Установить уровень громкости при включенном ReplayGain.</string>
@@ -704,8 +695,6 @@
     <string name="remember_shuffle_mode_summary">Режим перемешивания сохранится при выборе нового списка песен.</string>
     <string name="album_shuffle_mode_title">Режим перемешивания альбомов</string>
     <string name="artist_shuffle_mode_title">Режим перемешивания исполнителей</string>
-    <string name="auto_play_on_skip_title">Автовоспр. при пропуске</string>
-    <string name="auto_play_on_skip_summary">Если воспроизведение приостановлено, нажатие кнопок «Предыдущий» или «Следующий» начнет воспроизведение.</string>
     <string name="rewind_with_back_title">"Перемотка кнопкой «Предыдущий»"</string>
     <string name="rewind_with_back_summary">Перемотать текущий трек к началу или перейти к предыдущему треку, если текущий находится в начале.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -720,8 +709,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Приостанавливает воспроизведение при отключении Bluetooth A2DP-гарнитуры. Рекомендуется.</string>
     <string name="ignore_audio_focus_title">Игнорировать фокус аудио</string>
     <string name="ignore_audio_focus_summary">Всегда воспроизводить аудио в фоновом режиме независимо от другого воспроизведения.</string>
-    <string name="pause_on_transient_focus_loss_title">Временная потеря фокуса</string>
-    <string name="pause_on_transient_focus_loss_summary">Приостанавливает воспроизведение при временной потере фокуса (например, уведомления, входящие вызовы).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Автоматически загружать метаданные</string>
     <string name="ignore_media_store_album_covers_title">Игнорировать обложки изMediaStore</string>
@@ -755,11 +742,6 @@
     <string name="min_song_duration_summary">Минимальная длительность песни в секундах, чтобы она отображалась в вашей библиотеке.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Дополнительная строка текста</string>
-    <string name="notification_priority_title">Приоритет уведомлений</string>
-    <string name="album_art_on_lockscreen_title">Показывать обложку альбома</string>
-    <string name="album_art_on_lockscreen_summary">Использует обложку текущей песни как обои экрана блокировки. Может привести к высокому потреблению памяти. Зависит от устройства.</string>
-    <string name="blurred_album_art_title">Размытая обложка альбома</string>
-    <string name="blurred_album_art_summary">Размывает обложку альбома на экране блокировки. Может вызывать проблемы со сторонними приложениями и виджетами.</string>
     <string name="app_language_title">Язык приложения</string>
     <string name="backup_data_title">Резервное копирование данных приложения</string>
     <string name="backup_app_data_summary">Создает файл с основными данными приложения и сохраняет его на внешнее хранилище.</string>

@@ -159,7 +159,6 @@
     <string name="save_queue">キューを保存</string>
     <string name="clear_queue">キューをクリア</string>
     <string name="action_move_to_current_track">現在のトラックを表示</string>
-    <string name="shuffle_queue">キューをシャッフル</string>
     <string name="action_add_to_favorites">お気に入りに追加</string>
     <string name="action_remove_from_favorites">お気に入りから削除</string>
     <string name="added_to_favorites_label">お気に入りに追加しました</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">プレイリストから削除</string>
     <string name="action_add_to_playing_queue">キューに追加</string>
     <string name="action_remove_from_playing_queue">再生キューから削除</string>
-    <string name="x_removed_from_playing_queue">%s を削除しました</string>
     <string name="put_after_current_track">現在のトラックの後に追加する</string>
     <string name="undo_action">元に戻す</string>
     <string name="set_artist_image">アーティスト画像を設定</string>
@@ -454,8 +452,6 @@
     <string name="sound_settings">サウンドの設定</string>
     <string name="volume_label">音量</string>
     <string name="tempo_label">テンポ</string>
-    <string name="crossfade_title">クロスフェード (実験的)</string>
-    <string name="audio_fade_duration_title">オーディオフェード時間（実験的）</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">カスタム</string>
     <!-- Lyrics viewer -->
@@ -571,7 +567,6 @@
     <string name="headphones_header">ヘッドホン</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">オーディオフォーカス</string>
-    <string name="lockscreen_header">ロック画面</string>
     <string name="shuffle_mode_header">シャッフルモード</string>
     <string name="display_header">表示</string>
     <string name="backup_restore_header">バックアップ/復元</string>
@@ -664,10 +659,6 @@
     <string name="prefer_album_artist_name_summary">ソングアーティストの名前の代わりにアルバムアーティストの名前を表示します (可能な場合)。</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">起動時に再生する</string>
-    <string name="gapless_playback_title">ギャップレス再生</string>
-    <string name="gapless_playback_summary">曲間のスムーズなトランジション。一部のデバイスで再生の問題を引き起こす可能性があります。</string>
-    <string name="no_crossfade_on_albums_title">アルバムではクロスフェードしません</string>
-    <string name="no_crossfade_on_albums_summary">アルバムを元の順序で再生するときはクロスフェードしないでください。</string>
     <string name="replaygain_source_mode_title">ソースモード</string>
     <string name="replaygain_preamp_title">PreAmp レベル</string>
     <string name="replaygain_preamp_summary">ReplayGain が有効な場合、音量レベルを設定します。</string>
@@ -678,8 +669,6 @@
     <string name="remember_shuffle_mode_summary">曲の新しいリストを選択するとシャッフルモードはオンになります。</string>
     <string name="album_shuffle_mode_title">アルバムシャッフルモード</string>
     <string name="artist_shuffle_mode_title">アーティストシャッフルモード</string>
-    <string name="auto_play_on_skip_title">スキップ時に自動再生</string>
-    <string name="auto_play_on_skip_summary">一時停止中に「前へ」または「次へ」ボタンをタップすると、再生を開始します。</string>
     <string name="rewind_with_back_title">"「前へ」で巻き戻す"</string>
     <string name="rewind_with_back_summary">現在のトラックが最初にある場合は、再生トラックをスタートに戻すか、前のトラックに移動します。</string>
     <string name="rewind_fast_forward_amount_title">巻き戻し/早送りの数</string>
@@ -694,8 +683,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Bluetooth A2DP ヘッドセットが切断されたときに再生を一時停止します。</string>
     <string name="ignore_audio_focus_title">オーディオフォーカスを無視</string>
     <string name="ignore_audio_focus_summary">他の再生に関係なく、常にバックグラウンドでオーディオを再生します。</string>
-    <string name="pause_on_transient_focus_loss_title">一時的なフォーカス損失</string>
-    <string name="pause_on_transient_focus_loss_summary">一時的なフォーカス損失(通知、着信)時の再生を一時停止します。</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">メタデータの自動ダウンロード</string>
     <string name="ignore_media_store_album_covers_title">メディアストアのカバーを無視</string>
@@ -729,11 +716,6 @@
     <string name="min_song_duration_summary">(少なくとも)何秒以上の曲をライブラリに表示するか。</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">追加の行</string>
-    <string name="notification_priority_title">通知の優先順位</string>
-    <string name="album_art_on_lockscreen_title">アルバムカバーを表示</string>
-    <string name="album_art_on_lockscreen_summary">現在の曲のアルバムカバーをロック画面の壁紙として使用します。メモリ使用量が高くなる可能性があります。端末で変動します。</string>
-    <string name="blurred_album_art_title">アルバムアートをぼかす</string>
-    <string name="blurred_album_art_summary">ロック画面のアルバムカバーをぼかします。サードパーティのアプリやウィジェットで問題を引き起こす可能性があります。</string>
     <string name="app_language_title">アプリの言語</string>
     <string name="backup_data_title">アプリデータのバックアップ</string>
     <string name="backup_app_data_summary">重要なアプリデータを含むファイルを作成し、外部ストレージに保存します。</string>

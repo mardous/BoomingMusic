@@ -98,10 +98,11 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
         return DefaultPlayerAnimator(binding, Preferences.animateControls)
     }
 
-    override fun onSongInfoChanged(song: Song) {
+    override fun onSongInfoChanged(currentSong: Song, nextSong: Song?) {
         _binding?.let { nonNullBinding ->
-            nonNullBinding.title.text = song.title
-            nonNullBinding.text.text = getSongArtist(song)
+            nonNullBinding.title.text = currentSong.title
+            nonNullBinding.text.text = getSongArtist(currentSong)
+            nonNullBinding.queueInfo.text = getNextSongInfo(nextSong)
         }
     }
 
@@ -114,10 +115,6 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
                 nonNullBinding.songInfo?.isVisible = false
             }
         }
-    }
-
-    override fun onQueueInfoChanged(newInfo: String?) {
-        _binding?.queueInfo?.text = newInfo
     }
 
     override fun onUpdatePlayPause(isPlaying: Boolean) {

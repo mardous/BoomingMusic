@@ -26,13 +26,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.updatePadding
-import coil3.request.Disposable
 import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.coil.songImage
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.theme.NowPlayingScreen
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentFullCoverPlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
@@ -58,7 +56,6 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
     private lateinit var controlsFragment: FullCoverPlayerControlsFragment
 
     private var errorDrawable: Drawable? = null
-    private var disposable: Disposable? = null
 
     override val colorSchemeMode: PlayerColorSchemeMode
         get() = Preferences.getNowPlayingColorSchemeMode(NowPlayingScreen.FullCover)
@@ -79,8 +76,14 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
             insets
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.nextSongFlow.collect {
-                updateNextSongInfo(it)
+            playerViewModel.queueFlow.collect {
+                if (it.nextSong != null) {
+                    _binding?.nextSongAlbumArt?.songImage(it.nextSong)
+                    _binding?.nextSongText?.text = it.nextSong.title
+                } else {
+                    _binding?.nextSongText?.setText(R.string.list_end)
+                    _binding?.nextSongAlbumArt?.setImageDrawable(errorDrawable)
+                }
             }
         }
     }
@@ -97,17 +100,6 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
         when (view) {
             binding.nextSongText, binding.nextSongAlbumArt -> onQuickActionEvent(NowPlayingAction.OpenPlayQueue)
             binding.close -> getOnBackPressedDispatcher().onBackPressed()
-        }
-    }
-
-    private fun updateNextSongInfo(nextSong: Song) {
-        if (nextSong != Song.emptySong) {
-            disposable?.dispose()
-            disposable = _binding?.nextSongAlbumArt?.songImage(nextSong)
-            _binding?.nextSongText?.text = nextSong.title
-        } else {
-            _binding?.nextSongText?.setText(R.string.now_playing)
-            _binding?.nextSongAlbumArt?.setImageDrawable(errorDrawable)
         }
     }
 

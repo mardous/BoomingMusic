@@ -20,6 +20,7 @@ package com.mardous.booming.ui.screen.settings
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import com.mardous.booming.R
 import com.mardous.booming.util.Preferences
@@ -43,8 +44,11 @@ class PlaybackPreferencesFragment : PreferencesScreenFragment(), SharedPreferenc
     }
 
     private fun updatePreAmpState() {
-        findPreference<Preference>(REPLAYGAIN_PREAMP)?.isEnabled =
-            Preferences.replayGainSourceMode != ReplayGainSourceMode.MODE_NONE
+        val replayGainModePreference = findPreference<ListPreference>(REPLAYGAIN_SOURCE_MODE)
+        if (replayGainModePreference != null) {
+            findPreference<Preference>(REPLAYGAIN_PREAMP)?.isEnabled =
+                replayGainModePreference.value != ReplayGainSourceMode.NONE
+        }
     }
 
     override fun onDestroyView() {

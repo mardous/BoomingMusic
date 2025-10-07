@@ -48,8 +48,7 @@ import com.mardous.booming.databinding.DialogRecyclerViewBinding
 import com.mardous.booming.databinding.FragmentEqualizerBinding
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.resources.setTrackingTouchListener
-import com.mardous.booming.service.equalizer.EqualizerManager
-import com.mardous.booming.service.equalizer.OpenSLESConstants
+import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.ui.IEQPresetCallback
 import com.mardous.booming.ui.adapters.EQPresetAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
@@ -57,7 +56,6 @@ import com.mardous.booming.ui.component.views.AnimSlider
 import com.mardous.booming.ui.dialogs.InputDialog
 import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 import java.util.Formatter
 import java.util.Locale
 
@@ -70,9 +68,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
     private var _binding: FragmentEqualizerBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: EqualizerViewModel by viewModel {
-        parametersOf(playerViewModel.audioSessionId)
-    }
+    private val viewModel: EqualizerViewModel by viewModel()
 
     private lateinit var presetAdapter: EQPresetAdapter
 
@@ -296,7 +292,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
             }
 
             R.id.action_open_dsp -> {
-                val sessionId = playerViewModel.audioSessionId
+                val sessionId = viewModel.audioSessionId
                 if (sessionId != AudioEffect.ERROR_BAD_VALUE) {
                     try {
                         val equalizer = Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL)
@@ -482,7 +478,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
     private fun setUpBassBoostViews() {
         if (viewModel.bassBoostState.isSupported) {
             binding.equalizerEffects.bassboostStrength.apply {
-                valueTo = (OpenSLESConstants.BASSBOOST_MAX_STRENGTH - OpenSLESConstants.BASSBOOST_MIN_STRENGTH).toFloat()
+                valueTo = (EqualizerManager.BASSBOOST_MAX_STRENGTH - EqualizerManager.BASSBOOST_MIN_STRENGTH).toFloat()
                 addOnChangeListener { slider, value, fromUser ->
                     if (fromUser) {
                         viewModel.setBassBoost(isEnabled = value > 0f, value = value, apply = false)
@@ -498,7 +494,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
     private fun setUpVirtualizerViews() {
         if (viewModel.virtualizerState.isSupported) {
             binding.equalizerEffects.virtualizerStrength.apply {
-                valueTo = (OpenSLESConstants.VIRTUALIZER_MAX_STRENGTH - OpenSLESConstants.VIRTUALIZER_MIN_STRENGTH).toFloat()
+                valueTo = (EqualizerManager.VIRTUALIZER_MAX_STRENGTH - EqualizerManager.VIRTUALIZER_MIN_STRENGTH).toFloat()
                 addOnChangeListener { slider, value, fromUser ->
                     if (fromUser) {
                         viewModel.setVirtualizer(isEnabled = value > 0f, value = value, apply = false)
@@ -514,8 +510,8 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
     private fun setUpLoudnessViews() {
         if (viewModel.loudnessGainState.isSupported) {
             binding.equalizerEffects.loudnessGain.apply {
-                valueFrom = OpenSLESConstants.MINIMUM_LOUDNESS_GAIN.toFloat()
-                valueTo = OpenSLESConstants.MAXIMUM_LOUDNESS_GAIN.toFloat()
+                valueFrom = EqualizerManager.MINIMUM_LOUDNESS_GAIN.toFloat()
+                valueTo = EqualizerManager.MAXIMUM_LOUDNESS_GAIN.toFloat()
                 addOnChangeListener { _, value, fromUser ->
                     if (fromUser) {
                         viewModel.setLoudnessGain(value = value, apply = false)

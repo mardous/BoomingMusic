@@ -12,20 +12,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
 import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.extensions.hasR
-import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SoundSettingsSheet(
+    backgroundColor: Int,
     viewModel: SoundSettingsViewModel
 ) {
     val context = LocalContext.current
@@ -39,19 +39,12 @@ fun SoundSettingsSheet(
     val tempoState by viewModel.tempoFlow.collectAsState()
     val tempo = tempoState.value
 
-    val crossfadeState by viewModel.crossfadeFlow.collectAsState()
-    val crossfade = crossfadeState.value
-
-    Surface {
+    Surface(color = Color(backgroundColor)) {
         Column(modifier = Modifier
             .fillMaxWidth()
             .verticalScroll(rememberScrollState())
-            .padding(24.dp)
+            .padding(top = 24.dp, start = 24.dp, end = 24.dp)
         ) {
-            BottomSheetDefaults.DragHandle(
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
-
             AudioDevice(outputDevice) {
                 viewModel.showOutputDeviceSelector(context)
             }
@@ -169,68 +162,6 @@ fun SoundSettingsSheet(
                             .clickable(onClick = {
                                 viewModel.setTempo(isFixedPitch = !tempo.isFixedPitch)
                             })
-                    )
-                }
-            }
-
-            TitledSection(R.string.crossfade_title) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Slider(
-                        value = crossfade.crossfadeDuration.toFloat(),
-                        onValueChange = {
-                            viewModel.setCrossfade(crossfadeDuration = it.toInt(), apply = false)
-                        },
-                        onValueChangeFinished = {
-                            viewModel.setCrossfade(apply = true)
-                        },
-                        valueRange = crossfade.crossfadeRange,
-                        steps = 9,
-                        modifier = Modifier.weight(1f)
-                    )
-
-                    Text(
-                        text = String.format(
-                            Locale.US,
-                            "%d s",
-                            crossfade.crossfadeDuration
-                        ),
-                        style = MaterialTheme.typography.bodyMedium,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.widthIn(min = 56.dp)
-                    )
-                }
-            }
-
-            TitledSection(R.string.audio_fade_duration_title) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Slider(
-                        value = crossfade.audioFadeDuration.toFloat(),
-                        onValueChange = {
-                            viewModel.setCrossfade(audioFadeDuration = it.toInt(), apply = false)
-                        },
-                        onValueChangeFinished = {
-                            viewModel.setCrossfade(apply = true)
-                        },
-                        valueRange = crossfade.audioFadeRange,
-                        steps = 9,
-                        modifier = Modifier.weight(1f)
-                    )
-
-                    Text(
-                        text = String.format(
-                            Locale.US,
-                            "%d ms",
-                            crossfadeState.value.audioFadeDuration
-                        ),
-                        style = MaterialTheme.typography.bodyMedium,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.widthIn(min = 56.dp)
                     )
                 }
             }

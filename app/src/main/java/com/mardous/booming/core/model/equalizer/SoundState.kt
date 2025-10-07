@@ -53,12 +53,6 @@ data class BalanceLevel(val left: Float, val right: Float) {
     val range get() = MIN_BALANCE..MAX_BALANCE
 }
 
-@Immutable
-data class CrossfadeState(val apply: Boolean, val crossfadeDuration: Int, val audioFadeDuration: Int) {
-    val crossfadeRange = MIN_CROSSFADE..MAX_CROSSFADE
-    val audioFadeRange = MIN_AUDIO_FADE..MAX_AUDIO_FADE
-}
-
 const val MIN_SPEED = .5f
 const val MIN_SPEED_NO_PITCH = .8f
 const val MAX_SPEED = 2f
@@ -67,7 +61,3 @@ const val MIN_PITCH = .5f
 const val MAX_PITCH = 2f
 const val MIN_BALANCE = 0f
 const val MAX_BALANCE = 1f
-const val MIN_CROSSFADE = 0f
-const val MAX_CROSSFADE = 10f
-const val MIN_AUDIO_FADE = 0f
-const val MAX_AUDIO_FADE = 1000f

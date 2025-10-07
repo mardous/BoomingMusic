@@ -21,6 +21,7 @@ import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
+import androidx.media3.common.MediaItem
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
 import com.mardous.booming.core.model.task.Result
@@ -38,7 +39,6 @@ import com.mardous.booming.data.remote.deezer.model.DeezerTrack
 import com.mardous.booming.data.remote.lastfm.LastFmService
 import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
 import com.mardous.booming.data.remote.lastfm.model.LastFmArtist
-import com.mardous.booming.service.queue.QueueManager
 import java.io.File
 
 interface Repository {
@@ -95,6 +95,8 @@ interface Repository {
     suspend fun songsByYear(year: Int): List<Song>
     suspend fun folderByPath(path: String): Folder
     suspend fun songsByUri(uri: Uri): List<Song>
+    suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>>
+    suspend fun songByMediaItem(mediaItem: MediaItem?): Song
     suspend fun songsByFolder(folderPath: String, includeSubfolders: Boolean): List<Song>
     suspend fun songByFilePath(path: String, ignoreBlacklist: Boolean): Song
     suspend fun homeSuggestions(): List<Suggestion>
@@ -139,7 +141,6 @@ interface Repository {
 
 class RealRepository(
     private val context: Context,
-    private val queueManager: QueueManager,
     private val deezerService: DeezerService,
     private val lastFmService: LastFmService,
     private val songRepository: SongRepository,
@@ -257,7 +258,6 @@ class RealRepository(
         val song = songRepository.song(songId)
         if (song != Song.emptySong) {
             playlistRepository.deleteSongFromAllPlaylists(songId)
-            queueManager.removeSong(song)
         }
         return song
     }
@@ -267,7 +267,6 @@ class RealRepository(
         deletableSongs.forEach { song ->
             playlistRepository.deleteSongFromAllPlaylists(song.id)
         }
-        queueManager.removeSongs(deletableSongs)
     }
 
     override suspend fun deleteMissingContent() {
@@ -310,6 +309,12 @@ class RealRepository(
     override suspend fun folderByPath(path: String): Folder = specialRepository.folderByPath(path)
 
     override suspend fun songsByUri(uri: Uri): List<Song> = songRepository.songsByUri(uri)
+
+    override suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>> =
+        songRepository.songsByMediaItems(mediaItems)
+
+    override suspend fun songByMediaItem(mediaItem: MediaItem?): Song =
+        songRepository.songByMediaItem(mediaItem)
 
     override suspend fun songsByFolder(folderPath: String, includeSubfolders: Boolean) =
         specialRepository.songsByFolder(folderPath, includeSubfolders)

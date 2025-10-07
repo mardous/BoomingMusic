@@ -33,8 +33,8 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.isValidPosition
 import com.mardous.booming.extensions.loadPaletteImage
+import com.mardous.booming.extensions.media.asSectionName
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.extensions.media.sectionName
 import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.ui.ISongCallback
@@ -131,12 +131,12 @@ open class SongAdapter(
     override fun getPopupText(view: View, position: Int): CharSequence {
         val song = dataSet.getOrNull(position) ?: return ""
         return when (sortMode?.selectedKey) {
-            SortKey.Album -> song.albumName.sectionName()
-            SortKey.Artist -> song.displayArtistName().sectionName()
-            SortKey.AZ -> song.title.sectionName()
+            SortKey.Album -> song.albumName.asSectionName()
+            SortKey.Artist -> song.displayArtistName().asSectionName()
+            SortKey.AZ -> song.title.asSectionName()
             SortKey.Year -> ""
-            SortKey.FileName -> song.fileName.sectionName()
-            else -> song.title.sectionName()
+            SortKey.FileName -> song.fileName.asSectionName()
+            else -> song.title.asSectionName()
         }
     }
 

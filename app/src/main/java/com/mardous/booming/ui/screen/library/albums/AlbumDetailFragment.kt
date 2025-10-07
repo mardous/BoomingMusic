@@ -46,13 +46,12 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
 import com.mardous.booming.databinding.FragmentAlbumDetailBinding
 import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.media.asReadableDuration
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.extensions.media.durationStr
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.navigation.*
 import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.album.AlbumAdapter
@@ -129,10 +128,10 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
             goToArtist()
         }
         binding.playAction.setOnClickListener {
-            playerViewModel.openQueue(getAlbum().songs, shuffleMode = Playback.ShuffleMode.Off)
+            playerViewModel.openQueue(getAlbum().songs, shuffleModeEnabled = false)
         }
         binding.shuffleAction.setOnClickListener {
-            playerViewModel.openQueue(getAlbum().songs, shuffleMode = Playback.ShuffleMode.On)
+            playerViewModel.openQueue(getAlbum().songs, shuffleModeEnabled = true)
         }
         binding.searchAction?.setOnClickListener {
             goToSearch()
@@ -208,8 +207,8 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
         val artistName = if (albumArtistExists) album.albumArtistName else album.artistName
         binding.albumText.text = buildInfoString(
             artistName?.displayArtistName(),
-            album.year.takeIf { it > 0 }?.toString(),
-            album.duration.durationStr(readableFormat = true).takeIf { Preferences.showAlbumDuration }
+            album.year.takeIf { it > 0 },
+            album.duration.asReadableDuration(readableFormat = true).takeIf { Preferences.showAlbumDuration }
         )
         binding.albumTitle.text = album.name
 

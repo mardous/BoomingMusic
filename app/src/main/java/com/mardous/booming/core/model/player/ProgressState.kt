@@ -1,7 +1,7 @@
 package com.mardous.booming.core.model.player
 
 import androidx.compose.runtime.Immutable
-import com.mardous.booming.extensions.media.durationStr
+import com.mardous.booming.extensions.media.asReadableDuration
 
 @Immutable
 class ProgressState(val progress: Long, val total: Long) {
@@ -11,13 +11,13 @@ class ProgressState(val progress: Long, val total: Long) {
     val remainingTime: Long = (total - progress).coerceAtLeast(0L)
 
     val remainingTimeAsString: String
-        get() = remainingTime.durationStr()
+        get() = remainingTime.asReadableDuration()
 
     val progressAsString: String
-        get() = progress.durationStr()
+        get() = progress.asReadableDuration()
 
     val totalAsString: String
-        get() = total.durationStr()
+        get() = total.asReadableDuration()
 
     companion object {
         val Unspecified = ProgressState(0, 0)

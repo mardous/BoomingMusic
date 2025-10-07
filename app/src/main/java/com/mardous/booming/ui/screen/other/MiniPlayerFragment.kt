@@ -45,6 +45,7 @@ import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.math.abs
@@ -74,15 +75,20 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMiniPlayerBinding.bind(view)
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.currentSongFlow.collect {
-                updateCurrentSong()
-            }
+            playerViewModel.queueFlow.distinctUntilChangedBy { it.currentSong }
+                .collect { queue ->
+                    disposable = binding.image.songImage(queue.currentSong)
+                    binding.songTitle.isSelected = true
+                    binding.songTitle.text = queue.currentSong.title
+                    binding.songArtist.isSelected = true
+                    binding.songArtist.text = queue.currentSong.displayArtistName()
+                }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             combine(
-                playerViewModel.currentProgressFlow,
-                playerViewModel.totalDurationFlow
-            ) { progress, duration -> ProgressState(progress.toLong(), duration.toLong()) }
+                playerViewModel.progressFlow,
+                playerViewModel.durationFlow
+            ) { progress, duration -> ProgressState(progress, duration) }
                 .filter { progress -> progress.mayUpdateUI }
                 .collectLatest {
                     binding.progressBar.max = it.total.toInt()
@@ -127,15 +133,15 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
 
     override fun onSkipButtonHold(direction: Int) {
         when (direction) {
-            DIRECTION_NEXT -> playerViewModel.fastForward()
-            DIRECTION_PREVIOUS -> playerViewModel.rewind()
+            DIRECTION_NEXT -> playerViewModel.seekForward()
+            DIRECTION_PREVIOUS -> playerViewModel.seekBack()
         }
     }
 
     override fun onSkipButtonTap(direction: Int) {
         when (direction) {
-            DIRECTION_NEXT -> playerViewModel.playNext()
-            DIRECTION_PREVIOUS -> playerViewModel.playPrevious()
+            DIRECTION_NEXT -> playerViewModel.seekToNext()
+            DIRECTION_PREVIOUS -> playerViewModel.seekToPrevious()
         }
     }
 
@@ -159,26 +165,14 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
         }
     }
 
-    private fun updateCurrentSong() {
-        val song = playerViewModel.currentSong
-
-        binding.songTitle.isSelected = true
-        binding.songArtist.isSelected = true
-
-        binding.songTitle.text = song.title
-        binding.songArtist.text = song.displayArtistName()
-
-        disposable = binding.image.songImage(song)
-    }
-
     private var flingPlayBackController = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
             override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
                 if (abs(velocityX) > abs(velocityY)) {
                     if (velocityX < 0) {
-                        playerViewModel.playNext()
+                        playerViewModel.seekToNext()
                         return true
                     } else if (velocityX > 0) {
-                        playerViewModel.playPrevious()
+                        playerViewModel.seekToPrevious()
                         return true
                     }
                 }

@@ -65,7 +65,7 @@ fun LyricsScreen(
         LyricsViewState(lyricsResult.syncedLyrics.content)
     }
 
-    val songProgress by playerViewModel.currentProgressFlow.collectAsState()
+    val songProgress by playerViewModel.progressFlow.collectAsState()
     LaunchedEffect(songProgress) {
         lyricsViewState.updatePosition(songProgress.toLong())
     }
@@ -167,7 +167,7 @@ fun CoverLyricsScreen(
     val lyricsViewSettings by lyricsViewModel.playerLyricsViewSettings.collectAsState()
 
     val lyricsResult by lyricsViewModel.lyricsResult.collectAsState()
-    val songProgress by playerViewModel.currentProgressFlow.collectAsStateWithLifecycle(
+    val songProgress by playerViewModel.progressFlow.collectAsStateWithLifecycle(
         initialValue = 0,
         minActiveState = Lifecycle.State.RESUMED
     )

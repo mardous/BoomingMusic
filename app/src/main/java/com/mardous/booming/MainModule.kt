@@ -17,12 +17,10 @@
 
 package com.mardous.booming
 
-import android.content.ComponentName
 import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.core.BoomingDatabase
-import com.mardous.booming.core.androidauto.AutoMusicProvider
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.data.local.AlbumCoverSaver
@@ -37,11 +35,8 @@ import com.mardous.booming.data.remote.lastfm.LastFmService
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
 import com.mardous.booming.data.remote.provideDefaultCache
 import com.mardous.booming.data.remote.provideOkHttp
-import com.mardous.booming.service.MusicService
-import com.mardous.booming.service.MusicServiceConnection
-import com.mardous.booming.service.equalizer.EqualizerManager
-import com.mardous.booming.service.playback.PlaybackManager
-import com.mardous.booming.service.queue.QueueManager
+import com.mardous.booming.playback.SleepTimer
+import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.ui.screen.about.AboutViewModel
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.screen.info.InfoViewModel
@@ -87,12 +82,6 @@ val networkModule = module {
     }
 }
 
-private val autoModule = module {
-    single {
-        AutoMusicProvider(mContext = androidContext(), repository = get(), queueManager = get())
-    }
-}
-
 private val mainModule = module {
     single {
         androidContext().contentResolver
@@ -101,18 +90,10 @@ private val mainModule = module {
         PreferenceManager.getDefaultSharedPreferences(androidContext())
     }
     single {
-        MusicServiceConnection(
-            context = androidContext(),
-            serviceComponent = ComponentName(androidContext(), MusicService::class.java))
+        SleepTimer(context = androidContext())
     }
     single {
         EqualizerManager(context = androidContext())
-    }
-    single {
-        QueueManager()
-    }
-    single {
-        PlaybackManager(context = androidContext(), equalizerManager = get(), soundSettings = get())
     }
     single {
         SoundSettings(context = androidContext())
@@ -134,7 +115,7 @@ private val mainModule = module {
 private val roomModule = module {
     single {
         Room.databaseBuilder(androidContext(), BoomingDatabase::class.java, "music_database.db")
-            .addMigrations(BoomingDatabase.MIGRATION_1_2)
+            .addMigrations(BoomingDatabase.MIGRATION_1_2, BoomingDatabase.MIGRATION_2_3)
             .build()
     }
 
@@ -151,6 +132,10 @@ private val roomModule = module {
     }
 
     factory {
+        get<BoomingDatabase>().queueDao()
+    }
+
+    factory {
         get<BoomingDatabase>().inclExclDao()
     }
 
@@ -163,7 +148,6 @@ private val dataModule = module {
     single {
         RealRepository(
             context = androidContext(),
-            queueManager = get(),
             deezerService = get(),
             lastFmService = get(),
             songRepository = get(),
@@ -243,20 +227,14 @@ private val viewModule = module {
     }
 
     viewModel {
-        PlayerViewModel(
-            serviceConnection = get(),
-            queueManager = get(),
-            playbackManager = get(),
-            albumCoverSaver = get()
-        )
+        PlayerViewModel(repository = get(), albumCoverSaver = get())
     }
 
-    viewModel { (audioSessionId: Int) ->
+    viewModel {
         EqualizerViewModel(
             contentResolver = get(),
             equalizerManager = get(),
-            mediaStoreWriter = get(),
-            audioSessionId = audioSessionId
+            mediaStoreWriter = get()
         )
     }
 
@@ -292,13 +270,12 @@ private val viewModule = module {
         TagEditorViewModel(
             repository = get(),
             customArtistImageManager = get(),
-            queueManager = get(),
             target = target
         )
     }
 
     viewModel {
-        LyricsViewModel(preferences = get(), queueManager = get(), lyricsRepository = get())
+        LyricsViewModel(preferences = get(), lyricsRepository = get())
     }
 
     viewModel {
@@ -318,4 +295,4 @@ private val viewModule = module {
     }
 }
 
-val appModules = listOf(networkModule, autoModule, mainModule, roomModule, dataModule, viewModule)
+val appModules = listOf(networkModule, mainModule, roomModule, dataModule, viewModule)

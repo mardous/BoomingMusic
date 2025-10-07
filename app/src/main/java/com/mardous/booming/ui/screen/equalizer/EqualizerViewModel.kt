@@ -15,7 +15,8 @@ import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.files.getContentUri
 import com.mardous.booming.extensions.files.readString
-import com.mardous.booming.service.equalizer.EqualizerManager
+import com.mardous.booming.playback.equalizer.EqualizerManager
+import com.mardous.booming.playback.equalizer.EqualizerSession
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -24,9 +25,10 @@ import java.io.File
 class EqualizerViewModel(
     private val contentResolver: ContentResolver,
     private val equalizerManager: EqualizerManager,
-    private val mediaStoreWriter: MediaStoreWriter,
-    private val audioSessionId: Int
+    private val mediaStoreWriter: MediaStoreWriter
 ) : ViewModel() {
+
+    val audioSessionId get() = equalizerManager.audioSessionId
 
     val eqStateFlow get() = equalizerManager.eqStateFlow
     val currentPresetFlow get() = equalizerManager.currentPresetFlow
@@ -52,8 +54,13 @@ class EqualizerViewModel(
 
     fun setEqualizerState(isEnabled: Boolean, apply: Boolean = true) {
         // update equalizer session
-        equalizerManager.closeAudioEffectSession(audioSessionId, !isEnabled)
-        equalizerManager.openAudioEffectSession(audioSessionId, isEnabled)
+        if (isEnabled) {
+            equalizerManager.closeAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
+            equalizerManager.openAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
+        } else {
+            equalizerManager.closeAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
+            equalizerManager.openAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
+        }
 
         // set parameter and state
         viewModelScope.launch(Dispatchers.Default) {

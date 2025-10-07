@@ -159,7 +159,6 @@
     <string name="save_queue">कतार सहेजें</string>
     <string name="clear_queue">कतार साफ़ करें</string>
     <string name="action_move_to_current_track">वर्तमान ट्रैक दिखाएँ</string>
-    <string name="shuffle_queue">कतारों में फेरबदल करें</string>
     <string name="action_add_to_favorites">पसंदीदा में जोड़े</string>
     <string name="action_remove_from_favorites">पसंद की सूची से हटाएँ</string>
     <string name="added_to_favorites_label">पसंद की गई वस्तुओं में जोड़ा गया</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">प्लेलिस्ट से हटाएँ</string>
     <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">प्लेइंग क्यू से हटा दो</string>
-    <string name="x_removed_from_playing_queue">%s हटा दिया गया</string>
     <string name="put_after_current_track">वर्तमान ट्रैक के बाद डालें</string>
     <string name="undo_action">पूर्ववत करें</string>
     <string name="set_artist_image">कलाकार की तस्वीर सेट करो</string>
@@ -460,8 +458,6 @@
     <string name="sound_settings">साउंड सेटिंग्स</string>
     <string name="volume_label">वॉल्यूम</string>
     <string name="tempo_label">गति</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">बाहरी ईक्यू</string>
     <string name="custom">कस्टम</string>
     <!-- Lyrics viewer -->
@@ -577,7 +573,6 @@
     <string name="headphones_header">हेडफ़ोन्स</string>
     <string name="bluetooth_header">ब्लूटूथ</string>
     <string name="audio_focus_header">ऑडियो फ़ोकस</string>
-    <string name="lockscreen_header">लॉकस्क्रीन</string>
     <string name="shuffle_mode_header">शफल मोड</string>
     <string name="display_header">डिस्प्ले</string>
     <string name="backup_restore_header">बैकअप/रिस्टोर</string>
@@ -670,10 +665,6 @@
     <string name="prefer_album_artist_name_summary">एल्बम-कलाकार का नाम दिखाता है बजाय गाना-कलाकार के नाम के (यदि उपलब्ध हो)।</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">प्ले ऑन स्टार्टअप</string>
-    <string name="gapless_playback_title">गैपलेस प्लेबैक</string>
-    <string name="gapless_playback_summary">गानों के बीच सुचारू रूपांतरण। कुछ उपकरणों पर प्लेबैक समस्याएँ उत्पन्न कर सकता है।</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">स्रोत मोड</string>
     <string name="replaygain_preamp_title">प्रे-अम्प स्तर</string>
     <string name="replaygain_preamp_summary">जब रिप्लेगैन सक्रिय हो, तब वॉल्यूम स्तर सेट करें।</string>
@@ -684,8 +675,6 @@
     <string name="remember_shuffle_mode_summary">नए गीतों की सूची चुनते समय शफल मोड चालू रहेगा।</string>
     <string name="album_shuffle_mode_title">एल्बम शफल मोड</string>
     <string name="artist_shuffle_mode_title">कलाकार शफल मोड</string>
-    <string name="auto_play_on_skip_title">स्किप पर ऑटो-प्ले.</string>
-    <string name="auto_play_on_skip_summary">यदि प्लेबैक रोक दिया गया है, तो पिछला या अगला बटन दबाने से संगीत शुरू होगा।</string>
     <string name="rewind_with_back_title">"पिछले के साथ फिर से शुरू करें"</string>
     <string name="rewind_with_back_summary">वर्तमान ट्रैक अगर प्रारंभ में है, तो चल रहे ट्रैक को प्रारंभ पर वापस ले जाएं या पिछले ट्रैक पर जाएं।</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -700,8 +689,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">जब ब्लूटूथ A2DP हेडसेट डिस्कनेक्ट होता है, तो प्लेबैक को रोकता है। सिफारिश की जाती है।</string>
     <string name="ignore_audio_focus_title">ऑडियो फोकस अनदेखी करें</string>
     <string name="ignore_audio_focus_summary">सदैव ऑडियो को पृष्ठभूमि में चलाएं चाहे कुछ भी और चल रहा हो।</string>
-    <string name="pause_on_transient_focus_loss_title">अस्थायी ध्यान हानि</string>
-    <string name="pause_on_transient_focus_loss_summary">अस्थायी फोकस हानि (जैसे सूचनाएँ, आने वाली कॉल) पर प्लेबैक को रोकें।</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">स्वतः मेटाडेटा डाउनलोड करना</string>
     <string name="ignore_media_store_album_covers_title">मीडिया स्टोर कवर अनदेखा करें</string>
@@ -735,11 +722,6 @@
     <string name="min_song_duration_summary">आपकी लाइब्रेरी में दिखाने के लिए एक गाने को कितने सेकंड (कम से कम) तक चलना चाहिए?</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">अतिरिक्त पाठ की पंक्ति</string>
-    <string name="notification_priority_title">नोटिफिकेशन प्रायोरिटी</string>
-    <string name="album_art_on_lockscreen_title">एल्बम का कवर दिखाएँ</string>
-    <string name="album_art_on_lockscreen_summary">वर्तमान गानों के एल्बम कवर का उपयोग लॉकस्क्रीन वॉलपेपर के रूप में करें। इससे उच्च मेमोरी उपयोग हो सकता है। उपकरण के साथ भिन्न होता है।</string>
-    <string name="blurred_album_art_title">धुंधला एल्बम कला</string>
-    <string name="blurred_album_art_summary">लॉकस्क्रीन पर एल्बम कवर को धुंधला कर देता है। तृतीय पक्ष ऐप्स और विजेट्स के साथ समस्याएँ पैदा कर सकता है।</string>
     <string name="app_language_title">ऐप की भाषा</string>
     <string name="backup_data_title">बैकअप ऐप डेटा</string>
     <string name="backup_app_data_summary">एक फ़ाइल बनाएं जिसमें आवश्यक ऐप डेटा हो और इसे बाहरी स्टोरेज में सहेजें।</string>

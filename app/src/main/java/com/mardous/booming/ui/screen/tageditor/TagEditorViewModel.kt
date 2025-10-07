@@ -13,10 +13,8 @@ import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.MetadataWriter
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Artist
-import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.deezer.model.DeezerAlbum
 import com.mardous.booming.data.remote.deezer.model.DeezerTrack
-import com.mardous.booming.service.queue.QueueManager
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +25,6 @@ import kotlinx.coroutines.launch
 class TagEditorViewModel(
     private val repository: Repository,
     private val customArtistImageManager: CustomArtistImageManager,
-    private val queueManager: QueueManager,
     private val target: EditTarget
 ) : ViewModel() {
 
@@ -62,18 +59,10 @@ class TagEditorViewModel(
         }
         if (result.isSuccess) {
             val writeResult = result.getOrThrow()
-            if (writeResult.isSuccess) {
-                for (content in writeResult.contents) {
-                    val song = repository.songById(content.id)
-                    if (song != Song.emptySong) {
-                        queueManager.updateSong(content.id, song)
-                    }
-                }
-            }
             emit(
                 SaveTagsResult(
                     isLoading = false,
-                    isSuccess = true,
+                    isSuccess = writeResult.isSuccess,
                     scanned = writeResult.scanned,
                     failed = writeResult.failed
                 )

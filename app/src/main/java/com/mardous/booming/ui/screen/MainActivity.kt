@@ -2,20 +2,28 @@ package com.mardous.booming.ui.screen
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.annotation.OptIn
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.session.MediaController
+import androidx.media3.session.SessionCommand
+import androidx.media3.session.SessionError
+import androidx.media3.session.SessionResult
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.common.util.concurrent.Futures
+import com.google.common.util.concurrent.ListenableFuture
 import com.mardous.booming.R
 import com.mardous.booming.core.appshortcuts.DynamicShortcutManager
 import com.mardous.booming.core.model.CategoryInfo
+import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.extensions.currentFragment
-import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.navigation.isValidCategory
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.whichFragment
+import com.mardous.booming.playback.Playback
 import com.mardous.booming.ui.IScrollHelper
 import com.mardous.booming.ui.component.base.AbsSlidingMusicPanelActivity
-import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.update.UpdateDialog
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
@@ -25,10 +33,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * @author Christians M. A. (mardous)
  */
-class MainActivity : AbsSlidingMusicPanelActivity() {
+class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
 
     private val updateViewModel: UpdateViewModel by viewModel()
-    private val lyricsViewModel: LyricsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +47,44 @@ class MainActivity : AbsSlidingMusicPanelActivity() {
         // Set up dynamic shortcuts
         DynamicShortcutManager(this).initDynamicShortcuts()
 
-        launchAndRepeatWithViewLifecycle {
-            playerViewModel.isConnected.collect { isConnected ->
-                if (isConnected) {
-                    intent?.let { handlePlaybackIntent(it, true) }
-                }
-            }
-        }
-
         prepareUpdateViewModel()
+    }
+
+    override fun onConnected(controller: MediaController) {
+        super.onConnected(controller)
+        intent?.let { handlePlaybackIntent(it, true) }
+    }
+
+    @OptIn(UnstableApi::class)
+    override fun onCustomCommand(
+        controller: MediaController,
+        command: SessionCommand,
+        args: Bundle
+    ): ListenableFuture<SessionResult> {
+        val sessionResult = when (command.customAction) {
+            Playback.EVENT_MEDIA_CONTENT_CHANGED -> {
+                playerViewModel.submitEvent(MediaEvent.MediaContentChanged)
+                SessionResult(SessionResult.RESULT_SUCCESS)
+            }
+
+            Playback.EVENT_FAVORITE_CONTENT_CHANGED -> {
+                playerViewModel.submitEvent(MediaEvent.FavoriteContentChanged)
+                SessionResult(SessionResult.RESULT_SUCCESS)
+            }
+
+            Playback.EVENT_PLAYBACK_STARTED -> {
+                playerViewModel.submitEvent(MediaEvent.PlaybackStarted)
+                SessionResult(SessionResult.RESULT_SUCCESS)
+            }
+
+            Playback.EVENT_PLAYBACK_RESTORED -> {
+                playerViewModel.submitEvent(MediaEvent.PlaybackRestored)
+                SessionResult(SessionResult.RESULT_SUCCESS)
+            }
+
+            else -> SessionResult(SessionError.ERROR_NOT_SUPPORTED)
+        }
+        return Futures.immediateFuture(sessionResult)
     }
 
     fun scanAllPaths() {

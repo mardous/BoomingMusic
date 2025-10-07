@@ -18,8 +18,7 @@ import coil3.toBitmap
 import com.mardous.booming.R
 import com.mardous.booming.core.appwidgets.base.BaseAppWidget
 import com.mardous.booming.extensions.resources.getDrawableCompat
-import com.mardous.booming.service.MusicService
-import com.mardous.booming.service.constants.ServiceAction
+import com.mardous.booming.playback.PlaybackService
 import com.mardous.booming.ui.screen.MainActivity
 
 class AppWidgetSimple : BaseAppWidget() {
@@ -47,7 +46,7 @@ class AppWidgetSimple : BaseAppWidget() {
         pushUpdate(context, appWidgetIds, appWidgetView)
     }
 
-    override fun performUpdate(service: MusicService, appWidgetIds: IntArray?) {
+    override fun performUpdate(service: PlaybackService, appWidgetIds: IntArray?) {
         val appWidgetView = RemoteViews(service.packageName, R.layout.app_widget_simple)
 
         val isPlaying = service.isPlaying
@@ -71,7 +70,7 @@ class AppWidgetSimple : BaseAppWidget() {
 
         // Load the album cover async and push the update on completion
         val imageSize = getImageSize(service)
-        service.runOnUiThread {
+        uiHandler.post {
             if (disposable != null) {
                 disposable?.dispose()
                 disposable = null
@@ -110,7 +109,7 @@ class AppWidgetSimple : BaseAppWidget() {
      */
     private fun linkButtons(context: Context, views: RemoteViews) {
         val action = Intent(context, MainActivity::class.java)
-        val serviceName = ComponentName(context, MusicService::class.java)
+        val serviceName = ComponentName(context, PlaybackService::class.java)
 
         // Home
         action.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -119,7 +118,7 @@ class AppWidgetSimple : BaseAppWidget() {
         views.setOnClickPendingIntent(R.id.media_titles, pendingIntent)
 
         // Play and pause
-        pendingIntent = buildPendingIntent(context, ServiceAction.ACTION_TOGGLE_PAUSE, serviceName)
+        pendingIntent = buildPendingIntent(context, PlaybackService.ACTION_TOGGLE_PAUSE, serviceName)
         views.setOnClickPendingIntent(R.id.button_toggle_play_pause, pendingIntent)
     }
 

@@ -178,7 +178,7 @@ dependencies {
     implementation(libs.material.components)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.splashscreen)
-    implementation(libs.androidx.media)
+    implementation(libs.androidx.concurrent.futures)
     implementation(libs.androidx.mediarouter)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.fragment)
@@ -200,15 +200,12 @@ dependencies {
 
     implementation(libs.bundles.kotlinx)
     implementation(libs.bundles.lifecycle)
+    implementation(libs.bundles.media3)
     implementation(libs.bundles.navigation)
     implementation(libs.bundles.koin)
     implementation(libs.bundles.coil)
     implementation(libs.bundles.ktor)
     implementation(libs.bundles.markwon)
-
-    // For media playback using ExoPlayer
-    implementation(libs.media3.exoplayer)
-    implementation(libs.media3.exoplayer.midi)
 
     implementation(libs.room)
     ksp(libs.room.compiler)
@@ -234,4 +231,6 @@ dependencies {
 
     implementation(libs.versioncompare)
     implementation(libs.commons.text)
+
+    debugImplementation(libs.leakcanary)
 }
