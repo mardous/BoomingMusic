@@ -291,6 +291,7 @@ class PlaybackService :
             headsetReceiverRegistered = false
         }
         LocalBroadcastManager.getInstance(this).unregisterReceiver(widgetIntentReceiver)
+        serviceScope.cancel()
         preferences.unregisterOnSharedPreferenceChangeListener(this)
         mediaStoreObserver.stop(this)
         mediaSession?.release()
