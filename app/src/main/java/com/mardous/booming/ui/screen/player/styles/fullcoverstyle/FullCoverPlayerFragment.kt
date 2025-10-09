@@ -31,6 +31,7 @@ import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.coil.songImage
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.theme.NowPlayingScreen
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentFullCoverPlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
@@ -76,10 +77,10 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
             insets
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.queueFlow.collect {
-                if (it.nextSong != null) {
-                    _binding?.nextSongAlbumArt?.songImage(it.nextSong)
-                    _binding?.nextSongText?.text = it.nextSong.title
+            playerViewModel.nextSongFlow.collect { nextSong ->
+                if (nextSong != Song.emptySong) {
+                    _binding?.nextSongAlbumArt?.songImage(nextSong)
+                    _binding?.nextSongText?.text = nextSong.title
                 } else {
                     _binding?.nextSongText?.setText(R.string.list_end)
                     _binding?.nextSongAlbumArt?.setImageDrawable(errorDrawable)

@@ -150,9 +150,14 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         launchAndRepeatWithViewLifecycle {
             playerViewModel.queueFlow.collect { queue ->
                 if (currentFragment(R.id.fragment_container) !is PlayingQueueFragment) {
-                    hideBottomSheet(queue.isEmpty)
+                    hideBottomSheet(queue.isEmpty())
                 }
-                lyricsViewModel.updateSong(queue.currentSong)
+            }
+        }
+
+        launchAndRepeatWithViewLifecycle {
+            playerViewModel.currentSongFlow.collect { currentSong ->
+                lyricsViewModel.updateSong(currentSong)
             }
         }
 
@@ -180,7 +185,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        if (playerViewModel.queue.isEmpty || savedInstanceState.getBoolean(BOTTOM_SHEET_HIDDEN)) {
+        if (playerViewModel.queue.isEmpty() || savedInstanceState.getBoolean(BOTTOM_SHEET_HIDDEN)) {
             hideBottomSheet(true)
         }
     }
@@ -247,7 +252,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     fun setBottomNavVisibility(
         visible: Boolean,
         animate: Boolean = false,
-        hideBottomSheet: Boolean = playerViewModel.queue.isEmpty,
+        hideBottomSheet: Boolean = playerViewModel.queue.isEmpty(),
     ) {
         if (isInOneTabMode) {
             hideBottomSheet(hide = hideBottomSheet, animate = animate, isBottomNavVisible = false)
@@ -303,7 +308,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                 )
             )
         } else {
-            if (playerViewModel.queue.isNotEmpty) {
+            if (playerViewModel.queue.isNotEmpty()) {
                 slidingPanel.elevation = 0f
                 navigationView.elevation = 5f
                 if (isBottomNavVisible) {

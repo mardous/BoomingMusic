@@ -52,7 +52,6 @@ import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.*
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import java.lang.ref.WeakReference
@@ -113,10 +112,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.queueFlow.distinctUntilChanged { old, new ->
-                old.currentSong == new.currentSong && old.nextSong == new.nextSong
-            }.collect { queue ->
-                onSongInfoChanged(queue.currentSong, queue.nextSong)
+            combine(playerViewModel.currentSongFlow, playerViewModel.nextSongFlow)
+            { currentSong, nextSong -> Pair(currentSong, nextSong) }.collect { (current, next) ->
+                onSongInfoChanged(current, next)
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {

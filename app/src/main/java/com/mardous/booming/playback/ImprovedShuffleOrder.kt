@@ -3,6 +3,9 @@ package com.mardous.booming.playback
 import androidx.media3.common.C
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.source.ShuffleOrder
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import kotlin.random.Random
 
 /**
@@ -14,6 +17,8 @@ class ImprovedShuffleOrder private constructor(
     private val random: Random
 ) : ShuffleOrder {
     private val indexInShuffled = IntArray(shuffled.size)
+
+    constructor(shuffled: IntArray, seed: Long) : this(shuffled.copyOf(), Random(seed))
 
     constructor(
         firstIndex: Int,
@@ -115,8 +120,41 @@ class ImprovedShuffleOrder private constructor(
         return cloneAndRemove(0, shuffled.size)
     }
 
-    class Savable(val shuffled: IntArray, val seed: Long) {
-        // TODO
+    @Serializable
+    class SerializedOrder(
+        @SerialName("data")
+        val data: IntArray?,
+        @SerialName("seed")
+        val seed: Long
+    ) {
+
+        override fun toString(): String {
+            return Json.encodeToString(this)
+        }
+
+        fun toShuffleOrder(
+            firstIndex: Int = C.INDEX_UNSET,
+            length: Int = C.LENGTH_UNSET
+        ): ImprovedShuffleOrder {
+            if (data == null) {
+                if (firstIndex == C.INDEX_UNSET || length == C.INDEX_UNSET) {
+                    throw IllegalArgumentException("Missing required firstIndex and/or length param")
+                }
+                return ImprovedShuffleOrder(firstIndex, length, Random(seed))
+            } else {
+                return ImprovedShuffleOrder(data, seed)
+            }
+        }
+
+        companion object {
+            fun serializedFromOrder(order: ImprovedShuffleOrder): SerializedOrder {
+                return SerializedOrder(order.shuffled, order.random.nextLong())
+            }
+
+            fun serializedFromJson(content: String): SerializedOrder {
+                return Json.decodeFromString<SerializedOrder>(content)
+            }
+        }
     }
 
     companion object {

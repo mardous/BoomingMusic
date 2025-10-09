@@ -48,6 +48,7 @@ import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.flow.combine
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -68,10 +69,10 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
     private var linearLayoutManager: LinearLayoutManager? = null
 
     private val playlist: List<Song>
-        get() = playerViewModel.queue.songs
+        get() = playerViewModel.queue
 
     private val position: Int
-        get() = playerViewModel.queue.position
+        get() = playerViewModel.position.current
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -123,11 +124,12 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.queueFlow.collect { queue ->
-                if (queue.isEmpty) {
+            combine(playerViewModel.queueFlow, playerViewModel.positionFlow)
+            { queue, position -> Pair(queue, position) }.collect { (queue, position) ->
+                if (queue.isEmpty()) {
                     findNavController().navigateUp()
                 } else {
-                    playingQueueAdapter?.setQueue(queue)
+                    playingQueueAdapter?.setPlayingQueue(queue, position.current)
                 }
             }
         }
@@ -195,7 +197,7 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
 
     private fun resetToCurrentPosition() {
         binding.recyclerView.stopScroll()
-        linearLayoutManager?.scrollToPositionWithOffset(position, 0)
+        linearLayoutManager?.scrollToPosition(position)
     }
 
     override fun onPause() {

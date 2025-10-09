@@ -94,6 +94,14 @@ class AdvancedForwardingPlayer(
 
     override fun getMaxSeekToPreviousPosition(): Long = maxSeekToPreviousPositionMs
 
+    override fun seekToPrevious() {
+        if (maxSeekToPreviousPosition > 0) {
+            super.seekToPrevious()
+            return
+        }
+        seekToPreviousMediaItem()
+    }
+
     override fun addMediaItem(index: Int, mediaItem: MediaItem) {
         if (!sequentialTimelineEnabled) {
             super.addMediaItem(index, mediaItem)

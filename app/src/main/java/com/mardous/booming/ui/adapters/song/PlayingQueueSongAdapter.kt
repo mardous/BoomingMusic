@@ -27,7 +27,6 @@ import com.h6ah4i.android.widget.advrecyclerview.draggable.DraggableItemState
 import com.h6ah4i.android.widget.advrecyclerview.draggable.DraggableItemViewHolder
 import com.h6ah4i.android.widget.advrecyclerview.draggable.ItemDraggableRange
 import com.mardous.booming.R
-import com.mardous.booming.data.model.Queue
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.resources.hitTest
 import com.mardous.booming.extensions.showToast
@@ -65,9 +64,9 @@ class PlayingQueueSongAdapter(
         }
     }
 
-    fun setQueue(queue: Queue) {
-        this.current = queue.position
-        this.dataSet = queue.songs
+    fun setPlayingQueue(playlist: List<Song>, position: Int) {
+        this.current = position
+        this.dataSet = playlist
     }
 
     private fun setAlpha(holder: SongAdapter.ViewHolder, alpha: Float) {

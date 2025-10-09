@@ -36,7 +36,6 @@ import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.AbsPlayerFragment
 import com.mardous.booming.ui.screen.player.*
 import com.mardous.booming.util.Preferences
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 
 /**
  * @author Christians M. A. (mardous)
@@ -70,13 +69,12 @@ class PlainPlayerFragment : AbsPlayerFragment(R.layout.fragment_plain_player) {
             WindowInsetsCompat.CONSUMED
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.queueFlow.distinctUntilChangedBy { it.currentSong }
-                .collect { queue ->
-                    _binding?.let { nonNullBinding ->
-                        nonNullBinding.title.text = queue.currentSong.title
-                        nonNullBinding.text.text = getSongArtist(queue.currentSong)
-                    }
+            playerViewModel.currentSongFlow.collect { currentSong ->
+                _binding?.let { nonNullBinding ->
+                    nonNullBinding.title.text = currentSong.title
+                    nonNullBinding.text.text = getSongArtist(currentSong)
                 }
+            }
         }
     }
 

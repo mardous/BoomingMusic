@@ -3,21 +3,26 @@ package com.mardous.booming.playback
 import android.content.Context
 import android.util.Log
 import androidx.core.content.edit
+import androidx.core.os.bundleOf
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.exoplayer.source.ShuffleOrder
 import androidx.media3.session.MediaSession
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.QueueDao
 import com.mardous.booming.data.local.room.QueueEntity
+import com.mardous.booming.playback.ImprovedShuffleOrder.SerializedOrder
 import kotlinx.coroutines.*
+import kotlinx.serialization.SerializationException
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import kotlin.concurrent.atomics.AtomicReference
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
 
-typealias RestorationListener = (MediaSession.MediaItemsWithStartPosition) -> Unit
+typealias RestorationListener = (MediaSession.MediaItemsWithStartPosition, ShuffleOrder?) -> Unit
 
 @UnstableApi
 @OptIn(ExperimentalAtomicApi::class)
@@ -86,9 +91,7 @@ class PersistentStorage(
      * - Applies repeat/shuffle modes and playback position.
      * - Notifies all waiting listeners once complete.
      */
-    fun restoreState(
-        callback: (MediaSession.MediaItemsWithStartPosition) -> Unit
-    ) = coroutineScope.launch(Dispatchers.IO) {
+    fun restoreState(callback: RestorationListener) = coroutineScope.launch(Dispatchers.IO) {
         try {
             // Ensure player is empty before restoring
             val emptyTimeline = withContext(Dispatchers.Main) { player.currentTimeline.isEmpty }
@@ -96,10 +99,18 @@ class PersistentStorage(
             // Only one restoration allowed
             val movedToRestoringState = state.compareAndSet(RestorationState.Awaiting, RestorationState.Restoring)
             if (movedToRestoringState && emptyTimeline) {
+                var startPosition = preferences.getInt(LAST_INDEX, C.INDEX_UNSET)
+                val startPositionMs = preferences.getLong(POSITION_IN_TRACK, C.TIME_UNSET)
+
                 // Load saved queue from database
                 val savedMediaItems = queueDao.savedItems().map {
                     MediaItem.Builder()
                         .setMediaId(it.id)
+                        .setMediaMetadata(
+                            MediaMetadata.Builder()
+                                .setExtras(bundleOf("original_index" to it.order))
+                                .build()
+                        )
                         .build()
                 }
 
@@ -111,12 +122,11 @@ class PersistentStorage(
 
                 // Build session state object
                 val items = if (restoredMediaItems.isNotEmpty()) {
-                    var startPosition = preferences.getInt(LAST_INDEX, C.INDEX_UNSET)
-                    val startPositionMs = preferences.getLong(POSITION_IN_TRACK, C.TIME_UNSET)
-
                     // Validate index if playlist changed
                     if (restoredMediaItems.size != savedMediaItems.size) {
-                        val savedLastMediaItem = savedMediaItems.getOrNull(startPosition)
+                        val savedLastMediaItem = savedMediaItems.firstOrNull {
+                            it.mediaMetadata.extras?.getInt("original_index", -1) == startPosition
+                        }
                         if (savedLastMediaItem == null) {
                             startPosition = 0
                         } else {
@@ -146,17 +156,54 @@ class PersistentStorage(
                     )
                 }
 
+                val repeatMode = preferences.getInt(REPEAT_MODE, Player.REPEAT_MODE_OFF)
+                val shuffleModeEnabled = preferences.getBoolean(SHUFFLE_MODE, false)
+
+                // Load serialized shuffle order
+                val serializedOrder = preferences.getString(SHUFFLE_ORDER, null)?.let {
+                    try {
+                        SerializedOrder.serializedFromJson(it)
+                    } catch (e: SerializationException) {
+                        Log.e(TAG, "Couldn't deserialize saved shuffle order: $it", e)
+                        null
+                    }
+                }
+
+                val shuffleOrder = if (shuffleModeEnabled) {
+                    if (serializedOrder != null) {
+                        val data = serializedOrder.data
+                        if (data == null || items.mediaItems.size != data.size) {
+                            Log.e(TAG, "Previous shuffle order is no longer valid")
+                            preferences.edit(commit = true) { putString(SHUFFLE_ORDER, null) }
+                            null
+                        } else {
+                            serializedOrder.toShuffleOrder(
+                                firstIndex = items.startIndex,
+                                length = items.mediaItems.size
+                            )
+                        }
+                    } else {
+                        ShuffleOrder.UnshuffledShuffleOrder(items.mediaItems.size)
+                    }
+                } else {
+                    if (serializedOrder != null) {
+                        Log.e(TAG, "Found orphan shuffle order")
+                        preferences.edit(commit = true) { putString(SHUFFLE_ORDER, null) }
+                    }
+                    null
+                }
+
                 withContext(Dispatchers.Main) {
                     // Apply repeat/shuffle modes on main thread
-                    player.repeatMode = preferences.getInt(REPEAT_MODE, Player.REPEAT_MODE_OFF)
-                    player.shuffleModeEnabled = preferences.getBoolean(SHUFFLE_MODE, false)
+                    player.repeatMode = repeatMode
+                    player.shuffleModeEnabled = shuffleModeEnabled && shuffleOrder != null
 
                     synchronized(lock) {
                         if (!mediaItemsListeners.contains(callback)) {
-                            callback(items)
+                            callback(items, shuffleOrder)
                         }
 
-                        mediaItemsListeners.forEach { it(items) }
+                        mediaItemsListeners.forEach { it(items, shuffleOrder) }
                         mediaItemsListeners.clear()
 
                         simpleListeners.forEach { it.run() }
@@ -179,12 +226,12 @@ class PersistentStorage(
      * This operation is debounced to avoid writing too frequently.
      */
     fun saveState(savePlaylist: Boolean = false) {
+        // Avoid writing while restoring
+        if (restorationState == RestorationState.Restoring)
+            return
+
         saveJob?.cancel()
         saveJob = coroutineScope.launch {
-            // Avoid writing while restoring
-            if (restorationState == RestorationState.Restoring)
-                return@launch
-
             try {
                 // Small delay to prevent race conditions (e.g. fast track changes)
                 delay(500)
@@ -195,12 +242,17 @@ class PersistentStorage(
                 val position = player.currentMediaItemIndex
                 val positionInTrack = player.currentPosition
                 val mediaItems = player.mediaItems
+                val shuffleOrder = when (val shuffleOrder = player.exoPlayer.shuffleOrder) {
+                    is ImprovedShuffleOrder -> SerializedOrder.serializedFromOrder(shuffleOrder)
+                    else -> null
+                }
 
                 // Write state asynchronously
                 withContext(Dispatchers.IO) {
                     preferences.edit(commit = true) {
                         putInt(REPEAT_MODE, repeatMode)
                         putBoolean(SHUFFLE_MODE, shuffleModeEnabled)
+                        putString(SHUFFLE_ORDER, shuffleOrder?.toString())
                         putInt(LAST_INDEX, position)
                         putLong(POSITION_IN_TRACK, positionInTrack)
                     }

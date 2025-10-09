@@ -9,6 +9,7 @@ import androidx.media3.common.MediaMetadata
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.session.MediaSession
+import com.mardous.booming.data.model.QueueItem
 import com.mardous.booming.data.model.Song
 
 @OptIn(UnstableApi::class)
@@ -21,17 +22,24 @@ internal fun MediaSession.isRemoteController(controller: MediaSession.Controller
 val Player.mediaItems: List<MediaItem>
     get() = (0 until mediaItemCount).map { getMediaItemAt(it) }
 
-val Player.actualMediaItems: List<MediaItem>
-    get() {
-        val shuffleMode = shuffleModeEnabled
-        val items = mutableListOf<MediaItem>()
-        var index = currentTimeline.getFirstWindowIndex(shuffleMode)
-        while (index != C.INDEX_UNSET) {
-            items.add(getMediaItemAt(index))
-            index = currentTimeline.getNextWindowIndex(index, Player.REPEAT_MODE_OFF, shuffleMode)
-        }
-        return items
+fun Player.getQueueItems(shuffleMode: Boolean = this.shuffleModeEnabled): List<QueueItem> {
+    val timeline = currentTimeline
+    if (timeline.isEmpty) return emptyList()
+
+    val result = mutableListOf<QueueItem>()
+    var index = timeline.getFirstWindowIndex(shuffleMode)
+    while (index != C.INDEX_UNSET) {
+        result.add(
+            QueueItem(
+                mediaItem = getMediaItemAt(index),
+                indexInTimeline = index
+            )
+        )
+        index = timeline.getNextWindowIndex(index, Player.REPEAT_MODE_OFF, shuffleMode)
     }
+
+    return result
+}
 
 fun List<Song>.toMediaItems() = map { it.toMediaItem() }
 

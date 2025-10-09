@@ -54,7 +54,6 @@ import com.mardous.booming.ui.screen.player.cover.page.ImageFragment.ColorReceiv
 import com.mardous.booming.util.LEFT_RIGHT_SWIPING
 import com.mardous.booming.util.LYRICS_ON_COVER
 import com.mardous.booming.util.Preferences
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewPager.OnPageChangeListener,
@@ -150,13 +149,13 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
     private fun setupEventObserver() {
         viewPager.addOnPageChangeListener(this)
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.queueFlow.distinctUntilChangedBy { it.songs }.collect { queue ->
+            playerViewModel.queueFlow.collect { queue ->
                 _binding?.viewPager?.let { pager ->
-                    pager.adapter = AlbumCoverPagerAdapter(parentFragmentManager, queue.songs)
+                    pager.adapter = AlbumCoverPagerAdapter(parentFragmentManager, queue)
                     pager.doOnPreDraw {
                         val itemCount = pager.adapter?.count ?: 0
                         val lastIndex = (itemCount - 1).coerceAtLeast(0)
-                        val target = queue.position.coerceIn(0, lastIndex)
+                        val target = playerViewModel.position.current.coerceIn(0, lastIndex)
                         if (itemCount > 0) {
                             if (pager.currentItem != target) {
                                 pager.setCurrentItem(target, false)
@@ -168,10 +167,10 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.queueFlow.distinctUntilChangedBy { it.position }.collect { queue ->
+            playerViewModel.positionFlow.collect { position ->
                 _binding?.viewPager?.let { pager ->
-                    if (pager.currentItem != queue.position) {
-                        pager.setCurrentItem(queue.position, true)
+                    if (pager.currentItem != position.current) {
+                        pager.setCurrentItem(position.current, true)
                     }
                 }
             }
@@ -202,7 +201,7 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
     override fun onPageSelected(position: Int) {
         currentPosition = position
         requestColor(position)
-        if (position != playerViewModel.queue.position) {
+        if (position != playerViewModel.position.current) {
             playerViewModel.playSongAt(position)
         }
     }
@@ -287,7 +286,7 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
     }
 
     private fun requestColor(position: Int) {
-        if (playerViewModel.queue.isNotEmpty) {
+        if (playerViewModel.queue.isNotEmpty()) {
             (viewPager.adapter as? AlbumCoverPagerAdapter)
                 ?.receiveColor(colorReceiver, position)
         }

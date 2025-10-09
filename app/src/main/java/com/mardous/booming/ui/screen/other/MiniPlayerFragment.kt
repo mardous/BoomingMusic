@@ -45,7 +45,6 @@ import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.math.abs
@@ -75,14 +74,13 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMiniPlayerBinding.bind(view)
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.queueFlow.distinctUntilChangedBy { it.currentSong }
-                .collect { queue ->
-                    disposable = binding.image.songImage(queue.currentSong)
-                    binding.songTitle.isSelected = true
-                    binding.songTitle.text = queue.currentSong.title
-                    binding.songArtist.isSelected = true
-                    binding.songArtist.text = queue.currentSong.displayArtistName()
-                }
+            playerViewModel.currentSongFlow.collect { currentSong ->
+                disposable = binding.image.songImage(currentSong)
+                binding.songTitle.isSelected = true
+                binding.songTitle.text = currentSong.title
+                binding.songArtist.isSelected = true
+                binding.songArtist.text = currentSong.displayArtistName()
+            }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             combine(

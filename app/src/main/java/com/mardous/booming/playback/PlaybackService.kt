@@ -29,6 +29,7 @@ import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
 import com.google.common.collect.ImmutableList
 import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
+import com.google.common.util.concurrent.SettableFuture
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoilBitmapLoader
 import com.mardous.booming.core.appwidgets.AppWidgetBig
@@ -56,13 +57,10 @@ import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.util.*
 import com.mardous.booming.util.Preferences.requireString
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.guava.future
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import kotlin.random.Random
 
@@ -244,9 +242,12 @@ class PlaybackService :
         mediaStoreObserver.init(this)
 
         persistentStorage = PersistentStorage(this, serviceScope, player)
-        persistentStorage.restoreState {
-            player.setMediaItems(it.mediaItems, it.startIndex, it.startPositionMs)
+        persistentStorage.restoreState { items, shuffleOrder ->
+            player.setMediaItems(items.mediaItems, items.startIndex, items.startPositionMs)
             player.prepare()
+            if (player.shuffleModeEnabled && shuffleOrder != null) {
+                player.exoPlayer.shuffleOrder = shuffleOrder
+            }
             if (!player.currentTimeline.isEmpty) {
                 pendingStartCommands.forEach { command -> processCommand(command) }
                 pendingStartCommands.clear()
@@ -453,6 +454,13 @@ class PlaybackService :
                     SessionCommand(Playback.EVENT_PLAYBACK_STARTED, Bundle.EMPTY),
                     Bundle.EMPTY
                 )
+                if (player.shuffleModeEnabled) {
+                    player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
+                        firstIndex = startIndex,
+                        length = mediaItems.size,
+                        randomSeed = Random.nextLong()
+                    )
+                }
             }
         }, ContextCompat.getMainExecutor(this))
         return future
@@ -572,18 +580,21 @@ class PlaybackService :
         mediaSession: MediaSession,
         controller: MediaSession.ControllerInfo
     ): ListenableFuture<MediaItemsWithStartPosition> {
-        return if (persistentStorage.restorationState.isRestored) {
-            Futures.immediateFailedFuture(IllegalStateException("No MediaItems saved"))
+        if (persistentStorage.restorationState.isRestored) {
+            return Futures.immediateFailedFuture(IllegalStateException("No MediaItems saved"))
         } else {
-            CallbackToFutureAdapter.getFuture { completer ->
-                persistentStorage.waitForMediaItems { items ->
-                    if (items.mediaItems.isNotEmpty()) {
-                        completer.set(items)
-                    } else {
-                        completer.setException(IllegalStateException("No MediaItems saved"))
+            val settableFuture = SettableFuture.create<MediaItemsWithStartPosition>()
+            persistentStorage.waitForMediaItems { items, shuffleOrder ->
+                if (items.mediaItems.isNotEmpty()) {
+                    if (player.shuffleModeEnabled && shuffleOrder != null) {
+                        player.exoPlayer.shuffleOrder = shuffleOrder
                     }
+                    settableFuture.set(items)
+                } else {
+                    settableFuture.setException(IllegalStateException("No MediaItems saved"))
                 }
             }
+            return settableFuture
         }
     }
 
@@ -633,15 +644,19 @@ class PlaybackService :
     }
 
     override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {
-        if (shuffleModeEnabled) {
-            if (willSetUnshuffledOrder) {
-                willSetUnshuffledOrder = false
-            } else {
-                player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
-                    player.currentMediaItemIndex,
-                    player.mediaItemCount,
-                    Random.nextLong()
-                )
+        if (persistentStorage.restorationState.isRestored) {
+            // Assign a new ShuffleOrder only if the state is
+            // fully restored to avoid inconsistencies.
+            if (shuffleModeEnabled) {
+                if (willSetUnshuffledOrder) {
+                    willSetUnshuffledOrder = false
+                } else {
+                    player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
+                        player.currentMediaItemIndex,
+                        player.mediaItemCount,
+                        Random.nextLong()
+                    )
+                }
             }
         }
         refreshMediaButtonCustomLayout()

@@ -78,7 +78,6 @@ import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.CoverPagerFragment
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
 import com.mardous.booming.util.Preferences
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.math.abs
@@ -114,10 +113,9 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
                 }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.queueFlow.distinctUntilChangedBy { it.currentSong }
-                .collect {
-                    updateIsFavorite(withAnim = false)
-                }
+            playerViewModel.currentSongFlow.collect {
+                updateIsFavorite(withAnim = false)
+            }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.colorSchemeFlow.collect { scheme ->
