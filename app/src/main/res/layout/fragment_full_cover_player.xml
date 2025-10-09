@@ -28,6 +28,15 @@
         android:background="@drawable/shadow_up_gradient"
         tools:backgroundTint="?colorPrimary"/>
 
+    <View
+        android:id="@+id/top_mask"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/shadow_down_gradient"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <LinearLayout
         android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
@@ -48,7 +57,6 @@
                 android:layout_marginStart="8dp"
                 android:contentDescription="@string/close_action"
                 app:icon="@drawable/ic_keyboard_arrow_down_24dp"
-                app:iconTint="@android:color/white"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
@@ -70,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:textAppearance="?textAppearanceBody2"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/colorOnSurfaceVariant"
                 android:text="@string/next_song_label"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintTop_toTopOf="parent"
@@ -85,7 +93,7 @@
                 android:singleLine="true"
                 android:ellipsize="end"
                 android:textAppearance="?textAppearanceBody1"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/colorOnSurface"
                 android:textStyle="bold"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintTop_toBottomOf="@+id/next_song_label"
