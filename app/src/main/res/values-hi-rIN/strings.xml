@@ -236,6 +236,7 @@
     <string name="sort_order_duration">अवधि</string>
     <string name="sort_order_date_added">जोड़ने की तिथि</string>
     <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">गानों की संख्या</string>
     <string name="sort_order_number_of_albums">एल्बम की संख्या</string>
     <string name="sort_order_last_played_date">अंतिम खेलने की तारीख</string>
@@ -702,6 +703,8 @@
     <string name="delete_downloaded_lyrics_summary">केवल बूमिंग म्यूजिक द्वारा डाउनलोड किए गए गीत। यह ID3v2 टैग या LRC फ़ाइलों में एम्बेडेड गीतों को प्रभावित नहीं करता है।</string>
     <string name="lyrics_cleared">गीत की पंक्तियाँ साफ हैं।</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">कचरे में भेजें</string>
     <string name="trash_music_summary">हटाए गए फ़ाइलों को कचरे में भेजें।</string>
     <string name="recursive_folder_actions_title">सबफ़ोल्डर्स पर असर डालने वाली क्रियाएं</string>

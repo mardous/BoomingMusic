@@ -236,6 +236,7 @@
     <string name="sort_order_duration">Duration</string>
     <string name="sort_order_date_added">Date added</string>
     <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">Number of songs</string>
     <string name="sort_order_number_of_albums">Number of albums</string>
     <string name="sort_order_last_played_date">Last played date</string>
@@ -704,6 +705,8 @@
     <string name="delete_downloaded_lyrics_summary">Only lyrics downloaded by Booming Music. Does not affect lyrics embedded in ID3v2 tags or LRC files.</string>
     <string name="lyrics_cleared">Lyrics cleared.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">Send to trash</string>
     <string name="trash_music_summary">Send deleted files to trash.</string>
     <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
@@ -819,17 +822,17 @@
     <string name="last_update_search_x">Last check: %s</string>
     <string name="checking_please_wait">Checking, please wait…</string>
     <string name="could_not_check_for_updates">Could not check for updates.</string>
-    <string name="the_app_is_up_to_date">The app is up-to-date</string>
+    <string name="the_app_is_up_to_date">La app está actualizada</string>
     <string name="update_available_title">Update available</string>
     <string name="more_info_action">More info.</string>
     <string name="download_action">Download</string>
     <string name="downloading_update">Downloading Booming Music update.</string>
     <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
-        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
+    <string name="uncaught_error_message">Parece que algo fue mal y la app colapsó.
+Sería de ayuda si pudieras mandarnos el informe del error a nuestro grupo de Telegram o por email.</string>
     <string name="uncaught_error_report">Error report</string>
     <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
-    <string name="uncaught_error_restart_app">Restart app</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_restart_app">Reiniciar la app</string>
+    <string name="uncaught_error_github">Abrir error en GitHub</string>
     <string name="uncaught_error_send">Send report</string>
 </resources>

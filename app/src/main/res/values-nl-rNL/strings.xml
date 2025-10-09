@@ -236,6 +236,7 @@
     <string name="sort_order_duration">Duur</string>
     <string name="sort_order_date_added">Datum toegevoegd</string>
     <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">Nummers aantal</string>
     <string name="sort_order_number_of_albums">Aantal albums</string>
     <string name="sort_order_last_played_date">Laatst afgespeelde datum</string>
@@ -704,6 +705,8 @@
     <string name="delete_downloaded_lyrics_summary">Alleen songteksten gedownload door Booming Music. Heeft geen invloed op songteksten die zijn ingebed in ID3v2 tags of LRC bestanden.</string>
     <string name="lyrics_cleared">Songteksten gewist.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">Naar prullenbak verzenden</string>
     <string name="trash_music_summary">Verzend verwijderde bestanden naar de prullenbak.</string>
     <string name="recursive_folder_actions_title">Acties die submappen beïnvloeden</string>

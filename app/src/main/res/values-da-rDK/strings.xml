@@ -236,6 +236,7 @@
     <string name="sort_order_duration">Varighed</string>
     <string name="sort_order_date_added">Dato tilføjet</string>
     <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">Antal sange</string>
     <string name="sort_order_number_of_albums">Antal albummer</string>
     <string name="sort_order_last_played_date">Senest afspillet dato</string>
@@ -704,6 +705,8 @@
     <string name="delete_downloaded_lyrics_summary">Kun sangtekster hentet af Booming Music. Påvirker ikke sangtekster indlejret i ID3v2 tags eller LRC filer.</string>
     <string name="lyrics_cleared">Sangtekster ryddet.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">Send til papirkurven</string>
     <string name="trash_music_summary">Send slettede filer til papirkurven.</string>
     <string name="recursive_folder_actions_title">Actions affecting subfolders</string>

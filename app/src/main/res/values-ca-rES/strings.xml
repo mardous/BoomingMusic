@@ -236,6 +236,7 @@
     <string name="sort_order_duration">Durada</string>
     <string name="sort_order_date_added">Data d\'addició</string>
     <string name="sort_order_date_modified">Data de modificació</string>
+    <string name="sort_order_file_name">Nom del fitxer</string>
     <string name="sort_order_number_of_songs">Nombre de cançons</string>
     <string name="sort_order_number_of_albums">Nombre d\'àlbums</string>
     <string name="sort_order_last_played_date">Data de la darrera reproducció</string>
@@ -704,6 +705,8 @@
     <string name="delete_downloaded_lyrics_summary">Només lletres descarregades per Booming Music. No afecta les lletres incorporades en etiquetes ID3v2 o fitxers LRC.</string>
     <string name="lyrics_cleared">Lletres esborrades.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignora articles en ordenar</string>
+    <string name="ignore_articles_when_sorting_summary">Salta els articles («the», «a», «an») en ordenar ítems.</string>
     <string name="trash_music_title">Mou a la paperera</string>
     <string name="trash_music_summary">Mou fitxers esborrats a la paperera.</string>
     <string name="recursive_folder_actions_title">Accions que afecten subcarpetes</string>

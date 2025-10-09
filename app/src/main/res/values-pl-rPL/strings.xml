@@ -14,7 +14,7 @@
     <string name="action_cancel">Anuluj</string>
     <string name="action_cycle_repeat">Tryb powtarzania</string>
     <string name="action_toggle_shuffle">Przełącz tryb losowy</string>
-    <string name="reset_action">Domyślne</string>
+    <string name="reset_action">Przywróć domyślne</string>
     <string name="action_more">Więcej</string>
     <string name="import_action">Importuj</string>
     <string name="create_action">Utwórz</string>
@@ -57,7 +57,7 @@
     <string name="action_scan_directory">Skanuj katalog</string>
     <string name="no_device_playlists">Nie znaleziono list odtwarzania</string>
     <string name="select_songs_title">Wybierz utwory</string>
-    <string name="playlist_x_is_empty">Lista odtwarzania %s jest pusta.</string>
+    <string name="playlist_x_is_empty">Playlista %s jest pusta.</string>
     <string name="playlist_name_cannot_be_empty">Nazwa playlisty nie może być pusta</string>
     <string name="imported_playlist_x">Zaimportowano playlistę \"%1$s\".</string>
     <string name="could_not_import_the_playlist_x">Nie udało się zaimportować playlisty \"%s\"</string>
@@ -73,7 +73,7 @@
     <string name="action_export_playlist">Eksportuj do pliku</string>
     <string name="action_clear_history">Wyczyść historię</string>
     <string name="history_cleared">Historia wyczyszczona</string>
-    <string name="create_a_playlist">Zostanie utworzona pusta playlista. Możesz dodać utwory później.</string>
+    <string name="create_a_playlist">Zostanie utworzona pusta playlista. Możesz do niej dodać utwory później.</string>
     <string name="create_a_playlist_with_one_song">Zostanie utworzona playlista i zostanie do niej dodany jeden utwór.</string>
     <string name="create_a_playlist_with_x_songs">Playlista zostanie utworzona, a utwory %d zostaną dodane automatycznie.</string>
     <string name="playlist_name_empty">Nazwa playlisty</string>
@@ -91,20 +91,20 @@
     <string name="could_not_create_playlist">Nie można utworzyć listy odtwarzania.</string>
     <string name="inserted_one_song_into_playlist_x">Dodano jeden utwór do listy odtwarzania %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Dodano %1$d utwory do listy odtwarzania %2$s.</string>
-    <string name="playlist_exists">Lista odtwarzania %s już istnieje.</string>
+    <string name="playlist_exists">Playlista o nazwie %s już istnieje.</string>
     <string name="playlist_created">Utworzono playlistę %s.</string>
     <string name="remove_song_from_playlist_title">Usuń utwór z listy odtwarzania</string>
     <string name="remove_songs_from_playlist_title">Usuń utwory z listy odtwarzania</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Czy na pewno chcesz usunąć <b>%1$s</b> z playlisty?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Usunąć <b>%1$d</b> utwory z playlisty?]]></string>
-    <string name="playlist_empty_text">Pusta lista odtwarzania</string>
+    <string name="playlist_empty_text">Pusta playlista</string>
     <string name="action_tag_editor">Edytor tagów</string>
     <string name="saving_changes">Zapisywanie zmian</string>
     <string name="changes_saved_successfully">Zmiany zostały pomyślnie zapisane.</string>
     <string name="could_not_save_some_changes">Nie można zapisać pewnych zmian.</string>
     <string name="web_search">Szukaj w Internecie</string>
-    <string name="where_do_you_want_to_search">Gdzie chcesz wyszukać?</string>
-    <string name="configure_action">Konfiguruj</string>
+    <string name="where_do_you_want_to_search">Gdzie wyszukać?</string>
+    <string name="configure_action">Zarządzaj</string>
     <string name="blacklist_directory">Katalog czarnej listy</string>
     <string name="add_directory">Dodaj katalog</string>
     <string name="remove_from_blacklist">Czy chcesz usunąć ten katalog z czarnej listy?</string>
@@ -154,7 +154,7 @@
     <string name="now_playing">Teraz odtwarzane</string>
     <string name="playing_queue_label">Kolejka odtwarzania</string>
     <string name="list_start">Początek listy.</string>
-    <string name="list_end">Koniec kolejki.</string>
+    <string name="list_end">To już koniec kolejki</string>
     <string name="empty_play_queue">Pusta kolejka odtwarzania.</string>
     <string name="save_queue">Zapisz kolejkę</string>
     <string name="clear_queue">Wyczyść kolejkę</string>
@@ -219,7 +219,7 @@
     <string name="horizontal_albums">Poziomy widok albumów</string>
     <string name="ignore_singles">Ignoruj single</string>
     <string name="compact_song_view">Kompaktowy widok utworów</string>
-    <string name="show_total_duration">Pokaż całkowity czas trwania</string>
+    <string name="show_total_duration">Pokaż czas trwania</string>
     <string name="action_view_type">Typ widoku</string>
     <string name="view_type_normal">Normalny</string>
     <string name="view_type_card">Karta</string>
@@ -236,6 +236,7 @@
     <string name="sort_order_duration">Czas trwania</string>
     <string name="sort_order_date_added">Data dodania</string>
     <string name="sort_order_date_modified">Data modyfikacji</string>
+    <string name="sort_order_file_name">Nazwa pliku</string>
     <string name="sort_order_number_of_songs">Liczba utworów</string>
     <string name="sort_order_number_of_albums">Liczba albumów</string>
     <string name="sort_order_last_played_date">Data ostatniego odtwarzania</string>
@@ -269,12 +270,12 @@
     <string name="scrobbles_label">Zakrzywianie</string>
     <string name="save_cover">Zapisz okładkę albumu</string>
     <string name="saving_cover_please_wait">Zapisywanie okładki, czekaj…</string>
-    <string name="save_artwork_error">Nie udało się zapisać okładki w pamięci lokalnej</string>
+    <string name="save_artwork_error">Podczas zapisywania okładki albumu wystąpił błąd</string>
     <string name="save_artwork_success">Zapisano okładkę albumu</string>
-    <string name="save_artwork_view_action">Widok</string>
-    <string name="save_artwork_copyright_info_title">Powiadomienie o prawach autorskich</string>
-    <string name="save_artwork_copyright_info_message">Niektóre okładki (lub wszystkie) mogą być chronione prawem autorskim. Nie możesz używać takich obrazów do celów handlowych lub reklamowych.
-        \n\nTylko Ty ponosisz całkowitą odpowiedzialność za korzystanie z zapisanych okładek albumu.</string>
+    <string name="save_artwork_view_action">Wyświetl</string>
+    <string name="save_artwork_copyright_info_title">Prawa autorskie</string>
+    <string name="save_artwork_copyright_info_message">Okładki albumów mogą być chronione prawem autorskim. Nie używaj ich w celach komercyjnych ani reklamowych.
+        \n\nOdpowiedzialność za ich sposób wykorzystania  ponosisz wyłącznie Ty.</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
     <string name="keyboard">Pokaż klawiaturę</string>
@@ -613,25 +614,25 @@
     <string name="lyrics_center_current_line_title">Wyśrodkuj bieżący wers</string>
     <string name="lyrics_center_current_line_summary">Utrzymuj bieżący wers tekstu na środku ekranu zamiast wyrównania do góry.</string>
     <string name="lyrics_custom_font_title">Własna czcionka</string>
-    <string name="lyrics_custom_font_summary">Importuj oraz użyj własnej czcionki dla tekstu.</string>
-    <string name="lyrics_import_custom_font_title">Importuj własną czcionkę</string>
+    <string name="lyrics_custom_font_summary">Importuj i użyj własnej czcionki dla tekstów piosenek.</string>
+    <string name="lyrics_import_custom_font_title">Wybierz własną czcionkę</string>
     <string name="lyrics_syllable_mode_title">Tekst \"Słowo po słowie\"</string>
     <string name="lyrics_syllable_mode_summary">Umożliwia wyświetlanie tekstu piosenki zsynchronizowanego słowo po słowie. Działa tylko wtedy, gdy dostępny jest odpowiedni tekst i zgodny format (np. LRC lub TTML).</string>
-    <string name="lyrics_effects_note">Zaawansowane efekty poprawiające doznania wizualne. Mogą obciążać system i zużywać baterię.</string>
+    <string name="lyrics_effects_note">Zaawansowane efekty poprawiają wrażenia wizualne, ale mogą wymagać więcej zasobów i baterii.</string>
     <string name="lyrics_gradient_background_title">Tło gradientowe</string>
     <string name="lyrics_gradient_background_summary">Wyświetla animowane tło gradientowe z kolorów okładki aktualnie odtwarzanej piosenki. Dostępne tylko w widoku pełnoekranowym.</string>
     <string name="lyrics_blur_effect_title">Efekt rozmycia</string>
     <string name="lyrics_blur_effect_summary">Rozmywa linie tekstu sąsiadujące z aktualnie odtwarzaną.</string>
-    <string name="lyrics_shadow_effect_title">Efekt cienia</string>
+    <string name="lyrics_shadow_effect_title">Cieniowanie tekstu</string>
     <string name="lyrics_shadow_effect_summary">Dodaje cień pod aktualną linią, aby poprawić czytelność.</string>
     <string name="lyrics_progressive_coloring_title">Stopniowe kolorowanie słów</string>
-    <string name="lyrics_progressive_coloring_summary">Animuje aktywne linie stopniowym przejściem kolorów zamiast natychmiastowego podświetlenia.</string>
-    <string name="lyrics_bold_synced_title">Pogrubiona czcionka dla tekstu synchronizowanego</string>
+    <string name="lyrics_progressive_coloring_summary">Animuje aktywne linie stopniową zmianą koloru, zamiast podświetlać całą linię od razu.</string>
+    <string name="lyrics_bold_synced_title">Pogrubiona czcionka dla tekstu zsynchronizowanego</string>
     <string name="lyrics_bold_synced_summary">Wyświetla zsynchronizowany tekst piosenki pogrubioną czcionką.</string>
     <string name="lyrics_bold_unsynced_title">Pogrubiona czcionka dla tekstu</string>
     <string name="lyrics_bold_unsynced_summary">Wyświetla niesynchronizowany tekst piosenki pogrubioną czcionką.</string>
     <string name="lyrics_line_spacing_title">Odstępy</string>
-    <string name="lyrics_line_spacing_summary">Dostosuj odstępy między liniami tekstu piosenki.</string>
+    <string name="lyrics_line_spacing_summary">Dostosuj odstępy między wersami tekstu piosenki.</string>
     <string name="synced_font_size_player_title">Rozmiar czcionki zsynchronizowanych tekstów</string>
     <string name="synced_font_size_player_summary">Dostosuj rozmiar czcionki dla zsynchronizowanych tekstów wyświetlanych nad okładką na ekranie odtwarzacza.</string>
     <string name="unsynced_font_size_player_title">Rozmiar czcionki niezsynchronizowanych tekstów</string>
@@ -671,14 +672,14 @@
     <string name="swipe_controls_title">Sterowanie gestami</string>
     <string name="swipe_controls_summary">Przesuń w lewo po pustym obszarze odtwarzacza, aby przejść do następnego utworu, lub w prawo, aby wrócić do poprzedniego.</string>
     <string name="display_album_name_title">Wyświetl nazwę albumu</string>
-    <string name="display_extra_info_title">Wyświetl dodatkowe informacje</string>
+    <string name="display_extra_info_title">Wyświetlaj dodatkowe informacje</string>
     <string name="display_extra_info_summary">Wyświetl dodatkowe informacje o piosence, takie jak bitrate, format, częstotliwość próbkowania itp.</string>
     <string name="display_next_song_title">Pokazuj następny utwór</string>
     <string name="display_next_song_summary">Wyświetlaj następny utwór w kolejce na dole odtwarzacza.</string>
     <string name="select_extra_info_title">Dodatkowe informacje</string>
     <string name="select_extra_info_summary">Wybierz dodatkowe informacje do wyświetlenia w panelu odtwarzacza.</string>
-    <string name="prefer_remaining_time_title">Preferuj pozostały czas</string>
-    <string name="prefer_remaining_time_summary">Wyświetlaj pozostały czas zamiast czasu trwania utworu.</string>
+    <string name="prefer_remaining_time_title">Pokazuj pozostały czas</string>
+    <string name="prefer_remaining_time_summary">Wyświetlaj pozostały czas zamiast długości utworu.</string>
     <string name="prefer_album_artist_name_title">"Preferuj imię wykonawcy Albumu"</string>
     <string name="prefer_album_artist_name_summary">Pokazuje nazwę wykonawcy albumu zamiast wykonawcy utworu (jeśli dostępne).</string>
     <!-- Playback preferences -->
@@ -686,7 +687,7 @@
     <string name="replaygain_source_mode_title">Tryb źródłowy</string>
     <string name="replaygain_preamp_title">Poziom przedwzmacniacza</string>
     <string name="replaygain_preamp_summary">Ustaw poziom głośności, gdy ReplayGain jest włączony.</string>
-    <string name="queue_next_mode_title">Tryb \"Kolejka dalej\"</string>
+    <string name="queue_next_mode_title">Dodawanie do kolejki</string>
     <string name="search_auto_queue_title">Odtwarzaj wszystkie wyszukane</string>
     <string name="search_auto_queue_summary">Po odtworzeniu utworu z wyszukiwania wszystkie pozostałe wyniki zostaną dodane do kolejki.</string>
     <string name="remember_shuffle_mode_title">Zapamiętaj tryb losowy</string>
@@ -698,32 +699,34 @@
     <string name="rewind_fast_forward_amount_title">Skok w czasie odtwarzania</string>
     <string name="rewind_fast_forward_amount_summary">Czas (w sekundach) przewijania do tyłu lub do przodu przy użyciu interfejsu lub zewnętrznych przycisków.</string>
     <string name="resume_on_connect_title">Wznów po połączeniu</string>
-    <string name="resume_on_connect_summary">Wznawia odtwarzanie, gdy słuchawka jest podłączona.</string>
+    <string name="resume_on_connect_summary">Wznawia odtwarzanie po podłączeniu słuchawek.</string>
     <string name="pause_on_disconnect_title">Wstrzymaj przy rozłączeniu</string>
-    <string name="pause_on_disconnect_summary">Wstrzymuje odtwarzanie, gdy słuchawka jest rozłączona. Zalecane.</string>
+    <string name="pause_on_disconnect_summary">Wstrzymuje odtwarzanie po odłączeniu słuchawek. Zalecane.</string>
     <string name="resume_on_bluetooth_connect_title">Wznów przy połączeniu bluetooth</string>
-    <string name="resume_on_bluetooth_connect_summary">Wznawia odtwarzanie, gdy podłączony jest zestaw słuchawkowy Bluetooth A2DP.</string>
-    <string name="pause_on_bluetooth_disconnect_title">Zatrzymaj przy rozłączeniu bluetooth</string>
-    <string name="pause_on_bluetooth_disconnect_summary">Wstrzymuje odtwarzanie, gdy zestaw słuchawkowy Bluetooth A2DP jest rozłączony. Zalecane.</string>
+    <string name="resume_on_bluetooth_connect_summary">Wznawia odtwarzanie po podłączeniu słuchawek Bluetooth (A2DP).</string>
+    <string name="pause_on_bluetooth_disconnect_title">Wstrzymaj po rozłączeniu bluetooth</string>
+    <string name="pause_on_bluetooth_disconnect_summary">Wstrzymuje odtwarzanie po rozłączeniu słuchawek Bluetooth (A2DP). Zalecane.</string>
     <string name="ignore_audio_focus_title">Ignoruj ostrość dźwięku</string>
     <string name="ignore_audio_focus_summary">Zawsze odtwarzaj dźwięk w tle niezależnie od tego, co jest odtwarzane.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Automatyczne pobieranie metadanych</string>
+    <string name="auto_download_metadata_title">Pobieranie metadanych</string>
     <string name="ignore_media_store_album_covers_title">Nie używaj okładek z magazynu multimediów</string>
     <string name="ignore_media_store_album_covers_summary">Może zwiększyć jakość obrazów kosztem zużycia pamięci.</string>
     <string name="use_folder_album_cover_title">Używaj obrazów z folderu</string>
     <string name="use_folder_album_cover_summary">Jeśli utwór nie posiada okładki albumu, aplikacja poszuka jej w folderze. Może to wydłużyć wczytywanie.</string>
-    <string name="online_artist_images_title">Pobierz obrazy artysty</string>
+    <string name="online_artist_images_title">Pobieraj obrazy artysty</string>
     <string name="online_artist_images_summary">Zależy od ustawień pobierania metadanych.</string>
     <string name="preferred_artist_image_size_title">Preferowany rozmiar obrazu wykonawcy</string>
     <string name="delete_downloaded_lyrics_title">Usuń wszystkie pobrane teksty</string>
     <string name="delete_downloaded_lyrics_summary">Tylko pobrane przez aplikację. Nie dotyczy tych z tagów ID3v2 ani plików LRC.</string>
     <string name="lyrics_cleared">Tekst został wyczyszczony.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignoruj rodzajniki podczas sortowania</string>
+    <string name="ignore_articles_when_sorting_summary">Pomija rodzajniki (\"the\", \"a\", \"an\") podczas sortowania elementów.</string>
     <string name="trash_music_title">Przenieś do kosza</string>
     <string name="trash_music_summary">Przenoś usunięte pliki do kosza.</string>
-    <string name="recursive_folder_actions_title">Akcja obejmie również subfoldery</string>
-    <string name="recursive_folder_actions_summary">Skonfiguruj jakie działanie ma być zastosowane dla podfolderów przy wykonywaniu go na folderze.</string>
+    <string name="recursive_folder_actions_title">Uwzględnianie podfolderów</string>
+    <string name="recursive_folder_actions_summary">Wybierz, które akcje powinny obejmować również podfoldery przy wykonywaniu ich na folderze.</string>
     <string name="enable_history_title">Włącz historię</string>
     <string name="enable_history_summary">Aplikacja będzie zapisywać historię odtwarzania. Wyłączenie tej opcji ją wyczyści.</string>
     <string name="history_interval_title">Zakres historii</string>
@@ -741,14 +744,14 @@
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Dodatkowy wiersz tekstu</string>
     <string name="app_language_title">Język aplikacji</string>
-    <string name="backup_data_title">Stwórz kopię zapasową</string>
+    <string name="backup_data_title">Utwórz kopię zapasową</string>
     <string name="backup_app_data_summary">Utwórz plik z niezbędnymi danymi aplikacji i zapisz go w pamięci zewnętrznej.</string>
     <string name="restore_backup_title">Przywróć kopię zapasową</string>
     <string name="restore_backup_summary">Przywróć dane aplikacji (i stan) z wcześniejszej kopii zapasowej.</string>
     <string name="stop_when_closed_from_recents_title">Zatrzymaj po zamknięciu z ostatnich</string>
     <string name="stop_when_closed_from_recents_summary">Zatrzymuje odtwarzanie po zamknięciu aplikacji z listy ostatnich aplikacji.</string>
-    <string name="stop_when_closed_from_recents_note">Uwaga: na niektórych urządzeniach z agresywnym zarządzaniem pamięcią
-        baterią aplikacja może być zawsze zatrzymywana po usunięciu z listy ostatnich, niezależnie od tego ustawienia.</string>
+    <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią
+        lub baterią mogą ignorować to ustawienie i zawsze zatrzymywać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
     <!-- Preference values -->
     <string name="advanced_label">Zaawansowane</string>
     <string name="light_theme_name">Jasny</string>
@@ -781,15 +784,15 @@
     <string name="zoom_out">Oddalanie</string>
     <string name="simple">Prosty</string>
     <string name="stack">Stos</string>
-    <string name="add_after_playing_track">Dodaj po odtwarzaniu utworu</string>
-    <string name="add_tracks_sequentially">Dodaj ścieżki w kolejności</string>
+    <string name="add_after_playing_track">Dodaj po bieżącym utworze</string>
+    <string name="add_tracks_sequentially">Dodawaj utwory jeden po drugim</string>
     <string name="albums_shuffle">Losowe odtwarzanie albumów</string>
     <string name="artists_shuffle">Losowe odtwarzanie wykonawców</string>
     <string name="shuffle_albums_ordered_songs">Losuj albumy, zachowaj kolejność utworów</string>
     <string name="ordered_albums_shuffle_songs">Zachowaj kolejność albumów, losuj utwory</string>
-    <string name="shuffle_artists_ordered_songs">Losuj artystów, zamówione utwory</string>
-    <string name="ordered_artists_shuffle_songs">Zamówieni artyści, losowe utwory</string>
-    <string name="album_or_artist_shuffle_all">Losuj wszystko</string>
+    <string name="shuffle_artists_ordered_songs">Artyści losowo, utwory w kolejności</string>
+    <string name="ordered_artists_shuffle_songs">Artyści w kolejności, utwory losowo</string>
+    <string name="album_or_artist_shuffle_all">Wszystko losowo</string>
     <string name="today">Dzisiaj</string>
     <string name="yesterday">Wczoraj</string>
     <string name="this_week">Ten tydzień</string>
@@ -808,7 +811,7 @@
     <string name="play_on_startup_mode_never">Nigdy przy starcie</string>
     <string name="play_on_startup_mode_minimized">Ze zminimalizowanym odtwarzaczem</string>
     <string name="play_on_startup_mode_expanded">Z rozwiniętym odtwarzaczem</string>
-    <string name="system_default">Domyślny system</string>
+    <string name="system_default">Domyślny systemu</string>
     <string name="label_never">Nigdy</string>
     <string name="label_nothing">Nic nie rób</string>
     <string name="label_none">Brak</string>

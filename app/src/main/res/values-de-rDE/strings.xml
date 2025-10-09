@@ -236,6 +236,7 @@
     <string name="sort_order_duration">Dauer</string>
     <string name="sort_order_date_added">Hinzufügungsdatum</string>
     <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">Titelanzahl</string>
     <string name="sort_order_number_of_albums">Albenanzahl</string>
     <string name="sort_order_last_played_date">Letztes Wiedergabedatum</string>
@@ -704,6 +705,8 @@
     <string name="delete_downloaded_lyrics_summary">Nur Liedtexte, die von Booming Music heruntergeladen wurden. Hat keine Auswirkung auf eingebettete Liedtexte aus ID3v2-Tags oder LRC-Dateien.</string>
     <string name="lyrics_cleared">Liedtext geleert.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">In den Papierkorb verschieben</string>
     <string name="trash_music_summary">Gelöschte Dateien in den Papierkorb verschieben.</string>
     <string name="recursive_folder_actions_title">Aktionen, die Unterordner betreffen</string>
