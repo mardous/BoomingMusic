@@ -131,7 +131,7 @@ class PlayerViewModel(
             _repeatModeFlow.value = mediaController.repeatMode
             _shuffleModeFlow.value = mediaController.shuffleModeEnabled
 
-            if (progress == C.TIME_UNSET || progress == C.TIME_UNSET) {
+            if (progress == C.TIME_UNSET || duration == C.TIME_UNSET) {
                 _progressFlow.value = mediaController.contentPosition
                 _durationFlow.value = mediaController.contentDuration
             }
