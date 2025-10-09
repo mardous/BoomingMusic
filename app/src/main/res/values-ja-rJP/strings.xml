@@ -238,6 +238,7 @@
     <string name="sort_order_duration">期間</string>
     <string name="sort_order_date_added">追加日</string>
     <string name="sort_order_date_modified">更新日時</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">曲数</string>
     <string name="sort_order_number_of_albums">アルバムの数</string>
     <string name="sort_order_last_played_date">最後に再生した日時</string>
@@ -709,6 +710,8 @@
     <string name="delete_downloaded_lyrics_summary">Booming Musicによってダウンロードされた歌詞のみ。ID3v2タグまたはLRCファイルに埋め込まれた歌詞には影響しません。</string>
     <string name="lyrics_cleared">歌詞を消去しました。</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">ゴミ箱に送る</string>
     <string name="trash_music_summary">削除されたファイルをゴミ箱に送信します。</string>
     <string name="recursive_folder_actions_title">サブフォルダに影響を与えるアクション</string>

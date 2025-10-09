@@ -238,6 +238,7 @@
     <string name="sort_order_duration">Kesto</string>
     <string name="sort_order_date_added">Päivämäärä lisätty</string>
     <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">Kappaleiden määrä</string>
     <string name="sort_order_number_of_albums">Albumien määrä</string>
     <string name="sort_order_last_played_date">Viimeksi soitettu päivämäärä</string>
@@ -717,6 +718,8 @@
     <string name="delete_downloaded_lyrics_summary">Vain Booming Musicin lataamat sanoitukset. Ei vaikuta sanoituksiin, jotka on upotettu ID3v2-tageihin tai LRC-tiedostoihin.</string>
     <string name="lyrics_cleared">Sanoitukset tyhjennetty.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">Lähetä roskakoriin</string>
     <string name="trash_music_summary">Lähetä poistetut tiedostot roskakoriin.</string>
     <string name="recursive_folder_actions_title">Actions affecting subfolders</string>

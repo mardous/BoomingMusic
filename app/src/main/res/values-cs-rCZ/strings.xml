@@ -238,6 +238,7 @@
     <string name="sort_order_duration">Doba trvání</string>
     <string name="sort_order_date_added">Datum přidání</string>
     <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">Počet skladeb</string>
     <string name="sort_order_number_of_albums">Počet alb</string>
     <string name="sort_order_last_played_date">Datum posledního hraní</string>
@@ -733,6 +734,8 @@
     <string name="delete_downloaded_lyrics_summary">Pouze texty stažené z Booming Music. Nemá vliv na texty vložené do ID3v2 značek nebo LRC souborů.</string>
     <string name="lyrics_cleared">Texty vymazány.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">Odeslat do koše</string>
     <string name="trash_music_summary">Odeslat smazané soubory do koše.</string>
     <string name="recursive_folder_actions_title">Actions affecting subfolders</string>

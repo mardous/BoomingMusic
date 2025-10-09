@@ -238,6 +238,7 @@
     <string name="sort_order_duration">Süre</string>
     <string name="sort_order_date_added">Eklenme tarihi</string>
     <string name="sort_order_date_modified">Değiştirilme tarihi</string>
+    <string name="sort_order_file_name">Dosya adı</string>
     <string name="sort_order_number_of_songs">Şarkı sayısı</string>
     <string name="sort_order_number_of_albums">Albüm sayısı</string>
     <string name="sort_order_last_played_date">Son çalınma tarihi</string>
@@ -717,6 +718,8 @@
     <string name="delete_downloaded_lyrics_summary">Yalnızca Booming Music tarafından indirilen şarkı sözleri. ID3v2 etiketlerine veya LRC dosyalarına gömülü şarkı sözlerini etkilemez.</string>
     <string name="lyrics_cleared">Şarkı sözleri temizlendi.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Sıralarken makaleleri yoksay</string>
+    <string name="ignore_articles_when_sorting_summary">Öğeleri sıralarken baştaki (\"the\", \"a\", \"an\") gibi belirteçleri atla.</string>
     <string name="trash_music_title">Çöp kutusuna gönder</string>
     <string name="trash_music_summary">Silinen dosyaları çöp kutusuna gönder.</string>
     <string name="recursive_folder_actions_title">Alt klasörleri etkileyen eylemler</string>

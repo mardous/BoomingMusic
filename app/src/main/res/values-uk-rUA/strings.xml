@@ -238,6 +238,7 @@
     <string name="sort_order_duration">Тривалість</string>
     <string name="sort_order_date_added">Дата додавання</string>
     <string name="sort_order_date_modified">Date modified</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">Кількість пісень</string>
     <string name="sort_order_number_of_albums">Кількість альбомів</string>
     <string name="sort_order_last_played_date">Дата останньої гри</string>
@@ -733,6 +734,8 @@
     <string name="delete_downloaded_lyrics_summary">Лише тексти пісень, завантажені Booming Music. Не впливає на тексти, вбудовані в теги ID3v2 або файли LRC.</string>
     <string name="lyrics_cleared">Текст пісні очищено.</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">Надіслати до кошика</string>
     <string name="trash_music_summary">Надсилати видалені файли до кошика.</string>
     <string name="recursive_folder_actions_title">Actions affecting subfolders</string>
