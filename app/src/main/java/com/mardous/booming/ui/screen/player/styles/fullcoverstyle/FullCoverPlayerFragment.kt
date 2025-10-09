@@ -42,6 +42,7 @@ import com.mardous.booming.ui.component.views.getPlaceholderDrawable
 import com.mardous.booming.ui.screen.player.PlayerColorScheme
 import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
 import com.mardous.booming.ui.screen.player.PlayerTintTarget
+import com.mardous.booming.ui.screen.player.iconButtonTintTarget
 import com.mardous.booming.ui.screen.player.tintTarget
 import com.mardous.booming.util.Preferences
 
@@ -116,13 +117,28 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
     }
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
-        val oldMaskColor = binding.mask.backgroundTintList?.defaultColor
-            ?: Color.TRANSPARENT
-        return mutableListOf(
-            binding.mask.tintTarget(oldMaskColor, scheme.surfaceColor)
-        ).also {
-            it.addAll(playerControlsFragment.getTintTargets(scheme))
+        val targets = mutableListOf<PlayerTintTarget>()
+
+        val oldLabelColor = binding.nextSongLabel.currentTextColor
+        targets.add(binding.nextSongLabel.tintTarget(oldLabelColor, scheme.secondaryTextColor))
+
+        val oldTextColor = binding.nextSongText.currentTextColor
+        targets.add(binding.nextSongText.tintTarget(oldTextColor, scheme.primaryTextColor))
+
+        val oldCaretColor = binding.close.iconTint?.defaultColor ?: Color.WHITE
+        targets.add(binding.close.iconButtonTintTarget(oldCaretColor, scheme.primaryTextColor))
+
+        val oldMaskColor = binding.mask.backgroundTintList?.defaultColor ?: Color.TRANSPARENT
+        targets.add(binding.mask.tintTarget(oldMaskColor, scheme.surfaceColor))
+
+        val oldTopMaskColor = binding.topMask.backgroundTintList?.defaultColor ?: Color.TRANSPARENT
+        targets.add(binding.topMask.tintTarget(oldTopMaskColor, scheme.surfaceColor))
+
+        playerControlsFragment.let {
+            targets.addAll(it.getTintTargets(scheme))
         }
+
+        return targets
     }
 
     override fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {

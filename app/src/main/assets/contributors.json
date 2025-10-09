@@ -3,13 +3,19 @@
     "contrib_name": "Dawid",
     "contrib_description": "Designer, Translator & Community Moderator",
     "contrib_url": "https://github.com/hackzy01",
-    "contrib_image": "dawid.png"
+    "contrib_image": "dawid.png",
   },
   {
     "contrib_name": "TheTerminatorOfProgramming",
     "contrib_description": "Contributor & Tester",
     "contrib_url": "https://github.com/TheTerminatorOfProgramming",
     "contrib_image": "ttop.png"
+  },
+  {
+    "contrib_name": "Ray Cadle",
+    "contrib_description": "Contributor",
+    "contrib_url": "https://https://github.com/raycadle",
+    "contrib_image": "ray.png"
   },
   {
     "contrib_name": "Seif Eddine Gadi",
