@@ -70,11 +70,11 @@ class PlayerViewModel(
     val isPlayingFlow = _isPlayingFlow.asStateFlow()
     val isPlaying get() = _isPlayingFlow.value
 
-    private val _progressFlow = MutableStateFlow(0L)
+    private val _progressFlow = MutableStateFlow(C.TIME_UNSET)
     val progressFlow = _progressFlow.asStateFlow()
     val progress get() = progressFlow.value
 
-    private val _durationFlow = MutableStateFlow(0L)
+    private val _durationFlow = MutableStateFlow(C.TIME_UNSET)
     val durationFlow = _durationFlow.asStateFlow()
     val duration get() = durationFlow.value
 
