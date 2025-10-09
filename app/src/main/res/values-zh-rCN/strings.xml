@@ -238,6 +238,7 @@
     <string name="sort_order_duration">时长</string>
     <string name="sort_order_date_added">添加日期</string>
     <string name="sort_order_date_modified">日期已修改</string>
+    <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">歌曲数</string>
     <string name="sort_order_number_of_albums">专辑数</string>
     <string name="sort_order_last_played_date">最后播放日期</string>
@@ -709,6 +710,8 @@
     <string name="delete_downloaded_lyrics_summary">只有由 Booming Music 下载的歌词。不影响嵌入到 ID3v2 标签或 LRC 文件中的歌词。</string>
     <string name="lyrics_cleared">歌词已清除。</string>
     <!-- Library preferences -->
+    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
     <string name="trash_music_title">发送到回收站</string>
     <string name="trash_music_summary">发送已删除的文件到回收站。</string>
     <string name="recursive_folder_actions_title">影响子文件夹的操作</string>
