@@ -91,7 +91,7 @@ class GenresListFragment : AbsRecyclerViewCustomGridSizeFragment<GenreAdapter, G
     override fun getSavedViewType(): GridViewType {
         return GridViewType.entries.firstOrNull {
             it.name == sharedPreferences.getString(VIEW_TYPE, null)
-        } ?: GridViewType.Image
+        } ?: GridViewType.Normal
     }
 
     override fun saveViewType(viewType: GridViewType) {
