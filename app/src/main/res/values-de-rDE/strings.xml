@@ -826,7 +826,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Verwende Material-You-Farbtöne basierend auf der Albumfarbe.</string>
     <!-- Update -->
-    <string name="auto_update_title">Automatisch nach Updates suchen</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">Täglich</string>
     <string name="weekly">Wöchentlich</string>
     <string name="every_fifteen_days">Alle 15 Tage</string>
