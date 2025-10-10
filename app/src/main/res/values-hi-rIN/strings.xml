@@ -824,7 +824,7 @@
     <string name="player_color_mode_material_you_title">मटीरियल यू </string>
     <string name="player_color_mode_material_you_description">एल्बम कलर पर आधारित सामग्री यू टोन का उपयोग करें</string>
     <!-- Update -->
-    <string name="auto_update_title">स्वतः अद्यतन खोज</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">हर दिन</string>
     <string name="weekly">साप्ताहिक</string>
     <string name="every_fifteen_days">हर पंद्रह दिन में</string>
