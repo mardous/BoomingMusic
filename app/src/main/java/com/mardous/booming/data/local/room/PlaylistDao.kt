@@ -19,6 +19,7 @@ package com.mardous.booming.data.local.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PlaylistDao {
@@ -84,9 +85,15 @@ interface PlaylistDao {
     @Query("DELETE FROM SongEntity WHERE id = :songId")
     suspend fun deleteSongFromAllPlaylists(songId: Long)
 
+    @Query("DELETE FROM SongEntity WHERE id IN (:songIds)")
+    suspend fun deleteSongsFromAllPlaylists(songIds: List<Long>)
+
     @RewriteQueriesToDropUnusedColumns
-    @Query("SELECT * FROM SongEntity, (SELECT playlist_id FROM PlaylistEntity WHERE playlist_name = :playlistName LIMIT 1) AS playlist WHERE playlist_creator_id = playlist.playlist_id")
-    fun favoritesSongsLiveData(playlistName: String): LiveData<List<SongEntity>>
+    @Query("""
+    SELECT * FROM SongEntity,
+    (SELECT playlist_id FROM PlaylistEntity WHERE playlist_name = :playlistName LIMIT 1) AS playlist
+    WHERE playlist_creator_id = playlist.playlist_id""")
+    fun favoritesSongsFlow(playlistName: String): Flow<List<SongEntity>>
 
     @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId")
     fun favoritesSongs(playlistId: Long): List<SongEntity>

@@ -23,14 +23,6 @@ import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.local.room.SongEntity
 import com.mardous.booming.data.model.Song
 
-fun List<HistoryEntity>.fromHistoryToSongs(): List<Song> {
-    return map { it.toSong() }
-}
-
-fun List<PlayCountEntity>.fromPlayCountToSongs(): List<Song> {
-    return map { it.toSong() }
-}
-
 fun List<SongEntity>.toSongs(): List<Song> {
     return map { it.toSong() }
 }

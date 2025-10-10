@@ -40,7 +40,6 @@ import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainMode
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
-import com.mardous.booming.data.mapper.fromPlayCountToSongs
 import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
@@ -758,7 +757,7 @@ class PlaybackService :
         val contentType = IntentCompat.getSerializableExtra(intent, EXTRA_CONTENT_TYPE, ContentType::class.java)
         val songs = when (contentType) {
             ContentType.RecentSongs -> repository.recentSongs()
-            ContentType.TopTracks -> repository.playCountSongs().fromPlayCountToSongs()
+            ContentType.TopTracks -> repository.playCountSongs()
             else -> repository.allSongs()
         }
         withContext(Main) {

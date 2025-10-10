@@ -20,19 +20,21 @@ package com.mardous.booming.data.local.repository
 import android.content.Context
 import android.database.Cursor
 import android.provider.MediaStore.Audio.AudioColumns
-import androidx.lifecycle.LiveData
 import com.mardous.booming.data.local.MediaQueryDispatcher
 import com.mardous.booming.data.local.room.HistoryDao
 import com.mardous.booming.data.local.room.HistoryEntity
 import com.mardous.booming.data.local.room.PlayCountDao
 import com.mardous.booming.data.local.room.PlayCountEntity
-import com.mardous.booming.data.mapper.fromPlayCountToSongs
 import com.mardous.booming.data.mapper.toHistoryEntity
+import com.mardous.booming.data.mapper.toSong
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import java.io.File
 
 interface SmartRepository {
     suspend fun topAlbums(): List<Album>
@@ -42,17 +44,20 @@ interface SmartRepository {
     suspend fun recentAlbums(): List<Album>
     suspend fun recentAlbumArtists(): List<Artist>
     suspend fun notRecentlyPlayedSongs(): List<Song>
-    suspend fun playCountSongs(): List<PlayCountEntity>
+    suspend fun playCountSongs(): List<Song>
+    fun playCountSongsFlow(): Flow<List<Song>>
     suspend fun findSongsInPlayCount(songs: List<Song>): List<PlayCountEntity>
     suspend fun findSongInPlayCount(songId: Long): PlayCountEntity?
-    suspend fun deleteSongInPlayCount(playCountEntity: PlayCountEntity)
+    suspend fun deleteSongInPlayCount(songId: Long)
+    suspend fun deleteSongsInPlayCount(songIds: List<Long>)
     suspend fun insetOrIncrementPlayCount(song: Song, timePlayed: Long)
     suspend fun insetOrIncrementSkipCount(song: Song)
     suspend fun clearPlayCount()
-    fun historySongs(): List<HistoryEntity>
-    fun historySongsObservable(): LiveData<List<HistoryEntity>>
+    suspend fun historySongs(): List<Song>
+    fun historySongsFlow(): Flow<List<Song>>
     suspend fun upsertSongInHistory(currentSong: Song)
     suspend fun deleteSongInHistory(songId: Long)
+    suspend fun deleteSongsInHistory(songIds: List<Long>)
     suspend fun clearSongHistory()
 }
 
@@ -66,7 +71,7 @@ class RealSmartRepository(
 ) : SmartRepository {
 
     override suspend fun topAlbums(): List<Album> =
-        albumRepository.splitIntoAlbums(playCountSongs().fromPlayCountToSongs(), sorted = false)
+        albumRepository.splitIntoAlbums(playCountSongs(), sorted = false)
 
     override suspend fun topAlbumArtists(): List<Artist> =
         artistRepository.splitIntoAlbumArtists(topAlbums())
@@ -103,20 +108,35 @@ class RealSmartRepository(
         }
     }
 
+    override suspend fun playCountSongs(): List<Song> = playCountDao.playCountSongs()
+        .fromPlayCountToSongs()
 
-    override suspend fun playCountSongs(): List<PlayCountEntity> =
-        playCountDao.playCountSongs()
+    override fun playCountSongsFlow(): Flow<List<Song>> =
+        playCountDao.playCountSongsFlow().map { playCountEntities ->
+            playCountEntities.fromPlayCountToSongs()
+        }
 
     override suspend fun findSongsInPlayCount(songs: List<Song>): List<PlayCountEntity> {
         if (songs.isEmpty()) return emptyList()
-        return playCountDao.findSongsExistInPlayCount(songs.map { it.id })
+        return buildList {
+            songs.map { it.id }.chunked(MAX_ITEMS_PER_CHUNK).forEach { chunkIds ->
+                addAll(playCountDao.findSongsExistInPlayCount(chunkIds))
+            }
+        }
     }
 
     override suspend fun findSongInPlayCount(songId: Long): PlayCountEntity? =
         playCountDao.findSongExistInPlayCount(songId)
 
-    override suspend fun deleteSongInPlayCount(playCountEntity: PlayCountEntity) =
-        playCountDao.deleteSongInPlayCount(playCountEntity)
+    override suspend fun deleteSongInPlayCount(songId: Long) =
+        playCountDao.deleteSongInPlayCount(songId)
+
+    override suspend fun deleteSongsInPlayCount(songIds: List<Long>) {
+        if (songIds.isEmpty()) return
+        songIds.chunked(MAX_ITEMS_PER_CHUNK).forEach { chunkIds ->
+            playCountDao.deleteSongsInPlayCount(chunkIds)
+        }
+    }
 
     override suspend fun insetOrIncrementPlayCount(song: Song, timePlayed: Long) =
         playCountDao.insertOrIncrementPlayCount(song, timePlayed)
@@ -128,16 +148,26 @@ class RealSmartRepository(
         playCountDao.clearPlayCount()
     }
 
-    override fun historySongs(): List<HistoryEntity> = historyDao.historySongs()
+    override suspend fun historySongs(): List<Song> =
+        historyDao.historySongs(Preferences.getHistoryCutoff(context).interval).
+            fromHistoryToSongs()
 
-    override fun historySongsObservable(): LiveData<List<HistoryEntity>> =
-        historyDao.observableHistorySongs()
+    override fun historySongsFlow(): Flow<List<Song>> =
+        historyDao.historySongsFlow(Preferences.getHistoryCutoff(context).interval)
+            .map { historyEntities -> historyEntities.fromHistoryToSongs() }
 
     override suspend fun upsertSongInHistory(currentSong: Song) =
         historyDao.upsertSongInHistory(currentSong.toHistoryEntity(System.currentTimeMillis()))
 
     override suspend fun deleteSongInHistory(songId: Long) {
         historyDao.deleteSongInHistory(songId)
+    }
+
+    override suspend fun deleteSongsInHistory(songIds: List<Long>) {
+        if (songIds.isEmpty()) return
+        songIds.chunked(MAX_ITEMS_PER_CHUNK).forEach { chunkIds ->
+            historyDao.deleteSongsInHistory(chunkIds)
+        }
     }
 
     override suspend fun clearSongHistory() {
@@ -161,6 +191,24 @@ class RealSmartRepository(
             queryDispatcher.addArguments("%$query%")
         }
         return songRepository.makeSongCursor(queryDispatcher)
+    }
+
+    private suspend fun List<PlayCountEntity>.fromPlayCountToSongs() = mapNotNull {
+        if (!File(it.data).exists() || it.id == -1L) {
+            deleteSongInPlayCount(it.id)
+            null
+        } else {
+            it.toSong()
+        }
+    }
+
+    private suspend fun List<HistoryEntity>.fromHistoryToSongs() = mapNotNull {
+        if (!File(it.data).exists() || it.id == -1L) {
+            deleteSongInHistory(it.id)
+            null
+        } else {
+            it.toSong()
+        }
     }
 
     companion object {

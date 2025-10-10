@@ -14,9 +14,13 @@
  */
 package com.mardous.booming.data.local.room
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Query
+import androidx.room.Transaction
+import androidx.room.Upsert
 import com.mardous.booming.data.mapper.toPlayCount
 import com.mardous.booming.data.model.Song
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PlayCountDao {
@@ -24,8 +28,11 @@ interface PlayCountDao {
     @Upsert
     suspend fun upsertSongInPlayCount(playCountEntity: PlayCountEntity)
 
-    @Delete
-    suspend fun deleteSongInPlayCount(playCountEntity: PlayCountEntity)
+    @Query("DELETE FROM PlayCountEntity WHERE id = :songId")
+    suspend fun deleteSongInPlayCount(songId: Long)
+
+    @Query("DELETE FROM PlayCountEntity WHERE id IN(:songIds)")
+    suspend fun deleteSongsInPlayCount(songIds: List<Long>)
 
     @Query("SELECT * FROM PlayCountEntity WHERE id IN (:songIds)")
     suspend fun findSongsExistInPlayCount(songIds: List<Long>): List<PlayCountEntity>
@@ -56,6 +63,9 @@ interface PlayCountDao {
 
     @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC")
     suspend fun playCountSongs(): List<PlayCountEntity>
+
+    @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC")
+    fun playCountSongsFlow(): Flow<List<PlayCountEntity>>
 
     @Query("SELECT * FROM PlayCountEntity WHERE skip_count > 0 ORDER BY skip_count DESC")
     suspend fun skipCountSongs(): List<PlayCountEntity>
