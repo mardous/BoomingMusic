@@ -49,6 +49,7 @@ class PlaceholderDrawable(
         }
     }
 
+    @Deprecated("This is no longer used")
     override fun getOpacity(): Int = PixelFormat.OPAQUE
 
     companion object {
