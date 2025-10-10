@@ -159,8 +159,14 @@ private fun LyricsLineView(
 ) {
     val localContentColor = LocalContentColor.current
 
+    val animatedAlpha by animateFloatAsState(
+        targetValue = if (selectedLine) 1f else .5f,
+        animationSpec = tween(durationMillis = 400),
+        label = "current-line-alpha-animation"
+    )
+
     val color = if (selectedLine) {
-        localContentColor
+        localContentColor.copy(alpha = animatedAlpha)
     } else {
         localContentColor.copy(alpha = 0.5f)
     }
