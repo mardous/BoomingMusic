@@ -36,13 +36,11 @@ import com.mardous.booming.core.appwidgets.AppWidgetBig
 import com.mardous.booming.core.appwidgets.AppWidgetSimple
 import com.mardous.booming.core.appwidgets.AppWidgetSmall
 import com.mardous.booming.core.audio.SoundSettings
-import com.mardous.booming.core.legacy.HistoryStore
-import com.mardous.booming.core.legacy.SongPlayCountStore
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainMode
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
-import com.mardous.booming.data.mapper.toPlayCount
+import com.mardous.booming.data.mapper.fromPlayCountToSongs
 import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
@@ -670,16 +668,25 @@ class PlaybackService :
 
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         val isPlaying = player.isPlaying
+
         serviceScope.launch(IO) {
-            val song = repository.songByMediaItem(mediaItem)
-            currentSong = song
-            if (song != Song.emptySong && preferences.getBoolean(ENABLE_HISTORY, true)) {
-                HistoryStore.getInstance(this@PlaybackService).addSongId(song.id)
-                repository.upsertSongInHistory(song)
-                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(song.uri)
+            currentSong = repository.songByMediaItem(mediaItem)
+            if (currentSong != Song.emptySong && preferences.getBoolean(ENABLE_HISTORY, true)) {
+                repository.upsertSongInHistory(currentSong)
+                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(currentSong)
             }
-            bumpPlayCount()
-            songPlayCountHelper.notifySongChanged(song, isPlaying)
+            val previousSong = songPlayCountHelper.song
+            if (previousSong != Song.emptySong) {
+                if (songPlayCountHelper.shouldBumpPlayCount()) {
+                    repository.insertOrIncrementPlayCount(
+                        song = previousSong,
+                        timePlayed = System.currentTimeMillis()
+                    )
+                } else if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK) {
+                    repository.insertOrIncrementSkipCount(previousSong)
+                }
+            }
+            songPlayCountHelper.notifySongChanged(currentSong, isPlaying)
         }
 
         if (player.currentMediaItemIndex == stopPosition) {
@@ -751,7 +758,7 @@ class PlaybackService :
         val contentType = IntentCompat.getSerializableExtra(intent, EXTRA_CONTENT_TYPE, ContentType::class.java)
         val songs = when (contentType) {
             ContentType.RecentSongs -> repository.recentSongs()
-            ContentType.TopTracks -> repository.topPlayedSongs()
+            ContentType.TopTracks -> repository.playCountSongs().fromPlayCountToSongs()
             else -> repository.allSongs()
         }
         withContext(Main) {
@@ -770,7 +777,7 @@ class PlaybackService :
         val currentMediaItem = player.currentMediaItem
         if (currentMediaItem == null) return@launch
 
-        val isFavorite = withContext(IO) {
+        withContext(IO) {
             val song = repository.songByMediaItem(currentMediaItem)
             repository.toggleFavorite(song)
         }
@@ -778,7 +785,7 @@ class PlaybackService :
         refreshMediaButtonCustomLayout()
         mediaSession?.broadcastCustomCommand(
             SessionCommand(Playback.EVENT_FAVORITE_CONTENT_CHANGED, Bundle.EMPTY),
-            bundleOf("is_favorite" to isFavorite)
+            Bundle.EMPTY
         )
     }
 
@@ -788,26 +795,6 @@ class PlaybackService :
             appWidgetSimple.notifyChange(this)
             appWidgetSmall.notifyChange(this)
         }
-    }
-
-    private fun bumpPlayCount(): Boolean {
-        if (songPlayCountHelper.shouldBumpPlayCount()) {
-            val lastSong = songPlayCountHelper.song
-            if (lastSong != Song.emptySong) {
-                val currentTime = System.currentTimeMillis()
-                serviceScope.launch(IO) {
-                    val playCountEntity = repository.findSongInPlayCount(lastSong.id)?.apply {
-                        timePlayed = currentTime
-                        playCount += 1
-                    } ?: lastSong.toPlayCount(timePlayed = currentTime, playCount = 1)
-
-                    repository.upsertSongInPlayCount(playCountEntity)
-                }
-                SongPlayCountStore.getInstance(this).bumpPlayCount(lastSong.id)
-            }
-            return true
-        }
-        return false
     }
 
     private fun createSessionActivityIntent(): PendingIntent {

@@ -106,17 +106,17 @@ interface Repository {
     suspend fun recentAlbumsSuggestion(): Suggestion
     suspend fun favoritesSuggestion(): Suggestion
     suspend fun recommendedSongSuggestion(): Suggestion
-    suspend fun topPlayedSongs(): List<Song>
     suspend fun recentSongs(): List<Song>
     suspend fun topArtists(): List<Artist>
     suspend fun recentArtists(): List<Artist>
     suspend fun topAlbums(): List<Album>
     suspend fun recentAlbums(): List<Album>
     suspend fun playCountSongs(): List<PlayCountEntity>
-    suspend fun playCountSongsFrom(songs: List<Song>): List<PlayCountEntity>
+    suspend fun findSongsInPlayCount(songs: List<Song>): List<PlayCountEntity>
     suspend fun findSongInPlayCount(songId: Long): PlayCountEntity?
-    suspend fun upsertSongInPlayCount(playCountEntity: PlayCountEntity)
     suspend fun deleteSongInPlayCount(playCountEntity: PlayCountEntity)
+    suspend fun insertOrIncrementPlayCount(song: Song, timePlayed: Long)
+    suspend fun insertOrIncrementSkipCount(song: Song)
     suspend fun clearPlayCount()
     suspend fun upsertSongInHistory(currentSong: Song)
     suspend fun deleteSongInHistory(songId: Long)
@@ -367,8 +367,6 @@ class RealRepository(
         return Suggestion(ContentType.NotRecentlyPlayed, songs)
     }
 
-    override suspend fun topPlayedSongs(): List<Song> = smartRepository.topPlayedSongs()
-
     override suspend fun recentSongs(): List<Song> = smartRepository.recentSongs()
 
     override suspend fun topArtists(): List<Artist> = smartRepository.topAlbumArtists()
@@ -381,17 +379,20 @@ class RealRepository(
 
     override suspend fun playCountSongs(): List<PlayCountEntity> = smartRepository.playCountSongs()
 
-    override suspend fun playCountSongsFrom(songs: List<Song>): List<PlayCountEntity> =
-        smartRepository.playCountEntities(songs)
+    override suspend fun findSongsInPlayCount(songs: List<Song>): List<PlayCountEntity> =
+        smartRepository.findSongsInPlayCount(songs)
 
     override suspend fun findSongInPlayCount(songId: Long): PlayCountEntity? =
         smartRepository.findSongInPlayCount(songId)
 
-    override suspend fun upsertSongInPlayCount(playCountEntity: PlayCountEntity) =
-        smartRepository.upsertSongInPlayCount(playCountEntity)
-
     override suspend fun deleteSongInPlayCount(playCountEntity: PlayCountEntity) =
         smartRepository.deleteSongInPlayCount(playCountEntity)
+
+    override suspend fun insertOrIncrementPlayCount(song: Song, timePlayed: Long) =
+        smartRepository.insetOrIncrementPlayCount(song, timePlayed)
+
+    override suspend fun insertOrIncrementSkipCount(song: Song) =
+        smartRepository.insetOrIncrementSkipCount(song)
 
     override suspend fun clearPlayCount() = smartRepository.clearPlayCount()
 

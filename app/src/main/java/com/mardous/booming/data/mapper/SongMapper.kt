@@ -24,14 +24,26 @@ import com.mardous.booming.data.local.room.SongEntity
 import com.mardous.booming.data.model.Song
 
 fun List<HistoryEntity>.fromHistoryToSongs(): List<Song> {
-    return map {
-        it.toSong()
-    }
+    return map { it.toSong() }
+}
+
+fun List<PlayCountEntity>.fromPlayCountToSongs(): List<Song> {
+    return map { it.toSong() }
 }
 
 fun List<SongEntity>.toSongs(): List<Song> {
+    return map { it.toSong() }
+}
+
+fun List<Song>.toSongsEntity(playlistEntity: PlaylistEntity): List<SongEntity> {
     return map {
-        it.toSong()
+        it.toSongEntity(playlistEntity.playListId)
+    }
+}
+
+fun List<Song>.toSongsEntity(playlistId: Long): List<SongEntity> {
+    return map {
+        it.toSongEntity(playlistId)
     }
 }
 
@@ -158,16 +170,4 @@ fun Song.toPlayCount(timePlayed: Long = -1, playCount: Int = 0, skipCount: Int =
         playCount = playCount,
         skipCount = skipCount
     )
-}
-
-fun List<Song>.toSongsEntity(playlistEntity: PlaylistEntity): List<SongEntity> {
-    return map {
-        it.toSongEntity(playlistEntity.playListId)
-    }
-}
-
-fun List<Song>.toSongsEntity(playlistId: Long): List<SongEntity> {
-    return map {
-        it.toSongEntity(playlistId)
-    }
 }

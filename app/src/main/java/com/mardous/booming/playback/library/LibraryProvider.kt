@@ -7,6 +7,7 @@ import com.mardous.booming.R
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.mapper.fromHistoryToSongs
+import com.mardous.booming.data.mapper.fromPlayCountToSongs
 import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.albumInfo
@@ -225,7 +226,7 @@ class LibraryProvider(private val repository: Repository) {
                         .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
                         .setIsBrowsable(true)
                         .setTitle(resources.getString(R.string.top_tracks_label))
-                        .setSubtitle(repository.topPlayedSongs().songCountStr(context))
+                        .setSubtitle(repository.playCountSongs().fromPlayCountToSongs().songCountStr(context))
                         .build()
                 )
                 .build()
@@ -250,7 +251,7 @@ class LibraryProvider(private val repository: Repository) {
     ): List<Song> {
         return if (childId == null) {
             when (parentId) {
-                MediaIDs.TOP_TRACKS -> repository.topPlayedSongs()
+                MediaIDs.TOP_TRACKS -> repository.playCountSongs().fromPlayCountToSongs()
                 MediaIDs.RECENT_SONGS -> repository.historySongs().fromHistoryToSongs()
                 else -> emptyList()
             }

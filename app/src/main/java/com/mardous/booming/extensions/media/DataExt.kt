@@ -116,7 +116,7 @@ fun Song.songInfo(): String {
 }
 
 fun Song.replayGainStr(context: Context): String? {
-    val rg = ReplayGainTagExtractor.getReplayGain(uri)
+    val rg = ReplayGainTagExtractor.getReplayGain(this)
     val builder = StringBuilder()
     if (rg.trackGain != 0f) {
         builder.append(String.format(Locale.ROOT, "%s: %.2f dB", context.getString(R.string.track), rg.trackGain))

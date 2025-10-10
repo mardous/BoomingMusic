@@ -14,29 +14,52 @@
  */
 package com.mardous.booming.data.local.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Query
-import androidx.room.Upsert
+import androidx.room.*
+import com.mardous.booming.data.mapper.toPlayCount
+import com.mardous.booming.data.model.Song
 
 @Dao
 interface PlayCountDao {
 
     @Upsert
-    fun upsertSongInPlayCount(playCountEntity: PlayCountEntity)
+    suspend fun upsertSongInPlayCount(playCountEntity: PlayCountEntity)
 
     @Delete
-    fun deleteSongInPlayCount(playCountEntity: PlayCountEntity)
+    suspend fun deleteSongInPlayCount(playCountEntity: PlayCountEntity)
+
+    @Query("SELECT * FROM PlayCountEntity WHERE id IN (:songIds)")
+    suspend fun findSongsExistInPlayCount(songIds: List<Long>): List<PlayCountEntity>
 
     @Query("SELECT * FROM PlayCountEntity WHERE id =:songId LIMIT 1")
-    fun findSongExistInPlayCount(songId: Long): PlayCountEntity?
+    suspend fun findSongExistInPlayCount(songId: Long): PlayCountEntity?
+
+    @Transaction
+    suspend fun insertOrIncrementPlayCount(song: Song, timePlayed: Long) {
+        val playCountEntity = findSongExistInPlayCount(song.id)
+            ?: song.toPlayCount(timePlayed = timePlayed)
+
+        upsertSongInPlayCount(
+            playCountEntity.copy(
+                playCount = playCountEntity.playCount + 1,
+                timePlayed = timePlayed
+            )
+        )
+    }
+
+    @Transaction
+    suspend fun insertOrIncrementSkipCount(song: Song) {
+        val playCountEntity = findSongExistInPlayCount(song.id)
+            ?: song.toPlayCount()
+
+        upsertSongInPlayCount(playCountEntity.copy(skipCount = playCountEntity.skipCount + 1))
+    }
 
     @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC")
-    fun playCountSongs(): List<PlayCountEntity>
+    suspend fun playCountSongs(): List<PlayCountEntity>
 
     @Query("SELECT * FROM PlayCountEntity WHERE skip_count > 0 ORDER BY skip_count DESC")
-    fun skipCountSongs(): List<PlayCountEntity>
+    suspend fun skipCountSongs(): List<PlayCountEntity>
 
     @Query("DELETE FROM PlayCountEntity")
-    fun clearPlayCount()
+    suspend fun clearPlayCount()
 }

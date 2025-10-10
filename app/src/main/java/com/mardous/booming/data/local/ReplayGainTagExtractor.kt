@@ -18,6 +18,7 @@ package com.mardous.booming.data.local
 
 import android.net.Uri
 import android.util.LruCache
+import com.mardous.booming.data.model.Song
 
 enum class ReplayGainMode {
     Album, Track, Off
@@ -28,7 +29,11 @@ data class ReplayGain(
     val trackGain: Float,
     val albumPeak: Float,
     val trackPeak: Float
-)
+) {
+    companion object {
+        val Empty = ReplayGain(0f, 0f, 1f, 1f)
+    }
+}
 
 object ReplayGainTagExtractor {
 
@@ -43,10 +48,13 @@ object ReplayGainTagExtractor {
     private const val OPUS_TRACK_GAIN = "R128_TRACK_GAIN"
     private const val OPUS_ALBUM_GAIN = "R128_ALBUM_GAIN"
 
-    fun getReplayGain(uri: Uri): ReplayGain {
-        var gainValues = cache.get(uri)
+    fun getReplayGain(song: Song): ReplayGain {
+        if (song == Song.emptySong) {
+            return ReplayGain.Empty
+        }
+        var gainValues = cache.get(song.uri)
         if (gainValues == null) {
-            val metadataReader = MetadataReader(uri)
+            val metadataReader = MetadataReader(song.uri)
             val rawTags = metadataReader.all()
 
             val gainTags = parseStandardTags(rawTags)
@@ -60,7 +68,7 @@ object ReplayGainTagExtractor {
                 trackPeak = gainTags[TAG_TRACK_PEAK] ?: 1f
             )
 
-            cache.put(uri, gainValues)
+            cache.put(song.uri, gainValues)
         }
         return gainValues
     }

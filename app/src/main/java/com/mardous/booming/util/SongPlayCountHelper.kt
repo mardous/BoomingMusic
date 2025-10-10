@@ -5,7 +5,7 @@ import com.mardous.booming.data.model.Song
 class SongPlayCountHelper {
 
     private val stopWatch = StopWatch()
-    var song = Song.Companion.emptySong
+    var song = Song.emptySong
         private set
 
     var called = 0

@@ -37,6 +37,20 @@ interface HistoryDao {
     @Query("SELECT * FROM HistoryEntity ORDER BY time_played DESC LIMIT $HISTORY_LIMIT")
     fun observableHistorySongs(): LiveData<List<HistoryEntity>>
 
+    @Query("""
+    SELECT id FROM HistoryEntity
+    WHERE (:cutoff = 0 OR time_played > :cutoff)
+    ORDER BY time_played DESC
+    LIMIT :limit""")
+    suspend fun playedSongIds(cutoff: Long = 0, limit: Int = HISTORY_LIMIT): List<Long>
+
+    @Query("""
+    SELECT id FROM HistoryEntity
+    WHERE (:cutoff = 0 OR time_played < :cutoff)
+    ORDER BY time_played ASC
+    LIMIT :limit""")
+    suspend fun notPlayedSongIds(cutoff: Long = 0, limit: Int = HISTORY_LIMIT): List<Long>
+
     @Query("DELETE FROM HistoryEntity")
     suspend fun clearHistory()
 }
