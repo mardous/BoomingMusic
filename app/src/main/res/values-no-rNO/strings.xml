@@ -826,7 +826,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
-    <string name="auto_update_title">Oppdater søk automatisk</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">Hver dag</string>
     <string name="weekly">Ukentlig</string>
     <string name="every_fifteen_days">Hver femten dag</string>
