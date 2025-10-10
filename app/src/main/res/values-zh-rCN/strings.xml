@@ -818,7 +818,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">启用基于相册颜色的Material You设置</string>
     <!-- Update -->
-    <string name="auto_update_title">自动更新搜索</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">每天</string>
     <string name="weekly">每周</string>
     <string name="every_fifteen_days">每十五天</string>
