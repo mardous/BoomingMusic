@@ -826,7 +826,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
-    <string name="auto_update_title">Päivitä haku automaattisesti</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">Joka päivä</string>
     <string name="weekly">Viikoittain</string>
     <string name="every_fifteen_days">Joka viides päivä</string>
