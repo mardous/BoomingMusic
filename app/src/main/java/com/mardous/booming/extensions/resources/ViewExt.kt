@@ -40,8 +40,7 @@ import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
 import androidx.core.view.*
 import androidx.core.widget.ImageViewCompat
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -361,7 +360,6 @@ fun RecyclerView.destroyOnDetach() {
 
 fun RecyclerView.onVerticalScroll(
     lifecycleOwner: LifecycleOwner,
-    stopOnEvent: Lifecycle.Event = Lifecycle.Event.ON_STOP,
     onScrollUp: () -> Unit = {},
     onScrollDown: () -> Unit = {}
 ) {
@@ -374,14 +372,10 @@ fun RecyclerView.onVerticalScroll(
             }
         }
     }
-
     addOnScrollListener(scrollListener)
-
-    lifecycleOwner.lifecycle.addObserver(object : LifecycleEventObserver {
-        override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-            if (event == stopOnEvent) {
-                removeOnScrollListener(scrollListener)
-            }
+    lifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
+        override fun onStop(owner: LifecycleOwner) {
+            removeOnScrollListener(scrollListener)
         }
     })
 }
