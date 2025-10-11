@@ -449,8 +449,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
     fun isExtraInfoEnabled(): Boolean =
         Preferences.displayExtraInfo && Preferences.nowPlayingExtraInfoList.any { it.isEnabled }
 
-    fun getNextSongInfo(nextSong: Song?): String {
-        return if (nextSong != null) {
+    fun getNextSongInfo(nextSong: Song): String {
+        return if (nextSong != Song.emptySong) {
             if (!nextSong.isArtistNameUnknown()) {
                 getString(R.string.next_song_x_by_artist_x, nextSong.title, nextSong.displayArtistName())
             } else {

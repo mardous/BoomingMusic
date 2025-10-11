@@ -117,7 +117,7 @@ class Peek2PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
         return Peek2PlayerAnimator(binding, Preferences.animateControls)
     }
 
-    override fun onSongInfoChanged(currentSong: Song, nextSong: Song?) {
+    override fun onSongInfoChanged(currentSong: Song, nextSong: Song) {
         _binding?.let { nonNullBinding ->
             nonNullBinding.title.text = currentSong.title
             nonNullBinding.text.text = getSongArtist(currentSong)

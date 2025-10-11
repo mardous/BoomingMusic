@@ -246,7 +246,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
 
     protected open fun onCreatePlayerAnimator(): PlayerAnimator? = null
 
-    protected abstract fun onSongInfoChanged(currentSong: Song, nextSong: Song?)
+    protected abstract fun onSongInfoChanged(currentSong: Song, nextSong: Song)
 
     protected abstract fun onExtraInfoChanged(extraInfo: String?)
 
@@ -305,7 +305,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     protected fun getSongArtist(song: Song) =
         playerFragment?.getSongArtist(song)
 
-    protected fun getNextSongInfo(nextSong: Song?) =
+    protected fun getNextSongInfo(nextSong: Song) =
         playerFragment?.getNextSongInfo(nextSong)
 
     protected fun isExtraInfoEnabled() =

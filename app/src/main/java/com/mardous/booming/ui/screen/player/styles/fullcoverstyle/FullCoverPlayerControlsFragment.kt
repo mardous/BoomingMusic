@@ -161,7 +161,7 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
         )
     }
 
-    override fun onSongInfoChanged(currentSong: Song, nextSong: Song?) {
+    override fun onSongInfoChanged(currentSong: Song, nextSong: Song) {
         _binding?.let { nonNullBinding ->
             nonNullBinding.title.text = currentSong.title
             nonNullBinding.text.text = getSongArtist(currentSong)

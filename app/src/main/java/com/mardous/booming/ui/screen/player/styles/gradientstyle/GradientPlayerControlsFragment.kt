@@ -148,7 +148,7 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
         )
     }
 
-    override fun onSongInfoChanged(currentSong: Song, nextSong: Song?) {
+    override fun onSongInfoChanged(currentSong: Song, nextSong: Song) {
         _binding?.let { nonNullBinding ->
             nonNullBinding.title.text = currentSong.title
             nonNullBinding.text.text = getSongArtist(currentSong)
