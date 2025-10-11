@@ -10,7 +10,6 @@ import android.os.*
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
 import androidx.core.os.bundleOf
@@ -269,12 +268,9 @@ class PlaybackService :
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
-        val isPaused = !player.playWhenReady && !isInTransientFocusLoss
-        if (isPaused || preferences.getBoolean(STOP_WHEN_CLOSED_FROM_RECENTS, false)) {
-            NotificationManagerCompat.from(applicationContext).cancelAll()
-            stopSelf()
+        if (!isPlaybackOngoing || preferences.getBoolean(STOP_WHEN_CLOSED_FROM_RECENTS, false)) {
+            pauseAllPlayersAndStopSelf()
         }
-        super.onTaskRemoved(rootIntent)
     }
 
     override fun onDestroy() {
@@ -816,8 +812,8 @@ class PlaybackService :
     private fun postDelayedShutdown(delayInSeconds: Long = 15) {
         delayedShutdownHandler?.removeCallbacksAndMessages(null)
         delayedShutdownHandler?.postDelayed(delayInSeconds * 1000) {
-            if (!isPlaying && !isInTransientFocusLoss) {
-                stopSelf()
+            if (!isPlaybackOngoing) {
+                pauseAllPlayersAndStopSelf()
             }
         }
     }
