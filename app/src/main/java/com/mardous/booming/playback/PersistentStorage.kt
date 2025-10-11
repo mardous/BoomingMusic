@@ -10,7 +10,7 @@ import androidx.media3.common.MediaMetadata
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.source.ShuffleOrder
-import androidx.media3.session.MediaSession
+import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.QueueDao
 import com.mardous.booming.data.local.room.QueueEntity
@@ -22,7 +22,7 @@ import org.koin.core.component.inject
 import kotlin.concurrent.atomics.AtomicReference
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
 
-typealias RestorationListener = (MediaSession.MediaItemsWithStartPosition, ShuffleOrder?) -> Unit
+typealias RestorationListener = (MediaItemsWithStartPosition, ShuffleOrder?) -> Unit
 
 @UnstableApi
 @OptIn(ExperimentalAtomicApi::class)
@@ -142,14 +142,14 @@ class PersistentStorage(
                         startPosition = startPosition.coerceIn(0, restoredMediaItems.lastIndex)
                     }
 
-                    MediaSession.MediaItemsWithStartPosition(
+                    MediaItemsWithStartPosition(
                         restoredMediaItems,
                         startPosition,
                         startPositionMs
                     )
                 } else {
                     // No items found, return an empty session state
-                    MediaSession.MediaItemsWithStartPosition(
+                    MediaItemsWithStartPosition(
                         emptyList(),
                         C.INDEX_UNSET,
                         C.TIME_UNSET
@@ -198,21 +198,16 @@ class PersistentStorage(
                     player.repeatMode = repeatMode
                     player.shuffleModeEnabled = shuffleModeEnabled && shuffleOrder != null
 
-                    synchronized(lock) {
-                        if (!mediaItemsListeners.contains(callback)) {
-                            callback(items, shuffleOrder)
-                        }
-
-                        mediaItemsListeners.forEach { it(items, shuffleOrder) }
-                        mediaItemsListeners.clear()
-
-                        simpleListeners.forEach { it.run() }
-                        simpleListeners.clear()
-                    }
+                    dispatchItems(callback, items, shuffleOrder)
                 }
             }
         } catch (t: Throwable) {
             Log.e(TAG, "State restoration failed", t)
+            dispatchItems(
+                callback = callback,
+                items = MediaItemsWithStartPosition(emptyList(), C.INDEX_UNSET, C.TIME_UNSET),
+                shuffleOrder = null
+            )
         } finally {
             // Always mark as restored to unblock future listeners
             state.store(RestorationState.Restored)
@@ -228,6 +223,10 @@ class PersistentStorage(
     fun saveState(savePlaylist: Boolean = false) {
         // Avoid writing while restoring
         if (restorationState == RestorationState.Restoring)
+            return
+
+        // Save playlist requests have higher priority
+        if (!savePlaylist && saveJob?.isActive == true)
             return
 
         saveJob?.cancel()
@@ -249,26 +248,48 @@ class PersistentStorage(
 
                 // Write state asynchronously
                 withContext(Dispatchers.IO) {
-                    preferences.edit(commit = true) {
-                        putInt(REPEAT_MODE, repeatMode)
-                        putBoolean(SHUFFLE_MODE, shuffleModeEnabled)
-                        putString(SHUFFLE_ORDER, shuffleOrder?.toString())
-                        putInt(LAST_INDEX, position)
-                        putLong(POSITION_IN_TRACK, positionInTrack)
-                    }
-
-                    // Optionally save playlist order
-                    if (savePlaylist) {
-                        val queueItems = mediaItems.mapIndexed { index, item ->
-                            QueueEntity(id = item.mediaId, order = index)
+                    if (isActive) {
+                        preferences.edit(commit = true) {
+                            putInt(REPEAT_MODE, repeatMode)
+                            putBoolean(SHUFFLE_MODE, shuffleModeEnabled)
+                            putString(SHUFFLE_ORDER, shuffleOrder?.toString())
+                            putInt(LAST_INDEX, position)
+                            putLong(POSITION_IN_TRACK, positionInTrack)
                         }
-                        if (isActive) {
-                            queueDao.replaceQueue(queueItems)
+
+                        // Optionally save playlist order
+                        if (savePlaylist) {
+                            val queueItems = mediaItems.mapIndexed { index, item ->
+                                QueueEntity(id = item.mediaId, order = index)
+                            }
+                            if (isActive) {
+                                queueDao.replaceQueue(queueItems)
+                            }
                         }
                     }
                 }
             } catch (e: Throwable) {
                 Log.e(TAG, "Failed to write current state to disk", e)
+            }
+        }
+    }
+
+    private suspend fun dispatchItems(
+        callback: RestorationListener,
+        items: MediaItemsWithStartPosition,
+        shuffleOrder: ShuffleOrder?
+    ) {
+        withContext(Dispatchers.Main) {
+            synchronized(lock) {
+                if (!mediaItemsListeners.contains(callback)) {
+                    callback(items, shuffleOrder)
+                }
+
+                mediaItemsListeners.forEach { it(items, null) }
+                mediaItemsListeners.clear()
+
+                simpleListeners.forEach { it.run() }
+                simpleListeners.clear()
             }
         }
     }

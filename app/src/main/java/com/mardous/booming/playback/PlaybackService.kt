@@ -598,10 +598,6 @@ class PlaybackService :
         refreshMediaButtonCustomLayout()
     }
 
-    override fun onMediaMetadataChanged(mediaMetadata: MediaMetadata) {
-        persistentStorage.saveState()
-    }
-
     override fun onTimelineChanged(timeline: Timeline, reason: Int) {
         persistentStorage.saveState(true)
     }
