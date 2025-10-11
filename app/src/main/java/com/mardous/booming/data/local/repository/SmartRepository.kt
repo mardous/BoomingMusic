@@ -210,8 +210,4 @@ class RealSmartRepository(
             it.toSong()
         }
     }
-
-    companion object {
-        const val NUMBER_OF_TOP_TRACKS = 100
-    }
 }

@@ -24,6 +24,9 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PlayCountDao {
+    companion object {
+        private const val PLAY_COUNT_LIMIT = 100
+    }
 
     @Upsert
     suspend fun upsertSongInPlayCount(playCountEntity: PlayCountEntity)
@@ -61,14 +64,11 @@ interface PlayCountDao {
         upsertSongInPlayCount(playCountEntity.copy(skipCount = playCountEntity.skipCount + 1))
     }
 
-    @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC")
-    suspend fun playCountSongs(): List<PlayCountEntity>
+    @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC LIMIT :limit")
+    suspend fun playCountSongs(limit: Int = PLAY_COUNT_LIMIT): List<PlayCountEntity>
 
-    @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC")
-    fun playCountSongsFlow(): Flow<List<PlayCountEntity>>
-
-    @Query("SELECT * FROM PlayCountEntity WHERE skip_count > 0 ORDER BY skip_count DESC")
-    suspend fun skipCountSongs(): List<PlayCountEntity>
+    @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC LIMIT :limit")
+    fun playCountSongsFlow(limit: Int = PLAY_COUNT_LIMIT): Flow<List<PlayCountEntity>>
 
     @Query("DELETE FROM PlayCountEntity")
     suspend fun clearPlayCount()
