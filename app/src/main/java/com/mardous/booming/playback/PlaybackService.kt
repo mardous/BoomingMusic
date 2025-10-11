@@ -212,14 +212,13 @@ class PlaybackService :
         )
 
         player.setSequentialTimelineEnabled(sequentialTimeline)
-
-        player.addListener(this)
         player.addListener(object : Player.Listener {
             override fun onAudioSessionIdChanged(audioSessionId: Int) {
                 // See: https://github.com/androidx/media/issues/244
                 this@PlaybackService.onAudioSessionIdChanged(audioSessionId)
             }
         })
+        player.addListener(this)
 
         notificationProvider = BoomingNotificationProvider(
             this,
@@ -265,7 +264,7 @@ class PlaybackService :
 
         preferences.registerOnSharedPreferenceChangeListener(this)
 
-        launchSoundSettingsFlows()
+        prepareEqualizerAndSoundSettings()
         registerReceivers()
     }
 
@@ -841,7 +840,10 @@ class PlaybackService :
         }
     }
 
-    private fun launchSoundSettingsFlows() {
+    private fun prepareEqualizerAndSoundSettings() {
+        serviceScope.launch(IO) {
+            equalizerManager.initializeEqualizer()
+        }
         serviceScope.launch {
             soundSettings.tempoFlow.collect {
                 player.playbackParameters = player.playbackParameters
