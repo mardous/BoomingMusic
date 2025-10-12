@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">ערבב ניגון</string>
     <string name="action_queue_next">הבא בתור</string>
     <string name="shuffle_all_label">ערבב הכל</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
+    <string name="shuffle_mode">מצב ערבוב</string>
+    <string name="repeat_mode">מצב חזרה</string>
     <string name="advanced_shuffle_label">ערבוב מתקדם</string>
     <string name="shuffle_button_tip">הקש להערבוב רגיל. לחיצה ארוכה תפתח אפשרויות מתקדמות.</string>
     <string name="action_play_pause">נגן/השהה</string>
@@ -125,7 +125,7 @@
     <string name="no_equalizer">לא נמצא אקולייזר.</string>
     <string name="audio_focus_denied">מיקוד שמע נדחה.</string>
     <string name="no_audio_ID">מזהה אודיו שגוי.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">שגיאת הפעלה (%s).</string>
     <string name="unplayable_file">לא הצלחנו לנגן את השיר הזה.</string>
     <string name="unplayable_file_code_x">לא ניתן לנגן את השיר הזה (קוד: %d).</string>
     <string name="permission_external_storage_title">גישה לאחסון</string>
@@ -156,8 +156,8 @@
     <string name="app_widget_small_name">קטן</string>
     <string name="now_playing">מנגן כעת</string>
     <string name="playing_queue_label">מנגן תור השמעה</string>
-    <string name="list_start">List start</string>
-    <string name="list_end">List end</string>
+    <string name="list_start">תחילת רשימה</string>
+    <string name="list_end">סוף רשימה</string>
     <string name="empty_play_queue">תור ההשמעה ריק.</string>
     <string name="save_queue">שמור תור השמעה</string>
     <string name="clear_queue">נקה תור השמעה</string>
