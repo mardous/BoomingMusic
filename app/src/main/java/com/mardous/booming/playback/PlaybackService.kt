@@ -107,7 +107,7 @@ class PlaybackService :
     )
 
     private var willSetUnshuffledOrder = false
-    private var stopPosition = -1
+    private var stopIndex = -1
 
     val isInTransientFocusLoss: Boolean
         get() = player.playbackSuppressionReason == Player.PLAYBACK_SUPPRESSION_REASON_TRANSIENT_AUDIO_FOCUS_LOSS
@@ -547,17 +547,17 @@ class PlaybackService :
             }
 
             Playback.SET_STOP_POSITION -> {
-                val newStopPosition = customCommand.customExtras.getInt("position", -1)
-                val canceled = newStopPosition > -1 && newStopPosition == stopPosition
+                val newStopIndex = customCommand.customExtras.getInt("index", -1)
+                val canceled = newStopIndex > -1 && newStopIndex == stopIndex
                 if (canceled) {
                     player.exoPlayer.pauseAtEndOfMediaItems = false
-                    stopPosition = -1
-                } else if (stopPosition == player.currentMediaItemIndex) {
+                    stopIndex = -1
+                } else if (stopIndex == player.currentMediaItemIndex) {
                     player.exoPlayer.pauseAtEndOfMediaItems = true
-                    stopPosition = -1
+                    stopIndex = -1
                 } else {
                     player.exoPlayer.pauseAtEndOfMediaItems = false
-                    stopPosition = newStopPosition
+                    stopIndex = newStopIndex
                 }
                 Futures.immediateFuture(
                     SessionResult(SessionResult.RESULT_SUCCESS, bundleOf("canceled" to canceled))
@@ -600,10 +600,10 @@ class PlaybackService :
 
     override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
         if (reason == Player.PLAY_WHEN_READY_CHANGE_REASON_END_OF_MEDIA_ITEM) {
-            player.exoPlayer.pauseAtEndOfMediaItems = true
+            player.exoPlayer.pauseAtEndOfMediaItems = false
             sleepTimer.consumePendingQuit()
-            if (stopPosition == player.currentMediaItemIndex) {
-                stopPosition = -1
+            if (stopIndex == player.currentMediaItemIndex) {
+                stopIndex = -1
             }
         }
     }
@@ -679,7 +679,7 @@ class PlaybackService :
             songPlayCountHelper.notifySongChanged(currentSong, isPlaying)
         }
 
-        if (player.currentMediaItemIndex == stopPosition) {
+        if (player.currentMediaItemIndex == stopIndex) {
             player.exoPlayer.pauseAtEndOfMediaItems = true
         }
 

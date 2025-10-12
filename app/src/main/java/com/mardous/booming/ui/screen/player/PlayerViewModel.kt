@@ -503,9 +503,10 @@ class PlayerViewModel(
     fun stopAt(stopPosition: Int) = liveData {
         mediaController?.let { controller ->
             if (stopPosition >= 0 && stopPosition < controller.mediaItemCount) {
-                val mediaItem = controller.getMediaItemAt(stopPosition)
+                val stopIndex = position.getIndexForPosition(stopPosition)
+                val mediaItem = controller.getMediaItemAt(stopIndex)
                 val resultFuture = controller.sendCustomCommand(
-                    SessionCommand(Playback.SET_STOP_POSITION, bundleOf("position" to stopPosition)),
+                    SessionCommand(Playback.SET_STOP_POSITION, bundleOf("index" to stopIndex)),
                     Bundle.EMPTY
                 )
                 val result = runCatching { resultFuture.await() }
@@ -520,18 +521,19 @@ class PlayerViewModel(
         }
     }
 
-    fun moveSong(currentIndex: Int, newIndex: Int) {
-        mediaController?.moveMediaItem(currentIndex, newIndex)
+    fun moveSong(fromPosition: Int, toPosition: Int) {
+        mediaController?.moveMediaItem(
+            position.getIndexForPosition(fromPosition),
+            position.getIndexForPosition(toPosition)
+        )
     }
 
     fun moveToNextPosition(fromPosition: Int) {
-        mediaController?.let { controller ->
-            controller.moveMediaItem(fromPosition, controller.nextMediaItemIndex)
-        }
+        moveSong(fromPosition, position.next)
     }
 
-    fun removePosition(position: Int) {
-        mediaController?.removeMediaItem(position)
+    fun removePosition(positionToRemove: Int) {
+        mediaController?.removeMediaItem(position.getIndexForPosition(positionToRemove))
     }
 
     fun restorePlayback() = viewModelScope.launch {

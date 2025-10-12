@@ -99,7 +99,7 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
         binding.recyclerView.itemAnimator = RefactoredDefaultItemAnimator()
 
         dragDropManager!!.attachRecyclerView(_binding!!.recyclerView)
-        linearLayoutManager!!.scrollToPositionWithOffset(position + 1, 0)
+        linearLayoutManager!!.scrollToPosition(position)
 
         binding.recyclerView.onVerticalScroll(
             viewLifecycleOwner,
@@ -219,5 +219,6 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
 
         linearLayoutManager = null
         super.onDestroyView()
+        _binding = null
     }
 }
