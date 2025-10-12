@@ -52,6 +52,7 @@ import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.navigation.*
 import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.extensions.utilities.buildInfoString
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.album.AlbumAdapter
@@ -128,10 +129,10 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
             goToArtist()
         }
         binding.playAction.setOnClickListener {
-            playerViewModel.openQueue(getAlbum().songs, shuffleModeEnabled = false)
+            playerViewModel.openQueue(getAlbum().songs, shuffleMode = OpenShuffleMode.Off)
         }
         binding.shuffleAction.setOnClickListener {
-            playerViewModel.openQueue(getAlbum().songs, shuffleModeEnabled = true)
+            playerViewModel.openAndShuffleQueue(getAlbum().songs)
         }
         binding.searchAction?.setOnClickListener {
             goToSearch()

@@ -1,6 +1,7 @@
 package com.mardous.booming.ui.screen.player
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.core.os.bundleOf
@@ -34,9 +35,11 @@ import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.getQueueItems
 import com.mardous.booming.playback.progress.ProgressObserver
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.playback.shuffle.ShuffleManager
 import com.mardous.booming.playback.toMediaItems
 import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.REMEMBER_SHUFFLE_MODE
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
@@ -46,10 +49,12 @@ import kotlinx.coroutines.guava.await
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.io.File
+import kotlin.random.Random
 
 @OptIn(FlowPreview::class)
 @androidx.annotation.OptIn(UnstableApi::class)
 class PlayerViewModel(
+    private val preferences: SharedPreferences,
     private val repository: Repository,
     private val albumCoverSaver: AlbumCoverSaver
 ) : ViewModel(), Player.Listener {
@@ -359,14 +364,20 @@ class PlayerViewModel(
         queue: List<Song>,
         position: Int = 0,
         startPlaying: Boolean = true,
-        shuffleModeEnabled: Boolean = Preferences.rememberShuffleMode
+        shuffleMode: OpenShuffleMode = OpenShuffleMode.Remember
     ) = viewModelScope.launch {
         mediaController?.let { controller ->
+            var shuffleModeEnabled = controller.shuffleModeEnabled
+            if (!preferences.getBoolean(REMEMBER_SHUFFLE_MODE, true)) {
+                shuffleModeEnabled = false
+            }
             val mediaItems = withContext(IO) { queue.toMediaItems() }
             if (mediaItems.isNotEmpty()) {
                 controller.setMediaItems(mediaItems, position, C.TIME_UNSET)
-                if (!shuffleModeEnabled) {
-                    controller.shuffleModeEnabled = false
+                controller.shuffleModeEnabled = when (shuffleMode) {
+                    OpenShuffleMode.On -> true
+                    OpenShuffleMode.Off -> false
+                    OpenShuffleMode.Remember -> shuffleModeEnabled
                 }
                 controller.playWhenReady = startPlaying
                 controller.prepare()
@@ -374,8 +385,13 @@ class PlayerViewModel(
         }
     }
 
-    fun openAndShuffleQueue(queue: List<Song>, startPlaying: Boolean = true) =
-        openQueue(queue, 0, startPlaying, true)
+    fun openAndShuffleQueue(queue: List<Song>, startPlaying: Boolean = true) {
+        var startPosition = 0
+        if (queue.isNotEmpty()) {
+            startPosition = Random.Default.nextInt(queue.size)
+        }
+        openQueue(queue, startPosition, startPlaying, OpenShuffleMode.On)
+    }
 
     fun openShuffle(
         providers: List<SongProvider>,

@@ -39,6 +39,7 @@ import com.mardous.booming.extensions.media.songsDurationStr
 import com.mardous.booming.extensions.navigation.searchArgs
 import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.extensions.utilities.buildInfoString
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.SongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
@@ -85,10 +86,10 @@ class FolderDetailFragment : AbsMainActivityFragment(R.layout.fragment_detail_li
 
     private fun setupButtons() {
         binding.playAction.setOnClickListener {
-            playerViewModel.openQueue(songAdapter.dataSet, shuffleModeEnabled = false)
+            playerViewModel.openQueue(songAdapter.dataSet, shuffleMode = OpenShuffleMode.Off)
         }
         binding.shuffleAction.setOnClickListener {
-            playerViewModel.openQueue(songAdapter.dataSet, shuffleModeEnabled = true)
+            playerViewModel.openAndShuffleQueue(songAdapter.dataSet)
         }
     }
 

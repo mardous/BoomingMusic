@@ -54,6 +54,7 @@ import com.mardous.booming.extensions.media.artistInfo
 import com.mardous.booming.extensions.media.displayName
 import com.mardous.booming.extensions.navigation.*
 import com.mardous.booming.extensions.resources.*
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.ISongCallback
@@ -130,10 +131,10 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
         setupSortOrder()
 
         binding.playAction.setOnClickListener {
-            playerViewModel.openQueue(getArtist().sortedSongs, shuffleModeEnabled = false)
+            playerViewModel.openQueue(getArtist().sortedSongs, shuffleMode = OpenShuffleMode.Off)
         }
         binding.shuffleAction.setOnClickListener {
-            playerViewModel.openQueue(getArtist().sortedSongs, shuffleModeEnabled = true)
+            playerViewModel.openAndShuffleQueue(getArtist().sortedSongs)
         }
         binding.searchAction?.setOnClickListener {
             goToSearch()

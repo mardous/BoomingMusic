@@ -271,9 +271,6 @@ object Preferences : KoinComponent {
     val searchAutoQueue: Boolean
         get() = preferences.getBoolean(SEARCH_AUTO_QUEUE, false)
 
-    val rememberShuffleMode: Boolean
-        get() = preferences.getBoolean(REMEMBER_SHUFFLE_MODE, true)
-
     val albumShuffleMode: GroupShuffleMode
         get() = getGroupShuffleMode(ALBUM_SHUFFLE_MODE, SelectedShuffleMode.SHUFFLE_ALBUMS)
 

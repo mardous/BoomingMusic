@@ -46,6 +46,7 @@ import com.mardous.booming.extensions.navigation.searchArgs
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.extensions.utilities.buildInfoString
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.ISongCallback
@@ -97,13 +98,13 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
             contentType == ContentType.NotRecentlyPlayed
         ) {
             binding.shuffleAction.setOnClickListener {
-                playerViewModel.openQueue(songList, shuffleModeEnabled = true)
+                playerViewModel.openAndShuffleQueue(songList)
             }
         } else {
             binding.shuffleAction.hide()
         }
         binding.playAction.setOnClickListener {
-            playerViewModel.openQueue(songList, shuffleModeEnabled = false)
+            playerViewModel.openQueue(songList, shuffleMode = OpenShuffleMode.Off)
         }
     }
 

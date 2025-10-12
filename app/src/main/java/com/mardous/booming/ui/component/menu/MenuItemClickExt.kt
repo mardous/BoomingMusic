@@ -34,6 +34,7 @@ import com.mardous.booming.extensions.getShareSongsIntent
 import com.mardous.booming.extensions.navigation.*
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.toChooser
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.component.base.AbsTagEditorActivity
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.DeletePlaylistDialog
@@ -145,13 +146,13 @@ fun List<Song>.onSongsMenu(fragment: Fragment, menuItem: MenuItem): Boolean {
     return when (menuItem.itemId) {
         R.id.action_play -> {
             val playerViewModel = fragment.getActivityViewModel<PlayerViewModel>()
-            playerViewModel.openQueue(this, shuffleModeEnabled = false)
+            playerViewModel.openQueue(this, shuffleMode = OpenShuffleMode.Off)
             true
         }
 
         R.id.action_shuffle_play -> {
             val playerViewModel = fragment.getActivityViewModel<PlayerViewModel>()
-            playerViewModel.openQueue(this, shuffleModeEnabled = true)
+            playerViewModel.openQueue(this, shuffleMode = OpenShuffleMode.On)
             true
         }
 

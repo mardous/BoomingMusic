@@ -227,7 +227,7 @@ private val viewModule = module {
     }
 
     viewModel {
-        PlayerViewModel(repository = get(), albumCoverSaver = get())
+        PlayerViewModel(preferences = get(), repository = get(), albumCoverSaver = get())
     }
 
     viewModel {
