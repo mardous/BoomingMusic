@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">ערבב ניגון</string>
     <string name="action_queue_next">הבא בתור</string>
     <string name="shuffle_all_label">ערבב הכל</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">ערבוב מתקדם</string>
     <string name="shuffle_button_tip">הקש להערבוב רגיל. לחיצה ארוכה תפתח אפשרויות מתקדמות.</string>
     <string name="action_play_pause">נגן/השהה</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">לא נמצא אקולייזר.</string>
     <string name="audio_focus_denied">מיקוד שמע נדחה.</string>
     <string name="no_audio_ID">מזהה אודיו שגוי.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">לא הצלחנו לנגן את השיר הזה.</string>
     <string name="unplayable_file_code_x">לא ניתן לנגן את השיר הזה (קוד: %d).</string>
     <string name="permission_external_storage_title">גישה לאחסון</string>
@@ -153,13 +156,12 @@
     <string name="app_widget_small_name">קטן</string>
     <string name="now_playing">מנגן כעת</string>
     <string name="playing_queue_label">מנגן תור השמעה</string>
-    <string name="list_start">תחילת רשימה.</string>
-    <string name="list_end">סוף רשימה.</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">תור ההשמעה ריק.</string>
     <string name="save_queue">שמור תור השמעה</string>
     <string name="clear_queue">נקה תור השמעה</string>
     <string name="action_move_to_current_track">הצג רצועה נוכחית</string>
-    <string name="shuffle_queue">ערבב את התור</string>
     <string name="action_add_to_favorites">הוסף למעודפים</string>
     <string name="action_remove_from_favorites">הסר מהמועדפים</string>
     <string name="added_to_favorites_label">נוסף למועדפים</string>
@@ -169,7 +171,6 @@
     <string name="action_remove_from_playlist">הסר מרשימת השמעה</string>
     <string name="action_add_to_playing_queue">הוסף לתור</string>
     <string name="action_remove_from_playing_queue">הסרה מתור ההשמעה</string>
-    <string name="x_removed_from_playing_queue">%s הוסרו</string>
     <string name="put_after_current_track">שים אחרי הרצועה הנוכחית</string>
     <string name="undo_action">בטל</string>
     <string name="set_artist_image">הגדר תמונת אמן</string>
@@ -479,8 +480,6 @@
     <string name="sound_settings">הגדרות קול</string>
     <string name="volume_label">עוצמת שמע</string>
     <string name="tempo_label">קצב</string>
-    <string name="crossfade_title">מעבר חלק בין שירים (ניסוי)</string>
-    <string name="audio_fade_duration_title">משך דעיכת האודיו (ניסיוני)</string>
     <string name="action_external_eq">איקוולייזר חיצוני</string>
     <string name="custom">מותאם אישית</string>
     <!-- Lyrics viewer -->
@@ -596,7 +595,6 @@
     <string name="headphones_header">אוזניות</string>
     <string name="bluetooth_header">בלוטות\'</string>
     <string name="audio_focus_header">מיקוד שמע</string>
-    <string name="lockscreen_header">מסך הנעילה</string>
     <string name="shuffle_mode_header">מצב ערבוב</string>
     <string name="display_header">תצוגה</string>
     <string name="backup_restore_header">גיבוי / שחזור</string>
@@ -689,10 +687,6 @@
     <string name="prefer_album_artist_name_summary">מציג את שם אמן האלבום במקום את שם אמן השיר (אם זמין).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">השמע בהפעלה</string>
-    <string name="gapless_playback_title">השמעה רציפה</string>
-    <string name="gapless_playback_summary">מעבר חלק בין שירים. עלול לגרום לבעיות בהשמעה במכשירים מסוימים.</string>
-    <string name="no_crossfade_on_albums_title">ללא הצלבה באלבומים</string>
-    <string name="no_crossfade_on_albums_summary">אל תבצע הצלבה בעת השמעת אלבומים לפי הסדר המקורי.</string>
     <string name="replaygain_source_mode_title">מצב מקור</string>
     <string name="replaygain_preamp_title">רמת קדם־מגבר</string>
     <string name="replaygain_preamp_summary">קבע את רמת העוצמה כאשר ‏יישור־עצמה‏ מופעל.</string>
@@ -703,8 +697,6 @@
     <string name="remember_shuffle_mode_summary">מצב הערבוב יישאר פעיל בעת בחירת רשימת שירים חדשה.</string>
     <string name="album_shuffle_mode_title">מצב ערבוב אלבומים</string>
     <string name="artist_shuffle_mode_title">מצב ערבוב אמנים</string>
-    <string name="auto_play_on_skip_title">הפעלה אוטומטית בעת דילוג</string>
-    <string name="auto_play_on_skip_summary">אם ההשמעה מושהית, הקשה על כפתורי הקודם או הבא תתחיל את הניגון.</string>
     <string name="rewind_with_back_title">"הרצה לאחור עם כפתור 'הקודם'"</string>
     <string name="rewind_with_back_summary">החזר את השיר המנוגן לתחילה או עבור לשיר הקודם אם השיר הנוכחי בתחילתו.</string>
     <string name="rewind_fast_forward_amount_title">כמות הרצה לאחור/הרצה קדימה</string>
@@ -719,8 +711,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">מפסיק את הנגינה כאשר אוזניית בלוטות\' ‏A2DP מתנתקת. מומלץ.</string>
     <string name="ignore_audio_focus_title">התעלם ממיקוד שמע</string>
     <string name="ignore_audio_focus_summary">השמיע תמיד אודיו ברקע, ללא קשר למה שמתנגן במקום אחר.</string>
-    <string name="pause_on_transient_focus_loss_title">אובדן מיקוד זמני</string>
-    <string name="pause_on_transient_focus_loss_summary">השהה נגינה באובדן מיקוד זמני (כלומר התראות, שיחות נכנסות).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
     <string name="ignore_media_store_album_covers_title">התעלם מעטיפות ממדיה סטור</string>
@@ -756,11 +746,6 @@
     <string name="min_song_duration_summary">כמה שניות (לפחות) שיר חייב להימשך כדי שיוצג בספרייה שלך.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">שורת טקסט נוספת</string>
-    <string name="notification_priority_title">עדיפות התראה</string>
-    <string name="album_art_on_lockscreen_title">הצג עטיפת אלבום</string>
-    <string name="album_art_on_lockscreen_summary">משתמש בעטיפת האלבום של השיר הנוכחי כרקע מסך הנעילה. עלול לגרום לשימוש גבוה בזיכרון. משתנה בהתאם למכשיר.</string>
-    <string name="blurred_album_art_title">עטיפת אלבום מטושטשת</string>
-    <string name="blurred_album_art_summary">מטשטש את עטיפת האלבום במסך הנעילה. עלול לגרום לבעיות עם אפליקציות ווידג\'טים של צד שלישי.</string>
     <string name="app_language_title">שפת האפליקציה</string>
     <string name="backup_data_title">גיבוי נתוני האפליקציה</string>
     <string name="backup_app_data_summary">צור קובץ המכיל נתוני אפליקציה חיוניים ושמור אותו באחסון החיצוני.</string>
