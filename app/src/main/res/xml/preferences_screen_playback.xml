@@ -13,24 +13,6 @@
         app:layout="@layout/list_item_view"
         app:key="play_on_startup_mode"/>
 
-    <SwitchPreferenceCompat
-        app:iconSpaceReserved="true"
-        app:title="@string/gapless_playback_title"
-        app:summary="@string/gapless_playback_summary"
-        app:defaultValue="false"
-        app:layout="@layout/list_item_view"
-        app:widgetLayout="@layout/preference_switch"
-        app:key="gapless_playback"/>
-
-    <SwitchPreferenceCompat
-        app:iconSpaceReserved="true"
-        app:title="@string/no_crossfade_on_albums_title"
-        app:summary="@string/no_crossfade_on_albums_summary"
-        app:defaultValue="true"
-        app:layout="@layout/list_item_view"
-        app:widgetLayout="@layout/preference_switch"
-        app:key="no_crossfade_on_albums"/>
-
     <PreferenceCategory
         app:title="@string/playing_queue_label"
         app:layout="@layout/preference_category_title">
@@ -93,15 +75,6 @@
     <PreferenceCategory
         app:title="@string/controls_header"
         app:layout="@layout/preference_category_title">
-
-        <SwitchPreferenceCompat
-            app:icon="@drawable/ic_play_24dp"
-            app:title="@string/auto_play_on_skip_title"
-            app:summary="@string/auto_play_on_skip_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view"
-            app:widgetLayout="@layout/preference_switch"
-            app:key="auto_play_on_skip"/>
 
         <SwitchPreferenceCompat
             app:iconSpaceReserved="true"
@@ -186,15 +159,6 @@
             app:layout="@layout/list_item_view"
             app:widgetLayout="@layout/preference_switch"
             app:key="ignore_audio_focus"/>
-
-        <SwitchPreferenceCompat
-            app:iconSpaceReserved="true"
-            app:title="@string/pause_on_transient_focus_loss_title"
-            app:summary="@string/pause_on_transient_focus_loss_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view"
-            app:widgetLayout="@layout/preference_switch"
-            app:key="pause_on_transient_focus_loss"/>
 
     </PreferenceCategory>
 

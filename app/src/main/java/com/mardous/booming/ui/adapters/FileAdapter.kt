@@ -38,7 +38,7 @@ import com.mardous.booming.data.model.Folder
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.media.songInfo
-import com.mardous.booming.extensions.media.trackNumber
+import com.mardous.booming.extensions.media.asReadableTrackNumber
 import com.mardous.booming.extensions.plurals
 import com.mardous.booming.extensions.resources.useAsIcon
 import com.mardous.booming.extensions.utilities.buildInfoString
@@ -105,7 +105,7 @@ class FileAdapter(
                 SortKey.Track -> {
                     buildInfoString(
                         file.trackNumber
-                            .trackNumber()
+                            .asReadableTrackNumber()
                             .takeIf { it > 0 }?.toString() ?: "-",
                         file.songInfo()
                     )

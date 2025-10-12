@@ -29,6 +29,7 @@ import androidx.core.animation.doOnEnd
 import androidx.core.os.bundleOf
 import androidx.core.view.*
 import androidx.fragment.app.commit
+import androidx.media3.session.MediaController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -36,6 +37,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.*
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
+import com.mardous.booming.MediaControllerOwner
 import com.mardous.booming.R
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.LibraryMargin
@@ -47,6 +49,7 @@ import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.ui.IBackConsumer
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.search.SearchFragment
+import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.other.MiniPlayerFragment
 import com.mardous.booming.ui.screen.permissions.PermissionsActivity
 import com.mardous.booming.ui.screen.player.PlayerViewModel
@@ -65,12 +68,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * @author Christians M. A. (mardous)
  */
 abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
-    SharedPreferences.OnSharedPreferenceChangeListener {
+    MediaController.Listener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     protected lateinit var binding: SlidingMusicPanelLayoutBinding
 
+    protected val mediaControllerOwner by lazy { MediaControllerOwner(this, this) }
+
     protected val libraryViewModel: LibraryViewModel by viewModel()
     protected val playerViewModel: PlayerViewModel by viewModel()
+    protected val lyricsViewModel: LyricsViewModel by viewModel()
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
     private lateinit var nowPlayingScreen: NowPlayingScreen
@@ -142,19 +148,44 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         }
 
         launchAndRepeatWithViewLifecycle {
-            playerViewModel.playingQueueFlow.collect { playingQueue ->
+            playerViewModel.queueFlow.collect { queue ->
                 if (currentFragment(R.id.fragment_container) !is PlayingQueueFragment) {
-                    hideBottomSheet(playingQueue.isEmpty())
+                    hideBottomSheet(queue.isEmpty())
                 }
             }
         }
 
+        launchAndRepeatWithViewLifecycle {
+            playerViewModel.currentSongFlow.collect { currentSong ->
+                lyricsViewModel.updateSong(currentSong)
+            }
+        }
+
+        launchAndRepeatWithViewLifecycle {
+            mediaControllerOwner.isConnected.collect { event ->
+                val isConnected = event.getContentIfNotConsumed()
+                if (isConnected == true) {
+                    mediaControllerOwner.get()?.let { onConnected(it) }
+                }
+            }
+        }
+
+        mediaControllerOwner.attachTo(this)
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    protected open fun onConnected(controller: MediaController) {
+        mediaControllerOwner.addPlayerListener(playerViewModel, lifecycle)
+        playerViewModel.setMediaController(controller)
+    }
+
+    override fun onDisconnected(controller: MediaController) {
+        playerViewModel.setMediaController(null)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        if (playerViewModel.playingQueue.isEmpty() || savedInstanceState.getBoolean(BOTTOM_SHEET_HIDDEN)) {
+        if (playerViewModel.queue.isEmpty() || savedInstanceState.getBoolean(BOTTOM_SHEET_HIDDEN)) {
             hideBottomSheet(true)
         }
     }
@@ -221,7 +252,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     fun setBottomNavVisibility(
         visible: Boolean,
         animate: Boolean = false,
-        hideBottomSheet: Boolean = playerViewModel.playingQueue.isEmpty(),
+        hideBottomSheet: Boolean = playerViewModel.queue.isEmpty(),
     ) {
         if (isInOneTabMode) {
             hideBottomSheet(hide = hideBottomSheet, animate = animate, isBottomNavVisible = false)
@@ -277,7 +308,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                 )
             )
         } else {
-            if (playerViewModel.playingQueue.isNotEmpty()) {
+            if (playerViewModel.queue.isNotEmpty()) {
                 slidingPanel.elevation = 0f
                 navigationView.elevation = 5f
                 if (isBottomNavVisible) {

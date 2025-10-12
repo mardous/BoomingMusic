@@ -44,7 +44,7 @@
         android:layout_margin="@dimen/fab_margin_top_left_right"
         android:ellipsize="marquee"
         android:textAppearance="?textAppearanceBody1"
-        tools:icon="@drawable/ic_save_24dp"
-        tools:text="@string/save_queue"/>
+        app:icon="@drawable/ic_save_24dp"
+        android:text="@string/save_queue"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

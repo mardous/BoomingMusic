@@ -43,19 +43,9 @@
             app:entries="@array/pref_notification_extra_text_line_entries"
             app:entryValues="@array/pref_notification_extra_text_line_values"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="album"
+            app:defaultValue="artist"
             app:layout="@layout/list_item_view"
             app:key="notification_extra_text_line" />
-
-        <ListPreference
-            app:iconSpaceReserved="true"
-            app:title="@string/notification_priority_title"
-            app:entries="@array/pref_notification_priority_entries"
-            app:entryValues="@array/pref_notification_priority_values"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="maximum"
-            app:layout="@layout/list_item_view"
-            app:key="notification_priority" />
 
     </PreferenceCategory>
 

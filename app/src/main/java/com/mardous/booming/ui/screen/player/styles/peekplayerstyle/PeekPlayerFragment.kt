@@ -69,18 +69,18 @@ class PeekPlayerFragment : AbsPlayerFragment(R.layout.fragment_peek_player) {
             insets
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.currentSongFlow.collect { song ->
+            playerViewModel.currentSongFlow.collect { currentSong ->
                 _binding?.let { nonNullBinding ->
-                    nonNullBinding.title.text = song.title
-                    nonNullBinding.text.text = getSongArtist(song)
+                    nonNullBinding.title.text = currentSong.title
+                    nonNullBinding.text.text = getSongArtist(currentSong)
                 }
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.extraInfoFlow.collect {
+            playerViewModel.extraInfoFlow.collect { extraInfo ->
                 _binding?.let { nonNullBinding ->
                     if (isExtraInfoEnabled()) {
-                        nonNullBinding.songInfo.text = it
+                        nonNullBinding.songInfo.text = extraInfo
                         nonNullBinding.songInfo.isVisible = true
                     } else {
                         nonNullBinding.songInfo.isVisible = false

@@ -148,10 +148,10 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
         )
     }
 
-    override fun onSongInfoChanged(song: Song) {
+    override fun onSongInfoChanged(currentSong: Song, nextSong: Song) {
         _binding?.let { nonNullBinding ->
-            nonNullBinding.title.text = song.title
-            nonNullBinding.text.text = getSongArtist(song)
+            nonNullBinding.title.text = currentSong.title
+            nonNullBinding.text.text = getSongArtist(currentSong)
         }
     }
 
@@ -165,8 +165,6 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
             }
         }
     }
-
-    override fun onQueueInfoChanged(newInfo: String?) {}
 
     override fun onUpdatePlayPause(isPlaying: Boolean) {
         if (isPlaying) {

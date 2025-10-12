@@ -50,7 +50,7 @@ import com.mardous.booming.extensions.navigation.searchArgs
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.removeHorizontalMarginIfRequired
 import com.mardous.booming.extensions.resources.surfaceColor
-import com.mardous.booming.service.playback.Playback
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.PlaylistSongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
@@ -144,12 +144,12 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_playlis
     private fun setupButtons() {
         binding.playAction.setOnClickListener {
             playlistSongAdapter?.dataSet?.let {
-                playerViewModel.openQueue(it, shuffleMode = Playback.ShuffleMode.Off)
+                playerViewModel.openQueue(it, shuffleMode = OpenShuffleMode.Off)
             }
         }
         binding.shuffleAction.setOnClickListener {
             playlistSongAdapter?.dataSet?.let {
-                playerViewModel.openQueue(it, shuffleMode = Playback.ShuffleMode.On)
+                playerViewModel.openAndShuffleQueue(it)
             }
         }
         binding.searchAction?.setOnClickListener {
@@ -286,6 +286,7 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_playlis
         WrapperAdapterUtils.releaseAll(wrappedAdapter)
         wrappedAdapter = null
         super.onDestroyView()
+        _binding = null
     }
 
     companion object {

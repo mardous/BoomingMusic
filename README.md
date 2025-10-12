@@ -69,9 +69,9 @@
 - [ ] 📺 Experimental Android TV support (maybe... if there's enough interest!)
 
 ## 💿 Supported formats
-Booming Music relies on native [MediaPlayer API](https://developer.android.com/guide/topics/media/mediaplayer) for audio files reproduction.
-You can visit [this page](https://developer.android.com/guide/topics/media/media-formats) for detailed
-information about MediaPlayer API file and format support.
+Booming Music relies on [Media3](https://developer.android.com/media/media3) for audio playback.
+You can visit [this page](https://developer.android.com/media/media3/exoplayer/supported-formats) for detailed
+information about **Media3 ExoPlayer** file and format support.
 
 ## 🔒 Requested permissions
 Our app requires only the necessary permissions for its operation, therefore, you can read [this document](PERMISSIONS.md)
@@ -103,8 +103,8 @@ Join the [Telegram chat](https://t.me/mardousdev) to stay up-to-date on new rele
 report bugs, and engage with other community users.
 
 ## 👏 Credits
-Booming Music is built upon the open-source project [Retro Music](https://github.com/RetroMusicPlayer/RetroMusicPlayer),
-which served as a starting point for many features and functionality in this app.
+Booming Music is inspired by the open source project [Retro Music](https://github.com/RetroMusicPlayer/RetroMusicPlayer)
+for certain features and UI design.
 
 It is also important to mention:
 

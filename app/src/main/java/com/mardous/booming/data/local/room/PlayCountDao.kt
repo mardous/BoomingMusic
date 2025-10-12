@@ -15,28 +15,61 @@
 package com.mardous.booming.data.local.room
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Upsert
+import com.mardous.booming.data.mapper.toPlayCount
+import com.mardous.booming.data.model.Song
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PlayCountDao {
+    companion object {
+        private const val PLAY_COUNT_LIMIT = 100
+    }
 
     @Upsert
-    fun upsertSongInPlayCount(playCountEntity: PlayCountEntity)
+    suspend fun upsertSongInPlayCount(playCountEntity: PlayCountEntity)
 
-    @Delete
-    fun deleteSongInPlayCount(playCountEntity: PlayCountEntity)
+    @Query("DELETE FROM PlayCountEntity WHERE id = :songId")
+    suspend fun deleteSongInPlayCount(songId: Long)
+
+    @Query("DELETE FROM PlayCountEntity WHERE id IN(:songIds)")
+    suspend fun deleteSongsInPlayCount(songIds: List<Long>)
+
+    @Query("SELECT * FROM PlayCountEntity WHERE id IN (:songIds)")
+    suspend fun findSongsExistInPlayCount(songIds: List<Long>): List<PlayCountEntity>
 
     @Query("SELECT * FROM PlayCountEntity WHERE id =:songId LIMIT 1")
-    fun findSongExistInPlayCount(songId: Long): PlayCountEntity?
+    suspend fun findSongExistInPlayCount(songId: Long): PlayCountEntity?
 
-    @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC")
-    fun playCountSongs(): List<PlayCountEntity>
+    @Transaction
+    suspend fun insertOrIncrementPlayCount(song: Song, timePlayed: Long) {
+        val playCountEntity = findSongExistInPlayCount(song.id)
+            ?: song.toPlayCount(timePlayed = timePlayed)
 
-    @Query("SELECT * FROM PlayCountEntity WHERE skip_count > 0 ORDER BY skip_count DESC")
-    fun skipCountSongs(): List<PlayCountEntity>
+        upsertSongInPlayCount(
+            playCountEntity.copy(
+                playCount = playCountEntity.playCount + 1,
+                timePlayed = timePlayed
+            )
+        )
+    }
+
+    @Transaction
+    suspend fun insertOrIncrementSkipCount(song: Song) {
+        val playCountEntity = findSongExistInPlayCount(song.id)
+            ?: song.toPlayCount()
+
+        upsertSongInPlayCount(playCountEntity.copy(skipCount = playCountEntity.skipCount + 1))
+    }
+
+    @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC LIMIT :limit")
+    suspend fun playCountSongs(limit: Int = PLAY_COUNT_LIMIT): List<PlayCountEntity>
+
+    @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC LIMIT :limit")
+    fun playCountSongsFlow(limit: Int = PLAY_COUNT_LIMIT): Flow<List<PlayCountEntity>>
 
     @Query("DELETE FROM PlayCountEntity")
-    fun clearPlayCount()
+    suspend fun clearPlayCount()
 }

@@ -29,7 +29,7 @@ import com.mardous.booming.data.mapper.toSongEntity
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.zipOutputStream
 import com.mardous.booming.extensions.showToast
-import com.mardous.booming.service.equalizer.EqualizerManager
+import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.util.m3u.M3UWriter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -176,17 +176,17 @@
     </string-array>
 
     <string-array name="pref_notification_extra_text_line_entries">
+        <item>@string/artist</item>
         <item>@string/album</item>
         <item>@string/album_artist</item>
         <item>@string/album_and_year</item>
-        <item>@string/next_song_label</item>
     </string-array>
 
     <string-array name="pref_notification_extra_text_line_values">
+        <item>artist</item>
         <item>album</item>
         <item>album_artist</item>
         <item>album_and_year</item>
-        <item>next_song</item>
     </string-array>
 
     <string-array name="pref_notification_priority_entries">

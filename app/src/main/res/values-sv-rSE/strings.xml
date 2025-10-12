@@ -159,7 +159,6 @@
     <string name="save_queue">Spara kö</string>
     <string name="clear_queue">Rensa kö</string>
     <string name="action_move_to_current_track">Visa nuvarande spår</string>
-    <string name="shuffle_queue">Blanda kön</string>
     <string name="action_add_to_favorites">Lägg till i favoriter</string>
     <string name="action_remove_from_favorites">Ta bort från favoriter</string>
     <string name="added_to_favorites_label">Lades till i favoriter</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">Ta bort från spellistan</string>
     <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Ta bort från uppspelningskön</string>
-    <string name="x_removed_from_playing_queue">%s borttaget</string>
     <string name="put_after_current_track">Sätt efter nuvarande spår</string>
     <string name="undo_action">Ångra</string>
     <string name="set_artist_image">Ställ in artistbild</string>
@@ -463,8 +461,6 @@
     <string name="sound_settings">Ljud inställningar</string>
     <string name="volume_label">Volym</string>
     <string name="tempo_label">Tempo</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">Extern EQ</string>
     <string name="custom">Anpassad</string>
     <!-- Lyrics viewer -->
@@ -580,7 +576,6 @@
     <string name="headphones_header">Hörlurar</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Fokus på ljud</string>
-    <string name="lockscreen_header">Låsskärm</string>
     <string name="shuffle_mode_header">Blanda läge</string>
     <string name="display_header">Visa</string>
     <string name="backup_restore_header">Säkerhetskopiera/återställ</string>
@@ -673,10 +668,6 @@
     <string name="prefer_album_artist_name_summary">Visar Album-artistens namn istället för Song-artistens namn (om tillgänglig).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="gapless_playback_title">Otillåten uppspelning</string>
-    <string name="gapless_playback_summary">Smidig övergång mellan låtar. Kan orsaka uppspelningsproblem på vissa enheter.</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">Källa läge</string>
     <string name="replaygain_preamp_title">PreAmp nivå</string>
     <string name="replaygain_preamp_summary">Ställ in volymnivå när ReplayGain är aktiverad.</string>
@@ -687,8 +678,6 @@
     <string name="remember_shuffle_mode_summary">Blanda läget kommer att finnas kvar när du väljer en ny lista över låtar.</string>
     <string name="album_shuffle_mode_title">Skivblandningsläge</string>
     <string name="artist_shuffle_mode_title">Artist blandar läge</string>
-    <string name="auto_play_on_skip_title">Auto-spela vid hoppa över</string>
-    <string name="auto_play_on_skip_summary">Om uppspelningen pausas kommer knapparna Föregående eller Nästa att starta musiken.</string>
     <string name="rewind_with_back_title">"Spola tillbaka med \"Föregående\""</string>
     <string name="rewind_with_back_summary">Spola tillbaka spelspåret till start eller flytta till tidigare spår om den nuvarande är i början.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -703,8 +692,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pausar uppspelning när Bluetooth A2DP-headset kopplas ifrån. Rekommenderas.</string>
     <string name="ignore_audio_focus_title">Ignorera ljudfokus</string>
     <string name="ignore_audio_focus_summary">Spela alltid upp ljud i bakgrunden oavsett något annat som spelas.</string>
-    <string name="pause_on_transient_focus_loss_title">Övergående fokusförlust</string>
-    <string name="pause_on_transient_focus_loss_summary">Pausa uppspelning vid tillfällig fokusförlust (dvs. aviseringar, inkommande samtal).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Ladda ner metadata automatiskt</string>
     <string name="ignore_media_store_album_covers_title">Ignorera Media Store-omslag</string>
@@ -740,11 +727,6 @@
     <string name="min_song_duration_summary">Hur många sekunder (åtminstone) måste pågå en låt som visas i ditt bibliotek.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Ytterligare textrad</string>
-    <string name="notification_priority_title">Prioritering av aviseringar</string>
-    <string name="album_art_on_lockscreen_title">Visa skivomslag</string>
-    <string name="album_art_on_lockscreen_summary">Använder nuvarande låtar album omslag som låsskärm tapet. Kan orsaka hög minnesanvändning. Varierar med enhet.</string>
-    <string name="blurred_album_art_title">suddig skivomslag</string>
-    <string name="blurred_album_art_summary">Oskärper skivomslaget på låsskärmen. Kan orsaka problem med appar och widgetar från tredje part.</string>
     <string name="app_language_title">Appens språk</string>
     <string name="backup_data_title">Säkerhetskopiera appdata</string>
     <string name="backup_app_data_summary">Skapa en fil som innehåller viktiga appdata och spara den till extern lagring.</string>

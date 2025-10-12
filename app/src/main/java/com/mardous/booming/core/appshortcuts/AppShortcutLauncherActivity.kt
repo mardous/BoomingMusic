@@ -25,9 +25,7 @@ import com.mardous.booming.core.appshortcuts.shortcuttype.ShuffleAllShortcutType
 import com.mardous.booming.core.appshortcuts.shortcuttype.TopTracksShortcutType
 import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.extensions.extraNotNull
-import com.mardous.booming.service.MusicService
-import com.mardous.booming.service.constants.ServiceAction
-import com.mardous.booming.service.playback.Playback
+import com.mardous.booming.playback.PlaybackService
 
 /**
  * @author Adrian Campos
@@ -38,32 +36,32 @@ class AppShortcutLauncherActivity : Activity() {
         super.onCreate(savedInstanceState)
         when (extraNotNull(KEY_SHORTCUT_TYPE, SHORTCUT_TYPE_NONE).value) {
             SHORTCUT_TYPE_SHUFFLE_ALL -> {
-                startServiceWithContent(Playback.ShuffleMode.On, null)
+                startServiceWithContent(true, null)
                 DynamicShortcutManager.reportShortcutUsed(this, ShuffleAllShortcutType.ID)
             }
 
             SHORTCUT_TYPE_TOP_TRACKS -> {
-                startServiceWithContent(Playback.ShuffleMode.Off, ContentType.TopTracks)
+                startServiceWithContent(false, ContentType.TopTracks)
                 DynamicShortcutManager.reportShortcutUsed(this, TopTracksShortcutType.ID)
             }
 
             SHORTCUT_TYPE_LAST_ADDED -> {
-                startServiceWithContent(Playback.ShuffleMode.Off, ContentType.RecentSongs)
+                startServiceWithContent(false, ContentType.RecentSongs)
                 DynamicShortcutManager.reportShortcutUsed(this, LastAddedShortcutType.ID)
             }
         }
         finish()
     }
 
-    private fun startServiceWithContent(shuffleMode: Playback.ShuffleMode, contentType: ContentType?) {
+    private fun startServiceWithContent(shuffleModeEnabled: Boolean, contentType: ContentType?) {
         startForegroundService(
-            Intent(this, MusicService::class.java)
-                .setAction(ServiceAction.ACTION_PLAY_PLAYLIST)
+            Intent(this, PlaybackService::class.java)
+                .setAction(PlaybackService.ACTION_PLAY_PLAYLIST)
                 .setPackage(packageName)
                 .putExtras(
                     bundleOf(
-                        ServiceAction.Extras.EXTRA_CONTENT_TYPE to contentType,
-                        ServiceAction.Extras.EXTRA_SHUFFLE_MODE to shuffleMode
+                        PlaybackService.EXTRA_CONTENT_TYPE to contentType,
+                        PlaybackService.EXTRA_SHUFFLE_MODE to shuffleModeEnabled
                     )
                 )
         )

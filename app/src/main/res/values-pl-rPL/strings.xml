@@ -159,7 +159,6 @@
     <string name="save_queue">Zapisz kolejkę</string>
     <string name="clear_queue">Wyczyść kolejkę</string>
     <string name="action_move_to_current_track">Pokaż bieżący utwór</string>
-    <string name="shuffle_queue">Przetasuj kolejkę</string>
     <string name="action_add_to_favorites">Dodaj do ulubionych</string>
     <string name="action_remove_from_favorites">Usuń z ulubionych</string>
     <string name="added_to_favorites_label">Dodano do ulubionych</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">Usuń z playlisty</string>
     <string name="action_add_to_playing_queue">Dodaj do kolejki</string>
     <string name="action_remove_from_playing_queue">Usuń z kolejki odtwarzania</string>
-    <string name="x_removed_from_playing_queue">Usunięto %s</string>
     <string name="put_after_current_track">Umieść po bieżącym utworze</string>
     <string name="undo_action">Cofnij</string>
     <string name="set_artist_image">Ustaw obraz artysty</string>
@@ -479,8 +477,6 @@
     <string name="sound_settings">Ustawienia dźwięku</string>
     <string name="volume_label">Głośność</string>
     <string name="tempo_label">Tempo</string>
-    <string name="crossfade_title">Płynne przejście (eksperymentalne)</string>
-    <string name="audio_fade_duration_title">Czas trwania zanikania dźwięku (eksperymentalne)</string>
     <string name="action_external_eq">Zewnętrzny EQ</string>
     <string name="custom">Własny</string>
     <!-- Lyrics viewer -->
@@ -596,7 +592,6 @@
     <string name="headphones_header">Słuchawki</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Skoncentrowanie dźwięku</string>
-    <string name="lockscreen_header">Ekran blokady</string>
     <string name="shuffle_mode_header">Tryb losowy</string>
     <string name="display_header">Wyświetlanie</string>
     <string name="backup_restore_header">Kopia zapasowa/przywracanie danych</string>
@@ -689,10 +684,6 @@
     <string name="prefer_album_artist_name_summary">Pokazuje nazwę wykonawcy albumu zamiast wykonawcy utworu (jeśli dostępne).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Odtwarzaj po starcie</string>
-    <string name="gapless_playback_title">Odtwarzanie bez przerw</string>
-    <string name="gapless_playback_summary">Płynne przejście między utworami, możliwe problemy z odtwarzaniem na niektórych urządzeniach.</string>
-    <string name="no_crossfade_on_albums_title">Wyłącz płynne przejście w albumach</string>
-    <string name="no_crossfade_on_albums_summary">Wyłącza płynne przejście przy odtwarzaniu albumów w oryginalnej kolejności.</string>
     <string name="replaygain_source_mode_title">Tryb źródłowy</string>
     <string name="replaygain_preamp_title">Poziom przedwzmacniacza</string>
     <string name="replaygain_preamp_summary">Ustaw poziom głośności, gdy ReplayGain jest włączony.</string>
@@ -703,9 +694,7 @@
     <string name="remember_shuffle_mode_summary">Tryb losowy pozostanie włączony podczas wybierania nowej listy utworów.</string>
     <string name="album_shuffle_mode_title">Sposób losowania albumów</string>
     <string name="artist_shuffle_mode_title">Sposób losowania wykonawców</string>
-    <string name="auto_play_on_skip_title">Automatyczne odtwarzanie przy pominięciu</string>
-    <string name="auto_play_on_skip_summary">Jeśli odtwarzanie jest wstrzymane, naciśnięcie klawisza \'Następny\' lub \'Poprzedni\' uruchomi muzykę.</string>
-    <string name="rewind_with_back_title">"Przewijanie przyciskiem \"Wstecz\""</string>
+    <string name="rewind_with_back_title">"Przewijaj przez 'Poprzedni'"</string>
     <string name="rewind_with_back_summary">Przewiń utwór na początek lub przejdź do poprzedniego, jeżeli aktualny jest dopiero rozpoczęty.</string>
     <string name="rewind_fast_forward_amount_title">Skok w czasie odtwarzania</string>
     <string name="rewind_fast_forward_amount_summary">Czas (w sekundach) przewijania do tyłu lub do przodu przy użyciu interfejsu lub zewnętrznych przycisków.</string>
@@ -719,8 +708,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Wstrzymuje odtwarzanie po rozłączeniu słuchawek Bluetooth (A2DP). Zalecane.</string>
     <string name="ignore_audio_focus_title">Ignoruj ostrość dźwięku</string>
     <string name="ignore_audio_focus_summary">Zawsze odtwarzaj dźwięk w tle niezależnie od tego, co jest odtwarzane.</string>
-    <string name="pause_on_transient_focus_loss_title">Chwilowa utrata uwagi</string>
-    <string name="pause_on_transient_focus_loss_summary">Wstrzymuje odtwarzanie podczas chwilowej utraty uwagi (np. powiadomienia lub połączenia przychodzące).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Pobieranie metadanych</string>
     <string name="ignore_media_store_album_covers_title">Nie używaj okładek z magazynu multimediów</string>
@@ -756,11 +743,6 @@
     <string name="min_song_duration_summary">Ile sekund (przynajmniej) musi trwać piosenka, by wyświetlić ją twojej bibliotece.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Dodatkowy wiersz tekstu</string>
-    <string name="notification_priority_title">Priorytet powiadomienia</string>
-    <string name="album_art_on_lockscreen_title">Pokaż okładkę albumu</string>
-    <string name="album_art_on_lockscreen_summary">Używa okładki albumu piosenek jako tapety ekranu blokady. Może powodować duże zużycie pamięci. Zależne od urządzenia.</string>
-    <string name="blurred_album_art_title">Rozmyte okładki albumu</string>
-    <string name="blurred_album_art_summary">Rozmywa okładkę albumu na ekranie blokady. Może powodować problemy z aplikacjami i widżetami firm trzecich.</string>
     <string name="app_language_title">Język aplikacji</string>
     <string name="backup_data_title">Utwórz kopię zapasową</string>
     <string name="backup_app_data_summary">Utwórz plik z niezbędnymi danymi aplikacji i zapisz go w pamięci zewnętrznej.</string>

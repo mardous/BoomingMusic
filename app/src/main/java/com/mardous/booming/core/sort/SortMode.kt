@@ -13,7 +13,7 @@ import com.mardous.booming.core.model.sort.SortKey
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.model.*
 import com.mardous.booming.extensions.media.albumArtistName
-import com.mardous.booming.extensions.media.trackNumber
+import com.mardous.booming.extensions.media.asReadableTrackNumber
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 import java.text.Collator
@@ -237,7 +237,7 @@ sealed class SongSortMode(
             SortKey.Duration -> sortedWith(compareBy { it.duration })
             SortKey.Year -> sortedWith(compareBy { it.year })
             SortKey.DateAdded -> sortedWith(compareBy { it.dateAdded })
-            SortKey.DateModified -> sortedWith(compareBy { it.dateModified })
+            SortKey.DateModified -> sortedWith(compareBy { it.rawDateModified })
             SortKey.FileName -> sortedWith(compareBy { it.fileName })
             else -> this
         }
@@ -462,7 +462,7 @@ sealed class FileSortMode(
             when (selectedKey) {
                 SortKey.AZ -> songs.sortedWith(compareBy { it.title })
                 SortKey.Track -> songs.sortedWith(compareBy {
-                    if (it.trackNumber > 0) it.trackNumber.trackNumber() else it.fileName
+                    if (it.trackNumber > 0) it.trackNumber.asReadableTrackNumber() else it.fileName
                 })
                 SortKey.DateAdded -> songs.sortedWith(compareBy { it.fileDateAdded })
                 SortKey.DateModified -> songs.sortedWith(compareBy { it.fileDateModified })

@@ -24,12 +24,10 @@ import android.content.IntentFilter
 import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
-import android.os.Build
 import android.provider.Settings
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
-import androidx.fragment.app.FragmentActivity
 import androidx.media.AudioManagerCompat.getStreamMaxVolume
 import androidx.media.AudioManagerCompat.getStreamMinVolume
 import androidx.mediarouter.media.MediaControlIntent
@@ -41,14 +39,10 @@ import com.mardous.booming.core.model.audiodevice.getMediaRouteType
 import com.mardous.booming.core.model.equalizer.VolumeState
 import com.mardous.booming.extensions.resolveActivity
 import com.mardous.booming.extensions.tryStartActivity
-import com.mardous.booming.service.playback.PlaybackManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class AudioOutputObserver(
-    private val context: Context,
-    private val playbackManager: PlaybackManager
-) : BroadcastReceiver() {
+class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
 
     private val _volumeStateFlow = MutableStateFlow(VolumeState.Unspecified)
     val volumeStateFlow = _volumeStateFlow.asStateFlow()
@@ -117,23 +111,13 @@ class AudioOutputObserver(
 
     private fun getCurrentAudioDevice(): AudioDevice {
         var audioDevice: AudioDevice? = null
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            audioDevice = playbackManager.getRoutedDevice()?.let { deviceInfo ->
-                AudioDevice(
-                    type = deviceInfo.getDeviceType(),
-                    productName = deviceInfo.productName
-                )
-            }
-        }
-        if (audioDevice == null) {
-            val route = mediaRouter.selectedRoute
-            val isConnected = route.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED
-            if (isConnected && route.isEnabled && route.supportsControlCategory(MediaControlIntent.CATEGORY_LIVE_AUDIO)) {
-                audioDevice = AudioDevice(
-                    type = route.getMediaRouteType(),
-                    productName = route.name
-                )
-            }
+        val route = mediaRouter.selectedRoute
+        val isConnected = route.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED
+        if (isConnected && route.isEnabled && route.supportsControlCategory(MediaControlIntent.CATEGORY_LIVE_AUDIO)) {
+            audioDevice = AudioDevice(
+                type = route.getMediaRouteType(),
+                productName = route.name
+            )
         }
         return audioDevice ?: audioManager?.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
             ?.minByOrNull { info ->

@@ -159,7 +159,6 @@
     <string name="save_queue">保存队列</string>
     <string name="clear_queue">清除队列</string>
     <string name="action_move_to_current_track">显示当前曲目</string>
-    <string name="shuffle_queue">随机队列</string>
     <string name="action_add_to_favorites">添加到收藏夹</string>
     <string name="action_remove_from_favorites">从收藏夹中移除</string>
     <string name="added_to_favorites_label">已添加到收藏夹</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">从播放列表移除</string>
     <string name="action_add_to_playing_queue">添加至队列</string>
     <string name="action_remove_from_playing_queue">从播放队列移除</string>
-    <string name="x_removed_from_playing_queue">%s 已移除</string>
     <string name="put_after_current_track">置于当前曲目之后</string>
     <string name="undo_action">撤消操作</string>
     <string name="set_artist_image">设置艺人图像</string>
@@ -455,8 +453,6 @@
     <string name="sound_settings">声音设置</string>
     <string name="volume_label">音量</string>
     <string name="tempo_label">节拍</string>
-    <string name="crossfade_title">交叉淡入淡出(实验功能)</string>
-    <string name="audio_fade_duration_title">音频淡入/淡出持续时间(实验功能)</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">自定义</string>
     <!-- Lyrics viewer -->
@@ -572,7 +568,6 @@
     <string name="headphones_header">耳机</string>
     <string name="bluetooth_header">蓝牙</string>
     <string name="audio_focus_header">音频聚焦</string>
-    <string name="lockscreen_header">锁屏界面</string>
     <string name="shuffle_mode_header">随机模式</string>
     <string name="display_header">显示</string>
     <string name="backup_restore_header">备份/恢复</string>
@@ -665,10 +660,6 @@
     <string name="prefer_album_artist_name_summary">显示专辑艺术家的名字，而不是歌手的名字(如果可用的话)。</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">启动时自动播放</string>
-    <string name="gapless_playback_title">无缝播放</string>
-    <string name="gapless_playback_summary">在歌曲之间平滑过渡。可能会在某些设备上导致播放问题。</string>
-    <string name="no_crossfade_on_albums_title">专辑播放无交叉淡入淡出效果</string>
-    <string name="no_crossfade_on_albums_summary">以原始顺序播放专辑时禁用交叉淡入淡出。</string>
     <string name="replaygain_source_mode_title">源模式</string>
     <string name="replaygain_preamp_title">预置层级</string>
     <string name="replaygain_preamp_summary">设置当ReplayGain 启用时的音量水平。</string>
@@ -679,8 +670,6 @@
     <string name="remember_shuffle_mode_summary">选择新歌曲列表时将保持随机模式。</string>
     <string name="album_shuffle_mode_title">专辑随机模式</string>
     <string name="artist_shuffle_mode_title">艺术家随机模式</string>
-    <string name="auto_play_on_skip_title">跳过时自动播放</string>
-    <string name="auto_play_on_skip_summary">如果播放已暂停，点击上一个或下一个按钮将开始播放。</string>
     <string name="rewind_with_back_title">"带着“上一个”退货"</string>
     <string name="rewind_with_back_summary">将播放曲目退回开始或移动到上一首曲目，如果当前曲目正在开始。</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -695,8 +684,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">当蓝牙 A2DP 耳机断开时暂停播放。推荐。</string>
     <string name="ignore_audio_focus_title">忽略音频重点</string>
     <string name="ignore_audio_focus_summary">总是在后台播放音频，不管是否播放任何其他音频。</string>
-    <string name="pause_on_transient_focus_loss_title">瞬间焦点丢失</string>
-    <string name="pause_on_transient_focus_loss_summary">暂时失去焦点时暂停播放(即通知、来电)。</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">自动下载元数据</string>
     <string name="ignore_media_store_album_covers_title">忽略媒体商店的封面</string>
@@ -732,11 +719,6 @@
     <string name="min_song_duration_summary">至少需要多少秒钟才能在您的知识库中显示。</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">增加一行文本</string>
-    <string name="notification_priority_title">通知优先级</string>
-    <string name="album_art_on_lockscreen_title">显示专辑封面</string>
-    <string name="album_art_on_lockscreen_summary">使用当前歌曲专辑封面作为锁屏壁纸。可能会造成高内存使用率。设备错误。</string>
-    <string name="blurred_album_art_title">模糊专辑封面</string>
-    <string name="blurred_album_art_summary">模糊锁屏界面的专辑封面。可能会导致第三方应用和小部件出现问题。</string>
     <string name="app_language_title">应用语言</string>
     <string name="backup_data_title">备份应用数据</string>
     <string name="backup_app_data_summary">创建一个包含基本应用数据的文件并保存到外部存储。</string>

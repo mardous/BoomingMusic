@@ -31,7 +31,6 @@ import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.Cutoff
 import com.mardous.booming.core.model.action.FolderAction
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.core.model.action.QueueQuickAction
 import com.mardous.booming.core.model.player.NowPlayingInfo
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.theme.AppTheme
@@ -158,16 +157,9 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(COMPACT_ARTIST_SONG_VIEW, false)
         set(value) = preferences.edit { putBoolean(COMPACT_ARTIST_SONG_VIEW, value) }
 
-    var queueQuickAction: QueueQuickAction
-        get() = preferences.enumValue(QUEUE_QUICK_ACTION, QueueQuickAction.Save)
-        set(value) = preferences.edit { putString(QUEUE_QUICK_ACTION, value.name) }
-
     var nowPlayingScreen: NowPlayingScreen
         get() = preferences.enumValue(NOW_PLAYING_SCREEN, NowPlayingScreen.Default)
         set(value) = preferences.edit { putString(NOW_PLAYING_SCREEN, value.name) }
-
-    val openOnPlay: Boolean
-        get() = preferences.getBoolean(OPEN_ON_PLAY, false)
 
     val extraControls: Boolean
         get() = preferences.getBoolean(ADD_EXTRA_CONTROLS, false)
@@ -276,50 +268,8 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(PREFER_ALBUM_ARTIST_NAME, false)
         set(value) = preferences.edit { putBoolean(PREFER_ALBUM_ARTIST_NAME, value) }
 
-    val gaplessPlayback: Boolean
-        get() = preferences.getBoolean(GAPLESS_PLAYBACK, false)
-
-    val noCrossFadeOnAlbums: Boolean
-        get() = preferences.getBoolean(NO_CROSSFADE_ON_ALBUMS, true)
-
-    val autoPlayOnSkip: Boolean
-        get() = preferences.getBoolean(AUTO_PLAY_ON_SKIP, true)
-
-    val rewindWithBack: Boolean
-        get() = preferences.getBoolean(REWIND_WITH_BACK, true)
-
-    val seekInterval: Int
-        get() = preferences.getInt(SEEK_INTERVAL, 10)
-
-    val replayGainSourceMode: Byte
-        get() = when (preferences.getString(REPLAYGAIN_SOURCE_MODE, "")) {
-            ReplayGainSourceMode.TRACK -> ReplayGainSourceMode.MODE_TRACK
-            ReplayGainSourceMode.ALBUM -> ReplayGainSourceMode.MODE_ALBUM
-            else -> ReplayGainSourceMode.MODE_NONE
-        }
-
-    fun getReplayGainValue(withTag: Boolean): Float = when {
-        withTag -> preferences.getFloat(REPLAYGAIN_PREAMP_WITH_TAG, 0f)
-        else -> preferences.getFloat(REPLAYGAIN_PREAMP_WITHOUT_TAG, 0f)
-    }
-
-    val pauseOnTransientFocusLoss: Boolean
-        get() = preferences.getBoolean(PAUSE_ON_TRANSIENT_FOCUS_LOSS, true)
-
-    val ignoreAudioFocus: Boolean
-        get() = preferences.getBoolean(IGNORE_AUDIO_FOCUS, false)
-
-    val queueNextSequentially: Boolean
-        get() = preferences.requireString(QUEUE_NEXT_MODE, "1") == "1"
-
-    val playOnStartupMode: String
-        get() = preferences.requireString(PLAY_ON_STARTUP_MODE, PlayOnStartupMode.NEVER)
-
     val searchAutoQueue: Boolean
         get() = preferences.getBoolean(SEARCH_AUTO_QUEUE, false)
-
-    val rememberShuffleMode: Boolean
-        get() = preferences.getBoolean(REMEMBER_SHUFFLE_MODE, true)
 
     val albumShuffleMode: GroupShuffleMode
         get() = getGroupShuffleMode(ALBUM_SHUFFLE_MODE, SelectedShuffleMode.SHUFFLE_ALBUMS)
@@ -364,9 +314,6 @@ object Preferences : KoinComponent {
                 }
             return notNullSet
         }
-
-    val historyEnabled: Boolean
-        get() = preferences.getBoolean(ENABLE_HISTORY, true)
 
     fun getLastAddedCutoff(context: Context = appContext()): Cutoff =
         getCutoff(context, LAST_ADDED_CUTOFF, true)
@@ -419,23 +366,11 @@ object Preferences : KoinComponent {
     val minimumSongDuration: Int
         get() = preferences.getInt(MINIMUM_SONG_DURATION, 30)
 
-    val albumArtOnLockscreenAllowed: Boolean
-        get() = preferences.getBoolean(ALBUM_ART_ON_LOCK_SCREEN, true)
-
-    val blurredAlbumArtAllowed: Boolean
-        get() = preferences.getBoolean(BLURRED_ALBUM_ART, false)
-
-    val stopWhenClosedFromRecents: Boolean
-        get() = preferences.getBoolean(STOP_WHEN_CLOSED_FROM_RECENTS, false)
-
     val notificationExtraTextLine: String
         get() = preferences.requireString(
             NOTIFICATION_EXTRA_TEXT_LINE,
             NotificationExtraText.ALBUM_NAME
         )
-
-    val notificationPriority: String
-        get() = preferences.requireString(NOTIFICATION_PRIORITY, NotificationPriority.MAXIMUM)
 
     val updateSearchMode: String
         get() = preferences.requireString(UPDATE_SEARCH_MODE, UpdateSearchMode.WEEKLY)
@@ -541,11 +476,8 @@ interface CoverSwipingEffect {
 interface ReplayGainSourceMode {
     companion object {
         const val NONE = "none"
-        const val MODE_NONE: Byte = 0
         const val TRACK = "track"
-        const val MODE_TRACK: Byte = 1
         const val ALBUM = "album"
-        const val MODE_ALBUM: Byte = 2
     }
 }
 
@@ -596,19 +528,10 @@ interface ImageSize {
 
 interface NotificationExtraText {
     companion object {
+        const val ARTIST_NAME = "artist"
         const val ALBUM_NAME = "album"
         const val ALBUM_ARTIST_NAME = "album_artist"
         const val ALBUM_AND_YEAR = "album_and_year"
-        const val NEXT_SONG = "next_song"
-    }
-}
-
-interface NotificationPriority {
-    companion object {
-        const val MAXIMUM = "maximum"
-        const val HIGH = "high"
-        const val NORMAL = "normal"
-        const val LOW = "low"
     }
 }
 
@@ -636,7 +559,6 @@ const val LARGER_HEADER_IMAGE = "larger_header_image"
 const val HORIZONTAL_ARTIST_ALBUMS = "horizontal_artist_albums"
 const val COMPACT_ALBUM_SONG_VIEW = "compact_album_song_view"
 const val COMPACT_ARTIST_SONG_VIEW = "compact_artist_song_view"
-const val QUEUE_QUICK_ACTION = "play_queue_action"
 const val NOW_PLAYING_SCREEN = "now_playing_screen"
 const val OPEN_ON_PLAY = "open_on_play"
 const val ADD_EXTRA_CONTROLS = "add_extra_controls"
@@ -661,9 +583,6 @@ const val PREFER_REMAINING_TIME = "prefer_remaining_time"
 const val PREFER_ALBUM_ARTIST_NAME = "prefer_album_artist_name_on_np"
 const val PLAYBACK_SPEED = "playback_speed"
 const val PLAYBACK_PITCH = "playback_pitch"
-const val GAPLESS_PLAYBACK = "gapless_playback"
-const val NO_CROSSFADE_ON_ALBUMS = "no_crossfade_on_albums"
-const val AUTO_PLAY_ON_SKIP = "auto_play_on_skip"
 const val REWIND_WITH_BACK = "rewind_with_back"
 const val SEEK_INTERVAL = "seek_interval"
 const val REPLAYGAIN_SOURCE_MODE = "replaygain_source_mode"
@@ -681,7 +600,6 @@ const val PAUSE_ON_DISCONNECT = "pause_on_disconnect"
 const val RESUME_ON_BLUETOOTH_CONNECT = "resume_on_bluetooth_connect"
 const val PAUSE_ON_BLUETOOTH_DISCONNECT = "pause_on_bluetooth_disconnect"
 const val IGNORE_AUDIO_FOCUS = "ignore_audio_focus"
-const val PAUSE_ON_TRANSIENT_FOCUS_LOSS = "pause_on_transient_focus_loss"
 const val AUTO_DOWNLOAD_METADATA_POLICY = "auto_download_metadata_policy"
 const val IGNORE_MEDIA_STORE = "ignore_media_store"
 const val USE_FOLDER_ART = "use_folder_art"
@@ -702,9 +620,6 @@ const val ALBUM_MINIMUM_SONGS = "album_minimum_songs"
 const val MINIMUM_SONG_DURATION = "minimum_song_duration"
 const val STOP_WHEN_CLOSED_FROM_RECENTS = "stop_when_closed_from_recents"
 const val NOTIFICATION_EXTRA_TEXT_LINE = "notification_extra_text_line"
-const val NOTIFICATION_PRIORITY = "notification_priority"
-const val ALBUM_ART_ON_LOCK_SCREEN = "album_art_on_lock_screen"
-const val BLURRED_ALBUM_ART = "blurred_album_art"
 const val LANGUAGE_NAME = "language_name"
 const val BACKUP_DATA = "backup_data"
 const val RESTORE_DATA = "restore_data"

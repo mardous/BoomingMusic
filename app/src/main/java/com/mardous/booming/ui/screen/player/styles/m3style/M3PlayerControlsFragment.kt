@@ -88,10 +88,10 @@ class M3PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_m3_
         return M3PlayerAnimator(binding, Preferences.animateControls)
     }
 
-    override fun onSongInfoChanged(song: Song) {
+    override fun onSongInfoChanged(currentSong: Song, nextSong: Song) {
         _binding?.let { nonNullBinding ->
-            nonNullBinding.title.text = song.title
-            nonNullBinding.text.text = getSongArtist(song)
+            nonNullBinding.title.text = currentSong.title
+            nonNullBinding.text.text = getSongArtist(currentSong)
         }
     }
 
@@ -105,8 +105,6 @@ class M3PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_m3_
             }
         }
     }
-
-    override fun onQueueInfoChanged(newInfo: String?) {}
 
     override fun onUpdatePlayPause(isPlaying: Boolean) {
         if (isPlaying) {

@@ -69,10 +69,10 @@ class PlainPlayerFragment : AbsPlayerFragment(R.layout.fragment_plain_player) {
             WindowInsetsCompat.CONSUMED
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.currentSongFlow.collect { song ->
+            playerViewModel.currentSongFlow.collect { currentSong ->
                 _binding?.let { nonNullBinding ->
-                    nonNullBinding.title.text = song.title
-                    nonNullBinding.text.text = getSongArtist(song)
+                    nonNullBinding.title.text = currentSong.title
+                    nonNullBinding.text.text = getSongArtist(currentSong)
                 }
             }
         }

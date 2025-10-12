@@ -23,15 +23,19 @@ import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.local.room.SongEntity
 import com.mardous.booming.data.model.Song
 
-fun List<HistoryEntity>.fromHistoryToSongs(): List<Song> {
+fun List<SongEntity>.toSongs(): List<Song> {
+    return map { it.toSong() }
+}
+
+fun List<Song>.toSongsEntity(playlistEntity: PlaylistEntity): List<SongEntity> {
     return map {
-        it.toSong()
+        it.toSongEntity(playlistEntity.playListId)
     }
 }
 
-fun List<SongEntity>.toSongs(): List<Song> {
+fun List<Song>.toSongsEntity(playlistId: Long): List<SongEntity> {
     return map {
-        it.toSong()
+        it.toSongEntity(playlistId)
     }
 }
 
@@ -45,7 +49,7 @@ fun Song.toHistoryEntity(timePlayed: Long): HistoryEntity {
         size = size,
         duration = duration,
         dateAdded = dateAdded,
-        dateModified = dateModified,
+        dateModified = rawDateModified,
         albumId = albumId,
         albumName = albumName,
         artistId = artistId,
@@ -67,13 +71,13 @@ fun Song.toSongEntity(playListId: Long): SongEntity {
         size = size,
         duration = duration,
         dateAdded = dateAdded,
-        dateModified = dateModified,
+        dateModified = rawDateModified,
         albumId = albumId,
         albumName = albumName,
         artistId = artistId,
         artistName = artistName,
         albumArtist = albumArtistName,
-        genreName = genreName,
+        genreName = genreName
     )
 }
 
@@ -87,7 +91,7 @@ fun SongEntity.toSong(): Song {
         size = size,
         duration = duration,
         dateAdded = dateAdded,
-        dateModified = dateModified,
+        rawDateModified = dateModified,
         albumId = albumId,
         albumName = albumName,
         artistId = artistId,
@@ -107,7 +111,7 @@ fun PlayCountEntity.toSong(): Song {
         size = size,
         duration = duration,
         dateAdded = dateAdded,
-        dateModified = dateModified,
+        rawDateModified = dateModified,
         albumId = albumId,
         albumName = albumName,
         artistId = artistId,
@@ -127,7 +131,7 @@ fun HistoryEntity.toSong(): Song {
         size = size,
         duration = duration,
         dateAdded = dateAdded,
-        dateModified = dateModified,
+        rawDateModified = dateModified,
         albumId = albumId,
         albumName = albumName,
         artistId = artistId,
@@ -147,7 +151,7 @@ fun Song.toPlayCount(timePlayed: Long = -1, playCount: Int = 0, skipCount: Int =
         size = size,
         duration = duration,
         dateAdded = dateAdded,
-        dateModified = dateModified,
+        dateModified = rawDateModified,
         albumId = albumId,
         albumName = albumName,
         artistId = artistId,
@@ -158,16 +162,4 @@ fun Song.toPlayCount(timePlayed: Long = -1, playCount: Int = 0, skipCount: Int =
         playCount = playCount,
         skipCount = skipCount
     )
-}
-
-fun List<Song>.toSongsEntity(playlistEntity: PlaylistEntity): List<SongEntity> {
-    return map {
-        it.toSongEntity(playlistEntity.playListId)
-    }
-}
-
-fun List<Song>.toSongsEntity(playlistId: Long): List<SongEntity> {
-    return map {
-        it.toSongEntity(playlistId)
-    }
 }

@@ -30,11 +30,16 @@ import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.local.room.SongEntity
 import com.mardous.booming.data.mapper.toSongEntity
+import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.Playlist
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.utilities.mapIfValid
 import com.mardous.booming.extensions.utilities.takeOrDefault
 import com.mardous.booming.util.cursor.SortedCursorUtil
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 
 interface PlaylistRepository {
     fun getSongs(playListId: Long): LiveData<List<SongEntity>>
@@ -58,14 +63,15 @@ interface PlaylistRepository {
     suspend fun deletePlaylistSongs(playlists: List<PlaylistEntity>)
     suspend fun favoritePlaylist(): PlaylistEntity
     suspend fun checkFavoritePlaylist(): PlaylistEntity?
-    suspend fun favoriteSongs(): List<SongEntity>
-    fun favoriteObservable(): LiveData<List<SongEntity>>
+    suspend fun favoriteSongs(): List<Song>
+    fun favoriteSongsFlow(): Flow<List<Song>>
     suspend fun toggleFavorite(song: Song): Boolean
     suspend fun isSongFavorite(songEntity: SongEntity): List<SongEntity>
     suspend fun isSongFavorite(songId: Long): Boolean
     suspend fun removeSongFromPlaylist(songEntity: SongEntity)
     suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song): Boolean
     suspend fun deleteSongFromAllPlaylists(songId: Long)
+    suspend fun deleteSongsFromAllPlaylists(songsIds: List<Long>)
 }
 
 class RealPlaylistRepository(
@@ -171,16 +177,20 @@ class RealPlaylistRepository(
         return playlistDao.playlist(favorite).firstOrNull()
     }
 
-    override suspend fun favoriteSongs(): List<SongEntity> {
+    override suspend fun favoriteSongs(): List<Song> {
         val favorite = context.getString(R.string.favorites_label)
-        return if (playlistDao.playlist(favorite).isNotEmpty())
-            playlistDao.favoritesSongs(
-                playlistDao.playlist(favorite).first().playListId
-            ) else emptyList()
+        val favoritesPlaylist = playlistDao.playlist(favorite)
+        return if (favoritesPlaylist.isNotEmpty())
+            playlistDao.favoritesSongs(favoritesPlaylist.single().playListId).toSongs()
+        else emptyList()
     }
 
-    override fun favoriteObservable(): LiveData<List<SongEntity>> =
-        playlistDao.favoritesSongsLiveData(context.getString(R.string.favorites_label))
+    override fun favoriteSongsFlow(): Flow<List<Song>> =
+        playlistDao.favoritesSongsFlow(context.getString(R.string.favorites_label)).map {
+            withContext(Dispatchers.Default) {
+                it.toSongs()
+            }
+        }
 
     override suspend fun toggleFavorite(song: Song): Boolean {
         val playlist = favoritePlaylist()
@@ -217,6 +227,13 @@ class RealPlaylistRepository(
 
     override suspend fun deleteSongFromAllPlaylists(songId: Long) {
         playlistDao.deleteSongFromAllPlaylists(songId)
+    }
+
+    override suspend fun deleteSongsFromAllPlaylists(songsIds: List<Long>) {
+        if (songsIds.isEmpty()) return
+        songsIds.chunked(MAX_ITEMS_PER_CHUNK).forEach { chunkIds ->
+            playlistDao.deleteSongsFromAllPlaylists(chunkIds)
+        }
     }
 
     @Suppress("DEPRECATION")

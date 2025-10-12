@@ -159,7 +159,6 @@
     <string name="save_queue">حفظ قائمة الانتظار</string>
     <string name="clear_queue">مسح قائمة الانتظار</string>
     <string name="action_move_to_current_track">إظهار المسار الحالي</string>
-    <string name="shuffle_queue">خلط قائمة الانتظار</string>
     <string name="action_add_to_favorites">إضافة إلى المفضلة</string>
     <string name="action_remove_from_favorites">إزالة من المفضلة</string>
     <string name="added_to_favorites_label">تمت الإضافة إلى المفضلة</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">إزالة من قائمة التشغيل</string>
     <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">إزالة من قائمة الانتظار</string>
-    <string name="x_removed_from_playing_queue">تم حذف %s</string>
     <string name="put_after_current_track">وضع بعد المسار الحالي</string>
     <string name="undo_action">التراجع</string>
     <string name="set_artist_image">تعيين صورة الفنان</string>
@@ -495,8 +493,6 @@
     <string name="sound_settings">إعدادات الصوت</string>
     <string name="volume_label">حجم</string>
     <string name="tempo_label">تمبو</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">EQ خارجي</string>
     <string name="custom">مخصص</string>
     <!-- Lyrics viewer -->
@@ -612,7 +608,6 @@
     <string name="headphones_header">سماعات</string>
     <string name="bluetooth_header">البلوتوث</string>
     <string name="audio_focus_header">التركيز الصوتي</string>
-    <string name="lockscreen_header">شاشة القفل</string>
     <string name="shuffle_mode_header">الوضع العشوائي</string>
     <string name="display_header">عرض</string>
     <string name="backup_restore_header">النسخ الاحتياطي/الاستعادة</string>
@@ -705,10 +700,6 @@
     <string name="prefer_album_artist_name_summary">يعرض اسم فنان ألبوم بدلاً من اسم فنان الأغنية (إذا كان متاحاً).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="gapless_playback_title">تشغيل بلا هوادة</string>
-    <string name="gapless_playback_summary">الانتقال السلس بين الأغاني. يمكن أن يسبب مشاكل في التشغيل على بعض الأجهزة.</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">وضع المصدر</string>
     <string name="replaygain_preamp_title">مستوى تمهيدي</string>
     <string name="replaygain_preamp_summary">تعيين مستوى الصوت عند تمكين إعادة التشغيل.</string>
@@ -719,8 +710,6 @@
     <string name="remember_shuffle_mode_summary">سيبقى الوضع العشوائي قيد التشغيل عند تحديد قائمة جديدة من الأغنية.</string>
     <string name="album_shuffle_mode_title">وضع خلط الألبوم</string>
     <string name="artist_shuffle_mode_title">وضع خلط الفنان</string>
-    <string name="auto_play_on_skip_title">التشغيل التلقائي عند تخطي</string>
-    <string name="auto_play_on_skip_summary">إذا تم إيقاف التشغيل مؤقتاً، فإن الضغط على الأزرار السابقة أو التالية سيبدأ الموسيقى.</string>
     <string name="rewind_with_back_title">"إرجاع بـ 'السابقة'"</string>
     <string name="rewind_with_back_summary">إرجاع مسار التشغيل إلى البداية أو الانتقال إلى المسار السابق إذا كان المسار الحالي في البداية.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -735,8 +724,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">إيقاف التشغيل عند فصل سماعة البلوتوث A2DP. مستحسن.</string>
     <string name="ignore_audio_focus_title">تجاهل التركيز الصوتي</string>
     <string name="ignore_audio_focus_summary">تشغيل الصوت دائما في الخلفية بغض النظر عن أي شيء آخر يتم تشغيله.</string>
-    <string name="pause_on_transient_focus_loss_title">فقدان التركيز الانتقالي</string>
-    <string name="pause_on_transient_focus_loss_summary">إيقاف التشغيل المؤقت لفقدان التركيز المؤقت (أي الإشعارات، المكالمات الواردة).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">تحميل تلقائي لبيانات التعريف</string>
     <string name="ignore_media_store_album_covers_title">تجاهل أغلفة متجر الوسائط</string>
@@ -772,11 +759,6 @@
     <string name="min_song_duration_summary">كم ثانية (على الأقل) يجب أن تدوم أغنية لعرضها في مكتبتك.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">سطر إضافي من النص</string>
-    <string name="notification_priority_title">أولوية الإشعار</string>
-    <string name="album_art_on_lockscreen_title">إظهار غلاف الألبوم</string>
-    <string name="album_art_on_lockscreen_summary">يستخدم غلاف ألبوم الأغاني الحالية كخلفية لشاشة القفل. قد يسبب استخدام عالي للذاكرة. الفواصل مع الجهاز.</string>
-    <string name="blurred_album_art_title">صورة الألبوم المبهمة</string>
-    <string name="blurred_album_art_summary">يطمس غلاف الألبوم على شاشة القفل. يمكن أن يسبب مشاكل مع تطبيقات ودويدج الطرف الثالث.</string>
     <string name="app_language_title">لغة التطبيق</string>
     <string name="backup_data_title">النسخ الاحتياطي لبيانات التطبيق</string>
     <string name="backup_app_data_summary">إنشاء ملف يحتوي على بيانات التطبيق الأساسية وحفظه في وحدة التخزين الخارجية.</string>

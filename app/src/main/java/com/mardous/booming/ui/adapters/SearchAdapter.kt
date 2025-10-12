@@ -119,14 +119,14 @@ class SearchAdapter(
             PLAYLIST -> {
                 val playlist = dataSet[position] as PlaylistWithSongs
                 holder.title?.text = playlist.playlistEntity.playlistName
-                holder.text?.text = playlist.songCount.songsStr(holder.itemView.context)
+                holder.text?.text = playlist.songCount.asNumberOfSongs(holder.itemView.context)
                 holder.image?.playlistImage(playlist)
             }
 
             GENRE -> {
                 val genre = dataSet[position] as Genre
                 holder.title?.text = genre.name
-                holder.text?.text = genre.songCount.songsStr(holder.itemView.context)
+                holder.text?.text = genre.songCount.asNumberOfSongs(holder.itemView.context)
             }
 
             else -> holder.title?.text = dataSet[position].toString()

@@ -17,6 +17,7 @@
 
 package com.mardous.booming.ui.adapters.song
 
+import android.annotation.SuppressLint
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -34,19 +35,22 @@ import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.Preferences
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
+@SuppressLint("NotifyDataSetChanged")
 class PlayingQueueSongAdapter(
     activity: FragmentActivity,
-    dataSet: List<Song>,
-    callback: Callback? = null,
-    current: Int
-) : SongAdapter(activity, dataSet, R.layout.item_list_draggable, callback = callback),
+    private var playlist: MutableList<Song>,
+    current: Int,
+    callback: ISongCallback? = null,
+) : SongAdapter(activity, playlist, R.layout.item_list_draggable, callback = callback),
     DraggableItemAdapter<PlayingQueueSongAdapter.ViewHolder> {
 
-    interface Callback : ISongCallback {
-        fun onRemoveSong(song: Song, fromPosition: Int)
-    }
+    private var needsUpdate = false
+    override var dataSet: List<Song>
+        get() = playlist
+        set(value) { playlist = value.toMutableList() }
 
-    var currentPosition: Int = current
+    var current: Int = current
+        private set
 
     override fun createViewHolder(view: View, viewType: Int): SongAdapter.ViewHolder {
         return ViewHolder(view)
@@ -65,20 +69,11 @@ class PlayingQueueSongAdapter(
         }
     }
 
-    fun setPosition(newPosition: Int) {
-        if (newPosition > dataSet.lastIndex || newPosition < 0)
-            return
-
-        if (newPosition > this.currentPosition) {
-            notifyItemRangeChanged(currentPosition, (newPosition - currentPosition) + 1)
-        } else if (newPosition < this.currentPosition) {
-            notifyItemRangeChanged(newPosition, (currentPosition - newPosition) + 1)
-        }
-        this.currentPosition = newPosition
-    }
-
-    fun swapDataSet(dataSet: List<Song>) {
-        this.dataSet = dataSet
+    fun setPlayingQueue(playlist: MutableList<Song>, position: Int) {
+        this.current = position
+        this.playlist = playlist
+        notifyDataSetChanged()
+        needsUpdate = false
     }
 
     private fun setAlpha(holder: SongAdapter.ViewHolder, alpha: Float) {
@@ -100,8 +95,8 @@ class PlayingQueueSongAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when {
-            position < currentPosition -> HISTORY
-            position > currentPosition -> UP_NEXT
+            position < current -> HISTORY
+            position > current -> UP_NEXT
             else -> CURRENT
         }
     }
@@ -115,12 +110,12 @@ class PlayingQueueSongAdapter(
     }
 
     override fun onMoveItem(from: Int, to: Int) {
-        val playerViewModel = activity.getViewModel<PlayerViewModel>()
-        playerViewModel.moveSong(from, to)
+        val removedSong = playlist.removeAt(from)
+        playlist.add(to, removedSong)
     }
 
     override fun onCheckCanDrop(p1: Int, p2: Int): Boolean {
-        return true
+        return !needsUpdate
     }
 
     override fun onItemDragStarted(position: Int) {
@@ -128,7 +123,11 @@ class PlayingQueueSongAdapter(
     }
 
     override fun onItemDragFinished(fromPosition: Int, toPosition: Int, result: Boolean) {
-        notifyDataSetChanged()
+        needsUpdate = result
+        if (needsUpdate) {
+            notifyDataSetChanged()
+            activity.getViewModel<PlayerViewModel>().moveSong(fromPosition, toPosition)
+        }
     }
 
     companion object {
@@ -155,43 +154,34 @@ class PlayingQueueSongAdapter(
         override fun onPrepareSongMenu(menu: Menu) {
             super.onPrepareSongMenu(menu)
             menu.findItem(R.id.action_put_after_current_track)?.let { menuItem ->
-                menuItem.isEnabled = layoutPosition > currentPosition + 1
+                menuItem.isEnabled = layoutPosition > current + 1
             }
             menu.findItem(R.id.action_stop_after_track)?.let { menuItem ->
-                menuItem.isEnabled = layoutPosition >= currentPosition
+                menuItem.isEnabled = layoutPosition >= current
             }
         }
 
         override fun onSongMenuItemClick(item: MenuItem): Boolean {
             return when (item.itemId) {
                 R.id.action_remove_from_playing_queue -> {
-                    if (callback is Callback) {
-                        callback.onRemoveSong(song, layoutPosition)
-                    } else {
-                        val playerViewModel = activity.getViewModel<PlayerViewModel>()
-                        playerViewModel.removePosition(layoutPosition)
-                    }
+                    val playerViewModel = activity.getViewModel<PlayerViewModel>()
+                    playerViewModel.removePosition(layoutPosition)
                     true
                 }
 
                 R.id.action_stop_after_track -> {
                     val playerViewModel = activity.getViewModel<PlayerViewModel>()
-                    val stopAtResult = playerViewModel.stopAt(layoutPosition)
-                    if (stopAtResult.first != Song.emptySong) {
-                        if (stopAtResult.second) {
-                            activity.showToast(
-                                activity.getString(
-                                    R.string.sleep_timer_stop_after_x,
-                                    stopAtResult.first.title
+                    playerViewModel.stopAt(layoutPosition).observe(activity) { (title, canceled) ->
+                        if (title != null) {
+                            if (canceled) {
+                                activity.showToast(
+                                    activity.getString(R.string.sleep_timer_stop_after_x_canceled, title)
                                 )
-                            )
-                        } else {
-                            activity.showToast(
-                                activity.getString(
-                                    R.string.sleep_timer_stop_after_x_canceled,
-                                    stopAtResult.first.title
+                            } else {
+                                activity.showToast(
+                                    activity.getString(R.string.sleep_timer_stop_after_x, title)
                                 )
-                            )
+                            }
                         }
                     }
                     true

@@ -29,6 +29,7 @@ import android.view.View.OnTouchListener
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.media3.common.Player
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -38,10 +39,9 @@ import com.mardous.booming.core.model.player.ProgressState
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.getShapeAppearanceModel
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
-import com.mardous.booming.extensions.media.durationStr
+import com.mardous.booming.extensions.media.asReadableDuration
 import com.mardous.booming.extensions.resources.applyColor
 import com.mardous.booming.extensions.resources.setMarquee
-import com.mardous.booming.service.playback.Playback
 import com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPreferenceDialog
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.MainActivity
@@ -50,7 +50,6 @@ import com.mardous.booming.ui.screen.player.PlayerColorScheme
 import com.mardous.booming.ui.screen.player.PlayerTintTarget
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.*
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
@@ -82,16 +81,15 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     protected open val songInfoView: TextView? = null
 
     protected val isShuffleModeOn: Boolean
-        get() = playerViewModel.shuffleMode.isOn
+        get() = playerViewModel.shuffleModeEnabled
 
     protected val isRepeatModeOn: Boolean
-        get() = playerViewModel.repeatMode.isOn
+        get() = playerViewModel.repeatMode != Player.REPEAT_MODE_OFF
 
     private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
 
     private var isShown = false
-    private var extraInfoJob: Job? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -114,8 +112,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.currentSongFlow.collect {
-                onSongInfoChanged(it)
+            combine(playerViewModel.currentSongFlow, playerViewModel.nextSongFlow)
+            { currentSong, nextSong -> Pair(currentSong, nextSong) }.collect { (current, next) ->
+                onSongInfoChanged(current, next)
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
@@ -141,9 +140,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             combine(
-                playerViewModel.currentProgressFlow,
-                playerViewModel.totalDurationFlow
-            ) { progress, duration -> ProgressState(progress.toLong(), duration.toLong()) }
+                playerViewModel.progressFlow,
+                playerViewModel.durationFlow
+            ) { progress, duration -> ProgressState(progress, duration) }
                 .filter { progress -> progress.mayUpdateUI }
                 .collectLatest { progress ->
                     if (musicSlider?.isTrackingTouch == false) {
@@ -201,15 +200,15 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
 
     override fun onSkipButtonHold(direction: Int) {
         when (direction) {
-            SkipButtonTouchHandler.DIRECTION_NEXT -> playerViewModel.fastForward()
-            SkipButtonTouchHandler.DIRECTION_PREVIOUS -> playerViewModel.rewind()
+            SkipButtonTouchHandler.DIRECTION_NEXT -> playerViewModel.seekForward()
+            SkipButtonTouchHandler.DIRECTION_PREVIOUS -> playerViewModel.seekBack()
         }
     }
 
     override fun onSkipButtonTap(direction: Int) {
         when (direction) {
-            SkipButtonTouchHandler.DIRECTION_NEXT -> playerViewModel.playNext()
-            SkipButtonTouchHandler.DIRECTION_PREVIOUS -> playerViewModel.playPrevious()
+            SkipButtonTouchHandler.DIRECTION_NEXT -> playerViewModel.seekToNext()
+            SkipButtonTouchHandler.DIRECTION_PREVIOUS -> playerViewModel.seekToPrevious()
         }
     }
 
@@ -222,7 +221,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         musicSlider?.setListener(object : MusicSlider.Listener {
             override fun onProgressChanged(slider: MusicSlider, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
-                    onUpdateSlider(progress.toLong(), playerViewModel.totalDuration.toLong())
+                    onUpdateSlider(progress.toLong(), playerViewModel.duration)
                 }
             }
 
@@ -237,41 +236,39 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     private fun onUpdateSlider(progress: Long, total: Long) {
         musicSlider?.valueTo = total.toInt()
         musicSlider?.value = progress.toInt()
-        songCurrentProgress?.text = progress.durationStr()
+        songCurrentProgress?.text = progress.asReadableDuration()
         songTotalTime?.text = if (Preferences.preferRemainingTime) {
-            (total - progress).coerceAtLeast(0L).durationStr()
+            (total - progress).coerceAtLeast(0L).asReadableDuration()
         } else {
-            total.durationStr()
+            total.asReadableDuration()
         }
     }
 
     protected open fun onCreatePlayerAnimator(): PlayerAnimator? = null
 
-    protected abstract fun onSongInfoChanged(song: Song)
+    protected abstract fun onSongInfoChanged(currentSong: Song, nextSong: Song)
 
     protected abstract fun onExtraInfoChanged(extraInfo: String?)
 
-    abstract fun onQueueInfoChanged(newInfo: String?)
-
     protected abstract fun onUpdatePlayPause(isPlaying: Boolean)
 
-    open fun onUpdateRepeatMode(repeatMode: Playback.RepeatMode) {
+    open fun onUpdateRepeatMode(repeatMode: Int) {
         val iconResource = when (repeatMode) {
-            Playback.RepeatMode.One -> R.drawable.ic_repeat_one_24dp
+            Player.REPEAT_MODE_ONE -> R.drawable.ic_repeat_one_24dp
             else -> R.drawable.ic_repeat_24dp
         }
         repeatButton?.let {
             it.setIconResource(iconResource)
             it.applyColor(
-                getPlaybackControlsColor(repeatMode != Playback.RepeatMode.Off),
+                getPlaybackControlsColor(repeatMode != Player.REPEAT_MODE_OFF),
                 isIconButton = true
             )
         }
     }
 
-    open fun onUpdateShuffleMode(shuffleMode: Playback.ShuffleMode) {
+    open fun onUpdateShuffleMode(shuffleModeEnabled: Boolean) {
         shuffleButton?.applyColor(
-            getPlaybackControlsColor(shuffleMode == Playback.ShuffleMode.On),
+            getPlaybackControlsColor(shuffleModeEnabled),
             isIconButton = true
         )
     }
@@ -308,6 +305,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     protected fun getSongArtist(song: Song) =
         playerFragment?.getSongArtist(song)
 
+    protected fun getNextSongInfo(nextSong: Song) =
+        playerFragment?.getNextSongInfo(nextSong)
+
     protected fun isExtraInfoEnabled() =
         playerFragment?.isExtraInfoEnabled() ?: false
 
@@ -328,12 +328,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
                 setMarquee(songTitleView, songArtistView, songInfoView, marquee = marquee)
             }
             DISPLAY_ALBUM_TITLE,
-            PREFER_ALBUM_ARTIST_NAME -> onSongInfoChanged(playerViewModel.currentSong)
+            PREFER_ALBUM_ARTIST_NAME -> onSongInfoChanged(playerViewModel.currentSong, playerViewModel.nextSong)
             DISPLAY_EXTRA_INFO,
-            EXTRA_INFO -> {
-                extraInfoJob?.cancel()
-                extraInfoJob = playerViewModel.requestExtraInfo()
-            }
+            EXTRA_INFO -> playerViewModel.generateExtraInfo()
         }
     }
 

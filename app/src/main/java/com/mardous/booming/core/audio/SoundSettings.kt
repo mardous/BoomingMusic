@@ -20,7 +20,7 @@ package com.mardous.booming.core.audio
 import android.content.Context
 import androidx.core.content.edit
 import com.mardous.booming.core.model.equalizer.*
-import com.mardous.booming.service.equalizer.EqualizerManager.Companion.PREFERENCES_NAME
+import com.mardous.booming.playback.equalizer.EqualizerManager.Companion.PREFERENCES_NAME
 import com.mardous.booming.util.PLAYBACK_PITCH
 import com.mardous.booming.util.PLAYBACK_SPEED
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,10 +38,6 @@ class SoundSettings(context: Context) {
     val tempoFlow: StateFlow<EqEffectState<TempoLevel>> get() = _tempoFlow
     val tempo: TempoLevel get() = _tempoFlow.value.value
 
-    private val _crossfadeFlow = MutableStateFlow(createCrossfadeState())
-    val crossfadeFlow: StateFlow<EqEffectState<CrossfadeState>> get() = _crossfadeFlow
-    val crossfade: CrossfadeState get() = _crossfadeFlow.value.value
-
     suspend fun setBalance(update: EqEffectUpdate<BalanceLevel>, apply: Boolean) {
         val newState = update.toState().also {
             if (apply) it.apply()
@@ -54,13 +50,6 @@ class SoundSettings(context: Context) {
             if (apply) it.apply()
         }
         _tempoFlow.emit(newState)
-    }
-
-    suspend fun setCrossfade(update: EqEffectUpdate<CrossfadeState>, apply: Boolean) {
-        val newState = update.toState().also {
-            if (apply) it.apply()
-        }
-        _crossfadeFlow.emit(newState)
     }
 
     suspend fun applyPendingState() {
@@ -106,32 +95,11 @@ class SoundSettings(context: Context) {
         )
     }
 
-    private fun createCrossfadeState(): EqEffectState<CrossfadeState> {
-        val tempo = CrossfadeState(
-            apply = true,
-            crossfadeDuration = prefs.getInt(CROSSFADE_DURATION, 0),
-            audioFadeDuration = prefs.getInt(AUDIO_FADE_DURATION, 0)
-        )
-        return EqEffectState(
-            isSupported = true,
-            isEnabled = true,
-            value = tempo,
-            onCommitEffect = {
-                prefs.edit {
-                    putInt(CROSSFADE_DURATION, it.value.crossfadeDuration)
-                    putInt(AUDIO_FADE_DURATION, it.value.audioFadeDuration)
-                }
-            }
-        )
-    }
-
     companion object {
         private const val LEFT_BALANCE = "equalizer.balance.left"
         private const val RIGHT_BALANCE = "equalizer.balance.right"
         private const val SPEED = PLAYBACK_SPEED
         private const val PITCH = PLAYBACK_PITCH
         private const val IS_FIXED_PITCH = "equalizer.pitch.fixed"
-        private const val CROSSFADE_DURATION = "equalizer.crossfade.duration"
-        private const val AUDIO_FADE_DURATION = "equalizer.fade.duration"
     }
 }

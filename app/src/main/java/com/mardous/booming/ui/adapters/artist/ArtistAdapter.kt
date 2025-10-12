@@ -30,8 +30,8 @@ import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.isValidPosition
 import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.artistInfo
+import com.mardous.booming.extensions.media.asSectionName
 import com.mardous.booming.extensions.media.displayName
-import com.mardous.booming.extensions.media.sectionName
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
@@ -106,7 +106,7 @@ class ArtistAdapter(
     }
 
     override fun getPopupText(view: View, position: Int): CharSequence {
-        return dataSet.getOrNull(position)?.displayName()?.sectionName() ?: ""
+        return dataSet.getOrNull(position)?.displayName()?.asSectionName() ?: ""
     }
 
     open inner class ViewHolder(itemView: View) : MediaEntryViewHolder(itemView) {

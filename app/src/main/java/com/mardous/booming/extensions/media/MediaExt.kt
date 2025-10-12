@@ -62,20 +62,20 @@ fun ContentResolver.deleteAlbumArt(albumId: Long) {
  * iTunes uses for example 1002 for track 2 CD1 or 3011 for track 11 CD3.
  * this method converts those values to normal track numbers
  */
-fun Int.trackNumber(): Int = this % 1000
+fun Int.asReadableTrackNumber(): Int = this % 1000
 
-fun Int.songsStr(context: Context): String = context.plurals(R.plurals.x_songs, this)
+fun Int.asNumberOfSongs(context: Context): String = context.plurals(R.plurals.x_songs, this)
 
-fun Int.timesStr(context: Context): String {
+fun Int.asNumberOfTimes(context: Context): String {
     return if (this <= 0) {
         context.getString(R.string.label_never)
     } else context.plurals(R.plurals.x_times, this)
 }
 
-fun Long.albumCoverUri(): Uri =
+fun Long.asAlbumCoverUri(): Uri =
     ContentUris.withAppendedId("content://media/external/audio/albumart".toUri(), this)
 
-fun Long.durationStr(readableFormat: Boolean = false): String {
+fun Long.asReadableDuration(readableFormat: Boolean = false): String {
     val totalSeconds = this / 1000
     val hours = totalSeconds / 3600
     val minutes = (totalSeconds % 3600) / 60
@@ -96,7 +96,7 @@ fun Long.durationStr(readableFormat: Boolean = false): String {
     }
 }
 
-fun String?.sectionName(): String {
+fun String?.asSectionName(): String {
     if (this.isNullOrEmpty())
         return ""
 

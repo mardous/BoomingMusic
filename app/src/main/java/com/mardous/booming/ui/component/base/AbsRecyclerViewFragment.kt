@@ -236,8 +236,12 @@ abstract class AbsRecyclerViewFragment<A : RecyclerView.Adapter<*>, LM : Recycle
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
+        _binding?.recyclerView?.layoutManager = null
+        _binding?.recyclerView?.adapter = null
         _binding = null
+        super.onDestroyView()
+        layoutManager = null
+        adapter = null
     }
 
     override fun onPause() {

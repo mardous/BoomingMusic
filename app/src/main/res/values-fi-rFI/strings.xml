@@ -159,7 +159,6 @@
     <string name="save_queue">Tallenna jono</string>
     <string name="clear_queue">Tyhjennä jono</string>
     <string name="action_move_to_current_track">Näytä nykyinen kappale</string>
-    <string name="shuffle_queue">Sekoita jono</string>
     <string name="action_add_to_favorites">Lisää suosikkeihin</string>
     <string name="action_remove_from_favorites">Poista suosikeista</string>
     <string name="added_to_favorites_label">Lisätty suosikkeihin</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">Poista soittolistalta</string>
     <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Poista soittojonosta</string>
-    <string name="x_removed_from_playing_queue">%s poistettu</string>
     <string name="put_after_current_track">Laita nykyisen kappaleen jälkeen</string>
     <string name="undo_action">Kumoa</string>
     <string name="set_artist_image">Aseta esittäjän kuva</string>
@@ -463,8 +461,6 @@
     <string name="sound_settings">Äänen asetukset</string>
     <string name="volume_label">Tilavuus</string>
     <string name="tempo_label">Tempo</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">Ulkoinen EQ</string>
     <string name="custom">Mukautettu</string>
     <!-- Lyrics viewer -->
@@ -580,7 +576,6 @@
     <string name="headphones_header">Kuulokkeet</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Äänen tarkennus</string>
-    <string name="lockscreen_header">Lukitusnäyttö</string>
     <string name="shuffle_mode_header">Sekoita tila</string>
     <string name="display_header">Näyttö</string>
     <string name="backup_restore_header">Varmuuskopiointi/palautus</string>
@@ -673,10 +668,6 @@
     <string name="prefer_album_artist_name_summary">Näyttää Album-artistin nimen Song-artistin nimen sijaan (jos saatavilla).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="gapless_playback_title">Puutteeton toisto</string>
-    <string name="gapless_playback_summary">Sileä siirtyminen kappaleiden välillä. Voi aiheuttaa toisto-ongelmia joillakin laitteilla.</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">Lähde tila</string>
     <string name="replaygain_preamp_title">PreAmpin taso</string>
     <string name="replaygain_preamp_summary">Aseta äänenvoimakkuuden taso, kun ReplayGain on käytössä.</string>
@@ -687,8 +678,6 @@
     <string name="remember_shuffle_mode_summary">Sekoitustila pysyy päällä, kun valitaan uusi kappaleluettelo.</string>
     <string name="album_shuffle_mode_title">Albumin sekoitustila</string>
     <string name="artist_shuffle_mode_title">Esittäjän sekoitustila</string>
-    <string name="auto_play_on_skip_title">Automaattinen toisto ohitettaessa</string>
-    <string name="auto_play_on_skip_summary">Jos toisto keskeytetään, aiempien painikkeiden napauttaminen tai Seuraavat painikkeet käynnistävät musiikin.</string>
     <string name="rewind_with_back_title">"Rewind kanssa 'Edellinen'"</string>
     <string name="rewind_with_back_summary">Rewind soittokappale alkaa tai siirry edelliseen kappaleeseen, jos nykyinen kappale on alussa.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -703,8 +692,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Keskeyttää toiston, kun Bluetooth A2DP -kuulokkeet on katkaistu. Suositeltava.</string>
     <string name="ignore_audio_focus_title">Ohita äänen tarkennus</string>
     <string name="ignore_audio_focus_summary">Toista ääntä aina taustalla riippumatta siitä, mitä muuta soitetaan.</string>
-    <string name="pause_on_transient_focus_loss_title">Ohimenevä tarkennuksen menetys</string>
-    <string name="pause_on_transient_focus_loss_summary">Keskeytä toisto ohimenevän tarkennuksen menetyksen (ts. ilmoitukset, saapuvat puhelut).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Lataa metatiedot automaattisesti</string>
     <string name="ignore_media_store_album_covers_title">Älä huomioi Media Storen kansia</string>
@@ -740,11 +727,6 @@
     <string name="min_song_duration_summary">Kuinka monta sekuntia (vähintään) täytyy kestää kappaletta, jotta se näkyisi kirjastossa.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Muu rivi tekstiä</string>
-    <string name="notification_priority_title">Ilmoitusten prioriteetti</string>
-    <string name="album_art_on_lockscreen_title">Näytä albumin kansi</string>
-    <string name="album_art_on_lockscreen_summary">Käyttää nykyistä kappaleiden albumin kantta lukitusnäytön taustakuvaksi. Saattaa aiheuttaa korkean muistinkäytön. Vaihtelee laitteen kanssa.</string>
-    <string name="blurred_album_art_title">Sumentunut albumin kansikuva</string>
-    <string name="blurred_album_art_summary">Blurs the albumin kansi on lukitusnäytöllä. Voi aiheuttaa ongelmia kolmannen osapuolen sovelluksissa ja widgeteissä.</string>
     <string name="app_language_title">Sovelluksen kieli</string>
     <string name="backup_data_title">Varmuuskopioi sovellustiedot</string>
     <string name="backup_app_data_summary">Luo tiedosto, joka sisältää sovelluksen olennaisia tietoja ja tallenna se ulkoiseen tallennustilaan.</string>

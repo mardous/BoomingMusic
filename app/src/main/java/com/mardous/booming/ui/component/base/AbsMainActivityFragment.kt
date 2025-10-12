@@ -17,6 +17,7 @@
 
 package com.mardous.booming.ui.component.base
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -37,9 +38,13 @@ import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.util.OPEN_ON_PLAY
+import com.mardous.booming.util.PLAY_ON_STARTUP_MODE
+import com.mardous.booming.util.PlayOnStartupMode
 import com.mardous.booming.util.PlayOnStartupMode.Companion.WITH_EXPANDED_PLAYER
-import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.Preferences.requireString
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -51,6 +56,7 @@ abstract class AbsMainActivityFragment @JvmOverloads constructor(@LayoutRes layo
     val playerViewModel: PlayerViewModel by activityViewModel()
     val libraryViewModel: LibraryViewModel by activityViewModel()
 
+    protected val preferences: SharedPreferences by inject()
     protected val mainActivity: MainActivity
         get() = requireActivity() as MainActivity
 
@@ -65,12 +71,13 @@ abstract class AbsMainActivityFragment @JvmOverloads constructor(@LayoutRes layo
                         MediaEvent.FavoriteContentChanged -> onFavoriteContentChanged()
                         MediaEvent.MediaContentChanged -> onMediaContentChanged()
                         MediaEvent.PlaybackRestored -> {
-                            if (Preferences.playOnStartupMode == WITH_EXPANDED_PLAYER) {
+                            val mode = preferences.requireString(PLAY_ON_STARTUP_MODE, PlayOnStartupMode.NEVER)
+                            if (mode == WITH_EXPANDED_PLAYER) {
                                 mainActivity.expandPanel()
                             }
                         }
                         MediaEvent.PlaybackStarted -> {
-                            if (Preferences.openOnPlay) {
+                            if (preferences.getBoolean(OPEN_ON_PLAY, false)) {
                                 mainActivity.expandPanel()
                             }
                         }

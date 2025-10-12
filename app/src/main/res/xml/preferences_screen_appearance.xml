@@ -100,30 +100,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        app:title="@string/lockscreen_header"
-        app:layout="@layout/preference_category_title"
-        app:key="lockscreen_category">
-
-        <SwitchPreferenceCompat
-            app:icon="@drawable/ic_image_24dp"
-            app:title="@string/album_art_on_lockscreen_title"
-            app:summary="@string/album_art_on_lockscreen_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view"
-            app:widgetLayout="@layout/preference_switch"
-            app:key="album_art_on_lock_screen"/>
-
-        <SwitchPreferenceCompat
-            app:icon="@drawable/ic_blur_on_24dp"
-            app:title="@string/blurred_album_art_title"
-            app:summary="@string/blurred_album_art_summary"
-            app:defaultValue="false"
-            app:dependency="album_art_on_lock_screen"
-            app:layout="@layout/list_item_view"
-            app:widgetLayout="@layout/preference_switch"
-            app:key="blurred_album_art"/>
-
-    </PreferenceCategory>
-
 </androidx.preference.PreferenceScreen>

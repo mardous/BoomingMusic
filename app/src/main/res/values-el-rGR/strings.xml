@@ -159,7 +159,6 @@
     <string name="save_queue">Αποθήκευση ουράς</string>
     <string name="clear_queue">Εκκαθάριση ουράς</string>
     <string name="action_move_to_current_track">Εμφάνιση τρέχοντος κομματιού</string>
-    <string name="shuffle_queue">Τυχαία αναπαραγωγή ουράς</string>
     <string name="action_add_to_favorites">Προσθήκη στα Αγαπημένα</string>
     <string name="action_remove_from_favorites">Αφαίρεση από τα Αγαπημένα</string>
     <string name="added_to_favorites_label">Προστέθηκε στα Αγαπημένα</string>
@@ -169,7 +168,6 @@
     <string name="action_remove_from_playlist">Αφαίρεση από τη λίστα αναπαραγωγής</string>
     <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Αφαίρεση από την ουρά αναπαραγωγής</string>
-    <string name="x_removed_from_playing_queue">%s removed</string>
     <string name="put_after_current_track">Τοποθέτηση μετά το τρέχον κομμάτι</string>
     <string name="undo_action">Αναίρεση</string>
     <string name="set_artist_image">Ορισμός εικόνας καλλιτέχνη</string>
@@ -463,8 +461,6 @@
     <string name="sound_settings">Ρυθμίσεις ήχου</string>
     <string name="volume_label">Όγκος</string>
     <string name="tempo_label">Ρυθμός</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">Εξωτερικό EQ</string>
     <string name="custom">Προσαρμοσμένο</string>
     <!-- Lyrics viewer -->
@@ -580,7 +576,6 @@
     <string name="headphones_header">Ακουστικά</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Εστίαση ήχου</string>
-    <string name="lockscreen_header">Οθόνη Κλειδώματος</string>
     <string name="shuffle_mode_header">Λειτουργία ανακατέματος</string>
     <string name="display_header">Εμφάνιση</string>
     <string name="backup_restore_header">Αντίγραφο/επαναφορά</string>
@@ -673,10 +668,6 @@
     <string name="prefer_album_artist_name_summary">Εμφανίζει το όνομα του καλλιτέχνη του Album αντί για το όνομα του Song-artist\'s (αν υπάρχει).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="gapless_playback_title">Αναπαραγωγή χωρίς κενά</string>
-    <string name="gapless_playback_summary">Ομαλή μετάβαση μεταξύ τραγουδιών. Μπορεί να προκαλέσει προβλήματα αναπαραγωγής σε ορισμένες συσκευές.</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">Λειτουργία πηγής</string>
     <string name="replaygain_preamp_title">PreAmp επίπεδο</string>
     <string name="replaygain_preamp_summary">Ορίστε το επίπεδο έντασης όταν το ReplayGain είναι ενεργοποιημένο.</string>
@@ -687,8 +678,6 @@
     <string name="remember_shuffle_mode_summary">Η λειτουργία ανακατέματος θα παραμείνει ενεργή κατά την επιλογή μιας νέας λίστας τραγουδιών.</string>
     <string name="album_shuffle_mode_title">Λειτουργία ανακατέματος άλμπουμ</string>
     <string name="artist_shuffle_mode_title">Λειτουργία ανακατέματος καλλιτέχνη</string>
-    <string name="auto_play_on_skip_title">Αυτόματη αναπαραγωγή κατά την παράλειψη</string>
-    <string name="auto_play_on_skip_summary">Αν η αναπαραγωγή είναι σε παύση, πατώντας Προηγούμενο ή Επόμενο κουμπί θα ξεκινήσει μουσική.</string>
     <string name="rewind_with_back_title">"Επαναρύθμιση με 'Προηγούμενο'"</string>
     <string name="rewind_with_back_summary">Επαναφέρετε το κομμάτι αναπαραγωγής στην αρχή ή μετακινήστε το προηγούμενο κομμάτι αν το τρέχον βρίσκεται στην αρχή.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -703,8 +692,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Παύση της αναπαραγωγής όταν αποσυνδεθούν τα ακουστικά Bluetooth A2DP. Συνιστάται.</string>
     <string name="ignore_audio_focus_title">Παράβλεψη εστίασης ήχου</string>
     <string name="ignore_audio_focus_summary">Πάντα αναπαραγωγή ήχου στο παρασκήνιο ανεξάρτητα από οτιδήποτε άλλο αναπαράγεται.</string>
-    <string name="pause_on_transient_focus_loss_title">Παροδική απώλεια εστίασης</string>
-    <string name="pause_on_transient_focus_loss_summary">Παύση της αναπαραγωγής σε προσωρινή απώλεια εστίασης (δηλαδή ειδοποιήσεις, εισερχόμενες κλήσεις).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Αυτόματη λήψη μεταδεδομένων</string>
     <string name="ignore_media_store_album_covers_title">Αγνοήστε τα καλύμματα του Media Store</string>
@@ -740,11 +727,6 @@
     <string name="min_song_duration_summary">Πόσα δευτερόλεπτα (τουλάχιστον) πρέπει να διαρκέσουν ένα τραγούδι που θα εμφανιστεί στη βιβλιοθήκη σας.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Πρόσθετη γραμμή κειμένου</string>
-    <string name="notification_priority_title">Προτεραιότητα ειδοποίησης</string>
-    <string name="album_art_on_lockscreen_title">Εμφάνιση εξωφύλλου άλμπουμ</string>
-    <string name="album_art_on_lockscreen_summary">Χρησιμοποιεί το τρέχον εξώφυλλο άλμπουμ τραγουδιών ως ταπετσαρία οθόνης κλειδώματος. Μπορεί να προκαλέσει υψηλή χρήση μνήμης. Ποικίλλει με τη συσκευή.</string>
-    <string name="blurred_album_art_title">Θολό εξώφυλλο άλμπουμ</string>
-    <string name="blurred_album_art_summary">Θολώνει το εξώφυλλο του άλμπουμ στην οθόνη κλειδώματος. Μπορεί να προκαλέσει προβλήματα με εφαρμογές τρίτων και widgets.</string>
     <string name="app_language_title">Γλώσσα εφαρμογής</string>
     <string name="backup_data_title">Αντίγραφο δεδομένων εφαρμογών</string>
     <string name="backup_app_data_summary">Δημιουργήστε ένα αρχείο που περιέχει βασικά δεδομένα εφαρμογών και αποθηκεύστε το στον εξωτερικό χώρο αποθήκευσης.</string>

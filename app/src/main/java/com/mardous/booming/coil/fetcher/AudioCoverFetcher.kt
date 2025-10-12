@@ -10,7 +10,7 @@ import coil3.request.Options
 import com.kyant.taglib.TagLib
 import com.mardous.booming.coil.model.AudioCover
 import com.mardous.booming.coil.util.AudioCoverUtils
-import com.mardous.booming.extensions.media.albumCoverUri
+import com.mardous.booming.extensions.media.asAlbumCoverUri
 import okio.buffer
 import okio.source
 
@@ -22,16 +22,14 @@ class AudioCoverFetcher(
     private val contentResolver get() = options.context.contentResolver
 
     override suspend fun fetch(): FetchResult? {
-        if (cover.albumId == -1L || cover.path.isEmpty())
-            return null
-
-        val stream = if (cover.isIgnoreMediaStore) {
-            AudioCoverUtils.fallback(cover.path, cover.isUseFolderArt)
-                ?: contentResolver.openFileDescriptor(cover.uri, "r")?.use { fd ->
+        val audioCover = cover.getComplete(contentResolver)
+        val stream = if (audioCover.isIgnoreMediaStore) {
+            AudioCoverUtils.fallback(audioCover.path, audioCover.isUseFolderArt)
+                ?: contentResolver.openFileDescriptor(audioCover.uri, "r")?.use { fd ->
                     TagLib.getFrontCover(fd.dup().detachFd())?.data?.inputStream()
                 }
         } else {
-            contentResolver.openInputStream(cover.albumId.albumCoverUri())
+            contentResolver.openInputStream(audioCover.albumId.asAlbumCoverUri())
         } ?: return null
 
         return SourceFetchResult(

@@ -32,17 +32,18 @@ fun String.normalize(): String =
         .trim()
         .replace(Regex("\\s+"), " ")
 
-fun buildInfoString(vararg parts: String?, delimiter: String = DEFAULT_INFO_DELIMITER): String {
+fun buildInfoString(vararg parts: Any?, delimiter: String = DEFAULT_INFO_DELIMITER): String {
     val sb = StringBuilder()
     if (parts.isNotEmpty()) {
         for (part in parts) {
-            if (part.isNullOrEmpty()) {
+            val str = part?.toString()
+            if (str.isNullOrEmpty()) {
                 continue
             }
             if (sb.isNotEmpty()) {
                 sb.append(delimiter)
             }
-            sb.append(part)
+            sb.append(str)
         }
     }
     return sb.toString()

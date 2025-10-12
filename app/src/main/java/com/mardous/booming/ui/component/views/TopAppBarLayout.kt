@@ -57,6 +57,12 @@ class TopAppBarLayout @JvmOverloads constructor(
         }
     }
 
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        simpleAppbarBinding = null
+        collapsingAppbarBinding = null
+    }
+
     fun pinWhenScrolled() {
         simpleAppbarBinding?.root?.updateLayoutParams<LayoutParams> {
             scrollFlags = SCROLL_FLAG_NO_SCROLL
