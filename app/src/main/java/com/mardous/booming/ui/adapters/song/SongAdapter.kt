@@ -44,8 +44,6 @@ import com.mardous.booming.ui.component.menu.OnClickMenu
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import kotlin.properties.Delegates
-import kotlin.reflect.KProperty
 
 @SuppressLint("NotifyDataSetChanged")
 @Suppress("LeakingThis")
@@ -57,9 +55,11 @@ open class SongAdapter(
     protected val callback: ISongCallback? = null,
 ) : AbsMultiSelectAdapter<SongAdapter.ViewHolder, Song>(activity, R.menu.menu_media_selection), PopupTextProvider {
 
-    var dataSet by Delegates.observable(dataSet) { _: KProperty<*>, _: List<Song>, _: List<Song> ->
-        notifyDataSetChanged()
-    }
+    open var dataSet: List<Song> = dataSet
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     protected open fun createViewHolder(view: View, viewType: Int): ViewHolder {
         return ViewHolder(view)

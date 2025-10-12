@@ -85,12 +85,16 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
 
         applyWindowInsets(view)
 
-        playingQueueAdapter = PlayingQueueSongAdapter(requireActivity(), playlist, position, this)
-            .also { adapter ->
-                dragDropManager = RecyclerViewDragDropManager().also { manager ->
-                    wrappedAdapter = manager.createWrappedAdapter(adapter)
-                }
+        playingQueueAdapter = PlayingQueueSongAdapter(
+            activity = requireActivity(),
+            playlist = playlist.toMutableList(),
+            current = position,
+            callback = this
+        ).also { adapter ->
+            dragDropManager = RecyclerViewDragDropManager().also { manager ->
+                wrappedAdapter = manager.createWrappedAdapter(adapter)
             }
+        }
 
         linearLayoutManager = LinearLayoutManager(requireContext())
 
@@ -129,7 +133,7 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
                 if (queue.isEmpty()) {
                     findNavController().navigateUp()
                 } else {
-                    playingQueueAdapter?.setPlayingQueue(queue, position.current)
+                    playingQueueAdapter?.setPlayingQueue(queue.toMutableList(), position.current)
                 }
             }
         }

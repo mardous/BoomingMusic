@@ -38,11 +38,16 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 @SuppressLint("NotifyDataSetChanged")
 class PlayingQueueSongAdapter(
     activity: FragmentActivity,
-    playlist: List<Song>,
+    private var playlist: MutableList<Song>,
     current: Int,
     callback: ISongCallback? = null,
 ) : SongAdapter(activity, playlist, R.layout.item_list_draggable, callback = callback),
     DraggableItemAdapter<PlayingQueueSongAdapter.ViewHolder> {
+
+    private var needsUpdate = false
+    override var dataSet: List<Song>
+        get() = playlist
+        set(value) { playlist = value.toMutableList() }
 
     var current: Int = current
         private set
@@ -64,9 +69,11 @@ class PlayingQueueSongAdapter(
         }
     }
 
-    fun setPlayingQueue(playlist: List<Song>, position: Int) {
+    fun setPlayingQueue(playlist: MutableList<Song>, position: Int) {
         this.current = position
-        this.dataSet = playlist
+        this.playlist = playlist
+        notifyDataSetChanged()
+        needsUpdate = false
     }
 
     private fun setAlpha(holder: SongAdapter.ViewHolder, alpha: Float) {
@@ -103,12 +110,12 @@ class PlayingQueueSongAdapter(
     }
 
     override fun onMoveItem(from: Int, to: Int) {
-        val playerViewModel = activity.getViewModel<PlayerViewModel>()
-        playerViewModel.moveSong(from, to)
+        val removedSong = playlist.removeAt(from)
+        playlist.add(to, removedSong)
     }
 
     override fun onCheckCanDrop(p1: Int, p2: Int): Boolean {
-        return true
+        return !needsUpdate
     }
 
     override fun onItemDragStarted(position: Int) {
@@ -116,7 +123,11 @@ class PlayingQueueSongAdapter(
     }
 
     override fun onItemDragFinished(fromPosition: Int, toPosition: Int, result: Boolean) {
-        notifyDataSetChanged()
+        needsUpdate = result
+        if (needsUpdate) {
+            notifyDataSetChanged()
+            activity.getViewModel<PlayerViewModel>().moveSong(fromPosition, toPosition)
+        }
     }
 
     companion object {
