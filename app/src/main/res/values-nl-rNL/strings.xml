@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Shuffle afspelen</string>
     <string name="action_queue_next">Volgende wachtrij</string>
     <string name="shuffle_all_label">Alles shuffelen</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Afspelen/pauzeren</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">Geen equalizer gevonden.</string>
     <string name="audio_focus_denied">Audiofocus geweigerd.</string>
     <string name="no_audio_ID">Slecht audio ID.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Kan dit nummer niet afspelen.</string>
     <string name="unplayable_file_code_x">Kon dit nummer niet afspelen (code: %d).</string>
     <string name="permission_external_storage_title">Toegang tot opslag</string>
@@ -153,13 +156,12 @@
     <string name="app_widget_small_name">Klein</string>
     <string name="now_playing">Afspelende media</string>
     <string name="playing_queue_label">Wachtrij afspelen</string>
-    <string name="list_start">Lijst is gestart.</string>
-    <string name="list_end">Einde lijst.</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">Lege afspeelwachtrij.</string>
     <string name="save_queue">Wachtrij opslaan</string>
     <string name="clear_queue">Wachtrij wissen</string>
     <string name="action_move_to_current_track">Toon huidige track</string>
-    <string name="shuffle_queue">Shuffle wachtrij</string>
     <string name="action_add_to_favorites">Voeg aan favorieten toe</string>
     <string name="action_remove_from_favorites">Verwijderen uit favorieten</string>
     <string name="added_to_favorites_label">Toegevoegd aan favorieten</string>
@@ -169,7 +171,6 @@
     <string name="action_remove_from_playlist">Verwijderen uit afspeellijst</string>
     <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Verwijderen uit afspeelwachtrij</string>
-    <string name="x_removed_from_playing_queue">%s verwijderd</string>
     <string name="put_after_current_track">Zet achter het huidige nummer</string>
     <string name="undo_action">Herstel</string>
     <string name="set_artist_image">Stel Artiest afbeelding in</string>
@@ -463,8 +464,6 @@
     <string name="sound_settings">Geluidsinstellingen</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tijdelijk</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">Externe EQ</string>
     <string name="custom">Aangepaste</string>
     <!-- Lyrics viewer -->
@@ -580,7 +579,6 @@
     <string name="headphones_header">Hoofdtelefoon</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Audio focus</string>
-    <string name="lockscreen_header">Vergrendelscherm</string>
     <string name="shuffle_mode_header">Shuffle modus</string>
     <string name="display_header">Weergeven</string>
     <string name="backup_restore_header">Back-up/herstellen</string>
@@ -673,10 +671,6 @@
     <string name="prefer_album_artist_name_summary">Toont de naam van de Album-artiesten in plaats van de naam van Song-artiesten (indien beschikbaar).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Spelen bij opstarten</string>
-    <string name="gapless_playback_title">Afspelen zonder pauzes</string>
-    <string name="gapless_playback_summary">Vloeiende overgang tussen liedjes. Kan afspeelproblemen veroorzaken op sommige apparaten.</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">Bron modus</string>
     <string name="replaygain_preamp_title">PreAmp niveau</string>
     <string name="replaygain_preamp_summary">Stel volume niveau in als ReplayGain is ingeschakeld.</string>
@@ -687,8 +681,6 @@
     <string name="remember_shuffle_mode_summary">Shuffle modus blijft aan bij het selecteren van een nieuwe lijst met nummers.</string>
     <string name="album_shuffle_mode_title">Album shuffle modus</string>
     <string name="artist_shuffle_mode_title">Kunstenaar shuffle modus</string>
-    <string name="auto_play_on_skip_title">Automatisch afspelen bij overslaan</string>
-    <string name="auto_play_on_skip_summary">Als het afspelen wordt gepauzeerd, zal door op Vorige of Volgende knoppen te tikken de muziek starten.</string>
     <string name="rewind_with_back_title">"Terugspoelen met 'Vorige'"</string>
     <string name="rewind_with_back_summary">Terugspoelen het afgespeelde nummer naar het begin of ga naar het vorige nummer als het huidige in het begin is.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -703,8 +695,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pauzeert afspelen wanneer Bluetooth A2DP headset is losgekoppeld. Aanbevolen.</string>
     <string name="ignore_audio_focus_title">Negeer audiofocus</string>
     <string name="ignore_audio_focus_summary">Altijd audio op de achtergrond afspelen ongeacht alles wat wordt afgespeeld.</string>
-    <string name="pause_on_transient_focus_loss_title">Voorbijgaande focus verlies</string>
-    <string name="pause_on_transient_focus_loss_summary">Pauzeer afspelen op tijdelijke focus verlies (d.w.z. meldingen, inkomende oproepen).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Metadata automatisch downloaden</string>
     <string name="ignore_media_store_album_covers_title">Negeer Media Store covers</string>
@@ -740,11 +730,6 @@
     <string name="min_song_duration_summary">Hoeveel seconden (tenminste) moet er een nummer meegaan in je bibliotheek.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Extra regel tekst</string>
-    <string name="notification_priority_title">Prioriteit melding</string>
-    <string name="album_art_on_lockscreen_title">Toon albumhoes</string>
-    <string name="album_art_on_lockscreen_summary">Albumhoes van de huidige nummers worden gebruikt als achtergrond op vergrendelscherm. Kan hoog geheugengebruik veroorzaken. Varies met apparaat.</string>
-    <string name="blurred_album_art_title">Vervaagde albumhoes</string>
-    <string name="blurred_album_art_summary">Vervaagt de albumhoes op het vergrendelscherm. Kan problemen veroorzaken met apps van derden en widgets.</string>
     <string name="app_language_title">App taal</string>
     <string name="backup_data_title">App-gegevens back-uppen</string>
     <string name="backup_app_data_summary">Maak een bestand met essentiële app-gegevens en sla het op in externe opslag.</string>
