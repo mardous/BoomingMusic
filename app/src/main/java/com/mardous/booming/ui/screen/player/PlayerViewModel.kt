@@ -146,6 +146,7 @@ class PlayerViewModel(
 
             internalJobs += combine(queueFlow, positionFlow)
             { queue, position -> Pair(queue, position) }
+                .debounce(100)
                 .onEach { (queue, position) ->
                     _currentSongFlow.value = queue.getOrElse(position.current) { Song.emptySong }
                     _nextSongFlow.value = queue.getOrElse(position.next) { Song.emptySong }
