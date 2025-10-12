@@ -825,7 +825,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Albüm rengine dayalı Material You tonlarını kullanın</string>
     <!-- Update -->
-    <string name="auto_update_title">Auto update search</string>
+    <string name="auto_update_title">Otomatik güncelleme araması</string>
     <string name="every_day">Her gün</string>
     <string name="weekly">Haftalık</string>
     <string name="every_fifteen_days">On beş günde bir</string>
