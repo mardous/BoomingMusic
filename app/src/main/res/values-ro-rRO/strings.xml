@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Amestecare redare</string>
     <string name="action_queue_next">Coada următoare</string>
     <string name="shuffle_all_label">Amestecare toate</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Redare/pauză</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">Niciun egalizator găsit.</string>
     <string name="audio_focus_denied">Focalizare audio refuzată.</string>
     <string name="no_audio_ID">ID audio incorect.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Nu s-a putut reda acest cântec.</string>
     <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Acces stocare</string>
@@ -153,13 +156,12 @@
     <string name="app_widget_small_name">Mică</string>
     <string name="now_playing">Acum se redă</string>
     <string name="playing_queue_label">Lista de redare</string>
-    <string name="list_start">Început listă.</string>
-    <string name="list_end">Sfârșit listă.</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">Joc de redare gol.</string>
     <string name="save_queue">Salvează coada</string>
     <string name="clear_queue">Curăță coada</string>
     <string name="action_move_to_current_track">Arată melodia curentă</string>
-    <string name="shuffle_queue">Amestecare coadă</string>
     <string name="action_add_to_favorites">Adaugă la Favorite</string>
     <string name="action_remove_from_favorites">Elimină din favorite</string>
     <string name="added_to_favorites_label">Adăugat la Favorite</string>
@@ -169,7 +171,6 @@
     <string name="action_remove_from_playlist">Elimină din playlist</string>
     <string name="action_add_to_playing_queue">Add to queue</string>
     <string name="action_remove_from_playing_queue">Elimină din lista de redare</string>
-    <string name="x_removed_from_playing_queue">%s eliminat</string>
     <string name="put_after_current_track">Pune după piesa curentă</string>
     <string name="undo_action">Anulează</string>
     <string name="set_artist_image">Setează imaginea Artist</string>
@@ -471,8 +472,6 @@
     <string name="sound_settings">Setări sunet</string>
     <string name="volume_label">Volum</string>
     <string name="tempo_label">Tempo</string>
-    <string name="crossfade_title">Crossfade (experimental)</string>
-    <string name="audio_fade_duration_title">Audio fade duration (experimental)</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalizat</string>
     <!-- Lyrics viewer -->
@@ -588,7 +587,6 @@
     <string name="headphones_header">Căști</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Focalizare audio</string>
-    <string name="lockscreen_header">Ecran de blocare</string>
     <string name="shuffle_mode_header">Mod Amestecare</string>
     <string name="display_header">Afişare</string>
     <string name="backup_restore_header">Backup/restaurare</string>
@@ -681,10 +679,6 @@
     <string name="prefer_album_artist_name_summary">Prezintă numele albumului artistului în locul numelui Song-artist (dacă este disponibil).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="gapless_playback_title">Redare fără întreruperi</string>
-    <string name="gapless_playback_summary">Tranziție lentă între melodii. Poate cauza probleme de redare pe unele dispozitive.</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">Mod sursă</string>
     <string name="replaygain_preamp_title">Nivel pregatire</string>
     <string name="replaygain_preamp_summary">Setează nivelul de volum când ReplayGain este activat.</string>
@@ -695,8 +689,6 @@
     <string name="remember_shuffle_mode_summary">Modul Amestecare va rămâne activat atunci când se selectează o listă nouă de melodii.</string>
     <string name="album_shuffle_mode_title">Mod amestecare album</string>
     <string name="artist_shuffle_mode_title">Modul de amestecare Artist</string>
-    <string name="auto_play_on_skip_title">Redare automată la omitere</string>
-    <string name="auto_play_on_skip_summary">Dacă redarea este întreruptă, atingerea butoanelor anterioare sau următoare va porni muzica.</string>
     <string name="rewind_with_back_title">"Rulează cu 'Înainte'"</string>
     <string name="rewind_with_back_summary">Rulează pista de redare pentru a începe sau mută la traseul anterior în cazul în care cea curentă este la început.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -711,8 +703,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Întrerupe redarea când setul cu cască Bluetooth A2DP este deconectat. Recomandat.</string>
     <string name="ignore_audio_focus_title">Ignoră focalizarea audio</string>
     <string name="ignore_audio_focus_summary">Redă întotdeauna audio în fundal indiferent de orice altceva redat.</string>
-    <string name="pause_on_transient_focus_loss_title">Pierdere tranzitorie a focalizării</string>
-    <string name="pause_on_transient_focus_loss_summary">Pauză redarea pe pierderea focalizării (notificări, apeluri primite).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descărcare automată metadate</string>
     <string name="ignore_media_store_album_covers_title">Ignoră copertele Media Store</string>
@@ -748,11 +738,6 @@
     <string name="min_song_duration_summary">Câte secunde (cel puțin) trebuie să dureze o melodie pentru a fi afișată în bibliotecă.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Linie suplimentară de text</string>
-    <string name="notification_priority_title">Prioritatea notificării</string>
-    <string name="album_art_on_lockscreen_title">Arată coperta de album</string>
-    <string name="album_art_on_lockscreen_summary">Folosește coperta de album a melodiilor curente ca fundal pentru ecranul de blocare. Poate cauza o memorie mare. Vare cu dispozitivul.</string>
-    <string name="blurred_album_art_title">Artă album încețoșată</string>
-    <string name="blurred_album_art_summary">Blurați coperta de album pe ecranul de blocare. Poate cauza probleme cu widget-urile și aplicațiile terțe.</string>
     <string name="app_language_title">Limba aplicației</string>
     <string name="backup_data_title">Copie de rezervă date aplicație</string>
     <string name="backup_app_data_summary">Creați un fișier care conține date esențiale ale aplicației și salvați-l pe stocare externă.</string>
