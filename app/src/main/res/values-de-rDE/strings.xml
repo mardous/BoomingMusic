@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Zufallswiedergabe</string>
     <string name="action_queue_next">An Warteschlange anhängen</string>
     <string name="shuffle_all_label">Zufallswiedergabe aller Titel</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Wiedergabe/Pause</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">Kein Equalizer gefunden.</string>
     <string name="audio_focus_denied">Audio-Fokus verweigert.</string>
     <string name="no_audio_ID">Ungültige Audio-ID.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Dieser Titel konnte nicht abgespielt werden.</string>
     <string name="unplayable_file_code_x">Dieser Titel konnte nicht abgespielt werden (Code: %d).</string>
     <string name="permission_external_storage_title">Speicherzugriff</string>
@@ -153,13 +156,12 @@
     <string name="app_widget_small_name">Klein</string>
     <string name="now_playing">Aktuelle Wiedergabe</string>
     <string name="playing_queue_label">Warteschlange</string>
-    <string name="list_start">Anfang der Liste</string>
-    <string name="list_end">Ende der Liste</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">Leere Warteschlange.</string>
     <string name="save_queue">Warteschlange speichern</string>
     <string name="clear_queue">Warteschlange leeren</string>
     <string name="action_move_to_current_track">Aktuellen Titel anzeigen</string>
-    <string name="shuffle_queue">Warteschlange der Zufallswiedergabe</string>
     <string name="action_add_to_favorites">Zu Favoriten hinzufügen</string>
     <string name="action_remove_from_favorites">Aus Favoriten entfernen</string>
     <string name="added_to_favorites_label">Zu Favoriten hinzugefügt</string>
@@ -169,7 +171,6 @@
     <string name="action_remove_from_playlist">Aus Wiedergabeliste entfernen</string>
     <string name="action_add_to_playing_queue">Zur Warteschlange hinzufügen</string>
     <string name="action_remove_from_playing_queue">Aus Warteschlange entfernen</string>
-    <string name="x_removed_from_playing_queue">%s entfernt</string>
     <string name="put_after_current_track">Nach aktuellem Titel einfügen</string>
     <string name="undo_action">Rückgängig</string>
     <string name="set_artist_image">Interpretenbild festlegen</string>
@@ -463,8 +464,6 @@
     <string name="sound_settings">Klangeinstellungen</string>
     <string name="volume_label">Lautstärke</string>
     <string name="tempo_label">Tempo</string>
-    <string name="crossfade_title">Überblenden (experimentell)</string>
-    <string name="audio_fade_duration_title">Audio-Blendendauer (experimentell)</string>
     <string name="action_external_eq">Externer EQ</string>
     <string name="custom">Benutzerdefiniert</string>
     <!-- Lyrics viewer -->
@@ -580,7 +579,6 @@
     <string name="headphones_header">Kopfhörer</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Audiofokus</string>
-    <string name="lockscreen_header">Sperrbildschirm</string>
     <string name="shuffle_mode_header">Zufallswiedergabe-Modus</string>
     <string name="display_header">Anzeige</string>
     <string name="backup_restore_header">Sicherung/Wiederherstellung</string>
@@ -673,10 +671,6 @@
     <string name="prefer_album_artist_name_summary">Zeigt den Namen des Album-Interpreten statt dem des Titel-Interpreten an (wenn verfügbar).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Beim App-Start fortsetzen</string>
-    <string name="gapless_playback_title">Nahtlose Wiedergabe</string>
-    <string name="gapless_playback_summary">Nahtloser Übergang zwischen den Titeln. Kann auf manchen Geräten zu Wiedergabeproblemen führen.</string>
-    <string name="no_crossfade_on_albums_title">No crossfade on albums</string>
-    <string name="no_crossfade_on_albums_summary">Do not crossfade when playing albums in their original order.</string>
     <string name="replaygain_source_mode_title">Quellmodus</string>
     <string name="replaygain_preamp_title">Vorverstärker-Stufe</string>
     <string name="replaygain_preamp_summary">Lautstärke-Stufe festlegen, wenn ReplayGain aktiv ist.</string>
@@ -687,8 +681,6 @@
     <string name="remember_shuffle_mode_summary">Zufallswiedergabe-Modus bleibt bei Auswahl einer neuen Titel-Liste erhalten.</string>
     <string name="album_shuffle_mode_title">Album-Zufallswiedergabe-Modus</string>
     <string name="artist_shuffle_mode_title">Interpreten-Zufallswiedergabe-Modus</string>
-    <string name="auto_play_on_skip_title">Auto-Wiedergabe beim Überspringen</string>
-    <string name="auto_play_on_skip_summary">Wenn pausiert, startet das Tippen auf die jeweilige Schaltfläche die Wiedergabe des vorherigen oder nächsten Titels.</string>
     <string name="rewind_with_back_title">"Mit \"Vorheriger\" zurückspulen"</string>
     <string name="rewind_with_back_summary">Spule den wiedergegebenen Titel zurück oder springe zum vorherigen, wenn der Anfang erreicht ist.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
@@ -703,8 +695,6 @@
     <string name="pause_on_bluetooth_disconnect_summary">Wiedergabe pausieren, wenn Bluetooth-Kopfhörer (A2DP) getrennt werden (empfohlen).</string>
     <string name="ignore_audio_focus_title">Audiofokus ignorieren</string>
     <string name="ignore_audio_focus_summary">Hintergrund-Wiedergabe unabhängig von anderen, zeitgleichen Wiedergaben beibehalten.</string>
-    <string name="pause_on_transient_focus_loss_title">Fokusverlust</string>
-    <string name="pause_on_transient_focus_loss_summary">Pausiert die Wiedergabe bei vorübergehendem Fokusverlust (z.B. Benachrichtigungen, eingehende Anrufen).</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Metadaten automatisch herunterladen</string>
     <string name="ignore_media_store_album_covers_title">Albumcover im MediaStore ignorieren</string>
@@ -740,11 +730,6 @@
     <string name="min_song_duration_summary">Mindestlänge eines Titels in Sekunden, um diesen in Deiner Bibliothek anzuzeigen.</string>
     <!-- Remote preferences -->
     <string name="extra_line_of_text_title">Zusätzliche Textzeile</string>
-    <string name="notification_priority_title">Benachrichtigungspriorität</string>
-    <string name="album_art_on_lockscreen_title">Albumcover verwenden</string>
-    <string name="album_art_on_lockscreen_summary">Verwende das aktuelle Albumcover als Sperrbildschirm-Hintergrund. Kann geräteabhängig hohe Speicherauslastung verursachen.</string>
-    <string name="blurred_album_art_title">Albumcover-Unschärfe</string>
-    <string name="blurred_album_art_summary">Fügt dem Albumcover auf dem Sperrbildschirm einen Unschärfeeffekt hinzu. Kann Probleme mit Apps und Widgets Dritter verursachen.</string>
     <string name="app_language_title">App-Sprache</string>
     <string name="backup_data_title">App-Daten sichern</string>
     <string name="backup_app_data_summary">Sichere eine Datei mit den wichtigsten App-Daten auf Deinem Gerät.</string>
