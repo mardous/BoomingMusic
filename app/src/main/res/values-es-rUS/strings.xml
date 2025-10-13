@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">Reproducir en aleatorio</string>
     <string name="action_queue_next">Añadir a continuación</string>
     <string name="shuffle_all_label">Todo aleatorio</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
+    <string name="shuffle_mode">Modo aleatorio</string>
+    <string name="repeat_mode">Modo repetición</string>
     <string name="advanced_shuffle_label">Mezcla avanzada</string>
     <string name="shuffle_button_tip">Toca para mezcla normal. Mantén presionado para opciones avanzadas.</string>
     <string name="action_play_pause">Reproducir/Pausar</string>
@@ -125,7 +125,7 @@
     <string name="no_equalizer">No se encontró ningún ecualizador.</string>
     <string name="audio_focus_denied">El foco de audio fue denegado.</string>
     <string name="no_audio_ID">ID de audio erroneo.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">Error de reproducción (%s).</string>
     <string name="unplayable_file">No se pudo reproducir este archivo.</string>
     <string name="unplayable_file_code_x">No se pudo reproducir este archivo (código: %d).</string>
     <string name="permission_external_storage_title">Acceso al almacenamiento</string>
@@ -156,8 +156,8 @@
     <string name="app_widget_small_name">Pequeño</string>
     <string name="now_playing">Reproduciendo ahora</string>
     <string name="playing_queue_label">Cola de reproducción</string>
-    <string name="list_start">List start</string>
-    <string name="list_end">List end</string>
+    <string name="list_start">Inicio de la lista</string>
+    <string name="list_end">Fin de la lista</string>
     <string name="empty_play_queue">Cola de reproducción vacía.</string>
     <string name="save_queue">Guardar cola</string>
     <string name="clear_queue">Limpiar cola</string>
@@ -239,7 +239,7 @@
     <string name="sort_order_duration">Duración</string>
     <string name="sort_order_date_added">Fecha de adición</string>
     <string name="sort_order_date_modified">Fecha de modificación</string>
-    <string name="sort_order_file_name">File name</string>
+    <string name="sort_order_file_name">Nombre de archivo</string>
     <string name="sort_order_number_of_songs">Número de canciones</string>
     <string name="sort_order_number_of_albums">Número de álbumes</string>
     <string name="sort_order_last_played_date">Fecha de última reproducción</string>
@@ -466,13 +466,12 @@
     <string name="tempo_label">Velocidad y tono</string>
     <string name="action_external_eq">Ecualizador externo</string>
     <string name="custom">Personalizado</string>
-    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
-    <string name="skip_silence_title">Skip Silence</string>
-    <string name="skip_silence_description">Automatically skip silent sections during playback.
-        Ideal for podcasts and recordings.</string>
+    <string name="enable_audio_float_output_title">Salida de audio de alta precisión</string>
+    <string name="enable_audio_float_output_description">Activa el audio de punto flotante de 32 bits para una mejor calidad de sonido. Ten en cuenta que esto desactivará funciones como ReplayGain, omitir silencios y balance de volumen.
+
+Podría consumir un poco más de batería y tendrás que reiniciar la aplicación para que surta efecto.</string>
+    <string name="skip_silence_title">Saltar silencios</string>
+    <string name="skip_silence_description">Omite automáticamente las secciones silenciosas durante la reproducción. Ideal para podcasts y grabaciones.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostrar letra</string>
     <string name="action_hide_lyrics">Ocultar letra</string>
@@ -711,8 +710,8 @@
     <string name="delete_downloaded_lyrics_summary">Solo las letras descargadas por Booming Music. No afecta a las letras en etiquetas ID3v2 o archivos LRC.</string>
     <string name="lyrics_cleared">Letras eliminadas.</string>
     <!-- Library preferences -->
-    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
-    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
+    <string name="ignore_articles_when_sorting_title">Ignorar artículos al ordenar</string>
+    <string name="ignore_articles_when_sorting_summary">Omite los artículos iniciales (“el”, “un”, “una”) al ordenar elementos.</string>
     <string name="trash_music_title">Enviar a la papelera</string>
     <string name="trash_music_summary">Enviar los archivos eliminados a la papelera.</string>
     <string name="recursive_folder_actions_title">Acciones que afectan a las subcarpetas</string>
@@ -812,7 +811,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Usa tonos de Material You basados en el color del álbum</string>
     <!-- Update -->
-    <string name="auto_update_title">Auto update search</string>
+    <string name="auto_update_title">Búsqueda automática de actualizaciones</string>
     <string name="every_day">Diariamente</string>
     <string name="weekly">Semanalmente</string>
     <string name="every_fifteen_days">Cada quince días</string>
