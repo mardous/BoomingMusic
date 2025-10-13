@@ -10,7 +10,7 @@ import com.mardous.booming.core.model.equalizer.BalanceLevel
 import com.mardous.booming.core.model.equalizer.EqEffectUpdate
 import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.core.model.equalizer.TempoLevel
-import com.mardous.booming.data.local.ReplayGainMode
+import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

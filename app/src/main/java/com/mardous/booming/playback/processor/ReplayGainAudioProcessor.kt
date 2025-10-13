@@ -4,8 +4,8 @@ import androidx.media3.common.C
 import androidx.media3.common.audio.AudioProcessor
 import androidx.media3.common.audio.BaseAudioProcessor
 import androidx.media3.common.util.UnstableApi
-import com.mardous.booming.data.local.ReplayGain
-import com.mardous.booming.data.local.ReplayGainMode
+import com.mardous.booming.data.model.replaygain.ReplayGain
+import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.playback.processor.ByteUtils.getInt24
 import com.mardous.booming.playback.processor.ByteUtils.putInt24
 import java.nio.ByteBuffer

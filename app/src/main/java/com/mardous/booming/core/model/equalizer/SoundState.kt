@@ -18,7 +18,7 @@
 package com.mardous.booming.core.model.equalizer
 
 import androidx.compose.runtime.Immutable
-import com.mardous.booming.data.local.ReplayGainMode
+import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import java.util.Locale
 
 @Immutable

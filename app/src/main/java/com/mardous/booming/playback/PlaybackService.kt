@@ -36,11 +36,11 @@ import com.mardous.booming.core.appwidgets.AppWidgetSimple
 import com.mardous.booming.core.appwidgets.AppWidgetSmall
 import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.data.local.MediaStoreObserver
-import com.mardous.booming.data.local.ReplayGainMode
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast

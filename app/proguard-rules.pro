@@ -79,6 +79,7 @@
 -keep class com.mardous.booming.data.remote.lastfm.model.** { *; }
 -keep class com.mardous.booming.data.local.search.** { *; }
 -keep class com.mardous.booming.data.model.search.** { *; }
+-keep class com.mardous.booming.data.model.replaygain.** { *; }
 
 # Hide an annoying compilation warning
 # http://stackoverflow.com/questions/3308010/what-is-the-ignoring-innerclasses-attribute-warning-output-during-compilation

@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
 import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.core.model.equalizer.ReplayGainState
-import com.mardous.booming.data.local.ReplayGainMode
+import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.compose.LabeledSwitch
 import java.util.Locale

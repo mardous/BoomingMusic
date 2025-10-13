@@ -20,7 +20,7 @@ package com.mardous.booming.core.audio
 import android.content.Context
 import androidx.core.content.edit
 import com.mardous.booming.core.model.equalizer.*
-import com.mardous.booming.data.local.ReplayGainMode
+import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.playback.equalizer.EqualizerManager.Companion.PREFERENCES_NAME
 import com.mardous.booming.util.PLAYBACK_PITCH
 import com.mardous.booming.util.PLAYBACK_SPEED

@@ -19,23 +19,7 @@ package com.mardous.booming.data.local
 import android.net.Uri
 import android.util.LruCache
 import com.mardous.booming.data.model.Song
-
-enum class ReplayGainMode {
-    Album, Track, Off;
-
-    val isOn get() = this == Album || this == Track
-}
-
-data class ReplayGain(
-    val albumGain: Float,
-    val trackGain: Float,
-    val albumPeak: Float,
-    val trackPeak: Float
-) {
-    companion object {
-        val Empty = ReplayGain(0f, 0f, 1f, 1f)
-    }
-}
+import com.mardous.booming.data.model.replaygain.ReplayGain
 
 object ReplayGainTagExtractor {
 
