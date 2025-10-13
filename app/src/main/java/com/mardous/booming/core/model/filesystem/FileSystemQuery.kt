@@ -46,7 +46,11 @@ class FileSystemQuery(
             if (canGoUp) {
                 add(GoUpFileSystemItem(fileName = "...", filePath = parentPath!!))
             }
-            addAll(getSortedChildren(sortMode))
+            if (isStorageRoot) {
+                addAll(children)
+            } else {
+                addAll(getSortedChildren(sortMode))
+            }
         }
     }
 
