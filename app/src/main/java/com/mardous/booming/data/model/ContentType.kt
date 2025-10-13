@@ -31,8 +31,8 @@ enum class ContentType(@StringRes internal val titleRes: Int) {
     Favorites(R.string.favorites_label),
     NotRecentlyPlayed(R.string.not_recently_played);
 
-    val isPlayableContent: Boolean
-        get() = this == Favorites || this == History || this == TopTracks || this == RecentSongs || this == NotRecentlyPlayed
+    val isObservableContent: Boolean
+        get() = this == Favorites || this == History || this == TopTracks
 
     val isHistoryContent: Boolean
         get() = this == History

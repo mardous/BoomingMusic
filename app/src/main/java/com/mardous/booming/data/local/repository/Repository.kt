@@ -20,15 +20,17 @@ package com.mardous.booming.data.local.repository
 import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.map
+import androidx.media3.common.MediaItem
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.core.model.task.Result.Error
 import com.mardous.booming.core.model.task.Result.Success
 import com.mardous.booming.data.SearchFilter
-import com.mardous.booming.data.local.room.*
-import com.mardous.booming.data.mapper.fromHistoryToSongs
+import com.mardous.booming.data.local.room.PlayCountEntity
+import com.mardous.booming.data.local.room.PlaylistEntity
+import com.mardous.booming.data.local.room.PlaylistWithSongs
+import com.mardous.booming.data.local.room.SongEntity
 import com.mardous.booming.data.mapper.toSong
 import com.mardous.booming.data.model.*
 import com.mardous.booming.data.model.search.SearchQuery
@@ -38,8 +40,10 @@ import com.mardous.booming.data.remote.deezer.model.DeezerTrack
 import com.mardous.booming.data.remote.lastfm.LastFmService
 import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
 import com.mardous.booming.data.remote.lastfm.model.LastFmArtist
-import com.mardous.booming.service.queue.QueueManager
+import kotlinx.coroutines.flow.Flow
 import java.io.File
+
+const val MAX_ITEMS_PER_CHUNK = 900
 
 interface Repository {
 
@@ -62,8 +66,8 @@ interface Repository {
     fun playlistWithSongsObservable(playlistId: Long): LiveData<PlaylistWithSongs>
     suspend fun isSongFavorite(songEntity: SongEntity): List<SongEntity>
     suspend fun isSongFavorite(songId: Long): Boolean
-    suspend fun favoriteSongs(): List<SongEntity>
-    fun favoriteSongsObservable(): LiveData<List<SongEntity>>
+    suspend fun favoriteSongs(): List<Song>
+    fun favoriteSongsFlow(): Flow<List<Song>>
     suspend fun favoritePlaylist(): PlaylistEntity
     suspend fun checkFavoritePlaylist(): PlaylistEntity?
     suspend fun toggleFavorite(song: Song): Boolean
@@ -95,6 +99,8 @@ interface Repository {
     suspend fun songsByYear(year: Int): List<Song>
     suspend fun folderByPath(path: String): Folder
     suspend fun songsByUri(uri: Uri): List<Song>
+    suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>>
+    suspend fun songByMediaItem(mediaItem: MediaItem?): Song
     suspend fun songsByFolder(folderPath: String, includeSubfolders: Boolean): List<Song>
     suspend fun songByFilePath(path: String, ignoreBlacklist: Boolean): Song
     suspend fun homeSuggestions(): List<Suggestion>
@@ -104,23 +110,23 @@ interface Repository {
     suspend fun recentAlbumsSuggestion(): Suggestion
     suspend fun favoritesSuggestion(): Suggestion
     suspend fun recommendedSongSuggestion(): Suggestion
-    suspend fun topPlayedSongs(): List<Song>
     suspend fun recentSongs(): List<Song>
     suspend fun topArtists(): List<Artist>
     suspend fun recentArtists(): List<Artist>
     suspend fun topAlbums(): List<Album>
     suspend fun recentAlbums(): List<Album>
-    suspend fun playCountSongs(): List<PlayCountEntity>
-    suspend fun playCountSongsFrom(songs: List<Song>): List<PlayCountEntity>
+    suspend fun playCountSongs(): List<Song>
+    fun playCountSongsFlow(): Flow<List<Song>>
+    suspend fun findSongsInPlayCount(songs: List<Song>): List<PlayCountEntity>
     suspend fun findSongInPlayCount(songId: Long): PlayCountEntity?
-    suspend fun upsertSongInPlayCount(playCountEntity: PlayCountEntity)
-    suspend fun deleteSongInPlayCount(playCountEntity: PlayCountEntity)
+    suspend fun insertOrIncrementPlayCount(song: Song, timePlayed: Long)
+    suspend fun insertOrIncrementSkipCount(song: Song)
     suspend fun clearPlayCount()
     suspend fun upsertSongInHistory(currentSong: Song)
     suspend fun deleteSongInHistory(songId: Long)
     suspend fun clearSongHistory()
-    fun historySongs(): List<HistoryEntity>
-    fun historySongsObservable(): LiveData<List<Song>>
+    suspend fun historySongs(): List<Song>
+    fun historySongsFlow(): Flow<List<Song>>
     suspend fun notRecentlyPlayedSongs(): List<Song>
     suspend fun initializeBlacklist()
     suspend fun search(query: SearchQuery, filter: SearchFilter?): List<Any>
@@ -139,7 +145,6 @@ interface Repository {
 
 class RealRepository(
     private val context: Context,
-    private val queueManager: QueueManager,
     private val deezerService: DeezerService,
     private val lastFmService: LastFmService,
     private val songRepository: SongRepository,
@@ -202,11 +207,11 @@ class RealRepository(
     override suspend fun isSongFavorite(songId: Long): Boolean =
         playlistRepository.isSongFavorite(songId)
 
-    override suspend fun favoriteSongs(): List<SongEntity> =
+    override suspend fun favoriteSongs(): List<Song> =
         playlistRepository.favoriteSongs()
 
-    override fun favoriteSongsObservable(): LiveData<List<SongEntity>> =
-        playlistRepository.favoriteObservable()
+    override fun favoriteSongsFlow(): Flow<List<Song>> =
+        playlistRepository.favoriteSongsFlow()
 
     override suspend fun favoritePlaylist(): PlaylistEntity =
         playlistRepository.favoritePlaylist()
@@ -257,17 +262,19 @@ class RealRepository(
         val song = songRepository.song(songId)
         if (song != Song.emptySong) {
             playlistRepository.deleteSongFromAllPlaylists(songId)
-            queueManager.removeSong(song)
+            smartRepository.deleteSongInHistory(songId)
+            smartRepository.deleteSongInPlayCount(songId)
         }
         return song
     }
 
     override suspend fun deleteSongs(songs: List<Song>) {
-        val deletableSongs = songs.filterNot { it == Song.emptySong }
-        deletableSongs.forEach { song ->
-            playlistRepository.deleteSongFromAllPlaylists(song.id)
-        }
-        queueManager.removeSongs(deletableSongs)
+        val deletableIds = songs.filterNot { it == Song.emptySong }.map { it.id }
+        if (deletableIds.isEmpty()) return
+
+        playlistRepository.deleteSongsFromAllPlaylists(deletableIds)
+        smartRepository.deleteSongsInHistory(deletableIds)
+        smartRepository.deleteSongsInPlayCount(deletableIds)
     }
 
     override suspend fun deleteMissingContent() {
@@ -311,6 +318,12 @@ class RealRepository(
 
     override suspend fun songsByUri(uri: Uri): List<Song> = songRepository.songsByUri(uri)
 
+    override suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>> =
+        songRepository.songsByMediaItems(mediaItems)
+
+    override suspend fun songByMediaItem(mediaItem: MediaItem?): Song =
+        songRepository.songByMediaItem(mediaItem)
+
     override suspend fun songsByFolder(folderPath: String, includeSubfolders: Boolean) =
         specialRepository.songsByFolder(folderPath, includeSubfolders)
 
@@ -351,9 +364,7 @@ class RealRepository(
     }
 
     override suspend fun favoritesSuggestion(): Suggestion {
-        val songs = favoriteSongs().map {
-            it.toSong()
-        }
+        val songs = favoriteSongs()
         return Suggestion(ContentType.Favorites, songs.take(10))
     }
 
@@ -361,8 +372,6 @@ class RealRepository(
         val songs = smartRepository.notRecentlyPlayedSongs().take(10)
         return Suggestion(ContentType.NotRecentlyPlayed, songs)
     }
-
-    override suspend fun topPlayedSongs(): List<Song> = smartRepository.topPlayedSongs()
 
     override suspend fun recentSongs(): List<Song> = smartRepository.recentSongs()
 
@@ -374,19 +383,21 @@ class RealRepository(
 
     override suspend fun recentAlbums(): List<Album> = smartRepository.recentAlbums()
 
-    override suspend fun playCountSongs(): List<PlayCountEntity> = smartRepository.playCountSongs()
+    override suspend fun playCountSongs(): List<Song> = smartRepository.playCountSongs()
 
-    override suspend fun playCountSongsFrom(songs: List<Song>): List<PlayCountEntity> =
-        smartRepository.playCountEntities(songs)
+    override fun playCountSongsFlow(): Flow<List<Song>> = smartRepository.playCountSongsFlow()
+
+    override suspend fun findSongsInPlayCount(songs: List<Song>): List<PlayCountEntity> =
+        smartRepository.findSongsInPlayCount(songs)
 
     override suspend fun findSongInPlayCount(songId: Long): PlayCountEntity? =
         smartRepository.findSongInPlayCount(songId)
 
-    override suspend fun upsertSongInPlayCount(playCountEntity: PlayCountEntity) =
-        smartRepository.upsertSongInPlayCount(playCountEntity)
+    override suspend fun insertOrIncrementPlayCount(song: Song, timePlayed: Long) =
+        smartRepository.insetOrIncrementPlayCount(song, timePlayed)
 
-    override suspend fun deleteSongInPlayCount(playCountEntity: PlayCountEntity) =
-        smartRepository.deleteSongInPlayCount(playCountEntity)
+    override suspend fun insertOrIncrementSkipCount(song: Song) =
+        smartRepository.insetOrIncrementSkipCount(song)
 
     override suspend fun clearPlayCount() = smartRepository.clearPlayCount()
 
@@ -399,13 +410,11 @@ class RealRepository(
     override suspend fun clearSongHistory() =
         smartRepository.clearSongHistory()
 
-    override fun historySongs(): List<HistoryEntity> =
+    override suspend fun historySongs(): List<Song> =
         smartRepository.historySongs()
 
-    override fun historySongsObservable(): LiveData<List<Song>> =
-        smartRepository.historySongsObservable().map {
-            it.fromHistoryToSongs()
-        }
+    override fun historySongsFlow(): Flow<List<Song>> =
+        smartRepository.historySongsFlow()
 
     override suspend fun notRecentlyPlayedSongs(): List<Song> =
         smartRepository.notRecentlyPlayedSongs()

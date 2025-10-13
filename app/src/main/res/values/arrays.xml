@@ -103,18 +103,6 @@
         <item>small</item>
     </string-array>
 
-    <string-array name="pref_replaygain_source_mode_entries">
-        <item>@string/label_none</item>
-        <item>@string/track</item>
-        <item>@string/album</item>
-    </string-array>
-
-    <string-array name="pref_replaygain_source_mode_values">
-        <item>none</item>
-        <item>track</item>
-        <item>album</item>
-    </string-array>
-
     <string-array name="pref_auto_download_metadata_entries">
         <item>@string/always</item>
         <item>@string/only_on_wifi</item>
@@ -176,17 +164,17 @@
     </string-array>
 
     <string-array name="pref_notification_extra_text_line_entries">
+        <item>@string/artist</item>
         <item>@string/album</item>
         <item>@string/album_artist</item>
         <item>@string/album_and_year</item>
-        <item>@string/next_song_label</item>
     </string-array>
 
     <string-array name="pref_notification_extra_text_line_values">
+        <item>artist</item>
         <item>album</item>
         <item>album_artist</item>
         <item>album_and_year</item>
-        <item>next_song</item>
     </string-array>
 
     <string-array name="pref_notification_priority_entries">

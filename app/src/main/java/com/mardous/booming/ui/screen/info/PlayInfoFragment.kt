@@ -34,8 +34,8 @@ import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlayInfoBinding
 import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.media.asNumberOfTimes
 import com.mardous.booming.extensions.media.displayName
-import com.mardous.booming.extensions.media.timesStr
 import com.mardous.booming.extensions.resources.show
 import com.mardous.booming.extensions.utilities.dateStr
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
@@ -87,8 +87,8 @@ class PlayInfoFragment : AbsMainActivityFragment(R.layout.fragment_play_info) {
         viewModel.playInfo(songs).observe(viewLifecycleOwner) {
             binding.progressIndicator.hide()
 
-            binding.playCount.setText(it.playCount.timesStr(requireContext()))
-            binding.skipCount.setText(it.skipCount.timesStr(requireContext()))
+            binding.playCount.setText(it.playCount.asNumberOfTimes(requireContext()))
+            binding.skipCount.setText(it.skipCount.asNumberOfTimes(requireContext()))
             binding.lastPlayDate.setText(requireContext().dateStr(it.lastPlayDate))
 
             if (it.mostPlayedTracks.isNotEmpty()) {

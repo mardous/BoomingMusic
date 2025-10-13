@@ -31,10 +31,8 @@ import com.mardous.booming.core.model.LibraryMargin
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
 import com.mardous.booming.data.SongProvider
-import com.mardous.booming.data.local.repository.RealSmartRepository
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.*
-import com.mardous.booming.data.mapper.toSong
 import com.mardous.booming.data.mapper.toSongEntity
 import com.mardous.booming.data.mapper.toSongsEntity
 import com.mardous.booming.data.model.*
@@ -304,38 +302,16 @@ class LibraryViewModel(
         songHistory.value = emptyList()
     }
 
-    fun favorites() = repository.favoriteSongsObservable()
 
     fun lastAddedSongs(): LiveData<List<Song>> = liveData(IO) {
         emit(repository.recentSongs())
     }
 
-    fun topTracks(): LiveData<List<Song>> = liveData(IO) {
-        val songs = repository.playCountSongs().filter { song ->
-            if (!File(song.data).exists() || song.id == -1L) {
-                repository.deleteSongInPlayCount(song)
-                false
-            } else true
-        }.take(RealSmartRepository.NUMBER_OF_TOP_TRACKS).map {
-            it.toSong()
-        }
-        emit(songs)
-    }
+    fun favoriteSongsFlow() = repository.favoriteSongsFlow()
 
-    fun observableHistorySongs(): LiveData<List<Song>> {
-        viewModelScope.launch(IO) {
-            val historySongs = repository.historySongs().filter { song ->
-                if (!File(song.data).exists() || song.id == -1L) {
-                    repository.deleteSongInHistory(song.id)
-                    false
-                } else true
-            }.map {
-                it.toSong()
-            }
-            songHistory.postValue(historySongs)
-        }
-        return songHistory
-    }
+    fun playCountSongsFlow() = repository.playCountSongsFlow()
+
+    fun historySongsFlow() = repository.historySongsFlow()
 
     fun notRecentlyPlayedSongs(): LiveData<List<Song>> = liveData(IO) {
         emit(repository.notRecentlyPlayedSongs())

@@ -5,10 +5,6 @@
 		android:title="@string/action_move_to_current_track"
 		app:showAsAction="never"/>
 	<item
-		android:id="@+id/action_shuffle_queue"
-		android:title="@string/shuffle_queue"
-		app:showAsAction="never"/>
-	<item
 		android:id="@+id/action_save_playing_queue"
 		android:title="@string/save_queue"
 		app:showAsAction="never"/>

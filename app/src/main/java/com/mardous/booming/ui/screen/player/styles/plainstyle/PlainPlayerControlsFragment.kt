@@ -115,7 +115,7 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
         return PlainPlayerAnimator(binding, Preferences.animateControls)
     }
 
-    override fun onSongInfoChanged(song: Song) {}
+    override fun onSongInfoChanged(currentSong: Song, nextSong: Song) {}
 
     override fun onExtraInfoChanged(extraInfo: String?) {
         _binding?.let { nonNullBinding ->
@@ -127,8 +127,6 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
             }
         }
     }
-
-    override fun onQueueInfoChanged(newInfo: String?) {}
 
     override fun onUpdatePlayPause(isPlaying: Boolean) {
         if (isPlaying) {

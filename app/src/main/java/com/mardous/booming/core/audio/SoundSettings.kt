@@ -20,27 +20,43 @@ package com.mardous.booming.core.audio
 import android.content.Context
 import androidx.core.content.edit
 import com.mardous.booming.core.model.equalizer.*
-import com.mardous.booming.service.equalizer.EqualizerManager.Companion.PREFERENCES_NAME
+import com.mardous.booming.data.model.replaygain.ReplayGainMode
+import com.mardous.booming.playback.equalizer.EqualizerManager.Companion.PREFERENCES_NAME
 import com.mardous.booming.util.PLAYBACK_PITCH
 import com.mardous.booming.util.PLAYBACK_SPEED
+import com.mardous.booming.util.Preferences.enumValue
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class SoundSettings(context: Context) {
 
     private val prefs = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
 
     private val _balanceFlow = MutableStateFlow(createBalanceState())
-    val balanceFlow: StateFlow<EqEffectState<BalanceLevel>> get() = _balanceFlow
-    val balance: BalanceLevel get() = _balanceFlow.value.value
+    val balanceFlow = _balanceFlow.asStateFlow()
+    val balance get() = _balanceFlow.value.value
 
     private val _tempoFlow = MutableStateFlow(createTempoState())
-    val tempoFlow: StateFlow<EqEffectState<TempoLevel>> get() = _tempoFlow
-    val tempo: TempoLevel get() = _tempoFlow.value.value
+    val tempoFlow = _tempoFlow.asStateFlow()
+    val tempo get() = _tempoFlow.value.value
 
-    private val _crossfadeFlow = MutableStateFlow(createCrossfadeState())
-    val crossfadeFlow: StateFlow<EqEffectState<CrossfadeState>> get() = _crossfadeFlow
-    val crossfade: CrossfadeState get() = _crossfadeFlow.value.value
+    private val _replayGainStateFlow = MutableStateFlow(createReplayGainState())
+    val replayGainStateFlow = _replayGainStateFlow.asStateFlow()
+    val replayGainState get() = replayGainStateFlow.value.value
+
+    private val _audioFloatOutputFlow = MutableStateFlow(prefs.getBoolean(AUDIO_FLOAT_OUTPUT, false))
+    val audioFloatOutputFlow = _audioFloatOutputFlow.asStateFlow()
+
+    private val _skipSilenceFlow = MutableStateFlow(prefs.getBoolean(SKIP_SILENCE, false))
+    val skipSilenceFlow = _skipSilenceFlow.asStateFlow()
+
+    suspend fun setEnableAudioFloatOutput(enable: Boolean) {
+        _audioFloatOutputFlow.emit(enable)
+    }
+
+    suspend fun setEnableSkipSilence(enable: Boolean) {
+        _skipSilenceFlow.emit(enable)
+    }
 
     suspend fun setBalance(update: EqEffectUpdate<BalanceLevel>, apply: Boolean) {
         val newState = update.toState().also {
@@ -56,16 +72,17 @@ class SoundSettings(context: Context) {
         _tempoFlow.emit(newState)
     }
 
-    suspend fun setCrossfade(update: EqEffectUpdate<CrossfadeState>, apply: Boolean) {
+    suspend fun setReplayGain(update: EqEffectUpdate<ReplayGainState>, apply: Boolean) {
         val newState = update.toState().also {
             if (apply) it.apply()
         }
-        _crossfadeFlow.emit(newState)
+        _replayGainStateFlow.emit(newState)
     }
 
     suspend fun applyPendingState() {
         balanceFlow.value.apply()
         tempoFlow.value.apply()
+        replayGainStateFlow.value.apply()
     }
 
     private fun createBalanceState(): EqEffectState<BalanceLevel> {
@@ -106,32 +123,36 @@ class SoundSettings(context: Context) {
         )
     }
 
-    private fun createCrossfadeState(): EqEffectState<CrossfadeState> {
-        val tempo = CrossfadeState(
-            apply = true,
-            crossfadeDuration = prefs.getInt(CROSSFADE_DURATION, 0),
-            audioFadeDuration = prefs.getInt(AUDIO_FADE_DURATION, 0)
+    private fun createReplayGainState(): EqEffectState<ReplayGainState> {
+        val replayGain = ReplayGainState(
+            mode = prefs.enumValue(REPLAYGAIN_MODE, ReplayGainMode.Off),
+            preamp = prefs.getFloat(REPLAYGAIN_PREAMP, 0f),
+            preampWithoutGain = prefs.getFloat(REPLAYGAIN_PREAMP_WITHOUT_GAIN, 0f)
         )
         return EqEffectState(
             isSupported = true,
-            isEnabled = true,
-            value = tempo,
+            isEnabled = replayGain.mode.isOn,
+            value = replayGain,
             onCommitEffect = {
                 prefs.edit {
-                    putInt(CROSSFADE_DURATION, it.value.crossfadeDuration)
-                    putInt(AUDIO_FADE_DURATION, it.value.audioFadeDuration)
+                    putFloat(REPLAYGAIN_PREAMP, it.value.preamp)
+                    putFloat(REPLAYGAIN_PREAMP_WITHOUT_GAIN, it.value.preampWithoutGain)
+                    putString(REPLAYGAIN_MODE, it.value.mode.name)
                 }
             }
         )
     }
 
     companion object {
+        private const val AUDIO_FLOAT_OUTPUT = "audio.float_output"
+        private const val SKIP_SILENCE = "audio.skip_silence"
+        private const val REPLAYGAIN_MODE = "replaygain.mode"
+        private const val REPLAYGAIN_PREAMP = "replaygain.preamp"
+        private const val REPLAYGAIN_PREAMP_WITHOUT_GAIN = "replaygain.preamp.without_gain"
         private const val LEFT_BALANCE = "equalizer.balance.left"
         private const val RIGHT_BALANCE = "equalizer.balance.right"
         private const val SPEED = PLAYBACK_SPEED
         private const val PITCH = PLAYBACK_PITCH
         private const val IS_FIXED_PITCH = "equalizer.pitch.fixed"
-        private const val CROSSFADE_DURATION = "equalizer.crossfade.duration"
-        private const val AUDIO_FADE_DURATION = "equalizer.fade.duration"
     }
 }

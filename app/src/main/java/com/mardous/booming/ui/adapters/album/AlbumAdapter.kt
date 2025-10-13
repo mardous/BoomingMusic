@@ -32,8 +32,8 @@ import com.mardous.booming.data.model.Album
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.albumInfo
+import com.mardous.booming.extensions.media.asSectionName
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.extensions.media.sectionName
 import com.mardous.booming.extensions.media.songCountStr
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.ui.IAlbumCallback
@@ -118,9 +118,9 @@ open class AlbumAdapter(
     override fun getPopupText(view: View, position: Int): CharSequence {
         val album = dataSet.getOrNull(position) ?: return ""
         return when (sortMode?.selectedKey) {
-            SortKey.Artist -> album.displayArtistName().sectionName()
-            SortKey.AZ -> album.name.sectionName()
-            else -> album.name.sectionName()
+            SortKey.Artist -> album.displayArtistName().asSectionName()
+            SortKey.AZ -> album.name.asSectionName()
+            else -> album.name.asSectionName()
         }
     }
 

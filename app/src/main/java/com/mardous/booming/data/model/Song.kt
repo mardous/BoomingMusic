@@ -20,8 +20,12 @@ package com.mardous.booming.data.model
 import android.content.ContentUris
 import android.net.Uri
 import android.os.Parcelable
-import android.provider.MediaStore
+import androidx.core.net.toUri
+import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
 import com.mardous.booming.core.model.filesystem.FileSystemItem
+import com.mardous.booming.data.local.repository.RealSongRepository.Companion.getAudioContentUri
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import java.util.Date
 import java.util.Objects
@@ -36,7 +40,7 @@ open class Song(
     open val size: Long,
     open val duration: Long,
     open val dateAdded: Long,
-    open val dateModified: Long,
+    open val rawDateModified: Long,
     open val albumId: Long,
     open val albumName: String,
     open val artistId: Long,
@@ -46,27 +50,13 @@ open class Song(
 ) : Parcelable, FileSystemItem {
 
     val uri: Uri
-        get() = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id)
+        get() = ContentUris.withAppendedId(getAudioContentUri(), id)
 
-    protected constructor(song: Song) : this(
-        song.id,
-        song.data,
-        song.title,
-        song.trackNumber,
-        song.year,
-        song.size,
-        song.duration,
-        song.dateAdded,
-        song.dateModified,
-        song.albumId,
-        song.albumName,
-        song.artistId,
-        song.artistName,
-        song.albumArtistName,
-        song.genreName
-    )
+    val albumCoverUri: Uri
+        get() = ContentUris.withAppendedId("content://media/external/audio/albumart".toUri(), albumId)
 
-    fun getModifiedDate() = Date(dateModified * 1000)
+    @IgnoredOnParcel
+    val dateModified by lazy { Date(rawDateModified * 1000) }
 
     override val fileName: String
         get() = data.substringAfterLast("/", title)
@@ -78,7 +68,44 @@ open class Song(
         get() = dateAdded
 
     override val fileDateModified: Long
-        get() = dateModified
+        get() = rawDateModified
+
+    protected constructor(song: Song) : this(
+        song.id,
+        song.data,
+        song.title,
+        song.trackNumber,
+        song.year,
+        song.size,
+        song.duration,
+        song.dateAdded,
+        song.rawDateModified,
+        song.albumId,
+        song.albumName,
+        song.artistId,
+        song.artistName,
+        song.albumArtistName,
+        song.genreName
+    )
+
+    fun toMediaItem(itemId: String = id.toString()) = MediaItem.Builder()
+        .setUri(uri)
+        .setMediaId(itemId)
+        .setMediaMetadata(
+            MediaMetadata.Builder()
+                .setIsPlayable(true)
+                .setArtworkUri(albumCoverUri)
+                .setTitle(title)
+                .setAlbumTitle(albumName)
+                .setArtist(artistName)
+                .setAlbumArtist(albumArtistName)
+                .setGenre(genreName)
+                .setTrackNumber(trackNumber)
+                .setReleaseYear(year)
+                .setDurationMs(duration)
+                .build()
+        )
+        .build()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -90,7 +117,7 @@ open class Song(
         if (size != song.size) return false
         if (duration != song.duration) return false
         if (dateAdded != song.dateAdded) return false
-        if (dateModified != song.dateModified) return false
+        if (rawDateModified != song.rawDateModified) return false
         if (albumId != song.albumId) return false
         if (albumName != song.albumName) return false
         if (artistId != song.artistId) return false
@@ -111,7 +138,7 @@ open class Song(
             size,
             duration,
             dateAdded,
-            dateModified,
+            rawDateModified,
             albumId,
             albumName,
             artistId,
@@ -126,17 +153,18 @@ open class Song(
                 "id=" + id +
                 ", data='" + data + '\'' +
                 ", title='" + title + '\'' +
-                ", trackNumber=" + trackNumber +
+                ", asReadableTrackNumber=" + trackNumber +
                 ", year=" + year +
                 ", size=" + size +
                 ", duration=" + duration +
                 ", dateAdded=" + dateAdded +
-                ", dateModified=" + dateModified +
+                ", rawDateModified=" + rawDateModified +
                 ", albumId=" + albumId +
                 ", albumName='" + albumName + '\'' +
                 ", artistId=" + artistId +
                 ", artistName='" + artistName + '\'' +
                 ", albumArtistName='" + albumArtistName + '\'' +
+                ", genreName='" + genreName + '\'' +
                 '}'
     }
 

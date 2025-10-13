@@ -32,7 +32,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.mardous.booming.R
 import com.mardous.booming.data.mapper.lastAddedSearchFilter
 import com.mardous.booming.data.mapper.searchFilter
-import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.ContentType
@@ -47,7 +46,7 @@ import com.mardous.booming.extensions.navigation.searchArgs
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.service.playback.Playback
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.ISongCallback
@@ -99,13 +98,13 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
             contentType == ContentType.NotRecentlyPlayed
         ) {
             binding.shuffleAction.setOnClickListener {
-                playerViewModel.openQueue(songList, shuffleMode = Playback.ShuffleMode.On)
+                playerViewModel.openAndShuffleQueue(songList)
             }
         } else {
             binding.shuffleAction.hide()
         }
         binding.playAction.setOnClickListener {
-            playerViewModel.openQueue(songList, shuffleMode = Playback.ShuffleMode.Off)
+            playerViewModel.openQueue(songList, shuffleMode = OpenShuffleMode.Off)
         }
     }
 
@@ -144,7 +143,7 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
             ContentType.TopTracks -> topPlayed()
             ContentType.History -> loadHistory()
             ContentType.RecentSongs -> lastAddedSongs()
-            ContentType.Favorites -> loadFavorite()
+            ContentType.Favorites -> loadFavoriteSongs()
             ContentType.NotRecentlyPlayed -> loadNotRecentlyPlayed()
         }
     }
@@ -169,9 +168,11 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
             layoutManager = linearLayoutManager()
             createFastScroller(disablePopup = true)
         }
-        libraryViewModel.topTracks().observe(viewLifecycleOwner) { songs ->
-            songAdapter.dataSet = songs
-            songs(songs, R.string.playlist_empty_text)
+        launchAndRepeatWithViewLifecycle {
+            libraryViewModel.playCountSongsFlow().collect { songs ->
+                songAdapter.dataSet = songs
+                songs(songs, R.string.playlist_empty_text)
+            }
         }
     }
 
@@ -182,9 +183,11 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
             layoutManager = linearLayoutManager()
             createFastScroller(disablePopup = true)
         }
-        libraryViewModel.observableHistorySongs().observe(viewLifecycleOwner) { songs ->
-            songAdapter.dataSet = songs
-            songs(songs, R.string.playlist_empty_text)
+        launchAndRepeatWithViewLifecycle {
+            libraryViewModel.historySongsFlow().collect { songs ->
+                songAdapter.dataSet = songs
+                songs(songs, R.string.playlist_empty_text)
+            }
         }
     }
 
@@ -201,17 +204,18 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
         }
     }
 
-    private fun loadFavorite() {
+    private fun loadFavoriteSongs() {
         val songAdapter = songAdapter()
         binding.recyclerView.apply {
             adapter = songAdapter
             layoutManager = linearLayoutManager()
             createFastScroller(disablePopup = true)
         }
-        libraryViewModel.favorites().observe(viewLifecycleOwner) { songEntities ->
-            val songs = songEntities.toSongs()
-            songAdapter.dataSet = songs
-            songs(songs)
+        launchAndRepeatWithViewLifecycle {
+            libraryViewModel.favoriteSongsFlow().collect { songs ->
+                songAdapter.dataSet = songs
+                songs(songs)
+            }
         }
     }
 
@@ -264,7 +268,9 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
 
     override fun onMediaContentChanged() {
         super.onMediaContentChanged()
-        loadContent()
+        if (!contentType.isObservableContent) {
+            loadContent()
+        }
     }
 
     override fun onDestroyView() {

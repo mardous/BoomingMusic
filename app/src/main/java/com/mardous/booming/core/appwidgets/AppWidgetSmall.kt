@@ -33,11 +33,11 @@ import com.mardous.booming.core.appwidgets.base.BaseAppWidget
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.extensions.toHtml
-import com.mardous.booming.service.MusicService
-import com.mardous.booming.service.constants.ServiceAction
+import com.mardous.booming.playback.PlaybackService
 import com.mardous.booming.ui.screen.MainActivity
 
 class AppWidgetSmall : BaseAppWidget() {
+
     private var disposable: Disposable? = null // for cancellation
 
     /**
@@ -64,7 +64,7 @@ class AppWidgetSmall : BaseAppWidget() {
     /**
      * Update all active widget instances by pushing changes
      */
-    override fun performUpdate(service: MusicService, appWidgetIds: IntArray?) {
+    override fun performUpdate(service: PlaybackService, appWidgetIds: IntArray?) {
         val appWidgetView = RemoteViews(service.packageName, R.layout.app_widget_small)
 
         val isPlaying = service.isPlaying
@@ -90,7 +90,7 @@ class AppWidgetSmall : BaseAppWidget() {
 
         // Load the album cover async and push the update on completion
         val imageSize = getImageSize(service)
-        service.runOnUiThread {
+        uiHandler.post {
             if (disposable != null) {
                 disposable?.dispose()
                 disposable = null
@@ -137,7 +137,7 @@ class AppWidgetSmall : BaseAppWidget() {
      */
     private fun linkButtons(context: Context, views: RemoteViews) {
         val action = Intent(context, MainActivity::class.java)
-        val serviceName = ComponentName(context, MusicService::class.java)
+        val serviceName = ComponentName(context, PlaybackService::class.java)
 
         // Home
         action.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -146,15 +146,15 @@ class AppWidgetSmall : BaseAppWidget() {
         views.setOnClickPendingIntent(R.id.media_titles, pendingIntent)
 
         // Previous track
-        pendingIntent = buildPendingIntent(context, ServiceAction.ACTION_PREVIOUS, serviceName)
+        pendingIntent = buildPendingIntent(context, PlaybackService.ACTION_PREVIOUS, serviceName)
         views.setOnClickPendingIntent(R.id.button_prev, pendingIntent)
 
         // Play and pause
-        pendingIntent = buildPendingIntent(context, ServiceAction.ACTION_TOGGLE_PAUSE, serviceName)
+        pendingIntent = buildPendingIntent(context, PlaybackService.ACTION_TOGGLE_PAUSE, serviceName)
         views.setOnClickPendingIntent(R.id.button_toggle_play_pause, pendingIntent)
 
         // Next track
-        pendingIntent = buildPendingIntent(context, ServiceAction.ACTION_NEXT, serviceName)
+        pendingIntent = buildPendingIntent(context, PlaybackService.ACTION_NEXT, serviceName)
         views.setOnClickPendingIntent(R.id.button_next, pendingIntent)
     }
 

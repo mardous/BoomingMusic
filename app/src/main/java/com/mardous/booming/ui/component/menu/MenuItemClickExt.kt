@@ -34,7 +34,7 @@ import com.mardous.booming.extensions.getShareSongsIntent
 import com.mardous.booming.extensions.navigation.*
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.toChooser
-import com.mardous.booming.service.playback.Playback
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.component.base.AbsTagEditorActivity
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.DeletePlaylistDialog
@@ -63,17 +63,15 @@ fun Song.onSongMenu(
     return when (menuItem.itemId) {
         R.id.action_play_next -> {
             val playerViewModel = fragment.getActivityViewModel<PlayerViewModel>()
-            playerViewModel.queueNext(this).observe(fragment.viewLifecycleOwner) {
-                fragment.showToast(R.string.added_title_to_playing_queue)
-            }
+            playerViewModel.queueNext(this)
+            fragment.showToast(R.string.added_title_to_playing_queue)
             true
         }
 
         R.id.action_add_to_playing_queue -> {
             val playerViewModel = fragment.getActivityViewModel<PlayerViewModel>()
-            playerViewModel.enqueue(this).observe(fragment.viewLifecycleOwner) {
-                fragment.showToast(R.string.added_title_to_playing_queue)
-            }
+            playerViewModel.enqueue(this)
+            fragment.showToast(R.string.added_title_to_playing_queue)
             true
         }
 
@@ -148,36 +146,34 @@ fun List<Song>.onSongsMenu(fragment: Fragment, menuItem: MenuItem): Boolean {
     return when (menuItem.itemId) {
         R.id.action_play -> {
             val playerViewModel = fragment.getActivityViewModel<PlayerViewModel>()
-            playerViewModel.openQueue(this, shuffleMode = Playback.ShuffleMode.Off)
+            playerViewModel.openQueue(this, shuffleMode = OpenShuffleMode.Off)
             true
         }
 
         R.id.action_shuffle_play -> {
             val playerViewModel = fragment.getActivityViewModel<PlayerViewModel>()
-            playerViewModel.openQueue(this, shuffleMode = Playback.ShuffleMode.On)
+            playerViewModel.openQueue(this, shuffleMode = OpenShuffleMode.On)
             true
         }
 
         R.id.action_play_next -> {
             val playerViewModel = fragment.getActivityViewModel<PlayerViewModel>()
-            playerViewModel.queueNext(this).observe(fragment.viewLifecycleOwner) { added ->
-                if (added == 1) {
-                    fragment.showToast(R.string.added_title_to_playing_queue)
-                } else {
-                    fragment.showToast(fragment.getString(R.string.added_x_titles_to_playing_queue, added))
-                }
+            playerViewModel.queueNext(this)
+            if (size == 1) {
+                fragment.showToast(R.string.added_title_to_playing_queue)
+            } else {
+                fragment.showToast(fragment.getString(R.string.added_x_titles_to_playing_queue, size))
             }
             true
         }
 
         R.id.action_add_to_playing_queue -> {
             val playerViewModel = fragment.getActivityViewModel<PlayerViewModel>()
-            playerViewModel.enqueue(this).observe(fragment.viewLifecycleOwner) { added ->
-                if (added == 1) {
-                    fragment.showToast(R.string.added_title_to_playing_queue)
-                } else {
-                    fragment.showToast(fragment.getString(R.string.added_x_titles_to_playing_queue, added))
-                }
+            playerViewModel.enqueue(this)
+            if (size == 1) {
+                fragment.showToast(R.string.added_title_to_playing_queue)
+            } else {
+                fragment.showToast(fragment.getString(R.string.added_x_titles_to_playing_queue, size))
             }
             true
         }

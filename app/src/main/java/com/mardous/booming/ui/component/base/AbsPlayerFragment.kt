@@ -59,7 +59,6 @@ import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.resources.animateBackgroundColor
 import com.mardous.booming.extensions.resources.animateTintColor
 import com.mardous.booming.extensions.resources.inflateMenu
-import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.component.menu.newPopupMenu
 import com.mardous.booming.ui.component.menu.onSongMenu
@@ -116,11 +115,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.currentSongFlow.collect {
                 updateIsFavorite(withAnim = false)
-            }
-        }
-        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.nextSongFlow.collect {
-                playerControlsFragment.onQueueInfoChanged(getNextSongInfo())
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
@@ -333,11 +327,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
                 true
             }
 
-            NowPlayingAction.ShufflePlayQueue -> {
-                playerViewModel.shuffleQueue()
-                true
-            }
-
             NowPlayingAction.DeleteFromDevice -> {
                 DeleteSongsDialog.create(currentSong).show(childFragmentManager, "DELETE_SONGS")
                 true
@@ -448,11 +437,11 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
         view.setOnClickListener { onQuickActionEvent(action) }
     }
 
-    fun getSongArtist(song: Song): String {
+    fun getSongArtist(song: Song): CharSequence {
         val artistName = if (Preferences.preferAlbumArtistName)
-            song.albumArtistName() else song.artistName
+            song.albumArtistName().displayArtistName() else song.displayArtistName()
         if (Preferences.displayAlbumTitle) {
-            return buildInfoString(artistName, song.albumName)
+            return "$artistName - ${song.albumName}"
         }
         return artistName
     }
@@ -460,12 +449,15 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
     fun isExtraInfoEnabled(): Boolean =
         Preferences.displayExtraInfo && Preferences.nowPlayingExtraInfoList.any { it.isEnabled }
 
-    fun getNextSongInfo(): String {
-        val nextSong = playerViewModel.nextSong
-        return if (!nextSong.isArtistNameUnknown()) {
-            getString(R.string.next_song_x_by_artist_x, nextSong.title, nextSong.displayArtistName())
+    fun getNextSongInfo(nextSong: Song): String {
+        return if (nextSong != Song.emptySong) {
+            if (!nextSong.isArtistNameUnknown()) {
+                getString(R.string.next_song_x_by_artist_x, nextSong.title, nextSong.displayArtistName())
+            } else {
+                getString(R.string.next_song_x, nextSong.title)
+            }
         } else {
-            getString(R.string.next_song_x, nextSong.title)
+            getString(R.string.list_end)
         }
     }
 
@@ -522,10 +514,10 @@ class FlingPlayBackController(context: Context, playerViewModel: PlayerViewModel
                 if (Preferences.isSwipeControls) {
                     if (abs(velocityX) > abs(velocityY)) {
                         if (velocityX < 0) {
-                            playerViewModel.playNext()
+                            playerViewModel.seekToNext()
                             return true
                         } else if (velocityX > 0) {
-                            playerViewModel.playPrevious()
+                            playerViewModel.seekToPrevious()
                             return true
                         }
                     }

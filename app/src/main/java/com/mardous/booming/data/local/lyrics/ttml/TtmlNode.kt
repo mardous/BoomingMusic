@@ -111,7 +111,7 @@ internal data class TtmlNode(
             NODE_BODY -> "NODE_BODY"
             NODE_SECTION -> "NODE_SECTION"
             NODE_LINE -> "NODE_LINE"
-            NODE_WORD -> "NODE_WORLD"
+            NODE_WORD -> "NODE_WORD"
             else -> "NODE_UNKNOWN"
         }
         return "TtmlNode{" +

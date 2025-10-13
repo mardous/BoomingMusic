@@ -29,42 +29,33 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Fade
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.BaseTransientBottomBar
-import com.google.android.material.snackbar.Snackbar
 import com.h6ah4i.android.widget.advrecyclerview.animator.RefactoredDefaultItemAnimator
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager
 import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils
 import com.mardous.booming.R
-import com.mardous.booming.core.model.action.QueueQuickAction
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentQueueBinding
 import com.mardous.booming.extensions.applyBottomWindowInsets
 import com.mardous.booming.extensions.applyScrollableContentInsets
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
-import com.mardous.booming.extensions.media.songCountStr
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.inflateMenu
 import com.mardous.booming.extensions.resources.onVerticalScroll
 import com.mardous.booming.extensions.showToast
-import com.mardous.booming.extensions.utilities.buildInfoString
+import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.PlayingQueueSongAdapter
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
-import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.flow.combine
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
-import kotlin.properties.Delegates
-import kotlin.reflect.KProperty
 
 /**
  * @author Christians M. A. (mardous)
  */
 class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
-    Toolbar.OnMenuItemClickListener,
-    View.OnClickListener,
-    PlayingQueueSongAdapter.Callback {
+    Toolbar.OnMenuItemClickListener, View.OnClickListener, ISongCallback {
 
     private val playerViewModel: PlayerViewModel by activityViewModel()
     private var _binding: FragmentQueueBinding? = null
@@ -77,42 +68,15 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
     private var wrappedAdapter: RecyclerView.Adapter<*>? = null
     private var linearLayoutManager: LinearLayoutManager? = null
 
-    private var lastRemovedSong: Song? = null
-    private var snackbar: Snackbar? = null
+    private val playlist: List<Song>
+        get() = playerViewModel.queue
 
-    private val allQuickActions by lazy { QueueQuickAction.entries }
-    private var selectedQuickAction: QueueQuickAction by Delegates.observable(Preferences.queueQuickAction) { _: KProperty<*>, old: QueueQuickAction?, new: QueueQuickAction ->
-        Preferences.queueQuickAction = new
-        updateQuickAction(old, new)
-    }
-
-    private val queueInfo: CharSequence
-        get() = buildInfoString(
-            playingQueue.songCountStr(requireContext()),
-            playerViewModel.queueDurationAsString
-        )
-
-    private val playingQueue: List<Song>
-        get() = playerViewModel.playingQueue
-
-    private val queuePosition: Int
-        get() = playerViewModel.currentPosition
-
-    private val mainActivity: MainActivity
-        get() = activity as MainActivity
+    private val position: Int
+        get() = playerViewModel.position.current
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentQueueBinding.bind(view)
-        binding.quickActionButton.setOnClickListener(this@PlayingQueueFragment)
-        binding.quickActionButton.setOnLongClickListener {
-            MaterialAlertDialogBuilder(requireContext())
-                .setItems(allQuickActions.map { getString(it.titleRes) }.toTypedArray()) { _, position: Int ->
-                    selectedQuickAction = allQuickActions[position]
-                }
-                .show()
-            true
-        }
 
         enterTransition = Fade()
         exitTransition = Fade()
@@ -122,10 +86,10 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
         applyWindowInsets(view)
 
         playingQueueAdapter = PlayingQueueSongAdapter(
-            requireActivity(),
-            arrayListOf(),
-            this,
-            queuePosition
+            activity = requireActivity(),
+            playlist = playlist.toMutableList(),
+            current = position,
+            callback = this
         ).also { adapter ->
             dragDropManager = RecyclerViewDragDropManager().also { manager ->
                 wrappedAdapter = manager.createWrappedAdapter(adapter)
@@ -139,7 +103,7 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
         binding.recyclerView.itemAnimator = RefactoredDefaultItemAnimator()
 
         dragDropManager!!.attachRecyclerView(_binding!!.recyclerView)
-        linearLayoutManager!!.scrollToPositionWithOffset(queuePosition + 1, 0)
+        linearLayoutManager!!.scrollToPosition(position)
 
         binding.recyclerView.onVerticalScroll(
             viewLifecycleOwner,
@@ -147,6 +111,8 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
             onScrollUp = { binding.quickActionButton.show() }
         )
         binding.recyclerView.createFastScroller()
+
+        binding.quickActionButton.setOnClickListener(this)
 
         toolbar.isTitleCentered = false
         toolbar.setNavigationIcon(R.drawable.ic_back_24dp)
@@ -161,21 +127,13 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
                     .icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_lock_open_24dp)
             }
         }
-        updateQuickAction(null, selectedQuickAction)
-
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.currentPositionFlow.collect { position ->
-                playingQueueAdapter?.setPosition(position)
-                toolbar.subtitle = queueInfo
-            }
-        }
-        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.playingQueueFlow.collect { playingQueue ->
-                if (playingQueue.isEmpty()) {
+            combine(playerViewModel.queueFlow, playerViewModel.positionFlow)
+            { queue, position -> Pair(queue, position) }.collect { (queue, position) ->
+                if (queue.isEmpty()) {
                     findNavController().navigateUp()
                 } else {
-                    playingQueueAdapter?.swapDataSet(playingQueue)
-                    toolbar.subtitle = queueInfo
+                    playingQueueAdapter?.setPlayingQueue(queue.toMutableList(), position.current)
                 }
             }
         }
@@ -188,7 +146,7 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
 
     override fun onClick(view: View) {
         if (view == binding.quickActionButton) {
-            val menuItem = toolbar.menu.findItem(selectedQuickAction.menuItemId)
+            val menuItem = toolbar.menu.findItem(R.id.action_save_playing_queue)
             if (menuItem != null) {
                 onMenuItemClick(menuItem)
             }
@@ -199,18 +157,13 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
     override fun onMenuItemClick(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_save_playing_queue -> {
-                CreatePlaylistDialog.create(playingQueue)
+                CreatePlaylistDialog.create(playlist)
                     .show(childFragmentManager, "CREATE_PLAYLIST")
                 true
             }
 
             R.id.action_clear_playing_queue -> {
                 playerViewModel.clearQueue()
-                true
-            }
-
-            R.id.action_shuffle_queue -> {
-                playerViewModel.shuffleQueue()
                 true
             }
 
@@ -236,35 +189,6 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
         }
     }
 
-    override fun onRemoveSong(song: Song, fromPosition: Int) {
-        lastRemovedSong = song
-        if (snackbar?.isShown == true) {
-            snackbar?.dismiss()
-        }
-        snackbar = Snackbar.make(
-            binding.root.context,
-            binding.root,
-            getString(R.string.x_removed_from_playing_queue, lastRemovedSong!!.title),
-            Snackbar.LENGTH_LONG
-        )
-            .setAction(R.string.undo_action) {
-                playerViewModel.enqueue(song, fromPosition).observe(viewLifecycleOwner) {
-                    showToast(R.string.added_title_to_playing_queue)
-                }
-            }
-            .addCallback(object : BaseTransientBottomBar.BaseCallback<Snackbar>() {
-                override fun onDismissed(snackbar: Snackbar, event: Int) {
-                    snackbar.removeCallback(this)
-                }
-
-                override fun onShown(snackbar: Snackbar) {
-                    playerViewModel.removePosition(fromPosition)
-                }
-            }).also { newSnackbar ->
-                newSnackbar.show()
-            }
-    }
-
     override fun songMenuItemClick(
         song: Song,
         menuItem: MenuItem,
@@ -277,16 +201,7 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
 
     private fun resetToCurrentPosition() {
         binding.recyclerView.stopScroll()
-        linearLayoutManager?.scrollToPositionWithOffset(queuePosition, 0)
-    }
-
-    private fun updateQuickAction(oldAction: QueueQuickAction?, newAction: QueueQuickAction) {
-        if (oldAction != null) {
-            toolbar.menu.findItem(oldAction.menuItemId).isVisible = true
-        }
-        toolbar.menu.findItem(newAction.menuItemId).isVisible = false
-        binding.quickActionButton.setText(newAction.titleRes)
-        binding.quickActionButton.setIconResource(newAction.iconRes)
+        linearLayoutManager?.scrollToPosition(position)
     }
 
     override fun onPause() {
@@ -307,9 +222,7 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
         binding.recyclerView.layoutManager = null
 
         linearLayoutManager = null
-
         super.onDestroyView()
-        if (playerViewModel.playingQueue.isNotEmpty())
-            mainActivity.expandPanel()
+        _binding = null
     }
 }

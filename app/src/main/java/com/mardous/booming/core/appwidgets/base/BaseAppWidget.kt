@@ -25,18 +25,22 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.*
 import android.graphics.drawable.Drawable
+import android.os.Handler
+import android.os.Looper
 import android.widget.RemoteViews
 import androidx.core.graphics.createBitmap
 import androidx.core.graphics.drawable.toDrawable
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.mardous.booming.R
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.extensions.media.songInfo
+import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.resources.getDrawableCompat
-import com.mardous.booming.service.MusicService
-import com.mardous.booming.service.constants.ServiceAction
+import com.mardous.booming.playback.PlaybackService
 
 abstract class BaseAppWidget : AppWidgetProvider() {
+
+    protected val uiHandler = Handler(Looper.getMainLooper())
+
     /**
      * {@inheritDoc}
      */
@@ -45,19 +49,18 @@ abstract class BaseAppWidget : AppWidgetProvider() {
         appWidgetIds: IntArray
     ) {
         defaultAppWidget(context, appWidgetIds)
-        val updateIntent = Intent(ServiceAction.ACTION_APP_WIDGET_UPDATE)
+        val updateIntent = Intent(PlaybackService.ACTION_APP_WIDGET_UPDATE)
         updateIntent.setPackage(context.packageName)
-        updateIntent.putExtra(ServiceAction.Extras.EXTRA_APP_WIDGET_NAME, NAME)
+        updateIntent.putExtra(PlaybackService.EXTRA_APP_WIDGET_NAME, NAME)
         updateIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds)
         updateIntent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY)
         LocalBroadcastManager.getInstance(context).sendBroadcast(updateIntent)
     }
 
     /**
-     * Handle a change notification coming over from
-     * [MusicService]
+     * Handle a change notification coming over from [PlaybackService]
      */
-    fun notifyChange(service: MusicService) {
+    fun notifyChange(service: PlaybackService) {
         if (hasInstances(service)) {
             performUpdate(service, null)
         }
@@ -89,7 +92,7 @@ abstract class BaseAppWidget : AppWidgetProvider() {
 
     protected abstract fun defaultAppWidget(context: Context, appWidgetIds: IntArray)
 
-    abstract fun performUpdate(service: MusicService, appWidgetIds: IntArray?)
+    abstract fun performUpdate(service: PlaybackService, appWidgetIds: IntArray?)
 
     @Suppress("DEPRECATION")
     protected fun getAlbumArtDrawable(context: Context, bitmap: Bitmap?): Drawable {
@@ -98,7 +101,8 @@ abstract class BaseAppWidget : AppWidgetProvider() {
     }
 
     protected fun getSongArtistAndAlbum(song: Song): String {
-        return song.songInfo(true)
+        val artistName = song.displayArtistName()
+        return "$artistName - ${song.albumName}"
     }
 
     protected fun getInnerRadius(context: Context): Float {

@@ -23,9 +23,9 @@ import androidx.fragment.app.FragmentActivity
 import com.mardous.booming.core.model.sort.SortKey
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.extensions.media.asReadableDuration
+import com.mardous.booming.extensions.media.asReadableTrackNumber
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.extensions.media.durationStr
-import com.mardous.booming.extensions.media.trackNumber
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.ui.ISongCallback
 
@@ -43,10 +43,10 @@ class SimpleSongAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
-        val fixedTrackNumber = dataSet[position].trackNumber.trackNumber()
+        val fixedTrackNumber = dataSet[position].trackNumber.asReadableTrackNumber()
 
         holder.imageText?.text = if (fixedTrackNumber > 0) fixedTrackNumber.toString() else "-"
-        holder.time?.text = dataSet[position].duration.durationStr()
+        holder.time?.text = dataSet[position].duration.asReadableDuration()
     }
 
     override fun getSongText(song: Song): String {
@@ -63,7 +63,7 @@ class SimpleSongAdapter(
     }
 
     private fun getTrackNumberString(song: Song) =
-        song.trackNumber.takeIf { it > 0 }?.trackNumber()?.toString() ?: "-"
+        song.trackNumber.takeIf { it > 0 }?.asReadableTrackNumber()?.toString() ?: "-"
 
     override fun getItemCount(): Int {
         return dataSet.size

@@ -7,9 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.core.model.equalizer.BalanceLevel
-import com.mardous.booming.core.model.equalizer.CrossfadeState
 import com.mardous.booming.core.model.equalizer.EqEffectUpdate
+import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.core.model.equalizer.TempoLevel
+import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -27,8 +28,11 @@ class SoundSettingsViewModel(
     val tempoFlow = soundSettings.tempoFlow
     val tempo get() = soundSettings.tempo
 
-    val crossfadeFlow = soundSettings.crossfadeFlow
-    val crossfade get() = soundSettings.crossfade
+    val replayGainStateFlow = soundSettings.replayGainStateFlow
+    val replayGainState get() = soundSettings.replayGainState
+
+    val audioFloatOutputFlow = soundSettings.audioFloatOutputFlow
+    val skipSilenceFlow = soundSettings.skipSilenceFlow
 
     init {
         audioOutputObserver.startObserver()
@@ -37,6 +41,14 @@ class SoundSettingsViewModel(
     override fun onCleared() {
         super.onCleared()
         audioOutputObserver.stopObserver()
+    }
+
+    fun setEnableAudioFloatOutput(enable: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        soundSettings.setEnableAudioFloatOutput(enable)
+    }
+
+    fun setEnableSkipSilences(enable: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        soundSettings.setEnableSkipSilence(enable)
     }
 
     fun setVolume(volume: Int) {
@@ -62,14 +74,22 @@ class SoundSettingsViewModel(
         soundSettings.setTempo(update, apply)
     }
 
-    fun setCrossfade(
-        crossfadeDuration: Int = crossfade.crossfadeDuration,
-        audioFadeDuration: Int = crossfade.audioFadeDuration,
+    fun setReplayGain(
+        mode: ReplayGainMode = replayGainState.mode,
+        preamp: Float = replayGainState.preamp,
+        preampWithoutGain: Float = replayGainState.preampWithoutGain,
         apply: Boolean = true
     ) = viewModelScope.launch(Dispatchers.IO) {
-        val newState = CrossfadeState(apply, crossfadeDuration, audioFadeDuration)
-        val update = EqEffectUpdate(crossfadeFlow.value, true, newState)
-        soundSettings.setCrossfade(update, apply)
+        val update = EqEffectUpdate(
+            state = replayGainStateFlow.value,
+            isEnabled = mode.isOn,
+            value = ReplayGainState(
+                mode = mode,
+                preamp = preamp,
+                preampWithoutGain = preampWithoutGain
+            )
+        )
+        soundSettings.setReplayGain(update, apply)
     }
 
     fun applyPendingState() = viewModelScope.launch(Dispatchers.IO) {

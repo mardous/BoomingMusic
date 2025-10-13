@@ -1,9 +1,9 @@
 [
   {
     "contrib_name": "Dawid",
-    "contrib_description": "Designer, Translator & Community Moderator",
+    "contrib_description": "Contributor, Designer & Community Moderator",
     "contrib_url": "https://github.com/hackzy01",
-    "contrib_image": "dawid.png",
+    "contrib_image": "dawid.png"
   },
   {
     "contrib_name": "TheTerminatorOfProgramming",
@@ -13,7 +13,7 @@
   },
   {
     "contrib_name": "Ray Cadle",
-    "contrib_description": "Contributor",
+    "contrib_description": "Contributor & Tester",
     "contrib_url": "https://https://github.com/raycadle",
     "contrib_image": "ray.png"
   },

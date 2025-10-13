@@ -27,6 +27,7 @@ import android.provider.MediaStore
 import android.provider.MediaStore.Audio.AudioColumns
 import android.provider.OpenableColumns
 import android.util.Log
+import androidx.media3.common.MediaItem
 import com.mardous.booming.appInstance
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.local.MediaQueryDispatcher
@@ -48,6 +49,8 @@ interface SongRepository {
     fun songs(query: String): List<Song>
     fun songs(cursor: Cursor?): List<Song>
     suspend fun songsByUri(uri: Uri): List<Song>
+    suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>>
+    suspend fun songByMediaItem(mediaItem: MediaItem?): Song
     fun songByFilePath(filePath: String, ignoreBlacklist: Boolean = false): Song
     fun song(cursor: Cursor?): Song
     fun song(songId: Long): Song
@@ -137,6 +140,43 @@ class RealSongRepository(private val inclExclDao: InclExclDao) : SongRepository 
         }
 
         return songs
+    }
+
+    override suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>> {
+        if (mediaItems.isEmpty()) return (emptyList<Song>() to mediaItems)
+
+        val ids = mediaItems.map { it.mediaId }
+        val allSongs = buildList {
+            ids.chunked(900).forEach { chunk ->
+                val selection = "${AudioColumns._ID} IN (${chunk.joinToString(",") { "?" }})"
+                val selectionArgs = chunk.toTypedArray()
+                addAll(songs(makeSongCursor(selection = selection, selectionValues = selectionArgs)))
+            }
+        }
+
+        val songMap = allSongs.associateBy { it.id.toString() }
+        val (found, missing) = mediaItems.partition { item ->
+            songMap[item.mediaId]?.takeIf { it != Song.emptySong } != null
+        }
+
+        val resultSongs = found.mapNotNull { songMap[it.mediaId] }
+        return resultSongs to missing
+    }
+
+    override suspend fun songByMediaItem(mediaItem: MediaItem?): Song {
+        if (mediaItem != null) {
+            var song = mediaItem.localConfiguration?.tag
+            if (song == null || song !is Song) {
+                song = song(
+                    makeSongCursor(
+                        selection = "${AudioColumns._ID}=?",
+                        selectionValues = arrayOf(mediaItem.mediaId)
+                    )
+                )
+            }
+            return song
+        }
+        return Song.emptySong
     }
 
     override fun songByFilePath(filePath: String, ignoreBlacklist: Boolean): Song {
@@ -252,7 +292,7 @@ class RealSongRepository(private val inclExclDao: InclExclDao) : SongRepository 
         val (name, size) = getDisplayNameAndSize(uri)
             ?: return Song.emptySong
 
-        val selection = "${MediaStore.Audio.Media.DISPLAY_NAME} = ? AND ${MediaStore.Audio.Media.SIZE} = ?"
+        val selection = "${AudioColumns.DISPLAY_NAME} = ? AND ${AudioColumns.SIZE} = ?"
         val selectionArgs = arrayOf(name, size.toString())
 
         val cursor = makeSongCursor(selection, selectionArgs, ignoreBlacklist = true)
@@ -261,20 +301,20 @@ class RealSongRepository(private val inclExclDao: InclExclDao) : SongRepository 
 
     private fun getSongFromCursorImpl(cursor: Cursor): Song {
         val id = cursor.getLong(0)
-        val data = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA))
-        val title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE))
-        val trackNumber = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TRACK))
-        val year = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.YEAR))
-        val size = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.SIZE))
-        val duration = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION))
-        val dateAdded = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATE_ADDED))
-        val dateModified = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATE_MODIFIED))
-        val albumId = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID))
-        val albumName = cursor.getStringSafe(MediaStore.Audio.Media.ALBUM) ?: Album.UNKNOWN_ALBUM_DISPLAY_NAME
-        val artistId = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST_ID))
-        val artistName = cursor.getStringSafe(MediaStore.Audio.Media.ARTIST) ?: ""
-        val albumArtistName = cursor.getStringSafe(MediaStore.Audio.Media.ALBUM_ARTIST)
-        val genreName = cursor.getStringSafe(MediaStore.Audio.Media.GENRE)
+        val data = cursor.getString(cursor.getColumnIndexOrThrow(AudioColumns.DATA))
+        val title = cursor.getString(cursor.getColumnIndexOrThrow(AudioColumns.TITLE))
+        val trackNumber = cursor.getInt(cursor.getColumnIndexOrThrow(AudioColumns.TRACK))
+        val year = cursor.getInt(cursor.getColumnIndexOrThrow(AudioColumns.YEAR))
+        val size = cursor.getLong(cursor.getColumnIndexOrThrow(AudioColumns.SIZE))
+        val duration = cursor.getLong(cursor.getColumnIndexOrThrow(AudioColumns.DURATION))
+        val dateAdded = cursor.getLong(cursor.getColumnIndexOrThrow(AudioColumns.DATE_ADDED))
+        val dateModified = cursor.getLong(cursor.getColumnIndexOrThrow(AudioColumns.DATE_MODIFIED))
+        val albumId = cursor.getLong(cursor.getColumnIndexOrThrow(AudioColumns.ALBUM_ID))
+        val albumName = cursor.getStringSafe(AudioColumns.ALBUM) ?: Album.UNKNOWN_ALBUM_DISPLAY_NAME
+        val artistId = cursor.getLong(cursor.getColumnIndexOrThrow(AudioColumns.ARTIST_ID))
+        val artistName = cursor.getStringSafe(AudioColumns.ARTIST) ?: ""
+        val albumArtistName = cursor.getStringSafe(AudioColumns.ALBUM_ARTIST)
+        val genreName = cursor.getStringSafe(AudioColumns.GENRE)
         return Song(
             id,
             data,

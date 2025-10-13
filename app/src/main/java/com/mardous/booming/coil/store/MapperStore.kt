@@ -20,7 +20,7 @@ class SongMapper(private val preferences: SharedPreferences) : Mapper<Song, Audi
             albumId = data.albumId,
             uri = data.uri,
             path = data.data,
-            lastModified = data.dateModified,
+            lastModified = data.rawDateModified,
             isAlbum = false,
             isIgnoreMediaStore = preferences.getBoolean(IGNORE_MEDIA_STORE, true),
             isUseFolderArt = preferences.getBoolean(USE_FOLDER_ART, true)
@@ -38,7 +38,7 @@ class AlbumMapper(private val preferences: SharedPreferences) : Mapper<Album, Au
                 albumId = data.id,
                 uri = it.uri,
                 path = it.data,
-                lastModified = it.dateModified,
+                lastModified = it.rawDateModified,
                 isAlbum = true,
                 isIgnoreMediaStore = preferences.getBoolean(IGNORE_MEDIA_STORE, true),
                 isUseFolderArt = preferences.getBoolean(USE_FOLDER_ART, true)
@@ -86,7 +86,7 @@ class FileMapper(private val preferences: SharedPreferences) : Mapper<FileSystem
                 albumId = data.albumId,
                 uri = data.uri,
                 path = data.data,
-                lastModified = data.dateModified,
+                lastModified = data.rawDateModified,
                 isAlbum = false,
                 isIgnoreMediaStore = preferences.getBoolean(IGNORE_MEDIA_STORE, true),
                 isUseFolderArt = preferences.getBoolean(USE_FOLDER_ART, true)

@@ -15,9 +15,9 @@ import com.mardous.booming.extensions.files.asReadableFileSize
 import com.mardous.booming.extensions.files.getHumanReadableSize
 import com.mardous.booming.extensions.files.getPrettyAbsolutePath
 import com.mardous.booming.extensions.files.toAudioFile
+import com.mardous.booming.extensions.media.asNumberOfTimes
 import com.mardous.booming.extensions.media.replayGainStr
 import com.mardous.booming.extensions.media.songDurationStr
-import com.mardous.booming.extensions.media.timesStr
 import com.mardous.booming.extensions.utilities.dateStr
 import com.mardous.booming.extensions.utilities.format
 import kotlinx.coroutines.Dispatchers
@@ -45,8 +45,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
     }
 
     fun playInfo(songs: List<Song>): LiveData<PlayInfoResult> = liveData(Dispatchers.IO) {
-        val playCountEntities =
-            repository.playCountSongsFrom(songs).sortedByDescending { it.playCount }
+        val playCountEntities = repository.findSongsInPlayCount(songs).sortedByDescending { it.playCount }
         val totalPlayCount = playCountEntities.sumOf { it.playCount }
         val totalSkipCount = playCountEntities.sumOf { it.skipCount }
         val lastPlayDate = playCountEntities.maxOf { it.timePlayed }
@@ -58,11 +57,11 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
             // Play count
             val result = runCatching {
                 val playCountEntity = repository.findSongInPlayCount(song.id) ?: song.toPlayCount()
-                val playCount = playCountEntity.playCount.timesStr(context)
-                val skipCount = playCountEntity.skipCount.timesStr(context)
+                val playCount = playCountEntity.playCount.asNumberOfTimes(context)
+                val skipCount = playCountEntity.skipCount.asNumberOfTimes(context)
                 val lastPlayed = context.dateStr(playCountEntity.timePlayed)
 
-                val dateModified = song.getModifiedDate().format(context)
+                val dateModified = song.dateModified.format(context)
                 val year = if (song.year > 0) song.year.toString() else null
                 val trackLength = song.songDurationStr()
                 val replayGain = song.replayGainStr(context)

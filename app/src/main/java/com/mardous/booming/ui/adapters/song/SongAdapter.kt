@@ -33,8 +33,8 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.isValidPosition
 import com.mardous.booming.extensions.loadPaletteImage
+import com.mardous.booming.extensions.media.asSectionName
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.extensions.media.sectionName
 import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.ui.ISongCallback
@@ -44,8 +44,6 @@ import com.mardous.booming.ui.component.menu.OnClickMenu
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import kotlin.properties.Delegates
-import kotlin.reflect.KProperty
 
 @SuppressLint("NotifyDataSetChanged")
 @Suppress("LeakingThis")
@@ -57,9 +55,11 @@ open class SongAdapter(
     protected val callback: ISongCallback? = null,
 ) : AbsMultiSelectAdapter<SongAdapter.ViewHolder, Song>(activity, R.menu.menu_media_selection), PopupTextProvider {
 
-    var dataSet by Delegates.observable(dataSet) { _: KProperty<*>, _: List<Song>, _: List<Song> ->
-        notifyDataSetChanged()
-    }
+    open var dataSet: List<Song> = dataSet
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     protected open fun createViewHolder(view: View, viewType: Int): ViewHolder {
         return ViewHolder(view)
@@ -131,12 +131,12 @@ open class SongAdapter(
     override fun getPopupText(view: View, position: Int): CharSequence {
         val song = dataSet.getOrNull(position) ?: return ""
         return when (sortMode?.selectedKey) {
-            SortKey.Album -> song.albumName.sectionName()
-            SortKey.Artist -> song.displayArtistName().sectionName()
-            SortKey.AZ -> song.title.sectionName()
+            SortKey.Album -> song.albumName.asSectionName()
+            SortKey.Artist -> song.displayArtistName().asSectionName()
+            SortKey.AZ -> song.title.asSectionName()
             SortKey.Year -> ""
-            SortKey.FileName -> song.fileName.sectionName()
-            else -> song.title.sectionName()
+            SortKey.FileName -> song.fileName.asSectionName()
+            else -> song.title.asSectionName()
         }
     }
 

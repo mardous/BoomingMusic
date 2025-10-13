@@ -44,7 +44,7 @@ import com.mardous.booming.R
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.core.model.about.DeviceInfo
 import com.mardous.booming.extensions.*
-import com.mardous.booming.ui.component.compose.*
+import com.mardous.booming.ui.component.compose.ActionButton
 import com.mardous.booming.ui.component.compose.lists.ContributionListItem
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -371,12 +371,13 @@ private fun ReportBugsDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = {
-            DialogTitle(
-                text = stringResource(R.string.report_bugs),
-                iconRes = R.drawable.ic_bug_report_24dp
+        icon = {
+            Icon(
+                painter = painterResource(R.drawable.ic_bug_report_24dp),
+                contentDescription = null
             )
         },
+        title = { Text(stringResource(R.string.report_bugs)) },
         text = {
             Text(text = stringResource(R.string.you_will_be_forwarded_to_the_issue_tracker_website))
         },

@@ -14,10 +14,10 @@
  */
 package com.mardous.booming.data.local.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface HistoryDao {
@@ -28,14 +28,39 @@ interface HistoryDao {
     @Upsert
     suspend fun upsertSongInHistory(historyEntity: HistoryEntity)
 
-    @Query("DELETE FROM HistoryEntity WHERE id= :songId")
+    @Query("DELETE FROM HistoryEntity WHERE id = :songId")
     fun deleteSongInHistory(songId: Long)
 
-    @Query("SELECT * FROM HistoryEntity ORDER BY time_played DESC LIMIT $HISTORY_LIMIT")
-    fun historySongs(): List<HistoryEntity>
+    @Query("DELETE FROM HistoryEntity WHERE id IN (:songIds)")
+    fun deleteSongsInHistory(songIds: List<Long>)
 
-    @Query("SELECT * FROM HistoryEntity ORDER BY time_played DESC LIMIT $HISTORY_LIMIT")
-    fun observableHistorySongs(): LiveData<List<HistoryEntity>>
+    @Query("""
+    SELECT * FROM HistoryEntity
+    WHERE (:cutoff = 0 OR time_played > :cutoff)
+    ORDER BY time_played DESC
+    LIMIT $HISTORY_LIMIT""")
+    fun historySongs(cutoff: Long = 0): List<HistoryEntity>
+
+    @Query("""
+    SELECT * FROM HistoryEntity
+    WHERE (:cutoff = 0 OR time_played > :cutoff)
+    ORDER BY time_played DESC
+    LIMIT $HISTORY_LIMIT""")
+    fun historySongsFlow(cutoff: Long = 0): Flow<List<HistoryEntity>>
+
+    @Query("""
+    SELECT id FROM HistoryEntity
+    WHERE (:cutoff = 0 OR time_played > :cutoff)
+    ORDER BY time_played DESC
+    LIMIT :limit""")
+    suspend fun playedSongIds(cutoff: Long = 0, limit: Int = HISTORY_LIMIT): List<Long>
+
+    @Query("""
+    SELECT id FROM HistoryEntity
+    WHERE (:cutoff = 0 OR time_played < :cutoff)
+    ORDER BY time_played ASC
+    LIMIT :limit""")
+    suspend fun notPlayedSongIds(cutoff: Long = 0, limit: Int = HISTORY_LIMIT): List<Long>
 
     @Query("DELETE FROM HistoryEntity")
     suspend fun clearHistory()
