@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">ערבב ניגון</string>
     <string name="action_queue_next">הבא בתור</string>
     <string name="shuffle_all_label">ערבב הכל</string>
+    <string name="shuffle_mode">מצב ערבוב</string>
+    <string name="repeat_mode">מצב חזרה</string>
     <string name="advanced_shuffle_label">ערבוב מתקדם</string>
     <string name="shuffle_button_tip">הקש להערבוב רגיל. לחיצה ארוכה תפתח אפשרויות מתקדמות.</string>
     <string name="action_play_pause">נגן/השהה</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">לא נמצא אקולייזר.</string>
     <string name="audio_focus_denied">מיקוד שמע נדחה.</string>
     <string name="no_audio_ID">מזהה אודיו שגוי.</string>
+    <string name="playback_error_code">שגיאת הפעלה (%s).</string>
     <string name="unplayable_file">לא הצלחנו לנגן את השיר הזה.</string>
     <string name="unplayable_file_code_x">לא ניתן לנגן את השיר הזה (קוד: %d).</string>
     <string name="permission_external_storage_title">גישה לאחסון</string>
@@ -153,8 +156,8 @@
     <string name="app_widget_small_name">קטן</string>
     <string name="now_playing">מנגן כעת</string>
     <string name="playing_queue_label">מנגן תור השמעה</string>
-    <string name="list_start">תחילת רשימה.</string>
-    <string name="list_end">סוף רשימה.</string>
+    <string name="list_start">תחילת רשימה</string>
+    <string name="list_end">סוף רשימה</string>
     <string name="empty_play_queue">תור ההשמעה ריק.</string>
     <string name="save_queue">שמור תור השמעה</string>
     <string name="clear_queue">נקה תור השמעה</string>
@@ -479,6 +482,13 @@
     <string name="tempo_label">קצב</string>
     <string name="action_external_eq">איקוולייזר חיצוני</string>
     <string name="custom">מותאם אישית</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">הצג מילות שיר</string>
     <string name="action_hide_lyrics">הסתר מילות שיר</string>
@@ -818,7 +828,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">השתמש בגווני Material You המבוססים על צבע האלבום</string>
     <!-- Update -->
-    <string name="auto_update_title">עדכון חיפוש אוטומטי</string>
+    <string name="auto_update_title">לעדכן את החיפוש אוטומטית</string>
     <string name="every_day">כל יום</string>
     <string name="weekly">שבועי</string>
     <string name="every_fifteen_days">כל חמישה עשר ימים</string>

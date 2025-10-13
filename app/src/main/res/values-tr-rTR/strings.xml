@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Karıştırarak oynat</string>
     <string name="action_queue_next">Sıradakini çal</string>
     <string name="shuffle_all_label">Tümünü karıştır</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Gelişmiş karıştırma</string>
     <string name="shuffle_button_tip">Normal karıştırma için dokunun. Gelişmiş seçenekler için uzun basın.</string>
     <string name="action_play_pause">Oynat/Duraklat</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">Ekolayzer bulunamadı.</string>
     <string name="audio_focus_denied">Ses odağı reddedildi.</string>
     <string name="no_audio_ID">Hatalı ses kimliği.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Bu şarkı çalınamadı.</string>
     <string name="unplayable_file_code_x">Bu şarkı çalınamadı (kod: %d).</string>
     <string name="permission_external_storage_title">Depolama Erişimi</string>
@@ -153,8 +156,8 @@
     <string name="app_widget_small_name">Küçük</string>
     <string name="now_playing">Şimdi Çalıyor</string>
     <string name="playing_queue_label">Çalma Sırası</string>
-    <string name="list_start">Listenin başlangıcı.</string>
-    <string name="list_end">Listenin sonu.</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">Çalma sırası boş.</string>
     <string name="save_queue">Sırayı kaydet</string>
     <string name="clear_queue">Sırayı temizle</string>
@@ -463,6 +466,13 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Harici Ekolayzer</string>
     <string name="custom">Özel</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Şarkı sözlerini göster</string>
     <string name="action_hide_lyrics">Şarkı sözlerini gizle</string>
@@ -802,7 +812,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Albüm rengine dayalı Material You tonlarını kullanın</string>
     <!-- Update -->
-    <string name="auto_update_title">Oto. güncelleme araması</string>
+    <string name="auto_update_title">Otomatik güncelleme araması</string>
     <string name="every_day">Her gün</string>
     <string name="weekly">Haftalık</string>
     <string name="every_fifteen_days">On beş günde bir</string>

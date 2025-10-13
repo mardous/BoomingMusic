@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Reproducció aleatòria</string>
     <string name="action_queue_next">Afegeix a la cua</string>
     <string name="shuffle_all_label">Barreja-ho tot</string>
+    <string name="shuffle_mode">Mode aleatori</string>
+    <string name="repeat_mode">Mode repetició</string>
     <string name="advanced_shuffle_label">Barreja avançada</string>
     <string name="shuffle_button_tip">Clica per fer una barreja normal. Mantén premut per accedir a opcions avançades.</string>
     <string name="action_play_pause">Reprodueix/Pausa</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">No s\'ha trobat cap equalitzador.</string>
     <string name="audio_focus_denied">S\'ha denegat el focus d\'àudio.</string>
     <string name="no_audio_ID">ID d\'àudio incorrecte.</string>
+    <string name="playback_error_code">Error de reproducció (%s).</string>
     <string name="unplayable_file">No s\'ha pogut reproduir la cançó.</string>
     <string name="unplayable_file_code_x">No s\'ha pogut reproduir la cançó (codi: %d).</string>
     <string name="permission_external_storage_title">Accés a l\'emmagatzematge</string>
@@ -153,8 +156,8 @@
     <string name="app_widget_small_name">Petit</string>
     <string name="now_playing">Ara sona</string>
     <string name="playing_queue_label">Cua de reproducció</string>
-    <string name="list_start">Inici de la llista.</string>
-    <string name="list_end">Fi de la llista.</string>
+    <string name="list_start">Inici de la llista</string>
+    <string name="list_end">Fi de la llista</string>
     <string name="empty_play_queue">Cua de reproducció buida.</string>
     <string name="save_queue">Desa la cua</string>
     <string name="clear_queue">Buida la cua</string>
@@ -463,6 +466,13 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostra la lletra</string>
     <string name="action_hide_lyrics">Amaga la lletra</string>

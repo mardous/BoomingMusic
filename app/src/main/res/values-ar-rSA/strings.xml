@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">تشغيل عشوائي</string>
     <string name="action_queue_next">قائمة الانتظار التالية</string>
     <string name="shuffle_all_label">خلط الكل</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">تشغيل/إيقاف</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">لم يتم العثور على المعادن.</string>
     <string name="audio_focus_denied">تم رفض التركيز الصوتي.</string>
     <string name="no_audio_ID">معرف صوتي سيئ.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">تعذر تشغيل هذه الأغنية.</string>
     <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">الوصول إلى التخزين</string>
@@ -153,8 +156,8 @@
     <string name="app_widget_small_name">صغير</string>
     <string name="now_playing">يلعب الآن</string>
     <string name="playing_queue_label">قائمة الانتظار</string>
-    <string name="list_start">بدء القائمة.</string>
-    <string name="list_end">نهاية القائمة.</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">قائمة الانتظار فارغة.</string>
     <string name="save_queue">حفظ قائمة الانتظار</string>
     <string name="clear_queue">مسح قائمة الانتظار</string>
@@ -495,6 +498,13 @@
     <string name="tempo_label">تمبو</string>
     <string name="action_external_eq">EQ خارجي</string>
     <string name="custom">مخصص</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">إظهار كلمات الأغاني</string>
     <string name="action_hide_lyrics">إخفاء الكلمات</string>
@@ -835,7 +845,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
-    <string name="auto_update_title">تحديث البحث التلقائي</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">كل يوم</string>
     <string name="weekly">أسبوعيا</string>
     <string name="every_fifteen_days">كل خمسة عشر يوما</string>

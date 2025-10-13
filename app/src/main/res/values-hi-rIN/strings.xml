@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">फेरबदल खेल</string>
     <string name="action_queue_next">अगली कतार</string>
     <string name="shuffle_all_label">सभी को फेरबदल करें</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">चलाएं/रोकें</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">कोई समानांतर नहीं मिला।</string>
     <string name="audio_focus_denied">ऑडियो फोकस अस्वीकृत।</string>
     <string name="no_audio_ID">खराब ऑडियो आईडी।</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">इस गाने को नहीं चला सका।</string>
     <string name="unplayable_file_code_x">इस गाने को नहीं खेला जा सका (कोड: %d)।</string>
     <string name="permission_external_storage_title">स्टोरेज एक्सेस</string>
@@ -153,8 +156,8 @@
     <string name="app_widget_small_name">छोटा</string>
     <string name="now_playing">अब बज रहा है</string>
     <string name="playing_queue_label">कतार बजाना</string>
-    <string name="list_start">सूची प्रारंभ</string>
-    <string name="list_end">सूची समाप्त</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">खाली खेल कतार.</string>
     <string name="save_queue">कतार सहेजें</string>
     <string name="clear_queue">कतार साफ़ करें</string>
@@ -461,6 +464,13 @@
     <string name="tempo_label">गति</string>
     <string name="action_external_eq">बाहरी ईक्यू</string>
     <string name="custom">कस्टम</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">गीत के बोल दिखाएँ</string>
     <string name="action_hide_lyrics">गाने के बोल छिपाएँ</string>
@@ -801,7 +811,7 @@
     <string name="player_color_mode_material_you_title">मटीरियल यू </string>
     <string name="player_color_mode_material_you_description">एल्बम कलर पर आधारित सामग्री यू टोन का उपयोग करें</string>
     <!-- Update -->
-    <string name="auto_update_title">स्वतः अद्यतन खोज</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">हर दिन</string>
     <string name="weekly">साप्ताहिक</string>
     <string name="every_fifteen_days">हर पंद्रह दिन में</string>

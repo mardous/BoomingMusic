@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Lecture aléatoire</string>
     <string name="action_queue_next">File d\'attente suivante</string>
     <string name="shuffle_all_label">Tout mélanger</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Mélange avancé</string>
     <string name="shuffle_button_tip">Appuyez pour une lecture aléatoire normale. Appuyez longuement pour accéder aux options avancées.</string>
     <string name="action_play_pause">Lecture/Pause</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">Aucun égaliseur trouvé.</string>
     <string name="audio_focus_denied">Mise au point audio refusée.</string>
     <string name="no_audio_ID">Mauvaise identification audio.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Impossible de lire ce titre.</string>
     <string name="unplayable_file_code_x">Impossible de lire ce titre (code : %d).</string>
     <string name="permission_external_storage_title">Accès au stockage</string>
@@ -153,8 +156,8 @@
     <string name="app_widget_small_name">Petit</string>
     <string name="now_playing">En cours de lecture</string>
     <string name="playing_queue_label">File de lecture</string>
-    <string name="list_start">Début de la liste.</string>
-    <string name="list_end">Fin de la liste.</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">File d\'attente de lecture vide.</string>
     <string name="save_queue">Enregistrer la file d\'attente</string>
     <string name="clear_queue">Vider la file d\'attente</string>
@@ -463,6 +466,13 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ externe</string>
     <string name="custom">Personnalisé</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Afficher les paroles</string>
     <string name="action_hide_lyrics">Masquer les paroles</string>
@@ -802,7 +812,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Utilisez les tons Material You en fonction de la couleur de l\'album</string>
     <!-- Update -->
-    <string name="auto_update_title">Mise à jour automatique de la recherche</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">Tous les jours</string>
     <string name="weekly">Hebdomadaire</string>
     <string name="every_fifteen_days">Tous les quinze jours</string>

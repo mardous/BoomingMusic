@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">随机播放</string>
     <string name="action_queue_next">下一个队列</string>
     <string name="shuffle_all_label">全部随机</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">播放/暂停</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">未找到均衡器。</string>
     <string name="audio_focus_denied">音频焦点被拒绝。</string>
     <string name="no_audio_ID">错误的音频ID。</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">无法播放这首歌曲。</string>
     <string name="unplayable_file_code_x">无法播放（错误码：%d）。</string>
     <string name="permission_external_storage_title">存储访问</string>
@@ -153,8 +156,8 @@
     <string name="app_widget_small_name">小的</string>
     <string name="now_playing">正在播放</string>
     <string name="playing_queue_label">播放队列</string>
-    <string name="list_start">列表开头。</string>
-    <string name="list_end">列表结尾。</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">空的播放队列。</string>
     <string name="save_queue">保存队列</string>
     <string name="clear_queue">清除队列</string>
@@ -455,6 +458,13 @@
     <string name="tempo_label">节拍</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">自定义</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">显示歌词</string>
     <string name="action_hide_lyrics">隐藏歌词</string>
@@ -795,7 +805,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">启用基于相册颜色的Material You设置</string>
     <!-- Update -->
-    <string name="auto_update_title">自动更新搜索</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">每天</string>
     <string name="weekly">每周</string>
     <string name="every_fifteen_days">每十五天</string>

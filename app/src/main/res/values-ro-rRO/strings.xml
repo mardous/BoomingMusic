@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Amestecare redare</string>
     <string name="action_queue_next">Coada următoare</string>
     <string name="shuffle_all_label">Amestecare toate</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Redare/pauză</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">Niciun egalizator găsit.</string>
     <string name="audio_focus_denied">Focalizare audio refuzată.</string>
     <string name="no_audio_ID">ID audio incorect.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Nu s-a putut reda acest cântec.</string>
     <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Acces stocare</string>
@@ -153,8 +156,8 @@
     <string name="app_widget_small_name">Mică</string>
     <string name="now_playing">Acum se redă</string>
     <string name="playing_queue_label">Lista de redare</string>
-    <string name="list_start">Început listă.</string>
-    <string name="list_end">Sfârșit listă.</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">Joc de redare gol.</string>
     <string name="save_queue">Salvează coada</string>
     <string name="clear_queue">Curăță coada</string>
@@ -471,6 +474,13 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalizat</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Arată versurile</string>
     <string name="action_hide_lyrics">Ascunde versurile</string>
@@ -811,7 +821,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
-    <string name="auto_update_title">Actualizați automat căutarea</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">În fiecare zi</string>
     <string name="weekly">Săptămânal</string>
     <string name="every_fifteen_days">La fiecare cincisprezece zile</string>

@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Перемешать воспроизведение</string>
     <string name="action_queue_next">Добавить в очередь следующим</string>
     <string name="shuffle_all_label">Перемешать все</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Воспр./Пауза</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">Эквалайзер не найден.</string>
     <string name="audio_focus_denied">Доступ к аудио отклонен.</string>
     <string name="no_audio_ID">Неверный ID аудио.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Не удалось воспроизвести эту песню.</string>
     <string name="unplayable_file_code_x">Не удалось воспроизвести эту композицию (код: %d).</string>
     <string name="permission_external_storage_title">Доступ к хранилищу</string>
@@ -153,8 +156,8 @@
     <string name="app_widget_small_name">Маленький</string>
     <string name="now_playing">Сейчас играет</string>
     <string name="playing_queue_label">Очередь воспроизведения</string>
-    <string name="list_start">Начало списка.</string>
-    <string name="list_end">Конец списка.</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">Пустая очередь воспроизведения.</string>
     <string name="save_queue">Сохранить очередь</string>
     <string name="clear_queue">Очистить очередь</string>
@@ -481,6 +484,13 @@
     <string name="tempo_label">Темп</string>
     <string name="action_external_eq">Внешний эквалайзер</string>
     <string name="custom">Пользовательский</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Показать текст песни</string>
     <string name="action_hide_lyrics">Скрыть текст песни</string>
@@ -821,7 +831,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Использовать цвета Material You на основе обложки альбома</string>
     <!-- Update -->
-    <string name="auto_update_title">Автоматическое обновление поиска</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">Каждый день</string>
     <string name="weekly">Еженедельно</string>
     <string name="every_fifteen_days">Каждые пятнадцать дней</string>

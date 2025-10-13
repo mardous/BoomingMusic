@@ -5,6 +5,8 @@
     <string name="action_shuffle_play">Blanda uppspelning</string>
     <string name="action_queue_next">Kö nästa</string>
     <string name="shuffle_all_label">Blanda alla</string>
+    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Spela/Pausa</string>
@@ -123,6 +125,7 @@
     <string name="no_equalizer">Ingen equalizer hittades.</string>
     <string name="audio_focus_denied">Ljudfokus nekad.</string>
     <string name="no_audio_ID">Dåligt ljud-ID.</string>
+    <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Kunde inte spela den här låten.</string>
     <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Åtkomst till lagring</string>
@@ -153,8 +156,8 @@
     <string name="app_widget_small_name">Liten</string>
     <string name="now_playing">Nu spelas</string>
     <string name="playing_queue_label">Spelar kö</string>
-    <string name="list_start">Listan börjar.</string>
-    <string name="list_end">Listans slut.</string>
+    <string name="list_start">List start</string>
+    <string name="list_end">List end</string>
     <string name="empty_play_queue">Tom uppspelningskön.</string>
     <string name="save_queue">Spara kö</string>
     <string name="clear_queue">Rensa kö</string>
@@ -463,6 +466,13 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Extern EQ</string>
     <string name="custom">Anpassad</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Visa låttext</string>
     <string name="action_hide_lyrics">Dölj låttexter</string>
@@ -803,7 +813,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Use Material You tones based on the album color</string>
     <!-- Update -->
-    <string name="auto_update_title">Auto. uppdatera sökningen</string>
+    <string name="auto_update_title">Auto update search</string>
     <string name="every_day">Varje dag</string>
     <string name="weekly">Veckovis</string>
     <string name="every_fifteen_days">Var 15:e dag</string>
