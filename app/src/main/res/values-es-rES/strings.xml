@@ -572,7 +572,6 @@
     <string name="artist_image_header">Artist image</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Controls</string>
-    <string name="replaygain_header">ReplayGain</string>
     <string name="headphones_header">Headphones</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Audio focus</string>
@@ -668,9 +667,6 @@
     <string name="prefer_album_artist_name_summary">Shows the Album-artist\'s name instead of Song-artist\'s name (if available).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="replaygain_source_mode_title">Source mode</string>
-    <string name="replaygain_preamp_title">PreAmp level</string>
-    <string name="replaygain_preamp_summary">Set volume level when ReplayGain is enabled.</string>
     <string name="queue_next_mode_title">\"Queue next\" mode</string>
     <string name="search_auto_queue_title">Enqueue all search results</string>
     <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
@@ -737,7 +733,6 @@
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
-    <string name="advanced_label">Advanced</string>
     <string name="light_theme_name">Light</string>
     <string name="dark_theme_name">Dark</string>
     <string name="black_theme_name">Black</string>

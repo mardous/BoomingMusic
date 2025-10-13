@@ -588,7 +588,6 @@
     <string name="artist_image_header">Obrázek interpreta</string>
     <string name="exclusion_header">Vyloučení</string>
     <string name="controls_header">Ovládání</string>
-    <string name="replaygain_header">Zesílení záznamu</string>
     <string name="headphones_header">Sluchátka</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Zaměření zvuku</string>
@@ -684,9 +683,6 @@
     <string name="prefer_album_artist_name_summary">Zobrazí jméno alba-umělce místo jména skladby (pokud je k dispozici).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="replaygain_source_mode_title">Režim zdroje</string>
-    <string name="replaygain_preamp_title">Úrovně úvodů</string>
-    <string name="replaygain_preamp_summary">Nastavte úroveň hlasitosti, když je aktivován ReplayGain.</string>
     <string name="queue_next_mode_title">Režim \"Další fronta\"</string>
     <string name="search_auto_queue_title">Enqueue all search results</string>
     <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
@@ -753,7 +749,6 @@
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
-    <string name="advanced_label">Rozšířené</string>
     <string name="light_theme_name">Světlý</string>
     <string name="dark_theme_name">Tmavý</string>
     <string name="black_theme_name">Černý</string>

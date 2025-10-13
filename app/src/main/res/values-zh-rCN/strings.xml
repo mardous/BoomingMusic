@@ -564,7 +564,6 @@
     <string name="artist_image_header">艺术家图像</string>
     <string name="exclusion_header">不适用情形</string>
     <string name="controls_header">控件</string>
-    <string name="replaygain_header">重放增益</string>
     <string name="headphones_header">耳机</string>
     <string name="bluetooth_header">蓝牙</string>
     <string name="audio_focus_header">音频聚焦</string>
@@ -660,9 +659,6 @@
     <string name="prefer_album_artist_name_summary">显示专辑艺术家的名字，而不是歌手的名字(如果可用的话)。</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">启动时自动播放</string>
-    <string name="replaygain_source_mode_title">源模式</string>
-    <string name="replaygain_preamp_title">预置层级</string>
-    <string name="replaygain_preamp_summary">设置当ReplayGain 启用时的音量水平。</string>
     <string name="queue_next_mode_title">“队列下一个”模式</string>
     <string name="search_auto_queue_title">将所有搜索结果加入队列</string>
     <string name="search_auto_queue_summary">当从搜索界面播放歌曲时，其他结果也添加至队列。</string>
@@ -729,7 +725,6 @@
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
-    <string name="advanced_label">高级设置</string>
     <string name="light_theme_name">亮色</string>
     <string name="dark_theme_name">深色</string>
     <string name="black_theme_name">黑色</string>

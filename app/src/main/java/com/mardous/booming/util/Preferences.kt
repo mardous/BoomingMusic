@@ -430,7 +430,7 @@ object Preferences : KoinComponent {
     fun SharedPreferences.requireString(key: String, defaultValue: String): String =
         requireNotNull(getString(key, defaultValue))
 
-    private inline fun <reified T : Enum<T>> SharedPreferences.enumValue(key: String, defaultValue: T): T =
+    inline fun <reified T : Enum<T>> SharedPreferences.enumValue(key: String, defaultValue: T): T =
         nullString(key)?.toEnum<T>() ?: defaultValue
 
     private fun appStr(resid: Int): String = appContext().getString(resid)
@@ -585,10 +585,6 @@ const val PLAYBACK_SPEED = "playback_speed"
 const val PLAYBACK_PITCH = "playback_pitch"
 const val REWIND_WITH_BACK = "rewind_with_back"
 const val SEEK_INTERVAL = "seek_interval"
-const val REPLAYGAIN_SOURCE_MODE = "replaygain_source_mode"
-const val REPLAYGAIN_PREAMP = "replaygain_preamp"
-const val REPLAYGAIN_PREAMP_WITH_TAG = "replaygain_preamp_with_tag"
-const val REPLAYGAIN_PREAMP_WITHOUT_TAG = "replaygain_preamp_without_tag"
 const val QUEUE_NEXT_MODE = "queue_next_mode"
 const val PLAY_ON_STARTUP_MODE = "play_on_startup_mode"
 const val SEARCH_AUTO_QUEUE = "search_auto_queue"

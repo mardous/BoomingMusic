@@ -17,48 +17,14 @@
 
 package com.mardous.booming.ui.screen.settings
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
-import androidx.preference.ListPreference
-import androidx.preference.Preference
 import com.mardous.booming.R
-import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.REPLAYGAIN_PREAMP
-import com.mardous.booming.util.REPLAYGAIN_SOURCE_MODE
-import com.mardous.booming.util.ReplayGainSourceMode
 
 /**
  * @author Christians M. A. (mardous)
  */
-class PlaybackPreferencesFragment : PreferencesScreenFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
-
+class PlaybackPreferencesFragment : PreferencesScreenFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences_screen_playback)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Preferences.registerOnSharedPreferenceChangeListener(this)
-        updatePreAmpState()
-    }
-
-    private fun updatePreAmpState() {
-        val replayGainModePreference = findPreference<ListPreference>(REPLAYGAIN_SOURCE_MODE)
-        if (replayGainModePreference != null) {
-            findPreference<Preference>(REPLAYGAIN_PREAMP)?.isEnabled =
-                replayGainModePreference.value != ReplayGainSourceMode.NONE
-        }
-    }
-
-    override fun onDestroyView() {
-        Preferences.unregisterOnSharedPreferenceChangeListener(this)
-        super.onDestroyView()
-    }
-
-    override fun onSharedPreferenceChanged(preferences: SharedPreferences?, key: String?) {
-        when (key) {
-            REPLAYGAIN_SOURCE_MODE -> updatePreAmpState()
-        }
     }
 }

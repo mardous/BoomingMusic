@@ -572,7 +572,6 @@
     <string name="artist_image_header">Imagen del artista</string>
     <string name="exclusion_header">Exclusiones</string>
     <string name="controls_header">Controles</string>
-    <string name="replaygain_header">Ganancia de reproducción</string>
     <string name="headphones_header">Auriculares</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Foco de audio</string>
@@ -668,9 +667,6 @@
     <string name="prefer_album_artist_name_summary">Muestra el Artista del álbum en lugar del Artista de la canción (si está disponible).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reproducir al iniciar</string>
-    <string name="replaygain_source_mode_title">Modo de origen</string>
-    <string name="replaygain_preamp_title">Nivel de PreAmp</string>
-    <string name="replaygain_preamp_summary">Elija el nivel de volumen a usar cuando ReplayGain está activado.</string>
     <string name="queue_next_mode_title">Modo de \"Añadir a continuación\"</string>
     <string name="search_auto_queue_title">Encolar todos los resultados de la búsqueda</string>
     <string name="search_auto_queue_summary">Al reproducir una canción desde la pantalla de búsqueda, se encolarán también todos los demás resultados.</string>
@@ -736,7 +732,6 @@
     <string name="stop_when_closed_from_recents_summary">La reproducción se detiene al remover la app de la lista de aplicaciones recientes.</string>
     <string name="stop_when_closed_from_recents_note">Nota: algunos dispositivos con gestión agresiva de recursos podrían ignorar esta configuración y siempre forzar el cierre de la app al removerla de la lista de recientes.</string>
     <!-- Preference values -->
-    <string name="advanced_label">Avanzado</string>
     <string name="light_theme_name">Claro</string>
     <string name="dark_theme_name">Oscuro</string>
     <string name="black_theme_name">Negro</string>

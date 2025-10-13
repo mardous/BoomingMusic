@@ -590,7 +590,6 @@
     <string name="artist_image_header">Изображение исполнителя</string>
     <string name="exclusion_header">Исключения</string>
     <string name="controls_header">Управление</string>
-    <string name="replaygain_header">Повторное усиление</string>
     <string name="headphones_header">Наушники</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Фокус аудио</string>
@@ -686,9 +685,6 @@
     <string name="prefer_album_artist_name_summary">Показывает имя исполнителя альбома вместо имени исполнителя песни (если доступно).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Проигрывать при запуске</string>
-    <string name="replaygain_source_mode_title">Режим источника</string>
-    <string name="replaygain_preamp_title">Уровень предусилителя</string>
-    <string name="replaygain_preamp_summary">Установить уровень громкости при включенном ReplayGain.</string>
     <string name="queue_next_mode_title">Режим «Добавить в очередь»</string>
     <string name="search_auto_queue_title">Enqueue all search results</string>
     <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
@@ -755,7 +751,6 @@
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
-    <string name="advanced_label">Расширенные</string>
     <string name="light_theme_name">Светлая</string>
     <string name="dark_theme_name">Темная</string>
     <string name="black_theme_name">Черная</string>

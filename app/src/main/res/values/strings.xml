@@ -480,6 +480,13 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">External EQ</string>
     <string name="custom">Custom</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
 
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Show lyrics</string>
@@ -597,7 +604,6 @@
     <string name="artist_image_header">Artist image</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Controls</string>
-    <string name="replaygain_header">ReplayGain</string>
     <string name="headphones_header">Headphones</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Audio focus</string>
@@ -696,9 +702,6 @@
 
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="replaygain_source_mode_title">Source mode</string>
-    <string name="replaygain_preamp_title">PreAmp level</string>
-    <string name="replaygain_preamp_summary">Set volume level when ReplayGain is enabled.</string>
     <string name="queue_next_mode_title">\"Queue next\" mode</string>
     <string name="search_auto_queue_title">Enqueue all search results</string>
     <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
@@ -770,7 +773,6 @@
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
 
     <!-- Preference values -->
-    <string name="advanced_label">Advanced</string>
     <string name="light_theme_name">Light</string>
     <string name="dark_theme_name">Dark</string>
     <string name="black_theme_name">Black</string>

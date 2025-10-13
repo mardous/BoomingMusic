@@ -96,7 +96,7 @@ enum class AudioDeviceType(
         mediaRouteTypes = emptyArray()
     ),
     BuiltinSpeaker(
-        iconRes = R.drawable.ic_speaker_phone_24dp,
+        iconRes = R.drawable.ic_speaker_24dp,
         nameRes = R.string.audio_device_builtin_speaker,
         isProduct = false,
         audioDeviceTypes = arrayOf(
@@ -109,7 +109,7 @@ enum class AudioDeviceType(
         )
     ),
     Unknown(
-        iconRes = R.drawable.ic_volume_up_24dp,
+        iconRes = R.drawable.ic_speaker_24dp,
         nameRes = R.string.audio_device_builtin_speaker,
         isProduct = false,
         audioDeviceTypes = arrayOf(AudioDeviceInfo.TYPE_UNKNOWN),

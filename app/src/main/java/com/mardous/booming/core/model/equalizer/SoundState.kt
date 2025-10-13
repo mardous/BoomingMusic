@@ -18,6 +18,8 @@
 package com.mardous.booming.core.model.equalizer
 
 import androidx.compose.runtime.Immutable
+import com.mardous.booming.data.local.ReplayGainMode
+import java.util.Locale
 
 @Immutable
 data class TempoLevel(val speed: Float, val pitch: Float, val isFixedPitch: Boolean) {
@@ -32,6 +34,10 @@ data class TempoLevel(val speed: Float, val pitch: Float, val isFixedPitch: Bool
 
     val actualPitch: Float
         get() = if (isFixedPitch) speed else pitch
+
+    val formattedSpeed: String
+        get() = "%.1fx".format(Locale.US, speed)
+
 }
 
 @Immutable
@@ -42,6 +48,10 @@ data class VolumeState(
     val isFixed: Boolean
 ) {
     val range get() = minVolume.toFloat()..maxVolume.toFloat()
+    val volumePercent: Float
+        get() = if (maxVolume > minVolume) {
+            ((currentVolume - minVolume).toFloat() / (maxVolume - minVolume).toFloat()) * 100f
+        } else 0f
 
     companion object {
         val Unspecified = VolumeState(0, 1, 0, false)
@@ -51,6 +61,15 @@ data class VolumeState(
 @Immutable
 data class BalanceLevel(val left: Float, val right: Float) {
     val range get() = MIN_BALANCE..MAX_BALANCE
+}
+
+@Immutable
+data class ReplayGainState(
+    val mode: ReplayGainMode,
+    val preamp: Float,
+    val preampWithoutGain: Float
+) {
+    val availableModes = ReplayGainMode.entries.toTypedArray()
 }
 
 const val MIN_SPEED = .5f

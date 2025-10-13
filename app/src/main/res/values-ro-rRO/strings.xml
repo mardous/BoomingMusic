@@ -580,7 +580,6 @@
     <string name="artist_image_header">Imagine artist</string>
     <string name="exclusion_header">Excluderi</string>
     <string name="controls_header">Controale</string>
-    <string name="replaygain_header">ReplayGain</string>
     <string name="headphones_header">Căști</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Focalizare audio</string>
@@ -676,9 +675,6 @@
     <string name="prefer_album_artist_name_summary">Prezintă numele albumului artistului în locul numelui Song-artist (dacă este disponibil).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="replaygain_source_mode_title">Mod sursă</string>
-    <string name="replaygain_preamp_title">Nivel pregatire</string>
-    <string name="replaygain_preamp_summary">Setează nivelul de volum când ReplayGain este activat.</string>
     <string name="queue_next_mode_title">Modul \"Coada următoare\"</string>
     <string name="search_auto_queue_title">Enqueue all search results</string>
     <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
@@ -745,7 +741,6 @@
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
-    <string name="advanced_label">Avansat</string>
     <string name="light_theme_name">Lumină</string>
     <string name="dark_theme_name">Întunecat</string>
     <string name="black_theme_name">Negru</string>

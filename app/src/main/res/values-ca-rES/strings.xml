@@ -572,7 +572,6 @@
     <string name="artist_image_header">Imatge de l\'artista</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Controls</string>
-    <string name="replaygain_header">Guany de reproducció</string>
     <string name="headphones_header">Auriculars</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Focus d\'àudio</string>
@@ -668,9 +667,6 @@
     <string name="prefer_album_artist_name_summary">Mostra el nom de l\'artista de l\'àlbum en lloc del nom de l\'artista de la cançó (si està disponible).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reprodueix en iniciar</string>
-    <string name="replaygain_source_mode_title">Mode d\'origen</string>
-    <string name="replaygain_preamp_title">Nivell de PreAmp</string>
-    <string name="replaygain_preamp_summary">Establiu el nivell de volum quan el Guany de reproducció està activat.</string>
     <string name="queue_next_mode_title">Mode d\'«Afegeix a la cua»</string>
     <string name="search_auto_queue_title">Afegeix a la cua tots els resultats de cerca</string>
     <string name="search_auto_queue_summary">Quan es reprodueix una cançó de la pantalla de cerca, tots els altres resultats s\'afegeixen a la cua.</string>
@@ -736,7 +732,6 @@
     <string name="stop_when_closed_from_recents_summary">Atura la reproducció si l\'aplicació es tanca des de la llista de recents.</string>
     <string name="stop_when_closed_from_recents_note">Nota: Alguns dispositius amb gestió agressiva de la memòria o la bateria podrien ignorar aquesta opció i aturar sempre l\'aplicació en treure-la de recents.</string>
     <!-- Preference values -->
-    <string name="advanced_label">Avançat</string>
     <string name="light_theme_name">Clar</string>
     <string name="dark_theme_name">Fosc</string>
     <string name="black_theme_name">Negre</string>

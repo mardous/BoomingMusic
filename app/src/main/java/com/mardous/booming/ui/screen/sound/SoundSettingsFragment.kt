@@ -17,42 +17,37 @@
 
 package com.mardous.booming.ui.screen.sound
 
-import android.app.Dialog
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.fragment.app.DialogFragment
-import com.google.android.material.color.MaterialColors
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.mardous.booming.R
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.google.android.material.R as MDR
 
 /**
  * @author Christians M. A. (mardous)
  */
-class SoundSettingsFragment : DialogFragment() {
+class SoundSettingsFragment : BottomSheetDialogFragment() {
 
     private val viewModel: SoundSettingsViewModel by viewModel()
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.sound_settings)
-            .setView(ComposeView(requireContext()).apply {
-                setViewCompositionStrategy(
-                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
-                )
-                setContent {
-                    BoomingMusicTheme {
-                        SoundSettingsSheet(
-                            MaterialColors.getColor(this, MDR.attr.colorSurfaceContainerHigh),
-                            viewModel
-                        )
-                    }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(
+                ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+            )
+            setContent {
+                BoomingMusicTheme {
+                    SoundSettingsSheet(viewModel)
                 }
-            })
-            .setPositiveButton(R.string.close_action, null)
-            .create()
+            }
+        }
     }
 }

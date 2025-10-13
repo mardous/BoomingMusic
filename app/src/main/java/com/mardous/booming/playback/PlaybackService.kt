@@ -100,11 +100,7 @@ class PlaybackService :
     private lateinit var customCommands: List<CommandButton>
 
     private val balanceProcessor = BalanceAudioProcessor()
-    private val replayGainProcessor = ReplayGainAudioProcessor(
-        replayGainMode,
-        replayGainPreamp,
-        replayGainPreampWithoutTag
-    )
+    private val replayGainProcessor = ReplayGainAudioProcessor(ReplayGainMode.Off)
 
     private var willSetUnshuffledOrder = false
     private var stopIndex = -1
@@ -143,16 +139,6 @@ class PlaybackService :
         get() = if (preferences.getBoolean(REWIND_WITH_BACK, true)) REWIND_INSTEAD_PREVIOUS_MILLIS else 0
     private val seekInterval: Long
         get() = preferences.getInt(SEEK_INTERVAL, 10) * 1000L
-    private val replayGainMode: ReplayGainMode
-        get() = when (preferences.getString(REPLAYGAIN_SOURCE_MODE, "")) {
-            ReplayGainSourceMode.ALBUM -> ReplayGainMode.Album
-            ReplayGainSourceMode.TRACK -> ReplayGainMode.Track
-            else -> ReplayGainMode.Off
-        }
-    private val replayGainPreamp: Float
-        get() = preferences.getFloat(REPLAYGAIN_PREAMP_WITH_TAG, 0f)
-    private val replayGainPreampWithoutTag: Float
-        get() = preferences.getFloat(REPLAYGAIN_PREAMP_WITHOUT_TAG, 0f)
 
     override fun onCreate() {
         super.onCreate()
@@ -191,17 +177,24 @@ class PlaybackService :
                         .setUsage(C.USAGE_MEDIA)
                         .build(), handleAudioFocus
                 )
-                .setRenderersFactory(object : DefaultRenderersFactory(this) {
-                    override fun buildAudioSink(
-                        context: Context,
-                        enableFloatOutput: Boolean,
-                        enableAudioTrackPlaybackParams: Boolean
-                    ): AudioSink? {
-                        return DefaultAudioSink.Builder(this@PlaybackService)
-                            .setAudioProcessors(arrayOf(replayGainProcessor, balanceProcessor))
-                            .build()
+                .setRenderersFactory(
+                    object : DefaultRenderersFactory(this) {
+                        override fun buildAudioSink(
+                            context: Context,
+                            enableFloatOutput: Boolean,
+                            enableAudioTrackPlaybackParams: Boolean
+                        ): AudioSink? {
+                            return DefaultAudioSink.Builder(this@PlaybackService)
+                                .setAudioProcessors(arrayOf(replayGainProcessor, balanceProcessor))
+                                .setEnableFloatOutput(enableFloatOutput)
+                                .setEnableAudioTrackPlaybackParams(enableAudioTrackPlaybackParams)
+                                .build()
+                        }
                     }
-                })
+                    .setEnableAudioFloatOutput(soundSettings.audioFloatOutputFlow.value)
+                    .setEnableAudioTrackPlaybackParams(true)
+                )
+                .setSkipSilenceEnabled(soundSettings.skipSilenceFlow.value)
                 .setHandleAudioBecomingNoisy(true)
                 .setMaxSeekToPreviousPositionMs(maxSeekToPreviousMs)
                 .setSeekBackIncrementMs(seekInterval)
@@ -716,18 +709,6 @@ class PlaybackService :
                 player.seekBackIncrement = seekInterval
                 player.seekForwardIncrement = seekInterval
             }
-
-            REPLAYGAIN_SOURCE_MODE -> {
-                replayGainProcessor.mode = replayGainMode
-            }
-
-            REPLAYGAIN_PREAMP_WITH_TAG -> {
-                replayGainProcessor.preAmpGain = replayGainPreamp
-            }
-
-            REPLAYGAIN_PREAMP_WITHOUT_TAG -> {
-                replayGainProcessor.preAmpGainWithoutTag = replayGainPreampWithoutTag
-            }
         }
     }
 
@@ -835,6 +816,18 @@ class PlaybackService :
     private fun prepareEqualizerAndSoundSettings() {
         serviceScope.launch(IO) {
             equalizerManager.initializeEqualizer()
+        }
+        serviceScope.launch {
+            soundSettings.skipSilenceFlow.collect {
+                player.exoPlayer.skipSilenceEnabled = it
+            }
+        }
+        serviceScope.launch {
+            soundSettings.replayGainStateFlow.collect {
+                replayGainProcessor.mode = it.value.mode
+                replayGainProcessor.preAmpGain = it.value.preamp
+                replayGainProcessor.preAmpGainWithoutTag = it.value.preampWithoutGain
+            }
         }
         serviceScope.launch {
             soundSettings.tempoFlow.collect {

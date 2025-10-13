@@ -21,7 +21,9 @@ import android.util.LruCache
 import com.mardous.booming.data.model.Song
 
 enum class ReplayGainMode {
-    Album, Track, Off
+    Album, Track, Off;
+
+    val isOn get() = this == Album || this == Track
 }
 
 data class ReplayGain(

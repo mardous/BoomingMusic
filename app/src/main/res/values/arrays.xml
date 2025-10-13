@@ -103,18 +103,6 @@
         <item>small</item>
     </string-array>
 
-    <string-array name="pref_replaygain_source_mode_entries">
-        <item>@string/label_none</item>
-        <item>@string/track</item>
-        <item>@string/album</item>
-    </string-array>
-
-    <string-array name="pref_replaygain_source_mode_values">
-        <item>none</item>
-        <item>track</item>
-        <item>album</item>
-    </string-array>
-
     <string-array name="pref_auto_download_metadata_entries">
         <item>@string/always</item>
         <item>@string/only_on_wifi</item>

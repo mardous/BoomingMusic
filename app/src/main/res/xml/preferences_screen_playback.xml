@@ -162,27 +162,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        app:title="@string/replaygain_header"
-        app:layout="@layout/preference_category_title">
-
-        <ListPreference
-            app:iconSpaceReserved="true"
-            app:title="@string/replaygain_source_mode_title"
-            app:entries="@array/pref_replaygain_source_mode_entries"
-            app:entryValues="@array/pref_replaygain_source_mode_values"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="none"
-            app:layout="@layout/list_item_view"
-            app:key="replaygain_source_mode"/>
-
-        <com.mardous.booming.ui.component.preferences.dialog.PreAmpPreference
-            app:iconSpaceReserved="true"
-            app:title="@string/replaygain_preamp_title"
-            app:summary="@string/replaygain_preamp_summary"
-            app:layout="@layout/list_item_view"
-            app:key="replaygain_preamp"/>
-
-    </PreferenceCategory>
-
 </androidx.preference.PreferenceScreen>

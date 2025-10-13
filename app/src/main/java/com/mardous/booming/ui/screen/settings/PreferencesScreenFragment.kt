@@ -50,7 +50,6 @@ open class PreferencesScreenFragment : PreferenceFragmentCompat() {
             is CategoriesPreference -> CategoriesPreferenceDialog()
             is NowPlayingScreenPreference -> NowPlayingScreenPreferenceDialog()
             is ActionOnCoverPreference -> ActionOnCoverPreferenceDialog.newInstance(preference.key, preference.title!!)
-            is PreAmpPreference -> PreAmpPreferenceDialog()
             else -> null
         }
 
