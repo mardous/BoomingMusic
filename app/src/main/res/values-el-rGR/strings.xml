@@ -466,6 +466,13 @@
     <string name="tempo_label">Ρυθμός</string>
     <string name="action_external_eq">Εξωτερικό EQ</string>
     <string name="custom">Προσαρμοσμένο</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Εμφάνιση στίχων</string>
     <string name="action_hide_lyrics">Απόκρυψη στίχων</string>
@@ -575,7 +582,6 @@
     <string name="artist_image_header">Εικόνα καλλιτέχνη</string>
     <string name="exclusion_header">Εξαιρέσεις</string>
     <string name="controls_header">Έλεγχοι</string>
-    <string name="replaygain_header">ReplayGain</string>
     <string name="headphones_header">Ακουστικά</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Εστίαση ήχου</string>
@@ -671,9 +677,6 @@
     <string name="prefer_album_artist_name_summary">Εμφανίζει το όνομα του καλλιτέχνη του Album αντί για το όνομα του Song-artist\'s (αν υπάρχει).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
-    <string name="replaygain_source_mode_title">Λειτουργία πηγής</string>
-    <string name="replaygain_preamp_title">PreAmp επίπεδο</string>
-    <string name="replaygain_preamp_summary">Ορίστε το επίπεδο έντασης όταν το ReplayGain είναι ενεργοποιημένο.</string>
     <string name="queue_next_mode_title">\"Ουρά επόμενη\" λειτουργία</string>
     <string name="search_auto_queue_title">Enqueue all search results</string>
     <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
@@ -740,7 +743,6 @@
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
-    <string name="advanced_label">Προχωρημένα</string>
     <string name="light_theme_name">Φωτεινό</string>
     <string name="dark_theme_name">Σκοτεινό</string>
     <string name="black_theme_name">Μαύρο</string>
