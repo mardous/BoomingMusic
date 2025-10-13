@@ -465,6 +465,13 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ Externo</string>
     <string name="custom">Personalizado</string>
+    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
+        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
+        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback.
+        Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostrar letras</string>
     <string name="action_hide_lyrics">Ocultar letra</string>
@@ -574,7 +581,6 @@
     <string name="artist_image_header">Imagem do artista</string>
     <string name="exclusion_header">Exclusões</string>
     <string name="controls_header">Controles</string>
-    <string name="replaygain_header">Ganho</string>
     <string name="headphones_header">Fones</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Foco em áudio</string>
@@ -670,9 +676,6 @@
     <string name="prefer_album_artist_name_summary">Mostra o nome do Artista Album-artista, em vez do nome do Artista da Música (se disponível).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reproduzir ao iniciar</string>
-    <string name="replaygain_source_mode_title">Modo de origem</string>
-    <string name="replaygain_preamp_title">Nível de antecipação</string>
-    <string name="replaygain_preamp_summary">Definir o nível de volume quando o ReplayGain estiver habilitado.</string>
     <string name="queue_next_mode_title">Modo \"Próxima Fila\"</string>
     <string name="search_auto_queue_title">Enfileirar todos os resultados da busca</string>
     <string name="search_auto_queue_summary">Ao reproduzir uma música da tela de busca, todos os outros resultados também serão colocados na fila.</string>
@@ -739,7 +742,6 @@
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <!-- Preference values -->
-    <string name="advanced_label">Avançado</string>
     <string name="light_theme_name">Fino</string>
     <string name="dark_theme_name">Escuro</string>
     <string name="black_theme_name">Preto</string>
