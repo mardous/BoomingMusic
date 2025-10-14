@@ -15,8 +15,6 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?style=for-the-badge&logo=contributorcovenant)](CODE_OF_CONDUCT.md)
 [![Telegram Group](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/mardousdev)
 
----
-
 <a href="https://github.com/mardous/BoomingMusic/releases"><img src="assets/badge-github.png" height="60" alt="GitHub Release"></a>
 <a href="https://f-droid.org/packages/com.mardous.booming/"><img src="assets/badge-fdroid.png" height="60" alt="F-Droid"></a>
 <a href="https://apt.izzysoft.de/packages/com.mardous.booming/"><img src="assets/badge-izzyondroid.png" height="60" alt="IzzyOnDroid"></a>
@@ -24,8 +22,6 @@
 <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/"><img src="assets/badge-obtainium.png" height="60" alt="Obtainium"></a>
 
 </div>
-
----
 
 ## 🗂️ Table of Contents
 
@@ -40,8 +36,6 @@
 - [💬 Community](#-community)
 - [🙌 Credits](#-credits)
 - [⚖️ License](#-license)
-
----
 
 ## ✨ Key Features
 
@@ -61,9 +55,6 @@
 - 🔉 **ReplayGain Support** – Maintain consistent volume across all tracks.
 - 🖼️ **Automatic Artist Images** – Download artist artwork for a polished library look.
 - 🚫 **Library Filtering** – Easily exclude or include folders with blacklist/whitelist options.
-- 🪄 **Monet Icons (Android 13+)** – Icons that adapt to your wallpaper’s color palette.
-
----
 
 ## 📸 Screenshots
 
@@ -79,8 +70,6 @@
   <img src="metadata/en-US/images/phoneScreenshots/9.jpg" width="30%" />
 </div>
 
----
-
 ### 💻 Tech Stack
 
 | Layer                   | Technology                                                     |
@@ -95,8 +84,6 @@
 | 🎨 Design               | Material 3 / Material You                                      |
 | 🗣️ Language            | Kotlin                                                         |
 
----
-
 ## 🧩 Roadmap
 
 - [ ] 📦 Independent library scanner (no MediaStore dependency)
@@ -106,21 +93,15 @@
 - [ ] 💿 Enhanced artist pages (separate albums and singles visually)
 - [ ] 📺 Experimental Android TV support (if enough demand!)
 
----
-
 ## 🎧 Supported Formats
 
 Booming Music uses [Media3](https://developer.android.com/media/media3) for audio playback.
 See [ExoPlayer’s supported formats](https://developer.android.com/media/media3/exoplayer/supported-formats) for complete details.
 
----
-
 ## 🔐 Permissions
 
 We request only what’s essential.
 Read [PERMISSIONS.md](PERMISSIONS.md) for details on why each permission is required.
-
----
 
 ## 🚘 Android Auto Setup
 
@@ -130,8 +111,6 @@ If Booming Music doesn’t appear in Android Auto:
 2. Scroll down and tap the **version number** several times to enable developer mode.
 3. Open **Developer settings** from the top-right menu.
 4. Enable **Unknown sources**.
-
----
 
 ## 🤝 Contributing
 
@@ -146,13 +125,9 @@ You can also:
 
 **Translations:** Managed on [Crowdin](https://crowdin.com/project/booming-music).
 
----
-
 ## 💬 Community
 
 Join the [Telegram group](https://t.me/mardousdev) for updates, discussions, and feedback.
-
----
 
 ## 🙌 Credits
 
@@ -163,8 +138,6 @@ Also thanks to:
 - [LRCLib](https://lrclib.net/)
 - [spotify-lyrics-api](https://github.com/akashrchandran/spotify-lyrics-api) by [Akash R Chandran](https://github.com/akashrchandran)
 - [Alex](https://github.com/Paxsenix0)
-
----
 
 ## ⚖️ License
 
