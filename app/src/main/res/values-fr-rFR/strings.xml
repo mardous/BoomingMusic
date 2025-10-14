@@ -158,7 +158,7 @@
     <string name="playing_queue_label">File de lecture</string>
     <string name="list_start">Début de liste</string>
     <string name="list_end">Fin de liste</string>
-    <string name="empty_play_queue">File d\'attente de lecture vide.</string>
+    <string name="empty_play_queue">Vide la liste de lecture.</string>
     <string name="save_queue">Enregistrer la file d\'attente</string>
     <string name="clear_queue">Vider la file d\'attente</string>
     <string name="action_move_to_current_track">Afficher la piste actuelle</string>
@@ -182,8 +182,8 @@
     <string name="action_go_to_album">Aller à l\'album</string>
     <string name="action_go_to_artist">Aller à l\'artiste</string>
     <string name="action_go_to_genre">Aller au genre</string>
-    <string name="added_title_to_playing_queue">"Ajout de 1 titre à la file d'attente de lecture."</string>
-    <string name="added_x_titles_to_playing_queue">Ajout de %1$d titres à la file d\'attente de lecture.</string>
+    <string name="added_title_to_playing_queue">"Ajout de 1 titre à la file de lecture."</string>
+    <string name="added_x_titles_to_playing_queue">Ajout de %1$d titres à la file de lecture.</string>
     <string name="next_song_label">Titre suivant</string>
     <string name="next_song_x">Suivant • %1$s</string>
     <string name="next_song_x_by_artist_x">Suivant • %1$s de %2$s</string>
@@ -647,7 +647,7 @@
     <string name="adaptive_controls_title">Contrôles adaptatifs</string>
     <string name="adaptive_controls_summary">Les commandes du mini-lecteur changent pour s\'adapter au style de lecteur actuel.</string>
     <string name="swipe_to_dismiss_title">Glissez pour ignorer</string>
-    <string name="swipe_to_dismiss_summary">Faites glisser le mini-lecteur vers le bas pour arrêter la lecture et effacer les files d\'attente de lecture.</string>
+    <string name="swipe_to_dismiss_summary">Faites glisser le minilecteur vers le bas pour arrêter la lecture et effacer les files d\'attente de lecture.</string>
     <string name="circle_button_title">Bouton de lecture circulaire</string>
     <string name="swipe_album_cover_title">Glisser la pochette de l\'album</string>
     <string name="swipe_album_cover_summary">Balayez vers la gauche et la droite sur la pochette de l\'album pour passer d\'un titre à l\'autre.</string>
