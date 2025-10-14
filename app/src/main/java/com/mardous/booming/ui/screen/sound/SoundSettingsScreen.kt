@@ -25,6 +25,7 @@ import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.compose.LabeledSwitch
+import com.mardous.booming.ui.component.compose.ShapedText
 import java.util.Locale
 import kotlin.math.roundToInt
 
@@ -142,32 +143,57 @@ fun SoundSettingsSheet(
                         modifier = Modifier.padding(top = 8.dp)
                     ) {
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            horizontalArrangement = Arrangement.spacedBy(20.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-
-                            Slider(
-                                value = balance.left,
-                                valueRange = balance.range,
-                                onValueChange = {
-                                    viewModel.setBalance(left = it, apply = false)
-                                },
-                                onValueChangeFinished = {
-                                    viewModel.applyPendingState()
-                                },
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                                verticalAlignment = Alignment.CenterVertically,
                                 modifier = Modifier.weight(1f)
-                            )
-                            Slider(
-                                value = balance.right,
-                                valueRange = balance.range,
-                                onValueChange = {
-                                    viewModel.setBalance(right = it, apply = false)
-                                },
-                                onValueChangeFinished = {
-                                    viewModel.applyPendingState()
-                                },
+                            ) {
+                                ShapedText(
+                                    text = "L",
+                                    textColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                    shape = RoundedCornerShape(4.dp),
+                                    shapeColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                    style = MaterialTheme.typography.labelSmall
+                                )
+                                Slider(
+                                    value = balance.left,
+                                    valueRange = balance.range,
+                                    onValueChange = {
+                                        viewModel.setBalance(left = it, apply = false)
+                                    },
+                                    onValueChangeFinished = {
+                                        viewModel.applyPendingState()
+                                    },
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                            }
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                                verticalAlignment = Alignment.CenterVertically,
                                 modifier = Modifier.weight(1f)
-                            )
+                            ) {
+                                ShapedText(
+                                    text = "R",
+                                    textColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                    shape = RoundedCornerShape(4.dp),
+                                    shapeColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                    style = MaterialTheme.typography.labelSmall
+                                )
+                                Slider(
+                                    value = balance.right,
+                                    valueRange = balance.range,
+                                    onValueChange = {
+                                        viewModel.setBalance(right = it, apply = false)
+                                    },
+                                    onValueChangeFinished = {
+                                        viewModel.applyPendingState()
+                                    },
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                            }
                         }
                     }
                 }
@@ -225,81 +251,69 @@ fun SoundSettingsSheet(
 
                 TitledSection(
                     titleResource = R.string.tempo_label,
-                    titleEndContent = { TitleEndText(tempo.formattedSpeed) }
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(end = 8.dp)
+                    titleEndContent = {
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Row(modifier = Modifier.fillMaxWidth()) {
-                                IconButton(onClick = {
-                                    viewModel.setTempo(speed = 1f)
-                                }) {
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_speed_24dp),
-                                        contentDescription = null
-                                    )
-                                }
-
-                                Slider(
-                                    value = tempo.speed,
-                                    valueRange = tempo.speedRange,
-                                    onValueChange = {
-                                        viewModel.setTempo(speed = it, apply = false)
-                                    },
-                                    onValueChangeFinished = {
-                                        viewModel.applyPendingState()
-                                    },
-                                    modifier = Modifier.fillMaxWidth()
-                                )
+                            TitleEndText(tempo.formattedSpeed) {
+                                viewModel.setTempo(isFixedPitch = tempo.isFixedPitch.not())
                             }
 
-                            Row(modifier = Modifier.fillMaxWidth()) {
-                                IconButton(onClick = {
-                                    viewModel.setTempo(pitch = 1f)
-                                }) {
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_graphic_eq_24dp),
-                                        contentDescription = null
-                                    )
+                            AnimatedVisibility(visible = tempo.isFixedPitch.not()) {
+                                TitleEndText(tempo.formattedPitch) {
+                                    viewModel.setTempo(isFixedPitch = true)
                                 }
-
-                                Slider(
-                                    value = tempo.actualPitch,
-                                    valueRange = tempo.pitchRange,
-                                    onValueChange = {
-                                        viewModel.setTempo(pitch = it, apply = false)
-                                    },
-                                    onValueChangeFinished = {
-                                        viewModel.applyPendingState()
-                                    },
-                                    modifier = Modifier.fillMaxWidth()
-                                )
                             }
                         }
+                    }
+                ) {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Row(modifier = Modifier.fillMaxWidth()) {
+                            IconButton(onClick = { viewModel.setTempo(speed = 1f) }) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_speed_24dp),
+                                    contentDescription = null
+                                )
+                            }
 
-                        Icon(
-                            painter = painterResource(
-                                if (tempo.isFixedPitch) {
-                                    R.drawable.ic_lock_24dp
-                                } else {
-                                    R.drawable.ic_lock_open_24dp
-                                }
-                            ),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(28.dp)
-                                .padding(4.dp)
-                                .clickable(onClick = {
-                                    viewModel.setTempo(isFixedPitch = !tempo.isFixedPitch)
-                                })
-                        )
+                            Slider(
+                                value = tempo.speed,
+                                valueRange = tempo.speedRange,
+                                onValueChange = {
+                                    viewModel.setTempo(speed = it, apply = false)
+                                },
+                                onValueChangeFinished = {
+                                    viewModel.applyPendingState()
+                                },
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+
+                        Row(modifier = Modifier.fillMaxWidth()) {
+                            IconButton(
+                                enabled = tempo.isFixedPitch.not(),
+                                onClick = { viewModel.setTempo(pitch = 1f) }
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_graphic_eq_24dp),
+                                    contentDescription = null
+                                )
+                            }
+
+                            Slider(
+                                enabled = tempo.isFixedPitch.not(),
+                                value = tempo.actualPitch,
+                                valueRange = tempo.pitchRange,
+                                onValueChange = {
+                                    viewModel.setTempo(pitch = it, apply = false)
+                                },
+                                onValueChangeFinished = {
+                                    viewModel.applyPendingState()
+                                },
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
                     }
                 }
 
@@ -379,15 +393,16 @@ fun TitledSection(
 }
 
 @Composable
-private fun TitleEndText(text: String) {
-    Text(
+private fun TitleEndText(text: String, onClick: (() -> Unit)? = null) {
+    ShapedText(
         text = text,
-        color = MaterialTheme.colorScheme.onTertiaryContainer,
+        textColor = MaterialTheme.colorScheme.onPrimaryContainer,
         style = MaterialTheme.typography.bodySmall,
-        modifier = Modifier
-            .clip(RoundedCornerShape(4.dp))
-            .background(MaterialTheme.colorScheme.tertiaryContainer)
-            .padding(horizontal = 8.dp, vertical = 4.dp)
+        shapeColor = MaterialTheme.colorScheme.primaryContainer,
+        modifier = Modifier.clickable(
+            enabled = onClick != null,
+            onClick = { onClick?.invoke() }
+        )
     )
 }
 

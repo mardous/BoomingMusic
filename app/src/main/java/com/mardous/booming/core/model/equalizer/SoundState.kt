@@ -38,6 +38,9 @@ data class TempoLevel(val speed: Float, val pitch: Float, val isFixedPitch: Bool
     val formattedSpeed: String
         get() = "%.1fx".format(Locale.US, speed)
 
+    val formattedPitch: String
+        get() = "%.1fx".format(Locale.US, actualPitch)
+
 }
 
 @Immutable
