@@ -483,9 +483,9 @@
     <string name="action_external_eq">Zewnętrzny EQ</string>
     <string name="custom">Własny</string>
     <string name="enable_audio_float_output_title">Precyzyjne wyjście audio</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="enable_audio_float_output_description">Włącza 32-bitowy dźwięk zmiennoprzecinkowy dla lepszej jakości dźwięku.
+        Pamiętaj, że spowoduje to wyłączenie funkcji takich jak ReplayGain, pomijanie ciszy i balansu głośności.
+        Może też nieznacznie zwiększyć zużycie baterii. Aby zastosować zmiany, uruchom aplikację ponownie.</string>
     <string name="skip_silence_title">Pomiń ciszę między utworami</string>
     <string name="skip_silence_description">Automatycznie pomija ciszę podczas odtwarzania.
         Idealne na podcasty i nagrania.</string>
@@ -608,9 +608,9 @@
     <string name="general_theme_title">Motyw ogólny</string>
     <string name="pure_black_theme_title">Głęboka czerń</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Użyj czcionki Manrope</string>
+    <string name="use_custom_font_title">Czcionka Manrope</string>
     <string name="appbar_mode_title">Styl nagłówka</string>
-    <string name="library_categories_title">Karty biblioteki</string>
+    <string name="library_categories_title">Zarządzaj kartami</string>
     <string name="library_categories_summary">Konfiguruj widoczność i kolejność kategorii biblioteki.</string>
     <string name="remember_last_page_title">Zapamiętaj ostatnią stronę</string>
     <string name="remember_last_page_summary">Przejdź do ostatniej otwartej strony przy uruchomieniu.</string>
@@ -829,7 +829,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Barwy Material You dopasowane do albumu</string>
     <!-- Update -->
-    <string name="auto_update_title">Auto update search</string>
+    <string name="auto_update_title">Częstotliwość sprawdzania aktualizacji</string>
     <string name="every_day">Codziennie</string>
     <string name="weekly">Co tydzień</string>
     <string name="every_fifteen_days">Co piętnaście dni</string>
