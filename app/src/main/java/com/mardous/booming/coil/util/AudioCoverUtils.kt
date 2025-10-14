@@ -22,13 +22,17 @@ import java.io.InputStream
 
 object AudioCoverUtils {
 
+    // TODO: find a cleaner way to do this
     private val FALLBACKS = arrayOf(
         "cover.jpg",
         "album.jpg",
         "folder.jpg",
         "cover.png",
         "album.png",
-        "folder.png"
+        "folder.png",
+        "cover.jpeg",
+        "album.jpeg",
+        "folder.jpeg"
     )
 
     @Throws(IOException::class)
