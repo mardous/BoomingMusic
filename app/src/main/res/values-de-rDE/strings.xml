@@ -8,7 +8,7 @@
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="shuffle_button_tip">Tippen für normale Zufallswiedergabe. Lange drücken für erweiterte Optionen.</string>
     <string name="action_play_pause">Wiedergabe/Pause</string>
     <string name="action_pause">Pause</string>
     <string name="action_next">Nächster</string>
@@ -70,7 +70,7 @@
     <string name="new_playlist_title">Neue Wiedergabeliste</string>
     <string name="add_playlist_title">Zur Wiedergabeliste hinzufügen</string>
     <string name="rename_playlist_title">Wiedergabeliste umbenennen</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Wiedergabeliste bearbeiten</string>
     <string name="action_delete">Wiedergabeliste löschen</string>
     <string name="action_export_playlist">In Datei exportieren</string>
     <string name="action_clear_history">Verlauf löschen</string>
@@ -79,9 +79,9 @@
     <string name="create_a_playlist_with_one_song">Es wird eine Wiedergabeliste erstellt und ein Titel hinzugefügt.</string>
     <string name="create_a_playlist_with_x_songs">Eine Wiedergabeliste wird erstellt und %d Titel werden automatisch hinzugefügt.</string>
     <string name="playlist_name_empty">Name der Wiedergabeliste</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Wiedergabeliste-Beschreibung (optional)</string>
     <string name="saved_playlist_x">Wiedergabeliste %s gespeichert.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Wiedergabeliste aktualisiert.</string>
     <string name="failed_to_save_playlist">Speichern der Wiedergabeliste fehlgeschlagen.</string>
     <string name="saved_x_playlists">%1$d Wiedergabelisten gespeichert.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d Wiedergabelisten gespeichert, konnte %2$d nicht speichern.</string>
@@ -94,7 +94,7 @@
     <string name="inserted_one_song_into_playlist_x">Ein Titel wurrde in Wiedergabeliste %s eingefügt.</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d Lieder in Wiedergabeliste %2$s eingefügt.</string>
     <string name="playlist_exists">Wiedergabeliste %s existiert bereits.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">Wiedergabeliste %s wurde erfolgreich erstellt.</string>
     <string name="remove_song_from_playlist_title">Titel aus Wiedergabeliste entfernen</string>
     <string name="remove_songs_from_playlist_title">Mehrere Titel aus Wiedergabeliste entfernen</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Titel <b>%1$s</b> aus Wiedergabeliste entfernen?]]></string>
@@ -338,9 +338,9 @@
     <string name="select_content_to_restore">Inhalt zum Wiederherstellen auswählen:</string>
     <string name="could_not_restore_data">Konnte Daten nicht wiederherstellen. Überprüfe die Sicherungsdatei und versuche es erneut.</string>
     <string name="data_restored_successfully">Daten erfolgreich wiederhergestellt.</string>
-    <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
-    <string name="playlist_locked">Playlist locked</string>
-    <string name="playlist_unlocked">Playlist unlocked</string>
+    <string name="action_toggle_playlist_lock">Sperr/Entsperr die Wiedergabeliste </string>
+    <string name="playlist_locked">Wiedergabeliste sperrt</string>
+    <string name="playlist_unlocked">Wiedergabeliste entsperrt</string>
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
     <string name="queue_locked">Queue locked</string>
     <string name="queue_unlocked">Queue unlocked</string>
@@ -470,7 +470,7 @@
     <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
         Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
         It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
-    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_title">Pause überspringen</string>
     <string name="skip_silence_description">Automatically skip silent sections during playback.
         Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
@@ -651,7 +651,7 @@
     <string name="circle_button_title">Runde Wiedergabetaste</string>
     <string name="swipe_album_cover_title">Über Albumcover wischen</string>
     <string name="swipe_album_cover_summary">Wische über das Albumcover nach links und rechts, um zwischen den Titeln zu springen.</string>
-    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
+    <string name="single_tap_on_album_cover_title">Auf Albumcover einzeltippen</string>
     <string name="double_tap_on_album_cover_title">Auf Albumcover doppeltippen</string>
     <string name="long_press_on_album_cover_title">Albumcover gedrückt halten</string>
     <string name="now_playing_corner_radius_title">Bild-Eckradius</string>
@@ -712,7 +712,7 @@
     <string name="lyrics_cleared">Liedtext geleert.</string>
     <!-- Library preferences -->
     <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
-    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
+    <string name="ignore_articles_when_sorting_summary">Führende Artikel (\"the\", \"a\", \"an\") beim Sortieren ignorieren.</string>
     <string name="trash_music_title">In den Papierkorb verschieben</string>
     <string name="trash_music_summary">Gelöschte Dateien in den Papierkorb verschieben.</string>
     <string name="recursive_folder_actions_title">Aktionen, die Unterordner betreffen</string>
@@ -756,7 +756,7 @@
     <string name="full_cover">Vollbild-Cover</string>
     <string name="gradient">Farbverlauf</string>
     <string name="peek">Vorschau</string>
-    <string name="peek2">Peek2</string>
+    <string name="peek2">Peek 2</string>
     <string name="plain">Einfach</string>
     <string name="m3_style">Material 3</string>
     <string name="normal">Normal</string>
