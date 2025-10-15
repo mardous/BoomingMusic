@@ -5,7 +5,7 @@
     <string name="action_shuffle_play">Zufallswiedergabe</string>
     <string name="action_queue_next">An Warteschlange anhängen</string>
     <string name="shuffle_all_label">Zufallswiedergabe aller Titel</string>
-    <string name="shuffle_mode">Shuffle mode</string>
+    <string name="shuffle_mode">Zufallsmodus</string>
     <string name="repeat_mode">Wiederholmodus</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tippen für normale Zufallswiedergabe. Lange drücken für erweiterte Optionen.</string>
@@ -156,8 +156,8 @@
     <string name="app_widget_small_name">Klein</string>
     <string name="now_playing">Aktuelle Wiedergabe</string>
     <string name="playing_queue_label">Warteschlange</string>
-    <string name="list_start">List start</string>
-    <string name="list_end">List end</string>
+    <string name="list_start">Anfang der Liste</string>
+    <string name="list_end">Ende der Liste</string>
     <string name="empty_play_queue">Leere Warteschlange.</string>
     <string name="save_queue">Warteschlange speichern</string>
     <string name="clear_queue">Warteschlange leeren</string>
@@ -239,7 +239,7 @@
     <string name="sort_order_duration">Dauer</string>
     <string name="sort_order_date_added">Hinzufügungsdatum</string>
     <string name="sort_order_date_modified">Zuletzt geändert</string>
-    <string name="sort_order_file_name">File name</string>
+    <string name="sort_order_file_name">Dateiname</string>
     <string name="sort_order_number_of_songs">Titelanzahl</string>
     <string name="sort_order_number_of_albums">Albenanzahl</string>
     <string name="sort_order_last_played_date">Letztes Wiedergabedatum</string>
@@ -341,9 +341,9 @@
     <string name="action_toggle_playlist_lock">Sperr/Entsperr die Wiedergabeliste </string>
     <string name="playlist_locked">Wiedergabeliste sperrt</string>
     <string name="playlist_unlocked">Wiedergabeliste entsperrt</string>
-    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
+    <string name="action_toggle_queue_lock">Sperr/Entsperr die Wiedergabeliste </string>
+    <string name="queue_locked">Warteschlange gesperrt</string>
+    <string name="queue_unlocked">Warteschlange entsperrt</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux-Kabel</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -497,7 +497,7 @@
     <string name="no_synced_lyrics_found">Keine synchronisierten Liedtexte gefunden</string>
     <string name="lyrics_were_updated_successfully">Liedtexte wurden erfolgreich aktualisiert.</string>
     <string name="failed_to_update_lyrics">Liedtexte konnten nicht aktualisiert werden.</string>
-    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
+    <string name="there_are_no_changes_to_save">Es gibt keine Änderungen zu speichern.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
@@ -711,7 +711,7 @@
     <string name="delete_downloaded_lyrics_summary">Nur Liedtexte, die von Booming Music heruntergeladen wurden. Hat keine Auswirkung auf eingebettete Liedtexte aus ID3v2-Tags oder LRC-Dateien.</string>
     <string name="lyrics_cleared">Liedtext geleert.</string>
     <!-- Library preferences -->
-    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
+    <string name="ignore_articles_when_sorting_title">Artikel beim Sortieren ignorieren</string>
     <string name="ignore_articles_when_sorting_summary">Führende Artikel (\"the\", \"a\", \"an\") beim Sortieren ignorieren.</string>
     <string name="trash_music_title">In den Papierkorb verschieben</string>
     <string name="trash_music_summary">Gelöschte Dateien in den Papierkorb verschieben.</string>
@@ -835,9 +835,9 @@
     <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
     <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
         It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report">Fehlerbericht</string>
     <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">App neu starten</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_send">Report senden</string>
 </resources>
