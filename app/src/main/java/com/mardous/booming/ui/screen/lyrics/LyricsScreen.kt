@@ -67,7 +67,7 @@ fun LyricsScreen(
 
     val songProgress by playerViewModel.progressFlow.collectAsState()
     LaunchedEffect(songProgress) {
-        lyricsViewState.updatePosition(songProgress.toLong())
+        lyricsViewState.updatePosition(songProgress)
     }
 
     val plainScrollState = rememberScrollState()
@@ -118,7 +118,8 @@ fun LyricsScreen(
                     contentDescription = stringResource(R.string.open_lyrics_editor)
                 )
             }
-        }
+        },
+        modifier = Modifier.keepScreenOn()
     ) { innerPadding ->
         Box(modifier = Modifier.fillMaxSize()) {
             AnimatedContent(
@@ -176,7 +177,7 @@ fun CoverLyricsScreen(
     }
 
     LaunchedEffect(songProgress) {
-        lyricsViewState.updatePosition(songProgress.toLong())
+        lyricsViewState.updatePosition(songProgress)
     }
 
     val plainScrollState = rememberScrollState()
@@ -239,7 +240,7 @@ private fun LyricsSurface(
     CompositionLocalProvider(
         LocalContentColor provides contentColor
     ) {
-        Box(modifier.keepScreenOn()) {
+        Box(modifier) {
             if (result.loading) {
                 CircularProgressIndicator(
                     modifier = Modifier.align(Alignment.Center)
