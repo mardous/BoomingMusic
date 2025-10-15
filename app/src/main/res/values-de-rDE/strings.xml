@@ -53,7 +53,7 @@
     <string name="x_selected">%d ausgewählt</string>
     <string name="preparing_playback_title">Preparing</string>
     <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="playback_stopped_title">Wiedergabe angehalten</string>
     <string name="playing_notification_description">Die Abspielbenachrichtigung ermöglicht Aktionen wie Wiedergabe/Pause usw.</string>
     <string name="playing_notification_name">Wiedergabebenachrichtigung</string>
     <string name="action_scan_directory">Verzeichnis scannen</string>
@@ -125,7 +125,7 @@
     <string name="no_equalizer">Kein Equalizer gefunden.</string>
     <string name="audio_focus_denied">Audio-Fokus verweigert.</string>
     <string name="no_audio_ID">Ungültige Audio-ID.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">Wiedergabefehler (%s).</string>
     <string name="unplayable_file">Dieser Titel konnte nicht abgespielt werden.</string>
     <string name="unplayable_file_code_x">Dieser Titel konnte nicht abgespielt werden (Code: %d).</string>
     <string name="permission_external_storage_title">Speicherzugriff</string>
@@ -638,8 +638,8 @@
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Bei Wiedergabe öffnen</string>
     <string name="open_on_play_summary">Die Wiedergabe-Ansicht nach Wiedergabe-Start automatisch erweitern.</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="squiggly_seek_bar_title">Wellenförmiger Fortschrittsbalken</string>
+    <string name="squiggly_seek_bar_summary">Wellenförmigen Suchbalken statt Standardregler verwenden.</string>
     <string name="scrolling_text_title">Enable scrolling text</string>
     <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Zusätzliche Steuerelemente</string>
