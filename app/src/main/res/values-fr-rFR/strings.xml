@@ -3,7 +3,7 @@
     <string name="action_play">Jouer</string>
     <string name="action_play_all">Jouer tout</string>
     <string name="action_shuffle_play">Lecture aléatoire</string>
-    <string name="action_queue_next">File d\'attente suivante</string>
+    <string name="action_queue_next">Ajouter a la liste de lecture</string>
     <string name="shuffle_all_label">Tout mélanger</string>
     <string name="shuffle_mode">Mode aléatoire</string>
     <string name="repeat_mode">Mode répétition</string>
