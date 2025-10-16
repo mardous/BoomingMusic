@@ -158,7 +158,7 @@
     <string name="playing_queue_label">File de lecture</string>
     <string name="list_start">Début de liste</string>
     <string name="list_end">Fin de liste</string>
-    <string name="empty_play_queue">Vide la liste de lecture.</string>
+    <string name="empty_play_queue">Vider la liste de lecture.</string>
     <string name="save_queue">Enregistrer la file d\'attente</string>
     <string name="clear_queue">Vider la file d\'attente</string>
     <string name="action_move_to_current_track">Afficher la piste actuelle</string>
@@ -210,7 +210,7 @@
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
     <string name="favorites_label">Favoris</string>
-    <string name="last_added_label">Dernier ajout</string>
+    <string name="last_added_label">Ajout récent</string>
     <string name="top_tracks_label">Meilleurs titres</string>
     <string name="history_label">Historique</string>
     <string name="not_recently_played">Pas joué récemment</string>
@@ -278,7 +278,7 @@
     <string name="save_artwork_view_action">Voir</string>
     <string name="save_artwork_copyright_info_title">Avis de droit d\'auteur</string>
     <string name="save_artwork_copyright_info_message">Certaines couvertures d\'album (ou toutes) peuvent être protégées par le droit d\'auteur. Vous ne pouvez pas utiliser ces images à des fins commerciales ou publicitaires.
-        \n\nVous êtes seul responsable de l\'utilisation que vous faites des couvertures d\'album enregistrées.</string>
+        \n\nL\'utilisation de la couverture est sous votre responsabilité.</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="keyboard">Clavier</string>
@@ -387,7 +387,7 @@
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Pour vous</string>
-    <string name="shuffle_action">Lecture aléatoire</string>
+    <string name="shuffle_action">Mélanger</string>
     <string name="top_artists">Meilleurs artistes</string>
     <string name="top_albums">Meilleurs albums</string>
     <string name="recent_artists">Artistes récents</string>
@@ -513,7 +513,7 @@
     <string name="sleep_timer_stop_after_x">Arrêter après %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Arrêt après %s : annulé</string>
     <!-- App Shortcuts -->
-    <string name="app_shortcut_shuffle_all_short">Lecture aléatoire</string>
+    <string name="app_shortcut_shuffle_all_short">Mélanger</string>
     <string name="app_shortcut_top_tracks_short">Meilleurs titres</string>
     <string name="app_shortcut_last_added_short">Derniers ajouts</string>
     <!-- About page -->
@@ -578,7 +578,7 @@
     <!-- Preference headers -->
     <string name="general_header">Général</string>
     <string name="library_header">Bibliothèque</string>
-    <string name="album_cover_header">Pochette</string>
+    <string name="album_cover_header">couverture</string>
     <string name="artist_image_header">Image de l\'artiste</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Contrôles</string>
@@ -638,8 +638,8 @@
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir en lecture</string>
     <string name="open_on_play_summary">Développez automatiquement le panneau Lecture en cours après avoir commencé à jouer une chanson.</string>
-    <string name="squiggly_seek_bar_title">Barre de recherche ondulée</string>
-    <string name="squiggly_seek_bar_summary">Activez une barre de recherche ondulée au lieu du curseur par défaut.</string>
+    <string name="squiggly_seek_bar_title">Barre de lecture ondulée</string>
+    <string name="squiggly_seek_bar_summary">Activez une barre de lecture ondulée au lieu de la barre par défaut.</string>
     <string name="scrolling_text_title">Activer le défilement du texte</string>
     <string name="scrolling_text_summary">Les titres des morceaux défilent lorsqu\'ils sont trop longs. Cela peut consommer un peu plus de batterie.</string>
     <string name="extra_controls_title">Contrôles supplémentaires</string>
@@ -649,17 +649,17 @@
     <string name="swipe_to_dismiss_title">Glissez pour ignorer</string>
     <string name="swipe_to_dismiss_summary">Faites glisser le minilecteur vers le bas pour arrêter la lecture et effacer les files d\'attente de lecture.</string>
     <string name="circle_button_title">Bouton de lecture circulaire</string>
-    <string name="swipe_album_cover_title">Glisser la pochette de l\'album</string>
-    <string name="swipe_album_cover_summary">Balayez vers la gauche et la droite sur la pochette de l\'album pour passer d\'un titre à l\'autre.</string>
+    <string name="swipe_album_cover_title">Glisser la couverture de l\'album</string>
+    <string name="swipe_album_cover_summary">Balayez vers la gauche ou vers la droite sur la couverture de l\'album pour passer d\'un titre à l\'autre.</string>
     <string name="single_tap_on_album_cover_title">Appuyez une fois sur la pochette</string>
-    <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la pochette</string>
+    <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
     <string name="long_press_on_album_cover_title">Appui long sur la pochette</string>
     <string name="now_playing_corner_radius_title">Rayon des coins de l\'image</string>
     <string name="now_playing_corner_radius_summary">Définit l\'aspect arrondi des coins de la pochette de l\'album.</string>
     <string name="carousel_effect_title">Effet carrousel</string>
-    <string name="album_cover_effect_title">Effet de pochette d\'album</string>
+    <string name="album_cover_effect_title">Effet de la couverture d\'album</string>
     <string name="lyrics_on_album_cover_title">Paroles sur la pochette</string>
-    <string name="lyrics_on_album_cover_summary">Afficher les paroles des titres au lieu de la pochette lorsqu\'elles sont disponibles.</string>
+    <string name="lyrics_on_album_cover_summary">Afficher les paroles des titres au lieu de la couverture lorsqu\'elles sont disponibles.</string>
     <string name="animate_controls_title">Animer les contrôles</string>
     <string name="animate_controls_summary">Il est joué lors de l\'ouverture du panneau du lecteur.</string>
     <string name="swipe_controls_title">Commandes de balayage</string>
@@ -680,7 +680,7 @@
     <string name="queue_next_mode_title">Mode \"File d\'attente\"</string>
     <string name="search_auto_queue_title">Mettre en file d\'attente tous les résultats de recherche</string>
     <string name="search_auto_queue_summary">Lorsque vous lisez un titre à partir de l\'écran de recherche, tous les autres résultats seront également mis en file d\'attente.</string>
-    <string name="remember_shuffle_mode_title">Mémoriser la lecture aléatoire</string>
+    <string name="remember_shuffle_mode_title">Mémoriser le mélange</string>
     <string name="remember_shuffle_mode_summary">Le mode aléatoire restera actif lors de la sélection d\'une nouvelle liste de titres.</string>
     <string name="album_shuffle_mode_title">Mode de lecture aléatoire des albums</string>
     <string name="artist_shuffle_mode_title">Mode de lecture aléatoire des artistes</string>
@@ -700,7 +700,7 @@
     <string name="ignore_audio_focus_summary">Toujours jouer de l\'audio en arrière-plan, indépendamment de tout autre élément en cours de lecture.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Téléchargement automatique des métadonnées</string>
-    <string name="ignore_media_store_album_covers_title">Ignorer les pochettes du Media Store</string>
+    <string name="ignore_media_store_album_covers_title">Ignorer les couvertures du Media Store</string>
     <string name="ignore_media_store_album_covers_summary">Cela peut aider à améliorer la qualité des images mais nécessite plus de mémoire.</string>
     <string name="use_folder_album_cover_title">Utiliser les images du dossier</string>
     <string name="use_folder_album_cover_summary">Si le fichier audio ne contient pas de pochette intégrée. Les images peuvent prendre un peu plus de temps pour se charger.</string>
