@@ -734,8 +734,16 @@ class PlaybackService :
         }
         withContext(Main) {
             if (songs.isNotEmpty()) {
-                player.shuffleModeEnabled = intent.getBooleanExtra(EXTRA_SHUFFLE_MODE, false)
+                val shuffle = intent.getBooleanExtra(EXTRA_SHUFFLE_MODE, false)
                 player.setMediaItems(songs.toMediaItems())
+                if (shuffle) {
+                    player.shuffleModeEnabled = true
+                    if (player.mediaItemCount > 0) {
+                        player.seekToDefaultPosition((0 until player.mediaItemCount).random())
+                    }
+                } else {
+                    player.shuffleModeEnabled = false
+                }
                 player.prepare()
                 player.play()
             } else {
