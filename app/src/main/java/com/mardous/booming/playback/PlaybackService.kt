@@ -1,5 +1,7 @@
 package com.mardous.booming.playback
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.bluetooth.BluetoothA2dp
@@ -12,6 +14,7 @@ import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
+import androidx.core.content.getSystemService
 import androidx.core.os.bundleOf
 import androidx.core.os.postDelayed
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -95,6 +98,7 @@ class PlaybackService :
     private var delayedShutdownHandler: Handler? = null
     private val playerThread = HandlerThread("Booming-ExoPlayer", Process.THREAD_PRIORITY_AUDIO)
     private lateinit var notificationProvider: DefaultMediaNotificationProvider
+    private lateinit var nm: NotificationManager
     private var mediaSession: MediaLibrarySession? = null
     private lateinit var player: AdvancedForwardingPlayer
     private lateinit var customCommands: List<CommandButton>
@@ -142,7 +146,9 @@ class PlaybackService :
 
     override fun onCreate() {
         super.onCreate()
+        nm = requireNotNull(getSystemService<NotificationManager>())
         delayedShutdownHandler = Handler(Looper.getMainLooper())
+        createNotificationChannel()
 
         customCommands = listOf(
             CommandButton.Builder(CommandButton.ICON_SHUFFLE_OFF)
@@ -772,6 +778,23 @@ class PlaybackService :
         val intent = Intent(this, MainActivity::class.java)
             .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
         return PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+    }
+
+    private fun createNotificationChannel() {
+        var notificationChannel = nm.getNotificationChannel(CHANNEL_ID)
+        if (notificationChannel == null) {
+            notificationChannel = NotificationChannel(
+                CHANNEL_ID,
+                getString(R.string.playing_notification_name),
+                NotificationManager.IMPORTANCE_LOW
+            ).apply {
+                description = getString(R.string.playing_notification_description)
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
+                    setShowBadge(false)
+                }
+            }
+            nm.createNotificationChannel(notificationChannel)
+        }
     }
 
     private fun startForegroundWithPendingMode(titleRes: Int, messageRes: Int) {
