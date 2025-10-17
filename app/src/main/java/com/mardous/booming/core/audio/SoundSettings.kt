@@ -52,10 +52,12 @@ class SoundSettings(context: Context) {
 
     suspend fun setEnableAudioFloatOutput(enable: Boolean) {
         _audioFloatOutputFlow.emit(enable)
+        prefs.edit(commit = true) { putBoolean(AUDIO_FLOAT_OUTPUT, enable) }
     }
 
     suspend fun setEnableSkipSilence(enable: Boolean) {
         _skipSilenceFlow.emit(enable)
+        prefs.edit(commit = true) { putBoolean(SKIP_SILENCE, enable) }
     }
 
     suspend fun setBalance(update: EqEffectUpdate<BalanceLevel>, apply: Boolean) {
