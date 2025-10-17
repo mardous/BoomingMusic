@@ -735,15 +735,14 @@ class PlaybackService :
         withContext(Main) {
             if (songs.isNotEmpty()) {
                 val shuffle = intent.getBooleanExtra(EXTRA_SHUFFLE_MODE, false)
-                player.setMediaItems(songs.toMediaItems())
+                val mediaItems = songs.toMediaItems().toMutableList()
+
                 if (shuffle) {
-                    player.shuffleModeEnabled = true
-                    if (player.mediaItemCount > 0) {
-                        player.seekToDefaultPosition((0 until player.mediaItemCount).random())
-                    }
-                } else {
-                    player.shuffleModeEnabled = false
+                    mediaItems.shuffle()
                 }
+
+                player.setMediaItems(mediaItems)
+                player.shuffleModeEnabled = shuffle
                 player.prepare()
                 player.play()
             } else {
