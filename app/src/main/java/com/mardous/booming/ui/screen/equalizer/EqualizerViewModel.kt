@@ -16,7 +16,6 @@ import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.files.getContentUri
 import com.mardous.booming.extensions.files.readString
 import com.mardous.booming.playback.equalizer.EqualizerManager
-import com.mardous.booming.playback.equalizer.EqualizerSession
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -43,6 +42,7 @@ class EqualizerViewModel(
     val virtualizerState get() = equalizerManager.virtualizerState
     val loudnessGainState get() = equalizerManager.loudnessGainState
     val presetReverbState get() = equalizerManager.presetReverbState
+    val currentPreset get() = equalizerManager.currentPreset
 
     val numberOfBands: Int get() = equalizerManager.numberOfBands
     val bandLevelRange: IntArray get() = equalizerManager.bandLevelRange
@@ -50,18 +50,7 @@ class EqualizerViewModel(
 
     private var exportContent: String? = null
 
-    fun isCustomPresetSelected() = equalizerManager.currentPreset.isCustom
-
     fun setEqualizerState(isEnabled: Boolean, apply: Boolean = true) {
-        // update equalizer session
-        if (isEnabled) {
-            equalizerManager.closeAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
-            equalizerManager.openAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
-        } else {
-            equalizerManager.closeAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
-            equalizerManager.openAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
-        }
-
         // set parameter and state
         viewModelScope.launch(Dispatchers.Default) {
             equalizerManager.setEqualizerState(EqUpdate(eqState, isEnabled), apply)

@@ -46,12 +46,15 @@ class SoundSettings(context: Context) {
 
     private val _audioOffloadFlow = MutableStateFlow(prefs.getBoolean(AUDIO_OFFLOAD, false))
     val audioOffloadFlow = _audioOffloadFlow.asStateFlow()
+    val audioOffload get() = audioOffloadFlow.value
 
     private val _audioFloatOutputFlow = MutableStateFlow(prefs.getBoolean(AUDIO_FLOAT_OUTPUT, false))
     val audioFloatOutputFlow = _audioFloatOutputFlow.asStateFlow()
+    val audioFloatOutput get() = audioFloatOutputFlow.value
 
     private val _skipSilenceFlow = MutableStateFlow(prefs.getBoolean(SKIP_SILENCE, false))
     val skipSilenceFlow = _skipSilenceFlow.asStateFlow()
+    val skipSilence get() = skipSilenceFlow.value
 
     suspend fun setEnableAudioOffload(enable: Boolean) {
         _audioOffloadFlow.emit(enable)

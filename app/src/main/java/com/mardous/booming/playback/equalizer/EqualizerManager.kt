@@ -25,9 +25,12 @@ import androidx.core.content.edit
 import com.mardous.booming.core.model.equalizer.*
 import com.mardous.booming.core.model.equalizer.EQPreset.Companion.getEmptyPreset
 import com.mardous.booming.extensions.files.getFormattedFileName
+import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.serialization.json.Json
 import java.util.Locale
 import java.util.UUID
@@ -35,9 +38,11 @@ import java.util.UUID
 /**
  * @author Christians M. A. (mardous)
  */
+@OptIn(FlowPreview::class)
 class EqualizerManager internal constructor(context: Context) {
 
     private val mPreferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
+    private val eqScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     private val eqSession = EqualizerSession(context, this)
 
     private var isEqualizerSupported = false
@@ -56,8 +61,8 @@ class EqualizerManager internal constructor(context: Context) {
 
     var audioSessionId = AudioEffect.ERROR_BAD_VALUE
         set(value) {
-            field = value
             closeAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
+            field = value
             openAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
         }
 
@@ -105,7 +110,19 @@ class EqualizerManager internal constructor(context: Context) {
             //The user doesn't have the AudioEffect/AudioEffect.Descriptor class. How sad.
         }
 
-        _eqStateFlow = MutableStateFlow(initializeEqState())
+        _eqStateFlow = MutableStateFlow(initializeEqState()).also {
+            it.debounce(100)
+                .onEach { newState ->
+                    if (newState.isUsable) {
+                        closeAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
+                        openAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
+                    } else {
+                        closeAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
+                        openAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
+                    }
+                }
+                .launchIn(eqScope)
+        }
         _presetsFlow = MutableStateFlow(initializePresets())
         _currentPresetFlow = MutableStateFlow(initializeCurrentPreset())
         _bassBoostFlow = MutableStateFlow(initializeBassBoostState())
@@ -372,6 +389,18 @@ class EqualizerManager internal constructor(context: Context) {
             _bassBoostFlow.tryEmit(initializeBassBoostState(eqPreset))
         }
         eqSession.update()
+    }
+
+    suspend fun setTransientEqualizerState(enabled: Boolean, supported: Boolean = enabled) {
+        setEqualizerState(
+            update = EqUpdate(
+                state = eqState,
+                isEnabled = mPreferences.getBoolean(Keys.GLOBAL_ENABLED, false) && enabled,
+                isSupported = isEqualizerSupported && supported,
+                isTransient = true
+            ),
+            apply = false
+        )
     }
 
     suspend fun setEqualizerState(update: EqUpdate<EqState>, apply: Boolean) {

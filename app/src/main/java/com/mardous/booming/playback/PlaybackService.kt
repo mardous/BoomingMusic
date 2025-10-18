@@ -198,10 +198,10 @@ class PlaybackService :
                                 .build()
                         }
                     }
-                    .setEnableAudioFloatOutput(soundSettings.audioFloatOutputFlow.value)
+                    .setEnableAudioFloatOutput(soundSettings.audioFloatOutput)
                     .setEnableAudioTrackPlaybackParams(true)
                 )
-                .setSkipSilenceEnabled(soundSettings.skipSilenceFlow.value)
+                .setSkipSilenceEnabled(soundSettings.skipSilence)
                 .setHandleAudioBecomingNoisy(true)
                 .setMaxSeekToPreviousPositionMs(maxSeekToPreviousMs)
                 .setSeekBackIncrementMs(seekInterval)
@@ -856,6 +856,8 @@ class PlaybackService :
                             .build()
                     )
                     .build()
+
+                equalizerManager.setTransientEqualizerState(!audioOffloadingEnabled)
             }
         }
         serviceScope.launch {
