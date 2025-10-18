@@ -19,6 +19,7 @@ import androidx.core.os.bundleOf
 import androidx.core.os.postDelayed
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.media3.common.*
+import androidx.media3.common.TrackSelectionParameters.AudioOffloadPreferences
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
@@ -839,6 +840,23 @@ class PlaybackService :
     private fun prepareEqualizerAndSoundSettings() {
         serviceScope.launch(IO) {
             equalizerManager.initializeEqualizer()
+        }
+        serviceScope.launch {
+            soundSettings.audioOffloadFlow.collect { audioOffloadingEnabled ->
+                player.trackSelectionParameters = player.trackSelectionParameters
+                    .buildUpon()
+                    .setAudioOffloadPreferences(
+                        AudioOffloadPreferences.Builder()
+                            .setAudioOffloadMode(
+                                if (audioOffloadingEnabled)
+                                    AudioOffloadPreferences.AUDIO_OFFLOAD_MODE_ENABLED
+                                else AudioOffloadPreferences.AUDIO_OFFLOAD_MODE_DISABLED
+                            )
+                            .setIsSpeedChangeSupportRequired(true)
+                            .build()
+                    )
+                    .build()
+            }
         }
         serviceScope.launch {
             soundSettings.skipSilenceFlow.collect {

@@ -31,6 +31,7 @@ class SoundSettingsViewModel(
     val replayGainStateFlow = soundSettings.replayGainStateFlow
     val replayGainState get() = soundSettings.replayGainState
 
+    val audioOffloadFlow = soundSettings.audioOffloadFlow
     val audioFloatOutputFlow = soundSettings.audioFloatOutputFlow
     val skipSilenceFlow = soundSettings.skipSilenceFlow
 
@@ -41,6 +42,10 @@ class SoundSettingsViewModel(
     override fun onCleared() {
         super.onCleared()
         audioOutputObserver.stopObserver()
+    }
+
+    fun setEnableAudioOffload(enable: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        soundSettings.setEnableAudioOffload(enable)
     }
 
     fun setEnableAudioFloatOutput(enable: Boolean) = viewModelScope.launch(Dispatchers.IO) {

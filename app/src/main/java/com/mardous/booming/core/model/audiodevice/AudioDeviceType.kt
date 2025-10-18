@@ -115,6 +115,9 @@ enum class AudioDeviceType(
         audioDeviceTypes = arrayOf(AudioDeviceInfo.TYPE_UNKNOWN),
         mediaRouteTypes = emptyArray()
     );
+
+    val isThisDeviceOutput: Boolean
+        get() = this == BuiltinSpeaker || this == Unknown
 }
 
 fun AudioDeviceInfo?.getDeviceType() =

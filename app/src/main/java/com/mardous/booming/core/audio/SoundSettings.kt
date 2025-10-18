@@ -44,11 +44,19 @@ class SoundSettings(context: Context) {
     val replayGainStateFlow = _replayGainStateFlow.asStateFlow()
     val replayGainState get() = replayGainStateFlow.value.value
 
+    private val _audioOffloadFlow = MutableStateFlow(prefs.getBoolean(AUDIO_OFFLOAD, false))
+    val audioOffloadFlow = _audioOffloadFlow.asStateFlow()
+
     private val _audioFloatOutputFlow = MutableStateFlow(prefs.getBoolean(AUDIO_FLOAT_OUTPUT, false))
     val audioFloatOutputFlow = _audioFloatOutputFlow.asStateFlow()
 
     private val _skipSilenceFlow = MutableStateFlow(prefs.getBoolean(SKIP_SILENCE, false))
     val skipSilenceFlow = _skipSilenceFlow.asStateFlow()
+
+    suspend fun setEnableAudioOffload(enable: Boolean) {
+        _audioOffloadFlow.emit(enable)
+        prefs.edit(commit = true) { putBoolean(AUDIO_OFFLOAD, enable) }
+    }
 
     suspend fun setEnableAudioFloatOutput(enable: Boolean) {
         _audioFloatOutputFlow.emit(enable)
@@ -146,6 +154,7 @@ class SoundSettings(context: Context) {
     }
 
     companion object {
+        private const val AUDIO_OFFLOAD = "audio.offload"
         private const val AUDIO_FLOAT_OUTPUT = "audio.float_output"
         private const val SKIP_SILENCE = "audio.skip_silence"
         private const val REPLAYGAIN_MODE = "replaygain.mode"

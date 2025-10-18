@@ -18,20 +18,24 @@
 package com.mardous.booming.core.model.audiodevice
 
 import android.content.Context
+import android.os.Build
 
 /**
  * @author Christians M. A. (mardous)
  */
 class AudioDevice(
     val type: AudioDeviceType,
-    private val productName: CharSequence?,
-    private val isProduct: Boolean = type.isProduct
+    private val productName: CharSequence?
 ) {
 
-    val hasProductName get() = isProduct && !productName.isNullOrBlank()
-
     fun getDeviceName(context: Context): CharSequence {
-        return if (hasProductName) productName!! else context.getString(type.nameRes)
+        if (type.isProduct && !productName.isNullOrEmpty()) {
+            return productName
+        }
+        if (type.isThisDeviceOutput) {
+            return "${Build.MANUFACTURER} ${Build.MODEL}"
+        }
+        return context.getString(type.nameRes)
     }
 
     companion object {
