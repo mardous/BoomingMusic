@@ -18,17 +18,25 @@ import com.mardous.booming.util.Preferences
 class LibraryProvider(private val repository: Repository) {
 
     suspend fun getMediaItemsForPlayback(mediaItems: List<MediaItem>): List<MediaItem> {
-        val validMediaItems = mediaItems.filter { item -> item.localConfiguration != null }
-        if (validMediaItems.size == mediaItems.size) {
-            return validMediaItems
+        val resolvedMediaItems = mediaItems.filter { item -> item.localConfiguration != null }
+            .toMutableList()
+        if (resolvedMediaItems.size == mediaItems.size) {
+            return resolvedMediaItems
         }
-        val filledMediaItems = (mediaItems - validMediaItems).let { invalidMediaItems ->
-            repository.songsByMediaItems(invalidMediaItems).first.toMediaItems()
+        val (songs, missingMediaItems) = (mediaItems - resolvedMediaItems).let { invalidItems ->
+            repository.songsByMediaItems(invalidItems)
         }
-        if (filledMediaItems.isNotEmpty()) {
-            return (validMediaItems + filledMediaItems)
+        if (songs.isNotEmpty()) {
+            resolvedMediaItems.addAll(songs.toMediaItems())
         }
-        return validMediaItems
+        missingMediaItems.forEach {
+            getPlayableSongs(it.mediaId).let { playableSongs ->
+                if (playableSongs.isNotEmpty()) {
+                    resolvedMediaItems.addAll(playableSongs.toMediaItems())
+                }
+            }
+        }
+        return resolvedMediaItems
     }
 
     suspend fun getChildren(
@@ -249,7 +257,9 @@ class LibraryProvider(private val repository: Repository) {
     ): List<Song> {
         return if (childId == null) {
             when (parentId) {
+                MediaIDs.SONGS -> repository.allSongs()
                 MediaIDs.TOP_TRACKS -> repository.playCountSongs()
+                MediaIDs.LAST_ADDED -> repository.recentSongs()
                 MediaIDs.RECENT_SONGS -> repository.historySongs()
                 else -> emptyList()
             }

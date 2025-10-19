@@ -42,7 +42,6 @@ import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
-import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
@@ -420,15 +419,10 @@ class PlaybackService :
         controller: MediaSession.ControllerInfo,
         mediaItems: List<MediaItem>
     ): ListenableFuture<List<MediaItem>> {
-        if (mediaSession.isRemoteController(controller)) {
-            return serviceScope.future(IO) {
-                val result = runCatching {
-                    libraryProvider.getMediaItemsForPlayback(mediaItems)
-                }
-                result.getOrDefault(emptyList())
-            }
+        return serviceScope.future(IO) {
+            runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
+                .getOrDefault(emptyList())
         }
-        return super.onAddMediaItems(mediaSession, controller, mediaItems)
     }
 
     override fun onSetMediaItems(
@@ -438,24 +432,21 @@ class PlaybackService :
         startIndex: Int,
         startPositionMs: Long
     ): ListenableFuture<MediaItemsWithStartPosition> {
-        val mediaItemsWithStartPosition = MediaItemsWithStartPosition(mediaItems, startIndex, startPositionMs)
-        val future = Futures.immediateFuture(mediaItemsWithStartPosition)
-        future.addListener({
-            if (mediaItems.isNotEmpty()) {
-                this.mediaSession?.broadcastCustomCommand(
-                    SessionCommand(Playback.EVENT_PLAYBACK_STARTED, Bundle.EMPTY),
-                    Bundle.EMPTY
-                )
-                if (player.shuffleModeEnabled) {
-                    player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
-                        firstIndex = startIndex,
-                        length = mediaItems.size,
-                        randomSeed = Random.nextLong()
+        return serviceScope.future(IO) {
+            runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
+                .getOrDefault(emptyList())
+                .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+        }.also { future ->
+            future.addListener({
+                val result = runCatching { future.get() }.getOrNull()
+                if (result != null && result.mediaItems.isNotEmpty()) {
+                    this.mediaSession?.broadcastCustomCommand(
+                        SessionCommand(Playback.EVENT_PLAYBACK_STARTED, Bundle.EMPTY),
+                        Bundle.EMPTY
                     )
                 }
-            }
-        }, ContextCompat.getMainExecutor(this))
-        return future
+            }, ContextCompat.getMainExecutor(this))
+        }
     }
 
     override fun onCustomCommand(
@@ -726,7 +717,6 @@ class PlaybackService :
             } else {
                 player.play()
             }
-            ACTION_PLAY_PLAYLIST -> playFromPlaylist(command)
             ACTION_PREVIOUS -> player.seekToPrevious()
             ACTION_NEXT -> player.seekToNext()
         }
@@ -979,13 +969,10 @@ class PlaybackService :
 
         const val ACTION_APP_WIDGET_UPDATE = "$PACKAGE_NAME.action.app_widget_update"
         const val ACTION_TOGGLE_PAUSE = "$PACKAGE_NAME.action.toggle_pause"
-        const val ACTION_PLAY_PLAYLIST = "$PACKAGE_NAME.action.play.playlist"
         const val ACTION_PREVIOUS = "$PACKAGE_NAME.booming.action.previous"
         const val ACTION_NEXT = "$PACKAGE_NAME.action.next"
 
         const val EXTRA_APP_WIDGET_NAME = "$PACKAGE_NAME.extra.app_widget_name"
-        const val EXTRA_CONTENT_TYPE = "$PACKAGE_NAME.extra.content_type"
-        const val EXTRA_SHUFFLE_MODE = "$PACKAGE_NAME.extra.shuffle_mode"
 
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "playing_notification"

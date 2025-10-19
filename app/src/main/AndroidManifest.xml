@@ -76,11 +76,6 @@
         <activity android:name=".ui.screen.permissions.PermissionsActivity"/>
 
         <activity
-            android:name=".core.appshortcuts.AppShortcutLauncherActivity"
-            android:launchMode="singleInstance"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-
-        <activity
             android:name=".ui.screen.error.ErrorActivity"
             android:exported="true">
             <intent-filter>
@@ -181,6 +176,10 @@
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable"/>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity-alias>
 
         <service

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.C
+import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.Player.REPEAT_MODE_OFF
 import androidx.media3.common.Timeline
@@ -42,14 +43,12 @@ import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.REMEMBER_SHUFFLE_MODE
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.guava.await
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.io.File
-import kotlin.random.Random
 
 @OptIn(FlowPreview::class)
 @androidx.annotation.OptIn(UnstableApi::class)
@@ -357,6 +356,20 @@ class PlayerViewModel(
                     controller.seekToDefaultPosition(position.getIndexForPosition(newPosition))
                 }
             }
+        }
+    }
+
+    fun playMediaId(mediaId: String, shuffleMode: Boolean = false) {
+        mediaController?.let { controller ->
+            controller.setMediaItem(
+                MediaItem.Builder()
+                    .setMediaId(mediaId)
+                    .build(),
+                true
+            )
+            controller.shuffleModeEnabled = shuffleMode
+            controller.prepare()
+            controller.play()
         }
     }
 

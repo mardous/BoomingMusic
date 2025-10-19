@@ -1,8 +1,10 @@
 package com.mardous.booming.ui.screen
 
 import android.content.Intent
+import android.content.pm.ShortcutManager
 import android.os.Bundle
 import androidx.annotation.OptIn
+import androidx.core.content.getSystemService
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.session.MediaController
 import androidx.media3.session.SessionCommand
@@ -14,7 +16,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
 import com.mardous.booming.R
-import com.mardous.booming.core.appshortcuts.DynamicShortcutManager
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.extensions.currentFragment
@@ -22,6 +23,7 @@ import com.mardous.booming.extensions.navigation.isValidCategory
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.playback.Playback
+import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.ui.IScrollHelper
 import com.mardous.booming.ui.component.base.AbsSlidingMusicPanelActivity
 import com.mardous.booming.ui.screen.update.UpdateDialog
@@ -44,8 +46,8 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
         updateTabs()
         setupNavigationController()
 
-        // Set up dynamic shortcuts
-        DynamicShortcutManager(this).initDynamicShortcuts()
+        val shortcutManager = getSystemService<ShortcutManager>()
+        shortcutManager?.removeDynamicShortcuts(OLD_SHORTCUT_IDS)
 
         prepareUpdateViewModel()
     }
@@ -188,17 +190,24 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
     }
 
     private fun handlePlaybackIntent(intent: Intent, canRestorePlayback: Boolean) {
-        libraryViewModel.handleIntent(intent).observe(this) { result ->
-            if (result.handled) {
-                if (result.songs.isNotEmpty()) {
-                    playerViewModel.openQueue(result.songs, result.position)
+        when (intent.action) {
+            APP_SHORTCUT_LAST_ADDED -> playerViewModel.playMediaId(MediaIDs.LAST_ADDED)
+            APP_SHORTCUT_TOP_TRACKS -> playerViewModel.playMediaId(MediaIDs.TOP_TRACKS)
+            APP_SHORTCUT_SHUFFLE -> playerViewModel.playMediaId(MediaIDs.SONGS, true)
+            else -> {
+                libraryViewModel.handleIntent(intent).observe(this) { result ->
+                    if (result.handled) {
+                        if (result.songs.isNotEmpty()) {
+                            playerViewModel.openQueue(result.songs, result.position)
+                        }
+                        setIntent(Intent())
+                    } else if (canRestorePlayback) {
+                        playerViewModel.restorePlayback()
+                    }
+                    if (result.failed) {
+                        showToast(R.string.unplayable_file)
+                    }
                 }
-                setIntent(Intent())
-            } else if (canRestorePlayback) {
-                playerViewModel.restorePlayback()
-            }
-            if (result.failed) {
-                showToast(R.string.unplayable_file)
             }
         }
     }
@@ -234,5 +243,17 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
                 }
             }
         }
+    }
+
+    companion object {
+        private const val APP_SHORTCUT_LAST_ADDED = "com.mardous.booming.shortcut.LAST_ADDED"
+        private const val APP_SHORTCUT_TOP_TRACKS = "com.mardous.booming.shortcut.TOP_TRACKS"
+        private const val APP_SHORTCUT_SHUFFLE = "com.mardous.booming.shortcut.SHUFFLE"
+
+        private val OLD_SHORTCUT_IDS = listOf(
+            "com.mardous.booming.appshortcuts.id.last_added",
+            "com.mardous.booming.appshortcuts.id.top_tracks",
+            "com.mardous.booming.appshortcuts.id.shuffle_all",
+        )
     }
 }

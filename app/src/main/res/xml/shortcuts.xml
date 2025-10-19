@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_app_shortcut_last_added"
+        android:shortcutId="last_added"
+        android:shortcutLongLabel="@string/app_shortcut_last_added_short"
+        android:shortcutShortLabel="@string/last_added_label">
+        <intent
+            android:action="com.mardous.booming.shortcut.LAST_ADDED"
+            android:targetClass="com.mardous.booming.ui.screen.MainActivity"
+            android:targetPackage="com.mardous.booming" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_app_shortcut_top_tracks"
+        android:shortcutId="top_tracks"
+        android:shortcutLongLabel="@string/app_shortcut_top_tracks_short"
+        android:shortcutShortLabel="@string/top_tracks_label">
+        <intent
+            android:action="com.mardous.booming.shortcut.TOP_TRACKS"
+            android:targetClass="com.mardous.booming.ui.screen.MainActivity"
+            android:targetPackage="com.mardous.booming" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_app_shortcut_shuffle_all"
+        android:shortcutId="shuffle_all"
+        android:shortcutLongLabel="@string/app_shortcut_shuffle_all_short"
+        android:shortcutShortLabel="@string/shuffle_all_label">
+        <intent
+            android:action="com.mardous.booming.shortcut.SHUFFLE"
+            android:targetClass="com.mardous.booming.ui.screen.MainActivity"
+            android:targetPackage="com.mardous.booming" />
+    </shortcut>
+</shortcuts>
