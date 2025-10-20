@@ -465,6 +465,10 @@
     <string name="tempo_label">Velocidade</string>
     <string name="action_external_eq">EQ Externo</string>
     <string name="custom">Personalizado</string>
+    <string name="enable_audio_offload_title">Audio Offload</string>
+    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
+        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
+        A restart is required for changes to take effect.</string>
     <string name="enable_audio_float_output_title">Saída de áudio de alta precisão</string>
     <string name="enable_audio_float_output_description">Ativa áudio em 32 bits com ponto flutuante para melhor qualidade de som.
 Lembre-se de que isso desativa recursos como ReplayGain, pular silêncio e balanço de volume.
