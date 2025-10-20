@@ -473,7 +473,10 @@ class PlayerViewModel(
             if (controller.currentTimeline.isEmpty) {
                 openQueue(listOf(song), startPlaying = false)
             } else {
-                controller.addMediaItem(controller.nextMediaItemIndex, song.toMediaItem())
+                controller.addMediaItem(
+                    position.getIndexForPosition(position.next),
+                    song.toMediaItem()
+                )
             }
         }
     }
@@ -483,18 +486,24 @@ class PlayerViewModel(
             if (controller.currentTimeline.isEmpty) {
                 openQueue(songs, startPlaying = false)
             } else {
-                controller.addMediaItems(controller.nextMediaItemIndex, songs.toMediaItems())
+                controller.addMediaItems(
+                    position.getIndexForPosition(position.next),
+                    songs.toMediaItems()
+                )
             }
         }
     }
 
-    fun enqueue(song: Song, index: Int = -1) {
+    fun enqueue(song: Song, toPosition: Int = -1) {
         mediaController?.let { controller ->
             if (controller.currentTimeline.isEmpty) {
                 openQueue(listOf(song), startPlaying = false)
             } else {
-                if (index >= 0) {
-                    controller.addMediaItem(index, song.toMediaItem())
+                if (toPosition >= 0) {
+                    controller.addMediaItem(
+                        position.getIndexForPosition(toPosition),
+                        song.toMediaItem()
+                    )
                 } else {
                     controller.addMediaItem(song.toMediaItem())
                 }
