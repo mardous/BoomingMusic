@@ -11,12 +11,9 @@ import android.content.*
 import android.os.*
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
 import androidx.core.os.bundleOf
-import androidx.core.os.postDelayed
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.media3.common.*
 import androidx.media3.common.TrackSelectionParameters.AudioOffloadPreferences
@@ -95,7 +92,6 @@ class PlaybackService :
     private lateinit var persistentStorage: PersistentStorage
 
     private val pendingStartCommands = mutableListOf<Intent>()
-    private var delayedShutdownHandler: Handler? = null
     private val playerThread = HandlerThread("Booming-ExoPlayer", Process.THREAD_PRIORITY_AUDIO)
     private lateinit var notificationProvider: DefaultMediaNotificationProvider
     private lateinit var nm: NotificationManager
@@ -147,7 +143,6 @@ class PlaybackService :
     override fun onCreate() {
         super.onCreate()
         nm = requireNotNull(getSystemService<NotificationManager>())
-        delayedShutdownHandler = Handler(Looper.getMainLooper())
         createNotificationChannel()
 
         customCommands = listOf(
@@ -242,12 +237,8 @@ class PlaybackService :
             if (player.shuffleModeEnabled && shuffleOrder != null) {
                 player.exoPlayer.shuffleOrder = shuffleOrder
             }
-            if (!player.currentTimeline.isEmpty) {
-                pendingStartCommands.forEach { command -> processCommand(command) }
-                pendingStartCommands.clear()
-            } else {
-                stopForeground(STOP_FOREGROUND_REMOVE)
-            }
+            pendingStartCommands.forEach { command -> processCommand(command) }
+            pendingStartCommands.clear()
         }
 
         sleepTimer.addFinishListener { allowPendingQuit ->
@@ -267,7 +258,8 @@ class PlaybackService :
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
-        if (!isPlaybackOngoing || preferences.getBoolean(STOP_WHEN_CLOSED_FROM_RECENTS, false)) {
+        if ((!isPlaybackOngoing && !isInTransientFocusLoss) ||
+            preferences.getBoolean(STOP_WHEN_CLOSED_FROM_RECENTS, false)) {
             pauseAllPlayersAndStopSelf()
         }
     }
@@ -295,26 +287,10 @@ class PlaybackService :
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent == null && !isPlaying && isInTransientFocusLoss) {
-            stopForeground(STOP_FOREGROUND_REMOVE)
-        } else if (intent != null) {
-            // Cancel any pending shutdown
-            delayedShutdownHandler?.removeCallbacksAndMessages(null)
+        if (intent != null) {
             if (persistentStorage.restorationState.isRestored) {
-                if (player.currentTimeline.isEmpty) {
-                    startForegroundWithPendingMode(
-                        R.string.playback_stopped_title,
-                        R.string.empty_play_queue
-                    )
-                    postDelayedShutdown()
-                } else {
-                    processCommand(intent)
-                }
+                processCommand(intent)
             } else {
-                startForegroundWithPendingMode(
-                    R.string.preparing_playback_title,
-                    R.string.restoring_playback_state
-                )
                 pendingStartCommands.add(intent)
             }
         }
@@ -722,25 +698,6 @@ class PlaybackService :
         }
     }
 
-    private fun playFromPlaylist(intent: Intent) = serviceScope.launch(IO) {
-        val contentType = IntentCompat.getSerializableExtra(intent, EXTRA_CONTENT_TYPE, ContentType::class.java)
-        val songs = when (contentType) {
-            ContentType.RecentSongs -> repository.recentSongs()
-            ContentType.TopTracks -> repository.playCountSongs()
-            else -> repository.allSongs()
-        }
-        withContext(Main) {
-            if (songs.isNotEmpty()) {
-                player.shuffleModeEnabled = intent.getBooleanExtra(EXTRA_SHUFFLE_MODE, false)
-                player.setMediaItems(songs.toMediaItems())
-                player.prepare()
-                player.play()
-            } else {
-                showToast(R.string.playlist_empty_text)
-            }
-        }
-    }
-
     private fun toggleFavorite() = serviceScope.launch {
         val currentMediaItem = player.currentMediaItem
         if (currentMediaItem == null) return@launch
@@ -785,31 +742,6 @@ class PlaybackService :
                 }
             }
             nm.createNotificationChannel(notificationChannel)
-        }
-    }
-
-    private fun startForegroundWithPendingMode(titleRes: Int, messageRes: Int) {
-        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle(getString(titleRes))
-            .setContentText(getString(messageRes))
-            .setSmallIcon(R.drawable.ic_stat_music_playback)
-            .setPriority(NotificationCompat.PRIORITY_LOW)
-            .setCategory(NotificationCompat.CATEGORY_SERVICE)
-            .setContentIntent(createSessionActivityIntent())
-            .setShowWhen(false)
-            .setSilent(true)
-            .setOngoing(true)
-            .build()
-
-        startForeground(NOTIFICATION_ID, notification)
-    }
-
-    private fun postDelayedShutdown(delayInSeconds: Long = 15) {
-        delayedShutdownHandler?.removeCallbacksAndMessages(null)
-        delayedShutdownHandler?.postDelayed(delayInSeconds * 1000) {
-            if (!isPlaybackOngoing) {
-                pauseAllPlayersAndStopSelf()
-            }
         }
     }
 
