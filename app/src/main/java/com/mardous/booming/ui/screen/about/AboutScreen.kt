@@ -360,6 +360,12 @@ private fun AboutAcknowledgmentSection(
                 summary = stringResource(R.string.translators_summary),
                 onClick = onTranslatorsClick
             )
+            AboutListItem(
+                iconRes = R.drawable.ic_experiment_24dp,
+                title = stringResource(R.string.beta_testers_title),
+                summary = stringResource(R.string.beta_testers),
+                summaryMaxLines = Int.MAX_VALUE
+            )
         }
     }
 }
@@ -439,12 +445,13 @@ private fun AboutListItem(
     title: String,
     modifier: Modifier = Modifier,
     summary: String? = null,
-    onClick: () -> Unit = {}
+    summaryMaxLines: Int = 4,
+    onClick: (() -> Unit)? = null
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick)
+            .clickable(enabled = onClick != null, onClick = { onClick?.invoke() })
             .padding(horizontal = 24.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(24.dp)
@@ -474,7 +481,7 @@ private fun AboutListItem(
                     text = summary,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 4,
+                    maxLines = summaryMaxLines,
                     overflow = TextOverflow.Ellipsis
                 )
             }
