@@ -466,10 +466,10 @@
     <string name="tempo_label">Velocidad y tono</string>
     <string name="action_external_eq">Ecualizador externo</string>
     <string name="custom">Personalizado</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
-    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
-        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
-        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_offload_title">Procesar audio por hardware</string>
+    <string name="enable_audio_offload_description">Permite que el dispositivo procese el audio directamente a través del hardware dedicado, lo que reduce el uso de la CPU y batería.
+Esta característica no funciona en todos los dispositivos. Es posible que otros efectos no funcionen mientras esté activada.
+Es necesario reiniciar para que los cambios surtan efecto.</string>
     <string name="enable_audio_float_output_title">Salida de audio de alta precisión</string>
     <string name="enable_audio_float_output_description">Activa el audio de punto flotante de 32 bits para una mejor calidad de sonido. Ten en cuenta que esto desactivará funciones como ReplayGain, omitir silencios y balance de volumen.
 
