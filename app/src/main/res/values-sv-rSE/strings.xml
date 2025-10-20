@@ -533,6 +533,7 @@
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="beta_testers_title">Beta testers</string>
     <string name="telegram_chat">Telegram chatt</string>
     <string name="telegram_chat_summary">Gå med i chatten i Telegram och få information om nya releaser och nyheter.</string>
     <string name="view_profile_on_github">Visa profil på GitHub</string>
