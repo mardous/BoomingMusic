@@ -533,6 +533,7 @@
     <string name="acknowledgments_title">Danksagungen</string>
     <string name="translators_title">Übersetzer*innen</string>
     <string name="translators_summary">Danke an alle, die Booming Music in vielen Sprachen verfügbar machen.</string>
+    <string name="beta_testers_title">Beta testers</string>
     <string name="telegram_chat">Telegram-Chat</string>
     <string name="telegram_chat_summary">Trete dem Chat auf Telegram bei und informiere Dich über neue Versionen und Neuigkeiten.</string>
     <string name="view_profile_on_github">Profil auf GitHub anzeigen</string>
