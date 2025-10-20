@@ -565,6 +565,7 @@
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="beta_testers_title">Beta testers</string>
     <string name="telegram_chat">دردشة تيليجرام</string>
     <string name="telegram_chat_summary">انضم إلى المحادثة في تيليجرام واحصل على معلومات عن الإصدارات والأخبار الجديدة.</string>
     <string name="view_profile_on_github">عرض الملف الشخصي على GitHub</string>
