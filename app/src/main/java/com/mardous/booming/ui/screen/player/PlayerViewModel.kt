@@ -59,7 +59,7 @@ class PlayerViewModel(
 ) : ViewModel(), Player.Listener {
 
     private val queueMutex = Mutex()
-    private val progressObserver = ProgressObserver()
+    private val progressObserver = ProgressObserver(intervalMs = 100)
     private val shuffleManager = ShuffleManager()
     private var mediaController: MediaController? = null
 
