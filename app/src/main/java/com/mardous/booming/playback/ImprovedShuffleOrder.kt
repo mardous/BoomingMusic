@@ -123,8 +123,16 @@ class ImprovedShuffleOrder private constructor(
     }
 
     override fun cloneAndMove(indexFrom: Int, indexToExclusive: Int, newIndexFrom: Int): ShuffleOrder {
-        return cloneAndRemove(indexFrom, indexToExclusive)
-            .cloneAndInsert(newIndexFrom, indexToExclusive - indexFrom)
+        if (length == 0 || (indexToExclusive - indexFrom) <= 0)
+            return this
+
+        // TODO could this logic be improved?
+        val newShuffled = shuffled.toMutableList()
+        newShuffled.remove(indexFrom)
+        newShuffled.replaceAll { if (it > indexFrom) it - 1 else it }
+        newShuffled.replaceAll { if (it >= newIndexFrom) it + 1 else it }
+        newShuffled.add(indexInShuffled[newIndexFrom], newIndexFrom)
+        return ImprovedShuffleOrder(newShuffled.toIntArray(), random)
     }
 
     override fun cloneAndClear(): ShuffleOrder {

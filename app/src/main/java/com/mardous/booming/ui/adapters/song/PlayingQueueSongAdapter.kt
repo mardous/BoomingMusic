@@ -72,8 +72,8 @@ class PlayingQueueSongAdapter(
     fun setPlayingQueue(playlist: MutableList<Song>, position: Int) {
         this.current = position
         this.playlist = playlist
+        this.needsUpdate = false
         notifyDataSetChanged()
-        needsUpdate = false
     }
 
     private fun setAlpha(holder: SongAdapter.ViewHolder, alpha: Float) {
@@ -87,10 +87,6 @@ class PlayingQueueSongAdapter(
 
     override fun getPopupText(view: View, position: Int): CharSequence {
         return ""
-    }
-
-    override fun getItemId(position: Int): Long {
-        return dataSet[position].id xor position.toLong().shl(32)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -125,8 +121,8 @@ class PlayingQueueSongAdapter(
     override fun onItemDragFinished(fromPosition: Int, toPosition: Int, result: Boolean) {
         needsUpdate = result
         if (needsUpdate) {
-            notifyDataSetChanged()
             activity.getViewModel<PlayerViewModel>().moveSong(fromPosition, toPosition)
+            notifyDataSetChanged()
         }
     }
 

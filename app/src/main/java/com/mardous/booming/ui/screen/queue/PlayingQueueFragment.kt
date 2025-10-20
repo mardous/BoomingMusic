@@ -48,7 +48,9 @@ import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -128,8 +130,10 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            combine(playerViewModel.queueFlow, playerViewModel.positionFlow)
-            { queue, position -> Pair(queue, position) }.collect { (queue, position) ->
+            combine(playerViewModel.queueFlow, playerViewModel.positionFlow) { queue, position ->
+                Pair(queue, position)
+            }.debounce(100).collectLatest { (queue, position) ->
+                // debounce queue updates to avoid UI flickering
                 if (queue.isEmpty()) {
                     findNavController().navigateUp()
                 } else {
