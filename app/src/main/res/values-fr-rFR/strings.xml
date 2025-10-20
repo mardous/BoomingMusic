@@ -3,10 +3,10 @@
     <string name="action_play">Jouer</string>
     <string name="action_play_all">Jouer tout</string>
     <string name="action_shuffle_play">Lecture aléatoire</string>
-    <string name="action_queue_next">File d\'attente suivante</string>
+    <string name="action_queue_next">Ajouter a la liste de lecture</string>
     <string name="shuffle_all_label">Tout mélanger</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
+    <string name="shuffle_mode">Mode aléatoire</string>
+    <string name="repeat_mode">Mode répétition</string>
     <string name="advanced_shuffle_label">Mélange avancé</string>
     <string name="shuffle_button_tip">Appuyez pour une lecture aléatoire normale. Appuyez longuement pour accéder aux options avancées.</string>
     <string name="action_play_pause">Lecture/Pause</string>
@@ -28,19 +28,19 @@
     <string name="search_album_x_label">Rechercher un album : %s</string>
     <string name="search_list_x_label">Liste de recherche : %s</string>
     <string name="search_from_x_label">Rechercher depuis \"%s\"</string>
-    <string name="search_year_x_label">Année de recherche : %s</string>
-    <string name="search_in_folder_x">Rechercher dans le dossier : %s</string>
+    <string name="search_year_x_label">Année de recherche: %s</string>
+    <string name="search_in_folder_x">Rechercher dans le dossier: %s</string>
     <string name="search_last_added">Rechercher la dernière musique</string>
     <string name="shuffle_mode_album">Lecture aléatoire de l\'album</string>
     <string name="shuffle_mode_artist">Lecture aléatoire des artistes</string>
     <string name="action_share">Partager</string>
     <string name="action_save">Enregistrer</string>
-    <string name="what_do_you_want_to_share">Que voulez-vous partager ?</string>
+    <string name="what_do_you_want_to_share">Que voulez-vous partager?</string>
     <string name="the_audio_file">Le fichier audio</string>
     <string name="i_am_listening">J\'écoute…</string>
     <string name="currently_listening_to_x_by_x">J\'écoute %1$s par %2$s</string>
-    <string name="share_to_stories">Partager avec des histoires</string>
-    <string name="could_not_create_the_story">Impossible de créer l\'histoire.</string>
+    <string name="share_to_stories">Faire une story</string>
+    <string name="could_not_create_the_story">Impossible de créer la story.</string>
     <string name="back_action">Retour</string>
     <string name="rename_action">Renommer</string>
     <string name="add_action">Ajouter</string>
@@ -104,30 +104,30 @@
     <string name="saving_changes">Sauvegarde des modifications</string>
     <string name="changes_saved_successfully">Les modifications ont été enregistrées avec succès.</string>
     <string name="could_not_save_some_changes">Impossible d\'enregistrer certaines modifications.</string>
-    <string name="web_search">Recherche sur le Web</string>
-    <string name="where_do_you_want_to_search">Où voulez-vous effectuer une recherche ?</string>
+    <string name="web_search">Recherche sur l\'internet</string>
+    <string name="where_do_you_want_to_search">Où voulez-vous effectuer une recherche?</string>
     <string name="configure_action">Configurer</string>
     <string name="blacklist_directory">Répertoire de la liste noire</string>
     <string name="add_directory">Ajouter un répertoire</string>
-    <string name="remove_from_blacklist">Voulez-vous supprimer ce répertoire de la liste noire ?</string>
-    <string name="remove_from_whitelist">Voulez-vous supprimer ce répertoire de la liste blanche ?</string>
-    <string name="do_you_want_to_clear_the_blacklist">Voulez-vous effacer la liste noire ?</string>
-    <string name="do_you_want_to_clear_the_whitelist">Voulez-vous effacer la liste blanche ?</string>
+    <string name="remove_from_blacklist">Voulez-vous supprimer ce répertoire de la liste noire?</string>
+    <string name="remove_from_whitelist">Voulez-vous supprimer ce répertoire de la liste blanche?</string>
+    <string name="do_you_want_to_clear_the_blacklist">Voulez-vous effacer la liste noire?</string>
+    <string name="do_you_want_to_clear_the_whitelist">Voulez-vous effacer la liste blanche?</string>
     <string name="action_delete_from_device">Supprimer de l\'appareil</string>
     <string name="deleted_one_song">Un titre supprimé</string>
     <string name="deleted_x_songs">%1$d titres supprimés</string>
     <string name="delete_song_title">Supprimer le titre</string>
     <string name="delete_songs_title">Supprimer les titres</string>
-    <string name="delete_x_songs">Supprimer les %d titres ?</string>
-    <string name="delete_the_song_x">Supprimer le titre %s ?</string>
+    <string name="delete_x_songs">Supprimer les %d titres?</string>
+    <string name="delete_the_song_x">Supprimer le titre %s?</string>
     <string name="deleting_songs">Suppression des titres, attendez…</string>
     <string name="song_x_of_x">%1$d de %2$d • %3$s</string>
     <string name="no_equalizer">Aucun égaliseur trouvé.</string>
     <string name="audio_focus_denied">Mise au point audio refusée.</string>
     <string name="no_audio_ID">Mauvaise identification audio.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">Erreur de lecture (%s).</string>
     <string name="unplayable_file">Impossible de lire ce titre.</string>
-    <string name="unplayable_file_code_x">Impossible de lire ce titre (code : %d).</string>
+    <string name="unplayable_file_code_x">Impossible de lire ce titre (code: %d).</string>
     <string name="permission_external_storage_title">Accès au stockage</string>
     <string name="permission_external_storage_description">L\'application a besoin d\'une autorisation pour accéder au stockage de votre appareil pour écouter de la musique</string>
     <string name="permission_external_storage_denied">Vous devez accorder l’autorisation d’accéder au stockage externe.</string>
@@ -144,7 +144,7 @@
     <string name="grant_access_action">Accorder l\'accès</string>
     <string name="action_grant">Accorder</string>
     <string name="granted">Accordé</string>
-    <string name="hello_there">Bonjour !</string>
+    <string name="hello_there">Bonjour!</string>
     <string name="welcome_to_x">Bienvenue sur %s</string>
     <string name="get_started">Commencer</string>
     <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> n\'est pas répertorié dans le magasin de médias.]]></string>
@@ -156,9 +156,9 @@
     <string name="app_widget_small_name">Petit</string>
     <string name="now_playing">En cours de lecture</string>
     <string name="playing_queue_label">File de lecture</string>
-    <string name="list_start">List start</string>
-    <string name="list_end">List end</string>
-    <string name="empty_play_queue">File d\'attente de lecture vide.</string>
+    <string name="list_start">Début de liste</string>
+    <string name="list_end">Fin de liste</string>
+    <string name="empty_play_queue">Vider la liste de lecture.</string>
     <string name="save_queue">Enregistrer la file d\'attente</string>
     <string name="clear_queue">Vider la file d\'attente</string>
     <string name="action_move_to_current_track">Afficher la piste actuelle</string>
@@ -182,8 +182,8 @@
     <string name="action_go_to_album">Aller à l\'album</string>
     <string name="action_go_to_artist">Aller à l\'artiste</string>
     <string name="action_go_to_genre">Aller au genre</string>
-    <string name="added_title_to_playing_queue">"Ajout de 1 titre à la file d'attente de lecture."</string>
-    <string name="added_x_titles_to_playing_queue">Ajout de %1$d titres à la file d\'attente de lecture.</string>
+    <string name="added_title_to_playing_queue">"Ajout de 1 titre à la file de lecture."</string>
+    <string name="added_x_titles_to_playing_queue">Ajout de %1$d titres à la file de lecture.</string>
     <string name="next_song_label">Titre suivant</string>
     <string name="next_song_x">Suivant • %1$s</string>
     <string name="next_song_x_by_artist_x">Suivant • %1$s de %2$s</string>
@@ -210,11 +210,11 @@
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
     <string name="favorites_label">Favoris</string>
-    <string name="last_added_label">Dernier ajout</string>
+    <string name="last_added_label">Ajout récent</string>
     <string name="top_tracks_label">Meilleurs titres</string>
     <string name="history_label">Historique</string>
     <string name="not_recently_played">Pas joué récemment</string>
-    <string name="play_info">Informations sur la lecture</string>
+    <string name="play_info">Informations sur la lecture.</string>
     <string name="track_play_counts">Nombre de lectures de titres</string>
     <string name="song_stat_never_label">jamais joué</string>
     <string name="song_stat_one_time_label">joué une fois le %s</string>
@@ -230,7 +230,7 @@
     <string name="view_type_circle">Cercle</string>
     <string name="view_type_image">Image</string>
     <string name="action_grid_size">Taille de la grille</string>
-    <string name="action_grid_size_land">Taille de la grille (terrain)</string>
+    <string name="action_grid_size_land">Taille de la grille (paysage)</string>
     <string name="action_sort_order">Trier par</string>
     <string name="sort_order_az">A à Z</string>
     <string name="sort_order_artist">Artiste</string>
@@ -278,7 +278,7 @@
     <string name="save_artwork_view_action">Voir</string>
     <string name="save_artwork_copyright_info_title">Avis de droit d\'auteur</string>
     <string name="save_artwork_copyright_info_message">Certaines couvertures d\'album (ou toutes) peuvent être protégées par le droit d\'auteur. Vous ne pouvez pas utiliser ces images à des fins commerciales ou publicitaires.
-        \n\nVous êtes seul responsable de l\'utilisation que vous faites des couvertures d\'album enregistrées.</string>
+        \n\nL\'utilisation de la couverture est sous votre responsabilité.</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="keyboard">Clavier</string>
@@ -387,7 +387,7 @@
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Pour vous</string>
-    <string name="shuffle_action">Lecture aléatoire</string>
+    <string name="shuffle_action">Mélanger</string>
     <string name="top_artists">Meilleurs artistes</string>
     <string name="top_albums">Meilleurs albums</string>
     <string name="recent_artists">Artistes récents</string>
@@ -429,8 +429,8 @@
     <string name="select_configurations_to_export">Sélectionnez les configurations à exporter :</string>
     <string name="select_a_file_to_save_exported_configurations">Sélectionnez un fichier pour enregistrer les configurations exportées.</string>
     <string name="select_a_file_containing_booming_eq_presets">Sélectionnez un fichier contenant des préréglages Booming Music EQ.</string>
-    <string name="select_configurations_to_import">Sélectionnez les configurations à importer :</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ?
+    <string name="select_configurations_to_import">Sélectionnez les configurations à importer:</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur?
         \n\nCela effacera tous vos préréglages.</string>
     <string name="not_supported">Non pris en charge</string>
     <string name="enable_equalizer">Activer l\'EQ</string>
@@ -466,13 +466,17 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ externe</string>
     <string name="custom">Personnalisé</string>
-    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
-    <string name="skip_silence_title">Skip Silence</string>
-    <string name="skip_silence_description">Automatically skip silent sections during playback.
-        Ideal for podcasts and recordings.</string>
+    <string name="enable_audio_offload_title">Audio Offload</string>
+    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
+        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
+        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_float_output_title">Sortie audio de haute précision</string>
+    <string name="enable_audio_float_output_description">Active l\'audio de 32 bits de points pour une meilleure qualité audio.
+        Garder en tête que cela déactive les options comme le gain de lecture, ignorance de silence et la balance du volume.
+        Cela peux aussi utiliser plus de batterie, et vous devez redémarrer l\'application pour appliquer les effets.</string>
+    <string name="skip_silence_title">Ignorance de silence</string>
+    <string name="skip_silence_description">Ignore automatiquement les sections silencieuses pendant la lecture.
+        Idéal pour les podcasts et enregistrements.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Afficher les paroles</string>
     <string name="action_hide_lyrics">Masquer les paroles</string>
@@ -513,7 +517,7 @@
     <string name="sleep_timer_stop_after_x">Arrêter après %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Arrêt après %s : annulé</string>
     <!-- App Shortcuts -->
-    <string name="app_shortcut_shuffle_all_short">Lecture aléatoire</string>
+    <string name="app_shortcut_shuffle_all_short">Mélanger</string>
     <string name="app_shortcut_top_tracks_short">Meilleurs titres</string>
     <string name="app_shortcut_last_added_short">Derniers ajouts</string>
     <!-- About page -->
@@ -542,7 +546,7 @@
     <string name="share_app">Partager cette application</string>
     <string name="share_app_summary">Vous pouvez aider cette application à se développer si vous la partagez avec vos amis.</string>
     <string name="send_invitation_message">Envoyer un message d\'invitation</string>
-    <string name="invitation_message_content">Bonjour. Découvrez Booming Music ! La meilleure application pour écouter de la musique locale sur Android. Vous pouvez la télécharger ici : %s</string>
+    <string name="invitation_message_content">Bonjour. Découvrez Booming Music ! La meilleure application pour écouter de la musique locale sur Android. Vous pouvez la télécharger ici: %s</string>
     <!-- Bug report -->
     <string name="report_an_issue">Signaler un problème</string>
     <string name="device_info">Informations sur l\'appareil</string>
@@ -550,11 +554,11 @@
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Vous serez redirigé vers le site Web de suivi des problèmes.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Accès au stockage requis</string>
-    <string name="saf_access_required_message">Booming Music requiert une autorisation pour accéder à ces fichiers. Veuillez sélectionner le dossier racine où sont stockés vos fichiers musicaux.</string>
+    <string name="saf_access_required_message">Booming Music nécessite une autorisation pour accéder à ces fichiers. Veuillez sélectionner le dossier racine où sont stockés vos fichiers musicaux.</string>
     <string name="saf_show_files_button">Afficher les fichiers</string>
     <string name="saf_error_uri">Impossible d\'obtenir l\'URI SAF</string>
-    <string name="saf_write_failed">Échec de l\'écriture du fichier : %s</string>
-    <string name="saf_delete_failed">Échec de la suppression du fichier : %s</string>
+    <string name="saf_write_failed">Échec de l\'écriture du fichier: %s</string>
+    <string name="saf_delete_failed">Échec de la suppression du fichier: %s</string>
     <string name="settings_title">Paramètres</string>
     <string name="appearance_title">Apparence</string>
     <string name="appearance_summary">Modifiez le thème de l\'application et d\'autres paramètres visuels.</string>
@@ -578,7 +582,7 @@
     <!-- Preference headers -->
     <string name="general_header">Général</string>
     <string name="library_header">Bibliothèque</string>
-    <string name="album_cover_header">Pochette</string>
+    <string name="album_cover_header">couverture</string>
     <string name="artist_image_header">Image de l\'artiste</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Contrôles</string>
@@ -638,8 +642,8 @@
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir en lecture</string>
     <string name="open_on_play_summary">Développez automatiquement le panneau Lecture en cours après avoir commencé à jouer une chanson.</string>
-    <string name="squiggly_seek_bar_title">Barre de recherche ondulée</string>
-    <string name="squiggly_seek_bar_summary">Activez une barre de recherche ondulée au lieu du curseur par défaut.</string>
+    <string name="squiggly_seek_bar_title">Barre de lecture ondulée</string>
+    <string name="squiggly_seek_bar_summary">Activez une barre de lecture ondulée au lieu de la barre par défaut.</string>
     <string name="scrolling_text_title">Activer le défilement du texte</string>
     <string name="scrolling_text_summary">Les titres des morceaux défilent lorsqu\'ils sont trop longs. Cela peut consommer un peu plus de batterie.</string>
     <string name="extra_controls_title">Contrôles supplémentaires</string>
@@ -647,19 +651,19 @@
     <string name="adaptive_controls_title">Contrôles adaptatifs</string>
     <string name="adaptive_controls_summary">Les commandes du mini-lecteur changent pour s\'adapter au style de lecteur actuel.</string>
     <string name="swipe_to_dismiss_title">Glissez pour ignorer</string>
-    <string name="swipe_to_dismiss_summary">Faites glisser le mini-lecteur vers le bas pour arrêter la lecture et effacer les files d\'attente de lecture.</string>
+    <string name="swipe_to_dismiss_summary">Faites glisser le minilecteur vers le bas pour arrêter la lecture et effacer les files d\'attente de lecture.</string>
     <string name="circle_button_title">Bouton de lecture circulaire</string>
-    <string name="swipe_album_cover_title">Glisser la pochette de l\'album</string>
-    <string name="swipe_album_cover_summary">Balayez vers la gauche et la droite sur la pochette de l\'album pour passer d\'un titre à l\'autre.</string>
+    <string name="swipe_album_cover_title">Glisser la couverture de l\'album</string>
+    <string name="swipe_album_cover_summary">Balayez vers la gauche ou vers la droite sur la couverture de l\'album pour passer d\'un titre à l\'autre.</string>
     <string name="single_tap_on_album_cover_title">Appuyez une fois sur la pochette</string>
-    <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la pochette</string>
+    <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
     <string name="long_press_on_album_cover_title">Appui long sur la pochette</string>
     <string name="now_playing_corner_radius_title">Rayon des coins de l\'image</string>
     <string name="now_playing_corner_radius_summary">Définit l\'aspect arrondi des coins de la pochette de l\'album.</string>
     <string name="carousel_effect_title">Effet carrousel</string>
-    <string name="album_cover_effect_title">Effet de pochette d\'album</string>
+    <string name="album_cover_effect_title">Effet de la couverture d\'album</string>
     <string name="lyrics_on_album_cover_title">Paroles sur la pochette</string>
-    <string name="lyrics_on_album_cover_summary">Afficher les paroles des titres au lieu de la pochette lorsqu\'elles sont disponibles.</string>
+    <string name="lyrics_on_album_cover_summary">Afficher les paroles des titres au lieu de la couverture lorsqu\'elles sont disponibles.</string>
     <string name="animate_controls_title">Animer les contrôles</string>
     <string name="animate_controls_summary">Il est joué lors de l\'ouverture du panneau du lecteur.</string>
     <string name="swipe_controls_title">Commandes de balayage</string>
@@ -680,7 +684,7 @@
     <string name="queue_next_mode_title">Mode \"File d\'attente\"</string>
     <string name="search_auto_queue_title">Mettre en file d\'attente tous les résultats de recherche</string>
     <string name="search_auto_queue_summary">Lorsque vous lisez un titre à partir de l\'écran de recherche, tous les autres résultats seront également mis en file d\'attente.</string>
-    <string name="remember_shuffle_mode_title">Mémoriser la lecture aléatoire</string>
+    <string name="remember_shuffle_mode_title">Mémoriser le mélange</string>
     <string name="remember_shuffle_mode_summary">Le mode aléatoire restera actif lors de la sélection d\'une nouvelle liste de titres.</string>
     <string name="album_shuffle_mode_title">Mode de lecture aléatoire des albums</string>
     <string name="artist_shuffle_mode_title">Mode de lecture aléatoire des artistes</string>
@@ -700,7 +704,7 @@
     <string name="ignore_audio_focus_summary">Toujours jouer de l\'audio en arrière-plan, indépendamment de tout autre élément en cours de lecture.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Téléchargement automatique des métadonnées</string>
-    <string name="ignore_media_store_album_covers_title">Ignorer les pochettes du Media Store</string>
+    <string name="ignore_media_store_album_covers_title">Ignorer les couvertures du Media Store</string>
     <string name="ignore_media_store_album_covers_summary">Cela peut aider à améliorer la qualité des images mais nécessite plus de mémoire.</string>
     <string name="use_folder_album_cover_title">Utiliser les images du dossier</string>
     <string name="use_folder_album_cover_summary">Si le fichier audio ne contient pas de pochette intégrée. Les images peuvent prendre un peu plus de temps pour se charger.</string>
@@ -812,7 +816,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Utilisez les tons Material You en fonction de la couleur de l\'album</string>
     <!-- Update -->
-    <string name="auto_update_title">Auto update search</string>
+    <string name="auto_update_title">Mise à jour de recherche automatique</string>
     <string name="every_day">Tous les jours</string>
     <string name="weekly">Hebdomadaire</string>
     <string name="every_fifteen_days">Tous les quinze jours</string>
