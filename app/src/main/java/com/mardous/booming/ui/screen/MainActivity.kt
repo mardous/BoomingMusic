@@ -24,6 +24,7 @@ import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.library.MediaIDs
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IScrollHelper
 import com.mardous.booming.ui.component.base.AbsSlidingMusicPanelActivity
 import com.mardous.booming.ui.screen.update.UpdateDialog
@@ -198,7 +199,11 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
                 libraryViewModel.handleIntent(intent).observe(this) { result ->
                     if (result.handled) {
                         if (result.songs.isNotEmpty()) {
-                            playerViewModel.openQueue(result.songs, result.position)
+                            playerViewModel.openQueue(
+                                queue = result.songs,
+                                position = result.position,
+                                shuffleMode = OpenShuffleMode.Off
+                            )
                         }
                         setIntent(Intent())
                     } else if (canRestorePlayback) {

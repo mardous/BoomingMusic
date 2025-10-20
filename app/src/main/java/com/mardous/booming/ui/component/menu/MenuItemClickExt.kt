@@ -152,7 +152,7 @@ fun List<Song>.onSongsMenu(fragment: Fragment, menuItem: MenuItem): Boolean {
 
         R.id.action_shuffle_play -> {
             val playerViewModel = fragment.getActivityViewModel<PlayerViewModel>()
-            playerViewModel.openQueue(this, shuffleMode = OpenShuffleMode.On)
+            playerViewModel.openAndShuffleQueue(this)
             true
         }
 
