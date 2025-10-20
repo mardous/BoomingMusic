@@ -94,7 +94,7 @@ open class Song(
         .setMediaMetadata(
             MediaMetadata.Builder()
                 .setIsPlayable(true)
-                .setArtworkUri(albumCoverUri)
+                .setArtworkUri(uri) // IMPORTANT must use Song's uri
                 .setTitle(title)
                 .setAlbumTitle(albumName)
                 .setArtist(artistName)
