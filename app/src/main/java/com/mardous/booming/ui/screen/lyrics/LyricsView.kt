@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
+import com.mardous.booming.extensions.hasS
 import com.mardous.booming.ui.component.compose.decoration.FadingEdges
 import com.mardous.booming.ui.component.compose.decoration.fadingEdges
 import kotlin.math.PI
@@ -303,7 +304,7 @@ fun LyricsLineContentView(
     )
 
     val blurEffect = remember(enableBlurEffect, blurRadius) {
-        if (enableBlurEffect && blurRadius > 0f) {
+        if (hasS() && enableBlurEffect && blurRadius > 0f) {
             BlurEffect(
                 radiusX = blurRadius,
                 radiusY = blurRadius,
@@ -337,7 +338,7 @@ fun LyricsLineContentView(
             progressFraction = mainProgressFraction,
             content = mainText,
             contentColor = contentColor.copy(alpha = 1f),
-            style = style.copy(shadow = shadow),
+            style = style,
             align = align,
             modifier = modifier.graphicsLayer {
                 renderEffect = blurEffect
@@ -369,8 +370,7 @@ fun LyricsLineContentView(
                 contentColor = contentColor.copy(alpha = 1f),
                 style = style.copy(
                     fontSize = style.fontSize / 1.40,
-                    fontWeight = FontWeight.Normal,
-                    shadow = shadow
+                    fontWeight = FontWeight.Normal
                 ),
                 align = align,
                 modifier = modifier.graphicsLayer {
