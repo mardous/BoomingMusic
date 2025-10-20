@@ -28,19 +28,19 @@
     <string name="search_album_x_label">Rechercher un album : %s</string>
     <string name="search_list_x_label">Liste de recherche : %s</string>
     <string name="search_from_x_label">Rechercher depuis \"%s\"</string>
-    <string name="search_year_x_label">Année de recherche : %s</string>
-    <string name="search_in_folder_x">Rechercher dans le dossier : %s</string>
+    <string name="search_year_x_label">Année de recherche: %s</string>
+    <string name="search_in_folder_x">Rechercher dans le dossier: %s</string>
     <string name="search_last_added">Rechercher la dernière musique</string>
     <string name="shuffle_mode_album">Lecture aléatoire de l\'album</string>
     <string name="shuffle_mode_artist">Lecture aléatoire des artistes</string>
     <string name="action_share">Partager</string>
     <string name="action_save">Enregistrer</string>
-    <string name="what_do_you_want_to_share">Que voulez-vous partager ?</string>
+    <string name="what_do_you_want_to_share">Que voulez-vous partager?</string>
     <string name="the_audio_file">Le fichier audio</string>
     <string name="i_am_listening">J\'écoute…</string>
     <string name="currently_listening_to_x_by_x">J\'écoute %1$s par %2$s</string>
-    <string name="share_to_stories">Partager avec des histoires</string>
-    <string name="could_not_create_the_story">Impossible de créer l\'histoire.</string>
+    <string name="share_to_stories">Faire une story</string>
+    <string name="could_not_create_the_story">Impossible de créer la story.</string>
     <string name="back_action">Retour</string>
     <string name="rename_action">Renommer</string>
     <string name="add_action">Ajouter</string>
@@ -104,22 +104,22 @@
     <string name="saving_changes">Sauvegarde des modifications</string>
     <string name="changes_saved_successfully">Les modifications ont été enregistrées avec succès.</string>
     <string name="could_not_save_some_changes">Impossible d\'enregistrer certaines modifications.</string>
-    <string name="web_search">Recherche sur le Web</string>
-    <string name="where_do_you_want_to_search">Où voulez-vous effectuer une recherche ?</string>
+    <string name="web_search">Recherche sur l\'internet</string>
+    <string name="where_do_you_want_to_search">Où voulez-vous effectuer une recherche?</string>
     <string name="configure_action">Configurer</string>
     <string name="blacklist_directory">Répertoire de la liste noire</string>
     <string name="add_directory">Ajouter un répertoire</string>
-    <string name="remove_from_blacklist">Voulez-vous supprimer ce répertoire de la liste noire ?</string>
-    <string name="remove_from_whitelist">Voulez-vous supprimer ce répertoire de la liste blanche ?</string>
-    <string name="do_you_want_to_clear_the_blacklist">Voulez-vous effacer la liste noire ?</string>
-    <string name="do_you_want_to_clear_the_whitelist">Voulez-vous effacer la liste blanche ?</string>
+    <string name="remove_from_blacklist">Voulez-vous supprimer ce répertoire de la liste noire?</string>
+    <string name="remove_from_whitelist">Voulez-vous supprimer ce répertoire de la liste blanche?</string>
+    <string name="do_you_want_to_clear_the_blacklist">Voulez-vous effacer la liste noire?</string>
+    <string name="do_you_want_to_clear_the_whitelist">Voulez-vous effacer la liste blanche?</string>
     <string name="action_delete_from_device">Supprimer de l\'appareil</string>
     <string name="deleted_one_song">Un titre supprimé</string>
     <string name="deleted_x_songs">%1$d titres supprimés</string>
     <string name="delete_song_title">Supprimer le titre</string>
     <string name="delete_songs_title">Supprimer les titres</string>
-    <string name="delete_x_songs">Supprimer les %d titres ?</string>
-    <string name="delete_the_song_x">Supprimer le titre %s ?</string>
+    <string name="delete_x_songs">Supprimer les %d titres?</string>
+    <string name="delete_the_song_x">Supprimer le titre %s?</string>
     <string name="deleting_songs">Suppression des titres, attendez…</string>
     <string name="song_x_of_x">%1$d de %2$d • %3$s</string>
     <string name="no_equalizer">Aucun égaliseur trouvé.</string>
@@ -127,7 +127,7 @@
     <string name="no_audio_ID">Mauvaise identification audio.</string>
     <string name="playback_error_code">Erreur de lecture (%s).</string>
     <string name="unplayable_file">Impossible de lire ce titre.</string>
-    <string name="unplayable_file_code_x">Impossible de lire ce titre (code : %d).</string>
+    <string name="unplayable_file_code_x">Impossible de lire ce titre (code: %d).</string>
     <string name="permission_external_storage_title">Accès au stockage</string>
     <string name="permission_external_storage_description">L\'application a besoin d\'une autorisation pour accéder au stockage de votre appareil pour écouter de la musique</string>
     <string name="permission_external_storage_denied">Vous devez accorder l’autorisation d’accéder au stockage externe.</string>
@@ -144,7 +144,7 @@
     <string name="grant_access_action">Accorder l\'accès</string>
     <string name="action_grant">Accorder</string>
     <string name="granted">Accordé</string>
-    <string name="hello_there">Bonjour !</string>
+    <string name="hello_there">Bonjour!</string>
     <string name="welcome_to_x">Bienvenue sur %s</string>
     <string name="get_started">Commencer</string>
     <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> n\'est pas répertorié dans le magasin de médias.]]></string>
@@ -214,7 +214,7 @@
     <string name="top_tracks_label">Meilleurs titres</string>
     <string name="history_label">Historique</string>
     <string name="not_recently_played">Pas joué récemment</string>
-    <string name="play_info">Informations sur la lecture</string>
+    <string name="play_info">Informations sur la lecture.</string>
     <string name="track_play_counts">Nombre de lectures de titres</string>
     <string name="song_stat_never_label">jamais joué</string>
     <string name="song_stat_one_time_label">joué une fois le %s</string>
@@ -230,7 +230,7 @@
     <string name="view_type_circle">Cercle</string>
     <string name="view_type_image">Image</string>
     <string name="action_grid_size">Taille de la grille</string>
-    <string name="action_grid_size_land">Taille de la grille (terrain)</string>
+    <string name="action_grid_size_land">Taille de la grille (paysage)</string>
     <string name="action_sort_order">Trier par</string>
     <string name="sort_order_az">A à Z</string>
     <string name="sort_order_artist">Artiste</string>
@@ -429,8 +429,8 @@
     <string name="select_configurations_to_export">Sélectionnez les configurations à exporter :</string>
     <string name="select_a_file_to_save_exported_configurations">Sélectionnez un fichier pour enregistrer les configurations exportées.</string>
     <string name="select_a_file_containing_booming_eq_presets">Sélectionnez un fichier contenant des préréglages Booming Music EQ.</string>
-    <string name="select_configurations_to_import">Sélectionnez les configurations à importer :</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ?
+    <string name="select_configurations_to_import">Sélectionnez les configurations à importer:</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur?
         \n\nCela effacera tous vos préréglages.</string>
     <string name="not_supported">Non pris en charge</string>
     <string name="enable_equalizer">Activer l\'EQ</string>
@@ -469,7 +469,7 @@
     <string name="enable_audio_float_output_title">Sortie audio de haute précision</string>
     <string name="enable_audio_float_output_description">Active l\'audio de 32 bits de points pour une meilleure qualité audio.
         Garder en tête que cela déactive les options comme le gain de lecture, ignorance de silence et la balance du volume.
-        Cela peux aussi utiliser plus de batterie, et vous devez redémarrer l\'application pour appliquer les effects.</string>
+        Cela peux aussi utiliser plus de batterie, et vous devez redémarrer l\'application pour appliquer les effets.</string>
     <string name="skip_silence_title">Ignorance de silence</string>
     <string name="skip_silence_description">Ignore automatiquement les sections silencieuses pendant la lecture.
         Idéal pour les podcasts et enregistrements.</string>
@@ -542,7 +542,7 @@
     <string name="share_app">Partager cette application</string>
     <string name="share_app_summary">Vous pouvez aider cette application à se développer si vous la partagez avec vos amis.</string>
     <string name="send_invitation_message">Envoyer un message d\'invitation</string>
-    <string name="invitation_message_content">Bonjour. Découvrez Booming Music ! La meilleure application pour écouter de la musique locale sur Android. Vous pouvez la télécharger ici : %s</string>
+    <string name="invitation_message_content">Bonjour. Découvrez Booming Music ! La meilleure application pour écouter de la musique locale sur Android. Vous pouvez la télécharger ici: %s</string>
     <!-- Bug report -->
     <string name="report_an_issue">Signaler un problème</string>
     <string name="device_info">Informations sur l\'appareil</string>
@@ -550,11 +550,11 @@
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Vous serez redirigé vers le site Web de suivi des problèmes.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Accès au stockage requis</string>
-    <string name="saf_access_required_message">Booming Music requiert une autorisation pour accéder à ces fichiers. Veuillez sélectionner le dossier racine où sont stockés vos fichiers musicaux.</string>
+    <string name="saf_access_required_message">Booming Music nécessite une autorisation pour accéder à ces fichiers. Veuillez sélectionner le dossier racine où sont stockés vos fichiers musicaux.</string>
     <string name="saf_show_files_button">Afficher les fichiers</string>
     <string name="saf_error_uri">Impossible d\'obtenir l\'URI SAF</string>
-    <string name="saf_write_failed">Échec de l\'écriture du fichier : %s</string>
-    <string name="saf_delete_failed">Échec de la suppression du fichier : %s</string>
+    <string name="saf_write_failed">Échec de l\'écriture du fichier: %s</string>
+    <string name="saf_delete_failed">Échec de la suppression du fichier: %s</string>
     <string name="settings_title">Paramètres</string>
     <string name="appearance_title">Apparence</string>
     <string name="appearance_summary">Modifiez le thème de l\'application et d\'autres paramètres visuels.</string>
