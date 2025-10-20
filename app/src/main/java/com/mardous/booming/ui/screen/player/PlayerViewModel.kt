@@ -220,29 +220,30 @@ class PlayerViewModel(
 
             // Build a set of IDs representing missing (deleted) MediaItems.
             val missingIds = missingMediaItems.mapTo(HashSet()) { it.mediaId }
+            if (missingIds.isNotEmpty()) {
+                // Identify contiguous ranges of missing items to remove them in grouped batches.
+                val ranges = mutableListOf<IntRange>()
+                var start = -1
 
-            // Identify contiguous ranges of missing items to remove them in grouped batches.
-            val ranges = mutableListOf<IntRange>()
-            var start = -1
-
-            for (i in queueItems.indices) {
-                val missing = queueItems[i].mediaItem.mediaId in missingIds
-                if (missing && start == -1) {
-                    // Beginning of a new missing range.
-                    start = i
-                } else if (!missing && start != -1) {
-                    // End of the current missing range.
-                    ranges += (start until i)
-                    start = -1
+                for (i in queueItems.indices) {
+                    val missing = queueItems[i].mediaItem.mediaId in missingIds
+                    if (missing && start == -1) {
+                        // Beginning of a new missing range.
+                        start = i
+                    } else if (!missing && start != -1) {
+                        // End of the current missing range.
+                        ranges += (start until i)
+                        start = -1
+                    }
                 }
-            }
 
-            // If the last range extends to the end of the list, close it.
-            if (start != -1) ranges += (start until queueItems.size)
+                // If the last range extends to the end of the list, close it.
+                if (start != -1) ranges += (start until queueItems.size)
 
-            // Remove ranges in reverse order to avoid index shifting issues.
-            for (range in ranges.asReversed()) {
-                player.removeMediaItems(range.first, range.last + 1)
+                // Remove ranges in reverse order to avoid index shifting issues.
+                for (range in ranges.asReversed()) {
+                    player.removeMediaItems(range.first, range.last + 1)
+                }
             }
 
             // Update the queue with the valid songs and current positions.
