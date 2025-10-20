@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">Odtwarzaj losowo</string>
     <string name="action_queue_next">Dodaj jako następne</string>
     <string name="shuffle_all_label">Odtwarzanie losowe</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
+    <string name="shuffle_mode">Tryb odtwarzania losowego</string>
+    <string name="repeat_mode">Tryb powtarzania</string>
     <string name="advanced_shuffle_label">Zaawansowane losowanie</string>
     <string name="shuffle_button_tip">Naciśnij, aby włączyć zwykłe losowanie utworów. Przytrzymaj, aby pokazać opcje zaawansowane.</string>
     <string name="action_play_pause">Odtwórz/Pauza</string>
@@ -125,7 +125,7 @@
     <string name="no_equalizer">Nie znaleziono korektora.</string>
     <string name="audio_focus_denied">Odmowa skupienia dźwięku.</string>
     <string name="no_audio_ID">Błędne ID audio.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">Błąd odtwarzania (%s)</string>
     <string name="unplayable_file">Nie udało się odtworzyć tego utworu.</string>
     <string name="unplayable_file_code_x">Nie udało się odtworzyć tego utworu (kod: %d).</string>
     <string name="permission_external_storage_title">Dostęp do pamięci</string>
@@ -156,8 +156,8 @@
     <string name="app_widget_small_name">Mały</string>
     <string name="now_playing">Teraz odtwarzane</string>
     <string name="playing_queue_label">Kolejka odtwarzania</string>
-    <string name="list_start">List start</string>
-    <string name="list_end">List end</string>
+    <string name="list_start">Początek kolejki</string>
+    <string name="list_end">Koniec kolejki</string>
     <string name="empty_play_queue">Pusta kolejka odtwarzania.</string>
     <string name="save_queue">Zapisz kolejkę</string>
     <string name="clear_queue">Wyczyść kolejkę</string>
@@ -482,13 +482,17 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Zewnętrzny EQ</string>
     <string name="custom">Własny</string>
-    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
-    <string name="skip_silence_title">Skip Silence</string>
-    <string name="skip_silence_description">Automatically skip silent sections during playback.
-        Ideal for podcasts and recordings.</string>
+    <string name="enable_audio_offload_title">Audio Offload</string>
+    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
+        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
+        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_float_output_title">Precyzyjne wyjście audio</string>
+    <string name="enable_audio_float_output_description">Włącza 32-bitowy dźwięk zmiennoprzecinkowy dla lepszej jakości dźwięku.
+        Pamiętaj, że spowoduje to wyłączenie funkcji takich jak ReplayGain, pomijanie ciszy i balansu głośności.
+        Może też nieznacznie zwiększyć zużycie baterii. Aby zastosować zmiany, uruchom aplikację ponownie.</string>
+    <string name="skip_silence_title">Pomiń ciszę między utworami</string>
+    <string name="skip_silence_description">Automatycznie pomija ciszę podczas odtwarzania.
+        Idealne na podcasty i nagrania.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Pokaż tekst utworu</string>
     <string name="action_hide_lyrics">Ukryj teksty</string>
@@ -608,9 +612,9 @@
     <string name="general_theme_title">Motyw ogólny</string>
     <string name="pure_black_theme_title">Głęboka czerń</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Użyj czcionki Manrope</string>
+    <string name="use_custom_font_title">Czcionka Manrope</string>
     <string name="appbar_mode_title">Styl nagłówka</string>
-    <string name="library_categories_title">Karty biblioteki</string>
+    <string name="library_categories_title">Zarządzaj kartami</string>
     <string name="library_categories_summary">Konfiguruj widoczność i kolejność kategorii biblioteki.</string>
     <string name="remember_last_page_title">Zapamiętaj ostatnią stronę</string>
     <string name="remember_last_page_summary">Przejdź do ostatniej otwartej strony przy uruchomieniu.</string>
@@ -700,7 +704,7 @@
     <string name="remember_shuffle_mode_summary">Tryb losowy pozostanie włączony podczas wybierania nowej listy utworów.</string>
     <string name="album_shuffle_mode_title">Sposób losowania albumów</string>
     <string name="artist_shuffle_mode_title">Sposób losowania wykonawców</string>
-    <string name="rewind_with_back_title">"Przewijaj przez 'Poprzedni'"</string>
+    <string name="rewind_with_back_title">"Przewijanie przyciskiem \"Wstecz\""</string>
     <string name="rewind_with_back_summary">Przewiń utwór na początek lub przejdź do poprzedniego, jeżeli aktualny jest dopiero rozpoczęty.</string>
     <string name="rewind_fast_forward_amount_title">Skok w czasie odtwarzania</string>
     <string name="rewind_fast_forward_amount_summary">Czas (w sekundach) przewijania do tyłu lub do przodu przy użyciu interfejsu lub zewnętrznych przycisków.</string>
@@ -829,7 +833,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Barwy Material You dopasowane do albumu</string>
     <!-- Update -->
-    <string name="auto_update_title">Auto update search</string>
+    <string name="auto_update_title">Częstotliwość sprawdzania aktualizacji</string>
     <string name="every_day">Codziennie</string>
     <string name="weekly">Co tydzień</string>
     <string name="every_fifteen_days">Co piętnaście dni</string>

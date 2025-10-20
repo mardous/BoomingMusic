@@ -5,10 +5,10 @@
     <string name="action_shuffle_play">Zufallswiedergabe</string>
     <string name="action_queue_next">An Warteschlange anhängen</string>
     <string name="shuffle_all_label">Zufallswiedergabe aller Titel</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
+    <string name="shuffle_mode">Zufallsmodus</string>
+    <string name="repeat_mode">Wiederholmodus</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="shuffle_button_tip">Tippen für normale Zufallswiedergabe. Lange drücken für erweiterte Optionen.</string>
     <string name="action_play_pause">Wiedergabe/Pause</string>
     <string name="action_pause">Pause</string>
     <string name="action_next">Nächster</string>
@@ -53,7 +53,7 @@
     <string name="x_selected">%d ausgewählt</string>
     <string name="preparing_playback_title">Preparing</string>
     <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="playback_stopped_title">Wiedergabe angehalten</string>
     <string name="playing_notification_description">Die Abspielbenachrichtigung ermöglicht Aktionen wie Wiedergabe/Pause usw.</string>
     <string name="playing_notification_name">Wiedergabebenachrichtigung</string>
     <string name="action_scan_directory">Verzeichnis scannen</string>
@@ -70,7 +70,7 @@
     <string name="new_playlist_title">Neue Wiedergabeliste</string>
     <string name="add_playlist_title">Zur Wiedergabeliste hinzufügen</string>
     <string name="rename_playlist_title">Wiedergabeliste umbenennen</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Wiedergabeliste bearbeiten</string>
     <string name="action_delete">Wiedergabeliste löschen</string>
     <string name="action_export_playlist">In Datei exportieren</string>
     <string name="action_clear_history">Verlauf löschen</string>
@@ -79,9 +79,9 @@
     <string name="create_a_playlist_with_one_song">Es wird eine Wiedergabeliste erstellt und ein Titel hinzugefügt.</string>
     <string name="create_a_playlist_with_x_songs">Eine Wiedergabeliste wird erstellt und %d Titel werden automatisch hinzugefügt.</string>
     <string name="playlist_name_empty">Name der Wiedergabeliste</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Wiedergabeliste-Beschreibung (optional)</string>
     <string name="saved_playlist_x">Wiedergabeliste %s gespeichert.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Wiedergabeliste aktualisiert.</string>
     <string name="failed_to_save_playlist">Speichern der Wiedergabeliste fehlgeschlagen.</string>
     <string name="saved_x_playlists">%1$d Wiedergabelisten gespeichert.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d Wiedergabelisten gespeichert, konnte %2$d nicht speichern.</string>
@@ -94,7 +94,7 @@
     <string name="inserted_one_song_into_playlist_x">Ein Titel wurrde in Wiedergabeliste %s eingefügt.</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d Lieder in Wiedergabeliste %2$s eingefügt.</string>
     <string name="playlist_exists">Wiedergabeliste %s existiert bereits.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">Wiedergabeliste %s wurde erfolgreich erstellt.</string>
     <string name="remove_song_from_playlist_title">Titel aus Wiedergabeliste entfernen</string>
     <string name="remove_songs_from_playlist_title">Mehrere Titel aus Wiedergabeliste entfernen</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Titel <b>%1$s</b> aus Wiedergabeliste entfernen?]]></string>
@@ -125,7 +125,7 @@
     <string name="no_equalizer">Kein Equalizer gefunden.</string>
     <string name="audio_focus_denied">Audio-Fokus verweigert.</string>
     <string name="no_audio_ID">Ungültige Audio-ID.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">Wiedergabefehler (%s).</string>
     <string name="unplayable_file">Dieser Titel konnte nicht abgespielt werden.</string>
     <string name="unplayable_file_code_x">Dieser Titel konnte nicht abgespielt werden (Code: %d).</string>
     <string name="permission_external_storage_title">Speicherzugriff</string>
@@ -156,8 +156,8 @@
     <string name="app_widget_small_name">Klein</string>
     <string name="now_playing">Aktuelle Wiedergabe</string>
     <string name="playing_queue_label">Warteschlange</string>
-    <string name="list_start">List start</string>
-    <string name="list_end">List end</string>
+    <string name="list_start">Anfang der Liste</string>
+    <string name="list_end">Ende der Liste</string>
     <string name="empty_play_queue">Leere Warteschlange.</string>
     <string name="save_queue">Warteschlange speichern</string>
     <string name="clear_queue">Warteschlange leeren</string>
@@ -238,8 +238,8 @@
     <string name="sort_order_year">Jahr</string>
     <string name="sort_order_duration">Dauer</string>
     <string name="sort_order_date_added">Hinzufügungsdatum</string>
-    <string name="sort_order_date_modified">Date modified</string>
-    <string name="sort_order_file_name">File name</string>
+    <string name="sort_order_date_modified">Zuletzt geändert</string>
+    <string name="sort_order_file_name">Dateiname</string>
     <string name="sort_order_number_of_songs">Titelanzahl</string>
     <string name="sort_order_number_of_albums">Albenanzahl</string>
     <string name="sort_order_last_played_date">Letztes Wiedergabedatum</string>
@@ -268,7 +268,7 @@
     <string name="could_not_download_album_cover">"Es konnte kein passendes Albumcover heruntergeladen werden."</string>
     <string name="download_image">Bild herunterladen</string>
     <string name="pick_from_local_storage">Aus lokalem Speicher wählen</string>
-    <string name="about_x_title">Über %s</string>
+    <string name="about_x_title">Info zu %s</string>
     <string name="listeners_label">Hörer</string>
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Albumcover speichern</string>
@@ -338,12 +338,12 @@
     <string name="select_content_to_restore">Inhalt zum Wiederherstellen auswählen:</string>
     <string name="could_not_restore_data">Konnte Daten nicht wiederherstellen. Überprüfe die Sicherungsdatei und versuche es erneut.</string>
     <string name="data_restored_successfully">Daten erfolgreich wiederhergestellt.</string>
-    <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
-    <string name="playlist_locked">Playlist locked</string>
-    <string name="playlist_unlocked">Playlist unlocked</string>
-    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
+    <string name="action_toggle_playlist_lock">Sperr/Entsperr die Wiedergabeliste </string>
+    <string name="playlist_locked">Wiedergabeliste sperrt</string>
+    <string name="playlist_unlocked">Wiedergabeliste entsperrt</string>
+    <string name="action_toggle_queue_lock">Sperr/Entsperr die Wiedergabeliste </string>
+    <string name="queue_locked">Warteschlange gesperrt</string>
+    <string name="queue_unlocked">Warteschlange entsperrt</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux-Kabel</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -466,11 +466,15 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Externer EQ</string>
     <string name="custom">Benutzerdefiniert</string>
+    <string name="enable_audio_offload_title">Audio Offload</string>
+    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
+        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
+        A restart is required for changes to take effect.</string>
     <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
     <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
         Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
         It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
-    <string name="skip_silence_title">Skip Silence</string>
+    <string name="skip_silence_title">Pause überspringen</string>
     <string name="skip_silence_description">Automatically skip silent sections during playback.
         Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
@@ -497,7 +501,7 @@
     <string name="no_synced_lyrics_found">Keine synchronisierten Liedtexte gefunden</string>
     <string name="lyrics_were_updated_successfully">Liedtexte wurden erfolgreich aktualisiert.</string>
     <string name="failed_to_update_lyrics">Liedtexte konnten nicht aktualisiert werden.</string>
-    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
+    <string name="there_are_no_changes_to_save">Es gibt keine Änderungen zu speichern.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
@@ -525,7 +529,7 @@
     <string name="licenses">Lizenzen</string>
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
+    <string name="contributors">Beitragende</string>
     <string name="acknowledgments_title">Danksagungen</string>
     <string name="translators_title">Übersetzer*innen</string>
     <string name="translators_summary">Danke an alle, die Booming Music in vielen Sprachen verfügbar machen.</string>
@@ -560,7 +564,7 @@
     <string name="appearance_summary">Ändere das App-Design und andere Ansichtseinstellungen.</string>
     <string name="now_playing_title">Aktuelle Wiedergabe</string>
     <string name="now_playing_summary">Passe den Wiedergabe-Bildschirm an.</string>
-    <string name="lyrics_preferences_title">Lyrics</string>
+    <string name="lyrics_preferences_title">Liedtexte</string>
     <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
     <string name="playback_title">Wiedergabe</string>
     <string name="playback_summary">Ändere die Sound-Einstellungen, Bluetooth-Kopfhörer usw.</string>
@@ -638,8 +642,8 @@
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Bei Wiedergabe öffnen</string>
     <string name="open_on_play_summary">Die Wiedergabe-Ansicht nach Wiedergabe-Start automatisch erweitern.</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="squiggly_seek_bar_title">Wellenförmiger Fortschrittsbalken</string>
+    <string name="squiggly_seek_bar_summary">Wellenförmigen Suchbalken statt Standardregler verwenden.</string>
     <string name="scrolling_text_title">Enable scrolling text</string>
     <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Zusätzliche Steuerelemente</string>
@@ -651,7 +655,7 @@
     <string name="circle_button_title">Runde Wiedergabetaste</string>
     <string name="swipe_album_cover_title">Über Albumcover wischen</string>
     <string name="swipe_album_cover_summary">Wische über das Albumcover nach links und rechts, um zwischen den Titeln zu springen.</string>
-    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
+    <string name="single_tap_on_album_cover_title">Auf Albumcover einzeltippen</string>
     <string name="double_tap_on_album_cover_title">Auf Albumcover doppeltippen</string>
     <string name="long_press_on_album_cover_title">Albumcover gedrückt halten</string>
     <string name="now_playing_corner_radius_title">Bild-Eckradius</string>
@@ -711,8 +715,8 @@
     <string name="delete_downloaded_lyrics_summary">Nur Liedtexte, die von Booming Music heruntergeladen wurden. Hat keine Auswirkung auf eingebettete Liedtexte aus ID3v2-Tags oder LRC-Dateien.</string>
     <string name="lyrics_cleared">Liedtext geleert.</string>
     <!-- Library preferences -->
-    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
-    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
+    <string name="ignore_articles_when_sorting_title">Artikel beim Sortieren ignorieren</string>
+    <string name="ignore_articles_when_sorting_summary">Führende Artikel (\"the\", \"a\", \"an\") beim Sortieren ignorieren.</string>
     <string name="trash_music_title">In den Papierkorb verschieben</string>
     <string name="trash_music_summary">Gelöschte Dateien in den Papierkorb verschieben.</string>
     <string name="recursive_folder_actions_title">Aktionen, die Unterordner betreffen</string>
@@ -756,7 +760,7 @@
     <string name="full_cover">Vollbild-Cover</string>
     <string name="gradient">Farbverlauf</string>
     <string name="peek">Vorschau</string>
-    <string name="peek2">Peek2</string>
+    <string name="peek2">Peek 2</string>
     <string name="plain">Einfach</string>
     <string name="m3_style">Material 3</string>
     <string name="normal">Normal</string>
@@ -835,9 +839,9 @@
     <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
     <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
         It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
+    <string name="uncaught_error_report">Fehlerbericht</string>
     <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
     <string name="uncaught_error_restart_app">App neu starten</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_send">Report senden</string>
 </resources>

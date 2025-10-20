@@ -466,13 +466,17 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
-    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
-    <string name="skip_silence_title">Skip Silence</string>
-    <string name="skip_silence_description">Automatically skip silent sections during playback.
-        Ideal for podcasts and recordings.</string>
+    <string name="enable_audio_offload_title">Audio Offload</string>
+    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
+        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
+        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_float_output_title">Sortida d\'àudio d\'alta precisió</string>
+    <string name="enable_audio_float_output_description">Activa l\'àudio de punt flotant de 32-bits per un so de més bona qualitat.
+        Tingueu present que això desactivarà funcions com el Guany de reproducció, Omet silencis i Normalitza el volum.
+        Podria emprar una mica més de bateria i caldrà reiniciar l\'aplicació perquè s\'apliqui.</string>
+    <string name="skip_silence_title">Omet silencis</string>
+    <string name="skip_silence_description">Omet seccions silencioses automàticament mentre es reprodueix.
+        Ideal per a pòdcasts i gravacions.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostra la lletra</string>
     <string name="action_hide_lyrics">Amaga la lletra</string>

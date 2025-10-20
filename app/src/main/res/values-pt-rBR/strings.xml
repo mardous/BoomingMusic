@@ -465,13 +465,17 @@
     <string name="tempo_label">Velocidade</string>
     <string name="action_external_eq">EQ Externo</string>
     <string name="custom">Personalizado</string>
-    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
-    <string name="skip_silence_title">Skip Silence</string>
-    <string name="skip_silence_description">Automatically skip silent sections during playback.
-        Ideal for podcasts and recordings.</string>
+    <string name="enable_audio_offload_title">Audio Offload</string>
+    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
+        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
+        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_float_output_title">Saída de áudio de alta precisão</string>
+    <string name="enable_audio_float_output_description">Ativa áudio em 32 bits com ponto flutuante para melhor qualidade de som.
+Lembre-se de que isso desativa recursos como ReplayGain, pular silêncio e balanço de volume.
+Essa opção pode consumir um pouco mais de bateria, e será necessário reiniciar o app para que as alterações tenham efeito.</string>
+    <string name="skip_silence_title">Ignorar silêncio</string>
+    <string name="skip_silence_description">Pula automaticamente as partes silenciosas durante a reprodução.
+Ideal para podcasts e gravações.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostrar letras</string>
     <string name="action_hide_lyrics">Ocultar letras</string>

@@ -498,6 +498,10 @@
     <string name="tempo_label">تمبو</string>
     <string name="action_external_eq">EQ خارجي</string>
     <string name="custom">مخصص</string>
+    <string name="enable_audio_offload_title">Audio Offload</string>
+    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
+        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
+        A restart is required for changes to take effect.</string>
     <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
     <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
         Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
