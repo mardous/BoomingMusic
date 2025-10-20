@@ -102,7 +102,7 @@ class PlaybackService :
     private val balanceProcessor = BalanceAudioProcessor()
     private val replayGainProcessor = ReplayGainAudioProcessor(ReplayGainMode.Off)
 
-    private var willSetUnshuffledOrder = false
+    private var hasSetUnshuffledOrder = false
     private var stopIndex = -1
 
     val isInTransientFocusLoss: Boolean
@@ -204,6 +204,7 @@ class PlaybackService :
                 .build()
         )
 
+        player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(0, 0, Random.nextLong())
         player.setSequentialTimelineEnabled(sequentialTimeline)
         player.addListener(object : Player.Listener {
             override fun onAudioSessionIdChanged(audioSessionId: Int) {
@@ -408,6 +409,20 @@ class PlaybackService :
         startIndex: Int,
         startPositionMs: Long
     ): ListenableFuture<MediaItemsWithStartPosition> {
+        player.exoPlayer.let { exoPlayer ->
+            if (exoPlayer.shuffleOrder !is ImprovedShuffleOrder && !hasSetUnshuffledOrder) {
+                exoPlayer.shuffleOrder = ImprovedShuffleOrder(
+                    firstIndex = player.currentMediaItemIndex,
+                    length = player.mediaItemCount,
+                    randomSeed = Random.nextLong()
+                )
+            }
+
+            (exoPlayer.shuffleOrder as? ImprovedShuffleOrder)
+                ?.playerIndex = startIndex
+
+            hasSetUnshuffledOrder = false
+        }
         return serviceScope.future(IO) {
             runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
                 .getOrDefault(emptyList())
@@ -502,15 +517,9 @@ class PlaybackService :
             }
 
             Playback.SET_UNSHUFFLED_ORDER -> {
-                val length = customCommand.customExtras.getInt("length")
-                if (length > 0) {
-                    willSetUnshuffledOrder = true
-                    player.shuffleModeEnabled = true
-                    player.exoPlayer.shuffleOrder = UnshuffledShuffleOrder(length)
-                    Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-                } else {
-                    Futures.immediateFuture(SessionResult(SessionError.ERROR_BAD_VALUE))
-                }
+                hasSetUnshuffledOrder = true
+                player.exoPlayer.shuffleOrder = UnshuffledShuffleOrder(player.mediaItemCount)
+                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
             }
 
             Playback.SET_STOP_POSITION -> {
@@ -599,21 +608,6 @@ class PlaybackService :
     }
 
     override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {
-        if (persistentStorage.restorationState.isRestored) {
-            // Assign a new ShuffleOrder only if the state is
-            // fully restored to avoid inconsistencies.
-            if (shuffleModeEnabled) {
-                if (willSetUnshuffledOrder) {
-                    willSetUnshuffledOrder = false
-                } else {
-                    player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
-                        player.currentMediaItemIndex,
-                        player.mediaItemCount,
-                        Random.nextLong()
-                    )
-                }
-            }
-        }
         refreshMediaButtonCustomLayout()
         persistentStorage.saveState()
     }
@@ -655,6 +649,19 @@ class PlaybackService :
 
     override fun onPlayerError(error: PlaybackException) {
         showToast(getString(R.string.playback_error_code, error.errorCodeName))
+    }
+
+    override fun onEvents(player: Player, events: Player.Events) {
+        if (events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED)
+            && !events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+            if (player.shuffleModeEnabled && persistentStorage.restorationState.isRestored) {
+                this.player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
+                    firstIndex = player.currentMediaItemIndex,
+                    length = player.mediaItemCount,
+                    randomSeed = Random.nextLong()
+                )
+            }
+        }
     }
 
     override fun onSharedPreferenceChanged(preferences: SharedPreferences, key: String?) {

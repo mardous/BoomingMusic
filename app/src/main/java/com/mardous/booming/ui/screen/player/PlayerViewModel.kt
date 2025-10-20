@@ -361,13 +361,13 @@ class PlayerViewModel(
 
     fun playMediaId(mediaId: String, shuffleMode: Boolean = false) {
         mediaController?.let { controller ->
+            controller.shuffleModeEnabled = shuffleMode
             controller.setMediaItem(
                 MediaItem.Builder()
                     .setMediaId(mediaId)
                     .build(),
                 true
             )
-            controller.shuffleModeEnabled = shuffleMode
             controller.prepare()
             controller.play()
         }
@@ -385,49 +385,53 @@ class PlayerViewModel(
                 shuffleModeEnabled = false
             }
             val mediaItems = withContext(IO) { queue.toMediaItems() }
+            val shuffleMode = when (shuffleMode) {
+                OpenShuffleMode.On -> true
+                OpenShuffleMode.Off -> false
+                OpenShuffleMode.Remember -> shuffleModeEnabled
+            }
             if (mediaItems.isNotEmpty()) {
+                controller.shuffleModeEnabled = shuffleMode
                 controller.setMediaItems(mediaItems, position, C.TIME_UNSET)
-                controller.shuffleModeEnabled = when (shuffleMode) {
-                    OpenShuffleMode.On -> true
-                    OpenShuffleMode.Off -> false
-                    OpenShuffleMode.Remember -> shuffleModeEnabled
-                }
                 controller.playWhenReady = startPlaying
                 controller.prepare()
             }
         }
     }
 
-    fun openAndShuffleQueue(queue: List<Song>, startPlaying: Boolean = true) {
-        var startPosition = 0
-        if (queue.isNotEmpty()) {
-            startPosition = Random.Default.nextInt(queue.size)
+    fun openAndShuffleQueue(queue: List<Song>) = viewModelScope.launch {
+        mediaController?.let { controller ->
+            val mediaItems = withContext(IO) { queue.toMediaItems() }
+            if (mediaItems.isNotEmpty()) {
+                controller.shuffleModeEnabled = true
+                controller.setMediaItems(mediaItems, true)
+                controller.prepare()
+                controller.play()
+            }
         }
-        openQueue(queue, startPosition, startPlaying, OpenShuffleMode.On)
     }
 
     fun openShuffle(
         providers: List<SongProvider>,
         mode: GroupShuffleMode,
         sortMode: SongSortMode
-    ) = liveData(IO) {
-        val mediaItems = shuffleManager.shuffleByProvider(providers, mode, sortMode).toMediaItems()
+    ) = liveData {
+        val mediaItems = withContext(IO) {
+            shuffleManager.shuffleByProvider(providers, mode, sortMode).toMediaItems()
+        }
         if (mediaItems.isNotEmpty()) {
-            withContext(Main) {
-                mediaController?.let { controller ->
+            mediaController?.let { controller ->
+                controller.shuffleModeEnabled = true
+                val resultFuture = controller.sendCustomCommand(
+                    SessionCommand(Playback.SET_UNSHUFFLED_ORDER, Bundle.EMPTY),
+                    Bundle.EMPTY
+                )
+                val result = runCatching { resultFuture.await() }
+                    .getOrDefault(SessionResult(SessionError.ERROR_UNKNOWN))
+                if (result.resultCode == SessionResult.RESULT_SUCCESS) {
                     controller.setMediaItems(mediaItems)
-                    val resultFuture = controller.sendCustomCommand(
-                        SessionCommand(Playback.SET_UNSHUFFLED_ORDER, bundleOf("length" to mediaItems.size)),
-                        Bundle.EMPTY
-                    )
-                    val result = runCatching { resultFuture.await() }
-                        .getOrDefault(SessionResult(SessionError.ERROR_UNKNOWN))
-                    if (result.resultCode == SessionResult.RESULT_SUCCESS) {
-                        controller.prepare()
-                        controller.playWhenReady = true
-                    } else {
-                        controller.clearMediaItems()
-                    }
+                    controller.prepare()
+                    controller.play()
                 }
             }
             emit(true)
@@ -445,18 +449,17 @@ class PlayerViewModel(
             }
             if (mediaItems.isNotEmpty()) {
                 mediaController?.let { controller ->
-                    controller.setMediaItems(mediaItems, 0, C.TIME_UNSET)
+                    controller.shuffleModeEnabled = true
                     val resultFuture = controller.sendCustomCommand(
-                        SessionCommand(Playback.SET_UNSHUFFLED_ORDER, bundleOf("length" to mediaItems.size)),
+                        SessionCommand(Playback.SET_UNSHUFFLED_ORDER, Bundle.EMPTY),
                         Bundle.EMPTY
                     )
                     val result = runCatching { resultFuture.await() }
                         .getOrDefault(SessionResult(SessionError.ERROR_UNKNOWN))
                     if (result.resultCode == SessionResult.RESULT_SUCCESS) {
+                        controller.setMediaItems(mediaItems, true)
                         controller.prepare()
-                        controller.playWhenReady = true
-                    } else {
-                        controller.clearMediaItems()
+                        controller.play()
                     }
                 }
             }

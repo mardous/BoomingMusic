@@ -6,31 +6,35 @@ import androidx.media3.exoplayer.source.ShuffleOrder
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlin.concurrent.atomics.AtomicInt
+import kotlin.concurrent.atomics.ExperimentalAtomicApi
 import kotlin.random.Random
 
-/**
- * This is based on Gramophone's implementation, which is possibly the most complete to date.
- */
 @UnstableApi
+@OptIn(ExperimentalAtomicApi::class)
 class ImprovedShuffleOrder private constructor(
     private val shuffled: IntArray,
     private val random: Random
 ) : ShuffleOrder {
+
     private val indexInShuffled = IntArray(shuffled.size)
 
-    constructor(shuffled: IntArray, seed: Long) : this(shuffled.copyOf(), Random(seed))
+    private val _playerIndex = AtomicInt(C.INDEX_UNSET)
+    var playerIndex: Int
+        get() = _playerIndex.load()
+        set(value) { _playerIndex.exchange(value) }
 
-    constructor(
-        firstIndex: Int,
-        length: Int,
-        randomSeed: Long
-    ) : this(firstIndex, length, Random(randomSeed))
+    private constructor(shuffled: IntArray, seed: Long) :
+            this(shuffled.copyOf(), Random(seed))
 
-    private constructor(
-        firstIndex: Int,
-        length: Int,
-        random: Random
-    ) : this(calculateListWithFirstIndex(calculateShuffledList(0, length, random), firstIndex), random)
+    private constructor(firstIndex: Int, length: Int, random: Random) :
+            this(calculateListWithFirstIndex(calculateShuffledList(0, length, random), firstIndex), random)
+
+    private constructor(playerIndex: Int, firstIndex: Int, length: Int, random: Random) :
+            this(firstIndex, length, random) { this.playerIndex = playerIndex }
+
+    constructor(firstIndex: Int, length: Int, randomSeed: Long) :
+            this(firstIndex, length, Random(randomSeed))
 
     init {
         for (i in shuffled.indices) {
@@ -61,9 +65,13 @@ class ImprovedShuffleOrder private constructor(
     }
 
     override fun cloneAndInsert(insertionIndex: Int, insertionCount: Int): ShuffleOrder {
-        // TODO: Fix this scuffed hacky logic
-        // TODO: Play next ordering needs to persist in unshuffle
-
+        if (length == 0 && insertionCount > 0) {
+            var startIndex = _playerIndex.exchange(C.INDEX_UNSET)
+            if (startIndex == C.INDEX_UNSET) {
+                startIndex = random.nextInt(insertionCount)
+            }
+            return ImprovedShuffleOrder(startIndex, insertionCount, Random(random.nextLong()))
+        }
         val newShuffled = IntArray(shuffled.size + insertionCount)
         val pivot: Int =
             if (insertionIndex < shuffled.size) {
@@ -97,6 +105,9 @@ class ImprovedShuffleOrder private constructor(
 
     override fun cloneAndRemove(indexFrom: Int, indexToExclusive: Int): ShuffleOrder {
         val numberOfElementsToRemove = indexToExclusive - indexFrom
+        if (numberOfElementsToRemove == shuffled.size) {
+            return ImprovedShuffleOrder(playerIndex, 0, 0, Random(random.nextLong()))
+        }
         val newShuffled = IntArray(shuffled.size - numberOfElementsToRemove)
         var foundElementsCount = 0
         for (i in shuffled.indices) {
