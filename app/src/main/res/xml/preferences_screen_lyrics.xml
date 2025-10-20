@@ -158,6 +158,7 @@
             app:layout="@layout/list_item_view"
             app:widgetLayout="@layout/preference_switch"
             app:dependency="lyrics_gradient_background"
+            app:isPreferenceVisible="@bool/blur_supported"
             app:key="lyrics_text_blur" />
 
         <SwitchPreferenceCompat

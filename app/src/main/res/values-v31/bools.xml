@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <bool name="md3_supported">true</bool>
+    <bool name="blur_supported">true</bool>
 </resources>
