@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Virheellinen ääni-ID.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Kappaletta ei voitu toistaa.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Tallennustilan Käyttö</string>
     <string name="permission_external_storage_description">Sovellus tarvitsee luvan käyttää laitteesi tallennustilaa musiikin toistamiseen</string>
     <string name="permission_external_storage_denied">Sinun on myönnettävä lupa ulkoiseen tallennustilaan.</string>
