@@ -192,9 +192,18 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
 
     private fun handlePlaybackIntent(intent: Intent, canRestorePlayback: Boolean) {
         when (intent.action) {
-            APP_SHORTCUT_LAST_ADDED -> playerViewModel.playMediaId(MediaIDs.LAST_ADDED)
-            APP_SHORTCUT_TOP_TRACKS -> playerViewModel.playMediaId(MediaIDs.TOP_TRACKS)
-            APP_SHORTCUT_SHUFFLE -> playerViewModel.playMediaId(MediaIDs.SONGS, true)
+            APP_SHORTCUT_LAST_ADDED -> {
+                playerViewModel.playMediaId(MediaIDs.LAST_ADDED)
+                setIntent(Intent())
+            }
+            APP_SHORTCUT_TOP_TRACKS -> {
+                playerViewModel.playMediaId(MediaIDs.TOP_TRACKS)
+                setIntent(Intent())
+            }
+            APP_SHORTCUT_SHUFFLE -> {
+                playerViewModel.playMediaId(MediaIDs.SONGS, true)
+                setIntent(Intent())
+            }
             else -> {
                 libraryViewModel.handleIntent(intent).observe(this) { result ->
                     if (result.handled) {
