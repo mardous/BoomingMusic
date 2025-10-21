@@ -528,7 +528,7 @@ class PlaybackService :
                 if (canceled) {
                     player.exoPlayer.pauseAtEndOfMediaItems = false
                     stopIndex = -1
-                } else if (stopIndex == player.currentMediaItemIndex) {
+                } else if (newStopIndex == player.currentMediaItemIndex) {
                     player.exoPlayer.pauseAtEndOfMediaItems = true
                     stopIndex = -1
                 } else {
