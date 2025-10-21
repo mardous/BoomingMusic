@@ -115,6 +115,10 @@ fun <T : Fragment> FragmentActivity.whichFragment(@IdRes id: Int): T {
     return supportFragmentManager.findFragmentById(id) as T
 }
 
+fun Fragment.currentFragment(navHostId: Int): Fragment? {
+    return activity?.currentFragment(navHostId)
+}
+
 @Suppress("UNCHECKED_CAST")
 fun <T : Fragment> Fragment.whichFragment(@IdRes id: Int): T {
     return childFragmentManager.findFragmentById(id) as T

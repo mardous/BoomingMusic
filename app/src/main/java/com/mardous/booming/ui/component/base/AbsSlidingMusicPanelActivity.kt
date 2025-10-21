@@ -47,8 +47,10 @@ import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.ui.IBackConsumer
+import com.mardous.booming.ui.screen.info.PlayInfoFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.search.SearchFragment
+import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragment
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.other.MiniPlayerFragment
 import com.mardous.booming.ui.screen.permissions.PermissionsActivity
@@ -149,7 +151,10 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
         launchAndRepeatWithViewLifecycle {
             playerViewModel.queueFlow.collect { queue ->
-                if (currentFragment(R.id.fragment_container) !is PlayingQueueFragment) {
+                val currentFragment = currentFragment(R.id.fragment_container)
+                if (currentFragment !is PlayingQueueFragment &&
+                    currentFragment !is LyricsEditorFragment &&
+                    currentFragment !is PlayInfoFragment) {
                     hideBottomSheet(queue.isEmpty())
                 }
             }

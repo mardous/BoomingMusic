@@ -46,6 +46,7 @@ import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.PlayingQueueSongAdapter
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
+import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.flow.collectLatest
@@ -227,6 +228,9 @@ class PlayingQueueFragment : Fragment(R.layout.fragment_queue),
 
         linearLayoutManager = null
         super.onDestroyView()
+        if (playerViewModel.queue.isNotEmpty()) {
+            (activity as? MainActivity)?.expandPanel()
+        }
         _binding = null
     }
 }
