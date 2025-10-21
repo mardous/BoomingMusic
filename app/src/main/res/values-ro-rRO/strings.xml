@@ -127,7 +127,6 @@
     <string name="no_audio_ID">ID audio incorect.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Nu s-a putut reda acest cântec.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Acces stocare</string>
     <string name="permission_external_storage_description">Aplicația are nevoie de permisiunea de a accesa spațiul de stocare al dispozitivului pentru a reda muzica</string>
     <string name="permission_external_storage_denied">Trebuie să acordați permisiunea de a accesa stocarea externă.</string>
