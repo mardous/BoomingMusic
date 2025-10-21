@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Неправильний ID аудіо.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Не вдалося відтворити цю пісню.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Доступ до сховища</string>
     <string name="permission_external_storage_description">Програмі потрібен дозвіл на доступ до сховища вашого пристрою для відтворення музики.</string>
     <string name="permission_external_storage_denied">Ви повинні надати дозвіл на доступ до зовнішнього сховища.</string>

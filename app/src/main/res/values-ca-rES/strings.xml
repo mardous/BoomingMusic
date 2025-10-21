@@ -127,7 +127,6 @@
     <string name="no_audio_ID">ID d\'àudio incorrecte.</string>
     <string name="playback_error_code">Error de reproducció (%s).</string>
     <string name="unplayable_file">No s\'ha pogut reproduir la cançó.</string>
-    <string name="unplayable_file_code_x">No s\'ha pogut reproduir la cançó (codi: %d).</string>
     <string name="permission_external_storage_title">Accés a l\'emmagatzematge</string>
     <string name="permission_external_storage_description">Cal permís d\'accés a l\'emmagatzematge del dispositiu per reproduir música</string>
     <string name="permission_external_storage_denied">Cal concedir permís per accedir a l\'emmagatzematge extern.</string>

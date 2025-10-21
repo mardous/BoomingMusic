@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Λάθος ID ήχου.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Αδυναμία αναπαραγωγής αυτού του τραγουδιού.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Πρόσβαση Χώρου Αποθήκευσης</string>
     <string name="permission_external_storage_description">Η εφαρμογή χρειάζεται άδεια για πρόσβαση στον αποθηκευτικό χώρο της συσκευής σας για την αναπαραγωγή μουσικής</string>
     <string name="permission_external_storage_denied">Πρέπει να παραχωρήσετε δικαιώματα πρόσβασης στον εξωτερικό χώρο αποθήκευσης.</string>

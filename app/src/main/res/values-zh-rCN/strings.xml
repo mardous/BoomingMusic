@@ -127,7 +127,6 @@
     <string name="no_audio_ID">错误的音频ID。</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">无法播放这首歌曲。</string>
-    <string name="unplayable_file_code_x">无法播放（错误码：%d）。</string>
     <string name="permission_external_storage_title">存储访问</string>
     <string name="permission_external_storage_description">此应用需要访问您的设备存储权限才能播放音乐</string>
     <string name="permission_external_storage_denied">您必须授予访问外部存储的权限。</string>

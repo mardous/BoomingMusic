@@ -127,7 +127,6 @@
     <string name="no_audio_ID">ID de áudio inválido.</string>
     <string name="playback_error_code">Erro de reprodução (%s).</string>
     <string name="unplayable_file">Não foi possível reproduzir esta música.</string>
-    <string name="unplayable_file_code_x">Não foi possível reproduzir esta música (código: %d).</string>
     <string name="permission_external_storage_title">Acesso ao armazenamento</string>
     <string name="permission_external_storage_description">O aplicativo precisa de permissão para acessar o armazenamento do seu dispositivo para reproduzir músicas</string>
     <string name="permission_external_storage_denied">Você deve conceder permissão para acessar o armazenamento externo.</string>

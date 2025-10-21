@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Slecht audio ID.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Kan dit nummer niet afspelen.</string>
-    <string name="unplayable_file_code_x">Kon dit nummer niet afspelen (code: %d).</string>
     <string name="permission_external_storage_title">Toegang tot opslag</string>
     <string name="permission_external_storage_description">De app heeft toestemming nodig om toegang te krijgen tot je apparaatopslag om muziek te spelen</string>
     <string name="permission_external_storage_denied">U moet toestemming geven om toegang te krijgen tot externe opslag.</string>

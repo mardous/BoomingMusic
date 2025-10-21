@@ -127,7 +127,6 @@
     <string name="no_audio_ID">ID de audio erroneo.</string>
     <string name="playback_error_code">Error de reproducción (%s).</string>
     <string name="unplayable_file">No se pudo reproducir este archivo.</string>
-    <string name="unplayable_file_code_x">No se pudo reproducir este archivo (código: %d).</string>
     <string name="permission_external_storage_title">Acceso al almacenamiento</string>
     <string name="permission_external_storage_description">La app necesita acceso al almacenamiento para listar y reproducir tu música</string>
     <string name="permission_external_storage_denied">Debes permitir a la app acceder al almacenamiento externo.</string>

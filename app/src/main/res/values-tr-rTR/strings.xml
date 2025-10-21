@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Hatalı ses kimliği.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Bu şarkı çalınamadı.</string>
-    <string name="unplayable_file_code_x">Bu şarkı çalınamadı (kod: %d).</string>
     <string name="permission_external_storage_title">Depolama Erişimi</string>
     <string name="permission_external_storage_description">Uygulamanın müzik çalmak için cihaz depolama alanına erişmesi gerekiyor</string>
     <string name="permission_external_storage_denied">Harici depolama alanına erişim izni vermelisiniz.</string>

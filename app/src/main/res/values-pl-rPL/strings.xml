@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Błędne ID audio.</string>
     <string name="playback_error_code">Błąd odtwarzania (%s)</string>
     <string name="unplayable_file">Nie udało się odtworzyć tego utworu.</string>
-    <string name="unplayable_file_code_x">Nie udało się odtworzyć tego utworu (kod: %d).</string>
     <string name="permission_external_storage_title">Dostęp do pamięci</string>
     <string name="permission_external_storage_description">Aplikacja potrzebuje pozwolenia na dostęp do pamięci urządzenia, aby odtwarzać muzykę</string>
     <string name="permission_external_storage_denied">Musisz zezwolić na dostęp do pamięci zewnętrznej.</string>

@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Mauvaise identification audio.</string>
     <string name="playback_error_code">Erreur de lecture (%s).</string>
     <string name="unplayable_file">Impossible de lire ce titre.</string>
-    <string name="unplayable_file_code_x">Impossible de lire ce titre (code: %d).</string>
     <string name="permission_external_storage_title">Accès au stockage</string>
     <string name="permission_external_storage_description">L\'application a besoin d\'une autorisation pour accéder au stockage de votre appareil pour écouter de la musique</string>
     <string name="permission_external_storage_denied">Vous devez accorder l’autorisation d’accéder au stockage externe.</string>

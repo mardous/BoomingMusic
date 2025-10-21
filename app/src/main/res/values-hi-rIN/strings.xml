@@ -127,7 +127,6 @@
     <string name="no_audio_ID">खराब ऑडियो आईडी।</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">इस गाने को नहीं चला सका।</string>
-    <string name="unplayable_file_code_x">इस गाने को नहीं खेला जा सका (कोड: %d)।</string>
     <string name="permission_external_storage_title">स्टोरेज एक्सेस</string>
     <string name="permission_external_storage_description">ऐप को संगीत चलाने के लिए आपके डिवाइस की स्टोरेज तक पहुँचने की अनुमति की आवश्यकता है</string>
     <string name="permission_external_storage_denied">आपको बाहरी संग्रहण तक पहुँचने की अनुमति देनी होगी</string>

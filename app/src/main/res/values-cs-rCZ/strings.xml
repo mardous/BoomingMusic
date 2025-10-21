@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Špatné audio ID.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Nelze přehrát tuto skladbu.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Přístup k úložišti</string>
     <string name="permission_external_storage_description">Aplikace potřebuje oprávnění pro přístup k úložišti pro přehrávání hudby</string>
     <string name="permission_external_storage_denied">Musíte udělit oprávnění pro přístup k externímu úložišti.</string>
