@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Feil lyd-ID.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Kan ikke spille av denne sangen.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Lagringstilgang (Automatic Translation)</string>
     <string name="permission_external_storage_description">Appen trenger tilgang til enhetens lagring for å spille av musikk</string>
     <string name="permission_external_storage_denied">Du må gi tilgang til ekstern lagring.</string>
