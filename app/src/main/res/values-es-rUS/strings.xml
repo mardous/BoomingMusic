@@ -532,7 +532,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="acknowledgments_title">Agradecimientos</string>
     <string name="translators_title">Traductores</string>
     <string name="translators_summary">Agradecimientos a quienes hacen posible que Booming Music esté disponible en muchos idiomas.</string>
-    <string name="beta_testers_title">Beta testers</string>
+    <string name="beta_testers_title">Evaluadores beta</string>
     <string name="telegram_chat">Chat en Telegram</string>
     <string name="telegram_chat_summary">Únase al chat de Telegram y obtenga nuevas actualizaciones y noticias.</string>
     <string name="view_profile_on_github">Ver perfil en GitHub</string>
