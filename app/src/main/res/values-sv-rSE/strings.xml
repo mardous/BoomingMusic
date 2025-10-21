@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Dåligt ljud-ID.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Kunde inte spela den här låten.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Åtkomst till lagring</string>
     <string name="permission_external_storage_description">Appen behöver behörighet för att komma åt din enhets lagringsutrymme för att spela musik</string>
     <string name="permission_external_storage_denied">Du måste bevilja behörighet att komma åt extern lagring.</string>
