@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Bad audio ID.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Couldn\'t play this song.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Storage Access</string>
     <string name="permission_external_storage_description">The app needs permission to access your device storage for playing music</string>
     <string name="permission_external_storage_denied">You must grant permission to access external storage.</string>
