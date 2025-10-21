@@ -473,10 +473,11 @@ class PlayerViewModel(
             if (controller.currentTimeline.isEmpty) {
                 openQueue(listOf(song), startPlaying = false)
             } else {
-                controller.addMediaItem(
-                    position.getIndexForPosition(position.next),
-                    song.toMediaItem()
-                )
+                var nextIndex = position.getIndexForPosition(position.next)
+                if (nextIndex == C.INDEX_UNSET) {
+                    nextIndex = controller.mediaItemCount
+                }
+                controller.addMediaItem(nextIndex, song.toMediaItem())
             }
         }
     }
@@ -486,10 +487,11 @@ class PlayerViewModel(
             if (controller.currentTimeline.isEmpty) {
                 openQueue(songs, startPlaying = false)
             } else {
-                controller.addMediaItems(
-                    position.getIndexForPosition(position.next),
-                    songs.toMediaItems()
-                )
+                var nextIndex = position.getIndexForPosition(position.next)
+                if (nextIndex == C.INDEX_UNSET) {
+                    nextIndex = controller.mediaItemCount
+                }
+                controller.addMediaItems(nextIndex, songs.toMediaItems())
             }
         }
     }
@@ -499,11 +501,9 @@ class PlayerViewModel(
             if (controller.currentTimeline.isEmpty) {
                 openQueue(listOf(song), startPlaying = false)
             } else {
-                if (toPosition >= 0) {
-                    controller.addMediaItem(
-                        position.getIndexForPosition(toPosition),
-                        song.toMediaItem()
-                    )
+                val toIndex = position.getIndexForPosition(toPosition)
+                if (toPosition >= 0 && toIndex >= 0) {
+                    controller.addMediaItem(toIndex, song.toMediaItem())
                 } else {
                     controller.addMediaItem(song.toMediaItem())
                 }
