@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Неверный ID аудио.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Не удалось воспроизвести эту песню.</string>
-    <string name="unplayable_file_code_x">Не удалось воспроизвести эту композицию (код: %d).</string>
     <string name="permission_external_storage_title">Доступ к хранилищу</string>
     <string name="permission_external_storage_description">Приложению требуется разрешение на доступ к хранилищу вашего устройства для воспроизведения музыки.</string>
     <string name="permission_external_storage_denied">Вы должны предоставить разрешение на доступ к внешнему хранилищу.</string>
