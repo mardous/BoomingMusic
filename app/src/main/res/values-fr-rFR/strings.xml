@@ -61,8 +61,8 @@
     <string name="select_songs_title">Sélectionner des musiques</string>
     <string name="playlist_x_is_empty">La playlist %s est vide.</string>
     <string name="playlist_name_cannot_be_empty">Le nom de la playlist ne peut pas être vide</string>
-    <string name="imported_playlist_x">Playlist «%1$s» importée.</string>
-    <string name="could_not_import_the_playlist_x">Impossible d\'importer la playlist « %s »</string>
+    <string name="imported_playlist_x">Playlist \"%1$s\" importée.</string>
+    <string name="could_not_import_the_playlist_x">Impossible d\'importer la playlist \"%s\"</string>
     <string name="there_are_no_importable_playlists">Il n\'y a pas de playlist importable.</string>
     <string name="playlist_x_not_imported">La playlist %s n\'a pas été importée.</string>
     <string name="action_import_playlist">Importer la playlist…</string>
@@ -87,18 +87,18 @@
     <string name="saved_x_playlists_failed_to_save_x">%1$d playlists enregistrées, échec de l\'enregistrement de %2$d.</string>
     <string name="delete_playlist_title">Supprimer la playlist</string>
     <string name="delete_playlists_title">Supprimer les playlists</string>
-    <string name="delete_playlist_x"><![CDATA[Supprimer la playlist <b>%s</b> ?]]></string>
-    <string name="delete_x_playlists"><![CDATA[Supprimer <b>%d</b> playlists ?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Supprimer la playlist <b>%s</b>?]]></string>
+    <string name="delete_x_playlists"><![CDATA[Supprimer <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Playlist \'%1$s\' créée.</string>
-    <string name="could_not_create_playlist">Impossible de créer une playlist.</string>
+    <string name="could_not_create_playlist">Impossible de créer la playlist.</string>
     <string name="inserted_one_song_into_playlist_x">Un titre a été inséré dans la playlist %s.</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d titres ajoutés à la playlist %2$s.</string>
     <string name="playlist_exists">La playlist %s existe déjà.</string>
     <string name="playlist_created">La playlist %s a été créée avec succès.</string>
     <string name="remove_song_from_playlist_title">Supprimer le titre de la playlist</string>
     <string name="remove_songs_from_playlist_title">Supprimer les titres de la playlist</string>
-    <string name="remove_song_x_from_playlist"><![CDATA[Supprimer le titre <b>%1$s</b> de la playlist ?]]></string>
-    <string name="remove_x_songs_from_playlist"><![CDATA[Supprimer <b>%1$d</b> titres de la playlist ?]]></string>
+    <string name="remove_song_x_from_playlist"><![CDATA[Supprimer le titre <b>%1$s</b> de la playlist?]]></string>
+    <string name="remove_x_songs_from_playlist"><![CDATA[Supprimer <b>%1$d</b> titres de la playlist?]]></string>
     <string name="playlist_empty_text">Playlist vide</string>
     <string name="action_tag_editor">Éditeur d\'informations</string>
     <string name="saving_changes">Sauvegarde des modifications</string>
@@ -254,7 +254,7 @@
     <string name="action_set_as_start_directory">Définir comme répertoire de démarrage</string>
     <string name="action_go_to_start_directory">Aller au répertoire de démarrage</string>
     <string name="action_hierarchy_view">Vue hiérarchique</string>
-    <string name="new_start_directory">Nouveau répertoire de démarrage : %s</string>
+    <string name="new_start_directory">Nouveau répertoire de démarrage: %s</string>
     <string name="action_scan">Analyser</string>
     <string name="scan_media">Analyser les médias</string>
     <string name="scan_media_message">Dans la plupart des cas, Android détecte et indexe automatiquement les fichiers multimédias sur votre appareil, donc l\'analyse manuelle est généralement inutile.</string>
@@ -263,7 +263,7 @@
     <string name="album_or_artist_empty">Le titre ou l\'artiste est vide.</string>
     <string name="update_image">Mettre à jour l\'image</string>
     <string name="restore_default">Restaurer les valeurs par défaut</string>
-    <string name="remove_cover">Retirer la pochette</string>
+    <string name="remove_cover">Retirer la couverture</string>
     <string name="could_not_download_album_cover">"Impossible de télécharger une couverture d'album qui corresponde."</string>
     <string name="download_image">Télécharger l\'image</string>
     <string name="pick_from_local_storage">Choisir depuis le stockage local</string>
@@ -271,7 +271,7 @@
     <string name="listeners_label">Écouteurs</string>
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Enregistrer la couverture de l\'album</string>
-    <string name="saving_cover_please_wait">Enregistrement de la pochette, attendez…</string>
+    <string name="saving_cover_please_wait">Enregistrement de la couverture, attendez…</string>
     <string name="save_artwork_error">Impossible d\'enregistrer la couverture dans le stockage local</string>
     <string name="save_artwork_success">Couverture de l\'album enregistrée</string>
     <string name="save_artwork_view_action">Voir</string>
@@ -418,14 +418,14 @@
     <string name="could_not_create_configurations_file">Impossible de créer le fichier de configuration.</string>
     <string name="configuration_exported_successfully">Configuration exportée avec succès.</string>
     <string name="could_not_export_configuration">Impossible d\'exporter la configuration.</string>
-    <string name="export_configuration">Configuration de l\'exportation</string>
+    <string name="export_configuration">Exporter la configuration</string>
     <string name="import_configuration">Importer la configuration</string>
     <string name="imported_x_presets">%d préréglages importés.</string>
     <string name="no_preset_imported">Aucun préréglage importé.</string>
     <string name="share_configuration">Partager la configuration</string>
     <string name="select_configurations_to_share">Sélectionnez les configurations à partager :</string>
     <string name="reset_equalizer">Réinitialiser l\'égaliseur</string>
-    <string name="select_configurations_to_export">Sélectionnez les configurations à exporter :</string>
+    <string name="select_configurations_to_export">Sélectionnez les configurations à exporter:</string>
     <string name="select_a_file_to_save_exported_configurations">Sélectionnez un fichier pour enregistrer les configurations exportées.</string>
     <string name="select_a_file_containing_booming_eq_presets">Sélectionnez un fichier contenant des préréglages Booming Music EQ.</string>
     <string name="select_configurations_to_import">Sélectionnez les configurations à importer:</string>
@@ -465,10 +465,10 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ externe</string>
     <string name="custom">Personnalisé</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
-    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
-        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
-        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_offload_title">Décharge audio</string>
+    <string name="enable_audio_offload_description">Autorise l\'appareil à traiter l\'audio directement depuis son matériel, reduisant l\'utilisation du processeur et économise la batterie.
+        Cette fonctionnalité est uniquement prise en charge sur certains appareils. Certains effets ou fonctionnalités ne peuvent ne pas fonctionner tant que ce mode est activé.
+        Un redémarrage est nécessaire pour que les modifications sont pris en compte.</string>
     <string name="enable_audio_float_output_title">Sortie audio de haute précision</string>
     <string name="enable_audio_float_output_description">Active l\'audio de 32 bits de points pour une meilleure qualité audio.
         Garder en tête que cela déactive les options comme le gain de lecture, ignorance de silence et la balance du volume.
@@ -490,7 +490,7 @@
     <string name="import_lyrics_for_song_x">Paroles importées pour %s</string>
     <string name="could_not_import_lyrics_for_song_x">Impossible d\'importer les paroles pour %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Sélectionnez un fichier LRC contenant des paroles synchronisées.</string>
-    <string name="cannot_download_lyrics">Booming Music n\'a pas pu trouver les paroles de ce titre. Voulez-vous rechercher manuellement ?</string>
+    <string name="cannot_download_lyrics">Booming Music n\'a pas pu trouver les paroles de ce titre. Voulez-vous rechercher manuellement?</string>
     <string name="search_lyrics">Rechercher des paroles</string>
     <string name="choose_lyrics">Choisissez le type de paroles</string>
     <string name="download_lyrics">Télécharger les paroles</string>
@@ -505,12 +505,12 @@
     <string name="font_imported_successfully">Police importée avec succès.</string>
     <string name="could_not_import_font">Impossible d\'importer la police.</string>
     <!-- Sleep timer -->
-    <string name="action_sleep_timer">Minuterie</string>
-    <string name="sleep_timer_cancel_current_timer">Annuler la minuterie actuelle</string>
+    <string name="action_sleep_timer">Minuteur de sommeil</string>
+    <string name="sleep_timer_cancel_current_timer">Annuler le minuteur actuel</string>
     <string name="sleep_timer_cancel_current_timer_x">Annuler le minuteur actuel (%s)</string>
-    <string name="sleep_timer_canceled">Minuterie annulée.</string>
+    <string name="sleep_timer_canceled">Minuteur de sommeil annulé.</string>
     <string name="sleep_timer_set_action">Régler</string>
-    <string name="sleep_timer_set">La minuterie est réglée sur %d minutes à partir de maintenant.</string>
+    <string name="sleep_timer_set">Le minuteur de sommeil est réglée pour %d minutes à partir de maintenant.</string>
     <string name="sleep_timer_finish_current_music">Terminer le dernier titre</string>
     <string name="sleep_timer_stop_after_this_track">Arrêter après ce titre</string>
     <string name="sleep_timer_stop_after_x">Arrêter après %s</string>
@@ -532,6 +532,7 @@
     <string name="acknowledgments_title">Reconnaissance</string>
     <string name="translators_title">Traducteurs</string>
     <string name="translators_summary">Merci à ceux qui rendent Booming Music disponible dans de nombreuses langues.</string>
+    <string name="beta_testers_title">Testeurs bêta</string>
     <string name="telegram_chat">Chat Telegram</string>
     <string name="telegram_chat_summary">Rejoignez le chat sur Telegram et soyez informé des nouvelles versions et actualités.</string>
     <string name="view_profile_on_github">Voir le profil sur GitHub</string>
@@ -603,7 +604,7 @@
     <string name="remember_last_page_summary">Aller à la dernière page ouverte au lancement.</string>
     <string name="start_page_title">Page d\'accueil</string>
     <string name="tab_mode_title">Mode de titre des onglets</string>
-    <string name="hold_tab_to_search_title">Maintenez la touche Tab enfoncée pour rechercher</string>
+    <string name="hold_tab_to_search_title">Maintenez l\'onglet pour rechercher</string>
     <string name="hold_tab_to_search_summary">Appuyez longuement sur n’importe quel onglet de la barre de navigation pour ouvrir l’écran de recherche.</string>
     <string name="larger_header_image_title">Image d\'en-tête plus grande</string>
     <string name="larger_header_image_summary">Afficher une image de couverture plus grande dans les détails de l\'album, de l\'artiste et de la playlist.</string>
@@ -612,11 +613,11 @@
     <string name="lyrics_custom_font_title">Police personnalisée</string>
     <string name="lyrics_custom_font_summary">Importez et utilisez votre propre police pour les paroles.</string>
     <string name="lyrics_import_custom_font_title">Importer une police personnalisée</string>
-    <string name="lyrics_syllable_mode_title">Paroles mot à mot</string>
-    <string name="lyrics_syllable_mode_summary">Permet d\'afficher les paroles avec une synchronisation mot à mot. Cela dépend de la disponibilité des paroles et d\'un format compatible tel que LRC ou TTML.</string>
+    <string name="lyrics_syllable_mode_title">Paroles mot par mot</string>
+    <string name="lyrics_syllable_mode_summary">Permet d\'afficher les paroles avec une synchronisation mot par mot. Cela dépend de la disponibilité des paroles et d\'un format compatible tel que LRC ou TTML.</string>
     <string name="lyrics_effects_note">Les effets avancés améliorent l\'expérience visuelle mais peuvent nécessiter plus de ressources système et de batterie.</string>
     <string name="lyrics_gradient_background_title">Arrière-plan dégradé</string>
-    <string name="lyrics_gradient_background_summary">Affiche un arrière-plan dégradé animé utilisant les couleurs de la pochette de la chanson. Applicable uniquement en mode plein écran.</string>
+    <string name="lyrics_gradient_background_summary">Affiche un arrière-plan dégradé animé utilisant les couleurs de la couverture la chanson. Applicable uniquement en mode plein écran.</string>
     <string name="lyrics_blur_effect_title">Effet de flou</string>
     <string name="lyrics_blur_effect_summary">Flouter les lignes de paroles adjacentes à la ligne actuelle.</string>
     <string name="lyrics_shadow_effect_title">Effet d\'ombre</string>
@@ -639,12 +640,12 @@
     <string name="unsynced_font_size_full_summary">Ajuster la taille de la police pour les paroles non synchronisées dans l\'écran des paroles complètes.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
-    <string name="open_on_play_title">Ouvrir en lecture</string>
-    <string name="open_on_play_summary">Développez automatiquement le panneau Lecture en cours après avoir commencé à jouer une chanson.</string>
+    <string name="open_on_play_title">Ouvrir lors de la lecture</string>
+    <string name="open_on_play_summary">Développez automatiquement le panneau lecture en cours après avoir commencé à jouer une chanson.</string>
     <string name="squiggly_seek_bar_title">Barre de lecture ondulée</string>
     <string name="squiggly_seek_bar_summary">Activez une barre de lecture ondulée au lieu de la barre par défaut.</string>
     <string name="scrolling_text_title">Activer le défilement du texte</string>
-    <string name="scrolling_text_summary">Les titres des morceaux défilent lorsqu\'ils sont trop longs. Cela peut consommer un peu plus de batterie.</string>
+    <string name="scrolling_text_summary">Défile les titres des chansons lorsqu\'ils sont trop longs. Cela peut consommer plus de batterie.</string>
     <string name="extra_controls_title">Contrôles supplémentaires</string>
     <string name="extra_controls_summary">Ajouter des commandes supplémentaires pour le mini-lecteur</string>
     <string name="adaptive_controls_title">Contrôles adaptatifs</string>
@@ -654,14 +655,14 @@
     <string name="circle_button_title">Bouton de lecture circulaire</string>
     <string name="swipe_album_cover_title">Glisser la couverture de l\'album</string>
     <string name="swipe_album_cover_summary">Balayez vers la gauche ou vers la droite sur la couverture de l\'album pour passer d\'un titre à l\'autre.</string>
-    <string name="single_tap_on_album_cover_title">Appuyez une fois sur la pochette</string>
+    <string name="single_tap_on_album_cover_title">Appuyez une fois sur la couverture</string>
     <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
-    <string name="long_press_on_album_cover_title">Appui long sur la pochette</string>
+    <string name="long_press_on_album_cover_title">Appui long sur la couverture</string>
     <string name="now_playing_corner_radius_title">Rayon des coins de l\'image</string>
-    <string name="now_playing_corner_radius_summary">Définit l\'aspect arrondi des coins de la pochette de l\'album.</string>
+    <string name="now_playing_corner_radius_summary">Définit l\'aspect arrondi des coins de la couverture de l\'album.</string>
     <string name="carousel_effect_title">Effet carrousel</string>
     <string name="album_cover_effect_title">Effet de la couverture d\'album</string>
-    <string name="lyrics_on_album_cover_title">Paroles sur la pochette</string>
+    <string name="lyrics_on_album_cover_title">Paroles sur la couverture</string>
     <string name="lyrics_on_album_cover_summary">Afficher les paroles des titres au lieu de la couverture lorsqu\'elles sont disponibles.</string>
     <string name="animate_controls_title">Animer les contrôles</string>
     <string name="animate_controls_summary">Il est joué lors de l\'ouverture du panneau du lecteur.</string>
@@ -672,7 +673,7 @@
     <string name="display_extra_info_summary">Affichez des informations supplémentaires sur le titre, comme le débit binaire, le format, le taux d\'échantillonnage, etc.</string>
     <string name="display_next_song_title">Afficher le titre suivant</string>
     <string name="display_next_song_summary">Affiche le titre suivant dans la file d\'attente en bas du lecteur.</string>
-    <string name="select_extra_info_title">Extra info</string>
+    <string name="select_extra_info_title">Informations supplémentaires</string>
     <string name="select_extra_info_summary">Sélectionnez les informations supplémentaires à afficher dans le panneau du lecteur.</string>
     <string name="prefer_remaining_time_title">Préférer le temps restant</string>
     <string name="prefer_remaining_time_summary">Afficher le temps restant au lieu de la durée du titre.</string>
@@ -695,18 +696,18 @@
     <string name="resume_on_connect_summary">Reprend la lecture lorsque le casque est connecté.</string>
     <string name="pause_on_disconnect_title">Mettre en pause lors de la déconnexion</string>
     <string name="pause_on_disconnect_summary">Met en pause la lecture lorsque le casque est déconnecté. Recommandé.</string>
-    <string name="resume_on_bluetooth_connect_title">Reprendre la connexion Bluetooth</string>
+    <string name="resume_on_bluetooth_connect_title">Reprendre à la connexion bluetooth</string>
     <string name="resume_on_bluetooth_connect_summary">Reprend la lecture lorsque le casque Bluetooth A2DP est connecté.</string>
     <string name="pause_on_bluetooth_disconnect_title">Mettre en pause lors de la déconnexion bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Met en pause la lecture lorsque le casque Bluetooth A2DP est déconnecté. Recommandé.</string>
     <string name="ignore_audio_focus_title">Ignorer le focus audio</string>
     <string name="ignore_audio_focus_summary">Toujours jouer de l\'audio en arrière-plan, indépendamment de tout autre élément en cours de lecture.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Téléchargement automatique des métadonnées</string>
+    <string name="auto_download_metadata_title">Télécharger automatiquement les métadonnées</string>
     <string name="ignore_media_store_album_covers_title">Ignorer les couvertures du Media Store</string>
     <string name="ignore_media_store_album_covers_summary">Cela peut aider à améliorer la qualité des images mais nécessite plus de mémoire.</string>
     <string name="use_folder_album_cover_title">Utiliser les images du dossier</string>
-    <string name="use_folder_album_cover_summary">Si le fichier audio ne contient pas de pochette intégrée. Les images peuvent prendre un peu plus de temps pour se charger.</string>
+    <string name="use_folder_album_cover_summary">Si le fichier audio ne contient pas de couverture intégrée. Les images peuvent prendre un peu plus de temps pour se charger.</string>
     <string name="online_artist_images_title">Télécharger les images de l\'artiste</string>
     <string name="online_artist_images_summary">Cela dépend de votre politique de téléchargement de métadonnées.</string>
     <string name="preferred_artist_image_size_title">Taille d\'image préférée</string>
@@ -745,7 +746,7 @@
     <string name="stop_when_closed_from_recents_summary">La lecture s\'arrête si l\'application est fermée à partir de la liste des applications récentes.</string>
     <string name="stop_when_closed_from_recents_note">Remarque : certains appareils dotés d\'une gestion agressive de la mémoire ou de la batterie peuvent ignorer ce paramètre et toujours arrêter l\'application lorsqu\'elle est supprimée des applications récentes.</string>
     <!-- Preference values -->
-    <string name="light_theme_name">Lumière</string>
+    <string name="light_theme_name">Clair</string>
     <string name="dark_theme_name">Sombre</string>
     <string name="black_theme_name">Noir</string>
     <string name="follow_system">Suivre le système</string>
@@ -753,13 +754,13 @@
     <string name="labeled">Étiqueté</string>
     <string name="unlabeled">Sans étiquette</string>
     <string name="selected">Sélectionnés</string>
-    <string name="compact">Compact</string>
+    <string name="compact">Compacte</string>
     <string name="expanded">Étendu</string>
     <string name="full_cover">Couverture complète</string>
     <string name="gradient">Dégradé</string>
-    <string name="peek">Coup d\'œil</string>
+    <string name="peek">Aperçu</string>
     <string name="peek2">Peek2</string>
-    <string name="plain">Texte</string>
+    <string name="plain">Ordinaire</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normale</string>
     <string name="corner_size_none">Aucun</string>
@@ -783,7 +784,7 @@
     <string name="ordered_albums_shuffle_songs">Albums classés, titres aléatoires</string>
     <string name="shuffle_artists_ordered_songs">Lecture aléatoire des artistes, titres classés</string>
     <string name="ordered_artists_shuffle_songs">Lecture aléatoire des titres, artistes classés</string>
-    <string name="album_or_artist_shuffle_all">Lecture aléatoire de tout</string>
+    <string name="album_or_artist_shuffle_all">Tout mélanger</string>
     <string name="today">Aujourd\'hui</string>
     <string name="yesterday">Hier</string>
     <string name="this_week">Cette semaine</string>
@@ -825,8 +826,8 @@
     <string name="only_wifi_summary">Rechercher les mises à jour uniquement lorsque le Wi-Fi est connecté.</string>
     <string name="receive_experimental_updates_title">Recevoir les mises à jour expérimentales</string>
     <string name="receive_experimental_updates_summary">Veuillez noter que ces mises à jour sont souvent très instables et sont destinées aux utilisateurs expérimentés.</string>
-    <string name="search_for_update_title">Rechercher une mise à jour</string>
-    <string name="last_update_search_x">Dernière vérification : %s</string>
+    <string name="search_for_update_title">Recherche de mise à jour</string>
+    <string name="last_update_search_x">Dernière vérification: %s</string>
     <string name="checking_please_wait">Vérification, veuillez patienter…</string>
     <string name="could_not_check_for_updates">Impossible de vérifier les mises à jour.</string>
     <string name="the_app_is_up_to_date">L\'application est à jour</string>
@@ -834,11 +835,12 @@
     <string name="more_info_action">Plus d\'infos.</string>
     <string name="download_action">Télécharger</string>
     <string name="downloading_update">Téléchargement de la mise à jour de Booming Music.</string>
-    <string name="uncaught_error_title">Oups ! Ce n\'était pas censé arriver !</string>
-    <string name="uncaught_error_message">Il semble qu\'un problème soit survenu et ait provoqué le plantage de l\'application. Nous vous serions reconnaissants de bien vouloir nous envoyer le rapport d\'erreur via notre groupe Telegram ou par e-mail.</string>
+    <string name="uncaught_error_title">Oups! Ce n\'était pas censé arriver!</string>
+    <string name="uncaught_error_message">Il semble qu\'un problème soit survenu et ait provoqué le plantage de l\'application. 
+        Il nous serait utile que vous nous envoyiez un rapport d\'erreur sur notre groupe Telegram ou par e-mail.</string>
     <string name="uncaught_error_report">Rapport d\'erreur</string>
     <string name="uncaught_error_report_copied">Rapport d\'erreur copié dans le presse-papiers.</string>
     <string name="uncaught_error_restart_app">Redémarrer l\'application</string>
-    <string name="uncaught_error_github">Problème ouvert sur GitHub</string>
+    <string name="uncaught_error_github">Ouvrir le problème sur GitHub</string>
     <string name="uncaught_error_send">Envoyer un rapport</string>
 </resources>

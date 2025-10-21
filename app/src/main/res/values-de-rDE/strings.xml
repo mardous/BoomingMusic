@@ -7,7 +7,7 @@
     <string name="shuffle_all_label">Zufallswiedergabe aller Titel</string>
     <string name="shuffle_mode">Zufallsmodus</string>
     <string name="repeat_mode">Wiederholmodus</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
+    <string name="advanced_shuffle_label">Erweiterte Zufallswiedergabe</string>
     <string name="shuffle_button_tip">Tippen für normale Zufallswiedergabe. Lange drücken für erweiterte Optionen.</string>
     <string name="action_play_pause">Wiedergabe/Pause</string>
     <string name="action_pause">Pause</string>
@@ -221,7 +221,7 @@
     <string name="horizontal_albums">Horizontale Alben</string>
     <string name="ignore_singles">Singles ignorieren</string>
     <string name="compact_song_view">Kompakte Titelansicht</string>
-    <string name="show_total_duration">Show total duration</string>
+    <string name="show_total_duration">Gesamtdauer anzeigen</string>
     <string name="action_view_type">Anzeigetyp</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Karte</string>
@@ -466,9 +466,9 @@
     <string name="action_external_eq">Externer EQ</string>
     <string name="custom">Benutzerdefiniert</string>
     <string name="enable_audio_offload_title">Audio Offload</string>
-    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
-        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
-        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_offload_description">Ermöglicht es dem Gerät, Audio direkt über die Hardware zu verarbeiten, wodurch die CPU-Belastung reduziert und der Akku geschont wird.
+        Diese Funktion wird nur auf bestimmten Geräten unterstützt. Einige Effekte oder Funktionen sind möglicherweise nicht verfügbar, wenn sie aktiviert ist.
+        Ein Neustart ist erforderlich, damit die Änderungen wirksam werden.</string>
     <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
     <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
         Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
@@ -503,7 +503,7 @@
     <string name="there_are_no_changes_to_save">Es gibt keine Änderungen zu speichern.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
-    <string name="could_not_import_font">Could not import font.</string>
+    <string name="could_not_import_font">Schriftart konnte nicht importiert werden.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleeptimer</string>
     <string name="sleep_timer_cancel_current_timer">Aktuellen Timer abbrechen</string>
@@ -532,6 +532,7 @@
     <string name="acknowledgments_title">Danksagungen</string>
     <string name="translators_title">Übersetzer*innen</string>
     <string name="translators_summary">Danke an alle, die Booming Music in vielen Sprachen verfügbar machen.</string>
+    <string name="beta_testers_title">Beta-Tester</string>
     <string name="telegram_chat">Telegram-Chat</string>
     <string name="telegram_chat_summary">Trete dem Chat auf Telegram bei und informiere Dich über neue Versionen und Neuigkeiten.</string>
     <string name="view_profile_on_github">Profil auf GitHub anzeigen</string>
@@ -564,7 +565,7 @@
     <string name="now_playing_title">Aktuelle Wiedergabe</string>
     <string name="now_playing_summary">Passe den Wiedergabe-Bildschirm an.</string>
     <string name="lyrics_preferences_title">Liedtexte</string>
-    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
+    <string name="lyrics_preferences_summary">Passe Schriftart, Abstände und weitere Optionen an, um die Anzeige deiner Songtexte zu personalisieren.</string>
     <string name="playback_title">Wiedergabe</string>
     <string name="playback_summary">Ändere die Sound-Einstellungen, Bluetooth-Kopfhörer usw.</string>
     <string name="metadata_title">Metadaten</string>
@@ -605,16 +606,16 @@
     <string name="tab_mode_title">Navigationsleisten-Beschriftung</string>
     <string name="hold_tab_to_search_title">Schaltfläche zum Suchen halten</string>
     <string name="hold_tab_to_search_summary">Eine beliebige Schaltfläche der Navigationsleiste lange drücken, um den Suchbildschirm aufzurufen.</string>
-    <string name="larger_header_image_title">Larger header image</string>
-    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
-    <string name="lyrics_center_current_line_title">Center current line</string>
+    <string name="larger_header_image_title">Größeres Headerbild</string>
+    <string name="larger_header_image_summary">Zeige ein größeres Coverbild in der Detailansicht von Alben, Künstlern und Playlists.</string>
+    <string name="lyrics_center_current_line_title">Zentriere aktuelle Zeile</string>
     <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
     <string name="lyrics_custom_font_title">Custom font</string>
     <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
     <string name="lyrics_import_custom_font_title">Import custom font</string>
     <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
     <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
-    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
+    <string name="lyrics_effects_note">Erweiterte Effekte verbessern das visuelle Erlebnis, können jedoch mehr Systemressourcen und Akku verbrauchen.</string>
     <string name="lyrics_gradient_background_title">Gradient background</string>
     <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
     <string name="lyrics_blur_effect_title">Blur effect</string>

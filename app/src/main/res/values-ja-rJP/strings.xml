@@ -524,6 +524,7 @@
     <string name="acknowledgments_title">謝辞</string>
     <string name="translators_title">翻訳者</string>
     <string name="translators_summary">Booming Musicを多くの言語で利用可能にしてくれた人たちに感謝します。</string>
+    <string name="beta_testers_title">Beta testers</string>
     <string name="telegram_chat">Telegram</string>
     <string name="telegram_chat_summary">Telegramに参加して、新しいリリースとニュースについて情報を得る。</string>
     <string name="view_profile_on_github">GitHubでプロフィールを表示</string>

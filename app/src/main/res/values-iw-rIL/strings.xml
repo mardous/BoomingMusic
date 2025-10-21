@@ -481,10 +481,10 @@
     <string name="tempo_label">קצב</string>
     <string name="action_external_eq">איקוולייזר חיצוני</string>
     <string name="custom">מותאם אישית</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
-    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
-        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
-        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_offload_title">העברת עיבוד שמע לחומרה</string>
+    <string name="enable_audio_offload_description">מאפשר למכשיר לעבד את השמע ישירות דרך החומרה, מה שמפחית את השימוש במעבד וחוסך בסוללה.
+הפונקציה נתמכת רק במכשירים מסוימים, וחלק מהאפקטים או הפונקציות עלולים שלא לעבוד כשהיא מופעלת.
+נדרש להפעיל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף.</string>
     <string name="enable_audio_float_output_title">פלט שמע ברמת דיוק גבוהה</string>
     <string name="enable_audio_float_output_description">מאפשר שמע בפורמט נקודה צפה של 32 ביט לשיפור איכות הצליל.
 שימו לב: פעולה זו תכבה פונקציות כמו ReplayGain, דילוג על שקט ואיזון עוצמת קול.
@@ -548,6 +548,7 @@
     <string name="acknowledgments_title">הכרה</string>
     <string name="translators_title">מתרגמים</string>
     <string name="translators_summary">תודה לאלו שעוזרים להפוך את Booming Music לזמין בשפות רבות.</string>
+    <string name="beta_testers_title">בודקי בטא</string>
     <string name="telegram_chat">ערוץ טלגרם</string>
     <string name="telegram_chat_summary">הצטרפו לצ\'אט בטלגרם וקבלו עדכונים על מהדורות וחידושים.</string>
     <string name="view_profile_on_github">צפה בפרופיל ב-GitHub</string>
