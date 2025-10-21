@@ -27,6 +27,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Process
 import android.provider.MediaStore
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -62,10 +63,13 @@ import com.mardous.booming.extensions.resources.animateToggle
 import com.mardous.booming.extensions.resources.requestInputMethod
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
+import kotlin.concurrent.atomics.AtomicReference
+import kotlin.concurrent.atomics.ExperimentalAtomicApi
 
 /**
  * @author Christians M. A. (mardous)
  */
+@OptIn(ExperimentalAtomicApi::class)
 class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_editor) {
 
     private val lyricsViewModel: LyricsViewModel by activityViewModel()
@@ -78,7 +82,10 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
     private lateinit var permissionLauncher: ActivityResultLauncher<IntentSenderRequest>
     private lateinit var importLyricsLauncher: ActivityResultLauncher<Array<String>>
 
-    private var lyricsResult: LyricsResult? = null
+    private val lyricsResult = AtomicReference<LyricsResult?>(null)
+
+    private var plainTextWatcher: TextWatcher? = null
+    private var syncedTextWatcher: TextWatcher? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -109,8 +116,16 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
         binding.save.isEnabled = false
         binding.progressIndicator.show()
 
-        lyricsViewModel.getAllLyrics(song, fromEditor = true).observe(viewLifecycleOwner) {
-            setLyricsResult(it)
+        lyricsViewModel.getAllLyrics(song, fromEditor = true).observe(viewLifecycleOwner) { result ->
+            binding.progressIndicator.hide()
+            binding.embeddedButton.isEnabled = true
+            binding.externalButton.isEnabled = true
+            binding.plainInput.setText(result.plainLyrics.content)
+            binding.syncedInput.setText(result.syncedLyrics.content?.rawText)
+            if (!result.loading) {
+                lyricsResult.store(result)
+            }
+            setLyricsResult(result)
         }
     }
 
@@ -137,23 +152,18 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
     }
 
     private fun setLyricsResult(result: LyricsResult) {
-        binding.progressIndicator.hide()
-
-        binding.embeddedButton.isEnabled = true
-        binding.externalButton.isEnabled = true
-
-        binding.plainInput.setText(result.plainLyrics.content)
-        binding.syncedInput.setText(result.syncedLyrics.content?.rawText)
-
         if (!result.loading) {
-            this.lyricsResult = result
+            binding.plainInput.removeTextChangedListener(plainTextWatcher)
+            plainTextWatcher = null
             if (result.plainLyrics.isEditable) {
-                binding.plainInput.doOnTextChanged { text, _, _, _ ->
+                plainTextWatcher = binding.plainInput.doOnTextChanged { text, _, _, _ ->
                     binding.save.isEnabled = true
                 }
             }
+            binding.syncedInput.removeTextChangedListener(syncedTextWatcher)
+            syncedTextWatcher = null
             if (result.syncedLyrics.isEditable) {
-                binding.syncedInput.doOnTextChanged { text, _, _, _ ->
+                syncedTextWatcher = binding.syncedInput.doOnTextChanged { text, _, _, _ ->
                     binding.save.isEnabled = true
                 }
             }
@@ -233,6 +243,11 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
                         if (downloadedLyrics.hasMultiOptions) {
                             showLyricsSelector(downloadedLyrics)
                         } else if (!downloadedLyrics.syncedLyrics.isNullOrEmpty()) {
+                            val oldResult = lyricsResult.load() ?: return@observe
+                            val newResult = oldResult.setSources(syncedSource = LyricsSource.Downloaded)
+                            if (newResult != oldResult && lyricsResult.compareAndSet(oldResult, newResult)) {
+                                setLyricsResult(newResult)
+                            }
                             binding.syncedInput.setText(downloadedLyrics.syncedLyrics)
                             binding.toggleGroup.check(R.id.externalButton)
                         } else if (!downloadedLyrics.plainLyrics.isNullOrEmpty()) {
@@ -303,6 +318,11 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
                     binding.plainInput.setText(downloadedLyrics.plainLyrics ?: "")
                 }
                 if (dialogBinding.syncedLyricsCheck.isChecked) {
+                    val oldResult = lyricsResult.load() ?: return@setPositiveButton
+                    val newResult = oldResult.setSources(syncedSource = LyricsSource.Downloaded)
+                    if (newResult != oldResult && lyricsResult.compareAndSet(oldResult, newResult)) {
+                        setLyricsResult(newResult)
+                    }
                     binding.syncedInput.setText(downloadedLyrics.syncedLyrics ?: "")
                 }
             }
@@ -321,10 +341,14 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
     }
 
     private fun saveLyrics() {
+        val lyricsResult = lyricsResult.load()
+        if (lyricsResult == null)
+            return
+
         lyricsViewModel.saveLyrics(
             song = song,
-            plainLyrics = lyricsResult?.plainLyrics?.edit(binding.plainInput.text?.toString()),
-            syncedLyrics = lyricsResult?.syncedLyrics?.edit(binding.syncedInput.text?.toString())
+            plainLyrics = lyricsResult.plainLyrics.edit(binding.plainInput.text?.toString()),
+            syncedLyrics = lyricsResult.syncedLyrics.edit(binding.syncedInput.text?.toString())
         ).observe(viewLifecycleOwner) { saveResult ->
             if (saveResult.hasChanged) {
                 if (saveResult.isSuccess) {

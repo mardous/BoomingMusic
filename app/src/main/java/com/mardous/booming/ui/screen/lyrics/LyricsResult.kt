@@ -21,7 +21,7 @@ import androidx.compose.runtime.Immutable
 import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.data.model.lyrics.LyricsSource
 
-class DisplayableLyrics<T>(val content: T?, val source: LyricsSource) {
+data class DisplayableLyrics<T>(val content: T?, val source: LyricsSource) {
     val isEditable = source.isEditable
 
     fun edit(newContent: String?): EditableLyrics? {
@@ -47,7 +47,7 @@ data class EditableLyrics(
 }
 
 @Immutable
-class LyricsResult(
+data class LyricsResult(
     val id: Long,
     val plainLyrics: DisplayableLyrics<String> = DisplayableLyrics(null, LyricsSource.Embedded),
     val syncedLyrics: DisplayableLyrics<Lyrics> = DisplayableLyrics(null, LyricsSource.Downloaded),
@@ -58,11 +58,18 @@ class LyricsResult(
     val hasSyncedLyrics: Boolean get() = syncedLyrics.content?.hasContent == true
     val isEmpty: Boolean get() = !hasPlainLyrics && !hasSyncedLyrics
 
-//    init {
-//        check(sources.distinctBy { it.applicableButtonId }.size == 2) {
-//            "Applicable IDs must be unique"
-//        }
-//    }
+    fun setSources(
+        plainSource: LyricsSource = this.plainLyrics.source,
+        syncedSource: LyricsSource = this.syncedLyrics.source
+    ): LyricsResult {
+        if (plainSource == plainLyrics.source && syncedSource == syncedLyrics.source)
+            return this
+
+        return copy(
+            plainLyrics = plainLyrics.copy(source = plainSource),
+            syncedLyrics = syncedLyrics.copy(source = syncedSource)
+        )
+    }
 
     companion object {
         val Empty = LyricsResult(-1)
