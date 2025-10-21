@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Ungültige Audio-ID.</string>
     <string name="playback_error_code">Wiedergabefehler (%s).</string>
     <string name="unplayable_file">Dieser Titel konnte nicht abgespielt werden.</string>
-    <string name="unplayable_file_code_x">Dieser Titel konnte nicht abgespielt werden (Code: %d).</string>
     <string name="permission_external_storage_title">Speicherzugriff</string>
     <string name="permission_external_storage_description">Die App benötigt die Berechtigung auf den Speicher Deines Gerätes zuzugreifen, um Musik abzuspielen</string>
     <string name="permission_external_storage_denied">Du musst die Berechtigung zum Zugriff auf den externen Speicher erteilen.</string>
