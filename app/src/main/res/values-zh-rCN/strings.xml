@@ -511,6 +511,7 @@
     <string name="app_shortcut_shuffle_all_short">随机播放</string>
     <string name="app_shortcut_top_tracks_short">热门曲目</string>
     <string name="app_shortcut_last_added_short">最后添加</string>
+    <string name="app_shortcut_favorites_short">收藏夹</string>
     <!-- About page -->
     <string name="action_about">关于</string>
     <string name="application">适用范围</string>

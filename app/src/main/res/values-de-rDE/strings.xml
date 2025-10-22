@@ -519,6 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Zufallswiedergabe</string>
     <string name="app_shortcut_top_tracks_short">Top-Titel</string>
     <string name="app_shortcut_last_added_short">Zuletzt hinzugefügt</string>
+    <string name="app_shortcut_favorites_short">Favoriten</string>
     <!-- About page -->
     <string name="action_about">Über</string>
     <string name="application">App</string>

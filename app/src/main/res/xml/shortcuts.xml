@@ -33,4 +33,15 @@
             android:targetClass="com.mardous.booming.ui.screen.MainActivity"
             android:targetPackage="com.mardous.booming" />
     </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_app_shortcut_favorites"
+        android:shortcutId="favorites"
+        android:shortcutLongLabel="@string/app_shortcut_favorites_short"
+        android:shortcutShortLabel="@string/favorites_label">
+        <intent
+            android:action="com.mardous.booming.shortcut.FAVORITES"
+            android:targetClass="com.mardous.booming.ui.screen.MainActivity"
+            android:targetPackage="com.mardous.booming" />
+    </shortcut>
 </shortcuts>

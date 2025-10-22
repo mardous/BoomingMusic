@@ -204,6 +204,10 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
                 playerViewModel.playMediaId(MediaIDs.SONGS, true)
                 setIntent(Intent())
             }
+            APP_SHORTCUT_FAVORITES -> {
+                playerViewModel.playMediaId(MediaIDs.FAVORITES, true)
+                setIntent(Intent())
+            }
             else -> {
                 libraryViewModel.handleIntent(intent).observe(this) { result ->
                     if (result.handled) {
@@ -263,6 +267,7 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
         private const val APP_SHORTCUT_LAST_ADDED = "com.mardous.booming.shortcut.LAST_ADDED"
         private const val APP_SHORTCUT_TOP_TRACKS = "com.mardous.booming.shortcut.TOP_TRACKS"
         private const val APP_SHORTCUT_SHUFFLE = "com.mardous.booming.shortcut.SHUFFLE"
+        private const val APP_SHORTCUT_FAVORITES = "com.mardous.booming.shortcut.FAVORITES"
 
         private val OLD_SHORTCUT_IDS = listOf(
             "com.mardous.booming.appshortcuts.id.last_added",

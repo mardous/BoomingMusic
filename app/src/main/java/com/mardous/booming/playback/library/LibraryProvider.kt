@@ -261,6 +261,7 @@ class LibraryProvider(private val repository: Repository) {
                 MediaIDs.TOP_TRACKS -> repository.playCountSongs()
                 MediaIDs.LAST_ADDED -> repository.recentSongs()
                 MediaIDs.RECENT_SONGS -> repository.historySongs()
+                MediaIDs.FAVORITES -> repository.favoriteSongs()
                 else -> emptyList()
             }
         } else {

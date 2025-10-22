@@ -517,6 +517,7 @@
     <string name="app_shortcut_shuffle_all_short">शफल</string>
     <string name="app_shortcut_top_tracks_short">शीर्ष ट्रैक</string>
     <string name="app_shortcut_last_added_short">लास्ट एडेड</string>
+    <string name="app_shortcut_favorites_short">पसंदीदा</string>
     <!-- About page -->
     <string name="action_about">के बारे में</string>
     <string name="application">ऐप्लिकेशन</string>
