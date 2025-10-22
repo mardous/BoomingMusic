@@ -758,7 +758,7 @@
     <string name="backup_app_data_summary">Utwórz plik z niezbędnymi danymi aplikacji i zapisz go w pamięci zewnętrznej.</string>
     <string name="restore_backup_title">Przywróć kopię zapasową</string>
     <string name="restore_backup_summary">Przywróć dane aplikacji (i stan) z wcześniejszej kopii zapasowej.</string>
-    <string name="stop_when_closed_from_recents_title">Zatrzymaj po zamknięciu z ostatnich</string>
+    <string name="stop_when_closed_from_recents_title">Zatrzymaj odtwarzanie po zamknięciu z ostatnich</string>
     <string name="stop_when_closed_from_recents_summary">Zatrzymuje odtwarzanie po zamknięciu aplikacji z listy ostatnich aplikacji.</string>
     <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią
         lub baterią mogą ignorować to ustawienie i zawsze zatrzymywać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
