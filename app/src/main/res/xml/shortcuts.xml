@@ -24,23 +24,23 @@
     </shortcut>
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_app_shortcut_shuffle_all"
-        android:shortcutId="shuffle_all"
-        android:shortcutLongLabel="@string/app_shortcut_shuffle_all_short"
-        android:shortcutShortLabel="@string/shuffle_all_label">
-        <intent
-            android:action="com.mardous.booming.shortcut.SHUFFLE"
-            android:targetClass="com.mardous.booming.ui.screen.MainActivity"
-            android:targetPackage="com.mardous.booming" />
-    </shortcut>
-    <shortcut
-        android:enabled="true"
         android:icon="@drawable/ic_app_shortcut_favorites"
         android:shortcutId="favorites"
         android:shortcutLongLabel="@string/app_shortcut_favorites_short"
         android:shortcutShortLabel="@string/favorites_label">
         <intent
             android:action="com.mardous.booming.shortcut.FAVORITES"
+            android:targetClass="com.mardous.booming.ui.screen.MainActivity"
+            android:targetPackage="com.mardous.booming" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_app_shortcut_shuffle_all"
+        android:shortcutId="shuffle_all"
+        android:shortcutLongLabel="@string/app_shortcut_shuffle_all_short"
+        android:shortcutShortLabel="@string/shuffle_all_label">
+        <intent
+            android:action="com.mardous.booming.shortcut.SHUFFLE"
             android:targetClass="com.mardous.booming.ui.screen.MainActivity"
             android:targetPackage="com.mardous.booming" />
     </shortcut>
