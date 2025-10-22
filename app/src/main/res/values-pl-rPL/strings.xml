@@ -481,7 +481,7 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Zewnętrzny EQ</string>
     <string name="custom">Własny</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
+    <string name="enable_audio_offload_title">Odciążenie audio</string>
     <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
         This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
         A restart is required for changes to take effect.</string>
@@ -548,7 +548,7 @@
     <string name="acknowledgments_title">Podziękowania</string>
     <string name="translators_title">Tłumacze</string>
     <string name="translators_summary">Podziękowania dla tych, którzy umożliwiają korzystanie z Booming Music w wielu językach.</string>
-    <string name="beta_testers_title">Beta testers</string>
+    <string name="beta_testers_title">Beta testerzy</string>
     <string name="telegram_chat">Czat na Telegramie</string>
     <string name="telegram_chat_summary">Dołącz do czatu w Telegramie i otrzymuj informacje o nowych wersjach i wiadomościach.</string>
     <string name="view_profile_on_github">Zobacz profil na GitHub</string>
