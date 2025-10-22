@@ -8,6 +8,7 @@ import android.bluetooth.BluetoothA2dp
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothProfile
 import android.content.*
+import android.media.AudioManager
 import android.os.*
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
@@ -50,6 +51,8 @@ import com.mardous.booming.playback.library.LibraryProvider
 import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
+import com.mardous.booming.playback.volume.AudioVolumeObserver
+import com.mardous.booming.playback.volume.OnAudioVolumeChangedListener
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.util.*
 import com.mardous.booming.util.Preferences.requireString
@@ -65,7 +68,8 @@ class PlaybackService :
     MediaLibraryService(),
     MediaLibrarySession.Callback,
     Player.Listener,
-    SharedPreferences.OnSharedPreferenceChangeListener{
+    SharedPreferences.OnSharedPreferenceChangeListener,
+    OnAudioVolumeChangedListener{
 
     private val serviceScope = CoroutineScope(Job() + Main)
     private val uiHandler = Handler(Looper.getMainLooper())
@@ -256,6 +260,9 @@ class PlaybackService :
 
         prepareEqualizerAndSoundSettings()
         registerReceivers()
+
+        val audioVolumeObserver = AudioVolumeObserver(this)
+        audioVolumeObserver.register(AudioManager.STREAM_MUSIC, this)
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
@@ -278,6 +285,8 @@ class PlaybackService :
         LocalBroadcastManager.getInstance(this).unregisterReceiver(widgetIntentReceiver)
         serviceScope.cancel()
         preferences.unregisterOnSharedPreferenceChangeListener(this)
+        val audioVolumeObserver = AudioVolumeObserver(this)
+        audioVolumeObserver.unregister()
         mediaStoreObserver.stop(this)
         mediaSession?.release()
         player.removeListener(this)
@@ -900,6 +909,17 @@ class PlaybackService :
                     appWidgetSmall.performUpdate(this@PlaybackService, ids)
                 }
             }
+        }
+    }
+
+    private var pausedByZeroVolume = false
+    override fun onAudioVolumeChanged(currentVolume: Int, maxVolume: Int) {
+        if (isPlaying && currentVolume < 1) {
+            player.pause()
+            pausedByZeroVolume = true
+        } else if (pausedByZeroVolume && currentVolume >= 1) {
+            player.play()
+            pausedByZeroVolume = false
         }
     }
 
