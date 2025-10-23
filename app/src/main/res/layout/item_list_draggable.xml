@@ -64,7 +64,7 @@
         android:layout_marginStart="8dp"
         android:layout_gravity="center_vertical|start"
         android:visibility="gone"
-        app:srcCompat="@drawable/ic_drag_vertical_24dp"
+        app:srcCompat="@drawable/ic_drag_handle_24dp"
         app:tint="?attr/colorControlNormal"
         tools:ignore="ContentDescription"/>
 
