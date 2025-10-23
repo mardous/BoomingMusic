@@ -535,6 +535,7 @@
     <string name="app_shortcut_shuffle_all_short">ערבוב</string>
     <string name="app_shortcut_top_tracks_short">רצועות מובילות</string>
     <string name="app_shortcut_last_added_short">נוסף לאחרונה</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">אודות</string>
     <string name="application">יישום</string>
