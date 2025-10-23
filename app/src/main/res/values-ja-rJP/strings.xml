@@ -511,6 +511,7 @@
     <string name="app_shortcut_shuffle_all_short">シャッフル</string>
     <string name="app_shortcut_top_tracks_short">トップトラック</string>
     <string name="app_shortcut_last_added_short">最近追加された曲</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">アプリについて</string>
     <string name="application">アプリケーション</string>
