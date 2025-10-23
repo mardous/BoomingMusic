@@ -527,6 +527,7 @@
     <string name="app_shortcut_shuffle_all_short">Amestecare</string>
     <string name="app_shortcut_top_tracks_short">Piese de top</string>
     <string name="app_shortcut_last_added_short">Ultima Adăugare</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">Despre</string>
     <string name="application">Cerere</string>
