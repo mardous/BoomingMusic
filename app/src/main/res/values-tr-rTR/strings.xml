@@ -514,6 +514,7 @@
     <string name="app_shortcut_shuffle_all_short">Karıştır</string>
     <string name="app_shortcut_top_tracks_short">En İyiler</string>
     <string name="app_shortcut_last_added_short">Son Eklenenler</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">Hakkında</string>
     <string name="application">Uygulama</string>
