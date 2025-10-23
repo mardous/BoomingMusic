@@ -519,6 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Bland</string>
     <string name="app_shortcut_top_tracks_short">Topp sporing</string>
     <string name="app_shortcut_last_added_short">Sist lagt til</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">Om</string>
     <string name="application">Applikasjon</string>
