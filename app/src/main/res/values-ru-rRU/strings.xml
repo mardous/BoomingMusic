@@ -537,6 +537,7 @@
     <string name="app_shortcut_shuffle_all_short">Перемешать</string>
     <string name="app_shortcut_top_tracks_short">Лучшие треки</string>
     <string name="app_shortcut_last_added_short">Последние добавленные</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">О программе</string>
     <string name="application">Приложение</string>
