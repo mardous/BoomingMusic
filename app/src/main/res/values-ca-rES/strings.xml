@@ -465,10 +465,10 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
-    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
-        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
-        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_offload_title">Delegació d\'àudio</string>
+    <string name="enable_audio_offload_description">Permet al dispositiu processar l\'àudio directament des del seu maquinari. Redueix l\'ús del processador i de la bateria.
+        Aquesta funció només s\'admet en certs dispositius. Alguns efectes o funcions podrien no funcionar mentre està activa.
+        Cal reiniciar per aplicar els canvis.</string>
     <string name="enable_audio_float_output_title">Sortida d\'àudio d\'alta precisió</string>
     <string name="enable_audio_float_output_description">Activa l\'àudio de punt flotant de 32-bits per un so de més bona qualitat.
         Tingueu present que això desactivarà funcions com el Guany de reproducció, Omet silencis i Normalitza el volum.
