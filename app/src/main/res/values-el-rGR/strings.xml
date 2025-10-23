@@ -519,6 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Τυχαία Αναπαραγωγή</string>
     <string name="app_shortcut_top_tracks_short">Κορυφαία Κομμάτια</string>
     <string name="app_shortcut_last_added_short">Τελευταία Προσθήκη</string>
+    <string name="app_shortcut_favorites_short">Αγαπημένα</string>
     <!-- About page -->
     <string name="action_about">Σχετικά</string>
     <string name="application">Εφαρμογή</string>

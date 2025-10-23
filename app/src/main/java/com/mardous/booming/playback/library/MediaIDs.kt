@@ -11,6 +11,7 @@ object MediaIDs {
     const val TOP_TRACKS = "TOP_TRACKS"
     const val LAST_ADDED = "LAST_ADDED"
     const val RECENT_SONGS = "HISTORY"
+    const val FAVORITES = "FAVORITES"
 
     private const val SEPARATOR = ":"
 

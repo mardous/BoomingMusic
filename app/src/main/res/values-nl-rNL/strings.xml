@@ -519,6 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Shuffle</string>
     <string name="app_shortcut_top_tracks_short">Top Nummers</string>
     <string name="app_shortcut_last_added_short">Laatst toegevoegd</string>
+    <string name="app_shortcut_favorites_short">Favorieten</string>
     <!-- About page -->
     <string name="action_about">Informatie</string>
     <string name="application">Applicatie</string>

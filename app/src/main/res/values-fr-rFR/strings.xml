@@ -519,6 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Mélanger</string>
     <string name="app_shortcut_top_tracks_short">Meilleurs titres</string>
     <string name="app_shortcut_last_added_short">Derniers ajouts</string>
+    <string name="app_shortcut_favorites_short">Favoris</string>
     <!-- About page -->
     <string name="action_about">À propos</string>
     <string name="application">Application</string>
