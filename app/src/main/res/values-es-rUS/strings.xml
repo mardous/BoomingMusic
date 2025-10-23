@@ -518,6 +518,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="app_shortcut_shuffle_all_short">Aleatorio</string>
     <string name="app_shortcut_top_tracks_short">Canciones más reproducidas</string>
     <string name="app_shortcut_last_added_short">Últimas agregadas</string>
+    <string name="app_shortcut_favorites_short">Favoritos</string>
     <!-- About page -->
     <string name="action_about">Acerca de</string>
     <string name="application">Aplicación</string>

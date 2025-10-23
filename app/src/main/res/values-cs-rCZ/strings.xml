@@ -535,6 +535,7 @@
     <string name="app_shortcut_shuffle_all_short">Zamíchat</string>
     <string name="app_shortcut_top_tracks_short">Nejlepší skladby</string>
     <string name="app_shortcut_last_added_short">Naposledy přidané</string>
+    <string name="app_shortcut_favorites_short">Oblíbené</string>
     <!-- About page -->
     <string name="action_about">O aplikaci</string>
     <string name="application">Žádost</string>
