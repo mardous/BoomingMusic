@@ -535,6 +535,7 @@
     <string name="app_shortcut_shuffle_all_short">Losuj</string>
     <string name="app_shortcut_top_tracks_short">Najczęściej odtwarzane</string>
     <string name="app_shortcut_last_added_short">Ostatnio dodane</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">O programie</string>
     <string name="application">Aplikacja</string>
