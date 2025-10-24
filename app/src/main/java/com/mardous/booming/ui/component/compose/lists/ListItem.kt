@@ -91,7 +91,6 @@ fun ShuffleModeItem(
                 text = stringResource(mode.titleRes),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.titleMedium
             )
             Text(

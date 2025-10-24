@@ -17,17 +17,13 @@
 
 package com.mardous.booming.ui.component.compose
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
@@ -120,24 +116,4 @@ fun ActionButton(
             textAlign = TextAlign.Center
         )
     }
-}
-
-@Composable
-fun ShapedText(
-    text: String,
-    style: TextStyle = LocalTextStyle.current,
-    textColor: Color = MaterialTheme.colorScheme.onTertiaryContainer,
-    shape: Shape = RoundedCornerShape(50),
-    shapeColor: Color = MaterialTheme.colorScheme.tertiaryContainer,
-    modifier: Modifier = Modifier
-) {
-    Text(
-        text = text,
-        color = textColor,
-        style = style,
-        modifier = modifier
-            .clip(shape)
-            .background(shapeColor)
-            .padding(horizontal = 8.dp, vertical = 4.dp)
-    )
 }
