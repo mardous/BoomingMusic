@@ -8,6 +8,7 @@
         <item name="toolbarPopupTheme">@style/ThemeOverlay.Booming.Adaptive</item>
         <item name="rectSelector">@drawable/rect_selector</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
         <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
         <item name="sliderStyle">@style/SliderStyle</item>
         <item name="popupMenuBackground">@drawable/popupmenu_background</item>

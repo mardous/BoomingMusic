@@ -96,6 +96,15 @@
         <item name="shapeAppearance">?attr/shapeAppearanceCornerMedium</item>
     </style>
 
+    <style name="ModalBottomSheetStyle" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">?colorSurfaceContainer</item>
+        <item name="shapeAppearance">?shapeAppearanceCornerLarge</item>
+    </style>
+
+    <style name="ModalBottomSheetStyle.EdgeToEdge">
+        <item name="paddingBottomSystemWindowInsets">false</item>
+    </style>
+
     <style name="CircularShapeAppearance" parent="">
         <item name="cornerSize">50%</item>
         <item name="cornerFamily">rounded</item>
