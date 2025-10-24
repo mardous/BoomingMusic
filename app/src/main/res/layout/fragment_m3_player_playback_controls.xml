@@ -125,6 +125,7 @@
         android:importantForAccessibility="no"
         app:elevation="0dp"
         app:fabCustomSize="64dp"
+        app:maxImageSize="28dp"
         app:srcCompat="@drawable/ic_play_m3_24dp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toTopOf="@id/songInfo"
