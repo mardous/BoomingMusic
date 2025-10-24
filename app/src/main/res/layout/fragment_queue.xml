@@ -1,50 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?colorSurface">
+    android:orientation="vertical">
 
-    <com.mardous.booming.ui.component.views.TopAppBarLayout
-        android:id="@+id/appBarLayout"
-        style="?appBarLayoutStyle"
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true" />
+        android:paddingBottom="@dimen/list_queue_padding_vertical">
+
+    <include
+        android:id="@+id/currentItem"
+        layout="@layout/item_queue"/>
+
+    </FrameLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="@dimen/list_queue_padding_vertical"
         android:clipToPadding="false"
         android:overScrollMode="@integer/overScrollMode"
-        android:paddingBottom="@dimen/fab_size_padding"
         android:scrollbars="none"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        tools:listitem="@layout/item_list_draggable" />
+        tools:listitem="@layout/item_queue" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@android:id/empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/empty_label"
-        android:textAppearance="?textAppearanceBody2"
-        android:textColor="?colorOnSecondary"
-        android:visibility="gone"
-        tools:visibility="visible" />
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/quickActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin_top_left_right"
-        android:ellipsize="marquee"
-        android:textAppearance="?textAppearanceBody1"
-        app:icon="@drawable/ic_save_24dp"
-        android:text="@string/save_queue"/>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

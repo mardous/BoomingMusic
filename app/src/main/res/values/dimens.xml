@@ -22,11 +22,11 @@
     <dimen name="notification_image_size">70dp</dimen>
     <dimen name="notification_big_image_size">128dp</dimen>
 
-    <!-- For use with 24dp drawables in the item_list layouts-->
     <dimen name="list_item_song_height">60dp</dimen>
     <dimen name="list_item_image_size">44dp</dimen>
     <dimen name="list_item_image_icon_padding">10dp</dimen>
     <dimen name="list_pref_guideline_begin">56dp</dimen>
+    <dimen name="list_queue_padding_vertical">6dp</dimen>
     <dimen name="grid_item_margin">4dp</dimen>
     <dimen name="grid_item_album_margin">8dp</dimen>
     <dimen name="grid_item_horizontal_margin">16dp</dimen>

@@ -41,7 +41,7 @@ class PlayingQueueSongAdapter(
     private var playlist: MutableList<Song>,
     current: Int,
     callback: ISongCallback? = null,
-) : SongAdapter(activity, playlist, R.layout.item_list_draggable, callback = callback),
+) : SongAdapter(activity, playlist, R.layout.item_queue, callback = callback),
     DraggableItemAdapter<PlayingQueueSongAdapter.ViewHolder> {
 
     private var needsUpdate = false

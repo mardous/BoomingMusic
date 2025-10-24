@@ -62,7 +62,6 @@ import com.mardous.booming.ui.screen.player.styles.m3style.M3PlayerFragment
 import com.mardous.booming.ui.screen.player.styles.peek2playerstyle.Peek2PlayerFragment
 import com.mardous.booming.ui.screen.player.styles.peekplayerstyle.PeekPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.plainstyle.PlainPlayerFragment
-import com.mardous.booming.ui.screen.queue.PlayingQueueFragment
 import com.mardous.booming.util.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -152,8 +151,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         launchAndRepeatWithViewLifecycle {
             playerViewModel.queueFlow.collect { queue ->
                 val currentFragment = currentFragment(R.id.fragment_container)
-                if (currentFragment !is PlayingQueueFragment &&
-                    currentFragment !is LyricsEditorFragment &&
+                if (currentFragment !is LyricsEditorFragment &&
                     currentFragment !is PlayInfoFragment) {
                     hideBottomSheet(queue.isEmpty())
                 }

@@ -50,6 +50,8 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.io.File
 
+const val QUEUE_DEBOUNCE = 100L
+
 @OptIn(FlowPreview::class)
 @androidx.annotation.OptIn(UnstableApi::class)
 class PlayerViewModel(

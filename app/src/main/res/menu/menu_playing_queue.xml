@@ -1,20 +1,14 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto">
-	<item
-		android:id="@+id/action_move_to_current_track"
-		android:title="@string/action_move_to_current_track"
-		app:showAsAction="never"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item
 		android:id="@+id/action_save_playing_queue"
 		android:title="@string/save_queue"
-		app:showAsAction="never"/>
+		android:icon="@drawable/ic_save_24dp"/>
     <item
         android:id="@+id/action_clear_playing_queue"
         android:title="@string/clear_queue"
-		app:showAsAction="never"/>
+		android:icon="@drawable/ic_clear_24dp"/>
 	<item
 		android:id="@+id/action_lock"
 		android:title="@string/action_toggle_queue_lock"
-		android:icon="@drawable/ic_lock_open_24dp"
-		app:showAsAction="always"/>
+		android:icon="@drawable/ic_lock_open_24dp"/>
 </menu>
