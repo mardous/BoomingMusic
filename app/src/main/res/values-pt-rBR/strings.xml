@@ -518,7 +518,7 @@ Ideal para podcasts e gravações.</string>
     <string name="app_shortcut_shuffle_all_short">Aleatório</string>
     <string name="app_shortcut_top_tracks_short">Melhores Faixas</string>
     <string name="app_shortcut_last_added_short">Últimas Adicionadas</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Favoritos</string>
     <!-- About page -->
     <string name="action_about">Sobre</string>
     <string name="application">Aplicativo</string>
