@@ -67,7 +67,7 @@
     <string name="playlist_x_not_imported">Wiedergabeliste %s nicht importiert.</string>
     <string name="action_import_playlist">Wiedergabeliste importieren…</string>
     <string name="action_new_playlist">Neue Wiedergabeliste…</string>
-    <string name="new_playlist_title">Neue Wiedergabeliste</string>
+    <string name="new_playlist_title">Wiedergabeliste erstellen</string>
     <string name="add_playlist_title">Zur Wiedergabeliste hinzufügen</string>
     <string name="rename_playlist_title">Wiedergabeliste umbenennen</string>
     <string name="action_edit_playlist">Wiedergabeliste bearbeiten</string>
