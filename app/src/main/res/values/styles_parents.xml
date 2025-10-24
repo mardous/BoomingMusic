@@ -201,7 +201,6 @@
         <item name="colorSurfaceContainer">#0B0B0B</item>
         <item name="android:windowBackground">?colorSurface</item>
         <item name="elevationOverlayColor">@color/elevationOverlayBlack</item>
-        <item name="dividerColor">@color/dividerBlack</item>
     </style>
 
     <style name="MaterialPopupMenuStyle" parent="Widget.Material3.PopupMenu">
