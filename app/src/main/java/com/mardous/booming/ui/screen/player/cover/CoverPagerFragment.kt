@@ -49,11 +49,15 @@ import com.mardous.booming.ui.adapters.pager.CustomFragmentStatePagerAdapter
 import com.mardous.booming.ui.component.transform.CarouselPagerTransformer
 import com.mardous.booming.ui.component.transform.ParallaxPagerTransformer
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.ui.screen.player.QUEUE_DEBOUNCE
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment.ColorReceiver
 import com.mardous.booming.util.LEFT_RIGHT_SWIPING
 import com.mardous.booming.util.LYRICS_ON_COVER
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.debounce
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewPager.OnPageChangeListener,
@@ -146,24 +150,27 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
         }
     }
 
+    @OptIn(FlowPreview::class)
     private fun setupEventObserver() {
         viewPager.addOnPageChangeListener(this)
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.queueFlow.collect { queue ->
-                _binding?.viewPager?.let { pager ->
-                    pager.adapter = AlbumCoverPagerAdapter(parentFragmentManager, queue)
-                    pager.doOnPreDraw {
-                        val itemCount = pager.adapter?.count ?: 0
-                        val lastIndex = (itemCount - 1).coerceAtLeast(0)
-                        val target = playerViewModel.position.current.coerceIn(0, lastIndex)
-                        if (itemCount > 0) {
-                            if (pager.currentItem != target) {
-                                pager.setCurrentItem(target, false)
+            playerViewModel.queueFlow
+                .debounce(QUEUE_DEBOUNCE)
+                .collectLatest { queue ->
+                    _binding?.viewPager?.let { pager ->
+                        pager.adapter = AlbumCoverPagerAdapter(parentFragmentManager, queue)
+                        pager.doOnPreDraw {
+                            val itemCount = pager.adapter?.count ?: 0
+                            val lastIndex = (itemCount - 1).coerceAtLeast(0)
+                            val target = playerViewModel.position.current.coerceIn(0, lastIndex)
+                            if (itemCount > 0) {
+                                if (pager.currentItem != target) {
+                                    pager.setCurrentItem(target, false)
+                                }
+                                onPageSelected(target)
                             }
-                            onPageSelected(target)
                         }
                     }
-                }
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
