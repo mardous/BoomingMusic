@@ -65,7 +65,7 @@
         android:layout_gravity="center_vertical|start"
         android:visibility="gone"
         app:srcCompat="@drawable/ic_drag_handle_24dp"
-        app:tint="?attr/colorControlNormal"
+        app:tint="?attr/colorOnSurface"
         tools:ignore="ContentDescription"/>
 
     <com.google.android.material.button.MaterialButton

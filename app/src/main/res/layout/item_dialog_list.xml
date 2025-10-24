@@ -17,7 +17,7 @@
         android:layout_height="40dp"
         android:layout_marginEnd="16dp"
         android:scaleType="center"
-        app:tint="?colorControlNormal"
+        app:tint="?colorOnSurface"
         tools:srcCompat="@drawable/ic_music_note_24dp"
         tools:ignore="ContentDescription" />
 

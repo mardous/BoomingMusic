@@ -120,7 +120,7 @@
                     android:insetLeft="0dp"
                     android:insetRight="0dp"
                     app:icon="@drawable/ic_search_24dp"
-                    app:iconTint="?colorControlNormal"
+                    app:iconTint="?colorOnSurface"
                     app:layout_constraintTop_toTopOf="@+id/playAction"
                     app:layout_constraintEnd_toEndOf="parent"/>
 

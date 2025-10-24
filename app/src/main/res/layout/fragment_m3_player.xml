@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/playing_queue_label"
             app:icon="@drawable/ic_queue_music_24dp"
-            app:iconTint="?colorControlNormal" />
+            app:iconTint="?colorOnSurface" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/showLyricsButton"
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/action_show_lyrics"
             app:icon="@drawable/ic_lyrics_outline_24dp"
-            app:iconTint="?colorControlNormal" />
+            app:iconTint="?colorOnSurface" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sleepTimerAction"
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/ic_timer_24dp"
-            app:iconTint="?colorControlNormal" />
+            app:iconTint="?colorOnSurface" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addToPlaylistAction"
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/ic_playlist_add_24dp"
-            app:iconTint="?colorControlNormal" />
+            app:iconTint="?colorOnSurface" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/moreAction"
@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/ic_more_horiz_24dp"
-            app:iconTint="?colorControlNormal" />
+            app:iconTint="?colorOnSurface" />
 
     </LinearLayout>
 

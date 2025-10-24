@@ -95,7 +95,7 @@
                 android:contentDescription="@string/action_previous"
                 android:visibility="gone"
                 app:icon="@drawable/ic_previous_24dp"
-                app:iconTint="?attr/colorControlNormal"
+                app:iconTint="?attr/colorOnSurface"
                 tools:visibility="visible" />
 
             <FrameLayout
@@ -122,7 +122,7 @@
                     android:layout_gravity="center"
                     android:contentDescription="@string/action_play_pause"
                     app:iconGravity="textStart"
-                    app:iconTint="?colorControlNormal"
+                    app:iconTint="?colorOnSurface"
                     tools:icon="@drawable/ic_pause_24dp" />
 
             </FrameLayout>
@@ -136,7 +136,7 @@
                 android:contentDescription="@string/action_next"
                 android:visibility="visible"
                 app:icon="@drawable/ic_next_24dp"
-                app:iconTint="?attr/colorControlNormal"
+                app:iconTint="?attr/colorOnSurface"
                 tools:visibility="visible" />
 
         </LinearLayout>

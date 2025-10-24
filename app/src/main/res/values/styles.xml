@@ -60,7 +60,7 @@
 
     <style name="PlayerIconButton" parent="Widget.Material3.Button.IconButton">
         <item name="iconGravity">textStart</item>
-        <item name="iconTint">?colorControlNormal</item>
+        <item name="iconTint">?colorOnSurface</item>
         <item name="rippleColor">?colorControlHighlight</item>
     </style>
 
@@ -87,7 +87,7 @@
         <item name="android:focusableInTouchMode">false</item>
         <item name="android:focusable">false</item>
         <item name="icon">@drawable/ic_more_vert_24dp</item>
-        <item name="iconTint">?colorControlNormal</item>
+        <item name="iconTint">?colorOnSurface</item>
     </style>
 
     <style name="BottomSheetStyle" parent="Widget.Material3.BottomSheet">

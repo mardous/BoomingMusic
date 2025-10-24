@@ -8,7 +8,7 @@
             android:height="24dp"
             android:viewportWidth="56"
             android:viewportHeight="56"
-            android:tint="?colorControlNormal">
+            android:tint="?colorOnSurface">
             <group
                 android:name="group"
                 android:pivotX="28"
