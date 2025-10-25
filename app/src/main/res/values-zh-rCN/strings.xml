@@ -648,6 +648,8 @@
     <string name="circle_button_title">圆形播放按钮</string>
     <string name="swipe_album_cover_title">滑动专辑封面</string>
     <string name="swipe_album_cover_summary">在专辑封面上向左和向右滑动以跳过歌曲。</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">单击封面</string>
     <string name="double_tap_on_album_cover_title">双击封面</string>
     <string name="long_press_on_album_cover_title">长按封面</string>
@@ -695,6 +697,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">当蓝牙 A2DP 耳机断开时暂停播放。推荐。</string>
     <string name="ignore_audio_focus_title">忽略音频重点</string>
     <string name="ignore_audio_focus_summary">总是在后台播放音频，不管是否播放任何其他音频。</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">自动下载元数据</string>
     <string name="ignore_media_store_album_covers_title">忽略媒体商店的封面</string>
