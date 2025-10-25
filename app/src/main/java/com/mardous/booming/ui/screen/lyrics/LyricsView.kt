@@ -27,16 +27,14 @@ import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Constraints
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.*
 import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
 import com.mardous.booming.extensions.hasS
@@ -61,6 +59,9 @@ fun LyricsView(
 ) {
     val density = LocalDensity.current
     val textStyle = settings.syncedStyle
+
+    val layoutDirection = LocalLayoutDirection.current
+    val isRtl = layoutDirection == LayoutDirection.Rtl
 
     val listState = rememberLazyListState()
     val isScrollInProgress = listState.isScrollInProgress
@@ -135,6 +136,7 @@ fun LyricsView(
                 position = state.position,
                 line = line,
                 textStyle = textStyle,
+                rtl = isRtl,
                 modifier = Modifier
                     .animateItem(placementSpec = tween(durationMillis = 1000)),
                 onClick = { onLineClick(line) }
@@ -155,6 +157,7 @@ private fun LyricsLineView(
     position: Long,
     line: Lyrics.Line,
     textStyle: TextStyle,
+    rtl: Boolean,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -193,6 +196,7 @@ private fun LyricsLineView(
     LyricsLineBox(
         style = textStyle,
         align = textAlign,
+        rtl = rtl,
         onClick = onClick
     ) { transformOrigin ->
         if (line.isEmpty) {
@@ -242,7 +246,8 @@ private fun LyricsLineView(
                     startMillis = line.startAt,
                     endMillis = line.end,
                     style = textStyle,
-                    align = textAlign
+                    align = textAlign,
+                    rtl = rtl
                 )
 
                 if (line.content.hasBackgroundVocals) {
@@ -268,7 +273,8 @@ private fun LyricsLineView(
                             fontSize = textStyle.fontSize / 1.40f,
                             fontWeight = FontWeight.Normal
                         ),
-                        align = textAlign
+                        align = textAlign,
+                        rtl = rtl
                     )
                 }
             }
@@ -294,6 +300,7 @@ fun LyricsLineContentView(
     endMillis: Long,
     style: TextStyle,
     align: TextAlign,
+    rtl: Boolean,
     modifier: Modifier = Modifier
 ) {
     val effectDuration = ((endMillis - startMillis) / 2).coerceAtMost(500).toInt()
@@ -340,6 +347,7 @@ fun LyricsLineContentView(
             contentColor = contentColor.copy(alpha = 1f),
             style = style,
             align = align,
+            rtl = rtl,
             modifier = modifier.graphicsLayer {
                 renderEffect = blurEffect
             }
@@ -373,6 +381,7 @@ fun LyricsLineContentView(
                     fontWeight = FontWeight.Normal
                 ),
                 align = align,
+                rtl = rtl,
                 modifier = modifier.graphicsLayer {
                     renderEffect = blurEffect
                 }
@@ -451,6 +460,7 @@ private fun SyllableText(
     contentColor: Color,
     style: TextStyle,
     align: TextAlign,
+    rtl: Boolean,
     modifier: Modifier = Modifier
 ) {
     val textMeasurer = rememberTextMeasurer()
@@ -469,7 +479,8 @@ private fun SyllableText(
         textLayout = textLayout,
         textAlign = align,
         textWidth = textWidth,
-        progress = progressFraction
+        progress = progressFraction,
+        rtl = rtl
     ) {
         Text(
             text = content,
@@ -491,8 +502,8 @@ private fun HorizontalReveal(
     textWidth: Int,
     selectedLine: Boolean,
     progress: Float,
+    rtl: Boolean,
     modifier: Modifier = Modifier,
-    rtl: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val lineRect = rememberLineRect(textLayout)
@@ -572,13 +583,14 @@ private fun HorizontalReveal(
 private fun LyricsLineBox(
     style: TextStyle,
     align: TextAlign,
+    rtl: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.(transformOrigin: TransformOrigin) -> Unit
 ) {
     val transformOrigin = when (align) {
-        TextAlign.End -> TransformOrigin(1f, 1f)
-        TextAlign.Start -> TransformOrigin(0f, 1f)
+        TextAlign.End -> if (rtl) TransformOrigin(0f, 1f) else TransformOrigin(1f, 1f)
+        TextAlign.Start -> if (rtl) TransformOrigin(1f, 1f) else TransformOrigin(0f, 1f)
         else -> TransformOrigin.Center
     }
 
