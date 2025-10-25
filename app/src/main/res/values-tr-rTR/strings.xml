@@ -745,6 +745,8 @@
     <string name="stop_when_closed_from_recents_title">Son uygulamalardan kapatılınca durdur</string>
     <string name="stop_when_closed_from_recents_summary">Uygulama son uygulamalar listesinden kapatılırsa oynatma durur.</string>
     <string name="stop_when_closed_from_recents_note">Not: Agresif bellek veya pil yönetimine sahip bazı cihazlar bu ayarı yoksayabilir ve son uygulamalardan kaldırıldığında uygulamayı her zaman durdurabilir.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation to portrait mode. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Açık</string>
     <string name="dark_theme_name">Koyu</string>
