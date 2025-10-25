@@ -94,8 +94,6 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setupListeners() {
-        binding.title.setOnClickListener(this)
-        binding.text.setOnClickListener(this)
         binding.playPauseButton.setOnClickListener(this)
         binding.shuffleButton.setOnClickListener(this)
         binding.repeatButton.setOnClickListener(this)

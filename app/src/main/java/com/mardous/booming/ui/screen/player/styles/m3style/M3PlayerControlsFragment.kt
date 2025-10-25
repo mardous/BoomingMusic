@@ -75,8 +75,6 @@ class M3PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_m3_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentM3PlayerPlaybackControlsBinding.bind(view)
-        binding.title.setOnClickListener(this)
-        binding.text.setOnClickListener(this)
         binding.playPauseButton.setOnClickListener(this)
         binding.shuffleButton.setOnClickListener(this)
         binding.repeatButton.setOnClickListener(this)
