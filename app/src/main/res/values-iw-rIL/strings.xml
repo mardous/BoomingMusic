@@ -766,6 +766,8 @@
     <string name="stop_when_closed_from_recents_title">עצור כאשר נסגר מהאחרונים</string>
     <string name="stop_when_closed_from_recents_summary">הניגון ייעצר אם האפליקציה תיסגר מרשימת האחרונים.</string>
     <string name="stop_when_closed_from_recents_note">הערה: במכשירים מסוימים עם ניהול זיכרון או סוללה אגרסיבי, ייתכן שהגדרה זו תתעלם והאפליקציה תיעצר תמיד כאשר מסירים אותה מהרשימה האחרונה.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation to portrait mode. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">בהיר</string>
     <string name="dark_theme_name">כהה</string>
