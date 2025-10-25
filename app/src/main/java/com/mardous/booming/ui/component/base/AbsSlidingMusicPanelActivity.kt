@@ -201,9 +201,6 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     override fun onResume() {
         super.onResume()
         Preferences.registerOnSharedPreferenceChangeListener(this)
-        if (nowPlayingScreen != Preferences.nowPlayingScreen) {
-            postRecreate()
-        }
         if (bottomSheetBehavior.state == STATE_EXPANDED) {
             setMiniPlayerAlphaProgress(1f)
         }

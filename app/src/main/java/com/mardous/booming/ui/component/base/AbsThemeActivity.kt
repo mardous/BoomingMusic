@@ -19,8 +19,6 @@ package com.mardous.booming.ui.component.base
 
 import android.graphics.Color.TRANSPARENT
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -73,12 +71,6 @@ abstract class AbsThemeActivity : AppCompatActivity() {
         if (Preferences.isCustomFont) {
             setTheme(R.style.ManropeThemeOverlay)
         }
-    }
-
-    protected open fun postRecreate() {
-        // hack to prevent java.lang.RuntimeException: Performing pause of activity that is not resumed
-        // makes sure recreate() is called right after and not in onResume()
-        Handler(Looper.getMainLooper()).post { recreate() }
     }
 
     fun setLightStatusBar(lightStatusBar: Boolean = surfaceColor().isColorLight) {
