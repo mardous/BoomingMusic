@@ -648,6 +648,8 @@
     <string name="circle_button_title">丸い再生ボタン</string>
     <string name="swipe_album_cover_title">アルバムカバーをスワイプ</string>
     <string name="swipe_album_cover_summary">アルバムカバーを左右にスワイプして曲間をスキップします。</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">カバーをシングルタップ</string>
     <string name="double_tap_on_album_cover_title">カバーをダブルタップする</string>
     <string name="long_press_on_album_cover_title">カバーを長押しする</string>
@@ -695,6 +697,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Bluetooth A2DP ヘッドセットが切断されたときに再生を一時停止します。</string>
     <string name="ignore_audio_focus_title">オーディオフォーカスを無視</string>
     <string name="ignore_audio_focus_summary">他の再生に関係なく、常にバックグラウンドでオーディオを再生します。</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">メタデータの自動ダウンロード</string>
     <string name="ignore_media_store_album_covers_title">メディアストアのカバーを無視</string>
