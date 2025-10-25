@@ -8,7 +8,6 @@ import android.bluetooth.BluetoothA2dp
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothProfile
 import android.content.*
-import android.media.AudioManager
 import android.os.*
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
@@ -36,6 +35,7 @@ import com.mardous.booming.coil.CoilBitmapLoader
 import com.mardous.booming.core.appwidgets.AppWidgetBig
 import com.mardous.booming.core.appwidgets.AppWidgetSimple
 import com.mardous.booming.core.appwidgets.AppWidgetSmall
+import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
@@ -51,8 +51,6 @@ import com.mardous.booming.playback.library.LibraryProvider
 import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
-import com.mardous.booming.playback.volume.AudioVolumeObserver
-import com.mardous.booming.playback.volume.OnAudioVolumeChangedListener
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.util.*
 import com.mardous.booming.util.Preferences.requireString
@@ -68,8 +66,7 @@ class PlaybackService :
     MediaLibraryService(),
     MediaLibrarySession.Callback,
     Player.Listener,
-    SharedPreferences.OnSharedPreferenceChangeListener,
-    OnAudioVolumeChangedListener{
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val serviceScope = CoroutineScope(Job() + Main)
     private val uiHandler = Handler(Looper.getMainLooper())
@@ -81,6 +78,7 @@ class PlaybackService :
     private val preferences: SharedPreferences by inject()
     private val sleepTimer: SleepTimer by inject()
     private val equalizerManager: EqualizerManager by inject()
+    private val audioOutputObserver: AudioOutputObserver by inject()
     private val soundSettings: SoundSettings by inject()
     private val repository: Repository by inject()
 
@@ -106,6 +104,7 @@ class PlaybackService :
     private val balanceProcessor = BalanceAudioProcessor()
     private val replayGainProcessor = ReplayGainAudioProcessor(ReplayGainMode.Off)
 
+    private var pausedByZeroVolume = false
     private var hasSetUnshuffledOrder = false
     private var stopIndex = -1
 
@@ -135,6 +134,8 @@ class PlaybackService :
             else -> customCommands[2]
         }
 
+    private val pauseOnZeroVolume: Boolean
+        get() = preferences.getBoolean(PAUSE_ON_ZERO_VOLUME, false)
     private val sequentialTimeline: Boolean
         get() = preferences.getString(QUEUE_NEXT_MODE, "1") == "1"
     private val handleAudioFocus: Boolean
@@ -258,11 +259,12 @@ class PlaybackService :
 
         preferences.registerOnSharedPreferenceChangeListener(this)
 
+        if (pauseOnZeroVolume) {
+            audioOutputObserver.startObserver()
+        }
+
         prepareEqualizerAndSoundSettings()
         registerReceivers()
-
-        val audioVolumeObserver = AudioVolumeObserver(this)
-        audioVolumeObserver.register(AudioManager.STREAM_MUSIC, this)
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
@@ -285,8 +287,7 @@ class PlaybackService :
         LocalBroadcastManager.getInstance(this).unregisterReceiver(widgetIntentReceiver)
         serviceScope.cancel()
         preferences.unregisterOnSharedPreferenceChangeListener(this)
-        val audioVolumeObserver = AudioVolumeObserver(this)
-        audioVolumeObserver.unregister()
+        audioOutputObserver.stopObserver()
         mediaStoreObserver.stop(this)
         mediaSession?.release()
         player.removeListener(this)
@@ -699,6 +700,14 @@ class PlaybackService :
                 player.seekBackIncrement = seekInterval
                 player.seekForwardIncrement = seekInterval
             }
+
+            PAUSE_ON_ZERO_VOLUME -> {
+                if (pauseOnZeroVolume) {
+                    audioOutputObserver.startObserver()
+                } else {
+                    audioOutputObserver.stopObserver()
+                }
+            }
         }
     }
 
@@ -778,6 +787,20 @@ class PlaybackService :
     private fun prepareEqualizerAndSoundSettings() {
         serviceScope.launch(IO) {
             equalizerManager.initializeEqualizer()
+        }
+        serviceScope.launch {
+            audioOutputObserver.volumeStateFlow.collect { volume ->
+                if (pauseOnZeroVolume && persistentStorage.restorationState.isRestored) {
+                    // don't handle volume changes until our player is fully restored
+                    if (isPlaying && volume.currentVolume < 1) {
+                        player.pause()
+                        pausedByZeroVolume = true
+                    } else if (pausedByZeroVolume && volume.currentVolume >= 1) {
+                        player.play()
+                        pausedByZeroVolume = false
+                    }
+                }
+            }
         }
         serviceScope.launch {
             soundSettings.audioOffloadFlow.collect { audioOffloadingEnabled ->
@@ -909,17 +932,6 @@ class PlaybackService :
                     appWidgetSmall.performUpdate(this@PlaybackService, ids)
                 }
             }
-        }
-    }
-
-    private var pausedByZeroVolume = false
-    override fun onAudioVolumeChanged(currentVolume: Int, maxVolume: Int) {
-        if (isPlaying && currentVolume < 1) {
-            player.pause()
-            pausedByZeroVolume = true
-        } else if (pausedByZeroVolume && currentVolume >= 1) {
-            player.play()
-            pausedByZeroVolume = false
         }
     }
 

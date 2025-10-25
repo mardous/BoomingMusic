@@ -24,6 +24,7 @@ import android.content.IntentFilter
 import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.media.AudioManagerCompat.getStreamMaxVolume
@@ -66,7 +67,7 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     }
 
     fun startObserver() {
-        if (!isObserving) {
+        if (!isObserving) try {
             val filter = IntentFilter().apply {
                 addAction(VOLUME_CHANGED_ACTION)
                 addAction(Intent.ACTION_HEADSET_PLUG)
@@ -74,14 +75,18 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
             ContextCompat.registerReceiver(context, this, filter, ContextCompat.RECEIVER_EXPORTED)
             audioManager?.registerAudioDeviceCallback(audioDeviceCallback, null)
             this.isObserving = true
+        } catch (e: Throwable) {
+            Log.e(TAG, "Unable to start audio output observer", e)
         }
     }
 
     fun stopObserver() {
-        if (isObserving) {
+        if (isObserving) try {
             context.unregisterReceiver(this)
             audioManager?.unregisterAudioDeviceCallback(audioDeviceCallback)
             this.isObserving = false
+        } catch (e: Throwable) {
+            Log.e(TAG, "Unable to stop audio output observer", e)
         }
     }
 
@@ -142,6 +147,7 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     }
 
     companion object {
+        private const val TAG = "AudioOutputObserver"
         private const val VOLUME_CHANGED_ACTION = "android.media.VOLUME_CHANGED_ACTION"
     }
 }
