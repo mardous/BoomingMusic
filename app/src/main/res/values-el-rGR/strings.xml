@@ -656,6 +656,8 @@
     <string name="circle_button_title">Κυκλικό κουμπί αναπαραγωγής</string>
     <string name="swipe_album_cover_title">Σύρετε το εξώφυλλο άλμπουμ</string>
     <string name="swipe_album_cover_summary">Σύρετε αριστερά και δεξιά στο εξώφυλλο του άλμπουμ για να παραλείψετε μεταξύ τραγουδιών.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Διπλό χτύπημα στο εξώφυλλο</string>
     <string name="long_press_on_album_cover_title">Παρατεταμένο πάτημα στο εξώφυλλο</string>
@@ -703,6 +705,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Παύση της αναπαραγωγής όταν αποσυνδεθούν τα ακουστικά Bluetooth A2DP. Συνιστάται.</string>
     <string name="ignore_audio_focus_title">Παράβλεψη εστίασης ήχου</string>
     <string name="ignore_audio_focus_summary">Πάντα αναπαραγωγή ήχου στο παρασκήνιο ανεξάρτητα από οτιδήποτε άλλο αναπαράγεται.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Αυτόματη λήψη μεταδεδομένων</string>
     <string name="ignore_media_store_album_covers_title">Αγνοήστε τα καλύμματα του Media Store</string>
