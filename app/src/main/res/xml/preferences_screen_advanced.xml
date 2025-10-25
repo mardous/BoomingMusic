@@ -13,6 +13,14 @@
         app:layout="@layout/list_item_view"
         app:key="language_name"/>
 
+    <SwitchPreferenceCompat
+        app:title="@string/rotation_lock_title"
+        app:summary="@string/rotation_lock_summary"
+        app:defaultValue="false"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:key="enable_rotation_lock"/>
+
     <PreferenceCategory
         app:title="@string/playback_title"
         app:layout="@layout/preference_category_title">

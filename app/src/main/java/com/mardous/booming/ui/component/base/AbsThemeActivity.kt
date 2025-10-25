@@ -17,6 +17,8 @@
 
 package com.mardous.booming.ui.component.base
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.graphics.Color.TRANSPARENT
 import android.os.Bundle
 import androidx.activity.SystemBarStyle
@@ -41,6 +43,7 @@ abstract class AbsThemeActivity : AppCompatActivity() {
 
     private var windowInsetsController: WindowInsetsControllerCompat? = null
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         updateTheme()
         enableEdgeToEdge(navigationBarStyle = SystemBarStyle.auto(TRANSPARENT, TRANSPARENT))
@@ -49,6 +52,9 @@ abstract class AbsThemeActivity : AppCompatActivity() {
         if (hasQ()) {
             window.isNavigationBarContrastEnforced = false
             window.decorView.isForceDarkAllowed = false
+        }
+        if (Preferences.rotationLockEnabled) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
         }
         ViewGroupCompat.installCompatInsetsDispatch(window.decorView)
     }

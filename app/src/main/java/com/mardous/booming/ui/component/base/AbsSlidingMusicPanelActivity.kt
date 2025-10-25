@@ -20,6 +20,7 @@ package com.mardous.booming.ui.component.base
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
@@ -506,6 +507,14 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
             SWIPE_TO_DISMISS -> bottomSheetBehavior.isHideable =
                 Preferences.swipeDownToDismiss
+
+            ENABLE_ROTATION_LOCK -> {
+                requestedOrientation = if (preferences.getBoolean(key, false)) {
+                    ActivityInfo.SCREEN_ORIENTATION_LOCKED
+                } else {
+                    ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+                }
+            }
         }
     }
 

@@ -376,6 +376,9 @@ object Preferences : KoinComponent {
             NotificationExtraText.ALBUM_NAME
         )
 
+    val rotationLockEnabled: Boolean
+        get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)
+
     val updateSearchMode: String
         get() = preferences.requireString(UPDATE_SEARCH_MODE, UpdateSearchMode.WEEKLY)
 
@@ -619,6 +622,7 @@ const val BLACKLIST_ENABLED = "blacklist_enabled"
 const val ARTIST_MINIMUM_SONGS = "artist_minimum_songs"
 const val ALBUM_MINIMUM_SONGS = "album_minimum_songs"
 const val MINIMUM_SONG_DURATION = "minimum_song_duration"
+const val ENABLE_ROTATION_LOCK = "enable_rotation_lock"
 const val STOP_WHEN_CLOSED_FROM_RECENTS = "stop_when_closed_from_recents"
 const val NOTIFICATION_EXTRA_TEXT_LINE = "notification_extra_text_line"
 const val LANGUAGE_NAME = "language_name"
