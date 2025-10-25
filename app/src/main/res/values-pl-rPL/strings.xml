@@ -767,6 +767,8 @@
     <string name="stop_when_closed_from_recents_summary">Zatrzymuje odtwarzanie po zamknięciu aplikacji z listy ostatnich aplikacji.</string>
     <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią
         lub baterią mogą ignorować to ustawienie i zawsze zatrzymywać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation to portrait mode. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Jasny</string>
     <string name="dark_theme_name">Ciemny</string>
