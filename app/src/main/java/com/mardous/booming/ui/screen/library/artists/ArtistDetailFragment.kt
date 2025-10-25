@@ -237,8 +237,7 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
             return
         }
 
-        binding.image.artistImage(artist) { crossfade(false) }
-
+        loadImage(artist)
         if (requireContext().isAllowedToDownloadMetadata()) {
             loadBiography(artist.name)
         }
@@ -260,6 +259,10 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
         if (artist.isAlbumArtist) {
             loadSimilarArtists(artist)
         }
+    }
+
+    private fun loadImage(artist: Artist) {
+        binding.image.artistImage(artist) { crossfade(false) }
     }
 
     private fun loadBiography(name: String, lang: String? = Locale.getDefault().language) {
@@ -432,6 +435,14 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
     override fun onMediaContentChanged() {
         super.onMediaContentChanged()
         detailViewModel.loadArtistDetail()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val artist = getArtist()
+        if (artist != Artist.empty) {
+            loadImage(artist)
+        }
     }
 
     override fun onDestroyView() {

@@ -24,6 +24,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import coil3.SingletonImageLoader
+import coil3.request.CachePolicy
 import coil3.request.ImageRequest
 import coil3.toBitmap
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -124,6 +125,7 @@ class ArtistTagEditorActivity : AbsTagEditorActivity() {
                 .enqueue(
                     ImageRequest.Builder(this)
                         .data(artist)
+                        .memoryCachePolicy(CachePolicy.WRITE_ONLY)
                         .listener(
                             onError = { _, _ ->
                                 setImageBitmap(null)

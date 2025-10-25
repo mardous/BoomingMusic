@@ -16,7 +16,7 @@ class ArtistDetailViewModel(
 
     private val _artistDetail = MutableLiveData<Artist>()
 
-    fun getArtist() = getArtistDetail().value ?: Artist.Companion.empty
+    fun getArtist() = getArtistDetail().value ?: Artist.empty
 
     fun getArtistDetail(): LiveData<Artist> = _artistDetail
 
@@ -26,7 +26,7 @@ class ArtistDetailViewModel(
         } else if (artistId != -1L) {
             _artistDetail.postValue(repository.artistById(artistId))
         } else {
-            _artistDetail.postValue(Artist.Companion.empty)
+            _artistDetail.postValue(Artist.empty)
         }
     }
 
