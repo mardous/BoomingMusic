@@ -674,6 +674,8 @@
     <string name="circle_button_title">Круглая кнопка воспроизведения</string>
     <string name="swipe_album_cover_title">Свайп по обложке альбома</string>
     <string name="swipe_album_cover_summary">Проведите по обложке альбома влево и вправо, чтобы переключать песни.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Однократное нажатие на обложку</string>
     <string name="double_tap_on_album_cover_title">Двойное нажатие на обложку</string>
     <string name="long_press_on_album_cover_title">Долгое нажатие на обложку</string>
@@ -721,6 +723,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Приостанавливает воспроизведение при отключении Bluetooth A2DP-гарнитуры. Рекомендуется.</string>
     <string name="ignore_audio_focus_title">Игнорировать фокус аудио</string>
     <string name="ignore_audio_focus_summary">Всегда воспроизводить аудио в фоновом режиме независимо от другого воспроизведения.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Автоматически загружать метаданные</string>
     <string name="ignore_media_store_album_covers_title">Игнорировать обложки изMediaStore</string>
