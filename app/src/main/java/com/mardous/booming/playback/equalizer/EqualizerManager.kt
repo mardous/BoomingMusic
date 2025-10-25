@@ -60,11 +60,10 @@ class EqualizerManager internal constructor(context: Context) {
     private val _presetsFlow: MutableStateFlow<EqPresetList>
 
     var audioSessionId = AudioEffect.ERROR_BAD_VALUE
-        set(value) {
-            closeAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
-            field = value
-            openAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
-        }
+        private set
+
+    var isSessionActive = false
+        private set
 
     val eqStateFlow get() = _eqStateFlow
     val bassBoostFlow get() = _bassBoostFlow
@@ -114,11 +113,17 @@ class EqualizerManager internal constructor(context: Context) {
             it.debounce(100)
                 .onEach { newState ->
                     if (newState.isUsable) {
-                        closeAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
-                        openAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
+                        eqSession.changeSessionType(
+                            oldSessionType = EqualizerSession.SESSION_EXTERNAL,
+                            newSessionType = EqualizerSession.SESSION_INTERNAL,
+                            audioSessionId = audioSessionId
+                        )
                     } else {
-                        closeAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
-                        openAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
+                        eqSession.changeSessionType(
+                            oldSessionType = EqualizerSession.SESSION_INTERNAL,
+                            newSessionType = EqualizerSession.SESSION_EXTERNAL,
+                            audioSessionId = audioSessionId
+                        )
                     }
                 }
                 .launchIn(eqScope)
@@ -162,14 +167,6 @@ class EqualizerManager internal constructor(context: Context) {
         _virtualizerFlow.emit(initializeVirtualizerState())
         _loudnessGainFlow.emit(initializeLoudnessGain())
         _presetReverbFlow.emit(initializePresetReverb())
-    }
-
-    fun openAudioEffectSession(@EqualizerSession.SessionType sessionType: Int) {
-        eqSession.openEqualizerSession(sessionType, audioSessionId)
-    }
-
-    fun closeAudioEffectSession(@EqualizerSession.SessionType sessionType: Int) {
-        eqSession.closeEqualizerSessions(sessionType, audioSessionId)
     }
 
     fun release() {
@@ -391,6 +388,22 @@ class EqualizerManager internal constructor(context: Context) {
         eqSession.update()
     }
 
+    fun setSessionId(audioSessionId: Int) {
+        val oldIsActive = this.isSessionActive
+        setSessionIsActiveImpl(
+            isActive = false,
+            isCloseInternal = this.audioSessionId != AudioEffect.ERROR_BAD_VALUE
+        )
+        this.audioSessionId = audioSessionId
+        if (oldIsActive && audioSessionId != AudioEffect.ERROR_BAD_VALUE) {
+            setSessionIsActiveImpl(isActive = true, isCloseInternal = false)
+        }
+    }
+
+    fun setSessionIsActive(isActive: Boolean) {
+        setSessionIsActiveImpl(isActive, false)
+    }
+
     suspend fun setTransientEqualizerState(enabled: Boolean, supported: Boolean = enabled) {
         setEqualizerState(
             update = EqUpdate(
@@ -524,6 +537,26 @@ class EqualizerManager internal constructor(context: Context) {
                 setCustomPresetEffect(EFFECT_TYPE_VIRTUALIZER, state.value)
             }
         )
+    }
+
+    private fun setSessionIsActiveImpl(isActive: Boolean, isCloseInternal: Boolean) {
+        this.isSessionActive = isActive
+        if (isActive) {
+            if (eqState.isEnabled) {
+                eqSession.changeSessionType(
+                    oldSessionType = EqualizerSession.SESSION_EXTERNAL,
+                    newSessionType = EqualizerSession.SESSION_INTERNAL,
+                    audioSessionId = audioSessionId
+                )
+            } else {
+                eqSession.openEqualizerSession(EqualizerSession.SESSION_EXTERNAL, audioSessionId)
+            }
+        } else {
+            eqSession.closeEqualizerSessions(EqualizerSession.SESSION_EXTERNAL, audioSessionId)
+            if (isCloseInternal) {
+                eqSession.closeEqualizerSessions(EqualizerSession.SESSION_INTERNAL, audioSessionId)
+            }
+        }
     }
 
     var numberOfBands: Int

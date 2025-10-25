@@ -46,7 +46,6 @@ import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.playback.equalizer.EqualizerManager
-import com.mardous.booming.playback.equalizer.EqualizerSession
 import com.mardous.booming.playback.library.LibraryProvider
 import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
@@ -211,12 +210,6 @@ class PlaybackService :
 
         player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(0, 0, Random.nextLong())
         player.setSequentialTimelineEnabled(sequentialTimeline)
-        player.addListener(object : Player.Listener {
-            override fun onAudioSessionIdChanged(audioSessionId: Int) {
-                // See: https://github.com/androidx/media/issues/244
-                this@PlaybackService.onAudioSessionIdChanged(audioSessionId)
-            }
-        })
         player.addListener(this)
 
         notificationProvider = BoomingNotificationProvider(
@@ -341,7 +334,7 @@ class PlaybackService :
     }
 
     override fun onAudioSessionIdChanged(audioSessionId: Int) {
-        equalizerManager.audioSessionId = audioSessionId
+        equalizerManager.setSessionId(audioSessionId)
     }
 
     override fun onGetLibraryRoot(
@@ -595,17 +588,7 @@ class PlaybackService :
     }
 
     override fun onIsPlayingChanged(isPlaying: Boolean) {
-        if (isPlaying) {
-            if (equalizerManager.eqState.isEnabled) {
-                //Shutdown any existing external audio sessions
-                equalizerManager.closeAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
-                //Start internal equalizer session (will only turn on if enabled)
-                equalizerManager.openAudioEffectSession(EqualizerSession.SESSION_INTERNAL)
-            } else {
-                equalizerManager.openAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
-            }
-        } else {
-            equalizerManager.closeAudioEffectSession(EqualizerSession.SESSION_EXTERNAL)
+        if (!isPlaying) {
             val currentDurationMs = player.mediaMetadata.durationMs ?: 0
             if (currentDurationMs > 0) {
                 if (!player.currentTimeline.isEmpty) {
@@ -613,6 +596,7 @@ class PlaybackService :
                 }
             }
         }
+        equalizerManager.setSessionIsActive(isPlaying)
         songPlayCountHelper.notifyPlayStateChanged(isPlaying)
         updateWidgets()
     }
