@@ -18,6 +18,7 @@
 package com.mardous.booming.ui.screen.queue
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -26,6 +27,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.h6ah4i.android.widget.advrecyclerview.animator.RefactoredDefaultItemAnimator
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager
@@ -36,6 +38,7 @@ import com.mardous.booming.data.model.QueuePosition
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentQueueBinding
 import com.mardous.booming.extensions.applyScrollableContentInsets
+import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.resources.createFastScroller
@@ -77,6 +80,17 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
         get() = playerViewModel.position
 
     override fun getTheme(): Int = R.style.BottomSheetDialogTheme_EdgeToEdge
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+        dialog.setOnShowListener {
+            dialog.behavior.apply {
+                peekHeight = dip(R.dimen.queue_height)
+                maxHeight = peekHeight
+            }
+        }
+        return dialog
+    }
 
     @OptIn(FlowPreview::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
