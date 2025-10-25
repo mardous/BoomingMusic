@@ -49,15 +49,12 @@ import com.mardous.booming.ui.adapters.pager.CustomFragmentStatePagerAdapter
 import com.mardous.booming.ui.component.transform.CarouselPagerTransformer
 import com.mardous.booming.ui.component.transform.ParallaxPagerTransformer
 import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.ui.screen.player.QUEUE_DEBOUNCE
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment.ColorReceiver
 import com.mardous.booming.util.LEFT_RIGHT_SWIPING
 import com.mardous.booming.util.LYRICS_ON_COVER
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.debounce
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewPager.OnPageChangeListener,
@@ -154,9 +151,7 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
     private fun setupEventObserver() {
         viewPager.addOnPageChangeListener(this)
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.queueFlow
-                .debounce(QUEUE_DEBOUNCE)
-                .collectLatest { queue ->
+            playerViewModel.queueFlow.collect { queue ->
                     _binding?.viewPager?.let { pager ->
                         pager.adapter = AlbumCoverPagerAdapter(parentFragmentManager, queue)
                         pager.doOnPreDraw {
