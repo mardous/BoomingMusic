@@ -163,7 +163,7 @@ class MetadataWriter : KoinComponent {
             val newValue = if (newValueRaw.isNullOrBlank()) {
                 emptyArray()
             } else {
-                arrayOf(newValueRaw)
+                arrayOf(newValueRaw.trim())
             }
             currentProperties[key] = newValue
         }
