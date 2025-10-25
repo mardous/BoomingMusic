@@ -39,16 +39,13 @@ import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropM
 import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils
 import com.mardous.booming.R
 import com.mardous.booming.coil.songImage
+import com.mardous.booming.core.model.theme.NowPlayingButtonStyle
 import com.mardous.booming.data.model.QueuePosition
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentQueueBinding
-import com.mardous.booming.extensions.applyScrollableContentInsets
-import com.mardous.booming.extensions.dip
-import com.mardous.booming.extensions.isLandscape
-import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
+import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.resources.createFastScroller
-import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.PlayingQueueSongAdapter
 import com.mardous.booming.ui.component.menu.newPopupMenu
@@ -139,8 +136,13 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
 
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.isPlayingFlow.collect { isPlaying ->
+                val style = if (Preferences.adaptiveControls) {
+                    Preferences.nowPlayingScreen.buttonStyle
+                } else {
+                    NowPlayingButtonStyle.Normal
+                }
                 binding.currentItem.dragView.setImageResource(
-                    if (isPlaying) R.drawable.ic_pause_24dp else R.drawable.ic_play_24dp
+                    if (isPlaying) style.pause else style.play
                 )
             }
         }
