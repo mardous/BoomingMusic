@@ -656,6 +656,8 @@
     <string name="circle_button_title">Cirkulär uppspelningsknapp</string>
     <string name="swipe_album_cover_title">Svep albumomslag</string>
     <string name="swipe_album_cover_summary">Svep åt vänster och höger på skivomslaget för att hoppa mellan låtarna.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dubbeltryck på omslaget</string>
     <string name="long_press_on_album_cover_title">Långtryck på omslaget</string>
@@ -703,6 +705,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pausar uppspelning när Bluetooth A2DP-headset kopplas ifrån. Rekommenderas.</string>
     <string name="ignore_audio_focus_title">Ignorera ljudfokus</string>
     <string name="ignore_audio_focus_summary">Spela alltid upp ljud i bakgrunden oavsett något annat som spelas.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Ladda ner metadata automatiskt</string>
     <string name="ignore_media_store_album_covers_title">Ignorera Media Store-omslag</string>
