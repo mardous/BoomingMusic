@@ -19,11 +19,16 @@ package com.mardous.booming.ui.screen.queue
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowInsets
+import android.view.WindowManager
+import androidx.annotation.Px
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
+import androidx.core.content.getSystemService
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -39,6 +44,7 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentQueueBinding
 import com.mardous.booming.extensions.applyScrollableContentInsets
 import com.mardous.booming.extensions.dip
+import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.resources.createFastScroller
@@ -56,6 +62,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
+import kotlin.math.roundToInt
 
 /**
  * @author Christians M. A. (mardous)
@@ -83,13 +90,16 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-        if (Preferences.queueHeight) {
-            dialog.setOnShowListener {
+        val queueHeight = getFixedQueueHeight()
+        if (!isLandscape()) {
+            if (Preferences.queueHeight) {
                 dialog.behavior.apply {
-                    peekHeight = dip(R.dimen.queue_height)
-                    maxHeight = peekHeight
+                    peekHeight = queueHeight
+                    maxHeight = queueHeight
                 }
             }
+        } else {
+            dialog.behavior.peekHeight = queueHeight
         }
         return dialog
     }
@@ -156,6 +166,24 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
                     playingQueueAdapter?.setPlayingQueue(queue.toMutableList(), position.current)
                 }
             }
+        }
+    }
+
+    @Px
+    private fun getFixedQueueHeight(): Int {
+        val windowManager = requireContext().getSystemService<WindowManager>()
+        if (windowManager == null) return dip(R.dimen.queue_height)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val metrics = windowManager.currentWindowMetrics
+            val insets = metrics.windowInsets
+                .getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
+            val height = metrics.bounds.height() + insets.bottom
+            return (height / 2f).roundToInt()
+        } else {
+            @Suppress("DEPRECATION")
+            val displayMetrics = resources.displayMetrics
+            return (displayMetrics.heightPixels / 2f).roundToInt()
         }
     }
 
