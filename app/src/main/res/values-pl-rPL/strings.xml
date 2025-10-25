@@ -535,7 +535,7 @@
     <string name="app_shortcut_shuffle_all_short">Losuj</string>
     <string name="app_shortcut_top_tracks_short">Najczęściej odtwarzane</string>
     <string name="app_shortcut_last_added_short">Ostatnio dodane</string>
-    <string name="app_shortcut_favorites_short">Ulubione</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">O programie</string>
     <string name="application">Aplikacja</string>
@@ -722,7 +722,7 @@
     <string name="ignore_audio_focus_title">Ignoruj ostrość dźwięku</string>
     <string name="ignore_audio_focus_summary">Zawsze odtwarzaj dźwięk w tle niezależnie od tego, co jest odtwarzane.</string>
     <string name="pause_on_zero_volume_title">Pause on zero volume</string>
-    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Pobieranie metadanych</string>
     <string name="ignore_media_store_album_covers_title">Nie używaj okładek z magazynu multimediów</string>
@@ -768,7 +768,7 @@
     <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią
         lub baterią mogą ignorować to ustawienie i zawsze zatrzymywać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
     <string name="rotation_lock_title">Rotation lock</string>
-    <string name="rotation_lock_summary">Lock the device\'s orientation to portrait mode. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Jasny</string>
     <string name="dark_theme_name">Ciemny</string>
