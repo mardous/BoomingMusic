@@ -656,6 +656,8 @@
     <string name="circle_button_title">Circulaire afspeelknop</string>
     <string name="swipe_album_cover_title">Swipe albumhoes</string>
     <string name="swipe_album_cover_summary">Veeg naar links en rechts op de albumhoes om tussen nummers over te slaan.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dubbele tik op de afdekking</string>
     <string name="long_press_on_album_cover_title">Lang drukken op omslag</string>
@@ -703,6 +705,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pauzeert afspelen wanneer Bluetooth A2DP headset is losgekoppeld. Aanbevolen.</string>
     <string name="ignore_audio_focus_title">Negeer audiofocus</string>
     <string name="ignore_audio_focus_summary">Altijd audio op de achtergrond afspelen ongeacht alles wat wordt afgespeeld.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Metadata automatisch downloaden</string>
     <string name="ignore_media_store_album_covers_title">Negeer Media Store covers</string>
