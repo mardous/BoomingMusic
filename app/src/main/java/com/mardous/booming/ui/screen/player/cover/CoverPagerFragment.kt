@@ -35,6 +35,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.viewpager.widget.ViewPager
 import com.mardous.booming.R
 import com.mardous.booming.core.model.PaletteColor
@@ -43,7 +45,9 @@ import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlayerAlbumCoverBinding
 import com.mardous.booming.extensions.isLandscape
+import com.mardous.booming.extensions.keepScreenOn
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
+import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.resources.BOOMING_ANIM_TIME
 import com.mardous.booming.ui.adapters.pager.CustomFragmentStatePagerAdapter
 import com.mardous.booming.ui.component.transform.CarouselPagerTransformer
@@ -57,8 +61,10 @@ import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewPager.OnPageChangeListener,
-    SharedPreferences.OnSharedPreferenceChangeListener {
+class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
+    ViewPager.OnPageChangeListener,
+    SharedPreferences.OnSharedPreferenceChangeListener,
+    NavController.OnDestinationChangedListener {
 
     private val playerViewModel: PlayerViewModel by activityViewModel()
 
@@ -72,6 +78,8 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
     }
 
     private var isAnimatingLyrics: Boolean = false
+    private val isLyricsViewVisible: Boolean
+        get() = _binding?.coverLyricsFragment?.isVisible == true
     private var isShowLyricsOnCover: Boolean
         get() = Preferences.showLyricsOnCover
         set(value) { Preferences.showLyricsOnCover = value }
@@ -107,20 +115,34 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
         _binding = FragmentPlayerAlbumCoverBinding.bind(view)
         coverLyricsFragment =
             childFragmentManager.findFragmentById(R.id.coverLyricsFragment) as? CoverLyricsFragment
+        findActivityNavController(R.id.fragment_container).addOnDestinationChangedListener(this)
         setupPageTransformer()
         setupEventObserver()
         Preferences.registerOnSharedPreferenceChangeListener(this)
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onStart() {
         super.onStart()
+        @SuppressLint("ClickableViewAccessibility")
         viewPager.setOnTouchListener { _, event ->
             val adapter = viewPager.adapter ?: return@setOnTouchListener false
             if (!isAdded || adapter.count == 0) {
-                return@setOnTouchListener false
+                false
+            } else {
+                gestureDetector?.onTouchEvent(event) ?: false
             }
-            gestureDetector?.onTouchEvent(event) ?: false
+        }
+    }
+
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: androidx.savedstate.SavedState?
+    ) {
+        if (isLyricsViewVisible && isShowLyricsOnCover) {
+            // If the user opens any of queue, sound settings or song details dialogs
+            // we must ensure that we don't keep the screen on unnecessarily.
+            activity?.keepScreenOn(destination.navigatorName != "dialog" && playerViewModel.isPlaying)
         }
     }
 
@@ -177,6 +199,11 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
                 }
             }
         }
+        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
+            playerViewModel.isPlayingFlow.collect {
+                activity?.keepScreenOn(isShowLyricsOnCover && isLyricsViewVisible)
+            }
+        }
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
@@ -211,6 +238,7 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
     override fun onDestroyView() {
         viewPager.adapter = null
         viewPager.removeOnPageChangeListener(this)
+        findActivityNavController(R.id.fragment_container).removeOnDestinationChangedListener(this)
         Preferences.unregisterOnSharedPreferenceChangeListener(this)
         super.onDestroyView()
         gestureDetector = null
@@ -245,6 +273,7 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
         }
         animatorSet.doOnStart {
             coverLyricsFragment?.let { fragment ->
+                activity?.keepScreenOn(playerViewModel.isPlaying)
                 childFragmentManager.beginTransaction()
                     .setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
                     .commitAllowingStateLoss()
@@ -272,6 +301,7 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover), ViewP
         }
         animatorSet.doOnEnd {
             coverLyricsFragment?.let { fragment ->
+                activity?.keepScreenOn(false)
                 childFragmentManager.beginTransaction()
                     .setMaxLifecycle(fragment, Lifecycle.State.STARTED)
                     .commitAllowingStateLoss()

@@ -6,11 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import com.mardous.booming.R
 import com.mardous.booming.extensions.currentFragment
-import com.mardous.booming.extensions.keepScreenOn
-import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.ui.component.base.goToDestination
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.lyrics.CoverLyricsScreen
@@ -46,19 +43,5 @@ class CoverLyricsFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewLifecycleOwner.launchAndRepeatWithViewLifecycle(Lifecycle.State.RESUMED) {
-            playerViewModel.isPlayingFlow.collect { isPlaying ->
-                activity?.keepScreenOn(isPlaying)
-            }
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        activity?.keepScreenOn(false)
     }
 }
