@@ -518,7 +518,7 @@
     <string name="app_shortcut_shuffle_all_short">Aleatório</string>
     <string name="app_shortcut_top_tracks_short">Melhores faixas</string>
     <string name="app_shortcut_last_added_short">Últimas Adicionadas</string>
-    <string name="app_shortcut_favorites_short">Favoritos</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">SOBRE</string>
     <string name="application">Solicitação</string>
@@ -655,6 +655,8 @@
     <string name="circle_button_title">Botão circular play</string>
     <string name="swipe_album_cover_title">Deslize capa do álbum</string>
     <string name="swipe_album_cover_summary">Deslize para a esquerda e direita na capa do álbum para pular entre as músicas.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Toque único na capa</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
     <string name="long_press_on_album_cover_title">Toque longo na capa</string>
@@ -702,6 +704,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pausa a reprodução quando o fone de ouvido Bluetooth A2DP é desconectado. Recomendado.</string>
     <string name="ignore_audio_focus_title">Ignorar foco de áudio</string>
     <string name="ignore_audio_focus_summary">Sempre reproduzir o áudio em segundo plano, independentemente de qualquer coisa que esteja sendo reproduzida.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Baixar automaticamente os metadados</string>
     <string name="ignore_media_store_album_covers_title">Ignorar capas Media Store</string>
@@ -746,6 +750,8 @@
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Fino</string>
     <string name="dark_theme_name">Escuro</string>

@@ -29,7 +29,7 @@
     <string name="search_list_x_label">Liste de recherche : %s</string>
     <string name="search_from_x_label">Rechercher depuis \"%s\"</string>
     <string name="search_year_x_label">Année de recherche: %s</string>
-    <string name="search_in_folder_x">Rechercher dans le dossier: %s</string>
+    <string name="search_in_folder_x">Rechercher dans le dossier : %s</string>
     <string name="search_last_added">Rechercher la dernière musique</string>
     <string name="shuffle_mode_album">Lecture aléatoire de l\'album</string>
     <string name="shuffle_mode_artist">Lecture aléatoire des artistes</string>
@@ -656,6 +656,8 @@
     <string name="circle_button_title">Bouton de lecture circulaire</string>
     <string name="swipe_album_cover_title">Glisser la couverture de l\'album</string>
     <string name="swipe_album_cover_summary">Balayez vers la gauche ou vers la droite sur la couverture de l\'album pour passer d\'un titre à l\'autre.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Appuyez une fois sur la couverture</string>
     <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
     <string name="long_press_on_album_cover_title">Appui long sur la couverture</string>
@@ -703,6 +705,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Met en pause la lecture lorsque le casque Bluetooth A2DP est déconnecté. Recommandé.</string>
     <string name="ignore_audio_focus_title">Ignorer le focus audio</string>
     <string name="ignore_audio_focus_summary">Toujours jouer de l\'audio en arrière-plan, indépendamment de tout autre élément en cours de lecture.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Télécharger automatiquement les métadonnées</string>
     <string name="ignore_media_store_album_covers_title">Ignorer les couvertures du Media Store</string>
@@ -746,6 +750,8 @@
     <string name="stop_when_closed_from_recents_title">Arrêter lorsque fermé depuis les récents</string>
     <string name="stop_when_closed_from_recents_summary">La lecture s\'arrête si l\'application est fermée à partir de la liste des applications récentes.</string>
     <string name="stop_when_closed_from_recents_note">Remarque : certains appareils dotés d\'une gestion agressive de la mémoire ou de la batterie peuvent ignorer ce paramètre et toujours arrêter l\'application lorsqu\'elle est supprimée des applications récentes.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Clair</string>
     <string name="dark_theme_name">Sombre</string>

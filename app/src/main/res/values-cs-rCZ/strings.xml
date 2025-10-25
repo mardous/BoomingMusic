@@ -535,7 +535,7 @@
     <string name="app_shortcut_shuffle_all_short">Zamíchat</string>
     <string name="app_shortcut_top_tracks_short">Nejlepší skladby</string>
     <string name="app_shortcut_last_added_short">Naposledy přidané</string>
-    <string name="app_shortcut_favorites_short">Oblíbené</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">O aplikaci</string>
     <string name="application">Žádost</string>
@@ -672,6 +672,8 @@
     <string name="circle_button_title">Kruhové tlačítko přehrávání</string>
     <string name="swipe_album_cover_title">Přejeďte obal alba</string>
     <string name="swipe_album_cover_summary">Přejeďte prstem vlevo a vpravo na obal alba pro přeskočení mezi skladbami.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dvojím poklepáním na obal</string>
     <string name="long_press_on_album_cover_title">Dlouhým stiskem na obalu</string>
@@ -719,6 +721,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pozastavení přehrávání při odpojení Bluetooth A2DP sluchátek. Doporučeno.</string>
     <string name="ignore_audio_focus_title">Ignorovat zaměření zvuku</string>
     <string name="ignore_audio_focus_summary">Vždy přehrávat zvuk na pozadí bez ohledu na cokoliv jiného se přehrává.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Automaticky stahovat metadata</string>
     <string name="ignore_media_store_album_covers_title">Ignorovat obálky Media Store</string>
@@ -763,6 +767,8 @@
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Světlý</string>
     <string name="dark_theme_name">Tmavý</string>

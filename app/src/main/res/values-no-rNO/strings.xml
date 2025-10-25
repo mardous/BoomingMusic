@@ -519,7 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Bland</string>
     <string name="app_shortcut_top_tracks_short">Topp sporing</string>
     <string name="app_shortcut_last_added_short">Sist lagt til</string>
-    <string name="app_shortcut_favorites_short">Favoritter</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">Om</string>
     <string name="application">Applikasjon</string>
@@ -656,6 +656,8 @@
     <string name="circle_button_title">Sirkulær avspillingsknapp</string>
     <string name="swipe_album_cover_title">Swipe albumomslag</string>
     <string name="swipe_album_cover_summary">Sveip til venstre og høyre på albumomslag for å hoppe over mellom sanger.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dobbelttrykk på dekselet</string>
     <string name="long_press_on_album_cover_title">Langt trykk på deksel</string>
@@ -703,6 +705,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pauser avspilling når Bluetooth A2DP headset er frakoblet. Anbefalt.</string>
     <string name="ignore_audio_focus_title">Ignorer lydfokus</string>
     <string name="ignore_audio_focus_summary">Spill alltid av lyd i bakgrunnen uavhengig av noe annet som spilles.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Automatisk nedlasting metadata</string>
     <string name="ignore_media_store_album_covers_title">Ignorer Media Store dekke</string>
@@ -747,6 +751,8 @@
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Lys</string>
     <string name="dark_theme_name">Mørk</string>

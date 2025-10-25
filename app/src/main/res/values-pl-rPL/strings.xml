@@ -481,7 +481,7 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Zewnętrzny EQ</string>
     <string name="custom">Własny</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
+    <string name="enable_audio_offload_title">Odciążenie audio</string>
     <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
         This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
         A restart is required for changes to take effect.</string>
@@ -535,7 +535,7 @@
     <string name="app_shortcut_shuffle_all_short">Losuj</string>
     <string name="app_shortcut_top_tracks_short">Najczęściej odtwarzane</string>
     <string name="app_shortcut_last_added_short">Ostatnio dodane</string>
-    <string name="app_shortcut_favorites_short">Ulubione</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">O programie</string>
     <string name="application">Aplikacja</string>
@@ -549,7 +549,7 @@
     <string name="acknowledgments_title">Podziękowania</string>
     <string name="translators_title">Tłumacze</string>
     <string name="translators_summary">Podziękowania dla tych, którzy umożliwiają korzystanie z Booming Music w wielu językach.</string>
-    <string name="beta_testers_title">Beta testers</string>
+    <string name="beta_testers_title">Beta testerzy</string>
     <string name="telegram_chat">Czat na Telegramie</string>
     <string name="telegram_chat_summary">Dołącz do czatu w Telegramie i otrzymuj informacje o nowych wersjach i wiadomościach.</string>
     <string name="view_profile_on_github">Zobacz profil na GitHub</string>
@@ -672,6 +672,8 @@
     <string name="circle_button_title">Okrągły przycisk odtwarzania</string>
     <string name="swipe_album_cover_title">Zmiana utworu gestem</string>
     <string name="swipe_album_cover_summary">Przesuń w lewo lub w prawo na okładce albumu, aby zmienić utwór.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Pojedyncze naciśnięcie okładki albumu</string>
     <string name="double_tap_on_album_cover_title">Dwukrotne dotknięcie okładki</string>
     <string name="long_press_on_album_cover_title">Długie przytrzymanie na okładce</string>
@@ -719,6 +721,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Wstrzymuje odtwarzanie po rozłączeniu słuchawek Bluetooth (A2DP). Zalecane.</string>
     <string name="ignore_audio_focus_title">Ignoruj ostrość dźwięku</string>
     <string name="ignore_audio_focus_summary">Zawsze odtwarzaj dźwięk w tle niezależnie od tego, co jest odtwarzane.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Pobieranie metadanych</string>
     <string name="ignore_media_store_album_covers_title">Nie używaj okładek z magazynu multimediów</string>
@@ -759,10 +763,12 @@
     <string name="backup_app_data_summary">Utwórz plik z niezbędnymi danymi aplikacji i zapisz go w pamięci zewnętrznej.</string>
     <string name="restore_backup_title">Przywróć kopię zapasową</string>
     <string name="restore_backup_summary">Przywróć dane aplikacji (i stan) z wcześniejszej kopii zapasowej.</string>
-    <string name="stop_when_closed_from_recents_title">Zatrzymaj po zamknięciu z ostatnich</string>
+    <string name="stop_when_closed_from_recents_title">Zatrzymaj odtwarzanie po zamknięciu z ostatnich</string>
     <string name="stop_when_closed_from_recents_summary">Zatrzymuje odtwarzanie po zamknięciu aplikacji z listy ostatnich aplikacji.</string>
     <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią
         lub baterią mogą ignorować to ustawienie i zawsze zatrzymywać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Jasny</string>
     <string name="dark_theme_name">Ciemny</string>

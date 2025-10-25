@@ -655,6 +655,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="circle_button_title">Botón \"Reproducir\" circular</string>
     <string name="swipe_album_cover_title">Deslizamiento izquierda/derecha</string>
     <string name="swipe_album_cover_summary">Deslizar a izquierda/derecha para saltar entre canciones.</string>
+    <string name="queue_height_title">Altura de la cola a media pantalla</string>
+    <string name="queue_height_summary">Fija la altura de la cola de reproducción a la mitad de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Toque único en la carátula</string>
     <string name="double_tap_on_album_cover_title">Doble toque en la carátula</string>
     <string name="long_press_on_album_cover_title">Presión larga en la carátula</string>
@@ -702,6 +704,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="pause_on_bluetooth_disconnect_summary">Pausa la reproducción cuando se desconecte el auricular Bluetooth A2DP. Recomendado.</string>
     <string name="ignore_audio_focus_title">Ignorar pérdida del foco</string>
     <string name="ignore_audio_focus_summary">Mantener la reproducción aún cuando otras apps estén reproduciendo audio también.</string>
+    <string name="pause_on_zero_volume_title">Pausar en volumen cero</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descargar metadatos automáticamente</string>
     <string name="ignore_media_store_album_covers_title">Ignorar las portadas del Almacén Multimedia</string>
@@ -745,6 +749,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="stop_when_closed_from_recents_title">Detener al eliminar de recientes</string>
     <string name="stop_when_closed_from_recents_summary">La reproducción se detiene al remover la app de la lista de aplicaciones recientes.</string>
     <string name="stop_when_closed_from_recents_note">Nota: algunos dispositivos con gestión agresiva de recursos podrían ignorar esta configuración y siempre forzar el cierre de la app al removerla de la lista de recientes.</string>
+    <string name="rotation_lock_title">Bloqueo de rotación</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Claro</string>
     <string name="dark_theme_name">Oscuro</string>

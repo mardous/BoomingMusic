@@ -465,10 +465,10 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
-    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
-        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
-        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_offload_title">Delegació d\'àudio</string>
+    <string name="enable_audio_offload_description">Permet al dispositiu processar l\'àudio directament des del seu maquinari. Redueix l\'ús del processador i de la bateria.
+        Aquesta funció només s\'admet en certs dispositius. Alguns efectes o funcions podrien no funcionar mentre està activa.
+        Cal reiniciar per aplicar els canvis.</string>
     <string name="enable_audio_float_output_title">Sortida d\'àudio d\'alta precisió</string>
     <string name="enable_audio_float_output_description">Activa l\'àudio de punt flotant de 32-bits per un so de més bona qualitat.
         Tingueu present que això desactivarà funcions com el Guany de reproducció, Omet silencis i Normalitza el volum.
@@ -519,7 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Aleatori</string>
     <string name="app_shortcut_top_tracks_short">Cançons destacades</string>
     <string name="app_shortcut_last_added_short">Afegit recentment</string>
-    <string name="app_shortcut_favorites_short">Preferits</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">Quant a</string>
     <string name="application">Aplicació</string>
@@ -533,7 +533,7 @@
     <string name="acknowledgments_title">Agraïments</string>
     <string name="translators_title">Traductors</string>
     <string name="translators_summary">Gràcies a tothom qui fa possible que Booming Music estigui disponible en tants idiomes.</string>
-    <string name="beta_testers_title">Beta testers</string>
+    <string name="beta_testers_title">Provadors beta</string>
     <string name="telegram_chat">Xat de Telegram</string>
     <string name="telegram_chat_summary">Entreu al xat de Telegram per assabentar-vos de noves actualitzacions i notícies.</string>
     <string name="view_profile_on_github">Mostra el perfil a Github</string>
@@ -656,6 +656,8 @@
     <string name="circle_button_title">Botó de reproducció circular</string>
     <string name="swipe_album_cover_title">Llisca a la portada de l\'àlbum</string>
     <string name="swipe_album_cover_summary">Llisca a esquerra i dreta a la portada de l\'àlbum per passar entre les cançons.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Un clic a la portada</string>
     <string name="double_tap_on_album_cover_title">Dos clics a la portada</string>
     <string name="long_press_on_album_cover_title">Clic sostingut a la portada</string>
@@ -703,6 +705,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pausa la reproducció en desconnectar uns auriculars Bluetooth A2DP. Recomanat.</string>
     <string name="ignore_audio_focus_title">Ignora el focus d\'àudio</string>
     <string name="ignore_audio_focus_summary">Reprodueix sempre l\'àudio en segon pla al marge d\'altres reproduccions.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descarrega metadades automàticament</string>
     <string name="ignore_media_store_album_covers_title">Ignora les portades de Media Store</string>
@@ -746,6 +750,8 @@
     <string name="stop_when_closed_from_recents_title">Atura en tancar des de recents</string>
     <string name="stop_when_closed_from_recents_summary">Atura la reproducció si l\'aplicació es tanca des de la llista de recents.</string>
     <string name="stop_when_closed_from_recents_note">Nota: Alguns dispositius amb gestió agressiva de la memòria o la bateria podrien ignorar aquesta opció i aturar sempre l\'aplicació en treure-la de recents.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Clar</string>
     <string name="dark_theme_name">Fosc</string>

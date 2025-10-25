@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">Karıştırarak oynat</string>
     <string name="action_queue_next">Sıradakini çal</string>
     <string name="shuffle_all_label">Tümünü karıştır</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
+    <string name="shuffle_mode">Karıştırma modu</string>
+    <string name="repeat_mode">Tekrarlama modu</string>
     <string name="advanced_shuffle_label">Gelişmiş karıştırma</string>
     <string name="shuffle_button_tip">Normal karıştırma için dokunun. Gelişmiş seçenekler için uzun basın.</string>
     <string name="action_play_pause">Oynat/Duraklat</string>
@@ -125,7 +125,7 @@
     <string name="no_equalizer">Ekolayzer bulunamadı.</string>
     <string name="audio_focus_denied">Ses odağı reddedildi.</string>
     <string name="no_audio_ID">Hatalı ses kimliği.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">Çalma hatası (%s).</string>
     <string name="unplayable_file">Bu şarkı çalınamadı.</string>
     <string name="permission_external_storage_title">Depolama Erişimi</string>
     <string name="permission_external_storage_description">Uygulamanın müzik çalmak için cihaz depolama alanına erişmesi gerekiyor</string>
@@ -155,8 +155,8 @@
     <string name="app_widget_small_name">Küçük</string>
     <string name="now_playing">Şimdi Çalıyor</string>
     <string name="playing_queue_label">Çalma Sırası</string>
-    <string name="list_start">List start</string>
-    <string name="list_end">List end</string>
+    <string name="list_start">Liste başlangıcı</string>
+    <string name="list_end">Liste sonu</string>
     <string name="empty_play_queue">Çalma sırası boş.</string>
     <string name="save_queue">Sırayı kaydet</string>
     <string name="clear_queue">Sırayı temizle</string>
@@ -465,17 +465,12 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Harici Ekolayzer</string>
     <string name="custom">Özel</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
-    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
-        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
-        A restart is required for changes to take effect.</string>
-    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
-    <string name="skip_silence_title">Skip Silence</string>
-    <string name="skip_silence_description">Automatically skip silent sections during playback.
-        Ideal for podcasts and recordings.</string>
+    <string name="enable_audio_offload_title">Ses Yükünü Hafifletme</string>
+    <string name="enable_audio_offload_description">Cihazın sesi doğrudan donanımı aracılığıyla işlemesine olanak tanıyarak CPU kullanımını azaltır ve pilden tasarruf sağlar. Bu özellik yalnızca belirli cihazlarda desteklenir. Etkinleştirildiğinde bazı efektler veya özellikler çalışmayabilir. Değişikliklerin etkili olması için yeniden başlatma gerekir.</string>
+    <string name="enable_audio_float_output_title">Yüksek Hassasiyetli Ses Çıkışı</string>
+    <string name="enable_audio_float_output_description">Daha iyi ses kalitesi için 32-bit kayan noktalı sesi etkinleştirir. Unutmayın ki bu, ReplayGain, sessizliği atlama ve ses dengesi gibi özellikleri kapatacaktır. Biraz daha fazla pil kullanabilir ve etkili olması için uygulamayı yeniden başlatmanız gerekir.</string>
+    <string name="skip_silence_title">Sessizliği Atla</string>
+    <string name="skip_silence_description">Çalma sırasında sessiz bölümleri otomatik olarak atlayın. Podcast\'ler ve kayıtlar için idealdir.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Şarkı sözlerini göster</string>
     <string name="action_hide_lyrics">Şarkı sözlerini gizle</string>
@@ -519,7 +514,7 @@
     <string name="app_shortcut_shuffle_all_short">Karıştır</string>
     <string name="app_shortcut_top_tracks_short">En İyiler</string>
     <string name="app_shortcut_last_added_short">Son Eklenenler</string>
-    <string name="app_shortcut_favorites_short">Favoriler</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">Hakkında</string>
     <string name="application">Uygulama</string>
@@ -533,7 +528,7 @@
     <string name="acknowledgments_title">Teşekkür</string>
     <string name="translators_title">Çevirmenler</string>
     <string name="translators_summary">Booming Music\'i birçok dilde kullanılabilir hale getirenlere teşekkürler.</string>
-    <string name="beta_testers_title">Beta testers</string>
+    <string name="beta_testers_title">Beta Test Kullanıcıları</string>
     <string name="telegram_chat">Telegram sohbeti</string>
     <string name="telegram_chat_summary">Telegram\'daki sohbete katılın ve yeni sürümler ile haberlerden haberdar olun.</string>
     <string name="view_profile_on_github">GitHub\'da profili görüntüle</string>
@@ -656,6 +651,8 @@
     <string name="circle_button_title">Dairesel oynatma düğmesi</string>
     <string name="swipe_album_cover_title">Albüm kapağını kaydırın</string>
     <string name="swipe_album_cover_summary">Şarkılar arasında geçiş yapmak için albüm kapağını sola ve sağa kaydırın.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Kapağa tek dokun</string>
     <string name="double_tap_on_album_cover_title">Kapağa çift dokunun</string>
     <string name="long_press_on_album_cover_title">Kapağa uzun basın</string>
@@ -703,6 +700,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Bluetooth A2DP kulaklık bağlantısı kesildiğinde çalmayı duraklatır. Önerilir.</string>
     <string name="ignore_audio_focus_title">Ses odağını yoksay</string>
     <string name="ignore_audio_focus_summary">Çalınan başka bir şeye bakılmaksızın sesi her zaman arka planda çal.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Üstveriyi otomatik indir</string>
     <string name="ignore_media_store_album_covers_title">Medya Deposu kapaklarını yoksay</string>
@@ -746,6 +745,8 @@
     <string name="stop_when_closed_from_recents_title">Son uygulamalardan kapatılınca durdur</string>
     <string name="stop_when_closed_from_recents_summary">Uygulama son uygulamalar listesinden kapatılırsa oynatma durur.</string>
     <string name="stop_when_closed_from_recents_note">Not: Agresif bellek veya pil yönetimine sahip bazı cihazlar bu ayarı yoksayabilir ve son uygulamalardan kaldırıldığında uygulamayı her zaman durdurabilir.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Açık</string>
     <string name="dark_theme_name">Koyu</string>
