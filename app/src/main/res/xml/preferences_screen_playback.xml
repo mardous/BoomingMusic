@@ -162,4 +162,19 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        app:title="@string/advanced_title"
+        app:layout="@layout/preference_category_title">
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_volume_down_24dp"
+            app:title="@string/pause_on_zero_volume_title"
+            app:summary="@string/pause_on_zero_volume_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="pause_on_zero_volume"/>
+
+    </PreferenceCategory>
+
 </androidx.preference.PreferenceScreen>

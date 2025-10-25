@@ -116,7 +116,7 @@ data class PlayerColorScheme(
          */
         fun themeColorScheme(context: Context, mode: Mode = Mode.AppTheme): PlayerColorScheme {
             val primaryTextColor = context.textColorPrimary()
-            val controlColor = context.controlColorNormal().takeUnless { it == Color.TRANSPARENT }
+            val controlColor = context.onSurfaceColor().takeUnless { it == Color.TRANSPARENT }
                 ?: primaryTextColor
             val secondaryControlColor = controlColor.withAlpha(0.2f)
             return PlayerColorScheme(

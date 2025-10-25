@@ -519,7 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Sekoita</string>
     <string name="app_shortcut_top_tracks_short">Suosituimmat Kappaleet</string>
     <string name="app_shortcut_last_added_short">Viimeksi Lisätty</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Suosikit</string>
     <!-- About page -->
     <string name="action_about">Tietoja</string>
     <string name="application">Sovellus</string>

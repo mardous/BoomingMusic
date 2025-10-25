@@ -147,6 +147,15 @@
             app:key="swipe_controls" />
 
         <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/queue_height_title"
+            app:summary="@string/queue_height_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="queue_height" />
+
+        <SwitchPreferenceCompat
             app:icon="@drawable/ic_squiggly_seekbar_24dp"
             app:title="@string/squiggly_seek_bar_title"
             app:summary="@string/squiggly_seek_bar_summary"

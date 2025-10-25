@@ -20,6 +20,7 @@ package com.mardous.booming.ui.component.base
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
@@ -47,8 +48,10 @@ import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.ui.IBackConsumer
+import com.mardous.booming.ui.screen.info.PlayInfoFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.search.SearchFragment
+import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragment
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.other.MiniPlayerFragment
 import com.mardous.booming.ui.screen.permissions.PermissionsActivity
@@ -60,7 +63,6 @@ import com.mardous.booming.ui.screen.player.styles.m3style.M3PlayerFragment
 import com.mardous.booming.ui.screen.player.styles.peek2playerstyle.Peek2PlayerFragment
 import com.mardous.booming.ui.screen.player.styles.peekplayerstyle.PeekPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.plainstyle.PlainPlayerFragment
-import com.mardous.booming.ui.screen.queue.PlayingQueueFragment
 import com.mardous.booming.util.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -149,7 +151,9 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
         launchAndRepeatWithViewLifecycle {
             playerViewModel.queueFlow.collect { queue ->
-                if (currentFragment(R.id.fragment_container) !is PlayingQueueFragment) {
+                val currentFragment = currentFragment(R.id.fragment_container)
+                if (currentFragment !is LyricsEditorFragment &&
+                    currentFragment !is PlayInfoFragment) {
                     hideBottomSheet(queue.isEmpty())
                 }
             }
@@ -198,9 +202,6 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     override fun onResume() {
         super.onResume()
         Preferences.registerOnSharedPreferenceChangeListener(this)
-        if (nowPlayingScreen != Preferences.nowPlayingScreen) {
-            postRecreate()
-        }
         if (bottomSheetBehavior.state == STATE_EXPANDED) {
             setMiniPlayerAlphaProgress(1f)
         }
@@ -506,6 +507,14 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
             SWIPE_TO_DISMISS -> bottomSheetBehavior.isHideable =
                 Preferences.swipeDownToDismiss
+
+            ENABLE_ROTATION_LOCK -> {
+                requestedOrientation = if (preferences.getBoolean(key, false)) {
+                    ActivityInfo.SCREEN_ORIENTATION_LOCKED
+                } else {
+                    ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+                }
+            }
         }
     }
 

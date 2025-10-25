@@ -249,21 +249,16 @@ class RealSongRepository(private val inclExclDao: InclExclDao) : SongRepository 
         return makeSongCursor(queryDispatcher, ignoreBlacklist)
     }
 
-    private fun generateWhitelistSelection(pathCount: Int): String {
-        val builder = StringBuilder("(${AudioColumns.DATA} LIKE ?")
-        for (i in 1 until pathCount) {
-            builder.append(" OR ${AudioColumns.DATA} LIKE ?")
+    private fun generateWhitelistSelection(pathCount: Int): String =
+        buildString {
+            append("(")
+            append((1..pathCount).joinToString(" OR ") { "${AudioColumns.DATA} LIKE ?" })
+            append(")")
         }
-        return builder.append(")").toString()
-    }
 
-    private fun generateBlacklistSelection(pathCount: Int): String {
-        val builder = StringBuilder("${AudioColumns.DATA} NOT LIKE ?")
-        for (i in 1 until pathCount) {
-            builder.append(" AND ${AudioColumns.DATA} NOT LIKE ?")
-        }
-        return builder.toString()
-    }
+    private fun generateBlacklistSelection(pathCount: Int): String =
+        (1..pathCount).joinToString(" AND ") { "${AudioColumns.DATA} NOT LIKE ?" }
+
 
     private fun addLibrarySelectionValues(paths: List<String>): Array<String> {
         return Array(paths.size) { index -> "${paths[index]}%" }

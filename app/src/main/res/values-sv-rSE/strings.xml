@@ -519,7 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Blanda</string>
     <string name="app_shortcut_top_tracks_short">Topp spår</string>
     <string name="app_shortcut_last_added_short">Senast tillagda</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Favoriter</string>
     <!-- About page -->
     <string name="action_about">Om</string>
     <string name="application">Applikation</string>

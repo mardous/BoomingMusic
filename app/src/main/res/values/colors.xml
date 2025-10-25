@@ -9,7 +9,6 @@
     <color name="secondary_text_disabled_dark">#36ffffff</color>
     <color name="secondary_text_disabled_light">#24000000</color>
 
-    <color name="dividerBlack">#262629</color>
     <color name="footerLight">#E2E2E2</color>
     <color name="footerDark">#111111</color>
     <color name="footerBlack">#111111</color>

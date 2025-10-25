@@ -17,10 +17,10 @@
 
 package com.mardous.booming.ui.component.base
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.graphics.Color.TRANSPARENT
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -43,6 +43,7 @@ abstract class AbsThemeActivity : AppCompatActivity() {
 
     private var windowInsetsController: WindowInsetsControllerCompat? = null
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         updateTheme()
         enableEdgeToEdge(navigationBarStyle = SystemBarStyle.auto(TRANSPARENT, TRANSPARENT))
@@ -51,6 +52,9 @@ abstract class AbsThemeActivity : AppCompatActivity() {
         if (hasQ()) {
             window.isNavigationBarContrastEnforced = false
             window.decorView.isForceDarkAllowed = false
+        }
+        if (Preferences.rotationLockEnabled) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
         }
         ViewGroupCompat.installCompatInsetsDispatch(window.decorView)
     }
@@ -73,12 +77,6 @@ abstract class AbsThemeActivity : AppCompatActivity() {
         if (Preferences.isCustomFont) {
             setTheme(R.style.ManropeThemeOverlay)
         }
-    }
-
-    protected open fun postRecreate() {
-        // hack to prevent java.lang.RuntimeException: Performing pause of activity that is not resumed
-        // makes sure recreate() is called right after and not in onResume()
-        Handler(Looper.getMainLooper()).post { recreate() }
     }
 
     fun setLightStatusBar(lightStatusBar: Boolean = surfaceColor().isColorLight) {

@@ -519,7 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Mischia</string>
     <string name="app_shortcut_top_tracks_short">Tracce Superiori</string>
     <string name="app_shortcut_last_added_short">Ultimo Aggiunto</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Preferiti</string>
     <!-- About page -->
     <string name="action_about">Informazioni</string>
     <string name="application">Applicazione</string>

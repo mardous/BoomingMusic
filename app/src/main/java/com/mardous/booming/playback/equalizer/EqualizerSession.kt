@@ -96,6 +96,15 @@ class EqualizerSession(
         LocalBroadcastManager.getInstance(context).unregisterReceiver(mAudioSessionReceiver)
     }
 
+    fun changeSessionType(
+        @SessionType oldSessionType: Int,
+        @SessionType newSessionType: Int,
+        audioSessionId: Int
+    ) {
+        closeEqualizerSessions(oldSessionType, audioSessionId)
+        openEqualizerSession(newSessionType, audioSessionId)
+    }
+
     /**
      * Sends a broadcast to close any existing audio effect sessions
      */

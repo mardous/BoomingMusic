@@ -551,7 +551,7 @@
     <string name="app_shortcut_shuffle_all_short">خلط</string>
     <string name="app_shortcut_top_tracks_short">أفضل المسارات</string>
     <string name="app_shortcut_last_added_short">آخر إضافة</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">المفضلة</string>
     <!-- About page -->
     <string name="action_about">حول</string>
     <string name="application">تطبيق</string>

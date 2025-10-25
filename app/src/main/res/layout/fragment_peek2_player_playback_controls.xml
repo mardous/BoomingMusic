@@ -122,7 +122,7 @@
         app:layout_constraintEnd_toStartOf="@+id/nextButton"
         app:layout_constraintStart_toEndOf="@+id/previousButton"
         app:layout_constraintTop_toBottomOf="@+id/progressSlider"
-        tools:tint="?colorControlNormal"/>
+        tools:tint="?colorOnSurface"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/previousButton"

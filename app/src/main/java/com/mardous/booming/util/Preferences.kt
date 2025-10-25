@@ -142,6 +142,10 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(LOCKED_PLAYLISTS, false)
         set(value) = preferences.edit { putBoolean(LOCKED_PLAYLISTS, value) }
 
+    var queueHeight: Boolean
+        get() = preferences.getBoolean(QUEUE_HEIGHT, false)
+        set(value) = preferences.edit { putBoolean(QUEUE_HEIGHT, value) }
+
     val largerHeaderImage: Boolean
         get() = preferences.getBoolean(LARGER_HEADER_IMAGE, false)
 
@@ -372,6 +376,9 @@ object Preferences : KoinComponent {
             NotificationExtraText.ALBUM_NAME
         )
 
+    val rotationLockEnabled: Boolean
+        get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)
+
     val updateSearchMode: String
         get() = preferences.requireString(UPDATE_SEARCH_MODE, UpdateSearchMode.WEEKLY)
 
@@ -596,6 +603,7 @@ const val PAUSE_ON_DISCONNECT = "pause_on_disconnect"
 const val RESUME_ON_BLUETOOTH_CONNECT = "resume_on_bluetooth_connect"
 const val PAUSE_ON_BLUETOOTH_DISCONNECT = "pause_on_bluetooth_disconnect"
 const val IGNORE_AUDIO_FOCUS = "ignore_audio_focus"
+const val PAUSE_ON_ZERO_VOLUME = "pause_on_zero_volume"
 const val AUTO_DOWNLOAD_METADATA_POLICY = "auto_download_metadata_policy"
 const val IGNORE_MEDIA_STORE = "ignore_media_store"
 const val USE_FOLDER_ART = "use_folder_art"
@@ -614,6 +622,7 @@ const val BLACKLIST_ENABLED = "blacklist_enabled"
 const val ARTIST_MINIMUM_SONGS = "artist_minimum_songs"
 const val ALBUM_MINIMUM_SONGS = "album_minimum_songs"
 const val MINIMUM_SONG_DURATION = "minimum_song_duration"
+const val ENABLE_ROTATION_LOCK = "enable_rotation_lock"
 const val STOP_WHEN_CLOSED_FROM_RECENTS = "stop_when_closed_from_recents"
 const val NOTIFICATION_EXTRA_TEXT_LINE = "notification_extra_text_line"
 const val LANGUAGE_NAME = "language_name"
@@ -635,3 +644,4 @@ const val SWIPE_CONTROLS = "swipe_controls"
 const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"
+const val QUEUE_HEIGHT = "queue_height"

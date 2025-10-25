@@ -127,7 +127,6 @@
     <string name="no_audio_ID">Bad audio ID.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Couldn\'t play this song.</string>
-    <string name="unplayable_file_code_x">Couldn\'t play this song (code: %d).</string>
     <string name="permission_external_storage_title">Storage Access</string>
     <string name="permission_external_storage_description">The app needs permission to access your device storage for playing music</string>
     <string name="permission_external_storage_denied">You must grant permission to access external storage.</string>
@@ -537,6 +536,7 @@
     <string name="app_shortcut_shuffle_all_short">Shuffle</string>
     <string name="app_shortcut_top_tracks_short">Top Tracks</string>
     <string name="app_shortcut_last_added_short">Last Added</string>
+    <string name="app_shortcut_favorites_short">Favorites</string>
 
     <!-- About page -->
     <string name="action_about">About</string>
@@ -680,6 +680,8 @@
     <string name="circle_button_title">Circular play button</string>
     <string name="swipe_album_cover_title">Swipe album cover</string>
     <string name="swipe_album_cover_summary">Swipe left and right on album cover to skip between songs.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Double tap on cover</string>
     <string name="long_press_on_album_cover_title">Long press on cover</string>
@@ -728,6 +730,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pauses playback when Bluetooth A2DP headset is disconnected. Recommended.</string>
     <string name="ignore_audio_focus_title">Ignore audio focus</string>
     <string name="ignore_audio_focus_summary">Always play audio in background regardless of anything else being played.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app</string>
 
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Auto download metadata</string>
@@ -776,6 +780,8 @@
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
+    <string name="rotation_lock_title">Rotation lock</string>
+    <string name="rotation_lock_summary">Lock the device\'s orientation to portrait mode. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
 
     <!-- Preference values -->
     <string name="light_theme_name">Light</string>

@@ -28,8 +28,7 @@ import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.hasR
-import com.mardous.booming.ui.component.compose.LabeledSwitch
-import com.mardous.booming.ui.component.compose.ShapedText
+import com.mardous.booming.ui.component.compose.*
 import java.util.Locale
 import kotlin.math.roundToInt
 
@@ -93,21 +92,18 @@ fun SoundSettingsSheet(
     CompositionLocalProvider(
         LocalCardColor provides MaterialTheme.colorScheme.surfaceContainerLowest
     ) {
-        Surface(
-            color = MaterialTheme.colorScheme.surfaceContainer,
-            shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
-        ) {
+        BottomSheetDialogSurface {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .verticalScroll(rememberScrollState())
-                    .padding(top = 24.dp, start = 24.dp, end = 24.dp)
+                    .padding(horizontal = 24.dp)
             ) {
                 BottomSheetDefaults.DragHandle(
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
 
-                TitledSection(R.string.sound_settings) {
+                TitledSection(stringResource(R.string.sound_settings)) {
                     AudioDeviceInfo(
                         outputDevice = outputDevice,
                         expanded = expandedSoundSettings,
@@ -151,7 +147,7 @@ fun SoundSettingsSheet(
                 }
 
                 TitledSection(
-                    titleResource = R.string.volume_label,
+                    text = stringResource(R.string.volume_label),
                     modifier = Modifier.padding(top = 4.dp),
                     titleEndContent = { TitleEndText("${volume.volumePercent.roundToInt()}%") }
                 ) {
@@ -226,7 +222,7 @@ fun SoundSettingsSheet(
                 }
 
                 TitledSection(
-                    titleResource = R.string.tempo_label,
+                    text = stringResource(R.string.tempo_label),
                     titleEndContent = {
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -297,7 +293,7 @@ fun SoundSettingsSheet(
                     var preamp by mutableFloatStateOf(replayGain.preamp)
 
                     TitledSection(
-                        titleResource = R.string.replay_gain,
+                        text = stringResource(R.string.replay_gain),
                         titleEndContent = {
                             AnimatedVisibility(visible = replayGain.mode.isOn) {
                                 TitleEndText("%+.1f dB".format(Locale.ROOT, preamp))
@@ -430,49 +426,6 @@ private fun AudioDeviceInfo(
             expandableContent()
         }
     }
-}
-
-@Composable
-fun TitledSection(
-    titleResource: Int,
-    modifier: Modifier = Modifier,
-    titleEndContent: (@Composable () -> Unit)? = null,
-    content: @Composable () -> Unit
-) {
-    Column(modifier = modifier.fillMaxWidth()) {
-        Row(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(vertical = 16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = stringResource(titleResource),
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.weight(1f)
-            )
-
-            if (titleEndContent != null) {
-                titleEndContent()
-            }
-        }
-        content()
-    }
-}
-
-@Composable
-private fun TitleEndText(text: String, onClick: (() -> Unit)? = null) {
-    ShapedText(
-        text = text,
-        textColor = MaterialTheme.colorScheme.onPrimaryContainer,
-        style = MaterialTheme.typography.bodySmall,
-        shapeColor = MaterialTheme.colorScheme.primaryContainer,
-        modifier = Modifier.clickable(
-            enabled = onClick != null,
-            onClick = { onClick?.invoke() }
-        )
-    )
 }
 
 @Composable

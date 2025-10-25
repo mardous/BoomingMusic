@@ -122,6 +122,9 @@ fun Fragment.surfaceColor() = requireContext().surfaceColor()
 fun Context.surfaceColor() = resolveColor(com.google.android.material.R.attr.colorSurface)
 
 @ColorInt
+fun Context.onSurfaceColor() = resolveColor(com.google.android.material.R.attr.colorOnSurface)
+
+@ColorInt
 fun Fragment.primaryColor() = requireContext().primaryColor()
 
 @ColorInt
@@ -132,9 +135,6 @@ fun Fragment.secondaryColor() = requireContext().secondaryColor()
 
 @ColorInt
 fun Context.secondaryColor() = resolveColor(com.google.android.material.R.attr.colorSecondary)
-
-@ColorInt
-fun Context.controlColorNormal() = resolveColor(androidx.appcompat.R.attr.colorControlNormal)
 
 @ColorInt
 fun Fragment.textColorPrimary() = requireContext().textColorPrimary()

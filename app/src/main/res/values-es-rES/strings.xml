@@ -519,7 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Shuffle</string>
     <string name="app_shortcut_top_tracks_short">Top Tracks</string>
     <string name="app_shortcut_last_added_short">Last Added</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Favoritos</string>
     <!-- About page -->
     <string name="action_about">About</string>
     <string name="application">Application</string>

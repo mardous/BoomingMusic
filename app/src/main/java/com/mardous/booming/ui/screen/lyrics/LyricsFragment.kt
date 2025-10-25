@@ -24,7 +24,9 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.mardous.booming.R
+import com.mardous.booming.extensions.currentFragment
 import com.mardous.booming.extensions.materialSharedAxis
+import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.theme.BoomingMusicTheme
@@ -65,6 +67,14 @@ class LyricsFragment : Fragment() {
             }
         }.also {
             materialSharedAxis(it)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if (currentFragment(R.id.fragment_container) !is LyricsEditorFragment &&
+            playerViewModel.queue.isNotEmpty()) {
+            (activity as? MainActivity)?.expandPanel()
         }
     }
 }
