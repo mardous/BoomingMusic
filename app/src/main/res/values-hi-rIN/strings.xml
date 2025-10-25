@@ -654,6 +654,8 @@
     <string name="circle_button_title">गोल प्ले बटन</string>
     <string name="swipe_album_cover_title">एल्बम का कवर स्वाइप करें</string>
     <string name="swipe_album_cover_summary">गाने के बीच में स्किप करने के लिए एल्बम कवर पर बाईं और दाईं ओर स्वाइप करें।</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">कवर पर डबल टैप करें</string>
     <string name="long_press_on_album_cover_title">कवर पर लंबे समय तक दबाएँ</string>
@@ -701,6 +703,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">जब ब्लूटूथ A2DP हेडसेट डिस्कनेक्ट होता है, तो प्लेबैक को रोकता है। सिफारिश की जाती है।</string>
     <string name="ignore_audio_focus_title">ऑडियो फोकस अनदेखी करें</string>
     <string name="ignore_audio_focus_summary">सदैव ऑडियो को पृष्ठभूमि में चलाएं चाहे कुछ भी और चल रहा हो।</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">स्वतः मेटाडेटा डाउनलोड करना</string>
     <string name="ignore_media_store_album_covers_title">मीडिया स्टोर कवर अनदेखा करें</string>
