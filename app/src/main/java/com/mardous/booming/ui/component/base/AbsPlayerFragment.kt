@@ -133,7 +133,7 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
     protected open fun onPrepareViewGestures(view: View) {
         view.setOnTouchListener(
             FlingPlayBackController(
-                requireContext(),
+                this,
                 playerViewModel
             )
         )
@@ -500,10 +500,10 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
     }
 }
 
-class FlingPlayBackController(context: Context, playerViewModel: PlayerViewModel) :
+class FlingPlayBackController(fragment: Fragment, playerViewModel: PlayerViewModel) :
     View.OnTouchListener {
     private var flingPlayBackController = GestureDetector(
-        context,
+        fragment.context,
         object : GestureDetector.SimpleOnGestureListener() {
             override fun onFling(
                 e1: MotionEvent?,
@@ -512,15 +512,33 @@ class FlingPlayBackController(context: Context, playerViewModel: PlayerViewModel
                 velocityY: Float
             ): Boolean {
                 if (Preferences.isSwipeControls) {
-                    if (abs(velocityX) > abs(velocityY)) {
-                        if (velocityX < 0) {
-                            playerViewModel.seekToNext()
-                            return true
-                        } else if (velocityX > 0) {
-                            playerViewModel.seekToPrevious()
-                            return true
+                    try {
+                        val diffY = e2.y - e1!!.y
+                        val diffX = e2.x - e1.x
+
+                        if (abs(diffX) > abs(diffY)) {
+                            // Horizontal swipe
+                            if (abs(diffX) > 0 && abs(velocityX) > 0) {
+                                if (diffX > 0) {
+                                    playerViewModel.seekToPrevious()
+                                } else {
+                                    playerViewModel.seekToNext()
+                                }
+                                return true
+                            }
+                        } else {
+                            // Vertical swipe
+                            if (abs(diffY) > 0 && abs(velocityY) > 0) {
+                                if (diffY < 0) {
+                                    fragment.findNavController().navigate(R.id.nav_queue)
+                                }
+                                return true
+                            }
                         }
+                    } catch (exception: Exception) {
+                        exception.printStackTrace()
                     }
+                    return false
                 }
                 return false
             }

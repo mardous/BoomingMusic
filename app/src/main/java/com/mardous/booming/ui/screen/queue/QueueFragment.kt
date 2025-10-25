@@ -83,10 +83,12 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-        dialog.setOnShowListener {
-            dialog.behavior.apply {
-                peekHeight = dip(R.dimen.queue_height)
-                maxHeight = peekHeight
+        if (Preferences.queueHeight) {
+            dialog.setOnShowListener {
+                dialog.behavior.apply {
+                    peekHeight = dip(R.dimen.queue_height)
+                    maxHeight = peekHeight
+                }
             }
         }
         return dialog

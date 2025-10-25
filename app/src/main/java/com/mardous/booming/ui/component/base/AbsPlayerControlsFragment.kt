@@ -181,8 +181,6 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
 
     override fun onClick(view: View) {
         when (view) {
-            songTitleView -> goToAlbum(requireActivity(), playerViewModel.currentSong)
-            songArtistView -> goToArtist(requireActivity(), playerViewModel.currentSong)
             songTotalTime -> {
                 val preferRemainingTime = Preferences.preferRemainingTime
                 Preferences.preferRemainingTime = !preferRemainingTime

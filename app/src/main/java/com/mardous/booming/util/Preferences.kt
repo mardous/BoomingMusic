@@ -142,6 +142,10 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(LOCKED_PLAYLISTS, false)
         set(value) = preferences.edit { putBoolean(LOCKED_PLAYLISTS, value) }
 
+    var queueHeight: Boolean
+        get() = preferences.getBoolean(QUEUE_HEIGHT, false)
+        set(value) = preferences.edit { putBoolean(QUEUE_HEIGHT, value) }
+
     val largerHeaderImage: Boolean
         get() = preferences.getBoolean(LARGER_HEADER_IMAGE, false)
 
@@ -635,3 +639,4 @@ const val SWIPE_CONTROLS = "swipe_controls"
 const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"
+const val QUEUE_HEIGHT = "queue_height"
