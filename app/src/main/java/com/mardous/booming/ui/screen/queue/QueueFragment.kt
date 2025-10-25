@@ -105,7 +105,7 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentQueueBinding.bind(view)
-        view.applyScrollableContentInsets(binding.recyclerView)
+        binding.recyclerView.applyBottomWindowInsets()
 
         playingQueueAdapter = PlayingQueueSongAdapter(
             activity = requireActivity(),
