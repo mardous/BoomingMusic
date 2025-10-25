@@ -656,6 +656,8 @@
     <string name="circle_button_title">Pyöreä toistopainike</string>
     <string name="swipe_album_cover_title">Pyyhkäise albumin kansi</string>
     <string name="swipe_album_cover_summary">Pyyhkäise albumin kansiosassa vasemmalle ja oikealle ohittaaksesi kappaleiden välillä.</string>
+    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Kaksoisnapautus kannessa</string>
     <string name="long_press_on_album_cover_title">Paina pitkään kannella</string>
@@ -703,6 +705,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Keskeyttää toiston, kun Bluetooth A2DP -kuulokkeet on katkaistu. Suositeltava.</string>
     <string name="ignore_audio_focus_title">Ohita äänen tarkennus</string>
     <string name="ignore_audio_focus_summary">Toista ääntä aina taustalla riippumatta siitä, mitä muuta soitetaan.</string>
+    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
+    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Lataa metatiedot automaattisesti</string>
     <string name="ignore_media_store_album_covers_title">Älä huomioi Media Storen kansia</string>
