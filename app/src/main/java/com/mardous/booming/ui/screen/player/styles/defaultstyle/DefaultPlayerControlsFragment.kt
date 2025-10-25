@@ -83,8 +83,6 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDefaultPlayerPlaybackControlsBinding.bind(view)
         binding.playPauseButton.doOnLayout { it.centerPivot() }
-        binding.title.setOnClickListener(this)
-        binding.text.setOnClickListener(this)
         binding.playPauseButton.setOnClickListener(this)
         binding.shuffleButton.setOnClickListener(this)
         binding.repeatButton.setOnClickListener(this)
