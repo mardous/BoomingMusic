@@ -519,7 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Aleatori</string>
     <string name="app_shortcut_top_tracks_short">Cançons destacades</string>
     <string name="app_shortcut_last_added_short">Afegit recentment</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Preferits</string>
     <!-- About page -->
     <string name="action_about">Quant a</string>
     <string name="application">Aplicació</string>
@@ -656,7 +656,7 @@
     <string name="circle_button_title">Botó de reproducció circular</string>
     <string name="swipe_album_cover_title">Llisca a la portada de l\'àlbum</string>
     <string name="swipe_album_cover_summary">Llisca a esquerra i dreta a la portada de l\'àlbum per passar entre les cançons.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_title">Cua de mitja pantalla d\'alçària</string>
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Un clic a la portada</string>
     <string name="double_tap_on_album_cover_title">Dos clics a la portada</string>
