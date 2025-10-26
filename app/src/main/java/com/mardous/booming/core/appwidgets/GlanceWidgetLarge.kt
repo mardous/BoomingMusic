@@ -7,20 +7,40 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.glance.*
+import androidx.glance.ColorFilter
+import androidx.glance.GlanceId
+import androidx.glance.GlanceModifier
+import androidx.glance.Image
+import androidx.glance.ImageProvider
 import androidx.glance.action.ActionParameters
 import androidx.glance.action.clickable
 import androidx.glance.appwidget.GlanceAppWidget
-import androidx.glance.appwidget.provideContent
+import androidx.glance.appwidget.SizeMode
 import androidx.glance.appwidget.action.ActionCallback
 import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.appwidget.cornerRadius
+import androidx.glance.appwidget.provideContent
+import androidx.glance.background
 import androidx.glance.color.ColorProvider
-import androidx.glance.layout.*
-import androidx.glance.text.*
+import androidx.glance.layout.Alignment
+import androidx.glance.layout.Box
+import androidx.glance.layout.Column
+import androidx.glance.layout.Row
+import androidx.glance.layout.Spacer
+import androidx.glance.layout.fillMaxSize
+import androidx.glance.layout.fillMaxWidth
+import androidx.glance.layout.height
+import androidx.glance.layout.padding
+import androidx.glance.layout.size
+import androidx.glance.layout.width
+import androidx.glance.text.FontWeight
+import androidx.glance.text.Text
+import androidx.glance.text.TextStyle
+import androidx.glance.unit.ColorProvider
 import androidx.media3.common.Player
 import androidx.media3.session.MediaController
 import androidx.media3.session.SessionToken
+import com.google.common.util.concurrent.MoreExecutors
 import com.mardous.booming.playback.PlaybackService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.guava.await
@@ -29,6 +49,9 @@ import kotlinx.coroutines.withContext
 data class TrackInfo(val title: String, val artist: String)
 
 class GlanceWidgetLarge : GlanceAppWidget() {
+
+    override val sizeMode: SizeMode = SizeMode.Exact
+
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val (track, isPlaying, albumArt) = withContext(Dispatchers.IO) {
             val controller = getMediaController(context)
@@ -189,11 +212,14 @@ class NextAction : ActionCallback {
 
 // --- Controller Helper ---
 
-private suspend fun withController(
+private fun withController(
     context: Context,
     action: (MediaController) -> Unit,
 ) {
     val sessionToken = SessionToken(context, ComponentName(context, PlaybackService::class.java))
-    val controller = MediaController.Builder(context, sessionToken).buildAsync().await()
-    action(controller)
+    val controllerFuture = MediaController.Builder(context, sessionToken).buildAsync()
+    controllerFuture.addListener(
+        { action(controllerFuture.get()) },
+        MoreExecutors.directExecutor()
+    )
 }
