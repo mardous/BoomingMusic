@@ -732,6 +732,8 @@
     <string name="online_artist_images_title">Pobieraj obrazy artysty</string>
     <string name="online_artist_images_summary">Zależy od ustawień pobierania metadanych.</string>
     <string name="preferred_artist_image_size_title">Preferowany rozmiar obrazu wykonawcy</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images are not saved to files, they are visible only within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Usuń wszystkie pobrane teksty</string>
     <string name="delete_downloaded_lyrics_summary">Tylko pobrane przez aplikację. Nie dotyczy tych z tagów ID3v2 ani plików LRC.</string>
     <string name="lyrics_cleared">Tekst został wyczyszczony.</string>
