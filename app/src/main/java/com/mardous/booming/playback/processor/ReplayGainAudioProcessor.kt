@@ -67,11 +67,10 @@ class ReplayGainAudioProcessor(
     }
 
     override fun queueInput(inputBuffer: ByteBuffer) {
-        val g = gain
-        if (g != 0f) {
+        if (gain != 0.0f) {
             val size = inputBuffer.remaining()
             val buffer = replaceOutputBuffer(size)
-            val delta = 10.0.pow(g / 20.0)
+            val delta = 10.0.pow(gain / 20.0)
 
             when (outputAudioFormat.encoding) {
                 C.ENCODING_PCM_16BIT -> {
