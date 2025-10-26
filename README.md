@@ -1,25 +1,25 @@
 <div align="center">
 
-<img src="metadata/en-US/images/icon.png" width="160" height="160" alt="Booming Music icon">
+<img src="metadata/en-US/images/icon.png" width="250" height="250" alt="Booming Music icon">
 
 # 🎵 Booming Music
 
 ### Modern design. Pure sound. Fully yours.
 
-[![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=for-the-badge&logo=android)](https://android.com/)
-[![API](https://img.shields.io/badge/API-26%2B-green.svg?&style=for-the-badge&logo=android)](https://android-arsenal.com/api?level=26)
-[![Latest Release](https://img.shields.io/github/v/release/mardous/BoomingMusic?style=for-the-badge&label=Release&logo=github)](https://github.com/mardous/BoomingMusic/releases/latest)
-[![Pre-Release](https://img.shields.io/github/v/release/mardous/BoomingMusic?style=for-the-badge&include_prereleases&logo=github&label=Pre-release)](https://github.com/mardous/BoomingMusic/releases)
-[![F-Droid version](https://img.shields.io/f-droid/v/com.mardous.booming?style=for-the-badge&label=F-Droid&logo=fdroid)](https://f-droid.org/packages/com.mardous.booming/)
-[![License: GPL v3](https://img.shields.io/github/license/mardous/BoomingMusic?style=for-the-badge&color=orange&label=License&logo=gnu)](LICENSE.txt)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?style=for-the-badge&logo=contributorcovenant)](CODE_OF_CONDUCT.md)
-[![Telegram Group](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/mardousdev)
+[![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat&logo=android)](https://android.com/)
+[![API](https://img.shields.io/badge/API-26%2B-green.svg?&style=flat&logo=android)](https://android-arsenal.com/api?level=26)
+[![Latest Release](https://img.shields.io/github/v/release/mardous/BoomingMusic?style=flat&label=Release&logo=github)](https://github.com/mardous/BoomingMusic/releases/latest)
+[![Pre-Release](https://img.shields.io/github/v/release/mardous/BoomingMusic?style=flat&include_prereleases&logo=github&label=Pre-release)](https://github.com/mardous/BoomingMusic/releases)
+[![F-Droid version](https://img.shields.io/f-droid/v/com.mardous.booming?style=flat&label=F-Droid&logo=fdroid)](https://f-droid.org/packages/com.mardous.booming/)
+[![License: GPL v3](https://img.shields.io/github/license/mardous/BoomingMusic?style=flat&color=orange&label=License&logo=gnu)](LICENSE.txt)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?style=flat&logo=contributorcovenant)](CODE_OF_CONDUCT.md)
+[![Telegram Group](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=flat&logo=telegram)](https://t.me/mardousdev)
 
-<a href="https://github.com/mardous/BoomingMusic/releases"><img src="assets/badge-github.png" height="60" alt="GitHub Release"></a>
-<a href="https://f-droid.org/packages/com.mardous.booming/"><img src="assets/badge-fdroid.png" height="60" alt="F-Droid"></a>
-<a href="https://apt.izzysoft.de/packages/com.mardous.booming/"><img src="assets/badge-izzyondroid.png" height="60" alt="IzzyOnDroid"></a>
-<a href="https://www.openapk.net/boomingmusic/com.mardous.booming/"><img src="assets/badge-openapk.png" height="60" alt="OpenAPK"></a>
-<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/"><img src="assets/badge-obtainium.png" height="60" alt="Obtainium"></a>
+<a href="https://github.com/mardous/BoomingMusic/releases"><img src="assets/badge-github.png" height="40" alt="GitHub Release"></a>
+<a href="https://f-droid.org/packages/com.mardous.booming/"><img src="assets/badge-fdroid.png" height="40" alt="F-Droid"></a>
+<a href="https://apt.izzysoft.de/packages/com.mardous.booming/"><img src="assets/badge-izzyondroid.png" height="40" alt="IzzyOnDroid"></a>
+<a href="https://www.openapk.net/boomingmusic/com.mardous.booming/"><img src="assets/badge-openapk.png" height="40" alt="OpenAPK"></a>
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/"><img src="assets/badge-obtainium.png" height="40" alt="Obtainium"></a>
 
 </div>
 
