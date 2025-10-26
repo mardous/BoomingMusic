@@ -672,8 +672,8 @@
     <string name="circle_button_title">כפתור ניגון עגול</string>
     <string name="swipe_album_cover_title">החלק את עטיפת האלבום</string>
     <string name="swipe_album_cover_summary">החלק שמאלה וימינה על עטיפת האלבום כדי לדלג בין שירים.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
+    <string name="queue_height_title">גובה תור חצי-מסך</string>
+    <string name="queue_height_summary">קבע את גובה רשימת ההשמעה לחצי מגובה המסך.</string>
     <string name="single_tap_on_album_cover_title">הקשה אחת על העטיפה</string>
     <string name="double_tap_on_album_cover_title">הקשה כפולה על העטיפה</string>
     <string name="long_press_on_album_cover_title">לחיצה ארוכה על העטיפה</string>
@@ -721,8 +721,9 @@
     <string name="pause_on_bluetooth_disconnect_summary">מפסיק את הנגינה כאשר אוזניית בלוטות\' ‏A2DP מתנתקת. מומלץ.</string>
     <string name="ignore_audio_focus_title">התעלם ממיקוד שמע</string>
     <string name="ignore_audio_focus_summary">השמיע תמיד אודיו ברקע, ללא קשר למה שמתנגן במקום אחר.</string>
-    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
-    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
+    <string name="pause_on_zero_volume_title">השהה כשעוצמת הקול היא אפס</string>
+    <string name="pause_on_zero_volume_summary">עוצר את השיר כשהעוצמה יורדת לאפס, וממשיך לנגן כשהעוצמה עולה שוב.
+הפונקציה פועלת גם מחוץ לאפליקציה.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
     <string name="ignore_media_store_album_covers_title">התעלם מעטיפות ממדיה סטור</string>
@@ -766,8 +767,8 @@
     <string name="stop_when_closed_from_recents_title">עצור כאשר נסגר מהאחרונים</string>
     <string name="stop_when_closed_from_recents_summary">הניגון ייעצר אם האפליקציה תיסגר מרשימת האחרונים.</string>
     <string name="stop_when_closed_from_recents_note">הערה: במכשירים מסוימים עם ניהול זיכרון או סוללה אגרסיבי, ייתכן שהגדרה זו תתעלם והאפליקציה תיעצר תמיד כאשר מסירים אותה מהרשימה האחרונה.</string>
-    <string name="rotation_lock_title">Rotation lock</string>
-    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
+    <string name="rotation_lock_title">נעילת סיבוב</string>
+    <string name="rotation_lock_summary">נעל את כיוון המסך של המכשיר. שימושי כאשר המוסיקה נעצרת בעת סיבוב המכשיר בגלל מדיניות של יצרנים מסוימים.</string>
     <!-- Preference values -->
     <string name="light_theme_name">בהיר</string>
     <string name="dark_theme_name">כהה</string>
