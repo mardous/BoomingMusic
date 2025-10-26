@@ -174,6 +174,8 @@ fun getProperties(fileName: String): Properties? {
 fun Properties.property(key: String) =
     this.getProperty(key) ?: "$key missing"
 
+val glanceVersion = "1.1.0-rc01"
+
 dependencies {
     implementation(libs.material.components)
     implementation(libs.androidx.core)
@@ -199,6 +201,7 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
 
     implementation(libs.bundles.kotlinx)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.8.0")
     implementation(libs.bundles.lifecycle)
     implementation(libs.bundles.media3)
     implementation(libs.bundles.navigation)
@@ -233,4 +236,13 @@ dependencies {
     implementation(libs.commons.text)
 
     debugImplementation(libs.leakcanary)
+
+    implementation("androidx.compose.runtime:runtime:1.5.4")
+    implementation("androidx.media3:media3-session:1.2.0")
+
+    implementation("androidx.glance:glance:${glanceVersion}")
+    implementation("androidx.glance:glance-appwidget:${glanceVersion}")
+    implementation("androidx.glance:glance-material:${glanceVersion}")
+    implementation("androidx.glance:glance-material3:${glanceVersion}")
+
 }
