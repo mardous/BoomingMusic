@@ -655,7 +655,7 @@ Ideal para podcasts e gravações.</string>
     <string name="circle_button_title">Botão de reprodução redondo</string>
     <string name="swipe_album_cover_title">Deslizar capa do álbum</string>
     <string name="swipe_album_cover_summary">Deslize a capa do álbum para a esquerda ou direita para pular entre as músicas.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_title">Altura da fila em meia tela</string>
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Toque único na capa</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
