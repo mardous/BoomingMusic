@@ -96,7 +96,12 @@ class App : Application(), SingletonImageLoader.Factory {
                 add(FileMapper(preferences = get()))
                 add(AlbumMapper(preferences = get()))
                 add(AudioCoverKeyer())
-                add(AudioCoverFetcher.Factory())
+                add(
+                    AudioCoverFetcher.Factory(
+                        preferences = get(),
+                        deezerService = get()
+                    )
+                )
 
                 // Artist
                 add(ArtistMapper())

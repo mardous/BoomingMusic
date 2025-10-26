@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="default_metadata_policy" translatable="false">only_wifi</string>
-    <bool name="default_artist_images_download">true</bool>
+    <bool name="default_images_download">true</bool>
     <bool name="enable_app_update">true</bool>
 </resources>

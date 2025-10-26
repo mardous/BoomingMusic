@@ -44,7 +44,7 @@
 			app:iconSpaceReserved="true"
         	app:title="@string/online_artist_images_title"
         	app:summary="@string/online_artist_images_summary"
-        	app:defaultValue="@bool/default_artist_images_download"
+        	app:defaultValue="@bool/default_images_download"
 			app:icon="@drawable/ic_artist_24dp"
 			app:layout="@layout/list_item_view"
 			app:widgetLayout="@layout/preference_switch"
@@ -60,6 +60,22 @@
 			app:dependency="allow_online_artist_images"
 			app:layout="@layout/list_item_view"
 			app:key="preferred_artist_image_size"/>
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		app:title="@string/album_cover_header"
+		app:layout="@layout/preference_category_title">
+
+		<SwitchPreferenceCompat
+			app:iconSpaceReserved="true"
+			app:title="@string/online_album_covers_title"
+			app:summary="@string/online_album_covers_summary"
+			app:defaultValue="@bool/default_images_download"
+			app:icon="@drawable/ic_album_24dp"
+			app:layout="@layout/list_item_view"
+			app:widgetLayout="@layout/preference_switch"
+			app:key="allow_online_album_covers"/>
 
 	</PreferenceCategory>
 
