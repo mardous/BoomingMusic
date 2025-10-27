@@ -210,6 +210,9 @@ object Preferences : KoinComponent {
         }
     }
 
+    val isSmallImage: Boolean
+        get() = preferences.getBoolean(NOW_PLAYING_SMALL_IMAGE, false)
+
     fun getNowPlayingImageCornerRadius(context: Context): Int =
         preferences.getInt(NOW_PLAYING_IMAGE_CORNER_RADIUS, context.intRes(R.integer.now_playing_corner_radius))
 
@@ -574,6 +577,7 @@ const val SQUIGGLY_SEEK_BAR = "squiggly_seek_bar"
 const val SWIPE_TO_DISMISS = "swipe_to_dismiss"
 const val LYRICS_ON_COVER = "lyrics_on_cover"
 const val LEFT_RIGHT_SWIPING = "left_right_swiping"
+const val NOW_PLAYING_SMALL_IMAGE = "now_playing_small_image"
 const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
 const val CAROUSEL_EFFECT = "carousel_effect"
 const val COVER_SWIPING_EFFECT = "cover_swiping_effect"

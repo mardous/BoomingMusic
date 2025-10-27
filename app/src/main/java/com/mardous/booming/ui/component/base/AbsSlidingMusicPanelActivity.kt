@@ -500,6 +500,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
             CAROUSEL_EFFECT,
             COVER_SWIPING_EFFECT,
+            NOW_PLAYING_SMALL_IMAGE,
             NOW_PLAYING_IMAGE_CORNER_RADIUS,
             CIRCLE_PLAY_BUTTON -> {
                 chooseFragmentForTheme()
