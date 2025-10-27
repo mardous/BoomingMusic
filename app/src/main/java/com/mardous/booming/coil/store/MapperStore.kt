@@ -11,6 +11,7 @@ import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.*
+import com.mardous.booming.extensions.media.albumArtistName
 import com.mardous.booming.util.IGNORE_MEDIA_STORE
 import com.mardous.booming.util.USE_FOLDER_ART
 
@@ -20,6 +21,8 @@ class SongMapper(private val preferences: SharedPreferences) : Mapper<Song, Audi
             albumId = data.albumId,
             uri = data.uri,
             path = data.data,
+            artistName = data.albumArtistName(),
+            title = data.title,
             lastModified = data.rawDateModified,
             isAlbum = false,
             isIgnoreMediaStore = preferences.getBoolean(IGNORE_MEDIA_STORE, true),
@@ -38,6 +41,8 @@ class AlbumMapper(private val preferences: SharedPreferences) : Mapper<Album, Au
                 albumId = data.id,
                 uri = it.uri,
                 path = it.data,
+                artistName = it.albumArtistName(),
+                title = it.albumName,
                 lastModified = it.rawDateModified,
                 isAlbum = true,
                 isIgnoreMediaStore = preferences.getBoolean(IGNORE_MEDIA_STORE, true),
@@ -86,6 +91,8 @@ class FileMapper(private val preferences: SharedPreferences) : Mapper<FileSystem
                 albumId = data.albumId,
                 uri = data.uri,
                 path = data.data,
+                artistName = data.albumArtistName(),
+                title = data.title,
                 lastModified = data.rawDateModified,
                 isAlbum = false,
                 isIgnoreMediaStore = preferences.getBoolean(IGNORE_MEDIA_STORE, true),

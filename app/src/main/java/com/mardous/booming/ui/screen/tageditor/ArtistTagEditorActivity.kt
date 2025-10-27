@@ -125,7 +125,7 @@ class ArtistTagEditorActivity : AbsTagEditorActivity() {
                 .enqueue(
                     ImageRequest.Builder(this)
                         .data(artist)
-                        .memoryCachePolicy(CachePolicy.WRITE_ONLY)
+                        .memoryCachePolicy(CachePolicy.DISABLED)
                         .listener(
                             onError = { _, _ ->
                                 setImageBitmap(null)

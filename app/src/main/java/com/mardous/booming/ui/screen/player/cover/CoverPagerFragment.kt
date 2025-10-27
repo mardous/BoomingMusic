@@ -72,6 +72,7 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
     private val binding get() = _binding!!
     private val viewPager get() = binding.viewPager
 
+    private var navController: NavController? = null
     private var coverLyricsFragment: CoverLyricsFragment? = null
     private val nps: NowPlayingScreen by lazy {
         Preferences.nowPlayingScreen
@@ -115,7 +116,8 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         _binding = FragmentPlayerAlbumCoverBinding.bind(view)
         coverLyricsFragment =
             childFragmentManager.findFragmentById(R.id.coverLyricsFragment) as? CoverLyricsFragment
-        findActivityNavController(R.id.fragment_container).addOnDestinationChangedListener(this)
+        navController = findActivityNavController(R.id.fragment_container)
+        navController?.addOnDestinationChangedListener(this)
         setupPageTransformer()
         setupEventObserver()
         Preferences.registerOnSharedPreferenceChangeListener(this)
@@ -238,7 +240,8 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
     override fun onDestroyView() {
         viewPager.adapter = null
         viewPager.removeOnPageChangeListener(this)
-        findActivityNavController(R.id.fragment_container).removeOnDestinationChangedListener(this)
+        navController?.removeOnDestinationChangedListener(this)
+        navController = null
         Preferences.unregisterOnSharedPreferenceChangeListener(this)
         super.onDestroyView()
         gestureDetector = null

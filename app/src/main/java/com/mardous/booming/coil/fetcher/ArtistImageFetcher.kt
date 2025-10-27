@@ -113,7 +113,7 @@ class ArtistImageFetcher(
                 image = data,
                 downloadImage = preferences.getBoolean(
                     ALLOW_ONLINE_ARTIST_IMAGES,
-                    resources.getBoolean(R.bool.default_artist_images_download)
+                    resources.getBoolean(R.bool.default_images_download)
                 ),
                 imageSize = preferences.requireString(PREFERRED_ARTIST_IMAGE_SIZE, ImageSize.MEDIUM)
             )
