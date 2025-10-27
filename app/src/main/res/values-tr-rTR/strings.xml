@@ -656,6 +656,8 @@
     <string name="single_tap_on_album_cover_title">Kapağa tek dokun</string>
     <string name="double_tap_on_album_cover_title">Kapağa çift dokunun</string>
     <string name="long_press_on_album_cover_title">Kapağa uzun basın</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Görsel köşe yarıçapı</string>
     <string name="now_playing_corner_radius_summary">Albüm kapağı köşelerinin ne kadar yuvarlak görüneceğini tanımlar.</string>
     <string name="carousel_effect_title">Atlıkarınca efekti</string>
@@ -710,9 +712,9 @@
     <string name="use_folder_album_cover_summary">Ses dosyası gömülü bir kapak içermiyorsa. Resimlerin yüklenmesi biraz daha uzun sürebilir.</string>
     <string name="online_artist_images_title">Sanatçı resimlerini indir</string>
     <string name="online_artist_images_summary">Bu, üstveri indirme politikanıza bağlıdır.</string>
-    <string name="preferred_artist_image_size_title">Tercih edilen resim boyutu</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
     <string name="online_album_covers_title">Download missing album covers</string>
-    <string name="online_album_covers_summary">Downloaded images are not saved to files, they are visible only within the app. This depends on your metadata download policy.</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">İndirilen şarkı sözlerini sil</string>
     <string name="delete_downloaded_lyrics_summary">Yalnızca Booming Music tarafından indirilen şarkı sözleri. ID3v2 etiketlerine veya LRC dosyalarına gömülü şarkı sözlerini etkilemez.</string>
     <string name="lyrics_cleared">Şarkı sözleri temizlendi.</string>
