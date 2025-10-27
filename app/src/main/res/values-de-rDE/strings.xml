@@ -661,6 +661,8 @@
     <string name="single_tap_on_album_cover_title">Auf Albumcover einzeltippen</string>
     <string name="double_tap_on_album_cover_title">Auf Albumcover doppeltippen</string>
     <string name="long_press_on_album_cover_title">Albumcover gedrückt halten</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Bild-Eckradius</string>
     <string name="now_playing_corner_radius_summary">Definiert die Rundung der Album-Cover-Ecken.</string>
     <string name="carousel_effect_title">Karussell-Effekt</string>
@@ -715,9 +717,9 @@
     <string name="use_folder_album_cover_summary">Wenn die Audiodatei kein eingebettetes Albumcover enthält, kann sich die Bildladezeit verlängern.</string>
     <string name="online_artist_images_title">Interpretenbilder herunterladen</string>
     <string name="online_artist_images_summary">Dies hängt von Deiner Vorgabe zum Metadaten-Download ab.</string>
-    <string name="preferred_artist_image_size_title">Bevorzugte Bildgröße</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
     <string name="online_album_covers_title">Download missing album covers</string>
-    <string name="online_album_covers_summary">Downloaded images are not saved to files, they are visible only within the app. This depends on your metadata download policy.</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Heruntergeladene Liedtexte löschen</string>
     <string name="delete_downloaded_lyrics_summary">Nur Liedtexte, die von Booming Music heruntergeladen wurden. Hat keine Auswirkung auf eingebettete Liedtexte aus ID3v2-Tags oder LRC-Dateien.</string>
     <string name="lyrics_cleared">Liedtext geleert.</string>
