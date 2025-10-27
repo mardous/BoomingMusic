@@ -660,8 +660,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="single_tap_on_album_cover_title">Toque único en la carátula</string>
     <string name="double_tap_on_album_cover_title">Doble toque en la carátula</string>
     <string name="long_press_on_album_cover_title">Presión larga en la carátula</string>
-    <string name="small_image_title">Small image</string>
-    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
+    <string name="small_image_title">Imagen pequeña</string>
+    <string name="small_image_summary">Reduce el tamaño de la carátula en los estilos que lo soportan.</string>
     <string name="now_playing_corner_radius_title">Radio de esquinas de la imagen</string>
     <string name="now_playing_corner_radius_summary">Elija qué tan redondeadas deben verse las esquinas de la imagen del álbum.</string>
     <string name="carousel_effect_title">Efecto de carrusel</string>
@@ -716,9 +716,9 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="use_folder_album_cover_summary">En caso de que el archivo de audio no contenga una portada incrustada. Las imágenes pueden tardar más en cargar.</string>
     <string name="online_artist_images_title">Descargar imágenes de artistas</string>
     <string name="online_artist_images_summary">Depende de su política de descarga de metadatos.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="preferred_image_size_title">Tamaño de imagen preferido</string>
     <string name="online_album_covers_title">Descargar carátulas de álbumes faltantes</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="online_album_covers_summary">Las imágenes descargadas no serán incrustadas en archivos de audio; solo son visibles dentro de la app. Esto depende de la política de descarga de metadatos.</string>
     <string name="delete_downloaded_lyrics_title">Eliminar letras descargadas</string>
     <string name="delete_downloaded_lyrics_summary">Solo las letras descargadas por Booming Music. No afecta a las letras en etiquetas ID3v2 o archivos LRC.</string>
     <string name="lyrics_cleared">Letras eliminadas.</string>
