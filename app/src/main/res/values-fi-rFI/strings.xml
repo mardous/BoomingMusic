@@ -661,6 +661,8 @@
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Kaksoisnapautus kannessa</string>
     <string name="long_press_on_album_cover_title">Paina pitkään kannella</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
@@ -716,6 +718,8 @@
     <string name="online_artist_images_title">Lataa artistin kuvat</string>
     <string name="online_artist_images_summary">Tämä riippuu metadatan latauskäytännöstäsi.</string>
     <string name="preferred_image_size_title">Ensisijainen kuvan koko</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Poista ladatut sanoitukset</string>
     <string name="delete_downloaded_lyrics_summary">Vain Booming Musicin lataamat sanoitukset. Ei vaikuta sanoituksiin, jotka on upotettu ID3v2-tageihin tai LRC-tiedostoihin.</string>
     <string name="lyrics_cleared">Sanoitukset tyhjennetty.</string>

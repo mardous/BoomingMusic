@@ -653,6 +653,8 @@
     <string name="single_tap_on_album_cover_title">カバーをシングルタップ</string>
     <string name="double_tap_on_album_cover_title">カバーをダブルタップする</string>
     <string name="long_press_on_album_cover_title">カバーを長押しする</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">画像の角の丸み</string>
     <string name="now_playing_corner_radius_summary">アルバムカバーの角の丸みを調整する。</string>
     <string name="carousel_effect_title">カルーセル効果</string>
@@ -707,7 +709,9 @@
     <string name="use_folder_album_cover_summary">オーディオファイルに埋め込みカバーが含まれていない場合、画像の読み込みにはもう少し時間がかかることがあります。</string>
     <string name="online_artist_images_title">アーティスト画像をダウンロード</string>
     <string name="online_artist_images_summary">これはメタデータのダウンロードポリシーに依存します。</string>
-    <string name="preferred_image_size_title">優先する画像サイズ</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">ダウンロードした歌詞を削除</string>
     <string name="delete_downloaded_lyrics_summary">Booming Musicによってダウンロードされた歌詞のみ。ID3v2タグまたはLRCファイルに埋め込まれた歌詞には影響しません。</string>
     <string name="lyrics_cleared">歌詞を消去しました。</string>

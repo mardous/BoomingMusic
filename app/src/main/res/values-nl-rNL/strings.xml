@@ -661,6 +661,8 @@
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dubbele tik op de afdekking</string>
     <string name="long_press_on_album_cover_title">Lang drukken op omslag</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Hoekradius van afbeelding</string>
     <string name="now_playing_corner_radius_summary">Definieert hoe de hoeken van de albumcover moeten verschijnen.</string>
     <string name="carousel_effect_title">Carrousel effect</string>
@@ -715,7 +717,9 @@
     <string name="use_folder_album_cover_summary">Als het audiobestand geen ingebouwde omslag bevat. Afbeeldingen kunnen wat meer tijd kosten om te laden.</string>
     <string name="online_artist_images_title">Download artiesten afbeeldingen</string>
     <string name="online_artist_images_summary">Dit hangt af van uw metadata downloadbeleid.</string>
-    <string name="preferred_image_size_title">Gewenste afbeeldingsgrootte</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Verwijder gedownloade songteksten</string>
     <string name="delete_downloaded_lyrics_summary">Alleen songteksten gedownload door Booming Music. Heeft geen invloed op songteksten die zijn ingebed in ID3v2 tags of LRC bestanden.</string>
     <string name="lyrics_cleared">Songteksten gewist.</string>
