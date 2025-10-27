@@ -661,6 +661,8 @@
     <string name="single_tap_on_album_cover_title">Appuyez une fois sur la couverture</string>
     <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
     <string name="long_press_on_album_cover_title">Appui long sur la couverture</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Rayon des coins de l\'image</string>
     <string name="now_playing_corner_radius_summary">Définit l\'aspect arrondi des coins de la couverture de l\'album.</string>
     <string name="carousel_effect_title">Effet carrousel</string>
@@ -715,9 +717,9 @@
     <string name="use_folder_album_cover_summary">Si le fichier audio ne contient pas de couverture intégrée. Les images peuvent prendre un peu plus de temps pour se charger.</string>
     <string name="online_artist_images_title">Télécharger les images de l\'artiste</string>
     <string name="online_artist_images_summary">Cela dépend de votre politique de téléchargement de métadonnées.</string>
-    <string name="preferred_artist_image_size_title">Taille d\'image préférée</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
     <string name="online_album_covers_title">Télécharger les pochettes d\'album manquantes</string>
-    <string name="online_album_covers_summary">Les images téléchargées ne sont pas enregistrées dans des fichiers ; elles sont visibles uniquement dans l\'application. Cela dépend de votre politique de téléchargement de métadonnées.</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Supprimer les paroles téléchargées</string>
     <string name="delete_downloaded_lyrics_summary">Seules les paroles téléchargées par Booming Music. N\'affecte pas les paroles intégrées dans les tags ID3v2 ou les fichiers LCR.</string>
     <string name="lyrics_cleared">Paroles effacées.</string>
