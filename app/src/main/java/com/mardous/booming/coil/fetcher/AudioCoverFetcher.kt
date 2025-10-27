@@ -18,6 +18,9 @@ import com.mardous.booming.extensions.isAllowedToDownloadMetadata
 import com.mardous.booming.extensions.media.asAlbumCoverUri
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.util.ALLOW_ONLINE_ALBUM_COVERS
+import com.mardous.booming.util.ImageSize
+import com.mardous.booming.util.PREFERRED_IMAGE_SIZE
+import com.mardous.booming.util.Preferences.requireString
 import okio.IOException
 import okio.buffer
 import okio.source
@@ -27,10 +30,12 @@ class AudioCoverFetcher(
     private val options: Options,
     private val deezerService: DeezerService,
     private val cover: AudioCover,
-    private val downloadImage: Boolean
+    private val downloadImage: Boolean,
+    private val imageSize: String
 ) : Fetcher {
 
     private val contentResolver get() = options.context.contentResolver
+    private val canDownloadImages get() = downloadImage && options.context.isAllowedToDownloadMetadata()
 
     override suspend fun fetch(): FetchResult? {
         val audioCover = cover.getComplete(contentResolver)
@@ -48,18 +53,20 @@ class AudioCoverFetcher(
             null
         }
 
-        if (stream == null && downloadImage &&
-            !cover.artistName.isArtistNameUnknown() &&
-            options.context.isAllowedToDownloadMetadata()) {
-            val imageUrl = if (cover.isAlbum) {
-                deezerService.album(cover.artistName, cover.title).imageUrl
-            } else {
-                deezerService.track(cover.artistName, cover.title).imageUrl
+        if (stream == null && !cover.artistName.isArtistNameUnknown() && canDownloadImages) {
+            // Search by album
+            var result = deezerService.album(cover.artistName, cover.albumName)
+                .getBestImage(cover.albumName, imageSize)
+            if (!result.first && !cover.isAlbum) {
+                // Search by track
+                result = true to deezerService.track(cover.artistName, cover.title)
+                    .getBestImage(imageSize)
             }
-            if (imageUrl != null) {
-                val data = loader.components.map(imageUrl, options)
+            val (matched, url) = result
+            if (matched && url != null) {
+                val data = loader.components.map(url, options)
                 val output = loader.components.newFetcher(data, options, loader)
-                val (fetcher) = checkNotNull(output) { "no supported fetcher for $imageUrl" }
+                val (fetcher) = checkNotNull(output) { "no supported fetcher for $url" }
                 return fetcher.fetch()
             }
         }
@@ -94,7 +101,8 @@ class AudioCoverFetcher(
                 downloadImage = preferences.getBoolean(
                     ALLOW_ONLINE_ALBUM_COVERS,
                     resources.getBoolean(R.bool.default_images_download)
-                )
+                ),
+                imageSize = preferences.requireString(PREFERRED_IMAGE_SIZE, ImageSize.MEDIUM)
             )
         }
     }

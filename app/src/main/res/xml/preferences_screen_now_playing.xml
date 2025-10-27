@@ -48,6 +48,15 @@
             app:widgetLayout="@layout/preference_switch"
             app:key="left_right_swiping" />
 
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/small_image_title"
+            app:summary="@string/small_image_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="now_playing_small_image" />
+
         <SeekBarPreference
             app:icon="@drawable/ic_rounded_corner_24dp"
             app:title="@string/now_playing_corner_radius_title"

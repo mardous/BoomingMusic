@@ -51,6 +51,6 @@ class DeezerArtist(
     )
 
     companion object {
-        private val JW_SIMILARITY = JaroWinklerSimilarity()
+        val JW_SIMILARITY = JaroWinklerSimilarity()
     }
 }

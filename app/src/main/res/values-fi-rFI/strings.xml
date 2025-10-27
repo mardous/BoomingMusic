@@ -717,7 +717,7 @@
     <string name="use_folder_album_cover_summary">Jos äänitiedosto ei sisällä upotettua kantta. Kuvat saattavat kestää hieman enemmän aikaa ladata.</string>
     <string name="online_artist_images_title">Lataa artistin kuvat</string>
     <string name="online_artist_images_summary">Tämä riippuu metadatan latauskäytännöstäsi.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="preferred_image_size_title">Ensisijainen kuvan koko</string>
     <string name="online_album_covers_title">Download missing album covers</string>
     <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Poista ladatut sanoitukset</string>

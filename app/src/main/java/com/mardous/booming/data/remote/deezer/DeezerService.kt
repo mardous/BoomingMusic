@@ -34,8 +34,8 @@ class DeezerService(private val client: HttpClient) {
             }
         }.body<DeezerTrack>()
 
-    suspend fun album(artistName: String, name: String) =
-        client.get("https://api.deezer.com/search/album?limit=1") {
+    suspend fun album(artistName: String, name: String, limit: Int = 1) =
+        client.get("https://api.deezer.com/search/album?limit=$limit") {
             url {
                 encodedParameters.append("q", "$artistName $name".encodeURLParameter())
             }

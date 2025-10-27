@@ -46,7 +46,7 @@ class MetadataPreferencesFragment : PreferencesScreenFragment(), SharedPreferenc
                 true
             }
 
-        findPreference<Preference>(PREFERRED_ARTIST_IMAGE_SIZE)?.onPreferenceChangeListener =
+        findPreference<Preference>(PREFERRED_IMAGE_SIZE)?.onPreferenceChangeListener =
             Preference.OnPreferenceChangeListener { _, _ ->
                 clearImageLoaderCache()
                 true
