@@ -72,6 +72,7 @@ import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
 import com.mardous.booming.ui.dialogs.songs.ShareSongDialog
 import com.mardous.booming.ui.screen.MainActivity
+import com.mardous.booming.ui.screen.equalizer.EqualizerFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
 import com.mardous.booming.ui.screen.player.PlayerColorScheme
@@ -232,7 +233,11 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
             }
 
             R.id.action_equalizer -> {
-                goToDestination(requireActivity(), R.id.nav_equalizer)
+                if (currentFragment(R.id.fragment_container) is EqualizerFragment) {
+                    (activity as? MainActivity)?.collapsePanel()
+                } else {
+                    goToDestination(requireActivity(), R.id.nav_equalizer)
+                }
                 true
             }
 
