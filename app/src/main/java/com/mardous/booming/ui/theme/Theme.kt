@@ -8,6 +8,8 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
+import com.mardous.booming.R
 import com.mardous.booming.ui.screen.player.PlayerColorScheme
 import com.mardous.booming.util.Preferences
 
@@ -121,7 +123,9 @@ fun BoomingMusicTheme(
         colorScheme = colorScheme.copy(
             background = Color.Black,
             surface = Color.Black,
-            surfaceContainer = Color(0xFF0B0B0B)
+            surfaceContainer = colorResource(R.color.surfaceContainerBlack),
+            surfaceContainerLow = colorResource(R.color.surfaceContainerLowBlack),
+            surfaceContainerLowest = colorResource(R.color.surfaceContainerLowestBlack)
         )
     }
 

@@ -198,8 +198,9 @@
 
     <style name="Base.Theme.Booming.Black">
         <item name="colorSurface">@android:color/black</item>
-        <item name="colorSurfaceContainer">#0B0B0B</item>
-        <item name="android:windowBackground">?colorSurface</item>
+        <item name="colorSurfaceContainer">@color/surfaceContainerBlack</item>
+        <item name="colorSurfaceContainerLow">@color/surfaceContainerLowBlack</item>
+        <item name="colorSurfaceContainerLowest">@color/surfaceContainerLowestBlack</item>
         <item name="elevationOverlayColor">@color/elevationOverlayBlack</item>
     </style>
 
