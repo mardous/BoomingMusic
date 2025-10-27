@@ -677,6 +677,8 @@
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dvojím poklepáním na obal</string>
     <string name="long_press_on_album_cover_title">Dlouhým stiskem na obalu</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
@@ -731,9 +733,9 @@
     <string name="use_folder_album_cover_summary">Pokud zvukový soubor neobsahuje vložený obal. Obrázky mohou trvat trochu déle.</string>
     <string name="online_artist_images_title">Stáhnout obrázky umělců</string>
     <string name="online_artist_images_summary">To závisí na zásadách stahování metadat.</string>
-    <string name="preferred_artist_image_size_title">Upřednostňovaná velikost obrázku</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
     <string name="online_album_covers_title">Download missing album covers</string>
-    <string name="online_album_covers_summary">Downloaded images are not saved to files, they are visible only within the app. This depends on your metadata download policy.</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Odstranit stažené texty</string>
     <string name="delete_downloaded_lyrics_summary">Pouze texty stažené z Booming Music. Nemá vliv na texty vložené do ID3v2 značek nebo LRC souborů.</string>
     <string name="lyrics_cleared">Texty vymazány.</string>
