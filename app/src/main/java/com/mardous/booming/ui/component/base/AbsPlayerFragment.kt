@@ -62,6 +62,7 @@ import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.resources.animateBackgroundColor
 import com.mardous.booming.extensions.resources.animateTintColor
 import com.mardous.booming.extensions.resources.inflateMenu
+import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.component.menu.newPopupMenu
 import com.mardous.booming.ui.component.menu.onSongMenu
@@ -446,10 +447,13 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
     }
 
     fun getSongArtist(song: Song): CharSequence {
-        val artistName = if (Preferences.preferAlbumArtistName)
-            song.albumArtistName().displayArtistName() else song.displayArtistName()
+        val artistName = if (Preferences.preferAlbumArtistName) {
+            song.albumArtistName().displayArtistName()
+        } else {
+            song.displayArtistName()
+        }
         if (Preferences.displayAlbumTitle) {
-            return "$artistName - ${song.albumName}"
+            return buildInfoString(artistName, song.albumName)
         }
         return artistName
     }
