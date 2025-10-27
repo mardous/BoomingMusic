@@ -715,7 +715,7 @@
     <string name="use_folder_album_cover_summary">Se il file audio non contiene una copertina incorporata. Le immagini potrebbero richiedere un po\' più di tempo per caricare.</string>
     <string name="online_artist_images_title">Scarica immagini artista</string>
     <string name="online_artist_images_summary">Questo dipende dalla politica di download dei metadati.</string>
-    <string name="preferred_artist_image_size_title">Dimensione immagine preferita</string>
+    <string name="preferred_image_size_title">Dimensione immagine preferita</string>
     <string name="delete_downloaded_lyrics_title">Elimina i testi scaricati</string>
     <string name="delete_downloaded_lyrics_summary">Solo i testi scaricati da Booming Music. Non influiscono sui testi incorporati nei tag ID3v2 o nei file LRC.</string>
     <string name="lyrics_cleared">Testo cancellato.</string>

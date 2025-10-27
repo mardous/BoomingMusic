@@ -733,7 +733,7 @@
     <string name="use_folder_album_cover_summary">Если аудиофайл не содержит встроенную обложку. Загрузка изображений может занять немного больше времени.</string>
     <string name="online_artist_images_title">Загружать изображения исполнителей</string>
     <string name="online_artist_images_summary">Это зависит от вашей политики загрузки метаданных.</string>
-    <string name="preferred_artist_image_size_title">Предпочтительный размер изображения</string>
+    <string name="preferred_image_size_title">Предпочтительный размер изображения</string>
     <string name="delete_downloaded_lyrics_title">Удалить загруженные тексты песен</string>
     <string name="delete_downloaded_lyrics_summary">Только тексты песен, загруженные Booming Music. Не влияет на тексты, встроенные в теги ID3v2 или файлы LRC.</string>
     <string name="lyrics_cleared">Текст песни очищен.</string>

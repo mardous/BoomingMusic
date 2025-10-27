@@ -714,7 +714,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="use_folder_album_cover_summary">En caso de que el archivo de audio no contenga una portada incrustada. Las imágenes pueden tardar más en cargar.</string>
     <string name="online_artist_images_title">Descargar imágenes de artistas</string>
     <string name="online_artist_images_summary">Depende de su política de descarga de metadatos.</string>
-    <string name="preferred_artist_image_size_title">Tamaño de imagen preferido</string>
+    <string name="preferred_image_size_title">Tamaño de imagen preferido</string>
     <string name="delete_downloaded_lyrics_title">Eliminar letras descargadas</string>
     <string name="delete_downloaded_lyrics_summary">Solo las letras descargadas por Booming Music. No afecta a las letras en etiquetas ID3v2 o archivos LRC.</string>
     <string name="lyrics_cleared">Letras eliminadas.</string>

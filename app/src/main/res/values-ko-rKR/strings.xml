@@ -707,7 +707,7 @@
     <string name="use_folder_album_cover_summary">If the audio file does not contain an embedded cover. Images might take a bit more of time to load.</string>
     <string name="online_artist_images_title">Download artist images</string>
     <string name="online_artist_images_summary">This depends on your metadata download policy.</string>
-    <string name="preferred_artist_image_size_title">Preferred image size</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
     <string name="delete_downloaded_lyrics_title">Delete downloaded lyrics</string>
     <string name="delete_downloaded_lyrics_summary">Only lyrics downloaded by Booming Music. Does not affect lyrics embedded in ID3v2 tags or LRC files.</string>
     <string name="lyrics_cleared">Lyrics cleared.</string>

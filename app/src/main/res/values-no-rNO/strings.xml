@@ -715,7 +715,7 @@
     <string name="use_folder_album_cover_summary">Dersom lydfilen ikke inneholder et innebygd omslag. Bildene kan ta litt mer tid å laste inn.</string>
     <string name="online_artist_images_title">Last ned artistbilder</string>
     <string name="online_artist_images_summary">Dette avhenger av din metadata nedlastingspolicy.</string>
-    <string name="preferred_artist_image_size_title">Foretrukket bildestørrelse</string>
+    <string name="preferred_image_size_title">Foretrukket bildestørrelse</string>
     <string name="delete_downloaded_lyrics_title">Slett nedlastede tekster</string>
     <string name="delete_downloaded_lyrics_summary">Bare tekster lastet ned av Booming Music. Påvirker ikke tekster innebygd i ID3v2 tagger eller LRC-filer.</string>
     <string name="lyrics_cleared">Teksten er tømt.</string>

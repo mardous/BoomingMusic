@@ -715,7 +715,7 @@
     <string name="use_folder_album_cover_summary">Als het audiobestand geen ingebouwde omslag bevat. Afbeeldingen kunnen wat meer tijd kosten om te laden.</string>
     <string name="online_artist_images_title">Download artiesten afbeeldingen</string>
     <string name="online_artist_images_summary">Dit hangt af van uw metadata downloadbeleid.</string>
-    <string name="preferred_artist_image_size_title">Gewenste afbeeldingsgrootte</string>
+    <string name="preferred_image_size_title">Gewenste afbeeldingsgrootte</string>
     <string name="delete_downloaded_lyrics_title">Verwijder gedownloade songteksten</string>
     <string name="delete_downloaded_lyrics_summary">Alleen songteksten gedownload door Booming Music. Heeft geen invloed op songteksten die zijn ingebed in ID3v2 tags of LRC bestanden.</string>
     <string name="lyrics_cleared">Songteksten gewist.</string>

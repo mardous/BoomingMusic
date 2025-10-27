@@ -714,7 +714,7 @@ Ideal para podcasts e gravações.</string>
     <string name="use_folder_album_cover_summary">Se o arquivo de áudio não conter uma capa embutida, as imagens podem levar um pouco mais de tempo para carregar.</string>
     <string name="online_artist_images_title">Baixar imagens dos artistas</string>
     <string name="online_artist_images_summary">Isso depende da sua política de download de metadados.</string>
-    <string name="preferred_artist_image_size_title">Preferência do tamanho da imagem</string>
+    <string name="preferred_image_size_title">Preferência do tamanho da imagem</string>
     <string name="delete_downloaded_lyrics_title">Excluir letras baixadas</string>
     <string name="delete_downloaded_lyrics_summary">Somente letras baixadas pelo Booming Music. Não afeta letras incorporadas em tags ID3v2 ou arquivos LRC.</string>
     <string name="lyrics_cleared">Letra excluída.</string>

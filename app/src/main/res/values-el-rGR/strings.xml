@@ -715,7 +715,7 @@
     <string name="use_folder_album_cover_summary">Αν το αρχείο ήχου δεν περιέχει ενσωματωμένο εξώφυλλο. Οι εικόνες μπορεί να πάρουν λίγο περισσότερο χρόνο για να φορτώσουν.</string>
     <string name="online_artist_images_title">Λήψη εικόνων καλλιτέχνη</string>
     <string name="online_artist_images_summary">Αυτό εξαρτάται από την πολιτική μεταδεδομένων λήψης.</string>
-    <string name="preferred_artist_image_size_title">Προτιμώμενο μέγεθος εικόνας</string>
+    <string name="preferred_image_size_title">Προτιμώμενο μέγεθος εικόνας</string>
     <string name="delete_downloaded_lyrics_title">Διαγραφή ληφθέντων στίχων</string>
     <string name="delete_downloaded_lyrics_summary">Μόνο στίχοι που λήφθηκαν από το Booming Music. Δεν επηρεάζει τους στίχους που είναι ενσωματωμένοι σε ετικέτες ID3v2 ή αρχεία LRC.</string>
     <string name="lyrics_cleared">Οι στίχοι καθαρίστηκαν.</string>

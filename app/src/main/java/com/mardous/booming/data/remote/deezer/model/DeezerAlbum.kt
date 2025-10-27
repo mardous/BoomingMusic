@@ -17,6 +17,8 @@
 
 package com.mardous.booming.data.remote.deezer.model
 
+import com.mardous.booming.extensions.utilities.normalize
+import com.mardous.booming.util.ImageSize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -26,10 +28,37 @@ data class DeezerAlbum(
     val data: List<AlbumData>
 ) {
     val imageUrl: String?
-        get() = data.firstOrNull()?.let { it.largeImage ?: it.mediumImage ?: it.smallImage }
+        get() = data.firstOrNull()?.let { it.largeImage ?: it.mediumImage ?: it.smallImage ?: it.image }
+
+    fun getBestImage(requestedName: String, requestedImageSize: String): Pair<Boolean, String?> {
+        val normRequested = requestedName.normalize()
+        val best = data.map { album ->
+            val normArtist = album.title.normalize()
+            val score = DeezerArtist.JW_SIMILARITY.apply(normArtist, normRequested)
+            album to score
+        }
+            .maxByOrNull { it.second }
+
+        if (best == null || best.second < 0.90) {
+            return false to null
+        }
+
+        val bestMatch = best.first
+        val tentativeImage = when (requestedImageSize) {
+            ImageSize.LARGE -> bestMatch.largeImage
+            ImageSize.SMALL -> bestMatch.smallImage
+            else -> bestMatch.mediumImage
+        } ?: bestMatch.image
+        return true to tentativeImage
+            ?.takeIf { it.isNotBlank() && !it.contains("/images/cover//") }
+    }
 
     @Serializable
     data class AlbumData(
+        @SerialName("title")
+        val title: String,
+        @SerialName("cover")
+        val image: String?,
         @SerialName("cover_small")
         val smallImage: String?,
         @SerialName("cover_medium")

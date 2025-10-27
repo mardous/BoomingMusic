@@ -715,7 +715,7 @@
     <string name="use_folder_album_cover_summary">Hvis lydfilen ikke indeholder et indlejret cover. Billeder kan tage lidt mere tid at indlæse.</string>
     <string name="online_artist_images_title">Download kunstnerbilleder</string>
     <string name="online_artist_images_summary">Dette afhænger af din metadata download politik.</string>
-    <string name="preferred_artist_image_size_title">Foretrukken billedstørrelse</string>
+    <string name="preferred_image_size_title">Foretrukken billedstørrelse</string>
     <string name="delete_downloaded_lyrics_title">Slet downloadede sangtekster</string>
     <string name="delete_downloaded_lyrics_summary">Kun sangtekster hentet af Booming Music. Påvirker ikke sangtekster indlejret i ID3v2 tags eller LRC filer.</string>
     <string name="lyrics_cleared">Sangtekster ryddet.</string>

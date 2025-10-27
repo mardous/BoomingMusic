@@ -715,7 +715,7 @@
     <string name="use_folder_album_cover_summary">Si el fitxer d\'àudio no conté una portada incorporada, les imatges podrien trigar més a carregar.</string>
     <string name="online_artist_images_title">Descarrega imatges dels artistes</string>
     <string name="online_artist_images_summary">Això depèn de la vostra política de descàrrega de metadades.</string>
-    <string name="preferred_artist_image_size_title">Mida d\'imatge preferida</string>
+    <string name="preferred_image_size_title">Mida d\'imatge preferida</string>
     <string name="delete_downloaded_lyrics_title">Esborra les lletres descarregades</string>
     <string name="delete_downloaded_lyrics_summary">Només lletres descarregades per Booming Music. No afecta les lletres incorporades en etiquetes ID3v2 o fitxers LRC.</string>
     <string name="lyrics_cleared">Lletres esborrades.</string>

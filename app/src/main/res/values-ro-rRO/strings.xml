@@ -723,7 +723,7 @@
     <string name="use_folder_album_cover_summary">Dacă fișierul audio nu conține o copertă încorporată. Imaginile ar putea dura puțin mai mult timp să se încarce.</string>
     <string name="online_artist_images_title">Descarcă imaginile artistului</string>
     <string name="online_artist_images_summary">Acest lucru depinde de politica de descărcare a metadatei.</string>
-    <string name="preferred_artist_image_size_title">Dimensiunea imaginii preferate</string>
+    <string name="preferred_image_size_title">Dimensiunea imaginii preferate</string>
     <string name="delete_downloaded_lyrics_title">Șterge versurile descărcate</string>
     <string name="delete_downloaded_lyrics_summary">Doar versurile descărcate de Booming Music. Nu afectează versurile încorporate în tag-urile ID3v2 sau fişierele LRC.</string>
     <string name="lyrics_cleared">Versuri șterse.</string>

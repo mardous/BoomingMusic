@@ -12,6 +12,37 @@
         app:layout="@layout/list_item_view"
         app:key="auto_download_metadata_policy"/>
 
+	<SwitchPreferenceCompat
+		app:iconSpaceReserved="true"
+		app:title="@string/online_artist_images_title"
+		app:summary="@string/online_artist_images_summary"
+		app:defaultValue="@bool/default_images_download"
+		app:icon="@drawable/ic_artist_24dp"
+		app:layout="@layout/list_item_view"
+		app:widgetLayout="@layout/preference_switch"
+		app:key="allow_online_artist_images"/>
+
+	<SwitchPreferenceCompat
+		app:iconSpaceReserved="true"
+		app:title="@string/online_album_covers_title"
+		app:summary="@string/online_album_covers_summary"
+		app:defaultValue="@bool/default_images_download"
+		app:icon="@drawable/ic_album_24dp"
+		app:layout="@layout/list_item_view"
+		app:widgetLayout="@layout/preference_switch"
+		app:key="allow_online_album_covers"/>
+
+	<ListPreference
+		app:iconSpaceReserved="true"
+		app:title="@string/preferred_image_size_title"
+		app:entries="@array/pref_image_size_entries"
+		app:entryValues="@array/pref_image_size_values"
+		app:useSimpleSummaryProvider="true"
+		app:defaultValue="medium"
+		app:dependency="allow_online_artist_images"
+		app:layout="@layout/list_item_view"
+		app:key="preferred_image_size"/>
+
     <PreferenceCategory
         app:title="@string/album_cover_header"
         app:layout="@layout/preference_category_title">
@@ -33,49 +64,6 @@
 			app:layout="@layout/list_item_view"
 			app:widgetLayout="@layout/preference_switch"
         	app:key="use_folder_art"/>
-
-	</PreferenceCategory>
-
-	<PreferenceCategory
-		app:title="@string/artist_image_header"
-		app:layout="@layout/preference_category_title">
-
-    	<SwitchPreferenceCompat
-			app:iconSpaceReserved="true"
-        	app:title="@string/online_artist_images_title"
-        	app:summary="@string/online_artist_images_summary"
-        	app:defaultValue="@bool/default_images_download"
-			app:icon="@drawable/ic_artist_24dp"
-			app:layout="@layout/list_item_view"
-			app:widgetLayout="@layout/preference_switch"
-        	app:key="allow_online_artist_images"/>
-
-		<ListPreference
-			app:iconSpaceReserved="true"
-			app:title="@string/preferred_artist_image_size_title"
-			app:entries="@array/pref_image_size_entries"
-			app:entryValues="@array/pref_image_size_values"
-			app:useSimpleSummaryProvider="true"
-			app:defaultValue="medium"
-			app:dependency="allow_online_artist_images"
-			app:layout="@layout/list_item_view"
-			app:key="preferred_artist_image_size"/>
-
-	</PreferenceCategory>
-
-	<PreferenceCategory
-		app:title="@string/album_cover_header"
-		app:layout="@layout/preference_category_title">
-
-		<SwitchPreferenceCompat
-			app:iconSpaceReserved="true"
-			app:title="@string/online_album_covers_title"
-			app:summary="@string/online_album_covers_summary"
-			app:defaultValue="@bool/default_images_download"
-			app:icon="@drawable/ic_album_24dp"
-			app:layout="@layout/list_item_view"
-			app:widgetLayout="@layout/preference_switch"
-			app:key="allow_online_album_covers"/>
 
 	</PreferenceCategory>
 
