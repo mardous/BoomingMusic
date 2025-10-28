@@ -661,7 +661,7 @@
     <string name="single_tap_on_album_cover_title">Un clic a la portada</string>
     <string name="double_tap_on_album_cover_title">Dos clics a la portada</string>
     <string name="long_press_on_album_cover_title">Clic sostingut a la portada</string>
-    <string name="small_image_title">Small image</string>
+    <string name="small_image_title">Imatge petita</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Radi dels cantons de la imatge</string>
     <string name="now_playing_corner_radius_summary">Defineix com d\'arrodonits haurien d\'aparèixer els cantons de la imatge de l\'àlbum.</string>
