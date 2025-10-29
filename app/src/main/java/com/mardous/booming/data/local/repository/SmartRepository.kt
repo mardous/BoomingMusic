@@ -32,8 +32,10 @@ import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 import java.io.File
 
 interface SmartRepository {
@@ -194,7 +196,7 @@ class RealSmartRepository(
     }
 
     private suspend fun List<PlayCountEntity>.fromPlayCountToSongs() = mapNotNull {
-        if (!File(it.data).exists() || it.id == -1L) {
+        if (!File(it.data).exists() || it.id == -1L) withContext(IO) {
             deleteSongInPlayCount(it.id)
             null
         } else {
@@ -203,7 +205,7 @@ class RealSmartRepository(
     }
 
     private suspend fun List<HistoryEntity>.fromHistoryToSongs() = mapNotNull {
-        if (!File(it.data).exists() || it.id == -1L) {
+        if (!File(it.data).exists() || it.id == -1L) withContext(IO) {
             deleteSongInHistory(it.id)
             null
         } else {
