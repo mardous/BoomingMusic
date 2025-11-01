@@ -17,21 +17,22 @@
 
 package com.mardous.booming.ui.screen.settings
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import coil3.SingletonImageLoader
 import com.mardous.booming.R
-import com.mardous.booming.util.*
+import com.mardous.booming.util.IGNORE_MEDIA_STORE
+import com.mardous.booming.util.PREFERRED_IMAGE_SIZE
+import com.mardous.booming.util.USE_FOLDER_ART
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
  * @author Christians M. A. (mardous)
  */
-class MetadataPreferencesFragment : PreferencesScreenFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
+class MetadataPreferencesFragment : PreferencesScreenFragment() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences_screen_metadata)
@@ -39,7 +40,6 @@ class MetadataPreferencesFragment : PreferencesScreenFragment(), SharedPreferenc
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Preferences.registerOnSharedPreferenceChangeListener(this)
         findPreference<Preference>(IGNORE_MEDIA_STORE)?.onPreferenceChangeListener =
             Preference.OnPreferenceChangeListener { _, _ ->
                 clearImageLoaderCache()
@@ -57,29 +57,11 @@ class MetadataPreferencesFragment : PreferencesScreenFragment(), SharedPreferenc
                 clearImageLoaderCache()
                 true
             }
-
-        updateOnlineArtistImagesState()
-    }
-
-    private fun updateOnlineArtistImagesState() {
-        findPreference<Preference>(ALLOW_ONLINE_ARTIST_IMAGES)?.isEnabled =
-            Preferences.autoDownloadMetadataPolicy != AutoDownloadMetadataPolicy.NEVER
     }
 
     private fun clearImageLoaderCache() = lifecycleScope.launch(Dispatchers.IO) {
         val imageLoader = SingletonImageLoader.get(requireContext())
         imageLoader.memoryCache?.clear()
         imageLoader.diskCache?.clear()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Preferences.unregisterOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onSharedPreferenceChanged(preferences: SharedPreferences?, key: String?) {
-        when (key) {
-            AUTO_DOWNLOAD_METADATA_POLICY -> updateOnlineArtistImagesState()
-        }
     }
 }

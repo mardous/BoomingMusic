@@ -39,7 +39,6 @@
 		app:entryValues="@array/pref_image_size_values"
 		app:useSimpleSummaryProvider="true"
 		app:defaultValue="medium"
-		app:dependency="allow_online_artist_images"
 		app:layout="@layout/list_item_view"
 		app:key="preferred_image_size"/>
 
