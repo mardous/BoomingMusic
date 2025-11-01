@@ -113,17 +113,9 @@ class EqualizerManager internal constructor(context: Context) {
             it.debounce(100)
                 .onEach { newState ->
                     if (newState.isUsable) {
-                        eqSession.changeSessionType(
-                            oldSessionType = EqualizerSession.SESSION_EXTERNAL,
-                            newSessionType = EqualizerSession.SESSION_INTERNAL,
-                            audioSessionId = audioSessionId
-                        )
+                        eqSession.openInternalSession(audioSessionId, closeExternal = true)
                     } else {
-                        eqSession.changeSessionType(
-                            oldSessionType = EqualizerSession.SESSION_INTERNAL,
-                            newSessionType = EqualizerSession.SESSION_EXTERNAL,
-                            audioSessionId = audioSessionId
-                        )
+                        eqSession.openExternalSession(audioSessionId, closeInternal = true)
                     }
                 }
                 .launchIn(eqScope)
@@ -170,7 +162,7 @@ class EqualizerManager internal constructor(context: Context) {
     }
 
     fun release() {
-        eqSession.closeEqualizerSessions(EqualizerSession.SESSION_INTERNAL, audioSessionId)
+        eqSession.closeExternalSession(audioSessionId)
         eqSession.release()
     }
 
@@ -389,14 +381,17 @@ class EqualizerManager internal constructor(context: Context) {
     }
 
     fun setSessionId(audioSessionId: Int) {
+        if (this.audioSessionId == audioSessionId)
+            return
+
         val oldIsActive = this.isSessionActive
         setSessionIsActiveImpl(
             isActive = false,
-            isCloseInternal = this.audioSessionId != AudioEffect.ERROR_BAD_VALUE
+            isCloseSessions = this.audioSessionId != AudioEffect.ERROR_BAD_VALUE
         )
         this.audioSessionId = audioSessionId
         if (oldIsActive && audioSessionId != AudioEffect.ERROR_BAD_VALUE) {
-            setSessionIsActiveImpl(isActive = true, isCloseInternal = false)
+            setSessionIsActiveImpl(isActive = true, isCloseSessions = false)
         }
     }
 
@@ -539,22 +534,18 @@ class EqualizerManager internal constructor(context: Context) {
         )
     }
 
-    private fun setSessionIsActiveImpl(isActive: Boolean, isCloseInternal: Boolean) {
+    private fun setSessionIsActiveImpl(isActive: Boolean, isCloseSessions: Boolean) {
         this.isSessionActive = isActive
         if (isActive) {
             if (eqState.isEnabled) {
-                eqSession.changeSessionType(
-                    oldSessionType = EqualizerSession.SESSION_EXTERNAL,
-                    newSessionType = EqualizerSession.SESSION_INTERNAL,
-                    audioSessionId = audioSessionId
-                )
+                eqSession.openInternalSession(audioSessionId, closeExternal = true)
             } else {
-                eqSession.openEqualizerSession(EqualizerSession.SESSION_EXTERNAL, audioSessionId)
+                eqSession.openExternalSession(audioSessionId, closeInternal = true)
             }
         } else {
-            eqSession.closeEqualizerSessions(EqualizerSession.SESSION_EXTERNAL, audioSessionId)
-            if (isCloseInternal) {
-                eqSession.closeEqualizerSessions(EqualizerSession.SESSION_INTERNAL, audioSessionId)
+            if (isCloseSessions) {
+                eqSession.closeExternalSession(audioSessionId)
+                eqSession.closeInternalSession(audioSessionId)
             }
         }
     }

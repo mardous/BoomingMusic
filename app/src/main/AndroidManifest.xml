@@ -281,12 +281,11 @@
     </application>
 
     <queries>
-        <package android:name="com.android.musicfx"/>
         <intent>
-            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE"/>
+            <action android:name="android.media.action.DISPLAY_AUDIO_EFFECT_CONTROL_PANEL" />
         </intent>
         <intent>
-            <action android:name="android.media.browse.MediaBrowserService"/>
+            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE"/>
         </intent>
     </queries>
 
