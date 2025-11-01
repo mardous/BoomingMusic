@@ -687,8 +687,8 @@
     <string name="lyrics_on_album_cover_summary">הצג את מילות השיר במקום העטיפה כאשר הן זמינות.</string>
     <string name="animate_controls_title">אנימציית בקרות</string>
     <string name="animate_controls_summary">הוא מתנגן כאשר פותחים את לוח הניגון.</string>
-    <string name="swipe_controls_title">בקרות החלקה</string>
-    <string name="swipe_controls_summary">החלק שמאלה על כל שטח ריק במסך מנגן כעת כדי לעבור לשיר הבא, והחלק ימינה כדי לעבור לשיר הקודם.</string>
+    <string name="swipe_anywhere_title">בקרות החלקה</string>
+    <string name="swipe_anywhere_summary">החלק שמאלה על כל שטח ריק במסך מנגן כעת כדי לעבור לשיר הבא, והחלק ימינה כדי לעבור לשיר הקודם.</string>
     <string name="display_album_name_title">הצג את שם האלבום</string>
     <string name="display_extra_info_title">הצג מידע נוסף</string>
     <string name="display_extra_info_summary">הצג מידע נוסף על השיר, כגון קצב סיביות, פורמט, קצב דגימה ועוד.</string>

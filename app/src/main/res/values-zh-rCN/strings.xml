@@ -663,8 +663,8 @@
     <string name="lyrics_on_album_cover_summary">当歌词可用时，显示歌词而不是封面。</string>
     <string name="animate_controls_title">动画控制</string>
     <string name="animate_controls_summary">打开播放器面板后即刻播放。</string>
-    <string name="swipe_controls_title">滑动控件</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">滑动控件</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">显示专辑名称</string>
     <string name="display_extra_info_title">显示额外信息</string>
     <string name="display_extra_info_summary">显示歌曲的额外信息，例如比特率、格式、取样率等。</string>

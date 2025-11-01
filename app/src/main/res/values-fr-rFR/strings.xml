@@ -671,8 +671,8 @@
     <string name="lyrics_on_album_cover_summary">Afficher les paroles des titres au lieu de la couverture lorsqu\'elles sont disponibles.</string>
     <string name="animate_controls_title">Animer les contrôles</string>
     <string name="animate_controls_summary">Il est joué lors de l\'ouverture du panneau du lecteur.</string>
-    <string name="swipe_controls_title">Commandes de balayage</string>
-    <string name="swipe_controls_summary">Balayez vers la gauche sur n\'importe quel espace vide de l\'écran en cours de lecture pour passer au titre suivant et balayez vers la droite pour passer au titre précédent.</string>
+    <string name="swipe_anywhere_title">Commandes de balayage</string>
+    <string name="swipe_anywhere_summary">Balayez vers la gauche sur n\'importe quel espace vide de l\'écran en cours de lecture pour passer au titre suivant et balayez vers la droite pour passer au titre précédent.</string>
     <string name="display_album_name_title">Afficher le nom de l\'album</string>
     <string name="display_extra_info_title">Afficher les informations supplémentaires</string>
     <string name="display_extra_info_summary">Affichez des informations supplémentaires sur le titre, comme le débit binaire, le format, le taux d\'échantillonnage, etc.</string>

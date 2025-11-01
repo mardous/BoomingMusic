@@ -175,14 +175,14 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(SQUIGGLY_SEEK_BAR, false)
 
     val swipeDownToDismiss: Boolean
-        get() = preferences.getBoolean(SWIPE_TO_DISMISS, false)
+        get() = preferences.getBoolean(SWIPE_DOWN_TO_DISMISS, false)
 
     var showLyricsOnCover: Boolean
         get() = preferences.getBoolean(LYRICS_ON_COVER, false)
         set(value) = preferences.edit { putBoolean(LYRICS_ON_COVER, value) }
 
-    val allowCoverSwiping: Boolean
-        get() = preferences.getBoolean(LEFT_RIGHT_SWIPING, true)
+    val swipeOnCover: Boolean
+        get() = preferences.getBoolean(SWIPE_ON_COVER, true)
 
     var isQueueLocked: Boolean
         get() = preferences.getBoolean(LOCKED_QUEUE, false)
@@ -427,9 +427,9 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(SLEEP_TIMER_FINISH_SONG, false)
         set(value) = preferences.edit { putBoolean(SLEEP_TIMER_FINISH_SONG, value) }
 
-    var isSwipeControls: Boolean
-        get() = preferences.getBoolean(SWIPE_CONTROLS, false)
-        set(value) = preferences.edit { putBoolean(SWIPE_CONTROLS, value) }
+    var isSwipeAnywhere: Boolean
+        get() = preferences.getBoolean(SWIPE_ANYWHERE, false)
+        set(value) = preferences.edit { putBoolean(SWIPE_ANYWHERE, value) }
 
     var isShowNextSong: Boolean
         get() = preferences.getBoolean(DISPLAY_NEXT_SONG, true)
@@ -574,9 +574,9 @@ const val OPEN_ON_PLAY = "open_on_play"
 const val ADD_EXTRA_CONTROLS = "add_extra_controls"
 const val ADAPTIVE_CONTROLS = "adaptive_controls"
 const val SQUIGGLY_SEEK_BAR = "squiggly_seek_bar"
-const val SWIPE_TO_DISMISS = "swipe_to_dismiss"
+const val SWIPE_DOWN_TO_DISMISS = "swipe_down_to_dismiss"
 const val LYRICS_ON_COVER = "lyrics_on_cover"
-const val LEFT_RIGHT_SWIPING = "left_right_swiping"
+const val SWIPE_ON_COVER = "swipe_on_cover"
 const val NOW_PLAYING_SMALL_IMAGE = "now_playing_small_image"
 const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
 const val CAROUSEL_EFFECT = "carousel_effect"
@@ -646,7 +646,7 @@ const val LAST_SLEEP_TIMER_VALUE = "last_sleep_timer_value"
 const val NEXT_SLEEP_TIMER_ELAPSED_REALTIME = "next_sleep_timer_elapsed_real_time"
 const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
-const val SWIPE_CONTROLS = "swipe_controls"
+const val SWIPE_ANYWHERE = "swipe_anywhere"
 const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"

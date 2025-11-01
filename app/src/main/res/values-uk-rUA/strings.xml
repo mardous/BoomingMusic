@@ -687,8 +687,8 @@
     <string name="lyrics_on_album_cover_summary">Показувати текст пісні замість обкладинки, якщо він доступний.</string>
     <string name="animate_controls_title">Анімувати елементи керування</string>
     <string name="animate_controls_summary">Анімація під час відкриття панелі плеєра.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe controls</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Відображати назву альбому</string>
     <string name="display_extra_info_title">Показувати дод. інформацію</string>
     <string name="display_extra_info_summary">Показувати додаткову інформацію про пісню, таку як бітрейт, формат, частота дискретизації тощо.</string>

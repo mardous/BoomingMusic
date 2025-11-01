@@ -671,8 +671,8 @@
     <string name="lyrics_on_album_cover_summary">Visa låttexter istället för omslag när de är tillgängliga.</string>
     <string name="animate_controls_title">Animera kontroller</string>
     <string name="animate_controls_summary">Det spelas när du öppnar spelarpanelen.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe controls</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Visa albumnamn</string>
     <string name="display_extra_info_title">Visa extra information</string>
     <string name="display_extra_info_summary">Visa extra info om låten, som bitrate, format, samplingshastighet, etc.</string>

@@ -689,8 +689,8 @@
     <string name="lyrics_on_album_cover_summary">Показывать текст песни вместо обложки, если он доступен.</string>
     <string name="animate_controls_title">Анимировать элементы управления</string>
     <string name="animate_controls_summary">Воспроизводится при открытии панели плеера.</string>
-    <string name="swipe_controls_title">Элементы управления жестами</string>
-    <string name="swipe_controls_summary">На экране воспроизведения любом пустом месте проведите пальцем влево, чтобы перейти к следующей песне, или проведите пальцем вправо, чтобы перейти к предыдущей песне.</string>
+    <string name="swipe_anywhere_title">Элементы управления жестами</string>
+    <string name="swipe_anywhere_summary">На экране воспроизведения любом пустом месте проведите пальцем влево, чтобы перейти к следующей песне, или проведите пальцем вправо, чтобы перейти к предыдущей песне.</string>
     <string name="display_album_name_title">Отображать название альбома</string>
     <string name="display_extra_info_title">Показывать доп. информацию</string>
     <string name="display_extra_info_summary">Показывать дополнительную информацию о песне, такую как битрейт, формат, частота дискретизации и т.д.</string>

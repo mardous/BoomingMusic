@@ -703,8 +703,8 @@
     <string name="lyrics_on_album_cover_summary">إظهار كلمات الأغنية بدلاً من الغلاف عندما تكون متاحة.</string>
     <string name="animate_controls_title">التحكم المتحرك</string>
     <string name="animate_controls_summary">يتم تشغيلها عند فتح لوحة اللاعب.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe controls</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">عرض اسم الألبوم</string>
     <string name="display_extra_info_title">عرض معلومات إضافية</string>
     <string name="display_extra_info_summary">عرض معلومات إضافية حول الأغنية، مثل البت، التنسيق، معدل أخذ العينات، إلخ.</string>

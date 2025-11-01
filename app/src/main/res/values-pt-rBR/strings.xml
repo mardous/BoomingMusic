@@ -670,8 +670,8 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música em vez da capa quando disponível.</string>
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
-    <string name="swipe_controls_title">Controles por gesto</string>
-    <string name="swipe_controls_summary">Deslize para a esquerda em qualquer espaço vazio na tela de reprodução para ir para a próxima música e para a direita para voltar à música anterior.</string>
+    <string name="swipe_anywhere_title">Controles por gesto</string>
+    <string name="swipe_anywhere_summary">Deslize para a esquerda em qualquer espaço vazio na tela de reprodução para ir para a próxima música e para a direita para voltar à música anterior.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>

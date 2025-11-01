@@ -670,8 +670,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="lyrics_on_album_cover_summary">Muestra la letra de la canción en lugar de la carátula cuando esté disponible.</string>
     <string name="animate_controls_title">Animación de los controles</string>
     <string name="animate_controls_summary">Se reproduce al expandir el panel del reproductor.</string>
-    <string name="swipe_controls_title">Controles de deslizamiento</string>
-    <string name="swipe_controls_summary">Desliza a la izquierda en cualquier espacio vacío para ir a la siguiente canción y hacia la derecha para ir a la anterior.</string>
+    <string name="swipe_anywhere_title">Controles de deslizamiento</string>
+    <string name="swipe_anywhere_summary">Desliza a la izquierda en cualquier espacio vacío para ir a la siguiente canción y hacia la derecha para ir a la anterior.</string>
     <string name="display_album_name_title">Mostrar nombre del álbum</string>
     <string name="display_extra_info_title">Mostrar información adicional</string>
     <string name="display_extra_info_summary">Muestra información adicional sobre la canción en reproducción, como tasa de bits, formato, muestreo, etc.</string>

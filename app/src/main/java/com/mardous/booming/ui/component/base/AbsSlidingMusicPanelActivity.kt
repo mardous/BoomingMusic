@@ -511,7 +511,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                 chooseFragmentForTheme()
             }
 
-            SWIPE_TO_DISMISS -> bottomSheetBehavior.isHideable =
+            SWIPE_DOWN_TO_DISMISS -> bottomSheetBehavior.isHideable =
                 Preferences.swipeDownToDismiss
 
             ENABLE_ROTATION_LOCK -> {

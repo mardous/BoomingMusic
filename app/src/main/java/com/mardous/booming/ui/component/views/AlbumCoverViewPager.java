@@ -39,7 +39,7 @@ public class AlbumCoverViewPager extends ViewPager {
 
 	public AlbumCoverViewPager(@NonNull Context context, AttributeSet attrs) {
 		super(context, attrs);
-		setAllowSwiping(Preferences.INSTANCE.getAllowCoverSwiping());
+		setAllowSwiping(Preferences.INSTANCE.getSwipeOnCover());
 	}
 
 	public void setAllowSwiping(boolean allowSwiping) {

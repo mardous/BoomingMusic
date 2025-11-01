@@ -687,8 +687,8 @@
     <string name="lyrics_on_album_cover_summary">Pokaż tekst piosenki zamiast okładki, jeżeli jest dostępny.</string>
     <string name="animate_controls_title">Animuj elementy sterowania</string>
     <string name="animate_controls_summary">Wyświetla się przy otwarciu panelu odtwarzacza.</string>
-    <string name="swipe_controls_title">Sterowanie gestami</string>
-    <string name="swipe_controls_summary">Przesuń w lewo po pustym obszarze odtwarzacza, aby przejść do następnego utworu, lub w prawo, aby wrócić do poprzedniego.</string>
+    <string name="swipe_anywhere_title">Sterowanie gestami</string>
+    <string name="swipe_anywhere_summary">Przesuń w lewo po pustym obszarze odtwarzacza, aby przejść do następnego utworu, lub w prawo, aby wrócić do poprzedniego.</string>
     <string name="display_album_name_title">Wyświetl nazwę albumu</string>
     <string name="display_extra_info_title">Wyświetlaj dodatkowe informacje</string>
     <string name="display_extra_info_summary">Wyświetl dodatkowe informacje o piosence, takie jak bitrate, format, częstotliwość próbkowania itp.</string>

@@ -613,6 +613,7 @@
     <string name="artist_image_header">Artist image</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Controls</string>
+    <string name="gestures_header">Gestures</string>
     <string name="headphones_header">Headphones</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Audio focus</string>
@@ -679,11 +680,11 @@
     <string name="extra_controls_summary">Add extra controls for mini player</string>
     <string name="adaptive_controls_title">Adaptive controls</string>
     <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
-    <string name="swipe_to_dismiss_title">Swipe to dismiss</string>
-    <string name="swipe_to_dismiss_summary">Swipe down the mini player to stop playback and clear playing queues.</string>
+    <string name="swipe_to_dismiss_title">Swipe down to dismiss</string>
+    <string name="swipe_to_dismiss_summary">Swipe down on the mini player to stop playback and clear the playing queue.</string>
     <string name="circle_button_title">Circular play button</string>
-    <string name="swipe_album_cover_title">Swipe album cover</string>
-    <string name="swipe_album_cover_summary">Swipe left and right on album cover to skip between songs.</string>
+    <string name="swipe_album_cover_title">Swipe on album cover</string>
+    <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
     <string name="queue_height_title">Half-screen queue height</string>
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
@@ -699,8 +700,8 @@
     <string name="lyrics_on_album_cover_summary">Show song lyrics instead of cover when them are available.</string>
     <string name="animate_controls_title">Animate controls</string>
     <string name="animate_controls_summary">It\'s played when opening the player panel.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
+    <string name="swipe_anywhere_summary">Swipe left or right on any empty area of the now playing screen to switch between songs.</string>
     <string name="display_album_name_title">Display album name</string>
     <string name="display_extra_info_title">Display extra info</string>
     <string name="display_extra_info_summary">Display extra info about the song, like bitrate, format, sampling rate, etc.</string>
