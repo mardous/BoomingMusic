@@ -23,7 +23,7 @@ class LibraryProvider(private val repository: Repository) {
         if (resolvedMediaItems.size == mediaItems.size) {
             return resolvedMediaItems
         }
-        val (songs, missingMediaItems) = (mediaItems - resolvedMediaItems).let { invalidItems ->
+        val (songs, missingMediaItems) = (mediaItems - resolvedMediaItems.toSet()).let { invalidItems ->
             repository.songsByMediaItems(invalidItems)
         }
         if (songs.isNotEmpty()) {
@@ -57,6 +57,7 @@ class LibraryProvider(private val repository: Repository) {
                         .setMediaMetadata(
                             MediaMetadata.Builder()
                                 .setMediaType(MediaMetadata.MEDIA_TYPE_ALBUM)
+                                .setArtworkUri(album.albumCover)
                                 .setIsBrowsable(true)
                                 .setIsPlayable(false)
                                 .setTitle(album.name)
@@ -135,9 +136,7 @@ class LibraryProvider(private val repository: Repository) {
                 }
             }
 
-            else -> {
-                getPlayableSongs(parentId).map { song -> song.toMediaItem() }
-            }
+            else -> getPlayableMediaItems(parentId)
         }
     }
 
@@ -257,7 +256,7 @@ class LibraryProvider(private val repository: Repository) {
         return if (pathParentId == null || pathChildId == null) {
             listOf(MediaItem.EMPTY)
         } else {
-            getPlayableSongs(pathParentId, pathChildId).map { it.toMediaItem() }
+            getPlayableMediaItems(pathParentId, pathChildId)
         }
     }
 
@@ -291,4 +290,28 @@ class LibraryProvider(private val repository: Repository) {
             }
         }
     }
+
+    private suspend fun getPlayableMediaItems(parentId: String, childId: String? = null) =
+        getPlayableSongs(parentId, childId)
+            .filterNot { it == Song.emptySong }
+            .map { song ->
+                MediaItem.Builder()
+                    .setUri(song.uri)
+                    .setMediaId(song.id.toString())
+                    .setMediaMetadata(
+                        MediaMetadata.Builder()
+                            .setIsPlayable(true)
+                            .setArtworkUri(song.albumCoverUri) // IMPORTANT: must use the actual album cover Uri
+                            .setTitle(song.title)
+                            .setArtist(song.artistName)
+                            .setAlbumTitle(song.albumName)
+                            .setAlbumArtist(song.albumArtistName)
+                            .setGenre(song.genreName)
+                            .setTrackNumber(song.trackNumber)
+                            .setReleaseYear(song.year)
+                            .setDurationMs(song.duration.coerceAtLeast(0))
+                            .build()
+                    )
+                    .build()
+            }
 }

@@ -236,7 +236,7 @@ class PlaybackService :
         mediaSession = with(MediaLibrarySession.Builder(this, player, this)) {
             setId(packageName)
             setSessionActivity(createSessionActivityIntent())
-            setBitmapLoader(CoilBitmapLoader(this@PlaybackService, preferences))
+            setBitmapLoader(CacheBitmapLoader(CoilBitmapLoader(this@PlaybackService, preferences)))
             setMediaNotificationProvider(notificationProvider)
             build()
         }
