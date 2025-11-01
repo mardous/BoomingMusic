@@ -483,14 +483,6 @@ interface CoverSwipingEffect {
     }
 }
 
-interface ReplayGainSourceMode {
-    companion object {
-        const val NONE = "none"
-        const val TRACK = "track"
-        const val ALBUM = "album"
-    }
-}
-
 interface PlayOnStartupMode {
     companion object {
         const val NEVER = "never"

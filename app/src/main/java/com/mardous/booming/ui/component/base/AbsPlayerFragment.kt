@@ -251,12 +251,16 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             is GestureType.Fling -> {
                 when (gestureType.direction) {
                     GestureType.Fling.DIRECTION_LEFT -> {
-                        playerViewModel.seekToNext()
+                        if (Preferences.isSwipeAnywhere) {
+                            playerViewModel.seekToNext()
+                        }
                         true
                     }
 
                     GestureType.Fling.DIRECTION_RIGHT -> {
-                        playerViewModel.seekToPrevious()
+                        if (Preferences.isSwipeAnywhere) {
+                            playerViewModel.seekToPrevious()
+                        }
                         true
                     }
 
