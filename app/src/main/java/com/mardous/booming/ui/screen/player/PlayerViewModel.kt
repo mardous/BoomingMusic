@@ -566,14 +566,16 @@ class PlayerViewModel(
 
     fun restorePlayback() = viewModelScope.launch {
         mediaController?.let { controller ->
-            val resultFuture = controller.sendCustomCommand(
-                SessionCommand(Playback.RESTORE_PLAYBACK, Bundle.EMPTY),
-                Bundle.EMPTY
-            )
-            val result = runCatching { resultFuture.await() }
-                .getOrDefault(SessionResult(SessionError.ERROR_UNKNOWN))
-            if (result.resultCode == SessionResult.RESULT_SUCCESS) {
-                controller.playWhenReady = true
+            if (!controller.playWhenReady) {
+                val resultFuture = controller.sendCustomCommand(
+                    SessionCommand(Playback.RESTORE_PLAYBACK, Bundle.EMPTY),
+                    Bundle.EMPTY
+                )
+                val result = runCatching { resultFuture.await() }
+                    .getOrDefault(SessionResult(SessionError.ERROR_UNKNOWN))
+                if (result.resultCode == SessionResult.RESULT_SUCCESS) {
+                    controller.playWhenReady = true
+                }
             }
         }
     }
