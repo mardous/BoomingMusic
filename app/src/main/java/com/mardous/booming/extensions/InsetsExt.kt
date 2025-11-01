@@ -17,6 +17,7 @@
 
 package com.mardous.booming.extensions
 
+import android.os.Build
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LAYOUT_DIRECTION_RTL
@@ -30,12 +31,26 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
 import com.mardous.booming.appContext
 
+fun WindowInsetsCompat?.getBottomGesturesInsets(): Int {
+    if (this == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return 0
+
+    val tappableElements = getInsets(Type.tappableElement())
+    if (tappableElements.bottom == 0) {
+        val insets = Insets.max(
+            getInsets(Type.systemGestures()),
+            getInsets(Type.systemBars())
+        )
+        return insets.bottom
+    }
+    return 0
+}
+
 fun WindowInsetsCompat?.getBottomInsets(): Int {
     return this?.getInsets(Type.systemBars())?.bottom
         ?: appContext().getNavigationBarHeight()
 }
 
-typealias InsetsConsumer = (View, Insets) -> Unit
+typealias InsetsConsumer = (View, WindowInsetsCompat) -> Unit
 
 private fun View.isMarginRequired() =
     this is FloatingActionButton || this is Button || this is ImageView
@@ -43,13 +58,15 @@ private fun View.isMarginRequired() =
 fun View.applyScrollableContentInsets(
     scrollView: NestedScrollingChild3,
     ime: Boolean = false,
-    addedPadding: Int = 0
+    addedPadding: Int = 0,
+    consumer: InsetsConsumer? = null
 ) {
     applyHorizontalWindowInsets()
     if (scrollView is ViewGroup) {
         scrollView.applyBottomWindowInsets(
             ime = ime,
-            addedSpace = Space.bottom(addedPadding)
+            addedSpace = Space.bottom(addedPadding),
+            consumer = consumer
         )
     }
 }
@@ -121,7 +138,7 @@ fun View.applyWindowInsets(
             )
         }
         setTag(R.id.id_inset_consumed, true)
-        consumer?.invoke(v, i)
+        consumer?.invoke(v, insets)
         insets
     }
 }

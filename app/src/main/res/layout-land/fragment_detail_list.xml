@@ -45,7 +45,7 @@
                     tools:ignore="MissingPrefix"
                     tools:text="@tools:sample/full_names" />
 
-                <com.mardous.booming.views.BaselineGridTextView
+                <com.mardous.booming.ui.component.views.BaselineGridTextView
                     android:id="@+id/subtitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -59,6 +59,22 @@
                     app:layout_constraintEnd_toEndOf="@+id/title"
                     tools:ignore="MissingPrefix"
                     tools:text="@tools:sample/full_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:maxLines="5"
+                    android:textAppearance="?textAppearanceSubtitle1"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:visibility="gone"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintTop_toBottomOf="@+id/subtitle"
+                    app:layout_constraintStart_toStartOf="@+id/title"
+                    app:layout_constraintEnd_toEndOf="@+id/title"
+                    tools:ignore="MissingPrefix"
+                    tools:text="@tools:sample/lorem/random"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/playAction"
@@ -74,7 +90,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/shuffleAction"
-                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    style="?materialIconButtonFilledTonalStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/ic_shuffle_24dp"
@@ -105,7 +121,6 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="@dimen/mini_player_height"
             android:overScrollMode="@integer/overScrollMode"
             android:clipToPadding="false"
             android:scrollbars="none"

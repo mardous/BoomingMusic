@@ -18,14 +18,8 @@
 package com.mardous.booming.util
 
 import android.os.Environment
-import android.provider.MediaStore.Audio.AudioColumns
 import com.mardous.booming.appContext
-import com.mardous.booming.extensions.files.getCanonicalPathSafe
-import com.mardous.booming.model.Song
-import com.mardous.booming.repository.RealSongRepository
-import com.mardous.booming.util.cursor.SortedCursor
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.get
 import java.io.File
 
 object FileUtil : KoinComponent {
@@ -35,7 +29,7 @@ object FileUtil : KoinComponent {
     const val PLAYLISTS_DIRECTORY_NAME = "Playlists"
 
     // Directories that are accessible only for Booming
-    private const val CUSTOM_ARTIST_IMAGES_DIRECTORY_NAME = "/custom_artist_images/"
+    private const val CUSTOM_ARTIST_IMAGES_DIRECTORY_NAME = "custom_artist_images"
     private const val THUMBS_DIRECTORY_NAME = "Thumbs"
 
     fun externalStorageDirectory(dirType: String? = null): File {
@@ -70,37 +64,6 @@ object FileUtil : KoinComponent {
                 File("/") // root
             }
         }
-    }
-
-    fun matchFilesWithMediaStore(files: List<File>): List<Song> {
-        var selection: String? = null
-        val paths: Array<String> = Array(files.size) {
-            files[it].getCanonicalPathSafe()
-        }
-        if (files.size in 1..998) { // 999 is the max amount Androids SQL implementation can handle.
-            selection = AudioColumns.DATA + " IN (" + makePlaceholders(files.size) + ")"
-        }
-        val songRepository = get<RealSongRepository>()
-        val songCursor = songRepository.makeSongCursor(selection, if (selection == null) null else paths)
-        return when {
-            songCursor != null -> songRepository.songs(
-                SortedCursor(
-                    songCursor,
-                    paths,
-                    AudioColumns.DATA
-                )
-            )
-            else -> ArrayList()
-        }
-    }
-
-    private fun makePlaceholders(len: Int): String {
-        val sb = StringBuilder(len * 2 - 1)
-        sb.append("?")
-        for (i in 1 until len) {
-            sb.append(",?")
-        }
-        return sb.toString()
     }
 
     private fun File?.ensureDirectory() = takeIf { it != null && (it.exists() || it.mkdirs()) }

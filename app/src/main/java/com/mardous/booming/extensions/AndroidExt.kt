@@ -22,6 +22,7 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.ResolveInfoFlags
 import android.media.MediaPlayer
 import android.os.Build
+import android.util.Log
 import androidx.core.text.HtmlCompat
 import com.mardous.booming.appContext
 
@@ -34,6 +35,8 @@ fun hasR() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
 fun hasS() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
 fun hasT() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+
+fun hasU() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 
 fun PackageManager.packageInfo(packageName: String = appContext().packageName) =
     runCatching {
@@ -51,10 +54,8 @@ fun CharSequence.toHtml() = HtmlCompat.fromHtml(this.toString(), HtmlCompat.FROM
 fun <R> MediaPlayer.execSafe(command: MediaPlayer.() -> R): R? {
     try {
         return command()
-    } catch (e: IllegalStateException) {
-        e.printStackTrace()
-    } catch (e: IllegalArgumentException) {
-        e.printStackTrace()
+    } catch (t: Throwable) {
+        Log.e("MediaPlayer", "Failed to execute a command", t)
     }
     return null
 }

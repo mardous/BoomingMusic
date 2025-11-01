@@ -16,7 +16,7 @@
         android:orientation="vertical"
         tools:ignore="UnusedAttribute,UselessParent">
 
-        <com.mardous.booming.views.WidthFitSquareLayout
+        <com.mardous.booming.ui.component.views.WidthFitSquareLayout
             android:id="@+id/image_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -30,7 +30,7 @@
                 app:shapeAppearanceOverlay="@style/CircularShapeAppearance"
                 tools:ignore="ContentDescription"/>
 
-        </com.mardous.booming.views.WidthFitSquareLayout>
+        </com.mardous.booming.ui.component.views.WidthFitSquareLayout>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title"

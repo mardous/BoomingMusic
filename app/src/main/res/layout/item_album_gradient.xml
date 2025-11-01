@@ -47,7 +47,7 @@
             android:id="@+id/image_gradient"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/shadow_left_gradient"
+            android:background="@drawable/shadow_start_gradient"
             android:backgroundTint="?colorSurfaceContainer"
             android:translationX="-40dp"
             app:layout_constraintTop_toTopOf="@+id/image"

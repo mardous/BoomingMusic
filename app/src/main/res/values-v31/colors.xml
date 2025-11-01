@@ -2,4 +2,9 @@
 <resources>
     <color name="m3_accent_color">@android:color/system_accent1_600</color>
     <color name="m3_selection_color">@android:color/system_accent1_50</color>
+    
+    <color name="splash_color_4">#AAE2FA</color>
+    <color name="splash_color_3">#2E4DB3</color>
+    <color name="splash_color_2">#4E75F3</color>
+    <color name="splash_color_1">#0D0754</color>
 </resources>

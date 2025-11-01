@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="shadow_start_gradient">@drawable/shadow_left_gradient</drawable>
+    <drawable name="shadow_end_gradient">@drawable/shadow_right_gradient</drawable>
+</resources>

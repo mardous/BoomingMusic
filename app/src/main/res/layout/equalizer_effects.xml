@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <com.mardous.booming.views.AnimSlider
+    <com.mardous.booming.ui.component.views.AnimSlider
         android:id="@+id/virtualizer_strength"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/virtualizer_strength"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <com.mardous.booming.views.AnimSlider
+    <com.mardous.booming.ui.component.views.AnimSlider
         android:id="@+id/bassboost_strength"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:checked="true"/>
 
-    <com.mardous.booming.views.AnimSlider
+    <com.mardous.booming.ui.component.views.AnimSlider
         android:id="@+id/loudness_gain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

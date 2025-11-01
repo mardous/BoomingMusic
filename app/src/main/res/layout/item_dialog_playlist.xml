@@ -14,7 +14,7 @@
     android:orientation="horizontal">
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Filled"
+        style="?materialCardViewFilledStyle"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center_vertical"

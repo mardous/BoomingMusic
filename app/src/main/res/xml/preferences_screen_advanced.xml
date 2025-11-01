@@ -13,6 +13,50 @@
         app:layout="@layout/list_item_view"
         app:key="language_name"/>
 
+    <SwitchPreferenceCompat
+        app:title="@string/rotation_lock_title"
+        app:summary="@string/rotation_lock_summary"
+        app:defaultValue="false"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:key="enable_rotation_lock"/>
+
+    <PreferenceCategory
+        app:title="@string/playback_title"
+        app:layout="@layout/preference_category_title">
+
+        <SwitchPreferenceCompat
+            app:title="@string/stop_when_closed_from_recents_title"
+            app:summary="@string/stop_when_closed_from_recents_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="stop_when_closed_from_recents"/>
+
+        <Preference
+            app:summary="@string/stop_when_closed_from_recents_note"
+            app:persistent="false"
+            app:selectable="false"
+            app:layout="@layout/list_item_view"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/notification_title"
+        app:layout="@layout/preference_category_title">
+
+        <ListPreference
+            app:iconSpaceReserved="true"
+            app:title="@string/extra_line_of_text_title"
+            app:entries="@array/pref_notification_extra_text_line_entries"
+            app:entryValues="@array/pref_notification_extra_text_line_values"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="artist"
+            app:layout="@layout/list_item_view"
+            app:key="notification_extra_text_line" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory
         app:title="@string/backup_restore_header"
         app:layout="@layout/preference_category_title">

@@ -14,7 +14,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playerAlbumCoverFragment"
-            android:name="com.mardous.booming.fragments.player.PlayerAlbumCoverFragment"
+            android:name="com.mardous.booming.ui.screen.player.cover.CoverPagerFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout="@layout/fragment_album_cover"/>
@@ -25,8 +25,17 @@
         android:id="@+id/mask"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/shadow_up_full_theme"
+        android:background="@drawable/shadow_up_gradient"
         tools:backgroundTint="?colorPrimary"/>
+
+    <View
+        android:id="@+id/top_mask"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/shadow_down_gradient"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <LinearLayout
         android:id="@+id/toolbar_container"
@@ -40,15 +49,14 @@
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize">
 
-            <ImageView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/close"
-                android:layout_width="@dimen/adaptive_icon_size"
-                android:layout_height="@dimen/adaptive_icon_size"
+                style="@style/PlayerIconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:scaleType="center"
-                android:background="?roundSelector"
                 android:contentDescription="@string/close_action"
-                app:srcCompat="@drawable/ic_keyboard_arrow_down_24dp"
+                app:icon="@drawable/ic_keyboard_arrow_down_24dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
@@ -59,7 +67,6 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:scaleType="centerCrop"
-                android:foreground="?roundSelector"
                 app:shapeAppearanceOverlay="@style/CircularShapeAppearance"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -83,9 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:ellipsize="marquee"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:scrollHorizontally="true"
+                android:ellipsize="end"
                 android:textAppearance="?textAppearanceBody1"
                 android:textStyle="bold"
                 app:layout_constrainedWidth="true"
@@ -108,7 +113,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playbackControlsFragment"
-            android:name="com.mardous.booming.fragments.player.styles.fullcoverstyle.FullCoverPlayerControlsFragment"
+            android:name="com.mardous.booming.ui.screen.player.styles.fullcoverstyle.FullCoverPlayerControlsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout="@layout/fragment_full_cover_player_playback_controls"

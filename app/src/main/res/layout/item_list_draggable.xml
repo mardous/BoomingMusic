@@ -37,23 +37,23 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
             android:textAppearance="?textAppearanceSubtitle1"
-            android:textColor="?android:textColorPrimary"
-            tools:text="@tools:sample/lorem/random"/>
+            android:textColor="@color/checkable_text_primary"
+            tools:text="@tools:sample/lorem"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
             android:textAppearance="?textAppearanceBody2"
             android:textColor="?android:textColorSecondary"
-            tools:text="@tools:sample/lorem/random"/>
+            tools:text="@tools:sample/lorem"/>
 
     </LinearLayout>
 
@@ -64,8 +64,8 @@
         android:layout_marginStart="8dp"
         android:layout_gravity="center_vertical|start"
         android:visibility="gone"
-        app:srcCompat="@drawable/ic_drag_vertical_24dp"
-        app:tint="?attr/colorControlNormal"
+        app:srcCompat="@drawable/ic_drag_handle_24dp"
+        app:tint="?attr/colorOnSurface"
         tools:ignore="ContentDescription"/>
 
     <com.google.android.material.button.MaterialButton

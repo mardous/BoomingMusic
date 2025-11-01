@@ -35,8 +35,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.transition.Fade
-import com.mardous.booming.R
 import com.google.android.material.transition.MaterialSharedAxis
+import com.mardous.booming.R
 import com.mardous.booming.extensions.resources.createBoomingMusicBalloon
 import com.skydoves.balloon.Balloon
 import kotlinx.coroutines.CoroutineScope
@@ -69,6 +69,9 @@ inline fun <R> Fragment.requestActivity(crossinline consumer: (AppCompatActivity
 inline fun <R> Fragment.requestContext(crossinline consumer: (Context) -> R) =
     context?.let(consumer)
 
+inline fun <R> Fragment.requestView(crossinline consumer: (View) -> R) =
+    view?.let(consumer)
+
 inline fun Fragment.runOnUi(crossinline consumer: (View) -> Unit) {
     view?.let { it.post { consumer(it) } }
 }
@@ -77,8 +80,9 @@ inline fun <T : Fragment> T.withArgs(argsBuilder: Bundle.() -> Unit): T =
     this.apply { arguments = Bundle().apply(argsBuilder) }
 
 inline fun Fragment.createBoomingMusicBalloon(
+    tooltipId: String,
     crossinline block: Balloon.Builder.() -> Unit
-) = requestContext { it.createBoomingMusicBalloon(viewLifecycleOwner, block = block) }
+) = requestContext { it.createBoomingMusicBalloon(tooltipId, viewLifecycleOwner, block = block) }
 
 fun Fragment.plurals(resId: Int, quantity: Int) = requireContext().plurals(resId, quantity)
 
@@ -98,9 +102,12 @@ inline fun <reified T : Any> Fragment.extraNotNull(key: String, default: T? = nu
     requireNotNull(value as? T ?: default) { key }
 }
 
+fun NavHostFragment.currentFragment(): Fragment? =
+    childFragmentManager.fragments.firstOrNull()
+
 fun FragmentActivity.currentFragment(navHostId: Int): Fragment? {
     val navHostFragment: NavHostFragment = whichFragment(navHostId)
-    return navHostFragment.childFragmentManager.fragments.firstOrNull()
+    return navHostFragment.currentFragment()
 }
 
 @Suppress("UNCHECKED_CAST")
@@ -108,9 +115,18 @@ fun <T : Fragment> FragmentActivity.whichFragment(@IdRes id: Int): T {
     return supportFragmentManager.findFragmentById(id) as T
 }
 
+fun Fragment.currentFragment(navHostId: Int): Fragment? {
+    return activity?.currentFragment(navHostId)
+}
+
 @Suppress("UNCHECKED_CAST")
 fun <T : Fragment> Fragment.whichFragment(@IdRes id: Int): T {
     return childFragmentManager.findFragmentById(id) as T
+}
+
+@Suppress("UNCHECKED_CAST")
+fun <T : Fragment> Fragment.whichFragment(tag: String): T? {
+    return childFragmentManager.findFragmentByTag(tag) as? T
 }
 
 fun LifecycleOwner.launchAndRepeatWithViewLifecycle(state: Lifecycle.State = Lifecycle.State.STARTED, block: suspend CoroutineScope.() -> Unit) {

@@ -16,7 +16,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            app:navigationIcon="?homeAsUpIndicator"/>
+            app:navigationIcon="?homeAsUpIndicator"
+            app:layout_scrollFlags="scroll|enterAlways"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -24,7 +25,6 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/mini_player_height"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
         android:overScrollMode="@integer/overScrollMode"
@@ -72,7 +72,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:text="@tools:sample/cities"/>
 
-                <com.mardous.booming.views.BaselineGridTextView
+                <com.mardous.booming.ui.component.views.BaselineGridTextView
                     android:id="@+id/albumText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/playAction"
-                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    style="?materialIconButtonFilledStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -101,7 +101,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/shuffleAction"
-                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    style="?materialIconButtonFilledTonalStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -113,13 +113,13 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/searchAction"
-                    style="@style/Widget.Material3.Button.IconButton"
+                    style="?materialIconButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:insetLeft="0dp"
                     android:insetRight="0dp"
                     app:icon="@drawable/ic_search_24dp"
-                    app:iconTint="?colorControlNormal"
+                    app:iconTint="?colorOnSurface"
                     app:layout_constraintTop_toTopOf="@+id/playAction"
                     app:layout_constraintEnd_toEndOf="parent"/>
 

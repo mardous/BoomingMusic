@@ -5,6 +5,7 @@ Booming Music requests the following permissions:
 | Permission                   | Description                                                                                 | Android version |
 |------------------------------|---------------------------------------------------------------------------------------------|-----------------|
 | **READ\_MEDIA\_AUDIO**       | Allows access to audio files on the device. Required starting from Android 13.              | From 13         |
+| **READ\_MEDIA\_IMAGES**      | Allows the app to read image files (such as album covers) stored on the device.             | From 13         |
 | **POST\_NOTIFICATIONS**      | Required to show playback notifications on Android 13 or higher.                            | From 13         |
 | **SCHEDULE\_EXACT\_ALARM**   | Allows the sleep timer to work with precision on Android 12 and above.                      | From 12         |
 | **BLUETOOTH\_CONNECT**       | Replaces `BLUETOOTH` on Android 12+ for detecting and interacting with Bluetooth devices.   | From 12         |

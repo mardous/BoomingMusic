@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
     android:layoutDirection="ltr">
 
     <com.google.android.material.textview.MaterialTextView
@@ -20,18 +21,15 @@
         app:layout_constraintTop_toTopOf="@id/progressSlider"
         tools:text="@tools:sample/date/hhmmss" />
 
-    <com.google.android.material.slider.Slider
+    <com.mardous.booming.ui.component.views.MusicSlider
         android:id="@+id/progressSlider"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:maxHeight="2dp"
-        app:labelBehavior="gone"
         app:layout_constraintEnd_toStartOf="@id/songTotalTime"
         app:layout_constraintStart_toEndOf="@id/songCurrentProgress"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlHardcoded,UnusedAttribute"
-        tools:progress="20" />
+        tools:progress="50" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/songTotalTime"
@@ -47,78 +45,61 @@
         app:layout_constraintTop_toTopOf="@id/progressSlider"
         tools:text="@tools:sample/date/hhmmss" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/playPauseButton"
+        style="@style/PlayerIconButton.Large"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        android:background="?attr/roundSelector"
-        android:padding="8dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_pause_24dp"
-        app:layout_constraintEnd_toStartOf="@+id/nextButton"
+        app:icon="@drawable/ic_play_24dp"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/nextButton"
         app:layout_constraintStart_toEndOf="@+id/previousButton"
         app:layout_constraintTop_toBottomOf="@+id/progressSlider"
-        tools:tint="?colorControlNormal"/>
+        tools:tint="?colorOnSurface"/>
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/previousButton"
+        style="@style/PlayerIconButton.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/roundSelector"
-        android:padding="16dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_previous_24dp"
+        app:icon="@drawable/ic_previous_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/playPauseButton"
         app:layout_constraintEnd_toStartOf="@+id/playPauseButton"
         app:layout_constraintStart_toEndOf="@+id/repeatButton"
-        app:layout_constraintTop_toTopOf="@+id/playPauseButton"
-        tools:tint="?colorControlNormal" />
+        app:layout_constraintTop_toTopOf="@+id/playPauseButton" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/nextButton"
+        style="@style/PlayerIconButton.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/roundSelector"
-        android:padding="16dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_next_24dp"
+        app:icon="@drawable/ic_next_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/playPauseButton"
         app:layout_constraintEnd_toStartOf="@+id/shuffleButton"
         app:layout_constraintStart_toEndOf="@+id/playPauseButton"
-        app:layout_constraintTop_toTopOf="@+id/playPauseButton"
-        tools:tint="?colorControlNormal" />
+        app:layout_constraintTop_toTopOf="@+id/playPauseButton" />
 
-    <com.mardous.booming.views.playback.RepeatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/repeatButton"
+        style="@style/PlayerIconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:background="?attr/roundSelector"
-        android:padding="16dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_repeat_24dp"
+        app:icon="@drawable/ic_repeat_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/previousButton"
         app:layout_constraintEnd_toStartOf="@+id/previousButton"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/previousButton"
-        tools:tint="?colorControlNormal" />
+        app:layout_constraintTop_toTopOf="@+id/previousButton" />
 
-    <com.mardous.booming.views.playback.ShuffleButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/shuffleButton"
+        style="@style/PlayerIconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:background="?attr/roundSelector"
-        android:padding="16dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_shuffle_24dp"
+        app:icon="@drawable/ic_shuffle_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/nextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nextButton"
-        app:layout_constraintTop_toTopOf="@+id/nextButton"
-        tools:tint="?colorControlNormal" />
+        app:layout_constraintTop_toTopOf="@+id/nextButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

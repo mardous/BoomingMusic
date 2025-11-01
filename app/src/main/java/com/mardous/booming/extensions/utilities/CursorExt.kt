@@ -18,6 +18,7 @@
 package com.mardous.booming.extensions.utilities
 
 import android.database.Cursor
+import android.util.Log
 
 val Cursor?.isNullOrEmpty: Boolean
     get() = this == null || this.count == 0
@@ -30,10 +31,14 @@ fun Cursor?.iterateIfValid(consumer: Cursor.() -> Unit) {
     }
 }
 
-fun <T> Cursor?.mapIfValid(consumer: Cursor.() -> T): List<T> {
+fun <T> Cursor?.mapIfValid(consumer: Cursor.() -> T?): List<T> {
     val list = mutableListOf<T>()
     iterateIfValid {
-        list.add(consumer(this))
+        try {
+            consumer(this)?.let { list.add(it) }
+        } catch (e: Exception) {
+            Log.e("CursorExt", "Discarding row due to exception: ${e.message}", e)
+        }
     }
     return list
 }

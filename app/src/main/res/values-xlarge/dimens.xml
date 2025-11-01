@@ -2,6 +2,5 @@
 <resources>
     <dimen name="toolbar_height">64dp</dimen>
     <dimen name="list_item_song_height">72dp</dimen>
-    <dimen name="button_padding_vertical">16dp</dimen>
     <dimen name="pref_title_padding">80dp</dimen>
 </resources>

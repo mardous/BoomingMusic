@@ -23,36 +23,32 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.text.TextUtils
 import android.util.TypedValue
-import android.view.KeyEvent
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
-import android.widget.CompoundButton
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.MenuRes
 import androidx.appcompat.widget.Toolbar
-import androidx.core.animation.addListener
 import androidx.core.animation.doOnEnd
+import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
-import androidx.core.view.drawToBitmap
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
-import androidx.core.view.updatePaddingRelative
+import androidx.core.view.*
+import androidx.core.widget.ImageViewCompat
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
 import com.google.android.material.shape.MaterialShapeDrawable
@@ -60,15 +56,14 @@ import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.resolveColor
+import com.mardous.booming.util.Preferences
 import com.skydoves.balloon.*
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
 import io.noties.markwon.core.MarkwonTheme
 import io.noties.markwon.html.HtmlPlugin
-import io.noties.markwon.image.glide.GlideImagesPlugin
 import me.zhanghai.android.fastscroll.FastScroller
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
-import me.zhanghai.android.fastscroll.PopupStyles
 
 const val BOOMING_ANIM_TIME = 350L
 
@@ -76,26 +71,6 @@ val View.backgroundColor: Int
     get() = (background as? ColorDrawable)?.color
         ?: (background as? MaterialShapeDrawable)?.fillColor?.defaultColor
         ?: Color.TRANSPARENT
-
-fun View.shake() {
-    ObjectAnimator.ofFloat(this, View.TRANSLATION_X, 0f, 30f, -30f, 20f, -20f, 10f, -10f, 5f, -5f, 0f).apply {
-        duration = BOOMING_ANIM_TIME / 2
-        interpolator = AccelerateInterpolator()
-        addListener(
-            onStart = {
-                setLayerType(View.LAYER_TYPE_HARDWARE, null)
-            },
-            onEnd = {
-                setLayerType(View.LAYER_TYPE_NONE, null)
-            },
-            onCancel = {
-                setLayerType(View.LAYER_TYPE_NONE, null)
-            }
-        )
-    }.also { shakeAnimator ->
-        shakeAnimator.start()
-    }
-}
 
 fun View.showBounceAnimation() {
     clearAnimation()
@@ -186,6 +161,41 @@ fun View.reactionToKey(targetKeyCode: Int, action: (KeyEvent) -> Unit) {
     }
 }
 
+fun View.focusAndShowKeyboard() {
+    /**
+     * This is to be called when the window already has focus.
+     */
+    fun View.showTheKeyboardNow() {
+        if (isFocused) {
+            post {
+                // We still post the call, just in case we are being notified of the windows focus
+                // but InputMethodManager didn't get properly setup yet.
+                val imm = context.getSystemService<InputMethodManager>()
+                imm?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+            }
+        }
+    }
+
+    requestFocus()
+    if (hasWindowFocus()) {
+        // No need to wait for the window to get focus.
+        showTheKeyboardNow()
+    } else {
+        // We need to wait until the window gets focus.
+        viewTreeObserver.addOnWindowFocusChangeListener(
+            object : ViewTreeObserver.OnWindowFocusChangeListener {
+                override fun onWindowFocusChanged(hasFocus: Boolean) {
+                    // This notification will arrive just before the InputMethodManager gets set up.
+                    if (hasFocus) {
+                        this@focusAndShowKeyboard.showTheKeyboardNow()
+                        // It’s very important to remove this listener once we are done.
+                        viewTreeObserver.removeOnWindowFocusChangeListener(this)
+                    }
+                }
+            })
+    }
+}
+
 fun View.addPaddingRelative(
     start: Int = 0,
     top: Int = 0,
@@ -213,6 +223,52 @@ fun View.hitTest(x: Int, y: Int): Boolean {
     return x >= left && x <= right && y >= top && y <= bottom
 }
 
+fun View.animateBackgroundColor(
+    toColor: Int,
+    duration: Long = 300,
+    onCompleted: AnimationCompleted? = null
+): Animator {
+    val fromColor = backgroundColor
+    return ObjectAnimator.ofArgb(this, "backgroundColor", fromColor, toColor).apply {
+        this.doOnEnd { onCompleted?.invoke() }
+        this.duration = duration
+    }
+}
+
+fun View.animateTintColor(
+    fromColor: Int,
+    toColor: Int,
+    duration: Long = 300,
+    isIconButton: Boolean = false
+): Animator {
+    return ValueAnimator.ofArgb(fromColor, toColor).apply {
+        this.duration = duration
+        addUpdateListener { animation ->
+            val animatedColor = animation.animatedValue as Int
+            val colorStateList = animatedColor.toColorStateList()
+
+            when (this@animateTintColor) {
+                is Toolbar -> colorizeToolbar(animatedColor)
+                is Slider -> applyColor(animatedColor)
+                is SeekBar -> applyColor(animatedColor)
+                is FloatingActionButton -> applyColor(animatedColor)
+                is MaterialButton -> applyColor(animatedColor, isIconButton)
+                is ImageView -> ImageViewCompat.setImageTintList(this@animateTintColor, colorStateList)
+                is TextView -> applyColor(animatedColor)
+                else -> backgroundTintList = colorStateList
+            }
+        }
+    }
+}
+
+fun ImageView.removeHorizontalMarginIfRequired() {
+    if (Preferences.largerHeaderImage) {
+        doOnLayout {
+            updateLayoutParams<ViewGroup.MarginLayoutParams> { marginStart = 0; marginEnd = 0; }
+        }
+    }
+}
+
 fun EditText.requestInputMethod() {
     requestFocus()
     post {
@@ -223,9 +279,22 @@ fun EditText.requestInputMethod() {
     }
 }
 
+fun TextView.setMarquee(marquee: Boolean) {
+    isFocusable = marquee
+    isFocusableInTouchMode = marquee
+    setHorizontallyScrolling(marquee)
+    if (marquee) {
+        ellipsize = TextUtils.TruncateAt.MARQUEE
+        marqueeRepeatLimit = -1
+        isHorizontalFadingEdgeEnabled = true
+    } else {
+        ellipsize = TextUtils.TruncateAt.END
+    }
+    isSelected = marquee
+}
+
 fun TextView.setMarkdownText(str: String) {
     val markwon = Markwon.builder(context)
-        .usePlugin(GlideImagesPlugin.create(context)) // image loader
         .usePlugin(HtmlPlugin.create()) // basic Html tags
         .usePlugin(object : AbstractMarkwonPlugin() {
             override fun configureTheme(builder: MarkwonTheme.Builder) {
@@ -289,11 +358,41 @@ fun RecyclerView.destroyOnDetach() {
     }
 }
 
-fun ViewGroup.createFastScroller(): FastScroller {
+fun RecyclerView.onVerticalScroll(
+    lifecycleOwner: LifecycleOwner,
+    onScrollUp: () -> Unit = {},
+    onScrollDown: () -> Unit = {}
+) {
+    val scrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            if (dy > 0) {
+                onScrollDown()
+            } else if (dy < 0) {
+                onScrollUp()
+            }
+        }
+    }
+    addOnScrollListener(scrollListener)
+    lifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
+        override fun onStop(owner: LifecycleOwner) {
+            removeOnScrollListener(scrollListener)
+        }
+    })
+}
+
+fun ViewGroup.createFastScroller(disablePopup: Boolean = false): FastScroller {
+    val thumbDrawable = ContextCompat.getDrawable(context, R.drawable.scroller_thumb)
+    val trackDrawable = ContextCompat.getDrawable(context, R.drawable.scroller_track)
     val fastScrollerBuilder = FastScrollerBuilder(this)
     fastScrollerBuilder.useMd2Style()
-    fastScrollerBuilder.setPopupStyle { popupText ->
-        PopupStyles.MD2.accept(popupText)
+    if (thumbDrawable != null) {
+        fastScrollerBuilder.setThumbDrawable(thumbDrawable)
+    }
+    if (trackDrawable != null) {
+        fastScrollerBuilder.setTrackDrawable(trackDrawable)
+    }
+    if (disablePopup) {
+        fastScrollerBuilder.setPopupTextProvider { _, _ -> "" }
     }
     return fastScrollerBuilder.build()
 }
@@ -398,6 +497,7 @@ fun Slider.setTrackingTouchListener(
 }
 
 inline fun Context.createBoomingMusicBalloon(
+    tooltipId: String,
     lifecycleOwner: LifecycleOwner,
     crossinline block: Balloon.Builder.() -> Unit
 ): Balloon {
@@ -416,6 +516,7 @@ inline fun Context.createBoomingMusicBalloon(
         setDismissWhenTouchOutside(true)
         setAutoDismissDuration(5000)
         setLifecycleOwner(lifecycleOwner)
+        setPreferenceName(tooltipId)
         block(this)
     }
 }

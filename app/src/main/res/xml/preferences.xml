@@ -3,49 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Preference
-        app:layout="@layout/layout_preference_material"
+        app:layout="@layout/list_item_view"
         app:title="@string/appearance_title"
         app:summary="@string/appearance_summary"
         app:icon="@drawable/ic_palette_24dp"
         app:key="appearance"/>
 
     <Preference
-        app:layout="@layout/layout_preference_material"
+        app:layout="@layout/list_item_view"
         app:title="@string/now_playing_title"
         app:summary="@string/now_playing_summary"
         app:icon="@drawable/ic_play_circle_24dp"
         app:key="nowplaying"/>
 
     <Preference
-        app:layout="@layout/layout_preference_material"
+        app:layout="@layout/list_item_view"
+        app:title="@string/lyrics_preferences_title"
+        app:summary="@string/lyrics_preferences_summary"
+        app:icon="@drawable/ic_lyrics_outline_24dp"
+        app:key="lyrics"/>
+
+    <Preference
+        app:layout="@layout/list_item_view"
         app:title="@string/playback_title"
         app:summary="@string/playback_summary"
         app:icon="@drawable/ic_volume_up_24dp"
         app:key="playback"/>
 
     <Preference
-        app:layout="@layout/layout_preference_material"
+        app:layout="@layout/list_item_view"
         app:title="@string/metadata_title"
         app:summary="@string/metadata_summary"
         app:icon="@drawable/ic_image_24dp"
         app:key="metadata"/>
 
     <Preference
-        app:layout="@layout/layout_preference_material"
+        app:layout="@layout/list_item_view"
         app:title="@string/library_title"
         app:summary="@string/library_summary"
         app:icon="@drawable/ic_library_music_24dp"
         app:key="library"/>
 
     <Preference
-        app:layout="@layout/layout_preference_material"
-        app:title="@string/notification_title"
-        app:summary="@string/notification_summary"
-        app:icon="@drawable/ic_notifications_24dp"
-        app:key="notification"/>
-
-    <Preference
-        app:layout="@layout/layout_preference_material"
+        app:layout="@layout/list_item_view"
         app:title="@string/update_title"
         app:summary="@string/update_summary"
         app:icon="@drawable/ic_update_24dp"
@@ -53,14 +53,14 @@
         app:key="update"/>
 
     <Preference
-        app:layout="@layout/layout_preference_material"
+        app:layout="@layout/list_item_view"
         app:title="@string/advanced_title"
         app:summary="@string/advanced_summary"
         app:icon="@drawable/ic_settings_applications_24dp"
         app:key="advanced"/>
 
     <Preference
-        app:layout="@layout/layout_preference_material"
+        app:layout="@layout/list_item_view"
         app:title="@string/about_title"
         app:icon="@drawable/ic_info_24dp"
         app:key="about"/>

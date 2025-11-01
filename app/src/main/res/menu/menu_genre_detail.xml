@@ -23,27 +23,4 @@
                 android:title="@string/playlist_label"/>
         </menu>
     </item>
-    <item
-        android:id="@+id/action_sort_order"
-        android:title="@string/action_sort_order"
-        app:showAsAction="never">
-        <menu>
-            <group
-                android:id="@+id/group_sort_order"
-                android:checkableBehavior="single">
-                <item
-                    android:id="@+id/action_sort_order_az"
-                    android:title="@string/sort_order_az"/>
-                <item
-                    android:id="@+id/action_sort_order_artist"
-                    android:title="@string/sort_order_artist"/>
-                <item
-                    android:id="@+id/action_sort_order_album"
-                    android:title="@string/sort_order_album"/>
-                <item
-                    android:id="@+id/action_sort_order_duration"
-                    android:title="@string/sort_order_duration"/>
-            </group>
-        </menu>
-    </item>
 </menu>

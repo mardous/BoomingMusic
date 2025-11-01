@@ -13,7 +13,7 @@
 
         <com.google.android.material.navigationrail.NavigationRailView
             android:id="@+id/navigationView"
-            style="@style/Widget.Material3.NavigationRailView"
+            style="?navigationRailStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:itemHorizontalTranslationEnabled="false"
@@ -48,7 +48,7 @@
 
         <fragment
             android:id="@+id/mini_player_container"
-            android:name="com.mardous.booming.fragments.other.MiniPlayerFragment"
+            android:name="com.mardous.booming.ui.screen.other.MiniPlayerFragment"
             android:layout_width="match_parent"
             android:layout_height="@dimen/mini_player_height"
             tools:layout="@layout/fragment_mini_player"/>

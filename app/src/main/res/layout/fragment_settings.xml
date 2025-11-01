@@ -14,12 +14,11 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:navGraph="@navigation/graph_settings" />
 
-    <com.mardous.booming.views.TopAppBarLayout
+    <com.mardous.booming.ui.component.views.TopAppBarLayout
         android:id="@+id/appBarLayout"
         style="?appBarLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:theme="@style/CenteredCheckBoxTheme"/>
+        android:fitsSystemWindows="true"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

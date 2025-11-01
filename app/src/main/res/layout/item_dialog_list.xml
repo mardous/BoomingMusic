@@ -15,15 +15,15 @@
         android:id="@+id/icon_view"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
         android:scaleType="center"
-        app:tint="?colorControlNormal"
+        app:tint="?colorOnSurface"
         tools:srcCompat="@drawable/ic_music_note_24dp"
         tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView

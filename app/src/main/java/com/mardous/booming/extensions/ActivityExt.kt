@@ -25,19 +25,19 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.getSystemService
 
-fun Activity.keepScreenOn(keepScreenOn: Boolean) {
-    if (keepScreenOn) {
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-    } else {
-        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-    }
-}
-
 fun Activity.hideSoftKeyboard() {
     val currentFocus = currentFocus
     if (currentFocus != null) {
         (getSystemService<InputMethodManager>())
             ?.hideSoftInputFromWindow(currentFocus.windowToken, 0)
+    }
+}
+
+fun Activity.keepScreenOn(keepOn: Boolean) {
+    if (keepOn) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+    } else {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 }
 

@@ -19,7 +19,7 @@ package com.mardous.booming.util.cursor
 
 import android.database.Cursor
 import android.provider.MediaStore.Audio.AudioColumns
-import com.mardous.booming.repository.RealSongRepository
+import com.mardous.booming.data.local.repository.RealSongRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 

@@ -29,4 +29,12 @@
     <item
         android:id="@+id/action_play_info"
         android:title="@string/play_info"/>
+    <item
+        android:id="@+id/action_toggle_compact_song_view"
+        android:title="@string/compact_song_view"
+        android:checkable="true"/>
+    <item
+        android:id="@+id/action_show_album_duration"
+        android:title="@string/show_total_duration"
+        android:checkable="true"/>
 </menu>

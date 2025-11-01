@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:paddingTop="?dialogPreferredPadding"
     android:paddingStart="?dialogPreferredPadding"
     android:paddingEnd="?dialogPreferredPadding">
@@ -15,9 +17,6 @@
         android:layout_height="wrap_content"
         android:paddingBottom="6dp"
         android:textAppearance="?textAppearanceBody1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         tools:text="120 min"/>
 
     <com.google.android.material.slider.Slider
@@ -25,16 +24,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:valueFrom="1"
-        android:valueTo="120"
-        app:layout_constraintTop_toBottomOf="@id/timer_display"/>
+        android:valueTo="120"/>
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/should_finish_last_song"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/timer_display_card"
+        style="?materialCardViewFilledStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?textAppearanceBody2"
-        android:text="@string/sleep_timer_finish_current_music"
+        android:layout_marginTop="8dp"
+        app:contentPaddingLeft="24dp"
+        app:contentPaddingRight="24dp"
+        app:shapeAppearanceOverlay="@style/CircularShapeAppearance"
         app:layout_constraintTop_toBottomOf="@+id/slider"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/should_finish_last_song"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceBody2"
+            android:text="@string/sleep_timer_finish_current_music" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

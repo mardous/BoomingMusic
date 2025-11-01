@@ -21,12 +21,12 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/albumSortOrder"
-        style="@style/Widget.Material3.Button.IconButton"
+        style="?materialIconButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         app:icon="@drawable/ic_sort_24dp"
-        app:iconTint="?colorControlNormal"
+        app:iconTint="?colorOnSurface"
         app:layout_constraintBottom_toBottomOf="@+id/albumTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/albumTitle"
@@ -64,12 +64,12 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/songSortOrder"
-        style="@style/Widget.Material3.Button.IconButton"
+        style="?materialIconButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         app:icon="@drawable/ic_sort_24dp"
-        app:iconTint="?colorControlNormal"
+        app:iconTint="?colorOnSurface"
         app:layout_constraintBottom_toBottomOf="@+id/songTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/songTitle"

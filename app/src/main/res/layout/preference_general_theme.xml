@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2024 Christians Martínez Alvarado
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="?materialCardViewOutlinedStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/m3_card_corner_radius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <CheckedTextView
+            android:id="@+id/system_default"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_phone_android_24dp"
+            android:drawablePadding="16dp"
+            android:drawableTint="@color/checkable_text_secondary"
+            android:textAlignment="gravity"
+            android:textColor="@color/checkable_text_secondary"
+            android:text="@string/follow_system"
+            android:background="?rectSelector"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/light_theme"
+            tools:textStyle="bold"
+            tools:checked="true"/>
+
+        <CheckedTextView
+            android:id="@+id/light_theme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_light_mode_24dp"
+            android:drawablePadding="16dp"
+            android:drawableTint="@color/checkable_text_secondary"
+            android:textAlignment="gravity"
+            android:textColor="@color/checkable_text_secondary"
+            android:text="@string/light_theme_name"
+            android:background="?rectSelector"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/system_default"
+            app:layout_constraintEnd_toStartOf="@+id/dark_theme"
+            tools:enabled="false"/>
+
+        <CheckedTextView
+            android:id="@+id/dark_theme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_dark_mode_24dp"
+            android:drawablePadding="16dp"
+            android:drawableTint="@color/checkable_text_secondary"
+            android:textAlignment="gravity"
+            android:textColor="@color/checkable_text_secondary"
+            android:text="@string/dark_theme_name"
+            android:background="?rectSelector"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/light_theme"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

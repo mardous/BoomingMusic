@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/colorBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/playerAlbumCoverFragment"
+            android:name="com.mardous.booming.ui.screen.player.cover.CoverPagerFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout="@layout/fragment_album_cover"/>
+
+        <View
+            android:id="@+id/mask"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shadow_start_gradient"
+            app:layout_constraintBottom_toBottomOf="@id/playerAlbumCoverFragment"
+            app:layout_constraintEnd_toEndOf="@id/playerAlbumCoverFragment"
+            app:layout_constraintStart_toStartOf="@id/playerAlbumCoverFragment"
+            app:layout_constraintTop_toTopOf="@id/playerAlbumCoverFragment"
+            tools:backgroundTint="?colorSurface"/>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/playbackControlsFragment"
+            android:name="com.mardous.booming.ui.screen.player.styles.gradientstyle.GradientPlayerControlsFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottomActionContainer"
+            app:layout_constraintStart_toEndOf="@+id/playerAlbumCoverFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout="@layout/fragment_gradient_player_playback_controls"/>
+
+        <LinearLayout
+            android:id="@+id/bottomActionContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="4dp"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toStartOf="@id/playbackControlsFragment"
+            app:layout_constraintEnd_toEndOf="@id/playbackControlsFragment"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/openQueueButton"
+                style="?materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/playing_queue_label"
+                app:icon="@drawable/ic_queue_music_24dp"
+                app:iconTint="?colorOnSurface"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/showLyricsButton"
+                style="?materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/action_show_lyrics"
+                app:icon="@drawable/ic_lyrics_outline_24dp"
+                app:iconTint="?colorOnSurface" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/volumeAction"
+                style="?materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/sound_settings"
+                app:icon="@drawable/ic_volume_up_24dp"
+                app:iconTint="?colorOnSurface" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

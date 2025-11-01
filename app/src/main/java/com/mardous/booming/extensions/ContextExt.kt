@@ -21,38 +21,37 @@ package com.mardous.booming.extensions
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.SearchManager
+import android.app.UiModeManager
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.Point
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Handler
 import android.os.Looper
-import android.view.WindowInsets
-import android.view.WindowManager
+import android.os.PowerManager
 import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.PluralsRes
+import androidx.core.content.getSystemService
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.shape.ShapeAppearanceModel
+import com.mardous.booming.core.model.theme.AppTheme
 import com.mardous.booming.extensions.files.readString
 import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.extensions.resources.getTinted
-import com.mardous.booming.model.theme.AppTheme
 import com.mardous.booming.util.AutoDownloadMetadataPolicy
 import com.mardous.booming.util.Preferences
+import io.ktor.http.encodeURLParameter
 
 val Context.fileProviderAuthority: String
     get() = "$packageName.provider"
@@ -66,12 +65,6 @@ fun Int.dp(resources: Resources): Int = (this * resources.displayMetrics.density
 private val Resources.isNightMode: Boolean
     get() = configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
 
-/**
- * Indicates if the device is landscaped.
- *
- * Currently, the app *does not support* landscape mode, but
- * it might do it in the future.
- */
 val Resources.isLandscape: Boolean
     get() = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
@@ -90,6 +83,9 @@ val Resources.isScreenLarge: Boolean
 val Context.isNightMode: Boolean
     get() = resources.isNightMode
 
+val Context.systemContrast: Float
+    get() = (if (hasU()) getSystemService<UiModeManager>()?.contrast else null) ?: 0f
+
 fun Fragment.dip(id: Int) = resources.getDimensionPixelSize(id)
 
 fun Fragment.intRes(id: Int) = resources.getInteger(id)
@@ -98,26 +94,34 @@ fun Context.dip(id: Int) = resources.getDimensionPixelSize(id)
 
 fun Context.intRes(id: Int) = resources.getInteger(id)
 
-fun Context.openUrl(url: String) {
-    try {
-        startActivity(
-            Intent(Intent.ACTION_VIEW, url.toUri())
-                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        )
-    } catch (_: ActivityNotFoundException) {}
+fun Context.openUrl(url: String) =
+    tryStartActivity(
+        intent = Intent(Intent.ACTION_VIEW, url.toUri())
+            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    ) {
+        if (it is ActivityNotFoundException) {
+            showToast("No browser installed.")
+        }
+    }
+
+fun Context.tryStartActivity(intent: Intent, onError: (Throwable) -> Unit = {}) = try {
+    startActivity(intent)
+} catch (t: Throwable) {
+    onError(t)
 }
 
 fun Context.webSearch(vararg keys: String?) {
-    val stringBuilder = StringBuilder()
-    for (key in keys) {
-        stringBuilder.append(key)
-        stringBuilder.append(" ")
+    val query = keys.filterNotNull().joinToString(" ")
+    tryStartActivity(
+        Intent(Intent.ACTION_WEB_SEARCH)
+            .putExtra(SearchManager.QUERY, query)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    ) {
+        openUrl("https://google.com/search?q=${query.encodeURLParameter(spaceToPlus = true)}")
     }
-    val intent = Intent(Intent.ACTION_WEB_SEARCH)
-    intent.putExtra(SearchManager.QUERY, stringBuilder.trim().toString())
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    startActivity(intent)
 }
+
+fun Context.isPowerSaveMode(): Boolean = getSystemService<PowerManager>()?.isPowerSaveMode == true
 
 fun Context.isOnline(requestOnlyWifi: Boolean): Boolean {
     val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -160,49 +164,11 @@ fun Context.showToast(text: String?, duration: Int = Toast.LENGTH_SHORT) {
     }
 }
 
-fun Context.createNotificationChannel(
-    channelId: String,
-    channelName: String,
-    channelDescription: String?,
-    notificationManager: NotificationManager = (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
-): NotificationChannel {
-    var notificationChannel = notificationManager.getNotificationChannel(channelId)
-    if (notificationChannel == null) {
-        notificationChannel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW).apply {
-            description = channelDescription
-            enableLights(false)
-            enableVibration(false)
-        }.also {
-            notificationManager.createNotificationChannel(it)
-        }
-    }
-    return notificationChannel
-}
-
 fun Context.readStringFromAsset(assetName: String): String? =
-    runCatching { assets.open(assetName).readString() }.getOrNull()
+    runCatching { assets.open(assetName).use { it.readString() } }.getOrNull()
 
 fun Context.getTintedDrawable(@DrawableRes resId: Int, @ColorInt color: Int): Drawable? =
     getDrawableCompat(resId).getTinted(color)
-
-@Suppress("DEPRECATION")
-fun Context.getScreenSize(): Point {
-    if (hasR()) {
-        val windowMetrics = (getSystemService(Context.WINDOW_SERVICE) as WindowManager).currentWindowMetrics
-        val insets = windowMetrics.windowInsets.getInsetsIgnoringVisibility(
-            WindowInsets.Type.navigationBars() or WindowInsets.Type.displayCutout()
-        )
-        val bounds = windowMetrics.bounds
-        val insetsHeight = insets.top + insets.bottom
-        val insetsWidth = insets.left + insets.right
-        return Point(bounds.width() - insetsWidth, bounds.height() - insetsHeight)
-    }
-    return (getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.let { display ->
-        Point().also { point ->
-            display.getSize(point)
-        }
-    }
-}
 
 fun Context.getShapeAppearanceModel(shapeAppearanceId: Int, shapeAppearanceOverlayId: Int = 0) =
     ShapeAppearanceModel.builder(this, shapeAppearanceId, shapeAppearanceOverlayId).build()

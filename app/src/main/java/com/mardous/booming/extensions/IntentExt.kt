@@ -19,12 +19,11 @@ package com.mardous.booming.extensions
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import com.mardous.booming.R
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.model.Song
 
 const val MIME_TYPE_AUDIO = "audio/*"
 const val MIME_TYPE_IMAGE = "image/*"
@@ -39,11 +38,6 @@ fun String.openWeb(): Intent =
     Intent(Intent.ACTION_VIEW, this.toUri())
         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
-fun Uri.openIntent(asType: String): Intent =
-    Intent(Intent.ACTION_VIEW)
-        .setDataAndType(this, asType)
-        .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-
 fun Context.getShareNowPlayingIntent(song: Song): Intent {
     val currentlyListening =
         getString(R.string.currently_listening_to_x_by_x, song.title, song.displayArtistName())
@@ -57,7 +51,7 @@ fun Context.getShareSongIntent(song: Song): Intent {
     return try {
         ShareCompat.IntentBuilder(this)
             .setType(MIME_TYPE_AUDIO)
-            .setStream(song.mediaStoreUri)
+            .setStream(song.uri)
             .setChooserTitle(R.string.action_share)
             .createChooserIntent()
     } catch (e: IllegalArgumentException) {
@@ -75,7 +69,7 @@ fun Context.getShareSongsIntent(songs: List<Song>): Intent {
             .setType(MIME_TYPE_AUDIO)
             .setChooserTitle(R.string.action_share)
         for (song in songs.filterNot { it == Song.emptySong }) {
-            intent.addStream(song.mediaStoreUri)
+            intent.addStream(song.uri)
         }
         return intent.createChooserIntent()
     }

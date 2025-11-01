@@ -30,4 +30,12 @@
         android:id="@+id/action_horizontal_albums"
         android:title="@string/horizontal_albums"
         android:checkable="true"/>
+    <item
+        android:id="@+id/action_toggle_compact_song_view"
+        android:title="@string/compact_song_view"
+        android:checkable="true"/>
+    <item
+        android:id="@+id/action_ignore_singles"
+        android:title="@string/ignore_singles"
+        android:checkable="true"/>
 </menu>

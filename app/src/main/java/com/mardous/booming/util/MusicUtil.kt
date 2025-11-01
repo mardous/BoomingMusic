@@ -18,18 +18,14 @@
 package com.mardous.booming.util
 
 import android.content.Context
-import android.net.Uri
 import android.provider.BaseColumns
 import android.provider.MediaStore
-import com.mardous.booming.database.toSongEntity
+import androidx.core.net.toUri
+import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.deleteUsingSAF
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.onUI
-import com.mardous.booming.model.Song
-import com.mardous.booming.repository.PlaylistRepository
-import com.mardous.booming.repository.Repository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 
@@ -37,20 +33,6 @@ typealias ProgressCallback = (song: Song, progress: Int, total: Int) -> Unit
 typealias CompletionCallback = (deleted: Int) -> Unit
 
 object MusicUtil : KoinComponent {
-
-    suspend fun toggleFavorite(song: Song) {
-        withContext(Dispatchers.IO) {
-            val repository = get<PlaylistRepository>()
-            val playlist = repository.favoritePlaylist()
-            val songEntity = song.toSongEntity(playlist.playListId)
-            val isFavorite = repository.isSongFavorite(songEntity).isNotEmpty()
-            if (isFavorite) {
-                repository.removeSongFromPlaylist(songEntity)
-            } else {
-                repository.insertSongs(listOf(songEntity))
-            }
-        }
-    }
 
     suspend fun deleteTracks(
         context: Context,
@@ -133,7 +115,7 @@ object MusicUtil : KoinComponent {
         }
 
         context.onUI {
-            context.contentResolver.notifyChange(Uri.parse("content://media"), null)
+            context.contentResolver.notifyChange("content://media".toUri(), null)
             onCompleted?.invoke(deleted)
         }
     }

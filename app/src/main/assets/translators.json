@@ -1,0 +1,62 @@
+[
+  {
+    "contrib_name": "Catalan",
+    "contrib_description": "[Andreu Silvestre](https://crowdin.com/profile/andreu.silvestre.pla)"
+  },
+  {
+    "contrib_name": "Chinese Simplified",
+    "contrib_description": "[Rongxuan](https://crowdin.com/profile/rongxuan2333), [LuDreamst](https://crowdin.com/profile/ludreamst), [Ranpo Doyle](https://crowdin.com/profile/unravelled-mystery)"
+  },
+  {
+    "contrib_name": "Dutch",
+    "contrib_description": "[Myrdincx](https://crowdin.com/profile/myrdincx)"
+  },
+  {
+    "contrib_name": "French",
+    "contrib_description": "[Error-Cezar](https://crowdin.com/profile/error-cezar), [LeMalgache](https://crowdin.com/profile/lemalgache), [Mickael81](https://crowdin.com/profile/mickael81), [Leo-Tinkeam](https://crowdin.com/profile/leo-tinkeam)"
+  },
+  {
+    "contrib_name": "German",
+    "contrib_description": "[Lenard Felix](https://crowdin.com/profile/lenard.flx), [elea11](https://crowdin.com/profile/elea11), [Milo Thomas](https://crowdin.com/profile/tmh)"
+  },
+  {
+    "contrib_name": "Hebrew",
+    "contrib_description": "[elid1](https://crowdin.com/profile/elid1), [Walbeg Tronael](https://crowdin.com/profile/tronael)"
+  },
+  {
+    "contrib_name": "Hindi",
+    "contrib_description": "[Lucky Mehra](https://crowdin.com/profile/luckymehra776)"
+  },
+  {
+    "contrib_name": "Japanese",
+    "contrib_description": "morukanu1, [keikun13](https://crowdin.com/profile/keikun13)"
+  },
+  {
+    "contrib_name": "Polish",
+    "contrib_description": "[HackZy](https://crowdin.com/profile/hackzy), [Szuwax](https://crowdin.com/profile/szuwax)"
+  },
+  {
+    "contrib_name": "Portuguese",
+    "contrib_description": "[Matt](https://crowdin.com/profile/me-at-the-age-of-git)"
+  },
+  {
+    "contrib_name": "Portuguese (Brazilian)",
+    "contrib_description": "[Matt](https://crowdin.com/profile/me-at-the-age-of-git), [wbellato](https://crowdin.com/profile/wbellato), [Walbeg Tronael](https://crowdin.com/profile/tronael)"
+  },
+  {
+    "contrib_name": "Russian",
+    "contrib_description": "elixcat, [Anton](https://crowdin.com/profile/antoon334), [Axus Wizix](https://crowdin.com/profile/axuswizix)"
+  },
+  {
+    "contrib_name": "Spanish",
+    "contrib_description": "[Agustina Araya Lucato](https://crowdin.com/profile/agustt170), [Irina Berenguer Tretter](https://crowdin.com/profile/a55pirina)"
+  },
+  {
+    "contrib_name": "Turkish",
+    "contrib_description": "[Holi](https://crowdin.com/profile/mikropsoft)"
+  },
+  {
+    "contrib_name": "Ukrainian",
+    "contrib_description": "elixcat"
+  }
+]

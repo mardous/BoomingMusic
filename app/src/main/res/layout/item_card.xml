@@ -17,7 +17,7 @@
         android:background="?attr/rectSelector"
         tools:ignore="UnusedAttribute,UselessParent">
 
-        <com.mardous.booming.views.WidthFitSquareLayout
+        <com.mardous.booming.ui.component.views.WidthFitSquareLayout
             android:id="@+id/image_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -27,10 +27,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/default_audio_art"
+                tools:src="@tools:sample/avatars"
                 tools:ignore="ContentDescription"/>
 
-        </com.mardous.booming.views.WidthFitSquareLayout>
+        </com.mardous.booming.ui.component.views.WidthFitSquareLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

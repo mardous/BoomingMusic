@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "stable" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "stable" ]
 
 jobs:
   check:
@@ -17,12 +17,9 @@ jobs:
           distribution: 'zulu'
           cache: gradle
 
-      - name: Create Google Services JSON File
-        env:
-          DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
-        run: echo $DATA | base64 -di > ./app/google-services.json
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+
       - name: Run Lint
         run: ./gradlew lint
 
@@ -36,11 +33,15 @@ jobs:
         distribution: 'zulu'
         cache: gradle
 
-    - name: Create Google Services JSON File
-      env:
-          DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
-      run: echo $DATA | base64 -di > ./app/google-services.json
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
     - name: Build with Gradle
-      run: ./gradlew assembleNormalRelease -x uploadCrashlyticsMappingFileNormalRelease
+      run: ./gradlew assemble
+
+    - name: Upload PR artifacts
+      if: github.event_name == 'pull_request'
+      uses: actions/upload-artifact@v4
+      with:
+        name: release-apk
+        path: app/build/outputs/apk/*/release/BoomingMusic-*-release.apk

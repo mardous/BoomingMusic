@@ -21,7 +21,7 @@
 		android:clickable="false"
 		android:focusable="false"
 		android:minHeight="?listPreferredItemHeightSmall"
-		app:srcCompat="@drawable/ic_drag_vertical_24dp"
+		app:srcCompat="@drawable/ic_drag_handle_24dp"
 		tools:ignore="PrivateResource,UnusedAttribute"/>
 
     <com.google.android.material.textview.MaterialTextView
