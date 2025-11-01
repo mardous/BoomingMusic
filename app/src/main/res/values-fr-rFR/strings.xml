@@ -709,6 +709,10 @@
     <string name="ignore_audio_focus_summary">Toujours jouer de l\'audio en arrière-plan, indépendamment de tout autre élément en cours de lecture.</string>
     <string name="pause_on_zero_volume_title">Mettre en pause à zéro volume</string>
     <string name="pause_on_zero_volume_summary">Met en pause la lecture quand le volume diminue a zéro et reprend quand le volume augmente. Marche en dehors de l\'application.</string>
+    <string name="mp3_index_seeking_title">MP3 index seeking</string>
+    <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
+        Use only if seeking fails on some VBR files.
+        Requires app restart.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Télécharger automatiquement les métadonnées</string>
     <string name="ignore_media_store_album_covers_title">Ignorer les couvertures du Media Store</string>
