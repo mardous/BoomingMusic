@@ -56,6 +56,7 @@
         app:layout_constraintBottom_toTopOf="@+id/finish">
 
         <LinearLayout
+            android:id="@+id/permissions_column"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -77,6 +78,15 @@
                 app:permissionDescription="@string/permission_bluetooth_description"
                 app:buttonText="@string/grant_access_action"
                 app:buttonIcon="@drawable/ic_bluetooth_connected_24dp"/>
+
+            <com.mardous.booming.ui.component.views.PermissionView
+                android:id="@+id/read_images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:permissionTitle="@string/permission_read_images_title"
+                app:permissionDescription="@string/permission_read_images_summary"
+                app:buttonText="@string/grant_access_action"
+                app:buttonIcon="@drawable/ic_image_24dp"/>
 
             <com.mardous.booming.ui.component.views.PermissionView
                 android:id="@+id/schedule_exact_alarms"

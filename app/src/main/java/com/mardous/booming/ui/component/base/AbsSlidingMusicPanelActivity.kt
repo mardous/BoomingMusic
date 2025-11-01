@@ -17,11 +17,15 @@
 
 package com.mardous.booming.ui.component.base
 
+import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.widget.FrameLayout
@@ -36,6 +40,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.*
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
 import com.mardous.booming.MediaControllerOwner
@@ -514,6 +519,23 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                     ActivityInfo.SCREEN_ORIENTATION_LOCKED
                 } else {
                     ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+                }
+            }
+
+            USE_FOLDER_ART -> {
+                if (preferences.getBoolean(key, false)) {
+                    if (hasT() && checkSelfPermission(READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+                        MaterialAlertDialogBuilder(this)
+                            .setMessage(R.string.permission_read_images_denied)
+                            .setPositiveButton(R.string.action_grant) { _, _ ->
+                                startActivity(
+                                    Intent()
+                                        .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                        .setData(Uri.fromParts("package", packageName, null))
+                                )
+                            }
+                            .show()
+                    }
                 }
             }
         }
