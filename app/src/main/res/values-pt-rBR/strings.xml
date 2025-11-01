@@ -133,6 +133,10 @@
     <string name="permission_bluetooth_title">Dispositivos próximos</string>
     <string name="permission_bluetooth_description">O aplicativo precisa da permissão de dispositivos próximos para localizar dispositivos via Bluetooth</string>
     <string name="permission_bluetooth_denied">Permissão de dispositivos próximos negada.</string>
+    <string name="permission_read_images_title">Read images (optional)</string>
+    <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
+        If you don\'t plan to use this feature, you can choose not to grant it.</string>
+    <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">Agendar alarmes exatos (opcional)</string>
     <string name="permission_exact_alarms_description">É necessária a permissão para agendar alarmes precisos para que o temporizador funcione corretamente</string>
     <string name="permission_ringtone_title">Toque (opcional)</string>
@@ -586,6 +590,7 @@ Ideal para podcasts e gravações.</string>
     <string name="artist_image_header">Imagem do artista</string>
     <string name="exclusion_header">Exclusões</string>
     <string name="controls_header">Controles</string>
+    <string name="gestures_header">Gestures</string>
     <string name="headphones_header">Fones</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Foco de áudio</string>
@@ -650,11 +655,11 @@ Ideal para podcasts e gravações.</string>
     <string name="extra_controls_summary">Adicionar controles extras no mini player</string>
     <string name="adaptive_controls_title">Controles adaptáveis</string>
     <string name="adaptive_controls_summary">Os controles do miniplayer mudam para se adaptar ao estilo atual do player.</string>
-    <string name="swipe_to_dismiss_title">Deslize para dispensar</string>
-    <string name="swipe_to_dismiss_summary">Deslize o mini player para baixo para parar a reprodução e limpar a fila de reprodução.</string>
+    <string name="swipe_to_dismiss_title">Swipe down to dismiss</string>
+    <string name="swipe_to_dismiss_summary">Swipe down on the mini player to stop playback and clear the playing queue.</string>
     <string name="circle_button_title">Botão de reprodução redondo</string>
-    <string name="swipe_album_cover_title">Deslizar capa do álbum</string>
-    <string name="swipe_album_cover_summary">Deslize a capa do álbum para a esquerda ou direita para pular entre as músicas.</string>
+    <string name="swipe_album_cover_title">Swipe on album cover</string>
+    <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
     <string name="queue_height_title">Altura da fila em meia tela</string>
     <string name="queue_height_summary">Define a altura da fila de reprodução para metade da tela.</string>
     <string name="single_tap_on_album_cover_title">Toque único na capa</string>
@@ -670,8 +675,8 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música em vez da capa quando disponível.</string>
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
-    <string name="swipe_controls_title">Controles por gesto</string>
-    <string name="swipe_controls_summary">Deslize para a esquerda em qualquer espaço vazio na tela de reprodução para ir para a próxima música e para a direita para voltar à música anterior.</string>
+    <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
+    <string name="swipe_anywhere_summary">Swipe left or right on any empty area of the now playing screen to switch between songs.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
