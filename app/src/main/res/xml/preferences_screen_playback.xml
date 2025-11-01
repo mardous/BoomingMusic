@@ -175,6 +175,15 @@
             app:widgetLayout="@layout/preference_switch"
             app:key="pause_on_zero_volume"/>
 
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/mp3_index_seeking_title"
+            app:summary="@string/mp3_index_seeking_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="mp3_index_seeking"/>
+
     </PreferenceCategory>
 
 </androidx.preference.PreferenceScreen>

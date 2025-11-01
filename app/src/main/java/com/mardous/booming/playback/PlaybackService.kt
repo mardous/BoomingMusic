@@ -22,7 +22,10 @@ import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.audio.AudioSink
 import androidx.media3.exoplayer.audio.DefaultAudioSink
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.source.ShuffleOrder.UnshuffledShuffleOrder
+import androidx.media3.extractor.DefaultExtractorsFactory
+import androidx.media3.extractor.mp3.Mp3Extractor
 import androidx.media3.session.*
 import androidx.media3.session.MediaLibraryService.MediaLibrarySession
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
@@ -188,7 +191,7 @@ class PlaybackService :
                             context: Context,
                             enableFloatOutput: Boolean,
                             enableAudioTrackPlaybackParams: Boolean
-                        ): AudioSink? {
+                        ): AudioSink {
                             return DefaultAudioSink.Builder(this@PlaybackService)
                                 .setAudioProcessors(arrayOf(replayGainProcessor, balanceProcessor))
                                 .setEnableFloatOutput(enableFloatOutput)
@@ -198,6 +201,17 @@ class PlaybackService :
                     }
                     .setEnableAudioFloatOutput(soundSettings.audioFloatOutput)
                     .setEnableAudioTrackPlaybackParams(true)
+                )
+                .setMediaSourceFactory(
+                    DefaultMediaSourceFactory(
+                        this, DefaultExtractorsFactory()
+                            .setConstantBitrateSeekingEnabled(true)
+                            .also {
+                                if (preferences.getBoolean(MP3_INDEX_SEEKING, false)) {
+                                    it.setMp3ExtractorFlags(Mp3Extractor.FLAG_ENABLE_INDEX_SEEKING)
+                                }
+                            }
+                    )
                 )
                 .setSkipSilenceEnabled(soundSettings.skipSilence)
                 .setHandleAudioBecomingNoisy(true)
@@ -712,7 +726,7 @@ class PlaybackService :
 
     private fun toggleFavorite() = serviceScope.launch {
         val currentMediaItem = player.currentMediaItem
-        if (currentMediaItem == null) return@launch
+            ?: return@launch
 
         withContext(IO) {
             val song = repository.songByMediaItem(currentMediaItem)
