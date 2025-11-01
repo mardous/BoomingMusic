@@ -726,6 +726,10 @@
     <string name="pause_on_zero_volume_title">השהה כשעוצמת הקול היא אפס</string>
     <string name="pause_on_zero_volume_summary">עוצר את השיר כשהעוצמה יורדת לאפס, וממשיך לנגן כשהעוצמה עולה שוב.
 הפונקציה פועלת גם מחוץ לאפליקציה.</string>
+    <string name="mp3_index_seeking_title">MP3 index seeking</string>
+    <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
+        Use only if seeking fails on some VBR files.
+        Requires app restart.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
     <string name="ignore_media_store_album_covers_title">התעלם מעטיפות ממדיה סטור</string>
