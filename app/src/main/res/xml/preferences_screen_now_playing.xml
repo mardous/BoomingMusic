@@ -67,7 +67,6 @@
             app:entryValues="@array/pref_cover_swiping_effect_values"
             app:useSimpleSummaryProvider="true"
             app:defaultValue="simple"
-            app:dependency="left_right_swiping"
             app:layout="@layout/list_item_view"
             app:key="cover_swiping_effect" />
 
