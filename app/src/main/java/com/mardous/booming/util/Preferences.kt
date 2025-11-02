@@ -431,6 +431,10 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(SWIPE_ANYWHERE, false)
         set(value) = preferences.edit { putBoolean(SWIPE_ANYWHERE, value) }
 
+    var isSwipeUpQueue: Boolean
+        get() = preferences.getBoolean(SWIPE_UP_QUEUE, false)
+        set(value) = preferences.edit { putBoolean(SWIPE_UP_QUEUE, value) }
+
     var isShowNextSong: Boolean
         get() = preferences.getBoolean(DISPLAY_NEXT_SONG, true)
         set(value) = preferences.edit { putBoolean(DISPLAY_NEXT_SONG, value) }
@@ -639,6 +643,7 @@ const val NEXT_SLEEP_TIMER_ELAPSED_REALTIME = "next_sleep_timer_elapsed_real_tim
 const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SWIPE_ANYWHERE = "swipe_anywhere"
+const val SWIPE_UP_QUEUE = "swipe_up_queue"
 const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"
