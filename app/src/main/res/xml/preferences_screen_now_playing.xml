@@ -21,16 +21,6 @@
             app:widgetLayout="@layout/preference_switch"
             app:key="carousel_effect" />
 
-        <ListPreference
-            app:iconSpaceReserved="true"
-            app:title="@string/album_cover_effect_title"
-            app:entries="@array/pref_cover_swiping_effect_entries"
-            app:entryValues="@array/pref_cover_swiping_effect_values"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="simple"
-            app:layout="@layout/list_item_view"
-            app:key="cover_swiping_effect" />
-
         <SwitchPreferenceCompat
             app:iconSpaceReserved="true"
             app:title="@string/lyrics_on_album_cover_title"

@@ -119,6 +119,11 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         }
     }
 
+    private fun applyCurrentTransition() {
+        val transformer = Preferences.getNowPlayingTransition(nps).transformerFactory(R.id.player_image)
+        viewPager.setPageTransformer(true, transformer)
+    }
+
     private fun setupPageTransformer() {
         val gesturesListener = (parentFragment as? AbsPlayerFragment)
         if (gesturesListener != null) {
@@ -134,9 +139,6 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
             viewPager.setOnTouchListener(gesturesController)
         }
 
-        if (nps == NowPlayingScreen.Peek)
-            return
-
         if (nps.supportsCarouselEffect && Preferences.isCarouselEffect && !resources.isLandscape) {
             val metrics = resources.displayMetrics
             val ratio = metrics.heightPixels.toFloat() / metrics.widthPixels.toFloat()
@@ -145,14 +147,6 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
             viewPager.setPadding(padding, 0, padding, 0)
             viewPager.pageMargin = 0
             viewPager.setPageTransformer(false, CarouselPagerTransformer(requireContext()))
-        } else if (nps == NowPlayingScreen.FullCover) {
-            val transformer = ParallaxPagerTransformer(R.id.player_image)
-            transformer.setSpeed(0.3f)
-            viewPager.offscreenPageLimit = 2
-            viewPager.setPageTransformer(false, transformer)
-        } else {
-            viewPager.offscreenPageLimit = 2
-            viewPager.setPageTransformer(true, Preferences.coverSwipingEffect)
         }
     }
 
@@ -163,6 +157,7 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
             playerViewModel.queueFlow.collect { queue ->
                     _binding?.viewPager?.let { pager ->
                         pager.adapter = AlbumCoverPagerAdapter(parentFragmentManager, queue)
+                        applyCurrentTransition()
                         pager.doOnPreDraw {
                             val itemCount = pager.adapter?.count ?: 0
                             val lastIndex = (itemCount - 1).coerceAtLeast(0)
@@ -208,6 +203,10 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
 
             SWIPE_ON_COVER -> {
                 viewPager.setAllowSwiping(Preferences.swipeOnCover)
+            }
+
+            Preferences.getNowPlayingTransitionKey(nps) -> {
+                applyCurrentTransition()
             }
         }
     }

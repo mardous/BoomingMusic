@@ -23,6 +23,7 @@ import androidx.annotation.StringRes
 import com.mardous.booming.R
 import com.mardous.booming.ui.screen.player.PlayerColorSchemeList
 import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
+import com.mardous.booming.ui.screen.player.PlayerTransition
 
 enum class NowPlayingScreen(
     @param:StringRes
@@ -110,10 +111,9 @@ enum class NowPlayingScreen(
 
     val defaultColorScheme: PlayerColorSchemeMode
         get() = when (this) {
-            Default -> PlayerColorSchemeMode.AppTheme
+            Default, Plain, Peek -> PlayerColorSchemeMode.AppTheme
             M3 -> PlayerColorSchemeMode.MaterialYou
             FullCover, Gradient, Peek2 -> PlayerColorSchemeMode.VibrantColor
-            Plain, Peek -> PlayerColorSchemeMode.SimpleColor
         }
 
     val supportedColorSchemes: PlayerColorSchemeList
@@ -132,6 +132,49 @@ enum class NowPlayingScreen(
             M3 -> listOf(
                 PlayerColorSchemeMode.AppTheme,
                 PlayerColorSchemeMode.MaterialYou
+            )
+        }
+
+    val defaultTransition: PlayerTransition
+        get() = when (this) {
+            Default,
+            FullCover,
+            Gradient,
+            Plain,
+            M3,
+            Peek,
+            Peek2 -> PlayerTransition.SIMPLE
+        }
+
+    val supportedTransitions: List<PlayerTransition>
+        get() = when (this) {
+            Default,
+            Plain,
+            M3,
+            Peek2 -> listOf(
+                PlayerTransition.SIMPLE,
+                PlayerTransition.CASCADING,
+                PlayerTransition.DEPTH,
+                PlayerTransition.ZOOM_OUT,
+                PlayerTransition.STACK,
+                PlayerTransition.HORIZONTAL_FLIP,
+                PlayerTransition.VERTICAL_FLIP,
+                PlayerTransition.HINGE
+            )
+            FullCover,
+            Gradient -> listOf(
+                PlayerTransition.SIMPLE,
+                PlayerTransition.CASCADING,
+                PlayerTransition.DEPTH,
+                PlayerTransition.ZOOM_OUT,
+                PlayerTransition.STACK,
+                PlayerTransition.HORIZONTAL_FLIP,
+                PlayerTransition.VERTICAL_FLIP,
+                PlayerTransition.HINGE,
+                PlayerTransition.PARALLAX
+            )
+            Peek -> listOf(
+                PlayerTransition.SIMPLE
             )
         }
 }

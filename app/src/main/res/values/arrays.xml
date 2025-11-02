@@ -35,28 +35,6 @@
         <item>auto</item>
     </string-array>
 
-    <string-array name="pref_cover_swiping_effect_entries">
-        <item>@string/cascading</item>
-        <item>@string/depth</item>
-        <item>@string/hinge</item>
-        <item>@string/horizontal_flip</item>
-        <item>@string/vertical_flip</item>
-        <item>@string/simple</item>
-        <item>@string/stack</item>
-        <item>@string/zoom_out</item>
-    </string-array>
-
-    <string-array name="pref_cover_swiping_effect_values">
-        <item>cascading</item>
-        <item>depth</item>
-        <item>hinge</item>
-        <item>horizontal_flip</item>
-        <item>vertical_flip</item>
-        <item>simple</item>
-        <item>stack</item>
-        <item>zoom-out</item>
-    </string-array>
-
     <string-array name="pref_album_shuffle_mode_entries">
         <item>@string/shuffle_albums_ordered_songs</item>
         <item>@string/ordered_albums_shuffle_songs</item>

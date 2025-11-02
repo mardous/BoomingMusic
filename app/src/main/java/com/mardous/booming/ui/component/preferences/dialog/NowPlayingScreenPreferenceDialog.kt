@@ -38,6 +38,7 @@ import com.mardous.booming.databinding.PreferenceDialogNowPlayingScreenItemBindi
 import com.mardous.booming.extensions.dp
 import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
+import com.mardous.booming.ui.screen.player.PlayerTransition
 import com.mardous.booming.util.Preferences
 
 class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChangeListener,
@@ -48,6 +49,8 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
 
     private var viewPagerAdapter: NowPlayingScreenAdapter? = null
     private var colorSchemeAdapter: ColorSchemeAdapter? = null
+    private var transitionAdapter: TransitionAdapter? = null
+
 
     private var viewPagerPosition = 0
 
@@ -65,6 +68,22 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
         binding.colorScheme.onItemSelectedListener = this
         updateColorScheme()
 
+        transitionAdapter = TransitionAdapter(requireContext(), mutableListOf())
+        binding.transition.setAdapter(transitionAdapter)
+        binding.transition.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val currentItem = NowPlayingScreen.entries.getOrNull(viewPagerPosition)
+                val selectedTransition = transitionAdapter?.transitions?.getOrNull(position)
+                if (currentItem != null && selectedTransition != null) {
+                    Preferences.setNowPlayingTransition(currentItem, selectedTransition)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+        updateTransition()
+
+
         return MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.now_playing_screen_title)
             .setView(binding.root)
@@ -79,6 +98,7 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
     override fun onPageSelected(position: Int) {
         viewPagerPosition = position
         updateColorScheme()
+        updateTransition()
     }
 
     override fun onPageScrollStateChanged(state: Int) {}
@@ -108,6 +128,17 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
             colorSchemeAdapter?.submitList(supportedSchemes)
             binding.colorScheme.isEnabled = supportedSchemes.size > 1
             binding.colorScheme.setSelection(supportedSchemes.indexOf(selectedScheme))
+        }
+    }
+
+    private fun updateTransition() {
+        val currentItem = NowPlayingScreen.entries.getOrNull(viewPagerPosition)
+        if (currentItem != null) {
+            val supportedTransitions = currentItem.supportedTransitions
+            val selectedTransition = Preferences.getNowPlayingTransition(currentItem)
+            transitionAdapter?.submitList(supportedTransitions)
+            binding.transition.isEnabled = supportedTransitions.size > 1
+            binding.transition.setSelection(supportedTransitions.indexOf(selectedTransition))
         }
     }
 
@@ -175,4 +206,40 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
             notifyDataSetChanged()
         }
     }
+
+    class TransitionAdapter(context: Context, transitions: List<PlayerTransition>) :
+        ArrayAdapter<PlayerTransition>(context, android.R.layout.simple_list_item_1, transitions) {
+
+        private val inflater = LayoutInflater.from(context)
+        val transitions: List<PlayerTransition> = transitions
+
+        override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val view = convertView ?: inflater.inflate(R.layout.item_dialog_list, parent, false)
+            val titleView = view.findViewById<TextView>(R.id.title)
+            val descriptionView = view.findViewById<TextView>(R.id.text)
+            val iconView = view.findViewById<View>(R.id.icon_view)
+            iconView?.hide()
+
+            getItem(position)?.let {
+                titleView?.text = it.id.replace('_', ' ').replaceFirstChar(Char::uppercase)
+                descriptionView?.text = "" // optional description
+            }
+
+            return view
+        }
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val view = super.getView(position, convertView, parent) as TextView
+            val item = getItem(position)
+            view.text = item?.id?.replace('_', ' ')?.replaceFirstChar(Char::uppercase) ?: ""
+            return view
+        }
+
+        fun submitList(newList: List<PlayerTransition>) {
+            clear()
+            addAll(newList)
+            notifyDataSetChanged()
+        }
+    }
+
 }
