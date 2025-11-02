@@ -133,7 +133,7 @@
     <string name="permission_bluetooth_title">מכשירים בקרבת מקום</string>
     <string name="permission_bluetooth_description">האפליקציה זקוקה להרשאה מכשירים בקרבת מקום כדי לבדוק אם יש מכשירי בלוטות\'</string>
     <string name="permission_bluetooth_denied">הרשאת הגישה למכשירים בקרבת מקום נדחתה.</string>
-    <string name="permission_read_images_title">Read images (optional)</string>
+    <string name="permission_read_images_title">קריאת תמונות (אופציונלי)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
         If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
