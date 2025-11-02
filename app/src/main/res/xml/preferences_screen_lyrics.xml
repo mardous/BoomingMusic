@@ -132,6 +132,12 @@
         app:title="@string/advanced_title"
         app:layout="@layout/preference_category_title">
 
+        <Preference
+            app:summary="@string/lyrics_effects_note"
+            app:persistent="false"
+            app:selectable="false"
+            app:layout="@layout/list_item_view"/>
+
         <SwitchPreferenceCompat
             app:icon="@drawable/ic_blur_linear_24dp"
             app:title="@string/lyrics_progressive_coloring_title"
@@ -170,18 +176,6 @@
             app:widgetLayout="@layout/preference_switch"
             app:dependency="lyrics_gradient_background"
             app:key="lyrics_text_shadow" />
-
-        <Preference
-            app:summary="@string/lyrics_effects_note"
-            app:persistent="false"
-            app:selectable="false"
-            app:layout="@layout/list_item_view"/>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        app:title="@string/advanced_title"
-        app:layout="@layout/preference_category_title">
 
         <Preference
             app:icon="@drawable/ic_delete_24dp"
