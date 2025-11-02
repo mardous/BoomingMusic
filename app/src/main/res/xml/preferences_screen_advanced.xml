@@ -77,4 +77,47 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        app:title="@string/update_title"
+        app:layout="@layout/preference_category_title"
+        app:isPreferenceVisible="@bool/enable_app_update">
+
+        <ListPreference
+            app:layout="@layout/list_item_view"
+            app:title="@string/auto_update_title"
+            app:entries="@array/pref_update_mode_titles"
+            app:entryValues="@array/pref_update_mode_values"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="weekly"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="update_search_mode"/>
+
+        <SwitchPreferenceCompat
+            app:title="@string/receive_experimental_updates_title"
+            app:summary="@string/receive_experimental_updates_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="experimental_updates"/>
+
+        <SwitchPreferenceCompat
+            app:title="@string/only_wifi_title"
+            app:summary="@string/only_wifi_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="update_only_wifi"/>
+
+        <com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
+            app:title="@string/search_for_update_title"
+            app:persistent="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_progressbar"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="search_for_update"/>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

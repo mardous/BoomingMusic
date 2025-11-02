@@ -90,10 +90,6 @@
         android:name="com.mardous.booming.ui.screen.settings.LibraryPreferencesFragment"
         android:label="@string/library_title"/>
     <fragment
-        android:id="@+id/nav_update_preferences"
-        android:name="com.mardous.booming.ui.screen.settings.UpdatePreferencesFragment"
-        android:label="@string/update_title"/>
-    <fragment
         android:id="@+id/nav_advanced_preferences"
         android:name="com.mardous.booming.ui.screen.settings.AdvancedPreferencesFragment"
         android:label="@string/advanced_title"/>

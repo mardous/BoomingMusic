@@ -46,14 +46,6 @@
 
     <Preference
         app:layout="@layout/list_item_view"
-        app:title="@string/update_title"
-        app:summary="@string/update_summary"
-        app:icon="@drawable/ic_update_24dp"
-        app:isPreferenceVisible="@bool/enable_app_update"
-        app:key="update"/>
-
-    <Preference
-        app:layout="@layout/list_item_view"
         app:title="@string/advanced_title"
         app:summary="@string/advanced_summary"
         app:icon="@drawable/ic_settings_applications_24dp"
