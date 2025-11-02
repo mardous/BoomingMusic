@@ -82,10 +82,6 @@
         android:name="com.mardous.booming.ui.screen.settings.PlaybackPreferencesFragment"
         android:label="@string/playback_title"/>
     <fragment
-        android:id="@+id/nav_metadata_preferences"
-        android:name="com.mardous.booming.ui.screen.settings.MetadataPreferencesFragment"
-        android:label="@string/metadata_title"/>
-    <fragment
         android:id="@+id/nav_library_preferences"
         android:name="com.mardous.booming.ui.screen.settings.LibraryPreferencesFragment"
         android:label="@string/library_title"/>

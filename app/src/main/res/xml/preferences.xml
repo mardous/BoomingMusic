@@ -32,13 +32,6 @@
 
     <Preference
         app:layout="@layout/list_item_view"
-        app:title="@string/metadata_title"
-        app:summary="@string/metadata_summary"
-        app:icon="@drawable/ic_image_24dp"
-        app:key="metadata"/>
-
-    <Preference
-        app:layout="@layout/list_item_view"
         app:title="@string/library_title"
         app:summary="@string/library_summary"
         app:icon="@drawable/ic_library_music_24dp"
