@@ -22,26 +22,6 @@
         app:key="enable_rotation_lock"/>
 
     <PreferenceCategory
-        app:title="@string/playback_title"
-        app:layout="@layout/preference_category_title">
-
-        <SwitchPreferenceCompat
-            app:title="@string/stop_when_closed_from_recents_title"
-            app:summary="@string/stop_when_closed_from_recents_summary"
-            app:defaultValue="false"
-            app:layout="@layout/list_item_view"
-            app:widgetLayout="@layout/preference_switch"
-            app:key="stop_when_closed_from_recents"/>
-
-        <Preference
-            app:summary="@string/stop_when_closed_from_recents_note"
-            app:persistent="false"
-            app:selectable="false"
-            app:layout="@layout/list_item_view"/>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         app:title="@string/notification_title"
         app:layout="@layout/preference_category_title">
 
