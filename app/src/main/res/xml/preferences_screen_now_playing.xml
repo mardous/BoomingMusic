@@ -95,6 +95,15 @@
 
         <SwitchPreferenceCompat
             app:iconSpaceReserved="true"
+            app:title="@string/swipe_up_queue_title"
+            app:summary="@string/swipe_up_queue_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="swipe_up_queue" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
             app:title="@string/swipe_album_cover_title"
             app:summary="@string/swipe_album_cover_summary"
             app:defaultValue="true"
