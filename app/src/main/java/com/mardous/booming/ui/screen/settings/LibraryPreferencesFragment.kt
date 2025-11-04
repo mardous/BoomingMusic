@@ -19,7 +19,9 @@ package com.mardous.booming.ui.screen.settings
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
+import coil3.SingletonImageLoader
 import com.mardous.booming.R
 import com.mardous.booming.data.local.room.InclExclDao
 import com.mardous.booming.extensions.hasR
@@ -28,9 +30,14 @@ import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.BLACKLIST_ENABLED
+import com.mardous.booming.util.IGNORE_MEDIA_STORE
 import com.mardous.booming.util.LAST_ADDED_CUTOFF
+import com.mardous.booming.util.PREFERRED_IMAGE_SIZE
 import com.mardous.booming.util.TRASH_MUSIC_FILES
+import com.mardous.booming.util.USE_FOLDER_ART
 import com.mardous.booming.util.WHITELIST_ENABLED
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -71,9 +78,37 @@ class LibraryPreferencesFragment : PreferencesScreenFragment() {
                 }
             })
         }
+
+        findPreference<Preference>(IGNORE_MEDIA_STORE)?.onPreferenceChangeListener =
+            Preference.OnPreferenceChangeListener { _, _ ->
+                clearImageLoaderCache()
+                true
+            }
+
+        findPreference<Preference>(PREFERRED_IMAGE_SIZE)?.onPreferenceChangeListener =
+            Preference.OnPreferenceChangeListener { _, _ ->
+                clearImageLoaderCache()
+                true
+            }
+
+        findPreference<Preference>(USE_FOLDER_ART)?.onPreferenceChangeListener =
+            Preference.OnPreferenceChangeListener { _, _ ->
+                clearImageLoaderCache()
+                true
+            }
     }
 
     private fun showLibraryFolderSelector(type: Int) {
         BlacklistWhitelistDialog.newInstance(type).show(childFragmentManager, "LIBRARY_PATHS_PREFERENCE")
+    }
+
+    private fun clearImageLoaderCache() = lifecycleScope.launch(Dispatchers.IO) {
+        try {
+            val imageLoader = SingletonImageLoader.get(requireContext())
+            imageLoader.memoryCache?.clear()
+            imageLoader.diskCache?.clear()
+        } catch (e: Exception) {
+            android.util.Log.e("LibraryPreferencesFragment", "Failed to clear image loader cache", e)
+        }
     }
 }
