@@ -103,8 +103,12 @@ class LibraryPreferencesFragment : PreferencesScreenFragment() {
     }
 
     private fun clearImageLoaderCache() = lifecycleScope.launch(Dispatchers.IO) {
-        val imageLoader = SingletonImageLoader.get(requireContext())
-        imageLoader.memoryCache?.clear()
-        imageLoader.diskCache?.clear()
+        try {
+            val imageLoader = SingletonImageLoader.get(requireContext())
+            imageLoader.memoryCache?.clear()
+            imageLoader.diskCache?.clear()
+        } catch (e: Exception) {
+            android.util.Log.e("LibraryPreferencesFragment", "Failed to clear image loader cache", e)
+        }
     }
 }
