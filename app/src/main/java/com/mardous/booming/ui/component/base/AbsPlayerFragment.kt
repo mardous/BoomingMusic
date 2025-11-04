@@ -265,7 +265,9 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                     }
 
                     GestureType.Fling.DIRECTION_UP -> {
-                        findNavController().navigate(R.id.nav_queue)
+                        if (Preferences.isSwipeUpQueue) {
+                            findNavController().navigate(R.id.nav_queue)
+                        }
                         true
                     }
 
