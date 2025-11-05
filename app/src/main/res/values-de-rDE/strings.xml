@@ -678,6 +678,8 @@
     <string name="animate_controls_summary">Startet beim Öffnen der Wiedergabe-Ansicht.</string>
     <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
     <string name="swipe_anywhere_summary">Swipe left or right on any empty area of the now playing screen to switch between songs.</string>
+    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
+    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
     <string name="display_album_name_title">Album-Titel anzeigen</string>
     <string name="display_extra_info_title">Zusätzliche Informationen anzeigen</string>
     <string name="display_extra_info_summary">Zeigt zusätzliche Titel-Informationen an, wie Bitrate, Format, Abtastrate usw.</string>
