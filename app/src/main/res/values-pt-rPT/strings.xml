@@ -677,6 +677,8 @@
     <string name="animate_controls_summary">Jogado quando se abre o painel do jogador.</string>
     <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
     <string name="swipe_anywhere_summary">Swipe left or right on any empty area of the now playing screen to switch between songs.</string>
+    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
+    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
