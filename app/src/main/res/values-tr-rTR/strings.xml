@@ -673,6 +673,8 @@
     <string name="animate_controls_summary">Çalar panelini açarken oynatılır.</string>
     <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
     <string name="swipe_anywhere_summary">Swipe left or right on any empty area of the now playing screen to switch between songs.</string>
+    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
+    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
     <string name="display_album_name_title">Albüm adını göster</string>
     <string name="display_extra_info_title">Ek bilgileri göster</string>
     <string name="display_extra_info_summary">Bit hızı, biçim, örnekleme hızı gibi şarkı hakkında ek bilgileri gösterin.</string>
