@@ -678,6 +678,8 @@
     <string name="animate_controls_summary">S\'executa en obrir el panell de reproducció.</string>
     <string name="swipe_anywhere_title">Llisca on sigui per canviar la cançó</string>
     <string name="swipe_anywhere_summary">Llisca a l\'esquerra o la dreta en qualsevol zona buida de la pantalla ara sona per canviar entre les cançons.</string>
+    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
+    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
     <string name="display_album_name_title">Mostra el nom de l\'àlbum</string>
     <string name="display_extra_info_title">Mostra informació addicional</string>
     <string name="display_extra_info_summary">Mostra informació addicional de la cançó, com ara la taxa de bits, el format, el mostratge, etc.</string>
