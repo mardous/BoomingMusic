@@ -677,8 +677,8 @@ Ideal para podcasts e gravações.</string>
     <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
     <string name="swipe_anywhere_title">Deslize em qualquer lugar para trocar de música</string>
     <string name="swipe_anywhere_summary">Deslize para a esquerda ou para a direita em qualquer área vazia da tela de reprodução para trocar de música.</string>
-    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
-    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
+    <string name="swipe_up_queue_title">Deslize para cima para abrir a fila</string>
+    <string name="swipe_up_queue_summary">Deslize para cima em uma área vazia da tela de reprodução para abrir a fila de reprodução.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
