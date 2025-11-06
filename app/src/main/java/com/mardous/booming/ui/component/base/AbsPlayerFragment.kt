@@ -253,42 +253,30 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                     GestureType.Fling.DIRECTION_LEFT -> {
                         if (Preferences.isSwipeAnywhere) {
                             playerViewModel.seekToNext()
-                        }
-                        true
+                            true
+                        } else false
                     }
 
                     GestureType.Fling.DIRECTION_RIGHT -> {
                         if (Preferences.isSwipeAnywhere) {
                             playerViewModel.seekToPrevious()
-                        }
-                        true
+                            true
+                        } else false
                     }
 
                     GestureType.Fling.DIRECTION_UP -> {
                         if (Preferences.isSwipeUpQueue) {
                             findNavController().navigate(R.id.nav_queue)
-                        }
-                        true
+                            true
+                        } else false
                     }
 
                     else -> false
                 }
             }
-
-            is GestureType.Tap -> {
-                onQuickActionEvent(Preferences.coverSingleTapAction)
-                true
-            }
-
-            is GestureType.DoubleTap -> {
-                onQuickActionEvent(Preferences.coverDoubleTapAction)
-                true
-            }
-
-            is GestureType.LongPress -> {
-                onQuickActionEvent(Preferences.coverLongPressAction)
-                true
-            }
+            is GestureType.Tap -> onQuickActionEvent(Preferences.coverSingleTapAction)
+            is GestureType.DoubleTap -> onQuickActionEvent(Preferences.coverDoubleTapAction)
+            is GestureType.LongPress -> onQuickActionEvent(Preferences.coverLongPressAction)
         }
     }
 
