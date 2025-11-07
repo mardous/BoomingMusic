@@ -264,9 +264,11 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         animatorSet.doOnStart {
             coverLyricsFragment?.let { fragment ->
                 activity?.keepScreenOn(playerViewModel.isPlaying)
-                childFragmentManager.beginTransaction()
-                    .setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
-                    .commitAllowingStateLoss()
+                if (isVisible) {
+                    childFragmentManager.beginTransaction()
+                        .setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
+                        .commitAllowingStateLoss()
+                }
             }
             isShowLyricsOnCover = true
             _binding?.coverLyricsFragment?.isVisible = true
@@ -292,9 +294,11 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         animatorSet.doOnEnd {
             coverLyricsFragment?.let { fragment ->
                 activity?.keepScreenOn(false)
-                childFragmentManager.beginTransaction()
-                    .setMaxLifecycle(fragment, Lifecycle.State.STARTED)
-                    .commitAllowingStateLoss()
+                if (isVisible) {
+                    childFragmentManager.beginTransaction()
+                        .setMaxLifecycle(fragment, Lifecycle.State.STARTED)
+                        .commitAllowingStateLoss()
+                }
             }
             if (isPermanent) {
                 isShowLyricsOnCover = false
