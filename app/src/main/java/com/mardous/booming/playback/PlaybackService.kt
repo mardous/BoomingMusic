@@ -361,6 +361,7 @@ class PlaybackService :
             .setOffline(true)
             .setRecent(true)
             .setSuggested(false)
+            .setExtras(bundleOf(MEDIA_SEARCH_SUPPORTED to false))
             .build()
         val mediaItem = when {
             params?.isRecent == true -> {
@@ -407,6 +408,22 @@ class PlaybackService :
                 LibraryResult.ofItemList(result.getOrThrow(), params)
             } else {
                 LibraryResult.ofError(SessionError.ERROR_UNKNOWN)
+            }
+        }
+    }
+
+    override fun onGetItem(
+        session: MediaLibraryService.MediaLibrarySession,
+        browser: MediaSession.ControllerInfo,
+        mediaId: String
+    ): ListenableFuture<LibraryResult<MediaItem>> {
+        return serviceScope.future(IO) {
+            val mediaItem = runCatching { libraryProvider.getItem(mediaId) }
+                .getOrDefault(MediaItem.EMPTY)
+            if (mediaItem != MediaItem.EMPTY) {
+                LibraryResult.ofItem(mediaItem, null)
+            } else {
+                LibraryResult.ofError(SessionError.ERROR_IO)
             }
         }
     }

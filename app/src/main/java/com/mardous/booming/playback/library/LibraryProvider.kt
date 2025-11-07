@@ -140,6 +140,11 @@ class LibraryProvider(private val repository: Repository) {
         }
     }
 
+    fun getItem(itemId: String): MediaItem {
+        val songId = itemId.toLongOrNull() ?: return MediaItem.EMPTY
+        return repository.songById(songId).toAutoMediaItem()
+    }
+
     private suspend fun getRootChildren(context: Context): List<MediaItem> {
         val resources = context.resources
         val mediaItems: MutableList<MediaItem> = ArrayList()
@@ -251,12 +256,11 @@ class LibraryProvider(private val repository: Repository) {
     }
 
     private suspend fun getMediaItemsFromPath(path: String): List<MediaItem> {
-        val pathParentId = MediaIDs.getParentId(path)
-        val pathChildId = MediaIDs.getChildId(path)
-        return if (pathParentId == null || pathChildId == null) {
+        val parts = MediaIDs.splitPath(path)
+        return if (parts.size < 2) {
             listOf(MediaItem.EMPTY)
         } else {
-            getPlayableMediaItems(pathParentId, pathChildId)
+            getPlayableMediaItems(parts[0], parts[1])
         }
     }
 
@@ -294,24 +298,25 @@ class LibraryProvider(private val repository: Repository) {
     private suspend fun getPlayableMediaItems(parentId: String, childId: String? = null) =
         getPlayableSongs(parentId, childId)
             .filterNot { it == Song.emptySong }
-            .map { song ->
-                MediaItem.Builder()
-                    .setUri(song.uri)
-                    .setMediaId(song.id.toString())
-                    .setMediaMetadata(
-                        MediaMetadata.Builder()
-                            .setIsPlayable(true)
-                            .setArtworkUri(song.albumCoverUri) // IMPORTANT: must use the actual album cover Uri
-                            .setTitle(song.title)
-                            .setArtist(song.artistName)
-                            .setAlbumTitle(song.albumName)
-                            .setAlbumArtist(song.albumArtistName)
-                            .setGenre(song.genreName)
-                            .setTrackNumber(song.trackNumber)
-                            .setReleaseYear(song.year)
-                            .setDurationMs(song.duration.coerceAtLeast(0))
-                            .build()
-                    )
-                    .build()
-            }
+            .map { song -> song.toAutoMediaItem() }
+
+    private fun Song.toAutoMediaItem() = MediaItem.Builder()
+        .setUri(uri)
+        .setMediaId(id.toString())
+        .setMediaMetadata(
+            MediaMetadata.Builder()
+                .setIsPlayable(true)
+                .setIsBrowsable(false)
+                .setArtworkUri(albumCoverUri)
+                .setTitle(title)
+                .setArtist(artistName)
+                .setAlbumTitle(albumName)
+                .setAlbumArtist(albumArtistName)
+                .setGenre(genreName)
+                .setTrackNumber(trackNumber)
+                .setReleaseYear(year)
+                .setDurationMs(duration.coerceAtLeast(0))
+                .build()
+        )
+        .build()
 }
