@@ -236,7 +236,9 @@ class PlaybackService :
         mediaSession = with(MediaLibrarySession.Builder(this, player, this)) {
             setId(packageName)
             setSessionActivity(createSessionActivityIntent())
-            setBitmapLoader(CacheBitmapLoader(CoilBitmapLoader(this@PlaybackService, preferences)))
+            setBitmapLoader(
+                CacheBitmapLoader(CoilBitmapLoader(serviceScope, this@PlaybackService, preferences))
+            )
             setMediaNotificationProvider(notificationProvider)
             build()
         }
@@ -962,6 +964,8 @@ class PlaybackService :
         const val ACTION_NEXT = "$PACKAGE_NAME.action.next"
 
         const val EXTRA_APP_WIDGET_NAME = "$PACKAGE_NAME.extra.app_widget_name"
+
+        private const val MEDIA_SEARCH_SUPPORTED = "android.media.browse.SEARCH_SUPPORTED"
 
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "playing_notification"
