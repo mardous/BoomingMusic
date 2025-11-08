@@ -19,7 +19,7 @@ object MediaIDs {
 
     fun getPathId(parentId: String, mediaId: String) = parentId + SEPARATOR + mediaId
 
-    fun splitPath(pathId: String) = pathId.split(SEPARATOR, limit = 2)
+    fun splitPath(pathId: String) = pathId.split(SEPARATOR)
 
-    fun isPath(id: String) = id.split(SEPARATOR).size == 2
+    fun isPath(id: String) = id.split(SEPARATOR).size > 1
 }

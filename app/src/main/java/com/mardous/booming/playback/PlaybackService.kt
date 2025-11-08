@@ -363,7 +363,6 @@ class PlaybackService :
             .setOffline(true)
             .setRecent(true)
             .setSuggested(false)
-            .setExtras(bundleOf(MEDIA_SEARCH_SUPPORTED to false))
             .build()
         val mediaItem = when {
             params?.isRecent == true -> {
@@ -430,6 +429,33 @@ class PlaybackService :
         }
     }
 
+    override fun onSearch(
+        session: MediaLibraryService.MediaLibrarySession,
+        browser: MediaSession.ControllerInfo,
+        query: String,
+        params: LibraryParams?
+    ): ListenableFuture<LibraryResult<Void>> {
+        return serviceScope.future(IO) {
+            runCatching { libraryProvider.search(query) }
+                .onSuccess { session.notifySearchResultChanged(browser, query, it.size, params) }
+
+            LibraryResult.ofVoid()
+        }
+    }
+
+    override fun onGetSearchResult(
+        session: MediaLibraryService.MediaLibrarySession,
+        browser: MediaSession.ControllerInfo,
+        query: String,
+        page: Int,
+        pageSize: Int,
+        params: LibraryParams?
+    ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
+        return Futures.immediateFuture(
+            LibraryResult.ofItemList(libraryProvider.searchResult, params)
+        )
+    }
+
     override fun onAddMediaItems(
         mediaSession: MediaSession,
         controller: MediaSession.ControllerInfo,
@@ -463,9 +489,22 @@ class PlaybackService :
             hasSetUnshuffledOrder = false
         }
         return serviceScope.future(IO) {
-            runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
-                .getOrDefault(emptyList())
-                .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+            if (mediaSession.isAutomotiveController(controller) ||
+                mediaSession.isAutoCompanionController(controller)) {
+                runCatching { libraryProvider.getMediaItemsForAAOSPlayback(mediaItems) }
+                    .getOrNull()
+                    .let {
+                        MediaItemsWithStartPosition(
+                            it?.first ?: emptyList(),
+                            it?.second ?: C.INDEX_UNSET,
+                            startPositionMs
+                        )
+                    }
+            } else {
+                runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
+                    .getOrDefault(emptyList())
+                    .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+            }
         }.also { future ->
             future.addListener({
                 val result = runCatching { future.get() }.getOrNull()
@@ -964,8 +1003,6 @@ class PlaybackService :
         const val ACTION_NEXT = "$PACKAGE_NAME.action.next"
 
         const val EXTRA_APP_WIDGET_NAME = "$PACKAGE_NAME.extra.app_widget_name"
-
-        private const val MEDIA_SEARCH_SUPPORTED = "android.media.browse.SEARCH_SUPPORTED"
 
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "playing_notification"
