@@ -791,6 +791,7 @@
     <string name="zoom_out">缩放</string>
     <string name="simple">简单的</string>
     <string name="stack">堆栈...</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">播放曲目后添加</string>
     <string name="add_tracks_sequentially">按顺序添加曲目</string>
     <string name="albums_shuffle">专辑随机播放</string>
