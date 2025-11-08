@@ -11,6 +11,7 @@ enum class PlayerTransition(val nameRes: Int) {
     Hinge(R.string.hinge),
     HorizontalFlip(R.string.horizontal_flip),
     VerticalFlip(R.string.vertical_flip),
+    Stack(R.string.stack),
     ZoomOut(R.string.zoom_out),
     Parallax(R.string.parallax);
 
@@ -21,6 +22,7 @@ enum class PlayerTransition(val nameRes: Int) {
             Hinge -> { _ -> HingeTransformation() to true }
             HorizontalFlip -> { _ -> HorizontalFlipTransformation() to true }
             VerticalFlip -> { _ -> VerticalFlipTransformation() to true }
+            Stack -> { _ -> VerticalStackTransformer() to true }
             ZoomOut -> { _ -> ZoomOutPageTransformer() to true }
             Parallax -> { id -> ParallaxPagerTransformer(id).apply { setSpeed(0.3f) } to false}
             Simple -> { _ -> Pair(null, true) }

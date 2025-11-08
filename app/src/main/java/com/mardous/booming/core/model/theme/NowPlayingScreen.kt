@@ -152,6 +152,7 @@ enum class NowPlayingScreen(
                 PlayerTransition.Cascading,
                 PlayerTransition.Depth,
                 PlayerTransition.ZoomOut,
+                PlayerTransition.Stack,
                 PlayerTransition.HorizontalFlip,
                 PlayerTransition.VerticalFlip,
                 PlayerTransition.Hinge
@@ -162,6 +163,7 @@ enum class NowPlayingScreen(
                 PlayerTransition.Cascading,
                 PlayerTransition.Depth,
                 PlayerTransition.ZoomOut,
+                PlayerTransition.Stack,
                 PlayerTransition.HorizontalFlip,
                 PlayerTransition.VerticalFlip,
                 PlayerTransition.Hinge,
