@@ -793,6 +793,7 @@
     <string name="zoom_out">Uzaklaştırma</string>
     <string name="simple">Basit</string>
     <string name="stack">Yığın</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Çalan parçadan sonra ekle</string>
     <string name="add_tracks_sequentially">Parçaları sırayla ekle</string>
     <string name="albums_shuffle">Albümleri karıştır</string>
