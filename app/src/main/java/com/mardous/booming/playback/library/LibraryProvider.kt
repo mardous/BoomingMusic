@@ -158,8 +158,8 @@ class LibraryProvider(private val repository: Repository) {
                                 .setMediaId(MediaIDs.SONGS)
                                 .setMediaMetadata(
                                     MediaMetadata.Builder()
-                                        .setMediaType(MediaMetadata.MEDIA_TYPE_MIXED)
-                                        .setIsBrowsable(false)
+                                        .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                                        .setIsBrowsable(true)
                                         .setIsPlayable(false)
                                         .setTitle(resources.getString(categoryInfo.category.titleRes))
                                         .build()
