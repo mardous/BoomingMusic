@@ -779,7 +779,6 @@
     <string name="vertical_flip">上下反転</string>
     <string name="zoom_out">ズームアウト</string>
     <string name="simple">シンプル</string>
-    <string name="stack">スタック</string>
     <string name="add_after_playing_track">トラックを再生した後に追加</string>
     <string name="add_tracks_sequentially">トラックを順番に追加</string>
     <string name="albums_shuffle">アルバムシャッフル</string>

@@ -795,7 +795,6 @@
     <string name="vertical_flip">Întoarcere verticală</string>
     <string name="zoom_out">Micșorare</string>
     <string name="simple">Simplu</string>
-    <string name="stack">Stivă</string>
     <string name="add_after_playing_track">Adaugă după redarea piesei</string>
     <string name="add_tracks_sequentially">Adaugă piese secvențial</string>
     <string name="albums_shuffle">Albums shuffle</string>

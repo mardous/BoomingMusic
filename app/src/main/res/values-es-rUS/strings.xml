@@ -785,7 +785,6 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="vertical_flip">Giro vertical</string>
     <string name="zoom_out">Alejar</string>
     <string name="simple">Simple</string>
-    <string name="stack">Pila</string>
     <string name="add_after_playing_track">Añadir después de la pista en reproducción</string>
     <string name="add_tracks_sequentially">Añadir pistas de forma secuencial</string>
     <string name="albums_shuffle">Mezcla de álbumes</string>

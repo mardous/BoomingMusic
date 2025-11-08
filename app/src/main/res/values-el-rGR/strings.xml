@@ -787,7 +787,6 @@
     <string name="vertical_flip">Κατακόρυφη Αναστροφή</string>
     <string name="zoom_out">Σμίκρυνση</string>
     <string name="simple">Απλό</string>
-    <string name="stack">Στοίβα</string>
     <string name="add_after_playing_track">Προσθήκη μετά το κομμάτι αναπαραγωγής</string>
     <string name="add_tracks_sequentially">Προσθήκη κομματιών διαδοχικά</string>
     <string name="albums_shuffle">Albums shuffle</string>

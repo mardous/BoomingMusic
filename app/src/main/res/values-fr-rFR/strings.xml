@@ -786,7 +786,6 @@
     <string name="vertical_flip">Retournement vertical</string>
     <string name="zoom_out">Zoom arrière</string>
     <string name="simple">Simple</string>
-    <string name="stack">Pile</string>
     <string name="add_after_playing_track">Ajouter après la lecture du titre</string>
     <string name="add_tracks_sequentially">Ajouter des titres séquentiellement</string>
     <string name="albums_shuffle">Lecture aléatoire des albums</string>

@@ -819,7 +819,6 @@
     <string name="vertical_flip">انعكاس عمودي</string>
     <string name="zoom_out">تكبير خارج</string>
     <string name="simple">بسيط</string>
-    <string name="stack">تكدس</string>
     <string name="add_after_playing_track">إضافة بعد تشغيل المسار</string>
     <string name="add_tracks_sequentially">إضافة مسارات متتالية</string>
     <string name="albums_shuffle">Albums shuffle</string>

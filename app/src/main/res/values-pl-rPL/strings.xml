@@ -803,7 +803,6 @@
     <string name="vertical_flip">Odbicie pionowe</string>
     <string name="zoom_out">Oddalanie</string>
     <string name="simple">Prosty</string>
-    <string name="stack">Stos</string>
     <string name="add_after_playing_track">Dodaj po bieżącym utworze</string>
     <string name="add_tracks_sequentially">Dodawaj utwory jeden po drugim</string>
     <string name="albums_shuffle">Losowe odtwarzanie albumów</string>

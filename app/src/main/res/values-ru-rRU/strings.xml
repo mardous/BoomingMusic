@@ -805,7 +805,6 @@
     <string name="vertical_flip">Вертикальное отражение</string>
     <string name="zoom_out">Уменьшить</string>
     <string name="simple">Простой</string>
-    <string name="stack">Стек</string>
     <string name="add_after_playing_track">Добавить после текущего трека</string>
     <string name="add_tracks_sequentially">Добавить треки последовательно</string>
     <string name="albums_shuffle">Albums shuffle</string>

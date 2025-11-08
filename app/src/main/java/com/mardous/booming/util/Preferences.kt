@@ -22,7 +22,6 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
-import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationBarView.LabelVisibility
 import com.mardous.booming.R
@@ -40,9 +39,9 @@ import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.intRes
 import com.mardous.booming.extensions.utilities.*
-import com.mardous.booming.ui.component.transform.*
 import com.mardous.booming.ui.component.views.TopAppBarLayout
 import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
+import com.mardous.booming.ui.screen.player.PlayerTransition
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.File
@@ -217,19 +216,28 @@ object Preferences : KoinComponent {
         preferences.getInt(NOW_PLAYING_IMAGE_CORNER_RADIUS, context.intRes(R.integer.now_playing_corner_radius))
 
     val isCarouselEffect: Boolean
-        get() = preferences.getBoolean(CAROUSEL_EFFECT, true)
+        get() = preferences.getBoolean(CAROUSEL_EFFECT, false)
 
-    val coverSwipingEffect: ViewPager.PageTransformer?
-        get() = when (preferences.nullString(COVER_SWIPING_EFFECT)) {
-            CoverSwipingEffect.CASCADING -> CascadingPageTransformer()
-            CoverSwipingEffect.DEPTH -> DepthTransformation()
-            CoverSwipingEffect.HINGE -> HingeTransformation()
-            CoverSwipingEffect.HORIZONTAL_FLIP -> HorizontalFlipTransformation()
-            CoverSwipingEffect.VERTICAL_FLIP -> VerticalFlipTransformation()
-            CoverSwipingEffect.STACK -> VerticalStackTransformer()
-            CoverSwipingEffect.ZOOM_OUT -> ZoomOutPageTransformer()
-            else -> null
+    fun getNowPlayingTransitionKey(nps: NowPlayingScreen) =
+        "player_${nps.name.lowercase()}_transition"
+
+    fun getNowPlayingTransition(nps: NowPlayingScreen): PlayerTransition {
+        val defaultTransition = nps.defaultTransition
+        val transitionName = preferences.nullString(getNowPlayingTransitionKey(nps))
+            ?: defaultTransition.name
+        if (nps.supportedTransitions.any { it.name == transitionName }) {
+            return transitionName.toEnum<PlayerTransition>() ?: defaultTransition
         }
+        return defaultTransition
+    }
+
+    fun setNowPlayingTransition(nps: NowPlayingScreen, transition: PlayerTransition) {
+        if (nps.supportedTransitions.contains(transition)) {
+            preferences.edit {
+                putString(getNowPlayingTransitionKey(nps), transition.name)
+            }
+        }
+    }
 
     val coverSingleTapAction: NowPlayingAction
         get() = preferences.enumValue(COVER_SINGLE_TAP_ACTION, NowPlayingAction.TogglePlayState)
@@ -475,18 +483,6 @@ interface AppBarMode {
     }
 }
 
-interface CoverSwipingEffect {
-    companion object {
-        const val CASCADING = "cascading"
-        const val DEPTH = "depth"
-        const val HINGE = "hinge"
-        const val HORIZONTAL_FLIP = "horizontal_flip"
-        const val VERTICAL_FLIP = "vertical_flip"
-        const val STACK = "stack"
-        const val ZOOM_OUT = "zoom-out"
-    }
-}
-
 interface PlayOnStartupMode {
     companion object {
         const val NEVER = "never"
@@ -576,7 +572,6 @@ const val SWIPE_ON_COVER = "swipe_on_cover"
 const val NOW_PLAYING_SMALL_IMAGE = "now_playing_small_image"
 const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
 const val CAROUSEL_EFFECT = "carousel_effect"
-const val COVER_SWIPING_EFFECT = "cover_swiping_effect"
 const val COVER_SINGLE_TAP_ACTION = "cover_single_tap_action"
 const val COVER_DOUBLE_TAP_ACTION = "cover_double_tap_action"
 const val COVER_LONG_PRESS_ACTION = "cover_long_press_action"
