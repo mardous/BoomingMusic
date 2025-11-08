@@ -152,6 +152,22 @@ class LibraryProvider(private val repository: Repository) {
         libraryCategories.forEach { categoryInfo ->
             if (categoryInfo.visible) {
                 when (categoryInfo.category) {
+                    CategoryInfo.Category.Songs -> {
+                        mediaItems.add(
+                            MediaItem.Builder()
+                                .setMediaId(MediaIDs.SONGS)
+                                .setMediaMetadata(
+                                    MediaMetadata.Builder()
+                                        .setMediaType(MediaMetadata.MEDIA_TYPE_MIXED)
+                                        .setIsBrowsable(false)
+                                        .setIsPlayable(false)
+                                        .setTitle(resources.getString(categoryInfo.category.titleRes))
+                                        .build()
+                                )
+                                .build()
+                        )
+                    }
+
                     CategoryInfo.Category.Albums -> {
                         mediaItems.add(
                             MediaItem.Builder()
