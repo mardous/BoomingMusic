@@ -150,7 +150,6 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
             )
             viewPager.setOnTouchListener(gesturesController)
         }
-        applyCurrentTransition()
     }
 
     @OptIn(FlowPreview::class)
