@@ -815,6 +815,7 @@
     <string name="zoom_out">Зменшити</string>
     <string name="simple">Простий</string>
     <string name="stack">Стек</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Додати після поточного треку</string>
     <string name="add_tracks_sequentially">Додати треки послідовно</string>
     <string name="albums_shuffle">Albums shuffle</string>
