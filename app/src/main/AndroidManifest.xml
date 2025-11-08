@@ -250,6 +250,11 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
+        <provider
+            android:name=".coil.CoverProvider"
+            android:authorities="${applicationId}.cover"
+            android:exported="true" />
+
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1"/>
