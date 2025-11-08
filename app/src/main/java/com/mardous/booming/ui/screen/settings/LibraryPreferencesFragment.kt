@@ -23,6 +23,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import coil3.SingletonImageLoader
 import com.mardous.booming.R
+import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.data.local.room.InclExclDao
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.preferences.SwitchWithButtonPreference
@@ -103,8 +104,14 @@ class LibraryPreferencesFragment : PreferencesScreenFragment() {
     }
 
     private fun clearImageLoaderCache() = lifecycleScope.launch(Dispatchers.IO) {
-        val imageLoader = SingletonImageLoader.get(requireContext())
-        imageLoader.memoryCache?.clear()
-        imageLoader.diskCache?.clear()
+        try {
+            CoverProvider.clearCache(requireContext())
+
+            val imageLoader = SingletonImageLoader.get(requireContext())
+            imageLoader.memoryCache?.clear()
+            imageLoader.diskCache?.clear()
+        } catch (e: Exception) {
+            android.util.Log.e("LibraryPreferencesFragment", "Failed to clear image loader cache", e)
+        }
     }
 }

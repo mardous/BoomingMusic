@@ -236,7 +236,9 @@ class PlaybackService :
         mediaSession = with(MediaLibrarySession.Builder(this, player, this)) {
             setId(packageName)
             setSessionActivity(createSessionActivityIntent())
-            setBitmapLoader(CoilBitmapLoader(this@PlaybackService, preferences))
+            setBitmapLoader(
+                CacheBitmapLoader(CoilBitmapLoader(serviceScope, this@PlaybackService, preferences))
+            )
             setMediaNotificationProvider(notificationProvider)
             build()
         }
@@ -411,6 +413,49 @@ class PlaybackService :
         }
     }
 
+    override fun onGetItem(
+        session: MediaLibraryService.MediaLibrarySession,
+        browser: MediaSession.ControllerInfo,
+        mediaId: String
+    ): ListenableFuture<LibraryResult<MediaItem>> {
+        return serviceScope.future(IO) {
+            val mediaItem = runCatching { libraryProvider.getItem(mediaId) }
+                .getOrDefault(MediaItem.EMPTY)
+            if (mediaItem != MediaItem.EMPTY) {
+                LibraryResult.ofItem(mediaItem, null)
+            } else {
+                LibraryResult.ofError(SessionError.ERROR_IO)
+            }
+        }
+    }
+
+    override fun onSearch(
+        session: MediaLibraryService.MediaLibrarySession,
+        browser: MediaSession.ControllerInfo,
+        query: String,
+        params: LibraryParams?
+    ): ListenableFuture<LibraryResult<Void>> {
+        return serviceScope.future(IO) {
+            runCatching { libraryProvider.search(query) }
+                .onSuccess { session.notifySearchResultChanged(browser, query, it.size, params) }
+
+            LibraryResult.ofVoid()
+        }
+    }
+
+    override fun onGetSearchResult(
+        session: MediaLibraryService.MediaLibrarySession,
+        browser: MediaSession.ControllerInfo,
+        query: String,
+        page: Int,
+        pageSize: Int,
+        params: LibraryParams?
+    ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
+        return Futures.immediateFuture(
+            LibraryResult.ofItemList(libraryProvider.searchResult, params)
+        )
+    }
+
     override fun onAddMediaItems(
         mediaSession: MediaSession,
         controller: MediaSession.ControllerInfo,
@@ -444,9 +489,22 @@ class PlaybackService :
             hasSetUnshuffledOrder = false
         }
         return serviceScope.future(IO) {
-            runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
-                .getOrDefault(emptyList())
-                .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+            if (mediaSession.isAutomotiveController(controller) ||
+                mediaSession.isAutoCompanionController(controller)) {
+                runCatching { libraryProvider.getMediaItemsForAAOSPlayback(mediaItems) }
+                    .getOrNull()
+                    .let {
+                        MediaItemsWithStartPosition(
+                            it?.first ?: emptyList(),
+                            it?.second ?: C.INDEX_UNSET,
+                            startPositionMs
+                        )
+                    }
+            } else {
+                runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
+                    .getOrDefault(emptyList())
+                    .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+            }
         }.also { future ->
             future.addListener({
                 val result = runCatching { future.get() }.getOrNull()
