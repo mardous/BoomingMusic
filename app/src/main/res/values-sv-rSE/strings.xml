@@ -799,6 +799,7 @@
     <string name="zoom_out">Zooma ut</string>
     <string name="simple">Enkel</string>
     <string name="stack">Stapel</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Lägg till efter spelspår</string>
     <string name="add_tracks_sequentially">Lägg till spår sekventiellt</string>
     <string name="albums_shuffle">Albums shuffle</string>
