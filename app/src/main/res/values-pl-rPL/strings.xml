@@ -607,7 +607,7 @@
     <string name="artist_image_header">Obraz artysty</string>
     <string name="exclusion_header">Wykluczenia</string>
     <string name="controls_header">Sterowanie</string>
-    <string name="gestures_header">Gestures</string>
+    <string name="gestures_header">Gesty</string>
     <string name="headphones_header">Słuchawki</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Skoncentrowanie dźwięku</string>
@@ -692,7 +692,7 @@
     <string name="lyrics_on_album_cover_summary">Pokaż tekst piosenki zamiast okładki, jeżeli jest dostępny.</string>
     <string name="animate_controls_title">Animuj elementy sterowania</string>
     <string name="animate_controls_summary">Wyświetla się przy otwarciu panelu odtwarzacza.</string>
-    <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
+    <string name="swipe_anywhere_title">Przesuń gdziekolwiek by zmienić utwór</string>
     <string name="swipe_anywhere_summary">Swipe left or right on any empty area of the now playing screen to switch between songs.</string>
     <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
     <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
@@ -730,8 +730,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Wstrzymuje odtwarzanie po rozłączeniu słuchawek Bluetooth (A2DP). Zalecane.</string>
     <string name="ignore_audio_focus_title">Ignoruj ostrość dźwięku</string>
     <string name="ignore_audio_focus_summary">Zawsze odtwarzaj dźwięk w tle niezależnie od tego, co jest odtwarzane.</string>
-    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
-    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
+    <string name="pause_on_zero_volume_title">Wstrzymaj przy zerowej głośności</string>
+    <string name="pause_on_zero_volume_summary">Wstrzymuje odtwarzanie, gdy głośność spadnie do zera, i wznawia, gdy poziom głośności zostanie zwiększony. Działa także w tle.</string>
     <string name="mp3_index_seeking_title">MP3 index seeking</string>
     <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
         Use only if seeking fails on some VBR files.
@@ -782,8 +782,8 @@
     <string name="stop_when_closed_from_recents_summary">Zatrzymuje odtwarzanie po zamknięciu aplikacji z listy ostatnich aplikacji.</string>
     <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią
         lub baterią mogą ignorować to ustawienie i zawsze zatrzymywać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
-    <string name="rotation_lock_title">Rotation lock</string>
-    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
+    <string name="rotation_lock_title">Blokada orientacji ekranu</string>
+    <string name="rotation_lock_summary">Przydatna w sytuacjach, gdy muzyka zatrzymuje się po obróceniu ekranu z powodu ograniczeń producenta.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Jasny</string>
     <string name="dark_theme_name">Ciemny</string>
