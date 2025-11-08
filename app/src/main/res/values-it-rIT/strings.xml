@@ -799,6 +799,7 @@
     <string name="zoom_out">Zoom Indietro</string>
     <string name="simple">Semplice</string>
     <string name="stack">Pila</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Aggiungi una traccia dopo la riproduzione</string>
     <string name="add_tracks_sequentially">Aggiungi tracce sequenzialmente</string>
     <string name="albums_shuffle">Albums shuffle</string>
