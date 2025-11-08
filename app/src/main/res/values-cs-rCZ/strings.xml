@@ -803,7 +803,6 @@
     <string name="vertical_flip">Vertikální otočení</string>
     <string name="zoom_out">Oddálit</string>
     <string name="simple">Jednoduchý</string>
-    <string name="stack">Zásobník</string>
     <string name="add_after_playing_track">Přidat po přehrávání skladby</string>
     <string name="add_tracks_sequentially">Přidat postupně skladby</string>
     <string name="albums_shuffle">Albums shuffle</string>

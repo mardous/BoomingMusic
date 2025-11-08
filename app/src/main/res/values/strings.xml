@@ -828,7 +828,7 @@
     <string name="vertical_flip">Vertical Flip</string>
     <string name="zoom_out">Zoom Out</string>
     <string name="simple">Simple</string>
-    <string name="stack">Stack</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Add after playing track</string>
     <string name="add_tracks_sequentially">Add tracks sequentially</string>
     <string name="albums_shuffle">Albums shuffle</string>

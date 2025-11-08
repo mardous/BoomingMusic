@@ -104,7 +104,7 @@ enum class NowPlayingScreen(
         R.layout.fragment_album_cover_default,
         buttonStyle = NowPlayingButtonStyle.Normal,
         supportsCoverLyrics = true,
-        supportsCarouselEffect = true,
+        supportsCarouselEffect = false,
         supportsCustomCornerRadius = true,
         supportsSmallImage = false
     );
@@ -125,7 +125,8 @@ enum class NowPlayingScreen(
                 PlayerColorSchemeMode.MaterialYou
             )
             FullCover,
-            Gradient, Peek2 -> listOf(
+            Gradient,
+            Peek2 -> listOf(
                 PlayerColorSchemeMode.VibrantColor
             )
             Peek,
@@ -137,44 +138,38 @@ enum class NowPlayingScreen(
 
     val defaultTransition: PlayerTransition
         get() = when (this) {
-            Default,
             FullCover,
-            Gradient,
-            Plain,
-            M3,
-            Peek,
-            Peek2 -> PlayerTransition.SIMPLE
+            Gradient -> PlayerTransition.Parallax
+            else -> PlayerTransition.Simple
         }
 
     val supportedTransitions: List<PlayerTransition>
         get() = when (this) {
             Default,
             Plain,
-            M3,
-            Peek2 -> listOf(
-                PlayerTransition.SIMPLE,
-                PlayerTransition.CASCADING,
-                PlayerTransition.DEPTH,
-                PlayerTransition.ZOOM_OUT,
-                PlayerTransition.STACK,
-                PlayerTransition.HORIZONTAL_FLIP,
-                PlayerTransition.VERTICAL_FLIP,
-                PlayerTransition.HINGE
+            M3 -> listOf(
+                PlayerTransition.Simple,
+                PlayerTransition.Cascading,
+                PlayerTransition.Depth,
+                PlayerTransition.ZoomOut,
+                PlayerTransition.HorizontalFlip,
+                PlayerTransition.VerticalFlip,
+                PlayerTransition.Hinge
             )
             FullCover,
             Gradient -> listOf(
-                PlayerTransition.SIMPLE,
-                PlayerTransition.CASCADING,
-                PlayerTransition.DEPTH,
-                PlayerTransition.ZOOM_OUT,
-                PlayerTransition.STACK,
-                PlayerTransition.HORIZONTAL_FLIP,
-                PlayerTransition.VERTICAL_FLIP,
-                PlayerTransition.HINGE,
-                PlayerTransition.PARALLAX
+                PlayerTransition.Simple,
+                PlayerTransition.Cascading,
+                PlayerTransition.Depth,
+                PlayerTransition.ZoomOut,
+                PlayerTransition.HorizontalFlip,
+                PlayerTransition.VerticalFlip,
+                PlayerTransition.Hinge,
+                PlayerTransition.Parallax
             )
-            Peek -> listOf(
-                PlayerTransition.SIMPLE
+            Peek,
+            Peek2 -> listOf(
+                PlayerTransition.Simple
             )
         }
 }

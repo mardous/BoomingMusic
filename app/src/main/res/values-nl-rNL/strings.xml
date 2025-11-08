@@ -787,7 +787,6 @@
     <string name="vertical_flip">Verticale spiegeling</string>
     <string name="zoom_out">Zoom uit</string>
     <string name="simple">Eenvoudig</string>
-    <string name="stack">Stapelen</string>
     <string name="add_after_playing_track">Toevoegen na het afspelen van nummer</string>
     <string name="add_tracks_sequentially">Tracks automatisch toevoegen</string>
     <string name="albums_shuffle">Albums shuffelen</string>

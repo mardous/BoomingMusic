@@ -787,7 +787,6 @@
     <string name="vertical_flip">Pystysuuntainen Käännä</string>
     <string name="zoom_out">Zoomaa Ulos</string>
     <string name="simple">Yksinkertainen</string>
-    <string name="stack">Pino</string>
     <string name="add_after_playing_track">Lisää soivan kappaleen jälkeen</string>
     <string name="add_tracks_sequentially">Lisää kappaleita peräkkäin</string>
     <string name="albums_shuffle">Albums shuffle</string>

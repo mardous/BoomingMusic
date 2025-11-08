@@ -221,7 +221,7 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
             iconView?.hide()
 
             getItem(position)?.let {
-                titleView?.text = it.id.replace('_', ' ').replaceFirstChar(Char::uppercase)
+                titleView?.setText(it.nameRes)
                 descriptionView?.text = "" // optional description
             }
 
@@ -231,7 +231,7 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             val view = super.getView(position, convertView, parent) as TextView
             val item = getItem(position)
-            view.text = item?.id?.replace('_', ' ')?.replaceFirstChar(Char::uppercase) ?: ""
+            if (item != null) view.setText(item.nameRes)
             return view
         }
 

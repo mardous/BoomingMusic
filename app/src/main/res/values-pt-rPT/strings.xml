@@ -786,7 +786,6 @@
     <string name="vertical_flip">Inverter verticalmente</string>
     <string name="zoom_out">Diminuir o zoom</string>
     <string name="simple">Simples</string>
-    <string name="stack">Pilha</string>
     <string name="add_after_playing_track">Adicionar depois de reproduzir a música</string>
     <string name="add_tracks_sequentially">Adicionar faixas sequencialmente</string>
     <string name="albums_shuffle">Albums shuffle</string>

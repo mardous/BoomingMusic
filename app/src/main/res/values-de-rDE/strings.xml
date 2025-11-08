@@ -787,7 +787,6 @@
     <string name="vertical_flip">Vertikal spiegeln</string>
     <string name="zoom_out">Herauszoomen</string>
     <string name="simple">Einfach</string>
-    <string name="stack">Stapeln</string>
     <string name="add_after_playing_track">Nach dem wiedergegebenen Titel einfügen</string>
     <string name="add_tracks_sequentially">Titel nacheinander hinzufügen</string>
     <string name="albums_shuffle">Album-Zufallswiedergabe</string>

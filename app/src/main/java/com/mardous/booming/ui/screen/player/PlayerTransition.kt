@@ -1,34 +1,28 @@
 package com.mardous.booming.ui.screen.player
 
 import androidx.viewpager.widget.ViewPager
+import com.mardous.booming.R
 import com.mardous.booming.ui.component.transform.*
 
-enum class PlayerTransition(val id: String) {
-    SIMPLE("simple"),
-    CASCADING("cascading"),
-    DEPTH("depth"),
-    HINGE("hinge"),
-    HORIZONTAL_FLIP("horizontal_flip"),
-    VERTICAL_FLIP("vertical_flip"),
-    STACK("stack"),
-    ZOOM_OUT("zoom_out"),
-    PARALLAX("parallax");
+enum class PlayerTransition(val nameRes: Int) {
+    Simple(R.string.simple),
+    Cascading(R.string.cascading),
+    Depth(R.string.depth),
+    Hinge(R.string.hinge),
+    HorizontalFlip(R.string.horizontal_flip),
+    VerticalFlip(R.string.vertical_flip),
+    ZoomOut(R.string.zoom_out),
+    Parallax(R.string.parallax);
 
-    val transformerFactory: (Int) -> ViewPager.PageTransformer?
+    val transformerFactory: (Int) -> Pair<ViewPager.PageTransformer?, Boolean>
         get() = when (this) {
-            SIMPLE -> { _ -> SimplePageTransformer() }
-            CASCADING -> { _ -> CascadingPageTransformer() }
-            DEPTH -> { _ -> DepthTransformation() }
-            HINGE -> { _ -> HingeTransformation() }
-            HORIZONTAL_FLIP -> { _ -> HorizontalFlipTransformation() }
-            VERTICAL_FLIP -> { _ -> VerticalFlipTransformation() }
-            STACK -> { _ -> VerticalStackTransformer() }
-            ZOOM_OUT -> { _ -> ZoomOutPageTransformer() }
-            PARALLAX -> { id -> ParallaxPagerTransformer(id).apply { setSpeed(0.3f) } }
-    }
-
-    companion object {
-        fun fromId(id: String?): PlayerTransition? =
-            entries.find { it.id == id }
+            Cascading -> { _ -> CascadingPageTransformer() to true }
+            Depth -> { _ -> DepthTransformation() to true }
+            Hinge -> { _ -> HingeTransformation() to true }
+            HorizontalFlip -> { _ -> HorizontalFlipTransformation() to true }
+            VerticalFlip -> { _ -> VerticalFlipTransformation() to true }
+            ZoomOut -> { _ -> ZoomOutPageTransformer() to true }
+            Parallax -> { id -> ParallaxPagerTransformer(id).apply { setSpeed(0.3f) } to false}
+            Simple -> { _ -> Pair(null, true) }
     }
 }

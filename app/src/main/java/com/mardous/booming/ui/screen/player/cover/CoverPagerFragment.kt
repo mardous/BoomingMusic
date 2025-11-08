@@ -49,15 +49,14 @@ import com.mardous.booming.extensions.resources.BOOMING_ANIM_TIME
 import com.mardous.booming.ui.adapters.pager.CustomFragmentStatePagerAdapter
 import com.mardous.booming.ui.component.base.AbsPlayerFragment
 import com.mardous.booming.ui.component.transform.CarouselPagerTransformer
-import com.mardous.booming.ui.component.transform.ParallaxPagerTransformer
 import com.mardous.booming.ui.screen.player.PlayerGesturesController
 import com.mardous.booming.ui.screen.player.PlayerGesturesController.GestureType
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment.ColorReceiver
-import com.mardous.booming.util.SWIPE_ON_COVER
 import com.mardous.booming.util.LYRICS_ON_COVER
 import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.SWIPE_ON_COVER
 import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
@@ -120,8 +119,19 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
     }
 
     private fun applyCurrentTransition() {
-        val transformer = Preferences.getNowPlayingTransition(nps).transformerFactory(R.id.player_image)
-        viewPager.setPageTransformer(true, transformer)
+        if (nps.supportsCarouselEffect && Preferences.isCarouselEffect && !resources.isLandscape) {
+            val metrics = resources.displayMetrics
+            val ratio = metrics.heightPixels.toFloat() / metrics.widthPixels.toFloat()
+            val padding = if (ratio >= 1.777f) 40 else 100
+            viewPager.clipToPadding = false
+            viewPager.setPadding(padding, 0, padding, 0)
+            viewPager.pageMargin = 0
+            viewPager.setPageTransformer(false, CarouselPagerTransformer(requireContext()))
+        } else {
+            val (transformer, reverse) = Preferences.getNowPlayingTransition(nps)
+                .transformerFactory(R.id.player_image)
+            viewPager.setPageTransformer(reverse, transformer)
+        }
     }
 
     private fun setupPageTransformer() {
@@ -138,16 +148,7 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
             )
             viewPager.setOnTouchListener(gesturesController)
         }
-
-        if (nps.supportsCarouselEffect && Preferences.isCarouselEffect && !resources.isLandscape) {
-            val metrics = resources.displayMetrics
-            val ratio = metrics.heightPixels.toFloat() / metrics.widthPixels.toFloat()
-            val padding = if (ratio >= 1.777f) 40 else 100
-            viewPager.clipToPadding = false
-            viewPager.setPadding(padding, 0, padding, 0)
-            viewPager.pageMargin = 0
-            viewPager.setPageTransformer(false, CarouselPagerTransformer(requireContext()))
-        }
+        applyCurrentTransition()
     }
 
     @OptIn(FlowPreview::class)
@@ -155,21 +156,21 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         viewPager.addOnPageChangeListener(this)
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.queueFlow.collect { queue ->
-                    _binding?.viewPager?.let { pager ->
-                        pager.adapter = AlbumCoverPagerAdapter(parentFragmentManager, queue)
-                        applyCurrentTransition()
-                        pager.doOnPreDraw {
-                            val itemCount = pager.adapter?.count ?: 0
-                            val lastIndex = (itemCount - 1).coerceAtLeast(0)
-                            val target = playerViewModel.position.current.coerceIn(0, lastIndex)
-                            if (itemCount > 0) {
-                                if (pager.currentItem != target) {
-                                    pager.setCurrentItem(target, false)
-                                }
-                                onPageSelected(target)
+                _binding?.viewPager?.let { pager ->
+                    pager.adapter = AlbumCoverPagerAdapter(parentFragmentManager, queue)
+                    applyCurrentTransition()
+                    pager.doOnPreDraw {
+                        val itemCount = pager.adapter?.count ?: 0
+                        val lastIndex = (itemCount - 1).coerceAtLeast(0)
+                        val target = playerViewModel.position.current.coerceIn(0, lastIndex)
+                        if (itemCount > 0) {
+                            if (pager.currentItem != target) {
+                                pager.setCurrentItem(target, false)
                             }
+                            onPageSelected(target)
                         }
                     }
+                }
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {

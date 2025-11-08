@@ -223,19 +223,18 @@ object Preferences : KoinComponent {
 
     fun getNowPlayingTransition(nps: NowPlayingScreen): PlayerTransition {
         val defaultTransition = nps.defaultTransition
-        val transitionId = preferences.nullString(getNowPlayingTransitionKey(nps))
-        val transition = PlayerTransition.fromId(transitionId)
-        return if (transition != null && nps.supportedTransitions.contains(transition)) {
-            transition
-        } else {
-            defaultTransition
+        val transitionName = preferences.nullString(getNowPlayingTransitionKey(nps))
+            ?: defaultTransition.name
+        if (nps.supportedTransitions.any { it.name == transitionName }) {
+            return transitionName.toEnum<PlayerTransition>() ?: defaultTransition
         }
+        return defaultTransition
     }
 
     fun setNowPlayingTransition(nps: NowPlayingScreen, transition: PlayerTransition) {
         if (nps.supportedTransitions.contains(transition)) {
             preferences.edit {
-                putString(getNowPlayingTransitionKey(nps), transition.id)
+                putString(getNowPlayingTransitionKey(nps), transition.name)
             }
         }
     }
