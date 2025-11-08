@@ -126,10 +126,12 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
             viewPager.clipToPadding = false
             viewPager.setPadding(padding, 0, padding, 0)
             viewPager.pageMargin = 0
+            viewPager.offscreenPageLimit = 1 // Only adjacent pages are visible in carousel
             viewPager.setPageTransformer(false, CarouselPagerTransformer(requireContext()))
         } else {
             val (transformer, reverse) = Preferences.getNowPlayingTransition(nps)
                 .transformerFactory(R.id.player_image)
+            viewPager.offscreenPageLimit = 2 // Parallax and other transitions need more pages
             viewPager.setPageTransformer(reverse, transformer)
         }
     }
