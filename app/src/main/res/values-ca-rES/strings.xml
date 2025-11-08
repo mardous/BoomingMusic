@@ -798,6 +798,7 @@
     <string name="zoom_out">Allunya</string>
     <string name="simple">Simple</string>
     <string name="stack">Apila</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Afegeix després de la pista actual</string>
     <string name="add_tracks_sequentially">Afegeix les pistes de manera seqüencial</string>
     <string name="albums_shuffle">Barreja els àlbums</string>
