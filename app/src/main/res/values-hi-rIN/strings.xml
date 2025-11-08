@@ -797,6 +797,7 @@
     <string name="zoom_out">ज़ूम आउट</string>
     <string name="simple">सरल</string>
     <string name="stack">स्टैक</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">ट्रैक खेलने के बाद जोड़ें</string>
     <string name="add_tracks_sequentially">पटरियों को क्रमशः जोड़ें</string>
     <string name="albums_shuffle">एल्बम शफल</string>
