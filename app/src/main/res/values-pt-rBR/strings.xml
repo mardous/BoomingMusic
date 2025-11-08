@@ -797,6 +797,7 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="zoom_out">Diminuir o zoom</string>
     <string name="simple">Simples</string>
     <string name="stack">Pilha</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Reproduzir na sequência</string>
     <string name="add_tracks_sequentially">Adicionar faixas sequencialmente</string>
     <string name="albums_shuffle">Álbuns aleatórios</string>
