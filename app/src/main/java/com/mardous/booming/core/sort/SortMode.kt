@@ -14,6 +14,7 @@ import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.model.*
 import com.mardous.booming.extensions.media.albumArtistName
 import com.mardous.booming.extensions.media.asReadableTrackNumber
+import com.mardous.booming.extensions.media.normalizeForSorting
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 import java.text.Collator
@@ -28,6 +29,9 @@ sealed class SortMode(
     protected val collator: Collator by lazy {
         Collator.getInstance(Locale.getDefault()).apply { strength = Collator.PRIMARY }
     }
+
+    val ignoreArticles: Boolean
+        get() =  get<SharedPreferences>().getBoolean("ignore_articles_when_sorting", false)
 
     private val key = "${id}_sort_order"
     open var selectedKey: SortKey
@@ -98,13 +102,7 @@ sealed class SortMode(
     }
 
     protected fun String.normalize(language: String = Locale.getDefault().language): String {
-        return if (get<SharedPreferences>().getBoolean("ignore_articles_when_sorting", false)) {
-            val articles = ARTICLES_BY_LANGUAGE[language] ?: return this
-            val regex = Regex("^(${articles.joinToString("|")})\\s+", RegexOption.IGNORE_CASE)
-            return trim().replace(regex, "")
-        } else {
-            this
-        }
+        return normalizeForSorting(ignoreArticles, language)
     }
 
     private fun SharedPreferences.getSortKey(key: String, default: SortKey): SortKey {

@@ -255,7 +255,7 @@ class DetailListFragment : AbsMainActivityFragment(R.layout.fragment_detail_list
         SongAdapter(requireActivity(), songs, R.layout.item_list, callback = this)
 
     private fun artistAdapter(artists: List<Artist> = listOf()): ArtistAdapter =
-        ArtistAdapter(requireActivity(), artists, R.layout.item_grid_circle_single_row, this)
+        ArtistAdapter(requireActivity(), artists, R.layout.item_grid_circle_single_row, callback = this)
 
     private fun albumAdapter(albums: List<Album> = listOf()): AlbumAdapter =
         AlbumAdapter(requireActivity(), albums, R.layout.item_grid, callback = this)

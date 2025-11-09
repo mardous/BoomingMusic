@@ -118,9 +118,9 @@ open class AlbumAdapter(
     override fun getPopupText(view: View, position: Int): CharSequence {
         val album = dataSet.getOrNull(position) ?: return ""
         return when (sortMode?.selectedKey) {
-            SortKey.Artist -> album.displayArtistName().asSectionName()
-            SortKey.AZ -> album.name.asSectionName()
-            else -> album.name.asSectionName()
+            SortKey.Artist -> album.displayArtistName().asSectionName(sortMode)
+            SortKey.AZ -> album.name.asSectionName(sortMode)
+            else -> album.name.asSectionName(sortMode)
         }
     }
 
