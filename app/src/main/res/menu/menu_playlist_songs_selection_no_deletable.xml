@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_play_next"
-        android:icon="@drawable/ic_queue_next_24dp"
+        android:icon="@drawable/ic_queue_play_next_24dp"
         android:title="@string/action_queue_next"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_add_to_playing_queue"
-        android:icon="@drawable/ic_library_add_24dp"
-        android:title="@string/action_add_to_playing_queue"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_add_to_playlist"
         android:icon="@drawable/ic_playlist_add_24dp"
         android:title="@string/action_add_to_playlist"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_share"
-        android:icon="@drawable/ic_share_24dp"
-        android:title="@string/action_share"
         app:showAsAction="ifRoom"/>
     <item
+        android:id="@+id/action_add_to_playing_queue"
+        android:title="@string/action_add_to_playing_queue"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_share"
+        android:title="@string/action_share"
+        app:showAsAction="never"/>
+    <item
         android:id="@id/action_multi_select_adapter_check_all"
-        android:icon="@drawable/ic_select_all_24dp"
         android:title="@string/select_all_title"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never"/>
 </menu>

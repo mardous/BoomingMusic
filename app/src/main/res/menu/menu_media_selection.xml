@@ -4,20 +4,19 @@
 
     <item
         android:id="@+id/action_play_next"
-        android:icon="@drawable/ic_queue_next_24dp"
+        android:icon="@drawable/ic_queue_play_next_24dp"
         android:title="@string/action_queue_next"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/action_add_to_playing_queue"
-        android:icon="@drawable/ic_library_add_24dp"
-        android:title="@string/action_add_to_playing_queue"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_add_to_playlist"
         android:icon="@drawable/ic_playlist_add_24dp"
         android:title="@string/action_add_to_playlist"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_add_to_playing_queue"
+        android:title="@string/action_add_to_playing_queue"
         app:showAsAction="ifRoom" />
 
     <item

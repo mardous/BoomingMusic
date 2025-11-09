@@ -18,7 +18,7 @@
         app:layout="@layout/preference_category_title">
 
         <ListPreference
-            app:icon="@drawable/ic_queue_next_24dp"
+            app:icon="@drawable/ic_queue_play_next_24dp"
             app:title="@string/queue_next_mode_title"
             app:entries="@array/queue_next_mode_entries"
             app:entryValues="@array/queue_next_mode_values"
