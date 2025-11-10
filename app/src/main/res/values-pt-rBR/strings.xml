@@ -133,6 +133,10 @@
     <string name="permission_bluetooth_title">Dispositivos próximos</string>
     <string name="permission_bluetooth_description">O aplicativo precisa da permissão de dispositivos próximos para localizar dispositivos via Bluetooth</string>
     <string name="permission_bluetooth_denied">Permissão de dispositivos próximos negada.</string>
+    <string name="permission_read_images_title">Ler imagens (opcional)</string>
+    <string name="permission_read_images_summary">Essa permissão é necessária para que o Booming Music encontre arquivos de capas de álbuns nas suas pastas de música.
+Se você não pretende usar esse recurso, pode optar por não conceder a permissão.</string>
+    <string name="permission_read_images_denied">Você precisa conceder permissão para ler imagens do dispositivo.</string>
     <string name="permission_exact_alarms_title">Agendar alarmes exatos (opcional)</string>
     <string name="permission_exact_alarms_description">É necessária a permissão para agendar alarmes precisos para que o temporizador funcione corretamente</string>
     <string name="permission_ringtone_title">Toque (opcional)</string>
@@ -586,6 +590,7 @@ Ideal para podcasts e gravações.</string>
     <string name="artist_image_header">Imagem do artista</string>
     <string name="exclusion_header">Exclusões</string>
     <string name="controls_header">Controles</string>
+    <string name="gestures_header">Gestos</string>
     <string name="headphones_header">Fones</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Foco de áudio</string>
@@ -650,18 +655,18 @@ Ideal para podcasts e gravações.</string>
     <string name="extra_controls_summary">Adicionar controles extras no mini player</string>
     <string name="adaptive_controls_title">Controles adaptáveis</string>
     <string name="adaptive_controls_summary">Os controles do miniplayer mudam para se adaptar ao estilo atual do player.</string>
-    <string name="swipe_to_dismiss_title">Deslize para dispensar</string>
-    <string name="swipe_to_dismiss_summary">Deslize o mini player para baixo para parar a reprodução e limpar a fila de reprodução.</string>
+    <string name="swipe_to_dismiss_title">Deslize para baixo para dispensar</string>
+    <string name="swipe_to_dismiss_summary">Deslize para baixo no mini player para parar e limpar a fila.</string>
     <string name="circle_button_title">Botão de reprodução redondo</string>
-    <string name="swipe_album_cover_title">Deslizar capa do álbum</string>
-    <string name="swipe_album_cover_summary">Deslize a capa do álbum para a esquerda ou direita para pular entre as músicas.</string>
+    <string name="swipe_album_cover_title">Deslize sobre a capa do álbum</string>
+    <string name="swipe_album_cover_summary">Deslize para a esquerda ou para a direita na capa do álbum para pular entre faixas.</string>
     <string name="queue_height_title">Altura da fila em meia tela</string>
     <string name="queue_height_summary">Define a altura da fila de reprodução para metade da tela.</string>
     <string name="single_tap_on_album_cover_title">Toque único na capa</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
     <string name="long_press_on_album_cover_title">Toque longo na capa</string>
-    <string name="small_image_title">Small image</string>
-    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
+    <string name="small_image_title">Imagem pequena</string>
+    <string name="small_image_summary">Reduz o tamanho da capa em estilos compatíveis.</string>
     <string name="now_playing_corner_radius_title">Cantos arredondados da imagem</string>
     <string name="now_playing_corner_radius_summary">Define o nível de arredondamento dos cantos da capa do álbum.</string>
     <string name="carousel_effect_title">Efeito carrossel</string>
@@ -670,8 +675,10 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música em vez da capa quando disponível.</string>
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
-    <string name="swipe_anywhere_title">Controles por gesto</string>
-    <string name="swipe_anywhere_summary">Deslize para a esquerda em qualquer espaço vazio na tela de reprodução para ir para a próxima música e para a direita para voltar à música anterior.</string>
+    <string name="swipe_anywhere_title">Deslize em qualquer lugar para trocar de música</string>
+    <string name="swipe_anywhere_summary">Deslize para a esquerda ou para a direita em qualquer área vazia da tela de reprodução para trocar de música.</string>
+    <string name="swipe_up_queue_title">Deslize para cima para abrir a fila</string>
+    <string name="swipe_up_queue_summary">Deslize para cima em uma área vazia da tela de reprodução para abrir a fila de reprodução.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
@@ -708,6 +715,10 @@ Ideal para podcasts e gravações.</string>
     <string name="ignore_audio_focus_summary">Sempre reproduzir o áudio em segundo plano, independentemente do que já esteja sendo reproduzido.</string>
     <string name="pause_on_zero_volume_title">Pausar quando o volume for zero</string>
     <string name="pause_on_zero_volume_summary">Pausa a música quando o volume chega a zero e retoma a reprodução quando o volume aumenta novamente. Também funciona fora do aplicativo.</string>
+    <string name="mp3_index_seeking_title">Busca por índice MP3</string>
+    <string name="mp3_index_seeking_summary">Carrega o arquivo MP3 completo na memória para busca, sem depender do cabeçalho Xing.
+Use apenas se a busca falhar em determinados arquivos VBR.
+É necessário reiniciar o app para aplicar a alteração.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Baixar metadados automaticamente</string>
     <string name="ignore_media_store_album_covers_title">Ignorar capas do armazenamento de mídia</string>
@@ -716,9 +727,9 @@ Ideal para podcasts e gravações.</string>
     <string name="use_folder_album_cover_summary">Se o arquivo de áudio não conter uma capa embutida, as imagens podem levar um pouco mais de tempo para carregar.</string>
     <string name="online_artist_images_title">Baixar imagens dos artistas</string>
     <string name="online_artist_images_summary">Isso depende da sua política de download de metadados.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="preferred_image_size_title">Tamanho de imagem preferido</string>
     <string name="online_album_covers_title">Baixar capas de álbuns ausentes</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="online_album_covers_summary">As imagens baixadas não são incorporadas nos arquivos de áudio; ficam disponíveis apenas no aplicativo. Isso depende da sua configuração da política de download de metadados.</string>
     <string name="delete_downloaded_lyrics_title">Excluir letras baixadas</string>
     <string name="delete_downloaded_lyrics_summary">Somente letras baixadas pelo Booming Music. Não afeta letras incorporadas em tags ID3v2 ou arquivos LRC.</string>
     <string name="lyrics_cleared">Letra excluída.</string>
@@ -785,6 +796,8 @@ Ideal para podcasts e gravações.</string>
     <string name="vertical_flip">Inverter verticalmente</string>
     <string name="zoom_out">Diminuir o zoom</string>
     <string name="simple">Simples</string>
+    <string name="stack">Pilha</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Reproduzir na sequência</string>
     <string name="add_tracks_sequentially">Adicionar faixas sequencialmente</string>
     <string name="albums_shuffle">Álbuns aleatórios</string>

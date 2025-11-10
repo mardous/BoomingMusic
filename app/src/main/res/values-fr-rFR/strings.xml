@@ -133,6 +133,10 @@
     <string name="permission_bluetooth_title">Appareils à proximité</string>
     <string name="permission_bluetooth_description">L\'application a besoin de l\'autorisation des appareils à proximité pour vérifier les appareils Bluetooth</string>
     <string name="permission_bluetooth_denied">Autorisation des appareils à proximité refusée.</string>
+    <string name="permission_read_images_title">Lire les images (optionnel)</string>
+    <string name="permission_read_images_summary">Cette permission est nécessaire pour que Booming Music puisse trouver les couvertures d\'albums dans vos dossiers musicaux.
+        Si vous ne prévoyez pas d\'utiliser cette fonctionnalité, vous pouvez choisir de ne pas l\'accorder.</string>
+    <string name="permission_read_images_denied">Vous devez accorder la permission de lire les images depuis l\'appareil.</string>
     <string name="permission_exact_alarms_title">Planifier des alarmes exactes (facultatif)</string>
     <string name="permission_exact_alarms_description">L\'autorisation de programmer des alarmes exactes est requise pour que la minuterie de mise en veille fonctionne correctement</string>
     <string name="permission_ringtone_title">Sonnerie (facultatif)</string>
@@ -587,6 +591,7 @@
     <string name="artist_image_header">Image de l\'artiste</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Contrôles</string>
+    <string name="gestures_header">Gestes</string>
     <string name="headphones_header">Écouteurs</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Focus audio</string>
@@ -651,8 +656,8 @@
     <string name="extra_controls_summary">Ajouter des commandes supplémentaires pour le mini-lecteur</string>
     <string name="adaptive_controls_title">Contrôles adaptatifs</string>
     <string name="adaptive_controls_summary">Les commandes du mini-lecteur changent pour s\'adapter au style de lecteur actuel.</string>
-    <string name="swipe_to_dismiss_title">Glissez pour ignorer</string>
-    <string name="swipe_to_dismiss_summary">Faites glisser le minilecteur vers le bas pour arrêter la lecture et effacer les files d\'attente de lecture.</string>
+    <string name="swipe_to_dismiss_title">Glisser vers le bas pour rejeter</string>
+    <string name="swipe_to_dismiss_summary">Glissez le minilecteur vers le bas pour arrêter la lecture et effacer la file de lecture.</string>
     <string name="circle_button_title">Bouton de lecture circulaire</string>
     <string name="swipe_album_cover_title">Glisser la couverture de l\'album</string>
     <string name="swipe_album_cover_summary">Balayez vers la gauche ou vers la droite sur la couverture de l\'album pour passer d\'un titre à l\'autre.</string>
@@ -661,8 +666,8 @@
     <string name="single_tap_on_album_cover_title">Appuyez une fois sur la couverture</string>
     <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
     <string name="long_press_on_album_cover_title">Appui long sur la couverture</string>
-    <string name="small_image_title">Small image</string>
-    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
+    <string name="small_image_title">Petite image</string>
+    <string name="small_image_summary">Réduis la taille de la couverture dans les styles supportés.</string>
     <string name="now_playing_corner_radius_title">Rayon des coins de l\'image</string>
     <string name="now_playing_corner_radius_summary">Définit l\'aspect arrondi des coins de la couverture de l\'album.</string>
     <string name="carousel_effect_title">Effet carrousel</string>
@@ -671,8 +676,10 @@
     <string name="lyrics_on_album_cover_summary">Afficher les paroles des titres au lieu de la couverture lorsqu\'elles sont disponibles.</string>
     <string name="animate_controls_title">Animer les contrôles</string>
     <string name="animate_controls_summary">Il est joué lors de l\'ouverture du panneau du lecteur.</string>
-    <string name="swipe_anywhere_title">Commandes de balayage</string>
-    <string name="swipe_anywhere_summary">Balayez vers la gauche sur n\'importe quel espace vide de l\'écran en cours de lecture pour passer au titre suivant et balayez vers la droite pour passer au titre précédent.</string>
+    <string name="swipe_anywhere_title">Balayer n\'importe où pour changer de titre</string>
+    <string name="swipe_anywhere_summary">Glissez vers la gauche ou la droite sur une zone vide de l\'écran en cours de lecture pour basculer entre les titres.</string>
+    <string name="swipe_up_queue_title">Glisser vers le haut pour ouvrir la file d\'attente</string>
+    <string name="swipe_up_queue_summary">Glissez vers le haut sur n\'importe quelle zone vide de l\'écran en cours de lecture pour ouvrir la file d\'attente.</string>
     <string name="display_album_name_title">Afficher le nom de l\'album</string>
     <string name="display_extra_info_title">Afficher les informations supplémentaires</string>
     <string name="display_extra_info_summary">Affichez des informations supplémentaires sur le titre, comme le débit binaire, le format, le taux d\'échantillonnage, etc.</string>
@@ -709,6 +716,10 @@
     <string name="ignore_audio_focus_summary">Toujours jouer de l\'audio en arrière-plan, indépendamment de tout autre élément en cours de lecture.</string>
     <string name="pause_on_zero_volume_title">Mettre en pause à zéro volume</string>
     <string name="pause_on_zero_volume_summary">Met en pause la lecture quand le volume diminue a zéro et reprend quand le volume augmente. Marche en dehors de l\'application.</string>
+    <string name="mp3_index_seeking_title">Recherche d\'index MP3</string>
+    <string name="mp3_index_seeking_summary">Charge le fichier MP3 dans la mémoire pour l\'indexer a la place d\'utiliser l\'entêté Xing.
+        À utiliser uniquement si l\'index échoue sur les fichiers VBR.
+        Nécessite le redémarrage de l\'application.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Télécharger automatiquement les métadonnées</string>
     <string name="ignore_media_store_album_covers_title">Ignorer les couvertures du Media Store</string>
@@ -717,9 +728,9 @@
     <string name="use_folder_album_cover_summary">Si le fichier audio ne contient pas de couverture intégrée. Les images peuvent prendre un peu plus de temps pour se charger.</string>
     <string name="online_artist_images_title">Télécharger les images de l\'artiste</string>
     <string name="online_artist_images_summary">Cela dépend de votre politique de téléchargement de métadonnées.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
-    <string name="online_album_covers_title">Télécharger les pochettes d\'album manquantes</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="preferred_image_size_title">Taille d\'image préférée</string>
+    <string name="online_album_covers_title">Télécharger les couvertures d\'album manquantes</string>
+    <string name="online_album_covers_summary">Les images téléchargées ne sont pas intégrées dans les fichiers audio ; elles sont uniquement visibles depuis l\'application. Cela dépend de votre politique de téléchargement des métadonnées.</string>
     <string name="delete_downloaded_lyrics_title">Supprimer les paroles téléchargées</string>
     <string name="delete_downloaded_lyrics_summary">Seules les paroles téléchargées par Booming Music. N\'affecte pas les paroles intégrées dans les tags ID3v2 ou les fichiers LCR.</string>
     <string name="lyrics_cleared">Paroles effacées.</string>
@@ -786,6 +797,8 @@
     <string name="vertical_flip">Retournement vertical</string>
     <string name="zoom_out">Zoom arrière</string>
     <string name="simple">Simple</string>
+    <string name="stack">Pile</string>
+    <string name="parallax">Parallaxe</string>
     <string name="add_after_playing_track">Ajouter après la lecture du titre</string>
     <string name="add_tracks_sequentially">Ajouter des titres séquentiellement</string>
     <string name="albums_shuffle">Lecture aléatoire des albums</string>

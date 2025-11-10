@@ -133,6 +133,10 @@
     <string name="permission_bluetooth_title">Dispositius propers</string>
     <string name="permission_bluetooth_description">Cal permís de dispositius propers per cercar dispositius bluetooth</string>
     <string name="permission_bluetooth_denied">S\'ha denegat el permís dels dispositius propers.</string>
+    <string name="permission_read_images_title">Cerca imatges (opcional)</string>
+    <string name="permission_read_images_summary">Cal donar permís perquè Booming Music trobi portades d\'àlbum a les teves carpetes de música.
+        Si no penses fer servir aquesta funció, no cal donar-lo.</string>
+    <string name="permission_read_images_denied">Cal donar permís per llegir imatges del dispositiu.</string>
     <string name="permission_exact_alarms_title">Programa alarmes exactes (opcional)</string>
     <string name="permission_exact_alarms_description">Cal permís per programar alarmes exactes perquè funcioni correctament el temporitzador d\'apagada</string>
     <string name="permission_ringtone_title">To de trucada (Opcional)</string>
@@ -587,6 +591,7 @@
     <string name="artist_image_header">Imatge de l\'artista</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Controls</string>
+    <string name="gestures_header">Gestos</string>
     <string name="headphones_header">Auriculars</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Focus d\'àudio</string>
@@ -651,18 +656,18 @@
     <string name="extra_controls_summary">Afegeix controls addicionals per al mini reproductor</string>
     <string name="adaptive_controls_title">Controls adaptatius</string>
     <string name="adaptive_controls_summary">Els controls del mini reproductor s\'adapten a l\'estil de reproductor actual.</string>
-    <string name="swipe_to_dismiss_title">Llisca per ometre</string>
-    <string name="swipe_to_dismiss_summary">Llisca cap a baix el mini reproductor per aturar la reproducció i buidar la cua.</string>
+    <string name="swipe_to_dismiss_title">Llisca avall per ometre</string>
+    <string name="swipe_to_dismiss_summary">Llisca avall al mini reproductor per aturar la reproducció i buidar la cua.</string>
     <string name="circle_button_title">Botó de reproducció circular</string>
     <string name="swipe_album_cover_title">Llisca a la portada de l\'àlbum</string>
-    <string name="swipe_album_cover_summary">Llisca a esquerra i dreta a la portada de l\'àlbum per passar entre les cançons.</string>
+    <string name="swipe_album_cover_summary">Llisca a l\'esquerra o la dreta a la portada de l\'àlbum per passar entre les cançons.</string>
     <string name="queue_height_title">Cua de mitja pantalla d\'alçària</string>
     <string name="queue_height_summary">La cua de reproducció ocuparà la meitat de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Un clic a la portada</string>
     <string name="double_tap_on_album_cover_title">Dos clics a la portada</string>
     <string name="long_press_on_album_cover_title">Clic sostingut a la portada</string>
-    <string name="small_image_title">Small image</string>
-    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
+    <string name="small_image_title">Imatge petita</string>
+    <string name="small_image_summary">Redueix la mida de la portada en estils admesos.</string>
     <string name="now_playing_corner_radius_title">Radi dels cantons de la imatge</string>
     <string name="now_playing_corner_radius_summary">Defineix com d\'arrodonits haurien d\'aparèixer els cantons de la imatge de l\'àlbum.</string>
     <string name="carousel_effect_title">Efecte carrusel</string>
@@ -671,8 +676,10 @@
     <string name="lyrics_on_album_cover_summary">Mostra la lletra de la cançó quan està disponible en lloc de la portada.</string>
     <string name="animate_controls_title">Animació dels controls</string>
     <string name="animate_controls_summary">S\'executa en obrir el panell de reproducció.</string>
-    <string name="swipe_anywhere_title">Controls de lliscada</string>
-    <string name="swipe_anywhere_summary">Llisca cap a l\'esquerra en un espai buit a la pantalla d\'ara sona per passar a la següent cançó i llisca a la dreta per anar a l\'anterior.</string>
+    <string name="swipe_anywhere_title">Llisca on sigui per canviar la cançó</string>
+    <string name="swipe_anywhere_summary">Llisca a l\'esquerra o la dreta en qualsevol zona buida de la pantalla ara sona per canviar entre les cançons.</string>
+    <string name="swipe_up_queue_title">Llisca amunt per obrir la cua</string>
+    <string name="swipe_up_queue_summary">Llisca amunt en qualsevol espai buit de la pantalla d\'ara sona per obrir la cua de reproducció.</string>
     <string name="display_album_name_title">Mostra el nom de l\'àlbum</string>
     <string name="display_extra_info_title">Mostra informació addicional</string>
     <string name="display_extra_info_summary">Mostra informació addicional de la cançó, com ara la taxa de bits, el format, el mostratge, etc.</string>
@@ -709,6 +716,10 @@
     <string name="ignore_audio_focus_summary">Reprodueix sempre l\'àudio en segon pla al marge d\'altres reproduccions.</string>
     <string name="pause_on_zero_volume_title">Pausa si es treu el volum</string>
     <string name="pause_on_zero_volume_summary">Pausa la cançó si el volum baixa a zero i reprèn la reproducció quan s\'apugi el volum. Funciona també fora de l\'app.</string>
+    <string name="mp3_index_seeking_title">Cerca d\'MP3 per índex</string>
+    <string name="mp3_index_seeking_summary">Carrega tot el fitxer MP3 a la memòria per cercar en lloc de refiar-se de la capçalera Xing.
+        Feu-lo servir només si la cerca no reïx en alguns fitxers VBR.
+        Cal reiniciar l\'aplicació.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descarrega metadades automàticament</string>
     <string name="ignore_media_store_album_covers_title">Ignora les portades de Media Store</string>
@@ -716,10 +727,10 @@
     <string name="use_folder_album_cover_title">Fes servir imatges de carpetes</string>
     <string name="use_folder_album_cover_summary">Si el fitxer d\'àudio no conté una portada incorporada, les imatges podrien trigar més a carregar.</string>
     <string name="online_artist_images_title">Descarrega imatges dels artistes</string>
-    <string name="online_artist_images_summary">Això depèn de la vostra política de descàrrega de metadades.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_artist_images_summary">Depèn de la vostra política de descàrrega de metadades.</string>
+    <string name="preferred_image_size_title">Mida d\'imatge preferida</string>
     <string name="online_album_covers_title">Descarrega portades d\'àlbum que falten</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="online_album_covers_summary">Les imatges descarregades no s\'integren als fitxers d\'àudio; només són visibles a l\'aplicació. Depèn de la vostra política de metadades.</string>
     <string name="delete_downloaded_lyrics_title">Esborra les lletres descarregades</string>
     <string name="delete_downloaded_lyrics_summary">Només lletres descarregades per Booming Music. No afecta les lletres incorporades en etiquetes ID3v2 o fitxers LRC.</string>
     <string name="lyrics_cleared">Lletres esborrades.</string>
@@ -786,6 +797,8 @@
     <string name="vertical_flip">Inverteix verticalment</string>
     <string name="zoom_out">Allunya</string>
     <string name="simple">Simple</string>
+    <string name="stack">Apila</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Afegeix després de la pista actual</string>
     <string name="add_tracks_sequentially">Afegeix les pistes de manera seqüencial</string>
     <string name="albums_shuffle">Barreja els àlbums</string>
