@@ -32,25 +32,10 @@
 
     <Preference
         app:layout="@layout/list_item_view"
-        app:title="@string/metadata_title"
-        app:summary="@string/metadata_summary"
-        app:icon="@drawable/ic_image_24dp"
-        app:key="metadata"/>
-
-    <Preference
-        app:layout="@layout/list_item_view"
         app:title="@string/library_title"
         app:summary="@string/library_summary"
         app:icon="@drawable/ic_library_music_24dp"
         app:key="library"/>
-
-    <Preference
-        app:layout="@layout/list_item_view"
-        app:title="@string/update_title"
-        app:summary="@string/update_summary"
-        app:icon="@drawable/ic_update_24dp"
-        app:isPreferenceVisible="@bool/enable_app_update"
-        app:key="update"/>
 
     <Preference
         app:layout="@layout/list_item_view"

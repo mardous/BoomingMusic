@@ -308,7 +308,12 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
             binding.similarArtistRecyclerView.apply {
                 isVisible = true
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                adapter = ArtistAdapter(requireActivity(), artists, R.layout.item_artist, this@ArtistDetailFragment)
+                adapter = ArtistAdapter(
+                    activity = requireActivity(),
+                    dataSet = artists,
+                    itemLayoutRes = R.layout.item_artist,
+                    callback = this@ArtistDetailFragment
+                )
                 destroyOnDetach()
             }
         }

@@ -22,8 +22,6 @@ import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.GestureDetector
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorInt
@@ -40,7 +38,6 @@ import androidx.navigation.NavDestination
 import androidx.viewpager.widget.ViewPager
 import com.mardous.booming.R
 import com.mardous.booming.core.model.PaletteColor
-import com.mardous.booming.core.model.player.GestureOnCover
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlayerAlbumCoverBinding
@@ -50,17 +47,20 @@ import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.resources.BOOMING_ANIM_TIME
 import com.mardous.booming.ui.adapters.pager.CustomFragmentStatePagerAdapter
+import com.mardous.booming.ui.component.base.AbsPlayerFragment
 import com.mardous.booming.ui.component.transform.CarouselPagerTransformer
-import com.mardous.booming.ui.component.transform.ParallaxPagerTransformer
+import com.mardous.booming.ui.screen.player.PlayerGesturesController
+import com.mardous.booming.ui.screen.player.PlayerGesturesController.GestureType
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment.ColorReceiver
-import com.mardous.booming.util.LEFT_RIGHT_SWIPING
 import com.mardous.booming.util.LYRICS_ON_COVER
 import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.SWIPE_ON_COVER
 import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
+@SuppressLint("ClickableViewAccessibility")
 class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
     ViewPager.OnPageChangeListener,
     SharedPreferences.OnSharedPreferenceChangeListener,
@@ -71,6 +71,8 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
     private var _binding: FragmentPlayerAlbumCoverBinding? = null
     private val binding get() = _binding!!
     private val viewPager get() = binding.viewPager
+
+    private var gesturesController: PlayerGesturesController? = null
 
     private var navController: NavController? = null
     private var coverLyricsFragment: CoverLyricsFragment? = null
@@ -88,28 +90,9 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
     val isAllowedToLoadLyrics: Boolean
         get() = nps.supportsCoverLyrics
 
-    private var gestureDetector: GestureDetector? = null
     private var callbacks: Callbacks? = null
 
     private var currentPosition = 0
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        gestureDetector =
-            GestureDetector(activity, object : GestureDetector.SimpleOnGestureListener() {
-                override fun onSingleTapConfirmed(event: MotionEvent): Boolean {
-                    return consumeGesture(GestureOnCover.Tap)
-                }
-
-                override fun onDoubleTap(event: MotionEvent): Boolean {
-                    return consumeGesture(GestureOnCover.DoubleTap)
-                }
-
-                override fun onLongPress(e: MotionEvent) {
-                    consumeGesture(GestureOnCover.LongPress)
-                }
-            })
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -121,19 +104,6 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         setupPageTransformer()
         setupEventObserver()
         Preferences.registerOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        @SuppressLint("ClickableViewAccessibility")
-        viewPager.setOnTouchListener { _, event ->
-            val adapter = viewPager.adapter ?: return@setOnTouchListener false
-            if (!isAdded || adapter.count == 0) {
-                false
-            } else {
-                gestureDetector?.onTouchEvent(event) ?: false
-            }
-        }
     }
 
     override fun onDestinationChanged(
@@ -148,10 +118,7 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         }
     }
 
-    private fun setupPageTransformer() {
-        if (nps == NowPlayingScreen.Peek)
-            return
-
+    private fun applyCurrentTransition() {
         if (nps.supportsCarouselEffect && Preferences.isCarouselEffect && !resources.isLandscape) {
             val metrics = resources.displayMetrics
             val ratio = metrics.heightPixels.toFloat() / metrics.widthPixels.toFloat()
@@ -159,15 +126,29 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
             viewPager.clipToPadding = false
             viewPager.setPadding(padding, 0, padding, 0)
             viewPager.pageMargin = 0
+            viewPager.offscreenPageLimit = 1 // Only adjacent pages are visible in carousel
             viewPager.setPageTransformer(false, CarouselPagerTransformer(requireContext()))
-        } else if (nps == NowPlayingScreen.FullCover) {
-            val transformer = ParallaxPagerTransformer(R.id.player_image)
-            transformer.setSpeed(0.3f)
-            viewPager.offscreenPageLimit = 2
-            viewPager.setPageTransformer(false, transformer)
         } else {
-            viewPager.offscreenPageLimit = 2
-            viewPager.setPageTransformer(true, Preferences.coverSwipingEffect)
+            val (transformer, reverse) = Preferences.getNowPlayingTransition(nps)
+                .transformerFactory(R.id.player_image)
+            viewPager.offscreenPageLimit = 2 // Parallax and other transitions need more pages
+            viewPager.setPageTransformer(reverse, transformer)
+        }
+    }
+
+    private fun setupPageTransformer() {
+        val gesturesListener = (parentFragment as? AbsPlayerFragment)
+        if (gesturesListener != null) {
+            gesturesController = PlayerGesturesController(
+                context = viewPager.context,
+                acceptedGestures = setOf(
+                    GestureType.Tap,
+                    GestureType.DoubleTap,
+                    GestureType.LongPress
+                ),
+                listener = gesturesListener
+            )
+            viewPager.setOnTouchListener(gesturesController)
         }
     }
 
@@ -176,20 +157,21 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         viewPager.addOnPageChangeListener(this)
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.queueFlow.collect { queue ->
-                    _binding?.viewPager?.let { pager ->
-                        pager.adapter = AlbumCoverPagerAdapter(parentFragmentManager, queue)
-                        pager.doOnPreDraw {
-                            val itemCount = pager.adapter?.count ?: 0
-                            val lastIndex = (itemCount - 1).coerceAtLeast(0)
-                            val target = playerViewModel.position.current.coerceIn(0, lastIndex)
-                            if (itemCount > 0) {
-                                if (pager.currentItem != target) {
-                                    pager.setCurrentItem(target, false)
-                                }
-                                onPageSelected(target)
+                _binding?.viewPager?.let { pager ->
+                    pager.adapter = AlbumCoverPagerAdapter(parentFragmentManager, queue)
+                    applyCurrentTransition()
+                    pager.doOnPreDraw {
+                        val itemCount = pager.adapter?.count ?: 0
+                        val lastIndex = (itemCount - 1).coerceAtLeast(0)
+                        val target = playerViewModel.position.current.coerceIn(0, lastIndex)
+                        if (itemCount > 0) {
+                            if (pager.currentItem != target) {
+                                pager.setCurrentItem(target, false)
                             }
+                            onPageSelected(target)
                         }
                     }
+                }
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
@@ -221,8 +203,12 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
                 }
             }
 
-            LEFT_RIGHT_SWIPING -> {
-                viewPager.setAllowSwiping(Preferences.allowCoverSwiping)
+            SWIPE_ON_COVER -> {
+                viewPager.setAllowSwiping(Preferences.swipeOnCover)
+            }
+
+            Preferences.getNowPlayingTransitionKey(nps) -> {
+                applyCurrentTransition()
             }
         }
     }
@@ -238,13 +224,15 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
     }
 
     override fun onDestroyView() {
+        gesturesController?.release()
+        gesturesController = null
         viewPager.adapter = null
+        viewPager.setOnTouchListener(null)
         viewPager.removeOnPageChangeListener(this)
         navController?.removeOnDestinationChangedListener(this)
         navController = null
         Preferences.unregisterOnSharedPreferenceChangeListener(this)
         super.onDestroyView()
-        gestureDetector = null
         _binding = null
     }
 
@@ -277,9 +265,11 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         animatorSet.doOnStart {
             coverLyricsFragment?.let { fragment ->
                 activity?.keepScreenOn(playerViewModel.isPlaying)
-                childFragmentManager.beginTransaction()
-                    .setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
-                    .commitAllowingStateLoss()
+                if (isVisible) {
+                    childFragmentManager.beginTransaction()
+                        .setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
+                        .commitAllowingStateLoss()
+                }
             }
             isShowLyricsOnCover = true
             _binding?.coverLyricsFragment?.isVisible = true
@@ -305,9 +295,11 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         animatorSet.doOnEnd {
             coverLyricsFragment?.let { fragment ->
                 activity?.keepScreenOn(false)
-                childFragmentManager.beginTransaction()
-                    .setMaxLifecycle(fragment, Lifecycle.State.STARTED)
-                    .commitAllowingStateLoss()
+                if (isVisible) {
+                    childFragmentManager.beginTransaction()
+                        .setMaxLifecycle(fragment, Lifecycle.State.STARTED)
+                        .commitAllowingStateLoss()
+                }
             }
             if (isPermanent) {
                 isShowLyricsOnCover = false
@@ -335,17 +327,12 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         }
     }
 
-    private fun consumeGesture(gesture: GestureOnCover): Boolean {
-        return callbacks?.onGestureDetected(gesture) ?: false
-    }
-
     internal fun setCallbacks(callbacks: Callbacks?) {
         this.callbacks = callbacks
     }
 
     interface Callbacks {
         fun onColorChanged(color: PaletteColor)
-        fun onGestureDetected(gestureOnCover: GestureOnCover): Boolean
         fun onLyricsVisibilityChange(animatorSet: AnimatorSet, lyricsVisible: Boolean)
     }
 

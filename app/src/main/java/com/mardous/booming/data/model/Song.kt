@@ -88,24 +88,28 @@ open class Song(
         song.genreName
     )
 
-    fun toMediaItem(itemId: String = id.toString()) = MediaItem.Builder()
-        .setUri(uri)
-        .setMediaId(itemId)
-        .setMediaMetadata(
-            MediaMetadata.Builder()
-                .setIsPlayable(true)
-                .setArtworkUri(uri) // IMPORTANT must use Song's uri
-                .setTitle(title)
-                .setAlbumTitle(albumName)
-                .setArtist(artistName)
-                .setAlbumArtist(albumArtistName)
-                .setGenre(genreName)
-                .setTrackNumber(trackNumber)
-                .setReleaseYear(year)
-                .setDurationMs(duration)
-                .build()
-        )
-        .build()
+    fun toMediaItem(itemId: String = id.toString()) = if (this == emptySong) {
+        MediaItem.EMPTY
+    } else {
+        MediaItem.Builder()
+            .setUri(uri)
+            .setMediaId(itemId)
+            .setMediaMetadata(
+                MediaMetadata.Builder()
+                    .setIsPlayable(true)
+                    .setArtworkUri(uri) // IMPORTANT must use Song's uri
+                    .setTitle(title)
+                    .setAlbumTitle(albumName)
+                    .setArtist(artistName)
+                    .setAlbumArtist(albumArtistName)
+                    .setGenre(genreName)
+                    .setTrackNumber(trackNumber)
+                    .setReleaseYear(year)
+                    .setDurationMs(duration.coerceAtLeast(0))
+                    .build()
+            )
+            .build()
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

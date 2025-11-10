@@ -131,12 +131,12 @@ open class SongAdapter(
     override fun getPopupText(view: View, position: Int): CharSequence {
         val song = dataSet.getOrNull(position) ?: return ""
         return when (sortMode?.selectedKey) {
-            SortKey.Album -> song.albumName.asSectionName()
-            SortKey.Artist -> song.displayArtistName().asSectionName()
-            SortKey.AZ -> song.title.asSectionName()
+            SortKey.Album -> song.albumName.asSectionName(sortMode)
+            SortKey.Artist -> song.displayArtistName().asSectionName(sortMode)
+            SortKey.AZ -> song.title.asSectionName(sortMode)
             SortKey.Year -> ""
-            SortKey.FileName -> song.fileName.asSectionName()
-            else -> song.title.asSectionName()
+            SortKey.FileName -> song.fileName.asSectionName(sortMode)
+            else -> song.title.asSectionName(sortMode)
         }
     }
 

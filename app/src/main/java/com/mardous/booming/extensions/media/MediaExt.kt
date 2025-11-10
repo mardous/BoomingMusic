@@ -26,10 +26,12 @@ import android.provider.MediaStore.MediaColumns
 import androidx.core.content.contentValuesOf
 import androidx.core.net.toUri
 import com.mardous.booming.R
+import com.mardous.booming.core.sort.SortMode
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.plurals
 import com.mardous.booming.util.FileUtil
 import java.io.File
+import java.util.Locale
 
 fun createAlbumArtThumbFile(): File =
     File(
@@ -96,17 +98,33 @@ fun Long.asReadableDuration(readableFormat: Boolean = false): String {
     }
 }
 
-fun String?.asSectionName(): String {
+fun String?.asSectionName(sortMode: SortMode? = null): String {
     if (this.isNullOrEmpty())
         return ""
 
-    val pronouns = arrayOf("the ", "an ", "a ")
-    var title = this.trim().lowercase()
-    for (pronoun in pronouns) {
-        if (title.startsWith(pronoun)) {
-            title = title.substring(pronoun.length)
-            break
-        }
-    }
+    val title = normalizeForSorting(sortMode?.ignoreArticles == true)
     return if (title.isEmpty()) "" else title[0].toString().lowercase()
 }
+
+fun String.normalizeForSorting(
+    ignoreArticles: Boolean,
+    language: String = Locale.getDefault().language
+): String {
+    return if (ignoreArticles) {
+        val articles = ARTICLES_BY_LANGUAGE[language] ?: return this
+        val regex = Regex("^(${articles.joinToString("|")})\\s+", RegexOption.IGNORE_CASE)
+        return trim().replace(regex, "")
+    } else {
+        this
+    }
+}
+
+private val ARTICLES_BY_LANGUAGE = mapOf(
+    "en" to listOf("the", "a", "an"),
+    "es" to listOf("el", "la", "los", "las", "un", "una"),
+    "fr" to listOf("le", "la", "les", "un", "une"),
+    "de" to listOf("der", "die", "das", "ein", "eine"),
+    "it" to listOf("il", "lo", "la", "l’", "i", "gli", "un", "una"),
+    "pt" to listOf("o", "a", "os", "as", "um", "uma"),
+    "nl" to listOf("de", "het", "een")
+)

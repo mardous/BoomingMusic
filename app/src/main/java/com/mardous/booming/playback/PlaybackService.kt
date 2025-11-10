@@ -22,7 +22,10 @@ import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.audio.AudioSink
 import androidx.media3.exoplayer.audio.DefaultAudioSink
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.source.ShuffleOrder.UnshuffledShuffleOrder
+import androidx.media3.extractor.DefaultExtractorsFactory
+import androidx.media3.extractor.mp3.Mp3Extractor
 import androidx.media3.session.*
 import androidx.media3.session.MediaLibraryService.MediaLibrarySession
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
@@ -188,7 +191,7 @@ class PlaybackService :
                             context: Context,
                             enableFloatOutput: Boolean,
                             enableAudioTrackPlaybackParams: Boolean
-                        ): AudioSink? {
+                        ): AudioSink {
                             return DefaultAudioSink.Builder(this@PlaybackService)
                                 .setAudioProcessors(arrayOf(replayGainProcessor, balanceProcessor))
                                 .setEnableFloatOutput(enableFloatOutput)
@@ -198,6 +201,17 @@ class PlaybackService :
                     }
                     .setEnableAudioFloatOutput(soundSettings.audioFloatOutput)
                     .setEnableAudioTrackPlaybackParams(true)
+                )
+                .setMediaSourceFactory(
+                    DefaultMediaSourceFactory(
+                        this, DefaultExtractorsFactory()
+                            .setConstantBitrateSeekingEnabled(true)
+                            .also {
+                                if (preferences.getBoolean(MP3_INDEX_SEEKING, false)) {
+                                    it.setMp3ExtractorFlags(Mp3Extractor.FLAG_ENABLE_INDEX_SEEKING)
+                                }
+                            }
+                    )
                 )
                 .setSkipSilenceEnabled(soundSettings.skipSilence)
                 .setHandleAudioBecomingNoisy(true)
@@ -222,7 +236,9 @@ class PlaybackService :
         mediaSession = with(MediaLibrarySession.Builder(this, player, this)) {
             setId(packageName)
             setSessionActivity(createSessionActivityIntent())
-            setBitmapLoader(CoilBitmapLoader(this@PlaybackService, preferences))
+            setBitmapLoader(
+                CacheBitmapLoader(CoilBitmapLoader(serviceScope, this@PlaybackService, preferences))
+            )
             setMediaNotificationProvider(notificationProvider)
             build()
         }
@@ -324,6 +340,7 @@ class PlaybackService :
         availableCommands.add(SessionCommand(Playback.CYCLE_REPEAT, Bundle.EMPTY))
         availableCommands.add(SessionCommand(Playback.TOGGLE_SHUFFLE, Bundle.EMPTY))
         availableCommands.add(SessionCommand(Playback.TOGGLE_FAVORITE, Bundle.EMPTY))
+        availableCommands.add(SessionCommand(Playback.RESTORE_PLAYBACK, Bundle.EMPTY))
         availableCommands.add(SessionCommand(Playback.SET_UNSHUFFLED_ORDER, Bundle.EMPTY))
         availableCommands.add(SessionCommand(Playback.SET_STOP_POSITION, Bundle.EMPTY))
 
@@ -396,6 +413,49 @@ class PlaybackService :
         }
     }
 
+    override fun onGetItem(
+        session: MediaLibraryService.MediaLibrarySession,
+        browser: MediaSession.ControllerInfo,
+        mediaId: String
+    ): ListenableFuture<LibraryResult<MediaItem>> {
+        return serviceScope.future(IO) {
+            val mediaItem = runCatching { libraryProvider.getItem(mediaId) }
+                .getOrDefault(MediaItem.EMPTY)
+            if (mediaItem != MediaItem.EMPTY) {
+                LibraryResult.ofItem(mediaItem, null)
+            } else {
+                LibraryResult.ofError(SessionError.ERROR_IO)
+            }
+        }
+    }
+
+    override fun onSearch(
+        session: MediaLibraryService.MediaLibrarySession,
+        browser: MediaSession.ControllerInfo,
+        query: String,
+        params: LibraryParams?
+    ): ListenableFuture<LibraryResult<Void>> {
+        return serviceScope.future(IO) {
+            runCatching { libraryProvider.search(query) }
+                .onSuccess { session.notifySearchResultChanged(browser, query, it.size, params) }
+
+            LibraryResult.ofVoid()
+        }
+    }
+
+    override fun onGetSearchResult(
+        session: MediaLibraryService.MediaLibrarySession,
+        browser: MediaSession.ControllerInfo,
+        query: String,
+        page: Int,
+        pageSize: Int,
+        params: LibraryParams?
+    ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
+        return Futures.immediateFuture(
+            LibraryResult.ofItemList(libraryProvider.searchResult, params)
+        )
+    }
+
     override fun onAddMediaItems(
         mediaSession: MediaSession,
         controller: MediaSession.ControllerInfo,
@@ -429,9 +489,22 @@ class PlaybackService :
             hasSetUnshuffledOrder = false
         }
         return serviceScope.future(IO) {
-            runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
-                .getOrDefault(emptyList())
-                .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+            if (mediaSession.isAutomotiveController(controller) ||
+                mediaSession.isAutoCompanionController(controller)) {
+                runCatching { libraryProvider.getMediaItemsForAAOSPlayback(mediaItems) }
+                    .getOrNull()
+                    .let {
+                        MediaItemsWithStartPosition(
+                            it?.first ?: emptyList(),
+                            it?.second ?: C.INDEX_UNSET,
+                            startPositionMs
+                        )
+                    }
+            } else {
+                runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
+                    .getOrDefault(emptyList())
+                    .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+            }
         }.also { future ->
             future.addListener({
                 val result = runCatching { future.get() }.getOrNull()
@@ -711,7 +784,7 @@ class PlaybackService :
 
     private fun toggleFavorite() = serviceScope.launch {
         val currentMediaItem = player.currentMediaItem
-        if (currentMediaItem == null) return@launch
+            ?: return@launch
 
         withContext(IO) {
             val song = repository.songByMediaItem(currentMediaItem)

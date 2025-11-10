@@ -22,7 +22,6 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
-import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationBarView.LabelVisibility
 import com.mardous.booming.R
@@ -40,9 +39,9 @@ import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.intRes
 import com.mardous.booming.extensions.utilities.*
-import com.mardous.booming.ui.component.transform.*
 import com.mardous.booming.ui.component.views.TopAppBarLayout
 import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
+import com.mardous.booming.ui.screen.player.PlayerTransition
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.File
@@ -175,14 +174,14 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(SQUIGGLY_SEEK_BAR, false)
 
     val swipeDownToDismiss: Boolean
-        get() = preferences.getBoolean(SWIPE_TO_DISMISS, false)
+        get() = preferences.getBoolean(SWIPE_DOWN_TO_DISMISS, false)
 
     var showLyricsOnCover: Boolean
         get() = preferences.getBoolean(LYRICS_ON_COVER, false)
         set(value) = preferences.edit { putBoolean(LYRICS_ON_COVER, value) }
 
-    val allowCoverSwiping: Boolean
-        get() = preferences.getBoolean(LEFT_RIGHT_SWIPING, true)
+    val swipeOnCover: Boolean
+        get() = preferences.getBoolean(SWIPE_ON_COVER, true)
 
     var isQueueLocked: Boolean
         get() = preferences.getBoolean(LOCKED_QUEUE, false)
@@ -217,19 +216,28 @@ object Preferences : KoinComponent {
         preferences.getInt(NOW_PLAYING_IMAGE_CORNER_RADIUS, context.intRes(R.integer.now_playing_corner_radius))
 
     val isCarouselEffect: Boolean
-        get() = preferences.getBoolean(CAROUSEL_EFFECT, true)
+        get() = preferences.getBoolean(CAROUSEL_EFFECT, false)
 
-    val coverSwipingEffect: ViewPager.PageTransformer?
-        get() = when (preferences.nullString(COVER_SWIPING_EFFECT)) {
-            CoverSwipingEffect.CASCADING -> CascadingPageTransformer()
-            CoverSwipingEffect.DEPTH -> DepthTransformation()
-            CoverSwipingEffect.HINGE -> HingeTransformation()
-            CoverSwipingEffect.HORIZONTAL_FLIP -> HorizontalFlipTransformation()
-            CoverSwipingEffect.VERTICAL_FLIP -> VerticalFlipTransformation()
-            CoverSwipingEffect.STACK -> VerticalStackTransformer()
-            CoverSwipingEffect.ZOOM_OUT -> ZoomOutPageTransformer()
-            else -> null
+    fun getNowPlayingTransitionKey(nps: NowPlayingScreen) =
+        "player_${nps.name.lowercase()}_transition"
+
+    fun getNowPlayingTransition(nps: NowPlayingScreen): PlayerTransition {
+        val defaultTransition = nps.defaultTransition
+        val transitionName = preferences.nullString(getNowPlayingTransitionKey(nps))
+            ?: defaultTransition.name
+        if (nps.supportedTransitions.any { it.name == transitionName }) {
+            return transitionName.toEnum<PlayerTransition>() ?: defaultTransition
         }
+        return defaultTransition
+    }
+
+    fun setNowPlayingTransition(nps: NowPlayingScreen, transition: PlayerTransition) {
+        if (nps.supportedTransitions.contains(transition)) {
+            preferences.edit {
+                putString(getNowPlayingTransitionKey(nps), transition.name)
+            }
+        }
+    }
 
     val coverSingleTapAction: NowPlayingAction
         get() = preferences.enumValue(COVER_SINGLE_TAP_ACTION, NowPlayingAction.TogglePlayState)
@@ -427,9 +435,13 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(SLEEP_TIMER_FINISH_SONG, false)
         set(value) = preferences.edit { putBoolean(SLEEP_TIMER_FINISH_SONG, value) }
 
-    var isSwipeControls: Boolean
-        get() = preferences.getBoolean(SWIPE_CONTROLS, false)
-        set(value) = preferences.edit { putBoolean(SWIPE_CONTROLS, value) }
+    var isSwipeAnywhere: Boolean
+        get() = preferences.getBoolean(SWIPE_ANYWHERE, false)
+        set(value) = preferences.edit { putBoolean(SWIPE_ANYWHERE, value) }
+
+    var isSwipeUpQueue: Boolean
+        get() = preferences.getBoolean(SWIPE_UP_QUEUE, false)
+        set(value) = preferences.edit { putBoolean(SWIPE_UP_QUEUE, value) }
 
     var isShowNextSong: Boolean
         get() = preferences.getBoolean(DISPLAY_NEXT_SONG, true)
@@ -468,26 +480,6 @@ interface AppBarMode {
     companion object {
         const val COMPACT = "compact"
         const val EXPANDED = "expanded"
-    }
-}
-
-interface CoverSwipingEffect {
-    companion object {
-        const val CASCADING = "cascading"
-        const val DEPTH = "depth"
-        const val HINGE = "hinge"
-        const val HORIZONTAL_FLIP = "horizontal_flip"
-        const val VERTICAL_FLIP = "vertical_flip"
-        const val STACK = "stack"
-        const val ZOOM_OUT = "zoom-out"
-    }
-}
-
-interface ReplayGainSourceMode {
-    companion object {
-        const val NONE = "none"
-        const val TRACK = "track"
-        const val ALBUM = "album"
     }
 }
 
@@ -574,13 +566,12 @@ const val OPEN_ON_PLAY = "open_on_play"
 const val ADD_EXTRA_CONTROLS = "add_extra_controls"
 const val ADAPTIVE_CONTROLS = "adaptive_controls"
 const val SQUIGGLY_SEEK_BAR = "squiggly_seek_bar"
-const val SWIPE_TO_DISMISS = "swipe_to_dismiss"
+const val SWIPE_DOWN_TO_DISMISS = "swipe_down_to_dismiss"
 const val LYRICS_ON_COVER = "lyrics_on_cover"
-const val LEFT_RIGHT_SWIPING = "left_right_swiping"
+const val SWIPE_ON_COVER = "swipe_on_cover"
 const val NOW_PLAYING_SMALL_IMAGE = "now_playing_small_image"
 const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
 const val CAROUSEL_EFFECT = "carousel_effect"
-const val COVER_SWIPING_EFFECT = "cover_swiping_effect"
 const val COVER_SINGLE_TAP_ACTION = "cover_single_tap_action"
 const val COVER_DOUBLE_TAP_ACTION = "cover_double_tap_action"
 const val COVER_LONG_PRESS_ACTION = "cover_long_press_action"
@@ -608,6 +599,7 @@ const val RESUME_ON_BLUETOOTH_CONNECT = "resume_on_bluetooth_connect"
 const val PAUSE_ON_BLUETOOTH_DISCONNECT = "pause_on_bluetooth_disconnect"
 const val IGNORE_AUDIO_FOCUS = "ignore_audio_focus"
 const val PAUSE_ON_ZERO_VOLUME = "pause_on_zero_volume"
+const val MP3_INDEX_SEEKING = "mp3_index_seeking"
 const val AUTO_DOWNLOAD_METADATA_POLICY = "auto_download_metadata_policy"
 const val IGNORE_MEDIA_STORE = "ignore_media_store"
 const val USE_FOLDER_ART = "use_folder_art"
@@ -645,7 +637,8 @@ const val LAST_SLEEP_TIMER_VALUE = "last_sleep_timer_value"
 const val NEXT_SLEEP_TIMER_ELAPSED_REALTIME = "next_sleep_timer_elapsed_real_time"
 const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
-const val SWIPE_CONTROLS = "swipe_controls"
+const val SWIPE_ANYWHERE = "swipe_anywhere"
+const val SWIPE_UP_QUEUE = "swipe_up_queue"
 const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"

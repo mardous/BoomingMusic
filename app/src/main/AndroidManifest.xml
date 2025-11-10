@@ -185,8 +185,7 @@
         <service
             android:name=".playback.PlaybackService"
             android:exported="true"
-            android:foregroundServiceType="mediaPlayback"
-            android:label="@string/app_name">
+            android:foregroundServiceType="mediaPlayback">
             <intent-filter>
                 <action android:name="androidx.media3.session.MediaSessionService" />
                 <action android:name="androidx.media3.session.MediaLibraryService" />
@@ -198,8 +197,8 @@
             android:name="androidx.media3.session.MediaButtonReceiver"
             android:exported="true">
             <intent-filter>
-                <action
-                    android:name="android.intent.action.MEDIA_BUTTON"/>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
@@ -251,6 +250,11 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
+        <provider
+            android:name=".coil.CoverProvider"
+            android:authorities="${applicationId}.cover"
+            android:exported="true" />
+
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1"/>
@@ -281,12 +285,11 @@
     </application>
 
     <queries>
-        <package android:name="com.android.musicfx"/>
         <intent>
-            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE"/>
+            <action android:name="android.media.action.DISPLAY_AUDIO_EFFECT_CONTROL_PANEL" />
         </intent>
         <intent>
-            <action android:name="android.media.browse.MediaBrowserService"/>
+            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE"/>
         </intent>
     </queries>
 
