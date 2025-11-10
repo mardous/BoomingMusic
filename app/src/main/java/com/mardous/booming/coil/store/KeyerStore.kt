@@ -30,7 +30,7 @@ class ArtistImageKeyer(
 ) : Keyer<ArtistImage> {
     override fun key(data: ArtistImage, options: Options): String? {
         val signature = customArtistImageManager.getSignature(data)
-        return "artist::id=${data.id}|name=${data.name}|signature=$signature"
+        return "artist::id=${data.id}|name=${data.name}|coverUri=${data.coverUri}|signature=$signature"
     }
 }
 

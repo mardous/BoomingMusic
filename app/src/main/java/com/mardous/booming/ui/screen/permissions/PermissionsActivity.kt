@@ -1,6 +1,7 @@
 package com.mardous.booming.ui.screen.permissions
 
-import android.Manifest
+import android.Manifest.permission.BLUETOOTH_CONNECT
+import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.app.AlarmManager
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -23,8 +24,10 @@ import androidx.core.view.isVisible
 import com.mardous.booming.R
 import com.mardous.booming.databinding.ActivityPermissionBinding
 import com.mardous.booming.extensions.hasS
+import com.mardous.booming.extensions.hasT
 import com.mardous.booming.extensions.resources.primaryColor
 import com.mardous.booming.ui.component.base.AbsBaseActivity
+import com.mardous.booming.ui.component.views.PermissionView
 import com.mardous.booming.ui.screen.MainActivity
 
 /**
@@ -37,39 +40,36 @@ class PermissionsActivity : AbsBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val appName = getString(R.string.app_name_long).trim()
-        val styledAppName = SpannableStringBuilder(getString(R.string.welcome_to_x, appName).trim()).apply {
-            setSpan(StyleSpan(Typeface.BOLD), this.indexOf(appName), length, SPAN_INCLUSIVE_INCLUSIVE)
-            setSpan(ForegroundColorSpan(primaryColor()), this.lastIndexOf(" "), length, SPAN_EXCLUSIVE_EXCLUSIVE)
-        }
         _binding = ActivityPermissionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.welcomeLabel.text = styledAppName
-        binding.storageAccess.setNumber(1)
-        if (hasS()) {
-            binding.nearbyDevices.setNumber(2)
-            binding.scheduleExactAlarms.setNumber(3)
-            binding.ringtone.setNumber(4)
-        } else {
-            binding.scheduleExactAlarms.isVisible = false
-            binding.nearbyDevices.isVisible = false
-            binding.ringtone.setNumber(2)
-        }
+
+        setupAppTitle()
+        setupPermissionsVisibility()
+        setupPermissionsOrder()
+
         binding.storageAccess.setButtonOnClickListener {
             requestPermissions()
+        }
+        if (binding.readImages.isVisible) {
+            binding.readImages.setButtonOnClickListener {
+                if (!binding.readImages.isGranted() && hasT()) {
+                    ActivityCompat.requestPermissions(this,
+                        arrayOf(READ_MEDIA_IMAGES), PERMISSION_REQUEST)
+                }
+            }
         }
         if (binding.nearbyDevices.isVisible) {
             binding.nearbyDevices.setButtonOnClickListener {
                 if (!binding.nearbyDevices.isGranted() && hasS()) {
-                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.BLUETOOTH_CONNECT), BLUETOOTH_PERMISSION_REQUEST)
+                    ActivityCompat.requestPermissions(this,
+                        arrayOf(BLUETOOTH_CONNECT), BLUETOOTH_PERMISSION_REQUEST)
                 }
             }
         }
         if (binding.scheduleExactAlarms.isVisible) {
             binding.scheduleExactAlarms.setButtonOnClickListener {
                 if (!binding.scheduleExactAlarms.isGranted() && hasS()) {
-                    val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
-                    startActivity(intent)
+                    startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
                 }
             }
         }
@@ -107,6 +107,31 @@ class PermissionsActivity : AbsBaseActivity() {
         _binding = null
     }
 
+    private fun setupAppTitle() {
+        val appName = getString(R.string.app_name_long).trim()
+        val styledAppName = SpannableStringBuilder(getString(R.string.welcome_to_x, appName).trim()).apply {
+            setSpan(StyleSpan(Typeface.BOLD), this.indexOf(appName), length, SPAN_INCLUSIVE_INCLUSIVE)
+            setSpan(ForegroundColorSpan(primaryColor()), this.lastIndexOf(" "), length, SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+        binding.welcomeLabel.text = styledAppName
+    }
+
+    private fun setupPermissionsVisibility() {
+        binding.readImages.isVisible = hasT()
+        binding.nearbyDevices.isVisible = hasS()
+        binding.scheduleExactAlarms.isVisible = hasS()
+    }
+
+    private fun setupPermissionsOrder() {
+        var order = 0
+        for (i in 0 until binding.permissionsColumn.childCount) {
+            val child = binding.permissionsColumn.getChildAt(i)
+            if (child is PermissionView && child.isVisible) {
+                child.setNumber(++order)
+            }
+        }
+    }
+
     private fun startSettingsActivity(intent: Intent) {
         try {
             startActivity(intent)
@@ -115,22 +140,25 @@ class PermissionsActivity : AbsBaseActivity() {
     }
 
     private fun checkPermissions() {
-        binding.storageAccess.setGranted(hasExternalStoragePermission())
+        binding.storageAccess.setGranted(hasPermissions())
         binding.ringtone.setGranted(canWriteSettings())
         if (hasS()) {
             binding.nearbyDevices.setGranted(hasNearbyDevicesPermission())
             binding.scheduleExactAlarms.setGranted(canScheduleExactAlarms())
         }
+        if (hasT()) {
+            binding.readImages.setGranted(hasReadImagesPermission())
+        }
         binding.finish.isEnabled = binding.storageAccess.isGranted() && (!hasS() || binding.nearbyDevices.isGranted())
-    }
-
-    private fun hasExternalStoragePermission(): Boolean {
-        return hasPermissions()
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
     private fun hasNearbyDevicesPermission(): Boolean =
-        checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED
+        checkSelfPermission(BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun hasReadImagesPermission(): Boolean =
+        checkSelfPermission(READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED
 
     @RequiresApi(Build.VERSION_CODES.S)
     private fun canScheduleExactAlarms(): Boolean =

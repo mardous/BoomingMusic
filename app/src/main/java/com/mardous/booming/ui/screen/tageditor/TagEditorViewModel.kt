@@ -114,8 +114,7 @@ class TagEditorViewModel(
     fun setArtistImage(uri: Uri) = liveData(Dispatchers.IO) {
         val artist = fetchArtist()
         if (artist != Artist.empty) {
-            customArtistImageManager.setCustomImage(artist, uri)
-            emit(true)
+            emit(customArtistImageManager.setCustomImage(artist, uri))
         } else {
             emit(false)
         }
@@ -124,8 +123,7 @@ class TagEditorViewModel(
     fun resetArtistImage() = liveData(Dispatchers.IO) {
         val artist = fetchArtist()
         if (artist != Artist.empty) {
-            customArtistImageManager.removeCustomImage(artist)
-            emit(true)
+            emit(customArtistImageManager.removeCustomImage(artist))
         } else {
             emit(false)
         }

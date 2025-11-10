@@ -192,25 +192,25 @@ class HomeFragment : AbsMainActivityFragment(R.layout.fragment_home),
         return when (suggestion.type) {
             ContentType.TopArtists,
             ContentType.RecentArtists -> ArtistAdapter(
-                mainActivity,
-                (suggestion.items as List<Artist>),
-                R.layout.item_artist,
-                this
+                activity = mainActivity,
+                dataSet = (suggestion.items as List<Artist>),
+                itemLayoutRes = R.layout.item_artist,
+                callback = this
             )
 
             ContentType.TopAlbums,
             ContentType.RecentAlbums -> AlbumAdapter(
-                mainActivity,
-                (suggestion.items as List<Album>),
-                R.layout.item_album_gradient,
+                activity = mainActivity,
+                dataSet = (suggestion.items as List<Album>),
+                itemLayoutRes = R.layout.item_album_gradient,
                 callback = this
             )
 
             ContentType.Favorites,
             ContentType.NotRecentlyPlayed -> SongAdapter(
-                mainActivity,
-                (suggestion.items as List<Song>),
-                R.layout.item_image,
+                activity = mainActivity,
+                dataSet = (suggestion.items as List<Song>),
+                itemLayoutRes = R.layout.item_image,
                 callback = this
             )
 

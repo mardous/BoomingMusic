@@ -24,7 +24,6 @@ import android.media.AudioManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.view.KeyEvent
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.requestPermissions
@@ -74,7 +73,6 @@ abstract class AbsBaseActivity : AbsThemeActivity() {
     protected open fun getPermissionsToRequest(): Array<String> {
         return mutableSetOf<String>().apply {
             if (hasT()) {
-                add(READ_MEDIA_IMAGES)
                 add(READ_MEDIA_AUDIO)
                 add(POST_NOTIFICATIONS)
             } else {
@@ -100,7 +98,9 @@ abstract class AbsBaseActivity : AbsThemeActivity() {
         if (requestCode == PERMISSION_REQUEST) {
             for (grantResult in grantResults) {
                 if (grantResult != PackageManager.PERMISSION_GRANTED) {
-                    if (shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE) ||
+                    if (shouldShowRequestPermissionRationale(this, READ_MEDIA_AUDIO) ||
+                        shouldShowRequestPermissionRationale(this, READ_MEDIA_IMAGES) ||
+                        shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE) ||
                         shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
                         // User has deny from permission dialog
                         Snackbar.make(snackBarContainer, getPermissionDeniedMessage(), Snackbar.LENGTH_SHORT)
@@ -110,11 +110,11 @@ abstract class AbsBaseActivity : AbsThemeActivity() {
                         // User has deny permission and checked never show permission dialog so you can redirect to Application settings page
                         Snackbar.make(snackBarContainer, getPermissionDeniedMessage(), Snackbar.LENGTH_INDEFINITE)
                             .setAction(R.string.settings_title) {
-                                val intent = Intent().apply {
-                                    action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                                    data = Uri.fromParts("package", this@AbsBaseActivity.packageName, null)
-                                }
-                                startActivity(intent)
+                                startActivity(
+                                    Intent()
+                                        .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                        .setData(Uri.fromParts("package", packageName, null))
+                                )
                             }
                             .show()
                     }
@@ -138,16 +138,6 @@ abstract class AbsBaseActivity : AbsThemeActivity() {
             }
         }
     }
-
-    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-        if (event.keyCode == KeyEvent.KEYCODE_MENU && event.action == KeyEvent.ACTION_UP) {
-            showOverflowMenu()
-            return true
-        }
-        return super.dispatchKeyEvent(event)
-    }
-
-    protected open fun showOverflowMenu() {}
 
     protected open val snackBarContainer: View
         get() = rootView

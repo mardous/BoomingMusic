@@ -655,11 +655,13 @@ Ideal para podcasts e gravações.</string>
     <string name="circle_button_title">Botão de reprodução redondo</string>
     <string name="swipe_album_cover_title">Deslizar capa do álbum</string>
     <string name="swipe_album_cover_summary">Deslize a capa do álbum para a esquerda ou direita para pular entre as músicas.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
+    <string name="queue_height_title">Altura da fila em meia tela</string>
+    <string name="queue_height_summary">Define a altura da fila de reprodução para metade da tela.</string>
     <string name="single_tap_on_album_cover_title">Toque único na capa</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
     <string name="long_press_on_album_cover_title">Toque longo na capa</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Cantos arredondados da imagem</string>
     <string name="now_playing_corner_radius_summary">Define o nível de arredondamento dos cantos da capa do álbum.</string>
     <string name="carousel_effect_title">Efeito carrossel</string>
@@ -668,8 +670,8 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_on_album_cover_summary">Mostrar letra da música em vez da capa quando disponível.</string>
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
-    <string name="swipe_controls_title">Controles por gesto</string>
-    <string name="swipe_controls_summary">Deslize para a esquerda em qualquer espaço vazio na tela de reprodução para ir para a próxima música e para a direita para voltar à música anterior.</string>
+    <string name="swipe_anywhere_title">Controles por gesto</string>
+    <string name="swipe_anywhere_summary">Deslize para a esquerda em qualquer espaço vazio na tela de reprodução para ir para a próxima música e para a direita para voltar à música anterior.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
     <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
@@ -704,8 +706,8 @@ Ideal para podcasts e gravações.</string>
     <string name="pause_on_bluetooth_disconnect_summary">Pausa a reprodução quando o fone de ouvido Bluetooth A2DP é desconectado. Recomendado.</string>
     <string name="ignore_audio_focus_title">Ignorar foco de áudio</string>
     <string name="ignore_audio_focus_summary">Sempre reproduzir o áudio em segundo plano, independentemente do que já esteja sendo reproduzido.</string>
-    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
-    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
+    <string name="pause_on_zero_volume_title">Pausar quando o volume for zero</string>
+    <string name="pause_on_zero_volume_summary">Pausa a música quando o volume chega a zero e retoma a reprodução quando o volume aumenta novamente. Também funciona fora do aplicativo.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Baixar metadados automaticamente</string>
     <string name="ignore_media_store_album_covers_title">Ignorar capas do armazenamento de mídia</string>
@@ -714,7 +716,9 @@ Ideal para podcasts e gravações.</string>
     <string name="use_folder_album_cover_summary">Se o arquivo de áudio não conter uma capa embutida, as imagens podem levar um pouco mais de tempo para carregar.</string>
     <string name="online_artist_images_title">Baixar imagens dos artistas</string>
     <string name="online_artist_images_summary">Isso depende da sua política de download de metadados.</string>
-    <string name="preferred_artist_image_size_title">Preferência do tamanho da imagem</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Baixar capas de álbuns ausentes</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Excluir letras baixadas</string>
     <string name="delete_downloaded_lyrics_summary">Somente letras baixadas pelo Booming Music. Não afeta letras incorporadas em tags ID3v2 ou arquivos LRC.</string>
     <string name="lyrics_cleared">Letra excluída.</string>
@@ -749,8 +753,8 @@ Ideal para podcasts e gravações.</string>
     <string name="stop_when_closed_from_recents_title">Parar ao ser fechado a partir dos apps recentes</string>
     <string name="stop_when_closed_from_recents_summary">A reprodução é interrompida se o aplicativo for fechado a partir dos apps recentes.</string>
     <string name="stop_when_closed_from_recents_note">Nota: Alguns dispositivos com gerenciamento agressivo de memória ou bateria podem ignorar esta configuração e sempre encerrar o aplicativo ao removê-lo da lista de recentes.</string>
-    <string name="rotation_lock_title">Rotation lock</string>
-    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
+    <string name="rotation_lock_title">Travar rotação da tela</string>
+    <string name="rotation_lock_summary">Trava a orientação do dispositivo. Útil em casos em que a música para ao girar o aparelho, devido a certas políticas do fabricante.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Claro</string>
     <string name="dark_theme_name">Escuro</string>
@@ -781,7 +785,6 @@ Ideal para podcasts e gravações.</string>
     <string name="vertical_flip">Inverter verticalmente</string>
     <string name="zoom_out">Diminuir o zoom</string>
     <string name="simple">Simples</string>
-    <string name="stack">Pilha</string>
     <string name="add_after_playing_track">Reproduzir na sequência</string>
     <string name="add_tracks_sequentially">Adicionar faixas sequencialmente</string>
     <string name="albums_shuffle">Álbuns aleatórios</string>

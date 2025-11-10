@@ -19,12 +19,6 @@ package com.mardous.booming.playback.equalizer
 import android.media.audiofx.*
 import android.util.Log
 
-/**
- * Helper class representing the full complement of effects attached to one
- * audio session.
- *
- * @author alankila
- */
 @Suppress("DEPRECATION")
 class EffectSet(sessionId: Int) {
 
@@ -32,46 +26,46 @@ class EffectSet(sessionId: Int) {
     private var eqNumBands: Short = -1
 
     val equalizer: Equalizer? =
-        createEffect("Equalizer") { Equalizer(1, sessionId) }
+        createEffect("Equalizer") { Equalizer(0, sessionId) }
 
     private val bassBoost: BassBoost? =
-        createEffect("BassBoost") { BassBoost(1, sessionId) }
+        createEffect("BassBoost") { BassBoost(0, sessionId) }
 
     private val virtualizer: Virtualizer? =
-        createEffect("Virtualizer") { Virtualizer(1, sessionId) }
+        createEffect("Virtualizer") { Virtualizer(0, sessionId) }
 
     private val loudnessEnhancer: LoudnessEnhancer? =
         createEffect("LoudnessEnhancer") { LoudnessEnhancer(sessionId) }
 
     private val presetReverb: PresetReverb? = null
 
-    private inline fun <T> createEffect(tag: String, block: () -> T): T? {
-        return try {
-            block()
-        } catch (t: Throwable) {
-            Log.e("EffectSet", "$tag init failed", t)
-            null
-        }
+    private inline fun <T> createEffect(tag: String, block: () -> T): T? = try {
+        block()
+    } catch (t: Throwable) {
+        Log.e("EffectSet", "$tag init failed", t)
+        null
     }
 
     fun enableEqualizer(enable: Boolean) {
         equalizer?.let {
             if (enable != it.enabled) {
-                if (!enable) {
-                    for (i in 0 until getNumEqualizerBands()) {
-                        it.setBandLevel(i.toShort(), 0)
-                    }
-                }
+                if (!enable) resetEqualizer(it)
                 it.enabled = enable
             }
         }
     }
 
+    private fun resetEqualizer(eq: Equalizer) {
+        for (i in 0 until getNumEqualizerBands()) {
+            eq.setBandLevel(i.toShort(), 0)
+        }
+    }
+
     fun setEqualizerLevels(levels: ShortArray) {
-        equalizer?.takeIf { it.enabled }?.let {
+        equalizer?.takeIf { it.enabled }?.let { eq ->
             levels.forEachIndexed { i, level ->
-                if (it.getBandLevel(i.toShort()) != level) {
-                    it.setBandLevel(i.toShort(), level)
+                if (eq.getBandLevel(i.toShort()) != level) {
+                    eq.setBandLevel(i.toShort(), level)
                 }
             }
         }
@@ -80,8 +74,7 @@ class EffectSet(sessionId: Int) {
     fun getNumEqualizerBands(): Short {
         if (equalizer == null) return 0
         if (eqNumBands < 0) {
-            eqNumBands = equalizer.numberOfBands
-            if (eqNumBands > 6) eqNumBands = 6
+            eqNumBands = equalizer.numberOfBands.coerceAtMost(6)
         }
         return eqNumBands
     }
@@ -97,9 +90,7 @@ class EffectSet(sessionId: Int) {
     fun enableBassBoost(enable: Boolean) {
         bassBoost?.let {
             if (enable != it.enabled) {
-                if (!enable) {
-                    it.setStrength(0)
-                }
+                if (!enable) it.setStrength(0)
                 it.enabled = enable
             }
         }
@@ -113,9 +104,7 @@ class EffectSet(sessionId: Int) {
     fun enableVirtualizer(enable: Boolean) {
         virtualizer?.let {
             if (enable != it.enabled) {
-                if (!enable) {
-                    it.setStrength(0)
-                }
+                if (!enable) it.setStrength(0)
                 it.enabled = enable
             }
         }
@@ -129,9 +118,7 @@ class EffectSet(sessionId: Int) {
     fun enablePresetReverb(enable: Boolean) {
         presetReverb?.let {
             if (enable != it.enabled) {
-                if (!enable) {
-                    it.preset = PresetReverb.PRESET_NONE
-                }
+                if (!enable) it.preset = PresetReverb.PRESET_NONE
                 it.enabled = enable
             }
         }
@@ -145,9 +132,7 @@ class EffectSet(sessionId: Int) {
     fun enableLoudness(enable: Boolean) {
         loudnessEnhancer?.let {
             if (enable != it.enabled) {
-                if (!enable) {
-                    it.setTargetGain(0)
-                }
+                if (!enable) it.setTargetGain(0)
                 it.enabled = enable
             }
         }
@@ -166,4 +151,3 @@ class EffectSet(sessionId: Int) {
         loudnessEnhancer?.release()
     }
 }
-

@@ -18,7 +18,7 @@
         app:layout="@layout/preference_category_title">
 
         <ListPreference
-            app:icon="@drawable/ic_queue_next_24dp"
+            app:icon="@drawable/ic_queue_play_next_24dp"
             app:title="@string/queue_next_mode_title"
             app:entries="@array/queue_next_mode_entries"
             app:entryValues="@array/queue_next_mode_values"
@@ -174,6 +174,29 @@
             app:layout="@layout/list_item_view"
             app:widgetLayout="@layout/preference_switch"
             app:key="pause_on_zero_volume"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/mp3_index_seeking_title"
+            app:summary="@string/mp3_index_seeking_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="mp3_index_seeking"/>
+
+        <SwitchPreferenceCompat
+            app:title="@string/stop_when_closed_from_recents_title"
+            app:summary="@string/stop_when_closed_from_recents_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="stop_when_closed_from_recents"/>
+
+        <Preference
+            app:summary="@string/stop_when_closed_from_recents_note"
+            app:persistent="false"
+            app:selectable="false"
+            app:layout="@layout/list_item_view"/>
 
     </PreferenceCategory>
 

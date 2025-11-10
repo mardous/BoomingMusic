@@ -85,7 +85,7 @@ class ArtistListFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, 
         val itemLayoutRes = itemLayoutRes
         notifyLayoutResChanged(itemLayoutRes)
         val dataSet: List<Artist> = if (adapter == null) ArrayList() else adapter!!.dataSet
-        return ArtistAdapter(mainActivity, dataSet, itemLayoutRes, this)
+        return ArtistAdapter(mainActivity, dataSet, itemLayoutRes, ArtistSortMode.AllArtists, this)
     }
 
     override fun artistClick(artist: Artist, sharedElements: Array<Pair<View, String>>?) {

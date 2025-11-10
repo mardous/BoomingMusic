@@ -2,12 +2,18 @@
 <resources>
     <style name="Theme.Booming.DynamicColors.Black" parent="@style/Theme.Booming.DynamicColors">
         <item name="colorSurface">@android:color/black</item>
+        <item name="colorSurfaceContainer">@color/surfaceContainerBlack</item>
+        <item name="colorSurfaceContainerLow">@color/surfaceContainerLowBlack</item>
+        <item name="colorSurfaceContainerLowest">@color/surfaceContainerLowestBlack</item>
     </style>
 
     <style name="ThemeOverlay.Booming.Adaptive" parent="ThemeOverlay.Material3.Dark"/>
 
     <style name="BlackThemeOverlay">
         <item name="colorSurface">@android:color/black</item>
+        <item name="colorSurfaceContainer">@color/surfaceContainerBlack</item>
+        <item name="colorSurfaceContainerLow">@color/surfaceContainerLowBlack</item>
+        <item name="colorSurfaceContainerLowest">@color/surfaceContainerLowestBlack</item>
     </style>
 
 </resources>

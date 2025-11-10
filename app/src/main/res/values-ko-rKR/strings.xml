@@ -653,6 +653,8 @@
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Double tap on cover</string>
     <string name="long_press_on_album_cover_title">Long press on cover</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
@@ -661,8 +663,8 @@
     <string name="lyrics_on_album_cover_summary">Show song lyrics instead of cover when them are available.</string>
     <string name="animate_controls_title">Animate controls</string>
     <string name="animate_controls_summary">It\'s played when opening the player panel.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe controls</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Display album name</string>
     <string name="display_extra_info_title">Display extra info</string>
     <string name="display_extra_info_summary">Display extra info about the song, like bitrate, format, sampling rate, etc.</string>
@@ -707,7 +709,9 @@
     <string name="use_folder_album_cover_summary">If the audio file does not contain an embedded cover. Images might take a bit more of time to load.</string>
     <string name="online_artist_images_title">Download artist images</string>
     <string name="online_artist_images_summary">This depends on your metadata download policy.</string>
-    <string name="preferred_artist_image_size_title">Preferred image size</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Delete downloaded lyrics</string>
     <string name="delete_downloaded_lyrics_summary">Only lyrics downloaded by Booming Music. Does not affect lyrics embedded in ID3v2 tags or LRC files.</string>
     <string name="lyrics_cleared">Lyrics cleared.</string>
@@ -775,7 +779,6 @@
     <string name="vertical_flip">Vertical Flip</string>
     <string name="zoom_out">Zoom Out</string>
     <string name="simple">Simple</string>
-    <string name="stack">Stack</string>
     <string name="add_after_playing_track">Add after playing track</string>
     <string name="add_tracks_sequentially">Add tracks sequentially</string>
     <string name="albums_shuffle">Albums shuffle</string>

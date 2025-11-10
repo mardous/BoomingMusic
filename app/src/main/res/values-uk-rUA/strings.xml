@@ -677,6 +677,8 @@
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Подвійне натискання на обкладинку</string>
     <string name="long_press_on_album_cover_title">Тривале натискання на обкладинку</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Ефект каруселі</string>
@@ -685,8 +687,8 @@
     <string name="lyrics_on_album_cover_summary">Показувати текст пісні замість обкладинки, якщо він доступний.</string>
     <string name="animate_controls_title">Анімувати елементи керування</string>
     <string name="animate_controls_summary">Анімація під час відкриття панелі плеєра.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe controls</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Відображати назву альбому</string>
     <string name="display_extra_info_title">Показувати дод. інформацію</string>
     <string name="display_extra_info_summary">Показувати додаткову інформацію про пісню, таку як бітрейт, формат, частота дискретизації тощо.</string>
@@ -731,7 +733,9 @@
     <string name="use_folder_album_cover_summary">Якщо аудіофайл не містить вбудованої обкладинки. Завантаження зображень може зайняти трохи більше часу.</string>
     <string name="online_artist_images_title">Завантажувати зображення виконавців</string>
     <string name="online_artist_images_summary">Це залежить від вашої політики завантаження метаданих.</string>
-    <string name="preferred_artist_image_size_title">Бажаний розмір зображення</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Видалити завантажені тексти пісень</string>
     <string name="delete_downloaded_lyrics_summary">Лише тексти пісень, завантажені Booming Music. Не впливає на тексти, вбудовані в теги ID3v2 або файли LRC.</string>
     <string name="lyrics_cleared">Текст пісні очищено.</string>
@@ -799,7 +803,6 @@
     <string name="vertical_flip">Вертикальне віддзеркалення</string>
     <string name="zoom_out">Зменшити</string>
     <string name="simple">Простий</string>
-    <string name="stack">Стек</string>
     <string name="add_after_playing_track">Додати після поточного треку</string>
     <string name="add_tracks_sequentially">Додати треки послідовно</string>
     <string name="albums_shuffle">Albums shuffle</string>

@@ -13,6 +13,7 @@ class BalanceAudioProcessor(
     private var rightGain: Float = 1.0f
 ) : BaseAudioProcessor() {
 
+    @Synchronized
     fun setBalance(left: Float, right: Float) {
         leftGain = left
         rightGain = right

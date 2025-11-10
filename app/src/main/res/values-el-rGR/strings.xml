@@ -661,6 +661,8 @@
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Διπλό χτύπημα στο εξώφυλλο</string>
     <string name="long_press_on_album_cover_title">Παρατεταμένο πάτημα στο εξώφυλλο</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
@@ -669,8 +671,8 @@
     <string name="lyrics_on_album_cover_summary">Εμφάνιση στίχων τραγουδιών αντί για εξώφυλλο όταν είναι διαθέσιμοι.</string>
     <string name="animate_controls_title">Εφέ κίνησης ελέγχων</string>
     <string name="animate_controls_summary">Παίζεται όταν ανοίγετε τον πίνακα του παίκτη.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe controls</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Εμφάνιση ονόματος άλμπουμ</string>
     <string name="display_extra_info_title">Εμφάνιση επιπλέον πληροφοριών</string>
     <string name="display_extra_info_summary">Εμφάνιση επιπλέον πληροφοριών σχετικά με το τραγούδι, όπως bitate, μορφή, ποσοστό δειγματοληψίας, κλπ.</string>
@@ -715,7 +717,9 @@
     <string name="use_folder_album_cover_summary">Αν το αρχείο ήχου δεν περιέχει ενσωματωμένο εξώφυλλο. Οι εικόνες μπορεί να πάρουν λίγο περισσότερο χρόνο για να φορτώσουν.</string>
     <string name="online_artist_images_title">Λήψη εικόνων καλλιτέχνη</string>
     <string name="online_artist_images_summary">Αυτό εξαρτάται από την πολιτική μεταδεδομένων λήψης.</string>
-    <string name="preferred_artist_image_size_title">Προτιμώμενο μέγεθος εικόνας</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Διαγραφή ληφθέντων στίχων</string>
     <string name="delete_downloaded_lyrics_summary">Μόνο στίχοι που λήφθηκαν από το Booming Music. Δεν επηρεάζει τους στίχους που είναι ενσωματωμένοι σε ετικέτες ID3v2 ή αρχεία LRC.</string>
     <string name="lyrics_cleared">Οι στίχοι καθαρίστηκαν.</string>
@@ -783,7 +787,6 @@
     <string name="vertical_flip">Κατακόρυφη Αναστροφή</string>
     <string name="zoom_out">Σμίκρυνση</string>
     <string name="simple">Απλό</string>
-    <string name="stack">Στοίβα</string>
     <string name="add_after_playing_track">Προσθήκη μετά το κομμάτι αναπαραγωγής</string>
     <string name="add_tracks_sequentially">Προσθήκη κομματιών διαδοχικά</string>
     <string name="albums_shuffle">Albums shuffle</string>

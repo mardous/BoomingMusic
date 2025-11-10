@@ -672,11 +672,13 @@
     <string name="circle_button_title">כפתור ניגון עגול</string>
     <string name="swipe_album_cover_title">החלק את עטיפת האלבום</string>
     <string name="swipe_album_cover_summary">החלק שמאלה וימינה על עטיפת האלבום כדי לדלג בין שירים.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
+    <string name="queue_height_title">גובה תור חצי-מסך</string>
+    <string name="queue_height_summary">קבע את גובה רשימת ההשמעה לחצי מגובה המסך.</string>
     <string name="single_tap_on_album_cover_title">הקשה אחת על העטיפה</string>
     <string name="double_tap_on_album_cover_title">הקשה כפולה על העטיפה</string>
     <string name="long_press_on_album_cover_title">לחיצה ארוכה על העטיפה</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">רדיוס פינות התמונה</string>
     <string name="now_playing_corner_radius_summary">מגדיר עד כמה פינות עטיפת האלבום יהיו מעוגלות.</string>
     <string name="carousel_effect_title">אפקט קרוסלה</string>
@@ -685,8 +687,8 @@
     <string name="lyrics_on_album_cover_summary">הצג את מילות השיר במקום העטיפה כאשר הן זמינות.</string>
     <string name="animate_controls_title">אנימציית בקרות</string>
     <string name="animate_controls_summary">הוא מתנגן כאשר פותחים את לוח הניגון.</string>
-    <string name="swipe_controls_title">בקרות החלקה</string>
-    <string name="swipe_controls_summary">החלק שמאלה על כל שטח ריק במסך מנגן כעת כדי לעבור לשיר הבא, והחלק ימינה כדי לעבור לשיר הקודם.</string>
+    <string name="swipe_anywhere_title">בקרות החלקה</string>
+    <string name="swipe_anywhere_summary">החלק שמאלה על כל שטח ריק במסך מנגן כעת כדי לעבור לשיר הבא, והחלק ימינה כדי לעבור לשיר הקודם.</string>
     <string name="display_album_name_title">הצג את שם האלבום</string>
     <string name="display_extra_info_title">הצג מידע נוסף</string>
     <string name="display_extra_info_summary">הצג מידע נוסף על השיר, כגון קצב סיביות, פורמט, קצב דגימה ועוד.</string>
@@ -721,8 +723,9 @@
     <string name="pause_on_bluetooth_disconnect_summary">מפסיק את הנגינה כאשר אוזניית בלוטות\' ‏A2DP מתנתקת. מומלץ.</string>
     <string name="ignore_audio_focus_title">התעלם ממיקוד שמע</string>
     <string name="ignore_audio_focus_summary">השמיע תמיד אודיו ברקע, ללא קשר למה שמתנגן במקום אחר.</string>
-    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
-    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
+    <string name="pause_on_zero_volume_title">השהה כשעוצמת הקול היא אפס</string>
+    <string name="pause_on_zero_volume_summary">עוצר את השיר כשהעוצמה יורדת לאפס, וממשיך לנגן כשהעוצמה עולה שוב.
+הפונקציה פועלת גם מחוץ לאפליקציה.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
     <string name="ignore_media_store_album_covers_title">התעלם מעטיפות ממדיה סטור</string>
@@ -731,7 +734,9 @@
     <string name="use_folder_album_cover_summary">אם קובץ השמע אינו מכיל עטיפה משובצת, התמונות עשויות להיטען מעט לאט יותר.</string>
     <string name="online_artist_images_title">הורד תמונות אמן</string>
     <string name="online_artist_images_summary">זה תלוי במדיניות הורדת המטא־דאטה שלך.</string>
-    <string name="preferred_artist_image_size_title">גודל תמונה מועדף</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">הורד עטיפות אלבומים חסרות</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">מחק מילים שהורדו</string>
     <string name="delete_downloaded_lyrics_summary">רק מילות שיר שהורדו על ידי Booming Music. אינו משפיע על מילות שיר המשובצות בתגי ID3v2 או בקבצי LRC.</string>
     <string name="lyrics_cleared">מילות השיר נוקו.</string>
@@ -766,8 +771,8 @@
     <string name="stop_when_closed_from_recents_title">עצור כאשר נסגר מהאחרונים</string>
     <string name="stop_when_closed_from_recents_summary">הניגון ייעצר אם האפליקציה תיסגר מרשימת האחרונים.</string>
     <string name="stop_when_closed_from_recents_note">הערה: במכשירים מסוימים עם ניהול זיכרון או סוללה אגרסיבי, ייתכן שהגדרה זו תתעלם והאפליקציה תיעצר תמיד כאשר מסירים אותה מהרשימה האחרונה.</string>
-    <string name="rotation_lock_title">Rotation lock</string>
-    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
+    <string name="rotation_lock_title">נעילת סיבוב</string>
+    <string name="rotation_lock_summary">נעל את כיוון המסך של המכשיר. שימושי כאשר המוסיקה נעצרת בעת סיבוב המכשיר בגלל מדיניות של יצרנים מסוימים.</string>
     <!-- Preference values -->
     <string name="light_theme_name">בהיר</string>
     <string name="dark_theme_name">כהה</string>
@@ -798,7 +803,6 @@
     <string name="vertical_flip">הפיכה אנכית</string>
     <string name="zoom_out">הקטן</string>
     <string name="simple">פשוט</string>
-    <string name="stack">ערימה</string>
     <string name="add_after_playing_track">הוסף לאחר השיר המנוגן</string>
     <string name="add_tracks_sequentially">הוסף שירים ברצף</string>
     <string name="albums_shuffle">ערבוב אלבומים</string>

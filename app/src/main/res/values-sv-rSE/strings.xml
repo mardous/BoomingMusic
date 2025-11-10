@@ -661,6 +661,8 @@
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dubbeltryck på omslaget</string>
     <string name="long_press_on_album_cover_title">Långtryck på omslaget</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
@@ -669,8 +671,8 @@
     <string name="lyrics_on_album_cover_summary">Visa låttexter istället för omslag när de är tillgängliga.</string>
     <string name="animate_controls_title">Animera kontroller</string>
     <string name="animate_controls_summary">Det spelas när du öppnar spelarpanelen.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe controls</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Visa albumnamn</string>
     <string name="display_extra_info_title">Visa extra information</string>
     <string name="display_extra_info_summary">Visa extra info om låten, som bitrate, format, samplingshastighet, etc.</string>
@@ -715,7 +717,9 @@
     <string name="use_folder_album_cover_summary">Om ljudfilen inte innehåller ett inbäddat omslag. Bilder kan ta lite mer tid att ladda.</string>
     <string name="online_artist_images_title">Ladda ner artistbilder</string>
     <string name="online_artist_images_summary">Detta beror på din metadata nedladdningspolicy.</string>
-    <string name="preferred_artist_image_size_title">Önskad bildstorlek</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Ta bort hämtade låttexter</string>
     <string name="delete_downloaded_lyrics_summary">Endast låttexter hämtade av Booming Music. Påverkar inte låttexter inbäddade i ID3v2-taggar eller LRC-filer.</string>
     <string name="lyrics_cleared">Låttexter rensade.</string>
@@ -783,7 +787,6 @@
     <string name="vertical_flip">Vertikal Vänd</string>
     <string name="zoom_out">Zooma ut</string>
     <string name="simple">Enkel</string>
-    <string name="stack">Stapel</string>
     <string name="add_after_playing_track">Lägg till efter spelspår</string>
     <string name="add_tracks_sequentially">Lägg till spår sekventiellt</string>
     <string name="albums_shuffle">Albums shuffle</string>

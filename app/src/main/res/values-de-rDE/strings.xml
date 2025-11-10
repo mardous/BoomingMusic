@@ -661,6 +661,8 @@
     <string name="single_tap_on_album_cover_title">Auf Albumcover einzeltippen</string>
     <string name="double_tap_on_album_cover_title">Auf Albumcover doppeltippen</string>
     <string name="long_press_on_album_cover_title">Albumcover gedrückt halten</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Bild-Eckradius</string>
     <string name="now_playing_corner_radius_summary">Definiert die Rundung der Album-Cover-Ecken.</string>
     <string name="carousel_effect_title">Karussell-Effekt</string>
@@ -669,8 +671,8 @@
     <string name="lyrics_on_album_cover_summary">Liedtexte statt Albumcover anzeigen, wenn verfügbar.</string>
     <string name="animate_controls_title">Steuerelemente animieren</string>
     <string name="animate_controls_summary">Startet beim Öffnen der Wiedergabe-Ansicht.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe controls</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">Album-Titel anzeigen</string>
     <string name="display_extra_info_title">Zusätzliche Informationen anzeigen</string>
     <string name="display_extra_info_summary">Zeigt zusätzliche Titel-Informationen an, wie Bitrate, Format, Abtastrate usw.</string>
@@ -715,7 +717,9 @@
     <string name="use_folder_album_cover_summary">Wenn die Audiodatei kein eingebettetes Albumcover enthält, kann sich die Bildladezeit verlängern.</string>
     <string name="online_artist_images_title">Interpretenbilder herunterladen</string>
     <string name="online_artist_images_summary">Dies hängt von Deiner Vorgabe zum Metadaten-Download ab.</string>
-    <string name="preferred_artist_image_size_title">Bevorzugte Bildgröße</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Heruntergeladene Liedtexte löschen</string>
     <string name="delete_downloaded_lyrics_summary">Nur Liedtexte, die von Booming Music heruntergeladen wurden. Hat keine Auswirkung auf eingebettete Liedtexte aus ID3v2-Tags oder LRC-Dateien.</string>
     <string name="lyrics_cleared">Liedtext geleert.</string>
@@ -783,7 +787,6 @@
     <string name="vertical_flip">Vertikal spiegeln</string>
     <string name="zoom_out">Herauszoomen</string>
     <string name="simple">Einfach</string>
-    <string name="stack">Stapeln</string>
     <string name="add_after_playing_track">Nach dem wiedergegebenen Titel einfügen</string>
     <string name="add_tracks_sequentially">Titel nacheinander hinzufügen</string>
     <string name="albums_shuffle">Album-Zufallswiedergabe</string>

@@ -693,6 +693,8 @@
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">انقر نقراً مزدوجاً على الغلاف</string>
     <string name="long_press_on_album_cover_title">اضغط مطولاً على الغلاف</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Image corner radius</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
@@ -701,8 +703,8 @@
     <string name="lyrics_on_album_cover_summary">إظهار كلمات الأغنية بدلاً من الغلاف عندما تكون متاحة.</string>
     <string name="animate_controls_title">التحكم المتحرك</string>
     <string name="animate_controls_summary">يتم تشغيلها عند فتح لوحة اللاعب.</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe controls</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">عرض اسم الألبوم</string>
     <string name="display_extra_info_title">عرض معلومات إضافية</string>
     <string name="display_extra_info_summary">عرض معلومات إضافية حول الأغنية، مثل البت، التنسيق، معدل أخذ العينات، إلخ.</string>
@@ -747,7 +749,9 @@
     <string name="use_folder_album_cover_summary">إذا كان الملف الصوتي لا يحتوي على غلاف مضمون. قد تستغرق الصور وقتاً أطول للتحميل.</string>
     <string name="online_artist_images_title">تحميل صور الفنان</string>
     <string name="online_artist_images_summary">هذا يعتمد على سياسة تنزيل البيانات الوصفية الخاصة بك.</string>
-    <string name="preferred_artist_image_size_title">حجم الصورة المفضلة</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">حذف الكلمات التي تم تنزيلها</string>
     <string name="delete_downloaded_lyrics_summary">فقط كلمات الأغاني التي تم تحميلها بواسطة موسيقى مزدهرة. لا تؤثر على كلمات الأغاني المضمنة في وسوم ID3v2 أو ملفات LRC.</string>
     <string name="lyrics_cleared">تم مسح كلمات.</string>
@@ -815,7 +819,6 @@
     <string name="vertical_flip">انعكاس عمودي</string>
     <string name="zoom_out">تكبير خارج</string>
     <string name="simple">بسيط</string>
-    <string name="stack">تكدس</string>
     <string name="add_after_playing_track">إضافة بعد تشغيل المسار</string>
     <string name="add_tracks_sequentially">إضافة مسارات متتالية</string>
     <string name="albums_shuffle">Albums shuffle</string>

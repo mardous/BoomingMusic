@@ -659,6 +659,8 @@
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">कवर पर डबल टैप करें</string>
     <string name="long_press_on_album_cover_title">कवर पर लंबे समय तक दबाएँ</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">इमेज का कोना रेडियस</string>
     <string name="now_playing_corner_radius_summary">यह बताता है कि कैसे एल्बम की कला के कोनों को गोल होना चाहिए.</string>
     <string name="carousel_effect_title">कैरोसेल प्रभाव</string>
@@ -667,8 +669,8 @@
     <string name="lyrics_on_album_cover_summary">जब गाने के बोल उपलब्ध हों, तो कवर के बजाय गाने के बोल दिखाएँ।</string>
     <string name="animate_controls_title">एनिमेट कंट्रोल्स</string>
     <string name="animate_controls_summary">यह प्लेयर पैनल खोलना पर बजाय जाता है।</string>
-    <string name="swipe_controls_title">Swipe controls</string>
-    <string name="swipe_controls_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
+    <string name="swipe_anywhere_title">Swipe controls</string>
+    <string name="swipe_anywhere_summary">Swipe left on any blank space in the now playing screen to go to the next song and swipe right to go to the previous song.</string>
     <string name="display_album_name_title">एल्बम का नाम दिखाएँ</string>
     <string name="display_extra_info_title">अतिरिक्त जानकारी प्रदर्शित करें</string>
     <string name="display_extra_info_summary">गाने के बारे में अतिरिक्त जानकारी दिखाएँ, जैसे बिटरेट, फ़ॉर्मेट, सैंपलिंग दर, आदि।</string>
@@ -713,7 +715,9 @@
     <string name="use_folder_album_cover_summary">यदि ऑडियो फ़ाइल में कोई एम्बेडेड कवर नहीं है। चित्रों को लोड होने में थोड़ा अधिक समय लग सकता है।</string>
     <string name="online_artist_images_title">कलाकारों की तस्वीरें डाउनलोड  करें</string>
     <string name="online_artist_images_summary">यह आपकी मेटाडेटा डाउनलोड नीति पर निर्भर करता है।</string>
-    <string name="preferred_artist_image_size_title">पसंदीदा चित्र का आकार</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">डाउनलोड की गई गाने के बोल हटाएं</string>
     <string name="delete_downloaded_lyrics_summary">केवल बूमिंग म्यूजिक द्वारा डाउनलोड किए गए गीत। यह ID3v2 टैग या LRC फ़ाइलों में एम्बेडेड गीतों को प्रभावित नहीं करता है।</string>
     <string name="lyrics_cleared">गीत की पंक्तियाँ साफ हैं।</string>
@@ -781,7 +785,6 @@
     <string name="vertical_flip">वर्टिकल फ्लिप</string>
     <string name="zoom_out">ज़ूम आउट</string>
     <string name="simple">सरल</string>
-    <string name="stack">स्टैक</string>
     <string name="add_after_playing_track">ट्रैक खेलने के बाद जोड़ें</string>
     <string name="add_tracks_sequentially">पटरियों को क्रमशः जोड़ें</string>
     <string name="albums_shuffle">एल्बम शफल</string>

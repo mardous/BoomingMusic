@@ -519,7 +519,7 @@
     <string name="app_shortcut_shuffle_all_short">Aleatori</string>
     <string name="app_shortcut_top_tracks_short">Cançons destacades</string>
     <string name="app_shortcut_last_added_short">Afegit recentment</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Preferits</string>
     <!-- About page -->
     <string name="action_about">Quant a</string>
     <string name="application">Aplicació</string>
@@ -656,11 +656,13 @@
     <string name="circle_button_title">Botó de reproducció circular</string>
     <string name="swipe_album_cover_title">Llisca a la portada de l\'àlbum</string>
     <string name="swipe_album_cover_summary">Llisca a esquerra i dreta a la portada de l\'àlbum per passar entre les cançons.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
+    <string name="queue_height_title">Cua de mitja pantalla d\'alçària</string>
+    <string name="queue_height_summary">La cua de reproducció ocuparà la meitat de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Un clic a la portada</string>
     <string name="double_tap_on_album_cover_title">Dos clics a la portada</string>
     <string name="long_press_on_album_cover_title">Clic sostingut a la portada</string>
+    <string name="small_image_title">Small image</string>
+    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Radi dels cantons de la imatge</string>
     <string name="now_playing_corner_radius_summary">Defineix com d\'arrodonits haurien d\'aparèixer els cantons de la imatge de l\'àlbum.</string>
     <string name="carousel_effect_title">Efecte carrusel</string>
@@ -669,8 +671,8 @@
     <string name="lyrics_on_album_cover_summary">Mostra la lletra de la cançó quan està disponible en lloc de la portada.</string>
     <string name="animate_controls_title">Animació dels controls</string>
     <string name="animate_controls_summary">S\'executa en obrir el panell de reproducció.</string>
-    <string name="swipe_controls_title">Controls de lliscada</string>
-    <string name="swipe_controls_summary">Llisca cap a l\'esquerra en un espai buit a la pantalla d\'ara sona per passar a la següent cançó i llisca a la dreta per anar a l\'anterior.</string>
+    <string name="swipe_anywhere_title">Controls de lliscada</string>
+    <string name="swipe_anywhere_summary">Llisca cap a l\'esquerra en un espai buit a la pantalla d\'ara sona per passar a la següent cançó i llisca a la dreta per anar a l\'anterior.</string>
     <string name="display_album_name_title">Mostra el nom de l\'àlbum</string>
     <string name="display_extra_info_title">Mostra informació addicional</string>
     <string name="display_extra_info_summary">Mostra informació addicional de la cançó, com ara la taxa de bits, el format, el mostratge, etc.</string>
@@ -705,8 +707,8 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pausa la reproducció en desconnectar uns auriculars Bluetooth A2DP. Recomanat.</string>
     <string name="ignore_audio_focus_title">Ignora el focus d\'àudio</string>
     <string name="ignore_audio_focus_summary">Reprodueix sempre l\'àudio en segon pla al marge d\'altres reproduccions.</string>
-    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
-    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
+    <string name="pause_on_zero_volume_title">Pausa si es treu el volum</string>
+    <string name="pause_on_zero_volume_summary">Pausa la cançó si el volum baixa a zero i reprèn la reproducció quan s\'apugi el volum. Funciona també fora de l\'app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descarrega metadades automàticament</string>
     <string name="ignore_media_store_album_covers_title">Ignora les portades de Media Store</string>
@@ -715,7 +717,9 @@
     <string name="use_folder_album_cover_summary">Si el fitxer d\'àudio no conté una portada incorporada, les imatges podrien trigar més a carregar.</string>
     <string name="online_artist_images_title">Descarrega imatges dels artistes</string>
     <string name="online_artist_images_summary">Això depèn de la vostra política de descàrrega de metadades.</string>
-    <string name="preferred_artist_image_size_title">Mida d\'imatge preferida</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="online_album_covers_title">Descarrega portades d\'àlbum que falten</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
     <string name="delete_downloaded_lyrics_title">Esborra les lletres descarregades</string>
     <string name="delete_downloaded_lyrics_summary">Només lletres descarregades per Booming Music. No afecta les lletres incorporades en etiquetes ID3v2 o fitxers LRC.</string>
     <string name="lyrics_cleared">Lletres esborrades.</string>
@@ -750,8 +754,8 @@
     <string name="stop_when_closed_from_recents_title">Atura en tancar des de recents</string>
     <string name="stop_when_closed_from_recents_summary">Atura la reproducció si l\'aplicació es tanca des de la llista de recents.</string>
     <string name="stop_when_closed_from_recents_note">Nota: Alguns dispositius amb gestió agressiva de la memòria o la bateria podrien ignorar aquesta opció i aturar sempre l\'aplicació en treure-la de recents.</string>
-    <string name="rotation_lock_title">Rotation lock</string>
-    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
+    <string name="rotation_lock_title">Bloqueja la rotació</string>
+    <string name="rotation_lock_summary">Bloqueja l\'orientació del dispositiu. Útil en casos en què la música s\'atura en girar el dispositiu per causa de certes polítiques del fabricant.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Clar</string>
     <string name="dark_theme_name">Fosc</string>
@@ -782,7 +786,6 @@
     <string name="vertical_flip">Inverteix verticalment</string>
     <string name="zoom_out">Allunya</string>
     <string name="simple">Simple</string>
-    <string name="stack">Apila</string>
     <string name="add_after_playing_track">Afegeix després de la pista actual</string>
     <string name="add_tracks_sequentially">Afegeix les pistes de manera seqüencial</string>
     <string name="albums_shuffle">Barreja els àlbums</string>

@@ -9,6 +9,9 @@ class AudioCover(
     val albumId: Long,
     val uri: Uri,
     val path: String,
+    val artistName: String,
+    val albumName: String,
+    val title: String,
     val lastModified: Long,
     val isIgnoreMediaStore: Boolean,
     val isUseFolderArt: Boolean,
@@ -18,7 +21,7 @@ class AudioCover(
     val isComplete: Boolean = albumId != -1L && path.isNotEmpty()
 
     constructor(uri: Uri, isIgnoreMediaStore: Boolean, isUseFolderArt: Boolean) :
-            this(-1, uri, "", -1, isIgnoreMediaStore, isUseFolderArt, false)
+            this(-1, uri, "", "", "", "", -1, isIgnoreMediaStore, isUseFolderArt, false)
 
     fun getComplete(contentResolver: ContentResolver): AudioCover {
         val completeCover = if (isComplete) this else {
@@ -26,7 +29,14 @@ class AudioCover(
             if (id.isNullOrEmpty() || id == "-1") null else {
                 contentResolver.query(
                     RealSongRepository.getAudioContentUri(),
-                    arrayOf(AudioColumns.ALBUM_ID, AudioColumns.DATA, AudioColumns.DATE_MODIFIED),
+                    arrayOf(
+                        AudioColumns.ALBUM_ID,
+                        AudioColumns.DATA,
+                        AudioColumns.DATE_MODIFIED,
+                        AudioColumns.ARTIST,
+                        AudioColumns.ALBUM,
+                        AudioColumns.TITLE
+                    ),
                     "${AudioColumns._ID} = ?",
                     arrayOf(id),
                     null
@@ -35,10 +45,16 @@ class AudioCover(
                         val albumId = c.getLong(c.getColumnIndexOrThrow(AudioColumns.ALBUM_ID))
                         val filePath = c.getString(c.getColumnIndexOrThrow(AudioColumns.DATA))
                         val dateModified = c.getLong(c.getColumnIndexOrThrow(AudioColumns.DATE_MODIFIED))
+                        val artist = c.getString(c.getColumnIndexOrThrow(AudioColumns.ARTIST))
+                        val album = c.getString(c.getColumnIndexOrThrow(AudioColumns.ALBUM))
+                        val title = c.getString(c.getColumnIndexOrThrow(AudioColumns.TITLE))
                         AudioCover(
                             albumId = albumId,
                             uri = uri,
                             path = filePath,
+                            artistName = artist,
+                            albumName = album,
+                            title = title,
                             lastModified = dateModified,
                             isIgnoreMediaStore = isIgnoreMediaStore,
                             isUseFolderArt = isUseFolderArt,
@@ -57,6 +73,9 @@ class AudioCover(
             append("albumId=$albumId,")
             append("uri=$uri,")
             append("path='$path',")
+            append("artistName='$artistName',")
+            append("albumName='$albumName'")
+            append("title='$title',")
             append("lastModified=$lastModified,")
             append("isIgnoreMediaStore=$isIgnoreMediaStore,")
             append("isUseFolderArt=$isUseFolderArt,")

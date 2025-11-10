@@ -18,7 +18,7 @@ import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.extensions.isAllowedToDownloadMetadata
 import com.mardous.booming.util.ALLOW_ONLINE_ARTIST_IMAGES
 import com.mardous.booming.util.ImageSize
-import com.mardous.booming.util.PREFERRED_ARTIST_IMAGE_SIZE
+import com.mardous.booming.util.PREFERRED_IMAGE_SIZE
 import com.mardous.booming.util.Preferences.requireString
 import okio.Path.Companion.toOkioPath
 import okio.buffer
@@ -113,9 +113,9 @@ class ArtistImageFetcher(
                 image = data,
                 downloadImage = preferences.getBoolean(
                     ALLOW_ONLINE_ARTIST_IMAGES,
-                    resources.getBoolean(R.bool.default_artist_images_download)
+                    resources.getBoolean(R.bool.default_images_download)
                 ),
-                imageSize = preferences.requireString(PREFERRED_ARTIST_IMAGE_SIZE, ImageSize.MEDIUM)
+                imageSize = preferences.requireString(PREFERRED_IMAGE_SIZE, ImageSize.MEDIUM)
             )
         }
     }
