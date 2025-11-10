@@ -133,6 +133,9 @@
     <string name="permission_bluetooth_title">Dispositivos cercanos</string>
     <string name="permission_bluetooth_description">La app necesita este permiso con el fin de encontrar dispositivos Bluetooth</string>
     <string name="permission_bluetooth_denied">Permiso de dispositivos cercanos denegado.</string>
+    <string name="permission_read_images_title">Acceso a imágenes (opcional)</string>
+    <string name="permission_read_images_summary">Este permiso se requiere para que Booming Music pueda encontrar carátulas de álbumes en las carpetas de música. Si no planeas usar esta característica, puedes optar por no concederlo.</string>
+    <string name="permission_read_images_denied">Debes conceder el permiso para acceder a las imágenes en el dispositivo.</string>
     <string name="permission_exact_alarms_title">Programar alarmas exactas (opcional)</string>
     <string name="permission_exact_alarms_description">Se requiere programar alarmas exactas para que el temporizador de apagado funcione correctamente</string>
     <string name="permission_ringtone_title">Tono de llamada (opcional)</string>
@@ -586,6 +589,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="artist_image_header">Imagen del artista</string>
     <string name="exclusion_header">Exclusiones</string>
     <string name="controls_header">Controles</string>
+    <string name="gestures_header">Gestos</string>
     <string name="headphones_header">Auriculares</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Foco de audio</string>
@@ -650,11 +654,11 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="extra_controls_summary">Habilita controles adicionales para el reproductor minimizado.</string>
     <string name="adaptive_controls_title">Controles adaptivos</string>
     <string name="adaptive_controls_summary">Los controles del mini reproductor cambian para adaptarse al estilo general del reproductor.</string>
-    <string name="swipe_to_dismiss_title">Deslizar para descartar</string>
+    <string name="swipe_to_dismiss_title">Deslizar hacia abajo para descartar</string>
     <string name="swipe_to_dismiss_summary">Deslice hacia abajo el mini reproductor para detener la reproducción y limpiar la cola.</string>
     <string name="circle_button_title">Botón \"Reproducir\" circular</string>
-    <string name="swipe_album_cover_title">Deslizamiento izquierda/derecha</string>
-    <string name="swipe_album_cover_summary">Deslizar a izquierda/derecha para saltar entre canciones.</string>
+    <string name="swipe_album_cover_title">Deslizamiento sobre la carátula</string>
+    <string name="swipe_album_cover_summary">Deslice hacia la izquierda o la derecha sobre la carátula para saltar canciones.</string>
     <string name="queue_height_title">Altura de la cola a media pantalla</string>
     <string name="queue_height_summary">Fija la altura de la cola de reproducción a la mitad de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Toque único en la carátula</string>
@@ -670,8 +674,10 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="lyrics_on_album_cover_summary">Muestra la letra de la canción en lugar de la carátula cuando esté disponible.</string>
     <string name="animate_controls_title">Animación de los controles</string>
     <string name="animate_controls_summary">Se reproduce al expandir el panel del reproductor.</string>
-    <string name="swipe_controls_title">Controles de deslizamiento</string>
-    <string name="swipe_controls_summary">Desliza a la izquierda en cualquier espacio vacío para ir a la siguiente canción y hacia la derecha para ir a la anterior.</string>
+    <string name="swipe_anywhere_title">Deslizamiento en cualquier parte</string>
+    <string name="swipe_anywhere_summary">Deslice hacia la izquierda o la derecha en cualquier área vacía del reproductor para saltar canciones.</string>
+    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
+    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
     <string name="display_album_name_title">Mostrar nombre del álbum</string>
     <string name="display_extra_info_title">Mostrar información adicional</string>
     <string name="display_extra_info_summary">Muestra información adicional sobre la canción en reproducción, como tasa de bits, formato, muestreo, etc.</string>
@@ -708,6 +714,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="ignore_audio_focus_summary">Mantener la reproducción aún cuando otras apps estén reproduciendo audio también.</string>
     <string name="pause_on_zero_volume_title">Pausar en volumen cero</string>
     <string name="pause_on_zero_volume_summary">Pausa la reproducción cuando el volumen baja a cero y la reanuda cuando el nivel de volumen se eleva. Funciona también fuera de la app.</string>
+    <string name="mp3_index_seeking_title">Búsqueda de índice MP3</string>
+    <string name="mp3_index_seeking_summary">Carga todo el archivo MP3 en memoria para la búsqueda en lugar de confiar en la cabecera Xing. Úsalo solo si la búsqueda falla para algunos archivos VBR. Requiere reiniciar la app.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descargar metadatos automáticamente</string>
     <string name="ignore_media_store_album_covers_title">Ignorar las portadas del Almacén Multimedia</string>
@@ -786,6 +794,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="zoom_out">Alejar</string>
     <string name="simple">Simple</string>
     <string name="stack">Pila</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Añadir después de la pista en reproducción</string>
     <string name="add_tracks_sequentially">Añadir pistas de forma secuencial</string>
     <string name="albums_shuffle">Mezcla de álbumes</string>

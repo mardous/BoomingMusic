@@ -62,6 +62,7 @@ import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.resources.animateBackgroundColor
 import com.mardous.booming.extensions.resources.animateTintColor
 import com.mardous.booming.extensions.resources.inflateMenu
+import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.component.menu.newPopupMenu
 import com.mardous.booming.ui.component.menu.onSongMenu
@@ -72,6 +73,7 @@ import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
 import com.mardous.booming.ui.dialogs.songs.ShareSongDialog
 import com.mardous.booming.ui.screen.MainActivity
+import com.mardous.booming.ui.screen.equalizer.EqualizerFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
 import com.mardous.booming.ui.screen.player.PlayerColorScheme
@@ -232,7 +234,11 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
             }
 
             R.id.action_equalizer -> {
-                goToDestination(requireActivity(), R.id.nav_equalizer)
+                if (currentFragment(R.id.fragment_container) is EqualizerFragment) {
+                    (activity as? MainActivity)?.collapsePanel()
+                } else {
+                    goToDestination(requireActivity(), R.id.nav_equalizer)
+                }
                 true
             }
 
@@ -441,10 +447,13 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) :
     }
 
     fun getSongArtist(song: Song): CharSequence {
-        val artistName = if (Preferences.preferAlbumArtistName)
-            song.albumArtistName().displayArtistName() else song.displayArtistName()
+        val artistName = if (Preferences.preferAlbumArtistName) {
+            song.albumArtistName().displayArtistName()
+        } else {
+            song.displayArtistName()
+        }
         if (Preferences.displayAlbumTitle) {
-            return "$artistName - ${song.albumName}"
+            return buildInfoString(artistName, song.albumName)
         }
         return artistName
     }

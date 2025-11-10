@@ -133,6 +133,10 @@
     <string name="permission_bluetooth_title">מכשירים בקרבת מקום</string>
     <string name="permission_bluetooth_description">האפליקציה זקוקה להרשאה מכשירים בקרבת מקום כדי לבדוק אם יש מכשירי בלוטות\'</string>
     <string name="permission_bluetooth_denied">הרשאת הגישה למכשירים בקרבת מקום נדחתה.</string>
+    <string name="permission_read_images_title">קריאת תמונות (אופציונלי)</string>
+    <string name="permission_read_images_summary">הרשאה זו נדרשת כדי ש־Booming Music תוכל למצוא קובצי עטיפות אלבומים בתיקיות המוזיקה שלך.
+אם אינך מתכנן להשתמש בפונקציה זו, אפשר לבחור לא לאשר אותה.</string>
+    <string name="permission_read_images_denied">עליך להעניק הרשאה לקריאת תמונות מהמכשיר.</string>
     <string name="permission_exact_alarms_title">תזמון התראות מדויקות (אופציונלי)</string>
     <string name="permission_exact_alarms_description">נדרשת הרשאה לתזמן התראות מדויקות כדי שטיימר השינה יפעל כראוי</string>
     <string name="permission_ringtone_title">צלצול (אופציונלי)</string>
@@ -603,6 +607,7 @@
     <string name="artist_image_header">תמונת האמן</string>
     <string name="exclusion_header">החרגות</string>
     <string name="controls_header">פקדים</string>
+    <string name="gestures_header">מחוות</string>
     <string name="headphones_header">אוזניות</string>
     <string name="bluetooth_header">בלוטות\'</string>
     <string name="audio_focus_header">מיקוד שמע</string>
@@ -667,18 +672,18 @@
     <string name="extra_controls_summary">הוסף בקרות נוספות לנגן המיני</string>
     <string name="adaptive_controls_title">פקדים אדפטיביים</string>
     <string name="adaptive_controls_summary">הפקדים בנגן המיני משתנים כדי להתאים לסגנון הנגן הנוכחי.</string>
-    <string name="swipe_to_dismiss_title">גרור כדי לסגור</string>
-    <string name="swipe_to_dismiss_summary">החלק את נגן המיני כלפי מטה כדי לעצור את ההשמעה ולנקות את תור ההשמעה.</string>
+    <string name="swipe_to_dismiss_title">החלק למטה כדי לסגור</string>
+    <string name="swipe_to_dismiss_summary">החלק למטה במיני־נגן כדי לעצור את הנגינה ולנקות את רשימת ההשמעה.</string>
     <string name="circle_button_title">כפתור ניגון עגול</string>
-    <string name="swipe_album_cover_title">החלק את עטיפת האלבום</string>
-    <string name="swipe_album_cover_summary">החלק שמאלה וימינה על עטיפת האלבום כדי לדלג בין שירים.</string>
+    <string name="swipe_album_cover_title">החלק על עטיפת האלבום</string>
+    <string name="swipe_album_cover_summary">החלק שמאלה או ימינה על עטיפת האלבום כדי לדלג בין שירים.</string>
     <string name="queue_height_title">גובה תור חצי-מסך</string>
     <string name="queue_height_summary">קבע את גובה רשימת ההשמעה לחצי מגובה המסך.</string>
     <string name="single_tap_on_album_cover_title">הקשה אחת על העטיפה</string>
     <string name="double_tap_on_album_cover_title">הקשה כפולה על העטיפה</string>
     <string name="long_press_on_album_cover_title">לחיצה ארוכה על העטיפה</string>
-    <string name="small_image_title">Small image</string>
-    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
+    <string name="small_image_title">תמונה קטנה</string>
+    <string name="small_image_summary">מקטין את גודל העטיפה בסגנונות נתמכים.</string>
     <string name="now_playing_corner_radius_title">רדיוס פינות התמונה</string>
     <string name="now_playing_corner_radius_summary">מגדיר עד כמה פינות עטיפת האלבום יהיו מעוגלות.</string>
     <string name="carousel_effect_title">אפקט קרוסלה</string>
@@ -687,8 +692,10 @@
     <string name="lyrics_on_album_cover_summary">הצג את מילות השיר במקום העטיפה כאשר הן זמינות.</string>
     <string name="animate_controls_title">אנימציית בקרות</string>
     <string name="animate_controls_summary">הוא מתנגן כאשר פותחים את לוח הניגון.</string>
-    <string name="swipe_controls_title">בקרות החלקה</string>
-    <string name="swipe_controls_summary">החלק שמאלה על כל שטח ריק במסך מנגן כעת כדי לעבור לשיר הבא, והחלק ימינה כדי לעבור לשיר הקודם.</string>
+    <string name="swipe_anywhere_title">החלק בכל מקום כדי להחליף שיר</string>
+    <string name="swipe_anywhere_summary">החלק שמאלה או ימינה על אזור ריק במסך הנגינה כדי לעבור בין שירים.</string>
+    <string name="swipe_up_queue_title">החלק למעלה כדי לפתוח את התור</string>
+    <string name="swipe_up_queue_summary">החלק למעלה על אזור ריק במסך הנגינה כדי לפתוח את רשימת ההשמעה.</string>
     <string name="display_album_name_title">הצג את שם האלבום</string>
     <string name="display_extra_info_title">הצג מידע נוסף</string>
     <string name="display_extra_info_summary">הצג מידע נוסף על השיר, כגון קצב סיביות, פורמט, קצב דגימה ועוד.</string>
@@ -726,6 +733,10 @@
     <string name="pause_on_zero_volume_title">השהה כשעוצמת הקול היא אפס</string>
     <string name="pause_on_zero_volume_summary">עוצר את השיר כשהעוצמה יורדת לאפס, וממשיך לנגן כשהעוצמה עולה שוב.
 הפונקציה פועלת גם מחוץ לאפליקציה.</string>
+    <string name="mp3_index_seeking_title">חיפוש לפי אינדקס ב־MP3</string>
+    <string name="mp3_index_seeking_summary">טוען את כל קובץ ה־MP3 לזיכרון לצורך חיפוש, במקום להסתמך על כותרת ה־Xing.
+השתמש רק אם החיפוש נכשל בקבצי VBR מסוימים.
+נדרש להפעיל מחדש את האפליקציה.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
     <string name="ignore_media_store_album_covers_title">התעלם מעטיפות ממדיה סטור</string>
@@ -734,9 +745,10 @@
     <string name="use_folder_album_cover_summary">אם קובץ השמע אינו מכיל עטיפה משובצת, התמונות עשויות להיטען מעט לאט יותר.</string>
     <string name="online_artist_images_title">הורד תמונות אמן</string>
     <string name="online_artist_images_summary">זה תלוי במדיניות הורדת המטא־דאטה שלך.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="preferred_image_size_title">גודל תמונה מועדף</string>
     <string name="online_album_covers_title">הורד עטיפות אלבומים חסרות</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="online_album_covers_summary">התמונות שהורדו אינן משובצות בקובצי השמע; הן מוצגות רק בתוך האפליקציה.
+הפעולה תלויה במדיניות הורדת המטא־דאטה שלך.</string>
     <string name="delete_downloaded_lyrics_title">מחק מילים שהורדו</string>
     <string name="delete_downloaded_lyrics_summary">רק מילות שיר שהורדו על ידי Booming Music. אינו משפיע על מילות שיר המשובצות בתגי ID3v2 או בקבצי LRC.</string>
     <string name="lyrics_cleared">מילות השיר נוקו.</string>
@@ -804,6 +816,7 @@
     <string name="zoom_out">הקטן</string>
     <string name="simple">פשוט</string>
     <string name="stack">ערימה</string>
+    <string name="parallax">אפקט פרלקסה</string>
     <string name="add_after_playing_track">הוסף לאחר השיר המנוגן</string>
     <string name="add_tracks_sequentially">הוסף שירים ברצף</string>
     <string name="albums_shuffle">ערבוב אלבומים</string>
