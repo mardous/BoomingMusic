@@ -676,8 +676,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="animate_controls_summary">Se reproduce al expandir el panel del reproductor.</string>
     <string name="swipe_anywhere_title">Deslizamiento en cualquier parte</string>
     <string name="swipe_anywhere_summary">Deslice hacia la izquierda o la derecha en cualquier área vacía del reproductor para saltar canciones.</string>
-    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
-    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
+    <string name="swipe_up_queue_title">Deslizar hacia arriba para abrir la cola</string>
+    <string name="swipe_up_queue_summary">Desliza hacia arriba en cualquier área vacía del reproductor para mostrar la cola de reproducción.</string>
     <string name="display_album_name_title">Mostrar nombre del álbum</string>
     <string name="display_extra_info_title">Mostrar información adicional</string>
     <string name="display_extra_info_summary">Muestra información adicional sobre la canción en reproducción, como tasa de bits, formato, muestreo, etc.</string>
@@ -794,7 +794,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="zoom_out">Alejar</string>
     <string name="simple">Simple</string>
     <string name="stack">Pila</string>
-    <string name="parallax">Parallax</string>
+    <string name="parallax">Paralaje</string>
     <string name="add_after_playing_track">Añadir después de la pista en reproducción</string>
     <string name="add_tracks_sequentially">Añadir pistas de forma secuencial</string>
     <string name="albums_shuffle">Mezcla de álbumes</string>
