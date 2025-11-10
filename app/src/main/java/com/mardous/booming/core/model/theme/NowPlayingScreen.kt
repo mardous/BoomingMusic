@@ -21,9 +21,9 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import com.mardous.booming.R
-import com.mardous.booming.ui.screen.player.PlayerColorSchemeList
-import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
-import com.mardous.booming.ui.screen.player.PlayerTransition
+import com.mardous.booming.core.model.player.PlayerColorSchemeList
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTransition
 
 enum class NowPlayingScreen(
     @param:StringRes
