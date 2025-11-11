@@ -1,0 +1,8 @@
+* New player styles: Peek2, M3, and Plain
+* Redesigned Now Playing queue and lyrics viewer
+* Support for TTML, word-by-word, and translated lyrics
+* New gesture options and adaptive mini player controls
+* New Media3-based playback engine with Audio Offload support
+* Custom covers and descriptions for playlists
+* Hierarchical folder view and new sorting options
+* Improved performance and stability across the app
