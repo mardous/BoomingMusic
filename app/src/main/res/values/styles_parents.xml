@@ -49,25 +49,21 @@
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.Material3.Dark</item>
-        <item name="roundSelector">@drawable/round_selector</item>
         <item name="rectSelector">@drawable/rect_selector</item>
         <item name="android:actionOverflowButtonStyle">@style/Widget.ActionButton.Overflow</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
-        <item name="materialAlertDialogTheme">@style/MaterialAlertDialogTheme</item>
-        <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
         <item name="android:windowBackground">?colorSurface</item>
         <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
         <item name="popupWindowStyle">@style/MaterialPopupMenuStyle</item>
         <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
         <item name="toolbarStyle">@style/ToolbarStyle</item>
         <item name="sliderStyle">@style/SliderStyle</item>
-        <item name="floatingActionButtonStyle">@style/FloatingButtonStyle</item>
         <item name="elevationOverlayColor">@color/elevationOverlay</item>
         <item name="popupMenuBackground">@drawable/popupmenu_background</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:actionBarSize">@dimen/toolbar_height</item>
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
-        <item name="defaultFooterColor">@color/footerDark</item>
     </style>
 
     <style name="Base.Theme.Booming.Light" parent="Theme.Material3.Light.NoActionBar">
@@ -118,25 +114,21 @@
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.Material3.Light</item>
-        <item name="roundSelector">@drawable/round_selector</item>
         <item name="rectSelector">@drawable/rect_selector</item>
         <item name="android:actionOverflowButtonStyle">@style/Widget.ActionButton.Overflow</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
-        <item name="materialAlertDialogTheme">@style/MaterialAlertDialogTheme</item>
-        <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
         <item name="android:windowBackground">?colorSurface</item>
         <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
         <item name="popupWindowStyle">@style/MaterialPopupMenuStyle</item>
         <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
         <item name="toolbarStyle">@style/ToolbarStyle</item>
         <item name="sliderStyle">@style/SliderStyle</item>
-        <item name="floatingActionButtonStyle">@style/FloatingButtonStyle</item>
         <item name="elevationOverlayColor">@color/elevationOverlay</item>
         <item name="popupMenuBackground">@drawable/popupmenu_background</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:actionBarSize">@dimen/toolbar_height</item>
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
-        <item name="defaultFooterColor">@color/footerLight</item>
     </style>
 
     <style name="Base.Theme.Booming.Adaptive" parent="Theme.Material3.DayNight.NoActionBar">
@@ -187,46 +179,47 @@
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.Material3.Light</item>
-        <item name="roundSelector">@drawable/round_selector</item>
         <item name="rectSelector">@drawable/rect_selector</item>
         <item name="android:actionOverflowButtonStyle">@style/Widget.ActionButton.Overflow</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
-        <item name="materialAlertDialogTheme">@style/MaterialAlertDialogTheme</item>
-        <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
         <item name="android:windowBackground">?colorSurface</item>
         <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
         <item name="popupWindowStyle">@style/MaterialPopupMenuStyle</item>
         <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>T
         <item name="toolbarStyle">@style/ToolbarStyle</item>
         <item name="sliderStyle">@style/SliderStyle</item>
-        <item name="floatingActionButtonStyle">@style/FloatingButtonStyle</item>
         <item name="elevationOverlayColor">@color/elevationOverlay</item>
         <item name="popupMenuBackground">@drawable/popupmenu_background</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:actionBarSize">@dimen/toolbar_height</item>
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
-        <item name="defaultFooterColor">@color/footerLight</item>
     </style>
 
     <style name="Base.Theme.Booming.Black">
         <item name="colorSurface">@android:color/black</item>
-        <item name="colorSurfaceContainer">#0B0B0B</item>
-        <item name="android:windowBackground">?colorSurface</item>
+        <item name="colorSurfaceContainer">@color/surfaceContainerBlack</item>
+        <item name="colorSurfaceContainerLow">@color/surfaceContainerLowBlack</item>
+        <item name="colorSurfaceContainerLowest">@color/surfaceContainerLowestBlack</item>
         <item name="elevationOverlayColor">@color/elevationOverlayBlack</item>
-        <item name="defaultFooterColor">@color/footerBlack</item>
-        <item name="dividerColor">@color/dividerBlack</item>
     </style>
 
     <style name="MaterialPopupMenuStyle" parent="Widget.Material3.PopupMenu">
         <item name="android:popupBackground">@drawable/popupmenu_background</item>
     </style>
 
-    <style name="MaterialAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog"/>
-
     <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
         <item name="dialogCornerRadius">@dimen/m3_dialog_corner_size</item>
         <item name="colorBackgroundFloating">?colorSurfaceContainerHigh</item>
         <item name="android:windowAnimationStyle">@style/MaterialAlertDialog.Material3.Animation</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/ModalBottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme.EdgeToEdge">
+        <item name="bottomSheetStyle">@style/ModalBottomSheetStyle.EdgeToEdge</item>
     </style>
 
     <style name="Theme.AppWidget" parent="Theme.Material3.DynamicColors.DayNight">

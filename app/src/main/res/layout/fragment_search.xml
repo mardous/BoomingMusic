@@ -30,12 +30,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:ellipsize="end"
-                    android:gravity="center_vertical"
+                    android:gravity="start|center_vertical"
                     android:background="@android:color/transparent"
                     android:inputType="text|textAutoComplete|textNoSuggestions"
                     android:imeOptions="actionSearch"
                     android:hint="@string/search_hint"
                     android:paddingStart="8dp"
+                    android:textAlignment="viewStart"
                     tools:ignore="Autofill,RtlSymmetry" />
 
                 <FrameLayout
@@ -46,20 +47,20 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/voiceSearch"
-                        style="@style/Widget.Material3.Button.IconButton"
+                        style="?materialIconButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:icon="@drawable/ic_mic_24dp"
-                        app:iconTint="?attr/colorControlNormal" />
+                        app:iconTint="?attr/colorOnSurface" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/clearText"
-                        style="@style/Widget.Material3.Button.IconButton"
+                        style="?materialIconButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
                         app:icon="@drawable/ic_close_24dp"
-                        app:iconTint="?attr/colorControlNormal" />
+                        app:iconTint="?attr/colorOnSurface" />
 
                 </FrameLayout>
 
@@ -131,7 +132,6 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/mini_player_height"
         android:clipToPadding="false"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical"
@@ -152,5 +152,14 @@
         android:textAppearance="?textAppearanceHeadline6"
         android:visibility="gone"
         tools:visibility="visible" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/keyboardPopup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="@dimen/fab_margin_top_left_right"
+        android:text="@string/keyboard"
+        app:icon="@drawable/ic_keyboard_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

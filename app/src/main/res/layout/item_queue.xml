@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/list_queue_padding_vertical"
+    android:paddingBottom="@dimen/list_queue_padding_vertical"
+    android:paddingStart="16dp"
+    android:paddingEnd="8dp"
+    android:background="?selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:orientation="horizontal">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
+        tools:src="@tools:sample/avatars"/>
+
+    <LinearLayout
+        android:id="@+id/title_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:textColor="?android:textColorPrimary"
+            tools:text="@tools:sample/lorem"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceBody2"
+            android:textColor="?android:textColorSecondary"
+            tools:text="@tools:sample/lorem"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/drag_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="4dp"
+        android:layout_gravity="center_vertical|start"
+        app:srcCompat="@drawable/ic_drag_handle_24dp"
+        app:tint="?attr/colorOnSurface"
+        tools:ignore="ContentDescription"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/menu"
+        style="@style/MenuButtonStyle"
+        android:layout_gravity="center_vertical"/>
+
+</LinearLayout>
+

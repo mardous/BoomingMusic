@@ -206,7 +206,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/search"
-                        style="@style/Widget.Material3.Button.IconButton"
+                        style="?materialIconButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/search_lyrics"
@@ -215,7 +215,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/download"
-                        style="@style/Widget.Material3.Button.IconButton"
+                        style="?materialIconButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -227,7 +227,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/save"
-                    style="@style/Widget.Material3.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -244,7 +243,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/select_all"
-                        style="@style/Widget.Material3.Button.IconButton"
+                        style="?materialIconButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -254,7 +253,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/paste"
-                        style="@style/Widget.Material3.Button.IconButton"
+                        style="?materialIconButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="@android:string/paste"

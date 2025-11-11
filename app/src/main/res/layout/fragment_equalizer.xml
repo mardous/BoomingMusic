@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.mardous.booming.views.TopAppBarLayout
+    <com.mardous.booming.ui.component.views.TopAppBarLayout
         android:id="@+id/appBarLayout"
         style="?appBarLayoutStyle"
         android:layout_width="match_parent"
@@ -17,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:overScrollMode="@integer/overScrollMode"
-        android:paddingBottom="@dimen/mini_player_height"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

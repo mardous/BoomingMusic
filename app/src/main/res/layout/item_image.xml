@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="?rectSelector"
-    android:orientation="vertical">
+    android:background="?rectSelector">
 
     <FrameLayout
         android:id="@+id/image_container"
@@ -35,6 +34,7 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:padding="12dp"
+        android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceBody1"
         android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"

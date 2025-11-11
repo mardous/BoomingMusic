@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="roundSelector" format="reference"/>
     <attr name="rectSelector" format="reference"/>
     <attr name="toolbarPopupTheme" format="reference"/>
-    <attr name="defaultFooterColor" format="color"/>
 
     <declare-styleable name="InfoView">
         <attr name="infoTitle" format="string"/>
@@ -36,5 +34,12 @@
     <declare-styleable name="BoomingShapeableImageView">
         <attr name="boomingCornerSize" format="dimension" />
         <attr name="circleShape" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="MusicSlider">
+        <attr name="squigglyStyle" format="boolean"/>
+        <attr name="android:progress" format="integer"/>
+        <attr name="android:max" format="integer"/>
+        <attr name="android:min" format="integer"/>
     </declare-styleable>
 </resources>

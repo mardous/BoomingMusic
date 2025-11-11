@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <SwitchPreferenceCompat
-        app:iconSpaceReserved="true"
-        app:title="@string/gapless_playback_title"
-        app:summary="@string/gapless_playback_summary"
-        app:defaultValue="false"
-        app:layout="@layout/list_item_view_switch"
-        app:key="gapless_playback"/>
-
     <ListPreference
-        app:icon="@drawable/ic_queue_next_24dp"
-        app:title="@string/queue_next_mode_title"
-        app:entries="@array/queue_next_mode_entries"
-        app:entryValues="@array/queue_next_mode_values"
+        app:iconSpaceReserved="true"
+        app:title="@string/play_on_startup_title"
         app:useSimpleSummaryProvider="true"
-        app:defaultValue="1"
+        app:entries="@array/pref_play_on_startup_entries"
+        app:entryValues="@array/pref_play_on_startup_values"
+        app:defaultValue="never"
         app:layout="@layout/list_item_view"
-        app:key="queue_next_mode"/>
+        app:key="play_on_startup_mode"/>
+
+    <PreferenceCategory
+        app:title="@string/playing_queue_label"
+        app:layout="@layout/preference_category_title">
+
+        <ListPreference
+            app:icon="@drawable/ic_queue_play_next_24dp"
+            app:title="@string/queue_next_mode_title"
+            app:entries="@array/queue_next_mode_entries"
+            app:entryValues="@array/queue_next_mode_values"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="1"
+            app:layout="@layout/list_item_view"
+            app:key="queue_next_mode"/>
+
+        <SwitchPreferenceCompat
+            app:title="@string/search_auto_queue_title"
+            app:summary="@string/search_auto_queue_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="search_auto_queue"/>
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         app:title="@string/shuffle_mode_header"
@@ -29,7 +46,8 @@
             app:title="@string/remember_shuffle_mode_title"
             app:summary="@string/remember_shuffle_mode_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="remember_shuffle_mode"/>
 
         <ListPreference
@@ -38,7 +56,7 @@
             app:entries="@array/pref_album_shuffle_mode_entries"
             app:entryValues="@array/pref_album_shuffle_mode_values"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="shuffle_songs"
+            app:defaultValue="shuffle_albums"
             app:layout="@layout/list_item_view"
             app:key="album_shuffle_mode"/>
 
@@ -48,7 +66,7 @@
             app:entries="@array/pref_artist_shuffle_mode_entries"
             app:entryValues="@array/pref_artist_shuffle_mode_values"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="shuffle_songs"
+            app:defaultValue="shuffle_all"
             app:layout="@layout/list_item_view"
             app:key="artist_shuffle_mode"/>
 
@@ -59,36 +77,25 @@
         app:layout="@layout/preference_category_title">
 
         <SwitchPreferenceCompat
-            app:icon="@drawable/ic_play_24dp"
-            app:title="@string/auto_play_on_skip_title"
-            app:summary="@string/auto_play_on_skip_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
-            app:key="auto_play_on_skip"/>
-
-        <SwitchPreferenceCompat
             app:iconSpaceReserved="true"
             app:title="@string/rewind_with_back_title"
             app:summary="@string/rewind_with_back_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="rewind_with_back"/>
 
-        <SwitchPreferenceCompat
+        <SeekBarPreference
             app:icon="@drawable/ic_fast_forward_24dp"
-            app:title="@string/fast_forward_title"
-            app:summary="@string/fast_forward_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
-            app:key="fast_forward"/>
-
-        <SwitchPreferenceCompat
-            app:icon="@drawable/ic_fast_rewind_24dp"
-            app:title="@string/fast_backward_title"
-            app:summary="@string/fast_backward_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
-            app:key="fast_backward"/>
+            app:title="@string/rewind_fast_forward_amount_title"
+            app:summary="@string/rewind_fast_forward_amount_summary"
+            android:max="60"
+            app:min="5"
+            app:defaultValue="10"
+            app:showSeekBarValue="true"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
+            app:key="seek_interval"/>
 
     </PreferenceCategory>
 
@@ -101,7 +108,8 @@
             app:title="@string/resume_on_connect_title"
             app:summary="@string/resume_on_connect_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="resume_on_connect"/>
 
         <SwitchPreferenceCompat
@@ -109,7 +117,8 @@
             app:title="@string/pause_on_disconnect_title"
             app:summary="@string/pause_on_disconnect_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="pause_on_disconnect"/>
 
     </PreferenceCategory>
@@ -123,7 +132,8 @@
             app:title="@string/resume_on_bluetooth_connect_title"
             app:summary="@string/resume_on_bluetooth_connect_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="resume_on_bluetooth_connect"/>
 
         <SwitchPreferenceCompat
@@ -131,7 +141,8 @@
             app:title="@string/pause_on_bluetooth_disconnect_title"
             app:summary="@string/pause_on_bluetooth_disconnect_summary"
             app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="pause_on_bluetooth_disconnect"/>
 
     </PreferenceCategory>
@@ -141,51 +152,51 @@
         app:layout="@layout/preference_category_title">
 
         <SwitchPreferenceCompat
-            app:icon="@drawable/ic_volume_down_24dp"
-            app:title="@string/audio_ducking_title"
-            app:summary="@string/audio_ducking_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
-            app:key="audio_ducking"/>
-
-        <SwitchPreferenceCompat
             app:icon="@drawable/ic_pause_24dp"
             app:title="@string/ignore_audio_focus_title"
             app:summary="@string/ignore_audio_focus_summary"
             app:defaultValue="false"
-            app:layout="@layout/list_item_view_switch"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:key="ignore_audio_focus"/>
-
-        <SwitchPreferenceCompat
-            app:iconSpaceReserved="true"
-            app:title="@string/pause_on_transient_focus_loss_title"
-            app:summary="@string/pause_on_transient_focus_loss_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view_switch"
-            app:key="pause_on_transient_focus_loss"/>
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:title="@string/replaygain_header"
+        app:title="@string/advanced_title"
         app:layout="@layout/preference_category_title">
 
-        <ListPreference
-            app:iconSpaceReserved="true"
-            app:title="@string/replaygain_source_mode_title"
-            app:entries="@array/pref_replaygain_source_mode_entries"
-            app:entryValues="@array/pref_replaygain_source_mode_values"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="none"
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_volume_down_24dp"
+            app:title="@string/pause_on_zero_volume_title"
+            app:summary="@string/pause_on_zero_volume_summary"
+            app:defaultValue="false"
             app:layout="@layout/list_item_view"
-            app:key="replaygain_source_mode"/>
+            app:widgetLayout="@layout/preference_switch"
+            app:key="pause_on_zero_volume"/>
 
-        <com.mardous.booming.preferences.dialog.PreAmpPreference
+        <SwitchPreferenceCompat
             app:iconSpaceReserved="true"
-            app:title="@string/replaygain_preamp_title"
-            app:summary="@string/replaygain_preamp_summary"
+            app:title="@string/mp3_index_seeking_title"
+            app:summary="@string/mp3_index_seeking_summary"
+            app:defaultValue="false"
             app:layout="@layout/list_item_view"
-            app:key="replaygain_preamp"/>
+            app:widgetLayout="@layout/preference_switch"
+            app:key="mp3_index_seeking"/>
+
+        <SwitchPreferenceCompat
+            app:title="@string/stop_when_closed_from_recents_title"
+            app:summary="@string/stop_when_closed_from_recents_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="stop_when_closed_from_recents"/>
+
+        <Preference
+            app:summary="@string/stop_when_closed_from_recents_note"
+            app:persistent="false"
+            app:selectable="false"
+            app:layout="@layout/list_item_view"/>
 
     </PreferenceCategory>
 

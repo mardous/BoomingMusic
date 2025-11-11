@@ -1,19 +1,14 @@
 import java.util.Properties
 
-val isNormalBuild: Boolean by rootProject.extra
-
 plugins {
-    alias(libs.plugins.agp)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.android)
+    alias(libs.plugins.android.safeargs)
     id("kotlin-parcelize")
-    alias(libs.plugins.google.ksp)
-    alias(libs.plugins.androidx.safeargs)
-}
-
-if (isNormalBuild) {
-    apply(plugin = "com.google.gms.google-services")
-    apply(plugin = "com.google.firebase.crashlytics")
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose.compiler)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.aboutlibraries)
 }
 
 sealed class Version(
@@ -76,8 +71,8 @@ sealed class Version(
 
 val currentVersion: Version = Version.Stable(
     versionMajor = 1,
-    versionMinor = 0,
-    versionPatch = 4
+    versionMinor = 1,
+    versionPatch = 0
 )
 val currentVersionCode = currentVersion.code
 
@@ -90,7 +85,7 @@ android {
         targetSdk = 35
 
         applicationId = namespace
-        versionCode = 1040300
+        versionCode = 1100300
         versionName = currentVersion.name
         check(versionCode == currentVersionCode)
     }
@@ -132,6 +127,7 @@ android {
     buildFeatures {
         buildConfig = true
         viewBinding = true
+        compose = true
     }
     androidResources {
         generateLocaleConfig = true
@@ -144,9 +140,6 @@ android {
     lint {
         abortOnError = true
         warning += listOf("ImpliedQuantity", "Instantiatable", "MissingQuantity", "MissingTranslation")
-    }
-    kotlinOptions {
-        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
     }
     dependenciesInfo {
         includeInApk = false
@@ -161,6 +154,10 @@ android {
 }
 
 kotlin {
+    compilerOptions {
+        optIn.add("kotlin.RequiresOptIn")
+        freeCompilerArgs.add("-Xannotation-default-target=param-property")
+    }
     jvmToolchain(21)
 }
 
@@ -177,66 +174,62 @@ fun Properties.property(key: String) =
     this.getProperty(key) ?: "$key missing"
 
 dependencies {
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.datetime)
+    implementation(libs.material.components)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.concurrent.futures)
+    implementation(libs.androidx.mediarouter)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.palette)
+    implementation(libs.androidx.preference)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.cardview)
+    implementation(libs.androidx.viewpager)
 
-    // Firebase BoM
-    "normalImplementation"(platform(libs.firebase.bom))
-    "normalImplementation"(libs.firebase.crashlytics)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.runtime.livedata)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    debugImplementation(libs.compose.ui.tooling)
 
-    // Google/JetPack
-    //https://developer.android.com/jetpack/androidx/versions
-    implementation(libs.core.ktx)
-    implementation(libs.core.splashscreen)
-    implementation(libs.appcompat)
-    implementation(libs.fragment.ktx)
+    implementation(libs.bundles.kotlinx)
+    implementation(libs.bundles.lifecycle)
+    implementation(libs.bundles.media3)
+    implementation(libs.bundles.navigation)
+    implementation(libs.bundles.koin)
+    implementation(libs.bundles.coil)
+    implementation(libs.bundles.ktor)
+    implementation(libs.bundles.markwon)
 
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
-    implementation(libs.lifecycle.common.java8)
-
-    implementation(libs.navigation.common.ktx)
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.runtime.ktx)
-    implementation(libs.navigation.ui.ktx)
-
-    implementation(libs.room.ktx)
+    implementation(libs.room)
     ksp(libs.room.compiler)
 
-    implementation(libs.androidx.media)
-    implementation(libs.androidx.cardview)
-    implementation(libs.androidx.recyclerview)
-    implementation(libs.androidx.swiperefreshlayout)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.preference.ktx)
-    implementation(libs.androidx.palette.ktx)
-    implementation(libs.androidx.viewpager)
-    implementation(libs.material.components)
+    implementation(libs.m3color)
+    implementation(libs.coil.transformations)
 
     implementation(libs.balloon)
-    implementation(libs.fastscroll)
+    implementation(libs.compose.markdown)
+    implementation(libs.aboutlibraries)
+
     implementation(libs.fadingedgelayout)
     implementation(libs.advrecyclerview) {
         isTransitive = true
     }
+    implementation(libs.fastscroll)
+
     implementation(libs.customactivityoncrash)
-    implementation(libs.versioncompare)
+    implementation(libs.keyboardvisibilityevent)
 
-    implementation(libs.markdown.core)
-    implementation(libs.markdown.html)
-    implementation(libs.markdown.glide)
-    implementation(libs.markdown.linkify)
-
-    implementation(libs.bundles.ktor)
-
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
-
-    implementation(libs.glide)
-    implementation(libs.glide.okhttp3)
-    ksp(libs.glide.ksp)
-
+    implementation(libs.taglib)
     implementation(libs.jaudiotagger)
+
+    implementation(libs.versioncompare)
+    implementation(libs.commons.text)
+
+    debugImplementation(libs.leakcanary)
 }

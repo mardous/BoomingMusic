@@ -35,7 +35,7 @@
 
         <fragment
             android:id="@+id/mini_player_container"
-            android:name="com.mardous.booming.fragments.other.MiniPlayerFragment"
+            android:name="com.mardous.booming.ui.screen.other.MiniPlayerFragment"
             android:layout_width="match_parent"
             android:layout_height="@dimen/mini_player_height"
             tools:layout="@layout/fragment_mini_player"/>
@@ -44,11 +44,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"
-        style="@style/Widget.Material3.BottomNavigationView"
+        style="?bottomNavigationStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:minHeight="@dimen/bottom_nav_height"
+        app:itemGravity="center"
+        app:itemIconGravity="@integer/bottomNavViewItemIconGravity"
         app:itemHorizontalTranslationEnabled="false"
         app:menu="@menu/menu_bottom_navigation"
         tools:viewBindingType="com.google.android.material.navigation.NavigationBarView"/>

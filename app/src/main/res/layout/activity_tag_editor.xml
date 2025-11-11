@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.mardous.booming.views.WidthFitSquareCardView
+            <com.mardous.booming.ui.component.views.WidthFitSquareCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
@@ -54,7 +54,7 @@
                     tools:src="@tools:sample/avatars"
                     tools:ignore="ContentDescription"/>
 
-            </com.mardous.booming.views.WidthFitSquareCardView>
+            </com.mardous.booming.ui.component.views.WidthFitSquareCardView>
 
             <LinearLayout
                 android:id="@+id/editor_field_container"
@@ -68,7 +68,6 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/action_save"
-        style="@style/Widget.Material3.FloatingActionButton.Primary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

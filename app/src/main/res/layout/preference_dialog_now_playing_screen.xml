@@ -18,8 +18,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:paddingTop="16dp"/>
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"/>
 
     </androidx.viewpager.widget.ViewPager>
+
+    <Spinner
+        android:id="@+id/colorScheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
+
+    <Spinner
+        android:id="@+id/transition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
 
 </LinearLayout>

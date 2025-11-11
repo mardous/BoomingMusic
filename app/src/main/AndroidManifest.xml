@@ -11,6 +11,9 @@
     <uses-permission
         android:name="android.permission.POST_NOTIFICATIONS"
         android:minSdkVersion="33"/>
+    <!-- For reading cover files (i.e. cover.jpg, albumart.jpg, etc.) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"
+        android:minSdkVersion="33" />
     <uses-permission
         android:name="android.permission.READ_MEDIA_AUDIO"
         android:minSdkVersion="33"/>
@@ -52,11 +55,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Booming.FollowSystem"
         tools:ignore="UnusedAttribute">
+
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".ui.screen.MainActivity"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.Booming.SplashScreen"
+            android:theme="@style/Theme.Booming.SplashScreen"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.SongTagEditorActivity"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.AlbumTagEditorActivity"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.ArtistTagEditorActivity"/>
+
+        <activity android:name=".ui.screen.permissions.PermissionsActivity"/>
+
+        <activity
+            android:name=".ui.screen.error.ErrorActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="cat.ereza.customactivityoncrash.RESTART"/>
+            </intent-filter>
+        </activity>
+
+        <!-- In order not to break compatibility with icon-packs -->
+        <activity-alias
+            android:name=".activities.MainActivity"
+            android:targetActivity=".ui.screen.MainActivity"
+            android:exported="true"
+            android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.MUSIC_PLAYER"/>
@@ -145,57 +177,34 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable"/>
 
-        </activity>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name=".activities.tageditor.SongTagEditorActivity"/>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name=".activities.tageditor.AlbumTagEditorActivity"/>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name=".activities.tageditor.ArtistTagEditorActivity"/>
-
-        <activity android:name=".activities.PermissionsActivity"/>
-
-        <activity
-            android:name=".appshortcuts.AppShortcutLauncherActivity"
-            android:launchMode="singleInstance"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-
-        <activity
-            android:name=".activities.ErrorActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="cat.ereza.customactivityoncrash.RESTART"/>
-            </intent-filter>
-        </activity>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
 
         <service
-            android:name=".service.MusicService"
+            android:name=".playback.PlaybackService"
             android:exported="true"
-            android:foregroundServiceType="mediaPlayback"
-            android:label="@string/app_name">
+            android:foregroundServiceType="mediaPlayback">
             <intent-filter>
+                <action android:name="androidx.media3.session.MediaSessionService" />
+                <action android:name="androidx.media3.session.MediaLibraryService" />
                 <action android:name="android.media.browse.MediaBrowserService"/>
             </intent-filter>
         </service>
 
         <receiver
-            android:name="androidx.media.session.MediaButtonReceiver"
+            android:name="androidx.media3.session.MediaButtonReceiver"
             android:exported="true">
             <intent-filter>
-                <action
-                    android:name="android.intent.action.MEDIA_BUTTON"/>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
         <!-- Widgets -->
         <receiver
-            android:name=".appwidgets.AppWidgetBig"
+            android:name="com.mardous.booming.core.appwidgets.AppWidgetBig"
             android:exported="false"
             android:label="@string/app_widget_big_name">
             <intent-filter>
@@ -207,7 +216,7 @@
                 android:resource="@xml/app_widget_big_info"/>
         </receiver>
         <receiver
-            android:name=".appwidgets.AppWidgetSimple"
+            android:name="com.mardous.booming.core.appwidgets.AppWidgetSimple"
             android:exported="false"
             android:label="@string/app_widget_simple_name">
             <intent-filter>
@@ -219,7 +228,7 @@
                 android:resource="@xml/app_widget_simple_info"/>
         </receiver>
         <receiver
-            android:name=".appwidgets.AppWidgetSmall"
+            android:name="com.mardous.booming.core.appwidgets.AppWidgetSmall"
             android:exported="false"
             android:label="@string/app_widget_small_name">
             <intent-filter>
@@ -240,6 +249,11 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
+
+        <provider
+            android:name=".coil.CoverProvider"
+            android:authorities="${applicationId}.cover"
+            android:exported="true" />
 
         <meta-data
             android:name="android.max_aspect"
@@ -271,12 +285,11 @@
     </application>
 
     <queries>
-        <package android:name="com.android.musicfx"/>
         <intent>
-            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE"/>
+            <action android:name="android.media.action.DISPLAY_AUDIO_EFFECT_CONTROL_PANEL" />
         </intent>
         <intent>
-            <action android:name="android.media.browse.MediaBrowserService"/>
+            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE"/>
         </intent>
     </queries>
 

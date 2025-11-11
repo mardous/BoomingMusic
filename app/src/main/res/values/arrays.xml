@@ -35,28 +35,6 @@
         <item>auto</item>
     </string-array>
 
-    <string-array name="pref_cover_swiping_effect_entries">
-        <item>@string/cascading</item>
-        <item>@string/depth</item>
-        <item>@string/hinge</item>
-        <item>@string/horizontal_flip</item>
-        <item>@string/vertical_flip</item>
-        <item>@string/simple</item>
-        <item>@string/stack</item>
-        <item>@string/zoom_out</item>
-    </string-array>
-
-    <string-array name="pref_cover_swiping_effect_values">
-        <item>cascading</item>
-        <item>depth</item>
-        <item>hinge</item>
-        <item>horizontal_flip</item>
-        <item>vertical_flip</item>
-        <item>simple</item>
-        <item>stack</item>
-        <item>zoom-out</item>
-    </string-array>
-
     <string-array name="pref_album_shuffle_mode_entries">
         <item>@string/shuffle_albums_ordered_songs</item>
         <item>@string/ordered_albums_shuffle_songs</item>
@@ -103,18 +81,6 @@
         <item>small</item>
     </string-array>
 
-    <string-array name="pref_replaygain_source_mode_entries">
-        <item>@string/label_none</item>
-        <item>@string/track</item>
-        <item>@string/album</item>
-    </string-array>
-
-    <string-array name="pref_replaygain_source_mode_values">
-        <item>none</item>
-        <item>track</item>
-        <item>album</item>
-    </string-array>
-
     <string-array name="pref_auto_download_metadata_entries">
         <item>@string/always</item>
         <item>@string/only_on_wifi</item>
@@ -125,6 +91,36 @@
         <item>always</item>
         <item>only_wifi</item>
         <item>never</item>
+    </string-array>
+
+    <string-array name="pref_recursive_folder_action_entries">
+        <item>@string/action_play</item>
+        <item>@string/action_shuffle_play</item>
+        <item>@string/action_queue_next</item>
+        <item>@string/action_add_to_playing_queue</item>
+        <item>@string/action_add_to_playlist</item>
+        <item>@string/action_delete_from_device</item>
+    </string-array>
+
+    <string-array name="pref_recursive_folder_action_values">
+        <item>play</item>
+        <item>shuffle_play</item>
+        <item>queue_next</item>
+        <item>queue</item>
+        <item>add_to_playlist</item>
+        <item>delete</item>
+    </string-array>
+
+    <string-array name="pref_play_on_startup_entries">
+        <item>@string/play_on_startup_mode_never</item>
+        <item>@string/play_on_startup_mode_minimized</item>
+        <item>@string/play_on_startup_mode_expanded</item>
+    </string-array>
+
+    <string-array name="pref_play_on_startup_values">
+        <item>never</item>
+        <item>with_minimized_player</item>
+        <item>with_expanded_player</item>
     </string-array>
 
     <string-array name="pref_playlists_cutoff_entries">
@@ -146,17 +142,17 @@
     </string-array>
 
     <string-array name="pref_notification_extra_text_line_entries">
+        <item>@string/artist</item>
         <item>@string/album</item>
         <item>@string/album_artist</item>
         <item>@string/album_and_year</item>
-        <item>@string/next_song_label</item>
     </string-array>
 
     <string-array name="pref_notification_extra_text_line_values">
+        <item>artist</item>
         <item>album</item>
         <item>album_artist</item>
         <item>album_and_year</item>
-        <item>next_song</item>
     </string-array>
 
     <string-array name="pref_notification_priority_entries">
@@ -191,14 +187,64 @@
 
     <string-array name="pref_language_names">
         <item>@string/system_default</item>
+        <item>Arabic</item>
+        <item>Catalan</item>
+        <item>Chinese Simplified</item>
+        <item>Czech</item>
+        <item>Danish</item>
+        <item>Dutch</item>
         <item>English (US)</item>
+        <item>Finnish</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Greek</item>
+        <item>Hebrew</item>
+        <item>Hindi</item>
+        <item>Italian</item>
+        <item>Korean</item>
+        <item>Japanese</item>
+        <item>Norwegian</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
+        <item>Portuguese (Brazilian)</item>
+        <item>Romanian</item>
+        <item>Russian</item>
+        <item>Spanish</item>
         <item>Spanish (Latin America)</item>
+        <item>Swedish</item>
+        <item>Turkish</item>
+        <item>Ukrainian</item>
     </string-array>
 
     <string-array name="pref_language_codes">
         <item>auto</item>
+        <item>ar</item>
+        <item>ca</item>
+        <item>zh-CN</item>
+        <item>cs</item>
+        <item>da</item>
+        <item>nl</item>
         <item>en</item>
+        <item>fi</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>el</item>
+        <item>iw</item>
+        <item>hi</item>
+        <item>it</item>
+        <item>ko</item>
+        <item>ja</item>
+        <item>no</item>
+        <item>pl</item>
+        <item>pt</item>
+        <item>pt-BR</item>
+        <item>ro</item>
+        <item>ru</item>
         <item>es</item>
+        <item>es-419</item>
+        <item>sv</item>
+        <item>tr</item>
+        <item>uk</item>
     </string-array>
 
 </resources>

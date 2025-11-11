@@ -16,7 +16,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playerAlbumCoverFragment"
-            android:name="com.mardous.booming.fragments.player.PlayerAlbumCoverFragment"
+            android:name="com.mardous.booming.ui.screen.player.cover.CoverPagerFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constrainedHeight="true"
@@ -30,7 +30,7 @@
             android:id="@+id/mask"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/shadow_up_full_theme"
+            android:background="@drawable/shadow_up_gradient"
             app:layout_constraintBottom_toBottomOf="@id/playerAlbumCoverFragment"
             app:layout_constraintEnd_toEndOf="@id/playerAlbumCoverFragment"
             app:layout_constraintStart_toStartOf="@id/playerAlbumCoverFragment"
@@ -39,51 +39,52 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playbackControlsFragment"
-            android:name="com.mardous.booming.fragments.player.styles.gradientstyle.GradientPlayerControlsFragment"
+            android:name="com.mardous.booming.ui.screen.player.styles.gradientstyle.GradientPlayerControlsFragment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constrainedHeight="true"
             app:layout_constraintTop_toBottomOf="@id/playerAlbumCoverFragment"
-            app:layout_constraintBottom_toTopOf="@+id/darkColorBackground"
+            app:layout_constraintBottom_toTopOf="@+id/bottomActionContainer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout="@layout/fragment_gradient_player_playback_controls"/>
 
         <LinearLayout
-            android:id="@+id/darkColorBackground"
+            android:id="@+id/bottomActionContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:minHeight="?listPreferredItemHeightSmall"
+            android:paddingVertical="4dp"
+            android:gravity="center_horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:background="?colorSurfaceVariant">
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/nextSongLabel"
-                android:layout_width="0dp"
-                android:layout_height="?listPreferredItemHeightSmall"
-                android:layout_weight="1"
-                android:paddingStart="16dp"
-                android:paddingEnd="8dp"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:textAppearance="?textAppearanceSubtitle1"
-                android:drawableStart="@drawable/ic_queue_music_24dp"
-                android:drawablePadding="16dp"
-                android:background="?rectSelector"
-                tools:text="@tools:sample/lorem/random"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/openQueueButton"
+                style="?materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/playing_queue_label"
+                app:icon="@drawable/ic_queue_music_24dp"
+                app:iconTint="?colorOnSurface"/>
 
-            <ImageButton
-                android:id="@+id/volumeIcon"
-                android:layout_width="@dimen/adaptive_icon_size"
-                android:layout_height="@dimen/adaptive_icon_size"
-                android:padding="8dp"
-                android:background="?attr/roundSelector"
-                android:scaleType="center"
-                app:srcCompat="@drawable/ic_volume_up_24dp"
-                tools:ignore="ContentDescription"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/showLyricsButton"
+                style="?materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/action_show_lyrics"
+                app:icon="@drawable/ic_lyrics_outline_24dp"
+                app:iconTint="?colorOnSurface" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/volumeAction"
+                style="?materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/sound_settings"
+                app:icon="@drawable/ic_volume_up_24dp"
+                app:iconTint="?colorOnSurface" />
 
         </LinearLayout>
 

@@ -32,7 +32,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/select_preset"
-        style="@style/Widget.Material3.Button.IconButton"
+        style="?materialIconButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/select_preset"
@@ -44,7 +44,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save_preset"
-        style="@style/Widget.Material3.Button.IconButton"
+        style="?materialIconButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/save_preset"
@@ -86,7 +86,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/EqBand0SeekBar"
         tools:ignore="HardcodedText"/>
 
-    <com.mardous.booming.views.AnimSlider
+    <com.mardous.booming.ui.component.views.AnimSlider
         android:id="@+id/EqBand0SeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/EqBand1SeekBar"
         tools:ignore="HardcodedText"/>
 
-    <com.mardous.booming.views.AnimSlider
+    <com.mardous.booming.ui.component.views.AnimSlider
         android:id="@+id/EqBand1SeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/EqBand2SeekBar"
         tools:ignore="HardcodedText"/>
 
-    <com.mardous.booming.views.AnimSlider
+    <com.mardous.booming.ui.component.views.AnimSlider
         android:id="@+id/EqBand2SeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -206,7 +206,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/EqBand3SeekBar"
         tools:ignore="HardcodedText"/>
 
-    <com.mardous.booming.views.AnimSlider
+    <com.mardous.booming.ui.component.views.AnimSlider
         android:id="@+id/EqBand3SeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -246,7 +246,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/EqBand4SeekBar"
         tools:ignore="HardcodedText"/>
 
-    <com.mardous.booming.views.AnimSlider
+    <com.mardous.booming.ui.component.views.AnimSlider
         android:id="@+id/EqBand4SeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -288,7 +288,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/EqBand5SeekBar"
         tools:ignore="HardcodedText"/>
 
-    <com.mardous.booming.views.AnimSlider
+    <com.mardous.booming.ui.component.views.AnimSlider
         android:id="@+id/EqBand5SeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

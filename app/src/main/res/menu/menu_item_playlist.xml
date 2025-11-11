@@ -1,22 +1,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_shuffle_all"
-        android:title="@string/shuffle_all_label"/>
+        android:id="@+id/action_shuffle_play"
+        android:title="@string/action_shuffle_play"/>
     <item
         android:id="@+id/action_play_next"
         android:title="@string/action_queue_next"/>
     <item
-        android:id="@+id/menu_add_to"
-        android:title="@string/add_to_label">
-        <menu>
-            <item
-                android:id="@+id/action_add_to_playing_queue"
-                android:title="@string/playing_queue_label"/>
-            <item
-                android:id="@+id/action_add_to_playlist"
-                android:title="@string/playlist_label"/>
-        </menu>
-    </item>
+        android:id="@+id/action_add_to_playing_queue"
+        android:title="@string/action_add_to_playing_queue" />
+    <item
+        android:id="@+id/action_add_to_playlist"
+        android:title="@string/action_add_to_playlist" />
+    <item
+        android:id="@+id/action_edit_playlist"
+        android:title="@string/action_edit_playlist"/>
     <item
         android:id="@+id/action_export_playlist"
         android:title="@string/action_export_playlist"/>

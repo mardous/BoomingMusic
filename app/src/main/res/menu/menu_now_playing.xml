@@ -4,25 +4,36 @@
 		android:id="@+id/action_playing_queue"
 		android:title="@string/playing_queue_label"
 		android:icon="@drawable/ic_queue_music_24dp"
-		android:visible="false"
-		app:showAsAction="always"/>
+		app:showAsAction="never"/>
 	<item
 		android:id="@+id/action_favorite"
 		android:title="@string/action_add_to_favorites"
 		android:icon="@drawable/ic_favorite_outline_24dp"
-		app:showAsAction="always"/>
+		app:showAsAction="never"/>
+	<item
+		android:id="@+id/action_sleep_timer"
+		android:title="@string/action_sleep_timer"
+		android:icon="@drawable/ic_timer_24dp"
+		app:showAsAction="never"/>
 	<item
 		android:id="@+id/action_show_lyrics"
 		android:title="@string/action_show_lyrics"
 		android:icon="@drawable/ic_lyrics_outline_24dp"
-		app:showAsAction="ifRoom"/>
+		app:showAsAction="never"/>
 	<item
 		android:id="@+id/action_equalizer"
 		android:title="@string/equalizer_label"
+		android:icon="@drawable/ic_equalizer_24dp"
 		app:showAsAction="never"/>
 	<item
 		android:id="@+id/action_sound_settings"
 		android:title="@string/sound_settings"
+		android:icon="@drawable/ic_volume_up_24dp"
+		app:showAsAction="never"/>
+	<item
+		android:id="@+id/action_add_to_playlist"
+		android:title="@string/action_add_to_playlist"
+		android:icon="@drawable/ic_playlist_add_24dp"
 		app:showAsAction="never"/>
 	<item
 		android:id="@+id/menu_go_to"
@@ -43,25 +54,26 @@
 	<item
 		android:id="@+id/action_tag_editor"
 		android:title="@string/action_tag_editor"
+		android:icon="@drawable/ic_edit_24dp"
 		app:showAsAction="never"/>
 	<item
 		android:id="@+id/action_web_search"
 		android:title="@string/web_search"
+		android:icon="@drawable/ic_language_24dp"
 		app:showAsAction="never"/>
 	<item
 		android:id="@+id/action_share_now_playing"
 		android:title="@string/action_share"
+		android:icon="@drawable/ic_share_24dp"
 		app:showAsAction="never"/>
 	<item
 		android:id="@+id/action_delete_from_device"
 		android:title="@string/action_delete_from_device"
+		android:icon="@drawable/ic_delete_24dp"
 		app:showAsAction="never"/>
 	<item
 		android:id="@+id/action_details"
 		android:title="@string/action_details"
-		app:showAsAction="never"/>
-	<item
-		android:id="@+id/action_sleep_timer"
-		android:title="@string/action_sleep_timer"
+		android:icon="@drawable/ic_info_24dp"
 		app:showAsAction="never"/>
 </menu>

@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_scan"
-        android:icon="@drawable/ic_scanner_24dp"
-        android:title="@string/scan_media"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/action_hierarchy_view"
+        android:title="@string/action_hierarchy_view"
+        android:checkable="true"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_go_to_start_directory"
         android:title="@string/action_go_to_start_directory"

@@ -17,68 +17,51 @@
 
 package com.mardous.booming.extensions.utilities
 
+import android.util.Log
 import kotlinx.serialization.json.Json
-import java.text.DecimalFormat
-import java.util.Locale
+import java.text.Normalizer
 
+private val SPACES_REGEX = Regex("\\s+")
 const val DEFAULT_INFO_DELIMITER = " • "
 
-fun buildInfoString(vararg parts: String?, delimiter: String = DEFAULT_INFO_DELIMITER): String {
+fun String.collapseSpaces() = trim().replace(SPACES_REGEX, " ")
+
+fun String.normalize(): String =
+    Normalizer.normalize(this, Normalizer.Form.NFD)
+        .replace("\\p{M}".toRegex(), "")
+        .trim()
+        .replace(Regex("\\s+"), " ")
+
+fun buildInfoString(vararg parts: Any?, delimiter: String = DEFAULT_INFO_DELIMITER): String {
     val sb = StringBuilder()
     if (parts.isNotEmpty()) {
         for (part in parts) {
-            if (part.isNullOrEmpty()) {
+            val str = part?.toString()
+            if (str.isNullOrEmpty()) {
                 continue
             }
             if (sb.isNotEmpty()) {
                 sb.append(delimiter)
             }
-            sb.append(part)
+            sb.append(str)
         }
     }
     return sb.toString()
-}
-
-fun StringBuilder.appendWithDelimiter(text: CharSequence, delimiter: String = DEFAULT_INFO_DELIMITER) =
-    apply {
-        if (isNotEmpty()) {
-            append(delimiter)
-        }
-        append(text)
-    }
-
-fun Int.formatTime() = toLong().formatTime()
-
-fun Long.formatTime() = String.format(
-    Locale.getDefault(),
-    "%d:%02d.%03d",
-    this / 1000 / 60, //minutes
-    this / 1000 % 60, //seconds
-    this % 100
-)
-
-fun Int.isInRange(from: Int, to: Int): Boolean = this in from until to
-
-fun <T> List<T>.toMutableListIfRequired(): MutableList<T> = if (this is MutableList) this else toMutableList()
-
-fun Float.formatted(): String {
-    var value = this
-    val arr = arrayOf("", "K", "M", "B", "T", "P", "E")
-    var index = 0
-    while (value / 1000 >= 1) {
-        value /= 1000
-        index++
-    }
-    val decimalFormat = DecimalFormat("#.##")
-    return String.format("%s %s", decimalFormat.format(value.toDouble()), arr[index])
 }
 
 inline fun <reified T : Enum<T>> String.toEnum() =
     enumValues<T>().firstOrNull { it.name.equals(this, ignoreCase = true) }
 
 inline fun <reified T> String?.deserialize(defaultValue: T): T {
+    val lenientJson = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+        coerceInputValues = true
+    }
     return if (!isNullOrEmpty())
-        runCatching<T> { Json.decodeFromString(this) }.getOrDefault(defaultValue)
+        runCatching<T> { lenientJson.decodeFromString(this) }
+            .onFailure { Log.d("BoomingUtilities", "Json.decodeFromString($this): error", it) }
+            .getOrDefault(defaultValue)
     else defaultValue
 }
 

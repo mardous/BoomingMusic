@@ -23,7 +23,7 @@
         android:layout_marginTop="12dp"
         android:paddingStart="?dialogPreferredPadding"
         android:paddingEnd="?dialogPreferredPadding"
-        android:background="?rectSelector"
+        android:background="?selectableItemBackground"
         android:descendantFocusability="blocksDescendants">
 
         <com.google.android.material.checkbox.MaterialCheckBox

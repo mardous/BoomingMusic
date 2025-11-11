@@ -10,23 +10,14 @@
     <style name="Theme.Booming.FollowSystem" parent="Base.Theme.Booming.Adaptive"/>
 
     <style name="Theme.Booming.DynamicColors" parent="@style/Theme.Material3.DayNight.NoActionBar">
-        <item name="roundSelector">@drawable/round_selector</item>
         <item name="rectSelector">@drawable/rect_selector</item>
         <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
-        <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
     </style>
 
     <style name="Theme.Booming.SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="MaterialButtonStyle" parent="Widget.Material3.Button">
-        <item name="iconGravity">textStart</item>
-        <item name="iconTint">?attr/colorControlNormal</item>
-        <item name="android:paddingTop">@dimen/button_padding_vertical</item>
-        <item name="android:paddingBottom">@dimen/button_padding_vertical</item>
     </style>
 
     <style name="ToolbarStyle" parent="Widget.Material3.Toolbar">
@@ -43,31 +34,13 @@
         <item name="thumbHeight">36dp</item>
     </style>
 
-    <style name="FloatingButtonStyle" parent="Widget.Material3.FloatingActionButton.Primary">
-        <item name="borderWidth">0dp</item>
-    </style>
-
     <style name="Widget.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
         <item name="android:contentDescription" tools:ignore="PrivateResource">
             @string/abc_action_menu_overflow_description
         </item>
     </style>
 
-    <style name="CenteredCheckBoxTheme">
-        <item name="checkboxStyle">@style/CheckBoxStyle</item>
-    </style>
-
-    <style name="CheckBoxStyle" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
-        <item name="android:gravity">center_vertical|end</item>
-    </style>
-
     <!-- MORE WIDGET STYLES -->
-
-    <style name="EQCardView" parent="Widget.Material3.CardView.Elevated">
-        <item name="cardCornerRadius">@dimen/m3_card_corner_radius</item>
-        <item name="cardElevation">0dp</item>
-        <item name="contentPadding">16dp</item>
-    </style>
 
     <style name="HomeActionButton" parent="Widget.Material3.Button.Icon">
         <item name="android:insetTop">0dp</item>
@@ -85,6 +58,20 @@
         <item name="android:gravity">start|center_vertical</item>
     </style>
 
+    <style name="PlayerIconButton" parent="Widget.Material3.Button.IconButton">
+        <item name="iconGravity">textStart</item>
+        <item name="iconTint">?colorOnSurface</item>
+        <item name="rippleColor">?colorControlHighlight</item>
+    </style>
+
+    <style name="PlayerIconButton.Medium">
+        <item name="iconSize">32dp</item>
+    </style>
+
+    <style name="PlayerIconButton.Large">
+        <item name="iconSize">64dp</item>
+    </style>
+
     <style name="SearchChipStyle" parent="Widget.Material3.Chip.Filter">
         <item name="android:checked">false</item>
         <item name="android:textSize">16sp</item>
@@ -94,22 +81,13 @@
         <item name="chipStartPadding">10dp</item>
     </style>
 
-    <style name="MusicProgressSlider">
-        <item name="android:progressDrawable">@android:color/transparent</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:thumbOffset">0dp</item>
-        <item name="android:padding">0dp</item>
-        <item name="android:thumb">@drawable/progress_slider_thumb</item>
-    </style>
-
     <style name="MenuButtonStyle" parent="Widget.Material3.Button.IconButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:focusableInTouchMode">false</item>
         <item name="android:focusable">false</item>
         <item name="icon">@drawable/ic_more_vert_24dp</item>
-        <item name="iconTint">?colorControlNormal</item>
+        <item name="iconTint">?colorOnSurface</item>
     </style>
 
     <style name="BottomSheetStyle" parent="Widget.Material3.BottomSheet">
@@ -118,16 +96,31 @@
         <item name="shapeAppearance">?attr/shapeAppearanceCornerMedium</item>
     </style>
 
-    <!-- TEXT APPEARANCE -->
-    <style name="TextAppearance.Booming.Notification.Title"
-           parent="@android:style/TextAppearance.Material.Notification.Title"/>
+    <style name="ModalBottomSheetStyle" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">?colorSurfaceContainer</item>
+        <item name="shapeAppearance">?shapeAppearanceCornerLarge</item>
+    </style>
 
-    <style name="TextAppearance.Booming.Notification.Line2"
-           parent="@android:style/TextAppearance.Material.Notification.Line2"/>
+    <style name="ModalBottomSheetStyle.EdgeToEdge">
+        <item name="paddingBottomSystemWindowInsets">false</item>
+    </style>
 
     <style name="CircularShapeAppearance" parent="">
         <item name="cornerSize">50%</item>
         <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="Base.SquigglySlider" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressTint">?colorPrimary</item>
+        <item name="android:thumbTint">?colorPrimary</item>
+        <item name="android:progressBackgroundTint">?android:attr/textColorTertiary</item>
+        <item name="android:clickable">true</item>
+        <item name="android:splitTrack">false</item>
+        <item name="android:thumb">@drawable/squiggly_thumb</item>
+    </style>
+
+    <style name="SquigglySlider" parent="Base.SquigglySlider">
+        <item name="android:progressDrawable">@drawable/media_squiggly_progress</item>
     </style>
 
 </resources>

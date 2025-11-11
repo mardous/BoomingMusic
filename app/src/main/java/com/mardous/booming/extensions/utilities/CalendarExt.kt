@@ -24,6 +24,7 @@ import java.text.DateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.GregorianCalendar
+import java.util.Locale
 
 private const val MS_PER_MINUTE = (60 * 1000).toLong()
 private const val MS_PER_DAY = 24 * 60 * MS_PER_MINUTE
@@ -139,7 +140,7 @@ fun Calendar.getCutoffTimeMillis(cutoff: String): Long {
         PlaylistCutoff.YESTERDAY -> getElapsedDays(1)
         PlaylistCutoff.THIS_WEEK -> getElapsedWeek()
         PlaylistCutoff.PAST_THREE_MONTHS -> getElapsedMonths(3)
-        PlaylistCutoff.LAST_YEAR -> getElapsedYear()
+        PlaylistCutoff.THIS_YEAR -> getElapsedYear()
         PlaylistCutoff.THIS_MONTH -> getElapsedMonth()
         else -> getElapsedMonth()
     }
@@ -161,6 +162,6 @@ fun Context.dateStr(timeMillis: Long): String {
 }
 
 fun Date.format(context: Context): String {
-    val resLocale = context.resources.configuration.locales[0]
+    val resLocale = context.resources.configuration.locales[0] ?: Locale.US
     return DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT, resLocale).format(this)
 }

@@ -26,6 +26,7 @@ import android.provider.MediaStore.MediaColumns
 import androidx.core.content.contentValuesOf
 import androidx.core.net.toUri
 import com.mardous.booming.R
+import com.mardous.booming.core.sort.SortMode
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.plurals
 import com.mardous.booming.util.FileUtil
@@ -33,7 +34,10 @@ import java.io.File
 import java.util.Locale
 
 fun createAlbumArtThumbFile(): File =
-    File(FileUtil.thumbsDirectory(), String.format(Locale.ROOT, "Thumb_%d", System.currentTimeMillis()))
+    File(
+        FileUtil.thumbsDirectory(),
+        "Thumb_%d".format(System.currentTimeMillis())
+    )
 
 fun ContentResolver.insertAlbumArt(albumId: Long, path: String) {
     val artworkUri = "content://media/external/audio/albumart".toUri()
@@ -60,42 +64,67 @@ fun ContentResolver.deleteAlbumArt(albumId: Long) {
  * iTunes uses for example 1002 for track 2 CD1 or 3011 for track 11 CD3.
  * this method converts those values to normal track numbers
  */
-fun Int.trackNumber(): Int = this % 1000
+fun Int.asReadableTrackNumber(): Int = this % 1000
 
-fun Int.songsStr(context: Context): String = context.plurals(R.plurals.x_songs, this)
+fun Int.asNumberOfSongs(context: Context): String = context.plurals(R.plurals.x_songs, this)
 
-fun Int.timesStr(context: Context): String {
+fun Int.asNumberOfTimes(context: Context): String {
     return if (this <= 0) {
         context.getString(R.string.label_never)
     } else context.plurals(R.plurals.x_times, this)
 }
 
-fun Long.albumCoverUri(): Uri =
-    ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"), this)
+fun Long.asAlbumCoverUri(): Uri =
+    ContentUris.withAppendedId("content://media/external/audio/albumart".toUri(), this)
 
-fun Long.durationStr(): String {
-    var minutes: Long = this / 1000 / 60
-    val seconds: Long = this / 1000 % 60
-    return if (minutes < 60) {
-        String.format(Locale.getDefault(), "%01d:%02d", minutes, seconds)
+fun Long.asReadableDuration(readableFormat: Boolean = false): String {
+    val totalSeconds = this / 1000
+    val hours = totalSeconds / 3600
+    val minutes = (totalSeconds % 3600) / 60
+    val seconds = totalSeconds % 60
+
+    return if (hours > 0) {
+        if (readableFormat) {
+            "%d h %d m %d s".format(hours, minutes, seconds)
+        } else {
+            "%d:%02d:%02d".format(hours, minutes, seconds)
+        }
     } else {
-        val hours = minutes / 60
-        minutes %= 60
-        String.format(Locale.getDefault(), "%d:%02d:%02d", hours, minutes, seconds)
+        if (readableFormat) {
+            "%d m %d s".format(minutes, seconds)
+        } else {
+            "%d:%02d".format(minutes, seconds)
+        }
     }
 }
 
-fun String?.sectionName(): String {
+fun String?.asSectionName(sortMode: SortMode? = null): String {
     if (this.isNullOrEmpty())
         return ""
 
-    val pronouns = arrayOf("the ", "an ", "a ")
-    var title = this.trim().lowercase()
-    for (pronoun in pronouns) {
-        if (title.startsWith(pronoun)) {
-            title = title.substring(pronoun.length)
-            break
-        }
-    }
+    val title = normalizeForSorting(sortMode?.ignoreArticles == true)
     return if (title.isEmpty()) "" else title[0].toString().lowercase()
 }
+
+fun String.normalizeForSorting(
+    ignoreArticles: Boolean,
+    language: String = Locale.getDefault().language
+): String {
+    return if (ignoreArticles) {
+        val articles = ARTICLES_BY_LANGUAGE[language] ?: return this
+        val regex = Regex("^(${articles.joinToString("|")})\\s+", RegexOption.IGNORE_CASE)
+        return trim().replace(regex, "")
+    } else {
+        this
+    }
+}
+
+private val ARTICLES_BY_LANGUAGE = mapOf(
+    "en" to listOf("the", "a", "an"),
+    "es" to listOf("el", "la", "los", "las", "un", "una"),
+    "fr" to listOf("le", "la", "les", "un", "une"),
+    "de" to listOf("der", "die", "das", "ein", "eine"),
+    "it" to listOf("il", "lo", "la", "l’", "i", "gli", "un", "una"),
+    "pt" to listOf("o", "a", "os", "as", "um", "uma"),
+    "nl" to listOf("de", "het", "een")
+)

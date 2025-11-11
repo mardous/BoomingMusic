@@ -26,11 +26,11 @@ import androidx.annotation.CheckResult
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.createBitmap
 import androidx.core.graphics.drawable.DrawableCompat
+import androidx.core.graphics.scale
 import java.io.OutputStream
 import kotlin.math.roundToInt
-import androidx.core.graphics.createBitmap
-import androidx.core.graphics.scale
 
 fun Context.getDrawableCompat(@DrawableRes resId: Int) = ContextCompat.getDrawable(this, resId)
 

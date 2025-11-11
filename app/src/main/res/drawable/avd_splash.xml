@@ -11,29 +11,29 @@
             <path
                 android:name="path"
                 android:pathData="M 105.09 80.9 L 195.34 133.29 C 199.26 135.57 201.5 139.46 201.5 144 C 201.5 148.54 199.26 152.43 195.34 154.71 L 105.09 207.1 C 101.16 209.38 96.65 209.39 92.7 207.12 C 88.76 204.85 86.5 200.94 86.5 196.39 L 86.5 91.61 C 86.5 87.06 88.76 83.15 92.7 80.88 C 96.65 78.61 101.16 78.62 105.09 80.9 Z"
-                android:fillColor="#0D0754"/>
+                android:fillColor="@color/splash_color_1"/>
             <path
                 android:name="path_1"
                 android:pathData="M 86.51 190.86 L 114.9 86.6 L 107.25 82.16 C 102.68 79.01 98.88 78.69 95.2 79.77 C 93.53 80.36 87.66 82.55 86.61 89.89 L 86.51 190.86 Z"
-                android:fillColor="#4E75F3"/>
+                android:fillColor="@color/splash_color_2"/>
             <path
                 android:name="path_2"
                 android:pathData="M 86.51 196.94 L 86.51 190.86 L 105.6 120.75 L 146.63 182.98 L 105.09 207.1 C 100.94 209.44 96.39 209.13 93.36 207.47 C 87.98 204.54 87.23 200.68 86.79 199.12 L 86.51 196.94 Z"
-                android:fillColor="#2E4DB3"/>
+                android:fillColor="@color/splash_color_3"/>
             <path
                 android:name="path_3"
                 android:pathData="M 172.97 157.32 C 172.97 155.54 174.7 154.08 176.83 154.08 L 182.39 154.08 C 184.52 154.08 186.06 155.55 186.26 157.32 L 186.54 159.81 L 173.14 167.59 L 172.97 157.32 Z"
-                android:fillColor="#AAE2FA"
+                android:fillColor="@color/splash_color_4"
                 android:fillAlpha="0"/>
             <path
                 android:name="path_4"
                 android:pathData="M 166.62 171.38 L 153.26 179.13 L 153.26 150.17 C 153.26 148.21 155 146.61 157.13 146.61 L 162.68 146.61 C 164.81 146.61 166.54 148.21 166.55 150.17 L 166.62 171.38 Z"
-                android:fillColor="#AAE2FA"
+                android:fillColor="@color/splash_color_4"
                 android:fillAlpha="0"/>
             <path
                 android:name="path_5"
                 android:pathData="M 133.33 162.77 L 133.32 161.42 C 133.31 159.57 135.06 158.07 137.19 158.07 L 142.75 158.07 C 144.88 158.07 146.61 159.57 146.61 161.42 L 146.63 182.98 L 133.33 162.77 Z"
-                android:fillColor="#AAE2FA"
+                android:fillColor="@color/splash_color_4"
                 android:fillAlpha="0"/>
         </vector>
     </aapt:attr>
