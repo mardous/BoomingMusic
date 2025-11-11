@@ -133,9 +133,9 @@
     <string name="permission_bluetooth_title">Urządzenia w pobliżu</string>
     <string name="permission_bluetooth_description">Dostęp do pobliskich urządzeń jest wymagany do wykrywania urządzeń Bluetooth</string>
     <string name="permission_bluetooth_denied">Nie przyznano dostępu do pobliskich urządzeń.</string>
-    <string name="permission_read_images_title">Read images (optional)</string>
-    <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
-        If you don\'t plan to use this feature, you can choose not to grant it.</string>
+    <string name="permission_read_images_title">Odczyt obrazów (opcjonalny)</string>
+    <string name="permission_read_images_summary">Pozwala aplikacji Booming Music znajdować okładki albumów w folderach z muzyką.
+        Nie jest wymagane, jeśli nie zależy ci na tej funkcji.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">Alarmy i przypomnienia (opcjonalnie)</string>
     <string name="permission_exact_alarms_description">Aby zegar uśpienia działał poprawnie, potrzebna jest zgoda na ustawianie alarmów</string>
@@ -539,7 +539,7 @@
     <string name="app_shortcut_shuffle_all_short">Losuj</string>
     <string name="app_shortcut_top_tracks_short">Najczęściej odtwarzane</string>
     <string name="app_shortcut_last_added_short">Ostatnio dodane</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Ulubione</string>
     <!-- About page -->
     <string name="action_about">O programie</string>
     <string name="application">Aplikacja</string>
@@ -675,14 +675,14 @@
     <string name="swipe_to_dismiss_title">Swipe down to dismiss</string>
     <string name="swipe_to_dismiss_summary">Swipe down on the mini player to stop playback and clear the playing queue.</string>
     <string name="circle_button_title">Okrągły przycisk odtwarzania</string>
-    <string name="swipe_album_cover_title">Swipe on album cover</string>
+    <string name="swipe_album_cover_title">Zmiana utworu gestem</string>
     <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
     <string name="queue_height_title">Half-screen queue height</string>
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Pojedyncze naciśnięcie okładki albumu</string>
     <string name="double_tap_on_album_cover_title">Dwukrotne dotknięcie okładki</string>
     <string name="long_press_on_album_cover_title">Długie przytrzymanie na okładce</string>
-    <string name="small_image_title">Small image</string>
+    <string name="small_image_title">Mniejsza okładka</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
     <string name="now_playing_corner_radius_title">Zaokrąglenie okładki</string>
     <string name="now_playing_corner_radius_summary">Określa, jak bardzo zaokrąglone mają być rogi okładki albumu.</string>
@@ -732,7 +732,7 @@
     <string name="ignore_audio_focus_summary">Zawsze odtwarzaj dźwięk w tle niezależnie od tego, co jest odtwarzane.</string>
     <string name="pause_on_zero_volume_title">Wstrzymaj przy zerowej głośności</string>
     <string name="pause_on_zero_volume_summary">Wstrzymuje odtwarzanie, gdy głośność spadnie do zera, i wznawia, gdy poziom głośności zostanie zwiększony. Działa także w tle.</string>
-    <string name="mp3_index_seeking_title">MP3 index seeking</string>
+    <string name="mp3_index_seeking_title">Precyzyjne przewijanie MP3</string>
     <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
         Use only if seeking fails on some VBR files.
         Requires app restart.</string>
@@ -744,9 +744,9 @@
     <string name="use_folder_album_cover_summary">Jeśli utwór nie posiada okładki albumu, aplikacja poszuka jej w folderze. Może to wydłużyć wczytywanie.</string>
     <string name="online_artist_images_title">Pobieraj obrazy artysty</string>
     <string name="online_artist_images_summary">Zależy od ustawień pobierania metadanych.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
-    <string name="online_album_covers_title">Download missing album covers</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="preferred_image_size_title">Preferowany rozmiar obrazu</string>
+    <string name="online_album_covers_title">Pobieraj brakujące okładki</string>
+    <string name="online_album_covers_summary">Pobrane obrazy nie są osadzane w plikach audio; są tylko widoczne w aplikacji, zależnie od ustawień pobierania metadanych.</string>
     <string name="delete_downloaded_lyrics_title">Usuń wszystkie pobrane teksty</string>
     <string name="delete_downloaded_lyrics_summary">Tylko pobrane przez aplikację. Nie dotyczy tych z tagów ID3v2 ani plików LRC.</string>
     <string name="lyrics_cleared">Tekst został wyczyszczony.</string>
@@ -815,7 +815,7 @@
     <string name="zoom_out">Oddalanie</string>
     <string name="simple">Prosty</string>
     <string name="stack">Stos</string>
-    <string name="parallax">Parallax</string>
+    <string name="parallax">Efekt paralaksy</string>
     <string name="add_after_playing_track">Dodaj po bieżącym utworze</string>
     <string name="add_tracks_sequentially">Dodawaj utwory jeden po drugim</string>
     <string name="albums_shuffle">Losowe odtwarzanie albumów</string>
