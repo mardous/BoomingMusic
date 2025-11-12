@@ -556,9 +556,9 @@
     <string name="beta_testers_title">Beta testerzy</string>
     <string name="telegram_chat">Czat na Telegramie</string>
     <string name="telegram_chat_summary">Dołącz do czatu w Telegramie i otrzymuj informacje o nowych wersjach i wiadomościach.</string>
-    <string name="view_profile_on_github">Zobacz profil na GitHub</string>
-    <string name="follow_on_telegram">DM na Telegramie</string>
-    <string name="write_an_email">Napisz e-mail</string>
+    <string name="view_profile_on_github">Zobacz profil GitHub</string>
+    <string name="follow_on_telegram">Wyślij wiadomość na Telegramie</string>
+    <string name="write_an_email">Wyślij email</string>
     <string name="support_development">Wesprzyj rozwój</string>
     <string name="help_with_translations">Pomóż z tłumaczeniem</string>
     <string name="help_with_translations_summary">Możesz przyczynić się do rozwoju projektu pomagając w tłumaczeniu Booming Music na inne języki.</string>
