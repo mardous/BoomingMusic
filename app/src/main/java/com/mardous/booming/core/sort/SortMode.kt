@@ -245,6 +245,7 @@ sealed class AlbumSortMode(
             KeySortItem.Artist,
             KeySortItem.Year,
             KeySortItem.SongCount,
+            KeySortItem.DateAdded,
             DescendingItem
         )
     )
@@ -256,6 +257,7 @@ sealed class AlbumSortMode(
             KeySortItem.Title,
             KeySortItem.Year,
             KeySortItem.SongCount,
+            KeySortItem.DateAdded,
             DescendingItem
         )
     )
@@ -267,6 +269,7 @@ sealed class AlbumSortMode(
             KeySortItem.Title,
             KeySortItem.Year,
             KeySortItem.SongCount,
+            KeySortItem.DateAdded,
             DescendingItem
         )
     )
@@ -283,6 +286,7 @@ sealed class AlbumSortMode(
 
             SortKey.Year -> sortedWith(compareBy { it.year })
             SortKey.SongCount -> sortedWith(compareBy { it.songCount })
+            SortKey.DateAdded -> sortedWith(compareBy { it.dateAdded })
             else -> this
         }
         return if (selectedDescending) albums.reversed() else albums
