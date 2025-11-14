@@ -448,7 +448,7 @@ sealed class FileSortMode(
             when (selectedKey) {
                 SortKey.AZ -> songs.sortedWith(compareBy { it.title })
                 SortKey.Track -> songs.sortedWith(compareBy {
-                    if (it.trackNumber > 0) it.trackNumber.asReadableTrackNumber() else it.fileName
+                    if (it.trackNumber > 0) it.trackNumber.asReadableTrackNumber() else -1
                 })
                 SortKey.DateAdded -> songs.sortedWith(compareBy { it.fileDateAdded })
                 SortKey.DateModified -> songs.sortedWith(compareBy { it.fileDateModified })
