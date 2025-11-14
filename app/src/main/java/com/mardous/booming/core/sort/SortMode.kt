@@ -109,18 +109,6 @@ sealed class SortMode(
         val value = getString(key, null)
         return SortKey.entries.firstOrNull { it.value == value } ?: default
     }
-
-    companion object {
-        private val ARTICLES_BY_LANGUAGE = mapOf(
-            "en" to listOf("the", "a", "an"),
-            "es" to listOf("el", "la", "los", "las", "un", "una"),
-            "fr" to listOf("le", "la", "les", "un", "une"),
-            "de" to listOf("der", "die", "das", "ein", "eine"),
-            "it" to listOf("il", "lo", "la", "l’", "i", "gli", "un", "una"),
-            "pt" to listOf("o", "a", "os", "as", "um", "uma"),
-            "nl" to listOf("de", "het", "een")
-        )
-    }
 }
 
 sealed class SongSortMode(
