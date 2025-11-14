@@ -123,7 +123,7 @@
     <string name="deleting_songs">Usuwanie utworów, czekaj…</string>
     <string name="song_x_of_x">%1$d z %2$d • %3$s</string>
     <string name="no_equalizer">Nie znaleziono korektora.</string>
-    <string name="audio_focus_denied">Odmowa skupienia dźwięku.</string>
+    <string name="audio_focus_denied">Odmówiono priorytetu audio.</string>
     <string name="no_audio_ID">Błędne ID audio.</string>
     <string name="playback_error_code">Błąd odtwarzania (%s)</string>
     <string name="unplayable_file">Nie udało się odtworzyć tego utworu.</string>
@@ -610,7 +610,7 @@
     <string name="gestures_header">Gesty</string>
     <string name="headphones_header">Słuchawki</string>
     <string name="bluetooth_header">Bluetooth</string>
-    <string name="audio_focus_header">Skoncentrowanie dźwięku</string>
+    <string name="audio_focus_header">Priorytet audio</string>
     <string name="shuffle_mode_header">Tryb losowy</string>
     <string name="display_header">Wyświetlanie</string>
     <string name="backup_restore_header">Kopia zapasowa/przywracanie danych</string>
@@ -635,9 +635,9 @@
     <string name="lyrics_custom_font_title">Własna czcionka</string>
     <string name="lyrics_custom_font_summary">Importuj i użyj własnej czcionki dla tekstów piosenek.</string>
     <string name="lyrics_import_custom_font_title">Wybierz własną czcionkę</string>
-    <string name="lyrics_syllable_mode_title">Tekst \"Słowo po słowie\"</string>
+    <string name="lyrics_syllable_mode_title">Zsynchronizowany tekst</string>
     <string name="lyrics_syllable_mode_summary">Umożliwia wyświetlanie tekstu piosenki zsynchronizowanego słowo po słowie. Działa tylko wtedy, gdy dostępny jest odpowiedni tekst i zgodny format (np. LRC lub TTML).</string>
-    <string name="lyrics_effects_note">Zaawansowane efekty poprawiają wrażenia wizualne, ale mogą wymagać więcej zasobów i baterii.</string>
+    <string name="lyrics_effects_note">Zaawansowane efekty może i wyglądają dobrze, ale mogą wymagać więcej zasobów i baterii.</string>
     <string name="lyrics_gradient_background_title">Tło gradientowe</string>
     <string name="lyrics_gradient_background_summary">Wyświetla animowane tło gradientowe z kolorów okładki aktualnie odtwarzanej piosenki. Dostępne tylko w widoku pełnoekranowym.</string>
     <string name="lyrics_blur_effect_title">Efekt rozmycia</string>
@@ -646,9 +646,9 @@
     <string name="lyrics_shadow_effect_summary">Dodaje cień pod aktualną linią, aby poprawić czytelność.</string>
     <string name="lyrics_progressive_coloring_title">Stopniowe kolorowanie słów</string>
     <string name="lyrics_progressive_coloring_summary">Animuje aktywne linie stopniową zmianą koloru, zamiast podświetlać całą linię od razu.</string>
-    <string name="lyrics_bold_synced_title">Pogrubiona czcionka dla tekstu zsynchronizowanego</string>
+    <string name="lyrics_bold_synced_title">Pogrubiona czcionka dla tekstów zsynchronizowanych</string>
     <string name="lyrics_bold_synced_summary">Wyświetla zsynchronizowany tekst piosenki pogrubioną czcionką.</string>
-    <string name="lyrics_bold_unsynced_title">Pogrubiona czcionka dla tekstu</string>
+    <string name="lyrics_bold_unsynced_title">Pogrubiona czcionka</string>
     <string name="lyrics_bold_unsynced_summary">Wyświetla niesynchronizowany tekst piosenki pogrubioną czcionką.</string>
     <string name="lyrics_line_spacing_title">Odstępy</string>
     <string name="lyrics_line_spacing_summary">Dostosuj odstępy między wersami tekstu piosenki.</string>
@@ -728,9 +728,9 @@
     <string name="resume_on_bluetooth_connect_summary">Wznawia odtwarzanie po podłączeniu słuchawek Bluetooth (A2DP).</string>
     <string name="pause_on_bluetooth_disconnect_title">Wstrzymaj po rozłączeniu bluetooth</string>
     <string name="pause_on_bluetooth_disconnect_summary">Wstrzymuje odtwarzanie po rozłączeniu słuchawek Bluetooth (A2DP). Zalecane.</string>
-    <string name="ignore_audio_focus_title">Ignoruj ostrość dźwięku</string>
-    <string name="ignore_audio_focus_summary">Zawsze odtwarzaj dźwięk w tle niezależnie od tego, co jest odtwarzane.</string>
-    <string name="pause_on_zero_volume_title">Wstrzymaj przy zerowej głośności</string>
+    <string name="ignore_audio_focus_title">Ignoruj priorytet audio</string>
+    <string name="ignore_audio_focus_summary">Zawsze odtwarza dźwięk w tle niezależnie od tego, co jest obecnie na ekranie.</string>
+    <string name="pause_on_zero_volume_title">Wstrzymuj przy zerowej głośności</string>
     <string name="pause_on_zero_volume_summary">Wstrzymuje odtwarzanie, gdy głośność spadnie do zera, i wznawia, gdy poziom głośności zostanie zwiększony. Działa także w tle.</string>
     <string name="mp3_index_seeking_title">Precyzyjne przewijanie MP3</string>
     <string name="mp3_index_seeking_summary">Wczytuje cały plik MP3 do pamięci podręcznej, aby umożliwić dokładniejsze przewijanie.
@@ -748,7 +748,7 @@
     <string name="online_album_covers_title">Pobieraj brakujące okładki</string>
     <string name="online_album_covers_summary">Pobrane obrazy nie są osadzane w plikach audio; są tylko widoczne w aplikacji, zależnie od ustawień pobierania metadanych.</string>
     <string name="delete_downloaded_lyrics_title">Usuń wszystkie pobrane teksty</string>
-    <string name="delete_downloaded_lyrics_summary">Tylko pobrane przez aplikację. Nie dotyczy tych z tagów ID3v2 ani plików LRC.</string>
+    <string name="delete_downloaded_lyrics_summary">Tylko te pobrane przez aplikację. Nie dotyczy tych z tagów ID3v2 ani plików LRC.</string>
     <string name="lyrics_cleared">Tekst został wyczyszczony.</string>
     <!-- Library preferences -->
     <string name="ignore_articles_when_sorting_title">Ignoruj rodzajniki podczas sortowania</string>
@@ -781,7 +781,7 @@
     <string name="stop_when_closed_from_recents_title">Zatrzymaj odtwarzanie po zamknięciu z ostatnich</string>
     <string name="stop_when_closed_from_recents_summary">Zatrzymuje odtwarzanie po zamknięciu aplikacji z listy ostatnich aplikacji.</string>
     <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią
-        lub baterią mogą ignorować to ustawienie i zawsze zatrzymywać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
+        lub baterią mogą to zignorować i zatrzymać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
     <string name="rotation_lock_title">Blokada orientacji ekranu</string>
     <string name="rotation_lock_summary">Przydatna w sytuacjach, gdy muzyka zatrzymuje się po obróceniu ekranu z powodu ograniczeń producenta.</string>
     <!-- Preference values -->
