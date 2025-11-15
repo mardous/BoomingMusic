@@ -6,7 +6,7 @@
     <string name="action_queue_next">下一个队列</string>
     <string name="shuffle_all_label">全部随机</string>
     <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
+    <string name="repeat_mode"></string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">播放/暂停</string>
@@ -125,7 +125,7 @@
     <string name="no_equalizer">未找到均衡器。</string>
     <string name="audio_focus_denied">音频焦点被拒绝。</string>
     <string name="no_audio_ID">错误的音频ID。</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">音乐面板错误。</string>
     <string name="unplayable_file">无法播放这首歌曲。</string>
     <string name="permission_external_storage_title">存储访问</string>
     <string name="permission_external_storage_description">此应用需要访问您的设备存储权限才能播放音乐</string>
@@ -133,9 +133,8 @@
     <string name="permission_bluetooth_title">附近设备</string>
     <string name="permission_bluetooth_description">此应用需要附近的设备权限来检查蓝牙设备</string>
     <string name="permission_bluetooth_denied">附近设备权限被拒绝。</string>
-    <string name="permission_read_images_title">Read images (optional)</string>
-    <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
-        If you don\'t plan to use this feature, you can choose not to grant it.</string>
+    <string name="permission_read_images_title">查看图片</string>
+    <string name="permission_read_images_summary"></string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">设置精确闹钟(可选)</string>
     <string name="permission_exact_alarms_description">睡眠计时器需获取设置精确闹钟的权限才能正常工作</string>
@@ -257,7 +256,7 @@
     <string name="action_details">详细信息</string>
     <string name="action_set_as_start_directory">设置为起始目录</string>
     <string name="action_go_to_start_directory">转到起始目录</string>
-    <string name="action_hierarchy_view">Hierarchy view</string>
+    <string name="action_hierarchy_view"></string>
     <string name="new_start_directory">新建起始目录: %s</string>
     <string name="action_scan">扫描</string>
     <string name="scan_media">扫描媒体</string>
