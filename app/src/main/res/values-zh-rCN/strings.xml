@@ -603,7 +603,7 @@
     <string name="tab_mode_title">标签标题模式</string>
     <string name="hold_tab_to_search_title">按住标签以搜索</string>
     <string name="hold_tab_to_search_summary">长按任意导航栏选项卡打开搜索界面。</string>
-    <string name="larger_header_image_title">Larger header image</string>
+    <string name="larger_header_image_title">更大的封面图像</string>
     <string name="larger_header_image_summary">在专辑、艺人和播放列表的详细信息中显示更大的封面图像。</string>
     <string name="lyrics_center_current_line_title">Center current line</string>
     <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
@@ -757,8 +757,8 @@
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
-    <string name="rotation_lock_title">Rotation lock</string>
-    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
+    <string name="rotation_lock_title">旋转锁定</string>
+    <string name="rotation_lock_summary">锁定设备显示方向，以避免因某些厂商特性导致设备旋转时音乐停止播放。</string>
     <!-- Preference values -->
     <string name="light_theme_name">亮色</string>
     <string name="dark_theme_name">深色</string>
