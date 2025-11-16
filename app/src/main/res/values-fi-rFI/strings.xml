@@ -577,7 +577,6 @@
     <string name="metadata_summary">Albumin ja artistien kuvien asetukset.</string>
     <string name="library_title">Kirjasto</string>
     <string name="library_summary">Soittolistojen ja poissulkemis- ja sisällyttämissuodattimien asetukset.</string>
-    <string name="notification_title">Ilmoitus</string>
     <string name="advanced_title">Lisäasetukset</string>
     <string name="advanced_summary">Sovelluksen sisäinen kieli ja muut asetukset edistyneille käyttäjille.</string>
     <string name="update_title">Päivitä</string>
@@ -756,7 +755,6 @@
     <string name="min_song_duration_title">Kappaleen vähimmäiskesto</string>
     <string name="min_song_duration_summary">Kuinka monta sekuntia (vähintään) täytyy kestää kappaletta, jotta se näkyisi kirjastossa.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Muu rivi tekstiä</string>
     <string name="app_language_title">Sovelluksen kieli</string>
     <string name="backup_data_title">Varmuuskopioi sovellustiedot</string>
     <string name="backup_app_data_summary">Luo tiedosto, joka sisältää sovelluksen olennaisia tietoja ja tallenna se ulkoiseen tallennustilaan.</string>

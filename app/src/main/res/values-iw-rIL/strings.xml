@@ -593,7 +593,6 @@
     <string name="metadata_summary">הגדרות הקשורות לתמונות אלבום ואמנים.</string>
     <string name="library_title">ספרייה</string>
     <string name="library_summary">הגדרות לרשימות השמעה ולמסנני הכללה/הוצאה.</string>
-    <string name="notification_title">הודעה</string>
     <string name="advanced_title">מתקדם</string>
     <string name="advanced_summary">הגדרות שפה ואחרות באפליקציה למשתמשים מתקדמים.</string>
     <string name="update_title">עדכן</string>
@@ -774,7 +773,6 @@
     <string name="min_song_duration_title">משך שיר מינימלי</string>
     <string name="min_song_duration_summary">כמה שניות (לפחות) שיר חייב להימשך כדי שיוצג בספרייה שלך.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">שורת טקסט נוספת</string>
     <string name="app_language_title">שפת האפליקציה</string>
     <string name="backup_data_title">גיבוי נתוני האפליקציה</string>
     <string name="backup_app_data_summary">צור קובץ המכיל נתוני אפליקציה חיוניים ושמור אותו באחסון החיצוני.</string>

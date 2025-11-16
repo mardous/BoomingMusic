@@ -577,7 +577,6 @@
     <string name="metadata_summary">Configuració relacionada amb les imatges d\'àlbums i artistes.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_summary">Configuració de llistes de reproducció i filtres d\'exclusió/inclusió.</string>
-    <string name="notification_title">Notificació</string>
     <string name="advanced_title">Avançat</string>
     <string name="advanced_summary">L\'idioma de l\'aplicació i altres ajustos per a usuaris avançats.</string>
     <string name="update_title">Actualitza</string>
@@ -756,7 +755,6 @@
     <string name="min_song_duration_title">Durada mínima d\'una cançó</string>
     <string name="min_song_duration_summary">Quants segons (pel cap baix) ha de durar una cançó per mostrar-la a la vostra biblioteca.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Línia addicional de text</string>
     <string name="app_language_title">Idioma de l\'aplicació</string>
     <string name="backup_data_title">Còpia de seguretat de dades de l\'aplicació</string>
     <string name="backup_app_data_summary">Crea un fitxer amb dades essencials de l\'aplicació i el desa a l\'emmagatzematge.</string>

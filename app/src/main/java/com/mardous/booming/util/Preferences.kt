@@ -381,12 +381,6 @@ object Preferences : KoinComponent {
     val minimumSongDuration: Int
         get() = preferences.getInt(MINIMUM_SONG_DURATION, 30)
 
-    val notificationExtraTextLine: String
-        get() = preferences.requireString(
-            NOTIFICATION_EXTRA_TEXT_LINE,
-            NotificationExtraText.ALBUM_NAME
-        )
-
     val rotationLockEnabled: Boolean
         get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)
 
@@ -528,15 +522,6 @@ interface ImageSize {
     }
 }
 
-interface NotificationExtraText {
-    companion object {
-        const val ARTIST_NAME = "artist"
-        const val ALBUM_NAME = "album"
-        const val ALBUM_ARTIST_NAME = "album_artist"
-        const val ALBUM_AND_YEAR = "album_and_year"
-    }
-}
-
 interface UpdateSearchMode {
     companion object {
         const val EVERY_DAY = "every_day"
@@ -621,7 +606,6 @@ const val ALBUM_MINIMUM_SONGS = "album_minimum_songs"
 const val MINIMUM_SONG_DURATION = "minimum_song_duration"
 const val ENABLE_ROTATION_LOCK = "enable_rotation_lock"
 const val STOP_WHEN_CLOSED_FROM_RECENTS = "stop_when_closed_from_recents"
-const val NOTIFICATION_EXTRA_TEXT_LINE = "notification_extra_text_line"
 const val LANGUAGE_NAME = "language_name"
 const val BACKUP_DATA = "backup_data"
 const val RESTORE_DATA = "restore_data"

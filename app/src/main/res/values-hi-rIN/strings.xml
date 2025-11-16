@@ -575,7 +575,6 @@
     <string name="metadata_summary">एल्बम और कलाकारों की छवियों से संबंधित सेटिंग्स।</string>
     <string name="library_title">लायब्रेरी</string>
     <string name="library_summary">प्लेलिस्ट और निष्कासन/समावेशन फ़िल्टर के लिए सेटिंग्स।</string>
-    <string name="notification_title">नोटिफिकेशन</string>
     <string name="advanced_title">आधुनिक</string>
     <string name="advanced_summary">उपयोगकर्ताओं के लिए उन्नत सेटिंग्स और इन-ऐप भाषा।</string>
     <string name="update_title">अपडेट</string>
@@ -754,7 +753,6 @@
     <string name="min_song_duration_title">न्यूनतम गाने की अवधि</string>
     <string name="min_song_duration_summary">आपकी लाइब्रेरी में दिखाने के लिए एक गाने को कितने सेकंड (कम से कम) तक चलना चाहिए?</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">अतिरिक्त पाठ की पंक्ति</string>
     <string name="app_language_title">ऐप की भाषा</string>
     <string name="backup_data_title">बैकअप ऐप डेटा</string>
     <string name="backup_app_data_summary">एक फ़ाइल बनाएं जिसमें आवश्यक ऐप डेटा हो और इसे बाहरी स्टोरेज में सहेजें।</string>

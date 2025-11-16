@@ -593,7 +593,6 @@
     <string name="metadata_summary">Налаштування, пов\'язані із зображеннями альбомів та виконавців.</string>
     <string name="library_title">Бібліотека</string>
     <string name="library_summary">Налаштування списків відтворення та фільтрів виключення/включення.</string>
-    <string name="notification_title">Сповіщення</string>
     <string name="advanced_title">Розширені</string>
     <string name="advanced_summary">Мова програми та інші розширені налаштування.</string>
     <string name="update_title">Оновлення</string>
@@ -772,7 +771,6 @@
     <string name="min_song_duration_title">Мінімальна тривалість пісні</string>
     <string name="min_song_duration_summary">Мінімальна тривалість пісні в секундах, щоб вона відображалася у вашій бібліотеці.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Додатковий рядок тексту</string>
     <string name="app_language_title">Мова програми</string>
     <string name="backup_data_title">Резервне копіювання даних програми</string>
     <string name="backup_app_data_summary">Створює файл з основними даними програми та зберігає його на зовнішнє сховище.</string>

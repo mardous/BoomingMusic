@@ -576,7 +576,6 @@ Ideal para podcasts e gravações.</string>
     <string name="metadata_summary">Configurações relacionadas a imagens de álbuns e artistas.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_summary">Configurações de playlists e filtros de exclusão/inclusão.</string>
-    <string name="notification_title">Notificação</string>
     <string name="advanced_title">Avançado</string>
     <string name="advanced_summary">Idioma do aplicativo e outras configurações para usuários avançados.</string>
     <string name="update_title">Atualização</string>
@@ -755,7 +754,6 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="min_song_duration_title">Duração mínima da música</string>
     <string name="min_song_duration_summary">Quantos segundos (no mínimo) deve ter uma música para aparecer na sua biblioteca.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Linha de texto adicional</string>
     <string name="app_language_title">Idioma do aplicativo</string>
     <string name="backup_data_title">Backup de dados</string>
     <string name="backup_app_data_summary">Cria um arquivo contendo dados essenciais do aplicativo e salva-o no armazenamento externo.</string>

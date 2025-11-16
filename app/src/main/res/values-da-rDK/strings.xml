@@ -577,7 +577,6 @@
     <string name="metadata_summary">Indstillinger relateret til album og kunstnere billeder.</string>
     <string name="library_title">Bibliotek</string>
     <string name="library_summary">Indstillinger for afspilningslister og udelukkelse/inklusion filtre.</string>
-    <string name="notification_title">Underretning</string>
     <string name="advanced_title">Avanceret</string>
     <string name="advanced_summary">In-app sprog og andre indstillinger for avancerede brugere.</string>
     <string name="update_title">Opdater</string>
@@ -756,7 +755,6 @@
     <string name="min_song_duration_title">Minimum sang varighed</string>
     <string name="min_song_duration_summary">Hvor mange sekunder (mindst) skal vare en sang for at blive vist i dit bibliotek.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Yderligere tekstlinje</string>
     <string name="app_language_title">App sprog</string>
     <string name="backup_data_title">Sikkerhedskopiér appdata</string>
     <string name="backup_app_data_summary">Opret en fil, der indeholder vigtige app-data, og gem den til ekstern lagring.</string>

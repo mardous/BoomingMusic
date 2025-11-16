@@ -575,7 +575,6 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="metadata_summary">Ajustes relacionados a imágenes de álbumes y artistas.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_summary">Ajustes de las listas y filtros de exclusión/inclusión.</string>
-    <string name="notification_title">Notificación</string>
     <string name="advanced_title">Avanzado</string>
     <string name="advanced_summary">Idioma de la app y otros ajustes para usuarios expertos.</string>
     <string name="update_title">Actualización</string>
@@ -752,7 +751,6 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="min_song_duration_title">Duración mínima de la canción</string>
     <string name="min_song_duration_summary">Cuántos segundos debería (como mínimo) durar una canción para aparecer en la biblioteca.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Línea extra de texto</string>
     <string name="app_language_title">Idioma de la app</string>
     <string name="backup_data_title">Respaldar datos</string>
     <string name="backup_app_data_summary">Crea un archivo que contiene los datos esenciales de la app y lo guarda en el almacenamiento.</string>

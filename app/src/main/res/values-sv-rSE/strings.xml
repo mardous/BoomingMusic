@@ -577,7 +577,6 @@
     <string name="metadata_summary">Inställningar relaterade till album och artister bilder.</string>
     <string name="library_title">Bibliotek</string>
     <string name="library_summary">Inställningar för spellistor och uteslutning/inkludering filter.</string>
-    <string name="notification_title">Avisering</string>
     <string name="advanced_title">Avancerat</string>
     <string name="advanced_summary">In-app språk och andra inställningar för avancerade användare.</string>
     <string name="update_title">Uppdatera</string>
@@ -756,7 +755,6 @@
     <string name="min_song_duration_title">Minsta låtlängd</string>
     <string name="min_song_duration_summary">Hur många sekunder (åtminstone) måste pågå en låt som visas i ditt bibliotek.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Ytterligare textrad</string>
     <string name="app_language_title">Appens språk</string>
     <string name="backup_data_title">Säkerhetskopiera appdata</string>
     <string name="backup_app_data_summary">Skapa en fil som innehåller viktiga appdata och spara den till extern lagring.</string>

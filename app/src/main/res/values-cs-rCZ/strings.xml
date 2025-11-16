@@ -593,7 +593,6 @@
     <string name="metadata_summary">Nastavení týkající se obrázků alba a umělců.</string>
     <string name="library_title">Knihovna</string>
     <string name="library_summary">Nastavení seznamů skladeb a filtrů pro vyloučení/zahrnutí.</string>
-    <string name="notification_title">Oznamování</string>
     <string name="advanced_title">Rozšířené</string>
     <string name="advanced_summary">Jazyk aplikace a další nastavení pro pokročilé uživatele.</string>
     <string name="update_title">Aktualizovat</string>
@@ -772,7 +771,6 @@
     <string name="min_song_duration_title">Minimální doba trvání skladby</string>
     <string name="min_song_duration_summary">Kolik sekund (alespoň) musí trvat skladba, aby se zobrazila ve vaší knihovně.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Další řádek textu</string>
     <string name="app_language_title">Jazyk aplikace</string>
     <string name="backup_data_title">Zálohovat data aplikace</string>
     <string name="backup_app_data_summary">Vytvořte soubor obsahující základní data aplikace a uložte jej do externího úložiště.</string>

@@ -577,7 +577,6 @@
     <string name="metadata_summary">Ρυθμίσεις που σχετίζονται με εικόνες άλμπουμ και καλλιτεχνών.</string>
     <string name="library_title">Βιβλιοθήκη</string>
     <string name="library_summary">Ρυθμίσεις για λίστες αναπαραγωγής και φίλτρα αποκλεισμού/ένταξης.</string>
-    <string name="notification_title">Ειδοποίηση</string>
     <string name="advanced_title">Προχωρημένα</string>
     <string name="advanced_summary">Γλώσσα στην εφαρμογή και άλλες ρυθμίσεις για προχωρημένους χρήστες.</string>
     <string name="update_title">Ενημέρωση</string>
@@ -756,7 +755,6 @@
     <string name="min_song_duration_title">Ελάχιστη διάρκεια τραγουδιού</string>
     <string name="min_song_duration_summary">Πόσα δευτερόλεπτα (τουλάχιστον) πρέπει να διαρκέσουν ένα τραγούδι που θα εμφανιστεί στη βιβλιοθήκη σας.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Πρόσθετη γραμμή κειμένου</string>
     <string name="app_language_title">Γλώσσα εφαρμογής</string>
     <string name="backup_data_title">Αντίγραφο δεδομένων εφαρμογών</string>
     <string name="backup_app_data_summary">Δημιουργήστε ένα αρχείο που περιέχει βασικά δεδομένα εφαρμογών και αποθηκεύστε το στον εξωτερικό χώρο αποθήκευσης.</string>
