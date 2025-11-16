@@ -614,8 +614,8 @@
     <string name="lyrics_gradient_background_summary">使用当前歌曲的封面颜色显示动画渐变背景。</string>
     <string name="lyrics_blur_effect_title">模糊效果</string>
     <string name="lyrics_blur_effect_summary">模糊正播放的歌词的上下的几行歌词。</string>
-    <string name="lyrics_shadow_effect_title">Shadow effect</string>
-    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
+    <string name="lyrics_shadow_effect_title">阴影效果</string>
+    <string name="lyrics_shadow_effect_summary">为当前歌词行添加阴影，以提升可读性。</string>
     <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
     <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
     <string name="lyrics_bold_synced_title">粗体显示同步歌词</string>
