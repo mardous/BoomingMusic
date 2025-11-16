@@ -125,7 +125,7 @@
     <string name="no_equalizer">未找到均衡器。</string>
     <string name="audio_focus_denied">音频焦点被拒绝。</string>
     <string name="no_audio_ID">错误的音频ID。</string>
-    <string name="playback_error_code">音乐面板错误。</string>
+    <string name="playback_error_code">音乐面板错误 (%s)。</string>
     <string name="unplayable_file">无法播放这首歌曲。</string>
     <string name="permission_external_storage_title">存储访问</string>
     <string name="permission_external_storage_description">此应用需要访问您的设备存储权限才能播放音乐</string>
@@ -133,7 +133,7 @@
     <string name="permission_bluetooth_title">附近设备</string>
     <string name="permission_bluetooth_description">此应用需要附近的设备权限来检查蓝牙设备</string>
     <string name="permission_bluetooth_denied">附近设备权限被拒绝。</string>
-    <string name="permission_read_images_title">查看图片</string>
+    <string name="permission_read_images_title">查看照片（可选）</string>
     <string name="permission_read_images_summary"></string>
     <string name="permission_read_images_denied">您需要授予访问所有文件的权限以允许软件读取封面图片。</string>
     <string name="permission_exact_alarms_title">设置精确闹钟(可选)</string>
@@ -616,8 +616,8 @@
     <string name="lyrics_blur_effect_summary">模糊正播放的歌词的上下的几行歌词。</string>
     <string name="lyrics_shadow_effect_title">阴影效果</string>
     <string name="lyrics_shadow_effect_summary">为当前歌词行添加阴影，以提升可读性。</string>
-    <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
-    <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
+    <string name="lyrics_progressive_coloring_title">渐变歌词动画</string>
+    <string name="lyrics_progressive_coloring_summary">使用渐变的文字颜色过渡为当前歌词添加动画效果。</string>
     <string name="lyrics_bold_synced_title">粗体显示同步歌词</string>
     <string name="lyrics_bold_synced_summary">以粗体显示同步歌词。</string>
     <string name="lyrics_bold_unsynced_title">粗体显示非同步歌词</string>
@@ -636,19 +636,19 @@
     <string name="now_playing_screen_title">样式</string>
     <string name="open_on_play_title">播放时打开</string>
     <string name="open_on_play_summary">开始播放歌曲后自动展开播放面板。</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
+    <string name="squiggly_seek_bar_title">波浪形进度条</string>
+    <string name="squiggly_seek_bar_summary">使用波浪进度条而非直线型滑块。</string>
     <string name="scrolling_text_title">滚动显示歌名</string>
     <string name="scrolling_text_summary">在歌曲名称过长时滚动显示，可能会更加耗电。</string>
     <string name="extra_controls_title">额外控制</string>
     <string name="extra_controls_summary">为迷你播放器添加额外的控制</string>
     <string name="adaptive_controls_title">自适应控件</string>
     <string name="adaptive_controls_summary">改变迷你播放器的空间以适配当前播放器风格。</string>
-    <string name="swipe_to_dismiss_title">Swipe down to dismiss</string>
-    <string name="swipe_to_dismiss_summary">Swipe down on the mini player to stop playback and clear the playing queue.</string>
+    <string name="swipe_to_dismiss_title">向下滑动以暂停</string>
+    <string name="swipe_to_dismiss_summary">在软件底部小播放器上向下滑动以暂停播放。</string>
     <string name="circle_button_title">圆形播放按钮</string>
-    <string name="swipe_album_cover_title">Swipe on album cover</string>
-    <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
+    <string name="swipe_album_cover_title">专辑封面滑动切歌</string>
+    <string name="swipe_album_cover_summary">在播放器模式下的专辑封面上左/右滑动以切换到上一首/下一首。</string>
     <string name="queue_height_title">Half-screen queue height</string>
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">单击封面</string>
@@ -752,8 +752,7 @@
     <string name="restore_backup_summary">从以前的备份中还原应用数据(和状态)。</string>
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
-    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
-        or battery management may ignore this setting and always stop the app when removed from recents.</string>
+    <string name="stop_when_closed_from_recents_note">注意：某些内存管理或电池管理较为严格的设备可能会忽略此设置，并在从最近使用的应用列表中移除时始终停止该应用。</string>
     <string name="rotation_lock_title">旋转锁定</string>
     <string name="rotation_lock_summary">锁定设备显示方向，防止某些系统下因屏幕旋转导致音乐播放中断。</string>
     <!-- Preference values -->
