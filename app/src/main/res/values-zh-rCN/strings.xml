@@ -134,7 +134,8 @@
     <string name="permission_bluetooth_description">此应用需要附近的设备权限来检查蓝牙设备</string>
     <string name="permission_bluetooth_denied">附近设备权限被拒绝。</string>
     <string name="permission_read_images_title">查看照片（可选）</string>
-    <string name="permission_read_images_summary"></string>
+    <string name="permission_read_images_summary">为了帮您自动查找并显示歌曲的专辑封面，Booming Music需要获取访问您音乐文件夹的权限。
+您可以根据需要决定是否授予此权限。</string>
     <string name="permission_read_images_denied">您需要授予访问所有文件的权限以允许软件读取封面图片。</string>
     <string name="permission_exact_alarms_title">设置精确闹钟(可选)</string>
     <string name="permission_exact_alarms_description">睡眠计时器需获取设置精确闹钟的权限才能正常工作</string>
@@ -256,7 +257,7 @@
     <string name="action_details">详细信息</string>
     <string name="action_set_as_start_directory">设置为起始目录</string>
     <string name="action_go_to_start_directory">转到起始目录</string>
-    <string name="action_hierarchy_view"></string>
+    <string name="action_hierarchy_view">层级视图</string>
     <string name="new_start_directory">新建起始目录: %s</string>
     <string name="action_scan">扫描</string>
     <string name="scan_media">扫描媒体</string>
@@ -705,9 +706,9 @@
     <string name="pause_on_zero_volume_title">在静音时停止播放</string>
     <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <string name="mp3_index_seeking_title">MP3 index seeking</string>
-    <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
-        Use only if seeking fails on some VBR files.
-        Requires app restart.</string>
+    <string name="mp3_index_seeking_summary">将整个 MP3 文件预加载到内存中以便跳转，而不依赖 Xing 头部信息。
+仅在部分 VBR 文件跳转失败时使用。
+启用后需重启应用方可生效。</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">自动下载元数据</string>
     <string name="ignore_media_store_album_covers_title">忽略媒体商店的封面</string>
