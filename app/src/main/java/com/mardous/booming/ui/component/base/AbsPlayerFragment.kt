@@ -252,6 +252,33 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
 
     override fun gestureDetected(gestureType: GestureType): Boolean {
         return when (gestureType) {
+            is GestureType.Tap -> onQuickActionEvent(Preferences.coverSingleTapAction)
+            is GestureType.LongPress -> onQuickActionEvent(Preferences.coverLongPressAction)
+            is GestureType.DoubleTap -> {
+                when (gestureType.type) {
+                    GestureType.DoubleTap.TYPE_LEFT_EDGE -> {
+                        val action = Preferences.coverLeftDoubleTapAction
+                            .takeIf { it != NowPlayingAction.Nothing }
+                            ?: Preferences.coverDoubleTapAction
+
+                        onQuickActionEvent(action)
+                    }
+
+                    GestureType.DoubleTap.TYPE_RIGHT_EDGE -> {
+                        val action = Preferences.coverRightDoubleTapAction
+                            .takeIf { it != NowPlayingAction.Nothing }
+                            ?: Preferences.coverDoubleTapAction
+
+                        onQuickActionEvent(action)
+                    }
+
+                    GestureType.DoubleTap.TYPE_CENTER -> {
+                        onQuickActionEvent(Preferences.coverDoubleTapAction)
+                    }
+
+                    else -> false
+                }
+            }
             is GestureType.Fling -> {
                 when (gestureType.direction) {
                     GestureType.Fling.DIRECTION_LEFT -> {
@@ -278,9 +305,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                     else -> false
                 }
             }
-            is GestureType.Tap -> onQuickActionEvent(Preferences.coverSingleTapAction)
-            is GestureType.DoubleTap -> onQuickActionEvent(Preferences.coverDoubleTapAction)
-            is GestureType.LongPress -> onQuickActionEvent(Preferences.coverLongPressAction)
         }
     }
 
@@ -419,6 +443,16 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
 
             NowPlayingAction.SoundSettings -> {
                 findNavController().navigate(R.id.nav_sound_settings)
+                true
+            }
+
+            NowPlayingAction.SeekBackward -> {
+                playerViewModel.seekBack()
+                true
+            }
+
+            NowPlayingAction.SeekForward -> {
+                playerViewModel.seekForward()
                 true
             }
 
