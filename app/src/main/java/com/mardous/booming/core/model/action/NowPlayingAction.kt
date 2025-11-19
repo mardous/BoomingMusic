@@ -38,5 +38,7 @@ enum class NowPlayingAction(@StringRes val titleRes: Int) {
     SoundSettings(R.string.sound_settings),
     WebSearch(R.string.web_search),
     SaveAlbumCover(R.string.save_cover),
+    SeekBackward(R.string.action_seek_backward_10s),
+    SeekForward(R.string.action_seek_forward_10s),
     Nothing(R.string.label_nothing);
 }

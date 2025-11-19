@@ -14,6 +14,8 @@
     <string name="action_next">Next</string>
     <string name="action_previous">Previous</string>
     <string name="action_cancel">Cancel</string>
+    <string name="action_seek_backward_10s">Seek backward 10s</string>
+    <string name="action_seek_forward_10s">Seek forward 10s</string>
     <string name="action_cycle_repeat">Cycle repeat mode</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>

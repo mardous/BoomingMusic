@@ -424,6 +424,16 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 true
             }
 
+            NowPlayingAction.SeekBackward -> {
+                playerViewModel.seekBack()
+                true
+            }
+
+            NowPlayingAction.SeekForward -> {
+                playerViewModel.seekForward()
+                true
+            }
+
             NowPlayingAction.Nothing -> false
         }
     }
