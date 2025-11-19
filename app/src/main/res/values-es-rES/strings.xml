@@ -577,7 +577,6 @@
     <string name="metadata_summary">Settings related to album and artists images.</string>
     <string name="library_title">Library</string>
     <string name="library_summary">Settings for playlists and exclusion/inclusion filters.</string>
-    <string name="notification_title">Notification</string>
     <string name="advanced_title">Advanced</string>
     <string name="advanced_summary">In-app language and other settings for advanced users.</string>
     <string name="update_title">Update</string>
@@ -756,7 +755,6 @@
     <string name="min_song_duration_title">Minimum song duration</string>
     <string name="min_song_duration_summary">How many seconds (at least) must last a song to be shown in your library.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Additional line of text</string>
     <string name="app_language_title">App language</string>
     <string name="backup_data_title">Backup app data</string>
     <string name="backup_app_data_summary">Create a file containing essential app data and save it to external storage.</string>
