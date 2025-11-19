@@ -576,7 +576,6 @@
     <string name="metadata_summary">Configurações relacionadas a imagens de álbuns e artistas.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_summary">Configurações para listas de reprodução e filtros de exclusão/inclusão.</string>
-    <string name="notification_title">notificação</string>
     <string name="advanced_title">Avançado</string>
     <string name="advanced_summary">Idioma no aplicativo e outras configurações para usuários avançados.</string>
     <string name="update_title">Atualização</string>
@@ -755,7 +754,6 @@
     <string name="min_song_duration_title">Duração mínima da música</string>
     <string name="min_song_duration_summary">Quantos segundos (pelo menos) devem durar uma música para ser exibida em sua biblioteca.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Linha adicional de texto</string>
     <string name="app_language_title">Idioma do aplicativo</string>
     <string name="backup_data_title">Backup de dados</string>
     <string name="backup_app_data_summary">Criar um arquivo contendo dados essenciais do aplicativo e salvá-lo no armazenamento externo.</string>
