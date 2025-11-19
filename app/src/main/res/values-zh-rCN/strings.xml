@@ -566,7 +566,6 @@
     <string name="metadata_summary">与专辑和艺术家图像相关的设置。</string>
     <string name="library_title">曲库</string>
     <string name="library_summary">播放列表和排除/包含过滤器的设置。</string>
-    <string name="notification_title">通知</string>
     <string name="advanced_title">高级设置</string>
     <string name="advanced_summary">高级用户的应用内语言和其他设置。</string>
     <string name="update_title">更新</string>
@@ -745,7 +744,6 @@
     <string name="min_song_duration_title">最小歌曲持续时间</string>
     <string name="min_song_duration_summary">至少需要多少秒钟才能在您的知识库中显示。</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">增加一行文本</string>
     <string name="app_language_title">应用语言</string>
     <string name="backup_data_title">备份应用数据</string>
     <string name="backup_app_data_summary">创建一个包含基本应用数据的文件并保存到外部存储。</string>
