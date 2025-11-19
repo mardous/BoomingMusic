@@ -14,6 +14,8 @@
     <string name="action_next">下一个</string>
     <string name="action_previous">上一个</string>
     <string name="action_cancel">取消</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">循环播放模式</string>
     <string name="action_toggle_shuffle">切换随机播放模式</string>
     <string name="reset_action">重置</string>
@@ -653,6 +655,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">单击封面</string>
     <string name="double_tap_on_album_cover_title">双击封面</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">长按封面</string>
     <string name="small_image_title">小图模式</string>
     <string name="small_image_summary">在支持的主题样式下减小封面大小。</string>
