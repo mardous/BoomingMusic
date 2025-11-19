@@ -572,7 +572,6 @@
     <string name="metadata_summary">Albüm ve sanatçı görselleriyle ilgili ayarlar.</string>
     <string name="library_title">Kütüphane</string>
     <string name="library_summary">Çalma listeleri ve hariç tutma/dahil etme filtreleri için ayarlar.</string>
-    <string name="notification_title">Bildirim</string>
     <string name="advanced_title">Gelişmiş</string>
     <string name="advanced_summary">Uygulama içi dil ve ileri düzey kullanıcılar için diğer ayarlar.</string>
     <string name="update_title">Güncelleme</string>
@@ -751,7 +750,6 @@
     <string name="min_song_duration_title">Minimum şarkı süresi</string>
     <string name="min_song_duration_summary">Bir şarkının kütüphanenizde gösterilmesi için en az kaç saniye sürmesi gerekir.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Ek metin satırı</string>
     <string name="app_language_title">Uygulama dili</string>
     <string name="backup_data_title">Uygulama verilerini yedekle</string>
     <string name="backup_app_data_summary">Temel uygulama verilerini içeren bir dosya oluşturun ve harici depolamaya kaydedin.</string>
