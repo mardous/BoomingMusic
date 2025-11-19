@@ -280,6 +280,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             }
             is GestureType.Tap -> onQuickActionEvent(Preferences.coverSingleTapAction)
             is GestureType.DoubleTap -> onQuickActionEvent(Preferences.coverDoubleTapAction)
+            is GestureType.DoubleTapLeft -> onQuickActionEvent(Preferences.coverLeftDoubleTapAction)
+            is GestureType.DoubleTapRight -> onQuickActionEvent(Preferences.coverRightDoubleTapAction)
             is GestureType.LongPress -> onQuickActionEvent(Preferences.coverLongPressAction)
         }
     }

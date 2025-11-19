@@ -16,13 +16,26 @@ class PlayerGesturesController(
     private val listener: Listener
 ) : View.OnTouchListener {
 
+    private var view: View? = null
+
     private val onGestureListener = object : GestureDetector.SimpleOnGestureListener() {
         override fun onSingleTapConfirmed(event: MotionEvent): Boolean {
             return consumeGesture(GestureType.Tap)
         }
 
         override fun onDoubleTap(event: MotionEvent): Boolean {
-            return consumeGesture(GestureType.DoubleTap)
+            val width = view?.width ?: 0
+            val x = event.x
+
+            val gesture = if (x < width * 0.35f) {
+                GestureType.DoubleTapLeft
+            } else if (x > width * 0.65f) {
+                GestureType.DoubleTapRight
+            } else {
+                GestureType.DoubleTap
+            }
+
+            return consumeGesture(gesture) || consumeGesture(GestureType.DoubleTap)
         }
 
         override fun onLongPress(e: MotionEvent) {
@@ -75,6 +88,7 @@ class PlayerGesturesController(
     override fun onTouch(v: View, event: MotionEvent?): Boolean {
         if (event == null)
             return false
+        view = v
 
         return gestureDetector?.onTouchEvent(event) == true
     }
@@ -95,6 +109,10 @@ class PlayerGesturesController(
         object Tap : GestureType()
 
         object DoubleTap : GestureType()
+
+        object DoubleTapLeft : GestureType()
+
+        object DoubleTapRight : GestureType()
 
         object LongPress : GestureType()
 

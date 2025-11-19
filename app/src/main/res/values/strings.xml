@@ -689,6 +689,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Double tap on cover</string>
+    <string name="double_tap_on_left_album_cover_title">Double tap on left cover</string>
+    <string name="double_tap_on_right_album_cover_title">Double tap on right cover</string>
     <string name="long_press_on_album_cover_title">Long press on cover</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>

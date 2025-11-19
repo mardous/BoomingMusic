@@ -27,7 +27,9 @@ import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.util.COVER_DOUBLE_TAP_ACTION
+import com.mardous.booming.util.COVER_LEFT_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_LONG_PRESS_ACTION
+import com.mardous.booming.util.COVER_RIGHT_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_SINGLE_TAP_ACTION
 import com.mardous.booming.util.Preferences
 import org.koin.android.ext.android.get
@@ -66,16 +68,36 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
         if (COVER_DOUBLE_TAP_ACTION == prefKey) {
             actions.remove(Preferences.coverLongPressAction)
             actions.remove(Preferences.coverSingleTapAction)
+            actions.remove(Preferences.coverLeftDoubleTapAction)
+            actions.remove(Preferences.coverRightDoubleTapAction)
         }
 
         if (COVER_LONG_PRESS_ACTION == prefKey) {
             actions.remove(Preferences.coverDoubleTapAction)
             actions.remove(Preferences.coverSingleTapAction)
+            actions.remove(Preferences.coverLeftDoubleTapAction)
+            actions.remove(Preferences.coverRightDoubleTapAction)
         }
 
         if (COVER_SINGLE_TAP_ACTION == prefKey) {
             actions.remove(Preferences.coverDoubleTapAction)
             actions.remove(Preferences.coverLongPressAction)
+            actions.remove(Preferences.coverLeftDoubleTapAction)
+            actions.remove(Preferences.coverRightDoubleTapAction)
+        }
+
+        if (COVER_LEFT_DOUBLE_TAP_ACTION == prefKey) {
+            actions.remove(Preferences.coverDoubleTapAction)
+            actions.remove(Preferences.coverLongPressAction)
+            actions.remove(Preferences.coverSingleTapAction)
+            actions.remove(Preferences.coverRightDoubleTapAction)
+        }
+
+        if (COVER_RIGHT_DOUBLE_TAP_ACTION == prefKey) {
+            actions.remove(Preferences.coverDoubleTapAction)
+            actions.remove(Preferences.coverLongPressAction)
+            actions.remove(Preferences.coverSingleTapAction)
+            actions.remove(Preferences.coverLeftDoubleTapAction)
         }
 
         if (!actions.contains(NowPlayingAction.Nothing)) {
@@ -90,6 +112,10 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
             Preferences.coverDoubleTapAction
         }else if (COVER_LONG_PRESS_ACTION == prefKey) {
             Preferences.coverLongPressAction
+        } else if (COVER_LEFT_DOUBLE_TAP_ACTION == prefKey) {
+            Preferences.coverLeftDoubleTapAction
+        } else if (COVER_RIGHT_DOUBLE_TAP_ACTION == prefKey) {
+            Preferences.coverRightDoubleTapAction
         }else {
             Preferences.coverSingleTapAction
         }

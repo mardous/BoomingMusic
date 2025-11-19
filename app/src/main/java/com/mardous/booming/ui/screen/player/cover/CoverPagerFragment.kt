@@ -144,6 +144,8 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
                 acceptedGestures = setOf(
                     GestureType.Tap,
                     GestureType.DoubleTap,
+                    GestureType.DoubleTapLeft,
+                    GestureType.DoubleTapRight,
                     GestureType.LongPress
                 ),
                 listener = gesturesListener
