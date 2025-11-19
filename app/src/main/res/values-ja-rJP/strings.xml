@@ -14,6 +14,8 @@
     <string name="action_next">次へ</string>
     <string name="action_previous">前へ</string>
     <string name="action_cancel">キャンセル</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">くりかえしリピートモード</string>
     <string name="action_toggle_shuffle">シャッフルモードに切り替える</string>
     <string name="reset_action">リセット</string>
@@ -656,6 +658,8 @@
     <string name="queue_height_summary">再生キューの高さを画面の半分に固定します。</string>
     <string name="single_tap_on_album_cover_title">カバーをシングルタップ</string>
     <string name="double_tap_on_album_cover_title">カバーをダブルタップする</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">カバーを長押しする</string>
     <string name="small_image_title">小さい画像</string>
     <string name="small_image_summary">サポートされているスタイルのカバーサイズが小さくなります</string>
