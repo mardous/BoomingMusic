@@ -609,7 +609,6 @@
     <string name="metadata_summary">الإعدادات المتعلقة بصور الألبوم والفنانين.</string>
     <string name="library_title">المكتبة</string>
     <string name="library_summary">إعدادات قوائم التشغيل وفلاتر الاستبعاد/الإدراج.</string>
-    <string name="notification_title">إشعار</string>
     <string name="advanced_title">متقدم</string>
     <string name="advanced_summary">لغة داخل التطبيق وغيرها من الإعدادات للمستخدمين المتقدمين.</string>
     <string name="update_title">تحديث</string>
@@ -788,7 +787,6 @@
     <string name="min_song_duration_title">الحد الأدنى من مدة الأغنية</string>
     <string name="min_song_duration_summary">كم ثانية (على الأقل) يجب أن تدوم أغنية لعرضها في مكتبتك.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">سطر إضافي من النص</string>
     <string name="app_language_title">لغة التطبيق</string>
     <string name="backup_data_title">النسخ الاحتياطي لبيانات التطبيق</string>
     <string name="backup_app_data_summary">إنشاء ملف يحتوي على بيانات التطبيق الأساسية وحفظه في وحدة التخزين الخارجية.</string>
