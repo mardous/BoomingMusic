@@ -14,6 +14,8 @@
     <string name="action_next">Dalej</string>
     <string name="action_previous">Wstecz</string>
     <string name="action_cancel">Anuluj</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Tryb powtarzania</string>
     <string name="action_toggle_shuffle">Przełącz tryb losowy</string>
     <string name="reset_action">Przywróć domyślne</string>
@@ -680,6 +682,8 @@
     <string name="queue_height_summary">Sprawia, że kolejka odtwarzania nie będzie zajmować więcej niż połowę ekranu.</string>
     <string name="single_tap_on_album_cover_title">Pojedyncze naciśnięcie okładki albumu</string>
     <string name="double_tap_on_album_cover_title">Dwukrotne dotknięcie okładki</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Długie przytrzymanie na okładce</string>
     <string name="small_image_title">Mniejsza okładka</string>
     <string name="small_image_summary">Zmniejsza rozmiar okładki w wybranych stylach odtwarzacza.</string>
