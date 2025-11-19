@@ -40,7 +40,7 @@ sealed class SortMode(
             get<SharedPreferences>().edit { putString(key, newKey.value) }
         }
 
-    private val descending = "{$id}_descending"
+    private val descending = "${id}_descending"
     open var selectedDescending: Boolean
         get() = get<SharedPreferences>().getBoolean(descending, defaults.second)
         protected set(newDescending) {
