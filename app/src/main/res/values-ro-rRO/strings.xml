@@ -585,7 +585,6 @@
     <string name="metadata_summary">Setări legate de album și imagini cu artiști.</string>
     <string name="library_title">Bibliotecă</string>
     <string name="library_summary">Setări pentru listele de redare și filtre de excludere/includere.</string>
-    <string name="notification_title">Notificare</string>
     <string name="advanced_title">Avansat</string>
     <string name="advanced_summary">Limba aplicaţiei şi alte setări pentru utilizatorii avansaţi.</string>
     <string name="update_title">Actualizare</string>
@@ -764,7 +763,6 @@
     <string name="min_song_duration_title">Durata minimă a melodiei</string>
     <string name="min_song_duration_summary">Câte secunde (cel puțin) trebuie să dureze o melodie pentru a fi afișată în bibliotecă.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Linie suplimentară de text</string>
     <string name="app_language_title">Limba aplicației</string>
     <string name="backup_data_title">Copie de rezervă date aplicație</string>
     <string name="backup_app_data_summary">Creați un fișier care conține date esențiale ale aplicației și salvați-l pe stocare externă.</string>
