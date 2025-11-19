@@ -569,7 +569,6 @@
     <string name="metadata_summary">アルバムやアーティストの画像に関連する設定。</string>
     <string name="library_title">ライブラリ</string>
     <string name="library_summary">プレイリストと除外/追加フィルターの設定。</string>
-    <string name="notification_title">通知</string>
     <string name="advanced_title">高度な設定</string>
     <string name="advanced_summary">アプリ内の言語や上級ユーザー向けのその他の設定。</string>
     <string name="update_title">更新</string>
@@ -748,7 +747,6 @@
     <string name="min_song_duration_title">最小曲数</string>
     <string name="min_song_duration_summary">(少なくとも)何秒以上の曲をライブラリに表示するか。</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">追加の行</string>
     <string name="app_language_title">アプリの言語</string>
     <string name="backup_data_title">アプリデータのバックアップ</string>
     <string name="backup_app_data_summary">重要なアプリデータを含むファイルを作成し、外部ストレージに保存します。</string>
