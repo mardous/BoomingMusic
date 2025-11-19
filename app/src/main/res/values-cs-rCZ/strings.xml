@@ -14,6 +14,8 @@
     <string name="action_next">Další</string>
     <string name="action_previous">Předchozí</string>
     <string name="action_cancel">Zrušit</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Režim opakování cyklu</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>
@@ -680,6 +682,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dvojím poklepáním na obal</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Dlouhým stiskem na obalu</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
