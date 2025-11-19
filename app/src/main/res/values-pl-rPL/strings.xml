@@ -593,7 +593,6 @@
     <string name="metadata_summary">Ustawienia grafik albumów i wykonawców.</string>
     <string name="library_title">Biblioteka</string>
     <string name="library_summary">Ustawienia playlist i filtrów selekcji utworów.</string>
-    <string name="notification_title">Powiadomienie</string>
     <string name="advanced_title">Zaawansowane</string>
     <string name="advanced_summary">Język aplikacji i inne ustawienia dla zaawansowanych użytkowników.</string>
     <string name="update_title">Aktualizacje</string>
@@ -772,7 +771,6 @@
     <string name="min_song_duration_title">Minimalny czas trwania utworu</string>
     <string name="min_song_duration_summary">Ile sekund (przynajmniej) musi trwać piosenka, by wyświetlić ją twojej bibliotece.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Dodatkowy wiersz tekstu</string>
     <string name="app_language_title">Język aplikacji</string>
     <string name="backup_data_title">Utwórz kopię zapasową</string>
     <string name="backup_app_data_summary">Utwórz plik z niezbędnymi danymi aplikacji i zapisz go w pamięci zewnętrznej.</string>
