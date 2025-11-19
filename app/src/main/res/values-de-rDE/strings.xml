@@ -577,7 +577,6 @@
     <string name="metadata_summary">Einstellungen für Album- und Interpreten-Bilder.</string>
     <string name="library_title">Bibliothek</string>
     <string name="library_summary">Einstellungen für Wiedergabelisten und Filter zum Aus-/Einschließen von Inhalten.</string>
-    <string name="notification_title">Benachrichtigung</string>
     <string name="advanced_title">Erweitert</string>
     <string name="advanced_summary">App-Sprache und andere Einstellungen für fortgeschrittene Benutzer.</string>
     <string name="update_title">Aktualisieren</string>
@@ -756,7 +755,6 @@
     <string name="min_song_duration_title">Titel-Mindestlänge</string>
     <string name="min_song_duration_summary">Mindestlänge eines Titels in Sekunden, um diesen in Deiner Bibliothek anzuzeigen.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Zusätzliche Textzeile</string>
     <string name="app_language_title">App-Sprache</string>
     <string name="backup_data_title">App-Daten sichern</string>
     <string name="backup_app_data_summary">Sichere eine Datei mit den wichtigsten App-Daten auf Deinem Gerät.</string>
