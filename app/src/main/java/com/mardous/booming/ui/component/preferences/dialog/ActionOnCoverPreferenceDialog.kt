@@ -26,12 +26,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.util.COVER_DOUBLE_TAP_ACTION
-import com.mardous.booming.util.COVER_LEFT_DOUBLE_TAP_ACTION
-import com.mardous.booming.util.COVER_LONG_PRESS_ACTION
-import com.mardous.booming.util.COVER_RIGHT_DOUBLE_TAP_ACTION
-import com.mardous.booming.util.COVER_SINGLE_TAP_ACTION
-import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.*
 import org.koin.android.ext.android.get
 
 /**
@@ -41,14 +36,15 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val prefKey = requireArguments().getString(EXTRA_KEY)
-        val current = getCurrentAction(prefKey)
+        checkNotNull(prefKey)
 
-        val actions = NowPlayingAction.entries.toMutableList()
-        makeCleanActions(prefKey, actions)
+        val currentAction = getCurrentAction(prefKey)
+        val allActions = NowPlayingAction.entries.toMutableList()
+        removeActionsForPrefKey(prefKey, allActions)
 
         val dialogTitle = arguments?.getCharSequence(EXTRA_TITLE)
-        val actionNames = actions.map { getString(it.titleRes) }
-        var selectedIndex = actions.indexOf(current).coerceAtLeast(0)
+        val actionNames = allActions.map { getString(it.titleRes) }
+        var selectedIndex = allActions.indexOf(currentAction).coerceAtLeast(0)
 
         return MaterialAlertDialogBuilder(requireContext())
             .setTitle(dialogTitle)
@@ -57,68 +53,54 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
             }
             .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
                 get<SharedPreferences>().edit {
-                    putString(prefKey, actions[selectedIndex].name)
+                    putString(prefKey, allActions[selectedIndex].name)
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)
             .create()
     }
 
-    private fun makeCleanActions(prefKey: String?, actions: MutableList<NowPlayingAction>) {
-        if (COVER_DOUBLE_TAP_ACTION == prefKey) {
-            actions.remove(Preferences.coverLongPressAction)
-            actions.remove(Preferences.coverSingleTapAction)
-            actions.remove(Preferences.coverLeftDoubleTapAction)
-            actions.remove(Preferences.coverRightDoubleTapAction)
-        }
+    private fun removeActionsForPrefKey(prefKey: String, actions: MutableList<NowPlayingAction>) {
+        val exclusivityMap = mapOf(
+            COVER_SINGLE_TAP_ACTION to listOf(
+                Preferences.coverDoubleTapAction,
+                Preferences.coverLongPressAction,
+                Preferences.coverLeftDoubleTapAction,
+                Preferences.coverRightDoubleTapAction
+            ),
+            COVER_LONG_PRESS_ACTION to listOf(
+                Preferences.coverDoubleTapAction,
+                Preferences.coverSingleTapAction,
+                Preferences.coverLeftDoubleTapAction,
+                Preferences.coverRightDoubleTapAction
+            ),
+            COVER_LEFT_DOUBLE_TAP_ACTION to listOf(
+                Preferences.coverDoubleTapAction,
+                Preferences.coverLongPressAction,
+                Preferences.coverSingleTapAction,
+                Preferences.coverRightDoubleTapAction
+            ),
+            COVER_RIGHT_DOUBLE_TAP_ACTION to listOf(
+                Preferences.coverDoubleTapAction,
+                Preferences.coverLongPressAction,
+                Preferences.coverSingleTapAction,
+                Preferences.coverLeftDoubleTapAction
+            )
+        )
 
-        if (COVER_LONG_PRESS_ACTION == prefKey) {
-            actions.remove(Preferences.coverDoubleTapAction)
-            actions.remove(Preferences.coverSingleTapAction)
-            actions.remove(Preferences.coverLeftDoubleTapAction)
-            actions.remove(Preferences.coverRightDoubleTapAction)
-        }
-
-        if (COVER_SINGLE_TAP_ACTION == prefKey) {
-            actions.remove(Preferences.coverDoubleTapAction)
-            actions.remove(Preferences.coverLongPressAction)
-            actions.remove(Preferences.coverLeftDoubleTapAction)
-            actions.remove(Preferences.coverRightDoubleTapAction)
-        }
-
-        if (COVER_LEFT_DOUBLE_TAP_ACTION == prefKey) {
-            actions.remove(Preferences.coverDoubleTapAction)
-            actions.remove(Preferences.coverLongPressAction)
-            actions.remove(Preferences.coverSingleTapAction)
-            actions.remove(Preferences.coverRightDoubleTapAction)
-        }
-
-        if (COVER_RIGHT_DOUBLE_TAP_ACTION == prefKey) {
-            actions.remove(Preferences.coverDoubleTapAction)
-            actions.remove(Preferences.coverLongPressAction)
-            actions.remove(Preferences.coverSingleTapAction)
-            actions.remove(Preferences.coverLeftDoubleTapAction)
-        }
-
-        if (!actions.contains(NowPlayingAction.Nothing)) {
-            // "Nothing" must be always available, so if we
-            // removed it previously, add it again.
-            actions.add(NowPlayingAction.Nothing)
+        exclusivityMap[prefKey]?.forEach {
+            if (it != NowPlayingAction.Nothing) {
+                actions.remove(it)
+            }
         }
     }
 
-    private fun getCurrentAction(prefKey: String?): NowPlayingAction {
-        return if (COVER_DOUBLE_TAP_ACTION == prefKey) {
-            Preferences.coverDoubleTapAction
-        }else if (COVER_LONG_PRESS_ACTION == prefKey) {
-            Preferences.coverLongPressAction
-        } else if (COVER_LEFT_DOUBLE_TAP_ACTION == prefKey) {
-            Preferences.coverLeftDoubleTapAction
-        } else if (COVER_RIGHT_DOUBLE_TAP_ACTION == prefKey) {
-            Preferences.coverRightDoubleTapAction
-        }else {
-            Preferences.coverSingleTapAction
-        }
+    private fun getCurrentAction(prefKey: String) = when (prefKey) {
+        COVER_DOUBLE_TAP_ACTION -> Preferences.coverDoubleTapAction
+        COVER_LONG_PRESS_ACTION -> Preferences.coverLongPressAction
+        COVER_LEFT_DOUBLE_TAP_ACTION -> Preferences.coverLeftDoubleTapAction
+        COVER_RIGHT_DOUBLE_TAP_ACTION -> Preferences.coverRightDoubleTapAction
+        else -> Preferences.coverSingleTapAction
     }
 
     companion object {

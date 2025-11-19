@@ -14,8 +14,8 @@
     <string name="action_next">Next</string>
     <string name="action_previous">Previous</string>
     <string name="action_cancel">Cancel</string>
-    <string name="action_seek_backward_10s">Seek backward 10s</string>
-    <string name="action_seek_forward_10s">Seek forward 10s</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Cycle repeat mode</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>
@@ -691,8 +691,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Double tap on cover</string>
-    <string name="double_tap_on_left_album_cover_title">Double tap on left cover</string>
-    <string name="double_tap_on_right_album_cover_title">Double tap on right cover</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Long press on cover</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>

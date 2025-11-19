@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
-import com.mardous.booming.data.model.Song
 import org.apache.commons.lang3.builder.HashCodeBuilder
 import kotlin.math.abs
 
@@ -27,15 +26,15 @@ class PlayerGesturesController(
             val width = view?.width ?: 0
             val x = event.x
 
-            val gesture = if (x < width * 0.35f) {
-                GestureType.DoubleTapLeft
-            } else if (x > width * 0.65f) {
-                GestureType.DoubleTapRight
+            val type = if (x < width * LEFT_EDGE_DOUBLE_TAP_THRESHOLD) {
+                GestureType.DoubleTap.TYPE_LEFT_EDGE
+            } else if (x > width * RIGHT_EDGE_DOUBLE_TAP_THRESHOLD) {
+                GestureType.DoubleTap.TYPE_RIGHT_EDGE
             } else {
-                GestureType.DoubleTap
+                GestureType.DoubleTap.TYPE_CENTER
             }
 
-            return consumeGesture(gesture) || consumeGesture(GestureType.DoubleTap)
+            return consumeGesture(GestureType.DoubleTap(type))
         }
 
         override fun onLongPress(e: MotionEvent) {
@@ -108,13 +107,29 @@ class PlayerGesturesController(
 
         object Tap : GestureType()
 
-        object DoubleTap : GestureType()
-
-        object DoubleTapLeft : GestureType()
-
-        object DoubleTapRight : GestureType()
-
         object LongPress : GestureType()
+
+        class DoubleTap(val type: Int) : GestureType() {
+
+            override fun equals(other: Any?): Boolean {
+                if (this === other) return true
+                if (other == null || javaClass != other.javaClass) return false
+                val tap = other as DoubleTap
+                return tap.type == this.type
+            }
+
+            override fun hashCode(): Int {
+                return HashCodeBuilder()
+                    .append(type)
+                    .toHashCode()
+            }
+
+            companion object {
+                const val TYPE_CENTER = 0
+                const val TYPE_LEFT_EDGE = 1
+                const val TYPE_RIGHT_EDGE = 2
+            }
+        }
 
         class Fling(val direction: Int) : GestureType() {
 
@@ -146,5 +161,8 @@ class PlayerGesturesController(
 
     companion object {
         private const val TAG = "PlayerGestureController"
+
+        private const val LEFT_EDGE_DOUBLE_TAP_THRESHOLD = 0.30f
+        private const val RIGHT_EDGE_DOUBLE_TAP_THRESHOLD = 0.70f
     }
 }

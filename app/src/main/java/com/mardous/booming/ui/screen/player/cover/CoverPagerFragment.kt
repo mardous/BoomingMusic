@@ -143,9 +143,9 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
                 context = viewPager.context,
                 acceptedGestures = setOf(
                     GestureType.Tap,
-                    GestureType.DoubleTap,
-                    GestureType.DoubleTapLeft,
-                    GestureType.DoubleTapRight,
+                    GestureType.DoubleTap(GestureType.DoubleTap.TYPE_CENTER),
+                    GestureType.DoubleTap(GestureType.DoubleTap.TYPE_LEFT_EDGE),
+                    GestureType.DoubleTap(GestureType.DoubleTap.TYPE_RIGHT_EDGE),
                     GestureType.LongPress
                 ),
                 listener = gesturesListener
