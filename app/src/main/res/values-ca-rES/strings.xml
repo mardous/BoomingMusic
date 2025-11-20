@@ -14,8 +14,8 @@
     <string name="action_next">Següent</string>
     <string name="action_previous">Anterior</string>
     <string name="action_cancel">Cancel·la</string>
-    <string name="action_seek_backward">Seek backward</string>
-    <string name="action_seek_forward">Seek forward</string>
+    <string name="action_seek_backward">Cerca enrere</string>
+    <string name="action_seek_forward">Cerca endavant</string>
     <string name="action_cycle_repeat">Alterna mode de repetició</string>
     <string name="action_toggle_shuffle">Alterna mode aleatori</string>
     <string name="reset_action">Restableix</string>
@@ -666,8 +666,8 @@
     <string name="queue_height_summary">La cua de reproducció ocuparà la meitat de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Un clic a la portada</string>
     <string name="double_tap_on_album_cover_title">Dos clics a la portada</string>
-    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
-    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
+    <string name="double_tap_on_left_album_cover_title">Doble toc a la vora esquerra de la portada de l\'àlbum</string>
+    <string name="double_tap_on_right_album_cover_title">Doble toc a la vora dreta de la portada de l\'àlbum</string>
     <string name="long_press_on_album_cover_title">Clic sostingut a la portada</string>
     <string name="small_image_title">Imatge petita</string>
     <string name="small_image_summary">Redueix la mida de la portada en estils admesos.</string>
