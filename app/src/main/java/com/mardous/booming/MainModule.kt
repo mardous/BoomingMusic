@@ -20,6 +20,7 @@ package com.mardous.booming
 import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.mardous.booming.coil.CustomArtistImageManager
+import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.BoomingDatabase
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.SoundSettings
@@ -106,6 +107,9 @@ private val mainModule = module {
     }
     single {
         CustomArtistImageManager(context = androidContext())
+    }
+    single {
+        CustomPlaylistImageManager(context = androidContext())
     }
     factory {
         AudioOutputObserver(context = androidContext())
@@ -223,7 +227,7 @@ private val dataModule = module {
 
 private val viewModule = module {
     viewModel {
-        LibraryViewModel(repository = get(), inclExclDao = get())
+        LibraryViewModel(repository = get(), inclExclDao = get(), customPlaylistImageManager = get())
     }
 
     viewModel {

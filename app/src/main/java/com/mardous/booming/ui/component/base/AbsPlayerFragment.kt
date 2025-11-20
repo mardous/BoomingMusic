@@ -43,6 +43,9 @@ import com.mardous.booming.R
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTintTarget
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Song
@@ -72,8 +75,9 @@ import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.equalizer.EqualizerFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
-import com.mardous.booming.ui.screen.player.*
+import com.mardous.booming.ui.screen.player.PlayerGesturesController
 import com.mardous.booming.ui.screen.player.PlayerGesturesController.GestureType
+import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.CoverPagerFragment
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
 import com.mardous.booming.util.Preferences

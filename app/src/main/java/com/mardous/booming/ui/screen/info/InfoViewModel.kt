@@ -30,7 +30,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
         if (id != -1L) {
             emit(repository.albumById(id))
         } else {
-            emit(Album.Companion.empty)
+            emit(Album.empty)
         }
     }
 
@@ -40,16 +40,20 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
         } else if (id == -1L) {
             emit(repository.albumArtistByName(name))
         } else {
-            emit(Artist.Companion.empty)
+            emit(Artist.empty)
         }
     }
 
     fun playInfo(songs: List<Song>): LiveData<PlayInfoResult> = liveData(Dispatchers.IO) {
         val playCountEntities = repository.findSongsInPlayCount(songs).sortedByDescending { it.playCount }
-        val totalPlayCount = playCountEntities.sumOf { it.playCount }
-        val totalSkipCount = playCountEntities.sumOf { it.skipCount }
-        val lastPlayDate = playCountEntities.maxOf { it.timePlayed }
-        emit(PlayInfoResult(totalPlayCount, totalSkipCount, lastPlayDate, playCountEntities))
+        if (playCountEntities.isEmpty()) {
+            emit(PlayInfoResult(-1, -1, -1, songs.map { it.toPlayCount() }))
+        } else {
+            val totalPlayCount = playCountEntities.sumOf { it.playCount }
+            val totalSkipCount = playCountEntities.sumOf { it.skipCount }
+            val lastPlayDate = playCountEntities.maxOf { it.timePlayed }
+            emit(PlayInfoResult(totalPlayCount, totalSkipCount, lastPlayDate, playCountEntities))
+        }
     }
 
     fun songDetail(context: Context, song: Song): LiveData<SongInfoResult> =
@@ -141,7 +145,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
             if (result.isSuccess) {
                 emit(result.getOrThrow())
             } else {
-                emit(SongInfoResult.Companion.Empty)
+                emit(SongInfoResult.Empty)
             }
         }
 

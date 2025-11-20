@@ -30,6 +30,7 @@ object FileUtil : KoinComponent {
 
     // Directories that are accessible only for Booming
     private const val CUSTOM_ARTIST_IMAGES_DIRECTORY_NAME = "custom_artist_images"
+    private const val CUSTOM_PLAYLIST_IMAGES_DIRECTORY_NAME = "custom_playlist_images"
     private const val THUMBS_DIRECTORY_NAME = "Thumbs"
 
     fun externalStorageDirectory(dirType: String? = null): File {
@@ -48,6 +49,9 @@ object FileUtil : KoinComponent {
 
     fun customArtistImagesDirectory() =
         appContext().filesDir.resolve(CUSTOM_ARTIST_IMAGES_DIRECTORY_NAME).ensureDirectory()
+
+    fun customPlaylistImagesDirectory() =
+        appContext().filesDir.resolve(CUSTOM_PLAYLIST_IMAGES_DIRECTORY_NAME).ensureDirectory()
 
     fun thumbsDirectory() =
         appContext().externalCacheDir?.resolve(THUMBS_DIRECTORY_NAME).ensureDirectory()

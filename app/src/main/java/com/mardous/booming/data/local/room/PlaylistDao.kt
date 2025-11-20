@@ -32,11 +32,11 @@ interface PlaylistDao {
     @Insert
     suspend fun createPlaylist(playlistEntity: PlaylistEntity): Long
 
+    @Update
+    suspend fun updatePlaylist(playlist: PlaylistEntity)
+
     @Query("UPDATE PlaylistEntity SET playlist_name = :name WHERE playlist_id = :playlistId")
     suspend fun renamePlaylist(playlistId: Long, name: String)
-
-    @Query("UPDATE PlaylistEntity SET playlist_name = :newName, custom_cover_uri = :customCoverUri, description = :description WHERE playlist_id = :playlistId")
-    suspend fun updatePlaylist(playlistId: Long, newName: String, customCoverUri: String?, description: String?)
 
     @Query("DELETE FROM SongEntity WHERE playlist_creator_id = :playlistId")
     suspend fun deletePlaylistSongs(playlistId: Long)

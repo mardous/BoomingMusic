@@ -226,22 +226,26 @@ class PlaybackService :
         player.setSequentialTimelineEnabled(sequentialTimeline)
         player.addListener(this)
 
-        notificationProvider = BoomingNotificationProvider(
-            this,
-            NOTIFICATION_ID,
-            CHANNEL_ID,
-            R.string.playing_notification_description
-        )
-
         mediaSession = with(MediaLibrarySession.Builder(this, player, this)) {
             setId(packageName)
             setSessionActivity(createSessionActivityIntent())
             setBitmapLoader(
                 CacheBitmapLoader(CoilBitmapLoader(serviceScope, this@PlaybackService, preferences))
             )
-            setMediaNotificationProvider(notificationProvider)
             build()
         }
+
+
+        setMediaNotificationProvider(
+            DefaultMediaNotificationProvider(
+                this,
+                { _ -> NOTIFICATION_ID },
+                CHANNEL_ID,
+                R.string.playing_notification_description
+            ).apply {
+                setSmallIcon(R.drawable.ic_stat_music_playback)
+            }
+        )
 
         mediaStoreObserver.init(this)
 

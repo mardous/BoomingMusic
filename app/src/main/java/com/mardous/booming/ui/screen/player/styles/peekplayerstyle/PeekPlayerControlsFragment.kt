@@ -25,13 +25,17 @@ import android.view.View
 import android.widget.TextView
 import com.google.android.material.button.MaterialButton
 import com.mardous.booming.R
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerTintTarget
+import com.mardous.booming.core.model.player.iconButtonTintTarget
+import com.mardous.booming.core.model.player.tintTarget
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPeekPlayerPlaybackControlsBinding
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
 import com.mardous.booming.ui.component.views.MusicSlider
-import com.mardous.booming.ui.screen.player.*
+import com.mardous.booming.ui.screen.player.PlayerAnimator
 import com.mardous.booming.util.Preferences
 import java.util.LinkedList
 

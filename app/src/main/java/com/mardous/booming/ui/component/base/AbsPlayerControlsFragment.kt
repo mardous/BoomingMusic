@@ -35,6 +35,8 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerTintTarget
 import com.mardous.booming.core.model.player.ProgressState
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.getShapeAppearanceModel
@@ -46,8 +48,6 @@ import com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPr
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerAnimator
-import com.mardous.booming.ui.screen.player.PlayerColorScheme
-import com.mardous.booming.ui.screen.player.PlayerTintTarget
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.*
 import kotlinx.coroutines.flow.collectLatest

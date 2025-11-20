@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.mardous.booming.ui.screen.player
+package com.mardous.booming.core.model.player
 
 import android.content.Context
 import android.graphics.Color

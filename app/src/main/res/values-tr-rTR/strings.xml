@@ -133,6 +133,10 @@
     <string name="permission_bluetooth_title">Yakındaki Cihazlar</string>
     <string name="permission_bluetooth_description">Uygulamanın bluetooth cihazlarını kontrol etmek için yakındaki cihazlar iznine ihtiyacı var</string>
     <string name="permission_bluetooth_denied">Yakındaki cihazlar izni reddedildi.</string>
+    <string name="permission_read_images_title">Görselleri okuma (isteğe bağlı)</string>
+    <string name="permission_read_images_summary">Booming Music\'in müzik klasörlerinizdeki albüm kapağı dosyalarını bulabilmesi için bu izin gereklidir.
+        Bu özelliği kullanmayı planlamıyorsanız, izin vermemeyi seçebilirsiniz.</string>
+    <string name="permission_read_images_denied">Cihazdan görselleri okuma izni vermelisiniz.</string>
     <string name="permission_exact_alarms_title">Tam zamanlı alarmları planla (isteğe bağlı)</string>
     <string name="permission_exact_alarms_description">Uyku zamanlayıcısının düzgün çalışması için tam zamanlı alarmları planlama izni gereklidir</string>
     <string name="permission_ringtone_title">Zil Sesi (isteğe bağlı)</string>
@@ -514,7 +518,7 @@
     <string name="app_shortcut_shuffle_all_short">Karıştır</string>
     <string name="app_shortcut_top_tracks_short">En İyiler</string>
     <string name="app_shortcut_last_added_short">Son Eklenenler</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Favoriler</string>
     <!-- About page -->
     <string name="action_about">Hakkında</string>
     <string name="application">Uygulama</string>
@@ -568,7 +572,6 @@
     <string name="metadata_summary">Albüm ve sanatçı görselleriyle ilgili ayarlar.</string>
     <string name="library_title">Kütüphane</string>
     <string name="library_summary">Çalma listeleri ve hariç tutma/dahil etme filtreleri için ayarlar.</string>
-    <string name="notification_title">Bildirim</string>
     <string name="advanced_title">Gelişmiş</string>
     <string name="advanced_summary">Uygulama içi dil ve ileri düzey kullanıcılar için diğer ayarlar.</string>
     <string name="update_title">Güncelleme</string>
@@ -582,6 +585,7 @@
     <string name="artist_image_header">Sanatçı resmi</string>
     <string name="exclusion_header">Hariç Tutulanlar</string>
     <string name="controls_header">Kontroller</string>
+    <string name="gestures_header">Hareketler</string>
     <string name="headphones_header">Kulaklıklar</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Ses odağı</string>
@@ -646,18 +650,18 @@
     <string name="extra_controls_summary">Mini çalar için ekstra kontroller ekleyin</string>
     <string name="adaptive_controls_title">Uyarlanabilir kontroller</string>
     <string name="adaptive_controls_summary">Mini oynatıcının üzerindeki kontroller mevcut oynatıcı stiline uyacak şekilde değişir.</string>
-    <string name="swipe_to_dismiss_title">Kapatmak için kaydırın</string>
-    <string name="swipe_to_dismiss_summary">Çalmayı durdurmak ve çalma sıralarını temizlemek için mini çaları aşağı kaydırın.</string>
+    <string name="swipe_to_dismiss_title">Kapatmak için aşağı kaydırın</string>
+    <string name="swipe_to_dismiss_summary">Çalmayı durdurmak ve çalma sırasını temizlemek için mini çaları aşağı kaydırın.</string>
     <string name="circle_button_title">Dairesel oynatma düğmesi</string>
-    <string name="swipe_album_cover_title">Albüm kapağını kaydırın</string>
-    <string name="swipe_album_cover_summary">Şarkılar arasında geçiş yapmak için albüm kapağını sola ve sağa kaydırın.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
+    <string name="swipe_album_cover_title">Albüm kapağında kaydırın</string>
+    <string name="swipe_album_cover_summary">Şarkılar arasında geçiş yapmak için albüm kapağını sola veya sağa kaydırın.</string>
+    <string name="queue_height_title">Yarım ekran sıra yüksekliği</string>
+    <string name="queue_height_summary">Çalma sırasının yüksekliğini ekranın yarısına sabitleyin.</string>
     <string name="single_tap_on_album_cover_title">Kapağa tek dokun</string>
     <string name="double_tap_on_album_cover_title">Kapağa çift dokunun</string>
     <string name="long_press_on_album_cover_title">Kapağa uzun basın</string>
-    <string name="small_image_title">Small image</string>
-    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
+    <string name="small_image_title">Küçük görsel</string>
+    <string name="small_image_summary">Desteklenen stillerde kapak boyutunu küçültür.</string>
     <string name="now_playing_corner_radius_title">Görsel köşe yarıçapı</string>
     <string name="now_playing_corner_radius_summary">Albüm kapağı köşelerinin ne kadar yuvarlak görüneceğini tanımlar.</string>
     <string name="carousel_effect_title">Atlıkarınca efekti</string>
@@ -666,8 +670,10 @@
     <string name="lyrics_on_album_cover_summary">Şarkı sözleri mevcut olduğunda kapak yerine göster.</string>
     <string name="animate_controls_title">Kontrolleri canlandır</string>
     <string name="animate_controls_summary">Çalar panelini açarken oynatılır.</string>
-    <string name="swipe_anywhere_title">Kaydırma kontrolleri</string>
-    <string name="swipe_anywhere_summary">Şimdi çalıyor ekranında herhangi bir boş alanda sola kaydırarak sonraki şarkıya, sağa kaydırarak önceki şarkıya geçebilirsiniz.</string>
+    <string name="swipe_anywhere_title">Şarkı değiştirmek için herhangi bir yere kaydırın</string>
+    <string name="swipe_anywhere_summary">Şarkılar arasında geçiş yapmak için şimdi çalıyor ekranındaki herhangi bir boş alana sola veya sağa kaydırın.</string>
+    <string name="swipe_up_queue_title">Sırayı açmak için yukarı kaydırın</string>
+    <string name="swipe_up_queue_summary">Çalma sırasını açmak için şimdi çalıyor ekranındaki herhangi bir boş alana yukarı doğru kaydırın.</string>
     <string name="display_album_name_title">Albüm adını göster</string>
     <string name="display_extra_info_title">Ek bilgileri göster</string>
     <string name="display_extra_info_summary">Bit hızı, biçim, örnekleme hızı gibi şarkı hakkında ek bilgileri gösterin.</string>
@@ -702,8 +708,12 @@
     <string name="pause_on_bluetooth_disconnect_summary">Bluetooth A2DP kulaklık bağlantısı kesildiğinde çalmayı duraklatır. Önerilir.</string>
     <string name="ignore_audio_focus_title">Ses odağını yoksay</string>
     <string name="ignore_audio_focus_summary">Çalınan başka bir şeye bakılmaksızın sesi her zaman arka planda çal.</string>
-    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
-    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
+    <string name="pause_on_zero_volume_title">Sıfır seste duraklat</string>
+    <string name="pause_on_zero_volume_summary">Ses seviyesi sıfıra düştüğünde şarkıyı duraklatır ve ses seviyesi yükseldiğinde çalmaya devam eder. Uygulama dışında da çalışır.</string>
+    <string name="mp3_index_seeking_title">MP3 indeksle arama</string>
+    <string name="mp3_index_seeking_summary">Xing başlığına güvenmek yerine, arama yapmak için tüm MP3 dosyasını belleğe yükler.
+        Yalnızca bazı VBR dosyalarında arama başarısız olursa kullanın.
+        Uygulamanın yeniden başlatılmasını gerektirir.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Üstveriyi otomatik indir</string>
     <string name="ignore_media_store_album_covers_title">Medya Deposu kapaklarını yoksay</string>
@@ -712,9 +722,9 @@
     <string name="use_folder_album_cover_summary">Ses dosyası gömülü bir kapak içermiyorsa. Resimlerin yüklenmesi biraz daha uzun sürebilir.</string>
     <string name="online_artist_images_title">Sanatçı resimlerini indir</string>
     <string name="online_artist_images_summary">Bu, üstveri indirme politikanıza bağlıdır.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
-    <string name="online_album_covers_title">Download missing album covers</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="preferred_image_size_title">Tercih edilen görsel boyutu</string>
+    <string name="online_album_covers_title">Eksik albüm kapaklarını indir</string>
+    <string name="online_album_covers_summary">İndirilen görseller ses dosyalarına gömülmez; yalnızca uygulama içinde görünürler. Bu, üstveri indirme politikanıza bağlıdır.</string>
     <string name="delete_downloaded_lyrics_title">İndirilen şarkı sözlerini sil</string>
     <string name="delete_downloaded_lyrics_summary">Yalnızca Booming Music tarafından indirilen şarkı sözleri. ID3v2 etiketlerine veya LRC dosyalarına gömülü şarkı sözlerini etkilemez.</string>
     <string name="lyrics_cleared">Şarkı sözleri temizlendi.</string>
@@ -740,7 +750,6 @@
     <string name="min_song_duration_title">Minimum şarkı süresi</string>
     <string name="min_song_duration_summary">Bir şarkının kütüphanenizde gösterilmesi için en az kaç saniye sürmesi gerekir.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Ek metin satırı</string>
     <string name="app_language_title">Uygulama dili</string>
     <string name="backup_data_title">Uygulama verilerini yedekle</string>
     <string name="backup_app_data_summary">Temel uygulama verilerini içeren bir dosya oluşturun ve harici depolamaya kaydedin.</string>
@@ -749,8 +758,8 @@
     <string name="stop_when_closed_from_recents_title">Son uygulamalardan kapatılınca durdur</string>
     <string name="stop_when_closed_from_recents_summary">Uygulama son uygulamalar listesinden kapatılırsa oynatma durur.</string>
     <string name="stop_when_closed_from_recents_note">Not: Agresif bellek veya pil yönetimine sahip bazı cihazlar bu ayarı yoksayabilir ve son uygulamalardan kaldırıldığında uygulamayı her zaman durdurabilir.</string>
-    <string name="rotation_lock_title">Rotation lock</string>
-    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
+    <string name="rotation_lock_title">Döndürme kilidi</string>
+    <string name="rotation_lock_summary">Cihazın yönünü kilitleyin. Belirli üretici politikaları nedeniyle cihazı döndürürken müziğin durduğu durumlarda kullanışlıdır.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Açık</string>
     <string name="dark_theme_name">Koyu</string>
@@ -781,6 +790,8 @@
     <string name="vertical_flip">Dikey Çevirme</string>
     <string name="zoom_out">Uzaklaştırma</string>
     <string name="simple">Basit</string>
+    <string name="stack">Yığın</string>
+    <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Çalan parçadan sonra ekle</string>
     <string name="add_tracks_sequentially">Parçaları sırayla ekle</string>
     <string name="albums_shuffle">Albümleri karıştır</string>

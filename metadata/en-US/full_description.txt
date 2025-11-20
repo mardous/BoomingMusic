@@ -1,20 +1,19 @@
-Booming Music is a modern, local music player for Android that focuses on delivering a smooth, customizable, and feature-rich listening experience.
-With support for Material You design and a clean interface, it puts user experience first without sacrificing power.
+Booming Music is a modern and powerful local music player for Android, designed for a smooth, customizable, and visually appealing experience. Built with Material You design and powered by Media3, it combines simplicity with advanced playback features.
 
-You can automatically download and edit lyrics, enjoy seamless playback with gapless transitions, or fine-tune your sound with the built-in equalizer and ReplayGain support.
-Booming Music also includes smart playlist handling and deep folder-based browsing, giving you full control over how you access and organize your music.
+Enjoy your favorite songs with word-by-word synced lyrics, translated lyric support (TTML/LRC), and a completely reimagined Now Playing interface featuring enhanced visuals, smoother transitions, and greater customization options.
 
-Additional features:
+Fine-tune your listening with a built-in equalizer, ReplayGain, Audio Offload, and gapless playback for seamless transitions. Organize your music your way with smart playlists, customizable sorting, and a new hierarchical folder view.
 
-* Headset and Bluetooth support
-* Android Auto integration
-* Monet-themed icon on Android 13+
-* Sleep timer
-* Drag-to-sort playlists and queue
-* Smart auto playlists (Recently played, Most played, History)
-* Tag editor
-* Lock screen and home screen widgets
-* Artist images from Deezer
-* Album-artist support
-* Blacklist and whitelist
-* Browse by songs, albums, artists, genre, and year
+Main features:
+
+* Automatic lyric download and in-app lyric editor
+* Word-by-word and translated lyrics (TTML, LRC)
+* Media3-based playback engine with audio offload support
+* Adaptive mini player and gesture controls
+* Custom covers and descriptions for playlists
+* Tag editor with instant library updates
+* Smart auto playlists (Recently Played, Most Played, History)
+* Sleep timer, widgets, and Android Auto support
+* Material You theming with dark and black modes
+* Multi-language support
+* Lightweight, open-source, and ad-free
