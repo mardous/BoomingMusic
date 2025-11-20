@@ -14,8 +14,8 @@
     <string name="action_next">Suivant</string>
     <string name="action_previous">Précédent</string>
     <string name="action_cancel">Annuler</string>
-    <string name="action_seek_backward">Seek backward</string>
-    <string name="action_seek_forward">Seek forward</string>
+    <string name="action_seek_backward">Chercher en arrière</string>
+    <string name="action_seek_forward">Chercher en avant</string>
     <string name="action_cycle_repeat">Mode de répétition du cycle</string>
     <string name="action_toggle_shuffle">Changer le mode de mélange</string>
     <string name="reset_action">Réinitialiser</string>
@@ -666,8 +666,8 @@
     <string name="queue_height_summary">Changer la hauteur de la file de lecture en demi-écran.</string>
     <string name="single_tap_on_album_cover_title">Appuyez une fois sur la couverture</string>
     <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
-    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
-    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
+    <string name="double_tap_on_left_album_cover_title">Double-clic sur le bord gauche de la pochette</string>
+    <string name="double_tap_on_right_album_cover_title">Double-clic sur le bord droit de la pochette</string>
     <string name="long_press_on_album_cover_title">Appui long sur la couverture</string>
     <string name="small_image_title">Petite image</string>
     <string name="small_image_summary">Réduis la taille de la couverture dans les styles supportés.</string>
