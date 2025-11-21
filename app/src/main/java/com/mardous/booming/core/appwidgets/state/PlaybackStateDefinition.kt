@@ -13,10 +13,9 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-class PlaybackStateDefinition : GlanceStateDefinition<PlaybackState> {
-    companion object {
-        private const val DATASTORE_FILE_NAME = "playback_state_v1.json"
-    }
+object PlaybackStateDefinition : GlanceStateDefinition<PlaybackState> {
+
+    private const val DATASTORE_FILE_NAME = "playback_state_v1.json"
 
     private val json = Json {
         coerceInputValues = true
