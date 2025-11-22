@@ -5,8 +5,8 @@
     <string name="action_shuffle_play">Перемешать воспроизведение</string>
     <string name="action_queue_next">Добавить в очередь следующим</string>
     <string name="shuffle_all_label">Перемешать все</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
+    <string name="shuffle_mode">Режим перемешивания</string>
+    <string name="repeat_mode">Режим повтора</string>
     <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Воспр./Пауза</string>
@@ -53,9 +53,9 @@
     <string name="continue_action">Продолжить</string>
     <string name="select_all_title">Выбрать все</string>
     <string name="x_selected">%d выбрано</string>
-    <string name="preparing_playback_title">Preparing</string>
+    <string name="preparing_playback_title">Подготовка</string>
     <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="playback_stopped_title">Воспроизведение остановлено</string>
     <string name="playing_notification_description">Уведомление о воспроизведении предоставляет действия для воспроизведения/паузы и т. д.</string>
     <string name="playing_notification_name">Уведомление о воспроизведении</string>
     <string name="action_scan_directory">Сканировать папку</string>
@@ -72,7 +72,7 @@
     <string name="new_playlist_title">Новый плейлист</string>
     <string name="add_playlist_title">Добавить в плейлист</string>
     <string name="rename_playlist_title">Переименовать плейлист</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Редактировать плейлист</string>
     <string name="action_delete">Удалить плейлист</string>
     <string name="action_export_playlist">Экспортировать в файл</string>
     <string name="action_clear_history">Очистить историю</string>
