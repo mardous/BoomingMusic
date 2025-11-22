@@ -14,8 +14,8 @@
     <string name="action_next">Nächster</string>
     <string name="action_previous">Vorheriger</string>
     <string name="action_cancel">Abbrechen</string>
-    <string name="action_seek_backward">Seek backward</string>
-    <string name="action_seek_forward">Seek forward</string>
+    <string name="action_seek_backward">Suche rückwärts</string>
+    <string name="action_seek_forward">Suche vorwärts</string>
     <string name="action_cycle_repeat">Wiederholungsmodus ändern</string>
     <string name="action_toggle_shuffle">Zufallswiedergabe ändern</string>
     <string name="reset_action">Zurücksetzen</string>
@@ -53,8 +53,8 @@
     <string name="continue_action">Weiter</string>
     <string name="select_all_title">Alles auswählen</string>
     <string name="x_selected">%d ausgewählt</string>
-    <string name="preparing_playback_title">Preparing</string>
-    <string name="restoring_playback_state">Restoring playback state and queue…</string>
+    <string name="preparing_playback_title">Vorbereiten</string>
+    <string name="restoring_playback_state">Wiederherstellen des Wiedergabestatus und der Warteschlange…</string>
     <string name="playback_stopped_title">Wiedergabe angehalten</string>
     <string name="playing_notification_description">Die Abspielbenachrichtigung ermöglicht Aktionen wie Wiedergabe/Pause usw.</string>
     <string name="playing_notification_name">Wiedergabebenachrichtigung</string>
@@ -135,10 +135,10 @@
     <string name="permission_bluetooth_title">Geräte in der Nähe</string>
     <string name="permission_bluetooth_description">Die App benötigt Zugriff auf Geräte in der Nähe, um Bluetooth-Geräte zu finden</string>
     <string name="permission_bluetooth_denied">Zugriff auf Geräte in der Nähe verweigert.</string>
-    <string name="permission_read_images_title">Read images (optional)</string>
-    <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
-        If you don\'t plan to use this feature, you can choose not to grant it.</string>
-    <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
+    <string name="permission_read_images_title">Bilder lesen (optional)</string>
+    <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in Ihren Musikordnern finden kann.
+Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verweigern.</string>
+    <string name="permission_read_images_denied">Sie müssen die Berechtigung zum Lesen von Bildern auf diesem Gerät erteilen.</string>
     <string name="permission_exact_alarms_title">Genaue Erinnerungen planen (optional)</string>
     <string name="permission_exact_alarms_description">Die Erlaubnis, genaue Erinnerungen zu planen, ist erforderlich, damit der Sleeptimer richtig funktioniert</string>
     <string name="permission_ringtone_title">Klingelton (optional)</string>
@@ -471,14 +471,14 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Externer EQ</string>
     <string name="custom">Benutzerdefiniert</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
+    <string name="enable_audio_offload_title">Audio-Auslagerung</string>
     <string name="enable_audio_offload_description">Ermöglicht es dem Gerät, Audio direkt über die Hardware zu verarbeiten, wodurch die CPU-Belastung reduziert und der Akku geschont wird.
         Diese Funktion wird nur auf bestimmten Geräten unterstützt. Einige Effekte oder Funktionen sind möglicherweise nicht verfügbar, wenn sie aktiviert ist.
         Ein Neustart ist erforderlich, damit die Änderungen wirksam werden.</string>
-    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="enable_audio_float_output_title">Hochpräzise Audioausgabe</string>
+    <string name="enable_audio_float_output_description">Aktiviert 32-Bit-Fließkomma-Audio für eine bessere Klangqualität.
+Beachten Sie, dass dadurch Funktionen wie ReplayGain, Stille überspringen und Lautstärkebalance deaktiviert werden.
+Dies kann zu einem etwas höheren Batterieverbrauch führen. Sie müssen die App neu starten, damit die Änderung wirksam wird.</string>
     <string name="skip_silence_title">Pause überspringen</string>
     <string name="skip_silence_description">Automatically skip silent sections during playback.
         Ideal for podcasts and recordings.</string>
