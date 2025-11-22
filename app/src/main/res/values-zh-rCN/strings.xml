@@ -3,7 +3,7 @@
     <string name="action_play">播放</string>
     <string name="action_play_all">播放全部</string>
     <string name="action_shuffle_play">随机播放</string>
-    <string name="action_queue_next">下一个队列</string>
+    <string name="action_queue_next">下一个播放</string>
     <string name="shuffle_all_label">全部随机</string>
     <string name="shuffle_mode">随机播放模式</string>
     <string name="repeat_mode">循环模式</string>
@@ -685,7 +685,7 @@
     <string name="prefer_album_artist_name_summary">显示专辑艺术家的名字，而不是歌手的名字(如果可用的话)。</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">启动时自动播放</string>
-    <string name="queue_next_mode_title">“队列下一个”模式</string>
+    <string name="queue_next_mode_title">“队列下一个播放”模式</string>
     <string name="search_auto_queue_title">将所有搜索结果加入队列</string>
     <string name="search_auto_queue_summary">当从搜索界面播放歌曲时，其他结果也添加至队列。</string>
     <string name="remember_shuffle_mode_title">记住随机播放</string>
