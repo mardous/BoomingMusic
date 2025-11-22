@@ -14,8 +14,8 @@
     <string name="action_next">Próximo</string>
     <string name="action_previous">Anterior</string>
     <string name="action_cancel">Cancelar</string>
-    <string name="action_seek_backward">Seek backward</string>
-    <string name="action_seek_forward">Seek forward</string>
+    <string name="action_seek_backward">Retroceder</string>
+    <string name="action_seek_forward">Avançar</string>
     <string name="action_cycle_repeat">Alternar modo de repetição</string>
     <string name="action_toggle_shuffle">Alternar modo aleatório</string>
     <string name="reset_action">Redefinir</string>
@@ -665,8 +665,8 @@ Ideal para podcasts e gravações.</string>
     <string name="queue_height_summary">Define a altura da fila de reprodução para metade da tela.</string>
     <string name="single_tap_on_album_cover_title">Toque único na capa</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
-    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
-    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
+    <string name="double_tap_on_left_album_cover_title">Toque duplo na borda esquerda da capa</string>
+    <string name="double_tap_on_right_album_cover_title">Toque duplo na borda direita da capa</string>
     <string name="long_press_on_album_cover_title">Toque longo na capa</string>
     <string name="small_image_title">Imagem pequena</string>
     <string name="small_image_summary">Reduz o tamanho da capa em estilos compatíveis.</string>
