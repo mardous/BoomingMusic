@@ -35,7 +35,7 @@
     </shortcut>
     <shortcut
         android:enabled="true"
-        android:icon="@@mipmap/ic_launcher_shuffle_all"
+        android:icon="@mipmap/ic_launcher_shuffle_all"
         android:shortcutId="shuffle_all"
         android:shortcutLongLabel="@string/app_shortcut_shuffle_all_short"
         android:shortcutShortLabel="@string/shuffle_all_label">
