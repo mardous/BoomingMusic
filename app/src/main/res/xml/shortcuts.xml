@@ -2,7 +2,7 @@
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_app_shortcut_last_added"
+        android:icon="@mipmap/ic_launcher_last_added"
         android:shortcutId="last_added"
         android:shortcutLongLabel="@string/app_shortcut_last_added_short"
         android:shortcutShortLabel="@string/last_added_label">
@@ -13,7 +13,7 @@
     </shortcut>
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_app_shortcut_top_tracks"
+        android:icon="@mipmap/ic_launcher_top"
         android:shortcutId="top_tracks"
         android:shortcutLongLabel="@string/app_shortcut_top_tracks_short"
         android:shortcutShortLabel="@string/top_tracks_label">
@@ -24,7 +24,7 @@
     </shortcut>
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_app_shortcut_favorites"
+        android:icon="@mipmap/ic_launcher_fav"
         android:shortcutId="favorites"
         android:shortcutLongLabel="@string/app_shortcut_favorites_short"
         android:shortcutShortLabel="@string/favorites_label">
@@ -35,7 +35,7 @@
     </shortcut>
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_app_shortcut_shuffle_all"
+        android:icon="@mipmap/ic_launcher_shuffle_all"
         android:shortcutId="shuffle_all"
         android:shortcutLongLabel="@string/app_shortcut_shuffle_all_short"
         android:shortcutShortLabel="@string/shuffle_all_label">
