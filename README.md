@@ -93,24 +93,12 @@
 - [ ] 💿 Enhanced artist pages (separate albums and singles visually)
 - [ ] 📺 Experimental Android TV support (if enough demand!)
 
-## 🎧 Supported Formats
+## 🔗 Useful links
 
-Booming Music uses [Media3](https://developer.android.com/media/media3) for audio playback.
-See [ExoPlayer’s supported formats](https://developer.android.com/media/media3/exoplayer/supported-formats) for complete details.
-
-## 🔐 Permissions
-
-We request only what’s essential.
-Read [PERMISSIONS.md](PERMISSIONS.md) for details on why each permission is required.
-
-## 🚘 Android Auto Setup
-
-If Booming Music doesn’t appear in Android Auto:
-
-1. Open **Android Auto settings**.
-2. Scroll down and tap the **version number** several times to enable developer mode.
-3. Open **Developer settings** from the top-right menu.
-4. Enable **Unknown sources**.
+- 🔐 [Requested permissions](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions)
+- 🚘 [Android Auto setup](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)
+- 🎧 [Supported formats](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats)
+- ❓️ [FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)
 
 ## 🤝 Contributing
 
