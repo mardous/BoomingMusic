@@ -93,18 +93,16 @@ class PlaybackService :
         )
     }
 
-    private lateinit var persistentStorage: PersistentStorage
-
     private val pendingStartCommands = mutableListOf<Intent>()
     private val playerThread = HandlerThread("Booming-ExoPlayer", Process.THREAD_PRIORITY_AUDIO)
-    private lateinit var notificationProvider: DefaultMediaNotificationProvider
-    private lateinit var nm: NotificationManager
-    private var mediaSession: MediaLibrarySession? = null
-    private lateinit var player: AdvancedForwardingPlayer
-    private lateinit var customCommands: List<CommandButton>
-
     private val balanceProcessor = BalanceAudioProcessor()
     private val replayGainProcessor = ReplayGainAudioProcessor(ReplayGainMode.Off)
+
+    private lateinit var nm: NotificationManager
+    private lateinit var persistentStorage: PersistentStorage
+    private lateinit var customCommands: List<CommandButton>
+    private lateinit var player: AdvancedForwardingPlayer
+    private var mediaSession: MediaLibrarySession? = null
 
     private var pausedByZeroVolume = false
     private var hasSetUnshuffledOrder = false
