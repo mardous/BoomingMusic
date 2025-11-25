@@ -309,11 +309,16 @@ class PlaybackService :
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent != null) {
-            if (persistentStorage.restorationState.isRestored) {
-                processCommand(intent)
-            } else {
-                pendingStartCommands.add(intent)
+        when (intent?.action) {
+            ACTION_NEXT,
+            ACTION_PREVIOUS,
+            ACTION_TOGGLE_PAUSE -> {
+                if (persistentStorage.restorationState.isRestored) {
+                    processCommand(intent)
+                } else {
+                    pendingStartCommands.add(intent)
+                }
+                return START_STICKY
             }
         }
         return super.onStartCommand(intent, flags, startId)
