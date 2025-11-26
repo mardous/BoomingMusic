@@ -215,7 +215,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
     <string name="favorites_label">Favoritos</string>
-    <string name="last_added_label">Últimas Adicionadas</string>
+    <string name="last_added_label">Adicionadas Recentemente</string>
     <string name="top_tracks_label">Melhores Faixas</string>
     <string name="history_label">Histórico</string>
     <string name="not_recently_played">Não Tocadas Recentemente</string>
@@ -228,13 +228,13 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="ignore_singles">Ignorar singles</string>
     <string name="compact_song_view">Visualização compacta da música</string>
     <string name="show_total_duration">Mostrar duração total</string>
-    <string name="action_view_type">Tipo de exibição</string>
+    <string name="action_view_type">Tipo de Exibição</string>
     <string name="view_type_normal">Normal</string>
     <string name="view_type_card">Cartão</string>
-    <string name="view_type_colored_card">Cartão colorido</string>
+    <string name="view_type_colored_card">Cartão Colorido</string>
     <string name="view_type_circle">Círculo</string>
     <string name="view_type_image">Imagem</string>
-    <string name="action_grid_size">Tamanho da grade</string>
+    <string name="action_grid_size">Tamanho da Grade</string>
     <string name="action_grid_size_land">Tamanho da grade (horizontal)</string>
     <string name="action_sort_order">Classificar por</string>
     <string name="sort_order_az">A-Z</string>
@@ -262,8 +262,8 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="action_hierarchy_view">Visualização hierárquica</string>
     <string name="new_start_directory">Novo diretório inicial: %s</string>
     <string name="action_scan">Escanear</string>
-    <string name="scan_media">Escanear mídias</string>
-    <string name="scan_media_message">Geralmente, o Android detecta e indexa automaticamente os arquivos de mídia no seu dispositivo, então o escaneamento manual normalmente não é necessário.</string>
+    <string name="scan_media">Escanear Mídias</string>
+    <string name="scan_media_message">Geralmente, o Android detecta e indexa automaticamente os arquivos de mídia no seu dispositivo, tornando o escaneamento manual desnecessário.</string>
     <string name="scan_media_positive">Escanear mesmo assim</string>
     <string name="scan_finished">Escaneamento concluído.</string>
     <string name="album_or_artist_empty">O título ou artista está vazio.</string>
@@ -391,7 +391,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     </plurals>
     <!-- Listen now -->
     <string name="for_you_label">Para você</string>
-    <string name="shuffle_action">Aleatório</string>
+    <string name="shuffle_action">Misturar</string>
     <string name="top_artists">Artistas Populares</string>
     <string name="top_albums">Álbuns Populares</string>
     <string name="recent_artists">Artistas Recentes</string>
@@ -521,9 +521,9 @@ Ideal para podcasts e gravações.</string>
     <string name="sleep_timer_stop_after_x">Parar depois de %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Parar após %s: cancelado</string>
     <!-- App Shortcuts -->
-    <string name="app_shortcut_shuffle_all_short">Aleatório</string>
+    <string name="app_shortcut_shuffle_all_short">Misturar</string>
     <string name="app_shortcut_top_tracks_short">Melhores Faixas</string>
-    <string name="app_shortcut_last_added_short">Últimas Adicionadas</string>
+    <string name="app_shortcut_last_added_short">Adicionadas Recentemente</string>
     <string name="app_shortcut_favorites_short">Favoritos</string>
     <!-- About page -->
     <string name="action_about">Sobre</string>
