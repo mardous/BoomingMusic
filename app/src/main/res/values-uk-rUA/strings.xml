@@ -424,7 +424,7 @@
     <string name="shuffle_mode_recently_added">Recently added</string>
     <string name="shuffle_mode_combined">Smart mix</string>
     <string name="shuffle_mode_pure_random_description">Completely random shuffle.</string>
-    <string name="shuffle_mode_most_played_description">Favors your most played songs.</string>
+    <string name="shuffle_mode_most_played_description">Улюблені пісні з найбільшою кількістю відтворень.</string>
     <string name="shuffle_mode_most_played_artists_description">Favors songs from your top artists.</string>
     <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
     <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
