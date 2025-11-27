@@ -303,7 +303,7 @@
     <string name="title">Title</string>
     <string name="album">Album</string>
     <string name="artist">Artist</string>
-    <string name="album_artist">Album-artist</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Composer</string>
     <string name="conductor">Conductor</string>
     <string name="publisher">Publisher</string>
