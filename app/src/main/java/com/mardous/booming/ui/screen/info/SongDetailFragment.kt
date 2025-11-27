@@ -87,9 +87,9 @@ class SongDetailFragment : DialogFragment() {
 
                         // Audio Header Info
                         detail.audioHeaderInfo?.let { info ->
-                            fillInfoView(R.id.audio_format, R.string.label_format, info.format)
-                            fillInfoView(R.id.audio_bitrate, R.string.label_bitrate, info.bitrate)
-                            fillInfoView(R.id.audio_sample_rate, R.string.label_sample_rate, info.sampleRate)
+                            fillInfoView(R.id.audio_format, R.string.label_file_format, info.format)
+                            fillInfoView(R.id.audio_bitrate, R.string.label_bit_rate, info.bitrate)
+                            fillInfoView(R.id.audio_sample_rate, R.string.label_sampling_rate, info.sampleRate)
                             fillInfoView(R.id.audio_channels, R.string.label_channels, info.channels)
                             fillInfoView(R.id.audio_vbr, R.string.label_variable_bitrate, info.vbr)
                             fillInfoView(R.id.audio_lossless, R.string.label_loss_less, info.lossless)
