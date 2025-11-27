@@ -171,7 +171,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="action_remove_from_favorites">Remover dos Favoritos</string>
     <string name="added_to_favorites_label">Adicionado aos Favoritos</string>
     <string name="removed_from_favorites_label">Removido dos Favoritos</string>
-    <string name="toggle_favorite">Adicionar/Remover dos Favoritos</string>
+    <string name="toggle_favorite">Adicionar/Remover dos favoritos</string>
     <string name="action_add_to_playlist">Adicionar à playlist</string>
     <string name="action_remove_from_playlist">Remover da playlist</string>
     <string name="action_add_to_playing_queue">Adicionar à fila</string>
@@ -605,7 +605,7 @@ Ideal para podcasts e gravações.</string>
     <string name="use_custom_font_title">Usar a fonte Manrope</string>
     <string name="appbar_mode_title">Estilo do cabeçalho</string>
     <string name="library_categories_title">Categorias da biblioteca</string>
-    <string name="library_categories_summary">Configurar a visibilidade e a ordem das categorias da biblioteca.</string>
+    <string name="library_categories_summary">Configura a visibilidade e a ordem das categorias da biblioteca.</string>
     <string name="remember_last_page_title">Lembrar última guia</string>
     <string name="remember_last_page_summary">Ir para a última guia aberta ao iniciar.</string>
     <string name="start_page_title">Página inicial</string>
@@ -655,12 +655,12 @@ Ideal para podcasts e gravações.</string>
     <string name="extra_controls_title">Controles adicionais</string>
     <string name="extra_controls_summary">Adicionar controles extras no mini player</string>
     <string name="adaptive_controls_title">Controles adaptáveis</string>
-    <string name="adaptive_controls_summary">Os controles do miniplayer mudam para se adaptar ao estilo atual do player.</string>
+    <string name="adaptive_controls_summary">Os controles do mini player mudam para se adaptar ao estilo atual do player.</string>
     <string name="swipe_to_dismiss_title">Deslize para baixo para dispensar</string>
     <string name="swipe_to_dismiss_summary">Deslize para baixo no mini player para parar e limpar a fila.</string>
     <string name="circle_button_title">Botão de reprodução redondo</string>
     <string name="swipe_album_cover_title">Deslize sobre a capa do álbum</string>
-    <string name="swipe_album_cover_summary">Deslize para a esquerda ou para a direita na capa do álbum para pular entre faixas.</string>
+    <string name="swipe_album_cover_summary">Deslize para a esquerda ou para a direita na capa do álbum para mudar de música.</string>
     <string name="queue_height_title">Altura da fila em meia tela</string>
     <string name="queue_height_summary">Define a altura da fila de reprodução para metade da tela.</string>
     <string name="single_tap_on_album_cover_title">Toque único na capa</string>
@@ -675,11 +675,11 @@ Ideal para podcasts e gravações.</string>
     <string name="carousel_effect_title">Efeito carrossel</string>
     <string name="album_cover_effect_title">Efeito da capa do álbum</string>
     <string name="lyrics_on_album_cover_title">Letras na capa</string>
-    <string name="lyrics_on_album_cover_summary">Mostrar letra da música em vez da capa quando disponível.</string>
+    <string name="lyrics_on_album_cover_summary">Quando disponível, mostra a letra da música em vez da capa.</string>
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
     <string name="swipe_anywhere_title">Deslize em qualquer lugar para trocar de música</string>
-    <string name="swipe_anywhere_summary">Deslize para a esquerda ou para a direita em qualquer área vazia da tela de reprodução para trocar de música.</string>
+    <string name="swipe_anywhere_summary">Deslize para a esquerda ou para a direita em qualquer área vazia da tela de reprodução para mudar de música.</string>
     <string name="swipe_up_queue_title">Deslize para cima para abrir a fila</string>
     <string name="swipe_up_queue_summary">Deslize para cima em uma área vazia da tela de reprodução para abrir a fila de reprodução.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
@@ -834,11 +834,11 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="player_color_mode_app_theme_title">Tema do aplicativo</string>
     <string name="player_color_mode_app_theme_description">Use o esquema de cores do aplicativo</string>
     <string name="player_color_mode_simple_color_title">Cor simples</string>
-    <string name="player_color_mode_simple_color_description">Extrair a cor do álbum e aplicá-la aos controles</string>
+    <string name="player_color_mode_simple_color_description">Extrai a cor do álbum e aplica aos controles</string>
     <string name="player_color_mode_vibrant_color_title">Cor principal</string>
     <string name="player_color_mode_vibrant_color_description">Colorir fundo, texto e controles com a cor do álbum</string>
     <string name="player_color_mode_material_you_title">Material You</string>
-    <string name="player_color_mode_material_you_description">Usar tons do Material You baseado na cor do álbum</string>
+    <string name="player_color_mode_material_you_description">Use tons do Material You baseado na cor do álbum</string>
     <!-- Update -->
     <string name="auto_update_title">Atualizar busca automaticamente</string>
     <string name="every_day">Diariamente</string>
