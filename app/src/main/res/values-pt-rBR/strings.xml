@@ -110,7 +110,7 @@
     <string name="where_do_you_want_to_search">Onde você deseja procurar?</string>
     <string name="configure_action">Configurar</string>
     <string name="blacklist_directory">Diretório da lista negra</string>
-    <string name="add_directory">Adicionar diretório</string>
+    <string name="add_directory">Adicionar pasta</string>
     <string name="remove_from_blacklist">Você quer remover este diretório da lista negra?</string>
     <string name="remove_from_whitelist">Você quer remover este diretório da lista branca?</string>
     <string name="do_you_want_to_clear_the_blacklist">Deseja limpar a lista negra?</string>
@@ -477,7 +477,7 @@ Esse recurso é compatível apenas com determinados dispositivos. Alguns efeitos
     <string name="enable_audio_float_output_title">Saída de áudio de alta precisão</string>
     <string name="enable_audio_float_output_description">Ativa áudio em 32 bits com ponto flutuante para melhor qualidade de som.
 Lembre-se de que isso desativa recursos como ReplayGain, pular silêncio e balanço de volume.
-Essa opção pode consumir um pouco mais de bateria, e será necessário reiniciar o app para que as alterações tenham efeito.</string>
+Essa opção pode consumir um pouco mais de bateria, e será necessário reiniciar o aplicativo para que as alterações tenham efeito.</string>
     <string name="skip_silence_title">Ignorar silêncio</string>
     <string name="skip_silence_description">Pula automaticamente as partes silenciosas durante a reprodução.
 Ideal para podcasts e gravações.</string>
@@ -567,7 +567,7 @@ Ideal para podcasts e gravações.</string>
     <string name="saf_delete_failed">Falha ao excluir arquivo: %s</string>
     <string name="settings_title">Configurações</string>
     <string name="appearance_title">Aparência</string>
-    <string name="appearance_summary">Alterar o tema e outras configurações visuais.</string>
+    <string name="appearance_summary">Altere o tema e outras configurações visuais.</string>
     <string name="now_playing_title">Em execução</string>
     <string name="now_playing_summary">Personalize a tela de reprodução.</string>
     <string name="lyrics_preferences_title">Letras</string>
@@ -615,53 +615,53 @@ Ideal para podcasts e gravações.</string>
     <string name="larger_header_image_title">Imagem do cabeçalho ampliada</string>
     <string name="larger_header_image_summary">Mostra a imagem da capa maior nos detalhes de álbuns, artistas e playlists.</string>
     <string name="lyrics_center_current_line_title">Centralizar linha atual</string>
-    <string name="lyrics_center_current_line_summary">Manter a linha atual das letras centralizadas na tela em vez de alinhada ao topo.</string>
+    <string name="lyrics_center_current_line_summary">Mantém a linha atual das letras centralizadas na tela em vez de alinhada ao topo.</string>
     <string name="lyrics_custom_font_title">Fonte personalizada</string>
     <string name="lyrics_custom_font_summary">Importe e use sua própria fonte para as letras.</string>
     <string name="lyrics_import_custom_font_title">Importar fonte personalizada</string>
     <string name="lyrics_syllable_mode_title">Letras palavra por palavra</string>
     <string name="lyrics_syllable_mode_summary">Permite exibir letras com sincronização palavra por palavra. Depende da disponibilidade da letra e de um formato compatível, como LRC ou TTML.</string>
-    <string name="lyrics_effects_note">Efeitos avançados melhoram a experiência visual, mas podem exigir mais recursos do sistema e bateria.</string>
+    <string name="lyrics_effects_note">Efeitos avançados melhoram a experiência visual, mas podem exigir mais recursos de sistema e bateria.</string>
     <string name="lyrics_gradient_background_title">Fundo em gradiente</string>
-    <string name="lyrics_gradient_background_summary">Mostrar um fundo em gradiente animado usando as cores da capa da música atual. Aplicável apenas em tela cheia.</string>
+    <string name="lyrics_gradient_background_summary">Mostra o fundo em gradiente animado usando as cores da capa do álbum da música atual. Aplica-se apenas em tela cheia.</string>
     <string name="lyrics_blur_effect_title">Efeito de desfoque</string>
     <string name="lyrics_blur_effect_summary">Desfocar as linhas da letra adjacentes à atual.</string>
     <string name="lyrics_shadow_effect_title">Efeito de sombra</string>
     <string name="lyrics_shadow_effect_summary">Adiciona uma sombra sob a linha atual para melhorar a legibilidade.</string>
     <string name="lyrics_progressive_coloring_title">Coloração progressiva das letras</string>
-    <string name="lyrics_progressive_coloring_summary">Animar as linhas ativas com uma transição gradual de cor em vez de colorir instantaneamente.</string>
+    <string name="lyrics_progressive_coloring_summary">Mostra as linhas ativas com uma transição gradual de cor em vez de colorir instantaneamente.</string>
     <string name="lyrics_bold_synced_title">Fonte em negrito para letras sincronizadas</string>
     <string name="lyrics_bold_synced_summary">Mostrar letras sincronizadas em negrito.</string>
     <string name="lyrics_bold_unsynced_title">Fonte em negrito para letras não sincronizadas</string>
     <string name="lyrics_bold_unsynced_summary">Mostrar letras não sincronizadas em negrito.</string>
     <string name="lyrics_line_spacing_title">Espaçamento entre linhas</string>
-    <string name="lyrics_line_spacing_summary">Ajuste o espaçamento entre as linhas da letra.</string>
-    <string name="synced_font_size_player_title">Tamanho da fonte das letras sincronizadas (reprodutor)</string>
-    <string name="synced_font_size_player_summary">Ajusta o tamanho da fonte das letras sincronizadas exibidas sobre a capa do álbum na tela do tocador.</string>
-    <string name="unsynced_font_size_player_title">Tamanho da fonte das letras não sincronizadas (tocador)</string>
-    <string name="unsynced_font_size_player_summary">Ajustar o tamanho da fonte das letras não sincronizadas exibidas sobre a capa do álbum na tela do tocador.</string>
+    <string name="lyrics_line_spacing_summary">Ajusta o espaçamento entre as linhas da letra.</string>
+    <string name="synced_font_size_player_title">Tamanho da fonte das letras sincronizadas (tela de reprodução)</string>
+    <string name="synced_font_size_player_summary">Ajusta o tamanho da fonte das letras sincronizadas exibidas sobre a capa do álbum na tela de reprodução.</string>
+    <string name="unsynced_font_size_player_title">Tamanho da fonte das letras não sincronizadas (tela de reprodução)</string>
+    <string name="unsynced_font_size_player_summary">Ajusta o tamanho da fonte das letras não sincronizadas exibidas sobre a capa do álbum na tela de reprodução.</string>
     <string name="synced_font_size_full_title">Tamanho da fonte das letras sincronizadas (tela cheia)</string>
-    <string name="synced_font_size_full_summary">Ajustar o tamanho da fonte das letras sincronizadas em tela cheia.</string>
+    <string name="synced_font_size_full_summary">Ajusta o tamanho da fonte das letras sincronizadas em tela cheia.</string>
     <string name="unsynced_font_size_full_title">Tamanho da fonte das letras não sincronizadas (tela cheia)</string>
-    <string name="unsynced_font_size_full_summary">Ajustar o tamanho da fonte das letras não sincronizadas na tela cheia.</string>
+    <string name="unsynced_font_size_full_summary">Ajusta o tamanho da fonte das letras não sincronizadas na tela cheia.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir ao reproduzir</string>
-    <string name="open_on_play_summary">Abrir o painel Reproduzindo Agora automaticamente após começar a tocar uma música.</string>
+    <string name="open_on_play_summary">Abre a tela de reprodução automaticamente após começar a tocar uma música.</string>
     <string name="squiggly_seek_bar_title">Barra de busca ondulada</string>
-    <string name="squiggly_seek_bar_summary">Usar uma barra de busca com efeito ondulado no lugar do controle deslizante padrão.</string>
+    <string name="squiggly_seek_bar_summary">Usa a barra de busca com efeito ondulado no lugar do controle deslizante padrão.</string>
     <string name="scrolling_text_title">Habilitar rolagem de texto</string>
     <string name="scrolling_text_summary">Rolagem de títulos de músicas muito longos podem consumir um pouco mais de bateria.</string>
     <string name="extra_controls_title">Controles adicionais</string>
     <string name="extra_controls_summary">Adicionar controles extras no mini player</string>
     <string name="adaptive_controls_title">Controles adaptáveis</string>
-    <string name="adaptive_controls_summary">Os controles do mini player mudam para se adaptar ao estilo atual do player.</string>
+    <string name="adaptive_controls_summary">Os controles do mini player mudam automaticamente para se adaptar ao estilo atual do player.</string>
     <string name="swipe_to_dismiss_title">Deslize para baixo para dispensar</string>
-    <string name="swipe_to_dismiss_summary">Deslize para baixo no mini player para parar e limpar a fila.</string>
+    <string name="swipe_to_dismiss_summary">Deslize para baixo no mini player para parar a reprodução e limpar a fila.</string>
     <string name="circle_button_title">Botão de reprodução redondo</string>
     <string name="swipe_album_cover_title">Deslize sobre a capa do álbum</string>
     <string name="swipe_album_cover_summary">Deslize para a esquerda ou para a direita na capa do álbum para mudar de música.</string>
-    <string name="queue_height_title">Altura da fila em meia tela</string>
+    <string name="queue_height_title">Altura da fila em meia-tela</string>
     <string name="queue_height_summary">Define a altura da fila de reprodução para metade da tela.</string>
     <string name="single_tap_on_album_cover_title">Toque único na capa</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
@@ -677,20 +677,20 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_on_album_cover_title">Letras na capa</string>
     <string name="lyrics_on_album_cover_summary">Quando disponível, mostra a letra da música em vez da capa.</string>
     <string name="animate_controls_title">Animar controles</string>
-    <string name="animate_controls_summary">É executado quando o painel do reprodutor é aberto.</string>
-    <string name="swipe_anywhere_title">Deslize em qualquer lugar para trocar de música</string>
+    <string name="animate_controls_summary">Executa uma animação quando o painel de reprodução é aberto.</string>
+    <string name="swipe_anywhere_title">Deslize em qualquer lugar para mudar de música</string>
     <string name="swipe_anywhere_summary">Deslize para a esquerda ou para a direita em qualquer área vazia da tela de reprodução para mudar de música.</string>
     <string name="swipe_up_queue_title">Deslize para cima para abrir a fila</string>
     <string name="swipe_up_queue_summary">Deslize para cima em uma área vazia da tela de reprodução para abrir a fila de reprodução.</string>
     <string name="display_album_name_title">Mostrar nome do álbum</string>
     <string name="display_extra_info_title">Exibir informações extras</string>
-    <string name="display_extra_info_summary">Exibir informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
+    <string name="display_extra_info_summary">Exibe informações extras sobre a música, como taxa de bits, formato, taxa de amostragem, etc.</string>
     <string name="display_next_song_title">Mostrar próxima música</string>
-    <string name="display_next_song_summary">Mostra a próxima música da fila na parte inferior do tocador.</string>
+    <string name="display_next_song_summary">Mostra a próxima música da fila na parte inferior da tela de reprodução.</string>
     <string name="select_extra_info_title">Informações extras</string>
-    <string name="select_extra_info_summary">Selecione as informações extras a serem exibidas no painel do tocador.</string>
+    <string name="select_extra_info_summary">Selecione as informações extras a serem exibidas na tela de reprodução.</string>
     <string name="prefer_remaining_time_title">Exibir tempo restante</string>
-    <string name="prefer_remaining_time_summary">Mostrar o tempo restante em vez da duração da música.</string>
+    <string name="prefer_remaining_time_summary">Mostra o tempo restante em vez da duração da música.</string>
     <string name="prefer_album_artist_name_title">"Exibir nome do artista do álbum"</string>
     <string name="prefer_album_artist_name_summary">Mostra o nome do artista do álbum em vez do artista da música (se disponível).</string>
     <!-- Playback preferences -->
@@ -709,11 +709,11 @@ Ideal para podcasts e gravações.</string>
     <string name="resume_on_connect_title">Retomar ao conectar</string>
     <string name="resume_on_connect_summary">Retoma a reprodução quando o fone de ouvido estiver conectado.</string>
     <string name="pause_on_disconnect_title">Pausar ao desconectar</string>
-    <string name="pause_on_disconnect_summary">Pausa a reprodução quando o fone de ouvido estiver desconectado. Recomendado.</string>
+    <string name="pause_on_disconnect_summary">Pausa a reprodução quando o fone de ouvido estiver desconectado (recomendado).</string>
     <string name="resume_on_bluetooth_connect_title">Retomar ao conectar bluetooth</string>
     <string name="resume_on_bluetooth_connect_summary">Retoma a reprodução quando o fone de ouvido Bluetooth A2DP é conectado.</string>
     <string name="pause_on_bluetooth_disconnect_title">Pausar ao desconectar bluetooth</string>
-    <string name="pause_on_bluetooth_disconnect_summary">Pausa a reprodução quando o fone de ouvido Bluetooth A2DP é desconectado. Recomendado.</string>
+    <string name="pause_on_bluetooth_disconnect_summary">Pausa a reprodução quando o fone de ouvido Bluetooth A2DP é desconectado (recomendado).</string>
     <string name="ignore_audio_focus_title">Ignorar foco de áudio</string>
     <string name="ignore_audio_focus_summary">Sempre reproduzir o áudio em segundo plano, independentemente do que já esteja sendo reproduzido.</string>
     <string name="pause_on_zero_volume_title">Pausar quando o volume for zero</string>
@@ -721,7 +721,7 @@ Ideal para podcasts e gravações.</string>
     <string name="mp3_index_seeking_title">Busca por índice MP3</string>
     <string name="mp3_index_seeking_summary">Carrega o arquivo MP3 completo na memória para busca, sem depender do cabeçalho Xing.
 Use apenas se a busca falhar em determinados arquivos VBR.
-É necessário reiniciar o app para aplicar a alteração.</string>
+É necessário reiniciar o aplicativo para aplicar a alteração.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Baixar metadados automaticamente</string>
     <string name="ignore_media_store_album_covers_title">Ignorar capas do armazenamento de mídia</string>
@@ -729,7 +729,7 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="use_folder_album_cover_title">Usar imagens da pasta</string>
     <string name="use_folder_album_cover_summary">Se o arquivo de áudio não conter uma capa embutida, as imagens podem levar um pouco mais de tempo para carregar.</string>
     <string name="online_artist_images_title">Baixar imagens dos artistas</string>
-    <string name="online_artist_images_summary">Isso depende da sua política de download de metadados.</string>
+    <string name="online_artist_images_summary">Depende da sua política de download de metadados.</string>
     <string name="preferred_image_size_title">Tamanho de imagem preferido</string>
     <string name="online_album_covers_title">Baixar capas de álbuns ausentes</string>
     <string name="online_album_covers_summary">As imagens baixadas não são incorporadas nos arquivos de áudio; ficam disponíveis apenas no aplicativo. Isso depende da sua configuração da política de download de metadados.</string>
@@ -738,16 +738,16 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="lyrics_cleared">Letra excluída.</string>
     <!-- Library preferences -->
     <string name="ignore_articles_when_sorting_title">Ignorar artigos ao ordenar</string>
-    <string name="ignore_articles_when_sorting_summary">Ignorar palavras que começam com \"the\", \"a\", \"an\" ao ordenar itens.</string>
+    <string name="ignore_articles_when_sorting_summary">Ignora palavras que começam com \"the\", \"a\", \"an\" ao ordenar itens.</string>
     <string name="trash_music_title">Enviar para lixeira</string>
     <string name="trash_music_summary">Enviar arquivos excluídos para a lixeira.</string>
     <string name="recursive_folder_actions_title">Ações aplicadas às subpastas</string>
     <string name="recursive_folder_actions_summary">Selecione quais ações também serão aplicadas às subpastas quando feitas em uma pasta.</string>
     <string name="enable_history_title">Habilitar histórico</string>
-    <string name="enable_history_summary">Permite que o aplicativo registre as músicas que você ouviu. Se você desativar, todo o histórico será apagado.</string>
+    <string name="enable_history_summary">Permite que o aplicativo registre as músicas que você ouviu. Se desativado, todo o histórico será apagado.</string>
     <string name="history_interval_title">Intervalo do histórico</string>
-    <string name="last_added_interval_title">Último intervalo adicionado</string>
-    <string name="whitelist_title">Lista Branca</string>
+    <string name="last_added_interval_title">Intervalo para últimos adicionados</string>
+    <string name="whitelist_title">Lista branca</string>
     <string name="whitelist_summary">Apenas o conteúdo das pastas na lista branca é exibido em sua biblioteca.</string>
     <string name="blacklist_title">Lista Negra</string>
     <string name="blacklist_summary">O conteúdo das pastas na lista negra não serão exibidos na sua biblioteca.</string>
@@ -762,12 +762,12 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="backup_data_title">Backup de dados</string>
     <string name="backup_app_data_summary">Cria um arquivo contendo dados essenciais do aplicativo e salva-o no armazenamento externo.</string>
     <string name="restore_backup_title">Restaurar backup</string>
-    <string name="restore_backup_summary">Restaurar dados (e estado) de um backup anterior.</string>
+    <string name="restore_backup_summary">Restaura os dados (e o estado) de um backup anterior.</string>
     <string name="stop_when_closed_from_recents_title">Parar ao ser fechado a partir dos apps recentes</string>
     <string name="stop_when_closed_from_recents_summary">A reprodução é interrompida se o aplicativo for fechado a partir dos apps recentes.</string>
     <string name="stop_when_closed_from_recents_note">Nota: Alguns dispositivos com gerenciamento agressivo de memória ou bateria podem ignorar esta configuração e sempre encerrar o aplicativo ao removê-lo da lista de recentes.</string>
     <string name="rotation_lock_title">Travar rotação da tela</string>
-    <string name="rotation_lock_summary">Trava a orientação do dispositivo. Útil em casos em que a música para ao girar o aparelho, devido a certas políticas do fabricante.</string>
+    <string name="rotation_lock_summary">Trava a orientação do dispositivo. Útil em casos em que a música para de reproduzir ao girar o aparelho, devido a certas políticas do fabricante.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Claro</string>
     <string name="dark_theme_name">Escuro</string>
@@ -825,8 +825,8 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="image_size_medium">Médio (padrão, recomendado)</string>
     <string name="image_size_small">Pequeno (mais rápido, baixa qualidade)</string>
     <string name="play_on_startup_mode_never">Nunca reproduzir ao iniciar</string>
-    <string name="play_on_startup_mode_minimized">Sim, com o painel do reprodutor minimizado</string>
-    <string name="play_on_startup_mode_expanded">Sim, com o painel do reprodutor expandido</string>
+    <string name="play_on_startup_mode_minimized">Sim, com a tela de reprodução minimizada</string>
+    <string name="play_on_startup_mode_expanded">Sim, com a tela de reprodução expandida</string>
     <string name="system_default">Padrão do sistema</string>
     <string name="label_never">Nunca</string>
     <string name="label_nothing">Nada</string>
@@ -840,7 +840,7 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Use tons do Material You baseado na cor do álbum</string>
     <!-- Update -->
-    <string name="auto_update_title">Atualizar busca automaticamente</string>
+    <string name="auto_update_title">Procurar por atualizações</string>
     <string name="every_day">Diariamente</string>
     <string name="weekly">Semanalmente</string>
     <string name="every_fifteen_days">A cada quinze dias</string>
@@ -849,8 +849,8 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="only_wifi_title">Somente Wi-Fi</string>
     <string name="only_wifi_summary">Procurar por atualizações somente quando o Wi-Fi estiver conectado.</string>
     <string name="receive_experimental_updates_title">Receber atualizações experimentais</string>
-    <string name="receive_experimental_updates_summary">Observe que essas atualizações são muitas vezes instáveis e se destinam a usuários experientes.</string>
-    <string name="search_for_update_title">Procurar atualização</string>
+    <string name="receive_experimental_updates_summary">Observe que essas atualizações são muitas vezes instáveis e se destinam a usuários avançados.</string>
+    <string name="search_for_update_title">Procurar atualização agora</string>
     <string name="last_update_search_x">Última verificação: %s</string>
     <string name="checking_please_wait">Verificando, por favor aguarde…</string>
     <string name="could_not_check_for_updates">Não foi possível verificar se há atualizações.</string>
