@@ -90,7 +90,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                     val filePath = file.getPrettyAbsolutePath()
                     val fileSize = file.getHumanReadableSize()
 
-                    val audioHeader = getAudioHeader(
+                    val audioHeaderInfo = getAudioHeader(
                         context,
                         file.toAudioFile()?.audioHeader,
                         metadataReader
@@ -125,7 +125,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                         fileSize,
                         trackLength,
                         dateModified,
-                        audioHeader,
+                        audioHeaderInfo,
                         title,
                         album,
                         artist,
@@ -159,23 +159,22 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    private fun getAudioHeader(context: Context, header: AudioHeader?, metadataReader: MetadataReader): String {
-        val properties = arrayOf(
-            header?.format,
-            metadataReader.bitrate(),
-            metadataReader.sampleRate(),
-            metadataReader.channelName(),
-            header?.let {
-                if (header.isVariableBitRate)
-                    context.getString(R.string.label_variable_bitrate).lowercase()
+    private fun getAudioHeader(context: Context, header: AudioHeader?, metadataReader: MetadataReader): AudioHeaderInfo {
+        return AudioHeaderInfo(
+            format = header?.format,
+            bitrate = metadataReader.bitrate(),
+            sampleRate = metadataReader.sampleRate(),
+            channels = metadataReader.channelName(),
+            vbr = header?.let {
+                if (it.isVariableBitRate)
+                    context.getString(R.string.yes)
                 else null
             },
-            header?.let {
-                if (header.isLossless)
-                    context.getString(R.string.label_loss_less).lowercase()
+            lossless = header?.let {
+                if (it.isLossless)
+                    context.getString(R.string.yes)
                 else null
             }
         )
-        return properties.filterNotNull().joinToString(separator = " - ")
     }
 }
