@@ -14,8 +14,8 @@
     <string name="action_next">Sonraki</string>
     <string name="action_previous">Önceki</string>
     <string name="action_cancel">İptal</string>
-    <string name="action_seek_backward">Seek backward</string>
-    <string name="action_seek_forward">Seek forward</string>
+    <string name="action_seek_backward">Geri sar</string>
+    <string name="action_seek_forward">İleri sar</string>
     <string name="action_cycle_repeat">Tekrarlama modunu değiştir</string>
     <string name="action_toggle_shuffle">Karıştırma modunu aç/kapat</string>
     <string name="reset_action">Sıfırla</string>
@@ -661,8 +661,8 @@
     <string name="queue_height_summary">Çalma sırasının yüksekliğini ekranın yarısına sabitleyin.</string>
     <string name="single_tap_on_album_cover_title">Kapağa tek dokun</string>
     <string name="double_tap_on_album_cover_title">Kapağa çift dokunun</string>
-    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
-    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
+    <string name="double_tap_on_left_album_cover_title">Albüm kapağının sol kenarına çift dokunma</string>
+    <string name="double_tap_on_right_album_cover_title">Albüm kapağının sağ kenarına çift dokunma</string>
     <string name="long_press_on_album_cover_title">Kapağa uzun basın</string>
     <string name="small_image_title">Küçük görsel</string>
     <string name="small_image_summary">Desteklenen stillerde kapak boyutunu küçültür.</string>
@@ -795,7 +795,7 @@
     <string name="zoom_out">Uzaklaştırma</string>
     <string name="simple">Basit</string>
     <string name="stack">Yığın</string>
-    <string name="parallax">Parallax</string>
+    <string name="parallax">Paralaks</string>
     <string name="add_after_playing_track">Çalan parçadan sonra ekle</string>
     <string name="add_tracks_sequentially">Parçaları sırayla ekle</string>
     <string name="albums_shuffle">Albümleri karıştır</string>
