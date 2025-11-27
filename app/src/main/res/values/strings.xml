@@ -312,9 +312,6 @@
     <string name="release_years_label">Years</string>
     <string name="length">Length</string>
     <string name="label_last_modified">Last modified</string>
-    <string name="label_format">Format</string>
-    <string name="label_bitrate">Bitrate</string>
-    <string name="label_sample_rate">Sample Rate</string>
     <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variable Bitrate</string>
     <string name="label_loss_less">Loss Less</string>

@@ -302,7 +302,7 @@
     <string name="release_years_label">Anni</string>
     <string name="length">Lunghezza</string>
     <string name="label_last_modified">Ultima modifica</string>
-    <string name="label_audio_header">Intestazione audio</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Bitrate Variabile</string>
     <string name="label_loss_less">Perdita Meno</string>
     <string name="label_bit_rate">Bitrate</string>
