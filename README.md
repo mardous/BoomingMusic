@@ -92,20 +92,23 @@
 
 ## 🔗 Useful Links
 
-<table>
-  <tr>
-    <td><a href="https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions"><strong>🔐 Requested Permissions</strong><br/><sub>What the app needs and why</sub></a></td>
-    <td><a href="https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup"><strong>🚘 Android Auto Setup</strong><br/><sub>How to enable and troubleshoot</sub></a></td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats"><strong>🎧 Supported Formats</strong><br/><sub>Compatible audio formats</sub></a></td>
-    <td><a href="https://github.com/mardous/BoomingMusic/wiki/Community"><strong>💬 Community</strong><br/><sub>Users and contributors</sub></a></td>
-  </tr>
-  <tr>
-    <td><a href="https://crowdin.com/project/booming-music"><strong>🌐 Translations</strong><br/><sub>Help translate the app</sub></a></td>
-    <td><a href="https://github.com/mardous/BoomingMusic/wiki/FAQ"><strong>❓ FAQ</strong><br/><sub>Common questions</sub></a></td>
-  </tr>
-</table>
+- 🔐 **[Requested Permissions](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions)**  
+  What the app needs and why
+
+- 🚘 **[Android Auto Setup](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)**  
+  How to enable and troubleshoot
+
+- 🎧 **[Supported Formats](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats)**  
+  Compatible audio formats
+
+- 💬 **[Community](https://github.com/mardous/BoomingMusic/wiki/Community)**  
+  Users and contributors
+
+- 🌐 **[Translations](https://crowdin.com/project/booming-music)**  
+  Help us translate Booming Music into your language
+
+- ❓ **[FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)**  
+  Common questions
 
 ## 🤝 Contributing
 
