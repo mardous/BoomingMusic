@@ -168,12 +168,14 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
             vbr = header?.let {
                 if (it.isVariableBitRate)
                     context.getString(R.string.yes)
-                else null
+                else
+                    context.getString(R.string.no)
             },
             lossless = header?.let {
                 if (it.isLossless)
                     context.getString(R.string.yes)
-                else null
+                else
+                    context.getString(R.string.no)
             }
         )
     }
