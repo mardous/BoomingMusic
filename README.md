@@ -29,11 +29,8 @@
 - [📸 Screenshots](#-screenshots)
 - [💻 Tech Stack](#-tech-stack)
 - [🧩 Roadmap](#-roadmap)
-- [🎧 Supported Formats](#-supported-formats)
-- [🔐 Permissions](#-permissions)
-- [🚘 Android Auto Setup](#-android-auto-setup)
+- [🔗 Useful Links](#-useful-links)
 - [🤝 Contributing](#-contributing)
-- [💬 Community](#-community)
 - [🙌 Credits](#-credits)
 - [⚖️ License](#-license)
 
@@ -93,12 +90,41 @@
 - [ ] 💿 Enhanced artist pages (separate albums and singles visually)
 - [ ] 📺 Experimental Android TV support (if enough demand!)
 
-## 🔗 Useful links
+## 🔗 Useful Links
 
-- 🔐 [Requested permissions](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions)
-- 🚘 [Android Auto setup](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)
-- 🎧 [Supported formats](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats)
-- ❓️ [FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)
+<div style="display:flex; flex-wrap:wrap; gap:12px;">
+
+  <a href="https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions" style="flex:1 1 260px; padding:12px; border:1px solid #e5e7eb; border-radius:8px; text-decoration:none; color:inherit;">
+    🔐 <strong>Requested Permissions</strong><br />
+    <span style="font-size:13px; color:#6b7280;">What the app needs and why</span>
+  </a>
+
+  <a href="https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup" style="flex:1 1 260px; padding:12px; border:1px solid #e5e7eb; border-radius:8px; text-decoration:none; color:inherit;">
+    🚘 <strong>Android Auto Setup</strong><br />
+    <span style="font-size:13px; color:#6b7280;">How to enable and troubleshoot</span>
+  </a>
+
+  <a href="https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats" style="flex:1 1 260px; padding:12px; border:1px solid #e5e7eb; border-radius:8px; text-decoration:none; color:inherit;">
+    🎧 <strong>Supported Formats</strong><br />
+    <span style="font-size:13px; color:#6b7280;">Compatible audio formats</span>
+  </a>
+
+  <a href="https://github.com/mardous/BoomingMusic/wiki/Community" style="flex:1 1 260px; padding:12px; border:1px solid #e5e7eb; border-radius:8px; text-decoration:none; color:inherit;">
+    💬 <strong>Community</strong><br />
+    <span style="font-size:13px; color:#6b7280;">Our community of users and contributors</span>
+  </a>
+
+  <a href="https://crowdin.com/project/booming-music" style="flex:1 1 260px; padding:12px; border:1px solid #e5e7eb; border-radius:8px; text-decoration:none; color:inherit;">
+    🌐 <strong>Translations</strong><br />
+    <span style="font-size:13px; color:#6b7280;">Help us by translating Booming Music into your language</span>
+  </a>
+
+  <a href="https://github.com/mardous/BoomingMusic/wiki/FAQ" style="flex:1 1 260px; padding:12px; border:1px solid #e5e7eb; border-radius:8px; text-decoration:none; color:inherit;">
+    ❓ <strong>FAQ</strong><br />
+    <span style="font-size:13px; color:#6b7280;">Common questions</span>
+  </a>
+
+</div>
 
 ## 🤝 Contributing
 
@@ -112,10 +138,6 @@ You can also:
 - Suggest new ideas
 
 **Translations:** Managed on [Crowdin](https://crowdin.com/project/booming-music).
-
-## 💬 Community
-
-Join the [Telegram group](https://t.me/mardousdev) for updates, discussions, and feedback.
 
 ## 🙌 Credits
 
