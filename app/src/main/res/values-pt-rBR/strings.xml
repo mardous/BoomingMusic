@@ -429,7 +429,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="no_preset_imported">Nenhuma predefinição importada.</string>
     <string name="share_configuration">Compartilhar configuração</string>
     <string name="select_configurations_to_share">Selecione quais configurações compartilhar:</string>
-    <string name="reset_equalizer">Redefinir o equalizador</string>
+    <string name="reset_equalizer">Redefinir equalizador</string>
     <string name="select_configurations_to_export">Selecione as configurações para exportar:</string>
     <string name="select_a_file_to_save_exported_configurations">Selecione um arquivo para salvar as configurações exportadas.</string>
     <string name="select_a_file_containing_booming_eq_presets">Selecione um arquivo que contenha predefinições do EQ do Booming Music.</string>
