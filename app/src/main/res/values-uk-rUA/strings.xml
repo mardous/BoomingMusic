@@ -549,8 +549,8 @@
     <string name="licenses">Ліцензії</string>
     <string name="author">Автор</string>
     <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
+    <string name="contributors">Співавтори</string>
+    <string name="acknowledgments_title"></string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="beta_testers_title">Beta testers</string>
