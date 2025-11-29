@@ -5,7 +5,7 @@
   },
   {
     "contrib_name": "Chinese Simplified",
-    "contrib_description": "[Rongxuan](https://crowdin.com/profile/rongxuan2333), [LuDreamst](https://crowdin.com/profile/ludreamst), [Ranpo Doyle](https://crowdin.com/profile/unravelled-mystery)"
+    "contrib_description": "[Rongxuan](https://crowdin.com/profile/rongxuan2333), [LuDreamst](https://crowdin.com/profile/ludreamst), [Ranpo Doyle](https://crowdin.com/profile/unravelled-mystery), [Remelens](https://crowdin.com/profile/remelens), [wangyi](https://crowdin.com/profile/wangyi2839792050)"
   },
   {
     "contrib_name": "Dutch",
@@ -17,7 +17,7 @@
   },
   {
     "contrib_name": "German",
-    "contrib_description": "[Lenard Felix](https://crowdin.com/profile/lenard.flx), [elea11](https://crowdin.com/profile/elea11), [Milo Thomas](https://crowdin.com/profile/tmh)"
+    "contrib_description": "[Lenard Felix](https://crowdin.com/profile/lenard.flx), [elea11](https://crowdin.com/profile/elea11), [Milo Thomas](https://crowdin.com/profile/tmh), [Jonathan](https://crowdin.com/profile/jonmor.rhs)"
   },
   {
     "contrib_name": "Hebrew",
@@ -45,7 +45,7 @@
   },
   {
     "contrib_name": "Russian",
-    "contrib_description": "elixcat, [Anton](https://crowdin.com/profile/antoon334), [Axus Wizix](https://crowdin.com/profile/axuswizix)"
+    "contrib_description": "[Shlerspet](https://crowdin.com/profile/shlerspet), [Anton](https://crowdin.com/profile/antoon334), [Axus Wizix](https://crowdin.com/profile/axuswizix), elixcat"
   },
   {
     "contrib_name": "Spanish",
@@ -57,6 +57,6 @@
   },
   {
     "contrib_name": "Ukrainian",
-    "contrib_description": "elixcat"
+    "contrib_description": "[Yulia Kaminska](https://crowdin.com/profile/ulia.kaminska15), elixcat"
   }
 ]
