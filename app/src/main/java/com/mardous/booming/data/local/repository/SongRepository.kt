@@ -19,6 +19,7 @@ package com.mardous.booming.data.local.repository
 
 import android.annotation.SuppressLint
 import android.content.ContentResolver
+import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 import android.os.Environment
@@ -28,7 +29,6 @@ import android.provider.MediaStore.Audio.AudioColumns
 import android.provider.OpenableColumns
 import android.util.Log
 import androidx.media3.common.MediaItem
-import com.mardous.booming.appInstance
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.local.MediaQueryDispatcher
 import com.mardous.booming.data.local.room.InclExclDao
@@ -58,7 +58,10 @@ interface SongRepository {
 }
 
 @SuppressLint("InlinedApi")
-class RealSongRepository(private val inclExclDao: InclExclDao) : SongRepository {
+class RealSongRepository(
+    private val context: Context,
+    private val inclExclDao: InclExclDao
+) : SongRepository {
 
     override fun songs(): List<Song> {
         val songs = songs(makeSongCursor(null, null))
@@ -105,7 +108,7 @@ class RealSongRepository(private val inclExclDao: InclExclDao) : SongRepository 
                 else -> {
                     try {
                         if (hasQ()) {
-                            val context = appInstance().applicationContext
+                            val context = context.applicationContext
                             val id = MediaStore.getMediaUri(context, uri)
                                 ?.lastPathSegment?.toLongOrNull()
                             if (id != null) {
