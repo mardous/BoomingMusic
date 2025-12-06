@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Bazı dosyalar medya deposunda listelenmiyor.</string>
     <string name="nothing_to_scan">Taranacak bir şey yok</string>
     <string name="select_storage_title">Depolama birimi seç</string>
-    <string name="app_widget_big_name">Büyük</string>
-    <string name="app_widget_simple_name">Basit</string>
-    <string name="app_widget_small_name">Küçük</string>
     <string name="now_playing">Şimdi Çalıyor</string>
     <string name="playing_queue_label">Çalma Sırası</string>
     <string name="list_start">Liste başlangıcı</string>

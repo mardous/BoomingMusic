@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">某些文件未在媒体存储中列出。</string>
     <string name="nothing_to_scan">没有可扫描的对象</string>
     <string name="select_storage_title">选择存储</string>
-    <string name="app_widget_big_name">大的</string>
-    <string name="app_widget_simple_name">简单的</string>
-    <string name="app_widget_small_name">小的</string>
     <string name="now_playing">正在播放</string>
     <string name="playing_queue_label">播放队列</string>
     <string name="list_start">List start</string>

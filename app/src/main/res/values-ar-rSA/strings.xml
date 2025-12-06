@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">بعض الملفات غير مدرجة في متجر الوسائط.</string>
     <string name="nothing_to_scan">لا شيء للمسح</string>
     <string name="select_storage_title">حدد وحدة التخزين</string>
-    <string name="app_widget_big_name">كبير</string>
-    <string name="app_widget_simple_name">بسيط</string>
-    <string name="app_widget_small_name">صغير</string>
     <string name="now_playing">يلعب الآن</string>
     <string name="playing_queue_label">قائمة الانتظار</string>
     <string name="list_start">List start</string>

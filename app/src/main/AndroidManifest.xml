@@ -204,40 +204,15 @@
 
         <!-- Widgets -->
         <receiver
-            android:name="com.mardous.booming.core.appwidgets.AppWidgetBig"
-            android:exported="false"
-            android:label="@string/app_widget_big_name">
+            android:name="com.mardous.booming.core.appwidgets.BoomingMusicAppWidget"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_big_info"/>
-        </receiver>
-        <receiver
-            android:name="com.mardous.booming.core.appwidgets.AppWidgetSimple"
-            android:exported="false"
-            android:label="@string/app_widget_simple_name">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_simple_info"/>
-        </receiver>
-        <receiver
-            android:name="com.mardous.booming.core.appwidgets.AppWidgetSmall"
-            android:exported="false"
-            android:label="@string/app_widget_small_name">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_small_info"/>
+                android:resource="@xml/widget_info"/>
         </receiver>
 
         <provider

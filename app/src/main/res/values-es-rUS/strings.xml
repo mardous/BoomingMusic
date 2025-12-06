@@ -153,9 +153,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Algunos archivos no están listados en el almacén multimedia.</string>
     <string name="nothing_to_scan">Nada para escanear</string>
     <string name="select_storage_title">Elija el almacenamiento</string>
-    <string name="app_widget_big_name">Grande</string>
-    <string name="app_widget_simple_name">Simple</string>
-    <string name="app_widget_small_name">Pequeño</string>
     <string name="now_playing">Reproduciendo ahora</string>
     <string name="playing_queue_label">Cola de reproducción</string>
     <string name="list_start">Inicio de la lista</string>

@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Noen filer vises ikke i media butikken.</string>
     <string name="nothing_to_scan">Ingenting å skanne</string>
     <string name="select_storage_title">Velg lagring</string>
-    <string name="app_widget_big_name">Stor</string>
-    <string name="app_widget_simple_name">Enkel</string>
-    <string name="app_widget_small_name">Liten</string>
     <string name="now_playing">Spiller nå</string>
     <string name="playing_queue_label">Spiller kø</string>
     <string name="list_start">List start</string>
