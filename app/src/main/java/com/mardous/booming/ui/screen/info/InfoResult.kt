@@ -9,6 +9,15 @@ data class PlayInfoResult(
     val mostPlayedTracks: List<PlayCountEntity>
 )
 
+data class AudioHeaderInfo(
+    val format: String? = null,
+    val bitrate: String? = null,
+    val sampleRate: String? = null,
+    val channels: String? = null,
+    val vbr: String? = null,
+    val lossless: String? = null
+)
+
 data class SongInfoResult(
     val playCount: String? = null,
     val skipCount: String? = null,
@@ -17,7 +26,7 @@ data class SongInfoResult(
     val fileSize: String? = null,
     val trackLength: String? = null,
     val dateModified: String? = null,
-    val audioHeader: String? = null,
+    val audioHeaderInfo: AudioHeaderInfo? = null,
     val title: String? = null,
     val album: String? = null,
     val artist: String? = null,

@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Noen filer vises ikke i media butikken.</string>
     <string name="nothing_to_scan">Ingenting å skanne</string>
     <string name="select_storage_title">Velg lagring</string>
-    <string name="app_widget_big_name">Stor</string>
-    <string name="app_widget_simple_name">Enkel</string>
-    <string name="app_widget_small_name">Liten</string>
     <string name="now_playing">Spiller nå</string>
     <string name="playing_queue_label">Spiller kø</string>
     <string name="list_start">List start</string>
@@ -302,7 +299,7 @@
     <string name="release_years_label">År</string>
     <string name="length">Lengde</string>
     <string name="label_last_modified">Sist endret</string>
-    <string name="label_audio_header">Lyd header</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variabel bitrate</string>
     <string name="label_loss_less">Tap mindre</string>
     <string name="label_bit_rate">Bithastighet</string>

@@ -6,21 +6,15 @@
     "contrib_image": "dawid.png"
   },
   {
-    "contrib_name": "TheTerminatorOfProgramming",
-    "contrib_description": "Contributor & Tester",
-    "contrib_url": "https://github.com/TheTerminatorOfProgramming",
-    "contrib_image": "ttop.png"
-  },
-  {
     "contrib_name": "Ray Cadle",
-    "contrib_description": "Contributor & Tester",
+    "contrib_description": "Contributor, Tester & GitHub Maintainer",
     "contrib_url": "https://github.com/raycadle",
     "contrib_image": "ray.png"
   },
   {
-    "contrib_name": "Seif Eddine Gadi",
-    "contrib_description": "Contributor",
-    "contrib_url": "https://github.com/SifouByte",
-    "contrib_image": "sifou.png"
+    "contrib_name": "TheTerminatorOfProgramming",
+    "contrib_description": "Contributor & Tester",
+    "contrib_url": "https://github.com/TheTerminatorOfProgramming",
+    "contrib_image": "ttop.png"
   }
 ]

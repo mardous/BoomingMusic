@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Algunos archivos no se encuentran listados en los medios almacenados.</string>
     <string name="nothing_to_scan">Nada que escanear</string>
     <string name="select_storage_title">Seleccionar almacenamiento</string>
-    <string name="app_widget_big_name">Big</string>
-    <string name="app_widget_simple_name">Simple</string>
-    <string name="app_widget_small_name">Small</string>
     <string name="now_playing">Now playing</string>
     <string name="playing_queue_label">Playing queue</string>
     <string name="list_start">List start</string>
@@ -302,7 +299,7 @@
     <string name="release_years_label">Years</string>
     <string name="length">Length</string>
     <string name="label_last_modified">Last modified</string>
-    <string name="label_audio_header">Audio header</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variable Bitrate</string>
     <string name="label_loss_less">Loss Less</string>
     <string name="label_bit_rate">Bitrate</string>

@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">קבצים מסוימים לא רשומים בחנות המדיה.</string>
     <string name="nothing_to_scan">אין מה לסרוק</string>
     <string name="select_storage_title">בחר אחסון</string>
-    <string name="app_widget_big_name">גדול</string>
-    <string name="app_widget_simple_name">פשוט</string>
-    <string name="app_widget_small_name">קטן</string>
     <string name="now_playing">מנגן כעת</string>
     <string name="playing_queue_label">מנגן תור השמעה</string>
     <string name="list_start">תחילת רשימה</string>
@@ -302,7 +299,7 @@
     <string name="release_years_label">שנים</string>
     <string name="length">אורך</string>
     <string name="label_last_modified">עודכן לאחרונה</string>
-    <string name="label_audio_header">כותרת אודיו</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">קצב סיביות משתנה</string>
     <string name="label_loss_less">הפסד פחות</string>
     <string name="label_bit_rate">קצב סיביות</string>

@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Alguns fitxers no figuren a la botiga multimèdia.</string>
     <string name="nothing_to_scan">No hi ha res a escanejar</string>
     <string name="select_storage_title">Selecciona l\'emmagatzematge</string>
-    <string name="app_widget_big_name">Gros</string>
-    <string name="app_widget_simple_name">Simple</string>
-    <string name="app_widget_small_name">Petit</string>
     <string name="now_playing">Ara sona</string>
     <string name="playing_queue_label">Cua de reproducció</string>
     <string name="list_start">Inici de la llista</string>
@@ -302,7 +299,7 @@
     <string name="release_years_label">Anys</string>
     <string name="length">Durada</string>
     <string name="label_last_modified">Darrera modificació</string>
-    <string name="label_audio_header">Capçalera d\'àudio</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Taxa de bits variable</string>
     <string name="label_loss_less">Sense pèrdues</string>
     <string name="label_bit_rate">Taxa de bits</string>

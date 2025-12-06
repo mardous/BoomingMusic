@@ -49,8 +49,7 @@ import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-fun appInstance(): App = App.instance
-fun appContext(): Context = appInstance().applicationContext
+fun appContext(): Context = App.instance.applicationContext
 
 class App : Application(), SingletonImageLoader.Factory {
 

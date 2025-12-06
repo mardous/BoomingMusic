@@ -202,6 +202,19 @@
             </intent-filter>
         </receiver>
 
+        <!-- Widgets -->
+        <receiver
+            android:name="com.mardous.booming.core.appwidgets.BoomingMusicAppWidget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info"/>
+        </receiver>
+
         <receiver
             android:name=".core.appwidgets.BoomingGlanceWidgetReceiver"
             android:exported="false">

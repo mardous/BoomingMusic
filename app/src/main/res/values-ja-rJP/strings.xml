@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">一部のファイルはメディアストアに表示されません。</string>
     <string name="nothing_to_scan">スキャンするものがありません</string>
     <string name="select_storage_title">ストレージを選択</string>
-    <string name="app_widget_big_name">大</string>
-    <string name="app_widget_simple_name">シンプル</string>
-    <string name="app_widget_small_name">小</string>
     <string name="now_playing">再生中</string>
     <string name="playing_queue_label">キューを再生中</string>
     <string name="list_start">List start</string>
@@ -302,7 +299,7 @@
     <string name="release_years_label">年</string>
     <string name="length">長さ</string>
     <string name="label_last_modified">最終更新日時</string>
-    <string name="label_audio_header">オーディオヘッダー</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">可変ビットレート</string>
     <string name="label_loss_less">ロスレス</string>
     <string name="label_bit_rate">ビットレート</string>

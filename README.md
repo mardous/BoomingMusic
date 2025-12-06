@@ -29,11 +29,8 @@
 - [📸 Screenshots](#-screenshots)
 - [💻 Tech Stack](#-tech-stack)
 - [🧩 Roadmap](#-roadmap)
-- [🎧 Supported Formats](#-supported-formats)
-- [🔐 Permissions](#-permissions)
-- [🚘 Android Auto Setup](#-android-auto-setup)
+- [🔗 Useful Links](#-useful-links)
 - [🤝 Contributing](#-contributing)
-- [💬 Community](#-community)
 - [🙌 Credits](#-credits)
 - [⚖️ License](#-license)
 
@@ -93,24 +90,25 @@
 - [ ] 💿 Enhanced artist pages (separate albums and singles visually)
 - [ ] 📺 Experimental Android TV support (if enough demand!)
 
-## 🎧 Supported Formats
+## 🔗 Useful Links
 
-Booming Music uses [Media3](https://developer.android.com/media/media3) for audio playback.
-See [ExoPlayer’s supported formats](https://developer.android.com/media/media3/exoplayer/supported-formats) for complete details.
+- 🔐 **[Requested Permissions](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions)**  
+  What the app needs and why
 
-## 🔐 Permissions
+- 🚘 **[Android Auto Setup](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)**  
+  How to enable and troubleshoot
 
-We request only what’s essential.
-Read [PERMISSIONS.md](PERMISSIONS.md) for details on why each permission is required.
+- 🎧 **[Supported Formats](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats)**  
+  Compatible audio formats
 
-## 🚘 Android Auto Setup
+- 💬 **[Community](https://github.com/mardous/BoomingMusic/wiki/Community)**  
+  Users and contributors
 
-If Booming Music doesn’t appear in Android Auto:
+- 🌐 **[Translations](https://crowdin.com/project/booming-music)**  
+  Help us translate Booming Music into your language
 
-1. Open **Android Auto settings**.
-2. Scroll down and tap the **version number** several times to enable developer mode.
-3. Open **Developer settings** from the top-right menu.
-4. Enable **Unknown sources**.
+- ❓ **[FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)**  
+  Common questions
 
 ## 🤝 Contributing
 
@@ -124,10 +122,6 @@ You can also:
 - Suggest new ideas
 
 **Translations:** Managed on [Crowdin](https://crowdin.com/project/booming-music).
-
-## 💬 Community
-
-Join the [Telegram group](https://t.me/mardousdev) for updates, discussions, and feedback.
 
 ## 🙌 Credits
 

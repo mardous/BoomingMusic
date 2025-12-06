@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Niektóre pliki nie są wyświetlane w sklepie multimedialnym.</string>
     <string name="nothing_to_scan">Nic do skanowania</string>
     <string name="select_storage_title">Wybierz pamięć</string>
-    <string name="app_widget_big_name">Duże</string>
-    <string name="app_widget_simple_name">Prosty</string>
-    <string name="app_widget_small_name">Mały</string>
     <string name="now_playing">Teraz odtwarzane</string>
     <string name="playing_queue_label">Kolejka odtwarzania</string>
     <string name="list_start">Początek kolejki</string>
@@ -302,7 +299,7 @@
     <string name="release_years_label">Lata</string>
     <string name="length">Długość utworu</string>
     <string name="label_last_modified">Ostatnia modyfikacja</string>
-    <string name="label_audio_header">Nagłówek audio</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Zmienna przepływność</string>
     <string name="label_loss_less">Mniej straty</string>
     <string name="label_bit_rate">Bitrate</string>

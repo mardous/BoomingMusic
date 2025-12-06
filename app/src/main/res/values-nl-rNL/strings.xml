@@ -154,9 +154,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Sommige bestanden staan niet vermeld in de media-winkel.</string>
     <string name="nothing_to_scan">Niets te scannen</string>
     <string name="select_storage_title">Opslag selecteren</string>
-    <string name="app_widget_big_name">Groot</string>
-    <string name="app_widget_simple_name">Eenvoudig</string>
-    <string name="app_widget_small_name">Klein</string>
     <string name="now_playing">Afspelende media</string>
     <string name="playing_queue_label">Wachtrij afspelen</string>
     <string name="list_start">List start</string>
@@ -302,7 +299,7 @@
     <string name="release_years_label">Jaren</string>
     <string name="length">Lengte</string>
     <string name="label_last_modified">Laatst gewijzigd</string>
-    <string name="label_audio_header">Audio koptekst</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variabele bitrate</string>
     <string name="label_loss_less">Minder verlies</string>
     <string name="label_bit_rate">Bitsnelheid</string>

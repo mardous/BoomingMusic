@@ -37,11 +37,15 @@ import com.mardous.booming.R
 import com.mardous.booming.coil.CoilBitmapLoader
 import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.coil.CoverProvider.Companion.SONG_COVER_PATH
+import com.mardous.booming.core.appwidgets.BoomingMusicAppWidget
+import com.mardous.booming.coil.CoverProvider
+import com.mardous.booming.coil.CoverProvider.Companion.SONG_COVER_PATH
 import com.mardous.booming.core.appwidgets.BoomingGlanceWidget
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.SoundSettings
+import com.mardous.booming.core.model.widget.WidgetState
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
@@ -91,6 +95,7 @@ class PlaybackService :
         )
     }
 
+    private val pendingStartCommands = mutableListOf<Intent>()
     private val playerThread = HandlerThread("Booming-ExoPlayer", Process.THREAD_PRIORITY_AUDIO)
     private val balanceProcessor = BalanceAudioProcessor()
     private val replayGainProcessor = ReplayGainAudioProcessor(ReplayGainMode.Off)
@@ -101,10 +106,11 @@ class PlaybackService :
     private lateinit var player: AdvancedForwardingPlayer
     private var mediaSession: MediaLibrarySession? = null
 
-    private var widgetUpdateJob: Job? = null
     private var pausedByZeroVolume = false
     private var hasSetUnshuffledOrder = false
     private var stopIndex = -1
+
+    private var widgetUpdateJob: Job? = null
 
     val isInTransientFocusLoss: Boolean
         get() = player.playbackSuppressionReason == Player.PLAYBACK_SUPPRESSION_REASON_TRANSIENT_AUDIO_FOCUS_LOSS
@@ -247,6 +253,8 @@ class PlaybackService :
             if (player.shuffleModeEnabled && shuffleOrder != null) {
                 player.exoPlayer.shuffleOrder = shuffleOrder
             }
+            pendingStartCommands.forEach { command -> processCommand(command) }
+            pendingStartCommands.clear()
         }
 
         sleepTimer.addFinishListener { allowPendingQuit ->
@@ -296,6 +304,22 @@ class PlaybackService :
         playerThread.quitSafely()
         equalizerManager.release()
         sleepTimer.release()
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        when (intent?.action) {
+            ACTION_NEXT,
+            ACTION_PREVIOUS,
+            ACTION_TOGGLE_PAUSE -> {
+                if (persistentStorage.restorationState.isRestored) {
+                    processCommand(intent)
+                } else {
+                    pendingStartCommands.add(intent)
+                }
+                return START_STICKY
+            }
+        }
+        return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? {
@@ -654,7 +678,7 @@ class PlaybackService :
         }
         equalizerManager.setSessionIsActive(isPlaying)
         songPlayCountHelper.notifyPlayStateChanged(isPlaying)
-        requestAndDebounceWidgetUpdate()
+        updateWidgets()
     }
 
     override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {
@@ -695,7 +719,6 @@ class PlaybackService :
         }
 
         persistentStorage.saveState()
-        requestAndDebounceWidgetUpdate(force = true)
     }
 
     override fun onPlayerError(error: PlaybackException) {
@@ -752,6 +775,18 @@ class PlaybackService :
         }
     }
 
+    private fun processCommand(command: Intent) {
+        when (command.action) {
+            ACTION_TOGGLE_PAUSE -> if (isPlaying) {
+                player.pause()
+            } else {
+                player.play()
+            }
+            ACTION_PREVIOUS -> player.seekToPrevious()
+            ACTION_NEXT -> player.seekToNext()
+        }
+    }
+
     private fun toggleFavorite() = serviceScope.launch {
         val currentMediaItem = player.currentMediaItem
             ?: return@launch
@@ -768,11 +803,48 @@ class PlaybackService :
         )
     }
 
-    private fun requestAndDebounceWidgetUpdate(force: Boolean = false) {
+    private suspend fun buildWidgetState(): WidgetState {
+        val mediaItem = player.currentMediaItem
+        val id = mediaItem?.mediaId?.toLongOrNull()
+        if (mediaItem == null || id == null) return WidgetState.empty
+
+        val isPlaying = player.isPlaying
+        val isFavorite = withContext(IO) {
+            repository.isSongFavorite(id)
+        }
+        val title = mediaItem.mediaMetadata.title?.toString().orEmpty()
+        val artist = mediaItem.mediaMetadata.artist?.toString().orEmpty()
+        val album = mediaItem.mediaMetadata.albumTitle?.toString().orEmpty()
+        val artwork = CoverProvider.getImageUri(SONG_COVER_PATH, mediaItem.mediaId)?.toString()
+
+        return WidgetState(
+            title = title,
+            artist = artist,
+            album = album,
+            artwork = artwork,
+            isPlaying = isPlaying,
+            isFavorite = isFavorite
+        )
+    }
+
+    private fun updateWidgets() {
         widgetUpdateJob?.cancel()
         widgetUpdateJob = serviceScope.launch {
-            if (!force) delay(WIDGET_UPDATE_DEBOUNCE)
-            updateGlanceWidgets()
+            val state = buildWidgetState()
+            BoomingMusicAppWidget.serializeState(this@PlaybackService, state)
+
+            withContext(Main) {
+                val widget = ComponentName(this@PlaybackService, BoomingMusicAppWidget::class.java)
+                val manager = AppWidgetManager.getInstance(this@PlaybackService)
+                val ids = manager.getAppWidgetIds(widget)
+                if (ids.isNotEmpty()) {
+                    val intent = Intent(this@PlaybackService, BoomingMusicAppWidget::class.java)
+                        .setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+                        .putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+
+                    sendBroadcast(intent)
+                }
+            }
         }
     }
 
@@ -980,6 +1052,14 @@ class PlaybackService :
     }
 
     companion object {
+        private const val PACKAGE_NAME = "com.mardous.booming"
+
+        const val ACTION_TOGGLE_PAUSE = "$PACKAGE_NAME.action.ACTION_TOGGLE_PAUSE"
+        const val ACTION_PREVIOUS = "$PACKAGE_NAME.booming.action.ACTION_PREVIOUS"
+        const val ACTION_NEXT = "$PACKAGE_NAME.action.ACTION_NEXT"
+
+        const val EXTRA_PLAYBACK_STATE = "$PACKAGE_NAME.extra.playback_state"
+
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "playing_notification"
 

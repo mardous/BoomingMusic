@@ -54,6 +54,12 @@ class NowPlayingPreferencesFragment : PreferencesScreenFragment(), SharedPrefere
         findPreference<Preference>(COVER_DOUBLE_TAP_ACTION)?.summary =
             getString(Preferences.coverDoubleTapAction.titleRes)
 
+        findPreference<Preference>(COVER_LEFT_DOUBLE_TAP_ACTION)?.summary =
+            getString(Preferences.coverLeftDoubleTapAction.titleRes)
+
+        findPreference<Preference>(COVER_RIGHT_DOUBLE_TAP_ACTION)?.summary =
+            getString(Preferences.coverRightDoubleTapAction.titleRes)
+
         findPreference<Preference>(COVER_LONG_PRESS_ACTION)?.summary =
             getString(Preferences.coverLongPressAction.titleRes)
     }
@@ -67,6 +73,8 @@ class NowPlayingPreferencesFragment : PreferencesScreenFragment(), SharedPrefere
         when (key) {
             NOW_PLAYING_SCREEN -> updateNowPlayingScreen()
             COVER_DOUBLE_TAP_ACTION,
+            COVER_LEFT_DOUBLE_TAP_ACTION,
+            COVER_RIGHT_DOUBLE_TAP_ACTION,
             COVER_LONG_PRESS_ACTION -> updateCoverActions()
         }
     }

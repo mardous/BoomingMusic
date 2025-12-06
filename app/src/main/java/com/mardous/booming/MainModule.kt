@@ -34,7 +34,6 @@ import com.mardous.booming.data.remote.github.GitHubService
 import com.mardous.booming.data.remote.jsonHttpClient
 import com.mardous.booming.data.remote.lastfm.LastFmService
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
-import com.mardous.booming.data.remote.provideDefaultCache
 import com.mardous.booming.data.remote.provideOkHttp
 import com.mardous.booming.playback.SleepTimer
 import com.mardous.booming.playback.equalizer.EqualizerManager
@@ -64,10 +63,7 @@ val networkModule = module {
         jsonHttpClient(okHttpClient = get())
     }
     factory {
-        provideDefaultCache()
-    }
-    factory {
-        provideOkHttp(context = get(), cache = get())
+        provideOkHttp(context = get())
     }
     single {
         GitHubService(context = androidContext(), client = get())
@@ -166,7 +162,7 @@ private val dataModule = module {
     } bind Repository::class
 
     single {
-        RealSongRepository(inclExclDao = get())
+        RealSongRepository(context = get(), inclExclDao = get())
     } bind SongRepository::class
 
     single {
