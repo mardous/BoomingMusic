@@ -295,7 +295,7 @@
     <string name="title">Назва</string>
     <string name="album">Альбом</string>
     <string name="artist">Виконавець</string>
-    <string name="album_artist">Виконавець альбому</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Композитор</string>
     <string name="conductor">Диригент</string>
     <string name="publisher">Видавець</string>
@@ -304,7 +304,7 @@
     <string name="release_years_label">Роки</string>
     <string name="length">Тривалість</string>
     <string name="label_last_modified">Останнє змінено</string>
-    <string name="label_audio_header">Аудіозаголовок</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Змінний бітрейт</string>
     <string name="label_loss_less">Без втрат</string>
     <string name="label_bit_rate">Бітрейт</string>
