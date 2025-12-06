@@ -295,7 +295,7 @@
     <string name="title">Aanspreektitel</string>
     <string name="album">Album</string>
     <string name="artist">Kunstenaar</string>
-    <string name="album_artist">Album-artiest</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Componist</string>
     <string name="conductor">Leider</string>
     <string name="publisher">Uitgever</string>
@@ -304,7 +304,7 @@
     <string name="release_years_label">Jaren</string>
     <string name="length">Lengte</string>
     <string name="label_last_modified">Laatst gewijzigd</string>
-    <string name="label_audio_header">Audio koptekst</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variabele bitrate</string>
     <string name="label_loss_less">Minder verlies</string>
     <string name="label_bit_rate">Bitsnelheid</string>
