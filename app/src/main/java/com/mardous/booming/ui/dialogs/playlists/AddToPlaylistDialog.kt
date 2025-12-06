@@ -25,6 +25,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.core.sort.PlaylistSortMode
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.DialogProgressRecyclerViewBinding
@@ -61,7 +62,10 @@ class AddToPlaylistDialog : DialogFragment(), AddToPlaylistAdapter.IAddToPlaylis
             .create {
                 libraryViewModel.playlistsAsync().observe(this) { playlists ->
                     binding.progressIndicator.hide()
-                    adapter.data(playlists)
+
+                    val sortedPlaylists = PlaylistSortMode.AllPlaylists.run { playlists.sorted() }
+
+                    adapter.data(sortedPlaylists)
                     binding.recyclerView.scheduleLayoutAnimation()
                 }
             }
