@@ -222,7 +222,57 @@
                 tools:text="@tools:sample/lorem" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/audio_header"
+                android:id="@+id/audio_format"
+                style="?materialAlertDialogBodyTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                tools:text="@tools:sample/lorem" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/audio_bitrate"
+                style="?materialAlertDialogBodyTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                tools:text="@tools:sample/lorem" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/audio_sample_rate"
+                style="?materialAlertDialogBodyTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                tools:text="@tools:sample/lorem" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/audio_channels"
+                style="?materialAlertDialogBodyTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                tools:text="@tools:sample/lorem" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/audio_vbr"
+                style="?materialAlertDialogBodyTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                tools:text="@tools:sample/lorem" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/audio_lossless"
                 style="?materialAlertDialogBodyTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

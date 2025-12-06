@@ -301,7 +301,7 @@
     <string name="release_years_label">साल</string>
     <string name="length">लम्बाई</string>
     <string name="label_last_modified">अंतिम संशोधित</string>
-    <string name="label_audio_header">ऑडियो शीर्षक</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">परिवर्ती बिटरेट</string>
     <string name="label_loss_less">लॉसलेस</string>
     <string name="label_bit_rate">बिटरेट</string>

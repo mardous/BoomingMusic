@@ -302,7 +302,7 @@
     <string name="release_years_label">Χρόνια</string>
     <string name="length">Μήκος</string>
     <string name="label_last_modified">Τελευταία τροποποίηση</string>
-    <string name="label_audio_header">Κεφαλίδα ήχου</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Μεταβλητός Ρυθμός Bit</string>
     <string name="label_loss_less">Απώλεια Λιγότερο</string>
     <string name="label_bit_rate">Ρυθμός Bit</string>
