@@ -299,7 +299,7 @@
     <string name="release_years_label">年</string>
     <string name="length">長さ</string>
     <string name="label_last_modified">最終更新日時</string>
-    <string name="label_audio_header">オーディオヘッダー</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">可変ビットレート</string>
     <string name="label_loss_less">ロスレス</string>
     <string name="label_bit_rate">ビットレート</string>

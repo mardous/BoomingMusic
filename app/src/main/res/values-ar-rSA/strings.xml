@@ -299,7 +299,7 @@
     <string name="release_years_label">سنوات</string>
     <string name="length">طول</string>
     <string name="label_last_modified">آخر تعديل</string>
-    <string name="label_audio_header">ترويسة الصوت</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">متغير معدل</string>
     <string name="label_loss_less">الخسارة أقل</string>
     <string name="label_bit_rate">معدل</string>

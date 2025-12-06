@@ -299,7 +299,7 @@
     <string name="release_years_label">År</string>
     <string name="length">Längd</string>
     <string name="label_last_modified">Senast ändrad</string>
-    <string name="label_audio_header">Ljud sidhuvud</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variabel bithastighet</string>
     <string name="label_loss_less">Förlust mindre</string>
     <string name="label_bit_rate">Bithastighet</string>

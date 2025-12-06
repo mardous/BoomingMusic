@@ -299,7 +299,7 @@
     <string name="release_years_label">Anys</string>
     <string name="length">Durada</string>
     <string name="label_last_modified">Darrera modificació</string>
-    <string name="label_audio_header">Capçalera d\'àudio</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Taxa de bits variable</string>
     <string name="label_loss_less">Sense pèrdues</string>
     <string name="label_bit_rate">Taxa de bits</string>

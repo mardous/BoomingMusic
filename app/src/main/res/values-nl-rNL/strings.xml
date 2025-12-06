@@ -299,7 +299,7 @@
     <string name="release_years_label">Jaren</string>
     <string name="length">Lengte</string>
     <string name="label_last_modified">Laatst gewijzigd</string>
-    <string name="label_audio_header">Audio koptekst</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variabele bitrate</string>
     <string name="label_loss_less">Minder verlies</string>
     <string name="label_bit_rate">Bitsnelheid</string>
