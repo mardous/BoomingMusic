@@ -295,7 +295,7 @@
     <string name="title">标题</string>
     <string name="album">专辑</string>
     <string name="artist">艺人</string>
-    <string name="album_artist">专辑艺人</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">作曲家</string>
     <string name="conductor">指挥</string>
     <string name="publisher">发布者</string>
@@ -304,7 +304,7 @@
     <string name="release_years_label">年</string>
     <string name="length">时长</string>
     <string name="label_last_modified">最后修改</string>
-    <string name="label_audio_header">音频标题</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">可变比特率</string>
     <string name="label_loss_less">减少损失</string>
     <string name="label_bit_rate">位速率</string>
