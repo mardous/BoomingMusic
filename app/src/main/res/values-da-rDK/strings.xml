@@ -295,7 +295,7 @@
     <string name="title">Titel</string>
     <string name="album">Album</string>
     <string name="artist">Kunstner</string>
-    <string name="album_artist">Album-kunstner</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Komponist</string>
     <string name="conductor">Ledere</string>
     <string name="publisher">Udgiver</string>
@@ -304,7 +304,7 @@
     <string name="release_years_label">År</string>
     <string name="length">Længde</string>
     <string name="label_last_modified">Sidst ændret</string>
-    <string name="label_audio_header">Lyd header</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variabel Bitrate</string>
     <string name="label_loss_less">Tab Mindre</string>
     <string name="label_bit_rate">Bitrate</string>
