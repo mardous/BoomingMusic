@@ -295,7 +295,7 @@
     <string name="title">Tytuł</string>
     <string name="album">Album</string>
     <string name="artist">Wykonawca</string>
-    <string name="album_artist">Wykonawca albumu</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Kompozytor</string>
     <string name="conductor">Dyrygent</string>
     <string name="publisher">Wydawca</string>
@@ -304,7 +304,7 @@
     <string name="release_years_label">Lata</string>
     <string name="length">Długość utworu</string>
     <string name="label_last_modified">Ostatnia modyfikacja</string>
-    <string name="label_audio_header">Nagłówek audio</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Zmienna przepływność</string>
     <string name="label_loss_less">Mniej straty</string>
     <string name="label_bit_rate">Bitrate</string>
