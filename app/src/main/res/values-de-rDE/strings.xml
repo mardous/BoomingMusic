@@ -295,7 +295,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="title">Titel</string>
     <string name="album">Album</string>
     <string name="artist">Interpret</string>
-    <string name="album_artist">Albuminterpret</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Komponist</string>
     <string name="conductor">Dirigent</string>
     <string name="publisher">Herausgeber</string>
@@ -304,7 +304,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="release_years_label">Jahre</string>
     <string name="length">Länge</string>
     <string name="label_last_modified">Zuletzt geändert</string>
-    <string name="label_audio_header">Audio-Kopfzeile</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variable Bitrate</string>
     <string name="label_loss_less">Verlustlos</string>
     <string name="label_bit_rate">Bitrate</string>
