@@ -295,7 +295,7 @@
     <string name="title">Otsikko</string>
     <string name="album">Albumi</string>
     <string name="artist">Esittäjä</string>
-    <string name="album_artist">Albuminesittäjä</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Säveltäjä</string>
     <string name="conductor">Kapellimestari</string>
     <string name="publisher">Julkaisija</string>
@@ -304,7 +304,7 @@
     <string name="release_years_label">Vuodet</string>
     <string name="length">Pituus</string>
     <string name="label_last_modified">Viimeksi muokattu</string>
-    <string name="label_audio_header">Äänen ylätunniste</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Vaihteleva Bittinopeus</string>
     <string name="label_loss_less">Tappio Vähemmän</string>
     <string name="label_bit_rate">Bittinopeus</string>
