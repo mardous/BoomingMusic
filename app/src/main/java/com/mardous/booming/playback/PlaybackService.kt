@@ -3,11 +3,13 @@ package com.mardous.booming.playback
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.appwidget.AppWidgetManager
 import android.bluetooth.BluetoothA2dp
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothProfile
 import android.content.*
 import android.os.*
+import android.util.Log
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.core.content.ContextCompat
@@ -37,15 +39,12 @@ import com.mardous.booming.R
 import com.mardous.booming.coil.CoilBitmapLoader
 import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.coil.CoverProvider.Companion.SONG_COVER_PATH
-import com.mardous.booming.core.appwidgets.BoomingMusicAppWidget
-import com.mardous.booming.coil.CoverProvider
-import com.mardous.booming.coil.CoverProvider.Companion.SONG_COVER_PATH
 import com.mardous.booming.core.appwidgets.BoomingGlanceWidget
+import com.mardous.booming.core.appwidgets.BoomingMusicAppWidget
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.SoundSettings
-import com.mardous.booming.core.model.widget.WidgetState
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
@@ -117,8 +116,6 @@ class PlaybackService :
 
     val isPlaying: Boolean
         get() = player.isPlaying
-
-    var currentSong = Song.emptySong
 
     private val shuffleCommand: CommandButton
         get() = if (player.shuffleModeEnabled) {
@@ -719,6 +716,7 @@ class PlaybackService :
         }
 
         persistentStorage.saveState()
+        updateWidgets(force = true)
     }
 
     override fun onPlayerError(error: PlaybackException) {
@@ -803,10 +801,10 @@ class PlaybackService :
         )
     }
 
-    private suspend fun buildWidgetState(): WidgetState {
+    private suspend fun buildPlaybackState(): PlaybackState {
         val mediaItem = player.currentMediaItem
         val id = mediaItem?.mediaId?.toLongOrNull()
-        if (mediaItem == null || id == null) return WidgetState.empty
+        if (mediaItem == null || id == null) return PlaybackState.empty
 
         val isPlaying = player.isPlaying
         val isFavorite = withContext(IO) {
@@ -817,23 +815,26 @@ class PlaybackService :
         val album = mediaItem.mediaMetadata.albumTitle?.toString().orEmpty()
         val artwork = CoverProvider.getImageUri(SONG_COVER_PATH, mediaItem.mediaId)?.toString()
 
-        return WidgetState(
-            title = title,
-            artist = artist,
-            album = album,
-            artwork = artwork,
+        return PlaybackState(
             isPlaying = isPlaying,
-            isFavorite = isFavorite
+            isFavorite = isFavorite,
+            currentTitle = title,
+            currentArtist = artist,
+            currentAlbum = album,
+            artworkUri = artwork
         )
     }
 
-    private fun updateWidgets() {
+    private fun updateWidgets(force: Boolean = false) {
         widgetUpdateJob?.cancel()
         widgetUpdateJob = serviceScope.launch {
-            val state = buildWidgetState()
-            BoomingMusicAppWidget.serializeState(this@PlaybackService, state)
+            if (!force) delay(300)
 
-            withContext(Main) {
+            val state = buildPlaybackState()
+            val stateSerialized = withContext(IO) {
+                BoomingMusicAppWidget.serializeState(this@PlaybackService, state)
+            }
+            if (stateSerialized) {
                 val widget = ComponentName(this@PlaybackService, BoomingMusicAppWidget::class.java)
                 val manager = AppWidgetManager.getInstance(this@PlaybackService)
                 val ids = manager.getAppWidgetIds(widget)
@@ -845,41 +846,24 @@ class PlaybackService :
                     sendBroadcast(intent)
                 }
             }
+            updateGlanceWidgets(state)
         }
     }
 
-    private suspend fun updateGlanceWidgets() = withContext(IO) {
-        val songId = withContext(Main) {
-            player.currentMediaItem?.mediaId?.toLongOrNull()
-        } ?: return@withContext
-
-        val isFavorite = repository.isSongFavorite(songId)
-        val playerState = withContext(Main) {
-            PlaybackState(
-                isPlaying = player.isPlaying,
-                isFavorite = isFavorite,
-                currentTitle = player.mediaMetadata.title?.toString(),
-                currentArtist = player.mediaMetadata.artist?.toString(),
-                currentAlbum = player.mediaMetadata.albumTitle?.toString(),
-                currentProgress = player.currentPosition,
-                currentDuration = player.contentDuration,
-                artworkUri = CoverProvider.getImageUri(SONG_COVER_PATH, songId)?.toString()
-            )
-        }
-
+    private suspend fun updateGlanceWidgets(playbackState: PlaybackState) = withContext(IO) {
         try {
             val glanceManager = GlanceAppWidgetManager(applicationContext)
             val glanceIds = glanceManager.getGlanceIds(BoomingGlanceWidget::class.java)
             if (glanceIds.isNotEmpty()) {
                 glanceIds.forEach { id ->
                     updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
-                        playerState
+                        playbackState
                     }
                 }
                 BoomingGlanceWidget().update(applicationContext, glanceIds.first())
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.e("PlaybackService", "Couldn't update Glance widgets", e)
         }
     }
 

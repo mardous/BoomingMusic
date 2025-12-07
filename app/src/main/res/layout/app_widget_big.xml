@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:importantForAccessibility="no"
+        android:src="@drawable/default_audio_art" />
+
+    <LinearLayout
+        android:id="@+id/media_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shadow_up_strong"
+        android:gravity="center_vertical"
+        android:layoutDirection="ltr"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/button_prev"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_weight="1"
+            android:background="@drawable/widget_selector_dark"
+            android:contentDescription="@string/action_previous"
+            android:padding="22dp"
+            android:src="@drawable/ic_previous_24dp"
+            app:tint="@android:color/white"/>
+
+        <ImageButton
+            android:id="@+id/button_toggle_play_pause"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_weight="1"
+            android:background="@drawable/widget_selector_dark"
+            android:contentDescription="@string/action_play_pause"
+            android:padding="22dp"
+            android:src="@drawable/ic_play_32dp"
+            app:tint="@android:color/white"/>
+
+        <ImageButton
+            android:id="@+id/button_next"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_weight="1"
+            android:background="@drawable/widget_selector_dark"
+            android:contentDescription="@string/action_next"
+            android:padding="22dp"
+            android:src="@drawable/ic_next_24dp"
+            app:tint="@android:color/white"/>
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/clickable_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/media_actions"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:id="@+id/media_titles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/shadow_down_strong"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@android:color/white"
+            android:text="@string/title" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@android:color/white"
+            android:text="@string/artist" />
+
+    </LinearLayout>
+
+</RelativeLayout>

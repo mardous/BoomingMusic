@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
 import androidx.annotation.ColorInt
@@ -23,8 +24,7 @@ import coil3.size.Scale
 import coil3.target.Target
 import coil3.toBitmap
 import com.mardous.booming.R
-import com.mardous.booming.core.model.widget.WidgetLayout
-import com.mardous.booming.core.model.widget.WidgetState
+import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.extensions.getTintedDrawable
 import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.extensions.resources.getPrimaryTextColor
@@ -86,15 +86,15 @@ class BoomingMusicAppWidget : AppWidgetProvider() {
     private fun RemoteViews.setupWidgetLayout(
         context: Context,
         layout: WidgetLayout,
-        state: WidgetState,
+        state: PlaybackState,
         onImage: () -> Unit
     ) {
-        if (state == WidgetState.empty) {
+        if (state == PlaybackState.empty) {
             setViewVisibility(R.id.media_titles, View.INVISIBLE)
         } else {
             setViewVisibility(R.id.media_titles, View.VISIBLE)
-            setTextViewText(R.id.title, state.title)
-            setTextViewText(R.id.text, "${state.artist} • ${state.album}")
+            setTextViewText(R.id.title, state.currentTitle)
+            setTextViewText(R.id.text, "${state.currentArtist} • ${state.currentAlbum}")
         }
 
         val playPauseRes = if (state.isPlaying) R.drawable.ic_pause_24dp else R.drawable.ic_play_24dp
@@ -114,13 +114,13 @@ class BoomingMusicAppWidget : AppWidgetProvider() {
             imageDisposable = null
         }
 
-        imageDisposable = if (state.artwork == null) {
+        imageDisposable = if (state.artworkUri == null) {
             setAlbumArt(context, layout, R.id.image, null)
             null
         } else {
             SingletonImageLoader.get(context).enqueue(
                 ImageRequest.Builder(context)
-                    .data(state.artwork)
+                    .data(state.artworkUri)
                     .size(context.resources.getDimensionPixelSize(layout.imageSizeRes))
                     .scale(Scale.FILL)
                     .crossfade(false)
@@ -209,6 +209,8 @@ class BoomingMusicAppWidget : AppWidgetProvider() {
     }
 
     companion object {
+        private const val TAG = "BoomingMusicAppWidget"
+
         private const val PREFERENCE_NAME = "widget_preferences"
         private const val WIDGET_STATE = "last_state"
 
@@ -217,15 +219,28 @@ class BoomingMusicAppWidget : AppWidgetProvider() {
             isLenient = false
         }
 
-        fun serializeState(context: Context, state: WidgetState) {
-            val widgetPrefs = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
-            widgetPrefs.edit(commit = true) { putString(WIDGET_STATE, json.encodeToString(state)) }
+        fun serializeState(context: Context, state: PlaybackState): Boolean {
+            try {
+                val widgetPrefs = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
+                widgetPrefs.edit(commit = true) {
+                    putString(WIDGET_STATE, json.encodeToString(state))
+                }
+                return true
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to serialize playback state", e)
+            }
+            return false
         }
 
-        fun deserializeState(context: Context): WidgetState {
-            val widgetPrefs = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
-            val state = widgetPrefs.getString(WIDGET_STATE, null)
-            return if (state == null) WidgetState.empty else json.decodeFromString(state)
+        fun deserializeState(context: Context): PlaybackState {
+            try {
+                val widgetPrefs = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
+                val state = widgetPrefs.getString(WIDGET_STATE, null)
+                return if (state == null) PlaybackState.empty else json.decodeFromString(state)
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to deserialize playback state", e)
+            }
+            return PlaybackState.empty
         }
     }
 }

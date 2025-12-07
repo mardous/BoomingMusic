@@ -1,4 +1,4 @@
-package com.mardous.booming.core.model.widget
+package com.mardous.booming.core.appwidgets
 
 import androidx.annotation.DimenRes
 import androidx.annotation.LayoutRes

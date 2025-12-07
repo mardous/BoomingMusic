@@ -204,7 +204,8 @@
 
         <!-- Widgets -->
         <receiver
-            android:name="com.mardous.booming.core.appwidgets.BoomingMusicAppWidget"
+            android:name=".core.appwidgets.BoomingMusicAppWidget"
+            android:label="@string/app_widget_classic"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -217,6 +218,7 @@
 
         <receiver
             android:name=".core.appwidgets.BoomingGlanceWidgetReceiver"
+            android:label="@string/app_widget_modern"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
