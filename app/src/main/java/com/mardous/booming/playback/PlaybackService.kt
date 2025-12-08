@@ -853,7 +853,7 @@ class PlaybackService :
                     updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
                         playbackState
                     }
-                    BoomingGlanceWidget().update(applicationContext, glanceIds.first())
+                    BoomingGlanceWidget().update(applicationContext, id)
                 }
             }
         } catch (e: Exception) {
