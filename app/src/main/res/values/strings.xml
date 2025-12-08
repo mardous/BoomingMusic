@@ -18,8 +18,6 @@
     <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Cycle repeat mode</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
-    <string name="app_widget_classic">Classic Widget</string>
-    <string name="app_widget_modern">Modern Widget</string>
     <string name="reset_action">Reset</string>
     <string name="action_more">More</string>
     <string name="import_action">Import</string>

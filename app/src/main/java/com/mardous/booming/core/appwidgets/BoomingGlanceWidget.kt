@@ -2,23 +2,29 @@ package com.mardous.booming.core.appwidgets
 
 import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
+import android.graphics.BitmapFactory
+import android.util.Log
+import android.view.KeyEvent
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.net.toUri
 import androidx.glance.*
+import androidx.glance.action.Action
 import androidx.glance.action.actionStartActivity
 import androidx.glance.action.clickable
-import androidx.glance.appwidget.*
+import androidx.glance.appwidget.GlanceAppWidget
+import androidx.glance.appwidget.SizeMode
+import androidx.glance.appwidget.action.actionStartService
+import androidx.glance.appwidget.cornerRadius
+import androidx.glance.appwidget.provideContent
 import androidx.glance.layout.*
 import androidx.glance.text.FontWeight
 import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
-import androidx.media3.session.MediaController
-import androidx.media3.session.SessionToken
-import com.google.common.util.concurrent.MoreExecutors
 import com.mardous.booming.R
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
@@ -32,6 +38,7 @@ class BoomingGlanceWidget : GlanceAppWidget() {
         private val SMALL_LAYOUT_SIZE = DpSize(width = 120.dp, height = 60.dp)
         private val MEDIUM_LAYOUT_SIZE = DpSize(width = 240.dp, height = 120.dp)
         private val LARGE_LAYOUT_SIZE = DpSize(width = 360.dp, height = 240.dp)
+        private val EXTRA_LARGE_LAYOUT_SIZE = DpSize(width = 360.dp, height = 300.dp)
     }
 
     override val sizeMode = SizeMode.Exact
@@ -44,12 +51,16 @@ class BoomingGlanceWidget : GlanceAppWidget() {
 
             GlanceTheme {
                 when {
-                    currentSize.height >= MEDIUM_LAYOUT_SIZE.height -> {
-                        MediumWidget(context, playbackState)
+                    currentSize.height >= EXTRA_LARGE_LAYOUT_SIZE.height -> {
+                        ExtraLargeWidget(context, playbackState)
                     }
 
                     currentSize.height >= LARGE_LAYOUT_SIZE.height -> {
                         LargeWidget(context, playbackState)
+                    }
+
+                    currentSize.height >= MEDIUM_LAYOUT_SIZE.height -> {
+                        MediumWidget(context, playbackState)
                     }
 
                     else -> {
@@ -199,23 +210,26 @@ private fun LargeWidget(context: Context, playbackState: PlaybackState) {
     val onSurfaceColor = GlanceTheme.colors.onSurface
     val onSurfaceVariantColor = GlanceTheme.colors.onSurfaceVariant
 
-    Box(
+    Column(
         modifier = GlanceModifier
             .fillMaxSize()
             .cornerRadius(16.dp)
+            .padding(16.dp)
             .clickable(actionStartActivity<MainActivity>())
-            .background(surfaceColor)
+            .background(surfaceColor),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalAlignment = Alignment.Start
     ) {
-        AlbumArtGlance(
-            playbackState = playbackState,
-            modifier = GlanceModifier.fillMaxSize()
-        )
-
         Row(
             modifier = GlanceModifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-
+            AlbumArtGlance(
+                playbackState = playbackState,
+                modifier = GlanceModifier
+                    .size(104.dp)
+                    .cornerRadius(8.dp)
+            )
 
             Column(
                 modifier = GlanceModifier
@@ -228,7 +242,7 @@ private fun LargeWidget(context: Context, playbackState: PlaybackState) {
                     style = TextStyle(
                         color = onSurfaceColor,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp
+                        fontSize = 20.sp
                     ),
                     maxLines = 1
                 )
@@ -237,7 +251,7 @@ private fun LargeWidget(context: Context, playbackState: PlaybackState) {
                     text = playbackState.currentArtist.orEmpty(),
                     style = TextStyle(
                         color = onSurfaceVariantColor,
-                        fontSize = 12.sp
+                        fontSize = 16.sp
                     ),
                     maxLines = 1
                 )
@@ -247,9 +261,74 @@ private fun LargeWidget(context: Context, playbackState: PlaybackState) {
         MediumControllerGlance(
             context = context,
             playbackState = playbackState,
+            playIconSize = 64.dp,
             modifier = GlanceModifier
                 .fillMaxSize()
-                .padding(start = 24.dp, end = 24.dp, top = 4.dp)
+                .padding(start = 16.dp, end = 16.dp, top = 4.dp)
+        )
+    }
+}
+
+@Composable
+private fun ExtraLargeWidget(context: Context, playbackState: PlaybackState) {
+    val surfaceColor = GlanceTheme.colors.surface
+    val onSurfaceColor = GlanceTheme.colors.onSurface
+    val onSurfaceVariantColor = GlanceTheme.colors.onSurfaceVariant
+
+    Column(
+        modifier = GlanceModifier
+            .fillMaxSize()
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 24.dp)
+            .cornerRadius(24.dp)
+            .clickable(actionStartActivity<MainActivity>())
+            .background(surfaceColor)
+    ) {
+        AlbumArtGlance(
+            playbackState = playbackState,
+            modifier = GlanceModifier
+                .fillMaxWidth()
+                .defaultWeight()
+                .cornerRadius(16.dp)
+        )
+
+        Spacer(GlanceModifier.height(24.dp))
+
+        Column(
+            modifier = GlanceModifier
+                .fillMaxWidth()
+                .padding(start = 16.dp, end = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = playbackState.currentTitle.orEmpty(),
+                style = TextStyle(
+                    color = onSurfaceColor,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                ),
+                maxLines = 1
+            )
+
+            Text(
+                text = playbackState.currentArtist.orEmpty(),
+                style = TextStyle(
+                    color = onSurfaceVariantColor,
+                    fontSize = 16.sp
+                ),
+                maxLines = 1
+            )
+        }
+
+        Spacer(GlanceModifier.height(24.dp))
+
+        MediumControllerGlance(
+            context = context,
+            playbackState = playbackState,
+            playIconSize = 64.dp,
+            modifier = GlanceModifier
+                .fillMaxWidth()
+                .padding(start = 16.dp, end = 16.dp)
         )
     }
 }
@@ -261,23 +340,34 @@ private fun AlbumArtGlance(
     placeholderIconColor: ColorProvider = GlanceTheme.colors.onTertiaryContainer,
     modifier: GlanceModifier = GlanceModifier
 ) {
-    playbackState.artworkUri?.let {
+    val bitmap = playbackState.artworkData?.let {
+        try {
+            val options = BitmapFactory.Options()
+            BitmapFactory.decodeByteArray(it, 0, it.size, options)
+        } catch (t: Throwable) {
+            Log.e("BoomingGlanceWidget", "Cannot decode artwork bitmap", t)
+            null
+        }
+    }
+    if (bitmap != null) {
         Image(
-            provider = ImageProvider(it.toUri()),
+            provider = ImageProvider(bitmap),
             contentDescription = "Album Art",
+            contentScale = ContentScale.Crop,
             modifier = modifier
         )
-    } ?: Box(
-        modifier = modifier.background(placeholderColor),
-        contentAlignment = Alignment.Center
-    ) {
-        val size = LocalSize.current
-        Image(
-            provider = ImageProvider(R.drawable.ic_music_note_24dp),
-            colorFilter = ColorFilter.tint(placeholderIconColor),
-            contentDescription = "Album Art",
-            modifier = GlanceModifier.size(width = size.width, height = size.height)
-        )
+    } else {
+        Box(
+            modifier = modifier.background(placeholderColor),
+            contentAlignment = Alignment.Center
+        ) {
+            Image(
+                provider = ImageProvider(R.drawable.ic_music_note_24dp),
+                colorFilter = ColorFilter.tint(placeholderIconColor),
+                contentDescription = "Album Art",
+                modifier = GlanceModifier.wrapContentSize()
+            )
+        }
     }
 }
 
@@ -291,18 +381,16 @@ private fun SmallControllerGlance(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Previous
-        ControlIconGlance(
-            resId = R.drawable.ic_previous_24dp,
-            tint = GlanceTheme.colors.onSurface,
-            contentDescription = "Previous",
-            onClick = GlanceModifier.clickable {
-                withController(context) { controller ->
-                    controller.seekToPrevious()
-                    controller.play()
-                }
-            }
-        )
+        if (playbackState.isForeground) {
+            // Previous
+            ControlIconGlance(
+                resId = R.drawable.ic_previous_24dp,
+                tint = GlanceTheme.colors.onSurface,
+                contentDescription = "Previous",
+                modifier = GlanceModifier
+                    .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PREVIOUS))
+            )
+        }
 
         Spacer(GlanceModifier.defaultWeight())
 
@@ -311,27 +399,21 @@ private fun SmallControllerGlance(
             resId = if (playbackState.isPlaying) R.drawable.ic_pause_24dp else R.drawable.ic_play_24dp,
             tint = GlanceTheme.colors.onSurface,
             contentDescription = "Play/Pause",
-            onClick = GlanceModifier.clickable {
-                withController(context) { controller ->
-                    if (controller.isPlaying) controller.pause() else controller.play()
-                }
-            }
+            modifier = GlanceModifier.clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE))
         )
 
         Spacer(GlanceModifier.defaultWeight())
 
-        // Next
-        ControlIconGlance(
-            resId = R.drawable.ic_next_24dp,
-            tint = GlanceTheme.colors.onSurface,
-            contentDescription = "Next",
-            onClick = GlanceModifier.clickable {
-                withController(context) { controller ->
-                    controller.seekToNext()
-                    controller.play()
-                }
-            }
-        )
+        if (playbackState.isForeground) {
+            // Next
+            ControlIconGlance(
+                resId = R.drawable.ic_next_24dp,
+                tint = GlanceTheme.colors.onSurface,
+                contentDescription = "Next",
+                modifier = GlanceModifier
+                    .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_NEXT))
+            )
+        }
     }
 }
 
@@ -339,82 +421,74 @@ private fun SmallControllerGlance(
 private fun MediumControllerGlance(
     context: Context,
     playbackState: PlaybackState,
+    playIconSize: Dp = 48.dp,
     modifier: GlanceModifier = GlanceModifier
 ) {
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Shuffle
-        ControlIconGlance(
-            resId = if (playbackState.isShuffleMode) R.drawable.ic_shuffle_on_24dp else R.drawable.ic_shuffle_24dp,
-            tint = GlanceTheme.colors.onSurface,
-            contentDescription = "Toggle shuffle mode",
-            onClick = GlanceModifier.clickable {
+        if (playbackState.isForeground) {
+            // Shuffle
+            ControlIconGlance(
+                resId = if (playbackState.isShuffleMode) R.drawable.ic_shuffle_on_24dp else R.drawable.ic_shuffle_24dp,
+                tint = GlanceTheme.colors.onSurface,
+                contentDescription = "Toggle shuffle mode",
+                modifier = GlanceModifier
+                    .size(28.dp)
+                    .clickable(toggleShuffleAction(context))
+            )
 
-            }
-        )
+            Spacer(GlanceModifier.defaultWeight())
 
-        Spacer(GlanceModifier.defaultWeight())
-
-        // Previous
-        ControlIconGlance(
-            resId = R.drawable.ic_previous_24dp,
-            tint = GlanceTheme.colors.onSurface,
-            contentDescription = "Previous",
-            onClick = GlanceModifier
-                .size(28.dp)
-                .clickable {
-                    withController(context) { controller ->
-                        controller.seekToPrevious()
-                        controller.play()
-                    }
-            }
-        )
+            // Previous
+            ControlIconGlance(
+                resId = R.drawable.ic_previous_24dp,
+                tint = GlanceTheme.colors.onSurface,
+                contentDescription = "Previous",
+                modifier = GlanceModifier
+                    .size(32.dp)
+                    .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PREVIOUS))
+            )
+        }
 
         Spacer(GlanceModifier.defaultWeight())
 
         // Play/pause
         CircularControlIconGlance(
             resId = if (playbackState.isPlaying) R.drawable.ic_pause_24dp else R.drawable.ic_play_24dp,
+            size = playIconSize,
             iconTint = GlanceTheme.colors.onPrimaryContainer,
             backgroundTint = GlanceTheme.colors.primaryContainer,
             contentDescription = "Play/Pause",
-            onClick = GlanceModifier.clickable {
-                withController(context) { controller ->
-                    if (controller.isPlaying) controller.pause() else controller.play()
-                }
-            }
+            onClick = GlanceModifier.clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE))
         )
 
         Spacer(GlanceModifier.defaultWeight())
 
-        // Next
-        ControlIconGlance(
-            resId = R.drawable.ic_next_24dp,
-            tint = GlanceTheme.colors.onSurface,
-            contentDescription = "Next",
-            onClick = GlanceModifier
-                .size(28.dp)
-                .clickable {
-                    withController(context) { controller ->
-                        controller.seekToNext()
-                        controller.play()
-                    }
-            }
-        )
+        if (playbackState.isForeground) {
+            // Next
+            ControlIconGlance(
+                resId = R.drawable.ic_next_24dp,
+                tint = GlanceTheme.colors.onSurface,
+                contentDescription = "Next",
+                modifier = GlanceModifier
+                    .size(32.dp)
+                    .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_NEXT))
+            )
 
-        Spacer(GlanceModifier.defaultWeight())
+            Spacer(GlanceModifier.defaultWeight())
 
-        // Favorite
-        ControlIconGlance(
-            resId = if (playbackState.isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp,
-            tint = GlanceTheme.colors.onSurface,
-            contentDescription = "Toggle favorite",
-            onClick = GlanceModifier.clickable {
-
-            }
-        )
+            // Favorite
+            ControlIconGlance(
+                resId = if (playbackState.isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp,
+                tint = GlanceTheme.colors.onSurface,
+                contentDescription = "Toggle favorite",
+                modifier = GlanceModifier
+                    .size(28.dp)
+                    .clickable(toggleFavoriteAction(context))
+            )
+        }
     }
 }
 
@@ -423,14 +497,12 @@ private fun ControlIconGlance(
     resId: Int,
     tint: ColorProvider,
     contentDescription: String,
-    onClick: GlanceModifier
+    modifier: GlanceModifier = GlanceModifier
 ) {
     Image(
         provider = ImageProvider(resId),
         contentDescription = contentDescription,
-        modifier = GlanceModifier
-            .size(24.dp)
-            .then(onClick),
+        modifier = modifier,
         colorFilter = ColorFilter.tint(tint)
     )
 }
@@ -438,6 +510,7 @@ private fun ControlIconGlance(
 @Composable
 private fun CircularControlIconGlance(
     resId: Int,
+    size: Dp,
     iconTint: ColorProvider,
     backgroundTint: ColorProvider,
     contentDescription: String,
@@ -446,9 +519,9 @@ private fun CircularControlIconGlance(
     Box(
         contentAlignment = Alignment.Center,
         modifier = GlanceModifier
-            .size(48.dp)
-            .cornerRadius(24.dp)
-            .padding(8.dp)
+            .size(size)
+            .cornerRadius(size / 2)
+            .padding(size / 6)
             .background(backgroundTint)
     ) {
         Image(
@@ -462,20 +535,21 @@ private fun CircularControlIconGlance(
     }
 }
 
-// --- Controller Helper ---
+private fun playbackAction(context: Context, mediaKeyCode: Int): Action {
+    val intent = Intent(Intent.ACTION_MEDIA_BUTTON)
+    intent.setComponent(ComponentName(context, PlaybackService::class.java))
+    intent.putExtra(Intent.EXTRA_KEY_EVENT, KeyEvent(KeyEvent.ACTION_DOWN, mediaKeyCode))
+    return actionStartService(intent, true)
+}
 
-private fun withController(
-    context: Context,
-    action: (MediaController) -> Unit,
-) {
-    val sessionToken = SessionToken(context.applicationContext, ComponentName(context, PlaybackService::class.java))
-    val controllerFuture = MediaController.Builder(context.applicationContext, sessionToken).buildAsync()
-    controllerFuture.addListener(
-        {
-            val controller = controllerFuture.get()
-            action(controller)
-            controller.release()
-        },
-        MoreExecutors.directExecutor()
-    )
+private fun toggleShuffleAction(context: Context): Action {
+    val intent = Intent(PlaybackService.ACTION_TOGGLE_SHUFFLE)
+    intent.setComponent(ComponentName(context, PlaybackService::class.java))
+    return actionStartService(intent)
+}
+
+private fun toggleFavoriteAction(context: Context): Action {
+    val intent = Intent(PlaybackService.ACTION_TOGGLE_FAVORITE)
+    intent.setComponent(ComponentName(context, PlaybackService::class.java))
+    return actionStartService(intent)
 }

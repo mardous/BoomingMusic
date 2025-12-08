@@ -202,23 +202,8 @@
             </intent-filter>
         </receiver>
 
-        <!-- Widgets -->
-        <receiver
-            android:name=".core.appwidgets.BoomingMusicAppWidget"
-            android:label="@string/app_widget_classic"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info"/>
-        </receiver>
-
         <receiver
             android:name=".core.appwidgets.BoomingGlanceWidgetReceiver"
-            android:label="@string/app_widget_modern"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
