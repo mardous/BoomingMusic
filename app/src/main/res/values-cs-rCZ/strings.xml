@@ -156,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Některé soubory nejsou uvedeny v úložišti médií.</string>
     <string name="nothing_to_scan">Nic ke skenování</string>
     <string name="select_storage_title">Vyberte úložiště</string>
-    <string name="app_widget_big_name">Velký</string>
-    <string name="app_widget_simple_name">Jednoduchý</string>
-    <string name="app_widget_small_name">Malá</string>
     <string name="now_playing">Právě hraje</string>
     <string name="playing_queue_label">Fronta přehrávání</string>
     <string name="list_start">List start</string>
