@@ -156,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Some files are not listed in the media store.</string>
     <string name="nothing_to_scan">Nothing to scan</string>
     <string name="select_storage_title">Select storage</string>
-    <string name="app_widget_big_name">Big</string>
-    <string name="app_widget_simple_name">Simple</string>
-    <string name="app_widget_small_name">Small</string>
     <string name="now_playing">Now playing</string>
     <string name="playing_queue_label">Playing queue</string>
     <string name="list_start">List start</string>
