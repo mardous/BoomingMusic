@@ -107,7 +107,20 @@ class LrcLyricsParser : LyricsParser {
                     nextEntry = rawLines.getOrNull(i + (nextStep++))
                 }
 
-                entry.end = nextEntry?.start ?: length
+                val end = nextEntry?.let { nextEntryNonNull ->
+                    if (nextEntryNonNull.start >= entry.start) {
+                        nextEntryNonNull.start
+                    } else {
+                        val firstLine = lines.values.firstOrNull()
+                        if (firstLine != null && firstLine.startAt == nextEntryNonNull.start) {
+                            length
+                        } else {
+                            error("Malformed LRC file")
+                        }
+                    }
+                }
+
+                entry.end = end ?: length
 
                 if (entry.text.isNullOrBlank()) {
                     if (!lines.containsKey(entry.start)) {
