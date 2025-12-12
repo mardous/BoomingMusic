@@ -45,4 +45,8 @@
     <dimen name="equalizer_edge_padding">16dp</dimen>
     <dimen name="equalizer_edge_padding_large">20dp</dimen>
     <dimen name="equalizer_edge_padding_small">8dp</dimen>
+
+    <!-- Glance App Widget -->
+    <dimen name="glance_widget_background_radius">16dp</dimen>
+    <dimen name="glance_widget_inner_radius">8dp</dimen>
 </resources>
