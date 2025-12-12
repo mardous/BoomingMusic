@@ -156,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">קבצים מסוימים לא רשומים בחנות המדיה.</string>
     <string name="nothing_to_scan">אין מה לסרוק</string>
     <string name="select_storage_title">בחר אחסון</string>
-    <string name="app_widget_big_name">גדול</string>
-    <string name="app_widget_simple_name">פשוט</string>
-    <string name="app_widget_small_name">קטן</string>
     <string name="now_playing">מנגן כעת</string>
     <string name="playing_queue_label">מנגן תור השמעה</string>
     <string name="list_start">תחילת רשימה</string>
