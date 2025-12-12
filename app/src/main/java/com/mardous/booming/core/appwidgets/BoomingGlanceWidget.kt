@@ -36,7 +36,7 @@ class BoomingGlanceWidget : GlanceAppWidget() {
 
     companion object {
         private val SMALL_LAYOUT_SIZE = DpSize(width = 120.dp, height = 60.dp)
-        private val MEDIUM_LAYOUT_SIZE = DpSize(width = 240.dp, height = 120.dp)
+        private val MEDIUM_LAYOUT_SIZE = DpSize(width = 240.dp, height = 140.dp)
         private val LARGE_LAYOUT_SIZE = DpSize(width = 360.dp, height = 240.dp)
         private val EXTRA_LARGE_LAYOUT_SIZE = DpSize(width = 360.dp, height = 300.dp)
     }
@@ -51,6 +51,11 @@ class BoomingGlanceWidget : GlanceAppWidget() {
 
             GlanceTheme {
                 when {
+                    currentSize.height >= 220.dp && currentSize.height <= 300.dp &&
+                            currentSize.width >= 240.dp && currentSize.width <= 270.dp -> {
+                        CardWidget(context, playbackState)
+                    }
+
                     currentSize.height >= EXTRA_LARGE_LAYOUT_SIZE.height -> {
                         ExtraLargeWidget(context, playbackState)
                     }
@@ -330,6 +335,84 @@ private fun ExtraLargeWidget(context: Context, playbackState: PlaybackState) {
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp)
         )
+    }
+}
+
+@Composable
+private fun CardWidget(context: Context, playbackState: PlaybackState) {
+    Box(
+        modifier = GlanceModifier
+            .fillMaxSize()
+            .clickable(actionStartActivity<MainActivity>()),
+        contentAlignment = Alignment.BottomCenter
+    ) {
+        Box(
+            modifier = GlanceModifier
+                .fillMaxSize()
+                .padding(top = 8.dp, bottom = 32.dp, start = 8.dp, end = 8.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            AlbumArtGlance(
+                playbackState = playbackState,
+                modifier = GlanceModifier
+                    .fillMaxSize()
+                    .cornerRadius(8.dp)
+            )
+        }
+
+        Box(
+            modifier = GlanceModifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(16.dp)
+                .cornerRadius(16.dp)
+                .background(GlanceTheme.colors.surface),
+            contentAlignment = Alignment.Center
+        ) {
+            Row(
+                modifier = GlanceModifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // Prev
+                ControlIconGlance(
+                    resId = R.drawable.ic_previous_24dp,
+                    tint = GlanceTheme.colors.onSurface,
+                    contentDescription = "Previous",
+                    modifier = GlanceModifier
+                        .size(24.dp)
+                        .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PREVIOUS))
+                )
+
+                Spacer(GlanceModifier.defaultWeight())
+
+                // Play/Pause circular
+                CircularControlIconGlance(
+                    resId = if (playbackState.isPlaying)
+                        R.drawable.ic_pause_24dp
+                    else
+                        R.drawable.ic_play_24dp,
+                    size = 48.dp,
+                    iconTint = GlanceTheme.colors.onPrimaryContainer,
+                    backgroundTint = GlanceTheme.colors.primaryContainer,
+                    contentDescription = "Play/Pause",
+                    onClick = GlanceModifier
+                        .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE))
+                )
+
+                Spacer(GlanceModifier.defaultWeight())
+
+                // Next
+                ControlIconGlance(
+                    resId = R.drawable.ic_next_24dp,
+                    tint = GlanceTheme.colors.onSurface,
+                    contentDescription = "Next",
+                    modifier = GlanceModifier
+                        .size(24.dp)
+                        .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_NEXT))
+                )
+            }
+        }
     }
 }
 
