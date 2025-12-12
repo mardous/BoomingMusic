@@ -156,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">一部のファイルはメディアストアに表示されません。</string>
     <string name="nothing_to_scan">スキャンするものがありません</string>
     <string name="select_storage_title">ストレージを選択</string>
-    <string name="app_widget_big_name">大</string>
-    <string name="app_widget_simple_name">シンプル</string>
-    <string name="app_widget_small_name">小</string>
     <string name="now_playing">再生中</string>
     <string name="playing_queue_label">キューを再生中</string>
     <string name="list_start">リストの始め</string>
