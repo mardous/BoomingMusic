@@ -79,7 +79,7 @@
 | 🧩 UI                   | Android Views + Jetpack Compose (hybrid)                       |
 | 🖼️ Image Loading        | [Coil](https://coil-kt.github.io/coil/)                        |
 | 🎨 Design               | Material 3 / Material You                                      |
-| 🗣️ Language             | Kotlin                                                         |
+| 🗣️ Language            | Kotlin                                                         |
 
 ## 🧩 Roadmap
 
