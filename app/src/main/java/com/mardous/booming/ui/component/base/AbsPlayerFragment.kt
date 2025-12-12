@@ -24,6 +24,8 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -32,6 +34,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
+import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -629,11 +632,13 @@ fun goToDestination(
             collapsePanel()
         }
 
-        val navOptions = when {
-            singleTop -> navOptions { launchSingleTop = true }
-            else -> null
+        Handler(Looper.getMainLooper()).postDelayed(250) {
+            val navOptions = when {
+                singleTop -> navOptions { launchSingleTop = true }
+                else -> null
+            }
+            findNavController(R.id.fragment_container)
+                .navigate(destinationId, args, navOptions)
         }
-        findNavController(R.id.fragment_container)
-            .navigate(destinationId, args, navOptions)
     }
 }
