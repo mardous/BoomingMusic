@@ -156,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">कुछ फ़ाइलें मीडिया स्टोर में सूचीबद्ध नहीं हैं।</string>
     <string name="nothing_to_scan">स्कैन करने के लिए कुछ नहीं</string>
     <string name="select_storage_title">स्टोरेज चुनें</string>
-    <string name="app_widget_big_name">बड़ा</string>
-    <string name="app_widget_simple_name">सरल</string>
-    <string name="app_widget_small_name">छोटा</string>
     <string name="now_playing">अब बज रहा है</string>
     <string name="playing_queue_label">कतार बजाना</string>
     <string name="list_start">List start</string>
