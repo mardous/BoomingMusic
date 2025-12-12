@@ -3,17 +3,20 @@ package com.mardous.booming.playback
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.appwidget.AppWidgetManager
 import android.bluetooth.BluetoothA2dp
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothProfile
 import android.content.*
+import android.graphics.Bitmap
 import android.os.*
+import android.util.Log
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.os.bundleOf
+import androidx.glance.appwidget.GlanceAppWidgetManager
+import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.media3.common.*
 import androidx.media3.common.TrackSelectionParameters.AudioOffloadPreferences
 import androidx.media3.common.util.UnstableApi
@@ -28,18 +31,20 @@ import androidx.media3.extractor.mp3.Mp3Extractor
 import androidx.media3.session.*
 import androidx.media3.session.MediaLibraryService.MediaLibrarySession
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
+import coil3.SingletonImageLoader
+import coil3.request.ImageRequest
+import coil3.toBitmap
 import com.google.common.collect.ImmutableList
 import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.SettableFuture
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoilBitmapLoader
-import com.mardous.booming.coil.CoverProvider
-import com.mardous.booming.coil.CoverProvider.Companion.SONG_COVER_PATH
-import com.mardous.booming.core.appwidgets.BoomingMusicAppWidget
+import com.mardous.booming.core.appwidgets.BoomingGlanceWidget
+import com.mardous.booming.core.appwidgets.state.PlaybackState
+import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.SoundSettings
-import com.mardous.booming.core.model.widget.WidgetState
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
@@ -61,6 +66,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.guava.future
 import org.koin.android.ext.android.inject
+import java.io.ByteArrayOutputStream
 import kotlin.random.Random
 
 @OptIn(UnstableApi::class)
@@ -89,7 +95,6 @@ class PlaybackService :
         )
     }
 
-    private val pendingStartCommands = mutableListOf<Intent>()
     private val playerThread = HandlerThread("Booming-ExoPlayer", Process.THREAD_PRIORITY_AUDIO)
     private val balanceProcessor = BalanceAudioProcessor()
     private val replayGainProcessor = ReplayGainAudioProcessor(ReplayGainMode.Off)
@@ -111,12 +116,6 @@ class PlaybackService :
 
     val isPlaying: Boolean
         get() = player.isPlaying
-
-    var currentSong = Song.emptySong
-        private set(value) {
-            field = value
-            updateWidgets()
-        }
 
     private val shuffleCommand: CommandButton
         get() = if (player.shuffleModeEnabled) {
@@ -231,7 +230,6 @@ class PlaybackService :
             build()
         }
 
-
         setMediaNotificationProvider(
             DefaultMediaNotificationProvider(
                 this,
@@ -252,8 +250,6 @@ class PlaybackService :
             if (player.shuffleModeEnabled && shuffleOrder != null) {
                 player.exoPlayer.shuffleOrder = shuffleOrder
             }
-            pendingStartCommands.forEach { command -> processCommand(command) }
-            pendingStartCommands.clear()
         }
 
         sleepTimer.addFinishListener { allowPendingQuit ->
@@ -307,14 +303,12 @@ class PlaybackService :
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when (intent?.action) {
-            ACTION_NEXT,
-            ACTION_PREVIOUS,
-            ACTION_TOGGLE_PAUSE -> {
-                if (persistentStorage.restorationState.isRestored) {
-                    processCommand(intent)
-                } else {
-                    pendingStartCommands.add(intent)
-                }
+            ACTION_TOGGLE_FAVORITE -> {
+                toggleFavorite()
+                return START_STICKY
+            }
+            ACTION_TOGGLE_SHUFFLE -> {
+                toggleShuffle()
                 return START_STICKY
             }
         }
@@ -530,7 +524,7 @@ class PlaybackService :
     ): ListenableFuture<SessionResult> {
         return when (customCommand.customAction) {
             Playback.TOGGLE_SHUFFLE -> {
-                player.shuffleModeEnabled = !player.shuffleModeEnabled
+                toggleShuffle()
                 Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
             }
 
@@ -545,12 +539,7 @@ class PlaybackService :
             }
 
             Playback.CYCLE_REPEAT -> {
-                val currentRepeatMode = player.repeatMode
-                player.repeatMode = when (currentRepeatMode) {
-                    Player.REPEAT_MODE_OFF -> Player.REPEAT_MODE_ALL
-                    Player.REPEAT_MODE_ALL -> Player.REPEAT_MODE_ONE
-                    else -> Player.REPEAT_MODE_OFF
-                }
+                cycleRepeat()
                 Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
             }
 
@@ -681,6 +670,7 @@ class PlaybackService :
     }
 
     override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {
+        updateWidgets()
         refreshMediaButtonCustomLayout()
         persistentStorage.saveState()
     }
@@ -694,7 +684,7 @@ class PlaybackService :
         val isPlaying = player.isPlaying
 
         serviceScope.launch(IO) {
-            currentSong = repository.songByMediaItem(mediaItem)
+            val currentSong = repository.songByMediaItem(mediaItem)
             if (currentSong != Song.emptySong && preferences.getBoolean(ENABLE_HISTORY, true)) {
                 repository.upsertSongInHistory(currentSong)
                 replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(currentSong)
@@ -718,6 +708,7 @@ class PlaybackService :
         }
 
         persistentStorage.saveState()
+        updateWidgets(force = true)
     }
 
     override fun onPlayerError(error: PlaybackException) {
@@ -774,15 +765,16 @@ class PlaybackService :
         }
     }
 
-    private fun processCommand(command: Intent) {
-        when (command.action) {
-            ACTION_TOGGLE_PAUSE -> if (isPlaying) {
-                player.pause()
-            } else {
-                player.play()
-            }
-            ACTION_PREVIOUS -> player.seekToPrevious()
-            ACTION_NEXT -> player.seekToNext()
+    private fun toggleShuffle() {
+        player.shuffleModeEnabled = !player.shuffleModeEnabled
+    }
+
+    private fun cycleRepeat() {
+        val currentRepeatMode = player.repeatMode
+        player.repeatMode = when (currentRepeatMode) {
+            Player.REPEAT_MODE_OFF -> Player.REPEAT_MODE_ALL
+            Player.REPEAT_MODE_ALL -> Player.REPEAT_MODE_ONE
+            else -> Player.REPEAT_MODE_OFF
         }
     }
 
@@ -795,6 +787,8 @@ class PlaybackService :
             repository.toggleFavorite(song)
         }
 
+        updateWidgets()
+
         refreshMediaButtonCustomLayout()
         mediaSession?.broadcastCustomCommand(
             SessionCommand(Playback.EVENT_FAVORITE_CONTENT_CHANGED, Bundle.EMPTY),
@@ -802,48 +796,68 @@ class PlaybackService :
         )
     }
 
-    private suspend fun buildWidgetState(): WidgetState {
+    private suspend fun buildPlaybackState(isForeground: Boolean): PlaybackState {
         val mediaItem = player.currentMediaItem
         val id = mediaItem?.mediaId?.toLongOrNull()
-        if (mediaItem == null || id == null) return WidgetState.empty
+        if (mediaItem == null || id == null) return PlaybackState.empty
 
         val isPlaying = player.isPlaying
-        val isFavorite = withContext(IO) {
-            repository.isSongFavorite(id)
+        val isShuffleMode = player.shuffleModeEnabled
+        return withContext(IO) {
+            val song = repository.songById(id)
+            val isFavorite = repository.isSongFavorite(song.id)
+            val result = SingletonImageLoader.get(this@PlaybackService).execute(
+                ImageRequest.Builder(this@PlaybackService)
+                    .data(song)
+                    .size(300)
+                    .build()
+            )
+            val artworkData = result.image?.toBitmap(300, 300)?.let { bitmap ->
+                val stream = ByteArrayOutputStream()
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    bitmap.compress(Bitmap.CompressFormat.WEBP_LOSSY, 80, stream)
+                } else {
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 85, stream)
+                }
+                stream.toByteArray()
+            }
+            PlaybackState(
+                isForeground = isForeground,
+                isPlaying = isPlaying,
+                isFavorite = isFavorite,
+                isShuffleMode = isShuffleMode,
+                currentTitle = song.title,
+                currentArtist = song.artistName,
+                currentAlbum = song.albumName,
+                artworkData = artworkData
+            )
         }
-        val title = mediaItem.mediaMetadata.title?.toString().orEmpty()
-        val artist = mediaItem.mediaMetadata.artist?.toString().orEmpty()
-        val album = mediaItem.mediaMetadata.albumTitle?.toString().orEmpty()
-        val artwork = CoverProvider.getImageUri(SONG_COVER_PATH, mediaItem.mediaId)?.toString()
-
-        return WidgetState(
-            title = title,
-            artist = artist,
-            album = album,
-            artwork = artwork,
-            isPlaying = isPlaying,
-            isFavorite = isFavorite
-        )
     }
 
-    private fun updateWidgets() {
+    private fun updateWidgets(force: Boolean = false, isForeground: Boolean = isPlaybackOngoing) {
         widgetUpdateJob?.cancel()
         widgetUpdateJob = serviceScope.launch {
-            val state = buildWidgetState()
-            BoomingMusicAppWidget.serializeState(this@PlaybackService, state)
+            if (!force) delay(WIDGET_UPDATE_DEBOUNCE)
 
-            withContext(Main) {
-                val widget = ComponentName(this@PlaybackService, BoomingMusicAppWidget::class.java)
-                val manager = AppWidgetManager.getInstance(this@PlaybackService)
-                val ids = manager.getAppWidgetIds(widget)
-                if (ids.isNotEmpty()) {
-                    val intent = Intent(this@PlaybackService, BoomingMusicAppWidget::class.java)
-                        .setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
-                        .putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            val state = buildPlaybackState(isForeground)
+            updateGlanceWidgets(state)
+        }
+    }
 
-                    sendBroadcast(intent)
+    private suspend fun updateGlanceWidgets(playbackState: PlaybackState) = withContext(IO) {
+        try {
+            val glanceManager = GlanceAppWidgetManager(applicationContext)
+            val glanceIds = glanceManager.getGlanceIds(BoomingGlanceWidget::class.java)
+            if (glanceIds.isNotEmpty()) {
+                glanceIds.forEach { id ->
+                    updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
+                        playbackState
+                    }
+                    BoomingGlanceWidget().update(applicationContext, id)
                 }
             }
+        } catch (e: Exception) {
+            Log.e("PlaybackService", "Couldn't update Glance widgets", e)
         }
     }
 
@@ -1018,15 +1032,13 @@ class PlaybackService :
     companion object {
         private const val PACKAGE_NAME = "com.mardous.booming"
 
-        const val ACTION_TOGGLE_PAUSE = "$PACKAGE_NAME.action.ACTION_TOGGLE_PAUSE"
-        const val ACTION_PREVIOUS = "$PACKAGE_NAME.booming.action.ACTION_PREVIOUS"
-        const val ACTION_NEXT = "$PACKAGE_NAME.action.ACTION_NEXT"
-
-        const val EXTRA_PLAYBACK_STATE = "$PACKAGE_NAME.extra.playback_state"
+        const val ACTION_TOGGLE_SHUFFLE = "$PACKAGE_NAME.action.ACTION_TOGGLE_SHUFFLE"
+        const val ACTION_TOGGLE_FAVORITE = "$PACKAGE_NAME.action.ACTION_TOGGLE_FAVORITE"
 
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "playing_notification"
 
+        private const val WIDGET_UPDATE_DEBOUNCE = 300L
         private const val REWIND_INSTEAD_PREVIOUS_MILLIS = 5000L
     }
 }

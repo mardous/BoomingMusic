@@ -519,7 +519,7 @@ class LibraryViewModel(
     fun handleIntent(intent: Intent): LiveData<HandleIntentResult> = liveData(IO) {
         val result = HandleIntentResult(handled = true)
         val uri = intent.data
-        if (uri == null) {
+        if (uri == null || uri.scheme == "glance-action") {
             emit(result.copy(handled = false))
         } else {
             if (uri.toString().isNotEmpty()) {

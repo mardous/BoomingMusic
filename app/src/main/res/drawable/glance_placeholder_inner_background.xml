@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Image background for widget placeholder -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <corners android:radius="@dimen/app_widget_inner_radius" />
+    <corners android:radius="@dimen/glance_widget_inner_radius" />
     <solid android:color="@android:color/white" />
 </shape>

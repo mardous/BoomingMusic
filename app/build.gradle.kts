@@ -201,6 +201,7 @@ dependencies {
     implementation(libs.bundles.lifecycle)
     implementation(libs.bundles.media3)
     implementation(libs.bundles.navigation)
+    implementation(libs.bundles.glance)
     implementation(libs.bundles.koin)
     implementation(libs.bundles.coil)
     implementation(libs.bundles.ktor)

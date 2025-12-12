@@ -3,22 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/app_widget_small_height"
-    android:background="@drawable/app_widget_background"
-    android:backgroundTint="?colorSurfaceContainer"
+    android:layout_height="90dp"
+    android:background="@drawable/glance_placeholder_background"
+    android:backgroundTint="?colorSurfaceContainerLow"
     android:orientation="horizontal"
     android:theme="@style/Theme.AppWidget">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="@dimen/app_widget_small_image_size"
-        android:layout_height="@dimen/app_widget_small_image_size"
-        android:layout_gravity="center_vertical"
+    <FrameLayout
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_margin="10dp"
-        android:background="@drawable/app_widget_background"
-        android:importantForAccessibility="no"
-        android:scaleType="centerCrop"
-        android:src="@drawable/default_audio_art" />
+        android:background="@drawable/glance_placeholder_inner_background"
+        android:backgroundTint="?colorPrimaryContainer">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_music_note_24dp"
+            app:tint="?colorOnPrimaryContainer"/>
+
+    </FrameLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -41,8 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/widget_selector"
-                android:contentDescription="@string/action_previous"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_previous_24dp"
                 app:tint="?colorOnSurface" />
 
@@ -51,8 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/widget_selector"
-                android:contentDescription="@string/action_play_pause"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_play_24dp"
                 app:tint="?colorOnSurface" />
 
@@ -61,8 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/widget_selector"
-                android:contentDescription="@string/action_next"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_next_24dp"
                 app:tint="?colorOnSurface" />
 
