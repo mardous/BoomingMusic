@@ -36,6 +36,7 @@ import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.asSectionName
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.songInfo
+import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
@@ -176,6 +177,7 @@ open class SongAdapter(
         }
 
         init {
+            play?.hide()
             menu?.setOnClickListener(object : OnClickMenu() {
                 override val popupMenuRes: Int
                     get() = songMenuRes
