@@ -3,7 +3,7 @@
     <string name="action_play">播放</string>
     <string name="action_play_all">播放全部</string>
     <string name="action_shuffle_play">随机播放</string>
-    <string name="action_queue_next">添加到队列下一个</string>
+    <string name="action_queue_next">添加到下一曲</string>
     <string name="shuffle_all_label">全部随机</string>
     <string name="shuffle_mode">随机播放模式</string>
     <string name="repeat_mode">循环模式</string>
@@ -14,8 +14,8 @@
     <string name="action_next">下一个</string>
     <string name="action_previous">上一个</string>
     <string name="action_cancel">取消</string>
-    <string name="action_seek_backward">Seek backward</string>
-    <string name="action_seek_forward">Seek forward</string>
+    <string name="action_seek_backward">向前搜寻</string>
+    <string name="action_seek_forward">向后搜寻</string>
     <string name="action_cycle_repeat">循环播放模式</string>
     <string name="action_toggle_shuffle">切换随机播放模式</string>
     <string name="reset_action">重置</string>
@@ -41,9 +41,9 @@
     <string name="the_audio_file">音频文件</string>
     <string name="i_am_listening">我正在听…</string>
     <string name="currently_listening_to_x_by_x">我正在用 %1$s 聆听 %2$s</string>
-    <string name="share_to_stories">分享到故事</string>
-    <string name="could_not_create_the_story">无法创建故事。</string>
-    <string name="back_action">回退</string>
+    <string name="share_to_stories">分享到动态</string>
+    <string name="could_not_create_the_story">无法创建动态。</string>
+    <string name="back_action">返回</string>
     <string name="rename_action">重命名</string>
     <string name="add_action">添加</string>
     <string name="delete_action">删除</string>
@@ -292,7 +292,7 @@
     <string name="title">标题</string>
     <string name="album">专辑</string>
     <string name="artist">艺人</string>
-    <string name="album_artist">Album Artist</string>
+    <string name="album_artist">专辑艺人</string>
     <string name="composer">作曲家</string>
     <string name="conductor">指挥</string>
     <string name="publisher">发布者</string>
@@ -301,7 +301,7 @@
     <string name="release_years_label">年</string>
     <string name="length">时长</string>
     <string name="label_last_modified">最后修改</string>
-    <string name="label_channels">Channels</string>
+    <string name="label_channels">频道</string>
     <string name="label_variable_bitrate">可变比特率</string>
     <string name="label_loss_less">减少损失</string>
     <string name="label_bit_rate">位速率</string>
@@ -332,7 +332,7 @@
     <string name="auto_limited_listing_title">驾车时上架限制</string>
     <string name="auto_limited_listing_subtitle">打开应用查看完整列表</string>
     <string name="backup_settings">设置</string>
-    <string name="backup_synced_lyrics">已同步歌词</string>
+    <string name="backup_synced_lyrics">同步歌词</string>
     <string name="backup_artist_images">艺人图像</string>
     <string name="backup_playlists">播放列表</string>
     <string name="backup_successful">备份成功！</string>
@@ -394,8 +394,8 @@
     <string name="shuffle_mode_most_played_albums">随机最多播放专辑</string>
     <string name="shuffle_mode_favorite_songs">收藏夹优先</string>
     <string name="shuffle_mode_forgotten_songs">随机未播放歌曲</string>
-    <string name="shuffle_mode_recently_added">最近添加</string>
-    <string name="shuffle_mode_combined">智能混合</string>
+    <string name="shuffle_mode_recently_added">随机最近添加歌曲</string>
+    <string name="shuffle_mode_combined">智能随机</string>
     <string name="shuffle_mode_pure_random_description">完全乱序地播放歌曲</string>
     <string name="shuffle_mode_most_played_description">优先随机播放你最常听的歌曲</string>
     <string name="shuffle_mode_most_played_artists_description">优先播放你最常听的艺人</string>
@@ -471,8 +471,8 @@
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">显示歌词</string>
     <string name="action_hide_lyrics">隐藏歌词</string>
-    <string name="plain_lyrics">纯色</string>
-    <string name="synced_lyrics">已同步</string>
+    <string name="plain_lyrics">纯文本歌词</string>
+    <string name="synced_lyrics">同步歌词</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">已下载</string>
     <string name="external_file_lyrics">外置文件</string>
@@ -517,7 +517,7 @@
     <string name="application">适用范围</string>
     <string name="version">版本</string>
     <string name="changelog">更新日志</string>
-    <string name="fork_on_github">创建 GitHub 分支</string>
+    <string name="fork_on_github">在 GitHub fork本项目</string>
     <string name="licenses">许可协议</string>
     <string name="author">作者</string>
     <string name="mardous_summary">主要开发者</string>
@@ -526,11 +526,11 @@
     <string name="translators_title">译者</string>
     <string name="translators_summary">感谢那些为Booming Music提供多种语言的人们。</string>
     <string name="beta_testers_title">测试者</string>
-    <string name="telegram_chat">Telegram 聊天</string>
-    <string name="telegram_chat_summary">加入 Telegram 聊天室并获得新版本和新闻的通知。</string>
+    <string name="telegram_chat">Telegram 群组</string>
+    <string name="telegram_chat_summary">加入 Telegram 群组并获得新版本和新闻的通知。</string>
     <string name="view_profile_on_github">在 GitHub 上查看个人资料</string>
-    <string name="follow_on_telegram">Telegram 上的 DM</string>
-    <string name="write_an_email">写一封电子邮件</string>
+    <string name="follow_on_telegram">Telegram 私信</string>
+    <string name="write_an_email">电子邮件</string>
     <string name="support_development">支持开发</string>
     <string name="help_with_translations">帮助翻译</string>
     <string name="help_with_translations_summary">您可以通过帮助将Booming Music翻译成其他语言来为该项目做出贡献。</string>
@@ -649,11 +649,11 @@
     <string name="swipe_album_cover_title">专辑封面滑动切歌</string>
     <string name="swipe_album_cover_summary">在播放器模式下的专辑封面上左/右滑动以切换到上一首/下一首。</string>
     <string name="queue_height_title">半屏队列高度</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
+    <string name="queue_height_summary">将播放队列页面修复到半屏大小。</string>
     <string name="single_tap_on_album_cover_title">单击封面</string>
     <string name="double_tap_on_album_cover_title">双击封面</string>
-    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
-    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
+    <string name="double_tap_on_left_album_cover_title">双击专辑封面左侧</string>
+    <string name="double_tap_on_right_album_cover_title">双击专辑封面右侧</string>
     <string name="long_press_on_album_cover_title">长按封面</string>
     <string name="small_image_title">小图模式</string>
     <string name="small_image_summary">在支持的主题样式下减小封面大小。</string>
@@ -665,10 +665,10 @@
     <string name="lyrics_on_album_cover_summary">当歌词可用时，显示歌词而不是封面。</string>
     <string name="animate_controls_title">动画控制</string>
     <string name="animate_controls_summary">打开播放器面板后即刻播放。</string>
-    <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
-    <string name="swipe_anywhere_summary">Swipe left or right on any empty area of the now playing screen to switch between songs.</string>
-    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
-    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
+    <string name="swipe_anywhere_title">在任意处滑动来切换歌曲</string>
+    <string name="swipe_anywhere_summary">在“正在播放”界面的空白处向左或向右滑动来切换歌曲。</string>
+    <string name="swipe_up_queue_title">向上滑动来打开播放队列</string>
+    <string name="swipe_up_queue_summary">在“正在播放”界面的空白处向上滑动来打开当前的播放队列。</string>
     <string name="display_album_name_title">显示专辑名称</string>
     <string name="display_extra_info_title">显示额外信息</string>
     <string name="display_extra_info_summary">显示歌曲的额外信息，例如比特率、格式、取样率等。</string>
@@ -691,8 +691,8 @@
     <string name="artist_shuffle_mode_title">艺术家随机模式</string>
     <string name="rewind_with_back_title">"带着“上一个”退货"</string>
     <string name="rewind_with_back_summary">将播放曲目退回开始或移动到上一首曲目，如果当前曲目正在开始。</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
+    <string name="rewind_fast_forward_amount_title">快进/快退</string>
+    <string name="rewind_fast_forward_amount_summary">使用用户界面或外置控制器来快进/快退（时间单位为秒）。</string>
     <string name="resume_on_connect_title">连接后恢复</string>
     <string name="resume_on_connect_summary">连接耳机时恢复播放。</string>
     <string name="pause_on_disconnect_title">断开时暂停</string>
@@ -704,8 +704,8 @@
     <string name="ignore_audio_focus_title">忽略音频重点</string>
     <string name="ignore_audio_focus_summary">总是在后台播放音频，不管是否播放任何其他音频。</string>
     <string name="pause_on_zero_volume_title">在静音时停止播放</string>
-    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
-    <string name="mp3_index_seeking_title">MP3 index seeking</string>
+    <string name="pause_on_zero_volume_summary">MP3索引定位</string>
+    <string name="mp3_index_seeking_title">MP3索引定位</string>
     <string name="mp3_index_seeking_summary">将整个 MP3 文件预加载到内存中以便跳转，而不依赖 Xing 头部信息。
 仅在部分 VBR 文件跳转失败时使用。
 启用后需重启应用方可生效。</string>
@@ -724,8 +724,8 @@
     <string name="delete_downloaded_lyrics_summary">只有由 Booming Music 下载的歌词。不影响嵌入到 ID3v2 标签或 LRC 文件中的歌词。</string>
     <string name="lyrics_cleared">歌词已清除。</string>
     <!-- Library preferences -->
-    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
-    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
+    <string name="ignore_articles_when_sorting_title">在排序时忽略冠词</string>
+    <string name="ignore_articles_when_sorting_summary">排序时忽略冠词（“the”，“a”，“an”等）。</string>
     <string name="trash_music_title">发送到回收站</string>
     <string name="trash_music_summary">发送已删除的文件到回收站。</string>
     <string name="recursive_folder_actions_title">影响子文件夹的操作</string>
@@ -750,8 +750,8 @@
     <string name="backup_app_data_summary">创建一个包含基本应用数据的文件并保存到外部存储。</string>
     <string name="restore_backup_title">还原备份</string>
     <string name="restore_backup_summary">从以前的备份中还原应用数据(和状态)。</string>
-    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
-    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
+    <string name="stop_when_closed_from_recents_title">在“最近应用”关闭App后停止播放</string>
+    <string name="stop_when_closed_from_recents_summary">在“最近应用”视图关闭此App后停止播放歌曲。</string>
     <string name="stop_when_closed_from_recents_note">注意：某些内存管理或电池管理较为严格的设备可能会忽略此设置，并在从最近使用的应用列表中移除时始终停止该应用。</string>
     <string name="rotation_lock_title">旋转锁定</string>
     <string name="rotation_lock_summary">锁定设备显示方向，防止某些系统下因屏幕旋转导致音乐播放中断。</string>
@@ -768,10 +768,10 @@
     <string name="expanded">扩展</string>
     <string name="full_cover">完整封面</string>
     <string name="gradient">渐变</string>
-    <string name="peek">佩克</string>
-    <string name="peek2">Peek2</string>
-    <string name="plain">Plain</string>
-    <string name="m3_style">M3</string>
+    <string name="peek">预览</string>
+    <string name="peek2">预览2</string>
+    <string name="plain">极简</string>
+    <string name="m3_style">Material 3</string>
     <string name="normal">普通</string>
     <string name="corner_size_none">无</string>
     <string name="corner_size_small">小</string>
@@ -784,7 +784,7 @@
     <string name="horizontal_flip">水平翻转</string>
     <string name="vertical_flip">垂直翻转</string>
     <string name="zoom_out">缩放</string>
-    <string name="simple">简单的</string>
+    <string name="simple">简单</string>
     <string name="stack">堆叠</string>
     <string name="parallax">平行切换</string>
     <string name="add_after_playing_track">播放曲目后添加</string>
@@ -813,7 +813,7 @@
     <string name="image_size_small">小(快速，低质量)</string>
     <string name="play_on_startup_mode_never">启动时从不播放</string>
     <string name="play_on_startup_mode_minimized">是，最小化播放面板</string>
-    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
+    <string name="play_on_startup_mode_expanded">是，同时展开播放器面板</string>
     <string name="system_default">系统默认</string>
     <string name="label_never">从不使用</string>
     <string name="label_nothing">无</string>
@@ -827,7 +827,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">启用基于专辑封面颜色的Material You配色</string>
     <!-- Update -->
-    <string name="auto_update_title">Auto update search</string>
+    <string name="auto_update_title">自动更新</string>
     <string name="every_day">每天</string>
     <string name="weekly">每周</string>
     <string name="every_fifteen_days">每十五天</string>
@@ -852,6 +852,6 @@
     <string name="uncaught_error_report">错误报告</string>
     <string name="uncaught_error_report_copied">已复制错误报告到剪贴板。</string>
     <string name="uncaught_error_restart_app">重启应用</string>
-    <string name="uncaught_error_github">打开github上的issue</string>
+    <string name="uncaught_error_github">在GitHub打开议题</string>
     <string name="uncaught_error_send">发送报告</string>
 </resources>
