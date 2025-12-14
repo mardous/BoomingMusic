@@ -542,6 +542,8 @@
     <string name="view_profile_on_github">Se profil på GitHub</string>
     <string name="follow_on_telegram">DM på Telegram</string>
     <string name="write_an_email">Skriv en e-mail</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Støt udvikling</string>
     <string name="help_with_translations">Hjælp med oversættelser</string>
     <string name="help_with_translations_summary">Du kan bidrage til projektet ved at hjælpe med at oversætte Booming Music til andre sprog.</string>
