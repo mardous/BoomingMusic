@@ -574,6 +574,8 @@
     <string name="view_profile_on_github">عرض الملف الشخصي على GitHub</string>
     <string name="follow_on_telegram">DM على تيليجرام</string>
     <string name="write_an_email">كتابة بريد إلكتروني</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">دعم التطوير</string>
     <string name="help_with_translations">المساعدة في الترجمات</string>
     <string name="help_with_translations_summary">يمكنك المساهمة في المشروع من خلال المساعدة في ترجمة الموسيقى المزدهرة إلى لغات أخرى.</string>
