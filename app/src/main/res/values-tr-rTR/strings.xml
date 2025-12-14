@@ -537,6 +537,8 @@
     <string name="view_profile_on_github">GitHub\'da profili görüntüle</string>
     <string name="follow_on_telegram">Telegram\'dan mesaj gönder</string>
     <string name="write_an_email">E-posta yaz</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Geliştirmeyi destekle</string>
     <string name="help_with_translations">Çevirilere yardım et</string>
     <string name="help_with_translations_summary">Booming Music\'i diğer dillere çevirmeye yardımcı olarak projeye katkıda bulunabilirsiniz.</string>
