@@ -525,7 +525,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="action_about">Acerca de</string>
     <string name="application">Aplicación</string>
     <string name="version">Versión</string>
-    <string name="changelog">Registro de cambios</string>
+    <string name="changelog">Cambios</string>
     <string name="fork_on_github">Fork en GitHub</string>
     <string name="licenses">Licencias</string>
     <string name="author">Autor</string>
