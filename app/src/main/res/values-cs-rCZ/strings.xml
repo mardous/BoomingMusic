@@ -558,6 +558,8 @@
     <string name="view_profile_on_github">Zobrazit profil na GitHub</string>
     <string name="follow_on_telegram">DM na Telegramu</string>
     <string name="write_an_email">Napsat e-mail</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Podpořte vývoj</string>
     <string name="help_with_translations">Pomoc s překlady</string>
     <string name="help_with_translations_summary">Můžete přispět k projektu tím, že pomůžete přeložit hudbu Booming do jiných jazyků.</string>
