@@ -540,6 +540,8 @@
     <string name="view_profile_on_github">GitHub पर प्रोफ़ाइल देखें</string>
     <string name="follow_on_telegram">टेलीग्राम पर डायरेक्ट संदेश</string>
     <string name="write_an_email">एक ईमेल लिखें</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">विकास का समर्थन करें</string>
     <string name="help_with_translations">अनुवाद में मदद करें</string>
     <string name="help_with_translations_summary">आप अन्य भाषाओं में बूमिंग म्यूजिक का अनुवाद करने में मदद करके परियोजना में योगदान कर सकते हैं।</string>
