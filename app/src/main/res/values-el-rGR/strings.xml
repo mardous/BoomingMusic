@@ -542,6 +542,8 @@
     <string name="view_profile_on_github">Προβολή προφίλ στο GitHub</string>
     <string name="follow_on_telegram">DM στο Telegram</string>
     <string name="write_an_email">Γράψτε ένα email</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Ανάπτυξη υποστήριξης</string>
     <string name="help_with_translations">Βοήθεια για μεταφράσεις</string>
     <string name="help_with_translations_summary">Μπορείτε να συνεισφέρετε στο έργο βοηθώντας στη μετάφραση της Booming Music σε άλλες γλώσσες.</string>
