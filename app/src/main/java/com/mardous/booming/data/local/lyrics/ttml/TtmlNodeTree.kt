@@ -140,13 +140,40 @@ internal class TtmlNodeTree {
         return !background
     }
 
-    fun createNewTranslation(type: String, language: String): Boolean {
+    fun createNewTranslation(type: String, language: String, inLine: Boolean = false): TtmlTranslation? {
         val openTranslation = getOpenTranslation(language)
         if (openTranslation == null) {
             if (type.isNotEmpty() && language.isNotEmpty()) {
-                translations.add(TtmlTranslation(language))
-                return true
+                val translation = TtmlTranslation(language, inLine)
+                translations.add(translation)
+                return translation
             }
+        }
+        return null
+    }
+
+    fun prepareTranslationForCurrentLine(lang: String?): Boolean {
+        if (lang == null)
+            return false
+
+        val openLine = getOpenNode(TtmlNode.NODE_LINE)
+        if (openLine != null && openLine.key != null) {
+            var openTranslation = getOpenTranslation()
+            if (openTranslation == null || openTranslation.lang != lang) {
+                openTranslation = getOpenTranslation(lang)
+            }
+            if (openTranslation == null) {
+                openTranslation = createNewTranslation("subtitle", lang, inLine = true)
+            }
+            return openTranslation?.prepare(openLine.key) == true
+        }
+        return false
+    }
+
+    fun finishTranslationForCurrentLine(): Boolean {
+        val openLine = getOpenNode(TtmlNode.NODE_LINE)
+        if (openLine != null && openLine.key != null) {
+            return getOpenTranslation()?.finish() == true
         }
         return false
     }
@@ -170,6 +197,10 @@ internal class TtmlNodeTree {
         if (openNode != null) {
             val closed = openNode.close()
             openNodes.remove(type)
+            if (openNode.type == TtmlNode.NODE_BODY) {
+                translations.filter { it.isInLine }
+                    .forEach { it.close() }
+            }
             return closed
         }
         return false
