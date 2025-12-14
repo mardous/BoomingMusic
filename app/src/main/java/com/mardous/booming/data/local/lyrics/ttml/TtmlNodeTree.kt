@@ -234,12 +234,13 @@ internal class TtmlNodeTree {
                         }
                     }
 
+                    val blankSpace = "\\s{2,}".toRegex()
                     val content = words.filterNot { it.isBackground }
-                        .joinToString("") { it.content }
+                        .joinToString("") { it.content.replace(blankSpace, " ") }
                         .trim()
 
                     val backgroundContent = words.filter { it.isBackground }
-                        .joinToString("") { it.content }
+                        .joinToString("") { it.content.replace(blankSpace, " ") }
                         .trim()
 
                     lines.add(
