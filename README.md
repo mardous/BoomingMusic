@@ -123,6 +123,18 @@ You can also:
 
 **Translations:** Managed on [Crowdin](https://crowdin.com/project/booming-music).
 
+## 💖 Support Development
+
+Booming Music is an open-source project developed and maintained with passion in my spare time.
+If you enjoy the app and the free features it offers, please consider supporting me to help cover
+development costs and dedicate more time to new features.
+
+Your support is greatly appreciated and keeps me motivated to continue improving Booming Music!
+
+<a href="https://ko-fi.com/christiaam" target="_blank">
+<img src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_red.png" alt="Support me on Ko-fi" style="border: 0px; height: 40px;" />
+</a>
+
 ## 🙌 Credits
 
 Inspired by [Retro Music Player](https://github.com/RetroMusicPlayer/RetroMusicPlayer).
