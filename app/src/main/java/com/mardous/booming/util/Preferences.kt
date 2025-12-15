@@ -427,10 +427,6 @@ object Preferences : KoinComponent {
         get() = preferences.getInt(LAST_SLEEP_TIMER_VALUE, 30)
         set(value) = preferences.edit { putInt(LAST_SLEEP_TIMER_VALUE, value) }
 
-    var nextSleepTimerElapsedRealTime: Long
-        get() = preferences.getLong(NEXT_SLEEP_TIMER_ELAPSED_REALTIME, -1)
-        set(value) = preferences.edit { putLong(NEXT_SLEEP_TIMER_ELAPSED_REALTIME, value) }
-
     var isSleepTimerFinishMusic: Boolean
         get() = preferences.getBoolean(SLEEP_TIMER_FINISH_SONG, false)
         set(value) = preferences.edit { putBoolean(SLEEP_TIMER_FINISH_SONG, value) }
@@ -626,7 +622,6 @@ const val START_DIRECTORY = "start_directory"
 const val SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN = "saved_artwork_copyright_notice_shown"
 const val INITIALIZED_BLACKLIST = "initialized_blacklist"
 const val LAST_SLEEP_TIMER_VALUE = "last_sleep_timer_value"
-const val NEXT_SLEEP_TIMER_ELAPSED_REALTIME = "next_sleep_timer_elapsed_real_time"
 const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SWIPE_ANYWHERE = "swipe_anywhere"
