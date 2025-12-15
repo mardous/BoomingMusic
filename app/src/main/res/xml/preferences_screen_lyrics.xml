@@ -129,7 +129,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:title="@string/advanced_title"
+        app:title="@string/visuals_header"
         app:layout="@layout/preference_category_title">
 
         <Preference
@@ -148,22 +148,12 @@
             app:key="lyrics_progressive_coloring" />
 
         <SwitchPreferenceCompat
-            app:icon="@drawable/ic_gradient_24dp"
-            app:title="@string/lyrics_gradient_background_title"
-            app:summary="@string/lyrics_gradient_background_summary"
-            app:defaultValue="false"
-            app:layout="@layout/list_item_view"
-            app:widgetLayout="@layout/preference_switch"
-            app:key="lyrics_gradient_background" />
-
-        <SwitchPreferenceCompat
             app:icon="@drawable/ic_blur_on_24dp"
             app:title="@string/lyrics_blur_effect_title"
             app:summary="@string/lyrics_blur_effect_summary"
             app:defaultValue="false"
             app:layout="@layout/list_item_view"
             app:widgetLayout="@layout/preference_switch"
-            app:dependency="lyrics_gradient_background"
             app:isPreferenceVisible="@bool/blur_supported"
             app:key="lyrics_text_blur" />
 
@@ -174,8 +164,29 @@
             app:defaultValue="false"
             app:layout="@layout/list_item_view"
             app:widgetLayout="@layout/preference_switch"
-            app:dependency="lyrics_gradient_background"
             app:key="lyrics_text_shadow" />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/advanced_title"
+        app:layout="@layout/preference_category_title">
+
+        <EditTextPreference
+            app:iconSpaceReserved="true"
+            app:title="@string/instrumental_tracks_identifiers_title"
+            app:summary="@string/instrumental_tracks_identifiers_summary"
+            app:layout="@layout/list_item_view"
+            app:key="instrumental_track_identifiers"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/instrumental_tracks_mark_by_title_title"
+            app:summary="@string/instrumental_tracks_mark_by_title_summary"
+            app:layout="@layout/list_item_view"
+            app:defaultValue="false"
+            app:key="mark_instrumental_tracks_by_title"/>
 
         <Preference
             app:icon="@drawable/ic_delete_24dp"

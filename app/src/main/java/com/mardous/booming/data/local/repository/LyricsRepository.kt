@@ -2,6 +2,7 @@ package com.mardous.booming.data.local.repository
 
 import android.content.ContentResolver
 import android.content.Context
+import android.content.SharedPreferences
 import android.net.Uri
 import com.mardous.booming.appContext
 import com.mardous.booming.core.model.task.Result
@@ -26,6 +27,7 @@ import com.mardous.booming.ui.screen.lyrics.EditableLyrics
 import com.mardous.booming.ui.screen.lyrics.LyricsResult
 import com.mardous.booming.ui.screen.lyrics.SaveLyricsResult
 import java.io.File
+import java.util.Collections
 import java.util.regex.Pattern
 
 interface LyricsRepository {
@@ -48,6 +50,7 @@ interface LyricsRepository {
 
 class RealLyricsRepository(
     private val context: Context,
+    private val preferences: SharedPreferences,
     private val contentResolver: ContentResolver,
     private val lyricsDownloadService: LyricsDownloadService,
     private val lyricsDao: LyricsDao
@@ -57,6 +60,26 @@ class RealLyricsRepository(
     private val ttmlLyricsParser = TtmlLyricsParser()
 
     private val lyricsParsers = listOf(lrcLyricsParser, ttmlLyricsParser)
+    private val lyricsCache: MutableMap<Long, LyricsResult> = Collections.synchronizedMap(
+        object : LinkedHashMap<Long, LyricsResult>(CACHE_SIZE, 0.75f, true) {
+            override fun removeEldestEntry(eldest: MutableMap.MutableEntry<Long, LyricsResult>?): Boolean {
+                return size > CACHE_SIZE
+            }
+        }
+    )
+
+    private fun getCachedLyrics(songId: Long): LyricsResult? {
+        return lyricsCache[songId]
+    }
+
+    private fun cacheLyrics(songId: Long, result: LyricsResult): LyricsResult {
+        lyricsCache[songId] = result
+        return result
+    }
+
+    private fun invalidateCache(songId: Long) {
+        lyricsCache.remove(songId)
+    }
 
     override suspend fun onlineLyrics(
         song: Song,
@@ -87,7 +110,31 @@ class RealLyricsRepository(
             return LyricsResult.Empty
         }
 
+        if (!fromEditor) {
+            getCachedLyrics(song.id)?.let { return it }
+        }
+
+        val instrumentalIdentifiers = preferences.getString(INSTRUMENTAL_TRACK_IDENTIFIERS, null)
+            ?.split(",").orEmpty()
+        if (preferences.getBoolean(MARK_INSTRUMENTAL_BY_TITLE, false)) {
+            if (instrumentalIdentifiers.any { song.title.contains(it, ignoreCase = true) }) {
+                return cacheLyrics(song.id, LyricsResult(song.id, instrumental = true))
+            }
+        }
+
         val embeddedLyrics = embeddedLyrics(song, requirePlainText = false).orEmpty()
+        if (embeddedLyrics.length <= INSTRUMENTAL_IDENTIFIER_MAX_LENGTH &&
+            instrumentalIdentifiers.contains(embeddedLyrics)) {
+            return cacheLyrics(song.id, LyricsResult(song.id, instrumental = true))
+        }
+
+        val storedLyrics = lyricsDao.getLyrics(song.id)
+        if (storedLyrics != null &&
+            storedLyrics.syncedLyrics.length <= INSTRUMENTAL_IDENTIFIER_MAX_LENGTH &&
+            instrumentalIdentifiers.contains(storedLyrics.syncedLyrics)) {
+            return cacheLyrics(song.id, LyricsResult(song.id, instrumental = true))
+        }
+
         val embeddedLyricsParser = lyricsParsers.firstOrNull { it.handles(embeddedLyrics) }
         val embeddedSynced = embeddedLyricsParser?.parse(embeddedLyrics, song.duration)
 
@@ -96,19 +143,19 @@ class RealLyricsRepository(
                 ?.parse(file, song.duration)
         }
         if (fileLyrics?.hasContent == true) {
-            return LyricsResult(
+            return cacheLyrics(song.id, LyricsResult(
                 id = song.id,
                 plainLyrics = DisplayableLyrics(embeddedLyrics, LyricsSource.Embedded),
                 syncedLyrics = DisplayableLyrics(fileLyrics, LyricsSource.File)
-            )
+            ))
         }
 
-        val storedSynced = lyricsDao.getLyrics(song.id)?.let { stored ->
+        val storedSynced = storedLyrics?.let { stored ->
             lyricsParsers.firstOrNull { it.handles(stored.syncedLyrics) }
                 ?.parse(stored.syncedLyrics, song.duration)
         }
         if (embeddedSynced?.hasContent == true) {
-            return if (fromEditor) {
+            val result = if (fromEditor) {
                 val lrcData = if (storedSynced?.hasContent == true) storedSynced else null
                 LyricsResult(
                     id = song.id,
@@ -121,18 +168,27 @@ class RealLyricsRepository(
                     syncedLyrics = DisplayableLyrics(embeddedSynced, LyricsSource.Embedded)
                 )
             }
+            return cacheLyrics(song.id, result)
         }
 
         if (storedSynced?.hasContent == true) {
-            return LyricsResult(
+            val result = LyricsResult(
                 id = song.id,
                 plainLyrics = DisplayableLyrics(embeddedLyrics, LyricsSource.Embedded),
                 syncedLyrics = DisplayableLyrics(storedSynced, LyricsSource.Downloaded)
             )
+            return cacheLyrics(song.id, result)
         }
 
         if (allowDownload && appContext().isAllowedToDownloadMetadata()) {
             val downloaded = runCatching { lyricsDownloadService.getLyrics(song) }.getOrNull()
+            if (downloaded?.instrumental == true) {
+                lyricsDao.insertLyrics(
+                    song.toLyricsEntity(DEFAULT_INSTRUMENTAL_IDENTIFIER, autoDownload = true)
+                )
+                val result = LyricsResult(id = song.id, instrumental = true)
+                return cacheLyrics(song.id, result)
+            }
             if (downloaded?.isSynced == true) {
                 val syncedData = lrcLyricsParser.parse(downloaded.syncedLyrics!!, song.duration)
                 if (syncedData?.hasContent == true) {
@@ -142,19 +198,21 @@ class RealLyricsRepository(
                             autoDownload = true
                         )
                     )
-                    return LyricsResult(
+                    val result = LyricsResult(
                         id = song.id,
                         plainLyrics = DisplayableLyrics(embeddedLyrics, LyricsSource.Embedded),
                         syncedLyrics = DisplayableLyrics(syncedData, LyricsSource.Downloaded)
                     )
+                    return cacheLyrics(song.id, result)
                 }
             }
         }
 
-        return LyricsResult(
+        val result = LyricsResult(
             id = song.id,
             plainLyrics = DisplayableLyrics(embeddedLyrics, LyricsSource.Embedded)
         )
+        return cacheLyrics(song.id, result)
     }
 
     override suspend fun embeddedLyrics(song: Song, requirePlainText: Boolean): String? {
@@ -208,6 +266,9 @@ class RealLyricsRepository(
                 }
             )
         }
+        if (saveResult.hasChanged) {
+            invalidateCache(song.id)
+        }
         return saveResult
     }
 
@@ -245,6 +306,7 @@ class RealLyricsRepository(
                     val fileContent = result.getOrThrow()
                     if (fileContent != null && lyricsParsers.any { it.handles(fileContent) }) {
                         lyricsDao.insertLyrics(song.toLyricsEntity(fileContent))
+                        invalidateCache(song.id)
                         true
                     } else {
                         false
@@ -313,5 +375,14 @@ class RealLyricsRepository(
 
     override suspend fun deleteAllLyrics() {
         lyricsDao.removeLyrics()
+        lyricsCache.clear()
+    }
+
+    companion object {
+        private const val CACHE_SIZE = 50
+        private const val INSTRUMENTAL_IDENTIFIER_MAX_LENGTH = 50
+        private const val DEFAULT_INSTRUMENTAL_IDENTIFIER = "[Instrumental]"
+        private const val INSTRUMENTAL_TRACK_IDENTIFIERS = "instrumental_track_identifiers"
+        private const val MARK_INSTRUMENTAL_BY_TITLE = "mark_instrumental_tracks_by_title"
     }
 }

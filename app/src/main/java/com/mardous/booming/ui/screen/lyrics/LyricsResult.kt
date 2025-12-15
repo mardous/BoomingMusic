@@ -51,6 +51,7 @@ data class LyricsResult(
     val id: Long,
     val plainLyrics: DisplayableLyrics<String> = DisplayableLyrics(null, LyricsSource.Embedded),
     val syncedLyrics: DisplayableLyrics<Lyrics> = DisplayableLyrics(null, LyricsSource.Downloaded),
+    val instrumental: Boolean = false,
     val loading: Boolean = false,
 ) {
     val sources = listOf(plainLyrics.source, syncedLyrics.source)

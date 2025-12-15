@@ -620,6 +620,7 @@
     <string name="shuffle_mode_header">Shuffle mode</string>
     <string name="display_header">Display</string>
     <string name="backup_restore_header">Backup/restore</string>
+    <string name="visuals_header">Visuals</string>
 
     <!-- Interface preferences -->
     <string name="general_theme_title">General theme</string>
@@ -667,6 +668,11 @@
     <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
     <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
     <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
 
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
