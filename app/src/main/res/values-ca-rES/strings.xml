@@ -542,8 +542,8 @@
     <string name="view_profile_on_github">Mostra el perfil a Github</string>
     <string name="follow_on_telegram">MD a Telegram</string>
     <string name="write_an_email">Escriviu un correu electrònic</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
+    <string name="buy_me_a_coffee">Compra\'m un cafè</string>
+    <string name="buy_me_a_coffee_summary">Podeu fer una petita donació si penseu que la meva feina ho mereix.</string>
     <string name="support_development">Suport al desenvolupament</string>
     <string name="help_with_translations">Ajuda amb les traduccions</string>
     <string name="help_with_translations_summary">Podeu contribuir al projecte ajudant a traduir Booming Music a altres idiomes.</string>
