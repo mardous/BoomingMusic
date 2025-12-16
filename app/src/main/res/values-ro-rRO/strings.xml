@@ -14,6 +14,8 @@
     <string name="action_next">Următoarea</string>
     <string name="action_previous">Anterior</string>
     <string name="action_cancel">Anulează</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Mod repetare ciclu</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>
@@ -290,7 +292,7 @@
     <string name="title">Titlu</string>
     <string name="album">Album</string>
     <string name="artist">Artist</string>
-    <string name="album_artist">Album-artist</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Compozitor</string>
     <string name="conductor">Conductor</string>
     <string name="publisher">Editor</string>
@@ -548,6 +550,8 @@
     <string name="view_profile_on_github">Vezi profilul pe GitHub</string>
     <string name="follow_on_telegram">DM pe Telegram</string>
     <string name="write_an_email">Scrie un e-mail</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Sprijină dezvoltarea</string>
     <string name="help_with_translations">Ajutor cu traducerile</string>
     <string name="help_with_translations_summary">Poti contribui la proiect ajutand la traducerea muzicii Booming in alte limbi.</string>
@@ -602,6 +606,7 @@
     <string name="shuffle_mode_header">Mod Amestecare</string>
     <string name="display_header">Afişare</string>
     <string name="backup_restore_header">Backup/restaurare</string>
+    <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Temă generală</string>
     <string name="pure_black_theme_title">Negru pur</string>
@@ -626,6 +631,9 @@
     <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
     <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
     <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">Blur effect</string>
     <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
     <string name="lyrics_shadow_effect_title">Shadow effect</string>
@@ -646,6 +654,11 @@
     <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
     <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
     <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Deschide la redare</string>
@@ -667,6 +680,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dublă atingere pe copertă</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Apăsare lungă pe copertă</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>

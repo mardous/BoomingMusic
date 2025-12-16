@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">Jouer</string>
-    <string name="action_play_all">Jouer tout</string>
+    <string name="action_play">Lire</string>
+    <string name="action_play_all">Tout lire</string>
     <string name="action_shuffle_play">Lecture aléatoire</string>
     <string name="action_queue_next">Ajouter a la liste de lecture</string>
     <string name="shuffle_all_label">Tout mélanger</string>
@@ -14,6 +14,8 @@
     <string name="action_next">Suivant</string>
     <string name="action_previous">Précédent</string>
     <string name="action_cancel">Annuler</string>
+    <string name="action_seek_backward">Chercher en arrière</string>
+    <string name="action_seek_forward">Chercher en avant</string>
     <string name="action_cycle_repeat">Mode de répétition du cycle</string>
     <string name="action_toggle_shuffle">Changer le mode de mélange</string>
     <string name="reset_action">Réinitialiser</string>
@@ -290,7 +292,7 @@
     <string name="title">Titre</string>
     <string name="album">Album</string>
     <string name="artist">Artiste</string>
-    <string name="album_artist">Album-artiste</string>
+    <string name="album_artist">Artiste de l\'album</string>
     <string name="composer">Compositeur</string>
     <string name="conductor">Conducteur</string>
     <string name="publisher">Éditeur</string>
@@ -299,7 +301,7 @@
     <string name="release_years_label">Années</string>
     <string name="length">Durée</string>
     <string name="label_last_modified">Dernière modification</string>
-    <string name="label_channels">Channels</string>
+    <string name="label_channels">Chaînes</string>
     <string name="label_variable_bitrate">Débit binaire variable</string>
     <string name="label_loss_less">Moins de perte</string>
     <string name="label_bit_rate">Débit binaire</string>
@@ -540,6 +542,8 @@
     <string name="view_profile_on_github">Voir le profil sur GitHub</string>
     <string name="follow_on_telegram">DM sur Telegram</string>
     <string name="write_an_email">Écrire un e-mail</string>
+    <string name="buy_me_a_coffee">Offrez-moi un café</string>
+    <string name="buy_me_a_coffee_summary">Vous pouvez faire un petit don si vous pensez que mon travail le mérite.</string>
     <string name="support_development">Soutenir le développement</string>
     <string name="help_with_translations">Aide à la traduction</string>
     <string name="help_with_translations_summary">Vous pouvez contribuer au projet en aidant à traduire Booming Music dans d\'autres langues.</string>
@@ -594,6 +598,7 @@
     <string name="shuffle_mode_header">Mode aléatoire</string>
     <string name="display_header">Afficher</string>
     <string name="backup_restore_header">Sauvegarde/restauration</string>
+    <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Thème général</string>
     <string name="pure_black_theme_title">Noir pur</string>
@@ -618,6 +623,9 @@
     <string name="lyrics_syllable_mode_title">Paroles mot par mot</string>
     <string name="lyrics_syllable_mode_summary">Permet d\'afficher les paroles avec une synchronisation mot par mot. Cela dépend de la disponibilité des paroles et d\'un format compatible tel que LRC ou TTML.</string>
     <string name="lyrics_effects_note">Les effets avancés améliorent l\'expérience visuelle mais peuvent nécessiter plus de ressources système et de batterie.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">Effet de flou</string>
     <string name="lyrics_blur_effect_summary">Flouter les lignes de paroles adjacentes à la ligne actuelle.</string>
     <string name="lyrics_shadow_effect_title">Effet d\'ombre</string>
@@ -638,6 +646,11 @@
     <string name="synced_font_size_full_summary">Ajuster la taille de la police pour les paroles synchronisées dans l\'écran des paroles complètes.</string>
     <string name="unsynced_font_size_full_title">Taille de police des paroles non synchronisées (vue complète)</string>
     <string name="unsynced_font_size_full_summary">Ajuster la taille de la police pour les paroles non synchronisées dans l\'écran des paroles complètes.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir lors de la lecture</string>
@@ -659,6 +672,8 @@
     <string name="queue_height_summary">Changer la hauteur de la file de lecture en demi-écran.</string>
     <string name="single_tap_on_album_cover_title">Appuyez une fois sur la couverture</string>
     <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
+    <string name="double_tap_on_left_album_cover_title">Double-clic sur le bord gauche de la pochette</string>
+    <string name="double_tap_on_right_album_cover_title">Double-clic sur le bord droit de la pochette</string>
     <string name="long_press_on_album_cover_title">Appui long sur la couverture</string>
     <string name="small_image_title">Petite image</string>
     <string name="small_image_summary">Réduis la taille de la couverture dans les styles supportés.</string>

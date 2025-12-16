@@ -5,15 +5,17 @@
     <string name="action_shuffle_play">Перемешать воспроизведение</string>
     <string name="action_queue_next">Добавить в очередь следующим</string>
     <string name="shuffle_all_label">Перемешать все</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="shuffle_mode">Режим перемешивания</string>
+    <string name="repeat_mode">Режим повтора</string>
+    <string name="advanced_shuffle_label">Расширенное перемешивание</string>
+    <string name="shuffle_button_tip">Нажмите для обычного перемешивания. Удерживайте для дополнительных настроек.</string>
     <string name="action_play_pause">Воспр./Пауза</string>
     <string name="action_pause">Пауза</string>
     <string name="action_next">Следующий</string>
     <string name="action_previous">Предыдущий</string>
     <string name="action_cancel">Отмена</string>
+    <string name="action_seek_backward">Перемотка назад</string>
+    <string name="action_seek_forward">Перемотка вперед</string>
     <string name="action_cycle_repeat">Цикл режимов повтора</string>
     <string name="action_toggle_shuffle">Переключить режим перемешивания</string>
     <string name="reset_action">Сбросить</string>
@@ -51,9 +53,9 @@
     <string name="continue_action">Продолжить</string>
     <string name="select_all_title">Выбрать все</string>
     <string name="x_selected">%d выбрано</string>
-    <string name="preparing_playback_title">Preparing</string>
-    <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="preparing_playback_title">Подготовка</string>
+    <string name="restoring_playback_state">Восстановление состояния воспроизведения и очереди...</string>
+    <string name="playback_stopped_title">Воспроизведение остановлено</string>
     <string name="playing_notification_description">Уведомление о воспроизведении предоставляет действия для воспроизведения/паузы и т. д.</string>
     <string name="playing_notification_name">Уведомление о воспроизведении</string>
     <string name="action_scan_directory">Сканировать папку</string>
@@ -70,7 +72,7 @@
     <string name="new_playlist_title">Новый плейлист</string>
     <string name="add_playlist_title">Добавить в плейлист</string>
     <string name="rename_playlist_title">Переименовать плейлист</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Редактировать плейлист</string>
     <string name="action_delete">Удалить плейлист</string>
     <string name="action_export_playlist">Экспортировать в файл</string>
     <string name="action_clear_history">Очистить историю</string>
@@ -79,9 +81,9 @@
     <string name="create_a_playlist_with_one_song">Будет создан плейлист и в него будет добавлена одна песня.</string>
     <string name="create_a_playlist_with_x_songs">Будет создан плейлист и автоматически добавлено %d песен.</string>
     <string name="playlist_name_empty">Название плейлиста</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Описание плейлиста (необязательно)</string>
     <string name="saved_playlist_x">Сохранен плейлист %s.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Плейлист обновлен.</string>
     <string name="failed_to_save_playlist">Не удалось сохранить плейлист.</string>
     <string name="saved_x_playlists">Сохранено %1$d плейлистов.</string>
     <string name="saved_x_playlists_failed_to_save_x">Сохранено %1$d плейлистов, не удалось сохранить %2$d.</string>
@@ -94,7 +96,7 @@
     <string name="inserted_one_song_into_playlist_x">Одна песня вставлена в плейлист %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Вставлено %1$d песен в плейлист %2$s.</string>
     <string name="playlist_exists">Плейлист %s уже существует.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">Плейлист %s успешно создан.</string>
     <string name="remove_song_from_playlist_title">Удалить песню из плейлиста</string>
     <string name="remove_songs_from_playlist_title">Удалить песни из плейлиста</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Удалить песню &lt;b&gt;%1$s&lt;/b&gt; из плейлиста?]]></string>
@@ -125,7 +127,7 @@
     <string name="no_equalizer">Эквалайзер не найден.</string>
     <string name="audio_focus_denied">Доступ к аудио отклонен.</string>
     <string name="no_audio_ID">Неверный ID аудио.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">Ошибка воспроизведения (%s).</string>
     <string name="unplayable_file">Не удалось воспроизвести эту песню.</string>
     <string name="permission_external_storage_title">Доступ к хранилищу</string>
     <string name="permission_external_storage_description">Приложению требуется разрешение на доступ к хранилищу вашего устройства для воспроизведения музыки.</string>
@@ -133,10 +135,10 @@
     <string name="permission_bluetooth_title">Устройства поблизости</string>
     <string name="permission_bluetooth_description">Приложению требуется разрешение на доступ к устройствам поблизости для проверки Bluetooth-устройств.</string>
     <string name="permission_bluetooth_denied">Разрешение на доступ к устройствам поблизости отклонено.</string>
-    <string name="permission_read_images_title">Read images (optional)</string>
-    <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
-        If you don\'t plan to use this feature, you can choose not to grant it.</string>
-    <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
+    <string name="permission_read_images_title">Чтение изображений (необязательно)</string>
+    <string name="permission_read_images_summary">Это разрешение необходимо Booming Music для поиска обложек альбомов в ваших музыкальных папках.
+        Если вы не планируете использовать эту функцию, вы можете не предоставлять его.</string>
+    <string name="permission_read_images_denied">Вы должны предоставить разрешение на чтение изображений с устройства.</string>
     <string name="permission_exact_alarms_title">Планировать точные сигналы тревоги (необязательно)</string>
     <string name="permission_exact_alarms_description">Разрешение на планирование точных сигналов тревоги необходимо для корректной работы таймера сна.</string>
     <string name="permission_ringtone_title">Мелодия звонка (необязательно)</string>
@@ -156,8 +158,8 @@
     <string name="select_storage_title">Выберите хранилище</string>
     <string name="now_playing">Сейчас играет</string>
     <string name="playing_queue_label">Очередь воспроизведения</string>
-    <string name="list_start">List start</string>
-    <string name="list_end">List end</string>
+    <string name="list_start">Начало списка</string>
+    <string name="list_end">Конец списка</string>
     <string name="empty_play_queue">Пустая очередь воспроизведения.</string>
     <string name="save_queue">Сохранить очередь</string>
     <string name="clear_queue">Очистить очередь</string>
@@ -239,7 +241,7 @@
     <string name="sort_order_duration">Длительность</string>
     <string name="sort_order_date_added">Дата добавления</string>
     <string name="sort_order_date_modified">Дата изменения</string>
-    <string name="sort_order_file_name">File name</string>
+    <string name="sort_order_file_name">Имя файла</string>
     <string name="sort_order_number_of_songs">Количество песен</string>
     <string name="sort_order_number_of_albums">Количество альбомов</string>
     <string name="sort_order_last_played_date">Дата последнего воспроизведения</string>
@@ -254,7 +256,7 @@
     <string name="action_details">Подробности</string>
     <string name="action_set_as_start_directory">Установить как начальную папку</string>
     <string name="action_go_to_start_directory">Перейти к начальной папке</string>
-    <string name="action_hierarchy_view">Hierarchy view</string>
+    <string name="action_hierarchy_view">Иерархический вид</string>
     <string name="new_start_directory">Новая начальная папка: %s</string>
     <string name="action_scan">Сканировать</string>
     <string name="scan_media">Сканировать медиа</string>
@@ -282,7 +284,7 @@
 Вы несете полную ответственность за использование сохраненных обложек альбомов.</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
-    <string name="keyboard">Keyboard</string>
+    <string name="keyboard">Клавиатура</string>
     <string name="label_file_path">Путь к файлу</string>
     <string name="size">Размер файла</string>
     <string name="label_file_format">Формат</string>
@@ -300,12 +302,12 @@
     <string name="release_years_label">Годы</string>
     <string name="length">Длительность</string>
     <string name="label_last_modified">Последнее изменение</string>
-    <string name="label_channels">Channels</string>
+    <string name="label_channels">Каналы</string>
     <string name="label_variable_bitrate">Переменный битрейт</string>
     <string name="label_loss_less">Без потерь</string>
     <string name="label_bit_rate">Битрейт</string>
     <string name="label_sampling_rate">Частота дискретизации</string>
-    <string name="replay_gain">Повторное усиление</string>
+    <string name="replay_gain">ReplayGain</string>
     <string name="comment">Комментарий</string>
     <string name="last_played">Последнее воспроизведение</string>
     <string name="played">Проиграно</string>
@@ -339,12 +341,12 @@
     <string name="select_content_to_restore">Выберите контент для восстановления:</string>
     <string name="could_not_restore_data">Не удалось восстановить данные. Проверьте файл резервной копии и повторите попытку.</string>
     <string name="data_restored_successfully">Данные успешно восстановлены.</string>
-    <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
-    <string name="playlist_locked">Playlist locked</string>
-    <string name="playlist_unlocked">Playlist unlocked</string>
-    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
+    <string name="action_toggle_playlist_lock">Заблокировать/разблокировать плейлист</string>
+    <string name="playlist_locked">Плейлист заблокирован</string>
+    <string name="playlist_unlocked">Плейлист разблокирован</string>
+    <string name="action_toggle_queue_lock">Заблокировать/разблокировать очередь</string>
+    <string name="queue_locked">Очередь заблокирована</string>
+    <string name="queue_unlocked">Очередь разблокирована</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Строка Aux</string>
     <string name="audio_device_bluetooth_a2dp">A2DP Bluetooth</string>
@@ -391,15 +393,15 @@
         <item quantity="other">%d раза</item>
     </plurals>
     <plurals name="x_plays">
-        <item quantity="one">%d воспроизведение</item>
-        <item quantity="few">%d проигрывает</item>
-        <item quantity="many">%d проигрывает</item>
-        <item quantity="other">%d проигрывает</item>
+        <item quantity="one">%d прослушивание</item>
+        <item quantity="few">%d прослушиваний</item>
+        <item quantity="many">%d прослушиваний</item>
+        <item quantity="other">%d прослушивания</item>
     </plurals>
     <plurals name="x_items">
-        <item quantity="one">%d item</item>
-        <item quantity="few">%d items</item>
-        <item quantity="many">%d items</item>
+        <item quantity="one">%d элемент</item>
+        <item quantity="few">%d элемента</item>
+        <item quantity="many">%d элементов</item>
         <item quantity="other">%d элементы</item>
     </plurals>
     <!-- Listen now -->
@@ -411,22 +413,22 @@
     <string name="recent_albums">Недавние альбомы</string>
     <string name="no_suggestions">Предложений для вас нет</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">Pure random</string>
-    <string name="shuffle_mode_most_played">Most played</string>
+    <string name="shuffle_mode_pure_random">Полная случайность</string>
+    <string name="shuffle_mode_most_played">Часто прослушиваемые</string>
     <string name="shuffle_mode_most_played_artists">Самые прослушиваемые исполнители</string>
-    <string name="shuffle_mode_most_played_albums">Most played albums</string>
+    <string name="shuffle_mode_most_played_albums">Популярные альбомы</string>
     <string name="shuffle_mode_favorite_songs">Сначала избранное</string>
-    <string name="shuffle_mode_forgotten_songs">Forgotten songs</string>
+    <string name="shuffle_mode_forgotten_songs">Забытые песни</string>
     <string name="shuffle_mode_recently_added">Недавно добавленные</string>
-    <string name="shuffle_mode_combined">Smart mix</string>
-    <string name="shuffle_mode_pure_random_description">Completely random shuffle.</string>
-    <string name="shuffle_mode_most_played_description">Favors your most played songs.</string>
+    <string name="shuffle_mode_combined">Умный микс</string>
+    <string name="shuffle_mode_pure_random_description">Полностью случайное перемешивание.</string>
+    <string name="shuffle_mode_most_played_description">Предпочтение вашим самым часто прослушиваемым песням.</string>
     <string name="shuffle_mode_most_played_artists_description">Предпочитает песни от ваших лучших исполнителей.</string>
-    <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
-    <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
-    <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
-    <string name="shuffle_mode_recently_added_description">Favors songs recently added to your library.</string>
-    <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
+    <string name="shuffle_mode_most_played_albums_description">Предпочтение песням из популярных альбомов.</string>
+    <string name="shuffle_mode_favorite_songs_description">Приоритет вашим избранным песням.</string>
+    <string name="shuffle_mode_forgotten_songs_description">Приоритет песням, которые вы давно не слушали.</string>
+    <string name="shuffle_mode_recently_added_description">Предпочтение недавно добавленным песням.</string>
+    <string name="shuffle_mode_combined_description">Микс на основе избранного, прослушиваний и недавно добавленных.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Эквалайзер</string>
     <string name="share_eq_configuration">Поделиться EQ-конфигурацией</string>
@@ -484,17 +486,17 @@
     <string name="tempo_label">Темп</string>
     <string name="action_external_eq">Внешний эквалайзер</string>
     <string name="custom">Пользовательский</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
-    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
-        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
-        A restart is required for changes to take effect.</string>
-    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
-    <string name="skip_silence_title">Skip Silence</string>
-    <string name="skip_silence_description">Automatically skip silent sections during playback.
-        Ideal for podcasts and recordings.</string>
+    <string name="enable_audio_offload_title">Аппаратная разгрузка аудио</string>
+    <string name="enable_audio_offload_description">Позволяет устройству обрабатывать звук напрямую через аппаратное обеспечение, снижая нагрузку на ЦП и экономя заряд батареи.
+        Эта функция поддерживается не на всех устройствах. Некоторые эффекты или функции могут не работать при её включении.
+        Для вступления изменений в силу требуется перезапуск.</string>
+    <string name="enable_audio_float_output_title">Высокоточный вывод звука</string>
+    <string name="enable_audio_float_output_description">Включает 32-битный звук с плавающей запятой для улучшения качества.
+        Обратите внимание, что это отключит выравнивание громкости (ReplayGain), пропуск тишины и баланс громкости.
+        Может незначительно увеличить расход батареи. Для вступления изменений в силу требуется перезапуск.</string>
+    <string name="skip_silence_title">Пропускать тишину</string>
+    <string name="skip_silence_description">Автоматически пропускать тихие участки при воспроизведении.
+        Идеально для подкастов и записей.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Показать текст песни</string>
     <string name="action_hide_lyrics">Скрыть текст песни</string>
@@ -519,10 +521,10 @@
     <string name="no_synced_lyrics_found">Синхронизированные тексты песен не найдены</string>
     <string name="lyrics_were_updated_successfully">Текст песни успешно обновлен.</string>
     <string name="failed_to_update_lyrics">Не удалось обновить текст песни.</string>
-    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
+    <string name="there_are_no_changes_to_save">Нет изменений для сохранения.</string>
     <string name="lyrics_source_external_file">Текст песни взят из внешнего файла. Вы не можете редактировать этот файл непосредственно из Booming Music.</string>
-    <string name="font_imported_successfully">Font imported successfully.</string>
-    <string name="could_not_import_font">Could not import font.</string>
+    <string name="font_imported_successfully">Шрифт успешно импортирован.</string>
+    <string name="could_not_import_font">Не удалось импортировать шрифт.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Таймер сна</string>
     <string name="sleep_timer_cancel_current_timer">Отменить текущий таймер</string>
@@ -538,7 +540,7 @@
     <string name="app_shortcut_shuffle_all_short">Перемешать</string>
     <string name="app_shortcut_top_tracks_short">Лучшие треки</string>
     <string name="app_shortcut_last_added_short">Последние добавленные</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Избранное</string>
     <!-- About page -->
     <string name="action_about">О программе</string>
     <string name="application">Приложение</string>
@@ -548,16 +550,18 @@
     <string name="licenses">Лицензии</string>
     <string name="author">Автор</string>
     <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
+    <string name="contributors">Участники</string>
     <string name="acknowledgments_title">Благодарности</string>
     <string name="translators_title">Переводчики</string>
-    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
-    <string name="beta_testers_title">Beta testers</string>
+    <string name="translators_summary">Спасибо всем, кто помогает переводить Booming Music на разные языки.</string>
+    <string name="beta_testers_title">Бета-тестеры</string>
     <string name="telegram_chat">Чат в Telegram</string>
     <string name="telegram_chat_summary">Присоединяйтесь к чату в Telegram и будьте в курсе новых релизов и новостей.</string>
     <string name="view_profile_on_github">Посмотреть профиль на GitHub</string>
     <string name="follow_on_telegram">DM в Telegram</string>
     <string name="write_an_email">Написать письмо</string>
+    <string name="buy_me_a_coffee">Купить мне кофе</string>
+    <string name="buy_me_a_coffee_summary">Вы можете сделать небольшое пожертвование, если считаете, что моя работа того стоит.</string>
     <string name="support_development">Поддержка разработки</string>
     <string name="help_with_translations">Помощь с переводами</string>
     <string name="help_with_translations_summary">Вы можете внести свой вклад в проект, помогая переводить музыку на другие языки.</string>
@@ -584,8 +588,8 @@
     <string name="appearance_summary">Измените тему приложения и другие визуальные настройки.</string>
     <string name="now_playing_title">Сейчас играет</string>
     <string name="now_playing_summary">Настройте экран «Сейчас играет».</string>
-    <string name="lyrics_preferences_title">Lyrics</string>
-    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
+    <string name="lyrics_preferences_title">Текст песен</string>
+    <string name="lyrics_preferences_summary">Настройте шрифт, интервалы и другие параметры отображения текста.</string>
     <string name="playback_title">Воспроизведение</string>
     <string name="playback_summary">Измените настройки звука, Bluetooth-гарнитуры и т. д.</string>
     <string name="metadata_title">Метаданные</string>
@@ -605,13 +609,14 @@
     <string name="artist_image_header">Изображение исполнителя</string>
     <string name="exclusion_header">Исключения</string>
     <string name="controls_header">Управление</string>
-    <string name="gestures_header">Gestures</string>
+    <string name="gestures_header">Жесты</string>
     <string name="headphones_header">Наушники</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Фокус аудио</string>
     <string name="shuffle_mode_header">Режим перемешивания</string>
     <string name="display_header">Отображение</string>
     <string name="backup_restore_header">Резервное копирование/восстановление</string>
+    <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Общая тема</string>
     <string name="pure_black_theme_title">Чистый черный</string>
@@ -624,62 +629,72 @@
     <string name="remember_last_page_summary">Переходить на последнюю открытую страницу при запуске.</string>
     <string name="start_page_title">Начальная страница</string>
     <string name="tab_mode_title">Режим заголовков вкладок</string>
-    <string name="hold_tab_to_search_title">Hold tab to Search</string>
-    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
-    <string name="larger_header_image_title">Larger header image</string>
-    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
-    <string name="lyrics_center_current_line_title">Center current line</string>
-    <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
-    <string name="lyrics_custom_font_title">Custom font</string>
-    <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
-    <string name="lyrics_import_custom_font_title">Import custom font</string>
-    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
-    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
-    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
-    <string name="lyrics_blur_effect_title">Blur effect</string>
-    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
-    <string name="lyrics_shadow_effect_title">Shadow effect</string>
-    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
-    <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
-    <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
-    <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
-    <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
-    <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
-    <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
-    <string name="lyrics_line_spacing_title">Line spacing</string>
-    <string name="lyrics_line_spacing_summary">Adjust the space between lyric lines.</string>
-    <string name="synced_font_size_player_title">Synced lyrics font size (player)</string>
-    <string name="synced_font_size_player_summary">Adjust the font size for synced lyrics shown over the album cover in the player screen.</string>
-    <string name="unsynced_font_size_player_title">Unsynced lyrics font size (player)</string>
-    <string name="unsynced_font_size_player_summary">Adjust the font size for unsynced lyrics shown over the album cover in the player screen.</string>
-    <string name="synced_font_size_full_title">Synced lyrics font size (full view)</string>
-    <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
-    <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
-    <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
+    <string name="hold_tab_to_search_title">Удержание вкладки для поиска</string>
+    <string name="hold_tab_to_search_summary">Удерживайте любую вкладку навигационной панели, чтобы открыть поиск.</string>
+    <string name="larger_header_image_title">Увеличенное изображение в шапке</string>
+    <string name="larger_header_image_summary">Показывать увеличенную обложку в сведениях об альбоме, исполнителе и плейлисте.</string>
+    <string name="lyrics_center_current_line_title">Центрировать текущую строку</string>
+    <string name="lyrics_center_current_line_summary">Держать текущую строку текста по центру экрана, а не выравнивать по верху.</string>
+    <string name="lyrics_custom_font_title">Свой шрифт</string>
+    <string name="lyrics_custom_font_summary">Импортируйте и используйте собственный шрифт для текстов песен.</string>
+    <string name="lyrics_import_custom_font_title">Импорт своего шрифта</string>
+    <string name="lyrics_syllable_mode_title">Пословная синхронизация</string>
+    <string name="lyrics_syllable_mode_summary">Позволяет отображать текст с пословной синхронизацией. Зависит от наличия текста и совместимого формата (LRC или TTML).</string>
+    <string name="lyrics_effects_note">Расширенные эффекты улучшают визуализацию, но могут потреблять больше ресурсов и заряда батареи.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
+    <string name="lyrics_blur_effect_title">Эффект размытия</string>
+    <string name="lyrics_blur_effect_summary">Размывать строки текста, соседние с текущей</string>
+    <string name="lyrics_shadow_effect_title">Эффект тени</string>
+    <string name="lyrics_shadow_effect_summary">Добавляет тень под текущую строку для улучшения читаемости.</string>
+    <string name="lyrics_progressive_coloring_title">Прогрессивное окрашивание</string>
+    <string name="lyrics_progressive_coloring_summary">Плавный переход цвета активных строк вместо мгновенного окрашивания.</string>
+    <string name="lyrics_bold_synced_title">Жирный шрифт (синхр. текст)</string>
+    <string name="lyrics_bold_synced_summary">Отображать синхронизированный текст жирным шрифтом.</string>
+    <string name="lyrics_bold_unsynced_title">Жирный шрифт (обычный текст)</string>
+    <string name="lyrics_bold_unsynced_summary">Отображать несинхронизированный текст жирным шрифтом.</string>
+    <string name="lyrics_line_spacing_title">Межстрочный интервал</string>
+    <string name="lyrics_line_spacing_summary">Настройка расстояния между строками текста.</string>
+    <string name="synced_font_size_player_title">Размер синхр. текста (плеер)</string>
+    <string name="synced_font_size_player_summary">Размер шрифта синхронизированного текста поверх обложки на экране плеера.</string>
+    <string name="unsynced_font_size_player_title">Размер обычного текста (плеер)</string>
+    <string name="unsynced_font_size_player_summary">Размер шрифта несинхронизированного текста поверх обложки на экране плеера.</string>
+    <string name="synced_font_size_full_title">Размер синхр. текста (полный экран)</string>
+    <string name="synced_font_size_full_summary">Размер шрифта синхронизированного текста на отдельном экране текста.</string>
+    <string name="unsynced_font_size_full_title">Размер обычного текста (полный экран)</string>
+    <string name="unsynced_font_size_full_summary">Размер шрифта несинхронизированного текста на отдельном экране текста.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Стиль</string>
     <string name="open_on_play_title">Открывать при воспроизведении</string>
     <string name="open_on_play_summary">Автоматически разворачивать панель «Сейчас играет» после начала воспроизведения песни.</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
-    <string name="scrolling_text_title">Enable scrolling text</string>
-    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
+    <string name="squiggly_seek_bar_title">Волнистая полоса прокрутки</string>
+    <string name="squiggly_seek_bar_summary">Включить волнистую полосу прокрутки вместо стандартного ползунка.</string>
+    <string name="scrolling_text_title">Включить прокрутку текста</string>
+    <string name="scrolling_text_summary">Прокручивать длинные названия песен. Может незначительно увеличить расход батареи.</string>
     <string name="extra_controls_title">Дополнительные элементы управления</string>
     <string name="extra_controls_summary">Добавить дополнительные элементы управления для мини-плеера</string>
     <string name="adaptive_controls_title">Адаптивные элементы управления</string>
     <string name="adaptive_controls_summary">Элементы управления на мини-плеере меняются в соответствии с текущим стилем проигрывателя.</string>
-    <string name="swipe_to_dismiss_title">Swipe down to dismiss</string>
-    <string name="swipe_to_dismiss_summary">Swipe down on the mini player to stop playback and clear the playing queue.</string>
+    <string name="swipe_to_dismiss_title">Смахнуть вниз для закрытия</string>
+    <string name="swipe_to_dismiss_summary">Смахните вниз по мини-плееру, чтобы остановить воспроизведение и очистить очередь.</string>
     <string name="circle_button_title">Круглая кнопка воспроизведения</string>
-    <string name="swipe_album_cover_title">Swipe on album cover</string>
-    <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
+    <string name="swipe_album_cover_title">Свайп по обложке</string>
+    <string name="swipe_album_cover_summary">Свайп влево или вправо по обложке для переключения песен.</string>
+    <string name="queue_height_title">Очередь на пол-экрана</string>
+    <string name="queue_height_summary">Зафиксировать высоту очереди воспроизведения на половину экрана.</string>
     <string name="single_tap_on_album_cover_title">Однократное нажатие на обложку</string>
     <string name="double_tap_on_album_cover_title">Двойное нажатие на обложку</string>
+    <string name="double_tap_on_left_album_cover_title">Двойное нажатие по левому краю обложки</string>
+    <string name="double_tap_on_right_album_cover_title">Двойное нажатие по правому краю обложки</string>
     <string name="long_press_on_album_cover_title">Долгое нажатие на обложку</string>
-    <string name="small_image_title">Small image</string>
-    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
+    <string name="small_image_title">Маленькое изображение</string>
+    <string name="small_image_summary">Уменьшает размер обложки в поддерживаемых стилях.</string>
     <string name="now_playing_corner_radius_title">Радиус угла изображения</string>
     <string name="now_playing_corner_radius_summary">Определяет, насколько закругленными должны быть углы обложки альбома.</string>
     <string name="carousel_effect_title">Эффект карусели</string>
@@ -688,15 +703,15 @@
     <string name="lyrics_on_album_cover_summary">Показывать текст песни вместо обложки, если он доступен.</string>
     <string name="animate_controls_title">Анимировать элементы управления</string>
     <string name="animate_controls_summary">Воспроизводится при открытии панели плеера.</string>
-    <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
-    <string name="swipe_anywhere_summary">Swipe left or right on any empty area of the now playing screen to switch between songs.</string>
-    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
-    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
+    <string name="swipe_anywhere_title">Свайп в любом месте для смены песни</string>
+    <string name="swipe_anywhere_summary">Свайп влево или вправо по любой пустой области экрана плеера для переключения песен.</string>
+    <string name="swipe_up_queue_title">Свайп вверх для открытия очереди</string>
+    <string name="swipe_up_queue_summary">Свайп вверх по любой пустой области экрана плеера для открытия очереди.</string>
     <string name="display_album_name_title">Отображать название альбома</string>
     <string name="display_extra_info_title">Показывать доп. информацию</string>
     <string name="display_extra_info_summary">Показывать дополнительную информацию о песне, такую как битрейт, формат, частота дискретизации и т.д.</string>
-    <string name="display_next_song_title">Display next song</string>
-    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
+    <string name="display_next_song_title">Показывать следующую песню</string>
+    <string name="display_next_song_summary">Отображать следующую песню из очереди в нижней части плеера.</string>
     <string name="select_extra_info_title">Дополнительная информация</string>
     <string name="select_extra_info_summary">Выберите дополнительную информацию для отображения в панели плеера.</string>
     <string name="prefer_remaining_time_title">Предпочитать оставшееся время</string>
@@ -706,15 +721,15 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Проигрывать при запуске</string>
     <string name="queue_next_mode_title">Режим «Добавить в очередь»</string>
-    <string name="search_auto_queue_title">Enqueue all search results</string>
-    <string name="search_auto_queue_summary">When playing a song from the search screen, all other results will also be enqueued.</string>
+    <string name="search_auto_queue_title">Добавлять в очередь результаты поиска</string>
+    <string name="search_auto_queue_summary">При запуске песни из поиска все остальные результаты поиска будут добавлены в очередь.</string>
     <string name="remember_shuffle_mode_title">Запомнить перемешивание</string>
     <string name="remember_shuffle_mode_summary">Режим перемешивания сохранится при выборе нового списка песен.</string>
     <string name="album_shuffle_mode_title">Режим перемешивания альбомов</string>
     <string name="artist_shuffle_mode_title">Режим перемешивания исполнителей</string>
     <string name="rewind_with_back_title">"Перемотка кнопкой «Предыдущий»"</string>
     <string name="rewind_with_back_summary">Перемотать текущий трек к началу или перейти к предыдущему треку, если текущий находится в начале.</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
+    <string name="rewind_fast_forward_amount_title">Интервал перемотки</string>
     <string name="rewind_fast_forward_amount_summary">Время (в секундах) для перемотки назад или перемотки вперед с помощью пользовательского интерфейса или внешних элементов управления.</string>
     <string name="resume_on_connect_title">Возобновить при подключении</string>
     <string name="resume_on_connect_summary">Возобновляет воспроизведение при подключении наушников.</string>
@@ -726,12 +741,12 @@
     <string name="pause_on_bluetooth_disconnect_summary">Приостанавливает воспроизведение при отключении Bluetooth A2DP-гарнитуры. Рекомендуется.</string>
     <string name="ignore_audio_focus_title">Игнорировать фокус аудио</string>
     <string name="ignore_audio_focus_summary">Всегда воспроизводить аудио в фоновом режиме независимо от другого воспроизведения.</string>
-    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
-    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
-    <string name="mp3_index_seeking_title">MP3 index seeking</string>
-    <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
-        Use only if seeking fails on some VBR files.
-        Requires app restart.</string>
+    <string name="pause_on_zero_volume_title">Пауза при нулевой громкости</string>
+    <string name="pause_on_zero_volume_summary">Ставит песню на паузу, когда громкость падает до нуля, и возобновляет при повышении громкости. Работает и вне приложения.</string>
+    <string name="mp3_index_seeking_title">Поиск по индексу MP3</string>
+    <string name="mp3_index_seeking_summary">Загружает весь MP3-файл в память для перемотки вместо использования заголовка Xing.
+        Включайте, только если перемотка не работает на VBR-файлах.
+        Требуется перезапуск.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Автоматически загружать метаданные</string>
     <string name="ignore_media_store_album_covers_title">Игнорировать обложки изMediaStore</string>
@@ -740,19 +755,19 @@
     <string name="use_folder_album_cover_summary">Если аудиофайл не содержит встроенную обложку. Загрузка изображений может занять немного больше времени.</string>
     <string name="online_artist_images_title">Загружать изображения исполнителей</string>
     <string name="online_artist_images_summary">Это зависит от вашей политики загрузки метаданных.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
-    <string name="online_album_covers_title">Download missing album covers</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="preferred_image_size_title">Предпочтительный размер изображений</string>
+    <string name="online_album_covers_title">Скачивать недостающие обложки</string>
+    <string name="online_album_covers_summary">Скачанные изображения не встраиваются в файлы, а видны только в приложении. Зависит от настроек загрузки метаданных.</string>
     <string name="delete_downloaded_lyrics_title">Удалить загруженные тексты песен</string>
     <string name="delete_downloaded_lyrics_summary">Только тексты песен, загруженные Booming Music. Не влияет на тексты, встроенные в теги ID3v2 или файлы LRC.</string>
     <string name="lyrics_cleared">Текст песни очищен.</string>
     <!-- Library preferences -->
-    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
-    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
+    <string name="ignore_articles_when_sorting_title">Игнорировать артикли при сортировке</string>
+    <string name="ignore_articles_when_sorting_summary">Пропускать начальные артикли («the», «a», «an») при упорядочивании списка.</string>
     <string name="trash_music_title">Отправить в корзину</string>
     <string name="trash_music_summary">Отправлять удаленные файлы в корзину.</string>
     <string name="recursive_folder_actions_title">Действия, влияющие на вложенные папки</string>
-    <string name="recursive_folder_actions_summary">Select which actions should also apply to subfolders when performed on a folder.</string>
+    <string name="recursive_folder_actions_summary">Выберите действия, которые также должны применяться к подпапкам при выборе папки.</string>
     <string name="enable_history_title">Включить историю</string>
     <string name="enable_history_summary">Позволяет приложению записывать прослушанные песни. Если вы отключите его, вся история будет очищена.</string>
     <string name="history_interval_title">Интервал истории</string>
@@ -773,12 +788,12 @@
     <string name="backup_app_data_summary">Создает файл с основными данными приложения и сохраняет его на внешнее хранилище.</string>
     <string name="restore_backup_title">Восстановить резервную копию</string>
     <string name="restore_backup_summary">Восстановить данные приложения (и состояние) из предыдущей резервной копии.</string>
-    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
-    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
-    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
-        or battery management may ignore this setting and always stop the app when removed from recents.</string>
-    <string name="rotation_lock_title">Rotation lock</string>
-    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
+    <string name="stop_when_closed_from_recents_title">Останавливать при закрытии из недавних</string>
+    <string name="stop_when_closed_from_recents_summary">Воспроизведение прекращается, если смахнуть приложение из списка недавних задач.</string>
+    <string name="stop_when_closed_from_recents_note">Примечание: некоторые устройства с агрессивным управлением памяти
+        или энергопотреблением могут игнорировать эту настройку и всегда останавливать приложение при удалении из недавних.</string>
+    <string name="rotation_lock_title">Блокировка ориентации</string>
+    <string name="rotation_lock_summary">Блокирует поворот экрана. Полезно, если музыка прерывается при повороте устройства из-за особенностей прошивки.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Светлая</string>
     <string name="dark_theme_name">Темная</string>
@@ -794,14 +809,14 @@
     <string name="gradient">Градиент</string>
     <string name="peek">Подсмотреть</string>
     <string name="peek2">Peek2</string>
-    <string name="plain">Plain</string>
+    <string name="plain">Простой</string>
     <string name="m3_style">M3</string>
     <string name="normal">Нормальный</string>
     <string name="corner_size_none">Нет</string>
     <string name="corner_size_small">Маленький</string>
     <string name="corner_size_medium">Средний</string>
     <string name="corner_size_large">Большой</string>
-    <string name="corner_size_custom">Custom</string>
+    <string name="corner_size_custom">Свой</string>
     <string name="cascading">Каскадный</string>
     <string name="depth">Глубина</string>
     <string name="hinge">Hinge</string>
@@ -810,10 +825,10 @@
     <string name="zoom_out">Уменьшить</string>
     <string name="simple">Простой</string>
     <string name="stack">Стек</string>
-    <string name="parallax">Parallax</string>
+    <string name="parallax">Параллакс</string>
     <string name="add_after_playing_track">Добавить после текущего трека</string>
     <string name="add_tracks_sequentially">Добавить треки последовательно</string>
-    <string name="albums_shuffle">Albums shuffle</string>
+    <string name="albums_shuffle">Перемешивание альбомов</string>
     <string name="artists_shuffle">Перемешать исполнителей</string>
     <string name="shuffle_albums_ordered_songs">Перемешать альбомы, упорядоченные песни</string>
     <string name="ordered_albums_shuffle_songs">Упорядоченные альбомы, перемешанные песни</string>
@@ -836,22 +851,22 @@
     <string name="image_size_medium">Средний (по умолчанию, рекомендуется)</string>
     <string name="image_size_small">Маленький (быстрее, низкое качество)</string>
     <string name="play_on_startup_mode_never">Никогда не проигрывать при запуске</string>
-    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
-    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
+    <string name="play_on_startup_mode_minimized">Да, со свернутой панелью</string>
+    <string name="play_on_startup_mode_expanded">Да, с развернутой панелью</string>
     <string name="system_default">Системное по умолчанию</string>
     <string name="label_never">Никогда</string>
     <string name="label_nothing">Ничего</string>
     <string name="label_none">Нет</string>
     <string name="player_color_mode_app_theme_title">Тема приложения</string>
     <string name="player_color_mode_app_theme_description">Использовать цветовую схему приложения</string>
-    <string name="player_color_mode_simple_color_title">Simple color</string>
+    <string name="player_color_mode_simple_color_title">Простой цвет</string>
     <string name="player_color_mode_simple_color_description">Извлечь цвет альбома и применить его к некоторым элементам управления</string>
-    <string name="player_color_mode_vibrant_color_title">Vibrant color</string>
-    <string name="player_color_mode_vibrant_color_description">Tint background, text, and controls with the album color</string>
+    <string name="player_color_mode_vibrant_color_title">Насыщенный цвет</string>
+    <string name="player_color_mode_vibrant_color_description">Окрашивать фон, текст и элементы управления в цвет альбома</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Использовать цвета Material You на основе обложки альбома</string>
     <!-- Update -->
-    <string name="auto_update_title">Auto update search</string>
+    <string name="auto_update_title">Автообновление поиска</string>
     <string name="every_day">Каждый день</string>
     <string name="weekly">Еженедельно</string>
     <string name="every_fifteen_days">Каждые пятнадцать дней</string>
@@ -872,9 +887,9 @@
     <string name="downloading_update">Загрузка обновления Booming Music.</string>
     <string name="uncaught_error_title">Произошла непредвиденная ошибка</string>
     <string name="uncaught_error_message">Приносим извинения за неудобства. Вы можете просмотреть отчет об ошибке и перезапустить приложение.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="uncaught_error_report">Отчет об ошибке</string>
+    <string name="uncaught_error_report_copied">Отчет об ошибке скопирован в буфер.</string>
     <string name="uncaught_error_restart_app">Перезапустить приложение</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
+    <string name="uncaught_error_github">Сообщить о проблеме на GitHub</string>
     <string name="uncaught_error_send">Отправить</string>
 </resources>

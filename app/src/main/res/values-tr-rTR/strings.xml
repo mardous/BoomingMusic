@@ -14,6 +14,8 @@
     <string name="action_next">Sonraki</string>
     <string name="action_previous">Önceki</string>
     <string name="action_cancel">İptal</string>
+    <string name="action_seek_backward">Geri sar</string>
+    <string name="action_seek_forward">İleri sar</string>
     <string name="action_cycle_repeat">Tekrarlama modunu değiştir</string>
     <string name="action_toggle_shuffle">Karıştırma modunu aç/kapat</string>
     <string name="reset_action">Sıfırla</string>
@@ -299,7 +301,7 @@
     <string name="release_years_label">Yıllar</string>
     <string name="length">Uzunluk</string>
     <string name="label_last_modified">Son değiştirilme</string>
-    <string name="label_channels">Channels</string>
+    <string name="label_channels">Kanallar</string>
     <string name="label_variable_bitrate">Değişken Bit Hızı</string>
     <string name="label_loss_less">Kayıpsız</string>
     <string name="label_bit_rate">Bit hızı</string>
@@ -535,6 +537,8 @@
     <string name="view_profile_on_github">GitHub\'da profili görüntüle</string>
     <string name="follow_on_telegram">Telegram\'dan mesaj gönder</string>
     <string name="write_an_email">E-posta yaz</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Geliştirmeyi destekle</string>
     <string name="help_with_translations">Çevirilere yardım et</string>
     <string name="help_with_translations_summary">Booming Music\'i diğer dillere çevirmeye yardımcı olarak projeye katkıda bulunabilirsiniz.</string>
@@ -589,6 +593,7 @@
     <string name="shuffle_mode_header">Karıştırma modu</string>
     <string name="display_header">Ekran</string>
     <string name="backup_restore_header">Yedekle/Geri Yükle</string>
+    <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Genel tema</string>
     <string name="pure_black_theme_title">Saf Siyah</string>
@@ -613,6 +618,9 @@
     <string name="lyrics_syllable_mode_title">Kelime kelime şarkı sözleri</string>
     <string name="lyrics_syllable_mode_summary">Şarkı sözlerinin kelime kelime senkronizasyonla görüntülenmesini sağlar. Şarkı sözlerinin mevcudiyetine ve LRC veya TTML gibi uyumlu bir formata bağlıdır.</string>
     <string name="lyrics_effects_note">Gelişmiş efektler görsel deneyimi iyileştirir ancak daha fazla sistem kaynağı ve pil gerektirebilir.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">Bulanıklaştırma efekti</string>
     <string name="lyrics_blur_effect_summary">Mevcut satıra bitişik şarkı sözü satırlarını bulanıklaştır.</string>
     <string name="lyrics_shadow_effect_title">Gölge efekti</string>
@@ -633,6 +641,11 @@
     <string name="synced_font_size_full_summary">Tam şarkı sözleri ekranında senkronize şarkı sözlerinin yazı tipi boyutunu ayarla.</string>
     <string name="unsynced_font_size_full_title">Tam ekran görünümde senkronize olmayan şarkı sözleri yazı tipi boyutu</string>
     <string name="unsynced_font_size_full_summary">Tam şarkı sözleri ekranında senkronize olmayan şarkı sözlerinin yazı tipi boyutunu ayarla.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Çalmaya başlayınca aç</string>
@@ -654,6 +667,8 @@
     <string name="queue_height_summary">Çalma sırasının yüksekliğini ekranın yarısına sabitleyin.</string>
     <string name="single_tap_on_album_cover_title">Kapağa tek dokun</string>
     <string name="double_tap_on_album_cover_title">Kapağa çift dokunun</string>
+    <string name="double_tap_on_left_album_cover_title">Albüm kapağının sol kenarına çift dokunma</string>
+    <string name="double_tap_on_right_album_cover_title">Albüm kapağının sağ kenarına çift dokunma</string>
     <string name="long_press_on_album_cover_title">Kapağa uzun basın</string>
     <string name="small_image_title">Küçük görsel</string>
     <string name="small_image_summary">Desteklenen stillerde kapak boyutunu küçültür.</string>
@@ -786,7 +801,7 @@
     <string name="zoom_out">Uzaklaştırma</string>
     <string name="simple">Basit</string>
     <string name="stack">Yığın</string>
-    <string name="parallax">Parallax</string>
+    <string name="parallax">Paralaks</string>
     <string name="add_after_playing_track">Çalan parçadan sonra ekle</string>
     <string name="add_tracks_sequentially">Parçaları sırayla ekle</string>
     <string name="albums_shuffle">Albümleri karıştır</string>

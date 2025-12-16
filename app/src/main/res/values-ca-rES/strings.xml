@@ -14,6 +14,8 @@
     <string name="action_next">Següent</string>
     <string name="action_previous">Anterior</string>
     <string name="action_cancel">Cancel·la</string>
+    <string name="action_seek_backward">Cerca enrere</string>
+    <string name="action_seek_forward">Cerca endavant</string>
     <string name="action_cycle_repeat">Alterna mode de repetició</string>
     <string name="action_toggle_shuffle">Alterna mode aleatori</string>
     <string name="reset_action">Restableix</string>
@@ -290,7 +292,7 @@
     <string name="title">Títol</string>
     <string name="album">Àlbum</string>
     <string name="artist">Artista</string>
-    <string name="album_artist">Àlbum-artista</string>
+    <string name="album_artist">Artista de l\'àlbum</string>
     <string name="composer">Compositor</string>
     <string name="conductor">Productor</string>
     <string name="publisher">Editor</string>
@@ -299,7 +301,7 @@
     <string name="release_years_label">Anys</string>
     <string name="length">Durada</string>
     <string name="label_last_modified">Darrera modificació</string>
-    <string name="label_channels">Channels</string>
+    <string name="label_channels">Canals</string>
     <string name="label_variable_bitrate">Taxa de bits variable</string>
     <string name="label_loss_less">Sense pèrdues</string>
     <string name="label_bit_rate">Taxa de bits</string>
@@ -540,6 +542,8 @@
     <string name="view_profile_on_github">Mostra el perfil a Github</string>
     <string name="follow_on_telegram">MD a Telegram</string>
     <string name="write_an_email">Escriviu un correu electrònic</string>
+    <string name="buy_me_a_coffee">Compra\'m un cafè</string>
+    <string name="buy_me_a_coffee_summary">Podeu fer una petita donació si penseu que la meva feina ho mereix.</string>
     <string name="support_development">Suport al desenvolupament</string>
     <string name="help_with_translations">Ajuda amb les traduccions</string>
     <string name="help_with_translations_summary">Podeu contribuir al projecte ajudant a traduir Booming Music a altres idiomes.</string>
@@ -594,6 +598,7 @@
     <string name="shuffle_mode_header">Mode aleatori</string>
     <string name="display_header">Mostra</string>
     <string name="backup_restore_header">Fer còpia de seguretat/Restablir-la</string>
+    <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema general</string>
     <string name="pure_black_theme_title">Negre pur</string>
@@ -618,6 +623,9 @@
     <string name="lyrics_syllable_mode_title">Lletra fil per randa</string>
     <string name="lyrics_syllable_mode_summary">Permet mostrar la lletra sincronitzada paraula per paraula. Depèn de la disponibilitat de la lletra i d\'un format compatible com LRC o TTML.</string>
     <string name="lyrics_effects_note">Els efectes avançats realcen l\'experiència visual, però poden consumir més recursos i bateria.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">Efecte difuminat</string>
     <string name="lyrics_blur_effect_summary">Difumina les línies de lletra adjacents a l\'actual.</string>
     <string name="lyrics_shadow_effect_title">Efecte d\'ombra</string>
@@ -638,6 +646,11 @@
     <string name="synced_font_size_full_summary">Ajusta la mida de la lletra sincronitzada en pantalla completa.</string>
     <string name="unsynced_font_size_full_title">Mida de la lletra sense sincronitzar (pantalla completa)</string>
     <string name="unsynced_font_size_full_summary">Ajusta la mida de la lletra sense sincronitzar en pantalla completa.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estil</string>
     <string name="open_on_play_title">Obre en reproduir</string>
@@ -659,6 +672,8 @@
     <string name="queue_height_summary">La cua de reproducció ocuparà la meitat de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Un clic a la portada</string>
     <string name="double_tap_on_album_cover_title">Dos clics a la portada</string>
+    <string name="double_tap_on_left_album_cover_title">Doble toc a la vora esquerra de la portada de l\'àlbum</string>
+    <string name="double_tap_on_right_album_cover_title">Doble toc a la vora dreta de la portada de l\'àlbum</string>
     <string name="long_press_on_album_cover_title">Clic sostingut a la portada</string>
     <string name="small_image_title">Imatge petita</string>
     <string name="small_image_summary">Redueix la mida de la portada en estils admesos.</string>
@@ -791,7 +806,7 @@
     <string name="zoom_out">Allunya</string>
     <string name="simple">Simple</string>
     <string name="stack">Apila</string>
-    <string name="parallax">Parallax</string>
+    <string name="parallax">Paral·laxi</string>
     <string name="add_after_playing_track">Afegeix després de la pista actual</string>
     <string name="add_tracks_sequentially">Afegeix les pistes de manera seqüencial</string>
     <string name="albums_shuffle">Barreja els àlbums</string>

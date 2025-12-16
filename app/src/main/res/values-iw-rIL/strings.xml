@@ -14,6 +14,8 @@
     <string name="action_next">הבא</string>
     <string name="action_previous">הקודם</string>
     <string name="action_cancel">ביטול</string>
+    <string name="action_seek_backward">העבר אחורה</string>
+    <string name="action_seek_forward">העבר קדימה</string>
     <string name="action_cycle_repeat">מצב חזרה מחזורי</string>
     <string name="action_toggle_shuffle">מתג מצב ערבוב</string>
     <string name="reset_action">איפוס</string>
@@ -290,7 +292,7 @@
     <string name="title">כותרת</string>
     <string name="album">אלבום</string>
     <string name="artist">אמן</string>
-    <string name="album_artist">אלבום-אמן</string>
+    <string name="album_artist">אמן האלבום</string>
     <string name="composer">מלחין</string>
     <string name="conductor">מנצח</string>
     <string name="publisher">מפרסם</string>
@@ -299,7 +301,7 @@
     <string name="release_years_label">שנים</string>
     <string name="length">אורך</string>
     <string name="label_last_modified">עודכן לאחרונה</string>
-    <string name="label_channels">Channels</string>
+    <string name="label_channels">ערוצים</string>
     <string name="label_variable_bitrate">קצב סיביות משתנה</string>
     <string name="label_loss_less">הפסד פחות</string>
     <string name="label_bit_rate">קצב סיביות</string>
@@ -556,6 +558,8 @@
     <string name="view_profile_on_github">צפה בפרופיל ב-GitHub</string>
     <string name="follow_on_telegram">הודעה פרטית בטלגרם</string>
     <string name="write_an_email">כתוב אימייל</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">אפשר לתרום סכום קטן אם לדעתך העבודה שלי ראויה לכך.</string>
     <string name="support_development">תמיכה בפיתוח</string>
     <string name="help_with_translations">עזרה בתרגומים</string>
     <string name="help_with_translations_summary">באפשרותך לתרום לפרויקט על ידי סיוע בתרגום Booming Music לשפות אחרות.</string>
@@ -610,6 +614,7 @@
     <string name="shuffle_mode_header">מצב ערבוב</string>
     <string name="display_header">תצוגה</string>
     <string name="backup_restore_header">גיבוי / שחזור</string>
+    <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">ערכת נושא כללית</string>
     <string name="pure_black_theme_title">שחור טהור</string>
@@ -634,6 +639,9 @@
     <string name="lyrics_syllable_mode_title">מילות שיר מילה במילה</string>
     <string name="lyrics_syllable_mode_summary">מאפשר הצגת מילות השיר עם סינכרון מילה-מילה. תלוי בזמינות המילים ובפורמט תואם כגון LRC או TTML.</string>
     <string name="lyrics_effects_note">אפקטים מתקדמים משפרים את החוויה החזותית אך עשויים לדרוש יותר משאבי מערכת וסוללה.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">אפקט טשטוש</string>
     <string name="lyrics_blur_effect_summary">טשטש את שורות המילים הסמוכות לשורה הנוכחית.</string>
     <string name="lyrics_shadow_effect_title">אפקט צל</string>
@@ -654,6 +662,11 @@
     <string name="synced_font_size_full_summary">התאם את גודל הגופן למילות שיר מסונכרנות במסך מילות השיר המלא.</string>
     <string name="unsynced_font_size_full_title">גודל גופן למילות שיר לא מסונכרנות (תצוגה מלאה)</string>
     <string name="unsynced_font_size_full_summary">התאם את גודל הגופן למילות שיר לא מסונכרנות במסך מילות השיר המלא.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">סגנון</string>
     <string name="open_on_play_title">פתח בעת ניגון</string>
@@ -675,6 +688,8 @@
     <string name="queue_height_summary">קבע את גובה רשימת ההשמעה לחצי מגובה המסך.</string>
     <string name="single_tap_on_album_cover_title">הקשה אחת על העטיפה</string>
     <string name="double_tap_on_album_cover_title">הקשה כפולה על העטיפה</string>
+    <string name="double_tap_on_left_album_cover_title">לחיצה כפולה בקצה השמאלי של עטיפת האלבום</string>
+    <string name="double_tap_on_right_album_cover_title">לחיצה כפולה בקצה הימני של עטיפת האלבום</string>
     <string name="long_press_on_album_cover_title">לחיצה ארוכה על העטיפה</string>
     <string name="small_image_title">תמונה קטנה</string>
     <string name="small_image_summary">מקטין את גודל העטיפה בסגנונות נתמכים.</string>
