@@ -596,6 +596,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="shuffle_mode_header">Modo aleatorio</string>
     <string name="display_header">Vista</string>
     <string name="backup_restore_header">Respaldar/restaurar</string>
+    <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema general</string>
     <string name="pure_black_theme_title">Completamente negro</string>
@@ -620,8 +621,9 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="lyrics_syllable_mode_title">Letras palabra a palabra</string>
     <string name="lyrics_syllable_mode_summary">Permite mostrar letras sincronizadas palabra a palabra. Depende de la disponibilidad de las letras y de un formato compatible como LRC o TTML.</string>
     <string name="lyrics_effects_note">Los efectos avanzados mejoran la experiencia visual pero podrían aumentar el consumo de recursos y/o batería.</string>
-    <string name="lyrics_gradient_background_title">Fondo de gradiente</string>
-    <string name="lyrics_gradient_background_summary">Muestra un fondo de gradientes animado usando los colores de la canción actual. Aplicable solo en la vista a pantalla completa.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">Efecto de desenfoque</string>
     <string name="lyrics_blur_effect_summary">Desenfoca las líneas de texto adyacentes a la actual.</string>
     <string name="lyrics_shadow_effect_title">Efecto de sombra</string>
@@ -642,6 +644,11 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="synced_font_size_full_summary">Ajusta el tamaño de fuente de la letra sincronizada mostrada a pantalla completa.</string>
     <string name="unsynced_font_size_full_title">Tamaño de la letra no sincronizada (pantalla completa)</string>
     <string name="unsynced_font_size_full_summary">Ajusta el tamaño de fuente de la letra no sincronizada mostrada a pantalla completa.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir al reproducir</string>
