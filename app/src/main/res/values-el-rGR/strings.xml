@@ -598,6 +598,7 @@
     <string name="shuffle_mode_header">Λειτουργία ανακατέματος</string>
     <string name="display_header">Εμφάνιση</string>
     <string name="backup_restore_header">Αντίγραφο/επαναφορά</string>
+    <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Γενικό θέμα</string>
     <string name="pure_black_theme_title">Καθαρό Μαύρο</string>
@@ -622,8 +623,9 @@
     <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
     <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
     <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
-    <string name="lyrics_gradient_background_title">Gradient background</string>
-    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">Blur effect</string>
     <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
     <string name="lyrics_shadow_effect_title">Shadow effect</string>
@@ -644,6 +646,11 @@
     <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
     <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
     <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Στυλ</string>
     <string name="open_on_play_title">Άνοιγμα κατά την αναπαραγωγή</string>
