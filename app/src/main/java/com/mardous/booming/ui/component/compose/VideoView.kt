@@ -1,6 +1,7 @@
 package com.mardous.booming.ui.component.compose
 
 import android.content.Context
+import androidx.annotation.OptIn
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -15,6 +16,7 @@ import androidx.core.net.toUri
 import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.compose.PlayerSurface
 import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
@@ -36,6 +38,7 @@ fun VideoPlayerScreen(context: Context, videoUrl: String, modifier: Modifier = M
     player?.let { VideoPlayer(player = it, modifier = modifier) }
 }
 
+@OptIn(UnstableApi::class)
 @Composable
 private fun VideoPlayer(player: Player, modifier: Modifier = Modifier) {
     val presentationState = rememberPresentationState(player)
