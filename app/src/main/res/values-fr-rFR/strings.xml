@@ -598,6 +598,7 @@
     <string name="shuffle_mode_header">Mode aléatoire</string>
     <string name="display_header">Afficher</string>
     <string name="backup_restore_header">Sauvegarde/restauration</string>
+    <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Thème général</string>
     <string name="pure_black_theme_title">Noir pur</string>
@@ -622,8 +623,9 @@
     <string name="lyrics_syllable_mode_title">Paroles mot par mot</string>
     <string name="lyrics_syllable_mode_summary">Permet d\'afficher les paroles avec une synchronisation mot par mot. Cela dépend de la disponibilité des paroles et d\'un format compatible tel que LRC ou TTML.</string>
     <string name="lyrics_effects_note">Les effets avancés améliorent l\'expérience visuelle mais peuvent nécessiter plus de ressources système et de batterie.</string>
-    <string name="lyrics_gradient_background_title">Arrière-plan dégradé</string>
-    <string name="lyrics_gradient_background_summary">Affiche un arrière-plan dégradé animé utilisant les couleurs de la couverture la chanson. Applicable uniquement en mode plein écran.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">Effet de flou</string>
     <string name="lyrics_blur_effect_summary">Flouter les lignes de paroles adjacentes à la ligne actuelle.</string>
     <string name="lyrics_shadow_effect_title">Effet d\'ombre</string>
@@ -644,6 +646,11 @@
     <string name="synced_font_size_full_summary">Ajuster la taille de la police pour les paroles synchronisées dans l\'écran des paroles complètes.</string>
     <string name="unsynced_font_size_full_title">Taille de police des paroles non synchronisées (vue complète)</string>
     <string name="unsynced_font_size_full_summary">Ajuster la taille de la police pour les paroles non synchronisées dans l\'écran des paroles complètes.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir lors de la lecture</string>
