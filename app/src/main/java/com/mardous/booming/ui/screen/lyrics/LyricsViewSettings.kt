@@ -7,11 +7,11 @@ import androidx.compose.ui.unit.dp
 
 @Immutable
 class LyricsViewSettings(
-    mode: Mode,
+    val mode: Mode,
     val isCenterCurrentLine: Boolean,
     val enableSyllableLyrics: Boolean,
     val progressiveColoring: Boolean,
-    val gradientBackground: Boolean,
+    val backgroundEffect: BackgroundEffect,
     val blurEffect: Boolean,
     val shadowEffect: Boolean,
     val syncedStyle: TextStyle,
@@ -29,6 +29,14 @@ class LyricsViewSettings(
         val isFull get() = this == Full
     }
 
+    enum class BackgroundEffect(val isGradient: Boolean = false, val isCanvas: Boolean = false) {
+        Gradient(true, false),
+        Canvas(false, true),
+        None;
+
+        val isNone get() = this == None
+    }
+
     interface Key {
         companion object {
             const val ENABLE_SYLLABLE_LYRICS = "enable_syllable_lyrics"
@@ -37,7 +45,7 @@ class LyricsViewSettings(
             const val CENTER_CURRENT_LINE = "lyrics_center_current_line"
             const val LINE_SPACING = "lyrics_line_spacing"
             const val PROGRESSIVE_COLORING = "lyrics_progressive_coloring"
-            const val GRADIENT_BACKGROUND = "lyrics_gradient_background"
+            const val BACKGROUND_EFFECT = "lyrics_background_effect"
             const val BLUR_EFFECT = "lyrics_text_blur"
             const val SHADOW_EFFECT = "lyrics_text_shadow"
             const val SYNCED_BOLD_FONT = "synced_lyrics_bold_font"

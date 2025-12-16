@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -52,8 +51,9 @@ fun LyricsView(
     state: LyricsViewState,
     settings: LyricsViewSettings,
     fadingEdges: FadingEdges,
+    contentColor: Color,
     isPowerSaveMode: Boolean,
-    hasGradientBackground: Boolean,
+    hasBackgroundEffects: Boolean,
     modifier: Modifier = Modifier,
     onLineClick: (Lyrics.Line) -> Unit
 ) {
@@ -67,7 +67,7 @@ fun LyricsView(
     val isScrollInProgress = listState.isScrollInProgress
     val isInDragGesture by listState.interactionSource.collectIsDraggedAsState()
 
-    val disableAdvancedEffects = isPowerSaveMode || hasGradientBackground.not()
+    val disableAdvancedEffects = isPowerSaveMode || hasBackgroundEffects.not()
     var disableBlurEffect by remember { mutableStateOf(disableAdvancedEffects) }
     if (isInDragGesture) {
         disableBlurEffect = true
@@ -133,6 +133,7 @@ fun LyricsView(
                 progressiveColoring = settings.progressiveColoring && isPowerSaveMode.not(),
                 enableBlurEffect = settings.blurEffect && disableBlurEffect.not(),
                 enableShadowEffect = settings.shadowEffect && disableAdvancedEffects.not(),
+                contentColor = contentColor,
                 position = state.position,
                 line = line,
                 textStyle = textStyle,
@@ -154,6 +155,7 @@ private fun LyricsLineView(
     progressiveColoring: Boolean,
     enableBlurEffect: Boolean,
     enableShadowEffect: Boolean,
+    contentColor: Color,
     position: Long,
     line: Lyrics.Line,
     textStyle: TextStyle,
@@ -161,8 +163,6 @@ private fun LyricsLineView(
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
-    val localContentColor = LocalContentColor.current
-
     val animatedAlpha by animateFloatAsState(
         targetValue = if (selectedLine) 1f else .5f,
         animationSpec = tween(durationMillis = 400),
@@ -170,9 +170,9 @@ private fun LyricsLineView(
     )
 
     val color = if (selectedLine) {
-        localContentColor.copy(alpha = animatedAlpha)
+        contentColor.copy(alpha = animatedAlpha)
     } else {
-        localContentColor.copy(alpha = 0.5f)
+        contentColor.copy(alpha = 0.5f)
     }
 
     val scale by animateFloatAsState(
@@ -202,6 +202,7 @@ private fun LyricsLineView(
         if (line.isEmpty) {
             BubblesLine(
                 selectedLine = selectedLine,
+                color = color,
                 fontSize = textStyle.fontSize,
                 position = position,
                 startMillis = line.startAt,
@@ -425,7 +426,7 @@ private fun LyricsTextView(
         label = "line-gradient-origin"
     )
 
-    val textStyle by remember(selectedLine, progressiveColoring, animatedOrigin) {
+    val textStyle by remember(color, selectedLine, progressiveColoring, animatedOrigin) {
         derivedStateOf {
             if (progressiveColoring) {
                 style.copy(
@@ -633,6 +634,7 @@ private fun LyricsLineBox(
 @Composable
 private fun BubblesLine(
     selectedLine: Boolean,
+    color: Color,
     fontSize: TextUnit,
     position: Long,
     startMillis: Long,
@@ -748,7 +750,8 @@ private fun BubblesLine(
                     containerHeight = bubblesContainerHeight,
                     animationProgress = firstBubbleProgress,
                     translationX = firstBubbleTranslationX,
-                    translationOffset = secondBubbleTranslationX
+                    translationOffset = secondBubbleTranslationX,
+                    color = color
                 )
 
                 Bubble(
@@ -756,7 +759,8 @@ private fun BubblesLine(
                     containerHeight = bubblesContainerHeight,
                     animationProgress = secondBubbleProgress,
                     translationX = secondBubbleTranslationX,
-                    translationOffset = thirdBubbleTranslationX
+                    translationOffset = thirdBubbleTranslationX,
+                    color = color
                 )
 
                 Bubble(
@@ -764,7 +768,8 @@ private fun BubblesLine(
                     containerHeight = bubblesContainerHeight,
                     animationProgress = thirdBubbleProgress,
                     translationX = thirdBubbleTranslationX,
-                    translationOffset = firstBubbleTranslationX
+                    translationOffset = firstBubbleTranslationX,
+                    color = color
                 )
             }
         }
@@ -778,7 +783,7 @@ private fun Bubble(
     animationProgress: Float,
     translationX: Float,
     translationOffset: Float,
-    color: Color = LocalContentColor.current,
+    color: Color,
     modifier: Modifier = Modifier
 ) {
     Box(

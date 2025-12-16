@@ -20,6 +20,7 @@ package com.mardous.booming
 import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.mardous.booming.coil.CustomArtistImageManager
+import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.BoomingDatabase
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.SoundSettings
@@ -28,12 +29,12 @@ import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.data.local.repository.*
 import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.remote.canvas.CanvasService
 import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.data.remote.github.GitHubService
 import com.mardous.booming.data.remote.jsonHttpClient
 import com.mardous.booming.data.remote.lastfm.LastFmService
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
-import com.mardous.booming.data.remote.provideDefaultCache
 import com.mardous.booming.data.remote.provideOkHttp
 import com.mardous.booming.playback.SleepTimer
 import com.mardous.booming.playback.equalizer.EqualizerManager
@@ -63,10 +64,7 @@ val networkModule = module {
         jsonHttpClient(okHttpClient = get())
     }
     factory {
-        provideDefaultCache()
-    }
-    factory {
-        provideOkHttp(context = get(), cache = get())
+        provideOkHttp(context = get())
     }
     single {
         GitHubService(context = androidContext(), client = get())
@@ -76,6 +74,9 @@ val networkModule = module {
     }
     single {
         LastFmService(client = get())
+    }
+    single {
+        CanvasService(client = get())
     }
     single {
         LyricsDownloadService(client = get())
@@ -107,6 +108,9 @@ private val mainModule = module {
     single {
         CustomArtistImageManager(context = androidContext())
     }
+    single {
+        CustomPlaylistImageManager(context = androidContext())
+    }
     factory {
         AudioOutputObserver(context = androidContext())
     }
@@ -115,7 +119,11 @@ private val mainModule = module {
 private val roomModule = module {
     single {
         Room.databaseBuilder(androidContext(), BoomingDatabase::class.java, "music_database.db")
-            .addMigrations(BoomingDatabase.MIGRATION_1_2, BoomingDatabase.MIGRATION_2_3)
+            .addMigrations(
+                BoomingDatabase.MIGRATION_1_2,
+                BoomingDatabase.MIGRATION_2_3,
+                BoomingDatabase.MIGRATION_3_4
+            )
             .build()
     }
 
@@ -142,6 +150,10 @@ private val roomModule = module {
     factory {
         get<BoomingDatabase>().lyricsDao()
     }
+
+    factory {
+        get<BoomingDatabase>().canvasDao()
+    }
 }
 
 private val dataModule = module {
@@ -162,7 +174,7 @@ private val dataModule = module {
     } bind Repository::class
 
     single {
-        RealSongRepository(inclExclDao = get())
+        RealSongRepository(context = get(), inclExclDao = get())
     } bind SongRepository::class
 
     single {
@@ -214,16 +226,26 @@ private val dataModule = module {
     single {
         RealLyricsRepository(
             context = androidContext(),
+            preferences = get(),
             contentResolver = get(),
             lyricsDownloadService = get(),
             lyricsDao = get()
         )
     } bind LyricsRepository::class
+
+    single {
+        RealCanvasRepository(
+            context = androidContext(),
+            songRepository = get(),
+            canvasService = get(),
+            canvasDao = get()
+        )
+    } bind CanvasRepository::class
 }
 
 private val viewModule = module {
     viewModel {
-        LibraryViewModel(repository = get(), inclExclDao = get())
+        LibraryViewModel(repository = get(), inclExclDao = get(), customPlaylistImageManager = get())
     }
 
     viewModel {
@@ -275,7 +297,7 @@ private val viewModule = module {
     }
 
     viewModel {
-        LyricsViewModel(preferences = get(), lyricsRepository = get())
+        LyricsViewModel(preferences = get(), lyricsRepository = get(), canvasRepository = get())
     }
 
     viewModel {

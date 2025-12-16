@@ -14,6 +14,8 @@
     <string name="action_next">Next</string>
     <string name="action_previous">Previous</string>
     <string name="action_cancel">Cancel</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Cycle repeat mode</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Some files are not listed in the media store.</string>
     <string name="nothing_to_scan">Nothing to scan</string>
     <string name="select_storage_title">Select storage</string>
-    <string name="app_widget_big_name">Big</string>
-    <string name="app_widget_simple_name">Simple</string>
-    <string name="app_widget_small_name">Small</string>
     <string name="now_playing">Now playing</string>
     <string name="playing_queue_label">Playing queue</string>
     <string name="list_start">List start</string>
@@ -301,7 +300,7 @@
     <string name="title">Title</string>
     <string name="album">Album</string>
     <string name="artist">Artist</string>
-    <string name="album_artist">Album-artist</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Composer</string>
     <string name="conductor">Conductor</string>
     <string name="publisher">Publisher</string>
@@ -310,7 +309,7 @@
     <string name="release_years_label">Years</string>
     <string name="length">Length</string>
     <string name="label_last_modified">Last modified</string>
-    <string name="label_audio_header">Audio header</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variable Bitrate</string>
     <string name="label_loss_less">Loss Less</string>
     <string name="label_bit_rate">Bitrate</string>
@@ -561,6 +560,8 @@
     <string name="view_profile_on_github">View profile on GitHub</string>
     <string name="follow_on_telegram">DM on Telegram</string>
     <string name="write_an_email">Write an email</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Support development</string>
     <string name="help_with_translations">Help with translations</string>
     <string name="help_with_translations_summary">You can contribute to the project by helping translate Booming Music into other languages.</string>
@@ -598,7 +599,6 @@
     <string name="metadata_summary">Settings related to album and artists images.</string>
     <string name="library_title">Library</string>
     <string name="library_summary">Settings for playlists and exclusion/inclusion filters.</string>
-    <string name="notification_title">Notification</string>
     <string name="advanced_title">Advanced</string>
     <string name="advanced_summary">In-app language and other settings for advanced users.</string>
     <string name="update_title">Update</string>
@@ -620,6 +620,7 @@
     <string name="shuffle_mode_header">Shuffle mode</string>
     <string name="display_header">Display</string>
     <string name="backup_restore_header">Backup/restore</string>
+    <string name="visuals_header">Visuals</string>
 
     <!-- Interface preferences -->
     <string name="general_theme_title">General theme</string>
@@ -645,8 +646,9 @@
     <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
     <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
     <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
-    <string name="lyrics_gradient_background_title">Gradient background</string>
-    <string name="lyrics_gradient_background_summary">Show an animated gradient background using the current song\'s cover colors. Applicable only in full screen view.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">Blur effect</string>
     <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
     <string name="lyrics_shadow_effect_title">Shadow effect</string>
@@ -667,6 +669,11 @@
     <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
     <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
     <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
 
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
@@ -689,6 +696,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Double tap on cover</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Long press on cover</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
@@ -784,7 +793,6 @@
     <string name="min_song_duration_summary">How many seconds (at least) must last a song to be shown in your library.</string>
 
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Additional line of text</string>
 
     <string name="app_language_title">App language</string>
     <string name="backup_data_title">Backup app data</string>

@@ -46,21 +46,7 @@
     <dimen name="equalizer_edge_padding_large">20dp</dimen>
     <dimen name="equalizer_edge_padding_small">8dp</dimen>
 
-    <!--App Widgets-->
-    <dimen name="widget_background_radius">16dp</dimen>
-    <dimen name="widget_inner_radius">8dp</dimen>
-
-    <dimen name="app_widget_small_min_width">250dp</dimen>
-    <dimen name="app_widget_small_min_height">56dp</dimen>
-    <dimen name="app_widget_small_height">90dp</dimen>
-    <dimen name="app_widget_small_image_size">70dp</dimen>
-
-    <dimen name="app_widget_big_min_width">250dp</dimen>
-    <dimen name="app_widget_big_min_height">110dp</dimen>
-    <dimen name="app_widget_big_image_size">128dp</dimen>
-
-    <dimen name="app_widget_simple_image_size">70dp</dimen>
-    <dimen name="app_widget_simple_min_width">250dp</dimen>
-    <dimen name="app_widget_simple_min_height">56dp</dimen>
-    <dimen name="app_widget_simple_button_size">50dp</dimen>
+    <!-- Glance App Widget -->
+    <dimen name="glance_widget_background_radius">16dp</dimen>
+    <dimen name="glance_widget_inner_radius">8dp</dimen>
 </resources>

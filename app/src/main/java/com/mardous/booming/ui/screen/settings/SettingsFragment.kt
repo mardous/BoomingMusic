@@ -78,6 +78,7 @@ class SettingsFragment : AbsMainActivityFragment(R.layout.fragment_settings), Na
     }
 
     override fun onDestroy() {
+        _binding = null
         super.onDestroy()
         childNavController?.removeOnDestinationChangedListener(this)
     }

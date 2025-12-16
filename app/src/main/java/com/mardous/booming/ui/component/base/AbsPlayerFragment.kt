@@ -24,6 +24,8 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -32,6 +34,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
+import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -252,6 +255,33 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
 
     override fun gestureDetected(gestureType: GestureType): Boolean {
         return when (gestureType) {
+            is GestureType.Tap -> onQuickActionEvent(Preferences.coverSingleTapAction)
+            is GestureType.LongPress -> onQuickActionEvent(Preferences.coverLongPressAction)
+            is GestureType.DoubleTap -> {
+                when (gestureType.type) {
+                    GestureType.DoubleTap.TYPE_LEFT_EDGE -> {
+                        val action = Preferences.coverLeftDoubleTapAction
+                            .takeIf { it != NowPlayingAction.Nothing }
+                            ?: Preferences.coverDoubleTapAction
+
+                        onQuickActionEvent(action)
+                    }
+
+                    GestureType.DoubleTap.TYPE_RIGHT_EDGE -> {
+                        val action = Preferences.coverRightDoubleTapAction
+                            .takeIf { it != NowPlayingAction.Nothing }
+                            ?: Preferences.coverDoubleTapAction
+
+                        onQuickActionEvent(action)
+                    }
+
+                    GestureType.DoubleTap.TYPE_CENTER -> {
+                        onQuickActionEvent(Preferences.coverDoubleTapAction)
+                    }
+
+                    else -> false
+                }
+            }
             is GestureType.Fling -> {
                 when (gestureType.direction) {
                     GestureType.Fling.DIRECTION_LEFT -> {
@@ -278,9 +308,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                     else -> false
                 }
             }
-            is GestureType.Tap -> onQuickActionEvent(Preferences.coverSingleTapAction)
-            is GestureType.DoubleTap -> onQuickActionEvent(Preferences.coverDoubleTapAction)
-            is GestureType.LongPress -> onQuickActionEvent(Preferences.coverLongPressAction)
         }
     }
 
@@ -419,6 +446,16 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
 
             NowPlayingAction.SoundSettings -> {
                 findNavController().navigate(R.id.nav_sound_settings)
+                true
+            }
+
+            NowPlayingAction.SeekBackward -> {
+                playerViewModel.seekBack()
+                true
+            }
+
+            NowPlayingAction.SeekForward -> {
+                playerViewModel.seekForward()
                 true
             }
 
@@ -595,11 +632,13 @@ fun goToDestination(
             collapsePanel()
         }
 
-        val navOptions = when {
-            singleTop -> navOptions { launchSingleTop = true }
-            else -> null
+        Handler(Looper.getMainLooper()).postDelayed(250) {
+            val navOptions = when {
+                singleTop -> navOptions { launchSingleTop = true }
+                else -> null
+            }
+            findNavController(R.id.fragment_container)
+                .navigate(destinationId, args, navOptions)
         }
-        findNavController(R.id.fragment_container)
-            .navigate(destinationId, args, navOptions)
     }
 }

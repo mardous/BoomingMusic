@@ -245,6 +245,12 @@ object Preferences : KoinComponent {
     val coverDoubleTapAction: NowPlayingAction
         get() = preferences.enumValue(COVER_DOUBLE_TAP_ACTION, NowPlayingAction.WebSearch)
 
+    val coverLeftDoubleTapAction: NowPlayingAction
+        get() = preferences.enumValue(COVER_LEFT_DOUBLE_TAP_ACTION, NowPlayingAction.SeekBackward)
+
+    val coverRightDoubleTapAction: NowPlayingAction
+        get() = preferences.enumValue(COVER_RIGHT_DOUBLE_TAP_ACTION, NowPlayingAction.SeekForward)
+
     val coverLongPressAction: NowPlayingAction
         get() = preferences.enumValue(COVER_LONG_PRESS_ACTION, NowPlayingAction.SaveAlbumCover)
 
@@ -381,12 +387,6 @@ object Preferences : KoinComponent {
     val minimumSongDuration: Int
         get() = preferences.getInt(MINIMUM_SONG_DURATION, 30)
 
-    val notificationExtraTextLine: String
-        get() = preferences.requireString(
-            NOTIFICATION_EXTRA_TEXT_LINE,
-            NotificationExtraText.ALBUM_NAME
-        )
-
     val rotationLockEnabled: Boolean
         get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)
 
@@ -426,10 +426,6 @@ object Preferences : KoinComponent {
     var lastSleepTimerValue: Int
         get() = preferences.getInt(LAST_SLEEP_TIMER_VALUE, 30)
         set(value) = preferences.edit { putInt(LAST_SLEEP_TIMER_VALUE, value) }
-
-    var nextSleepTimerElapsedRealTime: Long
-        get() = preferences.getLong(NEXT_SLEEP_TIMER_ELAPSED_REALTIME, -1)
-        set(value) = preferences.edit { putLong(NEXT_SLEEP_TIMER_ELAPSED_REALTIME, value) }
 
     var isSleepTimerFinishMusic: Boolean
         get() = preferences.getBoolean(SLEEP_TIMER_FINISH_SONG, false)
@@ -528,15 +524,6 @@ interface ImageSize {
     }
 }
 
-interface NotificationExtraText {
-    companion object {
-        const val ARTIST_NAME = "artist"
-        const val ALBUM_NAME = "album"
-        const val ALBUM_ARTIST_NAME = "album_artist"
-        const val ALBUM_AND_YEAR = "album_and_year"
-    }
-}
-
 interface UpdateSearchMode {
     companion object {
         const val EVERY_DAY = "every_day"
@@ -574,6 +561,8 @@ const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
 const val CAROUSEL_EFFECT = "carousel_effect"
 const val COVER_SINGLE_TAP_ACTION = "cover_single_tap_action"
 const val COVER_DOUBLE_TAP_ACTION = "cover_double_tap_action"
+const val COVER_LEFT_DOUBLE_TAP_ACTION = "cover_left_double_tap_action"
+const val COVER_RIGHT_DOUBLE_TAP_ACTION = "cover_right_double_tap_action"
 const val COVER_LONG_PRESS_ACTION = "cover_long_press_action"
 const val ANIMATE_PLAYER_CONTROL = "animate_player_control"
 const val CIRCLE_PLAY_BUTTON = "circle_play_button"
@@ -621,7 +610,6 @@ const val ALBUM_MINIMUM_SONGS = "album_minimum_songs"
 const val MINIMUM_SONG_DURATION = "minimum_song_duration"
 const val ENABLE_ROTATION_LOCK = "enable_rotation_lock"
 const val STOP_WHEN_CLOSED_FROM_RECENTS = "stop_when_closed_from_recents"
-const val NOTIFICATION_EXTRA_TEXT_LINE = "notification_extra_text_line"
 const val LANGUAGE_NAME = "language_name"
 const val BACKUP_DATA = "backup_data"
 const val RESTORE_DATA = "restore_data"
@@ -634,7 +622,6 @@ const val START_DIRECTORY = "start_directory"
 const val SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN = "saved_artwork_copyright_notice_shown"
 const val INITIALIZED_BLACKLIST = "initialized_blacklist"
 const val LAST_SLEEP_TIMER_VALUE = "last_sleep_timer_value"
-const val NEXT_SLEEP_TIMER_ELAPSED_REALTIME = "next_sleep_timer_elapsed_real_time"
 const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SWIPE_ANYWHERE = "swipe_anywhere"

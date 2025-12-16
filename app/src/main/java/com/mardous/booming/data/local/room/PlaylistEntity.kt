@@ -22,7 +22,7 @@ import kotlinx.parcelize.Parcelize
 
 @Entity
 @Parcelize
-class PlaylistEntity(
+data class PlaylistEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "playlist_id")
     val playListId: Long = 0,

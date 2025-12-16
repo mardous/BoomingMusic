@@ -82,9 +82,18 @@ class SongDetailFragment : DialogFragment() {
                         fillInfoView(R.id.replay_gain, R.string.replay_gain, detail.replayGain)
                         fillInfoView(R.id.size, R.string.size, detail.fileSize)
                         fillInfoView(R.id.path, R.string.label_file_path, detail.filePath)
-                        fillInfoView(R.id.audio_header, R.string.label_audio_header, detail.audioHeader)
                         fillInfoView(R.id.last_modified, R.string.label_last_modified, detail.dateModified)
                         fillInfoView(R.id.comment, R.string.comment, detail.comment)
+
+                        // Audio Header Info
+                        detail.audioHeaderInfo?.let { info ->
+                            fillInfoView(R.id.audio_format, R.string.label_file_format, info.format)
+                            fillInfoView(R.id.audio_bitrate, R.string.label_bit_rate, info.bitrate)
+                            fillInfoView(R.id.audio_sample_rate, R.string.label_sampling_rate, info.sampleRate)
+                            fillInfoView(R.id.audio_channels, R.string.label_channels, info.channels)
+                            fillInfoView(R.id.audio_vbr, R.string.label_variable_bitrate, info.vbr)
+                            fillInfoView(R.id.audio_lossless, R.string.label_loss_less, info.lossless)
+                        }
 
                         binding.container.show()
                     }

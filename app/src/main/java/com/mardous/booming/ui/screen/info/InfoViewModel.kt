@@ -30,7 +30,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
         if (id != -1L) {
             emit(repository.albumById(id))
         } else {
-            emit(Album.Companion.empty)
+            emit(Album.empty)
         }
     }
 
@@ -40,16 +40,20 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
         } else if (id == -1L) {
             emit(repository.albumArtistByName(name))
         } else {
-            emit(Artist.Companion.empty)
+            emit(Artist.empty)
         }
     }
 
     fun playInfo(songs: List<Song>): LiveData<PlayInfoResult> = liveData(Dispatchers.IO) {
         val playCountEntities = repository.findSongsInPlayCount(songs).sortedByDescending { it.playCount }
-        val totalPlayCount = playCountEntities.sumOf { it.playCount }
-        val totalSkipCount = playCountEntities.sumOf { it.skipCount }
-        val lastPlayDate = playCountEntities.maxOf { it.timePlayed }
-        emit(PlayInfoResult(totalPlayCount, totalSkipCount, lastPlayDate, playCountEntities))
+        if (playCountEntities.isEmpty()) {
+            emit(PlayInfoResult(-1, -1, -1, songs.map { it.toPlayCount() }))
+        } else {
+            val totalPlayCount = playCountEntities.sumOf { it.playCount }
+            val totalSkipCount = playCountEntities.sumOf { it.skipCount }
+            val lastPlayDate = playCountEntities.maxOf { it.timePlayed }
+            emit(PlayInfoResult(totalPlayCount, totalSkipCount, lastPlayDate, playCountEntities))
+        }
     }
 
     fun songDetail(context: Context, song: Song): LiveData<SongInfoResult> =
@@ -86,7 +90,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                     val filePath = file.getPrettyAbsolutePath()
                     val fileSize = file.getHumanReadableSize()
 
-                    val audioHeader = getAudioHeader(
+                    val audioHeaderInfo = getAudioHeader(
                         context,
                         file.toAudioFile()?.audioHeader,
                         metadataReader
@@ -121,7 +125,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                         fileSize,
                         trackLength,
                         dateModified,
-                        audioHeader,
+                        audioHeaderInfo,
                         title,
                         album,
                         artist,
@@ -141,7 +145,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
             if (result.isSuccess) {
                 emit(result.getOrThrow())
             } else {
-                emit(SongInfoResult.Companion.Empty)
+                emit(SongInfoResult.Empty)
             }
         }
 
@@ -155,23 +159,24 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    private fun getAudioHeader(context: Context, header: AudioHeader?, metadataReader: MetadataReader): String {
-        val properties = arrayOf(
-            header?.format,
-            metadataReader.bitrate(),
-            metadataReader.sampleRate(),
-            metadataReader.channelName(),
-            header?.let {
-                if (header.isVariableBitRate)
-                    context.getString(R.string.label_variable_bitrate).lowercase()
-                else null
+    private fun getAudioHeader(context: Context, header: AudioHeader?, metadataReader: MetadataReader): AudioHeaderInfo {
+        return AudioHeaderInfo(
+            format = header?.format,
+            bitrate = metadataReader.bitrate(),
+            sampleRate = metadataReader.sampleRate(),
+            channels = metadataReader.channelName(),
+            vbr = header?.let {
+                if (it.isVariableBitRate)
+                    context.getString(R.string.yes)
+                else
+                    context.getString(R.string.no)
             },
-            header?.let {
-                if (header.isLossless)
-                    context.getString(R.string.label_loss_less).lowercase()
-                else null
+            lossless = header?.let {
+                if (it.isLossless)
+                    context.getString(R.string.yes)
+                else
+                    context.getString(R.string.no)
             }
         )
-        return properties.filterNotNull().joinToString(separator = " - ")
     }
 }

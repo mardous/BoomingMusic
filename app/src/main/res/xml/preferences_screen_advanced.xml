@@ -22,22 +22,6 @@
         app:key="enable_rotation_lock"/>
 
     <PreferenceCategory
-        app:title="@string/notification_title"
-        app:layout="@layout/preference_category_title">
-
-        <ListPreference
-            app:iconSpaceReserved="true"
-            app:title="@string/extra_line_of_text_title"
-            app:entries="@array/pref_notification_extra_text_line_entries"
-            app:entryValues="@array/pref_notification_extra_text_line_values"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="artist"
-            app:layout="@layout/list_item_view"
-            app:key="notification_extra_text_line" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         app:title="@string/backup_restore_header"
         app:layout="@layout/preference_category_title">
 

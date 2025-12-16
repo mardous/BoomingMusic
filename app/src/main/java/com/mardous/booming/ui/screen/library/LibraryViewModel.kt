@@ -26,7 +26,9 @@ import android.media.MediaScannerConnection
 import android.os.Environment
 import android.provider.MediaStore
 import androidx.core.animation.doOnEnd
+import androidx.core.net.toUri
 import androidx.lifecycle.*
+import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.model.LibraryMargin
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
@@ -49,7 +51,8 @@ import kotlin.coroutines.resume
 
 class LibraryViewModel(
     private val repository: Repository,
-    private val inclExclDao: InclExclDao
+    private val inclExclDao: InclExclDao,
+    private val customPlaylistImageManager: CustomPlaylistImageManager
 ) : ViewModel() {
 
     init {
@@ -322,12 +325,25 @@ class LibraryViewModel(
     }
 
     fun updatePlaylist(
-        playlistId: Long,
+        playlist: PlaylistEntity,
         newName: String,
-        customCoverUri: String? = null,
-        description: String? = null
+        newImageUri: String?,
+        newDescription: String?
     ) = viewModelScope.launch(IO) {
-        repository.updatePlaylist(playlistId, newName, customCoverUri, description)
+        var imageUri = playlist.customCoverUri
+        if (newImageUri != imageUri) {
+            if (!imageUri.isNullOrEmpty()) {
+                customPlaylistImageManager.deleteImage(imageUri.toUri())
+            }
+            imageUri = customPlaylistImageManager.createPlaylistImage(newImageUri)?.toString()
+        }
+        repository.updatePlaylist(
+            playlist.copy(
+                playlistName = newName,
+                customCoverUri = imageUri,
+                description = newDescription
+            )
+        )
     }
 
     fun deleteSongsInPlaylist(songs: List<SongEntity>) {
@@ -342,6 +358,11 @@ class LibraryViewModel(
     }
 
     fun deletePlaylists(playlists: List<PlaylistEntity>) = viewModelScope.launch(IO) {
+        for (playlist in playlists) {
+            playlist.customCoverUri?.let {
+                customPlaylistImageManager.deleteImage(it.toUri())
+            }
+        }
         repository.deletePlaylists(playlists)
     }
 
@@ -396,9 +417,10 @@ class LibraryViewModel(
 
         val playlists = checkPlaylistExists(playlistName)
         if (playlists.isEmpty()) {
+            val playlistImageUri = customPlaylistImageManager.createPlaylistImage(customCoverUri)
             val playlistEntity = PlaylistEntity(
                 playlistName = playlistName,
-                customCoverUri = customCoverUri,
+                customCoverUri = playlistImageUri?.toString(),
                 description = description
             )
             val playlistId: Long = createPlaylist(playlistEntity)
@@ -497,7 +519,7 @@ class LibraryViewModel(
     fun handleIntent(intent: Intent): LiveData<HandleIntentResult> = liveData(IO) {
         val result = HandleIntentResult(handled = true)
         val uri = intent.data
-        if (uri == null) {
+        if (uri == null || uri.scheme == "glance-action") {
             emit(result.copy(handled = false))
         } else {
             if (uri.toString().isNotEmpty()) {

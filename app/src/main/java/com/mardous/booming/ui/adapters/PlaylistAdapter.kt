@@ -24,13 +24,16 @@ import androidx.core.view.isGone
 import com.mardous.booming.R
 import com.mardous.booming.coil.playlistImage
 import com.mardous.booming.data.local.room.PlaylistWithSongs
+import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.extensions.isValidPosition
 import com.mardous.booming.extensions.media.asNumberOfSongs
 import com.mardous.booming.extensions.media.isFavorites
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IPlaylistCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
+import com.mardous.booming.ui.screen.player.PlayerViewModel
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
@@ -118,6 +121,9 @@ class PlaylistAdapter(
                 override fun onMenuItemClick(item: MenuItem): Boolean =
                     callback?.playlistMenuItemClick(playlist, item) ?: false
             })
+            play?.setOnClickListener {
+                getViewModel<PlayerViewModel>()?.openQueue(playlist.songs.toSongs(), shuffleMode = OpenShuffleMode.Off)
+            }
         }
 
         private val playlist: PlaylistWithSongs

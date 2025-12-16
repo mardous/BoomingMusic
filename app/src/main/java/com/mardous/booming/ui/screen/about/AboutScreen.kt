@@ -38,6 +38,7 @@ import androidx.compose.ui.platform.toClipEntry
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import com.mardous.booming.R
@@ -56,6 +57,7 @@ const val ISSUE_TRACKER_LINK = "$GITHUB_URL/issues"
 private const val AUTHOR_TELEGRAM_LINK = "https://t.me/mardeez"
 private const val APP_TELEGRAM_LINK = "https://t.me/mardousdev"
 private const val CROWDIN_PROJECT_LINK = "https://crowdin.com/project/booming-music"
+private const val DONATE_LINK = "https://ko-fi.com/christiaam"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -158,6 +160,9 @@ fun AboutScreen(
                             .putExtra(Intent.EXTRA_EMAIL, arrayOf("mardous.contact@gmail.com"))
                             .putExtra(Intent.EXTRA_SUBJECT, "Booming Music - Support & questions")
                     )
+                },
+                onDonateClick = {
+                    context.openUrl(DONATE_LINK)
                 }
             )
 
@@ -263,11 +268,13 @@ private fun AboutHeader(
     }
 }
 
+@Preview
 @Composable
 private fun AboutAuthorSection(
-    onTelegramClick: () -> Unit,
-    onGitHubClick: () -> Unit,
-    onEmailClick: () -> Unit
+    onTelegramClick: () -> Unit = {},
+    onGitHubClick: () -> Unit = {},
+    onEmailClick: () -> Unit = {},
+    onDonateClick: () -> Unit = {}
 ) {
     AboutSection(title = stringResource(R.string.author)) {
         AboutCard {
@@ -277,20 +284,48 @@ private fun AboutAuthorSection(
                 summary = stringResource(R.string.mardous_summary)
             )
             AboutListItem(
-                iconRes = R.drawable.ic_telegram_24dp,
-                title = stringResource(R.string.follow_on_telegram),
-                onClick = onTelegramClick
+                iconRes = R.drawable.ic_coffee_24dp,
+                title = stringResource(R.string.buy_me_a_coffee),
+                summary = stringResource(R.string.buy_me_a_coffee_summary),
+                onClick = onDonateClick
             )
-            AboutListItem(
-                iconRes = R.drawable.ic_github_circle_24dp,
-                title = stringResource(R.string.view_profile_on_github),
-                onClick = onGitHubClick
-            )
-            AboutListItem(
-                iconRes = R.drawable.ic_email_24dp,
-                title = stringResource(R.string.write_an_email),
-                onClick = onEmailClick
-            )
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .wrapContentSize()
+                    .padding(vertical = 8.dp)
+            ) {
+                IconButton(
+                    onClick = onTelegramClick,
+                    modifier = Modifier.wrapContentSize()
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_telegram_24dp),
+                        contentDescription = stringResource(R.string.follow_on_telegram)
+                    )
+                }
+
+                IconButton(
+                    onClick = onGitHubClick,
+                    modifier = Modifier.wrapContentSize()
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_github_circle_24dp),
+                        contentDescription = stringResource(R.string.fork_on_github)
+                    )
+                }
+
+                IconButton(
+                    onClick = onEmailClick,
+                    modifier = Modifier.wrapContentSize()
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_email_24dp),
+                        contentDescription = stringResource(R.string.write_an_email)
+                    )
+                }
+            }
         }
     }
 }

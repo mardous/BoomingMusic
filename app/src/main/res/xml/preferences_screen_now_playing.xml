@@ -71,6 +71,18 @@
 
         <com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreference
             app:iconSpaceReserved="true"
+            app:title="@string/double_tap_on_left_album_cover_title"
+            app:layout="@layout/list_item_view"
+            app:key="cover_left_double_tap_action" />
+
+        <com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreference
+            app:iconSpaceReserved="true"
+            app:title="@string/double_tap_on_right_album_cover_title"
+            app:layout="@layout/list_item_view"
+            app:key="cover_right_double_tap_action" />
+
+        <com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreference
+            app:iconSpaceReserved="true"
             app:title="@string/long_press_on_album_cover_title"
             app:layout="@layout/list_item_view"
             app:key="cover_long_press_action" />
