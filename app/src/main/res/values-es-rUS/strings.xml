@@ -616,8 +616,6 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="lyrics_syllable_mode_title">Letras palabra a palabra</string>
     <string name="lyrics_syllable_mode_summary">Permite mostrar letras sincronizadas palabra a palabra. Depende de la disponibilidad de las letras y de un formato compatible como LRC o TTML.</string>
     <string name="lyrics_effects_note">Los efectos avanzados mejoran la experiencia visual pero podrían aumentar el consumo de recursos y/o batería.</string>
-    <string name="lyrics_gradient_background_title">Fondo de gradiente</string>
-    <string name="lyrics_gradient_background_summary">Muestra un fondo de gradientes animado usando los colores de la canción actual. Aplicable solo en la vista a pantalla completa.</string>
     <string name="lyrics_blur_effect_title">Efecto de desenfoque</string>
     <string name="lyrics_blur_effect_summary">Desenfoca las líneas de texto adyacentes a la actual.</string>
     <string name="lyrics_shadow_effect_title">Efecto de sombra</string>

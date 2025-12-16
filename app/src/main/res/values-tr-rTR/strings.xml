@@ -613,8 +613,6 @@
     <string name="lyrics_syllable_mode_title">Kelime kelime şarkı sözleri</string>
     <string name="lyrics_syllable_mode_summary">Şarkı sözlerinin kelime kelime senkronizasyonla görüntülenmesini sağlar. Şarkı sözlerinin mevcudiyetine ve LRC veya TTML gibi uyumlu bir formata bağlıdır.</string>
     <string name="lyrics_effects_note">Gelişmiş efektler görsel deneyimi iyileştirir ancak daha fazla sistem kaynağı ve pil gerektirebilir.</string>
-    <string name="lyrics_gradient_background_title">Gradyan arka plan</string>
-    <string name="lyrics_gradient_background_summary">Mevcut şarkının kapak renklerini kullanarak animasyonlu bir gradyan arka plan göster. Yalnızca tam ekran görünümde geçerlidir.</string>
     <string name="lyrics_blur_effect_title">Bulanıklaştırma efekti</string>
     <string name="lyrics_blur_effect_summary">Mevcut satıra bitişik şarkı sözü satırlarını bulanıklaştır.</string>
     <string name="lyrics_shadow_effect_title">Gölge efekti</string>

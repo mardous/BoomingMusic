@@ -29,6 +29,7 @@ import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.data.local.repository.*
 import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.remote.canvas.CanvasService
 import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.data.remote.github.GitHubService
 import com.mardous.booming.data.remote.jsonHttpClient
@@ -75,6 +76,9 @@ val networkModule = module {
         LastFmService(client = get())
     }
     single {
+        CanvasService(client = get())
+    }
+    single {
         LyricsDownloadService(client = get())
     }
 }
@@ -115,7 +119,11 @@ private val mainModule = module {
 private val roomModule = module {
     single {
         Room.databaseBuilder(androidContext(), BoomingDatabase::class.java, "music_database.db")
-            .addMigrations(BoomingDatabase.MIGRATION_1_2, BoomingDatabase.MIGRATION_2_3)
+            .addMigrations(
+                BoomingDatabase.MIGRATION_1_2,
+                BoomingDatabase.MIGRATION_2_3,
+                BoomingDatabase.MIGRATION_3_4
+            )
             .build()
     }
 
@@ -141,6 +149,10 @@ private val roomModule = module {
 
     factory {
         get<BoomingDatabase>().lyricsDao()
+    }
+
+    factory {
+        get<BoomingDatabase>().canvasDao()
     }
 }
 
@@ -220,6 +232,15 @@ private val dataModule = module {
             lyricsDao = get()
         )
     } bind LyricsRepository::class
+
+    single {
+        RealCanvasRepository(
+            context = androidContext(),
+            songRepository = get(),
+            canvasService = get(),
+            canvasDao = get()
+        )
+    } bind CanvasRepository::class
 }
 
 private val viewModule = module {
@@ -276,7 +297,7 @@ private val viewModule = module {
     }
 
     viewModel {
-        LyricsViewModel(preferences = get(), lyricsRepository = get())
+        LyricsViewModel(preferences = get(), lyricsRepository = get(), canvasRepository = get())
     }
 
     viewModel {

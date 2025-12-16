@@ -634,8 +634,6 @@
     <string name="lyrics_syllable_mode_title">Tekst \"Słowo po słowie\"</string>
     <string name="lyrics_syllable_mode_summary">Umożliwia wyświetlanie tekstu piosenki zsynchronizowanego słowo po słowie. Działa tylko wtedy, gdy dostępny jest odpowiedni tekst i zgodny format (np. LRC lub TTML).</string>
     <string name="lyrics_effects_note">Zaawansowane efekty poprawiają wrażenia wizualne, ale mogą wymagać więcej zasobów i baterii.</string>
-    <string name="lyrics_gradient_background_title">Tło gradientowe</string>
-    <string name="lyrics_gradient_background_summary">Wyświetla animowane tło gradientowe z kolorów okładki aktualnie odtwarzanej piosenki. Dostępne tylko w widoku pełnoekranowym.</string>
     <string name="lyrics_blur_effect_title">Efekt rozmycia</string>
     <string name="lyrics_blur_effect_summary">Rozmywa linie tekstu sąsiadujące z aktualnie odtwarzaną.</string>
     <string name="lyrics_shadow_effect_title">Cieniowanie tekstu</string>

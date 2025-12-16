@@ -132,11 +132,15 @@
         app:title="@string/visuals_header"
         app:layout="@layout/preference_category_title">
 
-        <Preference
-            app:summary="@string/lyrics_effects_note"
-            app:persistent="false"
-            app:selectable="false"
-            app:layout="@layout/list_item_view"/>
+        <ListPreference
+            app:iconSpaceReserved="true"
+            app:title="@string/lyrics_background_effect_title"
+            app:entries="@array/pref_lyrics_background_effect_entries"
+            app:entryValues="@array/pref_lyrics_background_effect_values"
+            app:useSimpleSummaryProvider="true"
+            app:layout="@layout/list_item_view"
+            app:defaultValue="none"
+            app:key="lyrics_background_effect"/>
 
         <SwitchPreferenceCompat
             app:icon="@drawable/ic_blur_linear_24dp"
@@ -166,6 +170,11 @@
             app:widgetLayout="@layout/preference_switch"
             app:key="lyrics_text_shadow" />
 
+        <Preference
+            app:summary="@string/lyrics_effects_note"
+            app:persistent="false"
+            app:selectable="false"
+            app:layout="@layout/list_item_view"/>
 
     </PreferenceCategory>
 

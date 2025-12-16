@@ -78,6 +78,7 @@ lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel
 media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
 media3-exoplayer-midi = { module = "androidx.media3:media3-exoplayer-midi", version.ref = "media3" }
 media3-session = { module = "androidx.media3:media3-session", version.ref = "media3" }
+media3-ui-compose = { module = "androidx.media3:media3-ui-compose", version.ref = "media3" }
 
 room = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
@@ -141,7 +142,7 @@ leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.re
 [bundles]
 kotlinx = ["kotlinx-datetime", "kotlinx-coroutines-android", "kotlinx-coroutines-guava"]
 lifecycle = ["lifecycle-common", "lifecycle-runtime", "lifecycle-livedata", "lifecycle-viewmodel", "lifecycle-viewmodel-compose"]
-media3 = ["media3-session", "media3-exoplayer", "media3-exoplayer-midi"]
+media3 = ["media3-session", "media3-exoplayer", "media3-exoplayer-midi", "media3-ui-compose"]
 navigation = ["navigation-common", "navigation-runtime", "navigation-fragment", "navigation-ui"]
 glance = ["glance-appwidget", "glance-appwidget-preview", "glance-material3"]
 koin = ["koin-core", "koin-android", "koin-compose"]

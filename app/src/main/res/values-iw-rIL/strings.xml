@@ -634,8 +634,6 @@
     <string name="lyrics_syllable_mode_title">מילות שיר מילה במילה</string>
     <string name="lyrics_syllable_mode_summary">מאפשר הצגת מילות השיר עם סינכרון מילה-מילה. תלוי בזמינות המילים ובפורמט תואם כגון LRC או TTML.</string>
     <string name="lyrics_effects_note">אפקטים מתקדמים משפרים את החוויה החזותית אך עשויים לדרוש יותר משאבי מערכת וסוללה.</string>
-    <string name="lyrics_gradient_background_title">רקע מדורג</string>
-    <string name="lyrics_gradient_background_summary">הצג רקע מדורג מונפש באמצעות צבעי עטיפת השיר הנוכחי. חל רק במצב תצוגת מסך מלא.</string>
     <string name="lyrics_blur_effect_title">אפקט טשטוש</string>
     <string name="lyrics_blur_effect_summary">טשטש את שורות המילים הסמוכות לשורה הנוכחית.</string>
     <string name="lyrics_shadow_effect_title">אפקט צל</string>

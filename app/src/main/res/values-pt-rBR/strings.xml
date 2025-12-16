@@ -617,8 +617,6 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_syllable_mode_title">Letras palavra por palavra</string>
     <string name="lyrics_syllable_mode_summary">Permite exibir letras com sincronização palavra por palavra. Depende da disponibilidade da letra e de um formato compatível, como LRC ou TTML.</string>
     <string name="lyrics_effects_note">Efeitos avançados melhoram a experiência visual, mas podem exigir mais recursos do sistema e bateria.</string>
-    <string name="lyrics_gradient_background_title">Fundo em gradiente</string>
-    <string name="lyrics_gradient_background_summary">Mostrar um fundo em gradiente animado usando as cores da capa da música atual. Aplicável apenas em tela cheia.</string>
     <string name="lyrics_blur_effect_title">Efeito de desfoque</string>
     <string name="lyrics_blur_effect_summary">Desfocar as linhas da letra adjacentes à atual.</string>
     <string name="lyrics_shadow_effect_title">Efeito de sombra</string>

@@ -618,8 +618,6 @@
     <string name="lyrics_syllable_mode_title">Lletra fil per randa</string>
     <string name="lyrics_syllable_mode_summary">Permet mostrar la lletra sincronitzada paraula per paraula. Depèn de la disponibilitat de la lletra i d\'un format compatible com LRC o TTML.</string>
     <string name="lyrics_effects_note">Els efectes avançats realcen l\'experiència visual, però poden consumir més recursos i bateria.</string>
-    <string name="lyrics_gradient_background_title">Fons amb degradat</string>
-    <string name="lyrics_gradient_background_summary">Mostra un fons degradat animat amb els colors de la portada de la cançó actual. Només funciona en pantalla completa.</string>
     <string name="lyrics_blur_effect_title">Efecte difuminat</string>
     <string name="lyrics_blur_effect_summary">Difumina les línies de lletra adjacents a l\'actual.</string>
     <string name="lyrics_shadow_effect_title">Efecte d\'ombra</string>

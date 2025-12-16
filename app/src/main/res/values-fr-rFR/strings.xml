@@ -618,8 +618,6 @@
     <string name="lyrics_syllable_mode_title">Paroles mot par mot</string>
     <string name="lyrics_syllable_mode_summary">Permet d\'afficher les paroles avec une synchronisation mot par mot. Cela dépend de la disponibilité des paroles et d\'un format compatible tel que LRC ou TTML.</string>
     <string name="lyrics_effects_note">Les effets avancés améliorent l\'expérience visuelle mais peuvent nécessiter plus de ressources système et de batterie.</string>
-    <string name="lyrics_gradient_background_title">Arrière-plan dégradé</string>
-    <string name="lyrics_gradient_background_summary">Affiche un arrière-plan dégradé animé utilisant les couleurs de la couverture la chanson. Applicable uniquement en mode plein écran.</string>
     <string name="lyrics_blur_effect_title">Effet de flou</string>
     <string name="lyrics_blur_effect_summary">Flouter les lignes de paroles adjacentes à la ligne actuelle.</string>
     <string name="lyrics_shadow_effect_title">Effet d\'ombre</string>
