@@ -186,30 +186,32 @@ class RealLyricsRepository(
             return cacheLyrics(song.id, result)
         }
 
-        if (allowDownload && appContext().isAllowedToDownloadMetadata()) {
-            val downloaded = runCatching { lyricsDownloadService.getLyrics(song) }.getOrNull()
-            if (downloaded?.instrumental == true) {
-                lyricsDao.insertLyrics(
-                    song.toLyricsEntity(DEFAULT_INSTRUMENTAL_IDENTIFIER, autoDownload = true)
-                )
-                val result = LyricsResult(id = song.id, instrumental = true)
-                return cacheLyrics(song.id, result)
-            }
-            if (downloaded?.isSynced == true) {
-                val syncedData = lrcLyricsParser.parse(downloaded.syncedLyrics!!, song.duration)
-                if (syncedData?.hasContent == true) {
+        if (storedLyrics == null || !storedLyrics.userCleared) {
+            if (allowDownload && context.isAllowedToDownloadMetadata()) {
+                val downloaded = runCatching { lyricsDownloadService.getLyrics(song) }.getOrNull()
+                if (downloaded?.instrumental == true) {
                     lyricsDao.insertLyrics(
-                        song.toLyricsEntity(
-                            syncedData.rawText,
-                            autoDownload = true
-                        )
+                        song.toLyricsEntity(DEFAULT_INSTRUMENTAL_IDENTIFIER, autoDownload = true)
                     )
-                    val result = LyricsResult(
-                        id = song.id,
-                        plainLyrics = DisplayableLyrics(embeddedLyrics, LyricsSource.Embedded),
-                        syncedLyrics = DisplayableLyrics(syncedData, LyricsSource.Downloaded)
-                    )
+                    val result = LyricsResult(id = song.id, instrumental = true)
                     return cacheLyrics(song.id, result)
+                }
+                if (downloaded?.isSynced == true) {
+                    val syncedData = lrcLyricsParser.parse(downloaded.syncedLyrics!!, song.duration)
+                    if (syncedData?.hasContent == true) {
+                        lyricsDao.insertLyrics(
+                            song.toLyricsEntity(
+                                syncedData.rawText,
+                                autoDownload = true
+                            )
+                        )
+                        val result = LyricsResult(
+                            id = song.id,
+                            plainLyrics = DisplayableLyrics(embeddedLyrics, LyricsSource.Embedded),
+                            syncedLyrics = DisplayableLyrics(syncedData, LyricsSource.Downloaded)
+                        )
+                        return cacheLyrics(song.id, result)
+                    }
                 }
             }
         }
