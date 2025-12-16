@@ -598,6 +598,7 @@ Ideal für Podcasts und Aufnahmen.</string>
     <string name="shuffle_mode_header">Zufallswiedergabe-Modus</string>
     <string name="display_header">Anzeige</string>
     <string name="backup_restore_header">Sicherung/Wiederherstellung</string>
+    <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Allgemeines Design</string>
     <string name="pure_black_theme_title">Reines Schwarz</string>
@@ -622,8 +623,9 @@ Ideal für Podcasts und Aufnahmen.</string>
     <string name="lyrics_syllable_mode_title">Wort-für-Word-Liedtexte</string>
     <string name="lyrics_syllable_mode_summary">Ermöglicht die Anzeige von Liedtexten mit Wort-für-Wort-Synchronisation. Abhängig von der Verfügbarkeit der Liedtexte und einem kompatiblen Format wie LRC oder TTML.</string>
     <string name="lyrics_effects_note">Erweiterte Effekte verbessern das visuelle Erlebnis, können jedoch mehr Systemressourcen und Akku verbrauchen.</string>
-    <string name="lyrics_gradient_background_title">Farbverlauf als Hintergrund</string>
-    <string name="lyrics_gradient_background_summary">Zeige einen animierten Farbverlauf als Hintergrund mit den Farben des aktuellen Songcovers an. Nur in der Vollbildansicht anwendbar.</string>
+    <string name="lyrics_background_effect_title">Background effect</string>
+    <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">Unschärfe-Effekt</string>
     <string name="lyrics_blur_effect_summary">Die Zeilen neben der aktuellen Textzeileen.</string>
     <string name="lyrics_shadow_effect_title">Schatten-Effekt</string>
@@ -644,6 +646,11 @@ Ideal für Podcasts und Aufnahmen.</string>
     <string name="synced_font_size_full_summary">Passen Sie die Schriftgröße für synchronisierte Liedtexte im Vollbildmodus an.</string>
     <string name="unsynced_font_size_full_title">Schriftgröße von nicht synchronisierten Liedtexten (Vollbild)</string>
     <string name="unsynced_font_size_full_summary">Passen Sie die Schriftgröße für nicht synchronisierte Liedtexte im Vollbildmodus an.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
+        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
+    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Bei Wiedergabe öffnen</string>
