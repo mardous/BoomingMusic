@@ -14,6 +14,8 @@
     <string name="action_next">הבא</string>
     <string name="action_previous">הקודם</string>
     <string name="action_cancel">ביטול</string>
+    <string name="action_seek_backward">העבר אחורה</string>
+    <string name="action_seek_forward">העבר קדימה</string>
     <string name="action_cycle_repeat">מצב חזרה מחזורי</string>
     <string name="action_toggle_shuffle">מתג מצב ערבוב</string>
     <string name="reset_action">איפוס</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">קבצים מסוימים לא רשומים בחנות המדיה.</string>
     <string name="nothing_to_scan">אין מה לסרוק</string>
     <string name="select_storage_title">בחר אחסון</string>
-    <string name="app_widget_big_name">גדול</string>
-    <string name="app_widget_simple_name">פשוט</string>
-    <string name="app_widget_small_name">קטן</string>
     <string name="now_playing">מנגן כעת</string>
     <string name="playing_queue_label">מנגן תור השמעה</string>
     <string name="list_start">תחילת רשימה</string>
@@ -293,7 +292,7 @@
     <string name="title">כותרת</string>
     <string name="album">אלבום</string>
     <string name="artist">אמן</string>
-    <string name="album_artist">אלבום-אמן</string>
+    <string name="album_artist">אמן האלבום</string>
     <string name="composer">מלחין</string>
     <string name="conductor">מנצח</string>
     <string name="publisher">מפרסם</string>
@@ -302,7 +301,7 @@
     <string name="release_years_label">שנים</string>
     <string name="length">אורך</string>
     <string name="label_last_modified">עודכן לאחרונה</string>
-    <string name="label_audio_header">כותרת אודיו</string>
+    <string name="label_channels">ערוצים</string>
     <string name="label_variable_bitrate">קצב סיביות משתנה</string>
     <string name="label_loss_less">הפסד פחות</string>
     <string name="label_bit_rate">קצב סיביות</string>
@@ -559,6 +558,8 @@
     <string name="view_profile_on_github">צפה בפרופיל ב-GitHub</string>
     <string name="follow_on_telegram">הודעה פרטית בטלגרם</string>
     <string name="write_an_email">כתוב אימייל</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">אפשר לתרום סכום קטן אם לדעתך העבודה שלי ראויה לכך.</string>
     <string name="support_development">תמיכה בפיתוח</string>
     <string name="help_with_translations">עזרה בתרגומים</string>
     <string name="help_with_translations_summary">באפשרותך לתרום לפרויקט על ידי סיוע בתרגום Booming Music לשפות אחרות.</string>
@@ -593,7 +594,6 @@
     <string name="metadata_summary">הגדרות הקשורות לתמונות אלבום ואמנים.</string>
     <string name="library_title">ספרייה</string>
     <string name="library_summary">הגדרות לרשימות השמעה ולמסנני הכללה/הוצאה.</string>
-    <string name="notification_title">הודעה</string>
     <string name="advanced_title">מתקדם</string>
     <string name="advanced_summary">הגדרות שפה ואחרות באפליקציה למשתמשים מתקדמים.</string>
     <string name="update_title">עדכן</string>
@@ -681,6 +681,8 @@
     <string name="queue_height_summary">קבע את גובה רשימת ההשמעה לחצי מגובה המסך.</string>
     <string name="single_tap_on_album_cover_title">הקשה אחת על העטיפה</string>
     <string name="double_tap_on_album_cover_title">הקשה כפולה על העטיפה</string>
+    <string name="double_tap_on_left_album_cover_title">לחיצה כפולה בקצה השמאלי של עטיפת האלבום</string>
+    <string name="double_tap_on_right_album_cover_title">לחיצה כפולה בקצה הימני של עטיפת האלבום</string>
     <string name="long_press_on_album_cover_title">לחיצה ארוכה על העטיפה</string>
     <string name="small_image_title">תמונה קטנה</string>
     <string name="small_image_summary">מקטין את גודל העטיפה בסגנונות נתמכים.</string>
@@ -774,7 +776,6 @@
     <string name="min_song_duration_title">משך שיר מינימלי</string>
     <string name="min_song_duration_summary">כמה שניות (לפחות) שיר חייב להימשך כדי שיוצג בספרייה שלך.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">שורת טקסט נוספת</string>
     <string name="app_language_title">שפת האפליקציה</string>
     <string name="backup_data_title">גיבוי נתוני האפליקציה</string>
     <string name="backup_app_data_summary">צור קובץ המכיל נתוני אפליקציה חיוניים ושמור אותו באחסון החיצוני.</string>

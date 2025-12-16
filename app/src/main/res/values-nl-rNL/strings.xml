@@ -14,6 +14,8 @@
     <string name="action_next">Volgende</string>
     <string name="action_previous">Vorige</string>
     <string name="action_cancel">Annuleren</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Cyclus herhaalmodus</string>
     <string name="action_toggle_shuffle">Shuffle mode in-/uitschakelen</string>
     <string name="reset_action">Reset</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Sommige bestanden staan niet vermeld in de media-winkel.</string>
     <string name="nothing_to_scan">Niets te scannen</string>
     <string name="select_storage_title">Opslag selecteren</string>
-    <string name="app_widget_big_name">Groot</string>
-    <string name="app_widget_simple_name">Eenvoudig</string>
-    <string name="app_widget_small_name">Klein</string>
     <string name="now_playing">Afspelende media</string>
     <string name="playing_queue_label">Wachtrij afspelen</string>
     <string name="list_start">List start</string>
@@ -293,7 +292,7 @@
     <string name="title">Aanspreektitel</string>
     <string name="album">Album</string>
     <string name="artist">Kunstenaar</string>
-    <string name="album_artist">Album-artiest</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Componist</string>
     <string name="conductor">Leider</string>
     <string name="publisher">Uitgever</string>
@@ -302,7 +301,7 @@
     <string name="release_years_label">Jaren</string>
     <string name="length">Lengte</string>
     <string name="label_last_modified">Laatst gewijzigd</string>
-    <string name="label_audio_header">Audio koptekst</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Variabele bitrate</string>
     <string name="label_loss_less">Minder verlies</string>
     <string name="label_bit_rate">Bitsnelheid</string>
@@ -543,6 +542,8 @@
     <string name="view_profile_on_github">Bekijk profiel op GitHub</string>
     <string name="follow_on_telegram">DM op Telegram</string>
     <string name="write_an_email">Schrijf een email</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Ondersteun ontwikkeling</string>
     <string name="help_with_translations">Help met vertalingen</string>
     <string name="help_with_translations_summary">Je kunt bijdragen aan het project door Booming Music naar andere talen te vertalen.</string>
@@ -577,7 +578,6 @@
     <string name="metadata_summary">Instellingen gerelateerd aan album- en artiesten-afbeeldingen.</string>
     <string name="library_title">Bibliotheek</string>
     <string name="library_summary">Instellingen voor afspeellijsten en uitsluitingen/integratiefilters.</string>
-    <string name="notification_title">Notificatie</string>
     <string name="advanced_title">Geavanceerd</string>
     <string name="advanced_summary">In-app taal en andere instellingen voor gevorderde gebruikers.</string>
     <string name="update_title">Vernieuwen</string>
@@ -665,6 +665,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dubbele tik op de afdekking</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Lang drukken op omslag</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
@@ -756,7 +758,6 @@
     <string name="min_song_duration_title">Minimale duur van het nummer</string>
     <string name="min_song_duration_summary">Hoeveel seconden (tenminste) moet er een nummer meegaan in je bibliotheek.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Extra regel tekst</string>
     <string name="app_language_title">App taal</string>
     <string name="backup_data_title">App-gegevens back-uppen</string>
     <string name="backup_app_data_summary">Maak een bestand met essentiële app-gegevens en sla het op in externe opslag.</string>

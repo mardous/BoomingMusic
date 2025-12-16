@@ -14,6 +14,8 @@
     <string name="action_next">التالي</string>
     <string name="action_previous">السابق</string>
     <string name="action_cancel">إلغاء</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">وضع تكرار الدورة</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">بعض الملفات غير مدرجة في متجر الوسائط.</string>
     <string name="nothing_to_scan">لا شيء للمسح</string>
     <string name="select_storage_title">حدد وحدة التخزين</string>
-    <string name="app_widget_big_name">كبير</string>
-    <string name="app_widget_simple_name">بسيط</string>
-    <string name="app_widget_small_name">صغير</string>
     <string name="now_playing">يلعب الآن</string>
     <string name="playing_queue_label">قائمة الانتظار</string>
     <string name="list_start">List start</string>
@@ -293,7 +292,7 @@
     <string name="title">العنوان</string>
     <string name="album">ألبوم</string>
     <string name="artist">الفنان</string>
-    <string name="album_artist">الفنان ألبوم-</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">الملحن</string>
     <string name="conductor">الموصّل</string>
     <string name="publisher">الناشر</string>
@@ -302,7 +301,7 @@
     <string name="release_years_label">سنوات</string>
     <string name="length">طول</string>
     <string name="label_last_modified">آخر تعديل</string>
-    <string name="label_audio_header">ترويسة الصوت</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">متغير معدل</string>
     <string name="label_loss_less">الخسارة أقل</string>
     <string name="label_bit_rate">معدل</string>
@@ -575,6 +574,8 @@
     <string name="view_profile_on_github">عرض الملف الشخصي على GitHub</string>
     <string name="follow_on_telegram">DM على تيليجرام</string>
     <string name="write_an_email">كتابة بريد إلكتروني</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">دعم التطوير</string>
     <string name="help_with_translations">المساعدة في الترجمات</string>
     <string name="help_with_translations_summary">يمكنك المساهمة في المشروع من خلال المساعدة في ترجمة الموسيقى المزدهرة إلى لغات أخرى.</string>
@@ -609,7 +610,6 @@
     <string name="metadata_summary">الإعدادات المتعلقة بصور الألبوم والفنانين.</string>
     <string name="library_title">المكتبة</string>
     <string name="library_summary">إعدادات قوائم التشغيل وفلاتر الاستبعاد/الإدراج.</string>
-    <string name="notification_title">إشعار</string>
     <string name="advanced_title">متقدم</string>
     <string name="advanced_summary">لغة داخل التطبيق وغيرها من الإعدادات للمستخدمين المتقدمين.</string>
     <string name="update_title">تحديث</string>
@@ -697,6 +697,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">انقر نقراً مزدوجاً على الغلاف</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">اضغط مطولاً على الغلاف</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
@@ -788,7 +790,6 @@
     <string name="min_song_duration_title">الحد الأدنى من مدة الأغنية</string>
     <string name="min_song_duration_summary">كم ثانية (على الأقل) يجب أن تدوم أغنية لعرضها في مكتبتك.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">سطر إضافي من النص</string>
     <string name="app_language_title">لغة التطبيق</string>
     <string name="backup_data_title">النسخ الاحتياطي لبيانات التطبيق</string>
     <string name="backup_app_data_summary">إنشاء ملف يحتوي على بيانات التطبيق الأساسية وحفظه في وحدة التخزين الخارجية.</string>

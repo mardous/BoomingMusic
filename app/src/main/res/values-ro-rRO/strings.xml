@@ -14,6 +14,8 @@
     <string name="action_next">Următoarea</string>
     <string name="action_previous">Anterior</string>
     <string name="action_cancel">Anulează</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Mod repetare ciclu</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Unele fișiere nu sunt listate în magazinul media.</string>
     <string name="nothing_to_scan">Nimic de scanat</string>
     <string name="select_storage_title">Selectați stocarea</string>
-    <string name="app_widget_big_name">Mare</string>
-    <string name="app_widget_simple_name">Simplu</string>
-    <string name="app_widget_small_name">Mică</string>
     <string name="now_playing">Acum se redă</string>
     <string name="playing_queue_label">Lista de redare</string>
     <string name="list_start">List start</string>
@@ -293,7 +292,7 @@
     <string name="title">Titlu</string>
     <string name="album">Album</string>
     <string name="artist">Artist</string>
-    <string name="album_artist">Album-artist</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Compozitor</string>
     <string name="conductor">Conductor</string>
     <string name="publisher">Editor</string>
@@ -302,7 +301,7 @@
     <string name="release_years_label">Ani</string>
     <string name="length">Lungime</string>
     <string name="label_last_modified">Ultima modificare</string>
-    <string name="label_audio_header">Antet audio</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Bitrate Variabil</string>
     <string name="label_loss_less">Pierdere mai mică</string>
     <string name="label_bit_rate">Bitrate</string>
@@ -551,6 +550,8 @@
     <string name="view_profile_on_github">Vezi profilul pe GitHub</string>
     <string name="follow_on_telegram">DM pe Telegram</string>
     <string name="write_an_email">Scrie un e-mail</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Sprijină dezvoltarea</string>
     <string name="help_with_translations">Ajutor cu traducerile</string>
     <string name="help_with_translations_summary">Poti contribui la proiect ajutand la traducerea muzicii Booming in alte limbi.</string>
@@ -585,7 +586,6 @@
     <string name="metadata_summary">Setări legate de album și imagini cu artiști.</string>
     <string name="library_title">Bibliotecă</string>
     <string name="library_summary">Setări pentru listele de redare și filtre de excludere/includere.</string>
-    <string name="notification_title">Notificare</string>
     <string name="advanced_title">Avansat</string>
     <string name="advanced_summary">Limba aplicaţiei şi alte setări pentru utilizatorii avansaţi.</string>
     <string name="update_title">Actualizare</string>
@@ -673,6 +673,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dublă atingere pe copertă</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Apăsare lungă pe copertă</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
@@ -764,7 +766,6 @@
     <string name="min_song_duration_title">Durata minimă a melodiei</string>
     <string name="min_song_duration_summary">Câte secunde (cel puțin) trebuie să dureze o melodie pentru a fi afișată în bibliotecă.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Linie suplimentară de text</string>
     <string name="app_language_title">Limba aplicației</string>
     <string name="backup_data_title">Copie de rezervă date aplicație</string>
     <string name="backup_app_data_summary">Creați un fișier care conține date esențiale ale aplicației și salvați-l pe stocare externă.</string>

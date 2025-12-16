@@ -31,6 +31,8 @@ import com.mardous.booming.core.model.Cutoff
 import com.mardous.booming.core.model.action.FolderAction
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTransition
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.theme.AppTheme
 import com.mardous.booming.core.model.theme.NowPlayingScreen
@@ -40,8 +42,6 @@ import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.intRes
 import com.mardous.booming.extensions.utilities.*
 import com.mardous.booming.ui.component.views.TopAppBarLayout
-import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
-import com.mardous.booming.ui.screen.player.PlayerTransition
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.File

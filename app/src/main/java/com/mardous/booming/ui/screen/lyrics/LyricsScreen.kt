@@ -31,6 +31,7 @@ import coil3.request.SuccessResult
 import coil3.toBitmap
 import com.mardous.booming.R
 import com.mardous.booming.core.model.LibraryMargin
+import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.extensions.isPowerSaveMode
 import com.mardous.booming.ui.component.compose.color.extractGradientColors
@@ -38,7 +39,6 @@ import com.mardous.booming.ui.component.compose.decoration.FadingEdges
 import com.mardous.booming.ui.component.compose.decoration.animatedGradient
 import com.mardous.booming.ui.component.compose.decoration.fadingEdges
 import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.player.PlayerColorScheme
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.theme.PlayerTheme
 import kotlinx.coroutines.Dispatchers

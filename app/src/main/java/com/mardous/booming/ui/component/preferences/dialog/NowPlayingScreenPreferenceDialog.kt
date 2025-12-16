@@ -32,13 +32,13 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTransition
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.databinding.PreferenceDialogNowPlayingScreenBinding
 import com.mardous.booming.databinding.PreferenceDialogNowPlayingScreenItemBinding
 import com.mardous.booming.extensions.dp
 import com.mardous.booming.extensions.resources.hide
-import com.mardous.booming.ui.screen.player.PlayerColorSchemeMode
-import com.mardous.booming.ui.screen.player.PlayerTransition
 import com.mardous.booming.util.Preferences
 
 class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChangeListener,

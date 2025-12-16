@@ -14,6 +14,8 @@
     <string name="action_next">Seuraava</string>
     <string name="action_previous">Edellinen</string>
     <string name="action_cancel">Peruuta</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Syklin toistotila</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Joitakin tiedostoja ei ole listattu mediakaupassa.</string>
     <string name="nothing_to_scan">Ei mitään skannattavaa</string>
     <string name="select_storage_title">Valitse tallennustila</string>
-    <string name="app_widget_big_name">Iso</string>
-    <string name="app_widget_simple_name">Yksinkertainen</string>
-    <string name="app_widget_small_name">Pieni</string>
     <string name="now_playing">Nyt soi</string>
     <string name="playing_queue_label">Soitetaan jonoa</string>
     <string name="list_start">List start</string>
@@ -293,7 +292,7 @@
     <string name="title">Otsikko</string>
     <string name="album">Albumi</string>
     <string name="artist">Esittäjä</string>
-    <string name="album_artist">Albuminesittäjä</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Säveltäjä</string>
     <string name="conductor">Kapellimestari</string>
     <string name="publisher">Julkaisija</string>
@@ -302,7 +301,7 @@
     <string name="release_years_label">Vuodet</string>
     <string name="length">Pituus</string>
     <string name="label_last_modified">Viimeksi muokattu</string>
-    <string name="label_audio_header">Äänen ylätunniste</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Vaihteleva Bittinopeus</string>
     <string name="label_loss_less">Tappio Vähemmän</string>
     <string name="label_bit_rate">Bittinopeus</string>
@@ -543,6 +542,8 @@
     <string name="view_profile_on_github">Näytä profiili GitHubissa</string>
     <string name="follow_on_telegram">DM Telegramissa</string>
     <string name="write_an_email">Kirjoita sähköposti</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Tue kehitystä</string>
     <string name="help_with_translations">Auta käännösten kanssa</string>
     <string name="help_with_translations_summary">Voit osallistua projektiin auttamalla kääntämään Booming Music muille kielille.</string>
@@ -577,7 +578,6 @@
     <string name="metadata_summary">Albumin ja artistien kuvien asetukset.</string>
     <string name="library_title">Kirjasto</string>
     <string name="library_summary">Soittolistojen ja poissulkemis- ja sisällyttämissuodattimien asetukset.</string>
-    <string name="notification_title">Ilmoitus</string>
     <string name="advanced_title">Lisäasetukset</string>
     <string name="advanced_summary">Sovelluksen sisäinen kieli ja muut asetukset edistyneille käyttäjille.</string>
     <string name="update_title">Päivitä</string>
@@ -665,6 +665,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Kaksoisnapautus kannessa</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Paina pitkään kannella</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
@@ -756,7 +758,6 @@
     <string name="min_song_duration_title">Kappaleen vähimmäiskesto</string>
     <string name="min_song_duration_summary">Kuinka monta sekuntia (vähintään) täytyy kestää kappaletta, jotta se näkyisi kirjastossa.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Muu rivi tekstiä</string>
     <string name="app_language_title">Sovelluksen kieli</string>
     <string name="backup_data_title">Varmuuskopioi sovellustiedot</string>
     <string name="backup_app_data_summary">Luo tiedosto, joka sisältää sovelluksen olennaisia tietoja ja tallenna se ulkoiseen tallennustilaan.</string>

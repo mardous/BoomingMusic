@@ -14,6 +14,8 @@
     <string name="action_next">Següent</string>
     <string name="action_previous">Anterior</string>
     <string name="action_cancel">Cancel·la</string>
+    <string name="action_seek_backward">Cerca enrere</string>
+    <string name="action_seek_forward">Cerca endavant</string>
     <string name="action_cycle_repeat">Alterna mode de repetició</string>
     <string name="action_toggle_shuffle">Alterna mode aleatori</string>
     <string name="reset_action">Restableix</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Alguns fitxers no figuren a la botiga multimèdia.</string>
     <string name="nothing_to_scan">No hi ha res a escanejar</string>
     <string name="select_storage_title">Selecciona l\'emmagatzematge</string>
-    <string name="app_widget_big_name">Gros</string>
-    <string name="app_widget_simple_name">Simple</string>
-    <string name="app_widget_small_name">Petit</string>
     <string name="now_playing">Ara sona</string>
     <string name="playing_queue_label">Cua de reproducció</string>
     <string name="list_start">Inici de la llista</string>
@@ -293,7 +292,7 @@
     <string name="title">Títol</string>
     <string name="album">Àlbum</string>
     <string name="artist">Artista</string>
-    <string name="album_artist">Àlbum-artista</string>
+    <string name="album_artist">Artista de l\'àlbum</string>
     <string name="composer">Compositor</string>
     <string name="conductor">Productor</string>
     <string name="publisher">Editor</string>
@@ -302,7 +301,7 @@
     <string name="release_years_label">Anys</string>
     <string name="length">Durada</string>
     <string name="label_last_modified">Darrera modificació</string>
-    <string name="label_audio_header">Capçalera d\'àudio</string>
+    <string name="label_channels">Canals</string>
     <string name="label_variable_bitrate">Taxa de bits variable</string>
     <string name="label_loss_less">Sense pèrdues</string>
     <string name="label_bit_rate">Taxa de bits</string>
@@ -543,6 +542,8 @@
     <string name="view_profile_on_github">Mostra el perfil a Github</string>
     <string name="follow_on_telegram">MD a Telegram</string>
     <string name="write_an_email">Escriviu un correu electrònic</string>
+    <string name="buy_me_a_coffee">Compra\'m un cafè</string>
+    <string name="buy_me_a_coffee_summary">Podeu fer una petita donació si penseu que la meva feina ho mereix.</string>
     <string name="support_development">Suport al desenvolupament</string>
     <string name="help_with_translations">Ajuda amb les traduccions</string>
     <string name="help_with_translations_summary">Podeu contribuir al projecte ajudant a traduir Booming Music a altres idiomes.</string>
@@ -577,7 +578,6 @@
     <string name="metadata_summary">Configuració relacionada amb les imatges d\'àlbums i artistes.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_summary">Configuració de llistes de reproducció i filtres d\'exclusió/inclusió.</string>
-    <string name="notification_title">Notificació</string>
     <string name="advanced_title">Avançat</string>
     <string name="advanced_summary">L\'idioma de l\'aplicació i altres ajustos per a usuaris avançats.</string>
     <string name="update_title">Actualitza</string>
@@ -665,6 +665,8 @@
     <string name="queue_height_summary">La cua de reproducció ocuparà la meitat de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Un clic a la portada</string>
     <string name="double_tap_on_album_cover_title">Dos clics a la portada</string>
+    <string name="double_tap_on_left_album_cover_title">Doble toc a la vora esquerra de la portada de l\'àlbum</string>
+    <string name="double_tap_on_right_album_cover_title">Doble toc a la vora dreta de la portada de l\'àlbum</string>
     <string name="long_press_on_album_cover_title">Clic sostingut a la portada</string>
     <string name="small_image_title">Imatge petita</string>
     <string name="small_image_summary">Redueix la mida de la portada en estils admesos.</string>
@@ -756,7 +758,6 @@
     <string name="min_song_duration_title">Durada mínima d\'una cançó</string>
     <string name="min_song_duration_summary">Quants segons (pel cap baix) ha de durar una cançó per mostrar-la a la vostra biblioteca.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Línia addicional de text</string>
     <string name="app_language_title">Idioma de l\'aplicació</string>
     <string name="backup_data_title">Còpia de seguretat de dades de l\'aplicació</string>
     <string name="backup_app_data_summary">Crea un fitxer amb dades essencials de l\'aplicació i el desa a l\'emmagatzematge.</string>
@@ -798,7 +799,7 @@
     <string name="zoom_out">Allunya</string>
     <string name="simple">Simple</string>
     <string name="stack">Apila</string>
-    <string name="parallax">Parallax</string>
+    <string name="parallax">Paral·laxi</string>
     <string name="add_after_playing_track">Afegeix després de la pista actual</string>
     <string name="add_tracks_sequentially">Afegeix les pistes de manera seqüencial</string>
     <string name="albums_shuffle">Barreja els àlbums</string>

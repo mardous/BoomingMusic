@@ -1,4 +1,4 @@
-package com.mardous.booming.ui.screen.player
+package com.mardous.booming.core.model.player
 
 import androidx.viewpager.widget.ViewPager
 import com.mardous.booming.R

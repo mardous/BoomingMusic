@@ -14,6 +14,8 @@
     <string name="action_next">Επόμενο</string>
     <string name="action_previous">Προηγούμενο</string>
     <string name="action_cancel">Ακύρωση</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Λειτουργία επανάληψης κύκλου</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Ορισμένα αρχεία δεν εμφανίζονται στο κατάστημα πολυμέσων.</string>
     <string name="nothing_to_scan">Τίποτα για σάρωση</string>
     <string name="select_storage_title">Επιλογή αποθ. χώρου</string>
-    <string name="app_widget_big_name">Μεγάλο</string>
-    <string name="app_widget_simple_name">Απλό</string>
-    <string name="app_widget_small_name">Μικρό</string>
     <string name="now_playing">Παίζεται τώρα</string>
     <string name="playing_queue_label">Ουρά αναπαραγωγής</string>
     <string name="list_start">List start</string>
@@ -293,7 +292,7 @@
     <string name="title">Τίτλος</string>
     <string name="album">Άλμπουμ</string>
     <string name="artist">Καλλιτέχνης</string>
-    <string name="album_artist">Άλμπουμ καλλιτέχνη</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Συνθέτης</string>
     <string name="conductor">Αγωγός</string>
     <string name="publisher">Εκδότης</string>
@@ -302,7 +301,7 @@
     <string name="release_years_label">Χρόνια</string>
     <string name="length">Μήκος</string>
     <string name="label_last_modified">Τελευταία τροποποίηση</string>
-    <string name="label_audio_header">Κεφαλίδα ήχου</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Μεταβλητός Ρυθμός Bit</string>
     <string name="label_loss_less">Απώλεια Λιγότερο</string>
     <string name="label_bit_rate">Ρυθμός Bit</string>
@@ -543,6 +542,8 @@
     <string name="view_profile_on_github">Προβολή προφίλ στο GitHub</string>
     <string name="follow_on_telegram">DM στο Telegram</string>
     <string name="write_an_email">Γράψτε ένα email</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Ανάπτυξη υποστήριξης</string>
     <string name="help_with_translations">Βοήθεια για μεταφράσεις</string>
     <string name="help_with_translations_summary">Μπορείτε να συνεισφέρετε στο έργο βοηθώντας στη μετάφραση της Booming Music σε άλλες γλώσσες.</string>
@@ -577,7 +578,6 @@
     <string name="metadata_summary">Ρυθμίσεις που σχετίζονται με εικόνες άλμπουμ και καλλιτεχνών.</string>
     <string name="library_title">Βιβλιοθήκη</string>
     <string name="library_summary">Ρυθμίσεις για λίστες αναπαραγωγής και φίλτρα αποκλεισμού/ένταξης.</string>
-    <string name="notification_title">Ειδοποίηση</string>
     <string name="advanced_title">Προχωρημένα</string>
     <string name="advanced_summary">Γλώσσα στην εφαρμογή και άλλες ρυθμίσεις για προχωρημένους χρήστες.</string>
     <string name="update_title">Ενημέρωση</string>
@@ -665,6 +665,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Διπλό χτύπημα στο εξώφυλλο</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Παρατεταμένο πάτημα στο εξώφυλλο</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
@@ -756,7 +758,6 @@
     <string name="min_song_duration_title">Ελάχιστη διάρκεια τραγουδιού</string>
     <string name="min_song_duration_summary">Πόσα δευτερόλεπτα (τουλάχιστον) πρέπει να διαρκέσουν ένα τραγούδι που θα εμφανιστεί στη βιβλιοθήκη σας.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Πρόσθετη γραμμή κειμένου</string>
     <string name="app_language_title">Γλώσσα εφαρμογής</string>
     <string name="backup_data_title">Αντίγραφο δεδομένων εφαρμογών</string>
     <string name="backup_app_data_summary">Δημιουργήστε ένα αρχείο που περιέχει βασικά δεδομένα εφαρμογών και αποθηκεύστε το στον εξωτερικό χώρο αποθήκευσης.</string>

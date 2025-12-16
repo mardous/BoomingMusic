@@ -31,6 +31,10 @@ import androidx.core.view.updatePadding
 import com.google.android.material.button.MaterialButton
 import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerTintTarget
+import com.mardous.booming.core.model.player.iconButtonTintTarget
+import com.mardous.booming.core.model.player.tintTarget
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentGradientPlayerPlaybackControlsBinding
 import com.mardous.booming.extensions.isLandscape
@@ -38,10 +42,6 @@ import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
 import com.mardous.booming.ui.component.views.MusicSlider
-import com.mardous.booming.ui.screen.player.PlayerColorScheme
-import com.mardous.booming.ui.screen.player.PlayerTintTarget
-import com.mardous.booming.ui.screen.player.iconButtonTintTarget
-import com.mardous.booming.ui.screen.player.tintTarget
 
 class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_gradient_player_playback_controls) {
 

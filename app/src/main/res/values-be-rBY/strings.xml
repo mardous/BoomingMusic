@@ -356,27 +356,51 @@
     <string name="audio_device_usb_headset">USB Headset</string>
     <!-- Plurals -->
     <plurals name="songs">
+        <item quantity="one">Song</item>
+        <item quantity="few">Songs</item>
+        <item quantity="many">Songs</item>
         <item quantity="other">Songs</item>
     </plurals>
     <plurals name="albums">
+        <item quantity="one">Album</item>
+        <item quantity="few">Albums</item>
+        <item quantity="many">Albums</item>
         <item quantity="other">Albums</item>
     </plurals>
     <plurals name="x_songs">
+        <item quantity="one">%d song</item>
+        <item quantity="few">%d songs</item>
+        <item quantity="many">%d songs</item>
         <item quantity="other">%d songs</item>
     </plurals>
     <plurals name="x_albums">
+        <item quantity="one">%d album</item>
+        <item quantity="few">%d albums</item>
+        <item quantity="many">%d albums</item>
         <item quantity="other">%d albums</item>
     </plurals>
     <plurals name="x_artists">
+        <item quantity="one">%d artist</item>
+        <item quantity="few">%d artists</item>
+        <item quantity="many">%d artists</item>
         <item quantity="other">%d artists</item>
     </plurals>
     <plurals name="x_times">
+        <item quantity="one">%d time</item>
+        <item quantity="few">%d times</item>
+        <item quantity="many">%d times</item>
         <item quantity="other">%d times</item>
     </plurals>
     <plurals name="x_plays">
+        <item quantity="one">%d play</item>
+        <item quantity="few">%d plays</item>
+        <item quantity="many">%d plays</item>
         <item quantity="other">%d plays</item>
     </plurals>
     <plurals name="x_items">
+        <item quantity="one">%d item</item>
+        <item quantity="few">%d items</item>
+        <item quantity="many">%d items</item>
         <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->

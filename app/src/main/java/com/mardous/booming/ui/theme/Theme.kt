@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import com.mardous.booming.R
-import com.mardous.booming.ui.screen.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.util.Preferences
 
 private val lightScheme = lightColorScheme(

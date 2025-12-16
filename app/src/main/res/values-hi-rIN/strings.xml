@@ -14,6 +14,8 @@
     <string name="action_next">अगला</string>
     <string name="action_previous">पहले का</string>
     <string name="action_cancel">रद्द करना</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">चक्र दोहराव मोड</string>
     <string name="action_toggle_shuffle">टॉगल शफ़ल मोड</string>
     <string name="reset_action">रीसेट करें</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">कुछ फ़ाइलें मीडिया स्टोर में सूचीबद्ध नहीं हैं।</string>
     <string name="nothing_to_scan">स्कैन करने के लिए कुछ नहीं</string>
     <string name="select_storage_title">स्टोरेज चुनें</string>
-    <string name="app_widget_big_name">बड़ा</string>
-    <string name="app_widget_simple_name">सरल</string>
-    <string name="app_widget_small_name">छोटा</string>
     <string name="now_playing">अब बज रहा है</string>
     <string name="playing_queue_label">कतार बजाना</string>
     <string name="list_start">List start</string>
@@ -292,7 +291,7 @@
     <string name="title">शीर्षक</string>
     <string name="album">एल्बम</string>
     <string name="artist">कलाकार</string>
-    <string name="album_artist">एल्बम-कलाकार</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">कम्पोज़र</string>
     <string name="conductor">संचालक</string>
     <string name="publisher">प्रकाशक</string>
@@ -301,7 +300,7 @@
     <string name="release_years_label">साल</string>
     <string name="length">लम्बाई</string>
     <string name="label_last_modified">अंतिम संशोधित</string>
-    <string name="label_audio_header">ऑडियो शीर्षक</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">परिवर्ती बिटरेट</string>
     <string name="label_loss_less">लॉसलेस</string>
     <string name="label_bit_rate">बिटरेट</string>
@@ -541,6 +540,8 @@
     <string name="view_profile_on_github">GitHub पर प्रोफ़ाइल देखें</string>
     <string name="follow_on_telegram">टेलीग्राम पर डायरेक्ट संदेश</string>
     <string name="write_an_email">एक ईमेल लिखें</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">विकास का समर्थन करें</string>
     <string name="help_with_translations">अनुवाद में मदद करें</string>
     <string name="help_with_translations_summary">आप अन्य भाषाओं में बूमिंग म्यूजिक का अनुवाद करने में मदद करके परियोजना में योगदान कर सकते हैं।</string>
@@ -575,7 +576,6 @@
     <string name="metadata_summary">एल्बम और कलाकारों की छवियों से संबंधित सेटिंग्स।</string>
     <string name="library_title">लायब्रेरी</string>
     <string name="library_summary">प्लेलिस्ट और निष्कासन/समावेशन फ़िल्टर के लिए सेटिंग्स।</string>
-    <string name="notification_title">नोटिफिकेशन</string>
     <string name="advanced_title">आधुनिक</string>
     <string name="advanced_summary">उपयोगकर्ताओं के लिए उन्नत सेटिंग्स और इन-ऐप भाषा।</string>
     <string name="update_title">अपडेट</string>
@@ -663,6 +663,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">कवर पर डबल टैप करें</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">कवर पर लंबे समय तक दबाएँ</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
@@ -754,7 +756,6 @@
     <string name="min_song_duration_title">न्यूनतम गाने की अवधि</string>
     <string name="min_song_duration_summary">आपकी लाइब्रेरी में दिखाने के लिए एक गाने को कितने सेकंड (कम से कम) तक चलना चाहिए?</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">अतिरिक्त पाठ की पंक्ति</string>
     <string name="app_language_title">ऐप की भाषा</string>
     <string name="backup_data_title">बैकअप ऐप डेटा</string>
     <string name="backup_app_data_summary">एक फ़ाइल बनाएं जिसमें आवश्यक ऐप डेटा हो और इसे बाहरी स्टोरेज में सहेजें।</string>

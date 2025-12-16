@@ -14,6 +14,8 @@
     <string name="action_next">Sonraki</string>
     <string name="action_previous">Önceki</string>
     <string name="action_cancel">İptal</string>
+    <string name="action_seek_backward">Geri sar</string>
+    <string name="action_seek_forward">İleri sar</string>
     <string name="action_cycle_repeat">Tekrarlama modunu değiştir</string>
     <string name="action_toggle_shuffle">Karıştırma modunu aç/kapat</string>
     <string name="reset_action">Sıfırla</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Bazı dosyalar medya deposunda listelenmiyor.</string>
     <string name="nothing_to_scan">Taranacak bir şey yok</string>
     <string name="select_storage_title">Depolama birimi seç</string>
-    <string name="app_widget_big_name">Büyük</string>
-    <string name="app_widget_simple_name">Basit</string>
-    <string name="app_widget_small_name">Küçük</string>
     <string name="now_playing">Şimdi Çalıyor</string>
     <string name="playing_queue_label">Çalma Sırası</string>
     <string name="list_start">Liste başlangıcı</string>
@@ -302,7 +301,7 @@
     <string name="release_years_label">Yıllar</string>
     <string name="length">Uzunluk</string>
     <string name="label_last_modified">Son değiştirilme</string>
-    <string name="label_audio_header">Ses başlığı</string>
+    <string name="label_channels">Kanallar</string>
     <string name="label_variable_bitrate">Değişken Bit Hızı</string>
     <string name="label_loss_less">Kayıpsız</string>
     <string name="label_bit_rate">Bit hızı</string>
@@ -538,6 +537,8 @@
     <string name="view_profile_on_github">GitHub\'da profili görüntüle</string>
     <string name="follow_on_telegram">Telegram\'dan mesaj gönder</string>
     <string name="write_an_email">E-posta yaz</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Geliştirmeyi destekle</string>
     <string name="help_with_translations">Çevirilere yardım et</string>
     <string name="help_with_translations_summary">Booming Music\'i diğer dillere çevirmeye yardımcı olarak projeye katkıda bulunabilirsiniz.</string>
@@ -572,7 +573,6 @@
     <string name="metadata_summary">Albüm ve sanatçı görselleriyle ilgili ayarlar.</string>
     <string name="library_title">Kütüphane</string>
     <string name="library_summary">Çalma listeleri ve hariç tutma/dahil etme filtreleri için ayarlar.</string>
-    <string name="notification_title">Bildirim</string>
     <string name="advanced_title">Gelişmiş</string>
     <string name="advanced_summary">Uygulama içi dil ve ileri düzey kullanıcılar için diğer ayarlar.</string>
     <string name="update_title">Güncelleme</string>
@@ -660,6 +660,8 @@
     <string name="queue_height_summary">Çalma sırasının yüksekliğini ekranın yarısına sabitleyin.</string>
     <string name="single_tap_on_album_cover_title">Kapağa tek dokun</string>
     <string name="double_tap_on_album_cover_title">Kapağa çift dokunun</string>
+    <string name="double_tap_on_left_album_cover_title">Albüm kapağının sol kenarına çift dokunma</string>
+    <string name="double_tap_on_right_album_cover_title">Albüm kapağının sağ kenarına çift dokunma</string>
     <string name="long_press_on_album_cover_title">Kapağa uzun basın</string>
     <string name="small_image_title">Küçük görsel</string>
     <string name="small_image_summary">Desteklenen stillerde kapak boyutunu küçültür.</string>
@@ -751,7 +753,6 @@
     <string name="min_song_duration_title">Minimum şarkı süresi</string>
     <string name="min_song_duration_summary">Bir şarkının kütüphanenizde gösterilmesi için en az kaç saniye sürmesi gerekir.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Ek metin satırı</string>
     <string name="app_language_title">Uygulama dili</string>
     <string name="backup_data_title">Uygulama verilerini yedekle</string>
     <string name="backup_app_data_summary">Temel uygulama verilerini içeren bir dosya oluşturun ve harici depolamaya kaydedin.</string>
@@ -793,7 +794,7 @@
     <string name="zoom_out">Uzaklaştırma</string>
     <string name="simple">Basit</string>
     <string name="stack">Yığın</string>
-    <string name="parallax">Parallax</string>
+    <string name="parallax">Paralaks</string>
     <string name="add_after_playing_track">Çalan parçadan sonra ekle</string>
     <string name="add_tracks_sequentially">Parçaları sırayla ekle</string>
     <string name="albums_shuffle">Albümleri karıştır</string>

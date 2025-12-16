@@ -14,6 +14,8 @@
     <string name="action_next">Siguiente</string>
     <string name="action_previous">Anterior</string>
     <string name="action_cancel">Cancelar</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Cambiar modo de repetición</string>
     <string name="action_toggle_shuffle">Cambiar modo aleatorio</string>
     <string name="reset_action">Restablecer</string>
@@ -153,9 +155,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Algunos archivos no están listados en el almacén multimedia.</string>
     <string name="nothing_to_scan">Nada para escanear</string>
     <string name="select_storage_title">Elija el almacenamiento</string>
-    <string name="app_widget_big_name">Grande</string>
-    <string name="app_widget_simple_name">Simple</string>
-    <string name="app_widget_small_name">Pequeño</string>
     <string name="now_playing">Reproduciendo ahora</string>
     <string name="playing_queue_label">Cola de reproducción</string>
     <string name="list_start">Inicio de la lista</string>
@@ -292,7 +291,7 @@
     <string name="title">Título</string>
     <string name="album">Álbum</string>
     <string name="artist">Artista</string>
-    <string name="album_artist">Artista del álbum</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Compositor</string>
     <string name="conductor">Productor</string>
     <string name="publisher">Discografía</string>
@@ -301,7 +300,7 @@
     <string name="release_years_label">Años</string>
     <string name="length">Duración</string>
     <string name="label_last_modified">Última modificación</string>
-    <string name="label_audio_header">Especificación del audio</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Tasa de bits variable</string>
     <string name="label_loss_less">Sin pérdida</string>
     <string name="label_bit_rate">Tasa de bits</string>
@@ -526,7 +525,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="action_about">Acerca de</string>
     <string name="application">Aplicación</string>
     <string name="version">Versión</string>
-    <string name="changelog">Registro de cambios</string>
+    <string name="changelog">Cambios</string>
     <string name="fork_on_github">Fork en GitHub</string>
     <string name="licenses">Licencias</string>
     <string name="author">Autor</string>
@@ -541,6 +540,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="view_profile_on_github">Ver perfil en GitHub</string>
     <string name="follow_on_telegram">DM en Telegram</string>
     <string name="write_an_email">Enviar email</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Soporte al desarrollo</string>
     <string name="help_with_translations">Ayudar con las traducciones</string>
     <string name="help_with_translations_summary">Puedes contribuir al proyecto ayudando a traducir Booming Music a otros idiomas.</string>
@@ -575,7 +576,6 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="metadata_summary">Ajustes relacionados a imágenes de álbumes y artistas.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_summary">Ajustes de las listas y filtros de exclusión/inclusión.</string>
-    <string name="notification_title">Notificación</string>
     <string name="advanced_title">Avanzado</string>
     <string name="advanced_summary">Idioma de la app y otros ajustes para usuarios expertos.</string>
     <string name="update_title">Actualización</string>
@@ -663,6 +663,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="queue_height_summary">Fija la altura de la cola de reproducción a la mitad de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Toque único en la carátula</string>
     <string name="double_tap_on_album_cover_title">Doble toque en la carátula</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Presión larga en la carátula</string>
     <string name="small_image_title">Imagen pequeña</string>
     <string name="small_image_summary">Reduce el tamaño de la carátula en los estilos que lo soportan.</string>
@@ -676,8 +678,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="animate_controls_summary">Se reproduce al expandir el panel del reproductor.</string>
     <string name="swipe_anywhere_title">Deslizamiento en cualquier parte</string>
     <string name="swipe_anywhere_summary">Deslice hacia la izquierda o la derecha en cualquier área vacía del reproductor para saltar canciones.</string>
-    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
-    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
+    <string name="swipe_up_queue_title">Deslizar hacia arriba para abrir la cola</string>
+    <string name="swipe_up_queue_summary">Desliza hacia arriba en cualquier área vacía del reproductor para mostrar la cola de reproducción.</string>
     <string name="display_album_name_title">Mostrar nombre del álbum</string>
     <string name="display_extra_info_title">Mostrar información adicional</string>
     <string name="display_extra_info_summary">Muestra información adicional sobre la canción en reproducción, como tasa de bits, formato, muestreo, etc.</string>
@@ -752,7 +754,6 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="min_song_duration_title">Duración mínima de la canción</string>
     <string name="min_song_duration_summary">Cuántos segundos debería (como mínimo) durar una canción para aparecer en la biblioteca.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Línea extra de texto</string>
     <string name="app_language_title">Idioma de la app</string>
     <string name="backup_data_title">Respaldar datos</string>
     <string name="backup_app_data_summary">Crea un archivo que contiene los datos esenciales de la app y lo guarda en el almacenamiento.</string>
@@ -794,7 +795,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="zoom_out">Alejar</string>
     <string name="simple">Simple</string>
     <string name="stack">Pila</string>
-    <string name="parallax">Parallax</string>
+    <string name="parallax">Paralaje</string>
     <string name="add_after_playing_track">Añadir después de la pista en reproducción</string>
     <string name="add_tracks_sequentially">Añadir pistas de forma secuencial</string>
     <string name="albums_shuffle">Mezcla de álbumes</string>

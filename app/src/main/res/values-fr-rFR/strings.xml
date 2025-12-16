@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">Jouer</string>
-    <string name="action_play_all">Jouer tout</string>
+    <string name="action_play">Lire</string>
+    <string name="action_play_all">Tout lire</string>
     <string name="action_shuffle_play">Lecture aléatoire</string>
     <string name="action_queue_next">Ajouter a la liste de lecture</string>
     <string name="shuffle_all_label">Tout mélanger</string>
@@ -14,6 +14,8 @@
     <string name="action_next">Suivant</string>
     <string name="action_previous">Précédent</string>
     <string name="action_cancel">Annuler</string>
+    <string name="action_seek_backward">Chercher en arrière</string>
+    <string name="action_seek_forward">Chercher en avant</string>
     <string name="action_cycle_repeat">Mode de répétition du cycle</string>
     <string name="action_toggle_shuffle">Changer le mode de mélange</string>
     <string name="reset_action">Réinitialiser</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Certains fichiers ne sont pas répertoriés dans le magasin multimédia.</string>
     <string name="nothing_to_scan">Rien à analyser</string>
     <string name="select_storage_title">Sélectionner un espace de stockage</string>
-    <string name="app_widget_big_name">Gros</string>
-    <string name="app_widget_simple_name">Simple</string>
-    <string name="app_widget_small_name">Petit</string>
     <string name="now_playing">En cours de lecture</string>
     <string name="playing_queue_label">File de lecture</string>
     <string name="list_start">Début de liste</string>
@@ -293,7 +292,7 @@
     <string name="title">Titre</string>
     <string name="album">Album</string>
     <string name="artist">Artiste</string>
-    <string name="album_artist">Album-artiste</string>
+    <string name="album_artist">Artiste de l\'album</string>
     <string name="composer">Compositeur</string>
     <string name="conductor">Conducteur</string>
     <string name="publisher">Éditeur</string>
@@ -302,7 +301,7 @@
     <string name="release_years_label">Années</string>
     <string name="length">Durée</string>
     <string name="label_last_modified">Dernière modification</string>
-    <string name="label_audio_header">En-tête audio</string>
+    <string name="label_channels">Chaînes</string>
     <string name="label_variable_bitrate">Débit binaire variable</string>
     <string name="label_loss_less">Moins de perte</string>
     <string name="label_bit_rate">Débit binaire</string>
@@ -543,6 +542,8 @@
     <string name="view_profile_on_github">Voir le profil sur GitHub</string>
     <string name="follow_on_telegram">DM sur Telegram</string>
     <string name="write_an_email">Écrire un e-mail</string>
+    <string name="buy_me_a_coffee">Offrez-moi un café</string>
+    <string name="buy_me_a_coffee_summary">Vous pouvez faire un petit don si vous pensez que mon travail le mérite.</string>
     <string name="support_development">Soutenir le développement</string>
     <string name="help_with_translations">Aide à la traduction</string>
     <string name="help_with_translations_summary">Vous pouvez contribuer au projet en aidant à traduire Booming Music dans d\'autres langues.</string>
@@ -577,7 +578,6 @@
     <string name="metadata_summary">Paramètres liés aux images de l\'album et des artistes.</string>
     <string name="library_title">Bibliothèque</string>
     <string name="library_summary">Paramètres des playlists et des filtres d\'exclusion/inclusion.</string>
-    <string name="notification_title">Notification</string>
     <string name="advanced_title">Avancé</string>
     <string name="advanced_summary">Langue de l\'application et autres paramètres pour les utilisateurs avancés.</string>
     <string name="update_title">Mise à jour</string>
@@ -665,6 +665,8 @@
     <string name="queue_height_summary">Changer la hauteur de la file de lecture en demi-écran.</string>
     <string name="single_tap_on_album_cover_title">Appuyez une fois sur la couverture</string>
     <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
+    <string name="double_tap_on_left_album_cover_title">Double-clic sur le bord gauche de la pochette</string>
+    <string name="double_tap_on_right_album_cover_title">Double-clic sur le bord droit de la pochette</string>
     <string name="long_press_on_album_cover_title">Appui long sur la couverture</string>
     <string name="small_image_title">Petite image</string>
     <string name="small_image_summary">Réduis la taille de la couverture dans les styles supportés.</string>
@@ -756,7 +758,6 @@
     <string name="min_song_duration_title">Durée minimale du titre</string>
     <string name="min_song_duration_summary">Combien de secondes (au moins) doit durer un titre pour être affiché dans votre bibliothèque.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Ligne de texte supplémentaire</string>
     <string name="app_language_title">Langue de l\'application</string>
     <string name="backup_data_title">Sauvegarder les données de l\'application</string>
     <string name="backup_app_data_summary">Créez un fichier contenant les données essentielles de l\'application et enregistrez-le sur le stockage externe.</string>

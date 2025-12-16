@@ -14,6 +14,8 @@
     <string name="action_next">Další</string>
     <string name="action_previous">Předchozí</string>
     <string name="action_cancel">Zrušit</string>
+    <string name="action_seek_backward">Seek backward</string>
+    <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Režim opakování cyklu</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>
@@ -154,9 +156,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Některé soubory nejsou uvedeny v úložišti médií.</string>
     <string name="nothing_to_scan">Nic ke skenování</string>
     <string name="select_storage_title">Vyberte úložiště</string>
-    <string name="app_widget_big_name">Velký</string>
-    <string name="app_widget_simple_name">Jednoduchý</string>
-    <string name="app_widget_small_name">Malá</string>
     <string name="now_playing">Právě hraje</string>
     <string name="playing_queue_label">Fronta přehrávání</string>
     <string name="list_start">List start</string>
@@ -293,7 +292,7 @@
     <string name="title">Hlava 1 – Celkem</string>
     <string name="album">Album</string>
     <string name="artist">Umělec</string>
-    <string name="album_artist">Albový umělec</string>
+    <string name="album_artist">Album Artist</string>
     <string name="composer">Skladatel</string>
     <string name="conductor">Vedení</string>
     <string name="publisher">Vydavatel</string>
@@ -302,7 +301,7 @@
     <string name="release_years_label">Roky</string>
     <string name="length">Délka</string>
     <string name="label_last_modified">Naposledy upraveno</string>
-    <string name="label_audio_header">Zvuková hlavička</string>
+    <string name="label_channels">Channels</string>
     <string name="label_variable_bitrate">Proměnný bitrate</string>
     <string name="label_loss_less">Méně ztráty</string>
     <string name="label_bit_rate">Bitrate</string>
@@ -559,6 +558,8 @@
     <string name="view_profile_on_github">Zobrazit profil na GitHub</string>
     <string name="follow_on_telegram">DM na Telegramu</string>
     <string name="write_an_email">Napsat e-mail</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Podpořte vývoj</string>
     <string name="help_with_translations">Pomoc s překlady</string>
     <string name="help_with_translations_summary">Můžete přispět k projektu tím, že pomůžete přeložit hudbu Booming do jiných jazyků.</string>
@@ -593,7 +594,6 @@
     <string name="metadata_summary">Nastavení týkající se obrázků alba a umělců.</string>
     <string name="library_title">Knihovna</string>
     <string name="library_summary">Nastavení seznamů skladeb a filtrů pro vyloučení/zahrnutí.</string>
-    <string name="notification_title">Oznamování</string>
     <string name="advanced_title">Rozšířené</string>
     <string name="advanced_summary">Jazyk aplikace a další nastavení pro pokročilé uživatele.</string>
     <string name="update_title">Aktualizovat</string>
@@ -681,6 +681,8 @@
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dvojím poklepáním na obal</string>
+    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
+    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
     <string name="long_press_on_album_cover_title">Dlouhým stiskem na obalu</string>
     <string name="small_image_title">Small image</string>
     <string name="small_image_summary">Reduces the cover size in supported styles.</string>
@@ -772,7 +774,6 @@
     <string name="min_song_duration_title">Minimální doba trvání skladby</string>
     <string name="min_song_duration_summary">Kolik sekund (alespoň) musí trvat skladba, aby se zobrazila ve vaší knihovně.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Další řádek textu</string>
     <string name="app_language_title">Jazyk aplikace</string>
     <string name="backup_data_title">Zálohovat data aplikace</string>
     <string name="backup_app_data_summary">Vytvořte soubor obsahující základní data aplikace a uložte jej do externího úložiště.</string>
