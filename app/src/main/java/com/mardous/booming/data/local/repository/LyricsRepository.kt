@@ -4,11 +4,11 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
-import com.mardous.booming.appContext
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.MetadataWriter
+import com.mardous.booming.data.local.lyrics.InstrumentalDetector
 import com.mardous.booming.data.local.lyrics.lrc.LrcLyricsParser
 import com.mardous.booming.data.local.lyrics.ttml.TtmlLyricsParser
 import com.mardous.booming.data.local.room.LyricsDao
@@ -68,8 +68,20 @@ class RealLyricsRepository(
         }
     )
 
+    private fun createInstrumentalDetector() =
+        InstrumentalDetector(
+            identifiers = preferences.getString(INSTRUMENTAL_TRACK_IDENTIFIERS, null)
+                ?.split(",").orEmpty().toSet(),
+            markByTitle = preferences.getBoolean(MARK_INSTRUMENTAL_BY_TITLE, false),
+            maxLength = INSTRUMENTAL_IDENTIFIER_MAX_LENGTH
+        )
+
     private fun getCachedLyrics(songId: Long): LyricsResult? {
         return lyricsCache[songId]
+    }
+
+    private fun cacheInstrumentalLyrics(songId: Long): LyricsResult {
+        return cacheLyrics(songId, LyricsResult(songId, instrumental = true))
     }
 
     private fun cacheLyrics(songId: Long, result: LyricsResult): LyricsResult {
@@ -114,25 +126,19 @@ class RealLyricsRepository(
             getCachedLyrics(song.id)?.let { return it }
         }
 
-        val instrumentalIdentifiers = preferences.getString(INSTRUMENTAL_TRACK_IDENTIFIERS, null)
-            ?.split(",").orEmpty()
-        if (preferences.getBoolean(MARK_INSTRUMENTAL_BY_TITLE, false)) {
-            if (instrumentalIdentifiers.any { song.title.contains(it, ignoreCase = true) }) {
-                return cacheLyrics(song.id, LyricsResult(song.id, instrumental = true))
-            }
+        val instrumentalDetector = createInstrumentalDetector()
+        if (instrumentalDetector.byTitle(song.title)) {
+            return cacheInstrumentalLyrics(song.id)
         }
 
         val embeddedLyrics = embeddedLyrics(song, requirePlainText = false).orEmpty()
-        if (embeddedLyrics.length <= INSTRUMENTAL_IDENTIFIER_MAX_LENGTH &&
-            instrumentalIdentifiers.contains(embeddedLyrics)) {
-            return cacheLyrics(song.id, LyricsResult(song.id, instrumental = true))
+        if (instrumentalDetector.byLyrics(embeddedLyrics)) {
+            return cacheInstrumentalLyrics(song.id)
         }
 
         val storedLyrics = lyricsDao.getLyrics(song.id)
-        if (storedLyrics != null &&
-            storedLyrics.syncedLyrics.length <= INSTRUMENTAL_IDENTIFIER_MAX_LENGTH &&
-            instrumentalIdentifiers.contains(storedLyrics.syncedLyrics)) {
-            return cacheLyrics(song.id, LyricsResult(song.id, instrumental = true))
+        if (instrumentalDetector.byLyrics(storedLyrics?.syncedLyrics)) {
+            return cacheInstrumentalLyrics(song.id)
         }
 
         val embeddedLyricsParser = lyricsParsers.firstOrNull { it.handles(embeddedLyrics) }
@@ -288,6 +294,11 @@ class RealLyricsRepository(
             }
             return true
         } else {
+            val instrumentalDetector = createInstrumentalDetector()
+            if (instrumentalDetector.byLyrics(lyrics)) {
+                lyricsDao.insertLyrics(song.toLyricsEntity(lyrics))
+                return true
+            }
             val parser = lyricsParsers.firstOrNull { it.handles(lyrics) }
             val parsedLyrics = parser?.parse(lyrics, song.duration)
             if (parsedLyrics?.hasContent == true) {
@@ -381,7 +392,7 @@ class RealLyricsRepository(
     companion object {
         private const val CACHE_SIZE = 50
         private const val INSTRUMENTAL_IDENTIFIER_MAX_LENGTH = 50
-        private const val DEFAULT_INSTRUMENTAL_IDENTIFIER = "[Instrumental]"
+        private const val DEFAULT_INSTRUMENTAL_IDENTIFIER = "(Instrumental)"
         private const val INSTRUMENTAL_TRACK_IDENTIFIERS = "instrumental_track_identifiers"
         private const val MARK_INSTRUMENTAL_BY_TITLE = "mark_instrumental_tracks_by_title"
     }

@@ -9,6 +9,7 @@
 		Nawa, Neptune, rAsC, sad, SagXD, TheHHR.</string>
 
 	<string name="empty_text_emoji" translatable="false">&#128561;</string>
+    <string name="instrumental_identifiers" translatable="false">(Instrumental)</string>
 
 	<string name="google" translatable="false">Google</string>
 	<string name="lastfm" translatable="false">Last.fm</string>

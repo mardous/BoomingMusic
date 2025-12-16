@@ -178,6 +178,7 @@
             app:title="@string/instrumental_tracks_identifiers_title"
             app:summary="@string/instrumental_tracks_identifiers_summary"
             app:layout="@layout/list_item_view"
+            app:defaultValue="@string/instrumental_identifiers"
             app:key="instrumental_track_identifiers"/>
 
         <SwitchPreferenceCompat

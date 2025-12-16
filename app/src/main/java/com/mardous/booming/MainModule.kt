@@ -214,6 +214,7 @@ private val dataModule = module {
     single {
         RealLyricsRepository(
             context = androidContext(),
+            preferences = get(),
             contentResolver = get(),
             lyricsDownloadService = get(),
             lyricsDao = get()
