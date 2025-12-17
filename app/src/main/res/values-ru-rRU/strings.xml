@@ -616,7 +616,7 @@
     <string name="shuffle_mode_header">Режим перемешивания</string>
     <string name="display_header">Отображение</string>
     <string name="backup_restore_header">Резервное копирование/восстановление</string>
-    <string name="visuals_header">Visuals</string>
+    <string name="visuals_header">Визуальные эффекты</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Общая тема</string>
     <string name="pure_black_theme_title">Чистый черный</string>
@@ -641,9 +641,9 @@
     <string name="lyrics_syllable_mode_title">Пословная синхронизация</string>
     <string name="lyrics_syllable_mode_summary">Позволяет отображать текст с пословной синхронизацией. Зависит от наличия текста и совместимого формата (LRC или TTML).</string>
     <string name="lyrics_effects_note">Расширенные эффекты улучшают визуализацию, но могут потреблять больше ресурсов и заряда батареи.</string>
-    <string name="lyrics_background_effect_title">Background effect</string>
-    <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
+    <string name="lyrics_background_effect_title">Эффект фона</string>
+    <string name="lyrics_background_gradient">Градиент</string>
+    <string name="lyrics_background_canvas">Canvas (если доступно)</string>
     <string name="lyrics_blur_effect_title">Эффект размытия</string>
     <string name="lyrics_blur_effect_summary">Размывать строки текста, соседние с текущей</string>
     <string name="lyrics_shadow_effect_title">Эффект тени</string>
@@ -664,11 +664,11 @@
     <string name="synced_font_size_full_summary">Размер шрифта синхронизированного текста на отдельном экране текста.</string>
     <string name="unsynced_font_size_full_title">Размер обычного текста (полный экран)</string>
     <string name="unsynced_font_size_full_summary">Размер шрифта несинхронизированного текста на отдельном экране текста.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
-    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="instrumental_tracks_identifiers_title">Маркеры инструментальных треков</string>
+    <string name="instrumental_tracks_identifiers_summary">Если текст песни состоит только
+        из одного или нескольких таких индикаторов, трек будет помечен как инструментальный (перечисляются через запятую).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Определять по названию</string>
+    <string name="instrumental_tracks_mark_by_title_summary">Название трека также будет учитываться при поиске маркеров.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Стиль</string>
     <string name="open_on_play_title">Открывать при воспроизведении</string>
