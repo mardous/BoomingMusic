@@ -24,18 +24,18 @@ class RealCanvasRepository(
             val song = songRepository.song(id)
             val canvas = canvasDao.getCanvas(song.id)
             val currentTimeMs = System.currentTimeMillis()
-            if (canvas == null || (canvas.fetchTimeMs - currentTimeMs) > CANVAS_VALIDITY_MS) {
+            if (canvas == null || (currentTimeMs - canvas.fetchTimeMs) > CANVAS_VALIDITY_MS) {
                 canvas?.let { canvasDao.deleteCanvas(it) }
 
                 if (song.isArtistNameUnknown() || !context.isAllowedToDownloadMetadata())
                     return null
 
                 val onlineResult = canvasService.canvas(song.artistName, song.title)
-                if (onlineResult.success && onlineResult.canvases.data.isNotEmpty()) {
-                    val data = onlineResult.canvases.data.first()
+                if (onlineResult.isNotEmpty()) {
+                    val data = onlineResult.first()
                     val entity = CanvasEntity(
                         id = song.id,
-                        url = data.canvasUrl,
+                        url = data.url,
                         fetchTimeMs = currentTimeMs
                     )
                     canvasDao.insertCanvas(entity)

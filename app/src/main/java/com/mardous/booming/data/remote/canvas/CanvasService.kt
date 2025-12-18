@@ -10,5 +10,5 @@ class CanvasService(private val client: HttpClient) {
     suspend fun canvas(artistName: String, title: String) =
         client.get("https://booming-music-api.vercel.app/api/canvas") {
             url { encodedParameters.append("q", "$artistName $title".encodeURLParameter()) }
-        }.body<CanvasResult>()
+        }.body<List<CanvasResult>>()
 }

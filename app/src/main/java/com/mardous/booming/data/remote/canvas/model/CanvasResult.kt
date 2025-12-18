@@ -5,20 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class CanvasResult(
-    @SerialName("ok")
-    val success: Boolean,
-    @SerialName("data")
-    val canvases: Canvases
-)
-
-@Serializable
-class Canvases(
-    @SerialName("canvasesList")
-    val data: List<CanvasData>
-)
-
-@Serializable
-class CanvasData(
-    val trackUri: String,
-    val canvasUrl: String
+    @SerialName("videoUrl")
+    val url: String
 )
