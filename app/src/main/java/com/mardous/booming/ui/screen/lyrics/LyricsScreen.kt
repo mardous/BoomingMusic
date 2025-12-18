@@ -157,7 +157,7 @@ fun LyricsScreen(
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
-                                    .background(Color(0f, 0f, 0f, 0.6f))
+                                    .background(Color(0f, 0f, 0f, 0.75f))
                             )
                         }
                         hasBackgroundEffects = true
@@ -271,21 +271,17 @@ private fun LyricsSurface(
     onSeekToLine: (Lyrics.Line) -> Unit
 ) {
     val colorScheme = MaterialTheme.colorScheme
-    val contentColor by remember(hasBackgroundEffects, settings) {
-        derivedStateOf {
-            when {
-                hasBackgroundEffects -> Color.White
-                else -> when (settings.mode) {
-                    LyricsViewSettings.Mode.Player -> colorScheme.onSurface
-                    else -> colorScheme.secondary
-                }
-            }
+    val contentColor = when {
+        hasBackgroundEffects -> Color.White
+        else -> when (settings.mode) {
+            LyricsViewSettings.Mode.Player -> colorScheme.onSurface
+            else -> colorScheme.secondary
         }
     }
-
     Box(modifier) {
         if (result.loading) {
             CircularProgressIndicator(
+                color = contentColor,
                 modifier = Modifier.align(Alignment.Center)
             )
         } else {
