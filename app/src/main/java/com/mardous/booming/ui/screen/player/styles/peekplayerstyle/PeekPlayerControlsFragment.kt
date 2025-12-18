@@ -25,10 +25,7 @@ import android.view.View
 import android.widget.TextView
 import com.google.android.material.button.MaterialButton
 import com.mardous.booming.R
-import com.mardous.booming.core.model.player.PlayerColorScheme
-import com.mardous.booming.core.model.player.PlayerTintTarget
-import com.mardous.booming.core.model.player.iconButtonTintTarget
-import com.mardous.booming.core.model.player.tintTarget
+import com.mardous.booming.core.model.player.*
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPeekPlayerPlaybackControlsBinding
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
@@ -89,8 +86,13 @@ class PeekPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_p
             scheme.primaryControlColor,
             scheme.secondaryControlColor
         )
+        val newSliderColor = if (scheme.mode == PlayerColorSchemeMode.VibrantColor) {
+            scheme.primaryControlColor
+        } else {
+            scheme.emphasisColor
+        }
         return listOfNotNull(
-            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.emphasisColor),
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor, newSliderColor),
             binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
             binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
             binding.playPauseButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),

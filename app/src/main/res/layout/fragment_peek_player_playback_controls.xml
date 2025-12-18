@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="8dp"
     android:layoutDirection="ltr">
 
     <com.google.android.material.textview.MaterialTextView
@@ -47,11 +46,12 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/playPauseButton"
-        style="@style/PlayerIconButton.Large"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        style="@style/PlayerIconButton.Medium"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_marginTop="16dp"
         app:icon="@drawable/ic_play_24dp"
+        app:iconSize="56dp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toStartOf="@+id/nextButton"
         app:layout_constraintStart_toEndOf="@+id/previousButton"
@@ -85,6 +85,7 @@
         style="@style/PlayerIconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         app:icon="@drawable/ic_repeat_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/previousButton"
         app:layout_constraintEnd_toStartOf="@+id/previousButton"
@@ -96,6 +97,7 @@
         style="@style/PlayerIconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         app:icon="@drawable/ic_shuffle_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/nextButton"
         app:layout_constraintEnd_toEndOf="parent"

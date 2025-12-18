@@ -26,6 +26,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
+import com.google.android.material.color.MaterialColors
 import com.mardous.booming.R
 import com.mardous.booming.core.model.player.*
 import com.mardous.booming.core.model.theme.NowPlayingScreen
@@ -56,16 +57,21 @@ class PeekPlayerFragment : AbsPlayerFragment(R.layout.fragment_peek_player) {
     override val playerToolbar: Toolbar
         get() = binding.playerToolbar
 
+    private var primaryControlColor: Int = 0
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPeekPlayerBinding.bind(view)
         setupToolbar()
         inflateMenuInView(playerToolbar)
         ViewCompat.setOnApplyWindowInsetsListener(view) { v: View, insets: WindowInsetsCompat ->
-            val navigationBar = insets.getInsets(Type.systemBars())
-            v.updatePadding(bottom = navigationBar.bottom)
             val displayCutout = insets.getInsets(Type.displayCutout())
             v.updatePadding(left = displayCutout.left, right = displayCutout.right)
+            insets
+        }
+        ViewCompat.setOnApplyWindowInsetsListener(binding.songInfo) { v: View, insets: WindowInsetsCompat ->
+            val navigationBar = insets.getInsets(Type.systemBars())
+            v.updatePadding(bottom = navigationBar.bottom)
             insets
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
@@ -98,8 +104,9 @@ class PeekPlayerFragment : AbsPlayerFragment(R.layout.fragment_peek_player) {
 
     override fun onMenuInflated(menu: Menu) {
         super.onMenuInflated(menu)
-        menu.setShowAsAction(R.id.action_playing_queue)
         menu.setShowAsAction(R.id.action_favorite)
+        menu.setShowAsAction(R.id.action_playing_queue)
+        menu.setShowAsAction(R.id.action_show_lyrics)
     }
 
     override fun onCreateChildFragments() {
@@ -108,10 +115,18 @@ class PeekPlayerFragment : AbsPlayerFragment(R.layout.fragment_peek_player) {
     }
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
+        val oldPrimaryControlColor = this.primaryControlColor
+        primaryControlColor = scheme.primaryControlColor
         val oldPrimaryTextColor = binding.title.currentTextColor
         val oldSecondaryTextColor = binding.text.currentTextColor
+        val newSurfaceColor = if (scheme.mode == PlayerColorSchemeMode.AppTheme) {
+            MaterialColors.getColor(binding.root, com.google.android.material.R.attr.colorSurfaceContainerLow)
+        } else {
+            scheme.surfaceColor
+        }
         return mutableListOf(
-            binding.root.surfaceTintTarget(scheme.surfaceColor),
+            binding.root.surfaceTintTarget(newSurfaceColor),
+            binding.playerToolbar.tintTarget(oldPrimaryControlColor, primaryControlColor),
             binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
             binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
             binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
