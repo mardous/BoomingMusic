@@ -185,17 +185,17 @@ class PlaybackService :
                         override fun buildAudioSink(
                             context: Context,
                             enableFloatOutput: Boolean,
-                            enableAudioTrackPlaybackParams: Boolean
+                            enableAudioOutputPlaybackParams: Boolean
                         ): AudioSink {
                             return DefaultAudioSink.Builder(this@PlaybackService)
                                 .setAudioProcessors(arrayOf(replayGainProcessor, balanceProcessor))
                                 .setEnableFloatOutput(enableFloatOutput)
-                                .setEnableAudioTrackPlaybackParams(enableAudioTrackPlaybackParams)
+                                .setEnableAudioOutputPlaybackParameters(enableAudioOutputPlaybackParams)
                                 .build()
                         }
                     }
                     .setEnableAudioFloatOutput(soundSettings.audioFloatOutput)
-                    .setEnableAudioTrackPlaybackParams(true)
+                    .setEnableAudioOutputPlaybackParameters(true)
                 )
                 .setMediaSourceFactory(
                     DefaultMediaSourceFactory(
@@ -617,7 +617,8 @@ class PlaybackService :
 
     override fun onPlaybackResumption(
         mediaSession: MediaSession,
-        controller: MediaSession.ControllerInfo
+        controller: MediaSession.ControllerInfo,
+        isForPlayback: Boolean
     ): ListenableFuture<MediaItemsWithStartPosition> {
         if (persistentStorage.restorationState.isRestored) {
             return Futures.immediateFailedFuture(IllegalStateException("No MediaItems saved"))
@@ -747,12 +748,12 @@ class PlaybackService :
             }
 
             REWIND_WITH_BACK -> {
-                player.maxSeekToPreviousPosition = maxSeekToPreviousMs
+                player.exoPlayer.setMaxSeekToPreviousPositionMs(maxSeekToPreviousMs)
             }
 
             SEEK_INTERVAL -> {
-                player.seekBackIncrement = seekInterval
-                player.seekForwardIncrement = seekInterval
+                player.exoPlayer.setSeekBackIncrementMs(seekInterval)
+                player.exoPlayer.setSeekForwardIncrementMs(seekInterval)
             }
 
             PAUSE_ON_ZERO_VOLUME -> {
