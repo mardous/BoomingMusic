@@ -295,6 +295,8 @@
     <string name="label_file_path">File path</string>
     <string name="size">File size</string>
     <string name="label_file_format">Format</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Title and Artist</string>
     <string name="song">Song</string>
     <string name="title">Title</string>

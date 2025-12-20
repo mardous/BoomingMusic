@@ -2,6 +2,7 @@ package com.mardous.booming.ui.screen.sound
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -31,10 +31,6 @@ import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.compose.*
 import java.util.Locale
 import kotlin.math.roundToInt
-
-private val LocalCardColor = compositionLocalOf {
-    Color.White
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -89,156 +85,168 @@ fun SoundSettingsSheet(
         ) { showSkipSilenceDialog = false }
     }
 
-    CompositionLocalProvider(
-        LocalCardColor provides MaterialTheme.colorScheme.surfaceContainerLowest
-    ) {
-        BottomSheetDialogSurface {
+    BottomSheetDialogSurface {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+        ) {
+            BottomSheetDefaults.DragHandle(
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 24.dp)
+                    .padding(horizontal = 16.dp)
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                BottomSheetDefaults.DragHandle(
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                Text(
+                    text = stringResource(R.string.sound_settings),
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold
                 )
 
-                TitledSection(stringResource(R.string.sound_settings)) {
-                    AudioDeviceInfo(
-                        outputDevice = outputDevice,
-                        expanded = expandedSoundSettings,
-                        onClick = {
-                            viewModel.showOutputDeviceSelector(context)
-                        },
-                        onExpandClick = {
-                            expandedSoundSettings = expandedSoundSettings.not()
-                        }
-                    ) {
-                        Column(modifier = Modifier.fillMaxWidth()) {
-                            LabeledSwitch(
-                                checked = audioOffload,
-                                text = stringResource(R.string.enable_audio_offload_title),
-                                textStyle = MaterialTheme.typography.bodyMedium,
-                                icon = { SoundOptionInfoIcon { showAudioOffloadDialog = true } }
-                            ) { checked ->
-                                viewModel.setEnableAudioOffload(checked)
-                            }
-
-                            LabeledSwitch(
-                                checked = audioFloatOutput,
-                                text = stringResource(R.string.enable_audio_float_output_title),
-                                textStyle = MaterialTheme.typography.bodyMedium,
-                                icon = { SoundOptionInfoIcon { showAudioFloatOutputDialog = true } }
-                            ) { checked ->
-                                viewModel.setEnableAudioFloatOutput(checked)
-                            }
-
-                            LabeledSwitch(
-                                checked = skipSilence,
-                                enabled = enableAudioEffects,
-                                text = stringResource(R.string.skip_silence_title),
-                                textStyle = MaterialTheme.typography.bodyMedium,
-                                icon = { SoundOptionInfoIcon { showSkipSilenceDialog = true } }
-                            ) { checked ->
-                                viewModel.setEnableSkipSilences(checked)
-                            }
-                        }
+                AudioDeviceInfo(
+                    outputDevice = outputDevice,
+                    expanded = expandedSoundSettings,
+                    onClick = {
+                        viewModel.showOutputDeviceSelector(context)
+                    },
+                    onExpandClick = {
+                        expandedSoundSettings = expandedSoundSettings.not()
                     }
-                }
-
-                TitledSection(
-                    text = stringResource(R.string.volume_label),
-                    modifier = Modifier.padding(top = 4.dp),
-                    titleEndContent = { TitleEndText("${volume.volumePercent.roundToInt()}%") }
                 ) {
-                    Slider(
-                        enabled = !volume.isFixed,
-                        value = volume.currentVolume.toFloat(),
-                        valueRange = volume.range,
-                        onValueChange = {
-                            viewModel.setVolume(it.toInt())
-                        },
-                        modifier = Modifier.fillMaxWidth()
-                    )
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        LabeledSwitch(
+                            checked = audioOffload,
+                            text = stringResource(R.string.enable_audio_offload_title),
+                            textStyle = MaterialTheme.typography.bodyMedium,
+                            icon = { SoundOptionInfoIcon { showAudioOffloadDialog = true } }
+                        ) { checked ->
+                            viewModel.setEnableAudioOffload(checked)
+                        }
 
-                    AnimatedVisibility(
-                        visible = enableAudioEffects,
-                        modifier = Modifier.padding(top = 8.dp)
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(20.dp),
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier.weight(1f)
-                            ) {
-                                ShapedText(
-                                    text = "L",
-                                    textColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                                    shape = RoundedCornerShape(4.dp),
-                                    shapeColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                    style = MaterialTheme.typography.labelSmall
-                                )
-                                Slider(
-                                    value = balance.left,
-                                    valueRange = balance.range,
-                                    onValueChange = {
-                                        viewModel.setBalance(left = it, apply = false)
-                                    },
-                                    onValueChangeFinished = {
-                                        viewModel.applyPendingState()
-                                    },
-                                    modifier = Modifier.fillMaxWidth()
-                                )
+                        LabeledSwitch(
+                            checked = audioFloatOutput,
+                            text = stringResource(R.string.enable_audio_float_output_title),
+                            textStyle = MaterialTheme.typography.bodyMedium,
+                            icon = {
+                                SoundOptionInfoIcon {
+                                    showAudioFloatOutputDialog = true
+                                }
                             }
+                        ) { checked ->
+                            viewModel.setEnableAudioFloatOutput(checked)
+                        }
+
+                        LabeledSwitch(
+                            checked = skipSilence,
+                            enabled = enableAudioEffects,
+                            text = stringResource(R.string.skip_silence_title),
+                            textStyle = MaterialTheme.typography.bodyMedium,
+                            icon = { SoundOptionInfoIcon { showSkipSilenceDialog = true } }
+                        ) { checked ->
+                            viewModel.setEnableSkipSilences(checked)
+                        }
+                    }
+                }
+
+                TitledSurface(
+                    title = stringResource(R.string.volume_label),
+                    iconRes = R.drawable.ic_volume_up_24dp,
+                    titleEndContent = { TitleShapedText("${volume.volumePercent.roundToInt()}%") },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Slider(
+                            enabled = !volume.isFixed,
+                            value = volume.currentVolume.toFloat(),
+                            valueRange = volume.range,
+                            onValueChange = {
+                                viewModel.setVolume(it.toInt())
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        AnimatedVisibility(visible = enableAudioEffects) {
                             Row(
-                                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier.weight(1f)
+                                horizontalArrangement = Arrangement.spacedBy(20.dp),
+                                modifier = Modifier.fillMaxWidth()
                             ) {
-                                ShapedText(
-                                    text = "R",
-                                    textColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                                    shape = RoundedCornerShape(4.dp),
-                                    shapeColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                    style = MaterialTheme.typography.labelSmall
-                                )
-                                Slider(
-                                    value = balance.right,
-                                    valueRange = balance.range,
-                                    onValueChange = {
-                                        viewModel.setBalance(right = it, apply = false)
-                                    },
-                                    onValueChangeFinished = {
-                                        viewModel.applyPendingState()
-                                    },
-                                    modifier = Modifier.fillMaxWidth()
-                                )
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    ShapedText(
+                                        text = "L",
+                                        textColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                        shape = RoundedCornerShape(4.dp),
+                                        shapeColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                        style = MaterialTheme.typography.labelSmall
+                                    )
+                                    Slider(
+                                        value = balance.left,
+                                        valueRange = balance.range,
+                                        onValueChange = {
+                                            viewModel.setBalance(left = it, apply = false)
+                                        },
+                                        onValueChangeFinished = {
+                                            viewModel.applyPendingState()
+                                        },
+                                        modifier = Modifier.fillMaxWidth()
+                                    )
+                                }
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    ShapedText(
+                                        text = "R",
+                                        textColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                        shape = RoundedCornerShape(4.dp),
+                                        shapeColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                        style = MaterialTheme.typography.labelSmall
+                                    )
+                                    Slider(
+                                        value = balance.right,
+                                        valueRange = balance.range,
+                                        onValueChange = {
+                                            viewModel.setBalance(right = it, apply = false)
+                                        },
+                                        onValueChangeFinished = {
+                                            viewModel.applyPendingState()
+                                        },
+                                        modifier = Modifier.fillMaxWidth()
+                                    )
+                                }
                             }
                         }
                     }
                 }
 
-                TitledSection(
-                    text = stringResource(R.string.tempo_label),
+                TitledSurface(
+                    title = stringResource(R.string.tempo_label),
+                    iconRes = R.drawable.ic_graphic_eq_24dp,
                     titleEndContent = {
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            TitleEndText(tempo.formattedSpeed) {
+                            TitleShapedText(tempo.formattedSpeed) {
                                 viewModel.setTempo(isFixedPitch = tempo.isFixedPitch.not())
                             }
 
                             AnimatedVisibility(visible = tempo.isFixedPitch.not()) {
-                                TitleEndText(tempo.formattedPitch) {
+                                TitleShapedText(tempo.formattedPitch) {
                                     viewModel.setTempo(isFixedPitch = true)
                                 }
                             }
                         }
-                    }
+                    },
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Row(modifier = Modifier.fillMaxWidth()) {
@@ -292,13 +300,15 @@ fun SoundSettingsSheet(
                 AnimatedVisibility(visible = enableAudioEffects) {
                     var preamp by mutableFloatStateOf(replayGain.preamp)
 
-                    TitledSection(
-                        text = stringResource(R.string.replay_gain),
+                    TitledSurface(
+                        title = stringResource(R.string.replay_gain),
+                        iconRes = R.drawable.ic_sound_sampler_24dp,
                         titleEndContent = {
                             AnimatedVisibility(visible = replayGain.mode.isOn) {
-                                TitleEndText("%+.1f dB".format(Locale.ROOT, preamp))
+                                TitleShapedText("%+.1f dB".format(Locale.ROOT, preamp))
                             }
-                        }
+                        },
+                        modifier = Modifier.fillMaxWidth()
                     ) {
                         Column {
                             ReplayGainModeSelector(replayGain) {
@@ -356,9 +366,9 @@ private fun AudioDeviceInfo(
     expandableContent: @Composable () -> Unit
 ) {
     val colorScheme = MaterialTheme.colorScheme
-    val shapeCornerRadius by animateFloatAsState(targetValue = if (expanded) 16f else 32f)
+    val shapeCornerRadius by animateDpAsState(targetValue = if (expanded) 12.dp else 16.dp)
     val shapeColor by animateColorAsState(
-        targetValue = if (expanded) colorScheme.surfaceContainerLowest else colorScheme.tertiaryContainer
+        targetValue = if (expanded) colorScheme.surfaceContainerLowest else colorScheme.primaryContainer
     )
     val contentColor by animateColorAsState(
         targetValue = if (expanded) colorScheme.onSurface else colorScheme.onTertiaryContainer

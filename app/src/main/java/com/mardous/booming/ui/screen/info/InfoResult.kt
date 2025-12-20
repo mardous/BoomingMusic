@@ -14,11 +14,11 @@ data class AudioHeaderInfo(
     val bitrate: String? = null,
     val sampleRate: String? = null,
     val channels: String? = null,
-    val vbr: String? = null,
-    val lossless: String? = null
+    val variableBitrate: Boolean,
+    val lossless: Boolean
 )
 
-data class SongInfoResult(
+data class SongInfo(
     val playCount: String? = null,
     val skipCount: String? = null,
     val lastPlayedDate: String? = null,
@@ -42,6 +42,6 @@ data class SongInfoResult(
     val comment: String? = null
 ) {
     companion object {
-        val Empty = SongInfoResult()
+        val Empty = SongInfo()
     }
 }
