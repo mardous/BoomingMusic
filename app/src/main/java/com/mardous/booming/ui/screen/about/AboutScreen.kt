@@ -30,7 +30,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
@@ -45,6 +44,7 @@ import com.mardous.booming.R
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.core.model.about.DeviceInfo
 import com.mardous.booming.extensions.*
+import com.mardous.booming.ui.component.CollapsibleAppBarScaffold
 import com.mardous.booming.ui.component.compose.ActionButton
 import com.mardous.booming.ui.component.compose.lists.ContributionListItem
 import kotlinx.coroutines.launch
@@ -100,28 +100,9 @@ fun AboutScreen(
     val sendInvitationTitle = stringResource(R.string.send_invitation_message)
     val invitationMessage = stringResource(R.string.invitation_message_content, RELEASES_LINK)
 
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
-
-    Scaffold(
-        modifier = Modifier
-            .fillMaxSize()
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = {
-            MediumTopAppBar(
-                title = { Text(text = stringResource(R.string.about_title)) },
-                navigationIcon = {
-                    IconButton(onClick = onBackClick) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_back_24dp),
-                            contentDescription = null
-                        )
-                    }
-                },
-                scrollBehavior = scrollBehavior
-            )
-        },
-        contentWindowInsets = WindowInsets.safeDrawing
-            .only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)
+    CollapsibleAppBarScaffold(
+        title = stringResource(R.string.about_title),
+        onBackClick = onBackClick
     ) { contentPadding ->
         val scrollState = rememberScrollState()
 
