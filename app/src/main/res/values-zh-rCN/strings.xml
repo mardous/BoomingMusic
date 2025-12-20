@@ -531,8 +531,8 @@
     <string name="view_profile_on_github">在 GitHub 上查看个人资料</string>
     <string name="follow_on_telegram">Telegram 私信</string>
     <string name="write_an_email">电子邮件</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
+    <string name="buy_me_a_coffee">请我喝杯咖啡吧~</string>
+    <string name="buy_me_a_coffee_summary">如果您喜欢，请给与小额赞助支持。</string>
     <string name="support_development">支持开发</string>
     <string name="help_with_translations">帮助翻译</string>
     <string name="help_with_translations_summary">您可以通过帮助将Booming Music翻译成其他语言来为该项目做出贡献。</string>
@@ -587,7 +587,7 @@
     <string name="shuffle_mode_header">随机模式</string>
     <string name="display_header">显示</string>
     <string name="backup_restore_header">备份/恢复</string>
-    <string name="visuals_header">Visuals</string>
+    <string name="visuals_header">视觉效果</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">一般主题</string>
     <string name="pure_black_theme_title">纯黑色</string>
@@ -612,9 +612,9 @@
     <string name="lyrics_syllable_mode_title">逐字歌词滚动</string>
     <string name="lyrics_syllable_mode_summary">逐字同步滚动歌词。取决于歌词的可用性以及兼容的歌词格式，例如 LRC 或 TTML。</string>
     <string name="lyrics_effects_note">高级效果可增强视觉体验，但可能需要耗费更多系统资源和电量。</string>
-    <string name="lyrics_background_effect_title">Background effect</string>
-    <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
+    <string name="lyrics_background_effect_title">背景特效</string>
+    <string name="lyrics_background_gradient">渐变</string>
+    <string name="lyrics_background_canvas">画布(如果可用)</string>
     <string name="lyrics_blur_effect_title">模糊效果</string>
     <string name="lyrics_blur_effect_summary">模糊正播放的歌词的上下的几行歌词。</string>
     <string name="lyrics_shadow_effect_title">阴影效果</string>
@@ -635,11 +635,11 @@
     <string name="synced_font_size_full_summary">调整全屏歌词模式下显示的同步歌词的字体大小。</string>
     <string name="unsynced_font_size_full_title">非同步歌词字体大小（全屏模式）</string>
     <string name="unsynced_font_size_full_summary">调整全屏歌词模式下显示的非同步歌词的字体大小。</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
-    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="instrumental_tracks_identifiers_title">纯音乐曲目识别</string>
+    <string name="instrumental_tracks_identifiers_summary">若歌曲的歌词只包含
+        个或多个指示器，它将被标记为一首纯音乐(用逗号隔开)。</string>
+    <string name="instrumental_tracks_mark_by_title_title">按标题标记</string>
+    <string name="instrumental_tracks_mark_by_title_summary">在搜寻识别资料时，还将考虑曲目标题。</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">样式</string>
     <string name="open_on_play_title">播放时打开</string>
