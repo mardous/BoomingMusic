@@ -40,7 +40,7 @@
     <string name="what_do_you_want_to_share">您想分享什么？</string>
     <string name="the_audio_file">音频文件</string>
     <string name="i_am_listening">我正在听…</string>
-    <string name="currently_listening_to_x_by_x">我正在用 %1$s 聆听 %2$s</string>
+    <string name="currently_listening_to_x_by_x">我正在收听%2$s的%1$s</string>
     <string name="share_to_stories">分享到动态</string>
     <string name="could_not_create_the_story">无法创建动态。</string>
     <string name="back_action">返回</string>
@@ -135,7 +135,7 @@
     <string name="permission_bluetooth_title">附近设备</string>
     <string name="permission_bluetooth_description">此应用需要附近的设备权限来检查蓝牙设备</string>
     <string name="permission_bluetooth_denied">附近设备权限被拒绝。</string>
-    <string name="permission_read_images_title">查看照片（可选）</string>
+    <string name="permission_read_images_title">查看图片（可选）</string>
     <string name="permission_read_images_summary">为了帮您自动查找并显示歌曲的专辑封面，Booming Music需要获取访问您音乐文件夹的权限。
 您可以根据需要决定是否授予此权限。</string>
     <string name="permission_read_images_denied">您需要授予访问所有文件的权限以允许软件读取封面图片。</string>
