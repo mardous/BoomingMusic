@@ -50,8 +50,8 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) : Albu
     override fun albums(query: String): List<Album> {
         val songs = songRepository.songs(
             songRepository.makeSongCursor(
-                selection = "${AudioColumns.ALBUM} LIKE ? OR ${AudioColumns.ALBUM_ARTIST} LIKE ? OR ${AudioColumns.ARTIST} LIKE ?",
-                selectionValues = arrayOf("%$query%", "%$query", "%$query"),
+                selection = "${AudioColumns.ALBUM} LIKE ? OR ${AudioColumns.ALBUM_ARTIST} LIKE ?",
+                selectionValues = arrayOf("%$query%", "%$query"),
                 sortOrder = DEFAULT_SORT_ORDER
             )
         )
