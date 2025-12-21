@@ -383,7 +383,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                 }
 
                 InfoView(
-                    iconRes = R.drawable.ic_history_2_24dp,
+                    iconRes = R.drawable.ic_history_24dp,
                     title = stringResource(R.string.last_played),
                     content = songInfo.lastPlayedDate,
                     modifier = Modifier.fillMaxWidth()
@@ -460,7 +460,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                 )
 
                 InfoView(
-                    iconRes = R.drawable.ic_history_2_24dp,
+                    iconRes = R.drawable.ic_history_24dp,
                     title = stringResource(R.string.label_last_modified),
                     content = songInfo.dateModified,
                     modifier = Modifier.fillMaxWidth()

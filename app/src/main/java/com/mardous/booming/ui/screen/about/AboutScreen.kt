@@ -226,7 +226,7 @@ private fun AboutHeader(
 
         Row(modifier = Modifier.fillMaxWidth()) {
             ActionButton(
-                icon = R.drawable.ic_history_2_24dp,
+                icon = R.drawable.ic_history_24dp,
                 label = stringResource(R.string.changelog),
                 modifier = Modifier.weight(1f),
                 onClick = onChangelogClick
