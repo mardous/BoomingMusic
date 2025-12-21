@@ -216,7 +216,7 @@
     <string name="top_tracks_label">トップトラック</string>
     <string name="history_label">履歴</string>
     <string name="not_recently_played">最近再生されていない曲</string>
-    <string name="play_info">再生情報</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">再生回数を追跡</string>
     <string name="song_stat_never_label">再生したことがありません</string>
     <string name="song_stat_one_time_label">%s で一度再生しました</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">ファイルパス</string>
     <string name="size">ファイルのサイズ</string>
     <string name="label_file_format">フォーマット</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">タイトルとアーティスト</string>
     <string name="song">曲</string>
     <string name="title">タイトル</string>
@@ -595,7 +597,7 @@
     <string name="general_theme_title">一般的なテーマ</string>
     <string name="pure_black_theme_title">ピュアブラック</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Manropeフォントを使用</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">ヘッダーのスタイル</string>
     <string name="library_categories_title">ライブラリのカテゴリ</string>
     <string name="library_categories_summary">ライブラリに表示するカテゴリとその順番を設定します。</string>
