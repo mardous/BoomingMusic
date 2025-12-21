@@ -216,7 +216,7 @@
     <string name="top_tracks_label">أفضل المسارات</string>
     <string name="history_label">التاريخ</string>
     <string name="not_recently_played">لم يتم تشغيله مؤخرا</string>
-    <string name="play_info">معلومات اللعب.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">تعداد اللعب</string>
     <string name="song_stat_never_label">لم تلعب أبدا</string>
     <string name="song_stat_one_time_label">لعب مرة واحدة على %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">مسار الملف</string>
     <string name="size">حجم الملف</string>
     <string name="label_file_format">التنسيق</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">العنوان والفنان</string>
     <string name="song">أغنية</string>
     <string name="title">العنوان</string>
@@ -635,7 +637,7 @@
     <string name="general_theme_title">الموضوع العام</string>
     <string name="pure_black_theme_title">أسود محض</string>
     <string name="material_you_title">المواد الخاصة بك</string>
-    <string name="use_custom_font_title">استخدام خط المنروب</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">نمط الترويسة</string>
     <string name="library_categories_title">فئات المكتبة</string>
     <string name="library_categories_summary">تكوين الرؤية وترتيب فئات المكتبات.</string>
