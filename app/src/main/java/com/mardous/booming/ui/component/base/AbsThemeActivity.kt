@@ -75,7 +75,7 @@ abstract class AbsThemeActivity : AppCompatActivity() {
             )
         }
         if (Preferences.isCustomFont) {
-            setTheme(R.style.ManropeThemeOverlay)
+            setTheme(R.style.CustomFontThemeOverlay)
         }
     }
 

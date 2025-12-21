@@ -628,7 +628,7 @@
     <string name="general_theme_title">General theme</string>
     <string name="pure_black_theme_title">Pure Black</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Use Manrope font</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Header style</string>
     <string name="library_categories_title">Library categories</string>
     <string name="library_categories_summary">Configure visibility and order of library categories.</string>
