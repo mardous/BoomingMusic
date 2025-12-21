@@ -32,6 +32,7 @@ import androidx.core.os.LocaleListCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import coil3.SingletonImageLoader
@@ -42,7 +43,9 @@ import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.data.local.room.InclExclDao
 import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.files.getFormattedFileName
+import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.utilities.dateStr
+import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
 import com.mardous.booming.ui.component.preferences.SwitchWithButtonPreference
 import com.mardous.booming.ui.component.preferences.ThemePreference
@@ -343,6 +346,21 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             dialogFragment.show(childFragmentManager, "androidx.preference.PreferenceFragment.DIALOG")
         } else {
             super.onDisplayPreferenceDialog(preference)
+        }
+    }
+
+    override fun onPreferenceTreeClick(preference: Preference): Boolean {
+        val settingsScreen = preference.key.toEnum<SettingsScreen>()
+        return when {
+            settingsScreen != null -> {
+                findNavController().navigate(settingsScreen.navAction)
+                true
+            }
+            preference.key == "about" -> {
+                findActivityNavController(R.id.fragment_container).navigate(R.id.nav_about)
+                true
+            }
+            else -> super.onPreferenceTreeClick(preference)
         }
     }
 
