@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Piese de top</string>
     <string name="history_label">Istoric</string>
     <string name="not_recently_played">Nu am jucat recent</string>
-    <string name="play_info">Redă informații.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Urmăriți numărul de redare</string>
     <string name="song_stat_never_label">niciodată jucat</string>
     <string name="song_stat_one_time_label">a jucat o dată pe %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Calea fișierului</string>
     <string name="size">Dimensiune fişier</string>
     <string name="label_file_format">Format</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Titlu și Artist</string>
     <string name="song">Melodie</string>
     <string name="title">Titlu</string>
@@ -611,7 +613,7 @@
     <string name="general_theme_title">Temă generală</string>
     <string name="pure_black_theme_title">Negru pur</string>
     <string name="material_you_title">Materiale cu tine</string>
-    <string name="use_custom_font_title">Utilizează fontul Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Stil antet</string>
     <string name="library_categories_title">Categorii bibliotecă</string>
     <string name="library_categories_summary">Configurați vizibilitatea și ordinea categoriilor bibliotecii.</string>
