@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Top Nummers</string>
     <string name="history_label">Geschiedenis</string>
     <string name="not_recently_played">Niet recent afgespeeld</string>
-    <string name="play_info">Speel info.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Nummer afspelen</string>
     <string name="song_stat_never_label">nooit gespeeld</string>
     <string name="song_stat_one_time_label">speelde één keer op %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Bestand pad</string>
     <string name="size">Bestandsgrootte</string>
     <string name="label_file_format">Formatteren</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Titel en artiest</string>
     <string name="song">Nummer</string>
     <string name="title">Aanspreektitel</string>
@@ -603,7 +605,7 @@
     <string name="general_theme_title">Algemeen thema</string>
     <string name="pure_black_theme_title">Puur Zwart</string>
     <string name="material_you_title">Materiaal u</string>
-    <string name="use_custom_font_title">Gebruik Manrope lettertype</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Koptekst stijl</string>
     <string name="library_categories_title">Bibliotheek categorieën</string>
     <string name="library_categories_summary">Configureer zichtbaarheid en volgorde van bibliotheek categorieën.</string>
