@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Suosituimmat Kappaleet</string>
     <string name="history_label">Historia</string>
     <string name="not_recently_played">Äskettäin Soitettu</string>
-    <string name="play_info">Toista tiedot.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Kappaleen Soittomäärä</string>
     <string name="song_stat_never_label">ei soitettu</string>
     <string name="song_stat_one_time_label">pelasi yhden kerran %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Tiedoston polku</string>
     <string name="size">Tiedoston koko</string>
     <string name="label_file_format">Muoto</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Otsikko ja esittäjä</string>
     <string name="song">Kappale</string>
     <string name="title">Otsikko</string>
@@ -603,7 +605,7 @@
     <string name="general_theme_title">Yleinen teema</string>
     <string name="pure_black_theme_title">Puhdas Musta</string>
     <string name="material_you_title">Materiaali Sinä</string>
-    <string name="use_custom_font_title">Käytä Manrope-kirjasinta</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Otsikon tyyli</string>
     <string name="library_categories_title">Kirjaston kategoriat</string>
     <string name="library_categories_summary">Määritä kirjaston kategorioiden näkyvyys ja järjestys.</string>
