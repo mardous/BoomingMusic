@@ -1,4 +1,4 @@
-package com.mardous.booming.ui.component
+package com.mardous.booming.ui.component.compose
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

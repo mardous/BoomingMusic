@@ -44,8 +44,8 @@ import com.mardous.booming.R
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.core.model.about.DeviceInfo
 import com.mardous.booming.extensions.*
-import com.mardous.booming.ui.component.CollapsibleAppBarScaffold
 import com.mardous.booming.ui.component.compose.ActionButton
+import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
 import com.mardous.booming.ui.component.compose.lists.ContributionListItem
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
