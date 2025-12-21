@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Tracce Superiori</string>
     <string name="history_label">Storico</string>
     <string name="not_recently_played">Non Riprodotto Di Recente</string>
-    <string name="play_info">Riproduci informazioni.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Contatore Di Riproduzioni Traccia</string>
     <string name="song_stat_never_label">mai giocato</string>
     <string name="song_stat_one_time_label">giocato una volta su %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Percorso file</string>
     <string name="size">Dimensione file</string>
     <string name="label_file_format">Formato</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Titolo e Artista</string>
     <string name="song">Brano</string>
     <string name="title">Titolo</string>
@@ -603,7 +605,7 @@
     <string name="general_theme_title">Tema generale</string>
     <string name="pure_black_theme_title">Nero Puro</string>
     <string name="material_you_title">Materiale Tu</string>
-    <string name="use_custom_font_title">Usa carattere Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Stile intestazione</string>
     <string name="library_categories_title">Categorie della libreria</string>
     <string name="library_categories_summary">Configura la visibilità e l\'ordine delle categorie della libreria.</string>

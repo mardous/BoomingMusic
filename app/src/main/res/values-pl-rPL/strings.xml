@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Najczęściej odtwarzane</string>
     <string name="history_label">Historia</string>
     <string name="not_recently_played">Dawno nie odtwarzane</string>
-    <string name="play_info">Szczegóły odtwarzania</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Liczba odtworzeń</string>
     <string name="song_stat_never_label">nigdy nie odtworzono</string>
     <string name="song_stat_one_time_label">zagrał jeden raz na %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Ścieżka pliku</string>
     <string name="size">Rozmiar pliku</string>
     <string name="label_file_format">Format</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Tytuł i wykonawca</string>
     <string name="song">Utwór</string>
     <string name="title">Tytuł</string>
@@ -619,7 +621,7 @@
     <string name="general_theme_title">Motyw ogólny</string>
     <string name="pure_black_theme_title">Głęboka czerń</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Czcionka Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Styl nagłówka</string>
     <string name="library_categories_title">Zarządzaj kartami</string>
     <string name="library_categories_summary">Konfiguruj widoczność i kolejność kategorii biblioteki.</string>

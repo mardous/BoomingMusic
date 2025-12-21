@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Κορυφαία Κομμάτια</string>
     <string name="history_label">Ιστορικό</string>
     <string name="not_recently_played">Δεν Παίχτηκαν Πρόσφατα</string>
-    <string name="play_info">Πληροφορίες αναπαραγωγής.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Μετρήσεις Κομματιού Παιχνιδιού</string>
     <string name="song_stat_never_label">δεν παίχτηκε ποτέ</string>
     <string name="song_stat_one_time_label">έπαιξε μία φορά στο %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Διαδρομή αρχείου</string>
     <string name="size">Μέγεθος αρχείου</string>
     <string name="label_file_format">Μορφή</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Τίτλος και Καλλιτέχνης</string>
     <string name="song">Τραγούδι</string>
     <string name="title">Τίτλος</string>
@@ -603,7 +605,7 @@
     <string name="general_theme_title">Γενικό θέμα</string>
     <string name="pure_black_theme_title">Καθαρό Μαύρο</string>
     <string name="material_you_title">Υλικό Εσείς</string>
-    <string name="use_custom_font_title">Χρήση γραμματοσειράς Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Στυλ κεφαλίδας</string>
     <string name="library_categories_title">Κατηγορίες βιβλιοθηκών</string>
     <string name="library_categories_summary">Ρυθμίστε την ορατότητα και τη σειρά των κατηγοριών βιβλιοθήκης.</string>

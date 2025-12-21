@@ -216,7 +216,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="top_tracks_label">Melhores Faixas</string>
     <string name="history_label">Histórico</string>
     <string name="not_recently_played">Não Tocadas Recentemente</string>
-    <string name="play_info">Informações de reprodução.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Contagem de Reprodução</string>
     <string name="song_stat_never_label">nunca tocado</string>
     <string name="song_stat_one_time_label">reproduzida uma vez em %s</string>
@@ -286,6 +286,8 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="label_file_path">Caminho do arquivo</string>
     <string name="size">Tamanho do arquivo</string>
     <string name="label_file_format">Formato</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Título e Artista</string>
     <string name="song">Música</string>
     <string name="title">Título</string>
@@ -602,7 +604,7 @@ Ideal para podcasts e gravações.</string>
     <string name="general_theme_title">Tema geral</string>
     <string name="pure_black_theme_title">Preto Puro</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Usar a fonte Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Estilo do cabeçalho</string>
     <string name="library_categories_title">Categorias da biblioteca</string>
     <string name="library_categories_summary">Configura a visibilidade e a ordem das categorias da biblioteca.</string>
