@@ -99,7 +99,7 @@ class AdvancedPreferencesFragment : PreferenceScreenFragment() {
     }
 }
 
-abstract class PreferenceScreenFragment : PreferenceFragmentCompat(),
+open class PreferenceScreenFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val libraryViewModel: LibraryViewModel by activityViewModel()
@@ -154,6 +154,10 @@ abstract class PreferenceScreenFragment : PreferenceFragmentCompat(),
         }
 
     private val preferences: SharedPreferences by inject()
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preferences)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
