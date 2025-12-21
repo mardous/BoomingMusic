@@ -216,7 +216,7 @@
     <string name="top_tracks_label">רצועות מובילות</string>
     <string name="history_label">היסטוריה</string>
     <string name="not_recently_played">לא הושמע לאחרונה</string>
-    <string name="play_info">מידע נגן.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">ספירת השמעות של רצועות</string>
     <string name="song_stat_never_label">מעולם לא הושמע</string>
     <string name="song_stat_one_time_label">התנגן פעם אחת ב-%s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">נתיב הקובץ</string>
     <string name="size">גודל הקובץ</string>
     <string name="label_file_format">פורמט</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">כותרת ואמן</string>
     <string name="song">שיר</string>
     <string name="title">כותרת</string>
@@ -619,7 +621,7 @@
     <string name="general_theme_title">ערכת נושא כללית</string>
     <string name="pure_black_theme_title">שחור טהור</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">השתמש בגופן Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">סגנון כותרת</string>
     <string name="library_categories_title">קטגוריות בספרייה</string>
     <string name="library_categories_summary">הגדר את הנראות והסדר של קטגוריות הספרייה.</string>
