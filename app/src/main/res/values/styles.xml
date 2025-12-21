@@ -9,7 +9,7 @@
 
     <style name="Theme.Booming.FollowSystem" parent="Base.Theme.Booming.Adaptive"/>
 
-    <style name="Theme.Booming.DynamicColors" parent="@style/Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Booming.DynamicColors" parent="@style/Theme.Material3Expressive.DayNight.NoActionBar">
         <item name="rectSelector">@drawable/rect_selector</item>
         <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
     </style>
@@ -20,7 +20,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="ToolbarStyle" parent="Widget.Material3.Toolbar">
+    <style name="ToolbarStyle" parent="Widget.Material3Expressive.Toolbar">
         <item name="android:transitionName">toolbar</item>
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetStartWithNavigation">0dp</item>
