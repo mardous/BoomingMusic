@@ -215,7 +215,7 @@
     <string name="top_tracks_label">Más reproducidas</string>
     <string name="history_label">Historial</string>
     <string name="not_recently_played">Sin reproducción reciente</string>
-    <string name="play_info">Info. de reproducción.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Reproducciones por pista</string>
     <string name="song_stat_never_label">nunca escuchada</string>
     <string name="song_stat_one_time_label">escuchada una vez el %s</string>
@@ -286,6 +286,8 @@
     <string name="label_file_path">Ruta de acceso</string>
     <string name="size">Tamaño</string>
     <string name="label_file_format">Formato</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Título y Artista</string>
     <string name="song">Canción</string>
     <string name="title">Título</string>
@@ -601,7 +603,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="general_theme_title">Tema general</string>
     <string name="pure_black_theme_title">Completamente negro</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Usar la fuente Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Estilo de cabecera</string>
     <string name="library_categories_title">Categorías de la biblioteca</string>
     <string name="library_categories_summary">Configura el orden y visibilidad de las categorías de la biblioteca.</string>

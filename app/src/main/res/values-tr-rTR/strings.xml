@@ -216,7 +216,7 @@
     <string name="top_tracks_label">En Çok Çalınanlar</string>
     <string name="history_label">Geçmiş</string>
     <string name="not_recently_played">Son Zamanlarda Çalınmadı</string>
-    <string name="play_info">Çalma bilgisi.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Parça Çalma Sayıları</string>
     <string name="song_stat_never_label">hiç çalınmadı</string>
     <string name="song_stat_one_time_label">bir kez çalındı: %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Dosya yolu</string>
     <string name="size">Dosya boyutu</string>
     <string name="label_file_format">Biçim</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Başlık ve Sanatçı</string>
     <string name="song">Şarkı</string>
     <string name="title">Başlık</string>
@@ -598,7 +600,7 @@
     <string name="general_theme_title">Genel tema</string>
     <string name="pure_black_theme_title">Saf Siyah</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Manrope yazı tipini kullan</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Başlık stili</string>
     <string name="library_categories_title">Kütüphane kategorileri</string>
     <string name="library_categories_summary">Kütüphane kategorilerinin görünürlüğünü ve sırasını yapılandırın.</string>

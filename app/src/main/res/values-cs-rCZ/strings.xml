@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Nejlepší skladby</string>
     <string name="history_label">Historie</string>
     <string name="not_recently_played">Nedávno nehrané</string>
-    <string name="play_info">Informace o hře.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Sledovat počet přehrávání</string>
     <string name="song_stat_never_label">nikdy nehrál</string>
     <string name="song_stat_one_time_label">hrál/a jednou na %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Cesta k souboru</string>
     <string name="size">Velikost souboru</string>
     <string name="label_file_format">Formát</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Název a interpret</string>
     <string name="song">Skladba</string>
     <string name="title">Hlava 1 – Celkem</string>
@@ -619,7 +621,7 @@
     <string name="general_theme_title">Obecný motiv</string>
     <string name="pure_black_theme_title">Čistě černá</string>
     <string name="material_you_title">Váš materiál</string>
-    <string name="use_custom_font_title">Použít písmo Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Styl záhlaví</string>
     <string name="library_categories_title">Kategorie knihovny</string>
     <string name="library_categories_summary">Nastavení viditelnosti a pořadí kategorií knihovny.</string>

@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Top Spor</string>
     <string name="history_label">Historik</string>
     <string name="not_recently_played">Ikke Spillet For Nyligt</string>
-    <string name="play_info">Spil info.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Spor Spil Tæller</string>
     <string name="song_stat_never_label">aldrig spillet</string>
     <string name="song_stat_one_time_label">spillede én gang på %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Fil sti</string>
     <string name="size">Fil størrelse</string>
     <string name="label_file_format">Formatér</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Titel og kunstner</string>
     <string name="song">Sang</string>
     <string name="title">Titel</string>
@@ -603,7 +605,7 @@
     <string name="general_theme_title">Generelt tema</string>
     <string name="pure_black_theme_title">Ren Sort</string>
     <string name="material_you_title">Materiale Dig</string>
-    <string name="use_custom_font_title">Brug Manrope skrifttype</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Sidehoved stil</string>
     <string name="library_categories_title">Biblioteks kategorier</string>
     <string name="library_categories_summary">Indstil synlighed og rækkefølge af bibliotekskategorier.</string>

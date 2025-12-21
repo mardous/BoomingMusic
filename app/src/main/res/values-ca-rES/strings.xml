@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Cançons destacades</string>
     <string name="history_label">Historial</string>
     <string name="not_recently_played">Fa temps que no s\'escolta</string>
-    <string name="play_info">Informació de reproducció</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Recompte de reproduccions</string>
     <string name="song_stat_never_label">no s\'ha escoltat mai</string>
     <string name="song_stat_one_time_label">s\'ha escoltat un cop el %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Adreça del fitxer</string>
     <string name="size">Mida del fitxer</string>
     <string name="label_file_format">Format</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Títol i Artista</string>
     <string name="song">Cançó</string>
     <string name="title">Títol</string>
@@ -603,7 +605,7 @@
     <string name="general_theme_title">Tema general</string>
     <string name="pure_black_theme_title">Negre pur</string>
     <string name="material_you_title">Tema dinàmic</string>
-    <string name="use_custom_font_title">Fes servir la font Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Estil de capçalera</string>
     <string name="library_categories_title">Categories de la biblioteca</string>
     <string name="library_categories_summary">Configura la visibilitat i l\'ordre de les categories de la biblioteca.</string>
@@ -623,9 +625,9 @@
     <string name="lyrics_syllable_mode_title">Lletra fil per randa</string>
     <string name="lyrics_syllable_mode_summary">Permet mostrar la lletra sincronitzada paraula per paraula. Depèn de la disponibilitat de la lletra i d\'un format compatible com LRC o TTML.</string>
     <string name="lyrics_effects_note">Els efectes avançats realcen l\'experiència visual, però poden consumir més recursos i bateria.</string>
-    <string name="lyrics_background_effect_title">Background effect</string>
-    <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
+    <string name="lyrics_background_effect_title">Efecte de fons</string>
+    <string name="lyrics_background_gradient">Degradat</string>
+    <string name="lyrics_background_canvas">Fons (si està disponible)</string>
     <string name="lyrics_blur_effect_title">Efecte difuminat</string>
     <string name="lyrics_blur_effect_summary">Difumina les línies de lletra adjacents a l\'actual.</string>
     <string name="lyrics_shadow_effect_title">Efecte d\'ombra</string>
@@ -646,11 +648,12 @@
     <string name="synced_font_size_full_summary">Ajusta la mida de la lletra sincronitzada en pantalla completa.</string>
     <string name="unsynced_font_size_full_title">Mida de la lletra sense sincronitzar (pantalla completa)</string>
     <string name="unsynced_font_size_full_summary">Ajusta la mida de la lletra sense sincronitzar en pantalla completa.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
-    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="instrumental_tracks_identifiers_title">Identificadors de pistes instrumentals</string>
+    <string name="instrumental_tracks_identifiers_summary">Si la lletra d\'una cançó consisteix només en
+        un o més indicadors d\'aquests, es marcarà com a pista instrumental
+(separat per comes).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Marca per títol</string>
+    <string name="instrumental_tracks_mark_by_title_summary">El títol de la pista també es tindrà en compte per cercar identificadors.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estil</string>
     <string name="open_on_play_title">Obre en reproduir</string>
