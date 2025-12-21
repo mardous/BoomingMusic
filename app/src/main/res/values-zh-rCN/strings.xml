@@ -216,7 +216,7 @@
     <string name="top_tracks_label">热门曲目</string>
     <string name="history_label">历史记录</string>
     <string name="not_recently_played">无最近播放</string>
-    <string name="play_info">播放信息。</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">曲目播放计数</string>
     <string name="song_stat_never_label">从未播放</string>
     <string name="song_stat_one_time_label">在 %s 上播放过一次</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">文件路径</string>
     <string name="size">文件大小</string>
     <string name="label_file_format">格式</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">标题和艺人</string>
     <string name="song">歌曲</string>
     <string name="title">标题</string>
@@ -592,7 +594,7 @@
     <string name="general_theme_title">一般主题</string>
     <string name="pure_black_theme_title">纯黑色</string>
     <string name="material_you_title">Material You 动态色彩</string>
-    <string name="use_custom_font_title">使用 Manrope 字体</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">标题样式</string>
     <string name="library_categories_title">曲库分类</string>
     <string name="library_categories_summary">配置曲库分类的可见性和顺序。</string>
