@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Найкращі треки</string>
     <string name="history_label">Історія</string>
     <string name="not_recently_played">Нещодавно не прослуховувалося</string>
-    <string name="play_info">Інформація про відтворення.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Кількість відтворень треку</string>
     <string name="song_stat_never_label">ніколи не відтворювалося</string>
     <string name="song_stat_one_time_label">відтворено один раз %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Шлях до файлу</string>
     <string name="size">Розмір файлу</string>
     <string name="label_file_format">Формат</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Назва та виконавець</string>
     <string name="song">Пісня</string>
     <string name="title">Назва</string>
@@ -617,7 +619,7 @@
     <string name="general_theme_title">Загальна тема</string>
     <string name="pure_black_theme_title">Чистий чорний</string>
     <string name="material_you_title">Виготовлення матеріалу</string>
-    <string name="use_custom_font_title">Використовувати шрифт Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Стиль заголовка</string>
     <string name="library_categories_title">Категорії бібліотеки</string>
     <string name="library_categories_summary">Налаштуйте видимість та порядок категорій бібліотеки.</string>
