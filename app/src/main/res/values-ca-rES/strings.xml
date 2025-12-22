@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Cançons destacades</string>
     <string name="history_label">Historial</string>
     <string name="not_recently_played">Fa temps que no s\'escolta</string>
-    <string name="play_info">Play info</string>
+    <string name="play_info">Informació de reproducció</string>
     <string name="track_play_counts">Recompte de reproduccions</string>
     <string name="song_stat_never_label">no s\'ha escoltat mai</string>
     <string name="song_stat_one_time_label">s\'ha escoltat un cop el %s</string>
@@ -287,8 +287,8 @@
     <string name="label_file_path">Adreça del fitxer</string>
     <string name="size">Mida del fitxer</string>
     <string name="label_file_format">Format</string>
-    <string name="file_label">File</string>
-    <string name="metadata_label">Metadata</string>
+    <string name="file_label">Fitxer</string>
+    <string name="metadata_label">Metadades</string>
     <string name="title_and_artist">Títol i Artista</string>
     <string name="song">Cançó</string>
     <string name="title">Títol</string>
@@ -605,7 +605,7 @@
     <string name="general_theme_title">Tema general</string>
     <string name="pure_black_theme_title">Negre pur</string>
     <string name="material_you_title">Tema dinàmic</string>
-    <string name="use_custom_font_title">Use custom font</string>
+    <string name="use_custom_font_title">Fes servir una font personalitzada</string>
     <string name="appbar_mode_title">Estil de capçalera</string>
     <string name="library_categories_title">Categories de la biblioteca</string>
     <string name="library_categories_summary">Configura la visibilitat i l\'ordre de les categories de la biblioteca.</string>
