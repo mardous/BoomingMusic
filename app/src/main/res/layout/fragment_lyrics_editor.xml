@@ -73,12 +73,15 @@
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/progressIndicator"
+            style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/lyrics_editor_padding_horizontal"
             android:indeterminate="true"
             android:visibility="invisible"
-            app:indicatorSize="24dp"
+            app:indicatorSize="32dp"
+            app:waveAmplitude="1dp"
+            app:wavelength="10dp"
             app:layout_constraintTop_toTopOf="@+id/image"
             app:layout_constraintBottom_toBottomOf="@+id/image"
             app:layout_constraintEnd_toEndOf="parent"

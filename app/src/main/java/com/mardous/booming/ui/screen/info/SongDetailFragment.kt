@@ -210,6 +210,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
         }
     }
 
+    @OptIn(ExperimentalMaterial3ExpressiveApi::class)
     @Composable
     private fun Header(uiState: SongInfoUiState, modifier: Modifier = Modifier) {
         Row(
@@ -260,7 +261,10 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                 visible = uiState.isLoading,
                 modifier = Modifier.padding(start = 8.dp)
             ) {
-                CircularProgressIndicator(Modifier.size(24.dp))
+                CircularWavyProgressIndicator(
+                    wavelength = 10.dp,
+                    modifier = Modifier.size(32.dp)
+                )
             }
         }
     }

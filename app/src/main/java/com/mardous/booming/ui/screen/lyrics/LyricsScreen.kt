@@ -256,6 +256,7 @@ fun CoverLyricsScreen(
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun LyricsSurface(
     result: LyricsResult,
@@ -280,7 +281,7 @@ private fun LyricsSurface(
     }
     Box(modifier) {
         if (result.loading) {
-            CircularProgressIndicator(
+            CircularWavyProgressIndicator(
                 color = contentColor,
                 modifier = Modifier.align(Alignment.Center)
             )
