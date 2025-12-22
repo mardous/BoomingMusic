@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">Modifier les paroles</string>
     <string name="open_lyrics_editor">Ouvrir l\'éditeur de paroles</string>
     <string name="could_not_load_the_song_information">"Impossible de charger les informations de la chanson."</string>
-    <string name="label_with_rg_info">Avec infos RG</string>
-    <string name="label_without_rg_info">Sans infos RG</string>
-    <string name="album_and_year">Album et année</string>
-    <string name="song_info">Informations sur la musique.</string>
     <string name="no_results">Aucun résultat</string>
     <string name="connection_unavailable">Connexion indisponible.</string>
     <string name="you_have_to_select_at_least_one_category">Vous devez sélectionner au moins une catégorie</string>
     <string name="you_cannot_select_more_than_five_categories">Vous ne pouvez pas sélectionner plus de cinq catégories.</string>
-    <string name="auto_limited_listing_title">Liste limitée pendant la conduite</string>
-    <string name="auto_limited_listing_subtitle">Ouvrez l\'application pour voir la liste complète</string>
     <string name="backup_settings">Paramètres</string>
     <string name="backup_synced_lyrics">Paroles synchronisées</string>
     <string name="backup_artist_images">Images d\'artistes</string>
