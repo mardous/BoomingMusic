@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">Şarkı sözlerini düzenle</string>
     <string name="open_lyrics_editor">Şarkı sözü düzenleyiciyi aç</string>
     <string name="could_not_load_the_song_information">"Şarkı bilgileri yüklenemedi."</string>
-    <string name="label_with_rg_info">RG bilgisi ile</string>
-    <string name="label_without_rg_info">RG bilgisi olmadan</string>
-    <string name="album_and_year">Albüm ve yıl</string>
-    <string name="song_info">Şarkı bilgisi.</string>
     <string name="no_results">Sonuç bulunamadı</string>
     <string name="connection_unavailable">Bağlantı yok.</string>
     <string name="you_have_to_select_at_least_one_category">En az bir kategori seçmelisiniz</string>
     <string name="you_cannot_select_more_than_five_categories">Beşten fazla kategori seçemezsiniz.</string>
-    <string name="auto_limited_listing_title">Sürüş sırasında sınırlı listeleme</string>
-    <string name="auto_limited_listing_subtitle">Tam listeyi görmek için uygulamayı açın</string>
     <string name="backup_settings">Ayarlar</string>
     <string name="backup_synced_lyrics">Senkronize edilmiş şarkı sözleri</string>
     <string name="backup_artist_images">Sanatçı resimleri</string>
