@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">Επεξεργαστείτε τους στίχους</string>
     <string name="open_lyrics_editor">Άνοιγμα επεξεργαστή στίχων</string>
     <string name="could_not_load_the_song_information">"Δεν ήταν δυνατή η φόρτωση των πληροφοριών του τραγουδιού."</string>
-    <string name="label_with_rg_info">Με πληροφορίες RG</string>
-    <string name="label_without_rg_info">Χωρίς πληροφορίες RG</string>
-    <string name="album_and_year">Άλμπουμ και έτος</string>
-    <string name="song_info">Πληροφορίες τραγουδιού.</string>
     <string name="no_results">Κανένα αποτέλεσμα</string>
     <string name="connection_unavailable">Μη διαθέσιμη σύνδεση.</string>
     <string name="you_have_to_select_at_least_one_category">Πρέπει να επιλέξετε τουλάχιστον μία κατηγορία</string>
     <string name="you_cannot_select_more_than_five_categories">Δεν μπορείτε να επιλέξετε περισσότερες από πέντε κατηγορίες.</string>
-    <string name="auto_limited_listing_title">Περιορισμένη καταχώρηση κατά την οδήγηση</string>
-    <string name="auto_limited_listing_subtitle">Ανοίξτε την εφαρμογή για να δείτε την πλήρη λίστα</string>
     <string name="backup_settings">Ρυθμίσεις</string>
     <string name="backup_synced_lyrics">Συγχρονισμένοι στίχοι</string>
     <string name="backup_artist_images">Εικόνες καλλιτέχνη</string>

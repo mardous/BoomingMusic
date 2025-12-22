@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">ערוך את מילות השיר</string>
     <string name="open_lyrics_editor">פתיחת עורך המילים</string>
     <string name="could_not_load_the_song_information">"לא ניתן היה לטעון את פרטי השיר."</string>
-    <string name="label_with_rg_info">עם מידע הגברת שמע</string>
-    <string name="label_without_rg_info">ללא מידע הגברת שמע</string>
-    <string name="album_and_year">אלבום ושנה</string>
-    <string name="song_info">פרטי השיר.</string>
     <string name="no_results">אין תוצאות</string>
     <string name="connection_unavailable">החיבור אינו זמין.</string>
     <string name="you_have_to_select_at_least_one_category">עליך לבחור לפחות קטגוריה אחת</string>
     <string name="you_cannot_select_more_than_five_categories">לא ניתן לבחור יותר מחמש קטגוריות.</string>
-    <string name="auto_limited_listing_title">רשימה מוגבלת בזמן נהיגה</string>
-    <string name="auto_limited_listing_subtitle">פתח את האפליקציה כדי לראות את הרשימה המלאה</string>
     <string name="backup_settings">הגדרות</string>
     <string name="backup_synced_lyrics">סנכרון מילים</string>
     <string name="backup_artist_images">תמונת אמן</string>

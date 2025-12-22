@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">Editare versuri</string>
     <string name="open_lyrics_editor">Deschide editorul de versuri</string>
     <string name="could_not_load_the_song_information">"Nu s-au putut încărca informațiile melodiei."</string>
-    <string name="label_with_rg_info">Cu informații RG</string>
-    <string name="label_without_rg_info">Fără informații RG</string>
-    <string name="album_and_year">Album și an</string>
-    <string name="song_info">Informații melodie.</string>
     <string name="no_results">Niciun rezultat</string>
     <string name="connection_unavailable">Conexiune indisponibilă.</string>
     <string name="you_have_to_select_at_least_one_category">Trebuie să selectaţi cel puţin o categorie</string>
     <string name="you_cannot_select_more_than_five_categories">Nu puteți selecta mai mult de cinci categorii.</string>
-    <string name="auto_limited_listing_title">Listare limitată în timpul conducerii</string>
-    <string name="auto_limited_listing_subtitle">Deschideți aplicația pentru a vedea lista completă</string>
     <string name="backup_settings">Setări</string>
     <string name="backup_synced_lyrics">Versuri sincronizate</string>
     <string name="backup_artist_images">Imagini artist</string>

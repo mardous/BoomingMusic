@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">Muokkaa sanoituksia</string>
     <string name="open_lyrics_editor">Avaa sanoitusten muokkain</string>
     <string name="could_not_load_the_song_information">"Kappaleen tietoja ei voitu ladata."</string>
-    <string name="label_with_rg_info">RG tiedot</string>
-    <string name="label_without_rg_info">Ilman RG tietoja</string>
-    <string name="album_and_year">Albumi ja vuosi</string>
-    <string name="song_info">Kappaleen tiedot.</string>
     <string name="no_results">Ei tuloksia</string>
     <string name="connection_unavailable">Yhteys ei käytettävissä.</string>
     <string name="you_have_to_select_at_least_one_category">Sinun täytyy valita ainakin yksi kategoria</string>
     <string name="you_cannot_select_more_than_five_categories">Et voi valita enempää kuin viisi kategoriaa.</string>
-    <string name="auto_limited_listing_title">Rajoitettu listaus ajon aikana</string>
-    <string name="auto_limited_listing_subtitle">Avaa sovellus nähdäksesi koko listan</string>
     <string name="backup_settings">Asetukset</string>
     <string name="backup_synced_lyrics">Synkronoidut sanoitukset</string>
     <string name="backup_artist_images">Esittäjän kuvat</string>

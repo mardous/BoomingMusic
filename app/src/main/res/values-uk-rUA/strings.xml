@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">Редагувати текст пісні</string>
     <string name="open_lyrics_editor">Відкрити редактор текстів пісень</string>
     <string name="could_not_load_the_song_information">"Не вдалося завантажити інформацію про пісню."</string>
-    <string name="label_with_rg_info">З RG-інформацією</string>
-    <string name="label_without_rg_info">Без RG-інформації</string>
-    <string name="album_and_year">Альбом і рік</string>
-    <string name="song_info">Інформація про пісню.</string>
     <string name="no_results">Немає результатів</string>
     <string name="connection_unavailable">З\'єднання відсутнє.</string>
     <string name="you_have_to_select_at_least_one_category">Ви повинні вибрати хоча б одну категорію</string>
     <string name="you_cannot_select_more_than_five_categories">Ви не можете вибрати більше п\'яти категорій.</string>
-    <string name="auto_limited_listing_title">Обмежений список під час керування</string>
-    <string name="auto_limited_listing_subtitle">Відкрийте програму, щоб побачити повний список</string>
     <string name="backup_settings">Налаштування</string>
     <string name="backup_synced_lyrics">Синхронізовані тексти пісень</string>
     <string name="backup_artist_images">Зображення виконавців</string>

@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">Edita la lletra</string>
     <string name="open_lyrics_editor">Obre l\'editor de lletres</string>
     <string name="could_not_load_the_song_information">"No s'ha pogut carregar la informació de la cançó."</string>
-    <string name="label_with_rg_info">Amb informació de guany</string>
-    <string name="label_without_rg_info">Sense informació de guany</string>
-    <string name="album_and_year">Àlbum i any</string>
-    <string name="song_info">Informació de la cançó</string>
     <string name="no_results">No hi ha resultats</string>
     <string name="connection_unavailable">La connexió no està disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Heu de triar, pel cap baix, una categoria</string>
     <string name="you_cannot_select_more_than_five_categories">No podeu triar més de cinc categories.</string>
-    <string name="auto_limited_listing_title">Llistat limitat en conduir</string>
-    <string name="auto_limited_listing_subtitle">Obriu l\'aplicació per veure la llista sencera</string>
     <string name="backup_settings">Configuració</string>
     <string name="backup_synced_lyrics">Lletra sincronitzada</string>
     <string name="backup_artist_images">Imatges d\'artistes</string>

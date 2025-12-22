@@ -171,7 +171,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(Modifier.width(8.dp))
-                            Text(stringResource(R.string.open_lyrics_editor))
+                            Text(stringResource(R.string.edit_lyrics_action))
                         }
 
                         Button(
@@ -185,7 +185,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(Modifier.width(8.dp))
-                            Text(stringResource(R.string.action_tag_editor))
+                            Text(stringResource(R.string.edit_tags_action))
                         }
                     }
 

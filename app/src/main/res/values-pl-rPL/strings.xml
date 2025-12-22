@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">Edytuj tekst piosenki</string>
     <string name="open_lyrics_editor">Otwórz edytor tekstów</string>
     <string name="could_not_load_the_song_information">"Nie można załadować informacji o utworze."</string>
-    <string name="label_with_rg_info">Z informacjami o RG</string>
-    <string name="label_without_rg_info">Bez informacji o RG</string>
-    <string name="album_and_year">Album i rok</string>
-    <string name="song_info">Informacje o utworze.</string>
     <string name="no_results">Brak wyników</string>
     <string name="connection_unavailable">Połączenie niedostępne.</string>
     <string name="you_have_to_select_at_least_one_category">Musisz wybrać co najmniej jedną kategorię</string>
     <string name="you_cannot_select_more_than_five_categories">Nie możesz wybrać więcej niż pięciu kategorii.</string>
-    <string name="auto_limited_listing_title">Ograniczona lista podczas jazdy</string>
-    <string name="auto_limited_listing_subtitle">Otwórz aplikację, aby zobaczyć pełną listę</string>
     <string name="backup_settings">Ustawienia</string>
     <string name="backup_synced_lyrics">Zsynchronizowane teksty</string>
     <string name="backup_artist_images">Obrazy artysty</string>

@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">歌詞を編集</string>
     <string name="open_lyrics_editor">歌詞エディターを開く</string>
     <string name="could_not_load_the_song_information">"曲情報を読み込めませんでした。"</string>
-    <string name="label_with_rg_info">RG情報あり</string>
-    <string name="label_without_rg_info">RG情報なし</string>
-    <string name="album_and_year">アルバムと年</string>
-    <string name="song_info">曲情報</string>
     <string name="no_results">結果がありません</string>
     <string name="connection_unavailable">接続できません。</string>
     <string name="you_have_to_select_at_least_one_category">最低でも1つのカテゴリを選択を選択して下さい</string>
     <string name="you_cannot_select_more_than_five_categories">5つ以上のカテゴリは選択できません。</string>
-    <string name="auto_limited_listing_title">運転中の限定リスト</string>
-    <string name="auto_limited_listing_subtitle">アプリを開いて全リストを表示します</string>
     <string name="backup_settings">設定</string>
     <string name="backup_synced_lyrics">歌詞を同期</string>
     <string name="backup_artist_images">アーティスト画像</string>

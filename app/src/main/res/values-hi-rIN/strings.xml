@@ -322,16 +322,10 @@
     <string name="edit_lyrics_action">गाने के बोल संपादित करें</string>
     <string name="open_lyrics_editor">ओपन लिरिक्स संपादक</string>
     <string name="could_not_load_the_song_information">"गाना जानकारी लोड नहीं हो सका।"</string>
-    <string name="label_with_rg_info">RG सूचना के साथ</string>
-    <string name="label_without_rg_info">RG जानकारी के बिना</string>
-    <string name="album_and_year">एल्बम और वर्ष</string>
-    <string name="song_info">गाने की जानकारी।</string>
     <string name="no_results">कोई रिजल्ट नहीं</string>
     <string name="connection_unavailable">कनेक्शन अनुपलब्ध है।</string>
     <string name="you_have_to_select_at_least_one_category">आपको कम से कम एक श्रेणी चुननी होगी</string>
     <string name="you_cannot_select_more_than_five_categories">आप पाँच से अधिक श्रेणियाँ नहीं चुन सकते।</string>
-    <string name="auto_limited_listing_title">ड्राइविंग करते समय सीमित सूची</string>
-    <string name="auto_limited_listing_subtitle">पूर्ण सूची देखने के लिए ऐप खोलें</string>
     <string name="backup_settings">सेटिंग्स</string>
     <string name="backup_synced_lyrics">सिंक की हुई लिरिक्स</string>
     <string name="backup_artist_images">कलाकारों की तस्वीरें</string>

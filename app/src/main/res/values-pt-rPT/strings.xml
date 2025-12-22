@@ -322,16 +322,10 @@
     <string name="edit_lyrics_action">Editar letra</string>
     <string name="open_lyrics_editor">Abrir editor de letras</string>
     <string name="could_not_load_the_song_information">"Não foi possível carregar as informações da música."</string>
-    <string name="label_with_rg_info">Com informações de RG</string>
-    <string name="label_without_rg_info">Sem informações de RG</string>
-    <string name="album_and_year">Álbum e ano</string>
-    <string name="song_info">Informações da música.</string>
     <string name="no_results">Nenhum resultado</string>
     <string name="connection_unavailable">Conexão indisponível.</string>
     <string name="you_have_to_select_at_least_one_category">Você deve selecionar pelo menos uma categoria</string>
     <string name="you_cannot_select_more_than_five_categories">Você não pode selecionar mais de cinco categorias.</string>
-    <string name="auto_limited_listing_title">Listagem limitada enquanto dirige</string>
-    <string name="auto_limited_listing_subtitle">Abra o aplicativo para ver a lista completa</string>
     <string name="backup_settings">Confirgurações</string>
     <string name="backup_synced_lyrics">Letras sincronizadas</string>
     <string name="backup_artist_images">Imagens do artista</string>
