@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">Upravit texty</string>
     <string name="open_lyrics_editor">Otevřít editor textů</string>
     <string name="could_not_load_the_song_information">"Informace o skladbě nelze načíst."</string>
-    <string name="label_with_rg_info">S informacemi o RG</string>
-    <string name="label_without_rg_info">Bez RG informací</string>
-    <string name="album_and_year">Album a rok</string>
-    <string name="song_info">Informace o skladbě.</string>
     <string name="no_results">Žádné výsledky</string>
     <string name="connection_unavailable">Připojení není k dispozici.</string>
     <string name="you_have_to_select_at_least_one_category">Musíte vybrat alespoň jednu kategorii</string>
     <string name="you_cannot_select_more_than_five_categories">Nelze vybrat více než pět kategorií.</string>
-    <string name="auto_limited_listing_title">Omezený výpis při řízení</string>
-    <string name="auto_limited_listing_subtitle">Otevřete aplikaci pro zobrazení úplného seznamu</string>
     <string name="backup_settings">Nastavení</string>
     <string name="backup_synced_lyrics">Synchronizované texty</string>
     <string name="backup_artist_images">Obrázky interpreta</string>
