@@ -324,16 +324,10 @@
     <string name="edit_lyrics_action">Редактировать текст песни</string>
     <string name="open_lyrics_editor">Открыть редактор текстов песен</string>
     <string name="could_not_load_the_song_information">"Не удалось загрузить информацию о песне."</string>
-    <string name="label_with_rg_info">С RG-информацией</string>
-    <string name="label_without_rg_info">Без RG-информации</string>
-    <string name="album_and_year">Альбом и год</string>
-    <string name="song_info">Информация о песне.</string>
     <string name="no_results">Нет результатов</string>
     <string name="connection_unavailable">Соединение недоступно.</string>
     <string name="you_have_to_select_at_least_one_category">Вы должны выбрать хотя бы одну категорию</string>
     <string name="you_cannot_select_more_than_five_categories">Вы не можете выбрать более пяти категорий.</string>
-    <string name="auto_limited_listing_title">Ограниченный список во время вождения</string>
-    <string name="auto_limited_listing_subtitle">Откройте приложение, чтобы увидеть полный список</string>
     <string name="backup_settings">Настройки</string>
     <string name="backup_synced_lyrics">Синхронизированные тексты песен</string>
     <string name="backup_artist_images">Изображения исполнителей</string>
