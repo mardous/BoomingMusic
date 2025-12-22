@@ -24,6 +24,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.mardous.booming.R
 import com.mardous.booming.data.model.Suggestion
 import com.mardous.booming.ui.IHomeCallback
@@ -73,17 +74,18 @@ class HomeAdapter(
     inner class ViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
         internal val headingTitle: TextView? = itemView.findViewById(R.id.heading_title)
+        internal val openSuggestion: MaterialButton? = itemView.findViewById(R.id.open)
         internal val recyclerView: RecyclerView? = itemView.findViewById(R.id.recycler_view)
 
         init {
-            headingTitle?.setOnClickListener(this)
+            openSuggestion?.setOnClickListener(this)
         }
 
         private val current: Suggestion?
             get() = dataSet.getOrNull(layoutPosition)
 
         override fun onClick(view: View) {
-            if (view === headingTitle) {
+            if (view === openSuggestion) {
                 val suggestion = current ?: return
                 callback.suggestionClick(suggestion)
             }
