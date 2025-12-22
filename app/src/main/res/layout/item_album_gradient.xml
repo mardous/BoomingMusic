@@ -18,50 +18,38 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/palette_color_container"
+    style="?materialCardViewFilledStyle"
     android:layout_width="260dp"
-    android:layout_height="wrap_content"
+    android:layout_height="140dp"
     android:layout_margin="6dp"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:foreground="?selectableItemBackground"
         tools:background="?colorSecondary">
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="0dp"
-            android:layout_height="130dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            android:translationX="-40dp"
-            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            tools:src="@tools:sample/backgrounds/scenic[3]" />
 
         <View
-            android:id="@+id/image_gradient"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/shadow_start_gradient"
-            android:backgroundTint="?colorSurfaceContainer"
-            android:translationX="-40dp"
+            android:background="@drawable/shadow_up_strong"
+            android:backgroundTint="@android:color/black"
             app:layout_constraintTop_toTopOf="@+id/image"
             app:layout_constraintBottom_toBottomOf="@+id/image"
             app:layout_constraintStart_toStartOf="@+id/image"
-            app:layout_constraintEnd_toEndOf="@+id/image"
-            tools:backgroundTint="?colorSecondary" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintEnd_toEndOf="@+id/image" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title"
@@ -70,29 +58,30 @@
             android:layout_marginTop="16dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:translationX="-30dp"
             android:textAppearance="?textAppearanceBodyMedium"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
             app:layout_constrainedWidth="true"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintStart_toEndOf="@+id/image"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:textColor="?colorOnSecondary"
+            app:layout_constraintBottom_toTopOf="@+id/text"
+            app:layout_constraintStart_toStartOf="@+id/text"
+            app:layout_constraintEnd_toEndOf="@+id/text"
             tools:text="@tools:sample/lorem" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:translationX="-30dp"
             android:textAppearance="?textAppearanceBodySmall"
-            android:textColor="?android:textColorSecondary"
+            android:textColor="@android:color/white"
             app:layout_constrainedWidth="true"
-            app:layout_constraintTop_toBottomOf="@+id/guideline"
-            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:textColor="?colorOnSecondary"
             tools:text="@tools:sample/lorem" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
