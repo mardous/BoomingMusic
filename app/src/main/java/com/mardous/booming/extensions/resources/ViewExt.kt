@@ -51,6 +51,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
+import com.google.android.material.progressindicator.BaseProgressIndicator
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.slider.Slider
 import com.mardous.booming.R
@@ -64,6 +65,7 @@ import io.noties.markwon.core.MarkwonTheme
 import io.noties.markwon.html.HtmlPlugin
 import me.zhanghai.android.fastscroll.FastScroller
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import com.google.android.material.R as M3R
 
 const val BOOMING_ANIM_TIME = 350L
 
@@ -474,6 +476,38 @@ fun NavigationBarView.hide() {
         }
         start()
     }
+}
+
+fun BaseProgressIndicator<*>.setWavy(isWavy: Boolean) {
+    val oldAmplitude = this.waveAmplitude
+    val newAmplitude = if (!isWavy) 0 else {
+        resources.getDimensionPixelSize(
+            M3R.dimen.m3_comp_progress_indicator_circular_active_indicator_wave_amplitude
+        )
+    }
+    val waveLength = if (isIndeterminate) wavelengthIndeterminate else wavelengthDeterminate
+    if (waveLength > 0) {
+        ValueAnimator.ofInt(oldAmplitude, newAmplitude).apply {
+            duration = BOOMING_ANIM_TIME
+            interpolator = DecelerateInterpolator()
+            addUpdateListener { animator ->
+                waveAmplitude = animator.animatedValue as Int
+            }
+        }.start()
+    } else {
+        waveAmplitude = newAmplitude
+        setWavelength(if (!isWavy) 0 else {
+            resources.getDimensionPixelSize(
+                M3R.dimen.m3_comp_progress_indicator_circular_active_indicator_wave_wavelength
+            )
+        })
+    }
+}
+
+fun BaseProgressIndicator<*>.setAnimatedWave(isAnimatedWave: Boolean) {
+    waveSpeed = if (isAnimatedWave) {
+        resources.getDimensionPixelSize(R.dimen.m3e_progress_indicator_animation_speed)
+    } else 0
 }
 
 typealias TrackingTouchListener = (Slider) -> Unit

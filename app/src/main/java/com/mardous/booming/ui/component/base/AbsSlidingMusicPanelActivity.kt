@@ -500,6 +500,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
             ADAPTIVE_CONTROLS -> miniPlayerFragment?.setupButtonStyle()
             ADD_EXTRA_CONTROLS -> miniPlayerFragment?.setupExtraControls()
+            SQUIGGLY_SEEK_BAR -> miniPlayerFragment?.setUpProgressStyle()
 
             CAROUSEL_EFFECT,
             NOW_PLAYING_SMALL_IMAGE,
