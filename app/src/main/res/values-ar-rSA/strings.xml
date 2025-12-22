@@ -323,16 +323,10 @@
     <string name="edit_lyrics_action">تحرير كلمات الأغاني</string>
     <string name="open_lyrics_editor">فتح محرر الكلمات</string>
     <string name="could_not_load_the_song_information">"تعذر تحميل معلومات الأغنية."</string>
-    <string name="label_with_rg_info">مع معلومات RG</string>
-    <string name="label_without_rg_info">بدون معلومات RG</string>
-    <string name="album_and_year">ألبوم وسنة</string>
-    <string name="song_info">معلومات الأغنية.</string>
     <string name="no_results">لا توجد نتائج</string>
     <string name="connection_unavailable">الاتصال غير متوفر.</string>
     <string name="you_have_to_select_at_least_one_category">يجب عليك تحديد فئة واحدة على الأقل</string>
     <string name="you_cannot_select_more_than_five_categories">لا يمكنك تحديد أكثر من خمس فئات.</string>
-    <string name="auto_limited_listing_title">قائمة محدودة أثناء القيادة</string>
-    <string name="auto_limited_listing_subtitle">افتح التطبيق لمشاهدة القائمة الكاملة</string>
     <string name="backup_settings">الإعدادات</string>
     <string name="backup_synced_lyrics">كلمات متزامنة</string>
     <string name="backup_artist_images">صور الفنان</string>
