@@ -8,94 +8,137 @@ import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.ExpandedSong
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.extensions.media.displayArtistName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import kotlin.math.ln
-import kotlin.math.pow
-import kotlin.random.Random
 
 class ShuffleManager : KoinComponent {
 
     private val repository: Repository by inject()
 
     suspend fun applySmartShuffle(songs: List<Song>, mode: SpecialShuffleMode): List<Song> {
-        val now = System.currentTimeMillis()
-        val expandedSongs = songs.expandSongs()
-        return try {
-            when (mode) {
-                SpecialShuffleMode.PureRandom -> songs.shuffled()
+        if (songs.isEmpty()) return emptyList()
 
-                SpecialShuffleMode.MostPlayed -> weightedShuffle(expandedSongs) { 1.0 + it.playCount }
+        val expandedSongs = songs.expandSongsBatch()
+        val now = System.currentTimeMillis()
+
+        return try {
+            val shuffledExpanded = when (mode) {
+                SpecialShuffleMode.PureRandom -> expandedSongs.shuffled()
+
+                SpecialShuffleMode.MostPlayed -> weightedShuffle(expandedSongs) {
+                    ln(it.playCount.toDouble() + 1.0) + 1.0
+                }
 
                 SpecialShuffleMode.MostPlayedArtists -> {
                     val artistWeights = expandedSongs
-                        .groupBy { it.displayArtistName() }
+                        .groupBy { it.albumArtistName ?: it.artistId }
                         .mapValues { entry ->
-                            entry.value.sumOf { it.playCount }.toDouble()
+                            ln(entry.value.sumOf { s -> s.playCount }.toDouble() + 1.0)
                         }
 
-                    weightedShuffle(songs) { song ->
-                        1.0 + (artistWeights[song.displayArtistName()] ?: 1.0)
+                    weightedShuffle(expandedSongs) { song ->
+                        val key = song.albumArtistName ?: song.artistId
+                        1.0 + (artistWeights[key] ?: 0.0)
                     }
                 }
 
                 SpecialShuffleMode.MostPlayedAlbums -> {
                     val albumWeights = expandedSongs
-                        .groupBy { song -> song.albumId }
+                        .groupBy { it.albumId }
                         .mapValues { entry ->
-                            entry.value.sumOf { it.playCount }.toDouble()
+                            ln(entry.value.sumOf { s -> s.playCount }.toDouble() + 1.0)
                         }
 
-                    weightedShuffle(songs) { song -> 1.0 + (albumWeights[song.albumId] ?: 1.0) }
+                    weightedShuffle(expandedSongs) { song ->
+                        1.0 + (albumWeights[song.albumId] ?: 0.0)
+                    }
                 }
 
                 SpecialShuffleMode.FavoriteSongs -> weightedShuffle(expandedSongs) { song ->
-                    if (song.isFavorite) 5.0 else 1.0
+                    if (song.isFavorite) 6.0 else 1.0
                 }
 
                 SpecialShuffleMode.ForgottenSongs -> weightedShuffle(expandedSongs) { song ->
-                    val days = ((now - song.lastPlayedAt).coerceAtLeast(0L)) / 86400000.0
-                    ln(days + 1.0).takeIf { it.isFinite() && it > 0 } ?: 1.0
+                    val days = ((now - song.lastPlayedAt).coerceAtLeast(0L)) / MILLIS_IN_DAY
+                    ln(days + 1.0).coerceAtLeast(0.1)
                 }
 
-                SpecialShuffleMode.RecentlyAdded -> weightedShuffle(expandedSongs) { it ->
-                    val age = ((now - it.dateAdded).coerceAtLeast(0L)) / 86400000.0
-                    (1.0 / (age + 1.0)).takeIf { it.isFinite() && it > 0 } ?: 1.0
+                SpecialShuffleMode.RecentlyAdded -> weightedShuffle(expandedSongs) { song ->
+                    val daysOld = ((now - song.dateAdded).coerceAtLeast(0L)) / MILLIS_IN_DAY
+                    val weight = 10.0 / (daysOld + 1.0)
+                    weight.coerceAtLeast(0.1)
                 }
 
-                SpecialShuffleMode.Combined -> {
-                    val maxPlayCount = expandedSongs.maxOfOrNull { it.playCount }?.coerceAtLeast(1) ?: 1
-                    val maxDaysSincePlayed = expandedSongs.maxOfOrNull { now - it.lastPlayedAt }?.coerceAtLeast(1L) ?: 1L
-                    val maxAge = expandedSongs.maxOfOrNull { now - it.dateAdded }?.coerceAtLeast(1L) ?: 1L
-
-                    weightedShuffle(expandedSongs) {
-                        val playCount = it.playCount.toDouble()
-                        val daysSincePlayed = ((now - it.lastPlayedAt).coerceAtLeast(1L)) / 86400000.0
-                        val age = ((now - it.dateAdded).coerceAtLeast(1L)) / 86400000.0
-
-                        val normalizedPlayCount = playCount / maxPlayCount
-                        val normalizedDaysSincePlayed = daysSincePlayed / (maxDaysSincePlayed / 86400000.0)
-                        val normalizedRecency = (1.0 / age) / (1.0 / (maxAge / 86400000.0))
-
-                        val favMultiplier = if (it.isFavorite) FAVORITE_MULTIPLIER else 1.0
-
-                        val combinedWeight = (
-                                WEIGHT_PLAY_COUNT * normalizedPlayCount +
-                                        WEIGHT_FORGOTTENNESS * normalizedDaysSincePlayed +
-                                        WEIGHT_RECENCY * normalizedRecency
-                                ) * favMultiplier
-
-                        combinedWeight.takeIf { w -> w.isFinite() && w > 0 } ?: 1.0
-                    }
-                }
+                SpecialShuffleMode.Combined -> calculateCombinedShuffle(expandedSongs, now)
             }
+
+            shuffledExpanded.map { it }
         } catch (e: Exception) {
             Log.e("ShuffleManager", "applySmartShuffle() failed in mode: $mode", e)
             songs.shuffled()
         }
+    }
+
+    private fun calculateCombinedShuffle(items: List<ExpandedSong>, now: Long): List<ExpandedSong> {
+        val maxPlayCount = items.maxOfOrNull { it.playCount }?.coerceAtLeast(1) ?: 1
+        val maxDaysSincePlayed = items.maxOfOrNull { now - it.lastPlayedAt }?.coerceAtLeast(1L) ?: 1L
+        val maxAge = items.maxOfOrNull { now - it.dateAdded }?.coerceAtLeast(1L) ?: 1L
+
+        return weightedShuffle(items) { song ->
+            val playCountScore = song.playCount.toDouble() / maxPlayCount.toDouble()
+
+            val daysSincePlayed = (now - song.lastPlayedAt).coerceAtLeast(0L)
+            val forgottenScore = daysSincePlayed.toDouble() / maxDaysSincePlayed.toDouble()
+
+            val age = (now - song.dateAdded).coerceAtLeast(0L)
+            val recencyScore = 1.0 - (age.toDouble() / maxAge.toDouble())
+
+            val favMultiplier = if (song.isFavorite) FAVORITE_MULTIPLIER else 1.0
+            val finalWeight = (
+                    (WEIGHT_PLAY_COUNT * playCountScore) +
+                            (WEIGHT_FORGOTTENNESS * forgottenScore) +
+                            (WEIGHT_RECENCY * recencyScore)
+                    ) * favMultiplier
+
+            finalWeight.coerceAtLeast(0.01)
+        }
+    }
+
+    private suspend fun List<Song>.expandSongsBatch(): List<ExpandedSong> {
+        val playCountsMap = repository.findSongsInPlayCount(this).associateBy { it.id }
+        val favorites = repository.findSongsInFavorites(this).map { it.id }.toSet()
+        return this.map { song ->
+            val stats = playCountsMap[song.id]
+            ExpandedSong(
+                song = song,
+                playCount = stats?.playCount ?: 0,
+                skipCount = stats?.skipCount ?: 0,
+                lastPlayedAt = stats?.timePlayed ?: 0L,
+                isFavorite = favorites.contains(song.id)
+            )
+        }
+    }
+
+    private fun <T> weightedShuffle(items: List<T>, weightFunc: (T) -> Double): List<T> {
+        if (items.isEmpty()) return emptyList()
+
+        val rng = java.util.Random(System.nanoTime())
+
+        return items
+            .map { item ->
+                val weight = weightFunc(item)
+                val safeWeight = if (weight.isFinite() && weight > 0) weight else 1.0
+
+                val r = rng.nextDouble()
+                val score = ln(r) / safeWeight
+
+                Pair(item, score)
+            }
+            .sortedByDescending { it.second }
+            .map { it.first }
     }
 
     suspend fun <T : SongProvider> shuffleByProvider(
@@ -127,40 +170,8 @@ class ShuffleManager : KoinComponent {
         }
     }
 
-    private fun <T> weightedShuffle(items: List<T>, weightFunc: (T) -> Double): List<T> {
-        if (items.isEmpty()) return emptyList()
-
-        val weights = items.map { weightFunc(it).coerceAtLeast(1.0) }
-        if (weights.all { it == 1.0 }) {
-            Log.w("ShuffleManager", "All weights are equal — shuffle will behave like pure random.")
-        }
-
-        val rng = Random(System.nanoTime())
-        return items
-            .mapIndexed { index, item ->
-                val weight = weights[index]
-                val key = rng.nextDouble().pow(1.0 / weight)
-                item to key
-            }
-            .sortedByDescending { it.second }
-            .map { it.first }
-    }
-
-    private suspend fun List<Song>.expandSongs(): List<ExpandedSong> {
-        return map { song ->
-            val playCountEntity = repository.findSongInPlayCount(song.id)
-            val isFavorite = repository.isSongFavorite(song.id)
-            ExpandedSong(
-                song,
-                playCountEntity?.playCount ?: 0,
-                playCountEntity?.skipCount ?: 0,
-                playCountEntity?.timePlayed ?: 0,
-                isFavorite
-            )
-        }
-    }
-
     companion object {
+        private const val MILLIS_IN_DAY = 86400000.0
         private const val WEIGHT_PLAY_COUNT = 0.4
         private const val WEIGHT_FORGOTTENNESS = 0.3
         private const val WEIGHT_RECENCY = 0.3

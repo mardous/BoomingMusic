@@ -67,8 +67,11 @@ interface PlaylistDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSongsToPlaylist(songEntities: List<SongEntity>)
 
-    @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId AND id = :songId")
-    suspend fun isSongExistsInPlaylist(playlistId: Long, songId: Long): List<SongEntity>
+    @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId AND id = :songId LIMIT 1")
+    suspend fun findSongInPlaylist(playlistId: Long, songId: Long): SongEntity?
+
+    @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId AND id IN(:songIds)")
+    suspend fun findSongsInPlaylist(playlistId: Long, songIds: List<Long>): List<SongEntity>
 
     @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId ORDER BY song_key asc")
     fun songsFromPlaylist(playlistId: Long): LiveData<List<SongEntity>>

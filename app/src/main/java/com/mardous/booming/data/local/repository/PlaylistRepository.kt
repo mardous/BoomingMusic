@@ -66,8 +66,10 @@ interface PlaylistRepository {
     suspend fun favoriteSongs(): List<Song>
     fun favoriteSongsFlow(): Flow<List<Song>>
     suspend fun toggleFavorite(song: Song): Boolean
-    suspend fun isSongFavorite(songEntity: SongEntity): List<SongEntity>
     suspend fun isSongFavorite(songId: Long): Boolean
+    suspend fun findSongsInFavorites(songs: List<Song>): List<SongEntity>
+    suspend fun findSongInPlaylist(playlistId: Long, song: Song): SongEntity?
+    suspend fun findSongsInPlaylist(playlistId: Long, songs: List<Song>): List<SongEntity>
     suspend fun removeSongFromPlaylist(songEntity: SongEntity)
     suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song): Boolean
     suspend fun deleteSongFromAllPlaylists(songId: Long)
@@ -195,8 +197,8 @@ class RealPlaylistRepository(
     override suspend fun toggleFavorite(song: Song): Boolean {
         val playlist = favoritePlaylist()
         val songEntity = song.toSongEntity(playlist.playListId)
-        val isFavorite = isSongFavorite(songEntity).isNotEmpty()
-        return if (isFavorite) {
+        val favoriteSong = findSongInPlaylist(playlist.playListId, song)
+        return if (favoriteSong != null) {
             removeSongFromPlaylist(songEntity)
             false
         } else {
@@ -205,18 +207,40 @@ class RealPlaylistRepository(
         }
     }
 
-    override suspend fun isSongFavorite(songEntity: SongEntity): List<SongEntity> =
-        playlistDao.isSongExistsInPlaylist(
-            songEntity.playlistCreatorId,
-            songEntity.id
-        )
-
     override suspend fun isSongFavorite(songId: Long): Boolean {
-        return playlistDao.isSongExistsInPlaylist(
-            playlistDao.playlist(context.getString(R.string.favorites_label)).firstOrNull()?.playListId
-                ?: -1,
-            songId
-        ).isNotEmpty()
+        val favorites = playlistDao.playlist(context.getString(R.string.favorites_label)).firstOrNull()
+        if (favorites != null) {
+            return playlistDao.checkSongExistInPlaylist(favorites.playListId, songId)
+        }
+        return false
+    }
+
+    override suspend fun findSongsInFavorites(songs: List<Song>): List<SongEntity> {
+        val favorites = playlistDao.playlist(context.getString(R.string.favorites_label)).firstOrNull()
+        if (favorites != null) {
+            return buildList {
+                songs.map { it.id }
+                    .chunked(MAX_ITEMS_PER_CHUNK)
+                    .forEach { chunkIds ->
+                        addAll(playlistDao.findSongsInPlaylist(favorites.playListId, chunkIds))
+                    }
+            }
+        }
+        return emptyList()
+    }
+
+    override suspend fun findSongInPlaylist(playlistId: Long, song: Song) =
+        playlistDao.findSongInPlaylist(playlistId, song.id)
+
+    override suspend fun findSongsInPlaylist(playlistId: Long, songs: List<Song>): List<SongEntity> {
+        if (songs.isEmpty()) return emptyList()
+        return buildList {
+            songs.map { it.id }
+                .chunked(MAX_ITEMS_PER_CHUNK)
+                .forEach { chunkIds ->
+                    addAll(playlistDao.findSongsInPlaylist(playlistId, chunkIds))
+                }
+        }
     }
 
     override suspend fun removeSongFromPlaylist(songEntity: SongEntity) =

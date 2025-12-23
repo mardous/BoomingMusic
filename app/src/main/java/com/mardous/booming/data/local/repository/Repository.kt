@@ -64,13 +64,15 @@ interface Repository {
     suspend fun playlistsWithSongs(sorted: Boolean = false): List<PlaylistWithSongs>
     suspend fun playlistWithSongs(playlistId: Long): PlaylistWithSongs
     fun playlistWithSongsObservable(playlistId: Long): LiveData<PlaylistWithSongs>
-    suspend fun isSongFavorite(songEntity: SongEntity): List<SongEntity>
     suspend fun isSongFavorite(songId: Long): Boolean
     suspend fun favoriteSongs(): List<Song>
     fun favoriteSongsFlow(): Flow<List<Song>>
     suspend fun favoritePlaylist(): PlaylistEntity
     suspend fun checkFavoritePlaylist(): PlaylistEntity?
     suspend fun toggleFavorite(song: Song): Boolean
+    suspend fun findSongsInFavorites(songs: List<Song>): List<SongEntity>
+    suspend fun findSongInPlaylist(playlistId: Long, song: Song): SongEntity?
+    suspend fun findSongsInPlaylist(playlistId: Long, songs: List<Song>): List<SongEntity>
     fun checkPlaylistExists(playListId: Long): LiveData<Boolean>
     suspend fun checkPlaylistExists(playlistName: String): List<PlaylistEntity>
     suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song): Boolean
@@ -201,9 +203,6 @@ class RealRepository(
     override fun playlistWithSongsObservable(playlistId: Long): LiveData<PlaylistWithSongs> =
         playlistRepository.playlistWithSongsObservable(playlistId)
 
-    override suspend fun isSongFavorite(songEntity: SongEntity): List<SongEntity> =
-        playlistRepository.isSongFavorite(songEntity)
-
     override suspend fun isSongFavorite(songId: Long): Boolean =
         playlistRepository.isSongFavorite(songId)
 
@@ -221,6 +220,15 @@ class RealRepository(
 
     override suspend fun toggleFavorite(song: Song): Boolean =
         playlistRepository.toggleFavorite(song)
+
+    override suspend fun findSongsInFavorites(songs: List<Song>): List<SongEntity> =
+        playlistRepository.findSongsInFavorites(songs)
+
+    override suspend fun findSongInPlaylist(playlistId: Long, song: Song): SongEntity? =
+        playlistRepository.findSongInPlaylist(playlistId, song)
+
+    override suspend fun findSongsInPlaylist(playlistId: Long, songs: List<Song>): List<SongEntity> =
+        playlistRepository.findSongsInPlaylist(playlistId, songs)
 
     override fun checkPlaylistExists(playListId: Long): LiveData<Boolean> =
         playlistRepository.checkPlaylistExists(playListId)
