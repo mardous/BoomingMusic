@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Tümünü karıştır</string>
     <string name="shuffle_mode">Karıştırma modu</string>
     <string name="repeat_mode">Tekrarlama modu</string>
-    <string name="advanced_shuffle_label">Gelişmiş karıştırma</string>
     <string name="shuffle_button_tip">Normal karıştırma için dokunun. Gelişmiş seçenekler için uzun basın.</string>
     <string name="action_play_pause">Oynat/Duraklat</string>
     <string name="action_pause">Duraklat</string>
