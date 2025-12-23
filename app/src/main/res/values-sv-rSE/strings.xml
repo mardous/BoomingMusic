@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Blanda alla</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Spela/Pausa</string>
     <string name="action_pause">Pausa</string>
@@ -323,16 +322,10 @@
     <string name="edit_lyrics_action">Redigera låttext</string>
     <string name="open_lyrics_editor">Öppna låttextredigerare</string>
     <string name="could_not_load_the_song_information">"Det gick inte att ladda låtinformationen."</string>
-    <string name="label_with_rg_info">Med RG info</string>
-    <string name="label_without_rg_info">Utan RG info</string>
-    <string name="album_and_year">Album och år</string>
-    <string name="song_info">Sång info.</string>
     <string name="no_results">Inga resultat</string>
     <string name="connection_unavailable">Anslutning ej tillgänglig.</string>
     <string name="you_have_to_select_at_least_one_category">Du måste välja minst en kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Du kan inte välja mer än fem kategorier.</string>
-    <string name="auto_limited_listing_title">Begränsad notering under körning</string>
-    <string name="auto_limited_listing_subtitle">Öppna appen för att se hela listan</string>
     <string name="backup_settings">Inställningar</string>
     <string name="backup_synced_lyrics">Synkroniserade låttexter</string>
     <string name="backup_artist_images">Konstnärsbilder</string>

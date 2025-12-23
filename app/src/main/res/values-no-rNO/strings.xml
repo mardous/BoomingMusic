@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Bland alle</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Spill/Pause</string>
     <string name="action_pause">pause</string>
@@ -323,16 +322,10 @@
     <string name="edit_lyrics_action">Rediger sangtekst</string>
     <string name="open_lyrics_editor">Åpne sangtekst editor</string>
     <string name="could_not_load_the_song_information">"Kunne ikke laste inn sanginformasjonen."</string>
-    <string name="label_with_rg_info">Med RG info</string>
-    <string name="label_without_rg_info">Uten RG info</string>
-    <string name="album_and_year">Album og år</string>
-    <string name="song_info">Sang info.</string>
     <string name="no_results">Ingen resultater</string>
     <string name="connection_unavailable">Utilgjengelig forbindelse</string>
     <string name="you_have_to_select_at_least_one_category">Du må velge minst en kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Du kan ikke velge mer enn fem kategorier.</string>
-    <string name="auto_limited_listing_title">Begrenset oppføring under kjøring</string>
-    <string name="auto_limited_listing_subtitle">Åpne appen for å se hele listen</string>
     <string name="backup_settings">Innstillinger</string>
     <string name="backup_synced_lyrics">Synkroniserte tekster</string>
     <string name="backup_artist_images">Artistens bilder</string>

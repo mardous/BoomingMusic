@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Todo aleatorio</string>
     <string name="shuffle_mode">Modo aleatorio</string>
     <string name="repeat_mode">Modo repetición</string>
-    <string name="advanced_shuffle_label">Mezcla avanzada</string>
     <string name="shuffle_button_tip">Toca para mezcla normal. Mantén presionado para opciones avanzadas.</string>
     <string name="action_play_pause">Reproducir/Pausar</string>
     <string name="action_pause">Pausar</string>
@@ -322,16 +321,10 @@
     <string name="edit_lyrics_action">Editar letra</string>
     <string name="open_lyrics_editor">Abrir editor de letras</string>
     <string name="could_not_load_the_song_information">"No se pudo leer la información del archivo."</string>
-    <string name="label_with_rg_info">Con info. de RG</string>
-    <string name="label_without_rg_info">Sin info. de RG</string>
-    <string name="album_and_year">Álbum y año</string>
-    <string name="song_info">Info. adicional de la canción.</string>
     <string name="no_results">Sin resultados</string>
     <string name="connection_unavailable">Conexión a Internet no disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Debes seleccionar al menos una categoría</string>
     <string name="you_cannot_select_more_than_five_categories">No puedes elegir más de cinco categorías.</string>
-    <string name="auto_limited_listing_title">Listado limitado al conducir</string>
-    <string name="auto_limited_listing_subtitle">Abra la aplicación para ver la lista completa</string>
     <string name="backup_settings">Ajustes</string>
     <string name="backup_synced_lyrics">Letras sincronizadas</string>
     <string name="backup_artist_images">Imágenes de artistas</string>

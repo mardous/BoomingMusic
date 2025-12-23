@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">全部随机</string>
     <string name="shuffle_mode">随机播放模式</string>
     <string name="repeat_mode">循环模式</string>
-    <string name="advanced_shuffle_label">偏好随机模式</string>
     <string name="shuffle_button_tip">点击启用默认随机模式，长按图标以使用偏好的随机模式。</string>
     <string name="action_play_pause">播放/暂停</string>
     <string name="action_pause">暂停</string>
@@ -323,16 +322,10 @@
     <string name="edit_lyrics_action">编辑歌词</string>
     <string name="open_lyrics_editor">打开歌词编辑器</string>
     <string name="could_not_load_the_song_information">"无法加载歌曲信息。"</string>
-    <string name="label_with_rg_info">带RG信息</string>
-    <string name="label_without_rg_info">没有 RG 信息</string>
-    <string name="album_and_year">专辑和年份</string>
-    <string name="song_info">歌曲信息</string>
     <string name="no_results">没有结果</string>
     <string name="connection_unavailable">连接不可用。</string>
     <string name="you_have_to_select_at_least_one_category">您必须选择至少一个类别</string>
     <string name="you_cannot_select_more_than_five_categories">您不能选择超过五个类别。</string>
-    <string name="auto_limited_listing_title">驾车时上架限制</string>
-    <string name="auto_limited_listing_subtitle">打开应用查看完整列表</string>
     <string name="backup_settings">设置</string>
     <string name="backup_synced_lyrics">同步歌词</string>
     <string name="backup_artist_images">艺人图像</string>

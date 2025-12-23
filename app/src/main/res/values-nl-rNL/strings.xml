@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Alles shuffelen</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Afspelen/pauzeren</string>
     <string name="action_pause">Onderbreken</string>
@@ -323,16 +322,10 @@
     <string name="edit_lyrics_action">Songtekst bewerken</string>
     <string name="open_lyrics_editor">Open songteksten editor</string>
     <string name="could_not_load_the_song_information">"Kon de nummerinformatie niet laden."</string>
-    <string name="label_with_rg_info">Met RG info</string>
-    <string name="label_without_rg_info">Zonder RG info</string>
-    <string name="album_and_year">Album en jaar</string>
-    <string name="song_info">Nummer informatie.</string>
     <string name="no_results">Geen resultaten gevonden</string>
     <string name="connection_unavailable">Verbinding niet beschikbaar.</string>
     <string name="you_have_to_select_at_least_one_category">Je moet ten minste één categorie selecteren.</string>
     <string name="you_cannot_select_more_than_five_categories">U kunt niet meer dan vijf categorieën selecteren.</string>
-    <string name="auto_limited_listing_title">Beperkte aanbieding tijdens het rijden</string>
-    <string name="auto_limited_listing_subtitle">Open de app om de volledige lijst te zien</string>
     <string name="backup_settings">Instellingen</string>
     <string name="backup_synced_lyrics">Gesynchroniseerde songteksten</string>
     <string name="backup_artist_images">Artiest afbeeldingen</string>

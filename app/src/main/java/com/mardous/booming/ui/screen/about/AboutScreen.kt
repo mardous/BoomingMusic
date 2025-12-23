@@ -25,11 +25,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
@@ -40,13 +42,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
+import coil3.compose.AsyncImage
 import com.mardous.booming.R
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.core.model.about.DeviceInfo
 import com.mardous.booming.extensions.*
 import com.mardous.booming.ui.component.compose.ActionButton
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
-import com.mardous.booming.ui.component.compose.lists.ContributionListItem
+import dev.jeziellago.compose.markdowntext.MarkdownText
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
@@ -499,6 +502,55 @@ private fun AboutListItem(
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = summaryMaxLines,
                     overflow = TextOverflow.Ellipsis
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ContributionListItem(
+    contribution: Contribution,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(enabled = !contribution.url.isNullOrEmpty()) { onClick() }
+            .padding(horizontal = 16.dp, vertical = 16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        if (contribution.image != null) {
+            AsyncImage(
+                model = contribution.imageUrl,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape),
+                contentScale = ContentScale.Crop
+            )
+        }
+
+        Spacer(modifier = Modifier.width(16.dp))
+
+        Column(
+            modifier = Modifier
+                .weight(1f),
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = contribution.name,
+                style = MaterialTheme.typography.bodyLarge,
+                overflow = TextOverflow.Ellipsis,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            if (!contribution.description.isNullOrBlank()) {
+                MarkdownText(
+                    markdown = contribution.description,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    ),
                 )
             }
         }

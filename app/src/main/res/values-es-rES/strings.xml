@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Reproducir todo aleatoriamente</string>
     <string name="shuffle_mode">Modo aleatorio</string>
     <string name="repeat_mode">Modo repetición</string>
-    <string name="advanced_shuffle_label">Mezcla avanzada</string>
     <string name="shuffle_button_tip">Pulse para barajar normalmente. Mantenga pulsado para opciones avanzadas.</string>
     <string name="action_play_pause">Reproducir/Pausar</string>
     <string name="action_pause">Pausar</string>
@@ -323,16 +322,10 @@
     <string name="edit_lyrics_action">Edit lyrics</string>
     <string name="open_lyrics_editor">Open lyrics editor</string>
     <string name="could_not_load_the_song_information">"Couldn't load the song information."</string>
-    <string name="label_with_rg_info">With RG info</string>
-    <string name="label_without_rg_info">Without RG info</string>
-    <string name="album_and_year">Album and year</string>
-    <string name="song_info">Song info.</string>
     <string name="no_results">No results</string>
     <string name="connection_unavailable">Connection unavailable.</string>
     <string name="you_have_to_select_at_least_one_category">You have to select at least one category</string>
     <string name="you_cannot_select_more_than_five_categories">You can\'t select more than five categories.</string>
-    <string name="auto_limited_listing_title">Limited listing while driving</string>
-    <string name="auto_limited_listing_subtitle">Open the app to see the full list</string>
     <string name="backup_settings">Settings</string>
     <string name="backup_synced_lyrics">Synced lyrics</string>
     <string name="backup_artist_images">Artist images</string>

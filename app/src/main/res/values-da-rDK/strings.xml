@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Bland alle</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Afspil/Pause</string>
     <string name="action_pause">Pause</string>
@@ -323,16 +322,10 @@
     <string name="edit_lyrics_action">Rediger sangtekster</string>
     <string name="open_lyrics_editor">Åbn sangtekst-editor</string>
     <string name="could_not_load_the_song_information">"Kunne ikke indlæse sangoplysningerne."</string>
-    <string name="label_with_rg_info">Med RG info</string>
-    <string name="label_without_rg_info">Uden RG info</string>
-    <string name="album_and_year">Album og år</string>
-    <string name="song_info">Sang info.</string>
     <string name="no_results">Ingen resultater</string>
     <string name="connection_unavailable">Forbindelsen er ikke tilgængelig.</string>
     <string name="you_have_to_select_at_least_one_category">Du skal vælge mindst én kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Du kan ikke vælge mere end fem kategorier.</string>
-    <string name="auto_limited_listing_title">Begrænset liste under kørsel</string>
-    <string name="auto_limited_listing_subtitle">Åbn app\'en for at se den fulde liste</string>
     <string name="backup_settings">Indstillinger</string>
     <string name="backup_synced_lyrics">Synkroniserede sangtekster</string>
     <string name="backup_artist_images">Kunstner billeder</string>
