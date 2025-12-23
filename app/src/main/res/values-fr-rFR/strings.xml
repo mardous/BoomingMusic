@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Tout mélanger</string>
     <string name="shuffle_mode">Mode aléatoire</string>
     <string name="repeat_mode">Mode répétition</string>
-    <string name="advanced_shuffle_label">Mélange avancé</string>
     <string name="shuffle_button_tip">Appuyez pour une lecture aléatoire normale. Appuyez longuement pour accéder aux options avancées.</string>
     <string name="action_play_pause">Lecture/Pause</string>
     <string name="action_pause">Pause</string>
