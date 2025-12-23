@@ -216,7 +216,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="top_tracks_label">Melhores Faixas</string>
     <string name="history_label">Histórico</string>
     <string name="not_recently_played">Não Tocadas Recentemente</string>
-    <string name="play_info">Play info</string>
+    <string name="play_info">Informações da música</string>
     <string name="track_play_counts">Contagem de Reprodução</string>
     <string name="song_stat_never_label">nunca tocado</string>
     <string name="song_stat_one_time_label">reproduzida uma vez em %s</string>
@@ -286,8 +286,8 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="label_file_path">Caminho do arquivo</string>
     <string name="size">Tamanho do arquivo</string>
     <string name="label_file_format">Formato</string>
-    <string name="file_label">File</string>
-    <string name="metadata_label">Metadata</string>
+    <string name="file_label">Arquivo</string>
+    <string name="metadata_label">Metadados</string>
     <string name="title_and_artist">Título e Artista</string>
     <string name="song">Música</string>
     <string name="title">Título</string>
@@ -593,12 +593,12 @@ Ideal para podcasts e gravações.</string>
     <string name="shuffle_mode_header">Modo aleatório</string>
     <string name="display_header">Visualização</string>
     <string name="backup_restore_header">Backup/Restauração</string>
-    <string name="visuals_header">Visuals</string>
+    <string name="visuals_header">Visuais</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema geral</string>
     <string name="pure_black_theme_title">Preto Puro</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Use custom font</string>
+    <string name="use_custom_font_title">Usar fonte personalizada</string>
     <string name="appbar_mode_title">Estilo do cabeçalho</string>
     <string name="library_categories_title">Categorias da biblioteca</string>
     <string name="library_categories_summary">Configura a visibilidade e a ordem das categorias da biblioteca.</string>
@@ -618,9 +618,9 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_syllable_mode_title">Letras palavra por palavra</string>
     <string name="lyrics_syllable_mode_summary">Permite exibir letras com sincronização palavra por palavra. Depende da disponibilidade da letra e de um formato compatível, como LRC ou TTML.</string>
     <string name="lyrics_effects_note">Efeitos avançados melhoram a experiência visual, mas podem exigir mais recursos de sistema e bateria.</string>
-    <string name="lyrics_background_effect_title">Background effect</string>
-    <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
+    <string name="lyrics_background_effect_title">Efeito de fundo</string>
+    <string name="lyrics_background_gradient">Gradiente</string>
+    <string name="lyrics_background_canvas">Canvas (se disponível)</string>
     <string name="lyrics_blur_effect_title">Efeito de desfoque</string>
     <string name="lyrics_blur_effect_summary">Desfocar as linhas da letra adjacentes à atual.</string>
     <string name="lyrics_shadow_effect_title">Efeito de sombra</string>
@@ -641,11 +641,10 @@ Ideal para podcasts e gravações.</string>
     <string name="synced_font_size_full_summary">Ajusta o tamanho da fonte das letras sincronizadas em tela cheia.</string>
     <string name="unsynced_font_size_full_title">Tamanho da fonte das letras não sincronizadas (tela cheia)</string>
     <string name="unsynced_font_size_full_summary">Ajusta o tamanho da fonte das letras não sincronizadas na tela cheia.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
-    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="instrumental_tracks_identifiers_title">Identificadores de faixas instrumentais</string>
+    <string name="instrumental_tracks_identifiers_summary">Se a letra de uma música contiver apenas um ou mais desses indicadores, ela será marcada como faixa instrumental (separados por vírgula).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Marcar pelo título</string>
+    <string name="instrumental_tracks_mark_by_title_summary">O título da faixa também será levado em conta na busca por identificadores.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir ao reproduzir</string>
