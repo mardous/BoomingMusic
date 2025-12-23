@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Reproducir todo aleatoriamente</string>
     <string name="shuffle_mode">Modo aleatorio</string>
     <string name="repeat_mode">Modo repetición</string>
-    <string name="advanced_shuffle_label">Mezcla avanzada</string>
     <string name="shuffle_button_tip">Pulse para barajar normalmente. Mantenga pulsado para opciones avanzadas.</string>
     <string name="action_play_pause">Reproducir/Pausar</string>
     <string name="action_pause">Pausar</string>

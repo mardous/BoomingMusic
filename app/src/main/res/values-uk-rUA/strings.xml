@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Перемішати все</string>
     <string name="shuffle_mode">У випадковому порядку</string>
     <string name="repeat_mode">Режим повтору</string>
-    <string name="advanced_shuffle_label">Передовий порядок сортування</string>
     <string name="shuffle_button_tip">Торкніться для звичайного перемішування. Довге натискання для додаткових опцій.</string>
     <string name="action_play_pause">Відтвор./Пауза</string>
     <string name="action_pause">Пауза</string>

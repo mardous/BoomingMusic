@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">すべてシャッフル</string>
     <string name="shuffle_mode">シャッフルモード</string>
     <string name="repeat_mode">リピートモード</string>
-    <string name="advanced_shuffle_label">高度なシャッフル</string>
     <string name="shuffle_button_tip">タップして通常のシャッフルを行います。長押しで詳細オプションを選択できます。</string>
     <string name="action_play_pause">再生/一時停止</string>
     <string name="action_pause">一時停止</string>

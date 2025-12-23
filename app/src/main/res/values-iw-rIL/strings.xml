@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">ערבב הכל</string>
     <string name="shuffle_mode">מצב ערבוב</string>
     <string name="repeat_mode">מצב חזרה</string>
-    <string name="advanced_shuffle_label">ערבוב מתקדם</string>
     <string name="shuffle_button_tip">הקש להערבוב רגיל. לחיצה ארוכה תפתח אפשרויות מתקדמות.</string>
     <string name="action_play_pause">נגן/השהה</string>
     <string name="action_pause">השהה</string>
