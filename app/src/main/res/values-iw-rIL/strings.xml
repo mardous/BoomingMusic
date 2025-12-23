@@ -216,7 +216,7 @@
     <string name="top_tracks_label">רצועות מובילות</string>
     <string name="history_label">היסטוריה</string>
     <string name="not_recently_played">לא הושמע לאחרונה</string>
-    <string name="play_info">Play info</string>
+    <string name="play_info">פרטי ניגון</string>
     <string name="track_play_counts">ספירת השמעות של רצועות</string>
     <string name="song_stat_never_label">מעולם לא הושמע</string>
     <string name="song_stat_one_time_label">התנגן פעם אחת ב-%s</string>
@@ -287,8 +287,8 @@
     <string name="label_file_path">נתיב הקובץ</string>
     <string name="size">גודל הקובץ</string>
     <string name="label_file_format">פורמט</string>
-    <string name="file_label">File</string>
-    <string name="metadata_label">Metadata</string>
+    <string name="file_label">קובץ</string>
+    <string name="metadata_label">מטא־דאטה</string>
     <string name="title_and_artist">כותרת ואמן</string>
     <string name="song">שיר</string>
     <string name="title">כותרת</string>
@@ -610,12 +610,12 @@
     <string name="shuffle_mode_header">מצב ערבוב</string>
     <string name="display_header">תצוגה</string>
     <string name="backup_restore_header">גיבוי / שחזור</string>
-    <string name="visuals_header">Visuals</string>
+    <string name="visuals_header">ויזואליים</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">ערכת נושא כללית</string>
     <string name="pure_black_theme_title">שחור טהור</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Use custom font</string>
+    <string name="use_custom_font_title">השתמש בגופן מותאם אישית</string>
     <string name="appbar_mode_title">סגנון כותרת</string>
     <string name="library_categories_title">קטגוריות בספרייה</string>
     <string name="library_categories_summary">הגדר את הנראות והסדר של קטגוריות הספרייה.</string>
@@ -635,9 +635,9 @@
     <string name="lyrics_syllable_mode_title">מילות שיר מילה במילה</string>
     <string name="lyrics_syllable_mode_summary">מאפשר הצגת מילות השיר עם סינכרון מילה-מילה. תלוי בזמינות המילים ובפורמט תואם כגון LRC או TTML.</string>
     <string name="lyrics_effects_note">אפקטים מתקדמים משפרים את החוויה החזותית אך עשויים לדרוש יותר משאבי מערכת וסוללה.</string>
-    <string name="lyrics_background_effect_title">Background effect</string>
-    <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
+    <string name="lyrics_background_effect_title">אפקט רקע</string>
+    <string name="lyrics_background_gradient">גרדיאנט</string>
+    <string name="lyrics_background_canvas">קנבס (אם קיים)</string>
     <string name="lyrics_blur_effect_title">אפקט טשטוש</string>
     <string name="lyrics_blur_effect_summary">טשטש את שורות המילים הסמוכות לשורה הנוכחית.</string>
     <string name="lyrics_shadow_effect_title">אפקט צל</string>
@@ -658,11 +658,10 @@
     <string name="synced_font_size_full_summary">התאם את גודל הגופן למילות שיר מסונכרנות במסך מילות השיר המלא.</string>
     <string name="unsynced_font_size_full_title">גודל גופן למילות שיר לא מסונכרנות (תצוגה מלאה)</string>
     <string name="unsynced_font_size_full_summary">התאם את גודל הגופן למילות שיר לא מסונכרנות במסך מילות השיר המלא.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
-    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="instrumental_tracks_identifiers_title">זיהוי רצועות אינסטרומנטליות</string>
+    <string name="instrumental_tracks_identifiers_summary">אם מילות השיר מורכבות אך ורק מאחד או יותר מהסמנים האלה, השיר יסומן כרצועה אינסטרומנטלית (מופרדים בפסיק).</string>
+    <string name="instrumental_tracks_mark_by_title_title">סמן לפי שם</string>
+    <string name="instrumental_tracks_mark_by_title_summary">שם השיר יילקח גם הוא בחשבון בעת חיפוש אחר הסמנים.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">סגנון</string>
     <string name="open_on_play_title">פתח בעת ניגון</string>
