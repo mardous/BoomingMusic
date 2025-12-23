@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">全部随机</string>
     <string name="shuffle_mode">随机播放模式</string>
     <string name="repeat_mode">循环模式</string>
-    <string name="advanced_shuffle_label">偏好随机模式</string>
     <string name="shuffle_button_tip">点击启用默认随机模式，长按图标以使用偏好的随机模式。</string>
     <string name="action_play_pause">播放/暂停</string>
     <string name="action_pause">暂停</string>
