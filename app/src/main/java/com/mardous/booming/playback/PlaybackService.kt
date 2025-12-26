@@ -33,6 +33,7 @@ import androidx.media3.session.MediaLibraryService.MediaLibrarySession
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
 import coil3.SingletonImageLoader
 import coil3.request.ImageRequest
+import coil3.size.Scale
 import coil3.toBitmap
 import com.google.common.collect.ImmutableList
 import com.google.common.util.concurrent.Futures
@@ -810,6 +811,7 @@ class PlaybackService :
             val result = SingletonImageLoader.get(this@PlaybackService).execute(
                 ImageRequest.Builder(this@PlaybackService)
                     .data(song)
+                    .scale(Scale.FILL)
                     .size(300)
                     .build()
             )
