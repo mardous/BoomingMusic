@@ -11,11 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
+import com.mardous.booming.R
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -24,6 +23,7 @@ fun SmallHeader(
     subtitle: String,
     additionalInfo: String? = null,
     imageModel: Any? = null,
+    imagePlaceholderIconRes: Int = R.drawable.ic_music_note_24dp,
     showIndeterminateIndicator: Boolean = false,
     modifier: Modifier = Modifier
 ) {
@@ -33,10 +33,9 @@ fun SmallHeader(
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         imageModel?.let {
-            AsyncImage(
+            MediaImage(
                 model = imageModel,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
+                placeholderIcon = imagePlaceholderIconRes,
                 modifier = Modifier
                     .clip(RoundedCornerShape(16.dp))
                     .size(96.dp)
