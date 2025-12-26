@@ -346,15 +346,9 @@ class LibraryViewModel(
         )
     }
 
-    fun deleteSongsInPlaylist(songs: List<SongEntity>) {
-        viewModelScope.launch(IO) {
-            repository.deleteSongsInPlaylist(songs)
-            forceReload(ReloadType.Playlists)
-        }
-    }
-
-    fun deleteSongsFromPlaylist(playlists: List<PlaylistEntity>) = viewModelScope.launch(IO) {
-        repository.deletePlaylistSongs(playlists)
+    fun deleteSongsInPlaylist(songs: List<SongEntity>) = viewModelScope.launch(IO) {
+        repository.deleteSongsInPlaylist(songs)
+        forceReload(ReloadType.Playlists)
     }
 
     fun deletePlaylists(playlists: List<PlaylistEntity>) = viewModelScope.launch(IO) {
@@ -364,6 +358,7 @@ class LibraryViewModel(
             }
         }
         repository.deletePlaylists(playlists)
+        forceReload(ReloadType.Playlists)
     }
 
     fun addToPlaylist(playlistName: String, songs: List<Song>): LiveData<AddToPlaylistResult> =

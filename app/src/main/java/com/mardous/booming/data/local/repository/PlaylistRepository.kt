@@ -57,7 +57,6 @@ interface PlaylistRepository {
     suspend fun searchPlaylists(searchQuery: String): List<PlaylistWithSongs>
     suspend fun searchPlaylistSongs(playlistId: Long, searchQuery: String): List<SongEntity>
     suspend fun insertSongs(songs: List<SongEntity>)
-    suspend fun deletePlaylistEntities(playlistEntities: List<PlaylistEntity>)
     suspend fun renamePlaylistEntity(playlistId: Long, name: String)
     suspend fun updatePlaylist(playlist: PlaylistEntity)
     suspend fun favoritePlaylist(): PlaylistEntity
@@ -71,9 +70,9 @@ interface PlaylistRepository {
     suspend fun findSongsInPlaylist(playlistId: Long, songs: List<Song>): List<SongEntity>
     suspend fun removeSongFromPlaylist(songEntity: SongEntity)
     suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song): Boolean
-    suspend fun deleteSongsFromPlaylist(songs: List<SongEntity>)
-    suspend fun deleteSongsFromPlaylists(playlists: List<PlaylistEntity>)
+    suspend fun deletePlaylists(playlists: List<PlaylistEntity>)
     suspend fun deleteSongFromAllPlaylists(songId: Long)
+    suspend fun deleteSongsFromPlaylist(songs: List<SongEntity>)
     suspend fun deleteSongsFromAllPlaylists(songsIds: List<Long>)
 }
 
@@ -146,9 +145,6 @@ class RealPlaylistRepository(
     override suspend fun insertSongs(songs: List<SongEntity>) {
         playlistDao.insertSongsToPlaylist(songs)
     }
-
-    override suspend fun deletePlaylistEntities(playlistEntities: List<PlaylistEntity>) =
-        playlistDao.deletePlaylists(playlistEntities)
 
     override suspend fun renamePlaylistEntity(playlistId: Long, name: String) =
         playlistDao.renamePlaylist(playlistId, name)
@@ -242,6 +238,18 @@ class RealPlaylistRepository(
     override suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song): Boolean =
         playlistDao.checkSongExistInPlaylist(playlistEntity.playListId, song.id)
 
+    override suspend fun deletePlaylists(playlists: List<PlaylistEntity>) {
+        playlists.map { it.playListId }
+            .chunked(MAX_ITEMS_PER_CHUNK)
+            .forEach { chunkPlaylistIds ->
+                playlistDao.removeSongsAndDeletePlaylists(chunkPlaylistIds)
+            }
+    }
+
+    override suspend fun deleteSongFromAllPlaylists(songId: Long) {
+        playlistDao.deleteSongsFromAllPlaylists(listOf(songId))
+    }
+
     override suspend fun deleteSongsFromPlaylist(songs: List<SongEntity>) {
         songs.groupBy { it.playlistCreatorId }
             .forEach { group ->
@@ -252,18 +260,6 @@ class RealPlaylistRepository(
                         playlistDao.deleteSongsFromPlaylist(group.key, it)
                     }
             }
-    }
-
-    override suspend fun deleteSongsFromPlaylists(playlists: List<PlaylistEntity>) {
-        playlists.map { it.playListId }
-            .chunked(MAX_ITEMS_PER_CHUNK)
-            .forEach {
-                playlistDao.deleteAllSongsFromPlaylists(it)
-            }
-    }
-
-    override suspend fun deleteSongFromAllPlaylists(songId: Long) {
-        playlistDao.deleteSongsFromAllPlaylists(listOf(songId))
     }
 
     override suspend fun deleteSongsFromAllPlaylists(songsIds: List<Long>) {

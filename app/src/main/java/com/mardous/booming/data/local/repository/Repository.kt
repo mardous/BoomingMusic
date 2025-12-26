@@ -82,7 +82,6 @@ interface Repository {
     suspend fun insertSongsInPlaylist(songs: List<SongEntity>)
     suspend fun removeSongFromPlaylist(songEntity: SongEntity)
     suspend fun deleteSongsInPlaylist(songs: List<SongEntity>)
-    suspend fun deletePlaylistSongs(playlists: List<PlaylistEntity>)
     suspend fun deleteSong(songId: Long): Song
     suspend fun deleteSongs(songs: List<Song>)
     suspend fun deleteMissingContent()
@@ -243,7 +242,7 @@ class RealRepository(
         playlistRepository.createPlaylist(playlistEntity)
 
     override suspend fun deletePlaylists(playlists: List<PlaylistEntity>) =
-        playlistRepository.deletePlaylistEntities(playlists)
+        playlistRepository.deletePlaylists(playlists)
 
     override suspend fun renamePlaylist(playlistId: Long, name: String) =
         playlistRepository.renamePlaylistEntity(playlistId, name)
@@ -259,9 +258,6 @@ class RealRepository(
 
     override suspend fun deleteSongsInPlaylist(songs: List<SongEntity>) =
         playlistRepository.deleteSongsFromPlaylist(songs)
-
-    override suspend fun deletePlaylistSongs(playlists: List<PlaylistEntity>) =
-        playlistRepository.deleteSongsFromPlaylists(playlists)
 
     override suspend fun deleteSong(songId: Long): Song {
         val song = songRepository.song(songId)
