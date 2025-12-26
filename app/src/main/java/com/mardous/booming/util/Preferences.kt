@@ -30,6 +30,8 @@ import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.Cutoff
 import com.mardous.booming.core.model.action.FolderAction
 import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.core.model.action.OnClearQueueAction
+import com.mardous.booming.core.model.action.OnSongClickAction
 import com.mardous.booming.core.model.player.NowPlayingInfo
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.player.PlayerTransition
@@ -289,6 +291,10 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(PREFER_ALBUM_ARTIST_NAME, false)
         set(value) = preferences.edit { putBoolean(PREFER_ALBUM_ARTIST_NAME, value) }
 
+    var clearQueueAction: OnClearQueueAction
+        get() = preferences.enumValueByOrdinal(ON_CLEAR_QUEUE_ACTION, OnClearQueueAction.RemoveAllSongs)
+        set(value) = preferences.edit { putInt(ON_CLEAR_QUEUE_ACTION, value.ordinal) }
+
     val searchAutoQueue: Boolean
         get() = preferences.getBoolean(SEARCH_AUTO_QUEUE, false)
 
@@ -451,6 +457,9 @@ object Preferences : KoinComponent {
     inline fun <reified T : Enum<T>> SharedPreferences.enumValue(key: String, defaultValue: T): T =
         nullString(key)?.toEnum<T>() ?: defaultValue
 
+    inline fun <reified T : Enum<T>> SharedPreferences.enumValueByOrdinal(key: String, defaultValue: T): T =
+        getInt(key, defaultValue.ordinal).toEnum<T>() ?: defaultValue
+
     private fun appStr(resid: Int): String = appContext().getString(resid)
 }
 
@@ -579,6 +588,7 @@ const val SEEK_INTERVAL = "seek_interval"
 const val QUEUE_NEXT_MODE = "queue_next_mode"
 const val PLAY_ON_STARTUP_MODE = "play_on_startup_mode"
 const val SEARCH_AUTO_QUEUE = "search_auto_queue"
+const val ON_CLEAR_QUEUE_ACTION = "on_clear_queue_action"
 const val REMEMBER_SHUFFLE_MODE = "remember_shuffle_mode"
 const val ALBUM_SHUFFLE_MODE = "album_shuffle_mode"
 const val ARTIST_SHUFFLE_MODE = "artist_shuffle_mode"
