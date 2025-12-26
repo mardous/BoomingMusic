@@ -291,6 +291,9 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(PREFER_ALBUM_ARTIST_NAME, false)
         set(value) = preferences.edit { putBoolean(PREFER_ALBUM_ARTIST_NAME, value) }
 
+    val songClickAction: OnSongClickAction
+        get() = preferences.enumValue(ON_SONG_CLICK_ACTION, OnSongClickAction.PlayWholeList)
+
     var clearQueueAction: OnClearQueueAction
         get() = preferences.enumValueByOrdinal(ON_CLEAR_QUEUE_ACTION, OnClearQueueAction.RemoveAllSongs)
         set(value) = preferences.edit { putInt(ON_CLEAR_QUEUE_ACTION, value.ordinal) }
@@ -588,6 +591,7 @@ const val SEEK_INTERVAL = "seek_interval"
 const val QUEUE_NEXT_MODE = "queue_next_mode"
 const val PLAY_ON_STARTUP_MODE = "play_on_startup_mode"
 const val SEARCH_AUTO_QUEUE = "search_auto_queue"
+const val ON_SONG_CLICK_ACTION = "on_song_click_action"
 const val ON_CLEAR_QUEUE_ACTION = "on_clear_queue_action"
 const val REMEMBER_SHUFFLE_MODE = "remember_shuffle_mode"
 const val ALBUM_SHUFFLE_MODE = "album_shuffle_mode"
