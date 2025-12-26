@@ -31,7 +31,6 @@ import com.mardous.booming.data.local.room.PlayCountEntity
 import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.local.room.SongEntity
-import com.mardous.booming.data.mapper.toSong
 import com.mardous.booming.data.model.*
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.data.remote.deezer.DeezerService
@@ -56,21 +55,23 @@ interface Repository {
     suspend fun allFolders(): FileSystemQuery
     suspend fun filesInPath(path: String): FileSystemQuery
     suspend fun playlists(): List<PlaylistEntity>
-    fun playlistSongs(playListId: Long): LiveData<List<SongEntity>>
-    suspend fun playlistSongs(playlistWithSongs: PlaylistWithSongs): List<Song>
+    suspend fun playlistSongs(playlistId: Long): List<SongEntity>
+    fun playlistSongsObservable(playListId: Long): LiveData<List<SongEntity>>
     suspend fun devicePlaylists(): List<Playlist>
     suspend fun devicePlaylistSongs(playlist: Playlist): List<Song>
     suspend fun devicePlaylist(playlistId: Long): Playlist
     suspend fun playlistsWithSongs(sorted: Boolean = false): List<PlaylistWithSongs>
     suspend fun playlistWithSongs(playlistId: Long): PlaylistWithSongs
     fun playlistWithSongsObservable(playlistId: Long): LiveData<PlaylistWithSongs>
-    suspend fun isSongFavorite(songEntity: SongEntity): List<SongEntity>
     suspend fun isSongFavorite(songId: Long): Boolean
     suspend fun favoriteSongs(): List<Song>
     fun favoriteSongsFlow(): Flow<List<Song>>
     suspend fun favoritePlaylist(): PlaylistEntity
     suspend fun checkFavoritePlaylist(): PlaylistEntity?
     suspend fun toggleFavorite(song: Song): Boolean
+    suspend fun findSongsInFavorites(songs: List<Song>): List<SongEntity>
+    suspend fun findSongInPlaylist(playlistId: Long, song: Song): SongEntity?
+    suspend fun findSongsInPlaylist(playlistId: Long, songs: List<Song>): List<SongEntity>
     fun checkPlaylistExists(playListId: Long): LiveData<Boolean>
     suspend fun checkPlaylistExists(playlistName: String): List<PlaylistEntity>
     suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song): Boolean
@@ -81,7 +82,6 @@ interface Repository {
     suspend fun insertSongsInPlaylist(songs: List<SongEntity>)
     suspend fun removeSongFromPlaylist(songEntity: SongEntity)
     suspend fun deleteSongsInPlaylist(songs: List<SongEntity>)
-    suspend fun deletePlaylistSongs(playlists: List<PlaylistEntity>)
     suspend fun deleteSong(songId: Long): Song
     suspend fun deleteSongs(songs: List<Song>)
     suspend fun deleteMissingContent()
@@ -175,13 +175,11 @@ class RealRepository(
 
     override suspend fun playlists(): List<PlaylistEntity> = playlistRepository.playlists()
 
-    override fun playlistSongs(playListId: Long): LiveData<List<SongEntity>> =
-        playlistRepository.getSongs(playListId)
+    override suspend fun playlistSongs(playlistId: Long): List<SongEntity> =
+        playlistRepository.playlistSongs(playlistId)
 
-    override suspend fun playlistSongs(playlistWithSongs: PlaylistWithSongs): List<Song> =
-        playlistWithSongs.songs.map {
-            it.toSong()
-        }
+    override fun playlistSongsObservable(playListId: Long): LiveData<List<SongEntity>> =
+        playlistRepository.playlistSongsObservable(playListId)
 
     override suspend fun devicePlaylists(): List<Playlist> =
         playlistRepository.devicePlaylists()
@@ -201,9 +199,6 @@ class RealRepository(
     override fun playlistWithSongsObservable(playlistId: Long): LiveData<PlaylistWithSongs> =
         playlistRepository.playlistWithSongsObservable(playlistId)
 
-    override suspend fun isSongFavorite(songEntity: SongEntity): List<SongEntity> =
-        playlistRepository.isSongFavorite(songEntity)
-
     override suspend fun isSongFavorite(songId: Long): Boolean =
         playlistRepository.isSongFavorite(songId)
 
@@ -222,6 +217,15 @@ class RealRepository(
     override suspend fun toggleFavorite(song: Song): Boolean =
         playlistRepository.toggleFavorite(song)
 
+    override suspend fun findSongsInFavorites(songs: List<Song>): List<SongEntity> =
+        playlistRepository.findSongsInFavorites(songs)
+
+    override suspend fun findSongInPlaylist(playlistId: Long, song: Song): SongEntity? =
+        playlistRepository.findSongInPlaylist(playlistId, song)
+
+    override suspend fun findSongsInPlaylist(playlistId: Long, songs: List<Song>): List<SongEntity> =
+        playlistRepository.findSongsInPlaylist(playlistId, songs)
+
     override fun checkPlaylistExists(playListId: Long): LiveData<Boolean> =
         playlistRepository.checkPlaylistExists(playListId)
 
@@ -238,7 +242,7 @@ class RealRepository(
         playlistRepository.createPlaylist(playlistEntity)
 
     override suspend fun deletePlaylists(playlists: List<PlaylistEntity>) =
-        playlistRepository.deletePlaylistEntities(playlists)
+        playlistRepository.deletePlaylists(playlists)
 
     override suspend fun renamePlaylist(playlistId: Long, name: String) =
         playlistRepository.renamePlaylistEntity(playlistId, name)
@@ -253,10 +257,7 @@ class RealRepository(
         playlistRepository.removeSongFromPlaylist(songEntity)
 
     override suspend fun deleteSongsInPlaylist(songs: List<SongEntity>) =
-        playlistRepository.deleteSongsInPlaylist(songs)
-
-    override suspend fun deletePlaylistSongs(playlists: List<PlaylistEntity>) =
-        playlistRepository.deletePlaylistSongs(playlists)
+        playlistRepository.deleteSongsFromPlaylist(songs)
 
     override suspend fun deleteSong(songId: Long): Song {
         val song = songRepository.song(songId)
@@ -284,7 +285,7 @@ class RealRepository(
             val missingSongs = playlistWithSongs.songs.filterNot {
                 File(it.data).exists()
             }
-            playlistRepository.deleteSongsInPlaylist(missingSongs)
+            playlistRepository.deleteSongsFromPlaylist(missingSongs)
         }
     }
 

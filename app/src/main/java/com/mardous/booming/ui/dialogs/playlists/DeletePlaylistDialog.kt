@@ -30,7 +30,6 @@ import com.mardous.booming.extensions.extraNotNull
 import com.mardous.booming.extensions.toHtml
 import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.library.ReloadType
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class DeletePlaylistDialog : DialogFragment() {
@@ -53,9 +52,7 @@ class DeletePlaylistDialog : DialogFragment() {
             .setTitle(titleRes)
             .setMessage(content)
             .setPositiveButton(R.string.delete_action) { _: DialogInterface, _: Int ->
-                libraryViewModel.deleteSongsFromPlaylist(playlists)
                 libraryViewModel.deletePlaylists(playlists)
-                libraryViewModel.forceReload(ReloadType.Playlists)
             }
             .setNegativeButton(android.R.string.cancel, null)
             .create()

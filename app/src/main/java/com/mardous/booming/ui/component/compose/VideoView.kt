@@ -2,10 +2,6 @@ package com.mardous.booming.ui.component.compose
 
 import android.content.Context
 import androidx.annotation.OptIn
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.MaterialTheme
@@ -56,11 +52,7 @@ private fun VideoPlayer(player: Player, modifier: Modifier = Modifier) {
             )
         )
 
-        AnimatedVisibility(
-            visible = presentationState.coverSurface,
-            enter = fadeIn(tween(1000)),
-            exit = fadeOut(tween(1000))
-        ) {
+        if (presentationState.coverSurface) {
             Box(
                 modifier = Modifier
                     .matchParentSize()

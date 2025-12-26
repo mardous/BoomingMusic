@@ -30,6 +30,8 @@ import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.AlbumCoverSaver
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.local.room.PlaylistEntity
+import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.QueuePosition
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.toAudioFile
@@ -470,6 +472,17 @@ class PlayerViewModel(
             }
             _shuffleOperationState.value = ShuffleOperationState()
         }
+    }
+
+    fun openPlaylist(
+        playlist: PlaylistEntity,
+        startPlaying: Boolean = true,
+        shuffleMode: OpenShuffleMode = OpenShuffleMode.Off
+    ) = viewModelScope.launch {
+        val songs = withContext(IO) {
+            repository.playlistSongs(playlist.playListId).toSongs()
+        }
+        openQueue(songs, startPlaying = startPlaying, shuffleMode = shuffleMode)
     }
 
     fun queueNext(song: Song) {

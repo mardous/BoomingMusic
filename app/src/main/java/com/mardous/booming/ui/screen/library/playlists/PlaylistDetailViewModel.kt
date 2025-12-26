@@ -10,7 +10,7 @@ class PlaylistDetailViewModel(
     private var playlistId: Long
 ) : ViewModel() {
     fun getSongs(): LiveData<List<SongEntity>> =
-        playlistRepository.getSongs(playlistId)
+        playlistRepository.playlistSongsObservable(playlistId)
 
     fun playlistExists(): LiveData<Boolean> =
         playlistRepository.checkPlaylistExists(playlistId)
