@@ -31,7 +31,6 @@ import com.mardous.booming.core.model.Cutoff
 import com.mardous.booming.core.model.action.FolderAction
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.action.OnClearQueueAction
-import com.mardous.booming.core.model.action.OnSongClickAction
 import com.mardous.booming.core.model.player.NowPlayingInfo
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.player.PlayerTransition
