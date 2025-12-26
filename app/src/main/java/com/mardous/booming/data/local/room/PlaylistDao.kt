@@ -38,12 +38,6 @@ interface PlaylistDao {
     @Query("UPDATE PlaylistEntity SET playlist_name = :name WHERE playlist_id = :playlistId")
     suspend fun renamePlaylist(playlistId: Long, name: String)
 
-    @Query("DELETE FROM SongEntity WHERE playlist_creator_id = :playlistId")
-    suspend fun deletePlaylistSongs(playlistId: Long)
-
-    @Query("DELETE FROM SongEntity WHERE playlist_creator_id = :playlistId AND id = :songId")
-    suspend fun deleteSongFromPlaylist(playlistId: Long, songId: Long)
-
     @Transaction
     @Query("SELECT * FROM PlaylistEntity")
     suspend fun playlistsWithSongs(): List<PlaylistWithSongs>
@@ -74,7 +68,10 @@ interface PlaylistDao {
     suspend fun findSongsInPlaylist(playlistId: Long, songIds: List<Long>): List<SongEntity>
 
     @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId ORDER BY song_key asc")
-    fun songsFromPlaylist(playlistId: Long): LiveData<List<SongEntity>>
+    fun songsFromPlaylistObservable(playlistId: Long): LiveData<List<SongEntity>>
+
+    @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId ORDER BY song_key asc")
+    suspend fun songsFromPlaylist(playlistId: Long): List<SongEntity>
 
     @Delete
     suspend fun deletePlaylist(playlistEntity: PlaylistEntity)
@@ -82,11 +79,14 @@ interface PlaylistDao {
     @Delete
     suspend fun deletePlaylists(playlistEntities: List<PlaylistEntity>)
 
-    @Delete
-    suspend fun deletePlaylistSongs(songs: List<SongEntity>)
+    @Query("DELETE FROM SongEntity WHERE playlist_creator_id = :playlistId AND id IN(:songIds)")
+    suspend fun deleteSongsFromPlaylist(playlistId: Long, songIds: List<Long>)
 
-    @Query("DELETE FROM SongEntity WHERE id = :songId")
-    suspend fun deleteSongFromAllPlaylists(songId: Long)
+    @Delete
+    suspend fun deleteSongsFromPlaylists(songs: List<SongEntity>)
+
+    @Query("DELETE FROM SongEntity WHERE playlist_creator_id IN(:playlistIds)")
+    suspend fun deleteAllSongsFromPlaylists(playlistIds: List<Long>)
 
     @Query("DELETE FROM SongEntity WHERE id IN (:songIds)")
     suspend fun deleteSongsFromAllPlaylists(songIds: List<Long>)

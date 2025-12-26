@@ -31,7 +31,6 @@ import com.mardous.booming.data.local.room.PlayCountEntity
 import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.local.room.SongEntity
-import com.mardous.booming.data.mapper.toSong
 import com.mardous.booming.data.model.*
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.data.remote.deezer.DeezerService
@@ -56,8 +55,8 @@ interface Repository {
     suspend fun allFolders(): FileSystemQuery
     suspend fun filesInPath(path: String): FileSystemQuery
     suspend fun playlists(): List<PlaylistEntity>
-    fun playlistSongs(playListId: Long): LiveData<List<SongEntity>>
-    suspend fun playlistSongs(playlistWithSongs: PlaylistWithSongs): List<Song>
+    suspend fun playlistSongs(playlistId: Long): List<SongEntity>
+    fun playlistSongsObservable(playListId: Long): LiveData<List<SongEntity>>
     suspend fun devicePlaylists(): List<Playlist>
     suspend fun devicePlaylistSongs(playlist: Playlist): List<Song>
     suspend fun devicePlaylist(playlistId: Long): Playlist
@@ -177,13 +176,11 @@ class RealRepository(
 
     override suspend fun playlists(): List<PlaylistEntity> = playlistRepository.playlists()
 
-    override fun playlistSongs(playListId: Long): LiveData<List<SongEntity>> =
-        playlistRepository.getSongs(playListId)
+    override suspend fun playlistSongs(playlistId: Long): List<SongEntity> =
+        playlistRepository.playlistSongs(playlistId)
 
-    override suspend fun playlistSongs(playlistWithSongs: PlaylistWithSongs): List<Song> =
-        playlistWithSongs.songs.map {
-            it.toSong()
-        }
+    override fun playlistSongsObservable(playListId: Long): LiveData<List<SongEntity>> =
+        playlistRepository.playlistSongsObservable(playListId)
 
     override suspend fun devicePlaylists(): List<Playlist> =
         playlistRepository.devicePlaylists()
@@ -261,10 +258,10 @@ class RealRepository(
         playlistRepository.removeSongFromPlaylist(songEntity)
 
     override suspend fun deleteSongsInPlaylist(songs: List<SongEntity>) =
-        playlistRepository.deleteSongsInPlaylist(songs)
+        playlistRepository.deleteSongsFromPlaylist(songs)
 
     override suspend fun deletePlaylistSongs(playlists: List<PlaylistEntity>) =
-        playlistRepository.deletePlaylistSongs(playlists)
+        playlistRepository.deleteSongsFromPlaylists(playlists)
 
     override suspend fun deleteSong(songId: Long): Song {
         val song = songRepository.song(songId)
@@ -292,7 +289,7 @@ class RealRepository(
             val missingSongs = playlistWithSongs.songs.filterNot {
                 File(it.data).exists()
             }
-            playlistRepository.deleteSongsInPlaylist(missingSongs)
+            playlistRepository.deleteSongsFromPlaylist(missingSongs)
         }
     }
 
