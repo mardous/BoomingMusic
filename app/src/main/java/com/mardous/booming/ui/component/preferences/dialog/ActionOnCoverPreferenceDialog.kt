@@ -74,6 +74,12 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
                 Preferences.coverLeftDoubleTapAction,
                 Preferences.coverRightDoubleTapAction
             ),
+            COVER_DOUBLE_TAP_ACTION to listOf(
+                Preferences.coverLongPressAction,
+                Preferences.coverSingleTapAction,
+                Preferences.coverLeftDoubleTapAction,
+                Preferences.coverRightDoubleTapAction
+            ),
             COVER_LEFT_DOUBLE_TAP_ACTION to listOf(
                 Preferences.coverDoubleTapAction,
                 Preferences.coverLongPressAction,
