@@ -20,6 +20,7 @@ import androidx.media3.session.SessionError
 import androidx.media3.session.SessionResult
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.PaletteColor
+import com.mardous.booming.core.model.action.OnClearQueueAction
 import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
@@ -43,7 +44,9 @@ import com.mardous.booming.playback.progress.ProgressObserver
 import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.playback.shuffle.ShuffleManager
 import com.mardous.booming.playback.toMediaItems
+import com.mardous.booming.util.ON_CLEAR_QUEUE_ACTION
 import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.Preferences.enumValueByOrdinal
 import com.mardous.booming.util.REMEMBER_SHUFFLE_MODE
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
@@ -539,7 +542,28 @@ class PlayerViewModel(
     }
 
     fun clearQueue() {
-        mediaController?.clearMediaItems()
+        val action = preferences.enumValueByOrdinal(ON_CLEAR_QUEUE_ACTION, OnClearQueueAction.RemoveAllSongs)
+        when (action) {
+            OnClearQueueAction.RemoveAllSongs -> {
+                mediaController?.clearMediaItems()
+            }
+
+            OnClearQueueAction.RemoveAllSongsExceptCurrentlyPlaying -> {
+                mediaController?.let { controller ->
+                    if (controller.mediaItemCount > 1) {
+                        val currentItem = controller.currentMediaItemIndex
+                        if (currentItem == 0) {
+                            controller.removeMediaItems(1, controller.mediaItemCount)
+                        } else {
+                            controller.removeMediaItems(0, currentItem)
+                            if (controller.mediaItemCount > 1) {
+                                controller.removeMediaItems(1, controller.mediaItemCount)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @androidx.annotation.OptIn(UnstableApi::class)
