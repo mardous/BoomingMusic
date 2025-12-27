@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[प्लेलिस्ट से <b>%1$s</b> गाना हटाना चाहते हैं?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[प्लेलिस्ट से <b>%1$d</b> गाने निकालें?]]></string>
     <string name="playlist_empty_text">खाली प्लेलिस्ट</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">टैग संपादक</string>
     <string name="saving_changes">परिवर्तन सहेजे जा रहे हैं</string>
     <string name="changes_saved_successfully">परिवर्तनों को सफलतापूर्वक सहेजा।</string>
@@ -317,9 +318,6 @@
     <string name="disc_total">कुल डिस्क</string>
     <string name="lyrics">बोल</string>
     <string name="lyricist">गीतकार</string>
-    <string name="edit_tags_action">टैग्स एडिट करो</string>
-    <string name="edit_lyrics_action">गाने के बोल संपादित करें</string>
-    <string name="open_lyrics_editor">ओपन लिरिक्स संपादक</string>
     <string name="could_not_load_the_song_information">"गाना जानकारी लोड नहीं हो सका।"</string>
     <string name="no_results">कोई रिजल्ट नहीं</string>
     <string name="connection_unavailable">कनेक्शन अनुपलब्ध है।</string>
