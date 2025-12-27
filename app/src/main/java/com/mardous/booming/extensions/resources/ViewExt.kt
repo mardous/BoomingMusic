@@ -18,6 +18,7 @@
 package com.mardous.booming.extensions.resources
 
 import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
@@ -51,6 +52,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
+import com.google.android.material.progressindicator.BaseProgressIndicator
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.slider.Slider
 import com.mardous.booming.R
@@ -64,6 +66,7 @@ import io.noties.markwon.core.MarkwonTheme
 import io.noties.markwon.html.HtmlPlugin
 import me.zhanghai.android.fastscroll.FastScroller
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import com.google.android.material.R as M3R
 
 const val BOOMING_ANIM_TIME = 350L
 
@@ -476,6 +479,55 @@ fun NavigationBarView.hide() {
     }
 }
 
+fun BaseProgressIndicator<*>.setWavy(isWavy: Boolean) {
+    val oldAmplitude = this.waveAmplitude
+    val newAmplitude = if (!isWavy) 0 else {
+        resources.getDimensionPixelSize(
+            M3R.dimen.m3_comp_progress_indicator_circular_active_indicator_wave_amplitude
+        )
+    }
+    val waveLength = if (isIndeterminate) wavelengthIndeterminate else wavelengthDeterminate
+
+    // Cancel any existing animator to avoid multiple animators competing
+    (getTag(R.id.id_wave_amplitude_animator) as? ValueAnimator)?.cancel()
+    setTag(R.id.id_wave_amplitude_animator, null)
+
+    // If we have no wavelength or the value is already what we want, just snap to it
+    if (waveLength <= 0 || oldAmplitude == newAmplitude) {
+        waveAmplitude = newAmplitude
+        return
+    }
+
+    val animator = ValueAnimator.ofInt(oldAmplitude, newAmplitude).apply {
+        duration = BOOMING_ANIM_TIME
+        interpolator = DecelerateInterpolator()
+        addUpdateListener { animator ->
+            waveAmplitude = animator.animatedValue as Int
+        }
+        addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                // Clear reference when done
+                setTag(R.id.id_wave_amplitude_animator, null)
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+                // Also clear on cancel to avoid leaking the animator
+                setTag(R.id.id_wave_amplitude_animator, null)
+            }
+        })
+    }
+
+    // Store animator so subsequent calls can cancel it
+    setTag(R.id.id_wave_amplitude_animator, animator)
+    animator.start()
+}
+
+fun BaseProgressIndicator<*>.setAnimatedWave(isAnimatedWave: Boolean) {
+    waveSpeed = if (isAnimatedWave) {
+        resources.getDimensionPixelSize(R.dimen.m3e_progress_indicator_animation_speed)
+    } else 0
+}
+
 typealias TrackingTouchListener = (Slider) -> Unit
 
 fun Slider.setTrackingTouchListener(
@@ -501,8 +553,8 @@ inline fun Context.createBoomingMusicBalloon(
     lifecycleOwner: LifecycleOwner,
     crossinline block: Balloon.Builder.() -> Unit
 ): Balloon {
-    val bgColor = resolveColor(com.google.android.material.R.attr.colorTertiaryContainer)
-    val textColor = resolveColor(com.google.android.material.R.attr.colorOnTertiaryContainer)
+    val bgColor = resolveColor(M3R.attr.colorTertiaryContainer)
+    val textColor = resolveColor(M3R.attr.colorOnTertiaryContainer)
     return createBalloon(this) {
         setBackgroundColor(bgColor)
         setTextColor(textColor)

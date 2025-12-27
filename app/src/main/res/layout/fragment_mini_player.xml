@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
+        app:shapeAppearanceOverlay="?shapeAppearanceCornerLarge"
         tools:src="@tools:sample/backgrounds/scenic[2]"
         tools:ignore="ContentDescription" />
 
@@ -43,7 +43,8 @@
         android:singleLine="true"
         android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceBody2"
-        android:textColor="?android:textColorPrimary"
+        android:textColor="?colorOnSurface"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toEndOf="@id/image"
         app:layout_constraintEnd_toStartOf="@id/buttonContainer"
@@ -65,7 +66,8 @@
         android:singleLine="true"
         android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceBody2"
-        android:textColor="?android:textColorSecondary"
+        android:textColor="?colorOnSurfaceVariant"
+        android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@+id/guideline"
         app:layout_constraintStart_toEndOf="@id/image"
         app:layout_constraintEnd_toStartOf="@id/buttonContainer"
@@ -108,10 +110,10 @@
 
                 <com.google.android.material.progressindicator.CircularProgressIndicator
                     android:id="@+id/progress_bar"
+                    style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    app:trackCornerRadius="16dp"
                     tools:progress="75" />
 
                 <com.google.android.material.button.MaterialButton

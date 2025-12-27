@@ -318,9 +318,6 @@
     <string name="disc_total">合計ディスク</string>
     <string name="lyrics">歌詞</string>
     <string name="lyricist">歌詞リスト</string>
-    <string name="edit_tags_action">タグを編集</string>
-    <string name="edit_lyrics_action">歌詞を編集</string>
-    <string name="open_lyrics_editor">歌詞エディターを開く</string>
     <string name="could_not_load_the_song_information">"曲情報を読み込めませんでした。"</string>
     <string name="no_results">結果がありません</string>
     <string name="connection_unavailable">接続できません。</string>

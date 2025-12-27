@@ -9,7 +9,7 @@
 
     <style name="Theme.Booming.FollowSystem" parent="Base.Theme.Booming.Adaptive"/>
 
-    <style name="Theme.Booming.DynamicColors" parent="@style/Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Booming.DynamicColors" parent="@style/Theme.Material3Expressive.DayNight.NoActionBar">
         <item name="rectSelector">@drawable/rect_selector</item>
         <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
     </style>
@@ -20,7 +20,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="ToolbarStyle" parent="Widget.Material3.Toolbar">
+    <style name="ToolbarStyle" parent="Widget.Material3Expressive.Toolbar">
         <item name="android:transitionName">toolbar</item>
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetStartWithNavigation">0dp</item>
@@ -49,12 +49,12 @@
         <item name="android:lines">2</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingBottom">16dp</item>
-        <item name="android:textColor">?android:textColorPrimary</item>
-        <item name="backgroundTint">?colorSurfaceContainerLowest</item>
+        <item name="android:textColor">?colorOnSurface</item>
+        <item name="backgroundTint">?colorSurfaceContainerLow</item>
         <item name="cornerRadius">20dp</item>
         <item name="iconPadding">16dp</item>
         <item name="iconGravity">start</item>
-        <item name="iconTint">?colorSecondary</item>
+        <item name="iconTint">?colorOnSurface</item>
         <item name="android:gravity">start|center_vertical</item>
     </style>
 

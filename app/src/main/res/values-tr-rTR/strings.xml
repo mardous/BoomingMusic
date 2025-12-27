@@ -318,9 +318,6 @@
     <string name="disc_total">Toplam Disk</string>
     <string name="lyrics">Şarkı Sözleri</string>
     <string name="lyricist">Söz Yazarı</string>
-    <string name="edit_tags_action">Etiketleri düzenle</string>
-    <string name="edit_lyrics_action">Şarkı sözlerini düzenle</string>
-    <string name="open_lyrics_editor">Şarkı sözü düzenleyiciyi aç</string>
     <string name="could_not_load_the_song_information">"Şarkı bilgileri yüklenemedi."</string>
     <string name="no_results">Sonuç bulunamadı</string>
     <string name="connection_unavailable">Bağlantı yok.</string>

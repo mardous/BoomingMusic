@@ -76,7 +76,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
-        style="@style/Widget.Material3.Button.TextButton"
+        style="@style/Widget.Material3Expressive.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"

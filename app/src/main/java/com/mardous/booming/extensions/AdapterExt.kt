@@ -47,9 +47,6 @@ private fun MediaEntryViewHolder.setColor(color: PaletteColor) {
         paletteColorContainer.setBackgroundColor(color.backgroundColor)
     }
 
-    imageGradient?.backgroundTintList =
-        color.backgroundColor.toColorStateList()
-
     title?.setTextColor(color.primaryTextColor)
     text?.setTextColor(color.secondaryTextColor)
     imageText?.setTextColor(color.secondaryTextColor)

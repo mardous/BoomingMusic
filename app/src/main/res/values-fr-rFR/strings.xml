@@ -318,9 +318,6 @@
     <string name="disc_total">Nombre total de disques</string>
     <string name="lyrics">Paroles</string>
     <string name="lyricist">Parolier</string>
-    <string name="edit_tags_action">Modifier les informations</string>
-    <string name="edit_lyrics_action">Modifier les paroles</string>
-    <string name="open_lyrics_editor">Ouvrir l\'éditeur de paroles</string>
     <string name="could_not_load_the_song_information">"Impossible de charger les informations de la chanson."</string>
     <string name="no_results">Aucun résultat</string>
     <string name="connection_unavailable">Connexion indisponible.</string>

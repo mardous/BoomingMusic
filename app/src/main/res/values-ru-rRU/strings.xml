@@ -319,9 +319,6 @@
     <string name="disc_total">Всего дисков</string>
     <string name="lyrics">Текст песни</string>
     <string name="lyricist">Автор текста</string>
-    <string name="edit_tags_action">Редактировать теги</string>
-    <string name="edit_lyrics_action">Редактировать текст песни</string>
-    <string name="open_lyrics_editor">Открыть редактор текстов песен</string>
     <string name="could_not_load_the_song_information">"Не удалось загрузить информацию о песне."</string>
     <string name="no_results">Нет результатов</string>
     <string name="connection_unavailable">Соединение недоступно.</string>

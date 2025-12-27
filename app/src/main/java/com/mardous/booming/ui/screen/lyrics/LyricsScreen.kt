@@ -123,7 +123,7 @@ fun LyricsScreen(
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_edit_note_24dp),
-                    contentDescription = stringResource(R.string.open_lyrics_editor)
+                    contentDescription = stringResource(R.string.action_lyrics_editor)
                 )
             }
         },
@@ -249,13 +249,14 @@ fun CoverLyricsScreen(
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_open_in_full_24dp),
-                    contentDescription = stringResource(R.string.open_lyrics_editor)
+                    contentDescription = stringResource(R.string.action_lyrics_editor)
                 )
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun LyricsSurface(
     result: LyricsResult,
@@ -280,7 +281,7 @@ private fun LyricsSurface(
     }
     Box(modifier) {
         if (result.loading) {
-            CircularProgressIndicator(
+            CircularWavyProgressIndicator(
                 color = contentColor,
                 modifier = Modifier.align(Alignment.Center)
             )

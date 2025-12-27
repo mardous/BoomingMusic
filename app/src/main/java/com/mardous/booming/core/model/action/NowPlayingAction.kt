@@ -34,7 +34,7 @@ enum class NowPlayingAction(
     ),
     LyricsEditor(
         iconRes = R.drawable.ic_edit_note_24dp,
-        titleRes = R.string.open_lyrics_editor
+        titleRes = R.string.action_lyrics_editor
     ),
     AddToPlaylist(
         iconRes = R.drawable.ic_playlist_add_24dp,

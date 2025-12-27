@@ -318,9 +318,6 @@
     <string name="disc_total">Total de discos</string>
     <string name="lyrics">Lletra</string>
     <string name="lyricist">Lletrista</string>
-    <string name="edit_tags_action">Edita\'n les etiquetes</string>
-    <string name="edit_lyrics_action">Edita la lletra</string>
-    <string name="open_lyrics_editor">Obre l\'editor de lletres</string>
     <string name="could_not_load_the_song_information">"No s'ha pogut carregar la informació de la cançó."</string>
     <string name="no_results">No hi ha resultats</string>
     <string name="connection_unavailable">La connexió no està disponible.</string>

@@ -318,9 +318,6 @@
     <string name="disc_total">Σύνολο Δίσκων</string>
     <string name="lyrics">Στίχοι</string>
     <string name="lyricist">Lyricist</string>
-    <string name="edit_tags_action">Επεξεργασία ετικετών</string>
-    <string name="edit_lyrics_action">Επεξεργαστείτε τους στίχους</string>
-    <string name="open_lyrics_editor">Άνοιγμα επεξεργαστή στίχων</string>
     <string name="could_not_load_the_song_information">"Δεν ήταν δυνατή η φόρτωση των πληροφοριών του τραγουδιού."</string>
     <string name="no_results">Κανένα αποτέλεσμα</string>
     <string name="connection_unavailable">Μη διαθέσιμη σύνδεση.</string>
