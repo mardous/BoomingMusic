@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[プレイリストから曲 <b>%1$s</b> を削除しますか？]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[プレイリストから <b>%1$d</b> 曲を削除しますか？]]></string>
     <string name="playlist_empty_text">空のプレイリスト</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">タグエディタ</string>
     <string name="saving_changes">変更を保存しています</string>
     <string name="changes_saved_successfully">変更は正常に保存されました。</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">合計ディスク</string>
     <string name="lyrics">歌詞</string>
     <string name="lyricist">歌詞リスト</string>
-    <string name="edit_tags_action">タグを編集</string>
-    <string name="edit_lyrics_action">歌詞を編集</string>
-    <string name="open_lyrics_editor">歌詞エディターを開く</string>
     <string name="could_not_load_the_song_information">"曲情報を読み込めませんでした。"</string>
     <string name="no_results">結果がありません</string>
     <string name="connection_unavailable">接続できません。</string>
