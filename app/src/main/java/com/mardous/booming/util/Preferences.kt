@@ -30,7 +30,7 @@ import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.Cutoff
 import com.mardous.booming.core.model.action.FolderAction
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.core.model.action.OnClearQueueAction
+import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.player.NowPlayingInfo
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.player.PlayerTransition
@@ -290,8 +290,8 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(PREFER_ALBUM_ARTIST_NAME, false)
         set(value) = preferences.edit { putBoolean(PREFER_ALBUM_ARTIST_NAME, value) }
 
-    var clearQueueAction: OnClearQueueAction
-        get() = preferences.enumValueByOrdinal(ON_CLEAR_QUEUE_ACTION, OnClearQueueAction.RemoveAllSongs)
+    var clearQueueAction: QueueClearingBehavior
+        get() = preferences.enumValueByOrdinal(ON_CLEAR_QUEUE_ACTION, QueueClearingBehavior.RemoveAllSongs)
         set(value) = preferences.edit { putInt(ON_CLEAR_QUEUE_ACTION, value.ordinal) }
 
     val searchAutoQueue: Boolean

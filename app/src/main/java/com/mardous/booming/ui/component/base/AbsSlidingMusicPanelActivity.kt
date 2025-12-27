@@ -47,6 +47,7 @@ import com.mardous.booming.MediaControllerOwner
 import com.mardous.booming.R
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.LibraryMargin
+import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
@@ -570,7 +571,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             when (newState) {
                 STATE_EXPANDED -> onPanelExpanded()
                 STATE_COLLAPSED -> onPanelCollapsed()
-                STATE_HIDDEN -> playerViewModel.clearQueue()
+                STATE_HIDDEN -> playerViewModel.clearQueue(QueueClearingBehavior.RemoveAllSongs)
             }
         }
 
