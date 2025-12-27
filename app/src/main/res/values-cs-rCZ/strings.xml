@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Odstranit skladbu <b>%1$s</b> ze seznamu skladeb?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Odstranit <b>%1$d</b> z playlistu?]]></string>
     <string name="playlist_empty_text">Prázdný seznam skladeb</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Editor značek</string>
     <string name="saving_changes">Ukládání změn</string>
     <string name="changes_saved_successfully">Změny byly úspěšně uloženy.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">Celkem disků</string>
     <string name="lyrics">Texty</string>
     <string name="lyricist">Texikátor</string>
-    <string name="edit_tags_action">Upravit štítky</string>
-    <string name="edit_lyrics_action">Upravit texty</string>
-    <string name="open_lyrics_editor">Otevřít editor textů</string>
     <string name="could_not_load_the_song_information">"Informace o skladbě nelze načíst."</string>
     <string name="no_results">Žádné výsledky</string>
     <string name="connection_unavailable">Připojení není k dispozici.</string>
