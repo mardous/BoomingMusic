@@ -67,7 +67,7 @@
         android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceBody2"
         android:textColor="?colorOnSurfaceVariant"
-        android:textSize="12dp"
+        android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@+id/guideline"
         app:layout_constraintStart_toEndOf="@id/image"
         app:layout_constraintEnd_toStartOf="@id/buttonContainer"
