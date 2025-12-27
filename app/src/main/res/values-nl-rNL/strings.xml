@@ -318,9 +318,6 @@
     <string name="disc_total">Totale schijven</string>
     <string name="lyrics">Songteksten</string>
     <string name="lyricist">Songtekst</string>
-    <string name="edit_tags_action">Labels bewerken</string>
-    <string name="edit_lyrics_action">Songtekst bewerken</string>
-    <string name="open_lyrics_editor">Open songteksten editor</string>
     <string name="could_not_load_the_song_information">"Kon de nummerinformatie niet laden."</string>
     <string name="no_results">Geen resultaten gevonden</string>
     <string name="connection_unavailable">Verbinding niet beschikbaar.</string>

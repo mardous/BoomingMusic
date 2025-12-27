@@ -17,28 +17,83 @@
 
 package com.mardous.booming.core.model.action
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mardous.booming.R
 
 /**
  * @author Christians M. A. (mardous)
  */
-enum class NowPlayingAction(@StringRes val titleRes: Int) {
-    Lyrics(R.string.action_show_lyrics),
-    LyricsEditor(R.string.open_lyrics_editor),
-    AddToPlaylist(R.string.action_add_to_playlist),
-    TogglePlayState(R.string.action_play_pause),
-    OpenAlbum(R.string.action_go_to_album),
-    OpenArtist(R.string.action_go_to_artist),
-    OpenPlayQueue(R.string.playing_queue_label),
-    ToggleFavoriteState(R.string.toggle_favorite),
-    DeleteFromDevice(R.string.action_delete_from_device),
-    TagEditor(R.string.action_tag_editor),
-    SleepTimer(R.string.action_sleep_timer),
-    SoundSettings(R.string.sound_settings),
-    WebSearch(R.string.web_search),
-    SaveAlbumCover(R.string.save_cover),
-    SeekBackward(R.string.action_seek_backward),
-    SeekForward(R.string.action_seek_forward),
-    Nothing(R.string.label_nothing);
+enum class NowPlayingAction(
+    @DrawableRes val iconRes: Int,
+    @StringRes val titleRes: Int
+) {
+    Lyrics(
+        iconRes = R.drawable.ic_lyrics_outline_24dp,
+        titleRes = R.string.action_show_lyrics
+    ),
+    LyricsEditor(
+        iconRes = R.drawable.ic_edit_note_24dp,
+        titleRes = R.string.action_lyrics_editor
+    ),
+    AddToPlaylist(
+        iconRes = R.drawable.ic_playlist_add_24dp,
+        titleRes = R.string.action_add_to_playlist
+    ),
+    TogglePlayState(
+        iconRes = R.drawable.ic_play_24dp,
+        titleRes = R.string.action_play_pause
+    ),
+    OpenAlbum(
+        iconRes = R.drawable.ic_album_24dp,
+        titleRes = R.string.action_go_to_album
+    ),
+    OpenArtist(
+        iconRes = R.drawable.ic_artist_24dp,
+        titleRes = R.string.action_go_to_artist
+    ),
+    OpenPlayQueue(
+        iconRes = R.drawable.ic_queue_music_24dp,
+        R.string.playing_queue_label
+    ),
+    ToggleFavoriteState(
+        iconRes = R.drawable.ic_favorite_outline_24dp,
+        titleRes = R.string.toggle_favorite
+    ),
+    DeleteFromDevice(
+        iconRes = R.drawable.ic_delete_24dp,
+        titleRes = R.string.action_delete_from_device
+    ),
+    TagEditor(
+        iconRes = R.drawable.ic_edit_24dp,
+        titleRes = R.string.action_tag_editor
+    ),
+    SleepTimer(
+        iconRes = R.drawable.ic_timer_24dp,
+        titleRes = R.string.action_sleep_timer
+    ),
+    SoundSettings(
+        iconRes = R.drawable.ic_media_output_24dp,
+        titleRes = R.string.sound_settings
+    ),
+    WebSearch(
+        iconRes = R.drawable.ic_search_24dp,
+        titleRes = R.string.web_search
+    ),
+    SaveAlbumCover(
+        iconRes = R.drawable.ic_image_24dp,
+        titleRes = R.string.save_cover
+    ),
+    SeekBackward(
+        iconRes = R.drawable.ic_fast_rewind_24dp,
+        titleRes = R.string.action_seek_backward
+    ),
+    SeekForward(
+        iconRes = R.drawable.ic_fast_forward_24dp,
+        titleRes = R.string.action_seek_forward
+    ),
+    Nothing(
+        iconRes = R.drawable.ic_clear_24dp,
+        titleRes = R.string.label_nothing
+    );
 }

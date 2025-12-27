@@ -318,9 +318,6 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="disc_total">Gesamtzahl Disks</string>
     <string name="lyrics">Liedtext</string>
     <string name="lyricist">Liedtexter</string>
-    <string name="edit_tags_action">Tags bearbeiten</string>
-    <string name="edit_lyrics_action">Liedtext bearbeiten</string>
-    <string name="open_lyrics_editor">Liedtext-Editor öffnen</string>
     <string name="could_not_load_the_song_information">"Liedinformationen konnten nicht geladen werden."</string>
     <string name="no_results">Keine Ergebnisse</string>
     <string name="connection_unavailable">Verbindung nicht möglich.</string>

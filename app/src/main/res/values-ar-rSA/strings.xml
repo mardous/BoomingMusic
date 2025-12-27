@@ -318,9 +318,6 @@
     <string name="disc_total">مجموع الأقراص</string>
     <string name="lyrics">كلمات</string>
     <string name="lyricist">كلماتي</string>
-    <string name="edit_tags_action">تعديل العلامات</string>
-    <string name="edit_lyrics_action">تحرير كلمات الأغاني</string>
-    <string name="open_lyrics_editor">فتح محرر الكلمات</string>
     <string name="could_not_load_the_song_information">"تعذر تحميل معلومات الأغنية."</string>
     <string name="no_results">لا توجد نتائج</string>
     <string name="connection_unavailable">الاتصال غير متوفر.</string>

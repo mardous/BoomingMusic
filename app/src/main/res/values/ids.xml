@@ -20,4 +20,5 @@
     <item name="action_multi_select_adapter_check_all" type="id"/>
 
     <item name="id_inset_consumed" type="id"/>
+    <item name="id_wave_amplitude_animator" type="id" />
 </resources>

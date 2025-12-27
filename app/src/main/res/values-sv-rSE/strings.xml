@@ -318,9 +318,6 @@
     <string name="disc_total">Totalt antal skivor</string>
     <string name="lyrics">Låttext</string>
     <string name="lyricist">Låttext</string>
-    <string name="edit_tags_action">Redigera taggar</string>
-    <string name="edit_lyrics_action">Redigera låttext</string>
-    <string name="open_lyrics_editor">Öppna låttextredigerare</string>
     <string name="could_not_load_the_song_information">"Det gick inte att ladda låtinformationen."</string>
     <string name="no_results">Inga resultat</string>
     <string name="connection_unavailable">Anslutning ej tillgänglig.</string>

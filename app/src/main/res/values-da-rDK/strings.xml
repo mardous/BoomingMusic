@@ -318,9 +318,6 @@
     <string name="disc_total">Totale Discs</string>
     <string name="lyrics">Sangtekster</string>
     <string name="lyricist">Lyricist</string>
-    <string name="edit_tags_action">Rediger tags</string>
-    <string name="edit_lyrics_action">Rediger sangtekster</string>
-    <string name="open_lyrics_editor">Åbn sangtekst-editor</string>
     <string name="could_not_load_the_song_information">"Kunne ikke indlæse sangoplysningerne."</string>
     <string name="no_results">Ingen resultater</string>
     <string name="connection_unavailable">Forbindelsen er ikke tilgængelig.</string>

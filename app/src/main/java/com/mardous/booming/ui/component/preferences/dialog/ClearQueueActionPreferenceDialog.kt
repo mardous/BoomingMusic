@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
-import com.mardous.booming.core.model.action.OnClearQueueAction
+import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.ui.component.compose.DialogListItem
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 import com.mardous.booming.util.Preferences
@@ -57,8 +57,8 @@ class ClearQueueActionPreferenceDialog : DialogFragment() {
 
     @Composable
     private fun QueueDialogScreen(
-        selected: OnClearQueueAction,
-        onActionClick: (OnClearQueueAction) -> Unit
+        selected: QueueClearingBehavior,
+        onActionClick: (QueueClearingBehavior) -> Unit
     ) {
         Surface(
             color = MaterialTheme.colorScheme.surfaceContainerHigh,
@@ -73,7 +73,7 @@ class ClearQueueActionPreferenceDialog : DialogFragment() {
                     .padding(top = 24.dp)
                     .padding(horizontal = 16.dp)
             ) {
-                OnClearQueueAction.entries.forEach { action ->
+                QueueClearingBehavior.entries.forEach { action ->
                     DialogListItem(
                         title = stringResource(action.titleRes),
                         subtitle = stringResource(action.summaryRes),

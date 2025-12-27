@@ -318,9 +318,6 @@
     <string name="disc_total">Загалом дисків</string>
     <string name="lyrics">Текст пісні</string>
     <string name="lyricist">Автор тексту</string>
-    <string name="edit_tags_action">Редагувати теги</string>
-    <string name="edit_lyrics_action">Редагувати текст пісні</string>
-    <string name="open_lyrics_editor">Відкрити редактор текстів пісень</string>
     <string name="could_not_load_the_song_information">"Не вдалося завантажити інформацію про пісню."</string>
     <string name="no_results">Немає результатів</string>
     <string name="connection_unavailable">З\'єднання відсутнє.</string>

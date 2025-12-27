@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Base.Theme.Booming" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Base.Theme.Booming" parent="Theme.Material3Expressive.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
@@ -66,7 +66,7 @@
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
     </style>
 
-    <style name="Base.Theme.Booming.Light" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Base.Theme.Booming.Light" parent="Theme.Material3Expressive.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
@@ -131,7 +131,7 @@
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
     </style>
 
-    <style name="Base.Theme.Booming.Adaptive" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Booming.Adaptive" parent="Theme.Material3Expressive.DayNight.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
@@ -222,7 +222,7 @@
         <item name="bottomSheetStyle">@style/ModalBottomSheetStyle.EdgeToEdge</item>
     </style>
 
-    <style name="Theme.AppWidget" parent="Theme.Material3.DynamicColors.DayNight">
+    <style name="Theme.AppWidget" parent="Theme.Material3Expressive.DynamicColors.DayNight">
         <item name="colorSurface">@android:color/white</item>
     </style>
 

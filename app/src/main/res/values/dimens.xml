@@ -6,6 +6,7 @@
     <dimen name="m3_card_large_radius">40dp</dimen>
     <dimen name="m3_dialog_corner_size">28dp</dimen>
     <dimen name="m3_popup_window_corner_size">8dp</dimen>
+    <dimen name="m3e_progress_indicator_animation_speed">2.5dp</dimen>
 
     <dimen name="fab_margin_top_left_right">16dp</dimen>
     <dimen name="fab_custom_size">56dp</dimen>

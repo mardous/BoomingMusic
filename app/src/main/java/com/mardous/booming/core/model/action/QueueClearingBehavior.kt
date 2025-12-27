@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mardous.booming.R
 
-enum class OnClearQueueAction(
+enum class QueueClearingBehavior(
     @DrawableRes val iconRes: Int,
     @StringRes val titleRes: Int,
     @StringRes val summaryRes: Int

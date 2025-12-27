@@ -318,9 +318,6 @@
     <string name="disc_total">סה״כ דיסקים</string>
     <string name="lyrics">מילות השיר</string>
     <string name="lyricist">מתמלל</string>
-    <string name="edit_tags_action">ערוך תגיות</string>
-    <string name="edit_lyrics_action">ערוך את מילות השיר</string>
-    <string name="open_lyrics_editor">פתיחת עורך המילים</string>
     <string name="could_not_load_the_song_information">"לא ניתן היה לטעון את פרטי השיר."</string>
     <string name="no_results">אין תוצאות</string>
     <string name="connection_unavailable">החיבור אינו זמין.</string>

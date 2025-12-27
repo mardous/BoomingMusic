@@ -318,9 +318,6 @@
     <string name="disc_total">Totalt antall utkast</string>
     <string name="lyrics">Tekster</string>
     <string name="lyricist">Lyricist</string>
-    <string name="edit_tags_action">Rediger tagger</string>
-    <string name="edit_lyrics_action">Rediger sangtekst</string>
-    <string name="open_lyrics_editor">Åpne sangtekst editor</string>
     <string name="could_not_load_the_song_information">"Kunne ikke laste inn sanginformasjonen."</string>
     <string name="no_results">Ingen resultater</string>
     <string name="connection_unavailable">Utilgjengelig forbindelse</string>

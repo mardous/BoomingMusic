@@ -318,9 +318,6 @@
     <string name="disc_total">Levyt Yhteensä</string>
     <string name="lyrics">Sanoitukset</string>
     <string name="lyricist">Lyrikko</string>
-    <string name="edit_tags_action">Muokkaa tageja</string>
-    <string name="edit_lyrics_action">Muokkaa sanoituksia</string>
-    <string name="open_lyrics_editor">Avaa sanoitusten muokkain</string>
     <string name="could_not_load_the_song_information">"Kappaleen tietoja ei voitu ladata."</string>
     <string name="no_results">Ei tuloksia</string>
     <string name="connection_unavailable">Yhteys ei käytettävissä.</string>

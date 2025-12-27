@@ -318,9 +318,6 @@
     <string name="disc_total">总盘片</string>
     <string name="lyrics">歌词</string>
     <string name="lyricist">作词人</string>
-    <string name="edit_tags_action">编辑标签</string>
-    <string name="edit_lyrics_action">编辑歌词</string>
-    <string name="open_lyrics_editor">打开歌词编辑器</string>
     <string name="could_not_load_the_song_information">"无法加载歌曲信息。"</string>
     <string name="no_results">没有结果</string>
     <string name="connection_unavailable">连接不可用。</string>
