@@ -101,7 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[¿Remover <b>%1$s</b> de la lista?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[¿Remover <b>%1$d</b> canciones de la lista?]]></string>
     <string name="playlist_empty_text">Lista de reproducción vacía</string>
-    <string name="action_lyrics_editor">Lyrics editor</string>
+    <string name="action_lyrics_editor">Editor de letras</string>
     <string name="action_tag_editor">Editor de etiquetas</string>
     <string name="saving_changes">Guardando cambios</string>
     <string name="changes_saved_successfully">Cambios guardados con éxito.</string>
