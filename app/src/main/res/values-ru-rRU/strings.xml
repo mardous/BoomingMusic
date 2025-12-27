@@ -742,6 +742,12 @@
     <string name="mp3_index_seeking_summary">Загружает весь MP3-файл в память для перемотки вместо использования заголовка Xing.
         Включайте, только если перемотка не работает на VBR-файлах.
         Требуется перезапуск.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_summary">What should happen when cleaning the play queue.</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Автоматически загружать метаданные</string>
     <string name="ignore_media_store_album_covers_title">Игнорировать обложки изMediaStore</string>
