@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[למחוק את השיר <b>%1$s</b> מרשימת ההשמעה?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[למחוק את השירים <b>%1$d</b> מרשימת ההשמעה?]]></string>
     <string name="playlist_empty_text">רשימת השמעה ריקה</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">עריכת תווית</string>
     <string name="saving_changes">שמירת שינויים</string>
     <string name="changes_saved_successfully">השינויים נשמרו בהצלחה.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">סה״כ דיסקים</string>
     <string name="lyrics">מילות השיר</string>
     <string name="lyricist">מתמלל</string>
-    <string name="edit_tags_action">ערוך תגיות</string>
-    <string name="edit_lyrics_action">ערוך את מילות השיר</string>
-    <string name="open_lyrics_editor">פתיחת עורך המילים</string>
     <string name="could_not_load_the_song_information">"לא ניתן היה לטעון את פרטי השיר."</string>
     <string name="no_results">אין תוצאות</string>
     <string name="connection_unavailable">החיבור אינו זמין.</string>
