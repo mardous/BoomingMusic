@@ -724,6 +724,12 @@ Ideal für Podcasts und Aufnahmen.</string>
     <string name="mp3_index_seeking_summary">Lädt die gesamte MP3-Datei in den Speicher, um sie zu suchen, anstatt sich auf den Xing-Header zu verlassen.
 Nur verwenden, wenn die Suche bei einigen VBR-Dateien fehlschlägt.
 Erfordert einen Neustart der App.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_summary">What should happen when cleaning the play queue.</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Metadaten automatisch herunterladen</string>
     <string name="ignore_media_store_album_covers_title">Albumcover im MediaStore ignorieren</string>
