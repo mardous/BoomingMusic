@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[<b>%1$s</b> şarkısı çalma listesinden kaldırılsın mı?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[<b>%1$d</b> şarkı çalma listesinden kaldırılsın mı?]]></string>
     <string name="playlist_empty_text">Çalma listesi boş</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Etiket düzenleyici</string>
     <string name="saving_changes">Değişiklikler kaydediliyor</string>
     <string name="changes_saved_successfully">Değişiklikler başarıyla kaydedildi.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">Toplam Disk</string>
     <string name="lyrics">Şarkı Sözleri</string>
     <string name="lyricist">Söz Yazarı</string>
-    <string name="edit_tags_action">Etiketleri düzenle</string>
-    <string name="edit_lyrics_action">Şarkı sözlerini düzenle</string>
-    <string name="open_lyrics_editor">Şarkı sözü düzenleyiciyi aç</string>
     <string name="could_not_load_the_song_information">"Şarkı bilgileri yüklenemedi."</string>
     <string name="no_results">Sonuç bulunamadı</string>
     <string name="connection_unavailable">Bağlantı yok.</string>
