@@ -27,6 +27,40 @@
             app:layout="@layout/list_item_view"
             app:key="queue_next_mode"/>
 
+        <ListPreference
+            app:icon="@drawable/ic_touch_app_24dp"
+            app:title="@string/on_song_click_title"
+            app:summary="@string/on_song_click_summary"
+            app:persistent="false"
+            app:layout="@layout/list_item_view"
+            app:key="on_song_click_action"/>
+
+        <ListPreference
+            app:icon="@drawable/ic_clear_all_24dp"
+            app:title="@string/on_clear_queue_title"
+            app:summary="@string/on_clear_queue_summary"
+            app:persistent="false"
+            app:layout="@layout/list_item_view"
+            app:key="on_clear_queue_action"/>
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_play_24dp"
+            app:title="@string/play_option_always_visible_title"
+            app:summary="@string/play_option_always_visible_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="play_option_always_visible"/>
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_playlist_play_24dp"
+            app:title="@string/play_option_whole_list_title"
+            app:summary="@string/play_option_whole_list_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="play_option_whole_list"/>
+
         <SwitchPreferenceCompat
             app:title="@string/search_auto_queue_title"
             app:summary="@string/search_auto_queue_summary"
@@ -34,13 +68,6 @@
             app:layout="@layout/list_item_view"
             app:widgetLayout="@layout/preference_switch"
             app:key="search_auto_queue"/>
-
-        <com.mardous.booming.ui.component.preferences.dialog.ClearQueueActionPreference
-            app:title="@string/on_clear_queue_title"
-            app:summary="@string/on_clear_queue_summary"
-            app:persistent="false"
-            app:layout="@layout/list_item_view"
-            app:key="on_clear_queue_action"/>
 
     </PreferenceCategory>
 

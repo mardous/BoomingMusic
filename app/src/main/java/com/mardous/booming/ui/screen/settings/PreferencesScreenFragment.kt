@@ -335,15 +335,21 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
-        val dialogFragment: DialogFragment? = when (preference) {
-            is NowPlayingExtraInfoPreference -> NowPlayingExtraInfoPreferenceDialog()
-            is CategoriesPreference -> CategoriesPreferenceDialog()
-            is ClearQueueActionPreference -> ClearQueueActionPreferenceDialog()
-            is NowPlayingScreenPreference -> NowPlayingScreenPreferenceDialog()
-            is ActionOnCoverPreference -> ActionOnCoverPreferenceDialog.newInstance(preference.key, preference.title!!)
+        val dialogFragment: DialogFragment? = when (preference.key) {
+            LIBRARY_CATEGORIES -> CategoriesPreferenceDialog()
+            NOW_PLAYING_SCREEN -> NowPlayingScreenPreferenceDialog()
+            EXTRA_INFO -> NowPlayingExtraInfoPreferenceDialog()
+            ON_SONG_CLICK_ACTION -> SongClickActionPreferenceDialog()
+            ON_CLEAR_QUEUE_ACTION -> ClearQueueActionPreferenceDialog()
+            COVER_DOUBLE_TAP_ACTION,
+            COVER_SINGLE_TAP_ACTION,
+            COVER_LONG_PRESS_ACTION,
+            COVER_LEFT_DOUBLE_TAP_ACTION,
+            COVER_RIGHT_DOUBLE_TAP_ACTION -> {
+                ActionOnCoverPreferenceDialog.newInstance(preference.key, preference.title!!)
+            }
             else -> null
         }
-
         if (dialogFragment != null) {
             dialogFragment.show(childFragmentManager, "androidx.preference.PreferenceFragment.DIALOG")
         } else {

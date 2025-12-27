@@ -31,6 +31,7 @@ import com.mardous.booming.core.model.Cutoff
 import com.mardous.booming.core.model.action.FolderAction
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.action.QueueClearingBehavior
+import com.mardous.booming.core.model.action.SongClickBehavior
 import com.mardous.booming.core.model.player.NowPlayingInfo
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.player.PlayerTransition
@@ -294,8 +295,15 @@ object Preferences : KoinComponent {
         get() = preferences.enumValueByOrdinal(ON_CLEAR_QUEUE_ACTION, QueueClearingBehavior.RemoveAllSongs)
         set(value) = preferences.edit { putInt(ON_CLEAR_QUEUE_ACTION, value.ordinal) }
 
-    val songClickAction: OnSongClickAction
-        get() = preferences.enumValue(ON_SONG_CLICK_ACTION, OnSongClickAction.PlayWholeList)
+    var songClickAction: SongClickBehavior
+        get() = preferences.enumValueByOrdinal(ON_SONG_CLICK_ACTION, SongClickBehavior.PlayWholeList)
+        set(value) = preferences.edit { putInt(ON_SONG_CLICK_ACTION, value.ordinal) }
+
+    val playOptionAlwaysVisible: Boolean
+        get() = preferences.getBoolean(PLAY_OPTION_ALWAYS_VISIBLE, false)
+
+    val playOptionPlaysWholeList: Boolean
+        get() = preferences.getBoolean(PLAY_OPTION_PLAYS_WHOLE_LIST, false)
 
     val searchAutoQueue: Boolean
         get() = preferences.getBoolean(SEARCH_AUTO_QUEUE, false)
@@ -592,6 +600,8 @@ const val PLAY_ON_STARTUP_MODE = "play_on_startup_mode"
 const val SEARCH_AUTO_QUEUE = "search_auto_queue"
 const val ON_SONG_CLICK_ACTION = "on_song_click_action"
 const val ON_CLEAR_QUEUE_ACTION = "on_clear_queue_action"
+const val PLAY_OPTION_ALWAYS_VISIBLE = "play_option_always_visible"
+const val PLAY_OPTION_PLAYS_WHOLE_LIST = "play_option_whole_list"
 const val REMEMBER_SHUFFLE_MODE = "remember_shuffle_mode"
 const val ALBUM_SHUFFLE_MODE = "album_shuffle_mode"
 const val ARTIST_SHUFFLE_MODE = "artist_shuffle_mode"
