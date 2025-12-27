@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Poistetaanko kappale <b>%1$s</b> soittolistalta?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Remove <b>%1$d</b> songs from the playlist?]]></string>
     <string name="playlist_empty_text">Tyhjä soittolista</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Tagin muokkain</string>
     <string name="saving_changes">Tallennetaan muutoksia</string>
     <string name="changes_saved_successfully">Muutokset tallennettu onnistuneesti.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">Levyt Yhteensä</string>
     <string name="lyrics">Sanoitukset</string>
     <string name="lyricist">Lyrikko</string>
-    <string name="edit_tags_action">Muokkaa tageja</string>
-    <string name="edit_lyrics_action">Muokkaa sanoituksia</string>
-    <string name="open_lyrics_editor">Avaa sanoitusten muokkain</string>
     <string name="could_not_load_the_song_information">"Kappaleen tietoja ei voitu ladata."</string>
     <string name="no_results">Ei tuloksia</string>
     <string name="connection_unavailable">Yhteys ei käytettävissä.</string>
