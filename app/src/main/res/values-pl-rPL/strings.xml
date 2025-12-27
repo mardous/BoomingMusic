@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Czy na pewno chcesz usunąć <b>%1$s</b> z playlisty?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Usunąć <b>%1$d</b> utwory z playlisty?]]></string>
     <string name="playlist_empty_text">Pusta playlista</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Edytor tagów</string>
     <string name="saving_changes">Zapisywanie zmian</string>
     <string name="changes_saved_successfully">Zmiany zostały pomyślnie zapisane.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">Liczba płyt</string>
     <string name="lyrics">Tekst piosenki</string>
     <string name="lyricist">Autor tekstu</string>
-    <string name="edit_tags_action">Edytuj tagi</string>
-    <string name="edit_lyrics_action">Edytuj tekst piosenki</string>
-    <string name="open_lyrics_editor">Otwórz edytor tekstów</string>
     <string name="could_not_load_the_song_information">"Nie można załadować informacji o utworze."</string>
     <string name="no_results">Brak wyników</string>
     <string name="connection_unavailable">Połączenie niedostępne.</string>
