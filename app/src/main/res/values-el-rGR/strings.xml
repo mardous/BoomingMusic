@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Αφαιρέστε το τραγούδι <b>%1$s</b> από τη λίστα αναπαραγωγής?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Remove <b>%1$d</b> songs from the playlist?]]></string>
     <string name="playlist_empty_text">Κενή λίστα αναπαραγωγής</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Επεξεργαστής ετικετών</string>
     <string name="saving_changes">Αποθήκευση αλλαγών</string>
     <string name="changes_saved_successfully">Οι αλλαγές αποθηκεύτηκαν επιτυχώς.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">Σύνολο Δίσκων</string>
     <string name="lyrics">Στίχοι</string>
     <string name="lyricist">Lyricist</string>
-    <string name="edit_tags_action">Επεξεργασία ετικετών</string>
-    <string name="edit_lyrics_action">Επεξεργαστείτε τους στίχους</string>
-    <string name="open_lyrics_editor">Άνοιγμα επεξεργαστή στίχων</string>
     <string name="could_not_load_the_song_information">"Δεν ήταν δυνατή η φόρτωση των πληροφοριών του τραγουδιού."</string>
     <string name="no_results">Κανένα αποτέλεσμα</string>
     <string name="connection_unavailable">Μη διαθέσιμη σύνδεση.</string>
