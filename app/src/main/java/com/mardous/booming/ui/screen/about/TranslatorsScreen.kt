@@ -17,21 +17,18 @@
 
 package com.mardous.booming.ui.screen.about
 
-import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.*
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.mardous.booming.R
 import com.mardous.booming.extensions.openUrl
+import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,26 +44,9 @@ fun TranslatorsScreen(
         viewModel.loadTranslators()
     }
 
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
-    Scaffold(
-        modifier = Modifier.fillMaxSize()
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = {
-            MediumTopAppBar(
-                title = { Text(text = stringResource(R.string.translators_title)) },
-                navigationIcon = {
-                    IconButton(onClick = onBackButtonClick) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_back_24dp),
-                            contentDescription = null
-                        )
-                    }
-                },
-                scrollBehavior = scrollBehavior
-            )
-        },
-        contentWindowInsets = WindowInsets.safeDrawing
-            .only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)
+    CollapsibleAppBarScaffold(
+        title = stringResource(R.string.translators_title),
+        onBackClick = onBackButtonClick
     ) { innerPadding ->
         LazyColumn(contentPadding = innerPadding) {
             items(translators) { contribution ->
