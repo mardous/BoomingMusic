@@ -18,6 +18,7 @@
 package com.mardous.booming.extensions.resources
 
 import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
@@ -486,22 +487,39 @@ fun BaseProgressIndicator<*>.setWavy(isWavy: Boolean) {
         )
     }
     val waveLength = if (isIndeterminate) wavelengthIndeterminate else wavelengthDeterminate
-    if (waveLength > 0) {
-        ValueAnimator.ofInt(oldAmplitude, newAmplitude).apply {
-            duration = BOOMING_ANIM_TIME
-            interpolator = DecelerateInterpolator()
-            addUpdateListener { animator ->
-                waveAmplitude = animator.animatedValue as Int
-            }
-        }.start()
-    } else {
+
+    // Cancel any existing animator to avoid multiple animators competing
+    (getTag(R.id.id_wave_amplitude_animator) as? ValueAnimator)?.cancel()
+    setTag(R.id.id_wave_amplitude_animator, null)
+
+    // If we have no wavelength or the value is already what we want, just snap to it
+    if (waveLength <= 0 || oldAmplitude == newAmplitude) {
         waveAmplitude = newAmplitude
-        setWavelength(if (!isWavy) 0 else {
-            resources.getDimensionPixelSize(
-                M3R.dimen.m3_comp_progress_indicator_circular_active_indicator_wave_wavelength
-            )
+        return
+    }
+
+    val animator = ValueAnimator.ofInt(oldAmplitude, newAmplitude).apply {
+        duration = BOOMING_ANIM_TIME
+        interpolator = DecelerateInterpolator()
+        addUpdateListener { animator ->
+            waveAmplitude = animator.animatedValue as Int
+        }
+        addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                // Clear reference when done
+                setTag(R.id.id_wave_amplitude_animator, null)
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+                // Also clear on cancel to avoid leaking the animator
+                setTag(R.id.id_wave_amplitude_animator, null)
+            }
         })
     }
+
+    // Store animator so subsequent calls can cancel it
+    setTag(R.id.id_wave_amplitude_animator, animator)
+    animator.start()
 }
 
 fun BaseProgressIndicator<*>.setAnimatedWave(isAnimatedWave: Boolean) {
@@ -535,8 +553,8 @@ inline fun Context.createBoomingMusicBalloon(
     lifecycleOwner: LifecycleOwner,
     crossinline block: Balloon.Builder.() -> Unit
 ): Balloon {
-    val bgColor = resolveColor(com.google.android.material.R.attr.colorTertiaryContainer)
-    val textColor = resolveColor(com.google.android.material.R.attr.colorOnTertiaryContainer)
+    val bgColor = resolveColor(M3R.attr.colorTertiaryContainer)
+    val textColor = resolveColor(M3R.attr.colorOnTertiaryContainer)
     return createBalloon(this) {
         setBackgroundColor(bgColor)
         setTextColor(textColor)
