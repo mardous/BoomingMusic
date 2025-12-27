@@ -36,6 +36,7 @@
         app:backgroundTint="?colorSurfaceContainerLow"
         app:iconTint="?colorOnSurface"
         app:icon="@drawable/ic_arrow_forward_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.constraintlayout.widget.Guideline
