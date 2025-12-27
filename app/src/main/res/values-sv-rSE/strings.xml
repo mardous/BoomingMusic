@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Ta bort låten <b>%1$s</b> från spellistan?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Ta bort <b>%1$d</b> låtar från spellistan?]]></string>
     <string name="playlist_empty_text">Tom spellista</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Tag redaktör</string>
     <string name="saving_changes">Sparar ändringar</string>
     <string name="changes_saved_successfully">Ändringar har sparats.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">Totalt antal skivor</string>
     <string name="lyrics">Låttext</string>
     <string name="lyricist">Låttext</string>
-    <string name="edit_tags_action">Redigera taggar</string>
-    <string name="edit_lyrics_action">Redigera låttext</string>
-    <string name="open_lyrics_editor">Öppna låttextredigerare</string>
     <string name="could_not_load_the_song_information">"Det gick inte att ladda låtinformationen."</string>
     <string name="no_results">Inga resultat</string>
     <string name="connection_unavailable">Anslutning ej tillgänglig.</string>
