@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Удалить песню &lt;b&gt;%1$s&lt;/b&gt; из плейлиста?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Удалить &lt;b&gt;%1$d&lt;/b&gt; песен из плейлиста?]]></string>
     <string name="playlist_empty_text">Пустой плейлист</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Редактор тегов</string>
     <string name="saving_changes">Сохранение изменений</string>
     <string name="changes_saved_successfully">Изменения успешно сохранены.</string>
@@ -319,9 +320,6 @@
     <string name="disc_total">Всего дисков</string>
     <string name="lyrics">Текст песни</string>
     <string name="lyricist">Автор текста</string>
-    <string name="edit_tags_action">Редактировать теги</string>
-    <string name="edit_lyrics_action">Редактировать текст песни</string>
-    <string name="open_lyrics_editor">Открыть редактор текстов песен</string>
     <string name="could_not_load_the_song_information">"Не удалось загрузить информацию о песне."</string>
     <string name="no_results">Нет результатов</string>
     <string name="connection_unavailable">Соединение недоступно.</string>
