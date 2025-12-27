@@ -35,6 +35,13 @@
             app:widgetLayout="@layout/preference_switch"
             app:key="search_auto_queue"/>
 
+        <com.mardous.booming.ui.component.preferences.dialog.ClearQueueActionPreference
+            app:title="@string/on_clear_queue_title"
+            app:summary="@string/on_clear_queue_summary"
+            app:persistent="false"
+            app:layout="@layout/list_item_view"
+            app:key="on_clear_queue_action"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
