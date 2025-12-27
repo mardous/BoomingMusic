@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Видалити пісню &lt;b&gt;%1$s&lt;/b&gt; зі списку відтворення?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Видалити &lt;b&gt;%1$d&lt;/b&gt; пісень зі списку відтворення?]]></string>
     <string name="playlist_empty_text">Порожній список відтворення</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Редактор тегів</string>
     <string name="saving_changes">Збереження змін</string>
     <string name="changes_saved_successfully">Зміни успішно збережено.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">Загалом дисків</string>
     <string name="lyrics">Текст пісні</string>
     <string name="lyricist">Автор тексту</string>
-    <string name="edit_tags_action">Редагувати теги</string>
-    <string name="edit_lyrics_action">Редагувати текст пісні</string>
-    <string name="open_lyrics_editor">Відкрити редактор текстів пісень</string>
     <string name="could_not_load_the_song_information">"Не вдалося завантажити інформацію про пісню."</string>
     <string name="no_results">Немає результатів</string>
     <string name="connection_unavailable">З\'єднання відсутнє.</string>
