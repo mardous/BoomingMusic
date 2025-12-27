@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[إزالة الأغنية <b>%1$s</b> من قائمة التشغيل؟]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[إزالة أغاني <b>%1$d</b> من قائمة التشغيل؟]]></string>
     <string name="playlist_empty_text">قائمة تشغيل فارغة</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">محرر العلامات</string>
     <string name="saving_changes">حفظ التغييرات</string>
     <string name="changes_saved_successfully">تم حفظ التغييرات بنجاح.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">مجموع الأقراص</string>
     <string name="lyrics">كلمات</string>
     <string name="lyricist">كلماتي</string>
-    <string name="edit_tags_action">تعديل العلامات</string>
-    <string name="edit_lyrics_action">تحرير كلمات الأغاني</string>
-    <string name="open_lyrics_editor">فتح محرر الكلمات</string>
     <string name="could_not_load_the_song_information">"تعذر تحميل معلومات الأغنية."</string>
     <string name="no_results">لا توجد نتائج</string>
     <string name="connection_unavailable">الاتصال غير متوفر.</string>
