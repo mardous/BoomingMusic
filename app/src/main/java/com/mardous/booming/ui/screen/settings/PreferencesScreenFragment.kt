@@ -234,6 +234,7 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             showToast(R.string.lyrics_cleared)
             true
         }
+        onUpdateLyricsPreferences()
 
         if (!hasR()) {
             findPreference<Preference>(TRASH_MUSIC_FILES)?.isVisible = false
@@ -365,13 +366,14 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
         }
     }
 
-    override fun onSharedPreferenceChanged(preferences: SharedPreferences?, key: String?) {
+    override fun onSharedPreferenceChanged(preferences: SharedPreferences, key: String?) {
         when (key) {
             NOW_PLAYING_SCREEN -> onUpdateNowPlayingScreen()
             COVER_DOUBLE_TAP_ACTION,
             COVER_LEFT_DOUBLE_TAP_ACTION,
             COVER_RIGHT_DOUBLE_TAP_ACTION,
             COVER_LONG_PRESS_ACTION -> onUpdateCoverActions()
+            LyricsViewSettings.Key.BACKGROUND_EFFECT -> onUpdateLyricsPreferences()
         }
     }
 
@@ -395,6 +397,15 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
 
         findPreference<Preference>(COVER_LONG_PRESS_ACTION)?.summary =
             getString(Preferences.coverLongPressAction.titleRes)
+    }
+
+    private fun onUpdateLyricsPreferences() {
+        val hasBackgroundEffects =
+            preferences.getString(LyricsViewSettings.Key.BACKGROUND_EFFECT, "none") != "none"
+        findPreference<Preference>(LyricsViewSettings.Key.SHADOW_EFFECT)
+            ?.isEnabled = hasBackgroundEffects
+        findPreference<Preference>(LyricsViewSettings.Key.BLUR_EFFECT)
+            ?.isEnabled = hasBackgroundEffects
     }
 
     private fun showLibraryFolderSelector(type: Int) {
