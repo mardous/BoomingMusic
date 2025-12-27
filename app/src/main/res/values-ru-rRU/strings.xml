@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Удалить песню &lt;b&gt;%1$s&lt;/b&gt; из плейлиста?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Удалить &lt;b&gt;%1$d&lt;/b&gt; песен из плейлиста?]]></string>
     <string name="playlist_empty_text">Пустой плейлист</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Редактор тегов</string>
     <string name="saving_changes">Сохранение изменений</string>
     <string name="changes_saved_successfully">Изменения успешно сохранены.</string>
@@ -215,7 +216,7 @@
     <string name="top_tracks_label">Лучшие треки</string>
     <string name="history_label">История</string>
     <string name="not_recently_played">Недавние прослушивания</string>
-    <string name="play_info">Play info</string>
+    <string name="play_info">Информация о воспроизведении</string>
     <string name="track_play_counts">Количество воспроизведений трека</string>
     <string name="song_stat_never_label">никогда не проигрывалось</string>
     <string name="song_stat_one_time_label">проиграно один раз %s</string>
@@ -287,8 +288,8 @@
     <string name="label_file_path">Путь к файлу</string>
     <string name="size">Размер файла</string>
     <string name="label_file_format">Формат</string>
-    <string name="file_label">File</string>
-    <string name="metadata_label">Metadata</string>
+    <string name="file_label">Файл</string>
+    <string name="metadata_label">Метаданные</string>
     <string name="title_and_artist">Заголовок и исполнитель</string>
     <string name="song">Песня</string>
     <string name="title">Название</string>
@@ -613,7 +614,7 @@
     <string name="general_theme_title">Общая тема</string>
     <string name="pure_black_theme_title">Чистый черный</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Use custom font</string>
+    <string name="use_custom_font_title">Использовать свой шрифт</string>
     <string name="appbar_mode_title">Стиль заголовка</string>
     <string name="library_categories_title">Категории библиотеки</string>
     <string name="library_categories_summary">Настройте видимость и порядок категорий библиотеки.</string>
@@ -739,6 +740,12 @@
     <string name="mp3_index_seeking_summary">Загружает весь MP3-файл в память для перемотки вместо использования заголовка Xing.
         Включайте, только если перемотка не работает на VBR-файлах.
         Требуется перезапуск.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_summary">What should happen when cleaning the play queue.</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Автоматически загружать метаданные</string>
     <string name="ignore_media_store_album_covers_title">Игнорировать обложки изMediaStore</string>
