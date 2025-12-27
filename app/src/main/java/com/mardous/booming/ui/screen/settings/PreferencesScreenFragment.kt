@@ -337,6 +337,7 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
         val dialogFragment: DialogFragment? = when (preference) {
             is NowPlayingExtraInfoPreference -> NowPlayingExtraInfoPreferenceDialog()
             is CategoriesPreference -> CategoriesPreferenceDialog()
+            is ClearQueueActionPreference -> ClearQueueActionPreferenceDialog()
             is NowPlayingScreenPreference -> NowPlayingScreenPreferenceDialog()
             is ActionOnCoverPreference -> ActionOnCoverPreferenceDialog.newInstance(preference.key, preference.title!!)
             else -> null

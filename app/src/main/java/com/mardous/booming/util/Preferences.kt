@@ -291,12 +291,12 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(PREFER_ALBUM_ARTIST_NAME, false)
         set(value) = preferences.edit { putBoolean(PREFER_ALBUM_ARTIST_NAME, value) }
 
-    val songClickAction: OnSongClickAction
-        get() = preferences.enumValue(ON_SONG_CLICK_ACTION, OnSongClickAction.PlayWholeList)
-
     var clearQueueAction: OnClearQueueAction
         get() = preferences.enumValueByOrdinal(ON_CLEAR_QUEUE_ACTION, OnClearQueueAction.RemoveAllSongs)
         set(value) = preferences.edit { putInt(ON_CLEAR_QUEUE_ACTION, value.ordinal) }
+
+    val songClickAction: OnSongClickAction
+        get() = preferences.enumValue(ON_SONG_CLICK_ACTION, OnSongClickAction.PlayWholeList)
 
     val searchAutoQueue: Boolean
         get() = preferences.getBoolean(SEARCH_AUTO_QUEUE, false)

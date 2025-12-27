@@ -552,6 +552,7 @@ class PlayerViewModel(
                 mediaController?.let { controller ->
                     if (controller.mediaItemCount > 1) {
                         val currentItem = controller.currentMediaItemIndex
+                        if (currentItem == C.INDEX_UNSET) return
                         if (currentItem == 0) {
                             controller.removeMediaItems(1, controller.mediaItemCount)
                         } else {
