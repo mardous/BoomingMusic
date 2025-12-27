@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Fjern sangen <b>%1$s</b> fra spillelisten?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Fjern <b>%1$d</b> sange fra spillelisten?]]></string>
     <string name="playlist_empty_text">Tom afspilningsliste</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Tag editor</string>
     <string name="saving_changes">Gemmer ændringer</string>
     <string name="changes_saved_successfully">Ændringer gemt.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">Totale Discs</string>
     <string name="lyrics">Sangtekster</string>
     <string name="lyricist">Lyricist</string>
-    <string name="edit_tags_action">Rediger tags</string>
-    <string name="edit_lyrics_action">Rediger sangtekster</string>
-    <string name="open_lyrics_editor">Åbn sangtekst-editor</string>
     <string name="could_not_load_the_song_information">"Kunne ikke indlæse sangoplysningerne."</string>
     <string name="no_results">Ingen resultater</string>
     <string name="connection_unavailable">Forbindelsen er ikke tilgængelig.</string>
