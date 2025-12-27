@@ -18,14 +18,30 @@
 package com.mardous.booming.ui.component.preferences.dialog
 
 import android.app.Dialog
-import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.ui.component.compose.DialogListItem
+import com.mardous.booming.ui.theme.BoomingMusicTheme
 import com.mardous.booming.util.*
 import org.koin.android.ext.android.get
 
@@ -38,26 +54,80 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
         val prefKey = requireArguments().getString(EXTRA_KEY)
         checkNotNull(prefKey)
 
-        val currentAction = getCurrentAction(prefKey)
         val allActions = NowPlayingAction.entries.toMutableList()
         removeActionsForPrefKey(prefKey, allActions)
 
-        val dialogTitle = arguments?.getCharSequence(EXTRA_TITLE)
-        val actionNames = allActions.map { getString(it.titleRes) }
-        var selectedIndex = allActions.indexOf(currentAction).coerceAtLeast(0)
-
         return MaterialAlertDialogBuilder(requireContext())
-            .setTitle(dialogTitle)
-            .setSingleChoiceItems(actionNames.toTypedArray(), selectedIndex) { _: DialogInterface, selected: Int ->
-                selectedIndex = selected
-            }
-            .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
-                get<SharedPreferences>().edit {
-                    putString(prefKey, allActions[selectedIndex].name)
+            .setTitle(arguments?.getCharSequence(EXTRA_TITLE))
+            .setView(
+                ComposeView(requireContext()).apply {
+                    setViewCompositionStrategy(
+                        ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+                    )
+                    setContent {
+                        BoomingMusicTheme {
+                            var currentAction by remember {
+                                mutableStateOf(getCurrentAction(prefKey))
+                            }
+                            LaunchedEffect(currentAction) {
+                                get<SharedPreferences>().edit {
+                                    putString(prefKey, currentAction.name)
+                                }
+                            }
+                            DialogScreen(
+                                actions = allActions,
+                                selected = currentAction,
+                                onActionClick = { action -> currentAction = action }
+                            )
+                        }
+                    }
+                }
+            )
+            .setPositiveButton(R.string.close_action, null)
+            .create()
+    }
+
+    @Composable
+    private fun DialogScreen(
+        actions: List<NowPlayingAction>,
+        selected: NowPlayingAction,
+        onActionClick: (NowPlayingAction) -> Unit
+    ) {
+        Surface(
+            color = MaterialTheme.colorScheme.surfaceContainerHigh,
+            modifier = Modifier.wrapContentHeight()
+        ) {
+            var maxItemHeight by remember { mutableIntStateOf(0) }
+            LazyColumn(
+                contentPadding = PaddingValues(horizontal = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .padding(top = 24.dp)
+            ) {
+                items(actions) { action ->
+                    DialogListItem(
+                        title = stringResource(action.titleRes),
+                        leadingIcon = painterResource(action.iconRes),
+                        isSelected = action == selected,
+                        onClick = { onActionClick(action) },
+                        modifier = Modifier
+                            .then(
+                                if (maxItemHeight > 0)
+                                    Modifier.height(with(LocalDensity.current) { maxItemHeight.toDp() })
+                                else Modifier
+                            )
+                            .onGloballyPositioned {
+                                val height = it.size.height
+                                if (height > maxItemHeight) {
+                                    maxItemHeight = height
+                                }
+                            }
+                    )
                 }
             }
-            .setNegativeButton(android.R.string.cancel, null)
-            .create()
+        }
     }
 
     private fun removeActionsForPrefKey(prefKey: String, actions: MutableList<NowPlayingAction>) {
