@@ -27,18 +27,18 @@
             app:layout="@layout/list_item_view"
             app:key="queue_next_mode"/>
 
-        <ListPreference
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
             app:icon="@drawable/ic_touch_app_24dp"
             app:title="@string/on_song_click_title"
-            app:summary="@string/on_song_click_summary"
+            app:useSimpleSummaryProvider="false"
             app:persistent="false"
             app:layout="@layout/list_item_view"
             app:key="on_song_click_action"/>
 
-        <ListPreference
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
             app:icon="@drawable/ic_clear_all_24dp"
             app:title="@string/on_clear_queue_title"
-            app:summary="@string/on_clear_queue_summary"
+            app:useSimpleSummaryProvider="false"
             app:persistent="false"
             app:layout="@layout/list_item_view"
             app:key="on_clear_queue_action"/>

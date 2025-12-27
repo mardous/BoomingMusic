@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ListPreference
+    <com.mardous.booming.ui.component.preferences.CustomDialogPreference
         app:icon="@drawable/ic_play_circle_24dp"
         app:title="@string/now_playing_screen_title"
         app:layout="@layout/list_item_view"
@@ -57,31 +57,31 @@
         app:title="@string/gestures_header"
         app:layout="@layout/preference_category_title">
 
-        <ListPreference
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
             app:iconSpaceReserved="true"
             app:title="@string/single_tap_on_album_cover_title"
             app:layout="@layout/list_item_view"
             app:key="cover_single_tap_action" />
 
-        <ListPreference
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
             app:iconSpaceReserved="true"
             app:title="@string/double_tap_on_album_cover_title"
             app:layout="@layout/list_item_view"
             app:key="cover_double_tap_action" />
 
-        <ListPreference
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
             app:iconSpaceReserved="true"
             app:title="@string/double_tap_on_left_album_cover_title"
             app:layout="@layout/list_item_view"
             app:key="cover_left_double_tap_action" />
 
-        <ListPreference
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
             app:iconSpaceReserved="true"
             app:title="@string/double_tap_on_right_album_cover_title"
             app:layout="@layout/list_item_view"
             app:key="cover_right_double_tap_action" />
 
-        <ListPreference
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
             app:iconSpaceReserved="true"
             app:title="@string/long_press_on_album_cover_title"
             app:layout="@layout/list_item_view"
