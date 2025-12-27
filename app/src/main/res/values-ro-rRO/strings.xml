@@ -318,9 +318,6 @@
     <string name="disc_total">Total disc-uri</string>
     <string name="lyrics">Versuri</string>
     <string name="lyricist">Vertism</string>
-    <string name="edit_tags_action">Editare etichete</string>
-    <string name="edit_lyrics_action">Editare versuri</string>
-    <string name="open_lyrics_editor">Deschide editorul de versuri</string>
     <string name="could_not_load_the_song_information">"Nu s-au putut încărca informațiile melodiei."</string>
     <string name="no_results">Niciun rezultat</string>
     <string name="connection_unavailable">Conexiune indisponibilă.</string>

@@ -317,9 +317,6 @@
     <string name="disc_total">कुल डिस्क</string>
     <string name="lyrics">बोल</string>
     <string name="lyricist">गीतकार</string>
-    <string name="edit_tags_action">टैग्स एडिट करो</string>
-    <string name="edit_lyrics_action">गाने के बोल संपादित करें</string>
-    <string name="open_lyrics_editor">ओपन लिरिक्स संपादक</string>
     <string name="could_not_load_the_song_information">"गाना जानकारी लोड नहीं हो सका।"</string>
     <string name="no_results">कोई रिजल्ट नहीं</string>
     <string name="connection_unavailable">कनेक्शन अनुपलब्ध है।</string>

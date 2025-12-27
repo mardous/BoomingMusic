@@ -317,9 +317,6 @@
     <string name="disc_total">Discos totales</string>
     <string name="lyrics">Letra</string>
     <string name="lyricist">Letrista</string>
-    <string name="edit_tags_action">Editar etiquetas</string>
-    <string name="edit_lyrics_action">Editar letra</string>
-    <string name="open_lyrics_editor">Abrir editor de letras</string>
     <string name="could_not_load_the_song_information">"No se pudo leer la información del archivo."</string>
     <string name="no_results">Sin resultados</string>
     <string name="connection_unavailable">Conexión a Internet no disponible.</string>

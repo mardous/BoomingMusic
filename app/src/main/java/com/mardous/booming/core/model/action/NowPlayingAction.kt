@@ -25,7 +25,7 @@ import com.mardous.booming.R
  */
 enum class NowPlayingAction(@StringRes val titleRes: Int) {
     Lyrics(R.string.action_show_lyrics),
-    LyricsEditor(R.string.open_lyrics_editor),
+    LyricsEditor(R.string.action_lyrics_editor),
     AddToPlaylist(R.string.action_add_to_playlist),
     TogglePlayState(R.string.action_play_pause),
     OpenAlbum(R.string.action_go_to_album),

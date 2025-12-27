@@ -318,9 +318,6 @@
     <string name="disc_total">Celkem disků</string>
     <string name="lyrics">Texty</string>
     <string name="lyricist">Texikátor</string>
-    <string name="edit_tags_action">Upravit štítky</string>
-    <string name="edit_lyrics_action">Upravit texty</string>
-    <string name="open_lyrics_editor">Otevřít editor textů</string>
     <string name="could_not_load_the_song_information">"Informace o skladbě nelze načíst."</string>
     <string name="no_results">Žádné výsledky</string>
     <string name="connection_unavailable">Připojení není k dispozici.</string>
