@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Rimuovere la canzone <b>%1$s</b> dalla playlist?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Rimuovere i brani <b>%1$d</b> dalla playlist?]]></string>
     <string name="playlist_empty_text">Scaletta vuota</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Editor tag</string>
     <string name="saving_changes">Salvataggio delle modifiche</string>
     <string name="changes_saved_successfully">Modifiche salvate con successo.</string>
@@ -318,9 +319,6 @@
     <string name="disc_total">Dischi Totali</string>
     <string name="lyrics">Testi</string>
     <string name="lyricist">Lyricist</string>
-    <string name="edit_tags_action">Modifica tag</string>
-    <string name="edit_lyrics_action">Modifica testo</string>
-    <string name="open_lyrics_editor">Apri editor testi</string>
     <string name="could_not_load_the_song_information">"Impossibile caricare le informazioni del brano."</string>
     <string name="no_results">Nessun risultato</string>
     <string name="connection_unavailable">Connessione non disponibile.</string>
