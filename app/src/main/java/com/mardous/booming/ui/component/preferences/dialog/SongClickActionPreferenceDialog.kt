@@ -40,12 +40,12 @@ class SongClickActionPreferenceDialog : DialogFragment() {
                             var selectedAction by remember {
                                 mutableStateOf(Preferences.songClickAction)
                             }
-                            LaunchedEffect(selectedAction) {
-                                Preferences.songClickAction = selectedAction
-                            }
                             SongDialogScreen(
                                 selected = selectedAction,
-                                onActionClick = { selectedAction = it }
+                                onActionClick = { action ->
+                                    selectedAction = action
+                                    Preferences.songClickAction = action
+                                }
                             )
                         }
                     }
