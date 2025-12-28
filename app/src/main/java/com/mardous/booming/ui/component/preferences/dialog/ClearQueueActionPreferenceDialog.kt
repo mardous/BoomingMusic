@@ -3,6 +3,9 @@ package com.mardous.booming.ui.component.preferences.dialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
@@ -64,16 +67,23 @@ class ClearQueueActionPreferenceDialog : DialogFragment() {
             color = MaterialTheme.colorScheme.surfaceContainerHigh,
             modifier = Modifier.wrapContentHeight()
         ) {
+            val actions = remember { QueueClearingBehavior.entries.toTypedArray() }
+            val firstVisibleIndex = actions.indexOfFirst { it.ordinal == selected.ordinal }
+                .coerceAtLeast(0)
+
+            val listState = rememberLazyListState(firstVisibleIndex)
             var maxItemHeight by remember { mutableIntStateOf(0) }
-            Column(
+
+            LazyColumn(
+                state = listState,
+                contentPadding = PaddingValues(horizontal = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
                     .padding(top = 24.dp)
-                    .padding(horizontal = 16.dp)
             ) {
-                QueueClearingBehavior.entries.forEach { action ->
+                items(actions) { action ->
                     DialogListItem(
                         title = stringResource(action.titleRes),
                         subtitle = stringResource(action.summaryRes),

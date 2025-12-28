@@ -65,15 +65,10 @@ class SongClickActionPreferenceDialog : DialogFragment() {
             modifier = Modifier.wrapContentHeight()
         ) {
             val actions = remember { SongClickBehavior.entries.toTypedArray() }
-            val listState = rememberLazyListState()
+            val firstVisibleIndex = actions.indexOfFirst { it.ordinal == selected.ordinal }
+                .coerceAtLeast(0)
 
-            LaunchedEffect(Unit) {
-                val selectedIndex = actions.indexOfFirst { it.ordinal == selected.ordinal }
-                if (selectedIndex > 0) {
-                    listState.scrollToItem(selectedIndex)
-                }
-            }
-
+            val listState = rememberLazyListState(firstVisibleIndex)
             var maxItemHeight by remember { mutableIntStateOf(0) }
 
             LazyColumn(
