@@ -721,19 +721,19 @@
     <string name="mp3_index_seeking_summary">Charge le fichier MP3 dans la mémoire pour l\'indexer a la place d\'utiliser l\'entêté Xing.
         À utiliser uniquement si l\'index échoue sur les fichiers VBR.
         Nécessite le redémarrage de l\'application.</string>
-    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
-    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
-    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
-    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
-    <string name="on_song_click_title">When selecting a song</string>
-    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
-    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
-    <string name="on_song_click_play_whole_list_title">Play whole list</string>
-    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
-    <string name="on_song_click_queue_next_title">Queue next</string>
-    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
-    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
-    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="play_option_always_visible_title">Garder l\'option « Lecture » visible</string>
+    <string name="play_option_always_visible_summary">Si cette option est activée, l\'option « Lecture » ​​apparaîtra toujours dans le menu d\'un titre, quels que soient les paramètres de comportement au toucher.</string>
+    <string name="play_option_whole_list_title">L\'option « Lecture » permet de lire toute la liste</string>
+    <string name="play_option_whole_list_summary">Si cette option est activée, sélectionner « Lecture » dans le menu d\'un morceau lancera la lecture de toute la playlist. Si elle est désactivée, seul le morceau sélectionné sera lu.</string>
+    <string name="on_song_click_title">Lors du choix d\'un titre</string>
+    <string name="on_song_click_play_only_this_song_title">Jouez uniquement ce titre</string>
+    <string name="on_song_click_play_only_this_song_summary">La file d\'attente actuelle sera effacée et remplacée par le titre sélectionné.</string>
+    <string name="on_song_click_play_whole_list_title">Lire la liste complète</string>
+    <string name="on_song_click_play_whole_list_summary">La file d\'attente actuelle sera remplacée par tous les titres de la liste/de l\'album/du dossier.</string>
+    <string name="on_song_click_queue_next_title">File d\'attente suivante</string>
+    <string name="on_song_click_queue_next_summary">Le morceau sélectionné sera ajouté à la position suivante dans la file d\'attente.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enfile à la fin</string>
+    <string name="on_song_click_enqueue_at_end_summary">Le morceau sélectionné sera ajouté à la fin de la file d\'attente actuelle.</string>
     <string name="on_clear_queue_title">Lors du nettoyage de la file d\'attente</string>
     <string name="on_clear_queue_remove_all_songs_title">Supprimer tous les titres</string>
     <string name="on_clear_queue_remove_all_songs_summary">La file d\'attente entière sera effacée.</string>
