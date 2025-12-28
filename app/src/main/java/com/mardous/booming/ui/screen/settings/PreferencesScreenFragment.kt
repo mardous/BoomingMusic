@@ -214,8 +214,6 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
         }
 
         findPreference<Preference>(ADD_EXTRA_CONTROLS)?.isVisible = !resources.isTablet
-        onUpdateNowPlayingScreen()
-        onUpdateCoverActions()
 
         findPreference<Preference>(LyricsViewSettings.Key.BLUR_EFFECT)
             ?.isVisible = hasS()
@@ -234,7 +232,6 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             showToast(R.string.lyrics_cleared)
             true
         }
-        onUpdateLyricsPreferences()
 
         if (!hasR()) {
             findPreference<Preference>(TRASH_MUSIC_FILES)?.isVisible = false
@@ -334,18 +331,29 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
                 }
             }
         }
+
+        onUpdateNowPlayingScreen()
+        onUpdateCoverActions()
+        onUpdateLyricsPreferences()
+        onUpdateQueuePreferences()
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
-        val dialogFragment: DialogFragment? = when (preference) {
-            is NowPlayingExtraInfoPreference -> NowPlayingExtraInfoPreferenceDialog()
-            is CategoriesPreference -> CategoriesPreferenceDialog()
-            is ClearQueueActionPreference -> ClearQueueActionPreferenceDialog()
-            is NowPlayingScreenPreference -> NowPlayingScreenPreferenceDialog()
-            is ActionOnCoverPreference -> ActionOnCoverPreferenceDialog.newInstance(preference.key, preference.title!!)
+        val dialogFragment: DialogFragment? = when (preference.key) {
+            LIBRARY_CATEGORIES -> CategoriesPreferenceDialog()
+            NOW_PLAYING_SCREEN -> NowPlayingScreenPreferenceDialog()
+            EXTRA_INFO -> NowPlayingExtraInfoPreferenceDialog()
+            ON_SONG_CLICK_ACTION -> SongClickActionPreferenceDialog()
+            ON_CLEAR_QUEUE_ACTION -> ClearQueueActionPreferenceDialog()
+            COVER_DOUBLE_TAP_ACTION,
+            COVER_SINGLE_TAP_ACTION,
+            COVER_LONG_PRESS_ACTION,
+            COVER_LEFT_DOUBLE_TAP_ACTION,
+            COVER_RIGHT_DOUBLE_TAP_ACTION -> {
+                ActionOnCoverPreferenceDialog.newInstance(preference.key, preference.title!!)
+            }
             else -> null
         }
-
         if (dialogFragment != null) {
             dialogFragment.show(childFragmentManager, "androidx.preference.PreferenceFragment.DIALOG")
         } else {
@@ -375,6 +383,8 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             COVER_LEFT_DOUBLE_TAP_ACTION,
             COVER_RIGHT_DOUBLE_TAP_ACTION,
             COVER_LONG_PRESS_ACTION -> onUpdateCoverActions()
+            ON_SONG_CLICK_ACTION,
+            ON_CLEAR_QUEUE_ACTION -> onUpdateQueuePreferences()
             LyricsViewSettings.Key.BACKGROUND_EFFECT -> onUpdateLyricsPreferences()
         }
     }
@@ -408,6 +418,13 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             ?.isEnabled = hasBackgroundEffects
         findPreference<Preference>(LyricsViewSettings.Key.BLUR_EFFECT)
             ?.isEnabled = hasBackgroundEffects
+    }
+
+    private fun onUpdateQueuePreferences() {
+        findPreference<Preference>(ON_SONG_CLICK_ACTION)
+            ?.summary = getString(Preferences.songClickAction.titleRes)
+        findPreference<Preference>(ON_CLEAR_QUEUE_ACTION)
+            ?.summary = getString(Preferences.clearQueueAction.titleRes)
     }
 
     private fun showLibraryFolderSelector(type: Int) {

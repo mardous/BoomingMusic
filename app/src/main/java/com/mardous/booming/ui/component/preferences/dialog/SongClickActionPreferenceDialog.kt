@@ -20,19 +20,16 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
-import com.mardous.booming.core.model.action.QueueClearingBehavior
+import com.mardous.booming.core.model.action.SongClickBehavior
 import com.mardous.booming.ui.component.compose.DialogListItem
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 import com.mardous.booming.util.Preferences
 
-/**
- * @author Christians M. A. (mardous)
- */
-class ClearQueueActionPreferenceDialog : DialogFragment() {
+class SongClickActionPreferenceDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.on_clear_queue_title)
+            .setTitle(R.string.on_song_click_title)
             .setView(
                 ComposeView(requireContext()).apply {
                     setViewCompositionStrategy(
@@ -41,13 +38,13 @@ class ClearQueueActionPreferenceDialog : DialogFragment() {
                     setContent {
                         BoomingMusicTheme {
                             var selectedAction by remember {
-                                mutableStateOf(Preferences.clearQueueAction)
+                                mutableStateOf(Preferences.songClickAction)
                             }
-                            QueueDialogScreen(
+                            SongDialogScreen(
                                 selected = selectedAction,
                                 onActionClick = { action ->
                                     selectedAction = action
-                                    Preferences.clearQueueAction = action
+                                    Preferences.songClickAction = action
                                 }
                             )
                         }
@@ -59,15 +56,15 @@ class ClearQueueActionPreferenceDialog : DialogFragment() {
     }
 
     @Composable
-    private fun QueueDialogScreen(
-        selected: QueueClearingBehavior,
-        onActionClick: (QueueClearingBehavior) -> Unit
+    private fun SongDialogScreen(
+        selected: SongClickBehavior,
+        onActionClick: (SongClickBehavior) -> Unit
     ) {
         Surface(
             color = MaterialTheme.colorScheme.surfaceContainerHigh,
             modifier = Modifier.wrapContentHeight()
         ) {
-            val actions = remember { QueueClearingBehavior.entries.toTypedArray() }
+            val actions = remember { SongClickBehavior.entries.toTypedArray() }
             val firstVisibleIndex = actions.indexOfFirst { it.ordinal == selected.ordinal }
                 .coerceAtLeast(0)
 

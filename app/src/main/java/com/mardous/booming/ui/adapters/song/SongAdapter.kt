@@ -27,6 +27,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
+import com.mardous.booming.core.model.action.SongClickBehavior
 import com.mardous.booming.core.model.sort.SortKey
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Song
@@ -37,12 +38,14 @@ import com.mardous.booming.extensions.media.asSectionName
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.resources.hide
+import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.util.Preferences
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -152,11 +155,26 @@ open class SongAdapter(
         protected val sharedElements: Array<Pair<View, String>>?
             get() = if (image != null && image.isVisible) arrayOf(image to image.transitionName) else null
 
+        protected val songClickBehavior: SongClickBehavior
+            get() = Preferences.songClickAction
+
         @CallSuper
         protected open fun onPrepareSongMenu(menu: Menu) {
+            menu.findItem(R.id.action_play)
+                ?.isVisible = !songClickBehavior.isAbleToPlay || Preferences.playOptionAlwaysVisible
         }
 
         protected open fun onSongMenuItemClick(item: MenuItem): Boolean {
+            if (item.itemId == R.id.action_play) {
+                val playerViewModel = activity.getViewModel<PlayerViewModel>()
+                val playOptionBehavior = if (Preferences.playOptionPlaysWholeList) {
+                    SongClickBehavior.PlayWholeList
+                } else {
+                    SongClickBehavior.PlayOnlyThisSong
+                }
+                playerViewModel.openSongs(layoutPosition, dataSet, playOptionBehavior)
+                return true
+            }
             return callback?.songMenuItemClick(song, item, sharedElements) ?: false
         }
 
@@ -167,8 +185,13 @@ open class SongAdapter(
             if (isInQuickSelectMode) {
                 toggleChecked(layoutPosition)
             } else {
+                val songClickBehavior = Preferences.songClickAction
                 val playerViewModel = activity.getViewModel<PlayerViewModel>()
-                playerViewModel.openQueue(dataSet, layoutPosition)
+                playerViewModel.openSongs(layoutPosition, dataSet, songClickBehavior)
+                if (songClickBehavior == SongClickBehavior.EnqueueAtEnd ||
+                    songClickBehavior == SongClickBehavior.QueueNext) {
+                    activity.showToast(R.string.added_title_to_playing_queue)
+                }
             }
         }
 

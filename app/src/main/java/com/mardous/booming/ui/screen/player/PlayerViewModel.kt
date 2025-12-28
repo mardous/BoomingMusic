@@ -21,6 +21,7 @@ import androidx.media3.session.SessionResult
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.action.QueueClearingBehavior
+import com.mardous.booming.core.model.action.SongClickBehavior
 import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
@@ -484,6 +485,37 @@ class PlayerViewModel(
             repository.playlistSongs(playlist.playListId).toSongs()
         }
         openQueue(songs, startPlaying = startPlaying, shuffleMode = shuffleMode)
+    }
+
+    fun openSongs(
+        position: Int,
+        songs: List<Song>,
+        behavior: SongClickBehavior
+    ) = viewModelScope.launch {
+        when (behavior) {
+            SongClickBehavior.PlayWholeList -> openQueue(songs, position)
+
+            SongClickBehavior.PlayOnlyThisSong -> {
+                val selectedSong = songs.getOrNull(position)
+                if (selectedSong != null) {
+                    openQueue(listOf(selectedSong))
+                }
+            }
+
+            SongClickBehavior.QueueNext -> {
+                val selectedSong = songs.getOrNull(position)
+                if (selectedSong != null) {
+                    queueNext(selectedSong)
+                }
+            }
+
+            SongClickBehavior.EnqueueAtEnd -> {
+                val selectedSong = songs.getOrNull(position)
+                if (selectedSong != null) {
+                    enqueue(selectedSong)
+                }
+            }
+        }
     }
 
     fun queueNext(song: Song) {
