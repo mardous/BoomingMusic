@@ -70,15 +70,15 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
                             var currentAction by remember {
                                 mutableStateOf(getCurrentAction(prefKey))
                             }
-                            LaunchedEffect(currentAction) {
-                                get<SharedPreferences>().edit {
-                                    putString(prefKey, currentAction.name)
-                                }
-                            }
                             DialogScreen(
                                 actions = allActions,
                                 selected = currentAction,
-                                onActionClick = { action -> currentAction = action }
+                                onActionClick = { action ->
+                                    currentAction = action
+                                    get<SharedPreferences>().edit {
+                                        putString(prefKey, action.name)
+                                    }
+                                }
                             )
                         }
                     }

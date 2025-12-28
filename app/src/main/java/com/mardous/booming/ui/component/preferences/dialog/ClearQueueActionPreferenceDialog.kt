@@ -43,12 +43,12 @@ class ClearQueueActionPreferenceDialog : DialogFragment() {
                             var selectedAction by remember {
                                 mutableStateOf(Preferences.clearQueueAction)
                             }
-                            LaunchedEffect(selectedAction) {
-                                Preferences.clearQueueAction = selectedAction
-                            }
                             QueueDialogScreen(
                                 selected = selectedAction,
-                                onActionClick = { selectedAction = it }
+                                onActionClick = { action ->
+                                    selectedAction = action
+                                    Preferences.clearQueueAction = action
+                                }
                             )
                         }
                     }
