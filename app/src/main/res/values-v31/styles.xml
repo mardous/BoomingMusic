@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Booming.DynamicColors" parent="@style/Theme.Material3.DynamicColors.DayNight">
+    <style name="Theme.Booming.DynamicColors" parent="@style/Theme.Material3Expressive.DynamicColors.DayNight">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
@@ -23,7 +23,7 @@
         <item name="android:windowSplashScreenAnimationDuration">1000</item>
     </style>
 
-    <style name="Theme.AppWidget" parent="@style/Theme.Material3.DynamicColors.DayNight"/>
+    <style name="Theme.AppWidget" parent="@style/Theme.Material3Expressive.DynamicColors.DayNight"/>
 
     <style name="ThemeOverlay.Booming.Adaptive" parent="ThemeOverlay.Material3.Light"/>
 

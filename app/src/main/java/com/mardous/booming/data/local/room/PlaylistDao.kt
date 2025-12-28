@@ -38,12 +38,6 @@ interface PlaylistDao {
     @Query("UPDATE PlaylistEntity SET playlist_name = :name WHERE playlist_id = :playlistId")
     suspend fun renamePlaylist(playlistId: Long, name: String)
 
-    @Query("DELETE FROM SongEntity WHERE playlist_creator_id = :playlistId")
-    suspend fun deletePlaylistSongs(playlistId: Long)
-
-    @Query("DELETE FROM SongEntity WHERE playlist_creator_id = :playlistId AND id = :songId")
-    suspend fun deleteSongFromPlaylist(playlistId: Long, songId: Long)
-
     @Transaction
     @Query("SELECT * FROM PlaylistEntity")
     suspend fun playlistsWithSongs(): List<PlaylistWithSongs>
@@ -67,23 +61,35 @@ interface PlaylistDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSongsToPlaylist(songEntities: List<SongEntity>)
 
-    @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId AND id = :songId")
-    suspend fun isSongExistsInPlaylist(playlistId: Long, songId: Long): List<SongEntity>
+    @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId AND id = :songId LIMIT 1")
+    suspend fun findSongInPlaylist(playlistId: Long, songId: Long): SongEntity?
+
+    @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId AND id IN(:songIds)")
+    suspend fun findSongsInPlaylist(playlistId: Long, songIds: List<Long>): List<SongEntity>
 
     @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId ORDER BY song_key asc")
-    fun songsFromPlaylist(playlistId: Long): LiveData<List<SongEntity>>
+    fun songsFromPlaylistObservable(playlistId: Long): LiveData<List<SongEntity>>
+
+    @Query("SELECT * FROM SongEntity WHERE playlist_creator_id = :playlistId ORDER BY song_key asc")
+    suspend fun songsFromPlaylist(playlistId: Long): List<SongEntity>
+
+    @Transaction
+    suspend fun removeSongsAndDeletePlaylists(playlistIds: List<Long>) {
+        deleteAllSongsFromPlaylists(playlistIds)
+        deletePlaylists(playlistIds)
+    }
+
+    @Query("DELETE FROM PlaylistEntity WHERE playlist_id IN (:playlistIds)")
+    suspend fun deletePlaylists(playlistIds: List<Long>)
+
+    @Query("DELETE FROM SongEntity WHERE playlist_creator_id = :playlistId AND id IN(:songIds)")
+    suspend fun deleteSongsFromPlaylist(playlistId: Long, songIds: List<Long>)
 
     @Delete
-    suspend fun deletePlaylist(playlistEntity: PlaylistEntity)
+    suspend fun deleteSongsFromPlaylists(songs: List<SongEntity>)
 
-    @Delete
-    suspend fun deletePlaylists(playlistEntities: List<PlaylistEntity>)
-
-    @Delete
-    suspend fun deletePlaylistSongs(songs: List<SongEntity>)
-
-    @Query("DELETE FROM SongEntity WHERE id = :songId")
-    suspend fun deleteSongFromAllPlaylists(songId: Long)
+    @Query("DELETE FROM SongEntity WHERE playlist_creator_id IN(:playlistIds)")
+    suspend fun deleteAllSongsFromPlaylists(playlistIds: List<Long>)
 
     @Query("DELETE FROM SongEntity WHERE id IN (:songIds)")
     suspend fun deleteSongsFromAllPlaylists(songIds: List<Long>)

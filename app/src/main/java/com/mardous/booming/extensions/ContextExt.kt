@@ -68,17 +68,8 @@ private val Resources.isNightMode: Boolean
 val Resources.isLandscape: Boolean
     get() = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
-/**
- * Indicates if the app is running on a **Android Auto** environemnt.
- */
-val Resources.isCarMode: Boolean
-    get() = configuration.uiMode == Configuration.UI_MODE_TYPE_CAR
-
 val Resources.isTablet: Boolean
     get() = configuration.smallestScreenWidthDp >= 600
-
-val Resources.isScreenLarge: Boolean
-    get() = configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK == Configuration.SCREENLAYOUT_SIZE_LARGE
 
 val Context.isNightMode: Boolean
     get() = resources.isNightMode

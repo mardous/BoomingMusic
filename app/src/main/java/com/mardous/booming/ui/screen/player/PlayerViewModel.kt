@@ -20,6 +20,8 @@ import androidx.media3.session.SessionError
 import androidx.media3.session.SessionResult
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.PaletteColor
+import com.mardous.booming.core.model.action.QueueClearingBehavior
+import com.mardous.booming.core.model.action.SongClickBehavior
 import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
@@ -30,6 +32,8 @@ import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.AlbumCoverSaver
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.local.room.PlaylistEntity
+import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.QueuePosition
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.toAudioFile
@@ -472,6 +476,48 @@ class PlayerViewModel(
         }
     }
 
+    fun openPlaylist(
+        playlist: PlaylistEntity,
+        startPlaying: Boolean = true,
+        shuffleMode: OpenShuffleMode = OpenShuffleMode.Off
+    ) = viewModelScope.launch {
+        val songs = withContext(IO) {
+            repository.playlistSongs(playlist.playListId).toSongs()
+        }
+        openQueue(songs, startPlaying = startPlaying, shuffleMode = shuffleMode)
+    }
+
+    fun openSongs(
+        position: Int,
+        songs: List<Song>,
+        behavior: SongClickBehavior
+    ) = viewModelScope.launch {
+        when (behavior) {
+            SongClickBehavior.PlayWholeList -> openQueue(songs, position)
+
+            SongClickBehavior.PlayOnlyThisSong -> {
+                val selectedSong = songs.getOrNull(position)
+                if (selectedSong != null) {
+                    openQueue(listOf(selectedSong))
+                }
+            }
+
+            SongClickBehavior.QueueNext -> {
+                val selectedSong = songs.getOrNull(position)
+                if (selectedSong != null) {
+                    queueNext(selectedSong)
+                }
+            }
+
+            SongClickBehavior.EnqueueAtEnd -> {
+                val selectedSong = songs.getOrNull(position)
+                if (selectedSong != null) {
+                    enqueue(selectedSong)
+                }
+            }
+        }
+    }
+
     fun queueNext(song: Song) {
         mediaController?.let { controller ->
             if (controller.currentTimeline.isEmpty) {
@@ -525,8 +571,29 @@ class PlayerViewModel(
         }
     }
 
-    fun clearQueue() {
-        mediaController?.clearMediaItems()
+    fun clearQueue(behavior: QueueClearingBehavior = Preferences.clearQueueAction) {
+        when (behavior) {
+            QueueClearingBehavior.RemoveAllSongs -> {
+                mediaController?.clearMediaItems()
+            }
+
+            QueueClearingBehavior.RemoveAllSongsExceptCurrentlyPlaying -> {
+                mediaController?.let { controller ->
+                    if (controller.mediaItemCount > 1) {
+                        val currentItem = controller.currentMediaItemIndex
+                        if (currentItem == C.INDEX_UNSET) return
+                        if (currentItem == 0) {
+                            controller.removeMediaItems(1, controller.mediaItemCount)
+                        } else {
+                            controller.removeMediaItems(0, currentItem)
+                            if (controller.mediaItemCount > 1) {
+                                controller.removeMediaItems(1, controller.mediaItemCount)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @androidx.annotation.OptIn(UnstableApi::class)

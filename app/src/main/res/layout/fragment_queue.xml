@@ -14,9 +14,9 @@
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/list_queue_padding_vertical">
 
-    <include
-        android:id="@+id/currentItem"
-        layout="@layout/item_queue"/>
+        <include
+            android:id="@+id/currentItem"
+            layout="@layout/item_queue" />
 
     </FrameLayout>
 

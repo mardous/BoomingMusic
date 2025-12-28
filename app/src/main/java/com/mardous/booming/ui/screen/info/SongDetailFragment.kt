@@ -22,7 +22,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -37,18 +36,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.fragment.navArgs
-import coil3.compose.AsyncImage
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mardous.booming.R
 import com.mardous.booming.data.local.EditTarget
@@ -57,7 +53,7 @@ import com.mardous.booming.ui.component.base.AbsTagEditorActivity
 import com.mardous.booming.ui.component.base.goToDestination
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.component.compose.ErrorView
-import com.mardous.booming.ui.component.compose.ShapedText
+import com.mardous.booming.ui.component.compose.SmallHeader
 import com.mardous.booming.ui.component.compose.TitledSurface
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
@@ -153,7 +149,20 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     // Header containing basic song's info
-                    Header(uiState, Modifier.fillMaxWidth())
+                    SmallHeader(
+                        title = uiState.info.title.orEmpty(),
+                        subtitle = uiState.info.artist.orEmpty(),
+                        additionalInfo = uiState.info.audioHeaderInfo?.let { it ->
+                            if (it.lossless) {
+                                "${it.format} • Loss-Less"
+                            } else {
+                                it.format.orEmpty()
+                            }
+                        },
+                        imageModel = song,
+                        showIndeterminateIndicator = uiState.isLoading,
+                        modifier = Modifier.fillMaxWidth()
+                    )
 
                     // Related actions
                     Row(
@@ -171,7 +180,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(Modifier.width(8.dp))
-                            Text(stringResource(R.string.open_lyrics_editor))
+                            Text(stringResource(R.string.action_lyrics_editor))
                         }
 
                         Button(
@@ -206,61 +215,6 @@ class SongDetailFragment : BottomSheetDialogFragment() {
 
                     Spacer(Modifier.height(16.dp))
                 }
-            }
-        }
-    }
-
-    @Composable
-    private fun Header(uiState: SongInfoUiState, modifier: Modifier = Modifier) {
-        Row(
-            modifier = modifier,
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            AsyncImage(
-                model = song,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(16.dp))
-                    .size(96.dp)
-            )
-
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = uiState.info.title.orEmpty(),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                Text(
-                    text = uiState.info.artist.orEmpty(),
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                uiState.info.audioHeaderInfo?.let { it ->
-                    Spacer(Modifier.heightIn(2.dp))
-                    ShapedText(
-                        text = if (it.lossless) {
-                            "${it.format} • Loss-Less"
-                        } else {
-                            it.format.orEmpty()
-                        },
-                        style = MaterialTheme.typography.bodySmall,
-                        shape = RoundedCornerShape(4.dp)
-                    )
-                }
-            }
-
-            AnimatedVisibility(
-                visible = uiState.isLoading,
-                modifier = Modifier.padding(start = 8.dp)
-            ) {
-                CircularProgressIndicator(Modifier.size(24.dp))
             }
         }
     }

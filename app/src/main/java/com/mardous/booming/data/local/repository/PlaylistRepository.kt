@@ -42,7 +42,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 interface PlaylistRepository {
-    fun getSongs(playListId: Long): LiveData<List<SongEntity>>
     fun devicePlaylists(): List<Playlist>
     fun devicePlaylist(playlistId: Long): Playlist
     fun devicePlaylistSongs(playlistId: Long): List<Song>
@@ -53,24 +52,27 @@ interface PlaylistRepository {
     suspend fun playlistsWithSongs(sorted: Boolean = false): List<PlaylistWithSongs>
     suspend fun playlistWithSongs(playlistId: Long): PlaylistWithSongs
     fun playlistWithSongsObservable(playlistId: Long): LiveData<PlaylistWithSongs>
+    suspend fun playlistSongs(playlistId: Long): List<SongEntity>
+    fun playlistSongsObservable(playListId: Long): LiveData<List<SongEntity>>
     suspend fun searchPlaylists(searchQuery: String): List<PlaylistWithSongs>
     suspend fun searchPlaylistSongs(playlistId: Long, searchQuery: String): List<SongEntity>
     suspend fun insertSongs(songs: List<SongEntity>)
-    suspend fun deletePlaylistEntities(playlistEntities: List<PlaylistEntity>)
     suspend fun renamePlaylistEntity(playlistId: Long, name: String)
     suspend fun updatePlaylist(playlist: PlaylistEntity)
-    suspend fun deleteSongsInPlaylist(songs: List<SongEntity>)
-    suspend fun deletePlaylistSongs(playlists: List<PlaylistEntity>)
     suspend fun favoritePlaylist(): PlaylistEntity
     suspend fun checkFavoritePlaylist(): PlaylistEntity?
     suspend fun favoriteSongs(): List<Song>
     fun favoriteSongsFlow(): Flow<List<Song>>
     suspend fun toggleFavorite(song: Song): Boolean
-    suspend fun isSongFavorite(songEntity: SongEntity): List<SongEntity>
     suspend fun isSongFavorite(songId: Long): Boolean
+    suspend fun findSongsInFavorites(songs: List<Song>): List<SongEntity>
+    suspend fun findSongInPlaylist(playlistId: Long, song: Song): SongEntity?
+    suspend fun findSongsInPlaylist(playlistId: Long, songs: List<Song>): List<SongEntity>
     suspend fun removeSongFromPlaylist(songEntity: SongEntity)
     suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song): Boolean
+    suspend fun deletePlaylists(playlists: List<PlaylistEntity>)
     suspend fun deleteSongFromAllPlaylists(songId: Long)
+    suspend fun deleteSongsFromPlaylist(songs: List<SongEntity>)
     suspend fun deleteSongsFromAllPlaylists(songsIds: List<Long>)
 }
 
@@ -79,9 +81,6 @@ class RealPlaylistRepository(
     private val songRepository: SongRepository,
     private val playlistDao: PlaylistDao
 ) : PlaylistRepository {
-
-    override fun getSongs(playListId: Long): LiveData<List<SongEntity>> =
-        playlistDao.songsFromPlaylist(playListId)
 
     override fun devicePlaylists(): List<Playlist> {
         return makePlaylistCursor().use {
@@ -131,6 +130,12 @@ class RealPlaylistRepository(
     override fun playlistWithSongsObservable(playlistId: Long): LiveData<PlaylistWithSongs> =
         playlistDao.playlistWithSongsObservable(playlistId).map { result -> result ?: PlaylistWithSongs.Empty }
 
+    override suspend fun playlistSongs(playlistId: Long): List<SongEntity> =
+        playlistDao.songsFromPlaylist(playlistId)
+
+    override fun playlistSongsObservable(playListId: Long): LiveData<List<SongEntity>> =
+        playlistDao.songsFromPlaylistObservable(playListId)
+
     override suspend fun searchPlaylists(searchQuery: String): List<PlaylistWithSongs> =
         playlistDao.searchPlaylists("%$searchQuery%")
 
@@ -141,25 +146,11 @@ class RealPlaylistRepository(
         playlistDao.insertSongsToPlaylist(songs)
     }
 
-    override suspend fun deletePlaylistEntities(playlistEntities: List<PlaylistEntity>) =
-        playlistDao.deletePlaylists(playlistEntities)
-
     override suspend fun renamePlaylistEntity(playlistId: Long, name: String) =
         playlistDao.renamePlaylist(playlistId, name)
 
     override suspend fun updatePlaylist(playlist: PlaylistEntity) =
         playlistDao.updatePlaylist(playlist)
-
-    override suspend fun deleteSongsInPlaylist(songs: List<SongEntity>) {
-        songs.forEach {
-            playlistDao.deleteSongFromPlaylist(it.playlistCreatorId, it.id)
-        }
-    }
-
-    override suspend fun deletePlaylistSongs(playlists: List<PlaylistEntity>) =
-        playlists.forEach {
-            playlistDao.deletePlaylistSongs(it.playListId)
-        }
 
     override suspend fun favoritePlaylist(): PlaylistEntity {
         val favorite = context.getString(R.string.favorites_label)
@@ -195,8 +186,8 @@ class RealPlaylistRepository(
     override suspend fun toggleFavorite(song: Song): Boolean {
         val playlist = favoritePlaylist()
         val songEntity = song.toSongEntity(playlist.playListId)
-        val isFavorite = isSongFavorite(songEntity).isNotEmpty()
-        return if (isFavorite) {
+        val favoriteSong = findSongInPlaylist(playlist.playListId, song)
+        return if (favoriteSong != null) {
             removeSongFromPlaylist(songEntity)
             false
         } else {
@@ -205,28 +196,70 @@ class RealPlaylistRepository(
         }
     }
 
-    override suspend fun isSongFavorite(songEntity: SongEntity): List<SongEntity> =
-        playlistDao.isSongExistsInPlaylist(
-            songEntity.playlistCreatorId,
-            songEntity.id
-        )
-
     override suspend fun isSongFavorite(songId: Long): Boolean {
-        return playlistDao.isSongExistsInPlaylist(
-            playlistDao.playlist(context.getString(R.string.favorites_label)).firstOrNull()?.playListId
-                ?: -1,
-            songId
-        ).isNotEmpty()
+        val favorites = playlistDao.playlist(context.getString(R.string.favorites_label)).firstOrNull()
+        if (favorites != null) {
+            return playlistDao.checkSongExistInPlaylist(favorites.playListId, songId)
+        }
+        return false
+    }
+
+    override suspend fun findSongsInFavorites(songs: List<Song>): List<SongEntity> {
+        val favorites = playlistDao.playlist(context.getString(R.string.favorites_label)).firstOrNull()
+        if (favorites != null) {
+            return buildList {
+                songs.map { it.id }
+                    .chunked(MAX_ITEMS_PER_CHUNK)
+                    .forEach { chunkIds ->
+                        addAll(playlistDao.findSongsInPlaylist(favorites.playListId, chunkIds))
+                    }
+            }
+        }
+        return emptyList()
+    }
+
+    override suspend fun findSongInPlaylist(playlistId: Long, song: Song) =
+        playlistDao.findSongInPlaylist(playlistId, song.id)
+
+    override suspend fun findSongsInPlaylist(playlistId: Long, songs: List<Song>): List<SongEntity> {
+        if (songs.isEmpty()) return emptyList()
+        return buildList {
+            songs.map { it.id }
+                .chunked(MAX_ITEMS_PER_CHUNK)
+                .forEach { chunkIds ->
+                    addAll(playlistDao.findSongsInPlaylist(playlistId, chunkIds))
+                }
+        }
     }
 
     override suspend fun removeSongFromPlaylist(songEntity: SongEntity) =
-        playlistDao.deleteSongFromPlaylist(songEntity.playlistCreatorId, songEntity.id)
+        playlistDao.deleteSongsFromPlaylist(songEntity.playlistCreatorId, listOf(songEntity.id))
 
     override suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song): Boolean =
         playlistDao.checkSongExistInPlaylist(playlistEntity.playListId, song.id)
 
+    override suspend fun deletePlaylists(playlists: List<PlaylistEntity>) {
+        playlists.map { it.playListId }
+            .chunked(MAX_ITEMS_PER_CHUNK)
+            .forEach { chunkPlaylistIds ->
+                playlistDao.removeSongsAndDeletePlaylists(chunkPlaylistIds)
+            }
+    }
+
     override suspend fun deleteSongFromAllPlaylists(songId: Long) {
-        playlistDao.deleteSongFromAllPlaylists(songId)
+        playlistDao.deleteSongsFromAllPlaylists(listOf(songId))
+    }
+
+    override suspend fun deleteSongsFromPlaylist(songs: List<SongEntity>) {
+        songs.groupBy { it.playlistCreatorId }
+            .forEach { group ->
+                group.value
+                    .map { it.id }
+                    .chunked(MAX_ITEMS_PER_CHUNK)
+                    .forEach {
+                        playlistDao.deleteSongsFromPlaylist(group.key, it)
+                    }
+            }
     }
 
     override suspend fun deleteSongsFromAllPlaylists(songsIds: List<Long>) {

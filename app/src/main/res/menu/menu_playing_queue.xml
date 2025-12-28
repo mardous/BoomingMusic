@@ -1,4 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_remove_from_playing_queue"
+        android:title="@string/action_remove_from_playing_queue"
+        android:icon="@drawable/ic_remove_24dp"/>
+    <item
+        android:id="@+id/action_stop_after_track"
+        android:title="@string/sleep_timer_stop_after_this_track"
+        android:icon="@drawable/ic_stop_24dp"/>
+    <item
+        android:id="@+id/action_lock"
+        android:title="@string/action_toggle_queue_lock"
+        android:icon="@drawable/ic_lock_open_24dp"/>
 	<item
 		android:id="@+id/action_save_playing_queue"
 		android:title="@string/save_queue"
@@ -7,8 +19,4 @@
         android:id="@+id/action_clear_playing_queue"
         android:title="@string/clear_queue"
 		android:icon="@drawable/ic_clear_24dp"/>
-	<item
-		android:id="@+id/action_lock"
-		android:title="@string/action_toggle_queue_lock"
-		android:icon="@drawable/ic_lock_open_24dp"/>
 </menu>

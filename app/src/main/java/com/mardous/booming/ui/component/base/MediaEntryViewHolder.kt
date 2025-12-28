@@ -31,7 +31,6 @@ open class MediaEntryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVi
     View.OnClickListener, OnLongClickListener {
 
     val imageContainer: View? = itemView.findViewById(R.id.image_container)
-    val imageGradient: View? = itemView.findViewById(R.id.image_gradient)
     val image: ImageView? = itemView.findViewById(R.id.image)
     val menu: MaterialButton? = itemView.findViewById(R.id.menu)
     val play: MaterialButton? = itemView.findViewById(R.id.play)

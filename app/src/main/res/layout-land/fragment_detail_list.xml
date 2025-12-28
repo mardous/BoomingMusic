@@ -144,12 +144,12 @@
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/progressIndicator"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:indeterminate="true"
-            app:trackCornerRadius="16dp" />
+            android:indeterminate="true" />
 
     </FrameLayout>
 
