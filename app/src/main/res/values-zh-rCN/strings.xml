@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[将<b>%1$s</b>从播放列表中移除吗？]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[从播放列表中移除 <b>%1$d</b> 首歌曲？]]></string>
     <string name="playlist_empty_text">空的播放列表</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">标签编辑器</string>
     <string name="saving_changes">正在保存更改</string>
     <string name="changes_saved_successfully">更改已成功保存。</string>
@@ -710,6 +711,24 @@
     <string name="mp3_index_seeking_summary">将整个MP3文件加载到内存中，以便跳转而不是依赖Xing 头部信息。
         只在跳转部分VBR文件失败时使用。
         需要重启应用程序。</string>
+    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
+    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
+    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
+    <string name="on_song_click_title">When selecting a song</string>
+    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
+    <string name="on_song_click_play_whole_list_title">Play whole list</string>
+    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
+    <string name="on_song_click_queue_next_title">Queue next</string>
+    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">自动下载元数据</string>
     <string name="ignore_media_store_album_covers_title">忽略MediaStore提供的封面</string>

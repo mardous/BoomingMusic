@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Supprimer le titre <b>%1$s</b> de la playlist ?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Supprimer <b>%1$d</b> titres de la playlist ?]]></string>
     <string name="playlist_empty_text">Playlist vide</string>
+    <string name="action_lyrics_editor">Éditeur de paroles</string>
     <string name="action_tag_editor">Éditeur d\'informations</string>
     <string name="saving_changes">Sauvegarde des modifications</string>
     <string name="changes_saved_successfully">Les modifications ont été enregistrées avec succès.</string>
@@ -720,6 +721,24 @@
     <string name="mp3_index_seeking_summary">Charge le fichier MP3 dans la mémoire pour l\'indexer a la place d\'utiliser l\'entêté Xing.
         À utiliser uniquement si l\'index échoue sur les fichiers VBR.
         Nécessite le redémarrage de l\'application.</string>
+    <string name="play_option_always_visible_title">Garder l\'option « Lecture » visible</string>
+    <string name="play_option_always_visible_summary">Si cette option est activée, l\'option « Lecture » ​​apparaîtra toujours dans le menu d\'un titre, quels que soient les paramètres de comportement au toucher.</string>
+    <string name="play_option_whole_list_title">L\'option « Lecture » permet de lire toute la liste</string>
+    <string name="play_option_whole_list_summary">Si cette option est activée, sélectionner « Lecture » dans le menu d\'un morceau lancera la lecture de toute la playlist. Si elle est désactivée, seul le morceau sélectionné sera lu.</string>
+    <string name="on_song_click_title">Lors du choix d\'un titre</string>
+    <string name="on_song_click_play_only_this_song_title">Jouez uniquement ce titre</string>
+    <string name="on_song_click_play_only_this_song_summary">La file d\'attente actuelle sera effacée et remplacée par le titre sélectionné.</string>
+    <string name="on_song_click_play_whole_list_title">Lire la liste complète</string>
+    <string name="on_song_click_play_whole_list_summary">La file d\'attente actuelle sera remplacée par tous les titres de la liste/de l\'album/du dossier.</string>
+    <string name="on_song_click_queue_next_title">File d\'attente suivante</string>
+    <string name="on_song_click_queue_next_summary">Le morceau sélectionné sera ajouté à la position suivante dans la file d\'attente.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enfile à la fin</string>
+    <string name="on_song_click_enqueue_at_end_summary">Le morceau sélectionné sera ajouté à la fin de la file d\'attente actuelle.</string>
+    <string name="on_clear_queue_title">Lors du nettoyage de la file d\'attente</string>
+    <string name="on_clear_queue_remove_all_songs_title">Supprimer tous les titres</string>
+    <string name="on_clear_queue_remove_all_songs_summary">La file d\'attente entière sera effacée.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Supprimer tous les titres sauf le titre actuel</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Seul le titre en cours de lecture restera dans la file d\'attente.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Télécharger automatiquement les métadonnées</string>
     <string name="ignore_media_store_album_covers_title">Ignorer les couvertures du Media Store</string>
