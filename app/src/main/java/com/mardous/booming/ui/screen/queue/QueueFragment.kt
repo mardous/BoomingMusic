@@ -105,7 +105,9 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentQueueBinding.bind(view)
-        binding.recyclerView.applyBottomWindowInsets()
+        binding.recyclerView.applyBottomWindowInsets(
+            addedSpace = Space.bottom(8.dp(view.context))
+        )
 
         playingQueueAdapter = PlayingQueueSongAdapter(
             activity = requireActivity(),
@@ -120,6 +122,7 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
 
         layoutManager = LinearLayoutManager(requireContext())
         popupMenu = newPopupMenu(binding.currentItem.menu, R.menu.menu_playing_queue)
+        popupMenu!!.setForceShowIcon(true)
         popupMenu!!.setOnMenuItemClickListener(this)
 
         binding.currentItem.dragView.setOnClickListener(this)
@@ -200,6 +203,23 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
     @SuppressLint("NotifyDataSetChanged")
     override fun onMenuItemClick(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_remove_from_playing_queue -> {
+                playerViewModel.removePosition(position.current)
+                true
+            }
+
+            R.id.action_stop_after_track -> {
+                playerViewModel.stopAt(position.current).observe(viewLifecycleOwner) { (title, canceled) ->
+                    title?.let {
+                        if (canceled)
+                            showToast(getString(R.string.sleep_timer_stop_after_x_canceled, it))
+                        else showToast(getString(R.string.sleep_timer_stop_after_x, it))
+                    }
+                }
+                true
+            }
+
+
             R.id.action_save_playing_queue -> {
                 CreatePlaylistDialog.create(playlist)
                     .show(childFragmentManager, "CREATE_PLAYLIST")

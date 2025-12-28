@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[¿Remover <b>%1$s</b> de la lista?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[¿Remover <b>%1$d</b> canciones de la lista?]]></string>
     <string name="playlist_empty_text">Lista de reproducción vacía</string>
+    <string name="action_lyrics_editor">Editor de letras</string>
     <string name="action_tag_editor">Editor de etiquetas</string>
     <string name="saving_changes">Guardando cambios</string>
     <string name="changes_saved_successfully">Cambios guardados con éxito.</string>
@@ -716,6 +717,24 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="pause_on_zero_volume_summary">Pausa la reproducción cuando el volumen baja a cero y la reanuda cuando el nivel de volumen se eleva. Funciona también fuera de la app.</string>
     <string name="mp3_index_seeking_title">Búsqueda de índice MP3</string>
     <string name="mp3_index_seeking_summary">Carga todo el archivo MP3 en memoria para la búsqueda en lugar de confiar en la cabecera Xing. Úsalo solo si la búsqueda falla para algunos archivos VBR. Requiere reiniciar la app.</string>
+    <string name="play_option_always_visible_title">Opción \"Reproducir\" siempre visible</string>
+    <string name="play_option_always_visible_summary">Si está activado, la opción \"Reproducir\" del menú de cada canción siempre será visible, sin importar el comportamiento establecido al seleccionar una canción.</string>
+    <string name="play_option_whole_list_title">La opción \"Reproducir\" inicia la lista completa</string>
+    <string name="play_option_whole_list_summary">Si está activado, la opción \"Reproducir\" del menú de una canción iniciará la reproducción de toda la lista. Si está desactivado, solo la canción elegida se reproducirá.</string>
+    <string name="on_song_click_title">Al seleccionar una canción</string>
+    <string name="on_song_click_play_only_this_song_title">Solo reproducir esa canción</string>
+    <string name="on_song_click_play_only_this_song_summary">La cola de reproducción será reemplazada por la canción seleccionada.</string>
+    <string name="on_song_click_play_whole_list_title">Reproducir toda la lista</string>
+    <string name="on_song_click_play_whole_list_summary">La cola de reproducción será reemplazada por todas las canciones de la lista/álbum/carpeta.</string>
+    <string name="on_song_click_queue_next_title">Añadir a continuación</string>
+    <string name="on_song_click_queue_next_summary">La canción seleccionada se añadirá a la siguiente posición en la cola.</string>
+    <string name="on_song_click_enqueue_at_end_title">Añadir al final</string>
+    <string name="on_song_click_enqueue_at_end_summary">La canción seleccionada se añadirá al final de la lista de reproducción en curso.</string>
+    <string name="on_clear_queue_title">Al limpiar la cola</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remover todas las canciones</string>
+    <string name="on_clear_queue_remove_all_songs_summary">Se limpiará la cola de reproducción completa.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remover todas las canciones excepto la actual</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Solo la canción actualmente en reproducción se mantendrá en la cola.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descargar metadatos automáticamente</string>
     <string name="ignore_media_store_album_covers_title">Ignorar las portadas del Almacén Multimedia</string>

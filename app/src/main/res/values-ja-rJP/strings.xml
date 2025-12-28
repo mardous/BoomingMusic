@@ -101,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[プレイリストから曲 <b>%1$s</b> を削除しますか？]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[プレイリストから <b>%1$d</b> 曲を削除しますか？]]></string>
     <string name="playlist_empty_text">空のプレイリスト</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">タグエディタ</string>
     <string name="saving_changes">変更を保存しています</string>
     <string name="changes_saved_successfully">変更は正常に保存されました。</string>
@@ -713,6 +714,24 @@
     <string name="mp3_index_seeking_summary">Xingヘッダーに依存せず、シークをするためにMP3ファイル全体をメモリに読み込みます。
         一部の可変ビットレート（VBR）ファイルでシークが失敗する場合にのみ使用してください。
         アプリの再起動が必要です。</string>
+    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
+    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
+    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
+    <string name="on_song_click_title">When selecting a song</string>
+    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
+    <string name="on_song_click_play_whole_list_title">Play whole list</string>
+    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
+    <string name="on_song_click_queue_next_title">Queue next</string>
+    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">メタデータの自動ダウンロード</string>
     <string name="ignore_media_store_album_covers_title">メディアストアのカバーを無視</string>
