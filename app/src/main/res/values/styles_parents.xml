@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Base.Theme.Booming" parent="Theme.Material3Expressive.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
@@ -216,7 +216,7 @@
 
     <style name="BottomSheetDialogTheme" parent="ThemeOverlay.Material3.BottomSheetDialog">
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:enforceNavigationBarContrast">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:ignore="NewApi">false</item>
         <item name="bottomSheetStyle">@style/ModalBottomSheetStyle</item>
     </style>
 
