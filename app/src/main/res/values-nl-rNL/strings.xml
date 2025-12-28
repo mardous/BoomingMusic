@@ -5,17 +5,16 @@
     <string name="action_shuffle_play">Shuffle afspelen</string>
     <string name="action_queue_next">Volgende wachtrij</string>
     <string name="shuffle_all_label">Alles shuffelen</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="shuffle_mode">Shuffle modus</string>
+    <string name="repeat_mode">Herhaal modus</string>
+    <string name="shuffle_button_tip">Tik voor normale shuffel. Lang indrukken voor geavanceerde opties.</string>
     <string name="action_play_pause">Afspelen/pauzeren</string>
     <string name="action_pause">Onderbreken</string>
     <string name="action_next">Volgende</string>
     <string name="action_previous">Vorige</string>
     <string name="action_cancel">Annuleren</string>
-    <string name="action_seek_backward">Seek backward</string>
-    <string name="action_seek_forward">Seek forward</string>
+    <string name="action_seek_backward">Achteruit zoeken</string>
+    <string name="action_seek_forward">Vooruit zoeken</string>
     <string name="action_cycle_repeat">Cyclus herhaalmodus</string>
     <string name="action_toggle_shuffle">Shuffle mode in-/uitschakelen</string>
     <string name="reset_action">Reset</string>
@@ -43,7 +42,7 @@
     <string name="currently_listening_to_x_by_x">Ik luister naar %1$s door %2$s</string>
     <string name="share_to_stories">Deel met verhalen</string>
     <string name="could_not_create_the_story">Kon het verhaal niet aanmaken.</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">Achterzijde</string>
     <string name="rename_action">Hernoem</string>
     <string name="add_action">Toevoegen</string>
     <string name="delete_action">Verwijderen</string>
@@ -53,9 +52,9 @@
     <string name="continue_action">Doorgaan</string>
     <string name="select_all_title">Alles selecteren</string>
     <string name="x_selected">%d geselecteerd</string>
-    <string name="preparing_playback_title">Preparing</string>
-    <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="preparing_playback_title">Voorbereiden</string>
+    <string name="restoring_playback_state">Afspeelstatus en wachtrij herstellen…</string>
+    <string name="playback_stopped_title">Afspelen gestopt</string>
     <string name="playing_notification_description">De afspeelmelding biedt acties voor afspelen/pauzeren etc.</string>
     <string name="playing_notification_name">Speelt melding</string>
     <string name="action_scan_directory">Map scannen</string>
@@ -72,7 +71,7 @@
     <string name="new_playlist_title">Nieuwe afspeellijst</string>
     <string name="add_playlist_title">Toevoegen aan afspeellijst</string>
     <string name="rename_playlist_title">Hernoem afspeellijst</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Afspeellijst bewerken</string>
     <string name="action_delete">Afspeellijst verwijderen</string>
     <string name="action_export_playlist">Exporteren naar bestand</string>
     <string name="action_clear_history">Geschiedenis verwijderen</string>
@@ -81,9 +80,9 @@
     <string name="create_a_playlist_with_one_song">Er wordt een afspeellijst gemaakt en er wordt één nummer aan toegevoegd.</string>
     <string name="create_a_playlist_with_x_songs">Er wordt een afspeellijst gemaakt en %d nummers worden automatisch toegevoegd.</string>
     <string name="playlist_name_empty">Naam afspeellijst</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Afspeellijst beschrijving (optioneel)</string>
     <string name="saved_playlist_x">Afspeellijst opgeslagen %s.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Afspeellijst bijgewerkt.</string>
     <string name="failed_to_save_playlist">Opslaan van afspeellijst mislukt.</string>
     <string name="saved_x_playlists">%1$d afspeellijsten opgeslagen.</string>
     <string name="saved_x_playlists_failed_to_save_x">%1$d afspeellijsten opgeslagen, opslaan mislukt %2$d.</string>
@@ -96,12 +95,13 @@
     <string name="inserted_one_song_into_playlist_x">Eén nummer toegevoegd aan afspeellijst %s.</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d nummers toegevoegd aan afspeellijst %2$s.</string>
     <string name="playlist_exists">Afspeellijst %s bestaat al.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">Afspeellijst %s succesvol gemaakt.</string>
     <string name="remove_song_from_playlist_title">Verwijder nummer uit afspeellijst</string>
     <string name="remove_songs_from_playlist_title">Verwijder nummers uit afspeellijst</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Verwijder het nummer <b>%1$s</b> uit de afspeellijst?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Verwijder <b>%1$d</b> liedjes uit de afspeellijst?]]></string>
     <string name="playlist_empty_text">Lege afspeellijst</string>
+    <string name="action_lyrics_editor">Songtekst bewerker</string>
     <string name="action_tag_editor">Label bewerker</string>
     <string name="saving_changes">Wijzigingen opslaan</string>
     <string name="changes_saved_successfully">Wijzigingen succesvol opgeslagen.</string>
@@ -127,7 +127,7 @@
     <string name="no_equalizer">Geen equalizer gevonden.</string>
     <string name="audio_focus_denied">Audiofocus geweigerd.</string>
     <string name="no_audio_ID">Slecht audio ID.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">Fout bij afspelen (%s).</string>
     <string name="unplayable_file">Kan dit nummer niet afspelen.</string>
     <string name="permission_external_storage_title">Toegang tot opslag</string>
     <string name="permission_external_storage_description">De app heeft toestemming nodig om toegang te krijgen tot je apparaatopslag om muziek te spelen</string>
@@ -135,10 +135,10 @@
     <string name="permission_bluetooth_title">Nabijgelegen apparaten</string>
     <string name="permission_bluetooth_description">De app heeft toestemming in de buurt nodig om te controleren op bluetooth apparaten</string>
     <string name="permission_bluetooth_denied">Machtiging in de buurt geweigerd.</string>
-    <string name="permission_read_images_title">Read images (optional)</string>
-    <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
-        If you don\'t plan to use this feature, you can choose not to grant it.</string>
-    <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
+    <string name="permission_read_images_title">Lees afbeeldingen (optioneel)</string>
+    <string name="permission_read_images_summary">Deze toestemming is vereist voor het vinden van albumhoezen in je muziekmappen.
+        Als u niet van plan bent om deze functie te gebruiken, kunt u ervoor kiezen deze niet toe te staan.</string>
+    <string name="permission_read_images_denied">Je moet toestemming geven om afbeeldingen van het apparaat te lezen.</string>
     <string name="permission_exact_alarms_title">Plan exacte alarmen (optioneel)</string>
     <string name="permission_exact_alarms_description">Toestemming om exacte alarmen in te stellen is vereist om de slaaptimer goed te laten werken</string>
     <string name="permission_ringtone_title">Beltoon (optioneel)</string>
@@ -158,8 +158,8 @@
     <string name="select_storage_title">Opslag selecteren</string>
     <string name="now_playing">Afspelende media</string>
     <string name="playing_queue_label">Wachtrij afspelen</string>
-    <string name="list_start">List start</string>
-    <string name="list_end">List end</string>
+    <string name="list_start">Lijst start</string>
+    <string name="list_end">Einde lijst</string>
     <string name="empty_play_queue">Lege afspeelwachtrij.</string>
     <string name="save_queue">Wachtrij opslaan</string>
     <string name="clear_queue">Wachtrij wissen</string>
@@ -171,7 +171,7 @@
     <string name="toggle_favorite">Toevoegen/Verwijderen uit favorieten</string>
     <string name="action_add_to_playlist">Toevoegen aan afspeellijst</string>
     <string name="action_remove_from_playlist">Verwijderen uit afspeellijst</string>
-    <string name="action_add_to_playing_queue">Add to queue</string>
+    <string name="action_add_to_playing_queue">Toevoegen aan wachtrij</string>
     <string name="action_remove_from_playing_queue">Verwijderen uit afspeelwachtrij</string>
     <string name="put_after_current_track">Zet achter het huidige nummer</string>
     <string name="undo_action">Herstel</string>
@@ -216,15 +216,15 @@
     <string name="top_tracks_label">Top Nummers</string>
     <string name="history_label">Geschiedenis</string>
     <string name="not_recently_played">Niet recent afgespeeld</string>
-    <string name="play_info">Speel info.</string>
+    <string name="play_info">Speel informatie af</string>
     <string name="track_play_counts">Nummer afspelen</string>
     <string name="song_stat_never_label">nooit gespeeld</string>
     <string name="song_stat_one_time_label">speelde één keer op %s</string>
     <string name="song_stat_label">%1$d keer afgespeeld, laatst op %2$s</string>
     <string name="horizontal_albums">Horizontale albums</string>
     <string name="ignore_singles">Negeer singles</string>
-    <string name="compact_song_view">Compact song view</string>
-    <string name="show_total_duration">Show total duration</string>
+    <string name="compact_song_view">Compacte nummerweergave</string>
+    <string name="show_total_duration">Toon totale duur</string>
     <string name="action_view_type">Bekijk type</string>
     <string name="view_type_normal">Normaal</string>
     <string name="view_type_card">Creditcard</string>
@@ -240,8 +240,8 @@
     <string name="sort_order_year">Jaar</string>
     <string name="sort_order_duration">Duur</string>
     <string name="sort_order_date_added">Datum toegevoegd</string>
-    <string name="sort_order_date_modified">Date modified</string>
-    <string name="sort_order_file_name">File name</string>
+    <string name="sort_order_date_modified">Datum gewijzigd</string>
+    <string name="sort_order_file_name">Bestandsnaam is vereist</string>
     <string name="sort_order_number_of_songs">Nummers aantal</string>
     <string name="sort_order_number_of_albums">Aantal albums</string>
     <string name="sort_order_last_played_date">Laatst afgespeelde datum</string>
@@ -260,9 +260,9 @@
     <string name="new_start_directory">Nieuwe beginmap: %s</string>
     <string name="action_scan">Scannen</string>
     <string name="scan_media">Media scannen</string>
-    <string name="scan_media_message">In most cases, Android automatically detects and indexes media files on your device, so manually scanning is usually unnecessary.</string>
-    <string name="scan_media_positive">Scan anyway</string>
-    <string name="scan_finished">Scan finished.</string>
+    <string name="scan_media_message">In de meeste gevallen detecteert Android mediabestanden en indexeert deze automatisch op je apparaat, dus handmatig scannen is meestal niet nodig.</string>
+    <string name="scan_media_positive">Toch scannen</string>
+    <string name="scan_finished">Scan voltooid.</string>
     <string name="album_or_artist_empty">De titel of artiest is leeg.</string>
     <string name="update_image">Afbeelding bijwerken</string>
     <string name="restore_default">Standaardwaarde herstellen</string>
@@ -287,12 +287,14 @@
     <string name="label_file_path">Bestand pad</string>
     <string name="size">Bestandsgrootte</string>
     <string name="label_file_format">Formatteren</string>
+    <string name="file_label">Bestand</string>
+    <string name="metadata_label">Metagegevens</string>
     <string name="title_and_artist">Titel en artiest</string>
     <string name="song">Nummer</string>
     <string name="title">Aanspreektitel</string>
     <string name="album">Album</string>
     <string name="artist">Kunstenaar</string>
-    <string name="album_artist">Album Artist</string>
+    <string name="album_artist">Album artiest</string>
     <string name="composer">Componist</string>
     <string name="conductor">Leider</string>
     <string name="publisher">Uitgever</string>
@@ -301,7 +303,7 @@
     <string name="release_years_label">Jaren</string>
     <string name="length">Lengte</string>
     <string name="label_last_modified">Laatst gewijzigd</string>
-    <string name="label_channels">Channels</string>
+    <string name="label_channels">Kanalen</string>
     <string name="label_variable_bitrate">Variabele bitrate</string>
     <string name="label_loss_less">Minder verlies</string>
     <string name="label_bit_rate">Bitsnelheid</string>
@@ -317,20 +319,11 @@
     <string name="disc_total">Totale schijven</string>
     <string name="lyrics">Songteksten</string>
     <string name="lyricist">Songtekst</string>
-    <string name="edit_tags_action">Labels bewerken</string>
-    <string name="edit_lyrics_action">Songtekst bewerken</string>
-    <string name="open_lyrics_editor">Open songteksten editor</string>
     <string name="could_not_load_the_song_information">"Kon de nummerinformatie niet laden."</string>
-    <string name="label_with_rg_info">Met RG info</string>
-    <string name="label_without_rg_info">Zonder RG info</string>
-    <string name="album_and_year">Album en jaar</string>
-    <string name="song_info">Nummer informatie.</string>
     <string name="no_results">Geen resultaten gevonden</string>
     <string name="connection_unavailable">Verbinding niet beschikbaar.</string>
     <string name="you_have_to_select_at_least_one_category">Je moet ten minste één categorie selecteren.</string>
     <string name="you_cannot_select_more_than_five_categories">U kunt niet meer dan vijf categorieën selecteren.</string>
-    <string name="auto_limited_listing_title">Beperkte aanbieding tijdens het rijden</string>
-    <string name="auto_limited_listing_subtitle">Open de app om de volledige lijst te zien</string>
     <string name="backup_settings">Instellingen</string>
     <string name="backup_synced_lyrics">Gesynchroniseerde songteksten</string>
     <string name="backup_artist_images">Artiest afbeeldingen</string>
@@ -340,12 +333,12 @@
     <string name="select_content_to_restore">Selecteer inhoud om te herstellen:</string>
     <string name="could_not_restore_data">Kan gegevens niet herstellen. Controleer het back-upbestand en probeer het opnieuw.</string>
     <string name="data_restored_successfully">Gegevens succesvol hersteld.</string>
-    <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
-    <string name="playlist_locked">Playlist locked</string>
-    <string name="playlist_unlocked">Playlist unlocked</string>
-    <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
+    <string name="action_toggle_playlist_lock">Afspeellijst vergrendelen/ontgrendelen</string>
+    <string name="playlist_locked">Afspeellijst vergrendeld</string>
+    <string name="playlist_unlocked">Afspeellijst ontgrendeld</string>
+    <string name="action_toggle_queue_lock">Vergrendel/ontgrendel wachtrij</string>
+    <string name="queue_locked">Wachtrij vergrendeld</string>
+    <string name="queue_unlocked">Wachtrij ontgrendeld</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Lijn</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -468,17 +461,17 @@
     <string name="tempo_label">Tijdelijk</string>
     <string name="action_external_eq">Externe EQ</string>
     <string name="custom">Aangepaste</string>
-    <string name="enable_audio_offload_title">Audio Offload</string>
-    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
-        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
-        A restart is required for changes to take effect.</string>
-    <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
-    <string name="skip_silence_title">Skip Silence</string>
-    <string name="skip_silence_description">Automatically skip silent sections during playback.
-        Ideal for podcasts and recordings.</string>
+    <string name="enable_audio_offload_title">Audio Uitladen</string>
+    <string name="enable_audio_offload_description">Hiermee kan het apparaat audio rechtstreeks verwerken via de hardware, CPU-verbruik verminderen en batterij besparen.
+        Deze functie wordt alleen op bepaalde apparaten ondersteund. Sommige effecten of functies werken mogelijk niet terwijl het is ingeschakeld.
+        Een herstart is vereist om wijzigingen toe te passen.</string>
+    <string name="enable_audio_float_output_title">Audio-uitvoer met hoge precisie</string>
+    <string name="enable_audio_float_output_description">Maakt 32-bit floating-point audio mogelijk voor een betere geluidskwaliteit.
+        Hou er rekening mee dat dit functies zoals ReplayGain uitschakelt, stilte overslaat en het volume overslaat.
+        Het kan een beetje meer batterij gebruiken, en je moet de app opnieuw opstarten om deze effectief te maken.</string>
+    <string name="skip_silence_title">Stilte overslaan</string>
+    <string name="skip_silence_description">Automatisch stille secties overslaan tijdens het afspelen.
+        Ideaal voor podcasts en opnamen.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Songtekst weergeven</string>
     <string name="action_hide_lyrics">Verberg songtekst</string>
@@ -486,7 +479,7 @@
     <string name="synced_lyrics">Gesynchroniseerd</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Gedownload</string>
-    <string name="external_file_lyrics">External file</string>
+    <string name="external_file_lyrics">Extern bestand</string>
     <string name="action_import_synchronized_lyrics">Importeer gesynchroniseerde songteksten</string>
     <string name="action_share_synchronized_lyrics">Deel gesynchroniseerde songteksten</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Wil je gesynchroniseerde LRC songteksten importeren voor <b>%s</b>?]]></string>
@@ -503,10 +496,10 @@
     <string name="no_synced_lyrics_found">Geen gesynchroniseerde songteksten gevonden</string>
     <string name="lyrics_were_updated_successfully">Songteksten zijn bijgewerkt.</string>
     <string name="failed_to_update_lyrics">Songtekst bijwerken mislukt.</string>
-    <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
-    <string name="font_imported_successfully">Font imported successfully.</string>
-    <string name="could_not_import_font">Could not import font.</string>
+    <string name="there_are_no_changes_to_save">Er zijn geen wijzigingen om op te slaan.</string>
+    <string name="lyrics_source_external_file">Songteksten komen van een extern bestand. Je kunt dit bestand niet rechtstreeks bewerken vanuit Booming Music.</string>
+    <string name="font_imported_successfully">Lettertype succesvol geïmporteerd.</string>
+    <string name="could_not_import_font">Kan lettertype niet importeren.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Slaaptimer</string>
     <string name="sleep_timer_cancel_current_timer">Annuleer huidige timer</string>
@@ -522,7 +515,7 @@
     <string name="app_shortcut_shuffle_all_short">Shuffle</string>
     <string name="app_shortcut_top_tracks_short">Top Nummers</string>
     <string name="app_shortcut_last_added_short">Laatst toegevoegd</string>
-    <string name="app_shortcut_favorites_short">Favorites</string>
+    <string name="app_shortcut_favorites_short">Favorieten</string>
     <!-- About page -->
     <string name="action_about">Informatie</string>
     <string name="application">Applicatie</string>
@@ -532,18 +525,18 @@
     <string name="licenses">Licenties</string>
     <string name="author">Auteur</string>
     <string name="mardous_summary">Lead Developer</string>
-    <string name="contributors">Contributors</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
-    <string name="translators_title">Translators</string>
-    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="contributors">Bijdragers</string>
+    <string name="acknowledgments_title">Bevestiging</string>
+    <string name="translators_title">Vertalers</string>
+    <string name="translators_summary">Dank aan degenen die Booming Music in veel talen beschikbaar maken.</string>
     <string name="beta_testers_title">Beta testers</string>
     <string name="telegram_chat">Telegram chat</string>
     <string name="telegram_chat_summary">Neem deel aan de chat in Telegram en ontvang informatie over nieuwe releases en nieuws.</string>
     <string name="view_profile_on_github">Bekijk profiel op GitHub</string>
     <string name="follow_on_telegram">DM op Telegram</string>
     <string name="write_an_email">Schrijf een email</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
+    <string name="buy_me_a_coffee">Koop een koffie voor me</string>
+    <string name="buy_me_a_coffee_summary">U kunt een kleine donatie doen als u denkt dat mijn werk het verdient.</string>
     <string name="support_development">Ondersteun ontwikkeling</string>
     <string name="help_with_translations">Help met vertalingen</string>
     <string name="help_with_translations_summary">Je kunt bijdragen aan het project door Booming Music naar andere talen te vertalen.</string>
@@ -570,8 +563,8 @@
     <string name="appearance_summary">Verander het thema van de app en andere visuele instellingen.</string>
     <string name="now_playing_title">Afspelende media</string>
     <string name="now_playing_summary">Het nu afgespeelde scherm aanpassen.</string>
-    <string name="lyrics_preferences_title">Lyrics</string>
-    <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
+    <string name="lyrics_preferences_title">Songteksten</string>
+    <string name="lyrics_preferences_summary">Pas lettertype, spaties en andere opties aan om je songtekst te personaliseren.</string>
     <string name="playback_title">Afspelen</string>
     <string name="playback_summary">Verander de geluidsinstellingen, Bluetooth-koptelefoons, enz.</string>
     <string name="metadata_title">Metagegevens</string>
@@ -591,19 +584,19 @@
     <string name="artist_image_header">Kunstenaar afbeelding</string>
     <string name="exclusion_header">Uitsluitingen</string>
     <string name="controls_header">Bedieningsknoppen</string>
-    <string name="gestures_header">Gestures</string>
+    <string name="gestures_header">Vingerbewegingen</string>
     <string name="headphones_header">Hoofdtelefoon</string>
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Audio focus</string>
     <string name="shuffle_mode_header">Shuffle modus</string>
     <string name="display_header">Weergeven</string>
     <string name="backup_restore_header">Back-up/herstellen</string>
-    <string name="visuals_header">Visuals</string>
+    <string name="visuals_header">Visuelen</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Algemeen thema</string>
     <string name="pure_black_theme_title">Puur Zwart</string>
     <string name="material_you_title">Materiaal u</string>
-    <string name="use_custom_font_title">Gebruik Manrope lettertype</string>
+    <string name="use_custom_font_title">Gebruik aangepast lettertype</string>
     <string name="appbar_mode_title">Koptekst stijl</string>
     <string name="library_categories_title">Bibliotheek categorieën</string>
     <string name="library_categories_summary">Configureer zichtbaarheid en volgorde van bibliotheek categorieën.</string>
@@ -611,72 +604,72 @@
     <string name="remember_last_page_summary">Ga naar de laatst geopende pagina bij het opstarten.</string>
     <string name="start_page_title">Start pagina</string>
     <string name="tab_mode_title">Tabblad titelmodus</string>
-    <string name="hold_tab_to_search_title">Hold tab to Search</string>
-    <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
-    <string name="larger_header_image_title">Larger header image</string>
-    <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
-    <string name="lyrics_center_current_line_title">Center current line</string>
-    <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
+    <string name="hold_tab_to_search_title">Tabblad vasthouden om te zoeken</string>
+    <string name="hold_tab_to_search_summary">Druk lang op elk tabblad in de navigatiebalk om het zoekscherm te openen.</string>
+    <string name="larger_header_image_title">Grotere header afbeelding</string>
+    <string name="larger_header_image_summary">Toon een grotere omslagafbeelding in album, artiest en afspeellijst details.</string>
+    <string name="lyrics_center_current_line_title">Huidige lijn centreren</string>
+    <string name="lyrics_center_current_line_summary">Houd de huidige lyrische lijn gecentreerd op het scherm in plaats van uitgelijnd aan de bovenkant.</string>
     <string name="lyrics_custom_font_title">Custom font</string>
-    <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
-    <string name="lyrics_import_custom_font_title">Import custom font</string>
-    <string name="lyrics_syllable_mode_title">Word-by-word lyrics</string>
-    <string name="lyrics_syllable_mode_summary">Allows displaying lyrics with word-by-word synchronization. Depends on the availability of the lyrics and a compatible format such as LRC or TTML.</string>
-    <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
-    <string name="lyrics_background_effect_title">Background effect</string>
-    <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
-    <string name="lyrics_blur_effect_title">Blur effect</string>
-    <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
-    <string name="lyrics_shadow_effect_title">Shadow effect</string>
-    <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
-    <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
-    <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
-    <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
-    <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
-    <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
-    <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
-    <string name="lyrics_line_spacing_title">Line spacing</string>
-    <string name="lyrics_line_spacing_summary">Adjust the space between lyric lines.</string>
-    <string name="synced_font_size_player_title">Synced lyrics font size (player)</string>
-    <string name="synced_font_size_player_summary">Adjust the font size for synced lyrics shown over the album cover in the player screen.</string>
-    <string name="unsynced_font_size_player_title">Unsynced lyrics font size (player)</string>
-    <string name="unsynced_font_size_player_summary">Adjust the font size for unsynced lyrics shown over the album cover in the player screen.</string>
-    <string name="synced_font_size_full_title">Synced lyrics font size (full view)</string>
-    <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
-    <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
-    <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
-    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="lyrics_custom_font_summary">Importeer en gebruik je eigen lettertype voor songteksten.</string>
+    <string name="lyrics_import_custom_font_title">Importeer aangepast lettertype</string>
+    <string name="lyrics_syllable_mode_title">Word-voor-woord songteksten</string>
+    <string name="lyrics_syllable_mode_summary">Staat het weergeven van songteksten toe met word-voor-woord synchronisatie. Afhankelijk van de beschikbaarheid van songteksten en een compatibel formaat zoals LRC of TTML.</string>
+    <string name="lyrics_effects_note">Geavanceerde effecten verbeteren de visuele ervaring, maar vereisen mogelijk meer systeembronnen en batterij.</string>
+    <string name="lyrics_background_effect_title">Achtergrond effect</string>
+    <string name="lyrics_background_gradient">Kleurovergang</string>
+    <string name="lyrics_background_canvas">Canvas (indien beschikbaar)</string>
+    <string name="lyrics_blur_effect_title">Vervaag effect</string>
+    <string name="lyrics_blur_effect_summary">Vervaag de songtekst lijnen naast de huidige.</string>
+    <string name="lyrics_shadow_effect_title">Schaduw effect</string>
+    <string name="lyrics_shadow_effect_summary">Voegt een schaduw onder de huidige lijn toe om de leesbaarheid te verbeteren.</string>
+    <string name="lyrics_progressive_coloring_title">Progressieve songtekst kleur</string>
+    <string name="lyrics_progressive_coloring_summary">Animeer actieve lijnen met een geleidelijke kleur transitie in plaats van ze direct te kleuren.</string>
+    <string name="lyrics_bold_synced_title">Lettertype vetgedrukt voor gesynchroniseerde songteksten</string>
+    <string name="lyrics_bold_synced_summary">Toon gesynchroniseerde songteksten in vetgedrukt lettertje.</string>
+    <string name="lyrics_bold_unsynced_title">Vetgedrukt lettertype voor normale songteksten</string>
+    <string name="lyrics_bold_unsynced_summary">Toon niet-gesynchroniseerde songteksten in vetgedrukt lettertje.</string>
+    <string name="lyrics_line_spacing_title">Lijn afstand</string>
+    <string name="lyrics_line_spacing_summary">Pas de ruimte aan tussen lyrische lijnen.</string>
+    <string name="synced_font_size_player_title">Gesynchroniseerde songtekst lettergrootte (speler)</string>
+    <string name="synced_font_size_player_summary">Pas de lettergrootte aan voor gesynchroniseerde songteksten die getoond worden over de albumhoes op het spelersscherm.</string>
+    <string name="unsynced_font_size_player_title">Ongesynchroniseerde songtekst lettergrootte (speler)</string>
+    <string name="unsynced_font_size_player_summary">Pas de lettergrootte aan voor niet gesynchroniseerde songteksten die getoond worden over de albumhoes op het spelersscherm.</string>
+    <string name="synced_font_size_full_title">Synchroniseerde songtekst lettergrootte (volledige weergave)</string>
+    <string name="synced_font_size_full_summary">Pas de lettergrootte voor gesynchroniseerde songteksten aan in het volledige songtekstscherm.</string>
+    <string name="unsynced_font_size_full_title">Ongesynchroniseerde songtekst lettergrootte (volledige weergave)</string>
+    <string name="unsynced_font_size_full_summary">Pas de lettergrootte aan voor niet-gesynchroniseerde songteksten in het volledige songteksten scherm.</string>
+    <string name="instrumental_tracks_identifiers_title">Instrumentaal track-id\'s</string>
+    <string name="instrumental_tracks_identifiers_summary">Als de songtekst van een nummer slechts
+        één of meer van deze indicatoren bevat, zal het worden gemarkeerd als een instrumentaal nummer (gescheiden door komma).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Markeren op titel</string>
+    <string name="instrumental_tracks_mark_by_title_summary">De titel van het spoor zal ook in aanmerking worden genomen bij het zoeken naar ID\'s.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stijl</string>
     <string name="open_on_play_title">Openen bij afspelen</string>
     <string name="open_on_play_summary">Uitvouwen van het Nu Afspelen paneel automatisch nadat u een nummer heeft afgespeeld.</string>
-    <string name="squiggly_seek_bar_title">Squiggly seek bar</string>
-    <string name="squiggly_seek_bar_summary">Enable a wavy seek bar instead of the default slider.</string>
-    <string name="scrolling_text_title">Enable scrolling text</string>
-    <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
+    <string name="squiggly_seek_bar_title">Kronkelige zoekbalk</string>
+    <string name="squiggly_seek_bar_summary">Schakel een golven zoekbalk in in plaats van de standaard schuifregelaar.</string>
+    <string name="scrolling_text_title">Scrollende tekst inschakelen</string>
+    <string name="scrolling_text_summary">Scrolt liedjes wanneer ze te lang zijn om te passen. Kan iets meer batterij gebruiken.</string>
     <string name="extra_controls_title">Extra controles</string>
     <string name="extra_controls_summary">Extra besturingselementen voor minispeler toevoegen</string>
-    <string name="adaptive_controls_title">Adaptive controls</string>
-    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
-    <string name="swipe_to_dismiss_title">Swipe down to dismiss</string>
-    <string name="swipe_to_dismiss_summary">Swipe down on the mini player to stop playback and clear the playing queue.</string>
+    <string name="adaptive_controls_title">Adaptieve controles</string>
+    <string name="adaptive_controls_summary">De besturingselementen op de verandering van de mini speler in overeenstemming met de huidige spelerstijl.</string>
+    <string name="swipe_to_dismiss_title">Veeg omlaag om te sluiten</string>
+    <string name="swipe_to_dismiss_summary">Swipe naar beneden over de mini speler om het afspelen te stoppen en de afspeelwachtrij te wissen.</string>
     <string name="circle_button_title">Circulaire afspeelknop</string>
-    <string name="swipe_album_cover_title">Swipe on album cover</string>
-    <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
-    <string name="single_tap_on_album_cover_title">Single tap on cover</string>
+    <string name="swipe_album_cover_title">Veeg over de albumhoes</string>
+    <string name="swipe_album_cover_summary">Veeg naar links of rechts over de albumhoes om tussen nummers over te slaan.</string>
+    <string name="queue_height_title">Half-scherm wachtrijhoogte</string>
+    <string name="queue_height_summary">Repareer de hoogte van de afspeelwachtrij naar de helft van het scherm.</string>
+    <string name="single_tap_on_album_cover_title">Enkele tik op cover</string>
     <string name="double_tap_on_album_cover_title">Dubbele tik op de afdekking</string>
-    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
-    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
+    <string name="double_tap_on_left_album_cover_title">Album-omslagrand links dubbeltikken</string>
+    <string name="double_tap_on_right_album_cover_title">Rechter album-cover rand dubbeltikken</string>
     <string name="long_press_on_album_cover_title">Lang drukken op omslag</string>
-    <string name="small_image_title">Small image</string>
-    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
+    <string name="small_image_title">Kleine afbeelding</string>
+    <string name="small_image_summary">Vermindert de omslaggrootte in ondersteunde stijlen.</string>
     <string name="now_playing_corner_radius_title">Hoekradius van afbeelding</string>
     <string name="now_playing_corner_radius_summary">Definieert hoe de hoeken van de albumcover moeten verschijnen.</string>
     <string name="carousel_effect_title">Carrousel effect</string>
@@ -685,15 +678,15 @@
     <string name="lyrics_on_album_cover_summary">Toon songteksten in plaats van cover wanneer ze beschikbaar zijn.</string>
     <string name="animate_controls_title">Animeer bediening</string>
     <string name="animate_controls_summary">Wordt gespeeld bij het openen van het spelerspaneel.</string>
-    <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
-    <string name="swipe_anywhere_summary">Swipe left or right on any empty area of the now playing screen to switch between songs.</string>
-    <string name="swipe_up_queue_title">Swipe upwards to open queue</string>
-    <string name="swipe_up_queue_summary">Swipe upwards on any empty area of the now playing screen to open the playing queue.</string>
+    <string name="swipe_anywhere_title">Veeg overal om het nummer te wijzigen</string>
+    <string name="swipe_anywhere_summary">Veeg naar links of rechts op een leeg gebied van het nu speelscherm om te wisselen tussen nummers.</string>
+    <string name="swipe_up_queue_title">Veeg omhoog om wachtrij te openen</string>
+    <string name="swipe_up_queue_summary">Veeg naar boven op een leeg gebied van het nu afgespeelde scherm om de afspeelwachtrij te openen.</string>
     <string name="display_album_name_title">Toon albumnaam</string>
     <string name="display_extra_info_title">Extra info weergeven</string>
     <string name="display_extra_info_summary">Extra info over het nummer weergeven, zoals bitrate, formaat, sampling rate, enz.</string>
-    <string name="display_next_song_title">Display next song</string>
-    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
+    <string name="display_next_song_title">Volgende nummer weergeven</string>
+    <string name="display_next_song_summary">Het volgende nummer in de wachtrij aan de onderkant van de speler weergeven.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Selecteer de extra info om weer te geven in het spelervenster.</string>
     <string name="prefer_remaining_time_title">Voorkeur resterende tijd</string>
@@ -711,8 +704,8 @@
     <string name="artist_shuffle_mode_title">Kunstenaar shuffle modus</string>
     <string name="rewind_with_back_title">"Terugspoelen met 'Vorige'"</string>
     <string name="rewind_with_back_summary">Terugspoelen het afgespeelde nummer naar het begin of ga naar het vorige nummer als het huidige in het begin is.</string>
-    <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
-    <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
+    <string name="rewind_fast_forward_amount_title">Hoeveelheid/snel doorsturen</string>
+    <string name="rewind_fast_forward_amount_summary">Tijd (in seconden) om terug te spoelen of snel vooruit met behulp van UI of externe besturingselementen.</string>
     <string name="resume_on_connect_title">Hervatten bij verbinden</string>
     <string name="resume_on_connect_summary">Hervat het afspelen als koptelefoon is aangesloten.</string>
     <string name="pause_on_disconnect_title">Pauzeer bij verbreken verbinding</string>
@@ -723,12 +716,30 @@
     <string name="pause_on_bluetooth_disconnect_summary">Pauzeert afspelen wanneer Bluetooth A2DP headset is losgekoppeld. Aanbevolen.</string>
     <string name="ignore_audio_focus_title">Negeer audiofocus</string>
     <string name="ignore_audio_focus_summary">Altijd audio op de achtergrond afspelen ongeacht alles wat wordt afgespeeld.</string>
-    <string name="pause_on_zero_volume_title">Pause on zero volume</string>
-    <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
-    <string name="mp3_index_seeking_title">MP3 index seeking</string>
-    <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
-        Use only if seeking fails on some VBR files.
-        Requires app restart.</string>
+    <string name="pause_on_zero_volume_title">Pauzeer bij nul volume</string>
+    <string name="pause_on_zero_volume_summary">Pauzeert het nummer wanneer het volume afneemt tot nul en begint met afspelen als het volume level stijgt. Werkt ook buiten de app.</string>
+    <string name="mp3_index_seeking_title">MP3 index zoeken</string>
+    <string name="mp3_index_seeking_summary">Laad het hele MP3 bestand in het geheugen om te zoeken in plaats van te vertrouwen op de Xing header.
+        Gebruik alleen als het zoeken op sommige VBR-bestanden mislukt.
+        Vereist een herstart van de app.</string>
+    <string name="play_option_always_visible_title">Houd \"Afspelen\" optie zichtbaar</string>
+    <string name="play_option_always_visible_summary">Indien ingeschakeld, zal de \"Afspelen\" optie altijd in het nummermenu verschijnen, ongeacht de gedragsinstellingen bij tikken.</string>
+    <string name="play_option_whole_list_title">\"Afspelen\" optie speelt hele lijst af</string>
+    <string name="play_option_whole_list_summary">Indien ingeschakeld, zal het selecteren van \"Afspelen\" in het menu van een nummer het afspelen van de hele afspeellijst starten. Indien uitgeschakeld, wordt alleen het gekozen nummer afgespeeld.</string>
+    <string name="on_song_click_title">Bij het selecteren van een nummer</string>
+    <string name="on_song_click_play_only_this_song_title">Speel alleen dit nummer af</string>
+    <string name="on_song_click_play_only_this_song_summary">De huidige wachtrij wordt gewist en vervangen door het geselecteerde nummer.</string>
+    <string name="on_song_click_play_whole_list_title">Speel hele lijst af</string>
+    <string name="on_song_click_play_whole_list_summary">De huidige wachtrij zal worden vervangen door alle nummers uit de map list/album/map.</string>
+    <string name="on_song_click_queue_next_title">Volgende wachtrij</string>
+    <string name="on_song_click_queue_next_summary">Het geselecteerde nummer zal worden toegevoegd aan de volgende positie in de wachtrij.</string>
+    <string name="on_song_click_enqueue_at_end_title">Wachtrij aan het einde</string>
+    <string name="on_song_click_enqueue_at_end_summary">Het geselecteerde nummer zal worden toegevoegd aan het einde van de huidige wachtrij.</string>
+    <string name="on_clear_queue_title">Bij het wissen van de wachtrij</string>
+    <string name="on_clear_queue_remove_all_songs_title">Verwijder alle nummers</string>
+    <string name="on_clear_queue_remove_all_songs_summary">De hele afspeelwachtrij wordt gewist.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Verwijder alle nummers behalve huidige</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Alleen het huidige nummer blijft in de wachtrij.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Metadata automatisch downloaden</string>
     <string name="ignore_media_store_album_covers_title">Negeer Media Store covers</string>
@@ -737,15 +748,15 @@
     <string name="use_folder_album_cover_summary">Als het audiobestand geen ingebouwde omslag bevat. Afbeeldingen kunnen wat meer tijd kosten om te laden.</string>
     <string name="online_artist_images_title">Download artiesten afbeeldingen</string>
     <string name="online_artist_images_summary">Dit hangt af van uw metadata downloadbeleid.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
-    <string name="online_album_covers_title">Download missing album covers</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="preferred_image_size_title">Gewenste afbeeldingsgrootte</string>
+    <string name="online_album_covers_title">Ontbrekende albumhoes downloaden</string>
+    <string name="online_album_covers_summary">Gedownloade afbeeldingen zijn niet ingesloten in audiobestanden; ze zijn alleen zichtbaar binnen de app. Dit hangt af van je downloadbeleid voor metadata</string>
     <string name="delete_downloaded_lyrics_title">Verwijder gedownloade songteksten</string>
     <string name="delete_downloaded_lyrics_summary">Alleen songteksten gedownload door Booming Music. Heeft geen invloed op songteksten die zijn ingebed in ID3v2 tags of LRC bestanden.</string>
     <string name="lyrics_cleared">Songteksten gewist.</string>
     <!-- Library preferences -->
-    <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
-    <string name="ignore_articles_when_sorting_summary">Skip leading articles (“the”, “a”, “an”) when ordering items.</string>
+    <string name="ignore_articles_when_sorting_title">Negeer artikelen bij het sorteren</string>
+    <string name="ignore_articles_when_sorting_summary">Sla toonaangevende artikelen over (“de”, “a”, “an”) bij het bestellen van items.</string>
     <string name="trash_music_title">Naar prullenbak verzenden</string>
     <string name="trash_music_summary">Verzend verwijderde bestanden naar de prullenbak.</string>
     <string name="recursive_folder_actions_title">Acties die submappen beïnvloeden</string>
@@ -770,12 +781,12 @@
     <string name="backup_app_data_summary">Maak een bestand met essentiële app-gegevens en sla het op in externe opslag.</string>
     <string name="restore_backup_title">Back-up terugzetten</string>
     <string name="restore_backup_summary">Herstel app gegevens (en staat) van een vorige back-up.</string>
-    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
-    <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
-    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
-        or battery management may ignore this setting and always stop the app when removed from recents.</string>
-    <string name="rotation_lock_title">Rotation lock</string>
-    <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
+    <string name="stop_when_closed_from_recents_title">Stop bij sluiten van recente apps</string>
+    <string name="stop_when_closed_from_recents_summary">Afspelen stopt als de app is gesloten vanuit de lijst met recente programma\'s.</string>
+    <string name="stop_when_closed_from_recents_note">Opmerking: Sommige apparaten met agressief geheugen
+        of accubeheer kunnen deze instelling negeren en de app altijd stoppen wanneer deze uit recente apps wordt verwijderd.</string>
+    <string name="rotation_lock_title">Rotatie vergrendeling</string>
+    <string name="rotation_lock_summary">Vergrendel de oriëntatie van het apparaat. Handig in gevallen waarin muziek stopt bij roteren van het apparaat door bepaalde fabrikant beleid.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Licht</string>
     <string name="dark_theme_name">Donker</string>
@@ -790,7 +801,6 @@
     <string name="full_cover">Volledige omslag</string>
     <string name="gradient">Kleurovergang</string>
     <string name="peek">Piek</string>
-    <string name="peek2">Peek2</string>
     <string name="plain">Eenvoudig</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normaal</string>
@@ -832,9 +842,9 @@
     <string name="image_size_large">Groot (langzamer)</string>
     <string name="image_size_medium">Medium (standaard, aanbevolen)</string>
     <string name="image_size_small">Klein (sneller, lage kwaliteit)</string>
-    <string name="play_on_startup_mode_never">Never play on startup</string>
-    <string name="play_on_startup_mode_minimized">Yes, with minimized player panel</string>
-    <string name="play_on_startup_mode_expanded">Yes, with expanded player panel</string>
+    <string name="play_on_startup_mode_never">Nooit afspelen bij opstarten</string>
+    <string name="play_on_startup_mode_minimized">Ja, met geminimaliseerd speler paneel</string>
+    <string name="play_on_startup_mode_expanded">Ja, met uitgebreid speler paneel</string>
     <string name="system_default">Standaard systeeminstelling</string>
     <string name="label_never">Nooit</string>
     <string name="label_nothing">Geen</string>
@@ -848,7 +858,7 @@
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Gebruik Material You tinten op basis van album kleur</string>
     <!-- Update -->
-    <string name="auto_update_title">Auto update search</string>
+    <string name="auto_update_title">Zoeken automatisch bijwerken</string>
     <string name="every_day">Elke dag</string>
     <string name="weekly">Wekelijks</string>
     <string name="every_fifteen_days">Om de 15 dagen</string>
@@ -867,12 +877,12 @@
     <string name="more_info_action">Meer informatie.</string>
     <string name="download_action">Downloaden</string>
     <string name="downloading_update">Booming muziek update wordt gedownload.</string>
-    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash.
-        It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="uncaught_error_title">Oeps! Dat had niet moeten gebeuren!</string>
+    <string name="uncaught_error_message">Het lijkt erop dat er iets mis ging en de app crashte.
+        Het zou handig zijn als je ons het foutmelding zou kunnen sturen naar onze Telegram-groep of via e-mail.</string>
+    <string name="uncaught_error_report">Fout rapport</string>
+    <string name="uncaught_error_report_copied">Foutrapport gekopieerd naar klembord.</string>
     <string name="uncaught_error_restart_app">Herstart app</string>
-    <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_github">Open issue op GitHub</string>
+    <string name="uncaught_error_send">Rapport verzenden</string>
 </resources>

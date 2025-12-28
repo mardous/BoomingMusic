@@ -226,9 +226,9 @@
         <item name="colorSurface">@android:color/white</item>
     </style>
 
-    <style name="ManropeThemeOverlay">
-        <item name="fontFamily">@font/manrope</item>
-        <item name="android:fontFamily">@font/manrope</item>
+    <style name="CustomFontThemeOverlay">
+        <item name="fontFamily">@font/googlesansflex</item>
+        <item name="android:fontFamily">@font/googlesansflex</item>
     </style>
 
     <style name="CarTheme" parent="Theme.MaterialComponents.Light.NoActionBar">

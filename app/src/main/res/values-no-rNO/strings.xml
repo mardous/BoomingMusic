@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Bland alle</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Spill/Pause</string>
     <string name="action_pause">pause</string>
@@ -102,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Fjern sangen <b>%1$s</b> fra spillelisten?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Fjern <b>%1$d</b> sanger fra spillelisten?]]></string>
     <string name="playlist_empty_text">Tom spilleliste</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Tagg redaktør</string>
     <string name="saving_changes">Lagrer endringer</string>
     <string name="changes_saved_successfully">Endringer lagret.</string>
@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Topp sporing</string>
     <string name="history_label">Historikk</string>
     <string name="not_recently_played">Ikke nylig spilt</string>
-    <string name="play_info">Spill info.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Spor Spill Antall</string>
     <string name="song_stat_never_label">spilt aldri</string>
     <string name="song_stat_one_time_label">spilte en gang på %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Fil sti</string>
     <string name="size">Fil Størrelse</string>
     <string name="label_file_format">Formatér</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Tittel og artist</string>
     <string name="song">Sang</string>
     <string name="title">Tittel</string>
@@ -317,20 +319,11 @@
     <string name="disc_total">Totalt antall utkast</string>
     <string name="lyrics">Tekster</string>
     <string name="lyricist">Lyricist</string>
-    <string name="edit_tags_action">Rediger tagger</string>
-    <string name="edit_lyrics_action">Rediger sangtekst</string>
-    <string name="open_lyrics_editor">Åpne sangtekst editor</string>
     <string name="could_not_load_the_song_information">"Kunne ikke laste inn sanginformasjonen."</string>
-    <string name="label_with_rg_info">Med RG info</string>
-    <string name="label_without_rg_info">Uten RG info</string>
-    <string name="album_and_year">Album og år</string>
-    <string name="song_info">Sang info.</string>
     <string name="no_results">Ingen resultater</string>
     <string name="connection_unavailable">Utilgjengelig forbindelse</string>
     <string name="you_have_to_select_at_least_one_category">Du må velge minst en kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Du kan ikke velge mer enn fem kategorier.</string>
-    <string name="auto_limited_listing_title">Begrenset oppføring under kjøring</string>
-    <string name="auto_limited_listing_subtitle">Åpne appen for å se hele listen</string>
     <string name="backup_settings">Innstillinger</string>
     <string name="backup_synced_lyrics">Synkroniserte tekster</string>
     <string name="backup_artist_images">Artistens bilder</string>
@@ -603,7 +596,7 @@
     <string name="general_theme_title">Generelt tema</string>
     <string name="pure_black_theme_title">Ren svart</string>
     <string name="material_you_title">Materiale deg</string>
-    <string name="use_custom_font_title">Bruk Manrope skrift</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Topptekst stil</string>
     <string name="library_categories_title">Bibliotek kategorier</string>
     <string name="library_categories_summary">Konfigurer kategorier for synlighet og rekkefølge.</string>
@@ -729,6 +722,24 @@
     <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
         Use only if seeking fails on some VBR files.
         Requires app restart.</string>
+    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
+    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
+    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
+    <string name="on_song_click_title">When selecting a song</string>
+    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
+    <string name="on_song_click_play_whole_list_title">Play whole list</string>
+    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
+    <string name="on_song_click_queue_next_title">Queue next</string>
+    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Automatisk nedlasting metadata</string>
     <string name="ignore_media_store_album_covers_title">Ignorer Media Store dekke</string>
@@ -790,7 +801,6 @@
     <string name="full_cover">Full forside</string>
     <string name="gradient">Gradert</string>
     <string name="peek">Pekeppe</string>
-    <string name="peek2">Peek2</string>
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Vanlig</string>

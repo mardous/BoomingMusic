@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Amestecare toate</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Redare/pauză</string>
     <string name="action_pause">Întrerupeți</string>
@@ -102,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Eliminați melodia <b>%1$s</b> din lista de redare?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Eliminați <b>%1$d</b> melodii din lista de redare?]]></string>
     <string name="playlist_empty_text">Playlist gol</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Editor de etichete</string>
     <string name="saving_changes">Se salvează modificările</string>
     <string name="changes_saved_successfully">Modificari salvate cu succes.</string>
@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Piese de top</string>
     <string name="history_label">Istoric</string>
     <string name="not_recently_played">Nu am jucat recent</string>
-    <string name="play_info">Redă informații.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Urmăriți numărul de redare</string>
     <string name="song_stat_never_label">niciodată jucat</string>
     <string name="song_stat_one_time_label">a jucat o dată pe %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Calea fișierului</string>
     <string name="size">Dimensiune fişier</string>
     <string name="label_file_format">Format</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Titlu și Artist</string>
     <string name="song">Melodie</string>
     <string name="title">Titlu</string>
@@ -317,20 +319,11 @@
     <string name="disc_total">Total disc-uri</string>
     <string name="lyrics">Versuri</string>
     <string name="lyricist">Vertism</string>
-    <string name="edit_tags_action">Editare etichete</string>
-    <string name="edit_lyrics_action">Editare versuri</string>
-    <string name="open_lyrics_editor">Deschide editorul de versuri</string>
     <string name="could_not_load_the_song_information">"Nu s-au putut încărca informațiile melodiei."</string>
-    <string name="label_with_rg_info">Cu informații RG</string>
-    <string name="label_without_rg_info">Fără informații RG</string>
-    <string name="album_and_year">Album și an</string>
-    <string name="song_info">Informații melodie.</string>
     <string name="no_results">Niciun rezultat</string>
     <string name="connection_unavailable">Conexiune indisponibilă.</string>
     <string name="you_have_to_select_at_least_one_category">Trebuie să selectaţi cel puţin o categorie</string>
     <string name="you_cannot_select_more_than_five_categories">Nu puteți selecta mai mult de cinci categorii.</string>
-    <string name="auto_limited_listing_title">Listare limitată în timpul conducerii</string>
-    <string name="auto_limited_listing_subtitle">Deschideți aplicația pentru a vedea lista completă</string>
     <string name="backup_settings">Setări</string>
     <string name="backup_synced_lyrics">Versuri sincronizate</string>
     <string name="backup_artist_images">Imagini artist</string>
@@ -611,7 +604,7 @@
     <string name="general_theme_title">Temă generală</string>
     <string name="pure_black_theme_title">Negru pur</string>
     <string name="material_you_title">Materiale cu tine</string>
-    <string name="use_custom_font_title">Utilizează fontul Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Stil antet</string>
     <string name="library_categories_title">Categorii bibliotecă</string>
     <string name="library_categories_summary">Configurați vizibilitatea și ordinea categoriilor bibliotecii.</string>
@@ -737,6 +730,24 @@
     <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
         Use only if seeking fails on some VBR files.
         Requires app restart.</string>
+    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
+    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
+    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
+    <string name="on_song_click_title">When selecting a song</string>
+    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
+    <string name="on_song_click_play_whole_list_title">Play whole list</string>
+    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
+    <string name="on_song_click_queue_next_title">Queue next</string>
+    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descărcare automată metadate</string>
     <string name="ignore_media_store_album_covers_title">Ignoră copertele Media Store</string>
@@ -798,7 +809,6 @@
     <string name="full_cover">Copertă completă</string>
     <string name="gradient">Gradient</string>
     <string name="peek">Peptează</string>
-    <string name="peek2">Peek2</string>
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normală</string>

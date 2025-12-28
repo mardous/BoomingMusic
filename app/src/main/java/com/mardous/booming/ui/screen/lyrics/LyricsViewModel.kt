@@ -77,10 +77,6 @@ class LyricsViewModel(
         emit(lyricsRepository.allLyrics(song, allowDownload, fromEditor))
     }
 
-    fun getLyrics(song: Song) = liveData(Dispatchers.IO) {
-        emit(lyricsRepository.embeddedLyrics(song, requirePlainText = true))
-    }
-
     fun shareSyncedLyrics(song: Song) = liveData(Dispatchers.IO) {
         emit(lyricsRepository.shareSyncedLyrics(song))
     }

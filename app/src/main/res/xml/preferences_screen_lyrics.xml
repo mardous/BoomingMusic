@@ -195,6 +195,7 @@
             app:title="@string/instrumental_tracks_mark_by_title_title"
             app:summary="@string/instrumental_tracks_mark_by_title_summary"
             app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
             app:defaultValue="false"
             app:key="mark_instrumental_tracks_by_title"/>
 

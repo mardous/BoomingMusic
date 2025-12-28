@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Перемешать все</string>
     <string name="shuffle_mode">Режим перемешивания</string>
     <string name="repeat_mode">Режим повтора</string>
-    <string name="advanced_shuffle_label">Расширенное перемешивание</string>
     <string name="shuffle_button_tip">Нажмите для обычного перемешивания. Удерживайте для дополнительных настроек.</string>
     <string name="action_play_pause">Воспр./Пауза</string>
     <string name="action_pause">Пауза</string>
@@ -102,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Удалить песню &lt;b&gt;%1$s&lt;/b&gt; из плейлиста?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Удалить &lt;b&gt;%1$d&lt;/b&gt; песен из плейлиста?]]></string>
     <string name="playlist_empty_text">Пустой плейлист</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Редактор тегов</string>
     <string name="saving_changes">Сохранение изменений</string>
     <string name="changes_saved_successfully">Изменения успешно сохранены.</string>
@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Лучшие треки</string>
     <string name="history_label">История</string>
     <string name="not_recently_played">Недавние прослушивания</string>
-    <string name="play_info">Информация о воспроизведении.</string>
+    <string name="play_info">Информация о воспроизведении</string>
     <string name="track_play_counts">Количество воспроизведений трека</string>
     <string name="song_stat_never_label">никогда не проигрывалось</string>
     <string name="song_stat_one_time_label">проиграно один раз %s</string>
@@ -288,6 +288,8 @@
     <string name="label_file_path">Путь к файлу</string>
     <string name="size">Размер файла</string>
     <string name="label_file_format">Формат</string>
+    <string name="file_label">Файл</string>
+    <string name="metadata_label">Метаданные</string>
     <string name="title_and_artist">Заголовок и исполнитель</string>
     <string name="song">Песня</string>
     <string name="title">Название</string>
@@ -318,20 +320,11 @@
     <string name="disc_total">Всего дисков</string>
     <string name="lyrics">Текст песни</string>
     <string name="lyricist">Автор текста</string>
-    <string name="edit_tags_action">Редактировать теги</string>
-    <string name="edit_lyrics_action">Редактировать текст песни</string>
-    <string name="open_lyrics_editor">Открыть редактор текстов песен</string>
     <string name="could_not_load_the_song_information">"Не удалось загрузить информацию о песне."</string>
-    <string name="label_with_rg_info">С RG-информацией</string>
-    <string name="label_without_rg_info">Без RG-информации</string>
-    <string name="album_and_year">Альбом и год</string>
-    <string name="song_info">Информация о песне.</string>
     <string name="no_results">Нет результатов</string>
     <string name="connection_unavailable">Соединение недоступно.</string>
     <string name="you_have_to_select_at_least_one_category">Вы должны выбрать хотя бы одну категорию</string>
     <string name="you_cannot_select_more_than_five_categories">Вы не можете выбрать более пяти категорий.</string>
-    <string name="auto_limited_listing_title">Ограниченный список во время вождения</string>
-    <string name="auto_limited_listing_subtitle">Откройте приложение, чтобы увидеть полный список</string>
     <string name="backup_settings">Настройки</string>
     <string name="backup_synced_lyrics">Синхронизированные тексты песен</string>
     <string name="backup_artist_images">Изображения исполнителей</string>
@@ -616,12 +609,12 @@
     <string name="shuffle_mode_header">Режим перемешивания</string>
     <string name="display_header">Отображение</string>
     <string name="backup_restore_header">Резервное копирование/восстановление</string>
-    <string name="visuals_header">Visuals</string>
+    <string name="visuals_header">Визуальные эффекты</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Общая тема</string>
     <string name="pure_black_theme_title">Чистый черный</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Использовать шрифт Manrope</string>
+    <string name="use_custom_font_title">Использовать свой шрифт</string>
     <string name="appbar_mode_title">Стиль заголовка</string>
     <string name="library_categories_title">Категории библиотеки</string>
     <string name="library_categories_summary">Настройте видимость и порядок категорий библиотеки.</string>
@@ -641,9 +634,9 @@
     <string name="lyrics_syllable_mode_title">Пословная синхронизация</string>
     <string name="lyrics_syllable_mode_summary">Позволяет отображать текст с пословной синхронизацией. Зависит от наличия текста и совместимого формата (LRC или TTML).</string>
     <string name="lyrics_effects_note">Расширенные эффекты улучшают визуализацию, но могут потреблять больше ресурсов и заряда батареи.</string>
-    <string name="lyrics_background_effect_title">Background effect</string>
-    <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
+    <string name="lyrics_background_effect_title">Эффект фона</string>
+    <string name="lyrics_background_gradient">Градиент</string>
+    <string name="lyrics_background_canvas">Canvas (если доступно)</string>
     <string name="lyrics_blur_effect_title">Эффект размытия</string>
     <string name="lyrics_blur_effect_summary">Размывать строки текста, соседние с текущей</string>
     <string name="lyrics_shadow_effect_title">Эффект тени</string>
@@ -664,11 +657,11 @@
     <string name="synced_font_size_full_summary">Размер шрифта синхронизированного текста на отдельном экране текста.</string>
     <string name="unsynced_font_size_full_title">Размер обычного текста (полный экран)</string>
     <string name="unsynced_font_size_full_summary">Размер шрифта несинхронизированного текста на отдельном экране текста.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
-    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="instrumental_tracks_identifiers_title">Маркеры инструментальных треков</string>
+    <string name="instrumental_tracks_identifiers_summary">Если текст песни состоит только
+        из одного или нескольких таких индикаторов, трек будет помечен как инструментальный (перечисляются через запятую).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Определять по названию</string>
+    <string name="instrumental_tracks_mark_by_title_summary">Название трека также будет учитываться при поиске маркеров.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Стиль</string>
     <string name="open_on_play_title">Открывать при воспроизведении</string>
@@ -747,6 +740,24 @@
     <string name="mp3_index_seeking_summary">Загружает весь MP3-файл в память для перемотки вместо использования заголовка Xing.
         Включайте, только если перемотка не работает на VBR-файлах.
         Требуется перезапуск.</string>
+    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
+    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
+    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
+    <string name="on_song_click_title">When selecting a song</string>
+    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
+    <string name="on_song_click_play_whole_list_title">Play whole list</string>
+    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
+    <string name="on_song_click_queue_next_title">Queue next</string>
+    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Автоматически загружать метаданные</string>
     <string name="ignore_media_store_album_covers_title">Игнорировать обложки изMediaStore</string>
@@ -808,7 +819,6 @@
     <string name="full_cover">Полная обложка</string>
     <string name="gradient">Градиент</string>
     <string name="peek">Подсмотреть</string>
-    <string name="peek2">Peek2</string>
     <string name="plain">Простой</string>
     <string name="m3_style">M3</string>
     <string name="normal">Нормальный</string>

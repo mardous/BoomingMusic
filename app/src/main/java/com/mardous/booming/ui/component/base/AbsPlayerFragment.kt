@@ -68,7 +68,6 @@ import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.component.menu.newPopupMenu
 import com.mardous.booming.ui.component.menu.onSongMenu
-import com.mardous.booming.ui.dialogs.LyricsDialog
 import com.mardous.booming.ui.dialogs.SleepTimerDialog
 import com.mardous.booming.ui.dialogs.WebSearchDialog
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
@@ -78,6 +77,7 @@ import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.equalizer.EqualizerFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
+import com.mardous.booming.ui.screen.lyrics.LyricsFragment
 import com.mardous.booming.ui.screen.player.PlayerGesturesController
 import com.mardous.booming.ui.screen.player.PlayerGesturesController.GestureType
 import com.mardous.booming.ui.screen.player.PlayerViewModel
@@ -405,7 +405,11 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 if (coverFragment?.isAllowedToLoadLyrics == true) {
                     coverFragment?.toggleLyrics()
                 } else {
-                    LyricsDialog.create(currentSong).show(childFragmentManager, "LYRICS_DIALOG")
+                    if (currentFragment(R.id.fragment_container) is LyricsFragment) {
+                        (activity as? MainActivity)?.collapsePanel()
+                    } else {
+                        goToDestination(requireActivity(), R.id.nav_lyrics)
+                    }
                 }
                 true
             }

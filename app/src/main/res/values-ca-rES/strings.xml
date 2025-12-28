@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Barreja-ho tot</string>
     <string name="shuffle_mode">Mode aleatori</string>
     <string name="repeat_mode">Mode repetició</string>
-    <string name="advanced_shuffle_label">Barreja avançada</string>
     <string name="shuffle_button_tip">Clica per fer una barreja normal. Mantén premut per accedir a opcions avançades.</string>
     <string name="action_play_pause">Reprodueix/Pausa</string>
     <string name="action_pause">Pausa</string>
@@ -102,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Voleu treure la cançó «<b>%1$s</b>» de la llista?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Voleu treure <b>%1$d</b> cançons de la llista?]]></string>
     <string name="playlist_empty_text">Llista buida</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Editor d\'etiquetes</string>
     <string name="saving_changes">S\'estan desant els canvis</string>
     <string name="changes_saved_successfully">Els canvis s\'han desat correctament.</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Adreça del fitxer</string>
     <string name="size">Mida del fitxer</string>
     <string name="label_file_format">Format</string>
+    <string name="file_label">Fitxer</string>
+    <string name="metadata_label">Metadades</string>
     <string name="title_and_artist">Títol i Artista</string>
     <string name="song">Cançó</string>
     <string name="title">Títol</string>
@@ -317,20 +319,11 @@
     <string name="disc_total">Total de discos</string>
     <string name="lyrics">Lletra</string>
     <string name="lyricist">Lletrista</string>
-    <string name="edit_tags_action">Edita\'n les etiquetes</string>
-    <string name="edit_lyrics_action">Edita la lletra</string>
-    <string name="open_lyrics_editor">Obre l\'editor de lletres</string>
     <string name="could_not_load_the_song_information">"No s'ha pogut carregar la informació de la cançó."</string>
-    <string name="label_with_rg_info">Amb informació de guany</string>
-    <string name="label_without_rg_info">Sense informació de guany</string>
-    <string name="album_and_year">Àlbum i any</string>
-    <string name="song_info">Informació de la cançó</string>
     <string name="no_results">No hi ha resultats</string>
     <string name="connection_unavailable">La connexió no està disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Heu de triar, pel cap baix, una categoria</string>
     <string name="you_cannot_select_more_than_five_categories">No podeu triar més de cinc categories.</string>
-    <string name="auto_limited_listing_title">Llistat limitat en conduir</string>
-    <string name="auto_limited_listing_subtitle">Obriu l\'aplicació per veure la llista sencera</string>
     <string name="backup_settings">Configuració</string>
     <string name="backup_synced_lyrics">Lletra sincronitzada</string>
     <string name="backup_artist_images">Imatges d\'artistes</string>
@@ -603,7 +596,7 @@
     <string name="general_theme_title">Tema general</string>
     <string name="pure_black_theme_title">Negre pur</string>
     <string name="material_you_title">Tema dinàmic</string>
-    <string name="use_custom_font_title">Fes servir la font Manrope</string>
+    <string name="use_custom_font_title">Fes servir una font personalitzada</string>
     <string name="appbar_mode_title">Estil de capçalera</string>
     <string name="library_categories_title">Categories de la biblioteca</string>
     <string name="library_categories_summary">Configura la visibilitat i l\'ordre de les categories de la biblioteca.</string>
@@ -623,9 +616,9 @@
     <string name="lyrics_syllable_mode_title">Lletra fil per randa</string>
     <string name="lyrics_syllable_mode_summary">Permet mostrar la lletra sincronitzada paraula per paraula. Depèn de la disponibilitat de la lletra i d\'un format compatible com LRC o TTML.</string>
     <string name="lyrics_effects_note">Els efectes avançats realcen l\'experiència visual, però poden consumir més recursos i bateria.</string>
-    <string name="lyrics_background_effect_title">Background effect</string>
-    <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
+    <string name="lyrics_background_effect_title">Efecte de fons</string>
+    <string name="lyrics_background_gradient">Degradat</string>
+    <string name="lyrics_background_canvas">Fons (si està disponible)</string>
     <string name="lyrics_blur_effect_title">Efecte difuminat</string>
     <string name="lyrics_blur_effect_summary">Difumina les línies de lletra adjacents a l\'actual.</string>
     <string name="lyrics_shadow_effect_title">Efecte d\'ombra</string>
@@ -646,11 +639,12 @@
     <string name="synced_font_size_full_summary">Ajusta la mida de la lletra sincronitzada en pantalla completa.</string>
     <string name="unsynced_font_size_full_title">Mida de la lletra sense sincronitzar (pantalla completa)</string>
     <string name="unsynced_font_size_full_summary">Ajusta la mida de la lletra sense sincronitzar en pantalla completa.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
-    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="instrumental_tracks_identifiers_title">Identificadors de pistes instrumentals</string>
+    <string name="instrumental_tracks_identifiers_summary">Si la lletra d\'una cançó consisteix només en
+        un o més indicadors d\'aquests, es marcarà com a pista instrumental
+(separat per comes).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Marca per títol</string>
+    <string name="instrumental_tracks_mark_by_title_summary">El títol de la pista també es tindrà en compte per cercar identificadors.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estil</string>
     <string name="open_on_play_title">Obre en reproduir</string>
@@ -729,6 +723,24 @@
     <string name="mp3_index_seeking_summary">Carrega tot el fitxer MP3 a la memòria per cercar en lloc de refiar-se de la capçalera Xing.
         Feu-lo servir només si la cerca no reïx en alguns fitxers VBR.
         Cal reiniciar l\'aplicació.</string>
+    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
+    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
+    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
+    <string name="on_song_click_title">When selecting a song</string>
+    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
+    <string name="on_song_click_play_whole_list_title">Play whole list</string>
+    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
+    <string name="on_song_click_queue_next_title">Queue next</string>
+    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descarrega metadades automàticament</string>
     <string name="ignore_media_store_album_covers_title">Ignora les portades de Media Store</string>
@@ -789,7 +801,6 @@
     <string name="full_cover">Portada completa</string>
     <string name="gradient">Degradat</string>
     <string name="peek">Ullada</string>
-    <string name="peek2">Ullada2</string>
     <string name="plain">Senzill</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>

@@ -97,23 +97,13 @@ enum class NowPlayingScreen(
         supportsCarouselEffect = false,
         supportsCustomCornerRadius = false,
         supportsSmallImage = false
-    ),
-    Peek2(
-        R.string.peek2,
-        R.drawable.np_peek2,
-        R.layout.fragment_album_cover_default,
-        buttonStyle = NowPlayingButtonStyle.Normal,
-        supportsCoverLyrics = true,
-        supportsCarouselEffect = false,
-        supportsCustomCornerRadius = true,
-        supportsSmallImage = false
     );
 
     val defaultColorScheme: PlayerColorSchemeMode
         get() = when (this) {
             Default, Plain, Peek -> PlayerColorSchemeMode.AppTheme
             M3 -> PlayerColorSchemeMode.MaterialYou
-            FullCover, Gradient, Peek2 -> PlayerColorSchemeMode.VibrantColor
+            FullCover, Gradient -> PlayerColorSchemeMode.VibrantColor
         }
 
     val supportedColorSchemes: PlayerColorSchemeList
@@ -125,11 +115,14 @@ enum class NowPlayingScreen(
                 PlayerColorSchemeMode.MaterialYou
             )
             FullCover,
-            Gradient,
-            Peek2 -> listOf(
+            Gradient -> listOf(
                 PlayerColorSchemeMode.VibrantColor
             )
-            Peek,
+            Peek -> listOf(
+                PlayerColorSchemeMode.AppTheme,
+                PlayerColorSchemeMode.MaterialYou,
+                PlayerColorSchemeMode.VibrantColor
+            )
             M3 -> listOf(
                 PlayerColorSchemeMode.AppTheme,
                 PlayerColorSchemeMode.MaterialYou
@@ -169,8 +162,7 @@ enum class NowPlayingScreen(
                 PlayerTransition.Hinge,
                 PlayerTransition.Parallax
             )
-            Peek,
-            Peek2 -> listOf(
+            Peek -> listOf(
                 PlayerTransition.Simple
             )
         }

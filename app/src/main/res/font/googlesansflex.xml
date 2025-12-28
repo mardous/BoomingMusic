@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <font-family xmlns:app="http://schemas.android.com/apk/res-auto">
     <font
-        app:font="@font/manrope_extralight"
+        app:font="@font/googlesansflex_extralight"
         app:fontWeight="200"/>
     <font
-        app:font="@font/manrope_light"
+        app:font="@font/googlesansflex_light"
         app:fontWeight="300"/>
     <font
-        app:font="@font/manrope_regular"
+        app:font="@font/googlesansflex_regular"
         app:fontWeight="400"/>
     <font
-        app:font="@font/manrope_medium"
+        app:font="@font/googlesansflex_medium"
         app:fontWeight="500"/>
     <font
-        app:font="@font/manrope_semibold"
+        app:font="@font/googlesansflex_semibold"
         app:fontWeight="600"/>
     <font
-        app:font="@font/manrope_bold"
+        app:font="@font/googlesansflex_bold"
         app:fontWeight="700"/>
     <font
-        app:font="@font/manrope_extrabold"
+        app:font="@font/googlesansflex_extrabold"
         app:fontWeight="800"/>
 </font-family>

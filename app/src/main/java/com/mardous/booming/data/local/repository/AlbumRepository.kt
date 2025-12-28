@@ -49,7 +49,11 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) : Albu
 
     override fun albums(query: String): List<Album> {
         val songs = songRepository.songs(
-            songRepository.makeSongCursor(AudioColumns.ALBUM + " LIKE ?", arrayOf("%$query%"), DEFAULT_SORT_ORDER)
+            songRepository.makeSongCursor(
+                selection = "${AudioColumns.ALBUM} LIKE ? OR ${AudioColumns.ALBUM_ARTIST} LIKE ?",
+                selectionValues = arrayOf("%$query%", "%$query"),
+                sortOrder = DEFAULT_SORT_ORDER
+            )
         )
         return splitIntoAlbums(songs)
     }

@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Τυχαία αναπαραγωγή όλων</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Αναπαραγωγή/Παύση</string>
     <string name="action_pause">Παύση</string>
@@ -102,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Αφαιρέστε το τραγούδι <b>%1$s</b> από τη λίστα αναπαραγωγής?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Remove <b>%1$d</b> songs from the playlist?]]></string>
     <string name="playlist_empty_text">Κενή λίστα αναπαραγωγής</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Επεξεργαστής ετικετών</string>
     <string name="saving_changes">Αποθήκευση αλλαγών</string>
     <string name="changes_saved_successfully">Οι αλλαγές αποθηκεύτηκαν επιτυχώς.</string>
@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Κορυφαία Κομμάτια</string>
     <string name="history_label">Ιστορικό</string>
     <string name="not_recently_played">Δεν Παίχτηκαν Πρόσφατα</string>
-    <string name="play_info">Πληροφορίες αναπαραγωγής.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Μετρήσεις Κομματιού Παιχνιδιού</string>
     <string name="song_stat_never_label">δεν παίχτηκε ποτέ</string>
     <string name="song_stat_one_time_label">έπαιξε μία φορά στο %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Διαδρομή αρχείου</string>
     <string name="size">Μέγεθος αρχείου</string>
     <string name="label_file_format">Μορφή</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Τίτλος και Καλλιτέχνης</string>
     <string name="song">Τραγούδι</string>
     <string name="title">Τίτλος</string>
@@ -317,20 +319,11 @@
     <string name="disc_total">Σύνολο Δίσκων</string>
     <string name="lyrics">Στίχοι</string>
     <string name="lyricist">Lyricist</string>
-    <string name="edit_tags_action">Επεξεργασία ετικετών</string>
-    <string name="edit_lyrics_action">Επεξεργαστείτε τους στίχους</string>
-    <string name="open_lyrics_editor">Άνοιγμα επεξεργαστή στίχων</string>
     <string name="could_not_load_the_song_information">"Δεν ήταν δυνατή η φόρτωση των πληροφοριών του τραγουδιού."</string>
-    <string name="label_with_rg_info">Με πληροφορίες RG</string>
-    <string name="label_without_rg_info">Χωρίς πληροφορίες RG</string>
-    <string name="album_and_year">Άλμπουμ και έτος</string>
-    <string name="song_info">Πληροφορίες τραγουδιού.</string>
     <string name="no_results">Κανένα αποτέλεσμα</string>
     <string name="connection_unavailable">Μη διαθέσιμη σύνδεση.</string>
     <string name="you_have_to_select_at_least_one_category">Πρέπει να επιλέξετε τουλάχιστον μία κατηγορία</string>
     <string name="you_cannot_select_more_than_five_categories">Δεν μπορείτε να επιλέξετε περισσότερες από πέντε κατηγορίες.</string>
-    <string name="auto_limited_listing_title">Περιορισμένη καταχώρηση κατά την οδήγηση</string>
-    <string name="auto_limited_listing_subtitle">Ανοίξτε την εφαρμογή για να δείτε την πλήρη λίστα</string>
     <string name="backup_settings">Ρυθμίσεις</string>
     <string name="backup_synced_lyrics">Συγχρονισμένοι στίχοι</string>
     <string name="backup_artist_images">Εικόνες καλλιτέχνη</string>
@@ -603,7 +596,7 @@
     <string name="general_theme_title">Γενικό θέμα</string>
     <string name="pure_black_theme_title">Καθαρό Μαύρο</string>
     <string name="material_you_title">Υλικό Εσείς</string>
-    <string name="use_custom_font_title">Χρήση γραμματοσειράς Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Στυλ κεφαλίδας</string>
     <string name="library_categories_title">Κατηγορίες βιβλιοθηκών</string>
     <string name="library_categories_summary">Ρυθμίστε την ορατότητα και τη σειρά των κατηγοριών βιβλιοθήκης.</string>
@@ -729,6 +722,24 @@
     <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
         Use only if seeking fails on some VBR files.
         Requires app restart.</string>
+    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
+    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
+    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
+    <string name="on_song_click_title">When selecting a song</string>
+    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
+    <string name="on_song_click_play_whole_list_title">Play whole list</string>
+    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
+    <string name="on_song_click_queue_next_title">Queue next</string>
+    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Αυτόματη λήψη μεταδεδομένων</string>
     <string name="ignore_media_store_album_covers_title">Αγνοήστε τα καλύμματα του Media Store</string>
@@ -790,7 +801,6 @@
     <string name="full_cover">Πλήρες Εξώφυλλο</string>
     <string name="gradient">Διαβάθμιση</string>
     <string name="peek">Ματιά</string>
-    <string name="peek2">Peek2</string>
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Κανονικό</string>

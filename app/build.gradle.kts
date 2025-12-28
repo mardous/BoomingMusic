@@ -69,10 +69,11 @@ sealed class Version(
         }
 }
 
-val currentVersion: Version = Version.Stable(
+val currentVersion: Version = Version.Beta(
     versionMajor = 1,
     versionMinor = 1,
-    versionPatch = 0
+    versionPatch = 1,
+    versionBuild = 2
 )
 val currentVersionCode = currentVersion.code
 
@@ -85,7 +86,7 @@ android {
         targetSdk = 35
 
         applicationId = namespace
-        versionCode = 1100300
+        versionCode = 1110102
         versionName = currentVersion.name
         check(versionCode == currentVersionCode)
     }

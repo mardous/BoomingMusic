@@ -6,7 +6,7 @@
     app:startDestination="@id/nav_home_preferences">
     <fragment
         android:id="@+id/nav_home_preferences"
-        android:name="com.mardous.booming.ui.screen.settings.PreferencesScreenFragment"
+        android:name="com.mardous.booming.ui.screen.settings.PreferenceScreenFragment"
         android:label="@string/settings_title">
         <action
             android:id="@+id/action_to_appearancePreferences"

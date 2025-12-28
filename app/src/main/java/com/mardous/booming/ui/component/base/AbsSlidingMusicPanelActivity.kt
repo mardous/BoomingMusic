@@ -65,7 +65,6 @@ import com.mardous.booming.ui.screen.player.styles.defaultstyle.DefaultPlayerFra
 import com.mardous.booming.ui.screen.player.styles.fullcoverstyle.FullCoverPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.gradientstyle.GradientPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.m3style.M3PlayerFragment
-import com.mardous.booming.ui.screen.player.styles.peek2playerstyle.Peek2PlayerFragment
 import com.mardous.booming.ui.screen.player.styles.peekplayerstyle.PeekPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.plainstyle.PlainPlayerFragment
 import com.mardous.booming.util.*
@@ -239,7 +238,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 binding.sheetView.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                if (nowPlayingScreen == NowPlayingScreen.Peek || nowPlayingScreen == NowPlayingScreen.Peek2) {
+                if (nowPlayingScreen == NowPlayingScreen.Peek) {
                     slidingPanel.updateLayoutParams<ViewGroup.LayoutParams> {
                         height = ViewGroup.LayoutParams.WRAP_CONTENT
                     }
@@ -451,8 +450,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                 NowPlayingScreen.Default,
                 NowPlayingScreen.Plain,
                 NowPlayingScreen.Peek,
-                NowPlayingScreen.M3,
-                NowPlayingScreen.Peek2 -> {
+                NowPlayingScreen.M3 -> {
                     setLightStatusBar(isColorLight)
                     setLightNavigationBar(isColorLight)
                 }
@@ -491,7 +489,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             NOW_PLAYING_SCREEN -> {
                 chooseFragmentForTheme()
                 slidingPanel.updateLayoutParams<ViewGroup.LayoutParams> {
-                    height = if (nowPlayingScreen != NowPlayingScreen.Peek && nowPlayingScreen != NowPlayingScreen.Peek2) {
+                    height = if (nowPlayingScreen != NowPlayingScreen.Peek) {
                         ViewGroup.LayoutParams.MATCH_PARENT
                     } else {
                         ViewGroup.LayoutParams.WRAP_CONTENT
@@ -549,7 +547,6 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             NowPlayingScreen.Peek -> PeekPlayerFragment()
             NowPlayingScreen.Plain -> PlainPlayerFragment()
             NowPlayingScreen.M3 -> M3PlayerFragment()
-            NowPlayingScreen.Peek2 -> Peek2PlayerFragment()
             else -> DefaultPlayerFragment()
         }
 

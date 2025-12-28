@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">すべてシャッフル</string>
     <string name="shuffle_mode">シャッフルモード</string>
     <string name="repeat_mode">リピートモード</string>
-    <string name="advanced_shuffle_label">高度なシャッフル</string>
     <string name="shuffle_button_tip">タップして通常のシャッフルを行います。長押しで詳細オプションを選択できます。</string>
     <string name="action_play_pause">再生/一時停止</string>
     <string name="action_pause">一時停止</string>
@@ -102,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[プレイリストから曲 <b>%1$s</b> を削除しますか？]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[プレイリストから <b>%1$d</b> 曲を削除しますか？]]></string>
     <string name="playlist_empty_text">空のプレイリスト</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">タグエディタ</string>
     <string name="saving_changes">変更を保存しています</string>
     <string name="changes_saved_successfully">変更は正常に保存されました。</string>
@@ -216,7 +216,7 @@
     <string name="top_tracks_label">トップトラック</string>
     <string name="history_label">履歴</string>
     <string name="not_recently_played">最近再生されていない曲</string>
-    <string name="play_info">再生情報</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">再生回数を追跡</string>
     <string name="song_stat_never_label">再生したことがありません</string>
     <string name="song_stat_one_time_label">%s で一度再生しました</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">ファイルパス</string>
     <string name="size">ファイルのサイズ</string>
     <string name="label_file_format">フォーマット</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">タイトルとアーティスト</string>
     <string name="song">曲</string>
     <string name="title">タイトル</string>
@@ -317,20 +319,11 @@
     <string name="disc_total">合計ディスク</string>
     <string name="lyrics">歌詞</string>
     <string name="lyricist">歌詞リスト</string>
-    <string name="edit_tags_action">タグを編集</string>
-    <string name="edit_lyrics_action">歌詞を編集</string>
-    <string name="open_lyrics_editor">歌詞エディターを開く</string>
     <string name="could_not_load_the_song_information">"曲情報を読み込めませんでした。"</string>
-    <string name="label_with_rg_info">RG情報あり</string>
-    <string name="label_without_rg_info">RG情報なし</string>
-    <string name="album_and_year">アルバムと年</string>
-    <string name="song_info">曲情報</string>
     <string name="no_results">結果がありません</string>
     <string name="connection_unavailable">接続できません。</string>
     <string name="you_have_to_select_at_least_one_category">最低でも1つのカテゴリを選択を選択して下さい</string>
     <string name="you_cannot_select_more_than_five_categories">5つ以上のカテゴリは選択できません。</string>
-    <string name="auto_limited_listing_title">運転中の限定リスト</string>
-    <string name="auto_limited_listing_subtitle">アプリを開いて全リストを表示します</string>
     <string name="backup_settings">設定</string>
     <string name="backup_synced_lyrics">歌詞を同期</string>
     <string name="backup_artist_images">アーティスト画像</string>
@@ -595,7 +588,7 @@
     <string name="general_theme_title">一般的なテーマ</string>
     <string name="pure_black_theme_title">ピュアブラック</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Manropeフォントを使用</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">ヘッダーのスタイル</string>
     <string name="library_categories_title">ライブラリのカテゴリ</string>
     <string name="library_categories_summary">ライブラリに表示するカテゴリとその順番を設定します。</string>
@@ -721,6 +714,24 @@
     <string name="mp3_index_seeking_summary">Xingヘッダーに依存せず、シークをするためにMP3ファイル全体をメモリに読み込みます。
         一部の可変ビットレート（VBR）ファイルでシークが失敗する場合にのみ使用してください。
         アプリの再起動が必要です。</string>
+    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
+    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
+    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
+    <string name="on_song_click_title">When selecting a song</string>
+    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
+    <string name="on_song_click_play_whole_list_title">Play whole list</string>
+    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
+    <string name="on_song_click_queue_next_title">Queue next</string>
+    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">メタデータの自動ダウンロード</string>
     <string name="ignore_media_store_album_covers_title">メディアストアのカバーを無視</string>
@@ -782,7 +793,6 @@
     <string name="full_cover">フルカバー</string>
     <string name="gradient">Gradient</string>
     <string name="peek">Peek</string>
-    <string name="peek2">Peek2</string>
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">標準</string>

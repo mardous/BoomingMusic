@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Shuffle all</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
-    <string name="advanced_shuffle_label">Advanced shuffle</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Play/Pause</string>
     <string name="action_pause">Pause</string>
@@ -102,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Remove the song <b>%1$s</b> from the playlist?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Remove <b>%1$d</b> songs from the playlist?]]></string>
     <string name="playlist_empty_text">Empty playlist</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Tag editor</string>
     <string name="saving_changes">Saving changes</string>
     <string name="changes_saved_successfully">Changes saved successfully.</string>
@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Top Tracks</string>
     <string name="history_label">History</string>
     <string name="not_recently_played">Not Recently Played</string>
-    <string name="play_info">Play info.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Track Play Counts</string>
     <string name="song_stat_never_label">never played</string>
     <string name="song_stat_one_time_label">played one time on %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">File path</string>
     <string name="size">File size</string>
     <string name="label_file_format">Format</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Title and Artist</string>
     <string name="song">Song</string>
     <string name="title">Title</string>
@@ -317,20 +319,11 @@
     <string name="disc_total">Total Discs</string>
     <string name="lyrics">Lyrics</string>
     <string name="lyricist">Lyricist</string>
-    <string name="edit_tags_action">Edit tags</string>
-    <string name="edit_lyrics_action">Edit lyrics</string>
-    <string name="open_lyrics_editor">Open lyrics editor</string>
     <string name="could_not_load_the_song_information">"Couldn't load the song information."</string>
-    <string name="label_with_rg_info">With RG info</string>
-    <string name="label_without_rg_info">Without RG info</string>
-    <string name="album_and_year">Album and year</string>
-    <string name="song_info">Song info.</string>
     <string name="no_results">No results</string>
     <string name="connection_unavailable">Connection unavailable.</string>
     <string name="you_have_to_select_at_least_one_category">You have to select at least one category</string>
     <string name="you_cannot_select_more_than_five_categories">You can\'t select more than five categories.</string>
-    <string name="auto_limited_listing_title">Limited listing while driving</string>
-    <string name="auto_limited_listing_subtitle">Open the app to see the full list</string>
     <string name="backup_settings">Settings</string>
     <string name="backup_synced_lyrics">Synced lyrics</string>
     <string name="backup_artist_images">Artist images</string>
@@ -619,7 +612,7 @@
     <string name="general_theme_title">General theme</string>
     <string name="pure_black_theme_title">Pure Black</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Use Manrope font</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Header style</string>
     <string name="library_categories_title">Library categories</string>
     <string name="library_categories_summary">Configure visibility and order of library categories.</string>
@@ -745,6 +738,24 @@
     <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
         Use only if seeking fails on some VBR files.
         Requires app restart.</string>
+    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
+    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
+    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
+    <string name="on_song_click_title">When selecting a song</string>
+    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
+    <string name="on_song_click_play_whole_list_title">Play whole list</string>
+    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
+    <string name="on_song_click_queue_next_title">Queue next</string>
+    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Auto download metadata</string>
     <string name="ignore_media_store_album_covers_title">Ignore Media Store covers</string>
@@ -806,7 +817,6 @@
     <string name="full_cover">Full Cover</string>
     <string name="gradient">Gradient</string>
     <string name="peek">Peek</string>
-    <string name="peek2">Peek2</string>
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normal</string>

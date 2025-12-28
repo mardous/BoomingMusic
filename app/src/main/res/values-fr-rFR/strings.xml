@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Tout mélanger</string>
     <string name="shuffle_mode">Mode aléatoire</string>
     <string name="repeat_mode">Mode répétition</string>
-    <string name="advanced_shuffle_label">Mélange avancé</string>
     <string name="shuffle_button_tip">Appuyez pour une lecture aléatoire normale. Appuyez longuement pour accéder aux options avancées.</string>
     <string name="action_play_pause">Lecture/Pause</string>
     <string name="action_pause">Pause</string>
@@ -102,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Supprimer le titre <b>%1$s</b> de la playlist ?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Supprimer <b>%1$d</b> titres de la playlist ?]]></string>
     <string name="playlist_empty_text">Playlist vide</string>
+    <string name="action_lyrics_editor">Éditeur de paroles</string>
     <string name="action_tag_editor">Éditeur d\'informations</string>
     <string name="saving_changes">Sauvegarde des modifications</string>
     <string name="changes_saved_successfully">Les modifications ont été enregistrées avec succès.</string>
@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Meilleurs titres</string>
     <string name="history_label">Historique</string>
     <string name="not_recently_played">Pas joué récemment</string>
-    <string name="play_info">Informations sur la lecture.</string>
+    <string name="play_info">Informations sur le lecteur</string>
     <string name="track_play_counts">Nombre de lectures de titres</string>
     <string name="song_stat_never_label">jamais joué</string>
     <string name="song_stat_one_time_label">joué une fois le %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Chemin du fichier</string>
     <string name="size">Taille du fichier</string>
     <string name="label_file_format">Format</string>
+    <string name="file_label">Fichier</string>
+    <string name="metadata_label">Métadonnées</string>
     <string name="title_and_artist">Titre et artiste</string>
     <string name="song">Musique</string>
     <string name="title">Titre</string>
@@ -317,20 +319,11 @@
     <string name="disc_total">Nombre total de disques</string>
     <string name="lyrics">Paroles</string>
     <string name="lyricist">Parolier</string>
-    <string name="edit_tags_action">Modifier les informations</string>
-    <string name="edit_lyrics_action">Modifier les paroles</string>
-    <string name="open_lyrics_editor">Ouvrir l\'éditeur de paroles</string>
     <string name="could_not_load_the_song_information">"Impossible de charger les informations de la chanson."</string>
-    <string name="label_with_rg_info">Avec infos RG</string>
-    <string name="label_without_rg_info">Sans infos RG</string>
-    <string name="album_and_year">Album et année</string>
-    <string name="song_info">Informations sur la musique.</string>
     <string name="no_results">Aucun résultat</string>
     <string name="connection_unavailable">Connexion indisponible.</string>
     <string name="you_have_to_select_at_least_one_category">Vous devez sélectionner au moins une catégorie</string>
     <string name="you_cannot_select_more_than_five_categories">Vous ne pouvez pas sélectionner plus de cinq catégories.</string>
-    <string name="auto_limited_listing_title">Liste limitée pendant la conduite</string>
-    <string name="auto_limited_listing_subtitle">Ouvrez l\'application pour voir la liste complète</string>
     <string name="backup_settings">Paramètres</string>
     <string name="backup_synced_lyrics">Paroles synchronisées</string>
     <string name="backup_artist_images">Images d\'artistes</string>
@@ -598,12 +591,12 @@
     <string name="shuffle_mode_header">Mode aléatoire</string>
     <string name="display_header">Afficher</string>
     <string name="backup_restore_header">Sauvegarde/restauration</string>
-    <string name="visuals_header">Visuals</string>
+    <string name="visuals_header">Visuels</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Thème général</string>
     <string name="pure_black_theme_title">Noir pur</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Utiliser la police Manrope</string>
+    <string name="use_custom_font_title">Utiliser une police personnalisée</string>
     <string name="appbar_mode_title">Style d\'en-tête</string>
     <string name="library_categories_title">Catégories de bibliothèques</string>
     <string name="library_categories_summary">Configurer la visibilité et l’ordre des catégories de la bibliothèque.</string>
@@ -623,9 +616,9 @@
     <string name="lyrics_syllable_mode_title">Paroles mot par mot</string>
     <string name="lyrics_syllable_mode_summary">Permet d\'afficher les paroles avec une synchronisation mot par mot. Cela dépend de la disponibilité des paroles et d\'un format compatible tel que LRC ou TTML.</string>
     <string name="lyrics_effects_note">Les effets avancés améliorent l\'expérience visuelle mais peuvent nécessiter plus de ressources système et de batterie.</string>
-    <string name="lyrics_background_effect_title">Background effect</string>
-    <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
+    <string name="lyrics_background_effect_title">Effet de fond</string>
+    <string name="lyrics_background_gradient">Dégradé</string>
+    <string name="lyrics_background_canvas">Toile (si disponible)</string>
     <string name="lyrics_blur_effect_title">Effet de flou</string>
     <string name="lyrics_blur_effect_summary">Flouter les lignes de paroles adjacentes à la ligne actuelle.</string>
     <string name="lyrics_shadow_effect_title">Effet d\'ombre</string>
@@ -646,11 +639,10 @@
     <string name="synced_font_size_full_summary">Ajuster la taille de la police pour les paroles synchronisées dans l\'écran des paroles complètes.</string>
     <string name="unsynced_font_size_full_title">Taille de police des paroles non synchronisées (vue complète)</string>
     <string name="unsynced_font_size_full_summary">Ajuster la taille de la police pour les paroles non synchronisées dans l\'écran des paroles complètes.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
-    <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="instrumental_tracks_identifiers_title">Identifiants des pistes instrumentales</string>
+    <string name="instrumental_tracks_identifiers_summary">Si les paroles d\'une chanson ne contiennent qu\'un seul de ces indicateurs (un ou plusieurs), elle sera considérée comme un morceau instrumental (séparés par une virgule).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Marquer par titre</string>
+    <string name="instrumental_tracks_mark_by_title_summary">Le titre du morceau sera également pris en compte lors de la recherche d\'identifiants.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir lors de la lecture</string>
@@ -729,6 +721,24 @@
     <string name="mp3_index_seeking_summary">Charge le fichier MP3 dans la mémoire pour l\'indexer a la place d\'utiliser l\'entêté Xing.
         À utiliser uniquement si l\'index échoue sur les fichiers VBR.
         Nécessite le redémarrage de l\'application.</string>
+    <string name="play_option_always_visible_title">Garder l\'option « Lecture » visible</string>
+    <string name="play_option_always_visible_summary">Si cette option est activée, l\'option « Lecture » ​​apparaîtra toujours dans le menu d\'un titre, quels que soient les paramètres de comportement au toucher.</string>
+    <string name="play_option_whole_list_title">L\'option « Lecture » permet de lire toute la liste</string>
+    <string name="play_option_whole_list_summary">Si cette option est activée, sélectionner « Lecture » dans le menu d\'un morceau lancera la lecture de toute la playlist. Si elle est désactivée, seul le morceau sélectionné sera lu.</string>
+    <string name="on_song_click_title">Lors du choix d\'un titre</string>
+    <string name="on_song_click_play_only_this_song_title">Jouez uniquement ce titre</string>
+    <string name="on_song_click_play_only_this_song_summary">La file d\'attente actuelle sera effacée et remplacée par le titre sélectionné.</string>
+    <string name="on_song_click_play_whole_list_title">Lire la liste complète</string>
+    <string name="on_song_click_play_whole_list_summary">La file d\'attente actuelle sera remplacée par tous les titres de la liste/de l\'album/du dossier.</string>
+    <string name="on_song_click_queue_next_title">File d\'attente suivante</string>
+    <string name="on_song_click_queue_next_summary">Le morceau sélectionné sera ajouté à la position suivante dans la file d\'attente.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enfile à la fin</string>
+    <string name="on_song_click_enqueue_at_end_summary">Le morceau sélectionné sera ajouté à la fin de la file d\'attente actuelle.</string>
+    <string name="on_clear_queue_title">Lors du nettoyage de la file d\'attente</string>
+    <string name="on_clear_queue_remove_all_songs_title">Supprimer tous les titres</string>
+    <string name="on_clear_queue_remove_all_songs_summary">La file d\'attente entière sera effacée.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Supprimer tous les titres sauf le titre actuel</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Seul le titre en cours de lecture restera dans la file d\'attente.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Télécharger automatiquement les métadonnées</string>
     <string name="ignore_media_store_album_covers_title">Ignorer les couvertures du Media Store</string>
@@ -789,7 +799,6 @@
     <string name="full_cover">Couverture complète</string>
     <string name="gradient">Dégradé</string>
     <string name="peek">Aperçu</string>
-    <string name="peek2">Peek2</string>
     <string name="plain">Ordinaire</string>
     <string name="m3_style">M3</string>
     <string name="normal">Normale</string>

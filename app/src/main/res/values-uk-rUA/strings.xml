@@ -7,7 +7,6 @@
     <string name="shuffle_all_label">Перемішати все</string>
     <string name="shuffle_mode">У випадковому порядку</string>
     <string name="repeat_mode">Режим повтору</string>
-    <string name="advanced_shuffle_label">Передовий порядок сортування</string>
     <string name="shuffle_button_tip">Торкніться для звичайного перемішування. Довге натискання для додаткових опцій.</string>
     <string name="action_play_pause">Відтвор./Пауза</string>
     <string name="action_pause">Пауза</string>
@@ -102,6 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Видалити пісню &lt;b&gt;%1$s&lt;/b&gt; зі списку відтворення?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Видалити &lt;b&gt;%1$d&lt;/b&gt; пісень зі списку відтворення?]]></string>
     <string name="playlist_empty_text">Порожній список відтворення</string>
+    <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Редактор тегів</string>
     <string name="saving_changes">Збереження змін</string>
     <string name="changes_saved_successfully">Зміни успішно збережено.</string>
@@ -216,7 +216,7 @@
     <string name="top_tracks_label">Найкращі треки</string>
     <string name="history_label">Історія</string>
     <string name="not_recently_played">Нещодавно не прослуховувалося</string>
-    <string name="play_info">Інформація про відтворення.</string>
+    <string name="play_info">Play info</string>
     <string name="track_play_counts">Кількість відтворень треку</string>
     <string name="song_stat_never_label">ніколи не відтворювалося</string>
     <string name="song_stat_one_time_label">відтворено один раз %s</string>
@@ -287,6 +287,8 @@
     <string name="label_file_path">Шлях до файлу</string>
     <string name="size">Розмір файлу</string>
     <string name="label_file_format">Формат</string>
+    <string name="file_label">File</string>
+    <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Назва та виконавець</string>
     <string name="song">Пісня</string>
     <string name="title">Назва</string>
@@ -317,20 +319,11 @@
     <string name="disc_total">Загалом дисків</string>
     <string name="lyrics">Текст пісні</string>
     <string name="lyricist">Автор тексту</string>
-    <string name="edit_tags_action">Редагувати теги</string>
-    <string name="edit_lyrics_action">Редагувати текст пісні</string>
-    <string name="open_lyrics_editor">Відкрити редактор текстів пісень</string>
     <string name="could_not_load_the_song_information">"Не вдалося завантажити інформацію про пісню."</string>
-    <string name="label_with_rg_info">З RG-інформацією</string>
-    <string name="label_without_rg_info">Без RG-інформації</string>
-    <string name="album_and_year">Альбом і рік</string>
-    <string name="song_info">Інформація про пісню.</string>
     <string name="no_results">Немає результатів</string>
     <string name="connection_unavailable">З\'єднання відсутнє.</string>
     <string name="you_have_to_select_at_least_one_category">Ви повинні вибрати хоча б одну категорію</string>
     <string name="you_cannot_select_more_than_five_categories">Ви не можете вибрати більше п\'яти категорій.</string>
-    <string name="auto_limited_listing_title">Обмежений список під час керування</string>
-    <string name="auto_limited_listing_subtitle">Відкрийте програму, щоб побачити повний список</string>
     <string name="backup_settings">Налаштування</string>
     <string name="backup_synced_lyrics">Синхронізовані тексти пісень</string>
     <string name="backup_artist_images">Зображення виконавців</string>
@@ -617,7 +610,7 @@
     <string name="general_theme_title">Загальна тема</string>
     <string name="pure_black_theme_title">Чистий чорний</string>
     <string name="material_you_title">Виготовлення матеріалу</string>
-    <string name="use_custom_font_title">Використовувати шрифт Manrope</string>
+    <string name="use_custom_font_title">Use custom font</string>
     <string name="appbar_mode_title">Стиль заголовка</string>
     <string name="library_categories_title">Категорії бібліотеки</string>
     <string name="library_categories_summary">Налаштуйте видимість та порядок категорій бібліотеки.</string>
@@ -743,6 +736,24 @@
     <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
         Use only if seeking fails on some VBR files.
         Requires app restart.</string>
+    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
+    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
+    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
+    <string name="on_song_click_title">When selecting a song</string>
+    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
+    <string name="on_song_click_play_whole_list_title">Play whole list</string>
+    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
+    <string name="on_song_click_queue_next_title">Queue next</string>
+    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
+    <string name="on_clear_queue_title">When clearing the queue</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
+    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Автоматично завантажувати метадані</string>
     <string name="ignore_media_store_album_covers_title">Ігнорувати обкладинки з MediaStore</string>
@@ -804,7 +815,6 @@
     <string name="full_cover">Повна обкладинка</string>
     <string name="gradient">Градієнт</string>
     <string name="peek">Зазирнути</string>
-    <string name="peek2">Peek2</string>
     <string name="plain">Plain</string>
     <string name="m3_style">M3</string>
     <string name="normal">Нормальний</string>

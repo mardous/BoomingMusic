@@ -200,19 +200,24 @@
     <string-array name="pref_language_names">
         <item>@string/system_default</item>
         <item>Arabic</item>
+        <item>Belarusian</item>
         <item>Catalan</item>
         <item>Chinese Simplified</item>
+        <item>Croatian</item>
         <item>Czech</item>
         <item>Danish</item>
         <item>Dutch</item>
         <item>English (US)</item>
         <item>Finnish</item>
         <item>French</item>
+        <item>Galician</item>
         <item>German</item>
         <item>Greek</item>
         <item>Hebrew</item>
         <item>Hindi</item>
+        <item>Indonesian</item>
         <item>Italian</item>
+        <item>Kazakh</item>
         <item>Korean</item>
         <item>Japanese</item>
         <item>Norwegian</item>
@@ -226,24 +231,30 @@
         <item>Swedish</item>
         <item>Turkish</item>
         <item>Ukrainian</item>
+        <item>Vietnamese</item>
     </string-array>
 
     <string-array name="pref_language_codes">
         <item>auto</item>
         <item>ar</item>
+        <item>be</item>
         <item>ca</item>
         <item>zh-CN</item>
+        <item>hr</item>
         <item>cs</item>
         <item>da</item>
         <item>nl</item>
         <item>en</item>
         <item>fi</item>
         <item>fr</item>
+        <item>gl</item>
         <item>de</item>
         <item>el</item>
         <item>iw</item>
         <item>hi</item>
+        <item>in</item>
         <item>it</item>
+        <item>kk</item>
         <item>ko</item>
         <item>ja</item>
         <item>no</item>
@@ -257,6 +268,7 @@
         <item>sv</item>
         <item>tr</item>
         <item>uk</item>
+        <item>vi</item>
     </string-array>
 
 </resources>

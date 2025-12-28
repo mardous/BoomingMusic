@@ -57,9 +57,9 @@ class ThemePreference @JvmOverloads constructor(
             textView.isEnabled = (selectedTheme != GeneralTheme.BLACK)
             textView.isChecked = (theme == selectedTheme)
             textView.typeface = if (textView.isChecked) {
-                ResourcesCompat.getFont(context, R.font.manrope_semibold)
+                ResourcesCompat.getFont(context, R.font.googlesansflex_semibold)
             } else {
-                ResourcesCompat.getFont(context, R.font.manrope_regular)
+                ResourcesCompat.getFont(context, R.font.googlesansflex_regular)
             }
         }
     }
