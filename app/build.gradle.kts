@@ -83,7 +83,7 @@ android {
 
     defaultConfig {
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
 
         applicationId = namespace
         versionCode = 1110102

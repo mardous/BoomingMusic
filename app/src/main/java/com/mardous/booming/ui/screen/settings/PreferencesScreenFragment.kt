@@ -305,6 +305,8 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             true
         }
 
+        findPreference<Preference>(ENABLE_ROTATION_LOCK)?.isVisible = !resources.isTablet
+
         val updateSearchPreference = findPreference<ProgressIndicatorPreference>("search_for_update")
         if (updateSearchPreference != null) {
             updateSearchPreference.onPreferenceClickListener = Preference.OnPreferenceClickListener {
