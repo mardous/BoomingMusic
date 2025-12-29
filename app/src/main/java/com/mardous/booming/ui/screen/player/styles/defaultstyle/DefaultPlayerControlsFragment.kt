@@ -31,10 +31,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.core.model.player.PlayerColorScheme
-import com.mardous.booming.core.model.player.PlayerTintTarget
-import com.mardous.booming.core.model.player.iconButtonTintTarget
-import com.mardous.booming.core.model.player.tintTarget
+import com.mardous.booming.core.model.player.*
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentDefaultPlayerPlaybackControlsBinding
 import com.mardous.booming.extensions.resources.centerPivot
@@ -192,6 +189,11 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
         val oldPrimaryTextColor = binding.title.currentTextColor
         val oldSecondaryTextColor = binding.text.currentTextColor
 
+        val newEmphasisColor = if (scheme.mode == PlayerColorSchemeMode.VibrantColor) {
+            scheme.primaryTextColor
+        } else {
+            scheme.emphasisColor
+        }
         val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
         val newShuffleColor = getPlaybackControlsColor(
             isShuffleModeOn,
@@ -205,8 +207,8 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
             scheme.secondaryControlColor
         )
         return listOfNotNull(
-            binding.playPauseButton.tintTarget(oldPlayPauseColor, scheme.emphasisColor),
-            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.emphasisColor),
+            binding.playPauseButton.tintTarget(oldPlayPauseColor, newEmphasisColor),
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor, newEmphasisColor),
             binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
             binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
             binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
@@ -214,6 +216,7 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
             binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
             binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
             binding.songInfo?.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
+            binding.queueInfo.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
             binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
             binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
         )

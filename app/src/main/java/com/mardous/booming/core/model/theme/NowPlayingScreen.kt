@@ -112,7 +112,8 @@ enum class NowPlayingScreen(
             Plain -> listOf(
                 PlayerColorSchemeMode.AppTheme,
                 PlayerColorSchemeMode.SimpleColor,
-                PlayerColorSchemeMode.MaterialYou
+                PlayerColorSchemeMode.MaterialYou,
+                PlayerColorSchemeMode.VibrantColor
             )
             FullCover,
             Gradient -> listOf(
