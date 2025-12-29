@@ -318,7 +318,7 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
     protected abstract fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget>
 
     private fun applyColorScheme(scheme: PlayerColorScheme): AnimatorSet? {
-        colorAnimatorSet?.cancel()
+        cancelColorAnimator()
         colorAnimatorSet = AnimatorSet()
             .setDuration(scheme.mode.preferredAnimDuration)
             .apply {
@@ -335,6 +335,11 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 })
             }
         return colorAnimatorSet
+    }
+
+    private fun cancelColorAnimator() {
+        colorAnimatorSet?.cancel()
+        colorAnimatorSet = null
     }
 
     protected fun Menu.onLyricsVisibilityChang(lyricsVisible: Boolean) {
@@ -358,8 +363,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
         view?.setOnTouchListener(null)
         gesturesController?.release()
         gesturesController = null
-        colorAnimatorSet?.cancel()
-        colorAnimatorSet = null
+        cancelColorAnimator()
+        coverFragment = null
         super.onDestroyView()
     }
 

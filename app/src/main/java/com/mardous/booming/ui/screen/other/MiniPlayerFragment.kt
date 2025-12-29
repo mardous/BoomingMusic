@@ -70,6 +70,7 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMiniPlayerBinding.bind(view)
+        binding.progressBar.installWavyAnimatorCleanup()
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.currentSongFlow.collect { currentSong ->
                 disposable = binding.image.songImage(currentSong)

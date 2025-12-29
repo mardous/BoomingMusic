@@ -217,6 +217,8 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         clearNavigationViewGestures()
         bottomSheetBehavior.removeBottomSheetCallback(bottomSheetCallback)
         Preferences.unregisterOnSharedPreferenceChangeListener(this)
+        miniPlayerFragment = null
+        playerFragment = null
     }
 
     private fun setupNavigationView() {

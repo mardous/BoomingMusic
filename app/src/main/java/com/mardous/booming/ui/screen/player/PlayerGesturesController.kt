@@ -2,6 +2,7 @@ package com.mardous.booming.ui.screen.player
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Rect
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
@@ -15,7 +16,7 @@ class PlayerGesturesController(
     private val listener: Listener
 ) : View.OnTouchListener {
 
-    private var view: View? = null
+    private var viewRect: Rect? = null
 
     private val onGestureListener = object : GestureDetector.SimpleOnGestureListener() {
         override fun onSingleTapConfirmed(event: MotionEvent): Boolean {
@@ -23,7 +24,7 @@ class PlayerGesturesController(
         }
 
         override fun onDoubleTap(event: MotionEvent): Boolean {
-            val width = view?.width ?: 0
+            val width = viewRect?.width() ?: 0
             val x = event.x
 
             val type = if (x < width * LEFT_EDGE_DOUBLE_TAP_THRESHOLD) {
@@ -87,13 +88,14 @@ class PlayerGesturesController(
     override fun onTouch(v: View, event: MotionEvent?): Boolean {
         if (event == null)
             return false
-        view = v
 
+        viewRect = Rect(0, 0, v.width, v.height)
         return gestureDetector?.onTouchEvent(event) == true
     }
 
     fun release() {
         gestureDetector = null
+        viewRect = null
     }
 
     private fun consumeGesture(gestureType: GestureType): Boolean {
