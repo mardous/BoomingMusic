@@ -54,6 +54,7 @@ import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
 import com.google.android.material.progressindicator.BaseProgressIndicator
 import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.Shapeable
 import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.extensions.dip
@@ -322,6 +323,18 @@ fun ImageView.useAsIcon() {
     val iconPadding = context.dip(R.dimen.list_item_image_icon_padding)
     setPadding(iconPadding, iconPadding, iconPadding, iconPadding)
     clearColorFilter()
+}
+
+fun <T> T.setCornerRadius(cornerRadiusDp: Float) where T : View, T : Shapeable {
+    val radiusPx = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        cornerRadiusDp,
+        this.resources.displayMetrics
+    )
+    this.shapeAppearanceModel = this.shapeAppearanceModel
+        .toBuilder()
+        .setAllCornerSizes(radiusPx)
+        .build()
 }
 
 fun Toolbar.inflateMenu(

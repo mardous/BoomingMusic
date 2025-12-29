@@ -97,9 +97,15 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
         }
         primaryColorSpan = textColorPrimary().toForegroundColorSpan()
         secondaryColorSpan = textColorSecondary().toForegroundColorSpan()
+        setupImageStyle()
         setUpButtons()
         setUpProgressStyle()
         view.setOnTouchListener { _, event -> flingPlayBackController.onTouchEvent(event) }
+    }
+
+    fun setupImageStyle() {
+        val cornerRadius = Preferences.getNowPlayingImageCornerRadius(requireContext())
+        binding.image.setCornerRadius((cornerRadius / 2).toFloat())
     }
 
     private fun setUpButtons() {

@@ -1,7 +1,6 @@
 package com.mardous.booming.ui.screen.player.cover.page
 
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +16,6 @@ import coil3.request.crossfade
 import coil3.toBitmap
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
-import com.google.android.material.shape.CornerFamily
-import com.google.android.material.shape.ShapeAppearanceModel
 import com.mardous.booming.R
 import com.mardous.booming.coil.songImage
 import com.mardous.booming.core.model.PaletteColor
@@ -26,8 +23,8 @@ import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.core.palette.PaletteProcessor
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.EXTRA_SONG
-import com.mardous.booming.extensions.requestContext
 import com.mardous.booming.extensions.requestView
+import com.mardous.booming.extensions.resources.setCornerRadius
 import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.Dispatchers
@@ -84,20 +81,13 @@ class ImageFragment : Fragment() {
         if (!nowPlayingScreen.supportsCustomCornerRadius)
             return
 
-        val shapeModel = requestContext {
-            val cornerRadius = Preferences.getNowPlayingImageCornerRadius(requireContext())
-            val cornerRadiusPx = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, cornerRadius.toFloat(), resources.displayMetrics)
-            ShapeAppearanceModel.builder()
-                .setAllCorners(CornerFamily.ROUNDED, cornerRadiusPx)
-                .build()
-        } ?: return
-
+        val cornerRadius = Preferences.getNowPlayingImageCornerRadius(requireContext())
         when (val image = albumCover) {
-            is ShapeableImageView -> image.shapeAppearanceModel = shapeModel
+            is ShapeableImageView -> image.setCornerRadius(cornerRadius.toFloat())
             else -> {
                 val card = requestView { it.findViewById<View>(R.id.player_image_card) }
                 if (card is MaterialCardView) {
-                    card.shapeAppearanceModel = shapeModel
+                    card.setCornerRadius(cornerRadius.toFloat())
                 }
             }
         }
