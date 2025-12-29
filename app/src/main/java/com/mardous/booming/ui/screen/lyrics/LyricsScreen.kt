@@ -219,7 +219,7 @@ fun CoverLyricsScreen(
     }
 
     val playerColorScheme by playerViewModel.colorSchemeFlow.collectAsState(
-        initial = PlayerColorScheme.themeColorScheme(LocalContext.current)
+        initial = PlayerColorScheme.themeColorScheme(context)
     )
     PlayerTheme(playerColorScheme) {
         Box(modifier = modifier.fillMaxSize()) {
