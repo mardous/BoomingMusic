@@ -19,10 +19,7 @@ package com.mardous.booming.ui.adapters
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isGone
 import androidx.fragment.app.FragmentActivity
@@ -30,6 +27,7 @@ import coil3.load
 import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.coil.placeholderDrawableRes
+import com.mardous.booming.core.model.action.SongClickBehavior
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.core.model.filesystem.StorageDevice
 import com.mardous.booming.core.model.sort.SortKey
@@ -37,8 +35,8 @@ import com.mardous.booming.core.sort.FileSortMode
 import com.mardous.booming.data.model.Folder
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.isActivated
-import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.media.asReadableTrackNumber
+import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.plurals
 import com.mardous.booming.extensions.resources.useAsIcon
 import com.mardous.booming.extensions.utilities.buildInfoString
@@ -52,6 +50,8 @@ class FileAdapter(
     files: List<FileSystemItem>,
     private val itemLayoutRes: Int,
     private var sortMode: FileSortMode,
+    var songClickBehavior: SongClickBehavior,
+    var playOptionAlwaysVisible: Boolean,
     private val callback: IFileCallback?,
 ) : AbsMultiSelectAdapter<FileAdapter.ViewHolder, FileSystemItem>(activity, R.menu.menu_media_selection) {
 
@@ -148,7 +148,7 @@ class FileAdapter(
         return files[position]
     }
 
-    override fun getName(item: FileSystemItem): String? = item.fileName
+    override fun getName(item: FileSystemItem): String = item.fileName
 
     override fun onMultipleItemAction(menuItem: MenuItem, selection: List<FileSystemItem>) {
         callback?.filesMenuItemClick(selection, menuItem)
@@ -193,6 +193,11 @@ class FileAdapter(
                 menu?.setOnClickListener(object : OnClickMenu() {
                     override val popupMenuRes: Int
                         get() = filePopupMenuResource
+
+                    override fun onPreparePopup(menu: Menu) {
+                        menu.findItem(R.id.action_play)
+                            ?.isVisible = !songClickBehavior.isAbleToPlay || playOptionAlwaysVisible
+                    }
 
                     override fun onMenuItemClick(item: MenuItem): Boolean {
                         return callback?.fileMenuItemClick(currentFile, item) == true

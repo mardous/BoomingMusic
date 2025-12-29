@@ -105,16 +105,31 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
     override fun createAdapter(): FileAdapter {
         notifyLayoutResChanged(itemLayoutRes)
         val dataSet = adapter?.files ?: ArrayList()
-        return FileAdapter(mainActivity, dataSet, itemLayoutRes, sortMode, this)
+        return FileAdapter(
+            activity = mainActivity,
+            files = dataSet,
+            itemLayoutRes = itemLayoutRes,
+            sortMode = sortMode,
+            songClickBehavior = Preferences.songClickAction,
+            playOptionAlwaysVisible = Preferences.playOptionAlwaysVisible,
+            callback = this
+        )
     }
 
     override fun fileClick(file: FileSystemItem) {
         when (file) {
             is Song -> {
-                libraryViewModel.listSongsFromFiles(file).observe(viewLifecycleOwner) { (songs, position) ->
-                    playerViewModel.openQueue(songs, position)
+                libraryViewModel.listSongsFromFiles(
+                    song = file,
+                    files = fileSystem?.getSortedChildren(FileSortMode.AllFiles)
+                ).observe(viewLifecycleOwner) { (songs, position) ->
+                    playerViewModel.openSongs(position, songs, Preferences.songClickAction)
+                    if (adapter?.songClickBehavior?.isAbleToPlay == false) {
+                        showToast(R.string.added_title_to_playing_queue)
+                    }
                 }
             }
+
             else -> {
                 if (Preferences.hierarchyFolderView) {
                     libraryViewModel.navigateToPath(file.filePath)
@@ -133,15 +148,18 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
                     R.id.action_blacklist -> {
                         libraryViewModel.blacklistPath(File(file.filePath))
                     }
+
                     R.id.action_set_as_start_directory -> {
                         Preferences.startDirectory = File(file.filePath)
                     }
+
                     R.id.action_scan -> {
                         libraryViewModel.scanPaths(requireContext(), arrayOf(file.filePath))
                             .observe(viewLifecycleOwner) {
                                 showToast(R.string.scan_finished)
                             }
                     }
+
                     else -> {
                         if (isFlatView) {
                             file.songs.onSongsMenu(this, menuItem)
@@ -159,7 +177,27 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
                 }
                 true
             }
-            is Song -> file.onSongMenu(this, menuItem)
+
+            is Song -> {
+                when (menuItem.itemId) {
+                    R.id.action_play -> {
+                        libraryViewModel.listSongsFromFiles(
+                            song = file,
+                            files = fileSystem?.getSortedChildren(FileSortMode.AllFiles)
+                        ).observe(viewLifecycleOwner) { (songs, position) ->
+                            playerViewModel.openSongs(
+                                position = position,
+                                songs = songs,
+                                behavior = Preferences.playOptionClickBehavior
+                            )
+                        }
+                        true
+                    }
+
+                    else -> file.onSongMenu(this, menuItem)
+                }
+            }
+
             else -> false
         }
     }

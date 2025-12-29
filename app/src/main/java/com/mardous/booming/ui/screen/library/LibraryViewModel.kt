@@ -196,15 +196,6 @@ class LibraryViewModel(
         }
     }
 
-    private suspend fun songsFromCurrentFolder(): List<Song> {
-        val currentFolder = fileSystem.value
-        return if (currentFolder != null) {
-            filesToSongs(currentFolder.children, includeFolders = false, deepListing = false)
-        } else {
-            emptyList()
-        }
-    }
-
     fun navigateToPath(
         navigateToPath: String? = null,
         hierarchyView: Boolean = Preferences.hierarchyFolderView
@@ -258,10 +249,15 @@ class LibraryViewModel(
 
     fun listSongsFromFiles(
         song: Song,
-        files: List<FileSystemItem>? = fileSystem.value?.children
+        files: List<FileSystemItem>?
     ) = liveData(IO) {
         if (!files.isNullOrEmpty()) {
-            val songs = songsFromCurrentFolder()
+            val currentFolder = fileSystem.value
+            val songs = if (currentFolder != null) {
+                filesToSongs(files, includeFolders = false, deepListing = false)
+            } else {
+                emptyList()
+            }
             val startPos = songs.indexOfSong(song.id).coerceAtLeast(0)
             emit(songs to startPos)
         }

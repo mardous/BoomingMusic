@@ -167,11 +167,7 @@ open class SongAdapter(
         protected open fun onSongMenuItemClick(item: MenuItem): Boolean {
             if (item.itemId == R.id.action_play) {
                 val playerViewModel = activity.getViewModel<PlayerViewModel>()
-                val playOptionBehavior = if (Preferences.playOptionPlaysWholeList) {
-                    SongClickBehavior.PlayWholeList
-                } else {
-                    SongClickBehavior.PlayOnlyThisSong
-                }
+                val playOptionBehavior = Preferences.playOptionClickBehavior
                 playerViewModel.openSongs(layoutPosition, dataSet, playOptionBehavior)
                 return true
             }
@@ -188,8 +184,7 @@ open class SongAdapter(
                 val songClickBehavior = Preferences.songClickAction
                 val playerViewModel = activity.getViewModel<PlayerViewModel>()
                 playerViewModel.openSongs(layoutPosition, dataSet, songClickBehavior)
-                if (songClickBehavior == SongClickBehavior.EnqueueAtEnd ||
-                    songClickBehavior == SongClickBehavior.QueueNext) {
+                if (!songClickBehavior.isAbleToPlay) {
                     activity.showToast(R.string.added_title_to_playing_queue)
                 }
             }

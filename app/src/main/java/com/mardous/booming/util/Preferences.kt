@@ -302,8 +302,12 @@ object Preferences : KoinComponent {
     val playOptionAlwaysVisible: Boolean
         get() = preferences.getBoolean(PLAY_OPTION_ALWAYS_VISIBLE, false)
 
-    val playOptionPlaysWholeList: Boolean
-        get() = preferences.getBoolean(PLAY_OPTION_PLAYS_WHOLE_LIST, false)
+    val playOptionClickBehavior: SongClickBehavior
+        get() = if (preferences.getBoolean(PLAY_OPTION_PLAYS_WHOLE_LIST, false)) {
+            SongClickBehavior.PlayWholeList
+        } else {
+            SongClickBehavior.PlayOnlyThisSong
+        }
 
     val searchAutoQueue: Boolean
         get() = preferences.getBoolean(SEARCH_AUTO_QUEUE, false)
