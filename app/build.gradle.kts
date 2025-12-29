@@ -232,6 +232,4 @@ dependencies {
 
     implementation(libs.versioncompare)
     implementation(libs.commons.text)
-
-    debugImplementation(libs.leakcanary)
 }
