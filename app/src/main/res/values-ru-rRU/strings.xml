@@ -740,14 +740,14 @@
     <string name="mp3_index_seeking_summary">Загружает весь MP3-файл в память для перемотки вместо использования заголовка Xing.
         Включайте, только если перемотка не работает на VBR-файлах.
         Требуется перезапуск.</string>
-    <string name="play_option_always_visible_title">Всегда показывать опцию «Воспроизвести»</string>
-    <string name="play_option_always_visible_summary">Если включено, опция «Воспроизвести» будет всегда отображаться в меню трека, независимо от настроек нажатия.</string>
-    <string name="play_option_whole_list_title">«Воспроизвести» запускает весь список</string>
-    <string name="play_option_whole_list_summary">Если включено, выбор опции «Воспроизвести» в меню запустит воспроизведение всего плейлиста. Если выключено - только выбранного трека.</string>
+    <string name="play_option_always_visible_title">Всегда показывать пункт «Воспроизвести»</string>
+    <string name="play_option_always_visible_summary">Если включено, пункт «Воспроизвести» будет всегда отображаться в меню трека, независимо от настроек нажатия.</string>
+    <string name="play_option_whole_list_title">Пункт «Воспроизвести» запускает весь список</string>
+    <string name="play_option_whole_list_summary">Если включено, выбор пункта «Воспроизвести» в меню запустит воспроизведение всего плейлиста. Если выключено - только выбранного трека.</string>
     <string name="on_song_click_title">При нажатии на трек</string>
-    <string name="on_song_click_play_only_this_song_title">Играть только этот трек</string>
-    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
-    <string name="on_song_click_play_whole_list_title">Играть весь список</string>
+    <string name="on_song_click_play_only_this_song_title">Воспроизвести только этот трек</string>
+    <string name="on_song_click_play_only_this_song_summary">Текущая очередь будет очищена и заменена выбранным треком.</string>
+    <string name="on_song_click_play_whole_list_title">Воспроизвести весь список</string>
     <string name="on_song_click_play_whole_list_summary">Текущая очередь будет заменена всеми треками из списка, альбома или папки.</string>
     <string name="on_song_click_queue_next_title">Добавить в очередь следующим</string>
     <string name="on_song_click_queue_next_summary">Выбранный трек будет поставлен следующим в очереди.</string>
