@@ -561,7 +561,6 @@
     <string name="acknowledgments_title">تنويه</string>
     <string name="translators_title">المترجمون</string>
     <string name="translators_summary">شكراً لأولئك الذين يجعلون الموسيقى المزدهرة متاحة بعدة لغات.</string>
-    <string name="beta_testers_title">اختبار بيتا</string>
     <string name="telegram_chat">دردشة تيليجرام</string>
     <string name="telegram_chat_summary">انضم إلى المحادثة في تيليجرام واحصل على معلومات عن الإصدارات والأخبار الجديدة.</string>
     <string name="view_profile_on_github">عرض الملف الشخصي على GitHub</string>

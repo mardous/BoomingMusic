@@ -58,6 +58,8 @@ private const val GITHUB_URL = "$AUTHOR_GITHUB_URL/BoomingMusic"
 private const val RELEASES_LINK = "$GITHUB_URL/releases"
 const val ISSUE_TRACKER_LINK = "$GITHUB_URL/issues"
 private const val AUTHOR_TELEGRAM_LINK = "https://t.me/mardeez"
+private const val COMMUNITY_LINK = "https://github.com/mardous/BoomingMusic/wiki/Community"
+private const val FAQ_LINK = "https://github.com/mardous/BoomingMusic/wiki/FAQ"
 private const val APP_TELEGRAM_LINK = "https://t.me/mardousdev"
 private const val CROWDIN_PROJECT_LINK = "https://crowdin.com/project/booming-music"
 private const val DONATE_LINK = "https://ko-fi.com/christiaam"
@@ -127,6 +129,9 @@ fun AboutScreen(
                 },
                 onLicensesClick = {
                     onNavigateToId(R.id.nav_licenses)
+                },
+                onFAQClick = {
+                    context.openUrl(FAQ_LINK)
                 }
             )
 
@@ -162,6 +167,9 @@ fun AboutScreen(
             AboutAcknowledgmentSection(
                 onTranslatorsClick = {
                     onNavigateToId(R.id.nav_translators)
+                },
+                onContributorsClick = {
+                    context.openUrl(COMMUNITY_LINK)
                 }
             )
 
@@ -191,9 +199,10 @@ fun AboutScreen(
 @Composable
 private fun AboutHeader(
     version: String,
-    onChangelogClick: () -> Unit = {},
-    onForkClick: () -> Unit = {},
-    onLicensesClick: () -> Unit = {}
+    onChangelogClick: () -> Unit,
+    onForkClick: () -> Unit,
+    onLicensesClick: () -> Unit,
+    onFAQClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -233,6 +242,13 @@ private fun AboutHeader(
                 label = stringResource(R.string.changelog),
                 modifier = Modifier.weight(1f),
                 onClick = onChangelogClick
+            )
+
+            ActionButton(
+                icon = R.drawable.ic_help_24dp,
+                label = stringResource(R.string.faq),
+                modifier = Modifier.weight(1f),
+                onClick = onFAQClick
             )
 
             ActionButton(
@@ -369,7 +385,8 @@ private fun AboutSupportSection(
 
 @Composable
 private fun AboutAcknowledgmentSection(
-    onTranslatorsClick: () -> Unit
+    onTranslatorsClick: () -> Unit,
+    onContributorsClick: () -> Unit
 ) {
     AboutSection(title = stringResource(R.string.acknowledgments_title)) {
         AboutCard {
@@ -380,10 +397,10 @@ private fun AboutAcknowledgmentSection(
                 onClick = onTranslatorsClick
             )
             AboutListItem(
-                iconRes = R.drawable.ic_experiment_24dp,
-                title = stringResource(R.string.beta_testers_title),
-                summary = stringResource(R.string.beta_testers),
-                summaryMaxLines = Int.MAX_VALUE
+                iconRes = R.drawable.ic_groups_24dp,
+                title = stringResource(R.string.contributors_title),
+                summary = stringResource(R.string.contributors_summary),
+                onClick = onContributorsClick
             )
         }
     }

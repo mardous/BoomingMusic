@@ -524,7 +524,6 @@
     <string name="acknowledgments_title">Teşekkür</string>
     <string name="translators_title">Çevirmenler</string>
     <string name="translators_summary">Booming Music\'i birçok dilde kullanılabilir hale getirenlere teşekkürler.</string>
-    <string name="beta_testers_title">Beta Test Kullanıcıları</string>
     <string name="telegram_chat">Telegram sohbeti</string>
     <string name="telegram_chat_summary">Telegram\'daki sohbete katılın ve yeni sürümler ile haberlerden haberdar olun.</string>
     <string name="view_profile_on_github">GitHub\'da profili görüntüle</string>
