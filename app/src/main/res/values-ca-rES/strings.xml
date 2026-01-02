@@ -522,6 +522,7 @@
     <string name="version">Versió</string>
     <string name="changelog">Registre de canvis</string>
     <string name="fork_on_github">Clona a Github</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Llicències</string>
     <string name="author">Autor</string>
     <string name="mardous_summary">Desenvolupador principal</string>
@@ -529,7 +530,8 @@
     <string name="acknowledgments_title">Agraïments</string>
     <string name="translators_title">Traductors</string>
     <string name="translators_summary">Gràcies a tothom qui fa possible que Booming Music estigui disponible en tants idiomes.</string>
-    <string name="beta_testers_title">Provadors beta</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">Xat de Telegram</string>
     <string name="telegram_chat_summary">Entreu al xat de Telegram per assabentar-vos de noves actualitzacions i notícies.</string>
     <string name="view_profile_on_github">Mostra el perfil a Github</string>
