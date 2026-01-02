@@ -30,6 +30,7 @@ import com.mardous.booming.extensions.isNightMode
 import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.extensions.systemContrast
 import com.mardous.booming.ui.component.compose.color.onThis
+import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -56,7 +57,7 @@ typealias PlayerColorSchemeList = List<PlayerColorSchemeMode>
 @Immutable
 data class PlayerColorScheme(
     val mode: Mode,
-    val isDark: Boolean,
+    val appThemeToken: AppThemeToken,
     @param:ColorInt val surfaceColor: Int,
     @param:ColorInt val emphasisColor: Int,
     @param:ColorInt val primaryTextColor: Int,
@@ -95,11 +96,21 @@ data class PlayerColorScheme(
         )
     }
 
+    class AppThemeToken(private val isDark: Boolean, private val isMaterialYou: Boolean) {
+        fun isValid(context: Context): Boolean {
+            return context.isNightMode == isDark && Preferences.isMaterialYouTheme == isMaterialYou
+        }
+
+        companion object {
+            val None = AppThemeToken(isDark = false, isMaterialYou = false)
+        }
+    }
+
     companion object {
 
         val Unspecified = PlayerColorScheme(
             mode = Mode.SimpleColor,
-            isDark = false,
+            appThemeToken = AppThemeToken.None,
             surfaceColor = Color.TRANSPARENT,
             emphasisColor = Color.TRANSPARENT,
             primaryTextColor = Color.TRANSPARENT,
@@ -121,7 +132,10 @@ data class PlayerColorScheme(
             val secondaryControlColor = controlColor.withAlpha(0.2f)
             return PlayerColorScheme(
                 mode = mode,
-                isDark = context.isNightMode,
+                appThemeToken = AppThemeToken(
+                    isDark = context.isNightMode,
+                    isMaterialYou = Preferences.isMaterialYouTheme
+                ),
                 surfaceColor = context.surfaceColor(),
                 emphasisColor = context.primaryColor(),
                 primaryTextColor = context.textColorPrimary(),
@@ -156,7 +170,7 @@ data class PlayerColorScheme(
         fun vibrantColorScheme(color: PaletteColor): PlayerColorScheme {
             return PlayerColorScheme(
                 mode = Mode.VibrantColor,
-                isDark = !color.backgroundColor.isColorLight,
+                appThemeToken = AppThemeToken.None,
                 surfaceColor = color.backgroundColor,
                 emphasisColor = color.backgroundColor,
                 primaryTextColor = color.primaryTextColor,
@@ -188,7 +202,7 @@ data class PlayerColorScheme(
             )
             PlayerColorScheme(
                 mode = Mode.MaterialYou,
-                isDark = colorScheme.isDark,
+                appThemeToken = AppThemeToken.None,
                 surfaceColor = colorScheme.surface,
                 emphasisColor = colorScheme.primary,
                 primaryTextColor = colorScheme.onSurface,

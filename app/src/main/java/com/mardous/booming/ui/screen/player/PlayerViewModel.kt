@@ -37,7 +37,6 @@ import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.QueuePosition
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.toAudioFile
-import com.mardous.booming.extensions.isNightMode
 import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.getQueueItems
@@ -655,7 +654,7 @@ class PlayerViewModel(
         color: PaletteColor
     ) = viewModelScope.launch(Dispatchers.Default) {
         val currentScheme = colorScheme.mode.takeIf { it == PlayerColorSchemeMode.AppTheme }
-        if (currentScheme == mode && colorScheme.isDark == context.isNightMode)
+        if (currentScheme == mode && colorScheme.appThemeToken.isValid(context))
             return@launch
 
         val result = runCatching {

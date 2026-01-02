@@ -106,7 +106,7 @@ fun BoomingMusicTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     blackTheme: Boolean = Preferences.blackTheme,
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = Preferences.materialYou,
+    dynamicColor: Boolean = Preferences.isMaterialYouTheme,
     content: @Composable() () -> Unit
 ) {
     var colorScheme = when {

@@ -96,7 +96,7 @@ object Preferences : KoinComponent {
     val blackTheme: Boolean
         get() = preferences.getBoolean(BLACK_THEME, false)
 
-    val materialYou: Boolean
+    val isMaterialYouTheme: Boolean
         get() = preferences.getBoolean(MATERIAL_YOU, hasS())
 
     val isCustomFont: Boolean

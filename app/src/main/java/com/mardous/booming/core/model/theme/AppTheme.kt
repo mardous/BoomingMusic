@@ -49,7 +49,7 @@ class AppTheme private constructor(
             val generalTheme = Preferences.generalTheme
             val themeMode = Preferences.getThemeMode(generalTheme)
             if (DynamicColors.isDynamicColorAvailable()) {
-                if (Preferences.materialYou) {
+                if (Preferences.isMaterialYouTheme) {
                     return AppTheme(
                         id = generalTheme,
                         themeRes = themeMode.themeRes,
