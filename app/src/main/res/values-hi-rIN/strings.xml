@@ -520,6 +520,7 @@
     <string name="version">संस्करण</string>
     <string name="changelog">चेंजलाग</string>
     <string name="fork_on_github">गिटहब पर फोर्क</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">लायसेंसेज़</string>
     <string name="author">लेखक</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -527,7 +528,8 @@
     <string name="acknowledgments_title">स्वीकृति</string>
     <string name="translators_title">अनुवादक</string>
     <string name="translators_summary">उन लोगों का धन्यवाद जिन्होंने बूमिंग म्यूजिक को कई भाषाओं में उपलब्ध कराया।</string>
-    <string name="beta_testers_title">Beta testers</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">टेलीग्राम चैट</string>
     <string name="telegram_chat_summary">टेलीग्राम पर चैट में शामिल हों और नए रिलीज़ और समाचारों के बारे में जानकारियाँ प्राप्त करें।</string>
     <string name="view_profile_on_github">GitHub पर प्रोफ़ाइल देखें</string>
