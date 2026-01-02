@@ -521,6 +521,7 @@
     <string name="version">Versão</string>
     <string name="changelog">Mudanças</string>
     <string name="fork_on_github">Fork on GitHub</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Licenças</string>
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -528,7 +529,8 @@
     <string name="acknowledgments_title">Reconhecimento</string>
     <string name="translators_title">Tradutores</string>
     <string name="translators_summary">Obrigado a todos que fazem Booming Music disponível em vários idiomas.</string>
-    <string name="beta_testers_title">Beta testers</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">Bate-papo do Telegram</string>
     <string name="telegram_chat_summary">Junte-se ao chat no Telegram e receba informações sobre novos lançamentos e notícias.</string>
     <string name="view_profile_on_github">Ver perfil no GitHub</string>
