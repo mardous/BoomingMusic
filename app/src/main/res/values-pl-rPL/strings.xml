@@ -135,7 +135,7 @@
     <string name="permission_bluetooth_title">Urządzenia w pobliżu</string>
     <string name="permission_bluetooth_description">Dostęp do pobliskich urządzeń jest wymagany do wykrywania urządzeń Bluetooth</string>
     <string name="permission_bluetooth_denied">Nie przyznano dostępu do pobliskich urządzeń.</string>
-    <string name="permission_read_images_title">Odczyt obrazów (opcjonalny)</string>
+    <string name="permission_read_images_title">Dostęp do zdjęć (opcjonalny)</string>
     <string name="permission_read_images_summary">Pozwala aplikacji Booming Music znajdować okładki albumów w folderach z muzyką.
         Nie jest wymagane, jeśli nie zależy ci na tej funkcji.</string>
     <string name="permission_read_images_denied">Wymagane jest uprawnienie do odczytu obrazów z urządzenia.</string>
