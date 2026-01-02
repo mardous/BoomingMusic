@@ -538,6 +538,7 @@
     <string name="version">גרסה</string>
     <string name="changelog">יומן שינויים</string>
     <string name="fork_on_github">קוד מקור</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">רשיונות</string>
     <string name="author">יוצר</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -545,7 +546,8 @@
     <string name="acknowledgments_title">הכרה</string>
     <string name="translators_title">מתרגמים</string>
     <string name="translators_summary">תודה לאלו שעוזרים להפוך את Booming Music לזמין בשפות רבות.</string>
-    <string name="beta_testers_title">בודקי בטא</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">ערוץ טלגרם</string>
     <string name="telegram_chat_summary">הצטרפו לצ\'אט בטלגרם וקבלו עדכונים על מהדורות וחידושים.</string>
     <string name="view_profile_on_github">צפה בפרופיל ב-GitHub</string>
