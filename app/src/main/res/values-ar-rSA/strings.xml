@@ -554,6 +554,7 @@
     <string name="version">الإصدار</string>
     <string name="changelog">تغيير</string>
     <string name="fork_on_github">Fork on GitHub</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">التراخيص</string>
     <string name="author">المؤلف</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -561,7 +562,8 @@
     <string name="acknowledgments_title">تنويه</string>
     <string name="translators_title">المترجمون</string>
     <string name="translators_summary">شكراً لأولئك الذين يجعلون الموسيقى المزدهرة متاحة بعدة لغات.</string>
-    <string name="beta_testers_title">اختبار بيتا</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">دردشة تيليجرام</string>
     <string name="telegram_chat_summary">انضم إلى المحادثة في تيليجرام واحصل على معلومات عن الإصدارات والأخبار الجديدة.</string>
     <string name="view_profile_on_github">عرض الملف الشخصي على GitHub</string>
