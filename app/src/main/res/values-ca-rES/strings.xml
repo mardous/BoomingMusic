@@ -732,15 +732,15 @@
     <string name="on_song_click_play_only_this_song_summary">Es buidarà la cua actual i es reemplaçarà per la cançó seleccionada.</string>
     <string name="on_song_click_play_whole_list_title">Reprodueix tota la llista</string>
     <string name="on_song_click_play_whole_list_summary">Es reemplaçarà la cua amb totes les cançons de la llista/àlbum/carpeta.</string>
-    <string name="on_song_click_queue_next_title">Afegeix a la cua</string>
+    <string name="on_song_click_queue_next_title">Afegeix tot seguit</string>
     <string name="on_song_click_queue_next_summary">La cançó seleccionada s\'afegirà a la següent posició de la cua.</string>
-    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
-    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
-    <string name="on_clear_queue_title">When clearing the queue</string>
-    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
-    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
+    <string name="on_song_click_enqueue_at_end_title">Afegeix al final</string>
+    <string name="on_song_click_enqueue_at_end_summary">La cançó seleccionada s\'afegirà al final de la cua actual.</string>
+    <string name="on_clear_queue_title">Quan es buidi la cua</string>
+    <string name="on_clear_queue_remove_all_songs_title">Treu totes les cançons</string>
+    <string name="on_clear_queue_remove_all_songs_summary">Tota la cua de reproducció es buidarà.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Treu totes les cançons excepte l\'actual</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Només es manté a la cua la cançó que es reprodueix.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descarrega metadades automàticament</string>
     <string name="ignore_media_store_album_covers_title">Ignora les portades de Media Store</string>
