@@ -522,6 +522,7 @@
     <string name="version">Versie</string>
     <string name="changelog">Wijzigingslogboek</string>
     <string name="fork_on_github">Fork on GitHub</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Licenties</string>
     <string name="author">Auteur</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -529,7 +530,8 @@
     <string name="acknowledgments_title">Bevestiging</string>
     <string name="translators_title">Vertalers</string>
     <string name="translators_summary">Dank aan degenen die Booming Music in veel talen beschikbaar maken.</string>
-    <string name="beta_testers_title">Beta testers</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">Telegram chat</string>
     <string name="telegram_chat_summary">Neem deel aan de chat in Telegram en ontvang informatie over nieuwe releases en nieuws.</string>
     <string name="view_profile_on_github">Bekijk profiel op GitHub</string>
