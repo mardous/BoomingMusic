@@ -522,6 +522,7 @@
     <string name="version">Έκδοση</string>
     <string name="changelog">Αρχείο Αλλαγών</string>
     <string name="fork_on_github">Fork on GitHub</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Άδειες</string>
     <string name="author">Συγγραφέας</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -529,7 +530,8 @@
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
-    <string name="beta_testers_title">Beta testers</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">Telegram συνομιλία</string>
     <string name="telegram_chat_summary">Γίνετε μέλος της συνομιλίας στο Telegram και ενημερωθείτε για νέες κυκλοφορίες και ειδήσεις.</string>
     <string name="view_profile_on_github">Προβολή προφίλ στο GitHub</string>
