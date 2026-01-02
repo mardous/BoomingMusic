@@ -58,5 +58,9 @@
   {
     "contrib_name": "Ukrainian",
     "contrib_description": "[Yulia Kaminska](https://crowdin.com/profile/ulia.kaminska15), elixcat"
+  },
+  {
+    "contrib_name": "Vietnamese",
+    "contrib_description": "[Zanei Nguyen](https://crowdin.com/profile/zanei)"
   }
 ]
