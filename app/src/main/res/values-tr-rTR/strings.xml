@@ -517,6 +517,7 @@
     <string name="version">Sürüm</string>
     <string name="changelog">Değişiklik günlüğü</string>
     <string name="fork_on_github">GitHub\'da Fork\'la</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Lisanslar</string>
     <string name="author">Geliştirici</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -524,7 +525,8 @@
     <string name="acknowledgments_title">Teşekkür</string>
     <string name="translators_title">Çevirmenler</string>
     <string name="translators_summary">Booming Music\'i birçok dilde kullanılabilir hale getirenlere teşekkürler.</string>
-    <string name="beta_testers_title">Beta Test Kullanıcıları</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">Telegram sohbeti</string>
     <string name="telegram_chat_summary">Telegram\'daki sohbete katılın ve yeni sürümler ile haberlerden haberdar olun.</string>
     <string name="view_profile_on_github">GitHub\'da profili görüntüle</string>
