@@ -514,6 +514,7 @@
     <string name="version">バージョン</string>
     <string name="changelog">更新履歴</string>
     <string name="fork_on_github">Githubでフォークする</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">ライセンス</string>
     <string name="author">作成者</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -521,7 +522,8 @@
     <string name="acknowledgments_title">謝辞</string>
     <string name="translators_title">翻訳者</string>
     <string name="translators_summary">Booming Musicを多くの言語で利用可能にしてくれた人たちに感謝します。</string>
-    <string name="beta_testers_title">ベータテスター</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">Telegram</string>
     <string name="telegram_chat_summary">Telegramに参加して、新しいリリースとニュースについて情報を得る。</string>
     <string name="view_profile_on_github">GitHubでプロフィールを表示</string>
