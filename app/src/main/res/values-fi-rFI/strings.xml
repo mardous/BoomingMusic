@@ -522,6 +522,7 @@
     <string name="version">Versio</string>
     <string name="changelog">Muutosloki</string>
     <string name="fork_on_github">Fork on GitHub</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Lisenssit</string>
     <string name="author">Tekijä</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -529,7 +530,8 @@
     <string name="acknowledgments_title">Tunnustus</string>
     <string name="translators_title">Kääntäjät</string>
     <string name="translators_summary">Kiitos niille, jotka tekevät Booming musiikkia saatavilla monilla kielillä.</string>
-    <string name="beta_testers_title">Beetatestaajat</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">Telegram chat</string>
     <string name="telegram_chat_summary">Liity chattiin Telegramissa ja saa tietoa uusista julkaisuista ja uutisista.</string>
     <string name="view_profile_on_github">Näytä profiili GitHubissa</string>
