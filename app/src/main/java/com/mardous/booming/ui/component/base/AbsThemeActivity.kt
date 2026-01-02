@@ -62,17 +62,17 @@ abstract class AbsThemeActivity : AppCompatActivity() {
     private fun updateTheme() {
         val appTheme = createAppTheme()
         setTheme(appTheme.themeRes)
-        if (appTheme.hasSeedColor) {
-            DynamicColors.applyToActivityIfAvailable(this,
-                DynamicColorsOptions.Builder()
-                    .setContentBasedSource(appTheme.seedColor)
-                    .setOnAppliedCallback {
-                        if (appTheme.isBlackTheme) {
-                            setTheme(R.style.BlackThemeOverlay)
-                        }
+        if (appTheme.applyDynamicColors) {
+            val dynamicColorsOptions = DynamicColorsOptions.Builder()
+                .setOnAppliedCallback {
+                    if (appTheme.isBlackTheme) {
+                        setTheme(R.style.BlackThemeOverlay)
                     }
-                    .build()
-            )
+                }
+            if (appTheme.seedColor != null) {
+                dynamicColorsOptions.setContentBasedSource(appTheme.seedColor)
+            }
+            DynamicColors.applyToActivityIfAvailable(this, dynamicColorsOptions.build())
         }
         if (Preferences.isCustomFont) {
             setTheme(R.style.CustomFontThemeOverlay)

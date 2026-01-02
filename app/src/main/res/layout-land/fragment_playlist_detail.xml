@@ -50,7 +50,7 @@
                     app:layout_constraintTop_toTopOf="@+id/image"
                     app:layout_constraintBottom_toBottomOf="@+id/image"
                     app:layout_constraintStart_toEndOf="@+id/image"
-                    app:layout_constraintEnd_toStartOf="@+id/playAction">
+                    app:layout_constraintEnd_toStartOf="@+id/actions">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/title"
@@ -91,28 +91,32 @@
                     tools:text="@tools:sample/lorem/random"
                     tools:visibility="visible" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/playAction"
-                    style="@style/Widget.Material3.Button.Icon"
+                <com.google.android.material.button.MaterialButtonGroup
+                    android:id="@+id/actions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/action_play"
-                    app:icon="@drawable/ic_play_24dp"
-                    app:layout_constraintEnd_toStartOf="@+id/shuffleAction"
-                    app:layout_constraintTop_toTopOf="@+id/image"
-                    app:layout_constraintBottom_toBottomOf="@+id/image" />
+                    android:gravity="center_vertical"
+                    android:spacing="6dp"
+                    app:layout_constraintTop_toTopOf="@+id/titles"
+                    app:layout_constraintBottom_toBottomOf="@+id/titles"
+                    app:layout_constraintEnd_toEndOf="parent">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/shuffleAction"
-                    style="?materialIconButtonFilledTonalStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/shuffle_action"
-                    app:icon="@drawable/ic_shuffle_24dp"
-                    app:layout_constraintTop_toTopOf="@+id/image"
-                    app:layout_constraintBottom_toBottomOf="@+id/image"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/playAction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_play"
+                        app:icon="@drawable/ic_play_24dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/shuffleAction"
+                        style="?materialIconButtonFilledTonalStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/shuffle_action"
+                        app:icon="@drawable/ic_shuffle_24dp" />
+
+                </com.google.android.material.button.MaterialButtonGroup>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

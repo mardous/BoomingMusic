@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="Theme.Booming" parent="Base.Theme.Booming"/>
 
@@ -9,42 +9,22 @@
 
     <style name="Theme.Booming.FollowSystem" parent="Base.Theme.Booming.Adaptive"/>
 
-    <style name="Theme.Booming.DynamicColors" parent="@style/Theme.Material3Expressive.DayNight.NoActionBar">
-        <item name="rectSelector">@drawable/rect_selector</item>
-        <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
-    </style>
-
     <style name="Theme.Booming.SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="ToolbarStyle" parent="Widget.Material3Expressive.Toolbar">
-        <item name="android:transitionName">toolbar</item>
-        <item name="contentInsetStart">0dp</item>
-        <item name="contentInsetStartWithNavigation">0dp</item>
-        <item name="popupTheme">?toolbarPopupTheme</item>
-        <item name="titleMarginStart">16dp</item>
+    <style name="Widget.Booming.Expressive.Button" parent="Widget.Material3Expressive.Button">
+        <item name="iconGravity">textStart</item>
     </style>
 
-    <style name="SliderStyle" parent="Widget.Material3.Slider">
-        <item name="thumbRadius">6dp</item>
-        <item name="haloRadius">18dp</item>
-        <item name="thumbHeight">36dp</item>
+    <style name="Widget.Booming.Expressive.Button.Tonal" parent="Widget.Material3Expressive.Button.TonalButton">
+        <item name="iconGravity">textStart</item>
     </style>
 
-    <style name="Widget.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
-        <item name="android:contentDescription" tools:ignore="PrivateResource">
-            @string/abc_action_menu_overflow_description
-        </item>
-    </style>
-
-    <!-- MORE WIDGET STYLES -->
-
-    <style name="HomeActionButton" parent="Widget.Material3.Button.Icon">
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
+    <style name="HomeActionButton" parent="Widget.Material3Expressive.Button">
+        <item name="android:gravity">start|center_vertical</item>
         <item name="android:ellipsize">end</item>
         <item name="android:lines">2</item>
         <item name="android:paddingTop">16dp</item>
@@ -53,12 +33,10 @@
         <item name="backgroundTint">?colorSurfaceContainerLow</item>
         <item name="cornerRadius">20dp</item>
         <item name="iconPadding">16dp</item>
-        <item name="iconGravity">start</item>
         <item name="iconTint">?colorOnSurface</item>
-        <item name="android:gravity">start|center_vertical</item>
     </style>
 
-    <style name="PlayerIconButton" parent="Widget.Material3.Button.IconButton">
+    <style name="PlayerIconButton" parent="Widget.Material3Expressive.Button.IconButton.Standard">
         <item name="iconGravity">textStart</item>
         <item name="iconTint">?colorOnSurface</item>
         <item name="rippleColor">?colorControlHighlight</item>
@@ -81,13 +59,12 @@
         <item name="chipStartPadding">10dp</item>
     </style>
 
-    <style name="MenuButtonStyle" parent="Widget.Material3.Button.IconButton">
+    <style name="MenuButtonStyle" parent="Widget.Material3Expressive.Button.IconButton.Standard">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:focusableInTouchMode">false</item>
         <item name="android:focusable">false</item>
         <item name="icon">@drawable/ic_more_vert_24dp</item>
-        <item name="iconTint">?colorOnSurface</item>
     </style>
 
     <style name="BottomSheetStyle" parent="Widget.Material3.BottomSheet">

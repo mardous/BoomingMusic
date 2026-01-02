@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="rectSelector" format="reference"/>
-    <attr name="toolbarPopupTheme" format="reference"/>
 
     <declare-styleable name="InfoView">
         <attr name="infoTitle" format="string"/>

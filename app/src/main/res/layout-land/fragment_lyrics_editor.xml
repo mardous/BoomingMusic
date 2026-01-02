@@ -187,82 +187,58 @@
 
             </FrameLayout>
 
-            <LinearLayout
+            <com.google.android.material.button.MaterialButtonGroup
                 android:id="@+id/bottomButtonsContainer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="@dimen/lyrics_editor_padding_vertical"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
+                android:paddingStart="@dimen/lyrics_editor_padding_horizontal"
+                android:paddingEnd="@dimen/lyrics_editor_padding_horizontal"
+                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <LinearLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/search"
+                    style="?materialIconButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:contentDescription="@string/search_lyrics"
+                    app:icon="@drawable/ic_search_24dp" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/search"
-                        style="?materialIconButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/search_lyrics"
-                        app:icon="@drawable/ic_search_24dp"
-                        app:iconTint="?colorOnSecondaryContainer" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/download"
-                        style="?materialIconButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:contentDescription="@string/download_lyrics"
-                        app:icon="@drawable/ic_download_24dp"
-                        app:iconTint="?colorOnSecondaryContainer" />
-
-                </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/download"
+                    style="?materialIconButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/download_lyrics"
+                    app:icon="@drawable/ic_download_24dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/save"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:text="@string/action_save" />
-
-                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:minWidth="116dp"
+                    android:text="@string/action_save"/>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/select_all"
-                        style="?materialIconButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:contentDescription="@android:string/selectAll"
-                        app:icon="@drawable/ic_select_all_24dp"
-                        app:iconTint="?colorOnSecondaryContainer" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/select_all"
+                    style="?materialIconButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@android:string/selectAll"
+                    app:icon="@drawable/ic_select_all_24dp" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/paste"
-                        style="?materialIconButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@android:string/paste"
-                        app:icon="@drawable/ic_content_paste_24dp"
-                        app:iconTint="?colorOnSecondaryContainer" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/paste"
+                    style="?materialIconButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@android:string/paste"
+                    app:icon="@drawable/ic_content_paste_24dp" />
 
-                </LinearLayout>
-
-            </LinearLayout>
+            </com.google.android.material.button.MaterialButtonGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

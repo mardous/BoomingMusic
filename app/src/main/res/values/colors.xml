@@ -12,9 +12,7 @@
     <color name="surfaceContainerBlack">#090909</color>
     <color name="surfaceContainerLowBlack">#070707</color>
     <color name="surfaceContainerLowestBlack">#0B0B0B</color>
-    <color name="elevationOverlay">#9E9E9E</color>
     <color name="elevationOverlayBlack">@android:color/black</color>
-    <color name="semi_transparent">#20000000</color>
 
     <color name="twenty_percent_black_overlay">#34000000</color>
     <color name="fifty_percent_black_overlay">#88000000</color>

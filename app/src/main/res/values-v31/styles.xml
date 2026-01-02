@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Booming.DynamicColors" parent="@style/Theme.Material3Expressive.DynamicColors.DayNight">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
-        <item name="popupWindowStyle">@style/MaterialPopupMenuStyle</item>
-        <item name="toolbarPopupTheme">@style/ThemeOverlay.Booming.Adaptive</item>
-        <item name="rectSelector">@drawable/rect_selector</item>
+    <style name="Base.Theme.Booming" parent="Theme.Material3Expressive.Dark.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
         <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
-        <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
-        <item name="sliderStyle">@style/SliderStyle</item>
         <item name="popupMenuBackground">@drawable/popupmenu_background</item>
-        <item name="android:windowBackground">?attr/colorSurface</item>
-        <item name="windowActionModeOverlay">true</item>
-        <item name="android:actionBarSize">@dimen/toolbar_height</item>
+        <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
+        <item name="popupWindowStyle">@style/MaterialPopupMenuStyle</item>
+        <item name="materialButtonStyle">@style/Widget.Booming.Expressive.Button</item>
+        <item name="materialButtonTonalStyle">@style/Widget.Booming.Expressive.Button.Tonal</item>
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
+        <item name="rectSelector">@drawable/rect_selector</item>
+    </style>
+
+    <style name="Base.Theme.Booming.Light" parent="Theme.Material3Expressive.Light.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
+        <item name="popupMenuBackground">@drawable/popupmenu_background</item>
+        <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
+        <item name="popupWindowStyle">@style/MaterialPopupMenuStyle</item>
+        <item name="materialButtonStyle">@style/Widget.Booming.Expressive.Button</item>
+        <item name="materialButtonTonalStyle">@style/Widget.Booming.Expressive.Button.Tonal</item>
+        <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
+        <item name="rectSelector">@drawable/rect_selector</item>
+    </style>
+
+    <style name="Base.Theme.Booming.Adaptive" parent="@style/Theme.Material3Expressive.DayNight.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
+        <item name="popupMenuBackground">@drawable/popupmenu_background</item>
+        <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
+        <item name="popupWindowStyle">@style/MaterialPopupMenuStyle</item>
+        <item name="materialButtonStyle">@style/Widget.Booming.Expressive.Button</item>
+        <item name="materialButtonTonalStyle">@style/Widget.Booming.Expressive.Button.Tonal</item>
+        <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
+        <item name="rectSelector">@drawable/rect_selector</item>
     </style>
 
     <style name="Theme.Booming.SplashScreen" parent="Theme.SplashScreen">
@@ -24,7 +45,5 @@
     </style>
 
     <style name="Theme.AppWidget" parent="@style/Theme.Material3Expressive.DynamicColors.DayNight"/>
-
-    <style name="ThemeOverlay.Booming.Adaptive" parent="ThemeOverlay.Material3.Light"/>
 
 </resources>

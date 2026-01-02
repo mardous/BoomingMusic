@@ -7,6 +7,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/player_image_card"
+        style="?materialCardViewElevatedStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
