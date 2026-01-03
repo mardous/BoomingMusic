@@ -56,15 +56,26 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="metadata/en-US/images/phoneScreenshots/1.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/2.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/3.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/4.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/5.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/6.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/7.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/8.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/9.jpg" width="30%" />
+<table>
+<tr>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/1.jpg" alt="For You" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/2.jpg" alt="Songs" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/3.jpg" alt="Albums" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/4.jpg" alt="Album View" width="180"/></td>
+</tr>
+<tr>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/5.jpg" alt="Search" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/6.jpg" alt="Normal" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/7.jpg" alt="Full" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/8.jpg" alt="Gradient" width="180"/></td>
+</tr>
+<tr>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/9.jpg" alt="Plain" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/10.jpg" alt="M3" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/11.jpg" alt="Expressive" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/12.jpg" alt="Peek" width="180"/></td>
+</tr>
+</table>
 </div>
 
 ### 💻 Tech Stack
