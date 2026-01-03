@@ -77,27 +77,27 @@ class PeekPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_p
         val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
         val newShuffleColor = getPlaybackControlsColor(
             isShuffleModeOn,
-            scheme.primaryControlColor,
-            scheme.secondaryControlColor
+            scheme.onSurfaceColor,
+            scheme.onSurfaceVariantColor
         )
         val oldRepeatColor = getPlaybackControlsColor(isRepeatModeOn)
         val newRepeatColor = getPlaybackControlsColor(
             isRepeatModeOn,
-            scheme.primaryControlColor,
-            scheme.secondaryControlColor
+            scheme.onSurfaceColor,
+            scheme.onSurfaceVariantColor
         )
         val newSliderColor = if (scheme.mode == PlayerColorSchemeMode.VibrantColor) {
-            scheme.primaryControlColor
+            scheme.onSurfaceColor
         } else {
-            scheme.emphasisColor
+            scheme.primaryColor
         }
         return listOfNotNull(
             binding.progressSlider.progressView?.tintTarget(oldSliderColor, newSliderColor),
-            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.playPauseButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
-            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
-            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.playPauseButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
             binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
             binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor)
         )

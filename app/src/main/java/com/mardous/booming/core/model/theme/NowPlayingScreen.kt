@@ -39,7 +39,7 @@ enum class NowPlayingScreen(
     val supportsSmallImage: Boolean
 ) {
     Default(
-        R.string.normal,
+        R.string.normal_style,
         R.drawable.np_normal,
         R.layout.fragment_album_cover_default,
         buttonStyle = NowPlayingButtonStyle.Normal,
@@ -49,7 +49,7 @@ enum class NowPlayingScreen(
         supportsSmallImage = true
     ),
     FullCover(
-        R.string.full_cover,
+        R.string.full_cover_style,
         R.drawable.np_full,
         R.layout.fragment_album_cover,
         buttonStyle = NowPlayingButtonStyle.Normal,
@@ -59,7 +59,7 @@ enum class NowPlayingScreen(
         supportsSmallImage = false
     ),
     Gradient(
-        R.string.gradient,
+        R.string.gradient_style,
         R.drawable.np_gradient,
         R.layout.fragment_album_cover,
         buttonStyle = NowPlayingButtonStyle.Normal,
@@ -69,7 +69,7 @@ enum class NowPlayingScreen(
         supportsSmallImage = false
     ),
     Plain(
-        R.string.plain,
+        R.string.plain_style,
         R.drawable.np_plain,
         R.layout.fragment_album_cover_default,
         buttonStyle = NowPlayingButtonStyle.Normal,
@@ -88,8 +88,18 @@ enum class NowPlayingScreen(
         supportsCustomCornerRadius = true,
         supportsSmallImage = true
     ),
+    Expressive(
+        R.string.expressive_style,
+        R.drawable.np_expressive,
+        R.layout.fragment_album_cover_m3,
+        buttonStyle = NowPlayingButtonStyle.Material3,
+        supportsCoverLyrics = true,
+        supportsCarouselEffect = true,
+        supportsCustomCornerRadius = true,
+        supportsSmallImage = false
+    ),
     Peek(
-        R.string.peek,
+        R.string.peek_style,
         R.drawable.np_peek,
         R.layout.fragment_album_cover_peek,
         buttonStyle = NowPlayingButtonStyle.Normal,
@@ -102,7 +112,7 @@ enum class NowPlayingScreen(
     val defaultColorScheme: PlayerColorSchemeMode
         get() = when (this) {
             Default, Plain, Peek -> PlayerColorSchemeMode.AppTheme
-            M3 -> PlayerColorSchemeMode.MaterialYou
+            M3, Expressive -> PlayerColorSchemeMode.MaterialYou
             FullCover, Gradient -> PlayerColorSchemeMode.VibrantColor
         }
 
@@ -124,7 +134,8 @@ enum class NowPlayingScreen(
                 PlayerColorSchemeMode.MaterialYou,
                 PlayerColorSchemeMode.VibrantColor
             )
-            M3 -> listOf(
+            M3,
+            Expressive -> listOf(
                 PlayerColorSchemeMode.AppTheme,
                 PlayerColorSchemeMode.MaterialYou
             )
@@ -141,7 +152,8 @@ enum class NowPlayingScreen(
         get() = when (this) {
             Default,
             Plain,
-            M3 -> listOf(
+            M3,
+            Expressive -> listOf(
                 PlayerTransition.Simple,
                 PlayerTransition.Cascading,
                 PlayerTransition.Depth,

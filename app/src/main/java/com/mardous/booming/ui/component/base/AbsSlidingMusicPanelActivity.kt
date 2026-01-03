@@ -63,6 +63,7 @@ import com.mardous.booming.ui.screen.other.MiniPlayerFragment
 import com.mardous.booming.ui.screen.permissions.PermissionsActivity
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.styles.defaultstyle.DefaultPlayerFragment
+import com.mardous.booming.ui.screen.player.styles.expressivestyle.ExpressivePlayerFragment
 import com.mardous.booming.ui.screen.player.styles.fullcoverstyle.FullCoverPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.gradientstyle.GradientPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.m3style.M3PlayerFragment
@@ -453,7 +454,8 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                 NowPlayingScreen.Default,
                 NowPlayingScreen.Plain,
                 NowPlayingScreen.Peek,
-                NowPlayingScreen.M3 -> {
+                NowPlayingScreen.M3,
+                NowPlayingScreen.Expressive -> {
                     setLightStatusBar(isColorLight)
                     setLightNavigationBar(isColorLight)
                 }
@@ -555,6 +557,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             NowPlayingScreen.Peek -> PeekPlayerFragment()
             NowPlayingScreen.Plain -> PlainPlayerFragment()
             NowPlayingScreen.M3 -> M3PlayerFragment()
+            NowPlayingScreen.Expressive -> ExpressivePlayerFragment()
             else -> DefaultPlayerFragment()
         }
 

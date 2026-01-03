@@ -166,9 +166,11 @@ fun Slider.applyColor(@ColorInt color: Int) {
 
 fun MaterialButton.applyColor(color: Int, isIconButton: Boolean = false) {
     if (isIconButton) {
-        val colorTintList = color.toColorStateList()
-        setTextColor(colorTintList)
-        iconTint = colorTintList
+        val iconTintList = color.toColorStateList()
+        val strokeTintList = color.withAlpha(0.4f).toColorStateList()
+        setTextColor(iconTintList)
+        iconTint = iconTintList
+        strokeColor = strokeTintList
     } else {
         val backgroundColorStateList = color.toColorStateList()
         val textColorColorStateList = getPrimaryTextColor(context, color.isColorLight).toColorStateList()

@@ -4,4 +4,6 @@
 
     <dimen name="lyrics_editor_padding_vertical">8dp</dimen>
     <dimen name="lyrics_editor_padding_horizontal">16dp</dimen>
+
+    <dimen name="player_expressive_control_horizontal_padding">80dp</dimen>
 </resources>

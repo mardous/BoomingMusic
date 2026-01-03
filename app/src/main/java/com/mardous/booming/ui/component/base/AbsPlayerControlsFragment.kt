@@ -43,7 +43,6 @@ import com.mardous.booming.extensions.getShapeAppearanceModel
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.asReadableDuration
 import com.mardous.booming.extensions.resources.applyColor
-import com.mardous.booming.extensions.resources.setMarquee
 import com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPreferenceDialog
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.MainActivity
@@ -107,8 +106,8 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         view.layoutDirection = View.LAYOUT_DIRECTION_LTR
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.colorSchemeFlow.collect { scheme ->
-                lastPlaybackControlsColor = scheme.primaryControlColor
-                lastDisabledPlaybackControlsColor = scheme.secondaryControlColor
+                lastPlaybackControlsColor = scheme.onSurfaceColor
+                lastDisabledPlaybackControlsColor = scheme.onSurfaceVariantColor
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
@@ -273,7 +272,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
 
     fun setMarquee(vararg textView: TextView?, marquee: Boolean) {
         if (isShown) {
-            textView.forEach { it?.setMarquee(marquee) }
+            playerFragment?.setMarquee(textView = textView, marquee = marquee)
         }
     }
 
@@ -290,9 +289,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
      * Called to notify that the player has been collapsed.
      */
     internal open fun onHide() {
-        isShown = false
         playerAnimator?.prepare()
         setMarquee(songTitleView, songArtistView, songInfoView, marquee = false)
+        isShown = false
     }
 
     abstract fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget>

@@ -104,11 +104,11 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
         val oldColor = binding.openQueueButton.iconTint.defaultColor
         return mutableListOf(
             binding.root.surfaceTintTarget(scheme.surfaceColor),
-            binding.openQueueButton.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
-            binding.showLyricsButton.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
-            binding.sleepTimerAction.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
-            binding.addToPlaylistAction.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
-            binding.moreAction.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
+            binding.openQueueButton.iconButtonTintTarget(oldColor, scheme.onSurfaceColor),
+            binding.showLyricsButton.iconButtonTintTarget(oldColor, scheme.onSurfaceColor),
+            binding.sleepTimerAction.iconButtonTintTarget(oldColor, scheme.onSurfaceColor),
+            binding.addToPlaylistAction.iconButtonTintTarget(oldColor, scheme.onSurfaceColor),
+            binding.moreAction.iconButtonTintTarget(oldColor, scheme.onSurfaceColor),
         ).also {
             it.addAll(playerControlsFragment.getTintTargets(scheme))
         }
@@ -127,7 +127,7 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
     }
 
     override fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
-        popupMenu?.menu?.onIsFavoriteChanged(isFavorite, false)
+        popupMenu?.menu?.setIsFavorite(isFavorite, false)
     }
 
     override fun onDestroyView() {

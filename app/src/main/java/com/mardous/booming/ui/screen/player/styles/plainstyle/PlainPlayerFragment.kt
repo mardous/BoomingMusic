@@ -92,9 +92,9 @@ class PlainPlayerFragment : AbsPlayerFragment(R.layout.fragment_plain_player) {
         val oldSecondaryTextColor = binding.text.currentTextColor
         return mutableListOf(
             binding.root.surfaceTintTarget(scheme.surfaceColor),
-            binding.toolbar.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
-            binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
-            binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
+            binding.toolbar.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor)
         ).also {
             it.addAll(playerControlsFragment.getTintTargets(scheme))
         }

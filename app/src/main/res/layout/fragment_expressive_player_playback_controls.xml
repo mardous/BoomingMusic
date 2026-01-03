@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/progressGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="32dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/durationGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="32dp" />
+
+    <com.mardous.booming.ui.component.views.MusicSlider
+        android:id="@+id/progressSlider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/controls"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:progress="50" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/songCurrentProgress"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAppearance="?textAppearanceBodyMedium"
+        app:layout_constraintTop_toBottomOf="@+id/progressSlider"
+        app:layout_constraintStart_toStartOf="@+id/progressGuideline"
+        tools:text="@tools:sample/lorem" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/songTotalTime"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAppearance="?textAppearanceBodyMedium"
+        app:layout_constraintTop_toBottomOf="@+id/progressSlider"
+        app:layout_constraintEnd_toEndOf="@+id/durationGuideline"
+        tools:text="@tools:sample/lorem" />
+
+    <com.google.android.material.button.MaterialButtonGroup
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/player_expressive_control_horizontal_padding"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/progressSlider"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/previousButton"
+            style="?materialIconButtonFilledStyle"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            app:backgroundTint="?colorSurfaceContainerHigh"
+            app:iconSize="32dp"
+            app:iconTint="?colorOnSurface"
+            app:icon="@drawable/ic_previous_m3_24dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/playPauseButton"
+            style="?materialIconButtonFilledStyle"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_weight="0.5"
+            app:cornerRadius="16dp"
+            app:iconSize="40dp"
+            app:icon="@drawable/ic_play_m3_24dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextButton"
+            style="?materialIconButtonFilledStyle"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            app:backgroundTint="?colorSurfaceContainerHigh"
+            app:iconSize="32dp"
+            app:iconTint="?colorOnSurface"
+            app:icon="@drawable/ic_next_m3_24dp" />
+
+    </com.google.android.material.button.MaterialButtonGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

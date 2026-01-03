@@ -22,17 +22,20 @@ import android.graphics.Color
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
+import androidx.core.graphics.ColorUtils
 import com.kyant.m3color.hct.Hct
 import com.kyant.m3color.scheme.SchemeContent
 import com.mardous.booming.R
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.extensions.isNightMode
+import com.mardous.booming.extensions.resolveColor
 import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.extensions.systemContrast
 import com.mardous.booming.ui.component.compose.color.onThis
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.google.android.material.R as M3R
 
 typealias PlayerColorSchemeMode = PlayerColorScheme.Mode
 
@@ -46,11 +49,9 @@ typealias PlayerColorSchemeList = List<PlayerColorSchemeMode>
  * It ensures legibility, proper contrast, and consistency with Material Design principles.
  *
  * @property surfaceColor The background color used for player surfaces.
- * @property emphasisColor A visually prominent color used for highlights and accents.
- * @property primaryTextColor Main color used for text and foreground content.
- * @property secondaryTextColor Subtle color for less prominent text content.
- * @property primaryControlColor Color used for primary control icons and buttons (defaults to [primaryTextColor]).
- * @property secondaryControlColor Color used for secondary control elements (defaults to [secondaryTextColor]).
+ * @property primaryColor A visually prominent color used for highlights and accents.
+ * @property onSurfaceColor Main color used for foreground content.
+ * @property onSurfaceVariantColor Subtle color for less prominent foreground content.
  *
  * @author Christians Martínez Alvarado (mardous)
  */
@@ -59,18 +60,18 @@ data class PlayerColorScheme(
     val mode: Mode,
     val appThemeToken: AppThemeToken,
     @param:ColorInt val surfaceColor: Int,
-    @param:ColorInt val emphasisColor: Int,
-    @param:ColorInt val primaryTextColor: Int,
-    @param:ColorInt val secondaryTextColor: Int,
-    @param:ColorInt val primaryControlColor: Int = primaryTextColor,
-    @param:ColorInt val secondaryControlColor: Int = secondaryTextColor
+    @param:ColorInt val surfaceContainerColor: Int,
+    @param:ColorInt val primaryColor: Int,
+    @param:ColorInt val tonalColor: Int,
+    @param:ColorInt val onSurfaceColor: Int,
+    @param:ColorInt val onSurfaceVariantColor: Int
 ) {
 
-    val primary = androidx.compose.ui.graphics.Color(emphasisColor)
-    val onPrimary = androidx.compose.ui.graphics.Color(emphasisColor).onThis()
+    val primary = androidx.compose.ui.graphics.Color(primaryColor)
+    val onPrimary = androidx.compose.ui.graphics.Color(primaryColor).onThis()
     val surface = androidx.compose.ui.graphics.Color(surfaceColor)
-    val onSurface = androidx.compose.ui.graphics.Color(primaryTextColor)
-    val onSurfaceVariant = androidx.compose.ui.graphics.Color(secondaryTextColor)
+    val onSurface = androidx.compose.ui.graphics.Color(onSurfaceColor)
+    val onSurfaceVariant = androidx.compose.ui.graphics.Color(onSurfaceVariantColor)
 
     enum class Mode(
         @param:StringRes val titleRes: Int,
@@ -112,9 +113,11 @@ data class PlayerColorScheme(
             mode = Mode.SimpleColor,
             appThemeToken = AppThemeToken.None,
             surfaceColor = Color.TRANSPARENT,
-            emphasisColor = Color.TRANSPARENT,
-            primaryTextColor = Color.TRANSPARENT,
-            secondaryTextColor = Color.TRANSPARENT
+            surfaceContainerColor = Color.TRANSPARENT,
+            primaryColor = Color.TRANSPARENT,
+            tonalColor = Color.TRANSPARENT,
+            onSurfaceColor = Color.TRANSPARENT,
+            onSurfaceVariantColor = Color.TRANSPARENT
         )
 
         /**
@@ -125,23 +128,21 @@ data class PlayerColorScheme(
          * @param context Context used to resolve theme attributes.
          * @return A [PlayerColorScheme] derived from theme defaults.
          */
-        fun themeColorScheme(context: Context, mode: Mode = Mode.AppTheme): PlayerColorScheme {
-            val primaryTextColor = context.textColorPrimary()
-            val controlColor = context.onSurfaceColor().takeUnless { it == Color.TRANSPARENT }
-                ?: primaryTextColor
-            val secondaryControlColor = controlColor.withAlpha(0.2f)
+        fun themeColorScheme(context: Context): PlayerColorScheme {
+            val onSurfaceColor = context.onSurfaceColor()
+            val onSurfaceVariantColor = onSurfaceColor.withAlpha(0.6f)
             return PlayerColorScheme(
-                mode = mode,
+                mode = Mode.AppTheme,
                 appThemeToken = AppThemeToken(
                     isDark = context.isNightMode,
                     isMaterialYou = Preferences.isMaterialYouTheme
                 ),
                 surfaceColor = context.surfaceColor(),
-                emphasisColor = context.primaryColor(),
-                primaryTextColor = context.textColorPrimary(),
-                secondaryTextColor = primaryTextColor,
-                primaryControlColor = controlColor,
-                secondaryControlColor = secondaryControlColor
+                surfaceContainerColor = context.resolveColor(M3R.attr.colorSurfaceContainerHigh),
+                primaryColor = context.primaryColor(),
+                tonalColor = context.resolveColor(M3R.attr.colorSecondaryContainer),
+                onSurfaceColor = onSurfaceColor,
+                onSurfaceVariantColor = onSurfaceVariantColor
             )
         }
 
@@ -158,7 +159,7 @@ data class PlayerColorScheme(
                 .ensureContrastAgainst(backgroundColor, 4.8)
                 .adjustSaturationIfTooHigh(backgroundColor, context.isNightMode)
                 .desaturateIfTooDarkComparedTo(backgroundColor)
-            return themeColorScheme.copy(mode = Mode.SimpleColor, emphasisColor = emphasisColor)
+            return themeColorScheme.copy(mode = Mode.SimpleColor, primaryColor = emphasisColor)
         }
 
         /**
@@ -172,10 +173,11 @@ data class PlayerColorScheme(
                 mode = Mode.VibrantColor,
                 appThemeToken = AppThemeToken.None,
                 surfaceColor = color.backgroundColor,
-                emphasisColor = color.backgroundColor,
-                primaryTextColor = color.primaryTextColor,
-                secondaryTextColor = color.secondaryTextColor,
-                secondaryControlColor = color.secondaryTextColor.withAlpha(0.45f)
+                surfaceContainerColor = ColorUtils.blendARGB(color.backgroundColor, color.primaryTextColor, 0.7f),
+                primaryColor = color.backgroundColor,
+                tonalColor = ColorUtils.blendARGB(color.backgroundColor, color.secondaryTextColor, 0.4f),
+                onSurfaceColor = color.primaryTextColor,
+                onSurfaceVariantColor = color.secondaryTextColor
             )
         }
 
@@ -204,10 +206,11 @@ data class PlayerColorScheme(
                 mode = Mode.MaterialYou,
                 appThemeToken = AppThemeToken.None,
                 surfaceColor = colorScheme.surface,
-                emphasisColor = colorScheme.primary,
-                primaryTextColor = colorScheme.onSurface,
-                secondaryTextColor = colorScheme.onSurfaceVariant,
-                secondaryControlColor = colorScheme.onSurfaceVariant.withAlpha(0.45f)
+                surfaceContainerColor = colorScheme.surfaceContainerHigh,
+                primaryColor = colorScheme.primary,
+                tonalColor = colorScheme.secondaryContainer,
+                onSurfaceColor = colorScheme.onSurface,
+                onSurfaceVariantColor = colorScheme.onSurfaceVariant.withAlpha(0.7f)
             )
         }
 

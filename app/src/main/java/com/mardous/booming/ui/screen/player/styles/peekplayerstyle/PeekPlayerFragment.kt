@@ -116,7 +116,7 @@ class PeekPlayerFragment : AbsPlayerFragment(R.layout.fragment_peek_player) {
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
         val oldPrimaryControlColor = this.primaryControlColor
-        primaryControlColor = scheme.primaryControlColor
+        primaryControlColor = scheme.onSurfaceColor
         val oldPrimaryTextColor = binding.title.currentTextColor
         val oldSecondaryTextColor = binding.text.currentTextColor
         val newSurfaceColor = if (scheme.mode == PlayerColorSchemeMode.AppTheme) {
@@ -127,9 +127,9 @@ class PeekPlayerFragment : AbsPlayerFragment(R.layout.fragment_peek_player) {
         return mutableListOf(
             binding.root.surfaceTintTarget(newSurfaceColor),
             binding.playerToolbar.tintTarget(oldPrimaryControlColor, primaryControlColor),
-            binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
-            binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor)
         ).also {
             it.addAll(playerControlsFragment.getTintTargets(scheme))
         }

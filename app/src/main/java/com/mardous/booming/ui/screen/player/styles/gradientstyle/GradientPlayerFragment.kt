@@ -66,14 +66,14 @@ class GradientPlayerFragment : AbsPlayerFragment(R.layout.fragment_gradient_play
     private fun setupListeners() {
         binding.openQueueButton.setOnClickListener(this)
         binding.showLyricsButton.setOnClickListener(this)
-        binding.volumeAction.setOnClickListener(this)
+        binding.soundSettingsButton.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
         when (v) {
             binding.openQueueButton -> onQuickActionEvent(NowPlayingAction.OpenPlayQueue)
             binding.showLyricsButton -> onQuickActionEvent(NowPlayingAction.Lyrics)
-            binding.volumeAction -> onQuickActionEvent(NowPlayingAction.SoundSettings)
+            binding.soundSettingsButton -> onQuickActionEvent(NowPlayingAction.SoundSettings)
         }
     }
 
@@ -106,9 +106,9 @@ class GradientPlayerFragment : AbsPlayerFragment(R.layout.fragment_gradient_play
         return mutableListOf(
             binding.colorBackground.surfaceTintTarget(scheme.surfaceColor),
             binding.mask.tintTarget(oldMaskColor, scheme.surfaceColor),
-            binding.openQueueButton.iconButtonTintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
-            binding.showLyricsButton.iconButtonTintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
-            binding.volumeAction.iconButtonTintTarget(oldPrimaryTextColor, scheme.primaryTextColor)
+            binding.openQueueButton.iconButtonTintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
+            binding.showLyricsButton.iconButtonTintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
+            binding.soundSettingsButton.iconButtonTintTarget(oldPrimaryTextColor, scheme.onSurfaceColor)
         ).also {
             it.addAll(playerControlsFragment.getTintTargets(scheme))
         }

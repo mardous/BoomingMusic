@@ -29,17 +29,20 @@ import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.mardous.booming.R
@@ -64,6 +67,7 @@ import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.resources.animateBackgroundColor
 import com.mardous.booming.extensions.resources.animateTintColor
 import com.mardous.booming.extensions.resources.inflateMenu
+import com.mardous.booming.extensions.resources.setMarquee
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.component.menu.newPopupMenu
@@ -327,8 +331,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                         it.target.animateBackgroundColor(it.newColor)
                     } else {
                         it.target.animateTintColor(
-                            it.oldColor,
-                            it.newColor,
+                            fromColor = it.oldColor,
+                            toColor = it.newColor,
                             isIconButton = it.isIcon
                         )
                     }
@@ -472,24 +476,57 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
         }
     }
 
-    fun onShow() {
+    @CallSuper
+    open fun onShow() {
         coverFragment?.showLyrics()
         playerControlsFragment.onShow()
     }
 
-    fun onHide() {
+    @CallSuper
+    open fun onHide() {
         coverFragment?.hideLyrics()
         playerControlsFragment.onHide()
     }
 
     protected fun getTintedDrawable(
         drawableRes: Int,
-        color: Int = playerViewModel.colorScheme.primaryTextColor
+        color: Int = playerViewModel.colorScheme.onSurfaceColor
     ) = AppCompatResources.getDrawable(requireContext(), drawableRes).also {
         it?.setTint(color)
     }
 
-    protected fun Menu.onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
+    protected open fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
+        playerToolbar?.menu?.setIsFavorite(isFavorite, withAnimation)
+    }
+
+    private fun updateIsFavorite(song: Song = playerViewModel.currentSong, withAnim: Boolean = false) {
+        libraryViewModel.isSongFavorite(song).observe(viewLifecycleOwner) { isFavorite ->
+            onIsFavoriteChanged(isFavorite, withAnim)
+        }
+    }
+
+    private fun toggleFavorite() {
+        playerViewModel.toggleFavorite()
+    }
+
+    fun setMarquee(vararg textView: TextView?, marquee: Boolean) {
+        textView.forEach { it?.setMarquee(marquee) }
+    }
+
+    fun MaterialButton.setIsFavorite(isFavorite: Boolean, withAnimation: Boolean) {
+        val iconRes = if (withAnimation) {
+            if (isFavorite) R.drawable.avd_favorite else R.drawable.avd_unfavorite
+        } else {
+            if (isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp
+        }
+        icon = ContextCompat.getDrawable(context, iconRes).also { drawable ->
+            if (drawable is AnimatedVectorDrawable) {
+                drawable.start()
+            }
+        }
+    }
+
+    protected fun Menu.setIsFavorite(isFavorite: Boolean, withAnimation: Boolean) {
         val iconRes = if (withAnimation) {
             if (isFavorite) R.drawable.avd_favorite else R.drawable.avd_unfavorite
         } else {
@@ -505,20 +542,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 }
             }
         }
-    }
-
-    protected open fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
-        playerToolbar?.menu?.onIsFavoriteChanged(isFavorite, withAnimation)
-    }
-
-    private fun updateIsFavorite(song: Song = playerViewModel.currentSong, withAnim: Boolean = false) {
-        libraryViewModel.isSongFavorite(song).observe(viewLifecycleOwner) { isFavorite ->
-            onIsFavoriteChanged(isFavorite, withAnim)
-        }
-    }
-
-    private fun toggleFavorite() {
-        playerViewModel.toggleFavorite()
     }
 
     fun setViewAction(view: View, action: NowPlayingAction) {

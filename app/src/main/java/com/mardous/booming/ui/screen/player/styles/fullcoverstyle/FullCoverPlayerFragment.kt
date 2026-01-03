@@ -116,13 +116,13 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
         val targets = mutableListOf<PlayerTintTarget>()
 
         val oldLabelColor = binding.nextSongLabel.currentTextColor
-        targets.add(binding.nextSongLabel.tintTarget(oldLabelColor, scheme.secondaryTextColor))
+        targets.add(binding.nextSongLabel.tintTarget(oldLabelColor, scheme.onSurfaceVariantColor))
 
         val oldTextColor = binding.nextSongText.currentTextColor
-        targets.add(binding.nextSongText.tintTarget(oldTextColor, scheme.primaryTextColor))
+        targets.add(binding.nextSongText.tintTarget(oldTextColor, scheme.onSurfaceColor))
 
         val oldCaretColor = binding.close.iconTint?.defaultColor ?: Color.WHITE
-        targets.add(binding.close.iconButtonTintTarget(oldCaretColor, scheme.primaryTextColor))
+        targets.add(binding.close.iconButtonTintTarget(oldCaretColor, scheme.onSurfaceColor))
 
         val oldMaskColor = binding.mask.backgroundTintList?.defaultColor ?: Color.TRANSPARENT
         targets.add(binding.mask.tintTarget(oldMaskColor, scheme.surfaceColor))

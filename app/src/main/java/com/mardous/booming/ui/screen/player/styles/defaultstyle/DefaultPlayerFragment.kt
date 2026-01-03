@@ -83,10 +83,10 @@ class DefaultPlayerFragment : AbsPlayerFragment(R.layout.fragment_default_player
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
         val oldPrimaryControlColor = primaryControlColor
-        primaryControlColor = scheme.primaryControlColor
+        primaryControlColor = scheme.onSurfaceColor
         return mutableListOf(
             binding.root.surfaceTintTarget(scheme.surfaceColor),
-            binding.toolbar.tintTarget(oldPrimaryControlColor, scheme.primaryControlColor)
+            binding.toolbar.tintTarget(oldPrimaryControlColor, scheme.onSurfaceColor)
         ).also {
             it.addAll(playerControlsFragment.getTintTargets(scheme))
         }
