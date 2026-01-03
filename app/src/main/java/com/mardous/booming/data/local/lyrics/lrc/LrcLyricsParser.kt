@@ -54,17 +54,29 @@ class LrcLyricsParser : LyricsParser {
                     } else {
                         val lineResult = LINE_PATTERN.find(line)
                         if (lineResult != null) {
-                            val time = lineResult.groupValues[1].trim()
+                            val base = lineResult.groupValues[1].trim()
                                 .takeUnless { it.isEmpty() } ?: continue
                             val text = lineResult.groupValues[2].trim()
                             val bgText = lineResult.groupValues[3]
                                 .takeIf { it.isNotEmpty() }
 
-                            val timeResult = LINE_TIME_PATTERN.find(time)
+                            val timeResult = LINE_TIME_PATTERN.find(base)
                             if (timeResult != null) {
                                 val timeMs = parseTime(timeResult)
                                 if (timeMs > LrcNode.INVALID_DURATION) {
                                     rawLines.add(LrcNode(timeMs, text, bgText, line))
+                                }
+                            } else {
+                                val backgroundMatcher = BACKGROUND_ONLY_PATTERN.find(line)
+                                if (rawLines.isNotEmpty() && backgroundMatcher != null) {
+                                    val bgText = backgroundMatcher.groupValues.getOrNull(1)?.trim()
+                                    if (!bgText.isNullOrEmpty()) {
+                                        val lastNode = rawLines.last()
+                                        if (lastNode.bgText.isNullOrEmpty()) {
+                                            lastNode.rawLine = "${lastNode.rawLine}[bg:$bgText]"
+                                            lastNode.bgText = bgText
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -242,6 +254,7 @@ class LrcLyricsParser : LyricsParser {
         private val LINE_TIME_PATTERN = Regex("\\[${TIME_PATTERN.pattern}]")
         private val LINE_ACTOR_PATTERN = Regex("^([vV]\\d+|D|M|F)\\s*:\\s*(.*)")
         private val LINE_WORD_PATTERN = Regex("<${TIME_PATTERN.pattern}>([^<]*)")
+        private val BACKGROUND_ONLY_PATTERN = Regex("^\\[bg:(.*?)]\\s*$")
         private val ATTRIBUTE_PATTERN = Regex("\\[(offset|ti|ar|al|length|by):(.+)]", RegexOption.IGNORE_CASE)
     }
 }
