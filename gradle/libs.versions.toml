@@ -136,6 +136,7 @@ jaudiotagger = { module = "com.github.Adonai:jaudiotagger", version.ref = "jaudi
 
 versioncompare = { module = "io.github.g00fy2:versioncompare", version.ref = "versioncompare" }
 commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text" }
+juniversalchardet = { module = "com.github.albfernandez:juniversalchardet", version = "2.5.0" }
 
 [bundles]
 kotlinx = ["kotlinx-datetime", "kotlinx-coroutines-android", "kotlinx-coroutines-guava"]

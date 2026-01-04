@@ -199,6 +199,15 @@
             app:defaultValue="false"
             app:key="mark_instrumental_tracks_by_title"/>
 
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/treat_all_lyrics_files_as_utf8_title"
+            app:summary="@string/treat_all_lyrics_files_as_utf8_summary"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:defaultValue="true"
+            app:key="force_utf8_encoding_for_lyrics"/>
+
         <Preference
             app:icon="@drawable/ic_delete_24dp"
             app:title="@string/delete_downloaded_lyrics_title"

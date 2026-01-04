@@ -37,8 +37,6 @@ class LyricsViewModel(
     private val canvasRepository: CanvasRepository
 ) : ViewModel(), OnSharedPreferenceChangeListener {
 
-    private val silentHandler = CoroutineExceptionHandler { _, _ -> }
-
     private val _lyricsResult = MutableStateFlow(LyricsResult.Empty)
     val lyricsResult = _lyricsResult.asStateFlow()
 
@@ -72,9 +70,12 @@ class LyricsViewModel(
         song: Song,
         allowDownload: Boolean = false,
         fromEditor: Boolean = false
-    ) = liveData(Dispatchers.IO + silentHandler) {
+    ) = liveData(Dispatchers.IO) {
         emit(LyricsResult(id = song.id, loading = true))
-        emit(lyricsRepository.allLyrics(song, allowDownload, fromEditor))
+        val lyricsResult = runCatching {
+            lyricsRepository.allLyrics(song, allowDownload, fromEditor)
+        }
+        emit(lyricsResult.getOrDefault(LyricsResult(song.id, loading = false)))
     }
 
     fun shareSyncedLyrics(song: Song) = liveData(Dispatchers.IO) {
@@ -163,14 +164,12 @@ class LyricsViewModel(
         _canvasEntity.value = null
 
         lyricsJob = viewModelScope.launch {
-            val lyrics = withContext(Dispatchers.IO + silentHandler) {
-                lyricsRepository.allLyrics(
-                    song = song,
-                    allowDownload = true,
-                    fromEditor = false
-                )
+            val lyrics = withContext(Dispatchers.IO) {
+                runCatching {
+                    lyricsRepository.allLyrics(song, allowDownload = true, fromEditor = false)
+                }
             }
-            _lyricsResult.value = lyrics
+            _lyricsResult.value = lyrics.getOrDefault(LyricsResult(song.id, loading = false))
         }
     }
 

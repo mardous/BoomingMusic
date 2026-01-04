@@ -4,6 +4,7 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
+import android.util.Log
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MetadataReader
@@ -26,7 +27,11 @@ import com.mardous.booming.ui.screen.lyrics.DisplayableLyrics
 import com.mardous.booming.ui.screen.lyrics.EditableLyrics
 import com.mardous.booming.ui.screen.lyrics.LyricsResult
 import com.mardous.booming.ui.screen.lyrics.SaveLyricsResult
+import org.mozilla.universalchardet.UniversalDetector
+import java.io.BufferedInputStream
 import java.io.File
+import java.io.IOException
+import java.nio.charset.Charset
 import java.util.Collections
 import java.util.regex.Pattern
 
@@ -56,6 +61,8 @@ class RealLyricsRepository(
     private val lyricsDao: LyricsDao
 ) : LyricsRepository {
 
+    private val charsetDetector = UniversalDetector()
+
     private val lrcLyricsParser = LrcLyricsParser()
     private val ttmlLyricsParser = TtmlLyricsParser()
 
@@ -75,6 +82,32 @@ class RealLyricsRepository(
             markByTitle = preferences.getBoolean(MARK_INSTRUMENTAL_BY_TITLE, false),
             maxLength = INSTRUMENTAL_IDENTIFIER_MAX_LENGTH
         )
+
+    private fun detectEncoding(bis: BufferedInputStream): Charset {
+        return if (preferences.getBoolean(FORCE_UTF_8_ENCODING, true)) {
+            Charsets.UTF_8
+        } else try {
+            charsetDetector.reset()
+            bis.mark(BUFFER_SIZE)
+
+            val buf = ByteArray(BUFFER_SIZE)
+            var nread: Int
+            while ((bis.read(buf).also { nread = it }) > 0 && !charsetDetector.isDone) {
+                charsetDetector.handleData(buf, 0, nread)
+            }
+
+            charsetDetector.dataEnd()
+            charsetDetector.detectedCharset?.let {
+                Charset.forName(it)
+            } ?: Charsets.UTF_8
+        } catch (e: IOException) {
+            Log.e(TAG, "Couldn't detect lyrics file encoding", e)
+            Charsets.UTF_8
+        } finally {
+            bis.reset()
+            charsetDetector.reset()
+        }
+    }
 
     private fun getCachedLyrics(songId: Long): LyricsResult? {
         return lyricsCache[songId]
@@ -145,8 +178,11 @@ class RealLyricsRepository(
         val embeddedSynced = embeddedLyricsParser?.parse(embeddedLyrics, song.duration)
 
         val fileLyrics = findLyricsFiles(song).firstNotNullOfOrNull { file ->
-            lyricsParsers.firstOrNull { it.handles(file) }
-                ?.parse(file, song.duration)
+            val parser = lyricsParsers.firstOrNull { it.handles(file) }
+            file.file.inputStream().buffered().use {
+                val charset = detectEncoding(it)
+                parser?.parse(it.reader(charset), song.duration)
+            }
         }
         if (fileLyrics?.hasContent == true) {
             return cacheLyrics(song.id, LyricsResult(
@@ -392,10 +428,14 @@ class RealLyricsRepository(
     }
 
     companion object {
+        private const val TAG = "LyricsRepository"
+
+        private const val BUFFER_SIZE = 4096
         private const val CACHE_SIZE = 50
         private const val INSTRUMENTAL_IDENTIFIER_MAX_LENGTH = 50
         private const val DEFAULT_INSTRUMENTAL_IDENTIFIER = "(Instrumental)"
         private const val INSTRUMENTAL_TRACK_IDENTIFIERS = "instrumental_track_identifiers"
         private const val MARK_INSTRUMENTAL_BY_TITLE = "mark_instrumental_tracks_by_title"
+        private const val FORCE_UTF_8_ENCODING = "force_utf8_encoding_for_lyrics"
     }
 }

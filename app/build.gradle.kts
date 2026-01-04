@@ -232,4 +232,5 @@ dependencies {
 
     implementation(libs.versioncompare)
     implementation(libs.commons.text)
+    implementation(libs.juniversalchardet)
 }
