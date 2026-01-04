@@ -661,6 +661,10 @@
     <string name="instrumental_tracks_identifiers_summary">אם מילות השיר מורכבות אך ורק מאחד או יותר מהסמנים האלה, השיר יסומן כרצועה אינסטרומנטלית (מופרדים בפסיק).</string>
     <string name="instrumental_tracks_mark_by_title_title">סמן לפי שם</string>
     <string name="instrumental_tracks_mark_by_title_summary">שם השיר יילקח גם הוא בחשבון בעת חיפוש אחר הסמנים.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
+        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
+        It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">סגנון</string>
     <string name="open_on_play_title">פתח בעת ניגון</string>
