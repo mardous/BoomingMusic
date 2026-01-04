@@ -134,7 +134,7 @@ class EqualizerManager internal constructor(context: Context) {
                     return@withContext
 
                 setDefaultPresets(temp, temp.equalizer)
-                numberOfBands = temp.getNumEqualizerBands().toInt()
+                numberOfBands = temp.getNumEqualizerBands().toInt().coerceAtMost(MAX_BANDS)
                 setBandLevelRange(temp.equalizer.getBandLevelRange())
                 setCenterFreqs(temp.equalizer)
 
@@ -564,7 +564,7 @@ class EqualizerManager internal constructor(context: Context) {
             for (i in values.indices) {
                 values[i] = ranges[i].toInt()
             }
-            return values
+            return if (values.size == 2) values else intArrayOf(-1500, 1500)
         }
 
     fun setBandLevelRange(bandLevelRange: ShortArray) {
@@ -652,7 +652,7 @@ class EqualizerManager internal constructor(context: Context) {
         const val VIRTUALIZER_MIN_STRENGTH: Short = 0
         const val VIRTUALIZER_MAX_STRENGTH: Short = 1000
 
-        const val EQUALIZER_MAX_BANDS = 6
+        const val MAX_BANDS = 10
 
         const val PREFERENCES_NAME = "BoomingAudioFX"
         private const val CUSTOM_PRESET_NAME = "Custom"

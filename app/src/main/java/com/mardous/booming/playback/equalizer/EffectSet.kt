@@ -74,7 +74,7 @@ class EffectSet(sessionId: Int) {
     fun getNumEqualizerBands(): Short {
         if (equalizer == null) return 0
         if (eqNumBands < 0) {
-            eqNumBands = equalizer.numberOfBands.coerceAtMost(6)
+            eqNumBands = equalizer.numberOfBands
         }
         return eqNumBands
     }

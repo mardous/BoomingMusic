@@ -25,10 +25,7 @@ import android.content.Intent
 import android.media.audiofx.AudioEffect
 import android.net.Uri
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
@@ -79,16 +76,13 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
     private var mPresetsDialog: Dialog? = null
     private var mReverbSpinnerAdapter: ArrayAdapter<String>? = null
 
-    private val mEqualizerSeekBar = arrayOfNulls<AnimSlider>(EqualizerManager.EQUALIZER_MAX_BANDS)
+    private val bandSliders = arrayOfNulls<AnimSlider>(EqualizerManager.MAX_BANDS)
 
     private val formatBuilder = StringBuilder()
     private val formatter = Formatter(formatBuilder, Locale.getDefault())
 
     private val bandLevelRange: IntArray
         get() = viewModel.bandLevelRange
-
-    private val centerFrequencies: IntArray
-        get() = viewModel.centerFreqs
 
     override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
         when (buttonView) {
@@ -138,7 +132,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
                 }
 
                 val isUsable = state.isUsable
-                for (seekBar in mEqualizerSeekBar) {
+                for (seekBar in bandSliders) {
                     seekBar?.isEnabled = state.isUsable
                 }
 
@@ -201,7 +195,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
 
                 val levels = newPreset.levels
                 for (band in levels.indices) {
-                    mEqualizerSeekBar[band]?.setValueAnimated(
+                    bandSliders[band]?.setValueAnimated(
                         levels[band].toFloat().let { floatLevel ->
                             bandLevelRange[1] / 100.0f + floatLevel / 100.0f
                         })
@@ -447,10 +441,11 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
 
     private fun setUpEqualizerViews() {
         //Initialize the equalizer elements
-        val centerFreqs = centerFrequencies
-        val bandLevelRange = bandLevelRange
+        val centerFreqs = viewModel.centerFreqs
+        val bandLevelRange = viewModel.bandLevelRange
         val maxProgress = bandLevelRange[1] / 100 - bandLevelRange[0] / 100
 
+        val inflater = LayoutInflater.from(requireContext())
         for (band in 0 until viewModel.numberOfBands) {
             //Unit conversion from mHz to Hz and use k prefix if necessary to display
             var centerFreqHz = centerFreqs[band] / 1000.toFloat()
@@ -460,32 +455,32 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
                 unit = "KHz"
             }
 
-            binding.equalizerBands.eqContainer.findViewById<View>(eqViewElementIds[band][0]).visibility = View.VISIBLE
-            binding.equalizerBands.eqContainer.findViewById<View>(eqViewTextElementIds[band][0]).visibility =
-                View.VISIBLE
-            binding.equalizerBands.eqContainer.findViewById<View>(eqViewElementIds[band][1]).visibility = View.VISIBLE
-            binding.equalizerBands.eqContainer.findViewById<View>(eqViewTextElementIds[band][1]).visibility =
-                View.VISIBLE
-            (binding.equalizerBands.eqContainer.findViewById<View>(eqViewElementIds[band][0]) as TextView).text =
-                String.format("%s %s", freqFormat(centerFreqHz), unit)
+            val bandView = inflater
+                .inflate(R.layout.equalizer_band, binding.equalizerBands.bandContainer, false) ?: return
 
-            mEqualizerSeekBar[band] =
-                binding.equalizerBands.eqContainer.findViewById<AnimSlider>(eqViewElementIds[band][1]).apply {
-                    valueTo = maxProgress.toFloat()
-                    setLabelFormatter {
-                        String.format(Locale.ROOT, "%+.1fdb", it - maxProgress / 2)
-                    }
-                    setTrackingTouchListener(onStop = {
-                        viewModel.setCustomPresetBandLevel(band, bandLevelRange[0] + it.value.toInt() * 100)
-                    })
+            bandView.findViewById<TextView>(R.id.bandFreq)?.text = "${freqFormat(centerFreqHz)} $unit"
+            bandView.findViewById<TextView>(R.id.minLevel)?.text = "${bandLevelRange[0] / 100}db"
+            bandView.findViewById<TextView>(R.id.maxLevel)?.text = "${bandLevelRange[1] / 100}db"
+            bandView.findViewById<AnimSlider>(R.id.bandSlider)?.apply {
+                valueTo = maxProgress.toFloat()
+                setLabelFormatter {
+                    "%+.1fdb".format(Locale.ROOT, it - maxProgress / 2)
                 }
+                setTrackingTouchListener(onStop = {
+                    viewModel.setCustomPresetBandLevel(
+                        band, bandLevelRange[0] + it.value.toInt() * 100
+                    )
+                })
+                bandSliders[band] = this
+            }
+            binding.equalizerBands.bandContainer.addView(bandView)
         }
     }
 
     private fun setUpBassBoostViews() {
         binding.equalizerEffects.bassboostStrength.apply {
             valueTo = (EqualizerManager.BASSBOOST_MAX_STRENGTH - EqualizerManager.BASSBOOST_MIN_STRENGTH).toFloat()
-            addOnChangeListener { slider, value, fromUser ->
+            addOnChangeListener { _, value, fromUser ->
                 if (fromUser) {
                     viewModel.setBassBoost(isEnabled = value > 0f, value = value, apply = false)
                 }
@@ -497,7 +492,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
     private fun setUpVirtualizerViews() {
         binding.equalizerEffects.virtualizerStrength.apply {
             valueTo = (EqualizerManager.VIRTUALIZER_MAX_STRENGTH - EqualizerManager.VIRTUALIZER_MIN_STRENGTH).toFloat()
-            addOnChangeListener { slider, value, fromUser ->
+            addOnChangeListener { _, value, fromUser ->
                 if (fromUser) {
                     viewModel.setVirtualizer(isEnabled = value > 0f, value = value, apply = false)
                 }
@@ -631,12 +626,15 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
             .show(childFragmentManager, "EXPORT_PRESET_DIALOG")
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        if (mEqualizerSeekBar.isNotEmpty()) {
-            mEqualizerSeekBar.forEach { slider ->
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if (bandSliders.isNotEmpty()) {
+            bandSliders.forEach { slider ->
                 slider?.clearOnChangeListeners()
                 slider?.clearOnSliderTouchListeners()
+            }
+            (0 until bandSliders.size).forEach {
+                bandSliders[it] = null
             }
         }
         binding.equalizerEffects.bassboostStrength.let { slider ->
@@ -661,32 +659,7 @@ class EqualizerFragment : AbsMainActivityFragment(R.layout.fragment_equalizer),
     }
 
     companion object {
-
         private const val PRESET_NAME_MAX_LENGTH = 32
         private const val DISPLAY_AUDIO_EFFECT_CONTROL_PANEL_REQUEST = 1000
-
-        /**
-         * Mapping for the EQ widget ids per band
-         */
-        private val eqViewElementIds = arrayOf(
-            intArrayOf(R.id.EqBand0TopTextView, R.id.EqBand0SeekBar),
-            intArrayOf(R.id.EqBand1TopTextView, R.id.EqBand1SeekBar),
-            intArrayOf(R.id.EqBand2TopTextView, R.id.EqBand2SeekBar),
-            intArrayOf(R.id.EqBand3TopTextView, R.id.EqBand3SeekBar),
-            intArrayOf(R.id.EqBand4TopTextView, R.id.EqBand4SeekBar),
-            intArrayOf(R.id.EqBand5TopTextView, R.id.EqBand5SeekBar)
-        )
-
-        /**
-         * Mapping for the EQ widget ids per band
-         */
-        private val eqViewTextElementIds = arrayOf(
-            intArrayOf(R.id.EqBand0LeftTextView, R.id.EqBand0RightTextView),
-            intArrayOf(R.id.EqBand1LeftTextView, R.id.EqBand1RightTextView),
-            intArrayOf(R.id.EqBand2LeftTextView, R.id.EqBand2RightTextView),
-            intArrayOf(R.id.EqBand3LeftTextView, R.id.EqBand3RightTextView),
-            intArrayOf(R.id.EqBand4LeftTextView, R.id.EqBand4RightTextView),
-            intArrayOf(R.id.EqBand5LeftTextView, R.id.EqBand5RightTextView)
-        )
     }
 }
