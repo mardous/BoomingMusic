@@ -646,6 +646,10 @@
         en eller flera av dessa indikatorer kommer den att markeras som ett instrumentalt spår (separerat med kommatecken).</string>
     <string name="instrumental_tracks_mark_by_title_title">Markera efter titel</string>
     <string name="instrumental_tracks_mark_by_title_summary">Spårets titel kommer också att beaktas när du söker efter identifierare.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
+        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
+        It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Öppna vid uppspelning</string>
