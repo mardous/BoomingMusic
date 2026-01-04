@@ -105,15 +105,16 @@
                 style="?materialSplitButtonIconFilledTonalStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/toggle_favorite"
                 app:icon="@drawable/ic_favorite_outline_24dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/openQueueButton"
+                android:id="@+id/moreButton"
                 style="?materialSplitButtonIconFilledTonalStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/playing_queue_label"
-                app:icon="@drawable/ic_queue_music_24dp" />
+                android:contentDescription="@string/action_more"
+                app:icon="@drawable/ic_more_vert_24dp" />
 
         </com.google.android.material.button.MaterialButtonGroup>
 
@@ -126,13 +127,13 @@
         android:layout_height="0dp"
         app:layout_constrainedHeight="true"
         app:layout_constraintTop_toBottomOf="@id/titleContainer"
-        app:layout_constraintBottom_toTopOf="@+id/actionContainer"
+        app:layout_constraintBottom_toTopOf="@+id/actionGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout="@layout/fragment_expressive_player_playback_controls" />
 
     <com.google.android.material.button.MaterialButtonGroup
-        android:id="@+id/actionContainer"
+        android:id="@+id/actionGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -151,6 +152,10 @@
             style="?materialIconButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:insetTop="2dp"
+            android:insetBottom="2dp"
+            android:insetRight="2dp"
+            android:insetLeft="2dp"
             android:contentDescription="@string/action_cycle_repeat"
             app:icon="@drawable/ic_repeat_24dp" />
 
@@ -159,14 +164,34 @@
             style="?materialIconButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:insetTop="2dp"
+            android:insetBottom="2dp"
+            android:insetRight="2dp"
+            android:insetLeft="2dp"
             android:contentDescription="@string/action_toggle_shuffle"
             app:icon="@drawable/ic_shuffle_24dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/openQueueButton"
+            style="?materialIconButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetTop="2dp"
+            android:insetBottom="2dp"
+            android:insetRight="2dp"
+            android:insetLeft="2dp"
+            android:contentDescription="@string/playing_queue_label"
+            app:icon="@drawable/ic_queue_music_24dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/soundSettingsButton"
             style="?materialIconButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:insetTop="2dp"
+            android:insetBottom="2dp"
+            android:insetRight="2dp"
+            android:insetLeft="2dp"
             android:contentDescription="@string/sound_settings"
             app:icon="@drawable/ic_volume_up_24dp" />
 
@@ -175,16 +200,12 @@
             style="?materialIconButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:insetTop="2dp"
+            android:insetBottom="2dp"
+            android:insetRight="2dp"
+            android:insetLeft="2dp"
             android:contentDescription="@string/action_show_lyrics"
             app:icon="@drawable/ic_lyrics_outline_24dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/moreButton"
-            style="?materialIconButtonFilledStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/action_more"
-            app:icon="@drawable/ic_more_vert_24dp" />
 
     </com.google.android.material.button.MaterialButtonGroup>
 

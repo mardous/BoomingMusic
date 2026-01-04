@@ -122,10 +122,8 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
         binding.shuffleButton.setOnClickListener(this)
         setViewAction(binding.favoriteButton, NowPlayingAction.ToggleFavoriteState)
         setViewAction(binding.openQueueButton, NowPlayingAction.OpenPlayQueue)
-        setViewAction(binding.showLyricsButton, NowPlayingAction.Lyrics)
-        binding.soundSettingsButton?.let {
-            setViewAction(it, NowPlayingAction.SoundSettings)
-        }
+        binding.showLyricsButton?.let { setViewAction(it, NowPlayingAction.Lyrics) }
+        binding.soundSettingsButton?.let { setViewAction(it, NowPlayingAction.SoundSettings) }
     }
 
     private fun setupToolbar() {
@@ -154,10 +152,8 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
         super.onMenuInflated(menu)
         menu.removeItem(R.id.action_favorite)
         menu.removeItem(R.id.action_playing_queue)
-        menu.removeItem(R.id.action_show_lyrics)
-        binding.soundSettingsButton.let {
-            menu.removeItem(R.id.action_sound_settings)
-        }
+        menu.findItem(R.id.action_show_lyrics)?.isVisible = isLandscape()
+        menu.findItem(R.id.action_sound_settings)?.isVisible = isLandscape()
     }
 
     override fun onCreateChildFragments() {
@@ -169,12 +165,10 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
         val oldPrimaryTextColor = binding.title.currentTextColor
         val oldSecondaryTextColor = binding.text.currentTextColor
 
-        val oldPrimaryColor = binding.moreButton.backgroundTintList?.defaultColor
-            ?: Color.TRANSPARENT
         val oldTonalColor = binding.favoriteButton.backgroundTintList?.defaultColor
             ?: Color.TRANSPARENT
 
-        val oldIconColor = binding.showLyricsButton.iconTint.defaultColor
+        val oldIconColor = binding.openQueueButton.iconTint.defaultColor
         val oldRepeatColor = binding.repeatButton.iconTint.defaultColor
         val newRepeatColor = if (playerViewModel.repeatMode != Player.REPEAT_MODE_OFF) {
             scheme.onSurfaceColor
@@ -199,15 +193,15 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
                 binding.favoriteButton.tintTarget(oldTonalColor, scheme.tonalColor)
             },
             if (isLandscape()) {
-                binding.openQueueButton.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor)
+                binding.moreButton.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor)
             } else {
-                binding.openQueueButton.tintTarget(oldTonalColor, scheme.tonalColor)
+                binding.moreButton.tintTarget(oldTonalColor, scheme.tonalColor)
             },
             binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
             binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
-            binding.showLyricsButton.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor),
-            binding.soundSettingsButton?.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor),
-            binding.moreButton.tintTarget(oldPrimaryColor, scheme.primaryColor)
+            binding.openQueueButton.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor),
+            binding.showLyricsButton?.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor),
+            binding.soundSettingsButton?.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor)
         ).toMutableList().also {
             it.addAll(playerControlsFragment.getTintTargets(scheme))
         }
