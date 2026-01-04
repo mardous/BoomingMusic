@@ -678,6 +678,10 @@
         فقط واحدة أو أكثر من هذه المؤشرات، فسيتم وضع علامة عليها كمسار فعال (مفصولة بفاصلة).</string>
     <string name="instrumental_tracks_mark_by_title_title">وضع علامة حسب العنوان</string>
     <string name="instrumental_tracks_mark_by_title_summary">كما سيؤخذ عنوان المسار في الاعتبار عند البحث عن المعرفة.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
+        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
+        It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">النمط</string>
     <string name="open_on_play_title">فتح عند التشغيل</string>
