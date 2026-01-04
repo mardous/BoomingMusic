@@ -645,10 +645,12 @@
     <string name="instrumental_tracks_identifiers_summary">Si les paroles d\'une chanson ne contiennent qu\'un seul de ces indicateurs (un ou plusieurs), elle sera considérée comme un morceau instrumental (séparés par une virgule).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marquer par titre</string>
     <string name="instrumental_tracks_mark_by_title_summary">Le titre du morceau sera également pris en compte lors de la recherche d\'identifiants.</string>
-    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Traiter tous les fichiers de paroles comme UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Supposons que tous les fichiers utilisent l\'encodage UTF-8.
+
+Cela optimise l\'analyse des fichiers, mais peut parfois entraîner l\'apparition de caractères inhabituels dans les paroles des chansons.
+
+Un redémarrage de l\'application peut être nécessaire.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir lors de la lecture</string>
@@ -802,12 +804,12 @@
     <string name="selected">Sélectionnés</string>
     <string name="compact">Compacte</string>
     <string name="expanded">Étendu</string>
-    <string name="full_cover_style">Full Cover</string>
-    <string name="gradient_style">Gradient</string>
-    <string name="peek_style">Peek</string>
-    <string name="plain_style">Plain</string>
+    <string name="full_cover_style">Couverture intégrale</string>
+    <string name="gradient_style">Dégradé</string>
+    <string name="peek_style">Aperçu</string>
+    <string name="plain_style">Simple</string>
     <string name="m3_style">M3</string>
-    <string name="expressive_style">Expressive</string>
+    <string name="expressive_style">Expressif</string>
     <string name="normal_style">Normale</string>
     <string name="cascading">En cascade</string>
     <string name="depth">Profondeur</string>
