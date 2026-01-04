@@ -644,6 +644,10 @@ Ideal para podcasts e gravações.</string>
     <string name="instrumental_tracks_identifiers_summary">Se a letra de uma música contiver apenas um ou mais desses indicadores, ela será marcada como faixa instrumental (separados por vírgula).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marcar pelo título</string>
     <string name="instrumental_tracks_mark_by_title_summary">O título da faixa também será levado em conta na busca por identificadores.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
+        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
+        It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir ao reproduzir</string>
