@@ -664,10 +664,10 @@
         из одного или нескольких таких индикаторов, трек будет помечен как инструментальный (перечисляются через запятую).</string>
     <string name="instrumental_tracks_mark_by_title_title">Определять по названию</string>
     <string name="instrumental_tracks_mark_by_title_summary">Название трека также будет учитываться при поиске маркеров.</string>
-    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Считать все файлы текстов в UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Предполагать, что все файлы используют кодировку UTF-8.
+        Это оптимизирует процесс обработки, но в некоторых случаях может привести к некорректному отображению символов в текстах песен.
+        Может потребоваться перезапуск приложения</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Стиль</string>
     <string name="open_on_play_title">Открывать при воспроизведении</string>
