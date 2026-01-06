@@ -406,6 +406,8 @@
     <string name="shuffle_mode_combined_description">पसंद, चलें और हाल की गतिविधियों के आधार पर मिश्रण करें।</string>
     <!-- Equalizer -->
     <string name="equalizer_label">इक्वालाइज़र</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">ईक्यू कॉन्फ़िगरेशन साझा करें</string>
     <string name="there_is_nothing_to_export">नहीं है कुछ भी एक्सपोर्ट करने के लिए.</string>
     <string name="there_is_nothing_to_import">कुछ भी आयात करने के लिए नहीं है।</string>
@@ -437,7 +439,7 @@
     <string name="could_not_save_preset">प्रीसेट को सहेज नहीं सके</string>
     <string name="preset_saved_successfully">प्रीसेट सफलतापूर्वक सहेजा गया</string>
     <string name="delete_preset">प्रीसेट हटाएँ</string>
-    <string name="delete_preset_x"><![CDATA[प्रीसेट हटाएँ <b>%s</b>?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">प्रेसेट %s हटा दिया गया।</string>
     <string name="rename_preset">प्रीसेट का नाम बदलें</string>
     <string name="please_enter_a_new_name_for_this_preset">कृपया, इस प्रीसेट के लिए एक नया नाम दर्ज करें।</string>
@@ -446,19 +448,12 @@
     <string name="bassboost_label">बैसबूस्ट</string>
     <string name="virtualizer_label">वर्चुअलाइज़र</string>
     <string name="loudness_enhancer">एम्प्लीफायर</string>
-    <string name="reverb_label">रिवर्ब</string>
-    <string name="reverb_preset_none">कोई रीवरब नहीं है</string>
-    <string name="reverb_preset_plate">प्लेट</string>
-    <string name="reverb_preset_smallroom">छोटा कमरा</string>
-    <string name="reverb_preset_mediumroom">मध्यम कमरे</string>
-    <string name="reverb_preset_largeroom">बड़ा कमरा</string>
-    <string name="reverb_preset_mediumhall">मध्यम हॉल</string>
-    <string name="reverb_preset_largehall">बड़ा हॉल</string>
     <string name="sound_settings">साउंड सेटिंग्स</string>
     <string name="volume_label">वॉल्यूम</string>
     <string name="tempo_label">गति</string>
     <string name="action_external_eq">बाहरी ईक्यू</string>
     <string name="custom">कस्टम</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Audio Offload</string>
     <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
         This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
