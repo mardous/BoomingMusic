@@ -407,6 +407,8 @@
     <string name="shuffle_mode_combined_description">Blanda baserat på favoriter, pjäser och recency.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizer</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">Dela EQ konfiguration</string>
     <string name="there_is_nothing_to_export">Det finns inget att exportera.</string>
     <string name="there_is_nothing_to_import">Det finns inget att importera.</string>
@@ -439,7 +441,7 @@
     <string name="could_not_save_preset">Kunde inte spara förinställning.</string>
     <string name="preset_saved_successfully">Förvalet har sparats.</string>
     <string name="delete_preset">Ta bort förval</string>
-    <string name="delete_preset_x"><![CDATA[Ta bort förinställning <b>%s</b>?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">Förval %s borttaget.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Ange ett nytt namn för denna förinställning.</string>
@@ -448,19 +450,12 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Förstärkare</string>
-    <string name="reverb_label">Reverb</string>
-    <string name="reverb_preset_none">Ingen reverb</string>
-    <string name="reverb_preset_plate">Tallrik</string>
-    <string name="reverb_preset_smallroom">Litet rum</string>
-    <string name="reverb_preset_mediumroom">Medelstort rum</string>
-    <string name="reverb_preset_largeroom">Stort rum</string>
-    <string name="reverb_preset_mediumhall">Medelstor sal</string>
-    <string name="reverb_preset_largehall">Stor sal</string>
     <string name="sound_settings">Ljud inställningar</string>
     <string name="volume_label">Volym</string>
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Extern EQ</string>
     <string name="custom">Anpassad</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Ljud Offload</string>
     <string name="enable_audio_offload_description">Tillåter enheten att bearbeta ljud direkt genom sin hårdvara, minska CPU-användning och spara batteri.
         Denna funktion stöds endast på vissa enheter. Vissa effekter eller funktioner kanske inte fungerar medan det är aktiverat.
