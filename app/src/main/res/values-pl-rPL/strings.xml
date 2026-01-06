@@ -423,6 +423,8 @@
     <string name="shuffle_mode_combined_description">Miks oparty na ulubionych, liczbie odtworzeń i ostatnio słuchanych.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Korektor</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">Udostępnij konfigurację EQ</string>
     <string name="there_is_nothing_to_export">Nie ma nic do eksportu.</string>
     <string name="there_is_nothing_to_import">Nie ma nic do zaimportowania.</string>
@@ -455,7 +457,7 @@
     <string name="could_not_save_preset">Nie można zapisać ustawień.</string>
     <string name="preset_saved_successfully">Ustawienie zapisane pomyślnie.</string>
     <string name="delete_preset">Usuń ustawienie wstępne</string>
-    <string name="delete_preset_x"><![CDATA[Usunąć ustawienie <b>%s</b>?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">Usunięto ustawienie %s.</string>
     <string name="rename_preset">Zmień nazwę konfiguracji</string>
     <string name="please_enter_a_new_name_for_this_preset">Wprowadź nową nazwę dla tego ustawienia.</string>
@@ -464,19 +466,12 @@
     <string name="bassboost_label">Wzmocnienie basu</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Wzmacniacz</string>
-    <string name="reverb_label">Pogłos</string>
-    <string name="reverb_preset_none">Bez pogłosu</string>
-    <string name="reverb_preset_plate">Płyta</string>
-    <string name="reverb_preset_smallroom">Mały pokój</string>
-    <string name="reverb_preset_mediumroom">Średni pokój</string>
-    <string name="reverb_preset_largeroom">Duży pokój</string>
-    <string name="reverb_preset_mediumhall">Średnia hala</string>
-    <string name="reverb_preset_largehall">Duża hala</string>
     <string name="sound_settings">Ustawienia dźwięku</string>
     <string name="volume_label">Głośność</string>
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Zewnętrzny EQ</string>
     <string name="custom">Własny</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Odciążenie audio</string>
     <string name="enable_audio_offload_description">Zmniejsza zużycie baterii, przekierowując przetwarzanie dźwięku do układu sprzętowego urządzenia.
         Niektóre funkcje mogą być niedostępne zależne od urządzenia.
