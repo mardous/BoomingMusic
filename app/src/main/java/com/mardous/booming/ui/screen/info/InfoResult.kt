@@ -41,6 +41,11 @@ data class SongInfo(
     val replayGain: String? = null,
     val comment: String? = null
 ) {
+    val isMissingMetadata: Boolean = album.isNullOrEmpty() && albumArtist.isNullOrEmpty() &&
+            albumYear.isNullOrEmpty() && trackNumber.isNullOrEmpty() && discNumber.isNullOrEmpty() &&
+            composer.isNullOrEmpty() && conductor.isNullOrEmpty() && publisher.isNullOrEmpty() &&
+            genre.isNullOrEmpty()
+
     companion object {
         val Empty = SongInfo()
     }

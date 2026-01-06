@@ -151,8 +151,8 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                     // Header containing basic song's info
                     SmallHeader(
                         title = uiState.info.title.orEmpty(),
-                        subtitle = uiState.info.artist.orEmpty(),
-                        additionalInfo = uiState.info.audioHeaderInfo?.let { it ->
+                        subtitle = uiState.info.artist,
+                        additionalInfo = uiState.info.audioHeaderInfo?.let {
                             if (it.lossless) {
                                 "${it.format} • Loss-Less"
                             } else {
@@ -201,7 +201,9 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                     if (!uiState.isLoading) {
                         if (uiState.isSuccess) {
                             // Info sections
-                            MetadataInfoSection(uiState.info, Modifier.fillMaxWidth())
+                            if (!uiState.info.isMissingMetadata) {
+                                MetadataInfoSection(uiState.info, Modifier.fillMaxWidth())
+                            }
                             FileInfoSection(uiState.info, Modifier.fillMaxWidth())
                             PlayInfoSection(uiState.info, Modifier.fillMaxWidth())
                         } else {

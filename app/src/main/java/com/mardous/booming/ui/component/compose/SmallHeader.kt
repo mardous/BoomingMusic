@@ -20,7 +20,7 @@ import com.mardous.booming.R
 @Composable
 fun SmallHeader(
     title: String,
-    subtitle: String,
+    subtitle: String? = null,
     additionalInfo: String? = null,
     imageModel: Any? = null,
     imagePlaceholderIconRes: Int = R.drawable.ic_music_note_24dp,
@@ -50,17 +50,19 @@ fun SmallHeader(
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
             )
-            Text(
-                text = subtitle,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            additionalInfo?.let {
+            if (!subtitle.isNullOrEmpty()) {
+                Text(
+                    text = subtitle,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            if (!additionalInfo.isNullOrEmpty()) {
                 Spacer(Modifier.heightIn(2.dp))
                 ShapedText(
-                    text = it,
+                    text = additionalInfo,
                     style = MaterialTheme.typography.bodySmall,
                     shape = RoundedCornerShape(4.dp)
                 )
