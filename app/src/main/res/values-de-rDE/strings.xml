@@ -407,6 +407,8 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="shuffle_mode_combined_description">Mix aus Favoriten, häufig und zuletzt gespielte.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizer</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">EQ-Konfiguration teilen</string>
     <string name="there_is_nothing_to_export">Es gibt nichts zu exportieren.</string>
     <string name="there_is_nothing_to_import">Es gibt nichts zu importieren.</string>
@@ -439,7 +441,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="could_not_save_preset">Voreinstellung konnte nicht gespeichert werden.</string>
     <string name="preset_saved_successfully">Voreinstellung erfolgreich gespeichert.</string>
     <string name="delete_preset">Voreinstellung löschen</string>
-    <string name="delete_preset_x"><![CDATA[Voreinstellung <b>%s</b> löschen?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">Voreinstellung %s gelöscht.</string>
     <string name="rename_preset">Voreinstellung umbenennen</string>
     <string name="please_enter_a_new_name_for_this_preset">Bitte gib einen neuen Namen für diese Voreinstellung ein.</string>
@@ -448,19 +450,12 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="bassboost_label">Bassverstärkung</string>
     <string name="virtualizer_label">Raumklang</string>
     <string name="loudness_enhancer">Verstärker</string>
-    <string name="reverb_label">Hall</string>
-    <string name="reverb_preset_none">Kein Hall</string>
-    <string name="reverb_preset_plate">Plattenhall</string>
-    <string name="reverb_preset_smallroom">Kleiner Raum</string>
-    <string name="reverb_preset_mediumroom">Mittlerer Raum</string>
-    <string name="reverb_preset_largeroom">Großer Raum</string>
-    <string name="reverb_preset_mediumhall">Mittlerer Saal</string>
-    <string name="reverb_preset_largehall">Großer Saal</string>
     <string name="sound_settings">Klangeinstellungen</string>
     <string name="volume_label">Lautstärke</string>
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Externer EQ</string>
     <string name="custom">Benutzerdefiniert</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Audio-Auslagerung</string>
     <string name="enable_audio_offload_description">Ermöglicht es dem Gerät, Audio direkt über die Hardware zu verarbeiten, wodurch die CPU-Belastung reduziert und der Akku geschont wird.
         Diese Funktion wird nur auf bestimmten Geräten unterstützt. Einige Effekte oder Funktionen sind möglicherweise nicht verfügbar, wenn sie aktiviert ist.
