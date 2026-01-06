@@ -407,6 +407,8 @@
     <string name="shuffle_mode_combined_description">Sekoita perustuen suosikkeihin, näytelmiin ja recency.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Taajuuskorjain</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">Jaa EQ-asetukset</string>
     <string name="there_is_nothing_to_export">Ei ole mitään vietävää.</string>
     <string name="there_is_nothing_to_import">Ei ole mitään tuotavaa.</string>
@@ -439,7 +441,7 @@
     <string name="could_not_save_preset">Asetusta ei voitu tallentaa.</string>
     <string name="preset_saved_successfully">Esiasetus tallennettu onnistuneesti.</string>
     <string name="delete_preset">Poista esiasetus</string>
-    <string name="delete_preset_x"><![CDATA[Poista esiasetus <b>%s</b>?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">Esiasetus %s poistettu.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Ole hyvä ja kirjoita uusi nimi tälle esiasetukselle.</string>
@@ -448,19 +450,12 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Vahvistin</string>
-    <string name="reverb_label">Reverbi</string>
-    <string name="reverb_preset_none">Ei kaikua</string>
-    <string name="reverb_preset_plate">Levy</string>
-    <string name="reverb_preset_smallroom">Pieni huone</string>
-    <string name="reverb_preset_mediumroom">Keskikokoinen huone</string>
-    <string name="reverb_preset_largeroom">Suuri huone</string>
-    <string name="reverb_preset_mediumhall">Keskikokoinen sali</string>
-    <string name="reverb_preset_largehall">Suuri sali</string>
     <string name="sound_settings">Äänen asetukset</string>
     <string name="volume_label">Tilavuus</string>
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Ulkoinen EQ</string>
     <string name="custom">Mukautettu</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Äänen Siirto</string>
     <string name="enable_audio_offload_description">Sallii laitteen käsitellä ääntä suoraan laitteiston kautta, mikä vähentää suorittimen käyttöä ja säästää akkua.
         Tämä ominaisuus on tuettu vain tietyillä laitteilla. Jotkin efektit tai ominaisuudet eivät välttämättä toimi kun ne on otettu käyttöön.
