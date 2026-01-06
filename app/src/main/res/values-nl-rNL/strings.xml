@@ -407,6 +407,8 @@
     <string name="shuffle_mode_combined_description">Mix van favorieten, meest afgespeelde nummers, en recent afgespeelde nummers.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizer</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">Deel EQ-configuratie</string>
     <string name="there_is_nothing_to_export">Er is niets te exporteren.</string>
     <string name="there_is_nothing_to_import">Er is niets te importeren.</string>
@@ -439,7 +441,7 @@
     <string name="could_not_save_preset">Kan voorkeursinstelling niet opslaan.</string>
     <string name="preset_saved_successfully">Voorkeursinstelling succesvol opgeslagen.</string>
     <string name="delete_preset">Voorinstelling verwijderen</string>
-    <string name="delete_preset_x"><![CDATA[Verwijder preset <b>%s</b>?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">Voorkeursinstelling %s verwijderd.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Voer een nieuwe naam in voor deze voorinstelling.</string>
@@ -448,19 +450,12 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Versterker</string>
-    <string name="reverb_label">Galm</string>
-    <string name="reverb_preset_none">Geen terugslag</string>
-    <string name="reverb_preset_plate">Plaat</string>
-    <string name="reverb_preset_smallroom">Kleine kamer</string>
-    <string name="reverb_preset_mediumroom">Middelgrote ruimte</string>
-    <string name="reverb_preset_largeroom">Grote kamer</string>
-    <string name="reverb_preset_mediumhall">Middelgrote zaal</string>
-    <string name="reverb_preset_largehall">Grote zaal</string>
     <string name="sound_settings">Geluidsinstellingen</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tijdelijk</string>
     <string name="action_external_eq">Externe EQ</string>
     <string name="custom">Aangepaste</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Audio Uitladen</string>
     <string name="enable_audio_offload_description">Hiermee kan het apparaat audio rechtstreeks verwerken via de hardware, CPU-verbruik verminderen en batterij besparen.
         Deze functie wordt alleen op bepaalde apparaten ondersteund. Sommige effecten of functies werken mogelijk niet terwijl het is ingeschakeld.
