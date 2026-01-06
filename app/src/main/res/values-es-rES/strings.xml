@@ -407,6 +407,8 @@
     <string name="shuffle_mode_combined_description">Mezcla basada en favoritos, reproducciones y recencia.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizador</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">Compartir configuración EQ</string>
     <string name="there_is_nothing_to_export">No hay nada que exportar.</string>
     <string name="there_is_nothing_to_import">No hay nada que importar.</string>
@@ -439,7 +441,7 @@
     <string name="could_not_save_preset">No se pudo guardar el ajuste.</string>
     <string name="preset_saved_successfully">Preajuste guardado con éxito.</string>
     <string name="delete_preset">Eliminar preselección</string>
-    <string name="delete_preset_x"><![CDATA[¿Eliminar preset <b>%s</b>?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">Preajuste %s eliminado.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Por favor, introduzca un nuevo nombre para este preset.</string>
@@ -448,19 +450,12 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Amplificador</string>
-    <string name="reverb_label">Reverso</string>
-    <string name="reverb_preset_none">Sin reverbo</string>
-    <string name="reverb_preset_plate">Placa</string>
-    <string name="reverb_preset_smallroom">Habitación pequeña</string>
-    <string name="reverb_preset_mediumroom">Sala media</string>
-    <string name="reverb_preset_largeroom">Sala grande</string>
-    <string name="reverb_preset_mediumhall">Salón medio</string>
-    <string name="reverb_preset_largehall">Sala grande</string>
     <string name="sound_settings">Ajustes de sonido</string>
     <string name="volume_label">Volumen</string>
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ Externa</string>
     <string name="custom">Personalizado</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Carga de audio</string>
     <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
         This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
