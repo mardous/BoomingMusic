@@ -399,6 +399,8 @@
     <string name="shuffle_mode_combined_description">お気に入り、再生履歴、最近の再生状況に基づいて、ミックスする。</string>
     <!-- Equalizer -->
     <string name="equalizer_label">イコライザー</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">EQ の設定を共有</string>
     <string name="there_is_nothing_to_export">エクスポートするものはありません。</string>
     <string name="there_is_nothing_to_import">インポートするものは何もありません。</string>
@@ -431,7 +433,7 @@
     <string name="could_not_save_preset">プリセットを保存できませんでした。</string>
     <string name="preset_saved_successfully">プリセットは正常に保存されました。</string>
     <string name="delete_preset">プリセットを削除</string>
-    <string name="delete_preset_x"><![CDATA[プリセット <b>%s</b> を削除しますか？]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">プリセット %s を削除しました。</string>
     <string name="rename_preset">プリセットの名前を変更</string>
     <string name="please_enter_a_new_name_for_this_preset">このプリセットの新しい名前を入力してください。</string>
@@ -440,19 +442,12 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">アンプ</string>
-    <string name="reverb_label">リバーブ</string>
-    <string name="reverb_preset_none">リバーブなし</string>
-    <string name="reverb_preset_plate">プレート</string>
-    <string name="reverb_preset_smallroom">小さい部屋</string>
-    <string name="reverb_preset_mediumroom">中くらいの部屋</string>
-    <string name="reverb_preset_largeroom">広い部屋</string>
-    <string name="reverb_preset_mediumhall">中くらいのホール</string>
-    <string name="reverb_preset_largehall">大きなホール</string>
     <string name="sound_settings">サウンドの設定</string>
     <string name="volume_label">音量</string>
     <string name="tempo_label">テンポ</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">カスタム</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">オーディオオフロード</string>
     <string name="enable_audio_offload_description">デバイスがオーディオをハードウェア経由で直接処理できるようにし、CPU使用率を削減しバッテリーを節約します。
         この機能は特定のデバイスでのみサポートされています。有効中に一部のエフェクトや機能が動作しない場合があります。
