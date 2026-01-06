@@ -439,7 +439,6 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="could_not_save_preset">Voreinstellung konnte nicht gespeichert werden.</string>
     <string name="preset_saved_successfully">Voreinstellung erfolgreich gespeichert.</string>
     <string name="delete_preset">Voreinstellung löschen</string>
-    <string name="delete_preset_x"><![CDATA[Voreinstellung <b>%s</b> löschen?]]></string>
     <string name="preset_x_deleted">Voreinstellung %s gelöscht.</string>
     <string name="rename_preset">Voreinstellung umbenennen</string>
     <string name="please_enter_a_new_name_for_this_preset">Bitte gib einen neuen Namen für diese Voreinstellung ein.</string>
@@ -448,14 +447,6 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="bassboost_label">Bassverstärkung</string>
     <string name="virtualizer_label">Raumklang</string>
     <string name="loudness_enhancer">Verstärker</string>
-    <string name="reverb_label">Hall</string>
-    <string name="reverb_preset_none">Kein Hall</string>
-    <string name="reverb_preset_plate">Plattenhall</string>
-    <string name="reverb_preset_smallroom">Kleiner Raum</string>
-    <string name="reverb_preset_mediumroom">Mittlerer Raum</string>
-    <string name="reverb_preset_largeroom">Großer Raum</string>
-    <string name="reverb_preset_mediumhall">Mittlerer Saal</string>
-    <string name="reverb_preset_largehall">Großer Saal</string>
     <string name="sound_settings">Klangeinstellungen</string>
     <string name="volume_label">Lautstärke</string>
     <string name="tempo_label">Tempo</string>

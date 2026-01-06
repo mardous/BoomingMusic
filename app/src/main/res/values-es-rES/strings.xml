@@ -439,7 +439,6 @@
     <string name="could_not_save_preset">No se pudo guardar el ajuste.</string>
     <string name="preset_saved_successfully">Preajuste guardado con éxito.</string>
     <string name="delete_preset">Eliminar preselección</string>
-    <string name="delete_preset_x"><![CDATA[¿Eliminar preset <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Preajuste %s eliminado.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Por favor, introduzca un nuevo nombre para este preset.</string>
@@ -448,14 +447,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Amplificador</string>
-    <string name="reverb_label">Reverso</string>
-    <string name="reverb_preset_none">Sin reverbo</string>
-    <string name="reverb_preset_plate">Placa</string>
-    <string name="reverb_preset_smallroom">Habitación pequeña</string>
-    <string name="reverb_preset_mediumroom">Sala media</string>
-    <string name="reverb_preset_largeroom">Sala grande</string>
-    <string name="reverb_preset_mediumhall">Salón medio</string>
-    <string name="reverb_preset_largehall">Sala grande</string>
     <string name="sound_settings">Ajustes de sonido</string>
     <string name="volume_label">Volumen</string>
     <string name="tempo_label">Tempo</string>

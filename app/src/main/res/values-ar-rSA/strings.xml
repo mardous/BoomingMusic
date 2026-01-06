@@ -471,7 +471,6 @@
     <string name="could_not_save_preset">تعذر الحفظ مسبقاً.</string>
     <string name="preset_saved_successfully">تم حفظ الإعداد المسبق بنجاح.</string>
     <string name="delete_preset">حذف الإعداد المسبق</string>
-    <string name="delete_preset_x"><![CDATA[حذف الإعداد المسبق <b>%s</b>?]]></string>
     <string name="preset_x_deleted">تم حذف المجموعة %s.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">الرجاء إدخال اسم جديد لهذا الإعداد المسبق.</string>
@@ -480,14 +479,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">مضخم</string>
-    <string name="reverb_label">انعكاس</string>
-    <string name="reverb_preset_none">لا يوجد انعكاس</string>
-    <string name="reverb_preset_plate">صفيحة</string>
-    <string name="reverb_preset_smallroom">غرفة صغيرة</string>
-    <string name="reverb_preset_mediumroom">غرفة متوسطة</string>
-    <string name="reverb_preset_largeroom">غرفة كبيرة</string>
-    <string name="reverb_preset_mediumhall">قاعة متوسطة</string>
-    <string name="reverb_preset_largehall">قاعة كبيرة</string>
     <string name="sound_settings">إعدادات الصوت</string>
     <string name="volume_label">حجم</string>
     <string name="tempo_label">تمبو</string>

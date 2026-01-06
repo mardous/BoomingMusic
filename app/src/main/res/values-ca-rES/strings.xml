@@ -439,7 +439,6 @@
     <string name="could_not_save_preset">No s\'ha pogut desar la configuració.</string>
     <string name="preset_saved_successfully">La configuració s\'ha desat correctament.</string>
     <string name="delete_preset">Esborra la configuració</string>
-    <string name="delete_preset_x"><![CDATA[Voleu esborrar la configuració <b>%s</b>?]]></string>
     <string name="preset_x_deleted">S\'ha esborrat la configuració %s.</string>
     <string name="rename_preset">Canvia el nom a la configuració</string>
     <string name="please_enter_a_new_name_for_this_preset">Introduïu un nom nou per a aquesta configuració.</string>
@@ -448,14 +447,6 @@
     <string name="bassboost_label">Potenciació de baixos</string>
     <string name="virtualizer_label">Virtualitzador</string>
     <string name="loudness_enhancer">Amplificador</string>
-    <string name="reverb_label">Reverberació</string>
-    <string name="reverb_preset_none">Sense reverberació</string>
-    <string name="reverb_preset_plate">Placa</string>
-    <string name="reverb_preset_smallroom">Cambra petita</string>
-    <string name="reverb_preset_mediumroom">Cambra mitjana</string>
-    <string name="reverb_preset_largeroom">Cambra gran</string>
-    <string name="reverb_preset_mediumhall">Sala petita</string>
-    <string name="reverb_preset_largehall">Sala gran</string>
     <string name="sound_settings">Configuració de so</string>
     <string name="volume_label">Volum</string>
     <string name="tempo_label">Tempo</string>

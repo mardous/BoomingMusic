@@ -16,7 +16,10 @@
  */
 package com.mardous.booming.playback.equalizer
 
-import android.media.audiofx.*
+import android.media.audiofx.BassBoost
+import android.media.audiofx.Equalizer
+import android.media.audiofx.LoudnessEnhancer
+import android.media.audiofx.Virtualizer
 import android.util.Log
 
 @Suppress("DEPRECATION")
@@ -36,8 +39,6 @@ class EffectSet(sessionId: Int) {
 
     private val loudnessEnhancer: LoudnessEnhancer? =
         createEffect("LoudnessEnhancer") { LoudnessEnhancer(sessionId) }
-
-    private val presetReverb: PresetReverb? = null
 
     private inline fun <T> createEffect(tag: String, block: () -> T): T? = try {
         block()
@@ -115,20 +116,6 @@ class EffectSet(sessionId: Int) {
             ?.setStrength(strength)
     }
 
-    fun enablePresetReverb(enable: Boolean) {
-        presetReverb?.let {
-            if (enable != it.enabled) {
-                if (!enable) it.preset = PresetReverb.PRESET_NONE
-                it.enabled = enable
-            }
-        }
-    }
-
-    fun setReverbPreset(preset: Short) {
-        presetReverb?.takeIf { it.enabled && it.preset != preset }
-            ?.preset = preset
-    }
-
     fun enableLoudness(enable: Boolean) {
         loudnessEnhancer?.let {
             if (enable != it.enabled) {
@@ -147,7 +134,6 @@ class EffectSet(sessionId: Int) {
         equalizer?.release()
         bassBoost?.release()
         virtualizer?.release()
-        presetReverb?.release()
         loudnessEnhancer?.release()
     }
 }

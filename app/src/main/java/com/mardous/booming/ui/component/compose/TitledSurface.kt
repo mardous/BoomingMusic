@@ -19,8 +19,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mardous.booming.ui.theme.CornerRadiusTokens
 
 @Composable
 fun TitledSurface(
@@ -34,15 +36,14 @@ fun TitledSurface(
 ) {
     var expanded by remember { mutableStateOf(true) }
     val animatedRadius by animateDpAsState(
-        targetValue = if (expanded) 12.dp else 16.dp,
+        targetValue = if (expanded) CornerRadiusTokens.SurfaceSmall else CornerRadiusTokens.SurfaceMedium,
         tween(500, easing = FastOutSlowInEasing)
     )
 
-    Column(
+    LowestSurface(
+        color = color,
+        cornerRadius = animatedRadius,
         modifier = modifier
-            .clip(RoundedCornerShape(animatedRadius))
-            .background(color),
-        verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -78,4 +79,20 @@ fun TitledSurface(
             content()
         }
     }
+}
+
+@Composable
+fun LowestSurface(
+    color: Color = MaterialTheme.colorScheme.surfaceContainerLowest,
+    cornerRadius: Dp = CornerRadiusTokens.SurfaceSmall,
+    modifier: Modifier = Modifier,
+    content: @Composable ColumnScope.() -> Unit
+) {
+    Column(
+        modifier = modifier
+            .clip(RoundedCornerShape(cornerRadius))
+            .background(color),
+        verticalArrangement = Arrangement.spacedBy(2.dp),
+        content = content
+    )
 }

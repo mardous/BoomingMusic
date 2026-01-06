@@ -438,7 +438,6 @@
     <string name="could_not_save_preset">No se pudo guardar la configuración.</string>
     <string name="preset_saved_successfully">Configuración guardada correctamente.</string>
     <string name="delete_preset">Eliminar configuración</string>
-    <string name="delete_preset_x"><![CDATA[¿Eliminar configuración <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Configuración %s eliminada.</string>
     <string name="rename_preset">Renombrar configuración</string>
     <string name="please_enter_a_new_name_for_this_preset">Por favor, ingrese un nuevo nombre para esta configuración.</string>
@@ -447,14 +446,6 @@
     <string name="bassboost_label">Refuerzo de graves</string>
     <string name="virtualizer_label">Virtualizador</string>
     <string name="loudness_enhancer">Amplificador</string>
-    <string name="reverb_label">Reverberación</string>
-    <string name="reverb_preset_none">Sin reverberación</string>
-    <string name="reverb_preset_plate">Plato</string>
-    <string name="reverb_preset_smallroom">Habitación pequeña</string>
-    <string name="reverb_preset_mediumroom">Habitación mediana</string>
-    <string name="reverb_preset_largeroom">Habitación grande</string>
-    <string name="reverb_preset_mediumhall">Vestíbulo mediano</string>
-    <string name="reverb_preset_largehall">Vestíbulo grande</string>
     <string name="sound_settings">Ajustes de sonido</string>
     <string name="volume_label">Volumen</string>
     <string name="tempo_label">Velocidad y tono</string>

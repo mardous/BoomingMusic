@@ -457,7 +457,6 @@
     <string name="could_not_save_preset">Не удалось сохранить пресет.</string>
     <string name="preset_saved_successfully">Пресет успешно сохранен.</string>
     <string name="delete_preset">Удалить пресет</string>
-    <string name="delete_preset_x"><![CDATA[Удалить пресет &lt;b&gt;%s&lt;/b&gt;?]]></string>
     <string name="preset_x_deleted">Пресет %s удален.</string>
     <string name="rename_preset">Переименовать пресет</string>
     <string name="please_enter_a_new_name_for_this_preset">Пожалуйста, введите новое имя для этого пресета.</string>
@@ -466,14 +465,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Виртуализатор</string>
     <string name="loudness_enhancer">Усилитель</string>
-    <string name="reverb_label">Реверберация</string>
-    <string name="reverb_preset_none">Без реверберации</string>
-    <string name="reverb_preset_plate">Пластина</string>
-    <string name="reverb_preset_smallroom">Маленькая комната</string>
-    <string name="reverb_preset_mediumroom">Средняя комната</string>
-    <string name="reverb_preset_largeroom">Большая комната</string>
-    <string name="reverb_preset_mediumhall">Средний зал</string>
-    <string name="reverb_preset_largehall">Большой зал</string>
     <string name="sound_settings">Настройки звука</string>
     <string name="volume_label">Громкость</string>
     <string name="tempo_label">Темп</string>

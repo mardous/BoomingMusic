@@ -78,11 +78,6 @@ data class EQPreset(
         }
     }
 
-    fun areSameLevels(other: EQPreset?): Boolean {
-        if (other == null) return false
-        return levels.contentEquals(other.levels)
-    }
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

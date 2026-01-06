@@ -439,7 +439,6 @@
     <string name="could_not_save_preset">Impossibile salvare la preimpostazione.</string>
     <string name="preset_saved_successfully">Preimpostazione salvata con successo.</string>
     <string name="delete_preset">Elimina preimpostazioni</string>
-    <string name="delete_preset_x"><![CDATA[Eliminare preset <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Preset %s eliminato.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Inserisci un nuovo nome per questa preimpostazione.</string>
@@ -448,14 +447,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Amplificatore</string>
-    <string name="reverb_label">Riverbero</string>
-    <string name="reverb_preset_none">Nessun riverbero</string>
-    <string name="reverb_preset_plate">Piastra</string>
-    <string name="reverb_preset_smallroom">Stanza piccola</string>
-    <string name="reverb_preset_mediumroom">Camera media</string>
-    <string name="reverb_preset_largeroom">Stanza grande</string>
-    <string name="reverb_preset_mediumhall">Sala media</string>
-    <string name="reverb_preset_largehall">Sala grande</string>
     <string name="sound_settings">Impostazioni audio</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tempo</string>

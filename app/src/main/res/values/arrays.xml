@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="reverb_preset_names">
-        <item>@string/reverb_preset_none</item>
-        <item>@string/reverb_preset_smallroom</item>
-        <item>@string/reverb_preset_mediumroom</item>
-        <item>@string/reverb_preset_largeroom</item>
-        <item>@string/reverb_preset_mediumhall</item>
-        <item>@string/reverb_preset_largehall</item>
-        <item>@string/reverb_preset_plate</item>
-    </string-array>
-
     <string-array name="pref_appbar_mode_entries">
         <item>@string/compact</item>
         <item>@string/expanded</item>

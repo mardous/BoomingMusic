@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.core.model.equalizer.BalanceLevel
-import com.mardous.booming.core.model.equalizer.EqEffectUpdate
 import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.core.model.equalizer.TempoLevel
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
@@ -23,13 +22,8 @@ class SoundSettingsViewModel(
     val audioDeviceFlow get() = audioOutputObserver.audioDeviceFlow
 
     val balanceFlow = soundSettings.balanceFlow
-    val balance get() = soundSettings.balance
-
     val tempoFlow = soundSettings.tempoFlow
-    val tempo get() = soundSettings.tempo
-
     val replayGainStateFlow = soundSettings.replayGainStateFlow
-    val replayGainState get() = soundSettings.replayGainState
 
     val audioOffloadFlow = soundSettings.audioOffloadFlow
     val audioFloatOutputFlow = soundSettings.audioFloatOutputFlow
@@ -61,44 +55,29 @@ class SoundSettingsViewModel(
     }
 
     fun setBalance(
-        right: Float = balance.right,
-        left: Float = balance.left,
-        apply: Boolean = true
+        left: Float = balanceFlow.value.left,
+        right: Float = balanceFlow.value.right
     ) = viewModelScope.launch(Dispatchers.IO) {
-        val update = EqEffectUpdate(balanceFlow.value, true, BalanceLevel(left, right))
-        soundSettings.setBalance(update, apply)
+        soundSettings.setBalance(BalanceLevel(left, right))
     }
 
     fun setTempo(
-        speed: Float = tempo.speed,
-        pitch: Float = tempo.pitch,
-        isFixedPitch: Boolean = tempo.isFixedPitch,
-        apply: Boolean = true
+        speed: Float = tempoFlow.value.speed,
+        pitch: Float = tempoFlow.value.pitch,
+        isFixedPitch: Boolean = tempoFlow.value.isFixedPitch
     ) = viewModelScope.launch(Dispatchers.IO) {
-        val update = EqEffectUpdate(tempoFlow.value, true, TempoLevel(speed, pitch, isFixedPitch))
-        soundSettings.setTempo(update, apply)
+        soundSettings.setTempo(TempoLevel(speed, pitch, isFixedPitch))
     }
 
     fun setReplayGain(
-        mode: ReplayGainMode = replayGainState.mode,
-        preamp: Float = replayGainState.preamp,
-        preampWithoutGain: Float = replayGainState.preampWithoutGain,
-        apply: Boolean = true
+        mode: ReplayGainMode = replayGainStateFlow.value.mode,
+        preamp: Float = replayGainStateFlow.value.preamp,
+        preampWithoutGain: Float = replayGainStateFlow.value.preampWithoutGain
     ) = viewModelScope.launch(Dispatchers.IO) {
-        val update = EqEffectUpdate(
-            state = replayGainStateFlow.value,
-            isEnabled = mode.isOn,
-            value = ReplayGainState(
-                mode = mode,
-                preamp = preamp,
-                preampWithoutGain = preampWithoutGain
-            )
-        )
-        soundSettings.setReplayGain(update, apply)
+        soundSettings.setReplayGain(ReplayGainState(mode, preamp, preampWithoutGain))
     }
 
     fun applyPendingState() = viewModelScope.launch(Dispatchers.IO) {
-        soundSettings.applyPendingState()
     }
 
     fun showOutputDeviceSelector(context: Context) {

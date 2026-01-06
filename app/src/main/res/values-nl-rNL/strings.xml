@@ -439,7 +439,6 @@
     <string name="could_not_save_preset">Kan voorkeursinstelling niet opslaan.</string>
     <string name="preset_saved_successfully">Voorkeursinstelling succesvol opgeslagen.</string>
     <string name="delete_preset">Voorinstelling verwijderen</string>
-    <string name="delete_preset_x"><![CDATA[Verwijder preset <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Voorkeursinstelling %s verwijderd.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Voer een nieuwe naam in voor deze voorinstelling.</string>
@@ -448,14 +447,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Versterker</string>
-    <string name="reverb_label">Galm</string>
-    <string name="reverb_preset_none">Geen terugslag</string>
-    <string name="reverb_preset_plate">Plaat</string>
-    <string name="reverb_preset_smallroom">Kleine kamer</string>
-    <string name="reverb_preset_mediumroom">Middelgrote ruimte</string>
-    <string name="reverb_preset_largeroom">Grote kamer</string>
-    <string name="reverb_preset_mediumhall">Middelgrote zaal</string>
-    <string name="reverb_preset_largehall">Grote zaal</string>
     <string name="sound_settings">Geluidsinstellingen</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tijdelijk</string>

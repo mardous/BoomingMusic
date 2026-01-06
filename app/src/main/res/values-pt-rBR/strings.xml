@@ -438,7 +438,6 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="could_not_save_preset">Impossível salvar predefinição.</string>
     <string name="preset_saved_successfully">Predefinição salva com sucesso.</string>
     <string name="delete_preset">Excluir predefinição</string>
-    <string name="delete_preset_x"><![CDATA[Excluir predefinição <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Predefinição %s excluída.</string>
     <string name="rename_preset">Renomear predefinição</string>
     <string name="please_enter_a_new_name_for_this_preset">Por favor, digite um novo nome para esta predefinição.</string>
@@ -447,14 +446,6 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="bassboost_label">Amplificar o Grave</string>
     <string name="virtualizer_label">Virtualizador</string>
     <string name="loudness_enhancer">Amplificador</string>
-    <string name="reverb_label">Reverberação</string>
-    <string name="reverb_preset_none">Sem reverberação</string>
-    <string name="reverb_preset_plate">Placa</string>
-    <string name="reverb_preset_smallroom">Sala pequena</string>
-    <string name="reverb_preset_mediumroom">Sala média</string>
-    <string name="reverb_preset_largeroom">Sala grande</string>
-    <string name="reverb_preset_mediumhall">Salão médio</string>
-    <string name="reverb_preset_largehall">Sala grande</string>
     <string name="sound_settings">Configurações de som</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Velocidade</string>

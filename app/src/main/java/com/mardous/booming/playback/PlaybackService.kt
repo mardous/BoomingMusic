@@ -935,7 +935,10 @@ class PlaybackService :
                     )
                     .build()
 
-                equalizerManager.setTransientEqualizerState(!audioOffloadingEnabled)
+                equalizerManager.setTransientEqualizerState(
+                    isEnabled = !audioOffloadingEnabled,
+                    isDisabledByAudioOffload = audioOffloadingEnabled
+                )
             }
         }
         serviceScope.launch {
@@ -945,21 +948,27 @@ class PlaybackService :
         }
         serviceScope.launch {
             soundSettings.replayGainStateFlow.collect {
-                replayGainProcessor.mode = it.value.mode
-                replayGainProcessor.preAmpGain = it.value.preamp
-                replayGainProcessor.preAmpGainWithoutTag = it.value.preampWithoutGain
+                if (replayGainProcessor.mode != it.mode) {
+                    replayGainProcessor.mode = it.mode
+                }
+                if (replayGainProcessor.preAmpGain != it.preamp) {
+                    replayGainProcessor.preAmpGain = it.preamp
+                }
+                if (replayGainProcessor.preAmpGainWithoutTag != it.preampWithoutGain) {
+                    replayGainProcessor.preAmpGainWithoutTag = it.preampWithoutGain
+                }
             }
         }
         serviceScope.launch {
             soundSettings.tempoFlow.collect {
                 player.playbackParameters = player.playbackParameters
-                    .withSpeed(it.value.speed)
-                    .withPitch(it.value.actualPitch)
+                    .withSpeed(it.speed)
+                    .withPitch(it.actualPitch)
             }
         }
         serviceScope.launch {
             soundSettings.balanceFlow.collect {
-                balanceProcessor.setBalance(it.value.left, it.value.right)
+                balanceProcessor.setBalance(it.left, it.right)
             }
         }
     }

@@ -437,7 +437,6 @@
     <string name="could_not_save_preset">प्रीसेट को सहेज नहीं सके</string>
     <string name="preset_saved_successfully">प्रीसेट सफलतापूर्वक सहेजा गया</string>
     <string name="delete_preset">प्रीसेट हटाएँ</string>
-    <string name="delete_preset_x"><![CDATA[प्रीसेट हटाएँ <b>%s</b>?]]></string>
     <string name="preset_x_deleted">प्रेसेट %s हटा दिया गया।</string>
     <string name="rename_preset">प्रीसेट का नाम बदलें</string>
     <string name="please_enter_a_new_name_for_this_preset">कृपया, इस प्रीसेट के लिए एक नया नाम दर्ज करें।</string>
@@ -446,14 +445,6 @@
     <string name="bassboost_label">बैसबूस्ट</string>
     <string name="virtualizer_label">वर्चुअलाइज़र</string>
     <string name="loudness_enhancer">एम्प्लीफायर</string>
-    <string name="reverb_label">रिवर्ब</string>
-    <string name="reverb_preset_none">कोई रीवरब नहीं है</string>
-    <string name="reverb_preset_plate">प्लेट</string>
-    <string name="reverb_preset_smallroom">छोटा कमरा</string>
-    <string name="reverb_preset_mediumroom">मध्यम कमरे</string>
-    <string name="reverb_preset_largeroom">बड़ा कमरा</string>
-    <string name="reverb_preset_mediumhall">मध्यम हॉल</string>
-    <string name="reverb_preset_largehall">बड़ा हॉल</string>
     <string name="sound_settings">साउंड सेटिंग्स</string>
     <string name="volume_label">वॉल्यूम</string>
     <string name="tempo_label">गति</string>

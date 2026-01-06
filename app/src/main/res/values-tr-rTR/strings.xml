@@ -439,7 +439,6 @@
     <string name="could_not_save_preset">Ön ayar kaydedilemedi.</string>
     <string name="preset_saved_successfully">Ön ayar başarıyla kaydedildi.</string>
     <string name="delete_preset">Ön ayarı sil</string>
-    <string name="delete_preset_x"><![CDATA[<b>%s</b> ön ayarı silinsin mi?]]></string>
     <string name="preset_x_deleted">%s ön ayarı silindi.</string>
     <string name="rename_preset">Ön ayarı yeniden adlandır</string>
     <string name="please_enter_a_new_name_for_this_preset">Lütfen bu ön ayar için yeni bir isim girin.</string>
@@ -448,14 +447,6 @@
     <string name="bassboost_label">Bas Güçlendirme</string>
     <string name="virtualizer_label">Sanallaştırıcı</string>
     <string name="loudness_enhancer">Yükseltici</string>
-    <string name="reverb_label">Yankı</string>
-    <string name="reverb_preset_none">Yankı yok</string>
-    <string name="reverb_preset_plate">Plaka</string>
-    <string name="reverb_preset_smallroom">Küçük oda</string>
-    <string name="reverb_preset_mediumroom">Orta oda</string>
-    <string name="reverb_preset_largeroom">Geniş oda</string>
-    <string name="reverb_preset_mediumhall">Orta salon</string>
-    <string name="reverb_preset_largehall">Geniş salon</string>
     <string name="sound_settings">Ses ayarları</string>
     <string name="volume_label">Ses Seviyesi</string>
     <string name="tempo_label">Tempo</string>

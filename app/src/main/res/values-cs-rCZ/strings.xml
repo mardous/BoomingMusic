@@ -455,7 +455,6 @@
     <string name="could_not_save_preset">Přednastavení nelze uložit.</string>
     <string name="preset_saved_successfully">Předvolba byla úspěšně uložena.</string>
     <string name="delete_preset">Odstranit předvolbu</string>
-    <string name="delete_preset_x"><![CDATA[Odstranit předvolbu <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Předvolba %s byla smazána.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Zadejte prosím nový název pro tuto předvolbu.</string>
@@ -464,14 +463,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Zesilovač</string>
-    <string name="reverb_label">Vrátit zpět</string>
-    <string name="reverb_preset_none">Bez reverzu</string>
-    <string name="reverb_preset_plate">Deska</string>
-    <string name="reverb_preset_smallroom">Malá místnost</string>
-    <string name="reverb_preset_mediumroom">Střední místnost</string>
-    <string name="reverb_preset_largeroom">Velká místnost</string>
-    <string name="reverb_preset_mediumhall">Střední sál</string>
-    <string name="reverb_preset_largehall">Velký sál</string>
     <string name="sound_settings">Nastavení zvuku</string>
     <string name="volume_label">Objem</string>
     <string name="tempo_label">Tempo</string>

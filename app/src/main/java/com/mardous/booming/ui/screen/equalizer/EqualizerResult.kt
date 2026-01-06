@@ -30,13 +30,13 @@ open class PresetOpResult(
 class ExportRequestResult(
     success: Boolean,
     @StringRes messageRes: Int = 0,
-    val presets: List<EQPreset> = emptyList(),
-    val presetNames: List<String> = emptyList()
+    val presetExportData: Pair<String, String>? = null
 ) : PresetOpResult(success, messageRes = messageRes)
 
 class PresetExportResult(
     success: Boolean,
     @StringRes messageRes: Int = 0,
+    val isShareRequest: Boolean = false,
     val data: Uri? = null,
     val mimeType: String? = null
 ) : PresetOpResult(success, messageRes = messageRes)
@@ -44,8 +44,7 @@ class PresetExportResult(
 class ImportRequestResult(
     success: Boolean,
     @StringRes messageRes: Int = 0,
-    val presets: List<EQPreset> = emptyList(),
-    val presetNames: List<String> = emptyList()
+    val presets: List<EQPreset> = emptyList()
 ) : PresetOpResult(success, messageRes = messageRes)
 
 class PresetImportResult(

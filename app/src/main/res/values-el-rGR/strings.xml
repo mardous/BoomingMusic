@@ -439,7 +439,6 @@
     <string name="could_not_save_preset">Αδυναμία αποθήκευσης προκαθορισμένης ρύθμισης.</string>
     <string name="preset_saved_successfully">Η προεπιλογή αποθηκεύτηκε επιτυχώς.</string>
     <string name="delete_preset">Διαγραφή προεπιλογής</string>
-    <string name="delete_preset_x"><![CDATA[Διαγραφή προεπιλογής <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Η προεπιλογή %s διαγράφηκε.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Παρακαλώ, εισάγετε ένα νέο όνομα για αυτή τη ρύθμιση.</string>
@@ -448,14 +447,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Ενισχυτής</string>
-    <string name="reverb_label">Αντήχηση</string>
-    <string name="reverb_preset_none">Χωρίς αντήχηση</string>
-    <string name="reverb_preset_plate">Πλάκα</string>
-    <string name="reverb_preset_smallroom">Μικρό δωμάτιο</string>
-    <string name="reverb_preset_mediumroom">Μεσαίο δωμάτιο</string>
-    <string name="reverb_preset_largeroom">Μεγάλο δωμάτιο</string>
-    <string name="reverb_preset_mediumhall">Μεσαία αίθουσα</string>
-    <string name="reverb_preset_largehall">Μεγάλη αίθουσα</string>
     <string name="sound_settings">Ρυθμίσεις ήχου</string>
     <string name="volume_label">Όγκος</string>
     <string name="tempo_label">Ρυθμός</string>

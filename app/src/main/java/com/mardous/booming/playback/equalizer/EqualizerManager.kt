@@ -25,11 +25,11 @@ import androidx.core.content.edit
 import com.mardous.booming.core.model.equalizer.*
 import com.mardous.booming.core.model.equalizer.EQPreset.Companion.getEmptyPreset
 import com.mardous.booming.extensions.files.getFormattedFileName
+import com.mardous.booming.util.Preferences.requireString
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.*
 import kotlinx.serialization.json.Json
-import java.util.Locale
 import java.util.UUID
 
 /**
@@ -46,13 +46,12 @@ class EqualizerManager internal constructor(context: Context) {
     private var isVirtualizerSupported = false
     private var isBassBoostSupported = false
     private var isLoudnessEnhancerSupported = false
-    private var isPresetReverbSupported = false
 
     private val _eqStateFlow: MutableStateFlow<EqState>
+    private val _bandCapabilitiesFlow: MutableStateFlow<EqBandCapabilities>
     private val _bassBoostFlow: MutableStateFlow<EqEffectState<Float>>
     private val _virtualizerFlow: MutableStateFlow<EqEffectState<Float>>
     private val _loudnessGainFlow: MutableStateFlow<EqEffectState<Float>>
-    private val _presetReverbFlow: MutableStateFlow<EqEffectState<Int>>
     private val _currentPresetFlow: MutableStateFlow<EQPreset>
     private val _presetsFlow: MutableStateFlow<EqPresetList>
 
@@ -63,18 +62,18 @@ class EqualizerManager internal constructor(context: Context) {
         private set
 
     val eqStateFlow: StateFlow<EqState> get() = _eqStateFlow
+    val bandCapabilitiesFlow: StateFlow<EqBandCapabilities> get() = _bandCapabilitiesFlow
     val bassBoostFlow: StateFlow<EqEffectState<Float>> get() = _bassBoostFlow
     val virtualizerFlow: StateFlow<EqEffectState<Float>> get() = _virtualizerFlow
     val loudnessGainFlow: StateFlow<EqEffectState<Float>> get() = _loudnessGainFlow
-    val presetReverbFlow: StateFlow<EqEffectState<Int>> get() = _presetReverbFlow
     val currentPresetFlow: StateFlow<EQPreset> get() = _currentPresetFlow
     val presetsFlow: StateFlow<EqPresetList> get() = _presetsFlow
 
     val eqState get() = eqStateFlow.value
+    val bandCapabilities get() = bandCapabilitiesFlow.value
     val bassBoostState get() = bassBoostFlow.value
     val virtualizerState get() = virtualizerFlow.value
     val loudnessGainState get() = loudnessGainFlow.value
-    val presetReverbState get() = presetReverbFlow.value
 
     val equalizerPresets get() = presetsFlow.value.list
     val currentPreset get() = currentPresetFlow.value
@@ -97,8 +96,6 @@ class EqualizerManager internal constructor(context: Context) {
                         UUID.fromString(EFFECT_TYPE_BASS_BOOST) -> isBassBoostSupported = true
                         UUID.fromString(EFFECT_TYPE_VIRTUALIZER) -> isVirtualizerSupported = true
                         UUID.fromString(EFFECT_TYPE_LOUDNESS_ENHANCER) -> isLoudnessEnhancerSupported = true
-                        //UUID.fromString(EFFECT_TYPE_PRESET_REVERB) -> isPresetReverbSupported = true
-                        //We've temporarily disabled PresetReverb because it was not working as expected.
                     }
                 }
             }
@@ -117,12 +114,12 @@ class EqualizerManager internal constructor(context: Context) {
                 }
                 .launchIn(eqScope)
         }
+        _bandCapabilitiesFlow = MutableStateFlow(initializeEqBandCapabilities())
         _presetsFlow = MutableStateFlow(initializePresets())
         _currentPresetFlow = MutableStateFlow(initializeCurrentPreset())
         _bassBoostFlow = MutableStateFlow(initializeBassBoostState())
         _virtualizerFlow = MutableStateFlow(initializeVirtualizerState())
         _loudnessGainFlow = MutableStateFlow(initializeLoudnessGain())
-        _presetReverbFlow = MutableStateFlow(initializePresetReverb())
     }
 
     suspend fun initializeEqualizer() = withContext(IO) {
@@ -133,10 +130,21 @@ class EqualizerManager internal constructor(context: Context) {
                 if (temp.equalizer == null)
                     return@withContext
 
+                val numberOfBands = temp.getNumEqualizerBands().toInt().coerceAtMost(MAX_BANDS)
+                val levelRange = temp.equalizer.bandLevelRange
+                    .joinToString(DEFAULT_DELIMITER)
+
+                val centerFreqs = (0 until numberOfBands)
+                    .map { temp.equalizer.getCenterFreq(it.toShort()) }
+                    .joinToString(DEFAULT_DELIMITER)
+
+                mPreferences.edit(commit = true) {
+                    putInt(Keys.NUM_BANDS, numberOfBands)
+                    putString(Keys.CENTER_FREQUENCIES, centerFreqs)
+                    putString(Keys.BAND_LEVEL_RANGE, levelRange)
+                }
+
                 setDefaultPresets(temp, temp.equalizer)
-                numberOfBands = temp.getNumEqualizerBands().toInt().coerceAtMost(MAX_BANDS)
-                setBandLevelRange(temp.equalizer.getBandLevelRange())
-                setCenterFreqs(temp.equalizer)
 
                 temp.release()
             }
@@ -155,7 +163,6 @@ class EqualizerManager internal constructor(context: Context) {
         _bassBoostFlow.emit(initializeBassBoostState())
         _virtualizerFlow.emit(initializeVirtualizerState())
         _loudnessGainFlow.emit(initializeLoudnessGain())
-        _presetReverbFlow.emit(initializePresetReverb())
     }
 
     fun release() {
@@ -241,7 +248,7 @@ class EqualizerManager internal constructor(context: Context) {
         if (toImport.isEmpty()) return 0
 
         val currentPresets = equalizerPresets.toMutableList()
-        val numBands = numberOfBands
+        val numBands = bandCapabilities.bandCount
 
         var imported = 0
         for (preset in toImport) {
@@ -320,7 +327,7 @@ class EqualizerManager internal constructor(context: Context) {
     }
 
     private fun getAndSaveEmptyCustomPreset(): EQPreset {
-        val emptyPreset = getEmptyPreset(CUSTOM_PRESET_NAME, true, numberOfBands)
+        val emptyPreset = getEmptyPreset(CUSTOM_PRESET_NAME, true, bandCapabilities.bandCount)
         setCustomPreset(emptyPreset, fromUser = false)
         return emptyPreset
     }
@@ -396,12 +403,17 @@ class EqualizerManager internal constructor(context: Context) {
         setSessionIsActiveImpl(isActive, false)
     }
 
-    suspend fun setTransientEqualizerState(enabled: Boolean, supported: Boolean = enabled) {
+    suspend fun setTransientEqualizerState(
+        isEnabled: Boolean,
+        isDisabledByAudioOffload: Boolean,
+        isSupported: Boolean = isEnabled
+    ) {
         setEqualizerState(
             update = EqUpdate(
                 state = eqState,
-                isEnabled = mPreferences.getBoolean(Keys.GLOBAL_ENABLED, false) && enabled,
-                isSupported = isEqualizerSupported && supported,
+                isEnabled = mPreferences.getBoolean(Keys.GLOBAL_ENABLED, false) && isEnabled,
+                isSupported = isEqualizerSupported && isSupported,
+                isDisabledByAudioOffload = isDisabledByAudioOffload,
                 isTransient = true
             ),
             apply = false
@@ -420,12 +432,6 @@ class EqualizerManager internal constructor(context: Context) {
         if (apply) newState.apply()
     }
 
-    suspend fun setPresetReverb(update: EqEffectUpdate<Int>, apply: Boolean) {
-        val newState = update.toState()
-        _presetReverbFlow.tryEmit(newState)
-        if (apply) newState.apply()
-    }
-
     suspend fun setBassBoost(update: EqEffectUpdate<Float>, apply: Boolean) {
         val newState = update.toState()
         _bassBoostFlow.emit(newState)
@@ -441,7 +447,6 @@ class EqualizerManager internal constructor(context: Context) {
     suspend fun applyPendingStates() {
         eqState.apply()
         loudnessGainState.apply()
-        presetReverbState.apply()
         bassBoostState.apply()
         virtualizerState.apply()
     }
@@ -470,6 +475,7 @@ class EqualizerManager internal constructor(context: Context) {
         return EqState(
             isSupported = isEqualizerSupported,
             isEnabled = mPreferences.getBoolean(Keys.GLOBAL_ENABLED, false),
+            isDisabledByAudioOffload = false,
             onCommit = { state ->
                 mPreferences.edit(commit = true) {
                     putBoolean(Keys.GLOBAL_ENABLED, state.isEnabled)
@@ -479,30 +485,37 @@ class EqualizerManager internal constructor(context: Context) {
         )
     }
 
+    fun initializeEqBandCapabilities(): EqBandCapabilities {
+        val bandCount = mPreferences.getInt(Keys.NUM_BANDS, DEFAULT_BAND_COUNT)
+        val zeroedBands = EqualizerSession.getZeroedBandsString(bandCount)
+        val bandFrequencies = mPreferences.requireString(Keys.CENTER_FREQUENCIES, zeroedBands)
+            .split(DEFAULT_DELIMITER)
+            .map { it.toInt() / 1000 }
+            .toIntArray()
+
+        val ranges = mPreferences.requireString(Keys.BAND_LEVEL_RANGE, DEFAULT_BAND_RANGE)
+            .split(DEFAULT_DELIMITER)
+            .map { it.toInt() }
+            .toIntArray()
+
+        if (ranges.size == 2 && bandFrequencies.size == bandCount) {
+            return EqBandCapabilities(bandCount, ranges[0]..ranges[1], bandFrequencies)
+        }
+
+        return EqBandCapabilities(bandCount, -1500..1500, bandFrequencies)
+    }
+
     private fun initializeLoudnessGain(): EqEffectState<Float> {
         return EqEffectState(
             isSupported = isLoudnessEnhancerSupported,
             isEnabled = mPreferences.getBoolean(Keys.LOUDNESS_ENABLED, false),
             value = mPreferences.getFloat(Keys.LOUDNESS_GAIN, MINIMUM_LOUDNESS_GAIN.toFloat()),
+            valueMin = MINIMUM_LOUDNESS_GAIN.toFloat(),
+            valueMax = MAXIMUM_LOUDNESS_GAIN.toFloat(),
             onCommitEffect = { state ->
                 mPreferences.edit(commit = true) {
                     putBoolean(Keys.LOUDNESS_ENABLED, state.isEnabled)
                     putFloat(Keys.LOUDNESS_GAIN, state.value)
-                }
-                eqSession.update()
-            }
-        )
-    }
-
-    private fun initializePresetReverb(): EqEffectState<Int> {
-        return EqEffectState(
-            isSupported = isPresetReverbSupported,
-            isEnabled = mPreferences.getBoolean(Keys.PRESET_REVERB_ENABLED, false),
-            value = mPreferences.getInt(Keys.PRESET_REVERB_PRESET, 0),
-            onCommitEffect = { state ->
-                mPreferences.edit(commit = true) {
-                    putBoolean(Keys.PRESET_REVERB_ENABLED, state.isEnabled)
-                    putInt(Keys.PRESET_REVERB_PRESET, state.value)
                 }
                 eqSession.update()
             }
@@ -514,6 +527,8 @@ class EqualizerManager internal constructor(context: Context) {
             isSupported = isBassBoostSupported,
             isEnabled = preset.hasEffect(EFFECT_TYPE_BASS_BOOST),
             value = preset.getEffect(EFFECT_TYPE_BASS_BOOST),
+            valueMin = BASSBOOST_MIN_STRENGTH,
+            valueMax = BASSBOOST_MAX_STRENGTH,
             onCommitEffect = { state ->
                 setCustomPresetEffect(EFFECT_TYPE_BASS_BOOST, state.value)
             }
@@ -525,6 +540,8 @@ class EqualizerManager internal constructor(context: Context) {
             isSupported = isVirtualizerSupported,
             isEnabled = preset.hasEffect(EFFECT_TYPE_VIRTUALIZER),
             value = preset.getEffect(EFFECT_TYPE_VIRTUALIZER),
+            valueMin = VIRTUALIZER_MIN_STRENGTH,
+            valueMax = VIRTUALIZER_MAX_STRENGTH,
             onCommitEffect = { state ->
                 setCustomPresetEffect(EFFECT_TYPE_VIRTUALIZER, state.value)
             }
@@ -547,73 +564,16 @@ class EqualizerManager internal constructor(context: Context) {
         }
     }
 
-    var numberOfBands: Int
-        get() = mPreferences.getInt(Keys.NUM_BANDS, 5)
-        set(numberOfBands) = mPreferences.edit {
-            putInt(Keys.NUM_BANDS, numberOfBands)
-        }
-
-    val bandLevelRange: IntArray
-        get() {
-            val bandLevelRange = mPreferences.getString(Keys.BAND_LEVEL_RANGE, null)
-            if (bandLevelRange == null || bandLevelRange.trim().isEmpty()) {
-                return intArrayOf(-1500, 1500)
-            }
-            val ranges = bandLevelRange.split(";").toTypedArray()
-            val values = IntArray(ranges.size)
-            for (i in values.indices) {
-                values[i] = ranges[i].toInt()
-            }
-            return if (values.size == 2) values else intArrayOf(-1500, 1500)
-        }
-
-    fun setBandLevelRange(bandLevelRange: ShortArray) {
-        if (bandLevelRange.size == 2) {
-            mPreferences.edit {
-                putString(
-                    Keys.BAND_LEVEL_RANGE,
-                    String.format(Locale.ROOT, "%d;%d", bandLevelRange[0], bandLevelRange[1])
-                )
-            }
-        }
-    }
-
-    val centerFreqs: IntArray
-        get() = mPreferences.getString(Keys.CENTER_FREQUENCIES, EqualizerSession.getZeroedBandsString(numberOfBands))!!
-            .split(DEFAULT_DELIMITER).toTypedArray().let { savedValue ->
-                val frequencies = IntArray(savedValue.size)
-                for (i in frequencies.indices) {
-                    frequencies[i] = savedValue[i].toInt()
-                }
-                frequencies
-            }
-
-    fun setCenterFreqs(equalizer: Equalizer) {
-        val numBands = numberOfBands
-        val centerFreqs = StringBuilder()
-        for (i in 0 until numBands) {
-            centerFreqs.append(equalizer.getCenterFreq(i.toShort()))
-            if (i < numBands - 1) {
-                centerFreqs.append(DEFAULT_DELIMITER)
-            }
-        }
-        mPreferences.edit {
-            putString(Keys.CENTER_FREQUENCIES, centerFreqs.toString())
-        }
-    }
-
     suspend fun resetConfiguration() {
         mPreferences.edit {
             putBoolean(Keys.IS_INITIALIZED, false)
             putBoolean(Keys.GLOBAL_ENABLED, false)
             putBoolean(Keys.LOUDNESS_ENABLED, false)
-            putBoolean(Keys.PRESET_REVERB_ENABLED, false)
             remove(Keys.PRESETS)
             remove(Keys.PRESET)
             remove(Keys.CUSTOM_PRESET)
             remove(Keys.BAND_LEVEL_RANGE)
             remove(Keys.LOUDNESS_GAIN)
-            remove(Keys.PRESET_REVERB_PRESET)
         }
         initializeEqualizer()
     }
@@ -625,8 +585,6 @@ class EqualizerManager internal constructor(context: Context) {
             const val IS_INITIALIZED = "equalizer.initialized"
             const val LOUDNESS_ENABLED = "audiofx.eq.loudness.enable"
             const val LOUDNESS_GAIN = "audiofx.eq.loudness.gain"
-            const val PRESET_REVERB_ENABLED = "audiofx.eq.presetreverb.enable"
-            const val PRESET_REVERB_PRESET = "audiofx.eq.presetreverb.preset"
             const val PRESETS = "audiofx.eq.presets"
             const val PRESET = "audiofx.eq.preset"
             const val CUSTOM_PRESET = "audiofx.eq.preset.custom"
@@ -637,25 +595,26 @@ class EqualizerManager internal constructor(context: Context) {
 
     companion object {
 
+        const val PREFERENCES_NAME = "BoomingAudioFX"
+        private const val CUSTOM_PRESET_NAME = "Custom"
+        private const val DEFAULT_DELIMITER = ";"
+
         const val EFFECT_TYPE_EQUALIZER = "0bed4300-ddd6-11db-8f34-0002a5d5c51b"
         const val EFFECT_TYPE_BASS_BOOST = "0634f220-ddd4-11db-a0fc-0002a5d5c51b"
         const val EFFECT_TYPE_VIRTUALIZER = "37cc2c00-dddd-11db-8577-0002a5d5c51b"
         const val EFFECT_TYPE_LOUDNESS_ENHANCER = "fe3199be-aed0-413f-87bb-11260eb63cf1"
-        const val EFFECT_TYPE_PRESET_REVERB = "47382d60-ddd8-11db-bf3a-0002a5d5c51b"
 
         const val MINIMUM_LOUDNESS_GAIN: Int = 0
         const val MAXIMUM_LOUDNESS_GAIN: Int = 4000
 
-        const val BASSBOOST_MIN_STRENGTH: Short = 0
-        const val BASSBOOST_MAX_STRENGTH: Short = 1000
+        const val BASSBOOST_MIN_STRENGTH = 0f
+        const val BASSBOOST_MAX_STRENGTH = 1000f
 
-        const val VIRTUALIZER_MIN_STRENGTH: Short = 0
-        const val VIRTUALIZER_MAX_STRENGTH: Short = 1000
+        const val VIRTUALIZER_MIN_STRENGTH = 0f
+        const val VIRTUALIZER_MAX_STRENGTH = 1000f
 
         const val MAX_BANDS = 10
-
-        const val PREFERENCES_NAME = "BoomingAudioFX"
-        private const val CUSTOM_PRESET_NAME = "Custom"
-        private const val DEFAULT_DELIMITER = ";"
+        const val DEFAULT_BAND_COUNT = 5
+        const val DEFAULT_BAND_RANGE = "-1500${DEFAULT_DELIMITER}1500"
     }
 }

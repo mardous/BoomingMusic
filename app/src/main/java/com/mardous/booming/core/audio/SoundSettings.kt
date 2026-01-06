@@ -19,7 +19,10 @@ package com.mardous.booming.core.audio
 
 import android.content.Context
 import androidx.core.content.edit
-import com.mardous.booming.core.model.equalizer.*
+import com.mardous.booming.core.model.equalizer.BalanceLevel
+import com.mardous.booming.core.model.equalizer.MAX_BALANCE
+import com.mardous.booming.core.model.equalizer.ReplayGainState
+import com.mardous.booming.core.model.equalizer.TempoLevel
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.playback.equalizer.EqualizerManager.Companion.PREFERENCES_NAME
 import com.mardous.booming.util.PLAYBACK_PITCH
@@ -34,19 +37,15 @@ class SoundSettings(context: Context) {
 
     private val _balanceFlow = MutableStateFlow(createBalanceState())
     val balanceFlow = _balanceFlow.asStateFlow()
-    val balance get() = _balanceFlow.value.value
 
     private val _tempoFlow = MutableStateFlow(createTempoState())
     val tempoFlow = _tempoFlow.asStateFlow()
-    val tempo get() = _tempoFlow.value.value
 
     private val _replayGainStateFlow = MutableStateFlow(createReplayGainState())
     val replayGainStateFlow = _replayGainStateFlow.asStateFlow()
-    val replayGainState get() = replayGainStateFlow.value.value
 
     private val _audioOffloadFlow = MutableStateFlow(prefs.getBoolean(AUDIO_OFFLOAD, false))
     val audioOffloadFlow = _audioOffloadFlow.asStateFlow()
-    val audioOffload get() = audioOffloadFlow.value
 
     private val _audioFloatOutputFlow = MutableStateFlow(prefs.getBoolean(AUDIO_FLOAT_OUTPUT, false))
     val audioFloatOutputFlow = _audioFloatOutputFlow.asStateFlow()
@@ -71,88 +70,52 @@ class SoundSettings(context: Context) {
         prefs.edit(commit = true) { putBoolean(SKIP_SILENCE, enable) }
     }
 
-    suspend fun setBalance(update: EqEffectUpdate<BalanceLevel>, apply: Boolean) {
-        val newState = update.toState().also {
-            if (apply) it.apply()
+    suspend fun setBalance(balance: BalanceLevel) {
+        _balanceFlow.emit(balance)
+        prefs.edit(commit = true) {
+            putFloat(LEFT_BALANCE, balance.left)
+            putFloat(RIGHT_BALANCE, balance.right)
         }
-        _balanceFlow.emit(newState)
     }
 
-    suspend fun setTempo(update: EqEffectUpdate<TempoLevel>, apply: Boolean) {
-        val newState = update.toState().also {
-            if (apply) it.apply()
+    suspend fun setTempo(tempo: TempoLevel) {
+        _tempoFlow.emit(tempo)
+        prefs.edit(commit = true) {
+            putFloat(SPEED, tempo.speed)
+            putFloat(PITCH, tempo.pitch)
+            putBoolean(IS_FIXED_PITCH, tempo.isFixedPitch)
         }
-        _tempoFlow.emit(newState)
     }
 
-    suspend fun setReplayGain(update: EqEffectUpdate<ReplayGainState>, apply: Boolean) {
-        val newState = update.toState().also {
-            if (apply) it.apply()
+    suspend fun setReplayGain(replayGain: ReplayGainState) {
+        _replayGainStateFlow.emit(replayGain)
+        prefs.edit(commit = true) {
+            putFloat(REPLAYGAIN_PREAMP, replayGain.preamp)
+            putFloat(REPLAYGAIN_PREAMP_WITHOUT_GAIN, replayGain.preampWithoutGain)
+            putString(REPLAYGAIN_MODE, replayGain.mode.name)
         }
-        _replayGainStateFlow.emit(newState)
     }
 
-    suspend fun applyPendingState() {
-        balanceFlow.value.apply()
-        tempoFlow.value.apply()
-        replayGainStateFlow.value.apply()
-    }
-
-    private fun createBalanceState(): EqEffectState<BalanceLevel> {
-        val balance = BalanceLevel(
+    private fun createBalanceState(): BalanceLevel {
+        return BalanceLevel(
             left = prefs.getFloat(LEFT_BALANCE, MAX_BALANCE),
             right = prefs.getFloat(RIGHT_BALANCE, MAX_BALANCE)
         )
-        return EqEffectState(
-            isSupported = true,
-            isEnabled = true,
-            value = balance,
-            onCommitEffect = {
-                prefs.edit {
-                    putFloat(LEFT_BALANCE, it.value.left)
-                    putFloat(RIGHT_BALANCE, it.value.right)
-                }
-            }
-        )
     }
 
-    private fun createTempoState(): EqEffectState<TempoLevel> {
-        val tempo = TempoLevel(
+    private fun createTempoState(): TempoLevel {
+        return TempoLevel(
             speed = prefs.getFloat(SPEED, 1f),
             pitch = prefs.getFloat(PITCH, 1f),
             isFixedPitch = prefs.getBoolean(IS_FIXED_PITCH, true)
         )
-        return EqEffectState(
-            isSupported = true,
-            isEnabled = true,
-            value = tempo,
-            onCommitEffect = {
-                prefs.edit {
-                    putFloat(SPEED, it.value.speed)
-                    putFloat(PITCH, it.value.pitch)
-                    putBoolean(IS_FIXED_PITCH, it.value.isFixedPitch)
-                }
-            }
-        )
     }
 
-    private fun createReplayGainState(): EqEffectState<ReplayGainState> {
-        val replayGain = ReplayGainState(
+    private fun createReplayGainState(): ReplayGainState {
+        return ReplayGainState(
             mode = prefs.enumValue(REPLAYGAIN_MODE, ReplayGainMode.Off),
             preamp = prefs.getFloat(REPLAYGAIN_PREAMP, 0f),
             preampWithoutGain = prefs.getFloat(REPLAYGAIN_PREAMP_WITHOUT_GAIN, 0f)
-        )
-        return EqEffectState(
-            isSupported = true,
-            isEnabled = replayGain.mode.isOn,
-            value = replayGain,
-            onCommitEffect = {
-                prefs.edit {
-                    putFloat(REPLAYGAIN_PREAMP, it.value.preamp)
-                    putFloat(REPLAYGAIN_PREAMP_WITHOUT_GAIN, it.value.preampWithoutGain)
-                    putString(REPLAYGAIN_MODE, it.value.mode.name)
-                }
-            }
         )
     }
 

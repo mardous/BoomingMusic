@@ -117,7 +117,6 @@ class EqualizerSession(
             applyEqualizer(session)
             applyVirtualizer(session)
             applyBassBoost(session)
-            applyReverb(session)
             applyLoudness(session)
         }.onFailure {
             Log.e(TAG, "Error enabling equalizer!", it)
@@ -156,18 +155,6 @@ class EqualizerSession(
         }.onFailure { Log.e(TAG, "Error setting up bass boost!", it) }
     }
 
-    private fun applyReverb(session: EffectSet) {
-        runCatching {
-            val state = equalizerManager.presetReverbState
-            if (state.isUsable) {
-                session.enablePresetReverb(true)
-                session.setReverbPreset(state.value.toShort())
-            } else {
-                session.enablePresetReverb(false)
-            }
-        }.onFailure { Log.e(TAG, "Error setting up reverb!", it) }
-    }
-
     private fun applyLoudness(session: EffectSet) {
         runCatching {
             val state = equalizerManager.loudnessGainState
@@ -184,7 +171,6 @@ class EqualizerSession(
         session.enableEqualizer(false)
         session.enableVirtualizer(false)
         session.enableBassBoost(false)
-        session.enablePresetReverb(false)
         session.enableLoudness(false)
     }
 

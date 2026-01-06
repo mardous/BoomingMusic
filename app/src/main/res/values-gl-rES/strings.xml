@@ -439,7 +439,6 @@
     <string name="could_not_save_preset">Couldn\'t save preset.</string>
     <string name="preset_saved_successfully">Preset saved successfully.</string>
     <string name="delete_preset">Delete preset</string>
-    <string name="delete_preset_x"><![CDATA[Delete preset <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Preset %s deleted.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Please, enter a new name for this preset.</string>
@@ -448,14 +447,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Amplifier</string>
-    <string name="reverb_label">Reverb</string>
-    <string name="reverb_preset_none">No reverb</string>
-    <string name="reverb_preset_plate">Plate</string>
-    <string name="reverb_preset_smallroom">Small room</string>
-    <string name="reverb_preset_mediumroom">Medium room</string>
-    <string name="reverb_preset_largeroom">Large room</string>
-    <string name="reverb_preset_mediumhall">Medium hall</string>
-    <string name="reverb_preset_largehall">Large hall</string>
     <string name="sound_settings">Sound settings</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tempo</string>

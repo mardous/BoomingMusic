@@ -447,7 +447,6 @@
     <string name="could_not_save_preset">Presetarea nu a putut fi salvată.</string>
     <string name="preset_saved_successfully">Presetare salvată cu succes.</string>
     <string name="delete_preset">Șterge presetarea</string>
-    <string name="delete_preset_x"><![CDATA[Ștergeți presetarea <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Presetare %s ştersă.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Vă rugăm, introduceţi un nume nou pentru această presetare.</string>
@@ -456,14 +455,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Amplificator</string>
-    <string name="reverb_label">Reverbație</string>
-    <string name="reverb_preset_none">Fără reverb</string>
-    <string name="reverb_preset_plate">Placă</string>
-    <string name="reverb_preset_smallroom">Cameră mică</string>
-    <string name="reverb_preset_mediumroom">Cameră medie</string>
-    <string name="reverb_preset_largeroom">Cameră mare</string>
-    <string name="reverb_preset_mediumhall">Sală medie</string>
-    <string name="reverb_preset_largehall">Sală mare</string>
     <string name="sound_settings">Setări sunet</string>
     <string name="volume_label">Volum</string>
     <string name="tempo_label">Tempo</string>

@@ -439,7 +439,6 @@
     <string name="could_not_save_preset">Kunde inte spara förinställning.</string>
     <string name="preset_saved_successfully">Förvalet har sparats.</string>
     <string name="delete_preset">Ta bort förval</string>
-    <string name="delete_preset_x"><![CDATA[Ta bort förinställning <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Förval %s borttaget.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Ange ett nytt namn för denna förinställning.</string>
@@ -448,14 +447,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Förstärkare</string>
-    <string name="reverb_label">Reverb</string>
-    <string name="reverb_preset_none">Ingen reverb</string>
-    <string name="reverb_preset_plate">Tallrik</string>
-    <string name="reverb_preset_smallroom">Litet rum</string>
-    <string name="reverb_preset_mediumroom">Medelstort rum</string>
-    <string name="reverb_preset_largeroom">Stort rum</string>
-    <string name="reverb_preset_mediumhall">Medelstor sal</string>
-    <string name="reverb_preset_largehall">Stor sal</string>
     <string name="sound_settings">Ljud inställningar</string>
     <string name="volume_label">Volym</string>
     <string name="tempo_label">Tempo</string>

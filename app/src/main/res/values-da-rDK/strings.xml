@@ -439,7 +439,6 @@
     <string name="could_not_save_preset">Kunne ikke gemme forudindstilling.</string>
     <string name="preset_saved_successfully">Forudindstilling gemt med succes.</string>
     <string name="delete_preset">Slet forudindstilling</string>
-    <string name="delete_preset_x"><![CDATA[Slet forudindstilling <b>%s</b>?]]></string>
     <string name="preset_x_deleted">Forudindstilling %s slettet.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Indtast venligst et nyt navn for denne forudindstilling.</string>
@@ -448,14 +447,6 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Forstærker</string>
-    <string name="reverb_label">Reverb</string>
-    <string name="reverb_preset_none">Ingen reverb</string>
-    <string name="reverb_preset_plate">Plade</string>
-    <string name="reverb_preset_smallroom">Lille rum</string>
-    <string name="reverb_preset_mediumroom">Mellemstort rum</string>
-    <string name="reverb_preset_largeroom">Stort rum</string>
-    <string name="reverb_preset_mediumhall">Mellemstor hal</string>
-    <string name="reverb_preset_largehall">Stor hal</string>
     <string name="sound_settings">Indstillinger for lyd</string>
     <string name="volume_label">Lydstyrke</string>
     <string name="tempo_label">Tempo</string>

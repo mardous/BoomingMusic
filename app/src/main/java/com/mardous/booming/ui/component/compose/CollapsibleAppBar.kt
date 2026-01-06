@@ -17,8 +17,10 @@ fun CollapsibleAppBarScaffold(
     title: String,
     modifier: Modifier = Modifier,
     actions: @Composable RowScope.() -> Unit = {},
+    snackbarHost: @Composable () -> Unit = {},
     showNavigationButton: Boolean = true,
     collapsibleAppBar: Boolean = Preferences.appBarMode == TopAppBarLayout.AppBarMode.COLLAPSING,
+    miniPlayerMargin: Int = 0,
     onBackClick: () -> Unit = {},
     content: @Composable (PaddingValues) -> Unit
 ) {
@@ -66,8 +68,10 @@ fun CollapsibleAppBarScaffold(
                 )
             }
         },
+        snackbarHost = snackbarHost,
         contentWindowInsets = WindowInsets.safeDrawing
             .only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)
+            .add(WindowInsets(bottom = miniPlayerMargin))
     ) { contentPadding ->
         content(contentPadding)
     }

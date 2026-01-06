@@ -29,6 +29,7 @@ import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.compose.*
+import com.mardous.booming.ui.theme.CornerRadiusTokens
 import java.util.Locale
 import kotlin.math.roundToInt
 
@@ -51,14 +52,9 @@ fun SoundSettingsSheet(
         derivedStateOf { audioOffload.not() && audioFloatOutput.not() }
     }
 
-    val balanceState by viewModel.balanceFlow.collectAsState()
-    val balance = balanceState.value
-
-    val tempoState by viewModel.tempoFlow.collectAsState()
-    val tempo = tempoState.value
-
-    val replayGainState by viewModel.replayGainStateFlow.collectAsState()
-    val replayGain = replayGainState.value
+    val balance by viewModel.balanceFlow.collectAsState()
+    val tempo by viewModel.tempoFlow.collectAsState()
+    val replayGain by viewModel.replayGainStateFlow.collectAsState()
 
     var showAudioOffloadDialog by remember { mutableStateOf(false) }
     var showAudioFloatOutputDialog by remember { mutableStateOf(false) }
@@ -190,10 +186,7 @@ fun SoundSettingsSheet(
                                         value = balance.left,
                                         valueRange = balance.range,
                                         onValueChange = {
-                                            viewModel.setBalance(left = it, apply = false)
-                                        },
-                                        onValueChangeFinished = {
-                                            viewModel.applyPendingState()
+                                            viewModel.setBalance(left = it)
                                         },
                                         modifier = Modifier.fillMaxWidth()
                                     )
@@ -214,10 +207,7 @@ fun SoundSettingsSheet(
                                         value = balance.right,
                                         valueRange = balance.range,
                                         onValueChange = {
-                                            viewModel.setBalance(right = it, apply = false)
-                                        },
-                                        onValueChangeFinished = {
-                                            viewModel.applyPendingState()
+                                            viewModel.setBalance(right = it)
                                         },
                                         modifier = Modifier.fillMaxWidth()
                                     )
@@ -261,10 +251,7 @@ fun SoundSettingsSheet(
                                 value = tempo.speed,
                                 valueRange = tempo.speedRange,
                                 onValueChange = {
-                                    viewModel.setTempo(speed = it, apply = false)
-                                },
-                                onValueChangeFinished = {
-                                    viewModel.applyPendingState()
+                                    viewModel.setTempo(speed = it)
                                 },
                                 modifier = Modifier.fillMaxWidth()
                             )
@@ -286,10 +273,7 @@ fun SoundSettingsSheet(
                                 value = tempo.actualPitch,
                                 valueRange = tempo.pitchRange,
                                 onValueChange = {
-                                    viewModel.setTempo(pitch = it, apply = false)
-                                },
-                                onValueChangeFinished = {
-                                    viewModel.applyPendingState()
+                                    viewModel.setTempo(pitch = it)
                                 },
                                 modifier = Modifier.fillMaxWidth()
                             )
@@ -298,25 +282,23 @@ fun SoundSettingsSheet(
                 }
 
                 AnimatedVisibility(visible = enableAudioEffects) {
-                    var preamp by mutableFloatStateOf(replayGain.preamp)
-
                     TitledSurface(
                         title = stringResource(R.string.replay_gain),
                         iconRes = R.drawable.ic_sound_sampler_24dp,
                         titleEndContent = {
                             AnimatedVisibility(visible = replayGain.mode.isOn) {
-                                TitleShapedText("%+.1f dB".format(Locale.ROOT, preamp))
+                                TitleShapedText("%+.1f dB".format(Locale.ROOT, replayGain.preamp))
                             }
                         },
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Column {
                             ReplayGainModeSelector(replayGain) {
-                                viewModel.setReplayGain(mode = it, apply = true)
+                                viewModel.setReplayGain(mode = it)
                             }
 
                             AnimatedVisibility(
-                                visible = replayGainState.isEnabled,
+                                visible = replayGain.mode.isOn,
                                 modifier = Modifier.padding(top = 8.dp)
                             ) {
                                 Row(
@@ -331,13 +313,10 @@ fun SoundSettingsSheet(
                                     }
 
                                     Slider(
-                                        value = preamp,
+                                        value = replayGain.preamp,
                                         onValueChange = {
-                                            preamp = it
-                                        },
-                                        onValueChangeFinished = {
                                             viewModel.setReplayGain(
-                                                preamp = (preamp / 0.2f).roundToInt() * 0.2f
+                                                preamp = (it / 0.2f).roundToInt() * 0.2f
                                             )
                                         },
                                         valueRange = -15f..15f,
@@ -366,7 +345,9 @@ private fun AudioDeviceInfo(
     expandableContent: @Composable () -> Unit
 ) {
     val colorScheme = MaterialTheme.colorScheme
-    val shapeCornerRadius by animateDpAsState(targetValue = if (expanded) 12.dp else 16.dp)
+    val shapeCornerRadius by animateDpAsState(
+        targetValue = if (expanded) CornerRadiusTokens.SurfaceSmall else CornerRadiusTokens.SurfaceMedium
+    )
     val shapeColor by animateColorAsState(
         targetValue = if (expanded) colorScheme.surfaceContainerLowest else colorScheme.primaryContainer
     )

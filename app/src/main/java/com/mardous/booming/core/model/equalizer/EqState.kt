@@ -22,6 +22,7 @@ typealias OnCommit<T> = suspend (T) -> Unit
 open class EqState(
     val isSupported: Boolean,
     val isEnabled: Boolean,
+    val isDisabledByAudioOffload: Boolean,
     private var isPending: Boolean = false,
     val onCommit: OnCommit<EqState>
 ) {
@@ -41,13 +42,22 @@ open class EqEffectState<T>(
     isEnabled: Boolean,
     isPending: Boolean = false,
     val value: T,
+    val valueMin: T,
+    val valueMax: T,
     val onCommitEffect: OnCommit<EqEffectState<T>>
-) : EqState(isSupported, isEnabled, isPending, { onCommitEffect(it as EqEffectState<T>) })
+) : EqState(
+    isSupported = isSupported,
+    isEnabled = isEnabled,
+    isDisabledByAudioOffload = false, // audio offload disables the overall EQ state
+    isPending = isPending,
+    onCommit = { onCommitEffect(it as EqEffectState<T>) }
+)
 
 open class EqUpdate<T : EqState>(
     protected val state: T,
     val isEnabled: Boolean,
     val isSupported: Boolean = state.isSupported,
+    val isDisabledByAudioOffload: Boolean = state.isDisabledByAudioOffload,
     val isTransient: Boolean = false
 ) {
     open fun toState(): EqState {
@@ -57,6 +67,7 @@ open class EqUpdate<T : EqState>(
         return EqState(
             isSupported = isSupported,
             isEnabled = isEnabled,
+            isDisabledByAudioOffload = isDisabledByAudioOffload,
             isPending = !isTransient,
             onCommit = state.onCommit
         )
@@ -73,6 +84,14 @@ class EqEffectUpdate<V>(
         if (state.isSupported == isSupported && state.isEnabled == isEnabled && state.value == value) {
             return state
         }
-        return EqEffectState(isSupported, isEnabled, isPending = true, value, state.onCommitEffect)
+        return EqEffectState(
+            isSupported = isSupported,
+            isEnabled = isEnabled,
+            isPending = true,
+            value = value,
+            valueMin = state.valueMin,
+            valueMax = state.valueMax,
+            onCommitEffect = state.onCommitEffect
+        )
     }
 }
