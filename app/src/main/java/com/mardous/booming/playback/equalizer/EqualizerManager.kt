@@ -158,6 +158,7 @@ class EqualizerManager internal constructor(context: Context) {
 
     suspend fun initializeFlow() {
         _eqStateFlow.emit(initializeEqState())
+        _bandCapabilitiesFlow.emit(initializeEqBandCapabilities())
         _presetsFlow.emit(initializePresets())
         _currentPresetFlow.emit(initializeCurrentPreset())
         _bassBoostFlow.emit(initializeBassBoostState())
@@ -572,7 +573,9 @@ class EqualizerManager internal constructor(context: Context) {
             remove(Keys.PRESETS)
             remove(Keys.PRESET)
             remove(Keys.CUSTOM_PRESET)
+            remove(Keys.NUM_BANDS)
             remove(Keys.BAND_LEVEL_RANGE)
+            remove(Keys.CENTER_FREQUENCIES)
             remove(Keys.LOUDNESS_GAIN)
         }
         initializeEqualizer()
