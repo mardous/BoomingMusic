@@ -4,7 +4,6 @@ import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -89,25 +88,12 @@ private val darkScheme = darkColorScheme(
     surfaceContainerHighest = surfaceContainerHighestDark,
 )
 
-@Immutable
-data class ColorFamily(
-    val color: Color,
-    val onColor: Color,
-    val colorContainer: Color,
-    val onColorContainer: Color
-)
-
-val unspecified_scheme = ColorFamily(
-    Color.Unspecified, Color.Unspecified, Color.Unspecified, Color.Unspecified
-)
-
 @Composable
 fun BoomingMusicTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     blackTheme: Boolean = Preferences.blackTheme,
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = Preferences.isMaterialYouTheme,
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
     var colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -131,29 +117,7 @@ fun BoomingMusicTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        content = content
-    )
-}
-
-@Composable
-fun DynamicColorTheme(
-    keyColor: Color,
-    isDark: Boolean = isSystemInDarkTheme(),
-    paletteStyle: PaletteStyle = PaletteStyle.TonalSpot,
-    content: @Composable () -> Unit
-) {
-    val systemContrast = getSystemContrast()
-    val colorScheme = remember(keyColor, isDark, paletteStyle, systemContrast) {
-        dynamicColorScheme(
-            keyColor = keyColor,
-            isDark = isDark,
-            style = paletteStyle,
-            contrastLevel = systemContrast
-        )
-    }
-
-    MaterialTheme(
-        colorScheme = colorScheme,
+        typography = customTypography,
         content = content
     )
 }
@@ -181,8 +145,7 @@ fun PlayerTheme(
 
     MaterialTheme(
         colorScheme = scheme,
-        typography = MaterialTheme.typography,
-        shapes = MaterialTheme.shapes,
+        typography = customTypography,
         content = content
     )
 }
