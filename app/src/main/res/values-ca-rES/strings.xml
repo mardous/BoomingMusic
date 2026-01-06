@@ -407,6 +407,8 @@
     <string name="shuffle_mode_combined_description">Una barreja basada en preferits, reproduccions i recència.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalitzador</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">Comparteix la configuració de l\'EQ</string>
     <string name="there_is_nothing_to_export">No hi ha res a exportar.</string>
     <string name="there_is_nothing_to_import">No hi ha res a importar.</string>
@@ -439,7 +441,7 @@
     <string name="could_not_save_preset">No s\'ha pogut desar la configuració.</string>
     <string name="preset_saved_successfully">La configuració s\'ha desat correctament.</string>
     <string name="delete_preset">Esborra la configuració</string>
-    <string name="delete_preset_x"><![CDATA[Voleu esborrar la configuració <b>%s</b>?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">S\'ha esborrat la configuració %s.</string>
     <string name="rename_preset">Canvia el nom a la configuració</string>
     <string name="please_enter_a_new_name_for_this_preset">Introduïu un nom nou per a aquesta configuració.</string>
@@ -448,19 +450,12 @@
     <string name="bassboost_label">Potenciació de baixos</string>
     <string name="virtualizer_label">Virtualitzador</string>
     <string name="loudness_enhancer">Amplificador</string>
-    <string name="reverb_label">Reverberació</string>
-    <string name="reverb_preset_none">Sense reverberació</string>
-    <string name="reverb_preset_plate">Placa</string>
-    <string name="reverb_preset_smallroom">Cambra petita</string>
-    <string name="reverb_preset_mediumroom">Cambra mitjana</string>
-    <string name="reverb_preset_largeroom">Cambra gran</string>
-    <string name="reverb_preset_mediumhall">Sala petita</string>
-    <string name="reverb_preset_largehall">Sala gran</string>
     <string name="sound_settings">Configuració de so</string>
     <string name="volume_label">Volum</string>
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Delegació d\'àudio</string>
     <string name="enable_audio_offload_description">Permet al dispositiu processar l\'àudio directament des del seu maquinari. Redueix l\'ús del processador i de la bateria.
         Aquesta funció només s\'admet en certs dispositius. Alguns efectes o funcions podrien no funcionar mentre està activa.
