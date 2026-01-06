@@ -407,6 +407,8 @@
     <string name="shuffle_mode_combined_description">Mix basé sur les favoris, les pièces jouées et la récence.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Égaliseur</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">Partager la configuration EQ</string>
     <string name="there_is_nothing_to_export">Il n\'y a rien à exporter.</string>
     <string name="there_is_nothing_to_import">Il n\'y a rien à importer.</string>
@@ -439,7 +441,7 @@
     <string name="could_not_save_preset">Impossible d\'enregistrer le préréglage.</string>
     <string name="preset_saved_successfully">Préréglage enregistré avec succès.</string>
     <string name="delete_preset">Supprimer le préréglage</string>
-    <string name="delete_preset_x"><![CDATA[Supprimer le préréglage <b>%s</b> ?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">Le préréglage %s a été supprimé.</string>
     <string name="rename_preset">Renommer le préréglage</string>
     <string name="please_enter_a_new_name_for_this_preset">Veuillez entrer un nouveau nom pour ce préréglage.</string>
@@ -448,19 +450,12 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualiseur</string>
     <string name="loudness_enhancer">Amplificateur</string>
-    <string name="reverb_label">Réverbération</string>
-    <string name="reverb_preset_none">Pas de réverbération</string>
-    <string name="reverb_preset_plate">Plaque</string>
-    <string name="reverb_preset_smallroom">Petite pièce</string>
-    <string name="reverb_preset_mediumroom">Salle moyenne</string>
-    <string name="reverb_preset_largeroom">Grande pièce</string>
-    <string name="reverb_preset_mediumhall">Salle moyenne</string>
-    <string name="reverb_preset_largehall">Grande salle</string>
     <string name="sound_settings">Paramètres du son</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ externe</string>
     <string name="custom">Personnalisé</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Décharge audio</string>
     <string name="enable_audio_offload_description">Autorise l\'appareil à traiter l\'audio directement depuis son matériel, reduisant l\'utilisation du processeur et économise la batterie.
         Cette fonctionnalité est uniquement prise en charge sur certains appareils. Certains effets ou fonctionnalités ne peuvent ne pas fonctionner tant que ce mode est activé.
