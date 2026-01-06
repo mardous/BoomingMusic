@@ -423,6 +423,8 @@
     <string name="shuffle_mode_combined_description">Smíchat na základě oblíbených, her a recenze.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Ekvalizér</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">Sdílet konfiguraci EQ</string>
     <string name="there_is_nothing_to_export">Není co exportovat.</string>
     <string name="there_is_nothing_to_import">Není co importovat.</string>
@@ -455,7 +457,7 @@
     <string name="could_not_save_preset">Přednastavení nelze uložit.</string>
     <string name="preset_saved_successfully">Předvolba byla úspěšně uložena.</string>
     <string name="delete_preset">Odstranit předvolbu</string>
-    <string name="delete_preset_x"><![CDATA[Odstranit předvolbu <b>%s</b>?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">Předvolba %s byla smazána.</string>
     <string name="rename_preset">Rename preset</string>
     <string name="please_enter_a_new_name_for_this_preset">Zadejte prosím nový název pro tuto předvolbu.</string>
@@ -464,19 +466,12 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Zesilovač</string>
-    <string name="reverb_label">Vrátit zpět</string>
-    <string name="reverb_preset_none">Bez reverzu</string>
-    <string name="reverb_preset_plate">Deska</string>
-    <string name="reverb_preset_smallroom">Malá místnost</string>
-    <string name="reverb_preset_mediumroom">Střední místnost</string>
-    <string name="reverb_preset_largeroom">Velká místnost</string>
-    <string name="reverb_preset_mediumhall">Střední sál</string>
-    <string name="reverb_preset_largehall">Velký sál</string>
     <string name="sound_settings">Nastavení zvuku</string>
     <string name="volume_label">Objem</string>
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Externí EQ</string>
     <string name="custom">Vlastní</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Vypnutí zvuku</string>
     <string name="enable_audio_offload_description">Umožňuje zařízení zpracovávat zvuk přímo prostřednictvím hardwaru, snižovat spotřebu procesoru a šetřit baterii.
         Tato funkce je podporována pouze na určitých zařízeních. Některé efekty nebo funkce nemusí fungovat, když jsou povoleny.
