@@ -399,6 +399,8 @@
     <string name="shuffle_mode_combined_description">根据收藏、播放记录和近期播放混合播放。</string>
     <!-- Equalizer -->
     <string name="equalizer_label">均衡器</string>
+    <string name="preset_title">Preset</string>
+    <string name="manual_adjustment_title">Manual adjustment</string>
     <string name="share_eq_configuration">分享 EQ 配置</string>
     <string name="there_is_nothing_to_export">没有什么可导出。</string>
     <string name="there_is_nothing_to_import">没有可以导入的内容。</string>
@@ -431,7 +433,7 @@
     <string name="could_not_save_preset">无法保存预设。</string>
     <string name="preset_saved_successfully">预设保存成功。</string>
     <string name="delete_preset">删除预设</string>
-    <string name="delete_preset_x"><![CDATA[删除预设 <b>%s</b>?]]></string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
     <string name="preset_x_deleted">预设 %s 已删除。</string>
     <string name="rename_preset">重命名预设</string>
     <string name="please_enter_a_new_name_for_this_preset">请为此预设输入一个新名称。</string>
@@ -440,19 +442,12 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">虚拟环绕声</string>
     <string name="loudness_enhancer">放大器</string>
-    <string name="reverb_label">混音器</string>
-    <string name="reverb_preset_none">无混响模式</string>
-    <string name="reverb_preset_plate">板式混响</string>
-    <string name="reverb_preset_smallroom">小型房间</string>
-    <string name="reverb_preset_mediumroom">中型房间</string>
-    <string name="reverb_preset_largeroom">大房间</string>
-    <string name="reverb_preset_mediumhall">中型大厅</string>
-    <string name="reverb_preset_largehall">大厅</string>
     <string name="sound_settings">声音设置</string>
     <string name="volume_label">音量</string>
     <string name="tempo_label">节拍</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">自定义</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">音频硬件加速</string>
     <string name="enable_audio_offload_description">直接通过设备硬件处理音频，从而降低 CPU 使用率并减少电池电量消耗。
         该功能仅在部分设备上受支持。启用功能时，某些其他功能可能无法正常使用。
