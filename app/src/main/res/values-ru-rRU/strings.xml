@@ -424,8 +424,8 @@
     <string name="shuffle_mode_combined_description">Микс на основе избранного, прослушиваний и недавно добавленных.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Эквалайзер</string>
-    <string name="preset_title">Preset</string>
-    <string name="manual_adjustment_title">Manual adjustment</string>
+    <string name="preset_title">Предустановка</string>
+    <string name="manual_adjustment_title">Ручная настройка</string>
     <string name="share_eq_configuration">Поделиться EQ-конфигурацией</string>
     <string name="there_is_nothing_to_export">Экспортировать нечего.</string>
     <string name="there_is_nothing_to_import">Импортировать нечего.</string>
@@ -459,7 +459,7 @@
     <string name="could_not_save_preset">Не удалось сохранить пресет.</string>
     <string name="preset_saved_successfully">Пресет успешно сохранен.</string>
     <string name="delete_preset">Удалить пресет</string>
-    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Вы уверены, что хотите удалить предустановку \'%s\'?</string>
     <string name="preset_x_deleted">Пресет %s удален.</string>
     <string name="rename_preset">Переименовать пресет</string>
     <string name="please_enter_a_new_name_for_this_preset">Пожалуйста, введите новое имя для этого пресета.</string>
@@ -473,7 +473,7 @@
     <string name="tempo_label">Темп</string>
     <string name="action_external_eq">Внешний эквалайзер</string>
     <string name="custom">Пользовательский</string>
-    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
+    <string name="audio_offload_is_enabled">Аппаратная разгрузка аудио включена</string>
     <string name="enable_audio_offload_title">Аппаратная разгрузка аудио</string>
     <string name="enable_audio_offload_description">Позволяет устройству обрабатывать звук напрямую через аппаратное обеспечение, снижая нагрузку на ЦП и экономя заряд батареи.
         Эта функция поддерживается не на всех устройствах. Некоторые эффекты или функции могут не работать при её включении.
