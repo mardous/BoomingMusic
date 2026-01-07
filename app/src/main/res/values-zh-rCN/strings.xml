@@ -101,7 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[将<b>%1$s</b>从播放列表中移除吗？]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[从播放列表中移除 <b>%1$d</b> 首歌曲？]]></string>
     <string name="playlist_empty_text">空的播放列表</string>
-    <string name="action_lyrics_editor">Lyrics editor</string>
+    <string name="action_lyrics_editor">歌词编辑器</string>
     <string name="action_tag_editor">标签编辑器</string>
     <string name="saving_changes">正在保存更改</string>
     <string name="changes_saved_successfully">更改已成功保存。</string>
@@ -216,7 +216,7 @@
     <string name="top_tracks_label">热门曲目</string>
     <string name="history_label">历史记录</string>
     <string name="not_recently_played">无最近播放</string>
-    <string name="play_info">Play info</string>
+    <string name="play_info">播放信息</string>
     <string name="track_play_counts">曲目播放计数</string>
     <string name="song_stat_never_label">从未播放</string>
     <string name="song_stat_one_time_label">在 %s 上播放过一次</string>
@@ -287,8 +287,8 @@
     <string name="label_file_path">文件路径</string>
     <string name="size">文件大小</string>
     <string name="label_file_format">格式</string>
-    <string name="file_label">File</string>
-    <string name="metadata_label">Metadata</string>
+    <string name="file_label">文件</string>
+    <string name="metadata_label">元数据</string>
     <string name="title_and_artist">标题和艺人</string>
     <string name="song">歌曲</string>
     <string name="title">标题</string>
@@ -399,8 +399,8 @@
     <string name="shuffle_mode_combined_description">根据收藏、播放记录和近期播放混合播放。</string>
     <!-- Equalizer -->
     <string name="equalizer_label">均衡器</string>
-    <string name="preset_title">Preset</string>
-    <string name="manual_adjustment_title">Manual adjustment</string>
+    <string name="preset_title">预设方案</string>
+    <string name="manual_adjustment_title">手动调整</string>
     <string name="share_eq_configuration">分享 EQ 配置</string>
     <string name="there_is_nothing_to_export">没有什么可导出。</string>
     <string name="there_is_nothing_to_import">没有可以导入的内容。</string>
@@ -433,7 +433,7 @@
     <string name="could_not_save_preset">无法保存预设。</string>
     <string name="preset_saved_successfully">预设保存成功。</string>
     <string name="delete_preset">删除预设</string>
-    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">您确定要删除预设 \"%s 吗？</string>
     <string name="preset_x_deleted">预设 %s 已删除。</string>
     <string name="rename_preset">重命名预设</string>
     <string name="please_enter_a_new_name_for_this_preset">请为此预设输入一个新名称。</string>
@@ -506,7 +506,7 @@
     <string name="version">版本</string>
     <string name="changelog">更新日志</string>
     <string name="fork_on_github">在 GitHub fork 本项目</string>
-    <string name="faq">FAQ</string>
+    <string name="faq">常见问题</string>
     <string name="licenses">许可协议</string>
     <string name="author">作者</string>
     <string name="mardous_summary">主要开发者</string>
@@ -514,7 +514,7 @@
     <string name="acknowledgments_title">致谢</string>
     <string name="translators_title">译者</string>
     <string name="translators_summary">感谢那些为Booming Music提供多种语言的人们。</string>
-    <string name="contributors_title">Contributors</string>
+    <string name="contributors_title">贡献者</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">Telegram 群组</string>
     <string name="telegram_chat_summary">加入 Telegram 群组并获得新版本和新闻的通知。</string>
@@ -582,7 +582,7 @@
     <string name="general_theme_title">一般主题</string>
     <string name="pure_black_theme_title">纯黑色</string>
     <string name="material_you_title">Material You 动态色彩</string>
-    <string name="use_custom_font_title">Use custom font</string>
+    <string name="use_custom_font_title">使用自定义字体</string>
     <string name="appbar_mode_title">标题样式</string>
     <string name="library_categories_title">曲库分类</string>
     <string name="library_categories_summary">配置曲库分类的可见性和顺序。</string>
