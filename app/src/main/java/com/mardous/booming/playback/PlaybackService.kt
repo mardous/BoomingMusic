@@ -640,6 +640,9 @@ class PlaybackService :
     }
 
     override fun onPlaybackStateChanged(playbackState: Int) {
+        if (preferences.getBoolean(CLEAR_QUEUE_ON_END, true) && playbackState == Player.STATE_ENDED) {
+            player.exoPlayer.clearMediaItems()
+        }
         refreshMediaButtonCustomLayout()
     }
 

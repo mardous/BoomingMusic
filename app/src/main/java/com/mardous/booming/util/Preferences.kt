@@ -463,6 +463,10 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(DISPLAY_NEXT_SONG, true)
         set(value) = preferences.edit { putBoolean(DISPLAY_NEXT_SONG, value) }
 
+    var clearQueueOnEnd: Boolean
+        get() = preferences.getBoolean(CLEAR_QUEUE_ON_END, true)
+        set(value) = preferences.edit { putBoolean(CLEAR_QUEUE_ON_END, value) }
+
     fun SharedPreferences.nullString(key: String): String? = getString(key, null)
 
     fun SharedPreferences.requireString(key: String, defaultValue: String): String =
@@ -657,3 +661,5 @@ const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"
 const val QUEUE_HEIGHT = "queue_height"
+
+const val CLEAR_QUEUE_ON_END = "clear_queue_on_end"
