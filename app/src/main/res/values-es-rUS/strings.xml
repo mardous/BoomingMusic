@@ -406,8 +406,8 @@
     <string name="shuffle_mode_combined_description">Mezcla con múltiples factores: favoritas, uso, antigüedad.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Ecualizador</string>
-    <string name="preset_title">Preset</string>
-    <string name="manual_adjustment_title">Manual adjustment</string>
+    <string name="preset_title">Preajuste</string>
+    <string name="manual_adjustment_title">Ajuste manual</string>
     <string name="share_eq_configuration">Compartir configuración EQ</string>
     <string name="there_is_nothing_to_export">Ninguna configuración que exportar.</string>
     <string name="there_is_nothing_to_import">Ninguna configuración que importar.</string>
@@ -440,7 +440,7 @@
     <string name="could_not_save_preset">No se pudo guardar la configuración.</string>
     <string name="preset_saved_successfully">Configuración guardada correctamente.</string>
     <string name="delete_preset">Eliminar configuración</string>
-    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">¿Estás seguro de querer eliminar el preajuste \"%s\"?</string>
     <string name="preset_x_deleted">Configuración %s eliminada.</string>
     <string name="rename_preset">Renombrar configuración</string>
     <string name="please_enter_a_new_name_for_this_preset">Por favor, ingrese un nuevo nombre para esta configuración.</string>
@@ -454,7 +454,7 @@
     <string name="tempo_label">Velocidad y tono</string>
     <string name="action_external_eq">Ecualizador externo</string>
     <string name="custom">Personalizado</string>
-    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
+    <string name="audio_offload_is_enabled">El procesamiento de audio por hardware está habilitado</string>
     <string name="enable_audio_offload_title">Procesar audio por hardware</string>
     <string name="enable_audio_offload_description">Permite que el dispositivo procese el audio directamente a través del hardware dedicado, lo que reduce el uso de la CPU y batería.
 Esta característica no funciona en todos los dispositivos. Es posible que otros efectos no funcionen mientras esté activada.
@@ -523,8 +523,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="acknowledgments_title">Agradecimientos</string>
     <string name="translators_title">Traductores</string>
     <string name="translators_summary">Agradecimientos a quienes hacen posible que Booming Music esté disponible en muchos idiomas.</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
+    <string name="contributors_title">Colaboradores</string>
+    <string name="contributors_summary">Una lista de usuarios que han realizado contribuciones al proyecto.</string>
     <string name="telegram_chat">Chat en Telegram</string>
     <string name="telegram_chat_summary">Únase al chat de Telegram y obtenga nuevas actualizaciones y noticias.</string>
     <string name="view_profile_on_github">Ver perfil en GitHub</string>
@@ -638,10 +638,9 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="instrumental_tracks_identifiers_summary">Si la letra de una canción consiste de solo uno o varios de esos indicadores, la pista será marcada como instrumental (se separan con coma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marcar por título</string>
     <string name="instrumental_tracks_mark_by_title_summary">Se tomará en cuenta el título de la pista al buscar los identificadores.</string>
-    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos los archivos de letras como LRC</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Asumir que todos los archivos usan codificación UTF-8. Esto optimiza el proceso de análisis de archivos, pero en algunos casos podría generar caracteres inusuales en las letras de las canciones.
+Podría ser necesario reiniciar la aplicación</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir al reproducir</string>
