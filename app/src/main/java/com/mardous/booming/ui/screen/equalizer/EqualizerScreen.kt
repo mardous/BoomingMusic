@@ -586,7 +586,7 @@ fun EqualizerScreen(
                     Slider(
                         value = loudnessGain.value,
                         onValueChange = {
-                            eqViewModel.setLoudnessGain(value = it, apply = false)
+                            eqViewModel.setLoudnessGain(isEnabled = it > 0, value = it, apply = false)
                         },
                         onValueChangeFinished = {
                             eqViewModel.applyPendingStates()
