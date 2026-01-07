@@ -69,6 +69,12 @@
             app:widgetLayout="@layout/preference_switch"
             app:key="search_auto_queue"/>
 
+        <SwitchPreferenceCompat
+            app:title="Clear queue when it ends"
+            app:defaultValue="true"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="clear_queue_on_end"/>
     </PreferenceCategory>
 
     <PreferenceCategory
