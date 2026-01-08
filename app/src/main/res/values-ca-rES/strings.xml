@@ -407,8 +407,8 @@
     <string name="shuffle_mode_combined_description">Una barreja basada en preferits, reproduccions i recència.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalitzador</string>
-    <string name="preset_title">Preset</string>
-    <string name="manual_adjustment_title">Manual adjustment</string>
+    <string name="preset_title">Predefinit</string>
+    <string name="manual_adjustment_title">Ajustament manual</string>
     <string name="share_eq_configuration">Comparteix la configuració de l\'EQ</string>
     <string name="there_is_nothing_to_export">No hi ha res a exportar.</string>
     <string name="there_is_nothing_to_import">No hi ha res a importar.</string>
@@ -441,7 +441,7 @@
     <string name="could_not_save_preset">No s\'ha pogut desar la configuració.</string>
     <string name="preset_saved_successfully">La configuració s\'ha desat correctament.</string>
     <string name="delete_preset">Esborra la configuració</string>
-    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Voleu esborrar el predefinit «%s» definitivament?</string>
     <string name="preset_x_deleted">S\'ha esborrat la configuració %s.</string>
     <string name="rename_preset">Canvia el nom a la configuració</string>
     <string name="please_enter_a_new_name_for_this_preset">Introduïu un nom nou per a aquesta configuració.</string>
@@ -455,7 +455,7 @@
     <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
-    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
+    <string name="audio_offload_is_enabled">La delegació d\'àudio està activada</string>
     <string name="enable_audio_offload_title">Delegació d\'àudio</string>
     <string name="enable_audio_offload_description">Permet al dispositiu processar l\'àudio directament des del seu maquinari. Redueix l\'ús del processador i de la bateria.
         Aquesta funció només s\'admet en certs dispositius. Alguns efectes o funcions podrien no funcionar mentre està activa.
@@ -642,10 +642,10 @@
 (separat per comes).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marca per títol</string>
     <string name="instrumental_tracks_mark_by_title_summary">El títol de la pista també es tindrà en compte per cercar identificadors.</string>
-    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Tracta tots els fitxers de lletra com a UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assumeix que tots els fitxers estan codificats en format UTF-8.
+        Optimitza el procés d\'anàlisi de fitxers, però en alguns casos podria mostrar caràcters inusuals a la lletra de les cançons.
+        Caldrà, potser, reiniciar l\'aplicació.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estil</string>
     <string name="open_on_play_title">Obre en reproduir</string>
@@ -799,12 +799,12 @@
     <string name="selected">Seleccionat</string>
     <string name="compact">Compacte</string>
     <string name="expanded">Ampliat</string>
-    <string name="full_cover_style">Full Cover</string>
-    <string name="gradient_style">Gradient</string>
-    <string name="peek_style">Peek</string>
-    <string name="plain_style">Plain</string>
+    <string name="full_cover_style">Portada completa</string>
+    <string name="gradient_style">Degradat</string>
+    <string name="peek_style">Ullada</string>
+    <string name="plain_style">Senzill</string>
     <string name="m3_style">M3</string>
-    <string name="expressive_style">Expressive</string>
+    <string name="expressive_style">Expressiu</string>
     <string name="normal_style">Normal</string>
     <string name="cascading">En cascada</string>
     <string name="depth">Profunditat</string>
