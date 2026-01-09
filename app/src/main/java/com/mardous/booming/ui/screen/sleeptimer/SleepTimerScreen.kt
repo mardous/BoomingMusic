@@ -71,6 +71,7 @@ fun SleepTimerBottomSheet(
             ) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
                     text = stringResource(R.string.action_sleep_timer),
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold
