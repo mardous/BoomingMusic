@@ -51,7 +51,7 @@ fun SleepTimerBottomSheet(
     sleepTimer: SleepTimer
 ) {
     var sliderPosition by remember { mutableFloatStateOf(Preferences.lastSleepTimerValue.toFloat()) }
-    var checkedState by remember { mutableStateOf(false) }
+    var checkedState by remember { mutableStateOf(Preferences.isSleepTimerFinishMusic) }
     var buttonText by remember { mutableStateOf(if (sleepTimer.isRunning) context.getString(R.string.sleep_timer_cancel_current_timer) else context.getString(
         R.string.sleep_timer_set_action
     )) }
