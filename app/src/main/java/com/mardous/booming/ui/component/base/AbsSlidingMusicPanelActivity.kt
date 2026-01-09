@@ -40,6 +40,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.*
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
@@ -86,7 +87,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     protected val playerViewModel: PlayerViewModel by viewModel()
     protected val lyricsViewModel: LyricsViewModel by viewModel()
 
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>
     private lateinit var nowPlayingScreen: NowPlayingScreen
 
     private var miniPlayerFragment: MiniPlayerFragment? = null
@@ -108,7 +109,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     private var panelStateBefore: Int? = null
     private var panelStateCurrent: Int? = null
     val isBottomNavVisible: Boolean
-        get() = navigationView.isVisible && navigationView is BottomNavigationView
+        get() = binding.navigationContainer?.isVisible == true && navigationView is BottomNavigationView
 
     val isBottomSheetHidden: Boolean
         get() = panelState == STATE_COLLAPSED && bottomSheetBehavior.peekHeight == 0
@@ -139,7 +140,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         binding = SlidingMusicPanelLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.sheetView) { _, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.sheetViewContainer) { _, insets ->
             insets.also { windowInsets = it }
         }
 
@@ -230,7 +231,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     }
 
     private fun setupBottomSheet() {
-        bottomSheetBehavior = from(binding.sheetView)
+        bottomSheetBehavior = from(binding.sheetViewContainer)
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
         bottomSheetBehavior.isHideable = Preferences.swipeDownToDismiss
         bottomSheetBehavior.significantVelocityThreshold = 300
@@ -238,12 +239,12 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     }
 
     private fun setupSlidingUpPanel() {
-        binding.sheetView.viewTreeObserver.addOnGlobalLayoutListener(object :
+        binding.sheetViewContainer.viewTreeObserver.addOnGlobalLayoutListener(object :
             ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
-                binding.sheetView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                binding.sheetViewContainer.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 if (nowPlayingScreen == NowPlayingScreen.Peek) {
-                    slidingPanel.updateLayoutParams<ViewGroup.LayoutParams> {
+                    binding.sheetViewContainer.updateLayoutParams<ViewGroup.LayoutParams> {
                         height = ViewGroup.LayoutParams.WRAP_CONTENT
                     }
                 }
@@ -268,19 +269,20 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             return
         }
         val isBottomNavView = (navigationView is BottomNavigationView)
-        if (visible xor navigationView.isVisible) {
+        val isNavContainerVisible = binding.navigationContainer?.isVisible == true
+        if (visible xor isNavContainerVisible) {
             val mAnimate = animate && isBottomNavView && panelState == STATE_COLLAPSED
             if (mAnimate) {
                 if (visible) {
-                    navigationView.bringToFront()
-                    navigationView.show()
+                    binding.navigationContainer?.bringToFront()
+                    binding.navigationContainer?.show()
                 } else {
-                    navigationView.hide()
+                    binding.navigationContainer?.hide()
                 }
             } else {
-                navigationView.isVisible = visible
+                binding.navigationContainer?.isVisible = visible
                 if (visible && isBottomNavView && panelState != STATE_EXPANDED) {
-                    navigationView.bringToFront()
+                    binding.navigationContainer?.bringToFront()
                 }
             }
         }
@@ -294,10 +296,10 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     private fun hideBottomSheet(
         hide: Boolean,
         animate: Boolean = false,
-        isBottomNavVisible: Boolean = navigationView.isVisible && navigationView is BottomNavigationView
+        isBottomNavVisible: Boolean = binding.navigationContainer?.isVisible == true && navigationView is BottomNavigationView
     ) {
-        val miniPlayerHeight = dip(R.dimen.mini_player_height)
-        val bottomNavHeight = dip(R.dimen.bottom_nav_height)
+        val miniPlayerHeight = dip(R.dimen.mini_player_height) + dip(R.dimen.mini_player_margin) + dip(R.dimen.mini_player_margin_bottom)
+        val bottomNavHeight = dip(R.dimen.bottom_nav_height) + (dip(R.dimen.mini_player_margin_bottom) * 2)
 
         val bottomInsets = windowInsets.getBottomInsets()
         val heightOfBar =  bottomInsets + miniPlayerHeight
@@ -318,8 +320,8 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             )
         } else {
             if (playerViewModel.queue.isNotEmpty()) {
-                slidingPanel.elevation = 0f
-                navigationView.elevation = 5f
+                binding.sheetViewContainer.elevation = 0f
+                binding.navigationContainer?.elevation = 10f
                 if (isBottomNavVisible) {
                     if (animate) {
                         bottomSheetBehavior.peekHeightAnimate(heightOfBarWithTabs)
@@ -340,11 +342,11 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                 } else {
                     if (animate) {
                         bottomSheetBehavior.peekHeightAnimate(heightOfBar).doOnEnd {
-                            slidingPanel.bringToFront()
+                            binding.sheetViewContainer.bringToFront()
                         }
                     } else {
                         bottomSheetBehavior.peekHeight = heightOfBar
-                        slidingPanel.bringToFront()
+                        binding.sheetViewContainer.bringToFront()
                     }
                     libraryViewModel.setLibraryMargins(
                         fabBottomMargin = LibraryMargin(
@@ -378,12 +380,32 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         setLightStatusBar()
         setLightNavigationBar()
         playerFragment?.onHide()
+        // restore card margins and corner radius when collapsed
+        binding.sheetViewContainer.apply {
+            updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                marginStart = dip(R.dimen.mini_player_margin_horizontal)
+                marginEnd = dip(R.dimen.mini_player_margin_horizontal)
+                topMargin = dip(R.dimen.mini_player_margin)
+                bottomMargin = dip(R.dimen.mini_player_margin_bottom)
+            }
+            radius = dip(R.dimen.m3_card_corner_radius).toFloat()
+        }
     }
 
     protected open fun onPanelExpanded() {
         setMiniPlayerAlphaProgress(1f)
         onPaletteColorChanged()
         playerFragment?.onShow()
+        // remove margins and corner radius when expanded
+        binding.sheetViewContainer.apply {
+            updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                marginStart = 0
+                marginEnd = 0
+                topMargin = 0
+                bottomMargin = 0
+            }
+            radius = 0f
+        }
     }
 
     protected fun updateTabs() {
@@ -400,7 +422,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         setupNavigationViewGestures()
         if (navigationView.menu.size == 1) {
             isInOneTabMode = true
-            navigationView.isVisible = false
+            binding.navigationContainer?.isVisible = false
         } else {
             isInOneTabMode = false
         }
@@ -441,10 +463,26 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         miniPlayerFragment?.view?.alpha = 1 - (progress / 0.2F)
         miniPlayerFragment?.view?.isGone = alpha == 0f
         if (!resources.isLandscape) {
-            binding.navigationView.translationY = progress * 500
-            binding.navigationView.alpha = alpha
+            binding.navigationContainer?.translationY = progress * 500
+            binding.navigationContainer?.alpha = alpha
         }
         binding.playerContainer.alpha = (progress - 0.2F) / 0.2F
+        
+        // dynamic adjustment of margins and corner radius based on slide progress
+        val marginHorizontal = (dip(R.dimen.mini_player_margin_horizontal) * (1 - progress)).toInt()
+        val marginTop = (dip(R.dimen.mini_player_margin) * (1 - progress)).toInt()
+        val marginBottom = (dip(R.dimen.mini_player_margin_bottom) * (1 - progress)).toInt()
+        val cornerRadius = dip(R.dimen.m3_card_corner_radius) * (1 - progress)
+
+        binding.sheetViewContainer.apply {
+            updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                marginStart = marginHorizontal
+                marginEnd = marginHorizontal
+                topMargin = marginTop
+                bottomMargin = marginBottom
+            }
+            radius = cornerRadius
+        }
     }
 
     private fun onPaletteColorChanged() {
@@ -493,7 +531,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             LIBRARY_CATEGORIES -> updateTabs()
             NOW_PLAYING_SCREEN -> {
                 chooseFragmentForTheme()
-                slidingPanel.updateLayoutParams<ViewGroup.LayoutParams> {
+                binding.sheetViewContainer.updateLayoutParams<ViewGroup.LayoutParams> {
                     height = if (nowPlayingScreen != NowPlayingScreen.Peek) {
                         ViewGroup.LayoutParams.MATCH_PARENT
                     } else {
@@ -568,6 +606,10 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         playerFragment = whichFragment(R.id.player_container)
         miniPlayerFragment = whichFragment(R.id.mini_player_container)
         miniPlayerFragment?.view?.setOnClickListener { expandPanel() }
+    }
+
+    private fun updateSheetViewBackground() {
+        // dynamic background update if needed
     }
 
     private val bottomSheetCallback = object : BottomSheetCallback() {
