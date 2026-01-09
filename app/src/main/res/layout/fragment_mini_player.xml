@@ -1,149 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- We wrap the layout in a MaterialCardView to give it the floating appearance -->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/mini_player_height"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/mini_player_margin_horizontal"
+    android:layout_marginEnd="@dimen/mini_player_margin_horizontal"
+    android:layout_marginTop="@dimen/mini_player_margin"
+    android:layout_marginBottom="@dimen/mini_player_margin_bottom"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp"
     android:clickable="true"
     android:focusable="true">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mini_player_height">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
-        tools:src="@tools:sample/backgrounds/scenic[2]"
-        tools:ignore="ContentDescription" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/songTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:ellipsize="marquee"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:freezesText="true"
-        android:gravity="start"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:scrollHorizontally="true"
-        android:singleLine="true"
-        android:textAlignment="viewStart"
-        android:textAppearance="?textAppearanceBody2"
-        android:textColor="?colorOnSurface"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintEnd_toStartOf="@id/buttonContainer"
-        tools:text="@tools:sample/lorem" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/songArtist"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:ellipsize="marquee"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:freezesText="true"
-        android:gravity="start"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:scrollHorizontally="true"
-        android:singleLine="true"
-        android:textAlignment="viewStart"
-        android:textAppearance="?textAppearanceBody2"
-        android:textColor="?colorOnSurfaceVariant"
-        android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@+id/guideline"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintEnd_toStartOf="@id/buttonContainer"
-        tools:text="@tools:sample/lorem" />
-
-    <FrameLayout
-        android:id="@+id/buttonContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layoutDirection="ltr"
-            android:baselineAligned="false"
-            tools:ignore="UselessParent">
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/actionPrevious"
-                style="?materialIconButtonStyle"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/backgrounds/scenic[2]" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/songTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:gravity="start"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
+            android:textAppearance="?textAppearanceBody2"
+            android:textColor="?colorOnSurface"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@id/buttonContainer"
+            app:layout_constraintStart_toEndOf="@id/image"
+            tools:text="@tools:sample/lorem" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/songArtist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:gravity="start"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
+            android:textAppearance="?textAppearanceBody2"
+            android:textColor="?colorOnSurfaceVariant"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/buttonContainer"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            tools:text="@tools:sample/lorem" />
+
+        <FrameLayout
+            android:id="@+id/buttonContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/action_previous"
-                android:visibility="gone"
-                app:icon="@drawable/ic_previous_24dp"
-                app:iconTint="?attr/colorOnSurface"
-                tools:visibility="visible" />
-
-            <FrameLayout
-                android:id="@+id/playPause"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@id/actionNext"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-                <com.google.android.material.progressindicator.CircularProgressIndicator
-                    android:id="@+id/progress_bar"
-                    style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    tools:progress="75" />
+                android:layoutDirection="ltr"
+                tools:ignore="UselessParent">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/actionPlayPause"
+                    android:id="@+id/actionPrevious"
                     style="?materialIconButtonStyle"
-                    android:layout_height="40dp"
-                    android:layout_width="40dp"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/action_play_pause"
-                    app:iconGravity="textStart"
-                    app:iconTint="?colorOnSurface"
-                    tools:icon="@drawable/ic_pause_24dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/action_previous"
+                    android:visibility="gone"
+                    app:icon="@drawable/ic_previous_24dp"
+                    app:iconTint="?attr/colorOnSurface"
+                    tools:visibility="visible" />
 
-            </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/playPause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/actionNext"
-                style="?materialIconButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:contentDescription="@string/action_next"
-                android:visibility="visible"
-                app:icon="@drawable/ic_next_24dp"
-                app:iconTint="?attr/colorOnSurface"
-                tools:visibility="visible" />
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/progress_bar"
+                        style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        tools:progress="75" />
 
-        </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/actionPlayPause"
+                        style="?materialIconButtonStyle"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/action_play_pause"
+                        app:iconGravity="textStart"
+                        app:iconTint="?colorOnSurface"
+                        tools:icon="@drawable/ic_pause_24dp" />
 
-    </FrameLayout>
+                </FrameLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/actionNext"
+                    style="?materialIconButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/action_next"
+                    app:icon="@drawable/ic_next_24dp"
+                    app:iconTint="?attr/colorOnSurface" />
 
+            </LinearLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

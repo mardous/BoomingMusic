@@ -17,42 +17,72 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:layout="@layout/fragment_home"/>
 
-    <FrameLayout
-        android:id="@+id/sheet_view"
-        style="@style/BottomSheetStyle"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/sheet_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:behavior_hideable="true"
-        app:behavior_peekHeight="0dp"
-        app:enableEdgeToEdge="true"
-        app:gestureInsetBottomIgnored="true"
+        android:layout_marginStart="@dimen/mini_player_margin_horizontal"
+        android:layout_marginEnd="@dimen/mini_player_margin_horizontal"
+        android:layout_marginTop="@dimen/mini_player_margin"
+        android:layout_marginBottom="@dimen/mini_player_margin_bottom"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="8dp"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="@android:color/transparent"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/player_container"
+        <FrameLayout
+            android:id="@+id/sheet_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="0dp"
+            app:enableEdgeToEdge="true"
+            app:gestureInsetBottomIgnored="true">
 
-        <fragment
-            android:id="@+id/mini_player_container"
-            android:name="com.mardous.booming.ui.screen.other.MiniPlayerFragment"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/mini_player_height"
-            tools:layout="@layout/fragment_mini_player"/>
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/player_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?colorSurface"/>
 
-    </FrameLayout>
+            <fragment
+                android:id="@+id/mini_player_container"
+                android:name="com.mardous.booming.ui.screen.other.MiniPlayerFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_mini_player"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigationView"
-        style="?bottomNavigationStyle"
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/navigationContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:minHeight="@dimen/bottom_nav_height"
-        app:itemGravity="center"
-        app:itemIconGravity="@integer/bottomNavViewItemIconGravity"
-        app:itemHorizontalTranslationEnabled="false"
-        app:menu="@menu/menu_bottom_navigation"
-        tools:viewBindingType="com.google.android.material.navigation.NavigationBarView"/>
+        android:layout_marginStart="@dimen/mini_player_margin_horizontal"
+        android:layout_marginEnd="@dimen/mini_player_margin_horizontal"
+        android:layout_marginBottom="@dimen/mini_player_margin_bottom"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:strokeWidth="0dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigationView"
+            style="?bottomNavigationStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:backgroundTint="@android:color/transparent"
+            android:minHeight="@dimen/bottom_nav_height"
+            app:itemGravity="center"
+            app:itemIconGravity="@integer/bottomNavViewItemIconGravity"
+            app:itemHorizontalTranslationEnabled="false"
+            app:menu="@menu/menu_bottom_navigation"
+            tools:viewBindingType="com.google.android.material.navigation.NavigationBarView"/>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
