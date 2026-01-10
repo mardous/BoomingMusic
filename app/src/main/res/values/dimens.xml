@@ -19,6 +19,7 @@
     <dimen name="mini_player_height">70dp</dimen>
     <dimen name="bottom_nav_height">80dp</dimen>
     <dimen name="queue_height">400dp</dimen>
+    <dimen name="shuffle_height">800dp</dimen>
 
     <dimen name="icon_notification_size">32dp</dimen>
     <dimen name="notification_image_size">70dp</dimen>

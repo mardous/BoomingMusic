@@ -154,6 +154,12 @@
             app:argType="com.mardous.booming.data.model.Song" />
     </dialog>
 
+    <dialog
+        android:id="@+id/nav_share"
+        android:name="com.mardous.booming.ui.screen.sharesong.ShareSongFragment"
+        android:label="ShareSongFragment">
+    </dialog>
+
     <fragment
         android:id="@+id/nav_play_info"
         android:name="com.mardous.booming.ui.screen.info.PlayInfoFragment"
