@@ -5,9 +5,9 @@
     <string name="action_shuffle_play">Riproduzione casuale</string>
     <string name="action_queue_next">Coda successiva</string>
     <string name="shuffle_all_label">Mischia tutti</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="shuffle_mode">Modalità Casuale</string>
+    <string name="repeat_mode">Modalità a Ripetizione</string>
+    <string name="shuffle_button_tip">Premi per riproduzione casuale. Tieni premuto per opzioni avanzate.</string>
     <string name="action_play_pause">Riproduci/Pausa</string>
     <string name="action_pause">Pausa</string>
     <string name="action_next">Successivo</string>
@@ -30,7 +30,7 @@
     <string name="search_list_x_label">Elenco di ricerca: %s</string>
     <string name="search_from_x_label">Cerca da \"%s\"</string>
     <string name="search_year_x_label">Anno di ricerca: %s</string>
-    <string name="search_in_folder_x">Search in folder: %s</string>
+    <string name="search_in_folder_x">Cerca nella cartella: %s</string>
     <string name="search_last_added">Cerca musica più recente</string>
     <string name="shuffle_mode_album">Mischia album</string>
     <string name="shuffle_mode_artist">Mischia artista</string>
@@ -42,7 +42,7 @@
     <string name="currently_listening_to_x_by_x">Sto ascoltando %1$s da %2$s</string>
     <string name="share_to_stories">Condividi con le storie</string>
     <string name="could_not_create_the_story">Impossibile creare la storia.</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">Indietro</string>
     <string name="rename_action">Rinomina</string>
     <string name="add_action">Aggiungi</string>
     <string name="delete_action">Elimina</string>
@@ -52,9 +52,9 @@
     <string name="continue_action">Continua</string>
     <string name="select_all_title">Seleziona tutto</string>
     <string name="x_selected">%d selezionato</string>
-    <string name="preparing_playback_title">Preparing</string>
+    <string name="preparing_playback_title">Preparazione</string>
     <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="playback_stopped_title">Riproduzione fermata</string>
     <string name="playing_notification_description">La notifica di riproduzione fornisce azioni per riproduzione/pausa, ecc.</string>
     <string name="playing_notification_name">Notifica in riproduzione</string>
     <string name="action_scan_directory">Scansiona directory</string>
@@ -71,7 +71,7 @@
     <string name="new_playlist_title">Nuova playlist</string>
     <string name="add_playlist_title">Aggiungi alla playlist</string>
     <string name="rename_playlist_title">Rinomina playlist</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Modifica playlist</string>
     <string name="action_delete">Elimina playlist</string>
     <string name="action_export_playlist">Esporta in file</string>
     <string name="action_clear_history">Cancella cronologia</string>
@@ -80,9 +80,9 @@
     <string name="create_a_playlist_with_one_song">Verrà creata una playlist e verrà aggiunta una canzone.</string>
     <string name="create_a_playlist_with_x_songs">Verrà creata una playlist e le canzoni di %d verranno aggiunte automaticamente.</string>
     <string name="playlist_name_empty">Nome playlist</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Descrizione playlist (opzionale)</string>
     <string name="saved_playlist_x">Playlist %s salvata.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Playlist aggiornata.</string>
     <string name="failed_to_save_playlist">Impossibile salvare la playlist.</string>
     <string name="saved_x_playlists">Playlist %1$d salvate.</string>
     <string name="saved_x_playlists_failed_to_save_x">Playlist %1$d salvate, impossibile salvare %2$d.</string>
@@ -95,13 +95,13 @@
     <string name="inserted_one_song_into_playlist_x">Inserito un brano nella playlist %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Inserito brani %1$d nella playlist %2$s.</string>
     <string name="playlist_exists">Playlist %s esiste già.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">Playlist %s creata con successo.</string>
     <string name="remove_song_from_playlist_title">Rimuovi brano dalla playlist</string>
     <string name="remove_songs_from_playlist_title">Rimuovi brani dalla playlist</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Rimuovere la canzone <b>%1$s</b> dalla playlist?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Rimuovere i brani <b>%1$d</b> dalla playlist?]]></string>
     <string name="playlist_empty_text">Scaletta vuota</string>
-    <string name="action_lyrics_editor">Lyrics editor</string>
+    <string name="action_lyrics_editor">Editor del testo</string>
     <string name="action_tag_editor">Editor tag</string>
     <string name="saving_changes">Salvataggio delle modifiche</string>
     <string name="changes_saved_successfully">Modifiche salvate con successo.</string>
@@ -127,7 +127,7 @@
     <string name="no_equalizer">Nessun equalizzatore trovato.</string>
     <string name="audio_focus_denied">Focus audio negato.</string>
     <string name="no_audio_ID">Id audio errato.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">Errore di riproduzione (%s).</string>
     <string name="unplayable_file">Impossibile riprodurre questa canzone.</string>
     <string name="permission_external_storage_title">Accesso Archiviazione</string>
     <string name="permission_external_storage_description">L\'app ha bisogno dell\'autorizzazione per accedere alla memoria del tuo dispositivo per riprodurre musica</string>
@@ -136,8 +136,8 @@
     <string name="permission_bluetooth_description">L\'app ha bisogno dell\'autorizzazione per i dispositivi nelle vicinanze per controllare i dispositivi bluetooth</string>
     <string name="permission_bluetooth_denied">Autorizzazione dispositivi nelle vicinanze negata.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
-    <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
-        If you don\'t plan to use this feature, you can choose not to grant it.</string>
+    <string name="permission_read_images_summary">Questa autorizzazione è richiesta per Booming Music per trovare i file di copertina degli album nelle tue cartelle musicali.
+        Se non hai intenzione di utilizzare questa funzione, puoi scegliere di non concederla.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">Pianifica avvisi esatti (opzionale)</string>
     <string name="permission_exact_alarms_description">Per il corretto funzionamento del timer di sonno è necessario il permesso di pianificare gli allarmi esatti</string>
