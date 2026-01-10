@@ -54,6 +54,7 @@ import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.sound.SoundSettingsViewModel
 import com.mardous.booming.ui.screen.tageditor.TagEditorViewModel
 import com.mardous.booming.ui.screen.update.UpdateViewModel
+import com.mardous.booming.ui.screen.sleeptimer.SleepTimerViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.bind
@@ -257,6 +258,11 @@ private val viewModule = module {
             contentResolver = get(),
             equalizerManager = get(),
             mediaStoreWriter = get()
+        )
+    }
+
+    viewModel {
+        SleepTimerViewModel(
         )
     }
 
