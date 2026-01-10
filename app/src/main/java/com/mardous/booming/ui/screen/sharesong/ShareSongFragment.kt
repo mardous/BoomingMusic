@@ -38,8 +38,7 @@ class ShareSongFragment: BottomSheetDialogFragment() {
             setContent {
                 BoomingMusicTheme() {
                     ShareSongBottomSheet(
-                        playerViewModel = playerViewModel,
-                        context = requireContext()
+                        playerViewModel = playerViewModel
                     )
                 }
             }

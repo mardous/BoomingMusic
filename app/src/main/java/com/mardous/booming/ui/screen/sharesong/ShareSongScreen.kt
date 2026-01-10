@@ -1,6 +1,5 @@
 package com.mardous.booming.ui.screen.sharesong
 
-import android.content.Context
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -33,9 +33,9 @@ import com.mardous.booming.ui.screen.player.PlayerViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ShareSongBottomSheet(
-    playerViewModel: PlayerViewModel,
-    context: Context
+    playerViewModel: PlayerViewModel
 ) {
+    val context = LocalContext.current
 
     BottomSheetDialogSurface {
         Column(
@@ -69,7 +69,7 @@ fun ShareSongBottomSheet(
                     interactionSource = remember { MutableInteractionSource() }
                 ) {
                     Text(
-                        text = context.getString(R.string.the_audio_file)
+                        text = stringResource(R.string.the_audio_file)
                     )
                 }
 
@@ -84,7 +84,7 @@ fun ShareSongBottomSheet(
                     interactionSource = remember { MutableInteractionSource() }
                 ) {
                     Text(
-                        text = context.getString(R.string.i_am_listening)
+                        text = stringResource(R.string.i_am_listening)
                     )
                 }
             }
