@@ -423,7 +423,7 @@
     <string name="shuffle_mode_combined_description">מיקס המבוסס על מועדפים, מספר השמעות ועדכניות.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">אקולייזר</string>
-    <string name="preset_title">פריסט</string>
+    <string name="preset_title">קביעת־מראש</string>
     <string name="manual_adjustment_title">כיוון ידני</string>
     <string name="share_eq_configuration">שתף תצורת אקלוייזר</string>
     <string name="there_is_nothing_to_export">אין מה לייצא.</string>
@@ -457,7 +457,7 @@
     <string name="could_not_save_preset">לא ניתן לשמור את הקביעה.</string>
     <string name="preset_saved_successfully">הקביעה נשמרה בהצלחה.</string>
     <string name="delete_preset">מחק קביעה</string>
-    <string name="are_you_sure_you_want_to_delete_preset_x">האם אתה בטוח שברצונך למחוק את הפריסט ״%s״?</string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">האם אתה בטוח שברצונך למחוק את הקביעת־מראש ״%s״?</string>
     <string name="preset_x_deleted">הקביעה %s נמחקה.</string>
     <string name="rename_preset">שנה שם קביעה</string>
     <string name="please_enter_a_new_name_for_this_preset">הזן שם חדש לקביעה.</string>
@@ -471,7 +471,7 @@
     <string name="tempo_label">קצב</string>
     <string name="action_external_eq">איקוולייזר חיצוני</string>
     <string name="custom">מותאם אישית</string>
-    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
+    <string name="audio_offload_is_enabled">Audio Offload מופעל</string>
     <string name="enable_audio_offload_title">העברת עיבוד שמע לחומרה</string>
     <string name="enable_audio_offload_description">מאפשר למכשיר לעבד את השמע ישירות דרך החומרה, מה שמפחית את השימוש במעבד וחוסך בסוללה.
 הפונקציה נתמכת רק במכשירים מסוימים, וחלק מהאפקטים או הפונקציות עלולים שלא לעבוד כשהיא מופעלת.
