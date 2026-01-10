@@ -18,7 +18,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.getValue
 
 class SleepTimerFragment: BottomSheetDialogFragment() {
-    private val playerViewModel: PlayerViewModel by activityViewModel()
 
     private val viewModel: SleepTimerViewModel by viewModel()
 
