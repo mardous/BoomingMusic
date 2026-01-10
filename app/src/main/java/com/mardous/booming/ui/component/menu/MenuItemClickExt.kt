@@ -40,7 +40,6 @@ import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.DeletePlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.EditPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
-import com.mardous.booming.ui.dialogs.songs.SetRingtoneDialog
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.tageditor.AlbumTagEditorActivity
@@ -103,7 +102,8 @@ fun Song.onSongMenu(
         }
 
         R.id.action_set_as_ringtone -> {
-            SetRingtoneDialog.create(this).show(fragment.childFragmentManager, "SET_RINGTONE")
+            fragment.findActivityNavController(R.id.fragment_container)
+                .navigate(R.id.nav_ringtone, songDetailArgs(this))
             true
         }
 
