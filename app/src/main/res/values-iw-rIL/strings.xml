@@ -423,8 +423,8 @@
     <string name="shuffle_mode_combined_description">מיקס המבוסס על מועדפים, מספר השמעות ועדכניות.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">אקולייזר</string>
-    <string name="preset_title">Preset</string>
-    <string name="manual_adjustment_title">Manual adjustment</string>
+    <string name="preset_title">פריסט</string>
+    <string name="manual_adjustment_title">כיוון ידני</string>
     <string name="share_eq_configuration">שתף תצורת אקלוייזר</string>
     <string name="there_is_nothing_to_export">אין מה לייצא.</string>
     <string name="there_is_nothing_to_import">אין מה לייבא.</string>
@@ -457,7 +457,7 @@
     <string name="could_not_save_preset">לא ניתן לשמור את הקביעה.</string>
     <string name="preset_saved_successfully">הקביעה נשמרה בהצלחה.</string>
     <string name="delete_preset">מחק קביעה</string>
-    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">האם אתה בטוח שברצונך למחוק את הפריסט ״%s״?</string>
     <string name="preset_x_deleted">הקביעה %s נמחקה.</string>
     <string name="rename_preset">שנה שם קביעה</string>
     <string name="please_enter_a_new_name_for_this_preset">הזן שם חדש לקביעה.</string>
