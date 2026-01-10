@@ -406,8 +406,8 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="shuffle_mode_combined_description">Mix com base nos seus favoritos, mais tocadas e recentes.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizador</string>
-    <string name="preset_title">Preset</string>
-    <string name="manual_adjustment_title">Manual adjustment</string>
+    <string name="preset_title">Predefinição</string>
+    <string name="manual_adjustment_title">Ajuste manual</string>
     <string name="share_eq_configuration">Compartilhar configuração do EQ</string>
     <string name="there_is_nothing_to_export">Não há nada para exportar.</string>
     <string name="there_is_nothing_to_import">Não há nada para importar.</string>
@@ -440,7 +440,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="could_not_save_preset">Impossível salvar predefinição.</string>
     <string name="preset_saved_successfully">Predefinição salva com sucesso.</string>
     <string name="delete_preset">Excluir predefinição</string>
-    <string name="are_you_sure_you_want_to_delete_preset_x">Are you sure you want to delete preset \"%s\"?</string>
+    <string name="are_you_sure_you_want_to_delete_preset_x">Tem certeza de que deseja excluir a predefinição “%s”?</string>
     <string name="preset_x_deleted">Predefinição %s excluída.</string>
     <string name="rename_preset">Renomear predefinição</string>
     <string name="please_enter_a_new_name_for_this_preset">Por favor, digite um novo nome para esta predefinição.</string>
@@ -454,7 +454,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="tempo_label">Velocidade</string>
     <string name="action_external_eq">EQ Externo</string>
     <string name="custom">Personalizado</string>
-    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
+    <string name="audio_offload_is_enabled">O descarregamento de áudio está ativado</string>
     <string name="enable_audio_offload_title">Processamento de áudio otimizado</string>
     <string name="enable_audio_offload_description">Permite que o áudio seja processado diretamente pelo hardware do dispositivo, reduzindo o uso da CPU e o consumo de bateria.
 Esse recurso é compatível apenas com determinados dispositivos. Alguns efeitos ou recursos podem ficar indisponíveis quando ativado.
