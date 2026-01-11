@@ -154,6 +154,15 @@
             app:argType="com.mardous.booming.data.model.Song" />
     </dialog>
 
+    <dialog
+        android:id="@+id/nav_web_search"
+        android:name="com.mardous.booming.ui.screen.websearch.WebSearchFragment"
+        android:label="WebSearchFragment">
+        <argument
+            android:name="extraSong"
+            app:argType="com.mardous.booming.data.model.Song" />
+    </dialog>
+
     <fragment
         android:id="@+id/nav_play_info"
         android:name="com.mardous.booming.ui.screen.info.PlayInfoFragment"
