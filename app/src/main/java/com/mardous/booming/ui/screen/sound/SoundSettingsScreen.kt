@@ -6,13 +6,39 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.BottomSheetDefaults
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Slider
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,10 +51,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
 import com.mardous.booming.core.model.audiodevice.AudioDevice
-import com.mardous.booming.core.model.equalizer.ReplayGainState
-import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.hasR
-import com.mardous.booming.ui.component.compose.*
+import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
+import com.mardous.booming.ui.component.compose.LabeledSwitch
+import com.mardous.booming.ui.component.compose.ShapedText
+import com.mardous.booming.ui.component.compose.TitleShapedText
+import com.mardous.booming.ui.component.compose.TitledCard
+import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.theme.CornerRadiusTokens
 import java.util.Locale
 import kotlin.math.roundToInt
@@ -36,25 +65,29 @@ import kotlin.math.roundToInt
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SoundSettingsSheet(
-    viewModel: SoundSettingsViewModel
+    viewModel: EqualizerViewModel
 ) {
     val context = LocalContext.current
 
     var expandedSoundSettings by remember { mutableStateOf(false) }
-    val outputDevice by viewModel.audioDeviceFlow.collectAsState()
-    val volume by viewModel.volumeStateFlow.collectAsState()
+    val outputDevice by viewModel.audioDevice.collectAsState()
+    val volume by viewModel.volumeState.collectAsState()
 
-    val audioOffload by viewModel.audioOffloadFlow.collectAsState()
-    val audioFloatOutput by viewModel.audioFloatOutputFlow.collectAsState()
-    val skipSilence by viewModel.skipSilenceFlow.collectAsState()
+    val audioOffload by viewModel.audioOffload.collectAsState()
+    val audioFloatOutput by viewModel.audioFloatOutput.collectAsState()
+    val skipSilence by viewModel.skipSilence.collectAsState()
 
     val enableAudioEffects by remember {
         derivedStateOf { audioOffload.not() && audioFloatOutput.not() }
     }
 
-    val balance by viewModel.balanceFlow.collectAsState()
-    val tempo by viewModel.tempoFlow.collectAsState()
-    val replayGain by viewModel.replayGainStateFlow.collectAsState()
+    val balance by viewModel.balanceState.collectAsState()
+    val tempo by viewModel.tempoState.collectAsState()
+
+    var balanceLeft by remember { mutableFloatStateOf(balance.left) }
+    var balanceRight by remember { mutableFloatStateOf(balance.right) }
+    var tempoSpeed by remember { mutableFloatStateOf(tempo.speed) }
+    var tempoPitch by remember { mutableFloatStateOf(tempo.pitch) }
 
     var showAudioOffloadDialog by remember { mutableStateOf(false) }
     var showAudioFloatOutputDialog by remember { mutableStateOf(false) }
@@ -148,13 +181,16 @@ fun SoundSettingsSheet(
                     }
                 }
 
-                TitledSurface(
+                TitledCard(
                     title = stringResource(R.string.volume_label),
                     iconRes = R.drawable.ic_volume_up_24dp,
                     titleEndContent = { TitleShapedText("${volume.volumePercent.roundToInt()}%") },
                     modifier = Modifier.fillMaxWidth()
-                ) {
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                ) { cardContentPadding ->
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.padding(cardContentPadding)
+                    ) {
                         Slider(
                             enabled = !volume.isFixed,
                             value = volume.currentVolume.toFloat(),
@@ -177,16 +213,18 @@ fun SoundSettingsSheet(
                                 ) {
                                     ShapedText(
                                         text = "L",
-                                        textColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                        color = MaterialTheme.colorScheme.onTertiaryContainer,
                                         shape = RoundedCornerShape(4.dp),
                                         shapeColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                        style = MaterialTheme.typography.labelSmall
+                                        style = MaterialTheme.typography.labelSmall,
+                                        modifier = Modifier.padding(8.dp)
                                     )
                                     Slider(
-                                        value = balance.left,
+                                        value = balanceLeft,
                                         valueRange = balance.range,
-                                        onValueChange = {
-                                            viewModel.setBalance(left = it)
+                                        onValueChange = { balanceLeft = it },
+                                        onValueChangeFinished = {
+                                            viewModel.setBalance(left = balanceLeft)
                                         },
                                         modifier = Modifier.fillMaxWidth()
                                     )
@@ -198,16 +236,18 @@ fun SoundSettingsSheet(
                                 ) {
                                     ShapedText(
                                         text = "R",
-                                        textColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                        color = MaterialTheme.colorScheme.onTertiaryContainer,
                                         shape = RoundedCornerShape(4.dp),
                                         shapeColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                        style = MaterialTheme.typography.labelSmall
+                                        style = MaterialTheme.typography.labelSmall,
+                                        modifier = Modifier.padding(8.dp)
                                     )
                                     Slider(
-                                        value = balance.right,
+                                        value = balanceRight,
                                         valueRange = balance.range,
-                                        onValueChange = {
-                                            viewModel.setBalance(right = it)
+                                        onValueChange = { balanceRight = it },
+                                        onValueChangeFinished = {
+                                            viewModel.setBalance(right = balanceRight)
                                         },
                                         modifier = Modifier.fillMaxWidth()
                                     )
@@ -217,7 +257,7 @@ fun SoundSettingsSheet(
                     }
                 }
 
-                TitledSurface(
+                TitledCard(
                     title = stringResource(R.string.tempo_label),
                     iconRes = R.drawable.ic_graphic_eq_24dp,
                     titleEndContent = {
@@ -225,22 +265,33 @@ fun SoundSettingsSheet(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            TitleShapedText(tempo.formattedSpeed) {
-                                viewModel.setTempo(isFixedPitch = tempo.isFixedPitch.not())
-                            }
+                            TitleShapedText(
+                                text = "%.1fx".format(Locale.US, tempoSpeed),
+                                onClick = {
+                                    viewModel.setTempo(isFixedPitch = tempo.isFixedPitch.not())
+                                }
+                            )
 
                             AnimatedVisibility(visible = tempo.isFixedPitch.not()) {
-                                TitleShapedText(tempo.formattedPitch) {
-                                    viewModel.setTempo(isFixedPitch = true)
-                                }
+                                TitleShapedText(
+                                    text = "%.1fx".format(Locale.US, tempoPitch),
+                                    onClick = {
+                                        viewModel.setTempo(isFixedPitch = true)
+                                    }
+                                )
                             }
                         }
                     },
                     modifier = Modifier.fillMaxWidth()
-                ) {
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                ) { cardContentPadding ->
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.padding(cardContentPadding)
+                    ) {
                         Row(modifier = Modifier.fillMaxWidth()) {
-                            IconButton(onClick = { viewModel.setTempo(speed = 1f) }) {
+                            IconButton(
+                                onClick = { viewModel.setTempo(speed = 1f) }
+                            ) {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_speed_24dp),
                                     contentDescription = null
@@ -248,10 +299,11 @@ fun SoundSettingsSheet(
                             }
 
                             Slider(
-                                value = tempo.speed,
+                                value = tempoSpeed,
                                 valueRange = tempo.speedRange,
-                                onValueChange = {
-                                    viewModel.setTempo(speed = it)
+                                onValueChange = { tempoSpeed = it },
+                                onValueChangeFinished = {
+                                    viewModel.setTempo(speed = tempoSpeed)
                                 },
                                 modifier = Modifier.fillMaxWidth()
                             )
@@ -270,61 +322,14 @@ fun SoundSettingsSheet(
 
                             Slider(
                                 enabled = tempo.isFixedPitch.not(),
-                                value = tempo.actualPitch,
+                                value = if (tempo.isFixedPitch) tempoSpeed else tempoPitch,
                                 valueRange = tempo.pitchRange,
-                                onValueChange = {
-                                    viewModel.setTempo(pitch = it)
+                                onValueChange = { tempoPitch = it },
+                                onValueChangeFinished = {
+                                    viewModel.setTempo(pitch = tempoPitch)
                                 },
                                 modifier = Modifier.fillMaxWidth()
                             )
-                        }
-                    }
-                }
-
-                AnimatedVisibility(visible = enableAudioEffects) {
-                    TitledSurface(
-                        title = stringResource(R.string.replay_gain),
-                        iconRes = R.drawable.ic_sound_sampler_24dp,
-                        titleEndContent = {
-                            AnimatedVisibility(visible = replayGain.mode.isOn) {
-                                TitleShapedText("%+.1f dB".format(Locale.ROOT, replayGain.preamp))
-                            }
-                        },
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Column {
-                            ReplayGainModeSelector(replayGain) {
-                                viewModel.setReplayGain(mode = it)
-                            }
-
-                            AnimatedVisibility(
-                                visible = replayGain.mode.isOn,
-                                modifier = Modifier.padding(top = 8.dp)
-                            ) {
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    IconButton(onClick = { viewModel.setReplayGain(preamp = 0f) }) {
-                                        Icon(
-                                            painter = painterResource(R.drawable.ic_restart_alt_24dp),
-                                            contentDescription = null
-                                        )
-                                    }
-
-                                    Slider(
-                                        value = replayGain.preamp,
-                                        onValueChange = {
-                                            viewModel.setReplayGain(
-                                                preamp = (it / 0.2f).roundToInt() * 0.2f
-                                            )
-                                        },
-                                        valueRange = -15f..15f,
-                                        steps = 30 - 1,
-                                        modifier = Modifier.fillMaxWidth()
-                                    )
-                                }
-                            }
                         }
                     }
                 }
@@ -415,53 +420,6 @@ private fun AudioDeviceInfo(
         }
         AnimatedVisibility(visible = expanded) {
             expandableContent()
-        }
-    }
-}
-
-@Composable
-private fun ReplayGainModeText(mode: ReplayGainMode) {
-    Text(
-        text = when (mode) {
-            ReplayGainMode.Album -> stringResource(R.string.album)
-            ReplayGainMode.Track -> stringResource(R.string.track)
-            else -> stringResource(R.string.label_none)
-        }
-    )
-}
-
-@Composable
-private fun ReplayGainModeIcon(mode: ReplayGainMode) {
-    Icon(
-        painter = when (mode) {
-            ReplayGainMode.Album -> painterResource(R.drawable.ic_album_24dp)
-            ReplayGainMode.Track -> painterResource(R.drawable.ic_music_note_24dp)
-            else -> painterResource(R.drawable.ic_clear_24dp)
-        },
-        contentDescription = null
-    )
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun ReplayGainModeSelector(
-    replayGain: ReplayGainState,
-    onModeSelected: (ReplayGainMode) -> Unit
-) {
-    FlowRow(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        replayGain.availableModes.forEach { mode ->
-            FilterChip(
-                selected = mode == replayGain.mode,
-                onClick = {
-                    onModeSelected(mode)
-                },
-                label = { ReplayGainModeText(mode) },
-                leadingIcon = { ReplayGainModeIcon(mode) }
-            )
         }
     }
 }

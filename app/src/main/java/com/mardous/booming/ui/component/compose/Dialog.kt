@@ -1,12 +1,23 @@
 package com.mardous.booming.ui.component.compose
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.rememberTextFieldState
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
@@ -55,6 +66,7 @@ fun InputDialog(
     onConfirm: (String, Boolean) -> Unit,
     onDismiss: () -> Unit,
     message: String,
+    checkBoxPrompt: String,
     confirmButton: String,
     dismissButton: String = stringResource(android.R.string.cancel),
     title: String? = null,
@@ -63,10 +75,45 @@ fun InputDialog(
     inputPrefill: String = "",
     inputMaxLength: Int = Int.MAX_VALUE,
     initialChecked: Boolean = false,
-    checkBoxPrompt: String? = null
+) {
+    var isChecked by remember { mutableStateOf(initialChecked) }
+
+    InputDialog(
+        onConfirm = { onConfirm(it, isChecked) },
+        onDismiss = onDismiss,
+        message = message,
+        confirmButton = confirmButton,
+        dismissButton = dismissButton,
+        title = title,
+        icon = icon,
+        inputHint = inputHint,
+        inputPrefill = inputPrefill,
+        inputMaxLength = inputMaxLength,
+        additionalContent = {
+            DialogCheckBox(
+                text = checkBoxPrompt,
+                isChecked = isChecked,
+                onValueChange = { isChecked = it }
+            )
+        }
+    )
+}
+
+@Composable
+fun InputDialog(
+    onConfirm: (String) -> Unit,
+    onDismiss: () -> Unit,
+    message: String,
+    confirmButton: String,
+    dismissButton: String = stringResource(android.R.string.cancel),
+    title: String? = null,
+    icon: Painter? = null,
+    inputHint: String? = null,
+    inputPrefill: String = "",
+    inputMaxLength: Int = Int.MAX_VALUE,
+    additionalContent: @Composable (() -> Unit)? = null
 ) {
     val inputState = rememberTextFieldState(initialText = inputPrefill)
-    var isChecked by remember { mutableStateOf(initialChecked) }
 
     val inputLength = inputState.text.length
     val isOverMaxLength = inputLength > inputMaxLength
@@ -88,7 +135,9 @@ fun InputDialog(
         text = {
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState())
             ) {
                 Text(
                     text = message,
@@ -110,37 +159,12 @@ fun InputDialog(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                if (checkBoxPrompt != null) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .toggleable(
-                                value = isChecked,
-                                onValueChange = {
-                                    isChecked = it
-                                }
-                            )
-                            .padding(vertical = 8.dp),
-                        horizontalArrangement = Arrangement.spacedBy(16.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Checkbox(
-                            checked = isChecked,
-                            onCheckedChange = null
-                        )
-
-                        Text(
-                            text = checkBoxPrompt,
-                            style = MaterialTheme.typography.bodyMedium,
-                            modifier = Modifier.weight(1f)
-                        )
-                    }
-                }
+                additionalContent?.invoke()
             }
         },
         confirmButton = {
             Button(
-                onClick = { onConfirm(inputState.text.toString(), isChecked) },
+                onClick = { onConfirm(inputState.text.toString()) },
                 enabled = isInputValid
             ) {
                 Text(confirmButton)

@@ -25,6 +25,7 @@ import android.os.Build
  */
 class AudioDevice(
     val type: AudioDeviceType,
+    val id: String,
     private val productName: CharSequence?
 ) {
 
@@ -42,6 +43,6 @@ class AudioDevice(
         /**
          * Constant describing an unknown audio device.
          */
-        val UnknownDevice = AudioDevice(AudioDeviceType.Unknown, null)
+        val UnknownDevice = AudioDevice(AudioDeviceType.Unknown, "", null)
     }
 }
