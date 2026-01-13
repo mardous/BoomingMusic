@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,10 +21,10 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ShapedText(
     text: String,
-    color: Color = MaterialTheme.colorScheme.onSecondaryContainer,
+    containerColor: Color = MaterialTheme.colorScheme.secondaryContainer,
+    color: Color = contentColorFor(containerColor),
     style: TextStyle = MaterialTheme.typography.bodyMedium,
     shape: Shape = MaterialTheme.shapes.small,
-    shapeColor: Color = MaterialTheme.colorScheme.secondaryContainer,
     onClick: (() -> Unit)? = null,
     enabled: Boolean = true,
     modifier: Modifier = Modifier
@@ -32,7 +33,7 @@ fun ShapedText(
         contentAlignment = Alignment.Center,
         modifier = modifier
             .clip(shape)
-            .background(shapeColor)
+            .background(containerColor)
             .clickable(
                 enabled = enabled && onClick != null,
                 onClick = { onClick?.invoke() }
@@ -53,6 +54,8 @@ fun ShapedText(
 @Composable
 fun TitleShapedText(
     text: String,
+    containerColor: Color = MaterialTheme.colorScheme.primaryContainer,
+    color: Color = contentColorFor(containerColor),
     enabled: Boolean = true,
     onClick: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -60,8 +63,8 @@ fun TitleShapedText(
     ShapedText(
         text = text,
         style = MaterialTheme.typography.bodyMediumEmphasized,
-        color = MaterialTheme.colorScheme.onPrimaryContainer,
-        shapeColor = MaterialTheme.colorScheme.primaryContainer,
+        color = color,
+        containerColor = containerColor,
         enabled = enabled,
         onClick = onClick,
         modifier = modifier

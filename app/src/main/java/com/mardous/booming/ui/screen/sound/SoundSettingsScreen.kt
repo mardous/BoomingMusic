@@ -54,7 +54,6 @@ import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.component.compose.LabeledSwitch
-import com.mardous.booming.ui.component.compose.ShapedText
 import com.mardous.booming.ui.component.compose.TitleShapedText
 import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
@@ -184,7 +183,12 @@ fun SoundSettingsSheet(
                 TitledCard(
                     title = stringResource(R.string.volume_label),
                     iconRes = R.drawable.ic_volume_up_24dp,
-                    titleEndContent = { TitleShapedText("${volume.volumePercent.roundToInt()}%") },
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                    titleEndContent = {
+                        TitleShapedText(
+                            text = "${volume.volumePercent.roundToInt()}%"
+                        )
+                    },
                     modifier = Modifier.fillMaxWidth()
                 ) { cardContentPadding ->
                     Column(
@@ -206,19 +210,11 @@ fun SoundSettingsSheet(
                                 horizontalArrangement = Arrangement.spacedBy(20.dp),
                                 modifier = Modifier.fillMaxWidth()
                             ) {
-                                Row(
-                                    horizontalArrangement = Arrangement.spacedBy(4.dp),
-                                    verticalAlignment = Alignment.CenterVertically,
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.spacedBy(8.dp),
                                     modifier = Modifier.weight(1f)
                                 ) {
-                                    ShapedText(
-                                        text = "L",
-                                        color = MaterialTheme.colorScheme.onTertiaryContainer,
-                                        shape = RoundedCornerShape(4.dp),
-                                        shapeColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                        style = MaterialTheme.typography.labelSmall,
-                                        modifier = Modifier.padding(8.dp)
-                                    )
                                     Slider(
                                         value = balanceLeft,
                                         valueRange = balance.range,
@@ -228,20 +224,21 @@ fun SoundSettingsSheet(
                                         },
                                         modifier = Modifier.fillMaxWidth()
                                     )
+
+                                    Text(
+                                        text = stringResource(R.string.balance_left),
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis,
+                                        fontWeight = FontWeight.SemiBold,
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.secondary
+                                    )
                                 }
-                                Row(
-                                    horizontalArrangement = Arrangement.spacedBy(4.dp),
-                                    verticalAlignment = Alignment.CenterVertically,
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.spacedBy(8.dp),
                                     modifier = Modifier.weight(1f)
                                 ) {
-                                    ShapedText(
-                                        text = "R",
-                                        color = MaterialTheme.colorScheme.onTertiaryContainer,
-                                        shape = RoundedCornerShape(4.dp),
-                                        shapeColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                        style = MaterialTheme.typography.labelSmall,
-                                        modifier = Modifier.padding(8.dp)
-                                    )
                                     Slider(
                                         value = balanceRight,
                                         valueRange = balance.range,
@@ -250,6 +247,15 @@ fun SoundSettingsSheet(
                                             viewModel.setBalance(right = balanceRight)
                                         },
                                         modifier = Modifier.fillMaxWidth()
+                                    )
+
+                                    Text(
+                                        text = stringResource(R.string.balance_right),
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis,
+                                        fontWeight = FontWeight.SemiBold,
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.secondary
                                     )
                                 }
                             }
@@ -260,6 +266,7 @@ fun SoundSettingsSheet(
                 TitledCard(
                     title = stringResource(R.string.tempo_label),
                     iconRes = R.drawable.ic_graphic_eq_24dp,
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
                     titleEndContent = {
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -354,7 +361,7 @@ private fun AudioDeviceInfo(
         targetValue = if (expanded) CornerRadiusTokens.SurfaceSmall else CornerRadiusTokens.SurfaceMedium
     )
     val shapeColor by animateColorAsState(
-        targetValue = if (expanded) colorScheme.surfaceContainerLowest else colorScheme.primaryContainer
+        targetValue = if (expanded) colorScheme.surfaceContainerHighest else colorScheme.primaryContainer
     )
     val contentColor by animateColorAsState(
         targetValue = if (expanded) colorScheme.onSurface else colorScheme.onTertiaryContainer

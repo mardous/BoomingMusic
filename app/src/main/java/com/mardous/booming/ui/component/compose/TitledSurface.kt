@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -35,6 +36,7 @@ fun SwitchCard(
     title: String,
     style: TextStyle = MaterialTheme.typography.titleMedium,
     @DrawableRes iconRes: Int = 0,
+    containerColor: Color = MaterialTheme.colorScheme.surfaceContainerLow,
     enabled: Boolean = true,
     modifier: Modifier = Modifier,
     content: @Composable (PaddingValues) -> Unit
@@ -52,6 +54,7 @@ fun SwitchCard(
             )
         },
         iconRes = iconRes,
+        containerColor = containerColor,
         modifier = modifier,
         content = content
     )
@@ -63,6 +66,7 @@ fun TitledCard(
     title: String,
     style: TextStyle = MaterialTheme.typography.titleMedium,
     @DrawableRes iconRes: Int = 0,
+    containerColor: Color = MaterialTheme.colorScheme.surfaceContainerLow,
     modifier: Modifier = Modifier,
     collapsible: Boolean = false,
     titleEndContent: @Composable RowScope.() -> Unit = {},
@@ -78,6 +82,7 @@ fun TitledCard(
         titleEndContent = titleEndContent,
         style = style,
         iconRes = iconRes,
+        containerColor = containerColor,
         modifier = modifier,
         content = content
     )
@@ -92,14 +97,13 @@ private fun TitledCard(
     title: String,
     style: TextStyle = MaterialTheme.typography.titleMedium,
     @DrawableRes iconRes: Int? = null,
+    containerColor: Color = MaterialTheme.colorScheme.surfaceContainerLow,
     modifier: Modifier = Modifier,
     titleEndContent: @Composable RowScope.() -> Unit = {},
     content: @Composable (PaddingValues) -> Unit
 ) {
     Card(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
-        ),
+        colors = CardDefaults.cardColors(containerColor = containerColor),
         modifier = modifier
     ) {
         Row(

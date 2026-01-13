@@ -479,6 +479,8 @@
     <string name="sound_settings">Sound settings</string>
     <string name="volume_label">Volume</string>
     <string name="tempo_label">Tempo</string>
+    <string name="balance_left">Left</string>
+    <string name="balance_right">Right</string>
     <string name="action_external_eq">External EQ</string>
     <string name="custom">Custom</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
