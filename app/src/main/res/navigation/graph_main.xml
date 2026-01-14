@@ -154,6 +154,15 @@
             app:argType="com.mardous.booming.data.model.Song" />
     </dialog>
 
+    <dialog
+        android:id="@+id/nav_ringtone"
+        android:name="com.mardous.booming.ui.screen.ringtone.RingtoneFragment"
+        android:label="RingtoneFragment">
+        <argument
+            android:name="extraSong"
+            app:argType="com.mardous.booming.data.model.Song" />
+    </dialog>
+
     <fragment
         android:id="@+id/nav_play_info"
         android:name="com.mardous.booming.ui.screen.info.PlayInfoFragment"
