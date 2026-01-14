@@ -62,6 +62,7 @@ import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.navigation.albumDetailArgs
 import com.mardous.booming.extensions.navigation.artistDetailArgs
+import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.navigation.genreDetailArgs
 import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.resources.animateBackgroundColor
@@ -76,7 +77,6 @@ import com.mardous.booming.ui.dialogs.SleepTimerDialog
 import com.mardous.booming.ui.dialogs.WebSearchDialog
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
-import com.mardous.booming.ui.dialogs.songs.ShareSongDialog
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.equalizer.EqualizerFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
@@ -239,8 +239,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             }
 
             R.id.action_share_now_playing -> {
-                ShareSongDialog.create(playerViewModel.currentSong)
-                    .show(childFragmentManager, "SHARE_SONG")
+                findActivityNavController(R.id.fragment_container)
+                    .navigate(R.id.nav_share)
                 true
             }
 
