@@ -428,11 +428,11 @@
     <string name="export_profiles">Profils d\'exportation</string>
     <string name="select_profiles_to_export">Sélectionnez les profils à exporter :</string>
     <string name="select_a_file_to_save_the_exported_profiles">Sélectionnez un fichier pour enregistrer les profils exportés.</string>
-    <string name="profiles_exported_successfully">Profiles exported successfully.</string>
-    <string name="import_profiles">Import profiles</string>
+    <string name="profiles_exported_successfully">Profils exportés avec succès.</string>
+    <string name="import_profiles">Profils d\'importation</string>
     <string name="select_profiles_to_import">Sélectionnez les profils à importer :</string>
-    <string name="select_a_file_containing_booming_eq_profiles">Select a file containing Booming Music EQ Profiles.</string>
-    <string name="imported_x_profiles">Imported %d profiles.</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Sélectionnez un fichier contenant les profils d\'égalisation Booming Music.</string>
+    <string name="imported_x_profiles">Profils importés %d.</string>
     <string name="no_profile_imported">Aucun profil importé.</string>
     <string name="import_autoeq_profile">Importer le profil AutoEq</string>
     <string name="select_a_file_containing_autoeq_params">Sélectionnez un fichier contenant les paramètres AutoEq (GraphicEq).</string>
