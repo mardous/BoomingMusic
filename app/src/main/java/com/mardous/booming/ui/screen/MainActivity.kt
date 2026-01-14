@@ -10,9 +10,9 @@ import androidx.media3.session.MediaController
 import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionError
 import androidx.media3.session.SessionResult
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
 import com.mardous.booming.R
@@ -91,17 +91,8 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
     }
 
     fun scanAllPaths() {
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.scan_media)
-            .setMessage(R.string.scan_media_message)
-            .setPositiveButton(R.string.scan_media_positive) { _, _ ->
-                libraryViewModel.scanAllPaths(this).observe(this) {
-                    // TODO show detailed info about scanned songs
-                    showToast(R.string.scan_finished)
-                }
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
+        findNavController(R.id.fragment_container)
+            .navigate(R.id.nav_scan_media)
     }
 
     private fun setupNavigationController() {
