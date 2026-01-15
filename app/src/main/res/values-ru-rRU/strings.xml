@@ -470,7 +470,7 @@
     <string name="profile_name">Название профиля</string>
     <string name="that_name_is_already_in_use">Это имя уже используется.</string>
     <string name="profile_saved_successfully">Профиль успешно сохранен.</string>
-    <string name="the_profile_could_not_be_saved">Не удалось сохранить профиль</string>
+    <string name="the_profile_could_not_be_saved">Не удалось сохранить профиль.</string>
     <string name="profile_renamed">Профиль переименован.</string>
     <string name="the_profile_could_not_be_renamed">Не удалось переименовать профиль</string>
     <string name="autoeq_profile_imported_successfully">Профиль AutoEq успешно импортирован.</string>
