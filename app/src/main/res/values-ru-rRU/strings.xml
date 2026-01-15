@@ -836,7 +836,7 @@
     <string name="plain_style">Простой</string>
     <string name="m3_style">M3</string>
     <string name="expressive_style">Expressive</string>
-    <string name="normal_style">Обычный</string>
+    <string name="normal_style">Стандартный</string>
     <string name="cascading">Каскадный</string>
     <string name="depth">Глубина</string>
     <string name="hinge">Hinge</string>
