@@ -780,6 +780,8 @@
     <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
+    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
+    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
 
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Auto download metadata</string>

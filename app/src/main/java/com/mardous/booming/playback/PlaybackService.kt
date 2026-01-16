@@ -81,6 +81,7 @@ import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
 import com.mardous.booming.ui.screen.MainActivity
+import com.mardous.booming.util.CLEAR_QUEUE_ON_COMPLETION
 import com.mardous.booming.util.ENABLE_HISTORY
 import com.mardous.booming.util.IGNORE_AUDIO_FOCUS
 import com.mardous.booming.util.MP3_INDEX_SEEKING
@@ -676,6 +677,10 @@ class PlaybackService :
     }
 
     override fun onPlaybackStateChanged(playbackState: Int) {
+        if (player.playbackState == Player.STATE_ENDED &&
+            preferences.getBoolean(CLEAR_QUEUE_ON_COMPLETION, false)) {
+            player.exoPlayer.clearMediaItems()
+        }
         refreshMediaButtonCustomLayout()
     }
 
