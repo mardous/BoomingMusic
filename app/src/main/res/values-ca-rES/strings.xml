@@ -511,10 +511,14 @@
     <string name="could_not_import_font">No s\'ha pogut importar la font de text.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporitzador d\'apagada</string>
-    <string name="sleep_timer_cancel_current_timer">Atura el temporitzador</string>
-    <string name="sleep_timer_cancel_current_timer_x">Atura el temporitzador (%s)</string>
+    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
+    <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_canceled">S\'ha aturat el temporitzador.</string>
     <string name="sleep_timer_set_action">Estableix</string>
+    <string name="sleep_timer_x_mins">%d mins</string>
+    <string name="sleep_timer_15_mins">15 mins</string>
+    <string name="sleep_timer_45_mins">45 mins</string>
+    <string name="sleep_timer_1_hour">1 hour</string>
     <string name="sleep_timer_set">El temporitzador s\'aturarà d\'aquí a %d minuts.</string>
     <string name="sleep_timer_finish_current_music">Finalitza la darrera cançó</string>
     <string name="sleep_timer_stop_after_this_track">Atura després d\'aquesta pista</string>
@@ -756,6 +760,8 @@
     <string name="on_clear_queue_remove_all_songs_summary">Tota la cua de reproducció es buidarà.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">Treu totes les cançons excepte l\'actual</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Només es manté a la cua la cançó que es reprodueix.</string>
+    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
+    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descarrega metadades automàticament</string>
     <string name="ignore_media_store_album_covers_title">Ignora les portades de Media Store</string>
