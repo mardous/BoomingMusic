@@ -493,7 +493,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Timer de desativação</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar o temporizador atual</string>
-    <string name="sleep_timer_cancel_current_timer_x">Cancelar o temporizador atual (%s)</string>
     <string name="sleep_timer_canceled">Timer cancelado.</string>
     <string name="sleep_timer_set_action">Definir</string>
     <string name="sleep_timer_set">Timer definido para %d minutos a partir de agora.</string>

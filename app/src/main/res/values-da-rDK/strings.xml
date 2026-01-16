@@ -494,7 +494,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sove timer</string>
     <string name="sleep_timer_cancel_current_timer">Annuller aktuel tidtagning</string>
-    <string name="sleep_timer_cancel_current_timer_x">Annuller aktuel timer (%s)</string>
     <string name="sleep_timer_canceled">Sove timer annulleret.</string>
     <string name="sleep_timer_set_action">Indstil</string>
     <string name="sleep_timer_set">Søvntimer indstillet for %d minutter fra nu.</string>

@@ -8,13 +8,20 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.os.SystemClock
 import android.provider.Settings
 import androidx.annotation.RequiresApi
+import com.mardous.booming.extensions.media.asReadableDuration
+import com.mardous.booming.ui.screen.sleeptimer.SleepTimerWaitingFor
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
 
     private val lock = Any()
+    private val uiHandler = Handler(Looper.getMainLooper())
     private val am: AlarmManager by lazy {
         context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     }
@@ -24,25 +31,25 @@ class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
     private var allowPendingQuit: Boolean = false
     private var shouldConsumePendingQuit: Boolean = false
 
-    private var running: Boolean = false
-        set(value) {
-            field = value
-            if (value) createTimerUpdater() else finishTimerUpdater()
-        }
-
-    private val tickListeners = LinkedHashSet<TickListener>()
     private val listeners = LinkedHashSet<(Boolean) -> Unit>()
 
-    val isRunning get() = running
-    val isPendingQuitMode get() = allowPendingQuit
+    private val _waitingFor = MutableStateFlow<SleepTimerWaitingFor?>(null)
+    val waitingFor = _waitingFor.asStateFlow()
+
+    private val _isRunning = MutableStateFlow(false)
+    val isRunning get() = _isRunning.asStateFlow()
 
     override fun onAlarm() {
-        finishTimerUpdater()
         synchronized(lock) {
             listeners.forEach { it(allowPendingQuit) }
             nextElapsedTimeRealTime = -1
             shouldConsumePendingQuit = allowPendingQuit
-            running = shouldConsumePendingQuit
+            setRunning(shouldConsumePendingQuit)
+            if (shouldConsumePendingQuit) {
+                setWaitingFor(SleepTimerWaitingFor.PendingQuit)
+            } else {
+                setWaitingFor(null)
+            }
         }
     }
 
@@ -54,7 +61,7 @@ class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
             this.allowPendingQuit = allowPendingQuit
             this.nextElapsedTimeRealTime = SystemClock.elapsedRealtime() + millisInFuture
             am.setExact(ELAPSED_REALTIME_WAKEUP, nextElapsedTimeRealTime, TAG, this, null)
-            running = true
+            setRunning(true)
         }
     }
 
@@ -63,7 +70,8 @@ class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
             if (nextElapsedTimeRealTime == -1L && shouldConsumePendingQuit) {
                 allowPendingQuit = false
                 shouldConsumePendingQuit = false
-                running = false
+                setWaitingFor(null)
+                setRunning(false)
             }
         }
     }
@@ -74,7 +82,8 @@ class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
             nextElapsedTimeRealTime = -1
             allowPendingQuit = false
             am.cancel(this)
-            running = false
+            setWaitingFor(null)
+            setRunning(false)
         }
         active
     }
@@ -82,29 +91,29 @@ class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
     fun release() {
         cancel()
         synchronized(lock) {
-            running = false
+            setRunning(false)
             listeners.clear()
-            tickListeners.clear()
+        }
+    }
+
+    fun createTimerUpdater() = synchronized(lock) {
+        uiHandler.post {
+            if (countDownTimer == null && nextElapsedTimeRealTime > -1) {
+                countDownTimer = TimerUpdater().apply { start() }
+            }
+        }
+    }
+
+    fun cancelTimerUpdater() = synchronized(lock) {
+        uiHandler.post {
+            countDownTimer?.cancel()
+            countDownTimer = null
         }
     }
 
     fun addFinishListener(listener: (Boolean) -> Unit) {
         synchronized(lock) {
             listeners.add(listener)
-        }
-    }
-
-    fun addTickListener(listener: TickListener) {
-        synchronized(lock) {
-            tickListeners.add(listener)
-            if (running) createTimerUpdater()
-        }
-    }
-
-    fun removeTickListener(listener: TickListener) {
-        synchronized(lock) {
-            tickListeners.remove(listener)
-            if (tickListeners.isEmpty()) cancelTimerUpdater()
         }
     }
 
@@ -122,39 +131,29 @@ class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
         } catch (_: ActivityNotFoundException) {}
     }
 
-    private fun createTimerUpdater() {
-        if (countDownTimer == null && nextElapsedTimeRealTime > -1 && tickListeners.isNotEmpty()) {
-            countDownTimer = TimerUpdater().apply { start() }
-        }
-    }
-
-    private fun finishTimerUpdater() {
-        synchronized(lock) {
-            tickListeners.forEach { it.onTickerFinished() }
+    private fun setRunning(isRunning: Boolean) {
+        _isRunning.value = isRunning
+        if (isRunning) {
+            createTimerUpdater()
+        } else {
             cancelTimerUpdater()
         }
     }
 
-    private fun cancelTimerUpdater() {
-        countDownTimer?.cancel()
-        countDownTimer = null
+    private fun setWaitingFor(waitingFor: SleepTimerWaitingFor?) {
+        _waitingFor.value = waitingFor
     }
 
     private inner class TimerUpdater :
         CountDownTimer(nextElapsedTimeRealTime - SystemClock.elapsedRealtime(), 1000) {
 
         override fun onTick(millisUntilFinished: Long) {
-            synchronized(lock) {
-                tickListeners.forEach { it.onTick(millisUntilFinished) }
-            }
+            setWaitingFor(
+                SleepTimerWaitingFor.Countdown(millisUntilFinished.asReadableDuration())
+            )
         }
 
-        override fun onFinish() = finishTimerUpdater()
-    }
-
-    interface TickListener {
-        fun onTick(millisUntilFinished: Long)
-        fun onTickerFinished()
+        override fun onFinish() {}
     }
 
     companion object {

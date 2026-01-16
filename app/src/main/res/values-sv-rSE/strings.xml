@@ -494,7 +494,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sov timer</string>
     <string name="sleep_timer_cancel_current_timer">Avbryt nuvarande timer</string>
-    <string name="sleep_timer_cancel_current_timer_x">Avbryt nuvarande timer (%s)</string>
     <string name="sleep_timer_canceled">Sov timer avbruten.</string>
     <string name="sleep_timer_set_action">Ange</string>
     <string name="sleep_timer_set">Sov timer inställd på %d minuter från och med nu.</string>

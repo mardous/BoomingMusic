@@ -494,7 +494,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporizador de sueño</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar temporizador actual</string>
-    <string name="sleep_timer_cancel_current_timer_x">Cancelar temporizador actual (%s)</string>
     <string name="sleep_timer_canceled">Temporizador de sueño cancelado.</string>
     <string name="sleep_timer_set_action">Fijar</string>
     <string name="sleep_timer_set">Temporizador de sueño establecido para %d minutos desde ahora.</string>

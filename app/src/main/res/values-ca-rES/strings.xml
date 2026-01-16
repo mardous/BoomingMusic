@@ -494,7 +494,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporitzador d\'apagada</string>
     <string name="sleep_timer_cancel_current_timer">Atura el temporitzador</string>
-    <string name="sleep_timer_cancel_current_timer_x">Atura el temporitzador (%s)</string>
     <string name="sleep_timer_canceled">S\'ha aturat el temporitzador.</string>
     <string name="sleep_timer_set_action">Estableix</string>
     <string name="sleep_timer_set">El temporitzador s\'aturarà d\'aquí a %d minuts.</string>

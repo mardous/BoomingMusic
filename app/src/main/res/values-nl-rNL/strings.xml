@@ -494,7 +494,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Slaaptimer</string>
     <string name="sleep_timer_cancel_current_timer">Annuleer huidige timer</string>
-    <string name="sleep_timer_cancel_current_timer_x">Annuleer huidige timer (%s)</string>
     <string name="sleep_timer_canceled">Slaaptimer geannuleerd.</string>
     <string name="sleep_timer_set_action">Instellen</string>
     <string name="sleep_timer_set">Slaaptimer ingesteld voor %d minuten vanaf nu.</string>

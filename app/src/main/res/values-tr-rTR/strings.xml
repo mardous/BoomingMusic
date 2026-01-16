@@ -489,7 +489,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Uyku zamanlayıcısı</string>
     <string name="sleep_timer_cancel_current_timer">Mevcut zamanlayıcıyı iptal et</string>
-    <string name="sleep_timer_cancel_current_timer_x">Mevcut zamanlayıcıyı iptal et (%s)</string>
     <string name="sleep_timer_canceled">Uyku zamanlayıcısı iptal edildi.</string>
     <string name="sleep_timer_set_action">Ayarla</string>
     <string name="sleep_timer_set">Uyku zamanlayıcısı %d dakika sonrasına ayarlandı.</string>

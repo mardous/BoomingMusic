@@ -27,7 +27,28 @@ import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.data.local.AlbumCoverSaver
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
-import com.mardous.booming.data.local.repository.*
+import com.mardous.booming.data.local.repository.AlbumRepository
+import com.mardous.booming.data.local.repository.ArtistRepository
+import com.mardous.booming.data.local.repository.CanvasRepository
+import com.mardous.booming.data.local.repository.GenreRepository
+import com.mardous.booming.data.local.repository.LyricsRepository
+import com.mardous.booming.data.local.repository.PlaylistRepository
+import com.mardous.booming.data.local.repository.RealAlbumRepository
+import com.mardous.booming.data.local.repository.RealArtistRepository
+import com.mardous.booming.data.local.repository.RealCanvasRepository
+import com.mardous.booming.data.local.repository.RealGenreRepository
+import com.mardous.booming.data.local.repository.RealLyricsRepository
+import com.mardous.booming.data.local.repository.RealPlaylistRepository
+import com.mardous.booming.data.local.repository.RealRepository
+import com.mardous.booming.data.local.repository.RealSearchRepository
+import com.mardous.booming.data.local.repository.RealSmartRepository
+import com.mardous.booming.data.local.repository.RealSongRepository
+import com.mardous.booming.data.local.repository.RealSpecialRepository
+import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.local.repository.SearchRepository
+import com.mardous.booming.data.local.repository.SmartRepository
+import com.mardous.booming.data.local.repository.SongRepository
+import com.mardous.booming.data.local.repository.SpecialRepository
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.remote.canvas.CanvasService
 import com.mardous.booming.data.remote.deezer.DeezerService
@@ -51,10 +72,11 @@ import com.mardous.booming.ui.screen.library.search.SearchViewModel
 import com.mardous.booming.ui.screen.library.years.YearDetailViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.ui.screen.sleeptimer.SleepTimerViewModel
 import com.mardous.booming.ui.screen.sound.SoundSettingsViewModel
 import com.mardous.booming.ui.screen.tageditor.TagEditorViewModel
 import com.mardous.booming.ui.screen.update.UpdateViewModel
-import com.mardous.booming.ui.screen.sleeptimer.SleepTimerViewModel
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.bind
@@ -263,6 +285,8 @@ private val viewModule = module {
 
     viewModel {
         SleepTimerViewModel(
+            application = androidApplication(),
+            sleepTimer = get()
         )
     }
 

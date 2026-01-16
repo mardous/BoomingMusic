@@ -494,7 +494,6 @@ Ideal für Podcasts und Aufnahmen.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleeptimer</string>
     <string name="sleep_timer_cancel_current_timer">Aktuellen Timer abbrechen</string>
-    <string name="sleep_timer_cancel_current_timer_x">Aktuellen Timer abbrechen (%s)</string>
     <string name="sleep_timer_canceled">Sleeptimer abgebrochen.</string>
     <string name="sleep_timer_set_action">Einstellen</string>
     <string name="sleep_timer_set">Sleeptimer auf %d Minuten eingestellt.</string>

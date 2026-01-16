@@ -483,7 +483,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">睡眠计时器</string>
     <string name="sleep_timer_cancel_current_timer">取消当前计时器</string>
-    <string name="sleep_timer_cancel_current_timer_x">取消当前计时器 (%s)</string>
     <string name="sleep_timer_canceled">睡眠计时器已取消。</string>
     <string name="sleep_timer_set_action">设置</string>
     <string name="sleep_timer_set">从现在起，睡眠计时器设置为 %d 分钟。</string>

@@ -42,7 +42,11 @@ import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.intRes
-import com.mardous.booming.extensions.utilities.*
+import com.mardous.booming.extensions.utilities.calendarSingleton
+import com.mardous.booming.extensions.utilities.deserialize
+import com.mardous.booming.extensions.utilities.getCutoffTimeMillis
+import com.mardous.booming.extensions.utilities.serialize
+import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.ui.component.views.TopAppBarLayout
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -443,14 +447,6 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(INITIALIZED_BLACKLIST, false)
         set(value) = preferences.edit { putBoolean(INITIALIZED_BLACKLIST, value) }
 
-    var lastSleepTimerValue: Int
-        get() = preferences.getInt(LAST_SLEEP_TIMER_VALUE, 30)
-        set(value) = preferences.edit { putInt(LAST_SLEEP_TIMER_VALUE, value) }
-
-    var isSleepTimerFinishMusic: Boolean
-        get() = preferences.getBoolean(SLEEP_TIMER_FINISH_SONG, false)
-        set(value) = preferences.edit { putBoolean(SLEEP_TIMER_FINISH_SONG, value) }
-
     var isSwipeAnywhere: Boolean
         get() = preferences.getBoolean(SWIPE_ANYWHERE, false)
         set(value) = preferences.edit { putBoolean(SWIPE_ANYWHERE, value) }
@@ -648,8 +644,6 @@ const val EXPERIMENTAL_UPDATES = "experimental_updates"
 const val START_DIRECTORY = "start_directory"
 const val SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN = "saved_artwork_copyright_notice_shown"
 const val INITIALIZED_BLACKLIST = "initialized_blacklist"
-const val LAST_SLEEP_TIMER_VALUE = "last_sleep_timer_value"
-const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SWIPE_ANYWHERE = "swipe_anywhere"
 const val SWIPE_UP_QUEUE = "swipe_up_queue"
