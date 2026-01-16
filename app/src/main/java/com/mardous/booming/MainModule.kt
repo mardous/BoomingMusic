@@ -73,8 +73,10 @@ import com.mardous.booming.ui.screen.library.search.SearchViewModel
 import com.mardous.booming.ui.screen.library.years.YearDetailViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.ui.screen.sleeptimer.SleepTimerViewModel
 import com.mardous.booming.ui.screen.tageditor.TagEditorViewModel
 import com.mardous.booming.ui.screen.update.UpdateViewModel
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.bind
@@ -286,6 +288,13 @@ private val viewModule = module {
             equalizerManager = get(),
             audioOutputObserver = get(),
             mediaStoreWriter = get()
+        )
+    }
+
+    viewModel {
+        SleepTimerViewModel(
+            application = androidApplication(),
+            sleepTimer = get()
         )
     }
 

@@ -497,7 +497,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">مؤقت النوم</string>
     <string name="sleep_timer_cancel_current_timer">إلغاء المؤقت الحالي</string>
-    <string name="sleep_timer_cancel_current_timer_x">إلغاء المؤقت الحالي (%s)</string>
     <string name="sleep_timer_canceled">تم إلغاء مؤقت النوم.</string>
     <string name="sleep_timer_set_action">تعيين</string>
     <string name="sleep_timer_set">ضبط مؤقت النوم ل %d دقيقة من الآن.</string>

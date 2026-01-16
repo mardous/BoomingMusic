@@ -479,7 +479,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Таймер сну</string>
     <string name="sleep_timer_cancel_current_timer">Скасувати поточний таймер</string>
-    <string name="sleep_timer_cancel_current_timer_x">Скасувати поточний таймер (%s)</string>
     <string name="sleep_timer_canceled">Таймер сну скасовано.</string>
     <string name="sleep_timer_set_action">Встановити</string>
     <string name="sleep_timer_set">Таймер сну встановлено на %d хвилин.</string>

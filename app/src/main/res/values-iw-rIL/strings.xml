@@ -481,7 +481,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">טיימר שינה</string>
     <string name="sleep_timer_cancel_current_timer">בטל טיימר נוכחי</string>
-    <string name="sleep_timer_cancel_current_timer_x">בטל טיימר נוכחי (%s)</string>
     <string name="sleep_timer_canceled">טיימר השינה בוטל.</string>
     <string name="sleep_timer_set_action">קבע</string>
     <string name="sleep_timer_set">טיימר השינה הוגדר ל־%d דקות מעכשיו.</string>

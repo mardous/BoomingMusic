@@ -481,7 +481,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Zegar uśpienia</string>
     <string name="sleep_timer_cancel_current_timer">Anuluj bieżący zegar</string>
-    <string name="sleep_timer_cancel_current_timer_x">Anuluj bieżący timer (%s)</string>
     <string name="sleep_timer_canceled">Anulowano zegar uśpienia.</string>
     <string name="sleep_timer_set_action">Ustaw</string>
     <string name="sleep_timer_set">Timer uśpienia ustawiony na %d minut od teraz.</string>

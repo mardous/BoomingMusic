@@ -473,7 +473,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep timer</string>
     <string name="sleep_timer_cancel_current_timer">Cancel current timer</string>
-    <string name="sleep_timer_cancel_current_timer_x">Cancel current timer (%s)</string>
     <string name="sleep_timer_canceled">Sleep timer canceled.</string>
     <string name="sleep_timer_set_action">Set</string>
     <string name="sleep_timer_set">Sleep timer set for %d minutes from now.</string>
