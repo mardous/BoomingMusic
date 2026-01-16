@@ -5,15 +5,18 @@ import android.content.ActivityNotFoundException
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
+import android.media.AudioManager
 import android.media.audiofx.AudioEffect
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.R
-import com.mardous.booming.core.model.equalizer.EQPreset
-import com.mardous.booming.core.model.equalizer.EqEffectUpdate
-import com.mardous.booming.core.model.equalizer.EqUpdate
+import com.mardous.booming.core.audio.AudioOutputObserver
+import com.mardous.booming.core.audio.AutoEqTxtParser
+import com.mardous.booming.core.model.equalizer.EqProfile
+import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
 import com.mardous.booming.data.local.MediaStoreWriter
+import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.files.getContentUri
 import com.mardous.booming.extensions.files.readString
@@ -24,7 +27,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -33,140 +35,262 @@ import java.io.File
 class EqualizerViewModel(
     private val contentResolver: ContentResolver,
     private val equalizerManager: EqualizerManager,
+    private val audioOutputObserver: AudioOutputObserver,
     private val mediaStoreWriter: MediaStoreWriter
 ) : ViewModel() {
 
-    val audioSessionId get() = equalizerManager.audioSessionId
+    val eqState = equalizerManager.eqState
+    val eqBandCapabilities = equalizerManager.bandCapabilities
+    val currentProfile = equalizerManager.eqCurrentProfile
+    val bassBoostState = equalizerManager.bassBoostState
+    val virtualizerState = equalizerManager.virtualizerState
+    val loudnessGainState = equalizerManager.loudnessGainState
+    val balanceState = equalizerManager.balanceState
+    val tempoState = equalizerManager.tempoState
+    val replayGainState = equalizerManager.replayGainState
+    val audioOffload = equalizerManager.audioOffload
+    val audioFloatOutput = equalizerManager.audioFloatOutput
+    val skipSilence = equalizerManager.skipSilence
+    val volumeState = audioOutputObserver.volumeState
+    val audioDevice = audioOutputObserver.audioDevice
 
-    val eqState get() = equalizerManager.eqStateFlow
-    val eqBandCapabilities get() = equalizerManager.bandCapabilitiesFlow
-    val currentPreset get() = equalizerManager.currentPresetFlow
-    val bassBoost get() = equalizerManager.bassBoostFlow
-    val virtualizer get() = equalizerManager.virtualizerFlow
-    val loudnessGain get() = equalizerManager.loudnessGainFlow
-    val presets get() = equalizerManager.presetsFlow.map {
-        equalizerManager.getEqualizerPresetsWithCustom(it.list)
+    val autoEqProfiles = equalizerManager.autoEqProfiles
+
+    val eqProfiles = combine(
+        equalizerManager.eqProfiles,
+        equalizerManager.eqCustomProfile
+    ) { profiles, custom -> profiles + custom }
+
+    val eqBands = combine(eqState, eqBandCapabilities, currentProfile) { state, bandCapabilities, profile ->
+        bandCapabilities.getBands(profile, state.preferredBandCount)
     }
-    val eqBands = combine(eqBandCapabilities, currentPreset) { bandCapabilities, preset ->
-        bandCapabilities.getBands(preset)
+
+    private val _exportRequestEvent = Channel<ProfileExportRequest>(Channel.BUFFERED)
+    val exportRequestEvent: Flow<ProfileExportRequest> = _exportRequestEvent.receiveAsFlow()
+
+    private val _exportResultEvent = Channel<ProfileExportResult>(Channel.BUFFERED)
+    val exportResultEvent: Flow<ProfileExportResult> = _exportResultEvent.receiveAsFlow()
+
+    private val _importRequestEvent = Channel<ProfileImportRequest>(Channel.BUFFERED)
+    val importRequestEvent: Flow<ProfileImportRequest> = _importRequestEvent.receiveAsFlow()
+
+    private val _importResultEvent = Channel<ProfileImportResult>(Channel.BUFFERED)
+    val importResultEvent: Flow<ProfileImportResult> = _importResultEvent.receiveAsFlow()
+
+    private val _autoEqImportRequestEvent = Channel<AutoEqImportRequest>(Channel.BUFFERED)
+    val autoEqImportRequestEvent: Flow<AutoEqImportRequest> = _autoEqImportRequestEvent.receiveAsFlow()
+
+    private val _autoEqImportResultEvent = Channel<ProfileOpResult>(Channel.BUFFERED)
+    val autoEqImportResultEvent: Flow<ProfileOpResult> = _autoEqImportResultEvent.receiveAsFlow()
+
+    private val _saveResultEvent = Channel<ProfileOpResult>(Channel.BUFFERED)
+    val saveResultEvent: Flow<ProfileOpResult> = _saveResultEvent.receiveAsFlow()
+
+    private val _renameResultEvent = Channel<ProfileOpResult>(Channel.BUFFERED)
+    val renameResultEvent: Flow<ProfileOpResult> = _renameResultEvent.receiveAsFlow()
+
+    private val _deleteResultEvent = Channel<ProfileDeletionResult>(Channel.BUFFERED)
+    val deleteResultEvent: Flow<ProfileDeletionResult> = _deleteResultEvent.receiveAsFlow()
+
+    private val _changeBandCountEvent = Channel<Boolean>(Channel.BUFFERED)
+    val changeBandCountEvent: Flow<Boolean> = _changeBandCountEvent.receiveAsFlow()
+
+    init {
+        audioOutputObserver.startObserver()
     }
 
-    private val _exportRequestEvent = Channel<ExportRequestResult>(Channel.BUFFERED)
-    val exportRequestEvent: Flow<ExportRequestResult> = _exportRequestEvent.receiveAsFlow()
+    override fun onCleared() {
+        super.onCleared()
+        audioOutputObserver.stopObserver()
+    }
 
-    private val _exportResultEvent = Channel<PresetExportResult>(Channel.BUFFERED)
-    val exportResultEvent: Flow<PresetExportResult> = _exportResultEvent.receiveAsFlow()
-
-    private val _importRequestEvent = Channel<ImportRequestResult>(Channel.BUFFERED)
-    val importRequestEvent: Flow<ImportRequestResult> = _importRequestEvent.receiveAsFlow()
-
-    private val _importResultEvent = Channel<PresetImportResult>(Channel.BUFFERED)
-    val importResultEvent: Flow<PresetImportResult> = _importResultEvent.receiveAsFlow()
-
-    private val _saveResultEvent = Channel<PresetOpResult>(Channel.BUFFERED)
-    val saveResultEvent: Flow<PresetOpResult> = _saveResultEvent.receiveAsFlow()
-
-    private val _renameResultEvent = Channel<PresetOpResult>(Channel.BUFFERED)
-    val renameResultEvent: Flow<PresetOpResult> = _renameResultEvent.receiveAsFlow()
-
-    private val _deleteResultEvent = Channel<PresetOpResult>(Channel.BUFFERED)
-    val deleteResultEvent: Flow<PresetOpResult> = _deleteResultEvent.receiveAsFlow()
-
-    fun setEqualizerState(isEnabled: Boolean, apply: Boolean = true) {
-        // set parameter and state
-        viewModelScope.launch(Dispatchers.Default) {
-            equalizerManager.setEqualizerState(EqUpdate(eqState.value, isEnabled), apply)
+    fun setEqualizerState(isEnabled: Boolean) {
+        viewModelScope.launch(Dispatchers.IO) {
+            equalizerManager.setEqualizerState(
+                eqState.value.copy(enabled = isEnabled)
+            )
         }
     }
 
     fun setLoudnessGain(
-        isEnabled: Boolean = loudnessGain.value.isUsable,
-        value: Float = loudnessGain.value.value,
-        apply: Boolean = true
-    ) = viewModelScope.launch(Dispatchers.Default) {
-        equalizerManager.setLoudnessGain(EqEffectUpdate(loudnessGain.value, isEnabled, value), apply)
+        enabled: Boolean = loudnessGainState.value.isUsable,
+        gain: Float = loudnessGainState.value.gainInDb
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setLoudnessGain(
+            loudnessGainState.value.copy(
+                enabled = enabled,
+                gainInDb = gain
+            )
+        )
     }
 
     fun setBassBoost(
-        isEnabled: Boolean = bassBoost.value.isUsable,
-        value: Float = bassBoost.value.value,
-        apply: Boolean = true
-    ) = viewModelScope.launch(Dispatchers.Default) {
-        equalizerManager.setBassBoost(EqEffectUpdate(bassBoost.value, isEnabled, value), apply)
+        enabled: Boolean = bassBoostState.value.isUsable,
+        strength: Float = bassBoostState.value.strength
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setBassBoost(
+            bassBoostState.value.copy(
+                enabled = enabled,
+                strength = strength
+            )
+        )
     }
 
     fun setVirtualizer(
-        isEnabled: Boolean = virtualizer.value.isUsable,
-        value: Float = virtualizer.value.value,
-        apply: Boolean = true
-    ) = viewModelScope.launch(Dispatchers.Default) {
-        equalizerManager.setVirtualizer(EqEffectUpdate(virtualizer.value, isEnabled, value), apply)
-    }
-
-    fun setEqualizerPreset(eqPreset: EQPreset) = viewModelScope.launch(Dispatchers.IO) {
-        equalizerManager.setCurrentPreset(eqPreset)
-    }
-
-    fun setCustomPresetBandLevel(band: Int, level: Int) = viewModelScope.launch(Dispatchers.Default) {
-        equalizerManager.setCustomPresetBandLevel(band, level)
-    }
-
-    fun applyPendingStates() = viewModelScope.launch(Dispatchers.IO) {
-        equalizerManager.applyPendingStates()
-    }
-
-    fun savePreset(
-        presetName: String?,
-        canReplace: Boolean
+        enabled: Boolean = virtualizerState.value.isUsable,
+        strength: Float = virtualizerState.value.strength
     ) = viewModelScope.launch(Dispatchers.IO) {
-        val result = if (presetName.isNullOrBlank()) {
-            PresetOpResult(false, R.string.preset_name_is_empty, canDismiss = false)
+        equalizerManager.setVirtualizer(
+            virtualizerState.value.copy(
+                enabled = enabled,
+                strength = strength
+            )
+        )
+    }
+
+    fun setBandCount(bandCount: Int) = viewModelScope.launch(Dispatchers.IO) {
+        _changeBandCountEvent.send(equalizerManager.setBandCount(bandCount))
+    }
+
+    fun setEqualizerProfile(eqProfile: EqProfile) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setCurrentProfile(eqProfile)
+    }
+
+    fun setAutoEqProfile(profile: AutoEqProfile) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setAutoEqProfile(profile)
+    }
+
+    fun setCustomProfileBandGain(band: Int, gainInDb: Float) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setCustomProfileBandGain(band, gainInDb)
+    }
+
+    fun setEnableAudioOffload(enable: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setEnableAudioOffload(enable)
+    }
+
+    fun setEnableAudioFloatOutput(enable: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setEnableAudioFloatOutput(enable)
+    }
+
+    fun setEnableSkipSilences(enable: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setEnableSkipSilence(enable)
+    }
+
+    fun setVolume(volume: Int) {
+        audioOutputObserver.audioManager?.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0)
+    }
+
+    fun setBalance(
+        left: Float = balanceState.value.left,
+        right: Float = balanceState.value.right
+    ) = viewModelScope.launch(Dispatchers.Default) {
+        equalizerManager.setBalance(
+            balanceState.value.copy(
+                left = left,
+                right = right
+            )
+        )
+    }
+
+    fun setTempo(
+        speed: Float = tempoState.value.speed,
+        pitch: Float = tempoState.value.pitch,
+        isFixedPitch: Boolean = tempoState.value.isFixedPitch
+    ) = viewModelScope.launch(Dispatchers.Default) {
+        equalizerManager.setTempo(
+            tempoState.value.copy(
+                speed = speed,
+                pitch = pitch,
+                isFixedPitch = isFixedPitch
+            )
+        )
+    }
+
+    fun setReplayGain(
+        mode: ReplayGainMode = replayGainState.value.mode,
+        preamp: Float = replayGainState.value.preamp,
+        preampWithoutGain: Float = replayGainState.value.preampWithoutGain
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setReplayGain(
+            replayGainState.value.copy(
+                mode = mode,
+                preamp = preamp,
+                preampWithoutGain = preampWithoutGain
+            )
+        )
+    }
+
+    fun showOutputDeviceSelector(context: Context) {
+        audioOutputObserver.showOutputDeviceSelector(context)
+    }
+
+    fun saveProfile(profileName: String, canReplace: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        val result = if (!canReplace && !equalizerManager.isProfileNameAvailable(profileName)) {
+            ProfileOpResult(false, R.string.that_name_is_already_in_use, canDismiss = false)
         } else {
-            if (!canReplace && !equalizerManager.isPresetNameAvailable(presetName)) {
-                PresetOpResult(false, R.string.that_name_is_already_in_use, canDismiss = false)
+            val newProfile = equalizerManager.getNewProfileFromCustom(profileName)
+            if (equalizerManager.addProfile(newProfile, canReplace, useProfile = true)) {
+                ProfileOpResult(true, R.string.profile_saved_successfully)
             } else {
-                val newPreset = equalizerManager.getNewPresetFromCustom(presetName)
-                if (equalizerManager.addPreset(newPreset, canReplace, usePreset = true)) {
-                    PresetOpResult(true, R.string.preset_saved_successfully)
-                } else {
-                    PresetOpResult(false, R.string.could_not_save_preset)
-                }
+                ProfileOpResult(false, R.string.the_profile_could_not_be_saved)
             }
         }
         _saveResultEvent.send(result)
     }
 
-    fun renamePreset(preset: EQPreset, newName: String?) = viewModelScope.launch(Dispatchers.IO) {
+    fun renameProfile(profile: EqProfile, newName: String?) = viewModelScope.launch(Dispatchers.IO) {
         val result = if (newName.isNullOrBlank()) {
-            PresetOpResult(false, canDismiss = false)
+            ProfileOpResult(false, canDismiss = false)
         } else {
-            if (equalizerManager.renamePreset(preset, newName)) {
-                PresetOpResult(true, R.string.preset_renamed)
+            if (equalizerManager.renameProfile(profile, newName)) {
+                ProfileOpResult(true, R.string.profile_renamed)
             } else {
-                PresetOpResult(false, R.string.preset_not_renamed)
+                ProfileOpResult(false, R.string.the_profile_could_not_be_renamed)
             }
         }
         _renameResultEvent.send(result)
     }
 
-    fun deletePreset(preset: EQPreset) = viewModelScope.launch(Dispatchers.IO) {
-        _deleteResultEvent.send(PresetOpResult(equalizerManager.removePreset(preset)))
+    fun deleteProfile(
+        context: Context,
+        profile: EqProfile
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        _deleteResultEvent.send(
+            ProfileDeletionResult(
+                success = equalizerManager.removeProfile(profile),
+                profileName = profile.getName(context),
+                autoEqProfile = false
+            )
+        )
     }
 
-    fun generateExportData(presets: List<EQPreset>) = viewModelScope.launch(Dispatchers.IO) {
+    fun deleteAutoEqProfile(
+        context: Context,
+        profile: AutoEqProfile
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        _deleteResultEvent.send(
+            ProfileDeletionResult(
+                success = equalizerManager.deleteAutoEqProfile(profile),
+                profileName = profile.name,
+                autoEqProfile = true
+            )
+        )
+    }
+
+    fun generateExportData(profiles: List<EqProfile>) = viewModelScope.launch(Dispatchers.IO) {
         val exportName = equalizerManager.getNewExportName()
-        val exportContent = runCatching { Json.encodeToString(presets) }.getOrNull()
+        val exportContent = runCatching { Json.encodeToString(profiles) }.getOrNull()
         val result = if (exportName.isNotEmpty() && !exportContent.isNullOrEmpty()) {
-            ExportRequestResult(success = true, presetExportData = Pair(exportName, exportContent))
+            ProfileExportRequest(success = true, profileExportData = Pair(exportName, exportContent))
         } else {
-            ExportRequestResult(false)
+            ProfileExportRequest(false)
         }
         _exportRequestEvent.send(result)
     }
 
     fun exportConfiguration(data: Uri?, content: String?) = viewModelScope.launch(Dispatchers.IO) {
         val result = if (data == null || content.isNullOrEmpty()) {
-            PresetExportResult(false)
+            ProfileExportResult(false)
         } else {
             val result = runCatching {
                 mediaStoreWriter.toContentResolver(null, data) { stream ->
@@ -182,11 +306,11 @@ class EqualizerViewModel(
             }
 
             if (result.isFailure || result.getOrThrow().resultCode == MediaStoreWriter.Result.Code.ERROR) {
-                PresetExportResult(false, R.string.could_not_export_configuration)
+                ProfileExportResult(false, R.string.an_unexpected_error_occurred)
             } else {
-                PresetExportResult(
+                ProfileExportResult(
                     success = true,
-                    messageRes = R.string.configuration_exported_successfully,
+                    messageRes = R.string.profiles_exported_successfully,
                     data = data,
                     mimeType = MIME_TYPE_APPLICATION
                 )
@@ -197,67 +321,101 @@ class EqualizerViewModel(
 
     fun requestImport(data: Uri?) = viewModelScope.launch(Dispatchers.IO) {
         val result = if (data == null || data.path?.endsWith(".json") == false) {
-            ImportRequestResult(false, R.string.there_is_nothing_to_import)
+            ProfileImportRequest(false, R.string.there_is_nothing_to_import)
         } else {
             val parseResult = runCatching {
                 contentResolver.openInputStream(data)?.use { stream ->
-                    Json.decodeFromString<List<EQPreset>>(stream.readString())
+                    Json.decodeFromString<List<EqProfile>>(stream.readString())
                 }
             }
-            val presets = parseResult.getOrNull()
-            if (parseResult.isFailure || presets == null) {
-                ImportRequestResult(false, R.string.there_is_nothing_to_import)
+            val profiles = parseResult.getOrNull()
+            if (parseResult.isFailure || profiles == null) {
+                ProfileImportRequest(false, R.string.there_is_nothing_to_import)
             } else {
-                ImportRequestResult(
-                    true,
-                    presets = presets
-                )
+                ProfileImportRequest(true, profiles = profiles)
             }
         }
         _importRequestEvent.send(result)
     }
 
-    fun importPresets(presets: List<EQPreset>) = viewModelScope.launch(Dispatchers.IO) {
-        val result = if (presets.isNotEmpty()) {
-            PresetImportResult(true, imported = equalizerManager.importPresets(presets))
+    fun requestAutoEqImport(
+        context: Context,
+        uri: Uri?
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        val result = if (uri == null || uri.path?.endsWith(".txt", ignoreCase = true) == false) {
+            AutoEqImportRequest(false, R.string.there_is_nothing_to_import)
         } else {
-            PresetImportResult(false, R.string.no_preset_imported)
+            val parseResult = runCatching {
+                AutoEqTxtParser.parse(context, uri)
+            }
+            val profile = parseResult.getOrNull()
+            if (parseResult.isFailure || profile == null) {
+                AutoEqImportRequest(false, R.string.there_is_nothing_to_import)
+            } else {
+                AutoEqImportRequest(true, profile = profile)
+            }
+        }
+        _autoEqImportRequestEvent.send(result)
+    }
+
+    fun importProfiles(profiles: List<EqProfile>) = viewModelScope.launch(Dispatchers.IO) {
+        val result = if (profiles.isNotEmpty()) {
+            ProfileImportResult(true, imported = equalizerManager.importProfiles(profiles))
+        } else {
+            ProfileImportResult(false, R.string.no_profile_imported)
         }
         _importResultEvent.send(result)
     }
 
-    fun sharePresets(
-        context: Context,
-        presets: List<EQPreset>
+    fun importAutoEqProfile(
+        profile: AutoEqProfile,
+        profileName: String,
+        canReplace: Boolean
     ) = viewModelScope.launch(Dispatchers.IO) {
-        val result = if (presets.isNotEmpty()) {
+        val result = if (!canReplace && !equalizerManager.isAutoEqProfileNameAvailable(profileName)) {
+            ProfileOpResult(false, R.string.that_name_is_already_in_use, canDismiss = false)
+        } else {
+            if (equalizerManager.importAutoEqProfile(profile, profileName, canReplace)) {
+                ProfileOpResult(true, R.string.autoeq_profile_imported_successfully)
+            } else {
+                ProfileOpResult(false, R.string.no_profile_imported)
+            }
+        }
+        _autoEqImportResultEvent.send(result)
+    }
+
+    fun shareProfiles(
+        context: Context,
+        profiles: List<EqProfile>
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        val result = if (profiles.isNotEmpty()) {
             val cacheDir = context.externalCacheDir
             if (cacheDir == null || (!cacheDir.exists() && !cacheDir.mkdirs())) {
-                PresetExportResult(false, R.string.could_not_create_configurations_file)
+                ProfileExportResult(false, R.string.an_unexpected_error_occurred)
             } else {
                 val name = equalizerManager.getNewExportName()
                 val result = runCatching {
                     File(cacheDir, name)
-                        .also { it.writeText(Json.encodeToString(presets)) }
+                        .also { it.writeText(Json.encodeToString(profiles)) }
                         .getContentUri(context)
                 }
                 if (result.isSuccess) {
-                    PresetExportResult(
+                    ProfileExportResult(
                         success = true,
                         isShareRequest = true,
                         data = result.getOrThrow(),
                         mimeType = MIME_TYPE_APPLICATION
                     )
                 } else {
-                    PresetExportResult(
+                    ProfileExportResult(
                         success = false,
                         isShareRequest = true,
-                        messageRes = R.string.could_not_create_configurations_file
+                        messageRes = R.string.an_unexpected_error_occurred
                     )
                 }
             }
         } else {
-            PresetExportResult(false)
+            ProfileExportResult(false)
         }
         _exportResultEvent.send(result)
     }
@@ -272,7 +430,7 @@ class EqualizerViewModel(
     }
 
     fun openSystemEqualizer(context: Context) {
-        val sessionId = this.audioSessionId
+        val sessionId = this.equalizerManager.eqSession.id
         if (sessionId != AudioEffect.ERROR_BAD_VALUE) {
             try {
                 val equalizer = Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL)

@@ -42,11 +42,11 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
 
-    private val _volumeStateFlow = MutableStateFlow(VolumeState.Unspecified)
-    val volumeStateFlow = _volumeStateFlow.asStateFlow()
+    private val _volumeState = MutableStateFlow(VolumeState.Unspecified)
+    val volumeState = _volumeState.asStateFlow()
 
-    private val _audioDeviceFlow = MutableStateFlow(AudioDevice.UnknownDevice)
-    val audioDeviceFlow = _audioDeviceFlow.asStateFlow()
+    private val _audioDevice = MutableStateFlow(AudioDevice.UnknownDevice)
+    val audioDevice = _audioDevice.asStateFlow()
 
     private var mediaRouter = MediaRouter.getInstance(context)
     var audioManager = context.getSystemService<AudioManager>()
@@ -101,6 +101,7 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
         if (isConnected && route.isEnabled && route.supportsControlCategory(MediaControlIntent.CATEGORY_LIVE_AUDIO)) {
             audioDevice = AudioDevice(
                 type = route.getMediaRouteType(),
+                id = route.id,
                 productName = route.name
             )
         }
@@ -111,6 +112,7 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
             ?.let { chosen ->
                 AudioDevice(
                     type = chosen.getDeviceType(),
+                    id = chosen.address,
                     productName = chosen.productName
                 )
             } ?: AudioDevice.UnknownDevice
@@ -118,7 +120,7 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
 
     private fun requestVolume() {
         audioManager?.let {
-            _volumeStateFlow.value = VolumeState(
+            _volumeState.value = VolumeState(
                 currentVolume = it.getStreamVolume(AudioManager.STREAM_MUSIC),
                 maxVolume = getStreamMaxVolume(it, AudioManager.STREAM_MUSIC),
                 minVolume = getStreamMinVolume(it, AudioManager.STREAM_MUSIC),
@@ -128,8 +130,8 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     }
 
     private fun requestAudioDevice() {
-        _audioDeviceFlow.value = getCurrentAudioDevice()
-        _volumeStateFlow.value = volumeStateFlow.value.copy(
+        _audioDevice.value = getCurrentAudioDevice()
+        _volumeState.value = volumeState.value.copy(
             isFixed = audioManager?.isVolumeFixed == true
         )
     }

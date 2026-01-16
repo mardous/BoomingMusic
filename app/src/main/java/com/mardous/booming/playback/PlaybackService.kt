@@ -68,12 +68,10 @@ import com.mardous.booming.core.appwidgets.BoomingGlanceWidget
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import com.mardous.booming.core.audio.AudioOutputObserver
-import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
@@ -124,7 +122,6 @@ class PlaybackService :
     private val sleepTimer: SleepTimer by inject()
     private val equalizerManager: EqualizerManager by inject()
     private val audioOutputObserver: AudioOutputObserver by inject()
-    private val soundSettings: SoundSettings by inject()
     private val repository: Repository by inject()
 
     private val libraryProvider = LibraryProvider(repository)
@@ -137,8 +134,8 @@ class PlaybackService :
     }
 
     private val playerThread = HandlerThread("Booming-ExoPlayer", Process.THREAD_PRIORITY_AUDIO)
-    private val balanceProcessor = BalanceAudioProcessor()
-    private val replayGainProcessor = ReplayGainAudioProcessor(ReplayGainMode.Off)
+    private val balanceProcessor: BalanceAudioProcessor by inject()
+    private val replayGainProcessor: ReplayGainAudioProcessor by inject()
 
     private lateinit var nm: NotificationManager
     private lateinit var persistentStorage: PersistentStorage
@@ -229,13 +226,13 @@ class PlaybackService :
                             enableAudioOutputPlaybackParams: Boolean
                         ): AudioSink {
                             return DefaultAudioSink.Builder(this@PlaybackService)
-                                .setAudioProcessors(arrayOf(replayGainProcessor, balanceProcessor))
+                                .setAudioProcessors(arrayOf(balanceProcessor, replayGainProcessor))
                                 .setEnableFloatOutput(enableFloatOutput)
                                 .setEnableAudioOutputPlaybackParameters(enableAudioOutputPlaybackParams)
                                 .build()
                         }
                     }
-                    .setEnableAudioFloatOutput(soundSettings.audioFloatOutput)
+                    .setEnableAudioFloatOutput(equalizerManager.audioFloatOutput.value)
                     .setEnableAudioOutputPlaybackParameters(true)
                 )
                 .setMediaSourceFactory(
@@ -249,7 +246,7 @@ class PlaybackService :
                             }
                     )
                 )
-                .setSkipSilenceEnabled(soundSettings.skipSilence)
+                .setSkipSilenceEnabled(equalizerManager.skipSilence.value)
                 .setHandleAudioBecomingNoisy(true)
                 .setMaxSeekToPreviousPositionMs(maxSeekToPreviousMs)
                 .setSeekBackIncrementMs(seekInterval)
@@ -946,11 +943,11 @@ class PlaybackService :
     }
 
     private fun prepareEqualizerAndSoundSettings() {
-        serviceScope.launch(IO) {
+        serviceScope.launch {
             equalizerManager.initializeEqualizer()
         }
         serviceScope.launch {
-            audioOutputObserver.volumeStateFlow.collect { volume ->
+            audioOutputObserver.volumeState.collect { volume ->
                 if (pauseOnZeroVolume && persistentStorage.restorationState.isRestored) {
                     // don't handle volume changes until our player is fully restored
                     if (isPlaying && volume.currentVolume < 1) {
@@ -964,7 +961,7 @@ class PlaybackService :
             }
         }
         serviceScope.launch {
-            soundSettings.audioOffloadFlow.collect { audioOffloadingEnabled ->
+            equalizerManager.audioOffload.collect { audioOffloadingEnabled ->
                 player.trackSelectionParameters = player.trackSelectionParameters
                     .buildUpon()
                     .setAudioOffloadPreferences(
@@ -978,41 +975,18 @@ class PlaybackService :
                             .build()
                     )
                     .build()
-
-                equalizerManager.setTransientEqualizerState(
-                    isEnabled = !audioOffloadingEnabled,
-                    isDisabledByAudioOffload = audioOffloadingEnabled
-                )
             }
         }
         serviceScope.launch {
-            soundSettings.skipSilenceFlow.collect {
+            equalizerManager.skipSilence.collect {
                 player.exoPlayer.skipSilenceEnabled = it
             }
         }
         serviceScope.launch {
-            soundSettings.replayGainStateFlow.collect {
-                if (replayGainProcessor.mode != it.mode) {
-                    replayGainProcessor.mode = it.mode
-                }
-                if (replayGainProcessor.preAmpGain != it.preamp) {
-                    replayGainProcessor.preAmpGain = it.preamp
-                }
-                if (replayGainProcessor.preAmpGainWithoutTag != it.preampWithoutGain) {
-                    replayGainProcessor.preAmpGainWithoutTag = it.preampWithoutGain
-                }
-            }
-        }
-        serviceScope.launch {
-            soundSettings.tempoFlow.collect {
+            equalizerManager.tempoState.collect {
                 player.playbackParameters = player.playbackParameters
                     .withSpeed(it.speed)
                     .withPitch(it.actualPitch)
-            }
-        }
-        serviceScope.launch {
-            soundSettings.balanceFlow.collect {
-                balanceProcessor.setBalance(it.left, it.right)
             }
         }
     }

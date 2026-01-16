@@ -424,44 +424,15 @@
     <string name="shuffle_mode_combined_description">Микс на основе избранного, прослушиваний и недавно добавленных.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Эквалайзер</string>
-    <string name="share_eq_configuration">Поделиться EQ-конфигурацией</string>
     <string name="there_is_nothing_to_export">Экспортировать нечего.</string>
     <string name="there_is_nothing_to_import">Импортировать нечего.</string>
-    <string name="there_are_no_saved_configurations">Сохраненных конфигураций нет.</string>
-    <string name="could_not_create_configurations_file">Не удалось создать файл конфигураций.</string>
-    <string name="configuration_exported_successfully">Конфигурация успешно экспортирована.</string>
-    <string name="could_not_export_configuration">Не удалось экспортировать конфигурацию.</string>
-    <string name="export_configuration">Экспорт конфигурации</string>
-    <string name="import_configuration">Импорт конфигурации</string>
-    <string name="imported_x_presets">Импортировано %d пресетов.</string>
-    <string name="no_preset_imported">Пресет не импортирован.</string>
-    <string name="share_configuration">Поделиться конфигурацией</string>
-    <string name="select_configurations_to_share">Выберите конфигурации для общего доступа:</string>
     <string name="reset_equalizer">Сбросить эквалайзер</string>
-    <string name="select_configurations_to_export">Выберите конфигурации для экспорта:</string>
-    <string name="select_a_file_to_save_exported_configurations">Выберите файл для сохранения экспортированных конфигураций.</string>
-    <string name="select_a_file_containing_booming_eq_presets">Выберите файл, содержащий EQ-пресеты Booming Music.</string>
-    <string name="select_configurations_to_import">Выберите конфигурации для импорта:</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Вы уверены, что хотите сбросить эквалайзер?
 
 Это очистит все ваши пресеты.</string>
     <string name="not_supported">Не поддерживается</string>
     <string name="enable_equalizer">Включить эквалайзер</string>
-    <string name="select_preset">Выберите пресет</string>
-    <string name="please_enter_a_name_for_this_preset">Пожалуйста, введите имя для этого пресета.</string>
-    <string name="preset_name">Имя пресета</string>
     <string name="that_name_is_already_in_use">Это имя уже используется.</string>
-    <string name="save_preset">Сохранить пресет</string>
-    <string name="replace_preset_with_same_name">Заменить пресет с таким же именем</string>
-    <string name="preset_name_is_empty">Имя пресета пусто</string>
-    <string name="could_not_save_preset">Не удалось сохранить пресет.</string>
-    <string name="preset_saved_successfully">Пресет успешно сохранен.</string>
-    <string name="delete_preset">Удалить пресет</string>
-    <string name="preset_x_deleted">Пресет %s удален.</string>
-    <string name="rename_preset">Переименовать пресет</string>
-    <string name="please_enter_a_new_name_for_this_preset">Пожалуйста, введите новое имя для этого пресета.</string>
-    <string name="preset_renamed">Пресет переименован.</string>
-    <string name="preset_not_renamed">Пресет не переименован.</string>
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Виртуализатор</string>
     <string name="loudness_enhancer">Усилитель</string>

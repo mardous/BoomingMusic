@@ -19,36 +19,49 @@ package com.mardous.booming.ui.screen.equalizer
 
 import android.net.Uri
 import androidx.annotation.StringRes
-import com.mardous.booming.core.model.equalizer.EQPreset
+import com.mardous.booming.core.model.equalizer.EqProfile
+import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
 
-open class PresetOpResult(
+open class ProfileOpResult(
     val success: Boolean,
     @StringRes val messageRes: Int = 0,
     val canDismiss: Boolean = true
 )
 
-class ExportRequestResult(
+class ProfileDeletionResult(
+    success: Boolean,
+    val profileName: String,
+    val autoEqProfile: Boolean
+) : ProfileOpResult(success, messageRes = 0)
+
+class ProfileExportRequest(
     success: Boolean,
     @StringRes messageRes: Int = 0,
-    val presetExportData: Pair<String, String>? = null
-) : PresetOpResult(success, messageRes = messageRes)
+    val profileExportData: Pair<String, String>? = null
+) : ProfileOpResult(success, messageRes = messageRes)
 
-class PresetExportResult(
+class ProfileExportResult(
     success: Boolean,
     @StringRes messageRes: Int = 0,
     val isShareRequest: Boolean = false,
     val data: Uri? = null,
     val mimeType: String? = null
-) : PresetOpResult(success, messageRes = messageRes)
+) : ProfileOpResult(success, messageRes = messageRes)
 
-class ImportRequestResult(
+class ProfileImportRequest(
     success: Boolean,
     @StringRes messageRes: Int = 0,
-    val presets: List<EQPreset> = emptyList()
-) : PresetOpResult(success, messageRes = messageRes)
+    val profiles: List<EqProfile> = emptyList()
+) : ProfileOpResult(success, messageRes = messageRes)
 
-class PresetImportResult(
+class ProfileImportResult(
     success: Boolean,
     @StringRes messageRes: Int = 0,
     val imported: Int = 0
-) : PresetOpResult(success, messageRes = messageRes)
+) : ProfileOpResult(success, messageRes = messageRes)
+
+class AutoEqImportRequest(
+    success: Boolean,
+    @StringRes messageRes: Int = 0,
+    val profile: AutoEqProfile? = null
+) : ProfileOpResult(success, messageRes = messageRes)
