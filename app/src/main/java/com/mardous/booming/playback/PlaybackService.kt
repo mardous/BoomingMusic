@@ -187,23 +187,23 @@ class PlaybackService :
         customCommands = listOf(
             CommandButton.Builder(CommandButton.ICON_SHUFFLE_OFF)
                 .setDisplayName(getString(R.string.shuffle_mode))
-                .setSessionCommand(SessionCommand(Playback.SHUFFLE_ON, Bundle.EMPTY))
+                .setPlayerCommand(Player.COMMAND_SET_SHUFFLE_MODE, true)
                 .build(),
             CommandButton.Builder(CommandButton.ICON_SHUFFLE_ON)
                 .setDisplayName(getString(R.string.shuffle_mode))
-                .setSessionCommand(SessionCommand(Playback.SHUFFLE_OFF, Bundle.EMPTY))
+                .setPlayerCommand(Player.COMMAND_SET_SHUFFLE_MODE, false)
                 .build(),
             CommandButton.Builder(CommandButton.ICON_REPEAT_OFF)
                 .setDisplayName(getString(R.string.repeat_mode))
-                .setSessionCommand(SessionCommand(Playback.REPEAT_ALL, Bundle.EMPTY))
+                .setPlayerCommand(Player.COMMAND_SET_REPEAT_MODE, Player.REPEAT_MODE_ALL)
                 .build(),
             CommandButton.Builder(CommandButton.ICON_REPEAT_ALL)
                 .setDisplayName(getString(R.string.repeat_mode))
-                .setSessionCommand(SessionCommand(Playback.REPEAT_ONE, Bundle.EMPTY))
+                .setPlayerCommand(Player.COMMAND_SET_REPEAT_MODE, Player.REPEAT_MODE_ONE)
                 .build(),
             CommandButton.Builder(CommandButton.ICON_REPEAT_ONE)
                 .setDisplayName(getString(R.string.repeat_mode))
-                .setSessionCommand(SessionCommand(Playback.REPEAT_OFF, Bundle.EMPTY))
+                .setPlayerCommand(Player.COMMAND_SET_REPEAT_MODE, Player.REPEAT_MODE_OFF)
                 .build()
         )
 
@@ -363,14 +363,6 @@ class PlaybackService :
         val connectionResult = super.onConnect(session, controller)
         val availableCommands = MediaSession.ConnectionResult.DEFAULT_SESSION_AND_LIBRARY_COMMANDS
             .buildUpon()
-
-        if (session.isRemoteController(controller)) {
-            for (command in customCommands) {
-                command.sessionCommand?.let {
-                    availableCommands.add(it)
-                }
-            }
-        }
 
         availableCommands.add(SessionCommand(Playback.CYCLE_REPEAT, Bundle.EMPTY))
         availableCommands.add(SessionCommand(Playback.TOGGLE_SHUFFLE, Bundle.EMPTY))
@@ -565,33 +557,8 @@ class PlaybackService :
                 Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
             }
 
-            Playback.SHUFFLE_OFF -> {
-                player.shuffleModeEnabled = false
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-            }
-
-            Playback.SHUFFLE_ON -> {
-                player.shuffleModeEnabled = true
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-            }
-
             Playback.CYCLE_REPEAT -> {
                 cycleRepeat()
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-            }
-
-            Playback.REPEAT_OFF -> {
-                player.repeatMode = Player.REPEAT_MODE_OFF
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-            }
-
-            Playback.REPEAT_ALL -> {
-                player.repeatMode = Player.REPEAT_MODE_ALL
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-            }
-
-            Playback.REPEAT_ONE -> {
-                player.repeatMode = Player.REPEAT_MODE_ONE
                 Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
             }
 
@@ -915,9 +882,6 @@ class PlaybackService :
                 NotificationManager.IMPORTANCE_LOW
             ).apply {
                 description = getString(R.string.playing_notification_description)
-                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
-                    setShowBadge(false)
-                }
             }
             nm.createNotificationChannel(notificationChannel)
         }
