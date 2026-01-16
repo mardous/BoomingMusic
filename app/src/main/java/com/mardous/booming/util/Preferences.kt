@@ -42,7 +42,11 @@ import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.intRes
-import com.mardous.booming.extensions.utilities.*
+import com.mardous.booming.extensions.utilities.calendarSingleton
+import com.mardous.booming.extensions.utilities.deserialize
+import com.mardous.booming.extensions.utilities.getCutoffTimeMillis
+import com.mardous.booming.extensions.utilities.serialize
+import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.ui.component.views.TopAppBarLayout
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -443,14 +447,6 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(INITIALIZED_BLACKLIST, false)
         set(value) = preferences.edit { putBoolean(INITIALIZED_BLACKLIST, value) }
 
-    var lastSleepTimerValue: Int
-        get() = preferences.getInt(LAST_SLEEP_TIMER_VALUE, 30)
-        set(value) = preferences.edit { putInt(LAST_SLEEP_TIMER_VALUE, value) }
-
-    var isSleepTimerFinishMusic: Boolean
-        get() = preferences.getBoolean(SLEEP_TIMER_FINISH_SONG, false)
-        set(value) = preferences.edit { putBoolean(SLEEP_TIMER_FINISH_SONG, value) }
-
     var isSwipeAnywhere: Boolean
         get() = preferences.getBoolean(SWIPE_ANYWHERE, false)
         set(value) = preferences.edit { putBoolean(SWIPE_ANYWHERE, value) }
@@ -606,6 +602,7 @@ const val ON_SONG_CLICK_ACTION = "on_song_click_action"
 const val ON_CLEAR_QUEUE_ACTION = "on_clear_queue_action"
 const val PLAY_OPTION_ALWAYS_VISIBLE = "play_option_always_visible"
 const val PLAY_OPTION_PLAYS_WHOLE_LIST = "play_option_whole_list"
+const val CLEAR_QUEUE_ON_COMPLETION = "clear_queue_on_completion"
 const val REMEMBER_SHUFFLE_MODE = "remember_shuffle_mode"
 const val ALBUM_SHUFFLE_MODE = "album_shuffle_mode"
 const val ARTIST_SHUFFLE_MODE = "artist_shuffle_mode"
@@ -648,8 +645,6 @@ const val EXPERIMENTAL_UPDATES = "experimental_updates"
 const val START_DIRECTORY = "start_directory"
 const val SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN = "saved_artwork_copyright_notice_shown"
 const val INITIALIZED_BLACKLIST = "initialized_blacklist"
-const val LAST_SLEEP_TIMER_VALUE = "last_sleep_timer_value"
-const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SWIPE_ANYWHERE = "swipe_anywhere"
 const val SWIPE_UP_QUEUE = "swipe_up_queue"

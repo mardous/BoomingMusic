@@ -463,7 +463,6 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Programador de apagado</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar temporizador actual</string>
-    <string name="sleep_timer_cancel_current_timer_x">Cancelar temporizador actual (%s)</string>
     <string name="sleep_timer_canceled">Apagado programado cancelado.</string>
     <string name="sleep_timer_set_action">Fijar</string>
     <string name="sleep_timer_set">La música se detendrá dentro de %d minutos desde ahora.</string>

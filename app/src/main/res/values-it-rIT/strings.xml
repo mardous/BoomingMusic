@@ -465,7 +465,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Timer spegnimento</string>
     <string name="sleep_timer_cancel_current_timer">Annulla il timer corrente</string>
-    <string name="sleep_timer_cancel_current_timer_x">Annulla il timer corrente (%s)</string>
     <string name="sleep_timer_canceled">Timer di sospensione annullato.</string>
     <string name="sleep_timer_set_action">Imposta</string>
     <string name="sleep_timer_set">Timer di spegnimento impostato per %d minuti da ora.</string>

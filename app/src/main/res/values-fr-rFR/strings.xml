@@ -465,7 +465,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Minuteur de sommeil</string>
     <string name="sleep_timer_cancel_current_timer">Annuler le minuteur actuel</string>
-    <string name="sleep_timer_cancel_current_timer_x">Annuler le minuteur actuel (%s)</string>
     <string name="sleep_timer_canceled">Minuteur de sommeil annulé.</string>
     <string name="sleep_timer_set_action">Régler</string>
     <string name="sleep_timer_set">Le minuteur de sommeil est réglée pour %d minutes à partir de maintenant.</string>

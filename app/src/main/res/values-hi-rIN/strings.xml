@@ -463,7 +463,6 @@
     <!-- Sleep timer -->
     <string name="action_sleep_timer">स्लीप टाइमर</string>
     <string name="sleep_timer_cancel_current_timer">वर्तमान टाइमर रद्द करें</string>
-    <string name="sleep_timer_cancel_current_timer_x">वर्तमान टाइमर (%s) को रद्द करें</string>
     <string name="sleep_timer_canceled">स्लीप टाइमर कैन्सल कर दिया गया।</string>
     <string name="sleep_timer_set_action">सेट</string>
     <string name="sleep_timer_set">स्लीप का टाइमर अब से %d मिनट के लिए सेट किया गया है।</string>
