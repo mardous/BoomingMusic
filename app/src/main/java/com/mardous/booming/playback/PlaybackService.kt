@@ -6,9 +6,18 @@ import android.app.PendingIntent
 import android.bluetooth.BluetoothA2dp
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothProfile
-import android.content.*
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.graphics.Bitmap
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
+import android.os.Looper
+import android.os.Process
 import android.util.Log
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
@@ -17,7 +26,13 @@ import androidx.core.content.getSystemService
 import androidx.core.os.bundleOf
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
-import androidx.media3.common.*
+import androidx.media3.common.AudioAttributes
+import androidx.media3.common.C
+import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
+import androidx.media3.common.PlaybackException
+import androidx.media3.common.Player
+import androidx.media3.common.Timeline
 import androidx.media3.common.TrackSelectionParameters.AudioOffloadPreferences
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
@@ -28,9 +43,17 @@ import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.source.ShuffleOrder.UnshuffledShuffleOrder
 import androidx.media3.extractor.DefaultExtractorsFactory
 import androidx.media3.extractor.mp3.Mp3Extractor
-import androidx.media3.session.*
+import androidx.media3.session.CacheBitmapLoader
+import androidx.media3.session.CommandButton
+import androidx.media3.session.DefaultMediaNotificationProvider
+import androidx.media3.session.LibraryResult
+import androidx.media3.session.MediaLibraryService
 import androidx.media3.session.MediaLibraryService.MediaLibrarySession
+import androidx.media3.session.MediaSession
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
+import androidx.media3.session.SessionCommand
+import androidx.media3.session.SessionError
+import androidx.media3.session.SessionResult
 import coil3.SingletonImageLoader
 import coil3.request.ImageRequest
 import coil3.size.Scale
@@ -60,12 +83,29 @@ import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
 import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.util.*
+import com.mardous.booming.util.CLEAR_QUEUE_ON_COMPLETION
+import com.mardous.booming.util.ENABLE_HISTORY
+import com.mardous.booming.util.IGNORE_AUDIO_FOCUS
+import com.mardous.booming.util.MP3_INDEX_SEEKING
+import com.mardous.booming.util.PAUSE_ON_ZERO_VOLUME
+import com.mardous.booming.util.PLAY_ON_STARTUP_MODE
+import com.mardous.booming.util.PlayOnStartupMode
+import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.Preferences.requireString
-import kotlinx.coroutines.*
+import com.mardous.booming.util.QUEUE_NEXT_MODE
+import com.mardous.booming.util.REWIND_WITH_BACK
+import com.mardous.booming.util.SEEK_INTERVAL
+import com.mardous.booming.util.STOP_WHEN_CLOSED_FROM_RECENTS
+import com.mardous.booming.util.SongPlayCountHelper
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.guava.future
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import java.io.ByteArrayOutputStream
 import kotlin.random.Random
@@ -640,7 +680,8 @@ class PlaybackService :
     }
 
     override fun onPlaybackStateChanged(playbackState: Int) {
-        if (preferences.getBoolean(CLEAR_QUEUE_ON_END, true) && playbackState == Player.STATE_ENDED) {
+        if (player.playbackState == Player.STATE_ENDED &&
+            preferences.getBoolean(CLEAR_QUEUE_ON_COMPLETION, false)) {
             player.exoPlayer.clearMediaItems()
         }
         refreshMediaButtonCustomLayout()

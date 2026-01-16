@@ -42,7 +42,11 @@ import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.intRes
-import com.mardous.booming.extensions.utilities.*
+import com.mardous.booming.extensions.utilities.calendarSingleton
+import com.mardous.booming.extensions.utilities.deserialize
+import com.mardous.booming.extensions.utilities.getCutoffTimeMillis
+import com.mardous.booming.extensions.utilities.serialize
+import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.ui.component.views.TopAppBarLayout
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -463,10 +467,6 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(DISPLAY_NEXT_SONG, true)
         set(value) = preferences.edit { putBoolean(DISPLAY_NEXT_SONG, value) }
 
-    var clearQueueOnEnd: Boolean
-        get() = preferences.getBoolean(CLEAR_QUEUE_ON_END, true)
-        set(value) = preferences.edit { putBoolean(CLEAR_QUEUE_ON_END, value) }
-
     fun SharedPreferences.nullString(key: String): String? = getString(key, null)
 
     fun SharedPreferences.requireString(key: String, defaultValue: String): String =
@@ -610,6 +610,7 @@ const val ON_SONG_CLICK_ACTION = "on_song_click_action"
 const val ON_CLEAR_QUEUE_ACTION = "on_clear_queue_action"
 const val PLAY_OPTION_ALWAYS_VISIBLE = "play_option_always_visible"
 const val PLAY_OPTION_PLAYS_WHOLE_LIST = "play_option_whole_list"
+const val CLEAR_QUEUE_ON_COMPLETION = "clear_queue_on_completion"
 const val REMEMBER_SHUFFLE_MODE = "remember_shuffle_mode"
 const val ALBUM_SHUFFLE_MODE = "album_shuffle_mode"
 const val ARTIST_SHUFFLE_MODE = "artist_shuffle_mode"
@@ -661,5 +662,3 @@ const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"
 const val QUEUE_HEIGHT = "queue_height"
-
-const val CLEAR_QUEUE_ON_END = "clear_queue_on_end"
