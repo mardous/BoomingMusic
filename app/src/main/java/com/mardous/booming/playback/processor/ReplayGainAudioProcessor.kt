@@ -15,7 +15,7 @@ import kotlin.math.pow
 
 @UnstableApi
 class ReplayGainAudioProcessor(
-    var mode: ReplayGainMode,
+    var mode: ReplayGainMode = ReplayGainMode.Off,
     var preAmpGain: Float = 0f,
     var preAmpGainWithoutTag: Float = 0f
 ) : BaseAudioProcessor() {

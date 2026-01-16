@@ -21,20 +21,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
+import androidx.compose.material3.BottomSheetDefaults
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
@@ -42,6 +55,8 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.fragment.navArgs
@@ -54,7 +69,6 @@ import com.mardous.booming.ui.component.base.goToDestination
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.component.compose.ErrorView
 import com.mardous.booming.ui.component.compose.SmallHeader
-import com.mardous.booming.ui.component.compose.TitledSurface
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
 import com.mardous.booming.ui.theme.BoomingMusicTheme
@@ -204,8 +218,8 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                             if (!uiState.info.isMissingMetadata) {
                                 MetadataInfoSection(uiState.info, Modifier.fillMaxWidth())
                             }
-                            FileInfoSection(uiState.info, Modifier.fillMaxWidth())
                             PlayInfoSection(uiState.info, Modifier.fillMaxWidth())
+                            FileInfoSection(uiState.info, Modifier.fillMaxWidth())
                         } else {
                             ErrorView(
                                 iconRes = R.drawable.ic_error_24dp,
@@ -223,219 +237,136 @@ class SongDetailFragment : BottomSheetDialogFragment() {
 
     @Composable
     private fun MetadataInfoSection(songInfo: SongInfo, modifier: Modifier = Modifier) {
-        TitledSurface(
-            iconRes = R.drawable.ic_info_24dp,
+        InfoSection(
             title = stringResource(R.string.metadata_label),
-            collapsible = true,
-            modifier = modifier
+            modifier = modifier.fillMaxWidth()
         ) {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                InfoView(
-                    iconRes = R.drawable.ic_album_24dp,
-                    title = stringResource(R.string.album),
-                    content = songInfo.album,
-                    modifier = Modifier.fillMaxWidth()
-                )
+            InfoView(
+                title = stringResource(R.string.album),
+                content = songInfo.album
+            )
 
-                InfoView(
-                    iconRes = R.drawable.ic_artist_24dp,
-                    title = stringResource(R.string.artist),
-                    content = songInfo.albumArtist,
-                    modifier = Modifier.fillMaxWidth()
-                )
+            InfoView(
+                title = stringResource(R.string.artist),
+                content = songInfo.albumArtist
+            )
 
-                FlowRow(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    maxItemsInEachRow = 2
-                ) {
-                    InfoView(
-                        iconRes = R.drawable.ic_radio_24dp,
-                        title = stringResource(R.string.genre),
-                        content = songInfo.genre,
-                        modifier = Modifier.weight(1f)
-                    )
+            InfoView(
+                title = stringResource(R.string.genre),
+                content = songInfo.genre
+            )
 
-                    InfoView(
-                        iconRes = R.drawable.ic_event_24dp,
-                        title = stringResource(R.string.year),
-                        content = songInfo.albumYear,
-                        modifier = Modifier.weight(1f)
-                    )
+            InfoView(
+                title = stringResource(R.string.year),
+                content = songInfo.albumYear
+            )
 
-                    InfoView(
-                        iconRes = R.drawable.ic_format_list_numbered_24dp,
-                        title = stringResource(R.string.track),
-                        content = songInfo.trackNumber,
-                        modifier = Modifier.weight(1f)
-                    )
+            InfoView(
+                title = stringResource(R.string.track),
+                content = songInfo.trackNumber
+            )
 
-                    InfoView(
-                        iconRes = R.drawable.ic_format_list_numbered_24dp,
-                        title = stringResource(R.string.disc),
-                        content = songInfo.discNumber,
-                        modifier = Modifier.weight(1f)
-                    )
-                }
+            InfoView(
+                title = stringResource(R.string.disc),
+                content = songInfo.discNumber
+            )
 
-                InfoView(
-                    iconRes = R.drawable.ic_person_24dp,
-                    title = stringResource(R.string.composer),
-                    content = songInfo.composer,
-                    modifier = Modifier.fillMaxWidth()
-                )
+            InfoView(
+                title = stringResource(R.string.composer),
+                content = songInfo.composer
+            )
 
-                InfoView(
-                    iconRes = R.drawable.ic_headphones_24dp,
-                    title = stringResource(R.string.conductor),
-                    content = songInfo.conductor,
-                    modifier = Modifier.fillMaxWidth()
-                )
+            InfoView(
+                title = stringResource(R.string.conductor),
+                content = songInfo.conductor
+            )
 
-                InfoView(
-                    iconRes = R.drawable.ic_music_note_24dp,
-                    title = stringResource(R.string.publisher),
-                    content = songInfo.publisher,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
+            InfoView(
+                title = stringResource(R.string.publisher),
+                content = songInfo.publisher
+            )
         }
     }
 
     @Composable
-    fun FileInfoSection(songInfo: SongInfo, modifier: Modifier = Modifier) {
-        TitledSurface(
-            iconRes = R.drawable.ic_play_circle_24dp,
+    fun PlayInfoSection(songInfo: SongInfo, modifier: Modifier = Modifier) {
+        InfoSection(
             title = stringResource(R.string.play_info),
-            collapsible = true,
-            modifier = modifier
+            modifier = modifier.fillMaxWidth()
         ) {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    InfoView(
-                        iconRes = R.drawable.ic_play_24dp,
-                        title = stringResource(R.string.played),
-                        content = songInfo.playCount,
-                        modifier = Modifier.weight(1f)
-                    )
+            InfoView(
+                title = stringResource(R.string.played),
+                content = songInfo.playCount
+            )
 
-                    InfoView(
-                        iconRes = R.drawable.ic_next_24dp,
-                        title = stringResource(R.string.skipped),
-                        content = songInfo.skipCount,
-                        modifier = Modifier.weight(1f)
-                    )
-                }
+            InfoView(
+                title = stringResource(R.string.skipped),
+                content = songInfo.skipCount
+            )
 
-                InfoView(
-                    iconRes = R.drawable.ic_history_24dp,
-                    title = stringResource(R.string.last_played),
-                    content = songInfo.lastPlayedDate,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
+            InfoView(
+                title = stringResource(R.string.last_played),
+                content = songInfo.lastPlayedDate
+            )
         }
     }
 
     @Composable
-    private fun PlayInfoSection(songInfo: SongInfo, modifier: Modifier = Modifier) {
-        TitledSurface(
-            iconRes = R.drawable.ic_audio_file_24dp,
+    private fun FileInfoSection(songInfo: SongInfo, modifier: Modifier = Modifier) {
+        InfoSection(
             title = stringResource(R.string.file_label),
-            collapsible = true,
-            modifier = modifier
+            modifier = modifier.fillMaxWidth()
         ) {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                FlowRow(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    maxItemsInEachRow = 2
-                ) {
-                    InfoView(
-                        iconRes = R.drawable.ic_timer_24dp,
-                        title = stringResource(R.string.length),
-                        content = songInfo.trackLength,
-                        modifier = Modifier.weight(1f)
-                    )
+            InfoView(
+                title = stringResource(R.string.length),
+                content = songInfo.trackLength
+            )
 
-                    InfoView(
-                        iconRes = R.drawable.ic_audio_file_24dp,
-                        title = stringResource(R.string.size),
-                        content = songInfo.fileSize,
-                        modifier = Modifier.weight(1f)
-                    )
+            InfoView(
+                title = stringResource(R.string.size),
+                content = songInfo.fileSize
+            )
 
-                    songInfo.audioHeaderInfo?.let { headerInfo ->
-                        InfoView(
-                            iconRes = R.drawable.ic_graphic_eq_24dp,
-                            title = stringResource(R.string.label_bit_rate),
-                            content = if (headerInfo.variableBitrate) {
-                                "${headerInfo.bitrate} • Variable"
-                            } else {
-                                headerInfo.bitrate
-                            },
-                            modifier = Modifier.weight(1f)
-                        )
-
-                        InfoView(
-                            iconRes = R.drawable.ic_equalizer_24dp,
-                            title = stringResource(R.string.label_sampling_rate),
-                            content = headerInfo.sampleRate,
-                            modifier = Modifier.weight(1f)
-                        )
-
-                        InfoView(
-                            iconRes = R.drawable.ic_edit_audio_24dp,
-                            title = stringResource(R.string.label_channels),
-                            content = headerInfo.channels,
-                            modifier = Modifier.weight(1f)
-                        )
+            songInfo.audioHeaderInfo?.let { headerInfo ->
+                InfoView(
+                    title = stringResource(R.string.label_bit_rate),
+                    content = if (headerInfo.variableBitrate) {
+                        "${headerInfo.bitrate} • Variable"
+                    } else {
+                        headerInfo.bitrate
                     }
-                }
-
-                InfoView(
-                    iconRes = R.drawable.ic_folder_24dp,
-                    title = stringResource(R.string.label_file_path),
-                    content = songInfo.filePath,
-                    modifier = Modifier.fillMaxWidth()
                 )
 
                 InfoView(
-                    iconRes = R.drawable.ic_history_24dp,
-                    title = stringResource(R.string.label_last_modified),
-                    content = songInfo.dateModified,
-                    modifier = Modifier.fillMaxWidth()
+                    title = stringResource(R.string.label_sampling_rate),
+                    content = headerInfo.sampleRate
                 )
 
                 InfoView(
-                    iconRes = R.drawable.ic_comment_24dp,
-                    title = stringResource(R.string.comment),
-                    content = songInfo.comment,
-                    modifier = Modifier.fillMaxWidth()
-                )
-
-                InfoView(
-                    iconRes = R.drawable.ic_volume_up_24dp,
-                    title = stringResource(R.string.replay_gain),
-                    content = songInfo.replayGain,
-                    modifier = Modifier.fillMaxWidth()
+                    title = stringResource(R.string.label_channels),
+                    content = headerInfo.channels
                 )
             }
+
+            InfoView(
+                title = stringResource(R.string.label_file_path),
+                content = songInfo.filePath
+            )
+
+            InfoView(
+                title = stringResource(R.string.label_last_modified),
+                content = songInfo.dateModified
+            )
+
+            InfoView(
+                title = stringResource(R.string.comment),
+                content = songInfo.comment
+            )
+
+            InfoView(
+                title = stringResource(R.string.replay_gain),
+                content = songInfo.replayGain
+            )
         }
     }
 
@@ -443,46 +374,67 @@ class SongDetailFragment : BottomSheetDialogFragment() {
     private fun InfoView(
         title: String,
         content: String?,
-        @DrawableRes iconRes: Int = 0,
         modifier: Modifier = Modifier
     ) {
         if (!content.isNullOrEmpty()) {
-            Column(
-                modifier = modifier
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(MaterialTheme.colorScheme.surfaceContainerLow)
-                    .padding(horizontal = 16.dp, vertical = 10.dp),
-                verticalArrangement = Arrangement.spacedBy(2.dp)
+            Row(
+                modifier = modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Row(
-                    modifier = Modifier.wrapContentSize(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    if (iconRes != 0) {
-                        Icon(
-                            painter = painterResource(iconRes),
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.secondary,
-                            modifier = Modifier.size(16.dp)
-                        )
-                    }
-                    Text(
-                        text = title,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                }
-
                 Text(
-                    text = content,
+                    text = title,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.weight(1f)
                 )
+
+                Text(
+                    text = content,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.bodyMedium,
+                    textAlign = TextAlign.End,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.weight(1.5f)
+                )
+            }
+        }
+    }
+
+    @Composable
+    private fun InfoSection(
+        title: String,
+        modifier: Modifier = Modifier,
+        content: @Composable () -> Unit
+    ) {
+        Card(
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
+            ),
+            modifier = modifier
+        ) {
+            Text(
+                text = title,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 16.dp)
+            )
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .padding(bottom = 16.dp)
+                    .padding(top = 8.dp)
+            ) {
+                content()
             }
         }
     }

@@ -19,7 +19,11 @@ package com.mardous.booming.ui.component.base
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.doOnLayout
@@ -34,9 +38,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.databinding.FragmentMainRecyclerBinding
-import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.createBoomingMusicBalloon
+import com.mardous.booming.extensions.dp
+import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.onVerticalScroll
+import com.mardous.booming.extensions.setSupportActionBar
+import com.mardous.booming.extensions.topLevelTransition
+import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.IScrollHelper
 import com.mardous.booming.ui.dialogs.playlists.ImportPlaylistDialog
 import com.mardous.booming.ui.screen.other.ShuffleModeFragment
@@ -225,6 +234,7 @@ abstract class AbsRecyclerViewFragment<A : RecyclerView.Adapter<*>, LM : Recycle
         when (item.itemId) {
             R.id.action_settings -> findNavController().navigate(R.id.nav_settings)
             R.id.action_scan -> mainActivity.scanAllPaths()
+            R.id.action_equalizer -> findNavController().navigate(R.id.nav_equalizer)
             R.id.action_import_playlist -> ImportPlaylistDialog().show(childFragmentManager, "IMPORT_PLAYLIST")
         }
         return false

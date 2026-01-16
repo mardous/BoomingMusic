@@ -23,7 +23,6 @@ import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.BoomingDatabase
 import com.mardous.booming.core.audio.AudioOutputObserver
-import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.data.local.AlbumCoverSaver
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
@@ -59,6 +58,8 @@ import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
 import com.mardous.booming.data.remote.provideOkHttp
 import com.mardous.booming.playback.SleepTimer
 import com.mardous.booming.playback.equalizer.EqualizerManager
+import com.mardous.booming.playback.processor.BalanceAudioProcessor
+import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
 import com.mardous.booming.ui.screen.about.AboutViewModel
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.screen.info.InfoViewModel
@@ -73,7 +74,6 @@ import com.mardous.booming.ui.screen.library.years.YearDetailViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.sleeptimer.SleepTimerViewModel
-import com.mardous.booming.ui.screen.sound.SoundSettingsViewModel
 import com.mardous.booming.ui.screen.tageditor.TagEditorViewModel
 import com.mardous.booming.ui.screen.update.UpdateViewModel
 import org.koin.android.ext.koin.androidApplication
@@ -117,10 +117,17 @@ private val mainModule = module {
         SleepTimer(context = androidContext())
     }
     single {
-        EqualizerManager(context = androidContext())
+        BalanceAudioProcessor()
     }
     single {
-        SoundSettings(context = androidContext())
+        ReplayGainAudioProcessor()
+    }
+    single {
+        EqualizerManager(
+            context = androidContext(),
+            balanceProcessor = get(),
+            replayGainProcessor = get()
+        )
     }
     single {
         MediaStoreWriter(context = androidContext(), contentResolver = get())
@@ -279,6 +286,7 @@ private val viewModule = module {
         EqualizerViewModel(
             contentResolver = get(),
             equalizerManager = get(),
+            audioOutputObserver = get(),
             mediaStoreWriter = get()
         )
     }
@@ -332,10 +340,6 @@ private val viewModule = module {
 
     viewModel {
         InfoViewModel(repository = get())
-    }
-
-    viewModel {
-        SoundSettingsViewModel(audioOutputObserver = get(), soundSettings = get())
     }
 
     viewModel {
