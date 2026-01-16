@@ -527,10 +527,14 @@
     <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep timer</string>
-    <string name="sleep_timer_cancel_current_timer">Cancel current timer</string>
-    <string name="sleep_timer_cancel_current_timer_x">Cancel current timer (%s)</string>
+    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
+    <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_canceled">Sleep timer canceled.</string>
     <string name="sleep_timer_set_action">Set</string>
+    <string name="sleep_timer_x_mins">%d mins</string>
+    <string name="sleep_timer_15_mins">15 mins</string>
+    <string name="sleep_timer_45_mins">45 mins</string>
+    <string name="sleep_timer_1_hour">1 hour</string>
     <string name="sleep_timer_set">Sleep timer set for %d minutes from now.</string>
     <string name="sleep_timer_finish_current_music">Finish last song</string>
     <string name="sleep_timer_stop_after_this_track">Stop after this track</string>
@@ -771,6 +775,8 @@
     <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
+    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
+    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Auto download metadata</string>
     <string name="ignore_media_store_album_covers_title">Ignore Media Store covers</string>
