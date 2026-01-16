@@ -511,10 +511,14 @@
     <string name="could_not_import_font">Kunde inte importera typsnitt.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sov timer</string>
-    <string name="sleep_timer_cancel_current_timer">Avbryt nuvarande timer</string>
-    <string name="sleep_timer_cancel_current_timer_x">Avbryt nuvarande timer (%s)</string>
+    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
+    <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_canceled">Sov timer avbruten.</string>
     <string name="sleep_timer_set_action">Ange</string>
+    <string name="sleep_timer_x_mins">%d mins</string>
+    <string name="sleep_timer_15_mins">15 mins</string>
+    <string name="sleep_timer_45_mins">45 mins</string>
+    <string name="sleep_timer_1_hour">1 hour</string>
     <string name="sleep_timer_set">Sov timer inställd på %d minuter från och med nu.</string>
     <string name="sleep_timer_finish_current_music">Slutför sista låten</string>
     <string name="sleep_timer_stop_after_this_track">Stoppa efter detta spår</string>
@@ -755,6 +759,8 @@
     <string name="on_clear_queue_remove_all_songs_summary">Hela spelkön kommer att rensas.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">Ta bort alla låtar utom nuvarande</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Endast den nuvarande låten kommer att finnas kvar i kön.</string>
+    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
+    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Ladda ner metadata automatiskt</string>
     <string name="ignore_media_store_album_covers_title">Ignorera Media Store-omslag</string>
