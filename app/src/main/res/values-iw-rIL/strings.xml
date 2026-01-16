@@ -527,10 +527,14 @@
     <string name="could_not_import_font">לא ניתן היה לייבא את הגופן.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">טיימר שינה</string>
-    <string name="sleep_timer_cancel_current_timer">בטל טיימר נוכחי</string>
-    <string name="sleep_timer_cancel_current_timer_x">בטל טיימר נוכחי (%s)</string>
+    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
+    <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_canceled">טיימר השינה בוטל.</string>
     <string name="sleep_timer_set_action">קבע</string>
+    <string name="sleep_timer_x_mins">%d mins</string>
+    <string name="sleep_timer_15_mins">15 mins</string>
+    <string name="sleep_timer_45_mins">45 mins</string>
+    <string name="sleep_timer_1_hour">1 hour</string>
     <string name="sleep_timer_set">טיימר השינה הוגדר ל־%d דקות מעכשיו.</string>
     <string name="sleep_timer_finish_current_music">סיים את השיר האחרון</string>
     <string name="sleep_timer_stop_after_this_track">עצור אחרי השיר הזה</string>
@@ -771,6 +775,8 @@
     <string name="on_clear_queue_remove_all_songs_summary">רשימת ההשמעה כולה תתאפס.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">הסר את כל השירים פרט לנוכחי</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">רק השיר המנוגן כעת יישאר בתור ההשמעה.</string>
+    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
+    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
     <string name="ignore_media_store_album_covers_title">התעלם מעטיפות ממדיה סטור</string>
