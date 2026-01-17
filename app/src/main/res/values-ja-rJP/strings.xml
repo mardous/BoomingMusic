@@ -399,21 +399,72 @@
     <string name="shuffle_mode_combined_description">お気に入り、再生履歴、最近の再生状況に基づいて、ミックスする。</string>
     <!-- Equalizer -->
     <string name="equalizer_label">イコライザー</string>
+    <string name="autoeq_label">AutoEq</string>
+    <string name="graphic_eq_label">Graphic EQ</string>
+    <string name="graphic_eq_band_count">%d-band</string>
+    <string name="eq_profiles_title">EQ Profiles</string>
+    <string name="autoeq_profiles_title">AutoEq Profiles</string>
+    <string name="eq_profile_title">Profile</string>
+    <string name="change_band_count_title">Change band count</string>
+    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
+        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
+        \n\nDo you want to continue?</string>
+    <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
+    <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
+    <string name="share_eq_profiles">Share EQ Profiles</string>
     <string name="there_is_nothing_to_export">エクスポートするものはありません。</string>
     <string name="there_is_nothing_to_import">インポートするものは何もありません。</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.</string>
+    <string name="share_profiles">Share profiles</string>
+    <string name="select_profiles_to_share">Select profiles to share:</string>
+    <string name="export_profiles">Export profiles</string>
+    <string name="select_profiles_to_export">Select profiles to export:</string>
+    <string name="select_a_file_to_save_the_exported_profiles">Select a file to save the exported profiles.</string>
+    <string name="profiles_exported_successfully">Profiles exported successfully.</string>
+    <string name="import_profiles">Import profiles</string>
+    <string name="select_profiles_to_import">Select profiles to import:</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Select a file containing Booming Music EQ Profiles.</string>
+    <string name="imported_x_profiles">Imported %d profiles.</string>
+    <string name="no_profile_imported">No profile imported.</string>
+    <string name="import_autoeq_profile">Import AutoEq profile</string>
+    <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
+    <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">イコライザーをリセット</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">イコライザをリセットしてもよろしいですか？
-        \n\nすべてのプリセットが消去されます。</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
+        \n\nThis will clear all your profiles.</string>
     <string name="not_supported">対応していません</string>
     <string name="enable_equalizer">EQ を有効にする</string>
+    <string name="select_profile">Select profile</string>
+    <string name="save_profile_label">Save profile</string>
+    <string name="rename_profile_label">Rename profile</string>
+    <string name="delete_profile_label">Delete profile</string>
+    <string name="delete_profile_x">Delete profile \"%s\"?</string>
+    <string name="please_enter_a_name_for_this_profile">Please, enter a name for this profile.</string>
+    <string name="please_enter_a_new_name_for_this_profile">Please, enter a new name for this profile.</string>
+    <string name="replace_profile_with_same_name">Replace profile with same name</string>
+    <string name="profile_name">Profile name</string>
     <string name="that_name_is_already_in_use">その名前は既に使用されています。</string>
+    <string name="profile_saved_successfully">Profile saved successfully.</string>
+    <string name="the_profile_could_not_be_saved">The profile could not be saved.</string>
+    <string name="profile_renamed">Profile renamed.</string>
+    <string name="the_profile_could_not_be_renamed">The profile could not be renamed</string>
+    <string name="autoeq_profile_imported_successfully">AutoEq profile imported successfully.</string>
+    <string name="profile_x_deleted">Profile \"%s\" deleted.</string>
+    <string name="autoeq_profile_x_deleted">AutoEq profile \"%s\" deleted.</string>
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">アンプ</string>
     <string name="sound_settings">サウンドの設定</string>
     <string name="volume_label">音量</string>
+    <string name="reset_balance">Reset balance</string>
+    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_tempo">Reset tempo</string>
+    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="balance_left">Left</string>
+    <string name="balance_right">Right</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">カスタム</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">オーディオオフロード</string>
     <string name="enable_audio_offload_description">デバイスがオーディオをハードウェア経由で直接処理できるようにし、CPU使用率を削減しバッテリーを節約します。
         この機能は特定のデバイスでのみサポートされています。有効中に一部のエフェクトや機能が動作しない場合があります。
@@ -455,9 +506,14 @@
     <string name="could_not_import_font">フォントをインポートできませんでした。</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">スリープタイマー</string>
-    <string name="sleep_timer_cancel_current_timer">現在のタイマーをキャンセル</string>
+    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
+    <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_canceled">スリープタイマーをキャンセルしました。</string>
     <string name="sleep_timer_set_action">設定</string>
+    <string name="sleep_timer_x_mins">%d mins</string>
+    <string name="sleep_timer_15_mins">15 mins</string>
+    <string name="sleep_timer_45_mins">45 mins</string>
+    <string name="sleep_timer_1_hour">1 hour</string>
     <string name="sleep_timer_set">%d 分後にスリープタイマーを設定しました。</string>
     <string name="sleep_timer_finish_current_music">最後の曲を終了する</string>
     <string name="sleep_timer_stop_after_this_track">このトラックの後に停止</string>
@@ -474,6 +530,7 @@
     <string name="version">バージョン</string>
     <string name="changelog">更新履歴</string>
     <string name="fork_on_github">Githubでフォークする</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">ライセンス</string>
     <string name="author">作成者</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -481,6 +538,8 @@
     <string name="acknowledgments_title">謝辞</string>
     <string name="translators_title">翻訳者</string>
     <string name="translators_summary">Booming Musicを多くの言語で利用可能にしてくれた人たちに感謝します。</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">Telegram</string>
     <string name="telegram_chat_summary">Telegramに参加して、新しいリリースとニュースについて情報を得る。</string>
     <string name="view_profile_on_github">GitHubでプロフィールを表示</string>
@@ -595,6 +654,10 @@
         one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
+        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
+        It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">スタイル</string>
     <string name="open_on_play_title">再生中に開く</string>
@@ -691,6 +754,8 @@
     <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
+    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
+    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">メタデータの自動ダウンロード</string>
     <string name="ignore_media_store_album_covers_title">メディアストアのカバーを無視</string>
@@ -749,12 +814,13 @@
     <string name="selected">選択済み</string>
     <string name="compact">コンパクト</string>
     <string name="expanded">拡張</string>
-    <string name="full_cover_style">フルカバー</string>
+    <string name="full_cover_style">Full Cover</string>
     <string name="gradient_style">Gradient</string>
     <string name="peek_style">Peek</string>
     <string name="plain_style">Plain</string>
     <string name="m3_style">M3</string>
-    <string name="normal_style">標準</string>
+    <string name="expressive_style">Expressive</string>
+    <string name="normal_style">Normal</string>
     <string name="cascading">重ねて表示</string>
     <string name="depth">深度</string>
     <string name="hinge">ヒンジ</string>
