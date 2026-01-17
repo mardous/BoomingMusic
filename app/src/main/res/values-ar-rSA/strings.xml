@@ -496,7 +496,10 @@
     <string name="loudness_enhancer">مضخم</string>
     <string name="sound_settings">إعدادات الصوت</string>
     <string name="volume_label">حجم</string>
-    <string name="tempo_label">تمبو</string>
+    <string name="reset_balance">Reset balance</string>
+    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_tempo">Reset tempo</string>
+    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
     <string name="balance_left">Left</string>
     <string name="balance_right">Right</string>
     <string name="action_external_eq">EQ خارجي</string>
