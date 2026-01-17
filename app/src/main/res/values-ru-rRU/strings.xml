@@ -481,7 +481,10 @@
     <string name="loudness_enhancer">Усилитель</string>
     <string name="sound_settings">Настройки звука</string>
     <string name="volume_label">Громкость</string>
-    <string name="tempo_label">Темп</string>
+    <string name="reset_balance">Reset balance</string>
+    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_tempo">Reset tempo</string>
+    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
     <string name="balance_left">Левый</string>
     <string name="balance_right">Правый</string>
     <string name="action_external_eq">Внешний эквалайзер</string>
