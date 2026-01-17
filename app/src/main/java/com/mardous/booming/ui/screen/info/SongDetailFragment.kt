@@ -72,6 +72,7 @@ import com.mardous.booming.ui.component.compose.SmallHeader
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
 import com.mardous.booming.ui.theme.BoomingMusicTheme
+import com.mardous.booming.ui.theme.SurfaceColorTokens
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 data class SongInfoUiState(
@@ -411,7 +412,9 @@ class SongDetailFragment : BottomSheetDialogFragment() {
     ) {
         Card(
             colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(
+                    alpha = SurfaceColorTokens.SurfaceVariantAlpha
+                )
             ),
             modifier = modifier
         ) {
