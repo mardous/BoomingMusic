@@ -480,7 +480,10 @@
     <string name="loudness_enhancer">מגבר</string>
     <string name="sound_settings">הגדרות קול</string>
     <string name="volume_label">עוצמת שמע</string>
-    <string name="tempo_label">קצב</string>
+    <string name="reset_balance">Reset balance</string>
+    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_tempo">Reset tempo</string>
+    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
     <string name="balance_left">Left</string>
     <string name="balance_right">Right</string>
     <string name="action_external_eq">איקוולייזר חיצוני</string>
