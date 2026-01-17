@@ -101,7 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Удалить песню &lt;b&gt;%1$s&lt;/b&gt; из плейлиста?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Удалить &lt;b&gt;%1$d&lt;/b&gt; песен из плейлиста?]]></string>
     <string name="playlist_empty_text">Пустой плейлист</string>
-    <string name="action_lyrics_editor">Lyrics editor</string>
+    <string name="action_lyrics_editor">Редактор текста песен</string>
     <string name="action_tag_editor">Редактор тегов</string>
     <string name="saving_changes">Сохранение изменений</string>
     <string name="changes_saved_successfully">Изменения успешно сохранены.</string>
@@ -424,22 +424,72 @@
     <string name="shuffle_mode_combined_description">Микс на основе избранного, прослушиваний и недавно добавленных.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Эквалайзер</string>
+    <string name="autoeq_label">AutoEq</string>
+    <string name="graphic_eq_label">Графический эквалайзер</string>
+    <string name="graphic_eq_band_count">%d-полосный</string>
+    <string name="eq_profiles_title">Профили эквалайзера</string>
+    <string name="autoeq_profiles_title">Профили AutoEq</string>
+    <string name="eq_profile_title">Профиль</string>
+    <string name="change_band_count_title">Изменить количество полос</string>
+    <string name="change_band_count_message">Изменение количества полос сбросит текущий профиль к начальному состоянию.
+        Любые другие профили, сохраненные для текущей конфигурации полос, нельзя будет использовать с новой конфигурацией.
+        \n\nВы хотите продолжить?</string>
+    <string name="band_configuration_changed_successfully">Конфигурация полос успешно изменена.</string>
+    <string name="band_configuration_could_not_be_changed">Не удалось изменить конфигурацию полос.</string>
+    <string name="share_eq_profiles">Поделиться профилями эквалайзера</string>
     <string name="there_is_nothing_to_export">Экспортировать нечего.</string>
     <string name="there_is_nothing_to_import">Импортировать нечего.</string>
+    <string name="an_unexpected_error_occurred">Произошла непредвиденная ошибка.</string>
+    <string name="share_profiles">Поделиться профилями</string>
+    <string name="select_profiles_to_share">Выберите профили для отправки:</string>
+    <string name="export_profiles">Экспортировать профили</string>
+    <string name="select_profiles_to_export">Выберите профили для экспорта:</string>
+    <string name="select_a_file_to_save_the_exported_profiles">Выберите файл для сохранения экспортированных профилей.</string>
+    <string name="profiles_exported_successfully">Профили успешно экспортированы.</string>
+    <string name="import_profiles">Импортировать профили</string>
+    <string name="select_profiles_to_import">Выберите профили для импорта:</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Выберите файл с профилями эквалайзера Booming Music.</string>
+    <string name="imported_x_profiles">Импортировано профилей: %d</string>
+    <string name="no_profile_imported">Ни один профиль не импортирован.</string>
+    <string name="import_autoeq_profile">Импортировать профиль AutoEq</string>
+    <string name="select_a_file_containing_autoeq_params">Выберите файл с параметрами AutoEq (GraphicEq).</string>
+    <string name="no_autoeq_profiles">Нет импортированных профилей AutoEq.</string>
     <string name="reset_equalizer">Сбросить эквалайзер</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Вы уверены, что хотите сбросить эквалайзер?
-
-Это очистит все ваши пресеты.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Вы уверены, что хотите сбросить настройки эквалайзера?
+        \n\nЭто удалит все ваши профили.</string>
     <string name="not_supported">Не поддерживается</string>
     <string name="enable_equalizer">Включить эквалайзер</string>
+    <string name="select_profile">Выбрать профиль</string>
+    <string name="save_profile_label">Сохранить профиль</string>
+    <string name="rename_profile_label">Переименовать профиль</string>
+    <string name="delete_profile_label">Удалить профиль</string>
+    <string name="delete_profile_x">Удалить профиль \"%s\"?</string>
+    <string name="please_enter_a_name_for_this_profile">Пожалуйста, введите название профиля.</string>
+    <string name="please_enter_a_new_name_for_this_profile">Пожалуйста, введите новое название профиля.</string>
+    <string name="replace_profile_with_same_name">Заменить профиль с таким же именем</string>
+    <string name="profile_name">Название профиля</string>
     <string name="that_name_is_already_in_use">Это имя уже используется.</string>
+    <string name="profile_saved_successfully">Профиль успешно сохранен.</string>
+    <string name="the_profile_could_not_be_saved">Не удалось сохранить профиль.</string>
+    <string name="profile_renamed">Профиль переименован.</string>
+    <string name="the_profile_could_not_be_renamed">Не удалось переименовать профиль</string>
+    <string name="autoeq_profile_imported_successfully">Профиль AutoEq успешно импортирован.</string>
+    <string name="profile_x_deleted">Профиль \"%s\" удален.</string>
+    <string name="autoeq_profile_x_deleted">Профиль AutoEq \"%s\" удален.</string>
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Виртуализатор</string>
     <string name="loudness_enhancer">Усилитель</string>
     <string name="sound_settings">Настройки звука</string>
     <string name="volume_label">Громкость</string>
+    <string name="reset_balance">Reset balance</string>
+    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_tempo">Reset tempo</string>
+    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="balance_left">Левый</string>
+    <string name="balance_right">Правый</string>
     <string name="action_external_eq">Внешний эквалайзер</string>
     <string name="custom">Пользовательский</string>
+    <string name="audio_offload_is_enabled">Аппаратная разгрузка аудио включена</string>
     <string name="enable_audio_offload_title">Аппаратная разгрузка аудио</string>
     <string name="enable_audio_offload_description">Позволяет устройству обрабатывать звук напрямую через аппаратное обеспечение, снижая нагрузку на ЦП и экономя заряд батареи.
         Эта функция поддерживается не на всех устройствах. Некоторые эффекты или функции могут не работать при её включении.
@@ -481,9 +531,14 @@
     <string name="could_not_import_font">Не удалось импортировать шрифт.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Таймер сна</string>
-    <string name="sleep_timer_cancel_current_timer">Отменить текущий таймер</string>
+    <string name="sleep_timer_waiting_pending_quit">Ожидание окончания текущего трека</string>
+    <string name="sleep_timer_cancel_current_timer">Отмена</string>
     <string name="sleep_timer_canceled">Таймер сна отменен.</string>
     <string name="sleep_timer_set_action">Установить</string>
+    <string name="sleep_timer_x_mins">%d мин</string>
+    <string name="sleep_timer_15_mins">15 мин</string>
+    <string name="sleep_timer_45_mins">45 мин</string>
+    <string name="sleep_timer_1_hour">1 час</string>
     <string name="sleep_timer_set">Таймер сна установлен на %d минут.</string>
     <string name="sleep_timer_finish_current_music">Закончить последнюю песню</string>
     <string name="sleep_timer_stop_after_this_track">Остановить после этого трека</string>
@@ -500,6 +555,7 @@
     <string name="version">Версия</string>
     <string name="changelog">Журнал изменений</string>
     <string name="fork_on_github">Форк на GitHub</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Лицензии</string>
     <string name="author">Автор</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -507,6 +563,8 @@
     <string name="acknowledgments_title">Благодарности</string>
     <string name="translators_title">Переводчики</string>
     <string name="translators_summary">Спасибо всем, кто помогает переводить Booming Music на разные языки.</string>
+    <string name="contributors_title">Участники</string>
+    <string name="contributors_summary">Список пользователей, которые внесли вклад в проект тем или иным образом.</string>
     <string name="telegram_chat">Чат в Telegram</string>
     <string name="telegram_chat_summary">Присоединяйтесь к чату в Telegram и будьте в курсе новых релизов и новостей.</string>
     <string name="view_profile_on_github">Посмотреть профиль на GitHub</string>
@@ -621,6 +679,10 @@
         из одного или нескольких таких индикаторов, трек будет помечен как инструментальный (перечисляются через запятую).</string>
     <string name="instrumental_tracks_mark_by_title_title">Определять по названию</string>
     <string name="instrumental_tracks_mark_by_title_summary">Название трека также будет учитываться при поиске маркеров.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Считать все файлы текстов в UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Предполагать, что все файлы используют кодировку UTF-8.
+        Это оптимизирует процесс обработки, но в некоторых случаях может привести к некорректному отображению символов в текстах песен.
+        Может потребоваться перезапуск приложения</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Стиль</string>
     <string name="open_on_play_title">Открывать при воспроизведении</string>
@@ -699,24 +761,26 @@
     <string name="mp3_index_seeking_summary">Загружает весь MP3-файл в память для перемотки вместо использования заголовка Xing.
         Включайте, только если перемотка не работает на VBR-файлах.
         Требуется перезапуск.</string>
-    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
-    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
-    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
-    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
-    <string name="on_song_click_title">When selecting a song</string>
-    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
-    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
-    <string name="on_song_click_play_whole_list_title">Play whole list</string>
-    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
-    <string name="on_song_click_queue_next_title">Queue next</string>
-    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
-    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
-    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
-    <string name="on_clear_queue_title">When clearing the queue</string>
-    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
-    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
+    <string name="play_option_always_visible_title">Всегда показывать пункт «Воспроизвести»</string>
+    <string name="play_option_always_visible_summary">Если включено, пункт «Воспроизвести» будет всегда отображаться в меню трека, независимо от настроек нажатия.</string>
+    <string name="play_option_whole_list_title">Пункт «Воспроизвести» запускает весь список</string>
+    <string name="play_option_whole_list_summary">Если включено, выбор пункта «Воспроизвести» в меню запустит воспроизведение всего плейлиста. Если выключено - только выбранного трека.</string>
+    <string name="on_song_click_title">При нажатии на трек</string>
+    <string name="on_song_click_play_only_this_song_title">Воспроизвести только этот трек</string>
+    <string name="on_song_click_play_only_this_song_summary">Текущая очередь будет очищена и заменена выбранным треком.</string>
+    <string name="on_song_click_play_whole_list_title">Воспроизвести весь список</string>
+    <string name="on_song_click_play_whole_list_summary">Текущая очередь будет заменена всеми треками из списка, альбома или папки.</string>
+    <string name="on_song_click_queue_next_title">Добавить в очередь следующим</string>
+    <string name="on_song_click_queue_next_summary">Выбранный трек будет поставлен следующим в очереди.</string>
+    <string name="on_song_click_enqueue_at_end_title">Добавить в конец очереди</string>
+    <string name="on_song_click_enqueue_at_end_summary">Выбранный трек будет добавлен в конец текущей очереди.</string>
+    <string name="on_clear_queue_title">При очистке очереди</string>
+    <string name="on_clear_queue_remove_all_songs_title">Удалить все треки</string>
+    <string name="on_clear_queue_remove_all_songs_summary">Очередь воспроизведения будет полностью очищена.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Удалить все треки, кроме текущего</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">В очереди останется только текущий трек.</string>
+    <string name="clear_queue_on_completion_title">Очистка очереди после завершения</string>
+    <string name="clear_queue_on_completion_summary">Автоматически очищать очередь после окончания последнего трека.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Автоматически загружать метаданные</string>
     <string name="ignore_media_store_album_covers_title">Игнорировать обложки изMediaStore</string>
@@ -777,10 +841,11 @@
     <string name="expanded">Развернуто</string>
     <string name="full_cover_style">Полная обложка</string>
     <string name="gradient_style">Градиент</string>
-    <string name="peek_style">Подсмотреть</string>
+    <string name="peek_style">Предпросмотр</string>
     <string name="plain_style">Простой</string>
     <string name="m3_style">M3</string>
-    <string name="normal_style">Нормальный</string>
+    <string name="expressive_style">Expressive</string>
+    <string name="normal_style">Стандартный</string>
     <string name="cascading">Каскадный</string>
     <string name="depth">Глубина</string>
     <string name="hinge">Hinge</string>

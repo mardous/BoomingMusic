@@ -101,7 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[למחוק את השיר <b>%1$s</b> מרשימת ההשמעה?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[למחוק את השירים <b>%1$d</b> מרשימת ההשמעה?]]></string>
     <string name="playlist_empty_text">רשימת השמעה ריקה</string>
-    <string name="action_lyrics_editor">Lyrics editor</string>
+    <string name="action_lyrics_editor">עורך מילים</string>
     <string name="action_tag_editor">עריכת תווית</string>
     <string name="saving_changes">שמירת שינויים</string>
     <string name="changes_saved_successfully">השינויים נשמרו בהצלחה.</string>
@@ -423,21 +423,72 @@
     <string name="shuffle_mode_combined_description">מיקס המבוסס על מועדפים, מספר השמעות ועדכניות.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">אקולייזר</string>
+    <string name="autoeq_label">AutoEq</string>
+    <string name="graphic_eq_label">Graphic EQ</string>
+    <string name="graphic_eq_band_count">%d-band</string>
+    <string name="eq_profiles_title">EQ Profiles</string>
+    <string name="autoeq_profiles_title">AutoEq Profiles</string>
+    <string name="eq_profile_title">Profile</string>
+    <string name="change_band_count_title">Change band count</string>
+    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
+        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
+        \n\nDo you want to continue?</string>
+    <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
+    <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
+    <string name="share_eq_profiles">Share EQ Profiles</string>
     <string name="there_is_nothing_to_export">אין מה לייצא.</string>
     <string name="there_is_nothing_to_import">אין מה לייבא.</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.</string>
+    <string name="share_profiles">Share profiles</string>
+    <string name="select_profiles_to_share">Select profiles to share:</string>
+    <string name="export_profiles">Export profiles</string>
+    <string name="select_profiles_to_export">Select profiles to export:</string>
+    <string name="select_a_file_to_save_the_exported_profiles">Select a file to save the exported profiles.</string>
+    <string name="profiles_exported_successfully">Profiles exported successfully.</string>
+    <string name="import_profiles">Import profiles</string>
+    <string name="select_profiles_to_import">Select profiles to import:</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Select a file containing Booming Music EQ Profiles.</string>
+    <string name="imported_x_profiles">Imported %d profiles.</string>
+    <string name="no_profile_imported">No profile imported.</string>
+    <string name="import_autoeq_profile">Import AutoEq profile</string>
+    <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
+    <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">אפס את האקולייזר</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">האם אתה בטוח שברצונך לאפס את האקולייזר?
-\n\nזה ימחק את כל הקביעות שלך.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
+        \n\nThis will clear all your profiles.</string>
     <string name="not_supported">לא נתמך</string>
     <string name="enable_equalizer">הפעל את האקולייזר</string>
+    <string name="select_profile">Select profile</string>
+    <string name="save_profile_label">Save profile</string>
+    <string name="rename_profile_label">Rename profile</string>
+    <string name="delete_profile_label">Delete profile</string>
+    <string name="delete_profile_x">Delete profile \"%s\"?</string>
+    <string name="please_enter_a_name_for_this_profile">Please, enter a name for this profile.</string>
+    <string name="please_enter_a_new_name_for_this_profile">Please, enter a new name for this profile.</string>
+    <string name="replace_profile_with_same_name">Replace profile with same name</string>
+    <string name="profile_name">Profile name</string>
     <string name="that_name_is_already_in_use">השם הזה כבר בשימוש.</string>
+    <string name="profile_saved_successfully">Profile saved successfully.</string>
+    <string name="the_profile_could_not_be_saved">The profile could not be saved.</string>
+    <string name="profile_renamed">Profile renamed.</string>
+    <string name="the_profile_could_not_be_renamed">The profile could not be renamed</string>
+    <string name="autoeq_profile_imported_successfully">AutoEq profile imported successfully.</string>
+    <string name="profile_x_deleted">Profile \"%s\" deleted.</string>
+    <string name="autoeq_profile_x_deleted">AutoEq profile \"%s\" deleted.</string>
     <string name="bassboost_label">בס-בוסט</string>
     <string name="virtualizer_label">וירטואלייזר</string>
     <string name="loudness_enhancer">מגבר</string>
     <string name="sound_settings">הגדרות קול</string>
     <string name="volume_label">עוצמת שמע</string>
+    <string name="reset_balance">Reset balance</string>
+    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_tempo">Reset tempo</string>
+    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="balance_left">Left</string>
+    <string name="balance_right">Right</string>
     <string name="action_external_eq">איקוולייזר חיצוני</string>
     <string name="custom">מותאם אישית</string>
+    <string name="audio_offload_is_enabled">Audio Offload מופעל</string>
     <string name="enable_audio_offload_title">העברת עיבוד שמע לחומרה</string>
     <string name="enable_audio_offload_description">מאפשר למכשיר לעבד את השמע ישירות דרך החומרה, מה שמפחית את השימוש במעבד וחוסך בסוללה.
 הפונקציה נתמכת רק במכשירים מסוימים, וחלק מהאפקטים או הפונקציות עלולים שלא לעבוד כשהיא מופעלת.
@@ -479,9 +530,14 @@
     <string name="could_not_import_font">לא ניתן היה לייבא את הגופן.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">טיימר שינה</string>
-    <string name="sleep_timer_cancel_current_timer">בטל טיימר נוכחי</string>
+    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
+    <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_canceled">טיימר השינה בוטל.</string>
     <string name="sleep_timer_set_action">קבע</string>
+    <string name="sleep_timer_x_mins">%d mins</string>
+    <string name="sleep_timer_15_mins">15 mins</string>
+    <string name="sleep_timer_45_mins">45 mins</string>
+    <string name="sleep_timer_1_hour">1 hour</string>
     <string name="sleep_timer_set">טיימר השינה הוגדר ל־%d דקות מעכשיו.</string>
     <string name="sleep_timer_finish_current_music">סיים את השיר האחרון</string>
     <string name="sleep_timer_stop_after_this_track">עצור אחרי השיר הזה</string>
@@ -498,6 +554,7 @@
     <string name="version">גרסה</string>
     <string name="changelog">יומן שינויים</string>
     <string name="fork_on_github">קוד מקור</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">רשיונות</string>
     <string name="author">יוצר</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -505,6 +562,8 @@
     <string name="acknowledgments_title">הכרה</string>
     <string name="translators_title">מתרגמים</string>
     <string name="translators_summary">תודה לאלו שעוזרים להפוך את Booming Music לזמין בשפות רבות.</string>
+    <string name="contributors_title">תורמים</string>
+    <string name="contributors_summary">רשימה של משתמשים שתרמו לפרויקט בדרך כלשהי.</string>
     <string name="telegram_chat">ערוץ טלגרם</string>
     <string name="telegram_chat_summary">הצטרפו לצ\'אט בטלגרם וקבלו עדכונים על מהדורות וחידושים.</string>
     <string name="view_profile_on_github">צפה בפרופיל ב-GitHub</string>
@@ -618,6 +677,10 @@
     <string name="instrumental_tracks_identifiers_summary">אם מילות השיר מורכבות אך ורק מאחד או יותר מהסמנים האלה, השיר יסומן כרצועה אינסטרומנטלית (מופרדים בפסיק).</string>
     <string name="instrumental_tracks_mark_by_title_title">סמן לפי שם</string>
     <string name="instrumental_tracks_mark_by_title_summary">שם השיר יילקח גם הוא בחשבון בעת חיפוש אחר הסמנים.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">התייחס לכל קובצי מילות השירים כ־UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">הנח שכל הקבצים משתמשים בקידוד UTF-8.
+פעולה זו מייעלת את תהליך ניתוח הקבצים, אך במקרים מסוימים עלולה לגרום להופעת תווים חריגים במילות השירים.
+ייתכן שתידרש הפעלה מחדש של האפליקציה.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">סגנון</string>
     <string name="open_on_play_title">פתח בעת ניגון</string>
@@ -697,24 +760,26 @@
     <string name="mp3_index_seeking_summary">טוען את כל קובץ ה־MP3 לזיכרון לצורך חיפוש, במקום להסתמך על כותרת ה־Xing.
 השתמש רק אם החיפוש נכשל בקבצי VBR מסוימים.
 נדרש להפעיל מחדש את האפליקציה.</string>
-    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
-    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
-    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
-    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
-    <string name="on_song_click_title">When selecting a song</string>
-    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
-    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
-    <string name="on_song_click_play_whole_list_title">Play whole list</string>
-    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
-    <string name="on_song_click_queue_next_title">Queue next</string>
-    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
-    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
-    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
-    <string name="on_clear_queue_title">When clearing the queue</string>
-    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
-    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
+    <string name="play_option_always_visible_title">השאר את אפשרות \"ניגון\" גלויה</string>
+    <string name="play_option_always_visible_summary">כאשר האפשרות מופעלת, האפשרות \"נגן\" תופיע תמיד בתפריט השיר, ללא קשר להגדרות התנהגות ההקשה.</string>
+    <string name="play_option_whole_list_title">האפשרות \"נגן\" מנגנת את כל הרשימה</string>
+    <string name="play_option_whole_list_summary">אם מופעל, בחירה ב״נגן״ מתפריט השיר תתחיל נגינה של כל רשימת ההשמעה. אם כבוי, ינוגן רק השיר שנבחר.</string>
+    <string name="on_song_click_title">בעת בחירת שיר</string>
+    <string name="on_song_click_play_only_this_song_title">נגן רק את השיר הזה</string>
+    <string name="on_song_click_play_only_this_song_summary">רשימת ההשמעה הנוכחית תתאפס ותוחלף בשיר הנבחר.</string>
+    <string name="on_song_click_play_whole_list_title">נגן את כל הרשימה</string>
+    <string name="on_song_click_play_whole_list_summary">רשימת ההשמעה הנוכחית תוחלף בכל השירים מהרשימה/אלבום/תיקייה.</string>
+    <string name="on_song_click_queue_next_title">להוסיף למיקום הבא בתור</string>
+    <string name="on_song_click_queue_next_summary">השיר שנבחר יתווסף למיקום הבא בתור ההשמעה.</string>
+    <string name="on_song_click_enqueue_at_end_title">להוסיף לסוף התור</string>
+    <string name="on_song_click_enqueue_at_end_summary">השיר שנבחר יתווסף לסוף רשימת ההשמעה הנוכחית.</string>
+    <string name="on_clear_queue_title">בעת ניקוי רשימת ההשמעה</string>
+    <string name="on_clear_queue_remove_all_songs_title">הסר את כל השירים</string>
+    <string name="on_clear_queue_remove_all_songs_summary">רשימת ההשמעה כולה תתאפס.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">הסר את כל השירים פרט לנוכחי</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">רק השיר המנוגן כעת יישאר בתור ההשמעה.</string>
+    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
+    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
     <string name="ignore_media_store_album_covers_title">התעלם מעטיפות ממדיה סטור</string>
@@ -774,10 +839,11 @@
     <string name="compact">קומפקטי</string>
     <string name="expanded">מורחב</string>
     <string name="full_cover_style">עטיפה מלאה</string>
-    <string name="gradient_style">מעבר צבע</string>
+    <string name="gradient_style">גרדיאנט</string>
     <string name="peek_style">Peek</string>
     <string name="plain_style">פשוט</string>
     <string name="m3_style">M3</string>
+    <string name="expressive_style">ביטוי</string>
     <string name="normal_style">רגיל</string>
     <string name="cascading">מדרגי</string>
     <string name="depth">עומק</string>

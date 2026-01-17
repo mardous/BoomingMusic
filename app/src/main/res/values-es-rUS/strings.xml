@@ -406,21 +406,69 @@
     <string name="shuffle_mode_combined_description">Mezcla con múltiples factores: favoritas, uso, antigüedad.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Ecualizador</string>
+    <string name="autoeq_label">AutoEq</string>
+    <string name="graphic_eq_label">EQ Gráfico</string>
+    <string name="graphic_eq_band_count">%d bandas</string>
+    <string name="eq_profiles_title">Perfiles EQ</string>
+    <string name="autoeq_profiles_title">Perfiles de AutoEq</string>
+    <string name="eq_profile_title">Perfil</string>
+    <string name="change_band_count_title">Cambiar número de bandas</string>
+    <string name="change_band_count_message">Al cambiar el número de bandas se reiniciará el perfil actual a su estado original. Cualquier otro perfil guardado para el número de bandas actual no podrá ser utilizado con la nueva configuración de bandas.\n\n¿Quieres continuar?</string>
+    <string name="band_configuration_changed_successfully">Se cambió exitosamente la configuración de bandas.</string>
+    <string name="band_configuration_could_not_be_changed">No se puedo cambiar la configuración de bandas.</string>
+    <string name="share_eq_profiles">Compartir perfiles de EQ</string>
     <string name="there_is_nothing_to_export">Ninguna configuración que exportar.</string>
     <string name="there_is_nothing_to_import">Ninguna configuración que importar.</string>
+    <string name="an_unexpected_error_occurred">Ocurrió un error inesperado.</string>
+    <string name="share_profiles">Compartir perfiles</string>
+    <string name="select_profiles_to_share">Elija los perfiles a compartir:</string>
+    <string name="export_profiles">Exportar perfiles</string>
+    <string name="select_profiles_to_export">Elija los perfiles a exportar:</string>
+    <string name="select_a_file_to_save_the_exported_profiles">Selecciona un archivo para guardar los perfiles exportados.</string>
+    <string name="profiles_exported_successfully">Los perfiles se exportaron exitosamente.</string>
+    <string name="import_profiles">Importar perfiles</string>
+    <string name="select_profiles_to_import">Elija los perfiles a importar:</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Selecciona un archivo que contenga perfiles de EQ de Booming Music.</string>
+    <string name="imported_x_profiles">Se importaron %d perfiles.</string>
+    <string name="no_profile_imported">No se importar ningún perfil.</string>
+    <string name="import_autoeq_profile">Importar perfil de AutoEq</string>
+    <string name="select_a_file_containing_autoeq_params">Selecciona un archivo que contenga parámetros de AutoEq (GraphicEq).</string>
+    <string name="no_autoeq_profiles">No hay perfiles de AutoEq importados.</string>
     <string name="reset_equalizer">Restablecer ecualizador</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">¿Está seguro de querer restablecer el ecualizador?
-        \n\nEsto limpiará todas sus configuraciones personalizadas.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">¿Seguro que quieres restablecer el ecualizador?\n\nEsto limpiará todos tus perfiles.</string>
     <string name="not_supported">No soportado</string>
     <string name="enable_equalizer">Habilitar EQ</string>
+    <string name="select_profile">Elegir un perfil</string>
+    <string name="save_profile_label">Guardar perfil</string>
+    <string name="rename_profile_label">Renombrar perfil</string>
+    <string name="delete_profile_label">Eliminar perfil</string>
+    <string name="delete_profile_x">¿Eliminar el perfil \"%s\"?</string>
+    <string name="please_enter_a_name_for_this_profile">Por favor, ingresa un nombre para este perfil.</string>
+    <string name="please_enter_a_new_name_for_this_profile">Por favor, ingresa un nuevo nombre para este perfil.</string>
+    <string name="replace_profile_with_same_name">Reemplazar perfil con el mismo nombre</string>
+    <string name="profile_name">Nombre del perfil</string>
     <string name="that_name_is_already_in_use">Ese nombre ya está en uso.</string>
+    <string name="profile_saved_successfully">Perfil guardado con éxito.</string>
+    <string name="the_profile_could_not_be_saved">No se pudo guardar el perfil.</string>
+    <string name="profile_renamed">Perfil renombrado.</string>
+    <string name="the_profile_could_not_be_renamed">No se pudo renombrar el perfil</string>
+    <string name="autoeq_profile_imported_successfully">Se importó exitosamente el perfil de AutoEq.</string>
+    <string name="profile_x_deleted">Perfil \"%s\" eliminado.</string>
+    <string name="autoeq_profile_x_deleted">Perfil \"%s\" de AutoEq eliminado.</string>
     <string name="bassboost_label">Refuerzo de graves</string>
     <string name="virtualizer_label">Virtualizador</string>
     <string name="loudness_enhancer">Amplificador</string>
     <string name="sound_settings">Ajustes de sonido</string>
     <string name="volume_label">Volumen</string>
+    <string name="reset_balance">Restablecer balance</string>
+    <string name="speed_and_pitch_label">Velocidad y tono</string>
+    <string name="reset_tempo">Restablecer tempo</string>
+    <string name="unlock_pitch_adjustment">Desbloquear ajuste de tono</string>
+    <string name="balance_left">Izquierda</string>
+    <string name="balance_right">Derecha</string>
     <string name="action_external_eq">Ecualizador externo</string>
     <string name="custom">Personalizado</string>
+    <string name="audio_offload_is_enabled">El procesamiento de audio por hardware está habilitado</string>
     <string name="enable_audio_offload_title">Procesar audio por hardware</string>
     <string name="enable_audio_offload_description">Permite que el dispositivo procese el audio directamente a través del hardware dedicado, lo que reduce el uso de la CPU y batería.
 Esta característica no funciona en todos los dispositivos. Es posible que otros efectos no funcionen mientras esté activada.
@@ -461,9 +509,14 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="could_not_import_font">No se pudo importar la fuente.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Programador de apagado</string>
-    <string name="sleep_timer_cancel_current_timer">Cancelar temporizador actual</string>
+    <string name="sleep_timer_waiting_pending_quit">Esperando que finalice la pista actual</string>
+    <string name="sleep_timer_cancel_current_timer">Cancelar</string>
     <string name="sleep_timer_canceled">Apagado programado cancelado.</string>
     <string name="sleep_timer_set_action">Fijar</string>
+    <string name="sleep_timer_x_mins">%d minutos</string>
+    <string name="sleep_timer_15_mins">15 minutos</string>
+    <string name="sleep_timer_45_mins">45 minutos</string>
+    <string name="sleep_timer_1_hour">1 hora</string>
     <string name="sleep_timer_set">La música se detendrá dentro de %d minutos desde ahora.</string>
     <string name="sleep_timer_finish_current_music">Finalizar última canción</string>
     <string name="sleep_timer_stop_after_this_track">Detener despúes de esta pista</string>
@@ -480,6 +533,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="version">Versión</string>
     <string name="changelog">Cambios</string>
     <string name="fork_on_github">Fork en GitHub</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Licencias</string>
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -487,6 +541,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="acknowledgments_title">Agradecimientos</string>
     <string name="translators_title">Traductores</string>
     <string name="translators_summary">Agradecimientos a quienes hacen posible que Booming Music esté disponible en muchos idiomas.</string>
+    <string name="contributors_title">Colaboradores</string>
+    <string name="contributors_summary">Una lista de usuarios que han realizado contribuciones al proyecto.</string>
     <string name="telegram_chat">Chat en Telegram</string>
     <string name="telegram_chat_summary">Únase al chat de Telegram y obtenga nuevas actualizaciones y noticias.</string>
     <string name="view_profile_on_github">Ver perfil en GitHub</string>
@@ -600,6 +656,9 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="instrumental_tracks_identifiers_summary">Si la letra de una canción consiste de solo uno o varios de esos indicadores, la pista será marcada como instrumental (se separan con coma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marcar por título</string>
     <string name="instrumental_tracks_mark_by_title_summary">Se tomará en cuenta el título de la pista al buscar los identificadores.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos los archivos de letras como LRC</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Asumir que todos los archivos usan codificación UTF-8. Esto optimiza el proceso de análisis de archivos, pero en algunos casos podría generar caracteres inusuales en las letras de las canciones.
+Podría ser necesario reiniciar la aplicación</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir al reproducir</string>
@@ -694,6 +753,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="on_clear_queue_remove_all_songs_summary">Se limpiará la cola de reproducción completa.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">Remover todas las canciones excepto la actual</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Solo la canción actualmente en reproducción se mantendrá en la cola.</string>
+    <string name="clear_queue_on_completion_title">Limpiar la cola al finalizar</string>
+    <string name="clear_queue_on_completion_summary">Automáticamente remover todas las canciones de la cola al finalizar la reproducción de la última pista.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descargar metadatos automáticamente</string>
     <string name="ignore_media_store_album_covers_title">Ignorar las portadas del Almacén Multimedia</string>
@@ -751,11 +812,12 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="selected">Solo selección</string>
     <string name="compact">Compacto</string>
     <string name="expanded">Expandido</string>
-    <string name="full_cover_style">Completa</string>
-    <string name="gradient_style">Gradiente</string>
-    <string name="peek_style">Lámina</string>
-    <string name="plain_style">Plano</string>
+    <string name="full_cover_style">Full Cover</string>
+    <string name="gradient_style">Gradient</string>
+    <string name="peek_style">Peek</string>
+    <string name="plain_style">Plain</string>
     <string name="m3_style">M3</string>
+    <string name="expressive_style">Expressive</string>
     <string name="normal_style">Normal</string>
     <string name="cascading">En cascada</string>
     <string name="depth">Profundidad</string>
