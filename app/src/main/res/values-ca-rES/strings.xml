@@ -101,7 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Voleu treure la cançó «<b>%1$s</b>» de la llista?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Voleu treure <b>%1$d</b> cançons de la llista?]]></string>
     <string name="playlist_empty_text">Llista buida</string>
-    <string name="action_lyrics_editor">Lyrics editor</string>
+    <string name="action_lyrics_editor">Editor de lletra</string>
     <string name="action_tag_editor">Editor d\'etiquetes</string>
     <string name="saving_changes">S\'estan desant els canvis</string>
     <string name="changes_saved_successfully">Els canvis s\'han desat correctament.</string>
@@ -407,21 +407,72 @@
     <string name="shuffle_mode_combined_description">Una barreja basada en preferits, reproduccions i recència.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalitzador</string>
+    <string name="autoeq_label">Autoequalització</string>
+    <string name="graphic_eq_label">Equalitzador gràfic</string>
+    <string name="graphic_eq_band_count">%d-banda</string>
+    <string name="eq_profiles_title">Perfils d\'equalització</string>
+    <string name="autoeq_profiles_title">Perfils d\'autoequalització</string>
+    <string name="eq_profile_title">Perfil</string>
+    <string name="change_band_count_title">Canvia el nombre de bandes</string>
+    <string name="change_band_count_message">Canviar el nombre de bandes farà tornar el perfil actual al seu estat inicial.
+        Qualsevol altre perfil desat amb l\'actual configuració de banda no es pot fer servir amb la nova.
+        \n\nVoleu continuar?</string>
+    <string name="band_configuration_changed_successfully">La configuració de banda s\'ha canviat correctament.</string>
+    <string name="band_configuration_could_not_be_changed">No s\'ha pogut canviar la configuració de banda.</string>
+    <string name="share_eq_profiles">Comparteix perfils d\'equalització</string>
     <string name="there_is_nothing_to_export">No hi ha res a exportar.</string>
     <string name="there_is_nothing_to_import">No hi ha res a importar.</string>
+    <string name="an_unexpected_error_occurred">S\'ha produït un error inesperat.</string>
+    <string name="share_profiles">Comparteix perfils</string>
+    <string name="select_profiles_to_share">Trieu els perfils a compartir:</string>
+    <string name="export_profiles">Exporta perfils</string>
+    <string name="select_profiles_to_export">Trieu els perfils a exportar:</string>
+    <string name="select_a_file_to_save_the_exported_profiles">Trieu un fitxer per desar els perfils exportats.</string>
+    <string name="profiles_exported_successfully">S\'han exportat els perfils correctament.</string>
+    <string name="import_profiles">Importa perfils</string>
+    <string name="select_profiles_to_import">Trieu els perfils a importar:</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Trieu el fitxer que contigui perfils d\'equalització de Booming Music.</string>
+    <string name="imported_x_profiles">S\'han importat %d perfils.</string>
+    <string name="no_profile_imported">No s\'ha importat cap perfil.</string>
+    <string name="import_autoeq_profile">Importa un perfil d\'autoequalització</string>
+    <string name="select_a_file_containing_autoeq_params">Trieu un fitxer que contingui paràmetres d\'autoequalització (equalitzador gràfic).</string>
+    <string name="no_autoeq_profiles">No s\'ha importat cap perfil d\'autoequalització.</string>
     <string name="reset_equalizer">Restableix l\'equalitzador</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Esteu segur que voleu restablir l\'equalitzador?
-        \n\nAixò eliminarà totes les vostres configuracions.</string>
+        \n\nS\'eliminaran tots els vostres perfils.</string>
     <string name="not_supported">Incompatible</string>
     <string name="enable_equalizer">Activa l\'EQ</string>
+    <string name="select_profile">Tria un perfil</string>
+    <string name="save_profile_label">Desa el perfil</string>
+    <string name="rename_profile_label">Canvia el nom del perfil</string>
+    <string name="delete_profile_label">Esborra el perfil</string>
+    <string name="delete_profile_x">Voleu esborrar el perfil «%s»?</string>
+    <string name="please_enter_a_name_for_this_profile">Introduïu un nom per a aquest perfil.</string>
+    <string name="please_enter_a_new_name_for_this_profile">Introduïu un nom nou per a aquest perfil.</string>
+    <string name="replace_profile_with_same_name">Substitueix el perfil amb el mateix nom</string>
+    <string name="profile_name">Nom del perfil</string>
     <string name="that_name_is_already_in_use">Aquest nom ja està en ús.</string>
+    <string name="profile_saved_successfully">El perfil s\'ha desat correctament.</string>
+    <string name="the_profile_could_not_be_saved">No s\'ha pogut desar el perfil.</string>
+    <string name="profile_renamed">S\'ha canviat el nom del perfil.</string>
+    <string name="the_profile_could_not_be_renamed">No s\'ha pogut canviar el nom del perfil.</string>
+    <string name="autoeq_profile_imported_successfully">El perfil d\'autoequalització s\'ha importat correctament.</string>
+    <string name="profile_x_deleted">S\'ha esborrat el perfil «%s».</string>
+    <string name="autoeq_profile_x_deleted">S\'ha esborrat el perfil d\'autoequalització «%s».</string>
     <string name="bassboost_label">Potenciació de baixos</string>
     <string name="virtualizer_label">Virtualitzador</string>
     <string name="loudness_enhancer">Amplificador</string>
     <string name="sound_settings">Configuració de so</string>
     <string name="volume_label">Volum</string>
+    <string name="reset_balance">Reset balance</string>
+    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_tempo">Reset tempo</string>
+    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="balance_left">Esquerra</string>
+    <string name="balance_right">Dreta</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
+    <string name="audio_offload_is_enabled">La delegació d\'àudio està activada</string>
     <string name="enable_audio_offload_title">Delegació d\'àudio</string>
     <string name="enable_audio_offload_description">Permet al dispositiu processar l\'àudio directament des del seu maquinari. Redueix l\'ús del processador i de la bateria.
         Aquesta funció només s\'admet en certs dispositius. Alguns efectes o funcions podrien no funcionar mentre està activa.
@@ -463,9 +514,14 @@
     <string name="could_not_import_font">No s\'ha pogut importar la font de text.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporitzador d\'apagada</string>
-    <string name="sleep_timer_cancel_current_timer">Atura el temporitzador</string>
+    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
+    <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_canceled">S\'ha aturat el temporitzador.</string>
     <string name="sleep_timer_set_action">Estableix</string>
+    <string name="sleep_timer_x_mins">%d mins</string>
+    <string name="sleep_timer_15_mins">15 mins</string>
+    <string name="sleep_timer_45_mins">45 mins</string>
+    <string name="sleep_timer_1_hour">1 hour</string>
     <string name="sleep_timer_set">El temporitzador s\'aturarà d\'aquí a %d minuts.</string>
     <string name="sleep_timer_finish_current_music">Finalitza la darrera cançó</string>
     <string name="sleep_timer_stop_after_this_track">Atura després d\'aquesta pista</string>
@@ -482,6 +538,7 @@
     <string name="version">Versió</string>
     <string name="changelog">Registre de canvis</string>
     <string name="fork_on_github">Clona a Github</string>
+    <string name="faq">Preguntes freqüents</string>
     <string name="licenses">Llicències</string>
     <string name="author">Autor</string>
     <string name="mardous_summary">Desenvolupador principal</string>
@@ -489,6 +546,8 @@
     <string name="acknowledgments_title">Agraïments</string>
     <string name="translators_title">Traductors</string>
     <string name="translators_summary">Gràcies a tothom qui fa possible que Booming Music estigui disponible en tants idiomes.</string>
+    <string name="contributors_title">Col·laboradors</string>
+    <string name="contributors_summary">Una llista d\'usuaris que han contribuït en el projecte d\'alguna manera.</string>
     <string name="telegram_chat">Xat de Telegram</string>
     <string name="telegram_chat_summary">Entreu al xat de Telegram per assabentar-vos de noves actualitzacions i notícies.</string>
     <string name="view_profile_on_github">Mostra el perfil a Github</string>
@@ -604,6 +663,10 @@
 (separat per comes).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marca per títol</string>
     <string name="instrumental_tracks_mark_by_title_summary">El títol de la pista també es tindrà en compte per cercar identificadors.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Tracta tots els fitxers de lletra com a UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assumeix que tots els fitxers estan codificats en format UTF-8.
+        Optimitza el procés d\'anàlisi de fitxers, però en alguns casos podria mostrar caràcters inusuals a la lletra de les cançons.
+        Caldrà, potser, reiniciar l\'aplicació.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estil</string>
     <string name="open_on_play_title">Obre en reproduir</string>
@@ -682,24 +745,26 @@
     <string name="mp3_index_seeking_summary">Carrega tot el fitxer MP3 a la memòria per cercar en lloc de refiar-se de la capçalera Xing.
         Feu-lo servir només si la cerca no reïx en alguns fitxers VBR.
         Cal reiniciar l\'aplicació.</string>
-    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
-    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
-    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
-    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
-    <string name="on_song_click_title">When selecting a song</string>
-    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
-    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
-    <string name="on_song_click_play_whole_list_title">Play whole list</string>
-    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
-    <string name="on_song_click_queue_next_title">Queue next</string>
-    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
-    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
-    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
-    <string name="on_clear_queue_title">When clearing the queue</string>
-    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
-    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
+    <string name="play_option_always_visible_title">Mantén visible l\'opció «Reprodueix»</string>
+    <string name="play_option_always_visible_summary">Si s\'activa, l\'opció «Reprodueix» apareixerà sempre al menú de la cançó al marge de la configuració de comportament dels clics.</string>
+    <string name="play_option_whole_list_title">L\'opció «Reprodueix» reprodueix tota la llista</string>
+    <string name="play_option_whole_list_summary">Si s\'activa, seleccionar «Reprodueix» des del menú d\'una cançó reproduirà tota la llista. Si es desactiva, només ho farà la cançó triada.</string>
+    <string name="on_song_click_title">En seleccionar una cançó</string>
+    <string name="on_song_click_play_only_this_song_title">Reprodueix només aquesta cançó</string>
+    <string name="on_song_click_play_only_this_song_summary">Es buidarà la cua actual i es reemplaçarà per la cançó seleccionada.</string>
+    <string name="on_song_click_play_whole_list_title">Reprodueix tota la llista</string>
+    <string name="on_song_click_play_whole_list_summary">Es reemplaçarà la cua amb totes les cançons de la llista/àlbum/carpeta.</string>
+    <string name="on_song_click_queue_next_title">Afegeix tot seguit</string>
+    <string name="on_song_click_queue_next_summary">La cançó seleccionada s\'afegirà a la següent posició de la cua.</string>
+    <string name="on_song_click_enqueue_at_end_title">Afegeix al final</string>
+    <string name="on_song_click_enqueue_at_end_summary">La cançó seleccionada s\'afegirà al final de la cua actual.</string>
+    <string name="on_clear_queue_title">Quan es buidi la cua</string>
+    <string name="on_clear_queue_remove_all_songs_title">Treu totes les cançons</string>
+    <string name="on_clear_queue_remove_all_songs_summary">Tota la cua de reproducció es buidarà.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Treu totes les cançons excepte l\'actual</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Només es manté a la cua la cançó que es reprodueix.</string>
+    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
+    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descarrega metadades automàticament</string>
     <string name="ignore_media_store_album_covers_title">Ignora les portades de Media Store</string>
@@ -762,6 +827,7 @@
     <string name="peek_style">Ullada</string>
     <string name="plain_style">Senzill</string>
     <string name="m3_style">M3</string>
+    <string name="expressive_style">Expressiu</string>
     <string name="normal_style">Normal</string>
     <string name="cascading">En cascada</string>
     <string name="depth">Profunditat</string>
