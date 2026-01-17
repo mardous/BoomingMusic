@@ -419,7 +419,6 @@
     <string name="loudness_enhancer">Amplificador</string>
     <string name="sound_settings">Ajustes de sonido</string>
     <string name="volume_label">Volumen</string>
-    <string name="tempo_label">Velocidad y tono</string>
     <string name="action_external_eq">Ecualizador externo</string>
     <string name="custom">Personalizado</string>
     <string name="enable_audio_offload_title">Procesar audio por hardware</string>

@@ -412,7 +412,6 @@
     <string name="loudness_enhancer">放大器</string>
     <string name="sound_settings">声音设置</string>
     <string name="volume_label">音量</string>
-    <string name="tempo_label">节拍</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">自定义</string>
     <string name="enable_audio_offload_title">音频硬件加速</string>

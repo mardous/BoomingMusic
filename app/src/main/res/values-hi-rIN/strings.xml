@@ -418,7 +418,6 @@
     <string name="loudness_enhancer">एम्प्लीफायर</string>
     <string name="sound_settings">साउंड सेटिंग्स</string>
     <string name="volume_label">वॉल्यूम</string>
-    <string name="tempo_label">गति</string>
     <string name="action_external_eq">बाहरी ईक्यू</string>
     <string name="custom">कस्टम</string>
     <string name="enable_audio_offload_title">Audio Offload</string>

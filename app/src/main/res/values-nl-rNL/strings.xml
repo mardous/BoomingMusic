@@ -420,7 +420,6 @@
     <string name="loudness_enhancer">Versterker</string>
     <string name="sound_settings">Geluidsinstellingen</string>
     <string name="volume_label">Volume</string>
-    <string name="tempo_label">Tijdelijk</string>
     <string name="action_external_eq">Externe EQ</string>
     <string name="custom">Aangepaste</string>
     <string name="enable_audio_offload_title">Audio Uitladen</string>

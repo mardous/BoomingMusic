@@ -438,7 +438,6 @@
     <string name="loudness_enhancer">Усилитель</string>
     <string name="sound_settings">Настройки звука</string>
     <string name="volume_label">Громкость</string>
-    <string name="tempo_label">Темп</string>
     <string name="action_external_eq">Внешний эквалайзер</string>
     <string name="custom">Пользовательский</string>
     <string name="enable_audio_offload_title">Аппаратная разгрузка аудио</string>

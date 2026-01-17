@@ -436,7 +436,6 @@
     <string name="loudness_enhancer">Підсилювач</string>
     <string name="sound_settings">Налаштування звуку</string>
     <string name="volume_label">Гучність</string>
-    <string name="tempo_label">Темп</string>
     <string name="action_external_eq">Зовнішній еквалайзер</string>
     <string name="custom">Власне</string>
     <string name="enable_audio_offload_title">Вивантаження аудіо</string>

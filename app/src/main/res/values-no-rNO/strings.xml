@@ -420,7 +420,6 @@
     <string name="loudness_enhancer">Forsterker</string>
     <string name="sound_settings">Lydinnstillinger (Automatic Translation)</string>
     <string name="volume_label">Volum</string>
-    <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Ekstern EQ</string>
     <string name="custom">Egendefinert</string>
     <string name="enable_audio_offload_title">Audio Offload</string>

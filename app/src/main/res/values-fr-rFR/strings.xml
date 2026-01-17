@@ -420,7 +420,6 @@
     <string name="loudness_enhancer">Amplificateur</string>
     <string name="sound_settings">Paramètres du son</string>
     <string name="volume_label">Volume</string>
-    <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ externe</string>
     <string name="custom">Personnalisé</string>
     <string name="enable_audio_offload_title">Décharge audio</string>

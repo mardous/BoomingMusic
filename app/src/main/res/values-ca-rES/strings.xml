@@ -420,7 +420,6 @@
     <string name="loudness_enhancer">Amplificador</string>
     <string name="sound_settings">Configuració de so</string>
     <string name="volume_label">Volum</string>
-    <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">EQ extern</string>
     <string name="custom">Personalitzat</string>
     <string name="enable_audio_offload_title">Delegació d\'àudio</string>

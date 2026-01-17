@@ -436,7 +436,6 @@
     <string name="loudness_enhancer">Zesilovač</string>
     <string name="sound_settings">Nastavení zvuku</string>
     <string name="volume_label">Objem</string>
-    <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Externí EQ</string>
     <string name="custom">Vlastní</string>
     <string name="enable_audio_offload_title">Vypnutí zvuku</string>

@@ -420,7 +420,6 @@
     <string name="loudness_enhancer">Vahvistin</string>
     <string name="sound_settings">Äänen asetukset</string>
     <string name="volume_label">Tilavuus</string>
-    <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Ulkoinen EQ</string>
     <string name="custom">Mukautettu</string>
     <string name="enable_audio_offload_title">Äänen Siirto</string>

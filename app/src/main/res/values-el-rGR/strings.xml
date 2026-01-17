@@ -420,7 +420,6 @@
     <string name="loudness_enhancer">Ενισχυτής</string>
     <string name="sound_settings">Ρυθμίσεις ήχου</string>
     <string name="volume_label">Όγκος</string>
-    <string name="tempo_label">Ρυθμός</string>
     <string name="action_external_eq">Εξωτερικό EQ</string>
     <string name="custom">Προσαρμοσμένο</string>
     <string name="enable_audio_offload_title">Audio Offload</string>

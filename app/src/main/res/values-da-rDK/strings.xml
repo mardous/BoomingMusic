@@ -420,7 +420,6 @@
     <string name="loudness_enhancer">Forstærker</string>
     <string name="sound_settings">Indstillinger for lyd</string>
     <string name="volume_label">Lydstyrke</string>
-    <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Ekstern EQ</string>
     <string name="custom">Tilpasset</string>
     <string name="enable_audio_offload_title">Lyd Offload</string>

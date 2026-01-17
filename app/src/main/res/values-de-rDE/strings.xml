@@ -420,7 +420,6 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="loudness_enhancer">Verstärker</string>
     <string name="sound_settings">Klangeinstellungen</string>
     <string name="volume_label">Lautstärke</string>
-    <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Externer EQ</string>
     <string name="custom">Benutzerdefiniert</string>
     <string name="enable_audio_offload_title">Audio-Auslagerung</string>

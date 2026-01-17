@@ -412,7 +412,6 @@
     <string name="loudness_enhancer">Amplifier</string>
     <string name="sound_settings">Sound settings</string>
     <string name="volume_label">Volume</string>
-    <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">External EQ</string>
     <string name="custom">Custom</string>
     <string name="enable_audio_offload_title">Audio Offload</string>

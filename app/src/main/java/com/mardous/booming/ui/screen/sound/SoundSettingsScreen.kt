@@ -29,6 +29,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -43,7 +44,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -54,10 +58,10 @@ import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.component.compose.LabeledSwitch
-import com.mardous.booming.ui.component.compose.TitleShapedText
 import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.theme.CornerRadiusTokens
+import com.mardous.booming.ui.theme.SliderTokens
 import java.util.Locale
 import kotlin.math.roundToInt
 
@@ -67,6 +71,7 @@ fun SoundSettingsSheet(
     viewModel: EqualizerViewModel
 ) {
     val context = LocalContext.current
+    val hapticFeedback = LocalHapticFeedback.current
 
     var expandedSoundSettings by remember { mutableStateOf(false) }
     val outputDevice by viewModel.audioDevice.collectAsState()
@@ -185,7 +190,7 @@ fun SoundSettingsSheet(
                     iconRes = R.drawable.ic_volume_up_24dp,
                     containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
                     titleEndContent = {
-                        TitleShapedText(
+                        SoundSettingsValueText(
                             text = "${volume.volumePercent.roundToInt()}%"
                         )
                     },
@@ -201,6 +206,17 @@ fun SoundSettingsSheet(
                             valueRange = volume.range,
                             onValueChange = {
                                 viewModel.setVolume(it.toInt())
+                            },
+                            onValueChangeFinished = {
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.SegmentFrequentTick
+                                )
+                            },
+                            track = {
+                                SliderDefaults.Track(
+                                    sliderState = it,
+                                    modifier = Modifier.height(SliderTokens.MediumTrackHeight)
+                                )
                             },
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -220,7 +236,16 @@ fun SoundSettingsSheet(
                                         valueRange = balance.range,
                                         onValueChange = { balanceLeft = it },
                                         onValueChangeFinished = {
+                                            hapticFeedback.performHapticFeedback(
+                                                HapticFeedbackType.SegmentFrequentTick
+                                            )
                                             viewModel.setBalance(left = balanceLeft)
+                                        },
+                                        track = {
+                                            SliderDefaults.Track(
+                                                sliderState = it,
+                                                modifier = Modifier.height(SliderTokens.MediumTrackHeight)
+                                            )
                                         },
                                         modifier = Modifier.fillMaxWidth()
                                     )
@@ -244,7 +269,16 @@ fun SoundSettingsSheet(
                                         valueRange = balance.range,
                                         onValueChange = { balanceRight = it },
                                         onValueChangeFinished = {
+                                            hapticFeedback.performHapticFeedback(
+                                                HapticFeedbackType.SegmentFrequentTick
+                                            )
                                             viewModel.setBalance(right = balanceRight)
+                                        },
+                                        track = {
+                                            SliderDefaults.Track(
+                                                sliderState = it,
+                                                modifier = Modifier.height(SliderTokens.MediumTrackHeight)
+                                            )
                                         },
                                         modifier = Modifier.fillMaxWidth()
                                     )
@@ -264,7 +298,7 @@ fun SoundSettingsSheet(
                 }
 
                 TitledCard(
-                    title = stringResource(R.string.tempo_label),
+                    title = stringResource(R.string.speed_and_pitch_label),
                     iconRes = R.drawable.ic_graphic_eq_24dp,
                     containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
                     titleEndContent = {
@@ -272,19 +306,23 @@ fun SoundSettingsSheet(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            TitleShapedText(
+                            SoundSettingsValueText(
                                 text = "%.1fx".format(Locale.US, tempoSpeed),
-                                onClick = {
-                                    viewModel.setTempo(isFixedPitch = tempo.isFixedPitch.not())
-                                }
+                                modifier = Modifier.clickable(
+                                    onClick = {
+                                        viewModel.setTempo(isFixedPitch = tempo.isFixedPitch.not())
+                                    }
+                                )
                             )
 
                             AnimatedVisibility(visible = tempo.isFixedPitch.not()) {
-                                TitleShapedText(
+                                SoundSettingsValueText(
                                     text = "%.1fx".format(Locale.US, tempoPitch),
-                                    onClick = {
-                                        viewModel.setTempo(isFixedPitch = true)
-                                    }
+                                    modifier = Modifier.clickable(
+                                        onClick = {
+                                            viewModel.setTempo(isFixedPitch = true)
+                                        }
+                                    )
                                 )
                             }
                         }
@@ -313,7 +351,16 @@ fun SoundSettingsSheet(
                                 valueRange = tempo.speedRange,
                                 onValueChange = { tempoSpeed = it },
                                 onValueChangeFinished = {
+                                    hapticFeedback.performHapticFeedback(
+                                        HapticFeedbackType.SegmentFrequentTick
+                                    )
                                     viewModel.setTempo(speed = tempoSpeed)
+                                },
+                                track = {
+                                    SliderDefaults.Track(
+                                        sliderState = it,
+                                        modifier = Modifier.height(SliderTokens.MediumTrackHeight)
+                                    )
                                 },
                                 modifier = Modifier.fillMaxWidth()
                             )
@@ -339,7 +386,16 @@ fun SoundSettingsSheet(
                                 valueRange = tempo.pitchRange,
                                 onValueChange = { tempoPitch = it },
                                 onValueChangeFinished = {
+                                    hapticFeedback.performHapticFeedback(
+                                        HapticFeedbackType.SegmentFrequentTick
+                                    )
                                     viewModel.setTempo(pitch = tempoPitch)
+                                },
+                                track = {
+                                    SliderDefaults.Track(
+                                        sliderState = it,
+                                        modifier = Modifier.height(SliderTokens.MediumTrackHeight)
+                                    )
                                 },
                                 modifier = Modifier.fillMaxWidth()
                             )
@@ -468,5 +524,21 @@ private fun SoundOptionDescriptionDialog(title: String, description: String, onC
             }
         },
         onDismissRequest = onClose,
+    )
+}
+
+@Composable
+private fun SoundSettingsValueText(
+    text: String,
+    color: Color = MaterialTheme.colorScheme.secondary,
+    modifier: Modifier = Modifier
+) {
+    Text(
+        text = text,
+        color = color,
+        maxLines = 1,
+        style = MaterialTheme.typography.bodySmall,
+        fontWeight = FontWeight.SemiBold,
+        modifier = modifier
     )
 }

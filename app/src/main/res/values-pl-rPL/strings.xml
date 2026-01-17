@@ -436,7 +436,6 @@
     <string name="loudness_enhancer">Wzmacniacz</string>
     <string name="sound_settings">Ustawienia dźwięku</string>
     <string name="volume_label">Głośność</string>
-    <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Zewnętrzny EQ</string>
     <string name="custom">Własny</string>
     <string name="enable_audio_offload_title">Odciążenie audio</string>

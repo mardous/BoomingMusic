@@ -452,7 +452,6 @@
     <string name="loudness_enhancer">مضخم</string>
     <string name="sound_settings">إعدادات الصوت</string>
     <string name="volume_label">حجم</string>
-    <string name="tempo_label">تمبو</string>
     <string name="action_external_eq">EQ خارجي</string>
     <string name="custom">مخصص</string>
     <string name="enable_audio_offload_title">إزاحة الصوت</string>

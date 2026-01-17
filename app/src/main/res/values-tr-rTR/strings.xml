@@ -420,7 +420,6 @@
     <string name="loudness_enhancer">Yükseltici</string>
     <string name="sound_settings">Ses ayarları</string>
     <string name="volume_label">Ses Seviyesi</string>
-    <string name="tempo_label">Tempo</string>
     <string name="action_external_eq">Harici Ekolayzer</string>
     <string name="custom">Özel</string>
     <string name="enable_audio_offload_title">Ses Yükünü Hafifletme</string>

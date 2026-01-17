@@ -436,7 +436,6 @@
     <string name="loudness_enhancer">מגבר</string>
     <string name="sound_settings">הגדרות קול</string>
     <string name="volume_label">עוצמת שמע</string>
-    <string name="tempo_label">קצב</string>
     <string name="action_external_eq">איקוולייזר חיצוני</string>
     <string name="custom">מותאם אישית</string>
     <string name="enable_audio_offload_title">העברת עיבוד שמע לחומרה</string>

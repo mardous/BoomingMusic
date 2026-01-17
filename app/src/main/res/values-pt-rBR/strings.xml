@@ -419,7 +419,6 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="loudness_enhancer">Amplificador</string>
     <string name="sound_settings">Configurações de som</string>
     <string name="volume_label">Volume</string>
-    <string name="tempo_label">Velocidade</string>
     <string name="action_external_eq">EQ Externo</string>
     <string name="custom">Personalizado</string>
     <string name="enable_audio_offload_title">Processamento de áudio otimizado</string>

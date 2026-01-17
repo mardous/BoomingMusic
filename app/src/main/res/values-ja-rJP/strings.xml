@@ -412,7 +412,6 @@
     <string name="loudness_enhancer">アンプ</string>
     <string name="sound_settings">サウンドの設定</string>
     <string name="volume_label">音量</string>
-    <string name="tempo_label">テンポ</string>
     <string name="action_external_eq">外部EQ</string>
     <string name="custom">カスタム</string>
     <string name="enable_audio_offload_title">オーディオオフロード</string>
