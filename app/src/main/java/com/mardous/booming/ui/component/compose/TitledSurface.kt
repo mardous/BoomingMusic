@@ -3,12 +3,13 @@ package com.mardous.booming.ui.component.compose
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -27,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import com.mardous.booming.ui.theme.SurfaceColorTokens
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -34,11 +36,11 @@ fun SwitchCard(
     onCheckedChange: (Boolean) -> Unit,
     checked: Boolean,
     title: String,
-    style: TextStyle = MaterialTheme.typography.titleMedium,
-    @DrawableRes iconRes: Int = 0,
-    containerColor: Color = MaterialTheme.colorScheme.surfaceContainerLow,
-    enabled: Boolean = true,
     modifier: Modifier = Modifier,
+    style: TextStyle? = null,
+    @DrawableRes iconRes: Int? = null,
+    containerColor: Color? = null,
+    enabled: Boolean = true,
     content: @Composable (PaddingValues) -> Unit
 ) {
     TitledCard(
@@ -64,10 +66,10 @@ fun SwitchCard(
 @Composable
 fun TitledCard(
     title: String,
-    style: TextStyle = MaterialTheme.typography.titleMedium,
-    @DrawableRes iconRes: Int = 0,
-    containerColor: Color = MaterialTheme.colorScheme.surfaceContainerLow,
     modifier: Modifier = Modifier,
+    style: TextStyle? = null,
+    @DrawableRes iconRes: Int? = null,
+    containerColor: Color? = null,
     collapsible: Boolean = false,
     titleEndContent: @Composable RowScope.() -> Unit = {},
     content: @Composable (PaddingValues) -> Unit
@@ -95,19 +97,22 @@ private fun TitledCard(
     expanded: Boolean,
     collapsible: Boolean,
     title: String,
-    style: TextStyle = MaterialTheme.typography.titleMedium,
-    @DrawableRes iconRes: Int? = null,
-    containerColor: Color = MaterialTheme.colorScheme.surfaceContainerLow,
     modifier: Modifier = Modifier,
+    style: TextStyle? = null,
+    @DrawableRes iconRes: Int? = null,
+    containerColor: Color? = null,
     titleEndContent: @Composable RowScope.() -> Unit = {},
     content: @Composable (PaddingValues) -> Unit
 ) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = containerColor),
+        colors = CardDefaults.cardColors(
+            containerColor = containerColor ?: MaterialTheme.colorScheme.surfaceVariant.copy(
+                alpha = SurfaceColorTokens.SurfaceVariantAlpha
+            )
+        ),
         modifier = modifier
     ) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
@@ -120,13 +125,17 @@ private fun TitledCard(
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary
                 )
+
+                Spacer(Modifier.width(16.dp))
             }
 
             Text(
                 text = title,
-                style = style,
+                style = style ?: MaterialTheme.typography.titleMedium,
                 modifier = Modifier.weight(1f)
             )
+
+            Spacer(Modifier.width(16.dp))
 
             titleEndContent()
         }

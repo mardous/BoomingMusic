@@ -5,7 +5,6 @@ import android.content.ActivityNotFoundException
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
-import android.media.AudioManager
 import android.media.audiofx.AudioEffect
 import android.net.Uri
 import androidx.lifecycle.ViewModel
@@ -51,7 +50,7 @@ class EqualizerViewModel(
     val audioOffload = equalizerManager.audioOffload
     val audioFloatOutput = equalizerManager.audioFloatOutput
     val skipSilence = equalizerManager.skipSilence
-    val volumeState = audioOutputObserver.volumeState
+    val volumeState = equalizerManager.volumeState
     val audioDevice = audioOutputObserver.audioDevice
 
     val autoEqProfiles = equalizerManager.autoEqProfiles
@@ -176,19 +175,15 @@ class EqualizerViewModel(
         equalizerManager.setEnableSkipSilence(enable)
     }
 
-    fun setVolume(volume: Int) {
-        audioOutputObserver.audioManager?.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0)
+    fun setVolume(volume: Float) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setVolume(volume)
     }
 
     fun setBalance(
-        left: Float = balanceState.value.left,
-        right: Float = balanceState.value.right
+        center: Float
     ) = viewModelScope.launch(Dispatchers.Default) {
         equalizerManager.setBalance(
-            balanceState.value.copy(
-                left = left,
-                right = right
-            )
+            balanceState.value.copy(center = center)
         )
     }
 

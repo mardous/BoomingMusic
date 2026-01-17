@@ -17,33 +17,23 @@
 
 package com.mardous.booming.core.audio
 
-import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
 import android.util.Log
-import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
-import androidx.media.AudioManagerCompat.getStreamMaxVolume
-import androidx.media.AudioManagerCompat.getStreamMinVolume
 import androidx.mediarouter.media.MediaControlIntent
 import androidx.mediarouter.media.MediaRouter
 import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.core.model.audiodevice.getDeviceType
 import com.mardous.booming.core.model.audiodevice.getMediaRouteType
-import com.mardous.booming.core.model.equalizer.VolumeState
 import com.mardous.booming.util.oem.SystemMediaControlResolver
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
-
-    private val _volumeState = MutableStateFlow(VolumeState.Unspecified)
-    val volumeState = _volumeState.asStateFlow()
+class AudioOutputObserver(context: Context) {
 
     private val _audioDevice = MutableStateFlow(AudioDevice.UnknownDevice)
     val audioDevice = _audioDevice.asStateFlow()
@@ -55,24 +45,11 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     private var isObserving = false
 
     init {
-        requestVolume()
         requestAudioDevice()
-    }
-
-    override fun onReceive(context: Context, intent: Intent?) {
-        val action = intent?.action ?: return
-        if (action == VOLUME_CHANGED_ACTION || action == Intent.ACTION_HEADSET_PLUG) {
-            requestVolume()
-        }
     }
 
     fun startObserver() {
         if (!isObserving) try {
-            val filter = IntentFilter().apply {
-                addAction(VOLUME_CHANGED_ACTION)
-                addAction(Intent.ACTION_HEADSET_PLUG)
-            }
-            ContextCompat.registerReceiver(context, this, filter, ContextCompat.RECEIVER_EXPORTED)
             audioManager?.registerAudioDeviceCallback(audioDeviceCallback, null)
             this.isObserving = true
         } catch (e: Throwable) {
@@ -82,7 +59,6 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
 
     fun stopObserver() {
         if (isObserving) try {
-            context.unregisterReceiver(this)
             audioManager?.unregisterAudioDeviceCallback(audioDeviceCallback)
             this.isObserving = false
         } catch (e: Throwable) {
@@ -118,38 +94,21 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
             } ?: AudioDevice.UnknownDevice
     }
 
-    private fun requestVolume() {
-        audioManager?.let {
-            _volumeState.value = VolumeState(
-                currentVolume = it.getStreamVolume(AudioManager.STREAM_MUSIC),
-                maxVolume = getStreamMaxVolume(it, AudioManager.STREAM_MUSIC),
-                minVolume = getStreamMinVolume(it, AudioManager.STREAM_MUSIC),
-                isFixed = it.isVolumeFixed
-            )
-        }
-    }
-
     private fun requestAudioDevice() {
         _audioDevice.value = getCurrentAudioDevice()
-        _volumeState.value = volumeState.value.copy(
-            isFixed = audioManager?.isVolumeFixed == true
-        )
     }
 
     private val audioDeviceCallback: AudioDeviceCallback = object : AudioDeviceCallback() {
         override fun onAudioDevicesAdded(addedDevices: Array<out AudioDeviceInfo>?) {
             requestAudioDevice()
-            requestVolume()
         }
 
         override fun onAudioDevicesRemoved(removedDevices: Array<out AudioDeviceInfo>?) {
             requestAudioDevice()
-            requestVolume()
         }
     }
 
     companion object {
         private const val TAG = "AudioOutputObserver"
-        private const val VOLUME_CHANGED_ACTION = "android.media.VOLUME_CHANGED_ACTION"
     }
 }

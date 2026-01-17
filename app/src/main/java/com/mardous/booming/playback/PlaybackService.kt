@@ -31,6 +31,7 @@ import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import androidx.media3.common.PlaybackException
+import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import androidx.media3.common.Timeline
 import androidx.media3.common.TrackSelectionParameters.AudioOffloadPreferences
@@ -233,7 +234,6 @@ class PlaybackService :
                         }
                     }
                     .setEnableAudioFloatOutput(equalizerManager.audioFloatOutput.value)
-                    .setEnableAudioOutputPlaybackParameters(true)
                 )
                 .setMediaSourceFactory(
                     DefaultMediaSourceFactory(
@@ -911,13 +911,14 @@ class PlaybackService :
             equalizerManager.initializeEqualizer()
         }
         serviceScope.launch {
-            audioOutputObserver.volumeState.collect { volume ->
+            equalizerManager.volumeState.collect { volume ->
+                player.volume = volume.currentVolume
                 if (pauseOnZeroVolume && persistentStorage.restorationState.isRestored) {
                     // don't handle volume changes until our player is fully restored
-                    if (isPlaying && volume.currentVolume < 1) {
+                    if (isPlaying && volume.currentVolume <= 0f) {
                         player.pause()
                         pausedByZeroVolume = true
-                    } else if (pausedByZeroVolume && volume.currentVolume >= 1) {
+                    } else if (pausedByZeroVolume && volume.currentVolume >= 0.1f) {
                         player.play()
                         pausedByZeroVolume = false
                     }
@@ -948,9 +949,7 @@ class PlaybackService :
         }
         serviceScope.launch {
             equalizerManager.tempoState.collect {
-                player.playbackParameters = player.playbackParameters
-                    .withSpeed(it.speed)
-                    .withPitch(it.actualPitch)
+                player.playbackParameters = PlaybackParameters(it.speed, it.actualPitch)
             }
         }
     }

@@ -42,6 +42,7 @@ import com.mardous.booming.core.model.equalizer.LoudnessGainState
 import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.core.model.equalizer.TempoState
 import com.mardous.booming.core.model.equalizer.VirtualizerState
+import com.mardous.booming.core.model.equalizer.VolumeState
 import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.files.getFormattedFileName
@@ -201,12 +202,22 @@ class EqualizerManager(
     val tempoState = _tempoState
         .stateIn(eqScope, SharingStarted.Eagerly, TempoState.Unspecified)
 
+    private val _volumeState: Flow<VolumeState> =
+        context.eqDataStore.data.map { prefs ->
+            VolumeState(
+                currentVolume = prefs[Keys.VOLUME] ?: 1f,
+                volumeRange = MIN_VOLUME..MAX_VOLUME
+            )
+        }
+
+    val volumeState = _volumeState
+        .stateIn(eqScope, SharingStarted.Eagerly, VolumeState.Unspecified)
+
     private val _balanceState: Flow<BalanceState> =
         context.eqDataStore.data.map { prefs ->
             BalanceState(
-                left = prefs[Keys.LEFT_BALANCE] ?: MAX_BALANCE,
-                right = prefs[Keys.RIGHT_BALANCE] ?: MAX_BALANCE,
-                range = MIN_BALANCE..MAX_BALANCE
+                center = prefs[Keys.CENTER_BALANCE] ?: 0f,
+                range = -MAX_VOLUME..MAX_VOLUME
             )
         }
 
@@ -751,10 +762,15 @@ class EqualizerManager(
         }
     }
 
+    suspend fun setVolume(volume: Float) {
+        context.eqDataStore.edit { prefs ->
+            prefs[Keys.VOLUME] = volume
+        }
+    }
+
     suspend fun setBalance(balance: BalanceState) {
         context.eqDataStore.edit { prefs ->
-            prefs[Keys.LEFT_BALANCE] = balance.left
-            prefs[Keys.RIGHT_BALANCE] = balance.right
+            prefs[Keys.CENTER_BALANCE] = balance.center
         }
     }
 
@@ -956,8 +972,8 @@ class EqualizerManager(
             val REPLAYGAIN_MODE = stringPreferencesKey("replaygain.mode")
             val REPLAYGAIN_PREAMP = floatPreferencesKey("replaygain.preamp")
             val REPLAYGAIN_PREAMP_WITHOUT_GAIN = floatPreferencesKey("replaygain.preamp.without_gain")
-            val LEFT_BALANCE = floatPreferencesKey("eq.balance.left")
-            val RIGHT_BALANCE = floatPreferencesKey("eq.balance.right")
+            val VOLUME = floatPreferencesKey("player.volume")
+            val CENTER_BALANCE = floatPreferencesKey("eq.balance")
             val SPEED = floatPreferencesKey("eq.speed")
             val PITCH = floatPreferencesKey("eq.pitch")
             val IS_FIXED_PITCH = booleanPreferencesKey("eq.pitch.fixed")
@@ -985,7 +1001,7 @@ class EqualizerManager(
         const val MIN_PITCH = .5f
         const val MAX_PITCH = 2f
 
-        const val MIN_BALANCE = 0f
-        const val MAX_BALANCE = 1f
+        const val MIN_VOLUME = 0f
+        const val MAX_VOLUME = 1f
     }
 }

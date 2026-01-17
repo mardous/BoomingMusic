@@ -22,12 +22,14 @@ import com.mardous.booming.data.model.replaygain.ReplayGainMode
 
 @Immutable
 data class BalanceState(
-    val left: Float,
-    val right: Float,
+    val center: Float,
     val range: ClosedFloatingPointRange<Float>
 ) {
+    val left  = (1f - center).coerceIn(0f, 1f)
+    val right = (1f + center).coerceIn(0f, 1f)
+
     companion object {
-        val Unspecified = BalanceState(0f, 0f, 0f..1f)
+        val Unspecified = BalanceState(0f, -1f..1f)
     }
 }
 
@@ -49,19 +51,16 @@ data class TempoState(
 
 @Immutable
 data class VolumeState(
-    val currentVolume: Int,
-    val maxVolume: Int,
-    val minVolume: Int,
-    val isFixed: Boolean
+    val currentVolume: Float,
+    val volumeRange: ClosedFloatingPointRange<Float>
 ) {
-    val range get() = minVolume.toFloat()..maxVolume.toFloat()
     val volumePercent: Float
-        get() = if (maxVolume > minVolume) {
-            ((currentVolume - minVolume).toFloat() / (maxVolume - minVolume).toFloat()) * 100f
+        get() = if (volumeRange.endInclusive > volumeRange.start) {
+            ((currentVolume - volumeRange.start) / (volumeRange.endInclusive - volumeRange.start)) * 100f
         } else 0f
 
     companion object {
-        val Unspecified = VolumeState(0, 1, 0, false)
+        val Unspecified = VolumeState(0f, 0f..1f)
     }
 }
 
