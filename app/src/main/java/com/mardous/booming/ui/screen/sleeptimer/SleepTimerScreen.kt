@@ -56,6 +56,7 @@ import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
+import com.mardous.booming.ui.theme.SliderTokens
 import kotlin.math.round
 
 data class SleepTimerUiState(
@@ -185,7 +186,7 @@ fun SleepTimerBottomSheet(
                         track = { sliderState ->
                             SliderDefaults.Track(
                                 sliderState = sliderState,
-                                modifier = Modifier.height(32.dp)
+                                modifier = Modifier.height(SliderTokens.MediumTrackHeight)
                             )
                         },
                         enabled = uiState.isRunning.not(),

@@ -13,3 +13,7 @@ object BorderStrokeTokens {
     val None = 0.dp
     val Medium = 2.dp
 }
+
+object SliderTokens {
+    val MediumTrackHeight = 32.dp
+}
