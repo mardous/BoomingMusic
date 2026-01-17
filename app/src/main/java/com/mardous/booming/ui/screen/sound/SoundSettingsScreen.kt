@@ -297,7 +297,10 @@ fun SoundSettingsSheet(
                     ) {
                         Row(modifier = Modifier.fillMaxWidth()) {
                             IconButton(
-                                onClick = { viewModel.setTempo(speed = 1f) }
+                                onClick = {
+                                    tempoSpeed = 1f
+                                    viewModel.setTempo(speed = tempoSpeed)
+                                }
                             ) {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_speed_24dp),
@@ -319,7 +322,10 @@ fun SoundSettingsSheet(
                         Row(modifier = Modifier.fillMaxWidth()) {
                             IconButton(
                                 enabled = tempo.isFixedPitch.not(),
-                                onClick = { viewModel.setTempo(pitch = 1f) }
+                                onClick = {
+                                    tempoPitch = 1f
+                                    viewModel.setTempo(pitch = tempoPitch)
+                                }
                             ) {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_graphic_eq_24dp),
