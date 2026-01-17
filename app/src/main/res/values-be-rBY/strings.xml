@@ -480,7 +480,10 @@
     <string name="loudness_enhancer">Amplifier</string>
     <string name="sound_settings">Sound settings</string>
     <string name="volume_label">Volume</string>
-    <string name="tempo_label">Tempo</string>
+    <string name="reset_balance">Reset balance</string>
+    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_tempo">Reset tempo</string>
+    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
     <string name="balance_left">Left</string>
     <string name="balance_right">Right</string>
     <string name="action_external_eq">External EQ</string>
