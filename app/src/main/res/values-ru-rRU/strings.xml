@@ -533,13 +533,11 @@
     <string name="action_sleep_timer">Таймер сна</string>
     <string name="sleep_timer_waiting_pending_quit">Ожидание окончания текущего трека</string>
     <string name="sleep_timer_cancel_current_timer">Отмена</string>
-    <string name="sleep_timer_canceled">Таймер сна отменен.</string>
     <string name="sleep_timer_set_action">Установить</string>
     <string name="sleep_timer_x_mins">%d мин</string>
     <string name="sleep_timer_15_mins">15 мин</string>
     <string name="sleep_timer_45_mins">45 мин</string>
     <string name="sleep_timer_1_hour">1 час</string>
-    <string name="sleep_timer_set">Таймер сна установлен на %d минут.</string>
     <string name="sleep_timer_finish_current_music">Закончить последнюю песню</string>
     <string name="sleep_timer_stop_after_this_track">Остановить после этого трека</string>
     <string name="sleep_timer_stop_after_x">Остановить после %s</string>

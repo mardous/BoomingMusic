@@ -45,7 +45,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -54,7 +53,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
-import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.theme.SliderTokens
 import kotlin.math.round
@@ -81,7 +79,6 @@ sealed class SleepTimerEvent {
 fun SleepTimerBottomSheet(
     viewModel: SleepTimerViewModel
 ) {
-    val context = LocalContext.current
     val hapticFeedback = LocalHapticFeedback.current
 
     val uiState by viewModel.uiState.collectAsState()
@@ -90,11 +87,11 @@ fun SleepTimerBottomSheet(
     LaunchedEffect(sleepTimerEvent) {
         sleepTimerEvent?.let { event ->
             when (event) {
-                SleepTimerEvent.Canceled -> {
-                    context.showToast(R.string.sleep_timer_canceled)
+                is SleepTimerEvent.Canceled -> {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.ToggleOff)
                 }
                 is SleepTimerEvent.Set -> {
-                    context.showToast(context.getString(R.string.sleep_timer_set, event.minutes))
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.Confirm)
                 }
             }
         }
@@ -177,10 +174,10 @@ fun SleepTimerBottomSheet(
                         value = sliderPosition,
                         onValueChange = { sliderPosition = round(it) },
                         onValueChangeFinished = {
-                            viewModel.setTimerState(value = sliderPosition)
                             hapticFeedback.performHapticFeedback(
                                 HapticFeedbackType.SegmentFrequentTick
                             )
+                            viewModel.setTimerState(value = sliderPosition)
                         },
                         valueRange = 1f..90f,
                         track = { sliderState ->
@@ -201,15 +198,19 @@ fun SleepTimerBottomSheet(
                     ) {
                         OutlinedButton(
                             onClick = {
-                                sliderPosition = 15f
-                                viewModel.setTimerState(value = sliderPosition)
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.ContextClick
+                                )
+                                viewModel.setTimerState(value = 15f)
                             },
                             shape = ButtonGroupDefaults.connectedLeadingButtonShape,
+                            contentPadding = PaddingValues(8.dp),
                             enabled = uiState.isRunning.not(),
                             modifier = Modifier.weight(1f)
                         ) {
                             Text(
                                 text = stringResource(R.string.sleep_timer_15_mins),
+                                style = MaterialTheme.typography.bodySmall,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
                             )
@@ -217,15 +218,19 @@ fun SleepTimerBottomSheet(
 
                         OutlinedButton(
                             onClick = {
-                                sliderPosition = 45f
-                                viewModel.setTimerState(value = sliderPosition)
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.ContextClick
+                                )
+                                viewModel.setTimerState(value = 45f)
                             },
                             shape = ShapeDefaults.Small,
+                            contentPadding = PaddingValues(8.dp),
                             enabled = uiState.isRunning.not(),
                             modifier = Modifier.weight(1f)
                         ) {
                             Text(
                                 text = stringResource(R.string.sleep_timer_45_mins),
+                                style = MaterialTheme.typography.bodySmall,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
                             )
@@ -233,15 +238,19 @@ fun SleepTimerBottomSheet(
 
                         OutlinedButton(
                             onClick = {
-                                sliderPosition = 60f
-                                viewModel.setTimerState(value = sliderPosition)
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.ContextClick
+                                )
+                                viewModel.setTimerState(value = 60f)
                             },
                             shape = ButtonGroupDefaults.connectedTrailingButtonShape,
+                            contentPadding = PaddingValues(8.dp),
                             enabled = uiState.isRunning.not(),
                             modifier = Modifier.weight(1f)
                         ) {
                             Text(
                                 text = stringResource(R.string.sleep_timer_1_hour),
+                                style = MaterialTheme.typography.bodySmall,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
                             )
@@ -263,6 +272,15 @@ fun SleepTimerBottomSheet(
                             value = uiState.isFinishMusic,
                             role = Role.Switch,
                             onValueChange = { isChecked ->
+                                if (isChecked) {
+                                    hapticFeedback.performHapticFeedback(
+                                        HapticFeedbackType.ToggleOn
+                                    )
+                                } else {
+                                    hapticFeedback.performHapticFeedback(
+                                        HapticFeedbackType.ToggleOff
+                                    )
+                                }
                                 viewModel.setTimerState(isFinishMusic = isChecked)
                             }
                         )

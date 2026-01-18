@@ -516,13 +516,11 @@
     <string name="action_sleep_timer">Timer spegnimento</string>
     <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
     <string name="sleep_timer_cancel_current_timer">Cancel</string>
-    <string name="sleep_timer_canceled">Timer di sospensione annullato.</string>
     <string name="sleep_timer_set_action">Imposta</string>
     <string name="sleep_timer_x_mins">%d mins</string>
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
-    <string name="sleep_timer_set">Timer di spegnimento impostato per %d minuti da ora.</string>
     <string name="sleep_timer_finish_current_music">Termina l\'ultima canzone</string>
     <string name="sleep_timer_stop_after_this_track">Ferma dopo questa traccia</string>
     <string name="sleep_timer_stop_after_x">Ferma dopo %s</string>

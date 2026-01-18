@@ -515,13 +515,11 @@ Ideal para podcasts e gravações.</string>
     <string name="action_sleep_timer">Temporizador</string>
     <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
     <string name="sleep_timer_cancel_current_timer">Cancel</string>
-    <string name="sleep_timer_canceled">Temporizador cancelado.</string>
     <string name="sleep_timer_set_action">Definir</string>
     <string name="sleep_timer_x_mins">%d mins</string>
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
-    <string name="sleep_timer_set">Temporizador definido para %d minutos a partir de agora.</string>
     <string name="sleep_timer_finish_current_music">Terminar última música</string>
     <string name="sleep_timer_stop_after_this_track">Parar depois desta música</string>
     <string name="sleep_timer_stop_after_x">Parar depois de %s</string>

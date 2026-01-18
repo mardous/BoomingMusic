@@ -516,13 +516,11 @@
     <string name="action_sleep_timer">Sov timer</string>
     <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
     <string name="sleep_timer_cancel_current_timer">Cancel</string>
-    <string name="sleep_timer_canceled">Sov timer avbruten.</string>
     <string name="sleep_timer_set_action">Ange</string>
     <string name="sleep_timer_x_mins">%d mins</string>
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
-    <string name="sleep_timer_set">Sov timer inställd på %d minuter från och med nu.</string>
     <string name="sleep_timer_finish_current_music">Slutför sista låten</string>
     <string name="sleep_timer_stop_after_this_track">Stoppa efter detta spår</string>
     <string name="sleep_timer_stop_after_x">Stoppa efter %s</string>

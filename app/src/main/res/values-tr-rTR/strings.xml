@@ -511,13 +511,11 @@
     <string name="action_sleep_timer">Uyku zamanlayıcısı</string>
     <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
     <string name="sleep_timer_cancel_current_timer">Cancel</string>
-    <string name="sleep_timer_canceled">Uyku zamanlayıcısı iptal edildi.</string>
     <string name="sleep_timer_set_action">Ayarla</string>
     <string name="sleep_timer_x_mins">%d mins</string>
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
-    <string name="sleep_timer_set">Uyku zamanlayıcısı %d dakika sonrasına ayarlandı.</string>
     <string name="sleep_timer_finish_current_music">Son şarkıyı bitir</string>
     <string name="sleep_timer_stop_after_this_track">Bu parçadan sonra durdur</string>
     <string name="sleep_timer_stop_after_x">%s sonrası durdur</string>
