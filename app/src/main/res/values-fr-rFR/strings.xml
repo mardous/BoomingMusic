@@ -516,13 +516,11 @@
     <string name="action_sleep_timer">Minuteur de sommeil</string>
     <string name="sleep_timer_waiting_pending_quit">En attente de la fin du titre en cours</string>
     <string name="sleep_timer_cancel_current_timer">Annuler</string>
-    <string name="sleep_timer_canceled">Minuteur de sommeil annulé.</string>
     <string name="sleep_timer_set_action">Régler</string>
     <string name="sleep_timer_x_mins">%d minutes</string>
     <string name="sleep_timer_15_mins">15 minutes</string>
     <string name="sleep_timer_45_mins">45 minutes</string>
     <string name="sleep_timer_1_hour">1 heure</string>
-    <string name="sleep_timer_set">Le minuteur de sommeil est réglée pour %d minutes à partir de maintenant.</string>
     <string name="sleep_timer_finish_current_music">Terminer le dernier titre</string>
     <string name="sleep_timer_stop_after_this_track">Arrêter après ce titre</string>
     <string name="sleep_timer_stop_after_x">Arrêter après %s</string>
