@@ -481,10 +481,10 @@
     <string name="loudness_enhancer">Усилитель</string>
     <string name="sound_settings">Настройки звука</string>
     <string name="volume_label">Громкость</string>
-    <string name="reset_balance">Reset balance</string>
-    <string name="speed_and_pitch_label">Speed and pitch</string>
-    <string name="reset_tempo">Reset tempo</string>
-    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="reset_balance">Сбросить баланс</string>
+    <string name="speed_and_pitch_label">Скорость и высота тона</string>
+    <string name="reset_tempo">Сбросить темп</string>
+    <string name="unlock_pitch_adjustment">Разблокировать настройку тона</string>
     <string name="balance_left">Левый</string>
     <string name="balance_right">Правый</string>
     <string name="action_external_eq">Внешний эквалайзер</string>
@@ -783,7 +783,7 @@
     <string name="clear_queue_on_completion_summary">Автоматически очищать очередь после окончания последнего трека.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Автоматически загружать метаданные</string>
-    <string name="ignore_media_store_album_covers_title">Игнорировать обложки изMediaStore</string>
+    <string name="ignore_media_store_album_covers_title">Игнорировать обложки из MediaStore</string>
     <string name="ignore_media_store_album_covers_summary">Это может помочь улучшить качество изображений, но требует больше памяти.</string>
     <string name="use_folder_album_cover_title">Использовать изображения папок</string>
     <string name="use_folder_album_cover_summary">Если аудиофайл не содержит встроенную обложку. Загрузка изображений может занять немного больше времени.</string>
