@@ -464,10 +464,10 @@
     <string name="loudness_enhancer">Amplificateur</string>
     <string name="sound_settings">Paramètres du son</string>
     <string name="volume_label">Volume</string>
-    <string name="reset_balance">Reset balance</string>
-    <string name="speed_and_pitch_label">Speed and pitch</string>
-    <string name="reset_tempo">Reset tempo</string>
-    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="reset_balance">Réinitialiser la balance</string>
+    <string name="speed_and_pitch_label">Vitesse et hauteur</string>
+    <string name="reset_tempo">Réinitialiser le tempo</string>
+    <string name="unlock_pitch_adjustment">Déverrouiller le réglage de la hauteur</string>
     <string name="balance_left">Gauche</string>
     <string name="balance_right">Droite</string>
     <string name="action_external_eq">EQ externe</string>
