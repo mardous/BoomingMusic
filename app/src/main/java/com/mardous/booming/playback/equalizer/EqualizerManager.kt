@@ -289,19 +289,14 @@ class EqualizerManager(
 
         _replayGainState.debounce(50)
             .onEach { state ->
-                if (eqState.value.supported) {
-                    if (state.mode.isOn) {
-                        eqEngine?.setInputGain(state.preamp)
-                    } else {
-                        eqEngine?.setInputGain(0f)
-                    }
-                    replayGainProcessor.mode = ReplayGainMode.Off
-                    replayGainProcessor.preAmpGain = 0f
-                    replayGainProcessor.preAmpGainWithoutTag = 0f
-                } else {
+                if (state.mode.isOn) {
                     replayGainProcessor.mode = state.mode
                     replayGainProcessor.preAmpGain = state.preamp
                     replayGainProcessor.preAmpGainWithoutTag = state.preampWithoutGain
+                } else {
+                    replayGainProcessor.mode = ReplayGainMode.Off
+                    replayGainProcessor.preAmpGain = 0f
+                    replayGainProcessor.preAmpGainWithoutTag = 0f
                 }
             }
             .flowOn(Dispatchers.Main)
