@@ -511,13 +511,11 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="action_sleep_timer">Programador de apagado</string>
     <string name="sleep_timer_waiting_pending_quit">Esperando que finalice la pista actual</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar</string>
-    <string name="sleep_timer_canceled">Apagado programado cancelado.</string>
     <string name="sleep_timer_set_action">Fijar</string>
     <string name="sleep_timer_x_mins">%d minutos</string>
     <string name="sleep_timer_15_mins">15 minutos</string>
     <string name="sleep_timer_45_mins">45 minutos</string>
     <string name="sleep_timer_1_hour">1 hora</string>
-    <string name="sleep_timer_set">La música se detendrá dentro de %d minutos desde ahora.</string>
     <string name="sleep_timer_finish_current_music">Finalizar última canción</string>
     <string name="sleep_timer_stop_after_this_track">Detener despúes de esta pista</string>
     <string name="sleep_timer_stop_after_x">Detener después de %s</string>
