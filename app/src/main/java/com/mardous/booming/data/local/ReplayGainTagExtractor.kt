@@ -92,12 +92,16 @@ object ReplayGainTagExtractor {
 
     private fun parseOpusR128(tags: Map<String, Array<String>>): Map<String, Float> {
         val result = mutableMapOf<String, Float>()
-        val r128Track = tags[OPUS_TRACK_GAIN]?.firstOrNull()?.toFloatOrNull()
-        val r128Album = tags[OPUS_ALBUM_GAIN]?.firstOrNull()?.toFloatOrNull()
 
-        // R128 uses LUFS, ReplayGain uses dB. +5 dB is a common conversion.
-        r128Track?.let { result[TAG_TRACK_GAIN] = it + 5f }
-        r128Album?.let { result[TAG_ALBUM_GAIN] = it + 5f }
+        fun convertR128ToDb(value: String?): Float? {
+            return value?.toIntOrNull()?.let { raw -> (raw / 256f) + 5f }
+        }
+
+        convertR128ToDb(tags[OPUS_TRACK_GAIN]?.firstOrNull())
+            ?.let { result[TAG_TRACK_GAIN] = it }
+
+        convertR128ToDb(tags[OPUS_ALBUM_GAIN]?.firstOrNull())
+            ?.let { result[TAG_ALBUM_GAIN] = it }
 
         return result
     }

@@ -6,9 +6,18 @@ import android.app.PendingIntent
 import android.bluetooth.BluetoothA2dp
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothProfile
-import android.content.*
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.graphics.Bitmap
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
+import android.os.Looper
+import android.os.Process
 import android.util.Log
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
@@ -17,7 +26,14 @@ import androidx.core.content.getSystemService
 import androidx.core.os.bundleOf
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
-import androidx.media3.common.*
+import androidx.media3.common.AudioAttributes
+import androidx.media3.common.C
+import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
+import androidx.media3.common.PlaybackException
+import androidx.media3.common.PlaybackParameters
+import androidx.media3.common.Player
+import androidx.media3.common.Timeline
 import androidx.media3.common.TrackSelectionParameters.AudioOffloadPreferences
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
@@ -28,9 +44,17 @@ import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.source.ShuffleOrder.UnshuffledShuffleOrder
 import androidx.media3.extractor.DefaultExtractorsFactory
 import androidx.media3.extractor.mp3.Mp3Extractor
-import androidx.media3.session.*
+import androidx.media3.session.CacheBitmapLoader
+import androidx.media3.session.CommandButton
+import androidx.media3.session.DefaultMediaNotificationProvider
+import androidx.media3.session.LibraryResult
+import androidx.media3.session.MediaLibraryService
 import androidx.media3.session.MediaLibraryService.MediaLibrarySession
+import androidx.media3.session.MediaSession
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
+import androidx.media3.session.SessionCommand
+import androidx.media3.session.SessionError
+import androidx.media3.session.SessionResult
 import coil3.SingletonImageLoader
 import coil3.request.ImageRequest
 import coil3.size.Scale
@@ -45,12 +69,10 @@ import com.mardous.booming.core.appwidgets.BoomingGlanceWidget
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import com.mardous.booming.core.audio.AudioOutputObserver
-import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
@@ -60,12 +82,29 @@ import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
 import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.util.*
+import com.mardous.booming.util.CLEAR_QUEUE_ON_COMPLETION
+import com.mardous.booming.util.ENABLE_HISTORY
+import com.mardous.booming.util.IGNORE_AUDIO_FOCUS
+import com.mardous.booming.util.MP3_INDEX_SEEKING
+import com.mardous.booming.util.PAUSE_ON_ZERO_VOLUME
+import com.mardous.booming.util.PLAY_ON_STARTUP_MODE
+import com.mardous.booming.util.PlayOnStartupMode
+import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.Preferences.requireString
-import kotlinx.coroutines.*
+import com.mardous.booming.util.QUEUE_NEXT_MODE
+import com.mardous.booming.util.REWIND_WITH_BACK
+import com.mardous.booming.util.SEEK_INTERVAL
+import com.mardous.booming.util.STOP_WHEN_CLOSED_FROM_RECENTS
+import com.mardous.booming.util.SongPlayCountHelper
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.guava.future
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import java.io.ByteArrayOutputStream
 import kotlin.random.Random
@@ -84,7 +123,6 @@ class PlaybackService :
     private val sleepTimer: SleepTimer by inject()
     private val equalizerManager: EqualizerManager by inject()
     private val audioOutputObserver: AudioOutputObserver by inject()
-    private val soundSettings: SoundSettings by inject()
     private val repository: Repository by inject()
 
     private val libraryProvider = LibraryProvider(repository)
@@ -97,8 +135,8 @@ class PlaybackService :
     }
 
     private val playerThread = HandlerThread("Booming-ExoPlayer", Process.THREAD_PRIORITY_AUDIO)
-    private val balanceProcessor = BalanceAudioProcessor()
-    private val replayGainProcessor = ReplayGainAudioProcessor(ReplayGainMode.Off)
+    private val balanceProcessor: BalanceAudioProcessor by inject()
+    private val replayGainProcessor: ReplayGainAudioProcessor by inject()
 
     private lateinit var nm: NotificationManager
     private lateinit var persistentStorage: PersistentStorage
@@ -151,23 +189,23 @@ class PlaybackService :
         customCommands = listOf(
             CommandButton.Builder(CommandButton.ICON_SHUFFLE_OFF)
                 .setDisplayName(getString(R.string.shuffle_mode))
-                .setSessionCommand(SessionCommand(Playback.SHUFFLE_ON, Bundle.EMPTY))
+                .setPlayerCommand(Player.COMMAND_SET_SHUFFLE_MODE, true)
                 .build(),
             CommandButton.Builder(CommandButton.ICON_SHUFFLE_ON)
                 .setDisplayName(getString(R.string.shuffle_mode))
-                .setSessionCommand(SessionCommand(Playback.SHUFFLE_OFF, Bundle.EMPTY))
+                .setPlayerCommand(Player.COMMAND_SET_SHUFFLE_MODE, false)
                 .build(),
             CommandButton.Builder(CommandButton.ICON_REPEAT_OFF)
                 .setDisplayName(getString(R.string.repeat_mode))
-                .setSessionCommand(SessionCommand(Playback.REPEAT_ALL, Bundle.EMPTY))
+                .setPlayerCommand(Player.COMMAND_SET_REPEAT_MODE, Player.REPEAT_MODE_ALL)
                 .build(),
             CommandButton.Builder(CommandButton.ICON_REPEAT_ALL)
                 .setDisplayName(getString(R.string.repeat_mode))
-                .setSessionCommand(SessionCommand(Playback.REPEAT_ONE, Bundle.EMPTY))
+                .setPlayerCommand(Player.COMMAND_SET_REPEAT_MODE, Player.REPEAT_MODE_ONE)
                 .build(),
             CommandButton.Builder(CommandButton.ICON_REPEAT_ONE)
                 .setDisplayName(getString(R.string.repeat_mode))
-                .setSessionCommand(SessionCommand(Playback.REPEAT_OFF, Bundle.EMPTY))
+                .setPlayerCommand(Player.COMMAND_SET_REPEAT_MODE, Player.REPEAT_MODE_OFF)
                 .build()
         )
 
@@ -189,14 +227,13 @@ class PlaybackService :
                             enableAudioOutputPlaybackParams: Boolean
                         ): AudioSink {
                             return DefaultAudioSink.Builder(this@PlaybackService)
-                                .setAudioProcessors(arrayOf(replayGainProcessor, balanceProcessor))
+                                .setAudioProcessors(arrayOf(balanceProcessor, replayGainProcessor))
                                 .setEnableFloatOutput(enableFloatOutput)
                                 .setEnableAudioOutputPlaybackParameters(enableAudioOutputPlaybackParams)
                                 .build()
                         }
                     }
-                    .setEnableAudioFloatOutput(soundSettings.audioFloatOutput)
-                    .setEnableAudioOutputPlaybackParameters(true)
+                    .setEnableAudioFloatOutput(equalizerManager.audioFloatOutput.value)
                 )
                 .setMediaSourceFactory(
                     DefaultMediaSourceFactory(
@@ -209,7 +246,7 @@ class PlaybackService :
                             }
                     )
                 )
-                .setSkipSilenceEnabled(soundSettings.skipSilence)
+                .setSkipSilenceEnabled(equalizerManager.skipSilence.value)
                 .setHandleAudioBecomingNoisy(true)
                 .setMaxSeekToPreviousPositionMs(maxSeekToPreviousMs)
                 .setSeekBackIncrementMs(seekInterval)
@@ -327,14 +364,6 @@ class PlaybackService :
         val connectionResult = super.onConnect(session, controller)
         val availableCommands = MediaSession.ConnectionResult.DEFAULT_SESSION_AND_LIBRARY_COMMANDS
             .buildUpon()
-
-        if (session.isRemoteController(controller)) {
-            for (command in customCommands) {
-                command.sessionCommand?.let {
-                    availableCommands.add(it)
-                }
-            }
-        }
 
         availableCommands.add(SessionCommand(Playback.CYCLE_REPEAT, Bundle.EMPTY))
         availableCommands.add(SessionCommand(Playback.TOGGLE_SHUFFLE, Bundle.EMPTY))
@@ -529,33 +558,8 @@ class PlaybackService :
                 Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
             }
 
-            Playback.SHUFFLE_OFF -> {
-                player.shuffleModeEnabled = false
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-            }
-
-            Playback.SHUFFLE_ON -> {
-                player.shuffleModeEnabled = true
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-            }
-
             Playback.CYCLE_REPEAT -> {
                 cycleRepeat()
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-            }
-
-            Playback.REPEAT_OFF -> {
-                player.repeatMode = Player.REPEAT_MODE_OFF
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-            }
-
-            Playback.REPEAT_ALL -> {
-                player.repeatMode = Player.REPEAT_MODE_ALL
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
-            }
-
-            Playback.REPEAT_ONE -> {
-                player.repeatMode = Player.REPEAT_MODE_ONE
                 Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
             }
 
@@ -640,6 +644,10 @@ class PlaybackService :
     }
 
     override fun onPlaybackStateChanged(playbackState: Int) {
+        if (player.playbackState == Player.STATE_ENDED &&
+            preferences.getBoolean(CLEAR_QUEUE_ON_COMPLETION, false)) {
+            player.exoPlayer.clearMediaItems()
+        }
         refreshMediaButtonCustomLayout()
     }
 
@@ -879,9 +887,6 @@ class PlaybackService :
                 NotificationManager.IMPORTANCE_LOW
             ).apply {
                 description = getString(R.string.playing_notification_description)
-                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
-                    setShowBadge(false)
-                }
             }
             nm.createNotificationChannel(notificationChannel)
         }
@@ -902,17 +907,18 @@ class PlaybackService :
     }
 
     private fun prepareEqualizerAndSoundSettings() {
-        serviceScope.launch(IO) {
+        serviceScope.launch {
             equalizerManager.initializeEqualizer()
         }
         serviceScope.launch {
-            audioOutputObserver.volumeStateFlow.collect { volume ->
+            equalizerManager.volumeState.collect { volume ->
+                player.volume = volume.currentVolume
                 if (pauseOnZeroVolume && persistentStorage.restorationState.isRestored) {
                     // don't handle volume changes until our player is fully restored
-                    if (isPlaying && volume.currentVolume < 1) {
+                    if (isPlaying && volume.currentVolume <= 0f) {
                         player.pause()
                         pausedByZeroVolume = true
-                    } else if (pausedByZeroVolume && volume.currentVolume >= 1) {
+                    } else if (pausedByZeroVolume && volume.currentVolume >= 0.1f) {
                         player.play()
                         pausedByZeroVolume = false
                     }
@@ -920,7 +926,7 @@ class PlaybackService :
             }
         }
         serviceScope.launch {
-            soundSettings.audioOffloadFlow.collect { audioOffloadingEnabled ->
+            equalizerManager.audioOffload.collect { audioOffloadingEnabled ->
                 player.trackSelectionParameters = player.trackSelectionParameters
                     .buildUpon()
                     .setAudioOffloadPreferences(
@@ -934,41 +940,16 @@ class PlaybackService :
                             .build()
                     )
                     .build()
-
-                equalizerManager.setTransientEqualizerState(
-                    isEnabled = !audioOffloadingEnabled,
-                    isDisabledByAudioOffload = audioOffloadingEnabled
-                )
             }
         }
         serviceScope.launch {
-            soundSettings.skipSilenceFlow.collect {
+            equalizerManager.skipSilence.collect {
                 player.exoPlayer.skipSilenceEnabled = it
             }
         }
         serviceScope.launch {
-            soundSettings.replayGainStateFlow.collect {
-                if (replayGainProcessor.mode != it.mode) {
-                    replayGainProcessor.mode = it.mode
-                }
-                if (replayGainProcessor.preAmpGain != it.preamp) {
-                    replayGainProcessor.preAmpGain = it.preamp
-                }
-                if (replayGainProcessor.preAmpGainWithoutTag != it.preampWithoutGain) {
-                    replayGainProcessor.preAmpGainWithoutTag = it.preampWithoutGain
-                }
-            }
-        }
-        serviceScope.launch {
-            soundSettings.tempoFlow.collect {
-                player.playbackParameters = player.playbackParameters
-                    .withSpeed(it.speed)
-                    .withPitch(it.actualPitch)
-            }
-        }
-        serviceScope.launch {
-            soundSettings.balanceFlow.collect {
-                balanceProcessor.setBalance(it.left, it.right)
+            equalizerManager.tempoState.collect {
+                player.playbackParameters = PlaybackParameters(it.speed, it.actualPitch)
             }
         }
     }

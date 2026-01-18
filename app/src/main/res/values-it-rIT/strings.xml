@@ -5,9 +5,9 @@
     <string name="action_shuffle_play">Riproduzione casuale</string>
     <string name="action_queue_next">Coda successiva</string>
     <string name="shuffle_all_label">Mischia tutti</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="shuffle_mode">Modalità Casuale</string>
+    <string name="repeat_mode">Modalità a Ripetizione</string>
+    <string name="shuffle_button_tip">Premi per riproduzione casuale. Tieni premuto per opzioni avanzate.</string>
     <string name="action_play_pause">Riproduci/Pausa</string>
     <string name="action_pause">Pausa</string>
     <string name="action_next">Successivo</string>
@@ -30,7 +30,7 @@
     <string name="search_list_x_label">Elenco di ricerca: %s</string>
     <string name="search_from_x_label">Cerca da \"%s\"</string>
     <string name="search_year_x_label">Anno di ricerca: %s</string>
-    <string name="search_in_folder_x">Search in folder: %s</string>
+    <string name="search_in_folder_x">Cerca nella cartella: %s</string>
     <string name="search_last_added">Cerca musica più recente</string>
     <string name="shuffle_mode_album">Mischia album</string>
     <string name="shuffle_mode_artist">Mischia artista</string>
@@ -42,7 +42,7 @@
     <string name="currently_listening_to_x_by_x">Sto ascoltando %1$s da %2$s</string>
     <string name="share_to_stories">Condividi con le storie</string>
     <string name="could_not_create_the_story">Impossibile creare la storia.</string>
-    <string name="back_action">Back</string>
+    <string name="back_action">Indietro</string>
     <string name="rename_action">Rinomina</string>
     <string name="add_action">Aggiungi</string>
     <string name="delete_action">Elimina</string>
@@ -52,9 +52,9 @@
     <string name="continue_action">Continua</string>
     <string name="select_all_title">Seleziona tutto</string>
     <string name="x_selected">%d selezionato</string>
-    <string name="preparing_playback_title">Preparing</string>
+    <string name="preparing_playback_title">Preparazione</string>
     <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="playback_stopped_title">Riproduzione fermata</string>
     <string name="playing_notification_description">La notifica di riproduzione fornisce azioni per riproduzione/pausa, ecc.</string>
     <string name="playing_notification_name">Notifica in riproduzione</string>
     <string name="action_scan_directory">Scansiona directory</string>
@@ -71,7 +71,7 @@
     <string name="new_playlist_title">Nuova playlist</string>
     <string name="add_playlist_title">Aggiungi alla playlist</string>
     <string name="rename_playlist_title">Rinomina playlist</string>
-    <string name="action_edit_playlist">Edit playlist</string>
+    <string name="action_edit_playlist">Modifica playlist</string>
     <string name="action_delete">Elimina playlist</string>
     <string name="action_export_playlist">Esporta in file</string>
     <string name="action_clear_history">Cancella cronologia</string>
@@ -80,9 +80,9 @@
     <string name="create_a_playlist_with_one_song">Verrà creata una playlist e verrà aggiunta una canzone.</string>
     <string name="create_a_playlist_with_x_songs">Verrà creata una playlist e le canzoni di %d verranno aggiunte automaticamente.</string>
     <string name="playlist_name_empty">Nome playlist</string>
-    <string name="playlist_description_hint">Playlist description (optional)</string>
+    <string name="playlist_description_hint">Descrizione playlist (opzionale)</string>
     <string name="saved_playlist_x">Playlist %s salvata.</string>
-    <string name="playlist_updated">Playlist updated.</string>
+    <string name="playlist_updated">Playlist aggiornata.</string>
     <string name="failed_to_save_playlist">Impossibile salvare la playlist.</string>
     <string name="saved_x_playlists">Playlist %1$d salvate.</string>
     <string name="saved_x_playlists_failed_to_save_x">Playlist %1$d salvate, impossibile salvare %2$d.</string>
@@ -95,13 +95,13 @@
     <string name="inserted_one_song_into_playlist_x">Inserito un brano nella playlist %s.</string>
     <string name="inserted_x_songs_into_playlist_x">Inserito brani %1$d nella playlist %2$s.</string>
     <string name="playlist_exists">Playlist %s esiste già.</string>
-    <string name="playlist_created">Playlist %s created successfully.</string>
+    <string name="playlist_created">Playlist %s creata con successo.</string>
     <string name="remove_song_from_playlist_title">Rimuovi brano dalla playlist</string>
     <string name="remove_songs_from_playlist_title">Rimuovi brani dalla playlist</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Rimuovere la canzone <b>%1$s</b> dalla playlist?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Rimuovere i brani <b>%1$d</b> dalla playlist?]]></string>
     <string name="playlist_empty_text">Scaletta vuota</string>
-    <string name="action_lyrics_editor">Lyrics editor</string>
+    <string name="action_lyrics_editor">Editor del testo</string>
     <string name="action_tag_editor">Editor tag</string>
     <string name="saving_changes">Salvataggio delle modifiche</string>
     <string name="changes_saved_successfully">Modifiche salvate con successo.</string>
@@ -127,7 +127,7 @@
     <string name="no_equalizer">Nessun equalizzatore trovato.</string>
     <string name="audio_focus_denied">Focus audio negato.</string>
     <string name="no_audio_ID">Id audio errato.</string>
-    <string name="playback_error_code">Playback error (%s).</string>
+    <string name="playback_error_code">Errore di riproduzione (%s).</string>
     <string name="unplayable_file">Impossibile riprodurre questa canzone.</string>
     <string name="permission_external_storage_title">Accesso Archiviazione</string>
     <string name="permission_external_storage_description">L\'app ha bisogno dell\'autorizzazione per accedere alla memoria del tuo dispositivo per riprodurre musica</string>
@@ -136,8 +136,8 @@
     <string name="permission_bluetooth_description">L\'app ha bisogno dell\'autorizzazione per i dispositivi nelle vicinanze per controllare i dispositivi bluetooth</string>
     <string name="permission_bluetooth_denied">Autorizzazione dispositivi nelle vicinanze negata.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
-    <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
-        If you don\'t plan to use this feature, you can choose not to grant it.</string>
+    <string name="permission_read_images_summary">Questa autorizzazione è richiesta per Booming Music per trovare i file di copertina degli album nelle tue cartelle musicali.
+        Se non hai intenzione di utilizzare questa funzione, puoi scegliere di non concederla.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">Pianifica avvisi esatti (opzionale)</string>
     <string name="permission_exact_alarms_description">Per il corretto funzionamento del timer di sonno è necessario il permesso di pianificare gli allarmi esatti</string>
@@ -407,51 +407,72 @@
     <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizzatore</string>
-    <string name="share_eq_configuration">Condividi configurazione EQ</string>
+    <string name="autoeq_label">AutoEq</string>
+    <string name="graphic_eq_label">Graphic EQ</string>
+    <string name="graphic_eq_band_count">%d-band</string>
+    <string name="eq_profiles_title">EQ Profiles</string>
+    <string name="autoeq_profiles_title">AutoEq Profiles</string>
+    <string name="eq_profile_title">Profile</string>
+    <string name="change_band_count_title">Change band count</string>
+    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
+        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
+        \n\nDo you want to continue?</string>
+    <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
+    <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
+    <string name="share_eq_profiles">Share EQ Profiles</string>
     <string name="there_is_nothing_to_export">Non c\'è nulla da esportare.</string>
     <string name="there_is_nothing_to_import">Non c\'è nulla da importare.</string>
-    <string name="there_are_no_saved_configurations">Non ci sono configurazioni salvate.</string>
-    <string name="could_not_create_configurations_file">Impossibile creare il file di configurazione.</string>
-    <string name="configuration_exported_successfully">Configurazione esportata con successo.</string>
-    <string name="could_not_export_configuration">Impossibile esportare la configurazione.</string>
-    <string name="export_configuration">Esporta configurazione</string>
-    <string name="import_configuration">Importa configurazione</string>
-    <string name="imported_x_presets">Preimpostazioni di %d importate.</string>
-    <string name="no_preset_imported">Nessuna preimpostazione importata.</string>
-    <string name="share_configuration">Condividi configurazione</string>
-    <string name="select_configurations_to_share">Seleziona le configurazioni da condividere:</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.</string>
+    <string name="share_profiles">Share profiles</string>
+    <string name="select_profiles_to_share">Select profiles to share:</string>
+    <string name="export_profiles">Export profiles</string>
+    <string name="select_profiles_to_export">Select profiles to export:</string>
+    <string name="select_a_file_to_save_the_exported_profiles">Select a file to save the exported profiles.</string>
+    <string name="profiles_exported_successfully">Profiles exported successfully.</string>
+    <string name="import_profiles">Import profiles</string>
+    <string name="select_profiles_to_import">Select profiles to import:</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Select a file containing Booming Music EQ Profiles.</string>
+    <string name="imported_x_profiles">Imported %d profiles.</string>
+    <string name="no_profile_imported">No profile imported.</string>
+    <string name="import_autoeq_profile">Import AutoEq profile</string>
+    <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
+    <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">Reset equalizer</string>
-    <string name="select_configurations_to_export">Seleziona le configurazioni da esportare:</string>
-    <string name="select_a_file_to_save_exported_configurations">Selezionare un file per salvare le configurazioni esportate.</string>
-    <string name="select_a_file_containing_booming_eq_presets">Selezionare un file contenente le preimpostazioni EQ di musica in booming.</string>
-    <string name="select_configurations_to_import">Seleziona le configurazioni da importare:</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Sei sicuro di voler resettare l\'equalizzatore?
-        \n\nQuesto cancellerà tutte le tue preimpostazioni.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
+        \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Non supportato</string>
     <string name="enable_equalizer">Abilita EQ</string>
-    <string name="select_preset">Seleziona preset</string>
-    <string name="please_enter_a_name_for_this_preset">Inserisci un nome per questa preimpostazione.</string>
-    <string name="preset_name">Nome preimpostato</string>
+    <string name="select_profile">Select profile</string>
+    <string name="save_profile_label">Save profile</string>
+    <string name="rename_profile_label">Rename profile</string>
+    <string name="delete_profile_label">Delete profile</string>
+    <string name="delete_profile_x">Delete profile \"%s\"?</string>
+    <string name="please_enter_a_name_for_this_profile">Please, enter a name for this profile.</string>
+    <string name="please_enter_a_new_name_for_this_profile">Please, enter a new name for this profile.</string>
+    <string name="replace_profile_with_same_name">Replace profile with same name</string>
+    <string name="profile_name">Profile name</string>
     <string name="that_name_is_already_in_use">Quel nome è già in uso.</string>
-    <string name="save_preset">Salva preset</string>
-    <string name="replace_preset_with_same_name">Sostituisci preimpostazione con lo stesso nome</string>
-    <string name="preset_name_is_empty">Il nome preimpostato è vuoto</string>
-    <string name="could_not_save_preset">Impossibile salvare la preimpostazione.</string>
-    <string name="preset_saved_successfully">Preimpostazione salvata con successo.</string>
-    <string name="delete_preset">Elimina preimpostazioni</string>
-    <string name="preset_x_deleted">Preset %s eliminato.</string>
-    <string name="rename_preset">Rename preset</string>
-    <string name="please_enter_a_new_name_for_this_preset">Inserisci un nuovo nome per questa preimpostazione.</string>
-    <string name="preset_renamed">Preset rinominato.</string>
-    <string name="preset_not_renamed">Preset non rinominato.</string>
+    <string name="profile_saved_successfully">Profile saved successfully.</string>
+    <string name="the_profile_could_not_be_saved">The profile could not be saved.</string>
+    <string name="profile_renamed">Profile renamed.</string>
+    <string name="the_profile_could_not_be_renamed">The profile could not be renamed</string>
+    <string name="autoeq_profile_imported_successfully">AutoEq profile imported successfully.</string>
+    <string name="profile_x_deleted">Profile \"%s\" deleted.</string>
+    <string name="autoeq_profile_x_deleted">AutoEq profile \"%s\" deleted.</string>
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Amplificatore</string>
     <string name="sound_settings">Impostazioni audio</string>
     <string name="volume_label">Volume</string>
-    <string name="tempo_label">Tempo</string>
+    <string name="reset_balance">Reset balance</string>
+    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_tempo">Reset tempo</string>
+    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="balance_left">Left</string>
+    <string name="balance_right">Right</string>
     <string name="action_external_eq">Eq Esterno</string>
     <string name="custom">Personalizzato</string>
+    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Audio Offload</string>
     <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
         This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
@@ -493,11 +514,13 @@
     <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Timer spegnimento</string>
-    <string name="sleep_timer_cancel_current_timer">Annulla il timer corrente</string>
-    <string name="sleep_timer_cancel_current_timer_x">Annulla il timer corrente (%s)</string>
-    <string name="sleep_timer_canceled">Timer di sospensione annullato.</string>
+    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
+    <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_set_action">Imposta</string>
-    <string name="sleep_timer_set">Timer di spegnimento impostato per %d minuti da ora.</string>
+    <string name="sleep_timer_x_mins">%d mins</string>
+    <string name="sleep_timer_15_mins">15 mins</string>
+    <string name="sleep_timer_45_mins">45 mins</string>
+    <string name="sleep_timer_1_hour">1 hour</string>
     <string name="sleep_timer_finish_current_music">Termina l\'ultima canzone</string>
     <string name="sleep_timer_stop_after_this_track">Ferma dopo questa traccia</string>
     <string name="sleep_timer_stop_after_x">Ferma dopo %s</string>
@@ -513,6 +536,7 @@
     <string name="version">Versione</string>
     <string name="changelog">Changelog</string>
     <string name="fork_on_github">Fork on GitHub</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Licenze</string>
     <string name="author">Autore</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -520,6 +544,8 @@
     <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="telegram_chat">Chat telegramma</string>
     <string name="telegram_chat_summary">Unisciti alla chat in Telegram e informati sulle nuove versioni e notizie.</string>
     <string name="view_profile_on_github">Visualizza il profilo su GitHub</string>
@@ -634,6 +660,10 @@
         one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
+        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
+        It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stile</string>
     <string name="open_on_play_title">Apri in riproduzione</string>
@@ -730,6 +760,8 @@
     <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
+    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
+    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Scarica automaticamente i metadati</string>
     <string name="ignore_media_store_album_covers_title">Ignora le copertine del Media Store</string>
@@ -788,12 +820,13 @@
     <string name="selected">Selezionato</string>
     <string name="compact">Compatto</string>
     <string name="expanded">Espanso</string>
-    <string name="full_cover_style">Copertina Completa</string>
-    <string name="gradient_style">Gradiente</string>
+    <string name="full_cover_style">Full Cover</string>
+    <string name="gradient_style">Gradient</string>
     <string name="peek_style">Peek</string>
     <string name="plain_style">Plain</string>
     <string name="m3_style">M3</string>
-    <string name="normal_style">Normale</string>
+    <string name="expressive_style">Expressive</string>
+    <string name="normal_style">Normal</string>
     <string name="cascading">Cascading</string>
     <string name="depth">Profondità</string>
     <string name="hinge">Hinge</string>

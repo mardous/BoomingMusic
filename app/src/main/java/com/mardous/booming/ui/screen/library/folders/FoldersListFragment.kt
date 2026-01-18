@@ -160,6 +160,10 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
                             }
                     }
 
+                    R.id.action_equalizer -> {
+                        findNavController().navigate(R.id.nav_equalizer)
+                    }
+
                     else -> {
                         if (isFlatView) {
                             file.songs.onSongsMenu(this, menuItem)

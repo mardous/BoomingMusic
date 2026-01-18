@@ -19,51 +19,49 @@ package com.mardous.booming.core.model.equalizer
 
 import androidx.compose.runtime.Immutable
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
-import java.util.Locale
 
 @Immutable
-data class TempoLevel(val speed: Float, val pitch: Float, val isFixedPitch: Boolean) {
-
-    val maxSpeed = if (isFixedPitch) MAX_SPEED else MAX_SPEED_NO_PITCH
-    val minSpeed = if (isFixedPitch) MIN_SPEED else MIN_SPEED_NO_PITCH
-    val speedRange = minSpeed..maxSpeed
-
-    val maxPitch = MAX_PITCH
-    val minPitch = MIN_PITCH
-    val pitchRange = minPitch..maxPitch
-
-    val actualPitch: Float
-        get() = if (isFixedPitch) speed else pitch
-
-    val formattedSpeed: String
-        get() = "%.1fx".format(Locale.US, speed)
-
-    val formattedPitch: String
-        get() = "%.1fx".format(Locale.US, actualPitch)
-
-}
-
-@Immutable
-data class VolumeState(
-    val currentVolume: Int,
-    val maxVolume: Int,
-    val minVolume: Int,
-    val isFixed: Boolean
+data class BalanceState(
+    val center: Float,
+    val range: ClosedFloatingPointRange<Float>
 ) {
-    val range get() = minVolume.toFloat()..maxVolume.toFloat()
-    val volumePercent: Float
-        get() = if (maxVolume > minVolume) {
-            ((currentVolume - minVolume).toFloat() / (maxVolume - minVolume).toFloat()) * 100f
-        } else 0f
+    val left  = (1f - center).coerceIn(0f, 1f)
+    val right = (1f + center).coerceIn(0f, 1f)
 
     companion object {
-        val Unspecified = VolumeState(0, 1, 0, false)
+        val Unspecified = BalanceState(0f, -1f..1f)
     }
 }
 
 @Immutable
-data class BalanceLevel(val left: Float, val right: Float) {
-    val range get() = MIN_BALANCE..MAX_BALANCE
+data class TempoState(
+    val speed: Float,
+    val speedRange: ClosedFloatingPointRange<Float>,
+    val pitch: Float,
+    val pitchRange: ClosedFloatingPointRange<Float>,
+    val isFixedPitch: Boolean
+) {
+    val actualPitch: Float
+        get() = if (isFixedPitch) speed else pitch
+
+    companion object {
+        val Unspecified = TempoState(1f, 1f..1f, 1f, 1f..1f, false)
+    }
+}
+
+@Immutable
+data class VolumeState(
+    val currentVolume: Float,
+    val volumeRange: ClosedFloatingPointRange<Float>
+) {
+    val volumePercent: Float
+        get() = if (volumeRange.endInclusive > volumeRange.start) {
+            ((currentVolume - volumeRange.start) / (volumeRange.endInclusive - volumeRange.start)) * 100f
+        } else 0f
+
+    companion object {
+        val Unspecified = VolumeState(0f, 0f..1f)
+    }
 }
 
 @Immutable
@@ -73,13 +71,8 @@ data class ReplayGainState(
     val preampWithoutGain: Float
 ) {
     val availableModes = ReplayGainMode.entries.toTypedArray()
-}
 
-const val MIN_SPEED = .5f
-const val MIN_SPEED_NO_PITCH = .8f
-const val MAX_SPEED = 2f
-const val MAX_SPEED_NO_PITCH = 1.5f
-const val MIN_PITCH = .5f
-const val MAX_PITCH = 2f
-const val MIN_BALANCE = 0f
-const val MAX_BALANCE = 1f
+    companion object {
+        val Unspecified = ReplayGainState(ReplayGainMode.Off, 0f, 0f)
+    }
+}

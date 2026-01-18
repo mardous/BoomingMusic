@@ -8,18 +8,57 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.CreateDocument
 import androidx.activity.result.contract.ActivityResultContracts.OpenDocument
+import androidx.annotation.StringRes
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.FilledIconButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.contentColorFor
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,23 +67,43 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.core.app.ShareCompat
 import com.mardous.booming.R
 import com.mardous.booming.core.model.LibraryMargin
-import com.mardous.booming.core.model.equalizer.EQPreset
 import com.mardous.booming.core.model.equalizer.EqBand
+import com.mardous.booming.core.model.equalizer.EqProfile
+import com.mardous.booming.core.model.equalizer.ReplayGainState
+import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
+import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
+import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
 import com.mardous.booming.extensions.showToast
-import com.mardous.booming.ui.component.compose.*
+import com.mardous.booming.ui.component.compose.ButtonGroup
+import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
+import com.mardous.booming.ui.component.compose.ConfirmDialog
+import com.mardous.booming.ui.component.compose.DialogListItemSurface
+import com.mardous.booming.ui.component.compose.DialogListItemWithCheckBox
+import com.mardous.booming.ui.component.compose.InputDialog
+import com.mardous.booming.ui.component.compose.MaterialSwitch
+import com.mardous.booming.ui.component.compose.SwitchCard
+import com.mardous.booming.ui.component.compose.TitleShapedText
+import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import kotlinx.coroutines.launch
 import java.util.Locale
+import kotlin.math.roundToInt
 
-private const val PRESET_NAME_MAX_LENGTH = 32
+private const val PRESET_NAME_MAX_LENGTH = 48
 
+private enum class ProfilesMode(@StringRes val nameRes: Int) {
+    EQ(R.string.eq_profiles_title),
+    AutoEq(R.string.autoeq_profiles_title)
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun EqualizerScreen(
     libraryViewModel: LibraryViewModel,
@@ -53,9 +112,37 @@ fun EqualizerScreen(
 ) {
     val context = LocalContext.current
 
+    val importProfileLauncher = rememberLauncherForActivityResult(OpenDocument()) { data: Uri? ->
+        eqViewModel.requestImport(data)
+    }
+
+    val importAutoEqProfileLauncher = rememberLauncherForActivityResult(OpenDocument()) { data: Uri? ->
+        eqViewModel.requestAutoEqImport(context, data)
+    }
+
+    var exportableContent by remember { mutableStateOf<String?>(null) }
+    val exportProfileLauncher =
+        rememberLauncherForActivityResult(CreateDocument(MIME_TYPE_APPLICATION)) { data: Uri? ->
+            eqViewModel.exportConfiguration(data, exportableContent)
+        }
+
+    fun importProfiles(autoEq: Boolean) {
+        try {
+            if (autoEq) {
+                importAutoEqProfileLauncher.launch(arrayOf(MIME_TYPE_PLAIN_TEXT))
+                context.showToast(R.string.select_a_file_containing_autoeq_params)
+            } else {
+                importProfileLauncher.launch(arrayOf(MIME_TYPE_APPLICATION))
+                context.showToast(R.string.select_a_file_containing_booming_eq_profiles)
+            }
+        } catch (_: ActivityNotFoundException) {
+            context.showToast("File picker not found")
+        }
+    }
+
     fun shareConfiguration(data: Uri, mimeType: String) {
         val builder = ShareCompat.IntentBuilder(context)
-            .setChooserTitle(R.string.share_eq_configuration)
+            .setChooserTitle(R.string.share_eq_profiles)
             .setStream(data)
             .setType(mimeType)
         try {
@@ -71,51 +158,51 @@ fun EqualizerScreen(
     val coroutineScope = rememberCoroutineScope()
 
     val eqState by eqViewModel.eqState.collectAsState()
-    val eqCurrentPreset by eqViewModel.currentPreset.collectAsState()
-    val eqPresets by eqViewModel.presets.collectAsState(emptyList())
+    val eqCurrentProfile by eqViewModel.currentProfile.collectAsState()
+    val eqProfiles by eqViewModel.eqProfiles.collectAsState(emptyList())
+    val eqBandCapabilities by eqViewModel.eqBandCapabilities.collectAsState()
     val eqBands by eqViewModel.eqBands.collectAsState(emptyList())
+    val autoEqProfiles by eqViewModel.autoEqProfiles.collectAsState()
 
-    val virtualizer by eqViewModel.virtualizer.collectAsState()
-    val bassBoost by eqViewModel.bassBoost.collectAsState()
-    val loudnessGain by eqViewModel.loudnessGain.collectAsState()
+    val virtualizer by eqViewModel.virtualizerState.collectAsState()
+    val bassBoost by eqViewModel.bassBoostState.collectAsState()
+    val loudnessGain by eqViewModel.loudnessGainState.collectAsState()
+    val replayGain by eqViewModel.replayGainState.collectAsState()
 
-    var editPresetState by remember { mutableStateOf<Pair<EQPreset, Boolean>?>(null) }
-    var deletePresetState by remember { mutableStateOf<Pair<EQPreset, Boolean>?>(null) }
+    var editProfileState by remember { mutableStateOf<Pair<EqProfile, Boolean>?>(null) }
+    var deleteProfileState by remember { mutableStateOf<Pair<EqProfile, Boolean>?>(null) }
 
-    var sharePresetState by remember { mutableStateOf<Pair<Uri, String>?>(null) }
-    sharePresetState?.let { (data, mimeType) ->
+    var shareProfileState by remember { mutableStateOf<Pair<Uri, String>?>(null) }
+    shareProfileState?.let { (data, mimeType) ->
         coroutineScope.launch {
             val result = snackbarHostState.showSnackbar(
-                message = context.getString(R.string.configuration_exported_successfully),
+                message = context.getString(R.string.profiles_exported_successfully),
                 actionLabel = context.getString(R.string.action_share),
                 duration = SnackbarDuration.Long
             )
             when (result) {
-                SnackbarResult.Dismissed -> sharePresetState = null
+                SnackbarResult.Dismissed -> shareProfileState = null
                 SnackbarResult.ActionPerformed -> {
                     shareConfiguration(data, mimeType)
-                    sharePresetState = null
+                    shareProfileState = null
                 }
             }
         }
     }
 
-    var showSharePresetDialog by remember { mutableStateOf(false) }
-    var showPresetSaverDialog by remember { mutableStateOf(false) }
-    var showPresetSelectorDialog by remember { mutableStateOf(false) }
+    var showBandCountSelector by remember { mutableStateOf(false) }
+    var showShareProfileDialog by remember { mutableStateOf(false) }
+    var showProfileSaverDialog by remember { mutableStateOf(false) }
+    var showProfileSelectorDialog by remember { mutableStateOf(false) }
     var showResetEqDialog by remember { mutableStateOf(false) }
 
     var showImportDialog by remember { mutableStateOf(false) }
-    var presetsToImport by remember { mutableStateOf<List<EQPreset>>(emptyList()) }
-    val importPresetLauncher = rememberLauncherForActivityResult(OpenDocument()) { data: Uri? ->
-        eqViewModel.requestImport(data)
-    }
-
+    var profilesToImport by remember { mutableStateOf<List<EqProfile>>(emptyList()) }
     val importRequestEvent by eqViewModel.importRequestEvent.collectAsState(null)
     LaunchedEffect(importRequestEvent) {
         importRequestEvent?.let {
             if (it.success) {
-                presetsToImport = it.presets
+                profilesToImport = it.profiles
                 showImportDialog = true
             } else {
                 context.showToast(it.messageRes)
@@ -127,43 +214,77 @@ fun EqualizerScreen(
     LaunchedEffect(importResultEvent) {
         importResultEvent?.let {
             if (it.success && it.imported > 0) {
-                context.showToast(context.getString(R.string.imported_x_presets, it.imported))
+                context.showToast(context.getString(R.string.imported_x_profiles, it.imported))
             } else {
                 context.showToast(it.messageRes)
             }
         }
     }
 
-    if (showImportDialog && presetsToImport.isNotEmpty()) {
-        PresetCheckDialog(
+    if (showImportDialog && profilesToImport.isNotEmpty()) {
+        ProfileCheckDialog(
             icon = painterResource(R.drawable.ic_file_save_24dp),
-            title = stringResource(R.string.import_configuration),
-            message = stringResource(R.string.select_configurations_to_import),
+            title = stringResource(R.string.import_profiles),
+            message = stringResource(R.string.select_profiles_to_import),
             confirmButton = stringResource(R.string.import_action),
-            presets = presetsToImport,
+            profiles = profilesToImport,
             onDismiss = { showImportDialog = false },
-            onConfirm = { selectedPresets ->
-                eqViewModel.importPresets(selectedPresets)
+            onConfirm = { selectedProfiles ->
+                eqViewModel.importProfiles(selectedProfiles)
                 showImportDialog = false
             }
         )
     }
 
-    var showExportDialog by remember { mutableStateOf(false) }
-    var exportableContent by remember { mutableStateOf<String?>(null) }
-    val exportPresetLauncher =
-        rememberLauncherForActivityResult(CreateDocument(MIME_TYPE_APPLICATION)) { data: Uri? ->
-            eqViewModel.exportConfiguration(data, exportableContent)
+    var importAutoEqProfileState by remember { mutableStateOf<Pair<AutoEqProfile, Boolean>?>(null) }
+    val importAutoEqRequestEvent by eqViewModel.autoEqImportRequestEvent.collectAsState(null)
+    LaunchedEffect(importAutoEqRequestEvent) {
+        importAutoEqRequestEvent?.let {
+            if (it.success && it.profile != null) {
+                importAutoEqProfileState = Pair(it.profile, true)
+            } else {
+                context.showToast(it.messageRes)
+            }
         }
+    }
 
+    importAutoEqProfileState?.let { (profile, showDialog) ->
+        if (showDialog) {
+            InputDialog(
+                icon = painterResource(R.drawable.ic_file_save_24dp),
+                message = stringResource(R.string.please_enter_a_name_for_this_profile),
+                inputHint = stringResource(R.string.profile_name),
+                inputPrefill = profile.name,
+                inputMaxLength = PRESET_NAME_MAX_LENGTH,
+                checkBoxPrompt = stringResource(R.string.replace_profile_with_same_name),
+                confirmButton = stringResource(R.string.action_save),
+                onConfirm = { name, isChecked ->
+                    eqViewModel.importAutoEqProfile(profile, name, isChecked)
+                },
+                onDismiss = { importAutoEqProfileState = null }
+            )
+        }
+    }
+
+    val autoEqImportResultEvent by eqViewModel.autoEqImportResultEvent.collectAsState(null)
+    LaunchedEffect(autoEqImportResultEvent) {
+        autoEqImportResultEvent?.let {
+            context.showToast(it.messageRes)
+            if (it.canDismiss) {
+                importAutoEqProfileState = null
+            }
+        }
+    }
+
+    var showExportDialog by remember { mutableStateOf(false) }
     val exportRequestEvent by eqViewModel.exportRequestEvent.collectAsState(null)
     LaunchedEffect(exportRequestEvent) {
         exportRequestEvent?.let {
-            if (it.success && it.presetExportData != null) {
-                exportableContent = it.presetExportData.second
+            if (it.success && it.profileExportData != null) {
+                exportableContent = it.profileExportData.second
                 try {
-                    exportPresetLauncher.launch(it.presetExportData.first)
-                    context.showToast(R.string.select_a_file_to_save_exported_configurations)
+                    exportProfileLauncher.launch(it.profileExportData.first)
+                    context.showToast(R.string.select_a_file_to_save_the_exported_profiles)
                 } catch (_: ActivityNotFoundException) {
                     exportableContent = null
                     context.showToast("File picker not found")
@@ -181,7 +302,7 @@ fun EqualizerScreen(
                 if (it.isShareRequest) {
                     shareConfiguration(it.data, it.mimeType)
                 } else {
-                    sharePresetState = Pair(it.data, it.mimeType)
+                    shareProfileState = Pair(it.data, it.mimeType)
                 }
             } else {
                 context.showToast(it.messageRes)
@@ -189,32 +310,32 @@ fun EqualizerScreen(
         }
     }
 
-    if (showExportDialog && eqPresets.isNotEmpty()) {
-        PresetCheckDialog(
+    if (showExportDialog && eqProfiles.isNotEmpty()) {
+        ProfileCheckDialog(
             icon = painterResource(R.drawable.ic_file_export_24dp),
-            title = stringResource(R.string.export_configuration),
-            message = stringResource(R.string.select_configurations_to_export),
+            title = stringResource(R.string.export_profiles),
+            message = stringResource(R.string.select_profiles_to_export),
             confirmButton = stringResource(android.R.string.ok),
-            presets = eqPresets,
+            profiles = eqProfiles,
             onDismiss = { showExportDialog = false },
-            onConfirm = { selectedPresets ->
-                eqViewModel.generateExportData(selectedPresets)
+            onConfirm = { selectedProfiles ->
+                eqViewModel.generateExportData(selectedProfiles)
                 showExportDialog = false
             }
         )
     }
 
-    if (showSharePresetDialog && eqPresets.isNotEmpty()) {
-        PresetCheckDialog(
+    if (showShareProfileDialog && eqProfiles.isNotEmpty()) {
+        ProfileCheckDialog(
             icon = painterResource(R.drawable.ic_share_24dp),
-            title = stringResource(R.string.share_configuration),
-            message = stringResource(R.string.select_configurations_to_share),
+            title = stringResource(R.string.share_profiles),
+            message = stringResource(R.string.select_profiles_to_share),
             confirmButton = stringResource(R.string.action_share),
-            presets = eqPresets,
-            onDismiss = { showSharePresetDialog = false },
-            onConfirm = { selectedPresets ->
-                eqViewModel.sharePresets(context, selectedPresets)
-                showSharePresetDialog = false
+            profiles = eqProfiles,
+            onDismiss = { showShareProfileDialog = false },
+            onConfirm = { selectedProfiles ->
+                eqViewModel.shareProfiles(context, selectedProfiles)
+                showShareProfileDialog = false
             }
         )
     }
@@ -224,27 +345,24 @@ fun EqualizerScreen(
         saveResultEvent?.let {
             context.showToast(it.messageRes)
             if (it.canDismiss) {
-                showPresetSaverDialog = false
+                showProfileSaverDialog = false
             }
         }
     }
 
-    if (showPresetSaverDialog) {
+    if (showProfileSaverDialog) {
         InputDialog(
             icon = painterResource(R.drawable.ic_save_24dp),
-            title = stringResource(R.string.save_preset),
-            message = stringResource(R.string.please_enter_a_name_for_this_preset),
-            inputHint = stringResource(R.string.preset_name),
+            title = stringResource(R.string.save_profile_label),
+            message = stringResource(R.string.please_enter_a_name_for_this_profile),
+            inputHint = stringResource(R.string.profile_name),
             inputMaxLength = PRESET_NAME_MAX_LENGTH,
-            checkBoxPrompt = stringResource(R.string.replace_preset_with_same_name),
+            checkBoxPrompt = stringResource(R.string.replace_profile_with_same_name),
             confirmButton = stringResource(R.string.action_save),
-            onConfirm = { presetName, canReplace ->
-                eqViewModel.savePreset(
-                    presetName,
-                    canReplace
-                )
+            onConfirm = { profileName, canReplace ->
+                eqViewModel.saveProfile(profileName, canReplace)
             },
-            onDismiss = { showPresetSaverDialog = false }
+            onDismiss = { showProfileSaverDialog = false }
         )
     }
 
@@ -253,23 +371,23 @@ fun EqualizerScreen(
         renameResultEvent?.let {
             context.showToast(it.messageRes)
             if (it.canDismiss) {
-                editPresetState = null
+                editProfileState = null
             }
         }
     }
 
-    editPresetState?.let { (targetPreset, showDialog) ->
+    editProfileState?.let { (targetProfile, showDialog) ->
         if (showDialog) {
             InputDialog(
                 icon = painterResource(R.drawable.ic_edit_24dp),
-                title = stringResource(R.string.rename_preset),
-                message = stringResource(R.string.please_enter_a_new_name_for_this_preset),
-                inputHint = stringResource(R.string.preset_name),
-                inputPrefill = targetPreset.name,
+                title = stringResource(R.string.rename_profile_label),
+                message = stringResource(R.string.please_enter_a_new_name_for_this_profile),
+                inputHint = stringResource(R.string.profile_name),
+                inputPrefill = targetProfile.name,
                 inputMaxLength = PRESET_NAME_MAX_LENGTH,
                 confirmButton = stringResource(R.string.rename_action),
-                onConfirm = { input, _ -> eqViewModel.renamePreset(targetPreset, input) },
-                onDismiss = { editPresetState = null }
+                onConfirm = { input -> eqViewModel.renameProfile(targetProfile, input) },
+                onDismiss = { editProfileState = null }
             )
         }
     }
@@ -277,45 +395,85 @@ fun EqualizerScreen(
     val deleteResultEvent by eqViewModel.deleteResultEvent.collectAsState(null)
     LaunchedEffect(deleteResultEvent) {
         deleteResultEvent?.let {
-            if (it.success && deletePresetState != null) {
-                context.showToast(
-                    context.getString(R.string.preset_x_deleted, deletePresetState!!.first.name)
-                )
+            if (it.success && deleteProfileState != null) {
+                if (it.autoEqProfile) {
+                    context.showToast(
+                        context.getString(R.string.autoeq_profile_x_deleted, it.profileName)
+                    )
+                } else {
+                    context.showToast(
+                        context.getString(R.string.profile_x_deleted, it.profileName)
+                    )
+                }
             }
             if (it.canDismiss) {
-                deletePresetState = null
+                deleteProfileState = null
             }
         }
     }
 
-    deletePresetState?.let { (targetPreset, showDialog) ->
+    deleteProfileState?.let { (targetProfile, showDialog) ->
         if (showDialog) {
             ConfirmDialog(
                 icon = painterResource(R.drawable.ic_delete_24dp),
-                title = stringResource(R.string.delete_preset),
-                message = stringResource(
-                    R.string.are_you_sure_you_want_to_delete_preset_x,
-                    targetPreset.name
-                ),
+                title = stringResource(R.string.delete_profile_label),
+                message = stringResource(R.string.delete_profile_x, targetProfile.name),
                 confirmButton = stringResource(R.string.action_delete),
                 dismissButton = stringResource(R.string.no),
-                onConfirm = { eqViewModel.deletePreset(targetPreset) },
-                onDismiss = { deletePresetState = null }
+                onConfirm = { eqViewModel.deleteProfile(context, targetProfile) },
+                onDismiss = { deleteProfileState = null }
             )
         }
     }
 
-    if (showPresetSelectorDialog) {
-        PresetSelectorDialog(
-            presets = eqPresets,
-            selectedPreset = eqCurrentPreset,
-            onSelect = { preset ->
-                eqViewModel.setEqualizerPreset(preset)
-                showPresetSelectorDialog = false
+    var changeBandCountState by remember { mutableStateOf<Pair<Int, Boolean>?>(null) }
+    val changeBandCountEvent by eqViewModel.changeBandCountEvent.collectAsState(null)
+    LaunchedEffect(changeBandCountEvent) {
+        changeBandCountEvent?.let { success ->
+            if (success) {
+                context.showToast(R.string.band_configuration_changed_successfully)
+            } else {
+                context.showToast(R.string.band_configuration_could_not_be_changed)
+            }
+        }
+    }
+
+    changeBandCountState?.let { (bandCount, showDialog) ->
+        if (showDialog) {
+            ConfirmDialog(
+                icon = painterResource(R.drawable.ic_graphic_eq_24dp),
+                title = stringResource(R.string.change_band_count_title),
+                message = stringResource(R.string.change_band_count_message),
+                confirmButton = stringResource(R.string.continue_action),
+                dismissButton = stringResource(R.string.no),
+                onConfirm = {
+                    eqViewModel.setBandCount(bandCount)
+                    showBandCountSelector = false
+                    changeBandCountState = null
+                },
+                onDismiss = { changeBandCountState = null }
+            )
+        }
+    }
+
+    if (showProfileSelectorDialog) {
+        ProfileSelectorDialog(
+            profiles = eqProfiles,
+            autoEqProfiles = autoEqProfiles,
+            selectedProfile = eqCurrentProfile,
+            onSelectEqProfile = { profile ->
+                eqViewModel.setEqualizerProfile(profile)
+                showProfileSelectorDialog = false
             },
-            onEdit = { preset -> editPresetState = Pair(preset, true) },
-            onDelete = { preset -> deletePresetState = Pair(preset, true) },
-            onDismiss = { showPresetSelectorDialog = false }
+            onSelectAutoEqProfile = { profile ->
+                eqViewModel.setAutoEqProfile(profile)
+                showProfileSelectorDialog = false
+            },
+            onEditEqProfile = { profile -> editProfileState = Pair(profile, true) },
+            onDeleteEqProfile = { profile -> deleteProfileState = Pair(profile, true) },
+            onDeleteAutoEqProfile = { eqViewModel.deleteAutoEqProfile(context, it) },
+            onImportAutoEqProfile = { importProfiles(autoEq = true) },
+            onDismiss = { showProfileSelectorDialog = false }
         )
     }
 
@@ -357,37 +515,40 @@ fun EqualizerScreen(
                 onDismissRequest = { expandedMenu = false }
             ) {
                 DropdownMenuItem(
-                    text = { Text(stringResource(R.string.share_configuration)) },
-                    enabled = eqState.isSupported && eqPresets.isNotEmpty(),
+                    text = { Text(stringResource(R.string.share_profiles)) },
+                    enabled = eqState.supported && eqProfiles.isNotEmpty(),
                     onClick = {
-                        showSharePresetDialog = true
+                        showShareProfileDialog = true
                         expandedMenu = false
                     }
                 )
                 DropdownMenuItem(
-                    text = { Text(stringResource(R.string.export_configuration)) },
-                    enabled = eqState.isSupported && eqPresets.isNotEmpty(),
+                    text = { Text(stringResource(R.string.export_profiles)) },
+                    enabled = eqState.supported && eqProfiles.isNotEmpty(),
                     onClick = {
                         showExportDialog = true
                         expandedMenu = false
                     }
                 )
                 DropdownMenuItem(
-                    text = { Text(stringResource(R.string.import_configuration)) },
-                    enabled = eqState.isSupported,
+                    text = { Text(stringResource(R.string.import_profiles)) },
+                    enabled = eqState.supported,
                     onClick = {
-                        try {
-                            importPresetLauncher.launch(arrayOf(MIME_TYPE_APPLICATION))
-                            context.showToast(R.string.select_a_file_containing_booming_eq_presets)
-                        } catch (_: ActivityNotFoundException) {
-                            context.showToast("File picker not found")
-                        }
+                        importProfiles(autoEq = false)
+                        expandedMenu = false
+                    }
+                )
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.import_autoeq_profile)) },
+                    enabled = eqState.supported,
+                    onClick = {
+                        importProfiles(autoEq = true)
                         expandedMenu = false
                     }
                 )
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.reset_equalizer)) },
-                    enabled = eqState.isSupported,
+                    enabled = eqState.isUsable,
                     onClick = {
                         showResetEqDialog = true
                         expandedMenu = false
@@ -399,202 +560,314 @@ fun EqualizerScreen(
         miniPlayerMargin = miniPlayerMargin.totalMargin,
         onBackClick = onBackClick
     ) { contentPadding ->
-        Column(
+        LazyColumn(
+            contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
                 .padding(contentPadding)
-                .padding(16.dp)
         ) {
-            MaterialSwitch(
-                title = stringResource(R.string.enable_equalizer),
-                subtitle = if (eqState.isDisabledByAudioOffload) {
-                    stringResource(R.string.audio_offload_is_enabled)
-                } else null,
-                isChecked = eqState.isUsable,
-                enabled = eqState.isSupported,
-                onClick = {
-                    eqViewModel.setEqualizerState(isEnabled = eqState.isEnabled.not())
-                }
-            )
-
-            TitledSurface(
-                title = stringResource(R.string.preset_title),
-                iconRes = R.drawable.ic_equalizer_24dp
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentHeight()
-                        .weight(1f)
-                ) {
-                    val containerColor = if (eqState.isUsable) {
-                        MaterialTheme.colorScheme.secondaryContainer
-                    } else {
-                        MaterialTheme.colorScheme.surfaceContainerLow
+            item {
+                MaterialSwitch(
+                    title = stringResource(R.string.enable_equalizer),
+                    subtitle = if (!eqState.supported) {
+                        stringResource(R.string.not_supported)
+                    } else if (eqState.disabledByAudioOffload) {
+                        stringResource(R.string.audio_offload_is_enabled)
+                    } else null,
+                    isChecked = eqState.isUsable,
+                    enabled = eqState.supported && !eqState.disabledByAudioOffload,
+                    onClick = {
+                        eqViewModel.setEqualizerState(isEnabled = eqState.enabled.not())
                     }
-                    val contentColor = contentColorFor(containerColor)
+                )
+            }
 
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clip(RoundedCornerShape(50))
-                            .background(containerColor)
-                            .clickable(onClick = { showPresetSelectorDialog = true })
-                            .padding(start = 16.dp, end = 8.dp)
-                            .padding(vertical = 8.dp)
-                            .weight(1f)
-                    ) {
-                        Text(
-                            text = eqCurrentPreset.name,
-                            style = MaterialTheme.typography.titleMedium,
-                            color = contentColor,
-                            modifier = Modifier.weight(1f)
-                        )
-
-                        Surface(
-                            modifier = Modifier.size(48.dp),
-                            shape = CircleShape,
-                            color = contentColor.copy(alpha = .1f),
-                            contentColor = contentColor
+            if (eqState.supported) {
+                item {
+                    TitledCard(
+                        title = stringResource(R.string.eq_profile_title),
+                        iconRes = R.drawable.ic_equalizer_24dp
+                    ) { cardContentPadding ->
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(cardContentPadding)
                         ) {
-                            Box(contentAlignment = Alignment.Center) {
+                            val containerColor = if (eqState.isUsable) {
+                                MaterialTheme.colorScheme.surfaceContainerHigh
+                            } else {
+                                MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.7f)
+                            }
+                            val contentColor = contentColorFor(containerColor)
+
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(MaterialTheme.shapes.medium)
+                                    .background(containerColor)
+                                    .clickable(
+                                        enabled = eqState.isUsable,
+                                        onClick = { showProfileSelectorDialog = true }
+                                    )
+                                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = eqCurrentProfile.getName(context),
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = contentColor,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    modifier = Modifier.weight(1f)
+                                )
+
                                 Icon(
                                     painter = painterResource(R.drawable.ic_arrow_drop_down_24dp),
                                     contentDescription = null,
                                     modifier = Modifier.size(24.dp)
                                 )
                             }
+
+                            FilledIconButton(
+                                enabled = eqState.isUsable && eqCurrentProfile.isCustom,
+                                colors = IconButtonDefaults.filledIconButtonColors(
+                                    containerColor = MaterialTheme.colorScheme.tertiaryContainer
+                                ),
+                                onClick = { showProfileSaverDialog = true }
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_save_24dp),
+                                    contentDescription = stringResource(R.string.save_profile_label)
+                                )
+                            }
                         }
                     }
-
-                    FilledIconButton(
-                        enabled = eqState.isUsable && eqCurrentPreset.isCustom,
-                        colors = IconButtonDefaults.filledIconButtonColors(
-                            containerColor = MaterialTheme.colorScheme.tertiaryContainer
-                        ),
-                        onClick = { showPresetSaverDialog = true },
-                        modifier = Modifier.size(48.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_save_24dp),
-                            contentDescription = stringResource(R.string.save_preset),
-                            modifier = Modifier.size(24.dp)
-                        )
-                    }
                 }
-            }
 
-            TitledSurface(
-                title = stringResource(R.string.manual_adjustment_title),
-                iconRes = R.drawable.ic_tune_24dp
-            ) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentHeight()
-                ) {
-                    eqBands.forEach { band ->
-                        EQBandSlider(
-                            enabled = eqState.isUsable,
-                            band = band,
-                            onValueChange = { newBandLevel ->
-                                eqViewModel.setCustomPresetBandLevel(band.index, newBandLevel)
+                item {
+                    TitledCard(
+                        title = stringResource(R.string.graphic_eq_label),
+                        iconRes = R.drawable.ic_graphic_eq_24dp,
+                        titleEndContent = {
+                            if (eqBandCapabilities.hasMultipleBandConfigurations) {
+                                TitleShapedText(
+                                    text = stringResource(
+                                        R.string.graphic_eq_band_count,
+                                        eqState.preferredBandCount
+                                    ),
+                                    enabled = eqState.isUsable,
+                                    onClick = {
+                                        showBandCountSelector = showBandCountSelector.not()
+                                    }
+                                )
                             }
-                        )
+                        }
+                    ) { cardContentPadding ->
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .padding(cardContentPadding)
+                        ) {
+                            AnimatedVisibility(
+                                visible = eqState.enabled && showBandCountSelector
+                            ) {
+                                ButtonGroup(
+                                    onSelected = { changeBandCountState = Pair(it, true) },
+                                    buttonItems = eqBandCapabilities.availableBandCounts,
+                                    buttonStateResolver = { it == eqState.preferredBandCount },
+                                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                                )
+                            }
+
+                            eqBands.forEach { band ->
+                                EQBandSlider(
+                                    enabled = eqState.isUsable,
+                                    band = band,
+                                    onValueChange = { bandGain ->
+                                        eqViewModel.setCustomProfileBandGain(band.index, bandGain)
+                                    }
+                                )
+                            }
+                        }
                     }
                 }
             }
 
-            TitledSurface(
-                title = stringResource(R.string.virtualizer_label),
-                iconRes = R.drawable.ic_headphones_24dp,
-                collapsible = false,
-                titleEndContent = {
-                    TitleShapedText(
-                        text = "${((virtualizer.value * 100) / virtualizer.valueMax).toInt()}%"
-                    )
-                }
-            ) {
-                Box(Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
-                    Slider(
-                        steps = 10,
-                        value = virtualizer.value,
-                        onValueChange = {
-                            eqViewModel.setVirtualizer(
-                                isEnabled = it > 0f,
-                                value = it,
-                                apply = false
+            if (virtualizer.supported) {
+                item {
+                    var virtualizerStrength by remember(virtualizer.strength) {
+                        mutableFloatStateOf(virtualizer.strength)
+                    }
+                    SwitchCard(
+                        onCheckedChange = { eqViewModel.setVirtualizer(enabled = it) },
+                        checked = virtualizer.enabled && eqState.enabled,
+                        title = stringResource(R.string.virtualizer_label),
+                        iconRes = R.drawable.ic_headphones_24dp,
+                        enabled = eqState.isUsable
+                    ) { cardContentPadding ->
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(cardContentPadding)
+                        ) {
+                            Slider(
+                                steps = 10,
+                                value = virtualizerStrength,
+                                onValueChange = { virtualizerStrength = it },
+                                onValueChangeFinished = {
+                                    eqViewModel.setVirtualizer(strength = virtualizerStrength)
+                                },
+                                valueRange = virtualizer.strengthRange,
+                                enabled = eqState.isUsable,
+                                modifier = Modifier.weight(1f)
                             )
-                        },
-                        onValueChangeFinished = {
-                            eqViewModel.applyPendingStates()
-                        },
-                        valueRange = virtualizer.valueMin..virtualizer.valueMax,
-                        enabled = eqState.isUsable && virtualizer.isSupported,
-                        modifier = Modifier.fillMaxWidth()
-                    )
+
+                            EQValueText(
+                                text = "${((virtualizerStrength * 100) / virtualizer.strengthRange.endInclusive).toInt()}%",
+                            )
+                        }
+                    }
                 }
             }
 
-            // --- BassBoost Effect ---
-            TitledSurface(
-                title = stringResource(R.string.bassboost_label),
-                iconRes = R.drawable.ic_edit_audio_24dp,
-                collapsible = false,
-                titleEndContent = {
-                    TitleShapedText(
-                        text = "${((bassBoost.value * 100) / bassBoost.valueMax).toInt()}%"
-                    )
-                }
-            ) {
-                Box(Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
-                    Slider(
-                        steps = 10,
-                        value = bassBoost.value,
-                        onValueChange = {
-                            eqViewModel.setBassBoost(isEnabled = it > 0f, value = it, apply = false)
-                        },
-                        onValueChangeFinished = {
-                            eqViewModel.applyPendingStates()
-                        },
-                        valueRange = bassBoost.valueMin..bassBoost.valueMax,
-                        enabled = eqState.isUsable && bassBoost.isSupported,
-                        modifier = Modifier.fillMaxWidth()
-                    )
+            if (bassBoost.supported) {
+                item {
+                    var bassBoostStrength by remember(bassBoost.strength) {
+                        mutableFloatStateOf(bassBoost.strength)
+                    }
+                    SwitchCard(
+                        onCheckedChange = { eqViewModel.setBassBoost(enabled = it) },
+                        checked = bassBoost.enabled && eqState.enabled,
+                        title = stringResource(R.string.bassboost_label),
+                        iconRes = R.drawable.ic_edit_audio_24dp,
+                        enabled = eqState.isUsable
+                    ) { cardContentPadding ->
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(cardContentPadding)
+                        ) {
+                            Slider(
+                                steps = 10,
+                                value = bassBoostStrength,
+                                onValueChange = { bassBoostStrength = it },
+                                onValueChangeFinished = {
+                                    eqViewModel.setBassBoost(strength = bassBoostStrength)
+                                },
+                                valueRange = bassBoost.strengthRange,
+                                enabled = eqState.isUsable,
+                                modifier = Modifier.weight(1f)
+                            )
+
+                            EQValueText(
+                                text = "${((bassBoostStrength * 100) / bassBoost.strengthRange.endInclusive).toInt()}%"
+                            )
+                        }
+                    }
                 }
             }
 
-            // --- Loudness Enhancer (Amplifier) ---
-            TitledSurface(
-                title = stringResource(R.string.loudness_enhancer),
-                iconRes = R.drawable.ic_volume_up_24dp,
-                collapsible = false,
-                titleEndContent = {
-                    TitleShapedText(
-                        text = "%.0f mDb".format(Locale.ROOT, loudnessGain.value)
-                    )
+            if (loudnessGain.supported) {
+                item {
+                    var loudnessGainValue by remember(loudnessGain.gainInDb) {
+                        mutableFloatStateOf(loudnessGain.gainInDb)
+                    }
+                    SwitchCard(
+                        onCheckedChange = { eqViewModel.setLoudnessGain(enabled = it) },
+                        checked = loudnessGain.enabled && eqState.enabled,
+                        title = stringResource(R.string.loudness_enhancer),
+                        iconRes = R.drawable.ic_volume_up_24dp,
+                        enabled = eqState.isUsable
+                    ) { cardContentPadding ->
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(cardContentPadding)
+                        ) {
+                            Slider(
+                                value = loudnessGainValue,
+                                onValueChange = {
+                                    loudnessGainValue = it
+                                },
+                                onValueChangeFinished = {
+                                    eqViewModel.setLoudnessGain(gain = loudnessGainValue)
+                                },
+                                valueRange = loudnessGain.gainRange,
+                                enabled = eqState.isUsable,
+                                modifier = Modifier.weight(1f)
+                            )
+
+                            EQValueText(
+                                text = "%.1f dB".format(Locale.ROOT, loudnessGainValue)
+                            )
+                        }
+                    }
                 }
-            ) {
-                Column(Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
-                    Slider(
-                        value = loudnessGain.value,
-                        onValueChange = {
-                            eqViewModel.setLoudnessGain(value = it, apply = false)
+            }
+
+            item {
+                var replayGainPreamp by remember(replayGain.preamp) {
+                    mutableFloatStateOf(replayGain.preamp)
+                }
+                AnimatedVisibility(visible = eqState.disabledByAudioOffload.not()) {
+                    TitledCard(
+                        title = stringResource(R.string.replay_gain),
+                        iconRes = R.drawable.ic_sound_sampler_24dp,
+                        titleEndContent = {
+                            AnimatedVisibility(visible = replayGain.mode.isOn) {
+                                TitleShapedText("%+.1f dB".format(Locale.ROOT, replayGainPreamp))
+                            }
                         },
-                        onValueChangeFinished = {
-                            eqViewModel.applyPendingStates()
-                        },
-                        valueRange = loudnessGain.valueMin..loudnessGain.valueMax,
-                        enabled = eqState.isUsable && loudnessGain.isSupported,
                         modifier = Modifier.fillMaxWidth()
-                    )
+                    ) { cardContentPadding ->
+                        Column(
+                            modifier = Modifier.padding(cardContentPadding)
+                        ) {
+                            ReplayGainModeSelector(replayGain) {
+                                eqViewModel.setReplayGain(mode = it)
+                            }
+
+                            AnimatedVisibility(
+                                visible = replayGain.mode.isOn,
+                                modifier = Modifier.padding(top = 8.dp)
+                            ) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    IconButton(
+                                        onClick = {
+                                            replayGainPreamp = 0f
+                                            eqViewModel.setReplayGain(preamp = replayGainPreamp)
+                                        }
+                                    ) {
+                                        Icon(
+                                            painter = painterResource(R.drawable.ic_restart_alt_24dp),
+                                            contentDescription = null
+                                        )
+                                    }
+
+                                    Slider(
+                                        steps = 29,
+                                        value = replayGainPreamp,
+                                        valueRange = -15f..15f,
+                                        onValueChange = {
+                                            replayGainPreamp = (it / 0.2f).roundToInt() * 0.2f
+                                        },
+                                        onValueChangeFinished = {
+                                            eqViewModel.setReplayGain(preamp = replayGainPreamp)
+                                        },
+                                        modifier = Modifier.fillMaxWidth()
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -605,68 +878,59 @@ fun EqualizerScreen(
 private fun EQBandSlider(
     enabled: Boolean,
     band: EqBand,
-    onValueChange: (Int) -> Unit,
+    onValueChange: (Float) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    var bandLevel by remember(band.value) {
+        mutableFloatStateOf(band.value)
+    }
     Row(
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
-            .background(MaterialTheme.colorScheme.surfaceContainerLow)
-            .padding(12.dp)
+            .padding(vertical = 4.dp)
     ) {
+        Text(
+            text = band.readableFrequency,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            maxLines = 1,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.width(48.dp)
+        )
+
         Slider(
-            value = band.value,
-            onValueChange = { onValueChange(band.getActualLevel(it)) },
+            value = bandLevel,
+            onValueChange = { bandLevel = it },
+            onValueChangeFinished = { onValueChange(bandLevel) },
             valueRange = band.valueRange,
             enabled = enabled,
             modifier = Modifier.weight(1f)
         )
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .size(56.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(MaterialTheme.colorScheme.tertiaryContainer)
-                .clickable(
-                    enabled = enabled,
-                    onClick = { onValueChange(band.getActualLevel(0f)) }
-                )
-                .padding(2.dp)
-        ) {
-            Text(
-                text = band.readableFrequency,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onTertiaryContainer,
-                fontSize = 10.sp,
-                maxLines = 1
-            )
-
-            Text(
-                text = band.readableLevel,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onTertiaryContainer,
-                fontWeight = FontWeight.Bold,
-                maxLines = 1
-            )
-        }
+        EQValueText(
+            text = "%+.1f dB".format(Locale.ROOT, bandLevel)
+        )
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PresetSelectorDialog(
-    presets: List<EQPreset>,
-    selectedPreset: EQPreset,
-    onSelect: (EQPreset) -> Unit,
-    onEdit: (EQPreset) -> Unit,
-    onDelete: (EQPreset) -> Unit,
+private fun ProfileSelectorDialog(
+    profiles: List<EqProfile>,
+    autoEqProfiles: List<AutoEqProfile>,
+    selectedProfile: EqProfile,
+    onSelectEqProfile: (EqProfile) -> Unit,
+    onSelectAutoEqProfile: (AutoEqProfile) -> Unit,
+    onEditEqProfile: (EqProfile) -> Unit,
+    onDeleteEqProfile: (EqProfile) -> Unit,
+    onDeleteAutoEqProfile: (AutoEqProfile) -> Unit,
+    onImportAutoEqProfile: () -> Unit,
     onDismiss: () -> Unit
 ) {
+    var profilesMode by remember { mutableStateOf(ProfilesMode.EQ) }
+
     ModalBottomSheet(
         onDismissRequest = onDismiss
     ) {
@@ -674,26 +938,85 @@ private fun PresetSelectorDialog(
             modifier = Modifier.padding(horizontal = 24.dp)
         ) {
             Text(
-                text = stringResource(R.string.select_preset),
+                text = stringResource(R.string.select_profile),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
 
-            Spacer(Modifier.height(24.dp))
+            Spacer(Modifier.height(16.dp))
 
-            LazyColumn(
-                contentPadding = PaddingValues(bottom = 24.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                items(presets) { preset ->
-                    EqualizerPresetItem(
-                        presetName = preset.name,
-                        isCurrentPreset = preset == selectedPreset,
-                        isCustomPreset = preset.isCustom,
-                        onClick = { onSelect(preset) },
-                        onEditClick = { onEdit(preset) },
-                        onDeleteClick = { onDelete(preset) }
-                    )
+            ButtonGroup(
+                onSelected = { profilesMode = it },
+                buttonItems = ProfilesMode.entries,
+                buttonTextResolver = { stringResource(it.nameRes) },
+                buttonStateResolver = { it == profilesMode }
+            )
+
+            Spacer(Modifier.height(8.dp))
+
+            when (profilesMode) {
+                ProfilesMode.EQ -> {
+                    LazyColumn(
+                        contentPadding = PaddingValues(bottom = 24.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(profiles) { profile ->
+                            EqualizerProfileItem(
+                                profile = profile,
+                                isCurrentProfile = profile == selectedProfile,
+                                onClick = { onSelectEqProfile(profile) },
+                                onEditClick = { onEditEqProfile(profile) },
+                                onDeleteClick = { onDeleteEqProfile(profile) }
+                            )
+                        }
+                    }
+                }
+
+                ProfilesMode.AutoEq -> {
+                    if (autoEqProfiles.isEmpty()) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(16.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(32.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_equalizer_24dp),
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.size(72.dp)
+                            )
+
+                            Text(
+                                text = stringResource(R.string.no_autoeq_profiles),
+                                textAlign = TextAlign.Center,
+                                style = MaterialTheme.typography.headlineSmall
+                            )
+
+                            Button(onClick = onImportAutoEqProfile) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_file_open_24dp),
+                                    contentDescription = null
+                                )
+                                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                                Text(stringResource(R.string.import_autoeq_profile))
+                            }
+                        }
+                    } else {
+                        LazyColumn(
+                            contentPadding = PaddingValues(bottom = 24.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            items(autoEqProfiles) { profile ->
+                                AutoEqProfileItem(
+                                    profile = profile,
+                                    onClick = { onSelectAutoEqProfile(profile) },
+                                    onDeleteClick = { onDeleteAutoEqProfile(profile) }
+                                )
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -701,16 +1024,19 @@ private fun PresetSelectorDialog(
 }
 
 @Composable
-private fun PresetCheckDialog(
+private fun ProfileCheckDialog(
     icon: Painter,
     title: String,
     message: String,
     confirmButton: String,
-    presets: List<EQPreset>,
+    profiles: List<EqProfile>,
     onDismiss: () -> Unit,
-    onConfirm: (List<EQPreset>) -> Unit
+    onConfirm: (List<EqProfile>) -> Unit
 ) {
-    val selectedPresets = remember { mutableStateListOf<EQPreset>().apply { addAll(presets) } }
+    val selectedProfiles = remember {
+        mutableStateListOf<EqProfile>()
+            .apply { addAll(profiles.filterNot { it.isCustom }) }
+    }
 
     AlertDialog(
         icon = {
@@ -732,16 +1058,16 @@ private fun PresetCheckDialog(
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(presets) { preset ->
-                        if (preset.isCustom.not()) {
-                            val isChecked = selectedPresets.contains(preset)
+                    items(profiles) { profile ->
+                        if (profile.isCustom.not()) {
+                            val isChecked = selectedProfiles.contains(profile)
                             DialogListItemWithCheckBox(
-                                title = preset.name,
+                                title = profile.name,
                                 onClick = {
                                     if (isChecked) {
-                                        selectedPresets.remove(preset)
+                                        selectedProfiles.remove(profile)
                                     } else {
-                                        selectedPresets.add(preset)
+                                        selectedProfiles.add(profile)
                                     }
                                 },
                                 isSelected = isChecked
@@ -753,8 +1079,8 @@ private fun PresetCheckDialog(
         },
         confirmButton = {
             Button(
-                onClick = { onConfirm(selectedPresets) },
-                enabled = selectedPresets.isNotEmpty()
+                onClick = { onConfirm(selectedProfiles) },
+                enabled = selectedProfiles.isNotEmpty()
             ) {
                 Text(confirmButton)
             }
@@ -769,18 +1095,17 @@ private fun PresetCheckDialog(
 }
 
 @Composable
-private fun EqualizerPresetItem(
-    presetName: String,
+private fun EqualizerProfileItem(
+    profile: EqProfile,
+    isCurrentProfile: Boolean,
     onClick: () -> Unit,
     onEditClick: () -> Unit,
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier,
-    isCurrentPreset: Boolean = false,
-    isCustomPreset: Boolean = false,
 ) {
     DialogListItemSurface(
         onClick = onClick,
-        isSelected = isCurrentPreset,
+        isSelected = isCurrentProfile,
         modifier = modifier
     ) {
         Row(
@@ -788,34 +1113,146 @@ private fun EqualizerPresetItem(
                 .fillMaxWidth()
                 .heightIn(min = 64.dp)
                 .padding(vertical = 8.dp)
-                .padding(start = 24.dp, end = 16.dp),
+                .padding(start = 16.dp, end = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = presetName,
-                style = MaterialTheme.typography.bodyLarge,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.weight(1f)
+            Icon(
+                painter = painterResource(R.drawable.ic_equalizer_24dp),
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.secondary
             )
 
-            if (isCustomPreset.not()) {
+            Spacer(Modifier.width(16.dp))
+
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(
+                    text = profile.getName(LocalContext.current),
+                    style = MaterialTheme.typography.bodyLarge,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+
+                Text(
+                    text = profile.getDescription(LocalContext.current),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            if (!profile.isCustom) {
                 Spacer(Modifier.width(8.dp))
                 IconButton(onClick = onEditClick) {
                     Icon(
                         painter = painterResource(R.drawable.ic_edit_24dp),
-                        contentDescription = "Edit preset $presetName"
+                        contentDescription = "Edit profile ${profile.getName(LocalContext.current)}"
                     )
                 }
-                Spacer(Modifier.width(8.dp))
                 IconButton(onClick = onDeleteClick) {
                     Icon(
                         painter = painterResource(R.drawable.ic_delete_24dp),
-                        contentDescription = "Delete preset $presetName"
+                        contentDescription = "Delete profile ${profile.getName(LocalContext.current)}"
                     )
                 }
             }
         }
     }
+}
+
+@Composable
+private fun AutoEqProfileItem(
+    profile: AutoEqProfile,
+    onClick: () -> Unit,
+    onDeleteClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    DialogListItemSurface(
+        onClick = onClick,
+        modifier = modifier
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 64.dp)
+                .padding(vertical = 8.dp)
+                .padding(start = 16.dp, end = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_equalizer_24dp),
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.secondary
+            )
+
+            Spacer(Modifier.width(16.dp))
+
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = profile.name,
+                    style = MaterialTheme.typography.bodyLarge,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            Spacer(Modifier.width(8.dp))
+
+            IconButton(onClick = onDeleteClick) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_delete_24dp),
+                    contentDescription = "Delete profile ${profile.name}"
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun ReplayGainModeSelector(
+    replayGain: ReplayGainState,
+    onModeSelected: (ReplayGainMode) -> Unit
+) {
+    ButtonGroup(
+        onSelected = onModeSelected,
+        buttonItems = replayGain.availableModes.toList(),
+        buttonStateResolver = { mode -> mode == replayGain.mode },
+        buttonIconResolver = { mode, isChecked ->
+            if (isChecked) when (mode) {
+                ReplayGainMode.Album -> painterResource(R.drawable.ic_album_24dp)
+                ReplayGainMode.Track -> painterResource(R.drawable.ic_music_note_24dp)
+                else -> null
+            } else {
+                null
+            }
+        },
+        buttonTextResolver = { mode ->
+            when (mode) {
+                ReplayGainMode.Album -> stringResource(R.string.album)
+                ReplayGainMode.Track -> stringResource(R.string.track)
+                else -> stringResource(R.string.label_none)
+            }
+        },
+        modifier = Modifier.fillMaxWidth()
+    )
+}
+
+@Composable
+private fun EQValueText(
+    text: String,
+    modifier: Modifier = Modifier
+) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.secondary,
+        maxLines = 1,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center,
+        modifier = modifier.width(56.dp)
+    )
 }

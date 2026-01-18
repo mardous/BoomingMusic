@@ -81,6 +81,11 @@
         app:showAsAction="never" />
     <item
         android:orderInCategory="10"
+        android:id="@+id/action_equalizer"
+        android:title="@string/equalizer_label"
+        app:showAsAction="never" />
+    <item
+        android:orderInCategory="10"
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings_24dp"
         android:title="@string/settings_title"

@@ -101,7 +101,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Remover a música <b>%1$s</b> da playlist?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Remover <b>%1$d</b> músicas da playlist?]]></string>
     <string name="playlist_empty_text">Playlist vazia</string>
-    <string name="action_lyrics_editor">Lyrics editor</string>
+    <string name="action_lyrics_editor">Editor de letras</string>
     <string name="action_tag_editor">Editor de tags</string>
     <string name="saving_changes">Salvando alterações</string>
     <string name="changes_saved_successfully">Alterações salvas com sucesso.</string>
@@ -406,51 +406,72 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="shuffle_mode_combined_description">Mix com base nos seus favoritos, mais tocadas e recentes.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizador</string>
-    <string name="share_eq_configuration">Compartilhar configuração do EQ</string>
+    <string name="autoeq_label">AutoEq</string>
+    <string name="graphic_eq_label">Graphic EQ</string>
+    <string name="graphic_eq_band_count">%d-band</string>
+    <string name="eq_profiles_title">EQ Profiles</string>
+    <string name="autoeq_profiles_title">AutoEq Profiles</string>
+    <string name="eq_profile_title">Profile</string>
+    <string name="change_band_count_title">Change band count</string>
+    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
+        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
+        \n\nDo you want to continue?</string>
+    <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
+    <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
+    <string name="share_eq_profiles">Share EQ Profiles</string>
     <string name="there_is_nothing_to_export">Não há nada para exportar.</string>
     <string name="there_is_nothing_to_import">Não há nada para importar.</string>
-    <string name="there_are_no_saved_configurations">Não há configurações salvas.</string>
-    <string name="could_not_create_configurations_file">Não foi possível criar o arquivo de configurações.</string>
-    <string name="configuration_exported_successfully">Configuração exportada com sucesso.</string>
-    <string name="could_not_export_configuration">Falha ao exportar configuração.</string>
-    <string name="export_configuration">Exportar configuração</string>
-    <string name="import_configuration">Importar configuração</string>
-    <string name="imported_x_presets">%d predefinições importadas.</string>
-    <string name="no_preset_imported">Nenhuma predefinição importada.</string>
-    <string name="share_configuration">Compartilhar configuração</string>
-    <string name="select_configurations_to_share">Selecione quais configurações compartilhar:</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.</string>
+    <string name="share_profiles">Share profiles</string>
+    <string name="select_profiles_to_share">Select profiles to share:</string>
+    <string name="export_profiles">Export profiles</string>
+    <string name="select_profiles_to_export">Select profiles to export:</string>
+    <string name="select_a_file_to_save_the_exported_profiles">Select a file to save the exported profiles.</string>
+    <string name="profiles_exported_successfully">Profiles exported successfully.</string>
+    <string name="import_profiles">Import profiles</string>
+    <string name="select_profiles_to_import">Select profiles to import:</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Select a file containing Booming Music EQ Profiles.</string>
+    <string name="imported_x_profiles">Imported %d profiles.</string>
+    <string name="no_profile_imported">No profile imported.</string>
+    <string name="import_autoeq_profile">Import AutoEq profile</string>
+    <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
+    <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">Redefinir equalizador</string>
-    <string name="select_configurations_to_export">Selecione as configurações para exportar:</string>
-    <string name="select_a_file_to_save_exported_configurations">Selecione um arquivo para salvar as configurações exportadas.</string>
-    <string name="select_a_file_containing_booming_eq_presets">Selecione um arquivo que contenha predefinições do EQ do Booming Music.</string>
-    <string name="select_configurations_to_import">Selecione quais configurações importar:</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Tem certeza que deseja redefinir o equalizador?
-        \n\nIsto irá limpar todas as suas predefinições.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
+        \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Não suportado</string>
     <string name="enable_equalizer">Habilitar EQ</string>
-    <string name="select_preset">Selecionar predefinição</string>
-    <string name="please_enter_a_name_for_this_preset">Por favor, digite um nome para esta predefinição.</string>
-    <string name="preset_name">Nome da predefinição</string>
+    <string name="select_profile">Select profile</string>
+    <string name="save_profile_label">Save profile</string>
+    <string name="rename_profile_label">Rename profile</string>
+    <string name="delete_profile_label">Delete profile</string>
+    <string name="delete_profile_x">Delete profile \"%s\"?</string>
+    <string name="please_enter_a_name_for_this_profile">Please, enter a name for this profile.</string>
+    <string name="please_enter_a_new_name_for_this_profile">Please, enter a new name for this profile.</string>
+    <string name="replace_profile_with_same_name">Replace profile with same name</string>
+    <string name="profile_name">Profile name</string>
     <string name="that_name_is_already_in_use">Esse nome já está em uso.</string>
-    <string name="save_preset">Salvar predefinição</string>
-    <string name="replace_preset_with_same_name">Substituir predefinição com o mesmo nome</string>
-    <string name="preset_name_is_empty">Nome da predefinição vazio</string>
-    <string name="could_not_save_preset">Impossível salvar predefinição.</string>
-    <string name="preset_saved_successfully">Predefinição salva com sucesso.</string>
-    <string name="delete_preset">Excluir predefinição</string>
-    <string name="preset_x_deleted">Predefinição %s excluída.</string>
-    <string name="rename_preset">Renomear predefinição</string>
-    <string name="please_enter_a_new_name_for_this_preset">Por favor, digite um novo nome para esta predefinição.</string>
-    <string name="preset_renamed">Predefinição renomeada.</string>
-    <string name="preset_not_renamed">Predefinição não renomeada.</string>
+    <string name="profile_saved_successfully">Profile saved successfully.</string>
+    <string name="the_profile_could_not_be_saved">The profile could not be saved.</string>
+    <string name="profile_renamed">Profile renamed.</string>
+    <string name="the_profile_could_not_be_renamed">The profile could not be renamed</string>
+    <string name="autoeq_profile_imported_successfully">AutoEq profile imported successfully.</string>
+    <string name="profile_x_deleted">Profile \"%s\" deleted.</string>
+    <string name="autoeq_profile_x_deleted">AutoEq profile \"%s\" deleted.</string>
     <string name="bassboost_label">Amplificar o Grave</string>
     <string name="virtualizer_label">Virtualizador</string>
     <string name="loudness_enhancer">Amplificador</string>
     <string name="sound_settings">Configurações de som</string>
     <string name="volume_label">Volume</string>
-    <string name="tempo_label">Velocidade</string>
+    <string name="reset_balance">Reset balance</string>
+    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_tempo">Reset tempo</string>
+    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="balance_left">Left</string>
+    <string name="balance_right">Right</string>
     <string name="action_external_eq">EQ Externo</string>
     <string name="custom">Personalizado</string>
+    <string name="audio_offload_is_enabled">O descarregamento de áudio está ativado</string>
     <string name="enable_audio_offload_title">Processamento de áudio otimizado</string>
     <string name="enable_audio_offload_description">Permite que o áudio seja processado diretamente pelo hardware do dispositivo, reduzindo o uso da CPU e o consumo de bateria.
 Esse recurso é compatível apenas com determinados dispositivos. Alguns efeitos ou recursos podem ficar indisponíveis quando ativado.
@@ -492,11 +513,13 @@ Ideal para podcasts e gravações.</string>
     <string name="could_not_import_font">Não foi possível importar a fonte.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporizador</string>
-    <string name="sleep_timer_cancel_current_timer">Cancelar o temporizador atual</string>
-    <string name="sleep_timer_cancel_current_timer_x">Cancelar o temporizador atual (%s)</string>
-    <string name="sleep_timer_canceled">Temporizador cancelado.</string>
+    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
+    <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_set_action">Definir</string>
-    <string name="sleep_timer_set">Temporizador definido para %d minutos a partir de agora.</string>
+    <string name="sleep_timer_x_mins">%d mins</string>
+    <string name="sleep_timer_15_mins">15 mins</string>
+    <string name="sleep_timer_45_mins">45 mins</string>
+    <string name="sleep_timer_1_hour">1 hour</string>
     <string name="sleep_timer_finish_current_music">Terminar última música</string>
     <string name="sleep_timer_stop_after_this_track">Parar depois desta música</string>
     <string name="sleep_timer_stop_after_x">Parar depois de %s</string>
@@ -512,6 +535,7 @@ Ideal para podcasts e gravações.</string>
     <string name="version">Versão</string>
     <string name="changelog">Mudanças</string>
     <string name="fork_on_github">Crie um Fork no GitHub</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Licenças</string>
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -519,6 +543,8 @@ Ideal para podcasts e gravações.</string>
     <string name="acknowledgments_title">Agradecimentos</string>
     <string name="translators_title">Tradutores</string>
     <string name="translators_summary">Agradecemos a todos que disponibilizam o Booming Music em diversos idiomas.</string>
+    <string name="contributors_title">Colaboradores</string>
+    <string name="contributors_summary">Uma lista de usuários que contribuíram para o projeto de alguma forma.</string>
     <string name="telegram_chat">Chat do Telegram</string>
     <string name="telegram_chat_summary">Junte-se ao chat no Telegram e receba informações sobre novos lançamentos e notícias.</string>
     <string name="view_profile_on_github">Ver perfil no GitHub</string>
@@ -632,6 +658,10 @@ Ideal para podcasts e gravações.</string>
     <string name="instrumental_tracks_identifiers_summary">Se a letra de uma música contiver apenas um ou mais desses indicadores, ela será marcada como faixa instrumental (separados por vírgula).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marcar pelo título</string>
     <string name="instrumental_tracks_mark_by_title_summary">O título da faixa também será levado em conta na busca por identificadores.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos os arquivos de letras como UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume que todos os arquivos usam codificação UTF-8.
+Isso otimiza o processo de análise dos arquivos, mas em alguns casos pode resultar em caracteres incomuns nas letras das músicas.
+Pode ser necessário reiniciar o aplicativo.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir ao reproduzir</string>
@@ -710,24 +740,26 @@ Ideal para podcasts e gravações.</string>
     <string name="mp3_index_seeking_summary">Carrega o arquivo MP3 completo na memória para busca, sem depender do cabeçalho Xing.
 Use apenas se a busca falhar em determinados arquivos VBR.
 É necessário reiniciar o aplicativo para aplicar a alteração.</string>
-    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
-    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
-    <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
-    <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
-    <string name="on_song_click_title">When selecting a song</string>
-    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
-    <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
-    <string name="on_song_click_play_whole_list_title">Play whole list</string>
-    <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
-    <string name="on_song_click_queue_next_title">Queue next</string>
-    <string name="on_song_click_queue_next_summary">The selected song will be added to the next position in the queue.</string>
-    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
-    <string name="on_song_click_enqueue_at_end_summary">The selected song will be added to the end of the current queue.</string>
-    <string name="on_clear_queue_title">When clearing the queue</string>
-    <string name="on_clear_queue_remove_all_songs_title">Remove all songs</string>
-    <string name="on_clear_queue_remove_all_songs_summary">The entire playing queue will be cleared.</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_title">Remove all songs except current</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
+    <string name="play_option_always_visible_title">Manter a opção “Reproduzir” visível</string>
+    <string name="play_option_always_visible_summary">Quando ativado, a opção \"Reproduzir\" será exibida no menu da música mesmo que as configurações de toque sejam diferentes.</string>
+    <string name="play_option_whole_list_title">A opção \"Reproduzir\" inicia a reprodução da lista completa</string>
+    <string name="play_option_whole_list_summary">Se ativado, ao selecionar “Reproduzir” no menu da música, a reprodução da playlist inteira será iniciada. Se desativado, apenas a música escolhida será reproduzida.</string>
+    <string name="on_song_click_title">Ao selecionar uma música</string>
+    <string name="on_song_click_play_only_this_song_title">Reproduzir apenas a faixa selecionada</string>
+    <string name="on_song_click_play_only_this_song_summary">A fila atual será limpa e substituída pela música selecionada.</string>
+    <string name="on_song_click_play_whole_list_title">Reproduzir toda a lista</string>
+    <string name="on_song_click_play_whole_list_summary">A fila atual será substituída por todas as músicas da lista/álbum/pasta.</string>
+    <string name="on_song_click_queue_next_title">Enfileirar a seguir</string>
+    <string name="on_song_click_queue_next_summary">A música selecionada será adicionada à próxima posição da fila.</string>
+    <string name="on_song_click_enqueue_at_end_title">Adicionar ao final da fila</string>
+    <string name="on_song_click_enqueue_at_end_summary">A música selecionada será adicionada ao final da fila atual.</string>
+    <string name="on_clear_queue_title">Ao limpar a fila</string>
+    <string name="on_clear_queue_remove_all_songs_title">Remover todas as músicas</string>
+    <string name="on_clear_queue_remove_all_songs_summary">Toda a fila de reprodução será limpa.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Remover todas as músicas, exceto a atual</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Apenas a música em execução permanecerá na fila.</string>
+    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
+    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Baixar metadados automaticamente</string>
     <string name="ignore_media_store_album_covers_title">Ignorar capas do armazenamento de mídia</string>
@@ -786,10 +818,11 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="compact">Compacto</string>
     <string name="expanded">Expandido</string>
     <string name="full_cover_style">Capa Completa</string>
-    <string name="gradient_style">Degradê</string>
+    <string name="gradient_style">Gradiente</string>
     <string name="peek_style">Peek</string>
     <string name="plain_style">Simples</string>
     <string name="m3_style">M3</string>
+    <string name="expressive_style">Expressivo</string>
     <string name="normal_style">Normal</string>
     <string name="cascading">Em cascata</string>
     <string name="depth">Profundidade</string>

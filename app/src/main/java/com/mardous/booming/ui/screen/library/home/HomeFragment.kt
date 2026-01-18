@@ -28,21 +28,42 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mardous.booming.R
-import com.mardous.booming.data.model.*
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.ContentType
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.Suggestion
 import com.mardous.booming.databinding.FragmentHomeBinding
-import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.navigation.*
+import com.mardous.booming.extensions.dp
+import com.mardous.booming.extensions.isNullOrEmpty
+import com.mardous.booming.extensions.navigation.albumDetailArgs
+import com.mardous.booming.extensions.navigation.artistDetailArgs
+import com.mardous.booming.extensions.navigation.asFragmentExtras
+import com.mardous.booming.extensions.navigation.detailArgs
+import com.mardous.booming.extensions.navigation.playlistDetailArgs
 import com.mardous.booming.extensions.resources.addPaddingRelative
 import com.mardous.booming.extensions.resources.destroyOnDetach
 import com.mardous.booming.extensions.resources.primaryColor
 import com.mardous.booming.extensions.resources.setupStatusBarForeground
-import com.mardous.booming.ui.*
+import com.mardous.booming.extensions.setSupportActionBar
+import com.mardous.booming.extensions.toHtml
+import com.mardous.booming.extensions.topLevelTransition
+import com.mardous.booming.ui.IAlbumCallback
+import com.mardous.booming.ui.IArtistCallback
+import com.mardous.booming.ui.IHomeCallback
+import com.mardous.booming.ui.IScrollHelper
+import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.HomeAdapter
 import com.mardous.booming.ui.adapters.album.AlbumAdapter
 import com.mardous.booming.ui.adapters.artist.ArtistAdapter
 import com.mardous.booming.ui.adapters.song.SongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
-import com.mardous.booming.ui.component.menu.*
+import com.mardous.booming.ui.component.menu.onAlbumMenu
+import com.mardous.booming.ui.component.menu.onAlbumsMenu
+import com.mardous.booming.ui.component.menu.onArtistMenu
+import com.mardous.booming.ui.component.menu.onArtistsMenu
+import com.mardous.booming.ui.component.menu.onSongMenu
+import com.mardous.booming.ui.component.menu.onSongsMenu
 import com.mardous.booming.ui.screen.library.ReloadType
 
 /**
@@ -283,6 +304,7 @@ class HomeFragment : AbsMainActivityFragment(R.layout.fragment_home),
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.menu_library, menu)
         menu.removeItem(R.id.action_scan)
+        menu.removeItem(R.id.action_equalizer)
         menu.removeItem(R.id.action_grid_size)
         menu.removeItem(R.id.action_view_type)
         menu.removeItem(R.id.action_sort_order)

@@ -4,9 +4,19 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -127,11 +137,12 @@ fun DialogListItemSurface(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     isSelected: Boolean = false,
+    useBorderStroke: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colors = MaterialTheme.colorScheme
     val shapeCornerRadius by animateDpAsState(
-        targetValue = if (isSelected) CornerRadiusTokens.SurfaceLargest else CornerRadiusTokens.SurfaceLarge,
+        targetValue = if (isSelected) CornerRadiusTokens.SurfaceLargest else CornerRadiusTokens.SurfaceMedium,
         animationSpec = tween(400)
     )
     val containerColor by animateColorAsState(
@@ -140,11 +151,11 @@ fun DialogListItemSurface(
     )
     val contentColor = if (isSelected) colors.onPrimaryContainer else colors.onSurface
     val borderWidth by animateDpAsState(
-        targetValue = if (isSelected) BorderStrokeTokens.Medium else BorderStrokeTokens.None,
+        targetValue = if (isSelected && useBorderStroke) BorderStrokeTokens.Medium else BorderStrokeTokens.None,
         animationSpec = tween(200)
     )
     val borderStroke = remember(isSelected, borderWidth) {
-        if (isSelected) BorderStroke(borderWidth, colors.primary) else null
+        if (isSelected && useBorderStroke) BorderStroke(borderWidth, colors.primary) else null
     }
     Surface(
         onClick = onClick,
@@ -152,6 +163,7 @@ fun DialogListItemSurface(
         contentColor = contentColor,
         shape = RoundedCornerShape(shapeCornerRadius),
         border = borderStroke,
-        content = content
+        content = content,
+        modifier = modifier
     )
 }

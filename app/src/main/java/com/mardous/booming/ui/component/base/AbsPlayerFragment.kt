@@ -62,6 +62,7 @@ import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.navigation.albumDetailArgs
 import com.mardous.booming.extensions.navigation.artistDetailArgs
+import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.navigation.genreDetailArgs
 import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.resources.animateBackgroundColor
@@ -72,7 +73,6 @@ import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.component.menu.newPopupMenu
 import com.mardous.booming.ui.component.menu.onSongMenu
-import com.mardous.booming.ui.dialogs.SleepTimerDialog
 import com.mardous.booming.ui.dialogs.WebSearchDialog
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
@@ -453,7 +453,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             }
 
             NowPlayingAction.SleepTimer -> {
-                SleepTimerDialog().show(childFragmentManager, "SLEEP_TIMER")
+                findActivityNavController(R.id.fragment_container)
+                    .navigate(R.id.nav_sleep_timer)
                 true
             }
 
