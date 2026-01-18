@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.audiofx.AudioEffect
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.R
@@ -17,6 +18,7 @@ import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
 import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
+import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
 import com.mardous.booming.extensions.files.getContentUri
 import com.mardous.booming.extensions.files.readString
 import com.mardous.booming.extensions.resolveActivity
@@ -337,17 +339,25 @@ class EqualizerViewModel(
         context: Context,
         uri: Uri?
     ) = viewModelScope.launch(Dispatchers.IO) {
-        val result = if (uri == null || uri.path?.endsWith(".txt", ignoreCase = true) == false) {
+        val result = if (uri == null) {
             AutoEqImportRequest(false, R.string.there_is_nothing_to_import)
         } else {
-            val parseResult = runCatching {
-                AutoEqTxtParser.parse(context, uri)
-            }
-            val profile = parseResult.getOrNull()
-            if (parseResult.isFailure || profile == null) {
+            val mimeType = context.contentResolver.getType(uri)
+            if (mimeType == null || mimeType != MIME_TYPE_PLAIN_TEXT) {
                 AutoEqImportRequest(false, R.string.there_is_nothing_to_import)
             } else {
-                AutoEqImportRequest(true, profile = profile)
+                val parseResult = runCatching {
+                    AutoEqTxtParser.parse(context, uri)
+                }
+                val profile = parseResult.getOrNull()
+                if (parseResult.isFailure || profile == null) {
+                    parseResult.exceptionOrNull()?.let {
+                        Log.e("EqualizerViewModel", "AutoEq profile parsing failed!", it)
+                    }
+                    AutoEqImportRequest(false, R.string.there_is_nothing_to_import)
+                } else {
+                    AutoEqImportRequest(true, profile = profile)
+                }
             }
         }
         _autoEqImportRequestEvent.send(result)
