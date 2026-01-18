@@ -8,6 +8,12 @@
 	<string name="empty_text_emoji" translatable="false">&#128561;</string>
     <string name="instrumental_identifiers" translatable="false">(Instrumental)</string>
 
+    <string name="speed_0_5x" translatable="false">0.5x</string>
+    <string name="speed_0_8x" translatable="false">0.8x</string>
+    <string name="speed_1_0x" translatable="false">1.0x</string>
+    <string name="speed_1_2x" translatable="false">1.2x</string>
+    <string name="speed_1_5x" translatable="false">1.5x</string>
+
 	<string name="google" translatable="false">Google</string>
 	<string name="lastfm" translatable="false">Last.fm</string>
 	<string name="wikipedia" translatable="false">Wikipedia</string>

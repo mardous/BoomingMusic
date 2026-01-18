@@ -9,6 +9,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,11 +27,14 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Surface
@@ -197,6 +201,10 @@ fun SoundSettingsSheet(
                     titleEndContent = {
                         IconButton(
                             onClick = {
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.Confirm
+                                )
+                                viewModel.setVolume(1f)
                                 viewModel.setBalance(0f)
                             },
                             modifier = Modifier.size(30.dp)
@@ -306,6 +314,9 @@ fun SoundSettingsSheet(
                     titleEndContent = {
                         IconButton(
                             onClick = {
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.Confirm
+                                )
                                 viewModel.setTempo(isFixedPitch = tempo.isFixedPitch.not())
                             },
                             modifier = Modifier.size(30.dp)
@@ -324,6 +335,9 @@ fun SoundSettingsSheet(
                         Spacer(Modifier.width(8.dp))
                         IconButton(
                             onClick = {
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.Confirm
+                                )
                                 viewModel.setTempo(speed = 1f, pitch = 1f)
                             },
                             modifier = Modifier.size(30.dp)
@@ -403,6 +417,106 @@ fun SoundSettingsSheet(
                                 text = "%.1fx".format(Locale.US, tempoPitch),
                                 modifier = Modifier.widthIn(min = 48.dp)
                             )
+                        }
+
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(ButtonGroupDefaults.ConnectedSpaceBetween),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            OutlinedButton(
+                                onClick = {
+                                    hapticFeedback.performHapticFeedback(
+                                        HapticFeedbackType.ContextClick
+                                    )
+                                    viewModel.setTempo(speed = 0.5f)
+                                },
+                                shape = ButtonGroupDefaults.connectedLeadingButtonShape,
+                                contentPadding = PaddingValues(8.dp),
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.speed_0_5x),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+
+                            OutlinedButton(
+                                onClick = {
+                                    hapticFeedback.performHapticFeedback(
+                                        HapticFeedbackType.ContextClick
+                                    )
+                                    viewModel.setTempo(speed = 0.8f)
+                                },
+                                shape = ShapeDefaults.Small,
+                                contentPadding = PaddingValues(8.dp),
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.speed_0_8x),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+
+                            OutlinedButton(
+                                onClick = {
+                                    hapticFeedback.performHapticFeedback(
+                                        HapticFeedbackType.ContextClick
+                                    )
+                                    viewModel.setTempo(speed = 1.0f)
+                                },
+                                shape = ShapeDefaults.Small,
+                                contentPadding = PaddingValues(8.dp),
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.speed_1_0x),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+
+                            OutlinedButton(
+                                onClick = {
+                                    hapticFeedback.performHapticFeedback(
+                                        HapticFeedbackType.ContextClick
+                                    )
+                                    viewModel.setTempo(speed = 1.2f)
+                                },
+                                shape = ShapeDefaults.Small,
+                                contentPadding = PaddingValues(8.dp),
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.speed_1_2x),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+
+                            OutlinedButton(
+                                onClick = {
+                                    hapticFeedback.performHapticFeedback(
+                                        HapticFeedbackType.ContextClick
+                                    )
+                                    viewModel.setTempo(speed = 1.5f)
+                                },
+                                shape = ButtonGroupDefaults.connectedTrailingButtonShape,
+                                contentPadding = PaddingValues(8.dp),
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.speed_1_5x),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
                         }
                     }
                 }

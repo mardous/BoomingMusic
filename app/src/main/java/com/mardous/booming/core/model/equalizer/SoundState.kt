@@ -76,12 +76,3 @@ data class ReplayGainState(
         val Unspecified = ReplayGainState(ReplayGainMode.Off, 0f, 0f)
     }
 }
-
-const val MIN_SPEED = .5f
-const val MIN_SPEED_NO_PITCH = .8f
-const val MAX_SPEED = 2f
-const val MAX_SPEED_NO_PITCH = 1.5f
-const val MIN_PITCH = .5f
-const val MAX_PITCH = 2f
-const val MIN_BALANCE = 0f
-const val MAX_BALANCE = 1f
