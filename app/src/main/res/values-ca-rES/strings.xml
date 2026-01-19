@@ -464,10 +464,10 @@
     <string name="loudness_enhancer">Amplificador</string>
     <string name="sound_settings">Configuració de so</string>
     <string name="volume_label">Volum</string>
-    <string name="reset_balance">Reset balance</string>
-    <string name="speed_and_pitch_label">Speed and pitch</string>
-    <string name="reset_tempo">Reinicia el tempo</string>
-    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="reset_balance">Restableix el balanç</string>
+    <string name="speed_and_pitch_label">Velocitat i to</string>
+    <string name="reset_tempo">Restableix el tempo</string>
+    <string name="unlock_pitch_adjustment">Desbloqueja l\'ajustament de to</string>
     <string name="balance_left">Esquerra</string>
     <string name="balance_right">Dreta</string>
     <string name="action_external_eq">EQ extern</string>
