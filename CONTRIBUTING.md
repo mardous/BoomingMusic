@@ -32,5 +32,5 @@ We will evaluate all pull requests we receive, however, take the following point
 
 ## License
 By contributing to this project:
-* You agree that your contribution will be licensed under the terms of the [GNU General Public License](LICENSE.md).
+* You agree that your contribution will be licensed under the terms of the [GNU General Public License](LICENSE.txt).
 * You have read and agreed to participate under the terms of our [Code of Conduct](CODE_OF_CONDUCT.md).
