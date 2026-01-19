@@ -810,7 +810,7 @@ class EqualizerManager(
             val frequencies = bandCapabilities.getFrequencies(currentBandCount)
             val profile = EqProfile(
                 name = profile.name,
-                levels = profile.getBandGains(frequencies),
+                levels = profile.getBandGains(frequencies, bandCapabilities.bandRange),
                 isCustom = true,
                 isAutoEq = true
             )

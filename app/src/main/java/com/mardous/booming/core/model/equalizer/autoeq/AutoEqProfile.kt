@@ -16,12 +16,15 @@ data class AutoEqProfile(
     val preamp: Float = 0f
 ) {
 
-    fun getBandGains(targetFrequencies: IntArray): FloatArray {
+    fun getBandGains(
+        targetFrequencies: IntArray,
+        validGainRange: ClosedFloatingPointRange<Float>
+    ): FloatArray {
         val sortedPoints = points.sortedBy { it.frequency }
         val bandGains = FloatArray(targetFrequencies.size)
         for (i in targetFrequencies.indices) {
             val interpolatedGain = interpolate(sortedPoints, targetFrequencies[i].toFloat())
-            bandGains[i] = interpolatedGain + preamp
+            bandGains[i] = (interpolatedGain + preamp).coerceIn(validGainRange)
         }
         return bandGains
     }
