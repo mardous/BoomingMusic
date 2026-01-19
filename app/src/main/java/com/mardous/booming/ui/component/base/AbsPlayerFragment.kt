@@ -79,6 +79,7 @@ import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
 import com.mardous.booming.ui.dialogs.songs.ShareSongDialog
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.equalizer.EqualizerFragment
+import com.mardous.booming.ui.screen.equalizer.EqualizerFragmentArgs
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
 import com.mardous.booming.ui.screen.lyrics.LyricsFragment
@@ -248,7 +249,14 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 if (currentFragment(R.id.fragment_container) is EqualizerFragment) {
                     (activity as? MainActivity)?.collapsePanel()
                 } else {
-                    goToDestination(requireActivity(), R.id.nav_equalizer)
+                    goToDestination(
+                        activity = requireActivity(),
+                        destinationId = R.id.nav_equalizer,
+                        args = EqualizerFragmentArgs.Builder()
+                            .setFromPlayer(true)
+                            .build()
+                            .toBundle()
+                    )
                 }
                 true
             }

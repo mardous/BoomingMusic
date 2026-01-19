@@ -179,7 +179,12 @@
     <fragment
         android:id="@+id/nav_equalizer"
         android:name="com.mardous.booming.ui.screen.equalizer.EqualizerFragment"
-        android:label="EqualizerFragment"/>
+        android:label="EqualizerFragment">
+        <argument
+            android:name="from_player"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_settings"
