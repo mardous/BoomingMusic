@@ -116,61 +116,66 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/repeatButton"
             style="?materialIconButtonOutlinedStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:insetTop="2dp"
             android:insetBottom="2dp"
             android:insetRight="2dp"
             android:insetLeft="2dp"
             android:contentDescription="@string/action_cycle_repeat"
+            app:iconSize="20dp"
             app:icon="@drawable/ic_repeat_24dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/shuffleButton"
             style="?materialIconButtonOutlinedStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:insetTop="2dp"
             android:insetBottom="2dp"
             android:insetRight="2dp"
             android:insetLeft="2dp"
             android:contentDescription="@string/action_toggle_shuffle"
+            app:iconSize="20dp"
             app:icon="@drawable/ic_shuffle_24dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/openQueueButton"
             style="?materialIconButtonOutlinedStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:insetTop="2dp"
             android:insetBottom="2dp"
             android:insetRight="2dp"
             android:insetLeft="2dp"
             android:contentDescription="@string/playing_queue_label"
+            app:iconSize="20dp"
             app:icon="@drawable/ic_queue_music_24dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/favoriteButton"
             style="?materialIconButtonOutlinedStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:insetTop="2dp"
             android:insetBottom="2dp"
             android:insetRight="2dp"
             android:insetLeft="2dp"
             android:contentDescription="@string/toggle_favorite"
+            app:iconSize="20dp"
             app:icon="@drawable/ic_favorite_outline_24dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/moreButton"
             style="?materialIconButtonOutlinedStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:insetTop="2dp"
             android:insetBottom="2dp"
             android:insetRight="2dp"
             android:insetLeft="2dp"
             android:contentDescription="@string/action_more"
+            app:iconSize="20dp"
             app:icon="@drawable/ic_more_vert_24dp" />
 
     </com.google.android.material.button.MaterialButtonGroup>
