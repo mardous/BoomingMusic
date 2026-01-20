@@ -382,7 +382,7 @@ fun SoundSettingsSheet(
                             )
 
                             SoundSettingsValueText(
-                                text = "%.1fx".format(Locale.US, tempoSpeed),
+                                text = "%.2fx".format(Locale.US, tempoSpeed),
                                 modifier = Modifier.widthIn(min = 48.dp)
                             )
                         }
@@ -392,9 +392,10 @@ fun SoundSettingsSheet(
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.fillMaxWidth()
                         ) {
+                            val sliderValue = if (tempo.isFixedPitch) tempoSpeed else tempoPitch
                             Slider(
                                 enabled = tempo.isFixedPitch.not(),
-                                value = if (tempo.isFixedPitch) tempoSpeed else tempoPitch,
+                                value = sliderValue,
                                 valueRange = tempo.pitchRange,
                                 onValueChange = { tempoPitch = it },
                                 onValueChangeFinished = {
@@ -414,7 +415,7 @@ fun SoundSettingsSheet(
                             )
 
                             SoundSettingsValueText(
-                                text = "%.1fx".format(Locale.US, tempoPitch),
+                                text = "%.2fx".format(Locale.US, sliderValue),
                                 modifier = Modifier.widthIn(min = 48.dp)
                             )
                         }
