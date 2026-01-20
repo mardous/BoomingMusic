@@ -569,8 +569,8 @@ class EqualizerManager(
                 context.eqDataStore.edit {
                     it[Keys.PRESET] = Json.encodeToString(eqProfile)
                 }
+                applyChangesToEngine(profile = eqProfile)
             }
-            update()
         }
     }
 
@@ -598,7 +598,7 @@ class EqualizerManager(
                 }
             }
             if (fromUser) {
-                update()
+                applyChangesToEngine(profile = profile)
             }
         }
     }
@@ -691,7 +691,11 @@ class EqualizerManager(
                 }
             }
         }
-        update()
+        if (newProfile != null) {
+            applyChangesToEngine(state = state, profile = newProfile)
+        } else {
+            applyChangesToEngine(state = state)
+        }
     }
 
     suspend fun setLoudnessGain(state: LoudnessGainState) {
@@ -699,7 +703,7 @@ class EqualizerManager(
             prefs[Keys.LOUDNESS_ENABLED] = state.enabled
             prefs[Keys.LOUDNESS_GAIN] = state.gainInDb
         }
-        update()
+        applyChangesToEngine(loudnessGainState = state)
     }
 
     suspend fun setBassBoost(state: BassBoostState) {
@@ -707,6 +711,7 @@ class EqualizerManager(
             prefs[Keys.BASS_BOOST_ENABLED] = state.enabled
             prefs[Keys.BASS_BOOST_STRENGTH] = state.strength
         }
+        applyChangesToEngine(bassBoostState = state)
     }
 
     suspend fun setVirtualizer(state: VirtualizerState) {
@@ -714,6 +719,7 @@ class EqualizerManager(
             prefs[Keys.VIRTUALIZER_ENABLED] = state.enabled
             prefs[Keys.VIRTUALIZER_STRENGTH] = state.strength
         }
+        applyChangesToEngine(virtualizerState = state)
     }
 
     suspend fun setBandCount(
@@ -853,84 +859,86 @@ class EqualizerManager(
         )
     }
 
-    private fun update() {
-        runCatching {
-            eqEngine?.let { engine ->
-                applyEngine(engine, false)
-            }
-        }.onFailure {
-            Log.e(TAG, "EQ update error", it)
-        }
-    }
-
     private fun createEngine(sessionId: Int, bandCount: Int): EQEngine? {
         return runCatching {
             DynamicsProcessingEngine(sessionId, bandCount)
-        }.onSuccess {
-            applyEngine(it, true)
+        }.onSuccess { newEngine ->
+            applyChangesToEngine(engine = newEngine)
+            setBandCapabilities(newEngine.bandCapabilities)
         }.onFailure {
             Log.e(TAG, "Failed to open EQ session", it)
         }.getOrNull()
     }
 
-    private fun applyEngine(engine: EQEngine, updateBandCapabilities: Boolean) {
-        val state = eqState.value
-        if (state.isUsable) {
-            applyEqualizer(engine)
-            applyVirtualizer(engine)
-            applyBassBoost(engine)
-            applyLoudness(engine)
-        } else {
-            disableAll(engine)
-        }
-        if (updateBandCapabilities) {
-           setBandCapabilities(engine.bandCapabilities)
+    private fun applyChangesToEngine(
+        engine: EQEngine? = this.eqEngine,
+        state: EqState = this.eqState.value,
+        profile: EqProfile = this.eqCurrentProfile.value,
+        bassBoostState: BassBoostState = this.bassBoostState.value,
+        virtualizerState: VirtualizerState = this.virtualizerState.value,
+        loudnessGainState: LoudnessGainState = this.loudnessGainState.value
+    ) {
+        engine?.let {
+            applyEngine(
+                engine = it,
+                state = state,
+                profile = profile,
+                bassBoostState = bassBoostState,
+                virtualizerState = virtualizerState,
+                loudnessGainState = loudnessGainState
+            )
         }
     }
 
-    private fun applyEqualizer(engine: EQEngine) {
-        engine.setEnabled(true)
-        engine.setProfile(eqCurrentProfile.value)
-    }
-
-    private fun applyVirtualizer(engine: EQEngine) {
+    private fun applyEngine(
+        engine: EQEngine,
+        state: EqState,
+        profile: EqProfile,
+        bassBoostState: BassBoostState,
+        virtualizerState: VirtualizerState,
+        loudnessGainState: LoudnessGainState
+    ) {
         runCatching {
-            val state = virtualizerState.value
             if (state.isUsable) {
-                engine.setVirtualizerState(state)
+                // Apply EQ
+                engine.setEnabled(true)
+                engine.setProfile(profile)
+
+                // Apply Bass Boost
+                runCatching {
+                    if (bassBoostState.isUsable) {
+                        engine.setBassBoostState(bassBoostState)
+                    } else {
+                        engine.setBassBoostState(BassBoostState.Unspecified)
+                    }
+                }.onFailure { Log.e(TAG, "Error setting up bass boost!", it) }
+
+                // Apply Virtualizer
+                runCatching {
+                    if (virtualizerState.isUsable) {
+                        engine.setVirtualizerState(virtualizerState)
+                    } else {
+                        engine.setVirtualizerState(VirtualizerState.Unspecified)
+                    }
+                }.onFailure { Log.e(TAG, "Error setting up virtualizer!", it) }
+
+                // Apply Loudness Enhancer
+                runCatching {
+                    if (loudnessGainState.isUsable) {
+                        engine.setLoudnessGainState(loudnessGainState)
+                    } else {
+                        engine.setLoudnessGainState(LoudnessGainState.Unspecified)
+                    }
+                }.onFailure { Log.e(TAG, "Error setting up loudness enhancer!", it) }
             } else {
+                engine.setEnabled(false)
                 engine.setVirtualizerState(VirtualizerState.Unspecified)
-            }
-        }.onFailure { Log.e(TAG, "Error setting up virtualizer!", it) }
-    }
-
-    private fun applyBassBoost(engine: EQEngine) {
-        runCatching {
-            val state = bassBoostState.value
-            if (state.isUsable) {
-                engine.setBassBoostState(state)
-            } else {
                 engine.setBassBoostState(BassBoostState.Unspecified)
-            }
-        }.onFailure { Log.e(TAG, "Error setting up bass boost!", it) }
-    }
-
-    private fun applyLoudness(engine: EQEngine) {
-        runCatching {
-            val state = loudnessGainState.value
-            if (state.isUsable) {
-                engine.setLoudnessGainState(state)
-            } else {
                 engine.setLoudnessGainState(LoudnessGainState.Unspecified)
             }
-        }.onFailure { Log.e(TAG, "Error setting up loudness enhancer!", it) }
-    }
-
-    private fun disableAll(engine: EQEngine) {
-        engine.setEnabled(false)
-        engine.setVirtualizerState(VirtualizerState.Unspecified)
-        engine.setBassBoostState(BassBoostState.Unspecified)
-        engine.setLoudnessGainState(LoudnessGainState.Unspecified)
+        }.onFailure {
+            Log.e(TAG, "Error setting up EQ engine", it)
+        }
     }
 
     suspend fun resetConfiguration() {
