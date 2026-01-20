@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -57,7 +58,11 @@ fun <T> ButtonGroup(
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                 }
-                Text(buttonTextResolver(item))
+                Text(
+                    text = buttonTextResolver(item),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
         }
     }
