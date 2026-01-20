@@ -269,13 +269,18 @@ class EqualizerManager(
     init {
         _eqState.debounce(100)
             .onEach { newState ->
-                if (eqEngine == null && eqSession.id != NO_SESSION_ID) {
+                val isOffload = newState.disabledByAudioOffload
+                if (eqEngine == null && eqSession.id != NO_SESSION_ID && !isOffload) {
                     eqEngine = createEngine(eqSession.id, newState.preferredBandCount)
                 }
-                if (newState.isUsable) {
-                    setSession(eqSession.copy(type = SessionType.Internal))
+                if (!isOffload) {
+                    if (newState.isUsable) {
+                        setSession(eqSession.copy(type = SessionType.Internal), newState)
+                    } else {
+                        setSession(eqSession.copy(type = SessionType.External), newState)
+                    }
                 } else {
-                    setSession(eqSession.copy(type = SessionType.External))
+                    setSessionIsActive(false, newState)
                 }
             }
             .launchIn(eqScope)
@@ -603,11 +608,11 @@ class EqualizerManager(
         }
     }
 
-    fun setSessionId(audioSessionId: Int) {
+    fun setSessionId(audioSessionId: Int, eqState: EqState = this.eqState.value) {
         setSession(
             eqSession.copy(
                 id = audioSessionId,
-                type = if (eqState.value.enabled) {
+                type = if (eqState.enabled) {
                     SessionType.Internal
                 } else {
                     SessionType.External
@@ -616,64 +621,63 @@ class EqualizerManager(
         )
     }
 
-    fun setSessionIsActive(isActive: Boolean) {
+    fun setSessionIsActive(isActive: Boolean, eqState: EqState = this.eqState.value) {
         setSession(
-            eqSession.copy(
+            newSession = eqSession.copy(
                 active = isActive,
-                type = if (eqState.value.enabled) {
+                type = if (eqState.enabled) {
                     SessionType.Internal
                 } else {
                     SessionType.External
                 }
-            )
+            ),
+            eqState = eqState
         )
     }
 
-    private fun setSession(newSession: EqSession) {
+    private fun setSession(newSession: EqSession, eqState: EqState = this.eqState.value) {
         val oldSession = this.eqSession
         if (newSession == oldSession)
             return
 
         this.eqSession = newSession
-        if (newSession.type != oldSession.type || newSession.id != oldSession.id) {
-            when (oldSession.type) {
-                SessionType.Internal -> {
-                    eqEngine?.setEnabled(false)
-                    if (eqState.value.disabledByAudioOffload) {
-                        eqEngine?.release()
-                        eqEngine = null
-                    }
-                }
-
-                SessionType.External -> {
-                    if (oldSession.id != NO_SESSION_ID) {
-                        val intent = Intent(AudioEffect.ACTION_CLOSE_AUDIO_EFFECT_CONTROL_SESSION)
-                            .putExtra(AudioEffect.EXTRA_PACKAGE_NAME, context.packageName)
-                            .putExtra(AudioEffect.EXTRA_AUDIO_SESSION, oldSession.id)
-
-                        context.sendBroadcast(intent)
-                    }
+        when (oldSession.type) {
+            SessionType.Internal -> {
+                eqEngine?.setEnabled(false)
+                if (eqState.disabledByAudioOffload) {
+                    eqEngine?.release()
+                    eqEngine = null
                 }
             }
 
-            if (newSession.active && newSession.id != NO_SESSION_ID) {
-                when (newSession.type) {
-                    SessionType.Internal -> {
-                        if (newSession.id != this.eqEngine?.sessionId) {
-                            eqEngine?.release()
-                            eqEngine = createEngine(newSession.id, eqState.value.preferredBandCount)
-                        }
-                        eqEngine?.setEnabled(true)
-                    }
+            SessionType.External -> {
+                if (oldSession.id != NO_SESSION_ID) {
+                    val intent = Intent(AudioEffect.ACTION_CLOSE_AUDIO_EFFECT_CONTROL_SESSION)
+                        .putExtra(AudioEffect.EXTRA_PACKAGE_NAME, context.packageName)
+                        .putExtra(AudioEffect.EXTRA_AUDIO_SESSION, oldSession.id)
 
-                    SessionType.External -> {
-                        val intent = Intent(AudioEffect.ACTION_OPEN_AUDIO_EFFECT_CONTROL_SESSION)
-                            .putExtra(AudioEffect.EXTRA_AUDIO_SESSION, newSession.id)
-                            .putExtra(AudioEffect.EXTRA_PACKAGE_NAME, context.packageName)
-                            .putExtra(AudioEffect.EXTRA_CONTENT_TYPE, AudioEffect.CONTENT_TYPE_MUSIC)
+                    context.sendBroadcast(intent)
+                }
+            }
+        }
 
-                        context.sendBroadcast(intent)
+        if (!eqState.disabledByAudioOffload && newSession.active && newSession.id != NO_SESSION_ID) {
+            when (newSession.type) {
+                SessionType.Internal -> {
+                    if (newSession.id != this.eqEngine?.sessionId) {
+                        eqEngine?.release()
+                        eqEngine = createEngine(newSession.id, eqState.preferredBandCount)
                     }
+                    eqEngine?.setEnabled(true)
+                }
+
+                SessionType.External -> {
+                    val intent = Intent(AudioEffect.ACTION_OPEN_AUDIO_EFFECT_CONTROL_SESSION)
+                        .putExtra(AudioEffect.EXTRA_AUDIO_SESSION, newSession.id)
+                        .putExtra(AudioEffect.EXTRA_PACKAGE_NAME, context.packageName)
+                        .putExtra(AudioEffect.EXTRA_CONTENT_TYPE, AudioEffect.CONTENT_TYPE_MUSIC)
+
+                    context.sendBroadcast(intent)
                 }
             }
         }

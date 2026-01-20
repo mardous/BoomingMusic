@@ -63,6 +63,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -80,12 +81,14 @@ import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
+import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.component.compose.ButtonGroup
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
 import com.mardous.booming.ui.component.compose.ConfirmDialog
 import com.mardous.booming.ui.component.compose.DialogListItemSurface
 import com.mardous.booming.ui.component.compose.DialogListItemWithCheckBox
+import com.mardous.booming.ui.component.compose.EmptyView
 import com.mardous.booming.ui.component.compose.InputDialog
 import com.mardous.booming.ui.component.compose.MaterialSwitch
 import com.mardous.booming.ui.component.compose.SwitchCard
@@ -111,6 +114,9 @@ fun EqualizerScreen(
     onBackClick: () -> Unit
 ) {
     val context = LocalContext.current
+    val configuration = LocalConfiguration.current
+
+    val hasSystemEqualizer = remember { eqViewModel.hasSystemEqualizer(context) }
 
     val importProfileLauncher = rememberLauncherForActivityResult(OpenDocument()) { data: Uri? ->
         eqViewModel.requestImport(data)
@@ -494,7 +500,7 @@ fun EqualizerScreen(
     CollapsibleAppBarScaffold(
         title = stringResource(R.string.equalizer_label),
         actions = {
-            if (eqViewModel.hasSystemEqualizer(context)) {
+            if (!eqState.disabledByAudioOffload && hasSystemEqualizer) {
                 IconButton(onClick = { eqViewModel.openSystemEqualizer(context) }) {
                     Icon(
                         painter = painterResource(R.drawable.ic_equalizer_24dp),
@@ -516,7 +522,7 @@ fun EqualizerScreen(
             ) {
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.share_profiles)) },
-                    enabled = eqState.supported && eqProfiles.isNotEmpty(),
+                    enabled = eqState.isUsable && eqProfiles.isNotEmpty(),
                     onClick = {
                         showShareProfileDialog = true
                         expandedMenu = false
@@ -524,7 +530,7 @@ fun EqualizerScreen(
                 )
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.export_profiles)) },
-                    enabled = eqState.supported && eqProfiles.isNotEmpty(),
+                    enabled = eqState.isUsable && eqProfiles.isNotEmpty(),
                     onClick = {
                         showExportDialog = true
                         expandedMenu = false
@@ -532,7 +538,7 @@ fun EqualizerScreen(
                 )
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.import_profiles)) },
-                    enabled = eqState.supported,
+                    enabled = eqState.isUsable,
                     onClick = {
                         importProfiles(autoEq = false)
                         expandedMenu = false
@@ -540,7 +546,7 @@ fun EqualizerScreen(
                 )
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.import_autoeq_profile)) },
-                    enabled = eqState.supported,
+                    enabled = eqState.isUsable,
                     onClick = {
                         importProfiles(autoEq = true)
                         expandedMenu = false
@@ -561,266 +567,284 @@ fun EqualizerScreen(
         onBackClick = onBackClick
     ) { contentPadding ->
         LazyColumn(
-            contentPadding = PaddingValues(16.dp),
+            contentPadding = PaddingValues(
+                horizontal = if (configuration.isLandscape) 64.dp else 16.dp,
+                vertical = 16.dp
+            ),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(contentPadding)
         ) {
-            item {
-                MaterialSwitch(
-                    title = stringResource(R.string.enable_equalizer),
-                    subtitle = if (!eqState.supported) {
-                        stringResource(R.string.not_supported)
-                    } else if (eqState.disabledByAudioOffload) {
-                        stringResource(R.string.audio_offload_is_enabled)
-                    } else null,
-                    isChecked = eqState.isUsable,
-                    enabled = eqState.supported && !eqState.disabledByAudioOffload,
-                    onClick = {
-                        eqViewModel.setEqualizerState(isEnabled = eqState.enabled.not())
-                    }
-                )
-            }
-
-            if (eqState.supported) {
+            if (eqState.disabledByAudioOffload) {
                 item {
-                    TitledCard(
-                        title = stringResource(R.string.eq_profile_title),
-                        iconRes = R.drawable.ic_equalizer_24dp
-                    ) { cardContentPadding ->
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(cardContentPadding)
-                        ) {
-                            val containerColor = if (eqState.isUsable) {
-                                MaterialTheme.colorScheme.surfaceContainerHigh
-                            } else {
-                                MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.7f)
-                            }
-                            val contentColor = contentColorFor(containerColor)
+                    EmptyView(
+                        icon = painterResource(R.drawable.ic_equalizer_24dp),
+                        text = stringResource(R.string.audio_offload_is_enabled),
+                        modifier = Modifier.fillParentMaxSize()
+                    )
+                }
+            } else {
+                item {
+                    MaterialSwitch(
+                        title = stringResource(R.string.enable_equalizer),
+                        subtitle = if (!eqState.supported) stringResource(R.string.not_supported) else null,
+                        isChecked = eqState.isUsable,
+                        enabled = eqState.supported,
+                        onClick = {
+                            eqViewModel.setEqualizerState(isEnabled = eqState.enabled.not())
+                        }
+                    )
+                }
 
+                if (eqState.supported) {
+                    item {
+                        TitledCard(
+                            title = stringResource(R.string.eq_profile_title),
+                            iconRes = R.drawable.ic_equalizer_24dp
+                        ) { cardContentPadding ->
                             Row(
                                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                                 verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.padding(cardContentPadding)
+                            ) {
+                                val containerColor = if (eqState.isUsable) {
+                                    MaterialTheme.colorScheme.surfaceContainerHigh
+                                } else {
+                                    MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.7f)
+                                }
+                                val contentColor = contentColorFor(containerColor)
+
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(MaterialTheme.shapes.medium)
+                                        .background(containerColor)
+                                        .clickable(
+                                            enabled = eqState.isUsable,
+                                            onClick = { showProfileSelectorDialog = true }
+                                        )
+                                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                                        .weight(1f)
+                                ) {
+                                    Text(
+                                        text = eqCurrentProfile.getName(context),
+                                        style = MaterialTheme.typography.titleMedium,
+                                        color = contentColor,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis,
+                                        modifier = Modifier.weight(1f)
+                                    )
+
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_arrow_drop_down_24dp),
+                                        contentDescription = null,
+                                        modifier = Modifier.size(24.dp)
+                                    )
+                                }
+
+                                FilledIconButton(
+                                    enabled = eqState.isUsable && eqCurrentProfile.isCustom,
+                                    colors = IconButtonDefaults.filledIconButtonColors(
+                                        containerColor = MaterialTheme.colorScheme.tertiaryContainer
+                                    ),
+                                    onClick = { showProfileSaverDialog = true }
+                                ) {
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_save_24dp),
+                                        contentDescription = stringResource(R.string.save_profile_label)
+                                    )
+                                }
+                            }
+                        }
+                    }
+
+                    item {
+                        TitledCard(
+                            title = stringResource(R.string.graphic_eq_label),
+                            iconRes = R.drawable.ic_graphic_eq_24dp,
+                            titleEndContent = {
+                                if (eqBandCapabilities.hasMultipleBandConfigurations) {
+                                    TitleShapedText(
+                                        text = stringResource(
+                                            R.string.graphic_eq_band_count,
+                                            eqState.preferredBandCount
+                                        ),
+                                        enabled = eqState.isUsable,
+                                        onClick = {
+                                            showBandCountSelector = showBandCountSelector.not()
+                                        }
+                                    )
+                                }
+                            }
+                        ) { cardContentPadding ->
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(8.dp),
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .clip(MaterialTheme.shapes.medium)
-                                    .background(containerColor)
-                                    .clickable(
-                                        enabled = eqState.isUsable,
-                                        onClick = { showProfileSelectorDialog = true }
+                                    .wrapContentHeight()
+                                    .padding(cardContentPadding)
+                            ) {
+                                AnimatedVisibility(
+                                    visible = eqState.enabled && showBandCountSelector
+                                ) {
+                                    ButtonGroup(
+                                        onSelected = { changeBandCountState = Pair(it, true) },
+                                        buttonItems = eqBandCapabilities.availableBandCounts,
+                                        buttonStateResolver = { it == eqState.preferredBandCount },
+                                        modifier = Modifier.padding(
+                                            vertical = 8.dp,
+                                            horizontal = 16.dp
+                                        )
                                     )
-                                    .padding(horizontal = 16.dp, vertical = 8.dp)
-                                    .weight(1f)
-                            ) {
-                                Text(
-                                    text = eqCurrentProfile.getName(context),
-                                    style = MaterialTheme.typography.titleMedium,
-                                    color = contentColor,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis,
-                                    modifier = Modifier.weight(1f)
-                                )
+                                }
 
-                                Icon(
-                                    painter = painterResource(R.drawable.ic_arrow_drop_down_24dp),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(24.dp)
-                                )
+                                eqBands.forEach { band ->
+                                    EQBandSlider(
+                                        enabled = eqState.isUsable,
+                                        band = band,
+                                        onValueChange = { bandGain ->
+                                            eqViewModel.setCustomProfileBandGain(
+                                                band.index,
+                                                bandGain
+                                            )
+                                        }
+                                    )
+                                }
                             }
+                        }
+                    }
 
-                            FilledIconButton(
-                                enabled = eqState.isUsable && eqCurrentProfile.isCustom,
-                                colors = IconButtonDefaults.filledIconButtonColors(
-                                    containerColor = MaterialTheme.colorScheme.tertiaryContainer
-                                ),
-                                onClick = { showProfileSaverDialog = true }
-                            ) {
-                                Icon(
-                                    painter = painterResource(R.drawable.ic_save_24dp),
-                                    contentDescription = stringResource(R.string.save_profile_label)
-                                )
+                    if (virtualizer.supported) {
+                        item {
+                            var virtualizerStrength by remember(virtualizer.strength) {
+                                mutableFloatStateOf(virtualizer.strength)
+                            }
+                            SwitchCard(
+                                onCheckedChange = { eqViewModel.setVirtualizer(enabled = it) },
+                                checked = virtualizer.enabled && eqState.enabled,
+                                title = stringResource(R.string.virtualizer_label),
+                                iconRes = R.drawable.ic_headphones_24dp,
+                                enabled = eqState.isUsable
+                            ) { cardContentPadding ->
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.padding(cardContentPadding)
+                                ) {
+                                    Slider(
+                                        steps = 10,
+                                        value = virtualizerStrength,
+                                        onValueChange = { virtualizerStrength = it },
+                                        onValueChangeFinished = {
+                                            eqViewModel.setVirtualizer(strength = virtualizerStrength)
+                                        },
+                                        valueRange = virtualizer.strengthRange,
+                                        enabled = eqState.isUsable,
+                                        modifier = Modifier.weight(1f)
+                                    )
+
+                                    EQValueText(
+                                        text = "${((virtualizerStrength * 100) / virtualizer.strengthRange.endInclusive).toInt()}%",
+                                    )
+                                }
+                            }
+                        }
+                    }
+
+                    if (bassBoost.supported) {
+                        item {
+                            var bassBoostStrength by remember(bassBoost.strength) {
+                                mutableFloatStateOf(bassBoost.strength)
+                            }
+                            SwitchCard(
+                                onCheckedChange = { eqViewModel.setBassBoost(enabled = it) },
+                                checked = bassBoost.enabled && eqState.enabled,
+                                title = stringResource(R.string.bassboost_label),
+                                iconRes = R.drawable.ic_edit_audio_24dp,
+                                enabled = eqState.isUsable
+                            ) { cardContentPadding ->
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.padding(cardContentPadding)
+                                ) {
+                                    Slider(
+                                        steps = 10,
+                                        value = bassBoostStrength,
+                                        onValueChange = { bassBoostStrength = it },
+                                        onValueChangeFinished = {
+                                            eqViewModel.setBassBoost(strength = bassBoostStrength)
+                                        },
+                                        valueRange = bassBoost.strengthRange,
+                                        enabled = eqState.isUsable,
+                                        modifier = Modifier.weight(1f)
+                                    )
+
+                                    EQValueText(
+                                        text = "${((bassBoostStrength * 100) / bassBoost.strengthRange.endInclusive).toInt()}%"
+                                    )
+                                }
+                            }
+                        }
+                    }
+
+                    if (loudnessGain.supported) {
+                        item {
+                            var loudnessGainValue by remember(loudnessGain.gainInDb) {
+                                mutableFloatStateOf(loudnessGain.gainInDb)
+                            }
+                            SwitchCard(
+                                onCheckedChange = { eqViewModel.setLoudnessGain(enabled = it) },
+                                checked = loudnessGain.enabled && eqState.enabled,
+                                title = stringResource(R.string.loudness_enhancer),
+                                iconRes = R.drawable.ic_volume_up_24dp,
+                                enabled = eqState.isUsable
+                            ) { cardContentPadding ->
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.padding(cardContentPadding)
+                                ) {
+                                    Slider(
+                                        value = loudnessGainValue,
+                                        onValueChange = {
+                                            loudnessGainValue = it
+                                        },
+                                        onValueChangeFinished = {
+                                            eqViewModel.setLoudnessGain(gain = loudnessGainValue)
+                                        },
+                                        valueRange = loudnessGain.gainRange,
+                                        enabled = eqState.isUsable,
+                                        modifier = Modifier.weight(1f)
+                                    )
+
+                                    EQValueText(
+                                        text = "%.1f dB".format(Locale.ROOT, loudnessGainValue)
+                                    )
+                                }
                             }
                         }
                     }
                 }
 
                 item {
-                    TitledCard(
-                        title = stringResource(R.string.graphic_eq_label),
-                        iconRes = R.drawable.ic_graphic_eq_24dp,
-                        titleEndContent = {
-                            if (eqBandCapabilities.hasMultipleBandConfigurations) {
-                                TitleShapedText(
-                                    text = stringResource(
-                                        R.string.graphic_eq_band_count,
-                                        eqState.preferredBandCount
-                                    ),
-                                    enabled = eqState.isUsable,
-                                    onClick = {
-                                        showBandCountSelector = showBandCountSelector.not()
-                                    }
-                                )
-                            }
-                        }
-                    ) { cardContentPadding ->
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .wrapContentHeight()
-                                .padding(cardContentPadding)
-                        ) {
-                            AnimatedVisibility(
-                                visible = eqState.enabled && showBandCountSelector
-                            ) {
-                                ButtonGroup(
-                                    onSelected = { changeBandCountState = Pair(it, true) },
-                                    buttonItems = eqBandCapabilities.availableBandCounts,
-                                    buttonStateResolver = { it == eqState.preferredBandCount },
-                                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
-                                )
-                            }
-
-                            eqBands.forEach { band ->
-                                EQBandSlider(
-                                    enabled = eqState.isUsable,
-                                    band = band,
-                                    onValueChange = { bandGain ->
-                                        eqViewModel.setCustomProfileBandGain(band.index, bandGain)
-                                    }
-                                )
-                            }
-                        }
+                    var replayGainPreamp by remember(replayGain.preamp) {
+                        mutableFloatStateOf(replayGain.preamp)
                     }
-                }
-            }
-
-            if (virtualizer.supported) {
-                item {
-                    var virtualizerStrength by remember(virtualizer.strength) {
-                        mutableFloatStateOf(virtualizer.strength)
-                    }
-                    SwitchCard(
-                        onCheckedChange = { eqViewModel.setVirtualizer(enabled = it) },
-                        checked = virtualizer.enabled && eqState.enabled,
-                        title = stringResource(R.string.virtualizer_label),
-                        iconRes = R.drawable.ic_headphones_24dp,
-                        enabled = eqState.isUsable
-                    ) { cardContentPadding ->
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(cardContentPadding)
-                        ) {
-                            Slider(
-                                steps = 10,
-                                value = virtualizerStrength,
-                                onValueChange = { virtualizerStrength = it },
-                                onValueChangeFinished = {
-                                    eqViewModel.setVirtualizer(strength = virtualizerStrength)
-                                },
-                                valueRange = virtualizer.strengthRange,
-                                enabled = eqState.isUsable,
-                                modifier = Modifier.weight(1f)
-                            )
-
-                            EQValueText(
-                                text = "${((virtualizerStrength * 100) / virtualizer.strengthRange.endInclusive).toInt()}%",
-                            )
-                        }
-                    }
-                }
-            }
-
-            if (bassBoost.supported) {
-                item {
-                    var bassBoostStrength by remember(bassBoost.strength) {
-                        mutableFloatStateOf(bassBoost.strength)
-                    }
-                    SwitchCard(
-                        onCheckedChange = { eqViewModel.setBassBoost(enabled = it) },
-                        checked = bassBoost.enabled && eqState.enabled,
-                        title = stringResource(R.string.bassboost_label),
-                        iconRes = R.drawable.ic_edit_audio_24dp,
-                        enabled = eqState.isUsable
-                    ) { cardContentPadding ->
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(cardContentPadding)
-                        ) {
-                            Slider(
-                                steps = 10,
-                                value = bassBoostStrength,
-                                onValueChange = { bassBoostStrength = it },
-                                onValueChangeFinished = {
-                                    eqViewModel.setBassBoost(strength = bassBoostStrength)
-                                },
-                                valueRange = bassBoost.strengthRange,
-                                enabled = eqState.isUsable,
-                                modifier = Modifier.weight(1f)
-                            )
-
-                            EQValueText(
-                                text = "${((bassBoostStrength * 100) / bassBoost.strengthRange.endInclusive).toInt()}%"
-                            )
-                        }
-                    }
-                }
-            }
-
-            if (loudnessGain.supported) {
-                item {
-                    var loudnessGainValue by remember(loudnessGain.gainInDb) {
-                        mutableFloatStateOf(loudnessGain.gainInDb)
-                    }
-                    SwitchCard(
-                        onCheckedChange = { eqViewModel.setLoudnessGain(enabled = it) },
-                        checked = loudnessGain.enabled && eqState.enabled,
-                        title = stringResource(R.string.loudness_enhancer),
-                        iconRes = R.drawable.ic_volume_up_24dp,
-                        enabled = eqState.isUsable
-                    ) { cardContentPadding ->
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(cardContentPadding)
-                        ) {
-                            Slider(
-                                value = loudnessGainValue,
-                                onValueChange = {
-                                    loudnessGainValue = it
-                                },
-                                onValueChangeFinished = {
-                                    eqViewModel.setLoudnessGain(gain = loudnessGainValue)
-                                },
-                                valueRange = loudnessGain.gainRange,
-                                enabled = eqState.isUsable,
-                                modifier = Modifier.weight(1f)
-                            )
-
-                            EQValueText(
-                                text = "%.1f dB".format(Locale.ROOT, loudnessGainValue)
-                            )
-                        }
-                    }
-                }
-            }
-
-            item {
-                var replayGainPreamp by remember(replayGain.preamp) {
-                    mutableFloatStateOf(replayGain.preamp)
-                }
-                AnimatedVisibility(visible = eqState.disabledByAudioOffload.not()) {
                     TitledCard(
                         title = stringResource(R.string.replay_gain),
                         iconRes = R.drawable.ic_sound_sampler_24dp,
                         titleEndContent = {
                             AnimatedVisibility(visible = replayGain.mode.isOn) {
-                                TitleShapedText("%+.1f dB".format(Locale.ROOT, replayGainPreamp))
+                                TitleShapedText(
+                                    "%+.1f dB".format(
+                                        Locale.ROOT,
+                                        replayGainPreamp
+                                    )
+                                )
                             }
                         },
                         modifier = Modifier.fillMaxWidth()
@@ -974,35 +998,21 @@ private fun ProfileSelectorDialog(
 
                 ProfilesMode.AutoEq -> {
                     if (autoEqProfiles.isEmpty()) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.spacedBy(16.dp),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(32.dp)
-                        ) {
-                            Icon(
-                                painter = painterResource(R.drawable.ic_equalizer_24dp),
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.secondary,
-                                modifier = Modifier.size(72.dp)
-                            )
-
-                            Text(
-                                text = stringResource(R.string.no_autoeq_profiles),
-                                textAlign = TextAlign.Center,
-                                style = MaterialTheme.typography.headlineSmall
-                            )
-
-                            Button(onClick = onImportAutoEqProfile) {
-                                Icon(
-                                    painter = painterResource(R.drawable.ic_file_open_24dp),
-                                    contentDescription = null
-                                )
-                                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                                Text(stringResource(R.string.import_autoeq_profile))
-                            }
-                        }
+                        EmptyView(
+                            icon = painterResource(R.drawable.ic_equalizer_24dp),
+                            text = stringResource(R.string.no_autoeq_profiles),
+                            button = {
+                                Button(onClick = onImportAutoEqProfile) {
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_file_open_24dp),
+                                        contentDescription = null
+                                    )
+                                    Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                                    Text(stringResource(R.string.import_autoeq_profile))
+                                }
+                            },
+                            modifier = Modifier.fillMaxSize()
+                        )
                     } else {
                         LazyColumn(
                             contentPadding = PaddingValues(bottom = 24.dp),

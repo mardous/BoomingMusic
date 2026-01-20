@@ -62,11 +62,14 @@ fun Int.dp(context: Context) = dp(context.resources)
 fun Float.dp(resources: Resources): Int = (this * resources.displayMetrics.density + 0.5f).toInt()
 fun Int.dp(resources: Resources): Int = (this * resources.displayMetrics.density + 0.5f).toInt()
 
+val Configuration.isLandscape: Boolean
+    get() = orientation == Configuration.ORIENTATION_LANDSCAPE
+
 private val Resources.isNightMode: Boolean
     get() = configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
 
 val Resources.isLandscape: Boolean
-    get() = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+    get() = configuration.isLandscape
 
 val Resources.isTablet: Boolean
     get() = configuration.smallestScreenWidthDp >= 600
