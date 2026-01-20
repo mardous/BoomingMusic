@@ -187,7 +187,7 @@ class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessio
                 /* mbcBandCount */ 0,
                 /* postEqInUse */ false,
                 /* postEqBandCount */ 0,
-                /* limiterInUse */ true
+                /* limiterInUse */ false //disabled for now
             )
             DynamicsProcessing(0, sessionId, builder.build()).also { dp ->
                 for (channelIndex in 0 until dp.channelCount) {
