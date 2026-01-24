@@ -13,6 +13,7 @@ import androidx.lifecycle.viewModelScope
 import com.mardous.booming.R
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.AutoEqTxtParser
+import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.core.model.equalizer.EqProfile
 import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
 import com.mardous.booming.data.local.MediaStoreWriter
@@ -221,11 +222,15 @@ class EqualizerViewModel(
         audioOutputObserver.showOutputDeviceSelector(context)
     }
 
-    fun saveProfile(profileName: String, canReplace: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+    fun saveProfile(
+        profileName: String,
+        canReplace: Boolean,
+        associatedDevices: Set<AudioDeviceType>
+    ) = viewModelScope.launch(Dispatchers.IO) {
         val result = if (!canReplace && !equalizerManager.isProfileNameAvailable(profileName)) {
             ProfileOpResult(false, R.string.that_name_is_already_in_use, canDismiss = false)
         } else {
-            val newProfile = equalizerManager.getNewProfileFromCustom(profileName)
+            val newProfile = equalizerManager.getNewProfileFromCustom(profileName, associatedDevices)
             if (equalizerManager.addProfile(newProfile, canReplace, useProfile = true)) {
                 ProfileOpResult(true, R.string.profile_saved_successfully)
             } else {
@@ -235,14 +240,18 @@ class EqualizerViewModel(
         _saveResultEvent.send(result)
     }
 
-    fun renameProfile(profile: EqProfile, newName: String?) = viewModelScope.launch(Dispatchers.IO) {
+    fun editProfile(
+        profile: EqProfile,
+        newName: String?,
+        newAssociations: Set<AudioDeviceType>
+    ) = viewModelScope.launch(Dispatchers.IO) {
         val result = if (newName.isNullOrBlank()) {
             ProfileOpResult(false, canDismiss = false)
         } else {
-            if (equalizerManager.renameProfile(profile, newName)) {
-                ProfileOpResult(true, R.string.profile_renamed)
+            if (equalizerManager.editProfile(profile, newName, newAssociations.toSet())) {
+                ProfileOpResult(true, R.string.profile_saved_successfully)
             } else {
-                ProfileOpResult(false, R.string.the_profile_could_not_be_renamed)
+                ProfileOpResult(false, R.string.the_profile_could_not_be_saved)
             }
         }
         _renameResultEvent.send(result)
@@ -262,7 +271,6 @@ class EqualizerViewModel(
     }
 
     fun deleteAutoEqProfile(
-        context: Context,
         profile: AutoEqProfile
     ) = viewModelScope.launch(Dispatchers.IO) {
         _deleteResultEvent.send(

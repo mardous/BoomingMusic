@@ -27,19 +27,25 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -56,6 +62,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -67,6 +74,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -74,6 +82,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.app.ShareCompat
 import com.mardous.booming.R
 import com.mardous.booming.core.model.LibraryMargin
+import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.core.model.equalizer.EqBand
 import com.mardous.booming.core.model.equalizer.EqProfile
 import com.mardous.booming.core.model.equalizer.ReplayGainState
@@ -86,6 +95,7 @@ import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.component.compose.ButtonGroup
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
 import com.mardous.booming.ui.component.compose.ConfirmDialog
+import com.mardous.booming.ui.component.compose.DialogCheckBox
 import com.mardous.booming.ui.component.compose.DialogListItemSurface
 import com.mardous.booming.ui.component.compose.DialogListItemWithCheckBox
 import com.mardous.booming.ui.component.compose.EmptyView
@@ -357,16 +367,9 @@ fun EqualizerScreen(
     }
 
     if (showProfileSaverDialog) {
-        InputDialog(
-            icon = painterResource(R.drawable.ic_save_24dp),
-            title = stringResource(R.string.save_profile_label),
-            message = stringResource(R.string.please_enter_a_name_for_this_profile),
-            inputHint = stringResource(R.string.profile_name),
-            inputMaxLength = PRESET_NAME_MAX_LENGTH,
-            checkBoxPrompt = stringResource(R.string.replace_profile_with_same_name),
-            confirmButton = stringResource(R.string.action_save),
-            onConfirm = { profileName, canReplace ->
-                eqViewModel.saveProfile(profileName, canReplace)
+        ProfileSaverDialog(
+            onConfirm = { profileName: String, allowReplace: Boolean, associatedDevices: Set<AudioDeviceType> ->
+                eqViewModel.saveProfile(profileName, allowReplace, associatedDevices)
             },
             onDismiss = { showProfileSaverDialog = false }
         )
@@ -384,15 +387,11 @@ fun EqualizerScreen(
 
     editProfileState?.let { (targetProfile, showDialog) ->
         if (showDialog) {
-            InputDialog(
-                icon = painterResource(R.drawable.ic_edit_24dp),
-                title = stringResource(R.string.rename_profile_label),
-                message = stringResource(R.string.please_enter_a_new_name_for_this_profile),
-                inputHint = stringResource(R.string.profile_name),
-                inputPrefill = targetProfile.name,
-                inputMaxLength = PRESET_NAME_MAX_LENGTH,
-                confirmButton = stringResource(R.string.rename_action),
-                onConfirm = { input -> eqViewModel.renameProfile(targetProfile, input) },
+            ProfileEditorDialog(
+                profile = targetProfile,
+                onConfirm = { newName, newAssociations ->
+                    eqViewModel.editProfile(targetProfile, newName, newAssociations)
+                },
                 onDismiss = { editProfileState = null }
             )
         }
@@ -477,7 +476,7 @@ fun EqualizerScreen(
             },
             onEditEqProfile = { profile -> editProfileState = Pair(profile, true) },
             onDeleteEqProfile = { profile -> deleteProfileState = Pair(profile, true) },
-            onDeleteAutoEqProfile = { eqViewModel.deleteAutoEqProfile(context, it) },
+            onDeleteAutoEqProfile = { eqViewModel.deleteAutoEqProfile(it) },
             onImportAutoEqProfile = { importProfiles(autoEq = true) },
             onDismiss = { showProfileSelectorDialog = false }
         )
@@ -1034,6 +1033,77 @@ private fun ProfileSelectorDialog(
 }
 
 @Composable
+private fun ProfileSaverDialog(
+    onConfirm: (profileName: String, allowReplace: Boolean, associatedDevices: Set<AudioDeviceType>) -> Unit,
+    onDismiss: () -> Unit
+) {
+    var allowReplace by remember { mutableStateOf(true) }
+    val associatedDevices = remember { mutableStateSetOf<AudioDeviceType>() }
+
+    InputDialog(
+        icon = painterResource(R.drawable.ic_save_24dp),
+        title = stringResource(R.string.save_profile_label),
+        message = stringResource(R.string.please_enter_a_name_for_this_profile),
+        inputHint = stringResource(R.string.profile_name),
+        inputMaxLength = PRESET_NAME_MAX_LENGTH,
+        additionalContent = {
+            DialogCheckBox(
+                text = stringResource(R.string.replace_profile_with_same_name),
+                isChecked = allowReplace,
+                onValueChange = { allowReplace = it }
+            )
+
+            Spacer(Modifier.height(4.dp))
+
+            ProfileAssociationView(
+                isChecked = { associatedDevices.contains(it) },
+                onDeviceStateChange = { device, isChecked ->
+                    if (isChecked)
+                        associatedDevices.add(device)
+                    else associatedDevices.remove(device)
+                }
+            )
+        },
+        confirmButton = stringResource(R.string.action_save),
+        onConfirm = { profileName ->
+            onConfirm(profileName, allowReplace, associatedDevices)
+        },
+        onDismiss = onDismiss
+    )
+}
+
+@Composable
+private fun ProfileEditorDialog(
+    profile: EqProfile,
+    onConfirm: (String, Set<AudioDeviceType>) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val mutableAssociations = remember { mutableStateSetOf(*profile.associations.toTypedArray()) }
+
+    InputDialog(
+        icon = painterResource(R.drawable.ic_edit_24dp),
+        title = stringResource(R.string.edit_profile_label),
+        message = stringResource(R.string.please_enter_a_name_for_this_profile),
+        inputHint = stringResource(R.string.profile_name),
+        inputPrefill = profile.name,
+        inputMaxLength = PRESET_NAME_MAX_LENGTH,
+        additionalContent = {
+            ProfileAssociationView(
+                isChecked = { mutableAssociations.contains(it) },
+                onDeviceStateChange = { device, isChecked ->
+                    if (isChecked)
+                        mutableAssociations.add(device)
+                    else mutableAssociations.remove(device)
+                }
+            )
+        },
+        confirmButton = stringResource(R.string.action_save),
+        onConfirm = { input -> onConfirm(input, mutableAssociations) },
+        onDismiss = onDismiss
+    )
+}
+
+@Composable
 private fun ProfileCheckDialog(
     icon: Painter,
     title: String,
@@ -1102,6 +1172,76 @@ private fun ProfileCheckDialog(
         },
         onDismissRequest = onDismiss
     )
+}
+
+@Composable
+private fun ProfileAssociationView(
+    isChecked: (AudioDeviceType) -> Boolean,
+    onDeviceStateChange: (AudioDeviceType, Boolean) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    OutlinedCard(
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
+        ),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp)
+    ) {
+        Text(
+            text = stringResource(R.string.use_with_devices_title),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            color = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier
+                .padding(horizontal = 12.dp)
+                .padding(top = 12.dp)
+        )
+
+        HorizontalDivider(
+            modifier = Modifier.padding(top = 8.dp)
+        )
+
+        AudioDeviceType.entries
+            .filterNot { it == AudioDeviceType.Unknown }
+            .forEach { device ->
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .toggleable(
+                            value = isChecked(device),
+                            onValueChange = { isChecked ->
+                                onDeviceStateChange(device, isChecked)
+                            },
+                            role = Role.Checkbox
+                        )
+                        .padding(12.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(device.iconRes),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.secondary,
+                        modifier = Modifier.size(20.dp)
+                    )
+
+                    Column(Modifier.weight(1f)) {
+                        Text(
+                            text = stringResource(device.nameRes),
+                            style = MaterialTheme.typography.bodyMedium,
+                            maxLines = 1
+                        )
+                    }
+
+                    Checkbox(
+                        checked = isChecked(device),
+                        onCheckedChange = null
+                    )
+                }
+            }
+    }
 }
 
 @Composable

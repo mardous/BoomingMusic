@@ -23,9 +23,6 @@ import androidx.annotation.StringRes
 import androidx.mediarouter.media.MediaRouter
 import com.mardous.booming.R
 
-/**
- * @author Christians M. A. (mardous)
- */
 enum class AudioDeviceType(
     @param:DrawableRes val iconRes: Int,
     @param:StringRes internal val nameRes: Int,

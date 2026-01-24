@@ -2,17 +2,10 @@ package com.mardous.booming.core.model.equalizer
 
 import android.content.Context
 import com.mardous.booming.R
+import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-
-@Serializable
-data class EqProfileAssociation(
-    @SerialName("id")
-    val id: String,
-    @SerialName("name")
-    val name: String
-)
 
 @Serializable
 data class EqProfile(
@@ -21,7 +14,7 @@ data class EqProfile(
     @SerialName("levels")
     val levels: FloatArray,
     @SerialName("associations")
-    val associations: Set<EqProfileAssociation> = emptySet(),
+    val associations: Set<AudioDeviceType> = emptySet(),
     val isCustom: Boolean = false,
     val isAutoEq: Boolean = false
 ) {

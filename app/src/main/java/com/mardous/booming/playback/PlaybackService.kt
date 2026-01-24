@@ -301,10 +301,7 @@ class PlaybackService :
         }
 
         preferences.registerOnSharedPreferenceChangeListener(this)
-
-        if (pauseOnZeroVolume) {
-            audioOutputObserver.startObserver()
-        }
+        audioOutputObserver.startObserver()
 
         prepareEqualizerAndSoundSettings()
         registerReceivers()
@@ -764,14 +761,6 @@ class PlaybackService :
                 player.exoPlayer.setSeekBackIncrementMs(seekInterval)
                 player.exoPlayer.setSeekForwardIncrementMs(seekInterval)
             }
-
-            PAUSE_ON_ZERO_VOLUME -> {
-                if (pauseOnZeroVolume) {
-                    audioOutputObserver.startObserver()
-                } else {
-                    audioOutputObserver.stopObserver()
-                }
-            }
         }
     }
 
@@ -950,6 +939,11 @@ class PlaybackService :
         serviceScope.launch {
             equalizerManager.tempoState.collect {
                 player.playbackParameters = PlaybackParameters(it.speed, it.actualPitch)
+            }
+        }
+        serviceScope.launch {
+            audioOutputObserver.audioDevice.collect {
+                equalizerManager.setCurrentDevice(it)
             }
         }
     }

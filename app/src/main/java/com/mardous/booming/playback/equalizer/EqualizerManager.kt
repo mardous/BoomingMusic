@@ -30,11 +30,11 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.media3.common.util.UnstableApi
 import com.mardous.booming.core.model.audiodevice.AudioDevice
+import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.core.model.equalizer.BalanceState
 import com.mardous.booming.core.model.equalizer.BassBoostState
 import com.mardous.booming.core.model.equalizer.EqBandCapabilities
 import com.mardous.booming.core.model.equalizer.EqProfile
-import com.mardous.booming.core.model.equalizer.EqProfileAssociation
 import com.mardous.booming.core.model.equalizer.EqSession
 import com.mardous.booming.core.model.equalizer.EqSession.SessionType
 import com.mardous.booming.core.model.equalizer.EqState
@@ -358,27 +358,54 @@ class EqualizerManager(
         return EqProfile(EqProfile.CUSTOM_PRESET_NAME, FloatArray(bandCount), isCustom = true)
     }
 
-    fun getNewProfileFromCustom(profileName: String): EqProfile {
-        return eqCustomProfile.value.copy(name = profileName, isCustom = false)
+    fun getNewProfileFromCustom(
+        profileName: String,
+        associatedDevices: Set<AudioDeviceType>
+    ): EqProfile {
+        return eqCustomProfile.value.copy(
+            name = profileName,
+            associations = associatedDevices,
+            isCustom = false,
+            isAutoEq = false
+        )
     }
 
-    suspend fun renameProfile(profile: EqProfile, newName: String): Boolean {
+    suspend fun editProfile(
+        profile: EqProfile,
+        newName: String,
+        newAssociations: Set<AudioDeviceType>
+    ): Boolean {
         val trimmedName = newName.trim()
         if (trimmedName.isEmpty()) return false
 
-        val currentProfiles = eqProfiles.value.toMutableList()
-        if (currentProfiles.any { it.name.equals(trimmedName, ignoreCase = true) }) {
+        val currentProfiles = eqProfiles.value
+        if (profile.name != trimmedName &&
+            currentProfiles.any { it.name.equals(trimmedName, ignoreCase = true) }) {
             return false
         }
 
-        val index = currentProfiles.indexOfFirst { it.name == profile.name }
-        if (index == -1) return false
+        val targetIndex = currentProfiles.indexOfFirst { it.name == profile.name }
+        if (targetIndex == -1) return false
 
-        currentProfiles[index] = profile.copy(name = trimmedName)
+        val newProfiles = currentProfiles.mapIndexedTo(mutableListOf()) { itemIndex, oldProfile ->
+            when {
+                itemIndex == targetIndex -> oldProfile.copy(
+                    name = trimmedName,
+                    associations = newAssociations
+                )
+                else -> oldProfile.associations.intersect(newAssociations).let { intersect ->
+                    if (intersect.isNotEmpty()) {
+                        oldProfile.copy(associations = oldProfile.associations - intersect)
+                    } else {
+                        oldProfile
+                    }
+                }
+            }
+        }
 
-        setEqualizerProfiles(currentProfiles)
+        setEqualizerProfiles(newProfiles)
         if (profile == eqCurrentProfile.value) {
-            setCurrentProfile(currentProfiles[index])
+            setCurrentProfile(currentProfiles[targetIndex])
         }
         return true
     }
@@ -499,68 +526,6 @@ class EqualizerManager(
         context.eqDataStore.edit {
             it[Keys.AUTO_EQ_PROFILES] = Json.encodeToString(profiles)
         }
-    }
-
-    suspend fun addDeviceAssociation(
-        profile: EqProfile,
-        device: AudioDevice
-    ): Boolean {
-        if (device == AudioDevice.UnknownDevice) return false
-
-        val profiles = eqProfiles.value
-        val profileIndex = profiles.indexOfFirst { it == profile }
-        if (profileIndex == -1) return false
-
-        if (profile.associations.any { it.id == device.id }) {
-            return false
-        }
-
-        val deviceId = device.id
-        val deviceName = device.getDeviceName(context).toString()
-
-        val newAssociation = EqProfileAssociation(deviceId, deviceName)
-        val updatedProfiles = profiles.map { p ->
-            when {
-                p == profile -> p.copy(
-                    associations = p.associations + newAssociation
-                )
-
-                p.associations.any { it.id == deviceId } -> p.copy(
-                    associations = p.associations.filterNot { it.id == deviceId }.toSet()
-                )
-
-                else -> p
-            }
-        }
-
-        setEqualizerProfiles(updatedProfiles)
-        return true
-    }
-
-    suspend fun removeDeviceAssociation(
-        profile: EqProfile,
-        deviceId: String
-    ): Boolean {
-        val profiles = eqProfiles.value
-        val profileIndex = profiles.indexOfFirst { it == profile }
-        if (profileIndex == -1) return false
-
-        if (profile.associations.none { it.id == deviceId }) {
-            return false
-        }
-
-        val updatedProfile = profile.copy(
-            associations = profile.associations
-                .filterNot { it.id == deviceId }
-                .toSet()
-        )
-
-        val updatedProfiles = profiles.mapIndexed { index, p ->
-            if (index == profileIndex) updatedProfile else p
-        }
-
-        setEqualizerProfiles(updatedProfiles)
-        return true
     }
 
     suspend fun setCurrentProfile(eqProfile: EqProfile) {
@@ -800,13 +765,13 @@ class EqualizerManager(
     }
 
     suspend fun setCurrentDevice(currentDevice: AudioDevice) {
-        if (currentDevice == AudioDevice.UnknownDevice)
+        val eqState = eqState.value
+        if (eqState == EqState.Unspecified || !eqState.supported ||
+            currentDevice == AudioDevice.UnknownDevice)
             return
 
         val profileByDevice = eqProfiles.value.firstOrNull { profile ->
-            profile.associations.any { association ->
-                association.id == currentDevice.id
-            }
+            profile.associations.contains(currentDevice.type)
         }
         if (profileByDevice != null) {
             setCurrentProfile(profileByDevice)

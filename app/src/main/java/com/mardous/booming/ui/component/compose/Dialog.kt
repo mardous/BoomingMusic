@@ -1,8 +1,10 @@
 package com.mardous.booming.ui.component.compose
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.rememberTextFieldState
@@ -111,7 +113,7 @@ fun InputDialog(
     inputHint: String? = null,
     inputPrefill: String = "",
     inputMaxLength: Int = Int.MAX_VALUE,
-    additionalContent: @Composable (() -> Unit)? = null
+    additionalContent: @Composable (ColumnScope.() -> Unit)? = null
 ) {
     val inputState = rememberTextFieldState(initialText = inputPrefill)
 
@@ -134,7 +136,6 @@ fun InputDialog(
         },
         text = {
             Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .verticalScroll(rememberScrollState())
@@ -143,6 +144,8 @@ fun InputDialog(
                     text = message,
                     modifier = Modifier.fillMaxWidth()
                 )
+
+                Spacer(Modifier.height(8.dp))
 
                 OutlinedTextField(
                     state = inputState,
@@ -159,7 +162,9 @@ fun InputDialog(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                additionalContent?.invoke()
+                Spacer(Modifier.height(8.dp))
+
+                additionalContent?.invoke(this)
             }
         },
         confirmButton = {

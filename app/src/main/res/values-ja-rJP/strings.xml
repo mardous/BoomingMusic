@@ -43,7 +43,6 @@
     <string name="share_to_stories">ストーリーに共有</string>
     <string name="could_not_create_the_story">ストーリーを作成できませんでした。</string>
     <string name="back_action">戻る</string>
-    <string name="rename_action">名前の変更</string>
     <string name="add_action">追加</string>
     <string name="delete_action">削除</string>
     <string name="remove_action">削除</string>
@@ -436,18 +435,14 @@
     <string name="enable_equalizer">EQ を有効にする</string>
     <string name="select_profile">Select profile</string>
     <string name="save_profile_label">Save profile</string>
-    <string name="rename_profile_label">Rename profile</string>
     <string name="delete_profile_label">Delete profile</string>
     <string name="delete_profile_x">Delete profile \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Please, enter a name for this profile.</string>
-    <string name="please_enter_a_new_name_for_this_profile">Please, enter a new name for this profile.</string>
     <string name="replace_profile_with_same_name">Replace profile with same name</string>
     <string name="profile_name">Profile name</string>
     <string name="that_name_is_already_in_use">その名前は既に使用されています。</string>
     <string name="profile_saved_successfully">Profile saved successfully.</string>
     <string name="the_profile_could_not_be_saved">The profile could not be saved.</string>
-    <string name="profile_renamed">Profile renamed.</string>
-    <string name="the_profile_could_not_be_renamed">The profile could not be renamed</string>
     <string name="autoeq_profile_imported_successfully">AutoEq profile imported successfully.</string>
     <string name="profile_x_deleted">Profile \"%s\" deleted.</string>
     <string name="autoeq_profile_x_deleted">AutoEq profile \"%s\" deleted.</string>

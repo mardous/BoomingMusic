@@ -77,7 +77,6 @@ class AudioOutputObserver(context: Context) {
         if (isConnected && route.isEnabled && route.supportsControlCategory(MediaControlIntent.CATEGORY_LIVE_AUDIO)) {
             audioDevice = AudioDevice(
                 type = route.getMediaRouteType(),
-                id = route.id,
                 productName = route.name
             )
         }
@@ -88,8 +87,7 @@ class AudioOutputObserver(context: Context) {
             ?.let { chosen ->
                 AudioDevice(
                     type = chosen.getDeviceType(),
-                    id = chosen.address,
-                    productName = chosen.productName
+                    productName = chosen.productName.toString()
                 )
             } ?: AudioDevice.UnknownDevice
     }

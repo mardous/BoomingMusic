@@ -43,7 +43,6 @@
     <string name="share_to_stories">Поделиться в историях</string>
     <string name="could_not_create_the_story">Не удалось создать историю.</string>
     <string name="back_action">Назад</string>
-    <string name="rename_action">Переименовать</string>
     <string name="add_action">Добавить</string>
     <string name="delete_action">Удалить</string>
     <string name="remove_action">Удалить</string>
@@ -461,18 +460,14 @@
     <string name="enable_equalizer">Включить эквалайзер</string>
     <string name="select_profile">Выбрать профиль</string>
     <string name="save_profile_label">Сохранить профиль</string>
-    <string name="rename_profile_label">Переименовать профиль</string>
     <string name="delete_profile_label">Удалить профиль</string>
     <string name="delete_profile_x">Удалить профиль \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Пожалуйста, введите название профиля.</string>
-    <string name="please_enter_a_new_name_for_this_profile">Пожалуйста, введите новое название профиля.</string>
     <string name="replace_profile_with_same_name">Заменить профиль с таким же именем</string>
     <string name="profile_name">Название профиля</string>
     <string name="that_name_is_already_in_use">Это имя уже используется.</string>
     <string name="profile_saved_successfully">Профиль успешно сохранен.</string>
     <string name="the_profile_could_not_be_saved">Не удалось сохранить профиль.</string>
-    <string name="profile_renamed">Профиль переименован.</string>
-    <string name="the_profile_could_not_be_renamed">Не удалось переименовать профиль</string>
     <string name="autoeq_profile_imported_successfully">Профиль AutoEq успешно импортирован.</string>
     <string name="profile_x_deleted">Профиль \"%s\" удален.</string>
     <string name="autoeq_profile_x_deleted">Профиль AutoEq \"%s\" удален.</string>
