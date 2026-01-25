@@ -443,10 +443,12 @@
     <string name="enable_equalizer">Activa l\'EQ</string>
     <string name="select_profile">Tria un perfil</string>
     <string name="save_profile_label">Desa el perfil</string>
+    <string name="edit_profile_label">Edit profile</string>
     <string name="delete_profile_label">Esborra el perfil</string>
     <string name="delete_profile_x">Voleu esborrar el perfil «%s»?</string>
     <string name="please_enter_a_name_for_this_profile">Introduïu un nom per a aquest perfil.</string>
     <string name="replace_profile_with_same_name">Substitueix el perfil amb el mateix nom</string>
+    <string name="use_with_devices_title">Use with devices:</string>
     <string name="profile_name">Nom del perfil</string>
     <string name="that_name_is_already_in_use">Aquest nom ja està en ús.</string>
     <string name="profile_saved_successfully">El perfil s\'ha desat correctament.</string>
@@ -459,10 +461,10 @@
     <string name="loudness_enhancer">Amplificador</string>
     <string name="sound_settings">Configuració de so</string>
     <string name="volume_label">Volum</string>
-    <string name="reset_balance">Reset balance</string>
-    <string name="speed_and_pitch_label">Speed and pitch</string>
-    <string name="reset_tempo">Reset tempo</string>
-    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="reset_balance">Restableix el balanç</string>
+    <string name="speed_and_pitch_label">Velocitat i to</string>
+    <string name="reset_tempo">Restableix el tempo</string>
+    <string name="unlock_pitch_adjustment">Desbloqueja l\'ajustament de to</string>
     <string name="balance_left">Esquerra</string>
     <string name="balance_right">Dreta</string>
     <string name="action_external_eq">EQ extern</string>
@@ -509,13 +511,13 @@
     <string name="could_not_import_font">No s\'ha pogut importar la font de text.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Temporitzador d\'apagada</string>
-    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
-    <string name="sleep_timer_cancel_current_timer">Cancel</string>
+    <string name="sleep_timer_waiting_pending_quit">S\'està esperant que s\'acabi la cançó actual</string>
+    <string name="sleep_timer_cancel_current_timer">Cancel·la</string>
     <string name="sleep_timer_set_action">Estableix</string>
     <string name="sleep_timer_x_mins">%d mins</string>
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
-    <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_1_hour">1 hora</string>
     <string name="sleep_timer_finish_current_music">Finalitza la darrera cançó</string>
     <string name="sleep_timer_stop_after_this_track">Atura després d\'aquesta pista</string>
     <string name="sleep_timer_stop_after_x">Atura després de %s</string>
@@ -754,8 +756,8 @@
     <string name="on_clear_queue_remove_all_songs_summary">Tota la cua de reproducció es buidarà.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">Treu totes les cançons excepte l\'actual</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Només es manté a la cua la cançó que es reprodueix.</string>
-    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
-    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
+    <string name="clear_queue_on_completion_title">Neteja la cua quan s\'acabi la reproducció</string>
+    <string name="clear_queue_on_completion_summary">Treu automàticament totes les cançons de la cua en acabar de reproduir l\'última pista.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Descarrega metadades automàticament</string>
     <string name="ignore_media_store_album_covers_title">Ignora les portades de Media Store</string>
