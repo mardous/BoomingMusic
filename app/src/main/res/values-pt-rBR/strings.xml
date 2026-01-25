@@ -43,7 +43,6 @@
     <string name="share_to_stories">Compartilhar nos Stories</string>
     <string name="could_not_create_the_story">Não foi possível criar o Story.</string>
     <string name="back_action">Voltar</string>
-    <string name="rename_action">Renomear</string>
     <string name="add_action">Adicionar</string>
     <string name="delete_action">Excluir</string>
     <string name="remove_action">Remover</string>
@@ -443,18 +442,16 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="enable_equalizer">Habilitar EQ</string>
     <string name="select_profile">Select profile</string>
     <string name="save_profile_label">Save profile</string>
-    <string name="rename_profile_label">Rename profile</string>
+    <string name="edit_profile_label">Edit profile</string>
     <string name="delete_profile_label">Delete profile</string>
     <string name="delete_profile_x">Delete profile \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Please, enter a name for this profile.</string>
-    <string name="please_enter_a_new_name_for_this_profile">Please, enter a new name for this profile.</string>
     <string name="replace_profile_with_same_name">Replace profile with same name</string>
+    <string name="use_with_devices_title">Use with devices:</string>
     <string name="profile_name">Profile name</string>
     <string name="that_name_is_already_in_use">Esse nome já está em uso.</string>
     <string name="profile_saved_successfully">Profile saved successfully.</string>
     <string name="the_profile_could_not_be_saved">The profile could not be saved.</string>
-    <string name="profile_renamed">Profile renamed.</string>
-    <string name="the_profile_could_not_be_renamed">The profile could not be renamed</string>
     <string name="autoeq_profile_imported_successfully">AutoEq profile imported successfully.</string>
     <string name="profile_x_deleted">Profile \"%s\" deleted.</string>
     <string name="autoeq_profile_x_deleted">AutoEq profile \"%s\" deleted.</string>
@@ -640,8 +637,6 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_shadow_effect_summary">Adiciona uma sombra sob a linha atual para melhorar a legibilidade.</string>
     <string name="lyrics_progressive_coloring_title">Coloração progressiva das letras</string>
     <string name="lyrics_progressive_coloring_summary">Mostra as linhas ativas com uma transição gradual de cor em vez de colorir instantaneamente.</string>
-    <string name="lyrics_bold_synced_title">Fonte em negrito para letras sincronizadas</string>
-    <string name="lyrics_bold_synced_summary">Mostrar letras sincronizadas em negrito.</string>
     <string name="lyrics_bold_unsynced_title">Fonte em negrito para letras não sincronizadas</string>
     <string name="lyrics_bold_unsynced_summary">Mostrar letras não sincronizadas em negrito.</string>
     <string name="lyrics_line_spacing_title">Espaçamento entre linhas</string>
