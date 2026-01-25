@@ -43,7 +43,6 @@
     <string name="share_to_stories">Condividi con le storie</string>
     <string name="could_not_create_the_story">Impossibile creare la storia.</string>
     <string name="back_action">Indietro</string>
-    <string name="rename_action">Rinomina</string>
     <string name="add_action">Aggiungi</string>
     <string name="delete_action">Elimina</string>
     <string name="remove_action">Rimuovi</string>
@@ -444,18 +443,16 @@
     <string name="enable_equalizer">Abilita EQ</string>
     <string name="select_profile">Select profile</string>
     <string name="save_profile_label">Save profile</string>
-    <string name="rename_profile_label">Rename profile</string>
+    <string name="edit_profile_label">Edit profile</string>
     <string name="delete_profile_label">Delete profile</string>
     <string name="delete_profile_x">Delete profile \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Please, enter a name for this profile.</string>
-    <string name="please_enter_a_new_name_for_this_profile">Please, enter a new name for this profile.</string>
     <string name="replace_profile_with_same_name">Replace profile with same name</string>
+    <string name="use_with_devices_title">Use with devices:</string>
     <string name="profile_name">Profile name</string>
     <string name="that_name_is_already_in_use">Quel nome è già in uso.</string>
     <string name="profile_saved_successfully">Profile saved successfully.</string>
     <string name="the_profile_could_not_be_saved">The profile could not be saved.</string>
-    <string name="profile_renamed">Profile renamed.</string>
-    <string name="the_profile_could_not_be_renamed">The profile could not be renamed</string>
     <string name="autoeq_profile_imported_successfully">AutoEq profile imported successfully.</string>
     <string name="profile_x_deleted">Profile \"%s\" deleted.</string>
     <string name="autoeq_profile_x_deleted">AutoEq profile \"%s\" deleted.</string>
@@ -641,8 +638,6 @@
     <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
     <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
     <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
-    <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
-    <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
     <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
     <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
     <string name="lyrics_line_spacing_title">Line spacing</string>
