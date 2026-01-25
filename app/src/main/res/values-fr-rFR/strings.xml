@@ -43,7 +43,6 @@
     <string name="share_to_stories">Faire une story</string>
     <string name="could_not_create_the_story">Impossible de créer la story.</string>
     <string name="back_action">Retour</string>
-    <string name="rename_action">Renommer</string>
     <string name="add_action">Ajouter</string>
     <string name="delete_action">Supprimer</string>
     <string name="remove_action">Retirer</string>
@@ -444,18 +443,16 @@
     <string name="enable_equalizer">Activer l\'EQ</string>
     <string name="select_profile">Sélectionner un profil</string>
     <string name="save_profile_label">Enregistrer le profil</string>
-    <string name="rename_profile_label">Renommer le profil</string>
+    <string name="edit_profile_label">Edit profile</string>
     <string name="delete_profile_label">Supprimer le profil</string>
     <string name="delete_profile_x">Supprimer le profil \"%s\" ?</string>
     <string name="please_enter_a_name_for_this_profile">Veuillez saisir un nom pour ce profil.</string>
-    <string name="please_enter_a_new_name_for_this_profile">Veuillez saisir un nouveau nom pour ce profil.</string>
     <string name="replace_profile_with_same_name">Remplacer le profil portant le même nom</string>
+    <string name="use_with_devices_title">Use with devices:</string>
     <string name="profile_name">Nom du profil</string>
     <string name="that_name_is_already_in_use">Ce nom est déjà utilisé.</string>
     <string name="profile_saved_successfully">Profil enregistré avec succès.</string>
     <string name="the_profile_could_not_be_saved">Le profil n\'a pas pu être enregistré.</string>
-    <string name="profile_renamed">Profil renommé.</string>
-    <string name="the_profile_could_not_be_renamed">Impossible de renommer le profil</string>
     <string name="autoeq_profile_imported_successfully">Profil AutoEq importé avec succès.</string>
     <string name="profile_x_deleted">Profil \"%s\" supprimé.</string>
     <string name="autoeq_profile_x_deleted">Profil AutoEq \"%s\" supprimé.</string>
@@ -641,8 +638,6 @@
     <string name="lyrics_shadow_effect_summary">Ajoute une ombre sous la ligne actuelle pour améliorer la lisibilité.</string>
     <string name="lyrics_progressive_coloring_title">Coloriage progressif des paroles</string>
     <string name="lyrics_progressive_coloring_summary">Animez les lignes actives avec une transition de couleur progressive au lieu de les colorier instantanément.</string>
-    <string name="lyrics_bold_synced_title">Police en gras pour les paroles synchronisées</string>
-    <string name="lyrics_bold_synced_summary">Afficher les paroles synchronisées en gras.</string>
     <string name="lyrics_bold_unsynced_title">Police en gras pour les paroles normales</string>
     <string name="lyrics_bold_unsynced_summary">Afficher les paroles non synchronisées en gras.</string>
     <string name="lyrics_line_spacing_title">Interligne</string>
