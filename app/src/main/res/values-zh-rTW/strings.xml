@@ -13,8 +13,8 @@
     <string name="action_next">下一個</string>
     <string name="action_previous">上一個</string>
     <string name="action_cancel">取消</string>
-    <string name="action_seek_backward">向前搜尋</string>
-    <string name="action_seek_forward">向後搜尋</string>
+    <string name="action_seek_backward">向後搜尋</string>
+    <string name="action_seek_forward">向前搜尋</string>
     <string name="action_cycle_repeat">循環播放模式</string>
     <string name="action_toggle_shuffle">切換隨機播放模式</string>
     <string name="reset_action">重置</string>
@@ -400,18 +400,18 @@
     <!-- Equalizer -->
     <string name="equalizer_label">均衡器</string>
     <string name="autoeq_label">AutoEq</string>
-    <string name="graphic_eq_label">Graphic EQ</string>
-    <string name="graphic_eq_band_count">%d-band</string>
-    <string name="eq_profiles_title">EQ Profiles</string>
-    <string name="autoeq_profiles_title">AutoEq Profiles</string>
-    <string name="eq_profile_title">Profile</string>
-    <string name="change_band_count_title">Change band count</string>
-    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
-        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
-        \n\nDo you want to continue?</string>
-    <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
-    <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
-    <string name="share_eq_profiles">Share EQ Profiles</string>
+    <string name="graphic_eq_label">圖形平衡器</string>
+    <string name="graphic_eq_band_count">%d 頻段</string>
+    <string name="eq_profiles_title">EQ 設定檔</string>
+    <string name="autoeq_profiles_title">AutoEq 設定檔</string>
+    <string name="eq_profile_title">設定檔</string>
+    <string name="change_band_count_title">變更頻段數量</string>
+    <string name="change_band_count_message">變更頻段數量將會把目前的設定檔重設為初始狀態。
+        針對目前頻段設定所儲存的其他設定檔將無法在新的頻段設定中使用。
+        \n\n要繼續嗎？</string>
+    <string name="band_configuration_changed_successfully">頻段設定已成功變更。</string>
+    <string name="band_configuration_could_not_be_changed">無法變更頻段設定。</string>
+    <string name="share_eq_profiles">分享 EQ 設定檔</string>
     <string name="there_is_nothing_to_export">沒有什麼可導出。</string>
     <string name="there_is_nothing_to_import">沒有可以導入的內容。</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.</string>
@@ -503,13 +503,13 @@
     <string name="could_not_import_font">無法導入字體。</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">睡眠計時器</string>
-    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
-    <string name="sleep_timer_cancel_current_timer">Cancel</string>
+    <string name="sleep_timer_waiting_pending_quit">等待目前曲目播放完畢</string>
+    <string name="sleep_timer_cancel_current_timer">取消</string>
     <string name="sleep_timer_set_action">設定</string>
-    <string name="sleep_timer_x_mins">%d mins</string>
-    <string name="sleep_timer_15_mins">15 mins</string>
-    <string name="sleep_timer_45_mins">45 mins</string>
-    <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_x_mins">%d 分鐘</string>
+    <string name="sleep_timer_15_mins">15 分鐘</string>
+    <string name="sleep_timer_45_mins">45 分鐘</string>
+    <string name="sleep_timer_1_hour">1 小時</string>
     <string name="sleep_timer_finish_current_music">播放完最後一首</string>
     <string name="sleep_timer_stop_after_this_track">在此曲目後停止</string>
     <string name="sleep_timer_stop_after_x">%s 後停止</string>

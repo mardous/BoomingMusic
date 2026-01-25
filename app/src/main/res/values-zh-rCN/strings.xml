@@ -13,8 +13,8 @@
     <string name="action_next">下一个</string>
     <string name="action_previous">上一个</string>
     <string name="action_cancel">取消</string>
-    <string name="action_seek_backward">向前搜寻</string>
-    <string name="action_seek_forward">向后搜寻</string>
+    <string name="action_seek_backward">向后搜寻</string>
+    <string name="action_seek_forward">向前搜寻</string>
     <string name="action_cycle_repeat">循环播放模式</string>
     <string name="action_toggle_shuffle">切换随机播放模式</string>
     <string name="reset_action">重置</string>
