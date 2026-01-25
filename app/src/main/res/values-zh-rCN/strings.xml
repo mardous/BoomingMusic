@@ -625,8 +625,6 @@
     <string name="lyrics_shadow_effect_summary">为当前歌词行添加阴影，以提升可读性。</string>
     <string name="lyrics_progressive_coloring_title">渐变歌词动画</string>
     <string name="lyrics_progressive_coloring_summary">使用渐变的文字颜色过渡为当前歌词添加动画效果。</string>
-    <string name="lyrics_bold_synced_title">粗体显示同步歌词</string>
-    <string name="lyrics_bold_synced_summary">以粗体显示同步歌词。</string>
     <string name="lyrics_bold_unsynced_title">粗体显示非同步歌词</string>
     <string name="lyrics_bold_unsynced_summary">以粗体显示非同步歌词。</string>
     <string name="lyrics_line_spacing_title">行距</string>

@@ -636,8 +636,6 @@
     <string name="lyrics_shadow_effect_summary">Afegeix una ombra sota la línia actual per millorar la seva llegibilitat.</string>
     <string name="lyrics_progressive_coloring_title">Acoloriment progressiu de la lletra</string>
     <string name="lyrics_progressive_coloring_summary">Anima les línies actives amb una transició de color gradual en comptes d\'acolorir-les instantàniament.</string>
-    <string name="lyrics_bold_synced_title">Lletra sincronitzada en negreta</string>
-    <string name="lyrics_bold_synced_summary">Mostra la lletra sincronitzada en negreta.</string>
     <string name="lyrics_bold_unsynced_title">Lletra normal en negreta</string>
     <string name="lyrics_bold_unsynced_summary">Mostra la lletra sense sincronitzar en negreta.</string>
     <string name="lyrics_line_spacing_title">Interlineat</string>

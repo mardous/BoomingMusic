@@ -636,8 +636,6 @@
     <string name="lyrics_shadow_effect_summary">Añade una sombra bajo la línea actual para mejorar la legibilidad.</string>
     <string name="lyrics_progressive_coloring_title">Color progresivo de las letras</string>
     <string name="lyrics_progressive_coloring_summary">Anima las líneas activas con una transición gradual de color en lugar de colorearlas al instante.</string>
-    <string name="lyrics_bold_synced_title">Fuente negrita para letras sincronizadas</string>
-    <string name="lyrics_bold_synced_summary">Mostrar letras sincronizadas en negrita.</string>
     <string name="lyrics_bold_unsynced_title">Fuente negrita para letras normales</string>
     <string name="lyrics_bold_unsynced_summary">Mostrar letras no sincronizadas en negrita.</string>
     <string name="lyrics_line_spacing_title">Espaciado de línea</string>

@@ -636,8 +636,6 @@ Ideal für Podcasts und Aufnahmen.</string>
     <string name="lyrics_shadow_effect_summary">Fügt einen Schatten unter der aktuellen Zeile hinzu, um die Lesbarkeit zu verbessern.</string>
     <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
     <string name="lyrics_progressive_coloring_summary">Animieren Sie aktive Zeilen mit einem allmählichen Farbübergang, anstatt sie sofort einzufärben.</string>
-    <string name="lyrics_bold_synced_title">Fettgedruckte Schrift für synchronisierte Liedtexte</string>
-    <string name="lyrics_bold_synced_summary">Synchronisierte Liedtexte in Fettschrift anzeigen.</string>
     <string name="lyrics_bold_unsynced_title">Fettgedruckte Schrift für nicht synchronisierte Liedtexte</string>
     <string name="lyrics_bold_unsynced_summary">Unsynchronisierte Liedtexte in Fettschrift anzeigen.</string>
     <string name="lyrics_line_spacing_title">Zeilenabstand</string>

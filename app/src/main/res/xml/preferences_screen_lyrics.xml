@@ -54,15 +54,6 @@
         app:title="@string/synced_lyrics"
         app:layout="@layout/preference_category_title">
 
-        <SwitchPreferenceCompat
-            app:icon="@drawable/ic_format_bold_24dp"
-            app:title="@string/lyrics_bold_synced_title"
-            app:summary="@string/lyrics_bold_synced_summary"
-            app:defaultValue="true"
-            app:layout="@layout/list_item_view"
-            app:widgetLayout="@layout/preference_switch"
-            app:key="synced_lyrics_bold_font" />
-
         <SeekBarPreference
             app:icon="@drawable/ic_format_size_24dp"
             app:title="@string/synced_font_size_player_title"

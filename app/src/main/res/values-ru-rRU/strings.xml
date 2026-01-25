@@ -653,8 +653,6 @@
     <string name="lyrics_shadow_effect_summary">Добавляет тень под текущую строку для улучшения читаемости.</string>
     <string name="lyrics_progressive_coloring_title">Прогрессивное окрашивание</string>
     <string name="lyrics_progressive_coloring_summary">Плавный переход цвета активных строк вместо мгновенного окрашивания.</string>
-    <string name="lyrics_bold_synced_title">Жирный шрифт (синхр. текст)</string>
-    <string name="lyrics_bold_synced_summary">Отображать синхронизированный текст жирным шрифтом.</string>
     <string name="lyrics_bold_unsynced_title">Жирный шрифт (обычный текст)</string>
     <string name="lyrics_bold_unsynced_summary">Отображать несинхронизированный текст жирным шрифтом.</string>
     <string name="lyrics_line_spacing_title">Межстрочный интервал</string>

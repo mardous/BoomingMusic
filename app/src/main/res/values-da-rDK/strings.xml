@@ -636,8 +636,6 @@
     <string name="lyrics_shadow_effect_summary">Tilføjer en skygge under den aktuelle linje for at forbedre læsbarheden.</string>
     <string name="lyrics_progressive_coloring_title">Progressive sangtekster farve</string>
     <string name="lyrics_progressive_coloring_summary">Animer aktive linjer med en gradvis farveovergang i stedet for at farve dem med det samme.</string>
-    <string name="lyrics_bold_synced_title">Fed skrifttype til synkroniserede sangtekster</string>
-    <string name="lyrics_bold_synced_summary">Vis synkroniserede sangtekster med fed skrifttype.</string>
     <string name="lyrics_bold_unsynced_title">Fed skrifttype til normal sangtekst</string>
     <string name="lyrics_bold_unsynced_summary">Vis usynkroniserede sangtekster med fed skrifttype.</string>
     <string name="lyrics_line_spacing_title">Linje afstand</string>

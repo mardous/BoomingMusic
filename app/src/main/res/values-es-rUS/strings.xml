@@ -631,8 +631,6 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="lyrics_shadow_effect_summary">Añade una sombra bajo la línea actual para mejorar la legibilidad.</string>
     <string name="lyrics_progressive_coloring_title">Coloreado progresivo de letras</string>
     <string name="lyrics_progressive_coloring_summary">Animar las líneas activas con una transición de color gradual en lugar de colorearlas al instante.</string>
-    <string name="lyrics_bold_synced_title">Resaltar las letras sincronizadas</string>
-    <string name="lyrics_bold_synced_summary">Aplica una fuente negrita para las letras sincronizadas.</string>
     <string name="lyrics_bold_unsynced_title">Resaltar las letras no sincronizadas</string>
     <string name="lyrics_bold_unsynced_summary">Aplica una fuente negrita para las letras no sincronizadas.</string>
     <string name="lyrics_line_spacing_title">Interlineado</string>

@@ -652,8 +652,6 @@
     <string name="lyrics_shadow_effect_summary">מוסיף צל מתחת לשורה הנוכחית כדי לשפר את הקריאות.</string>
     <string name="lyrics_progressive_coloring_title">צביעת מילות שיר מתקדמת</string>
     <string name="lyrics_progressive_coloring_summary">הנפש את השורות הפעילות באמצעות מעבר צבע הדרגתי במקום לצבוע אותן באופן מיידי.</string>
-    <string name="lyrics_bold_synced_title">גופן מודגש עבור מילות שיר מסונכרנות</string>
-    <string name="lyrics_bold_synced_summary">הצג מילות שיר מסונכרנות בגופן מודגש.</string>
     <string name="lyrics_bold_unsynced_title">גופן מודגש עבור מילות שיר רגילות</string>
     <string name="lyrics_bold_unsynced_summary">הצג מילות שיר לא מסונכרנות בגופן מודגש.</string>
     <string name="lyrics_line_spacing_title">ריווח שורות</string>

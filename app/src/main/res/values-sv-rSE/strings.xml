@@ -636,8 +636,6 @@
     <string name="lyrics_shadow_effect_summary">Lägger till en skugga under den aktuella raden för att förbättra läsbarheten.</string>
     <string name="lyrics_progressive_coloring_title">Progressiva låttexter färg</string>
     <string name="lyrics_progressive_coloring_summary">Animera aktiva linjer med en gradvis färgövergång istället för att färga dem omedelbart.</string>
-    <string name="lyrics_bold_synced_title">Fet typsnitt för synkroniserade låttexter</string>
-    <string name="lyrics_bold_synced_summary">Visa synkroniserade låttexter i fet teckensnitt.</string>
     <string name="lyrics_bold_unsynced_title">Fet typsnitt för vanliga låttexter</string>
     <string name="lyrics_bold_unsynced_summary">Visa osynkade låttexter i fet teckensnitt.</string>
     <string name="lyrics_line_spacing_title">Radavstånd</string>

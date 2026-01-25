@@ -1,39 +1,72 @@
 package com.mardous.booming.ui.screen.lyrics
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.EaseInOut
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.StartOffset
+import androidx.compose.animation.core.StartOffsetType
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.*
-import androidx.compose.ui.graphics.drawscope.clipRect
+import androidx.compose.ui.graphics.BlurEffect
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.TileMode
+import androidx.compose.ui.graphics.TransformOrigin
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
-import androidx.compose.ui.text.TextLayoutResult
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.*
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
 import com.mardous.booming.extensions.hasS
@@ -90,12 +123,13 @@ fun LyricsView(
                     listState.animateScrollBy(
                         value = activeItem.offset - targetOffset,
                         animationSpec = tween(
-                            run {
+                            durationMillis = run {
                                 (state.lyrics?.lines?.getOrNull(state.currentLineIndex + 1)?.startAt ?: 0) -
                                         (state.lyrics?.lines?.getOrNull(state.currentLineIndex)?.startAt ?: 0)
                             }.let {
                                 (it / 2).coerceIn(100, 1000).toInt()
-                            }
+                            },
+                            easing = FastOutSlowInEasing
                         )
                     )
                 } else {
@@ -247,8 +281,7 @@ private fun LyricsLineView(
                     startMillis = line.startAt,
                     endMillis = line.end,
                     style = textStyle,
-                    align = textAlign,
-                    rtl = rtl
+                    align = textAlign
                 )
 
                 if (line.content.hasBackgroundVocals) {
@@ -274,8 +307,7 @@ private fun LyricsLineView(
                             fontSize = textStyle.fontSize / 1.40f,
                             fontWeight = FontWeight.Normal
                         ),
-                        align = textAlign,
-                        rtl = rtl
+                        align = textAlign
                     )
                 }
             }
@@ -301,9 +333,14 @@ fun LyricsLineContentView(
     endMillis: Long,
     style: TextStyle,
     align: TextAlign,
-    rtl: Boolean,
     modifier: Modifier = Modifier
 ) {
+    val progressFraction = when {
+        position < startMillis -> 0f
+        position > endMillis -> 1f
+        else -> ((position - startMillis).toFloat() / (endMillis - startMillis).toFloat()).coerceIn(0f, 1f)
+    }
+
     val effectDuration = ((endMillis - startMillis) / 2).coerceAtMost(500).toInt()
     val blurRadius by animateFloatAsState(
         targetValue = if (index == selectedIndex) 0f else
@@ -321,34 +358,18 @@ fun LyricsLineContentView(
         } else null
     }
 
-    val shadowRadius by animateFloatAsState(
-        targetValue = if (selectedLine) 10f else 0f,
-        animationSpec = tween(effectDuration)
-    )
-    val shadow = if (enableShadowEffect && selectedLine) {
-        Shadow(
-            color = contentColor.copy(alpha = .5f),
-            blurRadius = shadowRadius
-        )
-    } else {
-        Shadow.None
-    }
-
     val mainVocals = content.getVocals(backgroundContent)
     val mainText = content.getText(backgroundContent)
-
-    val mainProgressFraction = calculateLineProgress(mainVocals, position, startMillis, endMillis)
-        .coerceIn(0f, 1f)
 
     if (enableSyllable && mainVocals.isNotEmpty()) {
         SyllableText(
             selectedLine = selectedLine,
-            progressFraction = mainProgressFraction,
-            content = mainText,
-            contentColor = contentColor.copy(alpha = 1f),
+            shadowEffect = enableShadowEffect,
+            position = position,
+            words = mainVocals,
+            contentColor = contentColor,
             style = style,
             align = align,
-            rtl = rtl,
             modifier = modifier.graphicsLayer {
                 renderEffect = blurEffect
             }
@@ -357,10 +378,12 @@ fun LyricsLineContentView(
         LyricsTextView(
             selectedLine = selectedLine,
             progressiveColoring = progressiveColoring,
-            progressFraction = mainProgressFraction,
+            shadowEffect = enableShadowEffect,
+            effectDuration = effectDuration,
+            progressFraction = progressFraction,
             content = mainText,
             color = contentColor,
-            style = style.copy(shadow = shadow),
+            style = style,
             align = align,
             modifier = modifier.graphicsLayer {
                 renderEffect = blurEffect
@@ -373,16 +396,15 @@ fun LyricsLineContentView(
         if (enableSyllable && translatedVocals.isNotEmpty()) {
             SyllableText(
                 selectedLine = selectedLine,
-                progressFraction = calculateLineProgress(translatedVocals, position, startMillis, endMillis)
-                    .coerceIn(0f, 1f),
-                content = translatedText,
-                contentColor = contentColor.copy(alpha = 1f),
+                shadowEffect = enableShadowEffect,
+                position = position,
+                words = translatedVocals,
+                contentColor = contentColor,
                 style = style.copy(
                     fontSize = style.fontSize / 1.40,
                     fontWeight = FontWeight.Normal
                 ),
                 align = align,
-                rtl = rtl,
                 modifier = modifier.graphicsLayer {
                     renderEffect = blurEffect
                 }
@@ -391,13 +413,14 @@ fun LyricsLineContentView(
             LyricsTextView(
                 selectedLine = selectedLine,
                 progressiveColoring = progressiveColoring && mainVocals.isEmpty(),
-                progressFraction = mainProgressFraction,
+                shadowEffect = enableShadowEffect,
+                effectDuration = effectDuration,
+                progressFraction = progressFraction,
                 content = translatedText,
                 color = contentColor,
                 style = style.copy(
                     fontSize = style.fontSize / 1.40,
-                    fontWeight = FontWeight.Normal,
-                    shadow = shadow
+                    fontWeight = FontWeight.Normal
                 ),
                 align = align,
                 modifier = modifier.graphicsLayer {
@@ -412,6 +435,8 @@ fun LyricsLineContentView(
 private fun LyricsTextView(
     selectedLine: Boolean,
     progressiveColoring: Boolean,
+    shadowEffect: Boolean,
+    effectDuration: Int,
     progressFraction: Float,
     content: String,
     color: Color,
@@ -425,6 +450,20 @@ private fun LyricsTextView(
         targetValue = if (selectedLine) progressFraction * textHeight else 0f,
         label = "line-gradient-origin"
     )
+
+    val shadowRadius by animateFloatAsState(
+        targetValue = if (selectedLine) 10f * progressFraction else 0f,
+        animationSpec = tween(effectDuration)
+    )
+
+    val shadow = if (shadowEffect && selectedLine) {
+        Shadow(
+            color = color.copy(alpha = .5f),
+            blurRadius = shadowRadius
+        )
+    } else {
+        Shadow.None
+    }
 
     val textStyle by remember(color, selectedLine, progressiveColoring, animatedOrigin) {
         derivedStateOf {
@@ -444,7 +483,10 @@ private fun LyricsTextView(
 
     Text(
         text = content,
-        style = textStyle,
+        style = textStyle.copy(
+            fontWeight = if (selectedLine) FontWeight.ExtraBold else FontWeight.Medium,
+            shadow = shadow
+        ),
         textAlign = align,
         modifier = modifier
             .onGloballyPositioned {
@@ -456,128 +498,75 @@ private fun LyricsTextView(
 @Composable
 private fun SyllableText(
     selectedLine: Boolean,
-    progressFraction: Float,
-    content: String,
+    shadowEffect: Boolean,
+    position: Long,
+    words: List<Lyrics.Word>,
     contentColor: Color,
     style: TextStyle,
     align: TextAlign,
-    rtl: Boolean,
     modifier: Modifier = Modifier
 ) {
-    val textMeasurer = rememberTextMeasurer()
-    var textWidth by remember { mutableIntStateOf(0) }
+    // Original code from Metrolist (https://github.com/mostafaalagamy/Metrolist)
+    val styledText = buildAnnotatedString {
+        words.forEach { word ->
+            val wordStartMs = word.startMillis
+            val wordEndMs = word.endMillis
+            val wordDuration = word.durationMillis
 
-    val textLayout = remember(textWidth) {
-        textMeasurer.measure(
-            text = content,
-            style = style,
-            constraints = Constraints(maxWidth = textWidth)
-        )
-    }
+            val isWordActive = selectedLine && position >= wordStartMs && position <= wordEndMs
+            val hasWordPassed = selectedLine && position > wordEndMs
 
-    HorizontalReveal(
-        selectedLine = selectedLine,
-        textLayout = textLayout,
-        textAlign = align,
-        textWidth = textWidth,
-        progress = progressFraction,
-        rtl = rtl
-    ) {
-        Text(
-            text = content,
-            style = style,
-            color = contentColor,
-            textAlign = align,
-            modifier = modifier
-                .onGloballyPositioned {
-                    textWidth = it.size.width
-                }
-        )
-    }
-}
+            val fadeProgress = if (isWordActive && wordDuration > 0) {
+                val timeElapsed = position - wordStartMs
+                val linear = (timeElapsed.toFloat() / wordDuration.toFloat()).coerceIn(0f, 1f)
+                // Smooth cubic easing
+                linear * linear * (3f - 2f * linear)
+            } else if (hasWordPassed) 1f else 0f
 
-@Composable
-private fun HorizontalReveal(
-    textLayout: TextLayoutResult,
-    textAlign: TextAlign,
-    textWidth: Int,
-    selectedLine: Boolean,
-    progress: Float,
-    rtl: Boolean,
-    modifier: Modifier = Modifier,
-    content: @Composable () -> Unit
-) {
-    val lineRect = rememberLineRect(textLayout)
+            val wordAlpha = when {
+                !selectedLine -> 0.5f
+                hasWordPassed -> 1f
+                isWordActive -> 0.4f + (0.6f * fadeProgress)
+                else -> 0.4f
+            }
+            val wordWeight = when {
+                !selectedLine -> FontWeight.Medium
+                hasWordPassed -> FontWeight.Bold
+                isWordActive -> FontWeight.ExtraBold
+                else -> FontWeight.Medium
+            }
+            val wordShadow = when {
+                shadowEffect && isWordActive && fadeProgress > 0.2f -> Shadow(
+                    color = contentColor.copy(alpha = 0.35f * fadeProgress),
+                    offset = Offset.Zero,
+                    blurRadius = 10f * fadeProgress
+                )
+                shadowEffect && hasWordPassed -> Shadow(
+                    color = contentColor.copy(alpha = 0.15f),
+                    offset = Offset.Zero,
+                    blurRadius = 6f
+                )
+                else -> null
+            }
+            val wordColor = contentColor.copy(alpha = wordAlpha)
 
-    Box(modifier = modifier) {
-        Box(modifier = modifier.alpha(.5f)) {
-            content()
-        }
-
-        if (selectedLine || progress > 0f && progress < 1f) {
-            val animatedProgress by animateFloatAsState(
-                targetValue = progress,
-                animationSpec = tween(durationMillis = 100, easing = LinearEasing)
-            )
-
-            Box(
-                modifier = Modifier
-                    .graphicsLayer {
-                        clip = true
-                        shape = RectangleShape
-                    }
-                    .drawWithCache {
-                        onDrawWithContent {
-                            val lineCount = textLayout.lineCount
-                            val scaledProgress = animatedProgress * lineCount
-                            val currentLine = scaledProgress.toInt()
-                                .coerceAtMost(lineCount - 1)
-
-                            fun Rect.getActualLeft() = when (textAlign) {
-                                TextAlign.Center -> (textWidth - width) / 2
-                                TextAlign.End -> (textWidth - width)
-                                else -> left
-                            }
-
-                            fun Rect.getActualRight() = when (textAlign) {
-                                TextAlign.Center,
-                                TextAlign.End -> (getActualLeft() + width)
-
-                                else -> width
-                            }
-
-                            for (i in 0 until currentLine) {
-                                val rect = lineRect[i]
-                                clipRect(
-                                    rect.getActualLeft(),
-                                    rect.top,
-                                    rect.getActualRight(),
-                                    rect.bottom
-                                ) {
-                                    this@onDrawWithContent.drawContent()
-                                }
-                            }
-
-                            val currentRect = lineRect[currentLine]
-                            val currentLeft = currentRect.getActualLeft()
-                            val currentRight = currentRect.getActualRight()
-
-                            val fraction = scaledProgress - currentLine
-                            val clipWidth = currentRect.width * fraction.coerceIn(0f, 1f)
-
-                            val left = if (!rtl) currentLeft else currentRight - clipWidth
-                            val right = if (!rtl) currentLeft + clipWidth else currentRight
-
-                            clipRect(left, currentRect.top, right, currentRect.bottom) {
-                                this@onDrawWithContent.drawContent()
-                            }
-                        }
-                    }
+            withStyle(
+                style = SpanStyle(
+                    color = wordColor,
+                    fontWeight = wordWeight,
+                    shadow = wordShadow
+                )
             ) {
-                content()
+                append(word.content)
             }
         }
     }
+    Text(
+        text = styledText,
+        style = style,
+        textAlign = align,
+        modifier = modifier
+    )
 }
 
 @Composable
@@ -820,68 +809,4 @@ private fun Bubble(
                 )
             }
     )
-}
-
-@Composable
-private fun rememberLineRect(textLayout: TextLayoutResult): List<Rect> {
-    return remember(textLayout) {
-        (0 until textLayout.lineCount).map { i ->
-            Rect(
-                offset = Offset(
-                    x = textLayout.getLineLeft(i),
-                    y = textLayout.getLineTop(i)
-                ),
-                size = Size(
-                    width = textLayout.multiParagraph.getLineRight(i),
-                    height = textLayout.multiParagraph.getLineHeight(i)
-                )
-            )
-        }
-    }
-}
-
-private fun calculateLineProgress(
-    words: List<Lyrics.Word>,
-    position: Long,
-    startMillis: Long,
-    endMillis: Long
-): Float {
-    // by line if no words are available
-    if (words.isEmpty()) {
-        return when {
-            position < startMillis -> 0f
-            position > endMillis - 200L -> 1f // add buffer so lyric line animation completes
-            else -> (position - startMillis).toFloat() / (endMillis - startMillis).toFloat()
-        }
-    }
-
-    var completedWords = 0
-    var partialProgress = 0f
-    return when {
-        position < startMillis -> 0f
-        position > endMillis - 200L -> 1f // add buffer so lyric line animation completes
-        else -> {
-            for (i in words.indices) {
-                val word = words[i]
-                val start = word.startMillis
-                val end = word.endMillis
-                if (position < start) {
-                    break // we're before this word
-                } else if (position in (start..end)) {
-                    partialProgress = (position - start).toFloat() / word.durationMillis
-                    completedWords = i
-                    break
-                } else {
-                    completedWords++
-                }
-            }
-
-            val totalWords = words.size.toFloat()
-            var progress = (completedWords + partialProgress) / totalWords
-            if (progress > 0.95f) {
-                progress = 1f
-            }
-            progress.coerceIn(0f, 1f)
-        }
-    }
 }

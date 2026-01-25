@@ -635,8 +635,6 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_shadow_effect_summary">Adiciona uma sombra sob a linha atual para melhorar a legibilidade.</string>
     <string name="lyrics_progressive_coloring_title">Coloração progressiva das letras</string>
     <string name="lyrics_progressive_coloring_summary">Mostra as linhas ativas com uma transição gradual de cor em vez de colorir instantaneamente.</string>
-    <string name="lyrics_bold_synced_title">Fonte em negrito para letras sincronizadas</string>
-    <string name="lyrics_bold_synced_summary">Mostrar letras sincronizadas em negrito.</string>
     <string name="lyrics_bold_unsynced_title">Fonte em negrito para letras não sincronizadas</string>
     <string name="lyrics_bold_unsynced_summary">Mostrar letras não sincronizadas em negrito.</string>
     <string name="lyrics_line_spacing_title">Espaçamento entre linhas</string>

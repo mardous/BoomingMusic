@@ -48,7 +48,6 @@ class LyricsViewSettings(
             const val BACKGROUND_EFFECT = "lyrics_background_effect"
             const val BLUR_EFFECT = "lyrics_text_blur"
             const val SHADOW_EFFECT = "lyrics_text_shadow"
-            const val SYNCED_BOLD_FONT = "synced_lyrics_bold_font"
             const val UNSYNCED_BOLD_FONT = "unsynced_lyrics_bold_font"
             const val SYNCED_FONT_SIZE_PLAYER = "synced_lyrics_font_size_player"
             const val UNSYNCED_FONT_SIZE_PLAYER = "unsynced_lyrics_font_size_player"

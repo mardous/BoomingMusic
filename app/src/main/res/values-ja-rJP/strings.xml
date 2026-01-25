@@ -628,8 +628,6 @@
     <string name="lyrics_shadow_effect_summary">現在の行の下に影を追加し、読みやすさを向上させます。</string>
     <string name="lyrics_progressive_coloring_title">進行中の歌詞の色</string>
     <string name="lyrics_progressive_coloring_summary">アクティブな行の色を瞬時に変えるのではなく、徐々に色が変わるようにアニメーション化します。</string>
-    <string name="lyrics_bold_synced_title">同期した歌詞の太字フォント</string>
-    <string name="lyrics_bold_synced_summary">同期した歌詞を太字で表示します。</string>
     <string name="lyrics_bold_unsynced_title">通常の歌詞に太字フォント</string>
     <string name="lyrics_bold_unsynced_summary">同期していない歌詞を太字で表示します。</string>
     <string name="lyrics_line_spacing_title">行の間隔</string>

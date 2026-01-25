@@ -22,9 +22,13 @@ import com.mardous.booming.data.local.room.CanvasEntity
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.BackgroundEffect
 import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.Key
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.Mode as LyricsViewMode
 
@@ -226,11 +230,9 @@ class LyricsViewModel(
         } else {
             preferences.getInt(Key.UNSYNCED_FONT_SIZE_FULL, 20)
         }
-        val syncedBoldFont = preferences.getBoolean(Key.SYNCED_BOLD_FONT, true)
         val syncedStyle = TextStyle(
             fontFamily = fontFamily,
             fontSize = syncedFontSize.sp,
-            fontWeight = if (syncedBoldFont) FontWeight.Bold else FontWeight.Normal,
             lineHeight = (1f + (lineSpacing / 100f)).em
         )
         val unsyncedBoldFont = preferences.getBoolean(Key.UNSYNCED_BOLD_FONT, true)
@@ -264,7 +266,6 @@ class LyricsViewModel(
             Key.BACKGROUND_EFFECT,
             Key.BLUR_EFFECT,
             Key.SHADOW_EFFECT,
-            Key.SYNCED_BOLD_FONT,
             Key.UNSYNCED_BOLD_FONT -> {
                 _playerLyricsViewSettings.value = createViewSettings(LyricsViewMode.Player)
                 _fullLyricsViewSettings.value = createViewSettings(LyricsViewMode.Full)

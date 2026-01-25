@@ -652,8 +652,6 @@
     <string name="lyrics_shadow_effect_summary">Dodaje cień pod aktualną linią, aby poprawić czytelność.</string>
     <string name="lyrics_progressive_coloring_title">Stopniowe kolorowanie słów</string>
     <string name="lyrics_progressive_coloring_summary">Animuje aktywne linie stopniową zmianą koloru, zamiast podświetlać całą linię od razu.</string>
-    <string name="lyrics_bold_synced_title">Pogrubiona czcionka dla tekstów zsynchronizowanych</string>
-    <string name="lyrics_bold_synced_summary">Wyświetla zsynchronizowany tekst piosenki pogrubioną czcionką.</string>
     <string name="lyrics_bold_unsynced_title">Pogrubiona czcionka</string>
     <string name="lyrics_bold_unsynced_summary">Wyświetla niesynchronizowany tekst piosenki pogrubioną czcionką.</string>
     <string name="lyrics_line_spacing_title">Odstępy</string>

@@ -635,8 +635,6 @@
     <string name="lyrics_shadow_effect_summary">Adds a shadow under the current line to improve readability.</string>
     <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
     <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
-    <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
-    <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
     <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
     <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
     <string name="lyrics_line_spacing_title">Line spacing</string>

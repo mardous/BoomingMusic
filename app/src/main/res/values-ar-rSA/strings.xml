@@ -668,8 +668,6 @@
     <string name="lyrics_shadow_effect_summary">يضيف ظل تحت السطر الحالي لتحسين إمكانية القراءة.</string>
     <string name="lyrics_progressive_coloring_title">تلوين الكلمات التقدمية</string>
     <string name="lyrics_progressive_coloring_summary">تحريك الخطوط النشطة مع انتقال تدريجي للون بدلاً من تلوينها على الفور.</string>
-    <string name="lyrics_bold_synced_title">الخط العريض للكلمات المتزامنة</string>
-    <string name="lyrics_bold_synced_summary">عرض كلمات الأغاني المتزامنة بالخط العريض.</string>
     <string name="lyrics_bold_unsynced_title">الخط العريض لكلمات الأغاني العادية</string>
     <string name="lyrics_bold_unsynced_summary">عرض كلمات الأغاني غير المتزامنة بالخط العريض.</string>
     <string name="lyrics_line_spacing_title">تباعد الأسطر</string>

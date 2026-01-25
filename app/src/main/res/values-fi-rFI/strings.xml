@@ -636,8 +636,6 @@
     <string name="lyrics_shadow_effect_summary">Lisää varjo nykyisen rivin alle parantaaksesi luettavuutta.</string>
     <string name="lyrics_progressive_coloring_title">Progressiivinen sanoitusten väritys</string>
     <string name="lyrics_progressive_coloring_summary">Animoi aktiivisia rivejä asteittaisella värisiirtymällä sen sijaan väritys niitä välittömästi.</string>
-    <string name="lyrics_bold_synced_title">Lihavoitu kirjasin ajastetuille sanoituksille</string>
-    <string name="lyrics_bold_synced_summary">Näytä synkronoidut sanoitukset lihavoidussa kirjasimessa.</string>
     <string name="lyrics_bold_unsynced_title">Lihavoitu kirjasin normaaleihin sanoituksiin</string>
     <string name="lyrics_bold_unsynced_summary">Näytä synkronoimattomat sanoitukset lihavoidussa kirjasimessa.</string>
     <string name="lyrics_line_spacing_title">Rivin väli</string>

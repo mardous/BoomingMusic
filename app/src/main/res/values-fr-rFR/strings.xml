@@ -636,8 +636,6 @@
     <string name="lyrics_shadow_effect_summary">Ajoute une ombre sous la ligne actuelle pour améliorer la lisibilité.</string>
     <string name="lyrics_progressive_coloring_title">Coloriage progressif des paroles</string>
     <string name="lyrics_progressive_coloring_summary">Animez les lignes actives avec une transition de couleur progressive au lieu de les colorier instantanément.</string>
-    <string name="lyrics_bold_synced_title">Police en gras pour les paroles synchronisées</string>
-    <string name="lyrics_bold_synced_summary">Afficher les paroles synchronisées en gras.</string>
     <string name="lyrics_bold_unsynced_title">Police en gras pour les paroles normales</string>
     <string name="lyrics_bold_unsynced_summary">Afficher les paroles non synchronisées en gras.</string>
     <string name="lyrics_line_spacing_title">Interligne</string>

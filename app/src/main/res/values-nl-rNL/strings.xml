@@ -636,8 +636,6 @@
     <string name="lyrics_shadow_effect_summary">Voegt een schaduw onder de huidige lijn toe om de leesbaarheid te verbeteren.</string>
     <string name="lyrics_progressive_coloring_title">Progressieve songtekst kleur</string>
     <string name="lyrics_progressive_coloring_summary">Animeer actieve lijnen met een geleidelijke kleur transitie in plaats van ze direct te kleuren.</string>
-    <string name="lyrics_bold_synced_title">Lettertype vetgedrukt voor gesynchroniseerde songteksten</string>
-    <string name="lyrics_bold_synced_summary">Toon gesynchroniseerde songteksten in vetgedrukt lettertje.</string>
     <string name="lyrics_bold_unsynced_title">Vetgedrukt lettertype voor normale songteksten</string>
     <string name="lyrics_bold_unsynced_summary">Toon niet-gesynchroniseerde songteksten in vetgedrukt lettertje.</string>
     <string name="lyrics_line_spacing_title">Lijn afstand</string>

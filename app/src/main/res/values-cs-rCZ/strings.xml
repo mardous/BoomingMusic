@@ -652,8 +652,6 @@
     <string name="lyrics_shadow_effect_summary">Přidá stín pod aktuální linii, aby se zlepšila čitelnost.</string>
     <string name="lyrics_progressive_coloring_title">Postupné zbarvení textů</string>
     <string name="lyrics_progressive_coloring_summary">Animovat aktivní čáry s postupným přechodem barev místo jejich okamžitého zbarvení.</string>
-    <string name="lyrics_bold_synced_title">Tučné písmo pro synchronizované texty</string>
-    <string name="lyrics_bold_synced_summary">Zobrazit synchronizované texty tučným písmem.</string>
     <string name="lyrics_bold_unsynced_title">Tučné písmo pro normální texty</string>
     <string name="lyrics_bold_unsynced_summary">Zobrazit nesynchronizované texty tučným písmem.</string>
     <string name="lyrics_line_spacing_title">Vzdálenost čáry</string>

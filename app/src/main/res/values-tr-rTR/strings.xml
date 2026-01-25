@@ -631,8 +631,6 @@
     <string name="lyrics_shadow_effect_summary">Okunabilirliği artırmak için mevcut satırın altına bir gölge ekler.</string>
     <string name="lyrics_progressive_coloring_title">Aşamalı şarkı sözü renklendirme</string>
     <string name="lyrics_progressive_coloring_summary">Aktif satırları anında renklendirmek yerine kademeli renk geçişi ile hareketlendir.</string>
-    <string name="lyrics_bold_synced_title">Senkronize şarkı sözleri için kalın yazı tipi</string>
-    <string name="lyrics_bold_synced_summary">Senkronize şarkı sözlerini kalın yazı tipiyle göster.</string>
     <string name="lyrics_bold_unsynced_title">Normal şarkı sözleri için kalın yazı tipi</string>
     <string name="lyrics_bold_unsynced_summary">Senkronize olmayan şarkı sözlerini kalın yazı tipiyle göster.</string>
     <string name="lyrics_line_spacing_title">Satır aralığı</string>
