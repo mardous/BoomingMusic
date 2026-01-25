@@ -179,6 +179,7 @@
         <item>Belarusian</item>
         <item>Catalan</item>
         <item>Chinese Simplified</item>
+        <item>Chinese Traditional</item>
         <item>Croatian</item>
         <item>Czech</item>
         <item>Danish</item>
@@ -216,6 +217,7 @@
         <item>be</item>
         <item>ca</item>
         <item>zh-CN</item>
+        <item>zh-TW</item>
         <item>hr</item>
         <item>cs</item>
         <item>da</item>
