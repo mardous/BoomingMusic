@@ -31,7 +31,7 @@
     <string name="search_from_x_label">Искать из \"%s\"</string>
     <string name="search_year_x_label">Поиск по году: %s</string>
     <string name="search_in_folder_x">Найти в папке: %s</string>
-    <string name="search_last_added">Поиск последней музыки</string>
+    <string name="search_last_added">Поиск последней добавленной музыки</string>
     <string name="shuffle_mode_album">Перемешать альбом</string>
     <string name="shuffle_mode_artist">Перемещать исполнителя</string>
     <string name="action_share">Поделиться</string>
@@ -52,7 +52,7 @@
     <string name="select_all_title">Выбрать все</string>
     <string name="x_selected">%d выбрано</string>
     <string name="preparing_playback_title">Подготовка</string>
-    <string name="restoring_playback_state">Восстановление состояния воспроизведения и очереди...</string>
+    <string name="restoring_playback_state">Восстановление состояния воспроизведения и очереди…</string>
     <string name="playback_stopped_title">Воспроизведение остановлено</string>
     <string name="playing_notification_description">Уведомление о воспроизведении предоставляет действия для воспроизведения/паузы и т. д.</string>
     <string name="playing_notification_name">Уведомление о воспроизведении</string>
