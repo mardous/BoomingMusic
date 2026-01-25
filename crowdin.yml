@@ -3,4 +3,7 @@ files:
     translation: /app/src/main/res/values-%android_code%/strings.xml
     content_segmentation: 0
   - source: /metadata/en-US/*.txt
+    ignore:
+      - /metadata/en-US/title.txt
     translation: /metadata/%locale%/%original_file_name%
+    content_segmentation: 0
