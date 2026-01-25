@@ -503,13 +503,13 @@
     <string name="could_not_import_font">无法导入字体。</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">睡眠计时器</string>
-    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
-    <string name="sleep_timer_cancel_current_timer">Cancel</string>
+    <string name="sleep_timer_waiting_pending_quit">等待当前播放结束</string>
+    <string name="sleep_timer_cancel_current_timer">取消</string>
     <string name="sleep_timer_set_action">设置</string>
-    <string name="sleep_timer_x_mins">%d mins</string>
-    <string name="sleep_timer_15_mins">15 mins</string>
-    <string name="sleep_timer_45_mins">45 mins</string>
-    <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_x_mins">%d分钟</string>
+    <string name="sleep_timer_15_mins">15分钟</string>
+    <string name="sleep_timer_45_mins">45分钟</string>
+    <string name="sleep_timer_1_hour">1小时</string>
     <string name="sleep_timer_finish_current_music">播放完最后一首</string>
     <string name="sleep_timer_stop_after_this_track">在此曲目后停止</string>
     <string name="sleep_timer_stop_after_x">%s 后停止</string>
@@ -534,7 +534,7 @@
     <string name="translators_title">译者</string>
     <string name="translators_summary">感谢那些为Booming Music提供多种语言的人们。</string>
     <string name="contributors_title">贡献者</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
+    <string name="contributors_summary">某种程度上参与贡献该项目的用户</string>
     <string name="telegram_chat">Telegram 群组</string>
     <string name="telegram_chat_summary">加入 Telegram 群组并获得新版本和新闻的通知。</string>
     <string name="view_profile_on_github">在 GitHub 上查看个人资料</string>
@@ -731,12 +731,12 @@
     <string name="mp3_index_seeking_summary">将整个MP3文件加载到内存中，以便跳转而不是依赖Xing 头部信息。
         只在跳转部分VBR文件失败时使用。
         需要重启应用程序。</string>
-    <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
-    <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
+    <string name="play_option_always_visible_title">一直显示“播放”按钮</string>
+    <string name="play_option_always_visible_summary">无论点击行为如何，“播放”按钮将一直出现在歌曲菜单中。</string>
     <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
     <string name="play_option_whole_list_summary">If enabled, selecting \"Play\" from a song\'s menu will start playback of the entire playlist. If disabled, only the chosen song will play.</string>
     <string name="on_song_click_title">When selecting a song</string>
-    <string name="on_song_click_play_only_this_song_title">Play only this song</string>
+    <string name="on_song_click_play_only_this_song_title">仅播放此曲目</string>
     <string name="on_song_click_play_only_this_song_summary">The current queue will be cleared and replaced with the selected song.</string>
     <string name="on_song_click_play_whole_list_title">Play whole list</string>
     <string name="on_song_click_play_whole_list_summary">The current queue will be replaced with all songs from the list/album/folder.</string>
@@ -814,7 +814,7 @@
     <string name="plain_style">Plain</string>
     <string name="m3_style">M3风格</string>
     <string name="expressive_style">Expressive</string>
-    <string name="normal_style">Normal</string>
+    <string name="normal_style">默认</string>
     <string name="cascading">卡片翻转</string>
     <string name="depth">深浅切换</string>
     <string name="hinge">铰链式旋转</string>
