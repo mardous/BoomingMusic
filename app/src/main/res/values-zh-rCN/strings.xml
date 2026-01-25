@@ -43,7 +43,6 @@
     <string name="share_to_stories">分享到动态</string>
     <string name="could_not_create_the_story">无法创建动态。</string>
     <string name="back_action">返回</string>
-    <string name="rename_action">重命名</string>
     <string name="add_action">添加</string>
     <string name="delete_action">删除</string>
     <string name="remove_action">移除</string>
@@ -436,18 +435,16 @@
     <string name="enable_equalizer">启用EQ</string>
     <string name="select_profile">选择配置</string>
     <string name="save_profile_label">保存配置</string>
-    <string name="rename_profile_label">重命名配置</string>
+    <string name="edit_profile_label">Edit profile</string>
     <string name="delete_profile_label">删除配置</string>
     <string name="delete_profile_x">删除配置 “%s”？</string>
     <string name="please_enter_a_name_for_this_profile">请输入配置名称。</string>
-    <string name="please_enter_a_new_name_for_this_profile">请输入新的配置名称。</string>
     <string name="replace_profile_with_same_name">替换重名的配置</string>
+    <string name="use_with_devices_title">Use with devices:</string>
     <string name="profile_name">配置名称</string>
     <string name="that_name_is_already_in_use">该名称已被使用。</string>
     <string name="profile_saved_successfully">成功保存配置。</string>
     <string name="the_profile_could_not_be_saved">配置保存失败。</string>
-    <string name="profile_renamed">配置重命名成功。</string>
-    <string name="the_profile_could_not_be_renamed">配置重命名失败</string>
     <string name="autoeq_profile_imported_successfully">自动均衡器导入成功。</string>
     <string name="profile_x_deleted">配置“%s”已被删除。</string>
     <string name="autoeq_profile_x_deleted">自动均衡器配置“%s”已被删除。</string>
@@ -630,8 +627,6 @@
     <string name="lyrics_shadow_effect_summary">为当前歌词行添加阴影，以提升可读性。</string>
     <string name="lyrics_progressive_coloring_title">渐变歌词动画</string>
     <string name="lyrics_progressive_coloring_summary">使用渐变的文字颜色过渡为当前歌词添加动画效果。</string>
-    <string name="lyrics_bold_synced_title">粗体显示同步歌词</string>
-    <string name="lyrics_bold_synced_summary">以粗体显示同步歌词。</string>
     <string name="lyrics_bold_unsynced_title">粗体显示非同步歌词</string>
     <string name="lyrics_bold_unsynced_summary">以粗体显示非同步歌词。</string>
     <string name="lyrics_line_spacing_title">行距</string>
