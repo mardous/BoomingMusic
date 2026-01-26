@@ -645,7 +645,6 @@
     <string name="lyrics_effects_note">Zaawansowane efekty może i wyglądają dobrze, ale mogą wymagać więcej zasobów i baterii.</string>
     <string name="lyrics_background_effect_title">Efekt tła</string>
     <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (jeśli dostępne)</string>
     <string name="lyrics_blur_effect_title">Efekt rozmycia</string>
     <string name="lyrics_blur_effect_summary">Rozmywa linie tekstu sąsiadujące z aktualnie odtwarzaną.</string>
     <string name="lyrics_shadow_effect_title">Cieniowanie tekstu</string>

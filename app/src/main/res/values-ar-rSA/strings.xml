@@ -661,7 +661,6 @@
     <string name="lyrics_effects_note">وتعزز التأثيرات المتقدمة الخبرة البصرية ولكنها قد تتطلب المزيد من موارد النظام والبطاريات.</string>
     <string name="lyrics_background_effect_title">تأثير الخلفية</string>
     <string name="lyrics_background_gradient">متدرج</string>
-    <string name="lyrics_background_canvas">قماش (إذا كان متاحا)</string>
     <string name="lyrics_blur_effect_title">تأثير الضبابية</string>
     <string name="lyrics_blur_effect_summary">طمس خطوط كلمات الأغاني المجاورة للغة الحالية.</string>
     <string name="lyrics_shadow_effect_title">تأثير الظل</string>

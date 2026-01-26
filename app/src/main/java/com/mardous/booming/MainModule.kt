@@ -28,13 +28,11 @@ import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.data.local.repository.AlbumRepository
 import com.mardous.booming.data.local.repository.ArtistRepository
-import com.mardous.booming.data.local.repository.CanvasRepository
 import com.mardous.booming.data.local.repository.GenreRepository
 import com.mardous.booming.data.local.repository.LyricsRepository
 import com.mardous.booming.data.local.repository.PlaylistRepository
 import com.mardous.booming.data.local.repository.RealAlbumRepository
 import com.mardous.booming.data.local.repository.RealArtistRepository
-import com.mardous.booming.data.local.repository.RealCanvasRepository
 import com.mardous.booming.data.local.repository.RealGenreRepository
 import com.mardous.booming.data.local.repository.RealLyricsRepository
 import com.mardous.booming.data.local.repository.RealPlaylistRepository
@@ -49,7 +47,6 @@ import com.mardous.booming.data.local.repository.SmartRepository
 import com.mardous.booming.data.local.repository.SongRepository
 import com.mardous.booming.data.local.repository.SpecialRepository
 import com.mardous.booming.data.model.Genre
-import com.mardous.booming.data.remote.canvas.CanvasService
 import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.data.remote.github.GitHubService
 import com.mardous.booming.data.remote.jsonHttpClient
@@ -97,9 +94,6 @@ val networkModule = module {
     }
     single {
         LastFmService(client = get())
-    }
-    single {
-        CanvasService(client = get())
     }
     single {
         LyricsDownloadService(client = get())
@@ -262,15 +256,6 @@ private val dataModule = module {
             lyricsDao = get()
         )
     } bind LyricsRepository::class
-
-    single {
-        RealCanvasRepository(
-            context = androidContext(),
-            songRepository = get(),
-            canvasService = get(),
-            canvasDao = get()
-        )
-    } bind CanvasRepository::class
 }
 
 private val viewModule = module {
@@ -335,7 +320,7 @@ private val viewModule = module {
     }
 
     viewModel {
-        LyricsViewModel(preferences = get(), lyricsRepository = get(), canvasRepository = get())
+        LyricsViewModel(preferences = get(), lyricsRepository = get())
     }
 
     viewModel {

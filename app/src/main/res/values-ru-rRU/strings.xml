@@ -646,7 +646,6 @@
     <string name="lyrics_effects_note">Расширенные эффекты улучшают визуализацию, но могут потреблять больше ресурсов и заряда батареи.</string>
     <string name="lyrics_background_effect_title">Эффект фона</string>
     <string name="lyrics_background_gradient">Градиент</string>
-    <string name="lyrics_background_canvas">Canvas (если доступно)</string>
     <string name="lyrics_blur_effect_title">Эффект размытия</string>
     <string name="lyrics_blur_effect_summary">Размывать строки текста, соседние с текущей</string>
     <string name="lyrics_shadow_effect_title">Эффект тени</string>

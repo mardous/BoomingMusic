@@ -624,7 +624,6 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="lyrics_effects_note">Los efectos avanzados mejoran la experiencia visual pero podrían aumentar el consumo de recursos y/o batería.</string>
     <string name="lyrics_background_effect_title">Efecto de fondo</string>
     <string name="lyrics_background_gradient">Gradiente</string>
-    <string name="lyrics_background_canvas">Canvas (si está disponible)</string>
     <string name="lyrics_blur_effect_title">Efecto de desenfoque</string>
     <string name="lyrics_blur_effect_summary">Desenfoca las líneas de texto adyacentes a la actual.</string>
     <string name="lyrics_shadow_effect_title">Efecto de sombra</string>

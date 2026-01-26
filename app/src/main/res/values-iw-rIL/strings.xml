@@ -645,7 +645,6 @@
     <string name="lyrics_effects_note">אפקטים מתקדמים משפרים את החוויה החזותית אך עשויים לדרוש יותר משאבי מערכת וסוללה.</string>
     <string name="lyrics_background_effect_title">אפקט רקע</string>
     <string name="lyrics_background_gradient">גרדיאנט</string>
-    <string name="lyrics_background_canvas">קנבס (אם קיים)</string>
     <string name="lyrics_blur_effect_title">אפקט טשטוש</string>
     <string name="lyrics_blur_effect_summary">טשטש את שורות המילים הסמוכות לשורה הנוכחית.</string>
     <string name="lyrics_shadow_effect_title">אפקט צל</string>

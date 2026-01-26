@@ -115,13 +115,11 @@
 
     <string-array name="pref_lyrics_background_effect_entries">
         <item>@string/lyrics_background_gradient</item>
-        <item>@string/lyrics_background_canvas</item>
         <item>@string/label_none</item>
     </string-array>
 
     <string-array name="pref_lyrics_background_effect_values">
         <item>gradient</item>
-        <item>canvas</item>
         <item>none</item>
     </string-array>
 

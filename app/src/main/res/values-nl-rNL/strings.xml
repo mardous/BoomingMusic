@@ -629,7 +629,6 @@
     <string name="lyrics_effects_note">Geavanceerde effecten verbeteren de visuele ervaring, maar vereisen mogelijk meer systeembronnen en batterij.</string>
     <string name="lyrics_background_effect_title">Achtergrond effect</string>
     <string name="lyrics_background_gradient">Kleurovergang</string>
-    <string name="lyrics_background_canvas">Canvas (indien beschikbaar)</string>
     <string name="lyrics_blur_effect_title">Vervaag effect</string>
     <string name="lyrics_blur_effect_summary">Vervaag de songtekst lijnen naast de huidige.</string>
     <string name="lyrics_shadow_effect_title">Schaduw effect</string>

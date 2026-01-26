@@ -629,7 +629,6 @@
     <string name="lyrics_effects_note">Avancerede effekter forbedre den visuelle oplevelse, men kan kræve flere systemressourcer og batteri.</string>
     <string name="lyrics_background_effect_title">Baggrundseffekt</string>
     <string name="lyrics_background_gradient">Overgang</string>
-    <string name="lyrics_background_canvas">Lærred (hvis tilgængelig)</string>
     <string name="lyrics_blur_effect_title">Slør effekt</string>
     <string name="lyrics_blur_effect_summary">Slør sangtekstlinjerne ved siden af den nuværende.</string>
     <string name="lyrics_shadow_effect_title">Skygge effekt</string>

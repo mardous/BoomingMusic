@@ -624,7 +624,6 @@
     <string name="lyrics_effects_note">Gelişmiş efektler görsel deneyimi iyileştirir ancak daha fazla sistem kaynağı ve pil gerektirebilir.</string>
     <string name="lyrics_background_effect_title">Background effect</string>
     <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">Bulanıklaştırma efekti</string>
     <string name="lyrics_blur_effect_summary">Mevcut satıra bitişik şarkı sözü satırlarını bulanıklaştır.</string>
     <string name="lyrics_shadow_effect_title">Gölge efekti</string>

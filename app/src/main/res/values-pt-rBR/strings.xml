@@ -628,7 +628,6 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_effects_note">Efeitos avançados melhoram a experiência visual, mas podem exigir mais recursos de sistema e bateria.</string>
     <string name="lyrics_background_effect_title">Efeito de fundo</string>
     <string name="lyrics_background_gradient">Gradiente</string>
-    <string name="lyrics_background_canvas">Canvas (se disponível)</string>
     <string name="lyrics_blur_effect_title">Efeito de desfoque</string>
     <string name="lyrics_blur_effect_summary">Desfocar as linhas da letra adjacentes à atual.</string>
     <string name="lyrics_shadow_effect_title">Efeito de sombra</string>

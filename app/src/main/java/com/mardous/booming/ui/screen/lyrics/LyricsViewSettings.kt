@@ -29,11 +29,11 @@ class LyricsViewSettings(
         val isFull get() = this == Full
     }
 
-    enum class BackgroundEffect(val isGradient: Boolean = false, val isCanvas: Boolean = false) {
-        Gradient(true, false),
-        Canvas(false, true),
+    enum class BackgroundEffect {
+        Gradient,
         None;
 
+        val isGradient get() = this == Gradient
         val isNone get() = this == None
     }
 

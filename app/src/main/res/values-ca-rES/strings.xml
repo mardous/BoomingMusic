@@ -629,7 +629,6 @@
     <string name="lyrics_effects_note">Els efectes avançats realcen l\'experiència visual, però poden consumir més recursos i bateria.</string>
     <string name="lyrics_background_effect_title">Efecte de fons</string>
     <string name="lyrics_background_gradient">Degradat</string>
-    <string name="lyrics_background_canvas">Fons (si està disponible)</string>
     <string name="lyrics_blur_effect_title">Efecte difuminat</string>
     <string name="lyrics_blur_effect_summary">Difumina les línies de lletra adjacents a l\'actual.</string>
     <string name="lyrics_shadow_effect_title">Efecte d\'ombra</string>

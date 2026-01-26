@@ -629,7 +629,6 @@
     <string name="lyrics_effects_note">Avancerade effekter ökar den visuella upplevelsen men kan kräva mer systemresurser och batteri.</string>
     <string name="lyrics_background_effect_title">Bakgrundseffekt</string>
     <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (om tillgängligt)</string>
     <string name="lyrics_blur_effect_title">Oskärpa effekt</string>
     <string name="lyrics_blur_effect_summary">Sudda texterna i anslutning till den nuvarande.</string>
     <string name="lyrics_shadow_effect_title">Skugga effekt</string>

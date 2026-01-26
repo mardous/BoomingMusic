@@ -618,7 +618,6 @@
     <string name="lyrics_effects_note">高级效果可增强视觉体验，但可能需要耗费更多系统资源和电量。</string>
     <string name="lyrics_background_effect_title">背景特效</string>
     <string name="lyrics_background_gradient">渐变</string>
-    <string name="lyrics_background_canvas">画布(如果可用)</string>
     <string name="lyrics_blur_effect_title">模糊效果</string>
     <string name="lyrics_blur_effect_summary">模糊正播放的歌词的上下的几行歌词。</string>
     <string name="lyrics_shadow_effect_title">阴影效果</string>

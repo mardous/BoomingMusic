@@ -645,7 +645,6 @@
     <string name="lyrics_effects_note">Pokročilé efekty zlepšují vizuální zážitek, ale mohou vyžadovat více systémových zdrojů a baterie.</string>
     <string name="lyrics_background_effect_title">Efekt pozadí</string>
     <string name="lyrics_background_gradient">Sklon</string>
-    <string name="lyrics_background_canvas">Canvas (je-li k dispozici)</string>
     <string name="lyrics_blur_effect_title">Efekt rozostření</string>
     <string name="lyrics_blur_effect_summary">Rozostřit řádky textů vedle aktuální.</string>
     <string name="lyrics_shadow_effect_title">Stínový efekt</string>

@@ -629,7 +629,6 @@
     <string name="lyrics_effects_note">Les effets avancés améliorent l\'expérience visuelle mais peuvent nécessiter plus de ressources système et de batterie.</string>
     <string name="lyrics_background_effect_title">Effet de fond</string>
     <string name="lyrics_background_gradient">Dégradé</string>
-    <string name="lyrics_background_canvas">Toile (si disponible)</string>
     <string name="lyrics_blur_effect_title">Effet de flou</string>
     <string name="lyrics_blur_effect_summary">Flouter les lignes de paroles adjacentes à la ligne actuelle.</string>
     <string name="lyrics_shadow_effect_title">Effet d\'ombre</string>

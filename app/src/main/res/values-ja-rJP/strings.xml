@@ -621,7 +621,6 @@
     <string name="lyrics_effects_note">高度な効果により視覚体験が向上しますが、より多くのシステムリソースとバッテリーが必要になる場合があります。</string>
     <string name="lyrics_background_effect_title">Background effect</string>
     <string name="lyrics_background_gradient">Gradient</string>
-    <string name="lyrics_background_canvas">Canvas (if available)</string>
     <string name="lyrics_blur_effect_title">ぼかし効果</string>
     <string name="lyrics_blur_effect_summary">現在の行の隣にある歌詞をぼかします。</string>
     <string name="lyrics_shadow_effect_title">シャドー効果</string>

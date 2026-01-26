@@ -629,7 +629,6 @@
     <string name="lyrics_effects_note">Kehittyneet efektit parantavat visuaalista kokemusta, mutta ne saattavat vaatia enemmän järjestelmäresursseja ja akkua.</string>
     <string name="lyrics_background_effect_title">Taustan efekti</string>
     <string name="lyrics_background_gradient">Gradientti</string>
-    <string name="lyrics_background_canvas">Canvas (jos saatavilla)</string>
     <string name="lyrics_blur_effect_title">Sumennus efekti</string>
     <string name="lyrics_blur_effect_summary">Sumentaa nykyisen sanoitusten viereiset rivit.</string>
     <string name="lyrics_shadow_effect_title">Varjo efekti</string>

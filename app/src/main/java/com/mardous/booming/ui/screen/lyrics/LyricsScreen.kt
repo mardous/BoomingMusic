@@ -6,13 +6,34 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.add
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.CircularWavyProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.FilledIconButton
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,7 +57,6 @@ import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.extensions.isPowerSaveMode
 import com.mardous.booming.ui.component.compose.AnimatedEqBars
-import com.mardous.booming.ui.component.compose.VideoPlayerScreen
 import com.mardous.booming.ui.component.compose.color.extractGradientColors
 import com.mardous.booming.ui.component.compose.decoration.FadingEdges
 import com.mardous.booming.ui.component.compose.decoration.animatedGradient
@@ -63,7 +83,6 @@ fun LyricsScreen(
     val lyricsViewSettings by lyricsViewModel.fullLyricsViewSettings.collectAsState()
     val lyricsResult by lyricsViewModel.lyricsResult.collectAsState()
 
-    val canvas by lyricsViewModel.canvasEntity.collectAsState()
     val isPlaying by playerViewModel.isPlayingFlow.collectAsState()
 
     val lyricsViewState = remember(lyricsResult.syncedLyrics) {
@@ -101,10 +120,6 @@ fun LyricsScreen(
                 }
             }
 
-            BackgroundEffect.Canvas -> {
-                lyricsViewModel.reloadCanvas()
-            }
-
             BackgroundEffect.None -> { /* no-op */ }
         }
     }
@@ -131,11 +146,11 @@ fun LyricsScreen(
     ) { innerPadding ->
         Box(modifier = Modifier.fillMaxSize()) {
             AnimatedContent(
-                targetState = Triple(lyricsViewSettings.backgroundEffect, gradientColors, canvas?.url.orEmpty()),
+                targetState = Pair(lyricsViewSettings.backgroundEffect, gradientColors),
                 transitionSpec = {
                     fadeIn(tween(1000)).togetherWith(fadeOut(tween(1000)))
                 }
-            ) { (effect, gradientColors, canvasUrl) ->
+            ) { (effect, gradientColors) ->
                 when {
                     effect.isGradient && gradientColors.size >= 2 -> {
                         Box(
@@ -143,23 +158,6 @@ fun LyricsScreen(
                                 .fillMaxSize()
                                 .animatedGradient(gradientColors, isPlaying)
                         )
-                        hasBackgroundEffects = true
-                    }
-
-                    effect.isCanvas && canvasUrl.isNotEmpty() -> {
-                        Box(modifier = Modifier.fillMaxSize()) {
-                            VideoPlayerScreen(
-                                context = context,
-                                videoUrl = canvasUrl,
-                                modifier = Modifier.fillMaxSize()
-                            )
-
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .background(Color(0f, 0f, 0f, 0.75f))
-                            )
-                        }
                         hasBackgroundEffects = true
                     }
 
