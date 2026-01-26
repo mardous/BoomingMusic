@@ -19,9 +19,9 @@ package com.mardous.booming.data.remote.lyrics
 
 import android.util.Log
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.data.remote.lyrics.api.applemusic.AppleMusicLyricsApi
+import com.mardous.booming.data.remote.lyrics.api.betterlyrics.BetterLyricsApi
 import com.mardous.booming.data.remote.lyrics.api.lrclib.LrcLibApi
-import com.mardous.booming.data.remote.lyrics.api.spotify.SpotifyLyricsApi
+import com.mardous.booming.data.remote.lyrics.api.simpmusic.SimpMusicLyricsApi
 import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
 import com.mardous.booming.data.remote.lyrics.model.toDownloadedLyrics
 import com.mardous.booming.extensions.media.albumArtistName
@@ -32,8 +32,8 @@ class LyricsDownloadService(client: HttpClient) {
 
     private val lyricsApi = listOf(
         LrcLibApi(client),
-        AppleMusicLyricsApi(client),
-        SpotifyLyricsApi(client)
+        BetterLyricsApi(client),
+        SimpMusicLyricsApi(client)
     )
 
     @Throws(IOException::class)

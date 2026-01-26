@@ -233,7 +233,10 @@ class RealLyricsRepository(
                     return cacheLyrics(song.id, result)
                 }
                 if (downloaded?.isSynced == true) {
-                    val syncedData = lrcLyricsParser.parse(downloaded.syncedLyrics!!, song.duration)
+                    val syncedData = downloaded.syncedLyrics?.let { syncedContent ->
+                        lyricsParsers.firstOrNull { parser -> parser.handles(syncedContent) }
+                            ?.parse(syncedContent, song.duration)
+                    }
                     if (syncedData?.hasContent == true) {
                         lyricsDao.insertLyrics(
                             song.toLyricsEntity(

@@ -153,8 +153,9 @@ Also thanks to:
 
 - [AMLV](https://github.com/dokar3/amlv)
 - [LRCLib](https://lrclib.net/)
-- [spotify-lyrics-api](https://github.com/akashrchandran/spotify-lyrics-api) by [Akash R Chandran](https://github.com/akashrchandran)
-- [Alex](https://github.com/Paxsenix0) for access to various of his [APIs](https://api.paxsenix.org/)
+- [Better Lyrics](https://better-lyrics.boidu.dev/)
+- [SimpMusic Lyrics](https://github.com/maxrave-dev/SimpMusic)
+- [Alex](https://github.com/Paxsenix0)
 
 ## ⚖️ License
 
