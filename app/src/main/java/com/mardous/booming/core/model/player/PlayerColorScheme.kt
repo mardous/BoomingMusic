@@ -29,7 +29,13 @@ import com.mardous.booming.R
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.extensions.isNightMode
 import com.mardous.booming.extensions.resolveColor
-import com.mardous.booming.extensions.resources.*
+import com.mardous.booming.extensions.resources.adjustSaturationIfTooHigh
+import com.mardous.booming.extensions.resources.desaturateIfTooDarkComparedTo
+import com.mardous.booming.extensions.resources.ensureContrastAgainst
+import com.mardous.booming.extensions.resources.onSurfaceColor
+import com.mardous.booming.extensions.resources.primaryColor
+import com.mardous.booming.extensions.resources.surfaceColor
+import com.mardous.booming.extensions.resources.withAlpha
 import com.mardous.booming.extensions.systemContrast
 import com.mardous.booming.ui.component.compose.color.onThis
 import com.mardous.booming.util.Preferences
@@ -59,6 +65,7 @@ typealias PlayerColorSchemeList = List<PlayerColorSchemeMode>
 data class PlayerColorScheme(
     val mode: Mode,
     val appThemeToken: AppThemeToken,
+    val blurToken: BlurToken,
     @param:ColorInt val surfaceColor: Int,
     @param:ColorInt val surfaceContainerColor: Int,
     @param:ColorInt val primaryColor: Int,
@@ -94,7 +101,17 @@ data class PlayerColorScheme(
             R.string.player_color_mode_material_you_title,
             R.string.player_color_mode_material_you_description,
             preferredAnimDuration = 1000
+        ),
+        Blur(
+            R.string.player_color_mode_blur_title,
+            R.string.player_color_mode_blur_description
         )
+    }
+
+    class BlurToken(val isBlur: Boolean, val blurRadius: Float) {
+        companion object {
+            val None = BlurToken(isBlur = false, blurRadius = 0f)
+        }
     }
 
     class AppThemeToken(private val isDark: Boolean, private val isMaterialYou: Boolean) {
@@ -112,6 +129,7 @@ data class PlayerColorScheme(
         val Unspecified = PlayerColorScheme(
             mode = Mode.SimpleColor,
             appThemeToken = AppThemeToken.None,
+            blurToken = BlurToken.None,
             surfaceColor = Color.TRANSPARENT,
             surfaceContainerColor = Color.TRANSPARENT,
             primaryColor = Color.TRANSPARENT,
@@ -137,6 +155,7 @@ data class PlayerColorScheme(
                     isDark = context.isNightMode,
                     isMaterialYou = Preferences.isMaterialYouTheme
                 ),
+                blurToken = BlurToken.None,
                 surfaceColor = context.surfaceColor(),
                 surfaceContainerColor = context.resolveColor(M3R.attr.colorSurfaceContainerHigh),
                 primaryColor = context.primaryColor(),
@@ -152,7 +171,7 @@ data class PlayerColorScheme(
          * @param color A [PaletteColor] with extracted media colors.
          * @return A raw [PlayerColorScheme] using unmodified colors.
          */
-        fun simpleColorScheme(context: Context, color: PaletteColor): PlayerColorScheme {
+        private fun simpleColorScheme(context: Context, color: PaletteColor): PlayerColorScheme {
             val themeColorScheme = themeColorScheme(context)
             val backgroundColor = themeColorScheme.surfaceColor
             val emphasisColor = color.primaryTextColor
@@ -168,10 +187,11 @@ data class PlayerColorScheme(
          * @param color A [PaletteColor] with extracted media colors.
          * @return A raw [PlayerColorScheme] using unmodified colors.
          */
-        fun vibrantColorScheme(color: PaletteColor): PlayerColorScheme {
+        private fun vibrantColorScheme(color: PaletteColor): PlayerColorScheme {
             return PlayerColorScheme(
                 mode = Mode.VibrantColor,
                 appThemeToken = AppThemeToken.None,
+                blurToken = BlurToken.None,
                 surfaceColor = color.backgroundColor,
                 surfaceContainerColor = ColorUtils.blendARGB(color.backgroundColor, color.primaryTextColor, 0.7f),
                 primaryColor = color.backgroundColor,
@@ -192,7 +212,7 @@ data class PlayerColorScheme(
          * @param seedColor The base color used to derive a dynamic palette.
          * @return A [PlayerColorScheme] based on the system's dynamic color generation.
          */
-        suspend fun dynamicColorScheme(
+        private suspend fun dynamicColorScheme(
             baseContext: Context,
             seedColor: Int
         ) = withContext(Dispatchers.IO) {
@@ -205,12 +225,24 @@ data class PlayerColorScheme(
             PlayerColorScheme(
                 mode = Mode.MaterialYou,
                 appThemeToken = AppThemeToken.None,
+                blurToken = BlurToken.None,
                 surfaceColor = colorScheme.surface,
                 surfaceContainerColor = colorScheme.surfaceContainerHigh,
                 primaryColor = colorScheme.primary,
                 tonalColor = colorScheme.secondaryContainer,
                 onSurfaceColor = colorScheme.onSurface,
                 onSurfaceVariantColor = colorScheme.onSurfaceVariant.withAlpha(0.7f)
+            )
+        }
+
+        private suspend fun blurColorScheme(
+            context: Context,
+            color: PaletteColor
+        ) : PlayerColorScheme {
+            val dynamicColorScheme = dynamicColorScheme(context, color.backgroundColor)
+            return dynamicColorScheme.copy(
+                mode = PlayerColorSchemeMode.Blur,
+                blurToken = BlurToken(isBlur = true, blurRadius = 25f)
             )
         }
 
@@ -224,6 +256,7 @@ data class PlayerColorScheme(
                 Mode.SimpleColor -> simpleColorScheme(context, color)
                 Mode.VibrantColor -> vibrantColorScheme(color)
                 Mode.MaterialYou -> dynamicColorScheme(context, color.backgroundColor)
+                Mode.Blur -> blurColorScheme(context, color)
             }
             check(mode == colorScheme.mode)
             return colorScheme

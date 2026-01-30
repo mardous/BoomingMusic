@@ -112,7 +112,8 @@ enum class NowPlayingScreen(
     val defaultColorScheme: PlayerColorSchemeMode
         get() = when (this) {
             Default, Plain, Peek -> PlayerColorSchemeMode.AppTheme
-            M3, Expressive -> PlayerColorSchemeMode.MaterialYou
+            M3 -> PlayerColorSchemeMode.MaterialYou
+            Expressive -> PlayerColorSchemeMode.Blur
             FullCover, Gradient -> PlayerColorSchemeMode.VibrantColor
         }
 
@@ -123,7 +124,8 @@ enum class NowPlayingScreen(
                 PlayerColorSchemeMode.AppTheme,
                 PlayerColorSchemeMode.SimpleColor,
                 PlayerColorSchemeMode.MaterialYou,
-                PlayerColorSchemeMode.VibrantColor
+                PlayerColorSchemeMode.VibrantColor,
+                PlayerColorSchemeMode.Blur
             )
             FullCover,
             Gradient -> listOf(
@@ -134,10 +136,15 @@ enum class NowPlayingScreen(
                 PlayerColorSchemeMode.MaterialYou,
                 PlayerColorSchemeMode.VibrantColor
             )
-            M3,
+            M3 -> listOf(
+                PlayerColorSchemeMode.AppTheme,
+                PlayerColorSchemeMode.MaterialYou,
+                PlayerColorSchemeMode.Blur
+            )
             Expressive -> listOf(
                 PlayerColorSchemeMode.AppTheme,
-                PlayerColorSchemeMode.MaterialYou
+                PlayerColorSchemeMode.MaterialYou,
+                PlayerColorSchemeMode.Blur
             )
         }
 

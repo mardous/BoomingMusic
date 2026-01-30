@@ -21,6 +21,7 @@ import android.animation.AnimatorSet
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
@@ -29,7 +30,11 @@ import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.updatePadding
 import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.core.model.player.*
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTintTarget
+import com.mardous.booming.core.model.player.iconButtonTintTarget
+import com.mardous.booming.core.model.player.surfaceTintTarget
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.databinding.FragmentM3PlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
@@ -58,6 +63,9 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
 
     override val playerToolbar: Toolbar?
         get() = binding.playerToolbar
+
+    override val blurView: ImageView?
+        get() = binding.blur
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

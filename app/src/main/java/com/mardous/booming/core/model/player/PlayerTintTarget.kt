@@ -24,6 +24,7 @@ class PlayerTintTarget(
     val target: View,
     val newColor: Int,
     val oldColor: Int = Color.TRANSPARENT,
+    val isForeground: Boolean = false,
     val isSurface: Boolean = false,
     val isIcon: Boolean = false
 )
@@ -36,6 +37,6 @@ fun View.iconButtonTintTarget(oldColor: Int, newColor: Int): PlayerTintTarget {
     return PlayerTintTarget(this, newColor, oldColor, isIcon = true)
 }
 
-fun View.tintTarget(oldColor: Int, newColor: Int): PlayerTintTarget {
-    return PlayerTintTarget(this, newColor, oldColor)
+fun View.tintTarget(oldColor: Int, newColor: Int, isForeground: Boolean = false): PlayerTintTarget {
+    return PlayerTintTarget(this, newColor, oldColor, isForeground = isForeground)
 }

@@ -25,12 +25,21 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.text.TextUtils
 import android.util.TypedValue
-import android.view.*
+import android.view.KeyEvent
+import android.view.Menu
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.CompoundButton
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.annotation.MenuRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.animation.doOnEnd
@@ -38,7 +47,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
-import androidx.core.view.*
+import androidx.core.view.doOnLayout
+import androidx.core.view.drawToBitmap
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePaddingRelative
 import androidx.core.widget.ImageViewCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -59,7 +73,11 @@ import com.mardous.booming.R
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.resolveColor
 import com.mardous.booming.util.Preferences
-import com.skydoves.balloon.*
+import com.skydoves.balloon.ArrowPositionRules
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonAnimation
+import com.skydoves.balloon.BalloonSizeSpec
+import com.skydoves.balloon.createBalloon
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
 import io.noties.markwon.core.MarkwonTheme
@@ -242,6 +260,7 @@ fun View.animateTintColor(
     fromColor: Int,
     toColor: Int,
     duration: Long = 300,
+    isForeground: Boolean = false,
     isIconButton: Boolean = false
 ): Animator {
     return ValueAnimator.ofArgb(fromColor, toColor).apply {
@@ -250,15 +269,22 @@ fun View.animateTintColor(
             val animatedColor = animation.animatedValue as Int
             val colorStateList = animatedColor.toColorStateList()
 
-            when (this@animateTintColor) {
+            if (isForeground) {
+                foregroundTintList = colorStateList
+            } else when (this@animateTintColor) {
                 is Toolbar -> colorizeToolbar(animatedColor)
                 is Slider -> applyColor(animatedColor)
                 is SeekBar -> applyColor(animatedColor)
                 is FloatingActionButton -> applyColor(animatedColor)
                 is MaterialButton -> applyColor(animatedColor, isIconButton)
+                is ImageButton -> {
+                    val imageTintList = getPrimaryTextColor(context, animatedColor.isColorLight)
+                    ImageViewCompat.setImageTintList(this@animateTintColor, imageTintList.toColorStateList())
+                    backgroundTintList = colorStateList
+                }
                 is ImageView -> ImageViewCompat.setImageTintList(this@animateTintColor, colorStateList)
                 is TextView -> applyColor(animatedColor)
-                else -> backgroundTintList = colorStateList
+                else -> foregroundTintList = colorStateList
             }
         }
     }

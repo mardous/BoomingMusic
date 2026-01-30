@@ -22,6 +22,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -29,7 +30,11 @@ import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.updatePadding
 import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.core.model.player.*
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTintTarget
+import com.mardous.booming.core.model.player.surfaceTintTarget
+import com.mardous.booming.core.model.player.tintTarget
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.databinding.FragmentDefaultPlayerBinding
 import com.mardous.booming.extensions.whichFragment
@@ -57,6 +62,9 @@ class DefaultPlayerFragment : AbsPlayerFragment(R.layout.fragment_default_player
 
     override val playerToolbar: Toolbar
         get() = binding.toolbar
+
+    override val blurView: ImageView
+        get() = binding.blur
 
     private var primaryControlColor: Int = 0
 

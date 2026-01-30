@@ -108,6 +108,7 @@ class ImageFragment : Fragment() {
         disposable?.dispose()
         disposable = albumCover?.songImage(song) {
             crossfade(false)
+            memoryCacheKey("nowplaying:song:${song.id}")
             listener(
                 onError = { request, result ->
                     context?.let {

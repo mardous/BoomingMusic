@@ -22,6 +22,7 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -29,6 +30,7 @@ import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
@@ -37,10 +39,18 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.os.postDelayed
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import coil3.load
+import coil3.request.crossfade
+import coil3.request.transformations
+import coil3.size.Precision
+import coil3.size.Scale
+import com.commit451.coiltransformations.BlurTransformation
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -89,6 +99,7 @@ import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.CoverPagerFragment
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
@@ -110,6 +121,9 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
     protected abstract val playerControlsFragment: AbsPlayerControlsFragment
 
     protected open val playerToolbar: Toolbar?
+        get() = null
+
+    protected open val blurView: ImageView?
         get() = null
 
     private var colorAnimatorSet: AnimatorSet? = null
@@ -134,6 +148,16 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             playerViewModel.colorSchemeFlow.collect { scheme ->
                 applyColorScheme(scheme)?.start()
             }
+        }
+        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
+            combine(
+                playerViewModel.currentSongFlow,
+                playerViewModel.colorSchemeFlow
+            ) { song, scheme -> Pair(song, scheme) }
+                .filter { (song, scheme) -> song.id != -1L && scheme != PlayerColorScheme.Unspecified }
+                .collect { (song, scheme) ->
+                    applyBlur(song, scheme)
+                }
         }
     }
 
@@ -334,17 +358,31 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
         colorAnimatorSet = AnimatorSet()
             .setDuration(scheme.mode.preferredAnimDuration)
             .apply {
-                playTogether(getTintTargets(scheme).map {
+                val tintTargets = getTintTargets(scheme).mapTo(mutableListOf()) {
                     if (it.isSurface) {
                         it.target.animateBackgroundColor(it.newColor)
                     } else {
                         it.target.animateTintColor(
                             fromColor = it.oldColor,
                             toColor = it.newColor,
+                            isForeground = it.isForeground,
                             isIconButton = it.isIcon
                         )
                     }
-                })
+                }
+                blurView?.let {
+                    if (scheme.blurToken.isBlur) {
+                        tintTargets.add(
+                            it.animateTintColor(
+                                fromColor = it.foregroundTintList?.defaultColor
+                                    ?: Color.TRANSPARENT,
+                                toColor = scheme.surfaceColor,
+                                isForeground = true
+                            )
+                        )
+                    }
+                }
+                playTogether(tintTargets)
             }
         return colorAnimatorSet
     }
@@ -352,6 +390,28 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
     private fun cancelColorAnimator() {
         colorAnimatorSet?.cancel()
         colorAnimatorSet = null
+    }
+
+    private fun applyBlur(song: Song, scheme: PlayerColorScheme) {
+        blurView?.let {
+            if (scheme.blurToken.isBlur) {
+                it.isVisible = true
+                it.load(song) {
+                    size(400)
+                    precision(Precision.EXACT)
+                    scale(Scale.FILL)
+                    memoryCacheKey("nowplaying:song:${song.id}")
+                    crossfade(1000)
+                    transformations(BlurTransformation(
+                        context = it.context,
+                        radius = scheme.blurToken.blurRadius.coerceIn(0f, 25f)
+                    ))
+                }
+            } else {
+                it.isGone = true
+                it.setImageDrawable(null)
+            }
+        }
     }
 
     protected fun Menu.onLyricsVisibilityChang(lyricsVisible: Boolean) {
