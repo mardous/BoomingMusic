@@ -88,7 +88,7 @@ internal data class TtmlNode(
             this.type == NODE_LINE && node.type == NODE_WORD
         ) {
 
-            if (node.begin > -1) {
+            if (node.begin > -1 || node.type == NODE_SECTION) {
                 return children.add(node)
             }
 
