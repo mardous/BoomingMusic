@@ -40,7 +40,7 @@
     <string name="the_audio_file">Plik audio</string>
     <string name="i_am_listening">Słucham…</string>
     <string name="currently_listening_to_x_by_x">Słucham utworu %1$s autorstwa %2$s</string>
-    <string name="share_to_stories">Udostępnij w relacji</string>
+    <string name="share_to_stories">Relację</string>
     <string name="could_not_create_the_story">Nie udało się utworzyć relacji.</string>
     <string name="back_action">Wróć</string>
     <string name="add_action">Dodaj</string>
@@ -421,9 +421,9 @@
     <string name="shuffle_mode_recently_added_description">Faworyzuje utwory ostatnio dodane do biblioteki.</string>
     <string name="shuffle_mode_combined_description">Miks oparty na ulubionych, liczbie odtworzeń i ostatnio słuchanych.</string>
     <!-- Equalizer -->
-    <string name="equalizer_label">Korektor</string>
+    <string name="equalizer_label">Korektor dźwięku</string>
     <string name="autoeq_label">AutoEq</string>
-    <string name="graphic_eq_label">Graficzny korektor</string>
+    <string name="graphic_eq_label">Korektor graficzny</string>
     <string name="graphic_eq_band_count">%d-pasmowy</string>
     <string name="eq_profiles_title">Profile EQ</string>
     <string name="autoeq_profiles_title">Profile AutoEq</string>
@@ -460,25 +460,25 @@
     <string name="select_profile">Wybierz profil</string>
     <string name="save_profile_label">Zapisz profil</string>
     <string name="edit_profile_label">Edytuj profil</string>
-    <string name="delete_profile_label">Delete profile</string>
-    <string name="delete_profile_x">Delete profile \"%s\"?</string>
+    <string name="delete_profile_label">Usuwanie profilu</string>
+    <string name="delete_profile_x">Usunąć profil \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Please, enter a name for this profile.</string>
     <string name="replace_profile_with_same_name">Replace profile with same name</string>
     <string name="use_with_devices_title">Use with devices:</string>
-    <string name="profile_name">Profile name</string>
+    <string name="profile_name">Nazwa profilu</string>
     <string name="that_name_is_already_in_use">Ta nazwa jest już w użyciu.</string>
     <string name="profile_saved_successfully">Profile saved successfully.</string>
     <string name="the_profile_could_not_be_saved">The profile could not be saved.</string>
     <string name="autoeq_profile_imported_successfully">AutoEq profile imported successfully.</string>
-    <string name="profile_x_deleted">Profile \"%s\" deleted.</string>
+    <string name="profile_x_deleted">Usunięto profil \"%s\".</string>
     <string name="autoeq_profile_x_deleted">AutoEq profile \"%s\" deleted.</string>
     <string name="bassboost_label">Wzmocnienie basu</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Wzmocnienie dźwięku</string>
     <string name="sound_settings">Ustawienia dźwięku</string>
     <string name="volume_label">Głośność</string>
-    <string name="reset_balance">Reset balance</string>
-    <string name="speed_and_pitch_label">Speed and pitch</string>
+    <string name="reset_balance">Zresetuj balans</string>
+    <string name="speed_and_pitch_label">Prędkość i wysokość dźwięku</string>
     <string name="reset_tempo">Reset tempo</string>
     <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
     <string name="balance_left">Lewo</string>
@@ -500,8 +500,8 @@
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Pokaż tekst utworu</string>
     <string name="action_hide_lyrics">Ukryj teksty</string>
-    <string name="plain_lyrics">Proste</string>
-    <string name="synced_lyrics">Zsynchronizowane</string>
+    <string name="plain_lyrics">Prosty</string>
+    <string name="synced_lyrics">Zsynchronizowany</string>
     <string name="embedded_lyrics">Osadzone w pliku</string>
     <string name="downloaded_lyrics">Pobrano</string>
     <string name="external_file_lyrics">Zewnętrzny plik</string>
@@ -529,11 +529,11 @@
     <string name="action_sleep_timer">Zegar uśpienia</string>
     <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
     <string name="sleep_timer_cancel_current_timer">Anuluj</string>
-    <string name="sleep_timer_set_action">Ustaw</string>
+    <string name="sleep_timer_set_action">Uruchom</string>
     <string name="sleep_timer_x_mins">%d minut</string>
-    <string name="sleep_timer_15_mins">15 mins</string>
-    <string name="sleep_timer_45_mins">45 mins</string>
-    <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_15_mins">15 minut</string>
+    <string name="sleep_timer_45_mins">45 minut</string>
+    <string name="sleep_timer_1_hour">1 godzina</string>
     <string name="sleep_timer_finish_current_music">Dokończ ostatni utwór</string>
     <string name="sleep_timer_stop_after_this_track">Zatrzymaj się po tym utworze</string>
     <string name="sleep_timer_stop_after_x">Zatrzymaj się za %s</string>
@@ -620,7 +620,7 @@
     <string name="shuffle_mode_header">Tryb losowy</string>
     <string name="display_header">Wyświetlanie</string>
     <string name="backup_restore_header">Kopia zapasowa/przywracanie danych</string>
-    <string name="visuals_header">Visuals</string>
+    <string name="visuals_header">Wizualne</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Motyw ogólny</string>
     <string name="pure_black_theme_title">Głęboka czerń</string>
@@ -681,7 +681,7 @@
     <string name="open_on_play_summary">Automatycznie rozwiń panel Teraz Odtwarzane po rozpoczęciu piosenki.</string>
     <string name="squiggly_seek_bar_title">Falisty pasek postępu</string>
     <string name="squiggly_seek_bar_summary">Włącz falisty pasek postępu zamiast domyślnego suwaka.</string>
-    <string name="scrolling_text_title">Włącz przewijanie tekstu</string>
+    <string name="scrolling_text_title">Przewijanie tekstu</string>
     <string name="scrolling_text_summary">Przewija tytuły piosenek, jeśli są za długie, aby zmieścić je na ekranie. Może nieznacznie zwiększyć zużycie baterii.</string>
     <string name="extra_controls_title">Dodatkowe przyciski</string>
     <string name="extra_controls_summary">Dodatkowe przyciski w mini odtwarzaczu</string>
@@ -692,7 +692,7 @@
     <string name="circle_button_title">Okrągły przycisk odtwarzania</string>
     <string name="swipe_album_cover_title">Zmiana utworu gestem</string>
     <string name="swipe_album_cover_summary">Przesuń w lewo lub w prawo na okładce albumu, aby zmieniać utwory.</string>
-    <string name="queue_height_title">Kolejka na pół ekranu</string>
+    <string name="queue_height_title">Mniejsza kolejka</string>
     <string name="queue_height_summary">Sprawia, że kolejka odtwarzania nie będzie zajmować więcej niż połowę ekranu.</string>
     <string name="single_tap_on_album_cover_title">Pojedyncze naciśnięcie okładki albumu</string>
     <string name="double_tap_on_album_cover_title">Dwukrotne dotknięcie okładki</string>
@@ -722,7 +722,7 @@
     <string name="select_extra_info_summary">Wybierz dodatkowe informacje do wyświetlenia w panelu odtwarzacza.</string>
     <string name="prefer_remaining_time_title">Pokazuj pozostały czas</string>
     <string name="prefer_remaining_time_summary">Wyświetlaj pozostały czas zamiast długości utworu.</string>
-    <string name="prefer_album_artist_name_title">"Preferuj imię wykonawcy Albumu"</string>
+    <string name="prefer_album_artist_name_title">"Preferuj imię wykonawcy albumu"</string>
     <string name="prefer_album_artist_name_summary">Pokazuje nazwę wykonawcy albumu zamiast wykonawcy utworu (jeśli dostępne).</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Odtwarzaj po starcie</string>
@@ -831,13 +831,13 @@
     <string name="selected">Tylko wybrana</string>
     <string name="compact">Kompaktowy</string>
     <string name="expanded">Rozszerzony</string>
-    <string name="full_cover_style">Full Cover</string>
+    <string name="full_cover_style">Wypełniony</string>
     <string name="gradient_style">Gradient</string>
-    <string name="peek_style">Peek</string>
-    <string name="plain_style">Plain</string>
+    <string name="peek_style">Podgląd</string>
+    <string name="plain_style">Prosty</string>
     <string name="m3_style">M3</string>
-    <string name="expressive_style">Expressive</string>
-    <string name="normal_style">Normal</string>
+    <string name="expressive_style">Ekspresyjny</string>
+    <string name="normal_style">Standardowy</string>
     <string name="cascading">Kaskadowy</string>
     <string name="depth">Głębia</string>
     <string name="hinge">Zawias</string>
