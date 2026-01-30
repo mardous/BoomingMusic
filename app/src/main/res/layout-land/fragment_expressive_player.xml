@@ -115,7 +115,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/repeatButton"
-            style="?materialIconButtonOutlinedStyle"
+            style="?materialIconButtonFilledTonalStyle"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:insetTop="2dp"
@@ -128,7 +128,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/shuffleButton"
-            style="?materialIconButtonOutlinedStyle"
+            style="?materialIconButtonFilledTonalStyle"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:insetTop="2dp"
@@ -141,7 +141,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/openQueueButton"
-            style="?materialIconButtonOutlinedStyle"
+            style="?materialIconButtonFilledTonalStyle"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:insetTop="2dp"
@@ -154,7 +154,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/favoriteButton"
-            style="?materialIconButtonOutlinedStyle"
+            style="?materialIconButtonFilledTonalStyle"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:insetTop="2dp"
@@ -167,7 +167,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/moreButton"
-            style="?materialIconButtonOutlinedStyle"
+            style="?materialIconButtonFilledTonalStyle"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:insetTop="2dp"

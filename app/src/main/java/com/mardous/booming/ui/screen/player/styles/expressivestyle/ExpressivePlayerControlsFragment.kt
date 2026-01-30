@@ -5,11 +5,13 @@ import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.animation.TimeInterpolator
 import android.graphics.Color
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.annotation.Px
+import androidx.core.content.ContextCompat
 import com.mardous.booming.R
 import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.core.model.player.PlayerTintTarget
@@ -56,10 +58,23 @@ class ExpressivePlayerControlsFragment : AbsPlayerControlsFragment(R.layout.frag
     override fun onExtraInfoChanged(extraInfo: String?) {}
 
     override fun onUpdatePlayPause(isPlaying: Boolean) {
-        if (isPlaying) {
-            _binding?.playPauseButton?.setIconResource(R.drawable.ic_pause_m3_24dp)
-        } else {
-            _binding?.playPauseButton?.setIconResource(R.drawable.ic_play_m3_24dp)
+        _binding?.playPauseButton?.let {
+            it.setImageResource(
+                if (isPlaying) {
+                    R.drawable.ic_pause_m3_24dp
+                } else {
+                    R.drawable.ic_play_m3_24dp
+                }
+            )
+            val playPauseBg = if (isPlaying) {
+                ContextCompat.getDrawable(it.context, R.drawable.avd_play)
+            } else {
+                ContextCompat.getDrawable(it.context, R.drawable.avd_pause)
+            }
+            it.background = playPauseBg
+            if (playPauseBg is AnimatedVectorDrawable) {
+                playPauseBg.start()
+            }
         }
     }
 
@@ -75,8 +90,8 @@ class ExpressivePlayerControlsFragment : AbsPlayerControlsFragment(R.layout.frag
             binding.songCurrentProgress.tintTarget(oldOnSurfaceVariantColor, scheme.onSurfaceVariantColor),
             binding.songTotalTime.tintTarget(oldOnSurfaceVariantColor, scheme.onSurfaceVariantColor),
             binding.playPauseButton.tintTarget(oldPrimaryButtonColor, scheme.primaryColor),
-            binding.nextButton.tintTarget(oldSecondaryButtonColor, scheme.surfaceContainerColor),
-            binding.previousButton.tintTarget(oldSecondaryButtonColor, scheme.surfaceContainerColor)
+            binding.nextButton.tintTarget(oldSecondaryButtonColor, scheme.primaryColor),
+            binding.previousButton.tintTarget(oldSecondaryButtonColor, scheme.primaryColor)
         )
     }
 

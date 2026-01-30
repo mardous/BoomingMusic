@@ -30,6 +30,8 @@ class MusicSlider @JvmOverloads constructor(
     private val seekBar get() = internalView as? SeekBar
     private val slider get() = internalView as? Slider
 
+    private var thumbHeight = -1
+    private var trackHeight = -1
     private var useSquiggly: Boolean = false
 
     var isTrackingTouch: Boolean = false
@@ -75,6 +77,8 @@ class MusicSlider @JvmOverloads constructor(
 
     init {
         context.withStyledAttributes(attrs, R.styleable.MusicSlider) {
+            thumbHeight = getDimensionPixelSize(R.styleable.MusicSlider_musicSliderThumbHeight, -1)
+            trackHeight = getDimensionPixelSize(R.styleable.MusicSlider_musicSliderTrackHeight, -1)
             useSquiggly = getBoolean(R.styleable.MusicSlider_squigglyStyle, Preferences.squigglySeekBar)
             inflateSliderView(
                 useSquiggly = useSquiggly,
@@ -115,6 +119,14 @@ class MusicSlider @JvmOverloads constructor(
             LayoutInflater.from(context).inflate(R.layout.music_squiggly_slider, this, false)
         } else {
             LayoutInflater.from(context).inflate(R.layout.music_progress_slider, this, false)
+        }
+        (internalView as? Slider)?.let {
+            if (thumbHeight != -1) {
+                it.thumbHeight = thumbHeight
+            }
+            if (trackHeight != -1) {
+                it.trackHeight = trackHeight
+            }
         }
         if (previousState != null) {
             this.valueFrom = previousState.min

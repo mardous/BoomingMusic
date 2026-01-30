@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
@@ -15,7 +16,11 @@ import androidx.core.view.updatePadding
 import androidx.media3.common.Player
 import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.core.model.player.*
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTintTarget
+import com.mardous.booming.core.model.player.surfaceTintTarget
+import com.mardous.booming.core.model.player.tintTarget
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.databinding.FragmentExpressivePlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
@@ -42,6 +47,9 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
     override val playerToolbar: Toolbar
         get() = binding.playerToolbar
 
+    override val blurView: ImageView
+        get() = binding.blur
+
     override val colorSchemeMode: PlayerColorSchemeMode
         get() = Preferences.getNowPlayingColorSchemeMode(NowPlayingScreen.Expressive)
 
@@ -63,11 +71,10 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
                     setIconResource(iconResource)
                     applyColor(
                         color = if (repeatMode != Player.REPEAT_MODE_OFF) {
-                            playerViewModel.colorScheme.onSurfaceColor
+                            playerViewModel.colorScheme.primaryColor
                         } else {
-                            playerViewModel.colorScheme.onSurfaceVariantColor
-                        },
-                        isIconButton = true
+                            playerViewModel.colorScheme.tonalColor
+                        }
                     )
                 }
             }
@@ -77,11 +84,10 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
                 binding.shuffleButton.apply {
                     applyColor(
                         color = if (shuffleModeEnabled) {
-                            playerViewModel.colorScheme.onSurfaceColor
+                            playerViewModel.colorScheme.primaryColor
                         } else {
-                            playerViewModel.colorScheme.onSurfaceVariantColor
-                        },
-                        isIconButton = true
+                            playerViewModel.colorScheme.tonalColor
+                        }
                     )
                 }
             }
@@ -168,18 +174,23 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
         val oldTonalColor = binding.favoriteButton.backgroundTintList?.defaultColor
             ?: Color.TRANSPARENT
 
-        val oldIconColor = binding.openQueueButton.iconTint.defaultColor
-        val oldRepeatColor = binding.repeatButton.iconTint.defaultColor
+        val oldIconColor = binding.openQueueButton.backgroundTintList?.defaultColor
+            ?: Color.TRANSPARENT
+
+        val oldRepeatColor = binding.repeatButton.backgroundTintList?.defaultColor
+            ?: oldPrimaryTextColor
         val newRepeatColor = if (playerViewModel.repeatMode != Player.REPEAT_MODE_OFF) {
-            scheme.onSurfaceColor
+            scheme.primaryColor
         } else {
-            scheme.onSurfaceVariantColor
+            scheme.tonalColor
         }
-        val oldShuffleColor = binding.shuffleButton.iconTint.defaultColor
+
+        val oldShuffleColor = binding.shuffleButton.backgroundTintList?.defaultColor
+            ?: oldPrimaryTextColor
         val newShuffleColor = if (playerViewModel.shuffleModeEnabled) {
-            scheme.onSurfaceColor
+            scheme.primaryColor
         } else {
-            scheme.onSurfaceVariantColor
+            scheme.tonalColor
         }
         return listOfNotNull(
             binding.root.surfaceTintTarget(scheme.surfaceColor),
@@ -187,21 +198,13 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
             binding.title.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
             binding.text.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
             binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
-            if (isLandscape()) {
-                binding.favoriteButton.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor)
-            } else {
-                binding.favoriteButton.tintTarget(oldTonalColor, scheme.tonalColor)
-            },
-            if (isLandscape()) {
-                binding.moreButton.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor)
-            } else {
-                binding.moreButton.tintTarget(oldTonalColor, scheme.tonalColor)
-            },
-            binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
-            binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
-            binding.openQueueButton.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor),
-            binding.showLyricsButton?.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor),
-            binding.soundSettingsButton?.iconButtonTintTarget(oldIconColor, scheme.onSurfaceColor)
+            binding.favoriteButton.tintTarget(oldTonalColor, scheme.tonalColor),
+            binding.moreButton.tintTarget(oldTonalColor, scheme.tonalColor),
+            binding.repeatButton.tintTarget(oldRepeatColor, newRepeatColor),
+            binding.shuffleButton.tintTarget(oldShuffleColor, newShuffleColor),
+            binding.openQueueButton.tintTarget(oldTonalColor, scheme.tonalColor),
+            binding.showLyricsButton?.tintTarget(oldTonalColor, scheme.tonalColor),
+            binding.soundSettingsButton?.tintTarget(oldTonalColor, scheme.tonalColor)
         ).toMutableList().also {
             it.addAll(playerControlsFragment.getTintTargets(scheme))
         }

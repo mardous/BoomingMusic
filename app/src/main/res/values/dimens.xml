@@ -38,7 +38,6 @@
     <dimen name="preference_widget_size">32dp</dimen>
     <dimen name="preference_widget_margin">4dp</dimen>
 
-    <dimen name="player_expressive_control_horizontal_padding">56dp</dimen>
     <dimen name="player_landscape_vertical_space">16dp</dimen>
 
     <dimen name="lyrics_editor_padding_horizontal">16dp</dimen>

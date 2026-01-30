@@ -37,6 +37,8 @@
 
     <declare-styleable name="MusicSlider">
         <attr name="squigglyStyle" format="boolean"/>
+        <attr name="musicSliderThumbHeight" format="dimension"/>
+        <attr name="musicSliderTrackHeight" format="dimension"/>
         <attr name="android:progress" format="integer"/>
         <attr name="android:max" format="integer"/>
         <attr name="android:min" format="integer"/>
