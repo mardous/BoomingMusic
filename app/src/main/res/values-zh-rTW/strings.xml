@@ -398,7 +398,7 @@
     <string name="shuffle_mode_combined_description">根據收藏、播放記錄和近期播放混合播放。</string>
     <!-- Equalizer -->
     <string name="equalizer_label">均衡器</string>
-    <string name="autoeq_label">AutoEq</string>
+    <string name="autoeq_label">自動均衡器</string>
     <string name="graphic_eq_label">圖形平衡器</string>
     <string name="graphic_eq_band_count">%d 頻段</string>
     <string name="eq_profiles_title">EQ 設定檔</string>
@@ -413,11 +413,11 @@
     <string name="share_eq_profiles">分享 EQ 設定檔</string>
     <string name="there_is_nothing_to_export">沒有什麼可導出。</string>
     <string name="there_is_nothing_to_import">沒有可以導入的內容。</string>
-    <string name="an_unexpected_error_occurred">An unexpected error occurred.</string>
-    <string name="share_profiles">Share profiles</string>
-    <string name="select_profiles_to_share">Select profiles to share:</string>
-    <string name="export_profiles">Export profiles</string>
-    <string name="select_profiles_to_export">Select profiles to export:</string>
+    <string name="an_unexpected_error_occurred">發生意外錯誤。</string>
+    <string name="share_profiles">分享設定檔</string>
+    <string name="select_profiles_to_share">選擇要分享的設定檔：</string>
+    <string name="export_profiles">匯出設定檔</string>
+    <string name="select_profiles_to_export">選擇要匯出的設定檔：</string>
     <string name="select_a_file_to_save_the_exported_profiles">Select a file to save the exported profiles.</string>
     <string name="profiles_exported_successfully">Profiles exported successfully.</string>
     <string name="import_profiles">Import profiles</string>
