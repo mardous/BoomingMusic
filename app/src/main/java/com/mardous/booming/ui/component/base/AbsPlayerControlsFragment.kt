@@ -48,7 +48,13 @@ import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerAnimator
 import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.util.*
+import com.mardous.booming.util.DISPLAY_ALBUM_TITLE
+import com.mardous.booming.util.DISPLAY_EXTRA_INFO
+import com.mardous.booming.util.ENABLE_SCROLLING_TEXT
+import com.mardous.booming.util.EXTRA_INFO
+import com.mardous.booming.util.PREFER_ALBUM_ARTIST_NAME
+import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.SQUIGGLY_SEEK_BAR
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
@@ -282,7 +288,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     internal open fun onShow() {
         isShown = true
         playerAnimator?.start()
-        setMarquee(songTitleView, songArtistView, songInfoView, marquee = Preferences.enableScrollingText)
+        setMarquee(songTitleView, songArtistView, songInfoView, marquee = true)
     }
 
     /**

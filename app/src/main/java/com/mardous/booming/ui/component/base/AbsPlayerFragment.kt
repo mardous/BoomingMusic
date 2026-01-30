@@ -579,7 +579,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
     }
 
     fun setMarquee(vararg textView: TextView?, marquee: Boolean) {
-        textView.forEach { it?.setMarquee(marquee) }
+        val scrollingTextEnabled = Preferences.enableScrollingText
+        textView.forEach { it?.setMarquee(marquee && scrollingTextEnabled) }
     }
 
     fun MaterialButton.setIsFavorite(isFavorite: Boolean, withAnimation: Boolean) {
