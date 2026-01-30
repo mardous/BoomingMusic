@@ -52,7 +52,8 @@ data class TempoState(
 @Immutable
 data class VolumeState(
     val currentVolume: Float,
-    val volumeRange: ClosedFloatingPointRange<Float>
+    val volumeRange: ClosedFloatingPointRange<Float>,
+    val isFixed: Boolean = false
 ) {
     val volumePercent: Float
         get() = if (volumeRange.endInclusive > volumeRange.start) {

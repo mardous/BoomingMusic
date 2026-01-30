@@ -902,16 +902,6 @@ class PlaybackService :
         serviceScope.launch {
             equalizerManager.volumeState.collect { volume ->
                 player.volume = volume.currentVolume
-                if (pauseOnZeroVolume && persistentStorage.restorationState.isRestored) {
-                    // don't handle volume changes until our player is fully restored
-                    if (isPlaying && volume.currentVolume <= 0f) {
-                        player.pause()
-                        pausedByZeroVolume = true
-                    } else if (pausedByZeroVolume && volume.currentVolume >= 0.1f) {
-                        player.play()
-                        pausedByZeroVolume = false
-                    }
-                }
             }
         }
         serviceScope.launch {
@@ -944,6 +934,20 @@ class PlaybackService :
         serviceScope.launch {
             audioOutputObserver.audioDevice.collect {
                 equalizerManager.setCurrentDevice(it)
+            }
+        }
+        serviceScope.launch {
+            audioOutputObserver.systemVolumeState.collect { systemVolume ->
+                if (pauseOnZeroVolume && persistentStorage.restorationState.isRestored) {
+                    // don't handle volume changes until our player is fully restored
+                    if (isPlaying && systemVolume.currentVolume <= 0f) {
+                        player.pause()
+                        pausedByZeroVolume = true
+                    } else if (pausedByZeroVolume && systemVolume.currentVolume >= 0.1f) {
+                        player.play()
+                        pausedByZeroVolume = false
+                    }
+                }
             }
         }
     }
