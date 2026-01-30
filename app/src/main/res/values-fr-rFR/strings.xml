@@ -869,6 +869,8 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="player_color_mode_vibrant_color_description">Teinter l\'arrière-plan, le texte et les commandes avec la couleur de l\'album</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Utilisez les tons Material You en fonction de la couleur de l\'album</string>
+    <string name="player_color_mode_blur_title">Blur</string>
+    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
     <!-- Update -->
     <string name="auto_update_title">Mise à jour de recherche automatique</string>
     <string name="every_day">Tous les jours</string>
