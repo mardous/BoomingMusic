@@ -869,6 +869,8 @@
     <string name="player_color_mode_vibrant_color_description">Color de fondo, texto y controles con el color del álbum</string>
     <string name="player_color_mode_material_you_title">Material que usted</string>
     <string name="player_color_mode_material_you_description">Usar Material que tonalidades basado en el color del álbum</string>
+    <string name="player_color_mode_blur_title">Blur</string>
+    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
     <!-- Update -->
     <string name="auto_update_title">Autoactualizar búsqueda</string>
     <string name="every_day">Todos los días</string>
