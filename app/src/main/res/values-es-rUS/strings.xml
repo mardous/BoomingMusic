@@ -439,10 +439,12 @@
     <string name="enable_equalizer">Habilitar EQ</string>
     <string name="select_profile">Elegir un perfil</string>
     <string name="save_profile_label">Guardar perfil</string>
+    <string name="edit_profile_label">Editar perfil</string>
     <string name="delete_profile_label">Eliminar perfil</string>
     <string name="delete_profile_x">¿Eliminar el perfil \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Por favor, ingresa un nombre para este perfil.</string>
     <string name="replace_profile_with_same_name">Reemplazar perfil con el mismo nombre</string>
+    <string name="use_with_devices_title">Usar con los dispositivos:</string>
     <string name="profile_name">Nombre del perfil</string>
     <string name="that_name_is_already_in_use">Ese nombre ya está en uso.</string>
     <string name="profile_saved_successfully">Perfil guardado con éxito.</string>

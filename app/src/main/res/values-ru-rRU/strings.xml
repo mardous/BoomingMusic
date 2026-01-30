@@ -31,7 +31,7 @@
     <string name="search_from_x_label">Искать из \"%s\"</string>
     <string name="search_year_x_label">Поиск по году: %s</string>
     <string name="search_in_folder_x">Найти в папке: %s</string>
-    <string name="search_last_added">Поиск последней музыки</string>
+    <string name="search_last_added">Поиск последней добавленной музыки</string>
     <string name="shuffle_mode_album">Перемешать альбом</string>
     <string name="shuffle_mode_artist">Перемещать исполнителя</string>
     <string name="action_share">Поделиться</string>
@@ -52,7 +52,7 @@
     <string name="select_all_title">Выбрать все</string>
     <string name="x_selected">%d выбрано</string>
     <string name="preparing_playback_title">Подготовка</string>
-    <string name="restoring_playback_state">Восстановление состояния воспроизведения и очереди...</string>
+    <string name="restoring_playback_state">Восстановление состояния воспроизведения и очереди…</string>
     <string name="playback_stopped_title">Воспроизведение остановлено</string>
     <string name="playing_notification_description">Уведомление о воспроизведении предоставляет действия для воспроизведения/паузы и т. д.</string>
     <string name="playing_notification_name">Уведомление о воспроизведении</string>
@@ -460,10 +460,12 @@
     <string name="enable_equalizer">Включить эквалайзер</string>
     <string name="select_profile">Выбрать профиль</string>
     <string name="save_profile_label">Сохранить профиль</string>
+    <string name="edit_profile_label">Редактировать профиль</string>
     <string name="delete_profile_label">Удалить профиль</string>
     <string name="delete_profile_x">Удалить профиль \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Пожалуйста, введите название профиля.</string>
     <string name="replace_profile_with_same_name">Заменить профиль с таким же именем</string>
+    <string name="use_with_devices_title">Использовать с устройствами:</string>
     <string name="profile_name">Название профиля</string>
     <string name="that_name_is_already_in_use">Это имя уже используется.</string>
     <string name="profile_saved_successfully">Профиль успешно сохранен.</string>
@@ -476,10 +478,10 @@
     <string name="loudness_enhancer">Усилитель</string>
     <string name="sound_settings">Настройки звука</string>
     <string name="volume_label">Громкость</string>
-    <string name="reset_balance">Reset balance</string>
-    <string name="speed_and_pitch_label">Speed and pitch</string>
-    <string name="reset_tempo">Reset tempo</string>
-    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="reset_balance">Сбросить баланс</string>
+    <string name="speed_and_pitch_label">Скорость и высота тона</string>
+    <string name="reset_tempo">Сбросить темп</string>
+    <string name="unlock_pitch_adjustment">Разблокировать настройку тона</string>
     <string name="balance_left">Левый</string>
     <string name="balance_right">Правый</string>
     <string name="action_external_eq">Внешний эквалайзер</string>
@@ -567,7 +569,7 @@
     <string name="buy_me_a_coffee_summary">Вы можете сделать небольшое пожертвование, если считаете, что моя работа того стоит.</string>
     <string name="support_development">Поддержка разработки</string>
     <string name="help_with_translations">Помощь с переводами</string>
-    <string name="help_with_translations_summary">Вы можете внести свой вклад в проект, помогая переводить музыку на другие языки.</string>
+    <string name="help_with_translations_summary">Вы можете внести свой вклад в проект, помогая переводить Booming Music на другие языки.</string>
     <string name="report_bugs">Сообщить об ошибках</string>
     <string name="report_bugs_summary">Сообщайте об ошибках или запрашивайте новые функции.</string>
     <string name="share_app">Поделиться приложением</string>
@@ -773,7 +775,7 @@
     <string name="clear_queue_on_completion_summary">Автоматически очищать очередь после окончания последнего трека.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Автоматически загружать метаданные</string>
-    <string name="ignore_media_store_album_covers_title">Игнорировать обложки изMediaStore</string>
+    <string name="ignore_media_store_album_covers_title">Игнорировать обложки из MediaStore</string>
     <string name="ignore_media_store_album_covers_summary">Это может помочь улучшить качество изображений, но требует больше памяти.</string>
     <string name="use_folder_album_cover_title">Использовать изображения папок</string>
     <string name="use_folder_album_cover_summary">Если аудиофайл не содержит встроенную обложку. Загрузка изображений может занять немного больше времени.</string>
