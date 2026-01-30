@@ -857,6 +857,8 @@
     <string name="player_color_mode_vibrant_color_description">将专辑颜色应用于提示背景、文本和控件</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">启用基于专辑封面颜色的Material You配色</string>
+    <string name="player_color_mode_blur_title">Blur</string>
+    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
     <!-- Update -->
     <string name="auto_update_title">自动更新</string>
     <string name="every_day">每天</string>
