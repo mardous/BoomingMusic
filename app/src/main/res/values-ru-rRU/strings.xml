@@ -705,8 +705,6 @@
     <string name="now_playing_corner_radius_summary">Определяет, насколько закругленными должны быть углы обложки альбома.</string>
     <string name="carousel_effect_title">Эффект карусели</string>
     <string name="album_cover_effect_title">Эффект обложки альбома</string>
-    <string name="lyrics_on_album_cover_title">Текст песни на обложке</string>
-    <string name="lyrics_on_album_cover_summary">Показывать текст песни вместо обложки, если он доступен.</string>
     <string name="animate_controls_title">Анимировать элементы управления</string>
     <string name="animate_controls_summary">Воспроизводится при открытии панели плеера.</string>
     <string name="swipe_anywhere_title">Свайп в любом месте для смены песни</string>
