@@ -284,7 +284,7 @@ fun View.animateTintColor(
                 }
                 is ImageView -> ImageViewCompat.setImageTintList(this@animateTintColor, colorStateList)
                 is TextView -> applyColor(animatedColor)
-                else -> foregroundTintList = colorStateList
+                else -> backgroundTintList = colorStateList
             }
         }
     }
