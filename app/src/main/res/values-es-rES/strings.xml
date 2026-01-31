@@ -688,8 +688,6 @@
     <string name="now_playing_corner_radius_summary">Define cómo redondeadas las esquinas de la imagen del álbum deben aparecer.</string>
     <string name="carousel_effect_title">Efecto carrusel</string>
     <string name="album_cover_effect_title">Efecto de portada del álbum</string>
-    <string name="lyrics_on_album_cover_title">Letras en portada</string>
-    <string name="lyrics_on_album_cover_summary">Mostrar letras de canciones en lugar de carátula cuando estén disponibles.</string>
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">Se reproduce al abrir el panel del jugador.</string>
     <string name="swipe_anywhere_title">Deslice en cualquier lugar para cambiar la canción</string>

@@ -680,8 +680,6 @@
     <string name="now_playing_corner_radius_summary">アルバムカバーの角の丸みを調整する。</string>
     <string name="carousel_effect_title">カルーセル効果</string>
     <string name="album_cover_effect_title">アルバムカバー効果</string>
-    <string name="lyrics_on_album_cover_title">カバーに歌詞を表示</string>
-    <string name="lyrics_on_album_cover_summary">表示されている曲の代わりに歌詞を表示する。</string>
     <string name="animate_controls_title">アニメーションコントロール</string>
     <string name="animate_controls_summary">プレーヤーパネルを開くときに再生されます。</string>
     <string name="swipe_anywhere_title">スワイプして曲を変更</string>

@@ -689,8 +689,6 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="now_playing_corner_radius_summary">Définit l\'aspect arrondi des coins de la couverture de l\'album.</string>
     <string name="carousel_effect_title">Effet carrousel</string>
     <string name="album_cover_effect_title">Effet de la couverture d\'album</string>
-    <string name="lyrics_on_album_cover_title">Paroles sur la couverture</string>
-    <string name="lyrics_on_album_cover_summary">Afficher les paroles des titres au lieu de la couverture lorsqu\'elles sont disponibles.</string>
     <string name="animate_controls_title">Animer les contrôles</string>
     <string name="animate_controls_summary">Il est joué lors de l\'ouverture du panneau du lecteur.</string>
     <string name="swipe_anywhere_title">Balayer n\'importe où pour changer de titre</string>

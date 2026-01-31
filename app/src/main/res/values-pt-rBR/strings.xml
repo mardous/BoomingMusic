@@ -686,8 +686,6 @@ Pode ser necessário reiniciar o aplicativo.</string>
     <string name="now_playing_corner_radius_summary">Define o nível de arredondamento dos cantos da capa do álbum.</string>
     <string name="carousel_effect_title">Efeito carrossel</string>
     <string name="album_cover_effect_title">Efeito da capa do álbum</string>
-    <string name="lyrics_on_album_cover_title">Letras na capa</string>
-    <string name="lyrics_on_album_cover_summary">Quando disponível, mostra a letra da música em vez da capa.</string>
     <string name="animate_controls_title">Animar controles</string>
     <string name="animate_controls_summary">Executa uma animação quando o painel de reprodução é aberto.</string>
     <string name="swipe_anywhere_title">Deslize em qualquer lugar para mudar de música</string>

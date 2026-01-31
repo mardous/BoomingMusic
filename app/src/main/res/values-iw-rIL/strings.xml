@@ -703,8 +703,6 @@
     <string name="now_playing_corner_radius_summary">מגדיר עד כמה פינות עטיפת האלבום יהיו מעוגלות.</string>
     <string name="carousel_effect_title">אפקט קרוסלה</string>
     <string name="album_cover_effect_title">אפקט עטיפת האלבום</string>
-    <string name="lyrics_on_album_cover_title">מילות השיר על העטיפה</string>
-    <string name="lyrics_on_album_cover_summary">הצג את מילות השיר במקום העטיפה כאשר הן זמינות.</string>
     <string name="animate_controls_title">אנימציית בקרות</string>
     <string name="animate_controls_summary">הוא מתנגן כאשר פותחים את לוח הניגון.</string>
     <string name="swipe_anywhere_title">החלק בכל מקום כדי להחליף שיר</string>

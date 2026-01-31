@@ -681,8 +681,6 @@ Podría ser necesario reiniciar la aplicación</string>
     <string name="now_playing_corner_radius_summary">Elija qué tan redondeadas deben verse las esquinas de la imagen del álbum.</string>
     <string name="carousel_effect_title">Efecto de carrusel</string>
     <string name="album_cover_effect_title">Efecto de deslizamiento de carátulas</string>
-    <string name="lyrics_on_album_cover_title">Letras en carátula</string>
-    <string name="lyrics_on_album_cover_summary">Muestra la letra de la canción en lugar de la carátula cuando esté disponible.</string>
     <string name="animate_controls_title">Animación de los controles</string>
     <string name="animate_controls_summary">Se reproduce al expandir el panel del reproductor.</string>
     <string name="swipe_anywhere_title">Deslizamiento en cualquier parte</string>

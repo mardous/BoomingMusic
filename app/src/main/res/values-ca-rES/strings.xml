@@ -689,8 +689,6 @@
     <string name="now_playing_corner_radius_summary">Defineix com d\'arrodonits haurien d\'aparèixer els cantons de la imatge de l\'àlbum.</string>
     <string name="carousel_effect_title">Efecte carrusel</string>
     <string name="album_cover_effect_title">Efecte de portada d\'àlbum</string>
-    <string name="lyrics_on_album_cover_title">Lletra a la portada</string>
-    <string name="lyrics_on_album_cover_summary">Mostra la lletra de la cançó quan està disponible en lloc de la portada.</string>
     <string name="animate_controls_title">Animació dels controls</string>
     <string name="animate_controls_summary">S\'executa en obrir el panell de reproducció.</string>
     <string name="swipe_anywhere_title">Llisca on sigui per canviar la cançó</string>

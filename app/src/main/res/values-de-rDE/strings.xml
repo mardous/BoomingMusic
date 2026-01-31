@@ -688,8 +688,6 @@ Ideal für Podcasts und Aufnahmen.</string>
     <string name="now_playing_corner_radius_summary">Definiert die Rundung der Album-Cover-Ecken.</string>
     <string name="carousel_effect_title">Karussell-Effekt</string>
     <string name="album_cover_effect_title">Albumcover-Übergangseffekt</string>
-    <string name="lyrics_on_album_cover_title">Liedtexte auf Albumcover</string>
-    <string name="lyrics_on_album_cover_summary">Liedtexte statt Albumcover anzeigen, wenn verfügbar.</string>
     <string name="animate_controls_title">Steuerelemente animieren</string>
     <string name="animate_controls_summary">Startet beim Öffnen der Wiedergabe-Ansicht.</string>
     <string name="swipe_anywhere_title">Titel durch Wischen an einer beliebigen Stelle wechseln</string>

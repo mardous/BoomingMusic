@@ -688,8 +688,6 @@
     <string name="now_playing_corner_radius_summary">Määrittelee kuinka levyn kulmien tulisi olla pyöristettyjä.</string>
     <string name="carousel_effect_title">Karusellin vaikutus</string>
     <string name="album_cover_effect_title">Albumin kansiefekti</string>
-    <string name="lyrics_on_album_cover_title">Sanoitukset kannessa</string>
-    <string name="lyrics_on_album_cover_summary">Näytä kappaleen sanoitukset kannen sijaan, kun ne ovat saatavilla.</string>
     <string name="animate_controls_title">Animoi kontrollit</string>
     <string name="animate_controls_summary">Se on pelattu, kun avataan pelaajapaneeli.</string>
     <string name="swipe_anywhere_title">Pyyhkäise mistä tahansa vaihtaaksesi kappaletta</string>

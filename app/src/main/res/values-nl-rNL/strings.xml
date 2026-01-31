@@ -688,8 +688,6 @@
     <string name="now_playing_corner_radius_summary">Definieert hoe de hoeken van de albumcover moeten verschijnen.</string>
     <string name="carousel_effect_title">Carrousel effect</string>
     <string name="album_cover_effect_title">Album omslageffect</string>
-    <string name="lyrics_on_album_cover_title">Songteksten op cover</string>
-    <string name="lyrics_on_album_cover_summary">Toon songteksten in plaats van cover wanneer ze beschikbaar zijn.</string>
     <string name="animate_controls_title">Animeer bediening</string>
     <string name="animate_controls_summary">Wordt gespeeld bij het openen van het spelerspaneel.</string>
     <string name="swipe_anywhere_title">Veeg overal om het nummer te wijzigen</string>

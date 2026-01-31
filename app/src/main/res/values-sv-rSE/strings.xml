@@ -688,8 +688,6 @@
     <string name="now_playing_corner_radius_summary">Definierar hur rundade hörnen på skivomslaget ska se ut.</string>
     <string name="carousel_effect_title">Karusell effekt</string>
     <string name="album_cover_effect_title">Omslagseffekt för album</string>
-    <string name="lyrics_on_album_cover_title">Låttexter på omslaget</string>
-    <string name="lyrics_on_album_cover_summary">Visa låttexter istället för omslag när de är tillgängliga.</string>
     <string name="animate_controls_title">Animera kontroller</string>
     <string name="animate_controls_summary">Det spelas när du öppnar spelarpanelen.</string>
     <string name="swipe_anywhere_title">Svep var som helst för att byta låt</string>

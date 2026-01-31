@@ -704,8 +704,6 @@
     <string name="now_playing_corner_radius_summary">Określa, jak bardzo zaokrąglone mają być rogi okładki albumu.</string>
     <string name="carousel_effect_title">Efekt karuzeli</string>
     <string name="album_cover_effect_title">Efekt okładki albumu</string>
-    <string name="lyrics_on_album_cover_title">Tekst na okładce</string>
-    <string name="lyrics_on_album_cover_summary">Pokaż tekst piosenki zamiast okładki, jeżeli jest dostępny.</string>
     <string name="animate_controls_title">Animuj elementy sterowania</string>
     <string name="animate_controls_summary">Wyświetla się przy otwarciu panelu odtwarzacza.</string>
     <string name="swipe_anywhere_title">Przesuń gdziekolwiek by zmienić utwór</string>

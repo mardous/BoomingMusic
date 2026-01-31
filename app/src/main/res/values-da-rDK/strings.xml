@@ -688,8 +688,6 @@
     <string name="now_playing_corner_radius_summary">Definerer hvordan afrundet hjørnerne af albumillustrationen skal vises.</string>
     <string name="carousel_effect_title">Karrusel effekt</string>
     <string name="album_cover_effect_title">Album cover effekt</string>
-    <string name="lyrics_on_album_cover_title">Sangtekster på omslag</string>
-    <string name="lyrics_on_album_cover_summary">Vis sangtekster i stedet for omslag når de er tilgængelige.</string>
     <string name="animate_controls_title">Animér kontroller</string>
     <string name="animate_controls_summary">Det spilles, når du åbner afspillerpanelet.</string>
     <string name="swipe_anywhere_title">Stryg hvor som helst for at ændre sang</string>

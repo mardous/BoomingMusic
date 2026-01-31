@@ -688,8 +688,6 @@
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
     <string name="album_cover_effect_title">Albumforsideeffekt</string>
-    <string name="lyrics_on_album_cover_title">Tekster på omslaget</string>
-    <string name="lyrics_on_album_cover_summary">Vis sangtekst i stedet for forsidevisning når de er tilgjengelige.</string>
     <string name="animate_controls_title">Animer kontroller</string>
     <string name="animate_controls_summary">Det spilles når spiller åpnes panelet.</string>
     <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
