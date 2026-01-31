@@ -73,7 +73,7 @@ val currentVersion: Version = Version.Beta(
     versionMajor = 1,
     versionMinor = 2,
     versionPatch = 0,
-    versionBuild = 6
+    versionBuild = 7
 )
 val currentVersionCode = currentVersion.code
 
@@ -86,7 +86,7 @@ android {
         targetSdk = 36
 
         applicationId = namespace
-        versionCode = 1200106
+        versionCode = 1200107
         versionName = currentVersion.name
         check(versionCode == currentVersionCode)
     }
