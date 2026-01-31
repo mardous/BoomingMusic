@@ -677,8 +677,6 @@
     <string name="now_playing_corner_radius_summary">定義專輯封面的圓角。</string>
     <string name="carousel_effect_title">輪播效果</string>
     <string name="album_cover_effect_title">專輯封面效果</string>
-    <string name="lyrics_on_album_cover_title">封面上的歌詞</string>
-    <string name="lyrics_on_album_cover_summary">當歌詞可用時，顯示歌詞而不是封面。</string>
     <string name="animate_controls_title">動畫控制</string>
     <string name="animate_controls_summary">打開播放器面板後即刻播放。</string>
     <string name="swipe_anywhere_title">在任意處滑動來切換歌曲</string>
