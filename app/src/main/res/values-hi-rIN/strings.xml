@@ -687,8 +687,6 @@
     <string name="now_playing_corner_radius_summary">यह बताता है कि कैसे एल्बम की कला के कोनों को गोल होना चाहिए.</string>
     <string name="carousel_effect_title">कैरोसेल प्रभाव</string>
     <string name="album_cover_effect_title">एल्बम कवर इफेक्ट</string>
-    <string name="lyrics_on_album_cover_title">कवर्स पर गाने के बोल</string>
-    <string name="lyrics_on_album_cover_summary">जब गाने के बोल उपलब्ध हों, तो कवर के बजाय गाने के बोल दिखाएँ।</string>
     <string name="animate_controls_title">एनिमेट कंट्रोल्स</string>
     <string name="animate_controls_summary">यह प्लेयर पैनल खोलना पर बजाय जाता है।</string>
     <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
