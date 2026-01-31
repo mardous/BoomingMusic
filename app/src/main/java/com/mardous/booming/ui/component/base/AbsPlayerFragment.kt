@@ -584,11 +584,17 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
     }
 
     fun MaterialButton.setIsFavorite(isFavorite: Boolean, withAnimation: Boolean) {
+        /*
         val iconRes = if (withAnimation) {
             if (isFavorite) R.drawable.avd_favorite else R.drawable.avd_unfavorite
         } else {
             if (isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp
         }
+         */
+        // There's a bug in the Material Components library that affects the
+        // icon animation on a MaterialButton, so for now, we'll change the
+        // icon in a simple way.
+        val iconRes = if (isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp
         icon = ContextCompat.getDrawable(context, iconRes).also { drawable ->
             if (drawable is AnimatedVectorDrawable) {
                 drawable.start()

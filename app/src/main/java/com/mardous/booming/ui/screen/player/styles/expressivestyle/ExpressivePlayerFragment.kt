@@ -213,7 +213,7 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
     override fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
         if (this.isFavorite != isFavorite) {
             this.isFavorite = isFavorite
-            binding.favoriteButton.setIsFavorite(isFavorite, false)
+            binding.favoriteButton.setIsFavorite(isFavorite, withAnimation)
         }
     }
 
