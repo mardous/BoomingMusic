@@ -702,8 +702,6 @@
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Ефект каруселі</string>
     <string name="album_cover_effect_title">Ефект обкладинки альбому</string>
-    <string name="lyrics_on_album_cover_title">Текст пісні на обкладинці</string>
-    <string name="lyrics_on_album_cover_summary">Показувати текст пісні замість обкладинки, якщо він доступний.</string>
     <string name="animate_controls_title">Анімувати елементи керування</string>
     <string name="animate_controls_summary">Анімація під час відкриття панелі плеєра.</string>
     <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
