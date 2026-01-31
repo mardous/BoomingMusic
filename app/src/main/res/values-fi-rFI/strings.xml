@@ -867,6 +867,8 @@
     <string name="player_color_mode_vibrant_color_description">Tint tausta, teksti ja ohjaimet albumin väri</string>
     <string name="player_color_mode_material_you_title">Materiaali Sinä</string>
     <string name="player_color_mode_material_you_description">Käytä albumin väriin perustuvaa materiaalia</string>
+    <string name="player_color_mode_blur_title">Blur</string>
+    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
     <!-- Update -->
     <string name="auto_update_title">Päivitä haku automaattisesti</string>
     <string name="every_day">Joka päivä</string>

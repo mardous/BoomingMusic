@@ -883,6 +883,8 @@
     <string name="player_color_mode_vibrant_color_description">Zastosuj kolor albumu do tła, tekstu i elementów interfejsu</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Barwy Material You dopasowane do albumu</string>
+    <string name="player_color_mode_blur_title">Blur</string>
+    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
     <!-- Update -->
     <string name="auto_update_title">Częstotliwość sprawdzania aktualizacji</string>
     <string name="every_day">Codziennie</string>

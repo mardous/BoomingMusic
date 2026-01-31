@@ -861,6 +861,8 @@
     <string name="player_color_mode_vibrant_color_description">Arka planı, metni ve kontrolleri albüm rengiyle renklendirin</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Albüm rengine dayalı Material You tonlarını kullanın</string>
+    <string name="player_color_mode_blur_title">Blur</string>
+    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
     <!-- Update -->
     <string name="auto_update_title">Otomatik güncelleme araması</string>
     <string name="every_day">Her gün</string>

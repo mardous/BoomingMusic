@@ -866,6 +866,8 @@
     <string name="player_color_mode_vibrant_color_description">एल्बम के रंग से पृष्ठभूमि, पाठ, और नियंत्रणों को रंगीन करें</string>
     <string name="player_color_mode_material_you_title">मटीरियल यू </string>
     <string name="player_color_mode_material_you_description">एल्बम कलर पर आधारित सामग्री यू टोन का उपयोग करें</string>
+    <string name="player_color_mode_blur_title">Blur</string>
+    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
     <!-- Update -->
     <string name="auto_update_title">Auto update search</string>
     <string name="every_day">हर दिन</string>
