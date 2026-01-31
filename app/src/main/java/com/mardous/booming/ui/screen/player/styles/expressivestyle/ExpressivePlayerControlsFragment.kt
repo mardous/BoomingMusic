@@ -59,17 +59,21 @@ class ExpressivePlayerControlsFragment : AbsPlayerControlsFragment(R.layout.frag
 
     override fun onUpdatePlayPause(isPlaying: Boolean) {
         _binding?.playPauseButton?.let {
-            it.setImageResource(
-                if (isPlaying) {
-                    R.drawable.ic_pause_m3_24dp
-                } else {
-                    R.drawable.ic_play_m3_24dp
-                }
-            )
-            val playPauseBg = if (isPlaying) {
+            (it.drawable as? AnimatedVectorDrawable)?.stop()
+            val playPauseIcon = if (isPlaying) {
                 ContextCompat.getDrawable(it.context, R.drawable.avd_play)
             } else {
                 ContextCompat.getDrawable(it.context, R.drawable.avd_pause)
+            }
+            it.setImageDrawable(playPauseIcon)
+            if (playPauseIcon is AnimatedVectorDrawable) {
+                playPauseIcon.start()
+            }
+            (it.background as? AnimatedVectorDrawable)?.stop()
+            val playPauseBg = if (isPlaying) {
+                ContextCompat.getDrawable(it.context, R.drawable.avd_play_background)
+            } else {
+                ContextCompat.getDrawable(it.context, R.drawable.avd_pause_background)
             }
             it.background = playPauseBg
             if (playPauseBg is AnimatedVectorDrawable) {

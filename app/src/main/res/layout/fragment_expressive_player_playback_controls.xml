@@ -81,7 +81,7 @@
             android:layout_height="80dp"
             android:scaleType="fitCenter"
             android:padding="20dp"
-            android:background="@drawable/avd_play"
+            android:background="@drawable/avd_play_background"
             android:backgroundTint="?colorSecondary"
             android:importantForAccessibility="no"
             app:srcCompat="@drawable/ic_play_m3_24dp" />
