@@ -696,8 +696,6 @@
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
     <string name="album_cover_effect_title">Album cover effect</string>
-    <string name="lyrics_on_album_cover_title">Lyrics on cover</string>
-    <string name="lyrics_on_album_cover_summary">Show song lyrics instead of cover when them are available.</string>
     <string name="animate_controls_title">Animate controls</string>
     <string name="animate_controls_summary">It\'s played when opening the player panel.</string>
     <string name="swipe_anywhere_title">Swipe anywhere to change song</string>
