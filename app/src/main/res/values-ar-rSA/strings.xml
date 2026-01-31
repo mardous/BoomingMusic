@@ -720,8 +720,6 @@
     <string name="now_playing_corner_radius_summary">يحدد كيف يجب أن تظهر دوار أركان صورة الألبوم.</string>
     <string name="carousel_effect_title">تأثير كاروسيل</string>
     <string name="album_cover_effect_title">تأثير غلاف الألبوم</string>
-    <string name="lyrics_on_album_cover_title">كلمات الأغاني على الغلاف</string>
-    <string name="lyrics_on_album_cover_summary">إظهار كلمات الأغنية بدلاً من الغلاف عندما تكون متاحة.</string>
     <string name="animate_controls_title">التحكم المتحرك</string>
     <string name="animate_controls_summary">يتم تشغيلها عند فتح لوحة اللاعب.</string>
     <string name="swipe_anywhere_title">اسحب في أي مكان لتغيير الأغنية</string>
