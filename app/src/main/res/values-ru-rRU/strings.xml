@@ -464,7 +464,7 @@
     <string name="delete_profile_label">Удалить профиль</string>
     <string name="delete_profile_x">Удалить профиль \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Пожалуйста, введите название профиля.</string>
-    <string name="replace_profile_with_same_name">Заменить профиль с таким же именем</string>
+    <string name="replace_profile_with_same_name">Заменить профиль с таким же названием</string>
     <string name="use_with_devices_title">Использовать с устройствами:</string>
     <string name="profile_name">Название профиля</string>
     <string name="that_name_is_already_in_use">Это имя уже используется.</string>
@@ -886,8 +886,8 @@
     <string name="player_color_mode_vibrant_color_description">Окрашивать фон, текст и элементы управления в цвет альбома</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Использовать цвета Material You на основе обложки альбома</string>
-    <string name="player_color_mode_blur_title">Blur</string>
-    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
+    <string name="player_color_mode_blur_title">Размытие</string>
+    <string name="player_color_mode_blur_description">Размытый фон с цветами Material You</string>
     <!-- Update -->
     <string name="auto_update_title">Автообновление поиска</string>
     <string name="every_day">Каждый день</string>
