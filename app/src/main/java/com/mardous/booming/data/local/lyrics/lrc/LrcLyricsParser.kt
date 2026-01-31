@@ -190,7 +190,8 @@ class LrcLyricsParser : LyricsParser {
                 artist = attributes["ar"],
                 album = attributes["al"],
                 durationMillis = length,
-                lines = linesWithOffset
+                lines = linesWithOffset,
+                offset = attributes["offset"]?.toLongOrNull() ?: 0
             )
         } catch (e: Exception) {
             e.printStackTrace()

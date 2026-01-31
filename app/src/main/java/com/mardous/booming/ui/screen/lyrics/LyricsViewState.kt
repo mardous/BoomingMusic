@@ -1,6 +1,11 @@
 package com.mardous.booming.ui.screen.lyrics
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.mardous.booming.data.model.lyrics.Lyrics
 import kotlin.math.abs
 
@@ -24,7 +29,7 @@ class LyricsViewState(val lyrics: Lyrics?) {
     private var shouldCrossfade by mutableStateOf(false)
 
     fun updatePosition(newPosition: Long) {
-        position = newPosition
+        position = (newPosition + (lyrics?.offset ?: 0))
 
         val newLineIndex = findLineIndexAt(position)
         val lineJump = abs(newLineIndex - currentLineIndex)
