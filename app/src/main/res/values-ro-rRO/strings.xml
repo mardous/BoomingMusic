@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Utilizați și ca alertă de alarmă</string>
     <string name="action_details">Detalii</string>
     <string name="action_set_as_start_directory">Setează ca director de pornire</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Du-te la directorul de pornire</string>
     <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Directorul de start nou: %s</string>
