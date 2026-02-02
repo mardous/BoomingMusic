@@ -92,7 +92,7 @@ enum class NowPlayingScreen(
         R.string.expressive_style,
         R.drawable.np_expressive,
         R.layout.fragment_album_cover_m3,
-        buttonStyle = NowPlayingButtonStyle.Material3,
+        buttonStyle = NowPlayingButtonStyle.Expressive,
         supportsCoverLyrics = true,
         supportsCarouselEffect = true,
         supportsCustomCornerRadius = true,

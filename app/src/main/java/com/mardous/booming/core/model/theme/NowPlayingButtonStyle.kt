@@ -20,5 +20,11 @@ enum class NowPlayingButtonStyle(
         pause = R.drawable.ic_pause_m3_24dp,
         skipNext = R.drawable.ic_next_m3_24dp,
         skipPrevious = R.drawable.ic_previous_m3_24dp
-    );
+    ),
+    Expressive(
+        play = R.drawable.ic_play_24dp,
+        pause = R.drawable.ic_pause_24dp,
+        skipNext = R.drawable.ic_next_m3_24dp,
+        skipPrevious = R.drawable.ic_previous_m3_24dp
+    )
 }
