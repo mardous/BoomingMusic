@@ -1,6 +1,6 @@
 [versions]
-agp = "8.13.2"
-ksp = "2.3.4"
+agp = "9.0.0"
+ksp = "2.3.5"
 kotlin = "2.3.0"
 
 kotlinDatetime = "0.7.1"
@@ -152,7 +152,6 @@ markwon = ["markwon-core", "markwon-html", "markwon-linkify"]
 [plugins]
 android = { id = "com.android.application", version.ref = "agp" }
 android-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigation" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
