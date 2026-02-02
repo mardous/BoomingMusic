@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Użyj również jako alarmu</string>
     <string name="action_details">Szczegóły</string>
     <string name="action_set_as_start_directory">Ustaw jako katalog startowy</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Przejdź do folderu głównego</string>
     <string name="action_hierarchy_view">Widok hierarchii</string>
     <string name="new_start_directory">Nowy katalog startowy: %s</string>
