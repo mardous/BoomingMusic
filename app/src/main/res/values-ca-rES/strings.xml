@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Fes servir també d\'alarma</string>
     <string name="action_details">Detalls</string>
     <string name="action_set_as_start_directory">Estableix com a adreça d\'inici</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Ves a l\'adreça d\'inici</string>
     <string name="action_hierarchy_view">Vista jeràrquica</string>
     <string name="new_start_directory">Nova adreça d\'inici: %s</string>
