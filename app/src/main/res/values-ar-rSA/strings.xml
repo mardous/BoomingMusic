@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">استخدام أيضا كتنبيه</string>
     <string name="action_details">التفاصيل</string>
     <string name="action_set_as_start_directory">تعيين كدليل للبدء</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">اذهب لبدء الدليل</string>
     <string name="action_hierarchy_view">العرض الهرمي</string>
     <string name="new_start_directory">دليل البدء الجديد: %s</string>
