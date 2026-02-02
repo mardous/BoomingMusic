@@ -253,6 +253,7 @@
     <string name="use_also_as_alarm_alert">알람으로도 사용</string>
     <string name="action_details">상세 정보</string>
     <string name="action_set_as_start_directory">시작 디렉토리로 설정</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">시작 디렉토리로 이동</string>
     <string name="action_hierarchy_view">계층 구조 보기</string>
     <string name="new_start_directory">새 시작 디렉토리: %s</string>
