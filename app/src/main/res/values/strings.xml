@@ -262,6 +262,7 @@
     <string name="use_also_as_alarm_alert">Use also as alarm alert</string>
     <string name="action_details">Details</string>
     <string name="action_set_as_start_directory">Set as start directory</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Go to start directory</string>
     <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">New start directory: %s</string>

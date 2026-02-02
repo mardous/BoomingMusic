@@ -7,6 +7,10 @@
         android:checkable="true"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_set_as_start_directory"
+        android:title="@string/action_set_as_start_directory"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/action_go_to_start_directory"
         android:title="@string/action_go_to_start_directory"
         app:showAsAction="never" />

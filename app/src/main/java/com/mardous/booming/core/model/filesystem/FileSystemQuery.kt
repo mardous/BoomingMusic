@@ -24,11 +24,14 @@ import kotlinx.parcelize.Parcelize
 import org.koin.core.component.KoinComponent
 
 class FileSystemQuery(
+    val name: String?,
     val path: String?,
     val parentPath: String?,
     val children: List<FileSystemItem>,
     val isStorageRoot: Boolean = false
 ) : KoinComponent {
+
+    constructor(children: List<FileSystemItem>) : this(null, null, null, children)
 
     val isFlatView: Boolean = path.isNullOrEmpty()
 
@@ -71,10 +74,6 @@ class FileSystemQuery(
 
     companion object {
         private const val GO_UP_ID = -2L
-
-        fun createFlatView(children: List<FileSystemItem>): FileSystemQuery {
-            return FileSystemQuery(null, null, children)
-        }
 
         fun isNavigablePath(path: String): Boolean {
             return StorageUtil.storageVolumes.none { it.file.parent == path }

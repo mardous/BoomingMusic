@@ -150,7 +150,9 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
                     }
 
                     R.id.action_set_as_start_directory -> {
-                        Preferences.startDirectory = File(file.filePath)
+                        val startDirectory = File(file.filePath)
+                        Preferences.startDirectory = startDirectory
+                        showToast(getString(R.string.start_directory_set, startDirectory.name))
                     }
 
                     R.id.action_scan -> {
@@ -248,6 +250,17 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
                 libraryViewModel.forceReload(ReloadType.Folders)
                 return true
             }
+            R.id.action_set_as_start_directory -> {
+                fileSystem?.let { currentFileSystem ->
+                    val currentPath = currentFileSystem.path
+                    if (currentPath != null) {
+                        val startDirectory = File(currentPath)
+                        Preferences.startDirectory = startDirectory
+                        showToast(getString(R.string.start_directory_set, currentFileSystem.name))
+                    }
+                }
+                return true
+            }
             R.id.action_go_to_start_directory -> {
                 libraryViewModel.navigateToPath(Preferences.startDirectory.getCanonicalPathSafe())
                 return true
@@ -263,7 +276,10 @@ class FoldersListFragment : AbsRecyclerViewCustomGridSizeFragment<FileAdapter, G
 
     private fun showFolders(fileSystem: FileSystemQuery) {
         toolbar.menu.let {
-            it.findItem(R.id.action_go_to_start_directory)?.isVisible = !fileSystem.isFlatView
+            it.findItem(R.id.action_set_as_start_directory)?.isVisible =
+                !fileSystem.isFlatView && !fileSystem.isStorageRoot
+            it.findItem(R.id.action_go_to_start_directory)?.isVisible =
+                !fileSystem.isFlatView
         }
         adapter?.submitList(fileSystem.getNavigableChildren(sortMode), sortMode)
     }
