@@ -253,6 +253,7 @@
     <string name="use_also_as_alarm_alert">Usar también como alarma</string>
     <string name="action_details">Detalles</string>
     <string name="action_set_as_start_directory">Establecer como directorio de inicio</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Ir al directorio de inicio</string>
     <string name="action_hierarchy_view">Vista de jerarquía</string>
     <string name="new_start_directory">Nuevo directorio de inicio: %s</string>
