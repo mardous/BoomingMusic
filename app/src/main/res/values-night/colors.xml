@@ -63,4 +63,6 @@
     <color name="md_theme_surfaceContainer">#1E1F25</color>
     <color name="md_theme_surfaceContainerHigh">#292A2F</color>
     <color name="md_theme_surfaceContainerHighest">#34343A</color>
+
+    <color name="radial_gradient_black_overlay">@color/eighty_percent_black_overlay</color>
 </resources>

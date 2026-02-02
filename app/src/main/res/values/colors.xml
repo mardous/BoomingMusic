@@ -14,6 +14,7 @@
     <color name="surfaceContainerLowestBlack">#0B0B0B</color>
     <color name="elevationOverlayBlack">@android:color/black</color>
 
+    <color name="radial_gradient_black_overlay">#B3000000</color>
     <color name="twenty_percent_black_overlay">#34000000</color>
     <color name="fifty_percent_black_overlay">#88000000</color>
     <color name="eighty_percent_black_overlay">#D0000000</color>
