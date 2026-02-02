@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">अलार्म चेतावनी के रूप में भी उपयोग करें</string>
     <string name="action_details">जानकारी</string>
     <string name="action_set_as_start_directory">स्टार्ट डायरेक्टरी के रूप में सेट करें</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">प्रारंभ निर्देशिका में जाएं</string>
     <string name="action_hierarchy_view">हाइरार्की व्यू</string>
     <string name="new_start_directory">नया प्रारंभ डाइरेक्टरी: %s</string>
