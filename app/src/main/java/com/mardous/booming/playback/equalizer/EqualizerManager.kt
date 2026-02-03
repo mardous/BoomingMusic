@@ -553,6 +553,7 @@ class EqualizerManager(
         val customProfile = currentProfile.copy(
             name = EqProfile.CUSTOM_PRESET_NAME,
             levels = newBandLevels,
+            isAutoEq = false,
             isCustom = true
         )
         setCustomProfile(customProfile, fromUser = true)
