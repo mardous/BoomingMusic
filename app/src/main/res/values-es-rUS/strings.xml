@@ -649,7 +649,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="instrumental_tracks_identifiers_summary">Si la letra de una canción consiste de solo uno o varios de esos indicadores, la pista será marcada como instrumental (se separan con coma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marcar por título</string>
     <string name="instrumental_tracks_mark_by_title_summary">Se tomará en cuenta el título de la pista al buscar los identificadores.</string>
-    <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos los archivos de letras como LRC</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos los archivos de letras como UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Asumir que todos los archivos usan codificación UTF-8. Esto optimiza el proceso de análisis de archivos, pero en algunos casos podría generar caracteres inusuales en las letras de las canciones.
 Podría ser necesario reiniciar la aplicación</string>
     <!-- Now playing preferences -->
