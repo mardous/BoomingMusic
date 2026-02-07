@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Utiliser aussi comme alerte d\'alarme</string>
     <string name="action_details">Détails</string>
     <string name="action_set_as_start_directory">Définir comme répertoire de démarrage</string>
+    <string name="start_directory_set">Répertoire de démarrage défini sur %s</string>
     <string name="action_go_to_start_directory">Aller au répertoire de démarrage</string>
     <string name="action_hierarchy_view">Vue hiérarchique</string>
     <string name="new_start_directory">Nouveau répertoire de démarrage : %s</string>

@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Použít také jako budík</string>
     <string name="action_details">Detaily</string>
     <string name="action_set_as_start_directory">Nastavit jako počáteční adresář</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Přejít na počáteční adresář</string>
     <string name="action_hierarchy_view">Hierarchie</string>
     <string name="new_start_directory">Nový adresář: %s</string>

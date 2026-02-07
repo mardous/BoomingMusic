@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Використовувати також як сигнал будильника</string>
     <string name="action_details">Деталі</string>
     <string name="action_set_as_start_directory">Встановити як початкову папку</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Перейти до початкової папки</string>
     <string name="action_hierarchy_view">Режим ієрархії</string>
     <string name="new_start_directory">Нова початкова папка: %s</string>

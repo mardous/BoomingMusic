@@ -254,6 +254,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="use_also_as_alarm_alert">Usar também como som do alarme</string>
     <string name="action_details">Detalhes</string>
     <string name="action_set_as_start_directory">Definir como diretório inicial</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Ir para o diretório inicial</string>
     <string name="action_hierarchy_view">Visualização hierárquica</string>
     <string name="new_start_directory">Novo diretório inicial: %s</string>

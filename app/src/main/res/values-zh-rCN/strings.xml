@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">同时用作闹钟</string>
     <string name="action_details">详细信息</string>
     <string name="action_set_as_start_directory">设置为起始目录</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">转到起始目录</string>
     <string name="action_hierarchy_view">层级视图</string>
     <string name="new_start_directory">新建起始目录: %s</string>

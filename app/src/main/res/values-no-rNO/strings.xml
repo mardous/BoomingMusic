@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Bruk også som alarmvarsel</string>
     <string name="action_details">Detaljer</string>
     <string name="action_set_as_start_directory">Angi som startmappe</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Gå til start katalog</string>
     <string name="action_hierarchy_view">Hierarchy view</string>
     <string name="new_start_directory">Ny startmappe: %s</string>

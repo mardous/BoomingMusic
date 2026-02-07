@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Gebruik ook als alarmwaarschuwing</string>
     <string name="action_details">Beschrijving</string>
     <string name="action_set_as_start_directory">Stel in als beginmap</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Ga naar beginmap</string>
     <string name="action_hierarchy_view">Rangorde weergeven</string>
     <string name="new_start_directory">Nieuwe beginmap: %s</string>
