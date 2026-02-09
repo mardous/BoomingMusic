@@ -109,8 +109,8 @@
     <string name="where_do_you_want_to_search">Where do you want to search?</string>
     <string name="configure_action">Configure</string>
     <string name="blacklist_directory">Blacklist directory</string>
-    <string name="add_directory">Add directory</string>
-    <string name="remove_from_blacklist">Do you want to remove this directory from the blacklist?</string>
+    <string name="add_directory">Thêm Thư Mục</string>
+    <string name="remove_from_blacklist">Bạn Có Muốn Xoá Thư Mục Khỏi Danh Sách Đen?</string>
     <string name="remove_from_whitelist">Do you want to remove this directory from the whitelist?</string>
     <string name="do_you_want_to_clear_the_blacklist">Do you want to clear the blacklist?</string>
     <string name="do_you_want_to_clear_the_whitelist">Do you want to clear the whitelist?</string>
@@ -121,7 +121,7 @@
     <string name="delete_songs_title">Delete songs</string>
     <string name="delete_x_songs">Delete %d songs?</string>
     <string name="delete_the_song_x">Delete the song %s?</string>
-    <string name="deleting_songs">Deleting songs, wait…</string>
+    <string name="deleting_songs">Đang xoá nhạc, vui lòng đợi…</string>
     <string name="song_x_of_x">%1$d of %2$d • %3$s</string>
     <string name="no_equalizer">No equalizer found.</string>
     <string name="audio_focus_denied">Audio focus denied.</string>
@@ -208,7 +208,7 @@
     <string name="album_artists_label">Album artists</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Folders</string>
-    <string name="playlists_label">Playlists</string>
+    <string name="playlists_label">Danh Sách Phát</string>
     <string name="playlist_label">Playlist</string>
     <string name="favorites_label">Favorites</string>
     <string name="last_added_label">Last added</string>
