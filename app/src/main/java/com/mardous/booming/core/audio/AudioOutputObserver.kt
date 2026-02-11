@@ -21,10 +21,14 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.hardware.usb.UsbManager
 import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
+import android.media.AudioMixerAttributes
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.media.AudioManagerCompat.getStreamMaxVolume
@@ -48,10 +52,14 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     private val _systemVolumeState = MutableStateFlow(VolumeState.Unspecified)
     val systemVolumeState = _systemVolumeState.asStateFlow()
 
+    private val _bitPerfectActive = MutableStateFlow(false)
+    val bitPerfectActive = _bitPerfectActive.asStateFlow()
+
     private var mediaRouter = MediaRouter.getInstance(context)
     var audioManager = context.getSystemService<AudioManager>()
         private set
 
+    private var bitPerfectDevice: AudioDeviceInfo? = null
     private var isObserving = false
 
     init {
@@ -61,8 +69,25 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent?) {
         val action = intent?.action ?: return
-        if (action == VOLUME_CHANGED_ACTION || action == Intent.ACTION_HEADSET_PLUG) {
-            requestVolume()
+        when (action) {
+            UsbManager.ACTION_USB_DEVICE_ATTACHED -> {
+                checkAndConfigureBitPerfect()
+            }
+            UsbManager.ACTION_USB_DEVICE_DETACHED -> {
+                disableBitPerfect()
+            }
+            Intent.ACTION_HEADSET_PLUG -> {
+                val state = intent.getIntExtra("state", -1)
+                if (state == 1) {
+                    checkAndConfigureBitPerfect()
+                } else if (state == 0) {
+                    disableBitPerfect()
+                }
+                requestVolume()
+            }
+            VOLUME_CHANGED_ACTION -> {
+                requestVolume()
+            }
         }
     }
 
@@ -71,6 +96,8 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
             val filter = IntentFilter().apply {
                 addAction(VOLUME_CHANGED_ACTION)
                 addAction(Intent.ACTION_HEADSET_PLUG)
+                addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
+                addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
             }
             ContextCompat.registerReceiver(context, this, filter, ContextCompat.RECEIVER_EXPORTED)
             audioManager?.registerAudioDeviceCallback(audioDeviceCallback, null)
@@ -92,6 +119,83 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
 
     fun showOutputDeviceSelector(context: Context) {
         SystemMediaControlResolver.openMediaOutputSwitcher(context)
+    }
+
+    private fun checkAndConfigureBitPerfect() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+            /*!playbackPreferenceManager.bitPerfectEnabled*/) {
+            return
+        }
+
+        audioManager?.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
+            ?.firstOrNull { device ->
+                device.type == AudioDeviceInfo.TYPE_USB_DEVICE ||
+                        device.type == AudioDeviceInfo.TYPE_USB_HEADSET
+            }?.let { device ->
+                configureBitPerfect(device)
+            } ?: run {
+                disableBitPerfect()
+            }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    private fun configureBitPerfect(device: AudioDeviceInfo) {
+        try {
+            val supportedAttributes = audioManager?.getSupportedMixerAttributes(device)
+            if (supportedAttributes.isNullOrEmpty()) {
+                disableBitPerfect()
+                return
+            }
+
+            val bitPerfectAttribute = supportedAttributes
+                .filter { it.mixerBehavior == AudioMixerAttributes.MIXER_BEHAVIOR_BIT_PERFECT }
+                .maxByOrNull { attr ->
+                    // Score by sample rate * channel count
+                    attr.format.sampleRate * attr.format.channelCount
+                }
+
+            if (bitPerfectAttribute == null) {
+                disableBitPerfect()
+                return
+            }
+
+            val attributes = android.media.AudioAttributes.Builder()
+                .setUsage(android.media.AudioAttributes.USAGE_MEDIA)
+                .setContentType(android.media.AudioAttributes.CONTENT_TYPE_MUSIC)
+                .build()
+
+            val success = audioManager?.setPreferredMixerAttributes(attributes, device, bitPerfectAttribute)
+            if (success == true) {
+                bitPerfectDevice = device
+                _bitPerfectActive.value = true
+            } else {
+                disableBitPerfect()
+            }
+        } catch (_: Exception) {
+            disableBitPerfect()
+        }
+    }
+
+    private fun disableBitPerfect() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE ||
+            bitPerfectDevice == null || !_bitPerfectActive.value) {
+            return
+        }
+
+        try {
+            val audioAttributes = android.media.AudioAttributes.Builder()
+                .setUsage(android.media.AudioAttributes.USAGE_MEDIA)
+                .setContentType(android.media.AudioAttributes.CONTENT_TYPE_MUSIC)
+                .build()
+
+            bitPerfectDevice?.let { device ->
+                audioManager?.clearPreferredMixerAttributes(audioAttributes, device)
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error clearing preferred mixer attributes", e)
+        } finally {
+            _bitPerfectActive.value = false
+        }
     }
 
     private fun getCurrentAudioDevice(): AudioDevice {
