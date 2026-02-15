@@ -2,11 +2,11 @@ package com.mardous.booming.ui.screen.player
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Rect
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
-import com.mardous.booming.data.model.Song
 import org.apache.commons.lang3.builder.HashCodeBuilder
 import kotlin.math.abs
 
@@ -16,13 +16,26 @@ class PlayerGesturesController(
     private val listener: Listener
 ) : View.OnTouchListener {
 
+    private var viewRect: Rect? = null
+
     private val onGestureListener = object : GestureDetector.SimpleOnGestureListener() {
         override fun onSingleTapConfirmed(event: MotionEvent): Boolean {
             return consumeGesture(GestureType.Tap)
         }
 
         override fun onDoubleTap(event: MotionEvent): Boolean {
-            return consumeGesture(GestureType.DoubleTap)
+            val width = viewRect?.width() ?: 0
+            val x = event.x
+
+            val type = if (x < width * LEFT_EDGE_DOUBLE_TAP_THRESHOLD) {
+                GestureType.DoubleTap.TYPE_LEFT_EDGE
+            } else if (x > width * RIGHT_EDGE_DOUBLE_TAP_THRESHOLD) {
+                GestureType.DoubleTap.TYPE_RIGHT_EDGE
+            } else {
+                GestureType.DoubleTap.TYPE_CENTER
+            }
+
+            return consumeGesture(GestureType.DoubleTap(type))
         }
 
         override fun onLongPress(e: MotionEvent) {
@@ -76,11 +89,13 @@ class PlayerGesturesController(
         if (event == null)
             return false
 
+        viewRect = Rect(0, 0, v.width, v.height)
         return gestureDetector?.onTouchEvent(event) == true
     }
 
     fun release() {
         gestureDetector = null
+        viewRect = null
     }
 
     private fun consumeGesture(gestureType: GestureType): Boolean {
@@ -94,9 +109,29 @@ class PlayerGesturesController(
 
         object Tap : GestureType()
 
-        object DoubleTap : GestureType()
-
         object LongPress : GestureType()
+
+        class DoubleTap(val type: Int) : GestureType() {
+
+            override fun equals(other: Any?): Boolean {
+                if (this === other) return true
+                if (other == null || javaClass != other.javaClass) return false
+                val tap = other as DoubleTap
+                return tap.type == this.type
+            }
+
+            override fun hashCode(): Int {
+                return HashCodeBuilder()
+                    .append(type)
+                    .toHashCode()
+            }
+
+            companion object {
+                const val TYPE_CENTER = 0
+                const val TYPE_LEFT_EDGE = 1
+                const val TYPE_RIGHT_EDGE = 2
+            }
+        }
 
         class Fling(val direction: Int) : GestureType() {
 
@@ -128,5 +163,8 @@ class PlayerGesturesController(
 
     companion object {
         private const val TAG = "PlayerGestureController"
+
+        private const val LEFT_EDGE_DOUBLE_TAP_THRESHOLD = 0.30f
+        private const val RIGHT_EDGE_DOUBLE_TAP_THRESHOLD = 0.70f
     }
 }

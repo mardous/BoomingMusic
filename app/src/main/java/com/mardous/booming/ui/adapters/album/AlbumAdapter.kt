@@ -28,6 +28,7 @@ import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_ALBUM_IMAGE
 import com.mardous.booming.core.model.sort.SortKey
 import com.mardous.booming.core.sort.AlbumSortMode
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.loadPaletteImage
@@ -36,10 +37,12 @@ import com.mardous.booming.extensions.media.asSectionName
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.songCountStr
 import com.mardous.booming.extensions.utilities.buildInfoString
+import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
+import com.mardous.booming.ui.screen.player.PlayerViewModel
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
@@ -159,6 +162,13 @@ open class AlbumAdapter(
                     return callback?.albumMenuItemClick(album, item, sharedElements) ?: false
                 }
             })
+            play?.setOnClickListener {
+                val albumSongs = with(SongSortMode.AlbumSongs) {
+                    album.songs.sorted()
+                }
+                getViewModel<PlayerViewModel>()
+                    ?.openQueue(albumSongs, shuffleMode = OpenShuffleMode.Off)
+            }
         }
     }
 

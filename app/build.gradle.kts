@@ -71,7 +71,7 @@ sealed class Version(
 
 val currentVersion: Version = Version.Stable(
     versionMajor = 1,
-    versionMinor = 1,
+    versionMinor = 2,
     versionPatch = 0
 )
 val currentVersionCode = currentVersion.code
@@ -81,11 +81,11 @@ android {
     namespace = "com.mardous.booming"
 
     defaultConfig {
-        minSdk = 26
-        targetSdk = 35
+        minSdk = 28
+        targetSdk = 36
 
         applicationId = namespace
-        versionCode = 1100300
+        versionCode = 1200300
         versionName = currentVersion.name
         check(versionCode == currentVersionCode)
     }
@@ -201,6 +201,7 @@ dependencies {
     implementation(libs.bundles.lifecycle)
     implementation(libs.bundles.media3)
     implementation(libs.bundles.navigation)
+    implementation(libs.bundles.glance)
     implementation(libs.bundles.koin)
     implementation(libs.bundles.coil)
     implementation(libs.bundles.ktor)
@@ -230,6 +231,5 @@ dependencies {
 
     implementation(libs.versioncompare)
     implementation(libs.commons.text)
-
-    debugImplementation(libs.leakcanary)
+    implementation(libs.juniversalchardet)
 }

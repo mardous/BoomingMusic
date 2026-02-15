@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="reverb_preset_names">
-        <item>@string/reverb_preset_none</item>
-        <item>@string/reverb_preset_smallroom</item>
-        <item>@string/reverb_preset_mediumroom</item>
-        <item>@string/reverb_preset_largeroom</item>
-        <item>@string/reverb_preset_mediumhall</item>
-        <item>@string/reverb_preset_largehall</item>
-        <item>@string/reverb_preset_plate</item>
-    </string-array>
-
     <string-array name="pref_appbar_mode_entries">
         <item>@string/compact</item>
         <item>@string/expanded</item>
@@ -123,6 +113,16 @@
         <item>with_expanded_player</item>
     </string-array>
 
+    <string-array name="pref_lyrics_background_effect_entries">
+        <item>@string/lyrics_background_gradient</item>
+        <item>@string/label_none</item>
+    </string-array>
+
+    <string-array name="pref_lyrics_background_effect_values">
+        <item>gradient</item>
+        <item>none</item>
+    </string-array>
+
     <string-array name="pref_playlists_cutoff_entries">
         <item>@string/today</item>
         <item>@string/yesterday</item>
@@ -139,20 +139,6 @@
         <item>this_month</item>
         <item>past_three_months</item>
         <item>this_year</item>
-    </string-array>
-
-    <string-array name="pref_notification_extra_text_line_entries">
-        <item>@string/artist</item>
-        <item>@string/album</item>
-        <item>@string/album_artist</item>
-        <item>@string/album_and_year</item>
-    </string-array>
-
-    <string-array name="pref_notification_extra_text_line_values">
-        <item>artist</item>
-        <item>album</item>
-        <item>album_artist</item>
-        <item>album_and_year</item>
     </string-array>
 
     <string-array name="pref_notification_priority_entries">
@@ -188,19 +174,25 @@
     <string-array name="pref_language_names">
         <item>@string/system_default</item>
         <item>Arabic</item>
+        <item>Belarusian</item>
         <item>Catalan</item>
         <item>Chinese Simplified</item>
+        <item>Chinese Traditional</item>
+        <item>Croatian</item>
         <item>Czech</item>
         <item>Danish</item>
         <item>Dutch</item>
         <item>English (US)</item>
         <item>Finnish</item>
         <item>French</item>
+        <item>Galician</item>
         <item>German</item>
         <item>Greek</item>
         <item>Hebrew</item>
         <item>Hindi</item>
+        <item>Indonesian</item>
         <item>Italian</item>
+        <item>Kazakh</item>
         <item>Korean</item>
         <item>Japanese</item>
         <item>Norwegian</item>
@@ -214,24 +206,31 @@
         <item>Swedish</item>
         <item>Turkish</item>
         <item>Ukrainian</item>
+        <item>Vietnamese</item>
     </string-array>
 
     <string-array name="pref_language_codes">
         <item>auto</item>
         <item>ar</item>
+        <item>be</item>
         <item>ca</item>
         <item>zh-CN</item>
+        <item>zh-TW</item>
+        <item>hr</item>
         <item>cs</item>
         <item>da</item>
         <item>nl</item>
         <item>en</item>
         <item>fi</item>
         <item>fr</item>
+        <item>gl</item>
         <item>de</item>
         <item>el</item>
         <item>iw</item>
         <item>hi</item>
+        <item>in</item>
         <item>it</item>
+        <item>kk</item>
         <item>ko</item>
         <item>ja</item>
         <item>no</item>
@@ -245,6 +244,7 @@
         <item>sv</item>
         <item>tr</item>
         <item>uk</item>
+        <item>vi</item>
     </string-array>
 
 </resources>

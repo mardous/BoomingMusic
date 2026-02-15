@@ -154,6 +154,12 @@
             app:argType="com.mardous.booming.data.model.Song" />
     </dialog>
 
+    <dialog
+        android:id="@+id/nav_sleep_timer"
+        android:name="com.mardous.booming.ui.screen.sleeptimer.SleepTimerFragment"
+        android:label="SleepTimerFragment">
+    </dialog>
+
     <fragment
         android:id="@+id/nav_play_info"
         android:name="com.mardous.booming.ui.screen.info.PlayInfoFragment"
@@ -173,7 +179,12 @@
     <fragment
         android:id="@+id/nav_equalizer"
         android:name="com.mardous.booming.ui.screen.equalizer.EqualizerFragment"
-        android:label="EqualizerFragment"/>
+        android:label="EqualizerFragment">
+        <argument
+            android:name="from_player"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_settings"

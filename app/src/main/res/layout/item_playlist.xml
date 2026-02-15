@@ -30,6 +30,17 @@
                 app:shapeAppearanceOverlay="?shapeAppearanceCornerLarge"
                 tools:srcCompat="@tools:sample/avatars"/>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/play"
+                style="?materialIconButtonFilledStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="4dp"
+                app:backgroundTint="@color/alpha_surface_container"
+                app:iconTint="?colorOnSurface"
+                app:icon="@drawable/ic_play_24dp" />
+
         </com.mardous.booming.ui.component.views.WidthFitSquareLayout>
 
         <LinearLayout

@@ -18,7 +18,6 @@
 package com.mardous.booming.ui.screen.player.styles.gradientstyle
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -119,30 +118,30 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
         val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
         val newShuffleColor = getPlaybackControlsColor(
             isShuffleModeOn,
-            scheme.primaryControlColor,
-            scheme.secondaryControlColor
+            scheme.onSurfaceColor,
+            scheme.onSurfaceVariantColor
         )
         val oldRepeatColor = getPlaybackControlsColor(isRepeatModeOn)
         val newRepeatColor = getPlaybackControlsColor(
             isRepeatModeOn,
-            scheme.primaryControlColor,
-            scheme.secondaryControlColor
+            scheme.onSurfaceColor,
+            scheme.onSurfaceVariantColor
         )
 
         return listOfNotNull(
-            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.primaryControlColor),
-            binding.menu.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
-            binding.favorite.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
-            binding.playPauseButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
-            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
-            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.onSurfaceColor),
+            binding.menu.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.favorite.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.playPauseButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
             binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
             binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
-            binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
-            binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor)
         )
     }
 
@@ -175,15 +174,9 @@ class GradientPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragme
     internal fun setFavorite(isFavorite: Boolean, withAnimation: Boolean) {
         if (this.isFavorite != isFavorite) {
             this.isFavorite = isFavorite
-            val iconRes = if (withAnimation) {
-                if (isFavorite) R.drawable.avd_favorite else R.drawable.avd_unfavorite
-            } else {
-                if (isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp
-            }
-            binding.favorite.setIconResource(iconRes)
-            binding.favorite.icon?.let {
-                if (it is AnimatedVectorDrawable) {
-                    it.start()
+            playerFragment?.let { nonNullPlayerFragment ->
+                with(nonNullPlayerFragment) {
+                    binding.favorite.setIsFavorite(isFavorite, withAnimation)
                 }
             }
         }

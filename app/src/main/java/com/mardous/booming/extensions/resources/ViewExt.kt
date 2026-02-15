@@ -25,12 +25,21 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.text.TextUtils
 import android.util.TypedValue
-import android.view.*
+import android.view.KeyEvent
+import android.view.Menu
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.CompoundButton
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.annotation.MenuRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.animation.doOnEnd
@@ -38,7 +47,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
-import androidx.core.view.*
+import androidx.core.view.doOnLayout
+import androidx.core.view.drawToBitmap
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePaddingRelative
 import androidx.core.widget.ImageViewCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -51,19 +65,26 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
+import com.google.android.material.progressindicator.BaseProgressIndicator
 import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.Shapeable
 import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.resolveColor
 import com.mardous.booming.util.Preferences
-import com.skydoves.balloon.*
+import com.skydoves.balloon.ArrowPositionRules
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonAnimation
+import com.skydoves.balloon.BalloonSizeSpec
+import com.skydoves.balloon.createBalloon
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
 import io.noties.markwon.core.MarkwonTheme
 import io.noties.markwon.html.HtmlPlugin
 import me.zhanghai.android.fastscroll.FastScroller
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import com.google.android.material.R as M3R
 
 const val BOOMING_ANIM_TIME = 350L
 
@@ -239,6 +260,7 @@ fun View.animateTintColor(
     fromColor: Int,
     toColor: Int,
     duration: Long = 300,
+    isForeground: Boolean = false,
     isIconButton: Boolean = false
 ): Animator {
     return ValueAnimator.ofArgb(fromColor, toColor).apply {
@@ -247,12 +269,19 @@ fun View.animateTintColor(
             val animatedColor = animation.animatedValue as Int
             val colorStateList = animatedColor.toColorStateList()
 
-            when (this@animateTintColor) {
+            if (isForeground) {
+                foregroundTintList = colorStateList
+            } else when (this@animateTintColor) {
                 is Toolbar -> colorizeToolbar(animatedColor)
                 is Slider -> applyColor(animatedColor)
                 is SeekBar -> applyColor(animatedColor)
                 is FloatingActionButton -> applyColor(animatedColor)
                 is MaterialButton -> applyColor(animatedColor, isIconButton)
+                is ImageButton -> {
+                    val imageTintList = getPrimaryTextColor(context, animatedColor.isColorLight)
+                    ImageViewCompat.setImageTintList(this@animateTintColor, imageTintList.toColorStateList())
+                    backgroundTintList = colorStateList
+                }
                 is ImageView -> ImageViewCompat.setImageTintList(this@animateTintColor, colorStateList)
                 is TextView -> applyColor(animatedColor)
                 else -> backgroundTintList = colorStateList
@@ -319,6 +348,18 @@ fun ImageView.useAsIcon() {
     val iconPadding = context.dip(R.dimen.list_item_image_icon_padding)
     setPadding(iconPadding, iconPadding, iconPadding, iconPadding)
     clearColorFilter()
+}
+
+fun <T> T.setCornerRadius(cornerRadiusDp: Float) where T : View, T : Shapeable {
+    val radiusPx = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        cornerRadiusDp,
+        this.resources.displayMetrics
+    )
+    this.shapeAppearanceModel = this.shapeAppearanceModel
+        .toBuilder()
+        .setAllCornerSizes(radiusPx)
+        .build()
 }
 
 fun Toolbar.inflateMenu(
@@ -476,6 +517,62 @@ fun NavigationBarView.hide() {
     }
 }
 
+fun BaseProgressIndicator<*>.setWavy(isWavy: Boolean) {
+    val oldAmplitude = waveAmplitude
+    val newAmplitude = if (!isWavy) 0 else {
+        resources.getDimensionPixelSize(
+            M3R.dimen.m3_comp_progress_indicator_circular_active_indicator_wave_amplitude
+        )
+    }
+
+    val waveLength = if (isIndeterminate) wavelengthIndeterminate else wavelengthDeterminate
+
+    (getTag(R.id.id_wave_amplitude_animator) as? ValueAnimator)?.apply {
+        removeAllUpdateListeners()
+        removeAllListeners()
+        cancel()
+    }
+    setTag(R.id.id_wave_amplitude_animator, null)
+
+    if (waveLength <= 0 || oldAmplitude == newAmplitude) {
+        waveAmplitude = newAmplitude
+        return
+    }
+
+    val animator = ValueAnimator.ofInt(oldAmplitude, newAmplitude).apply {
+        duration = BOOMING_ANIM_TIME
+        interpolator = DecelerateInterpolator()
+        addUpdateListener {
+            waveAmplitude = it.animatedValue as Int
+        }
+    }
+
+    setTag(R.id.id_wave_amplitude_animator, animator)
+    animator.start()
+}
+
+fun BaseProgressIndicator<*>.setAnimatedWave(isAnimatedWave: Boolean) {
+    waveSpeed = if (isAnimatedWave) {
+        resources.getDimensionPixelSize(R.dimen.m3e_progress_indicator_animation_speed)
+    } else 0
+}
+
+fun BaseProgressIndicator<*>.installWavyAnimatorCleanup() {
+    addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+        override fun onViewDetachedFromWindow(v: View) {
+            (getTag(R.id.id_wave_amplitude_animator) as? ValueAnimator)?.apply {
+                removeAllListeners()
+                removeAllUpdateListeners()
+                cancel()
+            }
+            setTag(R.id.id_wave_amplitude_animator, null)
+            removeOnAttachStateChangeListener(this)
+        }
+
+        override fun onViewAttachedToWindow(v: View) = Unit
+    })
+}
+
 typealias TrackingTouchListener = (Slider) -> Unit
 
 fun Slider.setTrackingTouchListener(
@@ -501,8 +598,8 @@ inline fun Context.createBoomingMusicBalloon(
     lifecycleOwner: LifecycleOwner,
     crossinline block: Balloon.Builder.() -> Unit
 ): Balloon {
-    val bgColor = resolveColor(com.google.android.material.R.attr.colorTertiaryContainer)
-    val textColor = resolveColor(com.google.android.material.R.attr.colorOnTertiaryContainer)
+    val bgColor = resolveColor(M3R.attr.colorTertiaryContainer)
+    val textColor = resolveColor(M3R.attr.colorOnTertiaryContainer)
     return createBalloon(this) {
         setBackgroundColor(bgColor)
         setTextColor(textColor)

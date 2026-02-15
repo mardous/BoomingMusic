@@ -268,7 +268,7 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
             val wikiTitle = binding.wikiTitle
             val wikiView = binding.wiki
             if (!albumValue.wiki?.content.isNullOrEmpty()) {
-                biography = albumValue.wiki!!.content!!
+                biography = albumValue.wiki.content
                 wikiView.show()
                 wikiView.setMarkdownText(biography!!)
                 wikiTitle.text = getString(R.string.about_x_title, getAlbum().name)

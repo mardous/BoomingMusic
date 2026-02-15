@@ -31,10 +31,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.core.model.player.PlayerColorScheme
-import com.mardous.booming.core.model.player.PlayerTintTarget
-import com.mardous.booming.core.model.player.iconButtonTintTarget
-import com.mardous.booming.core.model.player.tintTarget
+import com.mardous.booming.core.model.player.*
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentDefaultPlayerPlaybackControlsBinding
 import com.mardous.booming.extensions.resources.centerPivot
@@ -192,30 +189,36 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
         val oldPrimaryTextColor = binding.title.currentTextColor
         val oldSecondaryTextColor = binding.text.currentTextColor
 
+        val newEmphasisColor = if (scheme.mode == PlayerColorSchemeMode.VibrantColor) {
+            scheme.onSurfaceColor
+        } else {
+            scheme.primaryColor
+        }
         val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
         val newShuffleColor = getPlaybackControlsColor(
             isShuffleModeOn,
-            scheme.primaryControlColor,
-            scheme.secondaryControlColor
+            scheme.onSurfaceColor,
+            scheme.onSurfaceVariantColor
         )
         val oldRepeatColor = getPlaybackControlsColor(isRepeatModeOn)
         val newRepeatColor = getPlaybackControlsColor(
             isRepeatModeOn,
-            scheme.primaryControlColor,
-            scheme.secondaryControlColor
+            scheme.onSurfaceColor,
+            scheme.onSurfaceVariantColor
         )
         return listOfNotNull(
-            binding.playPauseButton.tintTarget(oldPlayPauseColor, scheme.emphasisColor),
-            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.emphasisColor),
-            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
-            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.playPauseButton.tintTarget(oldPlayPauseColor, newEmphasisColor),
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor, newEmphasisColor),
+            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
             binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
             binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
-            binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
-            binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songInfo?.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songInfo?.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.queueInfo.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor)
         )
     }
 

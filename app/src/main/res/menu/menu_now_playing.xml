@@ -1,14 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_favorite"
+        android:title="@string/action_add_to_favorites"
+        android:icon="@drawable/ic_favorite_outline_24dp"
+        app:showAsAction="never"/>
 	<item
 		android:id="@+id/action_playing_queue"
 		android:title="@string/playing_queue_label"
 		android:icon="@drawable/ic_queue_music_24dp"
-		app:showAsAction="never"/>
-	<item
-		android:id="@+id/action_favorite"
-		android:title="@string/action_add_to_favorites"
-		android:icon="@drawable/ic_favorite_outline_24dp"
 		app:showAsAction="never"/>
 	<item
 		android:id="@+id/action_sleep_timer"

@@ -31,6 +31,7 @@ import com.mardous.booming.ui.IPlaylistCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
+import com.mardous.booming.ui.screen.player.PlayerViewModel
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
@@ -118,6 +119,9 @@ class PlaylistAdapter(
                 override fun onMenuItemClick(item: MenuItem): Boolean =
                     callback?.playlistMenuItemClick(playlist, item) ?: false
             })
+            play?.setOnClickListener {
+                getViewModel<PlayerViewModel>()?.openPlaylist(playlist.playlistEntity)
+            }
         }
 
         private val playlist: PlaylistWithSongs

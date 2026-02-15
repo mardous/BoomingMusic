@@ -1,5 +1,6 @@
 package com.mardous.booming.playback.processor
 
+import androidx.annotation.OptIn
 import androidx.media3.common.C
 import androidx.media3.common.audio.AudioProcessor
 import androidx.media3.common.audio.BaseAudioProcessor
@@ -7,7 +8,7 @@ import androidx.media3.common.util.UnstableApi
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
-@UnstableApi
+@OptIn(UnstableApi::class)
 class BalanceAudioProcessor(
     private var leftGain: Float = 1.0f,
     private var rightGain: Float = 1.0f

@@ -1,5 +1,6 @@
 package com.mardous.booming.playback.processor
 
+import androidx.annotation.OptIn
 import androidx.media3.common.C
 import androidx.media3.common.audio.AudioProcessor
 import androidx.media3.common.audio.BaseAudioProcessor
@@ -13,9 +14,9 @@ import kotlin.math.log10
 import kotlin.math.min
 import kotlin.math.pow
 
-@UnstableApi
+@OptIn(UnstableApi::class)
 class ReplayGainAudioProcessor(
-    var mode: ReplayGainMode,
+    var mode: ReplayGainMode = ReplayGainMode.Off,
     var preAmpGain: Float = 0f,
     var preAmpGainWithoutTag: Float = 0f
 ) : BaseAudioProcessor() {

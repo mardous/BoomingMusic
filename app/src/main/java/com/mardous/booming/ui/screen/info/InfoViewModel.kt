@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.mardous.booming.R
+import androidx.lifecycle.viewModelScope
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.mapper.toPlayCount
@@ -21,16 +21,27 @@ import com.mardous.booming.extensions.media.songDurationStr
 import com.mardous.booming.extensions.utilities.dateStr
 import com.mardous.booming.extensions.utilities.format
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import org.jaudiotagger.audio.AudioHeader
 import java.io.File
 
 class InfoViewModel(private val repository: Repository) : ViewModel() {
 
+    private val _songInfoUiState = MutableStateFlow(
+        SongInfoUiState(
+            isLoading = true,
+            isSuccess = false
+        )
+    )
+    val songInfoUiState = _songInfoUiState.asStateFlow()
+
     fun loadAlbum(id: Long): LiveData<Album> = liveData(Dispatchers.IO) {
         if (id != -1L) {
             emit(repository.albumById(id))
         } else {
-            emit(Album.Companion.empty)
+            emit(Album.empty)
         }
     }
 
@@ -40,110 +51,114 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
         } else if (id == -1L) {
             emit(repository.albumArtistByName(name))
         } else {
-            emit(Artist.Companion.empty)
+            emit(Artist.empty)
         }
     }
 
     fun playInfo(songs: List<Song>): LiveData<PlayInfoResult> = liveData(Dispatchers.IO) {
         val playCountEntities = repository.findSongsInPlayCount(songs).sortedByDescending { it.playCount }
-        val totalPlayCount = playCountEntities.sumOf { it.playCount }
-        val totalSkipCount = playCountEntities.sumOf { it.skipCount }
-        val lastPlayDate = playCountEntities.maxOf { it.timePlayed }
-        emit(PlayInfoResult(totalPlayCount, totalSkipCount, lastPlayDate, playCountEntities))
+        if (playCountEntities.isEmpty()) {
+            emit(PlayInfoResult(-1, -1, -1, songs.map { it.toPlayCount() }))
+        } else {
+            val totalPlayCount = playCountEntities.sumOf { it.playCount }
+            val totalSkipCount = playCountEntities.sumOf { it.skipCount }
+            val lastPlayDate = playCountEntities.maxOf { it.timePlayed }
+            emit(PlayInfoResult(totalPlayCount, totalSkipCount, lastPlayDate, playCountEntities))
+        }
     }
 
-    fun songDetail(context: Context, song: Song): LiveData<SongInfoResult> =
-        liveData(Dispatchers.IO) {
-            // Play count
-            val result = runCatching {
-                val playCountEntity = repository.findSongInPlayCount(song.id) ?: song.toPlayCount()
-                val playCount = playCountEntity.playCount.asNumberOfTimes(context)
-                val skipCount = playCountEntity.skipCount.asNumberOfTimes(context)
-                val lastPlayed = context.dateStr(playCountEntity.timePlayed)
+    fun refreshSongInfo(context: Context, song: Song) = viewModelScope.launch(Dispatchers.IO) {
+        val uiState = SongInfoUiState(isLoading = true, isSuccess = false)
+        _songInfoUiState.value = uiState
 
-                val dateModified = song.dateModified.format(context)
-                val year = if (song.year > 0) song.year.toString() else null
-                val trackLength = song.songDurationStr()
-                val replayGain = song.replayGainStr(context)
+        val songInfo = runCatching {
+            val playCountEntity = repository.findSongInPlayCount(song.id) ?: song.toPlayCount()
+            val playCount = playCountEntity.playCount.asNumberOfTimes(context)
+            val skipCount = playCountEntity.skipCount.asNumberOfTimes(context)
+            val lastPlayed = context.dateStr(playCountEntity.timePlayed)
 
-                val metadataReader = MetadataReader(song.uri)
-                if (!metadataReader.hasMetadata) {
-                    SongInfoResult(
-                        playCount = playCount,
-                        skipCount = skipCount,
-                        lastPlayedDate = lastPlayed,
-                        filePath = File(song.data).getPrettyAbsolutePath(),
-                        fileSize = song.size.asReadableFileSize(),
-                        trackLength = trackLength,
-                        dateModified = dateModified,
-                        title = song.title,
-                        albumYear = year,
-                        replayGain = replayGain
-                    )
-                } else {
-                    // FILE
-                    val file = File(song.data)
-                    val filePath = file.getPrettyAbsolutePath()
-                    val fileSize = file.getHumanReadableSize()
+            val dateModified = song.dateModified.format(context)
+            val year = if (song.year > 0) song.year.toString() else null
+            val trackLength = song.songDurationStr()
+            val replayGain = song.replayGainStr(context)
 
-                    val audioHeader = getAudioHeader(
-                        context,
-                        file.toAudioFile()?.audioHeader,
-                        metadataReader
-                    )
-
-                    // MEDIA
-                    val title = metadataReader.first(MetadataReader.TITLE)
-                    val album = metadataReader.first(MetadataReader.ALBUM)
-                    val artist = metadataReader.merge(MetadataReader.ARTIST)
-                    val albumArtist = metadataReader.first(MetadataReader.ALBUM_ARTIST)
-
-                    val trackNumber = getNumberAndTotal(
-                        metadataReader.value(MetadataReader.TRACK_NUMBER),
-                        metadataReader.value(MetadataReader.TRACK_TOTAL)
-                    )
-                    val discNumber = getNumberAndTotal(
-                        metadataReader.value(MetadataReader.DISC_NUMBER),
-                        metadataReader.value(MetadataReader.DISC_TOTAL)
-                    )
-
-                    val composer = metadataReader.merge(MetadataReader.COMPOSER)
-                    val conductor = metadataReader.merge(MetadataReader.PRODUCER)
-                    val publisher = metadataReader.merge(MetadataReader.COPYRIGHT)
-                    val genre = metadataReader.merge(MetadataReader.GENRE)
-                    val comment = metadataReader.value(MetadataReader.COMMENT)
-
-                    SongInfoResult(
-                        playCount,
-                        skipCount,
-                        lastPlayed,
-                        filePath,
-                        fileSize,
-                        trackLength,
-                        dateModified,
-                        audioHeader,
-                        title,
-                        album,
-                        artist,
-                        albumArtist,
-                        year,
-                        trackNumber,
-                        discNumber,
-                        composer,
-                        conductor,
-                        publisher,
-                        genre,
-                        replayGain,
-                        comment
-                    )
-                }
-            }
-            if (result.isSuccess) {
-                emit(result.getOrThrow())
+            val metadataReader = MetadataReader(song.uri)
+            if (!metadataReader.hasMetadata) {
+                SongInfo(
+                    playCount = playCount,
+                    skipCount = skipCount,
+                    lastPlayedDate = lastPlayed,
+                    filePath = File(song.data).getPrettyAbsolutePath(),
+                    fileSize = song.size.asReadableFileSize(),
+                    trackLength = trackLength,
+                    dateModified = dateModified,
+                    title = song.title,
+                    albumYear = year,
+                    replayGain = replayGain
+                )
             } else {
-                emit(SongInfoResult.Companion.Empty)
+                val file = File(song.data)
+                val filePath = file.getPrettyAbsolutePath()
+                val fileSize = file.getHumanReadableSize()
+
+                val audioHeaderInfo = getAudioHeader(
+                    context,
+                    file.toAudioFile()?.audioHeader,
+                    metadataReader
+                )
+
+                val title = metadataReader.first(MetadataReader.TITLE)
+                val album = metadataReader.first(MetadataReader.ALBUM)
+                val artist = metadataReader.merge(MetadataReader.ARTIST)
+                val albumArtist = metadataReader.first(MetadataReader.ALBUM_ARTIST)
+
+                val trackNumber = getNumberAndTotal(
+                    metadataReader.value(MetadataReader.TRACK_NUMBER),
+                    metadataReader.value(MetadataReader.TRACK_TOTAL)
+                )
+                val discNumber = getNumberAndTotal(
+                    metadataReader.value(MetadataReader.DISC_NUMBER),
+                    metadataReader.value(MetadataReader.DISC_TOTAL)
+                )
+
+                val composer = metadataReader.merge(MetadataReader.COMPOSER)
+                val conductor = metadataReader.merge(MetadataReader.PRODUCER)
+                val publisher = metadataReader.merge(MetadataReader.COPYRIGHT)
+                val genre = metadataReader.merge(MetadataReader.GENRE)
+                val comment = metadataReader.value(MetadataReader.COMMENT)
+
+                SongInfo(
+                    playCount,
+                    skipCount,
+                    lastPlayed,
+                    filePath,
+                    fileSize,
+                    trackLength,
+                    dateModified,
+                    audioHeaderInfo,
+                    title,
+                    album,
+                    artist,
+                    albumArtist,
+                    year,
+                    trackNumber,
+                    discNumber,
+                    composer,
+                    conductor,
+                    publisher,
+                    genre,
+                    replayGain,
+                    comment
+                )
             }
         }
+
+        _songInfoUiState.value = uiState.copy(
+            isLoading = false,
+            isSuccess = songInfo.isSuccess,
+            info = songInfo.getOrDefault(SongInfo.Empty)
+        )
+    }
 
     private fun getNumberAndTotal(number: String?, total: String?): String? {
         val numberInt = number?.toIntOrNull() ?: return null
@@ -155,23 +170,14 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    private fun getAudioHeader(context: Context, header: AudioHeader?, metadataReader: MetadataReader): String {
-        val properties = arrayOf(
-            header?.format,
-            metadataReader.bitrate(),
-            metadataReader.sampleRate(),
-            metadataReader.channelName(),
-            header?.let {
-                if (header.isVariableBitRate)
-                    context.getString(R.string.label_variable_bitrate).lowercase()
-                else null
-            },
-            header?.let {
-                if (header.isLossless)
-                    context.getString(R.string.label_loss_less).lowercase()
-                else null
-            }
+    private fun getAudioHeader(context: Context, header: AudioHeader?, metadataReader: MetadataReader): AudioHeaderInfo {
+        return AudioHeaderInfo(
+            format = header?.format,
+            bitrate = metadataReader.bitrate(),
+            sampleRate = metadataReader.sampleRate(),
+            channels = metadataReader.channelName(),
+            variableBitrate = header?.isVariableBitRate == true,
+            lossless = header?.isLossless == true
         )
-        return properties.filterNotNull().joinToString(separator = " - ")
     }
 }

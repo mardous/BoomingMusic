@@ -45,8 +45,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:textAlignment="viewStart"
-            android:textAppearance="?textAppearanceBodyMedium"
-            android:textSize="18sp"
+            android:textAppearance="?textAppearanceTitleMedium"
             tools:text="@tools:sample/lorem/random" />
 
         <com.mardous.booming.ui.component.views.BaselineGridTextView
@@ -55,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:textAlignment="viewStart"
-            android:textAppearance="?textAppearanceSubtitle2"
+            android:textAppearance="?textAppearanceBody2"
             android:textColor="?colorOnSurfaceVariant"
             tools:maxLines="2"
             tools:text="@tools:sample/lorem/random" />

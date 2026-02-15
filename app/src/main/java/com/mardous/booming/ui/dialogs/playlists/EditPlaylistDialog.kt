@@ -77,12 +77,7 @@ class EditPlaylistDialog : DialogFragment() {
 
         // Set initial image
         selectedImageUri = playlistEntity.customCoverUri
-        if (!playlistEntity.customCoverUri.isNullOrEmpty()) {
-            loadImage(playlistEntity.customCoverUri?.toUri())
-        } else {
-            // Load default icon for playlists without custom covers
-            loadImage(null)
-        }
+        loadImage(selectedImageUri?.toUri())
 
         binding.selectCoverFab.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
@@ -101,12 +96,12 @@ class EditPlaylistDialog : DialogFragment() {
                 }
 
                 libraryViewModel.updatePlaylist(
-                    playlistId = playlistEntity.playListId,
+                    playlist = playlistEntity,
                     newName = playlistName,
-                    customCoverUri = selectedImageUri,
-                    description = description?.ifEmpty { null }
+                    newImageUri = selectedImageUri,
+                    newDescription = description?.ifEmpty { null }
                 )
-                
+
                 libraryViewModel.forceReload(ReloadType.Playlists)
                 showToast(R.string.playlist_updated)
             }

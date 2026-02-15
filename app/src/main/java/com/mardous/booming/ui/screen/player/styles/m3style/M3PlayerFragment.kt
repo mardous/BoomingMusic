@@ -21,6 +21,7 @@ import android.animation.AnimatorSet
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
@@ -29,7 +30,11 @@ import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.updatePadding
 import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.core.model.player.*
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTintTarget
+import com.mardous.booming.core.model.player.iconButtonTintTarget
+import com.mardous.booming.core.model.player.surfaceTintTarget
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.databinding.FragmentM3PlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
@@ -58,6 +63,9 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
 
     override val playerToolbar: Toolbar?
         get() = binding.playerToolbar
+
+    override val blurView: ImageView?
+        get() = binding.blur
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -104,11 +112,11 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
         val oldColor = binding.openQueueButton.iconTint.defaultColor
         return mutableListOf(
             binding.root.surfaceTintTarget(scheme.surfaceColor),
-            binding.openQueueButton.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
-            binding.showLyricsButton.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
-            binding.sleepTimerAction.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
-            binding.addToPlaylistAction.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
-            binding.moreAction.iconButtonTintTarget(oldColor, scheme.primaryControlColor),
+            binding.openQueueButton.iconButtonTintTarget(oldColor, scheme.onSurfaceColor),
+            binding.showLyricsButton.iconButtonTintTarget(oldColor, scheme.onSurfaceColor),
+            binding.sleepTimerAction.iconButtonTintTarget(oldColor, scheme.onSurfaceColor),
+            binding.addToPlaylistAction.iconButtonTintTarget(oldColor, scheme.onSurfaceColor),
+            binding.moreAction.iconButtonTintTarget(oldColor, scheme.onSurfaceColor),
         ).also {
             it.addAll(playerControlsFragment.getTintTargets(scheme))
         }
@@ -127,7 +135,7 @@ class M3PlayerFragment : AbsPlayerFragment(R.layout.fragment_m3_player) {
     }
 
     override fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
-        popupMenu?.menu?.onIsFavoriteChanged(isFavorite, false)
+        popupMenu?.menu?.setIsFavorite(isFavorite, false)
     }
 
     override fun onDestroyView() {

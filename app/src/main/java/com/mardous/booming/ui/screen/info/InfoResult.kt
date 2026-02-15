@@ -9,7 +9,16 @@ data class PlayInfoResult(
     val mostPlayedTracks: List<PlayCountEntity>
 )
 
-data class SongInfoResult(
+data class AudioHeaderInfo(
+    val format: String? = null,
+    val bitrate: String? = null,
+    val sampleRate: String? = null,
+    val channels: String? = null,
+    val variableBitrate: Boolean,
+    val lossless: Boolean
+)
+
+data class SongInfo(
     val playCount: String? = null,
     val skipCount: String? = null,
     val lastPlayedDate: String? = null,
@@ -17,7 +26,7 @@ data class SongInfoResult(
     val fileSize: String? = null,
     val trackLength: String? = null,
     val dateModified: String? = null,
-    val audioHeader: String? = null,
+    val audioHeaderInfo: AudioHeaderInfo? = null,
     val title: String? = null,
     val album: String? = null,
     val artist: String? = null,
@@ -32,7 +41,12 @@ data class SongInfoResult(
     val replayGain: String? = null,
     val comment: String? = null
 ) {
+    val isMissingMetadata: Boolean = album.isNullOrEmpty() && albumArtist.isNullOrEmpty() &&
+            albumYear.isNullOrEmpty() && trackNumber.isNullOrEmpty() && discNumber.isNullOrEmpty() &&
+            composer.isNullOrEmpty() && conductor.isNullOrEmpty() && publisher.isNullOrEmpty() &&
+            genre.isNullOrEmpty()
+
     companion object {
-        val Empty = SongInfoResult()
+        val Empty = SongInfo()
     }
 }

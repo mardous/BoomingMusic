@@ -33,7 +33,9 @@ data class DownloadedLyrics(
     val artist: String,
     @SerialName("albumName")
     val album: String,
-    val duration: Double,
+    val instrumental: Boolean,
+    @SerialName("duration")
+    val durationInSeconds: Double,
     val plainLyrics: String?,
     val syncedLyrics: String?
 ) {
@@ -45,5 +47,17 @@ data class DownloadedLyrics(
         get() = !plainLyrics.isNullOrEmpty() && !syncedLyrics.isNullOrEmpty()
 }
 
-fun Song.toDownloadedLyrics(plainLyrics: String? = null, syncedLyrics: String? = null) =
-    DownloadedLyrics(id.toInt(), title, artistName, albumName, (duration / 1000).toDouble(), plainLyrics, syncedLyrics)
+fun Song.toDownloadedLyrics(
+    plainLyrics: String? = null,
+    syncedLyrics: String? = null,
+    instrumental: Boolean = false
+) = DownloadedLyrics(
+    id = id.toInt(),
+    title = title,
+    artist = artistName,
+    album = albumName,
+    instrumental = instrumental,
+    durationInSeconds = (duration / 1000).toDouble(),
+    plainLyrics = plainLyrics,
+    syncedLyrics = syncedLyrics
+)

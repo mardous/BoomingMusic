@@ -35,8 +35,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.transition.TransitionManager
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.button.MaterialButtonToggleGroup
 import com.mardous.booming.R
 import com.mardous.booming.data.SearchFilter
 import com.mardous.booming.data.local.room.PlaylistWithSongs
@@ -65,7 +65,7 @@ import java.util.Locale
  * @author Christians M. A. (mardous)
  */
 class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
-    View.OnClickListener, ChipGroup.OnCheckedStateChangeListener, ISearchCallback {
+    View.OnClickListener, MaterialButtonToggleGroup.OnButtonCheckedListener, ISearchCallback {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
@@ -88,13 +88,13 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             viewModel.searchFilter.collect { searchFilter ->
                 if (searchFilter != null) {
-                    val compatibleModes = searchFilter.getCompatibleModes().map { it.chipId }
+                    val compatibleModes = searchFilter.getCompatibleModes().map { it.buttonId }
 
-                    binding.chipGroup.children.map { it as Chip }
+                    binding.modeButtonGroup.children.map { it as MaterialButton }
                         .filter { !compatibleModes.contains(it.id) }
                         .forEach { it.isVisible = false }
-                    binding.chipGroup.isSelectionRequired = true
-                    binding.chipGroup.check(compatibleModes.first())
+                    binding.modeButtonGroup.isSelectionRequired = true
+                    binding.modeButtonGroup.check(compatibleModes.first())
 
                     binding.searchView.hint = searchFilter.getName()
                     binding.filterScrollView.isVisible = searchFilter.getCompatibleModes().size > 1
@@ -125,7 +125,7 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
         }
         binding.voiceSearch.setOnClickListener(this)
         binding.clearText.setOnClickListener(this)
-        binding.chipGroup.setOnCheckedStateChangeListener(this)
+        binding.modeButtonGroup.addOnButtonCheckedListener(this)
         binding.searchView.apply {
             reactionToKey(KeyEvent.KEYCODE_ENTER) {
                 hideSoftKeyboard()
@@ -171,7 +171,7 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
             val filterMode = arguments?.let {
                 BundleCompat.getSerializable(it, MODE, SearchQuery.FilterMode::class.java)
             }
-            binding.chipGroup.check(filterMode?.chipId ?: View.NO_ID)
+            binding.modeButtonGroup.check(filterMode?.buttonId ?: View.NO_ID)
             binding.searchView.setText(arguments?.getString(QUERY))
             viewModel.updateFilter(arguments?.let {
                 BundleCompat.getParcelable(it, FILTER, SearchFilter::class.java)
@@ -214,11 +214,13 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
         }
     }
 
-    override fun onCheckedChanged(group: ChipGroup, checkedIds: MutableList<Int>) {
-        val searchMode = when {
-            checkedIds.isNotEmpty() -> SearchQuery.FilterMode.entries.firstOrNull { it.chipId == checkedIds.single() }
-            else -> null
-        }
+    override fun onButtonChecked(
+        group: MaterialButtonToggleGroup,
+        checkedId: Int,
+        isChecked: Boolean
+    ) {
+        val searchMode = SearchQuery.FilterMode.entries
+            .firstOrNull { it.buttonId == group.checkedButtonId }
         viewModel.updateQuery(mode = searchMode)
     }
 
@@ -332,6 +334,7 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
         hideSoftKeyboard()
         super.onDestroyView()
         searchAdapter.unregisterAdapterDataObserver(adapterDataObserver)
+        binding.modeButtonGroup.removeOnButtonCheckedListener(this)
         binding.searchView.setOnKeyListener(null)
         _binding = null
     }

@@ -26,7 +26,9 @@ import android.media.MediaScannerConnection
 import android.os.Environment
 import android.provider.MediaStore
 import androidx.core.animation.doOnEnd
+import androidx.core.net.toUri
 import androidx.lifecycle.*
+import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.model.LibraryMargin
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
@@ -49,7 +51,8 @@ import kotlin.coroutines.resume
 
 class LibraryViewModel(
     private val repository: Repository,
-    private val inclExclDao: InclExclDao
+    private val inclExclDao: InclExclDao,
+    private val customPlaylistImageManager: CustomPlaylistImageManager
 ) : ViewModel() {
 
     init {
@@ -193,15 +196,6 @@ class LibraryViewModel(
         }
     }
 
-    private suspend fun songsFromCurrentFolder(): List<Song> {
-        val currentFolder = fileSystem.value
-        return if (currentFolder != null) {
-            filesToSongs(currentFolder.children, includeFolders = false, deepListing = false)
-        } else {
-            emptyList()
-        }
-    }
-
     fun navigateToPath(
         navigateToPath: String? = null,
         hierarchyView: Boolean = Preferences.hierarchyFolderView
@@ -255,10 +249,15 @@ class LibraryViewModel(
 
     fun listSongsFromFiles(
         song: Song,
-        files: List<FileSystemItem>? = fileSystem.value?.children
+        files: List<FileSystemItem>?
     ) = liveData(IO) {
         if (!files.isNullOrEmpty()) {
-            val songs = songsFromCurrentFolder()
+            val currentFolder = fileSystem.value
+            val songs = if (currentFolder != null) {
+                filesToSongs(files, includeFolders = false, deepListing = false)
+            } else {
+                emptyList()
+            }
             val startPos = songs.indexOfSong(song.id).coerceAtLeast(0)
             emit(songs to startPos)
         }
@@ -322,27 +321,40 @@ class LibraryViewModel(
     }
 
     fun updatePlaylist(
-        playlistId: Long,
+        playlist: PlaylistEntity,
         newName: String,
-        customCoverUri: String? = null,
-        description: String? = null
+        newImageUri: String?,
+        newDescription: String?
     ) = viewModelScope.launch(IO) {
-        repository.updatePlaylist(playlistId, newName, customCoverUri, description)
-    }
-
-    fun deleteSongsInPlaylist(songs: List<SongEntity>) {
-        viewModelScope.launch(IO) {
-            repository.deleteSongsInPlaylist(songs)
-            forceReload(ReloadType.Playlists)
+        var imageUri = playlist.customCoverUri
+        if (newImageUri != imageUri) {
+            if (!imageUri.isNullOrEmpty()) {
+                customPlaylistImageManager.deleteImage(imageUri.toUri())
+            }
+            imageUri = customPlaylistImageManager.createPlaylistImage(newImageUri)?.toString()
         }
+        repository.updatePlaylist(
+            playlist.copy(
+                playlistName = newName,
+                customCoverUri = imageUri,
+                description = newDescription
+            )
+        )
     }
 
-    fun deleteSongsFromPlaylist(playlists: List<PlaylistEntity>) = viewModelScope.launch(IO) {
-        repository.deletePlaylistSongs(playlists)
+    fun deleteSongsInPlaylist(songs: List<SongEntity>) = viewModelScope.launch(IO) {
+        repository.deleteSongsInPlaylist(songs)
+        forceReload(ReloadType.Playlists)
     }
 
     fun deletePlaylists(playlists: List<PlaylistEntity>) = viewModelScope.launch(IO) {
+        for (playlist in playlists) {
+            playlist.customCoverUri?.let {
+                customPlaylistImageManager.deleteImage(it.toUri())
+            }
+        }
         repository.deletePlaylists(playlists)
+        forceReload(ReloadType.Playlists)
     }
 
     fun addToPlaylist(playlistName: String, songs: List<Song>): LiveData<AddToPlaylistResult> =
@@ -396,9 +408,10 @@ class LibraryViewModel(
 
         val playlists = checkPlaylistExists(playlistName)
         if (playlists.isEmpty()) {
+            val playlistImageUri = customPlaylistImageManager.createPlaylistImage(customCoverUri)
             val playlistEntity = PlaylistEntity(
                 playlistName = playlistName,
-                customCoverUri = customCoverUri,
+                customCoverUri = playlistImageUri?.toString(),
                 description = description
             )
             val playlistId: Long = createPlaylist(playlistEntity)
@@ -497,7 +510,7 @@ class LibraryViewModel(
     fun handleIntent(intent: Intent): LiveData<HandleIntentResult> = liveData(IO) {
         val result = HandleIntentResult(handled = true)
         val uri = intent.data
-        if (uri == null) {
+        if (uri == null || uri.scheme == "glance-action") {
             emit(result.copy(handled = false))
         } else {
             if (uri.toString().isNotEmpty()) {

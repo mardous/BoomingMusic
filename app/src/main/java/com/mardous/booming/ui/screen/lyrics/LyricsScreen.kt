@@ -6,12 +6,34 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.add
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.CircularWavyProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.FilledIconButton
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,11 +56,13 @@ import com.mardous.booming.core.model.LibraryMargin
 import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.extensions.isPowerSaveMode
+import com.mardous.booming.ui.component.compose.AnimatedEqBars
 import com.mardous.booming.ui.component.compose.color.extractGradientColors
 import com.mardous.booming.ui.component.compose.decoration.FadingEdges
 import com.mardous.booming.ui.component.compose.decoration.animatedGradient
 import com.mardous.booming.ui.component.compose.decoration.fadingEdges
 import com.mardous.booming.ui.screen.library.LibraryViewModel
+import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.BackgroundEffect
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.theme.PlayerTheme
 import kotlinx.coroutines.Dispatchers
@@ -77,31 +101,30 @@ fun LyricsScreen(
 
     var gradientColors by remember { mutableStateOf<List<Color>>(emptyList()) }
     LaunchedEffect(lyricsResult.id) {
-        if (!lyricsViewSettings.gradientBackground || isPowerSaveMode)
+        if (isPowerSaveMode)
             return@LaunchedEffect
 
-        withContext(Dispatchers.Default) {
-            val result = SingletonImageLoader.get(context).execute(
-                ImageRequest.Builder(context)
-                    .data(playerViewModel.currentSong)
-                    .build()
-            )
-            gradientColors = if (result is SuccessResult) {
-                result.image.toBitmap().extractGradientColors()
-            } else {
-                emptyList()
+        when (lyricsViewSettings.backgroundEffect) {
+            BackgroundEffect.Gradient -> {
+                withContext(Dispatchers.Default) {
+                    val result = SingletonImageLoader.get(context).execute(
+                        ImageRequest.Builder(context)
+                            .data(playerViewModel.currentSong)
+                            .build()
+                    )
+                    gradientColors = if (result is SuccessResult) {
+                        result.image.toBitmap().extractGradientColors()
+                    } else {
+                        emptyList()
+                    }
+                }
             }
+
+            BackgroundEffect.None -> { /* no-op */ }
         }
     }
 
-    val isGradientBackground by remember {
-        derivedStateOf { lyricsViewSettings.gradientBackground && gradientColors.size >= 2 }
-    }
-    val contentColor = if (isGradientBackground) {
-        Color.White
-    } else {
-        MaterialTheme.colorScheme.secondary
-    }
+    var hasBackgroundEffects by remember { mutableStateOf(false) }
 
     Scaffold(
         contentWindowInsets = WindowInsets
@@ -115,7 +138,7 @@ fun LyricsScreen(
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_edit_note_24dp),
-                    contentDescription = stringResource(R.string.open_lyrics_editor)
+                    contentDescription = stringResource(R.string.action_lyrics_editor)
                 )
             }
         },
@@ -123,17 +146,24 @@ fun LyricsScreen(
     ) { innerPadding ->
         Box(modifier = Modifier.fillMaxSize()) {
             AnimatedContent(
-                targetState = gradientColors,
+                targetState = Pair(lyricsViewSettings.backgroundEffect, gradientColors),
                 transitionSpec = {
                     fadeIn(tween(1000)).togetherWith(fadeOut(tween(1000)))
                 }
-            ) { colors ->
-                if (isGradientBackground) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .animatedGradient(colors, isPlaying)
-                    )
+            ) { (effect, gradientColors) ->
+                when {
+                    effect.isGradient && gradientColors.size >= 2 -> {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .animatedGradient(gradientColors, isPlaying)
+                        )
+                        hasBackgroundEffects = true
+                    }
+
+                    else -> {
+                        hasBackgroundEffects = false
+                    }
                 }
             }
 
@@ -144,12 +174,12 @@ fun LyricsScreen(
                 result = lyricsResult,
                 state = lyricsViewState,
                 settings = lyricsViewSettings,
-                contentColor = contentColor,
                 fadingEdges = FadingEdges(top = 56.dp, bottom = 32.dp),
                 scrollState = plainScrollState,
                 textAlign = TextAlign.Start,
+                isPlaying = isPlaying,
                 isPowerSaveMode = isPowerSaveMode,
-                hasGradientBackground = isGradientBackground
+                hasBackgroundEffects = hasBackgroundEffects
             ) { playerViewModel.seekTo(it.startAt) }
         }
     }
@@ -165,6 +195,7 @@ fun CoverLyricsScreen(
     val context = LocalContext.current
     val isPowerSaveMode = context.isPowerSaveMode()
 
+    val isPlaying by playerViewModel.isPlayingFlow.collectAsState()
     val lyricsViewSettings by lyricsViewModel.playerLyricsViewSettings.collectAsState()
 
     val lyricsResult by lyricsViewModel.lyricsResult.collectAsState()
@@ -186,7 +217,7 @@ fun CoverLyricsScreen(
     }
 
     val playerColorScheme by playerViewModel.colorSchemeFlow.collectAsState(
-        initial = PlayerColorScheme.themeColorScheme(LocalContext.current)
+        initial = PlayerColorScheme.themeColorScheme(context)
     )
     PlayerTheme(playerColorScheme) {
         Box(modifier = modifier.fillMaxSize()) {
@@ -195,12 +226,12 @@ fun CoverLyricsScreen(
                 result = lyricsResult,
                 state = lyricsViewState,
                 settings = lyricsViewSettings,
-                contentColor = MaterialTheme.colorScheme.onSurface,
                 fadingEdges = FadingEdges(top = 72.dp, bottom = 64.dp),
                 scrollState = plainScrollState,
                 textAlign = TextAlign.Center,
+                isPlaying = isPlaying,
                 isPowerSaveMode = isPowerSaveMode,
-                hasGradientBackground = false
+                hasBackgroundEffects = false
             ) { playerViewModel.seekTo(it.startAt) }
 
             FilledIconButton(
@@ -216,76 +247,94 @@ fun CoverLyricsScreen(
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_open_in_full_24dp),
-                    contentDescription = stringResource(R.string.open_lyrics_editor)
+                    contentDescription = stringResource(R.string.action_lyrics_editor)
                 )
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun LyricsSurface(
     result: LyricsResult,
     state: LyricsViewState,
     settings: LyricsViewSettings,
-    contentColor: Color,
     fadingEdges: FadingEdges,
     scrollState: ScrollState,
     textAlign: TextAlign?,
+    isPlaying: Boolean,
     isPowerSaveMode: Boolean,
-    hasGradientBackground: Boolean,
+    hasBackgroundEffects: Boolean,
     modifier: Modifier = Modifier,
     onSeekToLine: (Lyrics.Line) -> Unit
 ) {
-    CompositionLocalProvider(
-        LocalContentColor provides contentColor
-    ) {
-        Box(modifier) {
-            if (result.loading) {
-                CircularProgressIndicator(
-                    modifier = Modifier.align(Alignment.Center)
-                )
-            } else {
-                when {
-                    state.lyrics != null -> {
-                        LyricsView(
-                            state = state,
-                            settings = settings,
-                            fadingEdges = fadingEdges,
-                            isPowerSaveMode = isPowerSaveMode,
-                            hasGradientBackground = hasGradientBackground
-                        ) { onSeekToLine(it) }
-                    }
+    val colorScheme = MaterialTheme.colorScheme
+    val contentColor = when {
+        hasBackgroundEffects -> Color.White
+        else -> when (settings.mode) {
+            LyricsViewSettings.Mode.Player -> colorScheme.onSurface
+            else -> colorScheme.secondary
+        }
+    }
+    Box(modifier) {
+        if (result.loading) {
+            CircularWavyProgressIndicator(
+                color = contentColor,
+                modifier = Modifier.align(Alignment.Center)
+            )
+        } else {
+            when {
+                state.lyrics != null -> {
+                    LyricsView(
+                        state = state,
+                        settings = settings,
+                        fadingEdges = fadingEdges,
+                        contentColor = contentColor,
+                        isPowerSaveMode = isPowerSaveMode,
+                        hasBackgroundEffects = hasBackgroundEffects
+                    ) { onSeekToLine(it) }
+                }
 
-                    !result.plainLyrics.content.isNullOrBlank() -> {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .nestedScroll(rememberNestedScrollInteropConnection())
-                                .fadingEdges(fadingEdges)
-                                .verticalScroll(scrollState)
-                                .padding(settings.contentPadding)
-                        ) {
-                            Text(
-                                text = result.plainLyrics.content,
-                                color = contentColor,
-                                textAlign = textAlign,
-                                style = settings.unsyncedStyle,
-                                modifier = Modifier.fillMaxSize()
-                            )
-                        }
-                    }
-
-                    else -> {
+                !result.plainLyrics.content.isNullOrBlank() -> {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .nestedScroll(rememberNestedScrollInteropConnection())
+                            .fadingEdges(fadingEdges)
+                            .verticalScroll(scrollState)
+                            .padding(settings.contentPadding)
+                    ) {
                         Text(
-                            text = stringResource(R.string.no_lyrics_found),
+                            text = result.plainLyrics.content,
                             color = contentColor,
-                            style = MaterialTheme.typography.bodyLarge,
-                            modifier = Modifier
-                                .padding(horizontal = 16.dp)
-                                .align(Alignment.Center)
+                            textAlign = textAlign,
+                            style = settings.unsyncedStyle,
+                            modifier = Modifier.fillMaxSize()
                         )
                     }
+                }
+
+                result.instrumental -> {
+                    AnimatedEqBars(
+                        color = contentColor,
+                        isPlaying = isPlaying,
+                        barCount = 5,
+                        modifier = Modifier
+                            .size(56.dp)
+                            .align(Alignment.Center)
+                    )
+                }
+
+                else -> {
+                    Text(
+                        text = stringResource(R.string.no_lyrics_found),
+                        color = contentColor,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .align(Alignment.Center)
+                    )
                 }
             }
         }

@@ -1,93 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="16dp"
+    android:orientation="vertical"
     android:clickable="true"
-    android:focusable="true"
-    android:orientation="vertical">
+    android:focusable="true">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/playerToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_keyboard_arrow_down_24dp"
         tools:menu="@menu/menu_now_playing" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/playerAlbumCoverFragment"
-        android:name="com.mardous.booming.ui.screen.player.cover.CoverPagerFragment"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintHeight_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/playerToolbar"
-        tools:layout="@layout/fragment_album_cover_peek" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:ellipsize="end"
-        android:freezesText="true"
-        android:singleLine="true"
-        android:textAppearance="?textAppearanceSubtitle1"
-        app:layout_constraintBottom_toTopOf="@+id/text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/playerAlbumCoverFragment"
-        app:layout_constraintTop_toBottomOf="@+id/playerToolbar"
-        tools:text="@tools:sample/lorem/random" />
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:freezesText="true"
-        android:singleLine="true"
-        android:ellipsize="end"
-        android:textAppearance="?textAppearanceBody2"
-        android:textColor="?android:attr/textColorSecondary"
-        app:layout_constraintBottom_toTopOf="@+id/songInfo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/playerAlbumCoverFragment"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:text="@tools:sample/lorem" />
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/playerAlbumCoverFragment"
+            android:name="com.mardous.booming.ui.screen.player.cover.CoverPagerFragment"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            tools:layout="@layout/fragment_album_cover_peek" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/songInfo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:freezesText="true"
-        android:singleLine="true"
-        android:ellipsize="end"
-        android:textColor="?android:attr/textColorSecondary"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/playerAlbumCoverFragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/playerAlbumCoverFragment"
-        app:layout_constraintTop_toBottomOf="@+id/text"
-        tools:text="@tools:sample/lorem/random" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:freezesText="true"
+                android:singleLine="true"
+                android:textAppearance="?textAppearanceHeadline6"
+                app:layout_constraintBottom_toTopOf="@+id/text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/playerAlbumCoverFragment"
+                app:layout_constraintTop_toBottomOf="@+id/playerToolbar"
+                tools:text="@tools:sample/lorem/random" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:freezesText="true"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textAppearance="?textAppearanceSubtitle2"
+                android:textColor="?android:attr/textColorSecondary"
+                app:layout_constraintBottom_toTopOf="@+id/playbackControlsContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/playerAlbumCoverFragment"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                tools:text="@tools:sample/lorem" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/playbackControlsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerAlbumCoverFragment">
+        android:paddingTop="8dp"
+        android:paddingBottom="24dp">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/playbackControlsFragment"
@@ -98,4 +86,19 @@
 
     </FrameLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/songInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:freezesText="true"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textAppearance="?textAppearanceBodySmall"
+        android:textColor="?android:attr/textColorSecondary"
+        tools:text="@tools:sample/lorem/random" />
+
+</LinearLayout>

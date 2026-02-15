@@ -25,14 +25,14 @@ import android.os.Build
  */
 class AudioDevice(
     val type: AudioDeviceType,
-    private val productName: CharSequence?
+    private val productName: String?
 ) {
 
-    fun getDeviceName(context: Context): CharSequence {
+    fun getDeviceName(context: Context, renameDeviceOutput: Boolean = true): String {
         if (type.isProduct && !productName.isNullOrEmpty()) {
             return productName
         }
-        if (type.isThisDeviceOutput) {
+        if (type.isThisDeviceOutput && renameDeviceOutput) {
             return "${Build.MANUFACTURER} ${Build.MODEL}"
         }
         return context.getString(type.nameRes)

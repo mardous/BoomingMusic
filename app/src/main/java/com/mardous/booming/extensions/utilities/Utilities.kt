@@ -52,6 +52,9 @@ fun buildInfoString(vararg parts: Any?, delimiter: String = DEFAULT_INFO_DELIMIT
 inline fun <reified T : Enum<T>> String.toEnum() =
     enumValues<T>().firstOrNull { it.name.equals(this, ignoreCase = true) }
 
+inline fun <reified T : Enum<T>> Int.toEnum() =
+    enumValues<T>().firstOrNull { it.ordinal == this }
+
 inline fun <reified T> String?.deserialize(defaultValue: T): T {
     val lenientJson = Json {
         ignoreUnknownKeys = true

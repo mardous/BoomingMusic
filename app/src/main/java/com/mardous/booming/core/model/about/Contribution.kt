@@ -18,7 +18,6 @@
 package com.mardous.booming.core.model.about
 
 import android.content.Context
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.mardous.booming.extensions.readStringFromAsset
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -34,10 +33,7 @@ class Contribution(
     val image: String? = null,
     @SerialName("contrib_url")
     val url: String? = null
-) : PreviewParameterProvider<Contribution> {
-
-    override val values: Sequence<Contribution>
-        get() = sequenceOf(Contribution("Spanish", "mardous", null, null))
+) {
 
     val imageUrl: String?
         get() = image?.let {

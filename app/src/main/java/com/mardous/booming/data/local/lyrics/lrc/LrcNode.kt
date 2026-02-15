@@ -6,8 +6,8 @@ import com.mardous.booming.data.model.lyrics.LyricsActor
 internal class LrcNode(
     val start: Long,
     val text: String?,
-    val bgText: String?,
-    val rawLine: String?,
+    var bgText: String?,
+    var rawLine: String?,
     var actor: LyricsActor? = null
 ) {
     private val children = mutableListOf<LrcNode>()

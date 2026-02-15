@@ -29,11 +29,8 @@
 - [📸 Screenshots](#-screenshots)
 - [💻 Tech Stack](#-tech-stack)
 - [🧩 Roadmap](#-roadmap)
-- [🎧 Supported Formats](#-supported-formats)
-- [🔐 Permissions](#-permissions)
-- [🚘 Android Auto Setup](#-android-auto-setup)
+- [🔗 Useful Links](#-useful-links)
 - [🤝 Contributing](#-contributing)
-- [💬 Community](#-community)
 - [🙌 Credits](#-credits)
 - [⚖️ License](#-license)
 
@@ -59,15 +56,26 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="metadata/en-US/images/phoneScreenshots/1.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/2.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/3.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/4.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/5.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/6.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/7.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/8.jpg" width="30%" />
-  <img src="metadata/en-US/images/phoneScreenshots/9.jpg" width="30%" />
+<table>
+<tr>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/1.jpg" alt="For You" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/2.jpg" alt="Songs" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/3.jpg" alt="Albums" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/4.jpg" alt="Album View" width="180"/></td>
+</tr>
+<tr>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/5.jpg" alt="Search" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/6.jpg" alt="Normal" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/7.jpg" alt="Full" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/8.jpg" alt="Gradient" width="180"/></td>
+</tr>
+<tr>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/9.jpg" alt="Plain" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/10.jpg" alt="M3" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/11.jpg" alt="Expressive" width="180"/></td>
+<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/12.jpg" alt="Peek" width="180"/></td>
+</tr>
+</table>
 </div>
 
 ### 💻 Tech Stack
@@ -93,24 +101,25 @@
 - [ ] 💿 Enhanced artist pages (separate albums and singles visually)
 - [ ] 📺 Experimental Android TV support (if enough demand!)
 
-## 🎧 Supported Formats
+## 🔗 Useful Links
 
-Booming Music uses [Media3](https://developer.android.com/media/media3) for audio playback.
-See [ExoPlayer’s supported formats](https://developer.android.com/media/media3/exoplayer/supported-formats) for complete details.
+- 🔐 **[Requested Permissions](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions)**  
+  What the app needs and why
 
-## 🔐 Permissions
+- 🚘 **[Android Auto Setup](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)**  
+  How to enable and troubleshoot
 
-We request only what’s essential.
-Read [PERMISSIONS.md](PERMISSIONS.md) for details on why each permission is required.
+- 🎧 **[Supported Formats](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats)**  
+  Compatible audio formats
 
-## 🚘 Android Auto Setup
+- 💬 **[Community](https://github.com/mardous/BoomingMusic/wiki/Community)**  
+  Users and contributors
 
-If Booming Music doesn’t appear in Android Auto:
+- 🌐 **[Translations](https://crowdin.com/project/booming-music)**  
+  Help us translate Booming Music into your language
 
-1. Open **Android Auto settings**.
-2. Scroll down and tap the **version number** several times to enable developer mode.
-3. Open **Developer settings** from the top-right menu.
-4. Enable **Unknown sources**.
+- ❓ **[FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)**  
+  Common questions
 
 ## 🤝 Contributing
 
@@ -125,9 +134,17 @@ You can also:
 
 **Translations:** Managed on [Crowdin](https://crowdin.com/project/booming-music).
 
-## 💬 Community
+## 💖 Support Development
 
-Join the [Telegram group](https://t.me/mardousdev) for updates, discussions, and feedback.
+Booming Music is an open-source project developed and maintained with passion in my spare time.
+If you enjoy the app and the free features it offers, please consider supporting me to help cover
+development costs and dedicate more time to new features.
+
+Your support is greatly appreciated and keeps me motivated to continue improving Booming Music!
+
+<a href="https://ko-fi.com/christiaam" target="_blank">
+<img src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_red.png" alt="Support me on Ko-fi" style="border: 0px; height: 40px;" />
+</a>
 
 ## 🙌 Credits
 
@@ -136,7 +153,8 @@ Also thanks to:
 
 - [AMLV](https://github.com/dokar3/amlv)
 - [LRCLib](https://lrclib.net/)
-- [spotify-lyrics-api](https://github.com/akashrchandran/spotify-lyrics-api) by [Akash R Chandran](https://github.com/akashrchandran)
+- [Better Lyrics](https://better-lyrics.boidu.dev/)
+- [SimpMusic Lyrics](https://github.com/maxrave-dev/SimpMusic)
 - [Alex](https://github.com/Paxsenix0)
 
 ## ⚖️ License

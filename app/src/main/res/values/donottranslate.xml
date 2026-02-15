@@ -3,12 +3,16 @@
 	<string name="app_name" translatable="false">Booming Music</string>
 	<string name="app_name_long" translatable="false">Booming Music</string>
 
-	<string name="mardous" translatable="false">Christians Martínez Alvarado</string>
-	<string name="beta_testers" translatable="false">Anjishnu, Ballerina, BlackSparkz, Bryan,
-		drago-bit, Error-Cezar, EVOLUTION, Incredibleeee, LawLas, Lenard Felix, Luan, Moisés, naaK,
-		Nawa, Neptune, rAsC, sad, SagXD, TheHHR.</string>
+	<string name="mardous" translatable="false">Christians Martínez A.</string>
 
 	<string name="empty_text_emoji" translatable="false">&#128561;</string>
+    <string name="instrumental_identifiers" translatable="false">(Instrumental)</string>
+
+    <string name="speed_0_5x" translatable="false">0.5x</string>
+    <string name="speed_0_8x" translatable="false">0.8x</string>
+    <string name="speed_1_0x" translatable="false">1.0x</string>
+    <string name="speed_1_2x" translatable="false">1.2x</string>
+    <string name="speed_1_5x" translatable="false">1.5x</string>
 
 	<string name="google" translatable="false">Google</string>
 	<string name="lastfm" translatable="false">Last.fm</string>

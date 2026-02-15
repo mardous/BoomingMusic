@@ -195,21 +195,29 @@ class RealSmartRepository(
         return songRepository.makeSongCursor(queryDispatcher)
     }
 
-    private suspend fun List<PlayCountEntity>.fromPlayCountToSongs() = mapNotNull {
-        if (!File(it.data).exists() || it.id == -1L) withContext(IO) {
-            deleteSongInPlayCount(it.id)
-            null
-        } else {
-            it.toSong()
+    private suspend fun List<PlayCountEntity>.fromPlayCountToSongs(): List<Song> = withContext(IO) {
+        val (deletedTracks, validTracks) = partition { it.id == -1L || !File(it.data).exists() }
+        if (deletedTracks.isNotEmpty()) {
+            deletedTracks.map { it.id }
+                .chunked(MAX_ITEMS_PER_CHUNK)
+                .forEach { chunkIds ->
+                    deleteSongsInPlayCount(chunkIds)
+                }
         }
+
+        validTracks.map { it.toSong() }
     }
 
-    private suspend fun List<HistoryEntity>.fromHistoryToSongs() = mapNotNull {
-        if (!File(it.data).exists() || it.id == -1L) withContext(IO) {
-            deleteSongInHistory(it.id)
-            null
-        } else {
-            it.toSong()
+    private suspend fun List<HistoryEntity>.fromHistoryToSongs(): List<Song> = withContext(IO) {
+        val (deletedTracks, validTracks) = partition { it.id == -1L || !File(it.data).exists() }
+        if (deletedTracks.isNotEmpty()) {
+            deletedTracks.map { it.id }
+                .chunked(MAX_ITEMS_PER_CHUNK)
+                .forEach { chunkIds ->
+                    deleteSongsInHistory(chunkIds)
+                }
         }
+
+        validTracks.map { it.toSong() }
     }
 }

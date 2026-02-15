@@ -26,6 +26,7 @@ import androidx.fragment.app.FragmentActivity
 import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_ARTIST_IMAGE
 import com.mardous.booming.core.sort.ArtistSortMode
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.extensions.isActivated
 import com.mardous.booming.extensions.isValidPosition
@@ -37,6 +38,7 @@ import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
+import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.Preferences
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import kotlin.properties.Delegates
@@ -153,6 +155,12 @@ class ArtistAdapter constructor(
                     return onArtistMenuItemClick(item)
                 }
             })
+            play?.setOnClickListener {
+                val artistSongs = with(SongSortMode.ArtistSongs) {
+                    artist.songs.sorted()
+                }
+                getViewModel<PlayerViewModel>()?.openQueue(artistSongs)
+            }
         }
     }
 

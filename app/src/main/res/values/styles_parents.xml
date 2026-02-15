@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.Theme.Booming" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Base.Theme.Booming" parent="Theme.Material3Expressive.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
@@ -48,25 +48,19 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
-        <item name="toolbarPopupTheme">@style/ThemeOverlay.Material3.Dark</item>
-        <item name="rectSelector">@drawable/rect_selector</item>
-        <item name="android:actionOverflowButtonStyle">@style/Widget.ActionButton.Overflow</item>
+        <item name="windowActionModeOverlay">true</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
         <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
-        <item name="android:windowBackground">?colorSurface</item>
+        <item name="popupMenuBackground">@drawable/popupmenu_background</item>
         <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
         <item name="popupWindowStyle">@style/MaterialPopupMenuStyle</item>
-        <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
-        <item name="toolbarStyle">@style/ToolbarStyle</item>
-        <item name="sliderStyle">@style/SliderStyle</item>
-        <item name="elevationOverlayColor">@color/elevationOverlay</item>
-        <item name="popupMenuBackground">@drawable/popupmenu_background</item>
-        <item name="windowActionModeOverlay">true</item>
-        <item name="android:actionBarSize">@dimen/toolbar_height</item>
+        <item name="materialButtonStyle">@style/Widget.Booming.Expressive.Button</item>
+        <item name="materialButtonTonalStyle">@style/Widget.Booming.Expressive.Button.Tonal</item>
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
+        <item name="rectSelector">@drawable/rect_selector</item>
     </style>
 
-    <style name="Base.Theme.Booming.Light" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Base.Theme.Booming.Light" parent="Theme.Material3Expressive.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
@@ -113,25 +107,19 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
-        <item name="toolbarPopupTheme">@style/ThemeOverlay.Material3.Light</item>
-        <item name="rectSelector">@drawable/rect_selector</item>
-        <item name="android:actionOverflowButtonStyle">@style/Widget.ActionButton.Overflow</item>
+        <item name="windowActionModeOverlay">true</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
         <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
-        <item name="android:windowBackground">?colorSurface</item>
+        <item name="popupMenuBackground">@drawable/popupmenu_background</item>
         <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
         <item name="popupWindowStyle">@style/MaterialPopupMenuStyle</item>
-        <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
-        <item name="toolbarStyle">@style/ToolbarStyle</item>
-        <item name="sliderStyle">@style/SliderStyle</item>
-        <item name="elevationOverlayColor">@color/elevationOverlay</item>
-        <item name="popupMenuBackground">@drawable/popupmenu_background</item>
-        <item name="windowActionModeOverlay">true</item>
-        <item name="android:actionBarSize">@dimen/toolbar_height</item>
+        <item name="materialButtonStyle">@style/Widget.Booming.Expressive.Button</item>
+        <item name="materialButtonTonalStyle">@style/Widget.Booming.Expressive.Button.Tonal</item>
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
+        <item name="rectSelector">@drawable/rect_selector</item>
     </style>
 
-    <style name="Base.Theme.Booming.Adaptive" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Booming.Adaptive" parent="Theme.Material3Expressive.DayNight.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
@@ -178,22 +166,16 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
-        <item name="toolbarPopupTheme">@style/ThemeOverlay.Material3.Light</item>
-        <item name="rectSelector">@drawable/rect_selector</item>
-        <item name="android:actionOverflowButtonStyle">@style/Widget.ActionButton.Overflow</item>
+        <item name="windowActionModeOverlay">true</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
         <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
-        <item name="android:windowBackground">?colorSurface</item>
+        <item name="popupMenuBackground">@drawable/popupmenu_background</item>
         <item name="popupMenuStyle">@style/MaterialPopupMenuStyle</item>
         <item name="popupWindowStyle">@style/MaterialPopupMenuStyle</item>
-        <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>T
-        <item name="toolbarStyle">@style/ToolbarStyle</item>
-        <item name="sliderStyle">@style/SliderStyle</item>
-        <item name="elevationOverlayColor">@color/elevationOverlay</item>
-        <item name="popupMenuBackground">@drawable/popupmenu_background</item>
-        <item name="windowActionModeOverlay">true</item>
-        <item name="android:actionBarSize">@dimen/toolbar_height</item>
+        <item name="materialButtonStyle">@style/Widget.Booming.Expressive.Button</item>
+        <item name="materialButtonTonalStyle">@style/Widget.Booming.Expressive.Button.Tonal</item>
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
+        <item name="rectSelector">@drawable/rect_selector</item>
     </style>
 
     <style name="Base.Theme.Booming.Black">
@@ -215,6 +197,8 @@
     </style>
 
     <style name="BottomSheetDialogTheme" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:enforceNavigationBarContrast" tools:ignore="NewApi">false</item>
         <item name="bottomSheetStyle">@style/ModalBottomSheetStyle</item>
     </style>
 
@@ -222,13 +206,13 @@
         <item name="bottomSheetStyle">@style/ModalBottomSheetStyle.EdgeToEdge</item>
     </style>
 
-    <style name="Theme.AppWidget" parent="Theme.Material3.DynamicColors.DayNight">
+    <style name="Theme.AppWidget" parent="Theme.Material3Expressive.DynamicColors.DayNight">
         <item name="colorSurface">@android:color/white</item>
     </style>
 
-    <style name="ManropeThemeOverlay">
-        <item name="fontFamily">@font/manrope</item>
-        <item name="android:fontFamily">@font/manrope</item>
+    <style name="CustomFontThemeOverlay">
+        <item name="fontFamily">@font/googlesansflex</item>
+        <item name="android:fontFamily">@font/googlesansflex</item>
     </style>
 
     <style name="CarTheme" parent="Theme.MaterialComponents.Light.NoActionBar">

@@ -65,8 +65,7 @@ internal data class TtmlNode(
                 this.text = text
                 return true
             } else {
-                val trimmed = text?.trim()
-                if (trimmed.isNullOrEmpty()) {
+                if (text != null && text.length == 1 && text[0] == ' ') {
                     children[children.lastIndex].let { it.text = "${it.text} " }
                     return true
                 }
@@ -88,7 +87,7 @@ internal data class TtmlNode(
             this.type == NODE_LINE && node.type == NODE_WORD
         ) {
 
-            if (node.begin > -1) {
+            if (node.begin > -1 || node.type == NODE_SECTION) {
                 return children.add(node)
             }
 

@@ -38,8 +38,9 @@ data class Album(
     val songCount: Int
         get() = songs.size
 
-    val duration: Long
-        get() = songs.sumOf { it.duration }
+    val duration: Long by lazy { songs.sumOf { it.duration } }
+
+    val dateAdded: Long by lazy { songs.minOf { it.dateAdded } }
 
     val isSingle: Boolean
         get() = songCount == 1

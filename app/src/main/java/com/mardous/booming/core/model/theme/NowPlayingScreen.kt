@@ -39,7 +39,7 @@ enum class NowPlayingScreen(
     val supportsSmallImage: Boolean
 ) {
     Default(
-        R.string.normal,
+        R.string.normal_style,
         R.drawable.np_normal,
         R.layout.fragment_album_cover_default,
         buttonStyle = NowPlayingButtonStyle.Normal,
@@ -49,7 +49,7 @@ enum class NowPlayingScreen(
         supportsSmallImage = true
     ),
     FullCover(
-        R.string.full_cover,
+        R.string.full_cover_style,
         R.drawable.np_full,
         R.layout.fragment_album_cover,
         buttonStyle = NowPlayingButtonStyle.Normal,
@@ -59,7 +59,7 @@ enum class NowPlayingScreen(
         supportsSmallImage = false
     ),
     Gradient(
-        R.string.gradient,
+        R.string.gradient_style,
         R.drawable.np_gradient,
         R.layout.fragment_album_cover,
         buttonStyle = NowPlayingButtonStyle.Normal,
@@ -69,7 +69,7 @@ enum class NowPlayingScreen(
         supportsSmallImage = false
     ),
     Plain(
-        R.string.plain,
+        R.string.plain_style,
         R.drawable.np_plain,
         R.layout.fragment_album_cover_default,
         buttonStyle = NowPlayingButtonStyle.Normal,
@@ -88,8 +88,18 @@ enum class NowPlayingScreen(
         supportsCustomCornerRadius = true,
         supportsSmallImage = true
     ),
+    Expressive(
+        R.string.expressive_style,
+        R.drawable.np_expressive,
+        R.layout.fragment_album_cover_m3,
+        buttonStyle = NowPlayingButtonStyle.Expressive,
+        supportsCoverLyrics = true,
+        supportsCarouselEffect = true,
+        supportsCustomCornerRadius = true,
+        supportsSmallImage = false
+    ),
     Peek(
-        R.string.peek,
+        R.string.peek_style,
         R.drawable.np_peek,
         R.layout.fragment_album_cover_peek,
         buttonStyle = NowPlayingButtonStyle.Normal,
@@ -97,23 +107,14 @@ enum class NowPlayingScreen(
         supportsCarouselEffect = false,
         supportsCustomCornerRadius = false,
         supportsSmallImage = false
-    ),
-    Peek2(
-        R.string.peek2,
-        R.drawable.np_peek2,
-        R.layout.fragment_album_cover_default,
-        buttonStyle = NowPlayingButtonStyle.Normal,
-        supportsCoverLyrics = true,
-        supportsCarouselEffect = false,
-        supportsCustomCornerRadius = true,
-        supportsSmallImage = false
     );
 
     val defaultColorScheme: PlayerColorSchemeMode
         get() = when (this) {
             Default, Plain, Peek -> PlayerColorSchemeMode.AppTheme
             M3 -> PlayerColorSchemeMode.MaterialYou
-            FullCover, Gradient, Peek2 -> PlayerColorSchemeMode.VibrantColor
+            Expressive -> PlayerColorSchemeMode.Blur
+            FullCover, Gradient -> PlayerColorSchemeMode.VibrantColor
         }
 
     val supportedColorSchemes: PlayerColorSchemeList
@@ -122,17 +123,28 @@ enum class NowPlayingScreen(
             Plain -> listOf(
                 PlayerColorSchemeMode.AppTheme,
                 PlayerColorSchemeMode.SimpleColor,
-                PlayerColorSchemeMode.MaterialYou
+                PlayerColorSchemeMode.MaterialYou,
+                PlayerColorSchemeMode.VibrantColor,
+                PlayerColorSchemeMode.Blur
             )
             FullCover,
-            Gradient,
-            Peek2 -> listOf(
+            Gradient -> listOf(
                 PlayerColorSchemeMode.VibrantColor
             )
-            Peek,
+            Peek -> listOf(
+                PlayerColorSchemeMode.AppTheme,
+                PlayerColorSchemeMode.MaterialYou,
+                PlayerColorSchemeMode.VibrantColor
+            )
             M3 -> listOf(
                 PlayerColorSchemeMode.AppTheme,
-                PlayerColorSchemeMode.MaterialYou
+                PlayerColorSchemeMode.MaterialYou,
+                PlayerColorSchemeMode.Blur
+            )
+            Expressive -> listOf(
+                PlayerColorSchemeMode.AppTheme,
+                PlayerColorSchemeMode.MaterialYou,
+                PlayerColorSchemeMode.Blur
             )
         }
 
@@ -147,7 +159,8 @@ enum class NowPlayingScreen(
         get() = when (this) {
             Default,
             Plain,
-            M3 -> listOf(
+            M3,
+            Expressive -> listOf(
                 PlayerTransition.Simple,
                 PlayerTransition.Cascading,
                 PlayerTransition.Depth,
@@ -169,8 +182,7 @@ enum class NowPlayingScreen(
                 PlayerTransition.Hinge,
                 PlayerTransition.Parallax
             )
-            Peek,
-            Peek2 -> listOf(
+            Peek -> listOf(
                 PlayerTransition.Simple
             )
         }

@@ -4,7 +4,7 @@ import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.extensions.utilities.collapseSpaces
 import java.util.Locale
 
-class TtmlTranslation(val lang: String) {
+class TtmlTranslation(val lang: String, val isInLine: Boolean) {
 
     private val translatedTexts = mutableSetOf<TranslationText>()
     private var pending: TranslationText? = null
@@ -57,7 +57,7 @@ class TtmlTranslation(val lang: String) {
     }
 
     operator fun get(key: String?) =
-        if (closed) translatedTexts.first { it.key == key }.getTextContent() else null
+        if (closed) translatedTexts.firstOrNull { it.key == key }?.getTextContent() else null
 
     fun close(): Boolean {
         if (closed || isPendingTranslation)

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">Jouer</string>
-    <string name="action_play_all">Jouer tout</string>
+    <string name="action_play">Lire</string>
+    <string name="action_play_all">Tout lire</string>
     <string name="action_shuffle_play">Lecture aléatoire</string>
     <string name="action_queue_next">Ajouter a la liste de lecture</string>
     <string name="shuffle_all_label">Tout mélanger</string>
     <string name="shuffle_mode">Mode aléatoire</string>
     <string name="repeat_mode">Mode répétition</string>
-    <string name="advanced_shuffle_label">Mélange avancé</string>
     <string name="shuffle_button_tip">Appuyez pour une lecture aléatoire normale. Appuyez longuement pour accéder aux options avancées.</string>
     <string name="action_play_pause">Lecture/Pause</string>
     <string name="action_pause">Pause</string>
     <string name="action_next">Suivant</string>
     <string name="action_previous">Précédent</string>
     <string name="action_cancel">Annuler</string>
+    <string name="action_seek_backward">Chercher en arrière</string>
+    <string name="action_seek_forward">Chercher en avant</string>
     <string name="action_cycle_repeat">Mode de répétition du cycle</string>
     <string name="action_toggle_shuffle">Changer le mode de mélange</string>
     <string name="reset_action">Réinitialiser</string>
@@ -42,7 +43,6 @@
     <string name="share_to_stories">Faire une story</string>
     <string name="could_not_create_the_story">Impossible de créer la story.</string>
     <string name="back_action">Retour</string>
-    <string name="rename_action">Renommer</string>
     <string name="add_action">Ajouter</string>
     <string name="delete_action">Supprimer</string>
     <string name="remove_action">Retirer</string>
@@ -100,6 +100,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Supprimer le titre <b>%1$s</b> de la playlist ?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Supprimer <b>%1$d</b> titres de la playlist ?]]></string>
     <string name="playlist_empty_text">Playlist vide</string>
+    <string name="action_lyrics_editor">Éditeur de paroles</string>
     <string name="action_tag_editor">Éditeur d\'informations</string>
     <string name="saving_changes">Sauvegarde des modifications</string>
     <string name="changes_saved_successfully">Les modifications ont été enregistrées avec succès.</string>
@@ -154,9 +155,6 @@
     <string name="some_files_are_not_listed_in_the_media_store">Certains fichiers ne sont pas répertoriés dans le magasin multimédia.</string>
     <string name="nothing_to_scan">Rien à analyser</string>
     <string name="select_storage_title">Sélectionner un espace de stockage</string>
-    <string name="app_widget_big_name">Gros</string>
-    <string name="app_widget_simple_name">Simple</string>
-    <string name="app_widget_small_name">Petit</string>
     <string name="now_playing">En cours de lecture</string>
     <string name="playing_queue_label">File de lecture</string>
     <string name="list_start">Début de liste</string>
@@ -217,7 +215,7 @@
     <string name="top_tracks_label">Meilleurs titres</string>
     <string name="history_label">Historique</string>
     <string name="not_recently_played">Pas joué récemment</string>
-    <string name="play_info">Informations sur la lecture.</string>
+    <string name="play_info">Informations sur le lecteur</string>
     <string name="track_play_counts">Nombre de lectures de titres</string>
     <string name="song_stat_never_label">jamais joué</string>
     <string name="song_stat_one_time_label">joué une fois le %s</string>
@@ -256,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Utiliser aussi comme alerte d\'alarme</string>
     <string name="action_details">Détails</string>
     <string name="action_set_as_start_directory">Définir comme répertoire de démarrage</string>
+    <string name="start_directory_set">Répertoire de démarrage défini sur %s</string>
     <string name="action_go_to_start_directory">Aller au répertoire de démarrage</string>
     <string name="action_hierarchy_view">Vue hiérarchique</string>
     <string name="new_start_directory">Nouveau répertoire de démarrage : %s</string>
@@ -288,12 +287,14 @@
     <string name="label_file_path">Chemin du fichier</string>
     <string name="size">Taille du fichier</string>
     <string name="label_file_format">Format</string>
+    <string name="file_label">Fichier</string>
+    <string name="metadata_label">Métadonnées</string>
     <string name="title_and_artist">Titre et artiste</string>
     <string name="song">Musique</string>
     <string name="title">Titre</string>
     <string name="album">Album</string>
     <string name="artist">Artiste</string>
-    <string name="album_artist">Album-artiste</string>
+    <string name="album_artist">Artiste de l\'album</string>
     <string name="composer">Compositeur</string>
     <string name="conductor">Conducteur</string>
     <string name="publisher">Éditeur</string>
@@ -302,7 +303,7 @@
     <string name="release_years_label">Années</string>
     <string name="length">Durée</string>
     <string name="label_last_modified">Dernière modification</string>
-    <string name="label_audio_header">En-tête audio</string>
+    <string name="label_channels">Chaînes</string>
     <string name="label_variable_bitrate">Débit binaire variable</string>
     <string name="label_loss_less">Moins de perte</string>
     <string name="label_bit_rate">Débit binaire</string>
@@ -318,20 +319,11 @@
     <string name="disc_total">Nombre total de disques</string>
     <string name="lyrics">Paroles</string>
     <string name="lyricist">Parolier</string>
-    <string name="edit_tags_action">Modifier les informations</string>
-    <string name="edit_lyrics_action">Modifier les paroles</string>
-    <string name="open_lyrics_editor">Ouvrir l\'éditeur de paroles</string>
     <string name="could_not_load_the_song_information">"Impossible de charger les informations de la chanson."</string>
-    <string name="label_with_rg_info">Avec infos RG</string>
-    <string name="label_without_rg_info">Sans infos RG</string>
-    <string name="album_and_year">Album et année</string>
-    <string name="song_info">Informations sur la musique.</string>
     <string name="no_results">Aucun résultat</string>
     <string name="connection_unavailable">Connexion indisponible.</string>
     <string name="you_have_to_select_at_least_one_category">Vous devez sélectionner au moins une catégorie</string>
     <string name="you_cannot_select_more_than_five_categories">Vous ne pouvez pas sélectionner plus de cinq catégories.</string>
-    <string name="auto_limited_listing_title">Liste limitée pendant la conduite</string>
-    <string name="auto_limited_listing_subtitle">Ouvrez l\'application pour voir la liste complète</string>
     <string name="backup_settings">Paramètres</string>
     <string name="backup_synced_lyrics">Paroles synchronisées</string>
     <string name="backup_artist_images">Images d\'artistes</string>
@@ -415,60 +407,79 @@
     <string name="shuffle_mode_combined_description">Mix basé sur les favoris, les pièces jouées et la récence.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Égaliseur</string>
-    <string name="share_eq_configuration">Partager la configuration EQ</string>
+    <string name="autoeq_label">AutoEq</string>
+    <string name="graphic_eq_label">EQ graphique</string>
+    <string name="graphic_eq_band_count">%d-bandes</string>
+    <string name="eq_profiles_title">Profils d\'égaliseur</string>
+    <string name="autoeq_profiles_title">Profils AutoEq</string>
+    <string name="eq_profile_title">Profil</string>
+    <string name="change_band_count_title">Modifier le nombre de bandes</string>
+    <string name="change_band_count_message">La modification du nombre de bandes réinitialisera le profil actuel à son état initial.
+        Les autres profils enregistrés pour la configuration de bande actuelle ne pourront pas être utilisés avec la nouvelle configuration de bande.
+        \n\nVoulez-vous continuer ?</string>
+    <string name="band_configuration_changed_successfully">La configuration de la bande a été modifiée avec succès.</string>
+    <string name="band_configuration_could_not_be_changed">La configuration de la bande n\'a pas pu être modifiée.</string>
+    <string name="share_eq_profiles">Partager les profils d\'égaliseur</string>
     <string name="there_is_nothing_to_export">Il n\'y a rien à exporter.</string>
     <string name="there_is_nothing_to_import">Il n\'y a rien à importer.</string>
-    <string name="there_are_no_saved_configurations">Il n\'y a aucune configuration enregistrée.</string>
-    <string name="could_not_create_configurations_file">Impossible de créer le fichier de configuration.</string>
-    <string name="configuration_exported_successfully">Configuration exportée avec succès.</string>
-    <string name="could_not_export_configuration">Impossible d\'exporter la configuration.</string>
-    <string name="export_configuration">Exporter la configuration</string>
-    <string name="import_configuration">Importer la configuration</string>
-    <string name="imported_x_presets">%d préréglages importés.</string>
-    <string name="no_preset_imported">Aucun préréglage importé.</string>
-    <string name="share_configuration">Partager la configuration</string>
-    <string name="select_configurations_to_share">Sélectionnez les configurations à partager :</string>
+    <string name="an_unexpected_error_occurred">Une erreur inattendue s\'est produite.</string>
+    <string name="share_profiles">Partager des profils</string>
+    <string name="select_profiles_to_share">Sélectionnez les profils à partager :</string>
+    <string name="export_profiles">Profils d\'exportation</string>
+    <string name="select_profiles_to_export">Sélectionnez les profils à exporter :</string>
+    <string name="select_a_file_to_save_the_exported_profiles">Sélectionnez un fichier pour enregistrer les profils exportés.</string>
+    <string name="profiles_exported_successfully">Profils exportés avec succès.</string>
+    <string name="import_profiles">Profils d\'importation</string>
+    <string name="select_profiles_to_import">Sélectionnez les profils à importer :</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Sélectionnez un fichier contenant les profils d\'égalisation Booming Music.</string>
+    <string name="imported_x_profiles">Profils importés %d.</string>
+    <string name="no_profile_imported">Aucun profil importé.</string>
+    <string name="import_autoeq_profile">Importer le profil AutoEq</string>
+    <string name="select_a_file_containing_autoeq_params">Sélectionnez un fichier contenant les paramètres AutoEq (GraphicEq).</string>
+    <string name="no_autoeq_profiles">Aucun profil AutoEq n\'a été importé.</string>
     <string name="reset_equalizer">Réinitialiser l\'égaliseur</string>
-    <string name="select_configurations_to_export">Sélectionnez les configurations à exporter :</string>
-    <string name="select_a_file_to_save_exported_configurations">Sélectionnez un fichier pour enregistrer les configurations exportées.</string>
-    <string name="select_a_file_containing_booming_eq_presets">Sélectionnez un fichier contenant des préréglages Booming Music EQ.</string>
-    <string name="select_configurations_to_import">Sélectionnez les configurations à importer :</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ?
-        \n\nCela effacera tous vos préréglages.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ?
+        \n\nCette opération effacera tous vos profils.</string>
     <string name="not_supported">Non pris en charge</string>
+    <string name="set_eq_engine_title">Régler l\'égaliseur</string>
+    <string name="eq_engine_basic_title">Moteur Hérité</string>
+    <string name="eq_engine_basic_description">Une configuration classique à 5 bandes conçue pour une compatibilité maximale avec les appareils.</string>
+    <string name="eq_engine_precision_title">Moteur de Précision</string>
+    <string name="eq_engine_precision_description">Traitement haute fidélité avec contrôle jusqu\'à 15 bandes pour un modelage acoustique optimal.</string>
+    <string name="set_eq_engine_reset_warning">Modifier le moteur d\'égalisation réinitialisera les paramètres de l\'égaliseur, y compris les profils personnalisés.</string>
+    <string name="eq_empty_bands">Le moteur d\'égalisation n\'a renvoyé aucune configuration de bande.</string>
     <string name="enable_equalizer">Activer l\'EQ</string>
-    <string name="select_preset">Sélectionner le préréglage</string>
-    <string name="please_enter_a_name_for_this_preset">Veuillez entrer un nom pour ce préréglage.</string>
-    <string name="preset_name">Nom du préréglage</string>
+    <string name="select_profile">Sélectionner un profil</string>
+    <string name="save_profile_label">Enregistrer le profil</string>
+    <string name="edit_profile_label">Modifier le profil</string>
+    <string name="delete_profile_label">Supprimer le profil</string>
+    <string name="delete_profile_x">Supprimer le profil \"%s\" ?</string>
+    <string name="please_enter_a_name_for_this_profile">Veuillez saisir un nom pour ce profil.</string>
+    <string name="replace_profile_with_same_name">Remplacer le profil portant le même nom</string>
+    <string name="use_with_devices_title">Utilisation avec les appareils :</string>
+    <string name="profile_name">Nom du profil</string>
     <string name="that_name_is_already_in_use">Ce nom est déjà utilisé.</string>
-    <string name="save_preset">Enregistrer le préréglage</string>
-    <string name="replace_preset_with_same_name">Remplacer le préréglage avec le même nom</string>
-    <string name="preset_name_is_empty">Le nom du préréglage est vide</string>
-    <string name="could_not_save_preset">Impossible d\'enregistrer le préréglage.</string>
-    <string name="preset_saved_successfully">Préréglage enregistré avec succès.</string>
-    <string name="delete_preset">Supprimer le préréglage</string>
-    <string name="delete_preset_x"><![CDATA[Supprimer le préréglage <b>%s</b> ?]]></string>
-    <string name="preset_x_deleted">Le préréglage %s a été supprimé.</string>
-    <string name="rename_preset">Renommer le préréglage</string>
-    <string name="please_enter_a_new_name_for_this_preset">Veuillez entrer un nouveau nom pour ce préréglage.</string>
-    <string name="preset_renamed">Préréglage renommé.</string>
-    <string name="preset_not_renamed">Préréglage non renommé.</string>
+    <string name="profile_saved_successfully">Profil enregistré avec succès.</string>
+    <string name="the_profile_could_not_be_saved">Le profil n\'a pas pu être enregistré.</string>
+    <string name="autoeq_profile_imported_successfully">Profil AutoEq importé avec succès.</string>
+    <string name="profile_x_deleted">Profil \"%s\" supprimé.</string>
+    <string name="autoeq_profile_x_deleted">Profil AutoEq \"%s\" supprimé.</string>
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualiseur</string>
     <string name="loudness_enhancer">Amplificateur</string>
-    <string name="reverb_label">Réverbération</string>
-    <string name="reverb_preset_none">Pas de réverbération</string>
-    <string name="reverb_preset_plate">Plaque</string>
-    <string name="reverb_preset_smallroom">Petite pièce</string>
-    <string name="reverb_preset_mediumroom">Salle moyenne</string>
-    <string name="reverb_preset_largeroom">Grande pièce</string>
-    <string name="reverb_preset_mediumhall">Salle moyenne</string>
-    <string name="reverb_preset_largehall">Grande salle</string>
     <string name="sound_settings">Paramètres du son</string>
+    <string name="listening_on">Écouter sur</string>
+    <string name="casting_to">Diffusion sur</string>
     <string name="volume_label">Volume</string>
-    <string name="tempo_label">Tempo</string>
+    <string name="reset_balance">Réinitialiser la balance</string>
+    <string name="speed_and_pitch_label">Vitesse et hauteur</string>
+    <string name="reset_tempo">Réinitialiser le tempo</string>
+    <string name="unlock_pitch_adjustment">Déverrouiller le réglage de la hauteur</string>
+    <string name="balance_left">Gauche</string>
+    <string name="balance_right">Droite</string>
     <string name="action_external_eq">EQ externe</string>
     <string name="custom">Personnalisé</string>
+    <string name="audio_offload_is_enabled">Le déchargement audio est activé</string>
     <string name="enable_audio_offload_title">Décharge audio</string>
     <string name="enable_audio_offload_description">Autorise l\'appareil à traiter l\'audio directement depuis son matériel, reduisant l\'utilisation du processeur et économise la batterie.
         Cette fonctionnalité est uniquement prise en charge sur certains appareils. Certains effets ou fonctionnalités ne peuvent ne pas fonctionner tant que ce mode est activé.
@@ -510,11 +521,13 @@
     <string name="could_not_import_font">Impossible d\'importer la police.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Minuteur de sommeil</string>
-    <string name="sleep_timer_cancel_current_timer">Annuler le minuteur actuel</string>
-    <string name="sleep_timer_cancel_current_timer_x">Annuler le minuteur actuel (%s)</string>
-    <string name="sleep_timer_canceled">Minuteur de sommeil annulé.</string>
+    <string name="sleep_timer_waiting_pending_quit">En attente de la fin du titre en cours</string>
+    <string name="sleep_timer_cancel_current_timer">Annuler</string>
     <string name="sleep_timer_set_action">Régler</string>
-    <string name="sleep_timer_set">Le minuteur de sommeil est réglée pour %d minutes à partir de maintenant.</string>
+    <string name="sleep_timer_x_mins">%d minutes</string>
+    <string name="sleep_timer_15_mins">15 minutes</string>
+    <string name="sleep_timer_45_mins">45 minutes</string>
+    <string name="sleep_timer_1_hour">1 heure</string>
     <string name="sleep_timer_finish_current_music">Terminer le dernier titre</string>
     <string name="sleep_timer_stop_after_this_track">Arrêter après ce titre</string>
     <string name="sleep_timer_stop_after_x">Arrêter après %s</string>
@@ -530,6 +543,7 @@
     <string name="version">Version</string>
     <string name="changelog">Historique des modifications</string>
     <string name="fork_on_github">Fork sur GitHub</string>
+    <string name="faq">FAQ</string>
     <string name="licenses">Licences</string>
     <string name="author">Auteur</string>
     <string name="mardous_summary">Lead Developer</string>
@@ -537,12 +551,15 @@
     <string name="acknowledgments_title">Reconnaissance</string>
     <string name="translators_title">Traducteurs</string>
     <string name="translators_summary">Merci à ceux qui rendent Booming Music disponible dans de nombreuses langues.</string>
-    <string name="beta_testers_title">Testeurs bêta</string>
+    <string name="contributors_title">Contributeurs</string>
+    <string name="contributors_summary">Liste des utilisateurs ayant contribué au projet d\'une manière ou d\'une autre.</string>
     <string name="telegram_chat">Chat Telegram</string>
     <string name="telegram_chat_summary">Rejoignez le chat sur Telegram et soyez informé des nouvelles versions et actualités.</string>
     <string name="view_profile_on_github">Voir le profil sur GitHub</string>
     <string name="follow_on_telegram">DM sur Telegram</string>
     <string name="write_an_email">Écrire un e-mail</string>
+    <string name="buy_me_a_coffee">Offrez-moi un café</string>
+    <string name="buy_me_a_coffee_summary">Vous pouvez faire un petit don si vous pensez que mon travail le mérite.</string>
     <string name="support_development">Soutenir le développement</string>
     <string name="help_with_translations">Aide à la traduction</string>
     <string name="help_with_translations_summary">Vous pouvez contribuer au projet en aidant à traduire Booming Music dans d\'autres langues.</string>
@@ -577,7 +594,6 @@
     <string name="metadata_summary">Paramètres liés aux images de l\'album et des artistes.</string>
     <string name="library_title">Bibliothèque</string>
     <string name="library_summary">Paramètres des playlists et des filtres d\'exclusion/inclusion.</string>
-    <string name="notification_title">Notification</string>
     <string name="advanced_title">Avancé</string>
     <string name="advanced_summary">Langue de l\'application et autres paramètres pour les utilisateurs avancés.</string>
     <string name="update_title">Mise à jour</string>
@@ -598,11 +614,12 @@
     <string name="shuffle_mode_header">Mode aléatoire</string>
     <string name="display_header">Afficher</string>
     <string name="backup_restore_header">Sauvegarde/restauration</string>
+    <string name="visuals_header">Visuels</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Thème général</string>
     <string name="pure_black_theme_title">Noir pur</string>
     <string name="material_you_title">Material You</string>
-    <string name="use_custom_font_title">Utiliser la police Manrope</string>
+    <string name="use_custom_font_title">Utiliser une police personnalisée</string>
     <string name="appbar_mode_title">Style d\'en-tête</string>
     <string name="library_categories_title">Catégories de bibliothèques</string>
     <string name="library_categories_summary">Configurer la visibilité et l’ordre des catégories de la bibliothèque.</string>
@@ -622,16 +639,14 @@
     <string name="lyrics_syllable_mode_title">Paroles mot par mot</string>
     <string name="lyrics_syllable_mode_summary">Permet d\'afficher les paroles avec une synchronisation mot par mot. Cela dépend de la disponibilité des paroles et d\'un format compatible tel que LRC ou TTML.</string>
     <string name="lyrics_effects_note">Les effets avancés améliorent l\'expérience visuelle mais peuvent nécessiter plus de ressources système et de batterie.</string>
-    <string name="lyrics_gradient_background_title">Arrière-plan dégradé</string>
-    <string name="lyrics_gradient_background_summary">Affiche un arrière-plan dégradé animé utilisant les couleurs de la couverture la chanson. Applicable uniquement en mode plein écran.</string>
+    <string name="lyrics_background_effect_title">Effet de fond</string>
+    <string name="lyrics_background_gradient">Dégradé</string>
     <string name="lyrics_blur_effect_title">Effet de flou</string>
     <string name="lyrics_blur_effect_summary">Flouter les lignes de paroles adjacentes à la ligne actuelle.</string>
     <string name="lyrics_shadow_effect_title">Effet d\'ombre</string>
     <string name="lyrics_shadow_effect_summary">Ajoute une ombre sous la ligne actuelle pour améliorer la lisibilité.</string>
     <string name="lyrics_progressive_coloring_title">Coloriage progressif des paroles</string>
     <string name="lyrics_progressive_coloring_summary">Animez les lignes actives avec une transition de couleur progressive au lieu de les colorier instantanément.</string>
-    <string name="lyrics_bold_synced_title">Police en gras pour les paroles synchronisées</string>
-    <string name="lyrics_bold_synced_summary">Afficher les paroles synchronisées en gras.</string>
     <string name="lyrics_bold_unsynced_title">Police en gras pour les paroles normales</string>
     <string name="lyrics_bold_unsynced_summary">Afficher les paroles non synchronisées en gras.</string>
     <string name="lyrics_line_spacing_title">Interligne</string>
@@ -644,6 +659,16 @@
     <string name="synced_font_size_full_summary">Ajuster la taille de la police pour les paroles synchronisées dans l\'écran des paroles complètes.</string>
     <string name="unsynced_font_size_full_title">Taille de police des paroles non synchronisées (vue complète)</string>
     <string name="unsynced_font_size_full_summary">Ajuster la taille de la police pour les paroles non synchronisées dans l\'écran des paroles complètes.</string>
+    <string name="instrumental_tracks_identifiers_title">Identifiants des pistes instrumentales</string>
+    <string name="instrumental_tracks_identifiers_summary">Si les paroles d\'une chanson ne contiennent qu\'un seul de ces indicateurs (un ou plusieurs), elle sera considérée comme un morceau instrumental (séparés par une virgule).</string>
+    <string name="instrumental_tracks_mark_by_title_title">Marquer par titre</string>
+    <string name="instrumental_tracks_mark_by_title_summary">Le titre du morceau sera également pris en compte lors de la recherche d\'identifiants.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Traiter tous les fichiers de paroles comme UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Supposons que tous les fichiers utilisent l\'encodage UTF-8.
+
+Cela optimise l\'analyse des fichiers, mais peut parfois entraîner l\'apparition de caractères inhabituels dans les paroles des chansons.
+
+Un redémarrage de l\'application peut être nécessaire.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir lors de la lecture</string>
@@ -665,6 +690,8 @@
     <string name="queue_height_summary">Changer la hauteur de la file de lecture en demi-écran.</string>
     <string name="single_tap_on_album_cover_title">Appuyez une fois sur la couverture</string>
     <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
+    <string name="double_tap_on_left_album_cover_title">Double-clic sur le bord gauche de la pochette</string>
+    <string name="double_tap_on_right_album_cover_title">Double-clic sur le bord droit de la pochette</string>
     <string name="long_press_on_album_cover_title">Appui long sur la couverture</string>
     <string name="small_image_title">Petite image</string>
     <string name="small_image_summary">Réduis la taille de la couverture dans les styles supportés.</string>
@@ -672,8 +699,6 @@
     <string name="now_playing_corner_radius_summary">Définit l\'aspect arrondi des coins de la couverture de l\'album.</string>
     <string name="carousel_effect_title">Effet carrousel</string>
     <string name="album_cover_effect_title">Effet de la couverture d\'album</string>
-    <string name="lyrics_on_album_cover_title">Paroles sur la couverture</string>
-    <string name="lyrics_on_album_cover_summary">Afficher les paroles des titres au lieu de la couverture lorsqu\'elles sont disponibles.</string>
     <string name="animate_controls_title">Animer les contrôles</string>
     <string name="animate_controls_summary">Il est joué lors de l\'ouverture du panneau du lecteur.</string>
     <string name="swipe_anywhere_title">Balayer n\'importe où pour changer de titre</string>
@@ -720,6 +745,26 @@
     <string name="mp3_index_seeking_summary">Charge le fichier MP3 dans la mémoire pour l\'indexer a la place d\'utiliser l\'entêté Xing.
         À utiliser uniquement si l\'index échoue sur les fichiers VBR.
         Nécessite le redémarrage de l\'application.</string>
+    <string name="play_option_always_visible_title">Garder l\'option « Lecture » visible</string>
+    <string name="play_option_always_visible_summary">Si cette option est activée, l\'option « Lecture » ​​apparaîtra toujours dans le menu d\'un titre, quels que soient les paramètres de comportement au toucher.</string>
+    <string name="play_option_whole_list_title">L\'option « Lecture » permet de lire toute la liste</string>
+    <string name="play_option_whole_list_summary">Si cette option est activée, sélectionner « Lecture » dans le menu d\'un morceau lancera la lecture de toute la playlist. Si elle est désactivée, seul le morceau sélectionné sera lu.</string>
+    <string name="on_song_click_title">Lors du choix d\'un titre</string>
+    <string name="on_song_click_play_only_this_song_title">Jouez uniquement ce titre</string>
+    <string name="on_song_click_play_only_this_song_summary">La file d\'attente actuelle sera effacée et remplacée par le titre sélectionné.</string>
+    <string name="on_song_click_play_whole_list_title">Lire la liste complète</string>
+    <string name="on_song_click_play_whole_list_summary">La file d\'attente actuelle sera remplacée par tous les titres de la liste/de l\'album/du dossier.</string>
+    <string name="on_song_click_queue_next_title">File d\'attente suivante</string>
+    <string name="on_song_click_queue_next_summary">Le morceau sélectionné sera ajouté à la position suivante dans la file d\'attente.</string>
+    <string name="on_song_click_enqueue_at_end_title">Enfile à la fin</string>
+    <string name="on_song_click_enqueue_at_end_summary">Le morceau sélectionné sera ajouté à la fin de la file d\'attente actuelle.</string>
+    <string name="on_clear_queue_title">Lors du nettoyage de la file d\'attente</string>
+    <string name="on_clear_queue_remove_all_songs_title">Supprimer tous les titres</string>
+    <string name="on_clear_queue_remove_all_songs_summary">La file d\'attente entière sera effacée.</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">Supprimer tous les titres sauf le titre actuel</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">Seul le titre en cours de lecture restera dans la file d\'attente.</string>
+    <string name="clear_queue_on_completion_title">Vider la file d\'attente une fois la lecture terminée</string>
+    <string name="clear_queue_on_completion_summary">Supprimer automatiquement tous les morceaux de la file d\'attente une fois la lecture du dernier titre terminée.</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">Télécharger automatiquement les métadonnées</string>
     <string name="ignore_media_store_album_covers_title">Ignorer les couvertures du Media Store</string>
@@ -756,7 +801,6 @@
     <string name="min_song_duration_title">Durée minimale du titre</string>
     <string name="min_song_duration_summary">Combien de secondes (au moins) doit durer un titre pour être affiché dans votre bibliothèque.</string>
     <!-- Remote preferences -->
-    <string name="extra_line_of_text_title">Ligne de texte supplémentaire</string>
     <string name="app_language_title">Langue de l\'application</string>
     <string name="backup_data_title">Sauvegarder les données de l\'application</string>
     <string name="backup_app_data_summary">Créez un fichier contenant les données essentielles de l\'application et enregistrez-le sur le stockage externe.</string>
@@ -778,18 +822,13 @@
     <string name="selected">Sélectionnés</string>
     <string name="compact">Compacte</string>
     <string name="expanded">Étendu</string>
-    <string name="full_cover">Couverture complète</string>
-    <string name="gradient">Dégradé</string>
-    <string name="peek">Aperçu</string>
-    <string name="peek2">Peek2</string>
-    <string name="plain">Ordinaire</string>
+    <string name="full_cover_style">Couverture intégrale</string>
+    <string name="gradient_style">Dégradé</string>
+    <string name="peek_style">Aperçu</string>
+    <string name="plain_style">Simple</string>
     <string name="m3_style">M3</string>
-    <string name="normal">Normale</string>
-    <string name="corner_size_none">Aucun</string>
-    <string name="corner_size_small">Petit</string>
-    <string name="corner_size_medium">Moyen</string>
-    <string name="corner_size_large">Grand</string>
-    <string name="corner_size_custom">Personnalisé</string>
+    <string name="expressive_style">Expressif</string>
+    <string name="normal_style">Normale</string>
     <string name="cascading">En cascade</string>
     <string name="depth">Profondeur</string>
     <string name="hinge">Charnière</string>
@@ -838,6 +877,8 @@
     <string name="player_color_mode_vibrant_color_description">Teinter l\'arrière-plan, le texte et les commandes avec la couleur de l\'album</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Utilisez les tons Material You en fonction de la couleur de l\'album</string>
+    <string name="player_color_mode_blur_title">Flou</string>
+    <string name="player_color_mode_blur_description">Arrière-plan flou avec les couleurs Material You</string>
     <!-- Update -->
     <string name="auto_update_title">Mise à jour de recherche automatique</string>
     <string name="every_day">Tous les jours</string>

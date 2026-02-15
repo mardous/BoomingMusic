@@ -17,10 +17,6 @@ class AdvancedForwardingPlayer(
 
     private var sequentialTimelineEnabled = false
 
-    private var maxSeekToPreviousPositionMs = player.maxSeekToPreviousPosition
-    private var seekBackIncrementMs = player.seekBackIncrement
-    private var seekForwardIncrementMs = player.seekForwardIncrement
-
     private val internalListener = object : Player.Listener {
         override fun onPositionDiscontinuity(
             oldPosition: Player.PositionInfo,
@@ -74,32 +70,6 @@ class AdvancedForwardingPlayer(
             }
         }
         this.sequentialTimelineEnabled = sequentialTimelineEnabled
-    }
-
-    fun setSeekBackIncrement(seekBackIncrement: Long) {
-        this.seekBackIncrementMs = seekBackIncrement
-    }
-
-    fun setSeekForwardIncrement(seekForwardIncrement: Long) {
-        this.seekForwardIncrementMs = seekForwardIncrement
-    }
-
-    fun setMaxSeekToPreviousPosition(maxSeekToPreviousPositionMs: Long) {
-        this.maxSeekToPreviousPositionMs = maxSeekToPreviousPositionMs
-    }
-
-    override fun getSeekBackIncrement(): Long = seekBackIncrementMs
-
-    override fun getSeekForwardIncrement(): Long = seekForwardIncrementMs
-
-    override fun getMaxSeekToPreviousPosition(): Long = maxSeekToPreviousPositionMs
-
-    override fun seekToPrevious() {
-        if (maxSeekToPreviousPosition > 0) {
-            super.seekToPrevious()
-            return
-        }
-        seekToPreviousMediaItem()
     }
 
     override fun addMediaItem(index: Int, mediaItem: MediaItem) {

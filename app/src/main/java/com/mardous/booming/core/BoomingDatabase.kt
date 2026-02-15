@@ -14,9 +14,10 @@ import com.mardous.booming.data.local.room.*
         PlayCountEntity::class,
         QueueEntity::class,
         InclExclEntity::class,
-        LyricsEntity::class
+        LyricsEntity::class,
+        CanvasEntity::class
     ],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class BoomingDatabase : RoomDatabase() {
@@ -26,6 +27,7 @@ abstract class BoomingDatabase : RoomDatabase() {
     abstract fun queueDao(): QueueDao
     abstract fun inclExclDao(): InclExclDao
     abstract fun lyricsDao(): LyricsDao
+    abstract fun canvasDao(): CanvasDao
 
     companion object {
         val MIGRATION_1_2 = object : Migration(1, 2) {
@@ -38,6 +40,12 @@ abstract class BoomingDatabase : RoomDatabase() {
         val MIGRATION_2_3 = object : Migration(2, 3) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("CREATE TABLE IF NOT EXISTS `QueueEntity` (`id` TEXT NOT NULL, `order` INTEGER NOT NULL, PRIMARY KEY(`id`))")
+            }
+        }
+
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("CREATE TABLE IF NOT EXISTS `CanvasEntity` (`id` INT NOT NULL, `canvas_url` TEXT NOT NULL, `fetch_time` INT NOT NULL, PRIMARY KEY(`id`))")
             }
         }
     }

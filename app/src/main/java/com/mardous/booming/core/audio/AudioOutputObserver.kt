@@ -42,11 +42,11 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
 
-    private val _volumeStateFlow = MutableStateFlow(VolumeState.Unspecified)
-    val volumeStateFlow = _volumeStateFlow.asStateFlow()
+    private val _audioDevice = MutableStateFlow(AudioDevice.UnknownDevice)
+    val audioDevice = _audioDevice.asStateFlow()
 
-    private val _audioDeviceFlow = MutableStateFlow(AudioDevice.UnknownDevice)
-    val audioDeviceFlow = _audioDeviceFlow.asStateFlow()
+    private val _systemVolumeState = MutableStateFlow(VolumeState.Unspecified)
+    val systemVolumeState = _systemVolumeState.asStateFlow()
 
     private var mediaRouter = MediaRouter.getInstance(context)
     var audioManager = context.getSystemService<AudioManager>()
@@ -111,25 +111,26 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
             ?.let { chosen ->
                 AudioDevice(
                     type = chosen.getDeviceType(),
-                    productName = chosen.productName
+                    productName = chosen.productName.toString()
                 )
             } ?: AudioDevice.UnknownDevice
     }
 
     private fun requestVolume() {
         audioManager?.let {
-            _volumeStateFlow.value = VolumeState(
-                currentVolume = it.getStreamVolume(AudioManager.STREAM_MUSIC),
-                maxVolume = getStreamMaxVolume(it, AudioManager.STREAM_MUSIC),
-                minVolume = getStreamMinVolume(it, AudioManager.STREAM_MUSIC),
+            val maxVolume = getStreamMaxVolume(it, AudioManager.STREAM_MUSIC).toFloat()
+            val minVolume = getStreamMinVolume(it, AudioManager.STREAM_MUSIC).toFloat()
+            _systemVolumeState.value = VolumeState(
+                currentVolume = it.getStreamVolume(AudioManager.STREAM_MUSIC).toFloat(),
+                volumeRange = minVolume..maxVolume,
                 isFixed = it.isVolumeFixed
             )
         }
     }
 
     private fun requestAudioDevice() {
-        _audioDeviceFlow.value = getCurrentAudioDevice()
-        _volumeStateFlow.value = volumeStateFlow.value.copy(
+        _audioDevice.value = getCurrentAudioDevice()
+        _systemVolumeState.value = systemVolumeState.value.copy(
             isFixed = audioManager?.isVolumeFixed == true
         )
     }

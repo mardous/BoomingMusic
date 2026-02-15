@@ -18,10 +18,15 @@ import androidx.lifecycle.viewModelScope
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.repository.LyricsRepository
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.BackgroundEffect
 import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.Key
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.Mode as LyricsViewMode
 
@@ -32,8 +37,6 @@ class LyricsViewModel(
     private val preferences: SharedPreferences,
     private val lyricsRepository: LyricsRepository
 ) : ViewModel(), OnSharedPreferenceChangeListener {
-
-    private val silentHandler = CoroutineExceptionHandler { _, _ -> }
 
     private val _lyricsResult = MutableStateFlow(LyricsResult.Empty)
     val lyricsResult = _lyricsResult.asStateFlow()
@@ -65,13 +68,12 @@ class LyricsViewModel(
         song: Song,
         allowDownload: Boolean = false,
         fromEditor: Boolean = false
-    ) = liveData(Dispatchers.IO + silentHandler) {
+    ) = liveData(Dispatchers.IO) {
         emit(LyricsResult(id = song.id, loading = true))
-        emit(lyricsRepository.allLyrics(song, allowDownload, fromEditor))
-    }
-
-    fun getLyrics(song: Song) = liveData(Dispatchers.IO) {
-        emit(lyricsRepository.embeddedLyrics(song, requirePlainText = true))
+        val lyricsResult = runCatching {
+            lyricsRepository.allLyrics(song, allowDownload, fromEditor)
+        }
+        emit(lyricsResult.getOrDefault(LyricsResult(song.id, loading = false)))
     }
 
     fun shareSyncedLyrics(song: Song) = liveData(Dispatchers.IO) {
@@ -149,27 +151,36 @@ class LyricsViewModel(
 
     fun updateSong(song: Song) {
         lyricsJob?.cancel()
+
+        if (song == Song.emptySong) {
+            _lyricsResult.value = LyricsResult.Empty
+            return
+        }
+
+        _lyricsResult.value = LyricsResult(id = song.id, loading = true)
+
         lyricsJob = viewModelScope.launch {
-            if (song == Song.emptySong) {
-                _lyricsResult.value = LyricsResult.Empty
-            } else {
-                _lyricsResult.value = LyricsResult(id = song.id, loading = true)
-                val result = withContext(Dispatchers.IO + silentHandler) {
+            val lyrics = withContext(Dispatchers.IO) {
+                runCatching {
                     lyricsRepository.allLyrics(song, allowDownload = true, fromEditor = false)
                 }
-                if (isActive) {
-                    _lyricsResult.value = result
-                }
             }
+            _lyricsResult.value = lyrics.getOrDefault(LyricsResult(song.id, loading = false))
         }
     }
 
     private fun createViewSettings(mode: LyricsViewMode): LyricsViewSettings {
+        val background: BackgroundEffect =
+            if (!mode.isFull) {
+                BackgroundEffect.None
+            } else when (preferences.getString(Key.BACKGROUND_EFFECT, null)) {
+                "gradient" -> BackgroundEffect.Gradient
+                else -> BackgroundEffect.None
+            }
         val enableSyllableLyrics = preferences.getBoolean(Key.ENABLE_SYLLABLE_LYRICS, false)
         val progressiveColoring = preferences.getBoolean(Key.PROGRESSIVE_COLORING, false)
-        val gradientBackground = mode.isFull && preferences.getBoolean(Key.GRADIENT_BACKGROUND, false)
-        val blurEffect = gradientBackground && preferences.getBoolean(Key.BLUR_EFFECT, false)
-        val shadowEffect = gradientBackground && preferences.getBoolean(Key.SHADOW_EFFECT, false)
+        val blurEffect = !background.isNone && preferences.getBoolean(Key.BLUR_EFFECT, false)
+        val shadowEffect = !background.isNone && preferences.getBoolean(Key.SHADOW_EFFECT, false)
         val fontFamily: FontFamily = if (preferences.getBoolean(Key.USE_CUSTOM_FONT, false)) {
             try {
                 preferences.getString(Key.SELECTED_CUSTOM_FONT, null)
@@ -195,11 +206,9 @@ class LyricsViewModel(
         } else {
             preferences.getInt(Key.UNSYNCED_FONT_SIZE_FULL, 20)
         }
-        val syncedBoldFont = preferences.getBoolean(Key.SYNCED_BOLD_FONT, true)
         val syncedStyle = TextStyle(
             fontFamily = fontFamily,
             fontSize = syncedFontSize.sp,
-            fontWeight = if (syncedBoldFont) FontWeight.Bold else FontWeight.Normal,
             lineHeight = (1f + (lineSpacing / 100f)).em
         )
         val unsyncedBoldFont = preferences.getBoolean(Key.UNSYNCED_BOLD_FONT, true)
@@ -214,7 +223,7 @@ class LyricsViewModel(
             isCenterCurrentLine = preferences.getBoolean(Key.CENTER_CURRENT_LINE, false),
             enableSyllableLyrics = enableSyllableLyrics,
             progressiveColoring = progressiveColoring,
-            gradientBackground = gradientBackground,
+            backgroundEffect = background,
             blurEffect = blurEffect,
             shadowEffect = shadowEffect,
             syncedStyle = syncedStyle,
@@ -230,10 +239,9 @@ class LyricsViewModel(
             Key.SELECTED_CUSTOM_FONT,
             Key.LINE_SPACING,
             Key.PROGRESSIVE_COLORING,
-            Key.GRADIENT_BACKGROUND,
+            Key.BACKGROUND_EFFECT,
             Key.BLUR_EFFECT,
             Key.SHADOW_EFFECT,
-            Key.SYNCED_BOLD_FONT,
             Key.UNSYNCED_BOLD_FONT -> {
                 _playerLyricsViewSettings.value = createViewSettings(LyricsViewMode.Player)
                 _fullLyricsViewSettings.value = createViewSettings(LyricsViewMode.Full)

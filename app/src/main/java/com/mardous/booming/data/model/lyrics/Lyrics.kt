@@ -8,10 +8,10 @@ data class Lyrics(
     val artist: String?,
     val album: String?,
     val durationMillis: Long?,
-    val lines: List<Line>
+    val lines: List<Line>,
+    val offset: Long = 0
 ) {
     val hasContent = lines.isNotEmpty()
-    val optimalDurationMillis = optimalDurationMillis()
 
     val plainText: String
         get() = lines.joinToString("\n") { it.content.content }
@@ -24,10 +24,6 @@ data class Lyrics(
             require(line.startAt >= 0) { "startAt in the LyricsLine must >= 0" }
             require(line.durationMillis >= 0) { "durationMillis in the LyricsLine >= 0" }
         }
-    }
-
-    private fun optimalDurationMillis(): Long {
-        return durationMillis ?: lines.maxOfOrNull { it.startAt + it.durationMillis } ?: 0L
     }
 
     @Immutable

@@ -47,6 +47,7 @@ import com.mardous.booming.MediaControllerOwner
 import com.mardous.booming.R
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.LibraryMargin
+import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
@@ -62,10 +63,10 @@ import com.mardous.booming.ui.screen.other.MiniPlayerFragment
 import com.mardous.booming.ui.screen.permissions.PermissionsActivity
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.styles.defaultstyle.DefaultPlayerFragment
+import com.mardous.booming.ui.screen.player.styles.expressivestyle.ExpressivePlayerFragment
 import com.mardous.booming.ui.screen.player.styles.fullcoverstyle.FullCoverPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.gradientstyle.GradientPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.m3style.M3PlayerFragment
-import com.mardous.booming.ui.screen.player.styles.peek2playerstyle.Peek2PlayerFragment
 import com.mardous.booming.ui.screen.player.styles.peekplayerstyle.PeekPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.plainstyle.PlainPlayerFragment
 import com.mardous.booming.util.*
@@ -217,6 +218,8 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         clearNavigationViewGestures()
         bottomSheetBehavior.removeBottomSheetCallback(bottomSheetCallback)
         Preferences.unregisterOnSharedPreferenceChangeListener(this)
+        miniPlayerFragment = null
+        playerFragment = null
     }
 
     private fun setupNavigationView() {
@@ -239,7 +242,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 binding.sheetView.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                if (nowPlayingScreen == NowPlayingScreen.Peek || nowPlayingScreen == NowPlayingScreen.Peek2) {
+                if (nowPlayingScreen == NowPlayingScreen.Peek) {
                     slidingPanel.updateLayoutParams<ViewGroup.LayoutParams> {
                         height = ViewGroup.LayoutParams.WRAP_CONTENT
                     }
@@ -452,7 +455,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                 NowPlayingScreen.Plain,
                 NowPlayingScreen.Peek,
                 NowPlayingScreen.M3,
-                NowPlayingScreen.Peek2 -> {
+                NowPlayingScreen.Expressive -> {
                     setLightStatusBar(isColorLight)
                     setLightNavigationBar(isColorLight)
                 }
@@ -491,7 +494,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             NOW_PLAYING_SCREEN -> {
                 chooseFragmentForTheme()
                 slidingPanel.updateLayoutParams<ViewGroup.LayoutParams> {
-                    height = if (nowPlayingScreen != NowPlayingScreen.Peek && nowPlayingScreen != NowPlayingScreen.Peek2) {
+                    height = if (nowPlayingScreen != NowPlayingScreen.Peek) {
                         ViewGroup.LayoutParams.MATCH_PARENT
                     } else {
                         ViewGroup.LayoutParams.WRAP_CONTENT
@@ -502,11 +505,16 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
             ADAPTIVE_CONTROLS -> miniPlayerFragment?.setupButtonStyle()
             ADD_EXTRA_CONTROLS -> miniPlayerFragment?.setupExtraControls()
+            SQUIGGLY_SEEK_BAR -> miniPlayerFragment?.setUpProgressStyle()
 
             CAROUSEL_EFFECT,
             NOW_PLAYING_SMALL_IMAGE,
-            NOW_PLAYING_IMAGE_CORNER_RADIUS,
             CIRCLE_PLAY_BUTTON -> {
+                chooseFragmentForTheme()
+            }
+
+            NOW_PLAYING_IMAGE_CORNER_RADIUS -> {
+                miniPlayerFragment?.setupImageStyle()
                 chooseFragmentForTheme()
             }
 
@@ -549,7 +557,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             NowPlayingScreen.Peek -> PeekPlayerFragment()
             NowPlayingScreen.Plain -> PlainPlayerFragment()
             NowPlayingScreen.M3 -> M3PlayerFragment()
-            NowPlayingScreen.Peek2 -> Peek2PlayerFragment()
+            NowPlayingScreen.Expressive -> ExpressivePlayerFragment()
             else -> DefaultPlayerFragment()
         }
 
@@ -572,7 +580,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             when (newState) {
                 STATE_EXPANDED -> onPanelExpanded()
                 STATE_COLLAPSED -> onPanelCollapsed()
-                STATE_HIDDEN -> playerViewModel.clearQueue()
+                STATE_HIDDEN -> playerViewModel.clearQueue(QueueClearingBehavior.RemoveAllSongs)
             }
         }
 

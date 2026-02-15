@@ -82,7 +82,7 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
             it.key.isNotEmpty()
         }
         val folders = songsByFolder.map { (folderPath, songs) -> Folder(folderPath, songs) }
-        return FileSystemQuery.createFlatView(folders)
+        return FileSystemQuery(folders)
     }
 
     override suspend fun folderByPath(path: String): Folder {
@@ -116,9 +116,13 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
     }
 
     override suspend fun musicFilesInPath(path: String, recursiveSubfolders: Boolean): FileSystemQuery {
+        val storageVolumes = StorageUtil.storageVolumes
         if (!FileSystemQuery.isNavigablePath(path)) {
-            return FileSystemQuery(path, null, StorageUtil.storageVolumes, true)
+            return FileSystemQuery(null, path, null, storageVolumes, isStorageRoot = true)
         }
+        val name = storageVolumes.firstNotNullOfOrNull {
+            if (it.filePath == path) it.fileName else null
+        } ?: path.trimEnd('/').substringAfterLast("/")
         val cursor = songRepository.makeSongCursor(
             "lower(${AudioColumns.DATA}) LIKE ?",
             arrayOf("${path.lowercase()}%")
@@ -126,7 +130,7 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
         val allSongs = songRepository.songs(cursor)
         val parentPath = path.substringBeforeLast("/")
         if (allSongs.isEmpty()) {
-            return FileSystemQuery(path, parentPath, emptyList())
+            return FileSystemQuery(name, path, parentPath, emptyList())
         }
         val subFoldersMap = allSongs
             .mapNotNull { song ->
@@ -157,7 +161,7 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
             addAll(songsInThisFolder)
         }.sortedWith(compareBy({ it is Song }, { it.fileName.lowercase() }))
 
-        return FileSystemQuery(path, parentPath, children)
+        return FileSystemQuery(name, path, parentPath, children)
     }
 
     private fun Song.folderPath() = data.substringBeforeLast("/", missingDelimiterValue = "")

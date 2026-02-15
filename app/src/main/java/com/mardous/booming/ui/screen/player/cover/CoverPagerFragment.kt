@@ -54,7 +54,6 @@ import com.mardous.booming.ui.screen.player.PlayerGesturesController.GestureType
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment.ColorReceiver
-import com.mardous.booming.util.LYRICS_ON_COVER
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.SWIPE_ON_COVER
 import kotlinx.coroutines.FlowPreview
@@ -143,7 +142,9 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
                 context = viewPager.context,
                 acceptedGestures = setOf(
                     GestureType.Tap,
-                    GestureType.DoubleTap,
+                    GestureType.DoubleTap(GestureType.DoubleTap.TYPE_CENTER),
+                    GestureType.DoubleTap(GestureType.DoubleTap.TYPE_LEFT_EDGE),
+                    GestureType.DoubleTap(GestureType.DoubleTap.TYPE_RIGHT_EDGE),
                     GestureType.LongPress
                 ),
                 listener = gesturesListener
@@ -194,15 +195,6 @@ class CoverPagerFragment : Fragment(R.layout.fragment_player_album_cover),
         if (Preferences.getNowPlayingColorSchemeKey(nps) == key) {
             requestColor(currentPosition)
         } else when (key) {
-            LYRICS_ON_COVER -> {
-                val isShowLyrics = sharedPreferences.getBoolean(key, true)
-                if (isShowLyrics && !binding.coverLyricsFragment.isVisible) {
-                    showLyrics()
-                } else if (!isShowLyrics && binding.coverLyricsFragment.isVisible) {
-                    hideLyrics()
-                }
-            }
-
             SWIPE_ON_COVER -> {
                 viewPager.setAllowSwiping(Preferences.swipeOnCover)
             }

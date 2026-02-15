@@ -34,10 +34,7 @@ import com.mardous.booming.databinding.FragmentMiniPlayerBinding
 import com.mardous.booming.extensions.isTablet
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.displayArtistName
-import com.mardous.booming.extensions.resources.show
-import com.mardous.booming.extensions.resources.textColorPrimary
-import com.mardous.booming.extensions.resources.textColorSecondary
-import com.mardous.booming.extensions.resources.toForegroundColorSpan
+import com.mardous.booming.extensions.resources.*
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
@@ -73,6 +70,7 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMiniPlayerBinding.bind(view)
+        binding.progressBar.installWavyAnimatorCleanup()
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.currentSongFlow.collect { currentSong ->
                 disposable = binding.image.songImage(currentSong)
@@ -100,8 +98,15 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
         }
         primaryColorSpan = textColorPrimary().toForegroundColorSpan()
         secondaryColorSpan = textColorSecondary().toForegroundColorSpan()
+        setupImageStyle()
         setUpButtons()
+        setUpProgressStyle()
         view.setOnTouchListener { _, event -> flingPlayBackController.onTouchEvent(event) }
+    }
+
+    fun setupImageStyle() {
+        val cornerRadius = Preferences.getNowPlayingImageCornerRadius(requireContext())
+        binding.image.setCornerRadius((cornerRadius / 2).toFloat())
     }
 
     private fun setUpButtons() {
@@ -110,6 +115,12 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
         binding.actionNext.setOnTouchListener(SkipButtonTouchHandler(DIRECTION_NEXT, this))
         binding.actionPrevious.setOnTouchListener(SkipButtonTouchHandler(DIRECTION_PREVIOUS, this))
         binding.actionPlayPause.setOnClickListener(this)
+    }
+
+    fun setUpProgressStyle() {
+        val isWavy = playerViewModel.isPlaying && Preferences.squigglySeekBar
+        binding.progressBar.setAnimatedWave(isWavy)
+        binding.progressBar.setWavy(isWavy)
     }
 
     fun setupButtonStyle() {
@@ -161,6 +172,7 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
         } else {
             binding.actionPlayPause.setIconResource(buttonStyle.play)
         }
+        setUpProgressStyle()
     }
 
     private var flingPlayBackController = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {

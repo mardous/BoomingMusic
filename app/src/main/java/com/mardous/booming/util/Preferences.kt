@@ -30,6 +30,8 @@ import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.Cutoff
 import com.mardous.booming.core.model.action.FolderAction
 import com.mardous.booming.core.model.action.NowPlayingAction
+import com.mardous.booming.core.model.action.QueueClearingBehavior
+import com.mardous.booming.core.model.action.SongClickBehavior
 import com.mardous.booming.core.model.player.NowPlayingInfo
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.player.PlayerTransition
@@ -40,7 +42,11 @@ import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.intRes
-import com.mardous.booming.extensions.utilities.*
+import com.mardous.booming.extensions.utilities.calendarSingleton
+import com.mardous.booming.extensions.utilities.deserialize
+import com.mardous.booming.extensions.utilities.getCutoffTimeMillis
+import com.mardous.booming.extensions.utilities.serialize
+import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.ui.component.views.TopAppBarLayout
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -94,7 +100,7 @@ object Preferences : KoinComponent {
     val blackTheme: Boolean
         get() = preferences.getBoolean(BLACK_THEME, false)
 
-    val materialYou: Boolean
+    val isMaterialYouTheme: Boolean
         get() = preferences.getBoolean(MATERIAL_YOU, hasS())
 
     val isCustomFont: Boolean
@@ -245,6 +251,12 @@ object Preferences : KoinComponent {
     val coverDoubleTapAction: NowPlayingAction
         get() = preferences.enumValue(COVER_DOUBLE_TAP_ACTION, NowPlayingAction.WebSearch)
 
+    val coverLeftDoubleTapAction: NowPlayingAction
+        get() = preferences.enumValue(COVER_LEFT_DOUBLE_TAP_ACTION, NowPlayingAction.SeekBackward)
+
+    val coverRightDoubleTapAction: NowPlayingAction
+        get() = preferences.enumValue(COVER_RIGHT_DOUBLE_TAP_ACTION, NowPlayingAction.SeekForward)
+
     val coverLongPressAction: NowPlayingAction
         get() = preferences.enumValue(COVER_LONG_PRESS_ACTION, NowPlayingAction.SaveAlbumCover)
 
@@ -282,6 +294,24 @@ object Preferences : KoinComponent {
     var preferAlbumArtistName: Boolean
         get() = preferences.getBoolean(PREFER_ALBUM_ARTIST_NAME, false)
         set(value) = preferences.edit { putBoolean(PREFER_ALBUM_ARTIST_NAME, value) }
+
+    var clearQueueAction: QueueClearingBehavior
+        get() = preferences.enumValueByOrdinal(ON_CLEAR_QUEUE_ACTION, QueueClearingBehavior.RemoveAllSongs)
+        set(value) = preferences.edit { putInt(ON_CLEAR_QUEUE_ACTION, value.ordinal) }
+
+    var songClickAction: SongClickBehavior
+        get() = preferences.enumValueByOrdinal(ON_SONG_CLICK_ACTION, SongClickBehavior.PlayWholeList)
+        set(value) = preferences.edit { putInt(ON_SONG_CLICK_ACTION, value.ordinal) }
+
+    val playOptionAlwaysVisible: Boolean
+        get() = preferences.getBoolean(PLAY_OPTION_ALWAYS_VISIBLE, false)
+
+    val playOptionClickBehavior: SongClickBehavior
+        get() = if (preferences.getBoolean(PLAY_OPTION_PLAYS_WHOLE_LIST, false)) {
+            SongClickBehavior.PlayWholeList
+        } else {
+            SongClickBehavior.PlayOnlyThisSong
+        }
 
     val searchAutoQueue: Boolean
         get() = preferences.getBoolean(SEARCH_AUTO_QUEUE, false)
@@ -381,12 +411,6 @@ object Preferences : KoinComponent {
     val minimumSongDuration: Int
         get() = preferences.getInt(MINIMUM_SONG_DURATION, 30)
 
-    val notificationExtraTextLine: String
-        get() = preferences.requireString(
-            NOTIFICATION_EXTRA_TEXT_LINE,
-            NotificationExtraText.ALBUM_NAME
-        )
-
     val rotationLockEnabled: Boolean
         get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)
 
@@ -423,18 +447,6 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(INITIALIZED_BLACKLIST, false)
         set(value) = preferences.edit { putBoolean(INITIALIZED_BLACKLIST, value) }
 
-    var lastSleepTimerValue: Int
-        get() = preferences.getInt(LAST_SLEEP_TIMER_VALUE, 30)
-        set(value) = preferences.edit { putInt(LAST_SLEEP_TIMER_VALUE, value) }
-
-    var nextSleepTimerElapsedRealTime: Long
-        get() = preferences.getLong(NEXT_SLEEP_TIMER_ELAPSED_REALTIME, -1)
-        set(value) = preferences.edit { putLong(NEXT_SLEEP_TIMER_ELAPSED_REALTIME, value) }
-
-    var isSleepTimerFinishMusic: Boolean
-        get() = preferences.getBoolean(SLEEP_TIMER_FINISH_SONG, false)
-        set(value) = preferences.edit { putBoolean(SLEEP_TIMER_FINISH_SONG, value) }
-
     var isSwipeAnywhere: Boolean
         get() = preferences.getBoolean(SWIPE_ANYWHERE, false)
         set(value) = preferences.edit { putBoolean(SWIPE_ANYWHERE, value) }
@@ -454,6 +466,9 @@ object Preferences : KoinComponent {
 
     inline fun <reified T : Enum<T>> SharedPreferences.enumValue(key: String, defaultValue: T): T =
         nullString(key)?.toEnum<T>() ?: defaultValue
+
+    inline fun <reified T : Enum<T>> SharedPreferences.enumValueByOrdinal(key: String, defaultValue: T): T =
+        getInt(key, defaultValue.ordinal).toEnum<T>() ?: defaultValue
 
     private fun appStr(resid: Int): String = appContext().getString(resid)
 }
@@ -528,15 +543,6 @@ interface ImageSize {
     }
 }
 
-interface NotificationExtraText {
-    companion object {
-        const val ARTIST_NAME = "artist"
-        const val ALBUM_NAME = "album"
-        const val ALBUM_ARTIST_NAME = "album_artist"
-        const val ALBUM_AND_YEAR = "album_and_year"
-    }
-}
-
 interface UpdateSearchMode {
     companion object {
         const val EVERY_DAY = "every_day"
@@ -574,6 +580,8 @@ const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
 const val CAROUSEL_EFFECT = "carousel_effect"
 const val COVER_SINGLE_TAP_ACTION = "cover_single_tap_action"
 const val COVER_DOUBLE_TAP_ACTION = "cover_double_tap_action"
+const val COVER_LEFT_DOUBLE_TAP_ACTION = "cover_left_double_tap_action"
+const val COVER_RIGHT_DOUBLE_TAP_ACTION = "cover_right_double_tap_action"
 const val COVER_LONG_PRESS_ACTION = "cover_long_press_action"
 const val ANIMATE_PLAYER_CONTROL = "animate_player_control"
 const val CIRCLE_PLAY_BUTTON = "circle_play_button"
@@ -590,6 +598,11 @@ const val SEEK_INTERVAL = "seek_interval"
 const val QUEUE_NEXT_MODE = "queue_next_mode"
 const val PLAY_ON_STARTUP_MODE = "play_on_startup_mode"
 const val SEARCH_AUTO_QUEUE = "search_auto_queue"
+const val ON_SONG_CLICK_ACTION = "on_song_click_action"
+const val ON_CLEAR_QUEUE_ACTION = "on_clear_queue_action"
+const val PLAY_OPTION_ALWAYS_VISIBLE = "play_option_always_visible"
+const val PLAY_OPTION_PLAYS_WHOLE_LIST = "play_option_whole_list"
+const val CLEAR_QUEUE_ON_COMPLETION = "clear_queue_on_completion"
 const val REMEMBER_SHUFFLE_MODE = "remember_shuffle_mode"
 const val ALBUM_SHUFFLE_MODE = "album_shuffle_mode"
 const val ARTIST_SHUFFLE_MODE = "artist_shuffle_mode"
@@ -621,7 +634,6 @@ const val ALBUM_MINIMUM_SONGS = "album_minimum_songs"
 const val MINIMUM_SONG_DURATION = "minimum_song_duration"
 const val ENABLE_ROTATION_LOCK = "enable_rotation_lock"
 const val STOP_WHEN_CLOSED_FROM_RECENTS = "stop_when_closed_from_recents"
-const val NOTIFICATION_EXTRA_TEXT_LINE = "notification_extra_text_line"
 const val LANGUAGE_NAME = "language_name"
 const val BACKUP_DATA = "backup_data"
 const val RESTORE_DATA = "restore_data"
@@ -633,9 +645,6 @@ const val EXPERIMENTAL_UPDATES = "experimental_updates"
 const val START_DIRECTORY = "start_directory"
 const val SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN = "saved_artwork_copyright_notice_shown"
 const val INITIALIZED_BLACKLIST = "initialized_blacklist"
-const val LAST_SLEEP_TIMER_VALUE = "last_sleep_timer_value"
-const val NEXT_SLEEP_TIMER_ELAPSED_REALTIME = "next_sleep_timer_elapsed_real_time"
-const val SLEEP_TIMER_FINISH_SONG = "sleep_timer_finish_music"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SWIPE_ANYWHERE = "swipe_anywhere"
 const val SWIPE_UP_QUEUE = "swipe_up_queue"

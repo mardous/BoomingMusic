@@ -25,12 +25,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
@@ -38,14 +39,17 @@ import androidx.compose.ui.platform.toClipEntry
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
+import coil3.compose.AsyncImage
 import com.mardous.booming.R
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.core.model.about.DeviceInfo
 import com.mardous.booming.extensions.*
 import com.mardous.booming.ui.component.compose.ActionButton
-import com.mardous.booming.ui.component.compose.lists.ContributionListItem
+import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
+import dev.jeziellago.compose.markdowntext.MarkdownText
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
@@ -54,8 +58,11 @@ private const val GITHUB_URL = "$AUTHOR_GITHUB_URL/BoomingMusic"
 private const val RELEASES_LINK = "$GITHUB_URL/releases"
 const val ISSUE_TRACKER_LINK = "$GITHUB_URL/issues"
 private const val AUTHOR_TELEGRAM_LINK = "https://t.me/mardeez"
+private const val COMMUNITY_LINK = "https://github.com/mardous/BoomingMusic/wiki/Community"
+private const val FAQ_LINK = "https://github.com/mardous/BoomingMusic/wiki/FAQ"
 private const val APP_TELEGRAM_LINK = "https://t.me/mardousdev"
 private const val CROWDIN_PROJECT_LINK = "https://crowdin.com/project/booming-music"
+private const val DONATE_LINK = "https://ko-fi.com/christiaam"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -98,28 +105,9 @@ fun AboutScreen(
     val sendInvitationTitle = stringResource(R.string.send_invitation_message)
     val invitationMessage = stringResource(R.string.invitation_message_content, RELEASES_LINK)
 
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
-
-    Scaffold(
-        modifier = Modifier
-            .fillMaxSize()
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = {
-            MediumTopAppBar(
-                title = { Text(text = stringResource(R.string.about_title)) },
-                navigationIcon = {
-                    IconButton(onClick = onBackClick) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_back_24dp),
-                            contentDescription = null
-                        )
-                    }
-                },
-                scrollBehavior = scrollBehavior
-            )
-        },
-        contentWindowInsets = WindowInsets.safeDrawing
-            .only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)
+    CollapsibleAppBarScaffold(
+        title = stringResource(R.string.about_title),
+        onBackClick = onBackClick
     ) { contentPadding ->
         val scrollState = rememberScrollState()
 
@@ -141,6 +129,9 @@ fun AboutScreen(
                 },
                 onLicensesClick = {
                     onNavigateToId(R.id.nav_licenses)
+                },
+                onFAQClick = {
+                    context.openUrl(FAQ_LINK)
                 }
             )
 
@@ -158,6 +149,9 @@ fun AboutScreen(
                             .putExtra(Intent.EXTRA_EMAIL, arrayOf("mardous.contact@gmail.com"))
                             .putExtra(Intent.EXTRA_SUBJECT, "Booming Music - Support & questions")
                     )
+                },
+                onDonateClick = {
+                    context.openUrl(DONATE_LINK)
                 }
             )
 
@@ -173,6 +167,9 @@ fun AboutScreen(
             AboutAcknowledgmentSection(
                 onTranslatorsClick = {
                     onNavigateToId(R.id.nav_translators)
+                },
+                onContributorsClick = {
+                    context.openUrl(COMMUNITY_LINK)
                 }
             )
 
@@ -202,9 +199,10 @@ fun AboutScreen(
 @Composable
 private fun AboutHeader(
     version: String,
-    onChangelogClick: () -> Unit = {},
-    onForkClick: () -> Unit = {},
-    onLicensesClick: () -> Unit = {}
+    onChangelogClick: () -> Unit,
+    onForkClick: () -> Unit,
+    onLicensesClick: () -> Unit,
+    onFAQClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -240,10 +238,17 @@ private fun AboutHeader(
 
         Row(modifier = Modifier.fillMaxWidth()) {
             ActionButton(
-                icon = R.drawable.ic_history_2_24dp,
+                icon = R.drawable.ic_history_24dp,
                 label = stringResource(R.string.changelog),
                 modifier = Modifier.weight(1f),
                 onClick = onChangelogClick
+            )
+
+            ActionButton(
+                icon = R.drawable.ic_help_24dp,
+                label = stringResource(R.string.faq),
+                modifier = Modifier.weight(1f),
+                onClick = onFAQClick
             )
 
             ActionButton(
@@ -263,11 +268,13 @@ private fun AboutHeader(
     }
 }
 
+@Preview
 @Composable
 private fun AboutAuthorSection(
-    onTelegramClick: () -> Unit,
-    onGitHubClick: () -> Unit,
-    onEmailClick: () -> Unit
+    onTelegramClick: () -> Unit = {},
+    onGitHubClick: () -> Unit = {},
+    onEmailClick: () -> Unit = {},
+    onDonateClick: () -> Unit = {}
 ) {
     AboutSection(title = stringResource(R.string.author)) {
         AboutCard {
@@ -277,20 +284,48 @@ private fun AboutAuthorSection(
                 summary = stringResource(R.string.mardous_summary)
             )
             AboutListItem(
-                iconRes = R.drawable.ic_telegram_24dp,
-                title = stringResource(R.string.follow_on_telegram),
-                onClick = onTelegramClick
+                iconRes = R.drawable.ic_coffee_24dp,
+                title = stringResource(R.string.buy_me_a_coffee),
+                summary = stringResource(R.string.buy_me_a_coffee_summary),
+                onClick = onDonateClick
             )
-            AboutListItem(
-                iconRes = R.drawable.ic_github_circle_24dp,
-                title = stringResource(R.string.view_profile_on_github),
-                onClick = onGitHubClick
-            )
-            AboutListItem(
-                iconRes = R.drawable.ic_email_24dp,
-                title = stringResource(R.string.write_an_email),
-                onClick = onEmailClick
-            )
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .wrapContentSize()
+                    .padding(vertical = 8.dp)
+            ) {
+                IconButton(
+                    onClick = onTelegramClick,
+                    modifier = Modifier.wrapContentSize()
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_telegram_24dp),
+                        contentDescription = stringResource(R.string.follow_on_telegram)
+                    )
+                }
+
+                IconButton(
+                    onClick = onGitHubClick,
+                    modifier = Modifier.wrapContentSize()
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_github_circle_24dp),
+                        contentDescription = stringResource(R.string.fork_on_github)
+                    )
+                }
+
+                IconButton(
+                    onClick = onEmailClick,
+                    modifier = Modifier.wrapContentSize()
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_email_24dp),
+                        contentDescription = stringResource(R.string.write_an_email)
+                    )
+                }
+            }
         }
     }
 }
@@ -350,7 +385,8 @@ private fun AboutSupportSection(
 
 @Composable
 private fun AboutAcknowledgmentSection(
-    onTranslatorsClick: () -> Unit
+    onTranslatorsClick: () -> Unit,
+    onContributorsClick: () -> Unit
 ) {
     AboutSection(title = stringResource(R.string.acknowledgments_title)) {
         AboutCard {
@@ -361,10 +397,10 @@ private fun AboutAcknowledgmentSection(
                 onClick = onTranslatorsClick
             )
             AboutListItem(
-                iconRes = R.drawable.ic_experiment_24dp,
-                title = stringResource(R.string.beta_testers_title),
-                summary = stringResource(R.string.beta_testers),
-                summaryMaxLines = Int.MAX_VALUE
+                iconRes = R.drawable.ic_groups_24dp,
+                title = stringResource(R.string.contributors_title),
+                summary = stringResource(R.string.contributors_summary),
+                onClick = onContributorsClick
             )
         }
     }
@@ -483,6 +519,55 @@ private fun AboutListItem(
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = summaryMaxLines,
                     overflow = TextOverflow.Ellipsis
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ContributionListItem(
+    contribution: Contribution,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(enabled = !contribution.url.isNullOrEmpty()) { onClick() }
+            .padding(horizontal = 16.dp, vertical = 16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        if (contribution.image != null) {
+            AsyncImage(
+                model = contribution.imageUrl,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape),
+                contentScale = ContentScale.Crop
+            )
+        }
+
+        Spacer(modifier = Modifier.width(16.dp))
+
+        Column(
+            modifier = Modifier
+                .weight(1f),
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = contribution.name,
+                style = MaterialTheme.typography.bodyLarge,
+                overflow = TextOverflow.Ellipsis,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            if (!contribution.description.isNullOrBlank()) {
+                MarkdownText(
+                    markdown = contribution.description,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    ),
                 )
             }
         }

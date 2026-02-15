@@ -11,28 +11,17 @@
     android:clickable="true"
     android:focusable="true">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/imageContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/list_item_image_size"
+        android:layout_height="@dimen/list_item_image_size"
         android:layout_marginHorizontal="16dp"
         android:scaleType="centerCrop"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintDimensionRatio="1:1"
+        app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/image"
-            android:layout_width="@dimen/list_item_image_size"
-            android:layout_height="@dimen/list_item_image_size"
-            android:layout_gravity="center_vertical"
-            android:scaleType="centerCrop"
-            android:importantForAccessibility="no"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-    </com.google.android.material.card.MaterialCardView>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title"
@@ -45,7 +34,7 @@
         android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceBody2"
         app:layout_constraintEnd_toStartOf="@+id/menu"
-        app:layout_constraintStart_toEndOf="@+id/imageContainer"
+        app:layout_constraintStart_toEndOf="@+id/image"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@tools:sample/lorem" />
 
@@ -58,7 +47,7 @@
         android:maxLines="1"
         android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceCaption"
-        app:layout_constraintStart_toEndOf="@id/imageContainer"
+        app:layout_constraintStart_toEndOf="@+id/image"
         app:layout_constraintEnd_toStartOf="@+id/time"
         app:layout_constraintTop_toBottomOf="@id/title"
         tools:text="@tools:sample/full_names" />

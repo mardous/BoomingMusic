@@ -37,14 +37,16 @@
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/progressIndicator"
+                style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:indeterminate="true"
                 app:indicatorColor="@android:color/white"
                 app:indicatorSize="24dp"
-                app:trackCornerRadius="8dp"
-                app:trackThickness="3dp" />
+                app:trackThickness="3dp"
+                app:waveAmplitude="1dp"
+                app:wavelength="10dp"/>
 
         </FrameLayout>
 

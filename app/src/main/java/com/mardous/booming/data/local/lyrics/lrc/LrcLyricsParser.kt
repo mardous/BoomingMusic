@@ -54,17 +54,29 @@ class LrcLyricsParser : LyricsParser {
                     } else {
                         val lineResult = LINE_PATTERN.find(line)
                         if (lineResult != null) {
-                            val time = lineResult.groupValues[1].trim()
+                            val base = lineResult.groupValues[1].trim()
                                 .takeUnless { it.isEmpty() } ?: continue
                             val text = lineResult.groupValues[2].trim()
                             val bgText = lineResult.groupValues[3]
                                 .takeIf { it.isNotEmpty() }
 
-                            val timeResult = LINE_TIME_PATTERN.find(time)
+                            val timeResult = LINE_TIME_PATTERN.find(base)
                             if (timeResult != null) {
                                 val timeMs = parseTime(timeResult)
                                 if (timeMs > LrcNode.INVALID_DURATION) {
                                     rawLines.add(LrcNode(timeMs, text, bgText, line))
+                                }
+                            } else {
+                                val backgroundMatcher = BACKGROUND_ONLY_PATTERN.find(line)
+                                if (rawLines.isNotEmpty() && backgroundMatcher != null) {
+                                    val bgText = backgroundMatcher.groupValues.getOrNull(1)?.trim()
+                                    if (!bgText.isNullOrEmpty()) {
+                                        val lastNode = rawLines.last()
+                                        if (lastNode.bgText.isNullOrEmpty()) {
+                                            lastNode.rawLine = "${lastNode.rawLine}[bg:$bgText]"
+                                            lastNode.bgText = bgText
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -92,13 +104,35 @@ class LrcLyricsParser : LyricsParser {
             for (i in 0 until rawLines.size) {
                 val entry = rawLines[i]
 
+                if (entry.start > length) {
+                    // This is likely due to a metadata error or a corrupted audio file,
+                    // resulting in a total duration shorter than the actual duration of the lyrics.
+                    // In either case, this leads to a failure. However, if it's the latter, it's
+                    // still fine to continue with the current lines; this way, the user will still
+                    // be able to see the lyrics for the incomplete song.
+                    break
+                }
+
                 var nextStep = 1
                 var nextEntry = rawLines.getOrNull(i + nextStep)
                 while (nextEntry != null && entry.start == nextEntry.start) {
                     nextEntry = rawLines.getOrNull(i + (nextStep++))
                 }
 
-                entry.end = nextEntry?.start ?: length
+                val end = nextEntry?.let { nextEntryNonNull ->
+                    if (nextEntryNonNull.start >= entry.start) {
+                        nextEntryNonNull.start
+                    } else {
+                        val firstLine = lines.values.firstOrNull()
+                        if (firstLine != null && firstLine.startAt == nextEntryNonNull.start) {
+                            length
+                        } else {
+                            error("Malformed LRC file")
+                        }
+                    }
+                }
+
+                entry.end = end ?: length
 
                 if (entry.text.isNullOrBlank()) {
                     if (!lines.containsKey(entry.start)) {
@@ -156,7 +190,8 @@ class LrcLyricsParser : LyricsParser {
                 artist = attributes["ar"],
                 album = attributes["al"],
                 durationMillis = length,
-                lines = linesWithOffset
+                lines = linesWithOffset,
+                offset = attributes["offset"]?.toLongOrNull() ?: 0
             )
         } catch (e: Exception) {
             e.printStackTrace()
@@ -220,6 +255,7 @@ class LrcLyricsParser : LyricsParser {
         private val LINE_TIME_PATTERN = Regex("\\[${TIME_PATTERN.pattern}]")
         private val LINE_ACTOR_PATTERN = Regex("^([vV]\\d+|D|M|F)\\s*:\\s*(.*)")
         private val LINE_WORD_PATTERN = Regex("<${TIME_PATTERN.pattern}>([^<]*)")
+        private val BACKGROUND_ONLY_PATTERN = Regex("^\\[bg:(.*?)]\\s*$")
         private val ATTRIBUTE_PATTERN = Regex("\\[(offset|ti|ar|al|length|by):(.+)]", RegexOption.IGNORE_CASE)
     }
 }

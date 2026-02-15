@@ -22,21 +22,37 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+import androidx.core.os.postDelayed
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import coil3.load
+import coil3.request.crossfade
+import coil3.request.transformations
+import coil3.size.Precision
+import coil3.size.Scale
+import com.commit451.coiltransformations.BlurTransformation
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.mardous.booming.R
@@ -56,31 +72,34 @@ import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.navigation.albumDetailArgs
 import com.mardous.booming.extensions.navigation.artistDetailArgs
+import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.navigation.genreDetailArgs
 import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.resources.animateBackgroundColor
 import com.mardous.booming.extensions.resources.animateTintColor
 import com.mardous.booming.extensions.resources.inflateMenu
+import com.mardous.booming.extensions.resources.setMarquee
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.component.menu.newPopupMenu
 import com.mardous.booming.ui.component.menu.onSongMenu
-import com.mardous.booming.ui.dialogs.LyricsDialog
-import com.mardous.booming.ui.dialogs.SleepTimerDialog
 import com.mardous.booming.ui.dialogs.WebSearchDialog
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
 import com.mardous.booming.ui.dialogs.songs.ShareSongDialog
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.equalizer.EqualizerFragment
+import com.mardous.booming.ui.screen.equalizer.EqualizerFragmentArgs
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
+import com.mardous.booming.ui.screen.lyrics.LyricsFragment
 import com.mardous.booming.ui.screen.player.PlayerGesturesController
 import com.mardous.booming.ui.screen.player.PlayerGesturesController.GestureType
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.CoverPagerFragment
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
@@ -102,6 +121,9 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
     protected abstract val playerControlsFragment: AbsPlayerControlsFragment
 
     protected open val playerToolbar: Toolbar?
+        get() = null
+
+    protected open val blurView: ImageView?
         get() = null
 
     private var colorAnimatorSet: AnimatorSet? = null
@@ -126,6 +148,16 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             playerViewModel.colorSchemeFlow.collect { scheme ->
                 applyColorScheme(scheme)?.start()
             }
+        }
+        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
+            combine(
+                playerViewModel.currentSongFlow,
+                playerViewModel.colorSchemeFlow
+            ) { song, scheme -> Pair(song, scheme) }
+                .filter { (song, scheme) -> song.id != -1L && scheme != PlayerColorScheme.Unspecified }
+                .collect { (song, scheme) ->
+                    applyBlur(song, scheme)
+                }
         }
     }
 
@@ -241,7 +273,14 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 if (currentFragment(R.id.fragment_container) is EqualizerFragment) {
                     (activity as? MainActivity)?.collapsePanel()
                 } else {
-                    goToDestination(requireActivity(), R.id.nav_equalizer)
+                    goToDestination(
+                        activity = requireActivity(),
+                        destinationId = R.id.nav_equalizer,
+                        args = EqualizerFragmentArgs.Builder()
+                            .setFromPlayer(true)
+                            .build()
+                            .toBundle()
+                    )
                 }
                 true
             }
@@ -252,6 +291,33 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
 
     override fun gestureDetected(gestureType: GestureType): Boolean {
         return when (gestureType) {
+            is GestureType.Tap -> onQuickActionEvent(Preferences.coverSingleTapAction)
+            is GestureType.LongPress -> onQuickActionEvent(Preferences.coverLongPressAction)
+            is GestureType.DoubleTap -> {
+                when (gestureType.type) {
+                    GestureType.DoubleTap.TYPE_LEFT_EDGE -> {
+                        val action = Preferences.coverLeftDoubleTapAction
+                            .takeIf { it != NowPlayingAction.Nothing }
+                            ?: Preferences.coverDoubleTapAction
+
+                        onQuickActionEvent(action)
+                    }
+
+                    GestureType.DoubleTap.TYPE_RIGHT_EDGE -> {
+                        val action = Preferences.coverRightDoubleTapAction
+                            .takeIf { it != NowPlayingAction.Nothing }
+                            ?: Preferences.coverDoubleTapAction
+
+                        onQuickActionEvent(action)
+                    }
+
+                    GestureType.DoubleTap.TYPE_CENTER -> {
+                        onQuickActionEvent(Preferences.coverDoubleTapAction)
+                    }
+
+                    else -> false
+                }
+            }
             is GestureType.Fling -> {
                 when (gestureType.direction) {
                     GestureType.Fling.DIRECTION_LEFT -> {
@@ -278,9 +344,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                     else -> false
                 }
             }
-            is GestureType.Tap -> onQuickActionEvent(Preferences.coverSingleTapAction)
-            is GestureType.DoubleTap -> onQuickActionEvent(Preferences.coverDoubleTapAction)
-            is GestureType.LongPress -> onQuickActionEvent(Preferences.coverLongPressAction)
         }
     }
 
@@ -291,23 +354,64 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
     protected abstract fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget>
 
     private fun applyColorScheme(scheme: PlayerColorScheme): AnimatorSet? {
-        colorAnimatorSet?.cancel()
+        cancelColorAnimator()
         colorAnimatorSet = AnimatorSet()
             .setDuration(scheme.mode.preferredAnimDuration)
             .apply {
-                playTogether(getTintTargets(scheme).map {
+                val tintTargets = getTintTargets(scheme).mapTo(mutableListOf()) {
                     if (it.isSurface) {
                         it.target.animateBackgroundColor(it.newColor)
                     } else {
                         it.target.animateTintColor(
-                            it.oldColor,
-                            it.newColor,
+                            fromColor = it.oldColor,
+                            toColor = it.newColor,
+                            isForeground = it.isForeground,
                             isIconButton = it.isIcon
                         )
                     }
-                })
+                }
+                blurView?.let {
+                    if (scheme.blurToken.isBlur) {
+                        tintTargets.add(
+                            it.animateTintColor(
+                                fromColor = it.foregroundTintList?.defaultColor
+                                    ?: Color.TRANSPARENT,
+                                toColor = scheme.surfaceColor,
+                                isForeground = true
+                            )
+                        )
+                    }
+                }
+                playTogether(tintTargets)
             }
         return colorAnimatorSet
+    }
+
+    private fun cancelColorAnimator() {
+        colorAnimatorSet?.cancel()
+        colorAnimatorSet = null
+    }
+
+    private fun applyBlur(song: Song, scheme: PlayerColorScheme) {
+        blurView?.let {
+            if (scheme.blurToken.isBlur) {
+                it.isVisible = true
+                it.load(song) {
+                    size(400)
+                    precision(Precision.EXACT)
+                    scale(Scale.FILL)
+                    memoryCacheKey("nowplaying:song:${song.id}")
+                    crossfade(1000)
+                    transformations(BlurTransformation(
+                        context = it.context,
+                        radius = scheme.blurToken.blurRadius.coerceIn(0f, 25f)
+                    ))
+                }
+            } else {
+                it.isGone = true
+                it.setImageDrawable(null)
+            }
+        }
     }
 
     protected fun Menu.onLyricsVisibilityChang(lyricsVisible: Boolean) {
@@ -331,8 +435,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
         view?.setOnTouchListener(null)
         gesturesController?.release()
         gesturesController = null
-        colorAnimatorSet?.cancel()
-        colorAnimatorSet = null
+        cancelColorAnimator()
+        coverFragment = null
         super.onDestroyView()
     }
 
@@ -378,7 +482,11 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 if (coverFragment?.isAllowedToLoadLyrics == true) {
                     coverFragment?.toggleLyrics()
                 } else {
-                    LyricsDialog.create(currentSong).show(childFragmentManager, "LYRICS_DIALOG")
+                    if (currentFragment(R.id.fragment_container) is LyricsFragment) {
+                        (activity as? MainActivity)?.collapsePanel()
+                    } else {
+                        goToDestination(requireActivity(), R.id.nav_lyrics)
+                    }
                 }
                 true
             }
@@ -413,7 +521,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             }
 
             NowPlayingAction.SleepTimer -> {
-                SleepTimerDialog().show(childFragmentManager, "SLEEP_TIMER")
+                findActivityNavController(R.id.fragment_container)
+                    .navigate(R.id.nav_sleep_timer)
                 true
             }
 
@@ -422,28 +531,78 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 true
             }
 
+            NowPlayingAction.SeekBackward -> {
+                playerViewModel.seekBack()
+                true
+            }
+
+            NowPlayingAction.SeekForward -> {
+                playerViewModel.seekForward()
+                true
+            }
+
             NowPlayingAction.Nothing -> false
         }
     }
 
-    fun onShow() {
+    @CallSuper
+    open fun onShow() {
         coverFragment?.showLyrics()
         playerControlsFragment.onShow()
     }
 
-    fun onHide() {
+    @CallSuper
+    open fun onHide() {
         coverFragment?.hideLyrics()
         playerControlsFragment.onHide()
     }
 
     protected fun getTintedDrawable(
         drawableRes: Int,
-        color: Int = playerViewModel.colorScheme.primaryTextColor
+        color: Int = playerViewModel.colorScheme.onSurfaceColor
     ) = AppCompatResources.getDrawable(requireContext(), drawableRes).also {
         it?.setTint(color)
     }
 
-    protected fun Menu.onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
+    protected open fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
+        playerToolbar?.menu?.setIsFavorite(isFavorite, withAnimation)
+    }
+
+    private fun updateIsFavorite(song: Song = playerViewModel.currentSong, withAnim: Boolean = false) {
+        libraryViewModel.isSongFavorite(song).observe(viewLifecycleOwner) { isFavorite ->
+            onIsFavoriteChanged(isFavorite, withAnim)
+        }
+    }
+
+    private fun toggleFavorite() {
+        playerViewModel.toggleFavorite()
+    }
+
+    fun setMarquee(vararg textView: TextView?, marquee: Boolean) {
+        val scrollingTextEnabled = Preferences.enableScrollingText
+        textView.forEach { it?.setMarquee(marquee && scrollingTextEnabled) }
+    }
+
+    fun MaterialButton.setIsFavorite(isFavorite: Boolean, withAnimation: Boolean) {
+        /*
+        val iconRes = if (withAnimation) {
+            if (isFavorite) R.drawable.avd_favorite else R.drawable.avd_unfavorite
+        } else {
+            if (isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp
+        }
+         */
+        // There's a bug in the Material Components library that affects the
+        // icon animation on a MaterialButton, so for now, we'll change the
+        // icon in a simple way.
+        val iconRes = if (isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp
+        icon = ContextCompat.getDrawable(context, iconRes).also { drawable ->
+            if (drawable is AnimatedVectorDrawable) {
+                drawable.start()
+            }
+        }
+    }
+
+    protected fun Menu.setIsFavorite(isFavorite: Boolean, withAnimation: Boolean) {
         val iconRes = if (withAnimation) {
             if (isFavorite) R.drawable.avd_favorite else R.drawable.avd_unfavorite
         } else {
@@ -459,20 +618,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 }
             }
         }
-    }
-
-    protected open fun onIsFavoriteChanged(isFavorite: Boolean, withAnimation: Boolean) {
-        playerToolbar?.menu?.onIsFavoriteChanged(isFavorite, withAnimation)
-    }
-
-    private fun updateIsFavorite(song: Song = playerViewModel.currentSong, withAnim: Boolean = false) {
-        libraryViewModel.isSongFavorite(song).observe(viewLifecycleOwner) { isFavorite ->
-            onIsFavoriteChanged(isFavorite, withAnim)
-        }
-    }
-
-    private fun toggleFavorite() {
-        playerViewModel.toggleFavorite()
     }
 
     fun setViewAction(view: View, action: NowPlayingAction) {
@@ -595,11 +740,13 @@ fun goToDestination(
             collapsePanel()
         }
 
-        val navOptions = when {
-            singleTop -> navOptions { launchSingleTop = true }
-            else -> null
+        Handler(Looper.getMainLooper()).postDelayed(250) {
+            val navOptions = when {
+                singleTop -> navOptions { launchSingleTop = true }
+                else -> null
+            }
+            findNavController(R.id.fragment_container)
+                .navigate(destinationId, args, navOptions)
         }
-        findNavController(R.id.fragment_container)
-            .navigate(destinationId, args, navOptions)
     }
 }

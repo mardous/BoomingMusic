@@ -21,7 +21,6 @@ import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.animation.TimeInterpolator
 import android.graphics.Color
-import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -60,13 +59,13 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
     override val playPauseFab: FloatingActionButton
         get() = binding.playPauseButton
 
-    override val repeatButton: MaterialButton?
+    override val repeatButton: MaterialButton
         get() = binding.repeatButton
 
-    override val shuffleButton: MaterialButton?
+    override val shuffleButton: MaterialButton
         get() = binding.shuffleButton
 
-    override val musicSlider: MusicSlider?
+    override val musicSlider: MusicSlider
         get() = binding.progressSlider
 
     override val songCurrentProgress: TextView
@@ -75,10 +74,10 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
     override val songTotalTime: TextView
         get() = binding.songTotalTime
 
-    override val songTitleView: TextView?
+    override val songTitleView: TextView
         get() = binding.title
 
-    override val songArtistView: TextView?
+    override val songArtistView: TextView
         get() = binding.text
 
     override val songInfoView: TextView
@@ -136,30 +135,30 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
         val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
         val newShuffleColor = getPlaybackControlsColor(
             isShuffleModeOn,
-            scheme.primaryControlColor,
-            scheme.secondaryControlColor
+            scheme.onSurfaceColor,
+            scheme.onSurfaceVariantColor
         )
         val oldRepeatColor = getPlaybackControlsColor(isRepeatModeOn)
         val newRepeatColor = getPlaybackControlsColor(
             isRepeatModeOn,
-            scheme.primaryControlColor,
-            scheme.secondaryControlColor
+            scheme.onSurfaceColor,
+            scheme.onSurfaceVariantColor
         )
 
         return listOfNotNull(
-            binding.playPauseButton.tintTarget(oldPlayPauseColor, scheme.primaryControlColor),
-            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.primaryControlColor),
-            binding.menu.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
-            binding.favorite.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
-            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
-            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.primaryControlColor),
+            binding.playPauseButton.tintTarget(oldPlayPauseColor, scheme.onSurfaceColor),
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.onSurfaceColor),
+            binding.menu.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.favorite.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
             binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
             binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
-            binding.title.tintTarget(oldPrimaryTextColor, scheme.primaryTextColor),
-            binding.text.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor),
-            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.secondaryTextColor)
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor)
         )
     }
 
@@ -192,15 +191,9 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
     internal fun setFavorite(isFavorite: Boolean, withAnimation: Boolean) {
         if (this.isFavorite != isFavorite) {
             this.isFavorite = isFavorite
-            val iconRes = if (withAnimation) {
-                if (isFavorite) R.drawable.avd_favorite else R.drawable.avd_unfavorite
-            } else {
-                if (isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp
-            }
-            binding.favorite.setIconResource(iconRes)
-            binding.favorite.icon?.let {
-                if (it is AnimatedVectorDrawable) {
-                    it.start()
+            playerFragment?.let { nonNullPlayerFragment ->
+                with(nonNullPlayerFragment) {
+                    binding.favorite.setIsFavorite(isFavorite, withAnimation)
                 }
             }
         }

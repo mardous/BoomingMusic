@@ -20,23 +20,43 @@ package com.mardous.booming
 import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.mardous.booming.coil.CustomArtistImageManager
+import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.BoomingDatabase
 import com.mardous.booming.core.audio.AudioOutputObserver
-import com.mardous.booming.core.audio.SoundSettings
 import com.mardous.booming.data.local.AlbumCoverSaver
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
-import com.mardous.booming.data.local.repository.*
+import com.mardous.booming.data.local.repository.AlbumRepository
+import com.mardous.booming.data.local.repository.ArtistRepository
+import com.mardous.booming.data.local.repository.GenreRepository
+import com.mardous.booming.data.local.repository.LyricsRepository
+import com.mardous.booming.data.local.repository.PlaylistRepository
+import com.mardous.booming.data.local.repository.RealAlbumRepository
+import com.mardous.booming.data.local.repository.RealArtistRepository
+import com.mardous.booming.data.local.repository.RealGenreRepository
+import com.mardous.booming.data.local.repository.RealLyricsRepository
+import com.mardous.booming.data.local.repository.RealPlaylistRepository
+import com.mardous.booming.data.local.repository.RealRepository
+import com.mardous.booming.data.local.repository.RealSearchRepository
+import com.mardous.booming.data.local.repository.RealSmartRepository
+import com.mardous.booming.data.local.repository.RealSongRepository
+import com.mardous.booming.data.local.repository.RealSpecialRepository
+import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.local.repository.SearchRepository
+import com.mardous.booming.data.local.repository.SmartRepository
+import com.mardous.booming.data.local.repository.SongRepository
+import com.mardous.booming.data.local.repository.SpecialRepository
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.data.remote.github.GitHubService
 import com.mardous.booming.data.remote.jsonHttpClient
 import com.mardous.booming.data.remote.lastfm.LastFmService
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
-import com.mardous.booming.data.remote.provideDefaultCache
 import com.mardous.booming.data.remote.provideOkHttp
 import com.mardous.booming.playback.SleepTimer
 import com.mardous.booming.playback.equalizer.EqualizerManager
+import com.mardous.booming.playback.processor.BalanceAudioProcessor
+import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
 import com.mardous.booming.ui.screen.about.AboutViewModel
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.screen.info.InfoViewModel
@@ -50,9 +70,10 @@ import com.mardous.booming.ui.screen.library.search.SearchViewModel
 import com.mardous.booming.ui.screen.library.years.YearDetailViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.ui.screen.sound.SoundSettingsViewModel
+import com.mardous.booming.ui.screen.sleeptimer.SleepTimerViewModel
 import com.mardous.booming.ui.screen.tageditor.TagEditorViewModel
 import com.mardous.booming.ui.screen.update.UpdateViewModel
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.bind
@@ -63,10 +84,7 @@ val networkModule = module {
         jsonHttpClient(okHttpClient = get())
     }
     factory {
-        provideDefaultCache()
-    }
-    factory {
-        provideOkHttp(context = get(), cache = get())
+        provideOkHttp(context = get())
     }
     single {
         GitHubService(context = androidContext(), client = get())
@@ -93,10 +111,17 @@ private val mainModule = module {
         SleepTimer(context = androidContext())
     }
     single {
-        EqualizerManager(context = androidContext())
+        BalanceAudioProcessor()
     }
     single {
-        SoundSettings(context = androidContext())
+        ReplayGainAudioProcessor()
+    }
+    single {
+        EqualizerManager(
+            context = androidContext(),
+            balanceProcessor = get(),
+            replayGainProcessor = get()
+        )
     }
     single {
         MediaStoreWriter(context = androidContext(), contentResolver = get())
@@ -107,6 +132,9 @@ private val mainModule = module {
     single {
         CustomArtistImageManager(context = androidContext())
     }
+    single {
+        CustomPlaylistImageManager(context = androidContext())
+    }
     factory {
         AudioOutputObserver(context = androidContext())
     }
@@ -115,7 +143,11 @@ private val mainModule = module {
 private val roomModule = module {
     single {
         Room.databaseBuilder(androidContext(), BoomingDatabase::class.java, "music_database.db")
-            .addMigrations(BoomingDatabase.MIGRATION_1_2, BoomingDatabase.MIGRATION_2_3)
+            .addMigrations(
+                BoomingDatabase.MIGRATION_1_2,
+                BoomingDatabase.MIGRATION_2_3,
+                BoomingDatabase.MIGRATION_3_4
+            )
             .build()
     }
 
@@ -142,6 +174,10 @@ private val roomModule = module {
     factory {
         get<BoomingDatabase>().lyricsDao()
     }
+
+    factory {
+        get<BoomingDatabase>().canvasDao()
+    }
 }
 
 private val dataModule = module {
@@ -162,7 +198,7 @@ private val dataModule = module {
     } bind Repository::class
 
     single {
-        RealSongRepository(inclExclDao = get())
+        RealSongRepository(context = get(), inclExclDao = get())
     } bind SongRepository::class
 
     single {
@@ -214,6 +250,7 @@ private val dataModule = module {
     single {
         RealLyricsRepository(
             context = androidContext(),
+            preferences = get(),
             contentResolver = get(),
             lyricsDownloadService = get(),
             lyricsDao = get()
@@ -223,7 +260,7 @@ private val dataModule = module {
 
 private val viewModule = module {
     viewModel {
-        LibraryViewModel(repository = get(), inclExclDao = get())
+        LibraryViewModel(repository = get(), inclExclDao = get(), customPlaylistImageManager = get())
     }
 
     viewModel {
@@ -234,7 +271,15 @@ private val viewModule = module {
         EqualizerViewModel(
             contentResolver = get(),
             equalizerManager = get(),
+            audioOutputObserver = get(),
             mediaStoreWriter = get()
+        )
+    }
+
+    viewModel {
+        SleepTimerViewModel(
+            application = androidApplication(),
+            sleepTimer = get()
         )
     }
 
@@ -280,10 +325,6 @@ private val viewModule = module {
 
     viewModel {
         InfoViewModel(repository = get())
-    }
-
-    viewModel {
-        SoundSettingsViewModel(audioOutputObserver = get(), soundSettings = get())
     }
 
     viewModel {

@@ -19,9 +19,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@android:id/progress"
+    style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:indeterminate="true"
     android:visibility="gone"
-    app:indicatorSize="24dp"/>
+    app:indicatorSize="24dp"
+    app:waveAmplitude="1dp"
+    app:wavelength="10dp"/>

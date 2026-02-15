@@ -17,10 +17,7 @@
 
 package com.mardous.booming.ui.adapters
 
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isGone
@@ -203,6 +200,10 @@ class SearchAdapter(
                     setOnClickListener(object : OnClickMenu() {
                         override val popupMenuRes: Int
                             get() = menuRes
+
+                        override fun onPreparePopup(menu: Menu) {
+                            menu.removeItem(R.id.action_play)
+                        }
 
                         override fun onMenuItemClick(item: MenuItem): Boolean {
                             when (val data = dataSet[layoutPosition]) {

@@ -26,8 +26,6 @@ import android.util.Log
 import androidx.core.text.HtmlCompat
 import com.mardous.booming.appContext
 
-fun hasPie() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
-
 fun hasQ() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
 fun hasR() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R

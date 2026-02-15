@@ -26,11 +26,11 @@ data class SearchQuery(
     val timestamp: Long = System.currentTimeMillis()
 ) {
 
-    enum class FilterMode(@IdRes val chipId: Int) {
-        Songs(R.id.chip_songs),
-        Albums(R.id.chip_albums),
-        Artists(R.id.chip_artists),
-        Genres(R.id.chip_genres),
-        Playlists(R.id.chip_playlists)
+    enum class FilterMode(@IdRes val buttonId: Int) {
+        Songs(R.id.modeSongs),
+        Albums(R.id.modeAlbums),
+        Artists(R.id.modeArtists),
+        Genres(R.id.modeGenres),
+        Playlists(R.id.modePlaylists)
     }
 }

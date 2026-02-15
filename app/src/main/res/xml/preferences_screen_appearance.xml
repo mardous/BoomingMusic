@@ -47,7 +47,7 @@
         app:title="@string/library_header"
         app:layout="@layout/preference_category_title">
 
-        <com.mardous.booming.ui.component.preferences.dialog.CategoriesPreference
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
             app:icon="@drawable/ic_tab_24dp"
             app:title="@string/library_categories_title"
             app:summary="@string/library_categories_summary"

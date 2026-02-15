@@ -28,7 +28,10 @@ import com.google.android.material.card.MaterialCardView
 import com.mardous.booming.coil.placeholderDrawableRes
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.palette.PaletteProcessor
+import com.mardous.booming.extensions.resources.getPrimaryTextColor
+import com.mardous.booming.extensions.resources.isColorLight
 import com.mardous.booming.extensions.resources.toColorStateList
+import com.mardous.booming.extensions.resources.withAlpha
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
@@ -44,13 +47,13 @@ private fun MediaEntryViewHolder.setColor(color: PaletteColor) {
         paletteColorContainer.setBackgroundColor(color.backgroundColor)
     }
 
-    imageGradient?.backgroundTintList =
-        color.backgroundColor.toColorStateList()
-
     title?.setTextColor(color.primaryTextColor)
     text?.setTextColor(color.secondaryTextColor)
     imageText?.setTextColor(color.secondaryTextColor)
     menu?.iconTint = color.secondaryTextColor.toColorStateList()
+    play?.backgroundTintList = color.primaryTextColor.withAlpha(0.85f).toColorStateList()
+    play?.iconTint = getPrimaryTextColor(itemView.context, isDark = color.primaryTextColor.isColorLight)
+        .toColorStateList()
 }
 
 fun MediaEntryViewHolder.loadPaletteImage(

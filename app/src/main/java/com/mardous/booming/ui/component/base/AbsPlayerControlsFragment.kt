@@ -43,13 +43,18 @@ import com.mardous.booming.extensions.getShapeAppearanceModel
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.asReadableDuration
 import com.mardous.booming.extensions.resources.applyColor
-import com.mardous.booming.extensions.resources.setMarquee
 import com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPreferenceDialog
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerAnimator
 import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.util.*
+import com.mardous.booming.util.DISPLAY_ALBUM_TITLE
+import com.mardous.booming.util.DISPLAY_EXTRA_INFO
+import com.mardous.booming.util.ENABLE_SCROLLING_TEXT
+import com.mardous.booming.util.EXTRA_INFO
+import com.mardous.booming.util.PREFER_ALBUM_ARTIST_NAME
+import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.SQUIGGLY_SEEK_BAR
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
@@ -107,8 +112,8 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         view.layoutDirection = View.LAYOUT_DIRECTION_LTR
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.colorSchemeFlow.collect { scheme ->
-                lastPlaybackControlsColor = scheme.primaryControlColor
-                lastDisabledPlaybackControlsColor = scheme.secondaryControlColor
+                lastPlaybackControlsColor = scheme.onSurfaceColor
+                lastDisabledPlaybackControlsColor = scheme.onSurfaceVariantColor
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
@@ -273,7 +278,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
 
     fun setMarquee(vararg textView: TextView?, marquee: Boolean) {
         if (isShown) {
-            textView.forEach { it?.setMarquee(marquee) }
+            playerFragment?.setMarquee(textView = textView, marquee = marquee)
         }
     }
 
@@ -283,16 +288,16 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     internal open fun onShow() {
         isShown = true
         playerAnimator?.start()
-        setMarquee(songTitleView, songArtistView, songInfoView, marquee = Preferences.enableScrollingText)
+        setMarquee(songTitleView, songArtistView, songInfoView, marquee = true)
     }
 
     /**
      * Called to notify that the player has been collapsed.
      */
     internal open fun onHide() {
-        isShown = false
         playerAnimator?.prepare()
         setMarquee(songTitleView, songArtistView, songInfoView, marquee = false)
+        isShown = false
     }
 
     abstract fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget>
