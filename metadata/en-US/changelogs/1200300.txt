@@ -1,0 +1,7 @@
+* New Expressive player style and Blur color scheme
+* Brand-new equalizer engine with up to 15 bands and AutoEq support
+* Ability to assign equalizer profiles to different output devices
+* New responsive home screen widget
+* New customization options for playback behavior and queue handling
+* Improved TTML and LRC lyrics support, including translations and Canvas rendering
+* UI updated with Material 3 Expressive design and various bug fixes

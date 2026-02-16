@@ -39,7 +39,8 @@
 - 🎼 **Automatic Lyrics Download & Editing** – Automatically fetch, sync, and edit lyrics with ease.
 - 💬 **Word-by-Word Synced Lyrics** – Enjoy immersive real-time lyric playback with word-level timing.
 - 🌍 **Translated Lyrics Support** – Display dual-language lyrics via TTML or LRC with translations.
-- 🔊 **Built-in Equalizer** – Fine-tune your sound, customize your presets, and share them.
+- 🔊 **Built-in Equalizer** – Powerful EQ with up to 15 fully configurable bands and customizable profiles.
+- 🎧 **AutoEq Support** – Import professionally tuned headphone correction profiles for the most accurate sound possible.
 - 🔄 **Gapless Playback** – Smooth transitions between songs with zero interruption.
 - 🧠 **Smart Playlists** – Auto-generated lists like *Recently Played*, *Most Played*, and *History*.
 - 🎧 **Bluetooth & Headset Controls** – Manage playback easily via connected devices.
@@ -99,7 +100,7 @@
 - [ ] 🎵 Improved genre handling
 - [ ] 🔁 Last.fm integration (import/export playback data)
 - [ ] 💿 Enhanced artist pages (separate albums and singles visually)
-- [ ] 📺 Experimental Android TV support (if enough demand!)
+- [ ] 🌐 Jellyfin & Navidrome integration
 
 ## 🔗 Useful Links
 
