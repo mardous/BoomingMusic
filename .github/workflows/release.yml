@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: apk-${{ matrix.variant }}-release
-          path: app/build/outputs/apk/*/release/*-release.apk
+          path: app/build/outputs/apk/${{ matrix.variant }}/release/*.apk
 
   publish-release:
     needs: build
@@ -77,6 +77,4 @@ jobs:
         with:
           prerelease: ${{ steps.prerelease.outputs.value }}
           generate_release_notes: true
-          files: |
-            release-apks/*/release/*-fdroid-release.apk
-            release-apks/*/release/*-normal-release.apk
+          files: release-apks/*.apk
