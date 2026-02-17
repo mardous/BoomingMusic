@@ -220,7 +220,7 @@
     <string name="song_stat_never_label">从未播放</string>
     <string name="song_stat_one_time_label">在 %s 上播放过一次</string>
     <string name="song_stat_label">播放了 %1$d 次，最后一次在 %2$s</string>
-    <string name="horizontal_albums">横向相册</string>
+    <string name="horizontal_albums">横向专辑</string>
     <string name="ignore_singles">排除单曲</string>
     <string name="compact_song_view">紧凑的歌曲视图</string>
     <string name="show_total_duration">显示总时长</string>
@@ -254,7 +254,7 @@
     <string name="use_also_as_alarm_alert">同时用作闹钟</string>
     <string name="action_details">详细信息</string>
     <string name="action_set_as_start_directory">设置为起始目录</string>
-    <string name="start_directory_set">Start directory set to %s</string>
+    <string name="start_directory_set">起始目录已设为 %s</string>
     <string name="action_go_to_start_directory">转到起始目录</string>
     <string name="action_hierarchy_view">层级视图</string>
     <string name="new_start_directory">新建起始目录: %s</string>
@@ -433,14 +433,14 @@
     <string name="are_you_sure_you_want_to_reset_the_equalizer">确定要重置均衡器吗？
         \n\n这将清除您的所有配置。</string>
     <string name="not_supported">不支持</string>
-    <string name="set_eq_engine_title">Set EQ engine</string>
-    <string name="eq_engine_basic_title">Legacy Engine</string>
-    <string name="eq_engine_basic_description">A 5-band classic configuration designed for maximum device compatibility.</string>
-    <string name="eq_engine_precision_title">Precision Engine</string>
-    <string name="eq_engine_precision_description">High-fidelity processing with up to 15-band control for ultimate acoustic shaping.</string>
-    <string name="set_eq_engine_reset_warning">Changing the equalization engine will reset the equalizer settings, including custom profiles.</string>
-    <string name="eq_empty_bands">The equalization engine did not return any band configurations.</string>
-    <string name="enable_equalizer">启用EQ</string>
+    <string name="set_eq_engine_title">设置均衡引擎</string>
+    <string name="eq_engine_basic_title">传统引擎</string>
+    <string name="eq_engine_basic_description">采用5频段经典配置，具有更好的设备兼容性。</string>
+    <string name="eq_engine_precision_title">精密引擎</string>
+    <string name="eq_engine_precision_description">适用 Hi-Fi 处理，支持多达15段频段控制，具有更好的声学塑造。</string>
+    <string name="set_eq_engine_reset_warning">更改均衡引擎将重置均衡器设置，包括自定义配置。</string>
+    <string name="eq_empty_bands">均衡引擎未返回任何频段配置。</string>
+    <string name="enable_equalizer">启用均衡器</string>
     <string name="select_profile">选择配置</string>
     <string name="save_profile_label">保存配置</string>
     <string name="edit_profile_label">编辑配置</string>
@@ -460,8 +460,8 @@
     <string name="virtualizer_label">虚拟环绕声</string>
     <string name="loudness_enhancer">放大器</string>
     <string name="sound_settings">声音设置</string>
-    <string name="listening_on">Listening on</string>
-    <string name="casting_to">Casting to</string>
+    <string name="listening_on">收听于</string>
+    <string name="casting_to">投射于</string>
     <string name="volume_label">音量</string>
     <string name="reset_balance">重置平衡</string>
     <string name="speed_and_pitch_label">播放速度与音高</string>
@@ -865,8 +865,8 @@
     <string name="player_color_mode_vibrant_color_description">将专辑颜色应用于提示背景、文本和控件</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">启用基于专辑封面颜色的Material You配色</string>
-    <string name="player_color_mode_blur_title">Blur</string>
-    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
+    <string name="player_color_mode_blur_title">模糊</string>
+    <string name="player_color_mode_blur_description">使用 Material You 色彩模糊背景</string>
     <!-- Update -->
     <string name="auto_update_title">自动更新</string>
     <string name="every_day">每天</string>
