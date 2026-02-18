@@ -335,7 +335,7 @@
     <string name="data_restored_successfully">Dati ripristinati con successo.</string>
     <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
     <string name="playlist_locked">Playlist locked</string>
-    <string name="playlist_unlocked">Playlist unlocked</string>
+    <string name="playlist_unlocked">Playlist sbloccata</string>
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
     <string name="queue_locked">Queue locked</string>
     <string name="queue_unlocked">Queue unlocked</string>
@@ -357,7 +357,7 @@
         <item quantity="other">Album</item>
     </plurals>
     <plurals name="x_songs">
-        <item quantity="one">%d song</item>
+        <item quantity="one">%d brano</item>
         <item quantity="other">%d brani</item>
     </plurals>
     <plurals name="x_albums">
@@ -389,30 +389,30 @@
     <string name="recent_albums">Album recenti</string>
     <string name="no_suggestions">Non ci sono suggerimenti per te</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">Pure random</string>
-    <string name="shuffle_mode_most_played">Most played</string>
-    <string name="shuffle_mode_most_played_artists">Most played artists</string>
-    <string name="shuffle_mode_most_played_albums">Most played albums</string>
-    <string name="shuffle_mode_favorite_songs">Favorites first</string>
+    <string name="shuffle_mode_pure_random">Completamente casuale</string>
+    <string name="shuffle_mode_most_played">Più riprodotti</string>
+    <string name="shuffle_mode_most_played_artists">Artisti più riprodotti</string>
+    <string name="shuffle_mode_most_played_albums">Album più riprodotti</string>
+    <string name="shuffle_mode_favorite_songs">Prima i preferiti</string>
     <string name="shuffle_mode_forgotten_songs">Forgotten songs</string>
-    <string name="shuffle_mode_recently_added">Recently added</string>
+    <string name="shuffle_mode_recently_added">Aggiunti recentemente</string>
     <string name="shuffle_mode_combined">Smart mix</string>
     <string name="shuffle_mode_pure_random_description">Riproduzione completamente casuale.</string>
     <string name="shuffle_mode_most_played_description">Favors your most played songs.</string>
     <string name="shuffle_mode_most_played_artists_description">Favors songs from your top artists.</string>
     <string name="shuffle_mode_most_played_albums_description">Favors songs from your most played albums.</string>
-    <string name="shuffle_mode_favorite_songs_description">Gives priority to your favorite songs.</string>
-    <string name="shuffle_mode_forgotten_songs_description">Prioritizes songs you haven\'t played in a while.</string>
+    <string name="shuffle_mode_favorite_songs_description">Dà priorità alle tue canzoni preferite.</string>
+    <string name="shuffle_mode_forgotten_songs_description">Dà priorità ai brani che non riproduci da un po\'.</string>
     <string name="shuffle_mode_recently_added_description">Preferisci brani aggiunti recentemente alla libreria</string>
     <string name="shuffle_mode_combined_description">Mix based on favorites, plays, and recency.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizzatore</string>
     <string name="autoeq_label">Auto EQ</string>
-    <string name="graphic_eq_label">Graphic EQ</string>
+    <string name="graphic_eq_label">EQ grafico</string>
     <string name="graphic_eq_band_count">%d-band</string>
-    <string name="eq_profiles_title">EQ Profiles</string>
-    <string name="autoeq_profiles_title">AutoEq Profiles</string>
-    <string name="eq_profile_title">Profile</string>
+    <string name="eq_profiles_title">Profili EQ</string>
+    <string name="autoeq_profiles_title">Profili Auto EQ</string>
+    <string name="eq_profile_title">Profilo</string>
     <string name="change_band_count_title">Change band count</string>
     <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
         Any other profiles saved for the current band configuration cannot be used with the new band configuration.
@@ -449,11 +449,11 @@
     <string name="set_eq_engine_reset_warning">Changing the equalization engine will reset the equalizer settings, including custom profiles.</string>
     <string name="eq_empty_bands">The equalization engine did not return any band configurations.</string>
     <string name="enable_equalizer">Abilita EQ</string>
-    <string name="select_profile">Select profile</string>
-    <string name="save_profile_label">Save profile</string>
-    <string name="edit_profile_label">Edit profile</string>
-    <string name="delete_profile_label">Delete profile</string>
-    <string name="delete_profile_x">Delete profile \"%s\"?</string>
+    <string name="select_profile">Seleziona profilo</string>
+    <string name="save_profile_label">Salva profilo</string>
+    <string name="edit_profile_label">Modifica profilo</string>
+    <string name="delete_profile_label">Elimina profilo</string>
+    <string name="delete_profile_x">Eliminare il profilo \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Please, enter a name for this profile.</string>
     <string name="replace_profile_with_same_name">Replace profile with same name</string>
     <string name="use_with_devices_title">Use with devices:</string>
@@ -518,16 +518,16 @@
     <string name="there_are_no_changes_to_save">There are no changes to save.</string>
     <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
-    <string name="could_not_import_font">Could not import font.</string>
+    <string name="could_not_import_font">Impossibile importare font.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Timer spegnimento</string>
     <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
     <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_set_action">Imposta</string>
     <string name="sleep_timer_x_mins">%d mins</string>
-    <string name="sleep_timer_15_mins">15 mins</string>
-    <string name="sleep_timer_45_mins">45 mins</string>
-    <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_15_mins">15 minuti</string>
+    <string name="sleep_timer_45_mins">45 minuti</string>
+    <string name="sleep_timer_1_hour">1 ora</string>
     <string name="sleep_timer_finish_current_music">Termina l\'ultima canzone</string>
     <string name="sleep_timer_stop_after_this_track">Ferma dopo questa traccia</string>
     <string name="sleep_timer_stop_after_x">Ferma dopo %s</string>
