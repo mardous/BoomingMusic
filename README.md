@@ -8,18 +8,18 @@
 
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=for-the-badge&logo=android)](https://android.com/)
 [![API](https://img.shields.io/badge/API-26%2B-green.svg?&style=for-the-badge&logo=android)](https://android-arsenal.com/api?level=26)
-[![Latest Release](https://img.shields.io/github/v/release/mardous/BoomingMusic?style=for-the-badge&label=Release&logo=github)](https://github.com/mardous/BoomingMusic/releases/latest)
-[![Pre-Release](https://img.shields.io/github/v/release/mardous/BoomingMusic?style=for-the-badge&include_prereleases&logo=github&label=Pre-release)](https://github.com/mardous/BoomingMusic/releases)
+[![Latest Release](https://img.shields.io/github/v/release/ProjectOrbital/BoomingMusic?style=for-the-badge&label=Release&logo=github)](https://github.com/ProjectOrbital/BoomingMusic/releases/latest)
+[![Pre-Release](https://img.shields.io/github/v/release/ProjectOrbital/BoomingMusic?style=for-the-badge&include_prereleases&logo=github&label=Pre-release)](https://github.com/ProjectOrbital/BoomingMusic/releases)
 [![F-Droid version](https://img.shields.io/f-droid/v/com.mardous.booming?style=for-the-badge&label=F-Droid&logo=fdroid)](https://f-droid.org/packages/com.mardous.booming/)
-[![License: GPL v3](https://img.shields.io/github/license/mardous/BoomingMusic?style=for-the-badge&color=orange&label=License&logo=gnu)](LICENSE.txt)
+[![License: GPL v3](https://img.shields.io/github/license/ProjectOrbital/BoomingMusic?style=for-the-badge&color=orange&label=License&logo=gnu)](LICENSE.txt)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?style=for-the-badge&logo=contributorcovenant)](CODE_OF_CONDUCT.md)
 [![Telegram Group](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/mardousdev)
 
-<a href="https://github.com/mardous/BoomingMusic/releases"><img src="assets/badge-github.png" height="60" alt="GitHub Release"></a>
+<a href="https://github.com/ProjectOrbital/BoomingMusic/releases"><img src="assets/badge-github.png" height="60" alt="GitHub Release"></a>
 <a href="https://f-droid.org/packages/com.mardous.booming/"><img src="assets/badge-fdroid.png" height="60" alt="F-Droid"></a>
 <a href="https://apt.izzysoft.de/packages/com.mardous.booming/"><img src="assets/badge-izzyondroid.png" height="60" alt="IzzyOnDroid"></a>
 <a href="https://www.openapk.net/boomingmusic/com.mardous.booming/"><img src="assets/badge-openapk.png" height="60" alt="OpenAPK"></a>
-<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/"><img src="assets/badge-obtainium.png" height="60" alt="Obtainium"></a>
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/ProjectOrbital/BoomingMusic/"><img src="assets/badge-obtainium.png" height="60" alt="Obtainium"></a>
 
 </div>
 
@@ -39,7 +39,8 @@
 - 🎼 **Automatic Lyrics Download & Editing** – Automatically fetch, sync, and edit lyrics with ease.
 - 💬 **Word-by-Word Synced Lyrics** – Enjoy immersive real-time lyric playback with word-level timing.
 - 🌍 **Translated Lyrics Support** – Display dual-language lyrics via TTML or LRC with translations.
-- 🔊 **Built-in Equalizer** – Fine-tune your sound, customize your presets, and share them.
+- 🔊 **Built-in Equalizer** – Powerful EQ with up to 15 fully configurable bands and customizable profiles.
+- 🎧 **AutoEq Support** – Import professionally tuned headphone correction profiles for the most accurate sound possible.
 - 🔄 **Gapless Playback** – Smooth transitions between songs with zero interruption.
 - 🧠 **Smart Playlists** – Auto-generated lists like *Recently Played*, *Most Played*, and *History*.
 - 🎧 **Bluetooth & Headset Controls** – Manage playback easily via connected devices.
@@ -99,26 +100,26 @@
 - [ ] 🎵 Improved genre handling
 - [ ] 🔁 Last.fm integration (import/export playback data)
 - [ ] 💿 Enhanced artist pages (separate albums and singles visually)
-- [ ] 📺 Experimental Android TV support (if enough demand!)
+- [ ] 🌐 Jellyfin & Navidrome integration
 
 ## 🔗 Useful Links
 
-- 🔐 **[Requested Permissions](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions)**  
+- 🔐 **[Requested Permissions](https://github.com/ProjectOrbital/BoomingMusic/wiki/Advanced-Info#-permissions)**  
   What the app needs and why
 
-- 🚘 **[Android Auto Setup](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)**  
+- 🚘 **[Android Auto Setup](https://github.com/ProjectOrbital/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)**  
   How to enable and troubleshoot
 
-- 🎧 **[Supported Formats](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats)**  
+- 🎧 **[Supported Formats](https://github.com/ProjectOrbital/BoomingMusic/wiki/Advanced-Info#-supported-formats)**  
   Compatible audio formats
 
-- 💬 **[Community](https://github.com/mardous/BoomingMusic/wiki/Community)**  
+- 💬 **[Community](https://github.com/ProjectOrbital/BoomingMusic/wiki/Community)**  
   Users and contributors
 
 - 🌐 **[Translations](https://crowdin.com/project/booming-music)**  
   Help us translate Booming Music into your language
 
-- ❓ **[FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)**  
+- ❓ **[FAQ](https://github.com/ProjectOrbital/BoomingMusic/wiki/FAQ)**  
   Common questions
 
 ## 🤝 Contributing

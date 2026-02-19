@@ -14,6 +14,7 @@ import com.mardous.booming.R
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.AutoEqTxtParser
 import com.mardous.booming.core.model.audiodevice.AudioDeviceType
+import com.mardous.booming.core.model.equalizer.EqEngineMode
 import com.mardous.booming.core.model.equalizer.EqProfile
 import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
 import com.mardous.booming.data.local.MediaStoreWriter
@@ -112,6 +113,10 @@ class EqualizerViewModel(
                 eqState.value.copy(enabled = isEnabled)
             )
         }
+    }
+
+    fun setEngineMode(engineMode: EqEngineMode) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setEngineMode(engineMode)
     }
 
     fun setLoudnessGain(

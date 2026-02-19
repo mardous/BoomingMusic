@@ -7,7 +7,8 @@ data class EqState(
     val supported: Boolean,
     val enabled: Boolean,
     val disabledByAudioOffload: Boolean,
-    val preferredBandCount: Int
+    val preferredBandCount: Int,
+    val engineMode: EqEngineMode
 ) {
     val isUsable = supported && enabled && !disabledByAudioOffload
 
@@ -16,7 +17,8 @@ data class EqState(
             supported = false,
             enabled = false,
             disabledByAudioOffload = false,
-            preferredBandCount = 0
+            preferredBandCount = 0,
+            engineMode = EqEngineMode.DynamicsProcessing
         )
     }
 }

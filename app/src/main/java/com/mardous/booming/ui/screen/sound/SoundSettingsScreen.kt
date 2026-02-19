@@ -6,21 +6,18 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
@@ -38,7 +35,6 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -528,6 +524,7 @@ fun SoundSettingsSheet(
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun AudioDeviceInfo(
     outputDevice: AudioDevice,
@@ -544,69 +541,55 @@ private fun AudioDeviceInfo(
         targetValue = if (expanded) {
             colorScheme.surfaceVariant.copy(alpha = SurfaceColorTokens.SurfaceVariantAlpha)
         } else {
-            colorScheme.primaryContainer
+            colorScheme.primaryContainer.copy(alpha = 0.2f)
         }
-    )
-    val contentColor by animateColorAsState(
-        targetValue = if (expanded) colorScheme.onSurface else colorScheme.onTertiaryContainer
     )
     val expandIconRotation by animateFloatAsState(targetValue = if (expanded) 180f else 0f)
     Card(
         shape = RoundedCornerShape(shapeCornerRadius),
-        colors = CardDefaults.cardColors(
-            containerColor = containerColor,
-            contentColor = contentColor
-        ),
+        colors = CardDefaults.cardColors(containerColor = containerColor),
         modifier = Modifier.fillMaxWidth()
     ) {
         Row(
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(min = 64.dp)
                 .clickable(enabled = hasR(), onClick = onClick)
-                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .padding(start = 24.dp, end = 16.dp)
+                .padding(vertical = 16.dp)
         ) {
-            Surface(
-                modifier = Modifier.size(48.dp),
-                shape = CircleShape,
-                color = contentColor.copy(alpha = .1f)
-            ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        painter = painterResource(outputDevice.type.iconRes),
-                        tint = contentColor,
-                        contentDescription = null,
-                        modifier = Modifier.size(24.dp)
-                    )
-                }
-            }
+            Icon(
+                painter = painterResource(outputDevice.type.iconRes),
+                tint = MaterialTheme.colorScheme.primary,
+                contentDescription = null
+            )
+
             Column(
-                modifier = Modifier
-                    .padding(16.dp)
-                    .weight(1f)
+                modifier = Modifier.weight(1f)
             ) {
+                Text(
+                    text = stringResource(R.string.listening_on),
+                    color = MaterialTheme.colorScheme.primary,
+                    style = MaterialTheme.typography.bodySmall,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+
                 Text(
                     text = outputDevice.getDeviceName(LocalContext.current),
-                    color = contentColor,
-                    style = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = stringResource(outputDevice.type.nameRes),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = contentColor.copy(alpha = 0.75f),
+                    style = MaterialTheme.typography.bodyLargeEmphasized,
+                    color = MaterialTheme.colorScheme.onSurface,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
             }
+
             IconButton(onExpandClick) {
                 Icon(
                     painter = painterResource(R.drawable.ic_arrow_drop_down_24dp),
                     contentDescription = null,
-                    tint = contentColor,
+                    tint = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.rotate(expandIconRotation)
                 )
             }

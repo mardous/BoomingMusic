@@ -84,6 +84,7 @@ import com.mardous.booming.R
 import com.mardous.booming.core.model.LibraryMargin
 import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.core.model.equalizer.EqBand
+import com.mardous.booming.core.model.equalizer.EqEngineMode
 import com.mardous.booming.core.model.equalizer.EqProfile
 import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
@@ -96,12 +97,14 @@ import com.mardous.booming.ui.component.compose.ButtonGroup
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
 import com.mardous.booming.ui.component.compose.ConfirmDialog
 import com.mardous.booming.ui.component.compose.DialogCheckBox
-import com.mardous.booming.ui.component.compose.DialogListItemSurface
 import com.mardous.booming.ui.component.compose.DialogListItemWithCheckBox
+import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.component.compose.EmptyView
 import com.mardous.booming.ui.component.compose.InputDialog
 import com.mardous.booming.ui.component.compose.MaterialSwitch
+import com.mardous.booming.ui.component.compose.ShapeableDialogListItemSurface
 import com.mardous.booming.ui.component.compose.SwitchCard
+import com.mardous.booming.ui.component.compose.TipView
 import com.mardous.booming.ui.component.compose.TitleShapedText
 import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.library.LibraryViewModel
@@ -210,6 +213,7 @@ fun EqualizerScreen(
     var showShareProfileDialog by remember { mutableStateOf(false) }
     var showProfileSaverDialog by remember { mutableStateOf(false) }
     var showProfileSelectorDialog by remember { mutableStateOf(false) }
+    var showSetEngineDialog by remember { mutableStateOf(false) }
     var showResetEqDialog by remember { mutableStateOf(false) }
 
     var showImportDialog by remember { mutableStateOf(false) }
@@ -482,6 +486,19 @@ fun EqualizerScreen(
         )
     }
 
+    if (showSetEngineDialog) {
+        EngineSelectorDialog(
+            currentEngine = eqState.engineMode,
+            onConfirm = {
+                eqViewModel.setEngineMode(it)
+                showSetEngineDialog = false
+            },
+            onDismiss = {
+                showSetEngineDialog = false
+            }
+        )
+    }
+
     if (showResetEqDialog) {
         ConfirmDialog(
             icon = painterResource(R.drawable.ic_restart_alt_24dp),
@@ -548,6 +565,13 @@ fun EqualizerScreen(
                     enabled = eqState.isUsable,
                     onClick = {
                         importProfiles(autoEq = true)
+                        expandedMenu = false
+                    }
+                )
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.set_eq_engine_title)) },
+                    onClick = {
+                        showSetEngineDialog = true
                         expandedMenu = false
                     }
                 )
@@ -700,16 +724,25 @@ fun EqualizerScreen(
                                     )
                                 }
 
-                                eqBands.forEach { band ->
-                                    EQBandSlider(
-                                        enabled = eqState.isUsable,
-                                        band = band,
-                                        onValueChange = { bandGain ->
-                                            eqViewModel.setCustomProfileBandGain(
-                                                band.index,
-                                                bandGain
-                                            )
-                                        }
+                                if (eqBands.isNotEmpty()) {
+                                    eqBands.forEach { band ->
+                                        EQBandSlider(
+                                            enabled = eqState.isUsable,
+                                            band = band,
+                                            onValueChange = { bandGain ->
+                                                eqViewModel.setCustomProfileBandGain(
+                                                    band.index,
+                                                    bandGain
+                                                )
+                                            }
+                                        )
+                                    }
+                                } else {
+                                    Text(
+                                        text = stringResource(R.string.eq_empty_bands),
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        textAlign = TextAlign.Center,
+                                        modifier = Modifier.align(Alignment.CenterHorizontally)
                                     )
                                 }
                             }
@@ -1135,9 +1168,7 @@ private fun ProfileCheckDialog(
                     style = MaterialTheme.typography.bodyMedium
                 )
 
-                LazyColumn(
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
+                LazyColumn {
                     items(profiles) { profile ->
                         if (profile.isCustom.not()) {
                             val isChecked = selectedProfiles.contains(profile)
@@ -1150,7 +1181,9 @@ private fun ProfileCheckDialog(
                                         selectedProfiles.add(profile)
                                     }
                                 },
-                                isSelected = isChecked
+                                isSelected = isChecked,
+                                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
+                                modifier = Modifier.clip(RoundedCornerShape(8.dp))
                             )
                         }
                     }
@@ -1253,7 +1286,7 @@ private fun EqualizerProfileItem(
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    DialogListItemSurface(
+    ShapeableDialogListItemSurface(
         onClick = onClick,
         isSelected = isCurrentProfile,
         modifier = modifier
@@ -1320,7 +1353,7 @@ private fun AutoEqProfileItem(
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    DialogListItemSurface(
+    ShapeableDialogListItemSurface(
         onClick = onClick,
         modifier = modifier
     ) {
@@ -1360,6 +1393,61 @@ private fun AutoEqProfileItem(
             }
         }
     }
+}
+
+@Composable
+private fun EngineSelectorDialog(
+    currentEngine: EqEngineMode,
+    onConfirm: (EqEngineMode) -> Unit,
+    onDismiss: () -> Unit
+) {
+    var selectedMode by remember { mutableStateOf(currentEngine) }
+
+    AlertDialog(
+        icon = {
+            Icon(
+                painter = painterResource(R.drawable.ic_equalizer_24dp),
+                contentDescription = null
+            )
+        },
+        title = { Text(stringResource(R.string.set_eq_engine_title)) },
+        text = {
+            LazyColumn {
+                items(EqEngineMode.entries) { mode ->
+                    DialogListItemWithRadio(
+                        onClick = { selectedMode = mode },
+                        isSelected = mode == selectedMode,
+                        title = stringResource(mode.titleRes),
+                        subtitle = stringResource(mode.descriptionRes),
+                        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
+                        modifier = Modifier.clip(RoundedCornerShape(8.dp))
+                    )
+                }
+
+                item {
+                    Spacer(Modifier.height(16.dp))
+                }
+
+                item {
+                    TipView(
+                        text = stringResource(R.string.set_eq_engine_reset_warning),
+                        containerColor = MaterialTheme.colorScheme.errorContainer
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            Button(onClick = { onConfirm(selectedMode) }) {
+                Text(stringResource(android.R.string.ok))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(android.R.string.cancel))
+            }
+        },
+        onDismissRequest = onDismiss
+    )
 }
 
 @Composable

@@ -20,30 +20,33 @@ package com.mardous.booming.ui.component.preferences.dialog
 import android.app.Dialog
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.ui.component.compose.DialogListItem
+import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.theme.BoomingMusicTheme
-import com.mardous.booming.util.*
+import com.mardous.booming.util.COVER_DOUBLE_TAP_ACTION
+import com.mardous.booming.util.COVER_LEFT_DOUBLE_TAP_ACTION
+import com.mardous.booming.util.COVER_LONG_PRESS_ACTION
+import com.mardous.booming.util.COVER_RIGHT_DOUBLE_TAP_ACTION
+import com.mardous.booming.util.COVER_SINGLE_TAP_ACTION
+import com.mardous.booming.util.Preferences
 import org.koin.android.ext.android.get
 
 /**
@@ -59,7 +62,6 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
         removeActionsForPrefKey(prefKey, allActions)
 
         return MaterialAlertDialogBuilder(requireContext())
-            .setTitle(arguments?.getCharSequence(EXTRA_TITLE))
             .setView(
                 ComposeView(requireContext()).apply {
                     setViewCompositionStrategy(
@@ -67,24 +69,20 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
                     )
                     setContent {
                         BoomingMusicTheme {
-                            var currentAction by remember {
-                                mutableStateOf(getCurrentAction(prefKey))
-                            }
                             DialogScreen(
                                 actions = allActions,
-                                selected = currentAction,
+                                selected = getCurrentAction(prefKey),
                                 onActionClick = { action ->
-                                    currentAction = action
                                     get<SharedPreferences>().edit {
                                         putString(prefKey, action.name)
                                     }
+                                    dialog?.dismiss()
                                 }
                             )
                         }
                     }
                 }
             )
-            .setPositiveButton(R.string.close_action, null)
             .create()
     }
 
@@ -101,36 +99,18 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
             val firstVisibleIndex = actions.indexOfFirst { it.ordinal == selected.ordinal }
                 .coerceAtLeast(0)
 
-            val listState = rememberLazyListState(firstVisibleIndex)
-            var maxItemHeight by remember { mutableIntStateOf(0) }
-
             LazyColumn(
-                state = listState,
-                contentPadding = PaddingValues(horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                state = rememberLazyListState(firstVisibleIndex),
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
-                    .padding(top = 24.dp)
+                    .padding(vertical = 24.dp)
             ) {
                 items(actions) { action ->
-                    DialogListItem(
+                    DialogListItemWithRadio(
                         title = stringResource(action.titleRes),
-                        leadingIcon = painterResource(action.iconRes),
                         isSelected = action == selected,
-                        onClick = { onActionClick(action) },
-                        modifier = Modifier
-                            .then(
-                                if (maxItemHeight > 0)
-                                    Modifier.height(with(LocalDensity.current) { maxItemHeight.toDp() })
-                                else Modifier
-                            )
-                            .onGloballyPositioned {
-                                val height = it.size.height
-                                if (height > maxItemHeight) {
-                                    maxItemHeight = height
-                                }
-                            }
+                        onClick = { onActionClick(action) }
                     )
                 }
             }
@@ -190,9 +170,9 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
         private const val EXTRA_KEY = "extra_key"
         private const val EXTRA_TITLE = "extra_title"
 
-        fun newInstance(preference: String, title: CharSequence): ActionOnCoverPreferenceDialog {
+        fun newInstance(preference: String): ActionOnCoverPreferenceDialog {
             return ActionOnCoverPreferenceDialog().apply {
-                arguments = bundleOf(EXTRA_KEY to preference, EXTRA_TITLE to title)
+                arguments = bundleOf(EXTRA_KEY to preference)
             }
         }
     }

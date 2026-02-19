@@ -34,6 +34,7 @@ import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.core.model.equalizer.BalanceState
 import com.mardous.booming.core.model.equalizer.BassBoostState
 import com.mardous.booming.core.model.equalizer.EqBandCapabilities
+import com.mardous.booming.core.model.equalizer.EqEngineMode
 import com.mardous.booming.core.model.equalizer.EqProfile
 import com.mardous.booming.core.model.equalizer.EqSession
 import com.mardous.booming.core.model.equalizer.EqSession.SessionType
@@ -47,6 +48,7 @@ import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.utilities.toEnum
+import com.mardous.booming.playback.equalizer.engine.BasicEQEngine
 import com.mardous.booming.playback.equalizer.engine.DynamicsProcessingEngine
 import com.mardous.booming.playback.equalizer.engine.EQEngine
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
@@ -85,11 +87,14 @@ class EqualizerManager(
 
     private val _eqState: Flow<EqState> =
         context.eqDataStore.data.map {
+            val engineMode = it[Keys.EQ_ENGINE_MODE]?.toEnum<EqEngineMode>()
+                ?: EqEngineMode.DynamicsProcessing
             EqState(
                 supported = it[Keys.EQ_SUPPORTED] ?: false,
                 enabled = it[Keys.EQ_ENABLED] ?: false,
                 disabledByAudioOffload = it[Keys.AUDIO_OFFLOAD] ?: false,
-                preferredBandCount = it[Keys.EQ_BAND_COUNT] ?: DEFAULT_BAND_COUNT
+                preferredBandCount = it[Keys.EQ_BAND_COUNT] ?: engineMode.defaultBandCount,
+                engineMode = engineMode
             )
         }
 
@@ -107,7 +112,7 @@ class EqualizerManager(
         }
 
     val eqCustomProfile = _eqCustomProfile
-        .stateIn(eqScope, SharingStarted.Eagerly, getEmptyCustomProfile(DEFAULT_BAND_COUNT))
+        .stateIn(eqScope, SharingStarted.Eagerly, getEmptyCustomProfile(0))
 
     private val _eqProfiles: Flow<List<EqProfile>> =
         context.eqDataStore.data.map { prefs ->
@@ -271,7 +276,11 @@ class EqualizerManager(
             .onEach { newState ->
                 val isOffload = newState.disabledByAudioOffload
                 if (eqEngine == null && eqSession.id != NO_SESSION_ID && !isOffload) {
-                    eqEngine = createEngine(eqSession.id, newState.preferredBandCount)
+                    eqEngine = createEngine(
+                        mode = eqState.value.engineMode,
+                        sessionId = eqSession.id,
+                        bandCount = newState.preferredBandCount
+                    )
                 }
                 if (!isOffload) {
                     if (newState.isUsable) {
@@ -309,19 +318,22 @@ class EqualizerManager(
     }
 
     @SuppressLint("NewApi")
-    suspend fun initializeEqualizer() = withContext(IO) {
+    suspend fun initializeEqualizer(
+        engineMode: EqEngineMode = this.eqState.value.engineMode
+    ) = withContext(IO) {
         try {
             val effects = AudioEffect.queryEffects()
             context.eqDataStore.edit { prefs ->
                 val eqInitialized = prefs[Keys.EQ_INITIALIZED]
                 if (eqInitialized != true) {
+                    prefs[Keys.EQ_ENGINE_MODE] = engineMode.ordinal
                     prefs[Keys.PRESETS] = Json.encodeToString(
-                        getPresetsByBandCount(DEFAULT_BAND_COUNT)
+                        getPresetsByBandCount(engineMode.defaultBandCount)
                     )
                     prefs[Keys.EQ_INITIALIZED] = true
                 }
                 prefs[Keys.EQ_SUPPORTED] = effects.any {
-                    it.type == AudioEffect.EFFECT_TYPE_DYNAMICS_PROCESSING
+                    it.type == engineMode.type
                 }
                 prefs[Keys.VIRTUALIZER_SUPPORTED] = effects.any {
                     it.type == AudioEffect.EFFECT_TYPE_VIRTUALIZER
@@ -553,6 +565,7 @@ class EqualizerManager(
         val customProfile = currentProfile.copy(
             name = EqProfile.CUSTOM_PRESET_NAME,
             levels = newBandLevels,
+            isAutoEq = false,
             isCustom = true
         )
         setCustomProfile(customProfile, fromUser = true)
@@ -631,7 +644,11 @@ class EqualizerManager(
                 SessionType.Internal -> {
                     if (newSession.id != this.eqEngine?.sessionId) {
                         eqEngine?.release()
-                        eqEngine = createEngine(newSession.id, eqState.preferredBandCount)
+                        eqEngine = createEngine(
+                            mode = eqState.engineMode,
+                            sessionId = newSession.id,
+                            bandCount = eqState.preferredBandCount
+                        )
                     }
                     eqEngine?.setEnabled(true)
                 }
@@ -651,6 +668,7 @@ class EqualizerManager(
     suspend fun setEqualizerState(state: EqState, newProfile: EqProfile? = null) {
         context.eqDataStore.edit { prefs ->
             prefs[Keys.EQ_ENABLED] = state.enabled
+            prefs[Keys.EQ_ENGINE_MODE] = state.engineMode.ordinal
             prefs[Keys.EQ_BAND_COUNT] = state.preferredBandCount
             if (newProfile != null) {
                 val serializedProfile = Json.encodeToString(newProfile)
@@ -760,6 +778,10 @@ class EqualizerManager(
         }
     }
 
+    suspend fun setEngineMode(engineMode: EqEngineMode) {
+        resetConfigurationWithNewEngineMode(engineMode)
+    }
+
     private fun setBandCapabilities(bandCapabilities: EqBandCapabilities) {
         _bandCapabilities.value = bandCapabilities
     }
@@ -828,9 +850,12 @@ class EqualizerManager(
         )
     }
 
-    private fun createEngine(sessionId: Int, bandCount: Int): EQEngine? {
+    private fun createEngine(mode: EqEngineMode, sessionId: Int, bandCount: Int): EQEngine? {
         return runCatching {
-            DynamicsProcessingEngine(sessionId, bandCount)
+            when (mode) {
+                EqEngineMode.Basic -> BasicEQEngine(sessionId)
+                EqEngineMode.DynamicsProcessing -> DynamicsProcessingEngine(sessionId, bandCount)
+            }
         }.onSuccess { newEngine ->
             applyChangesToEngine(engine = newEngine)
             setBandCapabilities(newEngine.bandCapabilities)
@@ -911,12 +936,17 @@ class EqualizerManager(
     }
 
     suspend fun resetConfiguration() {
+        resetConfigurationWithNewEngineMode(eqState.value.engineMode)
+    }
+
+    private suspend fun resetConfigurationWithNewEngineMode(newEngineMode: EqEngineMode) {
+        setBandCapabilities(EqBandCapabilities.Empty)
         context.eqDataStore.edit {
             it.clear()
         }
         eqEngine?.release()
         eqEngine = null
-        initializeEqualizer()
+        initializeEqualizer(newEngineMode)
     }
 
     interface Keys {
@@ -925,6 +955,7 @@ class EqualizerManager(
             val EQ_ENABLED = booleanPreferencesKey("eq.enabled")
             val EQ_SUPPORTED = booleanPreferencesKey("eq.supported")
             val EQ_BAND_COUNT = intPreferencesKey("eq.band.count")
+            val EQ_ENGINE_MODE = intPreferencesKey("eq.engine")
             val VIRTUALIZER_SUPPORTED = booleanPreferencesKey("eq.virtualizer.supported")
             val VIRTUALIZER_ENABLED = booleanPreferencesKey("eq.virtualizer.enabled")
             val VIRTUALIZER_STRENGTH = floatPreferencesKey("eq.virtualizer.strength")
@@ -955,7 +986,6 @@ class EqualizerManager(
     companion object {
         private const val TAG = "EqualizerManager"
 
-        private const val DEFAULT_BAND_COUNT = 10
         private const val NO_SESSION_ID = 0
 
         const val MINIMUM_LOUDNESS_GAIN = 0f

@@ -4,17 +4,17 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,118 +22,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.ui.theme.BorderStrokeTokens
 import com.mardous.booming.ui.theme.CornerRadiusTokens
 
 @Composable
-fun DialogListItem(
-    title: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    isSelected: Boolean = false,
-    leadingIcon: Painter? = null,
-    subtitle: String? = null
-) {
-    DialogListItemSurface(
-        onClick = onClick,
-        isSelected = isSelected,
-        modifier = modifier
-    ) {
-        Row(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            if (leadingIcon != null) {
-                Icon(
-                    painter = leadingIcon,
-                    contentDescription = null,
-                    modifier = Modifier.size(24.dp),
-                    tint = LocalContentColor.current
-                )
-            }
-
-            if (subtitle.isNullOrEmpty()) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            } else {
-                Column {
-                    Text(
-                        text = title,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-
-                    Text(
-                        text = subtitle,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun DialogListItemWithCheckBox(
-    title: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    isSelected: Boolean = false,
-    subtitle: String? = null
-) {
-    DialogListItemSurface(
-        onClick = onClick,
-        isSelected = isSelected,
-        modifier = modifier
-    ) {
-        Row(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Checkbox(
-                checked = isSelected,
-                onCheckedChange = null
-            )
-
-            if (subtitle.isNullOrEmpty()) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            } else {
-                Column {
-                    Text(
-                        text = title,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-
-                    Text(
-                        text = subtitle,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun DialogListItemSurface(
+fun ShapeableDialogListItemSurface(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     isSelected: Boolean = false,
@@ -166,4 +60,88 @@ fun DialogListItemSurface(
         content = content,
         modifier = modifier
     )
+}
+
+@Composable
+fun DialogListItemWithRadio(
+    title: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    isSelected: Boolean = false,
+    subtitle: String? = null,
+    contentPadding: PaddingValues? = null
+) {
+    DialogListItem(
+        title = title,
+        leadingComposable = {
+            RadioButton(
+                selected = isSelected,
+                onClick = null
+            )
+        },
+        subtitle = subtitle,
+        contentPadding = contentPadding,
+        onClick = onClick,
+        modifier = modifier
+    )
+}
+
+@Composable
+fun DialogListItemWithCheckBox(
+    title: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    isSelected: Boolean = false,
+    subtitle: String? = null,
+    contentPadding: PaddingValues? = null
+) {
+    DialogListItem(
+        title = title,
+        leadingComposable = {
+            Checkbox(
+                checked = isSelected,
+                onCheckedChange = null
+            )
+        },
+        subtitle = subtitle,
+        contentPadding = contentPadding,
+        onClick = onClick,
+        modifier = modifier
+    )
+}
+
+@Composable
+private fun DialogListItem(
+    title: String,
+    leadingComposable: @Composable () -> Unit,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    subtitle: String? = null,
+    contentPadding: PaddingValues? = null
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(contentPadding ?: PaddingValues(horizontal = 24.dp, vertical = 10.dp)),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        leadingComposable.invoke()
+
+        Column {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            if (!subtitle.isNullOrEmpty()) {
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+    }
 }

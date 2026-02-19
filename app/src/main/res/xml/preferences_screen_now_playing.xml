@@ -230,7 +230,7 @@
             app:widgetLayout="@layout/preference_switch"
             app:key="display_extra_info" />
 
-        <ListPreference
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
             app:iconSpaceReserved="true"
             app:title="@string/select_extra_info_title"
             app:summary="@string/select_extra_info_summary"

@@ -14,7 +14,7 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
 
     override suspend fun songLyrics(song: Song, title: String, artist: String): DownloadedLyrics? {
         val lyrics = client.get("https://lrclib.net/api/search") {
-            userAgent("Booming Music v${BuildConfig.VERSION_NAME} (https://github.com/mardous/BoomingMusic)")
+            userAgent("Booming Music v${BuildConfig.VERSION_NAME} (https://github.com/ProjectOrbital/BoomingMusic)")
             url.encodedParameters.append("q", "$artist $title".encodeURLParameter())
             url.encodedParameters.append("album_name", song.albumName.encodeURLParameter())
         }.body<List<DownloadedLyrics>>()

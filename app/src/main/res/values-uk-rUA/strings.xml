@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Використовувати також як сигнал будильника</string>
     <string name="action_details">Деталі</string>
     <string name="action_set_as_start_directory">Встановити як початкову папку</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Перейти до початкової папки</string>
     <string name="action_hierarchy_view">Режим ієрархії</string>
     <string name="new_start_directory">Нова початкова папка: %s</string>
@@ -456,6 +457,13 @@
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
         \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Не підтримується</string>
+    <string name="set_eq_engine_title">Set EQ engine</string>
+    <string name="eq_engine_basic_title">Legacy Engine</string>
+    <string name="eq_engine_basic_description">A 5-band classic configuration designed for maximum device compatibility.</string>
+    <string name="eq_engine_precision_title">Precision Engine</string>
+    <string name="eq_engine_precision_description">High-fidelity processing with up to 15-band control for ultimate acoustic shaping.</string>
+    <string name="set_eq_engine_reset_warning">Changing the equalization engine will reset the equalizer settings, including custom profiles.</string>
+    <string name="eq_empty_bands">The equalization engine did not return any band configurations.</string>
     <string name="enable_equalizer">Увімкнути еквалайзер</string>
     <string name="select_profile">Select profile</string>
     <string name="save_profile_label">Save profile</string>
@@ -476,6 +484,8 @@
     <string name="virtualizer_label">Віртуалізатор</string>
     <string name="loudness_enhancer">Підсилювач</string>
     <string name="sound_settings">Налаштування звуку</string>
+    <string name="listening_on">Listening on</string>
+    <string name="casting_to">Casting to</string>
     <string name="volume_label">Гучність</string>
     <string name="reset_balance">Reset balance</string>
     <string name="speed_and_pitch_label">Speed and pitch</string>

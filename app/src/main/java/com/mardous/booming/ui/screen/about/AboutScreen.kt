@@ -23,12 +23,39 @@ import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -46,7 +73,11 @@ import coil3.compose.AsyncImage
 import com.mardous.booming.R
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.core.model.about.DeviceInfo
-import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
+import com.mardous.booming.extensions.openUrl
+import com.mardous.booming.extensions.showToast
+import com.mardous.booming.extensions.toChooser
+import com.mardous.booming.extensions.tryStartActivity
 import com.mardous.booming.ui.component.compose.ActionButton
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
 import dev.jeziellago.compose.markdowntext.MarkdownText
@@ -54,12 +85,12 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 private const val AUTHOR_GITHUB_URL = "https://www.github.com/mardous"
-private const val GITHUB_URL = "$AUTHOR_GITHUB_URL/BoomingMusic"
+private const val GITHUB_URL = "https://www.github.com/ProjectOrbital/BoomingMusic"
 private const val RELEASES_LINK = "$GITHUB_URL/releases"
 const val ISSUE_TRACKER_LINK = "$GITHUB_URL/issues"
 private const val AUTHOR_TELEGRAM_LINK = "https://t.me/mardeez"
-private const val COMMUNITY_LINK = "https://github.com/mardous/BoomingMusic/wiki/Community"
-private const val FAQ_LINK = "https://github.com/mardous/BoomingMusic/wiki/FAQ"
+private const val COMMUNITY_LINK = "https://github.com/ProjectOrbital/BoomingMusic/wiki/Community"
+private const val FAQ_LINK = "https://github.com/ProjectOrbital/BoomingMusic/wiki/FAQ"
 private const val APP_TELEGRAM_LINK = "https://t.me/mardousdev"
 private const val CROWDIN_PROJECT_LINK = "https://crowdin.com/project/booming-music"
 private const val DONATE_LINK = "https://ko-fi.com/christiaam"

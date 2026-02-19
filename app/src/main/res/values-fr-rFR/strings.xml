@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Utiliser aussi comme alerte d\'alarme</string>
     <string name="action_details">Détails</string>
     <string name="action_set_as_start_directory">Définir comme répertoire de démarrage</string>
+    <string name="start_directory_set">Répertoire de démarrage défini sur %s</string>
     <string name="action_go_to_start_directory">Aller au répertoire de démarrage</string>
     <string name="action_hierarchy_view">Vue hiérarchique</string>
     <string name="new_start_directory">Nouveau répertoire de démarrage : %s</string>
@@ -409,7 +410,7 @@
     <string name="autoeq_label">AutoEq</string>
     <string name="graphic_eq_label">EQ graphique</string>
     <string name="graphic_eq_band_count">%d-bandes</string>
-    <string name="eq_profiles_title">Profils EQ</string>
+    <string name="eq_profiles_title">Profils d\'égaliseur</string>
     <string name="autoeq_profiles_title">Profils AutoEq</string>
     <string name="eq_profile_title">Profil</string>
     <string name="change_band_count_title">Modifier le nombre de bandes</string>
@@ -418,7 +419,7 @@
         \n\nVoulez-vous continuer ?</string>
     <string name="band_configuration_changed_successfully">La configuration de la bande a été modifiée avec succès.</string>
     <string name="band_configuration_could_not_be_changed">La configuration de la bande n\'a pas pu être modifiée.</string>
-    <string name="share_eq_profiles">Partager les profils EQ</string>
+    <string name="share_eq_profiles">Partager les profils d\'égaliseur</string>
     <string name="there_is_nothing_to_export">Il n\'y a rien à exporter.</string>
     <string name="there_is_nothing_to_import">Il n\'y a rien à importer.</string>
     <string name="an_unexpected_error_occurred">Une erreur inattendue s\'est produite.</string>
@@ -440,6 +441,13 @@
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ?
         \n\nCette opération effacera tous vos profils.</string>
     <string name="not_supported">Non pris en charge</string>
+    <string name="set_eq_engine_title">Régler l\'égaliseur</string>
+    <string name="eq_engine_basic_title">Moteur Hérité</string>
+    <string name="eq_engine_basic_description">Une configuration classique à 5 bandes conçue pour une compatibilité maximale avec les appareils.</string>
+    <string name="eq_engine_precision_title">Moteur de Précision</string>
+    <string name="eq_engine_precision_description">Traitement haute fidélité avec contrôle jusqu\'à 15 bandes pour un modelage acoustique optimal.</string>
+    <string name="set_eq_engine_reset_warning">Modifier le moteur d\'égalisation réinitialisera les paramètres de l\'égaliseur, y compris les profils personnalisés.</string>
+    <string name="eq_empty_bands">Le moteur d\'égalisation n\'a renvoyé aucune configuration de bande.</string>
     <string name="enable_equalizer">Activer l\'EQ</string>
     <string name="select_profile">Sélectionner un profil</string>
     <string name="save_profile_label">Enregistrer le profil</string>
@@ -460,6 +468,8 @@
     <string name="virtualizer_label">Virtualiseur</string>
     <string name="loudness_enhancer">Amplificateur</string>
     <string name="sound_settings">Paramètres du son</string>
+    <string name="listening_on">Écouter sur</string>
+    <string name="casting_to">Diffusion sur</string>
     <string name="volume_label">Volume</string>
     <string name="reset_balance">Réinitialiser la balance</string>
     <string name="speed_and_pitch_label">Vitesse et hauteur</string>

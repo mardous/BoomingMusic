@@ -33,6 +33,7 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import coil3.SingletonImageLoader
@@ -41,15 +42,26 @@ import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.data.local.room.InclExclDao
-import com.mardous.booming.extensions.*
 import com.mardous.booming.extensions.files.getFormattedFileName
+import com.mardous.booming.extensions.hasR
+import com.mardous.booming.extensions.hasS
+import com.mardous.booming.extensions.isTablet
+import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.navigation.findActivityNavController
+import com.mardous.booming.extensions.requestContext
+import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.dateStr
 import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
 import com.mardous.booming.ui.component.preferences.SwitchWithButtonPreference
 import com.mardous.booming.ui.component.preferences.ThemePreference
-import com.mardous.booming.ui.component.preferences.dialog.*
+import com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.CategoriesPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.ClearQueueActionPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.NowPlayingScreenPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.SingleSelectionDialog
+import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPreferenceDialog
 import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
 import com.mardous.booming.ui.screen.library.LibraryViewModel
@@ -58,7 +70,35 @@ import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
-import com.mardous.booming.util.*
+import com.mardous.booming.util.ADD_EXTRA_CONTROLS
+import com.mardous.booming.util.BACKUP_DATA
+import com.mardous.booming.util.BLACKLIST_ENABLED
+import com.mardous.booming.util.BLACK_THEME
+import com.mardous.booming.util.BackupContent
+import com.mardous.booming.util.BackupHelper
+import com.mardous.booming.util.COVER_DOUBLE_TAP_ACTION
+import com.mardous.booming.util.COVER_LEFT_DOUBLE_TAP_ACTION
+import com.mardous.booming.util.COVER_LONG_PRESS_ACTION
+import com.mardous.booming.util.COVER_RIGHT_DOUBLE_TAP_ACTION
+import com.mardous.booming.util.COVER_SINGLE_TAP_ACTION
+import com.mardous.booming.util.ENABLE_ROTATION_LOCK
+import com.mardous.booming.util.EXTRA_INFO
+import com.mardous.booming.util.GENERAL_THEME
+import com.mardous.booming.util.IGNORE_MEDIA_STORE
+import com.mardous.booming.util.LANGUAGE_NAME
+import com.mardous.booming.util.LAST_ADDED_CUTOFF
+import com.mardous.booming.util.LIBRARY_CATEGORIES
+import com.mardous.booming.util.MATERIAL_YOU
+import com.mardous.booming.util.NOW_PLAYING_SCREEN
+import com.mardous.booming.util.ON_CLEAR_QUEUE_ACTION
+import com.mardous.booming.util.ON_SONG_CLICK_ACTION
+import com.mardous.booming.util.PREFERRED_IMAGE_SIZE
+import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.RESTORE_DATA
+import com.mardous.booming.util.TRASH_MUSIC_FILES
+import com.mardous.booming.util.USE_CUSTOM_FONT
+import com.mardous.booming.util.USE_FOLDER_ART
+import com.mardous.booming.util.WHITELIST_ENABLED
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -338,26 +378,33 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
         onUpdateQueuePreferences()
     }
 
+    @Suppress("DEPRECATION")
     override fun onDisplayPreferenceDialog(preference: Preference) {
-        val dialogFragment: DialogFragment? = when (preference.key) {
-            LIBRARY_CATEGORIES -> CategoriesPreferenceDialog()
-            NOW_PLAYING_SCREEN -> NowPlayingScreenPreferenceDialog()
-            EXTRA_INFO -> NowPlayingExtraInfoPreferenceDialog()
-            ON_SONG_CLICK_ACTION -> SongClickActionPreferenceDialog()
-            ON_CLEAR_QUEUE_ACTION -> ClearQueueActionPreferenceDialog()
-            COVER_DOUBLE_TAP_ACTION,
-            COVER_SINGLE_TAP_ACTION,
-            COVER_LONG_PRESS_ACTION,
-            COVER_LEFT_DOUBLE_TAP_ACTION,
-            COVER_RIGHT_DOUBLE_TAP_ACTION -> {
-                ActionOnCoverPreferenceDialog.newInstance(preference.key, preference.title!!)
-            }
-            else -> null
-        }
-        if (dialogFragment != null) {
-            dialogFragment.show(childFragmentManager, "androidx.preference.PreferenceFragment.DIALOG")
+        if (preference is ListPreference) {
+            val dialogFragment = SingleSelectionDialog.newInstance(preference.key)
+            dialogFragment.setTargetFragment(this, 0)
+            dialogFragment.show(parentFragmentManager, "androidx.preference.PreferenceFragment.DIALOG")
         } else {
-            super.onDisplayPreferenceDialog(preference)
+            val dialogFragment: DialogFragment? = when (preference.key) {
+                LIBRARY_CATEGORIES -> CategoriesPreferenceDialog()
+                NOW_PLAYING_SCREEN -> NowPlayingScreenPreferenceDialog()
+                EXTRA_INFO -> NowPlayingExtraInfoPreferenceDialog()
+                ON_SONG_CLICK_ACTION -> SongClickActionPreferenceDialog()
+                ON_CLEAR_QUEUE_ACTION -> ClearQueueActionPreferenceDialog()
+                COVER_DOUBLE_TAP_ACTION,
+                COVER_SINGLE_TAP_ACTION,
+                COVER_LONG_PRESS_ACTION,
+                COVER_LEFT_DOUBLE_TAP_ACTION,
+                COVER_RIGHT_DOUBLE_TAP_ACTION -> {
+                    ActionOnCoverPreferenceDialog.newInstance(preference.key)
+                }
+                else -> null
+            }
+            if (dialogFragment != null) {
+                dialogFragment.show(childFragmentManager, "androidx.preference.PreferenceFragment.DIALOG")
+            } else {
+                super.onDisplayPreferenceDialog(preference)
+            }
         }
     }
 

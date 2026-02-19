@@ -65,8 +65,7 @@ internal data class TtmlNode(
                 this.text = text
                 return true
             } else {
-                val trimmed = text?.trim()
-                if (trimmed.isNullOrEmpty()) {
+                if (text != null && text.length == 1 && text[0] == ' ') {
                     children[children.lastIndex].let { it.text = "${it.text} " }
                     return true
                 }

@@ -4,7 +4,13 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 class EqBandCapabilities(
+    /**
+     * Supported band level range, in decibels.
+     */
     val bandRange: ClosedFloatingPointRange<Float>,
+    /**
+     * Supported band configurations.
+     */
     val bandConfigurations: Set<BandConfiguration>
 ) {
     val availableBandCounts: List<Int> = bandConfigurations.map { it.bandCount }
