@@ -23,8 +23,10 @@ import android.os.Parcelable
 import androidx.core.net.toUri
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
+import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.data.local.repository.RealSongRepository.Companion.getAudioContentUri
+import com.mardous.booming.extensions.media.songInfo
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import java.util.Date
@@ -88,28 +90,31 @@ open class Song(
         song.genreName
     )
 
-    fun toMediaItem(itemId: String = id.toString()) = if (this == emptySong) {
-        MediaItem.EMPTY
-    } else {
-        MediaItem.Builder()
-            .setUri(uri)
-            .setMediaId(itemId)
-            .setMediaMetadata(
-                MediaMetadata.Builder()
-                    .setIsPlayable(true)
-                    .setArtworkUri(uri) // IMPORTANT must use Song's uri
-                    .setTitle(title)
-                    .setAlbumTitle(albumName)
-                    .setArtist(artistName)
-                    .setAlbumArtist(albumArtistName)
-                    .setGenre(genreName)
-                    .setTrackNumber(trackNumber)
-                    .setReleaseYear(year)
-                    .setDurationMs(duration.coerceAtLeast(0))
-                    .build()
-            )
-            .build()
-    }
+    fun toMediaItem(itemId: String = id.toString()): MediaItem =
+        if (this == emptySong) {
+            MediaItem.EMPTY
+        } else {
+            MediaItem.Builder()
+                .setUri(uri)
+                .setMediaId(itemId)
+                .setMediaMetadata(
+                    MediaMetadata.Builder()
+                        .setIsPlayable(true)
+                        .setIsBrowsable(false)
+                        .setArtworkUri(CoverProvider.getImageUri(CoverProvider.SONG_COVER_PATH, id))
+                        .setTitle(title)
+                        .setSubtitle(songInfo())
+                        .setAlbumTitle(albumName)
+                        .setArtist(artistName)
+                        .setAlbumArtist(albumArtistName)
+                        .setGenre(genreName)
+                        .setTrackNumber(trackNumber)
+                        .setReleaseYear(year)
+                        .setDurationMs(duration.coerceAtLeast(0))
+                        .build()
+                )
+                .build()
+        }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

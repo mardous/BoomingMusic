@@ -526,9 +526,14 @@ class PlaybackService :
                         )
                     }
             } else {
-                runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
-                    .getOrDefault(emptyList())
-                    .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+                runCatching {
+                    libraryProvider.getMediaItemsForPlayback(
+                        mediaItems = mediaItems,
+                        tryToResolveComplexPaths = true
+                    )
+                }.getOrDefault(emptyList()).let {
+                    MediaItemsWithStartPosition(it, startIndex, startPositionMs)
+                }
             }
         }.also { future ->
             future.addListener({
