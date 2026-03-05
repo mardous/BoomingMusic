@@ -17,7 +17,12 @@ data class Lyrics(
         get() = lines.joinToString("\n") { it.content.content }
 
     val rawText: String
-        get() = lines.joinToString("\n") { it.content.rawContent.orEmpty() }.trim()
+        get() {
+            val buffer = StringBuffer()
+            if (offset != 0L) { buffer.append("[offset:$offset]") }
+            lines.joinTo(buffer, "\n") { it.content.rawContent.orEmpty() }
+            return buffer.trim().toString()
+        }
 
     init {
         for (line in lines) {
