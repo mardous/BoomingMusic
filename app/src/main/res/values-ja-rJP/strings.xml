@@ -372,8 +372,8 @@
     <plurals name="x_items">
         <item quantity="other">%d個のアイテム</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">For you</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">シャッフル</string>
     <string name="top_artists">トップアーティスト</string>
     <string name="top_albums">トップアルバム</string>
@@ -520,7 +520,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">最後の曲を終了する</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">このトラックの後に停止</string>
     <string name="sleep_timer_stop_after_x">%s後に停止</string>
     <string name="sleep_timer_stop_after_x_canceled">%s後に停止</string>
@@ -633,6 +635,7 @@
     <string name="lyrics_effects_note">高度な効果により視覚体験が向上しますが、より多くのシステムリソースとバッテリーが必要になる場合があります。</string>
     <string name="lyrics_background_effect_title">Background effect</string>
     <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">ぼかし効果</string>
     <string name="lyrics_blur_effect_summary">現在の行の隣にある歌詞をぼかします。</string>
     <string name="lyrics_shadow_effect_title">シャドー効果</string>
@@ -656,6 +659,8 @@
         one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
         This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
@@ -707,6 +712,8 @@
     <string name="prefer_remaining_time_summary">曲の再生時間の代わりに残り時間を表示します。</string>
     <string name="prefer_album_artist_name_title">"アルバムアーティストの名前を優先"</string>
     <string name="prefer_album_artist_name_summary">ソングアーティストの名前の代わりにアルバムアーティストの名前を表示します (可能な場合)。</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">起動時に再生する</string>
     <string name="queue_next_mode_title">「次に再生」モード</string>
