@@ -55,12 +55,14 @@ import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.theme.SliderTokens
+import com.mardous.booming.ui.theme.SurfaceColorTokens
 import kotlin.math.round
 
 data class SleepTimerUiState(
     val isRunning: Boolean,
     val waitingFor: SleepTimerWaitingFor?,
     val isFinishMusic: Boolean,
+    val isFadeOut: Boolean,
     val timerValue: Float
 )
 
@@ -278,48 +280,50 @@ fun SleepTimerBottomSheet(
                     }
                 }
 
-                Row(
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(50))
+                        .clip(MaterialTheme.shapes.large)
                         .background(
-                            MaterialTheme.colorScheme.surfaceContainerHighest.copy(
-                                alpha = 0.6f
+                            MaterialTheme.colorScheme.surfaceVariant.copy(
+                                alpha = SurfaceColorTokens.SurfaceVariantAlpha
                             )
                         )
-                        .toggleable(
-                            enabled = uiState.isRunning.not(),
-                            value = uiState.isFinishMusic,
-                            role = Role.Switch,
-                            onValueChange = { isChecked ->
-                                if (isChecked) {
-                                    hapticFeedback.performHapticFeedback(
-                                        HapticFeedbackType.ToggleOn
-                                    )
-                                } else {
-                                    hapticFeedback.performHapticFeedback(
-                                        HapticFeedbackType.ToggleOff
-                                    )
-                                }
-                                viewModel.setTimerState(isFinishMusic = isChecked)
-                            }
-                        )
-                        .padding(vertical = 16.dp)
-                        .padding(start = 24.dp, end = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                        .padding(vertical = 8.dp)
                 ) {
-                    Text(
+                    SwitchButton(
+                        enabled = uiState.isRunning.not(),
+                        checked = uiState.isFinishMusic,
                         text = stringResource(R.string.sleep_timer_finish_current_music),
-                        style = MaterialTheme.typography.bodyMedium,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.weight(1f)
+                        onValueChange = { isChecked ->
+                            if (isChecked) {
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.ToggleOn
+                                )
+                            } else {
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.ToggleOff
+                                )
+                            }
+                            viewModel.setTimerState(isFinishMusic = isChecked)
+                        }
                     )
 
-                    Switch(
-                        checked = uiState.isFinishMusic,
-                        onCheckedChange = null,
+                    SwitchButton(
+                        enabled = uiState.isRunning.not() && uiState.isFinishMusic.not(),
+                        checked = uiState.isFadeOut,
+                        text = stringResource(R.string.sleep_timer_music_fades_out),
+                        onValueChange = { isChecked ->
+                            if (isChecked) {
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.ToggleOn
+                                )
+                            } else {
+                                hapticFeedback.performHapticFeedback(
+                                    HapticFeedbackType.ToggleOff
+                                )
+                            }
+                            viewModel.setTimerState(isFadeOut = isChecked)
+                        }
                     )
                 }
 
@@ -358,5 +362,40 @@ fun SleepTimerBottomSheet(
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun SwitchButton(
+    enabled: Boolean,
+    checked: Boolean,
+    text: String,
+    onValueChange: (Boolean) -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .toggleable(
+                enabled = enabled,
+                value = checked,
+                role = Role.Switch,
+                onValueChange = onValueChange
+            )
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = text,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.weight(1f)
+        )
+
+        Switch(
+            enabled = enabled,
+            checked = checked,
+            onCheckedChange = null,
+        )
     }
 }
