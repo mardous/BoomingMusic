@@ -379,8 +379,8 @@
         <item quantity="one">%d elemento</item>
         <item quantity="other">%d elementos</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">Para ti</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Aleatorio</string>
     <string name="top_artists">Artistas más escuchados</string>
     <string name="top_albums">Álbumes más reproducidos</string>
@@ -523,7 +523,9 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="sleep_timer_15_mins">15 minutos</string>
     <string name="sleep_timer_45_mins">45 minutos</string>
     <string name="sleep_timer_1_hour">1 hora</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Finalizar última canción</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Detener despúes de esta pista</string>
     <string name="sleep_timer_stop_after_x">Detener después de %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Detener después de %s: cancelado</string>
@@ -636,6 +638,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="lyrics_effects_note">Los efectos avanzados mejoran la experiencia visual pero podrían aumentar el consumo de recursos y/o batería.</string>
     <string name="lyrics_background_effect_title">Efecto de fondo</string>
     <string name="lyrics_background_gradient">Gradiente</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Efecto de desenfoque</string>
     <string name="lyrics_blur_effect_summary">Desenfoca las líneas de texto adyacentes a la actual.</string>
     <string name="lyrics_shadow_effect_title">Efecto de sombra</string>
@@ -658,6 +661,8 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="instrumental_tracks_identifiers_summary">Si la letra de una canción consiste de solo uno o varios de esos indicadores, la pista será marcada como instrumental (se separan con coma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marcar por título</string>
     <string name="instrumental_tracks_mark_by_title_summary">Se tomará en cuenta el título de la pista al buscar los identificadores.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos los archivos de letras como UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Asumir que todos los archivos usan codificación UTF-8. Esto optimiza el proceso de análisis de archivos, pero en algunos casos podría generar caracteres inusuales en las letras de las canciones.
 Podría ser necesario reiniciar la aplicación</string>
@@ -708,6 +713,8 @@ Podría ser necesario reiniciar la aplicación</string>
     <string name="prefer_remaining_time_summary">Muestra el tiempo restante de la canción en lugar de su duración.</string>
     <string name="prefer_album_artist_name_title">"Preferir Artista del álbum"</string>
     <string name="prefer_album_artist_name_summary">Muestra el Artista del álbum en lugar del Artista de la canción (si está disponible).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reproducir al iniciar</string>
     <string name="queue_next_mode_title">Modo de \"Añadir a continuación\"</string>
