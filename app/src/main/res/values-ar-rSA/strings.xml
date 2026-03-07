@@ -412,8 +412,8 @@
         <item quantity="many">عناصر %d</item>
         <item quantity="other">عناصر %d</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">من أجلك</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">خلط</string>
     <string name="top_artists">كبار الفنانين</string>
     <string name="top_albums">أعلى الألبومات</string>
@@ -560,7 +560,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">إنهاء الأغنية الأخيرة</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">توقف بعد هذا المسار</string>
     <string name="sleep_timer_stop_after_x">توقف بعد %s</string>
     <string name="sleep_timer_stop_after_x_canceled">توقف بعد %s: تم إلغاؤه</string>
@@ -673,6 +675,7 @@
     <string name="lyrics_effects_note">وتعزز التأثيرات المتقدمة الخبرة البصرية ولكنها قد تتطلب المزيد من موارد النظام والبطاريات.</string>
     <string name="lyrics_background_effect_title">تأثير الخلفية</string>
     <string name="lyrics_background_gradient">متدرج</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">تأثير الضبابية</string>
     <string name="lyrics_blur_effect_summary">طمس خطوط كلمات الأغاني المجاورة للغة الحالية.</string>
     <string name="lyrics_shadow_effect_title">تأثير الظل</string>
@@ -696,6 +699,8 @@
         فقط واحدة أو أكثر من هذه المؤشرات، فسيتم وضع علامة عليها كمسار فعال (مفصولة بفاصلة).</string>
     <string name="instrumental_tracks_mark_by_title_title">وضع علامة حسب العنوان</string>
     <string name="instrumental_tracks_mark_by_title_summary">كما سيؤخذ عنوان المسار في الاعتبار عند البحث عن المعرفة.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
         This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
@@ -747,6 +752,8 @@
     <string name="prefer_remaining_time_summary">عرض الوقت المتبقي بدلاً من مدة الأغنية.</string>
     <string name="prefer_album_artist_name_title">"تفضيل اسم الفنان ألبوم-"</string>
     <string name="prefer_album_artist_name_summary">يعرض اسم فنان ألبوم بدلاً من اسم فنان الأغنية (إذا كان متاحاً).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">تشغيل عند بدء التشغيل</string>
     <string name="queue_next_mode_title">وضع \"قائمة الانتظار التالية\"</string>
