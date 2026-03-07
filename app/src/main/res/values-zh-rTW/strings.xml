@@ -372,8 +372,8 @@
     <plurals name="x_items">
         <item quantity="other">%d 項</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">推薦</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">隨機播放</string>
     <string name="top_artists">頂尖藝人</string>
     <string name="top_albums">熱門專輯</string>
@@ -517,7 +517,9 @@
     <string name="sleep_timer_15_mins">15 分鐘</string>
     <string name="sleep_timer_45_mins">45 分鐘</string>
     <string name="sleep_timer_1_hour">1 小時</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">播放完最後一首</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">在此曲目後停止</string>
     <string name="sleep_timer_stop_after_x">%s 後停止</string>
     <string name="sleep_timer_stop_after_x_canceled">%s後停止：取消</string>
@@ -630,6 +632,7 @@
     <string name="lyrics_effects_note">進階效果可增強視覺體驗，但可能需要耗費更多系統資源和電量。</string>
     <string name="lyrics_background_effect_title">背景特效</string>
     <string name="lyrics_background_gradient">漸變</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">模糊效果</string>
     <string name="lyrics_blur_effect_summary">模糊正播放的歌詞的上下的幾行歌詞。</string>
     <string name="lyrics_shadow_effect_title">陰影效果</string>
@@ -653,6 +656,8 @@
         個或多個指示器，它將被標記為一首純音樂(用逗號隔開)。</string>
     <string name="instrumental_tracks_mark_by_title_title">按標題標記</string>
     <string name="instrumental_tracks_mark_by_title_summary">在搜尋識別資料時，還將考慮曲目標題。</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">將所有歌詞檔案視為UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
         This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
@@ -704,6 +709,8 @@
     <string name="prefer_remaining_time_summary">顯示剩餘時間而不是歌曲持續時間。</string>
     <string name="prefer_album_artist_name_title">"首選專用藝術家名稱"</string>
     <string name="prefer_album_artist_name_summary">顯示專輯藝術家的名字，而不是歌手的名字(如果可用的話)。</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">啟動時自動播放</string>
     <string name="queue_next_mode_title">「隊列下一個播放」模式</string>
