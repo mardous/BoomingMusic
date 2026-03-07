@@ -397,8 +397,8 @@
         <item quantity="many">%d элементов</item>
         <item quantity="other">%d элементы</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">Для вас</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Перемешать</string>
     <string name="top_artists">Лучшие исполнители</string>
     <string name="top_albums">Лучшие альбомы</string>
@@ -545,7 +545,9 @@
     <string name="sleep_timer_15_mins">15 мин</string>
     <string name="sleep_timer_45_mins">45 мин</string>
     <string name="sleep_timer_1_hour">1 час</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Закончить последнюю песню</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Остановить после этого трека</string>
     <string name="sleep_timer_stop_after_x">Остановить после %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Остановить после %s: отменено</string>
@@ -658,6 +660,7 @@
     <string name="lyrics_effects_note">Расширенные эффекты улучшают визуализацию, но могут потреблять больше ресурсов и заряда батареи.</string>
     <string name="lyrics_background_effect_title">Эффект фона</string>
     <string name="lyrics_background_gradient">Градиент</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Эффект размытия</string>
     <string name="lyrics_blur_effect_summary">Размывать строки текста, соседние с текущей</string>
     <string name="lyrics_shadow_effect_title">Эффект тени</string>
@@ -681,6 +684,8 @@
         из одного или нескольких таких индикаторов, трек будет помечен как инструментальный (перечисляются через запятую).</string>
     <string name="instrumental_tracks_mark_by_title_title">Определять по названию</string>
     <string name="instrumental_tracks_mark_by_title_summary">Название трека также будет учитываться при поиске маркеров.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Считать все файлы текстов в UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Предполагать, что все файлы используют кодировку UTF-8.
         Это оптимизирует процесс обработки, но в некоторых случаях может привести к некорректному отображению символов в текстах песен.
@@ -732,6 +737,8 @@
     <string name="prefer_remaining_time_summary">Отображать оставшееся время вместо длительности песни.</string>
     <string name="prefer_album_artist_name_title">"Предпочитать имя исполнителя альбома"</string>
     <string name="prefer_album_artist_name_summary">Показывает имя исполнителя альбома вместо имени исполнителя песни (если доступно).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Проигрывать при запуске</string>
     <string name="queue_next_mode_title">Режим «Добавить в очередь»</string>
