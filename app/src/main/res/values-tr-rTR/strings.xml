@@ -380,8 +380,8 @@
         <item quantity="one">%d öğe</item>
         <item quantity="other">%d öğe</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">Senin için</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Karıştır</string>
     <string name="top_artists">En iyi sanatçılar</string>
     <string name="top_albums">En iyi albümler</string>
@@ -523,7 +523,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Son şarkıyı bitir</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Bu parçadan sonra durdur</string>
     <string name="sleep_timer_stop_after_x">%s sonrası durdur</string>
     <string name="sleep_timer_stop_after_x_canceled">%s sonrası durdur: iptal edildi</string>
@@ -636,6 +638,7 @@
     <string name="lyrics_effects_note">Gelişmiş efektler görsel deneyimi iyileştirir ancak daha fazla sistem kaynağı ve pil gerektirebilir.</string>
     <string name="lyrics_background_effect_title">Background effect</string>
     <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Bulanıklaştırma efekti</string>
     <string name="lyrics_blur_effect_summary">Mevcut satıra bitişik şarkı sözü satırlarını bulanıklaştır.</string>
     <string name="lyrics_shadow_effect_title">Gölge efekti</string>
@@ -659,6 +662,8 @@
         one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
         This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
@@ -710,6 +715,8 @@
     <string name="prefer_remaining_time_summary">Şarkının süresi yerine kalan süreyi göster.</string>
     <string name="prefer_album_artist_name_title">"Albüm Sanatçısı adını tercih et"</string>
     <string name="prefer_album_artist_name_summary">Şarkı Sanatçısı adı yerine Albüm Sanatçısı adını gösterir (varsa).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Başlangıçta oynat</string>
     <string name="queue_next_mode_title">\"Sıradakini çal\" modu</string>
