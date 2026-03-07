@@ -380,8 +380,8 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
         <item quantity="one">%d Element</item>
         <item quantity="other">%d Elemente</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">Für Dich</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Zufallswiedergabe</string>
     <string name="top_artists">Top-Interpreten</string>
     <string name="top_albums">Top-Alben</string>
@@ -528,7 +528,9 @@ Ideal für Podcasts und Aufnahmen.</string>
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Letzten Titel zuende abspielen</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Nach diesem Titel beenden</string>
     <string name="sleep_timer_stop_after_x">Nach %s beenden</string>
     <string name="sleep_timer_stop_after_x_canceled">Beenden nach %s: abgebrochen</string>
@@ -641,6 +643,7 @@ Ideal für Podcasts und Aufnahmen.</string>
     <string name="lyrics_effects_note">Erweiterte Effekte verbessern das visuelle Erlebnis, können jedoch mehr Systemressourcen und Akku verbrauchen.</string>
     <string name="lyrics_background_effect_title">Background effect</string>
     <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Unschärfe-Effekt</string>
     <string name="lyrics_blur_effect_summary">Die Zeilen neben der aktuellen Textzeileen.</string>
     <string name="lyrics_shadow_effect_title">Schatten-Effekt</string>
@@ -664,6 +667,8 @@ Ideal für Podcasts und Aufnahmen.</string>
         one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
         This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
@@ -715,6 +720,8 @@ Ideal für Podcasts und Aufnahmen.</string>
     <string name="prefer_remaining_time_summary">Zeigt die verbleibende Wiedergabedauer statt der bisher abgelaufenen an.</string>
     <string name="prefer_album_artist_name_title">"Album-Interpretenname bevorzugen"</string>
     <string name="prefer_album_artist_name_summary">Zeigt den Namen des Album-Interpreten statt dem des Titel-Interpreten an (wenn verfügbar).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Beim App-Start fortsetzen</string>
     <string name="queue_next_mode_title">Warteschlangen-Modus</string>
