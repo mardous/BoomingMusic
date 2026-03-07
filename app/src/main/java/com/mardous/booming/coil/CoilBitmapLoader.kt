@@ -39,7 +39,7 @@ class CoilBitmapLoader(
         return scope.future(Dispatchers.IO) {
             BitmapFactory.decodeByteArray(data, 0, data.size)
                 ?: context.getDrawableCompat(R.drawable.default_audio_art)
-                    ?.toBitmap(1080, 1080, Bitmap.Config.ARGB_8888)
+                    ?.toBitmap(1024, 1024, Bitmap.Config.ARGB_8888)
                 ?: error("Failed to decode from compressed binary data")
         }
     }
