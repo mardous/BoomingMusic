@@ -1,10 +1,10 @@
+import com.android.build.api.variant.impl.VariantOutputImpl
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.android)
     alias(libs.plugins.android.safeargs)
     id("kotlin-parcelize")
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
@@ -116,7 +116,7 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = releaseSigning
         }
         debug {
@@ -146,10 +146,13 @@ android {
         includeInApk = false
         includeInBundle = false
     }
-    applicationVariants.all {
-        outputs.all {
-            (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName =
-                "BoomingMusic-${defaultConfig.versionName}-${name}.apk"
+}
+
+androidComponents {
+    onVariants { variant ->
+        variant.outputs.forEach {
+            // https://issuetracker.google.com/issues/480062612
+            (it as VariantOutputImpl).outputFileName = "BoomingMusic-${it.versionName.get()}-${variant.flavorName}-${variant.buildType}.apk"
         }
     }
 }
