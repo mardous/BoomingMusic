@@ -1,3 +1,4 @@
+import com.android.build.api.variant.impl.VariantOutputImpl
 import java.util.Properties
 
 plugins {
@@ -145,10 +146,13 @@ android {
         includeInApk = false
         includeInBundle = false
     }
-    applicationVariants.all {
-        outputs.all {
-            (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName =
-                "BoomingMusic-${defaultConfig.versionName}-${name}.apk"
+}
+
+androidComponents {
+    onVariants { variant ->
+        variant.outputs.forEach {
+            // https://issuetracker.google.com/issues/480062612
+            (it as VariantOutputImpl).outputFileName = "BoomingMusic-${it.versionName.get()}-${variant.flavorName}-${variant.buildType}.apk"
         }
     }
 }
