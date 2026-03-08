@@ -397,7 +397,6 @@
         <item quantity="other">%d položek</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Pro vás</string>
     <string name="shuffle_action">Zamíchat</string>
     <string name="top_artists">Nejlepší umělci</string>
     <string name="top_albums">Nejlepší alba</string>

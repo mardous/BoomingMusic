@@ -381,7 +381,6 @@
         <item quantity="other">%d kohdetta</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Sinua varten</string>
     <string name="shuffle_action">Sekoita</string>
     <string name="top_artists">Eniten artisteja</string>
     <string name="top_albums">Parhaat albumit</string>

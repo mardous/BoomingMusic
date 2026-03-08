@@ -1,5 +1,8 @@
 package com.mardous.booming.playback
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -149,6 +152,7 @@ class PlaybackService :
     private var stopIndex = -1
 
     private var widgetUpdateJob: Job? = null
+    private var fadeOutAnimator: ValueAnimator? = null
 
     val isInTransientFocusLoss: Boolean
         get() = player.playbackSuppressionReason == Player.PLAYBACK_SUPPRESSION_REASON_TRANSIENT_AUDIO_FOCUS_LOSS
@@ -290,12 +294,16 @@ class PlaybackService :
             }
         }
 
-        sleepTimer.addFinishListener { allowPendingQuit ->
+        sleepTimer.addFinishListener { allowPendingQuit, fadeOut ->
             if (player.playWhenReady && player.isPlaying) {
                 if (allowPendingQuit) {
                     player.exoPlayer.pauseAtEndOfMediaItems = true
                 } else {
-                    player.pause()
+                    if (fadeOut) {
+                        launchMusicFadeOut()
+                    } else {
+                        player.pause()
+                    }
                 }
             }
         }
@@ -526,9 +534,14 @@ class PlaybackService :
                         )
                     }
             } else {
-                runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
-                    .getOrDefault(emptyList())
-                    .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+                runCatching {
+                    libraryProvider.getMediaItemsForPlayback(
+                        mediaItems = mediaItems,
+                        tryToResolveComplexPaths = true
+                    )
+                }.getOrDefault(emptyList()).let {
+                    MediaItemsWithStartPosition(it, startIndex, startPositionMs)
+                }
             }
         }.also { future ->
             future.addListener({
@@ -719,6 +732,11 @@ class PlaybackService :
     }
 
     override fun onPlayerError(error: PlaybackException) {
+        val nextMediaIndex = player.nextMediaItemIndex
+        if (nextMediaIndex != C.INDEX_UNSET) {
+            player.seekToNextMediaItem()
+            player.prepare()
+        }
         showToast(getString(R.string.playback_error_code, error.errorCodeName))
     }
 
@@ -895,12 +913,42 @@ class PlaybackService :
         }
     }
 
+    private fun launchMusicFadeOut(durationMs: Long = 1000) {
+        cancelMusicFadeOut()
+
+        fadeOutAnimator = ValueAnimator.ofFloat(player.volume, 0f).apply {
+            duration = durationMs
+            addUpdateListener { animation ->
+                player.volume = animation.animatedValue as Float
+            }
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    player.pause()
+                    restorePlayerVolume()
+                }
+            })
+        }
+        fadeOutAnimator?.start()
+    }
+
+    private fun cancelMusicFadeOut() {
+        fadeOutAnimator?.cancel()
+        fadeOutAnimator = null
+
+        restorePlayerVolume()
+    }
+
+    private fun restorePlayerVolume() {
+        player.volume = equalizerManager.volumeState.value.currentVolume
+    }
+
     private fun prepareEqualizerAndSoundSettings() {
         serviceScope.launch {
             equalizerManager.initializeEqualizer()
         }
         serviceScope.launch {
             equalizerManager.volumeState.collect { volume ->
+                cancelMusicFadeOut()
                 player.volume = volume.currentVolume
             }
         }

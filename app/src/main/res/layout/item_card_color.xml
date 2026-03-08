@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="4dp"
                 android:singleLine="true"
-                tools:text="@string/for_you_label"/>
+                tools:text="@string/home_label"/>
 
         </LinearLayout>
 

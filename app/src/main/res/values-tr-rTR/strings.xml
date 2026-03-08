@@ -381,7 +381,6 @@
         <item quantity="other">%d öğe</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Senin için</string>
     <string name="shuffle_action">Karıştır</string>
     <string name="top_artists">En iyi sanatçılar</string>
     <string name="top_albums">En iyi albümler</string>

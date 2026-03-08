@@ -381,7 +381,6 @@
         <item quantity="other">%d items</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">For you</string>
     <string name="shuffle_action">Shuffle</string>
     <string name="top_artists">Top artists</string>
     <string name="top_albums">Top albums</string>

@@ -380,7 +380,6 @@
         <item quantity="other">%d elementos</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Para ti</string>
     <string name="shuffle_action">Aleatorio</string>
     <string name="top_artists">Artistas más escuchados</string>
     <string name="top_albums">Álbumes más reproducidos</string>

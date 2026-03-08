@@ -29,9 +29,10 @@ class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
     private var countDownTimer: TimerUpdater? = null
     private var nextElapsedTimeRealTime: Long = -1
     private var allowPendingQuit: Boolean = false
+    private var fadeOut: Boolean = false
     private var shouldConsumePendingQuit: Boolean = false
 
-    private val listeners = LinkedHashSet<(Boolean) -> Unit>()
+    private val listeners = LinkedHashSet<(Boolean, Boolean) -> Unit>()
 
     private val _waitingFor = MutableStateFlow<SleepTimerWaitingFor?>(null)
     val waitingFor = _waitingFor.asStateFlow()
@@ -41,7 +42,7 @@ class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
 
     override fun onAlarm() {
         synchronized(lock) {
-            listeners.forEach { it(allowPendingQuit) }
+            listeners.forEach { it(allowPendingQuit, fadeOut) }
             nextElapsedTimeRealTime = -1
             shouldConsumePendingQuit = allowPendingQuit
             setRunning(shouldConsumePendingQuit)
@@ -53,11 +54,12 @@ class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
         }
     }
 
-    fun set(millisInFuture: Long, allowPendingQuit: Boolean) {
+    fun set(millisInFuture: Long, allowPendingQuit: Boolean, fadeOut: Boolean) {
         synchronized(lock) {
             if (nextElapsedTimeRealTime > -1) {
                 am.cancel(this)
             }
+            this.fadeOut = fadeOut
             this.allowPendingQuit = allowPendingQuit
             this.nextElapsedTimeRealTime = SystemClock.elapsedRealtime() + millisInFuture
             am.setExact(ELAPSED_REALTIME_WAKEUP, nextElapsedTimeRealTime, TAG, this, null)
@@ -111,7 +113,7 @@ class SleepTimer(private val context: Context) : AlarmManager.OnAlarmListener {
         }
     }
 
-    fun addFinishListener(listener: (Boolean) -> Unit) {
+    fun addFinishListener(listener: (Boolean, Boolean) -> Unit) {
         synchronized(lock) {
             listeners.add(listener)
         }

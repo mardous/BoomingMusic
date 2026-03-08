@@ -45,12 +45,28 @@ import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
 import com.mardous.booming.databinding.FragmentAlbumDetailBinding
-import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.applyHorizontalWindowInsets
+import com.mardous.booming.extensions.dp
+import com.mardous.booming.extensions.isAllowedToDownloadMetadata
+import com.mardous.booming.extensions.isLandscape
+import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.media.asReadableDuration
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
-import com.mardous.booming.extensions.navigation.*
-import com.mardous.booming.extensions.resources.*
+import com.mardous.booming.extensions.navigation.albumDetailArgs
+import com.mardous.booming.extensions.navigation.artistDetailArgs
+import com.mardous.booming.extensions.navigation.asFragmentExtras
+import com.mardous.booming.extensions.navigation.playInfoArgs
+import com.mardous.booming.extensions.navigation.searchArgs
+import com.mardous.booming.extensions.plurals
+import com.mardous.booming.extensions.resources.destroyOnDetach
+import com.mardous.booming.extensions.resources.removeHorizontalMarginIfRequired
+import com.mardous.booming.extensions.resources.safeUpdateWithRetry
+import com.mardous.booming.extensions.resources.setMarkdownText
+import com.mardous.booming.extensions.resources.setupStatusBarForeground
+import com.mardous.booming.extensions.resources.show
+import com.mardous.booming.extensions.resources.surfaceColor
+import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
@@ -198,7 +214,7 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
     }
 
     private fun showAlbum(album: Album) {
-        if (album.songs.isEmpty()) {
+        if (album == Album.empty || album.songs.isEmpty()) {
             findNavController().navigateUp()
             return
         }

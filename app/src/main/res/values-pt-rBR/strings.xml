@@ -380,7 +380,6 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
         <item quantity="other">%d itens</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Para você</string>
     <string name="shuffle_action">Misturar</string>
     <string name="top_artists">Artistas Populares</string>
     <string name="top_albums">Álbuns Populares</string>

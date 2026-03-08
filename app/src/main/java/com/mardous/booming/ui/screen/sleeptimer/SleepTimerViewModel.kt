@@ -35,6 +35,7 @@ class SleepTimerViewModel(
             isRunning = isRunning,
             waitingFor = waitingFor,
             isFinishMusic = prefs[Keys.IS_FINISH_MUSIC] ?: false,
+            isFadeOut = prefs[Keys.IS_FADE_OUT] ?: false,
             timerValue = prefs[Keys.TIMER_VALUE] ?: 0f
         )
     }
@@ -46,6 +47,7 @@ class SleepTimerViewModel(
             isRunning = false,
             waitingFor = null,
             isFinishMusic = false,
+            isFadeOut = false,
             timerValue = 0f
         )
     )
@@ -64,11 +66,13 @@ class SleepTimerViewModel(
 
     fun setTimerState(
         value: Float = uiState.value.timerValue,
-        isFinishMusic: Boolean = uiState.value.isFinishMusic
+        isFinishMusic: Boolean = uiState.value.isFinishMusic,
+        isFadeOut: Boolean = uiState.value.isFadeOut
     ) = viewModelScope.launch(Dispatchers.IO) {
         getApplication<App>().sleepTimerDataStore.edit {
             it[Keys.TIMER_VALUE] = value
             it[Keys.IS_FINISH_MUSIC] = isFinishMusic
+            it[Keys.IS_FADE_OUT] = isFadeOut
         }
     }
 
@@ -76,7 +80,8 @@ class SleepTimerViewModel(
         if (sleepTimer.canScheduleExactAlarm()) {
             sleepTimer.set(
                 millisInFuture = uiState.value.timerValue.toLong() * 60 * 1000,
-                allowPendingQuit = uiState.value.isFinishMusic
+                allowPendingQuit = uiState.value.isFinishMusic,
+                fadeOut = uiState.value.isFadeOut
             )
             _sleepTimerEvent.send(
                 SleepTimerEvent.Set(uiState.value.timerValue.toLong())
@@ -95,6 +100,7 @@ class SleepTimerViewModel(
     private interface Keys {
         companion object {
             val IS_FINISH_MUSIC = booleanPreferencesKey("finish_music")
+            val IS_FADE_OUT = booleanPreferencesKey("fade_out")
             val TIMER_VALUE = floatPreferencesKey("timer_value")
         }
     }

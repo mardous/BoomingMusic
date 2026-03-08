@@ -413,7 +413,6 @@
         <item quantity="other">عناصر %d</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">من أجلك</string>
     <string name="shuffle_action">خلط</string>
     <string name="top_artists">كبار الفنانين</string>
     <string name="top_albums">أعلى الألبومات</string>

@@ -28,27 +28,36 @@ class BalanceAudioProcessor(
     }
 
     override fun queueInput(inputBuffer: ByteBuffer) {
-        var position = inputBuffer.position()
-        val limit = inputBuffer.limit()
-        val size = limit - position
+        val remaining = inputBuffer.remaining()
+        if (remaining == 0) return
 
-        val buffer = replaceOutputBuffer(size)
+        val buffer = replaceOutputBuffer(remaining)
         buffer.order(ByteOrder.LITTLE_ENDIAN)
 
-        while (position < limit) {
-            val left = inputBuffer.getShort(position)
-            val right = inputBuffer.getShort(position + 2)
+        if (inputAudioFormat.channelCount == 2) {
+            while (inputBuffer.remaining() >= 4) {
+                val left = inputBuffer.short
+                val right = inputBuffer.short
 
-            val newLeft = (left * leftGain).toInt()
-            val newRight = (right * rightGain).toInt()
+                val newLeft = (left * leftGain).toInt().coerceIn(Short.MIN_VALUE.toInt(), Short.MAX_VALUE.toInt()).toShort()
+                val newRight = (right * rightGain).toInt().coerceIn(Short.MIN_VALUE.toInt(), Short.MAX_VALUE.toInt()).toShort()
 
-            buffer.putShort(newLeft.toShort())
-            buffer.putShort(newRight.toShort())
-
-            position += 4
+                buffer.putShort(newLeft)
+                buffer.putShort(newRight)
+            }
+        } else if (inputAudioFormat.channelCount == 1) {
+            while (inputBuffer.remaining() >= 2) {
+                val sample = inputBuffer.short
+                val gain = (leftGain + rightGain) / 2f
+                val newSample = (sample * gain).toInt().coerceIn(Short.MIN_VALUE.toInt(), Short.MAX_VALUE.toInt()).toShort()
+                buffer.putShort(newSample)
+            }
         }
 
-        inputBuffer.position(limit)
+        if (inputBuffer.hasRemaining()) {
+            buffer.put(inputBuffer)
+        }
+
         buffer.flip()
     }
 }

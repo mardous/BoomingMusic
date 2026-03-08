@@ -11,6 +11,9 @@
 	<integer name="overScrollMode">2</integer>
 	<integer name="short_anim_time">150</integer>
 
+	<integer name="max_player_blur">25</integer>
+	<integer name="min_player_blur">5</integer>
+
 	<integer name="default_grid_columns">2</integer>
 	<integer name="default_grid_columns_land">4</integer>
 

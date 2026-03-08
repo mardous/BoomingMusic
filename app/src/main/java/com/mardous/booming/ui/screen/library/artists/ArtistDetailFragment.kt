@@ -49,11 +49,29 @@ import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lastfm.model.LastFmArtist
 import com.mardous.booming.databinding.FragmentArtistDetailBinding
-import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.applyHorizontalWindowInsets
+import com.mardous.booming.extensions.defaultGridColumns
+import com.mardous.booming.extensions.dip
+import com.mardous.booming.extensions.dp
+import com.mardous.booming.extensions.isAllowedToDownloadMetadata
+import com.mardous.booming.extensions.isLandscape
+import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.media.artistInfo
 import com.mardous.booming.extensions.media.displayName
-import com.mardous.booming.extensions.navigation.*
-import com.mardous.booming.extensions.resources.*
+import com.mardous.booming.extensions.navigation.albumDetailArgs
+import com.mardous.booming.extensions.navigation.artistDetailArgs
+import com.mardous.booming.extensions.navigation.asFragmentExtras
+import com.mardous.booming.extensions.navigation.playInfoArgs
+import com.mardous.booming.extensions.navigation.searchArgs
+import com.mardous.booming.extensions.plurals
+import com.mardous.booming.extensions.resources.destroyOnDetach
+import com.mardous.booming.extensions.resources.removeHorizontalMarginIfRequired
+import com.mardous.booming.extensions.resources.safeUpdateWithRetry
+import com.mardous.booming.extensions.resources.setMarkdownText
+import com.mardous.booming.extensions.resources.setupStatusBarForeground
+import com.mardous.booming.extensions.resources.show
+import com.mardous.booming.extensions.resources.surfaceColor
+import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.IArtistCallback
@@ -63,7 +81,11 @@ import com.mardous.booming.ui.adapters.album.SimpleAlbumAdapter
 import com.mardous.booming.ui.adapters.artist.ArtistAdapter
 import com.mardous.booming.ui.adapters.song.SimpleSongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
-import com.mardous.booming.ui.component.menu.*
+import com.mardous.booming.ui.component.menu.onAlbumsMenu
+import com.mardous.booming.ui.component.menu.onArtistMenu
+import com.mardous.booming.ui.component.menu.onArtistsMenu
+import com.mardous.booming.ui.component.menu.onSongMenu
+import com.mardous.booming.ui.component.menu.onSongsMenu
 import com.mardous.booming.util.Preferences
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -232,7 +254,7 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
     }
 
     private fun showArtist(artist: Artist) {
-        if (artist.songCount == 0) {
+        if (artist == Artist.empty || artist.songCount == 0) {
             findNavController().navigateUp()
             return
         }

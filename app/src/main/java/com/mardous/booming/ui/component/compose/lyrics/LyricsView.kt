@@ -1,4 +1,4 @@
-package com.mardous.booming.ui.screen.lyrics
+package com.mardous.booming.ui.component.compose.lyrics
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.EaseInOut
@@ -67,6 +67,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import com.mardous.booming.core.model.lyrics.LyricsViewSettings
+import com.mardous.booming.core.model.lyrics.LyricsViewState
 import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
 import com.mardous.booming.extensions.hasS

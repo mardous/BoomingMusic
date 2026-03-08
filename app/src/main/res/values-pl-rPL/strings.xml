@@ -397,7 +397,6 @@
         <item quantity="other">%d elementów</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Dla Ciebie</string>
     <string name="shuffle_action">Odtwarzaj losowo</string>
     <string name="top_artists">Ulubieni artyści</string>
     <string name="top_albums">Ulubione albumy</string>

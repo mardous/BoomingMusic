@@ -381,7 +381,6 @@
         <item quantity="other">%d ítems</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Per a tu</string>
     <string name="shuffle_action">Aleatori</string>
     <string name="top_artists">Els artistes més populars</string>
     <string name="top_albums">Els àlbums més populars</string>

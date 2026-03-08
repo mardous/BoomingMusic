@@ -1,6 +1,10 @@
 package com.mardous.booming.coil
 
-import android.content.*
+import android.content.ContentProvider
+import android.content.ContentResolver
+import android.content.ContentValues
+import android.content.Context
+import android.content.UriMatcher
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -161,7 +165,7 @@ class CoverProvider : ContentProvider(), KoinComponent {
         private const val AUTHORITY = "${BuildConfig.APPLICATION_ID}.cover"
         private const val CACHE_DIR_NAME = "covers"
         private const val CACHE_FILE_EXPIRES = (60 * 60 * 1000) * 24 * 7 // 7 days
-        private const val MAX_BITMAP_DIMENSION = 1000
+        private const val MAX_BITMAP_DIMENSION = 1024
 
         const val SONG_COVER_PATH = "song"
         private const val SONG_COVER_CODE = 1

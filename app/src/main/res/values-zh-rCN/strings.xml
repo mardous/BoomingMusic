@@ -373,7 +373,6 @@
         <item quantity="other">%d 项</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">推荐</string>
     <string name="shuffle_action">随机播放</string>
     <string name="top_artists">顶尖艺人</string>
     <string name="top_albums">热门专辑</string>

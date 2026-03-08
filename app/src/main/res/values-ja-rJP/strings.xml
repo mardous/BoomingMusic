@@ -373,7 +373,6 @@
         <item quantity="other">%d個のアイテム</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">For you</string>
     <string name="shuffle_action">シャッフル</string>
     <string name="top_artists">トップアーティスト</string>
     <string name="top_albums">トップアルバム</string>

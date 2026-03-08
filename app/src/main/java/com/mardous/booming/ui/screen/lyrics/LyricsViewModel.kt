@@ -15,11 +15,12 @@ import androidx.core.content.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import com.mardous.booming.core.model.lyrics.LyricsViewSettings
+import com.mardous.booming.core.model.lyrics.LyricsViewSettings.BackgroundEffect
+import com.mardous.booming.core.model.lyrics.LyricsViewSettings.Key
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.repository.LyricsRepository
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.BackgroundEffect
-import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.Key
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -28,7 +29,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
-import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.Mode as LyricsViewMode
+import com.mardous.booming.core.model.lyrics.LyricsViewSettings.Mode as LyricsViewMode
 
 /**
  * @author Christians M. A. (mardous)
@@ -175,6 +176,7 @@ class LyricsViewModel(
                 BackgroundEffect.None
             } else when (preferences.getString(Key.BACKGROUND_EFFECT, null)) {
                 "gradient" -> BackgroundEffect.Gradient
+                "blur" -> BackgroundEffect.Blur
                 else -> BackgroundEffect.None
             }
         val enableSyllableLyrics = preferences.getBoolean(Key.ENABLE_SYLLABLE_LYRICS, false)

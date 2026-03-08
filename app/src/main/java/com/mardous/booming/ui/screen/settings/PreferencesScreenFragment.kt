@@ -41,6 +41,7 @@ import com.google.android.material.color.DynamicColors
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoverProvider
+import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.data.local.room.InclExclDao
 import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.hasR
@@ -67,7 +68,6 @@ import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
-import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
 import com.mardous.booming.util.ADD_EXTRA_CONTROLS
@@ -254,6 +254,16 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
         }
 
         findPreference<Preference>(ADD_EXTRA_CONTROLS)?.isVisible = !resources.isTablet
+
+        findPreference<ListPreference>(LyricsViewSettings.Key.BACKGROUND_EFFECT)?.apply {
+            if (!hasS()) {
+                val indexOfBlur = entryValues.indexOf("blur")
+                entries = entries.filterIndexed { index, _ -> index != indexOfBlur }
+                    .toTypedArray()
+                entryValues = entryValues.filterIndexed { index, _ -> index != indexOfBlur }
+                    .toTypedArray()
+            }
+        }
 
         findPreference<Preference>(LyricsViewSettings.Key.BLUR_EFFECT)
             ?.isVisible = hasS()

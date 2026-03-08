@@ -397,7 +397,6 @@
         <item quantity="other"></item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">עבורך</string>
     <string name="shuffle_action">ערבוב</string>
     <string name="top_artists">אמנים מובילים</string>
     <string name="top_albums">אלבומים מובילים</string>

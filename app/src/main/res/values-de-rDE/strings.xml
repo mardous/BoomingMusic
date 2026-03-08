@@ -381,7 +381,6 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
         <item quantity="other">%d Elemente</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Für Dich</string>
     <string name="shuffle_action">Zufallswiedergabe</string>
     <string name="top_artists">Top-Interpreten</string>
     <string name="top_albums">Top-Alben</string>

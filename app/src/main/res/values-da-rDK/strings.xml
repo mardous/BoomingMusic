@@ -381,7 +381,6 @@
         <item quantity="other">%d varer</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Til dig</string>
     <string name="shuffle_action">Bland</string>
     <string name="top_artists">Top kunstnere</string>
     <string name="top_albums">Top albums</string>

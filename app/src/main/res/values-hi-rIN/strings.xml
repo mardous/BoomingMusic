@@ -380,7 +380,6 @@
         <item quantity="other">%d आइटम्स</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">आपके लिए</string>
     <string name="shuffle_action">शफल</string>
     <string name="top_artists">टॉप आर्टिस्ट्स</string>
     <string name="top_albums">सर्वश्रेष्ठ एल्बम्स</string>

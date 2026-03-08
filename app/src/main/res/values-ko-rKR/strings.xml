@@ -371,7 +371,6 @@
         <item quantity="other">%d항목</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">추천</string>
     <string name="shuffle_action">셔플</string>
     <string name="top_artists">인기 아티스트</string>
     <string name="top_albums">인기 앨범</string>

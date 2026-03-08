@@ -245,6 +245,18 @@
         app:title="@string/advanced_title"
         app:layout="@layout/preference_category_title">
 
+        <SeekBarPreference
+            app:icon="@drawable/ic_blur_linear_24dp"
+            app:title="@string/player_blur_intensity_title"
+            app:summary="@string/player_blur_intensity_summary"
+            android:max="@integer/max_player_blur"
+            app:min="@integer/min_player_blur"
+            app:defaultValue="@integer/max_player_blur"
+            app:showSeekBarValue="true"
+            app:layout="@layout/list_item_view_bottom_widget"
+            app:widgetLayout="@layout/preference_seekbar"
+            app:key="player_blur_radius"/>
+
         <SwitchPreferenceCompat
             app:icon="@drawable/ic_keyboard_arrow_up_24dp"
             app:title="@string/open_on_play_title"

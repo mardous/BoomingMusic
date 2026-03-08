@@ -1,4 +1,4 @@
-package com.mardous.booming.ui.screen.lyrics
+package com.mardous.booming.core.model.lyrics
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Immutable
@@ -31,8 +31,10 @@ class LyricsViewSettings(
 
     enum class BackgroundEffect {
         Gradient,
+        Blur,
         None;
 
+        val isBlur get() = this == Blur
         val isGradient get() = this == Gradient
         val isNone get() = this == None
     }

@@ -381,7 +381,6 @@
         <item quantity="other">%d objekt</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">För dig</string>
     <string name="shuffle_action">Blanda</string>
     <string name="top_artists">Topp artister</string>
     <string name="top_albums">Topp album</string>

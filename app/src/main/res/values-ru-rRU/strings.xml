@@ -398,7 +398,6 @@
         <item quantity="other">%d элементы</item>
     </plurals>
     <!-- Listen now -->
-    <string name="for_you_label">Для вас</string>
     <string name="shuffle_action">Перемешать</string>
     <string name="top_artists">Лучшие исполнители</string>
     <string name="top_albums">Лучшие альбомы</string>
