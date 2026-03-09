@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">Play</string>
-    <string name="action_play_all">Play all</string>
-    <string name="action_shuffle_play">Shuffle play</string>
-    <string name="action_queue_next">Queue next</string>
-    <string name="shuffle_all_label">Shuffle all</string>
-    <string name="shuffle_mode">Shuffle mode</string>
-    <string name="repeat_mode">Repeat mode</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
-    <string name="action_play_pause">Play/Pause</string>
-    <string name="action_pause">Pause</string>
-    <string name="action_next">Next</string>
-    <string name="action_previous">Previous</string>
-    <string name="action_cancel">Cancel</string>
-    <string name="action_seek_backward">Seek backward</string>
-    <string name="action_seek_forward">Seek forward</string>
+    <string name="action_play">Putar</string>
+    <string name="action_play_all">Putar semua</string>
+    <string name="action_shuffle_play">Putar acak</string>
+    <string name="action_queue_next">Antrean berikutnya</string>
+    <string name="shuffle_all_label">Acak semua</string>
+    <string name="shuffle_mode">Mode acak</string>
+    <string name="repeat_mode">Mode ulangi</string>
+    <string name="shuffle_button_tip">Ketuk untuk acak normal. Tekan lama untuk pilihan lanjutan.</string>
+    <string name="action_play_pause">Putar/Jeda</string>
+    <string name="action_pause">Jeda</string>
+    <string name="action_next">Berikutnya</string>
+    <string name="action_previous">Sebelumnya</string>
+    <string name="action_cancel">Batalkan</string>
+    <string name="action_seek_backward">Geser mundur</string>
+    <string name="action_seek_forward">Geser maju</string>
     <string name="action_cycle_repeat">Cycle repeat mode</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="reset_action">Reset</string>
@@ -372,7 +372,8 @@
     <plurals name="x_items">
         <item quantity="other">%d items</item>
     </plurals>
-    <!-- Listen now -->
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Shuffle</string>
     <string name="top_artists">Top artists</string>
     <string name="top_albums">Top albums</string>
@@ -519,7 +520,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Finish last song</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Stop after this track</string>
     <string name="sleep_timer_stop_after_x">Stop after %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Stop after %s: canceled</string>
@@ -632,6 +635,7 @@
     <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
     <string name="lyrics_background_effect_title">Background effect</string>
     <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Blur effect</string>
     <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
     <string name="lyrics_shadow_effect_title">Shadow effect</string>
@@ -655,6 +659,8 @@
         one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
         This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
@@ -706,6 +712,8 @@
     <string name="prefer_remaining_time_summary">Display remaining time instead of the song\'s duration.</string>
     <string name="prefer_album_artist_name_title">"Prefer Album-artist's name"</string>
     <string name="prefer_album_artist_name_summary">Shows the Album-artist\'s name instead of Song-artist\'s name (if available).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
     <string name="queue_next_mode_title">\"Queue next\" mode</string>
