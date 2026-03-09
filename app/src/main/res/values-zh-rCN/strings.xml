@@ -39,7 +39,7 @@
     <string name="what_do_you_want_to_share">您想分享什么？</string>
     <string name="the_audio_file">音频文件</string>
     <string name="i_am_listening">我正在听…</string>
-    <string name="currently_listening_to_x_by_x">我正在收听%2$s的%1$s</string>
+    <string name="currently_listening_to_x_by_x">我正在听%2$s的%1$s</string>
     <string name="share_to_stories">分享到动态</string>
     <string name="could_not_create_the_story">无法创建动态。</string>
     <string name="back_action">返回</string>
@@ -54,7 +54,7 @@
     <string name="preparing_playback_title">正在准备</string>
     <string name="restoring_playback_state">正在恢复播放状态和队列…</string>
     <string name="playback_stopped_title">已停止播放</string>
-    <string name="playing_notification_description">播放通知提供播放/暂停等动作。</string>
+    <string name="playing_notification_description">在播放通知可以进行播放/暂停等动作。</string>
     <string name="playing_notification_name">播放通知</string>
     <string name="action_scan_directory">扫描目录</string>
     <string name="no_device_playlists">没有播放列表</string>
@@ -79,7 +79,7 @@
     <string name="create_a_playlist_with_one_song">创建一个播放列表并添加一首歌曲。</string>
     <string name="create_a_playlist_with_x_songs">创建一个播放列表并自动向其中添加 %d 首歌曲。</string>
     <string name="playlist_name_empty">播放列表名称</string>
-    <string name="playlist_description_hint">播放列表描述(可选)</string>
+    <string name="playlist_description_hint">播放列表描述（可选）</string>
     <string name="saved_playlist_x">已保存播放列表 %s。</string>
     <string name="playlist_updated">播放列表已更新。</string>
     <string name="failed_to_save_playlist">播放列表保存失败。</string>
@@ -126,7 +126,7 @@
     <string name="no_equalizer">未找到均衡器。</string>
     <string name="audio_focus_denied">音频焦点被拒绝。</string>
     <string name="no_audio_ID">错误的音频ID。</string>
-    <string name="playback_error_code">音乐面板错误 (%s)。</string>
+    <string name="playback_error_code">播放错误 （%s）。</string>
     <string name="unplayable_file">无法播放这首歌曲。</string>
     <string name="permission_external_storage_title">存储访问</string>
     <string name="permission_external_storage_description">此应用需要访问您的设备存储权限才能播放音乐</string>
@@ -139,7 +139,7 @@
 您可以根据需要决定是否授予此权限。</string>
     <string name="permission_read_images_denied">您需要授予访问所有文件的权限以允许软件读取封面图片。</string>
     <string name="permission_exact_alarms_title">设置精确闹钟(可选)</string>
-    <string name="permission_exact_alarms_description">睡眠计时器需获取设置精确闹钟的权限才能正常工作</string>
+    <string name="permission_exact_alarms_description">睡眠计时器需要获取设置精确闹钟的权限才能正常工作</string>
     <string name="permission_ringtone_title">铃声（可选）</string>
     <string name="permission_ringtone_description">此应用需要访问系统设置权限才能将音乐设置为铃声</string>
     <string name="permission_request_write_settings"><![CDATA[您必须允许Booming Music修改系统设置才能将 <b>%s</b> 设置为您的铃声]]></string>
@@ -159,7 +159,7 @@
     <string name="playing_queue_label">播放队列</string>
     <string name="list_start">列表开头</string>
     <string name="list_end">列表末尾</string>
-    <string name="empty_play_queue">空的播放队列。</string>
+    <string name="empty_play_queue">播放队列为空。</string>
     <string name="save_queue">保存队列</string>
     <string name="clear_queue">清除队列</string>
     <string name="action_move_to_current_track">显示当前曲目</string>
@@ -197,9 +197,9 @@
     <string name="unknown_year">未知年份</string>
     <string name="no_songs_label">没有歌曲</string>
     <string name="no_albums_label">没有专辑</string>
-    <string name="no_artists_label">没有艺人</string>
+    <string name="no_artists_label">无艺术家</string>
     <string name="no_genres_label">无流派</string>
-    <string name="empty_label">空的</string>
+    <string name="empty_label">空</string>
     <string name="nothing_to_see">没有可查看的内容</string>
     <string name="show_album_artists">仅专辑艺人</string>
     <string name="songs_label">歌曲</string>
@@ -218,9 +218,9 @@
     <string name="play_info">播放信息</string>
     <string name="track_play_counts">曲目播放计数</string>
     <string name="song_stat_never_label">从未播放</string>
-    <string name="song_stat_one_time_label">在 %s 上播放过一次</string>
-    <string name="song_stat_label">播放了 %1$d 次，最后一次在 %2$s</string>
-    <string name="horizontal_albums">横向相册</string>
+    <string name="song_stat_one_time_label">于 %s 播放过一次</string>
+    <string name="song_stat_label">播放过 %1$d 次，最后一次于 %2$s</string>
+    <string name="horizontal_albums">横向显示专辑</string>
     <string name="ignore_singles">排除单曲</string>
     <string name="compact_song_view">紧凑的歌曲视图</string>
     <string name="show_total_duration">显示总时长</string>
@@ -239,7 +239,7 @@
     <string name="sort_order_year">年份</string>
     <string name="sort_order_duration">时长</string>
     <string name="sort_order_date_added">添加日期</string>
-    <string name="sort_order_date_modified">日期已修改</string>
+    <string name="sort_order_date_modified">修改日期</string>
     <string name="sort_order_file_name">文件名</string>
     <string name="sort_order_number_of_songs">歌曲数</string>
     <string name="sort_order_number_of_albums">专辑数</string>
@@ -248,13 +248,13 @@
     <string name="sort_order_descending">降序</string>
     <string name="sort_order_ignore_articles">排序时忽略开头的冠词 (如 The/A/An 等)</string>
     <string name="action_set_as_ringtone">设置为铃声</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[将 <b>%s</b> 设置为您的铃声]]></string>
+    <string name="x_will_be_set_as_ringtone"><![CDATA[将把 <b>%s</b> 设置为您的铃声]]></string>
     <string name="x_has_been_set_as_ringtone">设置 %s 为您的铃声</string>
     <string name="x_has_been_set_as_ringtone_and_as_alarm">设置 %s 为您的铃声和闹钟提醒</string>
     <string name="use_also_as_alarm_alert">同时用作闹钟</string>
     <string name="action_details">详细信息</string>
     <string name="action_set_as_start_directory">设置为起始目录</string>
-    <string name="start_directory_set">Start directory set to %s</string>
+    <string name="start_directory_set">起始目录已设为 %s</string>
     <string name="action_go_to_start_directory">转到起始目录</string>
     <string name="action_hierarchy_view">层级视图</string>
     <string name="new_start_directory">新建起始目录: %s</string>
@@ -278,9 +278,9 @@
     <string name="save_artwork_error">保存封面到本地存储失败</string>
     <string name="save_artwork_success">已保存专辑封面</string>
     <string name="save_artwork_view_action">查看</string>
-    <string name="save_artwork_copyright_info_title">版权声明</string>
-    <string name="save_artwork_copyright_info_message">某些专辑封面 (或全部)可能受到版权法的保护。您不能将此图像用于商业或广告目的。
-        \n\n只有您对您保存的相册封面的使用承担全部责任。</string>
+    <string name="save_artwork_copyright_info_title">版权提醒</string>
+    <string name="save_artwork_copyright_info_message">部分（或全部）专辑封面可能受到版权法的保护。您不能将此类图像用于商业或广告目的。
+        \n\n您使用保存的专辑封面时需承担全部责任。</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="keyboard">键盘</string>
@@ -293,32 +293,32 @@
     <string name="song">歌曲</string>
     <string name="title">标题</string>
     <string name="album">专辑</string>
-    <string name="artist">艺人</string>
-    <string name="album_artist">专辑艺人</string>
+    <string name="artist">艺术家</string>
+    <string name="album_artist">专辑艺术家</string>
     <string name="composer">作曲家</string>
     <string name="conductor">指挥</string>
-    <string name="publisher">发布者</string>
+    <string name="publisher">发行者</string>
     <string name="genre">流派</string>
     <string name="year">年份</string>
     <string name="release_years_label">年</string>
     <string name="length">时长</string>
-    <string name="label_last_modified">最后修改</string>
-    <string name="label_channels">频道</string>
+    <string name="label_last_modified">最后修改于</string>
+    <string name="label_channels">声道</string>
     <string name="label_variable_bitrate">可变比特率</string>
-    <string name="label_loss_less">减少损失</string>
-    <string name="label_bit_rate">位速率</string>
+    <string name="label_loss_less">无损</string>
+    <string name="label_bit_rate">码率</string>
     <string name="label_sampling_rate">采样率</string>
-    <string name="replay_gain">重放增益</string>
+    <string name="replay_gain">回放增益</string>
     <string name="comment">评论</string>
     <string name="last_played">上次播放</string>
     <string name="played">已播放</string>
     <string name="skipped">跳过</string>
     <string name="track">曲目</string>
     <string name="track_total">曲目总数</string>
-    <string name="disc">盘片</string>
-    <string name="disc_total">总盘片</string>
+    <string name="disc">碟片</string>
+    <string name="disc_total">总碟片</string>
     <string name="lyrics">歌词</string>
-    <string name="lyricist">作词人</string>
+    <string name="lyricist">作词</string>
     <string name="could_not_load_the_song_information">"无法加载歌曲信息。"</string>
     <string name="no_results">没有结果</string>
     <string name="connection_unavailable">连接不可用。</string>
@@ -326,7 +326,7 @@
     <string name="you_cannot_select_more_than_five_categories">您不能选择超过五个类别。</string>
     <string name="backup_settings">设置</string>
     <string name="backup_synced_lyrics">同步歌词</string>
-    <string name="backup_artist_images">艺人图像</string>
+    <string name="backup_artist_images">艺术家图像</string>
     <string name="backup_playlists">播放列表</string>
     <string name="backup_successful">备份成功！</string>
     <string name="backup_failed">备份失败。</string>
@@ -361,7 +361,7 @@
         <item quantity="other">%d 专辑</item>
     </plurals>
     <plurals name="x_artists">
-        <item quantity="other">%d 艺人</item>
+        <item quantity="other">%d 艺术家</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="other">%d 次</item>
@@ -372,11 +372,12 @@
     <plurals name="x_items">
         <item quantity="other">%d 项</item>
     </plurals>
-    <!-- Listen now -->
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">随机播放</string>
-    <string name="top_artists">顶尖艺人</string>
-    <string name="top_albums">热门专辑</string>
-    <string name="recent_artists">最近的艺人</string>
+    <string name="top_artists">最常听的艺术家</string>
+    <string name="top_albums">最常听的专辑</string>
+    <string name="recent_artists">最近艺术家</string>
     <string name="recent_albums">最近的专辑</string>
     <string name="no_suggestions">没有对您的建议</string>
     <!-- Shuffle modes -->
@@ -389,9 +390,9 @@
     <string name="shuffle_mode_recently_added">随机最近添加歌曲</string>
     <string name="shuffle_mode_combined">智能随机</string>
     <string name="shuffle_mode_pure_random_description">完全随机播放歌曲。</string>
-    <string name="shuffle_mode_most_played_description">优先随机播放你最常听的歌曲</string>
-    <string name="shuffle_mode_most_played_artists_description">优先播放你最常听的艺人</string>
-    <string name="shuffle_mode_most_played_albums_description">优先播放你最常听的专辑</string>
+    <string name="shuffle_mode_most_played_description">优先随机播放你最常听的歌曲。</string>
+    <string name="shuffle_mode_most_played_artists_description">优先播放你最常听的艺术家。</string>
+    <string name="shuffle_mode_most_played_albums_description">优先播放你最常听的专辑。</string>
     <string name="shuffle_mode_favorite_songs_description">偏向最喜欢的歌曲。</string>
     <string name="shuffle_mode_forgotten_songs_description">偏向有一段时间未播放的歌曲。</string>
     <string name="shuffle_mode_recently_added_description">偏向近期添加到曲库的歌曲。</string>
@@ -411,8 +412,8 @@
     <string name="band_configuration_changed_successfully">频段配置更改成功。</string>
     <string name="band_configuration_could_not_be_changed">错误：频段配置无法更改。</string>
     <string name="share_eq_profiles">分享均衡器配置</string>
-    <string name="there_is_nothing_to_export">没有什么可导出。</string>
-    <string name="there_is_nothing_to_import">没有可以导入的内容。</string>
+    <string name="there_is_nothing_to_export">无可导出的配置。</string>
+    <string name="there_is_nothing_to_import">无可导入的配置。</string>
     <string name="an_unexpected_error_occurred">发生了意外的错误。</string>
     <string name="share_profiles">分享配置</string>
     <string name="select_profiles_to_share">选择要分享的配置：</string>
@@ -432,14 +433,14 @@
     <string name="are_you_sure_you_want_to_reset_the_equalizer">确定要重置均衡器吗？
         \n\n这将清除您的所有配置。</string>
     <string name="not_supported">不支持</string>
-    <string name="set_eq_engine_title">Set EQ engine</string>
-    <string name="eq_engine_basic_title">Legacy Engine</string>
-    <string name="eq_engine_basic_description">A 5-band classic configuration designed for maximum device compatibility.</string>
-    <string name="eq_engine_precision_title">Precision Engine</string>
-    <string name="eq_engine_precision_description">High-fidelity processing with up to 15-band control for ultimate acoustic shaping.</string>
-    <string name="set_eq_engine_reset_warning">Changing the equalization engine will reset the equalizer settings, including custom profiles.</string>
-    <string name="eq_empty_bands">The equalization engine did not return any band configurations.</string>
-    <string name="enable_equalizer">启用EQ</string>
+    <string name="set_eq_engine_title">设置均衡引擎</string>
+    <string name="eq_engine_basic_title">传统引擎</string>
+    <string name="eq_engine_basic_description">采用5频段经典配置，具有更好的设备兼容性。</string>
+    <string name="eq_engine_precision_title">精密引擎</string>
+    <string name="eq_engine_precision_description">适用 Hi-Fi 处理，支持多达15段频段控制，具有更好的声学塑造。</string>
+    <string name="set_eq_engine_reset_warning">更改均衡引擎将重置均衡器设置，包括自定义配置。</string>
+    <string name="eq_empty_bands">均衡引擎未返回任何频段配置。</string>
+    <string name="enable_equalizer">启用均衡器</string>
     <string name="select_profile">选择配置</string>
     <string name="save_profile_label">保存配置</string>
     <string name="edit_profile_label">编辑配置</string>
@@ -459,8 +460,8 @@
     <string name="virtualizer_label">虚拟环绕声</string>
     <string name="loudness_enhancer">放大器</string>
     <string name="sound_settings">声音设置</string>
-    <string name="listening_on">Listening on</string>
-    <string name="casting_to">Casting to</string>
+    <string name="listening_on">播放设备</string>
+    <string name="casting_to">投送设备</string>
     <string name="volume_label">音量</string>
     <string name="reset_balance">重置平衡</string>
     <string name="speed_and_pitch_label">播放速度与音高</string>
@@ -468,7 +469,7 @@
     <string name="unlock_pitch_adjustment">解锁音高绑定</string>
     <string name="balance_left">左</string>
     <string name="balance_right">右</string>
-    <string name="action_external_eq">外部EQ</string>
+    <string name="action_external_eq">外部均衡器</string>
     <string name="custom">自定义</string>
     <string name="audio_offload_is_enabled">硬件加速已启用</string>
     <string name="enable_audio_offload_title">音频硬件加速</string>
@@ -516,7 +517,9 @@
     <string name="sleep_timer_15_mins">15分钟</string>
     <string name="sleep_timer_45_mins">45分钟</string>
     <string name="sleep_timer_1_hour">1小时</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">播放完最后一首</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">在此曲目后停止</string>
     <string name="sleep_timer_stop_after_x">%s 后停止</string>
     <string name="sleep_timer_stop_after_x_canceled">%s后停止：取消</string>
@@ -540,23 +543,23 @@
     <string name="translators_title">译者</string>
     <string name="translators_summary">感谢那些为Booming Music提供多种语言的人们。</string>
     <string name="contributors_title">贡献者</string>
-    <string name="contributors_summary">某种程度上参与贡献该项目的用户</string>
+    <string name="contributors_summary">以各种方式参与贡献该项目的用户清单。</string>
     <string name="telegram_chat">Telegram 群组</string>
     <string name="telegram_chat_summary">加入 Telegram 群组并获得新版本和新闻的通知。</string>
     <string name="view_profile_on_github">在 GitHub 上查看个人资料</string>
     <string name="follow_on_telegram">Telegram 私信</string>
     <string name="write_an_email">电子邮件</string>
     <string name="buy_me_a_coffee">请我喝杯咖啡吧~</string>
-    <string name="buy_me_a_coffee_summary">如果您喜欢，请给与小额赞助支持。</string>
+    <string name="buy_me_a_coffee_summary">如果您认为我的作品有价值，可以赞助一笔小钱。</string>
     <string name="support_development">支持开发</string>
     <string name="help_with_translations">帮助翻译</string>
     <string name="help_with_translations_summary">您可以通过帮助将Booming Music翻译成其他语言来为该项目做出贡献。</string>
     <string name="report_bugs">报告错误</string>
     <string name="report_bugs_summary">报告错误或请求新功能。</string>
     <string name="share_app">分享此应用</string>
-    <string name="share_app_summary">如果你与朋友分享，你可以帮助这个应用的发展。</string>
+    <string name="share_app_summary">您可以与朋友分享本应用，帮助它成长壮大。</string>
     <string name="send_invitation_message">发送邀请信息</string>
-    <string name="invitation_message_content">您好。看看Booming Music！在Android上聆听本地音乐的最佳应用程序。您可以从这里下载它： %s</string>
+    <string name="invitation_message_content">你好，来看看Booming Music吧！这是Android平台最好的本地音乐播放器。下载链接： %s</string>
     <!-- Bug report -->
     <string name="report_an_issue">报告一个问题</string>
     <string name="device_info">设备信息</string>
@@ -629,6 +632,7 @@
     <string name="lyrics_effects_note">高级效果可增强视觉体验，但可能需要耗费更多系统资源和电量。</string>
     <string name="lyrics_background_effect_title">背景特效</string>
     <string name="lyrics_background_gradient">渐变</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">模糊效果</string>
     <string name="lyrics_blur_effect_summary">模糊正播放的歌词的上下的几行歌词。</string>
     <string name="lyrics_shadow_effect_title">阴影效果</string>
@@ -651,7 +655,9 @@
     <string name="instrumental_tracks_identifiers_summary">若歌曲的歌词只包含
         个或多个指示器，它将被标记为一首纯音乐(用逗号隔开)。</string>
     <string name="instrumental_tracks_mark_by_title_title">按标题标记</string>
-    <string name="instrumental_tracks_mark_by_title_summary">在搜寻识别资料时，还将考虑曲目标题。</string>
+    <string name="instrumental_tracks_mark_by_title_summary">在搜索识别资料时，一并使用曲目标题。</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">将所有歌词文件视为UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">强制以 UTF-8 编码读取音频文件。
         这优化了文件解析过程，但在某些情况下可能导致歌曲歌词中出现异常字符。
@@ -661,11 +667,11 @@
     <string name="open_on_play_title">播放时打开</string>
     <string name="open_on_play_summary">开始播放歌曲后自动展开播放面板。</string>
     <string name="squiggly_seek_bar_title">波浪形进度条</string>
-    <string name="squiggly_seek_bar_summary">使用波浪进度条而非直线型滑块。</string>
+    <string name="squiggly_seek_bar_summary">使用波浪进度条代替默认的直线型滑块。</string>
     <string name="scrolling_text_title">滚动显示歌名</string>
-    <string name="scrolling_text_summary">在歌曲名称过长时滚动显示，可能会更加耗电。</string>
-    <string name="extra_controls_title">额外控制</string>
-    <string name="extra_controls_summary">为迷你播放器添加额外的控制</string>
+    <string name="scrolling_text_summary">在歌曲名称过长时滚动显示。可能稍微更耗电。</string>
+    <string name="extra_controls_title">额外控制按钮</string>
+    <string name="extra_controls_summary">为迷你播放器添加额外的控制按钮</string>
     <string name="adaptive_controls_title">自适应控件</string>
     <string name="adaptive_controls_summary">改变迷你播放器的空间以适配当前播放器风格。</string>
     <string name="swipe_to_dismiss_title">向下滑动以暂停</string>
@@ -674,7 +680,7 @@
     <string name="swipe_album_cover_title">专辑封面滑动切歌</string>
     <string name="swipe_album_cover_summary">在播放器模式下的专辑封面上左/右滑动以切换到上一首/下一首。</string>
     <string name="queue_height_title">半屏队列高度</string>
-    <string name="queue_height_summary">将播放队列页面修复到半屏大小。</string>
+    <string name="queue_height_summary">将播放队列页面固定为占据半屏大小。</string>
     <string name="single_tap_on_album_cover_title">单击封面</string>
     <string name="double_tap_on_album_cover_title">双击封面</string>
     <string name="double_tap_on_left_album_cover_title">双击专辑封面左侧</string>
@@ -694,28 +700,30 @@
     <string name="swipe_up_queue_summary">在“正在播放”界面的空白处向上滑动来打开当前的播放队列。</string>
     <string name="display_album_name_title">显示专辑名称</string>
     <string name="display_extra_info_title">显示额外信息</string>
-    <string name="display_extra_info_summary">显示歌曲的额外信息，例如比特率、格式、取样率等。</string>
+    <string name="display_extra_info_summary">显示歌曲的码率、格式、采样率等额外信息。</string>
     <string name="display_next_song_title">显示下一首</string>
     <string name="display_next_song_summary">在播放器底部显示队列中的下一首歌曲。</string>
     <string name="select_extra_info_title">额外信息</string>
     <string name="select_extra_info_summary">选择要在播放器面板中显示的额外信息。</string>
-    <string name="prefer_remaining_time_title">优先显示剩余时间</string>
-    <string name="prefer_remaining_time_summary">显示剩余时间而不是歌曲持续时间。</string>
-    <string name="prefer_album_artist_name_title">"首选专用艺术家名称"</string>
-    <string name="prefer_album_artist_name_summary">显示专辑艺术家的名字，而不是歌手的名字(如果可用的话)。</string>
+    <string name="prefer_remaining_time_title">显示剩余时间</string>
+    <string name="prefer_remaining_time_summary">显示歌曲剩余时间，而不是全长。</string>
+    <string name="prefer_album_artist_name_title">"首选专辑艺术家名称"</string>
+    <string name="prefer_album_artist_name_summary">显示专辑艺术家的名称，而不显示单曲歌手的名称（若有）。</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">启动时自动播放</string>
-    <string name="queue_next_mode_title">“队列下一个播放”模式</string>
+    <string name="queue_next_mode_title">“下一首播放”模式</string>
     <string name="search_auto_queue_title">将所有搜索结果加入队列</string>
     <string name="search_auto_queue_summary">当从搜索界面播放歌曲时，其他结果也添加至队列。</string>
     <string name="remember_shuffle_mode_title">记住随机播放</string>
     <string name="remember_shuffle_mode_summary">选择新歌曲列表时将保持随机模式。</string>
     <string name="album_shuffle_mode_title">专辑随机模式</string>
     <string name="artist_shuffle_mode_title">艺术家随机模式</string>
-    <string name="rewind_with_back_title">"带着“上一个”退货"</string>
-    <string name="rewind_with_back_summary">将播放曲目退回开始或移动到上一首曲目，如果当前曲目正在开始。</string>
-    <string name="rewind_fast_forward_amount_title">快进/快退</string>
-    <string name="rewind_fast_forward_amount_summary">使用用户界面或外置控制器来快进/快退（时间单位为秒）。</string>
+    <string name="rewind_with_back_title">"使用“上一曲”按钮快退"</string>
+    <string name="rewind_with_back_summary">设置当前曲目正在播放开头时，“上一曲”按钮是快退到曲目开始还是退回上一曲。</string>
+    <string name="rewind_fast_forward_amount_title">快进/快退长度</string>
+    <string name="rewind_fast_forward_amount_summary">使用应用界面或外部控制按钮进行快进/快退的时长（单位为秒）。</string>
     <string name="resume_on_connect_title">连接后恢复</string>
     <string name="resume_on_connect_summary">连接耳机时恢复播放。</string>
     <string name="pause_on_disconnect_title">断开时暂停</string>
@@ -733,73 +741,73 @@
         只在跳转部分VBR文件失败时使用。
         需要重启应用程序。</string>
     <string name="play_option_always_visible_title">一直显示“播放”按钮</string>
-    <string name="play_option_always_visible_summary">无论点击行为如何，“播放”按钮将一直出现在歌曲菜单中。</string>
+    <string name="play_option_always_visible_summary">如果启用该选项，无论点击行为设置为何，“播放”按钮将一直出现在歌曲菜单中。</string>
     <string name="play_option_whole_list_title">“播放”选项播放整个列表</string>
     <string name="play_option_whole_list_summary">启用后，从菜单中点击播放将开始播放整个播放列表，而不是仅播放当前歌曲。</string>
     <string name="on_song_click_title">当选中曲目时</string>
     <string name="on_song_click_play_only_this_song_title">仅播放此曲目</string>
-    <string name="on_song_click_play_only_this_song_summary">播放队列将被替换为此单独曲目。</string>
+    <string name="on_song_click_play_only_this_song_summary">播放队列将被清空，替换为选择的曲目。</string>
     <string name="on_song_click_play_whole_list_title">播放整个列表</string>
-    <string name="on_song_click_play_whole_list_summary">当前播放列表将被该播放列表/专辑/文件夹中的所有歌曲替换。</string>
+    <string name="on_song_click_play_whole_list_summary">当前播放队列将替换为播放选择的播放列表/专辑/文件夹中的所有歌曲。</string>
     <string name="on_song_click_queue_next_title">下一首播放</string>
-    <string name="on_song_click_queue_next_summary">将其插入为播放队列中的下一首。</string>
+    <string name="on_song_click_queue_next_summary">选择的曲目将添加到播放队列的下一位。</string>
     <string name="on_song_click_enqueue_at_end_title">在末尾加入队列</string>
-    <string name="on_song_click_enqueue_at_end_summary">选中的曲目将添加到播放队列末尾。</string>
+    <string name="on_song_click_enqueue_at_end_summary">选择的曲目将添加到播放队列末尾。</string>
     <string name="on_clear_queue_title">当清空队列时</string>
-    <string name="on_clear_queue_remove_all_songs_title">清空列表</string>
-    <string name="on_clear_queue_remove_all_songs_summary">播放列表将被清空。</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_title">移除当前播放外列表中所有曲目</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_summary">只有当前播放曲目会保留在列表中。</string>
-    <string name="clear_queue_on_completion_title">列表播放完毕自动清空</string>
-    <string name="clear_queue_on_completion_summary">在播放完列表后，自动移除播放列表中所有曲目。</string>
+    <string name="on_clear_queue_remove_all_songs_title">移除所有曲目</string>
+    <string name="on_clear_queue_remove_all_songs_summary">播放队列将被清空。</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">移除当前曲目以外的所有曲目</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">只有当前播放曲目会保留在队列中。</string>
+    <string name="clear_queue_on_completion_title">播放完毕时清空队列</string>
+    <string name="clear_queue_on_completion_summary">在最后一曲播完后，自动从播放队列中移除所有曲目。</string>
     <!-- Metadata preferences -->
     <string name="auto_download_metadata_title">自动下载元数据</string>
     <string name="ignore_media_store_album_covers_title">忽略MediaStore提供的封面</string>
     <string name="ignore_media_store_album_covers_summary">这可能有助于提高图像质量，但需要更多内存。</string>
     <string name="use_folder_album_cover_title">使用文件夹图像</string>
     <string name="use_folder_album_cover_summary">如果音频文件不包含嵌入封面。图像可能需要一些时间才能加载。</string>
-    <string name="online_artist_images_title">下载艺人图像</string>
-    <string name="online_artist_images_summary">这取决于您的元数据下载政策。</string>
+    <string name="online_artist_images_title">下载艺术家图像</string>
+    <string name="online_artist_images_summary">这取决于您的元数据下载策略。</string>
     <string name="preferred_image_size_title">图像大小偏好</string>
     <string name="online_album_covers_title">下载缺失的专辑封面</string>
     <string name="online_album_covers_summary">下载的图片不会嵌入到音频文件中；它们仅在应用内可见。这取决于您的元数据下载策略。</string>
     <string name="delete_downloaded_lyrics_title">删除下载的歌词</string>
-    <string name="delete_downloaded_lyrics_summary">仅由 Booming Music 下载的歌词。不影响嵌入到 ID3v2 标签或 LRC 文件中的歌词。</string>
+    <string name="delete_downloaded_lyrics_summary">仅影响 Booming Music 下载的歌词。不影响嵌入到 ID3v2 标签或 LRC 文件中的歌词。</string>
     <string name="lyrics_cleared">歌词已清除。</string>
     <!-- Library preferences -->
     <string name="ignore_articles_when_sorting_title">在排序时忽略冠词</string>
     <string name="ignore_articles_when_sorting_summary">排序时忽略冠词（“the”，“a”，“an”等）。</string>
-    <string name="trash_music_title">发送到回收站</string>
+    <string name="trash_music_title">移至回收站</string>
     <string name="trash_music_summary">发送已删除的文件到回收站。</string>
     <string name="recursive_folder_actions_title">影响子文件夹的操作</string>
     <string name="recursive_folder_actions_summary">当对文件夹执行操作时，选择哪些操作也应作用于子文件夹。</string>
-    <string name="enable_history_title">启用历史</string>
-    <string name="enable_history_summary">允许应用程序录制您正在收听的歌曲。如果您禁用它，整个历史记录将被清除。</string>
+    <string name="enable_history_title">启用播放历史</string>
+    <string name="enable_history_summary">允许应用程序记录您听过的曲目。若禁用该选项，所有历史记录将被清除。</string>
     <string name="history_interval_title">历史间隔</string>
     <string name="last_added_interval_title">最新添加时间间隔</string>
     <string name="whitelist_title">白名单</string>
     <string name="whitelist_summary">只有白名单文件夹的内容显示在您的曲库中。</string>
     <string name="blacklist_title">黑名单</string>
     <string name="blacklist_summary">黑名单文件夹中的内容会在您的曲库中隐藏。</string>
-    <string name="artist_min_songs_title">小艺术家最小歌曲计数</string>
-    <string name="artist_min_songs_summary">多少首歌曲(至少) 必须有一个艺术家来显示在您的曲库中。</string>
+    <string name="artist_min_songs_title">艺术家最小歌曲计数</string>
+    <string name="artist_min_songs_summary">设置一位艺术家需要有（至少）多少曲目，才会显示在您的曲库中。</string>
     <string name="album_min_songs_title">专辑最小歌曲计数</string>
-    <string name="album_min_songs_summary">多少首歌(至少) 必须拥有专辑封面来在您的曲库中显示。</string>
+    <string name="album_min_songs_summary">设置一张专辑需要有（至少）多少曲目，才会显示在您的曲库中。</string>
     <string name="min_song_duration_title">最小歌曲持续时间</string>
-    <string name="min_song_duration_summary">只有时长超过（至少）多少秒的歌曲才会显示在曲库中。</string>
+    <string name="min_song_duration_summary">设置一首曲目需要长（至少）多少秒，才会显示在您的曲库中。</string>
     <!-- Remote preferences -->
     <string name="app_language_title">应用语言</string>
     <string name="backup_data_title">备份应用数据</string>
     <string name="backup_app_data_summary">创建一个包含基本应用数据的文件并保存到外部存储。</string>
     <string name="restore_backup_title">还原备份</string>
     <string name="restore_backup_summary">从以前的备份中还原应用数据(和状态)。</string>
-    <string name="stop_when_closed_from_recents_title">在“最近应用”关闭App后停止播放</string>
-    <string name="stop_when_closed_from_recents_summary">在“最近应用”视图关闭此App后停止播放歌曲。</string>
+    <string name="stop_when_closed_from_recents_title">从“最近应用”关闭应用后停止播放</string>
+    <string name="stop_when_closed_from_recents_summary">从“最近应用”视图关闭此应用后停止播放歌曲。</string>
     <string name="stop_when_closed_from_recents_note">注意：某些内存管理或电池管理较为严格的设备可能会忽略此设置，并在从最近使用的应用列表中移除时始终停止该应用。</string>
     <string name="rotation_lock_title">旋转锁定</string>
     <string name="rotation_lock_summary">锁定设备显示方向，防止某些系统下因屏幕旋转导致音乐播放中断。</string>
     <!-- Preference values -->
-    <string name="light_theme_name">亮色</string>
+    <string name="light_theme_name">浅色</string>
     <string name="dark_theme_name">深色</string>
     <string name="black_theme_name">黑色</string>
     <string name="follow_system">跟随系统</string>
@@ -840,9 +848,9 @@
     <string name="this_month">本月</string>
     <string name="past_three_months">过去三个月</string>
     <string name="this_year">今年</string>
-    <string name="priority_maximum">最大值</string>
+    <string name="priority_maximum">最高</string>
     <string name="priority_high">高</string>
-    <string name="priority_normal">普通的</string>
+    <string name="priority_normal">一般</string>
     <string name="priority_low">低</string>
     <string name="always">总是显示</string>
     <string name="only_on_wifi">仅Wi-Fi</string>
@@ -860,12 +868,12 @@
     <string name="player_color_mode_app_theme_description">使用该应用的配色方案</string>
     <string name="player_color_mode_simple_color_title">简洁配色</string>
     <string name="player_color_mode_simple_color_description">提取专辑颜色并应用到某些控件</string>
-    <string name="player_color_mode_vibrant_color_title">亮色</string>
+    <string name="player_color_mode_vibrant_color_title">鲜艳色彩</string>
     <string name="player_color_mode_vibrant_color_description">将专辑颜色应用于提示背景、文本和控件</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">启用基于专辑封面颜色的Material You配色</string>
-    <string name="player_color_mode_blur_title">Blur</string>
-    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
+    <string name="player_color_mode_blur_title">模糊</string>
+    <string name="player_color_mode_blur_description">使用 Material You 色彩模糊背景</string>
     <!-- Update -->
     <string name="auto_update_title">自动更新</string>
     <string name="every_day">每天</string>
@@ -876,7 +884,7 @@
     <string name="only_wifi_title">仅Wi-Fi</string>
     <string name="only_wifi_summary">仅在 Wi-Fi 连接时搜索更新。</string>
     <string name="receive_experimental_updates_title">接收实验更新</string>
-    <string name="receive_experimental_updates_summary">请注意，这些更新常常非常不稳定，而且是针对有经验的用户。</string>
+    <string name="receive_experimental_updates_summary">请注意，这些更新常常非常不稳定，仅供有经验的用户试用。</string>
     <string name="search_for_update_title">搜索更新</string>
     <string name="last_update_search_x">上次检查: %s</string>
     <string name="checking_please_wait">正在检索，请等待…</string>
@@ -885,7 +893,7 @@
     <string name="update_available_title">有可用更新</string>
     <string name="more_info_action">更多信息。</string>
     <string name="download_action">下载</string>
-    <string name="downloading_update">正在下载 Booming 音乐更新。</string>
+    <string name="downloading_update">正在下载 Booming Music 更新。</string>
     <string name="uncaught_error_title">哎呀！出现了意料之外的事！</string>
     <string name="uncaught_error_message">似乎有什么东西出错并导致了软件崩溃。
         如果您能够向我们发送错误报告到我们的 Telegram 群组或通过电子邮件，将会很有帮助。</string>
