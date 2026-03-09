@@ -370,7 +370,8 @@
     <plurals name="x_items">
         <item quantity="other">%d항목</item>
     </plurals>
-    <!-- Listen now -->
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">셔플</string>
     <string name="top_artists">인기 아티스트</string>
     <string name="top_albums">인기 앨범</string>
@@ -509,7 +510,9 @@
     <string name="sleep_timer_15_mins">15분</string>
     <string name="sleep_timer_45_mins">45분</string>
     <string name="sleep_timer_1_hour">1시간</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">마지막 곡까지 재생</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">이 트랙 후 중지</string>
     <string name="sleep_timer_stop_after_x">%s 후 중지</string>
     <string name="sleep_timer_stop_after_x_canceled">%s 후 중지 취소됨</string>
@@ -622,6 +625,7 @@
     <string name="lyrics_effects_note">고급 효과는 시각적 경험을 향상시키지만 배터리를 더 소모할 수 있습니다.</string>
     <string name="lyrics_background_effect_title">배경 효과</string>
     <string name="lyrics_background_gradient">그라데이션</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">블러 효과</string>
     <string name="lyrics_blur_effect_summary">현재 줄 주변 가사를 흐리게 처리합니다.</string>
     <string name="lyrics_shadow_effect_title">그림자 효과</string>
@@ -644,6 +648,8 @@
     <string name="instrumental_tracks_identifiers_summary">가사가 이 단어들로만 구성된 경우 연주곡으로 표시합니다(쉼표로 구분).</string>
     <string name="instrumental_tracks_mark_by_title_title">제목으로 표시</string>
     <string name="instrumental_tracks_mark_by_title_summary">제목에서도 식별자를 검색합니다.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">모든 가사 파일을 UTF-8로 처리</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">모든 가사 파일이 UTF-8 인코딩이라고 가정합니다. 파일 처리가 빨라지지만 일부 문자가 깨질 수 있습니다.</string>
     <!-- Now playing preferences -->
@@ -693,6 +699,8 @@
     <string name="prefer_remaining_time_summary">곡 전체 길이 대신 남은 시간을 표시합니다.</string>
     <string name="prefer_album_artist_name_title">"앨범 아티스트 이름 선호"</string>
     <string name="prefer_album_artist_name_summary">곡 아티스트 대신 앨범 아티스트의 이름을 표시합니다.</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">시작 시 재생</string>
     <string name="queue_next_mode_title">\"다음 순서\" 모드</string>
