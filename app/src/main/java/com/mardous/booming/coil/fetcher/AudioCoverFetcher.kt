@@ -38,18 +38,17 @@ class AudioCoverFetcher(
     private val canDownloadImages get() = downloadImage && options.context.isAllowedToDownloadMetadata()
 
     override suspend fun fetch(): FetchResult? {
-        val audioCover = cover.getComplete(contentResolver)
         val stream = try {
-            if (audioCover.isIgnoreMediaStore) {
-                AudioCoverUtils.fallback(audioCover.path, audioCover.isUseFolderArt)
-                    ?: contentResolver.openFileDescriptor(audioCover.uri, "r")?.use { fd ->
+            if (cover.isIgnoreMediaStore) {
+                AudioCoverUtils.fallback(cover.path, cover.isUseFolderArt)
+                    ?: contentResolver.openFileDescriptor(cover.uri, "r")?.use { fd ->
                         TagLib.getFrontCover(fd.dup().detachFd())?.data?.inputStream()
                     }
             } else {
-                contentResolver.openInputStream(audioCover.albumId.asAlbumCoverUri())
+                contentResolver.openInputStream(cover.albumId.asAlbumCoverUri())
             }
         } catch (e: IOException) {
-            Log.e("AudioCoverFetcher", "Unable to decode cover image for ${audioCover.path}", e)
+            Log.e("AudioCoverFetcher", "Unable to decode cover image for ${cover.path}", e)
             null
         }
 

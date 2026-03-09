@@ -266,9 +266,7 @@ class PlaybackService :
         mediaSession = with(MediaLibrarySession.Builder(this, player, this)) {
             setId(packageName)
             setSessionActivity(createSessionActivityIntent())
-            setBitmapLoader(
-                CacheBitmapLoader(CoilBitmapLoader(serviceScope, this@PlaybackService, preferences))
-            )
+            setBitmapLoader(CacheBitmapLoader(CoilBitmapLoader(this@PlaybackService)))
             build()
         }
 
