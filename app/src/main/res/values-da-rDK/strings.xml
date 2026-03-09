@@ -380,7 +380,8 @@
         <item quantity="one">%d vare</item>
         <item quantity="other">%d varer</item>
     </plurals>
-    <!-- Listen now -->
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Bland</string>
     <string name="top_artists">Top kunstnere</string>
     <string name="top_albums">Top albums</string>
@@ -527,7 +528,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Afslut sidste sang</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Stop efter dette spor</string>
     <string name="sleep_timer_stop_after_x">Stop efter %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Stop efter %s: annulleret</string>
@@ -640,6 +643,7 @@
     <string name="lyrics_effects_note">Avancerede effekter forbedre den visuelle oplevelse, men kan kræve flere systemressourcer og batteri.</string>
     <string name="lyrics_background_effect_title">Baggrundseffekt</string>
     <string name="lyrics_background_gradient">Overgang</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Slør effekt</string>
     <string name="lyrics_blur_effect_summary">Slør sangtekstlinjerne ved siden af den nuværende.</string>
     <string name="lyrics_shadow_effect_title">Skygge effekt</string>
@@ -663,6 +667,8 @@
         en eller flere af disse indikatorer, vil den blive markeret som et instrumental spor (adskilt af komma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Markér efter titel</string>
     <string name="instrumental_tracks_mark_by_title_summary">Spor titel vil også blive taget i betragtning, når der søges efter identifikatorer.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
         This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
@@ -714,6 +720,8 @@
     <string name="prefer_remaining_time_summary">Vis resterende tid i stedet for sangens varighed.</string>
     <string name="prefer_album_artist_name_title">"Foretræk Album-kunstnerens navn"</string>
     <string name="prefer_album_artist_name_summary">Viser albumkunstnerens navn i stedet for sangkunstnerens navn (hvis det er tilgængeligt).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Afspil ved opstart</string>
     <string name="queue_next_mode_title">\"Kø næste\" tilstand</string>

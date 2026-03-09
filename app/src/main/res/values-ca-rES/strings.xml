@@ -380,7 +380,8 @@
         <item quantity="one">%d ítem</item>
         <item quantity="other">%d ítems</item>
     </plurals>
-    <!-- Listen now -->
+    <!-- Home -->
+    <string name="home_label">Inici</string>
     <string name="shuffle_action">Aleatori</string>
     <string name="top_artists">Els artistes més populars</string>
     <string name="top_albums">Els àlbums més populars</string>
@@ -527,7 +528,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hora</string>
+    <string name="sleep_timer_2_hour">2 hores</string>
     <string name="sleep_timer_finish_current_music">Finalitza la darrera cançó</string>
+    <string name="sleep_timer_music_fades_out">La música s\'esvaeix</string>
     <string name="sleep_timer_stop_after_this_track">Atura després d\'aquesta pista</string>
     <string name="sleep_timer_stop_after_x">Atura després de %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Ja no s\'aturarà després de %s</string>
@@ -640,6 +643,7 @@
     <string name="lyrics_effects_note">Els efectes avançats realcen l\'experiència visual, però poden consumir més recursos i bateria.</string>
     <string name="lyrics_background_effect_title">Efecte de fons</string>
     <string name="lyrics_background_gradient">Degradat</string>
+    <string name="lyrics_background_blur">Difuminat</string>
     <string name="lyrics_blur_effect_title">Efecte difuminat</string>
     <string name="lyrics_blur_effect_summary">Difumina les línies de lletra adjacents a l\'actual.</string>
     <string name="lyrics_shadow_effect_title">Efecte d\'ombra</string>
@@ -664,6 +668,8 @@
 (separat per comes).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marca per títol</string>
     <string name="instrumental_tracks_mark_by_title_summary">El títol de la pista també es tindrà en compte per cercar identificadors.</string>
+    <string name="ignore_blank_lines_title">Ignora les línies buides</string>
+    <string name="ignore_blank_lines_summary">Ignora les línies buides en els fitxers LRC en lloc de mostrar bombolles animades.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tracta tots els fitxers de lletra com a UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assumeix que tots els fitxers estan codificats en format UTF-8.
         Optimitza el procés d\'anàlisi de fitxers, però en alguns casos podria mostrar caràcters inusuals a la lletra de les cançons.
@@ -715,6 +721,8 @@
     <string name="prefer_remaining_time_summary">Mostra el temps que queda en lloc de la duració de la cançó.</string>
     <string name="prefer_album_artist_name_title">"Mostra el nom dels artistes de l'àlbum"</string>
     <string name="prefer_album_artist_name_summary">Mostra el nom de l\'artista de l\'àlbum en lloc del nom de l\'artista de la cançó (si està disponible).</string>
+    <string name="player_blur_intensity_title">Intensitat del difuminat</string>
+    <string name="player_blur_intensity_summary">Ajusta el grau de difuminació del fons del tema Difuminat. Els valors més baixos podrien millorar el rendiment.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reprodueix en iniciar</string>
     <string name="queue_next_mode_title">Mode d\'«Afegeix a la cua»</string>

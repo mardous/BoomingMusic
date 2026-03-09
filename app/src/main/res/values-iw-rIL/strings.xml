@@ -396,7 +396,8 @@
         <item quantity="many">פריטים %d</item>
         <item quantity="other"></item>
     </plurals>
-    <!-- Listen now -->
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">ערבוב</string>
     <string name="top_artists">אמנים מובילים</string>
     <string name="top_albums">אלבומים מובילים</string>
@@ -543,7 +544,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">סיים את השיר האחרון</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">עצור אחרי השיר הזה</string>
     <string name="sleep_timer_stop_after_x">עצור לאחר %s</string>
     <string name="sleep_timer_stop_after_x_canceled">עצור אחרי %s: בוטל</string>
@@ -656,6 +659,7 @@
     <string name="lyrics_effects_note">אפקטים מתקדמים משפרים את החוויה החזותית אך עשויים לדרוש יותר משאבי מערכת וסוללה.</string>
     <string name="lyrics_background_effect_title">אפקט רקע</string>
     <string name="lyrics_background_gradient">גרדיאנט</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">אפקט טשטוש</string>
     <string name="lyrics_blur_effect_summary">טשטש את שורות המילים הסמוכות לשורה הנוכחית.</string>
     <string name="lyrics_shadow_effect_title">אפקט צל</string>
@@ -678,6 +682,8 @@
     <string name="instrumental_tracks_identifiers_summary">אם מילות השיר מורכבות אך ורק מאחד או יותר מהסמנים האלה, השיר יסומן כרצועה אינסטרומנטלית (מופרדים בפסיק).</string>
     <string name="instrumental_tracks_mark_by_title_title">סמן לפי שם</string>
     <string name="instrumental_tracks_mark_by_title_summary">שם השיר יילקח גם הוא בחשבון בעת חיפוש אחר הסמנים.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">התייחס לכל קובצי מילות השירים כ־UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">הנח שכל הקבצים משתמשים בקידוד UTF-8.
 פעולה זו מייעלת את תהליך ניתוח הקבצים, אך במקרים מסוימים עלולה לגרום להופעת תווים חריגים במילות השירים.
@@ -729,6 +735,8 @@
     <string name="prefer_remaining_time_summary">הצג את הזמן הנותר במקום משך השיר.</string>
     <string name="prefer_album_artist_name_title">"העדף את שם אמן האלבום"</string>
     <string name="prefer_album_artist_name_summary">מציג את שם אמן האלבום במקום את שם אמן השיר (אם זמין).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">השמע בהפעלה</string>
     <string name="queue_next_mode_title">מצב \"הוסף לתור הבא\"</string>
