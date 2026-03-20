@@ -85,14 +85,14 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 private const val AUTHOR_GITHUB_URL = "https://www.github.com/mardous"
-private const val GITHUB_URL = "https://www.github.com/ProjectOrbital/BoomingMusic"
+private const val GITHUB_URL = "$AUTHOR_GITHUB_URL/BoomingMusic"
 private const val RELEASES_LINK = "$GITHUB_URL/releases"
 const val ISSUE_TRACKER_LINK = "$GITHUB_URL/issues"
 private const val AUTHOR_TELEGRAM_LINK = "https://t.me/mardeez"
-private const val COMMUNITY_LINK = "https://github.com/ProjectOrbital/BoomingMusic/wiki/Community"
-private const val FAQ_LINK = "https://github.com/ProjectOrbital/BoomingMusic/wiki/FAQ"
+private const val COMMUNITY_LINK = "$GITHUB_URL/wiki/Community"
+private const val FAQ_LINK = "$GITHUB_URL/wiki/FAQ"
 private const val APP_TELEGRAM_LINK = "https://t.me/mardousdev"
-private const val CROWDIN_PROJECT_LINK = "https://crowdin.com/project/booming-music"
+private const val TRANSLATIONS_LINK = "https://hosted.weblate.org/engage/booming-music/"
 private const val DONATE_LINK = "https://ko-fi.com/christiaam"
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -206,7 +206,7 @@ fun AboutScreen(
 
             AboutSupportSection(
                 onTranslateClick = {
-                    context.openUrl(CROWDIN_PROJECT_LINK)
+                    context.openUrl(TRANSLATIONS_LINK)
                 },
                 onReportBugsClick = {
                     showReportDialog = true

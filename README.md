@@ -8,18 +8,18 @@
 
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=for-the-badge&logo=android)](https://android.com/)
 [![API](https://img.shields.io/badge/API-26%2B-green.svg?&style=for-the-badge&logo=android)](https://android-arsenal.com/api?level=26)
-[![Latest Release](https://img.shields.io/github/v/release/ProjectOrbital/BoomingMusic?style=for-the-badge&label=Release&logo=github)](https://github.com/ProjectOrbital/BoomingMusic/releases/latest)
-[![Pre-Release](https://img.shields.io/github/v/release/ProjectOrbital/BoomingMusic?style=for-the-badge&include_prereleases&logo=github&label=Pre-release)](https://github.com/ProjectOrbital/BoomingMusic/releases)
+[![Latest Release](https://img.shields.io/github/v/release/mardous/BoomingMusic?style=for-the-badge&label=Release&logo=github)](https://github.com/mardous/BoomingMusic/releases/latest)
+[![Pre-Release](https://img.shields.io/github/v/release/mardous/BoomingMusic?style=for-the-badge&include_prereleases&logo=github&label=Pre-release)](https://github.com/mardous/BoomingMusic/releases)
 [![F-Droid version](https://img.shields.io/f-droid/v/com.mardous.booming?style=for-the-badge&label=F-Droid&logo=fdroid)](https://f-droid.org/packages/com.mardous.booming/)
-[![License: GPL v3](https://img.shields.io/github/license/ProjectOrbital/BoomingMusic?style=for-the-badge&color=orange&label=License&logo=gnu)](LICENSE.txt)
+[![License: GPL v3](https://img.shields.io/github/license/mardous/BoomingMusic?style=for-the-badge&color=orange&label=License&logo=gnu)](LICENSE.txt)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?style=for-the-badge&logo=contributorcovenant)](CODE_OF_CONDUCT.md)
-[![Telegram Group](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/mardousdev)
+[![Telegram Channel](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/mardousdev)
 
-<a href="https://github.com/ProjectOrbital/BoomingMusic/releases"><img src="assets/badge-github.png" height="60" alt="GitHub Release"></a>
+<a href="https://github.com/mardous/BoomingMusic/releases"><img src="assets/badge-github.png" height="60" alt="GitHub Release"></a>
 <a href="https://f-droid.org/packages/com.mardous.booming/"><img src="assets/badge-fdroid.png" height="60" alt="F-Droid"></a>
 <a href="https://apt.izzysoft.de/packages/com.mardous.booming/"><img src="assets/badge-izzyondroid.png" height="60" alt="IzzyOnDroid"></a>
 <a href="https://www.openapk.net/boomingmusic/com.mardous.booming/"><img src="assets/badge-openapk.png" height="60" alt="OpenAPK"></a>
-<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/ProjectOrbital/BoomingMusic/"><img src="assets/badge-obtainium.png" height="60" alt="Obtainium"></a>
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/"><img src="assets/badge-obtainium.png" height="60" alt="Obtainium"></a>
 
 </div>
 
@@ -104,22 +104,22 @@
 
 ## 🔗 Useful Links
 
-- 🔐 **[Requested Permissions](https://github.com/ProjectOrbital/BoomingMusic/wiki/Advanced-Info#-permissions)**  
+- 🔐 **[Requested Permissions](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions)**  
   What the app needs and why
 
-- 🚘 **[Android Auto Setup](https://github.com/ProjectOrbital/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)**  
+- 🚘 **[Android Auto Setup](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)**  
   How to enable and troubleshoot
 
-- 🎧 **[Supported Formats](https://github.com/ProjectOrbital/BoomingMusic/wiki/Advanced-Info#-supported-formats)**  
+- 🎧 **[Supported Formats](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats)**  
   Compatible audio formats
 
-- 💬 **[Community](https://github.com/ProjectOrbital/BoomingMusic/wiki/Community)**  
+- 💬 **[Community](https://github.com/mardous/BoomingMusic/wiki/Community)**  
   Users and contributors
 
-- 🌐 **[Translations](https://crowdin.com/project/booming-music)**  
+- 🌐 **[Translations](https://hosted.weblate.org/engage/booming-music)**  
   Help us translate Booming Music into your language
 
-- ❓ **[FAQ](https://github.com/ProjectOrbital/BoomingMusic/wiki/FAQ)**  
+- ❓ **[FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)**  
   Common questions
 
 ## 🤝 Contributing
@@ -133,7 +133,9 @@ You can also:
 - Submit pull requests
 - Suggest new ideas
 
-**Translations:** Managed on [Crowdin](https://crowdin.com/project/booming-music).
+**Translations:** Managed on [Hosted Weblate](https://hosted.weblate.org/engage/booming-music).
+
+[![Translation Status](https://hosted.weblate.org/widget/booming-music/horizontal-auto.svg)](https://hosted.weblate.org/engage/booming-music/)
 
 ## 💖 Support Development
 
