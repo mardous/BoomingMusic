@@ -534,10 +534,7 @@
     <string name="app_shortcut_favorites_short">お気に入り</string>
     <!-- About page -->
     <string name="action_about">アプリについて</string>
-    <string name="application">アプリケーション</string>
-    <string name="version">バージョン</string>
     <string name="changelog">更新履歴</string>
-    <string name="fork_on_github">Githubでフォークする</string>
     <string name="faq">FAQ</string>
     <string name="licenses">ライセンス</string>
     <string name="author">作成者</string>
@@ -548,13 +545,8 @@
     <string name="translators_summary">Booming Musicを多くの言語で利用可能にしてくれた人たちに感謝します。</string>
     <string name="contributors_title">貢献者</string>
     <string name="contributors_summary">プロジェクトに何らかの方法で貢献したユーザーのリスト。</string>
-    <string name="telegram_chat">Telegram</string>
-    <string name="telegram_chat_summary">Telegramに参加して、新しいリリースとニュースについて情報を得る。</string>
     <string name="view_profile_on_github">GitHubでプロフィールを表示</string>
-    <string name="follow_on_telegram">TelegramのDM</string>
     <string name="write_an_email">メールを書く</string>
-    <string name="buy_me_a_coffee">私にコーヒーを1杯おごってください</string>
-    <string name="buy_me_a_coffee_summary">私の作品がそれに値すると思えば、少額の寄付をすることができます。</string>
     <string name="support_development">開発を支援する</string>
     <string name="help_with_translations">翻訳を支援</string>
     <string name="help_with_translations_summary">Booming Musicを他の言語に翻訳することで、プロジェクトに貢献できます。</string>

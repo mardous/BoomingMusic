@@ -541,10 +541,7 @@
     <string name="app_shortcut_favorites_short">Suosikit</string>
     <!-- About page -->
     <string name="action_about">Tietoja</string>
-    <string name="application">Sovellus</string>
-    <string name="version">Versio</string>
     <string name="changelog">Muutosloki</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Lisenssit</string>
     <string name="author">Tekijä</string>
@@ -555,13 +552,8 @@
     <string name="translators_summary">Kiitos niille, jotka tekevät Booming musiikkia saatavilla monilla kielillä.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegram chat</string>
-    <string name="telegram_chat_summary">Liity chattiin Telegramissa ja saa tietoa uusista julkaisuista ja uutisista.</string>
     <string name="view_profile_on_github">Näytä profiili GitHubissa</string>
-    <string name="follow_on_telegram">DM Telegramissa</string>
     <string name="write_an_email">Kirjoita sähköposti</string>
-    <string name="buy_me_a_coffee">Osta minulle kahvi</string>
-    <string name="buy_me_a_coffee_summary">Voit tehdä pienen lahjoituksen, jos mielestäsi työni ansaitsee sen.</string>
     <string name="support_development">Tue kehitystä</string>
     <string name="help_with_translations">Auta käännösten kanssa</string>
     <string name="help_with_translations_summary">Voit osallistua projektiin auttamalla kääntämään Booming Music muille kielille.</string>

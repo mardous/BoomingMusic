@@ -530,10 +530,7 @@
     <string name="app_shortcut_favorites_short">我喜歡的</string>
     <!-- About page -->
     <string name="action_about">關於</string>
-    <string name="application">適用範圍</string>
-    <string name="version">版本</string>
     <string name="changelog">更新日誌</string>
-    <string name="fork_on_github">在 GitHub fork 本項目</string>
     <string name="faq">常見問題</string>
     <string name="licenses">許可協議</string>
     <string name="author">作者</string>
@@ -544,13 +541,8 @@
     <string name="translators_summary">感謝那些為Booming Music提供多種語言的人們。</string>
     <string name="contributors_title">貢獻者</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegram 群組</string>
-    <string name="telegram_chat_summary">加入 Telegram 群組並獲得新版本和新聞的通知。</string>
     <string name="view_profile_on_github">在 GitHub 上查看個人資料</string>
-    <string name="follow_on_telegram">Telegram 私訊</string>
     <string name="write_an_email">電子郵件</string>
-    <string name="buy_me_a_coffee">請我喝杯咖啡吧~</string>
-    <string name="buy_me_a_coffee_summary">如果您喜歡，請給與小額贊助支援。</string>
     <string name="support_development">支援開發</string>
     <string name="help_with_translations">幫助翻譯</string>
     <string name="help_with_translations_summary">您可以通過幫助將Booming Music翻譯成其他語言來為該項目做出貢獻。</string>

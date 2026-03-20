@@ -523,10 +523,7 @@
     <string name="app_shortcut_favorites_short">즐겨찾기</string>
     <!-- About page -->
     <string name="action_about">정보</string>
-    <string name="application">애플리케이션</string>
-    <string name="version">버전</string>
     <string name="changelog">변경 사항</string>
-    <string name="fork_on_github">GitHub에서 포크하기</string>
     <string name="faq">FAQ</string>
     <string name="licenses">라이선스</string>
     <string name="author">작성자</string>
@@ -537,13 +534,8 @@
     <string name="translators_summary">여러 언어로 번역해주신 분들께 감사드립니다.</string>
     <string name="contributors_title">참여자</string>
     <string name="contributors_summary">프로젝트에 기여해주신 사용자 목록입니다.</string>
-    <string name="telegram_chat">Telegram 채팅</string>
-    <string name="telegram_chat_summary">Telegram 채팅에 참여하여 새 소식을 받아보세요.</string>
     <string name="view_profile_on_github">GitHub 프로필 보기</string>
-    <string name="follow_on_telegram">Telegram DM 보내기</string>
     <string name="write_an_email">이메일 쓰기</string>
-    <string name="buy_me_a_coffee">커피 한 잔 후원하기</string>
-    <string name="buy_me_a_coffee_summary">개발자를 위해 소액 후원을 하실 수 있습니다.</string>
     <string name="support_development">개발 지원</string>
     <string name="help_with_translations">번역 돕기</string>
     <string name="help_with_translations_summary">앱 번역에 참여하여 기여하실 수 있습니다.</string>

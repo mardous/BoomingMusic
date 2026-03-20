@@ -549,10 +549,7 @@
     <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">Despre</string>
-    <string name="application">Cerere</string>
-    <string name="version">Versiune</string>
     <string name="changelog">Jurnal modificări</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licențe</string>
     <string name="author">Autor</string>
@@ -563,13 +560,8 @@
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegramă chat</string>
-    <string name="telegram_chat_summary">Alătură-te chat-ului în Telegramă și primești informații despre noile comunicate și știri.</string>
     <string name="view_profile_on_github">Vezi profilul pe GitHub</string>
-    <string name="follow_on_telegram">DM pe Telegram</string>
     <string name="write_an_email">Scrie un e-mail</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Sprijină dezvoltarea</string>
     <string name="help_with_translations">Ajutor cu traducerile</string>
     <string name="help_with_translations_summary">Poti contribui la proiect ajutand la traducerea muzicii Booming in alte limbi.</string>

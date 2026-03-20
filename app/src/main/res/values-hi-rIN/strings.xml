@@ -540,10 +540,7 @@
     <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">के बारे में</string>
-    <string name="application">ऐप्लिकेशन</string>
-    <string name="version">संस्करण</string>
     <string name="changelog">चेंजलाग</string>
-    <string name="fork_on_github">गिटहब पर फोर्क</string>
     <string name="faq">FAQ</string>
     <string name="licenses">लायसेंसेज़</string>
     <string name="author">लेखक</string>
@@ -554,13 +551,8 @@
     <string name="translators_summary">उन लोगों का धन्यवाद जिन्होंने बूमिंग म्यूजिक को कई भाषाओं में उपलब्ध कराया।</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">टेलीग्राम चैट</string>
-    <string name="telegram_chat_summary">टेलीग्राम पर चैट में शामिल हों और नए रिलीज़ और समाचारों के बारे में जानकारियाँ प्राप्त करें।</string>
     <string name="view_profile_on_github">GitHub पर प्रोफ़ाइल देखें</string>
-    <string name="follow_on_telegram">टेलीग्राम पर डायरेक्ट संदेश</string>
     <string name="write_an_email">एक ईमेल लिखें</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">विकास का समर्थन करें</string>
     <string name="help_with_translations">अनुवाद में मदद करें</string>
     <string name="help_with_translations_summary">आप अन्य भाषाओं में बूमिंग म्यूजिक का अनुवाद करने में मदद करके परियोजना में योगदान कर सकते हैं।</string>

@@ -536,10 +536,7 @@
     <string name="app_shortcut_favorites_short">Favoriler</string>
     <!-- About page -->
     <string name="action_about">Hakkında</string>
-    <string name="application">Uygulama</string>
-    <string name="version">Sürüm</string>
     <string name="changelog">Değişiklik günlüğü</string>
-    <string name="fork_on_github">GitHub\'da Fork\'la</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Lisanslar</string>
     <string name="author">Geliştirici</string>
@@ -550,13 +547,8 @@
     <string name="translators_summary">Booming Music\'i birçok dilde kullanılabilir hale getirenlere teşekkürler.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegram sohbeti</string>
-    <string name="telegram_chat_summary">Telegram\'daki sohbete katılın ve yeni sürümler ile haberlerden haberdar olun.</string>
     <string name="view_profile_on_github">GitHub\'da profili görüntüle</string>
-    <string name="follow_on_telegram">Telegram\'dan mesaj gönder</string>
     <string name="write_an_email">E-posta yaz</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Geliştirmeyi destekle</string>
     <string name="help_with_translations">Çevirilere yardım et</string>
     <string name="help_with_translations_summary">Booming Music\'i diğer dillere çevirmeye yardımcı olarak projeye katkıda bulunabilirsiniz.</string>

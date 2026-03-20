@@ -541,10 +541,7 @@
     <string name="app_shortcut_favorites_short">Favoritos</string>
     <!-- About page -->
     <string name="action_about">Acerca de</string>
-    <string name="application">Aplicación</string>
-    <string name="version">Versión</string>
     <string name="changelog">Cambios</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licencias</string>
     <string name="author">Autor</string>
@@ -555,13 +552,8 @@
     <string name="translators_summary">Gracias a quienes hacen que Booming Music esté disponible en muchos idiomas.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Chat de Telegram</string>
-    <string name="telegram_chat_summary">Únete al chat en Telegram y obtén información sobre nuevos lanzamientos y noticias.</string>
     <string name="view_profile_on_github">Ver perfil en GitHub</string>
-    <string name="follow_on_telegram">DM en Telegram</string>
     <string name="write_an_email">Escribe un email</string>
-    <string name="buy_me_a_coffee">Cómprame un café</string>
-    <string name="buy_me_a_coffee_summary">Usted puede hacer una pequeña donación si cree que mi trabajo se lo merece.</string>
     <string name="support_development">Apoyar desarrollo</string>
     <string name="help_with_translations">Ayuda con traducciones</string>
     <string name="help_with_translations_summary">Puedes contribuir al proyecto ayudando a traducir Booming Music a otros idiomas.</string>

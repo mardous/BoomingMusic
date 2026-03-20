@@ -557,10 +557,7 @@
     <string name="app_shortcut_favorites_short">Oblíbené</string>
     <!-- About page -->
     <string name="action_about">O aplikaci</string>
-    <string name="application">Žádost</string>
-    <string name="version">Verze</string>
     <string name="changelog">Seznam změn</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licence</string>
     <string name="author">Autor</string>
@@ -571,13 +568,8 @@
     <string name="translators_summary">Díky těm, kteří zpřístupňují Booming Music v mnoha jazycích.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegram chat</string>
-    <string name="telegram_chat_summary">Připojte se k chatu na Telegramu a získejte informace o nových verzích a novinkách.</string>
     <string name="view_profile_on_github">Zobrazit profil na GitHub</string>
-    <string name="follow_on_telegram">DM na Telegramu</string>
     <string name="write_an_email">Napsat e-mail</string>
-    <string name="buy_me_a_coffee">Koupit mi kávu</string>
-    <string name="buy_me_a_coffee_summary">Můžete poskytnout malý příspěvek, pokud si myslíte, že si to moje práce zaslouží.</string>
     <string name="support_development">Podpořte vývoj</string>
     <string name="help_with_translations">Pomoc s překlady</string>
     <string name="help_with_translations_summary">Můžete přispět k projektu tím, že pomůžete přeložit hudbu Booming do jiných jazyků.</string>

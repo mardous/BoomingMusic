@@ -573,10 +573,7 @@
     <string name="app_shortcut_favorites_short">المفضلة</string>
     <!-- About page -->
     <string name="action_about">حول</string>
-    <string name="application">تطبيق</string>
-    <string name="version">الإصدار</string>
     <string name="changelog">تغيير</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">التراخيص</string>
     <string name="author">المؤلف</string>
@@ -587,13 +584,8 @@
     <string name="translators_summary">شكراً لأولئك الذين يجعلون الموسيقى المزدهرة متاحة بعدة لغات.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">دردشة تيليجرام</string>
-    <string name="telegram_chat_summary">انضم إلى المحادثة في تيليجرام واحصل على معلومات عن الإصدارات والأخبار الجديدة.</string>
     <string name="view_profile_on_github">عرض الملف الشخصي على GitHub</string>
-    <string name="follow_on_telegram">DM على تيليجرام</string>
     <string name="write_an_email">كتابة بريد إلكتروني</string>
-    <string name="buy_me_a_coffee">اشتري لي قهوة</string>
-    <string name="buy_me_a_coffee_summary">يمكنك تقديم تبرع صغير إذا كنت تعتقد أن عملي يستحق ذلك.</string>
     <string name="support_development">دعم التطوير</string>
     <string name="help_with_translations">المساعدة في الترجمات</string>
     <string name="help_with_translations_summary">يمكنك المساهمة في المشروع من خلال المساعدة في ترجمة الموسيقى المزدهرة إلى لغات أخرى.</string>
