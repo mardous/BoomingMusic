@@ -538,10 +538,7 @@
     <string name="app_shortcut_favorites_short">Favoritter</string>
     <!-- About page -->
     <string name="action_about">Om</string>
-    <string name="application">Anvendelse</string>
-    <string name="version">Version</string>
     <string name="changelog">Ændringslog</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licenser</string>
     <string name="author">Forfatter</string>
@@ -552,13 +549,8 @@
     <string name="translators_summary">Tak til dem, der gør Booming Musik tilgængelig på mange sprog.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegram chat</string>
-    <string name="telegram_chat_summary">Deltag i chatten i Telegram og få information om nye udgivelser og nyheder.</string>
     <string name="view_profile_on_github">Se profil på GitHub</string>
-    <string name="follow_on_telegram">DM på Telegram</string>
     <string name="write_an_email">Skriv en e-mail</string>
-    <string name="buy_me_a_coffee">Køb mig en kaffe</string>
-    <string name="buy_me_a_coffee_summary">Du kan lave en lille donation, hvis du synes, at mit arbejde fortjener det.</string>
     <string name="support_development">Støt udvikling</string>
     <string name="help_with_translations">Hjælp med oversættelser</string>
     <string name="help_with_translations_summary">Du kan bidrage til projektet ved at hjælpe med at oversætte Booming Music til andre sprog.</string>
@@ -590,20 +582,17 @@
     <string name="playback_title">Afspilning</string>
     <string name="playback_summary">Skift lydindstillinger, Bluetooth-headsets, osv.</string>
     <string name="metadata_title">Metadata</string>
-    <string name="metadata_summary">Indstillinger relateret til album og kunstnere billeder.</string>
     <string name="library_title">Bibliotek</string>
     <string name="library_summary">Indstillinger for afspilningslister og udelukkelse/inklusion filtre.</string>
     <string name="advanced_title">Avanceret</string>
     <string name="advanced_summary">In-app sprog og andre indstillinger for avancerede brugere.</string>
     <string name="update_title">Opdater</string>
-    <string name="update_summary">Indstillinger for appopdateringer.</string>
     <string name="about_title">Om</string>
     <string name="about_summary">Booming Music %s, touch for more info.</string>
     <!-- Preference headers -->
     <string name="general_header">Generelt</string>
     <string name="library_header">Bibliotek</string>
     <string name="album_cover_header">Omslag</string>
-    <string name="artist_image_header">Kunstner billede</string>
     <string name="exclusion_header">Udelukkelse</string>
     <string name="controls_header">Kontrol</string>
     <string name="gestures_header">Bevægelser</string>
@@ -767,7 +756,6 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Auto download metadata</string>
     <string name="ignore_media_store_album_covers_title">Ignorer Media Store omslag</string>
     <string name="ignore_media_store_album_covers_summary">Dette kan bidrage til at øge billedkvaliteten, men kræver mere hukommelse.</string>
     <string name="use_folder_album_cover_title">Brug mappebilleder</string>
@@ -855,12 +843,6 @@
     <string name="this_month">Denne måned</string>
     <string name="past_three_months">Sidste tre måneder</string>
     <string name="this_year">Dette år</string>
-    <string name="priority_maximum">Maksimum</string>
-    <string name="priority_high">Høj</string>
-    <string name="priority_normal">Normal</string>
-    <string name="priority_low">Lav</string>
-    <string name="always">Altid</string>
-    <string name="only_on_wifi">Kun Wi-Fi</string>
     <string name="image_size_large">Stor (langsommere)</string>
     <string name="image_size_medium">Mellem (standard, anbefalet)</string>
     <string name="image_size_small">Lille (hurtigere, lav kvalitet)</string>

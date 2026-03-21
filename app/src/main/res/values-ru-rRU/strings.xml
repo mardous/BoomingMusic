@@ -558,10 +558,7 @@
     <string name="app_shortcut_favorites_short">Избранное</string>
     <!-- About page -->
     <string name="action_about">О программе</string>
-    <string name="application">Приложение</string>
-    <string name="version">Версия</string>
     <string name="changelog">Журнал изменений</string>
-    <string name="fork_on_github">Форк на GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Лицензии</string>
     <string name="author">Автор</string>
@@ -572,13 +569,8 @@
     <string name="translators_summary">Спасибо всем, кто помогает переводить Booming Music на разные языки.</string>
     <string name="contributors_title">Участники</string>
     <string name="contributors_summary">Список пользователей, которые внесли вклад в проект тем или иным образом.</string>
-    <string name="telegram_chat">Чат в Telegram</string>
-    <string name="telegram_chat_summary">Присоединяйтесь к чату в Telegram и будьте в курсе новых релизов и новостей.</string>
     <string name="view_profile_on_github">Посмотреть профиль на GitHub</string>
-    <string name="follow_on_telegram">DM в Telegram</string>
     <string name="write_an_email">Написать письмо</string>
-    <string name="buy_me_a_coffee">Купить мне кофе</string>
-    <string name="buy_me_a_coffee_summary">Вы можете сделать небольшое пожертвование, если считаете, что моя работа того стоит.</string>
     <string name="support_development">Поддержка разработки</string>
     <string name="help_with_translations">Помощь с переводами</string>
     <string name="help_with_translations_summary">Вы можете внести свой вклад в проект, помогая переводить Booming Music на другие языки.</string>
@@ -610,20 +602,17 @@
     <string name="playback_title">Воспроизведение</string>
     <string name="playback_summary">Измените настройки звука, Bluetooth-гарнитуры и т. д.</string>
     <string name="metadata_title">Метаданные</string>
-    <string name="metadata_summary">Настройки, связанные с изображениями альбомов и исполнителей.</string>
     <string name="library_title">Библиотека</string>
     <string name="library_summary">Настройки плейлистов и фильтров исключения/включения.</string>
     <string name="advanced_title">Дополнительно</string>
     <string name="advanced_summary">Язык приложения и другие настройки для опытных пользователей.</string>
     <string name="update_title">Обновление</string>
-    <string name="update_summary">Настройки обновлений приложения.</string>
     <string name="about_title">О программе</string>
     <string name="about_summary">Booming Music %s, коснитесь для получения дополнительной информации.</string>
     <!-- Preference headers -->
     <string name="general_header">Общие положения</string>
     <string name="library_header">Библиотека</string>
     <string name="album_cover_header">Обложка</string>
-    <string name="artist_image_header">Изображение исполнителя</string>
     <string name="exclusion_header">Исключения</string>
     <string name="controls_header">Управление</string>
     <string name="gestures_header">Жесты</string>
@@ -789,7 +778,6 @@
     <string name="clear_queue_on_completion_title">Очистка очереди после завершения</string>
     <string name="clear_queue_on_completion_summary">Автоматически очищать очередь после окончания последнего трека.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Автоматически загружать метаданные</string>
     <string name="ignore_media_store_album_covers_title">Игнорировать обложки из MediaStore</string>
     <string name="ignore_media_store_album_covers_summary">Это может помочь улучшить качество изображений, но требует больше памяти.</string>
     <string name="use_folder_album_cover_title">Использовать изображения папок</string>
@@ -877,12 +865,6 @@
     <string name="this_month">Этот месяц</string>
     <string name="past_three_months">Последние три месяца</string>
     <string name="this_year">Этот год</string>
-    <string name="priority_maximum">Максимальный</string>
-    <string name="priority_high">Высокий</string>
-    <string name="priority_normal">Нормальный</string>
-    <string name="priority_low">Низкий</string>
-    <string name="always">Всегда</string>
-    <string name="only_on_wifi">Только Wi-Fi</string>
     <string name="image_size_large">Большой (медленнее)</string>
     <string name="image_size_medium">Средний (по умолчанию, рекомендуется)</string>
     <string name="image_size_small">Маленький (быстрее, низкое качество)</string>

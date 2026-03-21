@@ -40,6 +40,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -65,6 +66,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.toClipEntry
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -80,6 +82,7 @@ import com.mardous.booming.extensions.toChooser
 import com.mardous.booming.extensions.tryStartActivity
 import com.mardous.booming.ui.component.compose.ActionButton
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
+import com.mardous.booming.ui.component.compose.ShapedText
 import dev.jeziellago.compose.markdowntext.MarkdownText
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -88,7 +91,6 @@ private const val AUTHOR_GITHUB_URL = "https://www.github.com/mardous"
 private const val GITHUB_URL = "$AUTHOR_GITHUB_URL/BoomingMusic"
 private const val RELEASES_LINK = "$GITHUB_URL/releases"
 const val ISSUE_TRACKER_LINK = "$GITHUB_URL/issues"
-private const val AUTHOR_TELEGRAM_LINK = "https://t.me/mardeez"
 private const val COMMUNITY_LINK = "$GITHUB_URL/wiki/Community"
 private const val FAQ_LINK = "$GITHUB_URL/wiki/FAQ"
 private const val APP_TELEGRAM_LINK = "https://t.me/mardousdev"
@@ -167,9 +169,6 @@ fun AboutScreen(
             )
 
             AboutAuthorSection(
-                onTelegramClick = {
-                    context.openUrl(AUTHOR_TELEGRAM_LINK)
-                },
                 onGitHubClick = {
                     context.openUrl(AUTHOR_GITHUB_URL)
                 },
@@ -256,14 +255,16 @@ private fun AboutHeader(
             Text(
                 text = stringResource(R.string.app_name_long),
                 style = MaterialTheme.typography.titleLarge,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(
-                text = version,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontWeight = FontWeight.Bold,
                 maxLines = 1
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            ShapedText(
+                text = version,
+                style = MaterialTheme.typography.bodySmall.copy(
+                    fontWeight = FontWeight.SemiBold
+                ),
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 
@@ -284,7 +285,7 @@ private fun AboutHeader(
 
             ActionButton(
                 icon = R.drawable.ic_github_circle_24dp,
-                label = stringResource(R.string.fork_on_github),
+                label = stringResource(R.string.github),
                 modifier = Modifier.weight(1f),
                 onClick = onForkClick
             )
@@ -302,39 +303,59 @@ private fun AboutHeader(
 @Preview
 @Composable
 private fun AboutAuthorSection(
-    onTelegramClick: () -> Unit = {},
     onGitHubClick: () -> Unit = {},
     onEmailClick: () -> Unit = {},
     onDonateClick: () -> Unit = {}
 ) {
     AboutSection(title = stringResource(R.string.author)) {
         AboutCard {
-            AboutListItem(
-                iconRes = R.drawable.ic_person_24dp,
-                title = stringResource(R.string.mardous),
-                summary = stringResource(R.string.mardous_summary)
-            )
-            AboutListItem(
-                iconRes = R.drawable.ic_coffee_24dp,
-                title = stringResource(R.string.buy_me_a_coffee),
-                summary = stringResource(R.string.buy_me_a_coffee_summary),
-                onClick = onDonateClick
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 16.dp, bottom = 8.dp)
+            ) {
+                AsyncImage(
+                    model = "file:///android_asset/images/mardous.png".toUri(),
+                    contentDescription = "Lead Dev's image",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(88.dp)
+                        .clip(CircleShape)
+                )
+
+                Spacer(Modifier.height(16.dp))
+
+                Text(
+                    text = stringResource(R.string.mardous),
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold
+                )
+
+                Text(
+                    text = stringResource(R.string.mardous_summary),
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .wrapContentSize()
-                    .padding(vertical = 8.dp)
+                    .padding(8.dp)
             ) {
-                IconButton(
-                    onClick = onTelegramClick,
+                Button(
+                    onClick = onDonateClick,
                     modifier = Modifier.wrapContentSize()
                 ) {
                     Icon(
-                        painter = painterResource(R.drawable.ic_telegram_24dp),
-                        contentDescription = stringResource(R.string.follow_on_telegram)
+                        painter = painterResource(R.drawable.ic_volunteer_activism_24dp),
+                        contentDescription = null
                     )
+                    Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+                    Text(stringResource(R.string.support_my_work))
                 }
 
                 IconButton(
@@ -343,7 +364,7 @@ private fun AboutAuthorSection(
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_github_circle_24dp),
-                        contentDescription = stringResource(R.string.fork_on_github)
+                        contentDescription = "GitHub profile"
                     )
                 }
 
@@ -353,7 +374,7 @@ private fun AboutAuthorSection(
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_email_24dp),
-                        contentDescription = stringResource(R.string.write_an_email)
+                        contentDescription = "Write an email"
                     )
                 }
             }
@@ -400,8 +421,8 @@ private fun AboutSupportSection(
             )
             AboutListItem(
                 iconRes = R.drawable.ic_telegram_24dp,
-                title = stringResource(R.string.telegram_chat),
-                summary = stringResource(R.string.telegram_chat_summary),
+                title = stringResource(R.string.telegram_community),
+                summary = stringResource(R.string.telegram_community_summary),
                 onClick = onJoinChatClick
             )
             AboutListItem(

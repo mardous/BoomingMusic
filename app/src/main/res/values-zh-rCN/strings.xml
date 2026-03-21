@@ -530,10 +530,7 @@
     <string name="app_shortcut_favorites_short">我喜欢的</string>
     <!-- About page -->
     <string name="action_about">关于</string>
-    <string name="application">适用范围</string>
-    <string name="version">版本</string>
     <string name="changelog">更新日志</string>
-    <string name="fork_on_github">在 GitHub fork 本项目</string>
     <string name="faq">常见问题</string>
     <string name="licenses">许可协议</string>
     <string name="author">作者</string>
@@ -544,13 +541,8 @@
     <string name="translators_summary">感谢那些为Booming Music提供多种语言的人们。</string>
     <string name="contributors_title">贡献者</string>
     <string name="contributors_summary">以各种方式参与贡献该项目的用户清单。</string>
-    <string name="telegram_chat">Telegram 群组</string>
-    <string name="telegram_chat_summary">加入 Telegram 群组并获得新版本和新闻的通知。</string>
     <string name="view_profile_on_github">在 GitHub 上查看个人资料</string>
-    <string name="follow_on_telegram">Telegram 私信</string>
     <string name="write_an_email">电子邮件</string>
-    <string name="buy_me_a_coffee">请我喝杯咖啡吧~</string>
-    <string name="buy_me_a_coffee_summary">如果您认为我的作品有价值，可以赞助一笔小钱。</string>
     <string name="support_development">支持开发</string>
     <string name="help_with_translations">帮助翻译</string>
     <string name="help_with_translations_summary">您可以通过帮助将Booming Music翻译成其他语言来为该项目做出贡献。</string>
@@ -582,20 +574,17 @@
     <string name="playback_title">播放</string>
     <string name="playback_summary">更改声音设置，蓝牙耳机等。</string>
     <string name="metadata_title">元数据</string>
-    <string name="metadata_summary">与专辑和艺术家图像相关的设置。</string>
     <string name="library_title">曲库</string>
     <string name="library_summary">播放列表和排除/包含过滤器的设置。</string>
     <string name="advanced_title">高级设置</string>
     <string name="advanced_summary">高级用户的应用内语言和其他设置。</string>
     <string name="update_title">更新</string>
-    <string name="update_summary">应用更新的设置。</string>
     <string name="about_title">关于</string>
     <string name="about_summary">Booming Music %s，触摸以获取更多信息。</string>
     <!-- Preference headers -->
     <string name="general_header">常规</string>
     <string name="library_header">曲库</string>
     <string name="album_cover_header">封面</string>
-    <string name="artist_image_header">艺术家图像</string>
     <string name="exclusion_header">排除媒体</string>
     <string name="controls_header">控件</string>
     <string name="gestures_header">手势</string>
@@ -761,7 +750,6 @@
     <string name="clear_queue_on_completion_title">播放完毕时清空队列</string>
     <string name="clear_queue_on_completion_summary">在最后一曲播完后，自动从播放队列中移除所有曲目。</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">自动下载元数据</string>
     <string name="ignore_media_store_album_covers_title">忽略MediaStore提供的封面</string>
     <string name="ignore_media_store_album_covers_summary">这可能有助于提高图像质量，但需要更多内存。</string>
     <string name="use_folder_album_cover_title">使用文件夹图像</string>
@@ -848,12 +836,6 @@
     <string name="this_month">本月</string>
     <string name="past_three_months">过去三个月</string>
     <string name="this_year">今年</string>
-    <string name="priority_maximum">最高</string>
-    <string name="priority_high">高</string>
-    <string name="priority_normal">一般</string>
-    <string name="priority_low">低</string>
-    <string name="always">总是显示</string>
-    <string name="only_on_wifi">仅Wi-Fi</string>
     <string name="image_size_large">大 (较慢)</string>
     <string name="image_size_medium">中等(默认, 推荐)</string>
     <string name="image_size_small">小(快速，低质量)</string>

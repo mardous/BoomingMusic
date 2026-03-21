@@ -39,7 +39,6 @@ import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import com.mardous.booming.R
 import com.mardous.booming.coil.artistImage
-import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.core.sort.AlbumSortMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.core.sort.SortMode
@@ -53,7 +52,6 @@ import com.mardous.booming.extensions.applyHorizontalWindowInsets
 import com.mardous.booming.extensions.defaultGridColumns
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.dp
-import com.mardous.booming.extensions.isAllowedToDownloadMetadata
 import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.media.artistInfo
@@ -260,9 +258,8 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
         }
 
         loadImage(artist)
-        if (requireContext().isAllowedToDownloadMetadata()) {
-            loadBiography(artist.name)
-        }
+        loadBiography(artist.name)
+
         binding.artistTitle.text = artist.displayName()
         binding.artistText.text = artist.artistInfo(requireContext())
 
@@ -290,9 +287,9 @@ class ArtistDetailFragment : AbsMainActivityFragment(R.layout.fragment_artist_de
     private fun loadBiography(name: String, lang: String? = Locale.getDefault().language) {
         this.biography = null
         this.lang = lang
-        detailViewModel.getArtistBio(name, lang, null).observe(viewLifecycleOwner) { result ->
-            if (result is Result.Success) {
-                artistInfo(result.data)
+        detailViewModel.getArtistBio(name, lang, null).observe(viewLifecycleOwner) { lastFmArtist ->
+            if (lastFmArtist != null) {
+                artistInfo(lastFmArtist)
             }
         }
     }

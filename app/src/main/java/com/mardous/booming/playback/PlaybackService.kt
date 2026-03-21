@@ -76,6 +76,7 @@ import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
@@ -703,17 +704,26 @@ class PlaybackService :
 
         serviceScope.launch(IO) {
             val currentSong = repository.songByMediaItem(mediaItem)
-            if (currentSong != Song.emptySong && preferences.getBoolean(ENABLE_HISTORY, true)) {
-                repository.upsertSongInHistory(currentSong)
+            if (currentSong != Song.emptySong) {
+                if (preferences.getBoolean(ENABLE_HISTORY, true)) {
+                    repository.upsertSongInHistory(currentSong)
+                }
+                if (NetworkFeature.Lastfm.NowPlaying.isAvailable(this@PlaybackService)) {
+                    repository.updateNowPlayingOnLastFm(currentSong)
+                }
                 replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(currentSong)
             }
             val previousSong = songPlayCountHelper.song
             if (previousSong != Song.emptySong) {
+                val timestamp = System.currentTimeMillis()
                 if (songPlayCountHelper.shouldBumpPlayCount()) {
                     repository.insertOrIncrementPlayCount(
                         song = previousSong,
-                        timePlayed = System.currentTimeMillis()
+                        timePlayed = timestamp
                     )
+                    if (NetworkFeature.Lastfm.Scrobbling.isAvailable(this@PlaybackService)) {
+                        repository.scrobble(previousSong, (timestamp / 1000))
+                    }
                 } else if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK) {
                     repository.insertOrIncrementSkipCount(previousSong)
                 }

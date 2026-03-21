@@ -71,18 +71,6 @@
         <item>small</item>
     </string-array>
 
-    <string-array name="pref_auto_download_metadata_entries">
-        <item>@string/always</item>
-        <item>@string/only_on_wifi</item>
-        <item>@string/label_never</item>
-    </string-array>
-
-    <string-array name="pref_auto_download_metadata_values">
-        <item>always</item>
-        <item>only_wifi</item>
-        <item>never</item>
-    </string-array>
-
     <string-array name="pref_recursive_folder_action_entries">
         <item>@string/action_play</item>
         <item>@string/action_shuffle_play</item>
@@ -141,20 +129,6 @@
         <item>this_month</item>
         <item>past_three_months</item>
         <item>this_year</item>
-    </string-array>
-
-    <string-array name="pref_notification_priority_entries">
-        <item>@string/priority_maximum</item>
-        <item>@string/priority_high</item>
-        <item>@string/priority_normal</item>
-        <item>@string/priority_low</item>
-    </string-array>
-
-    <string-array name="pref_notification_priority_values">
-        <item>maximum</item>
-        <item>high</item>
-        <item>normal</item>
-        <item>low</item>
     </string-array>
 
     <string-array name="pref_update_mode_titles">

@@ -42,7 +42,7 @@ import java.util.Locale
 
 fun Album.isArtistNameUnknown() = albumArtistName().isArtistNameUnknown()
 
-fun Album.albumArtistName() = if (albumArtistName.isNullOrBlank()) artistName else albumArtistName!!
+fun Album.albumArtistName() = if (albumArtistName.isNullOrBlank()) artistName else albumArtistName
 
 fun Album.displayArtistName() = albumArtistName().displayArtistName()
 

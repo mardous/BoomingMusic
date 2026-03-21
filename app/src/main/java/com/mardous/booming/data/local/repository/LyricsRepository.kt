@@ -21,7 +21,6 @@ import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
 import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
 import com.mardous.booming.extensions.files.getContentUri
 import com.mardous.booming.extensions.hasR
-import com.mardous.booming.extensions.isAllowedToDownloadMetadata
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.ui.screen.lyrics.DisplayableLyrics
 import com.mardous.booming.ui.screen.lyrics.EditableLyrics
@@ -223,35 +222,33 @@ class RealLyricsRepository(
             return cacheLyrics(song.id, result)
         }
 
-        if (storedLyrics == null || !storedLyrics.userCleared) {
-            if (allowDownload && context.isAllowedToDownloadMetadata()) {
-                val downloaded = runCatching { lyricsDownloadService.getLyrics(song) }.getOrNull()
-                if (downloaded?.instrumental == true) {
-                    lyricsDao.insertLyrics(
-                        song.toLyricsEntity(DEFAULT_INSTRUMENTAL_IDENTIFIER, autoDownload = true)
-                    )
-                    val result = LyricsResult(id = song.id, instrumental = true)
-                    return cacheLyrics(song.id, result)
+        if ((storedLyrics == null || !storedLyrics.userCleared) && allowDownload) {
+            val downloaded = runCatching { lyricsDownloadService.getLyrics(song) }.getOrNull()
+            if (downloaded?.instrumental == true) {
+                lyricsDao.insertLyrics(
+                    song.toLyricsEntity(DEFAULT_INSTRUMENTAL_IDENTIFIER, autoDownload = true)
+                )
+                val result = LyricsResult(id = song.id, instrumental = true)
+                return cacheLyrics(song.id, result)
+            }
+            if (downloaded?.isSynced == true) {
+                val syncedData = downloaded.syncedLyrics?.let { syncedContent ->
+                    lyricsParsers.firstOrNull { parser -> parser.handles(syncedContent) }
+                        ?.parse(syncedContent, song.duration, ignoreBlankLines)
                 }
-                if (downloaded?.isSynced == true) {
-                    val syncedData = downloaded.syncedLyrics?.let { syncedContent ->
-                        lyricsParsers.firstOrNull { parser -> parser.handles(syncedContent) }
-                            ?.parse(syncedContent, song.duration, ignoreBlankLines)
-                    }
-                    if (syncedData?.hasContent == true) {
-                        lyricsDao.insertLyrics(
-                            song.toLyricsEntity(
-                                syncedData.rawText,
-                                autoDownload = true
-                            )
+                if (syncedData?.hasContent == true) {
+                    lyricsDao.insertLyrics(
+                        song.toLyricsEntity(
+                            syncedData.rawText,
+                            autoDownload = true
                         )
-                        val result = LyricsResult(
-                            id = song.id,
-                            plainLyrics = DisplayableLyrics(embeddedLyrics, LyricsSource.Embedded),
-                            syncedLyrics = DisplayableLyrics(syncedData, LyricsSource.Downloaded)
-                        )
-                        return cacheLyrics(song.id, result)
-                    }
+                    )
+                    val result = LyricsResult(
+                        id = song.id,
+                        plainLyrics = DisplayableLyrics(embeddedLyrics, LyricsSource.Embedded),
+                        syncedLyrics = DisplayableLyrics(syncedData, LyricsSource.Downloaded)
+                    )
+                    return cacheLyrics(song.id, result)
                 }
             }
         }

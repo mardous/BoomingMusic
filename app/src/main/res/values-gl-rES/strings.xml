@@ -531,10 +531,7 @@
     <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">About</string>
-    <string name="application">Application</string>
-    <string name="version">Version</string>
     <string name="changelog">Changelog</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licenses</string>
     <string name="author">Author</string>
@@ -545,13 +542,8 @@
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegram chat</string>
-    <string name="telegram_chat_summary">Join the chat in Telegram and get informed about new releases and news.</string>
     <string name="view_profile_on_github">View profile on GitHub</string>
-    <string name="follow_on_telegram">DM on Telegram</string>
     <string name="write_an_email">Write an email</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Support development</string>
     <string name="help_with_translations">Help with translations</string>
     <string name="help_with_translations_summary">You can contribute to the project by helping translate Booming Music into other languages.</string>
@@ -583,20 +575,17 @@
     <string name="playback_title">Playback</string>
     <string name="playback_summary">Change the sound settings, Bluetooth headsets, etc.</string>
     <string name="metadata_title">Metadata</string>
-    <string name="metadata_summary">Settings related to album and artists images.</string>
     <string name="library_title">Library</string>
     <string name="library_summary">Settings for playlists and exclusion/inclusion filters.</string>
     <string name="advanced_title">Advanced</string>
     <string name="advanced_summary">In-app language and other settings for advanced users.</string>
     <string name="update_title">Update</string>
-    <string name="update_summary">Settings for app updates.</string>
     <string name="about_title">About</string>
     <string name="about_summary">Booming Music %s, touch for more info.</string>
     <!-- Preference headers -->
     <string name="general_header">General</string>
     <string name="library_header">Library</string>
     <string name="album_cover_header">Cover</string>
-    <string name="artist_image_header">Artist image</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Controls</string>
     <string name="gestures_header">Gestures</string>
@@ -757,7 +746,6 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Auto download metadata</string>
     <string name="ignore_media_store_album_covers_title">Ignore Media Store covers</string>
     <string name="ignore_media_store_album_covers_summary">This may help to increase images quality but require more memory.</string>
     <string name="use_folder_album_cover_title">Use folder images</string>
@@ -844,12 +832,6 @@
     <string name="this_month">This month</string>
     <string name="past_three_months">Past three months</string>
     <string name="this_year">This year</string>
-    <string name="priority_maximum">Maximum</string>
-    <string name="priority_high">High</string>
-    <string name="priority_normal">Normal</string>
-    <string name="priority_low">Low</string>
-    <string name="always">Always</string>
-    <string name="only_on_wifi">Only Wi-Fi</string>
     <string name="image_size_large">Large (slower)</string>
     <string name="image_size_medium">Medium (default, recommended)</string>
     <string name="image_size_small">Small (faster, low quality)</string>

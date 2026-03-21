@@ -2,6 +2,7 @@ package com.mardous.booming.data.remote.lyrics.api.lrclib
 
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
 import io.ktor.client.HttpClient
@@ -11,6 +12,8 @@ import io.ktor.http.encodeURLParameter
 import io.ktor.http.userAgent
 
 class LrcLibApi(private val client: HttpClient) : LyricsApi {
+
+    override val networkFeature = NetworkFeature.Lyrics.LRCLib
 
     override suspend fun songLyrics(song: Song, title: String, artist: String): DownloadedLyrics? {
         val lyrics = client.get("https://lrclib.net/api/search") {

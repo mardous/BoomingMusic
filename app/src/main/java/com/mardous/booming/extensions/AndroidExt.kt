@@ -20,9 +20,7 @@ package com.mardous.booming.extensions
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.ResolveInfoFlags
-import android.media.MediaPlayer
 import android.os.Build
-import android.util.Log
 import androidx.core.text.HtmlCompat
 import com.mardous.booming.appContext
 
@@ -48,12 +46,3 @@ fun PackageManager.resolveActivity(intent: Intent) =
     else resolveActivity(intent, 0)
 
 fun CharSequence.toHtml() = HtmlCompat.fromHtml(this.toString(), HtmlCompat.FROM_HTML_MODE_COMPACT)
-
-fun <R> MediaPlayer.execSafe(command: MediaPlayer.() -> R): R? {
-    try {
-        return command()
-    } catch (t: Throwable) {
-        Log.e("MediaPlayer", "Failed to execute a command", t)
-    }
-    return null
-}

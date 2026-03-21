@@ -554,10 +554,7 @@
     <string name="app_shortcut_favorites_short">מועדפים</string>
     <!-- About page -->
     <string name="action_about">אודות</string>
-    <string name="application">יישום</string>
-    <string name="version">גרסה</string>
     <string name="changelog">יומן שינויים</string>
-    <string name="fork_on_github">קוד מקור</string>
     <string name="faq">FAQ</string>
     <string name="licenses">רשיונות</string>
     <string name="author">יוצר</string>
@@ -568,13 +565,8 @@
     <string name="translators_summary">תודה לאלו שעוזרים להפוך את Booming Music לזמין בשפות רבות.</string>
     <string name="contributors_title">תורמים</string>
     <string name="contributors_summary">רשימה של משתמשים שתרמו לפרויקט בדרך כלשהי.</string>
-    <string name="telegram_chat">ערוץ טלגרם</string>
-    <string name="telegram_chat_summary">הצטרפו לצ\'אט בטלגרם וקבלו עדכונים על מהדורות וחידושים.</string>
     <string name="view_profile_on_github">צפה בפרופיל ב-GitHub</string>
-    <string name="follow_on_telegram">הודעה פרטית בטלגרם</string>
     <string name="write_an_email">כתוב אימייל</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">אפשר לתרום סכום קטן אם לדעתך העבודה שלי ראויה לכך.</string>
     <string name="support_development">תמיכה בפיתוח</string>
     <string name="help_with_translations">עזרה בתרגומים</string>
     <string name="help_with_translations_summary">באפשרותך לתרום לפרויקט על ידי סיוע בתרגום Booming Music לשפות אחרות.</string>
@@ -606,20 +598,17 @@
     <string name="playback_title">השמעה</string>
     <string name="playback_summary">שנה את הגדרות הקול, אוזניות בלוטות\', וכו׳.</string>
     <string name="metadata_title">מטאדטה</string>
-    <string name="metadata_summary">הגדרות הקשורות לתמונות אלבום ואמנים.</string>
     <string name="library_title">ספרייה</string>
     <string name="library_summary">הגדרות לרשימות השמעה ולמסנני הכללה/הוצאה.</string>
     <string name="advanced_title">מתקדם</string>
     <string name="advanced_summary">הגדרות שפה ואחרות באפליקציה למשתמשים מתקדמים.</string>
     <string name="update_title">עדכן</string>
-    <string name="update_summary">הגדרות לעדכוני האפליקציה.</string>
     <string name="about_title">אודות</string>
     <string name="about_summary">Booming Music %s, גע לקבלת מידע נוסף.</string>
     <!-- Preference headers -->
     <string name="general_header">כללי</string>
     <string name="library_header">ספרייה</string>
     <string name="album_cover_header">עטיפה</string>
-    <string name="artist_image_header">תמונת האמן</string>
     <string name="exclusion_header">החרגות</string>
     <string name="controls_header">פקדים</string>
     <string name="gestures_header">מחוות</string>
@@ -785,7 +774,6 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
     <string name="ignore_media_store_album_covers_title">התעלם מעטיפות ממדיה סטור</string>
     <string name="ignore_media_store_album_covers_summary">זה עשוי לשפר את איכות התמונות אך דורש יותר זיכרון.</string>
     <string name="use_folder_album_cover_title">השתמש בתמונות מהתיקייה</string>
@@ -873,12 +861,6 @@
     <string name="this_month">החודש</string>
     <string name="past_three_months">שלושת החודשים האחרונים</string>
     <string name="this_year">השנה</string>
-    <string name="priority_maximum">מקסימום</string>
-    <string name="priority_high">גבוה</string>
-    <string name="priority_normal">רגיל</string>
-    <string name="priority_low">נמוך</string>
-    <string name="always">תמיד</string>
-    <string name="only_on_wifi">רק וויי-פיי</string>
     <string name="image_size_large">גדול (איטי יותר)</string>
     <string name="image_size_medium">בינוני (ברירת מחדל, מומלץ)</string>
     <string name="image_size_small">קטן (מהיר יותר, איכות נמוכה)</string>

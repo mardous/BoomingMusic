@@ -532,10 +532,7 @@
     <string name="app_shortcut_favorites_short">Favorites</string>
     <!-- About page -->
     <string name="action_about">SOBRE</string>
-    <string name="application">Solicitação</string>
-    <string name="version">Versão</string>
     <string name="changelog">Mudanças</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licenças</string>
     <string name="author">Autor</string>
@@ -546,13 +543,8 @@
     <string name="translators_summary">Obrigado a todos que fazem Booming Music disponível em vários idiomas.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Bate-papo do Telegram</string>
-    <string name="telegram_chat_summary">Junte-se ao chat no Telegram e receba informações sobre novos lançamentos e notícias.</string>
     <string name="view_profile_on_github">Ver perfil no GitHub</string>
-    <string name="follow_on_telegram">DM no Telegram</string>
     <string name="write_an_email">Escreva um e-mail</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Apoie o desenvolvimento</string>
     <string name="help_with_translations">Ajuda com traduções</string>
     <string name="help_with_translations_summary">Você pode contribuir para o projeto, ajudando a traduzir Booming Music para outras línguas.</string>
@@ -584,20 +576,17 @@
     <string name="playback_title">Reprodução</string>
     <string name="playback_summary">Altera as configurações de som, headsets Bluetooth, etc.</string>
     <string name="metadata_title">Metadados</string>
-    <string name="metadata_summary">Configurações relacionadas a imagens de álbuns e artistas.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_summary">Configurações para listas de reprodução e filtros de exclusão/inclusão.</string>
     <string name="advanced_title">Avançado</string>
     <string name="advanced_summary">Idioma no aplicativo e outras configurações para usuários avançados.</string>
     <string name="update_title">Atualização</string>
-    <string name="update_summary">Configurações para atualizações do app.</string>
     <string name="about_title">SOBRE</string>
     <string name="about_summary">Booming Music %s, toque para obter mais informações.</string>
     <!-- Preference headers -->
     <string name="general_header">Gerais</string>
     <string name="library_header">Biblioteca</string>
     <string name="album_cover_header">Capa</string>
-    <string name="artist_image_header">Imagem do artista</string>
     <string name="exclusion_header">Exclusões</string>
     <string name="controls_header">Controles</string>
     <string name="gestures_header">Gestures</string>
@@ -757,7 +746,6 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Baixar automaticamente os metadados</string>
     <string name="ignore_media_store_album_covers_title">Ignorar capas Media Store</string>
     <string name="ignore_media_store_album_covers_summary">Isso pode ajudar a aumentar a qualidade das imagens, mas requer mais memória.</string>
     <string name="use_folder_album_cover_title">Usar imagens da pasta</string>
@@ -844,12 +832,6 @@
     <string name="this_month">Este Mês</string>
     <string name="past_three_months">Últimos três meses</string>
     <string name="this_year">Esse ano</string>
-    <string name="priority_maximum">Máxima</string>
-    <string name="priority_high">alta</string>
-    <string name="priority_normal">normal</string>
-    <string name="priority_low">baixa</string>
-    <string name="always">sempre</string>
-    <string name="only_on_wifi">Somente Wi-Fi</string>
     <string name="image_size_large">Grande (mais lento)</string>
     <string name="image_size_medium">Médio (padrão, recomendado)</string>
     <string name="image_size_small">Pequeno (mais rápido e de baixa qualidade)</string>

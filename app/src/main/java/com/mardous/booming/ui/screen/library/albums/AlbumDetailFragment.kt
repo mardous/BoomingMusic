@@ -36,7 +36,6 @@ import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import com.mardous.booming.R
 import com.mardous.booming.coil.albumImage
-import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.core.sort.AlbumSortMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.core.sort.SortMode
@@ -47,7 +46,6 @@ import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
 import com.mardous.booming.databinding.FragmentAlbumDetailBinding
 import com.mardous.booming.extensions.applyHorizontalWindowInsets
 import com.mardous.booming.extensions.dp
-import com.mardous.booming.extensions.isAllowedToDownloadMetadata
 import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.media.asReadableDuration
@@ -237,9 +235,7 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
 
         simpleSongAdapter.dataSet = album.songs
         loadSimilarContent(album)
-        if (requireContext().isAllowedToDownloadMetadata()) {
-            loadWiki(album)
-        }
+        loadWiki(album)
     }
 
     private fun loadSimilarContent(album: Album) {
@@ -251,9 +247,9 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
     private fun loadWiki(album: Album, lang: String? = Locale.getDefault().language) {
         this.biography = null
         this.lang = lang
-        detailViewModel.getAlbumWiki(album, lang).observe(viewLifecycleOwner) { result ->
-            if (result is Result.Success) {
-                aboutAlbum(result.data)
+        detailViewModel.getAlbumWiki(album, lang).observe(viewLifecycleOwner) { lastFmAlbum ->
+            if (lastFmAlbum != null) {
+                aboutAlbum(lastFmAlbum)
             }
         }
     }

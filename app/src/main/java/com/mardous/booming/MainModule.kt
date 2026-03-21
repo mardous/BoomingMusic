@@ -30,6 +30,8 @@ import com.mardous.booming.data.local.repository.AlbumRepository
 import com.mardous.booming.data.local.repository.ArtistRepository
 import com.mardous.booming.data.local.repository.GenreRepository
 import com.mardous.booming.data.local.repository.LyricsRepository
+import com.mardous.booming.data.local.repository.NetworkRepository
+import com.mardous.booming.data.local.repository.NetworkRepositoryImpl
 import com.mardous.booming.data.local.repository.PlaylistRepository
 import com.mardous.booming.data.local.repository.RealAlbumRepository
 import com.mardous.booming.data.local.repository.RealArtistRepository
@@ -96,7 +98,7 @@ val networkModule = module {
         LastFmService(client = get())
     }
     single {
-        LyricsDownloadService(client = get())
+        LyricsDownloadService(context = get(), client = get())
     }
 }
 
@@ -184,8 +186,6 @@ private val dataModule = module {
     single {
         RealRepository(
             context = androidContext(),
-            deezerService = get(),
-            lastFmService = get(),
             songRepository = get(),
             albumRepository = get(),
             artistRepository = get(),
@@ -193,7 +193,8 @@ private val dataModule = module {
             smartRepository = get(),
             specialRepository = get(),
             playlistRepository = get(),
-            searchRepository = get()
+            searchRepository = get(),
+            networkRepository = get()
         )
     } bind Repository::class
 
@@ -256,6 +257,15 @@ private val dataModule = module {
             lyricsDao = get()
         )
     } bind LyricsRepository::class
+
+    single {
+        NetworkRepositoryImpl(
+            context = androidContext(),
+            preferences = get(),
+            lastFmService = get(),
+            deezerService = get()
+        )
+    } bind NetworkRepository::class
 }
 
 private val viewModule = module {
@@ -284,11 +294,20 @@ private val viewModule = module {
     }
 
     viewModel { (albumId: Long) ->
-        AlbumDetailViewModel(repository = get(), albumId = albumId)
+        AlbumDetailViewModel(
+            application = androidApplication(),
+            repository = get(),
+            albumId = albumId
+        )
     }
 
     viewModel { (artistId: Long, artistName: String?) ->
-        ArtistDetailViewModel(repository = get(), artistId = artistId, artistName = artistName)
+        ArtistDetailViewModel(
+            application = androidApplication(),
+            repository = get(),
+            artistId = artistId,
+            artistName = artistName
+        )
     }
 
     viewModel { (playlistId: Long) ->

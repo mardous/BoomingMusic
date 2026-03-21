@@ -12,6 +12,7 @@ import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
@@ -19,6 +20,7 @@ import com.mardous.booming.R
 @Composable
 fun TipView(
     text: String,
+    icon: Painter = painterResource(R.drawable.ic_info_24dp),
     containerColor: Color = MaterialTheme.colorScheme.surfaceContainerHigh,
     contentColor: Color = contentColorFor(containerColor),
     modifier: Modifier = Modifier
@@ -36,7 +38,7 @@ fun TipView(
             modifier = Modifier.padding(16.dp)
         ) {
             Icon(
-                painter = painterResource(R.drawable.ic_info_24dp),
+                painter = icon,
                 contentDescription = "Tip Icon"
             )
 

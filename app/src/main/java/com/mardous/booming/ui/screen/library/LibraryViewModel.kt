@@ -27,23 +27,39 @@ import android.os.Environment
 import android.provider.MediaStore
 import androidx.core.animation.doOnEnd
 import androidx.core.net.toUri
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.model.LibraryMargin
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
 import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.repository.Repository
-import com.mardous.booming.data.local.room.*
+import com.mardous.booming.data.local.room.InclExclDao
+import com.mardous.booming.data.local.room.InclExclEntity
+import com.mardous.booming.data.local.room.PlaylistEntity
+import com.mardous.booming.data.local.room.PlaylistWithSongs
+import com.mardous.booming.data.local.room.SongEntity
 import com.mardous.booming.data.mapper.toSongEntity
 import com.mardous.booming.data.mapper.toSongsEntity
-import com.mardous.booming.data.model.*
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.ContentType
+import com.mardous.booming.data.model.Folder
+import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.model.Playlist
+import com.mardous.booming.data.model.ReleaseYear
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.media.indexOfSong
 import com.mardous.booming.ui.screen.library.home.SuggestedResult
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.StorageUtil
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.io.File
@@ -504,6 +520,16 @@ class LibraryViewModel(
             repository.initializeBlacklist()
             Preferences.initializedBlacklist = true
         }
+    }
+
+    fun getLastFmLoginState() = repository.getLastFmLoginState()
+
+    fun logInToLastFm(username: String, password: String) = viewModelScope.launch(IO) {
+        repository.loginToLastfm(username, password)
+    }
+
+    fun logoutFromLastFm() = viewModelScope.launch(IO) {
+        repository.logoutFromLastFm()
     }
 
     @Suppress("DEPRECATION")

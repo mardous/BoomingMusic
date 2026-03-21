@@ -1,6 +1,7 @@
 package com.mardous.booming.data.remote.lyrics.api.simpmusic
 
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
 import com.mardous.booming.data.remote.lyrics.model.SimpMusicLyricsResponse
@@ -18,6 +19,8 @@ import kotlin.math.max
 import kotlin.math.min
 
 class SimpMusicLyricsApi(private val client: HttpClient) : LyricsApi {
+
+    override val networkFeature = NetworkFeature.Lyrics.SimpMusicLyrics
 
     override suspend fun songLyrics(
         song: Song,
