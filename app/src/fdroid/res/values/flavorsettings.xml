@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="default_metadata_policy" translatable="false">never</string>
-    <bool name="default_images_download">false</bool>
+    <bool name="enable_network_features">false</bool>
     <bool name="enable_app_update">false</bool>
 </resources>

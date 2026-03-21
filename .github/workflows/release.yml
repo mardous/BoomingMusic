@@ -42,6 +42,8 @@ jobs:
       - name: Build app
         env:
           BUILD_VARIANT: ${{ matrix.variant == 'normal' && 'Normal' || 'Fdroid' }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
         run: ./gradlew assemble${{ env.BUILD_VARIANT }}Release
 
       - name: Upload APKs

@@ -1,3 +1,5 @@
+import com.android.build.api.variant.BuildConfigField
+import com.android.build.api.variant.ResValue
 import com.android.build.api.variant.impl.VariantOutputImpl
 import java.util.Properties
 
@@ -127,6 +129,7 @@ android {
     }
     buildFeatures {
         buildConfig = true
+        resValues = true
         viewBinding = true
         compose = true
     }
@@ -150,6 +153,29 @@ android {
 
 androidComponents {
     onVariants { variant ->
+        val isNormalVariant = variant.flavorName == "normal"
+
+        val localProperties = if (isNormalVariant) getProperties("local.properties") else null
+        val lastFmKey = if (isNormalVariant) {
+            localProperties?.getProperty("LASTFM_API_KEY") ?: System.getenv("LASTFM_API_KEY") ?: ""
+        } else ""
+
+        val lastFmSecret = if (isNormalVariant) {
+            localProperties?.getProperty("LASTFM_SECRET") ?: System.getenv("LASTFM_SECRET") ?: ""
+        } else ""
+
+        variant.buildConfigFields?.putAll(
+            mapOf(
+                "LASTFM_API_KEY" to BuildConfigField("String", "\"$lastFmKey\"", "LastFM API Key"),
+                "LASTFM_SECRET" to BuildConfigField("String", "\"$lastFmSecret\"", "LastFM Secret")
+            )
+        )
+
+        variant.resValues.put(
+            variant.makeResValueKey("bool", "enable_lastfm_integration"),
+            ResValue(lastFmKey.isNotEmpty().toString(), "Enable LastFM integration")
+        )
+
         variant.outputs.forEach {
             // https://issuetracker.google.com/issues/480062612
             (it as VariantOutputImpl).outputFileName = "BoomingMusic-${it.versionName.get()}-${variant.flavorName}-${variant.buildType}.apk"

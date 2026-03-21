@@ -65,6 +65,7 @@ import com.mardous.booming.ui.component.preferences.dialog.SingleSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPreferenceDialog
 import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
+import com.mardous.booming.ui.screen.lastfm.LastFmLoginDialogFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
@@ -86,6 +87,7 @@ import com.mardous.booming.util.EXTRA_INFO
 import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.IGNORE_MEDIA_STORE
 import com.mardous.booming.util.LANGUAGE_NAME
+import com.mardous.booming.util.LASTFM_LOGIN
 import com.mardous.booming.util.LAST_ADDED_CUTOFF
 import com.mardous.booming.util.LIBRARY_CATEGORIES
 import com.mardous.booming.util.MATERIAL_YOU
@@ -133,6 +135,12 @@ class PlaybackPreferencesFragment : PreferenceScreenFragment() {
 class LibraryPreferencesFragment : PreferenceScreenFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences_screen_library)
+    }
+}
+
+class NetworkPreferencesFragment : PreferenceScreenFragment() {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preferences_screen_network)
     }
 }
 
@@ -408,6 +416,7 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
                 COVER_RIGHT_DOUBLE_TAP_ACTION -> {
                     ActionOnCoverPreferenceDialog.newInstance(preference.key)
                 }
+                LASTFM_LOGIN -> LastFmLoginDialogFragment()
                 else -> null
             }
             if (dialogFragment != null) {

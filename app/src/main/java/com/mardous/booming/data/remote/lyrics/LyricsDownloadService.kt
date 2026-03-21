@@ -17,6 +17,7 @@
 
 package com.mardous.booming.data.remote.lyrics
 
+import android.content.Context
 import android.util.Log
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lyrics.api.betterlyrics.BetterLyricsApi
@@ -28,7 +29,7 @@ import com.mardous.booming.extensions.media.albumArtistName
 import io.ktor.client.HttpClient
 import java.io.IOException
 
-class LyricsDownloadService(client: HttpClient) {
+class LyricsDownloadService(private val context: Context, client: HttpClient) {
 
     private val lyricsApi = listOf(
         LrcLibApi(client),
@@ -47,6 +48,9 @@ class LyricsDownloadService(client: HttpClient) {
             return downloadedLyrics
         }
         for (api in lyricsApi) {
+            if (!api.networkFeature.isAvailable(context))
+                continue
+
             val apiResult = runCatching { api.songLyrics(song, title, artist) }
             if (apiResult.isFailure) {
                 Log.e("LyricsService", "Error during lyrics request", apiResult.exceptionOrNull())

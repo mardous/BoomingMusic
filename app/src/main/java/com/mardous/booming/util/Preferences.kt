@@ -340,9 +340,6 @@ object Preferences : KoinComponent {
         else -> preferences.getBoolean(PAUSE_ON_DISCONNECT, false)
     }
 
-    val autoDownloadMetadataPolicy: String
-        get() = preferences.requireString(AUTO_DOWNLOAD_METADATA_POLICY, appStr(R.string.default_metadata_policy))
-
     var onlyAlbumArtists: Boolean
         get() = preferences.getBoolean(ONLY_ALBUM_ARTISTS, true)
         set(value) = preferences.edit { putBoolean(ONLY_ALBUM_ARTISTS, value) }
@@ -527,14 +524,6 @@ interface PlaylistCutoff {
     }
 }
 
-interface AutoDownloadMetadataPolicy {
-    companion object {
-        const val ALWAYS = "always"
-        const val ONLY_WIFI = "only_wifi"
-        const val NEVER = "never"
-    }
-}
-
 interface ImageSize {
     companion object {
         const val LARGE = "large"
@@ -592,8 +581,6 @@ const val DISPLAY_EXTRA_INFO = "display_extra_info"
 const val EXTRA_INFO = "now_playing_extra_info"
 const val PREFER_REMAINING_TIME = "prefer_remaining_time"
 const val PREFER_ALBUM_ARTIST_NAME = "prefer_album_artist_name_on_np"
-const val PLAYBACK_SPEED = "playback_speed"
-const val PLAYBACK_PITCH = "playback_pitch"
 const val REWIND_WITH_BACK = "rewind_with_back"
 const val SEEK_INTERVAL = "seek_interval"
 const val QUEUE_NEXT_MODE = "queue_next_mode"
@@ -614,11 +601,8 @@ const val PAUSE_ON_BLUETOOTH_DISCONNECT = "pause_on_bluetooth_disconnect"
 const val IGNORE_AUDIO_FOCUS = "ignore_audio_focus"
 const val PAUSE_ON_ZERO_VOLUME = "pause_on_zero_volume"
 const val MP3_INDEX_SEEKING = "mp3_index_seeking"
-const val AUTO_DOWNLOAD_METADATA_POLICY = "auto_download_metadata_policy"
 const val IGNORE_MEDIA_STORE = "ignore_media_store"
 const val USE_FOLDER_ART = "use_folder_art"
-const val ALLOW_ONLINE_ALBUM_COVERS = "allow_online_album_covers"
-const val ALLOW_ONLINE_ARTIST_IMAGES = "allow_online_artist_images"
 const val PREFERRED_IMAGE_SIZE = "preferred_image_size"
 const val ONLY_ALBUM_ARTISTS = "only_album_artists"
 const val TRASH_MUSIC_FILES = "trash_music_files"
@@ -653,3 +637,4 @@ const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"
 const val QUEUE_HEIGHT = "queue_height"
+const val LASTFM_LOGIN = "lastfm_login"

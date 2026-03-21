@@ -584,20 +584,17 @@
     <string name="playback_title">प्लेबैक</string>
     <string name="playback_summary">ध्वनि सेटिंग्स, ब्लूटूथ हेडसेट्स आदि को बदलें।</string>
     <string name="metadata_title">मेटाडेटा</string>
-    <string name="metadata_summary">एल्बम और कलाकारों की छवियों से संबंधित सेटिंग्स।</string>
     <string name="library_title">लायब्रेरी</string>
     <string name="library_summary">प्लेलिस्ट और निष्कासन/समावेशन फ़िल्टर के लिए सेटिंग्स।</string>
     <string name="advanced_title">आधुनिक</string>
     <string name="advanced_summary">उपयोगकर्ताओं के लिए उन्नत सेटिंग्स और इन-ऐप भाषा।</string>
     <string name="update_title">अपडेट</string>
-    <string name="update_summary">ऐप अपडेट के लिए सेटिंग्स।</string>
     <string name="about_title">बारे में</string>
     <string name="about_summary">बूमिंग म्यूजिक %s, और जानकारी के लिए टैप करें.</string>
     <!-- Preference headers -->
     <string name="general_header">जनरल</string>
     <string name="library_header">लायब्रेरी</string>
     <string name="album_cover_header">कवर</string>
-    <string name="artist_image_header">कलाकार की इमेज</string>
     <string name="exclusion_header">बहिष्करण</string>
     <string name="controls_header">कंट्रोल्स</string>
     <string name="gestures_header">Gestures</string>
@@ -763,7 +760,6 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">स्वतः मेटाडेटा डाउनलोड करना</string>
     <string name="ignore_media_store_album_covers_title">मीडिया स्टोर कवर अनदेखा करें</string>
     <string name="ignore_media_store_album_covers_summary">यह छवियों की गुणवत्ता बढ़ाने में मदद कर सकता है लेकिन इसके लिए अधिक मेमोरी की आवश्यकता होती है।</string>
     <string name="use_folder_album_cover_title">फोल्डर चित्रों का उपयोग करें</string>
@@ -851,12 +847,6 @@
     <string name="this_month">इस महीने</string>
     <string name="past_three_months">पिछले तीन महीने</string>
     <string name="this_year">इस साल</string>
-    <string name="priority_maximum">अधिकतम</string>
-    <string name="priority_high">हाई</string>
-    <string name="priority_normal">सामान्य</string>
-    <string name="priority_low">कम</string>
-    <string name="always">हमेशा</string>
-    <string name="only_on_wifi">केवल वाई-फाई</string>
     <string name="image_size_large">बड़ा (धीमा)</string>
     <string name="image_size_medium">माध्यम (डिफ़ॉल्ट, अनुशंसित)</string>
     <string name="image_size_small">छोटा (तेज़, कम गुणवत्ता)</string>

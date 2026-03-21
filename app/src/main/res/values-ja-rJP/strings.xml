@@ -578,20 +578,17 @@
     <string name="playback_title">再生</string>
     <string name="playback_summary">サウンド設定、Bluetooth ヘッドセットなどを変更します。</string>
     <string name="metadata_title">メタデータ</string>
-    <string name="metadata_summary">アルバムやアーティストの画像に関連する設定。</string>
     <string name="library_title">ライブラリ</string>
     <string name="library_summary">プレイリストと除外/追加フィルターの設定。</string>
     <string name="advanced_title">高度な設定</string>
     <string name="advanced_summary">アプリ内の言語や上級ユーザー向けのその他の設定。</string>
     <string name="update_title">更新</string>
-    <string name="update_summary">アプリの更新を設定します。</string>
     <string name="about_title">情報</string>
     <string name="about_summary">Booming Music %s、タッチして詳細を確認してください。</string>
     <!-- Preference headers -->
     <string name="general_header">全般</string>
     <string name="library_header">ライブラリ</string>
     <string name="album_cover_header">カバー</string>
-    <string name="artist_image_header">アーティスト画像</string>
     <string name="exclusion_header">除外</string>
     <string name="controls_header">コントロール</string>
     <string name="gestures_header">ジェスチャー</string>
@@ -757,7 +754,6 @@
     <string name="clear_queue_on_completion_title">再生が終了したときにキューをクリア</string>
     <string name="clear_queue_on_completion_summary">最後のトラックの再生が終了すると、キューからすべての曲を自動的に削除します。</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">メタデータの自動ダウンロード</string>
     <string name="ignore_media_store_album_covers_title">メディアストアのカバーを無視</string>
     <string name="ignore_media_store_album_covers_summary">これは画像の品質を向上させるのに役立ちますが、より多くのメモリを必要とします。</string>
     <string name="use_folder_album_cover_title">フォルダ画像を使用</string>
@@ -845,12 +841,6 @@
     <string name="this_month">今月</string>
     <string name="past_three_months">過去3ヶ月</string>
     <string name="this_year">年</string>
-    <string name="priority_maximum">最大</string>
-    <string name="priority_high">高い</string>
-    <string name="priority_normal">標準</string>
-    <string name="priority_low">低い</string>
-    <string name="always">常時</string>
-    <string name="only_on_wifi">Wi-Fiのみ</string>
     <string name="image_size_large">大 (遅い)</string>
     <string name="image_size_medium">中 (デフォルトで推奨)</string>
     <string name="image_size_small">小 (高速、低品質)</string>

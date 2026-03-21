@@ -23,7 +23,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
-import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.toBitmap
 import com.mardous.booming.databinding.TagEditorSongFieldBinding
@@ -102,9 +101,9 @@ class SongTagEditorActivity : AbsTagEditorActivity() {
             showToast(resources.getString(R.string.album_or_artist_empty))
             return
         }
-        viewModel.getTrackInfo(albumArtistNameStr, songTitleStr).observe(this) { result ->
-            if (result is Result.Success) {
-                val url = result.data.imageUrl
+        viewModel.getTrackInfo(albumArtistNameStr, songTitleStr).observe(this) { deezerTrack ->
+            if (deezerTrack != null) {
+                val url = deezerTrack.imageUrl
                 if (!url.isNullOrEmpty()) {
                     loadImageFromUrl(url)
                 } else {

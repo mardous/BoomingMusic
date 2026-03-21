@@ -208,13 +208,6 @@
             app:defaultValue="true"
             app:key="force_utf8_encoding_for_lyrics"/>
 
-        <Preference
-            app:icon="@drawable/ic_delete_24dp"
-            app:title="@string/delete_downloaded_lyrics_title"
-            app:summary="@string/delete_downloaded_lyrics_summary"
-            app:layout="@layout/list_item_view"
-            app:key="clear_lyrics"/>
-
     </PreferenceCategory>
 
 </androidx.preference.PreferenceScreen>

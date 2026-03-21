@@ -585,20 +585,17 @@
     <string name="playback_title">Afspelen</string>
     <string name="playback_summary">Verander de geluidsinstellingen, Bluetooth-koptelefoons, enz.</string>
     <string name="metadata_title">Metagegevens</string>
-    <string name="metadata_summary">Instellingen gerelateerd aan album- en artiesten-afbeeldingen.</string>
     <string name="library_title">Bibliotheek</string>
     <string name="library_summary">Instellingen voor afspeellijsten en uitsluitingen/integratiefilters.</string>
     <string name="advanced_title">Geavanceerd</string>
     <string name="advanced_summary">In-app taal en andere instellingen voor gevorderde gebruikers.</string>
     <string name="update_title">Vernieuwen</string>
-    <string name="update_summary">Instellingen voor app-updates.</string>
     <string name="about_title">Informatie</string>
     <string name="about_summary">Muziek %sblazen, aanraken voor meer info.</string>
     <!-- Preference headers -->
     <string name="general_header">Algemeen</string>
     <string name="library_header">Bibliotheek</string>
     <string name="album_cover_header">Omslag</string>
-    <string name="artist_image_header">Kunstenaar afbeelding</string>
     <string name="exclusion_header">Uitsluitingen</string>
     <string name="controls_header">Bedieningsknoppen</string>
     <string name="gestures_header">Vingerbewegingen</string>
@@ -764,7 +761,6 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Metadata automatisch downloaden</string>
     <string name="ignore_media_store_album_covers_title">Negeer Media Store covers</string>
     <string name="ignore_media_store_album_covers_summary">Dit kan helpen de beeldkwaliteit te verhogen, maar vereist meer geheugen.</string>
     <string name="use_folder_album_cover_title">Gebruik mapafbeeldingen</string>
@@ -852,12 +848,6 @@
     <string name="this_month">Deze maand</string>
     <string name="past_three_months">Afgelopen drie maanden</string>
     <string name="this_year">Dit jaar</string>
-    <string name="priority_maximum">Maximum</string>
-    <string name="priority_high">Hoog</string>
-    <string name="priority_normal">Normaal</string>
-    <string name="priority_low">Laag</string>
-    <string name="always">Altijd</string>
-    <string name="only_on_wifi">Alleen wifi</string>
     <string name="image_size_large">Groot (langzamer)</string>
     <string name="image_size_medium">Medium (standaard, aanbevolen)</string>
     <string name="image_size_small">Klein (sneller, lage kwaliteit)</string>
