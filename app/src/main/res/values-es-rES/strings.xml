@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">La aplicación necesita el permiso de los dispositivos cercanos para buscar dispositivos bluetooth</string>
     <string name="permission_bluetooth_denied">Permiso de dispositivos cercanos denegado.</string>
     <string name="permission_read_images_title">Leer imágenes (opcional)</string>
-    <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
-        If you don\'t plan to use this feature, you can choose not to grant it.</string>
+    <string name="permission_read_images_summary"></string>
     <string name="permission_read_images_denied">Debes conceder permiso para leer imágenes del dispositivo.</string>
     <string name="permission_exact_alarms_title">Programar alarmas exactas (opcional)</string>
     <string name="permission_exact_alarms_description">Permiso para programar alarmas exactas es necesario para que el temporizador de sueño funcione correctamente</string>
@@ -206,7 +205,7 @@
     <string name="albums_label">Albumes</string>
     <string name="artists_label">Artistas</string>
     <string name="album_artists_label">Artistas del álbum</string>
-    <string name="genres_label">Genres</string>
+    <string name="genres_label"></string>
     <string name="folders_label">Carpetas</string>
     <string name="playlists_label">Listas</string>
     <string name="playlist_label">Lista</string>
@@ -231,7 +230,7 @@
     <string name="view_type_circle">Círculo</string>
     <string name="view_type_image">Imagen</string>
     <string name="action_grid_size">Tamaño de cuadrícula</string>
-    <string name="action_grid_size_land">Grid size (land)</string>
+    <string name="action_grid_size_land"></string>
     <string name="action_sort_order">Ordenar por</string>
     <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Artista</string>
@@ -283,7 +282,7 @@
         \n\nSólo tú tienes la responsabilidad total sobre tu uso de portadas de álbumes guardadas.</string>
     <string name="yes">Sí</string>
     <string name="no">Nu</string>
-    <string name="keyboard">Keyboard</string>
+    <string name="keyboard"></string>
     <string name="label_file_path">Ruta del archivo</string>
     <string name="size">Tamaño del archivo</string>
     <string name="label_file_format">Formatear</string>
@@ -316,7 +315,7 @@
     <string name="track">Pista</string>
     <string name="track_total">Pistas totales</string>
     <string name="disc">Disco</string>
-    <string name="disc_total">Total Discs</string>
+    <string name="disc_total"></string>
     <string name="lyrics">Letras</string>
     <string name="lyricist">Leicísta</string>
     <string name="could_not_load_the_song_information">"No se pudo cargar la información de la canción."</string>
