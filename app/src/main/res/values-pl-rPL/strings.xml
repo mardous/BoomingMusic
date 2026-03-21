@@ -454,8 +454,7 @@
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">Reset equalizer</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
-        \n\nThis will clear all your profiles.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Nie obsługiwane</string>
     <string name="set_eq_engine_title">Set EQ engine</string>
     <string name="eq_engine_basic_title">Legacy Engine</string>
@@ -679,16 +678,13 @@
     <string name="unsynced_font_size_full_title">Rozmiar czcionki niezsynch. tekstów (pełny ekran)</string>
     <string name="unsynced_font_size_full_summary">Dostosuj rozmiar czcionki dla niezsynchronizowanych tekstów w pełnym widoku tekstu.</string>
     <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <string name="ignore_blank_lines_title">Ignore blank lines</string>
     <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding. This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics. It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Styl odtwarzacza</string>
     <string name="open_on_play_title">Otwórz przy odtwarzaniu</string>
