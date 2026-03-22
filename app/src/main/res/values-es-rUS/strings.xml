@@ -89,11 +89,11 @@
     <string name="delete_playlists_title">Eliminar playlists</string>
     <string name="delete_playlist_x"><![CDATA[¿Borrar playlist <b>%s</b>?]]></string>
     <string name="delete_x_playlists"><![CDATA[¿Borrar <b>%d</b> playlists?]]></string>
-    <string name="created_playlist_x">Se creó la playlist \"%1$s\"</string>
-    <string name="could_not_create_playlist">No se pudo crear la playlist</string>
-    <string name="inserted_one_song_into_playlist_x">Se agregó una canción a la playlist \"%s\"</string>
-    <string name="inserted_x_songs_into_playlist_x">Se agregaron %1$d canciones a la playlist \"%2$s\"</string>
-    <string name="playlist_exists">La playlist \"%s\" ya existe</string>
+    <string name="created_playlist_x">Se creó la playlist \"%1$s\".</string>
+    <string name="could_not_create_playlist">No se pudo crear la playlist.</string>
+    <string name="inserted_one_song_into_playlist_x">Se agregó una canción a la playlist \"%s\".</string>
+    <string name="inserted_x_songs_into_playlist_x">Se agregaron %1$d canciones a la playlist \"%2$s\".</string>
+    <string name="playlist_exists">La playlist \"%s\" ya existe.</string>
     <string name="playlist_created">Se creó la playlist %s.</string>
     <string name="remove_song_from_playlist_title">Remover canción de la playlist</string>
     <string name="remove_songs_from_playlist_title">Remover canciones de la playlist</string>
@@ -207,7 +207,7 @@
     <string name="album_artists_label">Artistas del álbum</string>
     <string name="genres_label">Géneros</string>
     <string name="folders_label">Carpetas</string>
-    <string name="playlists_label">Playlists</string>
+    <string name="playlists_label">Listas de reproducción</string>
     <string name="playlist_label">Playlist</string>
     <string name="favorites_label">Favoritas</string>
     <string name="last_added_label">Últimas agregadas</string>
@@ -248,8 +248,8 @@
     <string name="sort_order_ignore_articles">Ignorar artículos</string>
     <string name="action_set_as_ringtone">Usar como tono de llamada</string>
     <string name="x_will_be_set_as_ringtone"><![CDATA[Se usará <b>%s</b> como tono de llamada]]></string>
-    <string name="x_has_been_set_as_ringtone">Se configuró %s como tono.</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Se configuró %s como tono y como alarma.</string>
+    <string name="x_has_been_set_as_ringtone">Se configuró %s como tono</string>
+    <string name="x_has_been_set_as_ringtone_and_as_alarm">Se configuró %s como tono y como alarma</string>
     <string name="use_also_as_alarm_alert">Usar también como alarma</string>
     <string name="action_details">Detalles</string>
     <string name="action_set_as_start_directory">Establecer como directorio de inicio</string>
@@ -349,34 +349,42 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Canción</item>
+        <item quantity="many">Canciones</item>
         <item quantity="other">Canciones</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Álbum</item>
+        <item quantity="many">Álbumes</item>
         <item quantity="other">Álbumes</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d canción</item>
+        <item quantity="many">%d de canciones</item>
         <item quantity="other">%d canciones</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d álbum</item>
+        <item quantity="many">%d de álbumes</item>
         <item quantity="other">%d álbumes</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
+        <item quantity="many">%d de artistas</item>
         <item quantity="other">%d artistas</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d vez</item>
+        <item quantity="many">%d de veces</item>
         <item quantity="other">%d veces</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d reproducción</item>
+        <item quantity="many">%d de reproducciones</item>
         <item quantity="other">%d reproducciones</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d elemento</item>
+        <item quantity="many">%d de elementos</item>
         <item quantity="other">%d elementos</item>
     </plurals>
     <!-- Home -->
@@ -618,7 +626,7 @@ Podría consumir un poco más de batería y tendrás que reiniciar la aplicació
     <string name="larger_header_image_title">Imagen más grande en la cabecera</string>
     <string name="larger_header_image_summary">Muestra una imagen de portada más grande en la vista de detalles de álbumes, artistas y playlists.</string>
     <string name="lyrics_center_current_line_title">Centrar línea actual</string>
-    <string name="lyrics_center_current_line_summary">Mantiene la línea actual de la letra en el centro de la pantalla en lugar de la parte superior</string>
+    <string name="lyrics_center_current_line_summary">Mantiene la línea actual de la letra en el centro de la pantalla en lugar de la parte superior.</string>
     <string name="lyrics_custom_font_title">Fuente personalizada</string>
     <string name="lyrics_custom_font_summary">Importa y usa tu propia fuente para las letras.</string>
     <string name="lyrics_import_custom_font_title">Importar fuente personalizada</string>
@@ -664,7 +672,7 @@ Podría ser necesario reiniciar la aplicación</string>
     <string name="scrolling_text_title">Habilitar texto deslizante</string>
     <string name="scrolling_text_summary">La información de la canción se desliza cuando el texto es muy largo. Podría usar un poco más de batería.</string>
     <string name="extra_controls_title">Controles adicionales</string>
-    <string name="extra_controls_summary">Habilita controles adicionales para el reproductor minimizado.</string>
+    <string name="extra_controls_summary">Habilita controles adicionales para el reproductor minimizado</string>
     <string name="adaptive_controls_title">Controles adaptivos</string>
     <string name="adaptive_controls_summary">Los controles del mini reproductor cambian para adaptarse al estilo general del reproductor.</string>
     <string name="swipe_to_dismiss_title">Deslizar hacia abajo para descartar</string>
