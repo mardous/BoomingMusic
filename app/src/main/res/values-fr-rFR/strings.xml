@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">Lire</string>
+    <string name="action_play">Lecture</string>
     <string name="action_play_all">Tout lire</string>
     <string name="action_shuffle_play">Lecture aléatoire</string>
     <string name="action_queue_next">Ajouter a la liste de lecture</string>
@@ -354,7 +354,7 @@
     </plurals>
     <plurals name="albums">
         <item quantity="one">Album</item>
-        <item quantity="many"></item>
+        <item quantity="many">Albums</item>
         <item quantity="other">Albums</item>
     </plurals>
     <plurals name="x_songs">
@@ -363,7 +363,7 @@
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d album</item>
-        <item quantity="many"></item>
+        <item quantity="many">%d albums</item>
         <item quantity="other">%d albums</item>
     </plurals>
     <plurals name="x_artists">
@@ -530,9 +530,9 @@
     <string name="sleep_timer_15_mins">15 minutes</string>
     <string name="sleep_timer_45_mins">45 minutes</string>
     <string name="sleep_timer_1_hour">1 heure</string>
-    <string name="sleep_timer_2_hour">2 hour</string>
+    <string name="sleep_timer_2_hour">2 heures</string>
     <string name="sleep_timer_finish_current_music">Terminer le dernier titre</string>
-    <string name="sleep_timer_music_fades_out">Music fades out</string>
+    <string name="sleep_timer_music_fades_out">La musique s\'estompe</string>
     <string name="sleep_timer_stop_after_this_track">Arrêter après ce titre</string>
     <string name="sleep_timer_stop_after_x">Arrêter après %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Arrêt après %s : annulé</string>
@@ -547,7 +547,7 @@
     <string name="faq">FAQ</string>
     <string name="licenses">Licences</string>
     <string name="author">Auteur</string>
-    <string name="mardous_summary">Lead Developer</string>
+    <string name="mardous_summary">Développeur principal</string>
     <string name="contributors">Contributeurs</string>
     <string name="acknowledgments_title">Reconnaissance</string>
     <string name="translators_title">Traducteurs</string>
@@ -634,7 +634,7 @@
     <string name="lyrics_effects_note">Les effets avancés améliorent l\'expérience visuelle mais peuvent nécessiter plus de ressources système et de batterie.</string>
     <string name="lyrics_background_effect_title">Effet de fond</string>
     <string name="lyrics_background_gradient">Dégradé</string>
-    <string name="lyrics_background_blur">Blur</string>
+    <string name="lyrics_background_blur">Flou</string>
     <string name="lyrics_blur_effect_title">Effet de flou</string>
     <string name="lyrics_blur_effect_summary">Flouter les lignes de paroles adjacentes à la ligne actuelle.</string>
     <string name="lyrics_shadow_effect_title">Effet d\'ombre</string>
@@ -657,8 +657,8 @@
     <string name="instrumental_tracks_identifiers_summary">Si les paroles d\'une chanson ne contiennent qu\'un seul de ces indicateurs (un ou plusieurs), elle sera considérée comme un morceau instrumental (séparés par une virgule).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marquer par titre</string>
     <string name="instrumental_tracks_mark_by_title_summary">Le titre du morceau sera également pris en compte lors de la recherche d\'identifiants.</string>
-    <string name="ignore_blank_lines_title">Ignore blank lines</string>
-    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
+    <string name="ignore_blank_lines_title">Ignorer les lignes vides</string>
+    <string name="ignore_blank_lines_summary">Ignorez les lignes vides dans les fichiers LRC au lieu d\'afficher des bulles animées.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Traiter tous les fichiers de paroles comme UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Supposons que tous les fichiers utilisent l\'encodage UTF-8.
 
@@ -712,8 +712,8 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="prefer_remaining_time_summary">Afficher le temps restant au lieu de la durée du titre.</string>
     <string name="prefer_album_artist_name_title">"Préférer le nom de l'artiste de l'album"</string>
     <string name="prefer_album_artist_name_summary">Affiche le nom de l\'artiste de l\'album au lieu du nom de l\'artiste du titre (si disponible).</string>
-    <string name="player_blur_intensity_title">Blur intensity</string>
-    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
+    <string name="player_blur_intensity_title">Intensité du flou</string>
+    <string name="player_blur_intensity_summary">Ajustez l\'intensité du flou d\'arrière-plan dans le thème Flou. Des valeurs plus faibles peuvent améliorer les performances.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Jouer au démarrage</string>
     <string name="queue_next_mode_title">Mode \"File d\'attente\"</string>
@@ -898,4 +898,43 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="uncaught_error_restart_app">Redémarrer l\'application</string>
     <string name="uncaught_error_github">Ouvrir le problème sur GitHub</string>
     <string name="uncaught_error_send">Envoyer un rapport</string>
+    <string name="lastfm_login_username">Nom d\'utilisateur</string>
+    <string name="lastfm_login_password">Mot de passe</string>
+    <string name="lastfm_login_ok">Se connecter</string>
+    <string name="lastfm_login_toggle_password_visibility">Afficher/masquer le mot de passe</string>
+    <string name="lastfm_connected_account">Compte associé :</string>
+    <string name="lastfm_logout">Se déconnecter</string>
+    <string name="error_lastfm_auth">La session a expiré ou les identifiants ne sont pas valides. Veuillez vous reconnecter.</string>
+    <string name="error_lastfm_credentials">Vos identifiants ne sont pas valides. Veuillez les vérifier et réessayer.</string>
+    <string name="error_lastfm_params">Paramètres non valides. Cela peut être dû à une erreur de notre part.</string>
+    <string name="error_lastfm_service">Last.fm est actuellement indisponible ou en maintenance. Veuillez réessayer ultérieurement.</string>
+    <string name="error_lastfm_rate_limit">Trop de requêtes. Veuillez patienter un instant avant de recommencer.</string>
+    <string name="error_lastfm_generic">Une erreur inattendue s\'est produite avec Last.fm. Veuillez réessayer.</string>
+    <string name="error_network_timeout">Le délai de connexion a expiré. Vérifiez votre connexion Internet et réessayez.</string>
+    <string name="github">GitHub</string>
+    <string name="telegram_community">Communauté Telegram</string>
+    <string name="telegram_community_summary">Rejoignez notre communauté Telegram pour rester informé des nouvelles sorties et de l\'actualité.</string>
+    <string name="support_my_work">Soutenez mon travail</string>
+    <string name="network_title">Réseau</string>
+    <string name="network_summary">Gérer les fonctionnalités Internet telles que l\'intégration de Last.fm, les fournisseurs de paroles et le téléchargement de métadonnées.</string>
+    <string name="images_title">Images</string>
+    <string name="lastfm_title">Last.fm</string>
+    <string name="network_features_title">Activer les fonctionnalités réseau</string>
+    <string name="network_features_summary">Autorisez l\'application à utiliser des services Internet tels que l\'intégration à Last.fm, le téléchargement de paroles et la récupération de pochettes d\'albums.</string>
+    <string name="wifi_only_network_features_title">Utiliser les fonctionnalités réseau uniquement via Wi-Fi</string>
+    <string name="wifi_only_network_features_summary">Autorisez les fonctionnalités Internet uniquement lorsque l\'appareil est connecté au Wi-Fi.</string>
+    <string name="lastfm_login_title">Connectez-vous à Last.fm</string>
+    <string name="lastfm_login_summary">Connectez-vous avec votre compte Last.fm pour activer le scrobbling et les mises à jour sur les morceaux en cours de lecture.</string>
+    <string name="lastfm_scrobbling_title">Activer le scrobbling Last.fm</string>
+    <string name="lastfm_scrobbling_summary">Ajouter automatiquement les titres écoutés à votre historique d\'écoute Last.fm.</string>
+    <string name="lastfm_now_playing_title">Mise à jour en cours de lecture sur Last.fm</string>
+    <string name="lastfm_now_playing_summary">Affichez en temps réel le titre en cours de lecture sur votre profil Last.fm.</string>
+    <string name="lastfm_biography_title">Télécharger les biographies des artistes et des albums</string>
+    <string name="lastfm_biography_summary">Récupérez les biographies des artistes et des albums depuis Last.fm.</string>
+    <string name="use_lrclib_provider_title">Utiliser le fournisseur LRCLib</string>
+    <string name="use_lrclib_provider_summary">Autorisez le téléchargement des paroles à partir du service LRCLib.</string>
+    <string name="use_betterlyrics_provider_title">Utiliser le fournisseur BetterLyrics</string>
+    <string name="use_betterlyrics_provider_summary">Autorisez le téléchargement des paroles depuis le service BetterLyrics.</string>
+    <string name="use_simpmusic_provider_title">Utiliser le fournisseur de paroles SimpMusic</string>
+    <string name="use_simpmusic_provider_summary">Autorisez le téléchargement des paroles à partir du service SimpMusic Lyrics.</string>
 </resources>
