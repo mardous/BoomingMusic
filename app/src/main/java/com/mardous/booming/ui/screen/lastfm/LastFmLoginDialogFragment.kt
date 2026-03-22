@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,6 +22,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -94,11 +95,11 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
     private fun LastFmLoginScreen(
         viewModel: LibraryViewModel
     ) {
-        val uiState by viewModel.getLastFmLoginState().collectAsState(LastFmLoginState.Empty)
+        val uiState by viewModel.getLastFmLoginState().collectAsState(null)
 
         DisposableEffect(Unit) {
             onDispose {
-                if (uiState.isFailure) {
+                if (uiState?.isFailure == true) {
                     viewModel.logoutFromLastFm()
                 }
             }
@@ -145,6 +146,17 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
                                 Button(onClick = { viewModel.logoutFromLastFm() }) {
                                     Text(stringResource(R.string.lastfm_logout))
                                 }
+                            }
+                        }
+
+                        else -> {
+                            Box(
+                                contentAlignment = Alignment.Center,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 24.dp, vertical = 48.dp)
+                            ) {
+                                CircularWavyProgressIndicator()
                             }
                         }
                     }
@@ -270,17 +282,17 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
         val context = LocalContext.current
 
         ElevatedCard(
+            onClick = {
+                if (user.url.isNotEmpty()) {
+                    context.openUrl(user.url)
+                }
+            },
             modifier = modifier.fillMaxWidth()
         ) {
             Row(
                 modifier = Modifier
                     .padding(16.dp)
-                    .fillMaxWidth()
-                    .clickable {
-                        if (user.url.isNotEmpty()) {
-                            context.openUrl(user.url)
-                        }
-                    },
+                    .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
