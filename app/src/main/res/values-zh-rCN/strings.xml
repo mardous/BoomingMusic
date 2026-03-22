@@ -91,7 +91,7 @@
     <string name="delete_x_playlists"><![CDATA[删除 <b>%d</b> 播放列表吗？]]></string>
     <string name="created_playlist_x">已创建播放列表 \'%1$s\'。</string>
     <string name="could_not_create_playlist">无法创建播放列表。</string>
-    <string name="inserted_one_song_into_playlist_x">将一首歌插入播放列表 %s</string>
+    <string name="inserted_one_song_into_playlist_x">将一首歌曲插入播放列表 %s 。</string>
     <string name="inserted_x_songs_into_playlist_x">将 %1$d 首歌曲插入播放列表 %2$s。</string>
     <string name="playlist_exists">播放列表 %s 已经存在。</string>
     <string name="playlist_created">播放列表 %s 已成功创建。</string>
@@ -456,7 +456,7 @@
     <string name="autoeq_profile_imported_successfully">自动均衡器导入成功。</string>
     <string name="profile_x_deleted">配置“%s”已被删除。</string>
     <string name="autoeq_profile_x_deleted">自动均衡器配置“%s”已被删除。</string>
-    <string name="bassboost_label">BassBoost</string>
+    <string name="bassboost_label">BassBoost 低音增强</string>
     <string name="virtualizer_label">虚拟环绕声</string>
     <string name="loudness_enhancer">放大器</string>
     <string name="sound_settings">声音设置</string>
@@ -517,9 +517,9 @@
     <string name="sleep_timer_15_mins">15分钟</string>
     <string name="sleep_timer_45_mins">45分钟</string>
     <string name="sleep_timer_1_hour">1小时</string>
-    <string name="sleep_timer_2_hour">2 hour</string>
+    <string name="sleep_timer_2_hour">2 小时</string>
     <string name="sleep_timer_finish_current_music">播放完最后一首</string>
-    <string name="sleep_timer_music_fades_out">Music fades out</string>
+    <string name="sleep_timer_music_fades_out">逐渐减弱音乐音量</string>
     <string name="sleep_timer_stop_after_this_track">在此曲目后停止</string>
     <string name="sleep_timer_stop_after_x">%s 后停止</string>
     <string name="sleep_timer_stop_after_x_canceled">%s后停止：取消</string>
@@ -621,7 +621,7 @@
     <string name="lyrics_effects_note">高级效果可增强视觉体验，但可能需要耗费更多系统资源和电量。</string>
     <string name="lyrics_background_effect_title">背景特效</string>
     <string name="lyrics_background_gradient">渐变</string>
-    <string name="lyrics_background_blur">Blur</string>
+    <string name="lyrics_background_blur">模糊</string>
     <string name="lyrics_blur_effect_title">模糊效果</string>
     <string name="lyrics_blur_effect_summary">模糊正播放的歌词的上下的几行歌词。</string>
     <string name="lyrics_shadow_effect_title">阴影效果</string>
@@ -645,8 +645,8 @@
         个或多个指示器，它将被标记为一首纯音乐(用逗号隔开)。</string>
     <string name="instrumental_tracks_mark_by_title_title">按标题标记</string>
     <string name="instrumental_tracks_mark_by_title_summary">在搜索识别资料时，一并使用曲目标题。</string>
-    <string name="ignore_blank_lines_title">Ignore blank lines</string>
-    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
+    <string name="ignore_blank_lines_title">忽略空行</string>
+    <string name="ignore_blank_lines_summary">忽略 LRC 文件中的空行，而不将其显示为气泡动画。</string>
     <string name="treat_all_lyrics_files_as_utf8_title">将所有歌词文件视为UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">强制以 UTF-8 编码读取音频文件。
         这优化了文件解析过程，但在某些情况下可能导致歌曲歌词中出现异常字符。
@@ -698,8 +698,8 @@
     <string name="prefer_remaining_time_summary">显示歌曲剩余时间，而不是全长。</string>
     <string name="prefer_album_artist_name_title">"首选专辑艺术家名称"</string>
     <string name="prefer_album_artist_name_summary">显示专辑艺术家的名称，而不显示单曲歌手的名称（若有）。</string>
-    <string name="player_blur_intensity_title">Blur intensity</string>
-    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
+    <string name="player_blur_intensity_title">模糊强度</string>
+    <string name="player_blur_intensity_summary">调整模糊主题中的背景模糊强度。调低数值可能会提升性能。</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">启动时自动播放</string>
     <string name="queue_next_mode_title">“下一首播放”模式</string>
@@ -884,4 +884,43 @@
     <string name="uncaught_error_restart_app">重启应用</string>
     <string name="uncaught_error_github">在GitHub上反馈问题</string>
     <string name="uncaught_error_send">发送报告</string>
+    <string name="support_my_work">支持我的作品</string>
+    <string name="lastfm_login_username">用户名</string>
+    <string name="lastfm_login_password">密码</string>
+    <string name="lastfm_login_ok">登录</string>
+    <string name="lastfm_login_toggle_password_visibility">切换显示/隐藏密码</string>
+    <string name="lastfm_connected_account">已关联账户：</string>
+    <string name="lastfm_logout">退出登录</string>
+    <string name="error_lastfm_auth">会话已过期或凭据无效。请重新登录。</string>
+    <string name="error_lastfm_credentials">您的凭据无效。请核对后再试一次。</string>
+    <string name="error_lastfm_params">参数无效。这可能是本软件方面的问题。</string>
+    <string name="error_lastfm_service">Last.fm 现在处于故障或维护状态。请稍后再试。</string>
+    <string name="error_lastfm_rate_limit">请求数量过多。请稍等一段时间再重新上传记录。</string>
+    <string name="error_lastfm_generic">Last.fm 发生意外错误。请重试。</string>
+    <string name="error_network_timeout">连接超时。请检查您的互联网连接后重试。</string>
+    <string name="github">GitHub</string>
+    <string name="telegram_community">Telegram 社区</string>
+    <string name="telegram_community_summary">加入我们的 Telegram 社区，接收版本更新和其他消息。</string>
+    <string name="network_title">网络</string>
+    <string name="network_summary">管理 Last.fm 集成、歌词提供方和元数据下载等联网功能。</string>
+    <string name="images_title">图片</string>
+    <string name="lastfm_title">Last.fm</string>
+    <string name="network_features_title">启用联网功能</string>
+    <string name="network_features_summary">允许本应用使用 Last.fm 集成、歌词下载和专辑封面获取等联网服务。</string>
+    <string name="wifi_only_network_features_title">只在 Wi-Fi 下使用联网功能</string>
+    <string name="wifi_only_network_features_summary">只在连接到 Wi-Fi 时允许播放日志记录、歌词和专辑封面下载等联网功能。</string>
+    <string name="lastfm_login_title">登录 Last.fm</string>
+    <string name="lastfm_login_summary">使用你的 Last.fm 账户进行授权，启用播放日志记录和正在播放信息更新。</string>
+    <string name="lastfm_scrobbling_title">启用 Last.fm 播放日志记录</string>
+    <string name="lastfm_scrobbling_summary">自动将已播放曲目上报到您的 Last.fm 听歌记录。</string>
+    <string name="lastfm_now_playing_title">更新 Last.fm 上的正在播放信息</string>
+    <string name="lastfm_now_playing_summary">在您的 Last.fm 个人资料上实时显示正在播放的曲目。</string>
+    <string name="lastfm_biography_title">下载艺术家和专辑介绍</string>
+    <string name="lastfm_biography_summary">从 Last.fm 获取艺术家和专辑的介绍。</string>
+    <string name="use_lrclib_provider_title">使用 LRCLib 服务</string>
+    <string name="use_lrclib_provider_summary">允许从 LRCLib 服务下载歌词。</string>
+    <string name="use_betterlyrics_provider_title">使用 BetterLyrics 服务</string>
+    <string name="use_betterlyrics_provider_summary">允许从 BetterLyrics 服务下载歌词。</string>
+    <string name="use_simpmusic_provider_summary">允许从 SimpMusic Lyrics 服务下载歌词。</string>
+    <string name="use_simpmusic_provider_title">使用 SimpMusic Lyrics 服务</string>
 </resources>

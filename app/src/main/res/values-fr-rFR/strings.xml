@@ -354,6 +354,7 @@
     </plurals>
     <plurals name="albums">
         <item quantity="one">Album</item>
+        <item quantity="many"></item>
         <item quantity="other">Albums</item>
     </plurals>
     <plurals name="x_songs">
@@ -362,6 +363,7 @@
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d album</item>
+        <item quantity="many"></item>
         <item quantity="other">%d albums</item>
     </plurals>
     <plurals name="x_artists">
