@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
 import androidx.core.content.edit
+import com.mardous.booming.R
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.network.lastfm.LastFmFailure
 import com.mardous.booming.data.model.network.lastfm.LastFmLoginState
@@ -22,11 +23,15 @@ import com.mardous.booming.data.remote.lastfm.model.NowPlayingResponse
 import com.mardous.booming.data.remote.lastfm.model.ScrobbleResponse
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.util.CryptoUtil
+import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.statement.bodyAsText
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import java.net.ConnectException
+import java.net.SocketTimeoutException
 import kotlin.io.encoding.Base64
 
 interface NetworkRepository {
@@ -91,9 +96,30 @@ class NetworkRepositoryImpl(
                 return
             }
         } catch (e: Exception) {
-            Log.e(TAG, "Last.fm: log-in error", e)
-            lastFmLoginStateFlow.value = LastFmLoginState.Failure(context)
-            return
+            when (e) {
+                is ClientRequestException -> {
+                    val failure = try {
+                        val responseAsText = e.response.bodyAsText()
+                        val lastFmError = Json.decodeFromString<LastFmError>(responseAsText)
+                        LastFmFailure.fromCode(lastFmError.error)
+                    } catch (_: Exception) {
+                        LastFmFailure.Unknown
+                    }
+                    lastFmLoginStateFlow.value = LastFmLoginState.Failure(context, failure)
+                }
+
+                is ConnectException,
+                is SocketTimeoutException -> {
+                    lastFmLoginStateFlow.value = LastFmLoginState.Failure(
+                        context.getString(R.string.error_network_timeout)
+                    )
+                }
+
+                else -> {
+                    Log.e(TAG, "Last.fm: log-in error", e)
+                    lastFmLoginStateFlow.value = LastFmLoginState.Failure(context)
+                }
+            }
         }
     }
 
