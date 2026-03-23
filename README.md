@@ -116,7 +116,7 @@
 - 💬 **[Community](https://github.com/mardous/BoomingMusic/wiki/Community)**  
   Users and contributors
 
-- 🌐 **[Translations](https://hosted.weblate.org/engage/booming-music)**  
+- 🌐 **[Translations](https://hosted.weblate.org/projects/booming-music/)**  
   Help us translate Booming Music into your language
 
 - ❓ **[FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)**  
@@ -133,9 +133,9 @@ You can also:
 - Submit pull requests
 - Suggest new ideas
 
-**Translations:** Managed on [Hosted Weblate](https://hosted.weblate.org/engage/booming-music).
+**Translations:** Managed on [Hosted Weblate](https://hosted.weblate.org/projects/booming-music/).
 
-[![Translation Status](https://hosted.weblate.org/widget/booming-music/horizontal-auto.svg)](https://hosted.weblate.org/engage/booming-music/)
+[![Translation Status](https://hosted.weblate.org/widget/booming-music/horizontal-auto.svg)](https://hosted.weblate.org/projects/booming-music/)
 
 ## 💖 Support Development
 
