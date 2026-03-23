@@ -884,4 +884,10 @@
     <string name="uncaught_error_restart_app">Uygulamayı yeniden başlat</string>
     <string name="uncaught_error_github">Github\'da bir konu aç</string>
     <string name="uncaught_error_send">Rapor gönder</string>
+    <string name="lastfm_login_username">Kullanıcı adı</string>
+    <string name="lastfm_login_password">Şifre</string>
+    <string name="lastfm_login_ok">Giriş yap</string>
+    <string name="lastfm_login_toggle_password_visibility">Parolanın görünürlüğünü değiştir</string>
+    <string name="lastfm_connected_account">Bağlanılmış hesap:</string>
+    <string name="lastfm_logout">Çıkış yap</string>
 </resources>
