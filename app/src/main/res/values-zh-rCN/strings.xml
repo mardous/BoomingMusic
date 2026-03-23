@@ -908,7 +908,7 @@
     <string name="network_features_title">启用联网功能</string>
     <string name="network_features_summary">允许本应用使用 Last.fm 集成、歌词下载和专辑封面获取等联网服务。</string>
     <string name="wifi_only_network_features_title">只在 Wi-Fi 下使用联网功能</string>
-    <string name="wifi_only_network_features_summary">只在连接到 Wi-Fi 时允许播放日志记录、歌词和专辑封面下载等联网功能。</string>
+    <string name="wifi_only_network_features_summary">只在连接到 Wi-Fi 时允许联网功能。</string>
     <string name="lastfm_login_title">登录 Last.fm</string>
     <string name="lastfm_login_summary">使用你的 Last.fm 账户进行授权，启用播放日志记录和正在播放信息更新。</string>
     <string name="lastfm_scrobbling_title">启用 Last.fm 播放日志记录</string>
