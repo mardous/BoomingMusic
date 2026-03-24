@@ -312,8 +312,8 @@
     <string name="length">Length</string>
     <string name="label_last_modified">Last modified</string>
     <string name="label_channels">Channels</string>
-    <string name="label_variable_bitrate">Variable Bitrate</string>
-    <string name="label_loss_less">Loss Less</string>
+    <string name="label_variable_bitrate">VBR</string>
+    <string name="label_loss_less">Loss-Less</string>
     <string name="label_bit_rate">Bitrate</string>
     <string name="label_sampling_rate">Sampling rate</string>
     <string name="replay_gain">ReplayGain</string>
