@@ -1,3 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="action_play">Esita</string>
+    <string name="action_play_all">Esita kõik</string>
+    <string name="action_shuffle_play">Sega esitusloend</string>
+    <string name="action_queue_next">Lisa järgmiseks esitusjärjekorda</string>
+    <string name="shuffle_all_label">Sega kõik lood</string>
+    <string name="shuffle_mode">Lugude segamise viis</string>
+    <string name="repeat_mode">Korduse viis</string>
+    <string name="shuffle_button_tip">Klõpsa tavaliseks segamiseks. Pika vajutusega näed lisavalikuid.</string>
+    <string name="action_play_pause">Esita/Peata esitus</string>
+    <string name="action_pause">Peata esitus</string>
+    <string name="action_next">Järgmine</string>
+    <string name="action_previous">Eelmine</string>
+    <string name="action_cancel">Katkesta</string>
+    <string name="action_seek_backward">Keri tagasi</string>
+    <string name="action_seek_forward">Keri edasi</string>
+    <string name="action_cycle_repeat">Lappa korduse režiimid läbi</string>
+    <string name="action_toggle_shuffle">Muuda lugude segamise viisi</string>
+    <string name="reset_action">Lähtesta</string>
+    <string name="action_more">Veel</string>
+    <string name="import_action">Impordi</string>
+    <string name="create_action">Loo</string>
+    <string name="search_label">Otsi</string>
+    <string name="search_hint">Otsi oma muusikakogust…</string>
+    <string name="action_voice_search">Häälotsing</string>
+    <string name="speech_not_supported">Sinu seade ei toeta häälsisendit</string>
+    <string name="search_artist_x_label">Otsi esitajat: %s</string>
+    <string name="search_album_x_label">Otsi albumit: %s</string>
+    <string name="search_list_x_label">Otsinguloend: %s</string>
+    <string name="search_year_x_label">Otsinguaasta: %s</string>
+    <string name="search_in_folder_x">Otsi kaustast: %s</string>
+    <string name="search_last_added">Otsi uut muusikat</string>
+    <string name="shuffle_mode_album">Albumikohane segamine</string>
+    <string name="shuffle_mode_artist">Esitajakohane segamine</string>
+    <string name="action_share">Jaga</string>
+    <string name="action_save">Salvesta</string>
+    <string name="what_do_you_want_to_share">Mida sa tahaksid jagada?</string>
+    <string name="the_audio_file">Helifail</string>
+    <string name="i_am_listening">Ma olen kuulamas…</string>
 </resources>
