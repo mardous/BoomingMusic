@@ -16,13 +16,13 @@
     <string name="action_seek_backward">Siirry taaksepäin</string>
     <string name="action_seek_forward">Siirry eteenpäin</string>
     <string name="action_cycle_repeat">Syklin toistotila</string>
-    <string name="action_toggle_shuffle">Toggle shuffle mode</string>
+    <string name="action_toggle_shuffle">Satunnaistoiston asetus</string>
     <string name="reset_action">Reset</string>
     <string name="action_more">Lisää</string>
     <string name="import_action">Tuo</string>
     <string name="create_action">Luo</string>
     <string name="search_label">Etsi</string>
-    <string name="search_hint">Search your library…</string>
+    <string name="search_hint">Hae kirjastosta…</string>
     <string name="action_voice_search">Äänen haku</string>
     <string name="speech_not_supported">Laitteesi ei tue puhesyötettä</string>
     <string name="search_artist_x_label">Etsi esittäjä: %s</string>
@@ -38,7 +38,7 @@
     <string name="action_save">Tallenna</string>
     <string name="what_do_you_want_to_share">Mitä sinä haluat jakaa?</string>
     <string name="the_audio_file">Äänitiedosto</string>
-    <string name="i_am_listening">I\'m listening…</string>
+    <string name="i_am_listening">Kuuntelen…</string>
     <string name="currently_listening_to_x_by_x">Kuuntelen %1$s esittäjältä %2$s</string>
     <string name="share_to_stories">Jaa tarinoihin</string>
     <string name="could_not_create_the_story">Tarinaa ei voitu luoda.</string>
@@ -84,7 +84,7 @@
     <string name="playlist_updated">Soittolista päivitetty.</string>
     <string name="failed_to_save_playlist">Soittolistan tallennus epäonnistui.</string>
     <string name="saved_x_playlists">Tallennetut %1$d soittolistat.</string>
-    <string name="saved_x_playlists_failed_to_save_x">Saved %1$d playlists, failed to save %2$d.</string>
+    <string name="saved_x_playlists_failed_to_save_x">Tallennettu %1$d soittolistaa, epäonnistuttu tallentamaan %2$d.</string>
     <string name="delete_playlist_title">Poista soittolista</string>
     <string name="delete_playlists_title">Poista soittolistat</string>
     <string name="delete_playlist_x"><![CDATA[Poista soittolista <b>%s</b>?]]></string>
@@ -121,7 +121,7 @@
     <string name="delete_songs_title">Poista kappaleet</string>
     <string name="delete_x_songs">Poista %d kappaletta?</string>
     <string name="delete_the_song_x">Poista kappale %s?</string>
-    <string name="deleting_songs">Deleting songs, wait…</string>
+    <string name="deleting_songs">Poistetaan kappaleita, odota…</string>
     <string name="song_x_of_x">%1$d %2$d • %3$s</string>
     <string name="no_equalizer">Taajuuskorjainta ei löytynyt.</string>
     <string name="audio_focus_denied">Äänen tarkennus estetty.</string>
@@ -206,7 +206,7 @@
     <string name="albums_label">Albumit</string>
     <string name="artists_label">Esittäjät</string>
     <string name="album_artists_label">Albumin artistit</string>
-    <string name="genres_label">Genres</string>
+    <string name="genres_label">Tyylilajit</string>
     <string name="folders_label">Kansiot</string>
     <string name="playlists_label">Soittolistat</string>
     <string name="playlist_label">Soittolista</string>
@@ -274,7 +274,7 @@
     <string name="listeners_label">Kuuntelijat</string>
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Tallenna albumin kansi</string>
-    <string name="saving_cover_please_wait">Saving cover, wait…</string>
+    <string name="saving_cover_please_wait">Tallennetaan kansikuvaa, odota…</string>
     <string name="save_artwork_error">Kansion tallentaminen paikalliseen tallennustilaan epäonnistui</string>
     <string name="save_artwork_success">Albumin kansi tallennettu</string>
     <string name="save_artwork_view_action">Näytä</string>
@@ -283,7 +283,7 @@
         \n\nVain sinulla on täysi vastuu tallennettujen albumikansien käytöstä.</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
-    <string name="keyboard">Keyboard</string>
+    <string name="keyboard">Näppäimistö</string>
     <string name="label_file_path">Tiedoston polku</string>
     <string name="size">Tiedoston koko</string>
     <string name="label_file_format">Muoto</string>
@@ -304,8 +304,8 @@
     <string name="length">Pituus</string>
     <string name="label_last_modified">Viimeksi muokattu</string>
     <string name="label_channels">Kanavat</string>
-    <string name="label_variable_bitrate">Vaihteleva Bittinopeus</string>
-    <string name="label_loss_less">Tappio Vähemmän</string>
+    <string name="label_variable_bitrate">Vaihteleva bittinopeus</string>
+    <string name="label_loss_less">Hävikitön</string>
     <string name="label_bit_rate">Bittinopeus</string>
     <string name="label_sampling_rate">Näytteenoton määrä</string>
     <string name="replay_gain">ReplayGain</string>
@@ -410,17 +410,17 @@
     <string name="autoeq_label">AutoEq</string>
     <string name="graphic_eq_label">Graphic EQ</string>
     <string name="graphic_eq_band_count">%d-band</string>
-    <string name="eq_profiles_title">EQ Profiles</string>
-    <string name="autoeq_profiles_title">AutoEq Profiles</string>
-    <string name="eq_profile_title">Profile</string>
-    <string name="change_band_count_title">Change band count</string>
-    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state. Any other profiles saved for the current band configuration cannot be used with the new band configuration. \n\nDo you want to continue?</string>
-    <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
-    <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
-    <string name="share_eq_profiles">Share EQ Profiles</string>
+    <string name="eq_profiles_title">EQ-profiilit</string>
+    <string name="autoeq_profiles_title">AutoEq-profiilit</string>
+    <string name="eq_profile_title">Profiili</string>
+    <string name="change_band_count_title">Vaihda taajuus lukua</string>
+    <string name="change_band_count_message">Vaihtamalla taajuuksien määrää tulet nollaamaan nykyisen profiilin sen alkuperäisasetuksiin. Muita tallennettuja profiileja nykyiselle taajuudelle ei voida käyttää nykyiselle taajuusasetukselle. \n\nHaluatko jatkaa?</string>
+    <string name="band_configuration_changed_successfully">Taajuusasetuksen tallennus onnistui.</string>
+    <string name="band_configuration_could_not_be_changed">Taajuusasetusta ei voitu muuttaa.</string>
+    <string name="share_eq_profiles">jaa EQ-profiileja</string>
     <string name="there_is_nothing_to_export">Ei ole mitään vietävää.</string>
     <string name="there_is_nothing_to_import">Ei ole mitään tuotavaa.</string>
-    <string name="an_unexpected_error_occurred">An unexpected error occurred.</string>
+    <string name="an_unexpected_error_occurred">Odottamaton virhe tapahtui.</string>
     <string name="share_profiles">Share profiles</string>
     <string name="select_profiles_to_share">Select profiles to share:</string>
     <string name="export_profiles">Export profiles</string>
