@@ -214,7 +214,7 @@
     <string name="last_added_label">上次添加</string>
     <string name="top_tracks_label">热门曲目</string>
     <string name="history_label">历史记录</string>
-    <string name="not_recently_played">无最近播放</string>
+    <string name="not_recently_played">近期未播放</string>
     <string name="play_info">播放信息</string>
     <string name="track_play_counts">曲目播放计数</string>
     <string name="song_stat_never_label">从未播放</string>
@@ -399,11 +399,11 @@
     <string name="shuffle_mode_combined_description">根据收藏、播放记录和近期播放混合播放。</string>
     <!-- Equalizer -->
     <string name="equalizer_label">均衡器</string>
-    <string name="autoeq_label">自动均衡器</string>
+    <string name="autoeq_label">AutoEq</string>
     <string name="graphic_eq_label">图形化均衡器</string>
     <string name="graphic_eq_band_count">%d 频段均衡器</string>
     <string name="eq_profiles_title">均衡器配置</string>
-    <string name="autoeq_profiles_title">自动均衡器配置</string>
+    <string name="autoeq_profiles_title">AutoEq 配置</string>
     <string name="eq_profile_title">配置</string>
     <string name="change_band_count_title">更改频段数量</string>
     <string name="change_band_count_message">更改频段数量将重置当前配置为默认。
@@ -426,18 +426,18 @@
     <string name="select_a_file_containing_booming_eq_profiles">选择一个 Booming Music 均衡器配置文件。</string>
     <string name="imported_x_profiles">导入了 %d 个配置文件。</string>
     <string name="no_profile_imported">没有配置文件被导入。</string>
-    <string name="import_autoeq_profile">导入自动均衡器配置</string>
-    <string name="select_a_file_containing_autoeq_params">选择一个包含自动均衡器/图形化均衡器参数的文件。</string>
-    <string name="no_autoeq_profiles">没有自动均衡器配置被导入。</string>
+    <string name="import_autoeq_profile">导入 AutoEq 配置</string>
+    <string name="select_a_file_containing_autoeq_params">选择一个 AutoEq （图形化均衡器）配置文件。</string>
+    <string name="no_autoeq_profiles">未导入 AutoEq 配置。</string>
     <string name="reset_equalizer">重置均衡器</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">确定要重置均衡器吗？
         \n\n这将清除您的所有配置。</string>
     <string name="not_supported">不支持</string>
     <string name="set_eq_engine_title">设置均衡引擎</string>
     <string name="eq_engine_basic_title">传统引擎</string>
-    <string name="eq_engine_basic_description">采用5频段经典配置，具有更好的设备兼容性。</string>
+    <string name="eq_engine_basic_description">5频段经典配置，设备兼容性更好。</string>
     <string name="eq_engine_precision_title">精密引擎</string>
-    <string name="eq_engine_precision_description">适用 Hi-Fi 处理，支持多达15段频段控制，具有更好的声学塑造。</string>
+    <string name="eq_engine_precision_description">高保真处理引擎，最高支持15频段调节，声效塑造效果更好。</string>
     <string name="set_eq_engine_reset_warning">更改均衡引擎将重置均衡器设置，包括自定义配置。</string>
     <string name="eq_empty_bands">均衡引擎未返回任何频段配置。</string>
     <string name="enable_equalizer">启用均衡器</string>
@@ -456,7 +456,7 @@
     <string name="autoeq_profile_imported_successfully">自动均衡器导入成功。</string>
     <string name="profile_x_deleted">配置“%s”已被删除。</string>
     <string name="autoeq_profile_x_deleted">自动均衡器配置“%s”已被删除。</string>
-    <string name="bassboost_label">BassBoost 低音增强</string>
+    <string name="bassboost_label">低音增强</string>
     <string name="virtualizer_label">虚拟环绕声</string>
     <string name="loudness_enhancer">放大器</string>
     <string name="sound_settings">声音设置</string>
@@ -590,7 +590,7 @@
     <string name="gestures_header">手势</string>
     <string name="headphones_header">耳机</string>
     <string name="bluetooth_header">蓝牙</string>
-    <string name="audio_focus_header">音频聚焦</string>
+    <string name="audio_focus_header">音频焦点</string>
     <string name="shuffle_mode_header">随机模式</string>
     <string name="display_header">显示</string>
     <string name="backup_restore_header">备份/恢复</string>
@@ -719,14 +719,14 @@
     <string name="pause_on_bluetooth_disconnect_title">蓝牙断开时暂停</string>
     <string name="pause_on_bluetooth_disconnect_summary">当 A2DP 蓝牙设备断开时暂停播放。推荐。</string>
     <string name="ignore_audio_focus_title">忽略音频焦点</string>
-    <string name="ignore_audio_focus_summary">总是在后台播放音频，不管是否播放任何其他音频。</string>
+    <string name="ignore_audio_focus_summary">无视正在播放的任何其他音频，始终保持音频后台播放。</string>
     <string name="pause_on_zero_volume_title">在静音时停止播放</string>
     <string name="pause_on_zero_volume_summary">当音量下降为零时暂停歌曲，并在音量上升时恢复播放。同时支持在应用程序外工作。</string>
     <string name="mp3_index_seeking_title">MP3索引定位</string>
     <string name="mp3_index_seeking_summary">将整个MP3文件加载到内存中，以便跳转而不是依赖Xing 头部信息。
         只在跳转部分VBR文件失败时使用。
         需要重启应用程序。</string>
-    <string name="play_option_always_visible_title">一直显示“播放”按钮</string>
+    <string name="play_option_always_visible_title">始终显示“播放”选项</string>
     <string name="play_option_always_visible_summary">如果启用该选项，无论点击行为设置为何，“播放”按钮将一直出现在歌曲菜单中。</string>
     <string name="play_option_whole_list_title">“播放”选项播放整个列表</string>
     <string name="play_option_whole_list_summary">启用后，从菜单中点击播放将开始播放整个播放列表，而不是仅播放当前歌曲。</string>
@@ -763,7 +763,7 @@
     <string name="ignore_articles_when_sorting_title">在排序时忽略冠词</string>
     <string name="ignore_articles_when_sorting_summary">排序时忽略冠词（“the”，“a”，“an”等）。</string>
     <string name="trash_music_title">移至回收站</string>
-    <string name="trash_music_summary">发送已删除的文件到回收站。</string>
+    <string name="trash_music_summary">将被删除的文件送往回收站。</string>
     <string name="recursive_folder_actions_title">影响子文件夹的操作</string>
     <string name="recursive_folder_actions_summary">当对文件夹执行操作时，选择哪些操作也应作用于子文件夹。</string>
     <string name="enable_history_title">启用播放历史</string>
@@ -874,8 +874,7 @@
     <string name="download_action">下载</string>
     <string name="downloading_update">正在下载 Booming Music 更新。</string>
     <string name="uncaught_error_title">哎呀！出现了意料之外的事！</string>
-    <string name="uncaught_error_message">似乎有什么东西出错并导致了软件崩溃。
-        如果您能够向我们发送错误报告到我们的 Telegram 群组或通过电子邮件，将会很有帮助。</string>
+    <string name="uncaught_error_message">似乎出了些问题，导致本软件崩溃。 如果您能够向我们发送错误报告到我们的 Telegram 群组或邮箱，将有助于解决。</string>
     <string name="uncaught_error_report">错误报告</string>
     <string name="uncaught_error_report_copied">已复制错误报告到剪贴板。</string>
     <string name="uncaught_error_restart_app">重启应用</string>
