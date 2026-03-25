@@ -304,8 +304,8 @@
     <string name="length">Durée</string>
     <string name="label_last_modified">Dernière modification</string>
     <string name="label_channels">Chaînes</string>
-    <string name="label_variable_bitrate">Débit binaire variable</string>
-    <string name="label_loss_less">Moins de perte</string>
+    <string name="label_variable_bitrate">VBR</string>
+    <string name="label_loss_less">Sans perte</string>
     <string name="label_bit_rate">Débit binaire</string>
     <string name="label_sampling_rate">Taux d\'échantillonnage</string>
     <string name="replay_gain">Gain de lecture</string>
