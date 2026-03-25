@@ -383,7 +383,7 @@
         <item quantity="other">%d éléments</item>
     </plurals>
     <!-- Home -->
-    <string name="home_label">Home</string>
+    <string name="home_label">Accueil</string>
     <string name="shuffle_action">Mélanger</string>
     <string name="top_artists">Meilleurs artistes</string>
     <string name="top_albums">Meilleurs albums</string>
