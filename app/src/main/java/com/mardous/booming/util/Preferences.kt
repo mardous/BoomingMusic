@@ -25,7 +25,6 @@ import androidx.core.content.edit
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationBarView.LabelVisibility
 import com.mardous.booming.R
-import com.mardous.booming.appContext
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.Cutoff
 import com.mardous.booming.core.model.action.FolderAction
@@ -357,10 +356,10 @@ object Preferences : KoinComponent {
             return notNullSet
         }
 
-    fun getLastAddedCutoff(context: Context = appContext()): Cutoff =
+    fun getLastAddedCutoff(context: Context): Cutoff =
         getCutoff(context, LAST_ADDED_CUTOFF, true)
 
-    fun getHistoryCutoff(context: Context = appContext()): Cutoff =
+    fun getHistoryCutoff(context: Context): Cutoff =
         getCutoff(context, HISTORY_CUTOFF)
 
     private fun getCutoff(
@@ -466,8 +465,6 @@ object Preferences : KoinComponent {
 
     inline fun <reified T : Enum<T>> SharedPreferences.enumValueByOrdinal(key: String, defaultValue: T): T =
         getInt(key, defaultValue.ordinal).toEnum<T>() ?: defaultValue
-
-    private fun appStr(resid: Int): String = appContext().getString(resid)
 }
 
 interface GeneralTheme {

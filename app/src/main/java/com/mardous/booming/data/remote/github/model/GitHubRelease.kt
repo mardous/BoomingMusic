@@ -83,7 +83,7 @@ class GitHubRelease(
 
     fun isNewer(context: Context): Boolean {
         try {
-            val packageInfo = context.packageManager.packageInfo()
+            val packageInfo = context.packageManager.packageInfo(context)
             val installedVersionName = packageInfo?.versionName ?: return true
             var updateVersionName = this.tag
             if (updateVersionName.startsWith("v", ignoreCase = true)) {

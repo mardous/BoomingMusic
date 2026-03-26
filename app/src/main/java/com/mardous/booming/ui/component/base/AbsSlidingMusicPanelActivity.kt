@@ -340,7 +340,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         val miniPlayerHeight = dip(R.dimen.mini_player_height)
         val bottomNavHeight = dip(R.dimen.bottom_nav_height)
 
-        val bottomInsets = windowInsets.getBottomInsets()
+        val bottomInsets = windowInsets.getBottomInsets(this)
         val heightOfBar =  bottomInsets + miniPlayerHeight
         val heightOfBarWithTabs = heightOfBar + bottomNavHeight
         if (hide) {
@@ -350,11 +350,11 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                 fabBottomMargin = LibraryMargin(
                     margin = if (isBottomNavVisible) bottomNavHeight else 0,
                     additionalSpace = dip(R.dimen.fab_margin_top_left_right),
-                    bottomInsets = windowInsets.getBottomInsets()
+                    bottomInsets = windowInsets.getBottomInsets(this)
                 ),
                 bottomSheetMargin = LibraryMargin(
                     margin = 0,
-                    bottomInsets = windowInsets.getBottomInsets()
+                    bottomInsets = windowInsets.getBottomInsets(this)
                 )
             )
         } else {
@@ -371,11 +371,11 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                         fabBottomMargin = LibraryMargin(
                             margin = miniPlayerHeight + bottomNavHeight,
                             additionalSpace = dip(R.dimen.fab_margin_top_left_right),
-                            bottomInsets = windowInsets.getBottomInsets()
+                            bottomInsets = windowInsets.getBottomInsets(this)
                         ),
                         bottomSheetMargin = LibraryMargin(
                             margin = miniPlayerHeight,
-                            bottomInsets = windowInsets.getBottomInsets()
+                            bottomInsets = windowInsets.getBottomInsets(this)
                         )
                     )
                 } else {
@@ -391,11 +391,11 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                         fabBottomMargin = LibraryMargin(
                             margin = miniPlayerHeight,
                             additionalSpace = dip(R.dimen.fab_margin_top_left_right),
-                            bottomInsets = windowInsets.getBottomInsets()
+                            bottomInsets = windowInsets.getBottomInsets(this)
                         ),
                         bottomSheetMargin = LibraryMargin(
                             margin = miniPlayerHeight,
-                            bottomInsets = windowInsets.getBottomInsets()
+                            bottomInsets = windowInsets.getBottomInsets(this)
                         )
                     )
                 }

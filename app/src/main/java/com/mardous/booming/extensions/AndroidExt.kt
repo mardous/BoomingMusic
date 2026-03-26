@@ -17,12 +17,12 @@
 
 package com.mardous.booming.extensions
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.ResolveInfoFlags
 import android.os.Build
 import androidx.core.text.HtmlCompat
-import com.mardous.booming.appContext
 
 fun hasQ() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
@@ -34,7 +34,7 @@ fun hasT() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
 
 fun hasU() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 
-fun PackageManager.packageInfo(packageName: String = appContext().packageName) =
+fun PackageManager.packageInfo(context: Context, packageName: String = context.packageName) =
     runCatching {
         if (hasT()) getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0))
         else getPackageInfo(packageName, 0)

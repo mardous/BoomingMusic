@@ -17,37 +17,28 @@
 
 package com.mardous.booming.extensions
 
-import android.os.Build
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LAYOUT_DIRECTION_RTL
 import android.view.ViewGroup.MarginLayoutParams
 import android.widget.Button
 import android.widget.ImageView
-import androidx.core.graphics.Insets
-import androidx.core.view.*
+import androidx.core.view.NestedScrollingChild3
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type
+import androidx.core.view.marginBottom
+import androidx.core.view.marginEnd
+import androidx.core.view.marginStart
+import androidx.core.view.marginTop
+import androidx.core.view.updateLayoutParams
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
-import com.mardous.booming.appContext
 
-fun WindowInsetsCompat?.getBottomGesturesInsets(): Int {
-    if (this == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return 0
-
-    val tappableElements = getInsets(Type.tappableElement())
-    if (tappableElements.bottom == 0) {
-        val insets = Insets.max(
-            getInsets(Type.systemGestures()),
-            getInsets(Type.systemBars())
-        )
-        return insets.bottom
-    }
-    return 0
-}
-
-fun WindowInsetsCompat?.getBottomInsets(): Int {
+fun WindowInsetsCompat?.getBottomInsets(context: Context): Int {
     return this?.getInsets(Type.systemBars())?.bottom
-        ?: appContext().getNavigationBarHeight()
+        ?: context.getNavigationBarHeight()
 }
 
 typealias InsetsConsumer = (View, WindowInsetsCompat) -> Unit

@@ -17,9 +17,10 @@
 
 package com.mardous.booming.util
 
+import android.content.Context
 import android.os.Environment
-import com.mardous.booming.appContext
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
 import java.io.File
 
 object FileUtil : KoinComponent {
@@ -48,13 +49,13 @@ object FileUtil : KoinComponent {
         externalStorageDirectory().resolve(PLAYLISTS_DIRECTORY_NAME).ensureDirectory()
 
     fun customArtistImagesDirectory() =
-        appContext().filesDir.resolve(CUSTOM_ARTIST_IMAGES_DIRECTORY_NAME).ensureDirectory()
+        get<Context>().filesDir.resolve(CUSTOM_ARTIST_IMAGES_DIRECTORY_NAME).ensureDirectory()
 
     fun customPlaylistImagesDirectory() =
-        appContext().filesDir.resolve(CUSTOM_PLAYLIST_IMAGES_DIRECTORY_NAME).ensureDirectory()
+        get<Context>().filesDir.resolve(CUSTOM_PLAYLIST_IMAGES_DIRECTORY_NAME).ensureDirectory()
 
     fun thumbsDirectory() =
-        appContext().externalCacheDir?.resolve(THUMBS_DIRECTORY_NAME).ensureDirectory()
+        get<Context>().externalCacheDir?.resolve(THUMBS_DIRECTORY_NAME).ensureDirectory()
 
     fun getDefaultStartDirectory(): File {
         val musicDir = externalStorageDirectory(Environment.DIRECTORY_MUSIC)

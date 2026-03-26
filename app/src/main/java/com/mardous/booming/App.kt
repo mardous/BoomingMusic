@@ -18,7 +18,6 @@
 package com.mardous.booming
 
 import android.app.Application
-import android.content.Context
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.os.StrictMode.VmPolicy
@@ -59,14 +58,10 @@ import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-fun appContext(): Context = App.instance.applicationContext
-
 class App : Application(), SingletonImageLoader.Factory {
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
-
         startKoin {
             androidContext(this@App)
             modules(appModules)
@@ -186,10 +181,6 @@ class App : Application(), SingletonImageLoader.Factory {
     }
 
     companion object {
-        @get:Synchronized
-        internal lateinit var instance: App
-            private set
-
         fun isExperimentalBuild(): Boolean =
             BuildConfig.VERSION_NAME.contains("(alpha|beta|rc)".toRegex(RegexOption.IGNORE_CASE))
     }
