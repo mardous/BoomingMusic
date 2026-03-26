@@ -15,7 +15,7 @@
     <string name="action_cancel">Avbryt</string>
     <string name="action_seek_backward">Sök bakåt</string>
     <string name="action_seek_forward">Sök framåt</string>
-    <string name="action_cycle_repeat">Cykel upprepningsläge</string>
+    <string name="action_cycle_repeat">Repetitionsläge (cykel)</string>
     <string name="action_toggle_shuffle">Aktivera/inaktivera shuffle-läge</string>
     <string name="reset_action">Återställ</string>
     <string name="action_more">Mer</string>
@@ -32,8 +32,8 @@
     <string name="search_year_x_label">Sök efter år: %s</string>
     <string name="search_in_folder_x">Sök i mapp: %s</string>
     <string name="search_last_added">Sök senaste musik</string>
-    <string name="shuffle_mode_album">Album blanda</string>
-    <string name="shuffle_mode_artist">Artister blanda</string>
+    <string name="shuffle_mode_album">Blanda album</string>
+    <string name="shuffle_mode_artist">Blanda artister</string>
     <string name="action_share">Dela</string>
     <string name="action_save">Spara</string>
     <string name="what_do_you_want_to_share">Vad vill du dela?</string>
