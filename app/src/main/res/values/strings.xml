@@ -347,6 +347,17 @@
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
     <string name="queue_locked">Queue locked</string>
     <string name="queue_unlocked">Queue unlocked</string>
+    <string name="channel_mono">Mono</string>
+    <string name="channel_stereo">Stereo</string>
+    <string name="channel_stereo_2_1">2.1 Stereo</string>
+    <string name="channel_quadraphonic">Quadraphonic</string>
+    <string name="channel_surround_5_0">5.0 Surround</string>
+    <string name="channel_surround_5_1">5.1 Surround</string>
+    <string name="channel_surround_6_1">6.1 Surround</string>
+    <string name="channel_surround_7_1">7.1 Surround</string>
+    <string name="channel_surround_9_1">9.1 Surround</string>
+    <string name="channel_surround_11_1">11.1 Surround</string>
+    <string name="channel_surround_13_1">13.1 Surround</string>
 
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Line</string>

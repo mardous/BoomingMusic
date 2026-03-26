@@ -101,11 +101,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                 val filePath = file.getPrettyAbsolutePath()
                 val fileSize = file.getHumanReadableSize()
 
-                val audioHeaderInfo = getAudioHeader(
-                    context,
-                    file.toAudioFile()?.audioHeader,
-                    metadataReader
-                )
+                val audioHeaderInfo = getAudioHeader(file.toAudioFile()?.audioHeader, metadataReader)
 
                 val title = metadataReader.first(MetadataReader.TITLE)
                 val album = metadataReader.first(MetadataReader.ALBUM)
@@ -170,7 +166,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    private fun getAudioHeader(context: Context, header: AudioHeader?, metadataReader: MetadataReader): AudioHeaderInfo {
+    private fun getAudioHeader(header: AudioHeader?, metadataReader: MetadataReader): AudioHeaderInfo {
         return AudioHeaderInfo(
             format = header?.format,
             bitrate = metadataReader.bitrate(),
