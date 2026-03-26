@@ -145,9 +145,17 @@ development costs and dedicate more time to new features.
 
 Your support is greatly appreciated and keeps me motivated to continue improving Booming Music!
 
+<div align="center">
+
 <a href="https://ko-fi.com/christiaam" target="_blank">
 <img src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_red.png" alt="Support me on Ko-fi" style="border: 0px; height: 40px;" />
 </a>
+
+### ❤️ Supporters
+
+**mbeezy** (first donor)
+
+</div>
 
 ## 🙌 Credits
 
