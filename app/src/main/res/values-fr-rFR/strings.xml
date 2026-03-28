@@ -935,4 +935,15 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="use_betterlyrics_provider_summary">Autorisez le téléchargement des paroles depuis le service BetterLyrics.</string>
     <string name="use_simpmusic_provider_title">Utiliser le fournisseur de paroles SimpMusic</string>
     <string name="use_simpmusic_provider_summary">Autorisez le téléchargement des paroles à partir du service SimpMusic Lyrics.</string>
+    <string name="channel_mono">Mono</string>
+    <string name="channel_stereo">Stéréo</string>
+    <string name="channel_stereo_2_1">2.1 Stéréo</string>
+    <string name="channel_quadraphonic">Quadriphonique</string>
+    <string name="channel_surround_5_0">Son surround 5.0</string>
+    <string name="channel_surround_5_1">Son surround 5.1</string>
+    <string name="channel_surround_6_1">Son surround 6.1</string>
+    <string name="channel_surround_7_1">Son surround 7.1</string>
+    <string name="channel_surround_9_1">Son surround 9.1</string>
+    <string name="channel_surround_11_1">Son surround 11.1</string>
+    <string name="channel_surround_13_1">Son surround 13.1</string>
 </resources>
