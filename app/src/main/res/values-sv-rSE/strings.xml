@@ -887,7 +887,7 @@
     <string name="uncaught_error_report">Felrapport</string>
     <string name="uncaught_error_report_copied">Kopierade felrapport till urklipp.</string>
     <string name="uncaught_error_restart_app">Starta om app</string>
-    <string name="uncaught_error_github">Öppet ärende på GitHub</string>
+    <string name="uncaught_error_github">Skapa en \"issue-rapport\" på GitHub</string>
     <string name="uncaught_error_send">Skicka rapport</string>
     <string name="lastfm_login_username">Användarnamn</string>
     <string name="lastfm_login_password">Lösenord</string>
