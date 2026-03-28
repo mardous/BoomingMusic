@@ -32,6 +32,19 @@ fun String.normalize(): String =
         .trim()
         .replace(Regex("\\s+"), " ")
 
+fun CharSequence.sanitize(): String {
+    return toString().replace("/", "_")
+        .replace(":", "_")
+        .replace("*", "_")
+        .replace("?", "_")
+        .replace("\"", "_")
+        .replace("<", "_")
+        .replace(">", "_")
+        .replace("|", "_")
+        .replace("\\", "_")
+        .replace("&", "_")
+}
+
 fun buildInfoString(vararg parts: Any?, delimiter: String = DEFAULT_INFO_DELIMITER): String {
     val sb = StringBuilder()
     if (parts.isNotEmpty()) {
