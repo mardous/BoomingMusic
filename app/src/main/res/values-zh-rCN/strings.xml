@@ -919,4 +919,5 @@
     <string name="use_betterlyrics_provider_summary">允许从 BetterLyrics 服务下载歌词。</string>
     <string name="use_simpmusic_provider_summary">允许从 SimpMusic Lyrics 服务下载歌词。</string>
     <string name="use_simpmusic_provider_title">使用 SimpMusic Lyrics 服务</string>
+    <string name="channel_quadraphonic">4声道</string>
 </resources>
