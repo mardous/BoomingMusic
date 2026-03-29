@@ -919,5 +919,15 @@
     <string name="use_betterlyrics_provider_summary">允许从 BetterLyrics 服务下载歌词。</string>
     <string name="use_simpmusic_provider_summary">允许从 SimpMusic Lyrics 服务下载歌词。</string>
     <string name="use_simpmusic_provider_title">使用 SimpMusic Lyrics 服务</string>
-    <string name="channel_quadraphonic">4声道</string>
+    <string name="channel_quadraphonic">四声道</string>
+    <string name="channel_mono">单声道</string>
+    <string name="channel_stereo">立体声</string>
+    <string name="channel_stereo_2_1">2.1 声道立体声</string>
+    <string name="channel_surround_5_0">5.0 声道环绕声</string>
+    <string name="channel_surround_5_1">5.1 声道环绕声</string>
+    <string name="channel_surround_6_1">6.1 声道环绕声</string>
+    <string name="channel_surround_7_1">7.1 声道环绕声</string>
+    <string name="channel_surround_9_1">9.1 声道环绕声</string>
+    <string name="channel_surround_11_1">11.1 声道环绕声</string>
+    <string name="channel_surround_13_1">13.1 声道环绕声</string>
 </resources>
