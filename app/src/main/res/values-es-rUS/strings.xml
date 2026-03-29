@@ -930,4 +930,15 @@ Podría ser necesario reiniciar la aplicación</string>
     <string name="use_betterlyrics_provider_summary">Permitir la descarga de las letras desde el servicio BetterLyrics.</string>
     <string name="use_simpmusic_provider_title">Usar el proveedor SimpMusic Lyrics</string>
     <string name="use_simpmusic_provider_summary">Permitir la descarga de las letras desde el servicio SimpMusic Lyrics.</string>
+    <string name="channel_mono">Mono</string>
+    <string name="channel_stereo">Estéreo</string>
+    <string name="channel_stereo_2_1">2.1 Estéreo</string>
+    <string name="channel_quadraphonic">Cuadrafónico</string>
+    <string name="channel_surround_5_0">Envolvente 5.0</string>
+    <string name="channel_surround_5_1">Envolvente 5.1</string>
+    <string name="channel_surround_6_1">Envolvente 6.1</string>
+    <string name="channel_surround_7_1">Envolvente 7.1</string>
+    <string name="channel_surround_9_1">Envolvente 9.1</string>
+    <string name="channel_surround_11_1">Envolvente 11.1</string>
+    <string name="channel_surround_13_1">Envolvente 13.1</string>
 </resources>
