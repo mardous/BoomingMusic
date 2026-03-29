@@ -150,11 +150,9 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
 
     override fun onHide() {
         super.onHide()
-        if (Preferences.animateControls) {
-            binding.playPauseButton.apply {
-                scaleX = 0f
-                scaleY = 0f
-            }
+        binding.playPauseButton.apply {
+            scaleX = if (Preferences.animateControls) 0f else 1f
+            scaleY = if (Preferences.animateControls) 0f else 1f
         }
     }
 
