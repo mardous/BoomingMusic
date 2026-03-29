@@ -126,20 +126,24 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
 
     override fun onShow() {
         super.onShow()
-        binding.playPauseButton.animate()
-            .scaleX(1f)
-            .scaleY(1f)
-            .rotation(360f)
-            .setInterpolator(DecelerateInterpolator())
-            .start()
+        if (Preferences.animateControls) {
+            binding.playPauseButton.animate()
+                .scaleX(1f)
+                .scaleY(1f)
+                .rotation(360f)
+                .setInterpolator(DecelerateInterpolator())
+                .start()
+        }
     }
 
     override fun onHide() {
         super.onHide()
-        binding.playPauseButton.apply {
-            scaleX = 0f
-            scaleY = 0f
-            rotation = 0f
+        if (Preferences.animateControls) {
+            binding.playPauseButton.apply {
+                scaleX = 0f
+                scaleY = 0f
+                rotation = 0f
+            }
         }
     }
 
@@ -150,7 +154,9 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
             binding.shuffleButton -> playerViewModel.toggleShuffleMode()
             binding.playPauseButton -> {
                 playerViewModel.togglePlayPause()
-                view.showBounceAnimation()
+                if (Preferences.animateControls) {
+                    view.showBounceAnimation()
+                }
             }
         }
     }
