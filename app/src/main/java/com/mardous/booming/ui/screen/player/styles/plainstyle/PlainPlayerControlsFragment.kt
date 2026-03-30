@@ -139,18 +139,20 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
 
     override fun onShow() {
         super.onShow()
-        binding.playPauseButton.animate()
-            .scaleX(1f)
-            .scaleY(1f)
-            .setInterpolator(BounceInterpolator())
-            .start()
+        if (Preferences.animateControls) {
+            binding.playPauseButton.animate()
+                .scaleX(1f)
+                .scaleY(1f)
+                .setInterpolator(BounceInterpolator())
+                .start()
+        }
     }
 
     override fun onHide() {
         super.onHide()
         binding.playPauseButton.apply {
-            scaleX = 0f
-            scaleY = 0f
+            scaleX = if (Preferences.animateControls) 0f else 1f
+            scaleY = if (Preferences.animateControls) 0f else 1f
         }
     }
 

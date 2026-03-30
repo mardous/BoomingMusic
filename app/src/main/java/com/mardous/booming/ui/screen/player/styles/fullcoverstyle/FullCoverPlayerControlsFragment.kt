@@ -114,7 +114,9 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
             binding.repeatButton -> playerViewModel.cycleRepeatMode()
             binding.playPauseButton -> {
                 playerViewModel.togglePlayPause()
-                view.showBounceAnimation()
+                if (Preferences.animateControls) {
+                    view.showBounceAnimation()
+                }
             }
         }
     }
