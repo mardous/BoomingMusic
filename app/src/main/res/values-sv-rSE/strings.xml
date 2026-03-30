@@ -928,4 +928,15 @@
     <string name="use_betterlyrics_provider_summary">Tillåt nedladdning av låttexter från tjänsten BetterLyrics.</string>
     <string name="use_simpmusic_provider_title">Använd SimpMusic Lyrics-leverantören</string>
     <string name="use_simpmusic_provider_summary">Tillåt nedladdning av låttexter från tjänsten SimpMusic Lyrics.</string>
+    <string name="channel_mono">Mono</string>
+    <string name="channel_stereo">Stereo</string>
+    <string name="channel_stereo_2_1">2.1-stereo</string>
+    <string name="channel_quadraphonic">Kvadrifonisk</string>
+    <string name="channel_surround_5_0">5.0-surround</string>
+    <string name="channel_surround_5_1">5.1-surround</string>
+    <string name="channel_surround_6_1">6.1-surround</string>
+    <string name="channel_surround_7_1">7.1-surround</string>
+    <string name="channel_surround_9_1">9.1-surround</string>
+    <string name="channel_surround_11_1">11.1-surround</string>
+    <string name="channel_surround_13_1">13.1-surround</string>
 </resources>
