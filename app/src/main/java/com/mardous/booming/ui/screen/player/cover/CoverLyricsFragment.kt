@@ -56,7 +56,10 @@ class CoverLyricsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val gesturesListener = (parentFragment?.parentFragment as? AbsPlayerFragment)
+        val gesturesListener = generateSequence(parentFragment) { it.parentFragment }
+            .filterIsInstance<AbsPlayerFragment>()
+            .firstOrNull()
+
         if (gesturesListener != null) {
             gesturesController = PlayerGesturesController(
                 context = view.context,
@@ -72,6 +75,7 @@ class CoverLyricsFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        view?.setOnTouchListener(null)
         gesturesController?.release()
         gesturesController = null
         super.onDestroyView()
