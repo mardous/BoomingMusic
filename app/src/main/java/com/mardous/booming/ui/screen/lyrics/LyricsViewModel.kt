@@ -223,6 +223,7 @@ class LyricsViewModel(
         return LyricsViewSettings(
             mode = mode,
             isCenterCurrentLine = preferences.getBoolean(Key.CENTER_CURRENT_LINE, false),
+            isCenterHorizontally = preferences.getBoolean(Key.CENTER_HORIZONTALLY, false),
             enableSyllableLyrics = enableSyllableLyrics,
             progressiveColoring = progressiveColoring,
             backgroundEffect = background,
@@ -237,6 +238,7 @@ class LyricsViewModel(
         when (key) {
             Key.ENABLE_SYLLABLE_LYRICS,
             Key.CENTER_CURRENT_LINE,
+            Key.CENTER_HORIZONTALLY,
             Key.USE_CUSTOM_FONT,
             Key.SELECTED_CUSTOM_FONT,
             Key.LINE_SPACING,

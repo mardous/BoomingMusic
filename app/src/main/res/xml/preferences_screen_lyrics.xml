@@ -22,6 +22,15 @@
         app:key="lyrics_center_current_line" />
 
     <SwitchPreferenceCompat
+        app:icon="@drawable/ic_align_horizontal_center_24dp"
+        app:title="@string/lyrics_center_horizontally_title"
+        app:summary="@string/lyrics_center_horizontally_summary"
+        app:defaultValue="false"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:key="lyrics_center_horizontally" />
+
+    <SwitchPreferenceCompat
         app:icon="@drawable/ic_custom_typography_24dp"
         app:title="@string/lyrics_custom_font_title"
         app:summary="@string/lyrics_custom_font_summary"

@@ -681,6 +681,8 @@
     <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
     <string name="lyrics_center_current_line_title">Center current line</string>
     <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
+    <string name="lyrics_center_horizontally_title">Center lyrics horizontally</string>
+    <string name="lyrics_center_horizontally_summary">Align each line of lyrics to the horizontal center of the screen.</string>
     <string name="lyrics_custom_font_title">Custom font</string>
     <string name="lyrics_custom_font_summary">Import and use your own font for lyrics.</string>
     <string name="lyrics_import_custom_font_title">Import custom font</string>
