@@ -946,4 +946,6 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="channel_surround_9_1">Son surround 9.1</string>
     <string name="channel_surround_11_1">Son surround 11.1</string>
     <string name="channel_surround_13_1">Son surround 13.1</string>
+    <string name="lyrics_center_horizontally_title">Centrer le texte horizontalement</string>
+    <string name="lyrics_center_horizontally_summary">Alignez chaque ligne des paroles au centre horizontal de l\'écran.</string>
 </resources>
