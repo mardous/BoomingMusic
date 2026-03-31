@@ -9,6 +9,7 @@ import androidx.compose.ui.unit.dp
 class LyricsViewSettings(
     val mode: Mode,
     val isCenterCurrentLine: Boolean,
+    val isCenterHorizontally: Boolean,
     val enableSyllableLyrics: Boolean,
     val progressiveColoring: Boolean,
     val backgroundEffect: BackgroundEffect,
@@ -45,6 +46,7 @@ class LyricsViewSettings(
             const val USE_CUSTOM_FONT = "lyrics_use_custom_font"
             const val SELECTED_CUSTOM_FONT = "lyrics_custom_font"
             const val CENTER_CURRENT_LINE = "lyrics_center_current_line"
+            const val CENTER_HORIZONTALLY = "lyrics_center_horizontally"
             const val LINE_SPACING = "lyrics_line_spacing"
             const val PROGRESSIVE_COLORING = "lyrics_progressive_coloring"
             const val BACKGROUND_EFFECT = "lyrics_background_effect"

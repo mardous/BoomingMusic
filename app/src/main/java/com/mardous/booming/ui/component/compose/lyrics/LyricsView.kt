@@ -165,6 +165,7 @@ fun LyricsView(
                 index = index,
                 selectedIndex = state.currentLineIndex,
                 selectedLine = index == state.currentLineIndex,
+                isCenterHorizontally = settings.isCenterHorizontally,
                 enableSyllable = settings.enableSyllableLyrics && isPowerSaveMode.not(),
                 progressiveColoring = settings.progressiveColoring && isPowerSaveMode.not(),
                 enableBlurEffect = settings.blurEffect && disableBlurEffect.not(),
@@ -187,6 +188,7 @@ private fun LyricsLineView(
     index: Int,
     selectedIndex: Int,
     selectedLine: Boolean,
+    isCenterHorizontally: Boolean,
     enableSyllable: Boolean,
     progressiveColoring: Boolean,
     enableBlurEffect: Boolean,
@@ -217,16 +219,20 @@ private fun LyricsLineView(
         label = "current-line-scale-animation"
     )
 
-    val textAlign = when (line.actor) {
-        LyricsActor.Voice2,
-        LyricsActor.Voice2Background -> TextAlign.End
+    val textAlign = if (isCenterHorizontally) {
+        TextAlign.Center
+    } else {
+        when (line.actor) {
+            LyricsActor.Voice2,
+            LyricsActor.Voice2Background -> TextAlign.End
 
-        LyricsActor.Group,
-        LyricsActor.GroupBackground,
-        LyricsActor.Duet,
-        LyricsActor.DuetBackground -> TextAlign.Center
+            LyricsActor.Group,
+            LyricsActor.GroupBackground,
+            LyricsActor.Duet,
+            LyricsActor.DuetBackground -> TextAlign.Center
 
-        else -> TextAlign.Start
+            else -> TextAlign.Start
+        }
     }
 
     LyricsLineBox(
