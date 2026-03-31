@@ -154,6 +154,8 @@ Your support is greatly appreciated and keeps me motivated to continue improving
 ### ❤️ Supporters
 
 **mbeezy** (first donor)
+<br/>
+**[KKTweex](https://github.com/Qoojoe)**
 
 </div>
 
