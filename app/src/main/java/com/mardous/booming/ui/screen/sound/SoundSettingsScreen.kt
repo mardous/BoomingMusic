@@ -66,6 +66,7 @@ import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.component.compose.IconifiedSliderTrack
 import com.mardous.booming.ui.component.compose.LabeledSwitch
+import com.mardous.booming.ui.component.compose.ShapedText
 import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.theme.CornerRadiusTokens
@@ -83,6 +84,8 @@ fun SoundSettingsSheet(
 
     var expandedSoundSettings by remember { mutableStateOf(false) }
     val outputDevice by viewModel.audioDevice.collectAsState()
+    val bitPerfectActive by viewModel.bitPerfectActive.collectAsState()
+    val bitPerfectInfo by viewModel.bitPerfectInfo.collectAsState()
     val volume by viewModel.volumeState.collectAsState()
 
     val audioOffload by viewModel.audioOffload.collectAsState()
@@ -189,6 +192,21 @@ fun SoundSettingsSheet(
                         ) { checked ->
                             viewModel.setEnableSkipSilences(checked)
                         }
+                    }
+                }
+
+                AnimatedVisibility(
+                    visible = bitPerfectActive,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                ) {
+                    bitPerfectInfo?.let {
+                        ShapedText(
+                            text = stringResource(
+                                R.string.bit_perfect_info, it.encodingLabel, it.sampleRateLabel
+                            ),
+                            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                            style = MaterialTheme.typography.bodySmall
+                        )
                     }
                 }
 

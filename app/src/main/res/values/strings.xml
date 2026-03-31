@@ -502,6 +502,7 @@
     <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
     <string name="balance_left">Left</string>
     <string name="balance_right">Right</string>
+    <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
     <string name="action_external_eq">External EQ</string>
     <string name="custom">Custom</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
@@ -797,6 +798,8 @@
     <string name="ignore_audio_focus_summary">Always play audio in background regardless of anything else being played.</string>
     <string name="pause_on_zero_volume_title">Pause on zero volume</string>
     <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
+    <string name="bit_perfect_title">Bit-perfect audio</string>
+    <string name="bit_perfect_summary">Enable direct audio output to USB DAC without system resampling. Requires Android 14+ and compatible hardware.</string>
     <string name="mp3_index_seeking_title">MP3 index seeking</string>
     <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
         Use only if seeking fails on some VBR files.
