@@ -56,6 +56,8 @@ class EqualizerViewModel(
     val skipSilence = equalizerManager.skipSilence
     val volumeState = equalizerManager.volumeState
     val audioDevice = audioOutputObserver.audioDevice
+    val bitPerfectActive = audioOutputObserver.bitPerfectActive
+    val bitPerfectInfo = audioOutputObserver.bitPerfectInfo
 
     val autoEqProfiles = equalizerManager.autoEqProfiles
 

@@ -91,6 +91,7 @@ import com.mardous.booming.util.ENABLE_HISTORY
 import com.mardous.booming.util.IGNORE_AUDIO_FOCUS
 import com.mardous.booming.util.MP3_INDEX_SEEKING
 import com.mardous.booming.util.PAUSE_ON_ZERO_VOLUME
+import com.mardous.booming.util.BIT_PERFECT_ENABLED
 import com.mardous.booming.util.PLAY_ON_STARTUP_MODE
 import com.mardous.booming.util.PlayOnStartupMode
 import com.mardous.booming.util.Preferences
@@ -309,6 +310,12 @@ class PlaybackService :
 
         preferences.registerOnSharedPreferenceChangeListener(this)
         audioOutputObserver.startObserver()
+
+        // Initialize bit-perfect state from preferences
+        val bitPerfectEnabled = preferences.getBoolean(BIT_PERFECT_ENABLED, false)
+        if (bitPerfectEnabled) {
+            audioOutputObserver.setBitPerfectEnabled(true)
+        }
 
         prepareEqualizerAndSoundSettings()
         registerReceivers()
@@ -786,6 +793,11 @@ class PlaybackService :
             SEEK_INTERVAL -> {
                 player.exoPlayer.setSeekBackIncrementMs(seekInterval)
                 player.exoPlayer.setSeekForwardIncrementMs(seekInterval)
+            }
+
+            BIT_PERFECT_ENABLED -> {
+                val enabled = preferences.getBoolean(key, false)
+                audioOutputObserver.setBitPerfectEnabled(enabled)
             }
         }
     }
