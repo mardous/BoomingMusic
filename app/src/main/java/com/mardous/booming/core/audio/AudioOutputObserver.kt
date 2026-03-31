@@ -275,15 +275,6 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
         }
     }
 
-    private fun enableFakeBitPerfect() {
-        _bitPerfectActive.value = true
-        _bitPerfectInfo.value = BitPerfectInfo(
-            deviceName = "InPods 12",
-            sampleRate = 44100,
-            channelCount = 2,
-            encoding = AudioFormat.ENCODING_PCM_32BIT
-        )
-    }
     private fun isDeviceUsbAudio(device: AudioDeviceInfo): Boolean {
         return device.type == AudioDeviceInfo.TYPE_USB_DEVICE ||
                 device.type == AudioDeviceInfo.TYPE_USB_HEADSET ||
