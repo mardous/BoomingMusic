@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Використовувати також як сигнал будильника</string>
     <string name="action_details">Деталі</string>
     <string name="action_set_as_start_directory">Встановити як початкову папку</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Перейти до початкової папки</string>
     <string name="action_hierarchy_view">Режим ієрархії</string>
     <string name="new_start_directory">Нова початкова папка: %s</string>
@@ -395,8 +396,8 @@
         <item quantity="many">%d елементів</item>
         <item quantity="other">%d елемента</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">Для вас</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Перемішати</string>
     <string name="top_artists">Найкращі виконавці</string>
     <string name="top_albums">Найкращі альбоми</string>
@@ -429,9 +430,7 @@
     <string name="autoeq_profiles_title">AutoEq Profiles</string>
     <string name="eq_profile_title">Profile</string>
     <string name="change_band_count_title">Change band count</string>
-    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
-        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
-        \n\nDo you want to continue?</string>
+    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state. Any other profiles saved for the current band configuration cannot be used with the new band configuration. \n\nDo you want to continue?</string>
     <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
     <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
     <string name="share_eq_profiles">Share EQ Profiles</string>
@@ -453,9 +452,15 @@
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">Скинути еквалайзер</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
-        \n\nThis will clear all your profiles.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Не підтримується</string>
+    <string name="set_eq_engine_title">Set EQ engine</string>
+    <string name="eq_engine_basic_title">Legacy Engine</string>
+    <string name="eq_engine_basic_description">A 5-band classic configuration designed for maximum device compatibility.</string>
+    <string name="eq_engine_precision_title">Precision Engine</string>
+    <string name="eq_engine_precision_description">High-fidelity processing with up to 15-band control for ultimate acoustic shaping.</string>
+    <string name="set_eq_engine_reset_warning">Changing the equalization engine will reset the equalizer settings, including custom profiles.</string>
+    <string name="eq_empty_bands">The equalization engine did not return any band configurations.</string>
     <string name="enable_equalizer">Увімкнути еквалайзер</string>
     <string name="select_profile">Select profile</string>
     <string name="save_profile_label">Save profile</string>
@@ -476,6 +481,8 @@
     <string name="virtualizer_label">Віртуалізатор</string>
     <string name="loudness_enhancer">Підсилювач</string>
     <string name="sound_settings">Налаштування звуку</string>
+    <string name="listening_on">Listening on</string>
+    <string name="casting_to">Casting to</string>
     <string name="volume_label">Гучність</string>
     <string name="reset_balance">Reset balance</string>
     <string name="speed_and_pitch_label">Speed and pitch</string>
@@ -532,7 +539,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Закінчити останню пісню</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Зупинити після цього треку</string>
     <string name="sleep_timer_stop_after_x">Зупинити після %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Зупинити після %s: скасовано</string>
@@ -543,10 +552,7 @@
     <string name="app_shortcut_favorites_short">Вибране</string>
     <!-- About page -->
     <string name="action_about">Про програму</string>
-    <string name="application">Програма</string>
-    <string name="version">Версія</string>
     <string name="changelog">Журнал змін</string>
-    <string name="fork_on_github">Форк на GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Ліцензії</string>
     <string name="author">Автор</string>
@@ -557,13 +563,8 @@
     <string name="translators_summary">Дякуємо тим, хто робить Booming Music доступним багатьма мовами.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Чат у Telegram</string>
-    <string name="telegram_chat_summary">Приєднуйтесь до чату в Telegram і будьте в курсі нових релізів та новин.</string>
     <string name="view_profile_on_github">Переглянути профіль на GitHub</string>
-    <string name="follow_on_telegram">DM в Telegram</string>
     <string name="write_an_email">Написати листа</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Підтримка розробки</string>
     <string name="help_with_translations">Допомогти з перекладами</string>
     <string name="help_with_translations_summary">Ви можете зробити внесок у проект шляхом перекладу музики на інші мови.</string>
@@ -595,20 +596,17 @@
     <string name="playback_title">Відтворення</string>
     <string name="playback_summary">Змініть налаштування звуку, Bluetooth-гарнітури тощо.</string>
     <string name="metadata_title">Метадані</string>
-    <string name="metadata_summary">Налаштування, пов\'язані із зображеннями альбомів та виконавців.</string>
     <string name="library_title">Бібліотека</string>
     <string name="library_summary">Налаштування списків відтворення та фільтрів виключення/включення.</string>
     <string name="advanced_title">Розширені</string>
     <string name="advanced_summary">Мова програми та інші розширені налаштування.</string>
     <string name="update_title">Оновлення</string>
-    <string name="update_summary">Налаштування оновлень програми.</string>
     <string name="about_title">Про програму</string>
     <string name="about_summary">Booming Music %s, торкніться для отримання додаткової інформації.</string>
     <!-- Preference headers -->
     <string name="general_header">Загальні налаштування</string>
     <string name="library_header">Бібліотека</string>
     <string name="album_cover_header">Обкладинка</string>
-    <string name="artist_image_header">Зображення виконавця</string>
     <string name="exclusion_header">Виключення</string>
     <string name="controls_header">Керування</string>
     <string name="gestures_header">Жести</string>
@@ -645,6 +643,7 @@
     <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
     <string name="lyrics_background_effect_title">Background effect</string>
     <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Blur effect</string>
     <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
     <string name="lyrics_shadow_effect_title">Shadow effect</string>
@@ -664,14 +663,13 @@
     <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
     <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
     <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding. This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics. It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Стиль</string>
     <string name="open_on_play_title">Відкривати під час відтворення</string>
@@ -719,6 +717,8 @@
     <string name="prefer_remaining_time_summary">Відображати залишковий час замість тривалості пісні.</string>
     <string name="prefer_album_artist_name_title">"Надавати перевагу імені виконавця альбому"</string>
     <string name="prefer_album_artist_name_summary">Відображає ім\'я виконавця альбому замість імені виконавця пісні (якщо доступно).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
     <string name="queue_next_mode_title">Режим «Додати до черги»</string>
@@ -745,9 +745,7 @@
     <string name="pause_on_zero_volume_title">Pause on zero volume</string>
     <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
     <string name="mp3_index_seeking_title">MP3 index seeking</string>
-    <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
-        Use only if seeking fails on some VBR files.
-        Requires app restart.</string>
+    <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header. Use only if seeking fails on some VBR files. Requires app restart.</string>
     <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
     <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
     <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
@@ -769,7 +767,6 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Автоматично завантажувати метадані</string>
     <string name="ignore_media_store_album_covers_title">Ігнорувати обкладинки з MediaStore</string>
     <string name="ignore_media_store_album_covers_summary">Це може допомогти покращити якість зображень, але потребує більше пам\'яті.</string>
     <string name="use_folder_album_cover_title">Використовувати зображення папок</string>
@@ -811,8 +808,7 @@
     <string name="restore_backup_summary">Відновити дані програми (та стан) з попередньої резервної копії.</string>
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
-    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory
-        or battery management may ignore this setting and always stop the app when removed from recents.</string>
+    <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <string name="rotation_lock_title">Rotation lock</string>
     <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
     <!-- Preference values -->
@@ -857,12 +853,6 @@
     <string name="this_month">Цей місяць</string>
     <string name="past_three_months">Останні три місяці</string>
     <string name="this_year">Цей рік</string>
-    <string name="priority_maximum">Максимальний</string>
-    <string name="priority_high">Високий</string>
-    <string name="priority_normal">Нормальний</string>
-    <string name="priority_low">Низький</string>
-    <string name="always">Завжди</string>
-    <string name="only_on_wifi">Тільки Wi-Fi</string>
     <string name="image_size_large">Великий (повільніше)</string>
     <string name="image_size_medium">Середній (за замовчуванням, рекомендовано)</string>
     <string name="image_size_small">Малий (швидше, низька якість)</string>

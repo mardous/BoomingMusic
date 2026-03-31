@@ -45,7 +45,7 @@ class NowPlayingInfo(val info: Info, var isEnabled: Boolean) : Parcelable {
             return when (key) {
                 null -> {
                     when (this) {
-                        Format -> header?.let { "%s %s".format(it.format, metadataReader.channelName()) }
+                        Format -> header?.format
                         Bitrate -> metadataReader.bitrate()
                         SampleRate -> metadataReader.sampleRate()
                         else -> null

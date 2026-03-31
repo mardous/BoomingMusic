@@ -1,5 +1,8 @@
 package com.mardous.booming.playback
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -73,6 +76,7 @@ import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
@@ -149,6 +153,7 @@ class PlaybackService :
     private var stopIndex = -1
 
     private var widgetUpdateJob: Job? = null
+    private var fadeOutAnimator: ValueAnimator? = null
 
     val isInTransientFocusLoss: Boolean
         get() = player.playbackSuppressionReason == Player.PLAYBACK_SUPPRESSION_REASON_TRANSIENT_AUDIO_FOCUS_LOSS
@@ -262,9 +267,7 @@ class PlaybackService :
         mediaSession = with(MediaLibrarySession.Builder(this, player, this)) {
             setId(packageName)
             setSessionActivity(createSessionActivityIntent())
-            setBitmapLoader(
-                CacheBitmapLoader(CoilBitmapLoader(serviceScope, this@PlaybackService, preferences))
-            )
+            setBitmapLoader(CacheBitmapLoader(CoilBitmapLoader(this@PlaybackService)))
             build()
         }
 
@@ -290,12 +293,16 @@ class PlaybackService :
             }
         }
 
-        sleepTimer.addFinishListener { allowPendingQuit ->
+        sleepTimer.addFinishListener { allowPendingQuit, fadeOut ->
             if (player.playWhenReady && player.isPlaying) {
                 if (allowPendingQuit) {
                     player.exoPlayer.pauseAtEndOfMediaItems = true
                 } else {
-                    player.pause()
+                    if (fadeOut) {
+                        launchMusicFadeOut()
+                    } else {
+                        player.pause()
+                    }
                 }
             }
         }
@@ -526,9 +533,14 @@ class PlaybackService :
                         )
                     }
             } else {
-                runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
-                    .getOrDefault(emptyList())
-                    .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+                runCatching {
+                    libraryProvider.getMediaItemsForPlayback(
+                        mediaItems = mediaItems,
+                        tryToResolveComplexPaths = true
+                    )
+                }.getOrDefault(emptyList()).let {
+                    MediaItemsWithStartPosition(it, startIndex, startPositionMs)
+                }
             }
         }.also { future ->
             future.addListener({
@@ -692,17 +704,26 @@ class PlaybackService :
 
         serviceScope.launch(IO) {
             val currentSong = repository.songByMediaItem(mediaItem)
-            if (currentSong != Song.emptySong && preferences.getBoolean(ENABLE_HISTORY, true)) {
-                repository.upsertSongInHistory(currentSong)
+            if (currentSong != Song.emptySong) {
+                if (preferences.getBoolean(ENABLE_HISTORY, true)) {
+                    repository.upsertSongInHistory(currentSong)
+                }
+                if (NetworkFeature.Lastfm.NowPlaying.isAvailable(this@PlaybackService)) {
+                    repository.updateNowPlayingOnLastFm(currentSong)
+                }
                 replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(currentSong)
             }
             val previousSong = songPlayCountHelper.song
             if (previousSong != Song.emptySong) {
+                val timestamp = System.currentTimeMillis()
                 if (songPlayCountHelper.shouldBumpPlayCount()) {
                     repository.insertOrIncrementPlayCount(
                         song = previousSong,
-                        timePlayed = System.currentTimeMillis()
+                        timePlayed = timestamp
                     )
+                    if (NetworkFeature.Lastfm.Scrobbling.isAvailable(this@PlaybackService)) {
+                        repository.scrobble(previousSong, (timestamp / 1000))
+                    }
                 } else if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK) {
                     repository.insertOrIncrementSkipCount(previousSong)
                 }
@@ -719,6 +740,11 @@ class PlaybackService :
     }
 
     override fun onPlayerError(error: PlaybackException) {
+        val nextMediaIndex = player.nextMediaItemIndex
+        if (nextMediaIndex != C.INDEX_UNSET) {
+            player.seekToNextMediaItem()
+            player.prepare()
+        }
         showToast(getString(R.string.playback_error_code, error.errorCodeName))
     }
 
@@ -895,12 +921,42 @@ class PlaybackService :
         }
     }
 
+    private fun launchMusicFadeOut(durationMs: Long = 1000) {
+        cancelMusicFadeOut()
+
+        fadeOutAnimator = ValueAnimator.ofFloat(player.volume, 0f).apply {
+            duration = durationMs
+            addUpdateListener { animation ->
+                player.volume = animation.animatedValue as Float
+            }
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    player.pause()
+                    restorePlayerVolume()
+                }
+            })
+        }
+        fadeOutAnimator?.start()
+    }
+
+    private fun cancelMusicFadeOut() {
+        fadeOutAnimator?.cancel()
+        fadeOutAnimator = null
+
+        restorePlayerVolume()
+    }
+
+    private fun restorePlayerVolume() {
+        player.volume = equalizerManager.volumeState.value.currentVolume
+    }
+
     private fun prepareEqualizerAndSoundSettings() {
         serviceScope.launch {
             equalizerManager.initializeEqualizer()
         }
         serviceScope.launch {
             equalizerManager.volumeState.collect { volume ->
+                cancelMusicFadeOut()
                 player.volume = volume.currentVolume
             }
         }

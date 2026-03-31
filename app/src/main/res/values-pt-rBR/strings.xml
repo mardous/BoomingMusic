@@ -254,6 +254,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="use_also_as_alarm_alert">Usar também como som do alarme</string>
     <string name="action_details">Detalhes</string>
     <string name="action_set_as_start_directory">Definir como diretório inicial</string>
+    <string name="start_directory_set">Start directory set to %s</string>
     <string name="action_go_to_start_directory">Ir para o diretório inicial</string>
     <string name="action_hierarchy_view">Visualização hierárquica</string>
     <string name="new_start_directory">Novo diretório inicial: %s</string>
@@ -378,8 +379,8 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
         <item quantity="one">%d item</item>
         <item quantity="other">%d itens</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">Para você</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Misturar</string>
     <string name="top_artists">Artistas Populares</string>
     <string name="top_albums">Álbuns Populares</string>
@@ -412,9 +413,7 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="autoeq_profiles_title">AutoEq Profiles</string>
     <string name="eq_profile_title">Profile</string>
     <string name="change_band_count_title">Change band count</string>
-    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
-        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
-        \n\nDo you want to continue?</string>
+    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state. Any other profiles saved for the current band configuration cannot be used with the new band configuration. \n\nDo you want to continue?</string>
     <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
     <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
     <string name="share_eq_profiles">Share EQ Profiles</string>
@@ -436,9 +435,15 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">Redefinir equalizador</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
-        \n\nThis will clear all your profiles.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Não suportado</string>
+    <string name="set_eq_engine_title">Set EQ engine</string>
+    <string name="eq_engine_basic_title">Legacy Engine</string>
+    <string name="eq_engine_basic_description">A 5-band classic configuration designed for maximum device compatibility.</string>
+    <string name="eq_engine_precision_title">Precision Engine</string>
+    <string name="eq_engine_precision_description">High-fidelity processing with up to 15-band control for ultimate acoustic shaping.</string>
+    <string name="set_eq_engine_reset_warning">Changing the equalization engine will reset the equalizer settings, including custom profiles.</string>
+    <string name="eq_empty_bands">The equalization engine did not return any band configurations.</string>
     <string name="enable_equalizer">Habilitar EQ</string>
     <string name="select_profile">Select profile</string>
     <string name="save_profile_label">Save profile</string>
@@ -459,6 +464,8 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="virtualizer_label">Virtualizador</string>
     <string name="loudness_enhancer">Amplificador</string>
     <string name="sound_settings">Configurações de som</string>
+    <string name="listening_on">Listening on</string>
+    <string name="casting_to">Casting to</string>
     <string name="volume_label">Volume</string>
     <string name="reset_balance">Reset balance</string>
     <string name="speed_and_pitch_label">Speed and pitch</string>
@@ -517,7 +524,9 @@ Ideal para podcasts e gravações.</string>
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Terminar última música</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Parar depois desta música</string>
     <string name="sleep_timer_stop_after_x">Parar depois de %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Parar após %s: cancelado</string>
@@ -528,10 +537,7 @@ Ideal para podcasts e gravações.</string>
     <string name="app_shortcut_favorites_short">Favoritos</string>
     <!-- About page -->
     <string name="action_about">Sobre</string>
-    <string name="application">Aplicativo</string>
-    <string name="version">Versão</string>
     <string name="changelog">Mudanças</string>
-    <string name="fork_on_github">Crie um Fork no GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licenças</string>
     <string name="author">Autor</string>
@@ -542,13 +548,8 @@ Ideal para podcasts e gravações.</string>
     <string name="translators_summary">Agradecemos a todos que disponibilizam o Booming Music em diversos idiomas.</string>
     <string name="contributors_title">Colaboradores</string>
     <string name="contributors_summary">Uma lista de usuários que contribuíram para o projeto de alguma forma.</string>
-    <string name="telegram_chat">Chat do Telegram</string>
-    <string name="telegram_chat_summary">Junte-se ao chat no Telegram e receba informações sobre novos lançamentos e notícias.</string>
     <string name="view_profile_on_github">Ver perfil no GitHub</string>
-    <string name="follow_on_telegram">DM no Telegram</string>
     <string name="write_an_email">Escreva um e-mail</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">Você pode fazer uma pequena doação caso considere meu trabalho merecedor.</string>
     <string name="support_development">Apoie o desenvolvimento</string>
     <string name="help_with_translations">Ajuda com traduções</string>
     <string name="help_with_translations_summary">Você pode contribuir para o projeto ajudando a traduzir o Booming Music para outros idiomas.</string>
@@ -580,20 +581,17 @@ Ideal para podcasts e gravações.</string>
     <string name="playback_title">Reprodução</string>
     <string name="playback_summary">Altera as configurações de som, fone de ouvido Bluetooth, etc.</string>
     <string name="metadata_title">Metadados</string>
-    <string name="metadata_summary">Configurações relacionadas a imagens de álbuns e artistas.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_summary">Configurações de playlists e filtros de exclusão/inclusão.</string>
     <string name="advanced_title">Avançado</string>
     <string name="advanced_summary">Idioma do aplicativo e outras configurações para usuários avançados.</string>
     <string name="update_title">Atualização</string>
-    <string name="update_summary">Configurações de atualizações do aplicativo.</string>
     <string name="about_title">Sobre</string>
     <string name="about_summary">Booming Music %s, toque para obter mais informações.</string>
     <!-- Preference headers -->
     <string name="general_header">Geral</string>
     <string name="library_header">Biblioteca</string>
     <string name="album_cover_header">Capa</string>
-    <string name="artist_image_header">Imagem do artista</string>
     <string name="exclusion_header">Exclusões</string>
     <string name="controls_header">Controles</string>
     <string name="gestures_header">Gestos</string>
@@ -630,6 +628,7 @@ Ideal para podcasts e gravações.</string>
     <string name="lyrics_effects_note">Efeitos avançados melhoram a experiência visual, mas podem exigir mais recursos de sistema e bateria.</string>
     <string name="lyrics_background_effect_title">Efeito de fundo</string>
     <string name="lyrics_background_gradient">Gradiente</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Efeito de desfoque</string>
     <string name="lyrics_blur_effect_summary">Desfocar as linhas da letra adjacentes à atual.</string>
     <string name="lyrics_shadow_effect_title">Efeito de sombra</string>
@@ -652,6 +651,8 @@ Ideal para podcasts e gravações.</string>
     <string name="instrumental_tracks_identifiers_summary">Se a letra de uma música contiver apenas um ou mais desses indicadores, ela será marcada como faixa instrumental (separados por vírgula).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marcar pelo título</string>
     <string name="instrumental_tracks_mark_by_title_summary">O título da faixa também será levado em conta na busca por identificadores.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos os arquivos de letras como UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume que todos os arquivos usam codificação UTF-8.
 Isso otimiza o processo de análise dos arquivos, mas em alguns casos pode resultar em caracteres incomuns nas letras das músicas.
@@ -703,6 +704,8 @@ Pode ser necessário reiniciar o aplicativo.</string>
     <string name="prefer_remaining_time_summary">Mostra o tempo restante em vez da duração da música.</string>
     <string name="prefer_album_artist_name_title">"Exibir nome do artista do álbum"</string>
     <string name="prefer_album_artist_name_summary">Mostra o nome do artista do álbum em vez do artista da música (se disponível).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reproduzir ao iniciar</string>
     <string name="queue_next_mode_title">Modo \"Enfileirar a seguir\"</string>
@@ -753,7 +756,6 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Baixar metadados automaticamente</string>
     <string name="ignore_media_store_album_covers_title">Ignorar capas do armazenamento de mídia</string>
     <string name="ignore_media_store_album_covers_summary">Isso pode ajudar a aumentar a qualidade das imagens, mas requer mais memória.</string>
     <string name="use_folder_album_cover_title">Usar imagens da pasta</string>
@@ -840,12 +842,6 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="this_month">Este Mês</string>
     <string name="past_three_months">Últimos três meses</string>
     <string name="this_year">Este ano</string>
-    <string name="priority_maximum">Máxima</string>
-    <string name="priority_high">Alta</string>
-    <string name="priority_normal">Normal</string>
-    <string name="priority_low">Baixa</string>
-    <string name="always">Sempre</string>
-    <string name="only_on_wifi">Somente Wi-Fi</string>
     <string name="image_size_large">Maior (mais lento)</string>
     <string name="image_size_medium">Médio (padrão, recomendado)</string>
     <string name="image_size_small">Pequeno (mais rápido, baixa qualidade)</string>

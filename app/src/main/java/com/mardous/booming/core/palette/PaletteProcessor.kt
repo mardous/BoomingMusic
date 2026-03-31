@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.util.Log
 import androidx.core.graphics.createBitmap
 import androidx.core.graphics.drawable.toDrawable
 import androidx.palette.graphics.Palette
@@ -61,12 +62,17 @@ object PaletteProcessor {
      */
     private const val LIGHTNESS_TEXT_DIFFERENCE_DARK = -10
 
-    private val mBlackWhiteFilter = Palette.Filter { rgb: Int, hsl: FloatArray ->
+    private val mBlackWhiteFilter = Palette.Filter { _: Int, hsl: FloatArray ->
         !isWhiteOrBlack(hsl)
     }
 
     suspend fun getPaletteColor(context: Context, bitmap: Bitmap): PaletteColor =
-        getPaletteColor(context, bitmap.toDrawable(context.resources))
+        try {
+            getPaletteColor(context, bitmap.toDrawable(context.resources))
+        } catch (t: Throwable) {
+            Log.e("PaletteProcessor", "Failed to generate PaletteColor for bitmap", t)
+            PaletteColor.errorColor(context)
+        }
 
     private suspend fun getPaletteColor(context: Context, drawable: Drawable) = withContext(Dispatchers.Default) {
         if (!isRecycled(drawable)) {
@@ -84,10 +90,16 @@ object PaletteProcessor {
             drawable.setBounds(0, 0, width, height)
             drawable.draw(canvas)
 
+            val bitmapWidth = bitmap.width
+            val bitmapHeight = bitmap.height
+            if (bitmapWidth <= 0 || bitmapHeight <= 0) {
+                return@withContext PaletteColor.errorColor(context)
+            }
+
             // for the background we only take the left side of the image to ensure
             // a smooth transition
             val paletteBuilder = Palette.from(bitmap)
-                .setRegion(0, 0, bitmap.getWidth() / 2, bitmap.getHeight())
+                .setRegion(0, 0, bitmapWidth / 2, bitmapHeight)
                 .clearFilters() // we want all colors, red / white / black ones too!
                 .resizeBitmapArea(RESIZE_BITMAP_AREA)
 
@@ -96,14 +108,14 @@ object PaletteProcessor {
 
             // we want most of the full region again, slightly shifted to the right
             paletteBuilder.setRegion(
-                (bitmap.getWidth() * 0.4f).toInt(),
+                (bitmapWidth * 0.4f).toInt(),
                 0,
-                bitmap.getWidth(),
-                bitmap.getHeight()
+                bitmapWidth,
+                bitmapHeight
             )
 
             backgroundColorAndFilter.second?.let { backgroundHsl ->
-                paletteBuilder.addFilter { rgb: Int, hsl: FloatArray ->
+                paletteBuilder.addFilter { _: Int, hsl: FloatArray ->
                     // at least 10 degrees hue difference
                     val diff = abs(hsl[0] - backgroundHsl[0])
                     diff > 10 && diff < 350
@@ -142,18 +154,15 @@ object PaletteProcessor {
     }
 
     fun findBackgroundColorAndFilter(palette: Palette): Pair<Int, FloatArray?> {
-        // by default we use the dominant palette
-        val dominantSwatch = palette.dominantSwatch
-        if (dominantSwatch == null) {
-            // We're not filtering on white or black
-            return Color.WHITE to null
-        }
+        // by default, we use the dominant palette
+        val dominantSwatch = palette.dominantSwatch ?: // We're not filtering on white or black
+        return Color.WHITE to null
 
         if (!isWhiteOrBlack(dominantSwatch.hsl)) {
             return dominantSwatch.rgb to dominantSwatch.hsl
         }
 
-        // Oh well, we selected black or white. Lets look at the second color!
+        // Oh well, we selected black or white. Let's look at the second color!
         val swatches = palette.swatches
         var highestNonWhitePopulation = -1f
         var second: Palette.Swatch? = null

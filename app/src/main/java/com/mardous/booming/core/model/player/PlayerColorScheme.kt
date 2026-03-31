@@ -23,6 +23,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
 import androidx.core.graphics.ColorUtils
+import androidx.preference.PreferenceManager
 import com.kyant.m3color.hct.Hct
 import com.kyant.m3color.scheme.SchemeContent
 import com.mardous.booming.R
@@ -38,6 +39,7 @@ import com.mardous.booming.extensions.resources.surfaceColor
 import com.mardous.booming.extensions.resources.withAlpha
 import com.mardous.booming.extensions.systemContrast
 import com.mardous.booming.ui.component.compose.color.onThis
+import com.mardous.booming.util.PLAYER_BLUR_RADIUS
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -239,10 +241,15 @@ data class PlayerColorScheme(
             context: Context,
             color: PaletteColor
         ) : PlayerColorScheme {
-            val dynamicColorScheme = dynamicColorScheme(context, color.backgroundColor)
-            return dynamicColorScheme.copy(
+            val blurRadius = PreferenceManager.getDefaultSharedPreferences(context)
+                .getInt(PLAYER_BLUR_RADIUS, context.resources.getInteger(R.integer.max_player_blur))
+                .toFloat()
+            return dynamicColorScheme(context, color.backgroundColor).copy(
                 mode = PlayerColorSchemeMode.Blur,
-                blurToken = BlurToken(isBlur = true, blurRadius = 25f)
+                blurToken = BlurToken(
+                    isBlur = true,
+                    blurRadius = blurRadius
+                )
             )
         }
 

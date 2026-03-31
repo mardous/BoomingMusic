@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">Lire</string>
+    <string name="action_play">Lecture</string>
     <string name="action_play_all">Tout lire</string>
     <string name="action_shuffle_play">Lecture aléatoire</string>
     <string name="action_queue_next">Ajouter a la liste de lecture</string>
@@ -254,6 +254,7 @@
     <string name="use_also_as_alarm_alert">Utiliser aussi comme alerte d\'alarme</string>
     <string name="action_details">Détails</string>
     <string name="action_set_as_start_directory">Définir comme répertoire de démarrage</string>
+    <string name="start_directory_set">Répertoire de démarrage défini sur %s</string>
     <string name="action_go_to_start_directory">Aller au répertoire de démarrage</string>
     <string name="action_hierarchy_view">Vue hiérarchique</string>
     <string name="new_start_directory">Nouveau répertoire de démarrage : %s</string>
@@ -353,6 +354,7 @@
     </plurals>
     <plurals name="albums">
         <item quantity="one">Album</item>
+        <item quantity="many">Albums</item>
         <item quantity="other">Albums</item>
     </plurals>
     <plurals name="x_songs">
@@ -361,6 +363,7 @@
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d album</item>
+        <item quantity="many">%d albums</item>
         <item quantity="other">%d albums</item>
     </plurals>
     <plurals name="x_artists">
@@ -379,8 +382,8 @@
         <item quantity="one">%d élément</item>
         <item quantity="other">%d éléments</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">Pour vous</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Mélanger</string>
     <string name="top_artists">Meilleurs artistes</string>
     <string name="top_albums">Meilleurs albums</string>
@@ -409,7 +412,7 @@
     <string name="autoeq_label">AutoEq</string>
     <string name="graphic_eq_label">EQ graphique</string>
     <string name="graphic_eq_band_count">%d-bandes</string>
-    <string name="eq_profiles_title">Profils EQ</string>
+    <string name="eq_profiles_title">Profils d\'égaliseur</string>
     <string name="autoeq_profiles_title">Profils AutoEq</string>
     <string name="eq_profile_title">Profil</string>
     <string name="change_band_count_title">Modifier le nombre de bandes</string>
@@ -418,7 +421,7 @@
         \n\nVoulez-vous continuer ?</string>
     <string name="band_configuration_changed_successfully">La configuration de la bande a été modifiée avec succès.</string>
     <string name="band_configuration_could_not_be_changed">La configuration de la bande n\'a pas pu être modifiée.</string>
-    <string name="share_eq_profiles">Partager les profils EQ</string>
+    <string name="share_eq_profiles">Partager les profils d\'égaliseur</string>
     <string name="there_is_nothing_to_export">Il n\'y a rien à exporter.</string>
     <string name="there_is_nothing_to_import">Il n\'y a rien à importer.</string>
     <string name="an_unexpected_error_occurred">Une erreur inattendue s\'est produite.</string>
@@ -440,6 +443,13 @@
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ?
         \n\nCette opération effacera tous vos profils.</string>
     <string name="not_supported">Non pris en charge</string>
+    <string name="set_eq_engine_title">Régler l\'égaliseur</string>
+    <string name="eq_engine_basic_title">Moteur Hérité</string>
+    <string name="eq_engine_basic_description">Une configuration classique à 5 bandes conçue pour une compatibilité maximale avec les appareils.</string>
+    <string name="eq_engine_precision_title">Moteur de Précision</string>
+    <string name="eq_engine_precision_description">Traitement haute fidélité avec contrôle jusqu\'à 15 bandes pour un modelage acoustique optimal.</string>
+    <string name="set_eq_engine_reset_warning">Modifier le moteur d\'égalisation réinitialisera les paramètres de l\'égaliseur, y compris les profils personnalisés.</string>
+    <string name="eq_empty_bands">Le moteur d\'égalisation n\'a renvoyé aucune configuration de bande.</string>
     <string name="enable_equalizer">Activer l\'EQ</string>
     <string name="select_profile">Sélectionner un profil</string>
     <string name="save_profile_label">Enregistrer le profil</string>
@@ -460,6 +470,8 @@
     <string name="virtualizer_label">Virtualiseur</string>
     <string name="loudness_enhancer">Amplificateur</string>
     <string name="sound_settings">Paramètres du son</string>
+    <string name="listening_on">Écouter sur</string>
+    <string name="casting_to">Diffusion sur</string>
     <string name="volume_label">Volume</string>
     <string name="reset_balance">Réinitialiser la balance</string>
     <string name="speed_and_pitch_label">Vitesse et hauteur</string>
@@ -518,7 +530,9 @@
     <string name="sleep_timer_15_mins">15 minutes</string>
     <string name="sleep_timer_45_mins">45 minutes</string>
     <string name="sleep_timer_1_hour">1 heure</string>
+    <string name="sleep_timer_2_hour">2 heures</string>
     <string name="sleep_timer_finish_current_music">Terminer le dernier titre</string>
+    <string name="sleep_timer_music_fades_out">La musique s\'estompe</string>
     <string name="sleep_timer_stop_after_this_track">Arrêter après ce titre</string>
     <string name="sleep_timer_stop_after_x">Arrêter après %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Arrêt après %s : annulé</string>
@@ -529,27 +543,19 @@
     <string name="app_shortcut_favorites_short">Favoris</string>
     <!-- About page -->
     <string name="action_about">À propos</string>
-    <string name="application">Application</string>
-    <string name="version">Version</string>
     <string name="changelog">Historique des modifications</string>
-    <string name="fork_on_github">Fork sur GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licences</string>
     <string name="author">Auteur</string>
-    <string name="mardous_summary">Lead Developer</string>
+    <string name="mardous_summary">Développeur principal</string>
     <string name="contributors">Contributeurs</string>
     <string name="acknowledgments_title">Reconnaissance</string>
     <string name="translators_title">Traducteurs</string>
     <string name="translators_summary">Merci à ceux qui rendent Booming Music disponible dans de nombreuses langues.</string>
     <string name="contributors_title">Contributeurs</string>
     <string name="contributors_summary">Liste des utilisateurs ayant contribué au projet d\'une manière ou d\'une autre.</string>
-    <string name="telegram_chat">Chat Telegram</string>
-    <string name="telegram_chat_summary">Rejoignez le chat sur Telegram et soyez informé des nouvelles versions et actualités.</string>
     <string name="view_profile_on_github">Voir le profil sur GitHub</string>
-    <string name="follow_on_telegram">DM sur Telegram</string>
     <string name="write_an_email">Écrire un e-mail</string>
-    <string name="buy_me_a_coffee">Offrez-moi un café</string>
-    <string name="buy_me_a_coffee_summary">Vous pouvez faire un petit don si vous pensez que mon travail le mérite.</string>
     <string name="support_development">Soutenir le développement</string>
     <string name="help_with_translations">Aide à la traduction</string>
     <string name="help_with_translations_summary">Vous pouvez contribuer au projet en aidant à traduire Booming Music dans d\'autres langues.</string>
@@ -581,20 +587,17 @@
     <string name="playback_title">Lecture</string>
     <string name="playback_summary">Modifiez les paramètres sonores, les casques Bluetooth, etc.</string>
     <string name="metadata_title">Métadonnées</string>
-    <string name="metadata_summary">Paramètres liés aux images de l\'album et des artistes.</string>
     <string name="library_title">Bibliothèque</string>
     <string name="library_summary">Paramètres des playlists et des filtres d\'exclusion/inclusion.</string>
     <string name="advanced_title">Avancé</string>
     <string name="advanced_summary">Langue de l\'application et autres paramètres pour les utilisateurs avancés.</string>
     <string name="update_title">Mise à jour</string>
-    <string name="update_summary">Paramètres pour les mises à jour de l\'application.</string>
     <string name="about_title">À propos</string>
     <string name="about_summary">Booming Music %s, appuyez pour plus d\'informations.</string>
     <!-- Preference headers -->
     <string name="general_header">Général</string>
     <string name="library_header">Bibliothèque</string>
     <string name="album_cover_header">couverture</string>
-    <string name="artist_image_header">Image de l\'artiste</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Contrôles</string>
     <string name="gestures_header">Gestes</string>
@@ -631,6 +634,7 @@
     <string name="lyrics_effects_note">Les effets avancés améliorent l\'expérience visuelle mais peuvent nécessiter plus de ressources système et de batterie.</string>
     <string name="lyrics_background_effect_title">Effet de fond</string>
     <string name="lyrics_background_gradient">Dégradé</string>
+    <string name="lyrics_background_blur">Flou</string>
     <string name="lyrics_blur_effect_title">Effet de flou</string>
     <string name="lyrics_blur_effect_summary">Flouter les lignes de paroles adjacentes à la ligne actuelle.</string>
     <string name="lyrics_shadow_effect_title">Effet d\'ombre</string>
@@ -653,6 +657,8 @@
     <string name="instrumental_tracks_identifiers_summary">Si les paroles d\'une chanson ne contiennent qu\'un seul de ces indicateurs (un ou plusieurs), elle sera considérée comme un morceau instrumental (séparés par une virgule).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marquer par titre</string>
     <string name="instrumental_tracks_mark_by_title_summary">Le titre du morceau sera également pris en compte lors de la recherche d\'identifiants.</string>
+    <string name="ignore_blank_lines_title">Ignorer les lignes vides</string>
+    <string name="ignore_blank_lines_summary">Ignorez les lignes vides dans les fichiers LRC au lieu d\'afficher des bulles animées.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Traiter tous les fichiers de paroles comme UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Supposons que tous les fichiers utilisent l\'encodage UTF-8.
 
@@ -706,6 +712,8 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="prefer_remaining_time_summary">Afficher le temps restant au lieu de la durée du titre.</string>
     <string name="prefer_album_artist_name_title">"Préférer le nom de l'artiste de l'album"</string>
     <string name="prefer_album_artist_name_summary">Affiche le nom de l\'artiste de l\'album au lieu du nom de l\'artiste du titre (si disponible).</string>
+    <string name="player_blur_intensity_title">Intensité du flou</string>
+    <string name="player_blur_intensity_summary">Ajustez l\'intensité du flou d\'arrière-plan dans le thème Flou. Des valeurs plus faibles peuvent améliorer les performances.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Jouer au démarrage</string>
     <string name="queue_next_mode_title">Mode \"File d\'attente\"</string>
@@ -756,7 +764,6 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="clear_queue_on_completion_title">Vider la file d\'attente une fois la lecture terminée</string>
     <string name="clear_queue_on_completion_summary">Supprimer automatiquement tous les morceaux de la file d\'attente une fois la lecture du dernier titre terminée.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Télécharger automatiquement les métadonnées</string>
     <string name="ignore_media_store_album_covers_title">Ignorer les couvertures du Media Store</string>
     <string name="ignore_media_store_album_covers_summary">Cela peut aider à améliorer la qualité des images mais nécessite plus de mémoire.</string>
     <string name="use_folder_album_cover_title">Utiliser les images du dossier</string>
@@ -843,12 +850,6 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="this_month">Ce mois-ci</string>
     <string name="past_three_months">Les trois derniers mois</string>
     <string name="this_year">Cette année</string>
-    <string name="priority_maximum">Maximum</string>
-    <string name="priority_high">Élevé</string>
-    <string name="priority_normal">Normale</string>
-    <string name="priority_low">Bas</string>
-    <string name="always">Toujours</string>
-    <string name="only_on_wifi">Wi-Fi uniquement</string>
     <string name="image_size_large">Grand (plus lent)</string>
     <string name="image_size_medium">Moyen (par défaut, recommandé)</string>
     <string name="image_size_small">Petit (plus rapide, de faible qualité)</string>
@@ -897,4 +898,43 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="uncaught_error_restart_app">Redémarrer l\'application</string>
     <string name="uncaught_error_github">Ouvrir le problème sur GitHub</string>
     <string name="uncaught_error_send">Envoyer un rapport</string>
+    <string name="lastfm_login_username">Nom d\'utilisateur</string>
+    <string name="lastfm_login_password">Mot de passe</string>
+    <string name="lastfm_login_ok">Se connecter</string>
+    <string name="lastfm_login_toggle_password_visibility">Afficher/masquer le mot de passe</string>
+    <string name="lastfm_connected_account">Compte associé :</string>
+    <string name="lastfm_logout">Se déconnecter</string>
+    <string name="error_lastfm_auth">La session a expiré ou les identifiants ne sont pas valides. Veuillez vous reconnecter.</string>
+    <string name="error_lastfm_credentials">Vos identifiants ne sont pas valides. Veuillez les vérifier et réessayer.</string>
+    <string name="error_lastfm_params">Paramètres non valides. Cela peut être dû à une erreur de notre part.</string>
+    <string name="error_lastfm_service">Last.fm est actuellement indisponible ou en maintenance. Veuillez réessayer ultérieurement.</string>
+    <string name="error_lastfm_rate_limit">Trop de requêtes. Veuillez patienter un instant avant de recommencer.</string>
+    <string name="error_lastfm_generic">Une erreur inattendue s\'est produite avec Last.fm. Veuillez réessayer.</string>
+    <string name="error_network_timeout">Le délai de connexion a expiré. Vérifiez votre connexion Internet et réessayez.</string>
+    <string name="github">GitHub</string>
+    <string name="telegram_community">Communauté Telegram</string>
+    <string name="telegram_community_summary">Rejoignez notre communauté Telegram pour rester informé des nouvelles sorties et de l\'actualité.</string>
+    <string name="support_my_work">Soutenez mon travail</string>
+    <string name="network_title">Réseau</string>
+    <string name="network_summary">Gérer les fonctionnalités Internet telles que l\'intégration de Last.fm, les fournisseurs de paroles et le téléchargement de métadonnées.</string>
+    <string name="images_title">Images</string>
+    <string name="lastfm_title">Last.fm</string>
+    <string name="network_features_title">Activer les fonctionnalités réseau</string>
+    <string name="network_features_summary">Autorisez l\'application à utiliser des services Internet tels que l\'intégration à Last.fm, le téléchargement de paroles et la récupération de pochettes d\'albums.</string>
+    <string name="wifi_only_network_features_title">Utiliser les fonctionnalités réseau uniquement via Wi-Fi</string>
+    <string name="wifi_only_network_features_summary">Autorisez les fonctionnalités Internet uniquement lorsque l\'appareil est connecté au Wi-Fi.</string>
+    <string name="lastfm_login_title">Connectez-vous à Last.fm</string>
+    <string name="lastfm_login_summary">Connectez-vous avec votre compte Last.fm pour activer le scrobbling et les mises à jour sur les morceaux en cours de lecture.</string>
+    <string name="lastfm_scrobbling_title">Activer le scrobbling Last.fm</string>
+    <string name="lastfm_scrobbling_summary">Ajouter automatiquement les titres écoutés à votre historique d\'écoute Last.fm.</string>
+    <string name="lastfm_now_playing_title">Mise à jour en cours de lecture sur Last.fm</string>
+    <string name="lastfm_now_playing_summary">Affichez en temps réel le titre en cours de lecture sur votre profil Last.fm.</string>
+    <string name="lastfm_biography_title">Télécharger les biographies des artistes et des albums</string>
+    <string name="lastfm_biography_summary">Récupérez les biographies des artistes et des albums depuis Last.fm.</string>
+    <string name="use_lrclib_provider_title">Utiliser le fournisseur LRCLib</string>
+    <string name="use_lrclib_provider_summary">Autorisez le téléchargement des paroles à partir du service LRCLib.</string>
+    <string name="use_betterlyrics_provider_title">Utiliser le fournisseur BetterLyrics</string>
+    <string name="use_betterlyrics_provider_summary">Autorisez le téléchargement des paroles depuis le service BetterLyrics.</string>
+    <string name="use_simpmusic_provider_title">Utiliser le fournisseur de paroles SimpMusic</string>
+    <string name="use_simpmusic_provider_summary">Autorisez le téléchargement des paroles à partir du service SimpMusic Lyrics.</string>
 </resources>

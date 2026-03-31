@@ -1,6 +1,5 @@
-package com.mardous.booming.ui.screen.lyrics
+package com.mardous.booming.core.model.lyrics
 
-import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
@@ -9,7 +8,6 @@ import androidx.compose.runtime.setValue
 import com.mardous.booming.data.model.lyrics.Lyrics
 import kotlin.math.abs
 
-@Stable
 class LyricsViewState(val lyrics: Lyrics?) {
 
     var position by mutableLongStateOf(0L)
@@ -77,4 +75,3 @@ class LyricsViewState(val lyrics: Lyrics?) {
         return backgrounds.lastIndex
     }
 }
-

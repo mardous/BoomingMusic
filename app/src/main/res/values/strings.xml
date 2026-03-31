@@ -312,8 +312,8 @@
     <string name="length">Length</string>
     <string name="label_last_modified">Last modified</string>
     <string name="label_channels">Channels</string>
-    <string name="label_variable_bitrate">Variable Bitrate</string>
-    <string name="label_loss_less">Loss Less</string>
+    <string name="label_variable_bitrate">VBR</string>
+    <string name="label_loss_less">Loss-Less</string>
     <string name="label_bit_rate">Bitrate</string>
     <string name="label_sampling_rate">Sampling rate</string>
     <string name="replay_gain">ReplayGain</string>
@@ -347,6 +347,17 @@
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
     <string name="queue_locked">Queue locked</string>
     <string name="queue_unlocked">Queue unlocked</string>
+    <string name="channel_mono">Mono</string>
+    <string name="channel_stereo">Stereo</string>
+    <string name="channel_stereo_2_1">2.1 Stereo</string>
+    <string name="channel_quadraphonic">Quadraphonic</string>
+    <string name="channel_surround_5_0">5.0 Surround</string>
+    <string name="channel_surround_5_1">5.1 Surround</string>
+    <string name="channel_surround_6_1">6.1 Surround</string>
+    <string name="channel_surround_7_1">7.1 Surround</string>
+    <string name="channel_surround_9_1">9.1 Surround</string>
+    <string name="channel_surround_11_1">11.1 Surround</string>
+    <string name="channel_surround_13_1">13.1 Surround</string>
 
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Line</string>
@@ -391,8 +402,8 @@
         <item quantity="other">%d items</item>
     </plurals>
 
-    <!-- Listen now -->
-    <string name="for_you_label">For you</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Shuffle</string>
     <string name="top_artists">Top artists</string>
     <string name="top_albums">Top albums</string>
@@ -535,6 +546,21 @@
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
 
+    <!-- Last.fm -->
+    <string name="lastfm_login_username">Username</string>
+    <string name="lastfm_login_password">Password</string>
+    <string name="lastfm_login_ok">Log In</string>
+    <string name="lastfm_login_toggle_password_visibility">Toggle password visibility</string>
+    <string name="lastfm_connected_account">Connected Account:</string>
+    <string name="lastfm_logout">Logout</string>
+    <string name="error_lastfm_auth">Session expired or invalid credentials. Please log in again.</string>
+    <string name="error_lastfm_credentials">Your credentials are not valid. Please verify and try again.</string>
+    <string name="error_lastfm_params">Invalid params. This could be due to an error on our part.</string>
+    <string name="error_lastfm_service">Last.fm is currently down or under maintenance. Please try again later.</string>
+    <string name="error_lastfm_rate_limit">Too many requests. Please wait a moment before scrobbling again.</string>
+    <string name="error_lastfm_generic">An unexpected error occurred with Last.fm. Please try again.</string>
+    <string name="error_network_timeout">Connection timed out. Check your internet and try again.</string>
+
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep timer</string>
     <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
@@ -544,7 +570,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Finish last song</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Stop after this track</string>
     <string name="sleep_timer_stop_after_x">Stop after %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Stop after %s: canceled</string>
@@ -557,10 +585,8 @@
 
     <!-- About page -->
     <string name="action_about">About</string>
-    <string name="application">Application</string>
-    <string name="version">Version</string>
     <string name="changelog">Changelog</string>
-    <string name="fork_on_github">Fork on GitHub</string>
+    <string name="github">GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licenses</string>
     <string name="author">Author</string>
@@ -571,13 +597,11 @@
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegram chat</string>
-    <string name="telegram_chat_summary">Join the chat in Telegram and get informed about new releases and news.</string>
+    <string name="telegram_community">Telegram community</string>
+    <string name="telegram_community_summary">Join our Telegram community to stay updated on new releases and news.</string>
     <string name="view_profile_on_github">View profile on GitHub</string>
-    <string name="follow_on_telegram">DM on Telegram</string>
     <string name="write_an_email">Write an email</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
+    <string name="support_my_work">Support my work</string>
     <string name="support_development">Support development</string>
     <string name="help_with_translations">Help with translations</string>
     <string name="help_with_translations_summary">You can contribute to the project by helping translate Booming Music into other languages.</string>
@@ -611,14 +635,12 @@
     <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
     <string name="playback_title">Playback</string>
     <string name="playback_summary">Change the sound settings, Bluetooth headsets, etc.</string>
-    <string name="metadata_title">Metadata</string>
-    <string name="metadata_summary">Settings related to album and artists images.</string>
     <string name="library_title">Library</string>
     <string name="library_summary">Settings for playlists and exclusion/inclusion filters.</string>
+    <string name="network_title">Network</string>
+    <string name="network_summary">Manage internet features such as Last.fm integration, lyrics providers, and metadata downloads.</string>
     <string name="advanced_title">Advanced</string>
     <string name="advanced_summary">In-app language and other settings for advanced users.</string>
-    <string name="update_title">Update</string>
-    <string name="update_summary">Settings for app updates.</string>
     <string name="about_title">About</string>
     <string name="about_summary">Booming Music %s, touch for more info.</string>
 
@@ -626,7 +648,6 @@
     <string name="general_header">General</string>
     <string name="library_header">Library</string>
     <string name="album_cover_header">Cover</string>
-    <string name="artist_image_header">Artist image</string>
     <string name="exclusion_header">Exclusions</string>
     <string name="controls_header">Controls</string>
     <string name="gestures_header">Gestures</string>
@@ -637,6 +658,10 @@
     <string name="display_header">Display</string>
     <string name="backup_restore_header">Backup/restore</string>
     <string name="visuals_header">Visuals</string>
+    <string name="update_title">Update</string>
+    <string name="images_title">Images</string>
+    <string name="lastfm_title">Last.fm</string>
+    <string name="metadata_title">Metadata</string>
 
     <!-- Interface preferences -->
     <string name="general_theme_title">General theme</string>
@@ -664,6 +689,7 @@
     <string name="lyrics_effects_note">Advanced effects enhance the visual experience but may require more system resources and battery.</string>
     <string name="lyrics_background_effect_title">Background effect</string>
     <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Blur effect</string>
     <string name="lyrics_blur_effect_summary">Blur the lyrics lines adjacent to the current one.</string>
     <string name="lyrics_shadow_effect_title">Shadow effect</string>
@@ -687,6 +713,8 @@
         one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
         This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
@@ -739,6 +767,8 @@
     <string name="prefer_remaining_time_summary">Display remaining time instead of the song\'s duration.</string>
     <string name="prefer_album_artist_name_title">"Prefer Album-artist's name"</string>
     <string name="prefer_album_artist_name_summary">Shows the Album-artist\'s name instead of Song-artist\'s name (if available).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
 
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Play on startup</string>
@@ -791,19 +821,10 @@
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
 
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Auto download metadata</string>
     <string name="ignore_media_store_album_covers_title">Ignore Media Store covers</string>
     <string name="ignore_media_store_album_covers_summary">This may help to increase images quality but require more memory.</string>
     <string name="use_folder_album_cover_title">Use folder images</string>
     <string name="use_folder_album_cover_summary">If the audio file does not contain an embedded cover. Images might take a bit more of time to load.</string>
-    <string name="online_artist_images_title">Download artist images</string>
-    <string name="online_artist_images_summary">This depends on your metadata download policy.</string>
-    <string name="preferred_image_size_title">Preferred image size</string>
-    <string name="online_album_covers_title">Download missing album covers</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
-    <string name="delete_downloaded_lyrics_title">Delete downloaded lyrics</string>
-    <string name="delete_downloaded_lyrics_summary">Only lyrics downloaded by Booming Music. Does not affect lyrics embedded in ID3v2 tags or LRC files.</string>
-    <string name="lyrics_cleared">Lyrics cleared.</string>
 
     <!-- Library preferences -->
     <string name="ignore_articles_when_sorting_title">Ignore articles when sorting</string>
@@ -827,7 +848,33 @@
     <string name="min_song_duration_title">Minimum song duration</string>
     <string name="min_song_duration_summary">How many seconds (at least) must last a song to be shown in your library.</string>
 
-    <!-- Remote preferences -->
+    <!-- Network preferences -->
+    <string name="network_features_title">Enable network features</string>
+    <string name="network_features_summary">Allow the app to use internet services such as Last.fm integration, lyrics downloads, and artwork fetching.</string>
+    <string name="wifi_only_network_features_title">Use network features on Wi-Fi only</string>
+    <string name="wifi_only_network_features_summary">Allow internet features only when connected to Wi-Fi.</string>
+    <string name="online_artist_images_title">Download artist images</string>
+    <string name="online_artist_images_summary">This depends on your metadata download policy.</string>
+    <string name="online_album_covers_title">Download missing album covers</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="preferred_image_size_title">Preferred image size</string>
+    <string name="lastfm_login_title">Sign in to Last.fm</string>
+    <string name="lastfm_login_summary">Authenticate with your Last.fm account to enable scrobbling and now playing updates.</string>
+    <string name="lastfm_scrobbling_title">Enable Last.fm scrobbling</string>
+    <string name="lastfm_scrobbling_summary">Automatically submit played tracks to your Last.fm listening history.</string>
+    <string name="lastfm_now_playing_title">Update now playing on Last.fm</string>
+    <string name="lastfm_now_playing_summary">Show the currently playing track on your Last.fm profile in real time.</string>
+    <string name="lastfm_biography_title">Download artist and album biographies</string>
+    <string name="lastfm_biography_summary">Fetch artist and album biographies from Last.fm.</string>
+    <string name="use_lrclib_provider_title">Use LRCLib provider</string>
+    <string name="use_lrclib_provider_summary">Allow lyrics to be downloaded from the LRCLib service.</string>
+    <string name="use_betterlyrics_provider_title">Use BetterLyrics provider</string>
+    <string name="use_betterlyrics_provider_summary">Allow lyrics to be downloaded from the BetterLyrics service.</string>
+    <string name="use_simpmusic_provider_title">Use SimpMusic Lyrics provider</string>
+    <string name="use_simpmusic_provider_summary">Allow lyrics to be downloaded from the SimpMusic Lyrics service.</string>
+    <string name="delete_downloaded_lyrics_title">Delete downloaded lyrics</string>
+    <string name="delete_downloaded_lyrics_summary">Only lyrics downloaded by Booming Music. Does not affect lyrics embedded in ID3v2 tags or LRC files.</string>
+    <string name="lyrics_cleared">Lyrics cleared.</string>
 
     <string name="app_language_title">App language</string>
     <string name="backup_data_title">Backup app data</string>
@@ -883,12 +930,6 @@
     <string name="this_month">This month</string>
     <string name="past_three_months">Past three months</string>
     <string name="this_year">This year</string>
-    <string name="priority_maximum">Maximum</string>
-    <string name="priority_high">High</string>
-    <string name="priority_normal">Normal</string>
-    <string name="priority_low">Low</string>
-    <string name="always">Always</string>
-    <string name="only_on_wifi">Only Wi-Fi</string>
     <string name="image_size_large">Large (slower)</string>
     <string name="image_size_medium">Medium (default, recommended)</string>
     <string name="image_size_small">Small (faster, low quality)</string>

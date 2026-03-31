@@ -42,6 +42,8 @@ jobs:
       - name: Build app
         env:
           BUILD_VARIANT: ${{ matrix.variant == 'normal' && 'Normal' || 'Fdroid' }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
         run: ./gradlew assemble${{ env.BUILD_VARIANT }}Release
 
       - name: Upload APKs
@@ -53,6 +55,10 @@ jobs:
   publish-release:
     needs: build
     runs-on: ubuntu-latest
+    if: > # TEMPORARY: Prevent releases for alpha/beta/rc tags.
+      !contains(github.ref_name, 'alpha') && 
+      !contains(github.ref_name, 'beta') && 
+      !contains(github.ref_name, 'rc')
 
     steps:
       - name: Download APKs

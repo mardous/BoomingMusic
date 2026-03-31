@@ -169,7 +169,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                         subtitle = uiState.info.artist,
                         additionalInfo = uiState.info.audioHeaderInfo?.let {
                             if (it.lossless) {
-                                "${it.format} • Loss-Less"
+                                "${it.format} • ${stringResource(R.string.label_loss_less)}"
                             } else {
                                 it.format.orEmpty()
                             }
@@ -332,7 +332,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                 InfoView(
                     title = stringResource(R.string.label_bit_rate),
                     content = if (headerInfo.variableBitrate) {
-                        "${headerInfo.bitrate} • Variable"
+                        "${headerInfo.bitrate} • ${stringResource(R.string.label_variable_bitrate)}"
                     } else {
                         headerInfo.bitrate
                     }

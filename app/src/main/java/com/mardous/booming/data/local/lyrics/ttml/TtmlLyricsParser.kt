@@ -53,7 +53,7 @@ class TtmlLyricsParser : LyricsParser {
         }
     }
 
-    override fun parse(reader: Reader, trackLength: Long): Lyrics? {
+    override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): Lyrics? {
         try {
             val parser = XmlPullParserFactory.newInstance().newPullParser()
             parser.setInput(reader)

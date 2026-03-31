@@ -41,6 +41,7 @@ import com.google.android.material.color.DynamicColors
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoverProvider
+import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.data.local.room.InclExclDao
 import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.hasR
@@ -64,10 +65,10 @@ import com.mardous.booming.ui.component.preferences.dialog.SingleSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPreferenceDialog
 import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
+import com.mardous.booming.ui.screen.lastfm.LastFmLoginDialogFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
-import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
 import com.mardous.booming.util.ADD_EXTRA_CONTROLS
@@ -86,6 +87,7 @@ import com.mardous.booming.util.EXTRA_INFO
 import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.IGNORE_MEDIA_STORE
 import com.mardous.booming.util.LANGUAGE_NAME
+import com.mardous.booming.util.LASTFM_LOGIN
 import com.mardous.booming.util.LAST_ADDED_CUTOFF
 import com.mardous.booming.util.LIBRARY_CATEGORIES
 import com.mardous.booming.util.MATERIAL_YOU
@@ -133,6 +135,12 @@ class PlaybackPreferencesFragment : PreferenceScreenFragment() {
 class LibraryPreferencesFragment : PreferenceScreenFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences_screen_library)
+    }
+}
+
+class NetworkPreferencesFragment : PreferenceScreenFragment() {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preferences_screen_network)
     }
 }
 
@@ -254,6 +262,16 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
         }
 
         findPreference<Preference>(ADD_EXTRA_CONTROLS)?.isVisible = !resources.isTablet
+
+        findPreference<ListPreference>(LyricsViewSettings.Key.BACKGROUND_EFFECT)?.apply {
+            if (!hasS()) {
+                val indexOfBlur = entryValues.indexOf("blur")
+                entries = entries.filterIndexed { index, _ -> index != indexOfBlur }
+                    .toTypedArray()
+                entryValues = entryValues.filterIndexed { index, _ -> index != indexOfBlur }
+                    .toTypedArray()
+            }
+        }
 
         findPreference<Preference>(LyricsViewSettings.Key.BLUR_EFFECT)
             ?.isVisible = hasS()
@@ -398,6 +416,7 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
                 COVER_RIGHT_DOUBLE_TAP_ACTION -> {
                     ActionOnCoverPreferenceDialog.newInstance(preference.key)
                 }
+                LASTFM_LOGIN -> LastFmLoginDialogFragment()
                 else -> null
             }
             if (dialogFragment != null) {

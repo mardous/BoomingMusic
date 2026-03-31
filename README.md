@@ -13,7 +13,7 @@
 [![F-Droid version](https://img.shields.io/f-droid/v/com.mardous.booming?style=for-the-badge&label=F-Droid&logo=fdroid)](https://f-droid.org/packages/com.mardous.booming/)
 [![License: GPL v3](https://img.shields.io/github/license/mardous/BoomingMusic?style=for-the-badge&color=orange&label=License&logo=gnu)](LICENSE.txt)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?style=for-the-badge&logo=contributorcovenant)](CODE_OF_CONDUCT.md)
-[![Telegram Group](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/mardousdev)
+[![Telegram Channel](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/mardousdev)
 
 <a href="https://github.com/mardous/BoomingMusic/releases"><img src="assets/badge-github.png" height="60" alt="GitHub Release"></a>
 <a href="https://f-droid.org/packages/com.mardous.booming/"><img src="assets/badge-fdroid.png" height="60" alt="F-Droid"></a>
@@ -39,7 +39,8 @@
 - 🎼 **Automatic Lyrics Download & Editing** – Automatically fetch, sync, and edit lyrics with ease.
 - 💬 **Word-by-Word Synced Lyrics** – Enjoy immersive real-time lyric playback with word-level timing.
 - 🌍 **Translated Lyrics Support** – Display dual-language lyrics via TTML or LRC with translations.
-- 🔊 **Built-in Equalizer** – Fine-tune your sound, customize your presets, and share them.
+- 🔊 **Built-in Equalizer** – Powerful EQ with up to 15 fully configurable bands and customizable profiles.
+- 🎧 **AutoEq Support** – Import professionally tuned headphone correction profiles for the most accurate sound possible.
 - 🔄 **Gapless Playback** – Smooth transitions between songs with zero interruption.
 - 🧠 **Smart Playlists** – Auto-generated lists like *Recently Played*, *Most Played*, and *History*.
 - 🎧 **Bluetooth & Headset Controls** – Manage playback easily via connected devices.
@@ -99,7 +100,7 @@
 - [ ] 🎵 Improved genre handling
 - [ ] 🔁 Last.fm integration (import/export playback data)
 - [ ] 💿 Enhanced artist pages (separate albums and singles visually)
-- [ ] 📺 Experimental Android TV support (if enough demand!)
+- [ ] 🌐 Jellyfin & Navidrome integration
 
 ## 🔗 Useful Links
 
@@ -115,7 +116,7 @@
 - 💬 **[Community](https://github.com/mardous/BoomingMusic/wiki/Community)**  
   Users and contributors
 
-- 🌐 **[Translations](https://crowdin.com/project/booming-music)**  
+- 🌐 **[Translations](https://hosted.weblate.org/projects/booming-music/)**  
   Help us translate Booming Music into your language
 
 - ❓ **[FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)**  
@@ -132,7 +133,9 @@ You can also:
 - Submit pull requests
 - Suggest new ideas
 
-**Translations:** Managed on [Crowdin](https://crowdin.com/project/booming-music).
+**Translations:** Managed on [Hosted Weblate](https://hosted.weblate.org/projects/booming-music/).
+
+[![Translation Status](https://hosted.weblate.org/widget/booming-music/horizontal-auto.svg)](https://hosted.weblate.org/projects/booming-music/)
 
 ## 💖 Support Development
 
@@ -142,9 +145,17 @@ development costs and dedicate more time to new features.
 
 Your support is greatly appreciated and keeps me motivated to continue improving Booming Music!
 
+<div align="center">
+
 <a href="https://ko-fi.com/christiaam" target="_blank">
 <img src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_red.png" alt="Support me on Ko-fi" style="border: 0px; height: 40px;" />
 </a>
+
+### ❤️ Supporters
+
+**mbeezy** (first donor)
+
+</div>
 
 ## 🙌 Credits
 

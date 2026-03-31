@@ -64,7 +64,6 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -108,7 +107,6 @@ import com.mardous.booming.ui.component.compose.TipView
 import com.mardous.booming.ui.component.compose.TitleShapedText
 import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.library.LibraryViewModel
-import kotlinx.coroutines.launch
 import java.util.Locale
 import kotlin.math.roundToInt
 
@@ -174,7 +172,6 @@ fun EqualizerScreen(
 
     var expandedMenu by remember { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
-    val coroutineScope = rememberCoroutineScope()
 
     val eqState by eqViewModel.eqState.collectAsState()
     val eqCurrentProfile by eqViewModel.currentProfile.collectAsState()
@@ -192,8 +189,10 @@ fun EqualizerScreen(
     var deleteProfileState by remember { mutableStateOf<Pair<EqProfile, Boolean>?>(null) }
 
     var shareProfileState by remember { mutableStateOf<Pair<Uri, String>?>(null) }
-    shareProfileState?.let { (data, mimeType) ->
-        coroutineScope.launch {
+    LaunchedEffect(shareProfileState) {
+        val currentData = shareProfileState
+        if (currentData != null) {
+            val (data, mimeType) = currentData
             val result = snackbarHostState.showSnackbar(
                 message = context.getString(R.string.profiles_exported_successfully),
                 actionLabel = context.getString(R.string.action_share),

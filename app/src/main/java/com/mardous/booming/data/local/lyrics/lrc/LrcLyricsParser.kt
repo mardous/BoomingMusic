@@ -34,7 +34,7 @@ class LrcLyricsParser : LyricsParser {
             }
     }
 
-    override fun parse(reader: Reader, trackLength: Long): Lyrics? {
+    override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): Lyrics? {
         val attributes = hashMapOf<String, String>()
         val rawLines = mutableListOf<LrcNode>()
         try {
@@ -86,13 +86,14 @@ class LrcLyricsParser : LyricsParser {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        return parse(attributes, rawLines, trackLength)
+        return parse(attributes, rawLines, trackLength, ignoreBlankLines)
     }
 
     private fun parse(
         attributes: Map<String, String>,
         rawLines: List<LrcNode>,
-        trackLength: Long
+        trackLength: Long,
+        ignoreBlankLines: Boolean
     ): Lyrics? {
         val lines = mutableMapOf<Long, Lyrics.Line?>()
         val length = attributes["length"]
@@ -135,8 +136,7 @@ class LrcLyricsParser : LyricsParser {
                 entry.end = end ?: length
 
                 if (entry.text.isNullOrBlank()) {
-                    if (!lines.containsKey(entry.start)) {
-                        // we still allow empty lines
+                    if (!ignoreBlankLines && !lines.containsKey(entry.start)) {
                         lines[entry.start] = entry.toLine()
                     }
                 } else {

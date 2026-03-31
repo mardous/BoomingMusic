@@ -25,7 +25,6 @@ import androidx.core.content.edit
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationBarView.LabelVisibility
 import com.mardous.booming.R
-import com.mardous.booming.appContext
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.Cutoff
 import com.mardous.booming.core.model.action.FolderAction
@@ -340,9 +339,6 @@ object Preferences : KoinComponent {
         else -> preferences.getBoolean(PAUSE_ON_DISCONNECT, false)
     }
 
-    val autoDownloadMetadataPolicy: String
-        get() = preferences.requireString(AUTO_DOWNLOAD_METADATA_POLICY, appStr(R.string.default_metadata_policy))
-
     var onlyAlbumArtists: Boolean
         get() = preferences.getBoolean(ONLY_ALBUM_ARTISTS, true)
         set(value) = preferences.edit { putBoolean(ONLY_ALBUM_ARTISTS, value) }
@@ -360,10 +356,10 @@ object Preferences : KoinComponent {
             return notNullSet
         }
 
-    fun getLastAddedCutoff(context: Context = appContext()): Cutoff =
+    fun getLastAddedCutoff(context: Context): Cutoff =
         getCutoff(context, LAST_ADDED_CUTOFF, true)
 
-    fun getHistoryCutoff(context: Context = appContext()): Cutoff =
+    fun getHistoryCutoff(context: Context): Cutoff =
         getCutoff(context, HISTORY_CUTOFF)
 
     private fun getCutoff(
@@ -469,8 +465,6 @@ object Preferences : KoinComponent {
 
     inline fun <reified T : Enum<T>> SharedPreferences.enumValueByOrdinal(key: String, defaultValue: T): T =
         getInt(key, defaultValue.ordinal).toEnum<T>() ?: defaultValue
-
-    private fun appStr(resid: Int): String = appContext().getString(resid)
 }
 
 interface GeneralTheme {
@@ -527,14 +521,6 @@ interface PlaylistCutoff {
     }
 }
 
-interface AutoDownloadMetadataPolicy {
-    companion object {
-        const val ALWAYS = "always"
-        const val ONLY_WIFI = "only_wifi"
-        const val NEVER = "never"
-    }
-}
-
 interface ImageSize {
     companion object {
         const val LARGE = "large"
@@ -577,6 +563,7 @@ const val LYRICS_ON_COVER = "lyrics_on_cover"
 const val SWIPE_ON_COVER = "swipe_on_cover"
 const val NOW_PLAYING_SMALL_IMAGE = "now_playing_small_image"
 const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
+const val PLAYER_BLUR_RADIUS = "player_blur_radius"
 const val CAROUSEL_EFFECT = "carousel_effect"
 const val COVER_SINGLE_TAP_ACTION = "cover_single_tap_action"
 const val COVER_DOUBLE_TAP_ACTION = "cover_double_tap_action"
@@ -591,8 +578,6 @@ const val DISPLAY_EXTRA_INFO = "display_extra_info"
 const val EXTRA_INFO = "now_playing_extra_info"
 const val PREFER_REMAINING_TIME = "prefer_remaining_time"
 const val PREFER_ALBUM_ARTIST_NAME = "prefer_album_artist_name_on_np"
-const val PLAYBACK_SPEED = "playback_speed"
-const val PLAYBACK_PITCH = "playback_pitch"
 const val REWIND_WITH_BACK = "rewind_with_back"
 const val SEEK_INTERVAL = "seek_interval"
 const val QUEUE_NEXT_MODE = "queue_next_mode"
@@ -613,11 +598,8 @@ const val PAUSE_ON_BLUETOOTH_DISCONNECT = "pause_on_bluetooth_disconnect"
 const val IGNORE_AUDIO_FOCUS = "ignore_audio_focus"
 const val PAUSE_ON_ZERO_VOLUME = "pause_on_zero_volume"
 const val MP3_INDEX_SEEKING = "mp3_index_seeking"
-const val AUTO_DOWNLOAD_METADATA_POLICY = "auto_download_metadata_policy"
 const val IGNORE_MEDIA_STORE = "ignore_media_store"
 const val USE_FOLDER_ART = "use_folder_art"
-const val ALLOW_ONLINE_ALBUM_COVERS = "allow_online_album_covers"
-const val ALLOW_ONLINE_ARTIST_IMAGES = "allow_online_artist_images"
 const val PREFERRED_IMAGE_SIZE = "preferred_image_size"
 const val ONLY_ALBUM_ARTISTS = "only_album_artists"
 const val TRASH_MUSIC_FILES = "trash_music_files"
@@ -652,3 +634,4 @@ const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"
 const val QUEUE_HEIGHT = "queue_height"
+const val LASTFM_LOGIN = "lastfm_login"
