@@ -958,4 +958,6 @@
     <string name="use_betterlyrics_provider_summary">Разрешить загрузку текстов песен из сервиса BetterLyrics.</string>
     <string name="use_simpmusic_provider_title">Использовать провайдер SimpMusic Lyrics</string>
     <string name="use_simpmusic_provider_summary">Разрешить загрузку текстов песен из сервиса SimpMusic Lyrics.</string>
+    <string name="lyrics_center_horizontally_title">Выровнять текст песни по центру (по горизонтали)</string>
+    <string name="lyrics_center_horizontally_summary">Выровнять каждую строку текста песни по горизонтали по центру экрана.</string>
 </resources>
