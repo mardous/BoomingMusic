@@ -1,6 +1,7 @@
 package com.mardous.booming.core.model.audiodevice
 
 import android.media.AudioFormat
+import java.util.Locale
 
 data class BitPerfectInfo(
     val deviceName: String,
@@ -20,10 +21,15 @@ data class BitPerfectInfo(
     val sampleRateLabel: String
         get() = if (sampleRate >= 1000) {
             val khz = sampleRate / 1000.0
-            val formatted = if (khz == khz.toLong().toDouble()) {
-                khz.toLong().toString()
-            } else {
-                khz.toString()
+            val formatted = when (sampleRate) {
+                44100 -> "44.1"
+                48000 -> "48"
+                else -> {
+                    // Format with one decimal place and trim trailing ".0" to avoid
+                    // long or imprecise decimal representations like 44.1000003
+                    val raw = String.format(Locale.US, "%.1f", khz)
+                    if (raw.endsWith(".0")) raw.dropLast(2) else raw
+                }
             }
             "$formatted kHz"
         } else {

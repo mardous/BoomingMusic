@@ -24,7 +24,6 @@ import android.content.IntentFilter
 import android.hardware.usb.UsbManager
 import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
-import android.media.AudioFormat
 import android.media.AudioManager
 import android.media.AudioMixerAttributes
 import android.os.Build
@@ -88,7 +87,9 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
             }
             UsbManager.ACTION_USB_DEVICE_DETACHED -> {
                 scanForBitPerfectDevices()
-                disableBitPerfect()
+                if (availableBitPerfectDevices.value.none { it == bitPerfectDevice }) {
+                    disableBitPerfect()
+                }
             }
             Intent.ACTION_HEADSET_PLUG -> {
                 val state = intent.getIntExtra("state", -1)
