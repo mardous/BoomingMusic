@@ -28,7 +28,7 @@ internal class LrcNode(
     }
 
     private fun toWord(startIndex: Int): Lyrics.Word {
-        check(!text.isNullOrBlank())
+        checkNotNull(text)
         return Lyrics.Word(
             content = text,
             startMillis = start,
@@ -50,8 +50,6 @@ internal class LrcNode(
 
             val words = mutableListOf<Lyrics.Word>()
             for (child in children) {
-                if (child.text.isNullOrBlank()) continue
-
                 val startIndex = words.sumOf { it.content.length }
                 words.add(child.toWord(startIndex))
             }
