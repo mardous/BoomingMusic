@@ -693,8 +693,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">시작 시 재생</string>
     <string name="queue_next_mode_title">\"다음 순서\" 모드</string>
-    <string name="search_auto_queue_title">검색 결과 전체 추가</string>
-    <string name="search_auto_queue_summary">검색 결과에서 곡 재생 시 다른 검색 결과들도 대기열에 추가합니다.</string>
     <string name="remember_shuffle_mode_title">셔플 상태 기억</string>
     <string name="remember_shuffle_mode_summary">새 목록 선택 시에도 셔플 모드를 유지합니다.</string>
     <string name="album_shuffle_mode_title">앨범 셔플 모드</string>

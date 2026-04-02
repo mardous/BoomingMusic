@@ -707,8 +707,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">起動時に再生する</string>
     <string name="queue_next_mode_title">「次に再生」モード</string>
-    <string name="search_auto_queue_title">すべての検索結果をキューに追加する</string>
-    <string name="search_auto_queue_summary">検索画面で曲を再生した時他の検索結果も自動的にキューに追加する。</string>
     <string name="remember_shuffle_mode_title">シャッフルを記憶する</string>
     <string name="remember_shuffle_mode_summary">曲の新しいリストを選択するとシャッフルモードはオンになります。</string>
     <string name="album_shuffle_mode_title">アルバムシャッフルモード</string>

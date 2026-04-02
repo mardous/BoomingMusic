@@ -312,9 +312,6 @@ object Preferences : KoinComponent {
             SongClickBehavior.PlayOnlyThisSong
         }
 
-    val searchAutoQueue: Boolean
-        get() = preferences.getBoolean(SEARCH_AUTO_QUEUE, false)
-
     val albumShuffleMode: GroupShuffleMode
         get() = getGroupShuffleMode(ALBUM_SHUFFLE_MODE, SelectedShuffleMode.SHUFFLE_ALBUMS)
 
@@ -582,7 +579,6 @@ const val REWIND_WITH_BACK = "rewind_with_back"
 const val SEEK_INTERVAL = "seek_interval"
 const val QUEUE_NEXT_MODE = "queue_next_mode"
 const val PLAY_ON_STARTUP_MODE = "play_on_startup_mode"
-const val SEARCH_AUTO_QUEUE = "search_auto_queue"
 const val ON_SONG_CLICK_ACTION = "on_song_click_action"
 const val ON_CLEAR_QUEUE_ACTION = "on_clear_queue_action"
 const val PLAY_OPTION_ALWAYS_VISIBLE = "play_option_always_visible"

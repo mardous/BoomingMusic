@@ -717,8 +717,6 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Jouer au démarrage</string>
     <string name="queue_next_mode_title">Mode \"File d\'attente\"</string>
-    <string name="search_auto_queue_title">Mettre en file d\'attente tous les résultats de recherche</string>
-    <string name="search_auto_queue_summary">Lorsque vous lisez un titre à partir de l\'écran de recherche, tous les autres résultats seront également mis en file d\'attente.</string>
     <string name="remember_shuffle_mode_title">Mémoriser le mélange</string>
     <string name="remember_shuffle_mode_summary">Le mode aléatoire restera actif lors de la sélection d\'une nouvelle liste de titres.</string>
     <string name="album_shuffle_mode_title">Mode de lecture aléatoire des albums</string>

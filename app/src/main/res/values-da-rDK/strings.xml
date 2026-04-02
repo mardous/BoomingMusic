@@ -709,8 +709,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Afspil ved opstart</string>
     <string name="queue_next_mode_title">\"Kø næste\" tilstand</string>
-    <string name="search_auto_queue_title">Kø alle søgeresultater</string>
-    <string name="search_auto_queue_summary">Når du afspiller en sang fra søgeskærmen, vil alle andre resultater også blive sat i kø.</string>
     <string name="remember_shuffle_mode_title">Husk Blanding</string>
     <string name="remember_shuffle_mode_summary">Blandingstilstand vil forblive tændt, når du vælger en ny liste over sange.</string>
     <string name="album_shuffle_mode_title">Album shuffle mode</string>

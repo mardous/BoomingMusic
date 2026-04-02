@@ -701,8 +701,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">प्ले ऑन स्टार्टअप</string>
     <string name="queue_next_mode_title">\"अगली कतार\" मोड</string>
-    <string name="search_auto_queue_title">सभी खोज परिणामों को पंक्ति में लगाएं</string>
-    <string name="search_auto_queue_summary">जब खोज स्क्रीन से एक गाना खेला जाता है, तो सभी अन्य परिणाम भी कतार में लगेंगे।</string>
     <string name="remember_shuffle_mode_title">शफल याद रखें</string>
     <string name="remember_shuffle_mode_summary">नए गीतों की सूची चुनते समय शफल मोड चालू रहेगा।</string>
     <string name="album_shuffle_mode_title">एल्बम शफल मोड</string>

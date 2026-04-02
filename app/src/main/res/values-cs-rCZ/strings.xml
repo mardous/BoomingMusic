@@ -725,8 +725,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Přehrát při spuštění</string>
     <string name="queue_next_mode_title">Režim \"Další fronta\"</string>
-    <string name="search_auto_queue_title">Přidat do fronty všechny výsledky hledání</string>
-    <string name="search_auto_queue_summary">Při přehrávání skladby z obrazovky hledání budou všechny ostatní výsledky zařazeny do fronty.</string>
     <string name="remember_shuffle_mode_title">Pamatovat náhodný výběr</string>
     <string name="remember_shuffle_mode_summary">Režim zamíchání zůstane zapnutý při výběru nového seznamu skladeb.</string>
     <string name="album_shuffle_mode_title">Režim zamíchání alb</string>

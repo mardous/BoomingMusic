@@ -738,8 +738,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">تشغيل عند بدء التشغيل</string>
     <string name="queue_next_mode_title">وضع \"قائمة الانتظار التالية\"</string>
-    <string name="search_auto_queue_title">قائمة الانتظار لجميع نتائج البحث</string>
-    <string name="search_auto_queue_summary">عند تشغيل أغنية من شاشة البحث، سيتم أيضا وضع جميع النتائج الأخرى في قائمة الانتظار.</string>
     <string name="remember_shuffle_mode_title">تذكر التبديل</string>
     <string name="remember_shuffle_mode_summary">سيبقى الوضع العشوائي قيد التشغيل عند تحديد قائمة جديدة من الأغنية.</string>
     <string name="album_shuffle_mode_title">وضع خلط الألبوم</string>

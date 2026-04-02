@@ -726,8 +726,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">השמע בהפעלה</string>
     <string name="queue_next_mode_title">מצב \"הוסף לתור הבא\"</string>
-    <string name="search_auto_queue_title">הוסף את כל תוצאות החיפוש לתור</string>
-    <string name="search_auto_queue_summary">בעת השמעת שיר ממסך החיפוש, כל התוצאות האחרות יתווספו גם לתור.</string>
     <string name="remember_shuffle_mode_title">זכור את מצב הערבוב</string>
     <string name="remember_shuffle_mode_summary">מצב הערבוב יישאר פעיל בעת בחירת רשימת שירים חדשה.</string>
     <string name="album_shuffle_mode_title">מצב ערבוב אלבומים</string>

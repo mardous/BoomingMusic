@@ -703,8 +703,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">启动时自动播放</string>
     <string name="queue_next_mode_title">“下一首播放”模式</string>
-    <string name="search_auto_queue_title">将所有搜索结果加入队列</string>
-    <string name="search_auto_queue_summary">当从搜索界面播放歌曲时，其他结果也添加至队列。</string>
     <string name="remember_shuffle_mode_title">记住随机播放</string>
     <string name="remember_shuffle_mode_summary">选择新歌曲列表时将保持随机模式。</string>
     <string name="album_shuffle_mode_title">专辑随机模式</string>

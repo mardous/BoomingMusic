@@ -703,8 +703,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Başlangıçta oynat</string>
     <string name="queue_next_mode_title">\"Sıradakini çal\" modu</string>
-    <string name="search_auto_queue_title">Tüm arama sonuçlarını sıraya ekle</string>
-    <string name="search_auto_queue_summary">Arama ekranından bir şarkı çalarken, diğer tüm sonuçlar da sıraya eklenecektir.</string>
     <string name="remember_shuffle_mode_title">Karıştırma modunu hatırla</string>
     <string name="remember_shuffle_mode_summary">Yeni bir şarkı listesi seçildiğinde karıştırma modu açık kalacaktır.</string>
     <string name="album_shuffle_mode_title">Albüm karıştırma modu</string>

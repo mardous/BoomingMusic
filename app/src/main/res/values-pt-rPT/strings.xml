@@ -701,8 +701,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reproduzir ao iniciar</string>
     <string name="queue_next_mode_title">Modo \"Próxima Fila\"</string>
-    <string name="search_auto_queue_title">Enfileirar todos os resultados da busca</string>
-    <string name="search_auto_queue_summary">Ao reproduzir uma música da tela de busca, todos os outros resultados também serão colocados na fila.</string>
     <string name="remember_shuffle_mode_title">Lembrar modo aleatório</string>
     <string name="remember_shuffle_mode_summary">Modo aleatório permanecerá ao selecionar uma nova lista de músicas.</string>
     <string name="album_shuffle_mode_title">Modo aleatório do álbum</string>

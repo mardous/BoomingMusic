@@ -709,8 +709,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Toista käynnistettäessä</string>
     <string name="queue_next_mode_title">\"Jono seuraavaksi\" -tila</string>
-    <string name="search_auto_queue_title">Lisää kaikki hakutulokset jonoon</string>
-    <string name="search_auto_queue_summary">Kun soitat kappaletta hakunäytöstä, kaikki muut tulokset on myös jonotettu.</string>
     <string name="remember_shuffle_mode_title">Muista Sekoitus</string>
     <string name="remember_shuffle_mode_summary">Sekoitustila pysyy päällä, kun valitaan uusi kappaleluettelo.</string>
     <string name="album_shuffle_mode_title">Albumin sekoitustila</string>

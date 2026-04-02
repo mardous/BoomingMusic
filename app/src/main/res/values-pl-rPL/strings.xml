@@ -726,8 +726,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Odtwarzaj po starcie</string>
     <string name="queue_next_mode_title">Dodawanie do kolejki</string>
-    <string name="search_auto_queue_title">Odtwarzaj wszystkie wyszukane</string>
-    <string name="search_auto_queue_summary">Po odtworzeniu utworu z wyszukiwania wszystkie pozostałe wyniki zostaną dodane do kolejki.</string>
     <string name="remember_shuffle_mode_title">Zapamiętaj tryb losowy</string>
     <string name="remember_shuffle_mode_summary">Tryb losowy pozostanie włączony podczas wybierania nowej listy utworów.</string>
     <string name="album_shuffle_mode_title">Sposób losowania albumów</string>

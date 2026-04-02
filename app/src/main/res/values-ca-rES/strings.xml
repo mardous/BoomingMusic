@@ -715,8 +715,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reprodueix en iniciar</string>
     <string name="queue_next_mode_title">Mode d\'«Afegeix a la cua»</string>
-    <string name="search_auto_queue_title">Afegeix a la cua tots els resultats de cerca</string>
-    <string name="search_auto_queue_summary">Quan es reprodueix una cançó de la pantalla de cerca, tots els altres resultats s\'afegeixen a la cua.</string>
     <string name="remember_shuffle_mode_title">Recorda l\'Aleatori</string>
     <string name="remember_shuffle_mode_summary">El mode aleatori es mantindrà en seleccionar una nova llista de cançons.</string>
     <string name="album_shuffle_mode_title">Mode de barreja d\'àlbums</string>

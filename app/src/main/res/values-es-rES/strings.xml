@@ -699,8 +699,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reproducir al iniciar</string>
     <string name="queue_next_mode_title">Modo \"Cola siguiente\"</string>
-    <string name="search_auto_queue_title">Encolar todos los resultados de búsqueda</string>
-    <string name="search_auto_queue_summary">Cuando se reproduce una canción desde la pantalla de búsqueda, todos los demás resultados también se pondrán en cola.</string>
     <string name="remember_shuffle_mode_title">Recordar aleatorio</string>
     <string name="remember_shuffle_mode_summary">El modo aleatorio permanecerá encendido cuando seleccione una nueva lista de canciones.</string>
     <string name="album_shuffle_mode_title">Modo aleatorio del álbum</string>

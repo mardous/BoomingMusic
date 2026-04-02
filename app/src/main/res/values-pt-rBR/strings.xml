@@ -709,8 +709,6 @@ Pode ser necessário reiniciar o aplicativo.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reproduzir ao iniciar</string>
     <string name="queue_next_mode_title">Modo \"Enfileirar a seguir\"</string>
-    <string name="search_auto_queue_title">Enfileirar todos os resultados da pesquisa</string>
-    <string name="search_auto_queue_summary">Ao reproduzir uma música da tela de pesquisa, todos os outros resultados também serão colocados na fila.</string>
     <string name="remember_shuffle_mode_title">Lembrar modo aleatório</string>
     <string name="remember_shuffle_mode_summary">O modo aleatório permanecerá ativado ao selecionar uma nova lista de músicas.</string>
     <string name="album_shuffle_mode_title">Álbum em modo aleatório</string>

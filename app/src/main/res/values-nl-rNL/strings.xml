@@ -709,8 +709,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Spelen bij opstarten</string>
     <string name="queue_next_mode_title">\"Wachtrij volgende\" modus</string>
-    <string name="search_auto_queue_title">Alle zoekresultaten in wachtrij zetten</string>
-    <string name="search_auto_queue_summary">Wanneer een nummer wordt afgespeeld vanaf het zoekscherm, worden ook alle andere resultaten opgevraagd.</string>
     <string name="remember_shuffle_mode_title">Shuffle onthouden</string>
     <string name="remember_shuffle_mode_summary">Shuffle modus blijft aan bij het selecteren van een nieuwe lijst met nummers.</string>
     <string name="album_shuffle_mode_title">Album shuffle modus</string>

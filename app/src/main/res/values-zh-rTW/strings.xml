@@ -700,8 +700,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">啟動時自動播放</string>
     <string name="queue_next_mode_title">「隊列下一個播放」模式</string>
-    <string name="search_auto_queue_title">將所有搜尋結果加入隊列</string>
-    <string name="search_auto_queue_summary">當從搜尋界面播放歌曲時，其他結果也新增至隊列。</string>
     <string name="remember_shuffle_mode_title">記住隨機播放</string>
     <string name="remember_shuffle_mode_summary">選擇新歌曲列表時將保持隨機模式。</string>
     <string name="album_shuffle_mode_title">專輯隨機模式</string>

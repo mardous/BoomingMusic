@@ -708,8 +708,6 @@ Ideal für Podcasts und Aufnahmen.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Beim App-Start fortsetzen</string>
     <string name="queue_next_mode_title">Warteschlangen-Modus</string>
-    <string name="search_auto_queue_title">Alle Suchergebnisse in die Warteschlange</string>
-    <string name="search_auto_queue_summary">Wenn Du einen Titel aus den Suchergebnissen abspielst, werden alle anderen Ergebnisse ebenfalls der Warteschlange hinzugefügt.</string>
     <string name="remember_shuffle_mode_title">Zufallswiedergabe merken</string>
     <string name="remember_shuffle_mode_summary">Zufallswiedergabe-Modus bleibt bei Auswahl einer neuen Titel-Liste erhalten.</string>
     <string name="album_shuffle_mode_title">Album-Zufallswiedergabe-Modus</string>

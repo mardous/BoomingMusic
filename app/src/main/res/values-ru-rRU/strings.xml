@@ -731,8 +731,6 @@
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Проигрывать при запуске</string>
     <string name="queue_next_mode_title">Режим «Добавить в очередь»</string>
-    <string name="search_auto_queue_title">Добавлять в очередь результаты поиска</string>
-    <string name="search_auto_queue_summary">При запуске песни из поиска все остальные результаты поиска будут добавлены в очередь.</string>
     <string name="remember_shuffle_mode_title">Запомнить перемешивание</string>
     <string name="remember_shuffle_mode_summary">Режим перемешивания сохранится при выборе нового списка песен.</string>
     <string name="album_shuffle_mode_title">Режим перемешивания альбомов</string>
