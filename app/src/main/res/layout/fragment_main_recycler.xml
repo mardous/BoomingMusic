@@ -35,14 +35,6 @@
         tools:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/emptyEmoji"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="@string/empty_text_emoji"
-            android:textAppearance="?textAppearanceHeadline3"/>
-
-        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/emptyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
