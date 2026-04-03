@@ -2,7 +2,6 @@ package com.mardous.booming.playback
 
 import android.os.Bundle
 import androidx.annotation.OptIn
-import androidx.core.os.bundleOf
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
@@ -51,7 +50,7 @@ fun MediaMetadata.withExtras(consumer: Bundle.() -> Unit) = buildUpon()
     .setExtras(getOrCreateExtras().apply(consumer))
     .build()
 
-fun MediaMetadata.getOrCreateExtras() = extras ?: bundleOf()
+fun MediaMetadata.getOrCreateExtras() = extras ?: Bundle()
 
 val MediaItem?.song: Song
     get() = (this?.localConfiguration?.tag as? Song) ?: Song.emptySong

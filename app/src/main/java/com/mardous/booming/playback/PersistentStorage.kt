@@ -1,9 +1,9 @@
 package com.mardous.booming.playback
 
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import androidx.core.content.edit
-import androidx.core.os.bundleOf
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
@@ -15,7 +15,14 @@ import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.QueueDao
 import com.mardous.booming.data.local.room.QueueEntity
 import com.mardous.booming.playback.ImprovedShuffleOrder.SerializedOrder
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.Runnable
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerializationException
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -108,7 +115,11 @@ class PersistentStorage(
                         .setMediaId(it.id)
                         .setMediaMetadata(
                             MediaMetadata.Builder()
-                                .setExtras(bundleOf("original_index" to it.order))
+                                .setExtras(
+                                    Bundle().apply {
+                                        putInt("original_index", it.order)
+                                    }
+                                )
                                 .build()
                         )
                         .build()

@@ -26,7 +26,6 @@ import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
-import androidx.core.os.bundleOf
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.media3.common.AudioAttributes
@@ -628,7 +627,9 @@ class PlaybackService :
                     stopIndex = newStopIndex
                 }
                 Futures.immediateFuture(
-                    SessionResult(SessionResult.RESULT_SUCCESS, bundleOf("canceled" to canceled))
+                    SessionResult(SessionResult.RESULT_SUCCESS, Bundle().apply {
+                        putBoolean("canceled", canceled)
+                    })
                 )
             }
 

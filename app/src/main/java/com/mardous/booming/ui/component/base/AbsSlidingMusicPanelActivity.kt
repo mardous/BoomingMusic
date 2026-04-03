@@ -35,7 +35,6 @@ import android.view.ViewTreeObserver
 import android.widget.FrameLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.core.animation.doOnEnd
-import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.get
@@ -461,7 +460,9 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             val gestureDetector = GestureDetector(this, object : SimpleOnGestureListener() {
                 override fun onLongPress(e: MotionEvent) {
                     findNavController(R.id.fragment_container)
-                        .navigate(R.id.nav_search, bundleOf(SearchFragment.MODE to filterMode))
+                        .navigate(R.id.nav_search, Bundle().apply {
+                            putSerializable(SearchFragment.MODE, filterMode)
+                        })
                 }
             })
             navigationView.setItemOnTouchListener(info.category.id) { _: View, event: MotionEvent ->
