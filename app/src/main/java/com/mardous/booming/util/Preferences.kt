@@ -31,7 +31,7 @@ import com.mardous.booming.core.model.action.FolderAction
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.action.SongClickBehavior
-import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.core.model.player.MetadataField
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.player.PlayerTransition
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
@@ -274,16 +274,26 @@ object Preferences : KoinComponent {
     val displayExtraInfo: Boolean
         get() = preferences.getBoolean(DISPLAY_EXTRA_INFO, false)
 
-    var nowPlayingExtraInfoList: List<NowPlayingInfo>
-        get() = preferences.nullString(EXTRA_INFO).deserialize(getDefaultNowPlayingInfo())
-        set(value) = preferences.edit { putString(EXTRA_INFO, value.serialize()) }
+    fun getExtraInfoContent(key: String, defaultContent: List<MetadataField>) =
+        preferences.nullString(key).deserialize(defaultContent)
 
-    fun getDefaultNowPlayingInfo(): List<NowPlayingInfo> =
-        NowPlayingInfo.Info.entries.map { tag ->
-            NowPlayingInfo(
-                tag,
-                tag == NowPlayingInfo.Info.Format || tag == NowPlayingInfo.Info.Bitrate || tag == NowPlayingInfo.Info.SampleRate
+    fun setExtraInfoContent(key: String, newContent: List<MetadataField>) {
+        preferences.edit { putString(key, newContent.serialize()) }
+    }
+
+    fun getDefaultNowPlayingInfo(): List<MetadataField> =
+        MetadataField.Content.entries.map { content ->
+            MetadataField(
+                content,
+                content == MetadataField.Content.Format ||
+                        content == MetadataField.Content.Bitrate ||
+                        content == MetadataField.Content.SampleRate
             )
+        }
+
+    fun getDefaultWidgetInfo(): List<MetadataField> =
+        MetadataField.Content.entries.map { tag ->
+            MetadataField(tag, tag == MetadataField.Content.Album)
         }
 
     var preferRemainingTime: Boolean
@@ -572,7 +582,11 @@ const val CIRCLE_PLAY_BUTTON = "circle_play_button"
 const val ENABLE_SCROLLING_TEXT = "enable_scrolling_text"
 const val DISPLAY_ALBUM_TITLE = "display_album_title"
 const val DISPLAY_EXTRA_INFO = "display_extra_info"
-const val EXTRA_INFO = "now_playing_extra_info"
+const val NOW_PLAYING_EXTRA_INFO = "now_playing_extra_info"
+const val WIDGET_DYNAMIC_COLORS = "widget_dynamic_colors"
+const val WIDGET_SMALL_LAYOUT_STYLE = "widget_small_layout_style"
+const val WIDGET_IMAGE_CORNER_RADIUS = "widget_image_corner_radius"
+const val WIDGET_THIRD_LINE_CONTENT = "widget_third_line_content"
 const val PREFER_REMAINING_TIME = "prefer_remaining_time"
 const val PREFER_ALBUM_ARTIST_NAME = "prefer_album_artist_name_on_np"
 const val REWIND_WITH_BACK = "rewind_with_back"

@@ -30,7 +30,7 @@ import com.mardous.booming.extensions.resources.applyColor
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.AbsPlayerFragment
-import com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.ExtraInfoPreferenceDialog
 import com.mardous.booming.util.Preferences
 
 class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_player),
@@ -147,7 +147,7 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
 
     override fun onLongClick(view: View): Boolean {
         if (binding.songInfo == view) {
-            NowPlayingExtraInfoPreferenceDialog()
+            ExtraInfoPreferenceDialog()
                 .show(childFragmentManager, "NOW_PLAYING_EXTRA_INFO")
             return true
         }

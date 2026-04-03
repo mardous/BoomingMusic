@@ -59,7 +59,7 @@ import com.mardous.booming.ui.component.preferences.ThemePreference
 import com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.CategoriesPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.ClearQueueActionPreferenceDialog
-import com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.ExtraInfoPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.NowPlayingScreenPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.SingleSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPreferenceDialog
@@ -83,7 +83,6 @@ import com.mardous.booming.util.COVER_LONG_PRESS_ACTION
 import com.mardous.booming.util.COVER_RIGHT_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_SINGLE_TAP_ACTION
 import com.mardous.booming.util.ENABLE_ROTATION_LOCK
-import com.mardous.booming.util.EXTRA_INFO
 import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.IGNORE_MEDIA_STORE
 import com.mardous.booming.util.LANGUAGE_NAME
@@ -91,6 +90,7 @@ import com.mardous.booming.util.LASTFM_LOGIN
 import com.mardous.booming.util.LAST_ADDED_CUTOFF
 import com.mardous.booming.util.LIBRARY_CATEGORIES
 import com.mardous.booming.util.MATERIAL_YOU
+import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.NOW_PLAYING_SCREEN
 import com.mardous.booming.util.ON_CLEAR_QUEUE_ACTION
 import com.mardous.booming.util.ON_SONG_CLICK_ACTION
@@ -101,6 +101,7 @@ import com.mardous.booming.util.TRASH_MUSIC_FILES
 import com.mardous.booming.util.USE_CUSTOM_FONT
 import com.mardous.booming.util.USE_FOLDER_ART
 import com.mardous.booming.util.WHITELIST_ENABLED
+import com.mardous.booming.util.WIDGET_THIRD_LINE_CONTENT
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -406,7 +407,20 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             val dialogFragment: DialogFragment? = when (preference.key) {
                 LIBRARY_CATEGORIES -> CategoriesPreferenceDialog()
                 NOW_PLAYING_SCREEN -> NowPlayingScreenPreferenceDialog()
-                EXTRA_INFO -> NowPlayingExtraInfoPreferenceDialog()
+                NOW_PLAYING_EXTRA_INFO -> {
+                    ExtraInfoPreferenceDialog.create(
+                        title = getString(R.string.select_extra_info_title),
+                        preferenceKey = preference.key,
+                        defaultContent = Preferences.getDefaultNowPlayingInfo()
+                    )
+                }
+                WIDGET_THIRD_LINE_CONTENT -> {
+                    ExtraInfoPreferenceDialog.create(
+                        title = getString(R.string.widget_third_line_title),
+                        preferenceKey = preference.key,
+                        defaultContent = Preferences.getDefaultWidgetInfo()
+                    )
+                }
                 ON_SONG_CLICK_ACTION -> SongClickActionPreferenceDialog()
                 ON_CLEAR_QUEUE_ACTION -> ClearQueueActionPreferenceDialog()
                 COVER_DOUBLE_TAP_ACTION,

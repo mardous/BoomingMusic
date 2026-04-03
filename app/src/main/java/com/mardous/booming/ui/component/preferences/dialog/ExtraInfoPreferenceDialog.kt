@@ -25,24 +25,34 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
-import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.core.model.player.MetadataField
 import com.mardous.booming.databinding.DialogRecyclerViewBinding
 import com.mardous.booming.extensions.create
+import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.ui.adapters.preference.ExtraInfoAdapter
 import com.mardous.booming.util.Preferences
 
-class NowPlayingExtraInfoPreferenceDialog : DialogFragment() {
+class ExtraInfoPreferenceDialog : DialogFragment() {
 
     private lateinit var adapter: ExtraInfoAdapter
 
+    @Suppress("DEPRECATION")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        var extraInfoList = Preferences.nowPlayingExtraInfoList
+        val arguments = requireArguments()
+
+        val title = requireNotNull(arguments.getString(TITLE))
+        val preferenceKey = requireNotNull(arguments.getString(PREFERENCE_KEY))
+        val defaultContent = requireNotNull(
+                BundleCompat.getParcelableArrayList(arguments, DEFAULT_CONTENT, MetadataField::class.java)
+        )
+
+        var currentContent = Preferences.getExtraInfoContent(preferenceKey, defaultContent)
         if (savedInstanceState != null && savedInstanceState.containsKey(SAVED_KEY)) {
-            extraInfoList =
-                BundleCompat.getParcelableArrayList(savedInstanceState, SAVED_KEY, NowPlayingInfo::class.java)!!
+            currentContent =
+                BundleCompat.getParcelableArrayList(savedInstanceState, SAVED_KEY, MetadataField::class.java)!!
         }
 
-        adapter = ExtraInfoAdapter(extraInfoList.toMutableList())
+        adapter = ExtraInfoAdapter(currentContent.toMutableList())
 
         val binding = DialogRecyclerViewBinding.inflate(layoutInflater)
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -50,15 +60,15 @@ class NowPlayingExtraInfoPreferenceDialog : DialogFragment() {
         adapter.attachToRecyclerView(binding.recyclerView)
 
         return MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.select_extra_info_title)
+            .setTitle(title)
             .setView(binding.root)
             .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
-                Preferences.nowPlayingExtraInfoList = adapter.items
+                Preferences.setExtraInfoContent(preferenceKey, adapter.items)
             }
             .setNeutralButton(R.string.reset_action, null)
             .create { dialog ->
                 dialog.getButton(DialogInterface.BUTTON_NEUTRAL).setOnClickListener {
-                    adapter.items = Preferences.getDefaultNowPlayingInfo().toMutableList()
+                    adapter.items = defaultContent.toMutableList()
                 }
             }
     }
@@ -69,6 +79,20 @@ class NowPlayingExtraInfoPreferenceDialog : DialogFragment() {
     }
 
     companion object {
+        private const val TITLE = "Dialog.title"
+        private const val PREFERENCE_KEY = "Preference.key"
+        private const val DEFAULT_CONTENT = "Preference.default"
         private const val SAVED_KEY = "SavedKey.list"
+
+        fun create(
+            title: String,
+            preferenceKey: String,
+            defaultContent: List<MetadataField>
+        ) =
+            ExtraInfoPreferenceDialog().withArgs {
+                putString(TITLE, title)
+                putString(PREFERENCE_KEY, preferenceKey)
+                putParcelableArrayList(DEFAULT_CONTENT, ArrayList(defaultContent))
+            }
     }
 }

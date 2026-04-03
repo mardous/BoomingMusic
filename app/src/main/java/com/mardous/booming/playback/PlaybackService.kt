@@ -68,9 +68,13 @@ import com.google.common.util.concurrent.SettableFuture
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoilBitmapLoader
 import com.mardous.booming.core.appwidgets.BoomingGlanceWidget
+import com.mardous.booming.core.appwidgets.CardWidget
+import com.mardous.booming.core.appwidgets.WidgetTheme
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import com.mardous.booming.core.audio.AudioOutputObserver
+import com.mardous.booming.core.model.player.MetadataField
+import com.mardous.booming.core.palette.PaletteProcessor
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
@@ -85,12 +89,12 @@ import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
 import com.mardous.booming.ui.screen.MainActivity
+import com.mardous.booming.util.BIT_PERFECT_ENABLED
 import com.mardous.booming.util.CLEAR_QUEUE_ON_COMPLETION
 import com.mardous.booming.util.ENABLE_HISTORY
 import com.mardous.booming.util.IGNORE_AUDIO_FOCUS
 import com.mardous.booming.util.MP3_INDEX_SEEKING
 import com.mardous.booming.util.PAUSE_ON_ZERO_VOLUME
-import com.mardous.booming.util.BIT_PERFECT_ENABLED
 import com.mardous.booming.util.PLAY_ON_STARTUP_MODE
 import com.mardous.booming.util.PlayOnStartupMode
 import com.mardous.booming.util.Preferences
@@ -100,6 +104,10 @@ import com.mardous.booming.util.REWIND_WITH_BACK
 import com.mardous.booming.util.SEEK_INTERVAL
 import com.mardous.booming.util.STOP_WHEN_CLOSED_FROM_RECENTS
 import com.mardous.booming.util.SongPlayCountHelper
+import com.mardous.booming.util.WIDGET_DYNAMIC_COLORS
+import com.mardous.booming.util.WIDGET_IMAGE_CORNER_RADIUS
+import com.mardous.booming.util.WIDGET_SMALL_LAYOUT_STYLE
+import com.mardous.booming.util.WIDGET_THIRD_LINE_CONTENT
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
@@ -800,6 +808,13 @@ class PlaybackService :
                 val enabled = preferences.getBoolean(key, false)
                 audioOutputObserver.setBitPerfectEnabled(enabled)
             }
+
+            WIDGET_DYNAMIC_COLORS,
+            WIDGET_SMALL_LAYOUT_STYLE,
+            WIDGET_IMAGE_CORNER_RADIUS,
+            WIDGET_THIRD_LINE_CONTENT -> {
+                updateWidgets()
+            }
         }
     }
 
@@ -851,24 +866,43 @@ class PlaybackService :
                     .size(300)
                     .build()
             )
-            val artworkData = result.image?.toBitmap(300, 300)?.let { bitmap ->
+            val bitmap = result.image?.toBitmap(300, 300)
+            val artworkData = bitmap?.let {
                 val stream = ByteArrayOutputStream()
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    bitmap.compress(Bitmap.CompressFormat.WEBP_LOSSY, 80, stream)
+                    it.compress(Bitmap.CompressFormat.WEBP_LOSSY, 80, stream)
                 } else {
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 85, stream)
+                    it.compress(Bitmap.CompressFormat.JPEG, 85, stream)
                 }
                 stream.toByteArray()
             }
+            val widgetTheme = if (preferences.getBoolean(WIDGET_DYNAMIC_COLORS, false)) {
+                val paletteColor = bitmap?.let {
+                    PaletteProcessor.getPaletteColor(this@PlaybackService, bitmap)
+                }
+                if (paletteColor != null) {
+                    WidgetTheme(paletteColor.backgroundColor)
+                } else null
+            } else null
+            val additionalInfo = MetadataField.getMetadataValue(
+                song = song,
+                fields = Preferences.getExtraInfoContent(
+                    key = WIDGET_THIRD_LINE_CONTENT,
+                    defaultContent = Preferences.getDefaultWidgetInfo()
+                )
+            )
             PlaybackState(
+                isSimplifiedSmallLayout = preferences.getString(WIDGET_SMALL_LAYOUT_STYLE, null) == "simplified",
                 isForeground = isForeground,
                 isPlaying = isPlaying,
                 isFavorite = isFavorite,
                 isShuffleMode = isShuffleMode,
                 currentTitle = song.title,
                 currentArtist = song.artistName,
-                currentAlbum = song.albumName,
-                artworkData = artworkData
+                additionalInfo = additionalInfo,
+                artworkData = artworkData,
+                widgetTheme = widgetTheme,
+                imageCornerRadius = preferences.getInt(WIDGET_IMAGE_CORNER_RADIUS, 8).toFloat()
             )
         }
     }
@@ -886,13 +920,26 @@ class PlaybackService :
     private suspend fun updateGlanceWidgets(playbackState: PlaybackState) = withContext(IO) {
         try {
             val glanceManager = GlanceAppWidgetManager(applicationContext)
-            val glanceIds = glanceManager.getGlanceIds(BoomingGlanceWidget::class.java)
-            if (glanceIds.isNotEmpty()) {
-                glanceIds.forEach { id ->
+
+            val boomingWidget = BoomingGlanceWidget()
+            val boomingWidgetIds = glanceManager.getGlanceIds(boomingWidget.javaClass)
+            if (boomingWidgetIds.isNotEmpty()) {
+                boomingWidgetIds.forEach { id ->
                     updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
                         playbackState
                     }
-                    BoomingGlanceWidget().update(applicationContext, id)
+                    boomingWidget.update(applicationContext, id)
+                }
+            }
+
+            val cardWidget = CardWidget()
+            val cardWidgetIds = glanceManager.getGlanceIds(cardWidget.javaClass)
+            if (cardWidgetIds.isNotEmpty()) {
+                cardWidgetIds.forEach { id ->
+                    updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
+                        playbackState
+                    }
+                    cardWidget.update(applicationContext, id)
                 }
             }
         } catch (e: Exception) {

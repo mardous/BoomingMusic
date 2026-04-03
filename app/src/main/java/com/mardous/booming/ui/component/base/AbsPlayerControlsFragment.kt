@@ -43,7 +43,7 @@ import com.mardous.booming.extensions.getShapeAppearanceModel
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.asReadableDuration
 import com.mardous.booming.extensions.resources.applyColor
-import com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.ExtraInfoPreferenceDialog
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerAnimator
@@ -51,7 +51,7 @@ import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.DISPLAY_ALBUM_TITLE
 import com.mardous.booming.util.DISPLAY_EXTRA_INFO
 import com.mardous.booming.util.ENABLE_SCROLLING_TEXT
-import com.mardous.booming.util.EXTRA_INFO
+import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.PREFER_ALBUM_ARTIST_NAME
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.SQUIGGLY_SEEK_BAR
@@ -195,7 +195,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
 
     override fun onLongClick(view: View): Boolean {
         if (view.id == R.id.songInfo) {
-            NowPlayingExtraInfoPreferenceDialog().show(childFragmentManager, "NOW_PLAYING_EXTRA_INFO")
+            ExtraInfoPreferenceDialog().show(childFragmentManager, "NOW_PLAYING_EXTRA_INFO")
             return true
         }
         return false
@@ -333,7 +333,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             DISPLAY_ALBUM_TITLE,
             PREFER_ALBUM_ARTIST_NAME -> onSongInfoChanged(playerViewModel.currentSong, playerViewModel.nextSong)
             DISPLAY_EXTRA_INFO,
-            EXTRA_INFO -> playerViewModel.generateExtraInfo()
+            NOW_PLAYING_EXTRA_INFO -> playerViewModel.generateExtraInfo()
         }
     }
 

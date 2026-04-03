@@ -270,15 +270,14 @@ class PlayerViewModel(
     }
 
     private fun onGenerateExtraInfo(song: Song) = viewModelScope.launch(IO) {
-        val metadataReader = MetadataReader(song.uri)
-        val audioFile = File(song.data).toAudioFile()
         _extraInfoFlow.value = if (Preferences.displayExtraInfo) {
-            Preferences.nowPlayingExtraInfoList
-                .filter { it.isEnabled }
-                .mapNotNull {
-                    it.info.toReadableFormat(metadataReader, audioFile?.audioHeader)
-                }
-                .joinToString(separator = DEFAULT_INFO_DELIMITER)
+            MetadataField.getMetadataValue(
+                song = song,
+                fields = Preferences.getExtraInfoContent(
+                    key = NOW_PLAYING_EXTRA_INFO,
+                    defaultContent = Preferences.getDefaultNowPlayingInfo()
+                )
+            )
         } else null
     }
 

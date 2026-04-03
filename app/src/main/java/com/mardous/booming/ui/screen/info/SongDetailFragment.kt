@@ -215,7 +215,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
 
                     if (!uiState.isLoading) {
                         if (uiState.isSuccess) {
-                            // Info sections
+                            // Content sections
                             if (!uiState.info.isMissingMetadata) {
                                 MetadataInfoSection(uiState.info, Modifier.fillMaxWidth())
                             }

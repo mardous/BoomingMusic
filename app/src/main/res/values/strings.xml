@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_widget_responsive">Responsive</string>
+    <string name="app_widget_card">Card</string>
     <string name="action_play">Play</string>
     <string name="action_play_all">Play all</string>
     <string name="action_shuffle_play">Shuffle play</string>
@@ -657,6 +659,7 @@
     <string name="audio_focus_header">Audio focus</string>
     <string name="shuffle_mode_header">Shuffle mode</string>
     <string name="display_header">Display</string>
+    <string name="widgets_header">App widgets</string>
     <string name="backup_restore_header">Backup/restore</string>
     <string name="visuals_header">Visuals</string>
     <string name="update_title">Update</string>
@@ -680,6 +683,15 @@
     <string name="hold_tab_to_search_summary">Long-press any navigation bar tab to open the search screen.</string>
     <string name="larger_header_image_title">Larger header image</string>
     <string name="larger_header_image_summary">Show a bigger cover image in album, artist, and playlist details.</string>
+    <string name="widget_small_layout_style_title">Small layout style</string>
+    <string name="widget_small_layout_classic">Classic</string>
+    <string name="widget_small_layout_simplified">Simplified</string>
+    <string name="widget_dynamic_colors_title">Dynamic colors</string>
+    <string name="widget_dynamic_colors_summary">Adapt widget colors to the current track artwork.</string>
+    <string name="widget_image_corner_radius_title">Image corner radius</string>
+    <string name="widget_image_corner_radius_summary">Change the rounding for the album art.</string>
+    <string name="widget_third_line_title">Third info line</string>
+    <string name="widget_third_line_summary">Select what to display in the third row of text.</string>
     <string name="lyrics_center_current_line_title">Center current line</string>
     <string name="lyrics_center_current_line_summary">Keep the current lyric line centered on screen instead of aligned to the top.</string>
     <string name="lyrics_center_horizontally_title">Center lyrics horizontally</string>

@@ -25,6 +25,16 @@
         <item>auto</item>
     </string-array>
 
+    <string-array name="widget_small_layout_style_entries">
+        <item>@string/widget_small_layout_classic</item>
+        <item>@string/widget_small_layout_simplified</item>
+    </string-array>
+
+    <string-array name="widget_small_layout_style_values">
+        <item>classic</item>
+        <item>simplified</item>
+    </string-array>
+
     <string-array name="pref_album_shuffle_mode_entries">
         <item>@string/shuffle_albums_ordered_songs</item>
         <item>@string/ordered_albums_shuffle_songs</item>

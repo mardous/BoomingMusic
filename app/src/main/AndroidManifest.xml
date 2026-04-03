@@ -205,6 +205,7 @@
 
         <receiver
             android:name=".core.appwidgets.BoomingGlanceWidgetReceiver"
+            android:label="@string/app_widget_responsive"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -213,6 +214,19 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/glance_widget_info"/>
+        </receiver>
+
+        <receiver
+            android:name=".core.appwidgets.CardWidgetReceiver"
+            android:label="@string/app_widget_card"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/card_widget_info"/>
         </receiver>
 
         <provider
