@@ -43,7 +43,7 @@
     <string name="share_to_stories">Compartir en historias</string>
     <string name="could_not_create_the_story">No se pudo crear la historia.</string>
     <string name="back_action">Volver</string>
-    <string name="add_action">Agregar</string>
+    <string name="add_action">Añadir</string>
     <string name="delete_action">Eliminar</string>
     <string name="remove_action">Quitar</string>
     <string name="clear_action">Restablecer</string>
@@ -91,8 +91,8 @@
     <string name="delete_x_playlists"><![CDATA[¿Eliminar <b>%d</b> listas de reproducción?]]></string>
     <string name="created_playlist_x">Se creó la lista de reproducción «%1$s».</string>
     <string name="could_not_create_playlist">No se pudo crear la lista de reproducción.</string>
-    <string name="inserted_one_song_into_playlist_x">Una canción agregada a la lista de reproducción %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Se agregaron %1$d canciones a la lista de reproducción %2$s.</string>
+    <string name="inserted_one_song_into_playlist_x">Se insertó 1 canción en la lista %s.</string>
+    <string name="inserted_x_songs_into_playlist_x">Se insertaron %1$d canciones en la lista %2$s.</string>
     <string name="playlist_exists">La lista de reproducción %s ya existe.</string>
     <string name="playlist_created">Lista de reproducción %s creada correctamente.</string>
     <string name="remove_song_from_playlist_title">Eliminar canción de la lista de reproducción</string>
@@ -110,8 +110,8 @@
     <string name="configure_action">Configurar</string>
     <string name="blacklist_directory">Carpeta de la lista negra</string>
     <string name="add_directory">Añadir directorio</string>
-    <string name="remove_from_blacklist">¿Desea eliminar este directorio de la lista negra?</string>
-    <string name="remove_from_whitelist">¿Desea eliminar este directorio de la lista blanca?</string>
+    <string name="remove_from_blacklist">¿Quiere quitar este directorio de la lista negra?</string>
+    <string name="remove_from_whitelist">¿Quiere quitar este directorio de la lista blanca?</string>
     <string name="do_you_want_to_clear_the_blacklist">¿Quiere vaciar la lista negra?</string>
     <string name="do_you_want_to_clear_the_whitelist">¿Quiere vaciar la lista blanca?</string>
     <string name="action_delete_from_device">Eliminar del dispositivo</string>
@@ -125,21 +125,21 @@
     <string name="song_x_of_x">%1$d de %2$d • %3$s</string>
     <string name="no_equalizer">No se encontró ningún ecualizador.</string>
     <string name="audio_focus_denied">Foco de audio denegado</string>
-    <string name="no_audio_ID">ID de audio incorrecto.</string>
+    <string name="no_audio_ID">Identificador de audio incorrecto.</string>
     <string name="playback_error_code">Error de reproducción (%s).</string>
     <string name="unplayable_file">No se pudo reproducir esta canción.</string>
     <string name="permission_external_storage_title">Acceso al almacenamiento</string>
-    <string name="permission_external_storage_description">La aplicación necesita permiso para acceder al almacenamiento de tu dispositivo y reproducir música</string>
+    <string name="permission_external_storage_description">La aplicación necesita permiso para acceder al almacenamiento del dispositivo y reproducir música</string>
     <string name="permission_external_storage_denied">Debe conceder permiso para acceder al almacenamiento externo.</string>
     <string name="permission_bluetooth_title">Dispositivos cercanos</string>
-    <string name="permission_bluetooth_description">La aplicación necesita el permiso de los dispositivos cercanos para buscar dispositivos bluetooth</string>
+    <string name="permission_bluetooth_description">La aplicación necesita el permiso de dispositivos cercanos para buscar dispositivos Bluetooth</string>
     <string name="permission_bluetooth_denied">Permiso de dispositivos cercanos denegado.</string>
     <string name="permission_read_images_title">Leer imágenes (opcional)</string>
     <string name="permission_read_images_denied">Debe conceder permiso para leer imágenes del dispositivo.</string>
     <string name="permission_exact_alarms_title">Programar alarmas exactas (opcional)</string>
-    <string name="permission_exact_alarms_description">Permiso para programar alarmas exactas es necesario para que el temporizador de sueño funcione correctamente</string>
+    <string name="permission_exact_alarms_description">Para que el temporizador de apagado automático funcione correctamente, es necesario el permiso para programar alarmas con hora exacta</string>
     <string name="permission_ringtone_title">Tono de llamada (opcional)</string>
-    <string name="permission_ringtone_description">La aplicación necesita permiso para acceder a la configuración de tu dispositivo para establecer música como tono de llamada</string>
+    <string name="permission_ringtone_description">La aplicación necesita permiso para acceder a la configuración del dispositivo para establecer música como tono de llamada</string>
     <string name="permission_request_write_settings"><![CDATA[Debe permitir que Booming Music modifique la configuración del sistema para establecer <b>%s</b> como tono de llamada]]></string>
     <string name="permissions_denied">Permisos denegados</string>
     <string name="permissions_needed">Permisos necesarios</string>
@@ -147,19 +147,19 @@
     <string name="action_grant">Conceder</string>
     <string name="granted">Concedido</string>
     <string name="hello_there">¡Hola!</string>
-    <string name="welcome_to_x">Bienvenido a %s</string>
+    <string name="welcome_to_x">Le damos la bienvenida a %s</string>
     <string name="get_started">Comenzar</string>
     <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> no aparece en la lista de medios.]]></string>
-    <string name="some_files_are_not_listed_in_the_media_store">Algunos archivos no se encuentran listados en los medios almacenados.</string>
+    <string name="some_files_are_not_listed_in_the_media_store">Algunos archivos no figuran en el almacén multimedia.</string>
     <string name="nothing_to_scan">Nada que escanear</string>
     <string name="select_storage_title">Seleccionar almacenamiento</string>
-    <string name="now_playing">Reproduciendo</string>
+    <string name="now_playing">Ahora suena</string>
     <string name="playing_queue_label">Reproduciendo cola</string>
     <string name="list_start">Inicio de lista</string>
     <string name="list_end">Fin de lista</string>
     <string name="empty_play_queue">Cola de reproducción vacía.</string>
     <string name="save_queue">Guardar cola</string>
-    <string name="clear_queue">Limpiar cola</string>
+    <string name="clear_queue">Vaciar cola</string>
     <string name="action_move_to_current_track">Mostrar pista actual</string>
     <string name="action_add_to_favorites">Añadir a favoritos</string>
     <string name="action_remove_from_favorites">Eliminar de Favoritos</string>
@@ -174,12 +174,12 @@
     <string name="undo_action">Deshacer</string>
     <string name="set_artist_image">Establecer imagen del artista</string>
     <string name="reset_artist_image">Restablecer imagen del artista</string>
-    <string name="there_is_nothing_to_reset">No hay nada que resetear.</string>
+    <string name="there_is_nothing_to_reset">No hay nada que restablecer.</string>
     <string name="updating">Actualizando…</string>
     <string name="add_to_label">Añadir a</string>
     <string name="go_to_label">Ir a</string>
     <string name="action_go_to_album">Ir al álbum</string>
-    <string name="action_go_to_artist">Ir al Artista</string>
+    <string name="action_go_to_artist">Ir al artista</string>
     <string name="action_go_to_genre">Ir al género</string>
     <string name="added_title_to_playing_queue">"Añadido 1 título a la cola de reproducción."</string>
     <string name="added_x_titles_to_playing_queue">Añadidos títulos %1$d a la cola de reproducción.</string>
@@ -189,7 +189,7 @@
     <string name="similar_artists">Artistas similares</string>
     <string name="label_more_from_artist">Más del artista</string>
     <string name="label_more_from_x">Más de %s</string>
-    <string name="various_artists">Artistas variados</string>
+    <string name="various_artists">Varios artistas</string>
     <string name="unknown_artist">Artista desconocido</string>
     <string name="unknown_genre">Género desconocido</string>
     <string name="unknown_year">Año desconocido</string>
@@ -209,7 +209,7 @@
     <string name="playlist_label">Lista</string>
     <string name="favorites_label">Favoritos</string>
     <string name="last_added_label">Último añadido</string>
-    <string name="top_tracks_label">Mejores Pistas</string>
+    <string name="top_tracks_label">Pistas destacadas</string>
     <string name="history_label">Historial</string>
     <string name="not_recently_played">No reproducidas recientemente</string>
     <string name="play_info">Información de reproducciones</string>
@@ -409,7 +409,7 @@
     <!-- Equalizer -->
     <string name="equalizer_label">Ecualizador</string>
     <string name="autoeq_label">Ecualización automática</string>
-    <string name="graphic_eq_label">Graphic EQ</string>
+    <string name="graphic_eq_label">EQ gráfico</string>
     <string name="graphic_eq_band_count">%d bandas</string>
     <string name="eq_profiles_title">Perfiles de EQ</string>
     <string name="autoeq_profiles_title">Perfiles de AutoEq</string>
@@ -477,8 +477,8 @@
     <string name="balance_right">Derecha</string>
     <string name="action_external_eq">EQ externa</string>
     <string name="custom">Personalizado</string>
-    <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
-    <string name="enable_audio_offload_title">Carga de audio</string>
+    <string name="audio_offload_is_enabled">Relegación de audio activada</string>
+    <string name="enable_audio_offload_title">Relegación de audio</string>
     <string name="enable_audio_offload_description">Permite que el dispositivo procese el audio directamente a través de su hárdwer, lo que reduce el uso de la CPU y ahorra batería. Esta función solo es compatible con determinados dispositivos. Es posible que algunos efectos o funcionalidades no funcionen mientras esté activada. Es necesario reiniciar el dispositivo para que los cambios surtan efecto.</string>
     <string name="enable_audio_float_output_title">Salida de audio de alta precisión</string>
     <string name="enable_audio_float_output_description">Activa el audio de 32 bits en coma flotante para obtener una mejor calidad de sonido. Observe que esto desactivará funciones como ReplayGain, el salto de silencios y el equilibrio de volumen. Es posible que consuma un poco más de batería, y tendrá que reiniciar la aplicación para que los cambios surtan efecto.</string>
@@ -510,10 +510,10 @@
     <string name="failed_to_update_lyrics">No se pudo actualizar la letra.</string>
     <string name="there_are_no_changes_to_save">No hay cambios para guardar.</string>
     <string name="lyrics_source_external_file">La letra proviene de un archivo externo. No puede editar este archivo directamente desde Booming Music.</string>
-    <string name="font_imported_successfully">Fuente importada con éxito.</string>
-    <string name="could_not_import_font">No se pudo importar la fuente.</string>
+    <string name="font_imported_successfully">Se importó el tipo de letra correctamente.</string>
+    <string name="could_not_import_font">No se pudo importar el tipo de letra.</string>
     <!-- Sleep timer -->
-    <string name="action_sleep_timer">Temporizador de sueño</string>
+    <string name="action_sleep_timer">Temporizador de apagado</string>
     <string name="sleep_timer_waiting_pending_quit">Esperando a que acabe la pista actual</string>
     <string name="sleep_timer_cancel_current_timer">Cancelar</string>
     <string name="sleep_timer_set_action">Fijar</string>
@@ -551,16 +551,16 @@
     <string name="help_with_translations">Ayuda con traducciones</string>
     <string name="help_with_translations_summary">Puedes contribuir al proyecto ayudando a traducir Booming Music a otros idiomas.</string>
     <string name="report_bugs">Reportar errores</string>
-    <string name="report_bugs_summary">Reportar errores o solicitar nuevas características.</string>
+    <string name="report_bugs_summary">Informar de defectos o solicitar funcionalidades nuevas.</string>
     <string name="share_app">Compartir esta aplicación</string>
-    <string name="share_app_summary">Puedes ayudar a que esta aplicación crezca si la compartes con amigos.</string>
+    <string name="share_app_summary">Puede ayudar a que esta aplicación crezca si la comparte con amigos.</string>
     <string name="send_invitation_message">Enviar mensaje de invitación</string>
     <string name="invitation_message_content">Hola. ¡Échale un vistazo a Booming Music! La mejor aplicación para escuchar música local en Android. Puedes descargarla desde aquí: %s</string>
     <!-- Bug report -->
     <string name="report_an_issue">Reportar un problema</string>
     <string name="device_info">Información del dispositivo</string>
     <string name="copied_device_info_to_clipboard">Información del dispositivo copiada al portapapeles.</string>
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Usted será reenviado al sitio web del gestor de incidencias.</string>
+    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Se le remitirá al sitio de informe de errores.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Se requiere acceso al almacenamiento</string>
     <string name="saf_access_required_message">Booming Music requiere permiso para acceder a estos archivos. Por favor, seleccione la carpeta raíz donde se almacenan sus archivos de música.</string>
@@ -571,8 +571,8 @@
     <string name="settings_title">Configuración</string>
     <string name="appearance_title">Apariencia</string>
     <string name="appearance_summary">Cambie el tema de la aplicación y otras configuraciones visuales.</string>
-    <string name="now_playing_title">Reproduciendo</string>
-    <string name="now_playing_summary">Personaliza la pantalla de reproducción ahora.</string>
+    <string name="now_playing_title">Ahora suena</string>
+    <string name="now_playing_summary">Personalice la pantalla Ahora suena.</string>
     <string name="lyrics_preferences_title">Letra</string>
     <string name="lyrics_preferences_summary">Ajusta la tipografía, el espaciado y otras opciones para personalizar la vista de las letras.</string>
     <string name="playback_title">Reproducir</string>
@@ -611,20 +611,20 @@
     <string name="remember_last_page_summary">Ir a la última página abierta al iniciar.</string>
     <string name="start_page_title">Página inicial</string>
     <string name="tab_mode_title">Modo de títulos de pestaña</string>
-    <string name="hold_tab_to_search_title">Mantén la pestaña para buscar</string>
+    <string name="hold_tab_to_search_title">Mantener pulsado para buscar</string>
     <string name="hold_tab_to_search_summary">Mantenga pulsado cualquier pestaña de la barra de navegación para abrir la pantalla de búsqueda.</string>
     <string name="larger_header_image_title">Imagen de cabecera más grande</string>
     <string name="larger_header_image_summary">Mostrar una imagen de portada más grande en los detalles de álbum, artista y lista de reproducción.</string>
     <string name="lyrics_center_current_line_title">Centrar línea actual</string>
     <string name="lyrics_center_current_line_summary">Mantenga la línea de letra actual centrada en la pantalla en lugar de alineada en la parte superior.</string>
     <string name="lyrics_custom_font_title">Tipo de letra personalizado</string>
-    <string name="lyrics_custom_font_summary">Importa y usa tu propia fuente para letras.</string>
-    <string name="lyrics_import_custom_font_title">Importar fuente personalizada</string>
-    <string name="lyrics_syllable_mode_title">Letras de palabras por palabra</string>
-    <string name="lyrics_syllable_mode_summary">Permite mostrar letras con sincronización de palabras por palabra. Depende de la disponibilidad de las letras y de un formato compatible como LRC o TTML.</string>
+    <string name="lyrics_custom_font_summary">Importe y use su propia tipografía para letras.</string>
+    <string name="lyrics_import_custom_font_title">Importar tipo de letra personalizado</string>
+    <string name="lyrics_syllable_mode_title">Letra palabra por palabra</string>
+    <string name="lyrics_syllable_mode_summary">Permite mostrar letras con sincronización palabra por palabra. Depende de la disponibilidad de las letras y de un formato compatible como LRC o TTML.</string>
     <string name="lyrics_effects_note">Los efectos avanzados mejoran la experiencia visual pero pueden requerir más recursos del sistema y batería.</string>
     <string name="lyrics_background_effect_title">Efecto de fondo</string>
-    <string name="lyrics_background_gradient">Gradiente</string>
+    <string name="lyrics_background_gradient">Degradado</string>
     <string name="lyrics_background_blur">Desenfoque</string>
     <string name="lyrics_blur_effect_title">Efecto desenfoque</string>
     <string name="lyrics_blur_effect_summary">Desenfoque las líneas de letras adyacentes a la actual.</string>
@@ -632,7 +632,7 @@
     <string name="lyrics_shadow_effect_summary">Añade una sombra bajo la línea actual para mejorar la legibilidad.</string>
     <string name="lyrics_progressive_coloring_title">Color progresivo de las letras</string>
     <string name="lyrics_progressive_coloring_summary">Anima las líneas activas con una transición gradual de color en lugar de colorearlas al instante.</string>
-    <string name="lyrics_bold_unsynced_title">Fuente negrita para letras normales</string>
+    <string name="lyrics_bold_unsynced_title">Tipografía negrita para letras normales</string>
     <string name="lyrics_bold_unsynced_summary">Mostrar letras no sincronizadas en negrita.</string>
     <string name="lyrics_line_spacing_title">Espaciado de línea</string>
     <string name="lyrics_line_spacing_summary">Ajuste el espacio entre los renglones de la letra.</string>
@@ -657,9 +657,9 @@
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir al reproducir</string>
     <string name="open_on_play_summary">Expanda el panel de reproducción ahora automáticamente después de empezar a reproducir una canción.</string>
-    <string name="squiggly_seek_bar_title">Barra de búsqueda asquerosa</string>
-    <string name="squiggly_seek_bar_summary">Habilita una barra de búsqueda ondulada en lugar del deslizador por defecto.</string>
-    <string name="scrolling_text_title">Activar texto de desplazamiento</string>
+    <string name="squiggly_seek_bar_title">Barra de reproducción ondulada</string>
+    <string name="squiggly_seek_bar_summary">Activa una barra de reproducción ondulada en vez del deslizador predeterminado.</string>
+    <string name="scrolling_text_title">Activar texto en desplazamiento</string>
     <string name="scrolling_text_summary">Desplaza los títulos de la canción cuando sea demasiado largo para ajustarse. Puede usar un poco más de batería.</string>
     <string name="extra_controls_title">Controles adicionales</string>
     <string name="extra_controls_summary">Añadir controles adicionales para el mini reproductor</string>
@@ -733,7 +733,7 @@
     <string name="play_option_whole_list_summary">Si se activa, al seleccionar «Reproducir» en el menú de una canción se iniciará la reproducción de toda la lista. Si se desactiva, solo se reproducirá la canción seleccionada.</string>
     <string name="on_song_click_title">Al seleccionar una canción</string>
     <string name="on_song_click_play_only_this_song_title">Reproducir solo esta canción</string>
-    <string name="on_song_click_play_only_this_song_summary">La cola actual se borrará y se reemplazará con la canción seleccionada.</string>
+    <string name="on_song_click_play_only_this_song_summary">La cola actual se vaciará y se reemplazará con la canción seleccionada.</string>
     <string name="on_song_click_play_whole_list_title">Reproducir lista completa</string>
     <string name="on_song_click_play_whole_list_summary">La cola actual se reemplazará con todas las canciones de la lista/álbum/carpeta.</string>
     <string name="on_song_click_queue_next_title">Cola siguiente</string>
@@ -742,7 +742,7 @@
     <string name="on_song_click_enqueue_at_end_summary">La canción seleccionada se añadirá al final de la cola actual.</string>
     <string name="on_clear_queue_title">Al limpiar la cola</string>
     <string name="on_clear_queue_remove_all_songs_title">Eliminar todas las canciones</string>
-    <string name="on_clear_queue_remove_all_songs_summary">Se borrará toda la cola de reproducción.</string>
+    <string name="on_clear_queue_remove_all_songs_summary">Se vaciará toda la cola de reproducción.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">Eliminar todas las canciones excepto las actuales</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Solo la canción que se está reproduciendo permanecerá en la cola.</string>
     <string name="clear_queue_on_completion_title">Vaciar cola al finalizar la reproducción</string>
@@ -764,7 +764,7 @@
     <string name="ignore_articles_when_sorting_title">Ignorar artículos al ordenar</string>
     <string name="ignore_articles_when_sorting_summary">Omite los artículos iniciales («the», «a», «un») al ordenar elementos.</string>
     <string name="trash_music_title">Enviar a la papelera</string>
-    <string name="trash_music_summary">Enviar archivos borrados a la papelera.</string>
+    <string name="trash_music_summary">Enviar archivos eliminados a la papelera.</string>
     <string name="recursive_folder_actions_title">Acciones que afectan a las subcarpetas</string>
     <string name="recursive_folder_actions_summary">Seleccione qué acciones deben aplicarse también a las subcarpetas cuando se realizan en una carpeta.</string>
     <string name="enable_history_title">Activar historial</string>
@@ -783,7 +783,7 @@
     <string name="min_song_duration_summary">Cuántos segundos (como mínimo) debe tener una canción para que aparezca en la fonoteca.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Idioma de la aplicación</string>
-    <string name="backup_data_title">Copiar datos de la aplicación</string>
+    <string name="backup_data_title">Respaldar datos de la aplicación</string>
     <string name="backup_app_data_summary">Cree un archivo que contenga datos esenciales de la aplicación y guárdelo al almacenamiento externo.</string>
     <string name="restore_backup_title">Restaurar copia</string>
     <string name="restore_backup_summary">Restaurar datos (y estado) de la aplicación desde una copia de seguridad anterior.</string>
@@ -938,4 +938,6 @@
     <string name="use_betterlyrics_provider_summary">Permite la descarga de letras desde el servicio BetterLyrics.</string>
     <string name="use_simpmusic_provider_summary">Permite la descarga de letras desde el servicio SimpMusic Lyrics.</string>
     <string name="lastfm_login_summary">Acceda a su cuenta de Last.fm para activar el «scrobbling» y las actualizaciones de lo que escucha.</string>
+    <string name="use_lrclib_provider_summary">Permite la descarga de letras del servicio LRCLib.</string>
+    <string name="error_network_timeout">Se agotó el tiempo de espera de la conexión. Compruebe su conexión a Internet e inténtelo de nuevo.</string>
 </resources>
