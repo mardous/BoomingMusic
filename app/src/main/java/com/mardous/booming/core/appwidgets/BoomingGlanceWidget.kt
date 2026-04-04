@@ -7,12 +7,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.glance.ColorFilter
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
-import androidx.glance.Image
-import androidx.glance.ImageProvider
 import androidx.glance.LocalSize
 import androidx.glance.action.actionStartActivity
 import androidx.glance.action.clickable
@@ -23,7 +20,6 @@ import androidx.glance.appwidget.provideContent
 import androidx.glance.background
 import androidx.glance.currentState
 import androidx.glance.layout.Alignment
-import androidx.glance.layout.Box
 import androidx.glance.layout.Column
 import androidx.glance.layout.Row
 import androidx.glance.layout.Spacer
@@ -207,26 +203,17 @@ private fun SimplifiedWidget(context: Context, playbackState: PlaybackState) {
                 )
             }
 
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = GlanceModifier
-                    .size(48.dp)
-                    .cornerRadius(16.dp)
-                    .padding(16.dp)
-                    .background(GlanceTheme.colors.primary)
-            ) {
-                Image(
-                    provider = ImageProvider(
-                        if (playbackState.isPlaying) R.drawable.ic_pause_m3_24dp
-                        else R.drawable.ic_play_m3_24dp
-                    ),
-                    contentDescription = "Play/Pause",
-                    modifier = GlanceModifier
-                        .fillMaxSize()
-                        .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE)),
-                    colorFilter = ColorFilter.tint(GlanceTheme.colors.onPrimary)
-                )
-            }
+            ShapeableControlIconGlance(
+                resId = if (playbackState.isPlaying) {
+                    R.drawable.ic_pause_m3_24dp
+                } else {
+                    R.drawable.ic_play_m3_24dp
+                },
+                innerPadding = 8.dp,
+                contentDescription = "Play/Pause",
+                onClick = GlanceModifier
+                    .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE))
+            )
         }
     }
 }

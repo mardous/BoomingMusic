@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_widget_responsive">Responsive</string>
+    <string name="app_widget_responsive_desc">A widget that adapts its layout to different sizes</string>
     <string name="app_widget_card">Card</string>
+    <string name="app_widget_card_desc">Minimalist and simplified style</string>
+    <string name="app_widget_full">Full</string>
+    <string name="app_widget_full_desc">The player screen directly on your desktop</string>
     <string name="action_play">Play</string>
     <string name="action_play_all">Play all</string>
     <string name="action_shuffle_play">Shuffle play</string>

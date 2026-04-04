@@ -4,6 +4,7 @@ import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.glance.ColorFilter
 import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
@@ -84,12 +85,35 @@ fun CircularControlIconGlance(
     contentDescription: String,
     onClick: GlanceModifier
 ) {
+    ShapeableControlIconGlance(
+        resId = resId,
+        size = size,
+        cornerRadius = size / 2,
+        innerPadding = size / 6,
+        iconTint = iconTint,
+        backgroundTint = backgroundTint,
+        contentDescription = contentDescription,
+        onClick = onClick
+    )
+}
+
+@Composable
+fun ShapeableControlIconGlance(
+    resId: Int,
+    size: Dp = 48.dp,
+    cornerRadius: Dp = 16.dp,
+    innerPadding: Dp = 16.dp,
+    iconTint: ColorProvider = GlanceTheme.colors.onPrimaryContainer,
+    backgroundTint: ColorProvider = GlanceTheme.colors.primary,
+    contentDescription: String? = null,
+    onClick: GlanceModifier = GlanceModifier
+) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = GlanceModifier
             .size(size)
-            .cornerRadius(size / 2)
-            .padding(size / 6)
+            .cornerRadius(cornerRadius)
+            .padding(innerPadding)
             .background(backgroundTint)
     ) {
         Image(

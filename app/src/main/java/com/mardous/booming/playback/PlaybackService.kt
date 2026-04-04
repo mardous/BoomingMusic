@@ -69,6 +69,7 @@ import com.mardous.booming.R
 import com.mardous.booming.coil.CoilBitmapLoader
 import com.mardous.booming.core.appwidgets.BoomingGlanceWidget
 import com.mardous.booming.core.appwidgets.CardWidget
+import com.mardous.booming.core.appwidgets.FullWidget
 import com.mardous.booming.core.appwidgets.WidgetTheme
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
@@ -130,6 +131,8 @@ class PlaybackService :
 
     private val serviceScope = CoroutineScope(Job() + Main)
     private val uiHandler = Handler(Looper.getMainLooper())
+
+    private val glanceManager by lazy { GlanceAppWidgetManager(applicationContext) }
 
     private val preferences: SharedPreferences by inject()
     private val sleepTimer: SleepTimer by inject()
@@ -366,6 +369,10 @@ class PlaybackService :
             }
             ACTION_TOGGLE_SHUFFLE -> {
                 toggleShuffle()
+                return START_STICKY
+            }
+            ACTION_CYCLE_REPEAT -> {
+                cycleRepeat()
                 return START_STICKY
             }
         }
@@ -712,6 +719,7 @@ class PlaybackService :
     }
 
     override fun onRepeatModeChanged(repeatMode: Int) {
+        updateWidgets()
         refreshMediaButtonCustomLayout()
         persistentStorage.saveState()
     }
@@ -857,6 +865,7 @@ class PlaybackService :
 
         val isPlaying = player.isPlaying
         val isShuffleMode = player.shuffleModeEnabled
+        val repeatMode = player.repeatMode
         return withContext(IO) {
             val song = repository.songById(id)
             val isFavorite = repository.isSongFavorite(song.id)
@@ -898,6 +907,7 @@ class PlaybackService :
                 isPlaying = isPlaying,
                 isFavorite = isFavorite,
                 isShuffleMode = isShuffleMode,
+                repeatMode = repeatMode,
                 currentTitle = song.title,
                 currentArtist = song.artistName,
                 additionalInfo = additionalInfo,
@@ -923,8 +933,6 @@ class PlaybackService :
 
     private suspend fun updateGlanceWidgets(playbackState: PlaybackState) = withContext(IO) {
         try {
-            val glanceManager = GlanceAppWidgetManager(applicationContext)
-
             val boomingWidget = BoomingGlanceWidget()
             val boomingWidgetIds = glanceManager.getGlanceIds(boomingWidget.javaClass)
             if (boomingWidgetIds.isNotEmpty()) {
@@ -944,6 +952,17 @@ class PlaybackService :
                         playbackState
                     }
                     cardWidget.update(applicationContext, id)
+                }
+            }
+
+            val fullWidget = FullWidget()
+            val fullWidgetIds = glanceManager.getGlanceIds(fullWidget.javaClass)
+            if (fullWidgetIds.isNotEmpty()) {
+                fullWidgetIds.forEach { id ->
+                    updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
+                        playbackState
+                    }
+                    fullWidget.update(applicationContext, id)
                 }
             }
         } catch (e: Exception) {
@@ -1144,6 +1163,7 @@ class PlaybackService :
         private const val PACKAGE_NAME = "com.mardous.booming"
 
         const val ACTION_TOGGLE_SHUFFLE = "$PACKAGE_NAME.action.ACTION_TOGGLE_SHUFFLE"
+        const val ACTION_CYCLE_REPEAT = "$PACKAGE_NAME.action.ACTION_CYCLE_REPEAT"
         const val ACTION_TOGGLE_FAVORITE = "$PACKAGE_NAME.action.ACTION_TOGGLE_FAVORITE"
 
         private const val NOTIFICATION_ID = 1

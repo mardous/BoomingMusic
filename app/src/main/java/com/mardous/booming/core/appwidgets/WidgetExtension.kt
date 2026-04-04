@@ -3,11 +3,13 @@ package com.mardous.booming.core.appwidgets
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.util.TypedValue
 import android.view.KeyEvent
 import androidx.annotation.ColorInt
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.unit.Dp
 import androidx.glance.GlanceTheme
 import androidx.glance.action.Action
 import androidx.glance.appwidget.action.actionStartService
@@ -18,6 +20,14 @@ import com.mardous.booming.core.appwidgets.state.WidgetTheme
 import com.mardous.booming.playback.PlaybackService
 import com.mardous.booming.ui.theme.PaletteStyle
 import com.mardous.booming.ui.theme.dynamicColorSchemes
+
+fun Dp.toPx(context: Context): Int {
+    return TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        this.value,
+        context.resources.displayMetrics
+    ).toInt()
+}
 
 fun WidgetTheme(
     @ColorInt
@@ -123,6 +133,12 @@ fun playbackAction(context: Context, mediaKeyCode: Int): Action {
 
 fun toggleShuffleAction(context: Context): Action {
     val intent = Intent(PlaybackService.ACTION_TOGGLE_SHUFFLE)
+    intent.setComponent(ComponentName(context, PlaybackService::class.java))
+    return actionStartService(intent)
+}
+
+fun cycleRepeatAction(context: Context): Action {
+    val intent = Intent(PlaybackService.ACTION_CYCLE_REPEAT)
     intent.setComponent(ComponentName(context, PlaybackService::class.java))
     return actionStartService(intent)
 }

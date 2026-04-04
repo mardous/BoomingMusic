@@ -1,5 +1,6 @@
 package com.mardous.booming.core.appwidgets.state
 
+import androidx.media3.common.Player
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,6 +10,7 @@ class PlaybackState(
     val isPlaying: Boolean = false,
     val isFavorite: Boolean = false,
     val isShuffleMode: Boolean = false,
+    val repeatMode: Int = Player.REPEAT_MODE_OFF,
     val currentTitle: String? = "",
     val currentArtist: String? = "",
     val additionalInfo: String? = "",
@@ -28,6 +30,7 @@ class PlaybackState(
         if (isPlaying != other.isPlaying) return false
         if (isFavorite != other.isFavorite) return false
         if (isShuffleMode != other.isShuffleMode) return false
+        if (repeatMode != other.repeatMode) return false
         if (currentTitle != other.currentTitle) return false
         if (currentArtist != other.currentArtist) return false
         if (additionalInfo != other.additionalInfo) return false
@@ -48,6 +51,7 @@ class PlaybackState(
         result = 31 * result + isPlaying.hashCode()
         result = 31 * result + isFavorite.hashCode()
         result = 31 * result + isShuffleMode.hashCode()
+        result = 31 * result + repeatMode.hashCode()
         result = 31 * result + (currentTitle?.hashCode() ?: 0)
         result = 31 * result + (currentArtist?.hashCode() ?: 0)
         result = 31 * result + (additionalInfo?.hashCode() ?: 0)
