@@ -18,7 +18,7 @@ data class EqState(
             enabled = false,
             disabledByAudioOffload = false,
             preferredBandCount = 0,
-            engineMode = EqEngineMode.DynamicsProcessing
+            engineMode = EqEngineMode.Auto
         )
     }
 }

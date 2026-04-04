@@ -985,6 +985,9 @@ class PlaybackService :
                 NotificationManager.IMPORTANCE_LOW
             ).apply {
                 description = getString(R.string.playing_notification_description)
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
+                    setShowBadge(false)
+                }
             }
             nm.createNotificationChannel(notificationChannel)
         }

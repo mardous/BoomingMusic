@@ -88,7 +88,7 @@ class EqualizerManager(
     private val _eqState: Flow<EqState> =
         context.eqDataStore.data.map {
             val engineMode = it[Keys.EQ_ENGINE_MODE]?.toEnum<EqEngineMode>()
-                ?: EqEngineMode.DynamicsProcessing
+                ?: EqEngineMode.Auto
             EqState(
                 supported = it[Keys.EQ_SUPPORTED] ?: false,
                 enabled = it[Keys.EQ_ENABLED] ?: false,

@@ -83,7 +83,7 @@ android {
     namespace = "com.mardous.booming"
 
     defaultConfig {
-        minSdk = 28
+        minSdk = 26
         targetSdk = 36
 
         applicationId = namespace

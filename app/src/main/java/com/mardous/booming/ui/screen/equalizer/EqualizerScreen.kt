@@ -567,13 +567,15 @@ fun EqualizerScreen(
                         expandedMenu = false
                     }
                 )
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.set_eq_engine_title)) },
-                    onClick = {
-                        showSetEngineDialog = true
-                        expandedMenu = false
-                    }
-                )
+                if (EqEngineMode.isSwitchingSupported()) {
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.set_eq_engine_title)) },
+                        onClick = {
+                            showSetEngineDialog = true
+                            expandedMenu = false
+                        }
+                    )
+                }
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.reset_equalizer)) },
                     enabled = eqState.isUsable,

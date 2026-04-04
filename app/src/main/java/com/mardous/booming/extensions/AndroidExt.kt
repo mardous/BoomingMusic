@@ -24,6 +24,8 @@ import android.content.pm.PackageManager.ResolveInfoFlags
 import android.os.Build
 import androidx.core.text.HtmlCompat
 
+fun hasPie() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+
 fun hasQ() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
 fun hasR() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
