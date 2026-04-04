@@ -43,13 +43,18 @@ import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.mapper.toSongsEntity
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlaylistDetailBinding
-import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.applyHorizontalWindowInsets
+import com.mardous.booming.extensions.isLandscape
+import com.mardous.booming.extensions.isNullOrEmpty
+import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.media.isFavorites
 import com.mardous.booming.extensions.media.playlistInfo
 import com.mardous.booming.extensions.navigation.searchArgs
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.removeHorizontalMarginIfRequired
 import com.mardous.booming.extensions.resources.surfaceColor
+import com.mardous.booming.extensions.setSupportActionBar
+import com.mardous.booming.extensions.showToast
 import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.PlaylistSongAdapter
@@ -192,7 +197,6 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_playlis
     override fun onPrepareMenu(menu: Menu) {
         playlist.let {
             if (it.playlistEntity.isFavorites(requireContext())) {
-                menu.removeItem(R.id.action_edit_playlist)
                 menu.removeItem(R.id.action_delete_playlist)
             }
         }

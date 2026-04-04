@@ -34,6 +34,7 @@ import com.mardous.booming.coil.placeholderDrawableRes
 import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.databinding.DialogCreatePlaylistBinding
 import com.mardous.booming.extensions.extraNotNull
+import com.mardous.booming.extensions.media.isFavorites
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.ui.screen.library.LibraryViewModel
@@ -72,6 +73,7 @@ class EditPlaylistDialog : DialogFragment() {
         _binding = DialogCreatePlaylistBinding.inflate(layoutInflater)
 
         // Pre-fill existing data
+        binding.playlistNameEditText.isEnabled = !playlistEntity.isFavorites(requireContext())
         binding.playlistNameEditText.setText(playlistEntity.playlistName)
         binding.playlistDescriptionEditText.setText(playlistEntity.description ?: "")
 
