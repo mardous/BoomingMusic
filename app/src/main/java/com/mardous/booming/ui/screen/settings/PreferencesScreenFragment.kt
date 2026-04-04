@@ -101,6 +101,7 @@ import com.mardous.booming.util.TRASH_MUSIC_FILES
 import com.mardous.booming.util.USE_CUSTOM_FONT
 import com.mardous.booming.util.USE_FOLDER_ART
 import com.mardous.booming.util.WHITELIST_ENABLED
+import com.mardous.booming.util.WIDGET_IMAGE_CORNER_RADIUS
 import com.mardous.booming.util.WIDGET_THIRD_LINE_CONTENT
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -262,6 +263,7 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             true
         }
 
+        findPreference<Preference>(WIDGET_IMAGE_CORNER_RADIUS)?.isVisible = hasS()
         findPreference<Preference>(ADD_EXTRA_CONTROLS)?.isVisible = !resources.isTablet
 
         findPreference<ListPreference>(LyricsViewSettings.Key.BACKGROUND_EFFECT)?.apply {
