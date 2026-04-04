@@ -17,14 +17,17 @@
 
 package com.mardous.booming.ui.screen.player.styles.fullcoverstyle
 
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type
+import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
@@ -40,12 +43,14 @@ import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.AbsPlayerFragment
 import com.mardous.booming.ui.component.views.getPlaceholderDrawable
+import com.mardous.booming.util.DISPLAY_NEXT_SONG
 import com.mardous.booming.util.Preferences
 
 /**
  * @author Christians M. A. (mardous)
  */
 class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_player),
+    SharedPreferences.OnSharedPreferenceChangeListener,
     View.OnClickListener {
 
     private var _binding: FragmentFullCoverPlayerBinding? = null
@@ -66,6 +71,7 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
         _binding = FragmentFullCoverPlayerBinding.bind(view)
         errorDrawable = view.context.getPlaceholderDrawable(DEFAULT_SONG_IMAGE)
         setupListeners()
+        setupNextSongVisibility()
         ViewCompat.setOnApplyWindowInsetsListener(binding.toolbarContainer) { v: View, insets: WindowInsetsCompat ->
             val statusBar = insets.getInsets(Type.systemBars())
             v.updatePadding(left = statusBar.left, top = statusBar.top, right = statusBar.right)
@@ -84,6 +90,7 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
                 }
             }
         }
+        Preferences.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onPrepareViewGestures(view: View) {}
@@ -92,6 +99,15 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
         binding.nextSongText.setOnClickListener(this)
         binding.nextSongAlbumArt.setOnClickListener(this)
         binding.close.setOnClickListener(this)
+    }
+
+    private fun setupNextSongVisibility() {
+        val showNextSong = Preferences.isShowNextSong
+        _binding?.let {
+            it.nextSongAlbumArt.isVisible = showNextSong
+            it.nextSongLabel.isVisible = showNextSong
+            it.nextSongText.isVisible = showNextSong
+        }
     }
 
     override fun onClick(view: View) {
@@ -104,7 +120,6 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
     override fun onMenuInflated(menu: Menu) {
         super.onMenuInflated(menu)
         menu.removeItem(R.id.action_favorite)
-        menu.removeItem(R.id.action_playing_queue)
     }
 
     override fun onCreateChildFragments() {
@@ -142,7 +157,14 @@ class FullCoverPlayerFragment : AbsPlayerFragment(R.layout.fragment_full_cover_p
     }
 
     override fun onDestroyView() {
+        Preferences.unregisterOnSharedPreferenceChangeListener(this)
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onSharedPreferenceChanged(preferences: SharedPreferences, key: String?) {
+        if (key == DISPLAY_NEXT_SONG) {
+            setupNextSongVisibility()
+        }
     }
 }

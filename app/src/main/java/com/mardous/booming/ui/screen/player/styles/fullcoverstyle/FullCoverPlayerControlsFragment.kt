@@ -20,10 +20,12 @@ package com.mardous.booming.ui.screen.player.styles.fullcoverstyle
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.animation.TimeInterpolator
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type
@@ -45,6 +47,7 @@ import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DI
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.player.PlayerAnimator
+import com.mardous.booming.util.DISPLAY_NEXT_SONG
 import com.mardous.booming.util.Preferences
 import java.util.LinkedList
 
@@ -83,6 +86,7 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
     override val songInfoView: TextView
         get() = binding.songInfo
 
+    private var popupMenu: PopupMenu? = null
     private var isFavorite: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -96,7 +100,8 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
         binding.previousButton.setOnTouchListener(getSkipButtonTouchHandler(DIRECTION_PREVIOUS))
 
         setViewAction(binding.favorite, NowPlayingAction.ToggleFavoriteState)
-        playerFragment?.inflateMenuInView(binding.menu)
+        popupMenu = playerFragment?.inflateMenuInView(binding.menu)
+        setupQueueMenuItem()
 
         ViewCompat.setOnApplyWindowInsetsListener(view) { v: View, insets: WindowInsetsCompat ->
             val navigationBar = insets.getInsets(Type.systemBars())
@@ -104,6 +109,12 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
             val displayCutout = insets.getInsets(Type.displayCutout())
             v.updatePadding(left = displayCutout.left, right = displayCutout.right)
             insets
+        }
+    }
+
+    private fun setupQueueMenuItem() {
+        popupMenu?.menu?.findItem(R.id.action_playing_queue)?.let {
+            it.isVisible = !Preferences.isShowNextSong
         }
     }
 
@@ -204,6 +215,13 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
+        super.onSharedPreferenceChanged(sharedPreferences, key)
+        if (key == DISPLAY_NEXT_SONG) {
+            setupQueueMenuItem()
+        }
     }
 
     private class FullCoverPlayerAnimator(

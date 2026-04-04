@@ -779,7 +779,8 @@
     <string name="display_extra_info_title">Display extra info</string>
     <string name="display_extra_info_summary">Display extra info about the song, like bitrate, format, sampling rate, etc.</string>
     <string name="display_next_song_title">Display next song</string>
-    <string name="display_next_song_summary">Display the next song in the queue at the bottom of the player.</string>
+    <string name="display_next_song_summary">Show the next song in Normal and Full Cover styles.
+        If you disable this, the playback queue will only be accessible from the player\'s three-dot menu.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Select the extra info to display in the player panel.</string>
     <string name="prefer_remaining_time_title">Prefer remaining time</string>
