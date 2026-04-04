@@ -304,8 +304,8 @@
     <string name="length">Durée</string>
     <string name="label_last_modified">Dernière modification</string>
     <string name="label_channels">Chaînes</string>
-    <string name="label_variable_bitrate">Débit binaire variable</string>
-    <string name="label_loss_less">Moins de perte</string>
+    <string name="label_variable_bitrate">VBR</string>
+    <string name="label_loss_less">Sans perte</string>
     <string name="label_bit_rate">Débit binaire</string>
     <string name="label_sampling_rate">Taux d\'échantillonnage</string>
     <string name="replay_gain">Gain de lecture</string>
@@ -383,7 +383,7 @@
         <item quantity="other">%d éléments</item>
     </plurals>
     <!-- Home -->
-    <string name="home_label">Home</string>
+    <string name="home_label">Accueil</string>
     <string name="shuffle_action">Mélanger</string>
     <string name="top_artists">Meilleurs artistes</string>
     <string name="top_albums">Meilleurs albums</string>
@@ -935,4 +935,20 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="use_betterlyrics_provider_summary">Autorisez le téléchargement des paroles depuis le service BetterLyrics.</string>
     <string name="use_simpmusic_provider_title">Utiliser le fournisseur de paroles SimpMusic</string>
     <string name="use_simpmusic_provider_summary">Autorisez le téléchargement des paroles à partir du service SimpMusic Lyrics.</string>
+    <string name="channel_mono">Mono</string>
+    <string name="channel_stereo">Stéréo</string>
+    <string name="channel_stereo_2_1">2.1 Stéréo</string>
+    <string name="channel_quadraphonic">Quadriphonique</string>
+    <string name="channel_surround_5_0">Son surround 5.0</string>
+    <string name="channel_surround_5_1">Son surround 5.1</string>
+    <string name="channel_surround_6_1">Son surround 6.1</string>
+    <string name="channel_surround_7_1">Son surround 7.1</string>
+    <string name="channel_surround_9_1">Son surround 9.1</string>
+    <string name="channel_surround_11_1">Son surround 11.1</string>
+    <string name="channel_surround_13_1">Son surround 13.1</string>
+    <string name="lyrics_center_horizontally_title">Centrer le texte horizontalement</string>
+    <string name="lyrics_center_horizontally_summary">Alignez chaque ligne des paroles au centre horizontal de l\'écran.</string>
+    <string name="bit_perfect_info">Bit-Perfect : %1$s | %2$s</string>
+    <string name="bit_perfect_title">Audio sans perte</string>
+    <string name="bit_perfect_summary">Activez la sortie audio directe vers un DAC USB sans rééchantillonnage système. Nécessite Android 14+ et un matériel compatible.</string>
 </resources>
