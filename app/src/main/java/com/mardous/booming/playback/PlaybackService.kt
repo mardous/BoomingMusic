@@ -160,6 +160,7 @@ class PlaybackService :
     private var hasSetUnshuffledOrder = false
     private var stopIndex = -1
 
+    private var lastPlaybackState: PlaybackState? = null
     private var widgetUpdateJob: Job? = null
     private var fadeOutAnimator: ValueAnimator? = null
 
@@ -913,7 +914,10 @@ class PlaybackService :
             if (!force) delay(WIDGET_UPDATE_DEBOUNCE)
 
             val state = buildPlaybackState(isForeground)
-            updateGlanceWidgets(state)
+            if (lastPlaybackState != state) {
+                lastPlaybackState = state
+                updateGlanceWidgets(state)
+            }
         }
     }
 
