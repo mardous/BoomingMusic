@@ -852,9 +852,11 @@ class EqualizerManager(
 
     private fun createEngine(mode: EqEngineMode, sessionId: Int, bandCount: Int): EQEngine? {
         return runCatching {
-            when (mode) {
+            if (EqEngineMode.isSwitchingSupported()) when (mode) {
                 EqEngineMode.Basic -> BasicEQEngine(sessionId)
                 EqEngineMode.DynamicsProcessing -> DynamicsProcessingEngine(sessionId, bandCount)
+            } else {
+                BasicEQEngine(sessionId)
             }
         }.onSuccess { newEngine ->
             applyChangesToEngine(engine = newEngine)
