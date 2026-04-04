@@ -1,11 +1,11 @@
 [
   {
     "contrib_name": "Catalan",
-    "contrib_description": "[Andreu Silvestre](https://crowdin.com/profile/andreu.silvestre.pla)"
+    "contrib_description": "[Adolfo Jayme-Barrientos](https://github.com/fitojb), [Andreu Silvestre](https://crowdin.com/profile/andreu.silvestre.pla)"
   },
   {
     "contrib_name": "Chinese Simplified",
-    "contrib_description": "[dwughjsd](https://github.com/dwughjsd), [Rongxuan](https://crowdin.com/profile/rongxuan2333), [LuDreamst](https://crowdin.com/profile/ludreamst), [Remelens](https://crowdin.com/profile/remelens), [Evan Ruan](https://crowdin.com/profile/borcolasky), [wangyi](https://crowdin.com/profile/wangyi2839792050), [dwughjsd2](https://crowdin.com/profile/dwughjsd2), Ranpo Doyle"
+    "contrib_description": "[dwughjsd](https://github.com/dwughjsd), [reducedradius](https://github.com/flytothehighest), [Rongxuan](https://crowdin.com/profile/rongxuan2333), [LuDreamst](https://crowdin.com/profile/ludreamst), [Remelens](https://crowdin.com/profile/remelens), [Evan Ruan](https://crowdin.com/profile/borcolasky), [wangyi](https://crowdin.com/profile/wangyi2839792050), Ranpo Doyle"
   },
   {
     "contrib_name": "Chinese Traditional",
@@ -49,7 +49,7 @@
   },
   {
     "contrib_name": "Japanese",
-    "contrib_description": "morukanu1, [keikun13](https://crowdin.com/profile/keikun13)"
+    "contrib_description": "[Renorari](https://github.com/renorari), [keikun13](https://crowdin.com/profile/keikun13), morukanu1"
   },
   {
     "contrib_name": "Polish",
@@ -65,19 +65,19 @@
   },
   {
     "contrib_name": "Russian",
-    "contrib_description": "[tnvdeveloper](https://github.com/tnvdeveloper), [Shlerspet](https://crowdin.com/profile/shlerspet), [Anton](https://crowdin.com/profile/antoon334), [Axus Wizix](https://crowdin.com/profile/axuswizix), elixcat"
+    "contrib_description": "[tnvdeveloper](https://github.com/tnvdeveloper), [Horizon](https://github.com/BlueGradientHorizon), [Shlerspet](https://crowdin.com/profile/shlerspet), [Anton](https://crowdin.com/profile/antoon334), [Axus Wizix](https://crowdin.com/profile/axuswizix), elixcat"
   },
   {
     "contrib_name": "Spanish",
-    "contrib_description": "[Agustina Araya Lucato](https://crowdin.com/profile/agustt170), [Irina Berenguer Tretter](https://crowdin.com/profile/a55pirina)"
+    "contrib_description": "[Adolfo Jayme-Barrientos](https://github.com/fitojb), [Agustina Araya Lucato](https://crowdin.com/profile/agustt170), [Irina Berenguer Tretter](https://crowdin.com/profile/a55pirina)"
   },
   {
     "contrib_name": "Swedish",
-    "contrib_description": "[Maurycy](https://github.com/XCOM-HUB)"
+    "contrib_description": "[Maurycy](https://github.com/XCOM-HUB), [Luna Jernberg](https://github.com/bittin)"
   },
   {
     "contrib_name": "Turkish",
-    "contrib_description": "[Kehribar](https://github.com/dpentx), [Holi](https://crowdin.com/profile/mikropsoft)"
+    "contrib_description": "[Kehribar](https://github.com/dpentx), [muhaco](https://github.com/muhaco), [Alperen Turan](https://github.com/acimasizburger), [Holi](https://crowdin.com/profile/mikropsoft)"
   },
   {
     "contrib_name": "Ukrainian",
