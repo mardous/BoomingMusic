@@ -946,7 +946,7 @@ Podría ser necesario reiniciar la aplicación</string>
     <string name="app_widget_card">Tarjeta</string>
     <string name="app_widget_card_desc">Estilo minimalista y simplificado</string>
     <string name="app_widget_full">Completo</string>
-    <string name="app_widget_full_desc">A tela do reprodutor diretamente na sua área de trabalho</string>
+    <string name="app_widget_full_desc">La pantalla del reproductor directamente en tu escritorio</string>
     <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
     <string name="widgets_header">Widgets</string>
     <string name="widget_small_layout_style_title">Estilo del diseño pequeño</string>
