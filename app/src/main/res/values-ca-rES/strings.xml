@@ -917,4 +917,19 @@
     <string name="use_betterlyrics_provider_title">Usa el proveïdor BetterLyrics</string>
     <string name="use_simpmusic_provider_title">Usa el proveïdor SimpMusic Lyrics</string>
     <string name="bit_perfect_summary">Activa la sortida d\'àudio directa a DAC USB sense remostratge del sistema. Requereix Android 14+ i maquinari compatible.</string>
+    <string name="app_widget_responsive">Sensible</string>
+    <string name="app_widget_responsive_desc">Un widget que s\'adapta a mides diferents</string>
+    <string name="app_widget_card">Targeta</string>
+    <string name="app_widget_card_desc">Estil minimalista i simplificat</string>
+    <string name="app_widget_full">Complet</string>
+    <string name="app_widget_full_desc">La pantalla del reproductor directa al vostre escriptori</string>
+    <string name="channel_mono">Monoaural</string>
+    <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
+    <string name="lastfm_login_ok">Inicia la sessió</string>
+    <string name="lastfm_login_toggle_password_visibility">Alterna la visibilitat de la contrasenya</string>
+    <string name="lastfm_logout">Tanca la sessió</string>
+    <string name="error_lastfm_auth">Ha caducat la sessió o les credencials no són vàlides. Torna-ho a intentar.</string>
+    <string name="error_lastfm_credentials">Les vostres credencials no són vàlides. Verifiqueu-les i torneu-ho a intentar.</string>
+    <string name="error_lastfm_params">Pàrametres invàlids. Podria ser per error nostre.</string>
+    <string name="error_lastfm_service">Last.fm està en manteniment ara mateix. Torneu-ho a intentar més tard.</string>
 </resources>
