@@ -499,6 +499,7 @@
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Amplifier</string>
     <string name="sound_settings">Sound settings</string>
+    <string name="advanced_settings">Advanced settings</string>
     <string name="listening_on">Listening on</string>
     <string name="casting_to">Casting to</string>
     <string name="volume_label">Volume</string>
@@ -514,19 +515,13 @@
     <string name="bit_perfect_is_active">Bit-perfect is active</string>
     <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
     <string name="bit_perfect_title">Bit-perfect audio</string>
-    <string name="bit_perfect_description">Enable direct audio output to USB DAC without system resampling. Requires compatible hardware.
-        \n\nSome features such as the Equalizer, ReplayGain and speed/pitch adjustment will not be available during a Bit-Perfect session.</string>
+    <string name="bit_perfect_description">Direct audio output to USB DAC without system resampling.</string>
     <string name="enable_audio_offload_title">Audio Offload</string>
-    <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
-        This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
-        A restart is required for changes to take effect.</string>
+    <string name="enable_audio_offload_description">Hardware-accelerated playback to reduce CPU usage and save battery. App restart required.</string>
     <string name="enable_audio_float_output_title">High-Precision Audio Output</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point output for maximum fidelity. App restart required.</string>
     <string name="skip_silence_title">Skip Silence</string>
-    <string name="skip_silence_description">Automatically skip silent sections during playback.
-        Ideal for podcasts and recordings.</string>
+    <string name="skip_silence_description">Automatically detects and omits silent sections. Ideal for podcasts and voice recordings.</string>
 
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Show lyrics</string>

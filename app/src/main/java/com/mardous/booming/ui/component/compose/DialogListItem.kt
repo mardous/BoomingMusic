@@ -23,8 +23,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.mardous.booming.ui.theme.BorderStrokeTokens
-import com.mardous.booming.ui.theme.CornerRadiusTokens
 
 @Composable
 fun ShapeableDialogListItemSurface(
@@ -36,7 +34,7 @@ fun ShapeableDialogListItemSurface(
 ) {
     val colors = MaterialTheme.colorScheme
     val shapeCornerRadius by animateDpAsState(
-        targetValue = if (isSelected) CornerRadiusTokens.SurfaceLargest else CornerRadiusTokens.SurfaceMedium,
+        targetValue = if (isSelected) 50.dp else 16.dp,
         animationSpec = tween(400)
     )
     val containerColor by animateColorAsState(
@@ -45,7 +43,7 @@ fun ShapeableDialogListItemSurface(
     )
     val contentColor = if (isSelected) colors.onPrimaryContainer else colors.onSurface
     val borderWidth by animateDpAsState(
-        targetValue = if (isSelected && useBorderStroke) BorderStrokeTokens.Medium else BorderStrokeTokens.None,
+        targetValue = if (isSelected && useBorderStroke) 2.dp else 0.dp,
         animationSpec = tween(200)
     )
     val borderStroke = remember(isSelected, borderWidth) {

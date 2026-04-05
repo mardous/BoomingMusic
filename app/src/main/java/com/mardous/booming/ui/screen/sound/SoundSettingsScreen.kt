@@ -2,11 +2,10 @@ package com.mardous.booming.ui.screen.sound
 
 import android.os.Build
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -19,11 +18,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomSheetDefaults
-import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -36,6 +32,8 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -43,20 +41,19 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -68,11 +65,9 @@ import com.mardous.booming.core.model.audiodevice.BitPerfectState
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.component.compose.IconifiedSliderTrack
-import com.mardous.booming.ui.component.compose.LabeledSwitch
 import com.mardous.booming.ui.component.compose.ShapedText
 import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
-import com.mardous.booming.ui.theme.CornerRadiusTokens
 import com.mardous.booming.ui.theme.SliderTokens
 import com.mardous.booming.ui.theme.SurfaceColorTokens
 import java.util.Locale
@@ -85,7 +80,6 @@ fun SoundSettingsSheet(
     val context = LocalContext.current
     val hapticFeedback = LocalHapticFeedback.current
 
-    var expandedSoundSettings by remember { mutableStateOf(false) }
     val outputDevice by viewModel.audioDevice.collectAsState()
     val volume by viewModel.volumeState.collectAsState()
     val bitPerfectState by viewModel.bitPerfectState.collectAsState()
@@ -108,39 +102,6 @@ fun SoundSettingsSheet(
     var centerBalance by remember(balance.center) { mutableFloatStateOf(balance.center) }
     var tempoSpeed by remember(tempo.speed) { mutableFloatStateOf(tempo.speed) }
     var tempoPitch by remember(tempo.actualPitch) { mutableFloatStateOf(tempo.actualPitch) }
-
-    var showBitPerfectDialog by remember { mutableStateOf(false) }
-    var showAudioOffloadDialog by remember { mutableStateOf(false) }
-    var showAudioFloatOutputDialog by remember { mutableStateOf(false) }
-    var showSkipSilenceDialog by remember { mutableStateOf(false) }
-
-    if (showBitPerfectDialog) {
-        SoundOptionDescriptionDialog(
-            title = stringResource(R.string.bit_perfect_title),
-            description = stringResource(R.string.bit_perfect_description)
-        ) { showBitPerfectDialog = false }
-    }
-
-    if (showAudioOffloadDialog) {
-        SoundOptionDescriptionDialog(
-            title = stringResource(R.string.enable_audio_offload_title),
-            description = stringResource(R.string.enable_audio_offload_description)
-        ) { showAudioOffloadDialog = false }
-    }
-
-    if (showAudioFloatOutputDialog) {
-        SoundOptionDescriptionDialog(
-            title = stringResource(R.string.enable_audio_float_output_title),
-            description = stringResource(R.string.enable_audio_float_output_description)
-        ) { showAudioFloatOutputDialog = false }
-    }
-
-    if (showSkipSilenceDialog) {
-        SoundOptionDescriptionDialog(
-            title = stringResource(R.string.skip_silence_title),
-            description = stringResource(R.string.skip_silence_description)
-        ) { showSkipSilenceDialog = false }
-    }
 
     BottomSheetDialogSurface {
         Column(
@@ -167,60 +128,8 @@ fun SoundSettingsSheet(
                 AudioDeviceInfo(
                     outputDevice = outputDevice,
                     bitPerfectState = bitPerfectState,
-                    expanded = expandedSoundSettings,
-                    onClick = {
-                        viewModel.showOutputDeviceSelector(context)
-                    },
-                    onExpandClick = {
-                        expandedSoundSettings = expandedSoundSettings.not()
-                    }
-                ) {
-                    Column(modifier = Modifier.fillMaxWidth()) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-                            LabeledSwitch(
-                                checked = bitPerfect,
-                                text = stringResource(R.string.bit_perfect_title),
-                                textStyle = MaterialTheme.typography.bodyMedium,
-                                icon = { SoundOptionInfoIcon { showBitPerfectDialog = true } }
-                            ) { checked ->
-                                viewModel.setEnableBitPerfect(checked)
-                            }
-                        }
-
-                        LabeledSwitch(
-                            checked = audioOffload,
-                            text = stringResource(R.string.enable_audio_offload_title),
-                            textStyle = MaterialTheme.typography.bodyMedium,
-                            icon = { SoundOptionInfoIcon { showAudioOffloadDialog = true } }
-                        ) { checked ->
-                            viewModel.setEnableAudioOffload(checked)
-                        }
-
-                        LabeledSwitch(
-                            checked = audioFloatOutput,
-                            text = stringResource(R.string.enable_audio_float_output_title),
-                            textStyle = MaterialTheme.typography.bodyMedium,
-                            icon = {
-                                SoundOptionInfoIcon {
-                                    showAudioFloatOutputDialog = true
-                                }
-                            }
-                        ) { checked ->
-                            viewModel.setEnableAudioFloatOutput(checked)
-                        }
-
-                        LabeledSwitch(
-                            checked = skipSilence,
-                            enabled = enableAudioEffects,
-                            text = stringResource(R.string.skip_silence_title),
-                            textStyle = MaterialTheme.typography.bodyMedium,
-                            icon = { SoundOptionInfoIcon { showSkipSilenceDialog = true } },
-                            modifier = Modifier.testTag("skip_silence_switch")
-                        ) { checked ->
-                            viewModel.setEnableSkipSilences(checked)
-                        }
-                    }
-                }
+                    onClick = { viewModel.showOutputDeviceSelector(context) }
+                )
 
                 TitledCard(
                     title = stringResource(R.string.volume_label),
@@ -281,9 +190,7 @@ fun SoundSettingsSheet(
                                 Column(
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                     verticalArrangement = Arrangement.spacedBy(8.dp),
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .testTag("balance_slider_container")
+                                    modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Slider(
                                         value = centerBalance,
@@ -380,9 +287,7 @@ fun SoundSettingsSheet(
                                 )
                             }
                         },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .testTag("speed_pitch_card")
+                        modifier = Modifier.fillMaxWidth()
                     ) { cardContentPadding ->
                         Column(
                             verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -555,6 +460,52 @@ fun SoundSettingsSheet(
                     }
                 }
 
+                TitledCard(
+                    title = stringResource(R.string.advanced_settings),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp)
+                    ) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                            LabeledSwitch(
+                                checked = bitPerfect,
+                                title = stringResource(R.string.bit_perfect_title),
+                                description = stringResource(R.string.bit_perfect_description)
+                            ) { checked ->
+                                viewModel.setEnableBitPerfect(checked)
+                            }
+                        }
+
+                        LabeledSwitch(
+                            checked = audioOffload,
+                            title = stringResource(R.string.enable_audio_offload_title),
+                            description = stringResource(R.string.enable_audio_offload_description)
+                        ) { checked ->
+                            viewModel.setEnableAudioOffload(checked)
+                        }
+
+                        LabeledSwitch(
+                            checked = audioFloatOutput,
+                            title = stringResource(R.string.enable_audio_float_output_title),
+                            description = stringResource(R.string.enable_audio_float_output_description)
+                        ) { checked ->
+                            viewModel.setEnableAudioFloatOutput(checked)
+                        }
+
+                        LabeledSwitch(
+                            checked = skipSilence,
+                            enabled = enableAudioEffects,
+                            title = stringResource(R.string.skip_silence_title),
+                            description = stringResource(R.string.skip_silence_description)
+                        ) { checked ->
+                            viewModel.setEnableSkipSilences(checked)
+                        }
+                    }
+                }
+
                 Spacer(modifier = Modifier.height(16.dp))
             }
         }
@@ -566,29 +517,15 @@ fun SoundSettingsSheet(
 private fun AudioDeviceInfo(
     outputDevice: AudioDevice,
     bitPerfectState: BitPerfectState,
-    expanded: Boolean,
-    onClick: () -> Unit,
-    onExpandClick: () -> Unit,
-    expandableContent: @Composable () -> Unit
+    onClick: () -> Unit
 ) {
-    val colorScheme = MaterialTheme.colorScheme
-    val shapeCornerRadius by animateDpAsState(
-        targetValue = if (expanded) CornerRadiusTokens.SurfaceSmall else CornerRadiusTokens.SurfaceLarge
-    )
-    val primaryContainerAlpha by animateFloatAsState(
-        targetValue = if (bitPerfectState.isActive) 0.5f else 0.2f
-    )
-    val containerColor by animateColorAsState(
-        targetValue = if (expanded) {
-            colorScheme.surfaceVariant.copy(alpha = SurfaceColorTokens.SurfaceVariantAlpha)
-        } else {
-            colorScheme.primaryContainer.copy(alpha = primaryContainerAlpha)
-        }
-    )
-    val expandIconRotation by animateFloatAsState(targetValue = if (expanded) 180f else 0f)
     Card(
-        shape = RoundedCornerShape(shapeCornerRadius),
-        colors = CardDefaults.cardColors(containerColor = containerColor),
+        shape = MaterialTheme.shapes.large,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(
+                alpha = SurfaceColorTokens.SurfaceVariantAlpha
+            )
+        ),
         modifier = Modifier.fillMaxWidth()
     ) {
         Row(
@@ -597,14 +534,22 @@ private fun AudioDeviceInfo(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable(enabled = hasR(), onClick = onClick)
-                .padding(start = 24.dp, end = 16.dp)
-                .padding(vertical = 16.dp)
+                .padding(16.dp)
         ) {
-            Icon(
-                painter = painterResource(outputDevice.type.iconRes),
-                tint = MaterialTheme.colorScheme.primary,
-                contentDescription = null
-            )
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    painter = painterResource(outputDevice.type.iconRes),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
 
             Column(
                 modifier = Modifier.weight(1f)
@@ -636,59 +581,68 @@ private fun AudioDeviceInfo(
                             bitPerfectState.sampleRateLabel
                         ),
                         containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        style = MaterialTheme.typography.bodySmall,
-                        modifier = Modifier.testTag("bit_perfect_badge")
+                        style = MaterialTheme.typography.bodySmall
                     )
                 }
             }
-
-            IconButton(onExpandClick) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_arrow_drop_down_24dp),
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.rotate(expandIconRotation)
-                )
-            }
-        }
-        AnimatedVisibility(visible = expanded) {
-            expandableContent()
         }
     }
 }
 
 @Composable
-private fun SoundOptionInfoIcon(onClick: () -> Unit) {
-    IconButton(
-        onClick = onClick,
-        modifier = Modifier.size(20.dp)
+private fun LabeledSwitch(
+    checked: Boolean,
+    title: String,
+    description: String,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    onStateChange: (Boolean) -> Unit
+) {
+    Row(
+        modifier = modifier
+            .clickable(
+                enabled = enabled,
+                role = Role.Switch,
+                onClick = {
+                    onStateChange(!checked)
+                }
+            )
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(
-            painter = painterResource(R.drawable.ic_info_24dp),
-            contentDescription = null,
-            modifier = Modifier.size(16.dp)
+        Column(Modifier.weight(1f)) {
+            Text(
+                text = title,
+                maxLines = 1,
+                style = MaterialTheme.typography.bodyMediumEmphasized,
+                fontWeight = FontWeight.Medium
+            )
+
+            Text(
+                text = description,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = MaterialTheme.typography.bodySmall
+            )
+        }
+
+        Switch(
+            checked = checked,
+            enabled = enabled,
+            onCheckedChange = {
+                onStateChange(it)
+            },
+            thumbContent = {
+                if (checked) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_check_24dp),
+                        contentDescription = null,
+                        modifier = Modifier.size(SwitchDefaults.IconSize)
+                    )
+                }
+            }
         )
     }
-}
-
-@Composable
-private fun SoundOptionDescriptionDialog(title: String, description: String, onClose: () -> Unit) {
-    AlertDialog(
-        icon = {
-            Icon(
-                painter = painterResource(R.drawable.ic_info_24dp),
-                contentDescription = null
-            )
-        },
-        title = { Text(title) },
-        text = { Text(description) },
-        confirmButton = {
-            Button(onClose) {
-                Text(text = stringResource(R.string.close_action))
-            }
-        },
-        onDismissRequest = onClose,
-    )
 }
 
 @Composable
