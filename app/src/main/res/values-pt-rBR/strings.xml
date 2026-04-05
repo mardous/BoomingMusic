@@ -888,4 +888,8 @@ Enviar o relatório de erro por Telegram ou e-mail nos ajudaria a resolver o pro
     <string name="uncaught_error_restart_app">Reiniciar aplicativo</string>
     <string name="uncaught_error_github">Reportar problema no GitHub</string>
     <string name="uncaught_error_send">Enviar relatório</string>
+    <string name="app_widget_card_desc">Estilo minimalista e simplificado</string>
+    <string name="app_widget_full">Cheio</string>
+    <string name="app_widget_responsive_desc">Um widget que se adapta a diferentes tamanhos</string>
+    <string name="app_widget_card">Cartão</string>
 </resources>

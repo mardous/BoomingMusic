@@ -705,7 +705,7 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="display_extra_info_title">Afficher les informations supplémentaires</string>
     <string name="display_extra_info_summary">Affichez des informations supplémentaires sur le titre, comme le débit binaire, le format, le taux d\'échantillonnage, etc.</string>
     <string name="display_next_song_title">Afficher le titre suivant</string>
-    <string name="display_next_song_summary">Affiche le titre suivant dans la file d\'attente en bas du lecteur.</string>
+    <string name="display_next_song_summary">Afficher le morceau suivant dans les styles « Normal » et « Intégral ». Si vous désactivez cette option, la file d\'attente de lecture ne sera accessible qu\'à partir du menu à trois points du lecteur.</string>
     <string name="select_extra_info_title">Informations supplémentaires</string>
     <string name="select_extra_info_summary">Sélectionnez les informations supplémentaires à afficher dans le panneau du lecteur.</string>
     <string name="prefer_remaining_time_title">Préférer le temps restant</string>
@@ -950,4 +950,20 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="lyrics_center_horizontally_summary">Alignez chaque ligne des paroles au centre horizontal de l\'écran.</string>
     <string name="bit_perfect_info">Bit-Perfect : %1$s | %2$s</string>
     <string name="bit_perfect_title">Audio sans perte</string>
+    <string name="app_widget_responsive">Adaptatif</string>
+    <string name="app_widget_responsive_desc">Un widget qui adapte sa mise en page à différentes tailles</string>
+    <string name="app_widget_card">Carte</string>
+    <string name="app_widget_card_desc">Style minimaliste et épuré</string>
+    <string name="app_widget_full">Complet</string>
+    <string name="app_widget_full_desc">L\'écran du lecteur directement sur votre bureau</string>
+    <string name="widgets_header">Widgets d\'application</string>
+    <string name="widget_small_layout_style_title">Style de mise en page compacte</string>
+    <string name="widget_small_layout_classic">Classique</string>
+    <string name="widget_small_layout_simplified">Simplifié</string>
+    <string name="widget_dynamic_colors_title">Couleurs dynamiques</string>
+    <string name="widget_dynamic_colors_summary">Adaptez les couleurs des widgets à la pochette du morceau en cours.</string>
+    <string name="widget_image_corner_radius_title">Rayon des coins de l\'image</string>
+    <string name="widget_image_corner_radius_summary">Modifiez l\'arrondi de la pochette de l\'album.</string>
+    <string name="widget_third_line_title">Troisième ligne d\'information</string>
+    <string name="widget_third_line_summary">Choisissez ce que vous souhaitez afficher dans la troisième ligne de texte.</string>
 </resources>
