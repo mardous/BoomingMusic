@@ -478,16 +478,11 @@
     <string name="custom">Anpassad</string>
     <string name="audio_offload_is_enabled">Ljudavlastning är aktiverad</string>
     <string name="enable_audio_offload_title">Ljudavlastning</string>
-    <string name="enable_audio_offload_description">Tillåter enheten att bearbeta ljud direkt genom sin hårdvara, minska CPU-användning och spara batteri.
-        Denna funktion stöds endast på vissa enheter. Vissa effekter eller funktioner kanske inte fungerar medan det är aktiverat.
-        En omstart krävs för att ändringar ska träda i kraft.</string>
+    <string name="enable_audio_offload_description">Tillåter enheten att bearbeta ljud direkt genom sin hårdvara, minska CPU-användning och spara batteri. Denna funktion stöds endast på vissa enheter. Vissa effekter eller funktioner kanske inte fungerar medan det är aktiverat. En omstart krävs för att ändringar ska träda i kraft.</string>
     <string name="enable_audio_float_output_title">Högpresterande ljudutmatning</string>
-    <string name="enable_audio_float_output_description">Möjliggör 32-bitars flyttalsljud för bättre ljudkvalitet.
-        Tänk på att detta kommer att stänga av funktioner som ReplayGain, hoppa över tystnad och volymbalans.
-        Det kan använda lite mer batteri, och du måste starta om appen för att den ska börja gälla.</string>
+    <string name="enable_audio_float_output_description">Möjliggör 32-bitars flyttalsljud för bättre ljudkvalitet. Tänk på att detta kommer att stänga av funktioner som ReplayGain, hoppa över tystnad och volymbalans. Det kan använda lite mer batteri, och du måste starta om appen för att den ska börja gälla.</string>
     <string name="skip_silence_title">Hoppa över tystnad</string>
-    <string name="skip_silence_description">Hoppa automatiskt över tysta sektioner under uppspelningen.
-        Perfekt för podcasts och inspelningar.</string>
+    <string name="skip_silence_description">Hoppa automatiskt över tysta sektioner under uppspelningen. Perfekt för podcasts och inspelningar.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Visa låttext</string>
     <string name="action_hide_lyrics">Dölj låttext</string>
