@@ -473,9 +473,7 @@
     <string name="custom">自定义</string>
     <string name="audio_offload_is_enabled">硬件加速已启用</string>
     <string name="enable_audio_offload_title">音频硬件加速</string>
-    <string name="enable_audio_offload_description">直接通过设备硬件处理音频，从而降低 CPU 使用率并减少电池电量消耗。
-        该功能仅在部分设备上受支持。启用功能时，某些其他功能可能无法正常使用。
-        需要重新启动以使该设置项生效。</string>
+    <string name="enable_audio_offload_description">直接通过设备硬件处理音频，从而降低 CPU 使用率并减少电池电量消耗。 该功能仅在部分设备上受支持。启用功能时，某些其他功能可能无法正常使用。 需要重新启动以使该设置项生效。</string>
     <string name="enable_audio_float_output_title">高精度音频输出</string>
     <string name="enable_audio_float_output_description">启用 32 位浮点音频可提升音质，但将禁用回放增益、静音跳过与音量平衡。此功能可能增加耗电，且需重启应用生效。</string>
     <string name="skip_silence_title">跳过静音部分</string>
