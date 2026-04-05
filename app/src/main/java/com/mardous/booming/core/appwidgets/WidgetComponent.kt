@@ -104,7 +104,7 @@ fun ShapeableControlIconGlance(
     cornerRadius: Dp = 16.dp,
     innerPadding: Dp = 16.dp,
     iconTint: ColorProvider = GlanceTheme.colors.onPrimaryContainer,
-    backgroundTint: ColorProvider = GlanceTheme.colors.primary,
+    backgroundTint: ColorProvider = GlanceTheme.colors.primaryContainer,
     contentDescription: String? = null,
     onClick: GlanceModifier = GlanceModifier
 ) {
