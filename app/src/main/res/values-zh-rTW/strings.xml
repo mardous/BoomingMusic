@@ -472,9 +472,7 @@
     <string name="custom">自訂</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">音訊硬體加速</string>
-    <string name="enable_audio_offload_description">直接通過設備硬體處理音訊，從而降低 CPU 使用率並減少電池電量消耗。
-        該功能僅在部分設備上受支援。啟用功能時，某些其他功能可能無法正常使用。
-        需要重新啟動以使該設定項生效。</string>
+    <string name="enable_audio_offload_description">直接通過設備硬體處理音訊，從而降低 CPU 使用率並減少電池電量消耗。 該功能僅在部分設備上受支援。啟用功能時，某些其他功能可能無法正常使用。 需要重新啟動以使該設定項生效。</string>
     <string name="enable_audio_float_output_title">高精度音訊輸出</string>
     <string name="enable_audio_float_output_description">啟用 32 位浮點音訊可提升音質，但將禁用回放增益、靜音跳過與音量平衡。此功能可能增加耗電，且需重啟應用生效。</string>
     <string name="skip_silence_title">跳過靜音部分</string>
