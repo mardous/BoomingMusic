@@ -1,1 +1,1 @@
-A modern, Material 3 local music player built for smooth offline listening
+Trình phát nhạc hiện đại, giao diện Material 3 mang đến trải nghiệm mượt mà
