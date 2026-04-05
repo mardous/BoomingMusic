@@ -477,16 +477,11 @@ Se você não pretende usar esse recurso, pode optar por não conceder a permiss
     <string name="custom">Personalizado</string>
     <string name="audio_offload_is_enabled">O descarregamento de áudio está ativado</string>
     <string name="enable_audio_offload_title">Processamento de áudio otimizado</string>
-    <string name="enable_audio_offload_description">Permite que o áudio seja processado diretamente pelo hardware do dispositivo, reduzindo o uso da CPU e o consumo de bateria.
-Esse recurso é compatível apenas com determinados dispositivos. Alguns efeitos ou recursos podem ficar indisponíveis quando ativado.
-É necessário reiniciar o aplicativo para aplicar as alterações.</string>
+    <string name="enable_audio_offload_description">Permite que o áudio seja processado diretamente pelo hardware do dispositivo, reduzindo o uso da CPU e o consumo de bateria. Esse recurso é compatível apenas com determinados dispositivos. Alguns efeitos ou recursos podem ficar indisponíveis quando ativado. É necessário reiniciar o aplicativo para aplicar as alterações.</string>
     <string name="enable_audio_float_output_title">Saída de áudio de alta precisão</string>
-    <string name="enable_audio_float_output_description">Ativa áudio em 32 bits com ponto flutuante para melhor qualidade de som.
-Lembre-se de que isso desativa recursos como ReplayGain, pular silêncio e balanço de volume.
-Essa opção pode consumir um pouco mais de bateria, e será necessário reiniciar o aplicativo para que as alterações tenham efeito.</string>
+    <string name="enable_audio_float_output_description">Ativa áudio em 32 bits com ponto flutuante para melhor qualidade de som. Lembre-se de que isso desativa recursos como ReplayGain, pular silêncio e balanço de volume. Essa opção pode consumir um pouco mais de bateria, e será necessário reiniciar o aplicativo para que as alterações tenham efeito.</string>
     <string name="skip_silence_title">Ignorar silêncio</string>
-    <string name="skip_silence_description">Pula automaticamente as partes silenciosas durante a reprodução.
-Ideal para podcasts e gravações.</string>
+    <string name="skip_silence_description">Pula automaticamente as partes silenciosas durante a reprodução. Ideal para podcasts e gravações.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostrar letras</string>
     <string name="action_hide_lyrics">Ocultar letras</string>
