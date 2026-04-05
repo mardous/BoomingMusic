@@ -478,16 +478,11 @@
     <string name="custom">Aangepaste</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Audio Uitladen</string>
-    <string name="enable_audio_offload_description">Hiermee kan het apparaat audio rechtstreeks verwerken via de hardware, CPU-verbruik verminderen en batterij besparen.
-        Deze functie wordt alleen op bepaalde apparaten ondersteund. Sommige effecten of functies werken mogelijk niet terwijl het is ingeschakeld.
-        Een herstart is vereist om wijzigingen toe te passen.</string>
+    <string name="enable_audio_offload_description">Hiermee kan het apparaat audio rechtstreeks verwerken via de hardware, CPU-verbruik verminderen en batterij besparen. Deze functie wordt alleen op bepaalde apparaten ondersteund. Sommige effecten of functies werken mogelijk niet terwijl het is ingeschakeld. Een herstart is vereist om wijzigingen toe te passen.</string>
     <string name="enable_audio_float_output_title">Audio-uitvoer met hoge precisie</string>
-    <string name="enable_audio_float_output_description">Maakt 32-bit floating-point audio mogelijk voor een betere geluidskwaliteit.
-        Hou er rekening mee dat dit functies zoals ReplayGain uitschakelt, stilte overslaat en het volume overslaat.
-        Het kan een beetje meer batterij gebruiken, en je moet de app opnieuw opstarten om deze effectief te maken.</string>
+    <string name="enable_audio_float_output_description">Maakt 32-bit floating-point audio mogelijk voor een betere geluidskwaliteit. Hou er rekening mee dat dit functies zoals ReplayGain uitschakelt, stilte overslaat en het volume overslaat. Het kan een beetje meer batterij gebruiken, en je moet de app opnieuw opstarten om deze effectief te maken.</string>
     <string name="skip_silence_title">Stilte overslaan</string>
-    <string name="skip_silence_description">Automatisch stille secties overslaan tijdens het afspelen.
-        Ideaal voor podcasts en opnamen.</string>
+    <string name="skip_silence_description">Automatisch stille secties overslaan tijdens het afspelen. Ideaal voor podcasts en opnamen.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Songtekst weergeven</string>
     <string name="action_hide_lyrics">Verberg songtekst</string>
