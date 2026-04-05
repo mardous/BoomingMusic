@@ -494,16 +494,11 @@
     <string name="custom">Vlastní</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Vypnutí zvuku</string>
-    <string name="enable_audio_offload_description">Umožňuje zařízení zpracovávat zvuk přímo prostřednictvím hardwaru, snižovat spotřebu procesoru a šetřit baterii.
-        Tato funkce je podporována pouze na určitých zařízeních. Některé efekty nebo funkce nemusí fungovat, když jsou povoleny.
-        Je vyžadován restart, aby se změny projevily.</string>
+    <string name="enable_audio_offload_description">Umožňuje zařízení zpracovávat zvuk přímo prostřednictvím hardwaru, snižovat spotřebu procesoru a šetřit baterii. Tato funkce je podporována pouze na určitých zařízeních. Některé efekty nebo funkce nemusí fungovat, když jsou povoleny. Je vyžadován restart, aby se změny projevily.</string>
     <string name="enable_audio_float_output_title">Vysoký zvukový výstup</string>
-    <string name="enable_audio_float_output_description">Umožňuje 32-bitový plovoucí zvuk pro lepší kvalitu zvuku.
-        Mějte na paměti, že toto vypne funkce jako ReplayGain, přeskočí ticho a vyvážení hlasitosti.
-        Může použít trochu více baterie, a budete muset aplikaci restartovat, aby se projevila.</string>
+    <string name="enable_audio_float_output_description">Umožňuje 32-bitový plovoucí zvuk pro lepší kvalitu zvuku. Mějte na paměti, že toto vypne funkce jako ReplayGain, přeskočí ticho a vyvážení hlasitosti. Může použít trochu více baterie, a budete muset aplikaci restartovat, aby se projevila.</string>
     <string name="skip_silence_title">Přeskočit ticho</string>
-    <string name="skip_silence_description">Automaticky přeskočit tiché sekce během přehrávání.
-        Ideální pro podcasty a nahrávky.</string>
+    <string name="skip_silence_description">Automaticky přeskočit tiché sekce během přehrávání. Ideální pro podcasty a nahrávky.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Zobrazit texty</string>
     <string name="action_hide_lyrics">Skrýt texty</string>
