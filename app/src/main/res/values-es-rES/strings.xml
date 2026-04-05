@@ -693,7 +693,7 @@
     <string name="display_extra_info_title">Mostrar información extra</string>
     <string name="display_extra_info_summary">Mostrar información adicional sobre la canción, como tasa de bits, formato, tasa de muestreo, etc.</string>
     <string name="display_next_song_title">Mostrar la siguiente canción</string>
-    <string name="display_next_song_summary">Muestra la siguiente canción en la cola en la parte inferior del reproductor.</string>
+    <string name="display_next_song_summary">Mostrar la siguiente canción en los estilos Normal y Portada completa. Si lo desactiva, solo se podrá acceder a la cola de reproducción desde el menú de los tres puntos.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Seleccione la información adicional para mostrar en el panel del reproductor.</string>
     <string name="prefer_remaining_time_title">Preferir tiempo restante</string>
@@ -807,7 +807,7 @@
     <string name="full_cover_style">Portada completa</string>
     <string name="gradient_style">Degradado</string>
     <string name="peek_style">Peek</string>
-    <string name="plain_style">Plain</string>
+    <string name="plain_style">Puro</string>
     <string name="m3_style">M3</string>
     <string name="expressive_style">Expresivo</string>
     <string name="normal_style">Normal</string>
@@ -940,4 +940,21 @@
     <string name="lastfm_login_summary">Acceda a su cuenta de Last.fm para activar el «scrobbling» y las actualizaciones de lo que escucha.</string>
     <string name="use_lrclib_provider_summary">Permite la descarga de letras del servicio LRCLib.</string>
     <string name="error_network_timeout">Se agotó el tiempo de espera de la conexión. Compruebe su conexión a Internet e inténtelo de nuevo.</string>
+    <string name="app_widget_responsive">Flexible</string>
+    <string name="app_widget_responsive_desc">Un widget que adapta su formato a varios tamaños</string>
+    <string name="app_widget_card">Tarjeta</string>
+    <string name="app_widget_card_desc">Estilo minimalista y simplificado</string>
+    <string name="app_widget_full">Completo</string>
+    <string name="app_widget_full_desc">La pantalla del reproductor directo en su escritorio</string>
+    <string name="error_lastfm_rate_limit">Demasiadas solicitudes. Espere un momento antes de volver a hacer «scrobbling».</string>
+    <string name="widgets_header">Widgets de la aplicación</string>
+    <string name="widget_small_layout_style_title">Disposición pequeña</string>
+    <string name="widget_small_layout_classic">Clásico</string>
+    <string name="widget_small_layout_simplified">Simplificado</string>
+    <string name="widget_dynamic_colors_title">Colores dinámicos</string>
+    <string name="widget_dynamic_colors_summary">Adapta los colores del widget a la portada de la pista actual.</string>
+    <string name="widget_image_corner_radius_title">Radio de esquina de imagen</string>
+    <string name="widget_image_corner_radius_summary">Cambie el redondeado del arte de cubierta.</string>
+    <string name="widget_third_line_title">Tercer renglón de información</string>
+    <string name="widget_third_line_summary">Elija qué mostrar en la tercera fila de texto.</string>
 </resources>
