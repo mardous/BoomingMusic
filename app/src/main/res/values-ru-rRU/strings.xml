@@ -960,7 +960,6 @@
     <string name="use_simpmusic_provider_summary">Разрешить загрузку текстов песен из сервиса SimpMusic Lyrics.</string>
     <string name="lyrics_center_horizontally_title">Выровнять текст песни по центру (по горизонтали)</string>
     <string name="lyrics_center_horizontally_summary">Выровнять каждую строку текста песни по горизонтали по центру экрана.</string>
-    <string name="bit_perfect_summary">Включить прямой вывод звука на USB DAC (ЦАП) без системной передискретизации. Требуется Android 14+ и совместимое оборудование.</string>
     <string name="bit_perfect_title">Bit-Perfect аудио</string>
     <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
 </resources>

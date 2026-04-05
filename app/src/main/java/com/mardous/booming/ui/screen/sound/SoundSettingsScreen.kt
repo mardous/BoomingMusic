@@ -1,5 +1,6 @@
 package com.mardous.booming.ui.screen.sound
 
+import android.os.Build
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
@@ -53,6 +54,7 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -62,6 +64,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
 import com.mardous.booming.core.model.audiodevice.AudioDevice
+import com.mardous.booming.core.model.audiodevice.BitPerfectState
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.component.compose.IconifiedSliderTrack
@@ -84,16 +87,19 @@ fun SoundSettingsSheet(
 
     var expandedSoundSettings by remember { mutableStateOf(false) }
     val outputDevice by viewModel.audioDevice.collectAsState()
-    val bitPerfectActive by viewModel.bitPerfectActive.collectAsState()
-    val bitPerfectInfo by viewModel.bitPerfectInfo.collectAsState()
     val volume by viewModel.volumeState.collectAsState()
+    val bitPerfectState by viewModel.bitPerfectState.collectAsState()
 
+    val bitPerfect by viewModel.bitPerfectAudio.collectAsState()
     val audioOffload by viewModel.audioOffload.collectAsState()
     val audioFloatOutput by viewModel.audioFloatOutput.collectAsState()
     val skipSilence by viewModel.skipSilence.collectAsState()
 
+    val isBitPerfectActuallyActive by remember {
+        derivedStateOf { bitPerfect && bitPerfectState.isActive }
+    }
     val enableAudioEffects by remember {
-        derivedStateOf { audioOffload.not() && audioFloatOutput.not() }
+        derivedStateOf { audioOffload.not() && isBitPerfectActuallyActive.not() && audioFloatOutput.not() }
     }
 
     val balance by viewModel.balanceState.collectAsState()
@@ -103,9 +109,17 @@ fun SoundSettingsSheet(
     var tempoSpeed by remember(tempo.speed) { mutableFloatStateOf(tempo.speed) }
     var tempoPitch by remember(tempo.actualPitch) { mutableFloatStateOf(tempo.actualPitch) }
 
+    var showBitPerfectDialog by remember { mutableStateOf(false) }
     var showAudioOffloadDialog by remember { mutableStateOf(false) }
     var showAudioFloatOutputDialog by remember { mutableStateOf(false) }
     var showSkipSilenceDialog by remember { mutableStateOf(false) }
+
+    if (showBitPerfectDialog) {
+        SoundOptionDescriptionDialog(
+            title = stringResource(R.string.bit_perfect_title),
+            description = stringResource(R.string.bit_perfect_description)
+        ) { showBitPerfectDialog = false }
+    }
 
     if (showAudioOffloadDialog) {
         SoundOptionDescriptionDialog(
@@ -152,6 +166,7 @@ fun SoundSettingsSheet(
 
                 AudioDeviceInfo(
                     outputDevice = outputDevice,
+                    bitPerfectState = bitPerfectState,
                     expanded = expandedSoundSettings,
                     onClick = {
                         viewModel.showOutputDeviceSelector(context)
@@ -161,6 +176,17 @@ fun SoundSettingsSheet(
                     }
                 ) {
                     Column(modifier = Modifier.fillMaxWidth()) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                            LabeledSwitch(
+                                checked = bitPerfect,
+                                text = stringResource(R.string.bit_perfect_title),
+                                textStyle = MaterialTheme.typography.bodyMedium,
+                                icon = { SoundOptionInfoIcon { showBitPerfectDialog = true } }
+                            ) { checked ->
+                                viewModel.setEnableBitPerfect(checked)
+                            }
+                        }
+
                         LabeledSwitch(
                             checked = audioOffload,
                             text = stringResource(R.string.enable_audio_offload_title),
@@ -188,25 +214,11 @@ fun SoundSettingsSheet(
                             enabled = enableAudioEffects,
                             text = stringResource(R.string.skip_silence_title),
                             textStyle = MaterialTheme.typography.bodyMedium,
-                            icon = { SoundOptionInfoIcon { showSkipSilenceDialog = true } }
+                            icon = { SoundOptionInfoIcon { showSkipSilenceDialog = true } },
+                            modifier = Modifier.testTag("skip_silence_switch")
                         ) { checked ->
                             viewModel.setEnableSkipSilences(checked)
                         }
-                    }
-                }
-
-                AnimatedVisibility(
-                    visible = bitPerfectActive,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                ) {
-                    bitPerfectInfo?.let {
-                        ShapedText(
-                            text = stringResource(
-                                R.string.bit_perfect_info, it.encodingLabel, it.sampleRateLabel
-                            ),
-                            containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                            style = MaterialTheme.typography.bodySmall
-                        )
                     }
                 }
 
@@ -260,6 +272,7 @@ fun SoundSettingsSheet(
                                     modifier = Modifier.height(SliderTokens.LargeTrackHeight)
                                 )
                             },
+                            enabled = !bitPerfectState.isActive || !bitPerfectState.isVolumeFixed,
                             modifier = Modifier.fillMaxWidth()
                         )
 
@@ -268,7 +281,9 @@ fun SoundSettingsSheet(
                                 Column(
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                     verticalArrangement = Arrangement.spacedBy(8.dp),
-                                    modifier = Modifier.fillMaxWidth()
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .testTag("balance_slider_container")
                                 ) {
                                     Slider(
                                         value = centerBalance,
@@ -323,214 +338,218 @@ fun SoundSettingsSheet(
                     }
                 }
 
-                TitledCard(
-                    title = stringResource(R.string.speed_and_pitch_label),
-                    titleEndContent = {
-                        IconButton(
-                            onClick = {
-                                hapticFeedback.performHapticFeedback(
-                                    HapticFeedbackType.Confirm
-                                )
-                                viewModel.setTempo(isFixedPitch = tempo.isFixedPitch.not())
-                            },
-                            modifier = Modifier.size(30.dp)
-                        ) {
-                            Icon(
-                                painter = if (tempo.isFixedPitch) {
-                                    painterResource(R.drawable.ic_lock_24dp)
-                                } else {
-                                    painterResource(R.drawable.ic_lock_open_24dp)
-                                },
-                                tint = MaterialTheme.colorScheme.secondary,
-                                contentDescription = stringResource(R.string.unlock_pitch_adjustment),
-                                modifier = Modifier.size(16.dp)
-                            )
-                        }
-                        Spacer(Modifier.width(8.dp))
-                        IconButton(
-                            onClick = {
-                                hapticFeedback.performHapticFeedback(
-                                    HapticFeedbackType.Confirm
-                                )
-                                viewModel.setTempo(speed = 1f, pitch = 1f)
-                            },
-                            modifier = Modifier.size(30.dp)
-                        ) {
-                            Icon(
-                                painter = painterResource(R.drawable.ic_restart_alt_24dp),
-                                tint = MaterialTheme.colorScheme.secondary,
-                                contentDescription = stringResource(R.string.reset_tempo),
-                                modifier = Modifier.size(16.dp)
-                            )
-                        }
-                    },
-                    modifier = Modifier.fillMaxWidth()
-                ) { cardContentPadding ->
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(8.dp),
-                        modifier = Modifier.padding(cardContentPadding)
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Slider(
-                                value = tempoSpeed,
-                                valueRange = tempo.speedRange,
-                                onValueChange = { tempoSpeed = it },
-                                onValueChangeFinished = {
-                                    hapticFeedback.performHapticFeedback(
-                                        HapticFeedbackType.SegmentFrequentTick
-                                    )
-                                    viewModel.setTempo(speed = tempoSpeed)
-                                },
-                                track = { sliderState ->
-                                    IconifiedSliderTrack(
-                                        state = sliderState,
-                                        icon = painterResource(R.drawable.ic_speed_24dp),
-                                        modifier = Modifier.height(SliderTokens.LargeTrackHeight)
-                                    )
-                                },
-                                modifier = Modifier.weight(1f)
-                            )
-
-                            SoundSettingsValueText(
-                                text = "%.2fx".format(Locale.US, tempoSpeed),
-                                modifier = Modifier.widthIn(min = 48.dp)
-                            )
-                        }
-
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            val sliderValue = if (tempo.isFixedPitch) tempoSpeed else tempoPitch
-                            Slider(
-                                enabled = tempo.isFixedPitch.not(),
-                                value = sliderValue,
-                                valueRange = tempo.pitchRange,
-                                onValueChange = { tempoPitch = it },
-                                onValueChangeFinished = {
-                                    hapticFeedback.performHapticFeedback(
-                                        HapticFeedbackType.SegmentFrequentTick
-                                    )
-                                    viewModel.setTempo(pitch = tempoPitch)
-                                },
-                                track = { sliderState ->
-                                    IconifiedSliderTrack(
-                                        state = sliderState,
-                                        icon = painterResource(R.drawable.ic_edit_audio_24dp),
-                                        modifier = Modifier.height(SliderTokens.LargeTrackHeight)
-                                    )
-                                },
-                                modifier = Modifier.weight(1f)
-                            )
-
-                            SoundSettingsValueText(
-                                text = "%.2fx".format(Locale.US, sliderValue),
-                                modifier = Modifier.widthIn(min = 48.dp)
-                            )
-                        }
-
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(ButtonGroupDefaults.ConnectedSpaceBetween),
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            OutlinedButton(
+                AnimatedVisibility(visible = isBitPerfectActuallyActive.not()) {
+                    TitledCard(
+                        title = stringResource(R.string.speed_and_pitch_label),
+                        titleEndContent = {
+                            IconButton(
                                 onClick = {
                                     hapticFeedback.performHapticFeedback(
-                                        HapticFeedbackType.ContextClick
+                                        HapticFeedbackType.Confirm
                                     )
-                                    viewModel.setTempo(speed = 0.5f)
+                                    viewModel.setTempo(isFixedPitch = tempo.isFixedPitch.not())
                                 },
-                                shape = ButtonGroupDefaults.connectedLeadingButtonShape,
-                                contentPadding = PaddingValues(8.dp),
-                                modifier = Modifier.weight(1f)
+                                modifier = Modifier.size(30.dp)
                             ) {
-                                Text(
-                                    text = stringResource(R.string.speed_0_5x),
-                                    style = MaterialTheme.typography.bodySmall,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
+                                Icon(
+                                    painter = if (tempo.isFixedPitch) {
+                                        painterResource(R.drawable.ic_lock_24dp)
+                                    } else {
+                                        painterResource(R.drawable.ic_lock_open_24dp)
+                                    },
+                                    tint = MaterialTheme.colorScheme.secondary,
+                                    contentDescription = stringResource(R.string.unlock_pitch_adjustment),
+                                    modifier = Modifier.size(16.dp)
+                                )
+                            }
+                            Spacer(Modifier.width(8.dp))
+                            IconButton(
+                                onClick = {
+                                    hapticFeedback.performHapticFeedback(
+                                        HapticFeedbackType.Confirm
+                                    )
+                                    viewModel.setTempo(speed = 1f, pitch = 1f)
+                                },
+                                modifier = Modifier.size(30.dp)
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_restart_alt_24dp),
+                                    tint = MaterialTheme.colorScheme.secondary,
+                                    contentDescription = stringResource(R.string.reset_tempo),
+                                    modifier = Modifier.size(16.dp)
+                                )
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .testTag("speed_pitch_card")
+                    ) { cardContentPadding ->
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                            modifier = Modifier.padding(cardContentPadding)
+                        ) {
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Slider(
+                                    value = tempoSpeed,
+                                    valueRange = tempo.speedRange,
+                                    onValueChange = { tempoSpeed = it },
+                                    onValueChangeFinished = {
+                                        hapticFeedback.performHapticFeedback(
+                                            HapticFeedbackType.SegmentFrequentTick
+                                        )
+                                        viewModel.setTempo(speed = tempoSpeed)
+                                    },
+                                    track = { sliderState ->
+                                        IconifiedSliderTrack(
+                                            state = sliderState,
+                                            icon = painterResource(R.drawable.ic_speed_24dp),
+                                            modifier = Modifier.height(SliderTokens.LargeTrackHeight)
+                                        )
+                                    },
+                                    modifier = Modifier.weight(1f)
+                                )
+
+                                SoundSettingsValueText(
+                                    text = "%.2fx".format(Locale.US, tempoSpeed),
+                                    modifier = Modifier.widthIn(min = 48.dp)
                                 )
                             }
 
-                            OutlinedButton(
-                                onClick = {
-                                    hapticFeedback.performHapticFeedback(
-                                        HapticFeedbackType.ContextClick
-                                    )
-                                    viewModel.setTempo(speed = 0.8f)
-                                },
-                                shape = ShapeDefaults.Small,
-                                contentPadding = PaddingValues(8.dp),
-                                modifier = Modifier.weight(1f)
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxWidth()
                             ) {
-                                Text(
-                                    text = stringResource(R.string.speed_0_8x),
-                                    style = MaterialTheme.typography.bodySmall,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
+                                val sliderValue = if (tempo.isFixedPitch) tempoSpeed else tempoPitch
+                                Slider(
+                                    enabled = tempo.isFixedPitch.not(),
+                                    value = sliderValue,
+                                    valueRange = tempo.pitchRange,
+                                    onValueChange = { tempoPitch = it },
+                                    onValueChangeFinished = {
+                                        hapticFeedback.performHapticFeedback(
+                                            HapticFeedbackType.SegmentFrequentTick
+                                        )
+                                        viewModel.setTempo(pitch = tempoPitch)
+                                    },
+                                    track = { sliderState ->
+                                        IconifiedSliderTrack(
+                                            state = sliderState,
+                                            icon = painterResource(R.drawable.ic_edit_audio_24dp),
+                                            modifier = Modifier.height(SliderTokens.LargeTrackHeight)
+                                        )
+                                    },
+                                    modifier = Modifier.weight(1f)
+                                )
+
+                                SoundSettingsValueText(
+                                    text = "%.2fx".format(Locale.US, sliderValue),
+                                    modifier = Modifier.widthIn(min = 48.dp)
                                 )
                             }
 
-                            OutlinedButton(
-                                onClick = {
-                                    hapticFeedback.performHapticFeedback(
-                                        HapticFeedbackType.ContextClick
-                                    )
-                                    viewModel.setTempo(speed = 1.0f)
-                                },
-                                shape = ShapeDefaults.Small,
-                                contentPadding = PaddingValues(8.dp),
-                                modifier = Modifier.weight(1f)
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(ButtonGroupDefaults.ConnectedSpaceBetween),
+                                modifier = Modifier.fillMaxWidth()
                             ) {
-                                Text(
-                                    text = stringResource(R.string.speed_1_0x),
-                                    style = MaterialTheme.typography.bodySmall,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            }
+                                OutlinedButton(
+                                    onClick = {
+                                        hapticFeedback.performHapticFeedback(
+                                            HapticFeedbackType.ContextClick
+                                        )
+                                        viewModel.setTempo(speed = 0.5f)
+                                    },
+                                    shape = ButtonGroupDefaults.connectedLeadingButtonShape,
+                                    contentPadding = PaddingValues(8.dp),
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.speed_0_5x),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                }
 
-                            OutlinedButton(
-                                onClick = {
-                                    hapticFeedback.performHapticFeedback(
-                                        HapticFeedbackType.ContextClick
+                                OutlinedButton(
+                                    onClick = {
+                                        hapticFeedback.performHapticFeedback(
+                                            HapticFeedbackType.ContextClick
+                                        )
+                                        viewModel.setTempo(speed = 0.8f)
+                                    },
+                                    shape = ShapeDefaults.Small,
+                                    contentPadding = PaddingValues(8.dp),
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.speed_0_8x),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
                                     )
-                                    viewModel.setTempo(speed = 1.2f)
-                                },
-                                shape = ShapeDefaults.Small,
-                                contentPadding = PaddingValues(8.dp),
-                                modifier = Modifier.weight(1f)
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.speed_1_2x),
-                                    style = MaterialTheme.typography.bodySmall,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            }
+                                }
 
-                            OutlinedButton(
-                                onClick = {
-                                    hapticFeedback.performHapticFeedback(
-                                        HapticFeedbackType.ContextClick
+                                OutlinedButton(
+                                    onClick = {
+                                        hapticFeedback.performHapticFeedback(
+                                            HapticFeedbackType.ContextClick
+                                        )
+                                        viewModel.setTempo(speed = 1.0f)
+                                    },
+                                    shape = ShapeDefaults.Small,
+                                    contentPadding = PaddingValues(8.dp),
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.speed_1_0x),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
                                     )
-                                    viewModel.setTempo(speed = 1.5f)
-                                },
-                                shape = ButtonGroupDefaults.connectedTrailingButtonShape,
-                                contentPadding = PaddingValues(8.dp),
-                                modifier = Modifier.weight(1f)
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.speed_1_5x),
-                                    style = MaterialTheme.typography.bodySmall,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
+                                }
+
+                                OutlinedButton(
+                                    onClick = {
+                                        hapticFeedback.performHapticFeedback(
+                                            HapticFeedbackType.ContextClick
+                                        )
+                                        viewModel.setTempo(speed = 1.2f)
+                                    },
+                                    shape = ShapeDefaults.Small,
+                                    contentPadding = PaddingValues(8.dp),
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.speed_1_2x),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                }
+
+                                OutlinedButton(
+                                    onClick = {
+                                        hapticFeedback.performHapticFeedback(
+                                            HapticFeedbackType.ContextClick
+                                        )
+                                        viewModel.setTempo(speed = 1.5f)
+                                    },
+                                    shape = ButtonGroupDefaults.connectedTrailingButtonShape,
+                                    contentPadding = PaddingValues(8.dp),
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.speed_1_5x),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                }
                             }
                         }
                     }
@@ -546,6 +565,7 @@ fun SoundSettingsSheet(
 @Composable
 private fun AudioDeviceInfo(
     outputDevice: AudioDevice,
+    bitPerfectState: BitPerfectState,
     expanded: Boolean,
     onClick: () -> Unit,
     onExpandClick: () -> Unit,
@@ -555,11 +575,14 @@ private fun AudioDeviceInfo(
     val shapeCornerRadius by animateDpAsState(
         targetValue = if (expanded) CornerRadiusTokens.SurfaceSmall else CornerRadiusTokens.SurfaceLarge
     )
+    val primaryContainerAlpha by animateFloatAsState(
+        targetValue = if (bitPerfectState.isActive) 0.5f else 0.2f
+    )
     val containerColor by animateColorAsState(
         targetValue = if (expanded) {
             colorScheme.surfaceVariant.copy(alpha = SurfaceColorTokens.SurfaceVariantAlpha)
         } else {
-            colorScheme.primaryContainer.copy(alpha = 0.2f)
+            colorScheme.primaryContainer.copy(alpha = primaryContainerAlpha)
         }
     )
     val expandIconRotation by animateFloatAsState(targetValue = if (expanded) 180f else 0f)
@@ -601,6 +624,22 @@ private fun AudioDeviceInfo(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
+
+                AnimatedVisibility(
+                    visible = bitPerfectState.isActive,
+                    modifier = Modifier.padding(top = 4.dp)
+                ) {
+                    ShapedText(
+                        text = stringResource(
+                            R.string.bit_perfect_info,
+                            bitPerfectState.encodingLabel,
+                            bitPerfectState.sampleRateLabel
+                        ),
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.testTag("bit_perfect_badge")
+                    )
+                }
             }
 
             IconButton(onExpandClick) {

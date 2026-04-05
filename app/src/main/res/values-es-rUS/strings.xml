@@ -961,5 +961,4 @@ Podría ser necesario reiniciar la aplicación</string>
     <string name="lyrics_center_horizontally_title">Centrar letra horizontalmente</string>
     <string name="lyrics_center_horizontally_summary">Alinea cada línea de la letra horizontalmente al centro de la pantalla.</string>
     <string name="bit_perfect_title">Audio bit-perfect</string>
-    <string name="bit_perfect_summary">Permite la salida de audio directa al DAC USB sin remuestreo del sistema. Requiere Android 14 o superior y hardware compatible.</string>
 </resources>

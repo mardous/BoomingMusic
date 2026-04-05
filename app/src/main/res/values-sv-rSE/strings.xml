@@ -943,5 +943,4 @@
     <string name="lyrics_center_horizontally_summary">Justera varje rad med sångtext mot skärmens horisontella mittpunkt.</string>
     <string name="bit_perfect_info">Bitperfekt: %1$s | %2$s</string>
     <string name="bit_perfect_title">Bitperfekt ljud</string>
-    <string name="bit_perfect_summary">Aktivera direkt ljudutgång till USB DAC utan systemomsampling. Kräver Android 14+ och kompatibel hårdvara.</string>
 </resources>

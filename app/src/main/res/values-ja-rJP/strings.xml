@@ -923,6 +923,5 @@
     <string name="lyrics_center_horizontally_title">歌詞を中央揃えで表示</string>
     <string name="lyrics_center_horizontally_summary">歌詞を行ごとに中央揃えで表示します。</string>
     <string name="bit_perfect_title">ビットパーフェクト オーディオ</string>
-    <string name="bit_perfect_summary">USB DACにリサンプリングなしで直接出力します。Androidバージョン14以上と互換性のあるハードウエアが必要です。</string>
     <string name="network_features_title">ネットワーク機能の有効化</string>
 </resources>

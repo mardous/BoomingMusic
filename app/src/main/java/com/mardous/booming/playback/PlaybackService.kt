@@ -90,7 +90,6 @@ import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
 import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.util.BIT_PERFECT_ENABLED
 import com.mardous.booming.util.CLEAR_QUEUE_ON_COMPLETION
 import com.mardous.booming.util.ENABLE_HISTORY
 import com.mardous.booming.util.IGNORE_AUDIO_FOCUS
@@ -321,12 +320,6 @@ class PlaybackService :
 
         preferences.registerOnSharedPreferenceChangeListener(this)
         audioOutputObserver.startObserver()
-
-        // Initialize bit-perfect state from preferences
-        val bitPerfectEnabled = preferences.getBoolean(BIT_PERFECT_ENABLED, false)
-        if (bitPerfectEnabled) {
-            audioOutputObserver.setBitPerfectEnabled(true)
-        }
 
         prepareEqualizerAndSoundSettings()
         registerReceivers()
@@ -813,11 +806,6 @@ class PlaybackService :
                 player.exoPlayer.setSeekForwardIncrementMs(seekInterval)
             }
 
-            BIT_PERFECT_ENABLED -> {
-                val enabled = preferences.getBoolean(key, false)
-                audioOutputObserver.setBitPerfectEnabled(enabled)
-            }
-
             WIDGET_DYNAMIC_COLORS,
             WIDGET_SMALL_LAYOUT_STYLE,
             WIDGET_IMAGE_CORNER_RADIUS,
@@ -1071,11 +1059,6 @@ class PlaybackService :
         serviceScope.launch {
             equalizerManager.tempoState.collect {
                 player.playbackParameters = PlaybackParameters(it.speed, it.actualPitch)
-            }
-        }
-        serviceScope.launch {
-            audioOutputObserver.audioDevice.collect {
-                equalizerManager.setCurrentDevice(it)
             }
         }
         serviceScope.launch {

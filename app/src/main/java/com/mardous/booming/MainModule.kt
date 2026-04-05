@@ -122,7 +122,8 @@ private val mainModule = module {
         EqualizerManager(
             context = androidContext(),
             balanceProcessor = get(),
-            replayGainProcessor = get()
+            replayGainProcessor = get(),
+            audioOutputObserver = get()
         )
     }
     single {
@@ -137,7 +138,7 @@ private val mainModule = module {
     single {
         CustomPlaylistImageManager(context = androidContext())
     }
-    factory {
+    single {
         AudioOutputObserver(context = androidContext())
     }
 }

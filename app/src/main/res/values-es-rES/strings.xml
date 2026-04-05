@@ -905,7 +905,6 @@
     <string name="lastfm_now_playing_summary">Muestre la pista en reproducción en su perfil de Last.fm en tiempo real.</string>
     <string name="lastfm_biography_title">Descargar biografías de artistas y álbumes</string>
     <string name="use_betterlyrics_provider_title">Usar proveedor BetterLyrics</string>
-    <string name="bit_perfect_summary">Permite la salida de audio directa a un DAC USB sin remuestreo del sistema. Requiere Android 14 o superior y hárdwer compatible.</string>
     <string name="bit_perfect_title">Audio perfecto al bit</string>
     <string name="lyrics_center_horizontally_summary">Alinea cada renglón de la letra al centro horizontal de la pantalla.</string>
     <string name="images_title">Imágenes</string>

@@ -508,10 +508,14 @@
     <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
     <string name="balance_left">Left</string>
     <string name="balance_right">Right</string>
-    <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
     <string name="action_external_eq">External EQ</string>
     <string name="custom">Custom</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
+    <string name="bit_perfect_is_active">Bit-perfect is active</string>
+    <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
+    <string name="bit_perfect_title">Bit-perfect audio</string>
+    <string name="bit_perfect_description">Enable direct audio output to USB DAC without system resampling. Requires compatible hardware.
+        \n\nSome features such as the Equalizer, ReplayGain and speed/pitch adjustment will not be available during a Bit-Perfect session.</string>
     <string name="enable_audio_offload_title">Audio Offload</string>
     <string name="enable_audio_offload_description">Allows the device to process audio directly through its hardware, reducing CPU usage and saving battery.
         This feature is only supported on certain devices. Some effects or features may not work while it\’s enabled.
@@ -813,8 +817,6 @@
     <string name="ignore_audio_focus_summary">Always play audio in background regardless of anything else being played.</string>
     <string name="pause_on_zero_volume_title">Pause on zero volume</string>
     <string name="pause_on_zero_volume_summary">Pauses the song when the volume decreases to zero and starts playing back when the volume level rises. Also works outside the app.</string>
-    <string name="bit_perfect_title">Bit-perfect audio</string>
-    <string name="bit_perfect_summary">Enable direct audio output to USB DAC without system resampling. Requires Android 14+ and compatible hardware.</string>
     <string name="mp3_index_seeking_title">MP3 index seeking</string>
     <string name="mp3_index_seeking_summary">Loads the entire MP3 file into memory for seeking instead of relying on the Xing header.
         Use only if seeking fails on some VBR files.

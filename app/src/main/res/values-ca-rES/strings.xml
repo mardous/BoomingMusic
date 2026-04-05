@@ -916,5 +916,4 @@
     <string name="use_lrclib_provider_title">Usa el proveïdor LRCLib</string>
     <string name="use_betterlyrics_provider_title">Usa el proveïdor BetterLyrics</string>
     <string name="use_simpmusic_provider_title">Usa el proveïdor SimpMusic Lyrics</string>
-    <string name="bit_perfect_summary">Activa la sortida d\'àudio directa a DAC USB sense remostratge del sistema. Requereix Android 14+ i maquinari compatible.</string>
 </resources>

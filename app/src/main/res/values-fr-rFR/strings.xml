@@ -950,5 +950,4 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="lyrics_center_horizontally_summary">Alignez chaque ligne des paroles au centre horizontal de l\'écran.</string>
     <string name="bit_perfect_info">Bit-Perfect : %1$s | %2$s</string>
     <string name="bit_perfect_title">Audio sans perte</string>
-    <string name="bit_perfect_summary">Activez la sortie audio directe vers un DAC USB sans rééchantillonnage système. Nécessite Android 14+ et un matériel compatible.</string>
 </resources>

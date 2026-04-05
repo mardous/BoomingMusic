@@ -515,7 +515,7 @@ fun EqualizerScreen(
     CollapsibleAppBarScaffold(
         title = stringResource(R.string.equalizer_label),
         actions = {
-            if (!eqState.disabledByAudioOffload && hasSystemEqualizer) {
+            if (!eqState.isDisabledByReason && hasSystemEqualizer) {
                 IconButton(onClick = { eqViewModel.openSystemEqualizer(context) }) {
                     Icon(
                         painter = painterResource(R.drawable.ic_equalizer_24dp),
@@ -570,6 +570,7 @@ fun EqualizerScreen(
                 if (EqEngineMode.isSwitchingSupported()) {
                     DropdownMenuItem(
                         text = { Text(stringResource(R.string.set_eq_engine_title)) },
+                        enabled = !eqState.isDisabledByReason,
                         onClick = {
                             showSetEngineDialog = true
                             expandedMenu = false
@@ -600,13 +601,15 @@ fun EqualizerScreen(
                 .fillMaxSize()
                 .padding(contentPadding)
         ) {
-            if (eqState.disabledByAudioOffload) {
-                item {
-                    EmptyView(
-                        icon = painterResource(R.drawable.ic_equalizer_24dp),
-                        text = stringResource(R.string.audio_offload_is_enabled),
-                        modifier = Modifier.fillParentMaxSize()
-                    )
+            if (eqState.isDisabledByReason) {
+                eqState.disableReason?.let {
+                    item {
+                        EmptyView(
+                            icon = painterResource(R.drawable.ic_equalizer_24dp),
+                            text = stringResource(it.titleRes),
+                            modifier = Modifier.fillParentMaxSize()
+                        )
+                    }
                 }
             } else {
                 item {

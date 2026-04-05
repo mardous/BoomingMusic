@@ -37,7 +37,7 @@ import androidx.mediarouter.media.MediaControlIntent
 import androidx.mediarouter.media.MediaRouter
 import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.core.model.audiodevice.AudioDeviceType
-import com.mardous.booming.core.model.audiodevice.BitPerfectInfo
+import com.mardous.booming.core.model.audiodevice.BitPerfectState
 import com.mardous.booming.core.model.audiodevice.getDeviceType
 import com.mardous.booming.core.model.audiodevice.getMediaRouteType
 import com.mardous.booming.core.model.equalizer.VolumeState
@@ -53,11 +53,8 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     private val _systemVolumeState = MutableStateFlow(VolumeState.Unspecified)
     val systemVolumeState = _systemVolumeState.asStateFlow()
 
-    private val _bitPerfectActive = MutableStateFlow(false)
-    val bitPerfectActive = _bitPerfectActive.asStateFlow()
-
-    private val _bitPerfectInfo = MutableStateFlow<BitPerfectInfo?>(null)
-    val bitPerfectInfo = _bitPerfectInfo.asStateFlow()
+    private val _bitPerfectState = MutableStateFlow<BitPerfectState>(BitPerfectState.Inactive(false))
+    val bitPerfectState = _bitPerfectState.asStateFlow()
 
     private val _availableBitPerfectDevices = MutableStateFlow<List<AudioDeviceInfo>>(emptyList())
     val availableBitPerfectDevices = _availableBitPerfectDevices.asStateFlow()
@@ -67,7 +64,6 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
         private set
 
     private var bitPerfectDevice: AudioDeviceInfo? = null
-    private var bitPerfectAttributes: AudioMixerAttributes? = null
     private var isObserving = false
     
     private var userEnabledBitPerfect = false
@@ -137,11 +133,13 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     }
 
     fun setBitPerfectEnabled(enabled: Boolean) {
-        userEnabledBitPerfect = enabled
-        if (enabled) {
-            checkAndConfigureBitPerfect()
-        } else {
-            disableBitPerfect()
+        if (userEnabledBitPerfect != enabled) {
+            userEnabledBitPerfect = enabled
+            if (enabled) {
+                checkAndConfigureBitPerfect()
+            } else {
+                disableBitPerfect()
+            }
         }
     }
 
@@ -229,14 +227,14 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
             val success = audioManager?.setPreferredMixerAttributes(attributes, device, bitPerfectAttribute)
             if (success == true) {
                 bitPerfectDevice = device
-                bitPerfectAttributes = bitPerfectAttribute
-                _bitPerfectActive.value = true
-                _bitPerfectInfo.value = BitPerfectInfo(
+                _bitPerfectState.value = BitPerfectState.Active(
                     deviceName = device.productName?.toString() ?: "Unknown",
                     sampleRate = bitPerfectAttribute.format.sampleRate,
                     channelCount = bitPerfectAttribute.format.channelCount,
-                    encoding = bitPerfectAttribute.format.encoding
+                    encoding = bitPerfectAttribute.format.encoding,
+                    isVolumeFixed = audioManager?.isVolumeFixed == true
                 )
+                requestVolume()
                 Log.i(TAG, "Bit-perfect configured: ${device.productName}, ${bitPerfectAttribute.format.sampleRate}Hz, ${bitPerfectAttribute.format.channelCount}ch")
                 return true
             } else {
@@ -270,9 +268,7 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
             Log.e(TAG, "Error clearing preferred mixer attributes", e)
         } finally {
             bitPerfectDevice = null
-            bitPerfectAttributes = null
-            _bitPerfectActive.value = false
-            _bitPerfectInfo.value = null
+            _bitPerfectState.value = BitPerfectState.Inactive(audioManager?.isVolumeFixed == true)
         }
     }
 

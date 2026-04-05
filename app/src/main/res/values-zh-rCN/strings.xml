@@ -934,5 +934,4 @@
     <string name="lyrics_center_horizontally_summary">将每行歌词对齐到屏幕的水平线中心。</string>
     <string name="bit_perfect_info">Bit Perfect信息：%1$s|%2$s</string>
     <string name="bit_perfect_title">Bit-perfect 音频</string>
-    <string name="bit_perfect_summary">绕过系统采样率转换，将音频直接输出到 USB DAC。需要 Android 版本高于 14，且硬件兼容此功能。</string>
 </resources>
