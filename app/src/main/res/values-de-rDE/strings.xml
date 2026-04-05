@@ -478,16 +478,11 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="custom">Benutzerdefiniert</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Audio-Auslagerung</string>
-    <string name="enable_audio_offload_description">Ermöglicht es dem Gerät, Audio direkt über die Hardware zu verarbeiten, wodurch die CPU-Belastung reduziert und der Akku geschont wird.
-        Diese Funktion wird nur auf bestimmten Geräten unterstützt. Einige Effekte oder Funktionen sind möglicherweise nicht verfügbar, wenn sie aktiviert ist.
-        Ein Neustart ist erforderlich, damit die Änderungen wirksam werden.</string>
+    <string name="enable_audio_offload_description">Ermöglicht es dem Gerät, Audio direkt über die Hardware zu verarbeiten, wodurch die CPU-Belastung reduziert und der Akku geschont wird. Diese Funktion wird nur auf bestimmten Geräten unterstützt. Einige Effekte oder Funktionen sind möglicherweise nicht verfügbar, wenn sie aktiviert ist. Ein Neustart ist erforderlich, damit die Änderungen wirksam werden.</string>
     <string name="enable_audio_float_output_title">Hochpräzise Audioausgabe</string>
-    <string name="enable_audio_float_output_description">Aktiviert 32-Bit-Fließkomma-Audio für eine bessere Klangqualität.
-Beachten Sie, dass dadurch Funktionen wie ReplayGain, Stille überspringen und Lautstärkebalance deaktiviert werden.
-Dies kann zu einem etwas höheren Batterieverbrauch führen. Sie müssen die App neu starten, damit die Änderung wirksam wird.</string>
+    <string name="enable_audio_float_output_description">Aktiviert 32-Bit-Fließkomma-Audio für eine bessere Klangqualität. Beachten Sie, dass dadurch Funktionen wie ReplayGain, Stille überspringen und Lautstärkebalance deaktiviert werden. Dies kann zu einem etwas höheren Batterieverbrauch führen. Sie müssen die App neu starten, damit die Änderung wirksam wird.</string>
     <string name="skip_silence_title">Pause überspringen</string>
-    <string name="skip_silence_description">Überspringe automatisch stille Abschnitte während der Wiedergabe.
-Ideal für Podcasts und Aufnahmen.</string>
+    <string name="skip_silence_description">Überspringe automatisch stille Abschnitte während der Wiedergabe. Ideal für Podcasts und Aufnahmen.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Liedtext anzeigen</string>
     <string name="action_hide_lyrics">Liedtext ausblenden</string>
