@@ -494,16 +494,11 @@
     <string name="custom">מותאם אישית</string>
     <string name="audio_offload_is_enabled">Audio Offload מופעל</string>
     <string name="enable_audio_offload_title">העברת עיבוד שמע לחומרה</string>
-    <string name="enable_audio_offload_description">מאפשר למכשיר לעבד את השמע ישירות דרך החומרה, מה שמפחית את השימוש במעבד וחוסך בסוללה.
-הפונקציה נתמכת רק במכשירים מסוימים, וחלק מהאפקטים או הפונקציות עלולים שלא לעבוד כשהיא מופעלת.
-נדרש להפעיל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף.</string>
+    <string name="enable_audio_offload_description">מאפשר למכשיר לעבד את השמע ישירות דרך החומרה, מה שמפחית את השימוש במעבד וחוסך בסוללה. הפונקציה נתמכת רק במכשירים מסוימים, וחלק מהאפקטים או הפונקציות עלולים שלא לעבוד כשהיא מופעלת. נדרש להפעיל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף.</string>
     <string name="enable_audio_float_output_title">פלט שמע ברמת דיוק גבוהה</string>
-    <string name="enable_audio_float_output_description">מאפשר שמע בפורמט נקודה צפה של 32 ביט לשיפור איכות הצליל.
-שימו לב: פעולה זו תכבה פונקציות כמו ReplayGain, דילוג על שקט ואיזון עוצמת קול.
-ייתכן שתהיה צריכת סוללה גבוהה יותר, ותצטרכו להפעיל את האפליקציה מחדש כדי שהשינויים ייכנסו לתוקף.</string>
+    <string name="enable_audio_float_output_description">מאפשר שמע בפורמט נקודה צפה של 32 ביט לשיפור איכות הצליל. שימו לב: פעולה זו תכבה פונקציות כמו ReplayGain, דילוג על שקט ואיזון עוצמת קול. ייתכן שתהיה צריכת סוללה גבוהה יותר, ותצטרכו להפעיל את האפליקציה מחדש כדי שהשינויים ייכנסו לתוקף.</string>
     <string name="skip_silence_title">דלג על שקט</string>
-    <string name="skip_silence_description">מדלג אוטומטית על קטעים שקטים במהלך ההפעלה.
-מתאים במיוחד לפודקאסטים ולהקלטות.</string>
+    <string name="skip_silence_description">מדלג אוטומטית על קטעים שקטים במהלך ההפעלה. מתאים במיוחד לפודקאסטים ולהקלטות.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">הצג מילות שיר</string>
     <string name="action_hide_lyrics">הסתר מילות שיר</string>
