@@ -478,16 +478,11 @@
     <string name="custom">Tilpasset</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Lyd Offload</string>
-    <string name="enable_audio_offload_description">Tillader enheden at behandle lyd direkte gennem sin hardware, reducere CPU-forbrug og spare batteri.
-        Denne funktion understøttes kun på visse enheder. Nogle effekter eller funktioner virker muligvis ikke, mens det er aktiveret.
-        En genstart er nødvendig for at ændringerne kan træde i kraft.</string>
+    <string name="enable_audio_offload_description">Tillader enheden at behandle lyd direkte gennem sin hardware, reducere CPU-forbrug og spare batteri. Denne funktion understøttes kun på visse enheder. Nogle effekter eller funktioner virker muligvis ikke, mens det er aktiveret. En genstart er nødvendig for at ændringerne kan træde i kraft.</string>
     <string name="enable_audio_float_output_title">Høj-Præcision Lydoutput</string>
-    <string name="enable_audio_float_output_description">Aktiverer 32-bit floating-point lyd for bedre lydkvalitet.
-        Husk dette vil slukke funktioner som ReplayGain, springe stilhed og volumen balance.
-        Det kan bruge lidt mere batteri, og du skal genstarte appen, før den træder i kraft.</string>
+    <string name="enable_audio_float_output_description">Aktiverer 32-bit floating-point lyd for bedre lydkvalitet. Husk dette vil slukke funktioner som ReplayGain, springe stilhed og volumen balance. Det kan bruge lidt mere batteri, og du skal genstarte appen, før den træder i kraft.</string>
     <string name="skip_silence_title">Spring Stilhed Over</string>
-    <string name="skip_silence_description">Spring automatisk tavse afsnit under afspilning.
-        Ideel til podcasts og optagelser.</string>
+    <string name="skip_silence_description">Spring automatisk tavse afsnit under afspilning. Ideel til podcasts og optagelser.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Vis sangtekster</string>
     <string name="action_hide_lyrics">Skjul sangtekster</string>
