@@ -483,11 +483,11 @@
     <string name="custom">Personnalisé</string>
     <string name="audio_offload_is_enabled">Le déchargement audio est activé</string>
     <string name="enable_audio_offload_title">Décharge audio</string>
-    <string name="enable_audio_offload_description">Autorise l\'appareil à traiter l\'audio directement depuis son matériel, reduisant l\'utilisation du processeur et économise la batterie. Cette fonctionnalité est uniquement prise en charge sur certains appareils. Certains effets ou fonctionnalités ne peuvent ne pas fonctionner tant que ce mode est activé. Un redémarrage est nécessaire pour que les modifications sont pris en compte.</string>
+    <string name="enable_audio_offload_description">Lecture accélérée par le matériel pour réduire l\'utilisation du processeur et économiser la batterie. Redémarrage de l\'application requis.</string>
     <string name="enable_audio_float_output_title">Sortie audio de haute précision</string>
-    <string name="enable_audio_float_output_description">Active l\'audio de 32 bits de points pour une meilleure qualité audio. Garder en tête que cela déactive les options comme le gain de lecture, ignorance de silence et la balance du volume. Cela peux aussi utiliser plus de batterie, et vous devez redémarrer l\'application pour appliquer les effets.</string>
+    <string name="enable_audio_float_output_description">Active la sortie en virgule flottante 32 bits pour une fidélité optimale. Un redémarrage de l\'application est nécessaire.</string>
     <string name="skip_silence_title">Ignorance de silence</string>
-    <string name="skip_silence_description">Ignore automatiquement les sections silencieuses pendant la lecture. Idéal pour les podcasts et enregistrements.</string>
+    <string name="skip_silence_description">Détecte et supprime automatiquement les passages silencieux. Idéal pour les podcasts et les enregistrements vocaux.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Afficher les paroles</string>
     <string name="action_hide_lyrics">Masquer les paroles</string>
@@ -961,4 +961,7 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="widget_image_corner_radius_summary">Modifiez l\'arrondi de la pochette de l\'album.</string>
     <string name="widget_third_line_title">Troisième ligne d\'information</string>
     <string name="widget_third_line_summary">Choisissez ce que vous souhaitez afficher dans la troisième ligne de texte.</string>
+    <string name="advanced_settings">Paramètres avancés</string>
+    <string name="bit_perfect_is_active">Bit-perfect est actif</string>
+    <string name="bit_perfect_description">Transmettre le signal audio directement vers un DAC USB sans rééchantillonnage du système.</string>
 </resources>
