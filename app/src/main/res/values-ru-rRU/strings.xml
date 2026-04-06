@@ -957,4 +957,6 @@
     <string name="lyrics_center_horizontally_summary">Выровнять каждую строку текста песни по горизонтали по центру экрана.</string>
     <string name="bit_perfect_title">Bit-Perfect аудио</string>
     <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
+    <string name="app_widget_responsive">Адаптивный</string>
+    <string name="app_widget_responsive_desc">Виджет, адаптирующий свой макет под разные размеры</string>
 </resources>
