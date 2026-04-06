@@ -231,7 +231,7 @@
     <string name="view_type_image">Hình ảnh</string>
     <string name="action_grid_size">Kích thước lưới</string>
     <string name="action_grid_size_land">Kích thước lưới (ngang)</string>
-    <string name="action_sort_order">Sắp xếpt theo</string>
+    <string name="action_sort_order">Sắp xếp theo</string>
     <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Nghệ sĩ</string>
     <string name="sort_order_album">Album</string>
@@ -474,7 +474,7 @@
     <string name="skip_silence_title">Skip Silence</string>
     <string name="skip_silence_description">Automatically skip silent sections during playback. Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
-    <string name="action_show_lyrics">Show lyrics</string>
+    <string name="action_show_lyrics">Hiển thị lời bài hát</string>
     <string name="action_hide_lyrics">Hide lyrics</string>
     <string name="plain_lyrics">Plain</string>
     <string name="synced_lyrics">Synced</string>
@@ -482,7 +482,7 @@
     <string name="downloaded_lyrics">Downloaded</string>
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Import synced lyrics</string>
-    <string name="action_share_synchronized_lyrics">Share synced lyrics</string>
+    <string name="action_share_synchronized_lyrics">Chia sẻ lời bài hát đã được đồng bộ</string>
     <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Do you want to import synchronized LRC lyrics for <b>%s</b>?]]></string>
     <string name="import_lyrics_for_song_x">Imported lyrics for %s</string>
     <string name="could_not_import_lyrics_for_song_x">Couldn\'t import lyrics for %s</string>
@@ -502,7 +502,7 @@
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
-    <string name="action_sleep_timer">Sleep timer</string>
+    <string name="action_sleep_timer">Hẹn giờ ngủ</string>
     <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
     <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_set_action">Set</string>
@@ -569,7 +569,7 @@
     <string name="metadata_title">Metadata</string>
     <string name="library_title">Library</string>
     <string name="library_summary">Settings for playlists and exclusion/inclusion filters.</string>
-    <string name="advanced_title">Advanced</string>
+    <string name="advanced_title">Nâng cao</string>
     <string name="advanced_summary">In-app language and other settings for advanced users.</string>
     <string name="update_title">Update</string>
     <string name="about_title">About</string>
@@ -651,8 +651,8 @@
     <string name="scrolling_text_summary">Scrolls song titles when too long to fit. May use slightly more battery.</string>
     <string name="extra_controls_title">Extra controls</string>
     <string name="extra_controls_summary">Add extra controls for mini player</string>
-    <string name="adaptive_controls_title">Adaptive controls</string>
-    <string name="adaptive_controls_summary">The controls on the mini player change to suit the current player style.</string>
+    <string name="adaptive_controls_title">Điều khiển thích ứng</string>
+    <string name="adaptive_controls_summary">Các mục điều khiển trên trình phát mini sẽ thay đổi dựa trên trình phát hiện tại.</string>
     <string name="swipe_to_dismiss_title">Swipe down to dismiss</string>
     <string name="swipe_to_dismiss_summary">Swipe down on the mini player to stop playback and clear the playing queue.</string>
     <string name="circle_button_title">Circular play button</string>
@@ -695,7 +695,7 @@
     <string name="queue_next_mode_title">\"Queue next\" mode</string>
     <string name="remember_shuffle_mode_title">Remember Shuffle</string>
     <string name="remember_shuffle_mode_summary">Shuffle mode will stay on when selecting a new list of songs.</string>
-    <string name="album_shuffle_mode_title">Album shuffle mode</string>
+    <string name="album_shuffle_mode_title">Chế độ xáo trộn album</string>
     <string name="artist_shuffle_mode_title">Artist shuffle mode</string>
     <string name="rewind_with_back_title">Rewind with \'Previous\'</string>
     <string name="rewind_with_back_summary">Rewind the playing track to the start or move to previous track if the current one is in the beginning.</string>
@@ -767,7 +767,7 @@
     <string name="artist_min_songs_summary">How many songs (at least) must have an artist to be shown in your library.</string>
     <string name="album_min_songs_title">Album minimum song count</string>
     <string name="album_min_songs_summary">How many songs (at least) must have an album to be shown in your library.</string>
-    <string name="min_song_duration_title">Minimum song duration</string>
+    <string name="min_song_duration_title">Thời lượng bài hát tối thiểu</string>
     <string name="min_song_duration_summary">How many seconds (at least) must last a song to be shown in your library.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">App language</string>
@@ -807,7 +807,7 @@
     <string name="simple">Simple</string>
     <string name="stack">Stack</string>
     <string name="parallax">Parallax</string>
-    <string name="add_after_playing_track">Add after playing track</string>
+    <string name="add_after_playing_track">Thêm sau khi phát nhạc</string>
     <string name="add_tracks_sequentially">Add tracks sequentially</string>
     <string name="albums_shuffle">Albums shuffle</string>
     <string name="artists_shuffle">Artists shuffle</string>
@@ -880,4 +880,52 @@
     <string name="channel_surround_9_1">9.1 Surround</string>
     <string name="channel_surround_11_1">11.1 Surround</string>
     <string name="channel_surround_13_1">13.1 Surround</string>
+    <string name="app_widget_responsive">Đáp ứng</string>
+    <string name="app_widget_responsive_desc">Một tiện ích tự điều chỉnh bố cục cho phù hợp với các kích thước khác nhau</string>
+    <string name="app_widget_card">Thẻ</string>
+    <string name="app_widget_card_desc">Phong cách tối giản</string>
+    <string name="app_widget_full">Đầy</string>
+    <string name="app_widget_full_desc">Trình phát trực tiếp ở trên màn hình chính</string>
+    <string name="advanced_settings">Cài đặt nâng cao</string>
+    <string name="bit_perfect_is_active">Bit-perfect đang kích hoạt</string>
+    <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
+    <string name="bit_perfect_title">Âm thanh Bit-perfect</string>
+    <string name="bit_perfect_description">Đầu ra âm thanh trực tiếp đi đến USB DAC mà không cần hệ thống lấy mẫu lại</string>
+    <string name="lastfm_login_username">Tên người dùng</string>
+    <string name="lastfm_login_password">Mật khẩu</string>
+    <string name="lastfm_login_ok">Đăng nhập</string>
+    <string name="lastfm_login_toggle_password_visibility">Hiển thị mật khẩu</string>
+    <string name="lastfm_connected_account">Tài khoản kết nối:</string>
+    <string name="lastfm_logout">Đăng xuất</string>
+    <string name="error_lastfm_auth">Phiên đăng nhập đã hết hạn hoặc thông tin đăng nhập không hợp lệ. Vui lòng đăng nhập lại.</string>
+    <string name="error_lastfm_credentials">Thông tin đăng nhập của bạn không hợp lệ. Vui lòng xác minh và thử lại.</string>
+    <string name="error_lastfm_params">Tham số không hợp lệ. Điều này có thể do lỗi từ phía chúng tôi.</string>
+    <string name="error_lastfm_service">Last.fm hiện đang gặp sự cố hoặc đang được bảo trì. Vui lòng thử lại sau.</string>
+    <string name="error_lastfm_rate_limit">Quá nhiều yêu cầu. Vui lòng đợi một chút trước khi tiếp tục scrobble.</string>
+    <string name="error_lastfm_generic">Đã xảy ra lỗi với Last.fm. Vui lòng thử lại.</string>
+    <string name="error_network_timeout">Kết nối bị gián đoạn. Vui lòng kiểm tra kết nối internet và thử lại.</string>
+    <string name="github">GitHub</string>
+    <string name="telegram_community">Cộng đồng Telegram</string>
+    <string name="telegram_community_summary">Tham gia vào cộng động Telegram của chúng tôi để cập nhật những cập nhật và thông tin mới nhất.</string>
+    <string name="support_my_work">Ủng hộ chúng tôi</string>
+    <string name="network_title">Mạng</string>
+    <string name="network_summary">Quản lý các tính năng internet như tích hợp Last.fm, các nhà cung cấp lời bài hát và siêu dữ liệu.</string>
+    <string name="widgets_header">Những tiện ích của ứng dụng</string>
+    <string name="images_title">Hình ảnh</string>
+    <string name="lastfm_title">Last.fm</string>
+    <string name="widget_small_layout_style_title">Kiểu bố cục nhỏ</string>
+    <string name="widget_small_layout_classic">Cổ điển</string>
+    <string name="widget_small_layout_simplified">Đơn giản hóa</string>
+    <string name="widget_dynamic_colors_title">Màu sắc sống động</string>
+    <string name="widget_dynamic_colors_summary">Điều chỉnh màu sắc của tiện ích sao cho phù hợp với ảnh bìa của bài hát hiện tại.</string>
+    <string name="widget_image_corner_radius_title">Bán kính bo góc của hình ảnh</string>
+    <string name="widget_image_corner_radius_summary">Thay đổi bo góc của ảnh album</string>
+    <string name="widget_third_line_title">Thông tin dòng thứ ba</string>
+    <string name="widget_third_line_summary">Chọn nội dung bạn muốn hiển thị ở dòng văn bản thứ ba.</string>
+    <string name="lyrics_center_horizontally_title">Căn giữa lời bài hát theo chiều ngang</string>
+    <string name="lyrics_center_horizontally_summary">Căn chỉnh mỗi dòng lời bài hát vào giữa màn hình theo chiều ngang.</string>
+    <string name="network_features_title">Bật các tính năng mạng</string>
+    <string name="network_features_summary">Cho phép ứng dụng sử dụng các dịch vụ internet như tích hợp Last.fm, tải lời bài hát và lấy hình ảnh bìa album.</string>
+    <string name="wifi_only_network_features_title">Sử dụng các tính năng mạng chỉ khi có Wi-Fi</string>
+    <string name="wifi_only_network_features_summary">Chỉ cho phép các tính năng mạng khi kết nối với Wi-Fi</string>
 </resources>
