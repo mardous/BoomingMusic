@@ -204,6 +204,8 @@ fun Properties.property(key: String) =
     this.getProperty(key) ?: "$key missing"
 
 dependencies {
+    implementation(project(":alacdecoder"))
+
     implementation(libs.material.components)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.splashscreen)
