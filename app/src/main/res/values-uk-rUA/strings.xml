@@ -895,4 +895,10 @@
     <string name="uncaught_error_restart_app">Перезапустити програму</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Надіслати</string>
+    <string name="app_widget_card_desc">Мінімалістичний та простий стиль</string>
+    <string name="app_widget_full">Повний</string>
+    <string name="app_widget_full_desc">Екран плеєра прямо на робочому столі</string>
+    <string name="app_widget_card">Картка</string>
+    <string name="app_widget_responsive_desc">Віджет, який адаптується до різних розмірів</string>
+    <string name="app_widget_responsive">Адаптивний</string>
 </resources>
