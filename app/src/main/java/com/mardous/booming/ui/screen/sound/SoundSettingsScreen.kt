@@ -482,7 +482,8 @@ fun SoundSettingsSheet(
                         LabeledSwitch(
                             checked = audioOffload,
                             title = stringResource(R.string.enable_audio_offload_title),
-                            description = stringResource(R.string.enable_audio_offload_description)
+                            description = stringResource(R.string.enable_audio_offload_description),
+                            enabled = bitPerfect.not()
                         ) { checked ->
                             viewModel.setEnableAudioOffload(checked)
                         }
