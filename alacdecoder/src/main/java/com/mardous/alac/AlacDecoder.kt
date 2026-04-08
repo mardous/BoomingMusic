@@ -37,7 +37,11 @@ class AlacDecoder(
 
     private var nativeContext: Long = 0
 
+    // The default value should be the same as kALACDefaultFrameSize in ALACAudioTypes.h
+    private var frameLength: Int = 4096
+
     external fun nativeInit(sampleRate: Int, channels: Int, bps: Int, cookie: ByteArray?): Long
+    external fun nativeGetFrameLength(contextPtr: Long): Int
     external fun nativeDecode(contextPtr: Long, input: ByteBuffer, output: ByteBuffer, size: Int): Int
     external fun nativeRelease(contextPtr: Long)
 
@@ -46,6 +50,7 @@ class AlacDecoder(
         if (nativeContext == 0L) {
             throw AlacDecoderException("The native decoder couldn't be initialized")
         }
+        frameLength = nativeGetFrameLength(nativeContext)
     }
 
     override fun getName(): String = "AlacDecoder"
@@ -69,7 +74,7 @@ class AlacDecoder(
     ): AlacDecoderException? {
         val inputData = inputBuffer.data ?: return null
 
-        val outputSizeNeeded = 4096 * channels * (bitDepth / 8)
+        val outputSizeNeeded = frameLength * channels * (bitDepth / 8)
         val outputData = outputBuffer.init(inputBuffer.timeUs, outputSizeNeeded)
 
         val bytesDecoded = nativeDecode(

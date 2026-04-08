@@ -30,7 +30,9 @@ class AlacAudioRenderer(
             return C.FORMAT_UNSUPPORTED_TYPE
         }
 
-        val bitDepth = getBitDepth(format)
+        val bitDepth = parseBitDepthFromAlacSpecificConfig(format)
+            ?: return C.FORMAT_UNSUPPORTED_SUBTYPE
+
         val pcmEncoding = getPcmEncoding(bitDepth)
 
         val tempFormat = Util.getPcmFormat(pcmEncoding, format.channelCount, format.sampleRate)
@@ -42,7 +44,8 @@ class AlacAudioRenderer(
     }
 
     override fun createDecoder(format: Format, cryptoConfig: CryptoConfig?): AlacDecoder {
-        val bitDepth = getBitDepth(format)
+        val bitDepth = parseBitDepthFromAlacSpecificConfig(format)
+            ?: throw IllegalArgumentException("Invalid or incomplete ALACSpecificConfig in initializationData")
         return AlacDecoder(
             numInputBuffers = DECODER_BUFFER_SIZE,
             numOutputBuffers = DECODER_BUFFER_SIZE,
@@ -58,17 +61,28 @@ class AlacAudioRenderer(
         return Util.getPcmFormat(pcmEncoding, decoder.channels, decoder.sampleRate)
     }
 
-    private fun getBitDepth(format: Format): Int {
-        return if (format.initializationData.isNotEmpty() &&
-            format.initializationData[0].size >= 6) {
-            format.initializationData[0][5].toInt()
-        } else {
-            16
-        }
-    }
-
     private fun getPcmEncoding(bitDepth: Int): Int {
         return if (bitDepth == 20) C.ENCODING_PCM_24BIT else Util.getPcmEncoding(bitDepth)
+    }
+
+    private fun parseBitDepthFromAlacSpecificConfig(format: Format): Int? {
+        val initData = format.initializationData
+        if (initData.isEmpty()) {
+            return null
+        }
+
+        // Require full ALACSpecificConfig to avoid desync between decoder and sink.
+        val config = initData[0]
+        if (config.size < 24) {
+            return null
+        }
+
+        // Bit-depth is the second byte after the 4‑byte frameLength:
+        // offset: 0-3 frameLength, 4 compatibleVersion, 5 bitDepth
+        return when (val bitDepth = config[5].toInt() and 0xFF) {
+            16, 20, 24, 32 -> bitDepth // Accept only common ALAC bit depths; reject anything else as invalid.
+            else -> null
+        }
     }
 
     companion object {

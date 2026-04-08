@@ -45,12 +45,26 @@ Java_com_mardous_alac_AlacDecoder_nativeInit(
         jbyte* cookieData = env->GetByteArrayElements(cookie, nullptr);
         jsize cookieSize = env->GetArrayLength(cookie);
 
-        context->decoder->Init(cookieData, cookieSize);
+        int32_t status = context->decoder->Init(cookieData, cookieSize);
+        if (status != ALAC_noErr) {
+            delete context->decoder;
+            delete context;
+            return 0;
+        }
 
         env->ReleaseByteArrayElements(cookie, cookieData, JNI_ABORT);
     }
 
     return reinterpret_cast<jlong>(context);
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_mardous_alac_AlacDecoder_nativeGetFrameLength(
+        JNIEnv *env, jobject,
+        jlong context_ptr) {
+    auto* context = reinterpret_cast<AlacContext*>(context_ptr);
+    uint32_t frameLength = context->decoder->mConfig.frameLength;
+    return (frameLength == 0) ? kALACDefaultFrameSize : static_cast<jint>(frameLength);
 }
 
 extern "C" JNIEXPORT jint JNICALL
@@ -66,8 +80,13 @@ Java_com_mardous_alac_AlacDecoder_nativeDecode(
     BitBuffer bitBuf;
     BitBufferInit(&bitBuf, inputData, input_size);
 
+    uint32_t frameLength = context->decoder->mConfig.frameLength;
+    if (frameLength == 0) {
+        frameLength = kALACDefaultFrameSize;
+    }
+
     uint32_t numFrames = 0;
-    int32_t status = context->decoder->Decode(&bitBuf, outputData, 4096, context->numChannels, &numFrames);
+    int32_t status = context->decoder->Decode(&bitBuf, outputData, frameLength, context->numChannels, &numFrames);
 
     if (status != 0) {
         LOGE("alac decode error: %d", status);
