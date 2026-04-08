@@ -25,7 +25,6 @@
 
 #define LOG_TAG "booming_alac_decoder"
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
 
 struct AlacContext {
     ALACDecoder* decoder;
@@ -42,8 +41,8 @@ Java_com_mardous_alac_AlacDecoder_nativeInit(
     context->numChannels = channels;
     context->bitsPerSample = bps;
 
-    if (cookie != NULL) {
-        jbyte* cookieData = env->GetByteArrayElements(cookie, NULL);
+    if (cookie != nullptr) {
+        jbyte* cookieData = env->GetByteArrayElements(cookie, nullptr);
         jsize cookieSize = env->GetArrayLength(cookie);
 
         context->decoder->Init(cookieData, cookieSize);
@@ -61,8 +60,8 @@ Java_com_mardous_alac_AlacDecoder_nativeDecode(
         jint input_size) {
     auto* context = reinterpret_cast<AlacContext*>(context_ptr);
 
-    uint8_t* inputData = (uint8_t*)env->GetDirectBufferAddress(input_buffer);
-    uint8_t* outputData = (uint8_t*)env->GetDirectBufferAddress(output_buffer);
+    auto* inputData = (uint8_t*)env->GetDirectBufferAddress(input_buffer);
+    auto* outputData = (uint8_t*)env->GetDirectBufferAddress(output_buffer);
 
     BitBuffer bitBuf;
     BitBufferInit(&bitBuf, inputData, input_size);
@@ -75,7 +74,7 @@ Java_com_mardous_alac_AlacDecoder_nativeDecode(
         return -1;
     }
 
-    return numFrames * context->numChannels * (context->bitsPerSample / 8);
+    return static_cast<jint>(numFrames * context->numChannels * (context->bitsPerSample / 8));
 }
 
 extern "C" JNIEXPORT void JNICALL
