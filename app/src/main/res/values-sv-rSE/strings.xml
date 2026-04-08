@@ -91,8 +91,8 @@
     <string name="delete_x_playlists"><![CDATA[Ta bort <b>%d</b> spellistor?]]></string>
     <string name="created_playlist_x">Skapade spellista \'%1$s\'.</string>
     <string name="could_not_create_playlist">Det gick inte att skapa spellista.</string>
-    <string name="inserted_one_song_into_playlist_x">Infogade en låt i spellistan %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Infogade %1$d låtar i spellistan %2$s.</string>
+    <string name="inserted_one_song_into_playlist_x">Lade till en låt i spellistan %s.</string>
+    <string name="inserted_x_songs_into_playlist_x">Lade till %1$d låtar i spellistan %2$s.</string>
     <string name="playlist_exists">Spellista %s finns redan.</string>
     <string name="playlist_created">Spellista %s har skapats.</string>
     <string name="remove_song_from_playlist_title">Ta bort låt från spellistan</string>
@@ -100,15 +100,15 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Ta bort låten <b>%1$s</b> från spellistan?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Ta bort <b>%1$d</b> låtar från spellistan?]]></string>
     <string name="playlist_empty_text">Tom spellista</string>
-    <string name="action_lyrics_editor">Redigerare för låttext</string>
-    <string name="action_tag_editor">Tag redaktör</string>
+    <string name="action_lyrics_editor">Låttextredigerare</string>
+    <string name="action_tag_editor">Taggredigerare</string>
     <string name="saving_changes">Sparar ändringar</string>
     <string name="changes_saved_successfully">Ändringar har sparats.</string>
     <string name="could_not_save_some_changes">Det gick inte att spara några ändringar.</string>
     <string name="web_search">Sök på webben</string>
     <string name="where_do_you_want_to_search">Var vill du söka?</string>
     <string name="configure_action">Konfigurera</string>
-    <string name="blacklist_directory">Svartlistans katalog</string>
+    <string name="blacklist_directory">Svartlista katalog</string>
     <string name="add_directory">Lägg till katalog</string>
     <string name="remove_from_blacklist">Vill du ta bort denna katalog från svartlistan?</string>
     <string name="remove_from_whitelist">Vill du ta bort denna katalog från vitlistan?</string>
@@ -478,11 +478,11 @@
     <string name="custom">Anpassad</string>
     <string name="audio_offload_is_enabled">Ljudavlastning är aktiverad</string>
     <string name="enable_audio_offload_title">Ljudavlastning</string>
-    <string name="enable_audio_offload_description">Tillåter enheten att bearbeta ljud direkt genom sin hårdvara, minska CPU-användning och spara batteri. Denna funktion stöds endast på vissa enheter. Vissa effekter eller funktioner kanske inte fungerar medan det är aktiverat. En omstart krävs för att ändringar ska träda i kraft.</string>
+    <string name="enable_audio_offload_description">Hårdvaruaccelererad uppspelning för att minska CPU-användningen och spara batteri. Appen måste startas om.</string>
     <string name="enable_audio_float_output_title">Högpresterande ljudutmatning</string>
-    <string name="enable_audio_float_output_description">Möjliggör 32-bitars flyttalsljud för bättre ljudkvalitet. Tänk på att detta kommer att stänga av funktioner som ReplayGain, hoppa över tystnad och volymbalans. Det kan använda lite mer batteri, och du måste starta om appen för att den ska börja gälla.</string>
+    <string name="enable_audio_float_output_description">Aktiverar 32-bitars flyttalsutgång för bästa möjliga ljudkvalitet. Appen måste startas om.</string>
     <string name="skip_silence_title">Hoppa över tystnad</string>
-    <string name="skip_silence_description">Hoppa automatiskt över tysta sektioner under uppspelningen. Perfekt för podcasts och inspelningar.</string>
+    <string name="skip_silence_description">Upptäcker och hoppar automatiskt över tysta partier. Perfekt för poddar och röstinspelningar.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Visa låttext</string>
     <string name="action_hide_lyrics">Dölj låttext</string>
@@ -692,7 +692,7 @@
     <string name="display_extra_info_title">Visa extra information</string>
     <string name="display_extra_info_summary">Visa extra info om låten, som bitrate, format, samplingshastighet, etc.</string>
     <string name="display_next_song_title">Visa nästa låt</string>
-    <string name="display_next_song_summary">Visa nästa låt i kön längst ner på spelaren.</string>
+    <string name="display_next_song_summary">Visa nästa låt i stilarna Normal och Full Cover. Om du inaktiverar detta kommer uppspelningskön endast att vara tillgänglig via spelarens trepunktsmeny.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Välj den extra information som ska visas i spelarpanelen.</string>
     <string name="prefer_remaining_time_title">Föredrar återstående tid</string>
@@ -938,4 +938,23 @@
     <string name="lyrics_center_horizontally_summary">Justera varje rad med sångtext mot skärmens horisontella mittpunkt.</string>
     <string name="bit_perfect_info">Bitperfekt: %1$s | %2$s</string>
     <string name="bit_perfect_title">Bitperfekt ljud</string>
+    <string name="app_widget_responsive">Responsiv</string>
+    <string name="app_widget_responsive_desc">En widget som anpassar sin layout efter olika storlekar</string>
+    <string name="app_widget_card">Kort</string>
+    <string name="app_widget_card_desc">Minimalistisk och avskalad stil</string>
+    <string name="app_widget_full">Fullständig</string>
+    <string name="app_widget_full_desc">Spelaren visas direkt på skrivbordet</string>
+    <string name="advanced_settings">Avancerade inställningar</string>
+    <string name="bit_perfect_is_active">Bit-perfect är aktiverat</string>
+    <string name="bit_perfect_description">Skicka ljudsignalen direkt till USB-DAC utan att systemet omvärderar upplösningen.</string>
+    <string name="widgets_header">App-widgets</string>
+    <string name="widget_small_layout_style_title">Liten layout</string>
+    <string name="widget_small_layout_classic">Klassisk</string>
+    <string name="widget_small_layout_simplified">Förenklad</string>
+    <string name="widget_dynamic_colors_title">Dynamiska färger</string>
+    <string name="widget_dynamic_colors_summary">Anpassa widgetens färger efter det aktuella spårets omslagsbild.</string>
+    <string name="widget_image_corner_radius_title">Bildens hörnradie</string>
+    <string name="widget_image_corner_radius_summary">Ändra rundningen på omslagsbilden.</string>
+    <string name="widget_third_line_title">Tredje informationsraden</string>
+    <string name="widget_third_line_summary">Välj vad som ska visas i den tredje textraden.</string>
 </resources>
