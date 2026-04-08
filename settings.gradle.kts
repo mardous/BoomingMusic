@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "BoomingMusic"
 include(":app")
+include(":alacdecoder")

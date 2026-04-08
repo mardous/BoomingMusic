@@ -89,6 +89,7 @@ import com.mardous.booming.playback.library.LibraryProvider
 import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
+import com.mardous.booming.playback.renderer.BoomingMusicRenderersFactory
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.util.CLEAR_QUEUE_ON_COMPLETION
 import com.mardous.booming.util.ENABLE_HISTORY
@@ -236,20 +237,9 @@ class PlaybackService :
                         .build(), handleAudioFocus
                 )
                 .setRenderersFactory(
-                    object : DefaultRenderersFactory(this) {
-                        override fun buildAudioSink(
-                            context: Context,
-                            enableFloatOutput: Boolean,
-                            enableAudioOutputPlaybackParams: Boolean
-                        ): AudioSink {
-                            return DefaultAudioSink.Builder(this@PlaybackService)
-                                .setAudioProcessors(arrayOf(balanceProcessor, replayGainProcessor))
-                                .setEnableFloatOutput(enableFloatOutput)
-                                .setEnableAudioOutputPlaybackParameters(enableAudioOutputPlaybackParams)
-                                .build()
-                        }
-                    }
-                    .setEnableAudioFloatOutput(equalizerManager.audioFloatOutput.value)
+                    BoomingMusicRenderersFactory(this, balanceProcessor, replayGainProcessor)
+                        .setEnableAudioFloatOutput(equalizerManager.audioFloatOutput.value)
+                        .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER)
                 )
                 .setMediaSourceFactory(
                     DefaultMediaSourceFactory(
