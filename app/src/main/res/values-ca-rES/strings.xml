@@ -481,16 +481,11 @@
     <string name="custom">Personalitzat</string>
     <string name="audio_offload_is_enabled">La delegació d\'àudio està activada</string>
     <string name="enable_audio_offload_title">Delegació d\'àudio</string>
-    <string name="enable_audio_offload_description">Permet al dispositiu processar l\'àudio directament des del seu maquinari. Redueix l\'ús del processador i de la bateria.
-        Aquesta funció només s\'admet en certs dispositius. Alguns efectes o funcions podrien no funcionar mentre està activa.
-        Cal reiniciar per aplicar els canvis.</string>
+    <string name="enable_audio_offload_description">Permet al dispositiu processar l\'àudio directament des del seu maquinari. Redueix l\'ús del processador i de la bateria. Aquesta funció només s\'admet en certs dispositius. Alguns efectes o funcions podrien no funcionar mentre està activa. Cal reiniciar per aplicar els canvis.</string>
     <string name="enable_audio_float_output_title">Sortida d\'àudio d\'alta precisió</string>
-    <string name="enable_audio_float_output_description">Activa l\'àudio de punt flotant de 32-bits per un so de més bona qualitat.
-        Tingueu present que això desactivarà funcions com el Guany de reproducció, Omet silencis i Normalitza el volum.
-        Podria emprar una mica més de bateria i caldrà reiniciar l\'aplicació perquè s\'apliqui.</string>
+    <string name="enable_audio_float_output_description">Activa l\'àudio de punt flotant de 32-bits per un so de més bona qualitat. Tingueu present que això desactivarà funcions com el Guany de reproducció, Omet silencis i Normalitza el volum. Podria emprar una mica més de bateria i caldrà reiniciar l\'aplicació perquè s\'apliqui.</string>
     <string name="skip_silence_title">Omet silencis</string>
-    <string name="skip_silence_description">Omet seccions silencioses automàticament mentre es reprodueix.
-        Ideal per a pòdcasts i gravacions.</string>
+    <string name="skip_silence_description">Omet seccions silencioses automàticament mentre es reprodueix. Ideal per a pòdcasts i gravacions.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostra la lletra</string>
     <string name="action_hide_lyrics">Amaga la lletra</string>

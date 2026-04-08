@@ -496,12 +496,9 @@
     <string name="enable_audio_offload_title">Вивантаження аудіо</string>
     <string name="enable_audio_offload_description">.</string>
     <string name="enable_audio_float_output_title">Висока якість аудіо</string>
-    <string name="enable_audio_float_output_description">Вмикає 32-бітне аудіо з рухомою комою для кращої якості звуку.
-        Майте на увазі, що це вимкне такі функції, як ReplayGain, пропуск тиші та баланс гучності.
-        Він може використовувати трохи більше батареї, і вам потрібно буде перезапустити програму, щоб вона оновилася.</string>
+    <string name="enable_audio_float_output_description">Вмикає 32-бітне аудіо з рухомою комою для кращої якості звуку. Майте на увазі, що це вимкне такі функції, як ReplayGain, пропуск тиші та баланс гучності. Він може використовувати трохи більше батареї, і вам потрібно буде перезапустити програму, щоб вона оновилася.</string>
     <string name="skip_silence_title">Пропустити тишу</string>
-    <string name="skip_silence_description">Автоматично пропускати безшумні розділи під час відтворення.
-        Ідеально підходить для подкастів і записів.</string>
+    <string name="skip_silence_description">Автоматично пропускати безшумні розділи під час відтворення. Ідеально підходить для подкастів і записів.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Показати текст пісні</string>
     <string name="action_hide_lyrics">Приховати текст пісні</string>
@@ -898,4 +895,10 @@
     <string name="uncaught_error_restart_app">Перезапустити програму</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Надіслати</string>
+    <string name="app_widget_card_desc">Мінімалістичний та простий стиль</string>
+    <string name="app_widget_full">Повний</string>
+    <string name="app_widget_full_desc">Екран плеєра прямо на робочому столі</string>
+    <string name="app_widget_card">Картка</string>
+    <string name="app_widget_responsive_desc">Віджет, який адаптується до різних розмірів</string>
+    <string name="app_widget_responsive">Адаптивний</string>
 </resources>

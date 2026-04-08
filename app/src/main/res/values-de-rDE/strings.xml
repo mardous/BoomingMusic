@@ -100,7 +100,7 @@
     <string name="remove_song_x_from_playlist"><![CDATA[Titel <b>%1$s</b> aus Wiedergabeliste entfernen?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[<b>%1$d</b> Titel aus Wiedergabeliste entfernen?]]></string>
     <string name="playlist_empty_text">Wiedergabeliste leeren</string>
-    <string name="action_lyrics_editor">Lyrics editor</string>
+    <string name="action_lyrics_editor">Liedtext Editor</string>
     <string name="action_tag_editor">Tag-Editor</string>
     <string name="saving_changes">Speichere Änderungen</string>
     <string name="changes_saved_successfully">Änderungen erfolgreich gespeichert.</string>
@@ -239,7 +239,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="sort_order_year">Jahr</string>
     <string name="sort_order_duration">Dauer</string>
     <string name="sort_order_date_added">Hinzufügungsdatum</string>
-    <string name="sort_order_date_modified">Zuletzt geändert</string>
+    <string name="sort_order_date_modified">Änderungsdatum</string>
     <string name="sort_order_file_name">Dateiname</string>
     <string name="sort_order_number_of_songs">Titelanzahl</string>
     <string name="sort_order_number_of_albums">Albenanzahl</string>
@@ -478,16 +478,11 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="custom">Benutzerdefiniert</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Audio-Auslagerung</string>
-    <string name="enable_audio_offload_description">Ermöglicht es dem Gerät, Audio direkt über die Hardware zu verarbeiten, wodurch die CPU-Belastung reduziert und der Akku geschont wird.
-        Diese Funktion wird nur auf bestimmten Geräten unterstützt. Einige Effekte oder Funktionen sind möglicherweise nicht verfügbar, wenn sie aktiviert ist.
-        Ein Neustart ist erforderlich, damit die Änderungen wirksam werden.</string>
+    <string name="enable_audio_offload_description">Ermöglicht es dem Gerät, Audio direkt über die Hardware zu verarbeiten, wodurch die CPU-Belastung reduziert und der Akku geschont wird. Diese Funktion wird nur auf bestimmten Geräten unterstützt. Einige Effekte oder Funktionen sind möglicherweise nicht verfügbar, wenn sie aktiviert ist. Ein Neustart ist erforderlich, damit die Änderungen wirksam werden.</string>
     <string name="enable_audio_float_output_title">Hochpräzise Audioausgabe</string>
-    <string name="enable_audio_float_output_description">Aktiviert 32-Bit-Fließkomma-Audio für eine bessere Klangqualität.
-Beachten Sie, dass dadurch Funktionen wie ReplayGain, Stille überspringen und Lautstärkebalance deaktiviert werden.
-Dies kann zu einem etwas höheren Batterieverbrauch führen. Sie müssen die App neu starten, damit die Änderung wirksam wird.</string>
+    <string name="enable_audio_float_output_description">Aktiviert 32-Bit-Fließkomma-Audio für eine bessere Klangqualität. Beachten Sie, dass dadurch Funktionen wie ReplayGain, Stille überspringen und Lautstärkebalance deaktiviert werden. Dies kann zu einem etwas höheren Batterieverbrauch führen. Sie müssen die App neu starten, damit die Änderung wirksam wird.</string>
     <string name="skip_silence_title">Pause überspringen</string>
-    <string name="skip_silence_description">Überspringe automatisch stille Abschnitte während der Wiedergabe.
-Ideal für Podcasts und Aufnahmen.</string>
+    <string name="skip_silence_description">Überspringe automatisch stille Abschnitte während der Wiedergabe. Ideal für Podcasts und Aufnahmen.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Liedtext anzeigen</string>
     <string name="action_hide_lyrics">Liedtext ausblenden</string>
@@ -514,7 +509,7 @@ Ideal für Podcasts und Aufnahmen.</string>
     <string name="failed_to_update_lyrics">Liedtexte konnten nicht aktualisiert werden.</string>
     <string name="there_are_no_changes_to_save">Es gibt keine Änderungen zu speichern.</string>
     <string name="lyrics_source_external_file">Die Liedtexte stammen aus einer externen Datei. Sie können diese Datei nicht direkt in Booming Music bearbeiten.</string>
-    <string name="font_imported_successfully">Schriftart erfolgreich importiert</string>
+    <string name="font_imported_successfully">Schriftart erfolgreich importiert.</string>
     <string name="could_not_import_font">Schriftart konnte nicht importiert werden.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleeptimer</string>
@@ -857,7 +852,7 @@ oder Akku-Management ignorieren diese Einstellung möglicherweise und beenden di
     <string name="player_color_mode_vibrant_color_title">Lebendige Farbe</string>
     <string name="player_color_mode_vibrant_color_description">Färbe Hintergrund, Text und Steuerelemente in der Album-Farbe ein</string>
     <string name="player_color_mode_material_you_title">Material You</string>
-    <string name="player_color_mode_material_you_description">Verwende Material-You-Farbtöne basierend auf der Albumfarbe.</string>
+    <string name="player_color_mode_material_you_description">Verwende Material-You-Farbtöne basierend auf der Albumfarbe</string>
     <string name="player_color_mode_blur_title">Blur</string>
     <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
     <!-- Update -->
@@ -877,7 +872,7 @@ oder Akku-Management ignorieren diese Einstellung möglicherweise und beenden di
     <string name="could_not_check_for_updates">Konnte nicht nach Updates suchen.</string>
     <string name="the_app_is_up_to_date">Die App ist aktuell</string>
     <string name="update_available_title">Update verfügbar</string>
-    <string name="more_info_action">Weitere Informationen</string>
+    <string name="more_info_action">Weitere Informationen.</string>
     <string name="download_action">Download</string>
     <string name="downloading_update">Lädt das Update für Booming Music herunter.</string>
     <string name="uncaught_error_title">Hoppla! Das sollte eigentlich nicht passieren!</string>

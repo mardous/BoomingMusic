@@ -474,16 +474,11 @@
     <string name="custom">カスタム</string>
     <string name="audio_offload_is_enabled">オーディオのオフロードは有効です</string>
     <string name="enable_audio_offload_title">オーディオオフロード</string>
-    <string name="enable_audio_offload_description">デバイスがオーディオをハードウェア経由で直接処理できるようにし、CPU使用率を削減しバッテリーを節約します。
-        この機能は特定のデバイスでのみサポートされています。有効中に一部のエフェクトや機能が動作しない場合があります。
-        変更を有効にするには再起動が必要です。</string>
+    <string name="enable_audio_offload_description">デバイスがオーディオをハードウェア経由で直接処理できるようにし、CPU使用率を削減しバッテリーを節約します。 この機能は特定のデバイスでのみサポートされています。有効中に一部のエフェクトや機能が動作しない場合があります。 変更を有効にするには再起動が必要です。</string>
     <string name="enable_audio_float_output_title">高精度音声出力</string>
-    <string name="enable_audio_float_output_description">32ビット浮動小数点オーディオを有効化し、音質を向上させます。
-        ただし、これによりReplayGain、無音部分のスキップ、音量バランスなどの機能がオフになります。
-        バッテリー消費が若干増える可能性があり、設定を反映させるにはアプリの再起動が必要です。</string>
+    <string name="enable_audio_float_output_description">32ビット浮動小数点オーディオを有効化し、音質を向上させます。 ただし、これによりReplayGain、無音部分のスキップ、音量バランスなどの機能がオフになります。 バッテリー消費が若干増える可能性があり、設定を反映させるにはアプリの再起動が必要です。</string>
     <string name="skip_silence_title">無音部分をスキップする</string>
-    <string name="skip_silence_description">再生中は自動的に無音部分をスキップします。
-        ポッドキャストや録音に最適です。</string>
+    <string name="skip_silence_description">再生中は自動的に無音部分をスキップします。 ポッドキャストや録音に最適です。</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">歌詞を表示</string>
     <string name="action_hide_lyrics">歌詞を隠す</string>

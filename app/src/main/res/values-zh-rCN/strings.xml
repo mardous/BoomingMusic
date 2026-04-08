@@ -473,13 +473,11 @@
     <string name="custom">自定义</string>
     <string name="audio_offload_is_enabled">硬件加速已启用</string>
     <string name="enable_audio_offload_title">音频硬件加速</string>
-    <string name="enable_audio_offload_description">直接通过设备硬件处理音频，从而降低 CPU 使用率并减少电池电量消耗。
-        该功能仅在部分设备上受支持。启用功能时，某些其他功能可能无法正常使用。
-        需要重新启动以使该设置项生效。</string>
+    <string name="enable_audio_offload_description">使用播放硬件加速，从而降低 CPU 使用率并减少电池电量消耗。 重启应用后生效。</string>
     <string name="enable_audio_float_output_title">高精度音频输出</string>
-    <string name="enable_audio_float_output_description">启用 32 位浮点音频可提升音质，但将禁用回放增益、静音跳过与音量平衡。此功能可能增加耗电，且需重启应用生效。</string>
+    <string name="enable_audio_float_output_description">启用 32 位浮点音频输出，提升保真度。需重启应用生效。</string>
     <string name="skip_silence_title">跳过静音部分</string>
-    <string name="skip_silence_description">播放时自动跳过静音片段，尤其适用于播客和录音。</string>
+    <string name="skip_silence_description">播放时检测并跳过静音片段，尤其适用于播客和录音。</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">显示歌词</string>
     <string name="action_hide_lyrics">隐藏歌词</string>
@@ -690,7 +688,7 @@
     <string name="display_extra_info_title">显示额外信息</string>
     <string name="display_extra_info_summary">显示歌曲的码率、格式、采样率等额外信息。</string>
     <string name="display_next_song_title">显示下一首</string>
-    <string name="display_next_song_summary">在播放器底部显示队列中的下一首歌曲。</string>
+    <string name="display_next_song_summary">在默认和全屏封面播放界面样式中显示下一曲。若禁用该选项，播放队列需要在播放器的三点菜单中打开。</string>
     <string name="select_extra_info_title">额外信息</string>
     <string name="select_extra_info_summary">选择要在播放器面板中显示的额外信息。</string>
     <string name="prefer_remaining_time_title">显示剩余时间</string>
@@ -934,4 +932,23 @@
     <string name="lyrics_center_horizontally_summary">将每行歌词对齐到屏幕的水平线中心。</string>
     <string name="bit_perfect_info">Bit Perfect信息：%1$s|%2$s</string>
     <string name="bit_perfect_title">Bit-perfect 音频</string>
+    <string name="app_widget_responsive">响应式</string>
+    <string name="app_widget_responsive_desc">根据大小自动适配小部件布局</string>
+    <string name="app_widget_card">卡片</string>
+    <string name="app_widget_card_desc">极简风格，功能简单</string>
+    <string name="app_widget_full">完整</string>
+    <string name="app_widget_full_desc">在桌面上显示完整播放界面</string>
+    <string name="advanced_settings">高级设置</string>
+    <string name="bit_perfect_is_active">Bit-perfect 已启用</string>
+    <string name="bit_perfect_description">绕过系统重采样，将音频直接输出到 USB DAC。</string>
+    <string name="widgets_header">小部件</string>
+    <string name="widget_small_layout_style_title">小型小部件布局风格</string>
+    <string name="widget_small_layout_classic">经典</string>
+    <string name="widget_small_layout_simplified">简化</string>
+    <string name="widget_dynamic_colors_title">动态色彩</string>
+    <string name="widget_dynamic_colors_summary">将小部件颜色与当前曲目封面匹配。</string>
+    <string name="widget_image_corner_radius_title">图像圆角半径</string>
+    <string name="widget_image_corner_radius_summary">调整专辑封面的圆角程度。</string>
+    <string name="widget_third_line_title">第三行信息</string>
+    <string name="widget_third_line_summary">选择信息文本第三行应显示的内容。</string>
 </resources>

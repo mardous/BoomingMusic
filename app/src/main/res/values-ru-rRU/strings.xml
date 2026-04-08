@@ -496,16 +496,11 @@
     <string name="custom">Пользовательский</string>
     <string name="audio_offload_is_enabled">Аппаратная разгрузка аудио включена</string>
     <string name="enable_audio_offload_title">Аппаратная разгрузка аудио</string>
-    <string name="enable_audio_offload_description">Позволяет устройству обрабатывать звук напрямую через аппаратное обеспечение, снижая нагрузку на ЦП и экономя заряд батареи.
-        Эта функция поддерживается не на всех устройствах. Некоторые эффекты или функции могут не работать при её включении.
-        Для вступления изменений в силу требуется перезапуск.</string>
+    <string name="enable_audio_offload_description">Позволяет устройству обрабатывать звук напрямую через аппаратное обеспечение, снижая нагрузку на ЦП и экономя заряд батареи. Эта функция поддерживается не на всех устройствах. Некоторые эффекты или функции могут не работать при её включении. Для вступления изменений в силу требуется перезапуск.</string>
     <string name="enable_audio_float_output_title">Высокоточный вывод звука</string>
-    <string name="enable_audio_float_output_description">Включает 32-битный звук с плавающей запятой для улучшения качества.
-        Обратите внимание, что это отключит выравнивание громкости (ReplayGain), пропуск тишины и баланс громкости.
-        Может незначительно увеличить расход батареи. Для вступления изменений в силу требуется перезапуск.</string>
+    <string name="enable_audio_float_output_description">Включает 32-битный звук с плавающей запятой для улучшения качества. Обратите внимание, что это отключит выравнивание громкости (ReplayGain), пропуск тишины и баланс громкости. Может незначительно увеличить расход батареи. Для вступления изменений в силу требуется перезапуск.</string>
     <string name="skip_silence_title">Пропускать тишину</string>
-    <string name="skip_silence_description">Автоматически пропускать тихие участки при воспроизведении.
-        Идеально для подкастов и записей.</string>
+    <string name="skip_silence_description">Автоматически пропускать тихие участки при воспроизведении. Идеально для подкастов и записей.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Показать текст песни</string>
     <string name="action_hide_lyrics">Скрыть текст песни</string>
@@ -960,6 +955,25 @@
     <string name="use_simpmusic_provider_summary">Разрешить загрузку текстов песен из сервиса SimpMusic Lyrics.</string>
     <string name="lyrics_center_horizontally_title">Выровнять текст песни по центру (по горизонтали)</string>
     <string name="lyrics_center_horizontally_summary">Выровнять каждую строку текста песни по горизонтали по центру экрана.</string>
-    <string name="bit_perfect_title">Bit-Perfect аудио</string>
+    <string name="bit_perfect_title">Bit-perfect аудио</string>
     <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
+    <string name="app_widget_responsive">Адаптивный</string>
+    <string name="app_widget_responsive_desc">Виджет, адаптирующий свой макет под разные размеры</string>
+    <string name="app_widget_card">Карточка</string>
+    <string name="app_widget_card_desc">Минималистичный и упрощённый стиль</string>
+    <string name="app_widget_full">Полноразмерный</string>
+    <string name="app_widget_full_desc">Экран проигрывателя прямо на вашем рабочем столе</string>
+    <string name="advanced_settings">Расширенные настройки</string>
+    <string name="bit_perfect_is_active">Bit-perfect активен</string>
+    <string name="bit_perfect_description">Прямой вывод звука на USB DAC (ЦАП) без изменения частоты дискретизации.</string>
+    <string name="widgets_header">Виджеты приложения</string>
+    <string name="widget_small_layout_style_title">Компактный стиль макета</string>
+    <string name="widget_small_layout_classic">Классический</string>
+    <string name="widget_small_layout_simplified">Упрощенный</string>
+    <string name="widget_dynamic_colors_title">Динамичные цвета</string>
+    <string name="widget_dynamic_colors_summary">Адаптировать цветовую схему виджета к обложке текущего трека.</string>
+    <string name="widget_image_corner_radius_title">Радиус скругления углов изображения</string>
+    <string name="widget_image_corner_radius_summary">Изменить скругление углов обложки альбома.</string>
+    <string name="widget_third_line_summary">Выберите данные для отображения в третьей строке.</string>
+    <string name="widget_third_line_title">Данные в третьей строке</string>
 </resources>

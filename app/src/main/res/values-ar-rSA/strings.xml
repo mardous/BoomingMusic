@@ -510,9 +510,7 @@
     <string name="custom">مخصص</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">إزاحة الصوت</string>
-    <string name="enable_audio_offload_description">يسمح للجهاز بمعالجة الصوت مباشرة من خلال جهازه، تقليل استخدام وحدة المعالجة المركزية وحفظ البطارية.
-        هذه الميزة مدعومة فقط على بعض الأجهزة. قد لا تعمل بعض التأثيرات أو الميزات أثناء تفعيلها.
-        مطلوب إعادة تشغيل لتفعيل التغييرات.</string>
+    <string name="enable_audio_offload_description">يسمح للجهاز بمعالجة الصوت مباشرة من خلال جهازه، تقليل استخدام وحدة المعالجة المركزية وحفظ البطارية. هذه الميزة مدعومة فقط على بعض الأجهزة. قد لا تعمل بعض التأثيرات أو الميزات أثناء تفعيلها. مطلوب إعادة تشغيل لتفعيل التغييرات.</string>
     <string name="enable_audio_float_output_title">إخراج الصوت العالي الدقة</string>
     <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality. Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance. It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
     <string name="skip_silence_title">تخطي الصمت</string>

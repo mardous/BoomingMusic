@@ -478,16 +478,11 @@
     <string name="custom">Mukautettu</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Äänen Siirto</string>
-    <string name="enable_audio_offload_description">Sallii laitteen käsitellä ääntä suoraan laitteiston kautta, mikä vähentää suorittimen käyttöä ja säästää akkua.
-        Tämä ominaisuus on tuettu vain tietyillä laitteilla. Jotkin efektit tai ominaisuudet eivät välttämättä toimi kun ne on otettu käyttöön.
-        Uudelleenkäynnistys on tarpeen, jotta muutokset tulevat voimaan.</string>
+    <string name="enable_audio_offload_description">Sallii laitteen käsitellä ääntä suoraan laitteiston kautta, mikä vähentää suorittimen käyttöä ja säästää akkua. Tämä ominaisuus on tuettu vain tietyillä laitteilla. Jotkin efektit tai ominaisuudet eivät välttämättä toimi kun ne on otettu käyttöön. Uudelleenkäynnistys on tarpeen, jotta muutokset tulevat voimaan.</string>
     <string name="enable_audio_float_output_title">High-Precision Audio Ulostulo</string>
-    <string name="enable_audio_float_output_description">Mahdollistaa 32-bittisen liukulukuäänen paremman äänenlaadun.
-        Muista, että tämä poistaa käytöstä ominaisuudet, kuten ReplayGain, ohita hiljaisuus ja äänenvoimakkuuden tasapaino.
-        Se saattaa käyttää hieman enemmän akkua, ja sinun täytyy käynnistää sovellus uudelleen, jotta se tulee voimaan.</string>
+    <string name="enable_audio_float_output_description">Mahdollistaa 32-bittisen liukulukuäänen paremman äänenlaadun. Muista, että tämä poistaa käytöstä ominaisuudet, kuten ReplayGain, ohita hiljaisuus ja äänenvoimakkuuden tasapaino. Se saattaa käyttää hieman enemmän akkua, ja sinun täytyy käynnistää sovellus uudelleen, jotta se tulee voimaan.</string>
     <string name="skip_silence_title">Ohita Hiljaisuus</string>
-    <string name="skip_silence_description">Ohita äänettömät osat automaattisesti toiston aikana.
-        Ihanteellinen podcasteille ja nauhoituksille.</string>
+    <string name="skip_silence_description">Ohita äänettömät osat automaattisesti toiston aikana. Ihanteellinen podcasteille ja nauhoituksille.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Näytä sanoitukset</string>
     <string name="action_hide_lyrics">Piilota sanoitukset</string>
