@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">Приложению требуется разрешение на доступ к устройствам поблизости для проверки Bluetooth-устройств</string>
     <string name="permission_bluetooth_denied">Разрешение на доступ к устройствам поблизости отклонено.</string>
     <string name="permission_read_images_title">Чтение изображений (необязательно)</string>
-    <string name="permission_read_images_summary">Это разрешение необходимо Booming Music для поиска обложек альбомов в ваших музыкальных папках.
-        Если вы не планируете использовать эту функцию, вы можете не предоставлять его.</string>
+    <string name="permission_read_images_summary">Это разрешение необходимо Booming Music для поиска обложек альбомов в ваших музыкальных папках. Если вы не планируете использовать эту функцию, вы можете не предоставлять его.</string>
     <string name="permission_read_images_denied">Вы должны предоставить разрешение на чтение изображений с устройства.</string>
     <string name="permission_exact_alarms_title">Планировать точные сигналы тревоги (необязательно)</string>
     <string name="permission_exact_alarms_description">Разрешение на планирование точных сигналов тревоги необходимо для корректной работы таймера сна</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">Перейти к альбому</string>
     <string name="action_go_to_artist">Перейти к исполнителю</string>
     <string name="action_go_to_genre">Перейти к жанру</string>
-    <string name="added_title_to_playing_queue">"Добавлен 1 трек в очередь воспроизведения."</string>
+    <string name="added_title_to_playing_queue">Добавлен 1 трек в очередь воспроизведения.</string>
     <string name="added_x_titles_to_playing_queue">Добавлено %1$d треков в очередь воспроизведения.</string>
     <string name="next_song_label">Следующая песня</string>
     <string name="next_song_x">Следующая • %1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">Обновить изображение</string>
     <string name="restore_default">Восстановить по умолчанию</string>
     <string name="remove_cover">Удалить обложку</string>
-    <string name="could_not_download_album_cover">"Не удалось загрузить подходящую обложку альбома."</string>
+    <string name="could_not_download_album_cover">Не удалось загрузить подходящую обложку альбома.</string>
     <string name="download_image">Загрузить изображение</string>
     <string name="pick_from_local_storage">Выбрать из локального хранилища</string>
     <string name="about_x_title">О программе %s</string>
@@ -318,7 +317,7 @@
     <string name="disc_total">Всего дисков</string>
     <string name="lyrics">Текст песни</string>
     <string name="lyricist">Автор текста</string>
-    <string name="could_not_load_the_song_information">"Не удалось загрузить информацию о песне."</string>
+    <string name="could_not_load_the_song_information">Не удалось загрузить информацию о песне.</string>
     <string name="no_results">Нет результатов</string>
     <string name="connection_unavailable">Соединение недоступно.</string>
     <string name="you_have_to_select_at_least_one_category">Вы должны выбрать хотя бы одну категорию</string>
@@ -387,13 +386,13 @@
         <item quantity="one">%d прослушивание</item>
         <item quantity="few">%d прослушиваний</item>
         <item quantity="many">%d прослушиваний</item>
-        <item quantity="other">%d прослушивания</item>
+        <item quantity="other">%d прослушиваний</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d элемент</item>
         <item quantity="few">%d элемента</item>
         <item quantity="many">%d элементов</item>
-        <item quantity="other">%d элементы</item>
+        <item quantity="other">%d элементов</item>
     </plurals>
     <!-- Home -->
     <string name="home_label">Главная</string>
@@ -429,9 +428,7 @@
     <string name="autoeq_profiles_title">Профили AutoEq</string>
     <string name="eq_profile_title">Профиль</string>
     <string name="change_band_count_title">Изменить количество полос</string>
-    <string name="change_band_count_message">Изменение количества полос сбросит текущий профиль к начальному состоянию.
-        Любые другие профили, сохраненные для текущей конфигурации полос, нельзя будет использовать с новой конфигурацией.
-        \n\nВы хотите продолжить?</string>
+    <string name="change_band_count_message">Изменение количества полос сбросит текущий профиль к начальному состоянию. Любые другие профили, сохраненные для текущей конфигурации полос, нельзя будет использовать с новой конфигурацией. \n\nВы хотите продолжить?</string>
     <string name="band_configuration_changed_successfully">Конфигурация полос успешно изменена.</string>
     <string name="band_configuration_could_not_be_changed">Не удалось изменить конфигурацию полос.</string>
     <string name="share_eq_profiles">Поделиться профилями эквалайзера</string>
@@ -453,8 +450,7 @@
     <string name="select_a_file_containing_autoeq_params">Выберите файл с параметрами AutoEq (GraphicEq).</string>
     <string name="no_autoeq_profiles">Нет импортированных профилей AutoEq.</string>
     <string name="reset_equalizer">Сбросить эквалайзер</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Вы уверены, что хотите сбросить настройки эквалайзера?
-        \n\nЭто удалит все ваши профили.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Вы уверены, что хотите сбросить настройки эквалайзера? \n\nЭто удалит все ваши профили.</string>
     <string name="not_supported">Не поддерживается</string>
     <string name="set_eq_engine_title">Выбор движка эквалайзера</string>
     <string name="eq_engine_basic_title">Классический движок</string>
@@ -659,16 +655,13 @@
     <string name="unsynced_font_size_full_title">Размер обычного текста (полный экран)</string>
     <string name="unsynced_font_size_full_summary">Размер шрифта несинхронизированного текста на отдельном экране текста.</string>
     <string name="instrumental_tracks_identifiers_title">Маркеры инструментальных треков</string>
-    <string name="instrumental_tracks_identifiers_summary">Если текст песни состоит только
-        из одного или нескольких таких индикаторов, трек будет помечен как инструментальный (перечисляются через запятую).</string>
+    <string name="instrumental_tracks_identifiers_summary">Если текст песни состоит только из одного или нескольких таких индикаторов, трек будет помечен как инструментальный (перечисляются через запятую).</string>
     <string name="instrumental_tracks_mark_by_title_title">Определять по названию</string>
     <string name="instrumental_tracks_mark_by_title_summary">Название трека также будет учитываться при поиске маркеров.</string>
     <string name="ignore_blank_lines_title">Игнорировать пустые строки</string>
     <string name="ignore_blank_lines_summary">Игнорировать пустые строки в LRC файлах вместо отображения анимированных пузырьков.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Считать все файлы текстов в UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Предполагать, что все файлы используют кодировку UTF-8.
-        Это оптимизирует процесс обработки, но в некоторых случаях может привести к некорректному отображению символов в текстах песен.
-        Может потребоваться перезапуск приложения</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Предполагать, что все файлы используют кодировку UTF-8. Это оптимизирует процесс обработки, но в некоторых случаях может привести к некорректному отображению символов в текстах песен. Может потребоваться перезапуск приложения</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Стиль</string>
     <string name="open_on_play_title">Открывать при воспроизведении</string>
@@ -714,7 +707,7 @@
     <string name="select_extra_info_summary">Выберите дополнительную информацию для отображения в панели плеера.</string>
     <string name="prefer_remaining_time_title">Предпочитать оставшееся время</string>
     <string name="prefer_remaining_time_summary">Отображать оставшееся время вместо длительности песни.</string>
-    <string name="prefer_album_artist_name_title">"Предпочитать имя исполнителя альбома"</string>
+    <string name="prefer_album_artist_name_title">Предпочитать имя исполнителя альбома</string>
     <string name="prefer_album_artist_name_summary">Показывает имя исполнителя альбома вместо имени исполнителя песни (если доступно).</string>
     <string name="player_blur_intensity_title">Интенсивность размытия</string>
     <string name="player_blur_intensity_summary">Настройте интенсивность размытия фона в теме «Размытие». Более низкие значения могут повысить производительность.</string>
@@ -725,7 +718,7 @@
     <string name="remember_shuffle_mode_summary">Режим перемешивания сохранится при выборе нового списка песен.</string>
     <string name="album_shuffle_mode_title">Режим перемешивания альбомов</string>
     <string name="artist_shuffle_mode_title">Режим перемешивания исполнителей</string>
-    <string name="rewind_with_back_title">"Перемотка кнопкой «Предыдущий»"</string>
+    <string name="rewind_with_back_title">Перемотка кнопкой «Предыдущий»</string>
     <string name="rewind_with_back_summary">Перемотать текущий трек к началу или перейти к предыдущему треку, если текущий находится в начале.</string>
     <string name="rewind_fast_forward_amount_title">Интервал перемотки</string>
     <string name="rewind_fast_forward_amount_summary">Время (в секундах) для перемотки назад или перемотки вперед с помощью пользовательского интерфейса или внешних элементов управления.</string>
@@ -742,9 +735,7 @@
     <string name="pause_on_zero_volume_title">Пауза при нулевой громкости</string>
     <string name="pause_on_zero_volume_summary">Ставит песню на паузу, когда громкость падает до нуля, и возобновляет при повышении громкости. Работает и вне приложения.</string>
     <string name="mp3_index_seeking_title">Поиск по индексу MP3</string>
-    <string name="mp3_index_seeking_summary">Загружает весь MP3-файл в память для перемотки вместо использования заголовка Xing.
-        Включайте, только если перемотка не работает на VBR-файлах.
-        Требуется перезапуск.</string>
+    <string name="mp3_index_seeking_summary">Загружает весь MP3-файл в память для перемотки вместо использования заголовка Xing. Включайте, только если перемотка не работает на VBR-файлах. Требуется перезапуск.</string>
     <string name="play_option_always_visible_title">Всегда показывать пункт «Воспроизвести»</string>
     <string name="play_option_always_visible_summary">Если включено, пункт «Воспроизвести» будет всегда отображаться в меню трека, независимо от настроек нажатия.</string>
     <string name="play_option_whole_list_title">Пункт «Воспроизвести» запускает весь список</string>
@@ -806,8 +797,7 @@
     <string name="restore_backup_summary">Восстановить данные приложения (и состояние) из предыдущей резервной копии.</string>
     <string name="stop_when_closed_from_recents_title">Останавливать при закрытии из недавних</string>
     <string name="stop_when_closed_from_recents_summary">Воспроизведение прекращается, если смахнуть приложение из списка недавних задач.</string>
-    <string name="stop_when_closed_from_recents_note">Примечание: некоторые устройства с агрессивным управлением памяти
-        или энергопотреблением могут игнорировать эту настройку и всегда останавливать приложение при удалении из недавних.</string>
+    <string name="stop_when_closed_from_recents_note">Примечание: некоторые устройства с агрессивным управлением памяти или энергопотреблением могут игнорировать эту настройку и всегда останавливать приложение при удалении из недавних.</string>
     <string name="rotation_lock_title">Блокировка ориентации</string>
     <string name="rotation_lock_summary">Блокирует поворот экрана. Полезно, если музыка прерывается при повороте устройства из-за особенностей прошивки.</string>
     <!-- Preference values -->
@@ -971,4 +961,12 @@
     <string name="widget_image_corner_radius_summary">Изменить скругление углов обложки альбома.</string>
     <string name="widget_third_line_summary">Выберите данные для отображения в третьей строке.</string>
     <string name="widget_third_line_title">Данные в третьей строке</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
