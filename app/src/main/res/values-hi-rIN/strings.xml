@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">प्ले </string>
+    <string name="action_play">प्ले</string>
     <string name="action_play_all">सभी गीत चलायें</string>
     <string name="action_shuffle_play">फेरबदल खेल</string>
     <string name="action_queue_next">अगली कतार</string>
@@ -182,7 +182,7 @@
     <string name="action_go_to_album">एल्बम पर जाए</string>
     <string name="action_go_to_artist">कलाïकार के पास जाएं</string>
     <string name="action_go_to_genre">श्रेणी पर जाएं</string>
-    <string name="added_title_to_playing_queue">"खेलने की कतार में 1 शीर्षक जोड़ा गया है।"</string>
+    <string name="added_title_to_playing_queue">खेलने की कतार में 1 शीर्षक जोड़ा गया है।</string>
     <string name="added_x_titles_to_playing_queue">%1$d शीर्षक खेलने की कतार में जोड़े गए।</string>
     <string name="next_song_label">अगला गाना</string>
     <string name="next_song_x">अगला • %1$s</string>
@@ -216,7 +216,7 @@
     <string name="not_recently_played">हाल ही में नहीं खेला गया ...</string>
     <string name="play_info">Play info</string>
     <string name="track_play_counts">प्ले गिनती का ट्रैक करना</string>
-    <string name="song_stat_never_label">कभी भी गाने नहीं </string>
+    <string name="song_stat_never_label">कभी भी गाने नहीं</string>
     <string name="song_stat_one_time_label">एक बार खेला गया %s पर</string>
     <string name="song_stat_label">कुल %1$d बार खेला गया, अंतिम बार %2$s को।</string>
     <string name="horizontal_albums">क्षैतिज एल्बम</string>
@@ -231,7 +231,7 @@
     <string name="view_type_image">इमेज</string>
     <string name="action_grid_size">ग्रिड आकार</string>
     <string name="action_grid_size_land">ग्रिड का साइज (जगह)</string>
-    <string name="action_sort_order">क्रमबद्ध करें </string>
+    <string name="action_sort_order">क्रमबद्ध करें</string>
     <string name="sort_order_az">A से Z तक</string>
     <string name="sort_order_artist">कलाकार</string>
     <string name="sort_order_album">एल्बम</string>
@@ -266,7 +266,7 @@
     <string name="update_image">इमेज अपडेट करें</string>
     <string name="restore_default">डिफ़ॉल्ट को पुनर्स्थापित करें</string>
     <string name="remove_cover">कवर हटाएँ</string>
-    <string name="could_not_download_album_cover">"संबंधित एल्बम कवर डाउनलोड नहीं कर सका।"</string>
+    <string name="could_not_download_album_cover">संबंधित एल्बम कवर डाउनलोड नहीं कर सका।</string>
     <string name="download_image">चित्र डाउनलोड करें</string>
     <string name="pick_from_local_storage">लोकल स्टोरेज से चुनें</string>
     <string name="about_x_title">%s के बारे में</string>
@@ -317,7 +317,7 @@
     <string name="disc_total">कुल डिस्क</string>
     <string name="lyrics">बोल</string>
     <string name="lyricist">गीतकार</string>
-    <string name="could_not_load_the_song_information">"गाना जानकारी लोड नहीं हो सका।"</string>
+    <string name="could_not_load_the_song_information">गाना जानकारी लोड नहीं हो सका।</string>
     <string name="no_results">कोई रिजल्ट नहीं</string>
     <string name="connection_unavailable">कनेक्शन अनुपलब्ध है।</string>
     <string name="you_have_to_select_at_least_one_category">आपको कम से कम एक श्रेणी चुननी होगी</string>
@@ -568,7 +568,7 @@
     <string name="settings_title">सेटिंग्स</string>
     <string name="appearance_title">दिखावट</string>
     <string name="appearance_summary">ऐप के थीम और अन्य दृश्य सेटिंग्स में परिवर्तन करें।</string>
-    <string name="now_playing_title"> अभी चल रहा है</string>
+    <string name="now_playing_title">अभी चल रहा है</string>
     <string name="now_playing_summary">चल रही स्क्रीन को कस्टमाइज़ करो.</string>
     <string name="lyrics_preferences_title">Lyrics</string>
     <string name="lyrics_preferences_summary">Adjust font, spacing, and other options to personalize your lyrics view.</string>
@@ -694,7 +694,7 @@
     <string name="select_extra_info_summary">खिलाड़ी पैनल में दिखाने के लिए अतिरिक्त जानकारी का चयन करें।</string>
     <string name="prefer_remaining_time_title">बची हुई समय को प्राथमिकता दें</string>
     <string name="prefer_remaining_time_summary">गाने की अवधि के बजाय शेष समय दिखाएँ।</string>
-    <string name="prefer_album_artist_name_title">"एल्बम-कलाकार का नाम प्राथमिकता दें"</string>
+    <string name="prefer_album_artist_name_title">एल्बम-कलाकार का नाम प्राथमिकता दें</string>
     <string name="prefer_album_artist_name_summary">एल्बम-कलाकार का नाम दिखाता है बजाय गाना-कलाकार के नाम के (यदि उपलब्ध हो)।</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -705,7 +705,7 @@
     <string name="remember_shuffle_mode_summary">नए गीतों की सूची चुनते समय शफल मोड चालू रहेगा।</string>
     <string name="album_shuffle_mode_title">एल्बम शफल मोड</string>
     <string name="artist_shuffle_mode_title">कलाकार शफल मोड</string>
-    <string name="rewind_with_back_title">"पिछले के साथ फिर से शुरू करें"</string>
+    <string name="rewind_with_back_title">पिछले के साथ फिर से शुरू करें</string>
     <string name="rewind_with_back_summary">वर्तमान ट्रैक अगर प्रारंभ में है, तो चल रहे ट्रैक को प्रारंभ पर वापस ले जाएं या पिछले ट्रैक पर जाएं।</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
     <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
@@ -748,7 +748,7 @@
     <string name="ignore_media_store_album_covers_summary">यह छवियों की गुणवत्ता बढ़ाने में मदद कर सकता है लेकिन इसके लिए अधिक मेमोरी की आवश्यकता होती है।</string>
     <string name="use_folder_album_cover_title">फोल्डर चित्रों का उपयोग करें</string>
     <string name="use_folder_album_cover_summary">यदि ऑडियो फ़ाइल में कोई एम्बेडेड कवर नहीं है। चित्रों को लोड होने में थोड़ा अधिक समय लग सकता है।</string>
-    <string name="online_artist_images_title">कलाकारों की तस्वीरें डाउनलोड  करें</string>
+    <string name="online_artist_images_title">कलाकारों की तस्वीरें डाउनलोड करें</string>
     <string name="online_artist_images_summary">यह आपकी मेटाडेटा डाउनलोड नीति पर निर्भर करता है।</string>
     <string name="preferred_image_size_title">Preferred image size</string>
     <string name="online_album_covers_title">Download missing album covers</string>
@@ -877,4 +877,85 @@
     <string name="uncaught_error_restart_app">ऐप को पुनः प्रारंभ करें</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="app_widget_full_desc"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="app_widget_responsive"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="app_widget_card_desc"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="app_widget_responsive_desc"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="app_widget_card"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="app_widget_full"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
