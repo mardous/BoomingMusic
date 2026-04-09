@@ -182,7 +182,7 @@
     <string name="action_go_to_album">Ir al Álbum</string>
     <string name="action_go_to_artist">Ir al Artista</string>
     <string name="action_go_to_genre">Ir al Género</string>
-    <string name="added_title_to_playing_queue">"Agregada 1 canción a la cola."</string>
+    <string name="added_title_to_playing_queue">Agregada 1 canción a la cola.</string>
     <string name="added_x_titles_to_playing_queue">Agregadas %1$d canciones a la cola.</string>
     <string name="next_song_label">Siguiente canción</string>
     <string name="next_song_x">Sigue • %1$s</string>
@@ -266,7 +266,7 @@
     <string name="update_image">Actualizar imagen</string>
     <string name="restore_default">Restaurar la predeterminada</string>
     <string name="remove_cover">Remover portada</string>
-    <string name="could_not_download_album_cover">"No se puede descargar una portada de álbum coincidente."</string>
+    <string name="could_not_download_album_cover">No se puede descargar una portada de álbum coincidente.</string>
     <string name="download_image">Descargar imagen</string>
     <string name="pick_from_local_storage">Seleccionar desde el almacenamiento interno</string>
     <string name="about_x_title">Acerca de %s</string>
@@ -278,8 +278,7 @@
     <string name="save_artwork_success">Portada del álbum guardada</string>
     <string name="save_artwork_view_action">Ver</string>
     <string name="save_artwork_copyright_info_title">Aviso de Copyright</string>
-    <string name="save_artwork_copyright_info_message">Algunas portadas de álbumes (o quizás todas) están protegidas por leyes de Copyright. No puedes hacer uso de estas imágenes para propósitos comerciales.
-        \n\nSolo tú tienes total responsabilidad sobre el uso que hagas de las portadas guardadas.</string>
+    <string name="save_artwork_copyright_info_message">Algunas portadas de álbumes (o quizás todas) están protegidas por leyes de Copyright. No puedes hacer uso de estas imágenes para propósitos comerciales. \n\nSolo tú tienes total responsabilidad sobre el uso que hagas de las portadas guardadas.</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="keyboard">Teclado</string>
@@ -318,7 +317,7 @@
     <string name="disc_total">Discos totales</string>
     <string name="lyrics">Letra</string>
     <string name="lyricist">Letrista</string>
-    <string name="could_not_load_the_song_information">"No se pudo leer la información del archivo."</string>
+    <string name="could_not_load_the_song_information">No se pudo leer la información del archivo.</string>
     <string name="no_results">Sin resultados</string>
     <string name="connection_unavailable">Conexión a Internet no disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Debes seleccionar al menos una categoría</string>
@@ -657,8 +656,7 @@
     <string name="ignore_blank_lines_title">Ignorar líneas vacías</string>
     <string name="ignore_blank_lines_summary">Ignora las líneas vacías en los archivos LRC en lugar de mostrarlas como burbujas animadas.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos los archivos de letras como UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Asumir que todos los archivos usan codificación UTF-8. Esto optimiza el proceso de análisis de archivos, pero en algunos casos podría generar caracteres inusuales en las letras de las canciones.
-Podría ser necesario reiniciar la aplicación</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Asumir que todos los archivos usan codificación UTF-8. Esto optimiza el proceso de análisis de archivos, pero en algunos casos podría generar caracteres inusuales en las letras de las canciones. Podría ser necesario reiniciar la aplicación</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estilo</string>
     <string name="open_on_play_title">Abrir al reproducir</string>
@@ -704,7 +702,7 @@ Podría ser necesario reiniciar la aplicación</string>
     <string name="select_extra_info_summary">Elija la información adicional a mostrar en el reproductor.</string>
     <string name="prefer_remaining_time_title">Preferir tiempo restante</string>
     <string name="prefer_remaining_time_summary">Muestra el tiempo restante de la canción en lugar de su duración.</string>
-    <string name="prefer_album_artist_name_title">"Preferir Artista del álbum"</string>
+    <string name="prefer_album_artist_name_title">Preferir Artista del álbum</string>
     <string name="prefer_album_artist_name_summary">Muestra el Artista del álbum en lugar del Artista de la canción (si está disponible).</string>
     <string name="player_blur_intensity_title">Intensidad del difuminado</string>
     <string name="player_blur_intensity_summary">Ajusta qué tan difuminado debe verse el fondo del tema Blur. Los valores más bajos tienen mejor rendimiento.</string>
@@ -715,7 +713,7 @@ Podría ser necesario reiniciar la aplicación</string>
     <string name="remember_shuffle_mode_summary">El modo aleatorio se mantendrá luego de iniciar una nueva lista de reproducción.</string>
     <string name="album_shuffle_mode_title">Modo de la mezcla de álbumes</string>
     <string name="artist_shuffle_mode_title">Modo de la mezcla de artistas</string>
-    <string name="rewind_with_back_title">"Rebobinar con \"Anterior\""</string>
+    <string name="rewind_with_back_title">Rebobinar con \"Anterior\"</string>
     <string name="rewind_with_back_summary">Rebobina la canción al presionar \"Anterior\", o salta a la pista anterior si la actual está iniciando.</string>
     <string name="rewind_fast_forward_amount_title">Cantidad de retroceso/avance rápido</string>
     <string name="rewind_fast_forward_amount_summary">Tiempo (en segundos) para retroceder o avanzar rápidamente usando los botones de la IU o controles externos.</string>
@@ -960,4 +958,12 @@ Podría ser necesario reiniciar la aplicación</string>
     <string name="advanced_settings">Ajustes avanzados</string>
     <string name="bit_perfect_is_active">Bit-perfect está activo</string>
     <string name="bit_perfect_description">Envía el audio directamente al DAC USB sin remuestreo del sistema.</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
