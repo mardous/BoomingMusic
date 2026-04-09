@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">Aplikace potřebuje oprávnění zařízení v blízkosti pro kontrolu bluetooth zařízení</string>
     <string name="permission_bluetooth_denied">Oprávnění zařízení v blízkosti bylo odepřeno.</string>
     <string name="permission_read_images_title">Číst obrázky (volitelné)</string>
-    <string name="permission_read_images_summary">Toto oprávnění je vyžadováno pro Booming Music pro nalezení souborů s obaly alba ve vašich hudebních složkách.
-        Pokud neplánujete používat tuto funkci, můžete se rozhodnout, že ji neudělíte.</string>
+    <string name="permission_read_images_summary">Toto oprávnění je vyžadováno pro Booming Music pro nalezení souborů s obaly alba ve vašich hudebních složkách. Pokud neplánujete používat tuto funkci, můžete se rozhodnout, že ji neudělíte.</string>
     <string name="permission_read_images_denied">Musíte udělit oprávnění ke čtení obrázků ze zařízení.</string>
     <string name="permission_exact_alarms_title">Naplánovat přesné budíky (volitelné)</string>
     <string name="permission_exact_alarms_description">Pro správné fungování časovače spánku je vyžadováno oprávnění naplánovat přesné výstrahy</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">Přejít na album</string>
     <string name="action_go_to_artist">Přejít na interpreta</string>
     <string name="action_go_to_genre">Přejít do žánru</string>
-    <string name="added_title_to_playing_queue">"Přidán 1 titulek do fronty."</string>
+    <string name="added_title_to_playing_queue">Přidán 1 titulek do fronty.</string>
     <string name="added_x_titles_to_playing_queue">%1$d názvy byly přidány do fronty.</string>
     <string name="next_song_label">Další skladba</string>
     <string name="next_song_x">Další • %1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">Aktualizovat obrázek</string>
     <string name="restore_default">Obnovit výchozí</string>
     <string name="remove_cover">Odstranit obal</string>
-    <string name="could_not_download_album_cover">"Nelze\u2019stáhnout odpovídající obal alba."</string>
+    <string name="could_not_download_album_cover">Nelze’stáhnout odpovídající obal alba.</string>
     <string name="download_image">Stáhnout obrázek</string>
     <string name="pick_from_local_storage">Vybrat z místního úložiště</string>
     <string name="about_x_title">O %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">Obal alba byl uložen</string>
     <string name="save_artwork_view_action">Zobrazit</string>
     <string name="save_artwork_copyright_info_title">Autorská práva oznámení</string>
-    <string name="save_artwork_copyright_info_message">Některé obálky alba (nebo všechny obálky) mohou být chráněny autorským právem. Takové obrázky nelze použít pro komerční nebo reklamní účely.
-        \n\nPouze vy máte celkovou odpovědnost za používání uložených obalů alba.</string>
+    <string name="save_artwork_copyright_info_message">Některé obálky alba (nebo všechny obálky) mohou být chráněny autorským právem. Takové obrázky nelze použít pro komerční nebo reklamní účely. \n\nPouze vy máte celkovou odpovědnost za používání uložených obalů alba.</string>
     <string name="yes">Ano</string>
     <string name="no">Ne</string>
     <string name="keyboard">Keyboard</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">Celkem disků</string>
     <string name="lyrics">Texty</string>
     <string name="lyricist">Texikátor</string>
-    <string name="could_not_load_the_song_information">"Informace o skladbě nelze načíst."</string>
+    <string name="could_not_load_the_song_information">Informace o skladbě nelze načíst.</string>
     <string name="no_results">Žádné výsledky</string>
     <string name="connection_unavailable">Připojení není k dispozici.</string>
     <string name="you_have_to_select_at_least_one_category">Musíte vybrat alespoň jednu kategorii</string>
@@ -657,8 +655,7 @@
     <string name="unsynced_font_size_full_title">Nesynchronizovaná velikost písma (celé zobrazení)</string>
     <string name="unsynced_font_size_full_summary">Upravte velikost písma pro nesynchronizované texty na celé obrazovce textu.</string>
     <string name="instrumental_tracks_identifiers_title">Identifikátory koleje s přístroji</string>
-    <string name="instrumental_tracks_identifiers_summary">Pokud text písně obsahuje pouze
-        jeden nebo více těchto indikátorů, bude označen jako instrumentální stopa (oddělená čárkou).</string>
+    <string name="instrumental_tracks_identifiers_summary">Pokud text písně obsahuje pouze jeden nebo více těchto indikátorů, bude označen jako instrumentální stopa (oddělená čárkou).</string>
     <string name="instrumental_tracks_mark_by_title_title">Označit podle názvu</string>
     <string name="instrumental_tracks_mark_by_title_summary">Název trasy bude také zohledněn při hledání identifikátorů.</string>
     <string name="ignore_blank_lines_title">Ignore blank lines</string>
@@ -710,7 +707,7 @@
     <string name="select_extra_info_summary">Vyberte další informace k zobrazení v panelu přehrávače.</string>
     <string name="prefer_remaining_time_title">Preferovat zbývající čas</string>
     <string name="prefer_remaining_time_summary">Zobrazit zbývající čas místo délky skladby.</string>
-    <string name="prefer_album_artist_name_title">"Preferovat název albového umělce"</string>
+    <string name="prefer_album_artist_name_title">Preferovat název albového umělce</string>
     <string name="prefer_album_artist_name_summary">Zobrazí jméno alba-umělce místo jména skladby (pokud je k dispozici).</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -721,7 +718,7 @@
     <string name="remember_shuffle_mode_summary">Režim zamíchání zůstane zapnutý při výběru nového seznamu skladeb.</string>
     <string name="album_shuffle_mode_title">Režim zamíchání alb</string>
     <string name="artist_shuffle_mode_title">Režim náhodného výběru umělce</string>
-    <string name="rewind_with_back_title">"Vrátit zpět s 'Předchozím'"</string>
+    <string name="rewind_with_back_title">Vrátit zpět s \'Předchozím\'</string>
     <string name="rewind_with_back_summary">Pokud je aktuální skladba na začátku, nebo se přesuňte na předchozí skladbu.</string>
     <string name="rewind_fast_forward_amount_title">Přepnout/Rychlá částka</string>
     <string name="rewind_fast_forward_amount_summary">Čas (v sekundách) pro zpětný vítr nebo rychlý dopředu s použitím rozhraní nebo vnějších ovládání.</string>
@@ -738,9 +735,7 @@
     <string name="pause_on_zero_volume_title">Pozastavit při nulové hlasitosti</string>
     <string name="pause_on_zero_volume_summary">Pozastaví skladbu, když hlasitost klesne na nulu a začne se přehrávat při stoupání úrovně hlasitosti. Také funguje mimo aplikaci.</string>
     <string name="mp3_index_seeking_title">Hledání indexu MP3</string>
-    <string name="mp3_index_seeking_summary">Načte celý MP3 soubor do paměti pro hledání namísto spoléhání na hlavičku Xing.
-        Použít pouze v případě, že hledání selže na některých VBR souborech.
-        Vyžaduje restart aplikace.</string>
+    <string name="mp3_index_seeking_summary">Načte celý MP3 soubor do paměti pro hledání namísto spoléhání na hlavičku Xing. Použít pouze v případě, že hledání selže na některých VBR souborech. Vyžaduje restart aplikace.</string>
     <string name="play_option_always_visible_title">Ponechat možnost \"Přehrát\" viditelnou</string>
     <string name="play_option_always_visible_summary">Pokud je povoleno, možnost \"Přehrát\" se vždy zobrazí v menu písně, bez ohledu na nastavení chování klepnutí.</string>
     <string name="play_option_whole_list_title">Možnost \"Hrát\" přehraje celý seznam</string>
@@ -802,8 +797,7 @@
     <string name="restore_backup_summary">Obnovit data aplikace (a stav) z předchozí zálohy.</string>
     <string name="stop_when_closed_from_recents_title">Zastavit při zavření nedávných aplikací</string>
     <string name="stop_when_closed_from_recents_summary">Přehrávání se zastaví, pokud je aplikace uzavřena ze seznamu nedávných aplikací.</string>
-    <string name="stop_when_closed_from_recents_note">Poznámka: Některá zařízení s agresivní pamětí
-        nebo s řízením baterie mohou toto nastavení ignorovat a po odstranění z nedávných aplikací vždy aplikaci zastavit.</string>
+    <string name="stop_when_closed_from_recents_note">Poznámka: Některá zařízení s agresivní pamětí nebo s řízením baterie mohou toto nastavení ignorovat a po odstranění z nedávných aplikací vždy aplikaci zastavit.</string>
     <string name="rotation_lock_title">Zámek rotace</string>
     <string name="rotation_lock_summary">Zamknout orientaci zařízení. Užitečné v případech, kdy se hudba zastaví při otáčení zařízení kvůli určitým politikám výrobce.</string>
     <!-- Preference values -->
@@ -889,11 +883,91 @@
     <string name="download_action">Stáhnout</string>
     <string name="downloading_update">Stahování Booming aktualizace hudby.</string>
     <string name="uncaught_error_title">Jejda! To se nepředpokládalo!</string>
-    <string name="uncaught_error_message">Zdá se, že se něco pokazilo a způsobilo pád aplikace.
-        Bylo by užitečné, kdybyste nám mohli poslat chybové hlášení naší skupině Telegram, nebo e-mailem.</string>
+    <string name="uncaught_error_message">Zdá se, že se něco pokazilo a způsobilo pád aplikace. Bylo by užitečné, kdybyste nám mohli poslat chybové hlášení naší skupině Telegram, nebo e-mailem.</string>
     <string name="uncaught_error_report">Hlášení chyb</string>
     <string name="uncaught_error_report_copied">Zpráva o chybě byla zkopírována do schránky.</string>
     <string name="uncaught_error_restart_app">Restartovat aplikaci</string>
     <string name="uncaught_error_github">Otevřít problém na GitHub</string>
     <string name="uncaught_error_send">Odeslat zprávu</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="app_widget_full_desc"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="app_widget_responsive"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="app_widget_card_desc"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="app_widget_responsive_desc"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="app_widget_card"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="app_widget_full"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
