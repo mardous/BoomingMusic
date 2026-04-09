@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">Appen behöver åtkomst till enheter i närheten för att söka efter bluetooth-enheter</string>
     <string name="permission_bluetooth_denied">Åtkomst till enheter i närheten nekad.</string>
     <string name="permission_read_images_title">Läs bilder (valfritt)</string>
-    <string name="permission_read_images_summary">Denna behörighet krävs för att Booming Music ska kunna hitta skivomslagsfiler i dina musikmappar.
-        Om du inte planerar att använda den här funktionen kan du välja att inte bevilja den.</string>
+    <string name="permission_read_images_summary">Denna behörighet krävs för att Booming Music ska kunna hitta skivomslagsfiler i dina musikmappar. Om du inte planerar att använda den här funktionen kan du välja att inte bevilja den.</string>
     <string name="permission_read_images_denied">Du måste ge behörighet att läsa bilder från enheten.</string>
     <string name="permission_exact_alarms_title">Schemalägg exakta alarm (valfritt)</string>
     <string name="permission_exact_alarms_description">Tillstånd att schemalägga exakta larm krävs för att sömntimern ska fungera korrekt</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">Gå till album</string>
     <string name="action_go_to_artist">Gå till Artist</string>
     <string name="action_go_to_genre">Gå till Genre</string>
-    <string name="added_title_to_playing_queue">"Lade till 1 titel till spelkön."</string>
+    <string name="added_title_to_playing_queue">Lade till 1 titel till spelkön.</string>
     <string name="added_x_titles_to_playing_queue">Lade till %1$d titlar i uppspelningskön.</string>
     <string name="next_song_label">Nästa låt</string>
     <string name="next_song_x">Nästa • %1$s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">Skivomslag sparat</string>
     <string name="save_artwork_view_action">Visa</string>
     <string name="save_artwork_copyright_info_title">Meddelande om upphovsrätt</string>
-    <string name="save_artwork_copyright_info_message">Vissa skivomslag (eller alla av dem) kan skyddas av upphovsrättslagar. Du kan inte använda sådana bilder för kommersiella eller reklamändamål.
-        \n\nBara du har totalansvar för din användning av sparade skivomslag.</string>
+    <string name="save_artwork_copyright_info_message">Vissa skivomslag (eller alla av dem) kan skyddas av upphovsrättslagar. Du kan inte använda sådana bilder för kommersiella eller reklamändamål. \n\nBara du har totalansvar för din användning av sparade skivomslag.</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="keyboard">Tangentbord</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">Totalt antal skivor</string>
     <string name="lyrics">Låttext</string>
     <string name="lyricist">Låttext</string>
-    <string name="could_not_load_the_song_information">"Det gick inte att ladda låtinformationen."</string>
+    <string name="could_not_load_the_song_information">Det gick inte att ladda låtinformationen.</string>
     <string name="no_results">Inga resultat</string>
     <string name="connection_unavailable">Anslutning ej tillgänglig.</string>
     <string name="you_have_to_select_at_least_one_category">Du måste välja minst en kategori</string>
@@ -644,8 +642,7 @@
     <string name="unsynced_font_size_full_title">Osynkroniserad teckenstorlek för låttexter (full vy)</string>
     <string name="unsynced_font_size_full_summary">Justera teckenstorleken för osynkade låttexter i hela låttextskärmen.</string>
     <string name="instrumental_tracks_identifiers_title">Instrumentala spåridentifierare</string>
-    <string name="instrumental_tracks_identifiers_summary">Om en låt endast består av
-        en eller flera av dessa indikatorer kommer den att markeras som ett instrumentalt spår (separerat med kommatecken).</string>
+    <string name="instrumental_tracks_identifiers_summary">Om en låt endast består av en eller flera av dessa indikatorer kommer den att markeras som ett instrumentalt spår (separerat med kommatecken).</string>
     <string name="instrumental_tracks_mark_by_title_title">Markera efter titel</string>
     <string name="instrumental_tracks_mark_by_title_summary">Spårets titel kommer också att beaktas när du söker efter identifierare.</string>
     <string name="ignore_blank_lines_title">Ignorera tomma rader</string>
@@ -697,7 +694,7 @@
     <string name="select_extra_info_summary">Välj den extra information som ska visas i spelarpanelen.</string>
     <string name="prefer_remaining_time_title">Föredrar återstående tid</string>
     <string name="prefer_remaining_time_summary">Visa återstående tid istället för låtens varaktighet.</string>
-    <string name="prefer_album_artist_name_title">"Föredrar Album-artistens namn"</string>
+    <string name="prefer_album_artist_name_title">Föredrar Album-artistens namn</string>
     <string name="prefer_album_artist_name_summary">Visar Album-artistens namn istället för Song-artistens namn (om tillgänglig).</string>
     <string name="player_blur_intensity_title">Suddighetsgrad</string>
     <string name="player_blur_intensity_summary">Justera hur stark oskärpan i bakgrunden ska vara i temat ”Blur”. Lägre värden kan förbättra prestandan.</string>
@@ -708,7 +705,7 @@
     <string name="remember_shuffle_mode_summary">Blanda läget kommer att finnas kvar när du väljer en ny lista över låtar.</string>
     <string name="album_shuffle_mode_title">Skivblandningsläge</string>
     <string name="artist_shuffle_mode_title">Artist blandar läge</string>
-    <string name="rewind_with_back_title">"Spola tillbaka med \"Föregående\""</string>
+    <string name="rewind_with_back_title">Spola tillbaka med \"Föregående\"</string>
     <string name="rewind_with_back_summary">Spola tillbaka spelspåret till start eller flytta till tidigare spår om den nuvarande är i början.</string>
     <string name="rewind_fast_forward_amount_title">Belopp för Rewind/Fast-forward</string>
     <string name="rewind_fast_forward_amount_summary">Tid (i sekunder) att spola tillbaka eller snabbt framåt med hjälp av UI eller externa kontroller.</string>
@@ -725,9 +722,7 @@
     <string name="pause_on_zero_volume_title">Pausa vid nollvolym</string>
     <string name="pause_on_zero_volume_summary">Pausar låten när volymen minskar till noll och börjar spela upp när volymen stiger. Fungerar också utanför appen.</string>
     <string name="mp3_index_seeking_title">MP3-index söker</string>
-    <string name="mp3_index_seeking_summary">Laddar hela MP3-filen till minne för att söka istället för att förlita sig på Xing-huvudet.
-        Använd endast om sökandet misslyckas på vissa VBR-filer.
-        Kräver omstart av appen.</string>
+    <string name="mp3_index_seeking_summary">Laddar hela MP3-filen till minne för att söka istället för att förlita sig på Xing-huvudet. Använd endast om sökandet misslyckas på vissa VBR-filer. Kräver omstart av appen.</string>
     <string name="play_option_always_visible_title">Håll \"Play\"-alternativet synligt</string>
     <string name="play_option_always_visible_summary">Om aktiverad, kommer alternativet \"Play\" alltid att visas i en låts meny, oavsett tryck beteende inställningar.</string>
     <string name="play_option_whole_list_title">\"Spela\" alternativet spelar upp hela listan</string>
@@ -790,8 +785,7 @@
     <string name="restore_backup_summary">Återställ appdata (och stat) från en tidigare säkerhetskopia.</string>
     <string name="stop_when_closed_from_recents_title">Stoppa när stängt från senaste</string>
     <string name="stop_when_closed_from_recents_summary">Uppspelning stoppas om appen är stängd från den senaste listan.</string>
-    <string name="stop_when_closed_from_recents_note">Obs: Vissa enheter med aggressivt minne
-        eller batterihantering kan ignorera denna inställning och alltid stoppa appen när den tas bort från senaste.</string>
+    <string name="stop_when_closed_from_recents_note">Obs: Vissa enheter med aggressivt minne eller batterihantering kan ignorera denna inställning och alltid stoppa appen när den tas bort från senaste.</string>
     <string name="rotation_lock_title">Rotationslås</string>
     <string name="rotation_lock_summary">Lås enhetens inriktning. Användbart i de fall där musik stannar när enheten roteras på grund av vissa tillverkarens policyer.</string>
     <!-- Preference values -->
@@ -877,8 +871,7 @@
     <string name="download_action">Hämta</string>
     <string name="downloading_update">Laddar ner Booming Music uppdatering.</string>
     <string name="uncaught_error_title">Hoppsan! Det var inte tänkt att hända!</string>
-    <string name="uncaught_error_message">Det verkar som om något gick fel och fick appen att krascha.
-        Det skulle vara bra om du kunde skicka felrapporten till vår Telegram grupp eller via e-post.</string>
+    <string name="uncaught_error_message">Det verkar som om något gick fel och fick appen att krascha. Det skulle vara bra om du kunde skicka felrapporten till vår Telegram grupp eller via e-post.</string>
     <string name="uncaught_error_report">Felrapport</string>
     <string name="uncaught_error_report_copied">Kopierade felrapport till urklipp.</string>
     <string name="uncaught_error_restart_app">Starta om app</string>
@@ -957,4 +950,12 @@
     <string name="widget_image_corner_radius_summary">Ändra rundningen på omslagsbilden.</string>
     <string name="widget_third_line_title">Tredje informationsraden</string>
     <string name="widget_third_line_summary">Välj vad som ska visas i den tredje textraden.</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
