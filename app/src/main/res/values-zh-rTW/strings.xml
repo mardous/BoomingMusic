@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">此應用需要附近的設備權限來檢查藍牙設備</string>
     <string name="permission_bluetooth_denied">附近設備權限被拒絕。</string>
     <string name="permission_read_images_title">查看圖片（可選）</string>
-    <string name="permission_read_images_summary">為了幫您自動查找並顯示歌曲的專輯封面，Booming Music需要獲取訪問您音樂資料夾的權限。
-您可以根據需要決定是否授予此權限。</string>
+    <string name="permission_read_images_summary">為了幫您自動查找並顯示歌曲的專輯封面，Booming Music需要獲取訪問您音樂資料夾的權限。 您可以根據需要決定是否授予此權限。</string>
     <string name="permission_read_images_denied">您需要授予訪問所有檔案的權限以允許軟體讀取封面圖片。</string>
     <string name="permission_exact_alarms_title">設定精確鬧鐘(可選)</string>
     <string name="permission_exact_alarms_description">睡眠計時器需獲取設定精確鬧鐘的權限才能正常工作</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">轉至專輯</string>
     <string name="action_go_to_artist">轉至藝人</string>
     <string name="action_go_to_genre">轉至流派</string>
-    <string name="added_title_to_playing_queue">"已新增 1 首歌到播放隊列。"</string>
+    <string name="added_title_to_playing_queue">已新增 1 首歌到播放隊列。</string>
     <string name="added_x_titles_to_playing_queue">已新增 %1$d 首歌到播放隊列。</string>
     <string name="next_song_label">下一首歌曲</string>
     <string name="next_song_x">下一首・%1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">更新圖像</string>
     <string name="restore_default">恢復預設</string>
     <string name="remove_cover">移除封面</string>
-    <string name="could_not_download_album_cover">"無法下載匹配的相簿封面。"</string>
+    <string name="could_not_download_album_cover">無法下載匹配的相簿封面。</string>
     <string name="download_image">下載圖像</string>
     <string name="pick_from_local_storage">從本地存儲中選取</string>
     <string name="about_x_title">關於 %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">已儲存專輯封面</string>
     <string name="save_artwork_view_action">查看</string>
     <string name="save_artwork_copyright_info_title">版權聲明</string>
-    <string name="save_artwork_copyright_info_message">某些專輯封面 (或全部)可能受到版權法的保護。您不能將此圖像用於商業或廣告目的。
-        \n\n只有您對您儲存的相簿封面的使用承擔全部責任。</string>
+    <string name="save_artwork_copyright_info_message">某些專輯封面 (或全部)可能受到版權法的保護。您不能將此圖像用於商業或廣告目的。 \n\n只有您對您儲存的相簿封面的使用承擔全部責任。</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="keyboard">鍵盤</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">總盤片</string>
     <string name="lyrics">歌詞</string>
     <string name="lyricist">作詞人</string>
-    <string name="could_not_load_the_song_information">"無法載入歌曲訊息。"</string>
+    <string name="could_not_load_the_song_information">無法載入歌曲訊息。</string>
     <string name="no_results">沒有結果</string>
     <string name="connection_unavailable">連接不可用。</string>
     <string name="you_have_to_select_at_least_one_category">您必須選擇至少一個類別</string>
@@ -406,9 +404,7 @@
     <string name="autoeq_profiles_title">AutoEq 設定檔</string>
     <string name="eq_profile_title">設定檔</string>
     <string name="change_band_count_title">變更頻段數量</string>
-    <string name="change_band_count_message">變更頻段數量將會把目前的設定檔重設為初始狀態。
-        針對目前頻段設定所儲存的其他設定檔將無法在新的頻段設定中使用。
-        \n\n要繼續嗎？</string>
+    <string name="change_band_count_message">變更頻段數量將會把目前的設定檔重設為初始狀態。 針對目前頻段設定所儲存的其他設定檔將無法在新的頻段設定中使用。 \n\n要繼續嗎？</string>
     <string name="band_configuration_changed_successfully">頻段設定已成功變更。</string>
     <string name="band_configuration_could_not_be_changed">無法變更頻段設定。</string>
     <string name="share_eq_profiles">分享 EQ 設定檔</string>
@@ -638,8 +634,7 @@
     <string name="unsynced_font_size_full_title">非同步歌詞字體大小（全螢幕模式）</string>
     <string name="unsynced_font_size_full_summary">調整全螢幕歌詞模式下顯示的非同步歌詞的字體大小。</string>
     <string name="instrumental_tracks_identifiers_title">純音樂曲目識別</string>
-    <string name="instrumental_tracks_identifiers_summary">若歌曲的歌詞只包含
-        個或多個指示器，它將被標記為一首純音樂(用逗號隔開)。</string>
+    <string name="instrumental_tracks_identifiers_summary">若歌曲的歌詞只包含 個或多個指示器，它將被標記為一首純音樂(用逗號隔開)。</string>
     <string name="instrumental_tracks_mark_by_title_title">按標題標記</string>
     <string name="instrumental_tracks_mark_by_title_summary">在搜尋識別資料時，還將考慮曲目標題。</string>
     <string name="ignore_blank_lines_title">Ignore blank lines</string>
@@ -691,7 +686,7 @@
     <string name="select_extra_info_summary">選擇要在播放器面板中顯示的額外訊息。</string>
     <string name="prefer_remaining_time_title">優先顯示剩餘時間</string>
     <string name="prefer_remaining_time_summary">顯示剩餘時間而不是歌曲持續時間。</string>
-    <string name="prefer_album_artist_name_title">"首選專用藝術家名稱"</string>
+    <string name="prefer_album_artist_name_title">首選專用藝術家名稱</string>
     <string name="prefer_album_artist_name_summary">顯示專輯藝術家的名字，而不是歌手的名字(如果可用的話)。</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -702,7 +697,7 @@
     <string name="remember_shuffle_mode_summary">選擇新歌曲列表時將保持隨機模式。</string>
     <string name="album_shuffle_mode_title">專輯隨機模式</string>
     <string name="artist_shuffle_mode_title">藝術家隨機模式</string>
-    <string name="rewind_with_back_title">"帶著「上一個」返回"</string>
+    <string name="rewind_with_back_title">帶著「上一個」返回</string>
     <string name="rewind_with_back_summary">將播放曲目退回開始或移動到上一首曲目，如果當前曲目正在開始。</string>
     <string name="rewind_fast_forward_amount_title">快進/快退</string>
     <string name="rewind_fast_forward_amount_summary">使用用戶界面或外接控制器來快進/快退（時間單位為秒）。</string>
@@ -719,9 +714,7 @@
     <string name="pause_on_zero_volume_title">在靜音時停止播放</string>
     <string name="pause_on_zero_volume_summary">當音量下降為零時暫停歌曲，並在音量上升時恢復播放。同時支援在應用程式外工作。</string>
     <string name="mp3_index_seeking_title">MP3索引定位</string>
-    <string name="mp3_index_seeking_summary">將整個MP3檔案載入到記憶體中，以便跳轉而不是依賴Xing 頭部訊息。
-        只在跳轉部分VBR檔案失敗時使用。
-        需要重啟應用程式。</string>
+    <string name="mp3_index_seeking_summary">將整個MP3檔案載入到記憶體中，以便跳轉而不是依賴Xing 頭部訊息。 只在跳轉部分VBR檔案失敗時使用。 需要重啟應用程式。</string>
     <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
     <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
     <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
@@ -870,11 +863,91 @@
     <string name="download_action">下載</string>
     <string name="downloading_update">正在下載 Booming 音樂更新。</string>
     <string name="uncaught_error_title">哎呀！出現了意料之外的事！</string>
-    <string name="uncaught_error_message">似乎有什麼東西出錯並導致了軟體崩潰。
-        如果您能夠向我們發送錯誤報告到我們的 Telegram 群組或通過電子郵件，將會很有幫助。</string>
+    <string name="uncaught_error_message">似乎有什麼東西出錯並導致了軟體崩潰。 如果您能夠向我們發送錯誤報告到我們的 Telegram 群組或通過電子郵件，將會很有幫助。</string>
     <string name="uncaught_error_report">錯誤報告</string>
     <string name="uncaught_error_report_copied">已複製錯誤報告到剪貼簿。</string>
     <string name="uncaught_error_restart_app">重啟應用</string>
     <string name="uncaught_error_github">在GitHub上回饋問題</string>
     <string name="uncaught_error_send">發送報告</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="app_widget_full_desc"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="app_widget_responsive"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="app_widget_card_desc"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="app_widget_responsive_desc"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="app_widget_card"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="app_widget_full"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
