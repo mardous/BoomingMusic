@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">يحتاج التطبيق إلى إذن الأجهزة القريبة للتحقق من أجهزة بلوتوث</string>
     <string name="permission_bluetooth_denied">تم رفض إذن الأجهزة القريبة.</string>
     <string name="permission_read_images_title">قراءة الصور (اختياري)</string>
-    <string name="permission_read_images_summary">هذا الإذن مطلوب للموسيقى \"بومنج\" للعثور على ملفات صور الألبوم في مجلدات الموسيقى الخاصة بك.
-        إذا كنت لا تخطط لاستخدام هذه الميزة، يمكنك اختيار عدم منحها.</string>
+    <string name="permission_read_images_summary">هذا الإذن مطلوب للموسيقى \"بومنج\" للعثور على ملفات صور الألبوم في مجلدات الموسيقى الخاصة بك. إذا كنت لا تخطط لاستخدام هذه الميزة، يمكنك اختيار عدم منحها.</string>
     <string name="permission_read_images_denied">يجب عليك منح الإذن لقراءة الصور من الجهاز.</string>
     <string name="permission_exact_alarms_title">جدولة التنبيهات الدقيقة (اختياري)</string>
     <string name="permission_exact_alarms_description">إذن لجدولة التنبيهات الدقيقة مطلوب لكي يعمل مؤقت النوم بشكل صحيح</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">الذهاب إلى الألبوم</string>
     <string name="action_go_to_artist">الذهاب إلى الفنان</string>
     <string name="action_go_to_genre">الذهاب إلى النوع</string>
-    <string name="added_title_to_playing_queue">"تمت إضافة عنوان واحد إلى قائمة انتظار اللعبة."</string>
+    <string name="added_title_to_playing_queue">تمت إضافة عنوان واحد إلى قائمة انتظار اللعبة.</string>
     <string name="added_x_titles_to_playing_queue">أضيفت عناوين %1$d إلى قائمة انتظار اللعبة.</string>
     <string name="next_song_label">الأغنية التالية</string>
     <string name="next_song_x">التالي • %1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">تحديث الصورة</string>
     <string name="restore_default">استعادة الافتراضي</string>
     <string name="remove_cover">إزالة الغطاء</string>
-    <string name="could_not_download_album_cover">"تعذّر تشغيل\u2019t تحميل غلاف الألبوم المطابق."</string>
+    <string name="could_not_download_album_cover">تعذّر تشغيل’t تحميل غلاف الألبوم المطابق.</string>
     <string name="download_image">تحميل الصورة</string>
     <string name="pick_from_local_storage">اختر من التخزين المحلي</string>
     <string name="about_x_title">حول %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">تم حفظ غلاف الألبوم</string>
     <string name="save_artwork_view_action">عرض</string>
     <string name="save_artwork_copyright_info_title">إشعار حقوق الطبع والنشر</string>
-    <string name="save_artwork_copyright_info_message">بعض أغلفة الألبوم (أو جميعها) قد تكون محمية بقوانين حقوق التأليف والنشر. لا يمكنك استخدام هذه الصور لأغراض تجارية أو إعلانية.
-        \n\nفقط لديك المسؤولية الكاملة عن استخدام أغلفة الألبوم المحفوظة.</string>
+    <string name="save_artwork_copyright_info_message">بعض أغلفة الألبوم (أو جميعها) قد تكون محمية بقوانين حقوق التأليف والنشر. لا يمكنك استخدام هذه الصور لأغراض تجارية أو إعلانية. \n\nفقط لديك المسؤولية الكاملة عن استخدام أغلفة الألبوم المحفوظة.</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="keyboard">Keyboard</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">مجموع الأقراص</string>
     <string name="lyrics">كلمات</string>
     <string name="lyricist">كلماتي</string>
-    <string name="could_not_load_the_song_information">"تعذر تحميل معلومات الأغنية."</string>
+    <string name="could_not_load_the_song_information">تعذر تحميل معلومات الأغنية.</string>
     <string name="no_results">لا توجد نتائج</string>
     <string name="connection_unavailable">الاتصال غير متوفر.</string>
     <string name="you_have_to_select_at_least_one_category">يجب عليك تحديد فئة واحدة على الأقل</string>
@@ -676,8 +674,7 @@
     <string name="unsynced_font_size_full_title">حجم خط كلمات الاغنية غير متزامنة (عرض كامل)</string>
     <string name="unsynced_font_size_full_summary">ضبط حجم الخط لكلمات الأغاني غير المتزامنة في كامل شاشة الكلمات.</string>
     <string name="instrumental_tracks_identifiers_title">معرّفات المسار الآلي</string>
-    <string name="instrumental_tracks_identifiers_summary">إذا كانت كلمات الأغنية تتكون من
-        فقط واحدة أو أكثر من هذه المؤشرات، فسيتم وضع علامة عليها كمسار فعال (مفصولة بفاصلة).</string>
+    <string name="instrumental_tracks_identifiers_summary">إذا كانت كلمات الأغنية تتكون من فقط واحدة أو أكثر من هذه المؤشرات، فسيتم وضع علامة عليها كمسار فعال (مفصولة بفاصلة).</string>
     <string name="instrumental_tracks_mark_by_title_title">وضع علامة حسب العنوان</string>
     <string name="instrumental_tracks_mark_by_title_summary">كما سيؤخذ عنوان المسار في الاعتبار عند البحث عن المعرفة.</string>
     <string name="ignore_blank_lines_title">Ignore blank lines</string>
@@ -729,7 +726,7 @@
     <string name="select_extra_info_summary">حدد المعلومات الإضافية لعرضها في لوحة اللاعب.</string>
     <string name="prefer_remaining_time_title">تفضّل الوقت المتبقي</string>
     <string name="prefer_remaining_time_summary">عرض الوقت المتبقي بدلاً من مدة الأغنية.</string>
-    <string name="prefer_album_artist_name_title">"تفضيل اسم الفنان ألبوم-"</string>
+    <string name="prefer_album_artist_name_title">تفضيل اسم الفنان ألبوم-</string>
     <string name="prefer_album_artist_name_summary">يعرض اسم فنان ألبوم بدلاً من اسم فنان الأغنية (إذا كان متاحاً).</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -740,7 +737,7 @@
     <string name="remember_shuffle_mode_summary">سيبقى الوضع العشوائي قيد التشغيل عند تحديد قائمة جديدة من الأغنية.</string>
     <string name="album_shuffle_mode_title">وضع خلط الألبوم</string>
     <string name="artist_shuffle_mode_title">وضع خلط الفنان</string>
-    <string name="rewind_with_back_title">"إرجاع بـ 'السابقة'"</string>
+    <string name="rewind_with_back_title">إرجاع بـ \'السابقة\'</string>
     <string name="rewind_with_back_summary">إرجاع مسار التشغيل إلى البداية أو الانتقال إلى المسار السابق إذا كان المسار الحالي في البداية.</string>
     <string name="rewind_fast_forward_amount_title">إعادة التصحيح/المبلغ السريع</string>
     <string name="rewind_fast_forward_amount_summary">الوقت (بالثواني) لإعادة الريح أو للأمام بسرعة باستخدام واجهة المستخدم أو الضوابط الخارجية.</string>
@@ -757,9 +754,7 @@
     <string name="pause_on_zero_volume_title">إيقاف عند مستوى الصوت صفر</string>
     <string name="pause_on_zero_volume_summary">إيقاف الأغنية عندما ينخفض حجم الصوت إلى صفر ويبدأ التشغيل مرة أخرى عندما يرتفع مستوى الصوت. يعمل أيضا خارج التطبيق.</string>
     <string name="mp3_index_seeking_title">البحث عن فهرس MP3</string>
-    <string name="mp3_index_seeking_summary">يقوم بتحميل ملف MP3 بأكمله إلى الذاكرة للسعي بدلاً من الاعتماد على رأس Xing.
-        استخدم فقط إذا فشل البحث على بعض ملفات VBR.
-        يتطلب إعادة تشغيل التطبيق.</string>
+    <string name="mp3_index_seeking_summary">يقوم بتحميل ملف MP3 بأكمله إلى الذاكرة للسعي بدلاً من الاعتماد على رأس Xing. استخدم فقط إذا فشل البحث على بعض ملفات VBR. يتطلب إعادة تشغيل التطبيق.</string>
     <string name="play_option_always_visible_title">إبقاء خيار \"تشغيل\" مرئي</string>
     <string name="play_option_always_visible_summary">إذا تم تفعيله، فإن خيار \"تشغيل\" سيظهر دائماً في قائمة الأغنية، بغض النظر عن إعدادات السلوك.</string>
     <string name="play_option_whole_list_title">خيار \"تشغيل\" يشغل قائمة كاملة</string>
@@ -822,8 +817,7 @@
     <string name="restore_backup_summary">استعادة بيانات التطبيق (والولاية) من نسخة احتياطية سابقة.</string>
     <string name="stop_when_closed_from_recents_title">إيقاف عند الإغلاق من التطبيقات الحديثة</string>
     <string name="stop_when_closed_from_recents_summary">يتوقف التشغيل إذا تم إغلاق التطبيق من قائمة التطبيقات الأخيرة.</string>
-    <string name="stop_when_closed_from_recents_note">ملاحظة: بعض الأجهزة ذات الذاكرة العدوانية
-        أو إدارة البطارية قد تتجاهل هذا الإعداد وتوقف التطبيق دائما عند إزالته من الحديث.</string>
+    <string name="stop_when_closed_from_recents_note">ملاحظة: بعض الأجهزة ذات الذاكرة العدوانية أو إدارة البطارية قد تتجاهل هذا الإعداد وتوقف التطبيق دائما عند إزالته من الحديث.</string>
     <string name="rotation_lock_title">قفل الدوران</string>
     <string name="rotation_lock_summary">قفل اتجاه الجهاز. مفيد في الحالات التي تتوقف فيها الموسيقى عند تدوير الجهاز بسبب بعض سياسات الشركة المصنعة.</string>
     <!-- Preference values -->
@@ -909,11 +903,91 @@
     <string name="download_action">تنزيل</string>
     <string name="downloading_update">تحميل تحديث الموسيقى المزدهرة.</string>
     <string name="uncaught_error_title">عفوا! لم يكن من المفترض أن يحدث ذلك!</string>
-    <string name="uncaught_error_message">يبدو أنه حدث خطأ ما وتسبب في تعطيل التطبيق.
-        سيكون من المفيد أن ترسل لنا تقرير الخطأ إلى مجموعة تيليجرام أو عبر البريد الإلكتروني.</string>
+    <string name="uncaught_error_message">يبدو أنه حدث خطأ ما وتسبب في تعطيل التطبيق. سيكون من المفيد أن ترسل لنا تقرير الخطأ إلى مجموعة تيليجرام أو عبر البريد الإلكتروني.</string>
     <string name="uncaught_error_report">تقرير الخطأ</string>
     <string name="uncaught_error_report_copied">تم نسخ تقرير الخطأ إلى الحافظة.</string>
     <string name="uncaught_error_restart_app">إعادة تشغيل التطبيق</string>
     <string name="uncaught_error_github">فتح المشكلة على GitHub</string>
     <string name="uncaught_error_send">إرسال التقرير</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="app_widget_full_desc"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="app_widget_responsive"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="app_widget_card_desc"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="app_widget_responsive_desc"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="app_widget_card"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="app_widget_full"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
