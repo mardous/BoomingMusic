@@ -889,7 +889,7 @@
     <string name="lastfm_login_password">Mot de passe</string>
     <string name="lastfm_login_ok">Se connecter</string>
     <string name="lastfm_login_toggle_password_visibility">Afficher/masquer le mot de passe</string>
-    <string name="lastfm_connected_account">Compte associé :</string>
+    <string name="lastfm_connected_account">Compte associé :</string>
     <string name="lastfm_logout">Se déconnecter</string>
     <string name="error_lastfm_auth">La session a expiré ou les identifiants ne sont pas valides. Veuillez vous reconnecter.</string>
     <string name="error_lastfm_credentials">Vos identifiants ne sont pas valides. Veuillez les vérifier et réessayer.</string>
@@ -937,7 +937,7 @@
     <string name="channel_surround_13_1">Son surround 13.1</string>
     <string name="lyrics_center_horizontally_title">Centrer le texte horizontalement</string>
     <string name="lyrics_center_horizontally_summary">Alignez chaque ligne des paroles au centre horizontal de l\'écran.</string>
-    <string name="bit_perfect_info">Bit-Perfect : %1$s | %2$s</string>
+    <string name="bit_perfect_info">Bit-Perfect : %1$s | %2$s</string>
     <string name="bit_perfect_title">Audio sans perte</string>
     <string name="app_widget_responsive">Adaptatif</string>
     <string name="app_widget_responsive_desc">Un widget qui adapte sa mise en page à différentes tailles</string>
