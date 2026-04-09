@@ -181,7 +181,7 @@
     <string name="action_go_to_album">Ir al álbum</string>
     <string name="action_go_to_artist">Ir al artista</string>
     <string name="action_go_to_genre">Ir al género</string>
-    <string name="added_title_to_playing_queue">"Añadido 1 título a la cola de reproducción."</string>
+    <string name="added_title_to_playing_queue">Añadido 1 título a la cola de reproducción.</string>
     <string name="added_x_titles_to_playing_queue">Añadidos títulos %1$d a la cola de reproducción.</string>
     <string name="next_song_label">Siguiente canción</string>
     <string name="next_song_x">Siguiente • %1$s</string>
@@ -312,7 +312,7 @@
     <string name="disc">Disco</string>
     <string name="lyrics">Letra</string>
     <string name="lyricist">Letrista</string>
-    <string name="could_not_load_the_song_information">"No se pudo cargar la información de la canción."</string>
+    <string name="could_not_load_the_song_information">No se pudo cargar la información de la canción.</string>
     <string name="no_results">Ningún resultado</string>
     <string name="connection_unavailable">Conexión no disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Debe seleccionar al menos una categoría</string>
@@ -642,8 +642,7 @@
     <string name="unsynced_font_size_full_title">Tamaño de letra no sincronizado (vista completa)</string>
     <string name="unsynced_font_size_full_summary">Ajuste el tamaño de fuente para letras no sincronizadas en la pantalla completa de letras.</string>
     <string name="instrumental_tracks_identifiers_title">Identificadores de pistas intrumentales</string>
-    <string name="instrumental_tracks_identifiers_summary">Si la letra de una canción consiste en solo
-        uno o más de estos indicadores, se marcará como una canción instrumental (separada por coma).</string>
+    <string name="instrumental_tracks_identifiers_summary">Si la letra de una canción consiste en solo uno o más de estos indicadores, se marcará como una canción instrumental (separada por coma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marcar por título</string>
     <string name="instrumental_tracks_mark_by_title_summary">El título de la pista también se tendrá en cuenta al buscar identificadores.</string>
     <string name="ignore_blank_lines_title">Ignorar renglones vacíos</string>
@@ -695,7 +694,7 @@
     <string name="select_extra_info_summary">Seleccione la información adicional para mostrar en el panel del reproductor.</string>
     <string name="prefer_remaining_time_title">Preferir tiempo restante</string>
     <string name="prefer_remaining_time_summary">Mostrar el tiempo restante en lugar de la duración de la canción.</string>
-    <string name="prefer_album_artist_name_title">"Nombre del álbum preferido"</string>
+    <string name="prefer_album_artist_name_title">Nombre del álbum preferido</string>
     <string name="prefer_album_artist_name_summary">Muestra el nombre del Álbum-artista en lugar del nombre del Artista de la Canción (si está disponible).</string>
     <string name="player_blur_intensity_title">Intensidad de desenfoque</string>
     <string name="player_blur_intensity_summary">Ajusta la intensidad del desenfoque del fondo en el tema Desenfoque. Unos valores más bajos pueden mejorar el rendimiento.</string>
@@ -785,8 +784,7 @@
     <string name="restore_backup_summary">Restaurar datos (y estado) de la aplicación desde una copia de seguridad anterior.</string>
     <string name="stop_when_closed_from_recents_title">Detener cuando se cierra desde recientes</string>
     <string name="stop_when_closed_from_recents_summary">La reproducción se detiene si la aplicación está cerrada de la lista de recientes.</string>
-    <string name="stop_when_closed_from_recents_note">Nota: Algunos dispositivos con memoria
-        agresiva o administración de batería pueden ignorar esta configuración y siempre detener la aplicación cuando se quita de los recientes.</string>
+    <string name="stop_when_closed_from_recents_note">Nota: Algunos dispositivos con memoria agresiva o administración de batería pueden ignorar esta configuración y siempre detener la aplicación cuando se quita de los recientes.</string>
     <string name="rotation_lock_title">Bloqueo de rotación</string>
     <string name="rotation_lock_summary">Bloquea la orientación del dispositivo. Útil en casos en los que la música se detiene al girar el dispositivo debido a ciertas políticas del fabricante.</string>
     <!-- Preference values -->
@@ -951,4 +949,16 @@
     <string name="widget_image_corner_radius_summary">Cambie el redondeado del arte de cubierta.</string>
     <string name="widget_third_line_title">Tercer renglón de información</string>
     <string name="widget_third_line_summary">Elija qué mostrar en la tercera fila de texto.</string>
+    <string name="advanced_settings"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
