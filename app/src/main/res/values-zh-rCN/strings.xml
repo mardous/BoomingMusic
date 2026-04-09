@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">此应用需要附近的设备权限来检查蓝牙设备</string>
     <string name="permission_bluetooth_denied">附近设备权限被拒绝。</string>
     <string name="permission_read_images_title">查看图片（可选）</string>
-    <string name="permission_read_images_summary">为了帮您自动查找并显示歌曲的专辑封面，Booming Music需要获取访问您音乐文件夹的权限。
-您可以根据需要决定是否授予此权限。</string>
+    <string name="permission_read_images_summary">为了帮您自动查找并显示歌曲的专辑封面，Booming Music需要获取访问您音乐文件夹的权限。 您可以根据需要决定是否授予此权限。</string>
     <string name="permission_read_images_denied">您需要授予访问所有文件的权限以允许软件读取封面图片。</string>
     <string name="permission_exact_alarms_title">设置精确闹钟(可选)</string>
     <string name="permission_exact_alarms_description">睡眠计时器需要获取设置精确闹钟的权限才能正常工作</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">转至专辑</string>
     <string name="action_go_to_artist">转至艺人</string>
     <string name="action_go_to_genre">转至流派</string>
-    <string name="added_title_to_playing_queue">"已添加 1 首歌到播放队列。"</string>
+    <string name="added_title_to_playing_queue">已添加 1 首歌到播放队列。</string>
     <string name="added_x_titles_to_playing_queue">已添加 %1$d 首歌到播放队列。</string>
     <string name="next_song_label">下一首歌曲</string>
     <string name="next_song_x">下一首・%1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">更新图像</string>
     <string name="restore_default">恢复默认</string>
     <string name="remove_cover">移除封面</string>
-    <string name="could_not_download_album_cover">"无法下载匹配的相册封面。"</string>
+    <string name="could_not_download_album_cover">无法下载匹配的相册封面。</string>
     <string name="download_image">下载图像</string>
     <string name="pick_from_local_storage">从本地存储中选取</string>
     <string name="about_x_title">关于 %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">已保存专辑封面</string>
     <string name="save_artwork_view_action">查看</string>
     <string name="save_artwork_copyright_info_title">版权提醒</string>
-    <string name="save_artwork_copyright_info_message">部分（或全部）专辑封面可能受到版权法的保护。您不能将此类图像用于商业或广告目的。
-        \n\n您使用保存的专辑封面时需承担全部责任。</string>
+    <string name="save_artwork_copyright_info_message">部分（或全部）专辑封面可能受到版权法的保护。您不能将此类图像用于商业或广告目的。 \n\n您使用保存的专辑封面时需承担全部责任。</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="keyboard">键盘</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">总碟片</string>
     <string name="lyrics">歌词</string>
     <string name="lyricist">作词</string>
-    <string name="could_not_load_the_song_information">"无法加载歌曲信息。"</string>
+    <string name="could_not_load_the_song_information">无法加载歌曲信息。</string>
     <string name="no_results">没有结果</string>
     <string name="connection_unavailable">连接不可用。</string>
     <string name="you_have_to_select_at_least_one_category">您必须选择至少一个类别</string>
@@ -406,9 +404,7 @@
     <string name="autoeq_profiles_title">AutoEq 配置</string>
     <string name="eq_profile_title">配置</string>
     <string name="change_band_count_title">更改频段数量</string>
-    <string name="change_band_count_message">更改频段数量将重置当前配置为默认。
-        当前频段配置中的其他配置文件不能与新的频段配置一起使用。
-        \n\n确定要更改吗？</string>
+    <string name="change_band_count_message">更改频段数量将重置当前配置为默认。 当前频段配置中的其他配置文件不能与新的频段配置一起使用。 \n\n确定要更改吗？</string>
     <string name="band_configuration_changed_successfully">频段配置更改成功。</string>
     <string name="band_configuration_could_not_be_changed">错误：频段配置无法更改。</string>
     <string name="share_eq_profiles">分享均衡器配置</string>
@@ -430,8 +426,7 @@
     <string name="select_a_file_containing_autoeq_params">选择一个 AutoEq （图形化均衡器）配置文件。</string>
     <string name="no_autoeq_profiles">未导入 AutoEq 配置。</string>
     <string name="reset_equalizer">重置均衡器</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">确定要重置均衡器吗？
-        \n\n这将清除您的所有配置。</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">确定要重置均衡器吗？ \n\n这将清除您的所有配置。</string>
     <string name="not_supported">不支持</string>
     <string name="set_eq_engine_title">设置均衡引擎</string>
     <string name="eq_engine_basic_title">传统引擎</string>
@@ -645,9 +640,7 @@
     <string name="ignore_blank_lines_title">忽略空行</string>
     <string name="ignore_blank_lines_summary">忽略 LRC 文件中的空行，而不将其显示为气泡动画。</string>
     <string name="treat_all_lyrics_files_as_utf8_title">将所有歌词文件视为UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">强制以 UTF-8 编码读取音频文件。
-        这优化了文件解析过程，但在某些情况下可能导致歌曲歌词中出现异常字符。
-        可能需要重启应用</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">强制以 UTF-8 编码读取音频文件。 这优化了文件解析过程，但在某些情况下可能导致歌曲歌词中出现异常字符。 可能需要重启应用</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">样式</string>
     <string name="open_on_play_title">播放时打开</string>
@@ -693,7 +686,7 @@
     <string name="select_extra_info_summary">选择要在播放器面板中显示的额外信息。</string>
     <string name="prefer_remaining_time_title">显示剩余时间</string>
     <string name="prefer_remaining_time_summary">显示歌曲剩余时间，而不是全长。</string>
-    <string name="prefer_album_artist_name_title">"首选专辑艺术家名称"</string>
+    <string name="prefer_album_artist_name_title">首选专辑艺术家名称</string>
     <string name="prefer_album_artist_name_summary">显示专辑艺术家的名称，而不显示单曲歌手的名称（若有）。</string>
     <string name="player_blur_intensity_title">模糊强度</string>
     <string name="player_blur_intensity_summary">调整模糊主题中的背景模糊强度。调低数值可能会提升性能。</string>
@@ -704,7 +697,7 @@
     <string name="remember_shuffle_mode_summary">选择新歌曲列表时将保持随机模式。</string>
     <string name="album_shuffle_mode_title">专辑随机模式</string>
     <string name="artist_shuffle_mode_title">艺术家随机模式</string>
-    <string name="rewind_with_back_title">"使用“上一曲”按钮快退"</string>
+    <string name="rewind_with_back_title">使用“上一曲”按钮快退</string>
     <string name="rewind_with_back_summary">设置当前曲目正在播放开头时，“上一曲”按钮是快退到曲目开始还是退回上一曲。</string>
     <string name="rewind_fast_forward_amount_title">快进/快退长度</string>
     <string name="rewind_fast_forward_amount_summary">使用应用界面或外部控制按钮进行快进/快退的时长（单位为秒）。</string>
@@ -721,9 +714,7 @@
     <string name="pause_on_zero_volume_title">在静音时停止播放</string>
     <string name="pause_on_zero_volume_summary">当音量下降为零时暂停歌曲，并在音量上升时恢复播放。同时支持在应用程序外工作。</string>
     <string name="mp3_index_seeking_title">MP3索引定位</string>
-    <string name="mp3_index_seeking_summary">将整个MP3文件加载到内存中，以便跳转而不是依赖Xing 头部信息。
-        只在跳转部分VBR文件失败时使用。
-        需要重启应用程序。</string>
+    <string name="mp3_index_seeking_summary">将整个MP3文件加载到内存中，以便跳转而不是依赖Xing 头部信息。 只在跳转部分VBR文件失败时使用。 需要重启应用程序。</string>
     <string name="play_option_always_visible_title">始终显示“播放”选项</string>
     <string name="play_option_always_visible_summary">如果启用该选项，无论点击行为设置为何，“播放”按钮将一直出现在歌曲菜单中。</string>
     <string name="play_option_whole_list_title">“播放”选项播放整个列表</string>
@@ -951,4 +942,12 @@
     <string name="widget_image_corner_radius_summary">调整专辑封面的圆角程度。</string>
     <string name="widget_third_line_title">第三行信息</string>
     <string name="widget_third_line_summary">选择信息文本第三行应显示的内容。</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
