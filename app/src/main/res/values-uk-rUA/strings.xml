@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">Програмі потрібен дозвіл на доступ до пристроїв поблизу для перевірки Bluetooth-пристроїв.</string>
     <string name="permission_bluetooth_denied">Дозвіл на доступ до пристроїв поблизу відхилено.</string>
     <string name="permission_read_images_title">Читання зображень (необов\'язково)</string>
-    <string name="permission_read_images_summary">Цей дозвіл потрібен для Booming музики, щоб знайти файли обкладинок альбому у ваших теках.
-        Якщо ви не плануєте використовувати цю функцію, ви можете не надавати дозволу.</string>
+    <string name="permission_read_images_summary">Цей дозвіл потрібен для Booming музики, щоб знайти файли обкладинок альбому у ваших теках. Якщо ви не плануєте використовувати цю функцію, ви можете не надавати дозволу.</string>
     <string name="permission_read_images_denied">Ви повинні надати дозвіл на читання зображень з пристрою.</string>
     <string name="permission_exact_alarms_title">Планувати точні будильники (необов\'язково)</string>
     <string name="permission_exact_alarms_description">Дозвіл на планування точних будильників потрібен для коректної роботи таймера сну.</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">Перейти до альбому</string>
     <string name="action_go_to_artist">Перейти до виконавця</string>
     <string name="action_go_to_genre">Перейти до жанру</string>
-    <string name="added_title_to_playing_queue">"Додано 1 трек до черги відтворення."</string>
+    <string name="added_title_to_playing_queue">Додано 1 трек до черги відтворення.</string>
     <string name="added_x_titles_to_playing_queue">Додано %1$d треків до черги відтворення.</string>
     <string name="next_song_label">Наступна пісня</string>
     <string name="next_song_x">Наступна • %1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">Оновити зображення</string>
     <string name="restore_default">Відновити за замовчуванням</string>
     <string name="remove_cover">Видалити обкладинку</string>
-    <string name="could_not_download_album_cover">"Не вдалося завантажити відповідну обкладинку альбому."</string>
+    <string name="could_not_download_album_cover">Не вдалося завантажити відповідну обкладинку альбому.</string>
     <string name="download_image">Завантажити зображення</string>
     <string name="pick_from_local_storage">Вибрати з локального сховища</string>
     <string name="about_x_title">Про програму %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">Обкладинка альбому збережена</string>
     <string name="save_artwork_view_action">Переглянути</string>
     <string name="save_artwork_copyright_info_title">Повідомлення про авторські права</string>
-    <string name="save_artwork_copyright_info_message">Деякі обкладинки альбомів (або всі) можуть бути захищені авторськими правами. Ви не можете використовувати такі зображення в комерційних або рекламних цілях.
-Ви несете повну відповідальність за використання збережених обкладинок альбомів.</string>
+    <string name="save_artwork_copyright_info_message">Деякі обкладинки альбомів (або всі) можуть бути захищені авторськими правами. Ви не можете використовувати такі зображення в комерційних або рекламних цілях. Ви несете повну відповідальність за використання збережених обкладинок альбомів.</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="keyboard">Клавіатура</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">Загалом дисків</string>
     <string name="lyrics">Текст пісні</string>
     <string name="lyricist">Автор тексту</string>
-    <string name="could_not_load_the_song_information">"Не вдалося завантажити інформацію про пісню."</string>
+    <string name="could_not_load_the_song_information">Не вдалося завантажити інформацію про пісню.</string>
     <string name="no_results">Немає результатів</string>
     <string name="connection_unavailable">З\'єднання відсутнє.</string>
     <string name="you_have_to_select_at_least_one_category">Ви повинні вибрати хоча б одну категорію</string>
@@ -370,7 +368,7 @@
         <item quantity="one">%d альбом</item>
         <item quantity="few">%d альбомів</item>
         <item quantity="many">%d альбомів</item>
-        <item quantity="other">%d albums</item>
+        <item quantity="other">%d альбомів</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d виконавець</item>
@@ -382,7 +380,7 @@
         <item quantity="one">%d час</item>
         <item quantity="few">%d рази</item>
         <item quantity="many">%d разів</item>
-        <item quantity="other">%d раз</item>
+        <item quantity="other">%d разів</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d гра</item>
@@ -394,7 +392,7 @@
         <item quantity="one">%d елемент</item>
         <item quantity="few">%d елементів</item>
         <item quantity="many">%d елементів</item>
-        <item quantity="other">%d елемента</item>
+        <item quantity="other">%d елементів</item>
     </plurals>
     <!-- Home -->
     <string name="home_label">Home</string>
@@ -587,7 +585,7 @@
     <string name="appearance_title">Зовнішній вигляд</string>
     <string name="appearance_summary">Змінюйте тему програми та інші візуальні налаштування.</string>
     <string name="now_playing_title">Зараз грає</string>
-    <string name="now_playing_summary">Налаштуйте екран «Зараз грає». </string>
+    <string name="now_playing_summary">Налаштуйте екран «Зараз грає».</string>
     <string name="lyrics_preferences_title">Тексти пісень</string>
     <string name="lyrics_preferences_summary">Регулювання шрифту, інтервалу та іншого, щоб персоналізувати подання текстів пісень.</string>
     <string name="playback_title">Відтворення</string>
@@ -712,7 +710,7 @@
     <string name="select_extra_info_summary">Виберіть додаткову інформацію для відображення на панелі плеєра.</string>
     <string name="prefer_remaining_time_title">Надавати перевагу залишковому часу</string>
     <string name="prefer_remaining_time_summary">Відображати залишковий час замість тривалості пісні.</string>
-    <string name="prefer_album_artist_name_title">"Надавати перевагу імені виконавця альбому"</string>
+    <string name="prefer_album_artist_name_title">Надавати перевагу імені виконавця альбому</string>
     <string name="prefer_album_artist_name_summary">Відображає ім\'я виконавця альбому замість імені виконавця пісні (якщо доступно).</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -723,7 +721,7 @@
     <string name="remember_shuffle_mode_summary">Режим перемішування збережеться при виборі нового списку пісень.</string>
     <string name="album_shuffle_mode_title">Режим перемішування альбомів</string>
     <string name="artist_shuffle_mode_title">Режим перемішування виконавців</string>
-    <string name="rewind_with_back_title">"Перемотування кнопкою «Попередній»"</string>
+    <string name="rewind_with_back_title">Перемотування кнопкою «Попередній»</string>
     <string name="rewind_with_back_summary">Перемотати поточний трек до початку або перейти до попереднього треку, якщо поточний знаходиться на початку.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
     <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
@@ -901,4 +899,79 @@
     <string name="app_widget_card">Картка</string>
     <string name="app_widget_responsive_desc">Віджет, який адаптується до різних розмірів</string>
     <string name="app_widget_responsive">Адаптивний</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
