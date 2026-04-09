@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">De app heeft toestemming in de buurt nodig om te controleren op bluetooth apparaten</string>
     <string name="permission_bluetooth_denied">Machtiging in de buurt geweigerd.</string>
     <string name="permission_read_images_title">Lees afbeeldingen (optioneel)</string>
-    <string name="permission_read_images_summary">Deze toestemming is vereist voor het vinden van albumhoezen in je muziekmappen.
-        Als u niet van plan bent om deze functie te gebruiken, kunt u ervoor kiezen deze niet toe te staan.</string>
+    <string name="permission_read_images_summary">Deze toestemming is vereist voor het vinden van albumhoezen in je muziekmappen. Als u niet van plan bent om deze functie te gebruiken, kunt u ervoor kiezen deze niet toe te staan.</string>
     <string name="permission_read_images_denied">Je moet toestemming geven om afbeeldingen van het apparaat te lezen.</string>
     <string name="permission_exact_alarms_title">Plan exacte alarmen (optioneel)</string>
     <string name="permission_exact_alarms_description">Toestemming om exacte alarmen in te stellen is vereist om de slaaptimer goed te laten werken</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">Ga naar Album</string>
     <string name="action_go_to_artist">Ga naar Artiest</string>
     <string name="action_go_to_genre">Ga naar Genre</string>
-    <string name="added_title_to_playing_queue">"1 titel toegevoegd aan de afspeelwachtrij."</string>
+    <string name="added_title_to_playing_queue">1 titel toegevoegd aan de afspeelwachtrij.</string>
     <string name="added_x_titles_to_playing_queue">%1$d titels toegevoegd aan de afspeelwachtrij.</string>
     <string name="next_song_label">Volgende nummer</string>
     <string name="next_song_x">Volgende • %1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">Afbeelding bijwerken</string>
     <string name="restore_default">Standaardwaarde herstellen</string>
     <string name="remove_cover">Verwijder omslag</string>
-    <string name="could_not_download_album_cover">"Kon geen bijpassende albumcover downloaden."</string>
+    <string name="could_not_download_album_cover">Kon geen bijpassende albumcover downloaden.</string>
     <string name="download_image">Afbeelding downloaden</string>
     <string name="pick_from_local_storage">Kies uit lokale opslag</string>
     <string name="about_x_title">Over %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">Albumhoes opgeslagen</string>
     <string name="save_artwork_view_action">Bekijken</string>
     <string name="save_artwork_copyright_info_title">Copyright melding</string>
-    <string name="save_artwork_copyright_info_message">Sommige albumcovers (of allemaal) zijn mogelijk beschermd door auteursrechtwetgeving. Je kunt dergelijke afbeeldingen niet gebruiken voor commerciële doeleinden of advertenties.
-        \n\nAlleen u hebt totale verantwoordelijkheid over uw gebruik van opgeslagen albumcovers.</string>
+    <string name="save_artwork_copyright_info_message">Sommige albumcovers (of allemaal) zijn mogelijk beschermd door auteursrechtwetgeving. Je kunt dergelijke afbeeldingen niet gebruiken voor commerciële doeleinden of advertenties. \n\nAlleen u hebt totale verantwoordelijkheid over uw gebruik van opgeslagen albumcovers.</string>
     <string name="yes">Ja</string>
     <string name="no">Neen</string>
     <string name="keyboard">Keyboard</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">Totale schijven</string>
     <string name="lyrics">Songteksten</string>
     <string name="lyricist">Songtekst</string>
-    <string name="could_not_load_the_song_information">"Kon de nummerinformatie niet laden."</string>
+    <string name="could_not_load_the_song_information">Kon de nummerinformatie niet laden.</string>
     <string name="no_results">Geen resultaten gevonden</string>
     <string name="connection_unavailable">Verbinding niet beschikbaar.</string>
     <string name="you_have_to_select_at_least_one_category">Je moet ten minste één categorie selecteren.</string>
@@ -641,8 +639,7 @@
     <string name="unsynced_font_size_full_title">Ongesynchroniseerde songtekst lettergrootte (volledige weergave)</string>
     <string name="unsynced_font_size_full_summary">Pas de lettergrootte aan voor niet-gesynchroniseerde songteksten in het volledige songteksten scherm.</string>
     <string name="instrumental_tracks_identifiers_title">Instrumentaal track-id\'s</string>
-    <string name="instrumental_tracks_identifiers_summary">Als de songtekst van een nummer slechts
-        één of meer van deze indicatoren bevat, zal het worden gemarkeerd als een instrumentaal nummer (gescheiden door komma).</string>
+    <string name="instrumental_tracks_identifiers_summary">Als de songtekst van een nummer slechts één of meer van deze indicatoren bevat, zal het worden gemarkeerd als een instrumentaal nummer (gescheiden door komma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Markeren op titel</string>
     <string name="instrumental_tracks_mark_by_title_summary">De titel van het spoor zal ook in aanmerking worden genomen bij het zoeken naar ID\'s.</string>
     <string name="ignore_blank_lines_title">Ignore blank lines</string>
@@ -694,7 +691,7 @@
     <string name="select_extra_info_summary">Selecteer de extra info om weer te geven in het spelervenster.</string>
     <string name="prefer_remaining_time_title">Voorkeur resterende tijd</string>
     <string name="prefer_remaining_time_summary">Toon de resterende tijd in plaats van de duur van het nummer.</string>
-    <string name="prefer_album_artist_name_title">"Naam van Album-artiesten"</string>
+    <string name="prefer_album_artist_name_title">Naam van Album-artiesten</string>
     <string name="prefer_album_artist_name_summary">Toont de naam van de Album-artiesten in plaats van de naam van Song-artiesten (indien beschikbaar).</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -705,7 +702,7 @@
     <string name="remember_shuffle_mode_summary">Shuffle modus blijft aan bij het selecteren van een nieuwe lijst met nummers.</string>
     <string name="album_shuffle_mode_title">Album shuffle modus</string>
     <string name="artist_shuffle_mode_title">Kunstenaar shuffle modus</string>
-    <string name="rewind_with_back_title">"Terugspoelen met 'Vorige'"</string>
+    <string name="rewind_with_back_title">Terugspoelen met \'Vorige\'</string>
     <string name="rewind_with_back_summary">Terugspoelen het afgespeelde nummer naar het begin of ga naar het vorige nummer als het huidige in het begin is.</string>
     <string name="rewind_fast_forward_amount_title">Hoeveelheid/snel doorsturen</string>
     <string name="rewind_fast_forward_amount_summary">Tijd (in seconden) om terug te spoelen of snel vooruit met behulp van UI of externe besturingselementen.</string>
@@ -722,9 +719,7 @@
     <string name="pause_on_zero_volume_title">Pauzeer bij nul volume</string>
     <string name="pause_on_zero_volume_summary">Pauzeert het nummer wanneer het volume afneemt tot nul en begint met afspelen als het volume level stijgt. Werkt ook buiten de app.</string>
     <string name="mp3_index_seeking_title">MP3 index zoeken</string>
-    <string name="mp3_index_seeking_summary">Laad het hele MP3 bestand in het geheugen om te zoeken in plaats van te vertrouwen op de Xing header.
-        Gebruik alleen als het zoeken op sommige VBR-bestanden mislukt.
-        Vereist een herstart van de app.</string>
+    <string name="mp3_index_seeking_summary">Laad het hele MP3 bestand in het geheugen om te zoeken in plaats van te vertrouwen op de Xing header. Gebruik alleen als het zoeken op sommige VBR-bestanden mislukt. Vereist een herstart van de app.</string>
     <string name="play_option_always_visible_title">Houd \"Afspelen\" optie zichtbaar</string>
     <string name="play_option_always_visible_summary">Indien ingeschakeld, zal de \"Afspelen\" optie altijd in het nummermenu verschijnen, ongeacht de gedragsinstellingen bij tikken.</string>
     <string name="play_option_whole_list_title">\"Afspelen\" optie speelt hele lijst af</string>
@@ -786,8 +781,7 @@
     <string name="restore_backup_summary">Herstel app gegevens (en staat) van een vorige back-up.</string>
     <string name="stop_when_closed_from_recents_title">Stop bij sluiten van recente apps</string>
     <string name="stop_when_closed_from_recents_summary">Afspelen stopt als de app is gesloten vanuit de lijst met recente programma\'s.</string>
-    <string name="stop_when_closed_from_recents_note">Opmerking: Sommige apparaten met agressief geheugen
-        of accubeheer kunnen deze instelling negeren en de app altijd stoppen wanneer deze uit recente apps wordt verwijderd.</string>
+    <string name="stop_when_closed_from_recents_note">Opmerking: Sommige apparaten met agressief geheugen of accubeheer kunnen deze instelling negeren en de app altijd stoppen wanneer deze uit recente apps wordt verwijderd.</string>
     <string name="rotation_lock_title">Rotatie vergrendeling</string>
     <string name="rotation_lock_summary">Vergrendel de oriëntatie van het apparaat. Handig in gevallen waarin muziek stopt bij roteren van het apparaat door bepaalde fabrikant beleid.</string>
     <!-- Preference values -->
@@ -873,11 +867,91 @@
     <string name="download_action">Downloaden</string>
     <string name="downloading_update">Booming muziek update wordt gedownload.</string>
     <string name="uncaught_error_title">Oeps! Dat had niet moeten gebeuren!</string>
-    <string name="uncaught_error_message">Het lijkt erop dat er iets mis ging en de app crashte.
-        Het zou handig zijn als je ons het foutmelding zou kunnen sturen naar onze Telegram-groep of via e-mail.</string>
+    <string name="uncaught_error_message">Het lijkt erop dat er iets mis ging en de app crashte. Het zou handig zijn als je ons het foutmelding zou kunnen sturen naar onze Telegram-groep of via e-mail.</string>
     <string name="uncaught_error_report">Fout rapport</string>
     <string name="uncaught_error_report_copied">Foutrapport gekopieerd naar klembord.</string>
     <string name="uncaught_error_restart_app">Herstart app</string>
     <string name="uncaught_error_github">Open issue op GitHub</string>
     <string name="uncaught_error_send">Rapport verzenden</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="app_widget_full_desc"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="app_widget_responsive"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="app_widget_card_desc"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="app_widget_responsive_desc"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="app_widget_card"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="app_widget_full"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
