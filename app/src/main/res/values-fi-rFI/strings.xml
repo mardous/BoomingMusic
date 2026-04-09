@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">Sovellus tarvitsee pääsyn lähistöllä oleviin laitteisiin, jotta se voi tarkistaa bluetooth-laitteita</string>
     <string name="permission_bluetooth_denied">Lähellä olevien laitteiden käyttöoikeudet evätty.</string>
     <string name="permission_read_images_title">Lue kuvia (valinnainen)</string>
-    <string name="permission_read_images_summary">Tämä lupa tarvitaan Booming Musiikkia varten löytääksesi albumin taidetiedostoja musiikkikansiostasi.
-        Jos et aio käyttää tätä ominaisuutta, voit päättää olla myöntämättä sitä.</string>
+    <string name="permission_read_images_summary">Tämä lupa tarvitaan Booming Musiikkia varten löytääksesi albumin taidetiedostoja musiikkikansiostasi. Jos et aio käyttää tätä ominaisuutta, voit päättää olla myöntämättä sitä.</string>
     <string name="permission_read_images_denied">Sinun on myönnettävä lupa lukea kuvia laitteesta.</string>
     <string name="permission_exact_alarms_title">Ajoita tarkat hälytykset (valinnainen)</string>
     <string name="permission_exact_alarms_description">Tarkkojen hälytysten ajoittaminen on tarpeen, jotta unen ajastin toimisi kunnolla</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">Siirry albumiin</string>
     <string name="action_go_to_artist">Siirry esittäjälle</string>
     <string name="action_go_to_genre">Siirry tyyliin</string>
-    <string name="added_title_to_playing_queue">"Lisätty 1 otsikko soittojonoon."</string>
+    <string name="added_title_to_playing_queue">Lisätty 1 otsikko soittojonoon.</string>
     <string name="added_x_titles_to_playing_queue">Lisätty %1$d otsikkoa soittojonoon.</string>
     <string name="next_song_label">Seuraava Kappale</string>
     <string name="next_song_x">Seuraava • %1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">Päivitä kuva</string>
     <string name="restore_default">Palauta oletukset</string>
     <string name="remove_cover">Poista kansi</string>
-    <string name="could_not_download_album_cover">"Couldn\u2019t lataa vastaava kansi."</string>
+    <string name="could_not_download_album_cover">Couldn’t lataa vastaava kansi.</string>
     <string name="download_image">Lataa kuva</string>
     <string name="pick_from_local_storage">Valitse paikallisesta tallennustilasta</string>
     <string name="about_x_title">Tietoja %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">Albumin kansi tallennettu</string>
     <string name="save_artwork_view_action">Näytä</string>
     <string name="save_artwork_copyright_info_title">Tekijänoikeuden ilmoitus</string>
-    <string name="save_artwork_copyright_info_message">Jotkut albumin kannet (tai kaikki ne) saattavat olla suojattu tekijänoikeuslaeilla. Et voi käyttää tällaisia kuvia kaupallisiin tai mainostarkoituksiin.
-        \n\nVain sinulla on täysi vastuu tallennettujen albumikansien käytöstä.</string>
+    <string name="save_artwork_copyright_info_message">Jotkut albumin kannet (tai kaikki ne) saattavat olla suojattu tekijänoikeuslaeilla. Et voi käyttää tällaisia kuvia kaupallisiin tai mainostarkoituksiin. \n\nVain sinulla on täysi vastuu tallennettujen albumikansien käytöstä.</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
     <string name="keyboard">Näppäimistö</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">Levyt Yhteensä</string>
     <string name="lyrics">Sanoitukset</string>
     <string name="lyricist">Lyrikko</string>
-    <string name="could_not_load_the_song_information">"Kappaleen tietoja ei voitu ladata."</string>
+    <string name="could_not_load_the_song_information">Kappaleen tietoja ei voitu ladata.</string>
     <string name="no_results">Ei tuloksia</string>
     <string name="connection_unavailable">Yhteys ei käytettävissä.</string>
     <string name="you_have_to_select_at_least_one_category">Sinun täytyy valita ainakin yksi kategoria</string>
@@ -644,8 +642,7 @@
     <string name="unsynced_font_size_full_title">Synkronoimattomat sanoitukset kirjasimen koko (koko näkymä)</string>
     <string name="unsynced_font_size_full_summary">Säädä kirjasimen kokoa synkronoimattomille sanoituksille koko sanoitusten näytössä.</string>
     <string name="instrumental_tracks_identifiers_title">Instrumentaaliset raidan tunnisteet</string>
-    <string name="instrumental_tracks_identifiers_summary">Jos kappaleen sanoitukset koostuvat vain
-        yhdestä tai useammasta näistä osoittimista, ne merkitään instrumentaaliseksi kappaleeksi (pilkulla erotettuna).</string>
+    <string name="instrumental_tracks_identifiers_summary">Jos kappaleen sanoitukset koostuvat vain yhdestä tai useammasta näistä osoittimista, ne merkitään instrumentaaliseksi kappaleeksi (pilkulla erotettuna).</string>
     <string name="instrumental_tracks_mark_by_title_title">Merkitse otsikon mukaan</string>
     <string name="instrumental_tracks_mark_by_title_summary">Reitin otsikko otetaan huomioon myös etsittäessä tunnisteita.</string>
     <string name="ignore_blank_lines_title">Ignore blank lines</string>
@@ -697,7 +694,7 @@
     <string name="select_extra_info_summary">Valitse lisätiedot, jotka näytetään soittimen paneelissa.</string>
     <string name="prefer_remaining_time_title">Suosi jäljellä olevaa aikaa</string>
     <string name="prefer_remaining_time_summary">Näytä jäljellä oleva aika kappaleen keston sijaan.</string>
-    <string name="prefer_album_artist_name_title">"Suosi Album-artistin nimeä"</string>
+    <string name="prefer_album_artist_name_title">Suosi Album-artistin nimeä</string>
     <string name="prefer_album_artist_name_summary">Näyttää Album-artistin nimen Song-artistin nimen sijaan (jos saatavilla).</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -708,7 +705,7 @@
     <string name="remember_shuffle_mode_summary">Sekoitustila pysyy päällä, kun valitaan uusi kappaleluettelo.</string>
     <string name="album_shuffle_mode_title">Albumin sekoitustila</string>
     <string name="artist_shuffle_mode_title">Esittäjän sekoitustila</string>
-    <string name="rewind_with_back_title">"Rewind kanssa 'Edellinen'"</string>
+    <string name="rewind_with_back_title">Rewind kanssa \'Edellinen\'</string>
     <string name="rewind_with_back_summary">Rewind soittokappale alkaa tai siirry edelliseen kappaleeseen, jos nykyinen kappale on alussa.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Nopea toimitus</string>
     <string name="rewind_fast_forward_amount_summary">Aika (sekunneissa) kelautumiseen tai nopeaan eteenpäin käyttöliittymän tai ulkoisen ohjaimen avulla.</string>
@@ -725,9 +722,7 @@
     <string name="pause_on_zero_volume_title">Pysäytä nolla äänenvoimakkuudella</string>
     <string name="pause_on_zero_volume_summary">Keskeyttää kappaleen kun äänenvoimakkuus pienenee nollaan ja alkaa toistaa kun äänenvoimakkuuden taso nousee. Toimii myös sovelluksen ulkopuolella.</string>
     <string name="mp3_index_seeking_title">MP3-indeksin haku</string>
-    <string name="mp3_index_seeking_summary">Lataa koko MP3-tiedoston muistiin etsimään sen sijaan, että tukeuduttaisiin Xing otsikkoon.
-        Käytä vain, jos hakeminen epäonnistuu joissakin VBR-tiedostoissa.
-        vaatii sovelluksen uudelleenkäynnistyksen.</string>
+    <string name="mp3_index_seeking_summary">Lataa koko MP3-tiedoston muistiin etsimään sen sijaan, että tukeuduttaisiin Xing otsikkoon. Käytä vain, jos hakeminen epäonnistuu joissakin VBR-tiedostoissa. vaatii sovelluksen uudelleenkäynnistyksen.</string>
     <string name="play_option_always_visible_title">Pidä \"Toista\" vaihtoehto näkyvissä</string>
     <string name="play_option_always_visible_summary">Jos käytössä, \"Toisto\" -vaihtoehto näkyy aina kappaleen valikossa riippumatta siitä, onko käytös napauttamalla.</string>
     <string name="play_option_whole_list_title">\"Toista\" vaihtoehto soittaa koko listan</string>
@@ -790,8 +785,7 @@
     <string name="restore_backup_summary">Palauta sovelluksen tiedot (ja tila) edellisestä varmuuskopiosta.</string>
     <string name="stop_when_closed_from_recents_title">Pysäytä suljettaessa viimeisimmistä versioista</string>
     <string name="stop_when_closed_from_recents_summary">Toisto pysähtyy, jos sovellus on suljettu viimeisimpien sovellusten luettelosta.</string>
-    <string name="stop_when_closed_from_recents_note">Huomautus: Jotkin laitteet, joilla on aggressiivinen muisti
-        tai akun hallinta, saattavat ohittaa tämän asetuksen ja pysäyttää sovelluksen aina, kun se poistetaan viimeisimmistä.</string>
+    <string name="stop_when_closed_from_recents_note">Huomautus: Jotkin laitteet, joilla on aggressiivinen muisti tai akun hallinta, saattavat ohittaa tämän asetuksen ja pysäyttää sovelluksen aina, kun se poistetaan viimeisimmistä.</string>
     <string name="rotation_lock_title">Kierto lukitus</string>
     <string name="rotation_lock_summary">Lukitse laitteen suunta. Hyödyllinen tapauksissa, joissa musiikki pysähtyy pyörittäessä laitetta tiettyjen valmistajan käytäntöjen vuoksi.</string>
     <!-- Preference values -->
@@ -877,11 +871,91 @@
     <string name="download_action">Lataa</string>
     <string name="downloading_update">Ladataan kasvavan musiikin päivitystä.</string>
     <string name="uncaught_error_title">Hups! Tämän ei ollut tarkoitus tapahtua!</string>
-    <string name="uncaught_error_message">Vaikuttaa siltä, että jokin meni pieleen ja aiheutti sovelluksen kaatumisen.
-        Olisi hyödyllistä, jos voisit lähettää meille virheraportin meidän Telegram ryhmään tai sähköpostitse.</string>
+    <string name="uncaught_error_message">Vaikuttaa siltä, että jokin meni pieleen ja aiheutti sovelluksen kaatumisen. Olisi hyödyllistä, jos voisit lähettää meille virheraportin meidän Telegram ryhmään tai sähköpostitse.</string>
     <string name="uncaught_error_report">Virhe raportti</string>
     <string name="uncaught_error_report_copied">Kopioitu virheraportti leikepöydälle.</string>
     <string name="uncaught_error_restart_app">Käynnistä sovellus uudelleen</string>
     <string name="uncaught_error_github">Avaa ongelma GitHubissa</string>
     <string name="uncaught_error_send">Lähetä raportti</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="app_widget_full_desc"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="app_widget_responsive"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="app_widget_card_desc"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="app_widget_responsive_desc"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="app_widget_card"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="app_widget_full"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
