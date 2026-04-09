@@ -348,42 +348,42 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Cançó</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">Cançons</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Àlbum</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">Àlbums</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d cançó</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d cançons</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d àlbum</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d àlbums</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d artistes</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d cop</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d cops</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d reproducció</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d reproduccions</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d ítem</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d ítems</item>
     </plurals>
     <!-- Home -->
@@ -918,48 +918,4 @@
     <string name="error_lastfm_credentials">Les vostres credencials no són vàlides. Verifiqueu-les i torneu-ho a intentar.</string>
     <string name="error_lastfm_params">Pàrametres invàlids. Podria ser per error nostre.</string>
     <string name="error_lastfm_service">Last.fm està en manteniment ara mateix. Torneu-ho a intentar més tard.</string>
-    <string name="lyrics_center_horizontally_title"></string>
-    <string name="widget_image_corner_radius_summary"></string>
-    <string name="support_my_work"></string>
-    <string name="advanced_settings"></string>
-    <string name="widgets_header"></string>
-    <string name="widget_third_line_title"></string>
-    <string name="error_lastfm_generic"></string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="wifi_only_network_features_title"></string>
-    <string name="lastfm_biography_summary"></string>
-    <string name="lastfm_scrobbling_summary"></string>
-    <string name="widget_small_layout_simplified"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="lastfm_scrobbling_title"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="lastfm_now_playing_title"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="network_features_summary"></string>
-    <string name="use_betterlyrics_provider_summary"></string>
-    <string name="wifi_only_network_features_summary"></string>
-    <string name="lastfm_login_title"></string>
-    <string name="bit_perfect_title"></string>
-    <string name="use_simpmusic_provider_summary"></string>
-    <string name="bit_perfect_description"></string>
-    <string name="widget_small_layout_classic"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="use_lrclib_provider_summary"></string>
-    <string name="lastfm_now_playing_summary"></string>
-    <string name="bit_perfect_is_active"></string>
-    <string name="widget_dynamic_colors_summary"></string>
-    <string name="lyrics_center_horizontally_summary"></string>
-    <string name="widget_image_corner_radius_title"></string>
-    <string name="widget_small_layout_style_title"></string>
-    <string name="telegram_community_summary"></string>
-    <string name="error_network_timeout"></string>
-    <string name="network_summary"></string>
-    <string name="lastfm_biography_title"></string>
-    <string name="grid_size_5" translatable="false"></string>
-    <string name="widget_third_line_summary"></string>
-    <string name="lastfm_login_summary"></string>
-    <string name="widget_dynamic_colors_title"></string>
-    <string name="error_lastfm_rate_limit"></string>
 </resources>

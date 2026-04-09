@@ -348,7 +348,7 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Titre</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">Titres</item>
     </plurals>
     <plurals name="albums">
@@ -358,7 +358,7 @@
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d titre</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d titres</item>
     </plurals>
     <plurals name="x_albums">
@@ -368,22 +368,22 @@
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artiste</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d artistes</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d fois</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d fois</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d lecture</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d lectures</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d élément</item>
-        <item quantity="many"></item>
+        <item quantity="many"/>
         <item quantity="other">%d éléments</item>
     </plurals>
     <!-- Home -->
@@ -953,12 +953,4 @@
     <string name="advanced_settings">Paramètres avancés</string>
     <string name="bit_perfect_is_active">Bit-perfect est actif</string>
     <string name="bit_perfect_description">Transmettre le signal audio directement vers un DAC USB sans rééchantillonnage du système.</string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="grid_size_5" translatable="false"></string>
 </resources>
