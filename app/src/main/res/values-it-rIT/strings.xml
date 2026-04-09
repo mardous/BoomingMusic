@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">L\'app ha bisogno dell\'autorizzazione per i dispositivi nelle vicinanze per controllare i dispositivi bluetooth</string>
     <string name="permission_bluetooth_denied">Autorizzazione dispositivi nelle vicinanze negata.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
-    <string name="permission_read_images_summary">Questa autorizzazione è richiesta da Booming Music per trovare i file di copertina degli album nelle tue cartelle musicali.
-        Se non hai intenzione di utilizzare questa funzione, puoi scegliere di non concederla.</string>
+    <string name="permission_read_images_summary">Questa autorizzazione è richiesta da Booming Music per trovare i file di copertina degli album nelle tue cartelle musicali. Se non hai intenzione di utilizzare questa funzione, puoi scegliere di non concederla.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">Pianifica avvisi esatti (facoltativo)</string>
     <string name="permission_exact_alarms_description">Per il corretto funzionamento del timer di sonno è necessario il permesso per pianificare sveglie esatte</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">Vai all\'album</string>
     <string name="action_go_to_artist">Vai all\'artista</string>
     <string name="action_go_to_genre">Vai al genere</string>
-    <string name="added_title_to_playing_queue">"Aggiunto 1 titolo alla coda di riproduzione."</string>
+    <string name="added_title_to_playing_queue">Aggiunto 1 titolo alla coda di riproduzione.</string>
     <string name="added_x_titles_to_playing_queue">Aggiunti %1$d titoli alla coda di riproduzione.</string>
     <string name="next_song_label">Canzone Successiva</string>
     <string name="next_song_x">Successivo • %1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">Aggiorna immagine</string>
     <string name="restore_default">Ripristina predefinito</string>
     <string name="remove_cover">Rimuovi copertina</string>
-    <string name="could_not_download_album_cover">"Impossibile scaricare la copertina corrispondente."</string>
+    <string name="could_not_download_album_cover">Impossibile scaricare la copertina corrispondente.</string>
     <string name="download_image">Scarica immagine</string>
     <string name="pick_from_local_storage">Scegli dalla memoria interna</string>
     <string name="about_x_title">Informazioni su %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">Copertina album salvata</string>
     <string name="save_artwork_view_action">Visualizza</string>
     <string name="save_artwork_copyright_info_title">Avviso sul copyright</string>
-    <string name="save_artwork_copyright_info_message">Alcune o tutte le copertine degli album potrebbero essere protette dalle leggi sul copyright. Non è possibile utilizzare tali immagini per scopi commerciali o pubblicitari.
-        \n\nSolo tu sei totalmente responsabile dell\'utilizzo delle copertine salvate.</string>
+    <string name="save_artwork_copyright_info_message">Alcune o tutte le copertine degli album potrebbero essere protette dalle leggi sul copyright. Non è possibile utilizzare tali immagini per scopi commerciali o pubblicitari. \n\nSolo tu sei totalmente responsabile dell\'utilizzo delle copertine salvate.</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
     <string name="keyboard">Tastiera</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">Dischi Totali</string>
     <string name="lyrics">Testo</string>
     <string name="lyricist">Autore del testo</string>
-    <string name="could_not_load_the_song_information">"Impossibile caricare le informazioni del brano."</string>
+    <string name="could_not_load_the_song_information">Impossibile caricare le informazioni del brano.</string>
     <string name="no_results">Nessun risultato</string>
     <string name="connection_unavailable">Connessione non disponibile.</string>
     <string name="you_have_to_select_at_least_one_category">Devi selezionare almeno una categoria</string>
@@ -350,34 +348,42 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Brano</item>
+        <item quantity="many"></item>
         <item quantity="other">Brani</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Album</item>
+        <item quantity="many"></item>
         <item quantity="other">Album</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d brano</item>
+        <item quantity="many"></item>
         <item quantity="other">%d brani</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d album</item>
+        <item quantity="many"></item>
         <item quantity="other">%d album</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
+        <item quantity="many"></item>
         <item quantity="other">%d artisti</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d volta</item>
+        <item quantity="many"></item>
         <item quantity="other">%d volte</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d riproduzione</item>
+        <item quantity="many"></item>
         <item quantity="other">%d riproduzioni</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d item</item>
+        <item quantity="many"></item>
         <item quantity="other">%d items</item>
     </plurals>
     <!-- Home -->
@@ -693,7 +699,7 @@
     <string name="select_extra_info_summary">Selezionare le informazioni aggiuntive da visualizzare nel pannello di riproduzione.</string>
     <string name="prefer_remaining_time_title">Preferisci tempo rimanente</string>
     <string name="prefer_remaining_time_summary">Mostra il tempo rimanente invece della durata della canzone.</string>
-    <string name="prefer_album_artist_name_title">"Preferisci il nome dell'artista dell'Album"</string>
+    <string name="prefer_album_artist_name_title">Preferisci il nome dell\'artista dell\'Album</string>
     <string name="prefer_album_artist_name_summary">Mostra il nome dell\'artista dell\'Album invece del nome dell\'artista del Brano (se disponibile).</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -704,7 +710,7 @@
     <string name="remember_shuffle_mode_summary">La modalità casuale rimarrà attiva quando si seleziona una nuova lista di canzoni.</string>
     <string name="album_shuffle_mode_title">Modalità riproduzione casuale album</string>
     <string name="artist_shuffle_mode_title">Modalità riproduzione casuale dell\'artista</string>
-    <string name="rewind_with_back_title">"Ricomincia con 'Precedente'"</string>
+    <string name="rewind_with_back_title">Ricomincia con \'Precedente\'</string>
     <string name="rewind_with_back_summary">Ricomincia dall\'inizio la riproduzione della traccia o passa al brano precedente se quello attuale è all\'inizio.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
     <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
@@ -875,4 +881,85 @@
     <string name="uncaught_error_restart_app">Riavvia app</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="app_widget_full_desc"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="app_widget_responsive"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="app_widget_card_desc"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="app_widget_responsive_desc"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="app_widget_card"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="app_widget_full"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
