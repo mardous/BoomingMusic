@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">Appen har brug for tilladelse i nærheden af enheder for at tjekke for bluetooth-enheder</string>
     <string name="permission_bluetooth_denied">Tilladelse nægtet i nærheden af enheder.</string>
     <string name="permission_read_images_title">Læs billeder (valgfrit)</string>
-    <string name="permission_read_images_summary">Denne tilladelse kræves for Booming Music til at finde album cover filer i dine musikmapper.
-        Hvis du ikke planlægger at bruge denne funktion, kan du vælge ikke at give den.</string>
+    <string name="permission_read_images_summary">Denne tilladelse kræves for Booming Music til at finde album cover filer i dine musikmapper. Hvis du ikke planlægger at bruge denne funktion, kan du vælge ikke at give den.</string>
     <string name="permission_read_images_denied">Du skal give tilladelse til at læse billeder fra enheden.</string>
     <string name="permission_exact_alarms_title">Planlæg nøjagtige alarmer (valgfrit)</string>
     <string name="permission_exact_alarms_description">Tilladelse til at planlægge nøjagtige alarmer er nødvendig for at sovemusikeren kan fungere korrekt</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">Gå til album</string>
     <string name="action_go_to_artist">Gå til kunstner</string>
     <string name="action_go_to_genre">Gå til Genre</string>
-    <string name="added_title_to_playing_queue">"Tilføjet 1 titel til afspilningskøen."</string>
+    <string name="added_title_to_playing_queue">Tilføjet 1 titel til afspilningskøen.</string>
     <string name="added_x_titles_to_playing_queue">Tilføjet %1$d titler til afspilningskøen.</string>
     <string name="next_song_label">Næste Sang</string>
     <string name="next_song_x">Næste • %1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">Opdater billede</string>
     <string name="restore_default">Gendan standard</string>
     <string name="remove_cover">Fjern cover</string>
-    <string name="could_not_download_album_cover">"Couldn\u2019t hente en matchende albumomslag."</string>
+    <string name="could_not_download_album_cover">Couldn’t hente en matchende albumomslag.</string>
     <string name="download_image">Download billede</string>
     <string name="pick_from_local_storage">Vælg fra lokalt lager</string>
     <string name="about_x_title">Om %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">Album cover gemt</string>
     <string name="save_artwork_view_action">Vis</string>
     <string name="save_artwork_copyright_info_title">Ophavsret meddelelse</string>
-    <string name="save_artwork_copyright_info_message">Nogle album covers (eller alle af dem) kan være beskyttet af Copyright love. Du kan ikke bruge sådanne billeder til kommercielle eller reklame formål.
-        \n\nKun du har det fulde ansvar for din brug af gemte albumomslag.</string>
+    <string name="save_artwork_copyright_info_message">Nogle album covers (eller alle af dem) kan være beskyttet af Copyright love. Du kan ikke bruge sådanne billeder til kommercielle eller reklame formål. \n\nKun du har det fulde ansvar for din brug af gemte albumomslag.</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="keyboard">Keyboard</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">Totale Discs</string>
     <string name="lyrics">Sangtekster</string>
     <string name="lyricist">Lyricist</string>
-    <string name="could_not_load_the_song_information">"Kunne ikke indlæse sangoplysningerne."</string>
+    <string name="could_not_load_the_song_information">Kunne ikke indlæse sangoplysningerne.</string>
     <string name="no_results">Ingen resultater</string>
     <string name="connection_unavailable">Forbindelsen er ikke tilgængelig.</string>
     <string name="you_have_to_select_at_least_one_category">Du skal vælge mindst én kategori</string>
@@ -644,8 +642,7 @@
     <string name="unsynced_font_size_full_title">Usynkroniseret skriftstørrelse for sangtekster (fuld visning)</string>
     <string name="unsynced_font_size_full_summary">Juster skriftstørrelsen for unsynced sangtekster på hele sangtekstskærmen.</string>
     <string name="instrumental_tracks_identifiers_title">Instrumentale sporidentifikatorer</string>
-    <string name="instrumental_tracks_identifiers_summary">Hvis en sangs sangtekster kun består af
-        en eller flere af disse indikatorer, vil den blive markeret som et instrumental spor (adskilt af komma).</string>
+    <string name="instrumental_tracks_identifiers_summary">Hvis en sangs sangtekster kun består af en eller flere af disse indikatorer, vil den blive markeret som et instrumental spor (adskilt af komma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Markér efter titel</string>
     <string name="instrumental_tracks_mark_by_title_summary">Spor titel vil også blive taget i betragtning, når der søges efter identifikatorer.</string>
     <string name="ignore_blank_lines_title">Ignore blank lines</string>
@@ -697,7 +694,7 @@
     <string name="select_extra_info_summary">Vælg de ekstra oplysninger, der skal vises i afspillerpanelet.</string>
     <string name="prefer_remaining_time_title">Foretræk resterende tid</string>
     <string name="prefer_remaining_time_summary">Vis resterende tid i stedet for sangens varighed.</string>
-    <string name="prefer_album_artist_name_title">"Foretræk Album-kunstnerens navn"</string>
+    <string name="prefer_album_artist_name_title">Foretræk Album-kunstnerens navn</string>
     <string name="prefer_album_artist_name_summary">Viser albumkunstnerens navn i stedet for sangkunstnerens navn (hvis det er tilgængeligt).</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -708,7 +705,7 @@
     <string name="remember_shuffle_mode_summary">Blandingstilstand vil forblive tændt, når du vælger en ny liste over sange.</string>
     <string name="album_shuffle_mode_title">Album shuffle mode</string>
     <string name="artist_shuffle_mode_title">Kunstner shuffle mode</string>
-    <string name="rewind_with_back_title">"Genvind med 'Forrige'"</string>
+    <string name="rewind_with_back_title">Genvind med \'Forrige\'</string>
     <string name="rewind_with_back_summary">Slå spillesporet tilbage tilbage til start eller flyt til forrige spor, hvis den aktuelle er i begyndelsen.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward beløb</string>
     <string name="rewind_fast_forward_amount_summary">Tid (i sekunder) til at spole tilbage eller hurtigt frem ved hjælp af UI eller eksterne kontroller.</string>
@@ -725,9 +722,7 @@
     <string name="pause_on_zero_volume_title">Pause på nul lydstyrke</string>
     <string name="pause_on_zero_volume_summary">Pauser sangen, når lydstyrken falder til nul og begynder at afspille når lydstyrken stiger. Virker også uden for appen.</string>
     <string name="mp3_index_seeking_title">MP3-indeks søgning</string>
-    <string name="mp3_index_seeking_summary">Indlæser hele MP3-fil i hukommelsen for at søge i stedet for at stole på Xing-header.
-        Brug kun, hvis søgningen mislykkes på nogle VBR-filer.
-        Kræver appgenstart.</string>
+    <string name="mp3_index_seeking_summary">Indlæser hele MP3-fil i hukommelsen for at søge i stedet for at stole på Xing-header. Brug kun, hvis søgningen mislykkes på nogle VBR-filer. Kræver appgenstart.</string>
     <string name="play_option_always_visible_title">Hold \"Play\" indstillingen synlig</string>
     <string name="play_option_always_visible_summary">Hvis aktiveret, vises indstillingen \"Afspil\" altid i en sangs menu, uanset indstillingerne for opførsel.</string>
     <string name="play_option_whole_list_title">\"Afspil\" indstilling afspiller hele listen</string>
@@ -790,8 +785,7 @@
     <string name="restore_backup_summary">Gendan appdata (og tilstand) fra en tidligere sikkerhedskopi.</string>
     <string name="stop_when_closed_from_recents_title">Stop når lukket fra de seneste</string>
     <string name="stop_when_closed_from_recents_summary">Afspilning stopper, hvis appen er lukket fra listen for nyeste.</string>
-    <string name="stop_when_closed_from_recents_note">Bemærk: Nogle enheder med aggressiv hukommelse
-        eller batteristyring kan ignorere denne indstilling og altid stoppe app\'en, når den fjernes fra de seneste år.</string>
+    <string name="stop_when_closed_from_recents_note">Bemærk: Nogle enheder med aggressiv hukommelse eller batteristyring kan ignorere denne indstilling og altid stoppe app\'en, når den fjernes fra de seneste år.</string>
     <string name="rotation_lock_title">Rotation lås</string>
     <string name="rotation_lock_summary">Lås enhedens orientering. Nyttigt i tilfælde, hvor musik stopper, når du roterer enheden på grund af visse producentpolitikker.</string>
     <!-- Preference values -->
@@ -877,11 +871,91 @@
     <string name="download_action">Hent</string>
     <string name="downloading_update">Downloader Booming Musik opdatering.</string>
     <string name="uncaught_error_title">Ups! Det skulle ikke ske!</string>
-    <string name="uncaught_error_message">Det ser ud til, at noget gik galt og forårsagede, at appen gik ned.
-        Det ville være nyttigt, hvis du kunne sende os fejlrapporten til vores Telegram gruppe eller via e-mail.</string>
+    <string name="uncaught_error_message">Det ser ud til, at noget gik galt og forårsagede, at appen gik ned. Det ville være nyttigt, hvis du kunne sende os fejlrapporten til vores Telegram gruppe eller via e-mail.</string>
     <string name="uncaught_error_report">Fejlrapport</string>
     <string name="uncaught_error_report_copied">Kopieret fejlrapport til udklipsholder.</string>
     <string name="uncaught_error_restart_app">Genstart app</string>
     <string name="uncaught_error_github">Åbn problem på GitHub</string>
     <string name="uncaught_error_send">Send rapport</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="app_widget_full_desc"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="app_widget_responsive"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="app_widget_card_desc"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="app_widget_responsive_desc"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="app_widget_card"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="app_widget_full"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
