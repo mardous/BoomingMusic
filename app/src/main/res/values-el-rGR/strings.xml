@@ -182,7 +182,7 @@
     <string name="action_go_to_album">Μετάβαση στο άλμπουμ</string>
     <string name="action_go_to_artist">Μετάβαση στον καλλιτέχνη</string>
     <string name="action_go_to_genre">Μετάβαση στο είδος</string>
-    <string name="added_title_to_playing_queue">"Προστέθηκε ένας τίτλος στην ουρά αναπαραγωγής."</string>
+    <string name="added_title_to_playing_queue">Προστέθηκε ένας τίτλος στην ουρά αναπαραγωγής.</string>
     <string name="added_x_titles_to_playing_queue">Προστέθηκε %1$d τίτλοι στην ουρά αναπαραγωγής.</string>
     <string name="next_song_label">Επόμενο Τραγούδι</string>
     <string name="next_song_x">Επόμενο • %1$s</string>
@@ -266,7 +266,7 @@
     <string name="update_image">Ενημέρωση εικόνας</string>
     <string name="restore_default">Επαναφορά προεπιλογής</string>
     <string name="remove_cover">Αφαίρεση καλύμματος</string>
-    <string name="could_not_download_album_cover">"Couldn\u2019t κατεβάσετε ένα αντίστοιχο εξώφυλλο άλμπουμ."</string>
+    <string name="could_not_download_album_cover">Couldn’t κατεβάσετε ένα αντίστοιχο εξώφυλλο άλμπουμ.</string>
     <string name="download_image">Λήψη εικόνας</string>
     <string name="pick_from_local_storage">Επιλογή από τοπική αποθήκευση</string>
     <string name="about_x_title">Περί %s</string>
@@ -278,8 +278,7 @@
     <string name="save_artwork_success">Το εξώφυλλο άλμπουμ αποθηκεύτηκε</string>
     <string name="save_artwork_view_action">Προβολή</string>
     <string name="save_artwork_copyright_info_title">Ειδοποίηση πνευματικών δικαιωμάτων</string>
-    <string name="save_artwork_copyright_info_message">Μερικά εξώφυλλα άλμπουμ (ή όλα αυτά) μπορεί να προστατεύονται από τους νόμους περί πνευματικής ιδιοκτησίας. Δεν μπορείτε να χρησιμοποιήσετε τέτοιες εικόνες για εμπορικούς ή διαφημιστικούς σκοπούς.
-        \n\nΜόνο εσείς έχετε πλήρη ευθύνη για τη χρήση των αποθηκευμένων εξωφύλλων άλμπουμ.</string>
+    <string name="save_artwork_copyright_info_message">Μερικά εξώφυλλα άλμπουμ (ή όλα αυτά) μπορεί να προστατεύονται από τους νόμους περί πνευματικής ιδιοκτησίας. Δεν μπορείτε να χρησιμοποιήσετε τέτοιες εικόνες για εμπορικούς ή διαφημιστικούς σκοπούς. \n\nΜόνο εσείς έχετε πλήρη ευθύνη για τη χρήση των αποθηκευμένων εξωφύλλων άλμπουμ.</string>
     <string name="yes">Ναι</string>
     <string name="no">Όχι</string>
     <string name="keyboard">Keyboard</string>
@@ -318,7 +317,7 @@
     <string name="disc_total">Σύνολο Δίσκων</string>
     <string name="lyrics">Στίχοι</string>
     <string name="lyricist">Lyricist</string>
-    <string name="could_not_load_the_song_information">"Δεν ήταν δυνατή η φόρτωση των πληροφοριών του τραγουδιού."</string>
+    <string name="could_not_load_the_song_information">Δεν ήταν δυνατή η φόρτωση των πληροφοριών του τραγουδιού.</string>
     <string name="no_results">Κανένα αποτέλεσμα</string>
     <string name="connection_unavailable">Μη διαθέσιμη σύνδεση.</string>
     <string name="you_have_to_select_at_least_one_category">Πρέπει να επιλέξετε τουλάχιστον μία κατηγορία</string>
@@ -692,7 +691,7 @@
     <string name="select_extra_info_summary">Επιλέξτε τις επιπλέον πληροφορίες που θα εμφανίζονται στον πίνακα του παίκτη.</string>
     <string name="prefer_remaining_time_title">Προτίμηση χρόνου που απομένει</string>
     <string name="prefer_remaining_time_summary">Εμφάνιση χρόνου που απομένει αντί για τη διάρκεια του τραγουδιού.</string>
-    <string name="prefer_album_artist_name_title">"Προτιμήστε το όνομα του καλλιτέχνη Album-"</string>
+    <string name="prefer_album_artist_name_title">Προτιμήστε το όνομα του καλλιτέχνη Album-</string>
     <string name="prefer_album_artist_name_summary">Εμφανίζει το όνομα του καλλιτέχνη του Album αντί για το όνομα του Song-artist\'s (αν υπάρχει).</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -703,7 +702,7 @@
     <string name="remember_shuffle_mode_summary">Η λειτουργία ανακατέματος θα παραμείνει ενεργή κατά την επιλογή μιας νέας λίστας τραγουδιών.</string>
     <string name="album_shuffle_mode_title">Λειτουργία ανακατέματος άλμπουμ</string>
     <string name="artist_shuffle_mode_title">Λειτουργία ανακατέματος καλλιτέχνη</string>
-    <string name="rewind_with_back_title">"Επαναρύθμιση με 'Προηγούμενο'"</string>
+    <string name="rewind_with_back_title">Επαναρύθμιση με \'Προηγούμενο\'</string>
     <string name="rewind_with_back_summary">Επαναφέρετε το κομμάτι αναπαραγωγής στην αρχή ή μετακινήστε το προηγούμενο κομμάτι αν το τρέχον βρίσκεται στην αρχή.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward amount</string>
     <string name="rewind_fast_forward_amount_summary">Time (in seconds) to rewind or fast-forward using UI or external controls.</string>
@@ -874,4 +873,85 @@
     <string name="uncaught_error_restart_app">Επανεκκίνηση εφαρμογής</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="app_widget_full_desc"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="app_widget_responsive"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="app_widget_card_desc"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="app_widget_responsive_desc"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="app_widget_card"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="app_widget_full"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
