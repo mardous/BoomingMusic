@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">Die App benötigt Zugriff auf Geräte in der Nähe, um Bluetooth-Geräte zu finden</string>
     <string name="permission_bluetooth_denied">Zugriff auf Geräte in der Nähe verweigert.</string>
     <string name="permission_read_images_title">Bilder lesen (optional)</string>
-    <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in Ihren Musikordnern finden kann.
-Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verweigern.</string>
+    <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in Ihren Musikordnern finden kann. Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verweigern.</string>
     <string name="permission_read_images_denied">Sie müssen die Berechtigung zum Lesen von Bildern auf diesem Gerät erteilen.</string>
     <string name="permission_exact_alarms_title">Genaue Erinnerungen planen (optional)</string>
     <string name="permission_exact_alarms_description">Die Erlaubnis, genaue Erinnerungen zu planen, ist erforderlich, damit der Sleeptimer richtig funktioniert</string>
@@ -183,7 +182,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="action_go_to_album">Gehe zu Album</string>
     <string name="action_go_to_artist">Gehe zu Interpret</string>
     <string name="action_go_to_genre">Gehe zu Genre</string>
-    <string name="added_title_to_playing_queue">"Einen Titel zur Warteschlange hinzugefügt."</string>
+    <string name="added_title_to_playing_queue">Einen Titel zur Warteschlange hinzugefügt.</string>
     <string name="added_x_titles_to_playing_queue">%1$d Titel zur Warteschlange hinzugefügt.</string>
     <string name="next_song_label">Nächster Titel</string>
     <string name="next_song_x">Nächster • %1$s</string>
@@ -267,7 +266,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="update_image">Bild aktualisieren</string>
     <string name="restore_default">Standard wiederherstellen</string>
     <string name="remove_cover">Cover entfernen</string>
-    <string name="could_not_download_album_cover">"Es konnte kein passendes Albumcover heruntergeladen werden."</string>
+    <string name="could_not_download_album_cover">Es konnte kein passendes Albumcover heruntergeladen werden.</string>
     <string name="download_image">Bild herunterladen</string>
     <string name="pick_from_local_storage">Aus lokalem Speicher wählen</string>
     <string name="about_x_title">Info zu %s</string>
@@ -279,8 +278,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="save_artwork_success">Albumcover gespeichert</string>
     <string name="save_artwork_view_action">Ansehen</string>
     <string name="save_artwork_copyright_info_title">Urheberrechtshinweis</string>
-    <string name="save_artwork_copyright_info_message">Einige Albumcover (oder alle) könnten urheberrechtlich geschützt sein. Sie dürfen nicht gewerblich oder zu Werbezwecken genutzt werden.
-        \n\nDie volle Verantwortung für die Verwendung der gespeicherten Albumcover liegt allein bei Dir selbst.</string>
+    <string name="save_artwork_copyright_info_message">Einige Albumcover (oder alle) könnten urheberrechtlich geschützt sein. Sie dürfen nicht gewerblich oder zu Werbezwecken genutzt werden. \n\nDie volle Verantwortung für die Verwendung der gespeicherten Albumcover liegt allein bei Dir selbst.</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
     <string name="keyboard">Tastatur</string>
@@ -319,7 +317,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="disc_total">Gesamtzahl Disks</string>
     <string name="lyrics">Liedtext</string>
     <string name="lyricist">Liedtexter</string>
-    <string name="could_not_load_the_song_information">"Liedinformationen konnten nicht geladen werden."</string>
+    <string name="could_not_load_the_song_information">Liedinformationen konnten nicht geladen werden.</string>
     <string name="no_results">Keine Ergebnisse</string>
     <string name="connection_unavailable">Verbindung nicht möglich.</string>
     <string name="you_have_to_select_at_least_one_category">Du musst mindestens eine Kategorie auswählen</string>
@@ -333,10 +331,10 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="select_content_to_restore">Inhalt zum Wiederherstellen auswählen:</string>
     <string name="could_not_restore_data">Konnte Daten nicht wiederherstellen. Überprüfe die Sicherungsdatei und versuche es erneut.</string>
     <string name="data_restored_successfully">Daten erfolgreich wiederhergestellt.</string>
-    <string name="action_toggle_playlist_lock">Sperr/Entsperr die Wiedergabeliste </string>
+    <string name="action_toggle_playlist_lock">Sperr/Entsperr die Wiedergabeliste</string>
     <string name="playlist_locked">Wiedergabeliste sperrt</string>
     <string name="playlist_unlocked">Wiedergabeliste entsperrt</string>
-    <string name="action_toggle_queue_lock">Sperr/Entsperr die Wiedergabeliste </string>
+    <string name="action_toggle_queue_lock">Sperr/Entsperr die Wiedergabeliste</string>
     <string name="queue_locked">Warteschlange gesperrt</string>
     <string name="queue_unlocked">Warteschlange entsperrt</string>
     <!-- Audio output devices-->
@@ -696,7 +694,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="select_extra_info_summary">Wähle zusätzliche Informationen zur Anzeige in der Wiedergabe-Ansicht aus.</string>
     <string name="prefer_remaining_time_title">Verbleibende Wiedergabedauer bevorzugen</string>
     <string name="prefer_remaining_time_summary">Zeigt die verbleibende Wiedergabedauer statt der bisher abgelaufenen an.</string>
-    <string name="prefer_album_artist_name_title">"Album-Interpretenname bevorzugen"</string>
+    <string name="prefer_album_artist_name_title">Album-Interpretenname bevorzugen</string>
     <string name="prefer_album_artist_name_summary">Zeigt den Namen des Album-Interpreten statt dem des Titel-Interpreten an (wenn verfügbar).</string>
     <string name="player_blur_intensity_title">Blur intensity</string>
     <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
@@ -707,7 +705,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="remember_shuffle_mode_summary">Zufallswiedergabe-Modus bleibt bei Auswahl einer neuen Titel-Liste erhalten.</string>
     <string name="album_shuffle_mode_title">Album-Zufallswiedergabe-Modus</string>
     <string name="artist_shuffle_mode_title">Interpreten-Zufallswiedergabe-Modus</string>
-    <string name="rewind_with_back_title">"Mit \"Vorheriger\" zurückspulen"</string>
+    <string name="rewind_with_back_title">Mit \"Vorheriger\" zurückspulen</string>
     <string name="rewind_with_back_summary">Spule den wiedergegebenen Titel zurück oder springe zum vorherigen, wenn der Anfang erreicht ist.</string>
     <string name="rewind_fast_forward_amount_title">Rück-/Vorspulgröße</string>
     <string name="rewind_fast_forward_amount_summary">Zeit (in Sekunden) zum Zurückspulen oder Vorspulen mithilfe der Benutzeroberfläche oder externer Steuerelemente.</string>
@@ -724,9 +722,7 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="pause_on_zero_volume_title">Bei null-Lautstärke pausieren</string>
     <string name="pause_on_zero_volume_summary">Pausiert den Song, wenn die Lautstärke auf Null sinkt, und startet die Wiedergabe, wenn die Lautstärke wieder steigt. Funktioniert auch außerhalb der App.</string>
     <string name="mp3_index_seeking_title">MP3-Indexsuche</string>
-    <string name="mp3_index_seeking_summary">Lädt die gesamte MP3-Datei in den Speicher, um sie zu suchen, anstatt sich auf den Xing-Header zu verlassen.
-Nur verwenden, wenn die Suche bei einigen VBR-Dateien fehlschlägt.
-Erfordert einen Neustart der App.</string>
+    <string name="mp3_index_seeking_summary">Lädt die gesamte MP3-Datei in den Speicher, um sie zu suchen, anstatt sich auf den Xing-Header zu verlassen. Nur verwenden, wenn die Suche bei einigen VBR-Dateien fehlschlägt. Erfordert einen Neustart der App.</string>
     <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
     <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
     <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
@@ -789,8 +785,7 @@ Erfordert einen Neustart der App.</string>
     <string name="restore_backup_summary">Stelle die wichtigsten App-Daten aus einer vorherigen Sicherung wieder her.</string>
     <string name="stop_when_closed_from_recents_title">Beenden, wenn aus den zuletzt verwendeten Programmen geschlossen</string>
     <string name="stop_when_closed_from_recents_summary">Die Wiedergabe wird angehalten, wenn die App aus der Liste der zuletzt verwendeten Apps geschlossen wird.</string>
-    <string name="stop_when_closed_from_recents_note">Hinweis: Einige Geräte mit aggressivem Arbeitsspeicher-
-oder Akku-Management ignorieren diese Einstellung möglicherweise und beenden die App immer, wenn sie aus den zuletzt verwendeten Apps entfernt wird.</string>
+    <string name="stop_when_closed_from_recents_note">Hinweis: Einige Geräte mit aggressivem Arbeitsspeicher- oder Akku-Management ignorieren diese Einstellung möglicherweise und beenden die App immer, wenn sie aus den zuletzt verwendeten Apps entfernt wird.</string>
     <string name="rotation_lock_title">Rotationssperre</string>
     <string name="rotation_lock_summary">Sperren Sie die Ausrichtung des Geräts. Nützlich in Fällen, in denen die Musikwiedergabe aufgrund bestimmter Herstellerrichtlinien beim Drehen des Geräts unterbrochen wird.</string>
     <!-- Preference values -->
@@ -876,11 +871,91 @@ oder Akku-Management ignorieren diese Einstellung möglicherweise und beenden di
     <string name="download_action">Download</string>
     <string name="downloading_update">Lädt das Update für Booming Music herunter.</string>
     <string name="uncaught_error_title">Hoppla! Das sollte eigentlich nicht passieren!</string>
-    <string name="uncaught_error_message">Es scheint, dass etwas schiefgelaufen ist und die App abgestürzt ist.
-Es wäre hilfreich, wenn Sie uns den Fehlerbericht an unsere Telegram-Gruppe oder per E-Mail senden könnten.</string>
+    <string name="uncaught_error_message">Es scheint, dass etwas schiefgelaufen ist und die App abgestürzt ist. Es wäre hilfreich, wenn Sie uns den Fehlerbericht an unsere Telegram-Gruppe oder per E-Mail senden könnten.</string>
     <string name="uncaught_error_report">Fehlerbericht</string>
     <string name="uncaught_error_report_copied">Fehlerbericht in die Zwischenablage kopiert.</string>
     <string name="uncaught_error_restart_app">App neu starten</string>
     <string name="uncaught_error_github">Offenes Problem auf GitHub</string>
     <string name="uncaught_error_send">Report senden</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="app_widget_full_desc"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="app_widget_responsive"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="app_widget_card_desc"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="network_title"></string>
+    <string name="app_widget_responsive_desc"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="app_widget_card"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="app_widget_full"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
