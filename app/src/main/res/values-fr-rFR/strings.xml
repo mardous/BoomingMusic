@@ -106,20 +106,20 @@
     <string name="changes_saved_successfully">Les modifications ont été enregistrées avec succès.</string>
     <string name="could_not_save_some_changes">Impossible d\'enregistrer certaines modifications.</string>
     <string name="web_search">Recherche sur l\'internet</string>
-    <string name="where_do_you_want_to_search">Où voulez-vous effectuer une recherche ?</string>
+    <string name="where_do_you_want_to_search">Où voulez-vous effectuer une recherche ?</string>
     <string name="configure_action">Configurer</string>
     <string name="blacklist_directory">Répertoire de la liste noire</string>
     <string name="add_directory">Ajouter un répertoire</string>
     <string name="remove_from_blacklist">Voulez-vous supprimer ce répertoire de la liste noire ?</string>
     <string name="remove_from_whitelist">Voulez-vous supprimer ce répertoire de la liste blanche ?</string>
     <string name="do_you_want_to_clear_the_blacklist">Voulez-vous effacer la liste noire ?</string>
-    <string name="do_you_want_to_clear_the_whitelist">Voulez-vous effacer la liste blanche ?</string>
+    <string name="do_you_want_to_clear_the_whitelist">Voulez-vous effacer la liste blanche ?</string>
     <string name="action_delete_from_device">Supprimer de l\'appareil</string>
     <string name="deleted_one_song">Un titre supprimé</string>
     <string name="deleted_x_songs">%1$d titres supprimés</string>
     <string name="delete_song_title">Supprimer le titre</string>
     <string name="delete_songs_title">Supprimer les titres</string>
-    <string name="delete_x_songs">Supprimer les %d titres ?</string>
+    <string name="delete_x_songs">Supprimer les %d titres ?</string>
     <string name="delete_the_song_x">Supprimer le titre %s ?</string>
     <string name="deleting_songs">Suppression des titres, attendez…</string>
     <string name="song_x_of_x">%1$d de %2$d • %3$s</string>
@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">L\'application a besoin de l\'autorisation des appareils à proximité pour vérifier les appareils Bluetooth</string>
     <string name="permission_bluetooth_denied">Autorisation des appareils à proximité refusée.</string>
     <string name="permission_read_images_title">Lire les images (optionnel)</string>
-    <string name="permission_read_images_summary">Cette permission est nécessaire pour que Booming Music puisse trouver les couvertures d\'albums dans vos dossiers musicaux.
-        Si vous ne prévoyez pas d\'utiliser cette fonctionnalité, vous pouvez choisir de ne pas l\'accorder.</string>
+    <string name="permission_read_images_summary">Cette permission est nécessaire pour que Booming Music puisse trouver les couvertures d\'albums dans vos dossiers musicaux. Si vous ne prévoyez pas d\'utiliser cette fonctionnalité, vous pouvez choisir de ne pas l\'accorder.</string>
     <string name="permission_read_images_denied">Vous devez accorder la permission de lire les images depuis l\'appareil.</string>
     <string name="permission_exact_alarms_title">Planifier des alarmes exactes (facultatif)</string>
     <string name="permission_exact_alarms_description">L\'autorisation de programmer des alarmes exactes est requise pour que la minuterie de mise en veille fonctionne correctement</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">Aller à l\'album</string>
     <string name="action_go_to_artist">Aller à l\'artiste</string>
     <string name="action_go_to_genre">Aller au genre</string>
-    <string name="added_title_to_playing_queue">"Ajout de 1 titre à la file de lecture."</string>
+    <string name="added_title_to_playing_queue">Ajout de 1 titre à la file de lecture.</string>
     <string name="added_x_titles_to_playing_queue">Ajout de %1$d titres à la file de lecture.</string>
     <string name="next_song_label">Titre suivant</string>
     <string name="next_song_x">Suivant • %1$s</string>
@@ -257,7 +256,7 @@
     <string name="start_directory_set">Répertoire de démarrage défini sur %s</string>
     <string name="action_go_to_start_directory">Aller au répertoire de démarrage</string>
     <string name="action_hierarchy_view">Vue hiérarchique</string>
-    <string name="new_start_directory">Nouveau répertoire de démarrage : %s</string>
+    <string name="new_start_directory">Nouveau répertoire de démarrage : %s</string>
     <string name="action_scan">Analyser</string>
     <string name="scan_media">Analyser les médias</string>
     <string name="scan_media_message">Dans la plupart des cas, Android détecte et indexe automatiquement les fichiers multimédias sur votre appareil, donc l\'analyse manuelle est généralement inutile.</string>
@@ -267,7 +266,7 @@
     <string name="update_image">Mettre à jour l\'image</string>
     <string name="restore_default">Restaurer les valeurs par défaut</string>
     <string name="remove_cover">Retirer la couverture</string>
-    <string name="could_not_download_album_cover">"Impossible de télécharger une couverture d'album qui corresponde."</string>
+    <string name="could_not_download_album_cover">Impossible de télécharger une couverture d\'album qui corresponde.</string>
     <string name="download_image">Télécharger l\'image</string>
     <string name="pick_from_local_storage">Choisir depuis le stockage local</string>
     <string name="about_x_title">À propos de %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">Couverture de l\'album enregistrée</string>
     <string name="save_artwork_view_action">Voir</string>
     <string name="save_artwork_copyright_info_title">Avis de droit d\'auteur</string>
-    <string name="save_artwork_copyright_info_message">Certaines couvertures d\'album (ou toutes) peuvent être protégées par le droit d\'auteur. Vous ne pouvez pas utiliser ces images à des fins commerciales ou publicitaires.
-        \n\nL\'utilisation de la couverture est sous votre responsabilité.</string>
+    <string name="save_artwork_copyright_info_message">Certaines couvertures d\'album (ou toutes) peuvent être protégées par le droit d\'auteur. Vous ne pouvez pas utiliser ces images à des fins commerciales ou publicitaires. \n\nL\'utilisation de la couverture est sous votre responsabilité.</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="keyboard">Clavier</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">Nombre total de disques</string>
     <string name="lyrics">Paroles</string>
     <string name="lyricist">Parolier</string>
-    <string name="could_not_load_the_song_information">"Impossible de charger les informations de la chanson."</string>
+    <string name="could_not_load_the_song_information">Impossible de charger les informations de la chanson.</string>
     <string name="no_results">Aucun résultat</string>
     <string name="connection_unavailable">Connexion indisponible.</string>
     <string name="you_have_to_select_at_least_one_category">Vous devez sélectionner au moins une catégorie</string>
@@ -328,7 +326,7 @@
     <string name="backup_synced_lyrics">Paroles synchronisées</string>
     <string name="backup_artist_images">Images d\'artistes</string>
     <string name="backup_playlists">Playlists</string>
-    <string name="backup_successful">Sauvegarde réussie !</string>
+    <string name="backup_successful">Sauvegarde réussie !</string>
     <string name="backup_failed">Échec de la sauvegarde.</string>
     <string name="select_content_to_restore">Sélectionner le contenu à restaurer :</string>
     <string name="could_not_restore_data">Impossible de restaurer les données. Vérifiez le fichier de sauvegarde et réessayez.</string>
@@ -350,6 +348,7 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Titre</item>
+        <item quantity="many"></item>
         <item quantity="other">Titres</item>
     </plurals>
     <plurals name="albums">
@@ -359,6 +358,7 @@
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d titre</item>
+        <item quantity="many"></item>
         <item quantity="other">%d titres</item>
     </plurals>
     <plurals name="x_albums">
@@ -368,18 +368,22 @@
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artiste</item>
+        <item quantity="many"></item>
         <item quantity="other">%d artistes</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d fois</item>
+        <item quantity="many"></item>
         <item quantity="other">%d fois</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d lecture</item>
+        <item quantity="many"></item>
         <item quantity="other">%d lectures</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d élément</item>
+        <item quantity="many"></item>
         <item quantity="other">%d éléments</item>
     </plurals>
     <!-- Home -->
@@ -416,9 +420,7 @@
     <string name="autoeq_profiles_title">Profils AutoEq</string>
     <string name="eq_profile_title">Profil</string>
     <string name="change_band_count_title">Modifier le nombre de bandes</string>
-    <string name="change_band_count_message">La modification du nombre de bandes réinitialisera le profil actuel à son état initial.
-        Les autres profils enregistrés pour la configuration de bande actuelle ne pourront pas être utilisés avec la nouvelle configuration de bande.
-        \n\nVoulez-vous continuer ?</string>
+    <string name="change_band_count_message">La modification du nombre de bandes réinitialisera le profil actuel à son état initial. Les autres profils enregistrés pour la configuration de bande actuelle ne pourront pas être utilisés avec la nouvelle configuration de bande. \n\nVoulez-vous continuer ?</string>
     <string name="band_configuration_changed_successfully">La configuration de la bande a été modifiée avec succès.</string>
     <string name="band_configuration_could_not_be_changed">La configuration de la bande n\'a pas pu être modifiée.</string>
     <string name="share_eq_profiles">Partager les profils d\'égaliseur</string>
@@ -426,13 +428,13 @@
     <string name="there_is_nothing_to_import">Il n\'y a rien à importer.</string>
     <string name="an_unexpected_error_occurred">Une erreur inattendue s\'est produite.</string>
     <string name="share_profiles">Partager des profils</string>
-    <string name="select_profiles_to_share">Sélectionnez les profils à partager :</string>
+    <string name="select_profiles_to_share">Sélectionnez les profils à partager :</string>
     <string name="export_profiles">Profils d\'exportation</string>
-    <string name="select_profiles_to_export">Sélectionnez les profils à exporter :</string>
+    <string name="select_profiles_to_export">Sélectionnez les profils à exporter :</string>
     <string name="select_a_file_to_save_the_exported_profiles">Sélectionnez un fichier pour enregistrer les profils exportés.</string>
     <string name="profiles_exported_successfully">Profils exportés avec succès.</string>
     <string name="import_profiles">Profils d\'importation</string>
-    <string name="select_profiles_to_import">Sélectionnez les profils à importer :</string>
+    <string name="select_profiles_to_import">Sélectionnez les profils à importer :</string>
     <string name="select_a_file_containing_booming_eq_profiles">Sélectionnez un fichier contenant les profils d\'égalisation Booming Music.</string>
     <string name="imported_x_profiles">Profils importés %d.</string>
     <string name="no_profile_imported">Aucun profil importé.</string>
@@ -440,8 +442,7 @@
     <string name="select_a_file_containing_autoeq_params">Sélectionnez un fichier contenant les paramètres AutoEq (GraphicEq).</string>
     <string name="no_autoeq_profiles">Aucun profil AutoEq n\'a été importé.</string>
     <string name="reset_equalizer">Réinitialiser l\'égaliseur</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ?
-        \n\nCette opération effacera tous vos profils.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ? \n\nCette opération effacera tous vos profils.</string>
     <string name="not_supported">Non pris en charge</string>
     <string name="set_eq_engine_title">Régler l\'égaliseur</string>
     <string name="eq_engine_basic_title">Moteur Hérité</string>
@@ -530,7 +531,7 @@
     <string name="sleep_timer_music_fades_out">La musique s\'estompe</string>
     <string name="sleep_timer_stop_after_this_track">Arrêter après ce titre</string>
     <string name="sleep_timer_stop_after_x">Arrêter après %s</string>
-    <string name="sleep_timer_stop_after_x_canceled">Arrêt après %s : annulé</string>
+    <string name="sleep_timer_stop_after_x_canceled">Arrêt après %s : annulé</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">Mélanger</string>
     <string name="app_shortcut_top_tracks_short">Meilleurs titres</string>
@@ -559,7 +560,7 @@
     <string name="share_app">Partager cette application</string>
     <string name="share_app_summary">Vous pouvez aider cette application à se développer si vous la partagez avec vos amis.</string>
     <string name="send_invitation_message">Envoyer un message d\'invitation</string>
-    <string name="invitation_message_content">Bonjour. Découvrez Booming Music ! La meilleure application pour écouter de la musique locale sur Android. Vous pouvez la télécharger ici : %s</string>
+    <string name="invitation_message_content">Bonjour. Découvrez Booming Music ! La meilleure application pour écouter de la musique locale sur Android. Vous pouvez la télécharger ici : %s</string>
     <!-- Bug report -->
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Vous serez redirigé vers le site Web de suivi des problèmes.</string>
     <!-- SAF -->
@@ -568,7 +569,7 @@
     <string name="saf_show_files_button">Afficher les fichiers</string>
     <string name="saf_error_uri">Impossible d\'obtenir l\'URI SAF</string>
     <string name="saf_write_failed">Échec de l\'écriture du fichier : %s</string>
-    <string name="saf_delete_failed">Échec de la suppression du fichier : %s</string>
+    <string name="saf_delete_failed">Échec de la suppression du fichier : %s</string>
     <string name="settings_title">Paramètres</string>
     <string name="appearance_title">Apparence</string>
     <string name="appearance_summary">Modifiez le thème de l\'application et d\'autres paramètres visuels.</string>
@@ -652,11 +653,7 @@
     <string name="ignore_blank_lines_title">Ignorer les lignes vides</string>
     <string name="ignore_blank_lines_summary">Ignorez les lignes vides dans les fichiers LRC au lieu d\'afficher des bulles animées.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Traiter tous les fichiers de paroles comme UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Supposons que tous les fichiers utilisent l\'encodage UTF-8.
-
-Cela optimise l\'analyse des fichiers, mais peut parfois entraîner l\'apparition de caractères inhabituels dans les paroles des chansons.
-
-Un redémarrage de l\'application peut être nécessaire.</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Supposons que tous les fichiers utilisent l\'encodage UTF-8. Cela optimise l\'analyse des fichiers, mais peut parfois entraîner l\'apparition de caractères inhabituels dans les paroles des chansons. Un redémarrage de l\'application peut être nécessaire.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir lors de la lecture</string>
@@ -702,7 +699,7 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="select_extra_info_summary">Sélectionnez les informations supplémentaires à afficher dans le panneau du lecteur.</string>
     <string name="prefer_remaining_time_title">Préférer le temps restant</string>
     <string name="prefer_remaining_time_summary">Afficher le temps restant au lieu de la durée du titre.</string>
-    <string name="prefer_album_artist_name_title">"Préférer le nom de l'artiste de l'album"</string>
+    <string name="prefer_album_artist_name_title">Préférer le nom de l\'artiste de l\'album</string>
     <string name="prefer_album_artist_name_summary">Affiche le nom de l\'artiste de l\'album au lieu du nom de l\'artiste du titre (si disponible).</string>
     <string name="player_blur_intensity_title">Intensité du flou</string>
     <string name="player_blur_intensity_summary">Ajustez l\'intensité du flou d\'arrière-plan dans le thème Flou. Des valeurs plus faibles peuvent améliorer les performances.</string>
@@ -713,7 +710,7 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="remember_shuffle_mode_summary">Le mode aléatoire restera actif lors de la sélection d\'une nouvelle liste de titres.</string>
     <string name="album_shuffle_mode_title">Mode de lecture aléatoire des albums</string>
     <string name="artist_shuffle_mode_title">Mode de lecture aléatoire des artistes</string>
-    <string name="rewind_with_back_title">"Revenir avec 'Précédent'"</string>
+    <string name="rewind_with_back_title">Revenir avec \'Précédent\'</string>
     <string name="rewind_with_back_summary">Rembobinez le titre en cours de lecture jusqu\'au début ou passez au titre précédent si le titre en cours est au début.</string>
     <string name="rewind_fast_forward_amount_title">Retour/Avance Rapide</string>
     <string name="rewind_fast_forward_amount_summary">Temps (en secondes) pour rembobiner ou avancer rapidement à l\'aide de l\'interface utilisateur ou des commandes externes.</string>
@@ -730,13 +727,11 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="pause_on_zero_volume_title">Mettre en pause à zéro volume</string>
     <string name="pause_on_zero_volume_summary">Met en pause la lecture quand le volume diminue a zéro et reprend quand le volume augmente. Marche en dehors de l\'application.</string>
     <string name="mp3_index_seeking_title">Recherche d\'index MP3</string>
-    <string name="mp3_index_seeking_summary">Charge le fichier MP3 dans la mémoire pour l\'indexer a la place d\'utiliser l\'entêté Xing.
-        À utiliser uniquement si l\'index échoue sur les fichiers VBR.
-        Nécessite le redémarrage de l\'application.</string>
-    <string name="play_option_always_visible_title">Garder l\'option « Lecture » visible</string>
-    <string name="play_option_always_visible_summary">Si cette option est activée, l\'option « Lecture » ​​apparaîtra toujours dans le menu d\'un titre, quels que soient les paramètres de comportement au toucher.</string>
-    <string name="play_option_whole_list_title">L\'option « Lecture » permet de lire toute la liste</string>
-    <string name="play_option_whole_list_summary">Si cette option est activée, sélectionner « Lecture » dans le menu d\'un morceau lancera la lecture de toute la playlist. Si elle est désactivée, seul le morceau sélectionné sera lu.</string>
+    <string name="mp3_index_seeking_summary">Charge le fichier MP3 dans la mémoire pour l\'indexer a la place d\'utiliser l\'entêté Xing. À utiliser uniquement si l\'index échoue sur les fichiers VBR. Nécessite le redémarrage de l\'application.</string>
+    <string name="play_option_always_visible_title">Garder l\'option « Lecture » visible</string>
+    <string name="play_option_always_visible_summary">Si cette option est activée, l\'option « Lecture » ​​apparaîtra toujours dans le menu d\'un titre, quels que soient les paramètres de comportement au toucher.</string>
+    <string name="play_option_whole_list_title">L\'option « Lecture » permet de lire toute la liste</string>
+    <string name="play_option_whole_list_summary">Si cette option est activée, sélectionner « Lecture » dans le menu d\'un morceau lancera la lecture de toute la playlist. Si elle est désactivée, seul le morceau sélectionné sera lu.</string>
     <string name="on_song_click_title">Lors du choix d\'un titre</string>
     <string name="on_song_click_play_only_this_song_title">Jouez uniquement ce titre</string>
     <string name="on_song_click_play_only_this_song_summary">La file d\'attente actuelle sera effacée et remplacée par le titre sélectionné.</string>
@@ -761,7 +756,7 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="online_artist_images_title">Télécharger les images de l\'artiste</string>
     <string name="preferred_image_size_title">Taille d\'image préférée</string>
     <string name="online_album_covers_title">Télécharger les couvertures d\'album manquantes</string>
-    <string name="online_album_covers_summary">Les images téléchargées ne sont pas intégrées dans les fichiers audio ; elles sont uniquement visibles depuis l\'application. Cela dépend de votre politique de téléchargement des métadonnées.</string>
+    <string name="online_album_covers_summary">Les images téléchargées ne sont pas intégrées dans les fichiers audio ; elles sont uniquement visibles depuis l\'application. Cela dépend de votre politique de téléchargement des métadonnées.</string>
     <string name="delete_downloaded_lyrics_title">Supprimer les paroles téléchargées</string>
     <string name="delete_downloaded_lyrics_summary">Seules les paroles téléchargées par Booming Music. N\'affecte pas les paroles intégrées dans les tags ID3v2 ou les fichiers LCR.</string>
     <string name="lyrics_cleared">Paroles effacées.</string>
@@ -794,7 +789,7 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="restore_backup_summary">Restaurer les données (et l\'état) de l\'application à partir d\'une sauvegarde précédente.</string>
     <string name="stop_when_closed_from_recents_title">Arrêter lorsque fermé depuis les récents</string>
     <string name="stop_when_closed_from_recents_summary">La lecture s\'arrête si l\'application est fermée à partir de la liste des applications récentes.</string>
-    <string name="stop_when_closed_from_recents_note">Remarque : certains appareils dotés d\'une gestion agressive de la mémoire ou de la batterie peuvent ignorer ce paramètre et toujours arrêter l\'application lorsqu\'elle est supprimée des applications récentes.</string>
+    <string name="stop_when_closed_from_recents_note">Remarque : certains appareils dotés d\'une gestion agressive de la mémoire ou de la batterie peuvent ignorer ce paramètre et toujours arrêter l\'application lorsqu\'elle est supprimée des applications récentes.</string>
     <string name="rotation_lock_title">Verrouillage de rotation</string>
     <string name="rotation_lock_summary">Verrouille l\'orientation de l\'appareil. Utile dans les cas où la musique s\'arrête lors de la rotation de l\'appareil en raison de certaines règles du fabricant.</string>
     <!-- Preference values -->
@@ -880,8 +875,7 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="download_action">Télécharger</string>
     <string name="downloading_update">Téléchargement de la mise à jour de Booming Music.</string>
     <string name="uncaught_error_title">Oups ! Ce n\'était pas censé arriver !</string>
-    <string name="uncaught_error_message">Il semble qu\'un problème soit survenu et ait provoqué le plantage de l\'application. 
-        Il nous serait utile que vous nous envoyiez un rapport d\'erreur sur notre groupe Telegram ou par e-mail.</string>
+    <string name="uncaught_error_message">Il semble qu\'un problème soit survenu et ait provoqué le plantage de l\'application. Il nous serait utile que vous nous envoyiez un rapport d\'erreur sur notre groupe Telegram ou par e-mail.</string>
     <string name="uncaught_error_report">Rapport d\'erreur</string>
     <string name="uncaught_error_report_copied">Rapport d\'erreur copié dans le presse-papiers.</string>
     <string name="uncaught_error_restart_app">Redémarrer l\'application</string>
@@ -959,4 +953,12 @@ Un redémarrage de l\'application peut être nécessaire.</string>
     <string name="advanced_settings">Paramètres avancés</string>
     <string name="bit_perfect_is_active">Bit-perfect est actif</string>
     <string name="bit_perfect_description">Transmettre le signal audio directement vers un DAC USB sans rééchantillonnage du système.</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
