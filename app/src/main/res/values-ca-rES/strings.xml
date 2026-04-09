@@ -135,8 +135,7 @@
     <string name="permission_bluetooth_description">Cal permís de dispositius propers per cercar dispositius bluetooth</string>
     <string name="permission_bluetooth_denied">S\'ha denegat el permís dels dispositius propers.</string>
     <string name="permission_read_images_title">Cerca imatges (opcional)</string>
-    <string name="permission_read_images_summary">Cal donar permís perquè Booming Music trobi portades d\'àlbum a les teves carpetes de música.
-        Si no penses fer servir aquesta funció, no cal donar-lo.</string>
+    <string name="permission_read_images_summary">Cal donar permís perquè Booming Music trobi portades d\'àlbum a les teves carpetes de música. Si no penses fer servir aquesta funció, no cal donar-lo.</string>
     <string name="permission_read_images_denied">Cal donar permís per llegir imatges del dispositiu.</string>
     <string name="permission_exact_alarms_title">Programa alarmes exactes (opcional)</string>
     <string name="permission_exact_alarms_description">Cal permís per programar alarmes exactes perquè funcioni correctament el temporitzador d\'apagada</string>
@@ -183,7 +182,7 @@
     <string name="action_go_to_album">Ves a l\'Àlbum</string>
     <string name="action_go_to_artist">Ves a l\'Artista</string>
     <string name="action_go_to_genre">Ves al Gènere</string>
-    <string name="added_title_to_playing_queue">"S'ha afegit 1 títol a la cua de reproducció."</string>
+    <string name="added_title_to_playing_queue">S\'ha afegit 1 títol a la cua de reproducció.</string>
     <string name="added_x_titles_to_playing_queue">S\'han afegit %1$d títols a la cua de reproducció.</string>
     <string name="next_song_label">Següent cançó</string>
     <string name="next_song_x">Següent • %1$s</string>
@@ -267,7 +266,7 @@
     <string name="update_image">Actualitza la imatge</string>
     <string name="restore_default">Restableix-ho per defecte</string>
     <string name="remove_cover">Treu la portada</string>
-    <string name="could_not_download_album_cover">"No s'ha pogut descarregar una portada escaient."</string>
+    <string name="could_not_download_album_cover">No s\'ha pogut descarregar una portada escaient.</string>
     <string name="download_image">Descarrega la imatge</string>
     <string name="pick_from_local_storage">Tria des de l\'emmagatzematge intern</string>
     <string name="about_x_title">Quant a %s</string>
@@ -279,8 +278,7 @@
     <string name="save_artwork_success">S\'ha desat la portada de l\'àlbum</string>
     <string name="save_artwork_view_action">Mostra</string>
     <string name="save_artwork_copyright_info_title">Avís de drets d\'autor</string>
-    <string name="save_artwork_copyright_info_message">Algunes portades d\'àlbums (o totes) podrien estar protegides per lleis de drets d\'autor. No podeu fer servir aquelles imatges amb finalitats lucratives o publicitàries.
-        \n\nSou plenament responsable del vostre ús de les portades d\'àlbum desades.</string>
+    <string name="save_artwork_copyright_info_message">Algunes portades d\'àlbums (o totes) podrien estar protegides per lleis de drets d\'autor. No podeu fer servir aquelles imatges amb finalitats lucratives o publicitàries. \n\nSou plenament responsable del vostre ús de les portades d\'àlbum desades.</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="keyboard">Teclat</string>
@@ -319,7 +317,7 @@
     <string name="disc_total">Total de discos</string>
     <string name="lyrics">Lletra</string>
     <string name="lyricist">Lletrista</string>
-    <string name="could_not_load_the_song_information">"No s'ha pogut carregar la informació de la cançó."</string>
+    <string name="could_not_load_the_song_information">No s\'ha pogut carregar la informació de la cançó.</string>
     <string name="no_results">No hi ha resultats</string>
     <string name="connection_unavailable">La connexió no està disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Heu de triar, pel cap baix, una categoria</string>
@@ -350,34 +348,42 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Cançó</item>
+        <item quantity="many"></item>
         <item quantity="other">Cançons</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Àlbum</item>
+        <item quantity="many"></item>
         <item quantity="other">Àlbums</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d cançó</item>
+        <item quantity="many"></item>
         <item quantity="other">%d cançons</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d àlbum</item>
+        <item quantity="many"></item>
         <item quantity="other">%d àlbums</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
+        <item quantity="many"></item>
         <item quantity="other">%d artistes</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d cop</item>
+        <item quantity="many"></item>
         <item quantity="other">%d cops</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d reproducció</item>
+        <item quantity="many"></item>
         <item quantity="other">%d reproduccions</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d ítem</item>
+        <item quantity="many"></item>
         <item quantity="other">%d ítems</item>
     </plurals>
     <!-- Home -->
@@ -414,9 +420,7 @@
     <string name="autoeq_profiles_title">Perfils d\'autoequalització</string>
     <string name="eq_profile_title">Perfil</string>
     <string name="change_band_count_title">Canvia el nombre de bandes</string>
-    <string name="change_band_count_message">Canviar el nombre de bandes farà tornar el perfil actual al seu estat inicial.
-        Qualsevol altre perfil desat amb l\'actual configuració de banda no es pot fer servir amb la nova.
-        \n\nVoleu continuar?</string>
+    <string name="change_band_count_message">Canviar el nombre de bandes farà tornar el perfil actual al seu estat inicial. Qualsevol altre perfil desat amb l\'actual configuració de banda no es pot fer servir amb la nova. \n\nVoleu continuar?</string>
     <string name="band_configuration_changed_successfully">La configuració de banda s\'ha canviat correctament.</string>
     <string name="band_configuration_could_not_be_changed">No s\'ha pogut canviar la configuració de banda.</string>
     <string name="share_eq_profiles">Comparteix perfils d\'equalització</string>
@@ -438,8 +442,7 @@
     <string name="select_a_file_containing_autoeq_params">Trieu un fitxer que contingui paràmetres d\'autoequalització (equalitzador gràfic).</string>
     <string name="no_autoeq_profiles">No s\'ha importat cap perfil d\'autoequalització.</string>
     <string name="reset_equalizer">Restableix l\'equalitzador</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Esteu segur que voleu restablir l\'equalitzador?
-        \n\nS\'eliminaran tots els vostres perfils.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Esteu segur que voleu restablir l\'equalitzador? \n\nS\'eliminaran tots els vostres perfils.</string>
     <string name="not_supported">Incompatible</string>
     <string name="set_eq_engine_title">Motor d\'equalitzador</string>
     <string name="eq_engine_basic_title">Motor original</string>
@@ -647,17 +650,13 @@
     <string name="unsynced_font_size_full_title">Mida de la lletra sense sincronitzar (pantalla completa)</string>
     <string name="unsynced_font_size_full_summary">Ajusta la mida de la lletra sense sincronitzar en pantalla completa.</string>
     <string name="instrumental_tracks_identifiers_title">Identificadors de pistes instrumentals</string>
-    <string name="instrumental_tracks_identifiers_summary">Si la lletra d\'una cançó consisteix només en
-        un o més indicadors d\'aquests, es marcarà com a pista instrumental
-(separat per comes).</string>
+    <string name="instrumental_tracks_identifiers_summary">Si la lletra d\'una cançó consisteix només en un o més indicadors d\'aquests, es marcarà com a pista instrumental (separat per comes).</string>
     <string name="instrumental_tracks_mark_by_title_title">Marca per títol</string>
     <string name="instrumental_tracks_mark_by_title_summary">El títol de la pista també es tindrà en compte per cercar identificadors.</string>
     <string name="ignore_blank_lines_title">Ignora les línies buides</string>
     <string name="ignore_blank_lines_summary">Ignora les línies buides en els fitxers LRC en lloc de mostrar bombolles animades.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tracta tots els fitxers de lletra com a UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assumeix que tots els fitxers estan codificats en format UTF-8.
-        Optimitza el procés d\'anàlisi de fitxers, però en alguns casos podria mostrar caràcters inusuals a la lletra de les cançons.
-        Caldrà, potser, reiniciar l\'aplicació.</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assumeix que tots els fitxers estan codificats en format UTF-8. Optimitza el procés d\'anàlisi de fitxers, però en alguns casos podria mostrar caràcters inusuals a la lletra de les cançons. Caldrà, potser, reiniciar l\'aplicació.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estil</string>
     <string name="open_on_play_title">Obre en reproduir</string>
@@ -703,7 +702,7 @@
     <string name="select_extra_info_summary">Trieu la informació addicional a mostrar al panell de reproducció.</string>
     <string name="prefer_remaining_time_title">Mostra el temps restant</string>
     <string name="prefer_remaining_time_summary">Mostra el temps que queda en lloc de la duració de la cançó.</string>
-    <string name="prefer_album_artist_name_title">"Mostra el nom dels artistes de l'àlbum"</string>
+    <string name="prefer_album_artist_name_title">Mostra el nom dels artistes de l\'àlbum</string>
     <string name="prefer_album_artist_name_summary">Mostra el nom de l\'artista de l\'àlbum en lloc del nom de l\'artista de la cançó (si està disponible).</string>
     <string name="player_blur_intensity_title">Intensitat del difuminat</string>
     <string name="player_blur_intensity_summary">Ajusta el grau de difuminació del fons del tema Difuminat. Els valors més baixos podrien millorar el rendiment.</string>
@@ -714,7 +713,7 @@
     <string name="remember_shuffle_mode_summary">El mode aleatori es mantindrà en seleccionar una nova llista de cançons.</string>
     <string name="album_shuffle_mode_title">Mode de barreja d\'àlbums</string>
     <string name="artist_shuffle_mode_title">Mode de barreja d\'artistes</string>
-    <string name="rewind_with_back_title">"Rebobina amb «Anterior»"</string>
+    <string name="rewind_with_back_title">Rebobina amb «Anterior»</string>
     <string name="rewind_with_back_summary">Rebobina la cançó a l\'inici o ves a l\'anterior si l\'actual és al principi.</string>
     <string name="rewind_fast_forward_amount_title">Quantitat de retrocés/avanç ràpid</string>
     <string name="rewind_fast_forward_amount_summary">Temps (en segons) a retrocedir o avançar amb l\'ús de la interfície o controls externs.</string>
@@ -731,9 +730,7 @@
     <string name="pause_on_zero_volume_title">Pausa si es treu el volum</string>
     <string name="pause_on_zero_volume_summary">Pausa la cançó si el volum baixa a zero i reprèn la reproducció quan s\'apugi el volum. Funciona també fora de l\'app.</string>
     <string name="mp3_index_seeking_title">Cerca d\'MP3 per índex</string>
-    <string name="mp3_index_seeking_summary">Carrega tot el fitxer MP3 a la memòria per cercar en lloc de refiar-se de la capçalera Xing.
-        Feu-lo servir només si la cerca no reïx en alguns fitxers VBR.
-        Cal reiniciar l\'aplicació.</string>
+    <string name="mp3_index_seeking_summary">Carrega tot el fitxer MP3 a la memòria per cercar en lloc de refiar-se de la capçalera Xing. Feu-lo servir només si la cerca no reïx en alguns fitxers VBR. Cal reiniciar l\'aplicació.</string>
     <string name="play_option_always_visible_title">Mantén visible l\'opció «Reprodueix»</string>
     <string name="play_option_always_visible_summary">Si s\'activa, l\'opció «Reprodueix» apareixerà sempre al menú de la cançó al marge de la configuració de comportament dels clics.</string>
     <string name="play_option_whole_list_title">L\'opció «Reprodueix» reprodueix tota la llista</string>
@@ -882,8 +879,7 @@
     <string name="download_action">Descarrega</string>
     <string name="downloading_update">S\'està descarregant l\'actualització de Booming Music.</string>
     <string name="uncaught_error_title">Ups! Això no hauria d\'haver passat!</string>
-    <string name="uncaught_error_message">Sembla que alguna cosa ha anat malament i s\'ha penjat l\'aplicació.
-        Seria de gran ajuda si poguéssiu enviar-nos el report d\'error al nostre grup de Telegram o per correu electrònic.</string>
+    <string name="uncaught_error_message">Sembla que alguna cosa ha anat malament i s\'ha penjat l\'aplicació. Seria de gran ajuda si poguéssiu enviar-nos el report d\'error al nostre grup de Telegram o per correu electrònic.</string>
     <string name="uncaught_error_report">Report d\'error</string>
     <string name="uncaught_error_report_copied">S\'ha copiat el report d\'error al porta-retalls.</string>
     <string name="uncaught_error_restart_app">Reinicia l\'aplicació</string>
@@ -926,4 +922,48 @@
     <string name="error_lastfm_credentials">Les vostres credencials no són vàlides. Verifiqueu-les i torneu-ho a intentar.</string>
     <string name="error_lastfm_params">Pàrametres invàlids. Podria ser per error nostre.</string>
     <string name="error_lastfm_service">Last.fm està en manteniment ara mateix. Torneu-ho a intentar més tard.</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="advanced_settings"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="error_network_timeout"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
