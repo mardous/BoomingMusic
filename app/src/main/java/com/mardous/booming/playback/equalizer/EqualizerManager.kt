@@ -59,7 +59,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -357,7 +356,6 @@ class EqualizerManager(
 
     fun release() {
         setSession(EqSession(SessionType.Internal, NO_SESSION_ID, false))
-        eqScope.cancel()
         eqEngine?.release()
         eqEngine = null
     }
