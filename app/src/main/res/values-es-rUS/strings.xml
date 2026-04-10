@@ -900,7 +900,7 @@
     <string name="error_network_timeout">Tiempo de espera agotado para la conexión. Comprueba que estás conectado y reintenta.</string>
     <string name="github">GitHub</string>
     <string name="telegram_community">Comunidad de Telegram</string>
-    <string name="telegram_community_summary">Únete a nuestra comunidad de Telegram para mantenerte al tanto de las últimos actualizaciones.</string>
+    <string name="telegram_community_summary">Únete a nuestra comunidad de Telegram para mantenerte al tanto de las últimas actualizaciones.</string>
     <string name="support_my_work">Apoyar mi trabajo</string>
     <string name="network_title">Red</string>
     <string name="network_summary">Gestione las características de red como la integración con Last.fm, proveedores de letras y descarga de metadatos.</string>
