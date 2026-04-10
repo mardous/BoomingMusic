@@ -588,9 +588,6 @@
     <string name="send_invitation_message">إرسال رسالة الدعوة</string>
     <string name="invitation_message_content">مرحبًا. تحقق من الموسيقى المزدهرة! أفضل تطبيق للاستماع إلى الموسيقى المحلية على أندرويد. يمكنك تنزيلها من هنا: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">الإبلاغ عن مشكلة</string>
-    <string name="device_info">معلومات الجهاز</string>
-    <string name="copied_device_info_to_clipboard">تم نسخ معلومات الجهاز إلى الحافظة.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">سيتم إعادة توجيهك إلى موقع تتبع المشكلة.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">مطلوب الوصول إلى التخزين</string>

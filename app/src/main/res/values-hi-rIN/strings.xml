@@ -554,9 +554,6 @@
     <string name="send_invitation_message">निमंत्रण संदेश भेजें</string>
     <string name="invitation_message_content">नमस्ते। Booming Music पर नज़र डालें! Android पर लोकल म्यूज़िक सुनने के लिए यह सबसे अच्छा ऐप है। आप इसे यहाँ से डाउनलोड कर सकते हैं: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">समस्या की रिपोर्ट करें</string>
-    <string name="device_info">डिवाइस की जानकारी</string>
-    <string name="copied_device_info_to_clipboard">डिवाइस की जानकारी क्लिपबोर्ड पर कॉपी की।</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">आपको मुद्दा ट्रैकर वेबसाइट पर अग्रेषित किया जाएगा।</string>
     <!-- SAF -->
     <string name="saf_access_required_title">स्टोरेज एक्सेस आवश्यक है</string>

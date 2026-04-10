@@ -574,9 +574,6 @@
     <string name="send_invitation_message">Отправить приглашение</string>
     <string name="invitation_message_content">Привет. Попробуй Booming Music! Лучшее приложение для прослушивания локальной музыки на Android. Ты можешь скачать его здесь: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Сообщить о проблеме</string>
-    <string name="device_info">Информация об устройстве</string>
-    <string name="copied_device_info_to_clipboard">Информация об устройстве скопирована в буфер обмена.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Вы будете перенаправлены на веб-сайт трекера проблем.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Требуется доступ к хранилищу</string>

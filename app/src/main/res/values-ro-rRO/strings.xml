@@ -563,9 +563,6 @@
     <string name="send_invitation_message">Trimite mesaj de invitație</string>
     <string name="invitation_message_content">Salut. Uită-te la Booming Music! Cea mai bună aplicație pentru a asculta muzică locală pe Android. Poți să o descarci de aici: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Raportează o problemă</string>
-    <string name="device_info">Informații despre dispozitiv</string>
-    <string name="copied_device_info_to_clipboard">Informațiile dispozitivului au fost copiate în clipboard.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Veţi fi redirecţionat către site-ul de urmărire a problemelor.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Acces la stocare necesar</string>

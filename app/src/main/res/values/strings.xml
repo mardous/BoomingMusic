@@ -617,11 +617,6 @@
     <string name="share_app_summary">You can help this app grow if you share it with friends.</string>
     <string name="send_invitation_message">Send invitation message</string>
     <string name="invitation_message_content">Hi. Check out Booming Music! The best app to listen local music on Android. You can download it from here: %s</string>
-
-    <!-- Bug report -->
-    <string name="report_an_issue">Report an issue</string>
-    <string name="device_info">Device info</string>
-    <string name="copied_device_info_to_clipboard">Copied device info to clipboard.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">You will be forwarded to the issue tracker website.</string>
 
     <!-- SAF -->

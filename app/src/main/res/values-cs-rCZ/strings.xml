@@ -572,9 +572,6 @@
     <string name="send_invitation_message">Odeslat pozvánku</string>
     <string name="invitation_message_content">Ahoj. Podívejte se na Booming Musice! Nejlepší aplikace pro poslech místní hudby na Android. Můžete si ji stáhnout zde: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Nahlásit problém</string>
-    <string name="device_info">Informace o zařízení</string>
-    <string name="copied_device_info_to_clipboard">Informace o zařízení byly zkopírovány do schránky.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Budete přesměrováni na webovou stránku pro sledování problémů.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Vyžadován přístup k úložišti</string>

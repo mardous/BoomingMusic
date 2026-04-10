@@ -572,9 +572,6 @@
     <string name="send_invitation_message">שלח הודעת הזמנה</string>
     <string name="invitation_message_content">היי. בדוק את Booming Music! האפליקציה הטובה ביותר להאזנה למוזיקה מקומית באנדרואיד. אתה יכול להוריד אותה מכאן: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">דוח על תקלה</string>
-    <string name="device_info">מידע על המכשיר</string>
-    <string name="copied_device_info_to_clipboard">מידע מכשיר הועתק.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">תועברו לאתר האינטרנט למעקב הבעיות.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">נדרש גישה לאחסון</string>

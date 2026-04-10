@@ -556,9 +556,6 @@
     <string name="send_invitation_message">Lähetä kutsu viesti</string>
     <string name="invitation_message_content">Hei. Tsekkaa Booming Music! Paras sovellus kuunnella paikallista musiikkia Androidissa. Voit ladata sen täältä: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Ilmoita ongelmasta</string>
-    <string name="device_info">Laitteen tiedot</string>
-    <string name="copied_device_info_to_clipboard">Kopioitu laitteen tiedot leikepöydälle.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Sinut välitetään edelleen ongelman seurannan verkkosivuille.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Tallennustilan Käyttö Vaaditaan</string>

@@ -92,10 +92,10 @@ class UpdateViewModel(private val updateService: GitHubService): ViewModel() {
             return false
 
         val minElapsedMillis = when (Preferences.updateSearchMode) {
-            UpdateSearchMode.Companion.EVERY_DAY -> TimeUnit.DAYS.toMillis(1)
-            UpdateSearchMode.Companion.EVERY_FIFTEEN_DAYS -> TimeUnit.DAYS.toMillis(15)
-            UpdateSearchMode.Companion.WEEKLY -> TimeUnit.DAYS.toMillis(7)
-            UpdateSearchMode.Companion.MONTHLY -> TimeUnit.DAYS.toMillis(30)
+            UpdateSearchMode.EVERY_DAY -> TimeUnit.DAYS.toMillis(1)
+            UpdateSearchMode.EVERY_FIFTEEN_DAYS -> TimeUnit.DAYS.toMillis(15)
+            UpdateSearchMode.WEEKLY -> TimeUnit.DAYS.toMillis(7)
+            UpdateSearchMode.MONTHLY -> TimeUnit.DAYS.toMillis(30)
             else -> -1
         }
         val elapsedMillis = System.currentTimeMillis() - Preferences.lastUpdateSearch

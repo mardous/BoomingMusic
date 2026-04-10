@@ -556,9 +556,6 @@
     <string name="send_invitation_message">Invia messaggio di invito</string>
     <string name="invitation_message_content">Ciao. Da\' un\'occhiata a Booming Music! La migliore app per ascoltare musica in locale su Android. Puoi scaricarla da qui: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Segnala un problema</string>
-    <string name="device_info">Informazioni sul dispositivo</string>
-    <string name="copied_device_info_to_clipboard">Informazioni sul dispositivo copiate negli appunti.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Verrai reindirizzato al sito web per le segnalazioni.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Accesso all\'Archiviazione Richiesto</string>

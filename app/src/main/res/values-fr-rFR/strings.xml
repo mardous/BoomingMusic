@@ -561,9 +561,6 @@
     <string name="send_invitation_message">Envoyer un message d\'invitation</string>
     <string name="invitation_message_content">Bonjour. Découvrez Booming Music ! La meilleure application pour écouter de la musique locale sur Android. Vous pouvez la télécharger ici : %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Signaler un problème</string>
-    <string name="device_info">Informations sur l\'appareil</string>
-    <string name="copied_device_info_to_clipboard">Informations sur l\'appareil copiées dans le presse-papiers.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Vous serez redirigé vers le site Web de suivi des problèmes.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Accès au stockage requis</string>

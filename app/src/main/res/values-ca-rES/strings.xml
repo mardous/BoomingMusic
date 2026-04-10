@@ -559,9 +559,6 @@
     <string name="send_invitation_message">Envia missatge d\'invitació</string>
     <string name="invitation_message_content">Ei. Fes un cop d\'ull a Booming Music! La millor aplicació per escoltar música fora de línia a Android. Pots descarregar-la aquí: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Informeu d\'un problema</string>
-    <string name="device_info">Informació del dispositiu</string>
-    <string name="copied_device_info_to_clipboard">S\'ha copiat la informació del dispositiu al porta-retalls.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Se us enviarà al lloc web de seguiment de problemes.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Cal accés a l’emmagatzematge</string>

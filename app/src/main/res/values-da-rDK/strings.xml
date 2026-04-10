@@ -556,9 +556,6 @@
     <string name="send_invitation_message">Send invitationsbesked</string>
     <string name="invitation_message_content">Hi. Tjek Booming Music! Den bedste app til at lytte til lokal musik på Android. Du kan downloade den herfra: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Rapporter et problem</string>
-    <string name="device_info">Oplysninger om enheden</string>
-    <string name="copied_device_info_to_clipboard">Kopierede enhedsinfo til udklipsholderen.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Du vil blive videresendt til issue tracker hjemmeside.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Lagerplads Påkrævet</string>

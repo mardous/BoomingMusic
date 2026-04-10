@@ -556,9 +556,6 @@
     <string name="send_invitation_message">Davet mesajı gönder</string>
     <string name="invitation_message_content">Merhaba. Booming Music\'e bir göz at! Android\'de yerel müzik dinlemek için en iyi uygulama. Buradan indirebilirsin: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Sorun bildir</string>
-    <string name="device_info">Cihaz bilgisi</string>
-    <string name="copied_device_info_to_clipboard">Cihaz bilgisi panoya kopyalandı.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Sorun izleyici web sitesine yönlendirileceksiniz.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Depolama Erişimi Gerekli</string>

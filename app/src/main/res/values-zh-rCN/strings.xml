@@ -551,9 +551,6 @@
     <string name="send_invitation_message">发送邀请信息</string>
     <string name="invitation_message_content">你好，来看看Booming Music吧！这是Android平台最好的本地音乐播放器。下载链接： %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">报告一个问题</string>
-    <string name="device_info">设备信息</string>
-    <string name="copied_device_info_to_clipboard">已将设备信息复制到剪贴板。</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">即将跳转到问题跟踪网站。</string>
     <!-- SAF -->
     <string name="saf_access_required_title">需要存储访问</string>

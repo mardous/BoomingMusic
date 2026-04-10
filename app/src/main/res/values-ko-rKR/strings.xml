@@ -546,9 +546,6 @@
     <string name="send_invitation_message">초대 메시지 보내기</string>
     <string name="invitation_message_content">안녕! 로컬 음악을 듣기에 최고의 앱인 Booming Music을 확인해봐. 여기서 다운로드할 수 있어: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">문제 신고</string>
-    <string name="device_info">기기 정보</string>
-    <string name="copied_device_info_to_clipboard">기기 정보가 클립보드에 복사되었습니다.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">이슈 트래커 웹사이트로 이동합니다.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">저장공간 권한 필요</string>

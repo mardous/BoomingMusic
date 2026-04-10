@@ -550,9 +550,6 @@
     <string name="send_invitation_message">發送邀請訊息</string>
     <string name="invitation_message_content">您好。看看Booming Music！在Android上聆聽本地音樂的最佳應用程式。您可以從這裡下載它： %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">報告一個問題</string>
-    <string name="device_info">設備訊息</string>
-    <string name="copied_device_info_to_clipboard">已將設備訊息複製到剪貼簿。</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">即將跳轉到問題跟蹤網站。</string>
     <!-- SAF -->
     <string name="saf_access_required_title">需要存儲訪問</string>

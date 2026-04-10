@@ -556,9 +556,6 @@ Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verw
     <string name="send_invitation_message">Einladungsnachricht senden</string>
     <string name="invitation_message_content">Hallo! Sieh dir Booming Music an! Die beste App, um lokale Musik auf Android anzuhören. Du kannst sie hier herunterladen: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Ein Problem melden</string>
-    <string name="device_info">Gerätedetails</string>
-    <string name="copied_device_info_to_clipboard">Gerätedetails in Zwischenablage kopiert.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Du wirst zum Issue-Tracker auf GitHub weitergeleitet.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Speicherzugriff erforderlich</string>

@@ -555,9 +555,6 @@
     <string name="send_invitation_message">Send invitasjons melding</string>
     <string name="invitation_message_content">Hi. Sjekk ut Booming Music! Den beste appen for å høre lokal musikk på Android. Du kan laste den ned her: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Rapporter et problem</string>
-    <string name="device_info">Enhetens info</string>
-    <string name="copied_device_info_to_clipboard">Kopiert enhetsinfo til utklippstavlen.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Du videresendes til nettsiden for feilmeldingsspor.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Lagringstilgang kreves</string>

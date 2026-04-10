@@ -224,9 +224,6 @@
     <string name="share_app_summary">Kui jagad teavet selle rakenduse kohta, siis aitad kaasa tema laiemale levikule.</string>
     <string name="send_invitation_message">Saada kutse</string>
     <string name="invitation_message_content">Hei! Palun vaata Booming Musicut - see on parim rakendus kuulamaks Androidi nutiseadmes leiduvaid muusikafaile. Võid ta alla laadida siit: %s</string>
-    <string name="report_an_issue">Teata veast või probleemist</string>
-    <string name="device_info">Nutiseadme teave</string>
-    <string name="copied_device_info_to_clipboard">Nutiseadme teave on kopeeritud lõikelauale.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Suuname päringu edasi meie veahalduse veebisaiti.</string>
     <string name="saf_access_required_title">Ligipääs andmeruumile on nõutav</string>
     <string name="search_for_update_title">Kontrolli uuenduste olemasolu</string>

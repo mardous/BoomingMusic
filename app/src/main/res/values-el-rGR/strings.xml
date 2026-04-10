@@ -555,9 +555,6 @@
     <string name="send_invitation_message">Αποστολή μηνύματος πρόσκλησης</string>
     <string name="invitation_message_content">Γεια σας. Ρίξτε μια ματιά στο Booming Music! Η καλύτερη εφαρμογή για να ακούσετε τοπική μουσική στο Android. Μπορείτε να το κατεβάσετε από εδώ: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Αναφορά προβλήματος</string>
-    <string name="device_info">Πληροφορίες συσκευής</string>
-    <string name="copied_device_info_to_clipboard">Αντιγραφή πληροφοριών συσκευής στο πρόχειρο.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Θα μεταφερθείτε στην ιστοσελίδα του ανιχνευτή προβλημάτων.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Απαιτείται Πρόσβαση Χώρου Αποθήκευσης</string>

@@ -552,9 +552,6 @@
     <string name="send_invitation_message">招待メッセージを送信</string>
     <string name="invitation_message_content">こんにちは！ Androidでローカルミュージックを聴くのに最適なアプリ、『Booming Music』をぜひチェックしてみてください！ こちらからダウンロードできます: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">問題を報告</string>
-    <string name="device_info">端末情報</string>
-    <string name="copied_device_info_to_clipboard">デバイス情報をクリップボードにコピーしました。</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">バグ管理システムのウェブサイトに移動します。</string>
     <!-- SAF -->
     <string name="saf_access_required_title">ストレージアクセスが必要です</string>
