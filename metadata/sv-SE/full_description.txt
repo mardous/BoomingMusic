@@ -9,6 +9,7 @@ Huvudfunktioner:
 * Automatisk nedladdning av låttexter och möjligheten att redigera låttexter i appen
 * Ord-för-ord-synkroniserade och översatta låttexter (TTML, LRC)
 * Media3-baserad uppspelningsmotor med stöd för Audio Offload
+* BBitperfekt uppspelningsstöd och inbyggd ALAC-avkodning
 * Anpassningsbar minispelare och geststyrning
 * Anpassade omslag och beskrivningar för spellistor
 * Taggredigerare med omedelbara uppdateringar av biblioteket
