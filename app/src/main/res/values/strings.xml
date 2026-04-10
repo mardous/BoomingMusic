@@ -867,13 +867,11 @@
 
     <!-- Network preferences -->
     <string name="network_features_title">Enable network features</string>
-    <string name="network_features_summary">Allow the app to use internet services such as Last.fm integration, lyrics downloads, and artwork fetching.</string>
     <string name="wifi_only_network_features_title">Use network features on Wi-Fi only</string>
     <string name="wifi_only_network_features_summary">Allow internet features only when connected to Wi-Fi.</string>
     <string name="online_artist_images_title">Download artist images</string>
-    <string name="online_artist_images_summary">This depends on your metadata download policy.</string>
     <string name="online_album_covers_title">Download missing album covers</string>
-    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
+    <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app.</string>
     <string name="preferred_image_size_title">Preferred image size</string>
     <string name="lastfm_login_title">Sign in to Last.fm</string>
     <string name="lastfm_login_summary">Authenticate with your Last.fm account to enable scrobbling and now playing updates.</string>

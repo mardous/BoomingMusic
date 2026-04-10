@@ -4,7 +4,6 @@
     <SwitchPreferenceCompat
         app:icon="@drawable/ic_language_24dp"
         app:title="@string/network_features_title"
-        app:summary="@string/network_features_summary"
         app:defaultValue="@bool/enable_network_features"
         app:layout="@layout/list_item_view"
         app:widgetLayout="@layout/preference_switch"
@@ -28,7 +27,6 @@
         <SwitchPreferenceCompat
             app:icon="@drawable/ic_artist_24dp"
             app:title="@string/online_artist_images_title"
-            app:summary="@string/online_artist_images_summary"
             app:defaultValue="true"
             app:layout="@layout/list_item_view"
             app:widgetLayout="@layout/preference_switch"
@@ -137,6 +135,49 @@
             app:summary="@string/delete_downloaded_lyrics_summary"
             app:layout="@layout/list_item_view"
             app:key="clear_lyrics"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/update_title"
+        app:layout="@layout/preference_category_title"
+        app:isPreferenceVisible="@bool/enable_app_update">
+
+        <ListPreference
+            app:layout="@layout/list_item_view"
+            app:title="@string/auto_update_title"
+            app:entries="@array/pref_update_mode_titles"
+            app:entryValues="@array/pref_update_mode_values"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="weekly"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="update_search_mode"/>
+
+        <SwitchPreferenceCompat
+            app:title="@string/receive_experimental_updates_title"
+            app:summary="@string/receive_experimental_updates_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="experimental_updates"/>
+
+        <SwitchPreferenceCompat
+            app:title="@string/only_wifi_title"
+            app:summary="@string/only_wifi_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="update_only_wifi"/>
+
+        <com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
+            app:title="@string/search_for_update_title"
+            app:persistent="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_progressbar"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="search_for_update"/>
 
     </PreferenceCategory>
 

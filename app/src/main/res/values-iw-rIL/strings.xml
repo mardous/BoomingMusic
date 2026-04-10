@@ -772,7 +772,6 @@
     <string name="use_folder_album_cover_title">השתמש בתמונות מהתיקייה</string>
     <string name="use_folder_album_cover_summary">אם קובץ השמע אינו מכיל עטיפה משובצת, התמונות עשויות להיטען מעט לאט יותר.</string>
     <string name="online_artist_images_title">הורד תמונות אמן</string>
-    <string name="online_artist_images_summary">זה תלוי במדיניות הורדת המטא־דאטה שלך.</string>
     <string name="preferred_image_size_title">גודל תמונה מועדף</string>
     <string name="online_album_covers_title">הורד עטיפות אלבומים חסרות</string>
     <string name="online_album_covers_summary">התמונות שהורדו אינן משובצות בקובצי השמע; הן מוצגות רק בתוך האפליקציה.

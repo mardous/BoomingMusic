@@ -770,7 +770,6 @@
     <string name="use_folder_album_cover_title">Použít obrázky složek</string>
     <string name="use_folder_album_cover_summary">Pokud zvukový soubor neobsahuje vložený obal. Obrázky mohou trvat trochu déle.</string>
     <string name="online_artist_images_title">Stáhnout obrázky umělců</string>
-    <string name="online_artist_images_summary">To závisí na zásadách stahování metadat.</string>
     <string name="preferred_image_size_title">Upřednostňovaná velikost obrázku</string>
     <string name="online_album_covers_title">Stáhnout chybějící obaly alba</string>
     <string name="online_album_covers_summary">Stažené obrázky nejsou vloženy do zvukových souborů; jsou viditelné pouze v aplikaci. To závisí na zásadách stahování metadat.</string>

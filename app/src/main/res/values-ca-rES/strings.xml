@@ -760,7 +760,6 @@
     <string name="use_folder_album_cover_title">Fes servir imatges de carpetes</string>
     <string name="use_folder_album_cover_summary">Si el fitxer d\'àudio no conté una portada incorporada, les imatges podrien trigar més a carregar.</string>
     <string name="online_artist_images_title">Descarrega imatges dels artistes</string>
-    <string name="online_artist_images_summary">Depèn de la vostra política de descàrrega de metadades.</string>
     <string name="preferred_image_size_title">Mida d\'imatge preferida</string>
     <string name="online_album_covers_title">Descarrega portades d\'àlbum que falten</string>
     <string name="online_album_covers_summary">Les imatges descarregades no s\'integren als fitxers d\'àudio; només són visibles a l\'aplicació. Depèn de la vostra política de metadades.</string>

@@ -758,7 +758,6 @@
     <string name="use_folder_album_cover_title">Utilizați imaginile din dosare</string>
     <string name="use_folder_album_cover_summary">Dacă fișierul audio nu conține o copertă încorporată. Imaginile ar putea dura puțin mai mult timp să se încarce.</string>
     <string name="online_artist_images_title">Descarcă imaginile artistului</string>
-    <string name="online_artist_images_summary">Acest lucru depinde de politica de descărcare a metadatei.</string>
     <string name="preferred_image_size_title">Preferred image size</string>
     <string name="online_album_covers_title">Download missing album covers</string>
     <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>

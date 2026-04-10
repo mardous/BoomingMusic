@@ -754,7 +754,6 @@
     <string name="use_folder_album_cover_title">Brug mappebilleder</string>
     <string name="use_folder_album_cover_summary">Hvis lydfilen ikke indeholder et indlejret cover. Billeder kan tage lidt mere tid at indlæse.</string>
     <string name="online_artist_images_title">Download kunstnerbilleder</string>
-    <string name="online_artist_images_summary">Dette afhænger af din metadata download politik.</string>
     <string name="preferred_image_size_title">Foretrukken billedstørrelse</string>
     <string name="online_album_covers_title">Download manglende albumomslag</string>
     <string name="online_album_covers_summary">Downloadede billeder er ikke indlejret i lydfiler; de er kun synlige i appen. Dette afhænger af din metadata download politik.</string>

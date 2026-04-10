@@ -771,7 +771,6 @@
     <string name="use_folder_album_cover_title">Używaj obrazów z folderu</string>
     <string name="use_folder_album_cover_summary">Jeśli utwór nie posiada okładki albumu, aplikacja poszuka jej w folderze. Może to wydłużyć wczytywanie.</string>
     <string name="online_artist_images_title">Pobieraj obrazy artysty</string>
-    <string name="online_artist_images_summary">Zależy od ustawień pobierania metadanych.</string>
     <string name="preferred_image_size_title">Preferowany rozmiar obrazu</string>
     <string name="online_album_covers_title">Pobieraj brakujące okładki</string>
     <string name="online_album_covers_summary">Pobrane obrazy nie są osadzane w plikach audio; są tylko widoczne w aplikacji, zależnie od ustawień pobierania metadanych.</string>

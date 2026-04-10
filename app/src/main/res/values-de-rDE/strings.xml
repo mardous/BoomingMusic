@@ -753,7 +753,6 @@ Erfordert einen Neustart der App.</string>
     <string name="use_folder_album_cover_title">Ordnerbilder verwenden</string>
     <string name="use_folder_album_cover_summary">Wenn die Audiodatei kein eingebettetes Albumcover enthält, kann sich die Bildladezeit verlängern.</string>
     <string name="online_artist_images_title">Interpretenbilder herunterladen</string>
-    <string name="online_artist_images_summary">Dies hängt von Deiner Vorgabe zum Metadaten-Download ab.</string>
     <string name="preferred_image_size_title">Bevorzugte Covergröße</string>
     <string name="online_album_covers_title">Fehlende Albumcover aus dem Internet herunterladen</string>
     <string name="online_album_covers_summary">Heruntergeladene Bilder werden nicht in Audiodateien eingebettet, sondern sind nur innerhalb der App sichtbar. Dies hängt von Ihren Richtlinien zum Herunterladen von Metadaten ab.</string>

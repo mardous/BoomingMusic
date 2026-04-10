@@ -526,11 +526,9 @@
     <string name="min_song_duration_title">Loo minimaalne kestus</string>
     <string name="min_song_duration_summary">Määratud kestusega lugusid ja pikemaid näidatakse sinu muusikakogus.</string>
     <string name="network_features_title">Kasuta võrgupõhist funktsionaalsust</string>
-    <string name="network_features_summary">Luba rakendusel kasutada võrgupõhiseid teenuseid, nagu Last-fm-i lõiming ning laulusõnade ja plaadikaante allalaadimine.</string>
     <string name="wifi_only_network_features_title">Kasuta võrgupõhist funktsionaalsust vaid WiFi võrgus</string>
     <string name="wifi_only_network_features_summary">Luba võrgupõhise funktsionaalsuse toimimist vaid WiFi ühenduse olemasolul.</string>
     <string name="online_artist_images_title">Laadi alla esitajate pildid</string>
-    <string name="online_artist_images_summary">See sõltub metateabega seotud reeglistikust.</string>
     <string name="online_album_covers_title">Laadi alla puuduvad kaanepildid</string>
     <string name="online_album_covers_summary">Allalaaditud kaanepilte ei lisata sinu helifailidele ja nad on nähtavad vaid rakenduses. See sõltub metateabega seotud reeglistikust.</string>
     <string name="preferred_image_size_title">Pildi eelistatud suurus</string>

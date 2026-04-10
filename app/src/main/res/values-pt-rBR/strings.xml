@@ -754,7 +754,6 @@ Use apenas se a busca falhar em determinados arquivos VBR.
     <string name="use_folder_album_cover_title">Usar imagens da pasta</string>
     <string name="use_folder_album_cover_summary">Se o arquivo de áudio não conter uma capa embutida, as imagens podem levar um pouco mais de tempo para carregar.</string>
     <string name="online_artist_images_title">Baixar imagens dos artistas</string>
-    <string name="online_artist_images_summary">Depende da sua política de download de metadados.</string>
     <string name="preferred_image_size_title">Tamanho de imagem preferido</string>
     <string name="online_album_covers_title">Baixar capas de álbuns ausentes</string>
     <string name="online_album_covers_summary">As imagens baixadas não são incorporadas nos arquivos de áudio; ficam disponíveis apenas no aplicativo. Isso depende da sua configuração da política de download de metadados.</string>

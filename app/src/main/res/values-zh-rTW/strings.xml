@@ -748,7 +748,6 @@
     <string name="use_folder_album_cover_title">使用資料夾圖像</string>
     <string name="use_folder_album_cover_summary">如果音訊檔案不包含嵌入封面。圖像可能需要一些時間才能載入。</string>
     <string name="online_artist_images_title">下載藝人圖像</string>
-    <string name="online_artist_images_summary">這取決於您的元數據下載政策。</string>
     <string name="preferred_image_size_title">圖像大小偏好</string>
     <string name="online_album_covers_title">下載缺失的專輯封面</string>
     <string name="online_album_covers_summary">下載的圖片不會嵌入到音訊檔案中；它們僅在應用內可見。這取決於您的元數據下載策略。</string>

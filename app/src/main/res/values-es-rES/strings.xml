@@ -753,7 +753,6 @@
     <string name="use_folder_album_cover_title">Usar imágenes de carpeta</string>
     <string name="use_folder_album_cover_summary">Si el archivo de audio no contiene una portada incrustada. Las imágenes pueden tardar un poco más de tiempo en cargarse.</string>
     <string name="online_artist_images_title">Descargar imágenes del artista</string>
-    <string name="online_artist_images_summary">Esto depende de su política de descarga de metadatos.</string>
     <string name="preferred_image_size_title">Tamaño de imagen preferido</string>
     <string name="online_album_covers_title">Descargar portadas de álbumes faltantes</string>
     <string name="online_album_covers_summary">Las imágenes descargadas no están incrustadas en archivos de audio; solo son visibles dentro de la aplicación. Esto depende de la política de descarga de metadatos.</string>
@@ -929,7 +928,6 @@
     <string name="lastfm_scrobbling_title">Activar registros en Last.fm</string>
     <string name="lastfm_now_playing_title">Actualizar Ahora suena en Last.fm</string>
     <string name="error_lastfm_generic">Se produjo un error inesperado con Last.fm. Inténtelo de nuevo.</string>
-    <string name="network_features_summary">Permite que la aplicación utilice servicios de Internet, como la integración con Last.fm, la descarga de letras de canciones y la obtención de portadas.</string>
     <string name="wifi_only_network_features_summary">Permite las funcionalidades de internet solo al usar una red wifi.</string>
     <string name="lastfm_biography_summary">Recupera biografías y descripciones de álbumes de Last.fm.</string>
     <string name="lastfm_scrobbling_summary">Envía automáticamente las pistas reproducidas a su historial de escucha de Last.fm.</string>

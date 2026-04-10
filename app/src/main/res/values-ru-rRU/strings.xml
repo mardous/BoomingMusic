@@ -774,7 +774,6 @@
     <string name="use_folder_album_cover_title">Использовать изображения папок</string>
     <string name="use_folder_album_cover_summary">Если аудиофайл не содержит встроенную обложку. Загрузка изображений может занять немного больше времени.</string>
     <string name="online_artist_images_title">Загружать изображения исполнителей</string>
-    <string name="online_artist_images_summary">Это зависит от вашей политики загрузки метаданных.</string>
     <string name="preferred_image_size_title">Предпочтительный размер изображений</string>
     <string name="online_album_covers_title">Скачивать недостающие обложки</string>
     <string name="online_album_covers_summary">Скачанные изображения не встраиваются в файлы, а видны только в приложении. Зависит от настроек загрузки метаданных.</string>
@@ -936,7 +935,6 @@
     <string name="images_title">Изображения</string>
     <string name="lastfm_title">Last.fm</string>
     <string name="network_features_title">Включение сетевых функций</string>
-    <string name="network_features_summary">Разрешить приложению подключаться к онлайн‑сервисам, такие как интеграция с Last.fm, загрузка текстов песен и обложек альбомов.</string>
     <string name="wifi_only_network_features_title">Использовать сетевые функции только через Wi‑Fi</string>
     <string name="wifi_only_network_features_summary">Разрешить использование интернет‑функций только при подключении к Wi‑Fi.</string>
     <string name="lastfm_login_title">Войти в Last.fm</string>

@@ -741,7 +741,6 @@
     <string name="use_folder_album_cover_title">Use folder images</string>
     <string name="use_folder_album_cover_summary">If the audio file does not contain an embedded cover. Images might take a bit more of time to load.</string>
     <string name="online_artist_images_title">Download artist images</string>
-    <string name="online_artist_images_summary">This depends on your metadata download policy.</string>
     <string name="preferred_image_size_title">Preferred image size</string>
     <string name="online_album_covers_title">Download missing album covers</string>
     <string name="online_album_covers_summary">Downloaded images aren’t embedded into audio files; they’re only visible within the app. This depends on your metadata download policy.</string>
@@ -925,7 +924,6 @@
     <string name="lyrics_center_horizontally_title">Căn giữa lời bài hát theo chiều ngang</string>
     <string name="lyrics_center_horizontally_summary">Căn chỉnh mỗi dòng lời bài hát vào giữa màn hình theo chiều ngang.</string>
     <string name="network_features_title">Bật các tính năng mạng</string>
-    <string name="network_features_summary">Cho phép ứng dụng sử dụng các dịch vụ internet như tích hợp Last.fm, tải lời bài hát và lấy hình ảnh bìa album.</string>
     <string name="wifi_only_network_features_title">Sử dụng các tính năng mạng chỉ khi có Wi-Fi</string>
     <string name="wifi_only_network_features_summary">Chỉ cho phép các tính năng mạng khi kết nối với Wi-Fi</string>
 </resources>

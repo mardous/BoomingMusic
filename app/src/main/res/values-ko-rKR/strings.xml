@@ -741,7 +741,6 @@
     <string name="use_folder_album_cover_title">폴더 이미지 사용</string>
     <string name="use_folder_album_cover_summary">오디오 파일에 내장 커버가 없는 경우 사용합니다.</string>
     <string name="online_artist_images_title">아티스트 이미지 다운로드</string>
-    <string name="online_artist_images_summary">메타데이터 다운로드 정책에 따라 작동합니다.</string>
     <string name="preferred_image_size_title">선호 이미지 크기</string>
     <string name="online_album_covers_title">누락된 앨범 커버 다운로드</string>
     <string name="online_album_covers_summary">다운로드된 이미지는 파일에 삽입되지 않으며 앱에서만 표시됩니다.</string>

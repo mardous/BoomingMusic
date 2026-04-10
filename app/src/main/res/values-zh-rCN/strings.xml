@@ -750,7 +750,6 @@
     <string name="use_folder_album_cover_title">使用文件夹图像</string>
     <string name="use_folder_album_cover_summary">如果音频文件不包含嵌入封面。图像可能需要一些时间才能加载。</string>
     <string name="online_artist_images_title">下载艺术家图像</string>
-    <string name="online_artist_images_summary">这取决于您的元数据下载策略。</string>
     <string name="preferred_image_size_title">图像大小偏好</string>
     <string name="online_album_covers_title">下载缺失的专辑封面</string>
     <string name="online_album_covers_summary">下载的图片不会嵌入到音频文件中；它们仅在应用内可见。这取决于您的元数据下载策略。</string>
@@ -900,7 +899,6 @@
     <string name="images_title">图片</string>
     <string name="lastfm_title">Last.fm</string>
     <string name="network_features_title">启用联网功能</string>
-    <string name="network_features_summary">允许本应用使用 Last.fm 集成、歌词下载和专辑封面获取等联网服务。</string>
     <string name="wifi_only_network_features_title">只在 Wi-Fi 下使用联网功能</string>
     <string name="wifi_only_network_features_summary">只在连接到 Wi-Fi 时允许联网功能。</string>
     <string name="lastfm_login_title">登录 Last.fm</string>
