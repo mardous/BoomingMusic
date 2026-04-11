@@ -18,6 +18,7 @@
 package com.mardous.booming.ui.component.preferences.dialog
 
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.core.os.BundleCompat
@@ -30,7 +31,9 @@ import com.mardous.booming.databinding.DialogRecyclerViewBinding
 import com.mardous.booming.extensions.create
 import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.ui.adapters.preference.ExtraInfoAdapter
+import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.WIDGET_THIRD_LINE_CONTENT
 
 class ExtraInfoPreferenceDialog : DialogFragment() {
 
@@ -84,15 +87,26 @@ class ExtraInfoPreferenceDialog : DialogFragment() {
         private const val DEFAULT_CONTENT = "Preference.default"
         private const val SAVED_KEY = "SavedKey.list"
 
-        fun create(
+        fun nowPlaying(context: Context) = create(
+            title = context.getString(R.string.select_extra_info_title),
+            preferenceKey = NOW_PLAYING_EXTRA_INFO,
+            defaultContent = Preferences.getDefaultNowPlayingInfo()
+        )
+
+        fun appWidgets(context: Context) = create(
+            title = context.getString(R.string.widget_third_line_title),
+            preferenceKey = WIDGET_THIRD_LINE_CONTENT,
+            defaultContent = Preferences.getDefaultWidgetInfo()
+        )
+
+        private fun create(
             title: String,
             preferenceKey: String,
             defaultContent: List<MetadataField>
-        ) =
-            ExtraInfoPreferenceDialog().withArgs {
-                putString(TITLE, title)
-                putString(PREFERENCE_KEY, preferenceKey)
-                putParcelableArrayList(DEFAULT_CONTENT, ArrayList(defaultContent))
-            }
+        ) = ExtraInfoPreferenceDialog().withArgs {
+            putString(TITLE, title)
+            putString(PREFERENCE_KEY, preferenceKey)
+            putParcelableArrayList(DEFAULT_CONTENT, ArrayList(defaultContent))
+        }
     }
 }

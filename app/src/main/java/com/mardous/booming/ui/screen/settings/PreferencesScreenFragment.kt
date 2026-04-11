@@ -409,20 +409,8 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             val dialogFragment: DialogFragment? = when (preference.key) {
                 LIBRARY_CATEGORIES -> CategoriesPreferenceDialog()
                 NOW_PLAYING_SCREEN -> NowPlayingScreenPreferenceDialog()
-                NOW_PLAYING_EXTRA_INFO -> {
-                    ExtraInfoPreferenceDialog.create(
-                        title = getString(R.string.select_extra_info_title),
-                        preferenceKey = preference.key,
-                        defaultContent = Preferences.getDefaultNowPlayingInfo()
-                    )
-                }
-                WIDGET_THIRD_LINE_CONTENT -> {
-                    ExtraInfoPreferenceDialog.create(
-                        title = getString(R.string.widget_third_line_title),
-                        preferenceKey = preference.key,
-                        defaultContent = Preferences.getDefaultWidgetInfo()
-                    )
-                }
+                NOW_PLAYING_EXTRA_INFO -> ExtraInfoPreferenceDialog.nowPlaying(requireContext())
+                WIDGET_THIRD_LINE_CONTENT -> ExtraInfoPreferenceDialog.appWidgets(requireContext())
                 ON_SONG_CLICK_ACTION -> SongClickActionPreferenceDialog()
                 ON_CLEAR_QUEUE_ACTION -> ClearQueueActionPreferenceDialog()
                 COVER_DOUBLE_TAP_ACTION,
