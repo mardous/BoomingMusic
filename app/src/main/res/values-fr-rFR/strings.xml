@@ -947,12 +947,4 @@
     <string name="advanced_settings">Paramètres avancés</string>
     <string name="bit_perfect_is_active">Bit-perfect est actif</string>
     <string name="bit_perfect_description">Transmettre le signal audio directement vers un DAC USB sans rééchantillonnage du système.</string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="grid_size_5" translatable="false"></string>
 </resources>

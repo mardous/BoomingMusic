@@ -937,12 +937,4 @@
     <string name="widget_image_corner_radius_summary">调整专辑封面的圆角程度。</string>
     <string name="widget_third_line_title">第三行信息</string>
     <string name="widget_third_line_summary">选择信息文本第三行应显示的内容。</string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="grid_size_5" translatable="false"></string>
 </resources>

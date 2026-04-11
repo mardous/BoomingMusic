@@ -949,16 +949,4 @@
     <string name="widget_image_corner_radius_summary">Cambie el redondeado del arte de cubierta.</string>
     <string name="widget_third_line_title">Tercer renglón de información</string>
     <string name="widget_third_line_summary">Elija qué mostrar en la tercera fila de texto.</string>
-    <string name="advanced_settings"></string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="bit_perfect_info"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="bit_perfect_description"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="bit_perfect_is_active"></string>
-    <string name="grid_size_5" translatable="false"></string>
 </resources>
