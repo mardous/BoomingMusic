@@ -140,23 +140,48 @@ class LrcLyricsParser : LyricsParser {
                         lines[entry.start] = entry.toLine()
                     }
                 } else {
+                    // If a line already exists at the same timestamp, this entry could be a translation.
+                    // We must check that the new entry is not exactly the same as the previous one
+                    // and that the previous line does not already contain a translation; for now,
+                    // we only handle one translation per line.
                     val existing = lines[entry.start]
                     if (existing != null && !existing.content.isEmpty &&
-                        existing.content.content != entry.text && existing.translation == null
+                        existing.content.rawContent != entry.rawLine && existing.translation == null
                     ) {
+                        // If the new entry is word-synced, we process it.
                         addChildren(entry, existing.actor)
 
-                        var newDuration = existing.durationMillis
-                        val newEnd = if (existing.end == 0L) entry.end else existing.end
-                        if (newEnd != existing.end) {
-                            newDuration = (newEnd - existing.startAt)
+                        // Once words have been processed, we can check if the content is
+                        // exactly the same; if so, we discard the new entry since it does not
+                        // add any real value as a translation.
+                        val translationContent = entry.getTextContent()
+                        if (translationContent.content != existing.content.content) {
+                            var newDuration = existing.durationMillis
+                            val newEnd = if (existing.end == 0L) entry.end else existing.end
+                            if (newEnd != existing.end) {
+                                newDuration = (newEnd - existing.startAt)
+                            }
+                            if (translationContent.isWordSynced && !existing.isWordSynced) {
+                                // It appears we are dealing with an edge case in which the second
+                                // line actually represents the main content and the first line
+                                // is the translation.
+                                lines[entry.start] = existing.copy(
+                                    end = newEnd,
+                                    durationMillis = newDuration,
+                                    content = translationContent,
+                                    translation = existing.content,
+                                    actor = entry.actor ?: existing.actor
+                                )
+                            } else {
+                                lines[entry.start] = existing.copy(
+                                    end = newEnd,
+                                    durationMillis = newDuration,
+                                    translation = translationContent
+                                )
+                            }
                         }
-                        lines[entry.start] = existing.copy(
-                            end = newEnd,
-                            durationMillis = newDuration,
-                            translation = entry.getTextContent()
-                        )
                     } else {
+                        // It's a new line, we just add it to the list.
                         addChildren(entry, null)
                         lines[entry.start] = entry.toLine()
                     }

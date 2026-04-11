@@ -27,14 +27,15 @@ internal class LrcNode(
         return false
     }
 
-    private fun toWord(startIndex: Int): Lyrics.Word {
+    private fun toWord(startIndex: Int, trimEnd: Boolean = false): Lyrics.Word {
         checkNotNull(text)
+        val wordText = if (trimEnd) text.trimEnd() else text
         return Lyrics.Word(
-            content = text,
+            content = wordText,
             startMillis = start,
             startIndex = startIndex,
             endMillis = end,
-            endIndex = startIndex + (text.length - 1),
+            endIndex = startIndex + (wordText.length - 1),
             durationMillis = (end - start),
             actor = actor
         )
@@ -48,10 +49,22 @@ internal class LrcNode(
             }
             children[children.lastIndex].end = end
 
+            var nextWordStartIndex = 0
+            val lastWordIndex = children.lastIndex
+
             val words = mutableListOf<Lyrics.Word>()
-            for (child in children) {
-                val startIndex = words.sumOf { it.content.length }
-                words.add(child.toWord(startIndex))
+            for ((index, child) in children.withIndex()) {
+                if (index == lastWordIndex && child.text.isNullOrBlank())
+                    continue
+
+                val trimEnd = if (index == (lastWordIndex - 1)) {
+                    children[lastWordIndex].text.isNullOrBlank()
+                } else index == children.lastIndex
+
+                val word = child.toWord(nextWordStartIndex, trimEnd = trimEnd)
+                if (words.add(word)) {
+                    nextWordStartIndex += word.content.length
+                }
             }
 
             Lyrics.TextContent(

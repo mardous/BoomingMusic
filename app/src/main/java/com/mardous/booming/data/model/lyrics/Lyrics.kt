@@ -44,6 +44,8 @@ data class Lyrics(
 
         val isEmpty = content.isEmpty
 
+        val isWordSynced = content.isWordSynced
+
         val hasBackgroundVocals = content.hasBackgroundVocals
     }
 
@@ -68,6 +70,8 @@ data class Lyrics(
         val words: List<Word>
     ) {
         val isEmpty = content.isBlank()
+
+        val isWordSynced = words.isNotEmpty()
 
         val mainVocals = words.filterNot { it.isBackground }
 
