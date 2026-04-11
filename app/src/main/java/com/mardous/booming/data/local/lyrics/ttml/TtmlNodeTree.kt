@@ -282,7 +282,9 @@ internal class TtmlNodeTree {
                             content = Lyrics.TextContent(
                                 content = content,
                                 backgroundContent = backgroundContent,
-                                rawContent = "$content ($backgroundContent)",
+                                rawContent = if (backgroundContent.isNotEmpty()) {
+                                    "$content ($backgroundContent)"
+                                } else content,
                                 words = words
                             ),
                             translation = translation?.get(line.key),
