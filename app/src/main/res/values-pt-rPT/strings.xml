@@ -373,7 +373,6 @@
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d time</item>
-        <item quantity="many"/>
         <item quantity="other">%d times</item>
     </plurals>
     <plurals name="x_plays">
