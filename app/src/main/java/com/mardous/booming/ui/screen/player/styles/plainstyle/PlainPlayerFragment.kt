@@ -17,6 +17,7 @@
 
 package com.mardous.booming.ui.screen.player.styles.plainstyle
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -64,6 +65,9 @@ class PlainPlayerFragment : AbsPlayerFragment(R.layout.fragment_plain_player) {
     override val blurView: ImageView
         get() = binding.blur
 
+    override val shadowView: ImageView
+        get() = binding.shadow
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPlainPlayerBinding.bind(view)
@@ -84,6 +88,12 @@ class PlainPlayerFragment : AbsPlayerFragment(R.layout.fragment_plain_player) {
                 }
             }
         }
+
+        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
+            playerViewModel.colorSchemeFlow.collect { scheme ->
+                playerToolbar.menu.findItem(R.id.action_favorite).iconTintList = ColorStateList.valueOf(scheme.toolbarColor)
+            }
+        }
     }
 
     private fun setupToolbar() {
@@ -100,7 +110,7 @@ class PlainPlayerFragment : AbsPlayerFragment(R.layout.fragment_plain_player) {
         val oldSecondaryTextColor = binding.text.currentTextColor
         return mutableListOf(
             binding.root.surfaceTintTarget(scheme.surfaceColor),
-            binding.toolbar.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
+            binding.toolbar.tintTarget(oldPrimaryTextColor, scheme.toolbarColor),
             binding.title.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
             binding.text.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor)
         ).also {

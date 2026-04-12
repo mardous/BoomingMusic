@@ -25,6 +25,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
@@ -124,7 +125,11 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
             _binding?.playPauseButton?.setImageResource(R.drawable.ic_play_24dp)
         }
 
-        binding.playPauseButton.setColorFilter(playerViewModel.colorScheme.playButtonColor)
+        if (playerViewModel.colorScheme.mode == PlayerColorScheme.Mode.VibrantGradient) {
+            binding.playPauseButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.vibrant_shadow_black))
+        }else {
+            binding.playPauseButton.setColorFilter(playerViewModel.colorScheme.surfaceColor)
+        }
     }
 
     override fun onShow() {
@@ -205,15 +210,7 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
                 scheme.primaryColor
             }
         }
-        val newEmphasisColorVibrantShadow = if (scheme.mode == PlayerColorSchemeMode.VibrantColor) {
-            scheme.onSurfaceColor
-        } else {
-            if (scheme.mode == PlayerColorSchemeMode.VibrantGradient) {
-                if (isLandscape()) scheme.toolbarColor else  scheme.primaryColor
-            }else {
-                scheme.primaryColor
-            }
-        }
+
         val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
         val newShuffleColor = getPlaybackControlsColor(
             isShuffleModeOn,
@@ -226,14 +223,16 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
             scheme.onSurfaceColor,
             scheme.onSurfaceVariantColor
         )
+
         if (scheme.mode == PlayerColorScheme.Mode.VibrantGradient) {
-            binding.playPauseButton.setColorFilter(Color.BLACK)
+            binding.playPauseButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.vibrant_shadow_black))
         }else {
             binding.playPauseButton.setColorFilter(scheme.surfaceColor)
         }
+
         return listOfNotNull(
             binding.playPauseButton.tintTarget(oldPlayPauseColor, newEmphasisColor),
-            binding.progressSlider.progressView?.tintTarget(oldSliderColor,  newEmphasisColorVibrantShadow),
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor,  newEmphasisColor),
             binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.toolbarColor),
             binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.toolbarColor),
             binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
@@ -242,8 +241,8 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
             binding.text.tintTarget(oldSecondaryTextColor, scheme.toolbarColor),
             binding.songInfo?.tintTarget(oldSecondaryTextColor, scheme.toolbarColor),
             binding.queueInfo.tintTarget(oldPrimaryTextColor, scheme.toolbarColor),
-            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, newEmphasisColorVibrantShadow),
-            binding.songTotalTime.tintTarget(oldSecondaryTextColor, newEmphasisColorVibrantShadow)
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, newEmphasisColor),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, newEmphasisColor)
         )
     }
 

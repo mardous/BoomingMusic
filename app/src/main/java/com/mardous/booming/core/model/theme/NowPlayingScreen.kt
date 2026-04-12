@@ -135,8 +135,7 @@ enum class NowPlayingScreen(
             Peek -> listOf(
                 PlayerColorSchemeMode.AppTheme,
                 PlayerColorSchemeMode.MaterialYou,
-                PlayerColorSchemeMode.VibrantColor,
-                PlayerColorSchemeMode.VibrantGradient
+                PlayerColorSchemeMode.VibrantColor
             )
             M3 -> listOf(
                 PlayerColorSchemeMode.AppTheme,

@@ -20,6 +20,17 @@
         android:visibility="gone"
         tools:src="@tools:sample/backgrounds/scenic"/>
 
+    <ImageView
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:foreground="@drawable/shadow_up_strong_player"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/playerAlbumCoverFragment"
         android:name="com.mardous.booming.ui.screen.player.cover.CoverPagerFragment"

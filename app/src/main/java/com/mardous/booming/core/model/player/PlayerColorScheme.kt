@@ -30,6 +30,7 @@ import com.kyant.m3color.scheme.SchemeContent
 import com.mardous.booming.R
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.player.PlayerColorScheme.ShadowToken
+import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.extensions.isNightMode
 import com.mardous.booming.extensions.resolveColor
 import com.mardous.booming.extensions.resources.adjustSaturationIfTooHigh
@@ -42,6 +43,7 @@ import com.mardous.booming.extensions.resources.textColorPrimary
 import com.mardous.booming.extensions.resources.withAlpha
 import com.mardous.booming.extensions.systemContrast
 import com.mardous.booming.ui.component.compose.color.onThis
+import com.mardous.booming.util.NOW_PLAYING_SCREEN
 import com.mardous.booming.util.PLAYER_BLUR_RADIUS
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.Dispatchers
@@ -115,8 +117,8 @@ data class PlayerColorScheme(
             R.string.player_color_mode_blur_description
         ),
         VibrantGradient(
-            R.string.player_color_mode_vibrant_shadow_title,
-            R.string.player_color_mode_vibrant_shadow_description
+            R.string.player_color_mode_vibrant_gradient_title,
+            R.string.player_color_mode_vibrant_gradient_description
         )
     }
 
@@ -284,7 +286,7 @@ data class PlayerColorScheme(
 
         private fun vibrantGradientScheme(context: Context, color: PaletteColor): PlayerColorScheme {
             return PlayerColorScheme(
-                mode = Mode.VibrantColor,
+                mode = Mode.VibrantGradient,
                 appThemeToken = AppThemeToken.None,
                 blurToken = BlurToken.None,
                 shadowToken = ShadowToken(true),
@@ -292,8 +294,8 @@ data class PlayerColorScheme(
                 surfaceContainerColor = ColorUtils.blendARGB(color.backgroundColor, color.primaryTextColor, 0.7f),
                 primaryColor = color.backgroundColor,
                 tonalColor = ColorUtils.blendARGB(color.backgroundColor, color.secondaryTextColor, 0.4f),
-                onSurfaceColor = Color.WHITE,
-                onSurfaceVariantColor = Color.WHITE.withAlpha(0.45f),
+                onSurfaceColor = color.primaryTextColor,
+                onSurfaceVariantColor = if (Preferences.nowPlayingScreen == NowPlayingScreen.Plain) color.secondaryTextColor else Color.WHITE.withAlpha(0.45f),
                 toolbarColor = Color.WHITE,
                 playButtonColor = ContextCompat.getColor(context, R.color.vibrant_shadow_black)
             )

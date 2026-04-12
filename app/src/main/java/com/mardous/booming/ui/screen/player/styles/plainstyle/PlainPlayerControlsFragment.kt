@@ -23,13 +23,17 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.BounceInterpolator
 import android.widget.TextView
+import androidx.compose.ui.graphics.Color
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
 import com.mardous.booming.core.model.player.*
+import com.mardous.booming.core.model.player.PlayerColorScheme.Mode
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlainPlayerPlaybackControlsBinding
+import com.mardous.booming.extensions.resources.withAlpha
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
@@ -84,31 +88,42 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
         val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
         val newShuffleColor = getPlaybackControlsColor(
             isShuffleModeOn,
-            scheme.onSurfaceColor,
-            scheme.onSurfaceVariantColor
+            if (playerViewModel.colorScheme.mode == Mode.VibrantGradient) scheme.toolbarColor else scheme.onSurfaceColor,
+            if (playerViewModel.colorScheme.mode == Mode.VibrantGradient) scheme.toolbarColor.withAlpha(0.45f) else scheme.onSurfaceVariantColor
         )
         val oldRepeatColor = getPlaybackControlsColor(isRepeatModeOn)
         val newRepeatColor = getPlaybackControlsColor(
             isRepeatModeOn,
-            scheme.onSurfaceColor,
-            scheme.onSurfaceVariantColor
+            if (playerViewModel.colorScheme.mode == Mode.VibrantGradient) scheme.toolbarColor else scheme.onSurfaceColor,
+            if (playerViewModel.colorScheme.mode == Mode.VibrantGradient) scheme.toolbarColor.withAlpha(0.45f) else scheme.onSurfaceVariantColor
         )
         val oldPlayPauseColor = binding.playPauseButton.backgroundTintList?.defaultColor ?: oldControlColor
         val newEmphasisColor = if (scheme.mode == PlayerColorSchemeMode.VibrantColor) {
             scheme.onSurfaceColor
         } else {
-            scheme.primaryColor
+            if (scheme.mode == PlayerColorSchemeMode.VibrantGradient) {
+                scheme.toolbarColor
+            }else {
+                scheme.primaryColor
+            }
         }
+
+        if (scheme.mode == Mode.VibrantGradient) {
+            binding.playPauseButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.vibrant_shadow_black))
+        }else {
+            binding.playPauseButton.setColorFilter(scheme.surfaceColor)
+        }
+
         return listOfNotNull(
             binding.progressSlider.progressView?.tintTarget(oldSliderColor, newEmphasisColor),
-            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
-            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
-            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, newEmphasisColor),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, newEmphasisColor),
+            binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.toolbarColor),
             binding.playPauseButton.iconButtonTintTarget(oldPlayPauseColor, newEmphasisColor),
-            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
-            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.toolbarColor),
+            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.toolbarColor),
             binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
-            binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor)
+            binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
         )
     }
 
@@ -134,6 +149,12 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
             _binding?.playPauseButton?.setImageResource(R.drawable.ic_pause_24dp)
         } else {
             _binding?.playPauseButton?.setImageResource(R.drawable.ic_play_24dp)
+        }
+
+        if (playerViewModel.colorScheme.mode == PlayerColorScheme.Mode.VibrantGradient) {
+            binding.playPauseButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.vibrant_shadow_black))
+        }else {
+            binding.playPauseButton.setColorFilter(playerViewModel.colorScheme.surfaceColor)
         }
     }
 
