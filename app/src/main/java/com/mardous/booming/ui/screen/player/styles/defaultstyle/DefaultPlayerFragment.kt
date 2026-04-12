@@ -18,6 +18,7 @@
 package com.mardous.booming.ui.screen.player.styles.defaultstyle
 
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -37,6 +38,7 @@ import com.mardous.booming.core.model.player.surfaceTintTarget
 import com.mardous.booming.core.model.player.tintTarget
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.databinding.FragmentDefaultPlayerBinding
+import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.AbsPlayerFragment
@@ -66,6 +68,9 @@ class DefaultPlayerFragment : AbsPlayerFragment(R.layout.fragment_default_player
     override val blurView: ImageView
         get() = binding.blur
 
+    override val shadowView: ImageView
+        get() = binding.shadow
+
     private var primaryControlColor: Int = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -81,6 +86,12 @@ class DefaultPlayerFragment : AbsPlayerFragment(R.layout.fragment_default_player
             WindowInsetsCompat.CONSUMED
         }
         Preferences.registerOnSharedPreferenceChangeListener(this)
+
+        viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
+            playerViewModel.colorSchemeFlow.collect { scheme ->
+                playerToolbar.menu.findItem(R.id.action_favorite).iconTintList = ColorStateList.valueOf(scheme.toolbarColor)
+            }
+        }
     }
 
     private fun setupToolbar() {
@@ -94,7 +105,7 @@ class DefaultPlayerFragment : AbsPlayerFragment(R.layout.fragment_default_player
         primaryControlColor = scheme.onSurfaceColor
         return mutableListOf(
             binding.root.surfaceTintTarget(scheme.surfaceColor),
-            binding.toolbar.tintTarget(oldPrimaryControlColor, scheme.onSurfaceColor)
+            binding.toolbar.tintTarget(oldPrimaryControlColor, scheme.toolbarColor)
         ).also {
             it.addAll(playerControlsFragment.getTintTargets(scheme))
         }

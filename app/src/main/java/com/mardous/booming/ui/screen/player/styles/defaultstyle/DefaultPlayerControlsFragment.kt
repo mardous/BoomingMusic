@@ -34,6 +34,7 @@ import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.player.*
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentDefaultPlayerPlaybackControlsBinding
+import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.resources.centerPivot
 import com.mardous.booming.extensions.resources.showBounceAnimation
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
@@ -122,6 +123,8 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
         } else {
             _binding?.playPauseButton?.setImageResource(R.drawable.ic_play_24dp)
         }
+
+        binding.playPauseButton.setColorFilter(playerViewModel.colorScheme.playButtonColor)
     }
 
     override fun onShow() {
@@ -196,7 +199,20 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
         val newEmphasisColor = if (scheme.mode == PlayerColorSchemeMode.VibrantColor) {
             scheme.onSurfaceColor
         } else {
-            scheme.primaryColor
+            if (scheme.mode == PlayerColorSchemeMode.VibrantGradient) {
+                scheme.toolbarColor
+            }else {
+                scheme.primaryColor
+            }
+        }
+        val newEmphasisColorVibrantShadow = if (scheme.mode == PlayerColorSchemeMode.VibrantColor) {
+            scheme.onSurfaceColor
+        } else {
+            if (scheme.mode == PlayerColorSchemeMode.VibrantGradient) {
+                if (isLandscape()) scheme.toolbarColor else  scheme.primaryColor
+            }else {
+                scheme.primaryColor
+            }
         }
         val oldShuffleColor = getPlaybackControlsColor(isShuffleModeOn)
         val newShuffleColor = getPlaybackControlsColor(
@@ -210,19 +226,24 @@ class DefaultPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragmen
             scheme.onSurfaceColor,
             scheme.onSurfaceVariantColor
         )
+        if (scheme.mode == PlayerColorScheme.Mode.VibrantGradient) {
+            binding.playPauseButton.setColorFilter(Color.BLACK)
+        }else {
+            binding.playPauseButton.setColorFilter(scheme.surfaceColor)
+        }
         return listOfNotNull(
             binding.playPauseButton.tintTarget(oldPlayPauseColor, newEmphasisColor),
-            binding.progressSlider.progressView?.tintTarget(oldSliderColor, newEmphasisColor),
-            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
-            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.onSurfaceColor),
+            binding.progressSlider.progressView?.tintTarget(oldSliderColor,  newEmphasisColorVibrantShadow),
+            binding.nextButton.iconButtonTintTarget(oldControlColor, scheme.toolbarColor),
+            binding.previousButton.iconButtonTintTarget(oldControlColor, scheme.toolbarColor),
             binding.shuffleButton.iconButtonTintTarget(oldShuffleColor, newShuffleColor),
             binding.repeatButton.iconButtonTintTarget(oldRepeatColor, newRepeatColor),
-            binding.title.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
-            binding.text.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
-            binding.songInfo?.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
-            binding.queueInfo.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
-            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
-            binding.songTotalTime.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor)
+            binding.title.tintTarget(oldPrimaryTextColor, scheme.toolbarColor),
+            binding.text.tintTarget(oldSecondaryTextColor, scheme.toolbarColor),
+            binding.songInfo?.tintTarget(oldSecondaryTextColor, scheme.toolbarColor),
+            binding.queueInfo.tintTarget(oldPrimaryTextColor, scheme.toolbarColor),
+            binding.songCurrentProgress.tintTarget(oldSecondaryTextColor, newEmphasisColorVibrantShadow),
+            binding.songTotalTime.tintTarget(oldSecondaryTextColor, newEmphasisColorVibrantShadow)
         )
     }
 

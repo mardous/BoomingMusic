@@ -71,4 +71,5 @@
     <color name="md_theme_surfaceContainer">#EFEDF4</color>
     <color name="md_theme_surfaceContainerHigh">#E9E7EF</color>
     <color name="md_theme_surfaceContainerHighest">#E3E1E9</color>
+    <color name="vibrant_shadow_black">#80000000</color>
 </resources>

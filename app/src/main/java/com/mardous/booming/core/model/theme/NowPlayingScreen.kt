@@ -125,7 +125,8 @@ enum class NowPlayingScreen(
                 PlayerColorSchemeMode.SimpleColor,
                 PlayerColorSchemeMode.MaterialYou,
                 PlayerColorSchemeMode.VibrantColor,
-                PlayerColorSchemeMode.Blur
+                PlayerColorSchemeMode.Blur,
+                PlayerColorSchemeMode.VibrantGradient
             )
             FullCover,
             Gradient -> listOf(
@@ -134,7 +135,8 @@ enum class NowPlayingScreen(
             Peek -> listOf(
                 PlayerColorSchemeMode.AppTheme,
                 PlayerColorSchemeMode.MaterialYou,
-                PlayerColorSchemeMode.VibrantColor
+                PlayerColorSchemeMode.VibrantColor,
+                PlayerColorSchemeMode.VibrantGradient
             )
             M3 -> listOf(
                 PlayerColorSchemeMode.AppTheme,

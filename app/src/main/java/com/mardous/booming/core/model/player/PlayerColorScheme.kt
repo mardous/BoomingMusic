@@ -22,12 +22,14 @@ import android.graphics.Color
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.preference.PreferenceManager
 import com.kyant.m3color.hct.Hct
 import com.kyant.m3color.scheme.SchemeContent
 import com.mardous.booming.R
 import com.mardous.booming.core.model.PaletteColor
+import com.mardous.booming.core.model.player.PlayerColorScheme.ShadowToken
 import com.mardous.booming.extensions.isNightMode
 import com.mardous.booming.extensions.resolveColor
 import com.mardous.booming.extensions.resources.adjustSaturationIfTooHigh
@@ -36,6 +38,7 @@ import com.mardous.booming.extensions.resources.ensureContrastAgainst
 import com.mardous.booming.extensions.resources.onSurfaceColor
 import com.mardous.booming.extensions.resources.primaryColor
 import com.mardous.booming.extensions.resources.surfaceColor
+import com.mardous.booming.extensions.resources.textColorPrimary
 import com.mardous.booming.extensions.resources.withAlpha
 import com.mardous.booming.extensions.systemContrast
 import com.mardous.booming.ui.component.compose.color.onThis
@@ -68,12 +71,15 @@ data class PlayerColorScheme(
     val mode: Mode,
     val appThemeToken: AppThemeToken,
     val blurToken: BlurToken,
+    val shadowToken: ShadowToken,
     @param:ColorInt val surfaceColor: Int,
     @param:ColorInt val surfaceContainerColor: Int,
     @param:ColorInt val primaryColor: Int,
     @param:ColorInt val tonalColor: Int,
     @param:ColorInt val onSurfaceColor: Int,
-    @param:ColorInt val onSurfaceVariantColor: Int
+    @param:ColorInt val onSurfaceVariantColor: Int,
+    @param:ColorInt val toolbarColor: Int,
+    @param:ColorInt val playButtonColor: Int,
 ) {
 
     val primary = androidx.compose.ui.graphics.Color(primaryColor)
@@ -107,12 +113,22 @@ data class PlayerColorScheme(
         Blur(
             R.string.player_color_mode_blur_title,
             R.string.player_color_mode_blur_description
+        ),
+        VibrantGradient(
+            R.string.player_color_mode_vibrant_shadow_title,
+            R.string.player_color_mode_vibrant_shadow_description
         )
     }
 
     class BlurToken(val isBlur: Boolean, val blurRadius: Float) {
         companion object {
             val None = BlurToken(isBlur = false, blurRadius = 0f)
+        }
+    }
+
+    class ShadowToken(val isShadow: Boolean) {
+        companion object {
+            val None = ShadowToken(isShadow = false)
         }
     }
 
@@ -132,12 +148,15 @@ data class PlayerColorScheme(
             mode = Mode.SimpleColor,
             appThemeToken = AppThemeToken.None,
             blurToken = BlurToken.None,
+            shadowToken = ShadowToken.None,
             surfaceColor = Color.TRANSPARENT,
             surfaceContainerColor = Color.TRANSPARENT,
             primaryColor = Color.TRANSPARENT,
             tonalColor = Color.TRANSPARENT,
             onSurfaceColor = Color.TRANSPARENT,
-            onSurfaceVariantColor = Color.TRANSPARENT
+            onSurfaceVariantColor = Color.TRANSPARENT,
+            toolbarColor = Color.TRANSPARENT,
+            playButtonColor = Color.TRANSPARENT
         )
 
         /**
@@ -158,12 +177,15 @@ data class PlayerColorScheme(
                     isMaterialYou = Preferences.isMaterialYouTheme
                 ),
                 blurToken = BlurToken.None,
+                shadowToken = ShadowToken.None,
                 surfaceColor = context.surfaceColor(),
                 surfaceContainerColor = context.resolveColor(M3R.attr.colorSurfaceContainerHigh),
                 primaryColor = context.primaryColor(),
                 tonalColor = context.resolveColor(M3R.attr.colorSecondaryContainer),
                 onSurfaceColor = onSurfaceColor,
-                onSurfaceVariantColor = onSurfaceVariantColor
+                onSurfaceVariantColor = onSurfaceVariantColor,
+                toolbarColor = context.onSurfaceColor(),
+                playButtonColor = context.surfaceColor(),
             )
         }
 
@@ -194,12 +216,15 @@ data class PlayerColorScheme(
                 mode = Mode.VibrantColor,
                 appThemeToken = AppThemeToken.None,
                 blurToken = BlurToken.None,
+                shadowToken = ShadowToken.None,
                 surfaceColor = color.backgroundColor,
                 surfaceContainerColor = ColorUtils.blendARGB(color.backgroundColor, color.primaryTextColor, 0.7f),
                 primaryColor = color.backgroundColor,
                 tonalColor = ColorUtils.blendARGB(color.backgroundColor, color.secondaryTextColor, 0.4f),
                 onSurfaceColor = color.primaryTextColor,
-                onSurfaceVariantColor = color.secondaryTextColor
+                onSurfaceVariantColor = color.secondaryTextColor,
+                toolbarColor = color.primaryTextColor,
+                playButtonColor = color.backgroundColor,
             )
         }
 
@@ -228,12 +253,15 @@ data class PlayerColorScheme(
                 mode = Mode.MaterialYou,
                 appThemeToken = AppThemeToken.None,
                 blurToken = BlurToken.None,
+                shadowToken = ShadowToken.None,
                 surfaceColor = colorScheme.surface,
                 surfaceContainerColor = colorScheme.surfaceContainerHigh,
                 primaryColor = colorScheme.primary,
                 tonalColor = colorScheme.secondaryContainer,
                 onSurfaceColor = colorScheme.onSurface,
-                onSurfaceVariantColor = colorScheme.onSurfaceVariant.withAlpha(0.7f)
+                onSurfaceVariantColor = colorScheme.onSurfaceVariant.withAlpha(0.7f),
+                toolbarColor = colorScheme.onSurface,
+                playButtonColor = colorScheme.onSurfaceVariant.withAlpha(0.7f)
             )
         }
 
@@ -249,7 +277,25 @@ data class PlayerColorScheme(
                 blurToken = BlurToken(
                     isBlur = true,
                     blurRadius = blurRadius
-                )
+                ),
+                shadowToken = ShadowToken.None,
+            )
+        }
+
+        private fun vibrantGradientScheme(context: Context, color: PaletteColor): PlayerColorScheme {
+            return PlayerColorScheme(
+                mode = Mode.VibrantColor,
+                appThemeToken = AppThemeToken.None,
+                blurToken = BlurToken.None,
+                shadowToken = ShadowToken(true),
+                surfaceColor = color.backgroundColor,
+                surfaceContainerColor = ColorUtils.blendARGB(color.backgroundColor, color.primaryTextColor, 0.7f),
+                primaryColor = color.backgroundColor,
+                tonalColor = ColorUtils.blendARGB(color.backgroundColor, color.secondaryTextColor, 0.4f),
+                onSurfaceColor = Color.WHITE,
+                onSurfaceVariantColor = Color.WHITE.withAlpha(0.45f),
+                toolbarColor = Color.WHITE,
+                playButtonColor = ContextCompat.getColor(context, R.color.vibrant_shadow_black)
             )
         }
 
@@ -264,6 +310,7 @@ data class PlayerColorScheme(
                 Mode.VibrantColor -> vibrantColorScheme(color)
                 Mode.MaterialYou -> dynamicColorScheme(context, color.backgroundColor)
                 Mode.Blur -> blurColorScheme(context, color)
+                Mode.VibrantGradient -> vibrantGradientScheme(context, color)
             }
             check(mode == colorScheme.mode)
             return colorScheme

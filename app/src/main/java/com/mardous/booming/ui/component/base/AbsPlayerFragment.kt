@@ -127,6 +127,9 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
     protected open val blurView: ImageView?
         get() = null
 
+    protected open val shadowView: ImageView?
+        get() = null
+
     private var colorAnimatorSet: AnimatorSet? = null
 
     @CallSuper
@@ -148,6 +151,7 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
             playerViewModel.colorSchemeFlow.collect { scheme ->
                 applyColorScheme(scheme)?.start()
+                applyShadow(scheme)
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
@@ -411,6 +415,16 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             } else {
                 it.isGone = true
                 it.setImageDrawable(null)
+            }
+        }
+    }
+
+    private fun applyShadow(scheme: PlayerColorScheme) {
+        shadowView?.let {
+            if (scheme.shadowToken.isShadow) {
+                it.visibility = View.VISIBLE
+            } else {
+                it.visibility = View.GONE
             }
         }
     }
