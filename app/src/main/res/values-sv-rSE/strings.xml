@@ -748,7 +748,7 @@
     <string name="online_artist_images_title">Ladda ner artistbilder</string>
     <string name="preferred_image_size_title">Önskad bildstorlek</string>
     <string name="online_album_covers_title">Ladda ner saknade albumomslag</string>
-    <string name="online_album_covers_summary">Nedladdade bilder är inte inbäddade i ljudfiler, de är bara synliga i appen. Detta beror på din metadata nedladdningspolicy.</string>
+    <string name="online_album_covers_summary">Nedladdade bilder är inte inbäddade i ljudfiler, de är bara synliga i appen.</string>
     <string name="delete_downloaded_lyrics_title">Ta bort hämtade låttexter</string>
     <string name="delete_downloaded_lyrics_summary">Endast låttexter hämtade av Booming Music. Påverkar inte låttexter inbäddade i ID3v2-taggar eller LRC-filer.</string>
     <string name="lyrics_cleared">Låttexter rensade.</string>
