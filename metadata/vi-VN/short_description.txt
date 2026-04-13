@@ -1,1 +1,1 @@
-Trình phát nhạc hiện đại, giao diện Material 3 mang đến trải nghiệm mượt mà
+Nhẹ, nhanh, và trình phát nhạc dựa trên Material Design với các tính năng mạnh mẽ
