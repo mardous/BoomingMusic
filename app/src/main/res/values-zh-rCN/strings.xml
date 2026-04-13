@@ -740,7 +740,7 @@
     <string name="online_artist_images_title">下载艺术家图像</string>
     <string name="preferred_image_size_title">图像大小偏好</string>
     <string name="online_album_covers_title">下载缺失的专辑封面</string>
-    <string name="online_album_covers_summary">下载的图片不会嵌入到音频文件中；它们仅在应用内可见。这取决于您的元数据下载策略。</string>
+    <string name="online_album_covers_summary">下载的图片不会嵌入到音频文件中，仅在本应用内可见。</string>
     <string name="delete_downloaded_lyrics_title">删除下载的歌词</string>
     <string name="delete_downloaded_lyrics_summary">仅影响 Booming Music 下载的歌词。不影响嵌入到 ID3v2 标签或 LRC 文件中的歌词。</string>
     <string name="lyrics_cleared">歌词已清除。</string>
