@@ -137,10 +137,6 @@ interface Repository {
     suspend fun initializeBlacklist()
     suspend fun search(query: SearchQuery, filter: SearchFilter?): List<Any>
     suspend fun searchSongs(query: String): List<Song>
-    suspend fun searchArtists(query: String): List<Artist>
-    suspend fun searchAlbums(query: String): List<Album>
-    suspend fun searchPlaylists(query: String): List<PlaylistWithSongs>
-    suspend fun searchGenres(query: String): List<Genre>
     fun getLastFmLoginState(): Flow<LastFmLoginState>
     suspend fun loginToLastfm(username: String, password: String)
     suspend fun logoutFromLastFm()
@@ -439,15 +435,6 @@ class RealRepository(
         searchRepository.searchAll(context, query, filter)
 
     override suspend fun searchSongs(query: String): List<Song> = songRepository.songs(query)
-
-    override suspend fun searchArtists(query: String): List<Artist> =
-        artistRepository.artists(query)
-
-    override suspend fun searchAlbums(query: String): List<Album> = albumRepository.albums(query)
-
-    override suspend fun searchPlaylists(query: String): List<PlaylistWithSongs> = playlistRepository.searchPlaylists(query)
-
-    override suspend fun searchGenres(query: String): List<Genre> = genreRepository.genres(query)
 
     override fun getLastFmLoginState(): Flow<LastFmLoginState> =
         networkRepository.getLastFmLoginState()
