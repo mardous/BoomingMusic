@@ -483,7 +483,7 @@
     <string name="enable_audio_float_output_title">Salida de audio de alta precisión</string>
     <string name="enable_audio_float_output_description">Activa el audio de 32 bits en coma flotante para obtener una mejor calidad de sonido. Observe que esto desactivará funciones como ReplayGain, el salto de silencios y el equilibrio de volumen. Es posible que consuma un poco más de batería, y tendrá que reiniciar la aplicación para que los cambios surtan efecto.</string>
     <string name="skip_silence_title">Omitir silencio</string>
-    <string name="skip_silence_description">Omite automáticamente los fragmentos en silencio durante la reproducción. Ideal para pódcast y grabaciones.</string>
+    <string name="skip_silence_description">Detecta y omite automáticamente los fragmentos en silencio. Ideal para pódcast y grabaciones de voz.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostrar letra</string>
     <string name="action_hide_lyrics">Ocultar letra</string>
@@ -751,7 +751,7 @@
     <string name="online_artist_images_title">Descargar imágenes del artista</string>
     <string name="preferred_image_size_title">Tamaño de imagen preferido</string>
     <string name="online_album_covers_title">Descargar portadas de álbumes faltantes</string>
-    <string name="online_album_covers_summary">Las imágenes descargadas no están incrustadas en archivos de audio; solo son visibles dentro de la aplicación.</string>
+    <string name="online_album_covers_summary">Las imágenes descargadas no se incrustan en los archivos de audio; solo son visibles dentro de la aplicación.</string>
     <string name="delete_downloaded_lyrics_title">Borrar letras descargadas</string>
     <string name="delete_downloaded_lyrics_summary">Solo letras descargadas por Booming Music. No afecta las letras incrustadas en etiquetas ID3v2 o archivos LRC.</string>
     <string name="lyrics_cleared">Letra borrada.</string>
@@ -949,6 +949,6 @@
     <string name="widget_image_corner_radius_summary">Cambie el redondeado del arte de cubierta.</string>
     <string name="widget_third_line_title">Tercer renglón de información</string>
     <string name="widget_third_line_summary">Elija qué mostrar en la tercera fila de texto.</string>
-    <string name="advanced_settings">Ajustes avanzados</string>
+    <string name="advanced_settings">Configuración avanzada</string>
     <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
 </resources>
