@@ -57,6 +57,6 @@ class CoilBitmapLoader(
     }
 
     companion object {
-        private const val MAX_BITMAP_SIZE = 512
+        private const val MAX_BITMAP_SIZE = 1024
     }
 }
