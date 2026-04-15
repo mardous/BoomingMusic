@@ -45,8 +45,8 @@
     <string name="back_action">Achterzijde</string>
     <string name="add_action">Toevoegen</string>
     <string name="delete_action">Verwijderen</string>
-    <string name="remove_action">Verwijderen</string>
-    <string name="clear_action">Verwijderen</string>
+    <string name="remove_action">Weghalen</string>
+    <string name="clear_action">Wissen</string>
     <string name="close_action">Afsluiten</string>
     <string name="continue_action">Doorgaan</string>
     <string name="select_all_title">Alles selecteren</string>
