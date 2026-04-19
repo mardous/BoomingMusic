@@ -149,7 +149,8 @@ private val roomModule = module {
             .addMigrations(
                 BoomingDatabase.MIGRATION_1_2,
                 BoomingDatabase.MIGRATION_2_3,
-                BoomingDatabase.MIGRATION_3_4
+                BoomingDatabase.MIGRATION_3_4,
+                BoomingDatabase.MIGRATION_4_5
             )
             .build()
     }
@@ -176,10 +177,6 @@ private val roomModule = module {
 
     factory {
         get<BoomingDatabase>().lyricsDao()
-    }
-
-    factory {
-        get<BoomingDatabase>().canvasDao()
     }
 }
 
