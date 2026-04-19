@@ -29,6 +29,10 @@
 #include "matrixlib.h"
 #include "ALACAudioTypes.h"
 
+#if defined(__ARM_NEON) || defined(__ARM_NEON__)
+#include <arm_neon.h>
+#endif
+
 // up to 24-bit "offset" macros for the individual bytes of a 20/24-bit word
 #if TARGET_RT_BIG_ENDIAN
 	#define LBYTE	2
@@ -60,12 +64,39 @@
 void unmix16( int32_t * u, int32_t * v, int16_t * out, uint32_t stride, int32_t numSamples, int32_t mixbits, int32_t mixres )
 {
 	int16_t *	op = out;
-	int32_t 		j;
+	int32_t 		j = 0;
 
 	if ( mixres != 0 )
 	{
 		/* matrixed stereo */
-		for ( j = 0; j < numSamples; j++ )
+#if (defined(__ARM_NEON) || defined(__ARM_NEON__)) && !TARGET_RT_BIG_ENDIAN
+		if (stride == 2) {
+			for ( ; j <= numSamples - 4; j += 4 )
+			{
+				int32x4_t uv = vld1q_s32(&u[j]);
+				int32x4_t vv = vld1q_s32(&v[j]);
+
+				// l = u[j] + v[j] - ((mixres * v[j]) >> mixbits);
+				int32x4_t res_v = vmulq_n_s32(vv, mixres);
+				int32x4_t shifted_res_v = vshlq_s32(res_v, vdupq_n_s32(-mixbits));
+				int32x4_t lv = vaddq_s32(uv, vsubq_s32(vv, shifted_res_v));
+
+				// r = l - v[j];
+				int32x4_t rv = vsubq_s32(lv, vv);
+
+				// Interleave L and R (16-bit)
+				int16x4_t l16 = vmovn_s32(lv);
+				int16x4_t r16 = vmovn_s32(rv);
+
+				int16x4x2_t combined;
+				combined.val[0] = l16;
+				combined.val[1] = r16;
+
+				vst2_s16(&op[j * 2], combined);
+			}
+		}
+#endif
+		for ( ; j < numSamples; j++ )
 		{
 			int32_t		l, r;
 
@@ -80,7 +111,25 @@ void unmix16( int32_t * u, int32_t * v, int16_t * out, uint32_t stride, int32_t 
 	else
 	{
 		/* Conventional separated stereo. */
-		for ( j = 0; j < numSamples; j++ )
+#if (defined(__ARM_NEON) || defined(__ARM_NEON__)) && !TARGET_RT_BIG_ENDIAN
+		if (stride == 2) {
+			for ( ; j <= numSamples - 4; j += 4 )
+			{
+				int32x4_t uv = vld1q_s32(&u[j]);
+				int32x4_t vv = vld1q_s32(&v[j]);
+
+				int16x4_t u16 = vmovn_s32(uv);
+				int16x4_t v16 = vmovn_s32(vv);
+
+				int16x4x2_t combined;
+				combined.val[0] = u16;
+				combined.val[1] = v16;
+
+				vst2_s16(&op[j * 2], combined);
+			}
+		}
+#endif
+		for ( ; j < numSamples; j++ )
 		{
 			op[0] = (int16_t) u[j];
 			op[1] = (int16_t) v[j];

@@ -90,16 +90,21 @@ void set_ag_params(AGParamRecPtr params, uint32_t m, uint32_t p, uint32_t k, uin
 // note: implementing this with some kind of "count leading zeros" assembly is a big performance win
 static inline int32_t lead( int32_t m )
 {
-	long j;
-	unsigned long c = (1ul << 31);
+    if (m == 0) return 32;
+#if defined(__GNUC__) || defined(__clang__)
+    return __builtin_clz((unsigned int)m);
+#else
+    long j;
+    unsigned long c = (1ul << 31);
 
-	for(j=0; j < 32; j++)
-	{
-		if((c & m) != 0)
-			break;
-		c >>= 1;
-	}
-	return (j);
+    for(j=0; j < 32; j++)
+    {
+        if((c & m) != 0)
+            break;
+        c >>= 1;
+    }
+    return (j);
+#endif
 }
 
 #define arithmin(a, b) ((a) < (b) ? (a) : (b))

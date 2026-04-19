@@ -47,10 +47,10 @@ static void Zero32( int32_t * buffer, uint32_t numItems, uint32_t stride );
 	Constructor
 */
 ALACDecoder::ALACDecoder() :
-	mMixBufferU( nil ),
-	mMixBufferV( nil ),
-	mPredictor( nil ),
-	mShiftBuffer( nil )
+	mMixBufferU( nullptr ),
+	mMixBufferV( nullptr ),
+	mPredictor( nullptr ),
+	mShiftBuffer( nullptr )
 {
 	memset( &mConfig, 0, sizeof(mConfig) );
 }
@@ -64,12 +64,12 @@ ALACDecoder::~ALACDecoder()
 	if ( mMixBufferU )
     {
 		free(mMixBufferU);
-        mMixBufferU = NULL;
+        mMixBufferU = nullptr;
     }
 	if ( mMixBufferV )
     {
 		free(mMixBufferV);
-        mMixBufferV = NULL;
+        mMixBufferV = nullptr;
     }
 	
 	// delete the dynamic predictor's "corrector" buffer
@@ -77,7 +77,7 @@ ALACDecoder::~ALACDecoder()
 	if ( mPredictor )
     {
 		free(mPredictor);
-        mPredictor = NULL;
+        mPredictor = nullptr;
     }
 }
 
@@ -141,7 +141,7 @@ int32_t ALACDecoder::Init( void * inMagicCookie, uint32_t inMagicCookieSize )
         // "shift off" buffer shares memory with predictor buffer
         mShiftBuffer = (uint16_t *) mPredictor;
         
-        RequireAction( (mMixBufferU != nil) && (mMixBufferV != nil) && (mPredictor != nil),
+        RequireAction( (mMixBufferU != nullptr) && (mMixBufferV != nullptr) && (mPredictor != nullptr),
                         status = kALAC_MemFullError; goto Exit; );
      }
     else
@@ -198,7 +198,7 @@ int32_t ALACDecoder::Decode( BitBuffer * bits, uint8_t * sampleBuffer, uint32_t 
 	uint32_t			i, j;
 	int32_t             status;
 	
-	RequireAction( (bits != nil) && (sampleBuffer != nil) && (outNumSamples != nil), return kALAC_ParamError; );
+	RequireAction( (bits != nullptr) && (sampleBuffer != nullptr) && (outNumSamples != nullptr), return kALAC_ParamError; );
 	RequireAction( numChannels > 0, return kALAC_ParamError; );
 
 	mActiveElements = 0;
@@ -290,7 +290,7 @@ int32_t ALACDecoder::Decode( BitBuffer * bits, uint8_t * sampleBuffer, uint32_t 
 					else
 					{
 						// the special "numActive == 31" mode can be done in-place
-						unpc_block( mPredictor, mPredictor, numSamples, nil, 31, chanBits, 0 );
+						unpc_block( mPredictor, mPredictor, numSamples, nullptr, 31, chanBits, 0 );
 						unpc_block( mPredictor, mMixBufferU, numSamples, &coefsU[0], numU, chanBits, denShiftU );
 					}
 				}
@@ -449,7 +449,7 @@ int32_t ALACDecoder::Decode( BitBuffer * bits, uint8_t * sampleBuffer, uint32_t 
 					else
 					{
 						// the special "numActive == 31" mode can be done in-place
-						unpc_block( mPredictor, mPredictor, numSamples, nil, 31, chanBits, 0 );
+						unpc_block( mPredictor, mPredictor, numSamples, nullptr, 31, chanBits, 0 );
 						unpc_block( mPredictor, mMixBufferU, numSamples, &coefsU[0], numU, chanBits, denShiftU );
 					}
 
