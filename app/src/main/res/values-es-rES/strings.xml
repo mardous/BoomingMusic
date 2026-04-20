@@ -124,7 +124,7 @@
     <string name="deleting_songs">Eliminando canciones, espere…</string>
     <string name="song_x_of_x">%1$d de %2$d • %3$s</string>
     <string name="no_equalizer">No se encontró ningún ecualizador.</string>
-    <string name="audio_focus_denied">Foco de audio denegado</string>
+    <string name="audio_focus_denied">Foco de audio denegado.</string>
     <string name="no_audio_ID">Identificador de audio incorrecto.</string>
     <string name="playback_error_code">Error de reproducción (%s).</string>
     <string name="unplayable_file">No se pudo reproducir esta canción.</string>
@@ -479,9 +479,9 @@
     <string name="custom">Personalizado</string>
     <string name="audio_offload_is_enabled">Relegación de audio activada</string>
     <string name="enable_audio_offload_title">Relegación de audio</string>
-    <string name="enable_audio_offload_description">Permite que el dispositivo procese el audio directamente a través de su hárdwer, lo que reduce el uso de la CPU y ahorra batería. Esta función solo es compatible con determinados dispositivos. Es posible que algunos efectos o funcionalidades no funcionen mientras esté activada. Es necesario reiniciar el dispositivo para que los cambios surtan efecto.</string>
+    <string name="enable_audio_offload_description">Reproducción acelerada por hardware para reducir el uso de la CPU y ahorrar batería. Requiere reiniciar la aplicación.</string>
     <string name="enable_audio_float_output_title">Salida de audio de alta precisión</string>
-    <string name="enable_audio_float_output_description">Activa el audio de 32 bits en coma flotante para obtener una mejor calidad de sonido. Observe que esto desactivará funciones como ReplayGain, el salto de silencios y el equilibrio de volumen. Es posible que consuma un poco más de batería, y tendrá que reiniciar la aplicación para que los cambios surtan efecto.</string>
+    <string name="enable_audio_float_output_description">Activa la salida de 32 bits en punto flotante para máxima fidelidad. Requiere reiniciar la aplicación.</string>
     <string name="skip_silence_title">Omitir silencio</string>
     <string name="skip_silence_description">Detecta y omite automáticamente los fragmentos en silencio. Ideal para pódcast y grabaciones de voz.</string>
     <!-- Lyrics viewer -->
@@ -523,7 +523,7 @@
     <string name="sleep_timer_1_hour">1 hora</string>
     <string name="sleep_timer_2_hour">2 horas</string>
     <string name="sleep_timer_finish_current_music">Terminar la última canción</string>
-    <string name="sleep_timer_music_fades_out">Music fades out</string>
+    <string name="sleep_timer_music_fades_out">La música se funde al terminar</string>
     <string name="sleep_timer_stop_after_this_track">Detener después de esta pista</string>
     <string name="sleep_timer_stop_after_x">Detener después de %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Detener después de %s: cancelado</string>
@@ -800,14 +800,14 @@
     <string name="expanded">Ampliado</string>
     <string name="full_cover_style">Portada completa</string>
     <string name="gradient_style">Degradado</string>
-    <string name="peek_style">Peek</string>
+    <string name="peek_style">Vistazo</string>
     <string name="plain_style">Puro</string>
     <string name="m3_style">M3</string>
     <string name="expressive_style">Expresivo</string>
     <string name="normal_style">Normal</string>
     <string name="cascading">En cascada</string>
     <string name="depth">Profundidad</string>
-    <string name="hinge">Hinge</string>
+    <string name="hinge">Descartar</string>
     <string name="horizontal_flip">Giro horizontal</string>
     <string name="vertical_flip">Giro vertical</string>
     <string name="zoom_out">Alejar</string>
@@ -950,5 +950,7 @@
     <string name="widget_third_line_title">Tercer renglón de información</string>
     <string name="widget_third_line_summary">Elija qué mostrar en la tercera fila de texto.</string>
     <string name="advanced_settings">Configuración avanzada</string>
-    <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
+    <string name="bit_perfect_info">Perfección al bit: %1$s | %2$s</string>
+    <string name="bit_perfect_is_active">Perfección al bit activa</string>
+    <string name="bit_perfect_description">Salida de audio directa al DAC USB sin remuestreo de sistema.</string>
 </resources>
