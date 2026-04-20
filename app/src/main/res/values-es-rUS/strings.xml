@@ -756,7 +756,7 @@
     <string name="online_artist_images_title">Descargar imágenes de artistas</string>
     <string name="preferred_image_size_title">Tamaño de imagen preferido</string>
     <string name="online_album_covers_title">Descargar carátulas de álbumes faltantes</string>
-    <string name="online_album_covers_summary">Las imágenes descargadas no serán incrustadas en archivos de audio; solo son visibles dentro de la app. Esto depende de la política de descarga de metadatos.</string>
+    <string name="online_album_covers_summary">Las imágenes descargadas no serán incrustadas en archivos de audio; solo son visibles dentro de la app.</string>
     <string name="delete_downloaded_lyrics_title">Eliminar letras descargadas</string>
     <string name="delete_downloaded_lyrics_summary">Solo las letras descargadas por Booming Music. No afecta a las letras en etiquetas ID3v2 o archivos LRC.</string>
     <string name="lyrics_cleared">Letras eliminadas.</string>
