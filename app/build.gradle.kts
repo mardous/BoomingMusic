@@ -1,6 +1,5 @@
 import com.android.build.api.variant.BuildConfigField
 import com.android.build.api.variant.ResValue
-import com.android.build.api.variant.impl.VariantOutputImpl
 import java.util.Properties
 
 plugins {
@@ -80,7 +79,7 @@ val currentVersion: Version = Version.Beta(
 val currentVersionCode = currentVersion.code
 
 android {
-    compileSdk = 36
+    compileSdk = 37
     namespace = "com.mardous.booming"
 
     defaultConfig {
@@ -177,8 +176,7 @@ androidComponents {
         )
 
         variant.outputs.forEach {
-            // https://issuetracker.google.com/issues/480062612
-            (it as VariantOutputImpl).outputFileName = "BoomingMusic-${it.versionName.get()}-${variant.flavorName}-${variant.buildType}.apk"
+            it.outputFileName = "BoomingMusic-${it.versionName.get()}-${variant.flavorName}-${variant.buildType}.apk"
         }
     }
 }
