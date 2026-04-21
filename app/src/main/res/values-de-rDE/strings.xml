@@ -3,7 +3,7 @@
     <string name="action_play">Wiedergabe</string>
     <string name="action_play_all">Alle wiedergeben</string>
     <string name="action_shuffle_play">Zufallswiedergabe</string>
-    <string name="action_queue_next">An Warteschlange anhängen</string>
+    <string name="action_queue_next">Als nächstes abspielen</string>
     <string name="shuffle_all_label">Zufallswiedergabe aller Titel</string>
     <string name="shuffle_mode">Zufallsmodus</string>
     <string name="repeat_mode">Wiederholmodus</string>
