@@ -288,7 +288,8 @@ internal class TtmlNodeTree {
                                 words = words
                             ),
                             translation = translation?.get(line.key),
-                            actor = line.actor
+                            actor = line.actor,
+                            rawIndex = i
                         )
                     )
                 } else {
@@ -304,7 +305,8 @@ internal class TtmlNodeTree {
                                 words = emptyList()
                             ),
                             translation = translation?.get(line.key),
-                            actor = line.actor
+                            actor = line.actor,
+                            rawIndex = i
                         )
                     )
                 }
@@ -332,10 +334,6 @@ internal class TtmlNodeTree {
             }
 
             return Lyrics(
-                title = null,
-                artist = null,
-                album = null,
-                durationMillis = duration,
                 lines = linesWithOffset
             )
         }

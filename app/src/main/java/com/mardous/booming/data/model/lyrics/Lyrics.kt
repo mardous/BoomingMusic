@@ -4,24 +4,21 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class Lyrics(
-    val title: String?,
-    val artist: String?,
-    val album: String?,
-    val durationMillis: Long?,
     val lines: List<Line>,
     val offset: Long = 0
 ) {
     val hasContent = lines.isNotEmpty()
 
-    val plainText: String
-        get() = lines.joinToString("\n") { it.content.content }
-
     val rawText: String
         get() {
             val buffer = StringBuffer()
-            if (offset != 0L) { buffer.append("[offset:$offset]") }
-            lines.joinTo(buffer, "\n") { it.content.rawContent.orEmpty() }
-            return buffer.trim().toString()
+            if (offset != 0L) {
+                buffer.append("[offset:$offset]")
+            }
+            return lines.filter { it.rawIndex > -1 }
+                .sortedBy { it.rawIndex }
+                .joinTo(buffer, "\n") { it.content.rawContent.orEmpty() }
+                .trim().toString()
         }
 
     init {
@@ -38,7 +35,8 @@ data class Lyrics(
         val durationMillis: Long = (end - startAt),
         val content: TextContent,
         val translation: TextContent?,
-        val actor: LyricsActor?
+        val actor: LyricsActor?,
+        val rawIndex: Int = -1
     ) {
         val id: Long = 31 * (31 * startAt + durationMillis) + content.hashCode()
 

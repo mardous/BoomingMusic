@@ -39,6 +39,7 @@ class LrcLyricsParser : LyricsParser {
         val rawLines = mutableListOf<LrcNode>()
         try {
             reader.buffered().use { br ->
+                var rawIndex = 0
                 while (true) {
                     val line = br.readLine() ?: break
                     if (line.isBlank()) continue
@@ -60,13 +61,17 @@ class LrcLyricsParser : LyricsParser {
                             val bgText = lineResult.groupValues[3]
                                 .takeIf { it.isNotEmpty() }
 
-                            val timeResult = LINE_TIME_PATTERN.find(base)
-                            if (timeResult != null) {
-                                val timeMs = parseTime(timeResult)
+                            var foundAny = false
+                            val timeMatches = LINE_TIME_PATTERN.findAll(base)
+                            for (time in timeMatches) {
+                                val timeMs = parseTime(time)
                                 if (timeMs > LrcNode.INVALID_DURATION) {
-                                    rawLines.add(LrcNode(timeMs, text, bgText, line))
+                                    rawLines.add(LrcNode(rawIndex++, timeMs, text, bgText, line))
+                                    foundAny = true
                                 }
-                            } else {
+                            }
+
+                            if (!foundAny) {
                                 val backgroundMatcher = BACKGROUND_ONLY_PATTERN.find(line)
                                 if (rawLines.isNotEmpty() && backgroundMatcher != null) {
                                     val bgText = backgroundMatcher.groupValues.getOrNull(1)?.trim()
@@ -86,6 +91,7 @@ class LrcLyricsParser : LyricsParser {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+        rawLines.sortBy { it.start }
         return parse(attributes, rawLines, trackLength, ignoreBlankLines)
     }
 
@@ -211,10 +217,6 @@ class LrcLyricsParser : LyricsParser {
             }
 
             return Lyrics(
-                title = attributes["ti"],
-                artist = attributes["ar"],
-                album = attributes["al"],
-                durationMillis = length,
                 lines = linesWithOffset,
                 offset = attributes["offset"]?.toLongOrNull() ?: 0
             )

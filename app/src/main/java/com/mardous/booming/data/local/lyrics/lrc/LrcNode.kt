@@ -4,6 +4,7 @@ import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
 
 internal class LrcNode(
+    val rawIndex: Int,
     val start: Long,
     val text: String?,
     var bgText: String?,
@@ -17,6 +18,7 @@ internal class LrcNode(
     fun addChild(start: Long, text: String?, actor: LyricsActor?): Boolean {
         if (start > INVALID_DURATION) {
             return children.add(LrcNode(
+                rawIndex = -1,
                 start = start,
                 text = text,
                 bgText = null,
@@ -95,7 +97,8 @@ internal class LrcNode(
             durationMillis = (end - start),
             content = getTextContent(),
             translation = null,
-            actor = actor
+            actor = actor,
+            rawIndex = rawIndex
         )
     }
 
