@@ -82,27 +82,3 @@ fun Bitmap.getResized(maxForSmallerSize: Int): Bitmap {
 fun Bitmap.toJPG(quality: Int = 90, stream: OutputStream?): Boolean {
     return stream != null && compress(Bitmap.CompressFormat.JPEG, quality, stream)
 }
-
-fun calculateInSampleSize(width: Int, height: Int, reqWidth: Int): Int {
-    // setting reqWidth matching to desired 1:1 ratio and screen-size
-    var varReqWidth = reqWidth
-    varReqWidth = if (width < height) {
-        height / width * varReqWidth
-    } else {
-        width / height * varReqWidth
-    }
-    var inSampleSize = 1
-    if (height > varReqWidth || width > varReqWidth) {
-        val halfHeight = height / 2
-        val halfWidth = width / 2
-
-        // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-        // height and width larger than the requested height and width.
-        while (halfHeight / inSampleSize > varReqWidth
-            && halfWidth / inSampleSize > varReqWidth
-        ) {
-            inSampleSize *= 2
-        }
-    }
-    return inSampleSize
-}
