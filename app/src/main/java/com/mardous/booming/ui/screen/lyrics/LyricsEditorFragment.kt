@@ -60,7 +60,7 @@ import com.mardous.booming.extensions.media.albumArtistName
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.resources.animateToggle
-import com.mardous.booming.extensions.resources.requestInputMethod
+import com.mardous.booming.extensions.resources.focusAndShowKeyboard
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.concurrent.atomics.AtomicReference
@@ -271,7 +271,7 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
             binding.plainInput
         }
         input.setSelection(0, input.text?.length ?: 0)
-        input.requestInputMethod()
+        input.focusAndShowKeyboard()
     }
 
     private fun pasteFromClipboard() {

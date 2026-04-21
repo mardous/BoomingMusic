@@ -35,7 +35,6 @@ import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
 import android.widget.CompoundButton
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.SeekBar
@@ -192,7 +191,7 @@ fun View.focusAndShowKeyboard() {
                 // We still post the call, just in case we are being notified of the windows focus
                 // but InputMethodManager didn't get properly setup yet.
                 val imm = context.getSystemService<InputMethodManager>()
-                imm?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+                imm?.showSoftInput(this, 0)
             }
         }
     }
@@ -294,16 +293,6 @@ fun ImageView.removeHorizontalMarginIfRequired() {
     if (Preferences.largerHeaderImage) {
         doOnLayout {
             updateLayoutParams<ViewGroup.MarginLayoutParams> { marginStart = 0; marginEnd = 0; }
-        }
-    }
-}
-
-fun EditText.requestInputMethod() {
-    requestFocus()
-    post {
-        if (isAttachedToWindow) {
-            val imm = context.getSystemService<InputMethodManager>()
-            imm?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
         }
     }
 }
