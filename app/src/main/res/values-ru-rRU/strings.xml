@@ -947,7 +947,7 @@
     <string name="app_widget_card">Карточка</string>
     <string name="app_widget_card_desc">Минималистичный и упрощённый стиль</string>
     <string name="app_widget_full">Полноразмерный</string>
-    <string name="app_widget_full_desc">Экран проигрывателя прямо на вашем рабочем столе</string>
+    <string name="app_widget_full_desc">Экран проигрывателя прямо на рабочем столе</string>
     <string name="advanced_settings">Расширенные настройки</string>
     <string name="bit_perfect_is_active">Bit-perfect активен</string>
     <string name="bit_perfect_description">Прямой вывод звука на USB DAC (ЦАП) без изменения частоты дискретизации.</string>
