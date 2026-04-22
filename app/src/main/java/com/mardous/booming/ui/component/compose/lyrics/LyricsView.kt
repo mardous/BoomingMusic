@@ -491,10 +491,7 @@ private fun LyricsTextView(
 
     Text(
         text = content,
-        style = textStyle.copy(
-            fontWeight = if (selectedLine) FontWeight.ExtraBold else FontWeight.Medium,
-            shadow = shadow
-        ),
+        style = textStyle.copy(shadow = shadow),
         textAlign = align,
         modifier = modifier
             .onGloballyPositioned {
@@ -537,12 +534,6 @@ private fun SyllableText(
                 isWordActive -> 0.4f + (0.6f * fadeProgress)
                 else -> 0.4f
             }
-            val wordWeight = when {
-                !selectedLine -> FontWeight.Medium
-                hasWordPassed -> FontWeight.Bold
-                isWordActive -> FontWeight.ExtraBold
-                else -> FontWeight.Medium
-            }
             val wordShadow = when {
                 shadowEffect && isWordActive && fadeProgress > 0.2f -> Shadow(
                     color = contentColor.copy(alpha = 0.35f * fadeProgress),
@@ -561,7 +552,6 @@ private fun SyllableText(
             withStyle(
                 style = SpanStyle(
                     color = wordColor,
-                    fontWeight = wordWeight,
                     shadow = wordShadow
                 )
             ) {

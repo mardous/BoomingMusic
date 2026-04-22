@@ -211,6 +211,7 @@ class LyricsViewModel(
         val syncedStyle = TextStyle(
             fontFamily = fontFamily,
             fontSize = syncedFontSize.sp,
+            fontWeight = FontWeight.SemiBold,
             lineHeight = (1f + (lineSpacing / 100f)).em
         )
         val unsyncedBoldFont = preferences.getBoolean(Key.UNSYNCED_BOLD_FONT, true)
