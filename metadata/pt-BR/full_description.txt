@@ -1,0 +1,20 @@
+O Booming Music é um reprodutor de música local moderno e poderoso para Android, projetado para uma experiência fluida personalizável e visualmente atraente. Construído com o design Material You e com a tecnologia Media3, ele combina simplicidade com recursos avançados de reprodução.
+
+Curta suas músicas favoritas com letras sincronizadas palavra por palavra, suporte para letras traduzidas (TTML/LRC) e uma interface "Tocando Agora" completamente reimaginada, com visuais aprimorados, transições suaves e melhores opções de personalização.
+
+Aprimore sua experiência de audição com um equializador integrado, ReplayGain, Audio Offload e reprodução sem pausas para transições perfeitas. Organize suas músicas do seu jeito com listas de reprodução inteligentes, classificação personalizável e uma nova visualização hierárquica de pastas.
+
+Principais recursos:
+
+* Download automático de letras e editor de letras integrado
+* Letras palavra por palavra e traduzidas (TTML, LRC)
+* Mecanismo de reprodução baseado em Media3 com suporte para descarregamento de áudio
+* Suporte para reprodução bit-perfect e decodificação ALAC nativa
+* Mini player adaptativo e controle por gestos
+* Capas e descrições personalizáveis para listas de reprodução
+* Editor de tags com atualizações instantâneas da biblioteca
+* Listas de reprodução automáticas inteligentes (Reproduzidas Recentemente, Mais Reproduzidas, Histórico)
+* Temporizador, widgets e suporte para Android Auto
+* Tema Material You com modos escuro e preto
+* Suporte a vários idiomas
+* Leve, de código aberto e sem anúncios
