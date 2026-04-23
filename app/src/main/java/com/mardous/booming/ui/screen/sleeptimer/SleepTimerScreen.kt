@@ -2,6 +2,7 @@
 package com.mardous.booming.ui.screen.sleeptimer
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -55,7 +56,6 @@ import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.theme.SliderTokens
-import com.mardous.booming.ui.theme.SurfaceColorTokens
 import kotlin.math.round
 
 data class SleepTimerUiState(
@@ -63,6 +63,7 @@ data class SleepTimerUiState(
     val waitingFor: SleepTimerWaitingFor?,
     val isFinishMusic: Boolean,
     val isFadeOut: Boolean,
+    val fadeOutDuration: Float,
     val timerValue: Float
 )
 
@@ -120,6 +121,7 @@ fun SleepTimerBottomSheet(
     )
 
     var sliderPosition by remember(uiState.timerValue) { mutableFloatStateOf(uiState.timerValue) }
+    var fadeOutDuration by remember(uiState.fadeOutDuration) { mutableFloatStateOf(uiState.fadeOutDuration) }
 
     BottomSheetDialogSurface {
         Column(
@@ -151,7 +153,7 @@ fun SleepTimerBottomSheet(
                 Column(
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
-                    Text(
+                    SleepTimerText(
                         text = when (val waitingFor = uiState.waitingFor) {
                             is SleepTimerWaitingFor.Countdown -> {
                                 waitingFor.formattedTimeUntilFinish
@@ -163,10 +165,6 @@ fun SleepTimerBottomSheet(
                                 stringResource(R.string.sleep_timer_x_mins, sliderPosition.toInt())
                             }
                         },
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        fontWeight = FontWeight.SemiBold,
-                        maxLines = 1,
                         modifier = Modifier
                             .padding(end = 8.dp)
                             .align(Alignment.End)
@@ -281,14 +279,8 @@ fun SleepTimerBottomSheet(
                 }
 
                 Column(
-                    modifier = Modifier
-                        .clip(MaterialTheme.shapes.large)
-                        .background(
-                            MaterialTheme.colorScheme.surfaceVariant.copy(
-                                alpha = SurfaceColorTokens.SurfaceVariantAlpha
-                            )
-                        )
-                        .padding(vertical = 8.dp)
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
+                    modifier = Modifier.clip(RoundedCornerShape(16.dp))
                 ) {
                     SwitchButton(
                         enabled = uiState.isRunning.not(),
@@ -323,6 +315,42 @@ fun SleepTimerBottomSheet(
                                 )
                             }
                             viewModel.setTimerState(isFadeOut = isChecked)
+                        },
+                        expandableContent = {
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(8.dp),
+                                modifier = Modifier
+                                    .padding(horizontal = 16.dp)
+                                    .padding(top = 8.dp, bottom = 16.dp)
+                            ) {
+                                Slider(
+                                    value = fadeOutDuration,
+                                    onValueChange = { fadeOutDuration = it },
+                                    onValueChangeFinished = {
+                                        hapticFeedback.performHapticFeedback(
+                                            HapticFeedbackType.SegmentFrequentTick
+                                        )
+                                        viewModel.setTimerState(fadeOutDuration = fadeOutDuration)
+                                    },
+                                    valueRange = 1f..10f,
+                                    track = { sliderState ->
+                                        SliderDefaults.Track(
+                                            sliderState = sliderState,
+                                            modifier = Modifier.height(SliderTokens.MediumTrackHeight)
+                                        )
+                                    },
+                                    steps = 8,
+                                    enabled = uiState.isRunning.not(),
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+
+                                SleepTimerText(
+                                    text = stringResource(R.string.sleep_timar_x_secs, fadeOutDuration.toInt()),
+                                    modifier = Modifier
+                                        .padding(end = 8.dp)
+                                        .align(Alignment.End)
+                                )
+                            }
                         }
                     )
                 }
@@ -370,32 +398,60 @@ private fun SwitchButton(
     enabled: Boolean,
     checked: Boolean,
     text: String,
-    onValueChange: (Boolean) -> Unit
+    onValueChange: (Boolean) -> Unit,
+    expandableContent: @Composable () -> Unit = {}
 ) {
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .toggleable(
-                enabled = enabled,
-                value = checked,
-                role = Role.Switch,
-                onValueChange = onValueChange
-            )
-            .padding(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .clip(RoundedCornerShape(4.dp))
+            .background(MaterialTheme.colorScheme.surfaceContainerHighest),
     ) {
-        Text(
-            text = text,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.weight(1f)
-        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .toggleable(
+                    enabled = enabled,
+                    value = checked,
+                    role = Role.Switch,
+                    onValueChange = onValueChange
+                )
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = text,
+                maxLines = 1,
+                style = MaterialTheme.typography.labelLargeEmphasized,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f)
+            )
 
-        Switch(
-            enabled = enabled,
-            checked = checked,
-            onCheckedChange = null,
-        )
+            Switch(
+                enabled = enabled,
+                checked = checked,
+                onCheckedChange = null,
+            )
+        }
+
+        AnimatedVisibility(enabled && checked) {
+            expandableContent()
+        }
     }
+}
+
+@Composable
+private fun SleepTimerText(
+    text: String,
+    modifier: Modifier = Modifier
+) {
+    Text(
+        text = text,
+        maxLines = 1,
+        style = MaterialTheme.typography.bodySmallEmphasized,
+        color = MaterialTheme.colorScheme.onSurface,
+        fontWeight = FontWeight.SemiBold,
+        modifier = modifier
+    )
 }

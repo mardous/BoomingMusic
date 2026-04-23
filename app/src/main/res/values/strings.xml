@@ -573,6 +573,7 @@
     <string name="sleep_timer_cancel_current_timer">Cancel</string>
     <string name="sleep_timer_set_action">Set</string>
     <string name="sleep_timer_x_mins">%d mins</string>
+    <string name="sleep_timar_x_secs">%d seconds</string>
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>

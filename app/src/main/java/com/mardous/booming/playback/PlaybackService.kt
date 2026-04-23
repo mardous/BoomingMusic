@@ -295,13 +295,13 @@ class PlaybackService :
             }
         }
 
-        sleepTimer.addFinishListener { allowPendingQuit, fadeOut ->
+        sleepTimer.addFinishListener { sleepParams ->
             if (player.playWhenReady && player.isPlaying) {
-                if (allowPendingQuit) {
+                if (sleepParams.pendingQuit) {
                     player.exoPlayer.pauseAtEndOfMediaItems = true
                 } else {
-                    if (fadeOut) {
-                        launchMusicFadeOut()
+                    if (sleepParams.fadeOut) {
+                        launchMusicFadeOut(sleepParams.fadeDuration)
                     } else {
                         player.pause()
                     }
@@ -758,6 +758,11 @@ class PlaybackService :
     }
 
     override fun onEvents(player: Player, events: Player.Events) {
+        if (events.contains(Player.EVENT_IS_PLAYING_CHANGED) ||
+            events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) ||
+            events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+            cancelSleepTimerFadeOut()
+        }
         if (events.contains(Player.EVENT_IS_PLAYING_CHANGED) &&
             !events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION)) {
             updateEqualizerSessionState(player.isPlaying)
@@ -991,7 +996,7 @@ class PlaybackService :
     }
 
     private fun launchMusicFadeOut(durationMs: Long = 1000) {
-        cancelMusicFadeOut()
+        cancelSleepTimerFadeOut()
 
         fadeOutAnimator = ValueAnimator.ofFloat(player.volume, 0f).apply {
             duration = durationMs
@@ -999,6 +1004,10 @@ class PlaybackService :
                 player.volume = animation.animatedValue as Float
             }
             addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationCancel(animation: Animator) {
+                    restorePlayerVolume()
+                }
+
                 override fun onAnimationEnd(animation: Animator) {
                     player.pause()
                     restorePlayerVolume()
@@ -1008,7 +1017,7 @@ class PlaybackService :
         fadeOutAnimator?.start()
     }
 
-    private fun cancelMusicFadeOut() {
+    private fun cancelSleepTimerFadeOut() {
         fadeOutAnimator?.cancel()
         fadeOutAnimator = null
 
@@ -1025,7 +1034,7 @@ class PlaybackService :
         }
         serviceScope.launch {
             equalizerManager.volumeState.collect { volume ->
-                cancelMusicFadeOut()
+                cancelSleepTimerFadeOut()
                 player.volume = volume.currentVolume
             }
         }
