@@ -135,6 +135,25 @@ android {
     androidResources {
         generateLocaleConfig = true
     }
+    splits {
+        abi {
+            isEnable = true
+            reset()
+            include("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
+            isUniversalApk = true
+        }
+    }
+    bundle {
+        abi {
+            enableSplit = true
+        }
+        density {
+            enableSplit = true
+        }
+        language {
+            enableSplit = true
+        }
+    }
     packaging {
         resources {
             excludes += listOf("META-INF/LICENSE", "META-INF/NOTICE", "META-INF/java.properties")
