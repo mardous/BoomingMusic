@@ -21,13 +21,13 @@ import android.content.Context
 import android.os.Handler
 import androidx.annotation.OptIn
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.decoder.ffmpeg.FfmpegAudioRenderer
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.Renderer
 import androidx.media3.exoplayer.audio.AudioRendererEventListener
 import androidx.media3.exoplayer.audio.AudioSink
 import androidx.media3.exoplayer.audio.DefaultAudioSink
 import androidx.media3.exoplayer.mediacodec.MediaCodecSelector
-import com.mardous.alac.AlacAudioRenderer
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
 
@@ -60,6 +60,9 @@ class BoomingMusicRenderersFactory(
         eventListener: AudioRendererEventListener,
         out: ArrayList<Renderer>
     ) {
+        if (extensionRendererMode != EXTENSION_RENDERER_MODE_OFF) {
+            out.add(FfmpegAudioRenderer(eventHandler, eventListener, audioSink))
+        }
         super.buildAudioRenderers(
             context,
             extensionRendererMode,
@@ -70,9 +73,5 @@ class BoomingMusicRenderersFactory(
             eventListener,
             out
         )
-        if (extensionRendererMode == EXTENSION_RENDERER_MODE_OFF) {
-            return
-        }
-        out.add(AlacAudioRenderer(eventHandler, eventListener, audioSink))
     }
 }
