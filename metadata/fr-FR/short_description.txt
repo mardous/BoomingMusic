@@ -1,1 +1,1 @@
-Un lecteur de musique local moderne, basé sur Material 3, conçu pour une écoute hors ligne fluide
+Un lecteur de musique épuré, rapide et basé sur Material Design, doté de fonctionnalités puissantes

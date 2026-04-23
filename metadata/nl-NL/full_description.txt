@@ -1,0 +1,20 @@
+Booming Music is een moderne en krachtige lokale muziekspeler voor Android, ontworpen voor een soepele, aanpasbare en visueel aantrekkelijke ervaring. Gebouwd met Material Design en aangedreven door Media3, combineert het eenvoud met geavanceerde afspeelfuncties.
+
+Geniet van je favoriete nummers met woord-voor-woord gesynchroniseerde songteksten, ondersteuning voor vertaalde songteksten (TTML/LRC) en een volledig vernieuwde 'Nu afspelen'-interface met verbeterde visuals, vloeiendere overgangen en meer aanpassingsmogelijkheden.
+
+Verfijn je luisterervaring met een ingebouwde equalizer, ReplayGain, Audio Offload en gapless afspelen voor naadloze overgangen. Organiseer je muziek zoals jij dat wilt met slimme afspeellijsten, aanpasbare sortering en een nieuwe hiërarchische mapweergave.
+
+Belangrijkste functies:
+
+* Automatische download van songteksten en ingebouwde songteksteditor
+* Teksten woord voor woord en vertaald (TTML, LRC)
+* Op Media3 gebaseerde afspeelengine met ondersteuning voor audio-offload
+* Bit-perfecte weergave en native ALAC-decodering
+* Adaptieve mini-speler en gebarenbediening
+* Aangepaste covers en beschrijvingen voor afspeellijsten
+* Tag-editor met directe bibliotheekupdates
+* Slimme automatische afspeellijsten (Recent afgespeeld, Meest afgespeeld, Geschiedenis)
+* Slaaptimer, widgets en ondersteuning voor Android Auto
+* Material You-thema met donkere en zwarte modus
+* Ondersteuning voor meerdere talen
+* Lichtgewicht, open source en reclamevrij

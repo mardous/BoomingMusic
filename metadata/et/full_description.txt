@@ -9,6 +9,7 @@ Põhifunktsionaalsus:
 * Laulusõnade automaatne allalaadimine ja rakendusesisene laulusõnade muutja
 * Sõna-sõnalt sünkroonitud ja tõlgitud laulusõnad (TTML, LRC)
 * Media3-põhine taasesitusmootor, mis toetab heli töötlust kogu raudvaras
+* Bititäpse taasesituse tugi ja ALAC-vormingu sisseehitatud dekodeerimine
 * Kohanduv minipleier ja esituse juhtimine viipamisega
 * Esitusloendite kohandatavad kaanepildid ja kirjeldused
 * Siltide muutmise võimalus koos kohese muusikakogu uuendamisega
