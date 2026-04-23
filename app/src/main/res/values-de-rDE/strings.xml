@@ -423,10 +423,10 @@
     <string name="select_profiles_to_share">Zu teilende Profile auswählen:</string>
     <string name="export_profiles">Profile exportieren</string>
     <string name="select_profiles_to_export">Zu exportierende Profile auswählen:</string>
-    <string name="select_a_file_to_save_the_exported_profiles">Select a file to save the exported profiles.</string>
-    <string name="profiles_exported_successfully">Profiles exported successfully.</string>
-    <string name="import_profiles">Import profiles</string>
-    <string name="select_profiles_to_import">Select profiles to import:</string>
+    <string name="select_a_file_to_save_the_exported_profiles">Wähle eine Datei aus, um die exportierten Profile zu speichern.</string>
+    <string name="profiles_exported_successfully">Profile wurden erfolgreich exportiert.</string>
+    <string name="import_profiles">Profile importieren</string>
+    <string name="select_profiles_to_import">Wähle Profile zum Import aus:</string>
     <string name="select_a_file_containing_booming_eq_profiles">Select a file containing Booming Music EQ Profiles.</string>
     <string name="imported_x_profiles">Imported %d profiles.</string>
     <string name="no_profile_imported">No profile imported.</string>
