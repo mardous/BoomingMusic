@@ -143,20 +143,13 @@ android {
             isUniversalApk = true
         }
     }
-    bundle {
-        abi {
-            enableSplit = true
-        }
-        density {
-            enableSplit = true
-        }
-        language {
-            enableSplit = true
-        }
-    }
     packaging {
         resources {
-            excludes += listOf("META-INF/LICENSE", "META-INF/NOTICE", "META-INF/java.properties")
+            excludes += "META-INF/LICENSE"
+            excludes += "META-INF/NOTICE"
+            excludes += "META-INF/java.properties"
+            excludes += "META-INF/androidx/*/*/LICENSE.txt"
+            excludes += "DebugProbesKt.bin"
         }
     }
     lint {
@@ -194,8 +187,10 @@ androidComponents {
             ResValue(lastFmKey.isNotEmpty().toString(), "Enable LastFM integration")
         )
 
-        variant.outputs.forEach {
-            it.outputFileName = "BoomingMusic-${it.versionName.get()}-${variant.flavorName}-${variant.buildType}.apk"
+        variant.outputs.forEach { output ->
+            val filter = output.filters.joinToString("-") { it.identifier }
+            val abi = filter.ifEmpty { "universal" }
+            output.outputFileName = "BoomingMusic-${output.versionName.get()}-${variant.flavorName}-$abi.apk"
         }
     }
 }
