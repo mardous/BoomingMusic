@@ -383,8 +383,6 @@
     </plurals>
     <plurals name="x_items">
         <item quantity="one">פריט %d</item>
-        <item quantity="two"/>
-        <item quantity="other"/>
     </plurals>
     <!-- Home -->
     <string name="home_label">Home</string>

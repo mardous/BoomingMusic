@@ -348,42 +348,34 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Música</item>
-        <item quantity="many"/>
         <item quantity="other">Músicas</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Álbum</item>
-        <item quantity="many"/>
         <item quantity="other">álbuns</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d música</item>
-        <item quantity="many"/>
         <item quantity="other">%d músicas</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">Álbum %d</item>
-        <item quantity="many"/>
         <item quantity="other">%d álbuns</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">Artista %d</item>
-        <item quantity="many"/>
         <item quantity="other">%d artistas</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d time</item>
-        <item quantity="many"/>
         <item quantity="other">%d times</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d reprodução</item>
-        <item quantity="many"/>
         <item quantity="other">%d reproduções</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d item</item>
-        <item quantity="many"/>
         <item quantity="other">%d items</item>
     </plurals>
     <!-- Home -->

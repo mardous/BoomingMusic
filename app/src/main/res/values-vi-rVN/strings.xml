@@ -883,7 +883,7 @@
     <string name="app_widget_full">Đầy</string>
     <string name="app_widget_full_desc">Trình phát trực tiếp ở trên màn hình chính</string>
     <string name="advanced_settings">Cài đặt nâng cao</string>
-    <string name="bit_perfect_is_active">Bit-perfect đang kích hoạt</string>
+    <string name="bit_perfect_is_active">Bit-perfect đang hoạt động</string>
     <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
     <string name="bit_perfect_title">Âm thanh Bit-perfect</string>
     <string name="bit_perfect_description">Đầu ra âm thanh trực tiếp đi đến USB DAC mà không cần hệ thống lấy mẫu lại</string>

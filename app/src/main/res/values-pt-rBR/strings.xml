@@ -348,42 +348,37 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Música</item>
-        <item quantity="many"/>
+        <item quantity="many">Músicas</item>
         <item quantity="other">Músicas</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Álbum</item>
-        <item quantity="many"/>
+        <item quantity="many">Álbuns</item>
         <item quantity="other">Álbuns</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d música</item>
-        <item quantity="many"/>
+        <item quantity="many">%d músicas</item>
         <item quantity="other">%d músicas</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d álbum</item>
-        <item quantity="many"/>
         <item quantity="other">%d álbuns</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
-        <item quantity="many"/>
         <item quantity="other">%d artistas</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d vez</item>
-        <item quantity="many"/>
         <item quantity="other">%d vezes</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d reprodução</item>
-        <item quantity="many"/>
         <item quantity="other">%d reproduções</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d item</item>
-        <item quantity="many"/>
         <item quantity="other">%d itens</item>
     </plurals>
     <!-- Home -->
@@ -885,4 +880,21 @@
     <string name="app_widget_full">Cheio</string>
     <string name="app_widget_responsive_desc">Um widget que se adapta a diferentes tamanhos</string>
     <string name="app_widget_card">Cartão</string>
+    <string name="app_widget_responsive">Responsivo</string>
+    <string name="app_widget_full_desc">A tela de personagem diretamente no seu computador</string>
+    <string name="channel_mono">Mono</string>
+    <string name="channel_stereo">Estéreo</string>
+    <string name="channel_stereo_2_1">Estéreo 2.1</string>
+    <string name="channel_quadraphonic">Quadrafônico</string>
+    <string name="channel_surround_5_0">5.0 Canais</string>
+    <string name="channel_surround_5_1">5.1 Canais</string>
+    <string name="channel_surround_6_1">6.1 Canais</string>
+    <string name="channel_surround_7_1">7.1 Canais</string>
+    <string name="channel_surround_9_1">9.1 Canais</string>
+    <string name="channel_surround_11_1">11.1 Canais</string>
+    <string name="channel_surround_13_1">13.1 Canais</string>
+    <string name="advanced_settings">Configurações Avançadas</string>
+    <string name="bit_perfect_is_active">Perfeição bit a bit está ativa</string>
+    <string name="bit_perfect_info">Perfeição bit a bit: %1$s | %2$s</string>
+    <string name="bit_perfect_title">Áudio perfeito bit a bit</string>
 </resources>
