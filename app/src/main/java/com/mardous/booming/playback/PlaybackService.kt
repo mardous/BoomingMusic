@@ -26,6 +26,7 @@ import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
+import androidx.core.os.postDelayed
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.media3.common.AudioAttributes
@@ -40,8 +41,6 @@ import androidx.media3.common.TrackSelectionParameters.AudioOffloadPreferences
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.exoplayer.audio.AudioSink
-import androidx.media3.exoplayer.audio.DefaultAudioSink
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.source.ShuffleOrder.UnshuffledShuffleOrder
 import androidx.media3.extractor.DefaultExtractorsFactory
@@ -158,6 +157,8 @@ class PlaybackService :
     private lateinit var customCommands: List<CommandButton>
     private lateinit var player: AdvancedForwardingPlayer
     private var mediaSession: MediaLibrarySession? = null
+
+    private var eqStateHandler: Handler? = Handler(Looper.getMainLooper())
 
     private var pausedByZeroVolume = false
     private var hasSetUnshuffledOrder = false
@@ -332,6 +333,7 @@ class PlaybackService :
             unregisterReceiver(headsetReceiver)
             headsetReceiverRegistered = false
         }
+        eqStateHandler?.removeCallbacksAndMessages(null)
         serviceScope.cancel()
         preferences.unregisterOnSharedPreferenceChangeListener(this)
         audioOutputObserver.stopObserver()
@@ -690,7 +692,6 @@ class PlaybackService :
                 }
             }
         }
-        equalizerManager.setSessionIsActive(isPlaying)
         songPlayCountHelper.notifyPlayStateChanged(isPlaying)
         updateWidgets()
     }
@@ -757,8 +758,12 @@ class PlaybackService :
     }
 
     override fun onEvents(player: Player, events: Player.Events) {
-        if (events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED)
-            && !events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+        if (events.contains(Player.EVENT_IS_PLAYING_CHANGED) &&
+            !events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION)) {
+            updateEqualizerSessionState(player.isPlaying)
+        }
+        if (events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED) &&
+            !events.contains(Player.EVENT_TIMELINE_CHANGED)) {
             if (player.shuffleModeEnabled && persistentStorage.restorationState.isRestored) {
                 this.player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
                     firstIndex = player.currentMediaItemIndex,
@@ -1063,6 +1068,17 @@ class PlaybackService :
                         pausedByZeroVolume = false
                     }
                 }
+            }
+        }
+    }
+
+    private fun updateEqualizerSessionState(isPlaying: Boolean) {
+        eqStateHandler?.removeCallbacksAndMessages(null)
+        if (isPlaying) {
+            equalizerManager.setSessionIsActive(true)
+        } else {
+            eqStateHandler?.postDelayed(500) {
+                equalizerManager.setSessionIsActive(false)
             }
         }
     }
