@@ -96,8 +96,6 @@
     <string name="remove_songs_from_playlist_title">Eemalda lood esitusloendist</string>
     <string name="action_grant">Anna õigused</string>
     <string name="granted">Õigused on olemas</string>
-    <string name="undo_action">Võta tegevus tagasi</string>
-    <string name="updating">Uuendan…</string>
     <string name="empty_label">Tühi</string>
     <string name="songs_label">Lood</string>
     <string name="albums_label">Albumid</string>
@@ -325,15 +323,10 @@
     <string name="app_widget_card_desc">Napp ja lihtsustatud lahendus</string>
     <string name="app_widget_full">Täismahuline</string>
     <string name="app_widget_full_desc">Meediaesitaja saab asuma otse sinu töölaual</string>
-    <string name="nothing_to_scan">Pole midagi skaneeritavat</string>
     <string name="select_storage_title">Vali andmeruum</string>
     <string name="hello_there">No tere kah!</string>
     <string name="welcome_to_x">Tere tulemast, see on %s</string>
     <string name="get_started">Alustame siis</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> pole sinu meediakogust leitav.]]></string>
-    <string name="some_files_are_not_listed_in_the_media_store">Mõned failid pole meediakogust leitavad.</string>
-    <string name="empty_play_queue">Tühi esitusloend.</string>
-    <string name="save_queue">Salvesta esitusjärjekord</string>
     <string name="clear_queue">Tühjenda esitusjärjekord</string>
     <string name="action_add_to_playing_queue">Lisa esitusjärjekorda</string>
     <string name="action_remove_from_playing_queue">Eemalda esitusel olevast esitusjärjekorrast</string>
