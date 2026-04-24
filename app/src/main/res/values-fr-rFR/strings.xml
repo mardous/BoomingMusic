@@ -940,4 +940,5 @@
     <string name="advanced_settings">Paramètres avancés</string>
     <string name="bit_perfect_is_active">Bit-perfect est actif</string>
     <string name="bit_perfect_description">Transmettre le signal audio directement vers un DAC USB sans rééchantillonnage du système.</string>
+    <string name="sleep_timar_x_secs">%d secondes</string>
 </resources>

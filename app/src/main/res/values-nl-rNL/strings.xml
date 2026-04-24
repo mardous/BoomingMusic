@@ -471,15 +471,15 @@
     <string name="enable_audio_offload_title">Audio Uitladen</string>
     <string name="enable_audio_offload_description">Hardware-versneld terugspelen om CPU-gebruik te verminderen en batterijgebruik te besparen. Herstarten van app is nodig.</string>
     <string name="enable_audio_float_output_title">Audio-uitvoer met hoge precisie</string>
-    <string name="enable_audio_float_output_description">Maakt 32-bit floating-point audio mogelijk voor een betere geluidskwaliteit. Hou er rekening mee dat dit functies zoals ReplayGain uitschakelt, stilte overslaat en het volume overslaat. Het kan een beetje meer batterij gebruiken, en je moet de app opnieuw opstarten om deze effectief te maken.</string>
+    <string name="enable_audio_float_output_description">Staat 32-bit floating-point uitvoer toe voor maximaal hoogwaardig geluid. Herstarten van de app is nodig.</string>
     <string name="skip_silence_title">Stilte overslaan</string>
-    <string name="skip_silence_description">Automatisch stille secties overslaan tijdens het afspelen. Ideaal voor podcasts en opnamen.</string>
+    <string name="skip_silence_description">Detecteert automatisch stille secties en slaat deze over. Ideaal voor podcasts en opnamen.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Songtekst weergeven</string>
     <string name="action_hide_lyrics">Verberg songtekst</string>
     <string name="plain_lyrics">Eenvoudig</string>
     <string name="synced_lyrics">Gesynchroniseerd</string>
-    <string name="embedded_lyrics">Embedded</string>
+    <string name="embedded_lyrics">Ingebouwd</string>
     <string name="downloaded_lyrics">Gedownload</string>
     <string name="external_file_lyrics">Extern bestand</string>
     <string name="action_import_synchronized_lyrics">Importeer gesynchroniseerde songteksten</string>
@@ -504,16 +504,16 @@
     <string name="could_not_import_font">Kan lettertype niet importeren.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Slaaptimer</string>
-    <string name="sleep_timer_waiting_pending_quit">Waiting for the current track to finish</string>
-    <string name="sleep_timer_cancel_current_timer">Cancel</string>
+    <string name="sleep_timer_waiting_pending_quit">Wachten op het einde van het spelende nummer</string>
+    <string name="sleep_timer_cancel_current_timer">Annuleren</string>
     <string name="sleep_timer_set_action">Instellen</string>
-    <string name="sleep_timer_x_mins">%d mins</string>
-    <string name="sleep_timer_15_mins">15 mins</string>
-    <string name="sleep_timer_45_mins">45 mins</string>
-    <string name="sleep_timer_1_hour">1 hour</string>
-    <string name="sleep_timer_2_hour">2 hour</string>
+    <string name="sleep_timer_x_mins">%d minuten</string>
+    <string name="sleep_timer_15_mins">15 minuten</string>
+    <string name="sleep_timer_45_mins">45 minuten</string>
+    <string name="sleep_timer_1_hour">1 uur</string>
+    <string name="sleep_timer_2_hour">2 uur</string>
     <string name="sleep_timer_finish_current_music">Eindig laatste nummer</string>
-    <string name="sleep_timer_music_fades_out">Music fades out</string>
+    <string name="sleep_timer_music_fades_out">Muziek verdwijnt</string>
     <string name="sleep_timer_stop_after_this_track">Stop na dit nummer</string>
     <string name="sleep_timer_stop_after_x">Stop na %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Stop na %s: geannuleerd</string>
@@ -528,13 +528,13 @@
     <string name="faq">FAQ</string>
     <string name="licenses">Licenties</string>
     <string name="author">Auteur</string>
-    <string name="mardous_summary">Lead Developer</string>
+    <string name="mardous_summary">Hoofdontwikkelaar</string>
     <string name="contributors">Bijdragers</string>
     <string name="acknowledgments_title">Bevestiging</string>
     <string name="translators_title">Vertalers</string>
     <string name="translators_summary">Dank aan degenen die Booming Music in veel talen beschikbaar maken.</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
+    <string name="contributors_title">Contributeurs</string>
+    <string name="contributors_summary">Een lijat gebruikers die op een of andere manier hebben bijgedagen aan het project.</string>
     <string name="view_profile_on_github">Bekijk profiel op GitHub</string>
     <string name="write_an_email">Schrijf een email</string>
     <string name="support_development">Ondersteun ontwikkeling</string>
@@ -589,7 +589,7 @@
     <!-- Interface preferences -->
     <string name="general_theme_title">Algemeen thema</string>
     <string name="pure_black_theme_title">Puur Zwart</string>
-    <string name="material_you_title">Materiaal u</string>
+    <string name="material_you_title">Material You</string>
     <string name="use_custom_font_title">Gebruik aangepast lettertype</string>
     <string name="appbar_mode_title">Koptekst stijl</string>
     <string name="library_categories_title">Bibliotheek categorieën</string>
@@ -604,7 +604,7 @@
     <string name="larger_header_image_summary">Toon een grotere omslagafbeelding in album, artiest en afspeellijst details.</string>
     <string name="lyrics_center_current_line_title">Huidige lijn centreren</string>
     <string name="lyrics_center_current_line_summary">Houd de huidige lyrische lijn gecentreerd op het scherm in plaats van uitgelijnd aan de bovenkant.</string>
-    <string name="lyrics_custom_font_title">Custom font</string>
+    <string name="lyrics_custom_font_title">Aangepast lettertype</string>
     <string name="lyrics_custom_font_summary">Importeer en gebruik je eigen lettertype voor songteksten.</string>
     <string name="lyrics_import_custom_font_title">Importeer aangepast lettertype</string>
     <string name="lyrics_syllable_mode_title">Word-voor-woord songteksten</string>
@@ -612,7 +612,7 @@
     <string name="lyrics_effects_note">Geavanceerde effecten verbeteren de visuele ervaring, maar vereisen mogelijk meer systeembronnen en batterij.</string>
     <string name="lyrics_background_effect_title">Achtergrond effect</string>
     <string name="lyrics_background_gradient">Kleurovergang</string>
-    <string name="lyrics_background_blur">Blur</string>
+    <string name="lyrics_background_blur">Vervagen</string>
     <string name="lyrics_blur_effect_title">Vervaag effect</string>
     <string name="lyrics_blur_effect_summary">Vervaag de songtekst lijnen naast de huidige.</string>
     <string name="lyrics_shadow_effect_title">Schaduw effect</string>
@@ -635,10 +635,10 @@
     <string name="instrumental_tracks_identifiers_summary">Als de songtekst van een nummer slechts één of meer van deze indicatoren bevat, zal het worden gemarkeerd als een instrumentaal nummer (gescheiden door komma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Markeren op titel</string>
     <string name="instrumental_tracks_mark_by_title_summary">De titel van het spoor zal ook in aanmerking worden genomen bij het zoeken naar identificatie.</string>
-    <string name="ignore_blank_lines_title">Ignore blank lines</string>
-    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
-    <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding. This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics. It might require an app restart</string>
+    <string name="ignore_blank_lines_title">Negeer witregels</string>
+    <string name="ignore_blank_lines_summary">Negeer witregels in LRC bestanden in plaats van het tonen van geanimeerde bubbels.</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">Behandel alle bestanden met songtekst als UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Neem aan dat alle bestanden UTF-8 codering gebruiken. Dit optimalizeert het parseren van bestanden maar in enkele gevallen kan het leiden tot ongebruikelijke tekens in songteksten. Herstarten van de app is misschien nodig</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stijl</string>
     <string name="open_on_play_title">Openen bij afspelen</string>
@@ -679,15 +679,15 @@
     <string name="display_extra_info_title">Extra info weergeven</string>
     <string name="display_extra_info_summary">Extra info over het nummer weergeven, zoals bitrate, formaat, sampling rate, enz.</string>
     <string name="display_next_song_title">Volgende nummer weergeven</string>
-    <string name="display_next_song_summary">Het volgende nummer in de wachtrij aan de onderkant van de speler weergeven.</string>
+    <string name="display_next_song_summary">Toon het volgende liedje in Normal en Full Cover stijlen. Als u dit uitschakelt is de terugspeellijst alleen nog toegankelijk vanuit het drie-stippen menu van de speler.</string>
     <string name="select_extra_info_title">Extra info</string>
     <string name="select_extra_info_summary">Selecteer de extra info om weer te geven in het spelervenster.</string>
     <string name="prefer_remaining_time_title">Voorkeur resterende tijd</string>
     <string name="prefer_remaining_time_summary">Toon de resterende tijd in plaats van de duur van het nummer.</string>
     <string name="prefer_album_artist_name_title">Naam van Album-artiesten</string>
     <string name="prefer_album_artist_name_summary">Toont de naam van de Album-artiesten in plaats van de naam van Song-artiesten (indien beschikbaar).</string>
-    <string name="player_blur_intensity_title">Blur intensity</string>
-    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
+    <string name="player_blur_intensity_title">Vervaging intensiteit</string>
+    <string name="player_blur_intensity_summary">Pas aan hoe sterk de achtergrondvervaging verschijnt in het Vervaging thema. Lagere waarden kunnen mogelijk prestaties verbeteren.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Spelen bij opstarten</string>
     <string name="queue_next_mode_title">\"Wachtrij volgende\" modus</string>
@@ -731,8 +731,8 @@
     <string name="on_clear_queue_remove_all_songs_summary">De hele afspeelwachtrij wordt gewist.</string>
     <string name="on_clear_queue_remove_all_songs_except_current_title">Verwijder alle nummers behalve huidige</string>
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Alleen het huidige nummer blijft in de wachtrij.</string>
-    <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
-    <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
+    <string name="clear_queue_on_completion_title">Leeg de wachtrij wanneer terugspelen eindigt</string>
+    <string name="clear_queue_on_completion_summary">Verwijder automatisch alle liedjes uit de wachtrij nadat het laatste nummer eindigt.</string>
     <!-- Metadata preferences -->
     <string name="ignore_media_store_album_covers_title">Negeer Media Store covers</string>
     <string name="ignore_media_store_album_covers_summary">Dit kan helpen de beeldkwaliteit te verhogen, maar vereist meer geheugen.</string>
@@ -788,16 +788,16 @@
     <string name="selected">Geselecteerd</string>
     <string name="compact">Compacte</string>
     <string name="expanded">Uitgebreid</string>
-    <string name="full_cover_style">Full Cover</string>
-    <string name="gradient_style">Gradient</string>
-    <string name="peek_style">Peek</string>
-    <string name="plain_style">Plain</string>
+    <string name="full_cover_style">Volledige Cover</string>
+    <string name="gradient_style">Gradiënt</string>
+    <string name="peek_style">Gluren</string>
+    <string name="plain_style">Simpel</string>
     <string name="m3_style">M3</string>
-    <string name="expressive_style">Expressive</string>
-    <string name="normal_style">Normal</string>
-    <string name="cascading">Cascading</string>
+    <string name="expressive_style">Expressief</string>
+    <string name="normal_style">Normaal</string>
+    <string name="cascading">Opeenvolgend</string>
     <string name="depth">Diepte</string>
-    <string name="hinge">Hinge</string>
+    <string name="hinge">Bladeren</string>
     <string name="horizontal_flip">Horizontale spiegeling</string>
     <string name="vertical_flip">Verticale spiegeling</string>
     <string name="zoom_out">Zoom uit</string>
@@ -837,8 +837,8 @@
     <string name="player_color_mode_vibrant_color_description">Achtergrond tint, tekst en bepaalt op basis van de kleur van het album</string>
     <string name="player_color_mode_material_you_title">Material You</string>
     <string name="player_color_mode_material_you_description">Gebruik Material You tinten op basis van album kleur</string>
-    <string name="player_color_mode_blur_title">Blur</string>
-    <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
+    <string name="player_color_mode_blur_title">Vervaging</string>
+    <string name="player_color_mode_blur_description">Vervaagde achtergrond met Material You kleuren</string>
     <!-- Update -->
     <string name="auto_update_title">Zoeken automatisch bijwerken</string>
     <string name="every_day">Elke dag</string>
