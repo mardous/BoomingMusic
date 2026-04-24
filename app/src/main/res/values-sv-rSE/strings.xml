@@ -938,4 +938,5 @@
     <string name="widget_image_corner_radius_summary">Ändra rundningen på omslagsbilden.</string>
     <string name="widget_third_line_title">Tredje informationsraden</string>
     <string name="widget_third_line_summary">Välj vad som ska visas i den tredje textraden.</string>
+    <string name="sleep_timar_x_secs">%d sekunder</string>
 </resources>
