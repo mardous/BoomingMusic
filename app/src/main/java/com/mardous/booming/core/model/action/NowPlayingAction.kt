@@ -93,7 +93,7 @@ enum class NowPlayingAction(
         titleRes = R.string.action_seek_forward
     ),
     Nothing(
-        iconRes = R.drawable.ic_clear_24dp,
+        iconRes = R.drawable.ic_close_24dp,
         titleRes = R.string.label_nothing
     );
 }

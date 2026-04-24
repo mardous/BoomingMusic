@@ -43,14 +43,20 @@ import com.mardous.booming.core.model.theme.NowPlayingButtonStyle
 import com.mardous.booming.data.model.QueuePosition
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentQueueBinding
-import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.Space
+import com.mardous.booming.extensions.applyBottomWindowInsets
+import com.mardous.booming.extensions.dip
+import com.mardous.booming.extensions.dp
+import com.mardous.booming.extensions.isLandscape
+import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.resources.createFastScroller
+import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.PlayingQueueSongAdapter
 import com.mardous.booming.ui.component.menu.newPopupMenu
 import com.mardous.booming.ui.component.menu.onSongMenu
-import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
+import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.QUEUE_DEBOUNCE
 import com.mardous.booming.util.Preferences
@@ -219,9 +225,8 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
                 true
             }
 
-
-            R.id.action_save_playing_queue -> {
-                CreatePlaylistDialog.create(playlist)
+            R.id.action_add_to_playlist -> {
+                AddToPlaylistDialog.create(playlist)
                     .show(childFragmentManager, "CREATE_PLAYLIST")
                 true
             }
