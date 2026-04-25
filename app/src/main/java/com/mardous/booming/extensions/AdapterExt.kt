@@ -96,9 +96,6 @@ var MediaEntryViewHolder.isActivated: Boolean
         }
     }
 
-val RecyclerView.ViewHolder.isValidPosition: Boolean
-    get() = layoutPosition > -1
-
 val RecyclerView.Adapter<*>?.isNullOrEmpty: Boolean
     get() = this == null || isEmpty
 

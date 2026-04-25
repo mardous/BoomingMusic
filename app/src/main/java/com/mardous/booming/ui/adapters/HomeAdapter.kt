@@ -82,7 +82,7 @@ class HomeAdapter(
         }
 
         private val current: Suggestion?
-            get() = dataSet.getOrNull(layoutPosition)
+            get() = dataSet.getOrNull(bindingAdapterPosition)
 
         override fun onClick(view: View) {
             if (view === openSuggestion) {

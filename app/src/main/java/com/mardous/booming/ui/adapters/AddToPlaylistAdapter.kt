@@ -114,7 +114,7 @@ class AddToPlaylistAdapter(
         val progressIndicator: CircularProgressIndicator = itemView.findViewById(R.id.progressIndicator)
 
         private val playlist: PlaylistWithSongs
-            get() = dataSet[layoutPosition - 1]
+            get() = dataSet[bindingAdapterPosition - 1]
 
         init {
             if (viewType == TYPE_OFFSET) {

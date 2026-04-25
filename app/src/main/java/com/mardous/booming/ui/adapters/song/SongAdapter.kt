@@ -18,7 +18,11 @@
 package com.mardous.booming.ui.adapters.song
 
 import android.annotation.SuppressLint
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.annotation.MenuRes
@@ -32,7 +36,6 @@ import com.mardous.booming.core.model.sort.SortKey
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.isActivated
-import com.mardous.booming.extensions.isValidPosition
 import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.asSectionName
 import com.mardous.booming.extensions.media.displayArtistName
@@ -146,7 +149,7 @@ open class SongAdapter(
 
     open inner class ViewHolder(view: View) : MediaEntryViewHolder(view) {
         protected open val song: Song
-            get() = dataSet[layoutPosition]
+            get() = dataSet[bindingAdapterPosition]
 
         @get:MenuRes
         protected open val songMenuRes: Int
@@ -168,22 +171,19 @@ open class SongAdapter(
             if (item.itemId == R.id.action_play) {
                 val playerViewModel = activity.getViewModel<PlayerViewModel>()
                 val playOptionBehavior = Preferences.playOptionClickBehavior
-                playerViewModel.openSongs(layoutPosition, dataSet, playOptionBehavior)
+                playerViewModel.openSongs(bindingAdapterPosition, dataSet, playOptionBehavior)
                 return true
             }
             return callback?.songMenuItemClick(song, item, sharedElements) ?: false
         }
 
         override fun onClick(view: View) {
-            if (!isValidPosition)
-                return
-
             if (isInQuickSelectMode) {
-                toggleChecked(layoutPosition)
+                toggleChecked(bindingAdapterPosition)
             } else {
                 val songClickBehavior = Preferences.songClickAction
                 val playerViewModel = activity.getViewModel<PlayerViewModel>()
-                playerViewModel.openSongs(layoutPosition, dataSet, songClickBehavior)
+                playerViewModel.openSongs(bindingAdapterPosition, dataSet, songClickBehavior)
                 if (!songClickBehavior.isAbleToPlay) {
                     activity.showToast(R.string.added_title_to_playing_queue)
                 }
@@ -191,7 +191,7 @@ open class SongAdapter(
         }
 
         override fun onLongClick(view: View): Boolean {
-            return isValidPosition && toggleChecked(layoutPosition)
+            return toggleChecked(bindingAdapterPosition)
         }
 
         init {

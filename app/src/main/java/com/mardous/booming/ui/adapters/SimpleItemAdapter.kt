@@ -69,7 +69,7 @@ class SimpleItemAdapter<T>(
         }
 
         override fun onClick(view: View) {
-            val position = layoutPosition
+            val position = bindingAdapterPosition
             callback.itemClick(view, position, items[position])
         }
     }
