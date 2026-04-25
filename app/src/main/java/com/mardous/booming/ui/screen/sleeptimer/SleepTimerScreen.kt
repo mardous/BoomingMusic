@@ -345,7 +345,7 @@ fun SleepTimerBottomSheet(
                                 )
 
                                 SleepTimerText(
-                                    text = stringResource(R.string.sleep_timar_x_secs, fadeOutDuration.toInt()),
+                                    text = stringResource(R.string.sleep_timer_x_secs, fadeOutDuration.toInt()),
                                     modifier = Modifier
                                         .padding(end = 8.dp)
                                         .align(Alignment.End)
