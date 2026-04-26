@@ -955,4 +955,5 @@
     <string name="widget_third_line_summary">Выберите данные для отображения в третьей строке.</string>
     <string name="widget_third_line_title">Данные в третьей строке</string>
     <string name="sleep_timar_x_secs">%d сек</string>
+    <string name="sleep_timer_x_secs">%d сек</string>
 </resources>
