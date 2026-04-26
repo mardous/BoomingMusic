@@ -20,10 +20,9 @@ package com.mardous.booming.ui.component.preferences
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.widget.CheckedTextView
-import androidx.core.content.res.ResourcesCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
+import com.google.android.material.button.MaterialButtonToggleGroup
 import com.mardous.booming.R
 import com.mardous.booming.util.GeneralTheme
 import com.mardous.booming.util.Preferences
@@ -35,32 +34,26 @@ class ThemePreference @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = androidx.preference.R.attr.preferenceStyle
-) : Preference(context, attrs, defStyleAttr), View.OnClickListener {
+) : Preference(context, attrs, defStyleAttr), MaterialButtonToggleGroup.OnButtonCheckedListener {
 
     var customCallback: Callback? = null
+
     private var widgetView: View? = null
     private val selectorIds = hashMapOf(
-        GeneralTheme.LIGHT to R.id.light_theme,
-        GeneralTheme.DARK to R.id.dark_theme,
-        GeneralTheme.AUTO to R.id.system_default
+        GeneralTheme.LIGHT to R.id.lightTheme,
+        GeneralTheme.DARK to R.id.darkTheme,
+        GeneralTheme.AUTO to R.id.systemDefault
     )
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
+        // Disable ripple effect
         holder.itemView.background = null
 
-        val selectedTheme = Preferences.generalTheme
         widgetView = holder.findViewById(android.R.id.widget_frame)
-        selectorIds.forEach { (theme, id) ->
-            val textView = holder.findViewById(id) as CheckedTextView
-            textView.setOnClickListener(this)
-            textView.isEnabled = (selectedTheme != GeneralTheme.BLACK)
-            textView.isChecked = (theme == selectedTheme)
-            textView.typeface = if (textView.isChecked) {
-                ResourcesCompat.getFont(context, R.font.googlesansflex_semibold)
-            } else {
-                ResourcesCompat.getFont(context, R.font.googlesansflex_regular)
-            }
+        widgetView?.findViewById<MaterialButtonToggleGroup>(R.id.buttonGroup)?.apply {
+            check(Preferences.generalTheme.let { selectorIds[it] ?: R.id.systemDefault })
+            addOnButtonCheckedListener(this@ThemePreference)
         }
     }
 
@@ -70,11 +63,13 @@ class ThemePreference @JvmOverloads constructor(
         widgetView = null
     }
 
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.light_theme -> customCallback?.onThemeSelected(GeneralTheme.LIGHT)
-            R.id.dark_theme -> customCallback?.onThemeSelected(GeneralTheme.DARK)
-            R.id.system_default -> customCallback?.onThemeSelected(GeneralTheme.AUTO)
+    override fun onButtonChecked(group: MaterialButtonToggleGroup, checkedId: Int, isChecked: Boolean) {
+        if (isChecked) {
+            when (checkedId) {
+                R.id.lightTheme -> customCallback?.onThemeSelected(GeneralTheme.LIGHT)
+                R.id.darkTheme -> customCallback?.onThemeSelected(GeneralTheme.DARK)
+                R.id.systemDefault -> customCallback?.onThemeSelected(GeneralTheme.AUTO)
+            }
         }
     }
 

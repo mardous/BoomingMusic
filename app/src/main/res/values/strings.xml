@@ -893,6 +893,7 @@
     <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
 
     <!-- Preference values -->
+    <string name="auto_theme_name">Auto</string>
     <string name="light_theme_name">Light</string>
     <string name="dark_theme_name">Dark</string>
     <string name="black_theme_name">Black</string>

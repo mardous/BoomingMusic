@@ -72,7 +72,7 @@
             app:entries="@array/pref_tab_titles_mode_entries"
             app:entryValues="@array/pref_tab_titles_mode_values"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="auto"
+            app:defaultValue="selected"
             app:layout="@layout/list_item_view"
             app:key="tab_titles_mode"/>
 
