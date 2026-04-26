@@ -812,9 +812,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">فاتح</string>
     <string name="dark_theme_name">داكن</string>
-    <string name="black_theme_name">أسود</string>
-    <string name="follow_system">اتبع النظام</string>
-    <string name="label_auto">تلقائي</string>
     <string name="labeled">مُسمّى</string>
     <string name="unlabeled">غير موسومة</string>
     <string name="selected">محدد</string>

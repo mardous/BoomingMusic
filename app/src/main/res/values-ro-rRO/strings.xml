@@ -788,9 +788,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Lumină</string>
     <string name="dark_theme_name">Întunecat</string>
-    <string name="black_theme_name">Negru</string>
-    <string name="follow_system">Urmărește sistemul</string>
-    <string name="label_auto">Automat</string>
     <string name="labeled">Etichetat</string>
     <string name="unlabeled">Neetichetat</string>
     <string name="selected">Selectate</string>

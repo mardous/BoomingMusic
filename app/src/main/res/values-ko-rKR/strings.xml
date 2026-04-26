@@ -772,9 +772,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">밝게</string>
     <string name="dark_theme_name">어둡게</string>
-    <string name="black_theme_name">블랙</string>
-    <string name="follow_system">시스템 설정 팔로우</string>
-    <string name="label_auto">자동</string>
     <string name="labeled">레이블 있음</string>
     <string name="unlabeled">레이블 없음</string>
     <string name="selected">선택됨</string>

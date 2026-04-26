@@ -136,7 +136,7 @@ object Preferences : KoinComponent {
             BottomTitlesMode.SELECTED -> NavigationBarView.LABEL_VISIBILITY_SELECTED
             BottomTitlesMode.LABELED -> NavigationBarView.LABEL_VISIBILITY_LABELED
             BottomTitlesMode.UNLABELED -> NavigationBarView.LABEL_VISIBILITY_UNLABELED
-            else -> NavigationBarView.LABEL_VISIBILITY_AUTO
+            else -> NavigationBarView.LABEL_VISIBILITY_SELECTED
         }
 
     val holdTabToSearch: Boolean
@@ -485,7 +485,6 @@ interface GeneralTheme {
 
 interface BottomTitlesMode {
     companion object {
-        const val AUTO = "auto"
         const val SELECTED = "selected"
         const val LABELED = "labeled"
         const val UNLABELED = "unlabeled"

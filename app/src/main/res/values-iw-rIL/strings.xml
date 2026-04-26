@@ -786,9 +786,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">בהיר</string>
     <string name="dark_theme_name">כהה</string>
-    <string name="black_theme_name">שחור</string>
-    <string name="follow_system">עקוב אחרי המערכת</string>
-    <string name="label_auto">אוטומטי</string>
     <string name="labeled">עם תווית</string>
     <string name="unlabeled">ללא תווית</string>
     <string name="selected">נבחר</string>

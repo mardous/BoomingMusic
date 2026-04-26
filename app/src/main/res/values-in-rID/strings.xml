@@ -772,9 +772,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Terang</string>
     <string name="dark_theme_name">Gelap</string>
-    <string name="black_theme_name">Hitam</string>
-    <string name="follow_system">Ikuti Sistem</string>
-    <string name="label_auto">Otomatis</string>
     <string name="labeled">Berlabel</string>
     <string name="unlabeled">Tanpa label</string>
     <string name="selected">Dipilih</string>

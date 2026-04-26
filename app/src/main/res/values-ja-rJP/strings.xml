@@ -772,9 +772,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">ライト</string>
     <string name="dark_theme_name">ダーク</string>
-    <string name="black_theme_name">ブラック</string>
-    <string name="follow_system">システム設定に従う</string>
-    <string name="label_auto">自動</string>
     <string name="labeled">ラベル付き</string>
     <string name="unlabeled">ラベルなし</string>
     <string name="selected">選択済み</string>

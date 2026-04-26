@@ -779,9 +779,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Fino</string>
     <string name="dark_theme_name">Escuro</string>
-    <string name="black_theme_name">Preto</string>
-    <string name="follow_system">Seguir sistema</string>
-    <string name="label_auto">Automático</string>
     <string name="labeled">Rotulado</string>
     <string name="unlabeled">Não-rotulado</string>
     <string name="selected">Selecionado</string>

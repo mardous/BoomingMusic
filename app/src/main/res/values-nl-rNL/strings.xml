@@ -780,9 +780,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Licht</string>
     <string name="dark_theme_name">Donker</string>
-    <string name="black_theme_name">Zwart</string>
-    <string name="follow_system">Volg systeem</string>
-    <string name="label_auto">Automatisch</string>
     <string name="labeled">Etiketten</string>
     <string name="unlabeled">Ongelabeld</string>
     <string name="selected">Geselecteerd</string>

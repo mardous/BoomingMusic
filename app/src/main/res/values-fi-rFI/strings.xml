@@ -780,9 +780,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Vaalea</string>
     <string name="dark_theme_name">Tumma</string>
-    <string name="black_theme_name">Musta</string>
-    <string name="follow_system">Seuraa Järjestelmää</string>
-    <string name="label_auto">Automaattinen</string>
     <string name="labeled">Merkitty</string>
     <string name="unlabeled">Nimeämätön</string>
     <string name="selected">Valittu</string>

@@ -796,9 +796,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Světlý</string>
     <string name="dark_theme_name">Tmavý</string>
-    <string name="black_theme_name">Černý</string>
-    <string name="follow_system">Sledovat systém</string>
-    <string name="label_auto">Automaticky</string>
     <string name="labeled">Označeno</string>
     <string name="unlabeled">Neoznačeno</string>
     <string name="selected">Vybrané</string>

@@ -780,9 +780,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Clar</string>
     <string name="dark_theme_name">Fosc</string>
-    <string name="black_theme_name">Negre</string>
-    <string name="follow_system">Sistema</string>
-    <string name="label_auto">Auto</string>
     <string name="labeled">Amb etiqueta</string>
     <string name="unlabeled">Sense etiqueta</string>
     <string name="selected">Seleccionat</string>

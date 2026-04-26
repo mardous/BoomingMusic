@@ -780,9 +780,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Light</string>
     <string name="dark_theme_name">Dark</string>
-    <string name="black_theme_name">Black</string>
-    <string name="follow_system">Follow System</string>
-    <string name="label_auto">Auto</string>
     <string name="labeled">Labeled</string>
     <string name="unlabeled">Unlabeled</string>
     <string name="selected">Selected</string>

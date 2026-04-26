@@ -780,9 +780,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Lys</string>
     <string name="dark_theme_name">Mørk</string>
-    <string name="black_theme_name">Sort</string>
-    <string name="follow_system">Følg System</string>
-    <string name="label_auto">Automatisk</string>
     <string name="labeled">Mærket</string>
     <string name="unlabeled">Ikke Mærket</string>
     <string name="selected">Valgt</string>

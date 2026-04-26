@@ -780,9 +780,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Hell</string>
     <string name="dark_theme_name">Dunkel</string>
-    <string name="black_theme_name">Schwarz</string>
-    <string name="follow_system">System</string>
-    <string name="label_auto">Automatisch</string>
     <string name="labeled">Beschriftet</string>
     <string name="unlabeled">Unbeschriftet</string>
     <string name="selected">Auswahl beschriftet</string>

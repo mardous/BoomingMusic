@@ -772,9 +772,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">亮色</string>
     <string name="dark_theme_name">深色</string>
-    <string name="black_theme_name">黑色</string>
-    <string name="follow_system">跟隨系統</string>
-    <string name="label_auto">自動操作</string>
     <string name="labeled">已標記</string>
     <string name="unlabeled">取消標籤</string>
     <string name="selected">已選擇</string>

@@ -462,15 +462,12 @@
     <string name="blacklist_title">Keelatud loend</string>
     <string name="light_theme_name">Hele kujundus</string>
     <string name="dark_theme_name">Tume kujundus</string>
-    <string name="black_theme_name">Süsimust kujundus</string>
-    <string name="label_auto">Automaatne</string>
     <string name="labeled">Sildistatud</string>
     <string name="unlabeled">Ilma sildita</string>
     <string name="selected">Valitud</string>
     <string name="compact">Kompaktne</string>
     <string name="expanded">Laiendatud</string>
     <string name="gradient_style">Gradient</string>
-    <string name="follow_system">Järgi süsteemi kujundust</string>
     <string name="track">Lugu</string>
     <string name="bassboost_label">Bassi võimendus</string>
     <string name="virtualizer_label">Virtualiseerija</string>

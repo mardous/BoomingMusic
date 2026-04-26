@@ -15,14 +15,12 @@
         <item>@string/selected</item>
         <item>@string/labeled</item>
         <item>@string/unlabeled</item>
-        <item>@string/label_auto</item>
     </string-array>
 
     <string-array name="pref_tab_titles_mode_values">
         <item>selected</item>
         <item>labeled</item>
         <item>unlabeled</item>
-        <item>auto</item>
     </string-array>
 
     <string-array name="widget_small_layout_style_entries">

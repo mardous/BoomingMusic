@@ -796,9 +796,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Світла</string>
     <string name="dark_theme_name">Темна</string>
-    <string name="black_theme_name">Чорна</string>
-    <string name="follow_system">Слідувати системним</string>
-    <string name="label_auto">Авто</string>
     <string name="labeled">З міткою</string>
     <string name="unlabeled">Без мітки</string>
     <string name="selected">Вибрано</string>

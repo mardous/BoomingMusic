@@ -780,9 +780,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">लाइट</string>
     <string name="dark_theme_name">डार्क</string>
-    <string name="black_theme_name">काला</string>
-    <string name="follow_system">सिस्टम का पालन करें</string>
-    <string name="label_auto">ऑटो</string>
     <string name="labeled">लेबल्ड</string>
     <string name="unlabeled">अलेखित</string>
     <string name="selected">चुना हुआ</string>
