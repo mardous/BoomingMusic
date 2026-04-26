@@ -57,7 +57,6 @@
         <item name="materialButtonStyle">@style/Widget.Booming.Expressive.Button</item>
         <item name="materialButtonTonalStyle">@style/Widget.Booming.Expressive.Button.Tonal</item>
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
-        <item name="rectSelector">@drawable/rect_selector</item>
     </style>
 
     <style name="Base.Theme.Booming.Light" parent="Theme.Material3Expressive.Light.NoActionBar">
@@ -116,7 +115,6 @@
         <item name="materialButtonStyle">@style/Widget.Booming.Expressive.Button</item>
         <item name="materialButtonTonalStyle">@style/Widget.Booming.Expressive.Button.Tonal</item>
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
-        <item name="rectSelector">@drawable/rect_selector</item>
     </style>
 
     <style name="Base.Theme.Booming.Adaptive" parent="Theme.Material3Expressive.DayNight.NoActionBar">
@@ -175,7 +173,6 @@
         <item name="materialButtonStyle">@style/Widget.Booming.Expressive.Button</item>
         <item name="materialButtonTonalStyle">@style/Widget.Booming.Expressive.Button.Tonal</item>
         <item name="homeAsUpIndicator">@drawable/ic_back_24dp</item>
-        <item name="rectSelector">@drawable/rect_selector</item>
     </style>
 
     <style name="Base.Theme.Booming.Black">

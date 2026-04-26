@@ -169,7 +169,7 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_playlis
         playlistSongAdapter = PlaylistSongAdapter(
             activity = mainActivity,
             dataSet = emptyList(),
-            itemLayoutRes = R.layout.item_list_draggable,
+            itemLayoutRes = R.layout.item_list,
             isLockDrag = Preferences.lockedPlaylists,
             callback = this
         )

@@ -167,16 +167,15 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
             return view === `object`
         }
 
-        override fun getPageTitle(position: Int): CharSequence? {
+        override fun getPageTitle(position: Int): CharSequence {
             return context.getString(NowPlayingScreen.entries[position].titleRes)
         }
     }
 
-    class ColorSchemeAdapter(context: Context, schemes: List<PlayerColorSchemeMode>) :
+    class ColorSchemeAdapter(context: Context, val schemes: List<PlayerColorSchemeMode>) :
         ArrayAdapter<PlayerColorSchemeMode>(context, android.R.layout.simple_list_item_1, schemes) {
 
         private val inflater = LayoutInflater.from(context)
-        val schemes: List<PlayerColorSchemeMode> = schemes
 
         override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
             val view = convertView ?: inflater.inflate(R.layout.item_dialog_list, parent, false)
@@ -207,31 +206,24 @@ class NowPlayingScreenPreferenceDialog : DialogFragment(), ViewPager.OnPageChang
         }
     }
 
-    class TransitionAdapter(context: Context, transitions: List<PlayerTransition>) :
+    class TransitionAdapter(context: Context, val transitions: List<PlayerTransition>) :
         ArrayAdapter<PlayerTransition>(context, android.R.layout.simple_list_item_1, transitions) {
 
-        private val inflater = LayoutInflater.from(context)
-        val transitions: List<PlayerTransition> = transitions
-
         override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-            val view = convertView ?: inflater.inflate(R.layout.item_dialog_list, parent, false)
-            val titleView = view.findViewById<TextView>(R.id.title)
-            val descriptionView = view.findViewById<TextView>(R.id.text)
-            val iconView = view.findViewById<View>(R.id.icon_view)
-            iconView?.hide()
-
-            getItem(position)?.let {
-                titleView?.setText(it.nameRes)
-                descriptionView?.text = "" // optional description
+            val dropDownView = super.getDropDownView(position, convertView, parent)
+            val item = getItem(position)
+            if (item != null) {
+                (dropDownView as? TextView)?.setText(item.nameRes)
             }
-
-            return view
+            return dropDownView
         }
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-            val view = super.getView(position, convertView, parent) as TextView
+            val view = super.getView(position, convertView, parent)
             val item = getItem(position)
-            if (item != null) view.setText(item.nameRes)
+            if (item != null) {
+                (view as? TextView)?.setText(item.nameRes)
+            }
             return view
         }
 

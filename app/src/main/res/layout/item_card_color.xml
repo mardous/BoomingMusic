@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:foreground="?attr/rectSelector"
+    android:foreground="@drawable/rect_selector_strong"
     app:cardCornerRadius="@dimen/m3_card_corner_radius"
     tools:ignore="PrivateResource">
 
