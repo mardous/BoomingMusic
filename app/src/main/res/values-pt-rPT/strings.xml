@@ -902,7 +902,6 @@
     <string name="channel_surround_13_1"></string>
     <string name="use_lrclib_provider_title"></string>
     <string name="grid_size_3" translatable="false"></string>
-    <string name="network_features_summary"></string>
     <string name="use_betterlyrics_provider_summary"></string>
     <string name="images_title"></string>
     <string name="channel_quadraphonic"></string>
