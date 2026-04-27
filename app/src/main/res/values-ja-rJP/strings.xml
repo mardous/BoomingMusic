@@ -889,48 +889,4 @@
     <string name="lyrics_center_horizontally_summary">歌詞を行ごとに中央揃えで表示します。</string>
     <string name="bit_perfect_title">ビットパーフェクト オーディオ</string>
     <string name="network_features_title">ネットワーク機能の有効化</string>
-    <string name="widget_image_corner_radius_summary"></string>
-    <string name="advanced_settings"></string>
-    <string name="widgets_header"></string>
-    <string name="widget_third_line_title"></string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="wifi_only_network_features_title"></string>
-    <string name="lastfm_biography_summary"></string>
-    <string name="lastfm_scrobbling_summary"></string>
-    <string name="widget_small_layout_simplified"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="app_widget_full_desc"></string>
-    <string name="lastfm_scrobbling_title"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="app_widget_responsive"></string>
-    <string name="lastfm_now_playing_title"></string>
-    <string name="use_lrclib_provider_title"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="use_betterlyrics_provider_summary"></string>
-    <string name="use_betterlyrics_provider_title"></string>
-    <string name="wifi_only_network_features_summary"></string>
-    <string name="app_widget_card_desc"></string>
-    <string name="lastfm_login_title"></string>
-    <string name="use_simpmusic_provider_summary"></string>
-    <string name="bit_perfect_description"></string>
-    <string name="widget_small_layout_classic"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="use_lrclib_provider_summary"></string>
-    <string name="lastfm_now_playing_summary"></string>
-    <string name="bit_perfect_is_active"></string>
-    <string name="widget_dynamic_colors_summary"></string>
-    <string name="widget_image_corner_radius_title"></string>
-    <string name="widget_small_layout_style_title"></string>
-    <string name="app_widget_responsive_desc"></string>
-    <string name="use_simpmusic_provider_title"></string>
-    <string name="lastfm_biography_title"></string>
-    <string name="grid_size_5" translatable="false"></string>
-    <string name="sleep_timer_x_secs"></string>
-    <string name="widget_third_line_summary"></string>
-    <string name="app_widget_card"></string>
-    <string name="lastfm_login_summary"></string>
-    <string name="widget_dynamic_colors_title"></string>
-    <string name="app_widget_full"></string>
 </resources>
