@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:background="?rectSelector"
+    android:background="@drawable/rect_selector"
     android:clickable="true"
     android:focusable="true"
     tools:ignore="MissingPrefix">

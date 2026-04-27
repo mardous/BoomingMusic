@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">インポート可能なプレイリストはありません。</string>
     <string name="playlist_x_not_imported">プレイリスト %s はインポートされていません。</string>
     <string name="action_import_playlist">プレイリストをインポート…</string>
-    <string name="action_new_playlist">新規プレイリスト…</string>
     <string name="new_playlist_title">新規プレイリスト</string>
     <string name="add_playlist_title">プレイリストに追加</string>
     <string name="rename_playlist_title">プレイリストの名前を変更</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[<b>%d</b> プレイリストを削除しますか？]]></string>
     <string name="created_playlist_x">プレイリスト「%1$s」を作成しました。</string>
     <string name="could_not_create_playlist">プレイリストを作成できませんでした。</string>
-    <string name="inserted_one_song_into_playlist_x">%s に曲を挿入しました。</string>
-    <string name="inserted_x_songs_into_playlist_x">プレイリスト %2$s に %1$d 曲を追加しました。</string>
     <string name="playlist_exists">プレイリスト %s は既に存在します。</string>
     <string name="playlist_created">プレイリスト %s の作成に成功しました。</string>
     <string name="remove_song_from_playlist_title">プレイリストから曲を削除</string>
@@ -772,9 +769,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">ライト</string>
     <string name="dark_theme_name">ダーク</string>
-    <string name="black_theme_name">ブラック</string>
-    <string name="follow_system">システム設定に従う</string>
-    <string name="label_auto">自動</string>
     <string name="labeled">ラベル付き</string>
     <string name="unlabeled">ラベルなし</string>
     <string name="selected">選択済み</string>

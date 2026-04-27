@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Nie znaleziono playlist do importu.</string>
     <string name="playlist_x_not_imported">Playlista %s nie została zaimportowana.</string>
     <string name="action_import_playlist">Importuj playlistę…</string>
-    <string name="action_new_playlist">Nowa playlista…</string>
     <string name="new_playlist_title">Nowa playlista</string>
     <string name="add_playlist_title">Dodaj do playlisty</string>
     <string name="rename_playlist_title">Zmień nazwę playlisty</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Usunąć <b>%d</b> playlisty?]]></string>
     <string name="created_playlist_x">Utworzono playlistę \'%1$s\'.</string>
     <string name="could_not_create_playlist">Nie można utworzyć listy odtwarzania.</string>
-    <string name="inserted_one_song_into_playlist_x">Dodano jeden utwór do listy odtwarzania %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Dodano %1$d utwory do listy odtwarzania %2$s.</string>
     <string name="playlist_exists">Playlista o nazwie %s już istnieje.</string>
     <string name="playlist_created">Utworzono playlistę %s.</string>
     <string name="remove_song_from_playlist_title">Usuń utwór z listy odtwarzania</string>
@@ -796,9 +793,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Jasny</string>
     <string name="dark_theme_name">Ciemny</string>
-    <string name="black_theme_name">Czarny</string>
-    <string name="follow_system">Systemowy</string>
-    <string name="label_auto">Auto</string>
     <string name="labeled">Podpisane</string>
     <string name="unlabeled">Ukryte</string>
     <string name="selected">Tylko wybrana</string>

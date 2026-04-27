@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Tidak ada daftar putar yang dapat diimpor.</string>
     <string name="playlist_x_not_imported">Daftar putar %s tidak diimpor.</string>
     <string name="action_import_playlist">Impor daftar putar…</string>
-    <string name="action_new_playlist">Daftar putar baru…</string>
     <string name="new_playlist_title">Daftar putar baru</string>
     <string name="add_playlist_title">Tambah ke daftar putar</string>
     <string name="rename_playlist_title">Ganti nama daftar putar</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Hapus <b>%d</b> daftar putar?]]></string>
     <string name="created_playlist_x">Daftar putar \'%1$s\' berhasil dibuat.</string>
     <string name="could_not_create_playlist">Gagal membuat daftar putar.</string>
-    <string name="inserted_one_song_into_playlist_x">Satu lagu berhasil dimasukkan ke daftar putar %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">%1$d lagu berhasil dimasukkan ke daftar putar %2$s.</string>
     <string name="playlist_exists">Daftar putar %s sudah ada.</string>
     <string name="playlist_created">Daftar putar %s berhasil dibuat.</string>
     <string name="remove_song_from_playlist_title">Hapus lagu dari daftar putar</string>
@@ -772,9 +769,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Terang</string>
     <string name="dark_theme_name">Gelap</string>
-    <string name="black_theme_name">Hitam</string>
-    <string name="follow_system">Ikuti Sistem</string>
-    <string name="label_auto">Otomatis</string>
     <string name="labeled">Berlabel</string>
     <string name="unlabeled">Tanpa label</string>
     <string name="selected">Dipilih</string>

@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Não há playlists para importar.</string>
     <string name="playlist_x_not_imported">A playlist %s não foi importada.</string>
     <string name="action_import_playlist">Importar Playlist…</string>
-    <string name="action_new_playlist">Nova Playlist…</string>
     <string name="new_playlist_title">Nova Playlist</string>
     <string name="add_playlist_title">Adicionar à playlist</string>
     <string name="rename_playlist_title">Renomear playlist</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Excluir <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Playlist \'%1$s \' criada.</string>
     <string name="could_not_create_playlist">Não foi possível criar a playlist.</string>
-    <string name="inserted_one_song_into_playlist_x">Uma música foi adicionada à playlist %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Adicionadas %1$d músicas à playlist %2$s.</string>
     <string name="playlist_exists">A playlist %s já existe.</string>
     <string name="playlist_created">Playlist %s criada com sucesso.</string>
     <string name="remove_song_from_playlist_title">Remover música da playlist</string>
@@ -341,17 +338,14 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Música</item>
-        <item quantity="many">Músicas</item>
         <item quantity="other">Músicas</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Álbum</item>
-        <item quantity="many">Álbuns</item>
         <item quantity="other">Álbuns</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d música</item>
-        <item quantity="many">%d músicas</item>
         <item quantity="other">%d músicas</item>
     </plurals>
     <plurals name="x_albums">
@@ -783,9 +777,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Claro</string>
     <string name="dark_theme_name">Escuro</string>
-    <string name="black_theme_name">Preto</string>
-    <string name="follow_system">Seguir sistema</string>
-    <string name="label_auto">Automática</string>
     <string name="labeled">Rotulada</string>
     <string name="unlabeled">Não-rotulada</string>
     <string name="selected">Selecionada</string>

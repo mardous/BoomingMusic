@@ -38,6 +38,7 @@
     <string name="search_year_x_label">Search year: %s</string>
     <string name="search_in_folder_x">Search in folder: %s</string>
     <string name="search_last_added">Search latest music</string>
+    <string name="search_playlists">Search playlists</string>
     <string name="shuffle_mode_album">Album shuffle</string>
     <string name="shuffle_mode_artist">Artist shuffle</string>
     <string name="action_share">Share</string>
@@ -72,8 +73,9 @@
     <string name="there_are_no_importable_playlists">There are no importable playlists.</string>
     <string name="playlist_x_not_imported">Playlist %s not imported.</string>
     <string name="action_import_playlist">Import playlist…</string>
-    <string name="action_new_playlist">New playlist…</string>
+    <string name="select_playlists_title">Select playlists</string>
     <string name="new_playlist_title">New playlist</string>
+    <string name="new_playlist_action">New</string>
     <string name="add_playlist_title">Add to playlist</string>
     <string name="rename_playlist_title">Rename playlist</string>
     <string name="action_edit_playlist">Edit playlist</string>
@@ -97,8 +99,9 @@
     <string name="delete_x_playlists"><![CDATA[Delete <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Created playlist \'%1$s\'.</string>
     <string name="could_not_create_playlist">Couldn\'t create playlist.</string>
-    <string name="inserted_one_song_into_playlist_x">Inserted one song into playlist %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Inserted %1$d songs into playlist %2$s.</string>
+    <string name="no_playlists_create_new">Press the \"New\" button to create a playlist</string>
+    <string name="no_playlists_that_match_x">There are no playlists that match \"%s\"</string>
+    <string name="songs_added_to_playlists">Songs added to playlists.</string>
     <string name="playlist_exists">Playlist %s already exists.</string>
     <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Remove song from playlist</string>
@@ -198,6 +201,7 @@
     <string name="no_albums_label">No albums</string>
     <string name="no_artists_label">No artists</string>
     <string name="no_genres_label">No genres</string>
+    <string name="no_playlists_label">No playlists</string>
     <string name="empty_label">Empty</string>
     <string name="nothing_to_see">Nothing to see</string>
     <string name="show_album_artists">Only album artists</string>
@@ -399,6 +403,10 @@
     <plurals name="x_items">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
+    </plurals>
+    <plurals name="x_playlists_selected">
+        <item quantity="one">%d playlist selected</item>
+        <item quantity="other">%d playlists selected</item>
     </plurals>
 
     <!-- Home -->
@@ -893,11 +901,9 @@
     <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
 
     <!-- Preference values -->
+    <string name="auto_theme_name">Auto</string>
     <string name="light_theme_name">Light</string>
     <string name="dark_theme_name">Dark</string>
-    <string name="black_theme_name">Black</string>
-    <string name="follow_system">Follow System</string>
-    <string name="label_auto">Auto</string>
     <string name="labeled">Labeled</string>
     <string name="unlabeled">Unlabeled</string>
     <string name="selected">Selected</string>

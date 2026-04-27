@@ -29,7 +29,6 @@ import com.mardous.booming.core.sort.ArtistSortMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.extensions.isActivated
-import com.mardous.booming.extensions.isValidPosition
 import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.artistInfo
 import com.mardous.booming.extensions.media.asSectionName
@@ -116,7 +115,7 @@ class ArtistAdapter constructor(
     open inner class ViewHolder(itemView: View) : MediaEntryViewHolder(itemView) {
 
         protected val artist: Artist
-            get() = dataSet[layoutPosition]
+            get() = dataSet[bindingAdapterPosition]
 
         protected val sharedElements: Array<Pair<View, String>>?
             get() = if (imageContainer != null) {
@@ -132,18 +131,15 @@ class ArtistAdapter constructor(
         }
 
         override fun onClick(view: View) {
-            if (!isValidPosition)
-                return
-
             if (isInQuickSelectMode) {
-                toggleChecked(layoutPosition)
+                toggleChecked(bindingAdapterPosition)
             } else {
                 callback?.artistClick(artist, sharedElements)
             }
         }
 
         override fun onLongClick(view: View): Boolean {
-            return isValidPosition && toggleChecked(layoutPosition)
+            return toggleChecked(bindingAdapterPosition)
         }
 
         init {

@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Không tìm thấy danh sách phát nào có thể nhập được.</string>
     <string name="playlist_x_not_imported">Không thể nhập danh sách phát %s.</string>
     <string name="action_import_playlist">Nhập danh sách phát…</string>
-    <string name="action_new_playlist">Danh sách phát mới…</string>
     <string name="new_playlist_title">Danh sách phát mới</string>
     <string name="add_playlist_title">Thêm vào danh sách phát</string>
     <string name="rename_playlist_title">Đổi tên danh sách phát</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Xoá các danh sách phát <b>%d</b>?]]></string>
     <string name="created_playlist_x">Đã tạo danh sách phát \"%1$s\".</string>
     <string name="could_not_create_playlist">Không thể tạo danh sách phát.</string>
-    <string name="inserted_one_song_into_playlist_x">Đã thêm một bài hát vào danh sách phát %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Đã thêm bài hát %1$d vào danh sách phát %2$s.</string>
     <string name="playlist_exists">Danh sách phát %s đã tồn tại.</string>
     <string name="playlist_created">Danh sách phát %s đã được tạo thành công.</string>
     <string name="remove_song_from_playlist_title">Gỡ bỏ bài hát khỏi danh sách phát</string>
@@ -772,9 +769,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Light</string>
     <string name="dark_theme_name">Dark</string>
-    <string name="black_theme_name">Black</string>
-    <string name="follow_system">Follow System</string>
-    <string name="label_auto">Auto</string>
     <string name="labeled">Labeled</string>
     <string name="unlabeled">Unlabeled</string>
     <string name="selected">Selected</string>

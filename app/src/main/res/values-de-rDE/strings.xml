@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Keine importierbaren Wiedergabelisten vorhanden.</string>
     <string name="playlist_x_not_imported">Wiedergabeliste %s nicht importiert.</string>
     <string name="action_import_playlist">Wiedergabeliste importieren…</string>
-    <string name="action_new_playlist">Neue Wiedergabeliste…</string>
     <string name="new_playlist_title">Wiedergabeliste erstellen</string>
     <string name="add_playlist_title">Zur Wiedergabeliste hinzufügen</string>
     <string name="rename_playlist_title">Wiedergabeliste umbenennen</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[<b>%d</b> Wiedergabelisten löschen?]]></string>
     <string name="created_playlist_x">Wiedergabeliste \'%1$s \' erstellt.</string>
     <string name="could_not_create_playlist">Wiedergabeliste konnte nicht erstellt werden.</string>
-    <string name="inserted_one_song_into_playlist_x">Ein Titel wurrde in Wiedergabeliste %s eingefügt.</string>
-    <string name="inserted_x_songs_into_playlist_x">%1$d Lieder in Wiedergabeliste %2$s eingefügt.</string>
     <string name="playlist_exists">Wiedergabeliste %s existiert bereits.</string>
     <string name="playlist_created">Wiedergabeliste %s wurde erfolgreich erstellt.</string>
     <string name="remove_song_from_playlist_title">Titel aus Wiedergabeliste entfernen</string>
@@ -780,9 +777,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Hell</string>
     <string name="dark_theme_name">Dunkel</string>
-    <string name="black_theme_name">Schwarz</string>
-    <string name="follow_system">System</string>
-    <string name="label_auto">Automatisch</string>
     <string name="labeled">Beschriftet</string>
     <string name="unlabeled">Unbeschriftet</string>
     <string name="selected">Auswahl beschriftet</string>

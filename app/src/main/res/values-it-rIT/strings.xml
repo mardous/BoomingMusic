@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Non ci sono playlist importabili.</string>
     <string name="playlist_x_not_imported">Playlist %s non importata.</string>
     <string name="action_import_playlist">Importa playlist…</string>
-    <string name="action_new_playlist">Nuova scaletta…</string>
     <string name="new_playlist_title">Nuova playlist</string>
     <string name="add_playlist_title">Aggiungi alla playlist</string>
     <string name="rename_playlist_title">Rinomina playlist</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Eliminare le playlist <b>%d</b>?]]></string>
     <string name="created_playlist_x">Creata playlist \'%1$s\'.</string>
     <string name="could_not_create_playlist">Impossibile creare la playlist.</string>
-    <string name="inserted_one_song_into_playlist_x">Aggiunto un brano nella playlist %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Aggiunti %1$d brani nella playlist %2$s.</string>
     <string name="playlist_exists">La playlist %s esiste già.</string>
     <string name="playlist_created">Playlist %s creata con successo.</string>
     <string name="remove_song_from_playlist_title">Rimuovi brano dalla playlist</string>
@@ -341,34 +338,42 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Brano</item>
+        <item quantity="many"/>
         <item quantity="other">Brani</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Album</item>
+        <item quantity="many"/>
         <item quantity="other">Album</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d brano</item>
+        <item quantity="many"/>
         <item quantity="other">%d brani</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d album</item>
+        <item quantity="many"/>
         <item quantity="other">%d album</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
+        <item quantity="many"/>
         <item quantity="other">%d artisti</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d volta</item>
+        <item quantity="many"/>
         <item quantity="other">%d volte</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d riproduzione</item>
+        <item quantity="many"/>
         <item quantity="other">%d riproduzioni</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d item</item>
+        <item quantity="many"/>
         <item quantity="other">%d items</item>
     </plurals>
     <!-- Home -->
@@ -780,9 +785,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Chiaro</string>
     <string name="dark_theme_name">Scuro</string>
-    <string name="black_theme_name">Nero</string>
-    <string name="follow_system">Segui il tema di Sistema</string>
-    <string name="label_auto">Automatico</string>
     <string name="labeled">Etichettato</string>
     <string name="unlabeled">Non Etichettato</string>
     <string name="selected">Selezionato</string>

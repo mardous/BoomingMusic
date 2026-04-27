@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Neexistují žádné importovatelné seznamy skladeb.</string>
     <string name="playlist_x_not_imported">Playlist %s nebyl importován.</string>
     <string name="action_import_playlist">Importovat playlist…</string>
-    <string name="action_new_playlist">Nový playlist…</string>
     <string name="new_playlist_title">Nový seznam skladeb</string>
     <string name="add_playlist_title">Přidat do playlistu</string>
     <string name="rename_playlist_title">Přejmenovat seznam skladeb</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Smazat <b>%d</b> playlistů?]]></string>
     <string name="created_playlist_x">Vytvořen playlist \'%1$s\'.</string>
     <string name="could_not_create_playlist">Nelze vytvořit seznam skladeb.</string>
-    <string name="inserted_one_song_into_playlist_x">Vložena jedna skladba do playlistu %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Vloženo %1$d skladeb do playlistu %2$s.</string>
     <string name="playlist_exists">Playlist %s již existuje.</string>
     <string name="playlist_created">Seznam skladeb %s byl úspěšně vytvořen.</string>
     <string name="remove_song_from_playlist_title">Odstranit skladbu ze seznamu skladeb</string>
@@ -796,9 +793,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Světlý</string>
     <string name="dark_theme_name">Tmavý</string>
-    <string name="black_theme_name">Černý</string>
-    <string name="follow_system">Sledovat systém</string>
-    <string name="label_auto">Automaticky</string>
     <string name="labeled">Označeno</string>
     <string name="unlabeled">Neoznačeno</string>
     <string name="selected">Vybrané</string>

@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Импортируемых плейлистов нет.</string>
     <string name="playlist_x_not_imported">Плейлист %s не импортирован.</string>
     <string name="action_import_playlist">Импортировать плейлист…</string>
-    <string name="action_new_playlist">Новый плейлист…</string>
     <string name="new_playlist_title">Новый плейлист</string>
     <string name="add_playlist_title">Добавить в плейлист</string>
     <string name="rename_playlist_title">Переименовать плейлист</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Удалить <b>%d</b> плейлистов?]]></string>
     <string name="created_playlist_x">Создан плейлист \'%1$s\'.</string>
     <string name="could_not_create_playlist">Не удалось создать плейлист.</string>
-    <string name="inserted_one_song_into_playlist_x">Одна песня вставлена в плейлист %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Вставлено %1$d песен в плейлист %2$s.</string>
     <string name="playlist_exists">Плейлист %s уже существует.</string>
     <string name="playlist_created">Плейлист %s успешно создан.</string>
     <string name="remove_song_from_playlist_title">Удалить песню из плейлиста</string>
@@ -796,9 +793,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Светлая</string>
     <string name="dark_theme_name">Темная</string>
-    <string name="black_theme_name">Черная</string>
-    <string name="follow_system">Следовать системным</string>
-    <string name="label_auto">Авто</string>
     <string name="labeled">С меткой</string>
     <string name="unlabeled">Без метки</string>
     <string name="selected">Выбрано</string>

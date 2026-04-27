@@ -129,7 +129,7 @@ open class AlbumAdapter(
 
     open inner class ViewHolder(itemView: View) : MediaEntryViewHolder(itemView) {
         protected open val album: Album
-            get() = dataSet[layoutPosition]
+            get() = dataSet[bindingAdapterPosition]
 
         protected val sharedElements: Array<Pair<View, String>>?
             get() = if (imageContainer != null) {
@@ -142,14 +142,14 @@ open class AlbumAdapter(
 
         override fun onClick(view: View) {
             if (isInQuickSelectMode) {
-                toggleChecked(layoutPosition)
+                toggleChecked(bindingAdapterPosition)
             } else {
                 callback?.albumClick(album, sharedElements)
             }
         }
 
         override fun onLongClick(view: View): Boolean {
-            toggleChecked(layoutPosition)
+            toggleChecked(bindingAdapterPosition)
             return true
         }
 

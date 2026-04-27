@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="rectSelector" format="reference"/>
-
     <declare-styleable name="InfoView">
         <attr name="infoTitle" format="string"/>
         <attr name="infoTitleColor" format="color"/>

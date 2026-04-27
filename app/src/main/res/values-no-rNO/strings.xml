@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Det er ingen importable spillelister.</string>
     <string name="playlist_x_not_imported">Spilleliste %s er ikke importert.</string>
     <string name="action_import_playlist">Importer spilleliste…</string>
-    <string name="action_new_playlist">Ny spilleliste…</string>
     <string name="new_playlist_title">Ny spilleliste</string>
     <string name="add_playlist_title">Legg til i spilleliste</string>
     <string name="rename_playlist_title">Endre spilleliste</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Slette <b>%d</b> spillelister?]]></string>
     <string name="created_playlist_x">Opprettet spilleliste \'%1$s\'.</string>
     <string name="could_not_create_playlist">Kan ikke opprette spilleliste.</string>
-    <string name="inserted_one_song_into_playlist_x">Satt inn en sang i spillelisten %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Sett inn %1$d sanger i spillelisten %2$s.</string>
     <string name="playlist_exists">Spilleliste %s finnes allerede.</string>
     <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Fjern sang fra spilleliste</string>
@@ -780,9 +777,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Lys</string>
     <string name="dark_theme_name">Mørk</string>
-    <string name="black_theme_name">Svart</string>
-    <string name="follow_system">Følg system</string>
-    <string name="label_auto">Automatisk</string>
     <string name="labeled">Merket</string>
     <string name="unlabeled">Utmerket</string>
     <string name="selected">Valgt</string>

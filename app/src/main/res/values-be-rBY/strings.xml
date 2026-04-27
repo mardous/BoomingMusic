@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">There are no importable playlists.</string>
     <string name="playlist_x_not_imported">Playlist %s not imported.</string>
     <string name="action_import_playlist">Import playlist…</string>
-    <string name="action_new_playlist">New playlist…</string>
     <string name="new_playlist_title">New playlist</string>
     <string name="add_playlist_title">Add to playlist</string>
     <string name="rename_playlist_title">Rename playlist</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Delete <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Created playlist \'%1$s\'.</string>
     <string name="could_not_create_playlist">Couldn\'t create playlist.</string>
-    <string name="inserted_one_song_into_playlist_x">Inserted one song into playlist %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Inserted %1$d songs into playlist %2$s.</string>
     <string name="playlist_exists">Playlist %s already exists.</string>
     <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Remove song from playlist</string>
@@ -796,9 +793,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Light</string>
     <string name="dark_theme_name">Dark</string>
-    <string name="black_theme_name">Black</string>
-    <string name="follow_system">Follow System</string>
-    <string name="label_auto">Auto</string>
     <string name="labeled">Labeled</string>
     <string name="unlabeled">Unlabeled</string>
     <string name="selected">Selected</string>

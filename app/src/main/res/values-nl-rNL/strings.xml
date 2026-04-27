@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Er zijn geen te importeren afspeellijsten.</string>
     <string name="playlist_x_not_imported">Afspeellijst %s niet geïmporteerd.</string>
     <string name="action_import_playlist">Importeer afspeellijst…</string>
-    <string name="action_new_playlist">Nieuwe afspeellijst…</string>
     <string name="new_playlist_title">Nieuwe afspeellijst</string>
     <string name="add_playlist_title">Toevoegen aan afspeellijst</string>
     <string name="rename_playlist_title">Hernoem afspeellijst</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Verwijder <b>%d</b> afspeellijsten?]]></string>
     <string name="created_playlist_x">Afspeellijst \'%1$s\' aangemaakt.</string>
     <string name="could_not_create_playlist">Kan afspeellijst niet aanmaken.</string>
-    <string name="inserted_one_song_into_playlist_x">Eén nummer toegevoegd aan afspeellijst %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">%1$d nummers toegevoegd aan afspeellijst %2$s.</string>
     <string name="playlist_exists">Afspeellijst %s bestaat al.</string>
     <string name="playlist_created">Afspeellijst %s succesvol gemaakt.</string>
     <string name="remove_song_from_playlist_title">Verwijder nummer uit afspeellijst</string>
@@ -780,9 +777,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Licht</string>
     <string name="dark_theme_name">Donker</string>
-    <string name="black_theme_name">Zwart</string>
-    <string name="follow_system">Volg systeem</string>
-    <string name="label_auto">Automatisch</string>
     <string name="labeled">Etiketten</string>
     <string name="unlabeled">Ongelabeld</string>
     <string name="selected">Geselecteerd</string>

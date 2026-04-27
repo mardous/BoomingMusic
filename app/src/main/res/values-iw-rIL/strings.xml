@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">אין רשימות השמעה שניתן לייבא.</string>
     <string name="playlist_x_not_imported">רשימת ההשמעה %s לא יובאה.</string>
     <string name="action_import_playlist">ייבוא רשימת השמעה…</string>
-    <string name="action_new_playlist">רשימת השמעה חדשה…</string>
     <string name="new_playlist_title">רשימת השמעה חדשה</string>
     <string name="add_playlist_title">הוסף לרשימת ההשמעה</string>
     <string name="rename_playlist_title">שנה שם לרשימת ההשמעה</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[למחוק <b>%d</b> רשימות השמעה?]]></string>
     <string name="created_playlist_x">נוצרה רשימת ההשמעה \'%1$s\'.</string>
     <string name="could_not_create_playlist">לא ניתן היה ליצור את רשימת ההשמעה.</string>
-    <string name="inserted_one_song_into_playlist_x">נוסף שיר אחד לרשימת ההשמעה %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">נוספו %1$d שירים לרשימת ההשמעה %2$s.</string>
     <string name="playlist_exists">רשימת ההשמעה %s כבר קיימת.</string>
     <string name="playlist_created">רשימת ההשמעה %s נוצרה בהצלחה.</string>
     <string name="remove_song_from_playlist_title">הסר שיר מרשימת ההשמעה</string>
@@ -786,9 +783,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">בהיר</string>
     <string name="dark_theme_name">כהה</string>
-    <string name="black_theme_name">שחור</string>
-    <string name="follow_system">עקוב אחרי המערכת</string>
-    <string name="label_auto">אוטומטי</string>
     <string name="labeled">עם תווית</string>
     <string name="unlabeled">ללא תווית</string>
     <string name="selected">נבחר</string>

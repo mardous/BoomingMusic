@@ -118,8 +118,7 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
 
                 Text(
                     text = stringResource(R.string.lastfm_login_title),
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.headlineSmallEmphasized,
                     modifier = Modifier.padding(horizontal = 24.dp)
                 )
 

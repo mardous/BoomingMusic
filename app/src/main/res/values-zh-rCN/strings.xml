@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">没有可导入的播放列表。</string>
     <string name="playlist_x_not_imported">播放列表“%s”未成功导入。</string>
     <string name="action_import_playlist">导入播放列表…</string>
-    <string name="action_new_playlist">新建播放列表…</string>
     <string name="new_playlist_title">新播放列表</string>
     <string name="add_playlist_title">添加到播放列表</string>
     <string name="rename_playlist_title">重命名播放列表</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[删除 <b>%d</b> 播放列表吗？]]></string>
     <string name="created_playlist_x">已创建播放列表 \'%1$s\'。</string>
     <string name="could_not_create_playlist">无法创建播放列表。</string>
-    <string name="inserted_one_song_into_playlist_x">将一首歌曲插入播放列表 %s 。</string>
-    <string name="inserted_x_songs_into_playlist_x">将 %1$d 首歌曲插入播放列表 %2$s。</string>
     <string name="playlist_exists">播放列表 %s 已经存在。</string>
     <string name="playlist_created">播放列表 %s 已成功创建。</string>
     <string name="remove_song_from_playlist_title">从播放列表中删除歌曲</string>
@@ -772,9 +769,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">浅色</string>
     <string name="dark_theme_name">深色</string>
-    <string name="black_theme_name">黑色</string>
-    <string name="follow_system">跟随系统</string>
-    <string name="label_auto">自动操作</string>
     <string name="labeled">已标记</string>
     <string name="unlabeled">取消标签</string>
     <string name="selected">已选择</string>

@@ -6,7 +6,7 @@
     android:layout_width="156dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="?attr/rectSelector"
+    android:background="@drawable/rect_selector"
     android:orientation="vertical">
 
     <com.mardous.booming.ui.component.views.BoomingShapeableImageView

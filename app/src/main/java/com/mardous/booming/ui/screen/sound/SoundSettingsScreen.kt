@@ -122,8 +122,7 @@ fun SoundSettingsSheet(
                 item {
                     Text(
                         text = stringResource(R.string.sound_settings),
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold
+                        style = MaterialTheme.typography.headlineSmallEmphasized
                     )
                 }
 

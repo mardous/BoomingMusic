@@ -27,7 +27,6 @@ import androidx.core.view.isGone
 import com.mardous.booming.R
 import com.mardous.booming.coil.playlistImage
 import com.mardous.booming.data.local.room.PlaylistWithSongs
-import com.mardous.booming.extensions.isValidPosition
 import com.mardous.booming.extensions.media.asNumberOfSongs
 import com.mardous.booming.ui.IPlaylistCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
@@ -120,18 +119,18 @@ class PlaylistAdapter(
         }
 
         private val playlist: PlaylistWithSongs
-            get() = dataSet[layoutPosition]
+            get() = dataSet[bindingAdapterPosition]
 
         override fun onClick(view: View) {
             if (isInQuickSelectMode) {
-                toggleChecked(layoutPosition)
+                toggleChecked(bindingAdapterPosition)
             } else {
                 callback?.playlistClick(playlist)
             }
         }
 
         override fun onLongClick(view: View): Boolean {
-            return isValidPosition && toggleChecked(layoutPosition)
+            return toggleChecked(bindingAdapterPosition)
         }
     }
 }

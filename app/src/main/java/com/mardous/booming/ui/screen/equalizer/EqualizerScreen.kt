@@ -20,13 +20,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
@@ -43,9 +43,12 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.ListItemDefaults
+import androidx.compose.material3.ListItemShapes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.SegmentedListItem
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -101,7 +104,6 @@ import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.component.compose.EmptyView
 import com.mardous.booming.ui.component.compose.InputDialog
 import com.mardous.booming.ui.component.compose.MaterialSwitch
-import com.mardous.booming.ui.component.compose.ShapeableDialogListItemSurface
 import com.mardous.booming.ui.component.compose.SwitchCard
 import com.mardous.booming.ui.component.compose.TipView
 import com.mardous.booming.ui.component.compose.TitleShapedText
@@ -606,7 +608,7 @@ fun EqualizerScreen(
                     item {
                         EmptyView(
                             icon = painterResource(R.drawable.ic_equalizer_24dp),
-                            text = stringResource(it.titleRes),
+                            title = stringResource(it.titleRes),
                             modifier = Modifier.fillParentMaxSize()
                         )
                     }
@@ -975,7 +977,7 @@ private fun EQBandSlider(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun ProfileSelectorDialog(
     profiles: List<EqProfile>,
@@ -999,8 +1001,7 @@ private fun ProfileSelectorDialog(
         ) {
             Text(
                 text = stringResource(R.string.select_profile),
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
+                style = MaterialTheme.typography.headlineSmallEmphasized
             )
 
             Spacer(Modifier.height(16.dp))
@@ -1018,10 +1019,11 @@ private fun ProfileSelectorDialog(
                 ProfilesMode.EQ -> {
                     LazyColumn(
                         contentPadding = PaddingValues(bottom = 24.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
                     ) {
-                        items(profiles) { profile ->
+                        itemsIndexed(profiles) { index, profile ->
                             EqualizerProfileItem(
+                                shapes = ListItemDefaults.segmentedShapes(index, profiles.size),
                                 profile = profile,
                                 isCurrentProfile = profile == selectedProfile,
                                 onClick = { onSelectEqProfile(profile) },
@@ -1036,7 +1038,7 @@ private fun ProfileSelectorDialog(
                     if (autoEqProfiles.isEmpty()) {
                         EmptyView(
                             icon = painterResource(R.drawable.ic_equalizer_24dp),
-                            text = stringResource(R.string.no_autoeq_profiles),
+                            title = stringResource(R.string.no_autoeq_profiles),
                             button = {
                                 Button(onClick = onImportAutoEqProfile) {
                                     Icon(
@@ -1052,10 +1054,11 @@ private fun ProfileSelectorDialog(
                     } else {
                         LazyColumn(
                             contentPadding = PaddingValues(bottom = 24.dp),
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
                         ) {
-                            items(autoEqProfiles) { profile ->
+                            itemsIndexed(autoEqProfiles) { index, profile ->
                                 AutoEqProfileItem(
+                                    shapes = ListItemDefaults.segmentedShapes(index, autoEqProfiles.size),
                                     profile = profile,
                                     onClick = { onSelectAutoEqProfile(profile) },
                                     onDeleteClick = { onDeleteAutoEqProfile(profile) }
@@ -1281,121 +1284,105 @@ private fun ProfileAssociationView(
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun EqualizerProfileItem(
     profile: EqProfile,
+    shapes: ListItemShapes,
     isCurrentProfile: Boolean,
     onClick: () -> Unit,
     onEditClick: () -> Unit,
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    ShapeableDialogListItemSurface(
+    SegmentedListItem(
         onClick = onClick,
-        isSelected = isCurrentProfile,
-        modifier = modifier
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(min = 64.dp)
-                .padding(vertical = 8.dp)
-                .padding(start = 16.dp, end = 16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
+        selected = isCurrentProfile,
+        shapes = shapes,
+        colors = ListItemDefaults.segmentedColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+        ),
+        leadingContent = {
             Icon(
                 painter = painterResource(R.drawable.ic_equalizer_24dp),
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.secondary
+                contentDescription = null
             )
-
-            Spacer(Modifier.width(16.dp))
-
-            Column(
-                modifier = Modifier.weight(1f)
-            ) {
-                Text(
-                    text = profile.getName(LocalContext.current),
-                    style = MaterialTheme.typography.bodyLarge,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-
-                Text(
-                    text = profile.getDescription(LocalContext.current),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-
+        },
+        trailingContent = {
             if (!profile.isCustom) {
-                Spacer(Modifier.width(8.dp))
-                IconButton(onClick = onEditClick) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_edit_24dp),
-                        contentDescription = "Edit profile ${profile.getName(LocalContext.current)}"
-                    )
-                }
-                IconButton(onClick = onDeleteClick) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_delete_24dp),
-                        contentDescription = "Delete profile ${profile.getName(LocalContext.current)}"
-                    )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    IconButton(onClick = onEditClick) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_edit_24dp),
+                            contentDescription = "Edit profile ${profile.getName(LocalContext.current)}"
+                        )
+                    }
+                    IconButton(onClick = onDeleteClick) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_delete_24dp),
+                            contentDescription = "Delete profile ${profile.getName(LocalContext.current)}"
+                        )
+                    }
                 }
             }
-        }
+        },
+        supportingContent = {
+            Text(
+                text = profile.getDescription(LocalContext.current),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+        },
+        modifier = modifier
+    ) {
+        Text(
+            text = profile.getName(LocalContext.current),
+            style = MaterialTheme.typography.bodyLarge,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun AutoEqProfileItem(
     profile: AutoEqProfile,
+    shapes: ListItemShapes,
     onClick: () -> Unit,
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    ShapeableDialogListItemSurface(
+    SegmentedListItem(
         onClick = onClick,
-        modifier = modifier
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(min = 64.dp)
-                .padding(vertical = 8.dp)
-                .padding(start = 16.dp, end = 16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
+        shapes = shapes,
+        colors = ListItemDefaults.segmentedColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+        ),
+        leadingContent = {
             Icon(
                 painter = painterResource(R.drawable.ic_equalizer_24dp),
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.secondary
+                contentDescription = null
             )
-
-            Spacer(Modifier.width(16.dp))
-
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = profile.name,
-                    style = MaterialTheme.typography.bodyLarge,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-
-            Spacer(Modifier.width(8.dp))
-
+        },
+        trailingContent = {
             IconButton(onClick = onDeleteClick) {
                 Icon(
                     painter = painterResource(R.drawable.ic_delete_24dp),
                     contentDescription = "Delete profile ${profile.name}"
                 )
             }
-        }
+        },
+        modifier = modifier
+    ) {
+        Text(
+            text = profile.name,
+            style = MaterialTheme.typography.bodyLarge,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 

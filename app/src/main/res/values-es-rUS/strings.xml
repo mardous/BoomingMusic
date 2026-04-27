@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">No hay playlists para importar.</string>
     <string name="playlist_x_not_imported">No será importada la playlist %s.</string>
     <string name="action_import_playlist">Importar lista de reproducción…</string>
-    <string name="action_new_playlist">Lista de reproducción nueva…</string>
     <string name="new_playlist_title">Nueva playlist</string>
     <string name="add_playlist_title">Agregar a playlist</string>
     <string name="rename_playlist_title">Renombrar playlist</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[¿Borrar <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Se creó la playlist \"%1$s\".</string>
     <string name="could_not_create_playlist">No se pudo crear la playlist.</string>
-    <string name="inserted_one_song_into_playlist_x">Se agregó una canción a la playlist \"%s\".</string>
-    <string name="inserted_x_songs_into_playlist_x">Se agregaron %1$d canciones a la playlist \"%2$s\".</string>
     <string name="playlist_exists">La playlist \"%s\" ya existe.</string>
     <string name="playlist_created">Se creó la playlist %s.</string>
     <string name="remove_song_from_playlist_title">Remover canción de la playlist</string>
@@ -788,9 +785,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Claro</string>
     <string name="dark_theme_name">Oscuro</string>
-    <string name="black_theme_name">Negro</string>
-    <string name="follow_system">Según el sistema</string>
-    <string name="label_auto">Automático</string>
     <string name="labeled">Con etiquetas</string>
     <string name="unlabeled">Sin etiquetas</string>
     <string name="selected">Solo selección</string>
@@ -946,6 +940,5 @@
     <string name="advanced_settings">Ajustes avanzados</string>
     <string name="bit_perfect_is_active">Bit-perfect está activo</string>
     <string name="bit_perfect_description">Envía el audio directamente al DAC USB sin remuestreo del sistema.</string>
-    <string name="sleep_timar_x_secs">%d segundos</string>
     <string name="sleep_timer_x_secs">%d segundos</string>
 </resources>

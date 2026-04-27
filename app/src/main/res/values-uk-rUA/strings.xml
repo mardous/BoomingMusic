@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Імпортованих списків відтворення немає.</string>
     <string name="playlist_x_not_imported">Список відтворення %s не імпортовано.</string>
     <string name="action_import_playlist">Імпортувати список відтворення…</string>
-    <string name="action_new_playlist">Новий список відтворення…</string>
     <string name="new_playlist_title">Новий список відтворення</string>
     <string name="add_playlist_title">Додати до списку відтворення</string>
     <string name="rename_playlist_title">Перейменувати список відтворення</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Видалити &lt;b&gt;%d&lt;/b&gt; списків відтворення?]]></string>
     <string name="created_playlist_x">Створено список відтворення \'%1$s\'.</string>
     <string name="could_not_create_playlist">Не вдалося створити список відтворення.</string>
-    <string name="inserted_one_song_into_playlist_x">Одна пісня вставлена до списку відтворення %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Вставлено %1$d пісень до списку відтворення %2$s.</string>
     <string name="playlist_exists">Список відтворення %s вже існує.</string>
     <string name="playlist_created">Список відтворення %s успішно створено.</string>
     <string name="remove_song_from_playlist_title">Видалити пісню зі списку відтворення</string>
@@ -796,9 +793,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Світла</string>
     <string name="dark_theme_name">Темна</string>
-    <string name="black_theme_name">Чорна</string>
-    <string name="follow_system">Слідувати системним</string>
-    <string name="label_auto">Авто</string>
     <string name="labeled">З міткою</string>
     <string name="unlabeled">Без мітки</string>
     <string name="selected">Вибрано</string>

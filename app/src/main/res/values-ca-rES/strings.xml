@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">No hi ha llistes importables.</string>
     <string name="playlist_x_not_imported">La llista %s no s\'ha importat.</string>
     <string name="action_import_playlist">Importa la llista…</string>
-    <string name="action_new_playlist">Nova llista…</string>
     <string name="new_playlist_title">Nova llista</string>
     <string name="add_playlist_title">Afegeix a la llista</string>
     <string name="rename_playlist_title">Canvia el nom a la llista de reproducció</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Voleu esborrar <b>%d</b> llistes?]]></string>
     <string name="created_playlist_x">S\'ha creat la llista de reproducció «%1$s».</string>
     <string name="could_not_create_playlist">No s\'ha pogut crear la llista de reproducció.</string>
-    <string name="inserted_one_song_into_playlist_x">S\'ha afegit una cançó a «%s».</string>
-    <string name="inserted_x_songs_into_playlist_x">S\'han afegit %1$d cançons a «%2$s».</string>
     <string name="playlist_exists">La llista «%s» ja existeix.</string>
     <string name="playlist_created">La llista %s s\'ha creat correctament.</string>
     <string name="remove_song_from_playlist_title">Treu la cançó de la llista</string>
@@ -341,34 +338,42 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Cançó</item>
+        <item quantity="many"/>
         <item quantity="other">Cançons</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Àlbum</item>
+        <item quantity="many"/>
         <item quantity="other">Àlbums</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d cançó</item>
+        <item quantity="many"/>
         <item quantity="other">%d cançons</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d àlbum</item>
+        <item quantity="many"/>
         <item quantity="other">%d àlbums</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
+        <item quantity="many"/>
         <item quantity="other">%d artistes</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d cop</item>
+        <item quantity="many"/>
         <item quantity="other">%d cops</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d reproducció</item>
+        <item quantity="many"/>
         <item quantity="other">%d reproduccions</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d ítem</item>
+        <item quantity="many"/>
         <item quantity="other">%d ítems</item>
     </plurals>
     <!-- Home -->
@@ -780,9 +785,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Clar</string>
     <string name="dark_theme_name">Fosc</string>
-    <string name="black_theme_name">Negre</string>
-    <string name="follow_system">Sistema</string>
-    <string name="label_auto">Auto</string>
     <string name="labeled">Amb etiqueta</string>
     <string name="unlabeled">Sense etiqueta</string>
     <string name="selected">Seleccionat</string>

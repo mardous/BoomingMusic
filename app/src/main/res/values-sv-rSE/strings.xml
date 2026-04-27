@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Det finns inga importerbara spellistor.</string>
     <string name="playlist_x_not_imported">Spellista %s inte importerad.</string>
     <string name="action_import_playlist">Importera spellista…</string>
-    <string name="action_new_playlist">Ny spellista…</string>
     <string name="new_playlist_title">Ny spellista</string>
     <string name="add_playlist_title">Lägg till i spellistan</string>
     <string name="rename_playlist_title">Döp om spellista</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Ta bort <b>%d</b> spellistor?]]></string>
     <string name="created_playlist_x">Skapade spellista \'%1$s\'.</string>
     <string name="could_not_create_playlist">Det gick inte att skapa spellista.</string>
-    <string name="inserted_one_song_into_playlist_x">Lade till en låt i spellistan %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Lade till %1$d låtar i spellistan %2$s.</string>
     <string name="playlist_exists">Spellista %s finns redan.</string>
     <string name="playlist_created">Spellista %s har skapats.</string>
     <string name="remove_song_from_playlist_title">Ta bort låt från spellistan</string>
@@ -780,9 +777,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">Ljus</string>
     <string name="dark_theme_name">Mörk</string>
-    <string name="black_theme_name">Svart</string>
-    <string name="follow_system">Följ systemet</string>
-    <string name="label_auto">Automatiskt</string>
     <string name="labeled">Etikett</string>
     <string name="unlabeled">Avmärkt</string>
     <string name="selected">Vald</string>

@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="?attr/rectSelector"
+        android:background="@drawable/rect_selector_strong"
         tools:ignore="UnusedAttribute,UselessParent">
 
         <com.mardous.booming.ui.component.views.WidthFitSquareLayout

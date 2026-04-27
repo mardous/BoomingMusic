@@ -26,8 +26,9 @@
     <dimen name="notification_big_image_size">128dp</dimen>
 
     <dimen name="list_item_song_height">60dp</dimen>
-    <dimen name="list_item_image_size">44dp</dimen>
-    <dimen name="list_item_image_icon_padding">10dp</dimen>
+    <dimen name="list_item_image_size">48dp</dimen>
+    <dimen name="list_item_image_size_large">56dp</dimen>
+    <dimen name="list_item_image_icon_padding">12dp</dimen>
     <dimen name="list_pref_guideline_begin">56dp</dimen>
     <dimen name="list_queue_padding_vertical">6dp</dimen>
     <dimen name="grid_item_margin">4dp</dimen>

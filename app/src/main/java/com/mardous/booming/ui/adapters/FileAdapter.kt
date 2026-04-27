@@ -19,9 +19,14 @@ package com.mardous.booming.ui.adapters
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import coil3.load
 import com.mardous.booming.R
@@ -66,7 +71,7 @@ class FileAdapter(
         val itemView = if (viewType == VIEW_TYPE_FOLDER || viewType == VIEW_TYPE_SONG) {
             LayoutInflater.from(parent.context).inflate(itemLayoutRes, parent, false)
         } else {
-            LayoutInflater.from(parent.context).inflate(R.layout.item_list_single_row, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
         }
         return ViewHolder(itemView, viewType)
     }
@@ -163,7 +168,7 @@ class FileAdapter(
 
     inner class ViewHolder(itemView: View, itemViewType: Int) : MediaEntryViewHolder(itemView) {
         private val currentFile: FileSystemItem
-            get() = files[layoutPosition]
+            get() = files[bindingAdapterPosition]
 
         private val filePopupMenuResource: Int
             get() = when (itemViewType) {
@@ -174,18 +179,19 @@ class FileAdapter(
 
         override fun onClick(view: View) {
             if (isInQuickSelectMode) {
-                toggleChecked(layoutPosition)
+                toggleChecked(bindingAdapterPosition)
             } else {
                 callback?.fileClick(currentFile)
             }
         }
 
         override fun onLongClick(view: View): Boolean {
-            toggleChecked(layoutPosition)
+            toggleChecked(bindingAdapterPosition)
             return true
         }
 
         init {
+            text?.isVisible = (itemViewType == VIEW_TYPE_SONG || itemViewType == VIEW_TYPE_FOLDER)
             if (itemViewType != VIEW_TYPE_SONG) {
                 image?.useAsIcon()
             }

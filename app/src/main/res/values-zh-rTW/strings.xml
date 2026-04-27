@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">沒有可導入的播放清單。</string>
     <string name="playlist_x_not_imported">播放清單「%s」未成功導入。</string>
     <string name="action_import_playlist">導入播放清單…</string>
-    <string name="action_new_playlist">新建播放清單…</string>
     <string name="new_playlist_title">新播放清單</string>
     <string name="add_playlist_title">新增到播放清單</string>
     <string name="rename_playlist_title">重命名播放清單</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[刪除 <b>%d</b> 播放清單嗎？]]></string>
     <string name="created_playlist_x">已建立播放清單 \'%1$s\'。</string>
     <string name="could_not_create_playlist">無法建立播放清單。</string>
-    <string name="inserted_one_song_into_playlist_x">將一首歌插入播放清單 %s</string>
-    <string name="inserted_x_songs_into_playlist_x">將 %1$d 首歌曲插入播放清單 %2$s。</string>
     <string name="playlist_exists">播放清單 %s 已經存在。</string>
     <string name="playlist_created">播放清單 %s 已成功建立。</string>
     <string name="remove_song_from_playlist_title">從播放清單中刪除歌曲</string>
@@ -772,9 +769,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">亮色</string>
     <string name="dark_theme_name">深色</string>
-    <string name="black_theme_name">黑色</string>
-    <string name="follow_system">跟隨系統</string>
-    <string name="label_auto">自動操作</string>
     <string name="labeled">已標記</string>
     <string name="unlabeled">取消標籤</string>
     <string name="selected">已選擇</string>
