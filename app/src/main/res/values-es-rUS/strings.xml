@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Guardadas %1$d playlists, error al guardar %2$d.</string>
     <string name="delete_playlist_title">Eliminar playlist</string>
     <string name="delete_playlists_title">Eliminar playlists</string>
-    <string name="delete_playlist_x"><![CDATA[¿Borrar playlist <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[¿Borrar playlist <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[¿Borrar <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Se creó la playlist \"%1$s\".</string>
     <string name="could_not_create_playlist">No se pudo crear la playlist.</string>
@@ -489,7 +489,7 @@
     <string name="external_file_lyrics">Archivo externo</string>
     <string name="action_import_synchronized_lyrics">Importar letra sincronizada</string>
     <string name="action_share_synchronized_lyrics">Compartir letra sincronizada</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[¿Quieres importar una letra sincronizada en LRC para la canción <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[¿Quieres importar una letra sincronizada en LRC para la canción <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Letra importada para %s</string>
     <string name="could_not_import_lyrics_for_song_x">No se pudo importar la letra para %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Seleccione un archivo LRC que contenga letras sincronizadas.</string>
@@ -940,4 +940,12 @@
     <string name="advanced_settings">Ajustes avanzados</string>
     <string name="bit_perfect_is_active">Bit-perfect está activo</string>
     <string name="bit_perfect_description">Envía el audio directamente al DAC USB sin remuestreo del sistema.</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
