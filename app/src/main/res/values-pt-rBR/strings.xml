@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">%1$d playlists salva(s), %2$d com falha(s).</string>
     <string name="delete_playlist_title">Excluir playlist</string>
     <string name="delete_playlists_title">Excluir playlists</string>
-    <string name="delete_playlist_x"><![CDATA[Excluir playlist <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Excluir playlist <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Excluir <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Playlist \'%1$s \' criada.</string>
     <string name="could_not_create_playlist">Não foi possível criar a playlist.</string>
@@ -481,7 +481,7 @@
     <string name="external_file_lyrics">Arquivo externo</string>
     <string name="action_import_synchronized_lyrics">Importar letras sincronizadas</string>
     <string name="action_share_synchronized_lyrics">Compartilhar letras sincronizadas</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Deseja importar letras LRC sincronizadas para <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Deseja importar letras LRC sincronizadas para <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Letras importadas para %s</string>
     <string name="could_not_import_lyrics_for_song_x">Não foi possível importar as letras de %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Selecione um arquivo LRC contendo letras sincronizadas.</string>
@@ -881,4 +881,64 @@
     <string name="bit_perfect_is_active">Perfeição bit a bit está ativa</string>
     <string name="bit_perfect_info">Perfeição bit a bit: %1$s | %2$s</string>
     <string name="bit_perfect_title">Áudio perfeito bit a bit</string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="widget_image_corner_radius_summary"></string>
+    <string name="support_my_work"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="widgets_header"></string>
+    <string name="widget_third_line_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="widget_small_layout_simplified"></string>
+    <string name="lastfm_logout"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="images_title"></string>
+    <string name="lastfm_title"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="widget_small_layout_classic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="widget_image_corner_radius_title"></string>
+    <string name="widget_small_layout_style_title"></string>
+    <string name="telegram_community_summary"></string>
+    <string name="network_title"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="telegram_community"></string>
+    <string name="error_network_timeout"></string>
+    <string name="lastfm_connected_account"></string>
+    <string name="network_summary"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="sleep_timer_x_secs"></string>
+    <string name="widget_third_line_summary"></string>
+    <string name="lastfm_login_ok"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="error_lastfm_rate_limit"></string>
 </resources>
