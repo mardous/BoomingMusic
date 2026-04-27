@@ -102,7 +102,7 @@
     <string name="saving_changes">Sauvegarde des modifications</string>
     <string name="changes_saved_successfully">Les modifications ont été enregistrées avec succès.</string>
     <string name="could_not_save_some_changes">Impossible d\'enregistrer certaines modifications.</string>
-    <string name="web_search">Recherche sur l\'internet</string>
+    <string name="web_search">Recherche sur internet</string>
     <string name="where_do_you_want_to_search">Où voulez-vous effectuer une recherche ?</string>
     <string name="configure_action">Configurer</string>
     <string name="blacklist_directory">Répertoire de la liste noire</string>
