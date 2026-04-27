@@ -205,7 +205,7 @@ class AddToPlaylistDialog : BottomSheetDialogFragment() {
                             end = 16.dp,
                             bottom = listBottomPadding
                         ),
-                        verticalArrangement = Arrangement.spacedBy(2.dp)
+                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
                     ) {
                         item {
                             Row(
