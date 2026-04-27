@@ -940,13 +940,5 @@
     <string name="bit_perfect_info">Perfección al bit: %1$s | %2$s</string>
     <string name="bit_perfect_is_active">Perfección al bit activa</string>
     <string name="bit_perfect_description">Salida de audio directa al DAC USB sin remuestreo de sistema.</string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="grid_size_5" translatable="false"></string>
     <string name="sleep_timer_x_secs">%d segundos</string>
 </resources>
