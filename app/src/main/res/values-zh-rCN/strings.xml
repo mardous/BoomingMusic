@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">已保存 %1$d 播放列表，未能保存 %2$d。</string>
     <string name="delete_playlist_title">删除播放列表</string>
     <string name="delete_playlists_title">删除多个播放列表</string>
-    <string name="delete_playlist_x"><![CDATA[删除播放列表 <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[删除播放列表 <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[删除 <b>%d</b> 播放列表吗？]]></string>
     <string name="created_playlist_x">已创建播放列表 \'%1$s\'。</string>
     <string name="could_not_create_playlist">无法创建播放列表。</string>
@@ -924,4 +924,13 @@
     <string name="widget_image_corner_radius_summary">调整专辑封面的圆角程度。</string>
     <string name="widget_third_line_title">第三行信息</string>
     <string name="widget_third_line_summary">选择信息文本第三行应显示的内容。</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="sleep_timer_x_secs"></string>
 </resources>
