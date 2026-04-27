@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Guardado %1$d listas, no se pudo guardar %2$d.</string>
     <string name="delete_playlist_title">Eliminar lista de reproducción</string>
     <string name="delete_playlists_title">Eliminar listas de reproducción</string>
-    <string name="delete_playlist_x"><![CDATA[¿Eliminar lista de reproducción <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[¿Eliminar lista de reproducción <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[¿Eliminar <b>%d</b> listas de reproducción?]]></string>
     <string name="created_playlist_x">Se creó la lista de reproducción «%1$s».</string>
     <string name="could_not_create_playlist">No se pudo crear la lista de reproducción.</string>
@@ -940,4 +940,12 @@
     <string name="bit_perfect_info">Perfección al bit: %1$s | %2$s</string>
     <string name="bit_perfect_is_active">Perfección al bit activa</string>
     <string name="bit_perfect_description">Salida de audio directa al DAC USB sin remuestreo de sistema.</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
