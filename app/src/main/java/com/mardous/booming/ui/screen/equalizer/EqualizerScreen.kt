@@ -606,7 +606,7 @@ fun EqualizerScreen(
                     item {
                         EmptyView(
                             icon = painterResource(R.drawable.ic_equalizer_24dp),
-                            text = stringResource(it.titleRes),
+                            title = stringResource(it.titleRes),
                             modifier = Modifier.fillParentMaxSize()
                         )
                     }
@@ -1036,7 +1036,7 @@ private fun ProfileSelectorDialog(
                     if (autoEqProfiles.isEmpty()) {
                         EmptyView(
                             icon = painterResource(R.drawable.ic_equalizer_24dp),
-                            text = stringResource(R.string.no_autoeq_profiles),
+                            title = stringResource(R.string.no_autoeq_profiles),
                             button = {
                                 Button(onClick = onImportAutoEqProfile) {
                                     Icon(
