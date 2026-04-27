@@ -484,7 +484,7 @@
     <string name="external_file_lyrics">Archivo externo</string>
     <string name="action_import_synchronized_lyrics">Importar letra sincronizada</string>
     <string name="action_share_synchronized_lyrics">Compartir letra sincronizada</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[¿Quiere importar una letra sincronizada LRC para <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[¿Quiere importar una letra sincronizada LRC para <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Letra importada de %s</string>
     <string name="could_not_import_lyrics_for_song_x">No se pudo importar la letra de %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Seleccione un archivo LRC que contenga la letra sincronizada.</string>
