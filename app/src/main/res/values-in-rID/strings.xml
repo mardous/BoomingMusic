@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">%1$d daftar putar berhasil disimpan, %2$d gagal disimpan.</string>
     <string name="delete_playlist_title">Hapus daftar putar</string>
     <string name="delete_playlists_title">Hapus daftar putar</string>
-    <string name="delete_playlist_x"><![CDATA[Hapus daftar putar <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Hapus daftar putar <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Hapus <b>%d</b> daftar putar?]]></string>
     <string name="created_playlist_x">Daftar putar \'%1$s\' berhasil dibuat.</string>
     <string name="could_not_create_playlist">Gagal membuat daftar putar.</string>
@@ -473,7 +473,7 @@
     <string name="external_file_lyrics">File eksternal</string>
     <string name="action_import_synchronized_lyrics">Impor lirik tersinkronisasi</string>
     <string name="action_share_synchronized_lyrics">Bagikan lirik tersinkronisasi</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Apakah Anda ingin mengimpor lirik LRC tersinkronisasi untuk <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Apakah Anda ingin mengimpor lirik LRC tersinkronisasi untuk <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Lirik untuk %s berhasil diimpor</string>
     <string name="could_not_import_lyrics_for_song_x">Gagal mengimpor lirik untuk %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Pilih file LRC yang berisi lirik tersinkronisasi.</string>
