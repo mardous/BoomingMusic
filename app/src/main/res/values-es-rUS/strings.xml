@@ -948,4 +948,5 @@
     <string name="grid_size_3" translatable="false"></string>
     <string name="grid_size_1" translatable="false"></string>
     <string name="grid_size_5" translatable="false"></string>
+    <string name="sleep_timer_x_secs">%d segundos</string>
 </resources>
