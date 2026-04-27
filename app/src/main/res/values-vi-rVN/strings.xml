@@ -86,8 +86,8 @@
     <string name="saved_x_playlists_failed_to_save_x">Đã lưu danh sách phát %1$d, lưu thất bại %2$d.</string>
     <string name="delete_playlist_title">Xoá danh sách phát</string>
     <string name="delete_playlists_title">Xoá các danh sách phát</string>
-    <string name="delete_playlist_x"><![CDATA[Xoá danh sách phát <b>%s</b>?]]></string>
-    <string name="delete_x_playlists"><![CDATA[Xoá các danh sách phát <b>%d</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Xoá danh sách phát <b>%s</b>\?]]></string>
+    <string name="delete_x_playlists"><![CDATA[Xoá các danh sách phát <b>%d</b>\?]]></string>
     <string name="created_playlist_x">Đã tạo danh sách phát \"%1$s\".</string>
     <string name="could_not_create_playlist">Không thể tạo danh sách phát.</string>
     <string name="playlist_exists">Danh sách phát %s đã tồn tại.</string>
@@ -473,7 +473,7 @@
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Import synced lyrics</string>
     <string name="action_share_synchronized_lyrics">Chia sẻ lời bài hát đã được đồng bộ</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Do you want to import synchronized LRC lyrics for <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Do you want to import synchronized LRC lyrics for <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Imported lyrics for %s</string>
     <string name="could_not_import_lyrics_for_song_x">Couldn\'t import lyrics for %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Select a LRC file containing synced lyrics.</string>
@@ -910,4 +910,27 @@
     <string name="network_features_title">Bật các tính năng mạng</string>
     <string name="wifi_only_network_features_title">Sử dụng các tính năng mạng chỉ khi có Wi-Fi</string>
     <string name="wifi_only_network_features_summary">Chỉ cho phép các tính năng mạng khi kết nối với Wi-Fi</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="use_simpmusic_provider_summary"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="use_simpmusic_provider_title"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="sleep_timer_x_secs"></string>
+    <string name="lastfm_login_summary"></string>
 </resources>
