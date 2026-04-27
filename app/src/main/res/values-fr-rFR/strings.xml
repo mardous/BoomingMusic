@@ -740,7 +740,7 @@
     <string name="online_artist_images_title">Télécharger les images de l\'artiste</string>
     <string name="preferred_image_size_title">Taille d\'image préférée</string>
     <string name="online_album_covers_title">Télécharger les couvertures d\'album manquantes</string>
-    <string name="online_album_covers_summary">Les images téléchargées ne sont pas intégrées dans les fichiers audio ; elles sont uniquement visibles depuis l\'application. Cela dépend de votre politique de téléchargement des métadonnées.</string>
+    <string name="online_album_covers_summary">Les images téléchargées ne sont pas intégrées aux fichiers audio ; elles ne sont visibles que dans l\'application.</string>
     <string name="delete_downloaded_lyrics_title">Supprimer les paroles téléchargées</string>
     <string name="delete_downloaded_lyrics_summary">Seules les paroles téléchargées par Booming Music. N\'affecte pas les paroles intégrées dans les tags ID3v2 ou les fichiers LCR.</string>
     <string name="lyrics_cleared">Paroles effacées.</string>
@@ -942,4 +942,5 @@
     <string name="grid_size_3" translatable="false"></string>
     <string name="grid_size_1" translatable="false"></string>
     <string name="grid_size_5" translatable="false"></string>
+    <string name="sleep_timer_x_secs">%d secondes</string>
 </resources>
