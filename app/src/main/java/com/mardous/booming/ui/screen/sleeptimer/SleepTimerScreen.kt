@@ -137,8 +137,7 @@ fun SleepTimerBottomSheet(
 
             Text(
                 text = stringResource(R.string.action_sleep_timer),
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
+                style = MaterialTheme.typography.headlineSmallEmphasized
             )
 
             Column(

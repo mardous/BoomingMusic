@@ -1001,7 +1001,7 @@ private fun ProfileSelectorDialog(
         ) {
             Text(
                 text = stringResource(R.string.select_profile),
-                style = MaterialTheme.typography.headlineSmall
+                style = MaterialTheme.typography.headlineSmallEmphasized
             )
 
             Spacer(Modifier.height(16.dp))
