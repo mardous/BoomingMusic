@@ -908,4 +908,17 @@
     <string name="open_on_play_summary"></string>
     <string name="open_on_play_title"></string>
     <string name="lyrics_progressive_coloring_summary"></string>
+    <string name="on_song_click_enqueue_at_end_title">Lisa esitusloendi lõppu</string>
+    <string name="set_eq_engine_reset_warning">Ekvalaiseri mootori muutmisel lähtestuvad kõik ekvalaiseri seadistused, sh sinu lisatud profiilid.</string>
+    <string name="eq_empty_bands">Ekvalaiseri mootor ei suutnud väljastada ribade seadistusi.</string>
+    <string name="enable_equalizer">Võta ekvalaiser kasutusele</string>
+    <string name="on_song_click_enqueue_at_end_summary">Valitud lugu lisatakse kasutuseloleva esitusloendi lõppu.</string>
+    <string name="eq_engine_precision_title">Täpisekvalaiser</string>
+    <string name="stop_when_closed_from_recents_title">Lõpeta sulgemisel tegumist (viimatikasutatud rakenduste seast)</string>
+    <string name="stop_when_closed_from_recents_note">Märkus: Mõned nutiseadmed, milles kasutatakse agressiivset mälu- või akuhaldust, võivad seda seadet eirata ja rakenduse alati sulgeda, kui see eemaldatakse viimati kasutatud rakenduste hulgast.</string>
+    <string name="stop_when_closed_from_recents_summary">Taasesitus lõppeb, kui rakendus eemaldatakse viimatikasutatud rakenduste seast.</string>
+    <string name="eq_engine_basic_title">Pärandekvalaiser</string>
+    <string name="eq_engine_precision_description">15-ribaline kõrgekvaliteediline töötlus, mis võimaldab heli täiuslikult kujundada.</string>
+    <string name="eq_engine_basic_description">5-ribaline klassikaline ekvalaiser, mis on mõeldud toimima võimalikult paljudes nutiseadmetes.</string>
+    <string name="set_eq_engine_title">Seadista ekvalaiseri mootor</string>
 </resources>
