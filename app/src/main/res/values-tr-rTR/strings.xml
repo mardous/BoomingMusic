@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">İçe aktarılacak çalma listesi yok.</string>
     <string name="playlist_x_not_imported">%s çalma listesi içe aktarılmadı.</string>
     <string name="action_import_playlist">Çalma listesi içe aktar…</string>
-    <string name="action_new_playlist">Yeni çalma listesi…</string>
     <string name="new_playlist_title">Yeni çalma listesi</string>
     <string name="add_playlist_title">Çalma listesine ekle</string>
     <string name="rename_playlist_title">Çalma listesini yeniden adlandır</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[<b>%d</b> çalma listesi silinsin mi?]]></string>
     <string name="created_playlist_x">\'%1$s\' çalma listesi oluşturuldu.</string>
     <string name="could_not_create_playlist">Çalma listesi oluşturulamadı.</string>
-    <string name="inserted_one_song_into_playlist_x">%s çalma listesine bir şarkı eklendi.</string>
-    <string name="inserted_x_songs_into_playlist_x">%2$s çalma listesine %1$d şarkı eklendi.</string>
     <string name="playlist_exists">%s adında bir çalma listesi zaten var.</string>
     <string name="playlist_created">Çalma listesi %s başarıyla oluşturuldu.</string>
     <string name="remove_song_from_playlist_title">Şarkıyı çalma listesinden kaldır</string>

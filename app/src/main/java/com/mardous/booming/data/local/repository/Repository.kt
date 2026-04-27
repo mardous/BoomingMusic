@@ -60,13 +60,13 @@ interface Repository {
     suspend fun allYears(): List<ReleaseYear>
     suspend fun allFolders(): FileSystemQuery
     suspend fun filesInPath(path: String): FileSystemQuery
-    suspend fun playlists(): List<PlaylistEntity>
     suspend fun playlistSongs(playlistId: Long): List<SongEntity>
-    fun playlistSongsObservable(playListId: Long): LiveData<List<SongEntity>>
     suspend fun devicePlaylists(): List<Playlist>
     suspend fun devicePlaylistSongs(playlist: Playlist): List<Song>
     suspend fun devicePlaylist(playlistId: Long): Playlist
-    suspend fun playlistsWithSongs(sorted: Boolean = false): List<PlaylistWithSongs>
+    suspend fun playlistsWithSongs(): List<PlaylistWithSongs>
+    suspend fun playlistsWithSongs(sorted: Boolean): List<PlaylistWithSongs>
+    suspend fun searchPlaylists(searchQuery: String): List<PlaylistWithSongs>
     suspend fun playlistWithSongs(playlistId: Long): PlaylistWithSongs
     fun playlistWithSongsObservable(playlistId: Long): LiveData<PlaylistWithSongs>
     suspend fun isSongFavorite(songId: Long): Boolean
@@ -86,7 +86,6 @@ interface Repository {
     suspend fun renamePlaylist(playlistId: Long, name: String)
     suspend fun updatePlaylist(playlist: PlaylistEntity)
     suspend fun insertSongsInPlaylist(songs: List<SongEntity>)
-    suspend fun removeSongFromPlaylist(songEntity: SongEntity)
     suspend fun deleteSongsInPlaylist(songs: List<SongEntity>)
     suspend fun deleteSong(songId: Long): Song
     suspend fun deleteSongs(songs: List<Song>)
@@ -180,13 +179,8 @@ class RealRepository(
 
     override suspend fun filesInPath(path: String): FileSystemQuery = specialRepository.musicFilesInPath(path)
 
-    override suspend fun playlists(): List<PlaylistEntity> = playlistRepository.playlists()
-
     override suspend fun playlistSongs(playlistId: Long): List<SongEntity> =
         playlistRepository.playlistSongs(playlistId)
-
-    override fun playlistSongsObservable(playListId: Long): LiveData<List<SongEntity>> =
-        playlistRepository.playlistSongsObservable(playListId)
 
     override suspend fun devicePlaylists(): List<Playlist> =
         playlistRepository.devicePlaylists()
@@ -197,8 +191,14 @@ class RealRepository(
     override suspend fun devicePlaylist(playlistId: Long): Playlist =
         playlistRepository.devicePlaylist(playlistId)
 
+    override suspend fun playlistsWithSongs(): List<PlaylistWithSongs> =
+        playlistRepository.playlistsWithSongs()
+
     override suspend fun playlistsWithSongs(sorted: Boolean): List<PlaylistWithSongs> =
         playlistRepository.playlistsWithSongs(sorted)
+
+    override suspend fun searchPlaylists(searchQuery: String): List<PlaylistWithSongs> =
+        playlistRepository.searchPlaylists(searchQuery)
 
     override suspend fun playlistWithSongs(playlistId: Long): PlaylistWithSongs =
         playlistRepository.playlistWithSongs(playlistId)
@@ -259,9 +259,6 @@ class RealRepository(
 
     override suspend fun insertSongsInPlaylist(songs: List<SongEntity>) =
         playlistRepository.insertSongs(songs)
-
-    override suspend fun removeSongFromPlaylist(songEntity: SongEntity) =
-        playlistRepository.removeSongFromPlaylist(songEntity)
 
     override suspend fun deleteSongsInPlaylist(songs: List<SongEntity>) =
         playlistRepository.deleteSongsFromPlaylist(songs)

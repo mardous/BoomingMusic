@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Δεν υπάρχουν εισαγόμενες λίστες αναπαραγωγής.</string>
     <string name="playlist_x_not_imported">Η λίστα αναπαραγωγής %s δεν έχει εισαχθεί.</string>
     <string name="action_import_playlist">Import playlist…</string>
-    <string name="action_new_playlist">New playlist…</string>
     <string name="new_playlist_title">Νέα λίστα αναπαραγωγής</string>
     <string name="add_playlist_title">Προσθήκη στη λίστα αναπαραγωγής</string>
     <string name="rename_playlist_title">Μετονομασία λίστας αναπαραγωγής</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Διαγραφή <b>%d</b> λίστες αναπαραγωγής?]]></string>
     <string name="created_playlist_x">Δημιουργήθηκε λίστα αναπαραγωγής \'%1$s\'.</string>
     <string name="could_not_create_playlist">Αδυναμία δημιουργίας λίστας αναπαραγωγής.</string>
-    <string name="inserted_one_song_into_playlist_x">Εισήχθη ένα τραγούδι στη λίστα αναπαραγωγής %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Εισήχθησαν %1$d τραγούδια στη λίστα αναπαραγωγής %2$s.</string>
     <string name="playlist_exists">Η λίστα αναπαραγωγής %s υπάρχει ήδη.</string>
     <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Αφαίρεση τραγουδιού από τη λίστα αναπαραγωγής</string>

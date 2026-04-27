@@ -63,7 +63,6 @@
     <string name="there_are_no_importable_playlists">Pole imporditavaid esitusloendeid.</string>
     <string name="playlist_x_not_imported">„%s“ esitusloend pole imporditud.</string>
     <string name="action_import_playlist">Impordi esitusloend…</string>
-    <string name="action_new_playlist">Uus esitusloend…</string>
     <string name="new_playlist_title">Uus esitusloend</string>
     <string name="add_playlist_title">Lisa esitusloendisse</string>
     <string name="rename_playlist_title">Muuda esitusloendi nime</string>
@@ -88,8 +87,6 @@
     <string name="delete_x_playlists"><![CDATA[Kas kustutad <b>%d</b> esitusloendit?]]></string>
     <string name="created_playlist_x">„%1$s“ esitusloend on loodud.</string>
     <string name="could_not_create_playlist">Esitusloendi loomine ei õnnestunud.</string>
-    <string name="inserted_one_song_into_playlist_x">Lisasin ühe loo „%s“ esitusloendisse.</string>
-    <string name="inserted_x_songs_into_playlist_x">Lisasin %1$d lugu „%2$s“ esitusloendisse.</string>
     <string name="playlist_exists">„%s“ esitusloend on juba olemas.</string>
     <string name="playlist_created">„%s“ esitusloendi loomine õnnestus.</string>
     <string name="remove_song_from_playlist_title">Eemalda lugu esitusloendist</string>

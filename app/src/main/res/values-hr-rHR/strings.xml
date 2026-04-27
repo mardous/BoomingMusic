@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Nema playlista za uvoz.</string>
     <string name="playlist_x_not_imported">Playlist %s nije uvezen.</string>
     <string name="action_import_playlist">Uvezi playlist…</string>
-    <string name="action_new_playlist">Novi playlist…</string>
     <string name="new_playlist_title">Novi playlist</string>
     <string name="add_playlist_title">Dodaj playlistu</string>
     <string name="rename_playlist_title">Preimenuj playlistu</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Delete <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Kreiran playlist \'%1$s\'.</string>
     <string name="could_not_create_playlist">Couldn\'t create playlist.</string>
-    <string name="inserted_one_song_into_playlist_x">Dodana jedna pjesma u playlist %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Dodane %1$d pjesme u playlist %2$s.</string>
     <string name="playlist_exists">Playlist %s već postoji.</string>
     <string name="playlist_created">Playlist %s je uspješno kreiran.</string>
     <string name="remove_song_from_playlist_title">Ukloni pjesmu s playlista</string>

@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Aucune liste de lecture ne peut être importée.</string>
     <string name="playlist_x_not_imported">La liste de lecture %s n\'a pas été importée.</string>
     <string name="action_import_playlist">Importer la liste de liste de lecture…</string>
-    <string name="action_new_playlist">Nouvelle liste de lecture…</string>
     <string name="new_playlist_title">Nouvelle liste de lecture</string>
     <string name="add_playlist_title">Ajouter à la liste de lecture</string>
     <string name="rename_playlist_title">Renommer la liste de lecture</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Supprimer <b>%d</b> listes de lecture ?]]></string>
     <string name="created_playlist_x">Liste de lecture \'%1$s\' créée.</string>
     <string name="could_not_create_playlist">Impossible de créer la liste de lecture.</string>
-    <string name="inserted_one_song_into_playlist_x">Un titre a été ajouté à la liste de lecture %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">%1$d titres ajoutés à la liste de lecture %2$s.</string>
     <string name="playlist_exists">La liste de lecture %s existe déjà.</string>
     <string name="playlist_created">La liste de lecture %s a été créée avec succès.</string>
     <string name="remove_song_from_playlist_title">Supprimer le titre de la liste de lecture</string>

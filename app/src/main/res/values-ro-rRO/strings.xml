@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Nu există liste de redare importabile.</string>
     <string name="playlist_x_not_imported">Playlist %s nu a fost importat.</string>
     <string name="action_import_playlist">Importă playlist…</string>
-    <string name="action_new_playlist">Playlist nou…</string>
     <string name="new_playlist_title">Playlist nou</string>
     <string name="add_playlist_title">Adaugă la playlist</string>
     <string name="rename_playlist_title">Redenumește playlist</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Ștergeți <b>%d</b> liste?]]></string>
     <string name="created_playlist_x">Lista de redare creată \'%1$s\'.</string>
     <string name="could_not_create_playlist">Nu s-a putut crea lista de redare.</string>
-    <string name="inserted_one_song_into_playlist_x">A inserat o melodie în lista de redare %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">%1$d melodii inserate în lista de redare %2$s.</string>
     <string name="playlist_exists">Lista de redare %s există deja.</string>
     <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">Elimină melodia din playlist</string>

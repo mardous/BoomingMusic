@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">कोई आयात योग्य प्लेलिस्ट नहीं है.</string>
     <string name="playlist_x_not_imported">प्लेलिस्ट %s आयातित नहीं हुई.</string>
     <string name="action_import_playlist">प्लेलिस्ट आयात करें</string>
-    <string name="action_new_playlist">नई प्लेलिस्ट</string>
     <string name="new_playlist_title">नई प्लेलिस्ट</string>
     <string name="add_playlist_title">प्लेलिस्ट में जोड़ें</string>
     <string name="rename_playlist_title">प्लेलिस्ट का नाम बदलें</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[<b>%d</b> प्लेलिस्ट हटाना चाहते हैं?]]></string>
     <string name="created_playlist_x">प्लेलिस्ट \'%1$s\' बनाई गई.</string>
     <string name="could_not_create_playlist">प्लेलिस्ट नहीं बनाई जा सकी.</string>
-    <string name="inserted_one_song_into_playlist_x">प्लेलिस्ट %s में एक गाना डाला गया.</string>
-    <string name="inserted_x_songs_into_playlist_x">%1$d गाने प्लेलिस्ट %2$s में डाले गए.</string>
     <string name="playlist_exists">प्लेलिस्ट %s पहले से मौजूद है.</string>
     <string name="playlist_created">Playlist %s created successfully.</string>
     <string name="remove_song_from_playlist_title">प्लेलिस्ट से गाना हटाएँ</string>

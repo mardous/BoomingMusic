@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Der er ingen importérbare afspilningslister.</string>
     <string name="playlist_x_not_imported">Spilleliste %s ikke importeret.</string>
     <string name="action_import_playlist">Importér afspilningsliste…</string>
-    <string name="action_new_playlist">Ny afspilningsliste…</string>
     <string name="new_playlist_title">Ny afspilningsliste</string>
     <string name="add_playlist_title">Føj til afspilningsliste</string>
     <string name="rename_playlist_title">Omdøb afspilningsliste</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Slet <b>%d</b> afspilningslister?]]></string>
     <string name="created_playlist_x">Oprettet afspilningsliste \'%1$s\'.</string>
     <string name="could_not_create_playlist">Kunne ikke oprette afspilningsliste.</string>
-    <string name="inserted_one_song_into_playlist_x">Indsatte en sang i afspilningsliste %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Indsatte %1$d sange i afspilningsliste %2$s.</string>
     <string name="playlist_exists">Spilleliste %s findes allerede.</string>
     <string name="playlist_created">Afspilningsliste %s blev oprettet.</string>
     <string name="remove_song_from_playlist_title">Fjern sang fra afspilningsliste</string>

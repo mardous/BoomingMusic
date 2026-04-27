@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">No existen listas de reproducción importables.</string>
     <string name="playlist_x_not_imported">La lista de reproducción %s no se importó.</string>
     <string name="action_import_playlist">Importar lista de reproducción…</string>
-    <string name="action_new_playlist">Lista de reproducción nueva…</string>
     <string name="new_playlist_title">Lista de reproducción nueva</string>
     <string name="add_playlist_title">Añadir a la lista de reproducción</string>
     <string name="rename_playlist_title">Cambiar el nombre de la lista</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[¿Eliminar <b>%d</b> listas de reproducción?]]></string>
     <string name="created_playlist_x">Se creó la lista de reproducción «%1$s».</string>
     <string name="could_not_create_playlist">No se pudo crear la lista de reproducción.</string>
-    <string name="inserted_one_song_into_playlist_x">Se insertó 1 canción en la lista %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Se insertaron %1$d canciones en la lista %2$s.</string>
     <string name="playlist_exists">La lista de reproducción %s ya existe.</string>
     <string name="playlist_created">Lista de reproducción %s creada correctamente.</string>
     <string name="remove_song_from_playlist_title">Eliminar canción de la lista de reproducción</string>

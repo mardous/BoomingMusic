@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">가져올 수 있는 재생목록이 없습니다.</string>
     <string name="playlist_x_not_imported">재생목록 %s을(를) 가져오지 않았습니다.</string>
     <string name="action_import_playlist">재생목록 가져오기…</string>
-    <string name="action_new_playlist">새 재생목록…</string>
     <string name="new_playlist_title">새 재생목록</string>
     <string name="add_playlist_title">재생목록에 추가</string>
     <string name="rename_playlist_title">재생목록 이름 변경</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[<b>%d</b>개의 재생목록을 삭제하시겠습니까?]]></string>
     <string name="created_playlist_x">재생목록 \'%1$s\' 생성됨.</string>
     <string name="could_not_create_playlist">재생목록을 만들 수 없습니다.</string>
-    <string name="inserted_one_song_into_playlist_x">재생목록 %s에 한 곡을 추가했습니다.</string>
-    <string name="inserted_x_songs_into_playlist_x">재생목록 %2$s에 %1$d곡을 추가했습니다.</string>
     <string name="playlist_exists">재생목록 %s이(가) 이미 존재합니다.</string>
     <string name="playlist_created">재생목록 %s이(가) 성공적으로 생성되었습니다.</string>
     <string name="remove_song_from_playlist_title">재생목록에서 곡 제거</string>

@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">لا توجد قوائم تشغيل قابلة للاستيراد.</string>
     <string name="playlist_x_not_imported">لم يتم استيراد قائمة التشغيل %s.</string>
     <string name="action_import_playlist">استيراد قائمة التشغيل…</string>
-    <string name="action_new_playlist">قائمة تشغيل جديدة…</string>
     <string name="new_playlist_title">قائمة تشغيل جديدة</string>
     <string name="add_playlist_title">إضافة إلى قائمة التشغيل</string>
     <string name="rename_playlist_title">إعادة تسمية قائمة التشغيل</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[حذف قائمة التشغيل <b>%d</b>؟]]></string>
     <string name="created_playlist_x">تم إنشاء قائمة تشغيل \'%1$s\'.</string>
     <string name="could_not_create_playlist">تعذر إنشاء قائمة تشغيل.</string>
-    <string name="inserted_one_song_into_playlist_x">تم إدخال أغنية واحدة في قائمة التشغيل %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">أدمج %1$d أغنية في قائمة التشغيل %2$s.</string>
     <string name="playlist_exists">قائمة التشغيل %s موجودة بالفعل.</string>
     <string name="playlist_created">تم إنشاء قائمة التشغيل %s بنجاح.</string>
     <string name="remove_song_from_playlist_title">إزالة الأغنية من قائمة التشغيل</string>

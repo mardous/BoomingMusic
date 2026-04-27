@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">No hi ha llistes importables.</string>
     <string name="playlist_x_not_imported">La llista %s no s\'ha importat.</string>
     <string name="action_import_playlist">Importa la llista…</string>
-    <string name="action_new_playlist">Nova llista…</string>
     <string name="new_playlist_title">Nova llista</string>
     <string name="add_playlist_title">Afegeix a la llista</string>
     <string name="rename_playlist_title">Canvia el nom a la llista de reproducció</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Voleu esborrar <b>%d</b> llistes?]]></string>
     <string name="created_playlist_x">S\'ha creat la llista de reproducció «%1$s».</string>
     <string name="could_not_create_playlist">No s\'ha pogut crear la llista de reproducció.</string>
-    <string name="inserted_one_song_into_playlist_x">S\'ha afegit una cançó a «%s».</string>
-    <string name="inserted_x_songs_into_playlist_x">S\'han afegit %1$d cançons a «%2$s».</string>
     <string name="playlist_exists">La llista «%s» ja existeix.</string>
     <string name="playlist_created">La llista %s s\'ha creat correctament.</string>
     <string name="remove_song_from_playlist_title">Treu la cançó de la llista</string>

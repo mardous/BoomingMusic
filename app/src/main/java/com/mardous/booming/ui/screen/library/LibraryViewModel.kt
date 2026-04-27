@@ -55,11 +55,14 @@ import com.mardous.booming.data.model.ReleaseYear
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.media.indexOfSong
+import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistUiState
 import com.mardous.booming.ui.screen.library.home.SuggestedResult
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.StorageUtil
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.io.File
@@ -332,8 +335,56 @@ class LibraryViewModel(
         emit(repository.notRecentlyPlayedSongs())
     }
 
-    fun renamePlaylist(playListId: Long, name: String) = viewModelScope.launch(IO) {
-        repository.renamePlaylist(playListId, name)
+    private val _addToPlaylistUiState = MutableStateFlow<AddToPlaylistUiState?>(null)
+    val addToPlaylistUiState = _addToPlaylistUiState.asStateFlow()
+
+    fun prepareToAddToPlaylist(searchQuery: String? = null) = viewModelScope.launch(IO) {
+        _addToPlaylistUiState.update { it ?: AddToPlaylistUiState.Loading }
+
+        val playlists = if (searchQuery.isNullOrBlank()) {
+            repository.playlistsWithSongs()
+        } else {
+            repository.searchPlaylists(searchQuery)
+        }
+
+        _addToPlaylistUiState.value = if (playlists.isEmpty()) {
+            AddToPlaylistUiState.Empty(searchQuery)
+        } else {
+            AddToPlaylistUiState.Ready(playlists)
+        }
+    }
+
+    fun addToPlaylists(
+        playlistsIds: List<Long>,
+        songs: List<Song>
+    ) = viewModelScope.launch(IO) {
+        val state = addToPlaylistUiState.value ?: return@launch
+        if (state is AddToPlaylistUiState.Ready && state.playlists.isNotEmpty()) {
+            _addToPlaylistUiState.value = state.copy(isLoading = true)
+
+            var success = true
+            val playlists = state.playlists.filter { playlistsIds.contains(it.playlistEntity.playListId) }
+            for (playlist in playlists) {
+                val checkedSongs = songs.filterNot {
+                    repository.checkSongExistInPlaylist(playlist.playlistEntity, it)
+                }
+                val result = runCatching {
+                    insertSongs(
+                        songs = checkedSongs.map {
+                            it.toSongEntity(playListId = playlist.playlistEntity.playListId)
+                        }
+                    )
+                }
+                success = success && result.isSuccess
+            }
+
+            _addToPlaylistUiState.value = AddToPlaylistUiState.Completed(success)
+            forceReload(ReloadType.Playlists)
+        }
+    }
+
+    fun finishAddingToPlaylists() {
+        _addToPlaylistUiState.value = null
     }
 
     fun updatePlaylist(
@@ -373,47 +424,6 @@ class LibraryViewModel(
         forceReload(ReloadType.Playlists)
     }
 
-    fun addToPlaylist(playlistName: String, songs: List<Song>): LiveData<AddToPlaylistResult> =
-        liveData(IO) {
-            emit(AddToPlaylistResult(playlistName, isWorking = true))
-
-            val playlists = checkPlaylistExists(playlistName)
-            if (playlists.isEmpty()) {
-                val playlistId: Long = createPlaylist(PlaylistEntity(playlistName = playlistName))
-                insertSongs(songs.map { it.toSongEntity(playlistId) })
-                val playlistCreated = (playlistId != -1L)
-                val isFavoritePlaylist = repository.checkFavoritePlaylist()?.playListId == playlistId
-                emit(
-                    AddToPlaylistResult(
-                        playlistName,
-                        playlistCreated = playlistCreated,
-                        isFavoritePlaylist = isFavoritePlaylist,
-                        insertedSongs = songs.size
-                    )
-                )
-            } else {
-                val playlist = playlists.firstOrNull()
-                if (playlist != null) {
-                    val checkedSongs = songs.filterNot { checkSongExistInPlaylist(playlist, it) }
-                    val favoritePlaylist = repository.checkFavoritePlaylist()
-                    val isFavoritePlaylist = playlist.playListId == favoritePlaylist?.playListId
-                    insertSongs(checkedSongs.map {
-                        it.toSongEntity(playListId = playlist.playListId)
-                    })
-                    emit(
-                        AddToPlaylistResult(
-                            playlistName,
-                            isFavoritePlaylist = isFavoritePlaylist,
-                            insertedSongs = checkedSongs.size
-                        )
-                    )
-                } else {
-                    emit(AddToPlaylistResult(playlistName))
-                }
-            }
-            forceReload(ReloadType.Playlists)
-        }
-
     fun createCustomPlaylist(
         playlistName: String,
         customCoverUri: String? = null,
@@ -451,10 +461,6 @@ class LibraryViewModel(
         forceReload(ReloadType.Playlists)
     }
 
-    fun playlistsAsync(): LiveData<List<PlaylistWithSongs>> = liveData(IO) {
-        emit(repository.playlistsWithSongs())
-    }
-
     fun favoritePlaylist(): LiveData<PlaylistEntity> = liveData(IO) {
         emit(repository.favoritePlaylist())
     }
@@ -463,12 +469,7 @@ class LibraryViewModel(
         emit(repository.isSongFavorite(song.id))
     }
 
-    private suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song) =
-        repository.checkSongExistInPlaylist(playlistEntity, song)
-
     suspend fun insertSongs(songs: List<SongEntity>) = repository.insertSongsInPlaylist(songs)
-    private suspend fun removeSongFromPlaylist(songEntity: SongEntity) =
-        repository.removeSongFromPlaylist(songEntity)
 
     private suspend fun checkPlaylistExists(playlistName: String): List<PlaylistEntity> =
         repository.checkPlaylistExists(playlistName)

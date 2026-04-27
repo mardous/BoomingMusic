@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Non ci sono playlist importabili.</string>
     <string name="playlist_x_not_imported">Playlist %s non importata.</string>
     <string name="action_import_playlist">Importa playlist…</string>
-    <string name="action_new_playlist">Nuova scaletta…</string>
     <string name="new_playlist_title">Nuova playlist</string>
     <string name="add_playlist_title">Aggiungi alla playlist</string>
     <string name="rename_playlist_title">Rinomina playlist</string>
@@ -91,8 +90,6 @@
     <string name="delete_x_playlists"><![CDATA[Eliminare le playlist <b>%d</b>?]]></string>
     <string name="created_playlist_x">Creata playlist \'%1$s\'.</string>
     <string name="could_not_create_playlist">Impossibile creare la playlist.</string>
-    <string name="inserted_one_song_into_playlist_x">Aggiunto un brano nella playlist %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Aggiunti %1$d brani nella playlist %2$s.</string>
     <string name="playlist_exists">La playlist %s esiste già.</string>
     <string name="playlist_created">Playlist %s creata con successo.</string>
     <string name="remove_song_from_playlist_title">Rimuovi brano dalla playlist</string>
