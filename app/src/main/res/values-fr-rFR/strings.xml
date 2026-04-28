@@ -935,4 +935,17 @@
     <string name="bit_perfect_is_active">Bit-perfect est actif</string>
     <string name="bit_perfect_description">Transmettre le signal audio directement vers un DAC USB sans rééchantillonnage du système.</string>
     <string name="sleep_timer_x_secs">%d secondes</string>
+    <string name="search_playlists">Rechercher des playlists</string>
+    <string name="select_playlists_title">Sélectionner des playlists</string>
+    <string name="new_playlist_action">Nouvelle</string>
+    <string name="no_playlists_create_new">Cliquez sur le bouton « Nouvelle » pour créer une playlist</string>
+    <string name="no_playlists_that_match_x">Il n\'y a aucune playlist correspondant à « %s ».</string>
+    <string name="songs_added_to_playlists">Titres ajoutés aux playlists</string>
+    <string name="no_playlists_label">Aucune playlist</string>
+    <plurals name="x_playlists_selected">
+        <item quantity="one">%d playlist sélectionnée</item>
+        <item quantity="many">%d playlists sélectionnées</item>
+        <item quantity="other">%d playlists sélectionnées</item>
+    </plurals>
+    <string name="auto_theme_name">Auto</string>
 </resources>
