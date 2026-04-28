@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Guardadas %1$d playlists, error al guardar %2$d.</string>
     <string name="delete_playlist_title">Eliminar playlist</string>
     <string name="delete_playlists_title">Eliminar playlists</string>
-    <string name="delete_playlist_x"><![CDATA[¿Borrar playlist <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[¿Borrar playlist <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[¿Borrar <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Se creó la playlist \"%1$s\".</string>
     <string name="could_not_create_playlist">No se pudo crear la playlist.</string>
