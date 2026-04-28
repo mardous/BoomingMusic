@@ -910,37 +910,4 @@
     <string name="network_features_title">Bật các tính năng mạng</string>
     <string name="wifi_only_network_features_title">Sử dụng các tính năng mạng chỉ khi có Wi-Fi</string>
     <string name="wifi_only_network_features_summary">Chỉ cho phép các tính năng mạng khi kết nối với Wi-Fi</string>
-    <string name="new_playlist_action"></string>
-    <string name="songs_added_to_playlists"></string>
-    <string name="no_playlists_that_match_x"></string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="lastfm_biography_summary"></string>
-    <string name="lastfm_scrobbling_summary"></string>
-    <string name="auto_theme_name"></string>
-    <plurals name="x_playlists_selected">
-    </plurals>
-    <string name="search_playlists"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="lastfm_scrobbling_title"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="lastfm_now_playing_title"></string>
-    <string name="use_lrclib_provider_title"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="use_betterlyrics_provider_summary"></string>
-    <string name="use_betterlyrics_provider_title"></string>
-    <string name="no_playlists_create_new"></string>
-    <string name="lastfm_login_title"></string>
-    <string name="use_simpmusic_provider_summary"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="use_lrclib_provider_summary"></string>
-    <string name="lastfm_now_playing_summary"></string>
-    <string name="no_playlists_label"></string>
-    <string name="select_playlists_title"></string>
-    <string name="use_simpmusic_provider_title"></string>
-    <string name="lastfm_biography_title"></string>
-    <string name="grid_size_5" translatable="false"></string>
-    <string name="sleep_timer_x_secs"></string>
-    <string name="lastfm_login_summary"></string>
 </resources>
