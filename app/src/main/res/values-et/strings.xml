@@ -930,4 +930,5 @@
     <string name="open_on_play_summary"></string>
     <string name="open_on_play_title"></string>
     <string name="lyrics_progressive_coloring_summary"></string>
+    <string name="new_playlist_action"></string>
 </resources>
