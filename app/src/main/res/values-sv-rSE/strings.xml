@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Sparade %1$d spellistor, kunde inte spara %2$d.</string>
     <string name="delete_playlist_title">Ta bort spellista</string>
     <string name="delete_playlists_title">Ta bort spellistor</string>
-    <string name="delete_playlist_x"><![CDATA[Ta bort spellista <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Ta bort spellista <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Ta bort <b>%d</b> spellistor?]]></string>
     <string name="created_playlist_x">Skapade spellista \'%1$s\'.</string>
     <string name="could_not_create_playlist">Det gick inte att skapa spellista.</string>
@@ -481,7 +481,7 @@
     <string name="external_file_lyrics">Extern fil</string>
     <string name="action_import_synchronized_lyrics">Importera synkroniserade låttexter</string>
     <string name="action_share_synchronized_lyrics">Dela synkroniserade låttexter</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vill du importera synkroniserade LRC-texter för <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vill du importera synkroniserade LRC-texter för <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Importerade låttexter för %s</string>
     <string name="could_not_import_lyrics_for_song_x">Kunde inte importera låttexter för %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Välj en LRC-fil med synkroniserade låttexter.</string>
@@ -932,4 +932,5 @@
     <string name="widget_image_corner_radius_summary">Ändra rundningen på omslagsbilden.</string>
     <string name="widget_third_line_title">Tredje informationsraden</string>
     <string name="widget_third_line_summary">Välj vad som ska visas i den tredje textraden.</string>
+    <string name="sleep_timer_x_secs">%d sekunder</string>
 </resources>

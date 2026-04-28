@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">已保存 %1$d 播放列表，未能保存 %2$d。</string>
     <string name="delete_playlist_title">删除播放列表</string>
     <string name="delete_playlists_title">删除多个播放列表</string>
-    <string name="delete_playlist_x"><![CDATA[删除播放列表 <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[删除播放列表 <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[删除 <b>%d</b> 播放列表吗？]]></string>
     <string name="created_playlist_x">已创建播放列表 \'%1$s\'。</string>
     <string name="could_not_create_playlist">无法创建播放列表。</string>

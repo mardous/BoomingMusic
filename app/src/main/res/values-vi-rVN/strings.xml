@@ -86,8 +86,8 @@
     <string name="saved_x_playlists_failed_to_save_x">Đã lưu danh sách phát %1$d, lưu thất bại %2$d.</string>
     <string name="delete_playlist_title">Xoá danh sách phát</string>
     <string name="delete_playlists_title">Xoá các danh sách phát</string>
-    <string name="delete_playlist_x"><![CDATA[Xoá danh sách phát <b>%s</b>?]]></string>
-    <string name="delete_x_playlists"><![CDATA[Xoá các danh sách phát <b>%d</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Xoá danh sách phát <b>%s</b>\?]]></string>
+    <string name="delete_x_playlists"><![CDATA[Xoá các danh sách phát <b>%d</b>\?]]></string>
     <string name="created_playlist_x">Đã tạo danh sách phát \"%1$s\".</string>
     <string name="could_not_create_playlist">Không thể tạo danh sách phát.</string>
     <string name="playlist_exists">Danh sách phát %s đã tồn tại.</string>
@@ -473,7 +473,7 @@
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Import synced lyrics</string>
     <string name="action_share_synchronized_lyrics">Chia sẻ lời bài hát đã được đồng bộ</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Do you want to import synchronized LRC lyrics for <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Do you want to import synchronized LRC lyrics for <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Imported lyrics for %s</string>
     <string name="could_not_import_lyrics_for_song_x">Couldn\'t import lyrics for %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Select a LRC file containing synced lyrics.</string>

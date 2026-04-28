@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Tallennettu %1$d soittolistaa, epäonnistuttu tallentamaan %2$d.</string>
     <string name="delete_playlist_title">Poista soittolista</string>
     <string name="delete_playlists_title">Poista soittolistat</string>
-    <string name="delete_playlist_x"><![CDATA[Poista soittolista <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Poista soittolista <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Delete <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Luotu soittolista \'%1$s\'.</string>
     <string name="could_not_create_playlist">Soittolistaa ei voitu luoda.</string>
@@ -481,7 +481,7 @@
     <string name="external_file_lyrics">Ulkoinen tiedosto</string>
     <string name="action_import_synchronized_lyrics">Tuo synkronoidut sanoitukset</string>
     <string name="action_share_synchronized_lyrics">Jaa synkronoidut sanoitukset</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Haluatko tuoda synkronoidut LRC sanoitukset <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Haluatko tuoda synkronoidut LRC sanoitukset <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Tuotu sanoitus %s</string>
     <string name="could_not_import_lyrics_for_song_x">Sanoituksia ei voitu tuoda %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Valitse LRC-tiedosto, joka sisältää synkronoituja sanoituksia.</string>

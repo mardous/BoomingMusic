@@ -102,7 +102,7 @@
     <string name="saving_changes">Sauvegarde des modifications</string>
     <string name="changes_saved_successfully">Les modifications ont été enregistrées avec succès.</string>
     <string name="could_not_save_some_changes">Impossible d\'enregistrer certaines modifications.</string>
-    <string name="web_search">Recherche sur l\'internet</string>
+    <string name="web_search">Recherche sur internet</string>
     <string name="where_do_you_want_to_search">Où voulez-vous effectuer une recherche ?</string>
     <string name="configure_action">Configurer</string>
     <string name="blacklist_directory">Répertoire de la liste noire</string>
@@ -338,7 +338,6 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Titre</item>
-        <item quantity="many"/>
         <item quantity="other">Titres</item>
     </plurals>
     <plurals name="albums">
@@ -348,7 +347,6 @@
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d titre</item>
-        <item quantity="many"/>
         <item quantity="other">%d titres</item>
     </plurals>
     <plurals name="x_albums">
@@ -358,22 +356,18 @@
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artiste</item>
-        <item quantity="many"/>
         <item quantity="other">%d artistes</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d fois</item>
-        <item quantity="many"/>
         <item quantity="other">%d fois</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d lecture</item>
-        <item quantity="many"/>
         <item quantity="other">%d lectures</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d élément</item>
-        <item quantity="many"/>
         <item quantity="other">%d éléments</item>
     </plurals>
     <!-- Home -->
@@ -746,7 +740,7 @@
     <string name="online_artist_images_title">Télécharger les images de l\'artiste</string>
     <string name="preferred_image_size_title">Taille d\'image préférée</string>
     <string name="online_album_covers_title">Télécharger les couvertures d\'album manquantes</string>
-    <string name="online_album_covers_summary">Les images téléchargées ne sont pas intégrées dans les fichiers audio ; elles sont uniquement visibles depuis l\'application. Cela dépend de votre politique de téléchargement des métadonnées.</string>
+    <string name="online_album_covers_summary">Les images téléchargées ne sont pas intégrées aux fichiers audio ; elles ne sont visibles que dans l\'application.</string>
     <string name="delete_downloaded_lyrics_title">Supprimer les paroles téléchargées</string>
     <string name="delete_downloaded_lyrics_summary">Seules les paroles téléchargées par Booming Music. N\'affecte pas les paroles intégrées dans les tags ID3v2 ou les fichiers LCR.</string>
     <string name="lyrics_cleared">Paroles effacées.</string>
@@ -940,4 +934,18 @@
     <string name="advanced_settings">Paramètres avancés</string>
     <string name="bit_perfect_is_active">Bit-perfect est actif</string>
     <string name="bit_perfect_description">Transmettre le signal audio directement vers un DAC USB sans rééchantillonnage du système.</string>
+    <string name="sleep_timer_x_secs">%d secondes</string>
+    <string name="search_playlists">Rechercher des playlists</string>
+    <string name="select_playlists_title">Sélectionner des playlists</string>
+    <string name="new_playlist_action">Nouvelle</string>
+    <string name="no_playlists_create_new">Cliquez sur le bouton « Nouvelle » pour créer une playlist</string>
+    <string name="no_playlists_that_match_x">Il n\'y a aucune playlist correspondant à « %s ».</string>
+    <string name="songs_added_to_playlists">Titres ajoutés aux playlists</string>
+    <string name="no_playlists_label">Aucune playlist</string>
+    <plurals name="x_playlists_selected">
+        <item quantity="one">%d playlist sélectionnée</item>
+        <item quantity="many">%d playlists sélectionnées</item>
+        <item quantity="other">%d playlists sélectionnées</item>
+    </plurals>
+    <string name="auto_theme_name">Auto</string>
 </resources>

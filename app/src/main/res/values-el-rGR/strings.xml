@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Οι αποθηκευμένες λίστες %1$d απέτυχαν να αποθηκεύσουν το %2$d.</string>
     <string name="delete_playlist_title">Διαγραφή λίστας αναπαραγωγής</string>
     <string name="delete_playlists_title">Διαγραφή λιστών αναπαραγωγής</string>
-    <string name="delete_playlist_x"><![CDATA[Διαγραφή λίστας αναπαραγωγής <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Διαγραφή λίστας αναπαραγωγής <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Διαγραφή <b>%d</b> λίστες αναπαραγωγής?]]></string>
     <string name="created_playlist_x">Δημιουργήθηκε λίστα αναπαραγωγής \'%1$s\'.</string>
     <string name="could_not_create_playlist">Αδυναμία δημιουργίας λίστας αναπαραγωγής.</string>
@@ -481,7 +481,7 @@
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Εισαγωγή συγχρονισμένων στίχων</string>
     <string name="action_share_synchronized_lyrics">Κοινοποίηση συγχρονισμένων στίχων</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Θέλετε να εισαγάγετε συγχρονισμένους στίχους LRC για <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Θέλετε να εισαγάγετε συγχρονισμένους στίχους LRC για <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Εισαγόμενοι στίχοι για %s</string>
     <string name="could_not_import_lyrics_for_song_x">Αδυναμία εισαγωγής στίχων για %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Επιλέξτε ένα αρχείο LRC που περιέχει συγχρονισμένους στίχους.</string>

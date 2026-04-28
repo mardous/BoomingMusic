@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Сохранено %1$d плейлистов, не удалось сохранить %2$d.</string>
     <string name="delete_playlist_title">Удалить плейлист</string>
     <string name="delete_playlists_title">Удалить плейлисты</string>
-    <string name="delete_playlist_x"><![CDATA[Удалить плейлист <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Удалить плейлист <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Удалить <b>%d</b> плейлистов?]]></string>
     <string name="created_playlist_x">Создан плейлист \'%1$s\'.</string>
     <string name="could_not_create_playlist">Не удалось создать плейлист.</string>
@@ -497,7 +497,7 @@
     <string name="external_file_lyrics">Внешний файл</string>
     <string name="action_import_synchronized_lyrics">Импортировать синхронизированный текст песни</string>
     <string name="action_share_synchronized_lyrics">Поделиться синхронизированным текстом песни</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Хотите импортировать синхронизированный LRC-текст для <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Хотите импортировать синхронизированный LRC-текст для <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Импортирован текст песни для %s</string>
     <string name="could_not_import_lyrics_for_song_x">Не удалось импортировать текст песни для %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Выберите LRC-файл, содержащий синхронизированные тексты песен.</string>
@@ -948,4 +948,5 @@
     <string name="widget_image_corner_radius_summary">Изменить скругление углов обложки альбома.</string>
     <string name="widget_third_line_summary">Выберите данные для отображения в третьей строке.</string>
     <string name="widget_third_line_title">Данные в третьей строке</string>
+    <string name="sleep_timer_x_secs">%d сек</string>
 </resources>

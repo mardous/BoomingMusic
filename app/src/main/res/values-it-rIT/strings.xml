@@ -86,8 +86,8 @@
     <string name="saved_x_playlists_failed_to_save_x">Salvate %1$d playlist, non salvate %2$d playlist.</string>
     <string name="delete_playlist_title">Elimina playlist</string>
     <string name="delete_playlists_title">Elimina playlist</string>
-    <string name="delete_playlist_x"><![CDATA[Eliminare la playlist <b>%s</b>?]]></string>
-    <string name="delete_x_playlists"><![CDATA[Eliminare le playlist <b>%d</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Eliminare la playlist <b>%s</b>\?]]></string>
+    <string name="delete_x_playlists"><![CDATA[Eliminare le playlist <b>%d</b>\?]]></string>
     <string name="created_playlist_x">Creata playlist \'%1$s\'.</string>
     <string name="could_not_create_playlist">Impossibile creare la playlist.</string>
     <string name="playlist_exists">La playlist %s esiste già.</string>
@@ -338,42 +338,34 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Brano</item>
-        <item quantity="many"/>
         <item quantity="other">Brani</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Album</item>
-        <item quantity="many"/>
         <item quantity="other">Album</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d brano</item>
-        <item quantity="many"/>
         <item quantity="other">%d brani</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d album</item>
-        <item quantity="many"/>
         <item quantity="other">%d album</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
-        <item quantity="many"/>
         <item quantity="other">%d artisti</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d volta</item>
-        <item quantity="many"/>
         <item quantity="other">%d volte</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d riproduzione</item>
-        <item quantity="many"/>
         <item quantity="other">%d riproduzioni</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d item</item>
-        <item quantity="many"/>
         <item quantity="other">%d items</item>
     </plurals>
     <!-- Home -->
@@ -489,7 +481,7 @@
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importa testo sincronizzato</string>
     <string name="action_share_synchronized_lyrics">Condividi testo sincronizzato</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vuoi importare i testi LRC sincronizzati per <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vuoi importare i testi LRC sincronizzati per <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Testo importato per %s</string>
     <string name="could_not_import_lyrics_for_song_x">Impossibile importare il testo di %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Selezionare un file LRC contenente il testo sincronizzato.</string>

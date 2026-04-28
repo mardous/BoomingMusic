@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Salvarea listelor de redare %1$d a eșuat la salvarea %2$d.</string>
     <string name="delete_playlist_title">Șterge playlist</string>
     <string name="delete_playlists_title">Şterge playlisturile</string>
-    <string name="delete_playlist_x"><![CDATA[Ștergeți playlist <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Ștergeți playlist <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Ștergeți <b>%d</b> liste?]]></string>
     <string name="created_playlist_x">Lista de redare creată \'%1$s\'.</string>
     <string name="could_not_create_playlist">Nu s-a putut crea lista de redare.</string>
@@ -489,7 +489,7 @@
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importă versuri sincronizate</string>
     <string name="action_share_synchronized_lyrics">Distribuie versuri sincronizate</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Doriți să importați versuri sincronizate LRC pentru <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Doriți să importați versuri sincronizate LRC pentru <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Versuri importate pentru %s</string>
     <string name="could_not_import_lyrics_for_song_x">Nu s-au putut importa versuri pentru %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Selectați un fișier LRC care conține versuri sincronizate.</string>

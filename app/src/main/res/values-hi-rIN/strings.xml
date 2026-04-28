@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">%1$d प्लेलिस्ट सहेजी गईं, %2$d सहेजने में विफल रहीं.</string>
     <string name="delete_playlist_title">प्लेलिस्ट हटाएँ</string>
     <string name="delete_playlists_title">प्लेलिस्ट हटाएँ</string>
-    <string name="delete_playlist_x"><![CDATA[प्लेलिस्ट हटाएँ <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[प्लेलिस्ट हटाएँ <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[<b>%d</b> प्लेलिस्ट हटाना चाहते हैं?]]></string>
     <string name="created_playlist_x">प्लेलिस्ट \'%1$s\' बनाई गई.</string>
     <string name="could_not_create_playlist">प्लेलिस्ट नहीं बनाई जा सकी.</string>

@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">تم حفظ قائمة التشغيل %1$d ، فشل في حفظ %2$d.</string>
     <string name="delete_playlist_title">حذف قائمة التشغيل</string>
     <string name="delete_playlists_title">حذف قوائم التشغيل</string>
-    <string name="delete_playlist_x"><![CDATA[حذف قائمة التشغيل <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[حذف قائمة التشغيل <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[حذف قائمة التشغيل <b>%d</b>؟]]></string>
     <string name="created_playlist_x">تم إنشاء قائمة تشغيل \'%1$s\'.</string>
     <string name="could_not_create_playlist">تعذر إنشاء قائمة تشغيل.</string>
@@ -513,7 +513,7 @@
     <string name="external_file_lyrics">ملف خارجي</string>
     <string name="action_import_synchronized_lyrics">استيراد كلمات متزامنة</string>
     <string name="action_share_synchronized_lyrics">مشاركة كلمات الأغاني المتزامنة</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[هل تريد استيراد كلمات LRC المتزامنة ل <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[هل تريد استيراد كلمات LRC المتزامنة ل <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">الكلمات المستوردة لـ %s</string>
     <string name="could_not_import_lyrics_for_song_x">تعذر استيراد كلمات الاغاني ل %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">حدد ملف LRC يحتوي على كلمات متزامنة.</string>

@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Saved %1$d playlists, failed to save %2$d.</string>
     <string name="delete_playlist_title">Odstranit seznam skladeb</string>
     <string name="delete_playlists_title">Odstranit playlisty</string>
-    <string name="delete_playlist_x"><![CDATA[Smazat playlist <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Smazat playlist <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Smazat <b>%d</b> playlistů?]]></string>
     <string name="created_playlist_x">Vytvořen playlist \'%1$s\'.</string>
     <string name="could_not_create_playlist">Nelze vytvořit seznam skladeb.</string>
@@ -497,7 +497,7 @@
     <string name="external_file_lyrics">Externí soubor</string>
     <string name="action_import_synchronized_lyrics">Importovat synchronizované texty</string>
     <string name="action_share_synchronized_lyrics">Sdílet synchronizované texty</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Chcete importovat synchronizované texty LRC pro <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Chcete importovat synchronizované texty LRC pro <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Importován text pro %s</string>
     <string name="could_not_import_lyrics_for_song_x">Nelze importovat texty pro %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Vyberte soubor LRC obsahující synchronizované texty.</string>

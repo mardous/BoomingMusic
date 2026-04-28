@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Guardadas %1$d playlists, error al guardar %2$d.</string>
     <string name="delete_playlist_title">Eliminar playlist</string>
     <string name="delete_playlists_title">Eliminar playlists</string>
-    <string name="delete_playlist_x"><![CDATA[¿Borrar playlist <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[¿Borrar playlist <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[¿Borrar <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Se creó la playlist \"%1$s\".</string>
     <string name="could_not_create_playlist">No se pudo crear la playlist.</string>
@@ -197,7 +197,7 @@
     <string name="album_artists_label">Artistas del álbum</string>
     <string name="genres_label">Géneros</string>
     <string name="folders_label">Carpetas</string>
-    <string name="playlists_label">Listas de reproducción</string>
+    <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
     <string name="favorites_label">Favoritas</string>
     <string name="last_added_label">Últimas agregadas</string>
@@ -315,7 +315,7 @@
     <string name="backup_settings">Ajustes</string>
     <string name="backup_synced_lyrics">Letras sincronizadas</string>
     <string name="backup_artist_images">Imágenes de artistas</string>
-    <string name="backup_playlists">Listas de reproducción</string>
+    <string name="backup_playlists">Playlists</string>
     <string name="backup_successful">¡Respaldo exitoso!</string>
     <string name="backup_failed">Respaldo fallido.</string>
     <string name="select_content_to_restore">Elija el contenido a restaurar:</string>
@@ -489,7 +489,7 @@
     <string name="external_file_lyrics">Archivo externo</string>
     <string name="action_import_synchronized_lyrics">Importar letra sincronizada</string>
     <string name="action_share_synchronized_lyrics">Compartir letra sincronizada</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[¿Quieres importar una letra sincronizada en LRC para la canción <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[¿Quieres importar una letra sincronizada en LRC para la canción <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Letra importada para %s</string>
     <string name="could_not_import_lyrics_for_song_x">No se pudo importar la letra para %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Seleccione un archivo LRC que contenga letras sincronizadas.</string>
@@ -940,4 +940,18 @@
     <string name="advanced_settings">Ajustes avanzados</string>
     <string name="bit_perfect_is_active">Bit-perfect está activo</string>
     <string name="bit_perfect_description">Envía el audio directamente al DAC USB sin remuestreo del sistema.</string>
+    <string name="sleep_timer_x_secs">%d segundos</string>
+    <string name="search_playlists">Buscar playlists</string>
+    <string name="select_playlists_title">Seleccionar playlists</string>
+    <string name="new_playlist_action">Nueva</string>
+    <string name="no_playlists_create_new">Presiona el botón \"Nueva\" para crear una playlist</string>
+    <string name="no_playlists_that_match_x">No hay playlists que coincidan con \"%s\"</string>
+    <string name="songs_added_to_playlists">Se añadieron las canciones a las playlists.</string>
+    <string name="no_playlists_label">No hay playlists</string>
+    <plurals name="x_playlists_selected">
+        <item quantity="one">%d playlist seleccionada</item>
+        <item quantity="many">%d de playlists seleccionadas</item>
+        <item quantity="other">%d playlists seleccionadas</item>
+    </plurals>
+    <string name="auto_theme_name">Automático</string>
 </resources>

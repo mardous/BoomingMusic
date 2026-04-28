@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">נשמרו %1$d רשימות השמעה, שמירת %2$d מהם נכשלה.</string>
     <string name="delete_playlist_title">מחיקת רשימת השמעה</string>
     <string name="delete_playlists_title">מחיקת רשימות השמעה</string>
-    <string name="delete_playlist_x"><![CDATA[למחוק את רשימת ההשמעה <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[למחוק את רשימת ההשמעה <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[למחוק <b>%d</b> רשימות השמעה?]]></string>
     <string name="created_playlist_x">נוצרה רשימת ההשמעה \'%1$s\'.</string>
     <string name="could_not_create_playlist">לא ניתן היה ליצור את רשימת ההשמעה.</string>
@@ -487,7 +487,7 @@
     <string name="external_file_lyrics">קובץ חיצוני</string>
     <string name="action_import_synchronized_lyrics">ייבוא ​​מילים מסונכרנות</string>
     <string name="action_share_synchronized_lyrics">שתף מילים מסונכרנות</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[האם ברצונך לייבא מילות LRC מסונכרנות עבור <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[האם ברצונך לייבא מילות LRC מסונכרנות עבור <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">יובאו מילות השיר עבור %s</string>
     <string name="could_not_import_lyrics_for_song_x">לא ניתן היה לייבא את מילות השיר עבור %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">בחר קובץ LRC המכיל מילות שיר מסונכרנות.</string>

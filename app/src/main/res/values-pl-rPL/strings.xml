@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Zapisano %1$d playlisty, nie udało się zapisać %2$d.</string>
     <string name="delete_playlist_title">Usuń playlistę</string>
     <string name="delete_playlists_title">Usuń listy odtwarzania</string>
-    <string name="delete_playlist_x"><![CDATA[Czy na pewno chcesz usunąć playlistę <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Czy na pewno chcesz usunąć playlistę <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Usunąć <b>%d</b> playlisty?]]></string>
     <string name="created_playlist_x">Utworzono playlistę \'%1$s\'.</string>
     <string name="could_not_create_playlist">Nie można utworzyć listy odtwarzania.</string>
@@ -497,7 +497,7 @@
     <string name="external_file_lyrics">Zewnętrzny plik</string>
     <string name="action_import_synchronized_lyrics">Importuj zsynchronizowane teksty</string>
     <string name="action_share_synchronized_lyrics">Udostępnij zsynchronizowane teksty</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Czy chcesz zaimportować zsynchronizowane teksty piosenek LRC dla <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Czy chcesz zaimportować zsynchronizowane teksty piosenek LRC dla <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Zaimportowano tekst dla utworu %s</string>
     <string name="could_not_import_lyrics_for_song_x">Nie udało się zaimportować tekstu dla %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Wybierz plik LRC zawierający zsynchronizowany tekst utworu.</string>

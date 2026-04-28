@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">%1$d afspeellijsten opgeslagen, opslaan mislukt %2$d.</string>
     <string name="delete_playlist_title">Afspeellijst verwijderen</string>
     <string name="delete_playlists_title">Afspeellijsten verwijderen</string>
-    <string name="delete_playlist_x"><![CDATA[Verwijder afspeellijst <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Verwijder afspeellijst <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Verwijder <b>%d</b> afspeellijsten?]]></string>
     <string name="created_playlist_x">Afspeellijst \'%1$s\' aangemaakt.</string>
     <string name="could_not_create_playlist">Kan afspeellijst niet aanmaken.</string>
@@ -481,7 +481,7 @@
     <string name="external_file_lyrics">Extern bestand</string>
     <string name="action_import_synchronized_lyrics">Importeer gesynchroniseerde songteksten</string>
     <string name="action_share_synchronized_lyrics">Deel gesynchroniseerde songteksten</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Wil je gesynchroniseerde LRC songteksten importeren voor <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Wil je gesynchroniseerde LRC songteksten importeren voor <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Songtekst voor %s geïmporteerd</string>
     <string name="could_not_import_lyrics_for_song_x">Kan songteksten voor %s niet importeren</string>
     <string name="select_a_file_containing_synchronized_lyrics">Selecteer een LRC bestand met gesynchroniseerde songteksten.</string>

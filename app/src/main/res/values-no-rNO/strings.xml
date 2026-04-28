@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Lagret %1$d spillelister, kunne ikke lagre %2$d.</string>
     <string name="delete_playlist_title">Slett spilleliste</string>
     <string name="delete_playlists_title">Slett spillelister</string>
-    <string name="delete_playlist_x"><![CDATA[Slette spilleliste <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Slette spilleliste <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Slette <b>%d</b> spillelister?]]></string>
     <string name="created_playlist_x">Opprettet spilleliste \'%1$s\'.</string>
     <string name="could_not_create_playlist">Kan ikke opprette spilleliste.</string>
@@ -481,7 +481,7 @@
     <string name="external_file_lyrics">External file</string>
     <string name="action_import_synchronized_lyrics">Importer synkroniserte tekster</string>
     <string name="action_share_synchronized_lyrics">Del synkroniserte tekster</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vil du importere synkroniserte LRC-tekster for <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vil du importere synkroniserte LRC-tekster for <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Importerte sangtekster for %s</string>
     <string name="could_not_import_lyrics_for_song_x">Kunne ikke importere tekster for %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Velg en LRC-fil som inneholder synkroniserte sangtekster.</string>

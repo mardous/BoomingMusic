@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">S\'han desat %1$d llistes, hi ha hagut un error en desar %2$d.</string>
     <string name="delete_playlist_title">Esborra la llista</string>
     <string name="delete_playlists_title">Esborra les llistes</string>
-    <string name="delete_playlist_x"><![CDATA[Voleu esborrar la llista <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Voleu esborrar la llista <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Voleu esborrar <b>%d</b> llistes?]]></string>
     <string name="created_playlist_x">S\'ha creat la llista de reproducció «%1$s».</string>
     <string name="could_not_create_playlist">No s\'ha pogut crear la llista de reproducció.</string>
@@ -338,42 +338,34 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Cançó</item>
-        <item quantity="many"/>
         <item quantity="other">Cançons</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Àlbum</item>
-        <item quantity="many"/>
         <item quantity="other">Àlbums</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d cançó</item>
-        <item quantity="many"/>
         <item quantity="other">%d cançons</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d àlbum</item>
-        <item quantity="many"/>
         <item quantity="other">%d àlbums</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
-        <item quantity="many"/>
         <item quantity="other">%d artistes</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d cop</item>
-        <item quantity="many"/>
         <item quantity="other">%d cops</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d reproducció</item>
-        <item quantity="many"/>
         <item quantity="other">%d reproduccions</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d ítem</item>
-        <item quantity="many"/>
         <item quantity="other">%d ítems</item>
     </plurals>
     <!-- Home -->
@@ -489,7 +481,7 @@
     <string name="external_file_lyrics">Fitxer extern</string>
     <string name="action_import_synchronized_lyrics">Importa lletra sincronitzada</string>
     <string name="action_share_synchronized_lyrics">Comparteix la lletra sincronitzada</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Voleu importar la lletra LRC sincronitzada per a <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Voleu importar la lletra LRC sincronitzada per a <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Lletra importada per a %s</string>
     <string name="could_not_import_lyrics_for_song_x">No s\'ha pogut importar la lletra per a %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Trieu un fitxer LRC que contingui lletra sincronitzada.</string>
