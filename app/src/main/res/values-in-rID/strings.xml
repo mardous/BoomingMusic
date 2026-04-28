@@ -924,4 +924,16 @@
     <string name="use_betterlyrics_provider_summary">Izinkan lirik diunduh dari layanan BetterLyrics.</string>
     <string name="use_simpmusic_provider_title">Gunakan penyedia SimpMusic Lyrics</string>
     <string name="use_simpmusic_provider_summary">Izinkan lirik diunduh dari layanan SimpMusic Lyrics.</string>
+    <string name="search_playlists">Cari playlist</string>
+    <string name="select_playlists_title">Pilih playlist</string>
+    <string name="new_playlist_action">Baru</string>
+    <string name="no_playlists_create_new">Tekan tombol \"Baru\" untuk membuat playlist</string>
+    <string name="no_playlists_that_match_x">Tidak ada playlist yang cocok dengan \"%s\"</string>
+    <string name="songs_added_to_playlists">Lagu ditambahkan ke playlist.</string>
+    <string name="no_playlists_label">Tidak ada playlist</string>
+    <plurals name="x_playlists_selected">
+        <item quantity="other">%d playlist dipilih</item>
+    </plurals>
+    <string name="sleep_timer_x_secs">%d detik</string>
+    <string name="auto_theme_name">Otomatis</string>
 </resources>
