@@ -955,4 +955,5 @@
     <string name="no_playlists_label"></string>
     <string name="select_playlists_title"></string>
     <string name="grid_size_5" translatable="false"></string>
+    <string name="new_playlist_action"></string>
 </resources>
