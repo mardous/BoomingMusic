@@ -950,4 +950,5 @@
     <string name="widget_dynamic_colors_title"></string>
     <string name="app_widget_full"></string>
     <string name="error_lastfm_rate_limit"></string>
+    <string name="new_playlist_action"></string>
 </resources>
