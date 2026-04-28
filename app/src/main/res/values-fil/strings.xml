@@ -914,4 +914,5 @@
     <string name="conductor"></string>
     <string name="playlist_label"></string>
     <string name="action_scan"></string>
+    <string name="new_playlist_action"></string>
 </resources>
