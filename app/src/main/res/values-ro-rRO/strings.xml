@@ -868,4 +868,5 @@
     <string name="uncaught_error_restart_app">Reporniți aplicația</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
+    <string name="new_playlist_action"></string>
 </resources>
