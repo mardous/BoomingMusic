@@ -86,7 +86,7 @@
     <string name="saved_x_playlists_failed_to_save_x">Guardadas %1$d playlists, error al guardar %2$d.</string>
     <string name="delete_playlist_title">Eliminar playlist</string>
     <string name="delete_playlists_title">Eliminar playlists</string>
-    <string name="delete_playlist_x"><![CDATA[¿Borrar playlist <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[¿Borrar playlist <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[¿Borrar <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Se creó la playlist \"%1$s\".</string>
     <string name="could_not_create_playlist">No se pudo crear la playlist.</string>
@@ -954,4 +954,12 @@
         <item quantity="other">%d playlists seleccionadas</item>
     </plurals>
     <string name="auto_theme_name">Automático</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
