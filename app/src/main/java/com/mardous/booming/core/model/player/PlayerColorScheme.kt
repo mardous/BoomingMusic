@@ -199,7 +199,7 @@ data class PlayerColorScheme(
                 primaryColor = color.backgroundColor,
                 tonalColor = ColorUtils.blendARGB(color.backgroundColor, color.secondaryTextColor, 0.4f),
                 onSurfaceColor = color.primaryTextColor,
-                onSurfaceVariantColor = color.secondaryTextColor
+                onSurfaceVariantColor = color.secondaryTextColor.withAlpha(0.6f)
             )
         }
 
