@@ -941,4 +941,21 @@
     <string name="bit_perfect_is_active">Perfección al bit activa</string>
     <string name="bit_perfect_description">Salida de audio directa al DAC USB sin remuestreo de sistema.</string>
     <string name="sleep_timer_x_secs">%d segundos</string>
+    <string name="songs_added_to_playlists"></string>
+    <string name="no_playlists_that_match_x"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="auto_theme_name"></string>
+    <plurals name="x_playlists_selected">
+    </plurals>
+    <string name="search_playlists"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="no_playlists_create_new"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="no_playlists_label"></string>
+    <string name="select_playlists_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
