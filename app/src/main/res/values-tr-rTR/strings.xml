@@ -870,4 +870,5 @@
     <string name="channel_stereo">Stereo</string>
     <string name="error_lastfm_auth">Oturumunuzun süresi doldu veya kimlik bilgileriniz geçersiz. Lütfen tekrar giriş yapın.</string>
     <string name="channel_stereo_2_1">2.1 Stereo</string>
+    <string name="new_playlist_action"></string>
 </resources>
