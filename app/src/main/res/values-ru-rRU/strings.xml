@@ -889,10 +889,7 @@
     <string name="channel_surround_13_1">Объемный звук 13.1</string>
     <string name="lastfm_login_username">Имя пользователя</string>
     <string name="lastfm_login_password">Пароль</string>
-    <string name="lastfm_login_ok">Авторизоваться</string>
     <string name="lastfm_login_toggle_password_visibility">Переключить видимость пароля</string>
-    <string name="lastfm_connected_account">Подключенная учетная запись:</string>
-    <string name="lastfm_logout">Выйти</string>
     <string name="error_lastfm_auth">Сессия истекла или указаны неверные учётные данные. Пожалуйста, выполните вход заново.</string>
     <string name="error_lastfm_credentials">Ваши учётные данные недействительны. Пожалуйста, проверьте их и повторите попытку.</string>
     <string name="error_lastfm_params">Некорректные параметры. Возможно, это вызвано ошибкой с нашей стороны.</string>

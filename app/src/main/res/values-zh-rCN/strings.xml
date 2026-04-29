@@ -855,10 +855,7 @@
     <string name="support_my_work">支持我的作品</string>
     <string name="lastfm_login_username">用户名</string>
     <string name="lastfm_login_password">密码</string>
-    <string name="lastfm_login_ok">登录</string>
     <string name="lastfm_login_toggle_password_visibility">切换显示/隐藏密码</string>
-    <string name="lastfm_connected_account">已关联账户：</string>
-    <string name="lastfm_logout">退出登录</string>
     <string name="error_lastfm_auth">会话已过期或凭据无效。请重新登录。</string>
     <string name="error_lastfm_credentials">您的凭据无效。请核对后再试一次。</string>
     <string name="error_lastfm_params">参数无效。这可能是本软件方面的问题。</string>

@@ -876,7 +876,6 @@
     <string name="network_title">Xarxa</string>
     <string name="images_title">Imatges</string>
     <string name="lastfm_title">Last.fm</string>
-    <string name="lastfm_connected_account">Compte connectat:</string>
     <string name="telegram_community">Comunitat al Telegram</string>
     <string name="network_features_title">Activa les funcionalitats de xarxa</string>
     <string name="use_lrclib_provider_title">Usa el proveïdor LRCLib</string>
@@ -890,9 +889,7 @@
     <string name="app_widget_full_desc">La pantalla del reproductor directa al vostre escriptori</string>
     <string name="channel_mono">Monoaural</string>
     <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
-    <string name="lastfm_login_ok">Inicia la sessió</string>
     <string name="lastfm_login_toggle_password_visibility">Alterna la visibilitat de la contrasenya</string>
-    <string name="lastfm_logout">Tanca la sessió</string>
     <string name="error_lastfm_auth">Ha caducat la sessió o les credencials no són vàlides. Torna-ho a intentar.</string>
     <string name="error_lastfm_credentials">Les vostres credencials no són vàlides. Verifiqueu-les i torneu-ho a intentar.</string>
     <string name="error_lastfm_params">Pàrametres invàlids. Podria ser per error nostre.</string>

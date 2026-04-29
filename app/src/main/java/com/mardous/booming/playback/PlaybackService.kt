@@ -80,6 +80,7 @@ import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.network.NetworkFeature
+import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
@@ -715,32 +716,42 @@ class PlaybackService :
         val isPlaying = player.isPlaying
 
         serviceScope.launch(IO) {
-            val currentSong = repository.songByMediaItem(mediaItem)
-            if (currentSong != Song.emptySong) {
+            val newSong = repository.songByMediaItem(mediaItem)
+
+            val previousSong = songPlayCountHelper.song
+            val shouldBumpPlayCount = songPlayCountHelper.shouldBumpPlayCount()
+            songPlayCountHelper.notifySongChanged(newSong, isPlaying)
+
+            if (newSong != Song.emptySong) {
+                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(newSong)
                 if (preferences.getBoolean(ENABLE_HISTORY, true)) {
-                    repository.upsertSongInHistory(currentSong)
+                    repository.upsertSongInHistory(newSong)
                 }
                 if (NetworkFeature.Lastfm.NowPlaying.isAvailable(this@PlaybackService)) {
-                    repository.updateNowPlayingOnLastFm(currentSong)
+                    launch { repository.updateNowPlaying(ScrobblingService.Lastfm, newSong) }
                 }
-                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(currentSong)
+                if (NetworkFeature.ListenBrainz.NowPlaying.isAvailable(this@PlaybackService)) {
+                    launch { repository.updateNowPlaying(ScrobblingService.ListenBrainz, newSong) }
+                }
             }
-            val previousSong = songPlayCountHelper.song
             if (previousSong != Song.emptySong) {
-                val timestamp = System.currentTimeMillis()
-                if (songPlayCountHelper.shouldBumpPlayCount()) {
+                val timestampMillis = System.currentTimeMillis()
+                val timestampSeconds = (timestampMillis / 1000)
+                if (shouldBumpPlayCount) {
                     repository.insertOrIncrementPlayCount(
                         song = previousSong,
-                        timePlayed = timestamp
+                        timePlayed = timestampMillis
                     )
                     if (NetworkFeature.Lastfm.Scrobbling.isAvailable(this@PlaybackService)) {
-                        repository.scrobble(previousSong, (timestamp / 1000))
+                        launch { repository.scrobble(ScrobblingService.Lastfm, previousSong, timestampSeconds) }
+                    }
+                    if (NetworkFeature.ListenBrainz.Scrobbling.isAvailable(this@PlaybackService)) {
+                        launch { repository.scrobble(ScrobblingService.ListenBrainz, previousSong, timestampSeconds) }
                     }
                 } else if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK) {
                     repository.insertOrIncrementSkipCount(previousSong)
                 }
             }
-            songPlayCountHelper.notifySongChanged(currentSong, isPlaying)
         }
 
         if (player.currentMediaItemIndex == stopIndex) {

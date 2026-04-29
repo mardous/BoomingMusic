@@ -876,10 +876,7 @@
     <string name="bit_perfect_description">Keluaran audio langsung ke USB DAC tanpa resampling sistem.</string>
     <string name="lastfm_login_username">Nama pengguna</string>
     <string name="lastfm_login_password">Kata sandi</string>
-    <string name="lastfm_login_ok">Masuk</string>
     <string name="lastfm_login_toggle_password_visibility">Tampilkan/sembunyikan kata sandi</string>
-    <string name="lastfm_connected_account">Akun Terhubung:</string>
-    <string name="lastfm_logout">Keluar</string>
     <string name="error_lastfm_auth">Sesi berakhir atau kredensial tidak valid. Silakan masuk kembali.</string>
     <string name="error_lastfm_credentials">Kredensial Anda tidak valid. Silakan verifikasi dan coba lagi.</string>
     <string name="error_lastfm_params">Parameter tidak valid. Ini mungkin disebabkan oleh kesalahan dari pihak kami.</string>

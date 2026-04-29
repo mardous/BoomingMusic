@@ -894,10 +894,7 @@
     <string name="telegram_community">Comunidad en Telegram</string>
     <string name="telegram_community_summary">Únase a nuestra comunidad en Telegram para permanecer al tanto de las novedades.</string>
     <string name="github">GitHub</string>
-    <string name="lastfm_connected_account">Cuenta conectada:</string>
-    <string name="lastfm_logout">Salir</string>
     <string name="lastfm_login_toggle_password_visibility">Alternar visibilidad de contraseña</string>
-    <string name="lastfm_login_ok">Acceder</string>
     <string name="lastfm_login_username">Nombre de usuario</string>
     <string name="lastfm_login_password">Contraseña</string>
     <string name="action_grid_size_land">Tamaño de cuadrícula (horizontal)</string>

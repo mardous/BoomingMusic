@@ -167,10 +167,7 @@
     <string name="action_share_synchronized_lyrics">Jaga sünkroonitud laulusõnu</string>
     <string name="lastfm_login_username">Kasutajanimi</string>
     <string name="lastfm_login_password">Salasõna</string>
-    <string name="lastfm_login_ok">Logi sisse</string>
     <string name="lastfm_login_toggle_password_visibility">Vaheta salasõna nähtavust</string>
-    <string name="lastfm_connected_account">Ühendatud kasutajakonto:</string>
-    <string name="lastfm_logout">Logi välja</string>
     <string name="error_lastfm_auth">Sessioon aegus või kasutajanimi/salasõna pole õiged. Palun logi uuesti sisse.</string>
     <string name="error_lastfm_credentials">Sinu kasutajanimi ja/või salasõna pole õiged. Palun kontrolli nende õigsust ja proovi uuesti.</string>
     <string name="error_lastfm_params">Vigased parameetrid. See võib olla põhjustatud rakenduse veast.</string>

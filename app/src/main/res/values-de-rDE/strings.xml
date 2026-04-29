@@ -884,10 +884,7 @@
     <string name="bit_perfect_description">Direkte Audioausgabe an USB DAC ohne System-Neuberechnung.</string>
     <string name="lastfm_login_username">Benutzername</string>
     <string name="lastfm_login_password">Passwort</string>
-    <string name="lastfm_login_ok">Login</string>
     <string name="lastfm_login_toggle_password_visibility">Passwort anzeigen</string>
-    <string name="lastfm_connected_account">Verbundenes Konto:</string>
-    <string name="lastfm_logout">Logout</string>
     <string name="error_lastfm_auth">Sitzung abgelaufen oder ungültige Anmeldeinformationen. Bitte wieder anmelden.</string>
     <string name="error_lastfm_credentials">Deine Anmeldeinformationen sind nicht gültig. Bitte überprüfen und versuche es erneut.</string>
     <string name="error_lastfm_params">Ungültige Parameter. Dies könnte auf einen Fehler unserer Seite zurückzuführen sein.</string>

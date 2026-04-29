@@ -553,13 +553,15 @@
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
 
-    <!-- Last.fm -->
+    <!-- Scrobbling Service -->
+    <string name="sign_in_to_x_title">Sign in to %s</string>
+    <string name="connected_account_label">Connected Account:</string>
+    <string name="login_action">Log In</string>
+    <string name="logout_action">Logout</string>
     <string name="lastfm_login_username">Username</string>
     <string name="lastfm_login_password">Password</string>
-    <string name="lastfm_login_ok">Log In</string>
     <string name="lastfm_login_toggle_password_visibility">Toggle password visibility</string>
-    <string name="lastfm_connected_account">Connected Account:</string>
-    <string name="lastfm_logout">Logout</string>
+    <string name="listenbrainz_token_label">User Token</string>
     <string name="error_lastfm_auth">Session expired or invalid credentials. Please log in again.</string>
     <string name="error_lastfm_credentials">Your credentials are not valid. Please verify and try again.</string>
     <string name="error_lastfm_params">Invalid params. This could be due to an error on our part.</string>
@@ -567,6 +569,8 @@
     <string name="error_lastfm_rate_limit">Too many requests. Please wait a moment before scrobbling again.</string>
     <string name="error_lastfm_generic">An unexpected error occurred with Last.fm. Please try again.</string>
     <string name="error_network_timeout">Connection timed out. Check your internet and try again.</string>
+    <string name="error_listenbrainz_generic">ListenBrainz error occurred.</string>
+    <string name="error_listenbrainz_invalid_token">Invalid ListenBrainz token.</string>
 
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Sleep timer</string>
@@ -878,6 +882,13 @@
     <string name="lastfm_now_playing_summary">Show the currently playing track on your Last.fm profile in real time.</string>
     <string name="lastfm_biography_title">Download artist and album biographies</string>
     <string name="lastfm_biography_summary">Fetch artist and album biographies from Last.fm.</string>
+    <string name="listenbrainz_title">ListenBrainz</string>
+    <string name="listenbrainz_login_title">Sign in to ListenBrainz</string>
+    <string name="listenbrainz_login_summary">Authenticate with your user token to enable scrobbling and now playing updates. You can find your token in your ListenBrainz profile settings.</string>
+    <string name="listenbrainz_scrobbling_title">Enable ListenBrainz scrobbling</string>
+    <string name="listenbrainz_scrobbling_summary">Automatically submit played tracks to your ListenBrainz listening history.</string>
+    <string name="listenbrainz_now_playing_title">Update now playing on ListenBrainz</string>
+    <string name="listenbrainz_now_playing_summary">Show the currently playing track on your ListenBrainz profile in real time.</string>
     <string name="use_lrclib_provider_title">Use LRCLib provider</string>
     <string name="use_lrclib_provider_summary">Allow lyrics to be downloaded from the LRCLib service.</string>
     <string name="use_betterlyrics_provider_title">Use BetterLyrics provider</string>

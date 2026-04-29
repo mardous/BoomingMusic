@@ -59,6 +59,12 @@ sealed class NetworkFeature(
         }
     }
 
+    sealed class ListenBrainz(preferenceKey: String, isOnByDefault: Boolean) :
+        NetworkFeature(preferenceKey, isOnByDefault) {
+        object Scrobbling : ListenBrainz("listenbrainz_scrobbling_enabled", false)
+        object NowPlaying : ListenBrainz("listenbrainz_now_playing_enabled", false)
+    }
+
     companion object {
         const val NETWORK_FEATURES_KEY = "network_features"
         const val ONLY_WIFI_NETWORK_KEY = "wifi_only_network"

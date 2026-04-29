@@ -37,14 +37,16 @@ import com.mardous.booming.data.model.Playlist
 import com.mardous.booming.data.model.ReleaseYear
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.Suggestion
+import com.mardous.booming.data.model.network.LoginParams
+import com.mardous.booming.data.model.network.LoginState
+import com.mardous.booming.data.model.network.ScrobblingResult
+import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.data.remote.deezer.model.DeezerAlbum
 import com.mardous.booming.data.remote.deezer.model.DeezerArtist
 import com.mardous.booming.data.remote.deezer.model.DeezerTrack
 import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
 import com.mardous.booming.data.remote.lastfm.model.LastFmArtist
-import com.mardous.booming.data.model.network.lastfm.LastFmLoginState
-import com.mardous.booming.data.model.network.lastfm.LastFmResult
 import kotlinx.coroutines.flow.Flow
 import java.io.File
 
@@ -136,11 +138,11 @@ interface Repository {
     suspend fun initializeBlacklist()
     suspend fun search(query: SearchQuery, filter: SearchFilter?): List<Any>
     suspend fun searchSongs(query: String): List<Song>
-    fun getLastFmLoginState(): Flow<LastFmLoginState>
-    suspend fun loginToLastfm(username: String, password: String)
-    suspend fun logoutFromLastFm()
-    suspend fun scrobble(song: Song, timestamp: Long): LastFmResult
-    suspend fun updateNowPlayingOnLastFm(song: Song): LastFmResult
+    fun getLoginState(service: ScrobblingService): Flow<LoginState>
+    suspend fun loginToService(service: ScrobblingService, params: LoginParams)
+    suspend fun logoutFromService(service: ScrobblingService)
+    suspend fun scrobble(service: ScrobblingService, song: Song, timestamp: Long): ScrobblingResult
+    suspend fun updateNowPlaying(service: ScrobblingService, song: Song): ScrobblingResult
     suspend fun deezerTrack(artist: String, title: String): DeezerTrack?
     suspend fun deezerArtist(name: String, limit: Int, index: Int): DeezerArtist?
     suspend fun deezerAlbum(artist: String, name: String): DeezerAlbum?
@@ -433,20 +435,20 @@ class RealRepository(
 
     override suspend fun searchSongs(query: String): List<Song> = songRepository.songs(query)
 
-    override fun getLastFmLoginState(): Flow<LastFmLoginState> =
-        networkRepository.getLastFmLoginState()
+    override fun getLoginState(service: ScrobblingService): Flow<LoginState> =
+        networkRepository.getLoginState(service)
 
-    override suspend fun loginToLastfm(username: String, password: String) =
-        networkRepository.loginToLastFm(username, password)
+    override suspend fun loginToService(service: ScrobblingService, params: LoginParams) =
+        networkRepository.loginToService(service, params)
 
-    override suspend fun logoutFromLastFm() =
-        networkRepository.logoutFromLastFm()
+    override suspend fun logoutFromService(service: ScrobblingService) =
+        networkRepository.logoutFromService(service)
 
-    override suspend fun scrobble(song: Song, timestamp: Long): LastFmResult =
-        networkRepository.scrobble(song, timestamp)
+    override suspend fun scrobble(service: ScrobblingService, song: Song, timestamp: Long): ScrobblingResult =
+        networkRepository.scrobble(service, song, timestamp)
 
-    override suspend fun updateNowPlayingOnLastFm(song: Song): LastFmResult =
-        networkRepository.updateNowPlaying(song)
+    override suspend fun updateNowPlaying(service: ScrobblingService, song: Song): ScrobblingResult =
+        networkRepository.updateNowPlaying(service, song)
 
     override suspend fun deezerTrack(artist: String, title: String) =
         networkRepository.deezerTrack(artist, title)

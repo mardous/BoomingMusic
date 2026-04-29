@@ -1,6 +1,5 @@
-package com.mardous.booming.ui.screen.lastfm
+package com.mardous.booming.ui.screen.scrobbling
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -56,21 +55,25 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mardous.booming.R
-import com.mardous.booming.data.model.network.lastfm.LastFmLoginState
-import com.mardous.booming.data.model.network.lastfm.canLogIn
-import com.mardous.booming.data.model.network.lastfm.isFailure
-import com.mardous.booming.data.model.network.lastfm.isLoading
-import com.mardous.booming.data.remote.lastfm.model.LastFmUser
+import com.mardous.booming.data.model.network.LoginParams
+import com.mardous.booming.data.model.network.LoginState
+import com.mardous.booming.data.model.network.ScrobblingService
+import com.mardous.booming.data.model.network.canLogIn
+import com.mardous.booming.data.model.network.isFailure
+import com.mardous.booming.data.model.network.isLoading
+import com.mardous.booming.extensions.extraNotNull
 import com.mardous.booming.extensions.openUrl
+import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.component.compose.TipView
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
+class ScrobblingServiceLoginFragment : BottomSheetDialogFragment() {
 
     private val viewModel: LibraryViewModel by activityViewModel()
+    private val service: ScrobblingService by extraNotNull("service")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -83,24 +86,29 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
             )
             setContent {
                 BoomingMusicTheme {
-                    LastFmLoginScreen(viewModel)
+                    LoginScreen(service, viewModel)
                 }
             }
         }
     }
 
     @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
-    @SuppressLint("LocalContextGetResourceValueCall")
     @Composable
-    private fun LastFmLoginScreen(
+    private fun LoginScreen(
+        service: ScrobblingService,
         viewModel: LibraryViewModel
     ) {
-        val uiState by viewModel.getLastFmLoginState().collectAsState(null)
+        val uiState by viewModel.getLoginState(service).collectAsState(null)
+
+        val serviceName = when (service) {
+            ScrobblingService.Lastfm -> stringResource(R.string.lastfm_title)
+            ScrobblingService.ListenBrainz -> stringResource(R.string.listenbrainz_title)
+        }
 
         DisposableEffect(Unit) {
             onDispose {
                 if (uiState?.isFailure == true) {
-                    viewModel.logoutFromLastFm()
+                    viewModel.logoutFromService(service)
                 }
             }
         }
@@ -117,20 +125,39 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
                 )
 
                 Text(
-                    text = stringResource(R.string.lastfm_login_title),
+                    text = stringResource(R.string.sign_in_to_x_title, serviceName),
                     style = MaterialTheme.typography.headlineSmallEmphasized,
                     modifier = Modifier.padding(horizontal = 24.dp)
                 )
 
                 Crossfade(uiState) { loginState ->
                     when (loginState) {
-                        is LastFmLoginState.Empty,
-                        is LastFmLoginState.LoggingIn,
-                        is LastFmLoginState.Failure -> {
-                            LogInForm(loginState = loginState, viewModel = viewModel)
+                        is LoginState.Empty,
+                        is LoginState.LoggingIn,
+                        is LoginState.Failure -> {
+                            when (service) {
+                                ScrobblingService.Lastfm -> {
+                                    LastFmForm(
+                                        loginState = loginState,
+                                        onLoginClick = { params ->
+                                            viewModel.logInToService(service, params)
+                                        }
+                                    )
+                                }
+
+                                ScrobblingService.ListenBrainz -> {
+                                    ListenBrainzForm(
+                                        loginState = loginState,
+                                        onLoginClick = { params ->
+                                            viewModel.logInToService(service, params)
+                                        }
+                                    )
+                                }
+                            }
+
                         }
 
-                        is LastFmLoginState.LoggedIn -> {
+                        is LoginState.LoggedIn -> {
                             Column(
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -138,12 +165,12 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
                                     .padding(horizontal = 24.dp, vertical = 16.dp)
                             ) {
                                 ConnectedUserCard(
-                                    user = loginState.user,
+                                    loggedInState = loginState,
                                     modifier = Modifier.fillMaxWidth()
                                 )
 
-                                Button(onClick = { viewModel.logoutFromLastFm() }) {
-                                    Text(stringResource(R.string.lastfm_logout))
+                                Button(onClick = { viewModel.logoutFromService(service) }) {
+                                    Text(stringResource(R.string.logout_action))
                                 }
                             }
                         }
@@ -166,9 +193,9 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
 
     @OptIn(ExperimentalMaterial3ExpressiveApi::class)
     @Composable
-    private fun LogInForm(
-        loginState: LastFmLoginState,
-        viewModel: LibraryViewModel,
+    private fun LastFmForm(
+        loginState: LoginState,
+        onLoginClick: (LoginParams) -> Unit,
         modifier: Modifier = Modifier
     ) {
         var username by remember { mutableStateOf("") }
@@ -243,22 +270,12 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
                 )
             }
 
-            AnimatedVisibility(
-                visible = loginState.isFailure
-            ) {
-                if (loginState is LastFmLoginState.Failure) {
-                    TipView(
-                        text = loginState.message ?: stringResource(R.string.error_lastfm_generic),
-                        icon = painterResource(R.drawable.ic_error_24dp),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 16.dp)
-                    )
-                }
-            }
+            ErrorMessage(loginState, R.string.error_lastfm_generic)
 
             Button(
-                onClick = { viewModel.logInToLastFm(username, password) },
+                onClick = {
+                    onLoginClick(LoginParams.Lastfm(username, password))
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
@@ -269,7 +286,83 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
                 enabled = username.isNotBlank() && password.isNotBlank() && loginState.canLogIn,
             ) {
                 Text(
-                    text = stringResource(R.string.lastfm_login_ok),
+                    text = stringResource(R.string.login_action),
+                    style = MaterialTheme.typography.labelLarge
+                )
+            }
+        }
+    }
+
+    @OptIn(ExperimentalMaterial3ExpressiveApi::class)
+    @Composable
+    private fun ListenBrainzForm(
+        loginState: LoginState,
+        onLoginClick: (LoginParams) -> Unit,
+        modifier: Modifier = Modifier
+    ) {
+        var token by remember { mutableStateOf("") }
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+                .padding(top = 8.dp, bottom = 24.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.listenbrainz_login_summary),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp)
+            )
+
+            OutlinedTextField(
+                value = token,
+                onValueChange = { token = it },
+                label = { Text(stringResource(R.string.listenbrainz_token_label)) },
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_lock_24dp),
+                        contentDescription = null
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true,
+                enabled = loginState.canLogIn,
+                shape = MaterialTheme.shapes.medium
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            AnimatedVisibility(
+                visible = loginState.isLoading
+            ) {
+                LinearWavyProgressIndicator(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 16.dp)
+                )
+            }
+
+            ErrorMessage(loginState, R.string.error_listenbrainz_generic)
+
+            Button(
+                onClick = {
+                    onLoginClick(LoginParams.ListenBrainz(token))
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp),
+                shape = MaterialTheme.shapes.extraLarge,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                ),
+                enabled = token.isNotBlank() && loginState.canLogIn,
+            ) {
+                Text(
+                    text = stringResource(R.string.login_action),
                     style = MaterialTheme.typography.labelLarge
                 )
             }
@@ -277,13 +370,36 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
     }
 
     @Composable
-    private fun ConnectedUserCard(user: LastFmUser, modifier: Modifier = Modifier) {
+    private fun ErrorMessage(
+        loginState: LoginState,
+        genericMessageRes: Int,
+    ) {
+        AnimatedVisibility(
+            visible = loginState.isFailure
+        ) {
+            if (loginState is LoginState.Failure) {
+                TipView(
+                    text = loginState.message ?: stringResource(genericMessageRes),
+                    icon = painterResource(R.drawable.ic_error_24dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 16.dp)
+                )
+            }
+        }
+    }
+
+    @Composable
+    private fun ConnectedUserCard(
+        loggedInState: LoginState.LoggedIn,
+        modifier: Modifier = Modifier
+    ) {
         val context = LocalContext.current
 
         ElevatedCard(
             onClick = {
-                if (user.url.isNotEmpty()) {
-                    context.openUrl(user.url)
+                if (!loggedInState.url.isNullOrEmpty()) {
+                    context.openUrl(loggedInState.url)
                 }
             },
             modifier = modifier.fillMaxWidth()
@@ -307,13 +423,13 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
-                        text = stringResource(R.string.lastfm_connected_account),
+                        text = stringResource(R.string.connected_account_label),
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
 
                     Text(
-                        text = "${user.realName} (${user.name})",
+                        text = loggedInState.username,
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface,
                         fontWeight = FontWeight.Bold,
@@ -332,5 +448,12 @@ class LastFmLoginDialogFragment : BottomSheetDialogFragment() {
                 )
             }
         }
+    }
+
+    companion object {
+        fun create(service: ScrobblingService) =
+            ScrobblingServiceLoginFragment().withArgs {
+                putSerializable("service", service)
+            }
     }
 }

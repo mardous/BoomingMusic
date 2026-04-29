@@ -876,10 +876,7 @@
     <string name="bit_perfect_description">Đầu ra âm thanh trực tiếp đi đến USB DAC mà không cần hệ thống lấy mẫu lại</string>
     <string name="lastfm_login_username">Tên người dùng</string>
     <string name="lastfm_login_password">Mật khẩu</string>
-    <string name="lastfm_login_ok">Đăng nhập</string>
     <string name="lastfm_login_toggle_password_visibility">Hiển thị mật khẩu</string>
-    <string name="lastfm_connected_account">Tài khoản kết nối:</string>
-    <string name="lastfm_logout">Đăng xuất</string>
     <string name="error_lastfm_auth">Phiên đăng nhập đã hết hạn hoặc thông tin đăng nhập không hợp lệ. Vui lòng đăng nhập lại.</string>
     <string name="error_lastfm_credentials">Thông tin đăng nhập của bạn không hợp lệ. Vui lòng xác minh và thử lại.</string>
     <string name="error_lastfm_params">Tham số không hợp lệ. Điều này có thể do lỗi từ phía chúng tôi.</string>

@@ -53,6 +53,8 @@ import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Playlist
 import com.mardous.booming.data.model.ReleaseYear
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.network.LoginParams
+import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.media.indexOfSong
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistUiState
@@ -523,14 +525,14 @@ class LibraryViewModel(
         }
     }
 
-    fun getLastFmLoginState() = repository.getLastFmLoginState()
+    fun getLoginState(service: ScrobblingService) = repository.getLoginState(service)
 
-    fun logInToLastFm(username: String, password: String) = viewModelScope.launch(IO) {
-        repository.loginToLastfm(username, password)
+    fun logInToService(service: ScrobblingService, params: LoginParams) = viewModelScope.launch(IO) {
+        repository.loginToService(service, params)
     }
 
-    fun logoutFromLastFm() = viewModelScope.launch(IO) {
-        repository.logoutFromLastFm()
+    fun logoutFromService(service: ScrobblingService) = viewModelScope.launch(IO) {
+        repository.logoutFromService(service)
     }
 
     @Suppress("DEPRECATION")

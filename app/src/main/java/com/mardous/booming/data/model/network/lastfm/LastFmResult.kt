@@ -1,37 +1,7 @@
 package com.mardous.booming.data.model.network.lastfm
 
-import android.content.Context
 import androidx.annotation.StringRes
 import com.mardous.booming.R
-import com.mardous.booming.data.remote.lastfm.model.LastFmUser
-
-val LastFmLoginState.canLogIn: Boolean
-    get() = this is LastFmLoginState.Empty || this is LastFmLoginState.Failure
-
-val LastFmLoginState.isLoading: Boolean
-    get() = this is LastFmLoginState.LoggingIn
-
-val LastFmLoginState.isFailure: Boolean
-    get() = this is LastFmLoginState.Failure
-
-sealed class LastFmLoginState {
-    object Empty : LastFmLoginState()
-    object LoggingIn : LastFmLoginState()
-    class LoggedIn(val user: LastFmUser) : LastFmLoginState()
-    class Failure(val message: String?) : LastFmLoginState() {
-        constructor(context: Context, failure: LastFmFailure = LastFmFailure.Unknown) :
-                this(context.getString(failure.messageRes))
-    }
-}
-
-sealed class LastFmResult {
-    class ScrobbleSuccess(val songId: Long) : LastFmResult()
-    class NowPlayingSuccess(val songId: Long) : LastFmResult()
-    class Failure(val message: String? = null) : LastFmResult() {
-        constructor(context: Context, failure: LastFmFailure = LastFmFailure.Unknown) :
-                this(context.getString(failure.messageRes))
-    }
-}
 
 enum class LastFmFailure(
     private val codes: IntArray,

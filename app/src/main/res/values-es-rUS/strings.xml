@@ -870,10 +870,7 @@
     <string name="uncaught_error_send">Enviar reporte</string>
     <string name="lastfm_login_username">Nombre de usuario</string>
     <string name="lastfm_login_password">Contraseña</string>
-    <string name="lastfm_login_ok">Iniciar sesión</string>
     <string name="lastfm_login_toggle_password_visibility">Alternar visibilidad de contraseña</string>
-    <string name="lastfm_connected_account">Cuenta conectada:</string>
-    <string name="lastfm_logout">Cerrar sesión</string>
     <string name="error_lastfm_auth">La sesión expiró o las credenciales son inválidas. Intenta de nuevo.</string>
     <string name="error_lastfm_credentials">Tus credenciales no son válidas. Por favor, verifica e intenta de nuevo.</string>
     <string name="error_lastfm_params">Parámetros inválidos. Posiblemente se deba a un error de nuestra parte.</string>

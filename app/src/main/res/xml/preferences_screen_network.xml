@@ -98,6 +98,40 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        app:title="@string/listenbrainz_title"
+        app:layout="@layout/preference_category_title"
+        app:dependency="network_features">
+
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
+            app:icon="@drawable/ic_person_24dp"
+            app:title="@string/listenbrainz_login_title"
+            app:summary="@string/listenbrainz_login_summary"
+            app:layout="@layout/list_item_view"
+            app:key="listenbrainz_login"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/listenbrainz_scrobbling_title"
+            app:summary="@string/listenbrainz_scrobbling_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:dependency="listenbrainz_login"
+            app:key="listenbrainz_scrobbling_enabled"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/listenbrainz_now_playing_title"
+            app:summary="@string/listenbrainz_now_playing_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:dependency="listenbrainz_login"
+            app:key="listenbrainz_now_playing_enabled"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         app:title="@string/lyrics_preferences_title"
         app:layout="@layout/preference_category_title"
         app:dependency="network_features">

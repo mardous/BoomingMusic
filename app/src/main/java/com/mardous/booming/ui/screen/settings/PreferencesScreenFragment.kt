@@ -43,6 +43,7 @@ import com.mardous.booming.R
 import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.data.local.room.InclExclDao
+import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.hasS
@@ -65,9 +66,9 @@ import com.mardous.booming.ui.component.preferences.dialog.SingleSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPreferenceDialog
 import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
-import com.mardous.booming.ui.screen.lastfm.LastFmLoginDialogFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.ReloadType
+import com.mardous.booming.ui.screen.scrobbling.ScrobblingServiceLoginFragment
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
@@ -89,6 +90,7 @@ import com.mardous.booming.util.LANGUAGE_NAME
 import com.mardous.booming.util.LASTFM_LOGIN
 import com.mardous.booming.util.LAST_ADDED_CUTOFF
 import com.mardous.booming.util.LIBRARY_CATEGORIES
+import com.mardous.booming.util.LISTENBRAINZ_LOGIN
 import com.mardous.booming.util.MATERIAL_YOU
 import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.NOW_PLAYING_SCREEN
@@ -417,10 +419,9 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
                 COVER_SINGLE_TAP_ACTION,
                 COVER_LONG_PRESS_ACTION,
                 COVER_LEFT_DOUBLE_TAP_ACTION,
-                COVER_RIGHT_DOUBLE_TAP_ACTION -> {
-                    ActionOnCoverPreferenceDialog.newInstance(preference.key)
-                }
-                LASTFM_LOGIN -> LastFmLoginDialogFragment()
+                COVER_RIGHT_DOUBLE_TAP_ACTION -> ActionOnCoverPreferenceDialog.newInstance(preference.key)
+                LASTFM_LOGIN -> ScrobblingServiceLoginFragment.create(ScrobblingService.Lastfm)
+                LISTENBRAINZ_LOGIN -> ScrobblingServiceLoginFragment.create(ScrobblingService.ListenBrainz)
                 else -> null
             }
             if (dialogFragment != null) {

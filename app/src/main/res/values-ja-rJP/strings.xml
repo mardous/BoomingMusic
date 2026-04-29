@@ -866,10 +866,7 @@
     <string name="bit_perfect_info">ビットパーフェクト: %1$s | %2$s</string>
     <string name="lastfm_login_username">ユーザー名</string>
     <string name="lastfm_login_password">パスワード</string>
-    <string name="lastfm_login_ok">ログイン</string>
     <string name="lastfm_login_toggle_password_visibility">パスワードを表示</string>
-    <string name="lastfm_connected_account">接続済みアカウント:</string>
-    <string name="lastfm_logout">ログアウト</string>
     <string name="error_lastfm_auth">セッションの証明書が期限切れか無効です。もう一度ログインしてください。</string>
     <string name="error_lastfm_credentials">証明書が無効です。もう一度確認し、お試しください。</string>
     <string name="error_lastfm_params">不正なパラメーターです。Booming Musicの不具合の可能性があります。</string>

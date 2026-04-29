@@ -862,10 +862,7 @@
     <string name="uncaught_error_send">Rapor gönder</string>
     <string name="lastfm_login_username">Kullanıcı adı</string>
     <string name="lastfm_login_password">Şifre</string>
-    <string name="lastfm_login_ok">Giriş yap</string>
     <string name="lastfm_login_toggle_password_visibility">Parolanın görünürlüğünü değiştir</string>
-    <string name="lastfm_connected_account">Bağlanılmış hesap:</string>
-    <string name="lastfm_logout">Çıkış yap</string>
     <string name="channel_mono">Mono</string>
     <string name="channel_stereo">Stereo</string>
     <string name="error_lastfm_auth">Oturumunuzun süresi doldu veya kimlik bilgileriniz geçersiz. Lütfen tekrar giriş yapın.</string>

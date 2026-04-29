@@ -862,10 +862,7 @@
     <string name="uncaught_error_send">Skicka rapport</string>
     <string name="lastfm_login_username">Användarnamn</string>
     <string name="lastfm_login_password">Lösenord</string>
-    <string name="lastfm_login_ok">Logga in</string>
     <string name="lastfm_login_toggle_password_visibility">Visa/dölj lösenord</string>
-    <string name="lastfm_connected_account">Anslutet konto:</string>
-    <string name="lastfm_logout">Logga ut</string>
     <string name="error_lastfm_auth">Sessionen har löpt ut eller inloggningsuppgifterna är ogiltiga. Logga in igen.</string>
     <string name="error_lastfm_credentials">Dina inloggningsuppgifter är ogiltiga. Kontrollera dem och försök igen.</string>
     <string name="error_lastfm_params">Ogiltiga parametrar. Detta kan bero på ett fel från vår sida.</string>

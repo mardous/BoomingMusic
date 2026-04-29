@@ -884,10 +884,7 @@
     <string name="bit_perfect_description">Voer audio-uitvoer naar USB DAC zonder systeemresampling.</string>
     <string name="lastfm_login_username">Gebruikersnaam</string>
     <string name="lastfm_login_password">Wachtwoord</string>
-    <string name="lastfm_login_ok">Inloggen</string>
     <string name="lastfm_login_toggle_password_visibility">Wachtwoord zichtbaarheid</string>
-    <string name="lastfm_connected_account">Verbonden Account:</string>
-    <string name="lastfm_logout">Uitloggen</string>
     <string name="error_lastfm_auth">De sessie is verlopen of uw inloggegevens zijn ongeldig. Log opnieuw in.</string>
     <string name="error_lastfm_credentials">Uw inloggegevens zijn niet geldig. Controleer uw gegevens en probeer het opnieuw.</string>
     <string name="error_lastfm_params">Ongeldige parameters. Dit kan te wijten zijn aan een fout van onze kant.</string>
