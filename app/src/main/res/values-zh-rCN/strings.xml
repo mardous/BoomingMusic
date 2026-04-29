@@ -921,4 +921,16 @@
     <string name="widget_image_corner_radius_summary">调整专辑封面的圆角程度。</string>
     <string name="widget_third_line_title">第三行信息</string>
     <string name="widget_third_line_summary">选择信息文本第三行应显示的内容。</string>
+    <string name="search_playlists">搜索播放列表</string>
+    <string name="select_playlists_title">选择播放列表</string>
+    <string name="new_playlist_action">新建</string>
+    <string name="no_playlists_create_new">点按“新建”创建播放列表</string>
+    <string name="no_playlists_that_match_x">未找到匹配“%s”的播放列表</string>
+    <string name="songs_added_to_playlists">歌曲已添加到播放列表。</string>
+    <string name="no_playlists_label">无播放列表</string>
+    <plurals name="x_playlists_selected">
+        <item quantity="other">已选中 %d 个播放列表</item>
+    </plurals>
+    <string name="sleep_timer_x_secs">%d 秒</string>
+    <string name="auto_theme_name">自动</string>
 </resources>
