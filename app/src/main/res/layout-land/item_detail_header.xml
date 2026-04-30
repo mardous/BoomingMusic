@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_begin="48dp"/>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image"
@@ -34,7 +34,7 @@
         android:layout_marginEnd="16dp"
         android:maxLines="2"
         android:ellipsize="end"
-        android:textAppearance="?textAppearanceHeadlineSmall"
+        android:textAppearance="?textAppearanceTitleLargeEmphasized"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toEndOf="@+id/image"
@@ -48,13 +48,27 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:textAppearance="?textAppearanceTitleMedium"
-        android:textColor="?android:attr/textColorSecondary"
         app:layout_constrainedWidth="true"
         app:layout_constraintTop_toBottomOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/title"
         app:layout_constraintEnd_toEndOf="@+id/title"
         tools:ignore="MissingPrefix"
         tools:text="@tools:sample/full_names"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAppearance="?textAppearanceSubtitle2"
+        android:textColor="?colorOnSurfaceVariant"
+        android:ellipsize="end"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:maxLines="3"
+        tools:text="@tools:sample/lorem/random" />
 
     <com.google.android.material.button.MaterialSplitButton
         android:id="@+id/actions"
@@ -71,6 +85,7 @@
             style="?materialSplitButtonLeadingFilledStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:saveEnabled="false"
             android:text="@string/action_play"
             app:icon="@drawable/ic_play_24dp" />
 

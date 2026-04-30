@@ -64,6 +64,23 @@
         app:layout_constraintEnd_toEndOf="@+id/title"
         tools:text="@tools:sample/full_names" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceSubtitle2"
+        android:textColor="?colorOnSurfaceVariant"
+        android:ellipsize="end"
+        android:visibility="gone"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:maxLines="3"
+        tools:text="@tools:sample/lorem/random" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/shuffleAction"
         style="?materialIconButtonFilledTonalStyle"
@@ -76,18 +93,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/playAction"
         app:layout_constraintEnd_toStartOf="@+id/playAction"/>
 
-    <ImageView
+    <com.mardous.booming.ui.component.views.MorphicIconButton
         android:id="@+id/playAction"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
-        android:contentDescription="@string/action_play"
-        android:background="@drawable/cookie_shape"
-        android:backgroundTint="?colorPrimary"
-        android:padding="24dp"
-        app:srcCompat="@drawable/ic_play_24dp"
-        app:tint="?colorOnPrimary"
-        app:layout_constraintTop_toBottomOf="@+id/subtitle"
+        android:saveEnabled="false"
+        app:morphicIcon="@drawable/ic_play_24dp"
+        app:morphicShape="cookie_9"
+        app:layout_constraintTop_toBottomOf="@+id/description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
