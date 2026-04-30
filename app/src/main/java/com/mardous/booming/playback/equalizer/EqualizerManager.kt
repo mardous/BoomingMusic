@@ -241,7 +241,7 @@ class EqualizerManager(
         .stateIn(eqScope, SharingStarted.Eagerly, false)
 
     val audioOffload = context.eqDataStore.data
-        .map { prefs -> prefs[Keys.BIT_PERFECT] == false && prefs[Keys.AUDIO_OFFLOAD] == true }
+        .map { prefs -> prefs[Keys.BIT_PERFECT] != true && prefs[Keys.AUDIO_OFFLOAD] == true }
         .stateIn(eqScope, SharingStarted.Eagerly, false)
 
     val audioFloatOutput = context.eqDataStore.data
