@@ -23,6 +23,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.findNavController
@@ -107,7 +108,7 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_playlis
         materialSharedAxis(view)
         view.applyHorizontalWindowInsets()
 
-        binding.image.removeHorizontalMarginIfRequired()
+        binding.header.image.removeHorizontalMarginIfRequired()
 
         setSupportActionBar(binding.toolbar)
         //binding.collapsingAppBarLayout.setupStatusBarScrim(requireContext())
@@ -118,18 +119,18 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_playlis
 
         detailViewModel.getPlaylist().observe(viewLifecycleOwner) { playlistWithSongs ->
             playlist = playlistWithSongs
-            binding.title.text = playlist.playlistEntity.playlistName
+            binding.header.title.text = playlist.playlistEntity.playlistName
             val description = playlist.playlistEntity.description
             if (!description.isNullOrEmpty()) {
-                binding.description.text = description
-                binding.description.isVisible = true
+                binding.header.description.text = description
+                binding.header.description.isVisible = true
             } else {
-                binding.description.text = null
-                binding.description.isVisible = false
+                binding.header.description.text = null
+                binding.header.description.isGone = true
             }
-            binding.subtitle.text = playlist.songs.toSongs().playlistInfo(requireContext())
             binding.collapsingAppBarLayout.title = playlist.playlistEntity.playlistName
-            binding.image.playlistImage(playlist)
+            binding.header.subtitle.text = playlist.songs.toSongs().playlistInfo(requireContext())
+            binding.header.image.playlistImage(playlist)
         }
         detailViewModel.getSongs().observe(viewLifecycleOwner) {
             binding.progressIndicator.hide()
@@ -147,17 +148,17 @@ class PlaylistDetailFragment : AbsMainActivityFragment(R.layout.fragment_playlis
     }
 
     private fun setupButtons() {
-        binding.playAction.setOnClickListener {
+        binding.header.playAction.setOnClickListener {
             playlistSongAdapter?.dataSet?.let {
                 playerViewModel.openQueue(it, shuffleMode = OpenShuffleMode.Off)
             }
         }
-        binding.shuffleAction.setOnClickListener {
+        binding.header.shuffleAction.setOnClickListener {
             playlistSongAdapter?.dataSet?.let {
                 playerViewModel.openAndShuffleQueue(it)
             }
         }
-        binding.searchAction?.setOnClickListener {
+        binding.header.searchAction?.setOnClickListener {
             findNavController().navigate(
                 R.id.nav_search,
                 searchArgs(playlist.playlistEntity.searchFilter(requireContext()))
