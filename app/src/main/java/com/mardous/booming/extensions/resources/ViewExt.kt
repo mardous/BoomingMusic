@@ -71,6 +71,7 @@ import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.resolveColor
+import com.mardous.booming.ui.component.views.MorphicIconButton
 import com.mardous.booming.util.Preferences
 import com.skydoves.balloon.ArrowPositionRules
 import com.skydoves.balloon.Balloon
@@ -283,6 +284,7 @@ fun View.animateTintColor(
                 }
                 is ImageView -> ImageViewCompat.setImageTintList(this@animateTintColor, colorStateList)
                 is TextView -> applyColor(animatedColor)
+                is MorphicIconButton -> applyColor(animatedColor)
                 else -> backgroundTintList = colorStateList
             }
         }

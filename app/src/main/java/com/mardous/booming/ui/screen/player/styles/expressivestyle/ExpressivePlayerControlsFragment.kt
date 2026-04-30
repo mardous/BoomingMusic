@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.animation.TimeInterpolator
 import android.graphics.Color
-import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
@@ -22,6 +21,7 @@ import com.mardous.booming.extensions.dp
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_NEXT
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
+import com.mardous.booming.ui.component.views.MorphicIconButton
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.player.PlayerAnimator
 import com.mardous.booming.util.Preferences
@@ -59,43 +59,31 @@ class ExpressivePlayerControlsFragment : AbsPlayerControlsFragment(R.layout.frag
 
     override fun onUpdatePlayPause(isPlaying: Boolean) {
         _binding?.playPauseButton?.let {
-            (it.drawable as? AnimatedVectorDrawable)?.stop()
             val playPauseIcon = if (isPlaying) {
                 ContextCompat.getDrawable(it.context, R.drawable.avd_play)
             } else {
                 ContextCompat.getDrawable(it.context, R.drawable.avd_pause)
             }
-            it.setImageDrawable(playPauseIcon)
-            if (playPauseIcon is AnimatedVectorDrawable) {
-                playPauseIcon.start()
-            }
-            (it.background as? AnimatedVectorDrawable)?.stop()
-            val playPauseBg = if (isPlaying) {
-                ContextCompat.getDrawable(it.context, R.drawable.avd_play_background)
-            } else {
-                ContextCompat.getDrawable(it.context, R.drawable.avd_pause_background)
-            }
-            it.background = playPauseBg
-            if (playPauseBg is AnimatedVectorDrawable) {
-                playPauseBg.start()
-            }
+            it.setIcon(playPauseIcon)
+            it.morphToShape(
+                if (isPlaying) MorphicIconButton.SHAPE_COOKIE_9 else MorphicIconButton.SHAPE_CIRCLE
+            )
+            it.setRotate(isPlaying && Preferences.animateControls)
         }
     }
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
         val oldSliderColor = binding.progressSlider.currentColor
         val oldOnSurfaceVariantColor = binding.songCurrentProgress.currentTextColor
-        val oldPrimaryButtonColor = binding.playPauseButton.backgroundTintList?.defaultColor
-            ?: Color.TRANSPARENT
-        val oldSecondaryButtonColor = binding.previousButton.backgroundTintList?.defaultColor
+        val oldButtonColor = binding.playPauseButton.backgroundTintList?.defaultColor
             ?: Color.TRANSPARENT
         return listOfNotNull(
             binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.primaryColor),
             binding.songCurrentProgress.tintTarget(oldOnSurfaceVariantColor, scheme.onSurfaceVariantColor),
             binding.songTotalTime.tintTarget(oldOnSurfaceVariantColor, scheme.onSurfaceVariantColor),
-            binding.playPauseButton.tintTarget(oldPrimaryButtonColor, scheme.primaryColor),
-            binding.nextButton.tintTarget(oldSecondaryButtonColor, scheme.primaryColor),
-            binding.previousButton.tintTarget(oldSecondaryButtonColor, scheme.primaryColor)
+            binding.playPauseButton.tintTarget(oldButtonColor, scheme.primaryColor),
+            binding.nextButton.tintTarget(oldButtonColor, scheme.primaryColor),
+            binding.previousButton.tintTarget(oldButtonColor, scheme.primaryColor)
         )
     }
 

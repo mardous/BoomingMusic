@@ -42,6 +42,7 @@ import com.google.android.material.slider.Slider
 import com.mardous.booming.R
 import com.mardous.booming.extensions.isNightMode
 import com.mardous.booming.extensions.resolveColor
+import com.mardous.booming.ui.component.views.MorphicIconButton
 import kotlin.math.abs
 
 val Int.isColorLight: Boolean
@@ -189,6 +190,11 @@ fun FloatingActionButton.applyColor(color: Int) {
 fun TextView.applyColor(color: Int) {
     setTextColor(color)
     TextViewCompat.setCompoundDrawableTintList(this, color.toColorStateList())
+}
+
+fun MorphicIconButton.applyColor(color: Int) {
+    backgroundTintList = color.toColorStateList()
+    setIconTintColor(getPrimaryTextColor(context, color.isColorLight))
 }
 
 @SuppressLint("RestrictedApi")
