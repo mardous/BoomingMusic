@@ -24,6 +24,7 @@ import com.mardous.booming.extensions.fileProviderAuthority
 import com.mardous.booming.util.StorageUtil
 import org.jaudiotagger.audio.AudioFile
 import org.jaudiotagger.audio.AudioFileIO
+import org.jaudiotagger.audio.AudioHeader
 import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
@@ -79,6 +80,15 @@ fun File.getContentUri(context: Context): Uri =
     FileProvider.getUriForFile(context, context.fileProviderAuthority, this)
 
 fun File.toAudioFile(): AudioFile? = runCatching { AudioFileIO.read(this) }.getOrNull()
+
+val AudioHeader.formatFixed: String
+    get() = this.format.let {
+        when (it) {
+            "Opus Vorbis 1.0" -> "Opus"
+            "Apple Lossless" -> "ALAC"
+            else -> it
+        }
+    }
 
 /**
  * Reads this stream completely as a String.

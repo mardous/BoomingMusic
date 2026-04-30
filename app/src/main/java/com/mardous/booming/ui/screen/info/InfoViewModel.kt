@@ -12,6 +12,7 @@ import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.asReadableFileSize
+import com.mardous.booming.extensions.files.formatFixed
 import com.mardous.booming.extensions.files.getHumanReadableSize
 import com.mardous.booming.extensions.files.getPrettyAbsolutePath
 import com.mardous.booming.extensions.files.toAudioFile
@@ -124,27 +125,27 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                 val comment = metadataReader.value(MetadataReader.COMMENT)
 
                 SongInfo(
-                    playCount,
-                    skipCount,
-                    lastPlayed,
-                    filePath,
-                    fileSize,
-                    trackLength,
-                    dateModified,
-                    audioHeaderInfo,
-                    title,
-                    album,
-                    artist,
-                    albumArtist,
-                    year,
-                    trackNumber,
-                    discNumber,
-                    composer,
-                    conductor,
-                    publisher,
-                    genre,
-                    replayGain,
-                    comment
+                    playCount = playCount,
+                    skipCount = skipCount,
+                    lastPlayedDate = lastPlayed,
+                    filePath = filePath,
+                    fileSize = fileSize,
+                    trackLength = trackLength,
+                    dateModified = dateModified,
+                    audioHeaderInfo = audioHeaderInfo,
+                    title = title ?: song.title,
+                    album = album,
+                    artist = artist,
+                    albumArtist = albumArtist,
+                    albumYear = year,
+                    trackNumber = trackNumber,
+                    discNumber = discNumber,
+                    composer = composer,
+                    conductor = conductor,
+                    publisher = publisher,
+                    genre = genre,
+                    replayGain = replayGain,
+                    comment = comment
                 )
             }
         }
@@ -168,7 +169,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
 
     private fun getAudioHeader(header: AudioHeader?, metadataReader: MetadataReader): AudioHeaderInfo {
         return AudioHeaderInfo(
-            format = header?.format,
+            format = header?.formatFixed,
             bitrate = metadataReader.bitrate(),
             sampleRate = metadataReader.sampleRate(),
             channels = metadataReader.channelName(),
