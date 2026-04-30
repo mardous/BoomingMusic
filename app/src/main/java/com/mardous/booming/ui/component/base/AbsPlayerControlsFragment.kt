@@ -48,6 +48,7 @@ import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerAnimator
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.util.ANIMATE_PLAYER_CONTROL
 import com.mardous.booming.util.DISPLAY_ALBUM_TITLE
 import com.mardous.booming.util.DISPLAY_EXTRA_INFO
 import com.mardous.booming.util.ENABLE_SCROLLING_TEXT
@@ -324,6 +325,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
         when (key) {
+            ANIMATE_PLAYER_CONTROL -> {
+                playerAnimator?.isEnabled = sharedPreferences.getBoolean(key, true)
+            }
             SQUIGGLY_SEEK_BAR -> {
                 musicSlider?.setUseSquiggly(sharedPreferences.getBoolean(key, false))
                 musicSlider?.animateSquigglyProgress = playerViewModel.isPlaying

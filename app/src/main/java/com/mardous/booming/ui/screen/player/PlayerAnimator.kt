@@ -29,7 +29,7 @@ import java.util.LinkedList
 /**
  * @author Christians M. A. (mardous)
  */
-abstract class PlayerAnimator(val isEnabled: Boolean) {
+abstract class PlayerAnimator(var isEnabled: Boolean) {
     private var musicControllerAnimationSet: AnimatorSet? = null
     var isPrepared = false
         private set
