@@ -1,0 +1,10 @@
+* Added ALAC and bit-perfect playback via USB DACs
+* New full-screen widget and advanced customization (size, corner radius)
+* Support for LRC lyrics with multiple timestamps per line and horizontal centering
+* ListenBrainz scrobbling
+* Editable Favorites playlist
+* Configurable sleep timer fade-out
+* Improved notification cover quality
+* Fixed playback control animations
+* Fixed artist image handling
+* Minor UI adjustments and internal improvements

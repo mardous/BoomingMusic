@@ -44,6 +44,7 @@
 - 🎧 **AutoEq Support** – Import professionally tuned headphone correction profiles for the most accurate sound possible.
 - 🔄 **Gapless Playback** – Smooth transitions between songs with zero interruption.
 - 🧠 **Smart Playlists** – Auto-generated lists like *Recently Played*, *Most Played*, and *History*.
+- 📈 **Native Scrobbling** – Seamlessly sync your listening history with **Last.fm** and **ListenBrainz**.
 - 🎧 **Bluetooth & Headset Controls** – Manage playback easily via connected devices.
 - 🚗 **Android Auto Integration** – Full hands-free experience on the road.
 - 🎨 **Material You Design** – Dynamic theming for a modern and personal interface.
