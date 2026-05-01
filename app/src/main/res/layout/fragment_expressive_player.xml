@@ -104,8 +104,8 @@
             android:id="@+id/actions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:spacing="0dp"
-            app:innerCornerSize="8dp"
+            android:spacing="2dp"
+            app:innerCornerSize="6dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
