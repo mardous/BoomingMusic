@@ -71,7 +71,7 @@ data class PlayerColorScheme(
     @param:ColorInt val surfaceColor: Int,
     @param:ColorInt val surfaceContainerColor: Int,
     @param:ColorInt val primaryColor: Int,
-    @param:ColorInt val tonalColor: Int,
+    @param:ColorInt val secondaryContainerColor: Int,
     @param:ColorInt val onSurfaceColor: Int,
     @param:ColorInt val onSurfaceVariantColor: Int
 ) {
@@ -135,7 +135,7 @@ data class PlayerColorScheme(
             surfaceColor = Color.TRANSPARENT,
             surfaceContainerColor = Color.TRANSPARENT,
             primaryColor = Color.TRANSPARENT,
-            tonalColor = Color.TRANSPARENT,
+            secondaryContainerColor = Color.TRANSPARENT,
             onSurfaceColor = Color.TRANSPARENT,
             onSurfaceVariantColor = Color.TRANSPARENT
         )
@@ -161,7 +161,7 @@ data class PlayerColorScheme(
                 surfaceColor = context.surfaceColor(),
                 surfaceContainerColor = context.resolveColor(M3R.attr.colorSurfaceContainerHigh),
                 primaryColor = context.primaryColor(),
-                tonalColor = context.resolveColor(M3R.attr.colorSecondaryContainer),
+                secondaryContainerColor = context.resolveColor(M3R.attr.colorSecondaryContainer),
                 onSurfaceColor = onSurfaceColor,
                 onSurfaceVariantColor = onSurfaceVariantColor
             )
@@ -197,7 +197,7 @@ data class PlayerColorScheme(
                 surfaceColor = color.backgroundColor,
                 surfaceContainerColor = ColorUtils.blendARGB(color.backgroundColor, color.primaryTextColor, 0.7f),
                 primaryColor = color.backgroundColor,
-                tonalColor = ColorUtils.blendARGB(color.backgroundColor, color.secondaryTextColor, 0.4f),
+                secondaryContainerColor = ColorUtils.blendARGB(color.backgroundColor, color.secondaryTextColor, 0.4f),
                 onSurfaceColor = color.primaryTextColor,
                 onSurfaceVariantColor = color.secondaryTextColor.withAlpha(0.6f)
             )
@@ -231,7 +231,7 @@ data class PlayerColorScheme(
                 surfaceColor = colorScheme.surface,
                 surfaceContainerColor = colorScheme.surfaceContainerHigh,
                 primaryColor = colorScheme.primary,
-                tonalColor = colorScheme.secondaryContainer,
+                secondaryContainerColor = colorScheme.secondaryContainer,
                 onSurfaceColor = colorScheme.onSurface,
                 onSurfaceVariantColor = colorScheme.onSurfaceVariant.withAlpha(0.7f)
             )
@@ -262,7 +262,7 @@ data class PlayerColorScheme(
                 Mode.AppTheme -> themeColorScheme(context)
                 Mode.SimpleColor -> simpleColorScheme(context, color)
                 Mode.VibrantColor -> vibrantColorScheme(color)
-                Mode.MaterialYou -> dynamicColorScheme(context, color.backgroundColor)
+                Mode.MaterialYou -> dynamicColorScheme(context, color.primaryColor)
                 Mode.Blur -> blurColorScheme(context, color)
             }
             check(mode == colorScheme.mode)
