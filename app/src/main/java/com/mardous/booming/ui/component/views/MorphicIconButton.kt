@@ -120,6 +120,11 @@ class MorphicIconButton @JvmOverloads constructor(
         throw UnsupportedOperationException("Please, use setBackgroundTintList() instead.")
     }
 
+    override fun setBackgroundTintList(tint: ColorStateList?) {
+        super.setBackgroundTintList(tint)
+        invalidate()
+    }
+
     override fun getBackgroundTintList(): ColorStateList {
         val backgroundTintList = super.getBackgroundTintList()
             ?: return ColorStateList.valueOf(defaultBackgroundColor)

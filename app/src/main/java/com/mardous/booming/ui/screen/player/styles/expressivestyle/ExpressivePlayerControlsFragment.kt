@@ -4,7 +4,6 @@ import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.animation.TimeInterpolator
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
@@ -75,8 +74,7 @@ class ExpressivePlayerControlsFragment : AbsPlayerControlsFragment(R.layout.frag
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
         val oldSliderColor = binding.progressSlider.currentColor
         val oldOnSurfaceVariantColor = binding.songCurrentProgress.currentTextColor
-        val oldButtonColor = binding.playPauseButton.backgroundTintList?.defaultColor
-            ?: Color.TRANSPARENT
+        val oldButtonColor = binding.playPauseButton.backgroundTintList.defaultColor
         return listOfNotNull(
             binding.progressSlider.progressView?.tintTarget(oldSliderColor, scheme.primaryColor),
             binding.songCurrentProgress.tintTarget(oldOnSurfaceVariantColor, scheme.onSurfaceVariantColor),
