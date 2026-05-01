@@ -933,4 +933,11 @@
     </plurals>
     <string name="sleep_timer_x_secs">%d 秒</string>
     <string name="auto_theme_name">自动</string>
+    <string name="connected_account_label">已连接账户:</string>
+    <string name="login_action">登录</string>
+    <string name="logout_action">退出登录</string>
+    <string name="sign_in_to_x_title">登录到%s</string>
+    <string name="error_listenbrainz_generic">ListenBrainz发生了错误。</string>
+    <string name="error_listenbrainz_invalid_token">无效的ListenBrainz凭据。</string>
+    <string name="listenbrainz_token_label">用户凭据</string>
 </resources>
