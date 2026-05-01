@@ -178,7 +178,7 @@ fun SleepTimerBottomSheet(
                             )
                             viewModel.setTimerState(value = sliderPosition)
                         },
-                        valueRange = 1f..180f,
+                        valueRange = 5f..180f,
                         track = { sliderState ->
                             SliderDefaults.Track(
                                 sliderState = sliderState,

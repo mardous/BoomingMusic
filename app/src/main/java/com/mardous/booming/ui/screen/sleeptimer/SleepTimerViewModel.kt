@@ -37,7 +37,7 @@ class SleepTimerViewModel(
             isFinishMusic = prefs[Keys.IS_FINISH_MUSIC] ?: false,
             isFadeOut = prefs[Keys.IS_FADE_OUT] ?: false,
             fadeOutDuration = prefs[Keys.FADE_OUT_DURATION] ?: 5f,
-            timerValue = prefs[Keys.TIMER_VALUE] ?: 0f
+            timerValue = prefs[Keys.TIMER_VALUE] ?: 5f
         )
     }
 
@@ -50,7 +50,7 @@ class SleepTimerViewModel(
             isFinishMusic = false,
             isFadeOut = false,
             fadeOutDuration = 5f,
-            timerValue = 0f
+            timerValue = 5f
         )
     )
 
