@@ -18,16 +18,22 @@
 package com.mardous.booming.ui.screen.player.styles.plainstyle
 
 import android.animation.Animator
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.animation.TimeInterpolator
 import android.os.Bundle
 import android.view.View
-import android.view.animation.BounceInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mardous.booming.R
-import com.mardous.booming.core.model.player.*
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTintTarget
+import com.mardous.booming.core.model.player.iconButtonTintTarget
+import com.mardous.booming.core.model.player.tintTarget
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlainPlayerPlaybackControlsBinding
 import com.mardous.booming.ui.component.base.AbsPlayerControlsFragment
@@ -35,7 +41,6 @@ import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DI
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.player.PlayerAnimator
-import com.mardous.booming.util.Preferences
 import java.util.LinkedList
 
 /**
@@ -113,7 +118,7 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
     }
 
     override fun onCreatePlayerAnimator(): PlayerAnimator {
-        return PlainPlayerAnimator(binding, Preferences.animateControls)
+        return PlainPlayerAnimator(binding, isControlAnimationEnabled)
     }
 
     override fun onSongInfoChanged(currentSong: Song, nextSong: Song) {}
@@ -137,25 +142,6 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
         }
     }
 
-    override fun onShow() {
-        super.onShow()
-        if (Preferences.animateControls) {
-            binding.playPauseButton.animate()
-                .scaleX(1f)
-                .scaleY(1f)
-                .setInterpolator(BounceInterpolator())
-                .start()
-        }
-    }
-
-    override fun onHide() {
-        super.onHide()
-        binding.playPauseButton.apply {
-            scaleX = if (Preferences.animateControls) 0f else 1f
-            scaleY = if (Preferences.animateControls) 0f else 1f
-        }
-    }
-
     override fun onClick(view: View) {
         super.onClick(view)
         when (view) {
@@ -175,6 +161,16 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
         isEnabled: Boolean
     ) : PlayerAnimator(isEnabled) {
         override fun onAddAnimation(animators: LinkedList<Animator>, interpolator: TimeInterpolator) {
+            animators.add(
+                ObjectAnimator.ofPropertyValuesHolder(
+                    binding.playPauseButton,
+                    PropertyValuesHolder.ofFloat(View.SCALE_X, 1f),
+                    PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f),
+                    PropertyValuesHolder.ofFloat(View.ROTATION, 360f)
+                ).apply {
+                    setInterpolator(DecelerateInterpolator())
+                }
+            )
             addScaleAnimation(animators, binding.shuffleButton, interpolator, 100)
             addScaleAnimation(animators, binding.repeatButton, interpolator, 100)
             addScaleAnimation(animators, binding.previousButton, interpolator, 100)
@@ -184,6 +180,11 @@ class PlainPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_
         }
 
         override fun onPrepareForAnimation() {
+            binding.playPauseButton.apply {
+                scaleX = 0f
+                scaleY = 0f
+                rotation = 0f
+            }
             prepareForScaleAnimation(binding.previousButton)
             prepareForScaleAnimation(binding.nextButton)
             prepareForScaleAnimation(binding.shuffleButton)

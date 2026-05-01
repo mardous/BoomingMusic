@@ -27,6 +27,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.TextView
+import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.media3.common.Player
@@ -86,6 +87,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     protected open val songArtistView: TextView? = null
     protected open val songInfoView: TextView? = null
 
+    protected var isControlAnimationEnabled: Boolean = false
+        private set
+
     protected val isShuffleModeOn: Boolean
         get() = playerViewModel.shuffleModeEnabled
 
@@ -106,6 +110,11 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     override fun onDetach() {
         super.onDetach()
         playerFragment = null
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        isControlAnimationEnabled = Preferences.animateControls
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -323,10 +332,16 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         disabledControlColor: Int = lastDisabledPlaybackControlsColor
     ) = if (isEnabled) controlColor else disabledControlColor
 
+    @CallSuper
+    protected open fun onControlAnimationStateChanged(isEnabled: Boolean) {
+        playerAnimator?.isEnabled = isEnabled
+    }
+
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
         when (key) {
             ANIMATE_PLAYER_CONTROL -> {
-                playerAnimator?.isEnabled = sharedPreferences.getBoolean(key, true)
+                isControlAnimationEnabled = sharedPreferences.getBoolean(key, true)
+                onControlAnimationStateChanged(isControlAnimationEnabled)
             }
             SQUIGGLY_SEEK_BAR -> {
                 musicSlider?.setUseSquiggly(sharedPreferences.getBoolean(key, false))

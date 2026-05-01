@@ -71,17 +71,50 @@ class MorphicIconButton @JvmOverloads constructor(
     private var morphAnimator: ValueAnimator? = null
     private var rotateAnimator: ValueAnimator? = null
 
-    private var progress = 1f
-    private var shapeRotation = 0f
-    private var morphDuration: Long = 450
-    private var rotationDuration: Long = 15000
-    private var isRotating = false
-
     private var currentShapeIndex = SHAPE_SQUARE
     private var targetShapeIndex = SHAPE_CIRCLE
 
     private var defaultBackgroundColor = Color.GRAY
     private var iconTintColor = Color.WHITE
+
+    private var progress = 1f
+    private var shapeRotation = 0f
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    var morphDuration: Long = 450
+
+    var rotationDuration: Long = 15000
+        set(value) {
+            field = value
+            if (isRotating) {
+                isRotating = false
+                isRotating = true
+            }
+        }
+
+    var isRotating = false
+        set(value) {
+            if (value && !field) {
+                field = true
+                rotateAnimator?.cancel()
+                rotateAnimator = ValueAnimator.ofFloat(shapeRotation, shapeRotation + 360f).apply {
+                    setDuration(rotationDuration)
+                    repeatCount = ValueAnimator.INFINITE
+                    interpolator = LinearInterpolator()
+                    addUpdateListener { animator: ValueAnimator ->
+                        shapeRotation = animator.animatedValue as Float
+                    }
+                }
+                rotateAnimator?.start()
+            } else if (!value && field) {
+                field = false
+                rotateAnimator?.end()
+                rotateAnimator = null
+            }
+        }
 
     init {
         setWillNotDraw(false)
@@ -150,18 +183,6 @@ class MorphicIconButton @JvmOverloads constructor(
         imageView?.drawable?.setTint(color)
     }
 
-    fun setMorphDuration(duration: Long) {
-        this.morphDuration = duration
-    }
-
-    fun setRotationDuration(duration: Long) {
-        this.rotationDuration = duration
-        if (isRotating) {
-            setRotate(false)
-            setRotate(true)
-        }
-    }
-
     fun morphToShape(shapeIndex: Int) {
         if (shapeIndex < 0 || shapeIndex >= SHAPES.size || shapeIndex == targetShapeIndex) return
 
@@ -181,26 +202,6 @@ class MorphicIconButton @JvmOverloads constructor(
             doOnEnd { nextMorph = null }
         }
         morphAnimator?.start()
-    }
-
-    fun setRotate(active: Boolean) {
-        if (active && !isRotating) {
-            isRotating = true
-            rotateAnimator = ValueAnimator.ofFloat(shapeRotation, shapeRotation + 360f).apply {
-                setDuration(rotationDuration)
-                repeatCount = ValueAnimator.INFINITE
-                interpolator = LinearInterpolator()
-                addUpdateListener { animator: ValueAnimator ->
-                    shapeRotation = animator.animatedValue as Float
-                    invalidate()
-                }
-            }
-            rotateAnimator?.start()
-        } else if (!active && isRotating) {
-            isRotating = false
-            rotateAnimator?.cancel()
-            rotateAnimator = null
-        }
     }
 
     override fun onDraw(canvas: Canvas) {

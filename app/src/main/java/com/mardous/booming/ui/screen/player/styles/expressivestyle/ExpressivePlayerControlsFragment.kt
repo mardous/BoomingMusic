@@ -23,7 +23,6 @@ import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DI
 import com.mardous.booming.ui.component.views.MorphicIconButton
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.player.PlayerAnimator
-import com.mardous.booming.util.Preferences
 import java.util.LinkedList
 
 class ExpressivePlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_expressive_player_playback_controls) {
@@ -49,7 +48,12 @@ class ExpressivePlayerControlsFragment : AbsPlayerControlsFragment(R.layout.frag
     }
 
     override fun onCreatePlayerAnimator(): PlayerAnimator {
-        return ExpressivePlayerAnimator(binding, Preferences.animateControls)
+        return ExpressivePlayerAnimator(binding, isControlAnimationEnabled)
+    }
+
+    override fun onControlAnimationStateChanged(isEnabled: Boolean) {
+        super.onControlAnimationStateChanged(isEnabled)
+        _binding?.playPauseButton?.isRotating = playerViewModel.isPlaying && isControlAnimationEnabled
     }
 
     override fun onSongInfoChanged(currentSong: Song, nextSong: Song) {}
@@ -67,7 +71,7 @@ class ExpressivePlayerControlsFragment : AbsPlayerControlsFragment(R.layout.frag
             it.morphToShape(
                 if (isPlaying) MorphicIconButton.SHAPE_COOKIE_9 else MorphicIconButton.SHAPE_CIRCLE
             )
-            it.setRotate(isPlaying && Preferences.animateControls)
+            it.isRotating = isPlaying && isControlAnimationEnabled
         }
     }
 
@@ -83,6 +87,16 @@ class ExpressivePlayerControlsFragment : AbsPlayerControlsFragment(R.layout.frag
             binding.nextButton.tintTarget(oldButtonColor, scheme.primaryColor),
             binding.previousButton.tintTarget(oldButtonColor, scheme.primaryColor)
         )
+    }
+
+    override fun onShow() {
+        super.onShow()
+        _binding?.playPauseButton?.isRotating = playerViewModel.isPlaying && isControlAnimationEnabled
+    }
+
+    override fun onHide() {
+        super.onHide()
+        _binding?.playPauseButton?.isRotating = false
     }
 
     override fun onClick(view: View) {

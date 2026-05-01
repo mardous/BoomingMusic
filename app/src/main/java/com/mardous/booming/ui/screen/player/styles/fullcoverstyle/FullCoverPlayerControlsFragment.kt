@@ -125,7 +125,7 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
             binding.repeatButton -> playerViewModel.cycleRepeatMode()
             binding.playPauseButton -> {
                 playerViewModel.togglePlayPause()
-                if (Preferences.animateControls) {
+                if (isControlAnimationEnabled) {
                     view.showBounceAnimation()
                 }
             }
@@ -133,7 +133,7 @@ class FullCoverPlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragm
     }
 
     override fun onCreatePlayerAnimator(): PlayerAnimator {
-        return FullCoverPlayerAnimator(binding, Preferences.animateControls)
+        return FullCoverPlayerAnimator(binding, isControlAnimationEnabled)
     }
 
     override fun getTintTargets(scheme: PlayerColorScheme): List<PlayerTintTarget> {
