@@ -930,4 +930,30 @@
     <string name="widget_third_line_title">Tredje informationsraden</string>
     <string name="widget_third_line_summary">Välj vad som ska visas i den tredje textraden.</string>
     <string name="sleep_timer_x_secs">%d sekunder</string>
+    <string name="search_playlists">Sök i spellistor</string>
+    <string name="select_playlists_title">Välj spellistor</string>
+    <string name="new_playlist_action">Ny</string>
+    <string name="no_playlists_create_new">Klicka på knappen \"Ny\" för att skapa en spellista</string>
+    <string name="no_playlists_that_match_x">Det finns inga spellistor som matchar \"%s\"</string>
+    <string name="songs_added_to_playlists">Låtar som lagts till i spellistor.</string>
+    <string name="no_playlists_label">Inga spellistor</string>
+    <plurals name="x_playlists_selected">
+        <item quantity="one">%d spellista vald</item>
+        <item quantity="other">%d spellistor valda</item>
+    </plurals>
+    <string name="sign_in_to_x_title">Logga in på %s</string>
+    <string name="connected_account_label">Anslutet konto:</string>
+    <string name="login_action">Logga in</string>
+    <string name="logout_action">Logga ut</string>
+    <string name="listenbrainz_token_label">Användartoken</string>
+    <string name="error_listenbrainz_generic">ListenBrainz fel inträffade.</string>
+    <string name="error_listenbrainz_invalid_token">Ogiltigt ListenBrainz-token.</string>
+    <string name="listenbrainz_title">ListenBrainz</string>
+    <string name="listenbrainz_login_title">Logga in på ListenBrainz</string>
+    <string name="listenbrainz_login_summary">Autentisera dig med din användartoken för att aktivera scrobbling och uppdateringar om vad som spelas just nu. Du hittar din token i inställningarna för din ListenBrainz-profil.</string>
+    <string name="listenbrainz_scrobbling_title">Aktivera ListenBrainz-scrobbling</string>
+    <string name="listenbrainz_scrobbling_summary">Skicka automatiskt uppspelade låtar till din lyssningshistorik på ListenBrainz.</string>
+    <string name="listenbrainz_now_playing_title">Uppdatera vad som spelas just nu på ListenBrainz</string>
+    <string name="listenbrainz_now_playing_summary">Visa den låt som spelas just nu på din ListenBrainz-profil i realtid.</string>
+    <string name="auto_theme_name">Automatisk</string>
 </resources>
