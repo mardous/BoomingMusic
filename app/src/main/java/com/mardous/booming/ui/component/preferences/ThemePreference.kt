@@ -50,9 +50,11 @@ class ThemePreference @JvmOverloads constructor(
         // Disable ripple effect
         holder.itemView.background = null
 
+        val generalTheme = Preferences.generalTheme
         widgetView = holder.findViewById(android.R.id.widget_frame)
         widgetView?.findViewById<MaterialButtonToggleGroup>(R.id.buttonGroup)?.apply {
-            check(Preferences.generalTheme.let { selectorIds[it] ?: R.id.systemDefault })
+            isEnabled = (generalTheme != GeneralTheme.BLACK)
+            check(generalTheme.let { selectorIds[it] ?: R.id.systemDefault })
             addOnButtonCheckedListener(this@ThemePreference)
         }
     }
