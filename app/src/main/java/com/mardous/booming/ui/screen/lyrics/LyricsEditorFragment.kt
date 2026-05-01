@@ -51,6 +51,7 @@ import com.mardous.booming.coil.songImage
 import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.LyricsSource
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
 import com.mardous.booming.databinding.DialogLyricsSelectorBinding
 import com.mardous.booming.databinding.DialogSongSearchBinding
@@ -104,10 +105,16 @@ class LyricsEditorFragment : AbsMainActivityFragment(R.layout.fragment_lyrics_ed
         }
 
         binding.search.setOnClickListener { searchLyrics() }
-        binding.download.setOnClickListener { downloadLyrics() }
         binding.selectAll.setOnClickListener { selectAllInActiveInput() }
         binding.paste.setOnClickListener { pasteFromClipboard() }
         binding.save.setOnClickListener { saveLyrics() }
+        binding.download.setOnClickListener { downloadLyrics() }
+
+        binding.download.isEnabled =
+            NetworkFeature.Lyrics.LRCLib.isAvailable(requireContext(), requireBeOnline = false) ||
+            NetworkFeature.Lyrics.BetterLyrics.isAvailable(requireContext(), requireBeOnline = false) ||
+            NetworkFeature.Lyrics.SimpMusicLyrics.isAvailable(requireContext(), requireBeOnline = false)
+
         binding.title.text = song.title
         binding.text.text = song.displayArtistName()
 
