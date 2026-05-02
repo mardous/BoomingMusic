@@ -1,1 +1,1 @@
-为流畅的离线播放而生的现代化 Material Design 3 风格本地音乐播放器
+干净、流畅、功能强大的 Material Design 音乐播放器
