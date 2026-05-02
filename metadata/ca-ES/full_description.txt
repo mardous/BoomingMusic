@@ -1,8 +1,8 @@
 El Booming Music és un reproductor de música local modern i potent per a l'Android, dissenyat per oferir una experiència fluida, personalitzable i visualment atractiva. Creat amb el disseny Material You i amb tecnologia Media3, combina la simplicitat amb funcions de reproducció avançades.
 
-Gaudiu de les vostres cançons preferides amb lletres sincronitzades paraula per paraula, compatibilitat amb lletres traduïdes (TTML/LRC) i una interfície «Ara sona» completament renovada que inclou gràfics millorats, transicions més fluides i més opcions de personalització.
+Gaudiu de les vostres cançons preferides amb lletres sincronitzades paraula per paraula, compatibilitat amb lletres traduïdes (TTML/LRC) i una interfície d'«Ara sona» renovada preciosa que inclou gràfics millorats, transicions fluides i moltes opcions de personalització.
 
-Afineu la vostra experiència auditiva amb un equalitzador integrat, guany de reproducció, descàrrega d'àudio i reproducció sense pauses per a transicions fluides. Organitzeu la música a la vostra manera amb llistes de reproducció intel·ligents, classificació personalitzable i una nova vista jeràrquica de carpetes.
+Afineu la vostra experiència auditiva amb un equalitzador integrat, guany de reproducció, descàrrega d'àudio i reproducció sense pauses per a transicions fluides. Organitzeu la música a la vostra manera amb llistes de reproducció intel·ligents, classificació personalitzable i una vista jeràrquica de carpetes.
 
 Funcionalitats principals:
 
@@ -10,6 +10,7 @@ Funcionalitats principals:
 * Lletres paraula per paraula i traduïdes (TTML, LRC)
 * Motor de reproducció basat en Media3 amb opció de descarregar àudio
 * Suport de reproducció bit a bit i descodificació nativa ALAC
+* Scrobbling ListenBrainz natiu
 * Minirreproductor adaptatiu i controls gestuals
 * Portades i descripcions personalitzades per a llistes de reproducció
 * Editor d'etiquetes amb actualitzacions instantànies de la col·lecció
