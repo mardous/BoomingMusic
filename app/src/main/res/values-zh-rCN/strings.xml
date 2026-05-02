@@ -940,4 +940,11 @@
     <string name="error_listenbrainz_generic">ListenBrainz发生了错误。</string>
     <string name="error_listenbrainz_invalid_token">无效的ListenBrainz凭据。</string>
     <string name="listenbrainz_token_label">用户凭据</string>
+    <string name="listenbrainz_title">ListenBrainz</string>
+    <string name="listenbrainz_login_title">登录 ListenBrainz</string>
+    <string name="listenbrainz_login_summary">使用您的用户令牌授权，以启用播放历史记录和正在播放曲目更新。您可在 ListenBrainz 个人资料设置中找到令牌。</string>
+    <string name="listenbrainz_scrobbling_title">启用 ListenBrainz 播放历史记录</string>
+    <string name="listenbrainz_scrobbling_summary">自动提交已播放的曲目到 ListenBrainz 听歌历史。</string>
+    <string name="listenbrainz_now_playing_title">在 ListenBrainz 更新正在播放曲目</string>
+    <string name="listenbrainz_now_playing_summary">在您的 ListenBrainz 个人资料上实时显示正在播放的曲目。</string>
 </resources>
