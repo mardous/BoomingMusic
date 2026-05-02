@@ -398,8 +398,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             if (scheme.blurToken.isBlur) {
                 it.isVisible = true
                 it.load(song) {
-                    size(400)
-                    precision(Precision.EXACT)
+                    size(256)
+                    precision(Precision.INEXACT)
                     scale(Scale.FILL)
                     memoryCacheKey("nowplaying:song:${song.id}")
                     crossfade(1000)
