@@ -13,7 +13,6 @@ import com.mardous.booming.util.color.NotificationColorUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.math.abs
-import kotlin.math.sqrt
 
 object PaletteProcessor {
 
@@ -42,18 +41,20 @@ object PaletteProcessor {
         return Score.score(QuantizerCelebi.quantize(bitmapPixels, 128))[0]
     }
 
-    suspend fun getPaletteColor(context: Context, bitmap: Bitmap): PaletteColor = withContext(Dispatchers.Default) {
+    suspend fun getPaletteColor(
+        context: Context,
+        bitmap: Bitmap,
+        colorAccuracy: Boolean = true
+    ): PaletteColor = withContext(Dispatchers.Default) {
         if (bitmap.isRecycled) {
             return@withContext PaletteColor.errorColor(context)
         }
 
-        val area = bitmap.width * bitmap.height
-        val workingBitmap = if (area > RESIZE_BITMAP_AREA) {
-            val factor = sqrt(RESIZE_BITMAP_AREA.toFloat() / area)
-            bitmap.scale((bitmap.width * factor).toInt(), (bitmap.height * factor).toInt())
-        } else {
-            bitmap
-        }
+        val requestedSize = if (colorAccuracy) 64 else 16
+        val workingBitmap =
+            if (bitmap.width > requestedSize || bitmap.height > requestedSize)
+                bitmap.scale(requestedSize, requestedSize)
+            else bitmap
 
         val bitmapWidth = workingBitmap.width
         val bitmapHeight = workingBitmap.height
@@ -61,6 +62,9 @@ object PaletteProcessor {
             if (workingBitmap !== bitmap) workingBitmap.recycle()
             return@withContext PaletteColor.errorColor(context)
         }
+
+        // extract vibrant color using Celebi
+        val vibrantColor = getVibrantColor(workingBitmap)
 
         // extraction for background
         val paletteBuilder = Palette.from(workingBitmap)
@@ -72,12 +76,7 @@ object PaletteProcessor {
         val backgroundColorAndFilter = findBackgroundColorAndFilter(palette)
 
         // extraction for foreground
-        paletteBuilder.setRegion(
-            (bitmapWidth * 0.4f).toInt(),
-            0,
-            bitmapWidth,
-            bitmapHeight
-        )
+        paletteBuilder.setRegion((bitmapWidth * 0.4f).toInt(), 0, bitmapWidth, bitmapHeight)
 
         backgroundColorAndFilter.second?.let { backgroundHsl ->
             paletteBuilder.addFilter { _: Int, hsl: FloatArray ->
@@ -110,7 +109,6 @@ object PaletteProcessor {
             )
         }
 
-        val vibrantColor = getVibrantColor(workingBitmap)
         val foregroundColors = ensureColors(backgroundColor, foregroundColor)
 
         if (workingBitmap !== bitmap) {
