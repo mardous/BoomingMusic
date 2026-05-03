@@ -7,14 +7,14 @@
     <string name="shuffle_all_label">Barreja-ho tot</string>
     <string name="shuffle_mode">Mode aleatori</string>
     <string name="repeat_mode">Mode repetició</string>
-    <string name="shuffle_button_tip">Clica per fer una barreja normal. Mantén premut per accedir a opcions avançades.</string>
+    <string name="shuffle_button_tip">Cliqueu per fer una barreja normal. Mantingueu premut per accedir a opcions avançades.</string>
     <string name="action_play_pause">Reprodueix/Pausa</string>
     <string name="action_pause">Pausa</string>
     <string name="action_next">Següent</string>
     <string name="action_previous">Anterior</string>
     <string name="action_cancel">Cancel·la</string>
-    <string name="action_seek_backward">Cerca enrere</string>
-    <string name="action_seek_forward">Cerca endavant</string>
+    <string name="action_seek_backward">Rebobina</string>
+    <string name="action_seek_forward">Avança</string>
     <string name="action_cycle_repeat">Alterna mode de repetició</string>
     <string name="action_toggle_shuffle">Alterna mode aleatori</string>
     <string name="reset_action">Restableix</string>
@@ -66,7 +66,7 @@
     <string name="there_are_no_importable_playlists">No hi ha llistes importables.</string>
     <string name="playlist_x_not_imported">La llista %s no s\'ha importat.</string>
     <string name="action_import_playlist">Importa la llista…</string>
-    <string name="new_playlist_title">Nova llista</string>
+    <string name="new_playlist_title">Llista nova</string>
     <string name="add_playlist_title">Afegeix a la llista</string>
     <string name="rename_playlist_title">Canvia el nom a la llista de reproducció</string>
     <string name="action_edit_playlist">Edita la llista</string>
@@ -74,7 +74,7 @@
     <string name="action_export_playlist">Exporta la llista</string>
     <string name="action_clear_history">Esborra l\'historial</string>
     <string name="history_cleared">S\'ha esborrat l\'historial</string>
-    <string name="create_a_playlist">Es crearà una llista de reproducció buida. Hi podràs afegir cançons més tard.</string>
+    <string name="create_a_playlist">Es crearà una llista de reproducció buida. Hi podreu afegir cançons més tard.</string>
     <string name="create_a_playlist_with_one_song">Es crearà una llista de reproducció amb una cançó.</string>
     <string name="create_a_playlist_with_x_songs">Es crearà una llista de reproducció amb %d cançons afegides automàticament.</string>
     <string name="playlist_name_empty">Nom de la llista</string>
@@ -132,7 +132,7 @@
     <string name="permission_bluetooth_description">Cal permís de dispositius propers per cercar dispositius bluetooth</string>
     <string name="permission_bluetooth_denied">S\'ha denegat el permís dels dispositius propers.</string>
     <string name="permission_read_images_title">Cerca imatges (opcional)</string>
-    <string name="permission_read_images_summary">Cal donar permís perquè Booming Music trobi portades d\'àlbum a les teves carpetes de música. Si no penses fer servir aquesta funció, no cal donar-lo.</string>
+    <string name="permission_read_images_summary">Cal donar permís perquè Booming Music trobi portades d\'àlbum a les vostres carpetes de música. Si no penseu fer servir aquesta funció, no cal donar-lo.</string>
     <string name="permission_read_images_denied">Cal donar permís per llegir imatges del dispositiu.</string>
     <string name="permission_exact_alarms_title">Programa alarmes exactes (opcional)</string>
     <string name="permission_exact_alarms_description">Cal permís per programar alarmes exactes perquè funcioni correctament el temporitzador d\'apagada</string>
@@ -174,7 +174,7 @@
     <string name="action_go_to_genre">Ves al Gènere</string>
     <string name="added_title_to_playing_queue">S\'ha afegit 1 títol a la cua de reproducció.</string>
     <string name="added_x_titles_to_playing_queue">S\'han afegit %1$d títols a la cua de reproducció.</string>
-    <string name="next_song_label">Següent cançó</string>
+    <string name="next_song_label">Cançó següent</string>
     <string name="next_song_x">Següent • %1$s</string>
     <string name="next_song_x_by_artist_x">Següent • %1$s de %2$s</string>
     <string name="similar_artists">Artistes similars</string>
@@ -338,34 +338,42 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Cançó</item>
+        <item quantity="many">Cançons</item>
         <item quantity="other">Cançons</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Àlbum</item>
+        <item quantity="many">Àlbums</item>
         <item quantity="other">Àlbums</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d cançó</item>
+        <item quantity="many">%d cançons</item>
         <item quantity="other">%d cançons</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d àlbum</item>
+        <item quantity="many">%d àlbums</item>
         <item quantity="other">%d àlbums</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artista</item>
+        <item quantity="many">%d artistes</item>
         <item quantity="other">%d artistes</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d cop</item>
+        <item quantity="many">%d cops</item>
         <item quantity="other">%d cops</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d reproducció</item>
+        <item quantity="many">%d reproduccions</item>
         <item quantity="other">%d reproduccions</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d ítem</item>
+        <item quantity="many">%d ítems</item>
         <item quantity="other">%d ítems</item>
     </plurals>
     <!-- Home -->
@@ -375,7 +383,7 @@
     <string name="top_albums">Els àlbums més populars</string>
     <string name="recent_artists">Artistes recents</string>
     <string name="recent_albums">Àlbums recents</string>
-    <string name="no_suggestions">No hi ha suggeriments per a tu</string>
+    <string name="no_suggestions">No teniu cap suggeriment</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Ben aleatori</string>
     <string name="shuffle_mode_most_played">El més reproduït</string>
@@ -454,7 +462,7 @@
     <string name="loudness_enhancer">Amplificador</string>
     <string name="sound_settings">Configuració de so</string>
     <string name="listening_on">S\'està escoltant a</string>
-    <string name="casting_to">S\'està transmetent a</string>
+    <string name="casting_to">S\'està emetent a</string>
     <string name="volume_label">Volum</string>
     <string name="reset_balance">Restableix el balanç</string>
     <string name="speed_and_pitch_label">Velocitat i to</string>
@@ -466,11 +474,11 @@
     <string name="custom">Personalitzat</string>
     <string name="audio_offload_is_enabled">La delegació d\'àudio està activada</string>
     <string name="enable_audio_offload_title">Delegació d\'àudio</string>
-    <string name="enable_audio_offload_description">Permet al dispositiu processar l\'àudio directament des del seu maquinari. Redueix l\'ús del processador i de la bateria. Aquesta funció només s\'admet en certs dispositius. Alguns efectes o funcions podrien no funcionar mentre està activa. Cal reiniciar per aplicar els canvis.</string>
+    <string name="enable_audio_offload_description">Reproducció accelerada per maquinari per reduir l\'ús de la CPU i estalviar bateria. Cal reiniciar l\'aplicació.</string>
     <string name="enable_audio_float_output_title">Sortida d\'àudio d\'alta precisió</string>
-    <string name="enable_audio_float_output_description">Activa l\'àudio de punt flotant de 32-bits per un so de més bona qualitat. Tingueu present que això desactivarà funcions com el Guany de reproducció, Omet silencis i Normalitza el volum. Podria emprar una mica més de bateria i caldrà reiniciar l\'aplicació perquè s\'apliqui.</string>
+    <string name="enable_audio_float_output_description">Activa la sortida de 32 bits en punt flotant per a la màxima fidelitat. Cal reiniciar l\'aplicació.</string>
     <string name="skip_silence_title">Omet silencis</string>
-    <string name="skip_silence_description">Omet seccions silencioses automàticament mentre es reprodueix. Ideal per a pòdcasts i gravacions.</string>
+    <string name="skip_silence_description">Detecta i omet automàticament els trossos en silenci. Ideal per a pòdcasts i gravacions de veu.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Mostra la lletra</string>
     <string name="action_hide_lyrics">Amaga la lletra</string>
@@ -529,7 +537,7 @@
     <string name="contributors">Col·laboradors</string>
     <string name="acknowledgments_title">Agraïments</string>
     <string name="translators_title">Traductors</string>
-    <string name="translators_summary">Gràcies a tothom qui fa possible que Booming Music estigui disponible en tants idiomes.</string>
+    <string name="translators_summary">Gràcies a tothom que fa possible que Booming Music estigui disponible en tants idiomes.</string>
     <string name="contributors_title">Col·laboradors</string>
     <string name="contributors_summary">Una llista d\'usuaris que han contribuït en el projecte d\'alguna manera.</string>
     <string name="view_profile_on_github">Mostra el perfil a Github</string>
@@ -542,7 +550,7 @@
     <string name="share_app">Comparteix aquesta aplicació</string>
     <string name="share_app_summary">Podeu ajudar a fer créixer aquesta aplicació si la compartiu amb amics.</string>
     <string name="send_invitation_message">Envia missatge d\'invitació</string>
-    <string name="invitation_message_content">Ei. Fes un cop d\'ull a Booming Music! La millor aplicació per escoltar música fora de línia a Android. Pots descarregar-la aquí: %s</string>
+    <string name="invitation_message_content">Ei. Fes un cop d\'ull a Booming Music! La millor aplicació per escoltar música sense connexió a Android. Pots descarregar-la aquí: %s</string>
     <!-- Bug report -->
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Se us enviarà al lloc web de seguiment de problemes.</string>
     <!-- SAF -->
@@ -581,7 +589,7 @@
     <string name="audio_focus_header">Focus d\'àudio</string>
     <string name="shuffle_mode_header">Mode aleatori</string>
     <string name="display_header">Mostra</string>
-    <string name="backup_restore_header">Fer còpia de seguretat/Restablir-la</string>
+    <string name="backup_restore_header">Fes còpia de seguretat/Restableix-la</string>
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema general</string>
@@ -590,19 +598,19 @@
     <string name="use_custom_font_title">Fes servir una font personalitzada</string>
     <string name="appbar_mode_title">Estil de capçalera</string>
     <string name="library_categories_title">Categories de la biblioteca</string>
-    <string name="library_categories_summary">Configura la visibilitat i l\'ordre de les categories de la biblioteca.</string>
+    <string name="library_categories_summary">Configureu la visibilitat i l\'ordre de les categories de la biblioteca.</string>
     <string name="remember_last_page_title">Recorda la darrera pàgina</string>
     <string name="remember_last_page_summary">Ves a l\'última pàgina oberta en obrir l\'aplicació.</string>
     <string name="start_page_title">Pàgina d\'inici</string>
     <string name="tab_mode_title">Mode de títols d\'etiquetes</string>
-    <string name="hold_tab_to_search_title">Mantingueu premut per cercar</string>
-    <string name="hold_tab_to_search_summary">Obre la pantalla de cerca en mantenir premuda qualsevol barra de navegació.</string>
+    <string name="hold_tab_to_search_title">Mantén premut per cercar</string>
+    <string name="hold_tab_to_search_summary">Obriu la pantalla de cerca en mantenir premuda qualsevol barra de navegació.</string>
     <string name="larger_header_image_title">Capçalera d\'imatge més grossa</string>
     <string name="larger_header_image_summary">Mostra una portada més grossa en un àlbum, artista o detalls d\'una llista.</string>
     <string name="lyrics_center_current_line_title">Centra la línia actual</string>
     <string name="lyrics_center_current_line_summary">Mantén la part de la lletra actual centrada a la pantalla en comptes de dalt.</string>
     <string name="lyrics_custom_font_title">Font personalitzada</string>
-    <string name="lyrics_custom_font_summary">Importa i fes servir la teva font de text per a la lletra.</string>
+    <string name="lyrics_custom_font_summary">Importeu i feu servir la vostra font de text per a la lletra.</string>
     <string name="lyrics_import_custom_font_title">Importa una font de text</string>
     <string name="lyrics_syllable_mode_title">Lletra fil per randa</string>
     <string name="lyrics_syllable_mode_summary">Permet mostrar la lletra sincronitzada paraula per paraula. Depèn de la disponibilitat de la lletra i d\'un format compatible com LRC o TTML.</string>
@@ -635,7 +643,7 @@
     <string name="ignore_blank_lines_title">Ignora les línies buides</string>
     <string name="ignore_blank_lines_summary">Ignora les línies buides en els fitxers LRC en lloc de mostrar bombolles animades.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tracta tots els fitxers de lletra com a UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assumeix que tots els fitxers estan codificats en format UTF-8. Optimitza el procés d\'anàlisi de fitxers, però en alguns casos podria mostrar caràcters inusuals a la lletra de les cançons. Caldrà, potser, reiniciar l\'aplicació.</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assumeix que tots els fitxers estan codificats en format UTF-8. Optimitza el procés d\'anàlisi de fitxers, però en alguns casos podria mostrar caràcters inusuals a la lletra de les cançons. Caldrà, potser, reiniciar l\'aplicació</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Estil</string>
     <string name="open_on_play_title">Obre en reproduir</string>
@@ -649,10 +657,10 @@
     <string name="adaptive_controls_title">Controls adaptatius</string>
     <string name="adaptive_controls_summary">Els controls del mini reproductor s\'adapten a l\'estil de reproductor actual.</string>
     <string name="swipe_to_dismiss_title">Llisca avall per ometre</string>
-    <string name="swipe_to_dismiss_summary">Llisca avall al mini reproductor per aturar la reproducció i buidar la cua.</string>
+    <string name="swipe_to_dismiss_summary">Llisqueu avall al mini reproductor per aturar la reproducció i buidar la cua.</string>
     <string name="circle_button_title">Botó de reproducció circular</string>
     <string name="swipe_album_cover_title">Llisca a la portada de l\'àlbum</string>
-    <string name="swipe_album_cover_summary">Llisca a l\'esquerra o la dreta a la portada de l\'àlbum per passar entre les cançons.</string>
+    <string name="swipe_album_cover_summary">Llisqueu a l\'esquerra o la dreta a la portada de l\'àlbum per passar entre les cançons.</string>
     <string name="queue_height_title">Cua de mitja pantalla d\'alçària</string>
     <string name="queue_height_summary">La cua de reproducció ocuparà la meitat de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Un clic a la portada</string>
@@ -669,14 +677,14 @@
     <string name="animate_controls_title">Animació dels controls</string>
     <string name="animate_controls_summary">S\'executa en obrir el panell de reproducció.</string>
     <string name="swipe_anywhere_title">Llisca on sigui per canviar la cançó</string>
-    <string name="swipe_anywhere_summary">Llisca a l\'esquerra o la dreta en qualsevol zona buida de la pantalla ara sona per canviar entre les cançons.</string>
+    <string name="swipe_anywhere_summary">Llisqueu a l\'esquerra o la dreta en qualsevol zona buida de la pantalla ara sona per canviar entre les cançons.</string>
     <string name="swipe_up_queue_title">Llisca amunt per obrir la cua</string>
-    <string name="swipe_up_queue_summary">Llisca amunt en qualsevol espai buit de la pantalla d\'ara sona per obrir la cua de reproducció.</string>
+    <string name="swipe_up_queue_summary">Llisqueu amunt en qualsevol espai buit de la pantalla d\'ara sona per obrir la cua de reproducció.</string>
     <string name="display_album_name_title">Mostra el nom de l\'àlbum</string>
     <string name="display_extra_info_title">Mostra informació addicional</string>
     <string name="display_extra_info_summary">Mostra informació addicional de la cançó, com ara la taxa de bits, el format, el mostratge, etc.</string>
     <string name="display_next_song_title">Mostra la següent cançó</string>
-    <string name="display_next_song_summary">Mostra la següent cançó de la cua a sota del reproductor.</string>
+    <string name="display_next_song_summary">Mostra la cançó següent en els estils Normal i Portada completa. Si es desactiva, només es podrà accedir a la cua de reproducció des del menú de tres punts.</string>
     <string name="select_extra_info_title">Informació addicional</string>
     <string name="select_extra_info_summary">Trieu la informació addicional a mostrar al panell de reproducció.</string>
     <string name="prefer_remaining_time_title">Mostra el temps restant</string>
@@ -684,7 +692,7 @@
     <string name="prefer_album_artist_name_title">Mostra el nom dels artistes de l\'àlbum</string>
     <string name="prefer_album_artist_name_summary">Mostra el nom de l\'artista de l\'àlbum en lloc del nom de l\'artista de la cançó (si està disponible).</string>
     <string name="player_blur_intensity_title">Intensitat del difuminat</string>
-    <string name="player_blur_intensity_summary">Ajusta el grau de difuminació del fons del tema Difuminat. Els valors més baixos podrien millorar el rendiment.</string>
+    <string name="player_blur_intensity_summary">Ajusteu el grau de difuminació del fons del tema Difuminat. Els valors més baixos podrien millorar el rendiment.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Reprodueix en iniciar</string>
     <string name="queue_next_mode_title">Mode d\'«Afegeix a la cua»</string>
@@ -693,7 +701,7 @@
     <string name="album_shuffle_mode_title">Mode de barreja d\'àlbums</string>
     <string name="artist_shuffle_mode_title">Mode de barreja d\'artistes</string>
     <string name="rewind_with_back_title">Rebobina amb «Anterior»</string>
-    <string name="rewind_with_back_summary">Rebobina la cançó a l\'inici o ves a l\'anterior si l\'actual és al principi.</string>
+    <string name="rewind_with_back_summary">Rebobina la cançó a l\'inici o passa a l\'anterior si l\'actual és al principi.</string>
     <string name="rewind_fast_forward_amount_title">Quantitat de retrocés/avanç ràpid</string>
     <string name="rewind_fast_forward_amount_summary">Temps (en segons) a retrocedir o avançar amb l\'ús de la interfície o controls externs.</string>
     <string name="resume_on_connect_title">Reprèn en connectar</string>
@@ -738,7 +746,7 @@
     <string name="online_artist_images_title">Descarrega imatges dels artistes</string>
     <string name="preferred_image_size_title">Mida d\'imatge preferida</string>
     <string name="online_album_covers_title">Descarrega portades d\'àlbum que falten</string>
-    <string name="online_album_covers_summary">Les imatges descarregades no s\'integren als fitxers d\'àudio; només són visibles a l\'aplicació. Depèn de la vostra política de metadades.</string>
+    <string name="online_album_covers_summary">Les imatges descarregades no s\'integren als fitxers d\'àudio; només són visibles a l\'aplicació.</string>
     <string name="delete_downloaded_lyrics_title">Esborra les lletres descarregades</string>
     <string name="delete_downloaded_lyrics_summary">Només lletres descarregades per Booming Music. No afecta les lletres incorporades en etiquetes ID3v2 o fitxers LRC.</string>
     <string name="lyrics_cleared">Lletres esborrades.</string>
@@ -754,13 +762,13 @@
     <string name="history_interval_title">Interval de l\'historial</string>
     <string name="last_added_interval_title">Darrer interval afegit</string>
     <string name="whitelist_title">Llista blanca</string>
-    <string name="whitelist_summary">Només es mostra a la teva biblioteca el contingut de les carpetes de la llista blanca.</string>
+    <string name="whitelist_summary">Només es mostra a la vostra biblioteca el contingut de les carpetes de la llista blanca.</string>
     <string name="blacklist_title">Llista negra</string>
-    <string name="blacklist_summary">El contingut de les carpetes de la llista negra no es mostra a la teva biblioteca.</string>
+    <string name="blacklist_summary">El contingut de les carpetes de la llista negra no es mostra a la vostra biblioteca.</string>
     <string name="artist_min_songs_title">Cançons mínimes d\'un artista</string>
-    <string name="artist_min_songs_summary">Quantes cançons (pel cap baix) ha de tenir un artista per mostrar-lo a la teva biblioteca.</string>
+    <string name="artist_min_songs_summary">Quantes cançons (pel cap baix) ha de tenir un artista per mostrar-lo a la vostra biblioteca.</string>
     <string name="album_min_songs_title">Cançons mínimes d\'un àlbum</string>
-    <string name="album_min_songs_summary">Quantes cançons (pel cap baix) ha de tenir un àlbum per mostrar-lo a la teva biblioteca.</string>
+    <string name="album_min_songs_summary">Quantes cançons (pel cap baix) ha de tenir un àlbum per mostrar-lo a la vostra biblioteca.</string>
     <string name="min_song_duration_title">Durada mínima d\'una cançó</string>
     <string name="min_song_duration_summary">Quants segons (pel cap baix) ha de durar una cançó per mostrar-la a la vostra biblioteca.</string>
     <!-- Remote preferences -->
@@ -850,16 +858,16 @@
     <string name="could_not_check_for_updates">No s\'han pogut cercar actualitzacions.</string>
     <string name="the_app_is_up_to_date">L\'aplicació està actualitzada</string>
     <string name="update_available_title">Actualització disponible</string>
-    <string name="more_info_action">Més informació</string>
+    <string name="more_info_action">Més informació.</string>
     <string name="download_action">Descarrega</string>
     <string name="downloading_update">S\'està descarregant l\'actualització de Booming Music.</string>
     <string name="uncaught_error_title">Ups! Això no hauria d\'haver passat!</string>
-    <string name="uncaught_error_message">Sembla que alguna cosa ha anat malament i s\'ha penjat l\'aplicació. Seria de gran ajuda si poguéssiu enviar-nos el report d\'error al nostre grup de Telegram o per correu electrònic.</string>
+    <string name="uncaught_error_message">Sembla que alguna cosa ha anat malament i s\'ha penjat l\'aplicació. Seria de gran ajuda si poguéssiu enviar-nos l\'informe d\'error al nostre grup de Telegram o per correu electrònic.</string>
     <string name="uncaught_error_report">Report d\'error</string>
     <string name="uncaught_error_report_copied">S\'ha copiat el report d\'error al porta-retalls.</string>
     <string name="uncaught_error_restart_app">Reinicia l\'aplicació</string>
     <string name="uncaught_error_github">Obre un problema a Github</string>
-    <string name="uncaught_error_send">Envia el report</string>
+    <string name="uncaught_error_send">Envia informe</string>
     <string name="channel_stereo">Estèreo</string>
     <string name="channel_stereo_2_1">Estèreo 2.1</string>
     <string name="channel_quadraphonic">Quadrafònic</string>
@@ -888,10 +896,73 @@
     <string name="app_widget_full">Complet</string>
     <string name="app_widget_full_desc">La pantalla del reproductor directa al vostre escriptori</string>
     <string name="channel_mono">Monoaural</string>
-    <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
+    <string name="bit_perfect_info">Bit a bit: %1$s | %2$s</string>
     <string name="lastfm_login_toggle_password_visibility">Alterna la visibilitat de la contrasenya</string>
-    <string name="error_lastfm_auth">Ha caducat la sessió o les credencials no són vàlides. Torna-ho a intentar.</string>
+    <string name="error_lastfm_auth">Ha caducat la sessió o les credencials no són vàlides. Torneu-ho a intentar.</string>
     <string name="error_lastfm_credentials">Les vostres credencials no són vàlides. Verifiqueu-les i torneu-ho a intentar.</string>
     <string name="error_lastfm_params">Pàrametres invàlids. Podria ser per error nostre.</string>
     <string name="error_lastfm_service">Last.fm està en manteniment ara mateix. Torneu-ho a intentar més tard.</string>
+    <string name="search_playlists">Cerca llistes</string>
+    <string name="select_playlists_title">Tria llistes</string>
+    <string name="new_playlist_action">Nova</string>
+    <string name="no_playlists_create_new">Premeu el botó de «Nova» per fer una llista de reproducció nova</string>
+    <string name="no_playlists_that_match_x">No hi ha llistes que coincideixin amb «%s»</string>
+    <string name="songs_added_to_playlists">S\'han afegit les cançons a les llistes.</string>
+    <string name="no_playlists_label">No hi ha llistes de reproducció</string>
+    <plurals name="x_playlists_selected">
+        <item quantity="one">%d llista seleccionada</item>
+        <item quantity="many">%d llistes seleccionades</item>
+        <item quantity="other">%d llistes seleccionades</item>
+    </plurals>
+    <string name="advanced_settings">Configuració avançada</string>
+    <string name="bit_perfect_is_active">El bit a bit està activat</string>
+    <string name="bit_perfect_title">Àudio bit a bit</string>
+    <string name="bit_perfect_description">Sortida d\'àudio directa a l\'USB DAC sense remostreig de sistema.</string>
+    <string name="sign_in_to_x_title">Inicia la sessió a %s</string>
+    <string name="connected_account_label">Compte connectat:</string>
+    <string name="login_action">Inicia la sessió</string>
+    <string name="logout_action">Tanca la sessió</string>
+    <string name="listenbrainz_token_label">Clau d\'usuari</string>
+    <string name="error_lastfm_rate_limit">Massa sol·licituds. Espereu un moment abans de tornar a fer scrobbling.</string>
+    <string name="error_lastfm_generic">Hi ha hagut un error inesperat amb Last.fm. Torneu-ho a intentar.</string>
+    <string name="error_network_timeout">S\'ha exhaurit el temps de connexió. Comproveu el vostre internet i torneu-hi.</string>
+    <string name="error_listenbrainz_generic">Hi ha hagut un error amb ListenBrainz.</string>
+    <string name="error_listenbrainz_invalid_token">Clau de ListenBrainz invàlida.</string>
+    <string name="sleep_timer_x_secs">%d segons</string>
+    <string name="telegram_community_summary">Uniu-vos a la nostra comunitat de Telegram per estar al dia d\'actualitzacions i notícies.</string>
+    <string name="support_my_work">Dona\'m suport</string>
+    <string name="network_summary">Gestioneu funcions d\'internet com ara la integració de Last.fm, els proveïdors de lletres i descàrregues de metadades.</string>
+    <string name="widgets_header">Widgets de l\'aplicació</string>
+    <string name="widget_small_layout_style_title">Aparença minimalista</string>
+    <string name="widget_small_layout_classic">Clàssic</string>
+    <string name="widget_small_layout_simplified">Simplificat</string>
+    <string name="widget_dynamic_colors_title">Colors dinàmics</string>
+    <string name="widget_dynamic_colors_summary">Adapta els colors del widget a la portada de la pista actual.</string>
+    <string name="widget_image_corner_radius_title">Radi del cantó de la imatge</string>
+    <string name="widget_image_corner_radius_summary">Canvia l\'arrodoniment de l\'art de l\'àlbum.</string>
+    <string name="widget_third_line_title">Tercera línia d\'informació</string>
+    <string name="widget_third_line_summary">Tria què mostrar a la tercera fila de text.</string>
+    <string name="lyrics_center_horizontally_title">Centra la lletra horitzontalment</string>
+    <string name="lyrics_center_horizontally_summary">Alinea cada línia de lletra al centre horitzontal de la pantalla.</string>
+    <string name="wifi_only_network_features_title">Fer ús de funcions de xarxa només amb wifi</string>
+    <string name="wifi_only_network_features_summary">Permet funcions d\'internet només quan s\'està connectat al wifi.</string>
+    <string name="lastfm_login_title">Accedeix a Last.fm</string>
+    <string name="lastfm_login_summary">Inicieu la sessió al vostre compte de Last.fm per activar l\'scrobbling i les actualitzacions d\'ara sona.</string>
+    <string name="lastfm_scrobbling_title">Activa l\'scrobbling de Last.fm</string>
+    <string name="lastfm_scrobbling_summary">Envia automàticament les pistes reproduïdes al vostre historial d\'escolta de Last.fm.</string>
+    <string name="lastfm_now_playing_title">Actualitza l\'ara sona a Last.fm</string>
+    <string name="lastfm_now_playing_summary">Mostra al vostre perfil de Last.fm la pista que es reprodueix en temps real.</string>
+    <string name="lastfm_biography_title">Descarrega les biografies d\'artistes i àlbums</string>
+    <string name="lastfm_biography_summary">Recupera informació d\'artistes i àlbums des de Last.fm.</string>
+    <string name="listenbrainz_title">ListenBrainz</string>
+    <string name="listenbrainz_login_title">Accedeix a ListenBrainz</string>
+    <string name="listenbrainz_login_summary">Inicieu la sessió amb la vostra clau per activar l\'scrobbling i les actualitzacions d\'ara sona. Teniu la vostra clau a la configuració del perfil de ListenBrainz.</string>
+    <string name="listenbrainz_scrobbling_title">Activa l\'scrobbling de ListenBrainz</string>
+    <string name="listenbrainz_scrobbling_summary">Envia automàticament les pistes reproduïdes al vostre historial d\'escolta de ListenBrainz.</string>
+    <string name="listenbrainz_now_playing_title">Actualitza l\'ara sona a ListenBrainz</string>
+    <string name="listenbrainz_now_playing_summary">Mostra al vostre perfil de ListenBrainz la pista que es reprodueix en temps real.</string>
+    <string name="use_lrclib_provider_summary">Permet la descàrrega de lletres des del servei LRCLib.</string>
+    <string name="use_betterlyrics_provider_summary">Permet la descàrrega de lletres des del servei BetterLyrics.</string>
+    <string name="use_simpmusic_provider_summary">Permet la descàrrega de lletres des del servei de SimpMusic.</string>
+    <string name="auto_theme_name">Auto</string>
 </resources>

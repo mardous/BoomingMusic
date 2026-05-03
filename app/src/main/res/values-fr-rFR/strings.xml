@@ -945,4 +945,18 @@
         <item quantity="other">%d playlists sélectionnées</item>
     </plurals>
     <string name="auto_theme_name">Auto</string>
+    <string name="sign_in_to_x_title">Se connecter à %s</string>
+    <string name="connected_account_label">Compte associé :</string>
+    <string name="login_action">Connexion</string>
+    <string name="logout_action">Déconnexion</string>
+    <string name="listenbrainz_token_label">Jeton d\'utilisateur</string>
+    <string name="error_listenbrainz_generic">Une erreur ListenBrainz s\'est produite.</string>
+    <string name="error_listenbrainz_invalid_token">Jeton ListenBrainz non valide.</string>
+    <string name="listenbrainz_title">ListenBrainz</string>
+    <string name="listenbrainz_login_title">Connectez-vous à ListenBrainz</string>
+    <string name="listenbrainz_login_summary">Connectez-vous à l\'aide de votre jeton d\'utilisateur pour activer le scrobbling et les mises à jour sur la lecture en cours. Vous trouverez votre jeton dans les paramètres de votre profil ListenBrainz.</string>
+    <string name="listenbrainz_scrobbling_title">Activer le scrobbling ListenBrainz</string>
+    <string name="listenbrainz_scrobbling_summary">Ajouter automatiquement les titres écoutés à votre historique d\'écoute ListenBrainz.</string>
+    <string name="listenbrainz_now_playing_title">Mettre à jour la lecture en cours sur ListenBrainz</string>
+    <string name="listenbrainz_now_playing_summary">Affichez en temps réel le titre en cours de lecture sur votre profil ListenBrainz.</string>
 </resources>

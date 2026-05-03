@@ -951,4 +951,18 @@
         <item quantity="other">%d playlists seleccionadas</item>
     </plurals>
     <string name="auto_theme_name">Automático</string>
+    <string name="sign_in_to_x_title">Iniciar sesión en %s</string>
+    <string name="connected_account_label">Cuenta conectada:</string>
+    <string name="login_action">Iniciar sesión</string>
+    <string name="logout_action">Cerrar sesión</string>
+    <string name="listenbrainz_token_label">Token de usuario</string>
+    <string name="error_listenbrainz_generic">Ocurrió un error en ListenBrainz.</string>
+    <string name="error_listenbrainz_invalid_token">El token de ListenBrainz es inválido.</string>
+    <string name="listenbrainz_title">ListenBrainz</string>
+    <string name="listenbrainz_login_title">Iniciar sesión en ListenBrainz</string>
+    <string name="listenbrainz_login_summary">Accede con tu token de usuario para habilitar el scrobbling y la actualización de escuchando ahora. Puedes encontrar tu token en los ajustes de tu perfil en ListenBrainz.</string>
+    <string name="listenbrainz_scrobbling_title">Habilitar el scrobbling en ListenBrainz</string>
+    <string name="listenbrainz_scrobbling_summary">Enviar de forma automática las pistas reproducidas a tu historial de ListenBrainz.</string>
+    <string name="listenbrainz_now_playing_title">Actualizar escuchando ahora en ListenBrainz</string>
+    <string name="listenbrainz_now_playing_summary">Muestra la pista que estás escuchando en tu perfil de ListenBrainz en tiempo real.</string>
 </resources>

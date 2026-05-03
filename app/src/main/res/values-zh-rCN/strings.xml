@@ -921,4 +921,30 @@
     <string name="widget_image_corner_radius_summary">调整专辑封面的圆角程度。</string>
     <string name="widget_third_line_title">第三行信息</string>
     <string name="widget_third_line_summary">选择信息文本第三行应显示的内容。</string>
+    <string name="search_playlists">搜索播放列表</string>
+    <string name="select_playlists_title">选择播放列表</string>
+    <string name="new_playlist_action">新建</string>
+    <string name="no_playlists_create_new">点按“新建”创建播放列表</string>
+    <string name="no_playlists_that_match_x">未找到匹配“%s”的播放列表</string>
+    <string name="songs_added_to_playlists">歌曲已添加到播放列表。</string>
+    <string name="no_playlists_label">无播放列表</string>
+    <plurals name="x_playlists_selected">
+        <item quantity="other">已选中 %d 个播放列表</item>
+    </plurals>
+    <string name="sleep_timer_x_secs">%d 秒</string>
+    <string name="auto_theme_name">自动</string>
+    <string name="connected_account_label">已连接账户:</string>
+    <string name="login_action">登录</string>
+    <string name="logout_action">退出登录</string>
+    <string name="sign_in_to_x_title">登录到%s</string>
+    <string name="error_listenbrainz_generic">ListenBrainz发生了错误。</string>
+    <string name="error_listenbrainz_invalid_token">无效的ListenBrainz凭据。</string>
+    <string name="listenbrainz_token_label">用户凭据</string>
+    <string name="listenbrainz_title">ListenBrainz</string>
+    <string name="listenbrainz_login_title">登录 ListenBrainz</string>
+    <string name="listenbrainz_login_summary">使用您的用户令牌授权，以启用播放历史记录和正在播放曲目更新。您可在 ListenBrainz 个人资料设置中找到令牌。</string>
+    <string name="listenbrainz_scrobbling_title">启用 ListenBrainz 播放历史记录</string>
+    <string name="listenbrainz_scrobbling_summary">自动提交已播放的曲目到 ListenBrainz 听歌历史。</string>
+    <string name="listenbrainz_now_playing_title">在 ListenBrainz 更新正在播放曲目</string>
+    <string name="listenbrainz_now_playing_summary">在您的 ListenBrainz 个人资料上实时显示正在播放的曲目。</string>
 </resources>

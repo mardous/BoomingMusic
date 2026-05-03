@@ -933,4 +933,18 @@
     </plurals>
     <string name="sleep_timer_x_secs">%d detik</string>
     <string name="auto_theme_name">Otomatis</string>
+    <string name="sign_in_to_x_title">Masuk ke %s</string>
+    <string name="connected_account_label">Akun Terhubung:</string>
+    <string name="login_action">Masuk</string>
+    <string name="logout_action">Keluar</string>
+    <string name="listenbrainz_token_label">Token Pengguna</string>
+    <string name="error_listenbrainz_generic">Terjadi kesalahan ListenBrainz.</string>
+    <string name="error_listenbrainz_invalid_token">Token ListenBrainz tidak valid.</string>
+    <string name="listenbrainz_title">ListenBrainz</string>
+    <string name="listenbrainz_login_title">Masuk ke ListenBrainz</string>
+    <string name="listenbrainz_login_summary">Autentikasi dengan token pengguna Anda untuk mengaktifkan scrobbling dan pembaruan sedang diputar. Anda dapat menemukan token Anda di pengaturan profil ListenBrainz Anda.</string>
+    <string name="listenbrainz_scrobbling_title">Aktifkan scrobbling ListenBrainz</string>
+    <string name="listenbrainz_scrobbling_summary">Secara otomatis kirimkan trek yang diputar ke riwayat pendengaran ListenBrainz Anda.</string>
+    <string name="listenbrainz_now_playing_title">Perbarui sedang diputar di ListenBrainz</string>
+    <string name="listenbrainz_now_playing_summary">Tampilkan trek yang sedang diputar di profil ListenBrainz Anda secara waktu nyata.</string>
 </resources>
