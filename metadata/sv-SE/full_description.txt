@@ -1,20 +1,21 @@
-Booming Music är en modern och kraftfull lokal musikspelare för Android, utformad för en smidig, anpassningsbar och visuellt tilltalande upplevelse. Den är byggd med Material You-design och drivs av Media3 och kombinerar enkelhet med avancerade uppspelningsfunktioner.
+Booming Music är en modern och kraftfull lokal musikspelare för Android, utformad för en smidig, anpassningsbar och visuellt tilltalande upplevelse. Den är byggd med Material You-design och drivs av Media3, och kombinerar enkelhet med avancerade uppspelningsfunktioner.
 
-Njut av dina favoritlåtar med ord-för-ord-synkroniserade låttexter, stöd för översatta låttexter (TTML/LRC) och ett helt omarbetat gränssnitt för ”Spelar nu” med förbättrad grafik, smidigare övergångar och fler anpassningsalternativ.
+Njut av dina favoritlåtar med ord-för-ord-synkroniserade texter, stöd för översatta texter (TTML/LRC) och ett vackert gränssnitt för ”Spelar nu” med förbättrad grafik, smidiga övergångar och omfattande anpassningsmöjligheter.
 
-Finjustera din lyssningsupplevelse med en inbyggd utjämnare (Eq), ReplayGain, Audio Offload och uppspelning utan pauser för smidiga övergångar. Organisera din musik på ditt sätt med smarta spellistor, anpassningsbar sortering och en ny hierarkisk mappvy.
+Finjustera din lyssningsupplevelse med en inbyggd equalizer, ReplayGain, Audio Offload och uppspelning utan pauser för smidiga övergångar. Organisera din musik på ditt sätt med smarta spellistor, anpassningsbar sortering och en hierarkisk mappvy.
 
 Huvudfunktioner:
 
-* Automatisk nedladdning av låttexter och möjligheten att redigera låttexter i appen
-* Ord-för-ord-synkroniserade och översatta låttexter (TTML, LRC)
+* Automatisk nedladdning av texter och textredigerare i appen
+* Ord-för-ord-synkroniserade och översatta texter (TTML, LRC)
 * Media3-baserad uppspelningsmotor med stöd för Audio Offload
-* BBitperfekt uppspelningsstöd och inbyggd ALAC-avkodning
+* Stöd för bit-perfekt uppspelning och inbyggd ALAC-avkodning
+* Inbyggd ListenBrainz-scrobbling
 * Anpassningsbar minispelare och geststyrning
 * Anpassade omslag och beskrivningar för spellistor
 * Taggredigerare med omedelbara uppdateringar av biblioteket
 * Smarta automatiska spellistor (Nyligen spelade, Mest spelade, Historik)
-* Vilotimer, widgets och stöd för Android Auto support
+* Sleep timer, widgets och stöd för Android Auto
 * Material You-tema med mörkt och svart läge
 * Stöd för flera språk
-* Minimalistisk, öppen källkod och reklamfri
+* Lättviktig, öppen källkod och reklamfri
