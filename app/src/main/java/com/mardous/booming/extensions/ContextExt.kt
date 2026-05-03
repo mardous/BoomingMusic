@@ -49,8 +49,6 @@ import com.mardous.booming.core.model.theme.AppTheme
 import com.mardous.booming.extensions.files.readString
 import com.mardous.booming.extensions.resources.getDrawableCompat
 import com.mardous.booming.extensions.resources.getTinted
-import com.mardous.booming.util.AutoDownloadMetadataPolicy
-import com.mardous.booming.util.Preferences
 import io.ktor.http.encodeURLParameter
 
 val Context.fileProviderAuthority: String
@@ -126,10 +124,6 @@ fun Context.isOnline(requestOnlyWifi: Boolean): Boolean {
         } else networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) && !requestOnlyWifi
     }
     return false
-}
-
-fun Context.isAllowedToDownloadMetadata() = Preferences.autoDownloadMetadataPolicy.let { policy ->
-    policy != AutoDownloadMetadataPolicy.NEVER && isOnline(AutoDownloadMetadataPolicy.ONLY_WIFI == policy)
 }
 
 fun Context.onUI(action: () -> Unit) {

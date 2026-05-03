@@ -10,13 +10,11 @@ import coil3.fetch.FetchResult
 import coil3.fetch.Fetcher
 import coil3.fetch.SourceFetchResult
 import coil3.request.Options
-import com.mardous.booming.R
 import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.coil.model.ArtistImage
+import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Artist
-import com.mardous.booming.data.remote.deezer.DeezerService
-import com.mardous.booming.extensions.isAllowedToDownloadMetadata
-import com.mardous.booming.util.ALLOW_ONLINE_ARTIST_IMAGES
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.util.ImageSize
 import com.mardous.booming.util.PREFERRED_IMAGE_SIZE
 import com.mardous.booming.util.Preferences.requireString
@@ -29,9 +27,8 @@ class ArtistImageFetcher(
     private val loader: ImageLoader,
     private val options: Options,
     private val customImageManager: CustomArtistImageManager,
-    private val deezerService: DeezerService,
+    private val repository: Repository,
     private val image: ArtistImage,
-    private val downloadImage: Boolean,
     private val imageSize: String
 ) : Fetcher {
 
@@ -56,10 +53,10 @@ class ArtistImageFetcher(
             }
         }
 
-        if (downloadImage && !image.isNameUnknown && options.context.isAllowedToDownloadMetadata()) {
+        if (!image.isNameUnknown && NetworkFeature.Images.Artists.isAvailable(options.context)) {
             var pageIndex = 0
             var revisedResults = 0
-            var deezerArtist = deezerService.artist(image.name, MAX_RESULT_PER_PAGE, pageIndex)
+            var deezerArtist = repository.deezerArtist(image.name, MAX_RESULT_PER_PAGE, pageIndex)
             val total = min(deezerArtist?.total ?: 0, MAX_RESULT_COUNT)
             while (deezerArtist != null && revisedResults < total) {
                 val (matched, imageUrl) = deezerArtist.getBestImage(image.name, imageSize)
@@ -74,7 +71,7 @@ class ArtistImageFetcher(
                 }
                 revisedResults += deezerArtist.result.size
                 if (revisedResults < total) {
-                    deezerArtist = deezerService.artist(image.name, min((total - revisedResults), MAX_RESULT_PER_PAGE), pageIndex++)
+                    deezerArtist = repository.deezerArtist(image.name, min((total - revisedResults), MAX_RESULT_PER_PAGE), pageIndex++)
                 }
             }
         }
@@ -97,24 +94,19 @@ class ArtistImageFetcher(
     class Factory(
         private val preferences: SharedPreferences,
         private val customImageManager: CustomArtistImageManager,
-        private val deezerService: DeezerService
+        private val repository: Repository
     ) : Fetcher.Factory<ArtistImage> {
         override fun create(
             data: ArtistImage,
             options: Options,
             imageLoader: ImageLoader
-        ): Fetcher? {
-            val resources = options.context.resources
+        ): Fetcher {
             return ArtistImageFetcher(
                 loader = imageLoader,
                 options = options,
                 customImageManager = customImageManager,
-                deezerService = deezerService,
+                repository = repository,
                 image = data,
-                downloadImage = preferences.getBoolean(
-                    ALLOW_ONLINE_ARTIST_IMAGES,
-                    resources.getBoolean(R.bool.default_images_download)
-                ),
                 imageSize = preferences.requireString(PREFERRED_IMAGE_SIZE, ImageSize.MEDIUM)
             )
         }

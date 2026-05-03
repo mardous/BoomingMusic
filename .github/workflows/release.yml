@@ -16,17 +16,17 @@ jobs:
         variant: [ normal, fdroid ]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: set up JDK 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: '21'
           distribution: 'zulu'
           cache: gradle
 
       - name: Setup Android-SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
 
       - name: Create files for signing
         env:
@@ -42,21 +42,27 @@ jobs:
       - name: Build app
         env:
           BUILD_VARIANT: ${{ matrix.variant == 'normal' && 'Normal' || 'Fdroid' }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
         run: ./gradlew assemble${{ env.BUILD_VARIANT }}Release
 
       - name: Upload APKs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: apk-${{ matrix.variant }}-release
-          path: app/build/outputs/apk/*/release/*-release.apk
+          path: app/build/outputs/apk/*/release/BoomingMusic-*.apk
 
   publish-release:
     needs: build
     runs-on: ubuntu-latest
+    if: > # TEMPORARY: Prevent releases for alpha/beta/rc tags.
+      !contains(github.ref_name, 'alpha') && 
+      !contains(github.ref_name, 'beta') && 
+      !contains(github.ref_name, 'rc')
 
     steps:
       - name: Download APKs
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           path: release-apks
           pattern: apk-*-release
@@ -73,7 +79,7 @@ jobs:
           fi
 
       - name: Github Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           prerelease: ${{ steps.prerelease.outputs.value }}
           generate_release_notes: true

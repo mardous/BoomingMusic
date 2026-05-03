@@ -159,14 +159,14 @@ class SearchAdapter(
             get() = arrayOf(image!! to image.transitionName)
 
         override fun onClick(view: View) {
-            val item = dataSet[layoutPosition]
+            val item = dataSet[bindingAdapterPosition]
             when (itemViewType) {
                 ALBUM -> callback?.albumClick(item as Album, sharedElements)
                 ARTIST -> callback?.artistClick(item as Artist, sharedElements)
                 SONG -> {
                     val song = item as Song
                     if (isInQuickSelectMode) {
-                        toggleChecked(layoutPosition)
+                        toggleChecked(bindingAdapterPosition)
                     } else {
                         callback?.songClick(song, dataSet)
                     }
@@ -178,7 +178,7 @@ class SearchAdapter(
 
         override fun onLongClick(view: View): Boolean {
             return when (itemViewType) {
-                SONG -> toggleChecked(layoutPosition)
+                SONG -> toggleChecked(bindingAdapterPosition)
                 else -> menu?.let {
                     it.callOnClick()
                     true
@@ -206,7 +206,7 @@ class SearchAdapter(
                         }
 
                         override fun onMenuItemClick(item: MenuItem): Boolean {
-                            when (val data = dataSet[layoutPosition]) {
+                            when (val data = dataSet[bindingAdapterPosition]) {
                                 is Song -> return callback?.songMenuItemClick(data, item) ?: false
                                 is Album -> return callback?.albumMenuItemClick(data, item, sharedElements) ?: false
                                 is Artist -> return callback?.artistMenuItemClick(data, item, sharedElements) ?: false

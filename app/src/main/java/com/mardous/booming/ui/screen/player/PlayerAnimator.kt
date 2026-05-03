@@ -26,16 +26,37 @@ import androidx.core.animation.doOnStart
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import java.util.LinkedList
 
-/**
- * @author Christians M. A. (mardous)
- */
-abstract class PlayerAnimator(val isEnabled: Boolean) {
+abstract class PlayerAnimator(isEnabled: Boolean) {
     private var musicControllerAnimationSet: AnimatorSet? = null
+
+    var isEnabled: Boolean = isEnabled
+        set(value) {
+            field = value
+            if (!value) {
+                startInternal(true)
+            } else {
+                prepare()
+            }
+        }
+
     var isPrepared = false
         private set
 
     fun start() {
-        if (!isPrepared) return
+        startInternal(false)
+    }
+
+    fun prepare() {
+        if (isEnabled) {
+            onPrepareForAnimation()
+
+            musicControllerAnimationSet?.cancel()
+            isPrepared = true
+        }
+    }
+
+    private fun startInternal(isForced: Boolean) {
+        if (!isPrepared && !isForced) return
 
         if (musicControllerAnimationSet == null) {
             val interpolator = FastOutSlowInInterpolator()
@@ -53,18 +74,9 @@ abstract class PlayerAnimator(val isEnabled: Boolean) {
             musicControllerAnimationSet!!.cancel()
         }
 
-        if (isEnabled) {
+        if (isEnabled || isForced) {
             musicControllerAnimationSet!!.start()
             isPrepared = false
-        }
-    }
-
-    fun prepare() {
-        if (isEnabled) {
-            onPrepareForAnimation()
-
-            musicControllerAnimationSet?.cancel()
-            isPrepared = true
         }
     }
 

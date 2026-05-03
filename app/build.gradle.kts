@@ -1,10 +1,11 @@
+import com.android.build.api.variant.BuildConfigField
+import com.android.build.api.variant.ResValue
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.android)
     alias(libs.plugins.android.safeargs)
     id("kotlin-parcelize")
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
@@ -71,21 +72,21 @@ sealed class Version(
 
 val currentVersion: Version = Version.Stable(
     versionMajor = 1,
-    versionMinor = 2,
-    versionPatch = 1
+    versionMinor = 3,
+    versionPatch = 0
 )
 val currentVersionCode = currentVersion.code
 
 android {
-    compileSdk = 36
+    compileSdk = 37
     namespace = "com.mardous.booming"
 
     defaultConfig {
-        minSdk = 28
+        minSdk = 26
         targetSdk = 36
 
         applicationId = namespace
-        versionCode = 1210300
+        versionCode = 1300300
         versionName = currentVersion.name
         check(versionCode == currentVersionCode)
     }
@@ -115,7 +116,7 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = releaseSigning
         }
         debug {
@@ -126,15 +127,28 @@ android {
     }
     buildFeatures {
         buildConfig = true
+        resValues = true
         viewBinding = true
         compose = true
     }
     androidResources {
         generateLocaleConfig = true
     }
+    splits {
+        abi {
+            isEnable = true
+            reset()
+            include("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
+            isUniversalApk = true
+        }
+    }
     packaging {
         resources {
-            excludes += listOf("META-INF/LICENSE", "META-INF/NOTICE", "META-INF/java.properties")
+            excludes += "META-INF/LICENSE"
+            excludes += "META-INF/NOTICE"
+            excludes += "META-INF/java.properties"
+            excludes += "META-INF/androidx/*/*/LICENSE.txt"
+            excludes += "DebugProbesKt.bin"
         }
     }
     lint {
@@ -145,11 +159,44 @@ android {
         includeInApk = false
         includeInBundle = false
     }
-    applicationVariants.all {
-        outputs.all {
-            (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName =
-                "BoomingMusic-${defaultConfig.versionName}-${name}.apk"
+}
+
+androidComponents {
+    onVariants { variant ->
+        val isNormalVariant = variant.flavorName == "normal"
+
+        val localProperties = if (isNormalVariant) getProperties("local.properties") else null
+        val lastFmKey = if (isNormalVariant) {
+            localProperties?.getProperty("LASTFM_API_KEY") ?: System.getenv("LASTFM_API_KEY") ?: ""
+        } else ""
+
+        val lastFmSecret = if (isNormalVariant) {
+            localProperties?.getProperty("LASTFM_SECRET") ?: System.getenv("LASTFM_SECRET") ?: ""
+        } else ""
+
+        variant.buildConfigFields?.putAll(
+            mapOf(
+                "LASTFM_API_KEY" to BuildConfigField("String", "\"$lastFmKey\"", "LastFM API Key"),
+                "LASTFM_SECRET" to BuildConfigField("String", "\"$lastFmSecret\"", "LastFM Secret")
+            )
+        )
+
+        variant.resValues.put(
+            variant.makeResValueKey("bool", "enable_lastfm_integration"),
+            ResValue(lastFmKey.isNotEmpty().toString(), "Enable LastFM integration")
+        )
+
+        variant.outputs.forEach { output ->
+            val filter = output.filters.joinToString("-") { it.identifier }
+            val abi = filter.ifEmpty { "universal" }
+            output.outputFileName = "BoomingMusic-${output.versionName.get()}-${variant.flavorName}-$abi.apk"
         }
+    }
+}
+
+aboutLibraries {
+    collect {
+        configPath = file("../config")
     }
 }
 

@@ -1,0 +1,6 @@
+* New “2 hour” sleep timer option with fade-out mode
+* Blurred background and Blur intensity adjustment for lyrics/player
+* Lyrics improvements: ignore blank lines, edit offset, toggle providers
+* “For You” renamed to “Home” and network settings reorganized
+* Fixed mono audio playback and improved handling of playback failures
+* Minor fixes for Android Auto album art and general improvements

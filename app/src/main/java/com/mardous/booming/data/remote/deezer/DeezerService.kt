@@ -17,7 +17,6 @@
 
 package com.mardous.booming.data.remote.deezer
 
-import android.util.Log
 import com.mardous.booming.data.remote.deezer.model.DeezerAlbum
 import com.mardous.booming.data.remote.deezer.model.DeezerArtist
 import com.mardous.booming.data.remote.deezer.model.DeezerTrack
@@ -42,16 +41,11 @@ class DeezerService(private val client: HttpClient) {
         }.body<DeezerAlbum>()
 
     suspend fun artist(artistName: String, limit: Int = 1, index: Int = 0) =
-        try {
-            client.get("https://api.deezer.com/search/artist") {
-                url {
-                    parameters.append("limit", limit.toString())
-                    parameters.append("index", index.toString())
-                    parameters.append("q", artistName)
-                }
-            }.body<DeezerArtist>()
-        } catch (e: Exception) {
-            Log.w("DeezerService", "Couldn't decode Deezer response for $artistName", e)
-            null
-        }
+        client.get("https://api.deezer.com/search/artist") {
+            url {
+                parameters.append("limit", limit.toString())
+                parameters.append("index", index.toString())
+                parameters.append("q", artistName)
+            }
+        }.body<DeezerArtist>()
 }

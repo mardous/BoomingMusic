@@ -6,10 +6,10 @@ import java.io.Reader
 
 interface LyricsParser {
 
-    fun parse(input: String, trackLength: Long): Lyrics? =
-        if (input.isNotBlank()) input.reader().use { parse(it, trackLength) } else null
+    fun parse(input: String, trackLength: Long, ignoreBlankLines: Boolean): Lyrics? =
+        if (input.isNotBlank()) input.reader().use { parse(it, trackLength, ignoreBlankLines) } else null
 
-    fun parse(reader: Reader, trackLength: Long): Lyrics?
+    fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): Lyrics?
 
     fun handles(file: LyricsFile): Boolean
 

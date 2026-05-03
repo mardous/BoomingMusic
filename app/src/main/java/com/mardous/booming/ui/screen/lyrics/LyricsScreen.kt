@@ -36,9 +36,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.keepScreenOn
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
@@ -48,11 +52,15 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.SingletonImageLoader
+import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.SuccessResult
 import coil3.toBitmap
 import com.mardous.booming.R
 import com.mardous.booming.core.model.LibraryMargin
+import com.mardous.booming.core.model.lyrics.LyricsViewSettings
+import com.mardous.booming.core.model.lyrics.LyricsViewSettings.BackgroundEffect
+import com.mardous.booming.core.model.lyrics.LyricsViewState
 import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.extensions.isPowerSaveMode
@@ -61,8 +69,8 @@ import com.mardous.booming.ui.component.compose.color.extractGradientColors
 import com.mardous.booming.ui.component.compose.decoration.FadingEdges
 import com.mardous.booming.ui.component.compose.decoration.animatedGradient
 import com.mardous.booming.ui.component.compose.decoration.fadingEdges
+import com.mardous.booming.ui.component.compose.lyrics.LyricsView
 import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings.BackgroundEffect
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.theme.PlayerTheme
 import kotlinx.coroutines.Dispatchers
@@ -83,6 +91,7 @@ fun LyricsScreen(
     val lyricsViewSettings by lyricsViewModel.fullLyricsViewSettings.collectAsState()
     val lyricsResult by lyricsViewModel.lyricsResult.collectAsState()
 
+    val currentSong by playerViewModel.currentSongFlow.collectAsState()
     val isPlaying by playerViewModel.isPlayingFlow.collectAsState()
 
     val lyricsViewState = remember(lyricsResult.syncedLyrics) {
@@ -104,23 +113,19 @@ fun LyricsScreen(
         if (isPowerSaveMode)
             return@LaunchedEffect
 
-        when (lyricsViewSettings.backgroundEffect) {
-            BackgroundEffect.Gradient -> {
-                withContext(Dispatchers.Default) {
-                    val result = SingletonImageLoader.get(context).execute(
-                        ImageRequest.Builder(context)
-                            .data(playerViewModel.currentSong)
-                            .build()
-                    )
-                    gradientColors = if (result is SuccessResult) {
-                        result.image.toBitmap().extractGradientColors()
-                    } else {
-                        emptyList()
-                    }
+        if (lyricsViewSettings.backgroundEffect == BackgroundEffect.Gradient) {
+            withContext(Dispatchers.Default) {
+                val result = SingletonImageLoader.get(context).execute(
+                    ImageRequest.Builder(context)
+                        .data(playerViewModel.currentSong)
+                        .build()
+                )
+                gradientColors = if (result is SuccessResult) {
+                    result.image.toBitmap().extractGradientColors()
+                } else {
+                    emptyList()
                 }
             }
-
-            BackgroundEffect.None -> { /* no-op */ }
         }
     }
 
@@ -158,6 +163,36 @@ fun LyricsScreen(
                                 .fillMaxSize()
                                 .animatedGradient(gradientColors, isPlaying)
                         )
+                        hasBackgroundEffects = true
+                    }
+
+                    effect.isBlur -> {
+                        val backgroundColor = MaterialTheme.colorScheme.surface
+
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            AsyncImage(
+                                model = currentSong,
+                                contentDescription = null,
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .blur(90.dp)
+                                    .drawWithContent {
+                                        drawContent()
+
+                                        drawRect(
+                                            brush = Brush.radialGradient(
+                                                colors = listOf(
+                                                    Color.Transparent,
+                                                    backgroundColor.copy(alpha = 0.8f),
+                                                    backgroundColor
+                                                ),
+                                                radius = size.minDimension * 0.9f
+                                            )
+                                        )
+                                    }
+                            )
+                        }
                         hasBackgroundEffects = true
                     }
 

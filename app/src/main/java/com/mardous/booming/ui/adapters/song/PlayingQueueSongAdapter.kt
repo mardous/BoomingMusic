@@ -138,7 +138,7 @@ class PlayingQueueSongAdapter(
         private val mDraggableItemState = DraggableItemState()
 
         override fun onClick(view: View) {
-            val songPosition = layoutPosition
+            val songPosition = bindingAdapterPosition
             val playerViewModel = activity.getViewModel<PlayerViewModel>()
             playerViewModel.playSongAt(songPosition)
         }
@@ -150,10 +150,10 @@ class PlayingQueueSongAdapter(
         override fun onPrepareSongMenu(menu: Menu) {
             super.onPrepareSongMenu(menu)
             menu.findItem(R.id.action_put_after_current_track)?.let { menuItem ->
-                menuItem.isEnabled = layoutPosition > current + 1
+                menuItem.isEnabled = bindingAdapterPosition > current + 1
             }
             menu.findItem(R.id.action_stop_after_track)?.let { menuItem ->
-                menuItem.isEnabled = layoutPosition >= current
+                menuItem.isEnabled = bindingAdapterPosition >= current
             }
         }
 
@@ -161,13 +161,13 @@ class PlayingQueueSongAdapter(
             return when (item.itemId) {
                 R.id.action_remove_from_playing_queue -> {
                     val playerViewModel = activity.getViewModel<PlayerViewModel>()
-                    playerViewModel.removePosition(layoutPosition)
+                    playerViewModel.removePosition(bindingAdapterPosition)
                     true
                 }
 
                 R.id.action_stop_after_track -> {
                     val playerViewModel = activity.getViewModel<PlayerViewModel>()
-                    playerViewModel.stopAt(layoutPosition).observe(activity) { (title, canceled) ->
+                    playerViewModel.stopAt(bindingAdapterPosition).observe(activity) { (title, canceled) ->
                         if (title != null) {
                             if (canceled) {
                                 activity.showToast(
@@ -185,7 +185,7 @@ class PlayingQueueSongAdapter(
 
                 R.id.action_put_after_current_track -> {
                     val playerViewModel = activity.getViewModel<PlayerViewModel>()
-                    playerViewModel.moveToNextPosition(layoutPosition)
+                    playerViewModel.moveToNextPosition(bindingAdapterPosition)
                     true
                 }
 

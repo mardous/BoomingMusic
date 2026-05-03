@@ -12,8 +12,13 @@ import coil3.toBitmap
 import com.mardous.booming.coil.model.ArtistImage
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.extensions.resources.toJPG
+import com.mardous.booming.extensions.utilities.sanitize
 import com.mardous.booming.util.FileUtil
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.IOException
 import java.util.Locale
@@ -49,47 +54,55 @@ class CustomArtistImageManager(private val context: Context) {
         }
 
     suspend fun setCustomImage(artist: Artist, uri: Uri): Boolean {
-        return suspendCancellableCoroutine { continuation ->
-            SingletonImageLoader.get(context).enqueue(
-                ImageRequest.Builder(context)
-                    .data(uri)
-                    .memoryCachePolicy(CachePolicy.DISABLED)
-                    .size(2048)
-                    .target(
-                        onSuccess = { drawable ->
-                            coroutineScope.launch(Dispatchers.IO) {
-                                val imageFile = getCustomImageFile(artist)
-                                if (imageFile == null) {
-                                    continuation.resume(false)
-                                } else {
-                                    try {
-                                        val imageCreated = imageFile.outputStream()
-                                            .buffered()
-                                            .use { stream ->
-                                                drawable.toBitmap().toJPG(100, stream)
+        return try {
+            suspendCancellableCoroutine { continuation ->
+                SingletonImageLoader.get(context).enqueue(
+                    ImageRequest.Builder(context)
+                        .data(uri)
+                        .memoryCachePolicy(CachePolicy.DISABLED)
+                        .size(2048)
+                        .target(
+                            onSuccess = { drawable ->
+                                coroutineScope.launch(Dispatchers.IO) {
+                                    val imageFile = getCustomImageFile(artist)
+                                    if (imageFile == null) {
+                                        continuation.resume(false)
+                                    } else {
+                                        try {
+                                            val imageCreated = imageFile.outputStream()
+                                                .buffered()
+                                                .use { stream ->
+                                                    drawable.toBitmap().toJPG(100, stream)
+                                                }
+
+                                            artist.updateHasImage(imageCreated)
+                                            contentResolver.notifyChange(
+                                                Artists.EXTERNAL_CONTENT_URI,
+                                                null
+                                            )
+
+                                            if (!imageCreated) {
+                                                imageFile.deleteQuietly()
                                             }
 
-                                        artist.updateHasImage(imageCreated)
-                                        contentResolver.notifyChange(Artists.EXTERNAL_CONTENT_URI, null)
-
-                                        if (!imageCreated) {
+                                            continuation.resume(imageCreated)
+                                        } catch (t: Throwable) {
                                             imageFile.deleteQuietly()
+                                            continuation.resumeWithException(t)
                                         }
-
-                                        continuation.resume(imageCreated)
-                                    } catch (t: Throwable) {
-                                        imageFile.deleteQuietly()
-                                        continuation.resumeWithException(t)
+                                    }
+                                    continuation.invokeOnCancellation {
+                                        imageFile?.deleteQuietly()
                                     }
                                 }
-                                continuation.invokeOnCancellation {
-                                    imageFile?.deleteQuietly()
-                                }
                             }
-                        }
-                    )
-                    .build()
-            )
+                        )
+                        .build()
+                )
+            }
+        } catch (t: Throwable) {
+            Log.e("CustomArtistImageManager", "Cannot set artist image", t)
+            false
         }
     }
 
@@ -114,11 +127,11 @@ class CustomArtistImageManager(private val context: Context) {
     }
 
     private fun Artist.getFileName(): String {
-        return String.format(Locale.US, "#%d#%s.jpeg", id, name)
+        return String.format(Locale.US, "#%d#%s.jpeg", id, name).sanitize()
     }
 
     private fun ArtistImage.getFileName(): String {
-        return String.format(Locale.US, "#%d#%s.jpeg", id, name)
+        return String.format(Locale.US, "#%d#%s.jpeg", id, name).sanitize()
     }
 
     private fun File.deleteQuietly() = try {

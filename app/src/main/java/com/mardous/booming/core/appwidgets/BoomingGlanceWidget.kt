@@ -1,35 +1,42 @@
 package com.mardous.booming.core.appwidgets
 
-import android.content.ComponentName
 import android.content.Context
-import android.content.Intent
-import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.KeyEvent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.glance.*
-import androidx.glance.action.Action
+import androidx.glance.GlanceId
+import androidx.glance.GlanceModifier
+import androidx.glance.GlanceTheme
+import androidx.glance.LocalSize
 import androidx.glance.action.actionStartActivity
 import androidx.glance.action.clickable
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.SizeMode
-import androidx.glance.appwidget.action.actionStartService
 import androidx.glance.appwidget.cornerRadius
 import androidx.glance.appwidget.provideContent
-import androidx.glance.layout.*
+import androidx.glance.background
+import androidx.glance.currentState
+import androidx.glance.layout.Alignment
+import androidx.glance.layout.Column
+import androidx.glance.layout.Row
+import androidx.glance.layout.Spacer
+import androidx.glance.layout.fillMaxSize
+import androidx.glance.layout.fillMaxWidth
+import androidx.glance.layout.height
+import androidx.glance.layout.padding
+import androidx.glance.layout.size
+import androidx.glance.layout.width
 import androidx.glance.text.FontWeight
 import androidx.glance.text.Text
+import androidx.glance.text.TextAlign
 import androidx.glance.text.TextStyle
-import androidx.glance.unit.ColorProvider
 import com.mardous.booming.R
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
-import com.mardous.booming.playback.PlaybackService
 import com.mardous.booming.ui.screen.MainActivity
 
 class BoomingGlanceWidget : GlanceAppWidget() {
@@ -49,13 +56,10 @@ class BoomingGlanceWidget : GlanceAppWidget() {
             val playbackState = currentState<PlaybackState>()
             val currentSize = LocalSize.current
 
-            GlanceTheme {
+            GlanceTheme(
+                colors = playbackState.widgetTheme.getColors()
+            ) {
                 when {
-                    currentSize.height >= 220.dp && currentSize.height <= 300.dp &&
-                            currentSize.width >= 240.dp && currentSize.width <= 270.dp -> {
-                        CardWidget(context, playbackState)
-                    }
-
                     currentSize.height >= EXTRA_LARGE_LAYOUT_SIZE.height -> {
                         ExtraLargeWidget(context, playbackState)
                     }
@@ -69,7 +73,11 @@ class BoomingGlanceWidget : GlanceAppWidget() {
                     }
 
                     else -> {
-                        SmallWidget(context, playbackState)
+                        if (playbackState.isSimplifiedSmallLayout) {
+                            SimplifiedWidget(context, playbackState)
+                        } else {
+                            ClassicWidget(context, playbackState)
+                        }
                     }
                 }
             }
@@ -78,26 +86,22 @@ class BoomingGlanceWidget : GlanceAppWidget() {
 }
 
 @Composable
-private fun SmallWidget(context: Context, playbackState: PlaybackState) {
-    val surfaceColor = GlanceTheme.colors.surface
-    val onSurfaceColor = GlanceTheme.colors.onSurface
-    val onSurfaceVariantColor = GlanceTheme.colors.onSurfaceVariant
-
+private fun ClassicWidget(context: Context, playbackState: PlaybackState) {
     Row(
         modifier = GlanceModifier
             .fillMaxSize()
             .cornerRadius(16.dp)
             .padding(vertical = 4.dp, horizontal = 8.dp)
             .clickable(actionStartActivity<MainActivity>())
-            .background(surfaceColor),
+            .background(GlanceTheme.colors.surface),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalAlignment = Alignment.CenterVertically
     ) {
         AlbumArtGlance(
             playbackState = playbackState,
             modifier = GlanceModifier
-                .size(64.dp)
-                .cornerRadius(8.dp)
+                .size(56.dp)
+                .cornerRadius(playbackState.imageCornerRadius?.dp ?: 8.dp)
         )
 
         Column(
@@ -113,7 +117,10 @@ private fun SmallWidget(context: Context, playbackState: PlaybackState) {
             ) {
                 Text(
                     text = playbackState.currentTitle.orEmpty(),
-                    style = TextStyle(color = onSurfaceColor, fontWeight = FontWeight.Bold),
+                    style = TextStyle(
+                        color = GlanceTheme.colors.onSurface,
+                        fontWeight = FontWeight.Bold
+                    ),
                     maxLines = 1
                 )
                 if (!playbackState.currentArtist.isNullOrEmpty()) {
@@ -121,7 +128,7 @@ private fun SmallWidget(context: Context, playbackState: PlaybackState) {
 
                     Text(
                         text = DEFAULT_INFO_DELIMITER,
-                        style = TextStyle(color = onSurfaceColor),
+                        style = TextStyle(color = GlanceTheme.colors.onSurface),
                         maxLines = 1
                     )
 
@@ -129,7 +136,7 @@ private fun SmallWidget(context: Context, playbackState: PlaybackState) {
 
                     Text(
                         text = playbackState.currentArtist,
-                        style = TextStyle(color = onSurfaceVariantColor),
+                        style = TextStyle(color = GlanceTheme.colors.onSurfaceVariant),
                         maxLines = 1
                     )
                 }
@@ -146,18 +153,80 @@ private fun SmallWidget(context: Context, playbackState: PlaybackState) {
 }
 
 @Composable
-private fun MediumWidget(context: Context, playbackState: PlaybackState) {
-    val surfaceColor = GlanceTheme.colors.surface
-    val onSurfaceColor = GlanceTheme.colors.onSurface
-    val onSurfaceVariantColor = GlanceTheme.colors.onSurfaceVariant
+private fun SimplifiedWidget(context: Context, playbackState: PlaybackState) {
+    Row(
+        modifier = GlanceModifier
+            .fillMaxSize()
+            .cornerRadius(16.dp)
+            .padding(vertical = 8.dp, horizontal = 8.dp)
+            .clickable(actionStartActivity<MainActivity>())
+            .background(GlanceTheme.colors.surface),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        AlbumArtGlance(
+            playbackState = playbackState,
+            modifier = GlanceModifier
+                .size(56.dp)
+                .cornerRadius(playbackState.imageCornerRadius?.dp ?: 8.dp)
+        )
 
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = GlanceModifier.fillMaxWidth()
+        ) {
+            Column(
+                modifier = GlanceModifier
+                    .fillMaxSize()
+                    .padding(horizontal = 8.dp)
+                    .defaultWeight(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalAlignment = Alignment.Start
+            ) {
+                Text(
+                    text = playbackState.currentTitle.orEmpty(),
+                    style = TextStyle(
+                        color = GlanceTheme.colors.onSurface,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp
+                    ),
+                    maxLines = 1
+                )
+
+                Text(
+                    text = playbackState.currentArtist.orEmpty(),
+                    style = TextStyle(
+                        color = GlanceTheme.colors.onSurfaceVariant,
+                        fontSize = 12.sp
+                    ),
+                    maxLines = 1
+                )
+            }
+
+            ShapeableControlIconGlance(
+                resId = if (playbackState.isPlaying) {
+                    R.drawable.ic_pause_m3_24dp
+                } else {
+                    R.drawable.ic_play_m3_24dp
+                },
+                innerPadding = 8.dp,
+                contentDescription = "Play/Pause",
+                onClick = GlanceModifier
+                    .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE))
+            )
+        }
+    }
+}
+
+@Composable
+private fun MediumWidget(context: Context, playbackState: PlaybackState) {
     Column(
         modifier = GlanceModifier
             .fillMaxSize()
             .cornerRadius(16.dp)
             .padding(8.dp)
             .clickable(actionStartActivity<MainActivity>())
-            .background(surfaceColor),
+            .background(GlanceTheme.colors.surface),
         verticalAlignment = Alignment.CenterVertically,
         horizontalAlignment = Alignment.Start
     ) {
@@ -169,7 +238,7 @@ private fun MediumWidget(context: Context, playbackState: PlaybackState) {
                 playbackState = playbackState,
                 modifier = GlanceModifier
                     .size(72.dp)
-                    .cornerRadius(8.dp)
+                    .cornerRadius(playbackState.imageCornerRadius?.dp ?: 8.dp)
             )
 
             Column(
@@ -181,7 +250,7 @@ private fun MediumWidget(context: Context, playbackState: PlaybackState) {
                 Text(
                     text = playbackState.currentTitle.orEmpty(),
                     style = TextStyle(
-                        color = onSurfaceColor,
+                        color = GlanceTheme.colors.onSurface,
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp
                     ),
@@ -191,11 +260,22 @@ private fun MediumWidget(context: Context, playbackState: PlaybackState) {
                 Text(
                     text = playbackState.currentArtist.orEmpty(),
                     style = TextStyle(
-                        color = onSurfaceVariantColor,
-                        fontSize = 12.sp
+                        color = GlanceTheme.colors.onSurfaceVariant,
+                        fontSize = 14.sp
                     ),
                     maxLines = 1
                 )
+
+                if (!playbackState.additionalInfo.isNullOrEmpty()) {
+                    Text(
+                        text = playbackState.additionalInfo,
+                        style = TextStyle(
+                            color = GlanceTheme.colors.onSurfaceVariant,
+                            fontSize = 14.sp
+                        ),
+                        maxLines = 1
+                    )
+                }
             }
         }
 
@@ -211,17 +291,13 @@ private fun MediumWidget(context: Context, playbackState: PlaybackState) {
 
 @Composable
 private fun LargeWidget(context: Context, playbackState: PlaybackState) {
-    val surfaceColor = GlanceTheme.colors.surface
-    val onSurfaceColor = GlanceTheme.colors.onSurface
-    val onSurfaceVariantColor = GlanceTheme.colors.onSurfaceVariant
-
     Column(
         modifier = GlanceModifier
             .fillMaxSize()
             .cornerRadius(16.dp)
             .padding(16.dp)
             .clickable(actionStartActivity<MainActivity>())
-            .background(surfaceColor),
+            .background(GlanceTheme.colors.surface),
         verticalAlignment = Alignment.CenterVertically,
         horizontalAlignment = Alignment.Start
     ) {
@@ -233,7 +309,7 @@ private fun LargeWidget(context: Context, playbackState: PlaybackState) {
                 playbackState = playbackState,
                 modifier = GlanceModifier
                     .size(104.dp)
-                    .cornerRadius(8.dp)
+                    .cornerRadius(playbackState.imageCornerRadius?.dp ?: 8.dp)
             )
 
             Column(
@@ -245,7 +321,7 @@ private fun LargeWidget(context: Context, playbackState: PlaybackState) {
                 Text(
                     text = playbackState.currentTitle.orEmpty(),
                     style = TextStyle(
-                        color = onSurfaceColor,
+                        color = GlanceTheme.colors.onSurface,
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp
                     ),
@@ -255,11 +331,22 @@ private fun LargeWidget(context: Context, playbackState: PlaybackState) {
                 Text(
                     text = playbackState.currentArtist.orEmpty(),
                     style = TextStyle(
-                        color = onSurfaceVariantColor,
+                        color = GlanceTheme.colors.onSurfaceVariant,
                         fontSize = 16.sp
                     ),
                     maxLines = 1
                 )
+
+                if (!playbackState.additionalInfo.isNullOrEmpty()) {
+                    Text(
+                        text = playbackState.additionalInfo,
+                        style = TextStyle(
+                            color = GlanceTheme.colors.onSurfaceVariant,
+                            fontSize = 14.sp
+                        ),
+                        maxLines = 2
+                    )
+                }
             }
         }
 
@@ -276,24 +363,20 @@ private fun LargeWidget(context: Context, playbackState: PlaybackState) {
 
 @Composable
 private fun ExtraLargeWidget(context: Context, playbackState: PlaybackState) {
-    val surfaceColor = GlanceTheme.colors.surface
-    val onSurfaceColor = GlanceTheme.colors.onSurface
-    val onSurfaceVariantColor = GlanceTheme.colors.onSurfaceVariant
-
     Column(
         modifier = GlanceModifier
             .fillMaxSize()
             .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 24.dp)
             .cornerRadius(24.dp)
             .clickable(actionStartActivity<MainActivity>())
-            .background(surfaceColor)
+            .background(GlanceTheme.colors.surface)
     ) {
         AlbumArtGlance(
             playbackState = playbackState,
             modifier = GlanceModifier
                 .fillMaxWidth()
                 .defaultWeight()
-                .cornerRadius(16.dp)
+                .cornerRadius(playbackState.imageCornerRadius?.dp?.times(2) ?: 16.dp)
         )
 
         Spacer(GlanceModifier.height(24.dp))
@@ -308,7 +391,7 @@ private fun ExtraLargeWidget(context: Context, playbackState: PlaybackState) {
             Text(
                 text = playbackState.currentTitle.orEmpty(),
                 style = TextStyle(
-                    color = onSurfaceColor,
+                    color = GlanceTheme.colors.onSurface,
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp
                 ),
@@ -318,11 +401,24 @@ private fun ExtraLargeWidget(context: Context, playbackState: PlaybackState) {
             Text(
                 text = playbackState.currentArtist.orEmpty(),
                 style = TextStyle(
-                    color = onSurfaceVariantColor,
+                    color = GlanceTheme.colors.onSurfaceVariant,
                     fontSize = 16.sp
                 ),
                 maxLines = 1
             )
+
+            if (!playbackState.additionalInfo.isNullOrEmpty()) {
+                Text(
+                    text = playbackState.additionalInfo,
+                    style = TextStyle(
+                        color = GlanceTheme.colors.onSurfaceVariant,
+                        textAlign = TextAlign.Center,
+                        fontSize = 14.sp
+                    ),
+                    maxLines = 2,
+                    modifier = GlanceModifier.padding(top = 4.dp)
+                )
+            }
         }
 
         Spacer(GlanceModifier.height(24.dp))
@@ -335,122 +431,6 @@ private fun ExtraLargeWidget(context: Context, playbackState: PlaybackState) {
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp)
         )
-    }
-}
-
-@Composable
-private fun CardWidget(context: Context, playbackState: PlaybackState) {
-    Box(
-        modifier = GlanceModifier
-            .fillMaxSize()
-            .clickable(actionStartActivity<MainActivity>()),
-        contentAlignment = Alignment.BottomCenter
-    ) {
-        Box(
-            modifier = GlanceModifier
-                .fillMaxSize()
-                .padding(top = 8.dp, bottom = 32.dp, start = 8.dp, end = 8.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            AlbumArtGlance(
-                playbackState = playbackState,
-                modifier = GlanceModifier
-                    .fillMaxSize()
-                    .cornerRadius(8.dp)
-            )
-        }
-
-        Box(
-            modifier = GlanceModifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .padding(16.dp)
-                .cornerRadius(16.dp)
-                .background(GlanceTheme.colors.surface),
-            contentAlignment = Alignment.Center
-        ) {
-            Row(
-                modifier = GlanceModifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                // Prev
-                ControlIconGlance(
-                    resId = R.drawable.ic_previous_24dp,
-                    tint = GlanceTheme.colors.onSurface,
-                    contentDescription = "Previous",
-                    modifier = GlanceModifier
-                        .size(24.dp)
-                        .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PREVIOUS))
-                )
-
-                Spacer(GlanceModifier.defaultWeight())
-
-                // Play/Pause circular
-                CircularControlIconGlance(
-                    resId = if (playbackState.isPlaying)
-                        R.drawable.ic_pause_24dp
-                    else
-                        R.drawable.ic_play_24dp,
-                    size = 48.dp,
-                    iconTint = GlanceTheme.colors.onPrimaryContainer,
-                    backgroundTint = GlanceTheme.colors.primaryContainer,
-                    contentDescription = "Play/Pause",
-                    onClick = GlanceModifier
-                        .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE))
-                )
-
-                Spacer(GlanceModifier.defaultWeight())
-
-                // Next
-                ControlIconGlance(
-                    resId = R.drawable.ic_next_24dp,
-                    tint = GlanceTheme.colors.onSurface,
-                    contentDescription = "Next",
-                    modifier = GlanceModifier
-                        .size(24.dp)
-                        .clickable(playbackAction(context, KeyEvent.KEYCODE_MEDIA_NEXT))
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun AlbumArtGlance(
-    playbackState: PlaybackState,
-    placeholderColor: ColorProvider = GlanceTheme.colors.tertiaryContainer,
-    placeholderIconColor: ColorProvider = GlanceTheme.colors.onTertiaryContainer,
-    modifier: GlanceModifier = GlanceModifier
-) {
-    val bitmap = playbackState.artworkData?.let {
-        try {
-            val options = BitmapFactory.Options()
-            BitmapFactory.decodeByteArray(it, 0, it.size, options)
-        } catch (t: Throwable) {
-            Log.e("BoomingGlanceWidget", "Cannot decode artwork bitmap", t)
-            null
-        }
-    }
-    if (bitmap != null) {
-        Image(
-            provider = ImageProvider(bitmap),
-            contentDescription = "Album Art",
-            contentScale = ContentScale.Crop,
-            modifier = modifier
-        )
-    } else {
-        Box(
-            modifier = modifier.background(placeholderColor),
-            contentAlignment = Alignment.Center
-        ) {
-            Image(
-                provider = ImageProvider(R.drawable.ic_music_note_24dp),
-                colorFilter = ColorFilter.tint(placeholderIconColor),
-                contentDescription = "Album Art",
-                modifier = GlanceModifier.wrapContentSize()
-            )
-        }
     }
 }
 
@@ -573,66 +553,4 @@ private fun MediumControllerGlance(
             )
         }
     }
-}
-
-@Composable
-private fun ControlIconGlance(
-    resId: Int,
-    tint: ColorProvider,
-    contentDescription: String,
-    modifier: GlanceModifier = GlanceModifier
-) {
-    Image(
-        provider = ImageProvider(resId),
-        contentDescription = contentDescription,
-        modifier = modifier,
-        colorFilter = ColorFilter.tint(tint)
-    )
-}
-
-@Composable
-private fun CircularControlIconGlance(
-    resId: Int,
-    size: Dp,
-    iconTint: ColorProvider,
-    backgroundTint: ColorProvider,
-    contentDescription: String,
-    onClick: GlanceModifier
-) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = GlanceModifier
-            .size(size)
-            .cornerRadius(size / 2)
-            .padding(size / 6)
-            .background(backgroundTint)
-    ) {
-        Image(
-            provider = ImageProvider(resId),
-            contentDescription = contentDescription,
-            modifier = GlanceModifier
-                .fillMaxSize()
-                .then(onClick),
-            colorFilter = ColorFilter.tint(iconTint)
-        )
-    }
-}
-
-private fun playbackAction(context: Context, mediaKeyCode: Int): Action {
-    val intent = Intent(Intent.ACTION_MEDIA_BUTTON)
-    intent.setComponent(ComponentName(context, PlaybackService::class.java))
-    intent.putExtra(Intent.EXTRA_KEY_EVENT, KeyEvent(KeyEvent.ACTION_DOWN, mediaKeyCode))
-    return actionStartService(intent, true)
-}
-
-private fun toggleShuffleAction(context: Context): Action {
-    val intent = Intent(PlaybackService.ACTION_TOGGLE_SHUFFLE)
-    intent.setComponent(ComponentName(context, PlaybackService::class.java))
-    return actionStartService(intent)
-}
-
-private fun toggleFavoriteAction(context: Context): Action {
-    val intent = Intent(PlaybackService.ACTION_TOGGLE_FAVORITE)
-    intent.setComponent(ComponentName(context, PlaybackService::class.java))
-    return actionStartService(intent)
 }

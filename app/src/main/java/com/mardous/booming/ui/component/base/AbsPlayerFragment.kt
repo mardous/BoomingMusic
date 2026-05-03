@@ -98,6 +98,7 @@ import com.mardous.booming.ui.screen.player.PlayerGesturesController.GestureType
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.CoverPagerFragment
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
+import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
@@ -397,8 +398,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             if (scheme.blurToken.isBlur) {
                 it.isVisible = true
                 it.load(song) {
-                    size(400)
-                    precision(Precision.EXACT)
+                    size(256)
+                    precision(Precision.INEXACT)
                     scale(Scale.FILL)
                     memoryCacheKey("nowplaying:song:${song.id}")
                     crossfade(1000)
@@ -637,7 +638,10 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
     }
 
     fun isExtraInfoEnabled(): Boolean =
-        Preferences.displayExtraInfo && Preferences.nowPlayingExtraInfoList.any { it.isEnabled }
+        Preferences.displayExtraInfo && Preferences.getExtraInfoContent(
+            NOW_PLAYING_EXTRA_INFO,
+            Preferences.getDefaultNowPlayingInfo()
+        ).any { it.isEnabled }
 
     fun getNextSongInfo(nextSong: Song): String {
         return if (nextSong != Song.emptySong) {

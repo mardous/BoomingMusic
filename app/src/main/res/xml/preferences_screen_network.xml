@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:icon="@drawable/ic_language_24dp"
+        app:title="@string/network_features_title"
+        app:defaultValue="@bool/enable_network_features"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:key="network_features"/>
+
+    <SwitchPreferenceCompat
+        app:icon="@drawable/ic_network_wifi_24dp"
+        app:title="@string/wifi_only_network_features_title"
+        app:summary="@string/wifi_only_network_features_summary"
+        app:defaultValue="true"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:dependency="network_features"
+        app:key="wifi_only_network"/>
+
+    <PreferenceCategory
+        app:title="@string/images_title"
+        app:layout="@layout/preference_category_title"
+        app:dependency="network_features">
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_artist_24dp"
+            app:title="@string/online_artist_images_title"
+            app:defaultValue="true"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="allow_online_artist_images"/>
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_album_24dp"
+            app:title="@string/online_album_covers_title"
+            app:summary="@string/online_album_covers_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="allow_online_album_covers"/>
+
+        <ListPreference
+            app:iconSpaceReserved="true"
+            app:title="@string/preferred_image_size_title"
+            app:entries="@array/pref_image_size_entries"
+            app:entryValues="@array/pref_image_size_values"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="medium"
+            app:layout="@layout/list_item_view"
+            app:key="preferred_image_size"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/lastfm_title"
+        app:layout="@layout/preference_category_title"
+        app:isPreferenceVisible="@bool/enable_lastfm_integration"
+        app:dependency="network_features">
+
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
+            app:icon="@drawable/ic_person_24dp"
+            app:title="@string/lastfm_login_title"
+            app:summary="@string/lastfm_login_summary"
+            app:layout="@layout/list_item_view"
+            app:key="lastfm_login"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/lastfm_scrobbling_title"
+            app:summary="@string/lastfm_scrobbling_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:dependency="lastfm_login"
+            app:key="lastfm_scrobbling_enabled"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/lastfm_now_playing_title"
+            app:summary="@string/lastfm_now_playing_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:dependency="lastfm_login"
+            app:key="lastfm_now_playing_enabled"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/lastfm_biography_title"
+            app:summary="@string/lastfm_biography_summary"
+            app:defaultValue="true"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="lastfm_info_enabled"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/listenbrainz_title"
+        app:layout="@layout/preference_category_title"
+        app:dependency="network_features">
+
+        <com.mardous.booming.ui.component.preferences.CustomDialogPreference
+            app:icon="@drawable/ic_person_24dp"
+            app:title="@string/listenbrainz_login_title"
+            app:summary="@string/listenbrainz_login_summary"
+            app:layout="@layout/list_item_view"
+            app:key="listenbrainz_login"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/listenbrainz_scrobbling_title"
+            app:summary="@string/listenbrainz_scrobbling_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:dependency="listenbrainz_login"
+            app:key="listenbrainz_scrobbling_enabled"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/listenbrainz_now_playing_title"
+            app:summary="@string/listenbrainz_now_playing_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:dependency="listenbrainz_login"
+            app:key="listenbrainz_now_playing_enabled"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/lyrics_preferences_title"
+        app:layout="@layout/preference_category_title"
+        app:dependency="network_features">
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/use_lrclib_provider_title"
+            app:summary="@string/use_lrclib_provider_summary"
+            app:defaultValue="true"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="lrclib_enabled"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/use_betterlyrics_provider_title"
+            app:summary="@string/use_betterlyrics_provider_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="betterlyrics_enabled"/>
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/use_simpmusic_provider_title"
+            app:summary="@string/use_simpmusic_provider_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="simpmusic_enabled"/>
+
+        <Preference
+            app:icon="@drawable/ic_delete_24dp"
+            app:title="@string/delete_downloaded_lyrics_title"
+            app:summary="@string/delete_downloaded_lyrics_summary"
+            app:layout="@layout/list_item_view"
+            app:key="clear_lyrics"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/update_title"
+        app:layout="@layout/preference_category_title"
+        app:isPreferenceVisible="@bool/enable_app_update">
+
+        <ListPreference
+            app:layout="@layout/list_item_view"
+            app:title="@string/auto_update_title"
+            app:entries="@array/pref_update_mode_titles"
+            app:entryValues="@array/pref_update_mode_values"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="weekly"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="update_search_mode"/>
+
+        <SwitchPreferenceCompat
+            app:title="@string/receive_experimental_updates_title"
+            app:summary="@string/receive_experimental_updates_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="experimental_updates"/>
+
+        <SwitchPreferenceCompat
+            app:title="@string/only_wifi_title"
+            app:summary="@string/only_wifi_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="update_only_wifi"/>
+
+        <com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
+            app:title="@string/search_for_update_title"
+            app:persistent="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_progressbar"
+            app:isPreferenceVisible="@bool/enable_app_update"
+            app:key="search_for_update"/>
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

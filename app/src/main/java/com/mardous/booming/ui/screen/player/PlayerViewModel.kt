@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
@@ -22,6 +21,7 @@ import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.action.SongClickBehavior
+import com.mardous.booming.core.model.player.MetadataField
 import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
@@ -30,30 +30,40 @@ import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.AlbumCoverSaver
-import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.QueuePosition
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.extensions.files.toAudioFile
-import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.getQueueItems
 import com.mardous.booming.playback.progress.ProgressObserver
 import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.playback.shuffle.ShuffleManager
 import com.mardous.booming.playback.toMediaItems
+import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.REMEMBER_SHUFFLE_MODE
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChangedBy
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.guava.await
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import java.io.File
+import kotlinx.coroutines.withContext
 
 const val QUEUE_DEBOUNCE = 100L
 
@@ -260,15 +270,14 @@ class PlayerViewModel(
     }
 
     private fun onGenerateExtraInfo(song: Song) = viewModelScope.launch(IO) {
-        val metadataReader = MetadataReader(song.uri)
-        val audioFile = File(song.data).toAudioFile()
         _extraInfoFlow.value = if (Preferences.displayExtraInfo) {
-            Preferences.nowPlayingExtraInfoList
-                .filter { it.isEnabled }
-                .mapNotNull {
-                    it.info.toReadableFormat(metadataReader, audioFile?.audioHeader)
-                }
-                .joinToString(separator = DEFAULT_INFO_DELIMITER)
+            MetadataField.getMetadataValue(
+                song = song,
+                fields = Preferences.getExtraInfoContent(
+                    key = NOW_PLAYING_EXTRA_INFO,
+                    defaultContent = Preferences.getDefaultNowPlayingInfo()
+                )
+            )
         } else null
     }
 
@@ -602,7 +611,12 @@ class PlayerViewModel(
                 val stopIndex = position.getIndexForPosition(stopPosition)
                 val mediaItem = controller.getMediaItemAt(stopIndex)
                 val resultFuture = controller.sendCustomCommand(
-                    SessionCommand(Playback.SET_STOP_POSITION, bundleOf("index" to stopIndex)),
+                    SessionCommand(
+                        Playback.SET_STOP_POSITION,
+                        Bundle().apply {
+                            putInt("index", stopIndex)
+                        }
+                    ),
                     Bundle.EMPTY
                 )
                 val result = runCatching { resultFuture.await() }

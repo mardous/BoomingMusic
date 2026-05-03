@@ -17,14 +17,14 @@
 
 package com.mardous.booming.extensions
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.ResolveInfoFlags
-import android.media.MediaPlayer
 import android.os.Build
-import android.util.Log
 import androidx.core.text.HtmlCompat
-import com.mardous.booming.appContext
+
+fun hasPie() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
 
 fun hasQ() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
@@ -36,7 +36,7 @@ fun hasT() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
 
 fun hasU() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 
-fun PackageManager.packageInfo(packageName: String = appContext().packageName) =
+fun PackageManager.packageInfo(context: Context, packageName: String = context.packageName) =
     runCatching {
         if (hasT()) getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0))
         else getPackageInfo(packageName, 0)
@@ -48,12 +48,3 @@ fun PackageManager.resolveActivity(intent: Intent) =
     else resolveActivity(intent, 0)
 
 fun CharSequence.toHtml() = HtmlCompat.fromHtml(this.toString(), HtmlCompat.FROM_HTML_MODE_COMPACT)
-
-fun <R> MediaPlayer.execSafe(command: MediaPlayer.() -> R): R? {
-    try {
-        return command()
-    } catch (t: Throwable) {
-        Log.e("MediaPlayer", "Failed to execute a command", t)
-    }
-    return null
-}

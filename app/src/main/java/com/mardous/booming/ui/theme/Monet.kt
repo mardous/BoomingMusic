@@ -10,7 +10,16 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.getSystemService
 import com.kyant.m3color.hct.Hct
-import com.kyant.m3color.scheme.*
+import com.kyant.m3color.scheme.SchemeContent
+import com.kyant.m3color.scheme.SchemeExpressive
+import com.kyant.m3color.scheme.SchemeFidelity
+import com.kyant.m3color.scheme.SchemeFruitSalad
+import com.kyant.m3color.scheme.SchemeMonochrome
+import com.kyant.m3color.scheme.SchemeNeutral
+import com.kyant.m3color.scheme.SchemeRainbow
+import com.kyant.m3color.scheme.SchemeTonalSpot
+import com.kyant.m3color.scheme.SchemeVibrant
+import com.mardous.booming.core.model.theme.ColorSchemes
 
 @Stable
 @Composable
@@ -25,23 +34,48 @@ fun getSystemContrast(): Double {
 }
 
 @Stable
+fun dynamicColorSchemes(
+    keyColor: Color,
+    style: PaletteStyle,
+    contrastLevel: Double = 0.0
+): ColorSchemes {
+    val hct = Hct.fromInt(keyColor.toArgb())
+    return ColorSchemes(
+        lightColorScheme = dynamicColorScheme(hct, false, style, contrastLevel),
+        darkColorScheme = dynamicColorScheme(hct, true, style, contrastLevel)
+    )
+}
+
+@Stable
 fun dynamicColorScheme(
     keyColor: Color,
     isDark: Boolean,
     style: PaletteStyle,
-    contrastLevel: Double
+    contrastLevel: Double = 0.0
+) = dynamicColorScheme(
+    sourceHct = Hct.fromInt(keyColor.toArgb()),
+    isDark = isDark,
+    style = style,
+    contrastLevel = contrastLevel
+)
+
+@Stable
+fun dynamicColorScheme(
+    sourceHct: Hct,
+    isDark: Boolean,
+    style: PaletteStyle,
+    contrastLevel: Double = 0.0
 ): ColorScheme {
-    val hct = Hct.fromInt(keyColor.toArgb())
     val scheme = when (style) {
-        PaletteStyle.TonalSpot -> SchemeTonalSpot(hct, isDark, contrastLevel)
-        PaletteStyle.Neutral -> SchemeNeutral(hct, isDark, contrastLevel)
-        PaletteStyle.Vibrant -> SchemeVibrant(hct, isDark, contrastLevel)
-        PaletteStyle.Expressive -> SchemeExpressive(hct, isDark, contrastLevel)
-        PaletteStyle.Rainbow -> SchemeRainbow(hct, isDark, contrastLevel)
-        PaletteStyle.FruitSalad -> SchemeFruitSalad(hct, isDark, contrastLevel)
-        PaletteStyle.Monochrome -> SchemeMonochrome(hct, isDark, contrastLevel)
-        PaletteStyle.Fidelity -> SchemeFidelity(hct, isDark, contrastLevel)
-        PaletteStyle.Content -> SchemeContent(hct, isDark, contrastLevel)
+        PaletteStyle.TonalSpot -> SchemeTonalSpot(sourceHct, isDark, contrastLevel)
+        PaletteStyle.Neutral -> SchemeNeutral(sourceHct, isDark, contrastLevel)
+        PaletteStyle.Vibrant -> SchemeVibrant(sourceHct, isDark, contrastLevel)
+        PaletteStyle.Expressive -> SchemeExpressive(sourceHct, isDark, contrastLevel)
+        PaletteStyle.Rainbow -> SchemeRainbow(sourceHct, isDark, contrastLevel)
+        PaletteStyle.FruitSalad -> SchemeFruitSalad(sourceHct, isDark, contrastLevel)
+        PaletteStyle.Monochrome -> SchemeMonochrome(sourceHct, isDark, contrastLevel)
+        PaletteStyle.Fidelity -> SchemeFidelity(sourceHct, isDark, contrastLevel)
+        PaletteStyle.Content -> SchemeContent(sourceHct, isDark, contrastLevel)
     }
 
     return ColorScheme(

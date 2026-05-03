@@ -17,16 +17,17 @@
 
 package com.mardous.booming.ui.adapters
 
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import com.mardous.booming.R
 import com.mardous.booming.coil.playlistImage
 import com.mardous.booming.data.local.room.PlaylistWithSongs
-import com.mardous.booming.extensions.isValidPosition
 import com.mardous.booming.extensions.media.asNumberOfSongs
-import com.mardous.booming.extensions.media.isFavorites
 import com.mardous.booming.ui.IPlaylistCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
@@ -109,13 +110,6 @@ class PlaylistAdapter(
                 override val popupMenuRes: Int
                     get() = R.menu.menu_item_playlist
 
-                override fun onPreparePopup(menu: Menu) {
-                    super.onPreparePopup(menu)
-                    if (playlist.playlistEntity.isFavorites(itemView.context)) {
-                        menu.removeItem(R.id.action_edit_playlist)
-                    }
-                }
-
                 override fun onMenuItemClick(item: MenuItem): Boolean =
                     callback?.playlistMenuItemClick(playlist, item) ?: false
             })
@@ -125,18 +119,18 @@ class PlaylistAdapter(
         }
 
         private val playlist: PlaylistWithSongs
-            get() = dataSet[layoutPosition]
+            get() = dataSet[bindingAdapterPosition]
 
         override fun onClick(view: View) {
             if (isInQuickSelectMode) {
-                toggleChecked(layoutPosition)
+                toggleChecked(bindingAdapterPosition)
             } else {
                 callback?.playlistClick(playlist)
             }
         }
 
         override fun onLongClick(view: View): Boolean {
-            return isValidPosition && toggleChecked(layoutPosition)
+            return toggleChecked(bindingAdapterPosition)
         }
     }
 }

@@ -27,6 +27,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.TextView
+import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.media3.common.Player
@@ -43,15 +44,16 @@ import com.mardous.booming.extensions.getShapeAppearanceModel
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.asReadableDuration
 import com.mardous.booming.extensions.resources.applyColor
-import com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.ExtraInfoPreferenceDialog
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerAnimator
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.util.ANIMATE_PLAYER_CONTROL
 import com.mardous.booming.util.DISPLAY_ALBUM_TITLE
 import com.mardous.booming.util.DISPLAY_EXTRA_INFO
 import com.mardous.booming.util.ENABLE_SCROLLING_TEXT
-import com.mardous.booming.util.EXTRA_INFO
+import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.PREFER_ALBUM_ARTIST_NAME
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.SQUIGGLY_SEEK_BAR
@@ -85,6 +87,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     protected open val songArtistView: TextView? = null
     protected open val songInfoView: TextView? = null
 
+    protected var isControlAnimationEnabled: Boolean = false
+        private set
+
     protected val isShuffleModeOn: Boolean
         get() = playerViewModel.shuffleModeEnabled
 
@@ -105,6 +110,11 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     override fun onDetach() {
         super.onDetach()
         playerFragment = null
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        isControlAnimationEnabled = Preferences.animateControls
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -195,7 +205,9 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
 
     override fun onLongClick(view: View): Boolean {
         if (view.id == R.id.songInfo) {
-            NowPlayingExtraInfoPreferenceDialog().show(childFragmentManager, "NOW_PLAYING_EXTRA_INFO")
+            ExtraInfoPreferenceDialog
+                .nowPlaying(requireContext())
+                .show(childFragmentManager, "NOW_PLAYING_EXTRA_INFO")
             return true
         }
         return false
@@ -320,8 +332,17 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
         disabledControlColor: Int = lastDisabledPlaybackControlsColor
     ) = if (isEnabled) controlColor else disabledControlColor
 
+    @CallSuper
+    protected open fun onControlAnimationStateChanged(isEnabled: Boolean) {
+        playerAnimator?.isEnabled = isEnabled
+    }
+
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
         when (key) {
+            ANIMATE_PLAYER_CONTROL -> {
+                isControlAnimationEnabled = sharedPreferences.getBoolean(key, true)
+                onControlAnimationStateChanged(isControlAnimationEnabled)
+            }
             SQUIGGLY_SEEK_BAR -> {
                 musicSlider?.setUseSquiggly(sharedPreferences.getBoolean(key, false))
                 musicSlider?.animateSquigglyProgress = playerViewModel.isPlaying
@@ -333,7 +354,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             DISPLAY_ALBUM_TITLE,
             PREFER_ALBUM_ARTIST_NAME -> onSongInfoChanged(playerViewModel.currentSong, playerViewModel.nextSong)
             DISPLAY_EXTRA_INFO,
-            EXTRA_INFO -> playerViewModel.generateExtraInfo()
+            NOW_PLAYING_EXTRA_INFO -> playerViewModel.generateExtraInfo()
         }
     }
 

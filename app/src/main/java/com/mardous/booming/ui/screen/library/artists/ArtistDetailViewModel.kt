@@ -1,18 +1,24 @@
 package com.mardous.booming.ui.screen.library.artists
 
-import androidx.lifecycle.*
-import com.mardous.booming.core.model.task.Result
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lastfm.model.LastFmArtist
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ArtistDetailViewModel(
+    application: Application,
     private val repository: Repository,
     private val artistId: Long,
     private val artistName: String?
-) : ViewModel() {
+) : AndroidViewModel(application) {
 
     private val _artistDetail = MutableLiveData<Artist>()
 
@@ -38,9 +44,9 @@ class ArtistDetailViewModel(
         name: String,
         lang: String?,
         cache: String?
-    ): LiveData<Result<LastFmArtist>> = liveData(Dispatchers.IO) {
-        emit(Result.Loading)
-        val info = repository.artistInfo(name, lang, cache)
-        emit(info)
+    ): LiveData<LastFmArtist?> = liveData(Dispatchers.IO) {
+        if (NetworkFeature.Lastfm.Biographies.isAvailable(getApplication())) {
+            emit(repository.artistInfo(name, lang, cache))
+        }
     }
 }

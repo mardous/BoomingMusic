@@ -177,7 +177,7 @@ class RealSmartRepository(
     }
 
     private fun makeLastAddedCursor(query: String?, contentType: ContentType): Cursor? {
-        val cutoff = Preferences.getLastAddedCutoff().interval
+        val cutoff = Preferences.getLastAddedCutoff(context).interval
         val queryDispatcher = MediaQueryDispatcher()
             .setProjection(RealSongRepository.getBaseProjection())
             .setSelection("${AudioColumns.DATE_ADDED}>?")

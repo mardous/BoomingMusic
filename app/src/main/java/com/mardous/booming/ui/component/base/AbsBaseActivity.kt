@@ -102,12 +102,12 @@ abstract class AbsBaseActivity : AbsThemeActivity() {
                         shouldShowRequestPermissionRationale(this, READ_MEDIA_IMAGES) ||
                         shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE) ||
                         shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
-                        // User has deny from permission dialog
+                        // LastFmUser has deny from permission dialog
                         Snackbar.make(snackBarContainer, getPermissionDeniedMessage(), Snackbar.LENGTH_SHORT)
                             .setAction(R.string.action_grant) { requestPermissions() }
                             .show()
                     } else {
-                        // User has deny permission and checked never show permission dialog so you can redirect to Application settings page
+                        // LastFmUser has deny permission and checked never show permission dialog so you can redirect to Application settings page
                         Snackbar.make(snackBarContainer, getPermissionDeniedMessage(), Snackbar.LENGTH_INDEFINITE)
                             .setAction(R.string.settings_title) {
                                 startActivity(
@@ -127,7 +127,7 @@ abstract class AbsBaseActivity : AbsThemeActivity() {
             for (grantResult in grantResults) {
                 if (grantResult != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(this, BLUETOOTH_CONNECT)) {
-                        // User has deny from permission dialog
+                        // LastFmUser has deny from permission dialog
                         Snackbar.make(snackBarContainer, R.string.permission_bluetooth_denied, Snackbar.LENGTH_SHORT)
                             .setAction(R.string.action_grant) {
                                 requestPermissions(this, arrayOf(BLUETOOTH_CONNECT), BLUETOOTH_PERMISSION_REQUEST)

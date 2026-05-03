@@ -1,0 +1,19 @@
+Booming Music là trình phát nhạc ngoại tuyến hiện đại và mạnh mẽ dành cho Android, được thiết kế để mang lại trải nghiệm mượt mà, khả năng tùy biến cao và giao diện bắt mắt. Với ngôn ngữ thiết kế Material You và nền tảng Media3, ứng dụng là sự kết hợp hoàn hảo giữa sự đơn giản và các tính năng phát nhạc nâng cao.
+
+Thưởng thức các bài hát yêu thích của bạn với lời bài hát đồng bộ từng chữ, hỗ trợ dịch lời bài hát (TTML/LRC), và một giao diện Đang Phát (Now Playing) được thiết kế lại với hình ảnh được nâng cấp, các chuyển cảnh mượt mà hơn và nhiều tùy chọn tùy chỉnh hơn.
+
+Tinh chỉnh việc nghe của bạn với một bộ chỉnh âm tích hợp, ReplayGain, Audio Offload, và phát nhạc không khoảng lặng cho các chuyển cảnh liền mạch. Sắp xếp nhạc của bạn theo cách của bạn với các danh sách phát thông minh, sắp xếp có thể tùy chỉnh và một chế độ xem thư mục phân cấp mới.
+
+Các tính năng chính:
+
+*Tự động tải lời bài hát và trình chỉnh sửa lời bài hát trong ứng dụng
+*Lời bài hát từng chữ và được dịch (TTML, LRC)
+*Công cụ phát nhạc dựa trên Media3 với hỗ trợ audio offload
+*Trình phát nhỏ thích ứng và điều khiển bằng cử chỉ
+*Ảnh bìa và mô tả tùy chỉnh cho danh sách phát
+*Trình chỉnh sửa thẻ với cập nhật thư viện tức thì
+*Danh sách phát tự động thông minh (Đã phát gần đây, Phát nhiều nhất, Lịch sử)
+*Hẹn giờ ngủ, widget và hỗ trợ Android Auto
+*Chủ đề Material You với chế độ tối và đen
+*Hỗ trợ đa ngôn ngữ
+*Nhẹ, mã nguồn mở và không quảng cáo

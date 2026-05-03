@@ -1,18 +1,18 @@
 [versions]
-agp = "8.13.2"
-ksp = "2.3.4"
-kotlin = "2.3.0"
+agp = "9.2.0"
+ksp = "2.3.6"
+kotlin = "2.3.21"
 
 kotlinDatetime = "0.7.1"
 kotlinCoroutines = "1.10.2"
-material = "1.14.0-alpha09"
-core = "1.17.0"
+material = "1.14.0-rc01"
+core = "1.18.0"
 coreSplashscreen = "1.2.0"
 concurrent = "1.3.0"
 appcompat = "1.7.1"
 fragment = "1.8.9"
-activityCompose = "1.12.3"
-media3 = "1.9.1"
+activityCompose = "1.13.0"
+media3 = "1.10.0"
 mediarouter = "1.8.1"
 palette = "1.0.0"
 preference = "1.2.1"
@@ -23,27 +23,27 @@ cardview = "1.0.0"
 viewpager = "1.1.0"
 lifecycle = "2.10.0"
 room = "2.8.4"
-navigation = "2.9.7"
-compose = "2026.01.01"
-composeM3 = "1.5.0-alpha13"
+navigation = "2.9.8"
+compose = "2026.04.01"
+composeM3 = "1.5.0-alpha18"
 glance = "1.1.1"
 
-koin = "4.1.1"
-coil = "3.3.0"
-ktor = "3.4.0"
+koin = "4.2.1"
+coil = "3.4.0"
+ktor = "3.4.3"
 
 markwon = "4.6.2"
-m3color = "2025.4"
+m3color = "2026.1"
 coilTransformations = "3.0.0"
-balloon = "1.7.3"
-composeMarkdown = "0.5.7"
-aboutlibraries = "13.2.1"
+balloon = "1.7.6"
+composeMarkdown = "0.6.0"
+aboutlibraries = "14.0.1"
 fadingedgelayout = "1.0.0"
 advrecyclerview = "1.0.0"
 fastscroll = "1.3.0"
 customactivityoncrash = "2.4.0"
 keyboardvisibilityevent = "3.0.0-RC3"
-taglib = "1.0.5"
+taglib = "1.0.6"
 jaudiotagger = "2.3.15"
 versioncompare = "1.5.0"
 commons-text = "1.15.0"
@@ -77,6 +77,7 @@ lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel
 
 media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
 media3-exoplayer-midi = { module = "androidx.media3:media3-exoplayer-midi", version.ref = "media3" }
+media3-exoplayer-ffmpeg = { module = "org.jellyfin.media3:media3-ffmpeg-decoder", version = "1.9.0+1" }
 media3-session = { module = "androidx.media3:media3-session", version.ref = "media3" }
 media3-ui-compose = { module = "androidx.media3:media3-ui-compose", version.ref = "media3" }
 
@@ -141,7 +142,7 @@ juniversalchardet = { module = "com.github.albfernandez:juniversalchardet", vers
 [bundles]
 kotlinx = ["kotlinx-datetime", "kotlinx-coroutines-android", "kotlinx-coroutines-guava"]
 lifecycle = ["lifecycle-common", "lifecycle-runtime", "lifecycle-livedata", "lifecycle-viewmodel", "lifecycle-viewmodel-compose"]
-media3 = ["media3-session", "media3-exoplayer", "media3-exoplayer-midi", "media3-ui-compose"]
+media3 = ["media3-session", "media3-exoplayer", "media3-exoplayer-midi", "media3-exoplayer-ffmpeg", "media3-ui-compose"]
 navigation = ["navigation-common", "navigation-runtime", "navigation-fragment", "navigation-ui"]
 glance = ["glance-appwidget", "glance-appwidget-preview", "glance-material3"]
 koin = ["koin-core", "koin-android", "koin-compose"]
@@ -152,7 +153,6 @@ markwon = ["markwon-core", "markwon-html", "markwon-linkify"]
 [plugins]
 android = { id = "com.android.application", version.ref = "agp" }
 android-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigation" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

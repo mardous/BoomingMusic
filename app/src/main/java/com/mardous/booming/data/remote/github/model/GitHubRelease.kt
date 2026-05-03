@@ -21,6 +21,7 @@ import android.app.DownloadManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Environment
 import android.os.Parcelable
 import androidx.core.content.edit
@@ -83,7 +84,7 @@ class GitHubRelease(
 
     fun isNewer(context: Context): Boolean {
         try {
-            val packageInfo = context.packageManager.packageInfo()
+            val packageInfo = context.packageManager.packageInfo(context)
             val installedVersionName = packageInfo?.versionName ?: return true
             var updateVersionName = this.tag
             if (updateVersionName.startsWith("v", ignoreCase = true)) {
@@ -95,13 +96,13 @@ class GitHubRelease(
         return true // assume true
     }
 
-    fun getDownloadSize(): String? {
-        val assetSize = downloads.firstOrNull { it.isApk }
-        return assetSize?.size?.asReadableFileSize()
+    fun getDownloadSize(context: Context): String? {
+        val apkAsset = getBestApkAsset()
+        return apkAsset?.size?.asReadableFileSize()
     }
 
     fun getDownloadRequest(context: Context): DownloadManager.Request? {
-        val apkAsset = downloads.firstOrNull { it.isApk }
+        val apkAsset = getBestApkAsset()
         if (apkAsset != null) {
             return DownloadManager.Request(apkAsset.downloadUrl.toUri())
                 .setTitle(apkAsset.name)
@@ -111,6 +112,33 @@ class GitHubRelease(
                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
         }
         return null
+    }
+
+    @Suppress("DEPRECATION")
+    private fun getDevicePrimaryAbi(): String {
+        // Build.SUPPORTED_ABIS returns the list in priority order
+        val supportedAbis = Build.SUPPORTED_ABIS
+        if (supportedAbis.isNotEmpty()) {
+            return supportedAbis[0]
+        }
+        // Fallback for older devices
+        return Build.CPU_ABI
+    }
+
+    private fun getBestApkAsset(): ReleaseAsset? {
+        val apkAssets = downloads.filter { it.isApk }
+        if (apkAssets.isEmpty()) return null
+
+        val deviceAbis = Build.SUPPORTED_ABIS
+        for (abi in deviceAbis) {
+            val match = apkAssets.firstOrNull { it.abi == abi }
+            if (match != null) return match
+        }
+
+        val universalApk = apkAssets.firstOrNull { it.abi == null }
+        if (universalApk != null) return universalApk
+
+        return apkAssets.firstOrNull()
     }
 
     @Parcelize
@@ -127,6 +155,17 @@ class GitHubRelease(
 
         val isApk: Boolean
             get() = contentType == APK_MIME_TYPE && name.contains(BuildConfig.FLAVOR)
+
+        val abi: String?
+            get() {
+                return when {
+                    name.contains("arm64-v8a") -> "arm64-v8a"
+                    name.contains("armeabi-v7a") -> "armeabi-v7a"
+                    name.contains("x86_64") -> "x86_64"
+                    name.contains("x86") -> "x86"
+                    else -> null // Universal APK
+                }
+            }
 
         companion object {
             const val APK_MIME_TYPE = "application/vnd.android.package-archive"

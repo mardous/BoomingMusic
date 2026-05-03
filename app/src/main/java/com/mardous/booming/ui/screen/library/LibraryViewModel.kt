@@ -27,23 +27,44 @@ import android.os.Environment
 import android.provider.MediaStore
 import androidx.core.animation.doOnEnd
 import androidx.core.net.toUri
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.model.LibraryMargin
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
 import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.repository.Repository
-import com.mardous.booming.data.local.room.*
+import com.mardous.booming.data.local.room.InclExclDao
+import com.mardous.booming.data.local.room.InclExclEntity
+import com.mardous.booming.data.local.room.PlaylistEntity
+import com.mardous.booming.data.local.room.PlaylistWithSongs
+import com.mardous.booming.data.local.room.SongEntity
 import com.mardous.booming.data.mapper.toSongEntity
 import com.mardous.booming.data.mapper.toSongsEntity
-import com.mardous.booming.data.model.*
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.ContentType
+import com.mardous.booming.data.model.Folder
+import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.model.Playlist
+import com.mardous.booming.data.model.ReleaseYear
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.network.LoginParams
+import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.media.indexOfSong
+import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistUiState
 import com.mardous.booming.ui.screen.library.home.SuggestedResult
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.StorageUtil
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.io.File
@@ -316,8 +337,56 @@ class LibraryViewModel(
         emit(repository.notRecentlyPlayedSongs())
     }
 
-    fun renamePlaylist(playListId: Long, name: String) = viewModelScope.launch(IO) {
-        repository.renamePlaylist(playListId, name)
+    private val _addToPlaylistUiState = MutableStateFlow<AddToPlaylistUiState?>(null)
+    val addToPlaylistUiState = _addToPlaylistUiState.asStateFlow()
+
+    fun prepareToAddToPlaylist(searchQuery: String? = null) = viewModelScope.launch(IO) {
+        _addToPlaylistUiState.update { it ?: AddToPlaylistUiState.Loading }
+
+        val playlists = if (searchQuery.isNullOrBlank()) {
+            repository.playlistsWithSongs()
+        } else {
+            repository.searchPlaylists(searchQuery)
+        }
+
+        _addToPlaylistUiState.value = if (playlists.isEmpty()) {
+            AddToPlaylistUiState.Empty(searchQuery)
+        } else {
+            AddToPlaylistUiState.Ready(playlists)
+        }
+    }
+
+    fun addToPlaylists(
+        playlistsIds: List<Long>,
+        songs: List<Song>
+    ) = viewModelScope.launch(IO) {
+        val state = addToPlaylistUiState.value ?: return@launch
+        if (state is AddToPlaylistUiState.Ready && state.playlists.isNotEmpty()) {
+            _addToPlaylistUiState.value = state.copy(isLoading = true)
+
+            var success = true
+            val playlists = state.playlists.filter { playlistsIds.contains(it.playlistEntity.playListId) }
+            for (playlist in playlists) {
+                val checkedSongs = songs.filterNot {
+                    repository.checkSongExistInPlaylist(playlist.playlistEntity, it)
+                }
+                val result = runCatching {
+                    insertSongs(
+                        songs = checkedSongs.map {
+                            it.toSongEntity(playListId = playlist.playlistEntity.playListId)
+                        }
+                    )
+                }
+                success = success && result.isSuccess
+            }
+
+            _addToPlaylistUiState.value = AddToPlaylistUiState.Completed(success)
+            forceReload(ReloadType.Playlists)
+        }
+    }
+
+    fun finishAddingToPlaylists() {
+        _addToPlaylistUiState.value = null
     }
 
     fun updatePlaylist(
@@ -357,47 +426,6 @@ class LibraryViewModel(
         forceReload(ReloadType.Playlists)
     }
 
-    fun addToPlaylist(playlistName: String, songs: List<Song>): LiveData<AddToPlaylistResult> =
-        liveData(IO) {
-            emit(AddToPlaylistResult(playlistName, isWorking = true))
-
-            val playlists = checkPlaylistExists(playlistName)
-            if (playlists.isEmpty()) {
-                val playlistId: Long = createPlaylist(PlaylistEntity(playlistName = playlistName))
-                insertSongs(songs.map { it.toSongEntity(playlistId) })
-                val playlistCreated = (playlistId != -1L)
-                val isFavoritePlaylist = repository.checkFavoritePlaylist()?.playListId == playlistId
-                emit(
-                    AddToPlaylistResult(
-                        playlistName,
-                        playlistCreated = playlistCreated,
-                        isFavoritePlaylist = isFavoritePlaylist,
-                        insertedSongs = songs.size
-                    )
-                )
-            } else {
-                val playlist = playlists.firstOrNull()
-                if (playlist != null) {
-                    val checkedSongs = songs.filterNot { checkSongExistInPlaylist(playlist, it) }
-                    val favoritePlaylist = repository.checkFavoritePlaylist()
-                    val isFavoritePlaylist = playlist.playListId == favoritePlaylist?.playListId
-                    insertSongs(checkedSongs.map {
-                        it.toSongEntity(playListId = playlist.playListId)
-                    })
-                    emit(
-                        AddToPlaylistResult(
-                            playlistName,
-                            isFavoritePlaylist = isFavoritePlaylist,
-                            insertedSongs = checkedSongs.size
-                        )
-                    )
-                } else {
-                    emit(AddToPlaylistResult(playlistName))
-                }
-            }
-            forceReload(ReloadType.Playlists)
-        }
-
     fun createCustomPlaylist(
         playlistName: String,
         customCoverUri: String? = null,
@@ -435,10 +463,6 @@ class LibraryViewModel(
         forceReload(ReloadType.Playlists)
     }
 
-    fun playlistsAsync(): LiveData<List<PlaylistWithSongs>> = liveData(IO) {
-        emit(repository.playlistsWithSongs())
-    }
-
     fun favoritePlaylist(): LiveData<PlaylistEntity> = liveData(IO) {
         emit(repository.favoritePlaylist())
     }
@@ -447,12 +471,7 @@ class LibraryViewModel(
         emit(repository.isSongFavorite(song.id))
     }
 
-    private suspend fun checkSongExistInPlaylist(playlistEntity: PlaylistEntity, song: Song) =
-        repository.checkSongExistInPlaylist(playlistEntity, song)
-
     suspend fun insertSongs(songs: List<SongEntity>) = repository.insertSongsInPlaylist(songs)
-    private suspend fun removeSongFromPlaylist(songEntity: SongEntity) =
-        repository.removeSongFromPlaylist(songEntity)
 
     private suspend fun checkPlaylistExists(playlistName: String): List<PlaylistEntity> =
         repository.checkPlaylistExists(playlistName)
@@ -504,6 +523,16 @@ class LibraryViewModel(
             repository.initializeBlacklist()
             Preferences.initializedBlacklist = true
         }
+    }
+
+    fun getLoginState(service: ScrobblingService) = repository.getLoginState(service)
+
+    fun logInToService(service: ScrobblingService, params: LoginParams) = viewModelScope.launch(IO) {
+        repository.loginToService(service, params)
+    }
+
+    fun logoutFromService(service: ScrobblingService) = viewModelScope.launch(IO) {
+        repository.logoutFromService(service)
     }
 
     @Suppress("DEPRECATION")

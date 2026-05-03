@@ -23,16 +23,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -156,81 +155,89 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                 BottomSheetDefaults.DragHandle(
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                        .verticalScroll(rememberScrollState()),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                LazyColumn(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp)
                 ) {
-                    // Header containing basic song's info
-                    SmallHeader(
-                        title = uiState.info.title.orEmpty(),
-                        subtitle = uiState.info.artist,
-                        additionalInfo = uiState.info.audioHeaderInfo?.let {
-                            if (it.lossless) {
-                                "${it.format} • Loss-Less"
-                            } else {
-                                it.format.orEmpty()
+                    item {
+                        // Header containing basic song's info
+                        SmallHeader(
+                            title = uiState.info.title.orEmpty(),
+                            subtitle = uiState.info.artist,
+                            additionalInfo = uiState.info.audioHeaderInfo?.let {
+                                if (it.lossless) {
+                                    "${it.format} • ${stringResource(R.string.label_loss_less)}"
+                                } else {
+                                    it.format.orEmpty()
+                                }
+                            },
+                            imageModel = song,
+                            showIndeterminateIndicator = uiState.isLoading,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    item {
+                        // Related actions
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            FilledTonalButton(
+                                onClick = onLyricsEditorClick,
+                                enabled = uiState.isLoading.not(),
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_lyrics_outline_24dp),
+                                    contentDescription = null,
+                                    modifier = Modifier.size(16.dp)
+                                )
+                                Spacer(Modifier.width(8.dp))
+                                Text(stringResource(R.string.action_lyrics_editor))
                             }
-                        },
-                        imageModel = song,
-                        showIndeterminateIndicator = uiState.isLoading,
-                        modifier = Modifier.fillMaxWidth()
-                    )
 
-                    // Related actions
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        FilledTonalButton(
-                            onClick = onLyricsEditorClick,
-                            enabled = uiState.isLoading.not(),
-                            modifier = Modifier.weight(1f)
-                        ) {
-                            Icon(
-                                painter = painterResource(R.drawable.ic_lyrics_outline_24dp),
-                                contentDescription = null,
-                                modifier = Modifier.size(16.dp)
-                            )
-                            Spacer(Modifier.width(8.dp))
-                            Text(stringResource(R.string.action_lyrics_editor))
-                        }
-
-                        Button(
-                            onClick = onTagEditorClick,
-                            enabled = uiState.isLoading.not(),
-                            modifier = Modifier.weight(1f)
-                        ) {
-                            Icon(
-                                painter = painterResource(R.drawable.ic_edit_24dp),
-                                contentDescription = null,
-                                modifier = Modifier.size(16.dp)
-                            )
-                            Spacer(Modifier.width(8.dp))
-                            Text(stringResource(R.string.action_tag_editor))
+                            Button(
+                                onClick = onTagEditorClick,
+                                enabled = uiState.isLoading.not(),
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_edit_24dp),
+                                    contentDescription = null,
+                                    modifier = Modifier.size(16.dp)
+                                )
+                                Spacer(Modifier.width(8.dp))
+                                Text(stringResource(R.string.action_tag_editor))
+                            }
                         }
                     }
 
                     if (!uiState.isLoading) {
                         if (uiState.isSuccess) {
-                            // Info sections
+                            // Content sections
                             if (!uiState.info.isMissingMetadata) {
-                                MetadataInfoSection(uiState.info, Modifier.fillMaxWidth())
+                                item {
+                                    MetadataInfoSection(uiState.info, Modifier.fillMaxWidth())
+                                }
                             }
-                            PlayInfoSection(uiState.info, Modifier.fillMaxWidth())
-                            FileInfoSection(uiState.info, Modifier.fillMaxWidth())
+                            item {
+                                PlayInfoSection(uiState.info, Modifier.fillMaxWidth())
+                            }
+                            item {
+                                FileInfoSection(uiState.info, Modifier.fillMaxWidth())
+                            }
                         } else {
-                            ErrorView(
-                                iconRes = R.drawable.ic_error_24dp,
-                                text = stringResource(R.string.could_not_load_the_song_information),
-                                modifier = Modifier.fillMaxWidth()
-                            )
+                            item {
+                                ErrorView(
+                                    iconRes = R.drawable.ic_error_24dp,
+                                    text = stringResource(R.string.could_not_load_the_song_information),
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                            }
                         }
                     }
-
-                    Spacer(Modifier.height(16.dp))
                 }
             }
         }
@@ -332,7 +339,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                 InfoView(
                     title = stringResource(R.string.label_bit_rate),
                     content = if (headerInfo.variableBitrate) {
-                        "${headerInfo.bitrate} • Variable"
+                        "${headerInfo.bitrate} • ${stringResource(R.string.label_variable_bitrate)}"
                     } else {
                         headerInfo.bitrate
                     }

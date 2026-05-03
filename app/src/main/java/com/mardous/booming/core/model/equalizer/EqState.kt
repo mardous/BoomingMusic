@@ -1,24 +1,31 @@
 package com.mardous.booming.core.model.equalizer
 
 import androidx.compose.runtime.Immutable
+import com.mardous.booming.R
 
 @Immutable
 data class EqState(
     val supported: Boolean,
     val enabled: Boolean,
-    val disabledByAudioOffload: Boolean,
+    val disableReason: DisableReason?,
     val preferredBandCount: Int,
     val engineMode: EqEngineMode
 ) {
-    val isUsable = supported && enabled && !disabledByAudioOffload
+    val isDisabledByReason = disableReason != null
+    val isUsable = supported && enabled && !isDisabledByReason
+
+    enum class DisableReason(val titleRes: Int) {
+        AudioOffload(R.string.audio_offload_is_enabled),
+        BitPerfect(R.string.bit_perfect_is_active)
+    }
 
     companion object {
         val Unspecified = EqState(
             supported = false,
             enabled = false,
-            disabledByAudioOffload = false,
+            disableReason = null,
             preferredBandCount = 0,
-            engineMode = EqEngineMode.DynamicsProcessing
+            engineMode = EqEngineMode.Auto
         )
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/app_widget_card_desc"
+    android:minWidth="220dp"
+    android:minHeight="220dp"
+    android:maxResizeWidth="320dp"
+    android:maxResizeHeight="320dp"
+    android:updatePeriodMillis="0"
+    android:targetCellWidth="3"
+    android:targetCellHeight="3"
+    android:previewLayout="@layout/glance_card_placeholder"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen" />

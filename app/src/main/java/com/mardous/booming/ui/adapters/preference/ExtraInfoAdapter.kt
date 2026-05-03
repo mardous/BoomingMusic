@@ -17,19 +17,19 @@
 
 package com.mardous.booming.ui.adapters.preference
 
-import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.core.model.player.MetadataField
 import com.mardous.booming.ui.adapters.DraggableItemAdapter
 
 /**
  * @author Christians M. A. (mardous)
  */
-class ExtraInfoAdapter(extraInfo: MutableList<NowPlayingInfo>) : DraggableItemAdapter<NowPlayingInfo>(extraInfo) {
+class ExtraInfoAdapter(extraInfo: MutableList<MetadataField>) : DraggableItemAdapter<MetadataField>(extraInfo) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
         val extraInfo = items[position]
 
-        holder.title.text = holder.title.resources.getString(extraInfo.info.displayNameRes)
+        holder.title.text = holder.title.resources.getString(extraInfo.content.displayNameRes)
         holder.checkBox.isChecked = extraInfo.isEnabled
 
         holder.itemView.setOnClickListener {

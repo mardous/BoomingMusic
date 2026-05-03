@@ -39,6 +39,13 @@
 
     <Preference
         app:layout="@layout/list_item_view"
+        app:title="@string/network_title"
+        app:summary="@string/network_summary"
+        app:icon="@drawable/ic_cloud_24dp"
+        app:key="network"/>
+
+    <Preference
+        app:layout="@layout/list_item_view"
         app:title="@string/advanced_title"
         app:summary="@string/advanced_summary"
         app:icon="@drawable/ic_settings_applications_24dp"

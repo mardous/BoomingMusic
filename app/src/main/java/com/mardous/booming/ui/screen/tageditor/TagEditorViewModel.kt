@@ -4,17 +4,18 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.kyant.taglib.Picture
 import com.mardous.booming.coil.CustomArtistImageManager
-import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.MetadataWriter
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Artist
-import com.mardous.booming.data.remote.deezer.model.DeezerAlbum
-import com.mardous.booming.data.remote.deezer.model.DeezerTrack
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -129,15 +130,13 @@ class TagEditorViewModel(
         }
     }
 
-    fun getAlbumInfo(artistName: String, albumName: String): LiveData<Result<DeezerAlbum>> =
-        liveData(Dispatchers.IO) {
-            emit(repository.deezerAlbum(artistName, albumName))
-        }
+    fun getAlbumInfo(artistName: String, albumName: String) = liveData(Dispatchers.IO) {
+        emit(repository.deezerAlbum(artistName, albumName))
+    }
 
-    fun getTrackInfo(artistName: String, title: String): LiveData<Result<DeezerTrack>> =
-        liveData(Dispatchers.IO) {
-            emit(repository.deezerTrack(artistName, title))
-        }
+    fun getTrackInfo(artistName: String, title: String) = liveData(Dispatchers.IO) {
+        emit(repository.deezerTrack(artistName, title))
+    }
 
     fun requestArtist(): LiveData<Artist> = liveData(Dispatchers.IO) {
         val artist = fetchArtist()

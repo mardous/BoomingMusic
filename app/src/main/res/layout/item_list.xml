@@ -5,20 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="2dp"
-    android:layout_marginEnd="2dp"
-    android:layout_marginBottom="2dp"
-    android:background="?rectSelector"
+    android:background="@drawable/rect_selector_strong"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="8dp"
     android:clickable="true"
     android:focusable="true"
-    android:minHeight="?attr/listPreferredItemHeight"
     android:orientation="horizontal">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image"
         android:layout_width="@dimen/list_item_image_size"
         android:layout_height="@dimen/list_item_image_size"
-        android:layout_marginStart="16dp"
         android:layout_gravity="center_vertical"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
@@ -41,8 +40,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textAppearance="?textAppearanceSubtitle1"
-            android:textColor="?android:textColorPrimary"
+            android:textAppearance="?textAppearanceTitleMedium"
             tools:text="@tools:sample/lorem"/>
 
         <com.google.android.material.textview.MaterialTextView
@@ -51,11 +49,22 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textAppearance="?textAppearanceBody2"
-            android:textColor="?android:textColorSecondary"
+            android:textAppearance="?textAppearanceBodyMedium"
+            android:textColor="?colorOnSurfaceVariant"
             tools:text="@tools:sample/lorem"/>
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/drag_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_gravity="center_vertical|start"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_drag_handle_24dp"
+        app:tint="?attr/colorOnSurface"
+        tools:ignore="ContentDescription"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"

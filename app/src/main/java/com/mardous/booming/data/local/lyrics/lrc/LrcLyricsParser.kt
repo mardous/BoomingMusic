@@ -34,11 +34,12 @@ class LrcLyricsParser : LyricsParser {
             }
     }
 
-    override fun parse(reader: Reader, trackLength: Long): Lyrics? {
+    override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): Lyrics? {
         val attributes = hashMapOf<String, String>()
         val rawLines = mutableListOf<LrcNode>()
         try {
             reader.buffered().use { br ->
+                var rawIndex = 0
                 while (true) {
                     val line = br.readLine() ?: break
                     if (line.isBlank()) continue
@@ -60,13 +61,17 @@ class LrcLyricsParser : LyricsParser {
                             val bgText = lineResult.groupValues[3]
                                 .takeIf { it.isNotEmpty() }
 
-                            val timeResult = LINE_TIME_PATTERN.find(base)
-                            if (timeResult != null) {
-                                val timeMs = parseTime(timeResult)
+                            var foundAny = false
+                            val timeMatches = LINE_TIME_PATTERN.findAll(base)
+                            for (time in timeMatches) {
+                                val timeMs = parseTime(time)
                                 if (timeMs > LrcNode.INVALID_DURATION) {
-                                    rawLines.add(LrcNode(timeMs, text, bgText, line))
+                                    rawLines.add(LrcNode(rawIndex++, timeMs, text, bgText, line))
+                                    foundAny = true
                                 }
-                            } else {
+                            }
+
+                            if (!foundAny) {
                                 val backgroundMatcher = BACKGROUND_ONLY_PATTERN.find(line)
                                 if (rawLines.isNotEmpty() && backgroundMatcher != null) {
                                     val bgText = backgroundMatcher.groupValues.getOrNull(1)?.trim()
@@ -86,13 +91,15 @@ class LrcLyricsParser : LyricsParser {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        return parse(attributes, rawLines, trackLength)
+        rawLines.sortBy { it.start }
+        return parse(attributes, rawLines, trackLength, ignoreBlankLines)
     }
 
     private fun parse(
         attributes: Map<String, String>,
         rawLines: List<LrcNode>,
-        trackLength: Long
+        trackLength: Long,
+        ignoreBlankLines: Boolean
     ): Lyrics? {
         val lines = mutableMapOf<Long, Lyrics.Line?>()
         val length = attributes["length"]
@@ -135,28 +142,52 @@ class LrcLyricsParser : LyricsParser {
                 entry.end = end ?: length
 
                 if (entry.text.isNullOrBlank()) {
-                    if (!lines.containsKey(entry.start)) {
-                        // we still allow empty lines
+                    if (!ignoreBlankLines && !lines.containsKey(entry.start)) {
                         lines[entry.start] = entry.toLine()
                     }
                 } else {
+                    // If a line already exists at the same timestamp, this entry could be a translation.
+                    // We must check that the new entry is not exactly the same as the previous one
+                    // and that the previous line does not already contain a translation; for now,
+                    // we only handle one translation per line.
                     val existing = lines[entry.start]
                     if (existing != null && !existing.content.isEmpty &&
-                        existing.content.content != entry.text && existing.translation == null
+                        existing.content.rawContent != entry.rawLine && existing.translation == null
                     ) {
+                        // If the new entry is word-synced, we process it.
                         addChildren(entry, existing.actor)
 
-                        var newDuration = existing.durationMillis
-                        val newEnd = if (existing.end == 0L) entry.end else existing.end
-                        if (newEnd != existing.end) {
-                            newDuration = (newEnd - existing.startAt)
+                        // Once words have been processed, we can check if the content is
+                        // exactly the same; if so, we discard the new entry since it does not
+                        // add any real value as a translation.
+                        val translationContent = entry.getTextContent()
+                        if (translationContent.content != existing.content.content) {
+                            var newDuration = existing.durationMillis
+                            val newEnd = if (existing.end == 0L) entry.end else existing.end
+                            if (newEnd != existing.end) {
+                                newDuration = (newEnd - existing.startAt)
+                            }
+                            if (translationContent.isWordSynced && !existing.isWordSynced) {
+                                // It appears we are dealing with an edge case in which the second
+                                // line actually represents the main content and the first line
+                                // is the translation.
+                                lines[entry.start] = existing.copy(
+                                    end = newEnd,
+                                    durationMillis = newDuration,
+                                    content = translationContent,
+                                    translation = existing.content,
+                                    actor = entry.actor ?: existing.actor
+                                )
+                            } else {
+                                lines[entry.start] = existing.copy(
+                                    end = newEnd,
+                                    durationMillis = newDuration,
+                                    translation = translationContent
+                                )
+                            }
                         }
-                        lines[entry.start] = existing.copy(
-                            end = newEnd,
-                            durationMillis = newDuration,
-                            translation = entry.getTextContent()
-                        )
                     } else {
+                        // It's a new line, we just add it to the list.
                         addChildren(entry, null)
                         lines[entry.start] = entry.toLine()
                     }
@@ -186,10 +217,6 @@ class LrcLyricsParser : LyricsParser {
             }
 
             return Lyrics(
-                title = attributes["ti"],
-                artist = attributes["ar"],
-                album = attributes["al"],
-                durationMillis = length,
                 lines = linesWithOffset,
                 offset = attributes["offset"]?.toLongOrNull() ?: 0
             )

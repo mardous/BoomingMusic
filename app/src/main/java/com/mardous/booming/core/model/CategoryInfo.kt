@@ -37,7 +37,7 @@ class CategoryInfo(val category: Category, var visible: Boolean) : Parcelable {
         @StringRes val titleRes: Int,
         @DrawableRes val iconRes: Int
     ) {
-        Home(R.id.nav_home, R.string.for_you_label, R.drawable.icon_home),
+        Home(R.id.nav_home, R.string.home_label, R.drawable.icon_home),
         Songs(R.id.nav_songs, R.string.songs_label, R.drawable.icon_music),
         Albums(R.id.nav_albums, R.string.albums_label, R.drawable.icon_album),
         Artists(R.id.nav_artists, R.string.artists_label, R.drawable.icon_artist),

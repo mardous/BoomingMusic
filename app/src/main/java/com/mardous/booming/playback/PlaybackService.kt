@@ -1,5 +1,8 @@
 package com.mardous.booming.playback
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -23,7 +26,7 @@ import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
-import androidx.core.os.bundleOf
+import androidx.core.os.postDelayed
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.media3.common.AudioAttributes
@@ -38,8 +41,6 @@ import androidx.media3.common.TrackSelectionParameters.AudioOffloadPreferences
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.exoplayer.audio.AudioSink
-import androidx.media3.exoplayer.audio.DefaultAudioSink
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.source.ShuffleOrder.UnshuffledShuffleOrder
 import androidx.media3.extractor.DefaultExtractorsFactory
@@ -66,13 +67,20 @@ import com.google.common.util.concurrent.SettableFuture
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoilBitmapLoader
 import com.mardous.booming.core.appwidgets.BoomingGlanceWidget
+import com.mardous.booming.core.appwidgets.CardWidget
+import com.mardous.booming.core.appwidgets.FullWidget
+import com.mardous.booming.core.appwidgets.WidgetTheme
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import com.mardous.booming.core.audio.AudioOutputObserver
+import com.mardous.booming.core.model.player.MetadataField
+import com.mardous.booming.core.palette.PaletteProcessor
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.network.NetworkFeature
+import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
@@ -81,6 +89,8 @@ import com.mardous.booming.playback.library.LibraryProvider
 import com.mardous.booming.playback.library.MediaIDs
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
+import com.mardous.booming.playback.renderer.AlacWorkaroundCodecSelector
+import com.mardous.booming.playback.renderer.BoomingMusicRenderersFactory
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.util.CLEAR_QUEUE_ON_COMPLETION
 import com.mardous.booming.util.ENABLE_HISTORY
@@ -96,6 +106,10 @@ import com.mardous.booming.util.REWIND_WITH_BACK
 import com.mardous.booming.util.SEEK_INTERVAL
 import com.mardous.booming.util.STOP_WHEN_CLOSED_FROM_RECENTS
 import com.mardous.booming.util.SongPlayCountHelper
+import com.mardous.booming.util.WIDGET_DYNAMIC_COLORS
+import com.mardous.booming.util.WIDGET_IMAGE_CORNER_RADIUS
+import com.mardous.booming.util.WIDGET_SMALL_LAYOUT_STYLE
+import com.mardous.booming.util.WIDGET_THIRD_LINE_CONTENT
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
@@ -118,6 +132,8 @@ class PlaybackService :
 
     private val serviceScope = CoroutineScope(Job() + Main)
     private val uiHandler = Handler(Looper.getMainLooper())
+
+    private val glanceManager by lazy { GlanceAppWidgetManager(applicationContext) }
 
     private val preferences: SharedPreferences by inject()
     private val sleepTimer: SleepTimer by inject()
@@ -144,11 +160,15 @@ class PlaybackService :
     private lateinit var player: AdvancedForwardingPlayer
     private var mediaSession: MediaLibrarySession? = null
 
+    private var eqStateHandler: Handler? = Handler(Looper.getMainLooper())
+
     private var pausedByZeroVolume = false
     private var hasSetUnshuffledOrder = false
     private var stopIndex = -1
 
+    private var lastPlaybackState: PlaybackState? = null
     private var widgetUpdateJob: Job? = null
+    private var fadeOutAnimator: ValueAnimator? = null
 
     val isInTransientFocusLoss: Boolean
         get() = player.playbackSuppressionReason == Player.PLAYBACK_SUPPRESSION_REASON_TRANSIENT_AUDIO_FOCUS_LOSS
@@ -220,20 +240,11 @@ class PlaybackService :
                         .build(), handleAudioFocus
                 )
                 .setRenderersFactory(
-                    object : DefaultRenderersFactory(this) {
-                        override fun buildAudioSink(
-                            context: Context,
-                            enableFloatOutput: Boolean,
-                            enableAudioOutputPlaybackParams: Boolean
-                        ): AudioSink {
-                            return DefaultAudioSink.Builder(this@PlaybackService)
-                                .setAudioProcessors(arrayOf(balanceProcessor, replayGainProcessor))
-                                .setEnableFloatOutput(enableFloatOutput)
-                                .setEnableAudioOutputPlaybackParameters(enableAudioOutputPlaybackParams)
-                                .build()
-                        }
-                    }
-                    .setEnableAudioFloatOutput(equalizerManager.audioFloatOutput.value)
+                    BoomingMusicRenderersFactory(this, balanceProcessor, replayGainProcessor)
+                        .setEnableAudioFloatOutput(equalizerManager.audioFloatOutput.value)
+                        .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER)
+                        .setMediaCodecSelector(AlacWorkaroundCodecSelector())
+                        .setEnableDecoderFallback(true)
                 )
                 .setMediaSourceFactory(
                     DefaultMediaSourceFactory(
@@ -262,9 +273,7 @@ class PlaybackService :
         mediaSession = with(MediaLibrarySession.Builder(this, player, this)) {
             setId(packageName)
             setSessionActivity(createSessionActivityIntent())
-            setBitmapLoader(
-                CacheBitmapLoader(CoilBitmapLoader(serviceScope, this@PlaybackService, preferences))
-            )
+            setBitmapLoader(CacheBitmapLoader(CoilBitmapLoader(this@PlaybackService)))
             build()
         }
 
@@ -290,12 +299,16 @@ class PlaybackService :
             }
         }
 
-        sleepTimer.addFinishListener { allowPendingQuit ->
+        sleepTimer.addFinishListener { sleepParams ->
             if (player.playWhenReady && player.isPlaying) {
-                if (allowPendingQuit) {
+                if (sleepParams.pendingQuit) {
                     player.exoPlayer.pauseAtEndOfMediaItems = true
                 } else {
-                    player.pause()
+                    if (sleepParams.fadeOut) {
+                        launchMusicFadeOut(sleepParams.fadeDuration)
+                    } else {
+                        player.pause()
+                    }
                 }
             }
         }
@@ -324,6 +337,7 @@ class PlaybackService :
             unregisterReceiver(headsetReceiver)
             headsetReceiverRegistered = false
         }
+        eqStateHandler?.removeCallbacksAndMessages(null)
         serviceScope.cancel()
         preferences.unregisterOnSharedPreferenceChangeListener(this)
         audioOutputObserver.stopObserver()
@@ -344,6 +358,10 @@ class PlaybackService :
             }
             ACTION_TOGGLE_SHUFFLE -> {
                 toggleShuffle()
+                return START_STICKY
+            }
+            ACTION_CYCLE_REPEAT -> {
+                cycleRepeat()
                 return START_STICKY
             }
         }
@@ -526,9 +544,14 @@ class PlaybackService :
                         )
                     }
             } else {
-                runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
-                    .getOrDefault(emptyList())
-                    .let { MediaItemsWithStartPosition(it, startIndex, startPositionMs) }
+                runCatching {
+                    libraryProvider.getMediaItemsForPlayback(
+                        mediaItems = mediaItems,
+                        tryToResolveComplexPaths = true
+                    )
+                }.getOrDefault(emptyList()).let {
+                    MediaItemsWithStartPosition(it, startIndex, startPositionMs)
+                }
             }
         }.also { future ->
             future.addListener({
@@ -609,7 +632,9 @@ class PlaybackService :
                     stopIndex = newStopIndex
                 }
                 Futures.immediateFuture(
-                    SessionResult(SessionResult.RESULT_SUCCESS, bundleOf("canceled" to canceled))
+                    SessionResult(SessionResult.RESULT_SUCCESS, Bundle().apply {
+                        putBoolean("canceled", canceled)
+                    })
                 )
             }
 
@@ -671,7 +696,6 @@ class PlaybackService :
                 }
             }
         }
-        equalizerManager.setSessionIsActive(isPlaying)
         songPlayCountHelper.notifyPlayStateChanged(isPlaying)
         updateWidgets()
     }
@@ -683,6 +707,7 @@ class PlaybackService :
     }
 
     override fun onRepeatModeChanged(repeatMode: Int) {
+        updateWidgets()
         refreshMediaButtonCustomLayout()
         persistentStorage.saveState()
     }
@@ -691,23 +716,42 @@ class PlaybackService :
         val isPlaying = player.isPlaying
 
         serviceScope.launch(IO) {
-            val currentSong = repository.songByMediaItem(mediaItem)
-            if (currentSong != Song.emptySong && preferences.getBoolean(ENABLE_HISTORY, true)) {
-                repository.upsertSongInHistory(currentSong)
-                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(currentSong)
-            }
+            val newSong = repository.songByMediaItem(mediaItem)
+
             val previousSong = songPlayCountHelper.song
+            val shouldBumpPlayCount = songPlayCountHelper.shouldBumpPlayCount()
+            songPlayCountHelper.notifySongChanged(newSong, isPlaying)
+
+            if (newSong != Song.emptySong) {
+                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(newSong)
+                if (preferences.getBoolean(ENABLE_HISTORY, true)) {
+                    repository.upsertSongInHistory(newSong)
+                }
+                if (NetworkFeature.Lastfm.NowPlaying.isAvailable(this@PlaybackService)) {
+                    launch { repository.updateNowPlaying(ScrobblingService.Lastfm, newSong) }
+                }
+                if (NetworkFeature.ListenBrainz.NowPlaying.isAvailable(this@PlaybackService)) {
+                    launch { repository.updateNowPlaying(ScrobblingService.ListenBrainz, newSong) }
+                }
+            }
             if (previousSong != Song.emptySong) {
-                if (songPlayCountHelper.shouldBumpPlayCount()) {
+                val timestampMillis = System.currentTimeMillis()
+                val timestampSeconds = (timestampMillis / 1000)
+                if (shouldBumpPlayCount) {
                     repository.insertOrIncrementPlayCount(
                         song = previousSong,
-                        timePlayed = System.currentTimeMillis()
+                        timePlayed = timestampMillis
                     )
+                    if (NetworkFeature.Lastfm.Scrobbling.isAvailable(this@PlaybackService)) {
+                        launch { repository.scrobble(ScrobblingService.Lastfm, previousSong, timestampSeconds) }
+                    }
+                    if (NetworkFeature.ListenBrainz.Scrobbling.isAvailable(this@PlaybackService)) {
+                        launch { repository.scrobble(ScrobblingService.ListenBrainz, previousSong, timestampSeconds) }
+                    }
                 } else if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK) {
                     repository.insertOrIncrementSkipCount(previousSong)
                 }
             }
-            songPlayCountHelper.notifySongChanged(currentSong, isPlaying)
         }
 
         if (player.currentMediaItemIndex == stopIndex) {
@@ -719,12 +763,26 @@ class PlaybackService :
     }
 
     override fun onPlayerError(error: PlaybackException) {
+        val nextMediaIndex = player.nextMediaItemIndex
+        if (nextMediaIndex != C.INDEX_UNSET) {
+            player.seekToNextMediaItem()
+            player.prepare()
+        }
         showToast(getString(R.string.playback_error_code, error.errorCodeName))
     }
 
     override fun onEvents(player: Player, events: Player.Events) {
-        if (events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED)
-            && !events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+        if (events.contains(Player.EVENT_IS_PLAYING_CHANGED) ||
+            events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) ||
+            events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+            cancelSleepTimerFadeOut()
+        }
+        if (events.contains(Player.EVENT_IS_PLAYING_CHANGED) &&
+            !events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION)) {
+            updateEqualizerSessionState(player.isPlaying)
+        }
+        if (events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED) &&
+            !events.contains(Player.EVENT_TIMELINE_CHANGED)) {
             if (player.shuffleModeEnabled && persistentStorage.restorationState.isRestored) {
                 this.player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
                     firstIndex = player.currentMediaItemIndex,
@@ -760,6 +818,13 @@ class PlaybackService :
             SEEK_INTERVAL -> {
                 player.exoPlayer.setSeekBackIncrementMs(seekInterval)
                 player.exoPlayer.setSeekForwardIncrementMs(seekInterval)
+            }
+
+            WIDGET_DYNAMIC_COLORS,
+            WIDGET_SMALL_LAYOUT_STYLE,
+            WIDGET_IMAGE_CORNER_RADIUS,
+            WIDGET_THIRD_LINE_CONTENT -> {
+                updateWidgets()
             }
         }
     }
@@ -802,6 +867,7 @@ class PlaybackService :
 
         val isPlaying = player.isPlaying
         val isShuffleMode = player.shuffleModeEnabled
+        val repeatMode = player.repeatMode
         return withContext(IO) {
             val song = repository.songById(id)
             val isFavorite = repository.isSongFavorite(song.id)
@@ -812,24 +878,44 @@ class PlaybackService :
                     .size(300)
                     .build()
             )
-            val artworkData = result.image?.toBitmap(300, 300)?.let { bitmap ->
+            val bitmap = result.image?.toBitmap(300, 300)
+            val artworkData = bitmap?.let {
                 val stream = ByteArrayOutputStream()
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    bitmap.compress(Bitmap.CompressFormat.WEBP_LOSSY, 80, stream)
+                    it.compress(Bitmap.CompressFormat.WEBP_LOSSY, 80, stream)
                 } else {
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 85, stream)
+                    it.compress(Bitmap.CompressFormat.JPEG, 85, stream)
                 }
                 stream.toByteArray()
             }
+            val widgetTheme = if (preferences.getBoolean(WIDGET_DYNAMIC_COLORS, false)) {
+                val paletteColor = bitmap?.let {
+                    PaletteProcessor.getPaletteColor(this@PlaybackService, bitmap)
+                }
+                if (paletteColor != null) {
+                    WidgetTheme(paletteColor.backgroundColor)
+                } else null
+            } else null
+            val additionalInfo = MetadataField.getMetadataValue(
+                song = song,
+                fields = Preferences.getExtraInfoContent(
+                    key = WIDGET_THIRD_LINE_CONTENT,
+                    defaultContent = Preferences.getDefaultWidgetInfo()
+                )
+            )
             PlaybackState(
+                isSimplifiedSmallLayout = preferences.getString(WIDGET_SMALL_LAYOUT_STYLE, null) == "simplified",
                 isForeground = isForeground,
                 isPlaying = isPlaying,
                 isFavorite = isFavorite,
                 isShuffleMode = isShuffleMode,
+                repeatMode = repeatMode,
                 currentTitle = song.title,
                 currentArtist = song.artistName,
-                currentAlbum = song.albumName,
-                artworkData = artworkData
+                additionalInfo = additionalInfo,
+                artworkData = artworkData,
+                widgetTheme = widgetTheme,
+                imageCornerRadius = preferences.getInt(WIDGET_IMAGE_CORNER_RADIUS, 8).toFloat()
             )
         }
     }
@@ -840,20 +926,45 @@ class PlaybackService :
             if (!force) delay(WIDGET_UPDATE_DEBOUNCE)
 
             val state = buildPlaybackState(isForeground)
-            updateGlanceWidgets(state)
+            if (lastPlaybackState != state) {
+                lastPlaybackState = state
+                updateGlanceWidgets(state)
+            }
         }
     }
 
     private suspend fun updateGlanceWidgets(playbackState: PlaybackState) = withContext(IO) {
         try {
-            val glanceManager = GlanceAppWidgetManager(applicationContext)
-            val glanceIds = glanceManager.getGlanceIds(BoomingGlanceWidget::class.java)
-            if (glanceIds.isNotEmpty()) {
-                glanceIds.forEach { id ->
+            val boomingWidget = BoomingGlanceWidget()
+            val boomingWidgetIds = glanceManager.getGlanceIds(boomingWidget.javaClass)
+            if (boomingWidgetIds.isNotEmpty()) {
+                boomingWidgetIds.forEach { id ->
                     updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
                         playbackState
                     }
-                    BoomingGlanceWidget().update(applicationContext, id)
+                    boomingWidget.update(applicationContext, id)
+                }
+            }
+
+            val cardWidget = CardWidget()
+            val cardWidgetIds = glanceManager.getGlanceIds(cardWidget.javaClass)
+            if (cardWidgetIds.isNotEmpty()) {
+                cardWidgetIds.forEach { id ->
+                    updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
+                        playbackState
+                    }
+                    cardWidget.update(applicationContext, id)
+                }
+            }
+
+            val fullWidget = FullWidget()
+            val fullWidgetIds = glanceManager.getGlanceIds(fullWidget.javaClass)
+            if (fullWidgetIds.isNotEmpty()) {
+                fullWidgetIds.forEach { id ->
+                    updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
+                        playbackState
+                    }
+                    fullWidget.update(applicationContext, id)
                 }
             }
         } catch (e: Exception) {
@@ -876,6 +987,9 @@ class PlaybackService :
                 NotificationManager.IMPORTANCE_LOW
             ).apply {
                 description = getString(R.string.playing_notification_description)
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
+                    setShowBadge(false)
+                }
             }
             nm.createNotificationChannel(notificationChannel)
         }
@@ -895,12 +1009,46 @@ class PlaybackService :
         }
     }
 
+    private fun launchMusicFadeOut(durationMs: Long = 1000) {
+        cancelSleepTimerFadeOut()
+
+        fadeOutAnimator = ValueAnimator.ofFloat(player.volume, 0f).apply {
+            duration = durationMs
+            addUpdateListener { animation ->
+                player.volume = animation.animatedValue as Float
+            }
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationCancel(animation: Animator) {
+                    restorePlayerVolume()
+                }
+
+                override fun onAnimationEnd(animation: Animator) {
+                    player.pause()
+                    restorePlayerVolume()
+                }
+            })
+        }
+        fadeOutAnimator?.start()
+    }
+
+    private fun cancelSleepTimerFadeOut() {
+        fadeOutAnimator?.cancel()
+        fadeOutAnimator = null
+
+        restorePlayerVolume()
+    }
+
+    private fun restorePlayerVolume() {
+        player.volume = equalizerManager.volumeState.value.currentVolume
+    }
+
     private fun prepareEqualizerAndSoundSettings() {
         serviceScope.launch {
             equalizerManager.initializeEqualizer()
         }
         serviceScope.launch {
             equalizerManager.volumeState.collect { volume ->
+                cancelSleepTimerFadeOut()
                 player.volume = volume.currentVolume
             }
         }
@@ -932,11 +1080,6 @@ class PlaybackService :
             }
         }
         serviceScope.launch {
-            audioOutputObserver.audioDevice.collect {
-                equalizerManager.setCurrentDevice(it)
-            }
-        }
-        serviceScope.launch {
             audioOutputObserver.systemVolumeState.collect { systemVolume ->
                 if (pauseOnZeroVolume && persistentStorage.restorationState.isRestored) {
                     // don't handle volume changes until our player is fully restored
@@ -948,6 +1091,17 @@ class PlaybackService :
                         pausedByZeroVolume = false
                     }
                 }
+            }
+        }
+    }
+
+    private fun updateEqualizerSessionState(isPlaying: Boolean) {
+        eqStateHandler?.removeCallbacksAndMessages(null)
+        if (isPlaying) {
+            equalizerManager.setSessionIsActive(true)
+        } else {
+            eqStateHandler?.postDelayed(500) {
+                equalizerManager.setSessionIsActive(false)
             }
         }
     }
@@ -1024,6 +1178,7 @@ class PlaybackService :
         private const val PACKAGE_NAME = "com.mardous.booming"
 
         const val ACTION_TOGGLE_SHUFFLE = "$PACKAGE_NAME.action.ACTION_TOGGLE_SHUFFLE"
+        const val ACTION_CYCLE_REPEAT = "$PACKAGE_NAME.action.ACTION_CYCLE_REPEAT"
         const val ACTION_TOGGLE_FAVORITE = "$PACKAGE_NAME.action.ACTION_TOGGLE_FAVORITE"
 
         private const val NOTIFICATION_ID = 1

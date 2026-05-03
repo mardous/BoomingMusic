@@ -26,20 +26,34 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.view.*
+import android.view.GestureDetector
 import android.view.GestureDetector.SimpleOnGestureListener
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.FrameLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.core.animation.doOnEnd
-import androidx.core.os.bundleOf
-import androidx.core.view.*
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.get
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import androidx.core.view.size
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.commit
 import androidx.media3.session.MediaController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.*
+import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_SETTLING
+import com.google.android.material.bottomsheet.BottomSheetBehavior.from
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
@@ -51,8 +65,19 @@ import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
-import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.resources.*
+import com.mardous.booming.extensions.applyWindowInsets
+import com.mardous.booming.extensions.currentFragment
+import com.mardous.booming.extensions.dip
+import com.mardous.booming.extensions.getBottomInsets
+import com.mardous.booming.extensions.hasT
+import com.mardous.booming.extensions.isLandscape
+import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
+import com.mardous.booming.extensions.resources.darkenColor
+import com.mardous.booming.extensions.resources.hide
+import com.mardous.booming.extensions.resources.isColorLight
+import com.mardous.booming.extensions.resources.peekHeightAnimate
+import com.mardous.booming.extensions.resources.show
+import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.IBackConsumer
 import com.mardous.booming.ui.screen.info.PlayInfoFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
@@ -69,7 +94,22 @@ import com.mardous.booming.ui.screen.player.styles.gradientstyle.GradientPlayerF
 import com.mardous.booming.ui.screen.player.styles.m3style.M3PlayerFragment
 import com.mardous.booming.ui.screen.player.styles.peekplayerstyle.PeekPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.plainstyle.PlainPlayerFragment
-import com.mardous.booming.util.*
+import com.mardous.booming.util.ADAPTIVE_CONTROLS
+import com.mardous.booming.util.ADD_EXTRA_CONTROLS
+import com.mardous.booming.util.CAROUSEL_EFFECT
+import com.mardous.booming.util.CIRCLE_PLAY_BUTTON
+import com.mardous.booming.util.ENABLE_ROTATION_LOCK
+import com.mardous.booming.util.HOLD_TAB_TO_SEARCH
+import com.mardous.booming.util.LIBRARY_CATEGORIES
+import com.mardous.booming.util.NOW_PLAYING_IMAGE_CORNER_RADIUS
+import com.mardous.booming.util.NOW_PLAYING_SCREEN
+import com.mardous.booming.util.NOW_PLAYING_SMALL_IMAGE
+import com.mardous.booming.util.PLAYER_BLUR_RADIUS
+import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.SQUIGGLY_SEEK_BAR
+import com.mardous.booming.util.SWIPE_DOWN_TO_DISMISS
+import com.mardous.booming.util.TAB_TITLES_MODE
+import com.mardous.booming.util.USE_FOLDER_ART
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -299,7 +339,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         val miniPlayerHeight = dip(R.dimen.mini_player_height)
         val bottomNavHeight = dip(R.dimen.bottom_nav_height)
 
-        val bottomInsets = windowInsets.getBottomInsets()
+        val bottomInsets = windowInsets.getBottomInsets(this)
         val heightOfBar =  bottomInsets + miniPlayerHeight
         val heightOfBarWithTabs = heightOfBar + bottomNavHeight
         if (hide) {
@@ -309,11 +349,11 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                 fabBottomMargin = LibraryMargin(
                     margin = if (isBottomNavVisible) bottomNavHeight else 0,
                     additionalSpace = dip(R.dimen.fab_margin_top_left_right),
-                    bottomInsets = windowInsets.getBottomInsets()
+                    bottomInsets = windowInsets.getBottomInsets(this)
                 ),
                 bottomSheetMargin = LibraryMargin(
                     margin = 0,
-                    bottomInsets = windowInsets.getBottomInsets()
+                    bottomInsets = windowInsets.getBottomInsets(this)
                 )
             )
         } else {
@@ -330,11 +370,11 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                         fabBottomMargin = LibraryMargin(
                             margin = miniPlayerHeight + bottomNavHeight,
                             additionalSpace = dip(R.dimen.fab_margin_top_left_right),
-                            bottomInsets = windowInsets.getBottomInsets()
+                            bottomInsets = windowInsets.getBottomInsets(this)
                         ),
                         bottomSheetMargin = LibraryMargin(
                             margin = miniPlayerHeight,
-                            bottomInsets = windowInsets.getBottomInsets()
+                            bottomInsets = windowInsets.getBottomInsets(this)
                         )
                     )
                 } else {
@@ -350,11 +390,11 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
                         fabBottomMargin = LibraryMargin(
                             margin = miniPlayerHeight,
                             additionalSpace = dip(R.dimen.fab_margin_top_left_right),
-                            bottomInsets = windowInsets.getBottomInsets()
+                            bottomInsets = windowInsets.getBottomInsets(this)
                         ),
                         bottomSheetMargin = LibraryMargin(
                             margin = miniPlayerHeight,
-                            bottomInsets = windowInsets.getBottomInsets()
+                            bottomInsets = windowInsets.getBottomInsets(this)
                         )
                     )
                 }
@@ -420,7 +460,9 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             val gestureDetector = GestureDetector(this, object : SimpleOnGestureListener() {
                 override fun onLongPress(e: MotionEvent) {
                     findNavController(R.id.fragment_container)
-                        .navigate(R.id.nav_search, bundleOf(SearchFragment.MODE to filterMode))
+                        .navigate(R.id.nav_search, Bundle().apply {
+                            putSerializable(SearchFragment.MODE, filterMode)
+                        })
                 }
             })
             navigationView.setItemOnTouchListener(info.category.id) { _: View, event: MotionEvent ->
@@ -509,6 +551,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
             CAROUSEL_EFFECT,
             NOW_PLAYING_SMALL_IMAGE,
+            PLAYER_BLUR_RADIUS,
             CIRCLE_PLAY_BUTTON -> {
                 chooseFragmentForTheme()
             }

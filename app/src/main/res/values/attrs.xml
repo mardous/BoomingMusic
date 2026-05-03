@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="rectSelector" format="reference"/>
-
     <declare-styleable name="InfoView">
         <attr name="infoTitle" format="string"/>
         <attr name="infoTitleColor" format="color"/>
@@ -42,5 +40,23 @@
         <attr name="android:progress" format="integer"/>
         <attr name="android:max" format="integer"/>
         <attr name="android:min" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="MorphicIconButton">
+        <attr name="morphicIconTint" format="color" />
+        <attr name="morphicIcon" format="reference" />
+        <attr name="morphicDuration" format="integer" />
+        <attr name="morphicRotationDuration" format="integer" />
+        <attr name="morphicShape" format="enum">
+            <enum name="square" value="0" />
+            <enum name="soft_burst" value="1" />
+            <enum name="cookie_9" value="2" />
+            <enum name="pentagon" value="3" />
+            <enum name="pill" value="4" />
+            <enum name="sunny" value="5" />
+            <enum name="cookie_4" value="6" />
+            <enum name="circle" value="7" />
+            <enum name="cookie_12" value="8" />
+        </attr>
     </declare-styleable>
 </resources>

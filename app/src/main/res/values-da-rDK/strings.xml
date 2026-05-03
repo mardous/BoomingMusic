@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Der er ingen importérbare afspilningslister.</string>
     <string name="playlist_x_not_imported">Spilleliste %s ikke importeret.</string>
     <string name="action_import_playlist">Importér afspilningsliste…</string>
-    <string name="action_new_playlist">Ny afspilningsliste…</string>
     <string name="new_playlist_title">Ny afspilningsliste</string>
     <string name="add_playlist_title">Føj til afspilningsliste</string>
     <string name="rename_playlist_title">Omdøb afspilningsliste</string>
@@ -87,12 +86,10 @@
     <string name="saved_x_playlists_failed_to_save_x">Gemte %1$d afspilningslister, kunne ikke gemme %2$d.</string>
     <string name="delete_playlist_title">Slet afspilningsliste</string>
     <string name="delete_playlists_title">Slet afspilningslister</string>
-    <string name="delete_playlist_x"><![CDATA[Slet afspilningsliste <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Slet afspilningsliste <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Slet <b>%d</b> afspilningslister?]]></string>
     <string name="created_playlist_x">Oprettet afspilningsliste \'%1$s\'.</string>
     <string name="could_not_create_playlist">Kunne ikke oprette afspilningsliste.</string>
-    <string name="inserted_one_song_into_playlist_x">Indsatte en sang i afspilningsliste %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Indsatte %1$d sange i afspilningsliste %2$s.</string>
     <string name="playlist_exists">Spilleliste %s findes allerede.</string>
     <string name="playlist_created">Afspilningsliste %s blev oprettet.</string>
     <string name="remove_song_from_playlist_title">Fjern sang fra afspilningsliste</string>
@@ -135,8 +132,7 @@
     <string name="permission_bluetooth_description">Appen har brug for tilladelse i nærheden af enheder for at tjekke for bluetooth-enheder</string>
     <string name="permission_bluetooth_denied">Tilladelse nægtet i nærheden af enheder.</string>
     <string name="permission_read_images_title">Læs billeder (valgfrit)</string>
-    <string name="permission_read_images_summary">Denne tilladelse kræves for Booming Music til at finde album cover filer i dine musikmapper.
-        Hvis du ikke planlægger at bruge denne funktion, kan du vælge ikke at give den.</string>
+    <string name="permission_read_images_summary">Denne tilladelse kræves for Booming Music til at finde album cover filer i dine musikmapper. Hvis du ikke planlægger at bruge denne funktion, kan du vælge ikke at give den.</string>
     <string name="permission_read_images_denied">Du skal give tilladelse til at læse billeder fra enheden.</string>
     <string name="permission_exact_alarms_title">Planlæg nøjagtige alarmer (valgfrit)</string>
     <string name="permission_exact_alarms_description">Tilladelse til at planlægge nøjagtige alarmer er nødvendig for at sovemusikeren kan fungere korrekt</string>
@@ -151,16 +147,11 @@
     <string name="hello_there">Hej der!</string>
     <string name="welcome_to_x">Velkommen til %s</string>
     <string name="get_started">Kom I Gang</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> er ikke listet i medielageret.]]></string>
-    <string name="some_files_are_not_listed_in_the_media_store">Nogle filer er ikke opført i medielageren.</string>
-    <string name="nothing_to_scan">Intet at scanne</string>
     <string name="select_storage_title">Vælg lagerplads</string>
     <string name="now_playing">Afspiller nu</string>
     <string name="playing_queue_label">Afspiller kø</string>
     <string name="list_start">Liste start</string>
     <string name="list_end">Liste slut</string>
-    <string name="empty_play_queue">Tøm afspilningskø.</string>
-    <string name="save_queue">Gem kø</string>
     <string name="clear_queue">Ryd kø</string>
     <string name="action_move_to_current_track">Vis aktuelle spor</string>
     <string name="action_add_to_favorites">Føj til favoritter</string>
@@ -173,17 +164,15 @@
     <string name="action_add_to_playing_queue">Føj til kø</string>
     <string name="action_remove_from_playing_queue">Fjern fra afspilningskø</string>
     <string name="put_after_current_track">Placér efter nuværende spor</string>
-    <string name="undo_action">Fortryd</string>
     <string name="set_artist_image">Sæt kunstner billede</string>
     <string name="reset_artist_image">Nulstil Kunstnerbillede</string>
     <string name="there_is_nothing_to_reset">Der er intet at nulstille.</string>
-    <string name="updating">Opdaterer…</string>
     <string name="add_to_label">Føj til</string>
     <string name="go_to_label">Gå til</string>
     <string name="action_go_to_album">Gå til album</string>
     <string name="action_go_to_artist">Gå til kunstner</string>
     <string name="action_go_to_genre">Gå til Genre</string>
-    <string name="added_title_to_playing_queue">"Tilføjet 1 titel til afspilningskøen."</string>
+    <string name="added_title_to_playing_queue">Tilføjet 1 titel til afspilningskøen.</string>
     <string name="added_x_titles_to_playing_queue">Tilføjet %1$d titler til afspilningskøen.</string>
     <string name="next_song_label">Næste Sang</string>
     <string name="next_song_x">Næste • %1$s</string>
@@ -267,7 +256,7 @@
     <string name="update_image">Opdater billede</string>
     <string name="restore_default">Gendan standard</string>
     <string name="remove_cover">Fjern cover</string>
-    <string name="could_not_download_album_cover">"Couldn\u2019t hente en matchende albumomslag."</string>
+    <string name="could_not_download_album_cover">Couldn’t hente en matchende albumomslag.</string>
     <string name="download_image">Download billede</string>
     <string name="pick_from_local_storage">Vælg fra lokalt lager</string>
     <string name="about_x_title">Om %s</string>
@@ -279,8 +268,7 @@
     <string name="save_artwork_success">Album cover gemt</string>
     <string name="save_artwork_view_action">Vis</string>
     <string name="save_artwork_copyright_info_title">Ophavsret meddelelse</string>
-    <string name="save_artwork_copyright_info_message">Nogle album covers (eller alle af dem) kan være beskyttet af Copyright love. Du kan ikke bruge sådanne billeder til kommercielle eller reklame formål.
-        \n\nKun du har det fulde ansvar for din brug af gemte albumomslag.</string>
+    <string name="save_artwork_copyright_info_message">Nogle album covers (eller alle af dem) kan være beskyttet af Copyright love. Du kan ikke bruge sådanne billeder til kommercielle eller reklame formål. \n\nKun du har det fulde ansvar for din brug af gemte albumomslag.</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="keyboard">Keyboard</string>
@@ -319,7 +307,7 @@
     <string name="disc_total">Totale Discs</string>
     <string name="lyrics">Sangtekster</string>
     <string name="lyricist">Lyricist</string>
-    <string name="could_not_load_the_song_information">"Kunne ikke indlæse sangoplysningerne."</string>
+    <string name="could_not_load_the_song_information">Kunne ikke indlæse sangoplysningerne.</string>
     <string name="no_results">Ingen resultater</string>
     <string name="connection_unavailable">Forbindelsen er ikke tilgængelig.</string>
     <string name="you_have_to_select_at_least_one_category">Du skal vælge mindst én kategori</string>
@@ -380,8 +368,8 @@
         <item quantity="one">%d vare</item>
         <item quantity="other">%d varer</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">Til dig</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Bland</string>
     <string name="top_artists">Top kunstnere</string>
     <string name="top_albums">Top albums</string>
@@ -414,9 +402,7 @@
     <string name="autoeq_profiles_title">AutoEq Profiles</string>
     <string name="eq_profile_title">Profile</string>
     <string name="change_band_count_title">Change band count</string>
-    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
-        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
-        \n\nDo you want to continue?</string>
+    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state. Any other profiles saved for the current band configuration cannot be used with the new band configuration. \n\nDo you want to continue?</string>
     <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
     <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
     <string name="share_eq_profiles">Share EQ Profiles</string>
@@ -438,8 +424,7 @@
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">Reset equalizer</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
-        \n\nThis will clear all your profiles.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Ikke understøttet</string>
     <string name="set_eq_engine_title">Set EQ engine</string>
     <string name="eq_engine_basic_title">Legacy Engine</string>
@@ -481,16 +466,11 @@
     <string name="custom">Tilpasset</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Lyd Offload</string>
-    <string name="enable_audio_offload_description">Tillader enheden at behandle lyd direkte gennem sin hardware, reducere CPU-forbrug og spare batteri.
-        Denne funktion understøttes kun på visse enheder. Nogle effekter eller funktioner virker muligvis ikke, mens det er aktiveret.
-        En genstart er nødvendig for at ændringerne kan træde i kraft.</string>
+    <string name="enable_audio_offload_description">Tillader enheden at behandle lyd direkte gennem sin hardware, reducere CPU-forbrug og spare batteri. Denne funktion understøttes kun på visse enheder. Nogle effekter eller funktioner virker muligvis ikke, mens det er aktiveret. En genstart er nødvendig for at ændringerne kan træde i kraft.</string>
     <string name="enable_audio_float_output_title">Høj-Præcision Lydoutput</string>
-    <string name="enable_audio_float_output_description">Aktiverer 32-bit floating-point lyd for bedre lydkvalitet.
-        Husk dette vil slukke funktioner som ReplayGain, springe stilhed og volumen balance.
-        Det kan bruge lidt mere batteri, og du skal genstarte appen, før den træder i kraft.</string>
+    <string name="enable_audio_float_output_description">Aktiverer 32-bit floating-point lyd for bedre lydkvalitet. Husk dette vil slukke funktioner som ReplayGain, springe stilhed og volumen balance. Det kan bruge lidt mere batteri, og du skal genstarte appen, før den træder i kraft.</string>
     <string name="skip_silence_title">Spring Stilhed Over</string>
-    <string name="skip_silence_description">Spring automatisk tavse afsnit under afspilning.
-        Ideel til podcasts og optagelser.</string>
+    <string name="skip_silence_description">Spring automatisk tavse afsnit under afspilning. Ideel til podcasts og optagelser.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Vis sangtekster</string>
     <string name="action_hide_lyrics">Skjul sangtekster</string>
@@ -501,7 +481,7 @@
     <string name="external_file_lyrics">Ekstern fil</string>
     <string name="action_import_synchronized_lyrics">Importér synkroniserede sangtekster</string>
     <string name="action_share_synchronized_lyrics">Del synkroniserede sangtekster</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vil du importere synkroniserede LRC sangtekster til <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vil du importere synkroniserede LRC sangtekster til <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Importerede sangtekster til %s</string>
     <string name="could_not_import_lyrics_for_song_x">Kunne ikke importere sangtekster til %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Vælg en LRC-fil som indeholder synkroniserede sangtekster.</string>
@@ -528,7 +508,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Afslut sidste sang</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Stop efter dette spor</string>
     <string name="sleep_timer_stop_after_x">Stop efter %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Stop efter %s: annulleret</string>
@@ -539,10 +521,7 @@
     <string name="app_shortcut_favorites_short">Favoritter</string>
     <!-- About page -->
     <string name="action_about">Om</string>
-    <string name="application">Anvendelse</string>
-    <string name="version">Version</string>
     <string name="changelog">Ændringslog</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licenser</string>
     <string name="author">Forfatter</string>
@@ -553,13 +532,8 @@
     <string name="translators_summary">Tak til dem, der gør Booming Musik tilgængelig på mange sprog.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegram chat</string>
-    <string name="telegram_chat_summary">Deltag i chatten i Telegram og få information om nye udgivelser og nyheder.</string>
     <string name="view_profile_on_github">Se profil på GitHub</string>
-    <string name="follow_on_telegram">DM på Telegram</string>
     <string name="write_an_email">Skriv en e-mail</string>
-    <string name="buy_me_a_coffee">Køb mig en kaffe</string>
-    <string name="buy_me_a_coffee_summary">Du kan lave en lille donation, hvis du synes, at mit arbejde fortjener det.</string>
     <string name="support_development">Støt udvikling</string>
     <string name="help_with_translations">Hjælp med oversættelser</string>
     <string name="help_with_translations_summary">Du kan bidrage til projektet ved at hjælpe med at oversætte Booming Music til andre sprog.</string>
@@ -570,9 +544,6 @@
     <string name="send_invitation_message">Send invitationsbesked</string>
     <string name="invitation_message_content">Hi. Tjek Booming Music! Den bedste app til at lytte til lokal musik på Android. Du kan downloade den herfra: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Rapporter et problem</string>
-    <string name="device_info">Oplysninger om enheden</string>
-    <string name="copied_device_info_to_clipboard">Kopierede enhedsinfo til udklipsholderen.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Du vil blive videresendt til issue tracker hjemmeside.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Lagerplads Påkrævet</string>
@@ -591,20 +562,17 @@
     <string name="playback_title">Afspilning</string>
     <string name="playback_summary">Skift lydindstillinger, Bluetooth-headsets, osv.</string>
     <string name="metadata_title">Metadata</string>
-    <string name="metadata_summary">Indstillinger relateret til album og kunstnere billeder.</string>
     <string name="library_title">Bibliotek</string>
     <string name="library_summary">Indstillinger for afspilningslister og udelukkelse/inklusion filtre.</string>
     <string name="advanced_title">Avanceret</string>
     <string name="advanced_summary">In-app sprog og andre indstillinger for avancerede brugere.</string>
     <string name="update_title">Opdater</string>
-    <string name="update_summary">Indstillinger for appopdateringer.</string>
     <string name="about_title">Om</string>
     <string name="about_summary">Booming Music %s, touch for more info.</string>
     <!-- Preference headers -->
     <string name="general_header">Generelt</string>
     <string name="library_header">Bibliotek</string>
     <string name="album_cover_header">Omslag</string>
-    <string name="artist_image_header">Kunstner billede</string>
     <string name="exclusion_header">Udelukkelse</string>
     <string name="controls_header">Kontrol</string>
     <string name="gestures_header">Bevægelser</string>
@@ -641,6 +609,7 @@
     <string name="lyrics_effects_note">Avancerede effekter forbedre den visuelle oplevelse, men kan kræve flere systemressourcer og batteri.</string>
     <string name="lyrics_background_effect_title">Baggrundseffekt</string>
     <string name="lyrics_background_gradient">Overgang</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Slør effekt</string>
     <string name="lyrics_blur_effect_summary">Slør sangtekstlinjerne ved siden af den nuværende.</string>
     <string name="lyrics_shadow_effect_title">Skygge effekt</string>
@@ -660,14 +629,13 @@
     <string name="unsynced_font_size_full_title">Usynkroniseret skriftstørrelse for sangtekster (fuld visning)</string>
     <string name="unsynced_font_size_full_summary">Juster skriftstørrelsen for unsynced sangtekster på hele sangtekstskærmen.</string>
     <string name="instrumental_tracks_identifiers_title">Instrumentale sporidentifikatorer</string>
-    <string name="instrumental_tracks_identifiers_summary">Hvis en sangs sangtekster kun består af
-        en eller flere af disse indikatorer, vil den blive markeret som et instrumental spor (adskilt af komma).</string>
+    <string name="instrumental_tracks_identifiers_summary">Hvis en sangs sangtekster kun består af en eller flere af disse indikatorer, vil den blive markeret som et instrumental spor (adskilt af komma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Markér efter titel</string>
     <string name="instrumental_tracks_mark_by_title_summary">Spor titel vil også blive taget i betragtning, når der søges efter identifikatorer.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding. This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics. It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Stil</string>
     <string name="open_on_play_title">Åbn ved afspilning</string>
@@ -713,18 +681,18 @@
     <string name="select_extra_info_summary">Vælg de ekstra oplysninger, der skal vises i afspillerpanelet.</string>
     <string name="prefer_remaining_time_title">Foretræk resterende tid</string>
     <string name="prefer_remaining_time_summary">Vis resterende tid i stedet for sangens varighed.</string>
-    <string name="prefer_album_artist_name_title">"Foretræk Album-kunstnerens navn"</string>
+    <string name="prefer_album_artist_name_title">Foretræk Album-kunstnerens navn</string>
     <string name="prefer_album_artist_name_summary">Viser albumkunstnerens navn i stedet for sangkunstnerens navn (hvis det er tilgængeligt).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Afspil ved opstart</string>
     <string name="queue_next_mode_title">\"Kø næste\" tilstand</string>
-    <string name="search_auto_queue_title">Kø alle søgeresultater</string>
-    <string name="search_auto_queue_summary">Når du afspiller en sang fra søgeskærmen, vil alle andre resultater også blive sat i kø.</string>
     <string name="remember_shuffle_mode_title">Husk Blanding</string>
     <string name="remember_shuffle_mode_summary">Blandingstilstand vil forblive tændt, når du vælger en ny liste over sange.</string>
     <string name="album_shuffle_mode_title">Album shuffle mode</string>
     <string name="artist_shuffle_mode_title">Kunstner shuffle mode</string>
-    <string name="rewind_with_back_title">"Genvind med 'Forrige'"</string>
+    <string name="rewind_with_back_title">Genvind med \'Forrige\'</string>
     <string name="rewind_with_back_summary">Slå spillesporet tilbage tilbage til start eller flyt til forrige spor, hvis den aktuelle er i begyndelsen.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Fast-forward beløb</string>
     <string name="rewind_fast_forward_amount_summary">Tid (i sekunder) til at spole tilbage eller hurtigt frem ved hjælp af UI eller eksterne kontroller.</string>
@@ -741,9 +709,7 @@
     <string name="pause_on_zero_volume_title">Pause på nul lydstyrke</string>
     <string name="pause_on_zero_volume_summary">Pauser sangen, når lydstyrken falder til nul og begynder at afspille når lydstyrken stiger. Virker også uden for appen.</string>
     <string name="mp3_index_seeking_title">MP3-indeks søgning</string>
-    <string name="mp3_index_seeking_summary">Indlæser hele MP3-fil i hukommelsen for at søge i stedet for at stole på Xing-header.
-        Brug kun, hvis søgningen mislykkes på nogle VBR-filer.
-        Kræver appgenstart.</string>
+    <string name="mp3_index_seeking_summary">Indlæser hele MP3-fil i hukommelsen for at søge i stedet for at stole på Xing-header. Brug kun, hvis søgningen mislykkes på nogle VBR-filer. Kræver appgenstart.</string>
     <string name="play_option_always_visible_title">Hold \"Play\" indstillingen synlig</string>
     <string name="play_option_always_visible_summary">Hvis aktiveret, vises indstillingen \"Afspil\" altid i en sangs menu, uanset indstillingerne for opførsel.</string>
     <string name="play_option_whole_list_title">\"Afspil\" indstilling afspiller hele listen</string>
@@ -765,13 +731,11 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Auto download metadata</string>
     <string name="ignore_media_store_album_covers_title">Ignorer Media Store omslag</string>
     <string name="ignore_media_store_album_covers_summary">Dette kan bidrage til at øge billedkvaliteten, men kræver mere hukommelse.</string>
     <string name="use_folder_album_cover_title">Brug mappebilleder</string>
     <string name="use_folder_album_cover_summary">Hvis lydfilen ikke indeholder et indlejret cover. Billeder kan tage lidt mere tid at indlæse.</string>
     <string name="online_artist_images_title">Download kunstnerbilleder</string>
-    <string name="online_artist_images_summary">Dette afhænger af din metadata download politik.</string>
     <string name="preferred_image_size_title">Foretrukken billedstørrelse</string>
     <string name="online_album_covers_title">Download manglende albumomslag</string>
     <string name="online_album_covers_summary">Downloadede billeder er ikke indlejret i lydfiler; de er kun synlige i appen. Dette afhænger af din metadata download politik.</string>
@@ -807,16 +771,12 @@
     <string name="restore_backup_summary">Gendan appdata (og tilstand) fra en tidligere sikkerhedskopi.</string>
     <string name="stop_when_closed_from_recents_title">Stop når lukket fra de seneste</string>
     <string name="stop_when_closed_from_recents_summary">Afspilning stopper, hvis appen er lukket fra listen for nyeste.</string>
-    <string name="stop_when_closed_from_recents_note">Bemærk: Nogle enheder med aggressiv hukommelse
-        eller batteristyring kan ignorere denne indstilling og altid stoppe app\'en, når den fjernes fra de seneste år.</string>
+    <string name="stop_when_closed_from_recents_note">Bemærk: Nogle enheder med aggressiv hukommelse eller batteristyring kan ignorere denne indstilling og altid stoppe app\'en, når den fjernes fra de seneste år.</string>
     <string name="rotation_lock_title">Rotation lås</string>
     <string name="rotation_lock_summary">Lås enhedens orientering. Nyttigt i tilfælde, hvor musik stopper, når du roterer enheden på grund af visse producentpolitikker.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Lys</string>
     <string name="dark_theme_name">Mørk</string>
-    <string name="black_theme_name">Sort</string>
-    <string name="follow_system">Følg System</string>
-    <string name="label_auto">Automatisk</string>
     <string name="labeled">Mærket</string>
     <string name="unlabeled">Ikke Mærket</string>
     <string name="selected">Valgt</string>
@@ -853,12 +813,6 @@
     <string name="this_month">Denne måned</string>
     <string name="past_three_months">Sidste tre måneder</string>
     <string name="this_year">Dette år</string>
-    <string name="priority_maximum">Maksimum</string>
-    <string name="priority_high">Høj</string>
-    <string name="priority_normal">Normal</string>
-    <string name="priority_low">Lav</string>
-    <string name="always">Altid</string>
-    <string name="only_on_wifi">Kun Wi-Fi</string>
     <string name="image_size_large">Stor (langsommere)</string>
     <string name="image_size_medium">Mellem (standard, anbefalet)</string>
     <string name="image_size_small">Lille (hurtigere, lav kvalitet)</string>
@@ -900,8 +854,7 @@
     <string name="download_action">Hent</string>
     <string name="downloading_update">Downloader Booming Musik opdatering.</string>
     <string name="uncaught_error_title">Ups! Det skulle ikke ske!</string>
-    <string name="uncaught_error_message">Det ser ud til, at noget gik galt og forårsagede, at appen gik ned.
-        Det ville være nyttigt, hvis du kunne sende os fejlrapporten til vores Telegram gruppe eller via e-mail.</string>
+    <string name="uncaught_error_message">Det ser ud til, at noget gik galt og forårsagede, at appen gik ned. Det ville være nyttigt, hvis du kunne sende os fejlrapporten til vores Telegram gruppe eller via e-mail.</string>
     <string name="uncaught_error_report">Fejlrapport</string>
     <string name="uncaught_error_report_copied">Kopieret fejlrapport til udklipsholder.</string>
     <string name="uncaught_error_restart_app">Genstart app</string>

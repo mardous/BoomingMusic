@@ -16,13 +16,13 @@
     <string name="action_seek_backward">Siirry taaksepäin</string>
     <string name="action_seek_forward">Siirry eteenpäin</string>
     <string name="action_cycle_repeat">Syklin toistotila</string>
-    <string name="action_toggle_shuffle">Toggle shuffle mode</string>
+    <string name="action_toggle_shuffle">Satunnaistoiston asetus</string>
     <string name="reset_action">Reset</string>
     <string name="action_more">Lisää</string>
     <string name="import_action">Tuo</string>
     <string name="create_action">Luo</string>
     <string name="search_label">Etsi</string>
-    <string name="search_hint">Search your library…</string>
+    <string name="search_hint">Hae kirjastosta…</string>
     <string name="action_voice_search">Äänen haku</string>
     <string name="speech_not_supported">Laitteesi ei tue puhesyötettä</string>
     <string name="search_artist_x_label">Etsi esittäjä: %s</string>
@@ -38,7 +38,7 @@
     <string name="action_save">Tallenna</string>
     <string name="what_do_you_want_to_share">Mitä sinä haluat jakaa?</string>
     <string name="the_audio_file">Äänitiedosto</string>
-    <string name="i_am_listening">I\'m listening…</string>
+    <string name="i_am_listening">Kuuntelen…</string>
     <string name="currently_listening_to_x_by_x">Kuuntelen %1$s esittäjältä %2$s</string>
     <string name="share_to_stories">Jaa tarinoihin</string>
     <string name="could_not_create_the_story">Tarinaa ei voitu luoda.</string>
@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Ei ole tuotavia soittolistoja.</string>
     <string name="playlist_x_not_imported">Soittolistaa %s ei tuotu.</string>
     <string name="action_import_playlist">Tuo soittolista…</string>
-    <string name="action_new_playlist">Uusi soittolista…</string>
     <string name="new_playlist_title">Uusi soittolista</string>
     <string name="add_playlist_title">Lisää soittolistaan</string>
     <string name="rename_playlist_title">Nimeä soittolista uudelleen</string>
@@ -84,15 +83,13 @@
     <string name="playlist_updated">Soittolista päivitetty.</string>
     <string name="failed_to_save_playlist">Soittolistan tallennus epäonnistui.</string>
     <string name="saved_x_playlists">Tallennetut %1$d soittolistat.</string>
-    <string name="saved_x_playlists_failed_to_save_x">Saved %1$d playlists, failed to save %2$d.</string>
+    <string name="saved_x_playlists_failed_to_save_x">Tallennettu %1$d soittolistaa, epäonnistuttu tallentamaan %2$d.</string>
     <string name="delete_playlist_title">Poista soittolista</string>
     <string name="delete_playlists_title">Poista soittolistat</string>
-    <string name="delete_playlist_x"><![CDATA[Poista soittolista <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Poista soittolista <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Delete <b>%d</b> playlists?]]></string>
     <string name="created_playlist_x">Luotu soittolista \'%1$s\'.</string>
     <string name="could_not_create_playlist">Soittolistaa ei voitu luoda.</string>
-    <string name="inserted_one_song_into_playlist_x">Lisää yksi kappale soittolistaan %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Lisää %1$d kappaletta soittolistaan %2$s.</string>
     <string name="playlist_exists">Soittolista %s on jo olemassa.</string>
     <string name="playlist_created">Soittolista %s luotiin onnistuneesti.</string>
     <string name="remove_song_from_playlist_title">Poista kappale soittolistalta</string>
@@ -121,7 +118,7 @@
     <string name="delete_songs_title">Poista kappaleet</string>
     <string name="delete_x_songs">Poista %d kappaletta?</string>
     <string name="delete_the_song_x">Poista kappale %s?</string>
-    <string name="deleting_songs">Deleting songs, wait…</string>
+    <string name="deleting_songs">Poistetaan kappaleita, odota…</string>
     <string name="song_x_of_x">%1$d %2$d • %3$s</string>
     <string name="no_equalizer">Taajuuskorjainta ei löytynyt.</string>
     <string name="audio_focus_denied">Äänen tarkennus estetty.</string>
@@ -135,8 +132,7 @@
     <string name="permission_bluetooth_description">Sovellus tarvitsee pääsyn lähistöllä oleviin laitteisiin, jotta se voi tarkistaa bluetooth-laitteita</string>
     <string name="permission_bluetooth_denied">Lähellä olevien laitteiden käyttöoikeudet evätty.</string>
     <string name="permission_read_images_title">Lue kuvia (valinnainen)</string>
-    <string name="permission_read_images_summary">Tämä lupa tarvitaan Booming Musiikkia varten löytääksesi albumin taidetiedostoja musiikkikansiostasi.
-        Jos et aio käyttää tätä ominaisuutta, voit päättää olla myöntämättä sitä.</string>
+    <string name="permission_read_images_summary">Tämä lupa tarvitaan Booming Musiikkia varten löytääksesi albumin taidetiedostoja musiikkikansiostasi. Jos et aio käyttää tätä ominaisuutta, voit päättää olla myöntämättä sitä.</string>
     <string name="permission_read_images_denied">Sinun on myönnettävä lupa lukea kuvia laitteesta.</string>
     <string name="permission_exact_alarms_title">Ajoita tarkat hälytykset (valinnainen)</string>
     <string name="permission_exact_alarms_description">Tarkkojen hälytysten ajoittaminen on tarpeen, jotta unen ajastin toimisi kunnolla</string>
@@ -151,16 +147,11 @@
     <string name="hello_there">Hei siellä!</string>
     <string name="welcome_to_x">Tervetuloa %s</string>
     <string name="get_started">Aloita Alusta</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> ei ole listattu mediakaupassa.]]></string>
-    <string name="some_files_are_not_listed_in_the_media_store">Joitakin tiedostoja ei ole listattu mediakaupassa.</string>
-    <string name="nothing_to_scan">Ei mitään skannattavaa</string>
     <string name="select_storage_title">Valitse tallennustila</string>
     <string name="now_playing">Nyt soi</string>
     <string name="playing_queue_label">Soitetaan jonoa</string>
     <string name="list_start">Listan alku</string>
     <string name="list_end">Listan loppu</string>
-    <string name="empty_play_queue">Tyhjä soittojono.</string>
-    <string name="save_queue">Tallenna jono</string>
     <string name="clear_queue">Tyhjennä jono</string>
     <string name="action_move_to_current_track">Näytä nykyinen kappale</string>
     <string name="action_add_to_favorites">Lisää suosikkeihin</string>
@@ -173,17 +164,15 @@
     <string name="action_add_to_playing_queue">Lisää jonoon</string>
     <string name="action_remove_from_playing_queue">Poista soittojonosta</string>
     <string name="put_after_current_track">Laita nykyisen kappaleen jälkeen</string>
-    <string name="undo_action">Kumoa</string>
     <string name="set_artist_image">Aseta esittäjän kuva</string>
     <string name="reset_artist_image">Palauta esittäjän kuva</string>
     <string name="there_is_nothing_to_reset">Ei ole mitään palautettavaa.</string>
-    <string name="updating">Päivitetään…</string>
     <string name="add_to_label">Lisää kohteeseen</string>
     <string name="go_to_label">Siirry kohteeseen</string>
     <string name="action_go_to_album">Siirry albumiin</string>
     <string name="action_go_to_artist">Siirry esittäjälle</string>
     <string name="action_go_to_genre">Siirry tyyliin</string>
-    <string name="added_title_to_playing_queue">"Lisätty 1 otsikko soittojonoon."</string>
+    <string name="added_title_to_playing_queue">Lisätty 1 otsikko soittojonoon.</string>
     <string name="added_x_titles_to_playing_queue">Lisätty %1$d otsikkoa soittojonoon.</string>
     <string name="next_song_label">Seuraava Kappale</string>
     <string name="next_song_x">Seuraava • %1$s</string>
@@ -206,7 +195,7 @@
     <string name="albums_label">Albumit</string>
     <string name="artists_label">Esittäjät</string>
     <string name="album_artists_label">Albumin artistit</string>
-    <string name="genres_label">Genres</string>
+    <string name="genres_label">Tyylilajit</string>
     <string name="folders_label">Kansiot</string>
     <string name="playlists_label">Soittolistat</string>
     <string name="playlist_label">Soittolista</string>
@@ -267,23 +256,22 @@
     <string name="update_image">Päivitä kuva</string>
     <string name="restore_default">Palauta oletukset</string>
     <string name="remove_cover">Poista kansi</string>
-    <string name="could_not_download_album_cover">"Couldn\u2019t lataa vastaava kansi."</string>
+    <string name="could_not_download_album_cover">Couldn’t lataa vastaava kansi.</string>
     <string name="download_image">Lataa kuva</string>
     <string name="pick_from_local_storage">Valitse paikallisesta tallennustilasta</string>
     <string name="about_x_title">Tietoja %s</string>
     <string name="listeners_label">Kuuntelijat</string>
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Tallenna albumin kansi</string>
-    <string name="saving_cover_please_wait">Saving cover, wait…</string>
+    <string name="saving_cover_please_wait">Tallennetaan kansikuvaa, odota…</string>
     <string name="save_artwork_error">Kansion tallentaminen paikalliseen tallennustilaan epäonnistui</string>
     <string name="save_artwork_success">Albumin kansi tallennettu</string>
     <string name="save_artwork_view_action">Näytä</string>
     <string name="save_artwork_copyright_info_title">Tekijänoikeuden ilmoitus</string>
-    <string name="save_artwork_copyright_info_message">Jotkut albumin kannet (tai kaikki ne) saattavat olla suojattu tekijänoikeuslaeilla. Et voi käyttää tällaisia kuvia kaupallisiin tai mainostarkoituksiin.
-        \n\nVain sinulla on täysi vastuu tallennettujen albumikansien käytöstä.</string>
+    <string name="save_artwork_copyright_info_message">Jotkut albumin kannet (tai kaikki ne) saattavat olla suojattu tekijänoikeuslaeilla. Et voi käyttää tällaisia kuvia kaupallisiin tai mainostarkoituksiin. \n\nVain sinulla on täysi vastuu tallennettujen albumikansien käytöstä.</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
-    <string name="keyboard">Keyboard</string>
+    <string name="keyboard">Näppäimistö</string>
     <string name="label_file_path">Tiedoston polku</string>
     <string name="size">Tiedoston koko</string>
     <string name="label_file_format">Muoto</string>
@@ -304,8 +292,8 @@
     <string name="length">Pituus</string>
     <string name="label_last_modified">Viimeksi muokattu</string>
     <string name="label_channels">Kanavat</string>
-    <string name="label_variable_bitrate">Vaihteleva Bittinopeus</string>
-    <string name="label_loss_less">Tappio Vähemmän</string>
+    <string name="label_variable_bitrate">Vaihteleva bittinopeus</string>
+    <string name="label_loss_less">Hävikitön</string>
     <string name="label_bit_rate">Bittinopeus</string>
     <string name="label_sampling_rate">Näytteenoton määrä</string>
     <string name="replay_gain">ReplayGain</string>
@@ -319,7 +307,7 @@
     <string name="disc_total">Levyt Yhteensä</string>
     <string name="lyrics">Sanoitukset</string>
     <string name="lyricist">Lyrikko</string>
-    <string name="could_not_load_the_song_information">"Kappaleen tietoja ei voitu ladata."</string>
+    <string name="could_not_load_the_song_information">Kappaleen tietoja ei voitu ladata.</string>
     <string name="no_results">Ei tuloksia</string>
     <string name="connection_unavailable">Yhteys ei käytettävissä.</string>
     <string name="you_have_to_select_at_least_one_category">Sinun täytyy valita ainakin yksi kategoria</string>
@@ -380,8 +368,8 @@
         <item quantity="one">%d kohde</item>
         <item quantity="other">%d kohdetta</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">Sinua varten</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Sekoita</string>
     <string name="top_artists">Eniten artisteja</string>
     <string name="top_albums">Parhaat albumit</string>
@@ -410,19 +398,17 @@
     <string name="autoeq_label">AutoEq</string>
     <string name="graphic_eq_label">Graphic EQ</string>
     <string name="graphic_eq_band_count">%d-band</string>
-    <string name="eq_profiles_title">EQ Profiles</string>
-    <string name="autoeq_profiles_title">AutoEq Profiles</string>
-    <string name="eq_profile_title">Profile</string>
-    <string name="change_band_count_title">Change band count</string>
-    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
-        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
-        \n\nDo you want to continue?</string>
-    <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
-    <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
-    <string name="share_eq_profiles">Share EQ Profiles</string>
+    <string name="eq_profiles_title">EQ-profiilit</string>
+    <string name="autoeq_profiles_title">AutoEq-profiilit</string>
+    <string name="eq_profile_title">Profiili</string>
+    <string name="change_band_count_title">Vaihda taajuus lukua</string>
+    <string name="change_band_count_message">Vaihtamalla taajuuksien määrää tulet nollaamaan nykyisen profiilin sen alkuperäisasetuksiin. Muita tallennettuja profiileja nykyiselle taajuudelle ei voida käyttää nykyiselle taajuusasetukselle. \n\nHaluatko jatkaa?</string>
+    <string name="band_configuration_changed_successfully">Taajuusasetuksen tallennus onnistui.</string>
+    <string name="band_configuration_could_not_be_changed">Taajuusasetusta ei voitu muuttaa.</string>
+    <string name="share_eq_profiles">jaa EQ-profiileja</string>
     <string name="there_is_nothing_to_export">Ei ole mitään vietävää.</string>
     <string name="there_is_nothing_to_import">Ei ole mitään tuotavaa.</string>
-    <string name="an_unexpected_error_occurred">An unexpected error occurred.</string>
+    <string name="an_unexpected_error_occurred">Odottamaton virhe tapahtui.</string>
     <string name="share_profiles">Share profiles</string>
     <string name="select_profiles_to_share">Select profiles to share:</string>
     <string name="export_profiles">Export profiles</string>
@@ -438,8 +424,7 @@
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">Reset equalizer</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
-        \n\nThis will clear all your profiles.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Ei tuettu</string>
     <string name="set_eq_engine_title">Set EQ engine</string>
     <string name="eq_engine_basic_title">Legacy Engine</string>
@@ -481,16 +466,11 @@
     <string name="custom">Mukautettu</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Äänen Siirto</string>
-    <string name="enable_audio_offload_description">Sallii laitteen käsitellä ääntä suoraan laitteiston kautta, mikä vähentää suorittimen käyttöä ja säästää akkua.
-        Tämä ominaisuus on tuettu vain tietyillä laitteilla. Jotkin efektit tai ominaisuudet eivät välttämättä toimi kun ne on otettu käyttöön.
-        Uudelleenkäynnistys on tarpeen, jotta muutokset tulevat voimaan.</string>
+    <string name="enable_audio_offload_description">Sallii laitteen käsitellä ääntä suoraan laitteiston kautta, mikä vähentää suorittimen käyttöä ja säästää akkua. Tämä ominaisuus on tuettu vain tietyillä laitteilla. Jotkin efektit tai ominaisuudet eivät välttämättä toimi kun ne on otettu käyttöön. Uudelleenkäynnistys on tarpeen, jotta muutokset tulevat voimaan.</string>
     <string name="enable_audio_float_output_title">High-Precision Audio Ulostulo</string>
-    <string name="enable_audio_float_output_description">Mahdollistaa 32-bittisen liukulukuäänen paremman äänenlaadun.
-        Muista, että tämä poistaa käytöstä ominaisuudet, kuten ReplayGain, ohita hiljaisuus ja äänenvoimakkuuden tasapaino.
-        Se saattaa käyttää hieman enemmän akkua, ja sinun täytyy käynnistää sovellus uudelleen, jotta se tulee voimaan.</string>
+    <string name="enable_audio_float_output_description">Mahdollistaa 32-bittisen liukulukuäänen paremman äänenlaadun. Muista, että tämä poistaa käytöstä ominaisuudet, kuten ReplayGain, ohita hiljaisuus ja äänenvoimakkuuden tasapaino. Se saattaa käyttää hieman enemmän akkua, ja sinun täytyy käynnistää sovellus uudelleen, jotta se tulee voimaan.</string>
     <string name="skip_silence_title">Ohita Hiljaisuus</string>
-    <string name="skip_silence_description">Ohita äänettömät osat automaattisesti toiston aikana.
-        Ihanteellinen podcasteille ja nauhoituksille.</string>
+    <string name="skip_silence_description">Ohita äänettömät osat automaattisesti toiston aikana. Ihanteellinen podcasteille ja nauhoituksille.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Näytä sanoitukset</string>
     <string name="action_hide_lyrics">Piilota sanoitukset</string>
@@ -501,7 +481,7 @@
     <string name="external_file_lyrics">Ulkoinen tiedosto</string>
     <string name="action_import_synchronized_lyrics">Tuo synkronoidut sanoitukset</string>
     <string name="action_share_synchronized_lyrics">Jaa synkronoidut sanoitukset</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Haluatko tuoda synkronoidut LRC sanoitukset <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Haluatko tuoda synkronoidut LRC sanoitukset <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Tuotu sanoitus %s</string>
     <string name="could_not_import_lyrics_for_song_x">Sanoituksia ei voitu tuoda %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Valitse LRC-tiedosto, joka sisältää synkronoituja sanoituksia.</string>
@@ -528,7 +508,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Lopeta viimeinen kappale</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Pysäytä tämän kappaleen jälkeen</string>
     <string name="sleep_timer_stop_after_x">Pysäytä %s jälkeen</string>
     <string name="sleep_timer_stop_after_x_canceled">Pysäytä %själkeen: peruutettu</string>
@@ -539,10 +521,7 @@
     <string name="app_shortcut_favorites_short">Suosikit</string>
     <!-- About page -->
     <string name="action_about">Tietoja</string>
-    <string name="application">Sovellus</string>
-    <string name="version">Versio</string>
     <string name="changelog">Muutosloki</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Lisenssit</string>
     <string name="author">Tekijä</string>
@@ -553,13 +532,8 @@
     <string name="translators_summary">Kiitos niille, jotka tekevät Booming musiikkia saatavilla monilla kielillä.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegram chat</string>
-    <string name="telegram_chat_summary">Liity chattiin Telegramissa ja saa tietoa uusista julkaisuista ja uutisista.</string>
     <string name="view_profile_on_github">Näytä profiili GitHubissa</string>
-    <string name="follow_on_telegram">DM Telegramissa</string>
     <string name="write_an_email">Kirjoita sähköposti</string>
-    <string name="buy_me_a_coffee">Osta minulle kahvi</string>
-    <string name="buy_me_a_coffee_summary">Voit tehdä pienen lahjoituksen, jos mielestäsi työni ansaitsee sen.</string>
     <string name="support_development">Tue kehitystä</string>
     <string name="help_with_translations">Auta käännösten kanssa</string>
     <string name="help_with_translations_summary">Voit osallistua projektiin auttamalla kääntämään Booming Music muille kielille.</string>
@@ -570,9 +544,6 @@
     <string name="send_invitation_message">Lähetä kutsu viesti</string>
     <string name="invitation_message_content">Hei. Tsekkaa Booming Music! Paras sovellus kuunnella paikallista musiikkia Androidissa. Voit ladata sen täältä: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Ilmoita ongelmasta</string>
-    <string name="device_info">Laitteen tiedot</string>
-    <string name="copied_device_info_to_clipboard">Kopioitu laitteen tiedot leikepöydälle.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Sinut välitetään edelleen ongelman seurannan verkkosivuille.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Tallennustilan Käyttö Vaaditaan</string>
@@ -591,20 +562,17 @@
     <string name="playback_title">Toisto</string>
     <string name="playback_summary">Muuta ääniasetuksia, Bluetooth-kuulokkeita jne.</string>
     <string name="metadata_title">Metatiedot</string>
-    <string name="metadata_summary">Albumin ja artistien kuvien asetukset.</string>
     <string name="library_title">Kirjasto</string>
     <string name="library_summary">Soittolistojen ja poissulkemis- ja sisällyttämissuodattimien asetukset.</string>
     <string name="advanced_title">Lisäasetukset</string>
     <string name="advanced_summary">Sovelluksen sisäinen kieli ja muut asetukset edistyneille käyttäjille.</string>
     <string name="update_title">Päivitä</string>
-    <string name="update_summary">Sovelluksen päivitysten asetukset.</string>
     <string name="about_title">Tietoja</string>
     <string name="about_summary">Kukoistava musiikki %s, kosketa lisätietoja.</string>
     <!-- Preference headers -->
     <string name="general_header">Yleiset</string>
     <string name="library_header">Kirjasto</string>
     <string name="album_cover_header">Kansi</string>
-    <string name="artist_image_header">Esittäjän kuva</string>
     <string name="exclusion_header">Poissulkemiset</string>
     <string name="controls_header">Ohjaimet</string>
     <string name="gestures_header">Eleet</string>
@@ -641,6 +609,7 @@
     <string name="lyrics_effects_note">Kehittyneet efektit parantavat visuaalista kokemusta, mutta ne saattavat vaatia enemmän järjestelmäresursseja ja akkua.</string>
     <string name="lyrics_background_effect_title">Taustan efekti</string>
     <string name="lyrics_background_gradient">Gradientti</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Sumennus efekti</string>
     <string name="lyrics_blur_effect_summary">Sumentaa nykyisen sanoitusten viereiset rivit.</string>
     <string name="lyrics_shadow_effect_title">Varjo efekti</string>
@@ -660,14 +629,13 @@
     <string name="unsynced_font_size_full_title">Synkronoimattomat sanoitukset kirjasimen koko (koko näkymä)</string>
     <string name="unsynced_font_size_full_summary">Säädä kirjasimen kokoa synkronoimattomille sanoituksille koko sanoitusten näytössä.</string>
     <string name="instrumental_tracks_identifiers_title">Instrumentaaliset raidan tunnisteet</string>
-    <string name="instrumental_tracks_identifiers_summary">Jos kappaleen sanoitukset koostuvat vain
-        yhdestä tai useammasta näistä osoittimista, ne merkitään instrumentaaliseksi kappaleeksi (pilkulla erotettuna).</string>
+    <string name="instrumental_tracks_identifiers_summary">Jos kappaleen sanoitukset koostuvat vain yhdestä tai useammasta näistä osoittimista, ne merkitään instrumentaaliseksi kappaleeksi (pilkulla erotettuna).</string>
     <string name="instrumental_tracks_mark_by_title_title">Merkitse otsikon mukaan</string>
     <string name="instrumental_tracks_mark_by_title_summary">Reitin otsikko otetaan huomioon myös etsittäessä tunnisteita.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding. This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics. It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Tyyli</string>
     <string name="open_on_play_title">Avaa toiston aikana</string>
@@ -713,18 +681,18 @@
     <string name="select_extra_info_summary">Valitse lisätiedot, jotka näytetään soittimen paneelissa.</string>
     <string name="prefer_remaining_time_title">Suosi jäljellä olevaa aikaa</string>
     <string name="prefer_remaining_time_summary">Näytä jäljellä oleva aika kappaleen keston sijaan.</string>
-    <string name="prefer_album_artist_name_title">"Suosi Album-artistin nimeä"</string>
+    <string name="prefer_album_artist_name_title">Suosi Album-artistin nimeä</string>
     <string name="prefer_album_artist_name_summary">Näyttää Album-artistin nimen Song-artistin nimen sijaan (jos saatavilla).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Toista käynnistettäessä</string>
     <string name="queue_next_mode_title">\"Jono seuraavaksi\" -tila</string>
-    <string name="search_auto_queue_title">Lisää kaikki hakutulokset jonoon</string>
-    <string name="search_auto_queue_summary">Kun soitat kappaletta hakunäytöstä, kaikki muut tulokset on myös jonotettu.</string>
     <string name="remember_shuffle_mode_title">Muista Sekoitus</string>
     <string name="remember_shuffle_mode_summary">Sekoitustila pysyy päällä, kun valitaan uusi kappaleluettelo.</string>
     <string name="album_shuffle_mode_title">Albumin sekoitustila</string>
     <string name="artist_shuffle_mode_title">Esittäjän sekoitustila</string>
-    <string name="rewind_with_back_title">"Rewind kanssa 'Edellinen'"</string>
+    <string name="rewind_with_back_title">Rewind kanssa \'Edellinen\'</string>
     <string name="rewind_with_back_summary">Rewind soittokappale alkaa tai siirry edelliseen kappaleeseen, jos nykyinen kappale on alussa.</string>
     <string name="rewind_fast_forward_amount_title">Rewind/Nopea toimitus</string>
     <string name="rewind_fast_forward_amount_summary">Aika (sekunneissa) kelautumiseen tai nopeaan eteenpäin käyttöliittymän tai ulkoisen ohjaimen avulla.</string>
@@ -741,9 +709,7 @@
     <string name="pause_on_zero_volume_title">Pysäytä nolla äänenvoimakkuudella</string>
     <string name="pause_on_zero_volume_summary">Keskeyttää kappaleen kun äänenvoimakkuus pienenee nollaan ja alkaa toistaa kun äänenvoimakkuuden taso nousee. Toimii myös sovelluksen ulkopuolella.</string>
     <string name="mp3_index_seeking_title">MP3-indeksin haku</string>
-    <string name="mp3_index_seeking_summary">Lataa koko MP3-tiedoston muistiin etsimään sen sijaan, että tukeuduttaisiin Xing otsikkoon.
-        Käytä vain, jos hakeminen epäonnistuu joissakin VBR-tiedostoissa.
-        vaatii sovelluksen uudelleenkäynnistyksen.</string>
+    <string name="mp3_index_seeking_summary">Lataa koko MP3-tiedoston muistiin etsimään sen sijaan, että tukeuduttaisiin Xing otsikkoon. Käytä vain, jos hakeminen epäonnistuu joissakin VBR-tiedostoissa. vaatii sovelluksen uudelleenkäynnistyksen.</string>
     <string name="play_option_always_visible_title">Pidä \"Toista\" vaihtoehto näkyvissä</string>
     <string name="play_option_always_visible_summary">Jos käytössä, \"Toisto\" -vaihtoehto näkyy aina kappaleen valikossa riippumatta siitä, onko käytös napauttamalla.</string>
     <string name="play_option_whole_list_title">\"Toista\" vaihtoehto soittaa koko listan</string>
@@ -765,13 +731,11 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Lataa metatiedot automaattisesti</string>
     <string name="ignore_media_store_album_covers_title">Älä huomioi Media Storen kansia</string>
     <string name="ignore_media_store_album_covers_summary">Tämä voi auttaa parantamaan kuvien laatua, mutta vaatii enemmän muistia.</string>
     <string name="use_folder_album_cover_title">Käytä kansion kuvia</string>
     <string name="use_folder_album_cover_summary">Jos äänitiedosto ei sisällä upotettua kantta. Kuvat saattavat kestää hieman enemmän aikaa ladata.</string>
     <string name="online_artist_images_title">Lataa artistin kuvat</string>
-    <string name="online_artist_images_summary">Tämä riippuu metadatan latauskäytännöstäsi.</string>
     <string name="preferred_image_size_title">Ensisijainen kuvan koko</string>
     <string name="online_album_covers_title">Lataa puuttuvat albumin kannet</string>
     <string name="online_album_covers_summary">Ladattuja kuvia ei ole upotettu äänitiedostoihin, ne näkyvät vain sovelluksessa. Tämä riippuu metadatan latauskäytännöstäsi.</string>
@@ -807,16 +771,12 @@
     <string name="restore_backup_summary">Palauta sovelluksen tiedot (ja tila) edellisestä varmuuskopiosta.</string>
     <string name="stop_when_closed_from_recents_title">Pysäytä suljettaessa viimeisimmistä versioista</string>
     <string name="stop_when_closed_from_recents_summary">Toisto pysähtyy, jos sovellus on suljettu viimeisimpien sovellusten luettelosta.</string>
-    <string name="stop_when_closed_from_recents_note">Huomautus: Jotkin laitteet, joilla on aggressiivinen muisti
-        tai akun hallinta, saattavat ohittaa tämän asetuksen ja pysäyttää sovelluksen aina, kun se poistetaan viimeisimmistä.</string>
+    <string name="stop_when_closed_from_recents_note">Huomautus: Jotkin laitteet, joilla on aggressiivinen muisti tai akun hallinta, saattavat ohittaa tämän asetuksen ja pysäyttää sovelluksen aina, kun se poistetaan viimeisimmistä.</string>
     <string name="rotation_lock_title">Kierto lukitus</string>
     <string name="rotation_lock_summary">Lukitse laitteen suunta. Hyödyllinen tapauksissa, joissa musiikki pysähtyy pyörittäessä laitetta tiettyjen valmistajan käytäntöjen vuoksi.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Vaalea</string>
     <string name="dark_theme_name">Tumma</string>
-    <string name="black_theme_name">Musta</string>
-    <string name="follow_system">Seuraa Järjestelmää</string>
-    <string name="label_auto">Automaattinen</string>
     <string name="labeled">Merkitty</string>
     <string name="unlabeled">Nimeämätön</string>
     <string name="selected">Valittu</string>
@@ -853,12 +813,6 @@
     <string name="this_month">Tässä kuussa</string>
     <string name="past_three_months">Viimeiset kolme kuukautta</string>
     <string name="this_year">Tänä vuonna</string>
-    <string name="priority_maximum">Maksimi</string>
-    <string name="priority_high">Korkea</string>
-    <string name="priority_normal">Normaali</string>
-    <string name="priority_low">Matala</string>
-    <string name="always">Aina</string>
-    <string name="only_on_wifi">Vain Wi-Fi</string>
     <string name="image_size_large">Suuri (hitaampi)</string>
     <string name="image_size_medium">Keskikokoinen (oletus, suositeltava)</string>
     <string name="image_size_small">Pieni (nopeampi, heikkolaatuinen)</string>
@@ -900,8 +854,7 @@
     <string name="download_action">Lataa</string>
     <string name="downloading_update">Ladataan kasvavan musiikin päivitystä.</string>
     <string name="uncaught_error_title">Hups! Tämän ei ollut tarkoitus tapahtua!</string>
-    <string name="uncaught_error_message">Vaikuttaa siltä, että jokin meni pieleen ja aiheutti sovelluksen kaatumisen.
-        Olisi hyödyllistä, jos voisit lähettää meille virheraportin meidän Telegram ryhmään tai sähköpostitse.</string>
+    <string name="uncaught_error_message">Vaikuttaa siltä, että jokin meni pieleen ja aiheutti sovelluksen kaatumisen. Olisi hyödyllistä, jos voisit lähettää meille virheraportin meidän Telegram ryhmään tai sähköpostitse.</string>
     <string name="uncaught_error_report">Virhe raportti</string>
     <string name="uncaught_error_report_copied">Kopioitu virheraportti leikepöydälle.</string>
     <string name="uncaught_error_restart_app">Käynnistä sovellus uudelleen</string>

@@ -90,18 +90,18 @@ class YearAdapter(
     inner class ViewHolder(itemView: View) : MediaEntryViewHolder(itemView) {
 
         private val currentYear: ReleaseYear
-            get() = dataSet[layoutPosition]
+            get() = dataSet[bindingAdapterPosition]
 
         override fun onClick(view: View) {
             if (isInQuickSelectMode) {
-                toggleChecked(layoutPosition)
+                toggleChecked(bindingAdapterPosition)
             } else {
                 callback?.yearClick(currentYear)
             }
         }
 
         override fun onLongClick(view: View): Boolean {
-            toggleChecked(layoutPosition)
+            toggleChecked(bindingAdapterPosition)
             return true
         }
 

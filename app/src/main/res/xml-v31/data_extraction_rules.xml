@@ -2,12 +2,9 @@
 <data-extraction-rules xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="FullBackupContent">
     <cloud-backup>
-        <include domain="database" path="song_play_count.db"/>
-        <include domain="database" path="history.db"/>
+        <include domain="database" path="music_database.db"/>
 
-        <include domain="sharedpref" path="BoomingAudioFX.xml"/>
-
-        <exclude domain="database" path="music_playback_state.db"/>
         <exclude domain="sharedpref" path="artist_signatures.xml"/>
+        <exclude domain="sharedpref" path="custom_artist_images.xml"/>
     </cloud-backup>
 </data-extraction-rules>

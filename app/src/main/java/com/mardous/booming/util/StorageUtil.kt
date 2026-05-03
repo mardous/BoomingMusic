@@ -18,20 +18,22 @@
 package com.mardous.booming.util
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Environment
 import android.os.storage.StorageManager
 import android.os.storage.StorageVolume
 import android.util.Log
 import androidx.core.content.getSystemService
 import com.mardous.booming.R
-import com.mardous.booming.appContext
 import com.mardous.booming.core.model.filesystem.StorageDevice
 import com.mardous.booming.extensions.hasR
 import kotlinx.io.IOException
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
 import java.io.File
 import java.lang.reflect.InvocationTargetException
 
-object StorageUtil {
+object StorageUtil : KoinComponent {
 
     private val _storageVolumes = mutableListOf<StorageDevice>()
 
@@ -45,7 +47,7 @@ object StorageUtil {
     fun refreshStorageVolumes(): List<StorageDevice> {
         _storageVolumes.clear()
         try {
-            val context = appContext()
+            val context = get<Context>()
             val storageManager = context.getSystemService<StorageManager>()
                 ?: return emptyList()
 

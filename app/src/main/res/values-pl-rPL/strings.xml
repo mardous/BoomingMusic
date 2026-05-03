@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">Nie znaleziono playlist do importu.</string>
     <string name="playlist_x_not_imported">Playlista %s nie została zaimportowana.</string>
     <string name="action_import_playlist">Importuj playlistę…</string>
-    <string name="action_new_playlist">Nowa playlista…</string>
     <string name="new_playlist_title">Nowa playlista</string>
     <string name="add_playlist_title">Dodaj do playlisty</string>
     <string name="rename_playlist_title">Zmień nazwę playlisty</string>
@@ -87,12 +86,10 @@
     <string name="saved_x_playlists_failed_to_save_x">Zapisano %1$d playlisty, nie udało się zapisać %2$d.</string>
     <string name="delete_playlist_title">Usuń playlistę</string>
     <string name="delete_playlists_title">Usuń listy odtwarzania</string>
-    <string name="delete_playlist_x"><![CDATA[Czy na pewno chcesz usunąć playlistę <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[Czy na pewno chcesz usunąć playlistę <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[Usunąć <b>%d</b> playlisty?]]></string>
     <string name="created_playlist_x">Utworzono playlistę \'%1$s\'.</string>
     <string name="could_not_create_playlist">Nie można utworzyć listy odtwarzania.</string>
-    <string name="inserted_one_song_into_playlist_x">Dodano jeden utwór do listy odtwarzania %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">Dodano %1$d utwory do listy odtwarzania %2$s.</string>
     <string name="playlist_exists">Playlista o nazwie %s już istnieje.</string>
     <string name="playlist_created">Utworzono playlistę %s.</string>
     <string name="remove_song_from_playlist_title">Usuń utwór z listy odtwarzania</string>
@@ -135,8 +132,7 @@
     <string name="permission_bluetooth_description">Dostęp do pobliskich urządzeń jest wymagany do wykrywania urządzeń Bluetooth</string>
     <string name="permission_bluetooth_denied">Nie przyznano dostępu do pobliskich urządzeń.</string>
     <string name="permission_read_images_title">Dostęp do zdjęć (opcjonalny)</string>
-    <string name="permission_read_images_summary">Pozwala aplikacji Booming Music znajdować okładki albumów w folderach z muzyką.
-        Nie jest wymagane, jeśli nie zależy ci na tej funkcji.</string>
+    <string name="permission_read_images_summary">Pozwala aplikacji Booming Music znajdować okładki albumów w folderach z muzyką. Nie jest wymagane, jeśli nie zależy ci na tej funkcji.</string>
     <string name="permission_read_images_denied">Wymagane jest uprawnienie do odczytu obrazów z urządzenia.</string>
     <string name="permission_exact_alarms_title">Alarmy i przypomnienia (opcjonalnie)</string>
     <string name="permission_exact_alarms_description">Aby zegar uśpienia działał poprawnie, potrzebna jest zgoda na ustawianie alarmów</string>
@@ -151,16 +147,11 @@
     <string name="hello_there">Cześć!</string>
     <string name="welcome_to_x">Witamy w %s</string>
     <string name="get_started">Rozpocznij</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> nie jest wymieniony w sklepie multimedialnym.]]></string>
-    <string name="some_files_are_not_listed_in_the_media_store">Niektóre pliki nie są wyświetlane w sklepie multimedialnym.</string>
-    <string name="nothing_to_scan">Nic do skanowania</string>
     <string name="select_storage_title">Wybierz pamięć</string>
     <string name="now_playing">Teraz odtwarzane</string>
     <string name="playing_queue_label">Kolejka odtwarzania</string>
     <string name="list_start">Początek kolejki</string>
     <string name="list_end">Koniec kolejki</string>
-    <string name="empty_play_queue">Pusta kolejka odtwarzania.</string>
-    <string name="save_queue">Zapisz kolejkę</string>
     <string name="clear_queue">Wyczyść kolejkę</string>
     <string name="action_move_to_current_track">Pokaż bieżący utwór</string>
     <string name="action_add_to_favorites">Dodaj do ulubionych</string>
@@ -173,17 +164,15 @@
     <string name="action_add_to_playing_queue">Dodaj do kolejki</string>
     <string name="action_remove_from_playing_queue">Usuń z kolejki odtwarzania</string>
     <string name="put_after_current_track">Umieść po bieżącym utworze</string>
-    <string name="undo_action">Cofnij</string>
     <string name="set_artist_image">Ustaw obraz artysty</string>
     <string name="reset_artist_image">Zresetuj obraz wykonawcy</string>
     <string name="there_is_nothing_to_reset">Nie ma nic do zresetowania.</string>
-    <string name="updating">Aktualizacja…</string>
     <string name="add_to_label">Dodaj do</string>
     <string name="go_to_label">Przejdź do</string>
     <string name="action_go_to_album">Przejdź do albumu</string>
     <string name="action_go_to_artist">Wykonawca</string>
     <string name="action_go_to_genre">Przejdź do gatunku</string>
-    <string name="added_title_to_playing_queue">"Dodano 1 utwór do kolejki odtwarzania."</string>
+    <string name="added_title_to_playing_queue">Dodano 1 utwór do kolejki odtwarzania.</string>
     <string name="added_x_titles_to_playing_queue">Dodano %1$d utwory do kolejki odtwarzania.</string>
     <string name="next_song_label">Następny utwór</string>
     <string name="next_song_x">Następnie • %1$s</string>
@@ -267,7 +256,7 @@
     <string name="update_image">Aktualizuj obraz</string>
     <string name="restore_default">Przywróć domyślne</string>
     <string name="remove_cover">Usuń okładkę</string>
-    <string name="could_not_download_album_cover">"Nie można pobrać pasującej okładki albumu\u2019t."</string>
+    <string name="could_not_download_album_cover">Nie można pobrać pasującej okładki albumu’t.</string>
     <string name="download_image">Pobierz obraz</string>
     <string name="pick_from_local_storage">Wybierz z pamięci lokalnej</string>
     <string name="about_x_title">Na temat %s</string>
@@ -279,8 +268,7 @@
     <string name="save_artwork_success">Zapisano okładkę albumu</string>
     <string name="save_artwork_view_action">Wyświetl</string>
     <string name="save_artwork_copyright_info_title">Prawa autorskie</string>
-    <string name="save_artwork_copyright_info_message">Okładki albumów mogą być chronione prawem autorskim. Nie używaj ich w celach komercyjnych ani reklamowych.
-        \n\nOdpowiedzialność za ich sposób wykorzystania  ponosisz wyłącznie Ty.</string>
+    <string name="save_artwork_copyright_info_message">Okładki albumów mogą być chronione prawem autorskim. Nie używaj ich w celach komercyjnych ani reklamowych. \n\nOdpowiedzialność za ich sposób wykorzystania ponosisz wyłącznie Ty.</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
     <string name="keyboard">Pokaż klawiaturę</string>
@@ -315,11 +303,11 @@
     <string name="skipped">Pominięto</string>
     <string name="track">Numer utworu</string>
     <string name="track_total">Wszystkie utwory</string>
-    <string name="disc">Numer płyty </string>
+    <string name="disc">Numer płyty</string>
     <string name="disc_total">Liczba płyt</string>
     <string name="lyrics">Tekst piosenki</string>
     <string name="lyricist">Autor tekstu</string>
-    <string name="could_not_load_the_song_information">"Nie można załadować informacji o utworze."</string>
+    <string name="could_not_load_the_song_information">Nie można załadować informacji o utworze.</string>
     <string name="no_results">Brak wyników</string>
     <string name="connection_unavailable">Połączenie niedostępne.</string>
     <string name="you_have_to_select_at_least_one_category">Musisz wybrać co najmniej jedną kategorię</string>
@@ -396,8 +384,8 @@
         <item quantity="many">%d elementów</item>
         <item quantity="other">%d elementów</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">Dla Ciebie</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">Odtwarzaj losowo</string>
     <string name="top_artists">Ulubieni artyści</string>
     <string name="top_albums">Ulubione albumy</string>
@@ -430,9 +418,7 @@
     <string name="autoeq_profiles_title">Profile AutoEq</string>
     <string name="eq_profile_title">Profil</string>
     <string name="change_band_count_title">Zmiana liczby pasm</string>
-    <string name="change_band_count_message">Zmiana liczby pasm przywróci domyślne ustawienia obecnego profilu.
-        Inne zapisane wcześniej profile nie będą mogły być użyte z nową konfiguracją pasm.
-        \n\nCzy chcesz kontynuować?</string>
+    <string name="change_band_count_message">Zmiana liczby pasm przywróci domyślne ustawienia obecnego profilu. Inne zapisane wcześniej profile nie będą mogły być użyte z nową konfiguracją pasm. \n\nCzy chcesz kontynuować?</string>
     <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
     <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
     <string name="share_eq_profiles">Share EQ Profiles</string>
@@ -454,8 +440,7 @@
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">Reset equalizer</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
-        \n\nThis will clear all your profiles.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Nie obsługiwane</string>
     <string name="set_eq_engine_title">Set EQ engine</string>
     <string name="eq_engine_basic_title">Legacy Engine</string>
@@ -497,16 +482,11 @@
     <string name="custom">Własny</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">Odciążenie audio</string>
-    <string name="enable_audio_offload_description">Zmniejsza zużycie baterii, przekierowując przetwarzanie dźwięku do układu sprzętowego urządzenia.
-        Niektóre funkcje mogą być niedostępne zależne od urządzenia.
-        Wymaga ponownego uruchomienia aplikacji.</string>
+    <string name="enable_audio_offload_description">Zmniejsza zużycie baterii, przekierowując przetwarzanie dźwięku do układu sprzętowego urządzenia. Niektóre funkcje mogą być niedostępne zależne od urządzenia. Wymaga ponownego uruchomienia aplikacji.</string>
     <string name="enable_audio_float_output_title">Precyzyjne wyjście audio</string>
-    <string name="enable_audio_float_output_description">Włącza 32-bitowy dźwięk zmiennoprzecinkowy dla lepszej jakości dźwięku.
-        Pamiętaj, że spowoduje to wyłączenie funkcji takich jak ReplayGain, pomijanie ciszy i balansu głośności.
-        Może też nieznacznie zwiększyć zużycie baterii. Aby zastosować zmiany, uruchom aplikację ponownie.</string>
+    <string name="enable_audio_float_output_description">Włącza 32-bitowy dźwięk zmiennoprzecinkowy dla lepszej jakości dźwięku. Pamiętaj, że spowoduje to wyłączenie funkcji takich jak ReplayGain, pomijanie ciszy i balansu głośności. Może też nieznacznie zwiększyć zużycie baterii. Aby zastosować zmiany, uruchom aplikację ponownie.</string>
     <string name="skip_silence_title">Pomiń ciszę między utworami</string>
-    <string name="skip_silence_description">Automatycznie pomija ciszę podczas odtwarzania.
-        Idealne na podcasty i nagrania.</string>
+    <string name="skip_silence_description">Automatycznie pomija ciszę podczas odtwarzania. Idealne na podcasty i nagrania.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Pokaż tekst utworu</string>
     <string name="action_hide_lyrics">Ukryj teksty</string>
@@ -517,7 +497,7 @@
     <string name="external_file_lyrics">Zewnętrzny plik</string>
     <string name="action_import_synchronized_lyrics">Importuj zsynchronizowane teksty</string>
     <string name="action_share_synchronized_lyrics">Udostępnij zsynchronizowane teksty</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Czy chcesz zaimportować zsynchronizowane teksty piosenek LRC dla <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Czy chcesz zaimportować zsynchronizowane teksty piosenek LRC dla <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">Zaimportowano tekst dla utworu %s</string>
     <string name="could_not_import_lyrics_for_song_x">Nie udało się zaimportować tekstu dla %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">Wybierz plik LRC zawierający zsynchronizowany tekst utworu.</string>
@@ -544,7 +524,9 @@
     <string name="sleep_timer_15_mins">15 minut</string>
     <string name="sleep_timer_45_mins">45 minut</string>
     <string name="sleep_timer_1_hour">1 godzina</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">Dokończ ostatni utwór</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">Zatrzymaj się po tym utworze</string>
     <string name="sleep_timer_stop_after_x">Zatrzymaj się za %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Zatrzymaj się po %s: anulowany</string>
@@ -555,10 +537,7 @@
     <string name="app_shortcut_favorites_short">Ulubione</string>
     <!-- About page -->
     <string name="action_about">O programie</string>
-    <string name="application">Aplikacja</string>
-    <string name="version">Wersja</string>
     <string name="changelog">Lista zmian</string>
-    <string name="fork_on_github">GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licencje</string>
     <string name="author">Autor</string>
@@ -569,13 +548,8 @@
     <string name="translators_summary">Podziękowania dla tych, którzy umożliwiają korzystanie z Booming Music w wielu językach.</string>
     <string name="contributors_title">Współtwórcy</string>
     <string name="contributors_summary">Lista użytkowników, którzy w jakiś sposób przyczynili się do rozwoju projektu.</string>
-    <string name="telegram_chat">Czat na Telegramie</string>
-    <string name="telegram_chat_summary">Dołącz do czatu w Telegramie i otrzymuj informacje o nowych wersjach i wiadomościach.</string>
     <string name="view_profile_on_github">Zobacz profil GitHub</string>
-    <string name="follow_on_telegram">Wyślij wiadomość na Telegramie</string>
     <string name="write_an_email">Wyślij email</string>
-    <string name="buy_me_a_coffee">Postaw mi kawę</string>
-    <string name="buy_me_a_coffee_summary">You can make a small donation if you think my work deserves it.</string>
     <string name="support_development">Wesprzyj rozwój</string>
     <string name="help_with_translations">Pomóż z tłumaczeniem</string>
     <string name="help_with_translations_summary">Możesz przyczynić się do rozwoju projektu pomagając w tłumaczeniu Booming Music na inne języki.</string>
@@ -586,9 +560,6 @@
     <string name="send_invitation_message">Wyślij wiadomość z zaproszeniem</string>
     <string name="invitation_message_content">Cześć. Sprawdź Booming Music! Najlepsza aplikacja do słuchania lokalnej muzyki na Androida. Możesz ją pobrać tutaj: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">Zgłoś problem</string>
-    <string name="device_info">Informacje o urządzeniu</string>
-    <string name="copied_device_info_to_clipboard">Skopiowano informacje o urządzeniu do schowka.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">Zostaniesz przekierowany na stronę śledzenia problemów.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Wymagany dostęp do pamięci</string>
@@ -607,20 +578,17 @@
     <string name="playback_title">Odtwarzanie</string>
     <string name="playback_summary">Ustawienia audio, urządzeń Bluetooth i nie tylko.</string>
     <string name="metadata_title">Metadane</string>
-    <string name="metadata_summary">Ustawienia grafik albumów i wykonawców.</string>
     <string name="library_title">Biblioteka</string>
     <string name="library_summary">Ustawienia playlist i filtrów selekcji utworów.</string>
     <string name="advanced_title">Zaawansowane</string>
     <string name="advanced_summary">Język aplikacji i inne ustawienia dla zaawansowanych użytkowników.</string>
     <string name="update_title">Aktualizacje</string>
-    <string name="update_summary">Ustawienia aktualizacji aplikacji.</string>
     <string name="about_title">O programie</string>
     <string name="about_summary">Booming Music %s, naciśnij, aby dowiedzieć się więcej.</string>
     <!-- Preference headers -->
     <string name="general_header">Ogólny</string>
     <string name="library_header">Biblioteka</string>
     <string name="album_cover_header">Okładka</string>
-    <string name="artist_image_header">Obraz artysty</string>
     <string name="exclusion_header">Wykluczenia</string>
     <string name="controls_header">Sterowanie</string>
     <string name="gestures_header">Gesty</string>
@@ -657,6 +625,7 @@
     <string name="lyrics_effects_note">Zaawansowane efekty może i wyglądają dobrze, ale mogą wymagać więcej zasobów i baterii.</string>
     <string name="lyrics_background_effect_title">Efekt tła</string>
     <string name="lyrics_background_gradient">Gradient</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">Efekt rozmycia</string>
     <string name="lyrics_blur_effect_summary">Rozmywa linie tekstu sąsiadujące z aktualnie odtwarzaną.</string>
     <string name="lyrics_shadow_effect_title">Cieniowanie tekstu</string>
@@ -676,14 +645,13 @@
     <string name="unsynced_font_size_full_title">Rozmiar czcionki niezsynch. tekstów (pełny ekran)</string>
     <string name="unsynced_font_size_full_summary">Dostosuj rozmiar czcionki dla niezsynchronizowanych tekstów w pełnym widoku tekstu.</string>
     <string name="instrumental_tracks_identifiers_title">Instrumental track identifiers</string>
-    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only
-        one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
+    <string name="instrumental_tracks_identifiers_summary">If a song\'s lyrics consist of only one or more of these indicators, it will be marked as an instrumental track (separated by comma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Mark by title</string>
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding. This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics. It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Styl odtwarzacza</string>
     <string name="open_on_play_title">Otwórz przy odtwarzaniu</string>
@@ -729,18 +697,18 @@
     <string name="select_extra_info_summary">Wybierz dodatkowe informacje do wyświetlenia w panelu odtwarzacza.</string>
     <string name="prefer_remaining_time_title">Pokazuj pozostały czas</string>
     <string name="prefer_remaining_time_summary">Wyświetlaj pozostały czas zamiast długości utworu.</string>
-    <string name="prefer_album_artist_name_title">"Preferuj imię wykonawcy albumu"</string>
+    <string name="prefer_album_artist_name_title">Preferuj imię wykonawcy albumu</string>
     <string name="prefer_album_artist_name_summary">Pokazuje nazwę wykonawcy albumu zamiast wykonawcy utworu (jeśli dostępne).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">Odtwarzaj po starcie</string>
     <string name="queue_next_mode_title">Dodawanie do kolejki</string>
-    <string name="search_auto_queue_title">Odtwarzaj wszystkie wyszukane</string>
-    <string name="search_auto_queue_summary">Po odtworzeniu utworu z wyszukiwania wszystkie pozostałe wyniki zostaną dodane do kolejki.</string>
     <string name="remember_shuffle_mode_title">Zapamiętaj tryb losowy</string>
     <string name="remember_shuffle_mode_summary">Tryb losowy pozostanie włączony podczas wybierania nowej listy utworów.</string>
     <string name="album_shuffle_mode_title">Sposób losowania albumów</string>
     <string name="artist_shuffle_mode_title">Sposób losowania wykonawców</string>
-    <string name="rewind_with_back_title">"Przewijanie przyciskiem \"Wstecz\""</string>
+    <string name="rewind_with_back_title">Przewijanie przyciskiem \"Wstecz\"</string>
     <string name="rewind_with_back_summary">Przewiń utwór na początek lub przejdź do poprzedniego, jeżeli aktualny jest dopiero rozpoczęty.</string>
     <string name="rewind_fast_forward_amount_title">Skok w czasie odtwarzania</string>
     <string name="rewind_fast_forward_amount_summary">Czas (w sekundach) przewijania do tyłu lub do przodu przy użyciu interfejsu lub zewnętrznych przycisków.</string>
@@ -757,9 +725,7 @@
     <string name="pause_on_zero_volume_title">Wstrzymuj przy zerowej głośności</string>
     <string name="pause_on_zero_volume_summary">Wstrzymuje odtwarzanie, gdy głośność spadnie do zera, i wznawia, gdy poziom głośności zostanie zwiększony. Działa także w tle.</string>
     <string name="mp3_index_seeking_title">Precyzyjne przewijanie MP3</string>
-    <string name="mp3_index_seeking_summary">Wczytuje cały plik MP3 do pamięci podręcznej, aby umożliwić dokładniejsze przewijanie.
-        Użyj tylko wtedy, gdy przewijanie nie działa poprawnie w niektórych plikach VBR.
-        Wymaga ponownego uruchomienia aplikacji.</string>
+    <string name="mp3_index_seeking_summary">Wczytuje cały plik MP3 do pamięci podręcznej, aby umożliwić dokładniejsze przewijanie. Użyj tylko wtedy, gdy przewijanie nie działa poprawnie w niektórych plikach VBR. Wymaga ponownego uruchomienia aplikacji.</string>
     <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
     <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
     <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
@@ -781,13 +747,11 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">Pobieranie metadanych</string>
     <string name="ignore_media_store_album_covers_title">Nie używaj okładek z magazynu multimediów</string>
     <string name="ignore_media_store_album_covers_summary">Może zwiększyć jakość obrazów kosztem zużycia pamięci.</string>
     <string name="use_folder_album_cover_title">Używaj obrazów z folderu</string>
     <string name="use_folder_album_cover_summary">Jeśli utwór nie posiada okładki albumu, aplikacja poszuka jej w folderze. Może to wydłużyć wczytywanie.</string>
     <string name="online_artist_images_title">Pobieraj obrazy artysty</string>
-    <string name="online_artist_images_summary">Zależy od ustawień pobierania metadanych.</string>
     <string name="preferred_image_size_title">Preferowany rozmiar obrazu</string>
     <string name="online_album_covers_title">Pobieraj brakujące okładki</string>
     <string name="online_album_covers_summary">Pobrane obrazy nie są osadzane w plikach audio; są tylko widoczne w aplikacji, zależnie od ustawień pobierania metadanych.</string>
@@ -823,16 +787,12 @@
     <string name="restore_backup_summary">Przywróć dane aplikacji (i stan) z wcześniejszej kopii zapasowej.</string>
     <string name="stop_when_closed_from_recents_title">Zatrzymaj odtwarzanie po zamknięciu z ostatnich</string>
     <string name="stop_when_closed_from_recents_summary">Zatrzymuje odtwarzanie po zamknięciu aplikacji z listy ostatnich aplikacji.</string>
-    <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią
-        lub baterią mogą to zignorować i zatrzymać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
+    <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią lub baterią mogą to zignorować i zatrzymać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
     <string name="rotation_lock_title">Blokada orientacji ekranu</string>
     <string name="rotation_lock_summary">Przydatna w sytuacjach, gdy muzyka zatrzymuje się po obróceniu ekranu z powodu ograniczeń producenta.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Jasny</string>
     <string name="dark_theme_name">Ciemny</string>
-    <string name="black_theme_name">Czarny</string>
-    <string name="follow_system">Systemowy</string>
-    <string name="label_auto">Auto</string>
     <string name="labeled">Podpisane</string>
     <string name="unlabeled">Ukryte</string>
     <string name="selected">Tylko wybrana</string>
@@ -869,12 +829,6 @@
     <string name="this_month">Ten miesiąc</string>
     <string name="past_three_months">Ostatnie trzy miesiące</string>
     <string name="this_year">Ten rok</string>
-    <string name="priority_maximum">Maksymalny</string>
-    <string name="priority_high">Wysoki</string>
-    <string name="priority_normal">Normalny</string>
-    <string name="priority_low">Niski</string>
-    <string name="always">Zawsze</string>
-    <string name="only_on_wifi">Tylko przez Wi-Fi</string>
     <string name="image_size_large">Duży (wolniejszy)</string>
     <string name="image_size_medium">Średni (domyślny, zalecany)</string>
     <string name="image_size_small">Mały (szybszy, niższa jakość)</string>
@@ -916,9 +870,7 @@
     <string name="download_action">Pobierz</string>
     <string name="downloading_update">Pobieranie aktualizacji Booming Music.</string>
     <string name="uncaught_error_title">Ups! Nie mieliśmy tego w planach!</string>
-    <string name="uncaught_error_message">Wygląda na to, że coś poszło nie tak i aplikacja uległa awarii.
-
-        Pomocne byłoby, gdybyś mógł przesłać nam raport błędu na naszą grupę na Telegramie lub e-mailem.</string>
+    <string name="uncaught_error_message">Wygląda na to, że coś poszło nie tak i aplikacja uległa awarii. Pomocne byłoby, gdybyś mógł przesłać nam raport błędu na naszą grupę na Telegramie lub e-mailem.</string>
     <string name="uncaught_error_report">Raport błędu</string>
     <string name="uncaught_error_report_copied">Skopiowano raport błędu do schowka.</string>
     <string name="uncaught_error_restart_app">Uruchom ponownie aplikację</string>

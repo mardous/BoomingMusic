@@ -51,11 +51,13 @@ class EqualizerViewModel(
     val balanceState = equalizerManager.balanceState
     val tempoState = equalizerManager.tempoState
     val replayGainState = equalizerManager.replayGainState
+    val bitPerfectAudio = equalizerManager.bitPerfectAudio
     val audioOffload = equalizerManager.audioOffload
     val audioFloatOutput = equalizerManager.audioFloatOutput
     val skipSilence = equalizerManager.skipSilence
     val volumeState = equalizerManager.volumeState
     val audioDevice = audioOutputObserver.audioDevice
+    val bitPerfectState = audioOutputObserver.bitPerfectState
 
     val autoEqProfiles = equalizerManager.autoEqProfiles
 
@@ -97,15 +99,6 @@ class EqualizerViewModel(
 
     private val _changeBandCountEvent = Channel<Boolean>(Channel.BUFFERED)
     val changeBandCountEvent: Flow<Boolean> = _changeBandCountEvent.receiveAsFlow()
-
-    init {
-        audioOutputObserver.startObserver()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        audioOutputObserver.stopObserver()
-    }
 
     fun setEqualizerState(isEnabled: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -169,6 +162,10 @@ class EqualizerViewModel(
 
     fun setCustomProfileBandGain(band: Int, gainInDb: Float) = viewModelScope.launch(Dispatchers.IO) {
         equalizerManager.setCustomProfileBandGain(band, gainInDb)
+    }
+
+    fun setEnableBitPerfect(enable: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setEnableBitPerfect(enable)
     }
 
     fun setEnableAudioOffload(enable: Boolean) = viewModelScope.launch(Dispatchers.IO) {

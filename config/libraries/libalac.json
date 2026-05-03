@@ -1,0 +1,12 @@
+{
+  "uniqueId": "libalac",
+  "developers": [
+    {
+      "name": "Apple Inc."
+    }
+  ],
+  "description": "The Apple Lossless Audio Codec (ALAC) is a lossless audio codec developed by Apple and deployed on all of its platforms and devices.",
+  "name": "libalac",
+  "website": "https://macosforge.github.io/alac/",
+  "licenses": ["Apache-2.0"]
+}

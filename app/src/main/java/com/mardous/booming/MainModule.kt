@@ -30,6 +30,8 @@ import com.mardous.booming.data.local.repository.AlbumRepository
 import com.mardous.booming.data.local.repository.ArtistRepository
 import com.mardous.booming.data.local.repository.GenreRepository
 import com.mardous.booming.data.local.repository.LyricsRepository
+import com.mardous.booming.data.local.repository.NetworkRepository
+import com.mardous.booming.data.local.repository.NetworkRepositoryImpl
 import com.mardous.booming.data.local.repository.PlaylistRepository
 import com.mardous.booming.data.local.repository.RealAlbumRepository
 import com.mardous.booming.data.local.repository.RealArtistRepository
@@ -51,6 +53,7 @@ import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.data.remote.github.GitHubService
 import com.mardous.booming.data.remote.jsonHttpClient
 import com.mardous.booming.data.remote.lastfm.LastFmService
+import com.mardous.booming.data.remote.listenbrainz.ListenBrainzService
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
 import com.mardous.booming.data.remote.provideOkHttp
 import com.mardous.booming.playback.SleepTimer
@@ -96,7 +99,10 @@ val networkModule = module {
         LastFmService(client = get())
     }
     single {
-        LyricsDownloadService(client = get())
+        ListenBrainzService(client = get())
+    }
+    single {
+        LyricsDownloadService(context = get(), client = get())
     }
 }
 
@@ -120,7 +126,8 @@ private val mainModule = module {
         EqualizerManager(
             context = androidContext(),
             balanceProcessor = get(),
-            replayGainProcessor = get()
+            replayGainProcessor = get(),
+            audioOutputObserver = get()
         )
     }
     single {
@@ -135,7 +142,7 @@ private val mainModule = module {
     single {
         CustomPlaylistImageManager(context = androidContext())
     }
-    factory {
+    single {
         AudioOutputObserver(context = androidContext())
     }
 }
@@ -146,7 +153,8 @@ private val roomModule = module {
             .addMigrations(
                 BoomingDatabase.MIGRATION_1_2,
                 BoomingDatabase.MIGRATION_2_3,
-                BoomingDatabase.MIGRATION_3_4
+                BoomingDatabase.MIGRATION_3_4,
+                BoomingDatabase.MIGRATION_4_5
             )
             .build()
     }
@@ -174,18 +182,12 @@ private val roomModule = module {
     factory {
         get<BoomingDatabase>().lyricsDao()
     }
-
-    factory {
-        get<BoomingDatabase>().canvasDao()
-    }
 }
 
 private val dataModule = module {
     single {
         RealRepository(
             context = androidContext(),
-            deezerService = get(),
-            lastFmService = get(),
             songRepository = get(),
             albumRepository = get(),
             artistRepository = get(),
@@ -193,7 +195,8 @@ private val dataModule = module {
             smartRepository = get(),
             specialRepository = get(),
             playlistRepository = get(),
-            searchRepository = get()
+            searchRepository = get(),
+            networkRepository = get()
         )
     } bind Repository::class
 
@@ -256,6 +259,16 @@ private val dataModule = module {
             lyricsDao = get()
         )
     } bind LyricsRepository::class
+
+    single {
+        NetworkRepositoryImpl(
+            context = androidContext(),
+            preferences = get(),
+            lastFmService = get(),
+            listenBrainzService = get(),
+            deezerService = get()
+        )
+    } bind NetworkRepository::class
 }
 
 private val viewModule = module {
@@ -284,11 +297,20 @@ private val viewModule = module {
     }
 
     viewModel { (albumId: Long) ->
-        AlbumDetailViewModel(repository = get(), albumId = albumId)
+        AlbumDetailViewModel(
+            application = androidApplication(),
+            repository = get(),
+            albumId = albumId
+        )
     }
 
     viewModel { (artistId: Long, artistName: String?) ->
-        ArtistDetailViewModel(repository = get(), artistId = artistId, artistName = artistName)
+        ArtistDetailViewModel(
+            application = androidApplication(),
+            repository = get(),
+            artistId = artistId,
+            artistName = artistName
+        )
     }
 
     viewModel { (playlistId: Long) ->

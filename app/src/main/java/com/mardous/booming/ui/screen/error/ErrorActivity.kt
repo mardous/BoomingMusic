@@ -8,7 +8,6 @@ import androidx.core.content.FileProvider
 import androidx.core.content.getSystemService
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash
 import com.mardous.booming.R
-import com.mardous.booming.appContext
 import com.mardous.booming.databinding.ActivityErrorBinding
 import com.mardous.booming.extensions.applyWindowInsets
 import com.mardous.booming.extensions.fileProviderAuthority
@@ -36,7 +35,7 @@ class ErrorActivity : AbsThemeActivity() {
         }
         val errorReport = CustomActivityOnCrash.getAllErrorDetailsFromIntent(this, intent)
         val nameFromTime = System.currentTimeMillis().asFormattedFileTime()
-        val errorReportFile = File(appContext().filesDir, "Crash_${nameFromTime}.log")
+        val errorReportFile = File(filesDir, "Crash_${nameFromTime}.log")
         if (!errorReportFile.exists() || errorReportFile.delete()) {
             errorReportFile.writeText(errorReport)
         }

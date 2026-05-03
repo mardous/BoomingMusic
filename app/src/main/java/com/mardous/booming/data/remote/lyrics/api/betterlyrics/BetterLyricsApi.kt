@@ -1,6 +1,7 @@
 package com.mardous.booming.data.remote.lyrics.api.betterlyrics
 
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.model.BetterLyricsResponse
 import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
@@ -12,6 +13,8 @@ import io.ktor.client.request.parameter
 import io.ktor.http.HttpStatusCode
 
 class BetterLyricsApi(private val client: HttpClient) : LyricsApi {
+
+    override val networkFeature = NetworkFeature.Lyrics.BetterLyrics
 
     override suspend fun songLyrics(
         song: Song,

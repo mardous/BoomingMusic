@@ -19,7 +19,12 @@ class AboutViewModel(private val repository: Repository) : ViewModel() {
     val translators = _translators.asStateFlow()
 
     val appVersion: String
-        get() = BuildConfig.VERSION_NAME
+        get() = buildString {
+            append(BuildConfig.VERSION_NAME)
+            if (BuildConfig.FLAVOR == "fdroid") {
+                append(" (F-Droid)")
+            }
+        }
 
     fun loadContributors() = viewModelScope.launch(Dispatchers.IO) {
         _contributors.value = repository.contributors()

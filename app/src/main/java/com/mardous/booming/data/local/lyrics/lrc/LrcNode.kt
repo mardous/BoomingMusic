@@ -4,6 +4,7 @@ import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
 
 internal class LrcNode(
+    val rawIndex: Int,
     val start: Long,
     val text: String?,
     var bgText: String?,
@@ -17,6 +18,7 @@ internal class LrcNode(
     fun addChild(start: Long, text: String?, actor: LyricsActor?): Boolean {
         if (start > INVALID_DURATION) {
             return children.add(LrcNode(
+                rawIndex = -1,
                 start = start,
                 text = text,
                 bgText = null,
@@ -27,14 +29,15 @@ internal class LrcNode(
         return false
     }
 
-    private fun toWord(startIndex: Int): Lyrics.Word {
-        check(!text.isNullOrBlank())
+    private fun toWord(startIndex: Int, trimEnd: Boolean = false): Lyrics.Word {
+        checkNotNull(text)
+        val wordText = if (trimEnd) text.trimEnd() else text
         return Lyrics.Word(
-            content = text,
+            content = wordText,
             startMillis = start,
             startIndex = startIndex,
             endMillis = end,
-            endIndex = startIndex + (text.length - 1),
+            endIndex = startIndex + (wordText.length - 1),
             durationMillis = (end - start),
             actor = actor
         )
@@ -48,12 +51,22 @@ internal class LrcNode(
             }
             children[children.lastIndex].end = end
 
-            val words = mutableListOf<Lyrics.Word>()
-            for (child in children) {
-                if (child.text.isNullOrBlank()) continue
+            var nextWordStartIndex = 0
+            val lastWordIndex = children.lastIndex
 
-                val startIndex = words.sumOf { it.content.length }
-                words.add(child.toWord(startIndex))
+            val words = mutableListOf<Lyrics.Word>()
+            for ((index, child) in children.withIndex()) {
+                if (index == lastWordIndex && child.text.isNullOrBlank())
+                    continue
+
+                val trimEnd = if (index == (lastWordIndex - 1)) {
+                    children[lastWordIndex].text.isNullOrBlank()
+                } else index == children.lastIndex
+
+                val word = child.toWord(nextWordStartIndex, trimEnd = trimEnd)
+                if (words.add(word)) {
+                    nextWordStartIndex += word.content.length
+                }
             }
 
             Lyrics.TextContent(
@@ -84,7 +97,8 @@ internal class LrcNode(
             durationMillis = (end - start),
             content = getTextContent(),
             translation = null,
-            actor = actor
+            actor = actor,
+            rawIndex = rawIndex
         )
     }
 

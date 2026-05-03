@@ -18,11 +18,10 @@
 package com.mardous.booming.data.remote.lyrics.api
 
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
 
-const val AppleMusicSource = "appleMusic"
-const val SpotifySource = "spotify"
-
 interface LyricsApi {
+    val networkFeature: NetworkFeature.Lyrics
     suspend fun songLyrics(song: Song, title: String, artist: String): DownloadedLyrics?
 }

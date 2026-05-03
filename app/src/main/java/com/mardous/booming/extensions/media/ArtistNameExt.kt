@@ -1,8 +1,9 @@
 package com.mardous.booming.extensions.media
 
+import android.content.Context
 import com.mardous.booming.R
-import com.mardous.booming.appContext
 import com.mardous.booming.data.model.Artist
+import org.koin.core.context.GlobalContext
 import java.util.regex.Pattern
 
 /**
@@ -20,12 +21,14 @@ fun String.toAlbumArtistName(): String {
     return this
 }
 
-fun String.displayArtistName(): String =
-    when {
-        isArtistNameUnknown() -> appContext().getString(R.string.unknown_artist)
-        isVariousArtists() -> appContext().getString(R.string.various_artists)
+fun String.displayArtistName(): String {
+    val context = GlobalContext.get().get<Context>()
+    return when {
+        isArtistNameUnknown() -> context.getString(R.string.unknown_artist)
+        isVariousArtists() -> context.getString(R.string.various_artists)
         else -> this
     }
+}
 
 internal fun String?.isVariousArtists(): Boolean {
     if (isNullOrBlank())

@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">אין רשימות השמעה שניתן לייבא.</string>
     <string name="playlist_x_not_imported">רשימת ההשמעה %s לא יובאה.</string>
     <string name="action_import_playlist">ייבוא רשימת השמעה…</string>
-    <string name="action_new_playlist">רשימת השמעה חדשה…</string>
     <string name="new_playlist_title">רשימת השמעה חדשה</string>
     <string name="add_playlist_title">הוסף לרשימת ההשמעה</string>
     <string name="rename_playlist_title">שנה שם לרשימת ההשמעה</string>
@@ -87,12 +86,10 @@
     <string name="saved_x_playlists_failed_to_save_x">נשמרו %1$d רשימות השמעה, שמירת %2$d מהם נכשלה.</string>
     <string name="delete_playlist_title">מחיקת רשימת השמעה</string>
     <string name="delete_playlists_title">מחיקת רשימות השמעה</string>
-    <string name="delete_playlist_x"><![CDATA[למחוק את רשימת ההשמעה <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[למחוק את רשימת ההשמעה <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[למחוק <b>%d</b> רשימות השמעה?]]></string>
     <string name="created_playlist_x">נוצרה רשימת ההשמעה \'%1$s\'.</string>
     <string name="could_not_create_playlist">לא ניתן היה ליצור את רשימת ההשמעה.</string>
-    <string name="inserted_one_song_into_playlist_x">נוסף שיר אחד לרשימת ההשמעה %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">נוספו %1$d שירים לרשימת ההשמעה %2$s.</string>
     <string name="playlist_exists">רשימת ההשמעה %s כבר קיימת.</string>
     <string name="playlist_created">רשימת ההשמעה %s נוצרה בהצלחה.</string>
     <string name="remove_song_from_playlist_title">הסר שיר מרשימת ההשמעה</string>
@@ -135,8 +132,7 @@
     <string name="permission_bluetooth_description">האפליקציה זקוקה להרשאה מכשירים בקרבת מקום כדי לבדוק אם יש מכשירי בלוטות\'</string>
     <string name="permission_bluetooth_denied">הרשאת הגישה למכשירים בקרבת מקום נדחתה.</string>
     <string name="permission_read_images_title">קריאת תמונות (אופציונלי)</string>
-    <string name="permission_read_images_summary">הרשאה זו נדרשת כדי ש־Booming Music תוכל למצוא קובצי עטיפות אלבומים בתיקיות המוזיקה שלך.
-אם אינך מתכנן להשתמש בפונקציה זו, אפשר לבחור לא לאשר אותה.</string>
+    <string name="permission_read_images_summary">הרשאה זו נדרשת כדי ש־Booming Music תוכל למצוא קובצי עטיפות אלבומים בתיקיות המוזיקה שלך. אם אינך מתכנן להשתמש בפונקציה זו, אפשר לבחור לא לאשר אותה.</string>
     <string name="permission_read_images_denied">עליך להעניק הרשאה לקריאת תמונות מהמכשיר.</string>
     <string name="permission_exact_alarms_title">תזמון התראות מדויקות (אופציונלי)</string>
     <string name="permission_exact_alarms_description">נדרשת הרשאה לתזמן התראות מדויקות כדי שטיימר השינה יפעל כראוי</string>
@@ -151,16 +147,11 @@
     <string name="hello_there">שלום לך!</string>
     <string name="welcome_to_x">ברוך הבא ל-%s</string>
     <string name="get_started">בא נתחיל</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> לא רשום בחנות המדיה.]]></string>
-    <string name="some_files_are_not_listed_in_the_media_store">קבצים מסוימים לא רשומים בחנות המדיה.</string>
-    <string name="nothing_to_scan">אין מה לסרוק</string>
     <string name="select_storage_title">בחר אחסון</string>
     <string name="now_playing">מנגן כעת</string>
     <string name="playing_queue_label">מנגן תור השמעה</string>
     <string name="list_start">תחילת רשימה</string>
     <string name="list_end">סוף רשימה</string>
-    <string name="empty_play_queue">תור ההשמעה ריק.</string>
-    <string name="save_queue">שמור תור השמעה</string>
     <string name="clear_queue">נקה תור השמעה</string>
     <string name="action_move_to_current_track">הצג רצועה נוכחית</string>
     <string name="action_add_to_favorites">הוסף למעודפים</string>
@@ -173,17 +164,15 @@
     <string name="action_add_to_playing_queue">הוסף לתור</string>
     <string name="action_remove_from_playing_queue">הסרה מתור ההשמעה</string>
     <string name="put_after_current_track">שים אחרי הרצועה הנוכחית</string>
-    <string name="undo_action">בטל</string>
     <string name="set_artist_image">הגדר תמונת אמן</string>
     <string name="reset_artist_image">אפס תמונת אמן</string>
     <string name="there_is_nothing_to_reset">אין מה לאפס.</string>
-    <string name="updating">מעדכן…</string>
     <string name="add_to_label">הוסף ל</string>
     <string name="go_to_label">עבור אל</string>
     <string name="action_go_to_album">מעבר לאלבום</string>
     <string name="action_go_to_artist">מעבר לאמן</string>
     <string name="action_go_to_genre">מעבר לז\'אנר</string>
-    <string name="added_title_to_playing_queue">"נוסף שיר אחד לתור."</string>
+    <string name="added_title_to_playing_queue">נוסף שיר אחד לתור.</string>
     <string name="added_x_titles_to_playing_queue">נוספו %1$d שירים לתור.</string>
     <string name="next_song_label">שיר הבא</string>
     <string name="next_song_x">הבא • %1$s</string>
@@ -267,7 +256,7 @@
     <string name="update_image">עדכון תמונה</string>
     <string name="restore_default">שחזור ברירת מחדל</string>
     <string name="remove_cover">הסרת עטיפה</string>
-    <string name="could_not_download_album_cover">"לא ניתן היה להוריד עטיפת אלבום תואמת."</string>
+    <string name="could_not_download_album_cover">לא ניתן היה להוריד עטיפת אלבום תואמת.</string>
     <string name="download_image">הורדת תמונה</string>
     <string name="pick_from_local_storage">בחר מאחסון מקומי</string>
     <string name="about_x_title">‮אודות ‭%s</string>
@@ -279,8 +268,7 @@
     <string name="save_artwork_success">עטיפת אלבום נשמרה</string>
     <string name="save_artwork_view_action">הצג</string>
     <string name="save_artwork_copyright_info_title">הודעת זכויות יוצרים</string>
-    <string name="save_artwork_copyright_info_message">חלק מעטיפות האלבומים (או כולן) עשויות להיות מוגנות על ידי חוקי זכויות יוצרים. אינך רשאי להשתמש בתמונות כאלה למטרות מסחריות או פרסומיות.
-\n\nאתה אחראי באופן מלא על השימוש שלך בעטיפות האלבומים השמורות.</string>
+    <string name="save_artwork_copyright_info_message">חלק מעטיפות האלבומים (או כולן) עשויות להיות מוגנות על ידי חוקי זכויות יוצרים. אינך רשאי להשתמש בתמונות כאלה למטרות מסחריות או פרסומיות. \n\nאתה אחראי באופן מלא על השימוש שלך בעטיפות האלבומים השמורות.</string>
     <string name="yes">כן</string>
     <string name="no">לא</string>
     <string name="keyboard">מקלדת</string>
@@ -319,7 +307,7 @@
     <string name="disc_total">סה״כ דיסקים</string>
     <string name="lyrics">מילות השיר</string>
     <string name="lyricist">מתמלל</string>
-    <string name="could_not_load_the_song_information">"לא ניתן היה לטעון את פרטי השיר."</string>
+    <string name="could_not_load_the_song_information">לא ניתן היה לטעון את פרטי השיר.</string>
     <string name="no_results">אין תוצאות</string>
     <string name="connection_unavailable">החיבור אינו זמין.</string>
     <string name="you_have_to_select_at_least_one_category">עליך לבחור לפחות קטגוריה אחת</string>
@@ -351,53 +339,43 @@
     <plurals name="songs">
         <item quantity="one">שיר</item>
         <item quantity="two">שירים</item>
-        <item quantity="many">שירים</item>
         <item quantity="other">שירים</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">אלבום</item>
         <item quantity="two">אלבומים</item>
-        <item quantity="many">אלבומים</item>
         <item quantity="other">אלבומים</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">שיר %d</item>
         <item quantity="two">%d שירים</item>
-        <item quantity="many">%d שירים</item>
         <item quantity="other">%d שירים</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">אלבום %d</item>
         <item quantity="two">%d אלבומים</item>
-        <item quantity="many">%d אלבומים</item>
         <item quantity="other">%d אלבומים</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">אמן %d</item>
         <item quantity="two">%d אמנים</item>
-        <item quantity="many">%d אמנים</item>
         <item quantity="other">%d אמנים</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">פעם %d</item>
         <item quantity="two">%d פעמים</item>
-        <item quantity="many">%d פעמים</item>
         <item quantity="other">%d פעמים</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">נגן %d</item>
         <item quantity="two">הפעלה %d</item>
-        <item quantity="many">%d הפעלות</item>
         <item quantity="other">%d הפעלות</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">פריט %d</item>
-        <item quantity="two"></item>
-        <item quantity="many">פריטים %d</item>
-        <item quantity="other"></item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">עבורך</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">ערבוב</string>
     <string name="top_artists">אמנים מובילים</string>
     <string name="top_albums">אלבומים מובילים</string>
@@ -430,9 +408,7 @@
     <string name="autoeq_profiles_title">AutoEq Profiles</string>
     <string name="eq_profile_title">Profile</string>
     <string name="change_band_count_title">Change band count</string>
-    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
-        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
-        \n\nDo you want to continue?</string>
+    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state. Any other profiles saved for the current band configuration cannot be used with the new band configuration. \n\nDo you want to continue?</string>
     <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
     <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
     <string name="share_eq_profiles">Share EQ Profiles</string>
@@ -454,8 +430,7 @@
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">אפס את האקולייזר</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
-        \n\nThis will clear all your profiles.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">לא נתמך</string>
     <string name="set_eq_engine_title">Set EQ engine</string>
     <string name="eq_engine_basic_title">Legacy Engine</string>
@@ -497,16 +472,11 @@
     <string name="custom">מותאם אישית</string>
     <string name="audio_offload_is_enabled">Audio Offload מופעל</string>
     <string name="enable_audio_offload_title">העברת עיבוד שמע לחומרה</string>
-    <string name="enable_audio_offload_description">מאפשר למכשיר לעבד את השמע ישירות דרך החומרה, מה שמפחית את השימוש במעבד וחוסך בסוללה.
-הפונקציה נתמכת רק במכשירים מסוימים, וחלק מהאפקטים או הפונקציות עלולים שלא לעבוד כשהיא מופעלת.
-נדרש להפעיל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף.</string>
+    <string name="enable_audio_offload_description">מאפשר למכשיר לעבד את השמע ישירות דרך החומרה, מה שמפחית את השימוש במעבד וחוסך בסוללה. הפונקציה נתמכת רק במכשירים מסוימים, וחלק מהאפקטים או הפונקציות עלולים שלא לעבוד כשהיא מופעלת. נדרש להפעיל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף.</string>
     <string name="enable_audio_float_output_title">פלט שמע ברמת דיוק גבוהה</string>
-    <string name="enable_audio_float_output_description">מאפשר שמע בפורמט נקודה צפה של 32 ביט לשיפור איכות הצליל.
-שימו לב: פעולה זו תכבה פונקציות כמו ReplayGain, דילוג על שקט ואיזון עוצמת קול.
-ייתכן שתהיה צריכת סוללה גבוהה יותר, ותצטרכו להפעיל את האפליקציה מחדש כדי שהשינויים ייכנסו לתוקף.</string>
+    <string name="enable_audio_float_output_description">מאפשר שמע בפורמט נקודה צפה של 32 ביט לשיפור איכות הצליל. שימו לב: פעולה זו תכבה פונקציות כמו ReplayGain, דילוג על שקט ואיזון עוצמת קול. ייתכן שתהיה צריכת סוללה גבוהה יותר, ותצטרכו להפעיל את האפליקציה מחדש כדי שהשינויים ייכנסו לתוקף.</string>
     <string name="skip_silence_title">דלג על שקט</string>
-    <string name="skip_silence_description">מדלג אוטומטית על קטעים שקטים במהלך ההפעלה.
-מתאים במיוחד לפודקאסטים ולהקלטות.</string>
+    <string name="skip_silence_description">מדלג אוטומטית על קטעים שקטים במהלך ההפעלה. מתאים במיוחד לפודקאסטים ולהקלטות.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">הצג מילות שיר</string>
     <string name="action_hide_lyrics">הסתר מילות שיר</string>
@@ -517,7 +487,7 @@
     <string name="external_file_lyrics">קובץ חיצוני</string>
     <string name="action_import_synchronized_lyrics">ייבוא ​​מילים מסונכרנות</string>
     <string name="action_share_synchronized_lyrics">שתף מילים מסונכרנות</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[האם ברצונך לייבא מילות LRC מסונכרנות עבור <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[האם ברצונך לייבא מילות LRC מסונכרנות עבור <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">יובאו מילות השיר עבור %s</string>
     <string name="could_not_import_lyrics_for_song_x">לא ניתן היה לייבא את מילות השיר עבור %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">בחר קובץ LRC המכיל מילות שיר מסונכרנות.</string>
@@ -544,7 +514,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">סיים את השיר האחרון</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">עצור אחרי השיר הזה</string>
     <string name="sleep_timer_stop_after_x">עצור לאחר %s</string>
     <string name="sleep_timer_stop_after_x_canceled">עצור אחרי %s: בוטל</string>
@@ -555,10 +527,7 @@
     <string name="app_shortcut_favorites_short">מועדפים</string>
     <!-- About page -->
     <string name="action_about">אודות</string>
-    <string name="application">יישום</string>
-    <string name="version">גרסה</string>
     <string name="changelog">יומן שינויים</string>
-    <string name="fork_on_github">קוד מקור</string>
     <string name="faq">FAQ</string>
     <string name="licenses">רשיונות</string>
     <string name="author">יוצר</string>
@@ -569,13 +538,8 @@
     <string name="translators_summary">תודה לאלו שעוזרים להפוך את Booming Music לזמין בשפות רבות.</string>
     <string name="contributors_title">תורמים</string>
     <string name="contributors_summary">רשימה של משתמשים שתרמו לפרויקט בדרך כלשהי.</string>
-    <string name="telegram_chat">ערוץ טלגרם</string>
-    <string name="telegram_chat_summary">הצטרפו לצ\'אט בטלגרם וקבלו עדכונים על מהדורות וחידושים.</string>
     <string name="view_profile_on_github">צפה בפרופיל ב-GitHub</string>
-    <string name="follow_on_telegram">הודעה פרטית בטלגרם</string>
     <string name="write_an_email">כתוב אימייל</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
-    <string name="buy_me_a_coffee_summary">אפשר לתרום סכום קטן אם לדעתך העבודה שלי ראויה לכך.</string>
     <string name="support_development">תמיכה בפיתוח</string>
     <string name="help_with_translations">עזרה בתרגומים</string>
     <string name="help_with_translations_summary">באפשרותך לתרום לפרויקט על ידי סיוע בתרגום Booming Music לשפות אחרות.</string>
@@ -586,9 +550,6 @@
     <string name="send_invitation_message">שלח הודעת הזמנה</string>
     <string name="invitation_message_content">היי. בדוק את Booming Music! האפליקציה הטובה ביותר להאזנה למוזיקה מקומית באנדרואיד. אתה יכול להוריד אותה מכאן: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">דוח על תקלה</string>
-    <string name="device_info">מידע על המכשיר</string>
-    <string name="copied_device_info_to_clipboard">מידע מכשיר הועתק.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">תועברו לאתר האינטרנט למעקב הבעיות.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">נדרש גישה לאחסון</string>
@@ -607,20 +568,17 @@
     <string name="playback_title">השמעה</string>
     <string name="playback_summary">שנה את הגדרות הקול, אוזניות בלוטות\', וכו׳.</string>
     <string name="metadata_title">מטאדטה</string>
-    <string name="metadata_summary">הגדרות הקשורות לתמונות אלבום ואמנים.</string>
     <string name="library_title">ספרייה</string>
     <string name="library_summary">הגדרות לרשימות השמעה ולמסנני הכללה/הוצאה.</string>
     <string name="advanced_title">מתקדם</string>
     <string name="advanced_summary">הגדרות שפה ואחרות באפליקציה למשתמשים מתקדמים.</string>
     <string name="update_title">עדכן</string>
-    <string name="update_summary">הגדרות לעדכוני האפליקציה.</string>
     <string name="about_title">אודות</string>
     <string name="about_summary">Booming Music %s, גע לקבלת מידע נוסף.</string>
     <!-- Preference headers -->
     <string name="general_header">כללי</string>
     <string name="library_header">ספרייה</string>
     <string name="album_cover_header">עטיפה</string>
-    <string name="artist_image_header">תמונת האמן</string>
     <string name="exclusion_header">החרגות</string>
     <string name="controls_header">פקדים</string>
     <string name="gestures_header">מחוות</string>
@@ -657,6 +615,7 @@
     <string name="lyrics_effects_note">אפקטים מתקדמים משפרים את החוויה החזותית אך עשויים לדרוש יותר משאבי מערכת וסוללה.</string>
     <string name="lyrics_background_effect_title">אפקט רקע</string>
     <string name="lyrics_background_gradient">גרדיאנט</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">אפקט טשטוש</string>
     <string name="lyrics_blur_effect_summary">טשטש את שורות המילים הסמוכות לשורה הנוכחית.</string>
     <string name="lyrics_shadow_effect_title">אפקט צל</string>
@@ -679,10 +638,10 @@
     <string name="instrumental_tracks_identifiers_summary">אם מילות השיר מורכבות אך ורק מאחד או יותר מהסמנים האלה, השיר יסומן כרצועה אינסטרומנטלית (מופרדים בפסיק).</string>
     <string name="instrumental_tracks_mark_by_title_title">סמן לפי שם</string>
     <string name="instrumental_tracks_mark_by_title_summary">שם השיר יילקח גם הוא בחשבון בעת חיפוש אחר הסמנים.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">התייחס לכל קובצי מילות השירים כ־UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">הנח שכל הקבצים משתמשים בקידוד UTF-8.
-פעולה זו מייעלת את תהליך ניתוח הקבצים, אך במקרים מסוימים עלולה לגרום להופעת תווים חריגים במילות השירים.
-ייתכן שתידרש הפעלה מחדש של האפליקציה.</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">הנח שכל הקבצים משתמשים בקידוד UTF-8. פעולה זו מייעלת את תהליך ניתוח הקבצים, אך במקרים מסוימים עלולה לגרום להופעת תווים חריגים במילות השירים. ייתכן שתידרש הפעלה מחדש של האפליקציה.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">סגנון</string>
     <string name="open_on_play_title">פתח בעת ניגון</string>
@@ -728,18 +687,18 @@
     <string name="select_extra_info_summary">בחר את המידע הנוסף להצגה בלוח הניגון.</string>
     <string name="prefer_remaining_time_title">העדף זמן נותר</string>
     <string name="prefer_remaining_time_summary">הצג את הזמן הנותר במקום משך השיר.</string>
-    <string name="prefer_album_artist_name_title">"העדף את שם אמן האלבום"</string>
+    <string name="prefer_album_artist_name_title">העדף את שם אמן האלבום</string>
     <string name="prefer_album_artist_name_summary">מציג את שם אמן האלבום במקום את שם אמן השיר (אם זמין).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">השמע בהפעלה</string>
     <string name="queue_next_mode_title">מצב \"הוסף לתור הבא\"</string>
-    <string name="search_auto_queue_title">הוסף את כל תוצאות החיפוש לתור</string>
-    <string name="search_auto_queue_summary">בעת השמעת שיר ממסך החיפוש, כל התוצאות האחרות יתווספו גם לתור.</string>
     <string name="remember_shuffle_mode_title">זכור את מצב הערבוב</string>
     <string name="remember_shuffle_mode_summary">מצב הערבוב יישאר פעיל בעת בחירת רשימת שירים חדשה.</string>
     <string name="album_shuffle_mode_title">מצב ערבוב אלבומים</string>
     <string name="artist_shuffle_mode_title">מצב ערבוב אמנים</string>
-    <string name="rewind_with_back_title">"הרצה לאחור עם כפתור 'הקודם'"</string>
+    <string name="rewind_with_back_title">הרצה לאחור עם כפתור \'הקודם\'</string>
     <string name="rewind_with_back_summary">החזר את השיר המנוגן לתחילה או עבור לשיר הקודם אם השיר הנוכחי בתחילתו.</string>
     <string name="rewind_fast_forward_amount_title">כמות הרצה לאחור/הרצה קדימה</string>
     <string name="rewind_fast_forward_amount_summary">זמן (בשניות) להרצה לאחור או קדימה באמצעות ממשק המשתמש או שליטה חיצונית.</string>
@@ -754,12 +713,9 @@
     <string name="ignore_audio_focus_title">התעלם ממיקוד שמע</string>
     <string name="ignore_audio_focus_summary">השמיע תמיד אודיו ברקע, ללא קשר למה שמתנגן במקום אחר.</string>
     <string name="pause_on_zero_volume_title">השהה כשעוצמת הקול היא אפס</string>
-    <string name="pause_on_zero_volume_summary">עוצר את השיר כשהעוצמה יורדת לאפס, וממשיך לנגן כשהעוצמה עולה שוב.
-הפונקציה פועלת גם מחוץ לאפליקציה.</string>
+    <string name="pause_on_zero_volume_summary">עוצר את השיר כשהעוצמה יורדת לאפס, וממשיך לנגן כשהעוצמה עולה שוב. הפונקציה פועלת גם מחוץ לאפליקציה.</string>
     <string name="mp3_index_seeking_title">חיפוש לפי אינדקס ב־MP3</string>
-    <string name="mp3_index_seeking_summary">טוען את כל קובץ ה־MP3 לזיכרון לצורך חיפוש, במקום להסתמך על כותרת ה־Xing.
-השתמש רק אם החיפוש נכשל בקבצי VBR מסוימים.
-נדרש להפעיל מחדש את האפליקציה.</string>
+    <string name="mp3_index_seeking_summary">טוען את כל קובץ ה־MP3 לזיכרון לצורך חיפוש, במקום להסתמך על כותרת ה־Xing. השתמש רק אם החיפוש נכשל בקבצי VBR מסוימים. נדרש להפעיל מחדש את האפליקציה.</string>
     <string name="play_option_always_visible_title">השאר את אפשרות \"ניגון\" גלויה</string>
     <string name="play_option_always_visible_summary">כאשר האפשרות מופעלת, האפשרות \"נגן\" תופיע תמיד בתפריט השיר, ללא קשר להגדרות התנהגות ההקשה.</string>
     <string name="play_option_whole_list_title">האפשרות \"נגן\" מנגנת את כל הרשימה</string>
@@ -781,17 +737,14 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">הורד מטאדטה באופן אוטומטי</string>
     <string name="ignore_media_store_album_covers_title">התעלם מעטיפות ממדיה סטור</string>
     <string name="ignore_media_store_album_covers_summary">זה עשוי לשפר את איכות התמונות אך דורש יותר זיכרון.</string>
     <string name="use_folder_album_cover_title">השתמש בתמונות מהתיקייה</string>
     <string name="use_folder_album_cover_summary">אם קובץ השמע אינו מכיל עטיפה משובצת, התמונות עשויות להיטען מעט לאט יותר.</string>
     <string name="online_artist_images_title">הורד תמונות אמן</string>
-    <string name="online_artist_images_summary">זה תלוי במדיניות הורדת המטא־דאטה שלך.</string>
     <string name="preferred_image_size_title">גודל תמונה מועדף</string>
     <string name="online_album_covers_title">הורד עטיפות אלבומים חסרות</string>
-    <string name="online_album_covers_summary">התמונות שהורדו אינן משובצות בקובצי השמע; הן מוצגות רק בתוך האפליקציה.
-הפעולה תלויה במדיניות הורדת המטא־דאטה שלך.</string>
+    <string name="online_album_covers_summary">התמונות שהורדו אינן משובצות בקובצי השמע; הן מוצגות רק בתוך האפליקציה. הפעולה תלויה במדיניות הורדת המטא־דאטה שלך.</string>
     <string name="delete_downloaded_lyrics_title">מחק מילים שהורדו</string>
     <string name="delete_downloaded_lyrics_summary">רק מילות שיר שהורדו על ידי Booming Music. אינו משפיע על מילות שיר המשובצות בתגי ID3v2 או בקבצי LRC.</string>
     <string name="lyrics_cleared">מילות השיר נוקו.</string>
@@ -830,9 +783,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">בהיר</string>
     <string name="dark_theme_name">כהה</string>
-    <string name="black_theme_name">שחור</string>
-    <string name="follow_system">עקוב אחרי המערכת</string>
-    <string name="label_auto">אוטומטי</string>
     <string name="labeled">עם תווית</string>
     <string name="unlabeled">ללא תווית</string>
     <string name="selected">נבחר</string>
@@ -869,12 +819,6 @@
     <string name="this_month">החודש</string>
     <string name="past_three_months">שלושת החודשים האחרונים</string>
     <string name="this_year">השנה</string>
-    <string name="priority_maximum">מקסימום</string>
-    <string name="priority_high">גבוה</string>
-    <string name="priority_normal">רגיל</string>
-    <string name="priority_low">נמוך</string>
-    <string name="always">תמיד</string>
-    <string name="only_on_wifi">רק וויי-פיי</string>
     <string name="image_size_large">גדול (איטי יותר)</string>
     <string name="image_size_medium">בינוני (ברירת מחדל, מומלץ)</string>
     <string name="image_size_small">קטן (מהיר יותר, איכות נמוכה)</string>
@@ -916,8 +860,7 @@
     <string name="download_action">הורד</string>
     <string name="downloading_update">מוריד את עדכון Booming Music.</string>
     <string name="uncaught_error_title">אופס! זה לא אמור היה לקרות!</string>
-    <string name="uncaught_error_message">נראה שמשהו השתבש וגרם לקריסת האפליקציה.
-יהיה מועיל אם תוכל לשלוח לנו את דוח השגיאה לקבוצת הטלגרם שלנו או בדוא\"ל.</string>
+    <string name="uncaught_error_message">נראה שמשהו השתבש וגרם לקריסת האפליקציה. יהיה מועיל אם תוכל לשלוח לנו את דוח השגיאה לקבוצת הטלגרם שלנו או בדוא\"ל.</string>
     <string name="uncaught_error_report">דוח שגיאה</string>
     <string name="uncaught_error_report_copied">דוח השגיאה הועתק ללוח.</string>
     <string name="uncaught_error_restart_app">הפעל מחדש את האפליקציה</string>

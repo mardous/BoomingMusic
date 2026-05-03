@@ -9,7 +9,6 @@ import com.mardous.booming.coil.CoverProvider.Companion.ALBUM_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.ARTIST_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.GENRE_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.PLAYLIST_COVER_PATH
-import com.mardous.booming.coil.CoverProvider.Companion.SONG_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.getImageUri
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.data.local.repository.Repository
@@ -27,7 +26,10 @@ class LibraryProvider(private val repository: Repository) {
     private val _searchResult = mutableListOf<MediaItem>()
     val searchResult: List<MediaItem> get() = _searchResult
 
-    suspend fun getMediaItemsForPlayback(mediaItems: List<MediaItem>): List<MediaItem> {
+    suspend fun getMediaItemsForPlayback(
+        mediaItems: List<MediaItem>,
+        tryToResolveComplexPaths: Boolean = false
+    ): List<MediaItem> {
         val resolvedMediaItems = mediaItems.filter { item -> item.localConfiguration != null }
             .toMutableList()
         if (resolvedMediaItems.size == mediaItems.size) {
@@ -39,10 +41,23 @@ class LibraryProvider(private val repository: Repository) {
         if (songs.isNotEmpty()) {
             resolvedMediaItems.addAll(songs.toMediaItems())
         }
-        missingMediaItems.forEach {
-            getPlayableSongs(it.mediaId).let { playableSongs ->
-                if (playableSongs.isNotEmpty()) {
-                    resolvedMediaItems.addAll(playableSongs.toMediaItems())
+        if (missingMediaItems.isNotEmpty()) {
+            val complexMediaItems = if (tryToResolveComplexPaths) {
+                missingMediaItems.filter { item -> item.mediaId.contains(":") }
+            } else {
+                emptyList()
+            }
+            if (complexMediaItems.isNotEmpty()) {
+                getMediaItemsForAAOSPlayback(complexMediaItems)?.first?.forEach {
+                    resolvedMediaItems.add(it)
+                }
+            } else {
+                missingMediaItems.forEach {
+                    getPlayableSongs(it.mediaId).let { playableSongs ->
+                        if (playableSongs.isNotEmpty()) {
+                            resolvedMediaItems.addAll(playableSongs.toMediaItems())
+                        }
+                    }
                 }
             }
         }
@@ -436,25 +451,8 @@ class LibraryProvider(private val repository: Repository) {
                 )
             }
 
-    private fun Song.toAutoMediaItem(parent: String? = null) = MediaItem.Builder()
-        .setUri(uri)
-        .setMediaId(if (parent.isNullOrEmpty()) id.toString() else MediaIDs.getPathId(parent, id))
-        .setMediaMetadata(
-            MediaMetadata.Builder()
-                .setIsPlayable(true)
-                .setIsBrowsable(false)
-                .setArtworkUri(getImageUri(SONG_COVER_PATH, id))
-                .setTitle(title)
-                .setArtist(artistName)
-                .setAlbumTitle(albumName)
-                .setAlbumArtist(albumArtistName)
-                .setGenre(genreName)
-                .setTrackNumber(trackNumber)
-                .setReleaseYear(year)
-                .setDurationMs(duration.coerceAtLeast(0))
-                .build()
-        )
-        .build()
+    private fun Song.toAutoMediaItem(parent: String? = null): MediaItem =
+        toMediaItem(if (parent.isNullOrEmpty()) id.toString() else MediaIDs.getPathId(parent, id))
 
     companion object {
         // Internal ID for search requests

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:theme="@style/Theme.AppWidget">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:background="@drawable/glance_placeholder_background"
+        android:backgroundTint="?colorPrimaryContainer">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_music_note_24dp"
+            app:tint="?colorOnPrimaryContainer" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/media_actions"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/glance_placeholder_inner_background"
+        android:backgroundTint="?colorSurfaceContainerLow"
+        android:layoutDirection="ltr"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <ImageButton
+            android:id="@+id/button_prev"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_previous_24dp"
+            app:tint="?colorOnSurface" />
+
+        <ImageButton
+            android:id="@+id/button_toggle_play_pause"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/floating_surface_oval"
+            android:backgroundTint="?colorPrimary"
+            android:src="@drawable/ic_play_24dp"
+            app:tint="?colorOnPrimary" />
+
+        <ImageButton
+            android:id="@+id/button_next"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_next_24dp"
+            app:tint="?colorOnSurface" />
+
+    </RelativeLayout>
+
+</FrameLayout>

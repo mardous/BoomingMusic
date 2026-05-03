@@ -55,7 +55,11 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) : Albu
                 sortOrder = DEFAULT_SORT_ORDER
             )
         )
-        return splitIntoAlbums(songs)
+        return splitIntoAlbums(
+            with(SongSortMode.AlbumSongs) {
+                songs.sorted()
+            }
+        )
     }
 
     override fun albums(): List<Album> {
@@ -89,14 +93,13 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) : Albu
         }
     }
 
-    // We don't need sorted list of songs (with sortAlbumSongs())
-    // cuz we are just displaying Albums(Cover Arts) anyway and not songs
     fun splitIntoAlbums(
         songs: List<Song>,
         sorted: Boolean = true,
         sortMode: AlbumSortMode = AlbumSortMode.AllAlbums
     ): List<Album> {
-        val grouped = songs.groupBy { it.albumId }.map { getAlbumFromSongs(it.key, it.value) }
+        val grouped = songs.groupBy { it.albumId }
+            .map { getAlbumFromSongs(it.key, it.value) }
         if (!sorted) return grouped
         return with(sortMode) { grouped.sorted() }
     }

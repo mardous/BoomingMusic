@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">沒有可導入的播放清單。</string>
     <string name="playlist_x_not_imported">播放清單「%s」未成功導入。</string>
     <string name="action_import_playlist">導入播放清單…</string>
-    <string name="action_new_playlist">新建播放清單…</string>
     <string name="new_playlist_title">新播放清單</string>
     <string name="add_playlist_title">新增到播放清單</string>
     <string name="rename_playlist_title">重命名播放清單</string>
@@ -87,12 +86,10 @@
     <string name="saved_x_playlists_failed_to_save_x">已儲存 %1$d 播放清單，未能儲存 %2$d。</string>
     <string name="delete_playlist_title">刪除播放清單</string>
     <string name="delete_playlists_title">刪除多個播放清單</string>
-    <string name="delete_playlist_x"><![CDATA[刪除播放清單 <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[刪除播放清單 <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[刪除 <b>%d</b> 播放清單嗎？]]></string>
     <string name="created_playlist_x">已建立播放清單 \'%1$s\'。</string>
     <string name="could_not_create_playlist">無法建立播放清單。</string>
-    <string name="inserted_one_song_into_playlist_x">將一首歌插入播放清單 %s</string>
-    <string name="inserted_x_songs_into_playlist_x">將 %1$d 首歌曲插入播放清單 %2$s。</string>
     <string name="playlist_exists">播放清單 %s 已經存在。</string>
     <string name="playlist_created">播放清單 %s 已成功建立。</string>
     <string name="remove_song_from_playlist_title">從播放清單中刪除歌曲</string>
@@ -135,8 +132,7 @@
     <string name="permission_bluetooth_description">此應用需要附近的設備權限來檢查藍牙設備</string>
     <string name="permission_bluetooth_denied">附近設備權限被拒絕。</string>
     <string name="permission_read_images_title">查看圖片（可選）</string>
-    <string name="permission_read_images_summary">為了幫您自動查找並顯示歌曲的專輯封面，Booming Music需要獲取訪問您音樂資料夾的權限。
-您可以根據需要決定是否授予此權限。</string>
+    <string name="permission_read_images_summary">為了幫您自動查找並顯示歌曲的專輯封面，Booming Music需要獲取訪問您音樂資料夾的權限。 您可以根據需要決定是否授予此權限。</string>
     <string name="permission_read_images_denied">您需要授予訪問所有檔案的權限以允許軟體讀取封面圖片。</string>
     <string name="permission_exact_alarms_title">設定精確鬧鐘(可選)</string>
     <string name="permission_exact_alarms_description">睡眠計時器需獲取設定精確鬧鐘的權限才能正常工作</string>
@@ -151,16 +147,11 @@
     <string name="hello_there">你好！</string>
     <string name="welcome_to_x">歡迎使用 %s</string>
     <string name="get_started">開始</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> 沒有在媒體存儲中列出。]]></string>
-    <string name="some_files_are_not_listed_in_the_media_store">某些檔案未在媒體存儲中列出。</string>
-    <string name="nothing_to_scan">沒有可掃描的對象</string>
     <string name="select_storage_title">選擇存儲</string>
     <string name="now_playing">正在播放</string>
     <string name="playing_queue_label">播放隊列</string>
     <string name="list_start">列表開頭</string>
     <string name="list_end">列表末尾</string>
-    <string name="empty_play_queue">空的播放隊列。</string>
-    <string name="save_queue">儲存隊列</string>
     <string name="clear_queue">清除隊列</string>
     <string name="action_move_to_current_track">顯示當前曲目</string>
     <string name="action_add_to_favorites">新增到收藏夾</string>
@@ -173,17 +164,15 @@
     <string name="action_add_to_playing_queue">新增至隊列</string>
     <string name="action_remove_from_playing_queue">從播放隊列移除</string>
     <string name="put_after_current_track">置於當前曲目之後</string>
-    <string name="undo_action">撤消操作</string>
     <string name="set_artist_image">設定藝人圖像</string>
     <string name="reset_artist_image">重置藝人圖像</string>
     <string name="there_is_nothing_to_reset">沒有要重置的內容。</string>
-    <string name="updating">正在更新…</string>
     <string name="add_to_label">新增到</string>
     <string name="go_to_label">轉至</string>
     <string name="action_go_to_album">轉至專輯</string>
     <string name="action_go_to_artist">轉至藝人</string>
     <string name="action_go_to_genre">轉至流派</string>
-    <string name="added_title_to_playing_queue">"已新增 1 首歌到播放隊列。"</string>
+    <string name="added_title_to_playing_queue">已新增 1 首歌到播放隊列。</string>
     <string name="added_x_titles_to_playing_queue">已新增 %1$d 首歌到播放隊列。</string>
     <string name="next_song_label">下一首歌曲</string>
     <string name="next_song_x">下一首・%1$s</string>
@@ -267,7 +256,7 @@
     <string name="update_image">更新圖像</string>
     <string name="restore_default">恢復預設</string>
     <string name="remove_cover">移除封面</string>
-    <string name="could_not_download_album_cover">"無法下載匹配的相簿封面。"</string>
+    <string name="could_not_download_album_cover">無法下載匹配的相簿封面。</string>
     <string name="download_image">下載圖像</string>
     <string name="pick_from_local_storage">從本地存儲中選取</string>
     <string name="about_x_title">關於 %s</string>
@@ -279,8 +268,7 @@
     <string name="save_artwork_success">已儲存專輯封面</string>
     <string name="save_artwork_view_action">查看</string>
     <string name="save_artwork_copyright_info_title">版權聲明</string>
-    <string name="save_artwork_copyright_info_message">某些專輯封面 (或全部)可能受到版權法的保護。您不能將此圖像用於商業或廣告目的。
-        \n\n只有您對您儲存的相簿封面的使用承擔全部責任。</string>
+    <string name="save_artwork_copyright_info_message">某些專輯封面 (或全部)可能受到版權法的保護。您不能將此圖像用於商業或廣告目的。 \n\n只有您對您儲存的相簿封面的使用承擔全部責任。</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="keyboard">鍵盤</string>
@@ -319,7 +307,7 @@
     <string name="disc_total">總盤片</string>
     <string name="lyrics">歌詞</string>
     <string name="lyricist">作詞人</string>
-    <string name="could_not_load_the_song_information">"無法載入歌曲訊息。"</string>
+    <string name="could_not_load_the_song_information">無法載入歌曲訊息。</string>
     <string name="no_results">沒有結果</string>
     <string name="connection_unavailable">連接不可用。</string>
     <string name="you_have_to_select_at_least_one_category">您必須選擇至少一個類別</string>
@@ -372,8 +360,8 @@
     <plurals name="x_items">
         <item quantity="other">%d 項</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">推薦</string>
+    <!-- Home -->
+    <string name="home_label">Home</string>
     <string name="shuffle_action">隨機播放</string>
     <string name="top_artists">頂尖藝人</string>
     <string name="top_albums">熱門專輯</string>
@@ -406,9 +394,7 @@
     <string name="autoeq_profiles_title">AutoEq 設定檔</string>
     <string name="eq_profile_title">設定檔</string>
     <string name="change_band_count_title">變更頻段數量</string>
-    <string name="change_band_count_message">變更頻段數量將會把目前的設定檔重設為初始狀態。
-        針對目前頻段設定所儲存的其他設定檔將無法在新的頻段設定中使用。
-        \n\n要繼續嗎？</string>
+    <string name="change_band_count_message">變更頻段數量將會把目前的設定檔重設為初始狀態。 針對目前頻段設定所儲存的其他設定檔將無法在新的頻段設定中使用。 \n\n要繼續嗎？</string>
     <string name="band_configuration_changed_successfully">頻段設定已成功變更。</string>
     <string name="band_configuration_could_not_be_changed">無法變更頻段設定。</string>
     <string name="share_eq_profiles">分享 EQ 設定檔</string>
@@ -430,8 +416,7 @@
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">重置均衡器</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
-        \n\nThis will clear all your profiles.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">不支援</string>
     <string name="set_eq_engine_title">Set EQ engine</string>
     <string name="eq_engine_basic_title">Legacy Engine</string>
@@ -473,9 +458,7 @@
     <string name="custom">自訂</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">音訊硬體加速</string>
-    <string name="enable_audio_offload_description">直接通過設備硬體處理音訊，從而降低 CPU 使用率並減少電池電量消耗。
-        該功能僅在部分設備上受支援。啟用功能時，某些其他功能可能無法正常使用。
-        需要重新啟動以使該設定項生效。</string>
+    <string name="enable_audio_offload_description">直接通過設備硬體處理音訊，從而降低 CPU 使用率並減少電池電量消耗。 該功能僅在部分設備上受支援。啟用功能時，某些其他功能可能無法正常使用。 需要重新啟動以使該設定項生效。</string>
     <string name="enable_audio_float_output_title">高精度音訊輸出</string>
     <string name="enable_audio_float_output_description">啟用 32 位浮點音訊可提升音質，但將禁用回放增益、靜音跳過與音量平衡。此功能可能增加耗電，且需重啟應用生效。</string>
     <string name="skip_silence_title">跳過靜音部分</string>
@@ -517,7 +500,9 @@
     <string name="sleep_timer_15_mins">15 分鐘</string>
     <string name="sleep_timer_45_mins">45 分鐘</string>
     <string name="sleep_timer_1_hour">1 小時</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">播放完最後一首</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">在此曲目後停止</string>
     <string name="sleep_timer_stop_after_x">%s 後停止</string>
     <string name="sleep_timer_stop_after_x_canceled">%s後停止：取消</string>
@@ -528,10 +513,7 @@
     <string name="app_shortcut_favorites_short">我喜歡的</string>
     <!-- About page -->
     <string name="action_about">關於</string>
-    <string name="application">適用範圍</string>
-    <string name="version">版本</string>
     <string name="changelog">更新日誌</string>
-    <string name="fork_on_github">在 GitHub fork 本項目</string>
     <string name="faq">常見問題</string>
     <string name="licenses">許可協議</string>
     <string name="author">作者</string>
@@ -542,13 +524,8 @@
     <string name="translators_summary">感謝那些為Booming Music提供多種語言的人們。</string>
     <string name="contributors_title">貢獻者</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">Telegram 群組</string>
-    <string name="telegram_chat_summary">加入 Telegram 群組並獲得新版本和新聞的通知。</string>
     <string name="view_profile_on_github">在 GitHub 上查看個人資料</string>
-    <string name="follow_on_telegram">Telegram 私訊</string>
     <string name="write_an_email">電子郵件</string>
-    <string name="buy_me_a_coffee">請我喝杯咖啡吧~</string>
-    <string name="buy_me_a_coffee_summary">如果您喜歡，請給與小額贊助支援。</string>
     <string name="support_development">支援開發</string>
     <string name="help_with_translations">幫助翻譯</string>
     <string name="help_with_translations_summary">您可以通過幫助將Booming Music翻譯成其他語言來為該項目做出貢獻。</string>
@@ -559,9 +536,6 @@
     <string name="send_invitation_message">發送邀請訊息</string>
     <string name="invitation_message_content">您好。看看Booming Music！在Android上聆聽本地音樂的最佳應用程式。您可以從這裡下載它： %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">報告一個問題</string>
-    <string name="device_info">設備訊息</string>
-    <string name="copied_device_info_to_clipboard">已將設備訊息複製到剪貼簿。</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">即將跳轉到問題跟蹤網站。</string>
     <!-- SAF -->
     <string name="saf_access_required_title">需要存儲訪問</string>
@@ -580,20 +554,17 @@
     <string name="playback_title">播放</string>
     <string name="playback_summary">更改聲音設定，藍牙耳機等。</string>
     <string name="metadata_title">元數據</string>
-    <string name="metadata_summary">與專輯和藝術家圖像相關的設定。</string>
     <string name="library_title">曲庫</string>
     <string name="library_summary">播放清單和排除/包含過濾器的設定。</string>
     <string name="advanced_title">進階設定</string>
     <string name="advanced_summary">進階用戶的應用內語言和其他設定。</string>
     <string name="update_title">更新</string>
-    <string name="update_summary">應用更新的設定。</string>
     <string name="about_title">關於</string>
     <string name="about_summary">Booming Music %s，點擊以獲取更多訊息。</string>
     <!-- Preference headers -->
     <string name="general_header">常規</string>
     <string name="library_header">曲庫</string>
     <string name="album_cover_header">封面</string>
-    <string name="artist_image_header">藝術家圖像</string>
     <string name="exclusion_header">排除媒體</string>
     <string name="controls_header">模組</string>
     <string name="gestures_header">手勢</string>
@@ -630,6 +601,7 @@
     <string name="lyrics_effects_note">進階效果可增強視覺體驗，但可能需要耗費更多系統資源和電量。</string>
     <string name="lyrics_background_effect_title">背景特效</string>
     <string name="lyrics_background_gradient">漸變</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">模糊效果</string>
     <string name="lyrics_blur_effect_summary">模糊正播放的歌詞的上下的幾行歌詞。</string>
     <string name="lyrics_shadow_effect_title">陰影效果</string>
@@ -649,14 +621,13 @@
     <string name="unsynced_font_size_full_title">非同步歌詞字體大小（全螢幕模式）</string>
     <string name="unsynced_font_size_full_summary">調整全螢幕歌詞模式下顯示的非同步歌詞的字體大小。</string>
     <string name="instrumental_tracks_identifiers_title">純音樂曲目識別</string>
-    <string name="instrumental_tracks_identifiers_summary">若歌曲的歌詞只包含
-        個或多個指示器，它將被標記為一首純音樂(用逗號隔開)。</string>
+    <string name="instrumental_tracks_identifiers_summary">若歌曲的歌詞只包含 個或多個指示器，它將被標記為一首純音樂(用逗號隔開)。</string>
     <string name="instrumental_tracks_mark_by_title_title">按標題標記</string>
     <string name="instrumental_tracks_mark_by_title_summary">在搜尋識別資料時，還將考慮曲目標題。</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">將所有歌詞檔案視為UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding. This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics. It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">樣式</string>
     <string name="open_on_play_title">播放時打開</string>
@@ -702,18 +673,18 @@
     <string name="select_extra_info_summary">選擇要在播放器面板中顯示的額外訊息。</string>
     <string name="prefer_remaining_time_title">優先顯示剩餘時間</string>
     <string name="prefer_remaining_time_summary">顯示剩餘時間而不是歌曲持續時間。</string>
-    <string name="prefer_album_artist_name_title">"首選專用藝術家名稱"</string>
+    <string name="prefer_album_artist_name_title">首選專用藝術家名稱</string>
     <string name="prefer_album_artist_name_summary">顯示專輯藝術家的名字，而不是歌手的名字(如果可用的話)。</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">啟動時自動播放</string>
     <string name="queue_next_mode_title">「隊列下一個播放」模式</string>
-    <string name="search_auto_queue_title">將所有搜尋結果加入隊列</string>
-    <string name="search_auto_queue_summary">當從搜尋界面播放歌曲時，其他結果也新增至隊列。</string>
     <string name="remember_shuffle_mode_title">記住隨機播放</string>
     <string name="remember_shuffle_mode_summary">選擇新歌曲列表時將保持隨機模式。</string>
     <string name="album_shuffle_mode_title">專輯隨機模式</string>
     <string name="artist_shuffle_mode_title">藝術家隨機模式</string>
-    <string name="rewind_with_back_title">"帶著「上一個」返回"</string>
+    <string name="rewind_with_back_title">帶著「上一個」返回</string>
     <string name="rewind_with_back_summary">將播放曲目退回開始或移動到上一首曲目，如果當前曲目正在開始。</string>
     <string name="rewind_fast_forward_amount_title">快進/快退</string>
     <string name="rewind_fast_forward_amount_summary">使用用戶界面或外接控制器來快進/快退（時間單位為秒）。</string>
@@ -730,9 +701,7 @@
     <string name="pause_on_zero_volume_title">在靜音時停止播放</string>
     <string name="pause_on_zero_volume_summary">當音量下降為零時暫停歌曲，並在音量上升時恢復播放。同時支援在應用程式外工作。</string>
     <string name="mp3_index_seeking_title">MP3索引定位</string>
-    <string name="mp3_index_seeking_summary">將整個MP3檔案載入到記憶體中，以便跳轉而不是依賴Xing 頭部訊息。
-        只在跳轉部分VBR檔案失敗時使用。
-        需要重啟應用程式。</string>
+    <string name="mp3_index_seeking_summary">將整個MP3檔案載入到記憶體中，以便跳轉而不是依賴Xing 頭部訊息。 只在跳轉部分VBR檔案失敗時使用。 需要重啟應用程式。</string>
     <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
     <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
     <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
@@ -754,13 +723,11 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">自動下載元數據</string>
     <string name="ignore_media_store_album_covers_title">忽略MediaStore提供的封面</string>
     <string name="ignore_media_store_album_covers_summary">這可能有助於提高圖片品質，但需要更多記憶體。</string>
     <string name="use_folder_album_cover_title">使用資料夾圖像</string>
     <string name="use_folder_album_cover_summary">如果音訊檔案不包含嵌入封面。圖像可能需要一些時間才能載入。</string>
     <string name="online_artist_images_title">下載藝人圖像</string>
-    <string name="online_artist_images_summary">這取決於您的元數據下載政策。</string>
     <string name="preferred_image_size_title">圖像大小偏好</string>
     <string name="online_album_covers_title">下載缺失的專輯封面</string>
     <string name="online_album_covers_summary">下載的圖片不會嵌入到音訊檔案中；它們僅在應用內可見。這取決於您的元數據下載策略。</string>
@@ -802,9 +769,6 @@
     <!-- Preference values -->
     <string name="light_theme_name">亮色</string>
     <string name="dark_theme_name">深色</string>
-    <string name="black_theme_name">黑色</string>
-    <string name="follow_system">跟隨系統</string>
-    <string name="label_auto">自動操作</string>
     <string name="labeled">已標記</string>
     <string name="unlabeled">取消標籤</string>
     <string name="selected">已選擇</string>
@@ -841,12 +805,6 @@
     <string name="this_month">本月</string>
     <string name="past_three_months">過去三個月</string>
     <string name="this_year">今年</string>
-    <string name="priority_maximum">最大值</string>
-    <string name="priority_high">高</string>
-    <string name="priority_normal">普通的</string>
-    <string name="priority_low">低</string>
-    <string name="always">總是顯示</string>
-    <string name="only_on_wifi">僅Wi-Fi</string>
     <string name="image_size_large">大 (較慢)</string>
     <string name="image_size_medium">中等(預設, 推薦)</string>
     <string name="image_size_small">小(快速，低品質)</string>
@@ -888,8 +846,7 @@
     <string name="download_action">下載</string>
     <string name="downloading_update">正在下載 Booming 音樂更新。</string>
     <string name="uncaught_error_title">哎呀！出現了意料之外的事！</string>
-    <string name="uncaught_error_message">似乎有什麼東西出錯並導致了軟體崩潰。
-        如果您能夠向我們發送錯誤報告到我們的 Telegram 群組或通過電子郵件，將會很有幫助。</string>
+    <string name="uncaught_error_message">似乎有什麼東西出錯並導致了軟體崩潰。 如果您能夠向我們發送錯誤報告到我們的 Telegram 群組或通過電子郵件，將會很有幫助。</string>
     <string name="uncaught_error_report">錯誤報告</string>
     <string name="uncaught_error_report_copied">已複製錯誤報告到剪貼簿。</string>
     <string name="uncaught_error_restart_app">重啟應用</string>

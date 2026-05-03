@@ -25,14 +25,13 @@ import androidx.core.content.edit
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationBarView.LabelVisibility
 import com.mardous.booming.R
-import com.mardous.booming.appContext
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.Cutoff
 import com.mardous.booming.core.model.action.FolderAction
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.action.SongClickBehavior
-import com.mardous.booming.core.model.player.NowPlayingInfo
+import com.mardous.booming.core.model.player.MetadataField
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.player.PlayerTransition
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
@@ -137,7 +136,7 @@ object Preferences : KoinComponent {
             BottomTitlesMode.SELECTED -> NavigationBarView.LABEL_VISIBILITY_SELECTED
             BottomTitlesMode.LABELED -> NavigationBarView.LABEL_VISIBILITY_LABELED
             BottomTitlesMode.UNLABELED -> NavigationBarView.LABEL_VISIBILITY_UNLABELED
-            else -> NavigationBarView.LABEL_VISIBILITY_AUTO
+            else -> NavigationBarView.LABEL_VISIBILITY_SELECTED
         }
 
     val holdTabToSearch: Boolean
@@ -275,16 +274,26 @@ object Preferences : KoinComponent {
     val displayExtraInfo: Boolean
         get() = preferences.getBoolean(DISPLAY_EXTRA_INFO, false)
 
-    var nowPlayingExtraInfoList: List<NowPlayingInfo>
-        get() = preferences.nullString(EXTRA_INFO).deserialize(getDefaultNowPlayingInfo())
-        set(value) = preferences.edit { putString(EXTRA_INFO, value.serialize()) }
+    fun getExtraInfoContent(key: String, defaultContent: List<MetadataField>) =
+        preferences.nullString(key).deserialize(defaultContent)
 
-    fun getDefaultNowPlayingInfo(): List<NowPlayingInfo> =
-        NowPlayingInfo.Info.entries.map { tag ->
-            NowPlayingInfo(
-                tag,
-                tag == NowPlayingInfo.Info.Format || tag == NowPlayingInfo.Info.Bitrate || tag == NowPlayingInfo.Info.SampleRate
+    fun setExtraInfoContent(key: String, newContent: List<MetadataField>) {
+        preferences.edit { putString(key, newContent.serialize()) }
+    }
+
+    fun getDefaultNowPlayingInfo(): List<MetadataField> =
+        MetadataField.Content.entries.map { content ->
+            MetadataField(
+                content,
+                content == MetadataField.Content.Format ||
+                        content == MetadataField.Content.Bitrate ||
+                        content == MetadataField.Content.SampleRate
             )
+        }
+
+    fun getDefaultWidgetInfo(): List<MetadataField> =
+        MetadataField.Content.entries.map { tag ->
+            MetadataField(tag, tag == MetadataField.Content.Album)
         }
 
     var preferRemainingTime: Boolean
@@ -313,9 +322,6 @@ object Preferences : KoinComponent {
             SongClickBehavior.PlayOnlyThisSong
         }
 
-    val searchAutoQueue: Boolean
-        get() = preferences.getBoolean(SEARCH_AUTO_QUEUE, false)
-
     val albumShuffleMode: GroupShuffleMode
         get() = getGroupShuffleMode(ALBUM_SHUFFLE_MODE, SelectedShuffleMode.SHUFFLE_ALBUMS)
 
@@ -340,9 +346,6 @@ object Preferences : KoinComponent {
         else -> preferences.getBoolean(PAUSE_ON_DISCONNECT, false)
     }
 
-    val autoDownloadMetadataPolicy: String
-        get() = preferences.requireString(AUTO_DOWNLOAD_METADATA_POLICY, appStr(R.string.default_metadata_policy))
-
     var onlyAlbumArtists: Boolean
         get() = preferences.getBoolean(ONLY_ALBUM_ARTISTS, true)
         set(value) = preferences.edit { putBoolean(ONLY_ALBUM_ARTISTS, value) }
@@ -360,10 +363,10 @@ object Preferences : KoinComponent {
             return notNullSet
         }
 
-    fun getLastAddedCutoff(context: Context = appContext()): Cutoff =
+    fun getLastAddedCutoff(context: Context): Cutoff =
         getCutoff(context, LAST_ADDED_CUTOFF, true)
 
-    fun getHistoryCutoff(context: Context = appContext()): Cutoff =
+    fun getHistoryCutoff(context: Context): Cutoff =
         getCutoff(context, HISTORY_CUTOFF)
 
     private fun getCutoff(
@@ -469,8 +472,6 @@ object Preferences : KoinComponent {
 
     inline fun <reified T : Enum<T>> SharedPreferences.enumValueByOrdinal(key: String, defaultValue: T): T =
         getInt(key, defaultValue.ordinal).toEnum<T>() ?: defaultValue
-
-    private fun appStr(resid: Int): String = appContext().getString(resid)
 }
 
 interface GeneralTheme {
@@ -484,7 +485,6 @@ interface GeneralTheme {
 
 interface BottomTitlesMode {
     companion object {
-        const val AUTO = "auto"
         const val SELECTED = "selected"
         const val LABELED = "labeled"
         const val UNLABELED = "unlabeled"
@@ -524,14 +524,6 @@ interface PlaylistCutoff {
         const val THIS_MONTH = "this_month"
         const val PAST_THREE_MONTHS = "past_three_months"
         const val THIS_YEAR = "this_year"
-    }
-}
-
-interface AutoDownloadMetadataPolicy {
-    companion object {
-        const val ALWAYS = "always"
-        const val ONLY_WIFI = "only_wifi"
-        const val NEVER = "never"
     }
 }
 
@@ -577,6 +569,7 @@ const val LYRICS_ON_COVER = "lyrics_on_cover"
 const val SWIPE_ON_COVER = "swipe_on_cover"
 const val NOW_PLAYING_SMALL_IMAGE = "now_playing_small_image"
 const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
+const val PLAYER_BLUR_RADIUS = "player_blur_radius"
 const val CAROUSEL_EFFECT = "carousel_effect"
 const val COVER_SINGLE_TAP_ACTION = "cover_single_tap_action"
 const val COVER_DOUBLE_TAP_ACTION = "cover_double_tap_action"
@@ -588,16 +581,17 @@ const val CIRCLE_PLAY_BUTTON = "circle_play_button"
 const val ENABLE_SCROLLING_TEXT = "enable_scrolling_text"
 const val DISPLAY_ALBUM_TITLE = "display_album_title"
 const val DISPLAY_EXTRA_INFO = "display_extra_info"
-const val EXTRA_INFO = "now_playing_extra_info"
+const val NOW_PLAYING_EXTRA_INFO = "now_playing_extra_info"
+const val WIDGET_DYNAMIC_COLORS = "widget_dynamic_colors"
+const val WIDGET_SMALL_LAYOUT_STYLE = "widget_small_layout_style"
+const val WIDGET_IMAGE_CORNER_RADIUS = "widget_image_corner_radius"
+const val WIDGET_THIRD_LINE_CONTENT = "widget_third_line_content"
 const val PREFER_REMAINING_TIME = "prefer_remaining_time"
 const val PREFER_ALBUM_ARTIST_NAME = "prefer_album_artist_name_on_np"
-const val PLAYBACK_SPEED = "playback_speed"
-const val PLAYBACK_PITCH = "playback_pitch"
 const val REWIND_WITH_BACK = "rewind_with_back"
 const val SEEK_INTERVAL = "seek_interval"
 const val QUEUE_NEXT_MODE = "queue_next_mode"
 const val PLAY_ON_STARTUP_MODE = "play_on_startup_mode"
-const val SEARCH_AUTO_QUEUE = "search_auto_queue"
 const val ON_SONG_CLICK_ACTION = "on_song_click_action"
 const val ON_CLEAR_QUEUE_ACTION = "on_clear_queue_action"
 const val PLAY_OPTION_ALWAYS_VISIBLE = "play_option_always_visible"
@@ -613,11 +607,8 @@ const val PAUSE_ON_BLUETOOTH_DISCONNECT = "pause_on_bluetooth_disconnect"
 const val IGNORE_AUDIO_FOCUS = "ignore_audio_focus"
 const val PAUSE_ON_ZERO_VOLUME = "pause_on_zero_volume"
 const val MP3_INDEX_SEEKING = "mp3_index_seeking"
-const val AUTO_DOWNLOAD_METADATA_POLICY = "auto_download_metadata_policy"
 const val IGNORE_MEDIA_STORE = "ignore_media_store"
 const val USE_FOLDER_ART = "use_folder_art"
-const val ALLOW_ONLINE_ALBUM_COVERS = "allow_online_album_covers"
-const val ALLOW_ONLINE_ARTIST_IMAGES = "allow_online_artist_images"
 const val PREFERRED_IMAGE_SIZE = "preferred_image_size"
 const val ONLY_ALBUM_ARTISTS = "only_album_artists"
 const val TRASH_MUSIC_FILES = "trash_music_files"
@@ -652,3 +643,5 @@ const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"
 const val QUEUE_HEIGHT = "queue_height"
+const val LASTFM_LOGIN = "lastfm_login"
+const val LISTENBRAINZ_LOGIN = "listenbrainz_login"

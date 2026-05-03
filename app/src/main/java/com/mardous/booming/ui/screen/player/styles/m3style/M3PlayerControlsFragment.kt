@@ -38,7 +38,6 @@ import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DI
 import com.mardous.booming.ui.component.base.SkipButtonTouchHandler.Companion.DIRECTION_PREVIOUS
 import com.mardous.booming.ui.component.views.MusicSlider
 import com.mardous.booming.ui.screen.player.PlayerAnimator
-import com.mardous.booming.util.Preferences
 import java.util.LinkedList
 
 /**
@@ -87,7 +86,7 @@ class M3PlayerControlsFragment : AbsPlayerControlsFragment(R.layout.fragment_m3_
     }
 
     override fun onCreatePlayerAnimator(): PlayerAnimator {
-        return M3PlayerAnimator(binding, Preferences.animateControls)
+        return M3PlayerAnimator(binding, isControlAnimationEnabled)
     }
 
     override fun onSongInfoChanged(currentSong: Song, nextSong: Song) {

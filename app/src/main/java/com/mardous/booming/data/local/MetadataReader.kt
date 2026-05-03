@@ -1,6 +1,7 @@
 package com.mardous.booming.data.local
 
 import android.content.ContentResolver
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -9,6 +10,7 @@ import com.kyant.taglib.AudioProperties
 import com.kyant.taglib.Metadata
 import com.kyant.taglib.Picture
 import com.kyant.taglib.TagLib
+import com.mardous.booming.data.model.ChannelMode
 import org.jaudiotagger.tag.reference.GenreTypes
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
@@ -55,11 +57,17 @@ class MetadataReader(uri: Uri, readPictures: Boolean = false) : KoinComponent {
         }
     }
 
-    fun channels() = audioProperties?.channels ?: -1
+    fun channelMode(): ChannelMode? {
+        val channelCount = audioProperties?.channels ?: -1
+        if (channelCount < 1) return null
+        return ChannelMode.fromChannels(channelCount)
+    }
+
     fun channelName(): String? {
-        val channels = channels()
-        if (channels == 0) return null
-        return CHANNEL_MAP[channels] ?: "$channels channels"
+        val mode = channelMode()
+        return if (mode != null) {
+            get<Context>().getString(mode.labelRes)
+        } else null
     }
 
     /**
@@ -127,19 +135,6 @@ class MetadataReader(uri: Uri, readPictures: Boolean = false) : KoinComponent {
 
     companion object {
         private val DEFAULT_DELIMITERS = arrayOf("/", ";")
-        private val CHANNEL_MAP = mapOf(
-            1 to "Mono",
-            2 to "Stereo",
-            3 to "2.1 Stereo",
-            4 to "Quadraphonic",
-            5 to "5.0 Surround",
-            6 to "5.1 Surround",
-            7 to "6.1 Surround",
-            8 to "7.1 Surround",
-            10 to "9.1 Surround",
-            12 to "11.1 Surround",
-            14 to "13.1 Surround"
-        )
 
         const val TITLE = "TITLE"
         const val ARTIST = "ARTIST"

@@ -51,12 +51,12 @@
             app:popExitAnim="@anim/booming_fragment_close_exit"
             app:destination="@+id/nav_library_preferences"/>
         <action
-            android:id="@+id/action_to_updatePreferences"
+            android:id="@+id/action_to_networkPreferences"
             app:enterAnim="@anim/booming_fragment_open_enter"
             app:exitAnim="@anim/booming_fragment_open_exit"
             app:popEnterAnim="@anim/booming_fragment_close_enter"
             app:popExitAnim="@anim/booming_fragment_close_exit"
-            app:destination="@+id/nav_update_preferences"/>
+            app:destination="@+id/nav_network_preferences"/>
         <action
             android:id="@+id/action_to_advancedPreferences"
             app:enterAnim="@anim/booming_fragment_open_enter"
@@ -85,6 +85,10 @@
         android:id="@+id/nav_library_preferences"
         android:name="com.mardous.booming.ui.screen.settings.LibraryPreferencesFragment"
         android:label="@string/library_title"/>
+    <fragment
+        android:id="@+id/nav_network_preferences"
+        android:name="com.mardous.booming.ui.screen.settings.NetworkPreferencesFragment"
+        android:label="@string/network_title"/>
     <fragment
         android:id="@+id/nav_advanced_preferences"
         android:name="com.mardous.booming.ui.screen.settings.AdvancedPreferencesFragment"

@@ -25,18 +25,16 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.doOnPreDraw
-import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil3.request.crossfade
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import com.mardous.booming.R
 import com.mardous.booming.coil.albumImage
-import com.mardous.booming.core.model.task.Result
 import com.mardous.booming.core.sort.AlbumSortMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.core.sort.SortMode
@@ -45,16 +43,31 @@ import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
 import com.mardous.booming.databinding.FragmentAlbumDetailBinding
-import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.applyHorizontalWindowInsets
+import com.mardous.booming.extensions.dp
+import com.mardous.booming.extensions.isLandscape
+import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.media.asReadableDuration
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
-import com.mardous.booming.extensions.navigation.*
-import com.mardous.booming.extensions.resources.*
+import com.mardous.booming.extensions.navigation.albumDetailArgs
+import com.mardous.booming.extensions.navigation.artistDetailArgs
+import com.mardous.booming.extensions.navigation.asFragmentExtras
+import com.mardous.booming.extensions.navigation.playInfoArgs
+import com.mardous.booming.extensions.navigation.searchArgs
+import com.mardous.booming.extensions.plurals
+import com.mardous.booming.extensions.resources.removeHorizontalMarginIfRequired
+import com.mardous.booming.extensions.resources.setupStatusBarForeground
+import com.mardous.booming.extensions.resources.surfaceColor
+import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.extensions.utilities.buildInfoString
 import com.mardous.booming.playback.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.ISongCallback
+import com.mardous.booming.ui.adapters.HeaderAdapter
+import com.mardous.booming.ui.adapters.HorizontalListAdapter
+import com.mardous.booming.ui.adapters.SectionHeaderAdapter
+import com.mardous.booming.ui.adapters.WikiAdapter
 import com.mardous.booming.ui.adapters.album.AlbumAdapter
 import com.mardous.booming.ui.adapters.song.SimpleSongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
@@ -79,10 +92,15 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
         parametersOf(arguments.albumId)
     }
 
-    private var _binding: AlbumDetailBinding? = null
+    private var _binding: FragmentAlbumDetailBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var headerAdapter: HeaderAdapter
+    private lateinit var songHeaderAdapter: SectionHeaderAdapter
     private lateinit var simpleSongAdapter: SimpleSongAdapter
+    private lateinit var moreAlbumsAdapter: HorizontalListAdapter
+    private lateinit var wikiAdapter: WikiAdapter
+    private lateinit var concatAdapter: ConcatAdapter
 
     private var albumArtistExists = false
     private var lang: String? = null
@@ -100,15 +118,13 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = AlbumDetailBinding(FragmentAlbumDetailBinding.bind(view))
+        _binding = FragmentAlbumDetailBinding.bind(view)
         setSupportActionBar(binding.toolbar, "")
         materialSharedAxis(view, prepareTransition = false)
 
         view.applyHorizontalWindowInsets()
 
         binding.appBarLayout.setupStatusBarForeground()
-        binding.image.transitionName = arguments.albumId.toString()
-        binding.image.removeHorizontalMarginIfRequired()
 
         postponeEnterTransition()
         detailViewModel.getAlbumDetail().observe(viewLifecycleOwner) { album ->
@@ -120,29 +136,10 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
         }
 
         libraryViewModel.getMiniPlayerMargin().observe(viewLifecycleOwner) {
-            binding.container.updatePadding(bottom = it.getWithSpace(16.dp(resources)))
+            binding.recyclerView.updatePadding(bottom = it.getWithSpace(16.dp(resources)))
         }
 
         setupRecyclerView()
-        setupSongSortButton()
-        binding.albumText.setOnClickListener {
-            goToArtist()
-        }
-        binding.playAction.setOnClickListener {
-            playerViewModel.openQueue(getAlbum().songs, shuffleMode = OpenShuffleMode.Off)
-        }
-        binding.shuffleAction.setOnClickListener {
-            playerViewModel.openAndShuffleQueue(getAlbum().songs)
-        }
-        binding.searchAction?.setOnClickListener {
-            goToSearch()
-        }
-
-        binding.wiki.apply {
-            setOnClickListener {
-                maxLines = (if (maxLines == 4) Integer.MAX_VALUE else 4)
-            }
-        }
 
         detailViewModel.loadAlbumDetail()
     }
@@ -162,26 +159,61 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
             sortMode = SongSortMode.AlbumSongs,
             callback = this
         )
-        binding.songRecyclerView.safeUpdateWithRetry { adapter = simpleSongAdapter }
     }
 
     private fun setupRecyclerView() {
-        binding.songRecyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            itemAnimator = DefaultItemAnimator()
-            isNestedScrollingEnabled = false
-            destroyOnDetach()
+        headerAdapter = HeaderAdapter { headerBinding ->
+            headerBinding.image.transitionName = arguments.albumId.toString()
+            headerBinding.image.removeHorizontalMarginIfRequired()
+            headerBinding.image.albumImage(getAlbum()) { crossfade(false) }
+
+            headerBinding.title.text = getAlbum().name
+
+            val artistName = if (albumArtistExists) getAlbum().albumArtistName else getAlbum().artistName
+            headerBinding.subtitle.setOnClickListener { goToArtist() }
+            headerBinding.subtitle.text = buildInfoString(
+                artistName?.displayArtistName(),
+                getAlbum().year.takeIf { it > 0 },
+                getAlbum().duration.asReadableDuration(readableFormat = true).takeIf { Preferences.showAlbumDuration }
+            )
+            headerBinding.playAction.setOnClickListener {
+                playerViewModel.openQueue(getAlbum().songs, shuffleMode = OpenShuffleMode.Off)
+            }
+            headerBinding.shuffleAction.setOnClickListener {
+                playerViewModel.openAndShuffleQueue(getAlbum().songs)
+            }
+            headerBinding.searchAction?.setOnClickListener { goToSearch() }
+        }
+
+        songHeaderAdapter = SectionHeaderAdapter(getString(R.string.songs_label)) {
+            createSortOrderMenu(it, SongSortMode.AlbumSongs) {
+                detailViewModel.loadAlbumDetail()
+            }
         }
         createSongAdapter()
+
+        val albumAdapter = AlbumAdapter(requireActivity(), emptyList(), R.layout.item_image, callback = this)
+        moreAlbumsAdapter = HorizontalListAdapter("", albumAdapter) {
+            createSortOrderMenu(it, AlbumSortMode.SimilarAlbums) {
+                loadSimilarContent(getAlbum())
+            }
+        }
+
+        wikiAdapter = WikiAdapter()
+
+        updateConcatAdapter()
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private fun setupSongSortButton() {
-        createSortOrderMenu(binding.songSortOrder, SongSortMode.AlbumSongs) {
-            detailViewModel.loadAlbumDetail()
-        }
-        createSortOrderMenu(binding.similarAlbumSortOrder, AlbumSortMode.SimilarAlbums) {
-            loadSimilarContent(getAlbum())
-        }
+    private fun updateConcatAdapter() {
+        concatAdapter = ConcatAdapter(
+            headerAdapter,
+            songHeaderAdapter,
+            simpleSongAdapter,
+            moreAlbumsAdapter,
+            wikiAdapter
+        )
+        binding.recyclerView.adapter = concatAdapter
     }
 
     private fun createSortOrderMenu(view: View, sortMode: SortMode, onChanged: () -> Unit) {
@@ -194,36 +226,26 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
                 } else false
             }
         }
-        view.setOnClickListener { popupMenu.show() }
+        popupMenu.show()
     }
 
     private fun showAlbum(album: Album) {
-        if (album.songs.isEmpty()) {
+        if (album == Album.empty || album.songs.isEmpty()) {
             findNavController().navigateUp()
             return
         }
 
-        binding.image.albumImage(album) { crossfade(false) }
-
-        val artistName = if (albumArtistExists) album.albumArtistName else album.artistName
-        binding.albumText.text = buildInfoString(
-            artistName?.displayArtistName(),
-            album.year.takeIf { it > 0 },
-            album.duration.asReadableDuration(readableFormat = true).takeIf { Preferences.showAlbumDuration }
-        )
-        binding.albumTitle.text = album.name
+        headerAdapter.notifyItemChanged(0)
 
         val songText = plurals(R.plurals.songs, album.songCount)
-        binding.songTitle.text = buildInfoString(
+        songHeaderAdapter.updateTitle(buildInfoString(
             songText,
             album.songCount.takeIf { it > 1 }?.toString()
-        )
+        ))
 
         simpleSongAdapter.dataSet = album.songs
         loadSimilarContent(album)
-        if (requireContext().isAllowedToDownloadMetadata()) {
-            loadWiki(album)
-        }
+        loadWiki(album)
     }
 
     private fun loadSimilarContent(album: Album) {
@@ -235,44 +257,35 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
     private fun loadWiki(album: Album, lang: String? = Locale.getDefault().language) {
         this.biography = null
         this.lang = lang
-        detailViewModel.getAlbumWiki(album, lang).observe(viewLifecycleOwner) { result ->
-            if (result is Result.Success) {
-                aboutAlbum(result.data)
+        detailViewModel.getAlbumWiki(album, lang).observe(viewLifecycleOwner) { lastFmAlbum ->
+            if (lastFmAlbum != null) {
+                aboutAlbum(lastFmAlbum)
             }
         }
     }
 
     private fun moreAlbums(albums: List<Album>) {
         if (albums.isNotEmpty()) {
-            binding.similarAlbumRecyclerView.isVisible = true
-            binding.similarAlbumSortOrder.isVisible = true
-            binding.similarAlbumTitle.isVisible = true
-            binding.similarAlbumTitle.text = if (getAlbum().isArtistNameUnknown())
+            val title = if (getAlbum().isArtistNameUnknown())
                 getString(R.string.label_more_from_artist) else getString(
                 R.string.label_more_from_x,
                 getAlbum().displayArtistName()
             )
 
-            val albumAdapter =
-                AlbumAdapter(requireActivity(), albums, R.layout.item_image, callback = this)
-            binding.similarAlbumRecyclerView.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            binding.similarAlbumRecyclerView.adapter = albumAdapter
-            binding.similarAlbumRecyclerView.destroyOnDetach()
+            moreAlbumsAdapter.setVisible(true)
+            moreAlbumsAdapter.updateTitle(title)
+            (moreAlbumsAdapter.innerAdapter as AlbumAdapter).dataSet = albums
+        } else {
+            moreAlbumsAdapter.setVisible(false)
         }
     }
 
     private fun aboutAlbum(lastFmAlbum: LastFmAlbum) {
         val albumValue = lastFmAlbum.album
         if (albumValue != null) {
-            val wikiTitle = binding.wikiTitle
-            val wikiView = binding.wiki
             if (!albumValue.wiki?.content.isNullOrEmpty()) {
                 biography = albumValue.wiki.content
-                wikiView.show()
-                wikiView.setMarkdownText(biography!!)
-                wikiTitle.text = getString(R.string.about_x_title, getAlbum().name)
-                wikiTitle.show()
+                wikiAdapter.update(getString(R.string.about_x_title, getAlbum().name), biography)
             }
         }
 
@@ -348,6 +361,7 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
                 Preferences.compactAlbumSongView = isChecked
                 menuItem.isChecked = isChecked
                 createSongAdapter()
+                updateConcatAdapter()
                 true
             }
 
@@ -385,10 +399,8 @@ class AlbumDetailFragment : AbsMainActivityFragment(R.layout.fragment_album_deta
     }
 
     override fun onDestroyView() {
-        _binding?.songRecyclerView?.layoutManager = null
-        _binding?.songRecyclerView?.adapter = null
-        _binding?.similarAlbumRecyclerView?.layoutManager = null
-        _binding?.similarAlbumRecyclerView?.adapter = null
+        binding.recyclerView.layoutManager = null
+        binding.recyclerView.adapter = null
         super.onDestroyView()
         _binding = null
     }

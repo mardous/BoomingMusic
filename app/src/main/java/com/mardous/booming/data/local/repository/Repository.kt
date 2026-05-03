@@ -23,20 +23,28 @@ import androidx.lifecycle.LiveData
 import androidx.media3.common.MediaItem
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
-import com.mardous.booming.core.model.task.Result
-import com.mardous.booming.core.model.task.Result.Error
-import com.mardous.booming.core.model.task.Result.Success
 import com.mardous.booming.data.SearchFilter
 import com.mardous.booming.data.local.room.PlayCountEntity
 import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.local.room.SongEntity
-import com.mardous.booming.data.model.*
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.ContentType
+import com.mardous.booming.data.model.Folder
+import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.model.Playlist
+import com.mardous.booming.data.model.ReleaseYear
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.Suggestion
+import com.mardous.booming.data.model.network.LoginParams
+import com.mardous.booming.data.model.network.LoginState
+import com.mardous.booming.data.model.network.ScrobblingResult
+import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.data.model.search.SearchQuery
-import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.data.remote.deezer.model.DeezerAlbum
+import com.mardous.booming.data.remote.deezer.model.DeezerArtist
 import com.mardous.booming.data.remote.deezer.model.DeezerTrack
-import com.mardous.booming.data.remote.lastfm.LastFmService
 import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
 import com.mardous.booming.data.remote.lastfm.model.LastFmArtist
 import kotlinx.coroutines.flow.Flow
@@ -54,13 +62,13 @@ interface Repository {
     suspend fun allYears(): List<ReleaseYear>
     suspend fun allFolders(): FileSystemQuery
     suspend fun filesInPath(path: String): FileSystemQuery
-    suspend fun playlists(): List<PlaylistEntity>
     suspend fun playlistSongs(playlistId: Long): List<SongEntity>
-    fun playlistSongsObservable(playListId: Long): LiveData<List<SongEntity>>
     suspend fun devicePlaylists(): List<Playlist>
     suspend fun devicePlaylistSongs(playlist: Playlist): List<Song>
     suspend fun devicePlaylist(playlistId: Long): Playlist
-    suspend fun playlistsWithSongs(sorted: Boolean = false): List<PlaylistWithSongs>
+    suspend fun playlistsWithSongs(): List<PlaylistWithSongs>
+    suspend fun playlistsWithSongs(sorted: Boolean): List<PlaylistWithSongs>
+    suspend fun searchPlaylists(searchQuery: String): List<PlaylistWithSongs>
     suspend fun playlistWithSongs(playlistId: Long): PlaylistWithSongs
     fun playlistWithSongsObservable(playlistId: Long): LiveData<PlaylistWithSongs>
     suspend fun isSongFavorite(songId: Long): Boolean
@@ -80,7 +88,6 @@ interface Repository {
     suspend fun renamePlaylist(playlistId: Long, name: String)
     suspend fun updatePlaylist(playlist: PlaylistEntity)
     suspend fun insertSongsInPlaylist(songs: List<SongEntity>)
-    suspend fun removeSongFromPlaylist(songEntity: SongEntity)
     suspend fun deleteSongsInPlaylist(songs: List<SongEntity>)
     suspend fun deleteSong(songId: Long): Song
     suspend fun deleteSongs(songs: List<Song>)
@@ -131,22 +138,22 @@ interface Repository {
     suspend fun initializeBlacklist()
     suspend fun search(query: SearchQuery, filter: SearchFilter?): List<Any>
     suspend fun searchSongs(query: String): List<Song>
-    suspend fun searchArtists(query: String): List<Artist>
-    suspend fun searchAlbums(query: String): List<Album>
-    suspend fun searchPlaylists(query: String): List<PlaylistWithSongs>
-    suspend fun searchGenres(query: String): List<Genre>
-    suspend fun deezerTrack(artist: String, title: String): Result<DeezerTrack>
-    suspend fun deezerAlbum(artist: String, name: String): Result<DeezerAlbum>
-    suspend fun artistInfo(name: String, lang: String?, cache: String?): Result<LastFmArtist>
-    suspend fun albumInfo(artist: String, album: String, lang: String?): Result<LastFmAlbum>
+    fun getLoginState(service: ScrobblingService): Flow<LoginState>
+    suspend fun loginToService(service: ScrobblingService, params: LoginParams)
+    suspend fun logoutFromService(service: ScrobblingService)
+    suspend fun scrobble(service: ScrobblingService, song: Song, timestamp: Long): ScrobblingResult
+    suspend fun updateNowPlaying(service: ScrobblingService, song: Song): ScrobblingResult
+    suspend fun deezerTrack(artist: String, title: String): DeezerTrack?
+    suspend fun deezerArtist(name: String, limit: Int, index: Int): DeezerArtist?
+    suspend fun deezerAlbum(artist: String, name: String): DeezerAlbum?
+    suspend fun artistInfo(name: String, lang: String?, cache: String?): LastFmArtist?
+    suspend fun albumInfo(artist: String, album: String, lang: String?): LastFmAlbum?
     suspend fun contributors(): List<Contribution>
     suspend fun translators(): List<Contribution>
 }
 
 class RealRepository(
     private val context: Context,
-    private val deezerService: DeezerService,
-    private val lastFmService: LastFmService,
     private val songRepository: SongRepository,
     private val albumRepository: AlbumRepository,
     private val artistRepository: ArtistRepository,
@@ -154,7 +161,8 @@ class RealRepository(
     private val smartRepository: SmartRepository,
     private val specialRepository: SpecialRepository,
     private val playlistRepository: PlaylistRepository,
-    private val searchRepository: SearchRepository
+    private val searchRepository: SearchRepository,
+    private val networkRepository: NetworkRepository
 ) : Repository {
 
     override suspend fun allSongs(): List<Song> = songRepository.songs()
@@ -173,13 +181,8 @@ class RealRepository(
 
     override suspend fun filesInPath(path: String): FileSystemQuery = specialRepository.musicFilesInPath(path)
 
-    override suspend fun playlists(): List<PlaylistEntity> = playlistRepository.playlists()
-
     override suspend fun playlistSongs(playlistId: Long): List<SongEntity> =
         playlistRepository.playlistSongs(playlistId)
-
-    override fun playlistSongsObservable(playListId: Long): LiveData<List<SongEntity>> =
-        playlistRepository.playlistSongsObservable(playListId)
 
     override suspend fun devicePlaylists(): List<Playlist> =
         playlistRepository.devicePlaylists()
@@ -190,8 +193,14 @@ class RealRepository(
     override suspend fun devicePlaylist(playlistId: Long): Playlist =
         playlistRepository.devicePlaylist(playlistId)
 
+    override suspend fun playlistsWithSongs(): List<PlaylistWithSongs> =
+        playlistRepository.playlistsWithSongs()
+
     override suspend fun playlistsWithSongs(sorted: Boolean): List<PlaylistWithSongs> =
         playlistRepository.playlistsWithSongs(sorted)
+
+    override suspend fun searchPlaylists(searchQuery: String): List<PlaylistWithSongs> =
+        playlistRepository.searchPlaylists(searchQuery)
 
     override suspend fun playlistWithSongs(playlistId: Long): PlaylistWithSongs =
         playlistRepository.playlistWithSongs(playlistId)
@@ -252,9 +261,6 @@ class RealRepository(
 
     override suspend fun insertSongsInPlaylist(songs: List<SongEntity>) =
         playlistRepository.insertSongs(songs)
-
-    override suspend fun removeSongFromPlaylist(songEntity: SongEntity) =
-        playlistRepository.removeSongFromPlaylist(songEntity)
 
     override suspend fun deleteSongsInPlaylist(songs: List<SongEntity>) =
         playlistRepository.deleteSongsFromPlaylist(songs)
@@ -429,54 +435,35 @@ class RealRepository(
 
     override suspend fun searchSongs(query: String): List<Song> = songRepository.songs(query)
 
-    override suspend fun searchArtists(query: String): List<Artist> =
-        artistRepository.artists(query)
+    override fun getLoginState(service: ScrobblingService): Flow<LoginState> =
+        networkRepository.getLoginState(service)
 
-    override suspend fun searchAlbums(query: String): List<Album> = albumRepository.albums(query)
+    override suspend fun loginToService(service: ScrobblingService, params: LoginParams) =
+        networkRepository.loginToService(service, params)
 
-    override suspend fun searchPlaylists(query: String): List<PlaylistWithSongs> = playlistRepository.searchPlaylists(query)
+    override suspend fun logoutFromService(service: ScrobblingService) =
+        networkRepository.logoutFromService(service)
 
-    override suspend fun searchGenres(query: String): List<Genre> = genreRepository.genres(query)
+    override suspend fun scrobble(service: ScrobblingService, song: Song, timestamp: Long): ScrobblingResult =
+        networkRepository.scrobble(service, song, timestamp)
 
-    override suspend fun deezerTrack(artist: String, title: String): Result<DeezerTrack> {
-        return try {
-            Success(deezerService.track(artist, title))
-        } catch (e: Exception) {
-            Error(e)
-        }
-    }
+    override suspend fun updateNowPlaying(service: ScrobblingService, song: Song): ScrobblingResult =
+        networkRepository.updateNowPlaying(service, song)
 
-    override suspend fun deezerAlbum(artist: String, name: String): Result<DeezerAlbum> {
-        return try {
-            Success(deezerService.album(artist, name))
-        } catch (e: Exception) {
-            Error(e)
-        }
-    }
+    override suspend fun deezerTrack(artist: String, title: String) =
+        networkRepository.deezerTrack(artist, title)
 
-    override suspend fun artistInfo(
-        name: String,
-        lang: String?,
-        cache: String?
-    ): Result<LastFmArtist> {
-        return try {
-            Success(lastFmService.artistInfo(name, lang, cache))
-        } catch (e: Exception) {
-            Error(e)
-        }
-    }
+    override suspend fun deezerArtist(name: String, limit: Int, index: Int) =
+        networkRepository.deezerArtist(name, limit, index)
 
-    override suspend fun albumInfo(
-        artist: String,
-        album: String,
-        lang: String?
-    ): Result<LastFmAlbum> {
-        return try {
-            Success(lastFmService.albumInfo(album, artist, lang))
-        } catch (e: Exception) {
-            Error(e)
-        }
-    }
+    override suspend fun deezerAlbum(artist: String, name: String) =
+        networkRepository.deezerAlbum(artist, name)
+
+    override suspend fun artistInfo(name: String, lang: String?, cache: String?) =
+        networkRepository.artistInfo(name, lang, cache)
+
+    override suspend fun albumInfo(artist: String, album: String, lang: String?) =
+        networkRepository.albumInfo(artist, album, lang)
 
     override suspend fun contributors(): List<Contribution> =
         Contribution.loadContributions(context, "contributors.json")

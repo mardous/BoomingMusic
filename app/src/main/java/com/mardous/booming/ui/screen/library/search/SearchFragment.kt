@@ -23,13 +23,22 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import android.view.*
+import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.BundleCompat
-import androidx.core.view.*
+import androidx.core.view.children
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,16 +55,31 @@ import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.databinding.FragmentSearchBinding
-import com.mardous.booming.extensions.*
-import com.mardous.booming.extensions.navigation.*
+import com.mardous.booming.extensions.applyHorizontalWindowInsets
+import com.mardous.booming.extensions.dip
+import com.mardous.booming.extensions.hideSoftKeyboard
+import com.mardous.booming.extensions.isEmpty
+import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
+import com.mardous.booming.extensions.materialSharedAxis
+import com.mardous.booming.extensions.navigation.albumDetailArgs
+import com.mardous.booming.extensions.navigation.artistDetailArgs
+import com.mardous.booming.extensions.navigation.asFragmentExtras
+import com.mardous.booming.extensions.navigation.genreDetailArgs
+import com.mardous.booming.extensions.navigation.playlistDetailArgs
 import com.mardous.booming.extensions.resources.focusAndShowKeyboard
 import com.mardous.booming.extensions.resources.onVerticalScroll
 import com.mardous.booming.extensions.resources.reactionToKey
 import com.mardous.booming.extensions.resources.setupStatusBarForeground
+import com.mardous.booming.extensions.setSupportActionBar
+import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.ISearchCallback
 import com.mardous.booming.ui.adapters.SearchAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
-import com.mardous.booming.ui.component.menu.*
+import com.mardous.booming.ui.component.menu.onAlbumMenu
+import com.mardous.booming.ui.component.menu.onArtistMenu
+import com.mardous.booming.ui.component.menu.onPlaylistMenu
+import com.mardous.booming.ui.component.menu.onSongMenu
+import com.mardous.booming.ui.component.menu.onSongsMenu
 import kotlinx.coroutines.flow.collectLatest
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -109,8 +133,11 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
         }
 
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            viewModel.queueFlow.collectLatest { (songs, startPos) ->
-                playerViewModel.openQueue(songs, startPos)
+            viewModel.queueFlow.collectLatest { (songs, startPos, songClickBehavior) ->
+                playerViewModel.openSongs(startPos, songs, songClickBehavior)
+                if (!songClickBehavior.isAbleToPlay) {
+                    showToast(R.string.added_title_to_playing_queue)
+                }
             }
         }
 

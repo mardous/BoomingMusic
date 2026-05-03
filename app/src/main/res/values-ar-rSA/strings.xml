@@ -66,7 +66,6 @@
     <string name="there_are_no_importable_playlists">لا توجد قوائم تشغيل قابلة للاستيراد.</string>
     <string name="playlist_x_not_imported">لم يتم استيراد قائمة التشغيل %s.</string>
     <string name="action_import_playlist">استيراد قائمة التشغيل…</string>
-    <string name="action_new_playlist">قائمة تشغيل جديدة…</string>
     <string name="new_playlist_title">قائمة تشغيل جديدة</string>
     <string name="add_playlist_title">إضافة إلى قائمة التشغيل</string>
     <string name="rename_playlist_title">إعادة تسمية قائمة التشغيل</string>
@@ -87,12 +86,10 @@
     <string name="saved_x_playlists_failed_to_save_x">تم حفظ قائمة التشغيل %1$d ، فشل في حفظ %2$d.</string>
     <string name="delete_playlist_title">حذف قائمة التشغيل</string>
     <string name="delete_playlists_title">حذف قوائم التشغيل</string>
-    <string name="delete_playlist_x"><![CDATA[حذف قائمة التشغيل <b>%s</b>?]]></string>
+    <string name="delete_playlist_x"><![CDATA[حذف قائمة التشغيل <b>%s</b>\?]]></string>
     <string name="delete_x_playlists"><![CDATA[حذف قائمة التشغيل <b>%d</b>؟]]></string>
     <string name="created_playlist_x">تم إنشاء قائمة تشغيل \'%1$s\'.</string>
     <string name="could_not_create_playlist">تعذر إنشاء قائمة تشغيل.</string>
-    <string name="inserted_one_song_into_playlist_x">تم إدخال أغنية واحدة في قائمة التشغيل %s.</string>
-    <string name="inserted_x_songs_into_playlist_x">أدمج %1$d أغنية في قائمة التشغيل %2$s.</string>
     <string name="playlist_exists">قائمة التشغيل %s موجودة بالفعل.</string>
     <string name="playlist_created">تم إنشاء قائمة التشغيل %s بنجاح.</string>
     <string name="remove_song_from_playlist_title">إزالة الأغنية من قائمة التشغيل</string>
@@ -135,8 +132,7 @@
     <string name="permission_bluetooth_description">يحتاج التطبيق إلى إذن الأجهزة القريبة للتحقق من أجهزة بلوتوث</string>
     <string name="permission_bluetooth_denied">تم رفض إذن الأجهزة القريبة.</string>
     <string name="permission_read_images_title">قراءة الصور (اختياري)</string>
-    <string name="permission_read_images_summary">هذا الإذن مطلوب للموسيقى \"بومنج\" للعثور على ملفات صور الألبوم في مجلدات الموسيقى الخاصة بك.
-        إذا كنت لا تخطط لاستخدام هذه الميزة، يمكنك اختيار عدم منحها.</string>
+    <string name="permission_read_images_summary">هذا الإذن مطلوب للموسيقى \"بومنج\" للعثور على ملفات صور الألبوم في مجلدات الموسيقى الخاصة بك. إذا كنت لا تخطط لاستخدام هذه الميزة، يمكنك اختيار عدم منحها.</string>
     <string name="permission_read_images_denied">يجب عليك منح الإذن لقراءة الصور من الجهاز.</string>
     <string name="permission_exact_alarms_title">جدولة التنبيهات الدقيقة (اختياري)</string>
     <string name="permission_exact_alarms_description">إذن لجدولة التنبيهات الدقيقة مطلوب لكي يعمل مؤقت النوم بشكل صحيح</string>
@@ -151,16 +147,11 @@
     <string name="hello_there">مرحبًا هناك!</string>
     <string name="welcome_to_x">مرحبا بكم في %s</string>
     <string name="get_started">ابدأ</string>
-    <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> غير مدرج في متجر الوسائط.]]></string>
-    <string name="some_files_are_not_listed_in_the_media_store">بعض الملفات غير مدرجة في متجر الوسائط.</string>
-    <string name="nothing_to_scan">لا شيء للمسح</string>
     <string name="select_storage_title">حدد وحدة التخزين</string>
     <string name="now_playing">يلعب الآن</string>
     <string name="playing_queue_label">قائمة الانتظار</string>
     <string name="list_start">بداية القائمة</string>
     <string name="list_end">نهاية القائمة</string>
-    <string name="empty_play_queue">قائمة الانتظار فارغة.</string>
-    <string name="save_queue">حفظ قائمة الانتظار</string>
     <string name="clear_queue">مسح قائمة الانتظار</string>
     <string name="action_move_to_current_track">إظهار المسار الحالي</string>
     <string name="action_add_to_favorites">إضافة إلى المفضلة</string>
@@ -173,17 +164,15 @@
     <string name="action_add_to_playing_queue">إضافة إلى قائمة الانتظار</string>
     <string name="action_remove_from_playing_queue">إزالة من قائمة الانتظار</string>
     <string name="put_after_current_track">وضع بعد المسار الحالي</string>
-    <string name="undo_action">التراجع</string>
     <string name="set_artist_image">تعيين صورة الفنان</string>
     <string name="reset_artist_image">إعادة تعيين صورة الفنان</string>
     <string name="there_is_nothing_to_reset">لا يوجد شيء لإعادة تعيينه.</string>
-    <string name="updating">جارٍ تحديث…</string>
     <string name="add_to_label">إضافة إلى</string>
     <string name="go_to_label">الذهاب إلى</string>
     <string name="action_go_to_album">الذهاب إلى الألبوم</string>
     <string name="action_go_to_artist">الذهاب إلى الفنان</string>
     <string name="action_go_to_genre">الذهاب إلى النوع</string>
-    <string name="added_title_to_playing_queue">"تمت إضافة عنوان واحد إلى قائمة انتظار اللعبة."</string>
+    <string name="added_title_to_playing_queue">تمت إضافة عنوان واحد إلى قائمة انتظار اللعبة.</string>
     <string name="added_x_titles_to_playing_queue">أضيفت عناوين %1$d إلى قائمة انتظار اللعبة.</string>
     <string name="next_song_label">الأغنية التالية</string>
     <string name="next_song_x">التالي • %1$s</string>
@@ -267,7 +256,7 @@
     <string name="update_image">تحديث الصورة</string>
     <string name="restore_default">استعادة الافتراضي</string>
     <string name="remove_cover">إزالة الغطاء</string>
-    <string name="could_not_download_album_cover">"تعذّر تشغيل\u2019t تحميل غلاف الألبوم المطابق."</string>
+    <string name="could_not_download_album_cover">تعذّر تشغيل’t تحميل غلاف الألبوم المطابق.</string>
     <string name="download_image">تحميل الصورة</string>
     <string name="pick_from_local_storage">اختر من التخزين المحلي</string>
     <string name="about_x_title">حول %s</string>
@@ -279,8 +268,7 @@
     <string name="save_artwork_success">تم حفظ غلاف الألبوم</string>
     <string name="save_artwork_view_action">عرض</string>
     <string name="save_artwork_copyright_info_title">إشعار حقوق الطبع والنشر</string>
-    <string name="save_artwork_copyright_info_message">بعض أغلفة الألبوم (أو جميعها) قد تكون محمية بقوانين حقوق التأليف والنشر. لا يمكنك استخدام هذه الصور لأغراض تجارية أو إعلانية.
-        \n\nفقط لديك المسؤولية الكاملة عن استخدام أغلفة الألبوم المحفوظة.</string>
+    <string name="save_artwork_copyright_info_message">بعض أغلفة الألبوم (أو جميعها) قد تكون محمية بقوانين حقوق التأليف والنشر. لا يمكنك استخدام هذه الصور لأغراض تجارية أو إعلانية. \n\nفقط لديك المسؤولية الكاملة عن استخدام أغلفة الألبوم المحفوظة.</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="keyboard">Keyboard</string>
@@ -319,7 +307,7 @@
     <string name="disc_total">مجموع الأقراص</string>
     <string name="lyrics">كلمات</string>
     <string name="lyricist">كلماتي</string>
-    <string name="could_not_load_the_song_information">"تعذر تحميل معلومات الأغنية."</string>
+    <string name="could_not_load_the_song_information">تعذر تحميل معلومات الأغنية.</string>
     <string name="no_results">لا توجد نتائج</string>
     <string name="connection_unavailable">الاتصال غير متوفر.</string>
     <string name="you_have_to_select_at_least_one_category">يجب عليك تحديد فئة واحدة على الأقل</string>
@@ -412,17 +400,17 @@
         <item quantity="many">عناصر %d</item>
         <item quantity="other">عناصر %d</item>
     </plurals>
-    <!-- Listen now -->
-    <string name="for_you_label">من أجلك</string>
-    <string name="shuffle_action">خلط</string>
+    <!-- Home -->
+    <string name="home_label">الرئيسية</string>
+    <string name="shuffle_action">عشوائي</string>
     <string name="top_artists">كبار الفنانين</string>
     <string name="top_albums">أعلى الألبومات</string>
     <string name="recent_artists">الفنانين الأخيرين</string>
-    <string name="recent_albums">الألبومات الأخيرة</string>
-    <string name="no_suggestions">لا توجد اقتراحات لك</string>
+    <string name="recent_albums">الألبومات الحديثة</string>
+    <string name="no_suggestions">اقتراحات لك</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">عشوائياً خالصاً</string>
-    <string name="shuffle_mode_most_played">الأكثر تشغيلاً</string>
+    <string name="shuffle_mode_pure_random">اختيار عشوائياً</string>
+    <string name="shuffle_mode_most_played">إختيار عشوائي</string>
     <string name="shuffle_mode_most_played_artists">أكثر الفنانين لعبا</string>
     <string name="shuffle_mode_most_played_albums">الألبومات الأكثر تشغيلاً</string>
     <string name="shuffle_mode_favorite_songs">المفضلة أولاً</string>
@@ -431,7 +419,7 @@
     <string name="shuffle_mode_combined">مزيج ذكي</string>
     <string name="shuffle_mode_pure_random_description">خلط عشوائي تماما.</string>
     <string name="shuffle_mode_most_played_description">يفضل أغانيك الأكثر لعباً.</string>
-    <string name="shuffle_mode_most_played_artists_description">الأغاني المفضلة من كبار الفنانين</string>
+    <string name="shuffle_mode_most_played_artists_description">الأغاني المفضلة من فنانك المفضل</string>
     <string name="shuffle_mode_most_played_albums_description">الأغاني المفضلة من الألبومات الأكثر لعبة.</string>
     <string name="shuffle_mode_favorite_songs_description">يعطي الأولوية لأغانيك المفضلة.</string>
     <string name="shuffle_mode_forgotten_songs_description">الأولويات هي الأغاني التي لم تشغلها في فترة من الزمن.</string>
@@ -446,18 +434,16 @@
     <string name="autoeq_profiles_title">AutoEq Profiles</string>
     <string name="eq_profile_title">Profile</string>
     <string name="change_band_count_title">Change band count</string>
-    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state.
-        Any other profiles saved for the current band configuration cannot be used with the new band configuration.
-        \n\nDo you want to continue?</string>
-    <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
-    <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
-    <string name="share_eq_profiles">Share EQ Profiles</string>
+    <string name="change_band_count_message">سيؤدي تغيير عدد النطاقات إلى إعادة ضبط الملف الشخصي الحالي إلى حالته الأصلية. لا يمكن استخدام أي ملفات شخصية أخرى محفوظة لإعدادات النطاقات الحالية مع إعدادات النطاقات الجديدة.\n\nهل تريد المتابعة؟</string>
+    <string name="band_configuration_changed_successfully">تم تغيير إعدادات النطاق بنجاح.</string>
+    <string name="band_configuration_could_not_be_changed">لم يكن من الممكن تغيير إعدادات النطاق.</string>
+    <string name="share_eq_profiles">مشاركة ملفات تعريف الذكاء العاطفي</string>
     <string name="there_is_nothing_to_export">لا يوجد شيء للتصدير.</string>
     <string name="there_is_nothing_to_import">ليس هناك ما يمكن استيراده.</string>
-    <string name="an_unexpected_error_occurred">An unexpected error occurred.</string>
-    <string name="share_profiles">Share profiles</string>
-    <string name="select_profiles_to_share">Select profiles to share:</string>
-    <string name="export_profiles">Export profiles</string>
+    <string name="an_unexpected_error_occurred">حدث خطأ غير متوقع.</string>
+    <string name="share_profiles">مشاركة الملفات الشخصية</string>
+    <string name="select_profiles_to_share">اختر الملفات الشخصية التي تريد مشاركتها:</string>
+    <string name="export_profiles">تصدير الملفات الشخصية</string>
     <string name="select_profiles_to_export">Select profiles to export:</string>
     <string name="select_a_file_to_save_the_exported_profiles">Select a file to save the exported profiles.</string>
     <string name="profiles_exported_successfully">Profiles exported successfully.</string>
@@ -470,8 +456,7 @@
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">Reset equalizer</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
-        \n\nThis will clear all your profiles.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">غير مدعوم</string>
     <string name="set_eq_engine_title">Set EQ engine</string>
     <string name="eq_engine_basic_title">Legacy Engine</string>
@@ -513,16 +498,11 @@
     <string name="custom">مخصص</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">إزاحة الصوت</string>
-    <string name="enable_audio_offload_description">يسمح للجهاز بمعالجة الصوت مباشرة من خلال جهازه، تقليل استخدام وحدة المعالجة المركزية وحفظ البطارية.
-        هذه الميزة مدعومة فقط على بعض الأجهزة. قد لا تعمل بعض التأثيرات أو الميزات أثناء تفعيلها.
-        مطلوب إعادة تشغيل لتفعيل التغييرات.</string>
+    <string name="enable_audio_offload_description">يسمح للجهاز بمعالجة الصوت مباشرة من خلال جهازه، تقليل استخدام وحدة المعالجة المركزية وحفظ البطارية. هذه الميزة مدعومة فقط على بعض الأجهزة. قد لا تعمل بعض التأثيرات أو الميزات أثناء تفعيلها. مطلوب إعادة تشغيل لتفعيل التغييرات.</string>
     <string name="enable_audio_float_output_title">إخراج الصوت العالي الدقة</string>
-    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality.
-        Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance.
-        It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
+    <string name="enable_audio_float_output_description">Enables 32-bit floating-point audio for better sound quality. Keep in mind this will turn off features like ReplayGain, skip silence, and volume balance. It might use a bit more battery, and you’ll need to restart the app for it to take effect.</string>
     <string name="skip_silence_title">تخطي الصمت</string>
-    <string name="skip_silence_description">Automatically skip silent sections during playback.
-        Ideal for podcasts and recordings.</string>
+    <string name="skip_silence_description">Automatically skip silent sections during playback. Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">إظهار كلمات الأغاني</string>
     <string name="action_hide_lyrics">إخفاء الكلمات</string>
@@ -533,7 +513,7 @@
     <string name="external_file_lyrics">ملف خارجي</string>
     <string name="action_import_synchronized_lyrics">استيراد كلمات متزامنة</string>
     <string name="action_share_synchronized_lyrics">مشاركة كلمات الأغاني المتزامنة</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[هل تريد استيراد كلمات LRC المتزامنة ل <b>%s</b>?]]></string>
+    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[هل تريد استيراد كلمات LRC المتزامنة ل <b>%s</b>\?]]></string>
     <string name="import_lyrics_for_song_x">الكلمات المستوردة لـ %s</string>
     <string name="could_not_import_lyrics_for_song_x">تعذر استيراد كلمات الاغاني ل %s</string>
     <string name="select_a_file_containing_synchronized_lyrics">حدد ملف LRC يحتوي على كلمات متزامنة.</string>
@@ -560,7 +540,9 @@
     <string name="sleep_timer_15_mins">15 mins</string>
     <string name="sleep_timer_45_mins">45 mins</string>
     <string name="sleep_timer_1_hour">1 hour</string>
+    <string name="sleep_timer_2_hour">2 hour</string>
     <string name="sleep_timer_finish_current_music">إنهاء الأغنية الأخيرة</string>
+    <string name="sleep_timer_music_fades_out">Music fades out</string>
     <string name="sleep_timer_stop_after_this_track">توقف بعد هذا المسار</string>
     <string name="sleep_timer_stop_after_x">توقف بعد %s</string>
     <string name="sleep_timer_stop_after_x_canceled">توقف بعد %s: تم إلغاؤه</string>
@@ -571,10 +553,7 @@
     <string name="app_shortcut_favorites_short">المفضلة</string>
     <!-- About page -->
     <string name="action_about">حول</string>
-    <string name="application">تطبيق</string>
-    <string name="version">الإصدار</string>
     <string name="changelog">تغيير</string>
-    <string name="fork_on_github">Fork on GitHub</string>
     <string name="faq">FAQ</string>
     <string name="licenses">التراخيص</string>
     <string name="author">المؤلف</string>
@@ -585,13 +564,8 @@
     <string name="translators_summary">شكراً لأولئك الذين يجعلون الموسيقى المزدهرة متاحة بعدة لغات.</string>
     <string name="contributors_title">Contributors</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
-    <string name="telegram_chat">دردشة تيليجرام</string>
-    <string name="telegram_chat_summary">انضم إلى المحادثة في تيليجرام واحصل على معلومات عن الإصدارات والأخبار الجديدة.</string>
     <string name="view_profile_on_github">عرض الملف الشخصي على GitHub</string>
-    <string name="follow_on_telegram">DM على تيليجرام</string>
     <string name="write_an_email">كتابة بريد إلكتروني</string>
-    <string name="buy_me_a_coffee">اشتري لي قهوة</string>
-    <string name="buy_me_a_coffee_summary">يمكنك تقديم تبرع صغير إذا كنت تعتقد أن عملي يستحق ذلك.</string>
     <string name="support_development">دعم التطوير</string>
     <string name="help_with_translations">المساعدة في الترجمات</string>
     <string name="help_with_translations_summary">يمكنك المساهمة في المشروع من خلال المساعدة في ترجمة الموسيقى المزدهرة إلى لغات أخرى.</string>
@@ -602,9 +576,6 @@
     <string name="send_invitation_message">إرسال رسالة الدعوة</string>
     <string name="invitation_message_content">مرحبًا. تحقق من الموسيقى المزدهرة! أفضل تطبيق للاستماع إلى الموسيقى المحلية على أندرويد. يمكنك تنزيلها من هنا: %s</string>
     <!-- Bug report -->
-    <string name="report_an_issue">الإبلاغ عن مشكلة</string>
-    <string name="device_info">معلومات الجهاز</string>
-    <string name="copied_device_info_to_clipboard">تم نسخ معلومات الجهاز إلى الحافظة.</string>
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">سيتم إعادة توجيهك إلى موقع تتبع المشكلة.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">مطلوب الوصول إلى التخزين</string>
@@ -623,20 +594,17 @@
     <string name="playback_title">تشغيل</string>
     <string name="playback_summary">تغيير إعدادات الصوت، سماعات البلوتوث، إلخ.</string>
     <string name="metadata_title">بيانات التعريف</string>
-    <string name="metadata_summary">الإعدادات المتعلقة بصور الألبوم والفنانين.</string>
     <string name="library_title">المكتبة</string>
     <string name="library_summary">إعدادات قوائم التشغيل وفلاتر الاستبعاد/الإدراج.</string>
     <string name="advanced_title">متقدم</string>
     <string name="advanced_summary">لغة داخل التطبيق وغيرها من الإعدادات للمستخدمين المتقدمين.</string>
     <string name="update_title">تحديث</string>
-    <string name="update_summary">إعدادات تحديثات التطبيق.</string>
     <string name="about_title">حول</string>
     <string name="about_summary">موسيقى مزدهرة %s، لمس لمزيد من المعلومات.</string>
     <!-- Preference headers -->
     <string name="general_header">عام</string>
     <string name="library_header">المكتبة</string>
     <string name="album_cover_header">غلاف</string>
-    <string name="artist_image_header">صورة الفنان</string>
     <string name="exclusion_header">الاستبعادات</string>
     <string name="controls_header">الضوابط</string>
     <string name="gestures_header">إيماءات</string>
@@ -673,6 +641,7 @@
     <string name="lyrics_effects_note">وتعزز التأثيرات المتقدمة الخبرة البصرية ولكنها قد تتطلب المزيد من موارد النظام والبطاريات.</string>
     <string name="lyrics_background_effect_title">تأثير الخلفية</string>
     <string name="lyrics_background_gradient">متدرج</string>
+    <string name="lyrics_background_blur">Blur</string>
     <string name="lyrics_blur_effect_title">تأثير الضبابية</string>
     <string name="lyrics_blur_effect_summary">طمس خطوط كلمات الأغاني المجاورة للغة الحالية.</string>
     <string name="lyrics_shadow_effect_title">تأثير الظل</string>
@@ -692,14 +661,13 @@
     <string name="unsynced_font_size_full_title">حجم خط كلمات الاغنية غير متزامنة (عرض كامل)</string>
     <string name="unsynced_font_size_full_summary">ضبط حجم الخط لكلمات الأغاني غير المتزامنة في كامل شاشة الكلمات.</string>
     <string name="instrumental_tracks_identifiers_title">معرّفات المسار الآلي</string>
-    <string name="instrumental_tracks_identifiers_summary">إذا كانت كلمات الأغنية تتكون من
-        فقط واحدة أو أكثر من هذه المؤشرات، فسيتم وضع علامة عليها كمسار فعال (مفصولة بفاصلة).</string>
+    <string name="instrumental_tracks_identifiers_summary">إذا كانت كلمات الأغنية تتكون من فقط واحدة أو أكثر من هذه المؤشرات، فسيتم وضع علامة عليها كمسار فعال (مفصولة بفاصلة).</string>
     <string name="instrumental_tracks_mark_by_title_title">وضع علامة حسب العنوان</string>
     <string name="instrumental_tracks_mark_by_title_summary">كما سيؤخذ عنوان المسار في الاعتبار عند البحث عن المعرفة.</string>
+    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
-        This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.
-        It might require an app restart</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding. This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics. It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">النمط</string>
     <string name="open_on_play_title">فتح عند التشغيل</string>
@@ -745,18 +713,18 @@
     <string name="select_extra_info_summary">حدد المعلومات الإضافية لعرضها في لوحة اللاعب.</string>
     <string name="prefer_remaining_time_title">تفضّل الوقت المتبقي</string>
     <string name="prefer_remaining_time_summary">عرض الوقت المتبقي بدلاً من مدة الأغنية.</string>
-    <string name="prefer_album_artist_name_title">"تفضيل اسم الفنان ألبوم-"</string>
+    <string name="prefer_album_artist_name_title">تفضيل اسم الفنان ألبوم-</string>
     <string name="prefer_album_artist_name_summary">يعرض اسم فنان ألبوم بدلاً من اسم فنان الأغنية (إذا كان متاحاً).</string>
+    <string name="player_blur_intensity_title">Blur intensity</string>
+    <string name="player_blur_intensity_summary">Adjust how strong the background blur appears in the Blur theme. Lower values may improve performance.</string>
     <!-- Playback preferences -->
     <string name="play_on_startup_title">تشغيل عند بدء التشغيل</string>
     <string name="queue_next_mode_title">وضع \"قائمة الانتظار التالية\"</string>
-    <string name="search_auto_queue_title">قائمة الانتظار لجميع نتائج البحث</string>
-    <string name="search_auto_queue_summary">عند تشغيل أغنية من شاشة البحث، سيتم أيضا وضع جميع النتائج الأخرى في قائمة الانتظار.</string>
     <string name="remember_shuffle_mode_title">تذكر التبديل</string>
     <string name="remember_shuffle_mode_summary">سيبقى الوضع العشوائي قيد التشغيل عند تحديد قائمة جديدة من الأغنية.</string>
     <string name="album_shuffle_mode_title">وضع خلط الألبوم</string>
     <string name="artist_shuffle_mode_title">وضع خلط الفنان</string>
-    <string name="rewind_with_back_title">"إرجاع بـ 'السابقة'"</string>
+    <string name="rewind_with_back_title">إرجاع بـ \'السابقة\'</string>
     <string name="rewind_with_back_summary">إرجاع مسار التشغيل إلى البداية أو الانتقال إلى المسار السابق إذا كان المسار الحالي في البداية.</string>
     <string name="rewind_fast_forward_amount_title">إعادة التصحيح/المبلغ السريع</string>
     <string name="rewind_fast_forward_amount_summary">الوقت (بالثواني) لإعادة الريح أو للأمام بسرعة باستخدام واجهة المستخدم أو الضوابط الخارجية.</string>
@@ -773,9 +741,7 @@
     <string name="pause_on_zero_volume_title">إيقاف عند مستوى الصوت صفر</string>
     <string name="pause_on_zero_volume_summary">إيقاف الأغنية عندما ينخفض حجم الصوت إلى صفر ويبدأ التشغيل مرة أخرى عندما يرتفع مستوى الصوت. يعمل أيضا خارج التطبيق.</string>
     <string name="mp3_index_seeking_title">البحث عن فهرس MP3</string>
-    <string name="mp3_index_seeking_summary">يقوم بتحميل ملف MP3 بأكمله إلى الذاكرة للسعي بدلاً من الاعتماد على رأس Xing.
-        استخدم فقط إذا فشل البحث على بعض ملفات VBR.
-        يتطلب إعادة تشغيل التطبيق.</string>
+    <string name="mp3_index_seeking_summary">يقوم بتحميل ملف MP3 بأكمله إلى الذاكرة للسعي بدلاً من الاعتماد على رأس Xing. استخدم فقط إذا فشل البحث على بعض ملفات VBR. يتطلب إعادة تشغيل التطبيق.</string>
     <string name="play_option_always_visible_title">إبقاء خيار \"تشغيل\" مرئي</string>
     <string name="play_option_always_visible_summary">إذا تم تفعيله، فإن خيار \"تشغيل\" سيظهر دائماً في قائمة الأغنية، بغض النظر عن إعدادات السلوك.</string>
     <string name="play_option_whole_list_title">خيار \"تشغيل\" يشغل قائمة كاملة</string>
@@ -797,13 +763,11 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="auto_download_metadata_title">تحميل تلقائي لبيانات التعريف</string>
     <string name="ignore_media_store_album_covers_title">تجاهل أغلفة متجر الوسائط</string>
     <string name="ignore_media_store_album_covers_summary">وقد يساعد ذلك على زيادة جودة الصور ولكنه يتطلب المزيد من الذاكرة.</string>
     <string name="use_folder_album_cover_title">استخدام صور المجلد</string>
     <string name="use_folder_album_cover_summary">إذا كان الملف الصوتي لا يحتوي على غلاف مضمون. قد تستغرق الصور وقتاً أطول للتحميل.</string>
     <string name="online_artist_images_title">تحميل صور الفنان</string>
-    <string name="online_artist_images_summary">هذا يعتمد على سياسة تنزيل البيانات الوصفية الخاصة بك.</string>
     <string name="preferred_image_size_title">حجم الصورة المفضلة</string>
     <string name="online_album_covers_title">تحميل أغلفة الألبوم المفقودة</string>
     <string name="online_album_covers_summary">الصور التي تم تنزيلها ليست مضمنة في ملفات الصوت؛ فهي مرئية فقط داخل التطبيق. وهذا يعتمد على سياسة تنزيل البيانات الوصفية الخاصة بك.</string>
@@ -839,16 +803,12 @@
     <string name="restore_backup_summary">استعادة بيانات التطبيق (والولاية) من نسخة احتياطية سابقة.</string>
     <string name="stop_when_closed_from_recents_title">إيقاف عند الإغلاق من التطبيقات الحديثة</string>
     <string name="stop_when_closed_from_recents_summary">يتوقف التشغيل إذا تم إغلاق التطبيق من قائمة التطبيقات الأخيرة.</string>
-    <string name="stop_when_closed_from_recents_note">ملاحظة: بعض الأجهزة ذات الذاكرة العدوانية
-        أو إدارة البطارية قد تتجاهل هذا الإعداد وتوقف التطبيق دائما عند إزالته من الحديث.</string>
+    <string name="stop_when_closed_from_recents_note">ملاحظة: بعض الأجهزة ذات الذاكرة العدوانية أو إدارة البطارية قد تتجاهل هذا الإعداد وتوقف التطبيق دائما عند إزالته من الحديث.</string>
     <string name="rotation_lock_title">قفل الدوران</string>
     <string name="rotation_lock_summary">قفل اتجاه الجهاز. مفيد في الحالات التي تتوقف فيها الموسيقى عند تدوير الجهاز بسبب بعض سياسات الشركة المصنعة.</string>
     <!-- Preference values -->
     <string name="light_theme_name">فاتح</string>
     <string name="dark_theme_name">داكن</string>
-    <string name="black_theme_name">أسود</string>
-    <string name="follow_system">اتبع النظام</string>
-    <string name="label_auto">تلقائي</string>
     <string name="labeled">مُسمّى</string>
     <string name="unlabeled">غير موسومة</string>
     <string name="selected">محدد</string>
@@ -885,12 +845,6 @@
     <string name="this_month">هذا الشهر</string>
     <string name="past_three_months">الأشهر الثلاثة الماضية</string>
     <string name="this_year">هذا العام</string>
-    <string name="priority_maximum">الحد الأقصى</string>
-    <string name="priority_high">مرتفع</string>
-    <string name="priority_normal">عادي</string>
-    <string name="priority_low">منخفض</string>
-    <string name="always">دائما</string>
-    <string name="only_on_wifi">شبكة Wi-Fi فقط</string>
     <string name="image_size_large">كبير (أبطء)</string>
     <string name="image_size_medium">متوسط (افتراضي، موصى به)</string>
     <string name="image_size_small">صغير (أسرع، منخفض الجودة)</string>
@@ -932,11 +886,27 @@
     <string name="download_action">تنزيل</string>
     <string name="downloading_update">تحميل تحديث الموسيقى المزدهرة.</string>
     <string name="uncaught_error_title">عفوا! لم يكن من المفترض أن يحدث ذلك!</string>
-    <string name="uncaught_error_message">يبدو أنه حدث خطأ ما وتسبب في تعطيل التطبيق.
-        سيكون من المفيد أن ترسل لنا تقرير الخطأ إلى مجموعة تيليجرام أو عبر البريد الإلكتروني.</string>
+    <string name="uncaught_error_message">يبدو أنه حدث خطأ ما وتسبب في تعطيل التطبيق. سيكون من المفيد أن ترسل لنا تقرير الخطأ إلى مجموعة تيليجرام أو عبر البريد الإلكتروني.</string>
     <string name="uncaught_error_report">تقرير الخطأ</string>
     <string name="uncaught_error_report_copied">تم نسخ تقرير الخطأ إلى الحافظة.</string>
     <string name="uncaught_error_restart_app">إعادة تشغيل التطبيق</string>
     <string name="uncaught_error_github">فتح المشكلة على GitHub</string>
     <string name="uncaught_error_send">إرسال التقرير</string>
+    <string name="app_widget_responsive_desc">أداة يتكيف تصميمها مع أحجام مختلفة</string>
+    <string name="app_widget_card">بطاقة عنصر واجهة المستخدم للتطبيق</string>
+    <string name="app_widget_card_desc">تصميم التطبيق</string>
+    <string name="app_widget_full">النمط الكامل</string>
+    <string name="app_widget_full_desc">شاشة المشغل مباشرة على سطح المكتب الخاص بك</string>
+    <string name="app_widget_responsive">أداة تُكيّف تصميمها مع الأحجام المختلفة</string>
+    <string name="channel_mono">ستيريو</string>
+    <string name="channel_stereo">ستيريو 2.1</string>
+    <string name="channel_stereo_2_1">رباعي الصوت</string>
+    <string name="channel_quadraphonic">نظام صوت محيطي 5.0</string>
+    <string name="channel_surround_5_0">نظام صوت محيطي 5.0</string>
+    <string name="channel_surround_5_1">نظام الصوت المحيطي 5.1</string>
+    <string name="channel_surround_6_1">نظام صوت محيطي 6.1</string>
+    <string name="channel_surround_7_1">نظام الصوت المحيطي 7.1</string>
+    <string name="channel_surround_9_1">نظام صوت محيطي 9.1</string>
+    <string name="channel_surround_11_1">نظام الصوت المحيطي 13.1</string>
+    <string name="channel_surround_13_1">نظام الصوت المحيطي 11.1</string>
 </resources>

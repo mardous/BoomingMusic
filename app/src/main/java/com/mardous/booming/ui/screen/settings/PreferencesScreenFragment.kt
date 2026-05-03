@@ -41,7 +41,9 @@ import com.google.android.material.color.DynamicColors
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoverProvider
+import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.data.local.room.InclExclDao
+import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.hasS
@@ -58,7 +60,7 @@ import com.mardous.booming.ui.component.preferences.ThemePreference
 import com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.CategoriesPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.ClearQueueActionPreferenceDialog
-import com.mardous.booming.ui.component.preferences.dialog.NowPlayingExtraInfoPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.ExtraInfoPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.NowPlayingScreenPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.SingleSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPreferenceDialog
@@ -66,8 +68,8 @@ import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.ReloadType
+import com.mardous.booming.ui.screen.scrobbling.ScrobblingServiceLoginFragment
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
-import com.mardous.booming.ui.screen.lyrics.LyricsViewSettings
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
 import com.mardous.booming.util.ADD_EXTRA_CONTROLS
@@ -82,13 +84,15 @@ import com.mardous.booming.util.COVER_LONG_PRESS_ACTION
 import com.mardous.booming.util.COVER_RIGHT_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_SINGLE_TAP_ACTION
 import com.mardous.booming.util.ENABLE_ROTATION_LOCK
-import com.mardous.booming.util.EXTRA_INFO
 import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.IGNORE_MEDIA_STORE
 import com.mardous.booming.util.LANGUAGE_NAME
+import com.mardous.booming.util.LASTFM_LOGIN
 import com.mardous.booming.util.LAST_ADDED_CUTOFF
 import com.mardous.booming.util.LIBRARY_CATEGORIES
+import com.mardous.booming.util.LISTENBRAINZ_LOGIN
 import com.mardous.booming.util.MATERIAL_YOU
+import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.NOW_PLAYING_SCREEN
 import com.mardous.booming.util.ON_CLEAR_QUEUE_ACTION
 import com.mardous.booming.util.ON_SONG_CLICK_ACTION
@@ -99,6 +103,8 @@ import com.mardous.booming.util.TRASH_MUSIC_FILES
 import com.mardous.booming.util.USE_CUSTOM_FONT
 import com.mardous.booming.util.USE_FOLDER_ART
 import com.mardous.booming.util.WHITELIST_ENABLED
+import com.mardous.booming.util.WIDGET_IMAGE_CORNER_RADIUS
+import com.mardous.booming.util.WIDGET_THIRD_LINE_CONTENT
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -133,6 +139,12 @@ class PlaybackPreferencesFragment : PreferenceScreenFragment() {
 class LibraryPreferencesFragment : PreferenceScreenFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences_screen_library)
+    }
+}
+
+class NetworkPreferencesFragment : PreferenceScreenFragment() {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preferences_screen_network)
     }
 }
 
@@ -253,7 +265,18 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             true
         }
 
+        findPreference<Preference>(WIDGET_IMAGE_CORNER_RADIUS)?.isVisible = hasS()
         findPreference<Preference>(ADD_EXTRA_CONTROLS)?.isVisible = !resources.isTablet
+
+        findPreference<ListPreference>(LyricsViewSettings.Key.BACKGROUND_EFFECT)?.apply {
+            if (!hasS()) {
+                val indexOfBlur = entryValues.indexOf("blur")
+                entries = entries.filterIndexed { index, _ -> index != indexOfBlur }
+                    .toTypedArray()
+                entryValues = entryValues.filterIndexed { index, _ -> index != indexOfBlur }
+                    .toTypedArray()
+            }
+        }
 
         findPreference<Preference>(LyricsViewSettings.Key.BLUR_EFFECT)
             ?.isVisible = hasS()
@@ -388,16 +411,17 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             val dialogFragment: DialogFragment? = when (preference.key) {
                 LIBRARY_CATEGORIES -> CategoriesPreferenceDialog()
                 NOW_PLAYING_SCREEN -> NowPlayingScreenPreferenceDialog()
-                EXTRA_INFO -> NowPlayingExtraInfoPreferenceDialog()
+                NOW_PLAYING_EXTRA_INFO -> ExtraInfoPreferenceDialog.nowPlaying(requireContext())
+                WIDGET_THIRD_LINE_CONTENT -> ExtraInfoPreferenceDialog.appWidgets(requireContext())
                 ON_SONG_CLICK_ACTION -> SongClickActionPreferenceDialog()
                 ON_CLEAR_QUEUE_ACTION -> ClearQueueActionPreferenceDialog()
                 COVER_DOUBLE_TAP_ACTION,
                 COVER_SINGLE_TAP_ACTION,
                 COVER_LONG_PRESS_ACTION,
                 COVER_LEFT_DOUBLE_TAP_ACTION,
-                COVER_RIGHT_DOUBLE_TAP_ACTION -> {
-                    ActionOnCoverPreferenceDialog.newInstance(preference.key)
-                }
+                COVER_RIGHT_DOUBLE_TAP_ACTION -> ActionOnCoverPreferenceDialog.newInstance(preference.key)
+                LASTFM_LOGIN -> ScrobblingServiceLoginFragment.create(ScrobblingService.Lastfm)
+                LISTENBRAINZ_LOGIN -> ScrobblingServiceLoginFragment.create(ScrobblingService.ListenBrainz)
                 else -> null
             }
             if (dialogFragment != null) {

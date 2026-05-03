@@ -35,7 +35,6 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.edit
-import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.core.model.action.NowPlayingAction
@@ -168,11 +167,12 @@ class ActionOnCoverPreferenceDialog : DialogFragment() {
 
     companion object {
         private const val EXTRA_KEY = "extra_key"
-        private const val EXTRA_TITLE = "extra_title"
 
         fun newInstance(preference: String): ActionOnCoverPreferenceDialog {
             return ActionOnCoverPreferenceDialog().apply {
-                arguments = bundleOf(EXTRA_KEY to preference)
+                arguments = Bundle().apply {
+                    putString(EXTRA_KEY, preference)
+                }
             }
         }
     }

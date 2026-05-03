@@ -30,17 +30,16 @@ data class DeezerAlbum(
     val imageUrl: String?
         get() = data.firstOrNull()?.let { it.largeImage ?: it.mediumImage ?: it.smallImage ?: it.image }
 
-    fun getBestImage(requestedName: String, requestedImageSize: String): Pair<Boolean, String?> {
+    fun getBestImage(requestedName: String, requestedImageSize: String): String? {
         val normRequested = requestedName.normalize()
         val best = data.map { album ->
             val normArtist = album.title.normalize()
             val score = DeezerArtist.JW_SIMILARITY.apply(normArtist, normRequested)
             album to score
-        }
-            .maxByOrNull { it.second }
+        }.maxByOrNull { it.second }
 
         if (best == null || best.second < 0.90) {
-            return false to null
+            return null
         }
 
         val bestMatch = best.first
@@ -49,8 +48,7 @@ data class DeezerAlbum(
             ImageSize.SMALL -> bestMatch.smallImage
             else -> bestMatch.mediumImage
         } ?: bestMatch.image
-        return true to tentativeImage
-            ?.takeIf { it.isNotBlank() && !it.contains("/images/cover//") }
+        return tentativeImage?.takeIf { it.isNotBlank() && !it.contains("/images/cover//") }
     }
 
     @Serializable

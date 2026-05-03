@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/grid_item_margin"
-    android:background="?rectSelector"
+    android:background="@drawable/rect_selector"
     tools:ignore="MissingPrefix">
 
     <LinearLayout

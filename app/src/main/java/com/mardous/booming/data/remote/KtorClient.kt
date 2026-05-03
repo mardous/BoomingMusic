@@ -43,7 +43,7 @@ private fun headerInterceptor(context: Context): Interceptor {
     return Interceptor {
         val original = it.request()
         val request = original.newBuilder()
-            .header("User-Agent", context.packageName)
+            .header("LastFmUser-Agent", context.packageName)
             .addHeader("Content-Type", "application/json; charset=utf-8")
             .method(original.method, original.body)
             .build()

@@ -1,12 +1,15 @@
 package com.mardous.booming.playback.equalizer.engine
 
 import android.media.audiofx.DynamicsProcessing
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.mardous.booming.core.model.equalizer.CompressorState
 import com.mardous.booming.core.model.equalizer.EqBandCapabilities
 import com.mardous.booming.core.model.equalizer.EqBandCapabilities.BandConfiguration
 import com.mardous.booming.core.model.equalizer.EqProfile
 import com.mardous.booming.core.model.equalizer.LimiterState
 
+@RequiresApi(Build.VERSION_CODES.P)
 class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessionId) {
 
     private var dynamicsProcessing = createDynamicsProcessing(bandCount)

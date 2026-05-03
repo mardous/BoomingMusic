@@ -8,8 +8,6 @@ class SongPlayCountHelper {
     var song = Song.emptySong
         private set
 
-    var called = 0
-
     fun shouldBumpPlayCount(): Boolean {
         return song.duration * 0.5 < stopWatch.elapsedTime
     }
