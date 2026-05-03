@@ -84,5 +84,4 @@ jobs:
           prerelease: ${{ steps.prerelease.outputs.value }}
           generate_release_notes: true
           files: |
-            release-apks/*/release/*-fdroid-release.apk
-            release-apks/*/release/*-normal-release.apk
+            release-apks/*/release/BoomingMusic-*.apk
