@@ -1,7 +1,7 @@
 [
   {
     "contrib_name": "Catalan",
-    "contrib_description": "[Adolfo Jayme-Barrientos](https://github.com/fitojb), [Andreu Silvestre](https://crowdin.com/profile/andreu.silvestre.pla)"
+    "contrib_description": "[Andreu Silvestre](https://hosted.weblate.org/user/andreu.silvestre), [Adolfo Jayme-Barrientos](https://github.com/fitojb), [Mikote111](https://github.com/Mikote111)"
   },
   {
     "contrib_name": "Chinese Simplified",
@@ -50,6 +50,10 @@
   {
     "contrib_name": "Japanese",
     "contrib_description": "[Renorari](https://github.com/renorari), [keikun13](https://crowdin.com/profile/keikun13), morukanu1"
+  },
+  {
+    "contrib_name": "Korean",
+    "contrib_description": "[JungHee Lee](https://github.com/MarongHappy)"
   },
   {
     "contrib_name": "Polish",
