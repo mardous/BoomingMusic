@@ -954,4 +954,12 @@
     <string name="listenbrainz_now_playing_title">Aktualisiere \"Now playing\" auf ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Zeigt in Echtzeit den aktuellen Titel auf deinem MusicBrainz-Profil.</string>
     <string name="auto_theme_name">Auto</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
