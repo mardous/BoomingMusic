@@ -417,11 +417,11 @@
     <string name="profiles_exported_successfully">Profile wurden erfolgreich exportiert.</string>
     <string name="import_profiles">Profile importieren</string>
     <string name="select_profiles_to_import">Wähle Profile zum Import aus:</string>
-    <string name="select_a_file_containing_booming_eq_profiles">Select a file containing Booming Music EQ Profiles.</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Wähle eine Datei aus, die „Booming Music“-EQ-Profile enthält.</string>
     <string name="imported_x_profiles">%d Profile wurden importiert.</string>
     <string name="no_profile_imported">Keine Profile wurden importiert.</string>
     <string name="import_autoeq_profile">AutoEq-Profil importieren</string>
-    <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
+    <string name="select_a_file_containing_autoeq_params">Wähle eine Datei aus, die AutoEq- (GraphicEq-)Parameter enthält.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
     <string name="reset_equalizer">Equalizer zurücksetzen</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
