@@ -370,15 +370,14 @@ fun LyricsLineContentView(
     val mainText = content.getText(backgroundContent)
 
     if (enableSyllable && mainVocals.isNotEmpty()) {
-        SyllableText(
-            selectedLine = selectedLine,
+        KaraokeLineView(
             shadowEffect = enableShadowEffect,
             position = position,
-            words = mainVocals,
+            syllables = mainVocals,
             contentColor = contentColor,
             style = style,
             align = align,
-            modifier = modifier.graphicsLayer {
+            modifier = Modifier.graphicsLayer {
                 renderEffect = blurEffect
             }
         )
@@ -402,18 +401,17 @@ fun LyricsLineContentView(
         val translatedVocals = translatedContent.getVocals(backgroundContent)
         val translatedText = translatedContent.getText(backgroundContent)
         if (enableSyllable && translatedVocals.isNotEmpty()) {
-            SyllableText(
-                selectedLine = selectedLine,
+            KaraokeLineView(
                 shadowEffect = enableShadowEffect,
                 position = position,
-                words = translatedVocals,
+                syllables = translatedVocals,
                 contentColor = contentColor,
                 style = style.copy(
                     fontSize = style.fontSize / 1.40,
                     fontWeight = FontWeight.Normal
                 ),
                 align = align,
-                modifier = modifier.graphicsLayer {
+                modifier = Modifier.graphicsLayer {
                     renderEffect = blurEffect
                 }
             )
