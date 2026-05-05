@@ -907,4 +907,5 @@
     <string name="network_features_title">Bật các tính năng mạng</string>
     <string name="wifi_only_network_features_title">Sử dụng các tính năng mạng chỉ khi có Wi-Fi</string>
     <string name="wifi_only_network_features_summary">Chỉ cho phép các tính năng mạng khi kết nối với Wi-Fi</string>
+    <string name="new_playlist_action"></string>
 </resources>
