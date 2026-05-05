@@ -945,12 +945,4 @@
     <string name="listenbrainz_scrobbling_summary">自动提交已播放的曲目到 ListenBrainz 听歌历史。</string>
     <string name="listenbrainz_now_playing_title">在 ListenBrainz 更新正在播放曲目</string>
     <string name="listenbrainz_now_playing_summary">在您的 ListenBrainz 个人资料上实时显示正在播放的曲目。</string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="grid_size_5" translatable="false"></string>
 </resources>

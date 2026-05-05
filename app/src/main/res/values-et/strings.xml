@@ -934,12 +934,4 @@
     <string name="play_option_whole_list_summary">Sisselülitamisel „Esita“ valik loo menüüst esitab kogu esitusloendi. Väljalülitamisel esitatakse vaid see konkreetne lugu.</string>
     <string name="queue_next_mode_title">„Lisa esitamiseks järgmisena“ režiim</string>
     <string name="peek_style">Kiikamine</string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="grid_size_5" translatable="false"></string>
 </resources>

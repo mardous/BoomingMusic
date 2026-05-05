@@ -927,37 +927,4 @@
     <string name="use_lrclib_provider_summary">Sta toe dat songteksten gedownload kunnen worden via de LRCLib-service.</string>
     <string name="use_betterlyrics_provider_title">Gebruik de BetterLyrics-provider</string>
     <string name="use_betterlyrics_provider_summary">Sta het downloaden van songteksten via de BetterLyrics-service toe.</string>
-    <string name="songs_added_to_playlists"></string>
-    <string name="logout_action"></string>
-    <string name="no_playlists_that_match_x"></string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="auto_theme_name"></string>
-    <plurals name="x_playlists_selected">
-    </plurals>
-    <string name="search_playlists"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="listenbrainz_scrobbling_title"></string>
-    <string name="listenbrainz_login_title"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="listenbrainz_title"></string>
-    <string name="login_action"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="listenbrainz_now_playing_summary"></string>
-    <string name="error_listenbrainz_invalid_token"></string>
-    <string name="sign_in_to_x_title"></string>
-    <string name="no_playlists_create_new"></string>
-    <string name="error_listenbrainz_generic"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="no_playlists_label"></string>
-    <string name="connected_account_label"></string>
-    <string name="listenbrainz_now_playing_title"></string>
-    <string name="listenbrainz_token_label"></string>
-    <string name="select_playlists_title"></string>
-    <string name="grid_size_5" translatable="false"></string>
-    <string name="listenbrainz_scrobbling_summary"></string>
-    <string name="sleep_timer_x_secs"></string>
-    <string name="listenbrainz_login_summary"></string>
-    <string name="new_playlist_action"></string>
 </resources>

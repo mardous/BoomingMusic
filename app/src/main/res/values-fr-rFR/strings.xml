@@ -957,12 +957,4 @@
     <string name="listenbrainz_scrobbling_summary">Ajouter automatiquement les titres écoutés à votre historique d\'écoute ListenBrainz.</string>
     <string name="listenbrainz_now_playing_title">Mettre à jour la lecture en cours sur ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Affichez en temps réel le titre en cours de lecture sur votre profil ListenBrainz.</string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="grid_size_5" translatable="false"></string>
 </resources>
