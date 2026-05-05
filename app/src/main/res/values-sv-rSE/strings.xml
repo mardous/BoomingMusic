@@ -954,4 +954,12 @@
     <string name="listenbrainz_now_playing_title">Uppdatera vad som spelas just nu på ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Visa den låt som spelas just nu på din ListenBrainz-profil i realtid.</string>
     <string name="auto_theme_name">Automatisk</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
