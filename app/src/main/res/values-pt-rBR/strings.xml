@@ -884,4 +884,7 @@
     <string name="bit_perfect_is_active">Perfeição bit a bit está ativa</string>
     <string name="bit_perfect_info">Perfeição bit a bit: %1$s | %2$s</string>
     <string name="bit_perfect_title">Áudio perfeito bit a bit</string>
+    <string name="select_playlists_title">Selecionar playlists</string>
+    <string name="new_playlist_action">Nova</string>
+    <string name="no_playlists_create_new">Pressione o botão \"Nova\" para criar uma playlist</string>
 </resources>
