@@ -892,9 +892,9 @@
     <string name="lastfm_biography_title">Télécharger les biographies des artistes et des albums</string>
     <string name="lastfm_biography_summary">Récupérez les biographies des artistes et des albums depuis Last.fm.</string>
     <string name="use_lrclib_provider_title">Utiliser le fournisseur LRCLib</string>
-    <string name="use_lrclib_provider_summary">Autorisez le téléchargement des paroles à partir du service LRCLib.</string>
+    <string name="use_lrclib_provider_summary">Base de données de paroles alimentée par la communauté.</string>
     <string name="use_betterlyrics_provider_title">Utiliser le fournisseur BetterLyrics</string>
-    <string name="use_betterlyrics_provider_summary">Autorisez le téléchargement des paroles depuis le service BetterLyrics.</string>
+    <string name="use_betterlyrics_provider_summary">Paroles synchronisées mot à mot.</string>
     <string name="channel_mono">Mono</string>
     <string name="channel_stereo">Stéréo</string>
     <string name="channel_stereo_2_1">2.1 Stéréo</string>
@@ -957,4 +957,6 @@
     <string name="listenbrainz_scrobbling_summary">Ajouter automatiquement les titres écoutés à votre historique d\'écoute ListenBrainz.</string>
     <string name="listenbrainz_now_playing_title">Mettre à jour la lecture en cours sur ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Affichez en temps réel le titre en cours de lecture sur votre profil ListenBrainz.</string>
+    <string name="use_lyrically_provider_title">Utiliser le fournisseur Lyrically</string>
+    <string name="use_lyrically_provider_summary">API de paroles enrichies avec prise en charge du karaoké et de plusieurs personnes.</string>
 </resources>
