@@ -890,9 +890,9 @@
     <string name="lastfm_biography_title">Ladda ner artist- och albumbiografier</string>
     <string name="lastfm_biography_summary">Hämta artist- och albumbiografier från Last.fm.</string>
     <string name="use_lrclib_provider_title">Använd LRCLib-leverantören</string>
-    <string name="use_lrclib_provider_summary">Tillåt nedladdning av låttexter från tjänsten LRCLib.</string>
+    <string name="use_lrclib_provider_summary">Gemenskapsdriven låttextdatabas.</string>
     <string name="use_betterlyrics_provider_title">Använd BetterLyrics-leverantören</string>
-    <string name="use_betterlyrics_provider_summary">Tillåt nedladdning av låttexter från tjänsten BetterLyrics.</string>
+    <string name="use_betterlyrics_provider_summary">Ord för ord synkroniserade sångtexter.</string>
     <string name="channel_mono">Mono</string>
     <string name="channel_stereo">Stereo</string>
     <string name="channel_stereo_2_1">2.1-stereo</string>
@@ -954,4 +954,6 @@
     <string name="listenbrainz_now_playing_title">Uppdatera vad som spelas just nu på ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Visa den låt som spelas just nu på din ListenBrainz-profil i realtid.</string>
     <string name="auto_theme_name">Automatisk</string>
+    <string name="use_lyrically_provider_title">Använd Lyrically leverantör</string>
+    <string name="use_lyrically_provider_summary">Rikt sångtext-API med karaoke och stöd för flera personer.</string>
 </resources>
