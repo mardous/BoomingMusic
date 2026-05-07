@@ -1,1 +1,1 @@
-Reprodutor de música limpo, rápido e baseado em Material Design, com recursos poderosos
+Reprodutor de música limpo, rápido, poderoso e baseado em Material Design
