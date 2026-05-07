@@ -326,7 +326,7 @@ class EqualizerManager(
         engineMode: EqEngineMode = this.eqState.value.engineMode
     ) = withContext(IO) {
         try {
-            val effects = AudioEffect.queryEffects()
+            val effects = AudioEffect.queryEffects().orEmpty()
             context.eqDataStore.edit { prefs ->
                 val eqInitialized = prefs[Keys.EQ_INITIALIZED]
                 if (eqInitialized != true) {
@@ -349,8 +349,8 @@ class EqualizerManager(
                     it.type == AudioEffect.EFFECT_TYPE_LOUDNESS_ENHANCER
                 }
             }
-        } catch (e: NoClassDefFoundError) {
-            Log.e(TAG, "Audio effects are not available on this device", e)
+        } catch (e: Exception) {
+            Log.e(TAG, "The EQ couldn't be initialized. Maybe audio effects aren't available on this device?", e)
         }
     }
 
