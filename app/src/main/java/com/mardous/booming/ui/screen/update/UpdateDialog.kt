@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -36,9 +37,11 @@ class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
             } else {
                 binding.versionInfo.isVisible = false
             }
-            return BottomSheetDialog(requireContext()).also {
+            val dialog = BottomSheetDialog(requireContext()).also {
                 it.setContentView(binding.root)
+                it.behavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
+            return dialog
         }
         return MaterialAlertDialogBuilder(requireContext())
             .setMessage(R.string.the_app_is_up_to_date)
