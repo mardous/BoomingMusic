@@ -882,9 +882,9 @@
     <string name="lastfm_biography_title">下载艺术家和专辑介绍</string>
     <string name="lastfm_biography_summary">从 Last.fm 获取艺术家和专辑的介绍。</string>
     <string name="use_lrclib_provider_title">使用 LRCLib 服务</string>
-    <string name="use_lrclib_provider_summary">允许从 LRCLib 服务下载歌词。</string>
+    <string name="use_lrclib_provider_summary">社区驱动的歌词数据库。</string>
     <string name="use_betterlyrics_provider_title">使用 BetterLyrics 服务</string>
-    <string name="use_betterlyrics_provider_summary">允许从 BetterLyrics 服务下载歌词。</string>
+    <string name="use_betterlyrics_provider_summary">逐词同步歌词服务。</string>
     <string name="channel_quadraphonic">四声道</string>
     <string name="channel_mono">单声道</string>
     <string name="channel_stereo">立体声</string>
@@ -945,4 +945,6 @@
     <string name="listenbrainz_scrobbling_summary">自动提交已播放的曲目到 ListenBrainz 听歌历史。</string>
     <string name="listenbrainz_now_playing_title">在 ListenBrainz 更新正在播放曲目</string>
     <string name="listenbrainz_now_playing_summary">在您的 ListenBrainz 个人资料上实时显示正在播放的曲目。</string>
+    <string name="use_lyrically_provider_title">使用 Lyrically 服务</string>
+    <string name="use_lyrically_provider_summary">支持卡拉 OK 和多歌手的富文本歌词 API。</string>
 </resources>
