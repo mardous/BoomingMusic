@@ -157,6 +157,8 @@ Your support is greatly appreciated and keeps me motivated to continue improving
 **[KKTweex](https://github.com/Qoojoe)**
 <br/>
 **[FabiRich](https://github.com/FabiRich)**
+<br/>
+**[Bloodaxe](https://github.com/Bloodaxe95)**
 
 </div>
 
