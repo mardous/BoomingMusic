@@ -907,4 +907,11 @@
     <string name="network_features_title">Bật các tính năng mạng</string>
     <string name="wifi_only_network_features_title">Sử dụng các tính năng mạng chỉ khi có Wi-Fi</string>
     <string name="wifi_only_network_features_summary">Chỉ cho phép các tính năng mạng khi kết nối với Wi-Fi</string>
+    <string name="search_playlists">Tìm các danh sách phát</string>
+    <string name="select_playlists_title">Chọn danh sách phát</string>
+    <string name="new_playlist_action">Tạo mới</string>
+    <string name="no_playlists_create_new">Bấm nút \"Tạo mới\" để tạo một danh sách phát mới</string>
+    <string name="no_playlists_that_match_x">Không có danh sách phát nào khớp với \"%s\"</string>
+    <string name="songs_added_to_playlists">Bản nhạc đã được thêm vào (các) danh sách phát.</string>
+    <string name="no_playlists_label">Không có danh sách phát</string>
 </resources>
