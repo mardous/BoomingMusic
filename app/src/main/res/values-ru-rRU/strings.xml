@@ -138,7 +138,7 @@
     <string name="permission_exact_alarms_description">Разрешение на планирование точных сигналов тревоги необходимо для корректной работы таймера сна</string>
     <string name="permission_ringtone_title">Мелодия звонка (необязательно)</string>
     <string name="permission_ringtone_description">Приложению требуется разрешение на доступ к настройкам устройства, чтобы установить музыку в качестве мелодии звонка</string>
-    <string name="permission_request_write_settings"><![CDATA[Вам необходимо разрешить Booming Music изменять системные настройки, чтобы установить <b>%s</b> в качестве мелодии звонка.]]></string>
+    <string name="permission_request_write_settings"><![CDATA[Вы должны разрешить Booming Music изменять системные настройки, чтобы установить <b>%s</b> в качестве мелодии звонка.]]></string>
     <string name="permissions_denied">Разрешения отклонены</string>
     <string name="permissions_needed">Требуются разрешения</string>
     <string name="grant_access_action">Предоставить доступ</string>
