@@ -1,0 +1,21 @@
+Booming Music, Android için geliştirilmiş modern ve güçlü bir yerel müzik oynatıcıdır; akıcı, özelleştirilebilir ve görsel açıdan hoş bir deneyim sunmak için tasarlanmıştır. Material You tasarımıyla hazırlanmış ve Media3 ile güçlendirilmiştir; sadeliği gelişmiş oynatma özellikleriyle birleştirir.
+
+Kelime kelime senkronize şarkı sözleri, çevrilmiş şarkı sözü desteği (TTML/LRC) ve gelişmiş görseller, akıcı geçişler ve derin özelleştirme seçenekleri sunan şık bir “Şu Anda Çalıyor” arayüzü ile favori şarkılarınızın keyfini çıkarın.
+
+Dahili ekolayzır, ReplayGain, Audio Offload ve kesintisiz oynatma özellikleriyle dinleme deneyiminizi ince ayar yapın. Akıllı oynatma listeleri, özelleştirilebilir sıralama seçenekleri ve hiyerarşik klasör görünümüyle müziklerinizi istediğiniz şekilde düzenleyin.
+
+Başlıca özellikler:
+
+* Otomatik şarkı sözü indirme ve uygulama içi şarkı sözü düzenleyicisi
+* Kelime kelime ve çevrilmiş şarkı sözleri desteği (TTML, LRC)
+* Audio Offload destekli Media3 tabanlı oynatma motoru
+* Bit-perfect oynatma desteği ve yerel ALAC kod çözme
+* Yerel ListenBrainz scrobbling desteği
+* Uyarlanabilir mini oynatıcı ve hareket kontrolleri
+* Oynatma listeleri için özel kapaklar ve açıklamalar
+* Anında kütüphane güncellemesi yapan etiket düzenleyici
+* Akıllı otomatik oynatma listeleri (Son Çalınanlar, En Çok Çalınanlar, Geçmiş)
+* Uyku zamanlayıcısı, widget’lar ve Android Auto desteği
+* Koyu ve siyah modlarla Material You temaları
+* Çoklu dil desteği
+* Hafif, açık kaynaklı ve reklamsız
