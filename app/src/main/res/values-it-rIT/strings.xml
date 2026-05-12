@@ -402,7 +402,7 @@
     <string name="autoeq_profiles_title">Profili Auto EQ</string>
     <string name="eq_profile_title">Profilo</string>
     <string name="change_band_count_title">Cambia numero di bande</string>
-    <string name="change_band_count_message">Changing the number of bands will reset the current profile to its initial state. Any other profiles saved for the current band configuration cannot be used with the new band configuration. \n\nDo you want to continue?</string>
+    <string name="change_band_count_message">Cambiare il numero di bande ripristinerà l\'attuale profilo al suo stato iniziale. Qualsiasi altro profilo salvato per l\'attuale configurazione della banda non può essere usata con la nuova configurazione.\n\nDesideri continuare?</string>
     <string name="band_configuration_changed_successfully">La configurazione della banda è stata modificata con successo.</string>
     <string name="band_configuration_could_not_be_changed">Impossibile modificare la configurazione della banda.</string>
     <string name="share_eq_profiles">Condividi profili EQ</string>
