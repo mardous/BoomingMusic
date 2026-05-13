@@ -1,5 +1,5 @@
 [versions]
-agp = "9.2.0"
+agp = "9.2.1"
 ksp = "2.3.6"
 kotlin = "2.3.21"
 
@@ -24,8 +24,8 @@ viewpager = "1.1.0"
 lifecycle = "2.10.0"
 room = "2.8.4"
 navigation = "2.9.8"
-compose = "2026.04.01"
-composeM3 = "1.5.0-alpha18"
+compose = "2026.05.00"
+composeM3 = "1.5.0-alpha19"
 glance = "1.1.1"
 
 koin = "4.2.1"

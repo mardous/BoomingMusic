@@ -531,25 +531,19 @@
     <string name="synced_lyrics">Synced</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Downloaded</string>
-    <string name="external_file_lyrics">External file</string>
-    <string name="action_import_synchronized_lyrics">Import synced lyrics</string>
-    <string name="action_share_synchronized_lyrics">Share synced lyrics</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Do you want to import synchronized LRC lyrics for <b>%s</b>?]]></string>
-    <string name="import_lyrics_for_song_x">Imported lyrics for %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Couldn\'t import lyrics for %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Select a LRC file containing synced lyrics.</string>
+    <string name="file_lyrics">File</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LRC</string>
     <string name="cannot_download_lyrics">Booming Music couldn\'t find the lyrics for this song. Do you want to search manually?</string>
+    <string name="undo_changes">Undo changes</string>
     <string name="search_lyrics">Search lyrics</string>
     <string name="choose_lyrics">Choose the type of lyrics</string>
     <string name="download_lyrics">Download lyrics</string>
     <string name="write_lyrics_here">Write lyrics here</string>
-    <string name="write_synced_lyrics_here">Write synced lyrics here</string>
     <string name="no_lyrics_found">No lyrics found</string>
-    <string name="no_synced_lyrics_found">No synced lyrics found</string>
     <string name="lyrics_were_updated_successfully">Lyrics were updated successfully.</string>
     <string name="failed_to_update_lyrics">Failed to update lyrics.</string>
     <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
 
@@ -734,6 +728,8 @@
     <string name="instrumental_tracks_mark_by_title_summary">The track title will also be taken into account when searching for identifiers.</string>
     <string name="ignore_blank_lines_title">Ignore blank lines</string>
     <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
+    <string name="preferred_lyrics_file_format_title">Preferred file format</string>
+    <string name="preferred_lyrics_file_format_summary">If a song has lyrics files in different formats, this option lets you choose which one takes priority.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding.
         This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics.

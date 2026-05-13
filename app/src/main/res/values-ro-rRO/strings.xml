@@ -486,25 +486,15 @@
     <string name="synced_lyrics">Sincronizat</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Descărcat</string>
-    <string name="external_file_lyrics">External file</string>
-    <string name="action_import_synchronized_lyrics">Importă versuri sincronizate</string>
-    <string name="action_share_synchronized_lyrics">Distribuie versuri sincronizate</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Doriți să importați versuri sincronizate LRC pentru <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Versuri importate pentru %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Nu s-au putut importa versuri pentru %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Selectați un fișier LRC care conține versuri sincronizate.</string>
     <string name="cannot_download_lyrics">Booming Music nu a putut găsi versurile acestei melodii. Vrei să cauți manual?</string>
     <string name="search_lyrics">Caută versuri</string>
     <string name="choose_lyrics">Alege tipul de versuri</string>
     <string name="download_lyrics">Descarcă versuri</string>
     <string name="write_lyrics_here">Scrie versuri aici</string>
-    <string name="write_synced_lyrics_here">Scrie versuri sincronizate aici</string>
     <string name="no_lyrics_found">Nu s-au găsit versuri</string>
-    <string name="no_synced_lyrics_found">Nu s-au găsit versuri sincronizate</string>
     <string name="lyrics_were_updated_successfully">Versurile au fost actualizate cu succes.</string>
     <string name="failed_to_update_lyrics">Actualizarea versurilor a eșuat.</string>
     <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->

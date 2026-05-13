@@ -1,14 +1,16 @@
 package com.mardous.booming.core.model.lyrics
 
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.mardous.booming.data.model.lyrics.Lyrics
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import kotlin.math.abs
 
-class LyricsViewState(val lyrics: Lyrics?) {
+@Stable
+class LyricsViewState(val lyrics: SyncedLyrics?) {
 
     var position by mutableLongStateOf(0L)
         private set

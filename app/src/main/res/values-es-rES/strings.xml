@@ -481,25 +481,15 @@
     <string name="synced_lyrics">Sincronizada</string>
     <string name="embedded_lyrics">Incrustada</string>
     <string name="downloaded_lyrics">Descargada</string>
-    <string name="external_file_lyrics">Archivo externo</string>
-    <string name="action_import_synchronized_lyrics">Importar letra sincronizada</string>
-    <string name="action_share_synchronized_lyrics">Compartir letra sincronizada</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[¿Quiere importar una letra sincronizada LRC para <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Letra importada de %s</string>
-    <string name="could_not_import_lyrics_for_song_x">No se pudo importar la letra de %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Seleccione un archivo LRC que contenga la letra sincronizada.</string>
     <string name="cannot_download_lyrics">Booming Music no pudo encontrar la letra de esta canción. ¿Quiere buscar manualmente?</string>
     <string name="search_lyrics">Buscar letra</string>
     <string name="choose_lyrics">Elige el tipo de letra</string>
     <string name="download_lyrics">Descargar letra</string>
     <string name="write_lyrics_here">Escribe la letra aquí</string>
-    <string name="write_synced_lyrics_here">Escriba la letra sincronizada aquí</string>
     <string name="no_lyrics_found">No se encontró la letra</string>
-    <string name="no_synced_lyrics_found">No se encontraron letras sincronizadas</string>
     <string name="lyrics_were_updated_successfully">La letra se actualizó correctamente.</string>
     <string name="failed_to_update_lyrics">No se pudo actualizar la letra.</string>
     <string name="there_are_no_changes_to_save">No hay cambios para guardar.</string>
-    <string name="lyrics_source_external_file">La letra proviene de un archivo externo. No puede editar este archivo directamente desde Booming Music.</string>
     <string name="font_imported_successfully">Se importó el tipo de letra correctamente.</string>
     <string name="could_not_import_font">No se pudo importar el tipo de letra.</string>
     <!-- Sleep timer -->

@@ -1,5 +1,6 @@
 package com.mardous.booming.ui.screen.scrobbling
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -53,6 +54,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mardous.booming.R
 import com.mardous.booming.data.model.network.LoginParams
@@ -62,6 +65,7 @@ import com.mardous.booming.data.model.network.canLogIn
 import com.mardous.booming.data.model.network.isFailure
 import com.mardous.booming.data.model.network.isLoading
 import com.mardous.booming.extensions.extraNotNull
+import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
@@ -74,6 +78,14 @@ class ScrobblingServiceLoginFragment : BottomSheetDialogFragment() {
 
     private val viewModel: LibraryViewModel by activityViewModel()
     private val service: ScrobblingService by extraNotNull("service")
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+        (dialog as? BottomSheetDialog)?.let {
+            it.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+        return dialog
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

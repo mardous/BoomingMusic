@@ -478,25 +478,15 @@
     <string name="synced_lyrics">Gesynchroniseerd</string>
     <string name="embedded_lyrics">Ingebouwd</string>
     <string name="downloaded_lyrics">Gedownload</string>
-    <string name="external_file_lyrics">Extern bestand</string>
-    <string name="action_import_synchronized_lyrics">Importeer gesynchroniseerde songteksten</string>
-    <string name="action_share_synchronized_lyrics">Deel gesynchroniseerde songteksten</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Wil je gesynchroniseerde LRC songteksten importeren voor <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Songtekst voor %s geïmporteerd</string>
-    <string name="could_not_import_lyrics_for_song_x">Kan songteksten voor %s niet importeren</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Selecteer een LRC bestand met gesynchroniseerde songteksten.</string>
     <string name="cannot_download_lyrics">Booming Music kon de songtekst van dit nummer niet vinden. Wil je handmatig zoeken?</string>
     <string name="search_lyrics">Zoek songteksten</string>
     <string name="choose_lyrics">Kies het type songtekst</string>
     <string name="download_lyrics">Download songteksten</string>
     <string name="write_lyrics_here">Schrijf songtekst hier</string>
-    <string name="write_synced_lyrics_here">Schrijf gesynchroniseerde songteksten hier</string>
     <string name="no_lyrics_found">Geen songteksten gevonden</string>
-    <string name="no_synced_lyrics_found">Geen gesynchroniseerde songteksten gevonden</string>
     <string name="lyrics_were_updated_successfully">Songteksten zijn bijgewerkt.</string>
     <string name="failed_to_update_lyrics">Songtekst bijwerken mislukt.</string>
     <string name="there_are_no_changes_to_save">Er zijn geen wijzigingen om op te slaan.</string>
-    <string name="lyrics_source_external_file">Songteksten komen van een extern bestand. Je kunt dit bestand niet rechtstreeks bewerken vanuit Booming Music.</string>
     <string name="font_imported_successfully">Lettertype succesvol geïmporteerd.</string>
     <string name="could_not_import_font">Kan lettertype niet importeren.</string>
     <!-- Sleep timer -->

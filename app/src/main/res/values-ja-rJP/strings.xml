@@ -470,25 +470,15 @@
     <string name="synced_lyrics">同期済み</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">ダウンロード済み</string>
-    <string name="external_file_lyrics">外部ファイル</string>
-    <string name="action_import_synchronized_lyrics">同期した歌詞をインポート</string>
-    <string name="action_share_synchronized_lyrics">同期した歌詞を共有</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> の同期したLRC歌詞をインポートしますか？]]></string>
-    <string name="import_lyrics_for_song_x">%sの歌詞をインポートしました</string>
-    <string name="could_not_import_lyrics_for_song_x">%sの歌詞をインポートできませんでした</string>
-    <string name="select_a_file_containing_synchronized_lyrics">同期した歌詞を含むLRCファイルを選択します。</string>
     <string name="cannot_download_lyrics">この曲の歌詞を見つけることができませんでした。手動で検索しますか？</string>
     <string name="search_lyrics">歌詞を検索</string>
     <string name="choose_lyrics">歌詞の種類を選択</string>
     <string name="download_lyrics">歌詞をダウンロード</string>
     <string name="write_lyrics_here">ここに歌詞を書く</string>
-    <string name="write_synced_lyrics_here">同期した歌詞をここに書く</string>
     <string name="no_lyrics_found">歌詞が見つかりません</string>
-    <string name="no_synced_lyrics_found">同期された歌詞が見つかりません</string>
     <string name="lyrics_were_updated_successfully">歌詞が更新されました。</string>
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
     <string name="there_are_no_changes_to_save">保存する変更はありません。</string>
-    <string name="lyrics_source_external_file">歌詞は外部ファイルのものです。このファイルはBooming Musicから直接編集することはできません。</string>
     <string name="font_imported_successfully">フォントが正常にインポートされました。</string>
     <string name="could_not_import_font">フォントをインポートできませんでした。</string>
     <!-- Sleep timer -->

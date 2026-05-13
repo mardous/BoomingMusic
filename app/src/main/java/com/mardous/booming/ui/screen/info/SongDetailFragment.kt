@@ -16,6 +16,7 @@
  */
 package com.mardous.booming.ui.screen.info
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -59,10 +60,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mardous.booming.R
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.ui.component.base.AbsTagEditorActivity
 import com.mardous.booming.ui.component.base.goToDestination
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
@@ -91,6 +95,16 @@ class SongDetailFragment : BottomSheetDialogFragment() {
 
     private val song: Song
         get() = navArgs.extraSong
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+        if (isLandscape()) {
+            (dialog as? BottomSheetDialog)?.let {
+                it.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+        }
+        return dialog
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

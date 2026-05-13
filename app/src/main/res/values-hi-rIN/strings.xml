@@ -478,25 +478,15 @@
     <string name="synced_lyrics">सिंक्रनाइज़ किया गया</string>
     <string name="embedded_lyrics">एम्बेडेड</string>
     <string name="downloaded_lyrics">डाउनलोड किया गया</string>
-    <string name="external_file_lyrics">External file</string>
-    <string name="action_import_synchronized_lyrics">सिंक्रनाइज़ की गई लिरिक्स इंपोर्ट करें</string>
-    <string name="action_share_synchronized_lyrics">सिंक्रोनाइज़ की गई लिरिक्स शेयर करें</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[क्या आप <b>%s</b> के लिए समलयित LRC गीत बोलों को इम्पोर्ट करना चाहते हैं?]]></string>
-    <string name="import_lyrics_for_song_x">इम्पोर्टेड लिरिक्स फॉर %s</string>
-    <string name="could_not_import_lyrics_for_song_x">संदेश %ss के लिए गीत इम्पोर्ट नहीं किया जा सका</string>
-    <string name="select_a_file_containing_synchronized_lyrics">एक LRC फ़ाइल चुनो जिसमें सिंक है</string>
     <string name="cannot_download_lyrics">बूमिंग म्यूजिक को इस गीत के बोल नहीं मिल सके। क्या आप मैन्युअल रूप से खोज करना चाहते हैं?</string>
     <string name="search_lyrics">गाने के बोल खोजें</string>
     <string name="choose_lyrics">गाने के बोल का प्रकार चुनें</string>
     <string name="download_lyrics">गाने के बोल डाउनलोड करें</string>
     <string name="write_lyrics_here">यहाँ गीत के बोल लिखें</string>
-    <string name="write_synced_lyrics_here">यहां समन्वित गीत के बोल लिखें</string>
     <string name="no_lyrics_found">कोई गीत का बोल नहीं मिला</string>
-    <string name="no_synced_lyrics_found">कोई समन्वित गीत के बोल नहीं मिले</string>
     <string name="lyrics_were_updated_successfully">गाने के बोल सफलतापूर्वक अपडेट कर दिए गए।</string>
     <string name="failed_to_update_lyrics">गीत का अपडेट करना असफल रहा।</string>
     <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->

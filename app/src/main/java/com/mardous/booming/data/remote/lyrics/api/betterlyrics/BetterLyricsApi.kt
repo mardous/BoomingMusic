@@ -1,11 +1,10 @@
 package com.mardous.booming.data.remote.lyrics.api.betterlyrics
 
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.model.BetterLyricsResponse
-import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
-import com.mardous.booming.data.remote.lyrics.model.toDownloadedLyrics
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -14,13 +13,14 @@ import io.ktor.http.HttpStatusCode
 
 class BetterLyricsApi(private val client: HttpClient) : LyricsApi {
 
+    override val name: String = "BetterLyrics"
     override val networkFeature = NetworkFeature.Lyrics.BetterLyrics
 
-    override suspend fun songLyrics(
+    override suspend fun downloadLyrics(
         song: Song,
         title: String,
         artist: String
-    ): DownloadedLyrics? {
+    ): RawLyrics.Remote? {
         val response = client.get("https://lyrics-api.boidu.dev/getLyrics") {
             parameter("s", title)
             parameter("a", artist)
@@ -30,8 +30,8 @@ class BetterLyricsApi(private val client: HttpClient) : LyricsApi {
         if (response.status == HttpStatusCode.OK) {
             val result = response.body<BetterLyricsResponse>()
             if (result.ttml.isNotEmpty()) {
-                return song.toDownloadedLyrics(
-                    syncedLyrics = result.ttml
+                return RawLyrics.Remote(
+                    synced = RawLyrics.Remote.Content(name, result.ttml)
                 )
             }
         }

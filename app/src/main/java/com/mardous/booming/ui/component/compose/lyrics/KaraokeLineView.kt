@@ -43,14 +43,14 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
-import com.mardous.booming.data.model.lyrics.Lyrics
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.extensions.utilities.isRtl
 
 @Composable
 fun KaraokeLineView(
     shadowEffect: Boolean,
     position: Long,
-    syllables: List<Lyrics.Word>,
+    syllables: List<SyncedLyrics.Word>,
     contentColor: Color,
     style: TextStyle,
     align: TextAlign,
@@ -108,7 +108,7 @@ fun KaraokeLineView(
 }
 
 private fun measureSyllables(
-    syllables: List<Lyrics.Word>,
+    syllables: List<SyncedLyrics.Word>,
     textMeasurer: TextMeasurer,
     style: TextStyle
 ): List<SyllableLayout> {
@@ -386,7 +386,7 @@ private fun Int.toDp(): Dp = with(LocalDensity.current) { this@toDp.toDp() }
 
 @Stable
 internal data class SyllableLayout(
-    val word: Lyrics.Word,
+    val word: SyncedLyrics.Word,
     val textLayoutResult: TextLayoutResult,
     val width: Float,
     val position: Offset = Offset.Zero,

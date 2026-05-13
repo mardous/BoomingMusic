@@ -2,7 +2,7 @@ package com.mardous.booming.data.local.lyrics.ttml
 
 import android.util.Log
 import com.mardous.booming.data.LyricsParser
-import com.mardous.booming.data.model.lyrics.Lyrics
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
 import com.mardous.booming.data.model.lyrics.LyricsFile
 import org.xmlpull.v1.XmlPullParser
@@ -53,7 +53,7 @@ class TtmlLyricsParser : LyricsParser {
         }
     }
 
-    override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): Lyrics? {
+    override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): SyncedLyrics? {
         try {
             val parser = XmlPullParserFactory.newInstance().newPullParser()
             parser.setInput(reader)

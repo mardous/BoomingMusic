@@ -480,25 +480,15 @@
     <string name="synced_lyrics">Synchronisé</string>
     <string name="embedded_lyrics">Intégré</string>
     <string name="downloaded_lyrics">Téléchargé</string>
-    <string name="external_file_lyrics">Fichier externe</string>
-    <string name="action_import_synchronized_lyrics">Importer les paroles synchronisées</string>
-    <string name="action_share_synchronized_lyrics">Partager les paroles synchronisées</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Voulez-vous importer les paroles LRC synchronisées pour <b>%s</b> ?]]></string>
-    <string name="import_lyrics_for_song_x">Paroles importées pour %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Impossible d\'importer les paroles pour %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Sélectionnez un fichier LRC contenant des paroles synchronisées.</string>
     <string name="cannot_download_lyrics">Booming Music n\'a pas pu trouver les paroles de ce titre. Voulez-vous rechercher manuellement ?</string>
     <string name="search_lyrics">Rechercher des paroles</string>
     <string name="choose_lyrics">Choisissez le type de paroles</string>
     <string name="download_lyrics">Télécharger les paroles</string>
     <string name="write_lyrics_here">Écrivez les paroles ici</string>
-    <string name="write_synced_lyrics_here">Écrivez les paroles synchronisées ici</string>
     <string name="no_lyrics_found">Aucune parole trouvée</string>
-    <string name="no_synced_lyrics_found">Aucune parole synchronisée trouvée</string>
     <string name="lyrics_were_updated_successfully">Les paroles ont été mises à jour avec succès.</string>
     <string name="failed_to_update_lyrics">Impossible de mettre à jour les paroles.</string>
     <string name="there_are_no_changes_to_save">Il n\'y a aucune modification à enregistrer.</string>
-    <string name="lyrics_source_external_file">Les paroles proviennent d\'un fichier externe. Vous ne pouvez pas modifier ce fichier directement depuis Booming Music.</string>
     <string name="font_imported_successfully">Police importée avec succès.</string>
     <string name="could_not_import_font">Impossible d\'importer la police.</string>
     <!-- Sleep timer -->

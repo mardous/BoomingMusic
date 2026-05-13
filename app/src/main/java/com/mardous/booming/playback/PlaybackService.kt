@@ -162,6 +162,7 @@ class PlaybackService :
 
     private var eqStateHandler: Handler? = Handler(Looper.getMainLooper())
 
+    private var errorRecoveryRetryCount = 0
     private var pausedByZeroVolume = false
     private var hasSetUnshuffledOrder = false
     private var stopIndex = -1
@@ -764,7 +765,9 @@ class PlaybackService :
 
     override fun onPlayerError(error: PlaybackException) {
         val nextMediaIndex = player.nextMediaItemIndex
-        if (nextMediaIndex != C.INDEX_UNSET) {
+        if (nextMediaIndex != C.INDEX_UNSET &&
+            errorRecoveryRetryCount < MAX_RETRY_COUNT_AFTER_ERROR) {
+            errorRecoveryRetryCount++
             player.seekToNextMediaItem()
             player.prepare()
         }
@@ -775,6 +778,7 @@ class PlaybackService :
         if (events.contains(Player.EVENT_IS_PLAYING_CHANGED) ||
             events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) ||
             events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+            if (player.isPlaying) errorRecoveryRetryCount = 0
             cancelSleepTimerFadeOut()
         }
         if (events.contains(Player.EVENT_IS_PLAYING_CHANGED) &&
@@ -1184,6 +1188,7 @@ class PlaybackService :
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "playing_notification"
 
+        private const val MAX_RETRY_COUNT_AFTER_ERROR = 3
         private const val WIDGET_UPDATE_DEBOUNCE = 300L
         private const val REWIND_INSTEAD_PREVIOUS_MILLIS = 5000L
     }

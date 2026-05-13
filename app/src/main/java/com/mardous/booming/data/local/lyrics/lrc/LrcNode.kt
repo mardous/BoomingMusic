@@ -1,6 +1,6 @@
 package com.mardous.booming.data.local.lyrics.lrc
 
-import com.mardous.booming.data.model.lyrics.Lyrics
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
 
 internal class LrcNode(
@@ -29,10 +29,10 @@ internal class LrcNode(
         return false
     }
 
-    private fun toWord(startIndex: Int, trimEnd: Boolean = false): Lyrics.Word {
+    private fun toWord(startIndex: Int, trimEnd: Boolean = false): SyncedLyrics.Word {
         checkNotNull(text)
         val wordText = if (trimEnd) text.trimEnd() else text
-        return Lyrics.Word(
+        return SyncedLyrics.Word(
             content = wordText,
             startMillis = start,
             startIndex = startIndex,
@@ -43,7 +43,7 @@ internal class LrcNode(
         )
     }
 
-    fun getTextContent(): Lyrics.TextContent {
+    fun getTextContent(): SyncedLyrics.TextContent {
         return if (children.isNotEmpty()) {
             children.sortBy { it.start }
             for (i in 0 until children.lastIndex) {
@@ -54,7 +54,7 @@ internal class LrcNode(
             var nextWordStartIndex = 0
             val lastWordIndex = children.lastIndex
 
-            val words = mutableListOf<Lyrics.Word>()
+            val words = mutableListOf<SyncedLyrics.Word>()
             for ((index, child) in children.withIndex()) {
                 if (index == lastWordIndex && child.text.isNullOrBlank())
                     continue
@@ -69,7 +69,7 @@ internal class LrcNode(
                 }
             }
 
-            Lyrics.TextContent(
+            SyncedLyrics.TextContent(
                 content = words.filterNot { it.isBackground }
                     .joinToString(separator = "") { it.content }.trim(),
                 backgroundContent = words.filter { it.isBackground }
@@ -78,7 +78,7 @@ internal class LrcNode(
                 words = words
             )
         } else {
-            Lyrics.TextContent(
+            SyncedLyrics.TextContent(
                 content = text.orEmpty(),
                 backgroundContent = null,
                 rawContent = rawLine.orEmpty(),
@@ -87,11 +87,11 @@ internal class LrcNode(
         }
     }
 
-    fun toLine(): Lyrics.Line? {
+    fun toLine(): SyncedLyrics.Line? {
         if (start <= INVALID_DURATION && end <= INVALID_DURATION) {
             return null
         }
-        return Lyrics.Line(
+        return SyncedLyrics.Line(
             startAt = start,
             end = end,
             durationMillis = (end - start),

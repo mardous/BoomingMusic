@@ -478,25 +478,15 @@
     <string name="synced_lyrics">Senkronize</string>
     <string name="embedded_lyrics">Gömülü</string>
     <string name="downloaded_lyrics">İndirilmiş</string>
-    <string name="external_file_lyrics">Harici dosya</string>
-    <string name="action_import_synchronized_lyrics">Senkronize şarkı sözlerini içe aktar</string>
-    <string name="action_share_synchronized_lyrics">Senkronize şarkı sözlerini paylaş</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> için senkronize LRC şarkı sözlerini içe aktarmak istiyor musunuz?]]></string>
-    <string name="import_lyrics_for_song_x">%s için şarkı sözleri içe aktarıldı</string>
-    <string name="could_not_import_lyrics_for_song_x">%s için şarkı sözleri içe aktarılamadı</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Senkronize şarkı sözleri içeren bir LRC dosyası seçin.</string>
     <string name="cannot_download_lyrics">Booming Music bu şarkının sözlerini bulamadı. Manuel olarak aramak ister misiniz?</string>
     <string name="search_lyrics">Şarkı sözlerini ara</string>
     <string name="choose_lyrics">Şarkı sözü türünü seçin</string>
     <string name="download_lyrics">Şarkı sözlerini indir</string>
     <string name="write_lyrics_here">Şarkı sözlerini buraya yazın</string>
-    <string name="write_synced_lyrics_here">Senkronize şarkı sözlerini buraya yazın</string>
     <string name="no_lyrics_found">Şarkı sözü bulunamadı</string>
-    <string name="no_synced_lyrics_found">Senkronize şarkı sözü bulunamadı</string>
     <string name="lyrics_were_updated_successfully">Şarkı sözleri başarıyla güncellendi.</string>
     <string name="failed_to_update_lyrics">Şarkı sözleri güncellenemedi.</string>
     <string name="there_are_no_changes_to_save">Kaydedilecek bir değişiklik yok.</string>
-    <string name="lyrics_source_external_file">Şarkı sözleri harici bir dosyadan alınmaktadır. Bu dosyayı Booming Music üzerinden doğrudan düzenleyemezsiniz.</string>
     <string name="font_imported_successfully">Yazı tipi başarıyla içe aktarıldı.</string>
     <string name="could_not_import_font">Yazı tipi içe aktarılamadı.</string>
     <!-- Sleep timer -->

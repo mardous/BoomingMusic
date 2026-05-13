@@ -194,12 +194,6 @@ androidComponents {
     }
 }
 
-aboutLibraries {
-    collect {
-        configPath = file("../config")
-    }
-}
-
 kotlin {
     compilerOptions {
         optIn.add("kotlin.RequiresOptIn")

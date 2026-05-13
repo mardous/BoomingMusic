@@ -1,6 +1,6 @@
 package com.mardous.booming.data.local.lyrics.ttml
 
-import com.mardous.booming.data.model.lyrics.Lyrics
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.extensions.utilities.collapseSpaces
 import java.util.Locale
 
@@ -124,8 +124,8 @@ class TtmlTranslation(val lang: String, val isInLine: Boolean) {
             return false
         }
 
-        fun getTextContent(): Lyrics.TextContent {
-            return Lyrics.TextContent(
+        fun getTextContent(): SyncedLyrics.TextContent {
+            return SyncedLyrics.TextContent(
                 content = content.orEmpty(),
                 backgroundContent = backgroundContent,
                 rawContent = null,
