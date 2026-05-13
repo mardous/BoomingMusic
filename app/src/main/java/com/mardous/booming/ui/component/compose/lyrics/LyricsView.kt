@@ -69,7 +69,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.core.model.lyrics.LyricsViewState
-import com.mardous.booming.data.model.lyrics.Lyrics
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.ui.component.compose.decoration.FadingEdges
@@ -90,7 +90,7 @@ fun LyricsView(
     isPowerSaveMode: Boolean,
     hasBackgroundEffects: Boolean,
     modifier: Modifier = Modifier,
-    onLineClick: (Lyrics.Line) -> Unit
+    onLineClick: (SyncedLyrics.Line) -> Unit
 ) {
     val density = LocalDensity.current
     val textStyle = settings.syncedStyle
@@ -195,7 +195,7 @@ private fun LyricsLineView(
     enableShadowEffect: Boolean,
     contentColor: Color,
     position: Long,
-    line: Lyrics.Line,
+    line: SyncedLyrics.Line,
     textStyle: TextStyle,
     rtl: Boolean,
     modifier: Modifier = Modifier,
@@ -327,8 +327,8 @@ private fun LyricsLineView(
 fun LyricsLineContentView(
     index: Int,
     selectedIndex: Int,
-    content: Lyrics.TextContent,
-    translatedContent: Lyrics.TextContent?,
+    content: SyncedLyrics.TextContent,
+    translatedContent: SyncedLyrics.TextContent?,
     enableSyllable: Boolean,
     backgroundContent: Boolean,
     progressiveColoring: Boolean,
@@ -505,7 +505,7 @@ private fun SyllableText(
     selectedLine: Boolean,
     shadowEffect: Boolean,
     position: Long,
-    words: List<Lyrics.Word>,
+    words: List<SyncedLyrics.Word>,
     contentColor: Color,
     style: TextStyle,
     align: TextAlign,

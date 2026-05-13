@@ -28,16 +28,18 @@ fun <T> ButtonGroup(
     buttonStateResolver: (T) -> Boolean,
     buttonIconResolver: @Composable (T, Boolean) -> Painter? = { _, _ -> null },
     buttonTextResolver: @Composable (T) -> String = { it.toString() },
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true
 ) {
     Row(
-        modifier = modifier.padding(8.dp),
+        modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(ButtonGroupDefaults.ConnectedSpaceBetween),
     ) {
         buttonItems.forEachIndexed { index, item ->
             val isChecked = buttonStateResolver(item)
             val buttonWeight = if (isChecked) 1.5f else 1f
             TonalToggleButton(
+                enabled = enabled,
                 checked = isChecked,
                 onCheckedChange = { onSelected(item) },
                 modifier = Modifier

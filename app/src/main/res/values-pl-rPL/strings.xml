@@ -494,25 +494,15 @@
     <string name="synced_lyrics">Zsynchronizowany</string>
     <string name="embedded_lyrics">Osadzone w pliku</string>
     <string name="downloaded_lyrics">Pobrano</string>
-    <string name="external_file_lyrics">Zewnętrzny plik</string>
-    <string name="action_import_synchronized_lyrics">Importuj zsynchronizowane teksty</string>
-    <string name="action_share_synchronized_lyrics">Udostępnij zsynchronizowane teksty</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Czy chcesz zaimportować zsynchronizowane teksty piosenek LRC dla <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Zaimportowano tekst dla utworu %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Nie udało się zaimportować tekstu dla %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Wybierz plik LRC zawierający zsynchronizowany tekst utworu.</string>
     <string name="cannot_download_lyrics">Booming Music nie udało się znaleźć tekstu dla tej piosenki. Czy chcesz wyszukać ręcznie?</string>
     <string name="search_lyrics">Szukaj tekstu utworu</string>
     <string name="choose_lyrics">Wybierz typ tekstu piosenki</string>
     <string name="download_lyrics">Pobierz tekst</string>
     <string name="write_lyrics_here">Napisz tutaj tekst</string>
-    <string name="write_synced_lyrics_here">Napisz tutaj zsynchronizowane teksty</string>
     <string name="no_lyrics_found">Nie znaleziono tekstu piosenki</string>
-    <string name="no_synced_lyrics_found">Nie znaleziono zsynchronizowanych tekstów</string>
     <string name="lyrics_were_updated_successfully">Tekst został pomyślnie zaktualizowany.</string>
     <string name="failed_to_update_lyrics">Nie udało się zaktualizować tekstu.</string>
     <string name="there_are_no_changes_to_save">Nie ma zmian do zapisania.</string>
-    <string name="lyrics_source_external_file">Teksty piosenek pochodzą z pliku zewnętrznego. Nie można edytować tego pliku bezpośrednio z aplikacji Booming Music.</string>
     <string name="font_imported_successfully">Czcionki zaimportowane pomyślnie.</string>
     <string name="could_not_import_font">Nie można zaimportować czcionki.</string>
     <!-- Sleep timer -->

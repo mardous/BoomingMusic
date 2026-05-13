@@ -478,25 +478,15 @@
     <string name="synced_lyrics">Synkroniseret</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Downloadet</string>
-    <string name="external_file_lyrics">Ekstern fil</string>
-    <string name="action_import_synchronized_lyrics">Importér synkroniserede sangtekster</string>
-    <string name="action_share_synchronized_lyrics">Del synkroniserede sangtekster</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vil du importere synkroniserede LRC sangtekster til <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Importerede sangtekster til %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Kunne ikke importere sangtekster til %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Vælg en LRC-fil som indeholder synkroniserede sangtekster.</string>
     <string name="cannot_download_lyrics">Booming af musik kunne ikke finde sangteksterne til denne sang. Vil du søge manuelt?</string>
     <string name="search_lyrics">Søg efter sangtekster</string>
     <string name="choose_lyrics">Vælg typen af sangtekster</string>
     <string name="download_lyrics">Download sangtekster</string>
     <string name="write_lyrics_here">Skriv sangtekster her</string>
-    <string name="write_synced_lyrics_here">Skriv synkroniserede sangtekster her</string>
     <string name="no_lyrics_found">Ingen sangtekster fundet</string>
-    <string name="no_synced_lyrics_found">Ingen synkroniserede sangtekster fundet</string>
     <string name="lyrics_were_updated_successfully">Sangtekster blev opdateret.</string>
     <string name="failed_to_update_lyrics">Kunne ikke opdatere sangtekster.</string>
     <string name="there_are_no_changes_to_save">Der er ingen ændringer at gemme.</string>
-    <string name="lyrics_source_external_file">Sangtekster kommer fra en ekstern fil. Du kan ikke redigere denne fil direkte fra Booming Music.</string>
     <string name="font_imported_successfully">Skrifttype importeret.</string>
     <string name="could_not_import_font">Kunne ikke importere skrifttype.</string>
     <!-- Sleep timer -->

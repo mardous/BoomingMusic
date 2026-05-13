@@ -470,25 +470,15 @@
     <string name="synced_lyrics">同步歌词</string>
     <string name="embedded_lyrics">内嵌歌词</string>
     <string name="downloaded_lyrics">已下载</string>
-    <string name="external_file_lyrics">外置文件</string>
-    <string name="action_import_synchronized_lyrics">导入同步歌词</string>
-    <string name="action_share_synchronized_lyrics">分享同步歌词</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[您想要为 <b>%s</b> 导入同步的 LRC 歌词吗？]]></string>
-    <string name="import_lyrics_for_song_x">导入的 %s 歌词</string>
-    <string name="could_not_import_lyrics_for_song_x">无法为 %s 导入歌词</string>
-    <string name="select_a_file_containing_synchronized_lyrics">选择含有同步歌词的LRC 文件。</string>
     <string name="cannot_download_lyrics">Booming Music无法找到这首歌的歌词。您想手动搜索吗？</string>
     <string name="search_lyrics">搜索歌词</string>
     <string name="choose_lyrics">选择歌词类型</string>
     <string name="download_lyrics">下载歌词</string>
     <string name="write_lyrics_here">在此处写歌词</string>
-    <string name="write_synced_lyrics_here">在此处写下同步歌词</string>
     <string name="no_lyrics_found">没有找到歌词</string>
-    <string name="no_synced_lyrics_found">未找到同步歌词</string>
     <string name="lyrics_were_updated_successfully">歌词更新成功。</string>
     <string name="failed_to_update_lyrics">更新歌词失败。</string>
     <string name="there_are_no_changes_to_save">没有要保存的更改。</string>
-    <string name="lyrics_source_external_file">歌词来自外部文件。您不能直接从 Booming Music 编辑此文件。</string>
     <string name="font_imported_successfully">字体已成功导入。</string>
     <string name="could_not_import_font">无法导入字体。</string>
     <!-- Sleep timer -->

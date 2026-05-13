@@ -17,66 +17,68 @@
 
 package com.mardous.booming.data.remote.lyrics.api.lyrically
 
+import android.util.Log
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
-import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
+import com.mardous.booming.data.remote.lyrics.model.AppleMusicSearchResponse
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricText
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricsResponse
-import com.mardous.booming.data.remote.lyrics.model.LyricallySearchResult
-import com.mardous.booming.data.remote.lyrics.model.toDownloadedLyrics
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpHeaders
-import io.ktor.http.encodeURLParameter
 import io.ktor.http.userAgent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.Json
 import org.apache.commons.text.similarity.JaroWinklerSimilarity
+import java.net.URLEncoder
 import kotlin.math.abs
 
 /**
  * Fetch lyrics from Lyrically API.
  *
- * Based on [Metrolist](https://github.com/MetrolistGroup/Metrolist)'s implementation.
+ * Based on [Metrolist](https://github.com/MetrolistGroup/Metrolist) and
+ * [SongSync](https://github.com/Lambada10/SongSync) implementations.
  */
 class LyricallyApi(private val client: HttpClient) : LyricsApi {
 
+    override val name: String = "Lyrically"
     override val networkFeature = NetworkFeature.Lyrics.Lyrically
 
-    override suspend fun songLyrics(song: Song, title: String, artist: String): DownloadedLyrics? {
-        val searchResults = client.paxsenix("$BASE_URL/apple-music/search") {
-            url.encodedParameters.append("q", "$artist $title".encodeURLParameter())
-        }.body<List<LyricallySearchResult>>()
+    private val tokenManager = TokenManager()
+    private val json = Json {
+        ignoreUnknownKeys = true
+    }
 
-        if (searchResults.isNotEmpty()) {
+    override suspend fun downloadLyrics(
+        song: Song,
+        title: String,
+        artist: String
+    ): RawLyrics.Remote? {
+        val searchResponse = getAppleMusicSearchResponse(title, artist)
+        if (searchResponse != null) {
+            var lyrics: RawLyrics.Remote? = null
 
-            var lyrics: DownloadedLyrics? = null
-
-            val scoredResults = scoreSearchResults(title, artist, song.duration, searchResults)
-            for ((result, score) in scoredResults.take(5)) {
+            val scoredIds = getScoredAppleMusicIds(title, artist, song.duration, searchResponse)
+            for ((result, score) in scoredIds.take(5)) {
                 if (score <= 0.0) continue
 
-                val lyricsResponse = client.paxsenix("$BASE_URL/apple-music/lyrics") {
-                    parameter("id", result.id)
+                val lyricsResponse = client.paxsenix("$LYRICS_URL/apple-music/lyrics") {
+                    parameter("id", result)
                 }.body<LyricallyLyricsResponse>()
 
-                val newLyrics = parseResponse(song, lyricsResponse)
+                val newLyrics = parseLyricallyResponse(lyricsResponse)
 
-                if (lyrics == null) {
-                    lyrics = newLyrics
-                } else if (lyrics.syncedLyrics.isNullOrEmpty() &&
-                    !newLyrics.syncedLyrics.isNullOrEmpty()) {
-                    lyrics = lyrics.copy(syncedLyrics = newLyrics.syncedLyrics)
-                } else if (lyrics.plainLyrics.isNullOrEmpty() &&
-                    !newLyrics.plainLyrics.isNullOrEmpty()) {
-                    lyrics = lyrics.copy(plainLyrics = newLyrics.plainLyrics)
-                }
-
-                if (lyrics.hasMultiOptions) {
+                lyrics = lyrics?.accept(newLyrics) ?: newLyrics
+                if (lyrics.hasBoth) {
                     return lyrics
                 }
             }
@@ -87,23 +89,72 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
         return null
     }
 
-    private fun parseResponse(song: Song, response: LyricallyLyricsResponse): DownloadedLyrics {
-        var lyrics = if (!response.elrcMultiPerson.isNullOrEmpty()) {
-            song.toDownloadedLyrics(syncedLyrics = response.elrcMultiPerson)
+    private suspend fun getAppleMusicSearchResponse(
+        songTitle: String,
+        artistName: String
+    ): AppleMusicSearchResponse? {
+        val search = withContext(Dispatchers.IO) {
+            URLEncoder.encode("$songTitle $artistName", Charsets.UTF_8.toString())
+        }
+        val token = tokenManager.getToken(client)
+        val response = client.get(
+            "$SEARCH_URL/search?" +
+            "term=$search&" +
+            "types=songs&" +
+            "limit=25&" +
+            "l=en-US&" +
+            "platform=web&" +
+            "format[resources]=map&" +
+            "include[songs]=artists&" +
+            "extend=artistUrl"
+        ) {
+            header("Authorization", "Bearer $token")
+            header("Origin", "https://music.apple.com")
+            header("Referer", "https://music.apple.com/")
+            header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:95.0) Gecko/20100101 Firefox/95.0")
+            header("Accept", "application/json")
+            header("Accept-Language", "en-US,en;q=0.5")
+            header("x-apple-renewal", "true")
+        }
+
+        val responseBody = response.bodyAsText(Charsets.UTF_8)
+
+        if (response.status.value !in 200..299) {
+            // Token might be expired, clear it and retry once
+            if (response.status.value == 401) {
+                tokenManager.clearToken()
+            }
+            return null
+        }
+
+        val searchResponse = try {
+            json.decodeFromString<AppleMusicSearchResponse>(responseBody)
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to decode search response", e)
+            return null
+        }
+        return searchResponse
+    }
+
+    private fun parseLyricallyResponse(response: LyricallyLyricsResponse): RawLyrics.Remote {
+        var lyrics = if (!response.ttml.isNullOrEmpty()) {
+            RawLyrics.Remote(synced = RawLyrics.Remote.Content(name, response.ttml))
+        } else if (!response.elrcMultiPerson.isNullOrEmpty()) {
+            RawLyrics.Remote(synced = RawLyrics.Remote.Content(name, response.elrcMultiPerson))
         } else if (!response.elrc.isNullOrEmpty()) {
-            song.toDownloadedLyrics(syncedLyrics = response.elrc)
+            RawLyrics.Remote(synced = RawLyrics.Remote.Content(name, response.elrc))
         } else if (!response.lrc.isNullOrEmpty()) {
-            song.toDownloadedLyrics(syncedLyrics = response.lrc)
+            RawLyrics.Remote(synced = RawLyrics.Remote.Content(name, response.lrc))
         } else {
-            song.toDownloadedLyrics(syncedLyrics = parseContent(response))
+            RawLyrics.Remote(synced = RawLyrics.Remote.Content(name, parseLyricallyContent(response)))
         }
         if (!response.plain.isNullOrEmpty()) {
-            lyrics = lyrics.copy(plainLyrics = response.plain)
+            lyrics = lyrics.copy(plain = RawLyrics.Remote.Content(name, response.plain))
         }
         return lyrics
     }
 
-    private fun parseContent(response: LyricallyLyricsResponse): String? {
+    private fun parseLyricallyContent(response: LyricallyLyricsResponse): String? {
         if (response.content.isEmpty()) return null
 
         val syncedLyrics = StringBuilder()
@@ -154,25 +205,36 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
         }
     }
 
-    private fun scoreSearchResults(
-        title: String,
-        artist: String,
-        duration: Long,
-        results: List<LyricallySearchResult>
-    ): List<Pair<LyricallySearchResult, Double>> {
-        return results.map { result ->
-            val titleScore = JW_SIMILARITY.apply(title, result.songName)
-            val artistScore = JW_SIMILARITY.apply(artist, result.artistName)
+    private fun getScoredAppleMusicIds(
+        songTitle: String,
+        songArtist: String,
+        songDurationInMillis: Long,
+        searchResponse: AppleMusicSearchResponse
+    ): List<Pair<String, Double>> {
+        val songs = searchResponse.results.songs?.data
+            ?: return emptyList()
 
-            val durationDiff = abs(result.duration - duration)
-            val durationScore = when {
-                durationDiff <= 2000 -> 1.0 // Excellent match
-                durationDiff <= 5000 -> 0.6 // Good match
-                durationDiff <= 10000 -> 0.2 // Acceptable match
-                else -> -1.0 // Likely wrong version
-            }
+        return songs.mapNotNull { song ->
+            val songId = song.id
+            val songDetail = searchResponse.resources?.songs?.get(songId)
+            if (songDetail != null) {
+                val attributes = songDetail.attributes
 
-            result to (artistScore + titleScore + durationScore)
+                val titleScore = JW_SIMILARITY.apply(songTitle, attributes.name)
+                val artistScore = JW_SIMILARITY.apply(songArtist, attributes.artistName)
+
+                val durationDiff = attributes.durationInMillis
+                    ?.let { duration -> abs(duration - songDurationInMillis) } ?: 0
+
+                val durationScore = when {
+                    durationDiff <= 2000 -> 1.0 // Excellent match
+                    durationDiff <= 5000 -> 0.6 // Good match
+                    durationDiff <= 10000 -> 0.2 // Acceptable match
+                    else -> -1.0 // Likely wrong version
+                }
+
+                songId to (artistScore + titleScore + durationScore)
+            } else null
         }.sortedByDescending { it.second }
     }
 
@@ -201,7 +263,11 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
     }
 
     companion object {
-        private const val BASE_URL = "https://lyrics.paxsenix.org"
+        private const val TAG = "LyricallyApi"
+
+        private const val LYRICS_URL = "https://lyrics.paxsenix.org"
+        private const val SEARCH_URL = "https://amp-api.music.apple.com/v1/catalog/us"
+
         private const val USER_AGENT = "BoomingMusic/${BuildConfig.VERSION_NAME}"
 
         private val JW_SIMILARITY = JaroWinklerSimilarity()

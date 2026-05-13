@@ -470,25 +470,15 @@
     <string name="synced_lyrics">동기화 가사</string>
     <string name="embedded_lyrics">내장 가사</string>
     <string name="downloaded_lyrics">다운로드됨</string>
-    <string name="external_file_lyrics">외부 파일</string>
-    <string name="action_import_synchronized_lyrics">동기화 가사 가져오기</string>
-    <string name="action_share_synchronized_lyrics">동기화 가사 공유</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b>의 동기화된 LRC 가사를 가져오시겠습니까?]]></string>
-    <string name="import_lyrics_for_song_x">%s 가사 가져옴</string>
-    <string name="could_not_import_lyrics_for_song_x">%s 가사를 가져올 수 없습니다</string>
-    <string name="select_a_file_containing_synchronized_lyrics">동기화 가사가 포함된 LRC 파일을 선택하세요.</string>
     <string name="cannot_download_lyrics">가사를 찾을 수 없습니다. 수동으로 검색하시겠습니까?</string>
     <string name="search_lyrics">가사 검색</string>
     <string name="choose_lyrics">가사 유형 선택</string>
     <string name="download_lyrics">가사 다운로드</string>
     <string name="write_lyrics_here">여기에 가사를 입력하세요</string>
-    <string name="write_synced_lyrics_here">여기에 동기화 가사를 입력하세요</string>
     <string name="no_lyrics_found">가사를 찾을 수 없음</string>
-    <string name="no_synced_lyrics_found">동기화 가사를 찾을 수 없음</string>
     <string name="lyrics_were_updated_successfully">가사가 성공적으로 업데이트되었습니다.</string>
     <string name="failed_to_update_lyrics">가사 업데이트 실패.</string>
     <string name="there_are_no_changes_to_save">저장할 변경사항이 없습니다.</string>
-    <string name="lyrics_source_external_file">외부 파일의 가사입니다. 앱에서 직접 편집할 수 없습니다.</string>
     <string name="font_imported_successfully">글꼴을 가져왔습니다.</string>
     <string name="could_not_import_font">글꼴을 가져올 수 없습니다.</string>
     <!-- Sleep timer -->

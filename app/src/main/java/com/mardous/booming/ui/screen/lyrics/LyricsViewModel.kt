@@ -18,16 +18,21 @@ import androidx.lifecycle.viewModelScope
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings.BackgroundEffect
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings.Key
-import com.mardous.booming.core.model.task.Result
+import com.mardous.booming.data.local.lyrics.InstrumentalDetector
 import com.mardous.booming.data.local.repository.LyricsRepository
 import com.mardous.booming.data.model.Song
-import kotlinx.coroutines.Dispatchers
+import com.mardous.booming.data.model.lyrics.LyricsSource
+import com.mardous.booming.data.model.lyrics.RawLyrics
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.updateAndGet
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.io.File
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings.Mode as LyricsViewMode
 
@@ -36,11 +41,25 @@ import com.mardous.booming.core.model.lyrics.LyricsViewSettings.Mode as LyricsVi
  */
 class LyricsViewModel(
     private val preferences: SharedPreferences,
-    private val lyricsRepository: LyricsRepository
+    private val repository: LyricsRepository
 ) : ViewModel(), OnSharedPreferenceChangeListener {
 
-    private val _lyricsResult = MutableStateFlow(LyricsResult.Empty)
-    val lyricsResult = _lyricsResult.asStateFlow()
+    private var instrumentalDetector: InstrumentalDetector
+
+    private val _lyricsUiState = MutableStateFlow<LyricsUiState>(LyricsUiState.Empty)
+    val lyricsUiState = _lyricsUiState.asStateFlow()
+
+    private val _lyricsEditorUiState = MutableStateFlow<LyricsEditorUiState>(LyricsEditorUiState.Disposed)
+    val lyricsEditorUiState = _lyricsEditorUiState.asStateFlow()
+
+    private val _saveEvent = Channel<LyricsEditorResult>(Channel.BUFFERED)
+    val saveEvent = _saveEvent.receiveAsFlow()
+
+    private val _downloadEvent = Channel<RawLyrics.Remote?>(Channel.BUFFERED)
+    val downloadEvent = _downloadEvent.receiveAsFlow()
+
+    private val _permissionRequestEvent = Channel<List<Uri>>(Channel.BUFFERED)
+    val permissionRequestEvent = _permissionRequestEvent.receiveAsFlow()
 
     private val _playerLyricsViewSettings = MutableStateFlow(createViewSettings(LyricsViewMode.Player))
     val playerLyricsViewSettings = _playerLyricsViewSettings.asStateFlow()
@@ -51,6 +70,7 @@ class LyricsViewModel(
     private var lyricsJob: Job? = null
 
     init {
+        instrumentalDetector = createInstrumentalDetector()
         preferences.registerOnSharedPreferenceChangeListener(this)
     }
 
@@ -60,51 +80,73 @@ class LyricsViewModel(
         super.onCleared()
     }
 
-    fun getOnlineLyrics(song: Song, title: String, artist: String) = liveData(Dispatchers.IO) {
-        emit(Result.Loading)
-        emit(lyricsRepository.onlineLyrics(song, title, artist))
-    }
-
-    fun getAllLyrics(
-        song: Song,
-        allowDownload: Boolean = false,
-        fromEditor: Boolean = false
-    ) = liveData(Dispatchers.IO) {
-        emit(LyricsResult(id = song.id, loading = true))
-        val lyricsResult = runCatching {
-            lyricsRepository.allLyrics(song, allowDownload, fromEditor)
+    fun loadEditorContent(song: Song) = viewModelScope.launch(IO) {
+        _lyricsEditorUiState.update {
+            LyricsEditorUiState.Visible(isLoading = true)
         }
-        emit(lyricsResult.getOrDefault(LyricsResult(song.id, loading = false)))
+
+        val lyrics = getEditorLyricsBySources(song, LyricsSource.entries)
+        _lyricsEditorUiState.value = LyricsEditorUiState.Visible(
+            isLoading = false,
+            lyrics = lyrics
+        )
     }
 
-    fun shareSyncedLyrics(song: Song) = liveData(Dispatchers.IO) {
-        emit(lyricsRepository.shareSyncedLyrics(song))
+    fun disposeEditorContent() = viewModelScope.launch(IO) {
+        _lyricsEditorUiState.value = LyricsEditorUiState.Disposed
     }
 
-    fun getWritableUris(song: Song) = liveData(Dispatchers.IO) {
-        val uris = lyricsRepository.writableUris(song)
-        delay(500)
-        emit(uris)
-    }
-
-    fun saveLyrics(song: Song, plainLyrics: EditableLyrics?, syncedLyrics: EditableLyrics?) =
-        liveData(Dispatchers.IO) {
-            val saveResult = lyricsRepository.saveLyrics(song, plainLyrics, syncedLyrics)
-            if (saveResult.hasChanged && song.id == lyricsResult.value.id) {
-                updateSong(song)
+    fun saveLyrics(song: Song, newLyrics: Map<LyricsSource, String>) = viewModelScope.launch(IO) {
+        val uiState = _lyricsEditorUiState.updateAndGet {
+            if (it is LyricsEditorUiState.Visible) {
+                it.copy(isLoading = true)
+            } else it
+        }
+        if (uiState is LyricsEditorUiState.Visible) {
+            val event = when (val result = repository.saveLyrics(song, uiState.lyrics, newLyrics)) {
+                null -> LyricsEditorResult.NoChanges
+                else -> if (result) LyricsEditorResult.Success else LyricsEditorResult.Failed
             }
-            emit(saveResult)
+
+            _saveEvent.send(event)
+
+            if (event == LyricsEditorResult.Success) {
+                // Lyrics need to be updated to avoid unnecessary save operations
+                val newLyrics = getEditorLyricsBySources(song, newLyrics.keys.toList())
+                _lyricsEditorUiState.value = uiState.copy(isLoading = false, lyrics = newLyrics)
+            } else {
+                _lyricsEditorUiState.value = uiState.copy(isLoading = false)
+            }
+        }
+    }
+
+    fun downloadLyrics(song: Song, title: String, artist: String) =
+        viewModelScope.launch(IO) {
+            val uiState = _lyricsEditorUiState.updateAndGet {
+                if (it is LyricsEditorUiState.Visible) {
+                    it.copy(isLoading = true)
+                } else it
+            }
+            if (uiState is LyricsEditorUiState.Visible) {
+                val onlineLyrics = repository.downloadLyrics(song, title, artist)
+                if (onlineLyrics != null) {
+                    _downloadEvent.send(onlineLyrics)
+                } else {
+                    _downloadEvent.send(null)
+                }
+                _lyricsEditorUiState.value = uiState.copy(isLoading = false)
+            }
         }
 
-    fun importLyrics(song: Song, uri: Uri) = liveData(Dispatchers.IO) {
-        emit(lyricsRepository.importLyrics(song, uri))
+    fun preparePermissionRequest(song: Song) = viewModelScope.launch(IO) {
+        _permissionRequestEvent.send(repository.writableUris(song))
     }
 
-    fun deleteLyrics() = viewModelScope.launch(Dispatchers.IO) {
-        lyricsRepository.deleteAllLyrics()
+    fun deleteLyrics() = viewModelScope.launch(IO) {
+        repository.deleteAllLyrics()
     }
 
-    fun importCustomFont(context: Context, uri: Uri) = liveData(Dispatchers.IO) {
+    fun importCustomFont(context: Context, uri: Uri) = liveData(IO) {
         try {
             val fontsDir = File(context.filesDir, "fonts").apply { mkdirs() }
             val fileName = context.contentResolver.query(uri, null, null, null, null)
@@ -152,22 +194,97 @@ class LyricsViewModel(
 
     fun updateSong(song: Song) {
         lyricsJob?.cancel()
-
-        if (song == Song.emptySong) {
-            _lyricsResult.value = LyricsResult.Empty
-            return
-        }
-
-        _lyricsResult.value = LyricsResult(id = song.id, loading = true)
-
         lyricsJob = viewModelScope.launch {
-            val lyrics = withContext(Dispatchers.IO) {
-                runCatching {
-                    lyricsRepository.allLyrics(song, allowDownload = true, fromEditor = false)
+            if (song == Song.emptySong) {
+                _lyricsUiState.value = LyricsUiState.Empty
+            } else {
+                _lyricsUiState.value = LyricsUiState.Loading
+
+                val lyricsState = getBestLyricsFromSources(
+                    song = song,
+                    sources = listOf(
+                        LyricsSource.File,
+                        LyricsSource.Embedded,
+                        LyricsSource.Downloaded
+                    )
+                )
+                if (isActive) {
+                    _lyricsUiState.value = lyricsState
                 }
             }
-            _lyricsResult.value = lyrics.getOrDefault(LyricsResult(song.id, loading = false))
         }
+    }
+
+    private suspend fun getEditorLyricsBySources(
+        song: Song,
+        sources: List<LyricsSource>
+    ) = sources.associateWith { source ->
+        when (source) {
+            LyricsSource.Downloaded -> repository.storedLyrics(song, false)
+            LyricsSource.Embedded -> repository.embeddedLyrics(song)
+            LyricsSource.File -> repository.fileLyrics(song)
+        }
+    }
+
+    private suspend fun getBestLyricsFromSources(
+        song: Song,
+        sources: List<LyricsSource>
+    ): LyricsUiState {
+        var plainLyrics: String? = null
+        if (instrumentalDetector.byTitle(song.title)) {
+            return LyricsUiState.Instrumental
+        }
+        for (source in sources) {
+            when (source) {
+                LyricsSource.File -> {
+                    val fileLyrics = repository.fileLyrics(song)
+                    if (fileLyrics != null) {
+                        val lyrics = repository.parseRawLyrics(song, fileLyrics)
+                        if (lyrics?.hasContent == true) {
+                            return LyricsUiState.Success.Synced(song.id, lyrics)
+                        }
+                    }
+                }
+
+                LyricsSource.Embedded -> {
+                    val embeddedLyrics = repository.embeddedLyrics(song)
+                    if (embeddedLyrics != null) {
+                        if (instrumentalDetector.byLyrics(embeddedLyrics.lyrics)) {
+                            return LyricsUiState.Instrumental
+                        }
+                        val lyrics = repository.parseRawLyrics(song, embeddedLyrics)
+                        if (lyrics?.hasContent == true) {
+                            return LyricsUiState.Success.Synced(song.id, lyrics)
+                        } else {
+                            if (plainLyrics.isNullOrEmpty()) {
+                                plainLyrics = embeddedLyrics.lyrics
+                            }
+                        }
+                    }
+                }
+
+                LyricsSource.Downloaded -> {
+                    val downloadedLyrics = repository.storedLyrics(song, true)
+                    if (downloadedLyrics != null) {
+                        if (downloadedLyrics.instrumental) {
+                            return LyricsUiState.Instrumental
+                        }
+                        val lyrics = repository.parseRawLyrics(song, downloadedLyrics)
+                        if (lyrics?.hasContent == true) {
+                            return LyricsUiState.Success.Synced(song.id, lyrics)
+                        } else {
+                            if (plainLyrics.isNullOrEmpty()) {
+                                plainLyrics = downloadedLyrics.lyrics
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (!plainLyrics.isNullOrEmpty()) {
+            return LyricsUiState.Success.Plain(song.id, plainLyrics)
+        }
+        return LyricsUiState.Empty
     }
 
     private fun createViewSettings(mode: LyricsViewMode): LyricsViewSettings {
@@ -259,6 +376,24 @@ class LyricsViewModel(
             Key.UNSYNCED_FONT_SIZE_FULL -> {
                 _fullLyricsViewSettings.value = createViewSettings(LyricsViewMode.Full)
             }
+            INSTRUMENTAL_TRACK_IDENTIFIERS,
+            MARK_INSTRUMENTAL_BY_TITLE -> {
+                instrumentalDetector = createInstrumentalDetector()
+            }
         }
+    }
+
+    private fun createInstrumentalDetector() =
+        InstrumentalDetector(
+            identifiers = preferences.getString(INSTRUMENTAL_TRACK_IDENTIFIERS, null)
+                ?.split(",").orEmpty().toSet(),
+            markByTitle = preferences.getBoolean(MARK_INSTRUMENTAL_BY_TITLE, false),
+            maxLength = INSTRUMENTAL_IDENTIFIER_MAX_LENGTH
+        )
+
+    companion object {
+        private const val INSTRUMENTAL_IDENTIFIER_MAX_LENGTH = 50
+        private const val INSTRUMENTAL_TRACK_IDENTIFIERS = "instrumental_track_identifiers"
+        private const val MARK_INSTRUMENTAL_BY_TITLE = "mark_instrumental_tracks_by_title"
     }
 }

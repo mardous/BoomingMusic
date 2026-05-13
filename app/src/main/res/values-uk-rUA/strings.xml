@@ -494,25 +494,15 @@
     <string name="synced_lyrics">Синхронізовані</string>
     <string name="embedded_lyrics">Вбудовані</string>
     <string name="downloaded_lyrics">Завантажені</string>
-    <string name="external_file_lyrics">Зовнішній файл</string>
-    <string name="action_import_synchronized_lyrics">Імпортувати синхронізований текст пісні</string>
-    <string name="action_share_synchronized_lyrics">Поділитися синхронізованим текстом пісні</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Бажаєте імпортувати синхронізований LRC-текст для &lt;b&gt;%s&lt;/b&gt;?]]></string>
-    <string name="import_lyrics_for_song_x">Імпортовано текст пісні для %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Не вдалося імпортувати текст пісні для %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Виберіть LRC-файл, що містить синхронізовані тексти пісень.</string>
     <string name="cannot_download_lyrics">Booming Music не зміг знайти текст пісні. Бажаєте пошукати вручну?</string>
     <string name="search_lyrics">Пошук текстів пісень</string>
     <string name="choose_lyrics">Виберіть тип тексту пісні</string>
     <string name="download_lyrics">Завантажити текст пісні</string>
     <string name="write_lyrics_here">Пишіть тексти пісень тут</string>
-    <string name="write_synced_lyrics_here">Пишіть синхронізовані тексти пісень тут</string>
     <string name="no_lyrics_found">Тексти пісень не знайдено</string>
-    <string name="no_synced_lyrics_found">Синхронізовані тексти пісень не знайдено</string>
     <string name="lyrics_were_updated_successfully">Текст пісні успішно оновлено.</string>
     <string name="failed_to_update_lyrics">Не вдалося оновити текст пісні.</string>
     <string name="there_are_no_changes_to_save">Немає змін для збереження.</string>
-    <string name="lyrics_source_external_file">Тексти пісень взяті з зовнішнього файлу. Ви не можете редагувати цей файл безпосередньо з Booming Music.</string>
     <string name="font_imported_successfully">Шрифт успішно імпортовано.</string>
     <string name="could_not_import_font">Не вдалося імпортувати шрифт.</string>
     <!-- Sleep timer -->

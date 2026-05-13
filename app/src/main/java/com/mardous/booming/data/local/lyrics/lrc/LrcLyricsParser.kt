@@ -2,7 +2,7 @@ package com.mardous.booming.data.local.lyrics.lrc
 
 import android.util.Log
 import com.mardous.booming.data.LyricsParser
-import com.mardous.booming.data.model.lyrics.Lyrics
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
 import com.mardous.booming.data.model.lyrics.LyricsFile
 import java.io.Reader
@@ -34,7 +34,7 @@ class LrcLyricsParser : LyricsParser {
             }
     }
 
-    override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): Lyrics? {
+    override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): SyncedLyrics? {
         val attributes = hashMapOf<String, String>()
         val rawLines = mutableListOf<LrcNode>()
         try {
@@ -100,8 +100,8 @@ class LrcLyricsParser : LyricsParser {
         rawLines: List<LrcNode>,
         trackLength: Long,
         ignoreBlankLines: Boolean
-    ): Lyrics? {
-        val lines = mutableMapOf<Long, Lyrics.Line?>()
+    ): SyncedLyrics? {
+        val lines = mutableMapOf<Long, SyncedLyrics.Line?>()
         val length = attributes["length"]
             ?.let { parseTime(it) }
             ?.takeIf { it > LrcNode.INVALID_DURATION }
@@ -203,12 +203,12 @@ class LrcLyricsParser : LyricsParser {
 
             if (linesWithOffset.isNotEmpty()) {
                 val firstLine = linesWithOffset.first()
-                if (firstLine.startAt > Lyrics.MIN_OFFSET_TIME) {
+                if (firstLine.startAt > SyncedLyrics.MIN_OFFSET_TIME) {
                     linesWithOffset.add(0,
-                        Lyrics.Line(
+                        SyncedLyrics.Line(
                             startAt = 0,
                             end = firstLine.startAt,
-                            content = Lyrics.EmptyContent,
+                            content = SyncedLyrics.EmptyContent,
                             translation = null,
                             actor = firstLine.actor
                         )
@@ -216,7 +216,7 @@ class LrcLyricsParser : LyricsParser {
                 }
             }
 
-            return Lyrics(
+            return SyncedLyrics(
                 lines = linesWithOffset,
                 offset = attributes["offset"]?.toLongOrNull() ?: 0
             )

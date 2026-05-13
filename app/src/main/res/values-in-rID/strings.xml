@@ -470,25 +470,15 @@
     <string name="synced_lyrics">Tersinkronisasi</string>
     <string name="embedded_lyrics">Tertanam</string>
     <string name="downloaded_lyrics">Diunduh</string>
-    <string name="external_file_lyrics">File eksternal</string>
-    <string name="action_import_synchronized_lyrics">Impor lirik tersinkronisasi</string>
-    <string name="action_share_synchronized_lyrics">Bagikan lirik tersinkronisasi</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Apakah Anda ingin mengimpor lirik LRC tersinkronisasi untuk <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Lirik untuk %s berhasil diimpor</string>
-    <string name="could_not_import_lyrics_for_song_x">Gagal mengimpor lirik untuk %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Pilih file LRC yang berisi lirik tersinkronisasi.</string>
     <string name="cannot_download_lyrics">Booming Music tidak dapat menemukan lirik untuk lagu ini. Apakah Anda ingin mencari secara manual?</string>
     <string name="search_lyrics">Cari lirik</string>
     <string name="choose_lyrics">Pilih jenis lirik</string>
     <string name="download_lyrics">Unduh lirik</string>
     <string name="write_lyrics_here">Tulis lirik di sini</string>
-    <string name="write_synced_lyrics_here">Tulis lirik tersinkronisasi di sini</string>
     <string name="no_lyrics_found">Tidak ada lirik yang ditemukan</string>
-    <string name="no_synced_lyrics_found">Tidak ada lirik tersinkronisasi yang ditemukan</string>
     <string name="lyrics_were_updated_successfully">Lirik berhasil diperbarui.</string>
     <string name="failed_to_update_lyrics">Gagal memperbarui lirik.</string>
     <string name="there_are_no_changes_to_save">Tidak ada perubahan yang perlu disimpan.</string>
-    <string name="lyrics_source_external_file">Lirik berasal dari file eksternal. Anda tidak dapat mengedit file ini langsung dari Booming Music.</string>
     <string name="font_imported_successfully">Font berhasil diimpor.</string>
     <string name="could_not_import_font">Tidak dapat mengimpor font.</string>
     <!-- Sleep timer -->

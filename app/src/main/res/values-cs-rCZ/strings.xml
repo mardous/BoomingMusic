@@ -494,25 +494,15 @@
     <string name="synced_lyrics">Synchronizováno</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Staženo</string>
-    <string name="external_file_lyrics">Externí soubor</string>
-    <string name="action_import_synchronized_lyrics">Importovat synchronizované texty</string>
-    <string name="action_share_synchronized_lyrics">Sdílet synchronizované texty</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Chcete importovat synchronizované texty LRC pro <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Importován text pro %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Nelze importovat texty pro %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Vyberte soubor LRC obsahující synchronizované texty.</string>
     <string name="cannot_download_lyrics">Booming hudba nenalezla text pro tuto skladbu. Chcete hledat ručně?</string>
     <string name="search_lyrics">Hledat texty</string>
     <string name="choose_lyrics">Vyberte typ textů</string>
     <string name="download_lyrics">Stáhnout texty</string>
     <string name="write_lyrics_here">Zde napište texty</string>
-    <string name="write_synced_lyrics_here">Napsat synchronizované texty zde</string>
     <string name="no_lyrics_found">Nenalezeny žádné texty</string>
-    <string name="no_synced_lyrics_found">Nebyly nalezeny žádné synchronizované texty</string>
     <string name="lyrics_were_updated_successfully">Texty byly úspěšně aktualizovány.</string>
     <string name="failed_to_update_lyrics">Aktualizace textů se nezdařila.</string>
     <string name="there_are_no_changes_to_save">Neexistují žádné změny k uložení.</string>
-    <string name="lyrics_source_external_file">Texty pocházejí z externího souboru. Tento soubor nelze upravovat přímo z Booming Music.</string>
     <string name="font_imported_successfully">Písmo bylo úspěšně importováno.</string>
     <string name="could_not_import_font">Písmo nelze importovat.</string>
     <!-- Sleep timer -->
