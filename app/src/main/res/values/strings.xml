@@ -527,6 +527,7 @@
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Show lyrics</string>
     <string name="action_hide_lyrics">Hide lyrics</string>
+    <string name="lyrics_by_x">Lyrics by %s</string>
     <string name="plain_lyrics">Plain</string>
     <string name="synced_lyrics">Synced</string>
     <string name="embedded_lyrics">Embedded</string>
