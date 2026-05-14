@@ -208,6 +208,17 @@
             app:widgetLayout="@layout/preference_switch"
             app:key="ignore_blank_lines_in_lyrics" />
 
+        <ListPreference
+            app:iconSpaceReserved="true"
+            app:title="@string/preferred_lyrics_file_format_title"
+            app:summary="@string/preferred_lyrics_file_format_summary"
+            app:entries="@array/pref_lyrics_file_format_entries"
+            app:entryValues="@array/pref_lyrics_background_effect_values"
+            app:useSimpleSummaryProvider="false"
+            app:layout="@layout/list_item_view"
+            app:defaultValue="ttml"
+            app:key="preferred_lyrics_file_format"/>
+
         <SwitchPreferenceCompat
             app:iconSpaceReserved="true"
             app:title="@string/treat_all_lyrics_files_as_utf8_title"

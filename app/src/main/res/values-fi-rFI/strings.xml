@@ -478,25 +478,15 @@
     <string name="synced_lyrics">Synkronoitu</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Ladattu</string>
-    <string name="external_file_lyrics">Ulkoinen tiedosto</string>
-    <string name="action_import_synchronized_lyrics">Tuo synkronoidut sanoitukset</string>
-    <string name="action_share_synchronized_lyrics">Jaa synkronoidut sanoitukset</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Haluatko tuoda synkronoidut LRC sanoitukset <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Tuotu sanoitus %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Sanoituksia ei voitu tuoda %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Valitse LRC-tiedosto, joka sisältää synkronoituja sanoituksia.</string>
     <string name="cannot_download_lyrics">Kukoistava musiikki ei löytänyt sanoituksia tälle kappaleelle. Haluatko etsiä manuaalisesti?</string>
     <string name="search_lyrics">Etsi sanoituksia</string>
     <string name="choose_lyrics">Valitse sanoitusten tyyppi</string>
     <string name="download_lyrics">Lataa sanoitukset</string>
     <string name="write_lyrics_here">Kirjoita sanoitukset tähän</string>
-    <string name="write_synced_lyrics_here">Kirjoita synkronoidut sanoitukset tähän</string>
     <string name="no_lyrics_found">Sanoituksia ei löytynyt</string>
-    <string name="no_synced_lyrics_found">Synkronoituja sanoituksia ei löytynyt</string>
     <string name="lyrics_were_updated_successfully">Sanoitukset päivitettiin onnistuneesti.</string>
     <string name="failed_to_update_lyrics">Sanojen päivitys epäonnistui.</string>
     <string name="there_are_no_changes_to_save">Tallennettavia muutoksia ei ole.</string>
-    <string name="lyrics_source_external_file">Sanoitukset tulevat ulkoisesta tiedostosta. Et voi muokata tätä tiedostoa suoraan Booming Musicista.</string>
     <string name="font_imported_successfully">Fontti tuotu onnistuneesti.</string>
     <string name="could_not_import_font">Fonttia ei voitu tuoda.</string>
     <!-- Sleep timer -->

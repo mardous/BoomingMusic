@@ -510,25 +510,15 @@
     <string name="synced_lyrics">مزامنة</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">تم التحميل</string>
-    <string name="external_file_lyrics">ملف خارجي</string>
-    <string name="action_import_synchronized_lyrics">استيراد كلمات متزامنة</string>
-    <string name="action_share_synchronized_lyrics">مشاركة كلمات الأغاني المتزامنة</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[هل تريد استيراد كلمات LRC المتزامنة ل <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">الكلمات المستوردة لـ %s</string>
-    <string name="could_not_import_lyrics_for_song_x">تعذر استيراد كلمات الاغاني ل %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">حدد ملف LRC يحتوي على كلمات متزامنة.</string>
     <string name="cannot_download_lyrics">تعذر على الموسيقى المزدهرة العثور على كلمات هذه الأغنية. هل تريد البحث يدوياً؟</string>
     <string name="search_lyrics">البحث عن كلمات الأغاني</string>
     <string name="choose_lyrics">اختر نوع الكلمات</string>
     <string name="download_lyrics">تحميل كلمات الأغاني</string>
     <string name="write_lyrics_here">كتابة كلمات الأغاني هنا</string>
-    <string name="write_synced_lyrics_here">كتابة كلمات متزامنة هنا</string>
     <string name="no_lyrics_found">لم يتم العثور على كلمات</string>
-    <string name="no_synced_lyrics_found">لم يتم العثور على كلمات متزامنة</string>
     <string name="lyrics_were_updated_successfully">تم تحديث الكلمات بنجاح.</string>
     <string name="failed_to_update_lyrics">فشل تحديث كلمات الأغنية.</string>
     <string name="there_are_no_changes_to_save">لا توجد تغييرات للحفظ.</string>
-    <string name="lyrics_source_external_file">الكلمات تأتي من ملف خارجي. لا يمكنك تعديل هذا الملف مباشرة من الموسيقى المزدهرة.</string>
     <string name="font_imported_successfully">تم استيراد الخط بنجاح.</string>
     <string name="could_not_import_font">تعذر استيراد الخط.</string>
     <!-- Sleep timer -->

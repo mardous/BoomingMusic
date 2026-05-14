@@ -478,25 +478,15 @@
     <string name="synced_lyrics">Synkroniserad</string>
     <string name="embedded_lyrics">Inbäddad</string>
     <string name="downloaded_lyrics">Nedladdad</string>
-    <string name="external_file_lyrics">Extern fil</string>
-    <string name="action_import_synchronized_lyrics">Importera synkroniserade låttexter</string>
-    <string name="action_share_synchronized_lyrics">Dela synkroniserade låttexter</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vill du importera synkroniserade LRC-texter för <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Importerade låttexter för %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Kunde inte importera låttexter för %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Välj en LRC-fil med synkroniserade låttexter.</string>
     <string name="cannot_download_lyrics">Booming Music kunde inte hitta texten till den här låten. Vill du söka manuellt?</string>
     <string name="search_lyrics">Sök låttext</string>
     <string name="choose_lyrics">Välj typ av låttext</string>
     <string name="download_lyrics">Hämta låttexter</string>
     <string name="write_lyrics_here">Skriv låttext här</string>
-    <string name="write_synced_lyrics_here">Skriv synkroniserade låttexter här</string>
     <string name="no_lyrics_found">Inga låttexter hittades</string>
-    <string name="no_synced_lyrics_found">Inga synkroniserade låttexter hittades</string>
     <string name="lyrics_were_updated_successfully">Låttexter har uppdaterats.</string>
     <string name="failed_to_update_lyrics">Det gick inte att uppdatera låttexter.</string>
     <string name="there_are_no_changes_to_save">Det finns inga ändringar att spara.</string>
-    <string name="lyrics_source_external_file">Låttexter kommer från en extern fil. Du kan inte redigera denna fil direkt från Booming Music.</string>
     <string name="font_imported_successfully">Typsnitt importerades.</string>
     <string name="could_not_import_font">Kunde inte importera typsnitt.</string>
     <!-- Sleep timer -->

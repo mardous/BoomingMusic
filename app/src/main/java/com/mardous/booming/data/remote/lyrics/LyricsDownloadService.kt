@@ -20,11 +20,10 @@ package com.mardous.booming.data.remote.lyrics
 import android.content.Context
 import android.util.Log
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.remote.lyrics.api.betterlyrics.BetterLyricsApi
 import com.mardous.booming.data.remote.lyrics.api.lrclib.LrcLibApi
 import com.mardous.booming.data.remote.lyrics.api.lyrically.LyricallyApi
-import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
-import com.mardous.booming.data.remote.lyrics.model.toDownloadedLyrics
 import com.mardous.booming.extensions.media.albumArtistName
 import com.mardous.booming.extensions.media.extractMainArtistName
 import io.ktor.client.HttpClient
@@ -39,39 +38,37 @@ class LyricsDownloadService(private val context: Context, client: HttpClient) {
     )
 
     @Throws(IOException::class)
-    suspend fun getLyrics(
+    suspend fun remoteLyrics(
         song: Song,
         title: String = song.title,
         artist: String = song.albumArtistName()
-    ): DownloadedLyrics {
-        var downloadedLyrics = song.toDownloadedLyrics()
-        if (song == Song.emptySong) {
-            return downloadedLyrics
-        }
-        val cleanedTitle = cleanTitle(title)
-        val cleanedArtist = artist.extractMainArtistName()
-        for (api in lyricsApi) {
-            if (!api.networkFeature.isAvailable(context))
-                continue
+    ): RawLyrics.Remote {
+        var result = RawLyrics.Remote()
 
-            val apiResult = runCatching { api.songLyrics(song, cleanedTitle, cleanedArtist) }
-            if (apiResult.isFailure) {
-                Log.e("LyricsService", "Error during lyrics request", apiResult.exceptionOrNull())
+        if (song == Song.emptySong) return result
+
+        try {
+            val cleanedTitle = cleanTitle(title)
+            val cleanedArtist = artist.extractMainArtistName()
+            for (api in lyricsApi) {
+                if (!api.networkFeature.isAvailable(context))
+                    continue
+
+                val apiResult = runCatching { api.downloadLyrics(song, cleanedTitle, cleanedArtist) }
+                if (apiResult.isFailure) {
+                    Log.e(TAG, "Error during lyrics request", apiResult.exceptionOrNull())
+                }
+
+                val response = apiResult.getOrNull() ?: continue
+
+                result = result.accept(response)
+                if (result.hasBoth) break
             }
-
-            val response = apiResult.getOrNull() ?: continue
-            val plainLyrics = downloadedLyrics.plainLyrics ?: response.plainLyrics
-            val syncedLyrics = downloadedLyrics.syncedLyrics ?: response.syncedLyrics
-
-            downloadedLyrics = downloadedLyrics.copy(
-                plainLyrics = plainLyrics,
-                syncedLyrics = syncedLyrics
-            )
-
-            if (downloadedLyrics.hasMultiOptions)
-                break
+        } catch (e: Exception) {
+            Log.e(TAG, "Lyrics download failed with error:", e)
         }
-        return downloadedLyrics
+
+        return result
     }
 
     /**
@@ -86,6 +83,8 @@ class LyricsDownloadService(private val context: Context, client: HttpClient) {
     }
 
     companion object {
+        private const val TAG = "LyricsDownloadService"
+
         private val TITLE_CLEANUP_PATTERNS = listOf(
             Regex("""\s*\(.*?(official|video|audio|lyrics|lyric|visualizer|hd|hq|4k|remaster|remix|live|acoustic|version|edit|extended|radio|clean|explicit).*?\)""", RegexOption.IGNORE_CASE),
             Regex("""\s*\[.*?(official|video|audio|lyrics|lyric|visualizer|hd|hq|4k|remaster|remix|live|acoustic|version|edit|extended|radio|clean|explicit).*?\]""", RegexOption.IGNORE_CASE),

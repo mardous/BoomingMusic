@@ -1,6 +1,6 @@
 package com.mardous.booming.data.local.lyrics.ttml
 
-import com.mardous.booming.data.model.lyrics.Lyrics
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import java.util.Locale
 
 /**
@@ -215,7 +215,7 @@ internal class TtmlNodeTree {
         return rootNode.close()
     }
 
-    fun toLyrics(trackLength: Long): Lyrics? {
+    fun toLyrics(trackLength: Long): SyncedLyrics? {
         checkNotNull(rootNode) { "The node tree does not have a root" }
         check(closed) { "The node tree must be closed to obtain nested data" }
 
@@ -224,7 +224,7 @@ internal class TtmlNodeTree {
         val lineNodes = sectionNodes.flatMap { it.getChildren(TtmlNode.NODE_LINE) }.sortedBy { it.begin }
         val translation = getClosedTranslation()
         if (lineNodes.isNotEmpty()) {
-            val lines = mutableListOf<Lyrics.Line>()
+            val lines = mutableListOf<SyncedLyrics.Line>()
             val lastLineIndex = lineNodes.lastIndex
             for (i in lineNodes.indices) {
                 val line = lineNodes[i]
@@ -235,7 +235,7 @@ internal class TtmlNodeTree {
                     line.dur = (line.end - line.begin)
                 }
                 if (line.text.isNullOrBlank()) {
-                    val words = mutableListOf<Lyrics.Word>()
+                    val words = mutableListOf<SyncedLyrics.Word>()
                     val wordNodes = line.getChildren(TtmlNode.NODE_WORD).sortedBy { it.begin }
                     if (wordNodes.isNotEmpty()) {
                         val lastWordIndex = wordNodes.lastIndex
@@ -252,7 +252,7 @@ internal class TtmlNodeTree {
                                 .sumOf { it.content.length }
                             val endIndex = startIndex + (text.length - 1)
                             words.add(
-                                Lyrics.Word(
+                                SyncedLyrics.Word(
                                     content = text,
                                     startMillis = word.begin,
                                     startIndex = startIndex,
@@ -275,11 +275,11 @@ internal class TtmlNodeTree {
                         .trim()
 
                     lines.add(
-                        Lyrics.Line(
+                        SyncedLyrics.Line(
                             startAt = line.begin,
                             end = line.end,
                             durationMillis = line.dur,
-                            content = Lyrics.TextContent(
+                            content = SyncedLyrics.TextContent(
                                 content = content,
                                 backgroundContent = backgroundContent,
                                 rawContent = if (backgroundContent.isNotEmpty()) {
@@ -294,11 +294,11 @@ internal class TtmlNodeTree {
                     )
                 } else {
                     lines.add(
-                        Lyrics.Line(
+                        SyncedLyrics.Line(
                             startAt = line.begin,
                             end = line.end,
                             durationMillis = line.dur,
-                            content = Lyrics.TextContent(
+                            content = SyncedLyrics.TextContent(
                                 content = line.text.orEmpty(),
                                 backgroundContent = null,
                                 rawContent = line.text.orEmpty(),
@@ -320,12 +320,12 @@ internal class TtmlNodeTree {
 
             if (linesWithOffset.isNotEmpty()) {
                 val firstLine = linesWithOffset.first()
-                if (firstLine.startAt > Lyrics.MIN_OFFSET_TIME) {
+                if (firstLine.startAt > SyncedLyrics.MIN_OFFSET_TIME) {
                     linesWithOffset.add(0,
-                        Lyrics.Line(
+                        SyncedLyrics.Line(
                             startAt = 0,
                             end = firstLine.startAt,
-                            content = Lyrics.EmptyContent,
+                            content = SyncedLyrics.EmptyContent,
                             translation = null,
                             actor = firstLine.actor
                         )
@@ -333,7 +333,7 @@ internal class TtmlNodeTree {
                 }
             }
 
-            return Lyrics(
+            return SyncedLyrics(
                 lines = linesWithOffset
             )
         }

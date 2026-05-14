@@ -2,9 +2,10 @@ package com.mardous.booming.data.remote.lyrics.api.lrclib
 
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
-import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
+import com.mardous.booming.data.remote.lyrics.model.LRCLibResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -13,14 +14,15 @@ import io.ktor.http.userAgent
 
 class LrcLibApi(private val client: HttpClient) : LyricsApi {
 
+    override val name: String = "LRCLib"
     override val networkFeature = NetworkFeature.Lyrics.LRCLib
 
-    override suspend fun songLyrics(song: Song, title: String, artist: String): DownloadedLyrics? {
+    override suspend fun downloadLyrics(song: Song, title: String, artist: String): RawLyrics.Remote? {
         val lyrics = client.get("https://lrclib.net/api/search") {
             userAgent("Booming Music v${BuildConfig.VERSION_NAME} (https://github.com/mardous/BoomingMusic)")
             url.encodedParameters.append("q", "$artist $title".encodeURLParameter())
             url.encodedParameters.append("album_name", song.albumName.encodeURLParameter())
-        }.body<List<DownloadedLyrics>>()
+        }.body<List<LRCLibResponse>>()
         if (lyrics.isEmpty()) {
             return null
         } else {
@@ -31,9 +33,13 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
                 ((maxValue - minValue) < 2)
             }
             if (matchingLyrics == null) {
-                matchingLyrics = lyrics.first { !it.isSynced }
+                matchingLyrics = lyrics.first { !it.plainLyrics.isNullOrEmpty() }
             }
-            return matchingLyrics
+            return RawLyrics.Remote(
+                plain = RawLyrics.Remote.Content(name, matchingLyrics.plainLyrics),
+                synced = RawLyrics.Remote.Content(name, matchingLyrics.syncedLyrics),
+                instrumental = matchingLyrics.instrumental
+            )
         }
     }
 }

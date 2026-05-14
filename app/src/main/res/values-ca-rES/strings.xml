@@ -486,25 +486,15 @@
     <string name="synced_lyrics">Sincronitzada</string>
     <string name="embedded_lyrics">Incrustada</string>
     <string name="downloaded_lyrics">Descarregada</string>
-    <string name="external_file_lyrics">Fitxer extern</string>
-    <string name="action_import_synchronized_lyrics">Importa lletra sincronitzada</string>
-    <string name="action_share_synchronized_lyrics">Comparteix la lletra sincronitzada</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Voleu importar la lletra LRC sincronitzada per a <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Lletra importada per a %s</string>
-    <string name="could_not_import_lyrics_for_song_x">No s\'ha pogut importar la lletra per a %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Trieu un fitxer LRC que contingui lletra sincronitzada.</string>
     <string name="cannot_download_lyrics">Booming Music no ha pogut trobar la lletra d\'aquesta cançó. La voleu cercar manualment?</string>
     <string name="search_lyrics">Cerca lletres</string>
     <string name="choose_lyrics">Trieu el tipus de lletra</string>
     <string name="download_lyrics">Descarrega la lletra</string>
     <string name="write_lyrics_here">Escriviu la lletra aquí</string>
-    <string name="write_synced_lyrics_here">Escriviu la lletra sincronitzada aquí</string>
     <string name="no_lyrics_found">No s\'ha trobat cap lletra</string>
-    <string name="no_synced_lyrics_found">No s\'ha trobat cap lletra sincronitzada</string>
     <string name="lyrics_were_updated_successfully">La lletra s\'ha actualitzat correctament.</string>
     <string name="failed_to_update_lyrics">No s\'ha pogut actualitzar la lletra.</string>
     <string name="there_are_no_changes_to_save">No hi ha canvis a desar.</string>
-    <string name="lyrics_source_external_file">La lletra ve d\'un fitxer extern. No podeu editar aquest fitxer directament des de Booming Music.</string>
     <string name="font_imported_successfully">S\'ha importat la font de text correctament.</string>
     <string name="could_not_import_font">No s\'ha pogut importar la font de text.</string>
     <!-- Sleep timer -->

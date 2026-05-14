@@ -162,9 +162,6 @@
     <string name="synced_lyrics">Sünkroonitud</string>
     <string name="embedded_lyrics">Lõimitud</string>
     <string name="downloaded_lyrics">Allalaaditud</string>
-    <string name="external_file_lyrics">Väline fail</string>
-    <string name="action_import_synchronized_lyrics">Impordi sünkroonitud laulusõnad</string>
-    <string name="action_share_synchronized_lyrics">Jaga sünkroonitud laulusõnu</string>
     <string name="lastfm_login_username">Kasutajanimi</string>
     <string name="lastfm_login_password">Salasõna</string>
     <string name="lastfm_login_toggle_password_visibility">Vaheta salasõna nähtavust</string>
@@ -581,13 +578,10 @@
     <string name="choose_lyrics">Vali laulusõnade tüüp</string>
     <string name="download_lyrics">Laadi laulusõnad alla</string>
     <string name="write_lyrics_here">Sisesta laulusõnad siia</string>
-    <string name="write_synced_lyrics_here">Sisesta sünkroonitud laulusõnad siia</string>
     <string name="no_lyrics_found">Laulusõnu ei leidunud</string>
-    <string name="no_synced_lyrics_found">Sünkroonitud laulusõnu ei leidunud</string>
     <string name="lyrics_were_updated_successfully">Laulusõnade uuendamine õnnestus.</string>
     <string name="failed_to_update_lyrics">Laulusõnade uuendamine ei õnnestunud.</string>
     <string name="there_are_no_changes_to_save">Pole salvestatavaid muudatusi.</string>
-    <string name="lyrics_source_external_file">Laulusõnad on laaditud välisest failist. Sa ei saa seda faili Booming Musicu rakendusest otse muuta.</string>
     <string name="font_imported_successfully">Kirjatüübi importimine õnnestus.</string>
     <string name="could_not_import_font">Kirjatüübi importimine ei õnnestunud.</string>
     <string name="sleep_timer_music_fades_out">Muusika vaibub rahulikult</string>
@@ -712,11 +706,7 @@
     <string name="action_external_eq">Väline ekvalaiser</string>
     <string name="skip_silence_title">Jäta vaikus vahele</string>
     <string name="skip_silence_description">Vaiksed lõigud tuvastatakse automaatselt ja jäetakse vahele. Sobib hästi taskuhäälingute ja muude mittemuusikaliste salvestuste jaoks.</string>
-    <string name="import_lyrics_for_song_x">Laulusõnad on „%s“ loo jaoks imporditud</string>
-    <string name="could_not_import_lyrics_for_song_x">Laulusõnade importimine „%s“ loo jaoks ei õnnestunud</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Vali LRC-fail sünkroonitud laulusõnadega.</string>
     <string name="cannot_download_lyrics">Booming Music ei suutnud sellele laulule sõnu leida. Kas tahaksid proovida käsitsi otsingut?</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Kas sa soovid importida sünkroonitud LRC-laulusõnu <b>„%s“</b> loo jaoks?]]></string>
     <string name="hold_tab_to_search_title">Otsingu käivitamine pika vajutusega</string>
     <string name="hold_tab_to_search_summary">Alumise menüüriba ikoonidel/kaartidel pikk vajutus käivitab otsinguvaate.</string>
     <string name="select_extra_info_title">Täiendav teave</string>

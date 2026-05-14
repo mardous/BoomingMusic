@@ -3,9 +3,10 @@ package com.mardous.booming.data.model.lyrics
 import androidx.compose.runtime.Immutable
 
 @Immutable
-data class Lyrics(
+data class SyncedLyrics(
     val lines: List<Line>,
-    val offset: Long = 0
+    val offset: Long = 0,
+    val provider: String? = null
 ) {
     val hasContent = lines.isNotEmpty()
 

@@ -484,25 +484,15 @@
     <string name="synced_lyrics">מסונכרן</string>
     <string name="embedded_lyrics">מוטבע</string>
     <string name="downloaded_lyrics">הורד</string>
-    <string name="external_file_lyrics">קובץ חיצוני</string>
-    <string name="action_import_synchronized_lyrics">ייבוא ​​מילים מסונכרנות</string>
-    <string name="action_share_synchronized_lyrics">שתף מילים מסונכרנות</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[האם ברצונך לייבא מילות LRC מסונכרנות עבור <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">יובאו מילות השיר עבור %s</string>
-    <string name="could_not_import_lyrics_for_song_x">לא ניתן היה לייבא את מילות השיר עבור %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">בחר קובץ LRC המכיל מילות שיר מסונכרנות.</string>
     <string name="cannot_download_lyrics">Booming Music לא מצאה את מילות השיר הזה. לחפש ידנית?</string>
     <string name="search_lyrics">חפש מילות שיר</string>
     <string name="choose_lyrics">בחר את סוג מילות השיר</string>
     <string name="download_lyrics">הורד מילים</string>
     <string name="write_lyrics_here">כתוב את מילות השיר כאן</string>
-    <string name="write_synced_lyrics_here">כתוב כאן מילות שיר מסונכרנות</string>
     <string name="no_lyrics_found">לא נמצאו מילות שיר</string>
-    <string name="no_synced_lyrics_found">לא נמצאו מילות שיר מסונכרנות</string>
     <string name="lyrics_were_updated_successfully">מילות השיר עודכנו בהצלחה.</string>
     <string name="failed_to_update_lyrics">נכשל בעדכון מילות השיר.</string>
     <string name="there_are_no_changes_to_save">אין שינויים שצריך לשמור.</string>
-    <string name="lyrics_source_external_file">מילות השיר מגיעות מקובץ חיצוני. אין אפשרות לערוך את הקובץ הזה ישירות מתוך Booming Music.</string>
     <string name="font_imported_successfully">הגופן יובא בהצלחה.</string>
     <string name="could_not_import_font">לא ניתן היה לייבא את הגופן.</string>
     <!-- Sleep timer -->
