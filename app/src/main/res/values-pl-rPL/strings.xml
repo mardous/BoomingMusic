@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Losuj wykonawcę</string>
     <string name="action_share">Udostępnij</string>
     <string name="action_save">Zapisz</string>
-    <string name="what_do_you_want_to_share">Co chcesz udostępnić?</string>
-    <string name="the_audio_file">Plik audio</string>
-    <string name="i_am_listening">Słucham…</string>
-    <string name="currently_listening_to_x_by_x">Słucham utworu %1$s autorstwa %2$s</string>
-    <string name="share_to_stories">Relację</string>
-    <string name="could_not_create_the_story">Nie udało się utworzyć relacji.</string>
     <string name="back_action">Wróć</string>
     <string name="add_action">Dodaj</string>
     <string name="delete_action">Usuń</string>

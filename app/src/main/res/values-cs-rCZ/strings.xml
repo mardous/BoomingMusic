@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Zamíchání umělce</string>
     <string name="action_share">Sdílet</string>
     <string name="action_save">Uložit</string>
-    <string name="what_do_you_want_to_share">Co chcete sdílet?</string>
-    <string name="the_audio_file">Zvukový soubor</string>
-    <string name="i_am_listening">Poslouchám…</string>
-    <string name="currently_listening_to_x_by_x">Poslouchám %1$s od %2$s</string>
-    <string name="share_to_stories">Sdílet s příběhy</string>
-    <string name="could_not_create_the_story">Nelze vytvořit příběh.</string>
     <string name="back_action">Zpět</string>
     <string name="add_action">Přidat</string>
     <string name="delete_action">Vymazat</string>

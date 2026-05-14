@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Blanda artister</string>
     <string name="action_share">Dela</string>
     <string name="action_save">Spara</string>
-    <string name="what_do_you_want_to_share">Vad vill du dela?</string>
-    <string name="the_audio_file">Ljudfilen</string>
-    <string name="i_am_listening">Jag lyssnar…</string>
-    <string name="currently_listening_to_x_by_x">Jag lyssnar på %1$s av %2$s</string>
-    <string name="share_to_stories">Dela till berättelser</string>
-    <string name="could_not_create_the_story">Det gick inte att skapa berättelsen.</string>
     <string name="back_action">Tillbaka</string>
     <string name="add_action">Lägg till</string>
     <string name="delete_action">Radera</string>

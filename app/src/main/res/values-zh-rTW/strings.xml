@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">藝人隨機播放</string>
     <string name="action_share">分享</string>
     <string name="action_save">儲存</string>
-    <string name="what_do_you_want_to_share">您想分享什麼？</string>
-    <string name="the_audio_file">音訊檔案</string>
-    <string name="i_am_listening">我正在聽…</string>
-    <string name="currently_listening_to_x_by_x">我正在收聽%2$s的%1$s</string>
-    <string name="share_to_stories">分享到動態</string>
-    <string name="could_not_create_the_story">無法建立動態。</string>
     <string name="back_action">返回</string>
     <string name="add_action">新增</string>
     <string name="delete_action">刪除</string>

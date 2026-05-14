@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Phát ngẫu nhiên nghệ sĩ</string>
     <string name="action_share">Chia sẻ</string>
     <string name="action_save">Lưu</string>
-    <string name="what_do_you_want_to_share">Bạn muốn chia sẻ cái gì?</string>
-    <string name="the_audio_file">Tệp âm thanh</string>
-    <string name="i_am_listening">Tôi đang nghe…</string>
-    <string name="currently_listening_to_x_by_x">Tôi đang nghe %1$s của %2$s</string>
-    <string name="share_to_stories">Chia sẻ lên tin</string>
-    <string name="could_not_create_the_story">Không thể tạo tin.</string>
     <string name="back_action">Quay lại</string>
     <string name="add_action">Thêm</string>
     <string name="delete_action">Xoá bỏ</string>

@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Kunstenaar shuffle</string>
     <string name="action_share">Delen</string>
     <string name="action_save">Opslaan</string>
-    <string name="what_do_you_want_to_share">Wat wil je delen?</string>
-    <string name="the_audio_file">Het audiobestand</string>
-    <string name="i_am_listening">Ik luister…</string>
-    <string name="currently_listening_to_x_by_x">Ik luister naar %1$s door %2$s</string>
-    <string name="share_to_stories">Deel met verhalen</string>
-    <string name="could_not_create_the_story">Kon het verhaal niet aanmaken.</string>
     <string name="back_action">Achterzijde</string>
     <string name="add_action">Toevoegen</string>
     <string name="delete_action">Verwijderen</string>

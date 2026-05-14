@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Kunstner shuffle</string>
     <string name="action_share">Del</string>
     <string name="action_save">Gem</string>
-    <string name="what_do_you_want_to_share">Hvad ønsker du at dele?</string>
-    <string name="the_audio_file">Lydfilen</string>
-    <string name="i_am_listening">Jeg lytter til…</string>
-    <string name="currently_listening_to_x_by_x">Jeg lytter til %1$s af %2$s</string>
-    <string name="share_to_stories">Del med historier</string>
-    <string name="could_not_create_the_story">Historien kunne ikke oprettes.</string>
     <string name="back_action">Tilbage</string>
     <string name="add_action">Tilføj</string>
     <string name="delete_action">Slet</string>

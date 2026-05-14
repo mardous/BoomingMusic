@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Ανακάτεμα καλλιτέχνη</string>
     <string name="action_share">Κοινοποίηση</string>
     <string name="action_save">Αποθήκευση</string>
-    <string name="what_do_you_want_to_share">Τι θέλετε να μοιραστείτε?</string>
-    <string name="the_audio_file">Το αρχείο ήχου</string>
-    <string name="i_am_listening">I\'m listening…</string>
-    <string name="currently_listening_to_x_by_x">Ακούω το %1$s από %2$s</string>
-    <string name="share_to_stories">Μοιραστείτε τις ιστορίες</string>
-    <string name="could_not_create_the_story">Δεν ήταν δυνατή η δημιουργία της ιστορίας.</string>
     <string name="back_action">Back</string>
     <string name="add_action">Προσθήκη</string>
     <string name="delete_action">Διαγραφή</string>

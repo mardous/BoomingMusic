@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Artist shuffle</string>
     <string name="action_share">Share</string>
     <string name="action_save">Save</string>
-    <string name="what_do_you_want_to_share">What do you want to share?</string>
-    <string name="the_audio_file">The audio file</string>
-    <string name="i_am_listening">I\'m listening…</string>
-    <string name="currently_listening_to_x_by_x">I\'m listening to %1$s by %2$s</string>
-    <string name="share_to_stories">Share to stories</string>
-    <string name="could_not_create_the_story">Couldn\'t create the story.</string>
     <string name="back_action">Back</string>
     <string name="add_action">Add</string>
     <string name="delete_action">Delete</string>

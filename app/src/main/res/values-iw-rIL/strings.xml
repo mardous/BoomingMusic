@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">עירבוב אמנים</string>
     <string name="action_share">שיתוף</string>
     <string name="action_save">שמירה</string>
-    <string name="what_do_you_want_to_share">מה תרצה לשתף?</string>
-    <string name="the_audio_file">קובץ האודיו</string>
-    <string name="i_am_listening">אני מאזין…</string>
-    <string name="currently_listening_to_x_by_x">אני מאזין ל-%1$s של %2$s</string>
-    <string name="share_to_stories">שתף לסטורי</string>
-    <string name="could_not_create_the_story">לא הצלחנו ליצור סטורי.</string>
     <string name="back_action">חזרה</string>
     <string name="add_action">הוספה</string>
     <string name="delete_action">מחיקה</string>

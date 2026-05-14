@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Barreja l\'artista</string>
     <string name="action_share">Comparteix</string>
     <string name="action_save">Desa</string>
-    <string name="what_do_you_want_to_share">Què voleu compartir?</string>
-    <string name="the_audio_file">El fitxer d\'àudio</string>
-    <string name="i_am_listening">Ara escolto…</string>
-    <string name="currently_listening_to_x_by_x">Ara escolto %1$s de %2$s</string>
-    <string name="share_to_stories">Comparteix a les històries</string>
-    <string name="could_not_create_the_story">No s\'ha pogut crear la història.</string>
     <string name="back_action">Torna</string>
     <string name="add_action">Afegeix</string>
     <string name="delete_action">Esborra</string>

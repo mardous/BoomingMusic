@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Sanatçı karıştırma</string>
     <string name="action_share">Paylaş</string>
     <string name="action_save">Kaydet</string>
-    <string name="what_do_you_want_to_share">Ne paylaşmak istersiniz?</string>
-    <string name="the_audio_file">Ses dosyası</string>
-    <string name="i_am_listening">Dinliyorum…</string>
-    <string name="currently_listening_to_x_by_x">%2$s - %1$s dinliyorum</string>
-    <string name="share_to_stories">Hikayelerde paylaş</string>
-    <string name="could_not_create_the_story">Hikaye oluşturulamadı.</string>
     <string name="back_action">Geri</string>
     <string name="add_action">Ekle</string>
     <string name="delete_action">Sil</string>

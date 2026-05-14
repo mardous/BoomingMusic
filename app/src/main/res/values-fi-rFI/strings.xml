@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Esittäjän sekoitus</string>
     <string name="action_share">Jaa</string>
     <string name="action_save">Tallenna</string>
-    <string name="what_do_you_want_to_share">Mitä sinä haluat jakaa?</string>
-    <string name="the_audio_file">Äänitiedosto</string>
-    <string name="i_am_listening">Kuuntelen…</string>
-    <string name="currently_listening_to_x_by_x">Kuuntelen %1$s esittäjältä %2$s</string>
-    <string name="share_to_stories">Jaa tarinoihin</string>
-    <string name="could_not_create_the_story">Tarinaa ei voitu luoda.</string>
     <string name="back_action">Takaisin</string>
     <string name="add_action">Lisää</string>
     <string name="delete_action">Poista</string>

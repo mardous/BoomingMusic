@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Artista aleatório</string>
     <string name="action_share">Compartilhar</string>
     <string name="action_save">Guardar</string>
-    <string name="what_do_you_want_to_share">O que quer compartilhar?</string>
-    <string name="the_audio_file">O arquivo de áudio</string>
-    <string name="i_am_listening">Estou a ouvir…</string>
-    <string name="currently_listening_to_x_by_x">Estou a escutar %1$s por %2$s</string>
-    <string name="share_to_stories">Compartilhar para histórias</string>
-    <string name="could_not_create_the_story">Não foi possível criar a história.</string>
     <string name="back_action">Voltar</string>
     <string name="add_action">Adicionar</string>
     <string name="delete_action">excluir</string>

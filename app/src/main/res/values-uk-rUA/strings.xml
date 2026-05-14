@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Виконавець перемішиться</string>
     <string name="action_share">Поділитися</string>
     <string name="action_save">Зберегти</string>
-    <string name="what_do_you_want_to_share">Чим ви бажаєте поділитися?</string>
-    <string name="the_audio_file">Аудіофайл</string>
-    <string name="i_am_listening">Я слухаю…</string>
-    <string name="currently_listening_to_x_by_x">Я слухаю %1$s від %2$s</string>
-    <string name="share_to_stories">Поділитися в історіях</string>
-    <string name="could_not_create_the_story">Не вдалося створити історію.</string>
     <string name="back_action">Назад</string>
     <string name="add_action">Додати</string>
     <string name="delete_action">Видалити</string>

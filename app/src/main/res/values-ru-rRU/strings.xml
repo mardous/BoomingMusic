@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Перемещать исполнителя</string>
     <string name="action_share">Поделиться</string>
     <string name="action_save">Сохранить</string>
-    <string name="what_do_you_want_to_share">Чем вы хотите поделиться?</string>
-    <string name="the_audio_file">Аудиофайл</string>
-    <string name="i_am_listening">Я слушаю…</string>
-    <string name="currently_listening_to_x_by_x">Я слушаю %1$s от %2$s</string>
-    <string name="share_to_stories">Поделиться в историях</string>
-    <string name="could_not_create_the_story">Не удалось создать историю.</string>
     <string name="back_action">Назад</string>
     <string name="add_action">Добавить</string>
     <string name="delete_action">Удалить</string>

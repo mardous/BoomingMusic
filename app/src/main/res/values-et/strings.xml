@@ -35,10 +35,6 @@
     <string name="shuffle_mode_artist">Esitajakohane segamine</string>
     <string name="action_share">Jaga</string>
     <string name="action_save">Salvesta</string>
-    <string name="what_do_you_want_to_share">Mida sa tahaksid jagada?</string>
-    <string name="the_audio_file">Helifail</string>
-    <string name="i_am_listening">Ma olen kuulamas…</string>
-    <string name="currently_listening_to_x_by_x">Olen hetkel kuulamas lugu „%1$s“ esitajalt „%2$s“</string>
     <string name="back_action">Tagasi</string>
     <string name="add_action">Lisa</string>
     <string name="delete_action">Kustuta</string>
@@ -876,8 +872,6 @@
     <string name="ignore_blank_lines_title">Eira tühje ridu</string>
     <string name="ignore_blank_lines_summary">Animeeritud jutumullide asemel eira LRC-failides leiduvaid tühje ridu.</string>
     <string name="enable_audio_float_output_title">Kõrge täpsusega heliväljund</string>
-    <string name="share_to_stories">Jaga lugudesse</string>
-    <string name="could_not_create_the_story">Loo lisamine/loomine ei õnnestunud.</string>
     <string name="open_on_play_summary">Peale loo esitamise alustamist laienda automaatselt „Hetkel esitamisel“ riba vaadet.</string>
     <string name="open_on_play_title">Laiem vaade esitamisel</string>
     <string name="player_blur_intensity_title">Hägustamise intensiivsus</string>

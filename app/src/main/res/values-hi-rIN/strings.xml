@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">कलाकार फेरबदल</string>
     <string name="action_share">शेयर</string>
     <string name="action_save">बचाना</string>
-    <string name="what_do_you_want_to_share">आप क्या साझा करना चाहते हैं?</string>
-    <string name="the_audio_file">ऑडियो फ़ाइल</string>
-    <string name="i_am_listening">मैं सुन रहा हूँ…</string>
-    <string name="currently_listening_to_x_by_x">मैं %2$s का %1$s सुन रहा हूँ</string>
-    <string name="share_to_stories">कहानियों को साझा करें</string>
-    <string name="could_not_create_the_story">कहानी नहीं बना सका.</string>
     <string name="back_action">Back</string>
     <string name="add_action">जोड़ना</string>
     <string name="delete_action">मिटाना</string>

@@ -86,7 +86,6 @@ import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.dialogs.WebSearchDialog
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
-import com.mardous.booming.ui.dialogs.songs.ShareSongDialog
 import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.equalizer.EqualizerFragment
 import com.mardous.booming.ui.screen.equalizer.EqualizerFragmentArgs
@@ -261,12 +260,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 libraryViewModel.genreBySong(currentSong).observe(viewLifecycleOwner) { genre ->
                     goToGenre(requireActivity(), genre)
                 }
-                true
-            }
-
-            R.id.action_share_now_playing -> {
-                ShareSongDialog.create(playerViewModel.currentSong)
-                    .show(childFragmentManager, "SHARE_SONG")
                 true
             }
 

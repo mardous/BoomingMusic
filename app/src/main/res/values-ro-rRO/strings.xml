@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Amestecare Artist</string>
     <string name="action_share">Distribuie</string>
     <string name="action_save">Salvează</string>
-    <string name="what_do_you_want_to_share">Ce vrei să partajezi?</string>
-    <string name="the_audio_file">Fișierul audio</string>
-    <string name="i_am_listening">Eu ascult…</string>
-    <string name="currently_listening_to_x_by_x">Eu ascult %1$s de %2$s</string>
-    <string name="share_to_stories">Distribuie povestirilor</string>
-    <string name="could_not_create_the_story">Nu s-a putut crea povestea.</string>
     <string name="back_action">Back</string>
     <string name="add_action">Adăugare</string>
     <string name="delete_action">Ștergere</string>

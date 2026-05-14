@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">아티스트 셔플</string>
     <string name="action_share">공유</string>
     <string name="action_save">저장</string>
-    <string name="what_do_you_want_to_share">무엇을 공유할까요?</string>
-    <string name="the_audio_file">오디오 파일</string>
-    <string name="i_am_listening">듣는 중…</string>
-    <string name="currently_listening_to_x_by_x">%2$s의 %1$s 듣는 중</string>
-    <string name="share_to_stories">스토리에 공유</string>
-    <string name="could_not_create_the_story">스토리를 만들 수 없습니다.</string>
     <string name="back_action">뒤로</string>
     <string name="add_action">추가</string>
     <string name="delete_action">삭제</string>
