@@ -519,9 +519,9 @@
     <string name="lastfm_biography_title">Laadi alla esitajate elulugu ja albumite kirjeldused</string>
     <string name="lastfm_biography_summary">Esitajate elulugu ja albumite kirjeldused laaditakse Last.fm-i teenusest.</string>
     <string name="use_lrclib_provider_title">Kasuta LRCLib teenust</string>
-    <string name="use_lrclib_provider_summary">Luba laulusõnade allalaadimine LRCLib teenusest.</string>
+    <string name="use_lrclib_provider_summary">Kogukonnapõhine laulusõnade andmebaas.</string>
     <string name="use_betterlyrics_provider_title">Kasuta BetterLyrics teenust</string>
-    <string name="use_betterlyrics_provider_summary">Luba laulusõnade allalaadimine BetterLyrics teenusest.</string>
+    <string name="use_betterlyrics_provider_summary">Sõnahaaval sünkroonitud laulusõnad.</string>
     <string name="delete_downloaded_lyrics_title">Kustuta allalaaditud laulusõnad</string>
     <string name="delete_downloaded_lyrics_summary">See käib vaid rakenduse Booming Music poolt allalaaditud laulusõnade kohta. Ei mõjuta laulusõnu, mis on lõimitud ID3v2 siltidesse või LRC-failidena.</string>
     <string name="lyrics_cleared">Laulusõnad on kustutatud.</string>
@@ -924,4 +924,6 @@
     <string name="play_option_whole_list_summary">Sisselülitamisel „Esita“ valik loo menüüst esitab kogu esitusloendi. Väljalülitamisel esitatakse vaid see konkreetne lugu.</string>
     <string name="queue_next_mode_title">„Lisa esitamiseks järgmisena“ režiim</string>
     <string name="peek_style">Kiikamine</string>
+    <string name="use_lyrically_provider_title">Kasuta Lyrically teenust</string>
+    <string name="use_lyrically_provider_summary">Paljude võimalustega API, karaoke ja mitme kasutaja toega.</string>
 </resources>
