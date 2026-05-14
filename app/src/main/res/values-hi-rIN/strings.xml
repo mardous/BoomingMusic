@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">सटीक अलार्म निर्धारित करें (वैकल्पिक)</string>
     <string name="permission_exact_alarms_description">स्लीप टाइमर के सही तरीके से काम करने के लिए सटीक अलार्म निर्धारित करने की अनुमति आवश्यक है</string>
-    <string name="permission_ringtone_title">रिंगटोन (वैकल्पिक)</string>
-    <string name="permission_ringtone_description">ऐप को आपकी डिवाइस सेटिंग्स तक पहुंच के लिए अनुमति की आवश्यकता है ताकि संगीत को रिंगटोन के रूप में सेट किया जा सके।</string>
-    <string name="permission_request_write_settings"><![CDATA[आपको Booming Music को सिस्टम सेटिंग्स को संशोधित करने की अनुमति देनी होगी ताकि <b>%s</b> को आपका रिंगटोन सेट किया जा सके]]></string>
     <string name="permissions_denied">अनुमतियाँ अस्वीकृत</string>
     <string name="permissions_needed">अनुमतियाँ आवश्यक हैं</string>
     <string name="grant_access_action">अनुज्ञा प्रदान करें</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">ट्रैक सूची</string>
     <string name="sort_order_descending">उपलव्धी</string>
     <string name="sort_order_ignore_articles">अनुच्छेदों को अनदेखा करें</string>
-    <string name="action_set_as_ringtone">रिंगटोन के रूप में सेट करें</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> को आपकी रिंगटोन के रूप में सेट किया जाएगा]]></string>
-    <string name="x_has_been_set_as_ringtone">अपने रिंगटोन के रूप में %s सेट करें</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">%s को अपनी रिंगटोन और अलार्म अलर्ट के रूप में सेट करें</string>
-    <string name="use_also_as_alarm_alert">अलार्म चेतावनी के रूप में भी उपयोग करें</string>
     <string name="action_details">जानकारी</string>
     <string name="action_set_as_start_directory">स्टार्ट डायरेक्टरी के रूप में सेट करें</string>
     <string name="start_directory_set">Start directory set to %s</string>

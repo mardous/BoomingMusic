@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">您需要授予訪問所有檔案的權限以允許軟體讀取封面圖片。</string>
     <string name="permission_exact_alarms_title">設定精確鬧鐘(可選)</string>
     <string name="permission_exact_alarms_description">睡眠計時器需獲取設定精確鬧鐘的權限才能正常工作</string>
-    <string name="permission_ringtone_title">鈴聲（可選）</string>
-    <string name="permission_ringtone_description">此應用需要訪問系統設定權限才能將音樂設定為鈴聲</string>
-    <string name="permission_request_write_settings"><![CDATA[您必須允許Booming Music修改系統設定才能將 <b>%s</b> 設定為您的鈴聲]]></string>
     <string name="permissions_denied">權限被拒絕</string>
     <string name="permissions_needed">需要權限</string>
     <string name="grant_access_action">授予訪問</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">曲目列表</string>
     <string name="sort_order_descending">降序</string>
     <string name="sort_order_ignore_articles">排序時忽略開頭的冠詞 (如 The/A/An 等)</string>
-    <string name="action_set_as_ringtone">設定為鈴聲</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[將 <b>%s</b> 設定為您的鈴聲]]></string>
-    <string name="x_has_been_set_as_ringtone">設定 %s 為您的鈴聲</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">設定 %s 為您的鈴聲和鬧鐘提醒</string>
-    <string name="use_also_as_alarm_alert">同時用作鬧鐘</string>
     <string name="action_details">詳細訊息</string>
     <string name="action_set_as_start_directory">設定為起始目錄</string>
     <string name="start_directory_set">Start directory set to %s</string>

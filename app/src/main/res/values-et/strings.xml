@@ -263,7 +263,6 @@
     <string name="pick_from_local_storage">Vali kohalikust andmeruumist</string>
     <string name="about_x_title">Rakenduse teave: %s</string>
     <string name="saving_cover_please_wait">Salvesta albumi kaanepilti, oota hetk…</string>
-    <string name="action_set_as_ringtone">Määra helinaks</string>
     <string name="scan_media">Skaneeri meediumi</string>
     <string name="sort_order_date_added">Lisamise kuupäev</string>
     <string name="sort_order_date_modified">Muutmise kuupäev</string>
@@ -489,7 +488,6 @@
     <string name="never">Ei iialgi</string>
     <string name="widget_small_layout_classic">Klassikaline</string>
     <string name="widget_small_layout_simplified">Lihtsustatud</string>
-    <string name="permission_ringtone_title">Telefonihelin (kui soovid)</string>
     <string name="permissions_denied">Õigused puuduvad</string>
     <string name="permissions_needed">Õigused on vajalikud</string>
     <string name="grant_access_action">Anna õigused</string>
@@ -632,10 +630,6 @@
     <string name="sleep_timer_stop_after_x_canceled">Peatu „%s“ loo lõppemisel on katkestatud</string>
     <string name="permission_bluetooth_description">Bluetoothi kasutamiseks vajab see rakendus õigust kontrollida lähikonnas asuvaid seadmeid</string>
     <string name="permission_bluetooth_denied">Õigus kontrollida lähikonnast on keelatud.</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Muudab <b>%s</b> pala telefonihelinaks]]></string>
-    <string name="x_has_been_set_as_ringtone">Muuda %s oma telefonihelinaks</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Muuda %s oma telefonihelinaks ja äratuseks</string>
-    <string name="use_also_as_alarm_alert">Kasuta ka äratusena</string>
     <string name="album_artist">Albumi esitaja</string>
     <string name="label_last_modified">Viimati muudetud</string>
     <string name="label_sampling_rate">Diskreetimissagedus</string>
@@ -697,8 +691,6 @@
     <string name="system_default">Süsteemi vaikeseadistus</string>
     <string name="permission_exact_alarms_title">Täpse äratuse ajastamise õigus (pole kohustuslik)</string>
     <string name="permission_exact_alarms_description">Täpse äratuse ajastamise luba on vajalik unetaimeri korrektseks toimimiseks</string>
-    <string name="permission_ringtone_description">Loo lisamiseks helinaks vajab rakendus õigust ligipääsuks nutiseadme seadistustele</string>
-    <string name="permission_request_write_settings"><![CDATA[Kui soovid, et Booming Music lisab <b>%s</b> pala sinu nutiseadme helinaks, siis pead lubama rakendusel süsteemi seadistusi muuta]]></string>
     <string name="list_start">Loendi algus</string>
     <string name="list_end">Loendi lõpp</string>
     <string name="sound_settings">Heliseadistused</string>

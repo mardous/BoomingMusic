@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">Sinun on myönnettävä lupa lukea kuvia laitteesta.</string>
     <string name="permission_exact_alarms_title">Ajoita tarkat hälytykset (valinnainen)</string>
     <string name="permission_exact_alarms_description">Tarkkojen hälytysten ajoittaminen on tarpeen, jotta unen ajastin toimisi kunnolla</string>
-    <string name="permission_ringtone_title">Soittoääni (valinnainen)</string>
-    <string name="permission_ringtone_description">Sovellus tarvitsee luvan käyttää laitteesi asetuksia asettaakseen musiikin soittoääneksi</string>
-    <string name="permission_request_write_settings"><![CDATA[Sinun on sallittava Booming Musiikin muokata järjestelmän asetuksia asettaaksesi <b>%s</b> soittoääneksi]]></string>
     <string name="permissions_denied">Oikeudet evätty</string>
     <string name="permissions_needed">Käyttöoikeudet tarvitaan</string>
     <string name="grant_access_action">Anna käyttöoikeus</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Kappaleiden luettelo</string>
     <string name="sort_order_descending">Laskeva</string>
     <string name="sort_order_ignore_articles">Ohita artikkelit</string>
-    <string name="action_set_as_ringtone">Aseta soittoääneksi</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Asettaa <b>%s</b> soittoääneksi]]></string>
-    <string name="x_has_been_set_as_ringtone">Aseta %s soittoääneksi</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Aseta %s soittoääneksi ja hälytykseksi</string>
-    <string name="use_also_as_alarm_alert">Käytä myös hälytyksen hälytyksenä</string>
     <string name="action_details">Yksityiskohdat</string>
     <string name="action_set_as_start_directory">Aseta aloituskansioksi</string>
     <string name="start_directory_set">Start directory set to %s</string>

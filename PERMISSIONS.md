@@ -11,7 +11,6 @@ Booming Music requests the following permissions:
 | **BLUETOOTH\_CONNECT**       | Replaces `BLUETOOTH` on Android 12+ for detecting and interacting with Bluetooth devices.   | From 12         |
 | **READ\_EXTERNAL\_STORAGE**  | Needed to list music files on devices running Android 12 or lower.                          | Up to 12        |
 | **BLUETOOTH**                | Used on Android 11 and below to detect Bluetooth devices (e.g., headphones) or share files. | Up to 11        |
-| **WRITE\_SETTINGS**          | Needed to set a song as ringtone directly from the app.                                     | Up to 10        |
 | **WRITE\_EXTERNAL\_STORAGE** | Required on older versions to fully access external storage.                                | Up to 10        |
 | **FOREGROUND\_SERVICE**      | Allows the app to run a foreground service, essential for continuous playback.              | All             |
 | **INTERNET**                 | Used to download artist images, artwork, lyrics, and check for updates.                     | All             |

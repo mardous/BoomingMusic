@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">Du måste ge behörighet att läsa bilder från enheten.</string>
     <string name="permission_exact_alarms_title">Schemalägg exakta alarm (valfritt)</string>
     <string name="permission_exact_alarms_description">Tillstånd att schemalägga exakta larm krävs för att sömntimern ska fungera korrekt</string>
-    <string name="permission_ringtone_title">Ringsignal (valfritt)</string>
-    <string name="permission_ringtone_description">Appen behöver behörighet för att komma åt dina enhetsinställningar för att kunna ställa in musik som ringsignal</string>
-    <string name="permission_request_write_settings"><![CDATA[Du måste tillåta Booming Music att ändra systeminställningarna för att ställa in <b>%s</b> som din ringsignal]]></string>
     <string name="permissions_denied">Åtkomst nekad</string>
     <string name="permissions_needed">Behörigheter behövs</string>
     <string name="grant_access_action">Bevilja åtkomst</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Spåra lista</string>
     <string name="sort_order_descending">Fallande</string>
     <string name="sort_order_ignore_articles">Ignorera artiklar</string>
-    <string name="action_set_as_ringtone">Ange som ringsignal</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Kommer att sätta <b>%s</b> som din ringsignal]]></string>
-    <string name="x_has_been_set_as_ringtone">Ange %s som ringsignal</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Ange %s som ringsignal och som larmvarning</string>
-    <string name="use_also_as_alarm_alert">Använd även som larmvarning</string>
     <string name="action_details">Detaljer</string>
     <string name="action_set_as_start_directory">Ange som startkatalog</string>
     <string name="start_directory_set">Start directory set to %s</string>

@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">Bạn phải cấp quyền truy cập hình ảnh từ thiết bị.</string>
     <string name="permission_exact_alarms_title">Đặt lịch báo thức chính xác (tùy chọn)</string>
     <string name="permission_exact_alarms_description">Để tính năng hẹn giờ ngủ hoạt động chính xác, vui lòng cấp quyền đặt lịch báo thức</string>
-    <string name="permission_ringtone_title">Nhạc chuông (tuỳ chọn)</string>
-    <string name="permission_ringtone_description">Ứng dụng cần quyền truy cập vào cài đặt thiết bị của bạn để có thể đặt nhạc làm nhạc chuông</string>
-    <string name="permission_request_write_settings"><![CDATA[You must allow Booming Music to modify the system settings in order to set <b>%s</b> as your ringtone]]></string>
     <string name="permissions_denied">Quyền truy cập bị từ chối</string>
     <string name="permissions_needed">Cần có quyền tuy cập</string>
     <string name="grant_access_action">Cấp quyền truy cập</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Danh sách bài hát</string>
     <string name="sort_order_descending">Giảm dần</string>
     <string name="sort_order_ignore_articles">Bỏ qua các mạo từ</string>
-    <string name="action_set_as_ringtone">Đặt thành nhạc chuông</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Will set <b>%s</b> làm nhạc chuông]]></string>
-    <string name="x_has_been_set_as_ringtone">Đặt %s làm nhạc chuông của bạn</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Đặt %s làm nhạc chuông và báo thức</string>
-    <string name="use_also_as_alarm_alert">Dùng làm cả âm báo thức</string>
     <string name="action_details">Chi tiết</string>
     <string name="action_set_as_start_directory">Đặt làm thư mục khỏi chạy</string>
     <string name="start_directory_set">Thư mục được đặt thành %s</string>

@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">Προγραμματισμός ακριβών ειδοποιήσεων (προαιρετικά)</string>
     <string name="permission_exact_alarms_description">Άδεια για τον προγραμματισμό ακριβών ειδοποιήσεων απαιτείται για το χρονόμετρο ύπνου για να λειτουργήσει σωστά</string>
-    <string name="permission_ringtone_title">Ήχος Κλήσης (Προαιρετικό)</string>
-    <string name="permission_ringtone_description">Η εφαρμογή χρειάζεται άδεια για να αποκτήσει πρόσβαση στις ρυθμίσεις της συσκευής σας για να ορίσει τη μουσική ως ήχος κλήσης</string>
-    <string name="permission_request_write_settings"><![CDATA[Πρέπει να επιτρέψετε στο Booming Music να τροποποιήσει τις ρυθμίσεις συστήματος για να ορίσετε ως ήχο κλήσης σας <b>%s</b>]]></string>
     <string name="permissions_denied">Άρνηση δικαιωμάτων</string>
     <string name="permissions_needed">Απαιτούνται δικαιώματα</string>
     <string name="grant_access_action">Παραχώρηση πρόσβασης</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Λίστα κομματιών</string>
     <string name="sort_order_descending">Φθίνουσα</string>
     <string name="sort_order_ignore_articles">Αγνόηση άρθρων</string>
-    <string name="action_set_as_ringtone">Ορισμός ως ήχος κλήσης</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Θα ορίσει ως ήχο κλήσης σας <b>%s</b>]]></string>
-    <string name="x_has_been_set_as_ringtone">Όρισε το %s ως ήχο κλήσης</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Όρισε το %s ως ήχο κλήσης και ως ειδοποίηση συναγερμού</string>
-    <string name="use_also_as_alarm_alert">Χρήση και ως ειδοποίηση συναγερμού</string>
     <string name="action_details">Λεπτομέρειες</string>
     <string name="action_set_as_start_directory">Ορισμός ως κατάλογος έναρξης</string>
     <string name="start_directory_set">Start directory set to %s</string>

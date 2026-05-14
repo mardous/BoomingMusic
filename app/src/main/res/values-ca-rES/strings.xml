@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">Cal donar permís per llegir imatges del dispositiu.</string>
     <string name="permission_exact_alarms_title">Programa alarmes exactes (opcional)</string>
     <string name="permission_exact_alarms_description">Cal permís per programar alarmes exactes perquè funcioni correctament el temporitzador d\'apagada</string>
-    <string name="permission_ringtone_title">To de trucada (Opcional)</string>
-    <string name="permission_ringtone_description">Cal permís per accedir a la configuració del vostre dispositiu per establir música com a to de trucada</string>
-    <string name="permission_request_write_settings"><![CDATA[Heu de permetre a Booming Music modificar la configuració del sistema per poder establir <b>%s</b> com a to de trucada]]></string>
     <string name="permissions_denied">Permís denegat</string>
     <string name="permissions_needed">Cal permís</string>
     <string name="grant_access_action">Atorga\'n l\'accés</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Llista de pistes</string>
     <string name="sort_order_descending">Descendent</string>
     <string name="sort_order_ignore_articles">Ignora els articles</string>
-    <string name="action_set_as_ringtone">Estableix com a to de trucada</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> es fixarà com a to de trucada]]></string>
-    <string name="x_has_been_set_as_ringtone">Estableix %s com a to de trucada</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Estableix %s com a to de trucada i alarma</string>
-    <string name="use_also_as_alarm_alert">Fes servir també d\'alarma</string>
     <string name="action_details">Detalls</string>
     <string name="action_set_as_start_directory">Estableix com a adreça d\'inici</string>
     <string name="start_directory_set">Adreça d\'inici fixada a %s</string>

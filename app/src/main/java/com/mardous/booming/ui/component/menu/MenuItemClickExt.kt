@@ -19,7 +19,6 @@ package com.mardous.booming.ui.component.menu
 
 import android.content.Intent
 import android.view.MenuItem
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.mardous.booming.R
@@ -31,7 +30,11 @@ import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.getShareSongIntent
 import com.mardous.booming.extensions.getShareSongsIntent
-import com.mardous.booming.extensions.navigation.*
+import com.mardous.booming.extensions.navigation.albumDetailArgs
+import com.mardous.booming.extensions.navigation.artistDetailArgs
+import com.mardous.booming.extensions.navigation.findActivityNavController
+import com.mardous.booming.extensions.navigation.genreDetailArgs
+import com.mardous.booming.extensions.navigation.songDetailArgs
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.toChooser
 import com.mardous.booming.playback.shuffle.OpenShuffleMode
@@ -40,7 +43,6 @@ import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.DeletePlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.EditPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
-import com.mardous.booming.ui.dialogs.songs.SetRingtoneDialog
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.tageditor.AlbumTagEditorActivity
@@ -54,8 +56,7 @@ import org.koin.androidx.viewmodel.ext.android.getActivityViewModel
 
 fun Song.onSongMenu(
     fragment: Fragment,
-    menuItem: MenuItem,
-    sharedElements: Array<Pair<View, String>>? = null
+    menuItem: MenuItem
 ): Boolean {
     if (id == -1L) {
         return false
@@ -99,11 +100,6 @@ fun Song.onSongMenu(
                 val navController = fragment.findActivityNavController(R.id.fragment_container)
                 navController.navigate(R.id.nav_genre_detail, genreDetailArgs(it))
             }
-            true
-        }
-
-        R.id.action_set_as_ringtone -> {
-            SetRingtoneDialog.create(this).show(fragment.childFragmentManager, "SET_RINGTONE")
             true
         }
 

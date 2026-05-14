@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">يجب عليك منح الإذن لقراءة الصور من الجهاز.</string>
     <string name="permission_exact_alarms_title">جدولة التنبيهات الدقيقة (اختياري)</string>
     <string name="permission_exact_alarms_description">إذن لجدولة التنبيهات الدقيقة مطلوب لكي يعمل مؤقت النوم بشكل صحيح</string>
-    <string name="permission_ringtone_title">نغمة الرنين (اختياري)</string>
-    <string name="permission_ringtone_description">يحتاج التطبيق إلى إذن للوصول إلى إعدادات جهازك من أجل تعيين الموسيقى كنغمة رنين</string>
-    <string name="permission_request_write_settings"><![CDATA[يجب عليك السماح للموسيقى المزدهرة لتعديل إعدادات النظام من أجل تعيين <b>%s</b> كنغمة رنين]]></string>
     <string name="permissions_denied">تم رفض الأذونات</string>
     <string name="permissions_needed">الأذونات مطلوبة</string>
     <string name="grant_access_action">منح الوصول</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">قائمة التتبع</string>
     <string name="sort_order_descending">تنازلي</string>
     <string name="sort_order_ignore_articles">تجاهل المقالات</string>
-    <string name="action_set_as_ringtone">تعيين كنغمة رنين</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[سيتم تعيين <b>%s</b> كنغمة رنين]]></string>
-    <string name="x_has_been_set_as_ringtone">تعيين %s كنغمة رنين</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">تعيين %s كنغمة رنين وتنبيه</string>
-    <string name="use_also_as_alarm_alert">استخدام أيضا كتنبيه</string>
     <string name="action_details">التفاصيل</string>
     <string name="action_set_as_start_directory">تعيين كدليل للبدء</string>
     <string name="start_directory_set">Start directory set to %s</string>

@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">Devi concedere i permessi di lettura delle immagini dal tuo dispositivo.</string>
     <string name="permission_exact_alarms_title">Pianifica avvisi esatti (facoltativo)</string>
     <string name="permission_exact_alarms_description">Per il corretto funzionamento del timer di sonno è necessario il permesso per pianificare sveglie esatte</string>
-    <string name="permission_ringtone_title">Suoneria (facoltativo)</string>
-    <string name="permission_ringtone_description">L\'app ha bisogno dell\'autorizzazione per accedere alle impostazioni del dispositivo per impostare un brano come suoneria</string>
-    <string name="permission_request_write_settings"><![CDATA[Devi autorizzare Booming Music a modificare le impostazioni di sistema per impostare <b>%s</b> come suoneria]]></string>
     <string name="permissions_denied">Permessi negati</string>
     <string name="permissions_needed">Permessi necessari</string>
     <string name="grant_access_action">Autorizza accesso</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Elenco tracce</string>
     <string name="sort_order_descending">Decrescente</string>
     <string name="sort_order_ignore_articles">Ignora articoli</string>
-    <string name="action_set_as_ringtone">Imposta come suoneria</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Imposterà <b>%s</b> come suoneria]]></string>
-    <string name="x_has_been_set_as_ringtone">Imposta %s come suoneria</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Imposta %s come suoneria e sveglia</string>
-    <string name="use_also_as_alarm_alert">Usa anche come sveglia</string>
     <string name="action_details">Dettagli</string>
     <string name="action_set_as_start_directory">Imposta come cartella iniziale</string>
     <string name="start_directory_set">Imposta percorso all\'avvio come %s</string>

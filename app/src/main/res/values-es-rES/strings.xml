@@ -135,9 +135,6 @@
     <string name="permission_read_images_denied">Debe conceder permiso para leer imágenes del dispositivo.</string>
     <string name="permission_exact_alarms_title">Programar alarmas exactas (opcional)</string>
     <string name="permission_exact_alarms_description">Para que el temporizador de apagado automático funcione correctamente, es necesario el permiso para programar alarmas con hora exacta</string>
-    <string name="permission_ringtone_title">Tono de llamada (opcional)</string>
-    <string name="permission_ringtone_description">La aplicación necesita permiso para acceder a la configuración del dispositivo para establecer música como tono de llamada</string>
-    <string name="permission_request_write_settings"><![CDATA[Debe permitir que Booming Music modifique la configuración del sistema para establecer <b>%s</b> como tono de llamada]]></string>
     <string name="permissions_denied">Permisos denegados</string>
     <string name="permissions_needed">Permisos necesarios</string>
     <string name="grant_access_action">Permitir acceso</string>
@@ -233,11 +230,6 @@
     <string name="sort_order_track_list">Lista de pistas</string>
     <string name="sort_order_descending">Descendente</string>
     <string name="sort_order_ignore_articles">Ignorar artículos</string>
-    <string name="action_set_as_ringtone">Establecer como tono</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Se establecerá <b>%s</b> como tono de llamada]]></string>
-    <string name="x_has_been_set_as_ringtone">Establecer %s como tono de llamada</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Establecer %s como tono de llamada y alerta de alarma</string>
-    <string name="use_also_as_alarm_alert">Usar también como alerta de alarma</string>
     <string name="action_details">Detalles</string>
     <string name="action_set_as_start_directory">Establecer como directorio de inicio</string>
     <string name="start_directory_set">Start directory set to %s</string>

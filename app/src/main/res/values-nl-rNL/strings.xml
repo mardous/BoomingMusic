@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">Je moet toestemming geven om afbeeldingen van het apparaat te lezen.</string>
     <string name="permission_exact_alarms_title">Plan exacte alarmen (optioneel)</string>
     <string name="permission_exact_alarms_description">Toestemming om exacte alarmen in te stellen is vereist om de slaaptimer goed te laten werken</string>
-    <string name="permission_ringtone_title">Beltoon (optioneel)</string>
-    <string name="permission_ringtone_description">De app heeft toestemming nodig om toegang te krijgen tot uw apparaatinstellingen om muziek als Ringtone in te stellen</string>
-    <string name="permission_request_write_settings"><![CDATA[Je moet toestaan dat Booming Muziek de systeeminstellingen wijzigt om <b>%s</b> in te stellen als je beltoon]]></string>
     <string name="permissions_denied">Permissies geweigerd</string>
     <string name="permissions_needed">Machtigingen vereist</string>
     <string name="grant_access_action">Toegang verlenen</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Track lijst</string>
     <string name="sort_order_descending">Aflopend</string>
     <string name="sort_order_ignore_articles">Negeer artikelen</string>
-    <string name="action_set_as_ringtone">Instellen als beltoon</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Zal <b>%s</b> instellen als jouw beltoon]]></string>
-    <string name="x_has_been_set_as_ringtone">%s als je beltoon instellen</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">%s instellen als uw beltoon en als alarm</string>
-    <string name="use_also_as_alarm_alert">Gebruik ook als alarmwaarschuwing</string>
     <string name="action_details">Beschrijving</string>
     <string name="action_set_as_start_directory">Stel in als beginmap</string>
     <string name="start_directory_set">Start directory set to %s</string>

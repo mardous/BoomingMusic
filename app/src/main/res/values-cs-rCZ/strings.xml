@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">Musíte udělit oprávnění ke čtení obrázků ze zařízení.</string>
     <string name="permission_exact_alarms_title">Naplánovat přesné budíky (volitelné)</string>
     <string name="permission_exact_alarms_description">Pro správné fungování časovače spánku je vyžadováno oprávnění naplánovat přesné výstrahy</string>
-    <string name="permission_ringtone_title">Vyzvánění (volitelné)</string>
-    <string name="permission_ringtone_description">Aplikace potřebuje oprávnění pro přístup k nastavení zařízení pro nastavení hudby jako vyzvánění</string>
-    <string name="permission_request_write_settings"><![CDATA[Musíš povolit Booming Music měnit nastavení systému, aby jsi mohl nastavit <b>%s</b> jako vyzváněcí tón]]></string>
     <string name="permissions_denied">Oprávnění odepřena</string>
     <string name="permissions_needed">Potřebná oprávnění</string>
     <string name="grant_access_action">Povolit přístup</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Seznam skladeb</string>
     <string name="sort_order_descending">sestupně</string>
     <string name="sort_order_ignore_articles">Ignorovat články</string>
-    <string name="action_set_as_ringtone">Nastavit jako vyzvánění</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Nastaví <b>%s</b> jako vyzvánění]]></string>
-    <string name="x_has_been_set_as_ringtone">Nastavit %s jako vyzváněcí tón</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Nastavit %s jako vyzváněcí tón a budík</string>
-    <string name="use_also_as_alarm_alert">Použít také jako budík</string>
     <string name="action_details">Detaily</string>
     <string name="action_set_as_start_directory">Nastavit jako počáteční adresář</string>
     <string name="start_directory_set">Start directory set to %s</string>

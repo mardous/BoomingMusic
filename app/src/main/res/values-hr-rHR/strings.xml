@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">Schedule exact alarms (optional)</string>
     <string name="permission_exact_alarms_description">Permission to schedule exact alarms is required for the sleep timer to work properly</string>
-    <string name="permission_ringtone_title">Ringtone (optional)</string>
-    <string name="permission_ringtone_description">The app needs permission to access your device settings in order to set music as Ringtone</string>
-    <string name="permission_request_write_settings"><![CDATA[You must allow Booming Music to modify the system settings in order to set <b>%s</b> as your ringtone]]></string>
     <string name="permissions_denied">Permissions denied</string>
     <string name="permissions_needed">Permissions needed</string>
     <string name="grant_access_action">Grant access</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Track list</string>
     <string name="sort_order_descending">Descending</string>
     <string name="sort_order_ignore_articles">Ignore articles</string>
-    <string name="action_set_as_ringtone">Set as ringtone</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Will set <b>%s</b> as your ringtone]]></string>
-    <string name="x_has_been_set_as_ringtone">Set %s as your ringtone</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Set %s as your ringtone and as alarm alert</string>
-    <string name="use_also_as_alarm_alert">Use also as alarm alert</string>
     <string name="action_details">Details</string>
     <string name="action_set_as_start_directory">Set as start directory</string>
     <string name="start_directory_set">Start directory set to %s</string>

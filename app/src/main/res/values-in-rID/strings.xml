@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">Anda harus memberikan izin untuk membaca gambar dari perangkat.</string>
     <string name="permission_exact_alarms_title">Jadwalkan alarm tepat waktu (opsional)</string>
     <string name="permission_exact_alarms_description">Izin untuk menjadwalkan alarm tepat waktu diperlukan agar pengatur waktu tidur berfungsi dengan baik</string>
-    <string name="permission_ringtone_title">Nada dering (opsional)</string>
-    <string name="permission_ringtone_description">Aplikasi memerlukan izin untuk mengakses pengaturan perangkat Anda guna menetapkan musik sebagai Nada Dering</string>
-    <string name="permission_request_write_settings"><![CDATA[Anda harus mengizinkan Booming Music mengubah pengaturan sistem untuk menetapkan <b>%s</b> sebagai nada dering Anda]]></string>
     <string name="permissions_denied">Izin ditolak</string>
     <string name="permissions_needed">Izin diperlukan</string>
     <string name="grant_access_action">Berikan akses</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Daftar lagu</string>
     <string name="sort_order_descending">Menurun</string>
     <string name="sort_order_ignore_articles">Abaikan artikel</string>
-    <string name="action_set_as_ringtone">Atur sebagai nada dering</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Akan mengatur <b>%s</b> sebagai nada dering Anda]]></string>
-    <string name="x_has_been_set_as_ringtone">Atur %s sebagai nada dering Anda</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Atur %s sebagai nada dering dan sebagai nada alarm Anda</string>
-    <string name="use_also_as_alarm_alert">Gunakan juga sebagai nada alarm</string>
     <string name="action_details">Detail</string>
     <string name="action_set_as_start_directory">Atur sebagai direktori awal</string>
     <string name="start_directory_set">Direktori awal diatur ke %s</string>

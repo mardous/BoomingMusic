@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">Sie müssen die Berechtigung zum Lesen von Bildern auf diesem Gerät erteilen.</string>
     <string name="permission_exact_alarms_title">Genaue Erinnerungen planen (optional)</string>
     <string name="permission_exact_alarms_description">Die Erlaubnis, genaue Erinnerungen zu planen, ist erforderlich, damit der Sleeptimer richtig funktioniert</string>
-    <string name="permission_ringtone_title">Klingelton (optional)</string>
-    <string name="permission_ringtone_description">Die App benötigt die Berechtigung, Systemeinstellungen zu ändern, um Musik als Klingelton festlegen zu können</string>
-    <string name="permission_request_write_settings"><![CDATA[Du musst Booming Music gewähren, Systemeinstellungen zu ändern, um <b>%s</b> als Klingelton zu setzen]]></string>
     <string name="permissions_denied">Berechtigungen verweigert</string>
     <string name="permissions_needed">Benötigte Berechtigungen</string>
     <string name="grant_access_action">Zugriff gewähren</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Titelliste</string>
     <string name="sort_order_descending">Absteigend</string>
     <string name="sort_order_ignore_articles">Artikel ignorieren</string>
-    <string name="action_set_as_ringtone">Als Klingelton festlegen</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Setzt <b>%s</b> als Klingelton]]></string>
-    <string name="x_has_been_set_as_ringtone">%s als Klingelton festlegen</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">%s als Klingel- und Weckton festlegen</string>
-    <string name="use_also_as_alarm_alert">Auch als Weckton verwenden</string>
     <string name="action_details">Details</string>
     <string name="action_set_as_start_directory">Als Startverzeichnis festlegen</string>
     <string name="start_directory_set">Start directory set to %s</string>

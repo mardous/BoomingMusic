@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">Planlegg nøyaktig alarmer (valgfritt)</string>
     <string name="permission_exact_alarms_description">Tillatelse til å planlegge nøyaktige alarmer kreves for at sovetiden skal fungere ordentlig</string>
-    <string name="permission_ringtone_title">Ringetone (valgfritt)</string>
-    <string name="permission_ringtone_description">Appen trenger tilgang til enhetens innstillinger for å kunne angi musikk som Ringtone</string>
-    <string name="permission_request_write_settings"><![CDATA[Du må tillate at Booming Music endrer systeminnstillingene for å velge <b>%s</b> som ringetone]]></string>
     <string name="permissions_denied">Tillatelser avvist</string>
     <string name="permissions_needed">Tillatelser nødvendig</string>
     <string name="grant_access_action">Gi Tilgang</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Liste over spor</string>
     <string name="sort_order_descending">Synkende</string>
     <string name="sort_order_ignore_articles">Ignorer artikler</string>
-    <string name="action_set_as_ringtone">Bruk som ringetone</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Vil angi <b>%s</b> som ringetone]]></string>
-    <string name="x_has_been_set_as_ringtone">Angi %s som ringetone</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Angi %s som ringetonen og som alarmvarsel</string>
-    <string name="use_also_as_alarm_alert">Bruk også som alarmvarsel</string>
     <string name="action_details">Detaljer</string>
     <string name="action_set_as_start_directory">Angi som startmappe</string>
     <string name="start_directory_set">Start directory set to %s</string>

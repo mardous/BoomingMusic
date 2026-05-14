@@ -18,11 +18,7 @@
 package com.mardous.booming.extensions.media
 
 import android.content.Context
-import android.provider.BaseColumns
-import android.provider.MediaStore
-import android.provider.Settings
 import android.text.SpannableString
-import android.util.Log
 import androidx.core.text.buildSpannedString
 import com.mardous.booming.R
 import com.mardous.booming.core.model.WebSearchEngine
@@ -35,7 +31,6 @@ import com.mardous.booming.extensions.plurals
 import com.mardous.booming.extensions.resources.textColorPrimary
 import com.mardous.booming.extensions.resources.textColorSecondary
 import com.mardous.booming.extensions.resources.toForegroundColorSpan
-import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
 import com.mardous.booming.extensions.utilities.buildInfoString
 import java.util.Locale
@@ -129,40 +124,6 @@ fun Song.replayGainStr(context: Context): String? {
     }
     val replayGainValues = builder.toString()
     return replayGainValues.ifEmpty { null }
-}
-
-fun Song.configureRingtone(context: Context, isAlarm: Boolean): Boolean {
-    val resolver = context.contentResolver
-    val uri = uri
-
-    try {
-        resolver.query(
-            MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
-            arrayOf(MediaStore.MediaColumns.TITLE),
-            "${BaseColumns._ID}=?",
-            arrayOf(id.toString()),
-            null
-        ).use { cursor ->
-            if (cursor != null && cursor.count == 1) {
-                cursor.moveToFirst()
-
-                Settings.System.putString(resolver, Settings.System.RINGTONE, uri.toString())
-                if (isAlarm) {
-                    Settings.System.putString(resolver, Settings.System.ALARM_ALERT, uri.toString())
-                }
-
-                context.showToast(
-                    if (isAlarm) {
-                        context.getString(R.string.x_has_been_set_as_ringtone_and_as_alarm, cursor.getString(0))
-                    } else context.getString(R.string.x_has_been_set_as_ringtone, cursor.getString(0))
-                )
-            }
-        }
-    } catch (e: SecurityException) {
-        Log.e("SongExt", "Couldn't set the ringtone...", e)
-        return false
-    }
-    return true
 }
 
 fun PlaylistEntity.isFavorites(context: Context) = playlistName == context.getString(R.string.favorites_label)

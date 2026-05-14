@@ -136,9 +136,6 @@
     <string name="permission_read_images_denied">Wymagane jest uprawnienie do odczytu obrazów z urządzenia.</string>
     <string name="permission_exact_alarms_title">Alarmy i przypomnienia (opcjonalnie)</string>
     <string name="permission_exact_alarms_description">Aby zegar uśpienia działał poprawnie, potrzebna jest zgoda na ustawianie alarmów</string>
-    <string name="permission_ringtone_title">Dzwonek (opcjonalnie)</string>
-    <string name="permission_ringtone_description">Potrzebna jest zgoda na dostęp do ustawień urządzenia, aby ustawić utwór jako dzwonek</string>
-    <string name="permission_request_write_settings"><![CDATA[Musisz zezwolić aplikacji Booming Music na modyfikowanie ustawień systemowych, aby ustawić <b>%s</b> jako dzwonek]]></string>
     <string name="permissions_denied">Nie przyznano uprawnień</string>
     <string name="permissions_needed">Wymagane uprawnienia</string>
     <string name="grant_access_action">Zezwól</string>
@@ -236,11 +233,6 @@
     <string name="sort_order_track_list">Lista ścieżek</string>
     <string name="sort_order_descending">Malejąco</string>
     <string name="sort_order_ignore_articles">Ignoruj rodzajniki</string>
-    <string name="action_set_as_ringtone">Ustaw jako dzwonek</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Ustawia <b>%s</b> jako dzwonek]]></string>
-    <string name="x_has_been_set_as_ringtone">Ustaw %s jako dzwonek</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Ustaw %s jako dzwonek i alarm</string>
-    <string name="use_also_as_alarm_alert">Użyj również jako alarmu</string>
     <string name="action_details">Szczegóły</string>
     <string name="action_set_as_start_directory">Ustaw jako katalog startowy</string>
     <string name="start_directory_set">Start directory set to %s</string>
