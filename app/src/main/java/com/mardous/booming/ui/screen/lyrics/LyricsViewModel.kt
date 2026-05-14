@@ -46,7 +46,7 @@ class LyricsViewModel(
 
     private var instrumentalDetector: InstrumentalDetector
 
-    private val _lyricsUiState = MutableStateFlow<LyricsUiState>(LyricsUiState.Empty)
+    private val _lyricsUiState = MutableStateFlow<LyricsUiState>(LyricsUiState.Empty(-1))
     val lyricsUiState = _lyricsUiState.asStateFlow()
 
     private val _lyricsEditorUiState = MutableStateFlow<LyricsEditorUiState>(LyricsEditorUiState.Disposed)
@@ -114,6 +114,11 @@ class LyricsViewModel(
                 // Lyrics need to be updated to avoid unnecessary save operations
                 val newLyrics = getEditorLyricsBySources(song, newLyrics.keys.toList())
                 _lyricsEditorUiState.value = uiState.copy(isLoading = false, lyrics = newLyrics)
+
+                // Update current song lyrics if necessary
+                if (song.id == lyricsUiState.value.id) {
+                    updateSong(song)
+                }
             } else {
                 _lyricsEditorUiState.value = uiState.copy(isLoading = false)
             }
@@ -196,9 +201,9 @@ class LyricsViewModel(
         lyricsJob?.cancel()
         lyricsJob = viewModelScope.launch {
             if (song == Song.emptySong) {
-                _lyricsUiState.value = LyricsUiState.Empty
+                _lyricsUiState.value = LyricsUiState.Empty(song.id)
             } else {
-                _lyricsUiState.value = LyricsUiState.Loading
+                _lyricsUiState.value = LyricsUiState.Loading(song.id)
 
                 val lyricsState = getBestLyricsFromSources(
                     song = song,
@@ -232,7 +237,7 @@ class LyricsViewModel(
     ): LyricsUiState {
         var plainLyrics: String? = null
         if (instrumentalDetector.byTitle(song.title)) {
-            return LyricsUiState.Instrumental
+            return LyricsUiState.Instrumental(song.id)
         }
         for (source in sources) {
             when (source) {
@@ -241,7 +246,7 @@ class LyricsViewModel(
                     if (fileLyrics != null) {
                         val lyrics = repository.parseRawLyrics(song, fileLyrics)
                         if (lyrics?.hasContent == true) {
-                            return LyricsUiState.Success.Synced(song.id, lyrics)
+                            return LyricsUiState.Synced(song.id, lyrics)
                         }
                     }
                 }
@@ -250,11 +255,11 @@ class LyricsViewModel(
                     val embeddedLyrics = repository.embeddedLyrics(song)
                     if (embeddedLyrics != null) {
                         if (instrumentalDetector.byLyrics(embeddedLyrics.lyrics)) {
-                            return LyricsUiState.Instrumental
+                            return LyricsUiState.Instrumental(song.id)
                         }
                         val lyrics = repository.parseRawLyrics(song, embeddedLyrics)
                         if (lyrics?.hasContent == true) {
-                            return LyricsUiState.Success.Synced(song.id, lyrics)
+                            return LyricsUiState.Synced(song.id, lyrics)
                         } else {
                             if (plainLyrics.isNullOrEmpty()) {
                                 plainLyrics = embeddedLyrics.lyrics
@@ -267,11 +272,11 @@ class LyricsViewModel(
                     val downloadedLyrics = repository.storedLyrics(song, true)
                     if (downloadedLyrics != null) {
                         if (downloadedLyrics.instrumental) {
-                            return LyricsUiState.Instrumental
+                            return LyricsUiState.Instrumental(song.id)
                         }
                         val lyrics = repository.parseRawLyrics(song, downloadedLyrics)
                         if (lyrics?.hasContent == true) {
-                            return LyricsUiState.Success.Synced(song.id, lyrics)
+                            return LyricsUiState.Synced(song.id, lyrics)
                         } else {
                             if (plainLyrics.isNullOrEmpty()) {
                                 plainLyrics = downloadedLyrics.lyrics
@@ -282,9 +287,9 @@ class LyricsViewModel(
             }
         }
         if (!plainLyrics.isNullOrEmpty()) {
-            return LyricsUiState.Success.Plain(song.id, plainLyrics)
+            return LyricsUiState.Plain(song.id, plainLyrics)
         }
-        return LyricsUiState.Empty
+        return LyricsUiState.Empty(song.id)
     }
 
     private fun createViewSettings(mode: LyricsViewMode): LyricsViewSettings {
