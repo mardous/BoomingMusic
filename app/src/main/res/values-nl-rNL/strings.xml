@@ -860,7 +860,7 @@
     <string name="uncaught_error_restart_app">Herstart app</string>
     <string name="uncaught_error_github">Open issue op GitHub</string>
     <string name="uncaught_error_send">Rapport verzenden</string>
-    <string name="app_widget_responsive">Reagerend</string>
+    <string name="app_widget_responsive">Responsief</string>
     <string name="app_widget_responsive_desc">Een widget dat zijn uiterlijk aanpast aan verschillende grootten</string>
     <string name="app_widget_card">Kaart</string>
     <string name="app_widget_card_desc">Minimalistische en versimpelde stijl</string>
@@ -924,7 +924,36 @@
     <string name="lastfm_biography_title">Download biografieën van artiesten en albums</string>
     <string name="lastfm_biography_summary">Haal artiesten- en albumbiografieën op van Last.fm.</string>
     <string name="use_lrclib_provider_title">Gebruik de LRCLib-aanbieder</string>
-    <string name="use_lrclib_provider_summary">Sta toe dat songteksten gedownload kunnen worden via de LRCLib-service.</string>
+    <string name="use_lrclib_provider_summary">Door de community aangedreven lyriekendatabase.</string>
     <string name="use_betterlyrics_provider_title">Gebruik de BetterLyrics-provider</string>
-    <string name="use_betterlyrics_provider_summary">Sta het downloaden van songteksten via de BetterLyrics-service toe.</string>
+    <string name="use_betterlyrics_provider_summary">Woord voor woord gesynchroniseerde songteksten.</string>
+    <string name="search_playlists">Zoek afspeellijsten</string>
+    <string name="select_playlists_title">Selecteer afspeellijsten</string>
+    <string name="new_playlist_action">Nieuw</string>
+    <string name="no_playlists_create_new">Druk op de \"Nieuw\" knop om een nieuwe afspeellijst te creëeren</string>
+    <string name="songs_added_to_playlists">Muzieknummer toegevoegd aan afspeellijst.</string>
+    <string name="no_playlists_label">Geen afspeellijst</string>
+    <string name="no_playlists_that_match_x">Er zijn geen afspeellijsten die overeenkomen met \"%s\"</string>
+    <string name="sign_in_to_x_title">Aanmelden bij %s</string>
+    <string name="connected_account_label">Verbonden account:</string>
+    <string name="login_action">Inloggen</string>
+    <string name="logout_action">Uitloggen</string>
+    <string name="listenbrainz_token_label">Gebruikers token</string>
+    <string name="error_listenbrainz_invalid_token">Ongeldig ListenBrainz-token.</string>
+    <string name="sleep_timer_x_secs">%d seconden</string>
+    <string name="listenbrainz_login_title">Aanmelden bij ListenBrainz</string>
+    <plurals name="x_playlists_selected">
+        <item quantity="one">%d afspeellijst geselecteerd</item>
+        <item quantity="other">%d afspeellijsten geselecteerd</item>
+    </plurals>
+    <string name="error_listenbrainz_generic">Er is een ListenBrainz-fout opgetreden.</string>
+    <string name="listenbrainz_title">ListenBrainz</string>
+    <string name="listenbrainz_login_summary">Verifieer met uw gebruikerstoken om scrobbling en \"nu wordt afgespeeld\"-updates in te schakelen. U kunt uw token vinden in uw ListenBrainz-profielinstellingen.</string>
+    <string name="listenbrainz_scrobbling_title">ListenBrainz-scrobbling inschakelen</string>
+    <string name="listenbrainz_scrobbling_summary">Automatisch afgespeelde nummers indienen bij uw ListenBrainz-luistergeschiedenis.</string>
+    <string name="listenbrainz_now_playing_title">\"Nu wordt afgespeeld\" bijwerken op ListenBrainz</string>
+    <string name="listenbrainz_now_playing_summary">Het momenteel afspelende nummer in realtime weergeven op uw ListenBrainz-profiel.</string>
+    <string name="use_lyrically_provider_title">Lyrically-provider gebruiken</string>
+    <string name="use_lyrically_provider_summary">Uitgebreide lyrieke-API met karaoke- en meerpersoonondersteuning.</string>
+    <string name="auto_theme_name">Automatisch</string>
 </resources>
