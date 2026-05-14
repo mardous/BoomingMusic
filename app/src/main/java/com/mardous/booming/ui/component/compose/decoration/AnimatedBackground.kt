@@ -58,7 +58,7 @@ fun Modifier.animatedGradient(
             }
         }
 
-        this.blur(80.dp)
+        this.blur(60.dp)
             .drawBehind {
                 val t = time.value
                 val baseColor = colors.first()
