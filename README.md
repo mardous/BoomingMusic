@@ -159,6 +159,8 @@ Your support is greatly appreciated and keeps me motivated to continue improving
 **[FabiRich](https://github.com/FabiRich)**
 <br/>
 **[Bloodaxe](https://github.com/Bloodaxe95)**
+<br/>
+**Bernhard**
 
 </div>
 
