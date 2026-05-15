@@ -412,7 +412,7 @@ object Preferences : KoinComponent {
         get() = preferences.getInt(ALBUM_MINIMUM_SONGS, 1)
 
     val minimumSongDuration: Int
-        get() = preferences.getInt(MINIMUM_SONG_DURATION, 30)
+        get() = preferences.getInt(MINIMUM_SONG_DURATION, 15)
 
     val rotationLockEnabled: Boolean
         get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)
