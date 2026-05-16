@@ -832,8 +832,6 @@
     <string name="every_fifteen_days">Každých patnáct dní</string>
     <string name="monthly">Měsíčně</string>
     <string name="never">Nikdy</string>
-    <string name="only_wifi_title">Pouze Wi-Fi</string>
-    <string name="only_wifi_summary">Vyhledat aktualizace pouze při připojení k Wi-Fi.</string>
     <string name="receive_experimental_updates_title">Přijímat experimentální aktualizace</string>
     <string name="receive_experimental_updates_summary">Vezměte prosím na vědomí, že tyto aktualizace jsou často velmi nestabilní a jsou určeny pro zkušené uživatele.</string>
     <string name="search_for_update_title">Hledat aktualizace</string>

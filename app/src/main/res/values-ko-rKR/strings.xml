@@ -808,8 +808,6 @@
     <string name="every_fifteen_days">15일마다</string>
     <string name="monthly">매달</string>
     <string name="never">안 함</string>
-    <string name="only_wifi_title">Wi-Fi에서만</string>
-    <string name="only_wifi_summary">Wi-Fi가 연결되었을 때만 업데이트를 확인합니다.</string>
     <string name="receive_experimental_updates_title">실험적 업데이트 받기</string>
     <string name="receive_experimental_updates_summary">불안정할 수 있으며 숙련된 사용자를 위한 설정입니다.</string>
     <string name="search_for_update_title">업데이트 확인</string>

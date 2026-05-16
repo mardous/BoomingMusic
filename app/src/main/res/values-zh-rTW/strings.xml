@@ -808,8 +808,6 @@
     <string name="every_fifteen_days">每十五天</string>
     <string name="monthly">每月</string>
     <string name="never">從不使用</string>
-    <string name="only_wifi_title">僅Wi-Fi</string>
-    <string name="only_wifi_summary">僅在 Wi-Fi 連接時搜尋更新。</string>
     <string name="receive_experimental_updates_title">接收實驗性更新</string>
     <string name="receive_experimental_updates_summary">請注意，這些更新常常不穩定，僅針對有經驗的用戶。</string>
     <string name="search_for_update_title">搜尋更新</string>

@@ -816,8 +816,6 @@
     <string name="every_fifteen_days">Var 15:e dag</string>
     <string name="monthly">Månadsvis</string>
     <string name="never">Aldrig</string>
-    <string name="only_wifi_title">Endast Wi-Fi</string>
-    <string name="only_wifi_summary">Sök efter uppdateringar endast när Wi-Fi är anslutet.</string>
     <string name="receive_experimental_updates_title">Få experimentella uppdateringar</string>
     <string name="receive_experimental_updates_summary">Observera att dessa uppdateringar ofta är mycket instabila och är avsedda för erfarna användare.</string>
     <string name="search_for_update_title">Sök efter uppdateringar</string>

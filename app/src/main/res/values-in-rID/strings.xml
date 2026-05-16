@@ -808,8 +808,6 @@
     <string name="every_fifteen_days">Setiap lima belas hari</string>
     <string name="monthly">Bulanan</string>
     <string name="never">Tidak pernah</string>
-    <string name="only_wifi_title">Hanya Wi-Fi</string>
-    <string name="only_wifi_summary">Cari pembaruan hanya saat Wi-Fi terhubung.</string>
     <string name="receive_experimental_updates_title">Terima pembaruan eksperimental</string>
     <string name="receive_experimental_updates_summary">Harap diperhatikan bahwa pembaruan ini seringkali sangat tidak stabil dan ditujukan untuk pengguna berpengalaman.</string>
     <string name="search_for_update_title">Cari pembaruan</string>

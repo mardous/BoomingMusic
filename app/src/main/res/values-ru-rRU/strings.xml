@@ -832,8 +832,6 @@
     <string name="every_fifteen_days">Каждые пятнадцать дней</string>
     <string name="monthly">Ежемесячно</string>
     <string name="never">Никогда</string>
-    <string name="only_wifi_title">Только Wi-Fi</string>
-    <string name="only_wifi_summary">Искать обновления только при подключении к Wi-Fi.</string>
     <string name="receive_experimental_updates_title">Получать экспериментальные обновления</string>
     <string name="receive_experimental_updates_summary">Пожалуйста, обратите внимание, что эти обновления часто очень нестабильны и предназначены для опытных пользователей.</string>
     <string name="search_for_update_title">Поиск обновлений</string>

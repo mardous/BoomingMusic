@@ -816,8 +816,6 @@
     <string name="every_fifteen_days">Joka viides päivä</string>
     <string name="monthly">Kuukausittain</string>
     <string name="never">Ei Koskaan</string>
-    <string name="only_wifi_title">Vain Wi-Fi</string>
-    <string name="only_wifi_summary">Etsi päivityksiä vain kun Wi-Fi on yhdistetty.</string>
     <string name="receive_experimental_updates_title">Vastaanota kokeellisia päivityksiä</string>
     <string name="receive_experimental_updates_summary">Huomaa, että nämä päivitykset ovat usein hyvin epävakaita ja ne on tarkoitettu kokeneille käyttäjille.</string>
     <string name="search_for_update_title">Etsi päivityksiä</string>

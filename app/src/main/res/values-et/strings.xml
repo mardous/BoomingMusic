@@ -554,8 +554,6 @@
     <string name="auto_update_title">Uuenda otsing automaatselt</string>
     <string name="every_day">Iga päev</string>
     <string name="every_fifteen_days">Iga viieteist päeva järel</string>
-    <string name="only_wifi_title">Vaid WiFi võrgus</string>
-    <string name="only_wifi_summary">Otsi uuendusi vaid siis, kui WiFi võrk on ühendatud.</string>
     <string name="receive_experimental_updates_title">Laadi alla ka katselisi versioone</string>
     <string name="receive_experimental_updates_summary">Palun arvesta, et sellised uuendused pole stabiilsed ja on mõeldud kogemustega kasutajatele.</string>
     <string name="uncaught_error_send">Saada aruanne</string>

@@ -848,8 +848,6 @@
     <string name="every_fifteen_days">كل خمسة عشر يوما</string>
     <string name="monthly">شهريا</string>
     <string name="never">لا</string>
-    <string name="only_wifi_title">شبكة Wi-Fi فقط</string>
-    <string name="only_wifi_summary">البحث عن تحديثات فقط عند الاتصال بشبكة Wi-Fi.</string>
     <string name="receive_experimental_updates_title">تلقي تحديثات تجريبية</string>
     <string name="receive_experimental_updates_summary">يرجى ملاحظة أن هذه التحديثات غالبا ما تكون غير مستقرة جدا وهي مخصصة للمستخدمين ذوي الخبرة.</string>
     <string name="search_for_update_title">البحث عن تحديث</string>

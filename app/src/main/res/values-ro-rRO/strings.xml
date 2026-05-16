@@ -824,8 +824,6 @@
     <string name="every_fifteen_days">La fiecare cincisprezece zile</string>
     <string name="monthly">Lunar</string>
     <string name="never">Niciodată</string>
-    <string name="only_wifi_title">Numai Wi-Fi</string>
-    <string name="only_wifi_summary">Căutaţi actualizări numai atunci când Wi-Fi este conectat.</string>
     <string name="receive_experimental_updates_title">Primește actualizări experimentale</string>
     <string name="receive_experimental_updates_summary">Vă rugăm să reţineţi că aceste actualizări sunt adesea foarte instabile şi sunt destinate utilizatorilor experimentaţi.</string>
     <string name="search_for_update_title">Căutare actualizare</string>

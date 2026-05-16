@@ -18,6 +18,7 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.mardous.booming.R
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.MediaEvent
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.currentFragment
 import com.mardous.booming.extensions.navigation.isValidCategory
 import com.mardous.booming.extensions.showToast
@@ -255,7 +256,7 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
             }
             updateEvent?.peekContent().let { updateState ->
                 if (updateState == null || updateState.state == UpdateSearchResult.State.Idle) {
-                    if (isAllowedToUpdate(this@MainActivity)) {
+                    if (NetworkFeature.Updater.isAvailable(this@MainActivity)) {
                         searchForUpdate(false)
                     }
                 }

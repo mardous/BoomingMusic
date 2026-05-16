@@ -816,8 +816,6 @@
     <string name="every_fifteen_days">Alle 15 Tage</string>
     <string name="monthly">Monatlich</string>
     <string name="never">Nie</string>
-    <string name="only_wifi_title">Nur über WLAN</string>
-    <string name="only_wifi_summary">Nur bei WLAN-Verbindung nach Updates suchen.</string>
     <string name="receive_experimental_updates_title">Erhalte experimentelle Updates</string>
     <string name="receive_experimental_updates_summary">Bitte beachte, dass diese Updates häufig instabil und für erfahrene Benutzer bestimmt sind.</string>
     <string name="search_for_update_title">Nach Updates suchen</string>

@@ -808,8 +808,6 @@
     <string name="every_fifteen_days">15日ごと</string>
     <string name="monthly">月ごと</string>
     <string name="never">一切なし</string>
-    <string name="only_wifi_title">Wi-Fiのみ</string>
-    <string name="only_wifi_summary">Wi-Fi接続時にのみアップデートを検索します。</string>
     <string name="receive_experimental_updates_title">実験的な更新を受け取る</string>
     <string name="receive_experimental_updates_summary">これらのアップデートはしばしば非常に不安定であり、経験豊富なユーザーを対象としています。</string>
     <string name="search_for_update_title">アップデートを検索</string>

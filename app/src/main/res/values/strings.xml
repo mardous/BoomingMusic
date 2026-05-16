@@ -963,8 +963,6 @@
     <string name="every_fifteen_days">Every fifteen days</string>
     <string name="monthly">Monthly</string>
     <string name="never">Never</string>
-    <string name="only_wifi_title">Only Wi-Fi</string>
-    <string name="only_wifi_summary">Search for updates only when Wi-Fi is connected.</string>
     <string name="receive_experimental_updates_title">Receive experimental updates</string>
     <string name="receive_experimental_updates_summary">Please note that these updates are often very unstable and are intended for experienced users.</string>
     <string name="search_for_update_title">Search for update</string>

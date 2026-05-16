@@ -816,8 +816,6 @@
     <string name="every_fifteen_days">Hver 15. dag</string>
     <string name="monthly">Månedligt</string>
     <string name="never">Aldrig</string>
-    <string name="only_wifi_title">Kun Wi-Fi</string>
-    <string name="only_wifi_summary">Søg kun efter opdateringer, når Wi-Fi er tilsluttet.</string>
     <string name="receive_experimental_updates_title">Modtag eksperimentelle opdateringer</string>
     <string name="receive_experimental_updates_summary">Bemærk, at disse opdateringer ofte er meget ustabile og er beregnet til erfarne brugere.</string>
     <string name="search_for_update_title">Søg efter opdatering</string>

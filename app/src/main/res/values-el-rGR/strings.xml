@@ -816,8 +816,6 @@
     <string name="every_fifteen_days">Κάθε δεκαπέντε ημέρες</string>
     <string name="monthly">Μηνιαία</string>
     <string name="never">Ποτέ</string>
-    <string name="only_wifi_title">Μόνο Wi-Fi</string>
-    <string name="only_wifi_summary">Αναζήτηση ενημερώσεων μόνο όταν το Wi-Fi είναι συνδεδεμένο.</string>
     <string name="receive_experimental_updates_title">Λήψη πειραματικών ενημερώσεων</string>
     <string name="receive_experimental_updates_summary">Παρακαλώ σημειώστε ότι αυτές οι ενημερώσεις είναι συχνά πολύ ασταθείς και προορίζονται για έμπειρους χρήστες.</string>
     <string name="search_for_update_title">Αναζήτηση για ενημέρωση</string>

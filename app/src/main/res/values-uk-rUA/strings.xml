@@ -832,8 +832,6 @@
     <string name="every_fifteen_days">Кожні п’ятнадцять днів</string>
     <string name="monthly">Щомісяця</string>
     <string name="never">Ніколи</string>
-    <string name="only_wifi_title">Тільки Wi-Fi</string>
-    <string name="only_wifi_summary">Шукати оновлення лише при підключенні до Wi-Fi.</string>
     <string name="receive_experimental_updates_title">Отримувати експериментальні оновлення</string>
     <string name="receive_experimental_updates_summary">Будь ласка, зверніть увагу, що ці оновлення часто є дуже нестабільними та призначені для досвідчених користувачів.</string>
     <string name="search_for_update_title">Пошук оновлень</string>

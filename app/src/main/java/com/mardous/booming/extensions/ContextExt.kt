@@ -30,8 +30,6 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Handler
 import android.os.Looper
 import android.os.PowerManager
@@ -114,17 +112,6 @@ fun Context.webSearch(vararg keys: String?) {
 }
 
 fun Context.isPowerSaveMode(): Boolean = getSystemService<PowerManager>()?.isPowerSaveMode == true
-
-fun Context.isOnline(requestOnlyWifi: Boolean): Boolean {
-    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val networkCapabilities = cm.getNetworkCapabilities(cm.activeNetwork)
-    if (networkCapabilities != null) {
-        return if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-            true
-        } else networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) && !requestOnlyWifi
-    }
-    return false
-}
 
 fun Context.onUI(action: () -> Unit) {
     if (this is Activity) {

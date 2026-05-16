@@ -816,8 +816,6 @@
     <string name="every_fifteen_days">हर पंद्रह दिन में</string>
     <string name="monthly">मासिक</string>
     <string name="never">कभी नहीं</string>
-    <string name="only_wifi_title">केवल वाई-फाई</string>
-    <string name="only_wifi_summary">केवल तब जब वाई-फाई जुड़ा हो, तब अपडेट की खोज करें।</string>
     <string name="receive_experimental_updates_title">प्रायोगिक अपडेट प्राप्त करें</string>
     <string name="receive_experimental_updates_summary">कृपया ध्यान दें कि ये अपडेट अक्सर बहुत अस्थिर होते हैं और अनुभवी उपयोगकर्ताओं के लिए बनाए गए हैं।</string>
     <string name="search_for_update_title">अपडेट के लिए सर्च खोजें</string>

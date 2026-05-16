@@ -816,8 +816,6 @@
     <string name="every_fifteen_days">On beş günde bir</string>
     <string name="monthly">Aylık</string>
     <string name="never">Asla</string>
-    <string name="only_wifi_title">Sadece Wi-Fi</string>
-    <string name="only_wifi_summary">Yalnızca Wi-Fi bağlıyken güncellemeleri arayın.</string>
     <string name="receive_experimental_updates_title">Deneysel güncellemeleri al</string>
     <string name="receive_experimental_updates_summary">Lütfen bu güncellemelerin genellikle çok kararsız olduğunu ve deneyimli kullanıcılar için tasarlandığını unutmayın.</string>
     <string name="search_for_update_title">Güncelleme ara</string>

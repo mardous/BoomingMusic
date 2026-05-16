@@ -818,8 +818,6 @@
     <string name="every_fifteen_days">Tous les quinze jours</string>
     <string name="monthly">Mensuel</string>
     <string name="never">Jamais</string>
-    <string name="only_wifi_title">Wi-Fi uniquement</string>
-    <string name="only_wifi_summary">Rechercher les mises à jour uniquement lorsque le Wi-Fi est connecté.</string>
     <string name="receive_experimental_updates_title">Recevoir les mises à jour expérimentales</string>
     <string name="receive_experimental_updates_summary">Veuillez noter que ces mises à jour sont souvent très instables et sont destinées aux utilisateurs expérimentés.</string>
     <string name="search_for_update_title">Recherche de mise à jour</string>

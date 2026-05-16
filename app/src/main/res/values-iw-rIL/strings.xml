@@ -822,8 +822,6 @@
     <string name="every_fifteen_days">כל חמישה עשר ימים</string>
     <string name="monthly">חודשי</string>
     <string name="never">לעולם לא</string>
-    <string name="only_wifi_title">רק וויי-פיי</string>
-    <string name="only_wifi_summary">חפש עדכונים רק כאשר מחובר ל־וויי-פיי.</string>
     <string name="receive_experimental_updates_title">קבל עדכונים ניסיוניים</string>
     <string name="receive_experimental_updates_summary">שים לב כי עדכונים אלו לעיתים קרובות אינם יציבים ומיועדים למשתמשים מנוסים.</string>
     <string name="search_for_update_title">חפש עדכון</string>

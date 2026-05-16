@@ -420,9 +420,6 @@ object Preferences : KoinComponent {
     val updateSearchMode: String
         get() = preferences.requireString(UPDATE_SEARCH_MODE, UpdateSearchMode.WEEKLY)
 
-    val updateOnlyWifi: Boolean
-        get() = preferences.getBoolean(ONLY_WIFI, false)
-
     val experimentalUpdates: Boolean
         get() = preferences.getBoolean(EXPERIMENTAL_UPDATES, false)
 
