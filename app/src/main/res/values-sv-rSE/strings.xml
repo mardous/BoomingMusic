@@ -930,4 +930,11 @@
     <string name="auto_theme_name">Automatisk</string>
     <string name="use_lyrically_provider_title">Använd Lyrically leverantör</string>
     <string name="use_lyrically_provider_summary">Rikt sångtext-API med karaoke och stöd för flera personer.</string>
+    <string name="file_lyrics">Fil</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LRC</string>
+    <string name="undo_changes">Ångra ändringar</string>
+    <string name="cannot_edit_lyrics_file">Du kan ej redigera filens innehåll direkt från Booming Music.</string>
+    <string name="preferred_lyrics_file_format_title">Föredraget filformat</string>
+    <string name="preferred_lyrics_file_format_summary">Om en låt har textfiler i olika format kan du välja vilket som prioriteras med denna inställning.</string>
 </resources>
