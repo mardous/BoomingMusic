@@ -30,15 +30,6 @@ sealed class NetworkFeature(
         return false
     }
 
-    object All : NetworkFeature(NETWORK_FEATURES_KEY, false) {
-        override fun isAvailable(context: Context, requireBeOnline: Boolean): Boolean {
-            return preferences.getBoolean(
-                NETWORK_FEATURES_KEY,
-                context.resources.getBoolean(R.bool.enable_network_features)
-            )
-        }
-    }
-
     sealed class Images(preferenceKey: String, isOnByDefault: Boolean) :
         NetworkFeature(preferenceKey, isOnByDefault) {
         object Artists : Images("allow_online_artist_images", true)
