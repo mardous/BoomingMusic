@@ -11,6 +11,7 @@ class LyricsViewSettings(
     val isCenterCurrentLine: Boolean,
     val isCenterHorizontally: Boolean,
     val enableSyllableLyrics: Boolean,
+    val enableKaraokeStyle: Boolean,
     val progressiveColoring: Boolean,
     val backgroundEffect: BackgroundEffect,
     val blurEffect: Boolean,
@@ -43,6 +44,7 @@ class LyricsViewSettings(
     interface Key {
         companion object {
             const val ENABLE_SYLLABLE_LYRICS = "enable_syllable_lyrics"
+            const val ENABLE_KARAOKE_STYLE = "enable_karaoke_style"
             const val USE_CUSTOM_FONT = "lyrics_use_custom_font"
             const val SELECTED_CUSTOM_FONT = "lyrics_custom_font"
             const val CENTER_CURRENT_LINE = "lyrics_center_current_line"

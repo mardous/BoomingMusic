@@ -48,10 +48,11 @@ import com.mardous.booming.extensions.utilities.isRtl
 
 @Composable
 fun KaraokeLineView(
-    shadowEffect: Boolean,
-    position: Long,
+    selectedLine: Boolean,
+    currentMillis: Long,
     syllables: List<SyncedLyrics.Word>,
     contentColor: Color,
+    shadowEffect: Boolean,
     style: TextStyle,
     align: TextAlign,
     modifier: Modifier = Modifier
@@ -76,12 +77,10 @@ fun KaraokeLineView(
             textMeasurer.measure("M", style).size.height.toFloat()
         }
 
-        val isRightAligned = align == TextAlign.End || align == TextAlign.Right
-
-        val finalLineLayouts = remember(wrappedLines, availableWidthPx, lineHeight, isRightAligned) {
+        val finalLineLayouts = remember(wrappedLines, availableWidthPx, lineHeight, align) {
             calculateStaticLineLayout(
                 wrappedLines = wrappedLines,
-                isLineRightAligned = isRightAligned,
+                align = align,
                 canvasWidth = availableWidthPx,
                 lineHeight = lineHeight
             )
@@ -97,8 +96,9 @@ fun KaraokeLineView(
 
         Canvas(modifier = Modifier.size(maxWidth, (totalHeight.toInt() + 8).toDp())) {
             drawLyricsLine(
+                selectedLine = selectedLine,
                 rowRenderData = rowRenderData,
-                currentTimeMs = position,
+                currentTimeMs = currentMillis,
                 contentColor = contentColor,
                 shadowEffect = shadowEffect,
                 isRtl = isLineRtl
@@ -114,10 +114,12 @@ private fun measureSyllables(
 ): List<SyllableLayout> {
     return syllables.map { word ->
         val layoutResult = textMeasurer.measure(word.content, style)
+        val visualLayoutResult = textMeasurer.measure(word.content.trimEnd(), style)
         SyllableLayout(
             word = word,
             textLayoutResult = layoutResult,
             width = layoutResult.size.width.toFloat(),
+            visualWidth = visualLayoutResult.size.width.toFloat(),
             firstBaseline = layoutResult.firstBaseline
         )
     }
@@ -154,7 +156,7 @@ private fun calculateGreedyWrappedLines(
 
 private fun calculateStaticLineLayout(
     wrappedLines: List<WrappedLine>,
-    isLineRightAligned: Boolean,
+    align: TextAlign,
     canvasWidth: Float,
     lineHeight: Float
 ): List<List<SyllableLayout>> {
@@ -162,10 +164,14 @@ private fun calculateStaticLineLayout(
         val maxBaselineInLine = wrappedLine.syllables.maxOfOrNull { it.firstBaseline } ?: 0f
         val rowTopY = lineIndex * lineHeight
 
-        val startX = if (isLineRightAligned) {
-            canvasWidth - wrappedLine.totalWidth
-        } else {
-            0f
+        val lastSyllable = wrappedLine.syllables.lastOrNull()
+        val trailingSpaceWidth = lastSyllable?.let { it.width - it.visualWidth } ?: 0f
+        val visualLineWidth = wrappedLine.totalWidth - trailingSpaceWidth
+
+        val startX = when (align) {
+            TextAlign.End, TextAlign.Right -> canvasWidth - visualLineWidth
+            TextAlign.Center -> (canvasWidth - visualLineWidth) / 2f
+            else -> 0f
         }
 
         var currentX = startX
@@ -194,14 +200,15 @@ private fun calculateRowRenderData(
         val minY = rowLayouts.minOf { it.position.y }
         val totalHeight = rowLayouts.maxOf { it.textLayoutResult.size.height }.toFloat()
 
-        val verticalPadding = (totalHeight * 0.1f) * density
-        val horizontalPadding = (totalWidth * 0.1f) * density
+        val verticalPadding = 12f * density
+        val horizontalPadding = 8f * density
 
         RowRenderData(
             rowLayouts = rowLayouts,
             totalMinX = totalMinX,
             totalMaxX = totalMaxX,
             totalWidth = totalWidth,
+            totalHeight = totalHeight,
             firstWordStart = rowLayouts.first().word.startMillis,
             lastWordEnd = rowLayouts.last().word.endMillis,
             layerBounds = Rect(
@@ -215,6 +222,7 @@ private fun calculateRowRenderData(
 }
 
 private fun DrawScope.drawLyricsLine(
+    selectedLine: Boolean,
     rowRenderData: List<RowRenderData>,
     currentTimeMs: Long,
     contentColor: Color,
@@ -222,8 +230,14 @@ private fun DrawScope.drawLyricsLine(
     isRtl: Boolean
 ) {
     rowRenderData.forEach { rowData ->
-        if (currentTimeMs >= rowData.lastWordEnd) {
-            drawRowText(rowData.rowLayouts, contentColor, currentTimeMs, shadowEffect)
+        if (!selectedLine) {
+            drawRowText(
+                rowLayouts = rowData.rowLayouts,
+                rowHeight = rowData.totalHeight,
+                drawColor = contentColor.copy(alpha = .4f),
+                currentTimeMs = currentTimeMs,
+                shadowEffect = false
+            )
             return@forEach
         }
 
@@ -231,14 +245,20 @@ private fun DrawScope.drawLyricsLine(
             val layerBounds = rowData.layerBounds
             canvas.saveLayer(layerBounds, Paint())
 
-            drawRowText(rowData.rowLayouts, contentColor, currentTimeMs, shadowEffect)
+            drawRowText(
+                rowLayouts = rowData.rowLayouts,
+                rowHeight = rowData.totalHeight,
+                drawColor = contentColor,
+                currentTimeMs = currentTimeMs,
+                shadowEffect = shadowEffect
+            )
 
             val progressBrush = createLineGradientBrush(
                 rowData = rowData,
                 currentTimeMs = currentTimeMs,
                 isRtl = isRtl,
-                activeColor = Color.White,
-                inactiveColor = Color.White.copy(alpha = 0.3f)
+                activeColor = contentColor,
+                inactiveColor = contentColor.copy(alpha = 0.4f)
             )
 
             drawRect(
@@ -254,36 +274,29 @@ private fun DrawScope.drawLyricsLine(
 
 private fun DrawScope.drawRowText(
     rowLayouts: List<SyllableLayout>,
+    rowHeight: Float,
     drawColor: Color,
     currentTimeMs: Long,
     shadowEffect: Boolean
 ) {
     rowLayouts.forEach { syllableLayout ->
         val word = syllableLayout.word
-        val duration = word.durationMillis
 
-        val useAwesomeAnimation = duration >= 1000
-        
-        var offsetY = 0f
-        var blurRadius = 4f
+        val animationDuration = word.durationMillis.coerceIn(400L, 1000L).toFloat()
 
-        if (useAwesomeAnimation &&
-            currentTimeMs >= (word.startMillis - 200) && currentTimeMs <= (word.endMillis + 200)) {
-            val progress = ((currentTimeMs - word.startMillis).toFloat() / duration).coerceIn(0f, 1f)
+        val startTime = word.startMillis
+        val timeSinceStart = (currentTimeMs - startTime).toFloat()
 
-            offsetY = dipAndRiseCurve(progress) * 4f
-            blurRadius = 4f + bounceCurve(progress) * 6f
-        } else {
-            val timeSinceStart = currentTimeMs - word.startMillis
-            if (timeSinceStart in 0..700) {
-                val animProgress = (1f - (timeSinceStart / 700f)).coerceIn(0f, 1f)
-                offsetY = -animProgress * 4f
-            }
-        }
+        val maxElevation = (rowHeight * 0.02f) * density
+
+        val progress = (timeSinceStart / animationDuration).coerceIn(0f, 1f)
+        val smoothProgress = progress * progress * (3 - 2 * progress)
+        val offsetY = smoothProgress * -maxElevation
+        val blurRadius = (4f + smoothProgress * 6f) * density
 
         val shadow = if (shadowEffect) Shadow(
-            color = Color.Black.copy(alpha = 0.5f),
-            offset = Offset(0f, 2f),
+            color = drawColor.copy(alpha = 0.4f),
+            offset = Offset(0f, 2f * density),
             blurRadius = blurRadius
         ) else null
 
@@ -295,9 +308,6 @@ private fun DrawScope.drawRowText(
         )
     }
 }
-
-private fun dipAndRiseCurve(t: Float): Float = (4 * (t - 0.5f).let { it * it } - 1)
-private fun bounceCurve(t: Float): Float = if (t < 0.7f) t / 0.7f else (1f - t) / 0.3f
 
 private fun createLineGradientBrush(
     rowData: RowRenderData,
@@ -389,6 +399,7 @@ internal data class SyllableLayout(
     val word: SyncedLyrics.Word,
     val textLayoutResult: TextLayoutResult,
     val width: Float,
+    val visualWidth: Float,
     val position: Offset = Offset.Zero,
     val firstBaseline: Float = 0f
 )
@@ -405,6 +416,7 @@ internal data class RowRenderData(
     val totalMinX: Float,
     val totalMaxX: Float,
     val totalWidth: Float,
+    val totalHeight: Float,
     val firstWordStart: Long,
     val lastWordEnd: Long,
     val layerBounds: Rect

@@ -143,6 +143,16 @@
             app:key="lyrics_background_effect"/>
 
         <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
+            app:title="@string/lyrics_karaoke_style_title"
+            app:summary="@string/lyrics_karaoke_style_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:dependency="enable_syllable_lyrics"
+            app:key="enable_karaoke_style" />
+
+        <SwitchPreferenceCompat
             app:icon="@drawable/ic_blur_linear_24dp"
             app:title="@string/lyrics_progressive_coloring_title"
             app:summary="@string/lyrics_progressive_coloring_summary"

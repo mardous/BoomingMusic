@@ -311,6 +311,7 @@ class LyricsViewModel(
                 else -> BackgroundEffect.None
             }
         val enableSyllableLyrics = preferences.getBoolean(Key.ENABLE_SYLLABLE_LYRICS, false)
+        val enableKaraokeStyle = preferences.getBoolean(Key.ENABLE_KARAOKE_STYLE, false)
         val progressiveColoring = preferences.getBoolean(Key.PROGRESSIVE_COLORING, false)
         val blurEffect = !background.isNone && preferences.getBoolean(Key.BLUR_EFFECT, false)
         val shadowEffect = !background.isNone && preferences.getBoolean(Key.SHADOW_EFFECT, false)
@@ -357,6 +358,7 @@ class LyricsViewModel(
             isCenterCurrentLine = preferences.getBoolean(Key.CENTER_CURRENT_LINE, false),
             isCenterHorizontally = preferences.getBoolean(Key.CENTER_HORIZONTALLY, false),
             enableSyllableLyrics = enableSyllableLyrics,
+            enableKaraokeStyle = enableKaraokeStyle,
             progressiveColoring = progressiveColoring,
             backgroundEffect = background,
             blurEffect = blurEffect,
@@ -375,6 +377,7 @@ class LyricsViewModel(
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         when (key) {
             Key.ENABLE_SYLLABLE_LYRICS,
+            Key.ENABLE_KARAOKE_STYLE,
             Key.CENTER_CURRENT_LINE,
             Key.CENTER_HORIZONTALLY,
             Key.USE_CUSTOM_FONT,
