@@ -130,7 +130,10 @@ class RealLyricsRepository(
         if (song.id != Song.emptySong.id) {
             try {
                 val metadataReader = MetadataReader(song.uri)
-                val lyrics = metadataReader.value(MetadataReader.LYRICS)
+                var lyrics = metadataReader.value(MetadataReader.LYRICS)
+                if (lyrics.isNullOrEmpty()) {
+                    lyrics = metadataReader.value("UNSYNCEDLYRICS")
+                }
                 return RawLyrics.Embedded(lyrics)
             } catch (e: Exception) {
                 Log.e(TAG, "Couldn't read embedded lyrics for song ${song.data}", e)
