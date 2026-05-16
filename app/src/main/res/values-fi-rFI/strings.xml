@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Esittäjän sekoitus</string>
     <string name="action_share">Jaa</string>
     <string name="action_save">Tallenna</string>
-    <string name="what_do_you_want_to_share">Mitä sinä haluat jakaa?</string>
-    <string name="the_audio_file">Äänitiedosto</string>
-    <string name="i_am_listening">Kuuntelen…</string>
-    <string name="currently_listening_to_x_by_x">Kuuntelen %1$s esittäjältä %2$s</string>
-    <string name="share_to_stories">Jaa tarinoihin</string>
-    <string name="could_not_create_the_story">Tarinaa ei voitu luoda.</string>
     <string name="back_action">Takaisin</string>
     <string name="add_action">Lisää</string>
     <string name="delete_action">Poista</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">Sinun on myönnettävä lupa lukea kuvia laitteesta.</string>
     <string name="permission_exact_alarms_title">Ajoita tarkat hälytykset (valinnainen)</string>
     <string name="permission_exact_alarms_description">Tarkkojen hälytysten ajoittaminen on tarpeen, jotta unen ajastin toimisi kunnolla</string>
-    <string name="permission_ringtone_title">Soittoääni (valinnainen)</string>
-    <string name="permission_ringtone_description">Sovellus tarvitsee luvan käyttää laitteesi asetuksia asettaakseen musiikin soittoääneksi</string>
-    <string name="permission_request_write_settings"><![CDATA[Sinun on sallittava Booming Musiikin muokata järjestelmän asetuksia asettaaksesi <b>%s</b> soittoääneksi]]></string>
     <string name="permissions_denied">Oikeudet evätty</string>
     <string name="permissions_needed">Käyttöoikeudet tarvitaan</string>
     <string name="grant_access_action">Anna käyttöoikeus</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">Kappaleiden luettelo</string>
     <string name="sort_order_descending">Laskeva</string>
     <string name="sort_order_ignore_articles">Ohita artikkelit</string>
-    <string name="action_set_as_ringtone">Aseta soittoääneksi</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Asettaa <b>%s</b> soittoääneksi]]></string>
-    <string name="x_has_been_set_as_ringtone">Aseta %s soittoääneksi</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Aseta %s soittoääneksi ja hälytykseksi</string>
-    <string name="use_also_as_alarm_alert">Käytä myös hälytyksen hälytyksenä</string>
     <string name="action_details">Yksityiskohdat</string>
     <string name="action_set_as_start_directory">Aseta aloituskansioksi</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -830,8 +816,6 @@
     <string name="every_fifteen_days">Joka viides päivä</string>
     <string name="monthly">Kuukausittain</string>
     <string name="never">Ei Koskaan</string>
-    <string name="only_wifi_title">Vain Wi-Fi</string>
-    <string name="only_wifi_summary">Etsi päivityksiä vain kun Wi-Fi on yhdistetty.</string>
     <string name="receive_experimental_updates_title">Vastaanota kokeellisia päivityksiä</string>
     <string name="receive_experimental_updates_summary">Huomaa, että nämä päivitykset ovat usein hyvin epävakaita ja ne on tarkoitettu kokeneille käyttäjille.</string>
     <string name="search_for_update_title">Etsi päivityksiä</string>

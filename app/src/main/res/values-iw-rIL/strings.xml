@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">עירבוב אמנים</string>
     <string name="action_share">שיתוף</string>
     <string name="action_save">שמירה</string>
-    <string name="what_do_you_want_to_share">מה תרצה לשתף?</string>
-    <string name="the_audio_file">קובץ האודיו</string>
-    <string name="i_am_listening">אני מאזין…</string>
-    <string name="currently_listening_to_x_by_x">אני מאזין ל-%1$s של %2$s</string>
-    <string name="share_to_stories">שתף לסטורי</string>
-    <string name="could_not_create_the_story">לא הצלחנו ליצור סטורי.</string>
     <string name="back_action">חזרה</string>
     <string name="add_action">הוספה</string>
     <string name="delete_action">מחיקה</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">עליך להעניק הרשאה לקריאת תמונות מהמכשיר.</string>
     <string name="permission_exact_alarms_title">תזמון התראות מדויקות (אופציונלי)</string>
     <string name="permission_exact_alarms_description">נדרשת הרשאה לתזמן התראות מדויקות כדי שטיימר השינה יפעל כראוי</string>
-    <string name="permission_ringtone_title">צלצול (אופציונלי)</string>
-    <string name="permission_ringtone_description">האפליקציה זקוקה להרשאה לגשת להגדרות המכשיר שלך כדי להגדיר מוזיקה כצלצול</string>
-    <string name="permission_request_write_settings"><![CDATA[עליך לאפשר ל-Booming Music לשנות את הגדרות המערכת על מנת להגדיר את <b>%s</b> כצלצול שלך]]></string>
     <string name="permissions_denied">הרשאות נדחו</string>
     <string name="permissions_needed">הרשאות נדרשות</string>
     <string name="grant_access_action">הענק גישה</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">רשימת רצועות</string>
     <string name="sort_order_descending">סדר יורד</string>
     <string name="sort_order_ignore_articles">התעלם מהמאמרים</string>
-    <string name="action_set_as_ringtone">הגדרה כצלצול</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[יגדיר <b>%s</b> כצלצול שלך]]></string>
-    <string name="x_has_been_set_as_ringtone">הגדרת %s כצלצול שלך</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">הגדר את %s כצלצול שלך וכהתראת שעון מעורר</string>
-    <string name="use_also_as_alarm_alert">שימוש גם כצלצול התראה</string>
     <string name="action_details">פרטים</string>
     <string name="action_set_as_start_directory">הגדר כתיקיית התחלה</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -836,8 +822,6 @@
     <string name="every_fifteen_days">כל חמישה עשר ימים</string>
     <string name="monthly">חודשי</string>
     <string name="never">לעולם לא</string>
-    <string name="only_wifi_title">רק וויי-פיי</string>
-    <string name="only_wifi_summary">חפש עדכונים רק כאשר מחובר ל־וויי-פיי.</string>
     <string name="receive_experimental_updates_title">קבל עדכונים ניסיוניים</string>
     <string name="receive_experimental_updates_summary">שים לב כי עדכונים אלו לעיתים קרובות אינם יציבים ומיועדים למשתמשים מנוסים.</string>
     <string name="search_for_update_title">חפש עדכון</string>

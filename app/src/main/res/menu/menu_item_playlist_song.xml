@@ -33,10 +33,6 @@
         android:title="@string/action_tag_editor"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/action_set_as_ringtone"
-        android:title="@string/action_set_as_ringtone"
-        app:showAsAction="never"/>
-    <item
         android:id="@+id/action_share"
         android:title="@string/action_share"
         app:showAsAction="never"/>

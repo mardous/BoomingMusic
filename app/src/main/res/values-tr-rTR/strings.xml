@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Sanatçı karıştırma</string>
     <string name="action_share">Paylaş</string>
     <string name="action_save">Kaydet</string>
-    <string name="what_do_you_want_to_share">Ne paylaşmak istersiniz?</string>
-    <string name="the_audio_file">Ses dosyası</string>
-    <string name="i_am_listening">Dinliyorum…</string>
-    <string name="currently_listening_to_x_by_x">%2$s - %1$s dinliyorum</string>
-    <string name="share_to_stories">Hikayelerde paylaş</string>
-    <string name="could_not_create_the_story">Hikaye oluşturulamadı.</string>
     <string name="back_action">Geri</string>
     <string name="add_action">Ekle</string>
     <string name="delete_action">Sil</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">Cihazdan görselleri okuma izni vermelisiniz.</string>
     <string name="permission_exact_alarms_title">Tam zamanlı alarmları planla (isteğe bağlı)</string>
     <string name="permission_exact_alarms_description">Uyku zamanlayıcısının düzgün çalışması için tam zamanlı alarmları planlama izni gereklidir</string>
-    <string name="permission_ringtone_title">Zil Sesi (isteğe bağlı)</string>
-    <string name="permission_ringtone_description">Uygulamanın, müziği Zil Sesi olarak ayarlamak için cihaz ayarlarına erişim iznine ihtiyacı var</string>
-    <string name="permission_request_write_settings"><![CDATA[<b>%s</b> şarkısını zil sesiniz olarak ayarlamak için Booming Music\'in sistem ayarlarını değiştirmesine izin vermelisiniz]]></string>
     <string name="permissions_denied">İzinler reddedildi</string>
     <string name="permissions_needed">İzinler gerekli</string>
     <string name="grant_access_action">Erişim izni ver</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">Parça listesi</string>
     <string name="sort_order_descending">Azalan</string>
     <string name="sort_order_ignore_articles">Başlangıçtaki harf-i tarifleri yoksay</string>
-    <string name="action_set_as_ringtone">Zil sesi olarak ayarla</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> zil sesiniz olarak ayarlanacak]]></string>
-    <string name="x_has_been_set_as_ringtone">%s zil sesiniz olarak ayarlandı</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">%s zil sesi ve alarm uyarısı olarak ayarlandı</string>
-    <string name="use_also_as_alarm_alert">Alarm uyarısı olarak da kullan</string>
     <string name="action_details">Ayrıntılar</string>
     <string name="action_set_as_start_directory">Başlangıç dizini olarak ayarla</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -830,8 +816,6 @@
     <string name="every_fifteen_days">On beş günde bir</string>
     <string name="monthly">Aylık</string>
     <string name="never">Asla</string>
-    <string name="only_wifi_title">Sadece Wi-Fi</string>
-    <string name="only_wifi_summary">Yalnızca Wi-Fi bağlıyken güncellemeleri arayın.</string>
     <string name="receive_experimental_updates_title">Deneysel güncellemeleri al</string>
     <string name="receive_experimental_updates_summary">Lütfen bu güncellemelerin genellikle çok kararsız olduğunu ve deneyimli kullanıcılar için tasarlandığını unutmayın.</string>
     <string name="search_for_update_title">Güncelleme ara</string>

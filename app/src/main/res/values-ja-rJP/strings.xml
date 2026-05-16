@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">アーティストシャッフル</string>
     <string name="action_share">共有</string>
     <string name="action_save">保存展開</string>
-    <string name="what_do_you_want_to_share">何を共有しますか？</string>
-    <string name="the_audio_file">オーディオファイル</string>
-    <string name="i_am_listening">私が今聴いているのは…</string>
-    <string name="currently_listening_to_x_by_x">%1$s が %2$sを聴いています</string>
-    <string name="share_to_stories">ストーリーに共有</string>
-    <string name="could_not_create_the_story">ストーリーを作成できませんでした。</string>
     <string name="back_action">戻る</string>
     <string name="add_action">追加</string>
     <string name="delete_action">削除</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">デバイスから画像を読み取る権限を許可する必要があります。</string>
     <string name="permission_exact_alarms_title">正確なアラームをスケジュールする（オプション）</string>
     <string name="permission_exact_alarms_description">スリープタイマーが正常に動作するには、正確なアラームをスケジュールする権限が必要です</string>
-    <string name="permission_ringtone_title">着信音 (オプション)</string>
-    <string name="permission_ringtone_description">音楽を着信音に設定するには、アプリが端末の設定にアクセスする権限が必要です</string>
-    <string name="permission_request_write_settings"><![CDATA[<b>%s</b>を着信音に設定するには、Booming Musicによるシステム設定の変更を許可する必要があります。]]></string>
     <string name="permissions_denied">権限が拒否されました</string>
     <string name="permissions_needed">権限が必要です</string>
     <string name="grant_access_action">アクセスを許可</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">トラックリスト</string>
     <string name="sort_order_descending">降順</string>
     <string name="sort_order_ignore_articles">記事を無視</string>
-    <string name="action_set_as_ringtone">着信音に設定</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> を着信音に設定します]]></string>
-    <string name="x_has_been_set_as_ringtone">%s を着信音に設定</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">%s を着信音とアラームアラートに設定</string>
-    <string name="use_also_as_alarm_alert">アラームアラートとしても使用する</string>
     <string name="action_details">詳細</string>
     <string name="action_set_as_start_directory">開始ディレクトリに設定</string>
     <string name="start_directory_set">開始ディレクトリを %sに設定</string>
@@ -822,8 +808,6 @@
     <string name="every_fifteen_days">15日ごと</string>
     <string name="monthly">月ごと</string>
     <string name="never">一切なし</string>
-    <string name="only_wifi_title">Wi-Fiのみ</string>
-    <string name="only_wifi_summary">Wi-Fi接続時にのみアップデートを検索します。</string>
     <string name="receive_experimental_updates_title">実験的な更新を受け取る</string>
     <string name="receive_experimental_updates_summary">これらのアップデートはしばしば非常に不安定であり、経験豊富なユーザーを対象としています。</string>
     <string name="search_for_update_title">アップデートを検索</string>

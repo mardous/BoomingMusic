@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Blanda artister</string>
     <string name="action_share">Dela</string>
     <string name="action_save">Spara</string>
-    <string name="what_do_you_want_to_share">Vad vill du dela?</string>
-    <string name="the_audio_file">Ljudfilen</string>
-    <string name="i_am_listening">Jag lyssnar…</string>
-    <string name="currently_listening_to_x_by_x">Jag lyssnar på %1$s av %2$s</string>
-    <string name="share_to_stories">Dela till berättelser</string>
-    <string name="could_not_create_the_story">Det gick inte att skapa berättelsen.</string>
     <string name="back_action">Tillbaka</string>
     <string name="add_action">Lägg till</string>
     <string name="delete_action">Radera</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">Du måste ge behörighet att läsa bilder från enheten.</string>
     <string name="permission_exact_alarms_title">Schemalägg exakta alarm (valfritt)</string>
     <string name="permission_exact_alarms_description">Tillstånd att schemalägga exakta larm krävs för att sömntimern ska fungera korrekt</string>
-    <string name="permission_ringtone_title">Ringsignal (valfritt)</string>
-    <string name="permission_ringtone_description">Appen behöver behörighet för att komma åt dina enhetsinställningar för att kunna ställa in musik som ringsignal</string>
-    <string name="permission_request_write_settings"><![CDATA[Du måste tillåta Booming Music att ändra systeminställningarna för att ställa in <b>%s</b> som din ringsignal]]></string>
     <string name="permissions_denied">Åtkomst nekad</string>
     <string name="permissions_needed">Behörigheter behövs</string>
     <string name="grant_access_action">Bevilja åtkomst</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">Spåra lista</string>
     <string name="sort_order_descending">Fallande</string>
     <string name="sort_order_ignore_articles">Ignorera artiklar</string>
-    <string name="action_set_as_ringtone">Ange som ringsignal</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Kommer att sätta <b>%s</b> som din ringsignal]]></string>
-    <string name="x_has_been_set_as_ringtone">Ange %s som ringsignal</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Ange %s som ringsignal och som larmvarning</string>
-    <string name="use_also_as_alarm_alert">Använd även som larmvarning</string>
     <string name="action_details">Detaljer</string>
     <string name="action_set_as_start_directory">Ange som startkatalog</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -830,8 +816,6 @@
     <string name="every_fifteen_days">Var 15:e dag</string>
     <string name="monthly">Månadsvis</string>
     <string name="never">Aldrig</string>
-    <string name="only_wifi_title">Endast Wi-Fi</string>
-    <string name="only_wifi_summary">Sök efter uppdateringar endast när Wi-Fi är anslutet.</string>
     <string name="receive_experimental_updates_title">Få experimentella uppdateringar</string>
     <string name="receive_experimental_updates_summary">Observera att dessa uppdateringar ofta är mycket instabila och är avsedda för erfarna användare.</string>
     <string name="search_for_update_title">Sök efter uppdateringar</string>
@@ -880,9 +864,9 @@
     <string name="lastfm_biography_title">Ladda ner artist- och albumbiografier</string>
     <string name="lastfm_biography_summary">Hämta artist- och albumbiografier från Last.fm.</string>
     <string name="use_lrclib_provider_title">Använd LRCLib-leverantören</string>
-    <string name="use_lrclib_provider_summary">Tillåt nedladdning av låttexter från tjänsten LRCLib.</string>
+    <string name="use_lrclib_provider_summary">Gemenskapsdriven låttextdatabas.</string>
     <string name="use_betterlyrics_provider_title">Använd BetterLyrics-leverantören</string>
-    <string name="use_betterlyrics_provider_summary">Tillåt nedladdning av låttexter från tjänsten BetterLyrics.</string>
+    <string name="use_betterlyrics_provider_summary">Ord för ord synkroniserade sångtexter.</string>
     <string name="channel_mono">Mono</string>
     <string name="channel_stereo">Stereo</string>
     <string name="channel_stereo_2_1">2.1-stereo</string>
@@ -944,4 +928,6 @@
     <string name="listenbrainz_now_playing_title">Uppdatera vad som spelas just nu på ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Visa den låt som spelas just nu på din ListenBrainz-profil i realtid.</string>
     <string name="auto_theme_name">Automatisk</string>
+    <string name="use_lyrically_provider_title">Använd Lyrically leverantör</string>
+    <string name="use_lyrically_provider_summary">Rikt sångtext-API med karaoke och stöd för flera personer.</string>
 </resources>

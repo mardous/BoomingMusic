@@ -100,7 +100,7 @@
             app:summary="@string/min_song_duration_summary"
             android:max="120"
             app:min="0"
-            app:defaultValue="60"
+            app:defaultValue="15"
             app:showSeekBarValue="true"
             app:layout="@layout/list_item_view_bottom_widget"
             app:widgetLayout="@layout/preference_seekbar"

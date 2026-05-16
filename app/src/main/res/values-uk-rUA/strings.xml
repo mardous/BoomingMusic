@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Виконавець перемішиться</string>
     <string name="action_share">Поділитися</string>
     <string name="action_save">Зберегти</string>
-    <string name="what_do_you_want_to_share">Чим ви бажаєте поділитися?</string>
-    <string name="the_audio_file">Аудіофайл</string>
-    <string name="i_am_listening">Я слухаю…</string>
-    <string name="currently_listening_to_x_by_x">Я слухаю %1$s від %2$s</string>
-    <string name="share_to_stories">Поділитися в історіях</string>
-    <string name="could_not_create_the_story">Не вдалося створити історію.</string>
     <string name="back_action">Назад</string>
     <string name="add_action">Додати</string>
     <string name="delete_action">Видалити</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">Ви повинні надати дозвіл на читання зображень з пристрою.</string>
     <string name="permission_exact_alarms_title">Планувати точні будильники (необов\'язково)</string>
     <string name="permission_exact_alarms_description">Дозвіл на планування точних будильників потрібен для коректної роботи таймера сну.</string>
-    <string name="permission_ringtone_title">Мелодія дзвінка (необов\'язково)</string>
-    <string name="permission_ringtone_description">Програмі потрібен дозвіл на доступ до налаштувань пристрою, щоб встановити музику як мелодію дзвінка.</string>
-    <string name="permission_request_write_settings"><![CDATA[Ви повинні дозволити Booming Music змінювати системні налаштування, щоб встановити &lt;b&gt;%s&lt;/b&gt; як мелодію дзвінка.]]></string>
     <string name="permissions_denied">Дозволи відхилено</string>
     <string name="permissions_needed">Потрібні дозволи</string>
     <string name="grant_access_action">Надати доступ</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">Порядок треків</string>
     <string name="sort_order_descending">За спаданням</string>
     <string name="sort_order_ignore_articles">Ігнорувати артиклі</string>
-    <string name="action_set_as_ringtone">Встановити як мелодію дзвінка</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Буде встановлено &lt;b&gt;%s&lt;/b&gt; як вашу мелодію дзвінка]]></string>
-    <string name="x_has_been_set_as_ringtone">%s встановлено як вашу мелодію дзвінка</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">%s встановлено як вашу мелодію дзвінка та сигнал будильника</string>
-    <string name="use_also_as_alarm_alert">Використовувати також як сигнал будильника</string>
     <string name="action_details">Деталі</string>
     <string name="action_set_as_start_directory">Встановити як початкову папку</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -846,8 +832,6 @@
     <string name="every_fifteen_days">Кожні п’ятнадцять днів</string>
     <string name="monthly">Щомісяця</string>
     <string name="never">Ніколи</string>
-    <string name="only_wifi_title">Тільки Wi-Fi</string>
-    <string name="only_wifi_summary">Шукати оновлення лише при підключенні до Wi-Fi.</string>
     <string name="receive_experimental_updates_title">Отримувати експериментальні оновлення</string>
     <string name="receive_experimental_updates_summary">Будь ласка, зверніть увагу, що ці оновлення часто є дуже нестабільними та призначені для досвідчених користувачів.</string>
     <string name="search_for_update_title">Пошук оновлень</string>

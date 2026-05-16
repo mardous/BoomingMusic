@@ -10,18 +10,6 @@ data class SyncedLyrics(
 ) {
     val hasContent = lines.isNotEmpty()
 
-    val rawText: String
-        get() {
-            val buffer = StringBuffer()
-            if (offset != 0L) {
-                buffer.append("[offset:$offset]")
-            }
-            return lines.filter { it.rawIndex > -1 }
-                .sortedBy { it.rawIndex }
-                .joinTo(buffer, "\n") { it.content.rawContent.orEmpty() }
-                .trim().toString()
-        }
-
     init {
         for (line in lines) {
             require(line.startAt >= 0) { "startAt in the LyricsLine must >= 0" }
@@ -36,8 +24,7 @@ data class SyncedLyrics(
         val durationMillis: Long = (end - startAt),
         val content: TextContent,
         val translation: TextContent?,
-        val actor: LyricsActor?,
-        val rawIndex: Int = -1
+        val actor: LyricsActor?
     ) {
         val id: Long = 31 * (31 * startAt + durationMillis) + content.hashCode()
 

@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">아티스트 셔플</string>
     <string name="action_share">공유</string>
     <string name="action_save">저장</string>
-    <string name="what_do_you_want_to_share">무엇을 공유할까요?</string>
-    <string name="the_audio_file">오디오 파일</string>
-    <string name="i_am_listening">듣는 중…</string>
-    <string name="currently_listening_to_x_by_x">%2$s의 %1$s 듣는 중</string>
-    <string name="share_to_stories">스토리에 공유</string>
-    <string name="could_not_create_the_story">스토리를 만들 수 없습니다.</string>
     <string name="back_action">뒤로</string>
     <string name="add_action">추가</string>
     <string name="delete_action">삭제</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">기기에서 이미지를 읽기 위한 권한을 허용해야 합니다.</string>
     <string name="permission_exact_alarms_title">정확한 알람 예약 (선택 사항)</string>
     <string name="permission_exact_alarms_description">취침 예약 기능이 올바르게 작동하려면 정확한 알람 예약 권한이 필요합니다</string>
-    <string name="permission_ringtone_title">벨소리 (선택 사항)</string>
-    <string name="permission_ringtone_description">음악을 벨소리로 설정하기 위해 시스템 설정 액세스 권한이 필요합니다</string>
-    <string name="permission_request_write_settings"><![CDATA[<b>%s</b>을(를) 벨소리로 설정하려면 Booming Music의 시스템 설정 수정을 허용해야 합니다]]></string>
     <string name="permissions_denied">권한 거부됨</string>
     <string name="permissions_needed">권한 필요</string>
     <string name="grant_access_action">액세스 허용</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">트랙 목록순</string>
     <string name="sort_order_descending">내림차순</string>
     <string name="sort_order_ignore_articles">관사 무시</string>
-    <string name="action_set_as_ringtone">벨소리로 설정</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b>을(를) 벨소리로 설정합니다]]></string>
-    <string name="x_has_been_set_as_ringtone">%s이(가) 벨소리로 설정되었습니다</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">%s이(가) 벨소리 및 알람으로 설정되었습니다</string>
-    <string name="use_also_as_alarm_alert">알람으로도 사용</string>
     <string name="action_details">상세 정보</string>
     <string name="action_set_as_start_directory">시작 디렉토리로 설정</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -822,8 +808,6 @@
     <string name="every_fifteen_days">15일마다</string>
     <string name="monthly">매달</string>
     <string name="never">안 함</string>
-    <string name="only_wifi_title">Wi-Fi에서만</string>
-    <string name="only_wifi_summary">Wi-Fi가 연결되었을 때만 업데이트를 확인합니다.</string>
     <string name="receive_experimental_updates_title">실험적 업데이트 받기</string>
     <string name="receive_experimental_updates_summary">불안정할 수 있으며 숙련된 사용자를 위한 설정입니다.</string>
     <string name="search_for_update_title">업데이트 확인</string>

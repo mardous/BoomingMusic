@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Kunstner shuffle</string>
     <string name="action_share">Del</string>
     <string name="action_save">Gem</string>
-    <string name="what_do_you_want_to_share">Hvad ønsker du at dele?</string>
-    <string name="the_audio_file">Lydfilen</string>
-    <string name="i_am_listening">Jeg lytter til…</string>
-    <string name="currently_listening_to_x_by_x">Jeg lytter til %1$s af %2$s</string>
-    <string name="share_to_stories">Del med historier</string>
-    <string name="could_not_create_the_story">Historien kunne ikke oprettes.</string>
     <string name="back_action">Tilbage</string>
     <string name="add_action">Tilføj</string>
     <string name="delete_action">Slet</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">Du skal give tilladelse til at læse billeder fra enheden.</string>
     <string name="permission_exact_alarms_title">Planlæg nøjagtige alarmer (valgfrit)</string>
     <string name="permission_exact_alarms_description">Tilladelse til at planlægge nøjagtige alarmer er nødvendig for at sovemusikeren kan fungere korrekt</string>
-    <string name="permission_ringtone_title">Ringetone (valgfrit)</string>
-    <string name="permission_ringtone_description">App\'en skal have tilladelse til at få adgang til dine enhedsindstillinger for at kunne indstille musikken som Ringtone</string>
-    <string name="permission_request_write_settings"><![CDATA[Du skal tillade Booming Music at ændre systemindstillingerne for at angive <b>%s</b> som din ringetone]]></string>
     <string name="permissions_denied">Tilladelser nægtet</string>
     <string name="permissions_needed">Tilladelser nødvendig</string>
     <string name="grant_access_action">Giv adgang</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">Sporliste</string>
     <string name="sort_order_descending">Faldende</string>
     <string name="sort_order_ignore_articles">Ignorer artikler</string>
-    <string name="action_set_as_ringtone">Angiv som ringetone</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Vil angive <b>%s</b> som din ringetone]]></string>
-    <string name="x_has_been_set_as_ringtone">Angiv %s som din ringetone</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Angiv %s som din ringetone og som alarm alarm</string>
-    <string name="use_also_as_alarm_alert">Brug også som alarm alarm</string>
     <string name="action_details">Detaljer</string>
     <string name="action_set_as_start_directory">Angiv som startmappe</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -830,8 +816,6 @@
     <string name="every_fifteen_days">Hver 15. dag</string>
     <string name="monthly">Månedligt</string>
     <string name="never">Aldrig</string>
-    <string name="only_wifi_title">Kun Wi-Fi</string>
-    <string name="only_wifi_summary">Søg kun efter opdateringer, når Wi-Fi er tilsluttet.</string>
     <string name="receive_experimental_updates_title">Modtag eksperimentelle opdateringer</string>
     <string name="receive_experimental_updates_summary">Bemærk, at disse opdateringer ofte er meget ustabile og er beregnet til erfarne brugere.</string>
     <string name="search_for_update_title">Søg efter opdatering</string>

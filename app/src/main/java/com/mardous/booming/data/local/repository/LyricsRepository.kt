@@ -130,7 +130,10 @@ class RealLyricsRepository(
         if (song.id != Song.emptySong.id) {
             try {
                 val metadataReader = MetadataReader(song.uri)
-                val lyrics = metadataReader.value(MetadataReader.LYRICS)
+                var lyrics = metadataReader.value(MetadataReader.LYRICS)
+                if (lyrics.isNullOrEmpty()) {
+                    lyrics = metadataReader.value("UNSYNCEDLYRICS")
+                }
                 return RawLyrics.Embedded(lyrics)
             } catch (e: Exception) {
                 Log.e(TAG, "Couldn't read embedded lyrics for song ${song.data}", e)
@@ -195,24 +198,17 @@ class RealLyricsRepository(
         newContentBySource: Map<LyricsSource, String>
     ): Boolean? {
         try {
-            val pathWithoutExtension = song.data.removeRange(
-                song.data.lastIndexOf('.'),
-                song.data.length
-            )
+            val editedLyrics = newContentBySource.mapNotNull { (source, content) ->
+                if (source == LyricsSource.File) return@mapNotNull null
 
-            val editedLyrics = newContentBySource.mapNotNull {
-                val originalLyrics = originalLyricsBySource[it.key] ?: when (it.key) {
+                val originalLyrics = originalLyricsBySource[source] ?: when (source) {
                     LyricsSource.Embedded -> RawLyrics.Embedded(null)
                     LyricsSource.Downloaded -> RawLyrics.Stored()
-                    LyricsSource.File -> RawLyrics.File(
-                        file = LyricsFile("$pathWithoutExtension.lrc", LyricsFile.Format.LRC),
-                        lyrics = ""
-                    )
                 }
-                if (originalLyrics.lyrics != it.value) {
+                if (originalLyrics.lyrics != content) {
                     RawLyrics.Edited(
                         originalLyrics = originalLyrics,
-                        newContent = it.value
+                        newContent = content
                     )
                 } else null
             }

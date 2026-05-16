@@ -35,10 +35,6 @@
     <string name="shuffle_mode_artist">Esitajakohane segamine</string>
     <string name="action_share">Jaga</string>
     <string name="action_save">Salvesta</string>
-    <string name="what_do_you_want_to_share">Mida sa tahaksid jagada?</string>
-    <string name="the_audio_file">Helifail</string>
-    <string name="i_am_listening">Ma olen kuulamas…</string>
-    <string name="currently_listening_to_x_by_x">Olen hetkel kuulamas lugu „%1$s“ esitajalt „%2$s“</string>
     <string name="back_action">Tagasi</string>
     <string name="add_action">Lisa</string>
     <string name="delete_action">Kustuta</string>
@@ -263,7 +259,6 @@
     <string name="pick_from_local_storage">Vali kohalikust andmeruumist</string>
     <string name="about_x_title">Rakenduse teave: %s</string>
     <string name="saving_cover_please_wait">Salvesta albumi kaanepilti, oota hetk…</string>
-    <string name="action_set_as_ringtone">Määra helinaks</string>
     <string name="scan_media">Skaneeri meediumi</string>
     <string name="sort_order_date_added">Lisamise kuupäev</string>
     <string name="sort_order_date_modified">Muutmise kuupäev</string>
@@ -489,7 +484,6 @@
     <string name="never">Ei iialgi</string>
     <string name="widget_small_layout_classic">Klassikaline</string>
     <string name="widget_small_layout_simplified">Lihtsustatud</string>
-    <string name="permission_ringtone_title">Telefonihelin (kui soovid)</string>
     <string name="permissions_denied">Õigused puuduvad</string>
     <string name="permissions_needed">Õigused on vajalikud</string>
     <string name="grant_access_action">Anna õigused</string>
@@ -519,9 +513,9 @@
     <string name="lastfm_biography_title">Laadi alla esitajate elulugu ja albumite kirjeldused</string>
     <string name="lastfm_biography_summary">Esitajate elulugu ja albumite kirjeldused laaditakse Last.fm-i teenusest.</string>
     <string name="use_lrclib_provider_title">Kasuta LRCLib teenust</string>
-    <string name="use_lrclib_provider_summary">Luba laulusõnade allalaadimine LRCLib teenusest.</string>
+    <string name="use_lrclib_provider_summary">Kogukonnapõhine laulusõnade andmebaas.</string>
     <string name="use_betterlyrics_provider_title">Kasuta BetterLyrics teenust</string>
-    <string name="use_betterlyrics_provider_summary">Luba laulusõnade allalaadimine BetterLyrics teenusest.</string>
+    <string name="use_betterlyrics_provider_summary">Sõnahaaval sünkroonitud laulusõnad.</string>
     <string name="delete_downloaded_lyrics_title">Kustuta allalaaditud laulusõnad</string>
     <string name="delete_downloaded_lyrics_summary">See käib vaid rakenduse Booming Music poolt allalaaditud laulusõnade kohta. Ei mõjuta laulusõnu, mis on lõimitud ID3v2 siltidesse või LRC-failidena.</string>
     <string name="lyrics_cleared">Laulusõnad on kustutatud.</string>
@@ -560,8 +554,6 @@
     <string name="auto_update_title">Uuenda otsing automaatselt</string>
     <string name="every_day">Iga päev</string>
     <string name="every_fifteen_days">Iga viieteist päeva järel</string>
-    <string name="only_wifi_title">Vaid WiFi võrgus</string>
-    <string name="only_wifi_summary">Otsi uuendusi vaid siis, kui WiFi võrk on ühendatud.</string>
     <string name="receive_experimental_updates_title">Laadi alla ka katselisi versioone</string>
     <string name="receive_experimental_updates_summary">Palun arvesta, et sellised uuendused pole stabiilsed ja on mõeldud kogemustega kasutajatele.</string>
     <string name="uncaught_error_send">Saada aruanne</string>
@@ -632,10 +624,6 @@
     <string name="sleep_timer_stop_after_x_canceled">Peatu „%s“ loo lõppemisel on katkestatud</string>
     <string name="permission_bluetooth_description">Bluetoothi kasutamiseks vajab see rakendus õigust kontrollida lähikonnas asuvaid seadmeid</string>
     <string name="permission_bluetooth_denied">Õigus kontrollida lähikonnast on keelatud.</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Muudab <b>%s</b> pala telefonihelinaks]]></string>
-    <string name="x_has_been_set_as_ringtone">Muuda %s oma telefonihelinaks</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Muuda %s oma telefonihelinaks ja äratuseks</string>
-    <string name="use_also_as_alarm_alert">Kasuta ka äratusena</string>
     <string name="album_artist">Albumi esitaja</string>
     <string name="label_last_modified">Viimati muudetud</string>
     <string name="label_sampling_rate">Diskreetimissagedus</string>
@@ -697,8 +685,6 @@
     <string name="system_default">Süsteemi vaikeseadistus</string>
     <string name="permission_exact_alarms_title">Täpse äratuse ajastamise õigus (pole kohustuslik)</string>
     <string name="permission_exact_alarms_description">Täpse äratuse ajastamise luba on vajalik unetaimeri korrektseks toimimiseks</string>
-    <string name="permission_ringtone_description">Loo lisamiseks helinaks vajab rakendus õigust ligipääsuks nutiseadme seadistustele</string>
-    <string name="permission_request_write_settings"><![CDATA[Kui soovid, et Booming Music lisab <b>%s</b> pala sinu nutiseadme helinaks, siis pead lubama rakendusel süsteemi seadistusi muuta]]></string>
     <string name="list_start">Loendi algus</string>
     <string name="list_end">Loendi lõpp</string>
     <string name="sound_settings">Heliseadistused</string>
@@ -884,8 +870,6 @@
     <string name="ignore_blank_lines_title">Eira tühje ridu</string>
     <string name="ignore_blank_lines_summary">Animeeritud jutumullide asemel eira LRC-failides leiduvaid tühje ridu.</string>
     <string name="enable_audio_float_output_title">Kõrge täpsusega heliväljund</string>
-    <string name="share_to_stories">Jaga lugudesse</string>
-    <string name="could_not_create_the_story">Loo lisamine/loomine ei õnnestunud.</string>
     <string name="open_on_play_summary">Peale loo esitamise alustamist laienda automaatselt „Hetkel esitamisel“ riba vaadet.</string>
     <string name="open_on_play_title">Laiem vaade esitamisel</string>
     <string name="player_blur_intensity_title">Hägustamise intensiivsus</string>
@@ -924,4 +908,6 @@
     <string name="play_option_whole_list_summary">Sisselülitamisel „Esita“ valik loo menüüst esitab kogu esitusloendi. Väljalülitamisel esitatakse vaid see konkreetne lugu.</string>
     <string name="queue_next_mode_title">„Lisa esitamiseks järgmisena“ režiim</string>
     <string name="peek_style">Kiikamine</string>
+    <string name="use_lyrically_provider_title">Kasuta Lyrically teenust</string>
+    <string name="use_lyrically_provider_summary">Paljude võimalustega API, karaoke ja mitme kasutaja toega.</string>
 </resources>

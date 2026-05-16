@@ -288,8 +288,7 @@ internal class TtmlNodeTree {
                                 words = words
                             ),
                             translation = translation?.get(line.key),
-                            actor = line.actor,
-                            rawIndex = i
+                            actor = line.actor
                         )
                     )
                 } else {
@@ -305,8 +304,7 @@ internal class TtmlNodeTree {
                                 words = emptyList()
                             ),
                             translation = translation?.get(line.key),
-                            actor = line.actor,
-                            rawIndex = i
+                            actor = line.actor
                         )
                     )
                 }

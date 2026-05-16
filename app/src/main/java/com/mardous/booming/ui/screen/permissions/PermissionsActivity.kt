@@ -19,7 +19,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.getSystemService
-import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import com.mardous.booming.R
 import com.mardous.booming.databinding.ActivityPermissionBinding
@@ -71,13 +70,6 @@ class PermissionsActivity : AbsBaseActivity() {
                 if (!binding.scheduleExactAlarms.isGranted() && hasS()) {
                     startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
                 }
-            }
-        }
-        binding.ringtone.setButtonOnClickListener {
-            if (!binding.ringtone.isGranted()) {
-                val intent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)
-                intent.data = ("package:" + applicationContext.packageName).toUri()
-                startSettingsActivity(intent)
             }
         }
         binding.finish.setOnClickListener {
@@ -141,7 +133,6 @@ class PermissionsActivity : AbsBaseActivity() {
 
     private fun checkPermissions() {
         binding.storageAccess.setGranted(hasPermissions())
-        binding.ringtone.setGranted(canWriteSettings())
         if (hasS()) {
             binding.nearbyDevices.setGranted(hasNearbyDevicesPermission())
             binding.scheduleExactAlarms.setGranted(canScheduleExactAlarms())
@@ -163,6 +154,4 @@ class PermissionsActivity : AbsBaseActivity() {
     @RequiresApi(Build.VERSION_CODES.S)
     private fun canScheduleExactAlarms(): Boolean =
         getSystemService<AlarmManager>()?.canScheduleExactAlarms() == true
-
-    private fun canWriteSettings(): Boolean = Settings.System.canWrite(this)
 }

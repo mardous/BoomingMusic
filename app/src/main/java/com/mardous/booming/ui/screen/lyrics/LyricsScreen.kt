@@ -74,15 +74,12 @@ import com.mardous.booming.ui.theme.PlayerTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-sealed class LyricsUiState {
-    object Loading : LyricsUiState()
-    object Empty : LyricsUiState()
-    object Instrumental : LyricsUiState()
-
-    sealed class Success(val id: Long) : LyricsUiState() {
-        class Plain(id: Long, val lyrics: String) : Success(id)
-        class Synced(id: Long, val syncedLyrics: SyncedLyrics) : Success(id)
-    }
+sealed class LyricsUiState(open val id: Long) {
+    data class Loading(override val id: Long) : LyricsUiState(id)
+    data class Empty(override val id: Long) : LyricsUiState(id)
+    data class Instrumental(override val id: Long) : LyricsUiState(id)
+    data class Plain(override val id: Long, val lyrics: String) : LyricsUiState(id)
+    data class Synced(override val id: Long, val syncedLyrics: SyncedLyrics) : LyricsUiState(id)
 }
 
 @Composable
@@ -327,7 +324,7 @@ private fun LyricsSurface(
                 )
             }
 
-            is LyricsUiState.Success.Plain -> {
+            is LyricsUiState.Plain -> {
                 val scrollState = rememberScrollState()
 
                 val song by playerViewModel.currentSongFlow.collectAsStateWithLifecycle()
@@ -353,7 +350,7 @@ private fun LyricsSurface(
                 }
             }
 
-            is LyricsUiState.Success.Synced -> {
+            is LyricsUiState.Synced -> {
                 val lyricsViewState = rememberLyricsViewState(uiState.syncedLyrics)
 
                 val progress by playerViewModel.progressFlow.collectAsStateWithLifecycle()

@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Lecture aléatoire des artistes</string>
     <string name="action_share">Partager</string>
     <string name="action_save">Enregistrer</string>
-    <string name="what_do_you_want_to_share">Que voulez-vous partager ?</string>
-    <string name="the_audio_file">Le fichier audio</string>
-    <string name="i_am_listening">J\'écoute…</string>
-    <string name="currently_listening_to_x_by_x">J\'écoute %1$s par %2$s</string>
-    <string name="share_to_stories">Faire une story</string>
-    <string name="could_not_create_the_story">Impossible de créer la story.</string>
     <string name="back_action">Retour</string>
     <string name="add_action">Ajouter</string>
     <string name="delete_action">Supprimer</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">Vous devez accorder la permission de lire les images depuis l\'appareil.</string>
     <string name="permission_exact_alarms_title">Planifier des alarmes exactes (facultatif)</string>
     <string name="permission_exact_alarms_description">L\'autorisation de programmer des alarmes exactes est requise pour que la minuterie de mise en veille fonctionne correctement</string>
-    <string name="permission_ringtone_title">Sonnerie (facultatif)</string>
-    <string name="permission_ringtone_description">L\'application a besoin de l\'autorisation d\'accéder aux paramètres de votre appareil afin de définir la musique comme sonnerie</string>
-    <string name="permission_request_write_settings"><![CDATA[Vous devez autoriser Booming Music à modifier les paramètres système afin de définir <b>%s</b> comme sonnerie]]></string>
     <string name="permissions_denied">Autorisations refusées</string>
     <string name="permissions_needed">Autorisations requises</string>
     <string name="grant_access_action">Accorder l\'accès</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">Liste des titres</string>
     <string name="sort_order_descending">Descendant</string>
     <string name="sort_order_ignore_articles">Ignorer les articles</string>
-    <string name="action_set_as_ringtone">Définir comme sonnerie</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Définira <b>%s</b> comme sonnerie]]></string>
-    <string name="x_has_been_set_as_ringtone">Définir %s comme votre sonnerie</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Définir %s comme sonnerie et comme alerte d\'alarme</string>
-    <string name="use_also_as_alarm_alert">Utiliser aussi comme alerte d\'alarme</string>
     <string name="action_details">Détails</string>
     <string name="action_set_as_start_directory">Définir comme répertoire de démarrage</string>
     <string name="start_directory_set">Répertoire de démarrage défini sur %s</string>
@@ -832,8 +818,6 @@
     <string name="every_fifteen_days">Tous les quinze jours</string>
     <string name="monthly">Mensuel</string>
     <string name="never">Jamais</string>
-    <string name="only_wifi_title">Wi-Fi uniquement</string>
-    <string name="only_wifi_summary">Rechercher les mises à jour uniquement lorsque le Wi-Fi est connecté.</string>
     <string name="receive_experimental_updates_title">Recevoir les mises à jour expérimentales</string>
     <string name="receive_experimental_updates_summary">Veuillez noter que ces mises à jour sont souvent très instables et sont destinées aux utilisateurs expérimentés.</string>
     <string name="search_for_update_title">Recherche de mise à jour</string>
@@ -882,9 +866,9 @@
     <string name="lastfm_biography_title">Télécharger les biographies des artistes et des albums</string>
     <string name="lastfm_biography_summary">Récupérez les biographies des artistes et des albums depuis Last.fm.</string>
     <string name="use_lrclib_provider_title">Utiliser le fournisseur LRCLib</string>
-    <string name="use_lrclib_provider_summary">Autorisez le téléchargement des paroles à partir du service LRCLib.</string>
+    <string name="use_lrclib_provider_summary">Base de données de paroles alimentée par la communauté.</string>
     <string name="use_betterlyrics_provider_title">Utiliser le fournisseur BetterLyrics</string>
-    <string name="use_betterlyrics_provider_summary">Autorisez le téléchargement des paroles depuis le service BetterLyrics.</string>
+    <string name="use_betterlyrics_provider_summary">Paroles synchronisées mot à mot.</string>
     <string name="channel_mono">Mono</string>
     <string name="channel_stereo">Stéréo</string>
     <string name="channel_stereo_2_1">2.1 Stéréo</string>
@@ -947,4 +931,6 @@
     <string name="listenbrainz_scrobbling_summary">Ajouter automatiquement les titres écoutés à votre historique d\'écoute ListenBrainz.</string>
     <string name="listenbrainz_now_playing_title">Mettre à jour la lecture en cours sur ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Affichez en temps réel le titre en cours de lecture sur votre profil ListenBrainz.</string>
+    <string name="use_lyrically_provider_title">Utiliser le fournisseur Lyrically</string>
+    <string name="use_lyrically_provider_summary">API de paroles enrichies avec prise en charge du karaoké et de plusieurs personnes.</string>
 </resources>

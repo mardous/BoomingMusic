@@ -97,15 +97,6 @@
                 app:buttonText="@string/grant_access_action"
                 app:buttonIcon="@drawable/ic_timer_24dp"/>
 
-            <com.mardous.booming.ui.component.views.PermissionView
-                android:id="@+id/ringtone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:permissionTitle="@string/permission_ringtone_title"
-                app:permissionDescription="@string/permission_ringtone_description"
-                app:buttonText="@string/grant_access_action"
-                app:buttonIcon="@drawable/ic_phonelink_ring_24dp"/>
-
         </LinearLayout>
 
     </ScrollView>

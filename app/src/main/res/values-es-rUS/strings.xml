@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Mezcla de artistas</string>
     <string name="action_share">Compartir</string>
     <string name="action_save">Guardar</string>
-    <string name="what_do_you_want_to_share">¿Qué quieres compartir?</string>
-    <string name="the_audio_file">El archivo de audio</string>
-    <string name="i_am_listening">Estoy escuchando…</string>
-    <string name="currently_listening_to_x_by_x">Estoy escuchando %1$s de %2$s</string>
-    <string name="share_to_stories">Compartir a historia</string>
-    <string name="could_not_create_the_story">No se pudo crear la historia.</string>
     <string name="back_action">Atrás</string>
     <string name="add_action">Agregar</string>
     <string name="delete_action">Eliminar</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">Debes conceder el permiso para acceder a las imágenes en el dispositivo.</string>
     <string name="permission_exact_alarms_title">Programar alarmas exactas (opcional)</string>
     <string name="permission_exact_alarms_description">Se requiere programar alarmas exactas para que el temporizador de apagado funcione correctamente</string>
-    <string name="permission_ringtone_title">Tono de llamada (opcional)</string>
-    <string name="permission_ringtone_description">Se necesita acceder a los ajustes del sistema para configurar canciones como tono desde la app</string>
-    <string name="permission_request_write_settings"><![CDATA[Debes permitir que Booming Music modifique la configuración del sistema para configurar <b>%s</b> como tono]]></string>
     <string name="permissions_denied">Permisos denegados</string>
     <string name="permissions_needed">Permisos necesarios</string>
     <string name="grant_access_action">Permitir acceso</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">Número de pista</string>
     <string name="sort_order_descending">Descendente</string>
     <string name="sort_order_ignore_articles">Ignorar artículos</string>
-    <string name="action_set_as_ringtone">Usar como tono de llamada</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Se usará <b>%s</b> como tono de llamada]]></string>
-    <string name="x_has_been_set_as_ringtone">Se configuró %s como tono</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Se configuró %s como tono y como alarma</string>
-    <string name="use_also_as_alarm_alert">Usar también como alarma</string>
     <string name="action_details">Detalles</string>
     <string name="action_set_as_start_directory">Establecer como directorio de inicio</string>
     <string name="start_directory_set">Directorio de inicio establecido a %s</string>
@@ -838,8 +824,6 @@
     <string name="every_fifteen_days">Cada quince días</string>
     <string name="monthly">Mensualmente</string>
     <string name="never">Nunca</string>
-    <string name="only_wifi_title">Solo en wifi</string>
-    <string name="only_wifi_summary">Buscar actualizaciones solo cuando esté conectado el wifi.</string>
     <string name="receive_experimental_updates_title">Recibir actualizaciones experimentales</string>
     <string name="receive_experimental_updates_summary">Tenga en cuenta que estas actualizaciones suelen ser muy inestables y están destinadas a usuarios expertos.</string>
     <string name="search_for_update_title">Buscar actualización</string>
@@ -888,9 +872,9 @@
     <string name="lastfm_biography_title">Descargar biografías de álbumes y artistas</string>
     <string name="lastfm_biography_summary">Obtener biografías de artistas y álbumes desde Last.fm.</string>
     <string name="use_lrclib_provider_title">Usar el proveedor LRCLib</string>
-    <string name="use_lrclib_provider_summary">Permitir la descarga de las letras desde el servicio LRCLib.</string>
+    <string name="use_lrclib_provider_summary">Letras impulsadas por la comunidad.</string>
     <string name="use_betterlyrics_provider_title">Usar el proveedor BetterLyrics</string>
-    <string name="use_betterlyrics_provider_summary">Permitir la descarga de las letras desde el servicio BetterLyrics.</string>
+    <string name="use_betterlyrics_provider_summary">Letras sincronizadas palabra a palabra.</string>
     <string name="channel_mono">Mono</string>
     <string name="channel_stereo">Estéreo</string>
     <string name="channel_stereo_2_1">2.1 Estéreo</string>
@@ -953,4 +937,6 @@
     <string name="listenbrainz_scrobbling_summary">Enviar de forma automática las pistas reproducidas a tu historial de ListenBrainz.</string>
     <string name="listenbrainz_now_playing_title">Actualizar escuchando ahora en ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Muestra la pista que estás escuchando en tu perfil de ListenBrainz en tiempo real.</string>
+    <string name="use_lyrically_provider_title">Usar el proveedor Lyrically</string>
+    <string name="use_lyrically_provider_summary">Letras enriquecidas con soporte para karaoke y múltiples intérpretes.</string>
 </resources>

@@ -94,7 +94,7 @@ class SongListFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, Grid
         menuItem: MenuItem,
         sharedElements: Array<Pair<View, String>>?
     ): Boolean {
-        return song.onSongMenu(this, menuItem, sharedElements)
+        return song.onSongMenu(this, menuItem)
     }
 
     override fun songsMenuItemClick(songs: List<Song>, menuItem: MenuItem) {

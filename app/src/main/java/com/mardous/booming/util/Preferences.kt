@@ -412,16 +412,13 @@ object Preferences : KoinComponent {
         get() = preferences.getInt(ALBUM_MINIMUM_SONGS, 1)
 
     val minimumSongDuration: Int
-        get() = preferences.getInt(MINIMUM_SONG_DURATION, 30)
+        get() = preferences.getInt(MINIMUM_SONG_DURATION, 15)
 
     val rotationLockEnabled: Boolean
         get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)
 
     val updateSearchMode: String
         get() = preferences.requireString(UPDATE_SEARCH_MODE, UpdateSearchMode.WEEKLY)
-
-    val updateOnlyWifi: Boolean
-        get() = preferences.getBoolean(ONLY_WIFI, false)
 
     val experimentalUpdates: Boolean
         get() = preferences.getBoolean(EXPERIMENTAL_UPDATES, false)

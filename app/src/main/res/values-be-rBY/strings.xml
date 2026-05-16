@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Artist shuffle</string>
     <string name="action_share">Share</string>
     <string name="action_save">Save</string>
-    <string name="what_do_you_want_to_share">What do you want to share?</string>
-    <string name="the_audio_file">The audio file</string>
-    <string name="i_am_listening">I\'m listening…</string>
-    <string name="currently_listening_to_x_by_x">I\'m listening to %1$s by %2$s</string>
-    <string name="share_to_stories">Share to stories</string>
-    <string name="could_not_create_the_story">Couldn\'t create the story.</string>
     <string name="back_action">Back</string>
     <string name="add_action">Add</string>
     <string name="delete_action">Delete</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">Schedule exact alarms (optional)</string>
     <string name="permission_exact_alarms_description">Permission to schedule exact alarms is required for the sleep timer to work properly</string>
-    <string name="permission_ringtone_title">Ringtone (optional)</string>
-    <string name="permission_ringtone_description">The app needs permission to access your device settings in order to set music as Ringtone</string>
-    <string name="permission_request_write_settings"><![CDATA[You must allow Booming Music to modify the system settings in order to set <b>%s</b> as your ringtone]]></string>
     <string name="permissions_denied">Permissions denied</string>
     <string name="permissions_needed">Permissions needed</string>
     <string name="grant_access_action">Grant access</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">Track list</string>
     <string name="sort_order_descending">Descending</string>
     <string name="sort_order_ignore_articles">Ignore articles</string>
-    <string name="action_set_as_ringtone">Set as ringtone</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Will set <b>%s</b> as your ringtone]]></string>
-    <string name="x_has_been_set_as_ringtone">Set %s as your ringtone</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Set %s as your ringtone and as alarm alert</string>
-    <string name="use_also_as_alarm_alert">Use also as alarm alert</string>
     <string name="action_details">Details</string>
     <string name="action_set_as_start_directory">Set as start directory</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -846,8 +832,6 @@
     <string name="every_fifteen_days">Every fifteen days</string>
     <string name="monthly">Monthly</string>
     <string name="never">Never</string>
-    <string name="only_wifi_title">Only Wi-Fi</string>
-    <string name="only_wifi_summary">Search for updates only when Wi-Fi is connected.</string>
     <string name="receive_experimental_updates_title">Receive experimental updates</string>
     <string name="receive_experimental_updates_summary">Please note that these updates are often very unstable and are intended for experienced users.</string>
     <string name="search_for_update_title">Search for update</string>

@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">艺人随机播放</string>
     <string name="action_share">分享</string>
     <string name="action_save">保存</string>
-    <string name="what_do_you_want_to_share">您想分享什么？</string>
-    <string name="the_audio_file">音频文件</string>
-    <string name="i_am_listening">我正在听…</string>
-    <string name="currently_listening_to_x_by_x">我正在听%2$s的%1$s</string>
-    <string name="share_to_stories">分享到动态</string>
-    <string name="could_not_create_the_story">无法创建动态。</string>
     <string name="back_action">返回</string>
     <string name="add_action">添加</string>
     <string name="delete_action">删除</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">您需要授予访问所有文件的权限以允许软件读取封面图片。</string>
     <string name="permission_exact_alarms_title">设置精确闹钟(可选)</string>
     <string name="permission_exact_alarms_description">睡眠计时器需要获取设置精确闹钟的权限才能正常工作</string>
-    <string name="permission_ringtone_title">铃声（可选）</string>
-    <string name="permission_ringtone_description">此应用需要访问系统设置权限才能将音乐设置为铃声</string>
-    <string name="permission_request_write_settings"><![CDATA[您必须允许Booming Music修改系统设置才能将 <b>%s</b> 设置为您的铃声]]></string>
     <string name="permissions_denied">权限被拒绝</string>
     <string name="permissions_needed">需要权限</string>
     <string name="grant_access_action">授予访问</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">曲目列表</string>
     <string name="sort_order_descending">降序</string>
     <string name="sort_order_ignore_articles">排序时忽略开头的冠词 (如 The/A/An 等)</string>
-    <string name="action_set_as_ringtone">设置为铃声</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[将把 <b>%s</b> 设置为您的铃声]]></string>
-    <string name="x_has_been_set_as_ringtone">设置 %s 为您的铃声</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">设置 %s 为您的铃声和闹钟提醒</string>
-    <string name="use_also_as_alarm_alert">同时用作闹钟</string>
     <string name="action_details">详细信息</string>
     <string name="action_set_as_start_directory">设置为起始目录</string>
     <string name="start_directory_set">起始目录已设为 %s</string>
@@ -822,8 +808,6 @@
     <string name="every_fifteen_days">每十五天</string>
     <string name="monthly">每月</string>
     <string name="never">永不</string>
-    <string name="only_wifi_title">仅Wi-Fi</string>
-    <string name="only_wifi_summary">仅在 Wi-Fi 连接时搜索更新。</string>
     <string name="receive_experimental_updates_title">接收实验更新</string>
     <string name="receive_experimental_updates_summary">请注意，这些更新常常非常不稳定，仅供有经验的用户试用。</string>
     <string name="search_for_update_title">搜索更新</string>
@@ -872,9 +856,9 @@
     <string name="lastfm_biography_title">下载艺术家和专辑介绍</string>
     <string name="lastfm_biography_summary">从 Last.fm 获取艺术家和专辑的介绍。</string>
     <string name="use_lrclib_provider_title">使用 LRCLib 服务</string>
-    <string name="use_lrclib_provider_summary">允许从 LRCLib 服务下载歌词。</string>
+    <string name="use_lrclib_provider_summary">社区驱动的歌词数据库。</string>
     <string name="use_betterlyrics_provider_title">使用 BetterLyrics 服务</string>
-    <string name="use_betterlyrics_provider_summary">允许从 BetterLyrics 服务下载歌词。</string>
+    <string name="use_betterlyrics_provider_summary">逐词同步歌词服务。</string>
     <string name="channel_quadraphonic">四声道</string>
     <string name="channel_mono">单声道</string>
     <string name="channel_stereo">立体声</string>
@@ -935,4 +919,6 @@
     <string name="listenbrainz_scrobbling_summary">自动提交已播放的曲目到 ListenBrainz 听歌历史。</string>
     <string name="listenbrainz_now_playing_title">在 ListenBrainz 更新正在播放曲目</string>
     <string name="listenbrainz_now_playing_summary">在您的 ListenBrainz 个人资料上实时显示正在播放的曲目。</string>
+    <string name="use_lyrically_provider_title">使用 Lyrically 服务</string>
+    <string name="use_lyrically_provider_summary">支持卡拉 OK 和多歌手的富文本歌词 API。</string>
 </resources>

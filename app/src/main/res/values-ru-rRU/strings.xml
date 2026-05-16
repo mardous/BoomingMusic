@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Перемещать исполнителя</string>
     <string name="action_share">Поделиться</string>
     <string name="action_save">Сохранить</string>
-    <string name="what_do_you_want_to_share">Чем вы хотите поделиться?</string>
-    <string name="the_audio_file">Аудиофайл</string>
-    <string name="i_am_listening">Я слушаю…</string>
-    <string name="currently_listening_to_x_by_x">Я слушаю %1$s от %2$s</string>
-    <string name="share_to_stories">Поделиться в историях</string>
-    <string name="could_not_create_the_story">Не удалось создать историю.</string>
     <string name="back_action">Назад</string>
     <string name="add_action">Добавить</string>
     <string name="delete_action">Удалить</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">Вы должны предоставить разрешение на чтение изображений с устройства.</string>
     <string name="permission_exact_alarms_title">Планировать точные сигналы тревоги (необязательно)</string>
     <string name="permission_exact_alarms_description">Разрешение на планирование точных сигналов тревоги необходимо для корректной работы таймера сна</string>
-    <string name="permission_ringtone_title">Мелодия звонка (необязательно)</string>
-    <string name="permission_ringtone_description">Приложению требуется разрешение на доступ к настройкам устройства, чтобы установить музыку в качестве мелодии звонка</string>
-    <string name="permission_request_write_settings"><![CDATA[Вам необходимо разрешить Booming Music изменять системные настройки, чтобы установить <b>%s</b> в качестве мелодии звонка.]]></string>
     <string name="permissions_denied">Разрешения отклонены</string>
     <string name="permissions_needed">Требуются разрешения</string>
     <string name="grant_access_action">Предоставить доступ</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">Порядок треков</string>
     <string name="sort_order_descending">По убыванию</string>
     <string name="sort_order_ignore_articles">Игнорировать статьи</string>
-    <string name="action_set_as_ringtone">Установить как рингтон</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Будет установлен <b>%s</b> как ваша мелодия звонка]]></string>
-    <string name="x_has_been_set_as_ringtone">%s установлен как ваша мелодия звонка</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">%s установлен как ваша мелодия звонка и сигнал будильника</string>
-    <string name="use_also_as_alarm_alert">Использовать также как сигнал будильника</string>
     <string name="action_details">Подробности</string>
     <string name="action_set_as_start_directory">Установить как начальную папку</string>
     <string name="start_directory_set">Начальная папка установлена по пути %s</string>
@@ -846,8 +832,6 @@
     <string name="every_fifteen_days">Каждые пятнадцать дней</string>
     <string name="monthly">Ежемесячно</string>
     <string name="never">Никогда</string>
-    <string name="only_wifi_title">Только Wi-Fi</string>
-    <string name="only_wifi_summary">Искать обновления только при подключении к Wi-Fi.</string>
     <string name="receive_experimental_updates_title">Получать экспериментальные обновления</string>
     <string name="receive_experimental_updates_summary">Пожалуйста, обратите внимание, что эти обновления часто очень нестабильны и предназначены для опытных пользователей.</string>
     <string name="search_for_update_title">Поиск обновлений</string>

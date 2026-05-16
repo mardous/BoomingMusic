@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">خلط الفنان</string>
     <string name="action_share">مشاركة</string>
     <string name="action_save">حفظ</string>
-    <string name="what_do_you_want_to_share">ما الذي تريد مشاركته؟</string>
-    <string name="the_audio_file">الملف الصوتي</string>
-    <string name="i_am_listening">أنا أستمع إلى…</string>
-    <string name="currently_listening_to_x_by_x">أنا أستمع إلى %1$s بواسطة %2$s</string>
-    <string name="share_to_stories">شارك في القصص</string>
-    <string name="could_not_create_the_story">تعذر إنشاء القصة.</string>
     <string name="back_action">الرجوع</string>
     <string name="add_action">إضافة</string>
     <string name="delete_action">حذف</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">يجب عليك منح الإذن لقراءة الصور من الجهاز.</string>
     <string name="permission_exact_alarms_title">جدولة التنبيهات الدقيقة (اختياري)</string>
     <string name="permission_exact_alarms_description">إذن لجدولة التنبيهات الدقيقة مطلوب لكي يعمل مؤقت النوم بشكل صحيح</string>
-    <string name="permission_ringtone_title">نغمة الرنين (اختياري)</string>
-    <string name="permission_ringtone_description">يحتاج التطبيق إلى إذن للوصول إلى إعدادات جهازك من أجل تعيين الموسيقى كنغمة رنين</string>
-    <string name="permission_request_write_settings"><![CDATA[يجب عليك السماح للموسيقى المزدهرة لتعديل إعدادات النظام من أجل تعيين <b>%s</b> كنغمة رنين]]></string>
     <string name="permissions_denied">تم رفض الأذونات</string>
     <string name="permissions_needed">الأذونات مطلوبة</string>
     <string name="grant_access_action">منح الوصول</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">قائمة التتبع</string>
     <string name="sort_order_descending">تنازلي</string>
     <string name="sort_order_ignore_articles">تجاهل المقالات</string>
-    <string name="action_set_as_ringtone">تعيين كنغمة رنين</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[سيتم تعيين <b>%s</b> كنغمة رنين]]></string>
-    <string name="x_has_been_set_as_ringtone">تعيين %s كنغمة رنين</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">تعيين %s كنغمة رنين وتنبيه</string>
-    <string name="use_also_as_alarm_alert">استخدام أيضا كتنبيه</string>
     <string name="action_details">التفاصيل</string>
     <string name="action_set_as_start_directory">تعيين كدليل للبدء</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -862,8 +848,6 @@
     <string name="every_fifteen_days">كل خمسة عشر يوما</string>
     <string name="monthly">شهريا</string>
     <string name="never">لا</string>
-    <string name="only_wifi_title">شبكة Wi-Fi فقط</string>
-    <string name="only_wifi_summary">البحث عن تحديثات فقط عند الاتصال بشبكة Wi-Fi.</string>
     <string name="receive_experimental_updates_title">تلقي تحديثات تجريبية</string>
     <string name="receive_experimental_updates_summary">يرجى ملاحظة أن هذه التحديثات غالبا ما تكون غير مستقرة جدا وهي مخصصة للمستخدمين ذوي الخبرة.</string>
     <string name="search_for_update_title">البحث عن تحديث</string>

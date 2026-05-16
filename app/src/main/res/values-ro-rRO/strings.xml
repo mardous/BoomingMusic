@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Amestecare Artist</string>
     <string name="action_share">Distribuie</string>
     <string name="action_save">Salvează</string>
-    <string name="what_do_you_want_to_share">Ce vrei să partajezi?</string>
-    <string name="the_audio_file">Fișierul audio</string>
-    <string name="i_am_listening">Eu ascult…</string>
-    <string name="currently_listening_to_x_by_x">Eu ascult %1$s de %2$s</string>
-    <string name="share_to_stories">Distribuie povestirilor</string>
-    <string name="could_not_create_the_story">Nu s-a putut crea povestea.</string>
     <string name="back_action">Back</string>
     <string name="add_action">Adăugare</string>
     <string name="delete_action">Ștergere</string>
@@ -136,9 +130,6 @@
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permission_exact_alarms_title">Programează alarmele exacte (opțional)</string>
     <string name="permission_exact_alarms_description">Permisiunea de a programa alarmele este necesară pentru ca temporizatorul de somn să funcționeze corespunzător</string>
-    <string name="permission_ringtone_title">Ton sonerie (opţional)</string>
-    <string name="permission_ringtone_description">Aplicația are nevoie de permisiunea de a accesa setările dispozitivului pentru a seta muzica ca ton de apel</string>
-    <string name="permission_request_write_settings"><![CDATA[Trebuie să permiteți muzicii de fierbere să modifice setările de sistem pentru a seta <b>%s</b> ca ton de apel]]></string>
     <string name="permissions_denied">Permisiuni refuzate</string>
     <string name="permissions_needed">Permisiuni necesare</string>
     <string name="grant_access_action">Acordă acces</string>
@@ -236,11 +227,6 @@
     <string name="sort_order_track_list">Urmărire listă</string>
     <string name="sort_order_descending">Descrescător</string>
     <string name="sort_order_ignore_articles">Ignoră articole</string>
-    <string name="action_set_as_ringtone">Setare ca ton de apel</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Va seta <b>%s</b> ca ton de apel]]></string>
-    <string name="x_has_been_set_as_ringtone">Setează %s ca ton de apel</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Setaţi %s ca ton de apel şi ca alertă de alarmă</string>
-    <string name="use_also_as_alarm_alert">Utilizați și ca alertă de alarmă</string>
     <string name="action_details">Detalii</string>
     <string name="action_set_as_start_directory">Setează ca director de pornire</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -838,8 +824,6 @@
     <string name="every_fifteen_days">La fiecare cincisprezece zile</string>
     <string name="monthly">Lunar</string>
     <string name="never">Niciodată</string>
-    <string name="only_wifi_title">Numai Wi-Fi</string>
-    <string name="only_wifi_summary">Căutaţi actualizări numai atunci când Wi-Fi este conectat.</string>
     <string name="receive_experimental_updates_title">Primește actualizări experimentale</string>
     <string name="receive_experimental_updates_summary">Vă rugăm să reţineţi că aceste actualizări sunt adesea foarte instabile şi sunt destinate utilizatorilor experimentaţi.</string>
     <string name="search_for_update_title">Căutare actualizare</string>
