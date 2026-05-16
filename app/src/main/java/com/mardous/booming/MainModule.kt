@@ -342,7 +342,7 @@ private val viewModule = module {
     }
 
     viewModel {
-        LyricsViewModel(preferences = get(), repository = get())
+        LyricsViewModel(application = androidApplication(), preferences = get(), repository = get())
     }
 
     viewModel {

@@ -32,22 +32,22 @@ sealed class NetworkFeature(
 
     sealed class Images(preferenceKey: String, isOnByDefault: Boolean) :
         NetworkFeature(preferenceKey, isOnByDefault) {
-        object Artists : Images("allow_online_artist_images", true)
-        object Albums : Images("allow_online_album_covers", false)
+        object Artists : Images(ALLOW_ONLINE_ARTIST_IMAGES_KEY, true)
+        object Albums : Images(ALLOW_ONLINE_ALBUM_COVERS_KEY, false)
     }
 
     sealed class Lyrics(preferenceKey: String, isOnByDefault: Boolean) :
         NetworkFeature(preferenceKey, isOnByDefault) {
-        object BetterLyrics : Lyrics("betterlyrics_enabled", false)
-        object Lyrically : Lyrics("lyrically_enabled", false)
-        object LRCLib : Lyrics("lrclib_enabled", true)
+        object BetterLyrics : Lyrics(BETTERLYRICS_ENABLED_KEY, false)
+        object Lyrically : Lyrics(LYRICALLY_ENABLED_KEY, false)
+        object LRCLib : Lyrics(LRCLIB_ENABLED_KEY, true)
     }
 
     sealed class Lastfm(preferenceKey: String, isOnByDefault: Boolean) :
         NetworkFeature(preferenceKey, isOnByDefault) {
-        object Scrobbling : Lastfm("lastfm_scrobbling_enabled", false)
-        object NowPlaying : Lastfm("lastfm_now_playing_enabled", false)
-        object Biographies : Lastfm("lastfm_info_enabled", true)
+        object Scrobbling : Lastfm(LASTFM_SCROBBLING_ENABLED_KEY, false)
+        object NowPlaying : Lastfm(LASTFM_NOW_PLAYING_ENABLED_KEY, false)
+        object Biographies : Lastfm(LASTFM_INFO_ENABLED_KEY, true)
 
         override fun isAvailable(context: Context, requireBeOnline: Boolean): Boolean {
             val isIntegrationEnabled = context.resources.getBoolean(R.bool.enable_lastfm_integration)
@@ -57,11 +57,11 @@ sealed class NetworkFeature(
 
     sealed class ListenBrainz(preferenceKey: String, isOnByDefault: Boolean) :
         NetworkFeature(preferenceKey, isOnByDefault) {
-        object Scrobbling : ListenBrainz("listenbrainz_scrobbling_enabled", false)
-        object NowPlaying : ListenBrainz("listenbrainz_now_playing_enabled", false)
+        object Scrobbling : ListenBrainz(LISTENBRAINZ_SCROBBLING_ENABLED_KEY, false)
+        object NowPlaying : ListenBrainz(LISTENBRAINZ_NOW_PLAYING_ENABLED_KEY, false)
     }
 
-    data object Updater : NetworkFeature("update_search_mode", false) {
+    data object Updater : NetworkFeature(UPDATE_SEARCH_MODE_KEY, false) {
         override fun isAvailable(context: Context, requireBeOnline: Boolean): Boolean {
             if (!context.resources.getBoolean(R.bool.enable_app_update))
                 return false
@@ -85,6 +85,17 @@ sealed class NetworkFeature(
     companion object : KoinComponent {
         const val NETWORK_FEATURES_KEY = "network_features"
         const val ONLY_WIFI_NETWORK_KEY = "wifi_only_network"
+        const val ALLOW_ONLINE_ARTIST_IMAGES_KEY = "allow_online_artist_images"
+        const val ALLOW_ONLINE_ALBUM_COVERS_KEY = "allow_online_album_covers"
+        const val BETTERLYRICS_ENABLED_KEY = "betterlyrics_enabled"
+        const val LYRICALLY_ENABLED_KEY = "lyrically_enabled"
+        const val LRCLIB_ENABLED_KEY = "lrclib_enabled"
+        const val LASTFM_SCROBBLING_ENABLED_KEY = "lastfm_scrobbling_enabled"
+        const val LASTFM_NOW_PLAYING_ENABLED_KEY = "lastfm_now_playing_enabled"
+        const val LASTFM_INFO_ENABLED_KEY = "lastfm_info_enabled"
+        const val LISTENBRAINZ_SCROBBLING_ENABLED_KEY = "listenbrainz_scrobbling_enabled"
+        const val LISTENBRAINZ_NOW_PLAYING_ENABLED_KEY = "listenbrainz_now_playing_enabled"
+        const val UPDATE_SEARCH_MODE_KEY = "update_search_mode"
 
         fun isOnline(context: Context, ignoreWifiSetting: Boolean = false): Boolean {
             val cm = context.getSystemService<ConnectivityManager>() ?: return false

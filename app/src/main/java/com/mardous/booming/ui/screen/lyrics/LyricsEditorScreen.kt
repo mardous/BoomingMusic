@@ -100,6 +100,7 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.LyricsMode
 import com.mardous.booming.data.model.lyrics.LyricsSource
 import com.mardous.booming.data.model.lyrics.RawLyrics
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
@@ -107,7 +108,6 @@ import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.webSearch
 import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.component.compose.MediaImage
-import com.mardous.booming.ui.component.compose.TipView
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinActivityViewModel
@@ -201,6 +201,7 @@ fun LyricsEditorScreen(
         }
     }
 
+    var showNoConnectionDialog by remember { mutableStateOf(false) }
     var showLyricsDownloadDialog by remember { mutableStateOf(false) }
     var showLyricsSearchDialog by remember { mutableStateOf(false) }
     var downloadedLyricsForSelector by rememberSaveable { mutableStateOf<RawLyrics.Remote?>(null) }
@@ -240,6 +241,8 @@ fun LyricsEditorScreen(
     LaunchedEffect(Unit) {
         viewModel.loadEditorContent(song)
     }
+
+    val isLyricsDownloadEnabled by viewModel.lyricsDownloadEnabled.collectAsStateWithLifecycle()
 
     val uiState by viewModel.lyricsEditorUiState.collectAsStateWithLifecycle()
     val editedContent = rememberSaveable(saver = SnapshotMapSaver) { mutableStateMapOf() }
@@ -283,6 +286,18 @@ fun LyricsEditorScreen(
         )
     }
 
+    if (showNoConnectionDialog) {
+        AlertDialog(
+            onDismissRequest = { showNoConnectionDialog = false },
+            text = { Text(stringResource(R.string.connection_unavailable)) },
+            confirmButton = {
+                Button(onClick = { showNoConnectionDialog = false }) {
+                    Text(stringResource(R.string.close_action))
+                }
+            }
+        )
+    }
+
     if (showLyricsDownloadDialog) {
         LyricsSearchDialog(
             song = song,
@@ -314,6 +329,14 @@ fun LyricsEditorScreen(
 
     fun saveContent() {
         viewModel.saveLyrics(song, editedContent)
+    }
+
+    fun downloadLyrics() {
+        if (NetworkFeature.isOnline(context)) {
+            showLyricsDownloadDialog = true
+        } else {
+            showNoConnectionDialog =  true
+        }
     }
 
     fun undoChanges() {
@@ -364,8 +387,9 @@ fun LyricsEditorScreen(
                     TopAppBarActions(
                         isLandscape = isLandscape,
                         enabled = !uiState.isLoading && !isFileSource,
+                        downloadEnabled = isLyricsDownloadEnabled,
                         onSaveClick = { saveContent() },
-                        onDownloadClick = { showLyricsDownloadDialog = true },
+                        onDownloadClick = { downloadLyrics() },
                         onSearchClick = { showLyricsSearchDialog = true },
                         onPasteClick = { pasteFromClipboard() },
                         onUndoChangesClick = { undoChanges() },
@@ -378,8 +402,9 @@ fun LyricsEditorScreen(
             if (!isLandscape) {
                 LyricsEditorBottomBar(
                     enabled = !uiState.isLoading && !isFileSource,
+                    downloadEnabled = isLyricsDownloadEnabled,
                     onSearchClick = { showLyricsSearchDialog = true },
-                    onDownloadClick = { showLyricsDownloadDialog = true },
+                    onDownloadClick = { downloadLyrics() },
                     onSelectAllClick = { selectAllText() },
                     onPasteClick = { pasteFromClipboard() },
                     onUndoChangesClick = { undoChanges() },
@@ -654,6 +679,7 @@ private fun LyricsEditorHeader(
 @Composable
 private fun LyricsEditorBottomBar(
     enabled: Boolean,
+    downloadEnabled: Boolean,
     onSearchClick: () -> Unit,
     onDownloadClick: () -> Unit,
     onPasteClick: () -> Unit,
@@ -674,7 +700,7 @@ private fun LyricsEditorBottomBar(
         }
         IconButton(
             onClick = onDownloadClick,
-            enabled = enabled
+            enabled = enabled && downloadEnabled
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_download_24dp),
@@ -752,6 +778,7 @@ private fun LyricsEditorBottomBar(
 fun TopAppBarActions(
     isLandscape: Boolean,
     enabled: Boolean,
+    downloadEnabled: Boolean,
     onSaveClick: () -> Unit,
     onDownloadClick: () -> Unit,
     onSearchClick: () -> Unit,
@@ -773,14 +800,16 @@ fun TopAppBarActions(
                 contentDescription = stringResource(R.string.action_save)
             )
         }
-        IconButton(
-            onClick = onDownloadClick,
-            enabled = enabled
-        ) {
-            Icon(
-                painter = painterResource(R.drawable.ic_download_24dp),
-                contentDescription = stringResource(R.string.download_lyrics)
-            )
+        if (downloadEnabled) {
+            IconButton(
+                onClick = onDownloadClick,
+                enabled = enabled
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_download_24dp),
+                    contentDescription = stringResource(R.string.download_lyrics)
+                )
+            }
         }
         IconButton(
             onClick = { showMenu = true },

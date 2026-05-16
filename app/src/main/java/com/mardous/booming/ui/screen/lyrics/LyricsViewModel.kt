@@ -1,5 +1,6 @@
 package com.mardous.booming.ui.screen.lyrics
 
+import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
@@ -12,7 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.core.content.edit
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
@@ -23,6 +24,10 @@ import com.mardous.booming.data.local.repository.LyricsRepository
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.LyricsSource
 import com.mardous.booming.data.model.lyrics.RawLyrics
+import com.mardous.booming.data.model.network.NetworkFeature
+import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.BetterLyrics
+import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.LRCLib
+import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.Lyrically
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -40,9 +45,10 @@ import com.mardous.booming.core.model.lyrics.LyricsViewSettings.Mode as LyricsVi
  * @author Christians M. A. (mardous)
  */
 class LyricsViewModel(
+    application: Application,
     private val preferences: SharedPreferences,
     private val repository: LyricsRepository
-) : ViewModel(), OnSharedPreferenceChangeListener {
+) : AndroidViewModel(application), OnSharedPreferenceChangeListener {
 
     private var instrumentalDetector: InstrumentalDetector
 
@@ -51,6 +57,9 @@ class LyricsViewModel(
 
     private val _lyricsEditorUiState = MutableStateFlow<LyricsEditorUiState>(LyricsEditorUiState.Disposed)
     val lyricsEditorUiState = _lyricsEditorUiState.asStateFlow()
+
+    private val _lyricsDownloadEnabled = MutableStateFlow(isLyricsDownloadEnabled(application))
+    val lyricsDownloadEnabled = _lyricsDownloadEnabled.asStateFlow()
 
     private val _saveEvent = Channel<LyricsEditorResult>(Channel.BUFFERED)
     val saveEvent = _saveEvent.receiveAsFlow()
@@ -357,6 +366,12 @@ class LyricsViewModel(
         )
     }
 
+    private fun isLyricsDownloadEnabled(context: Context): Boolean {
+        return BetterLyrics.isAvailable(context, false) ||
+                Lyrically.isAvailable(context, false) ||
+                LRCLib.isAvailable(context, false)
+    }
+
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         when (key) {
             Key.ENABLE_SYLLABLE_LYRICS,
@@ -380,6 +395,12 @@ class LyricsViewModel(
             Key.SYNCED_FONT_SIZE_FULL,
             Key.UNSYNCED_FONT_SIZE_FULL -> {
                 _fullLyricsViewSettings.value = createViewSettings(LyricsViewMode.Full)
+            }
+            NetworkFeature.NETWORK_FEATURES_KEY,
+            NetworkFeature.BETTERLYRICS_ENABLED_KEY,
+            NetworkFeature.LYRICALLY_ENABLED_KEY,
+            NetworkFeature.LRCLIB_ENABLED_KEY -> {
+                _lyricsDownloadEnabled.value = isLyricsDownloadEnabled(getApplication())
             }
             INSTRUMENTAL_TRACK_IDENTIFIERS,
             MARK_INSTRUMENTAL_BY_TITLE -> {
