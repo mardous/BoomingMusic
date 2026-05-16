@@ -282,7 +282,7 @@
     <string name="label_loss_less">Sem perda</string>
     <string name="label_bit_rate">Bitrate</string>
     <string name="label_sampling_rate">Taxa de amostragem</string>
-    <string name="replay_gain">ReplayGain</string>
+    <string name="replay_gain">Ganho de repetição</string>
     <string name="comment">Comentar</string>
     <string name="last_played">Reproduzida pela última vez</string>
     <string name="played">Reproduzida</string>
@@ -389,7 +389,7 @@
     <string name="shuffle_mode_combined_description">Mix com base nos seus favoritos, mais tocadas e recentes.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizador</string>
-    <string name="autoeq_label">AutoEq</string>
+    <string name="autoeq_label">Eq automático</string>
     <string name="graphic_eq_label">Graphic EQ</string>
     <string name="graphic_eq_band_count">banda-%d</string>
     <string name="eq_profiles_title">Perfis de EQ</string>
@@ -489,8 +489,8 @@
     <string name="sleep_timer_cancel_current_timer">Cancelar</string>
     <string name="sleep_timer_set_action">Definir</string>
     <string name="sleep_timer_x_mins">%d mins</string>
-    <string name="sleep_timer_15_mins">15 mins</string>
-    <string name="sleep_timer_45_mins">45 mins</string>
+    <string name="sleep_timer_15_mins">15 minutos</string>
+    <string name="sleep_timer_45_mins">45 minutos</string>
     <string name="sleep_timer_1_hour">1 hora</string>
     <string name="sleep_timer_2_hour">2 horas</string>
     <string name="sleep_timer_finish_current_music">Terminar última música</string>
@@ -939,4 +939,11 @@
     <string name="songs_added_to_playlists">Músicas adicionadas a playlists.</string>
     <string name="no_playlists_that_match_x">Não há playlists que correspondam a \"%s\"</string>
     <string name="search_playlists">Buscar playlists</string>
+    <string name="file_lyrics">Arquivo</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LRC</string>
+    <string name="undo_changes">Desfazer alterações</string>
+    <string name="cannot_edit_lyrics_file">Não é possível editar o conteúdo do arquivo diretamente no Booming Music.</string>
+    <string name="preferred_lyrics_file_format_title">Formato de arquivo preferido</string>
+    <string name="preferred_lyrics_file_format_summary">Se uma música tiver arquivos de letras em formatos diferentes, esta opção permite que você escolha qual terá prioridade.</string>
 </resources>
