@@ -1,1 +1,0 @@
-Un lecteur de musique épuré, rapide et basé sur Material Design, doté de fonctionnalités puissantes
