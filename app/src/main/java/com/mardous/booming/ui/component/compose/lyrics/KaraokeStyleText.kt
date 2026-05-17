@@ -133,18 +133,32 @@ private fun calculateGreedyWrappedLines(
     val currentLine = mutableListOf<SyllableLayout>()
     var currentLineWidth = 0f
 
+    val wordBlocks = mutableListOf<List<SyllableLayout>>()
+    val currentBlock = mutableListOf<SyllableLayout>()
+
     syllableLayouts.forEach { layout ->
-        if (currentLineWidth + layout.width <= availableWidthPx) {
-            currentLine.add(layout)
-            currentLineWidth += layout.width
+        currentBlock.add(layout)
+        if (layout.word.content.any { it.isWhitespace() }) {
+            wordBlocks.add(currentBlock.toList())
+            currentBlock.clear()
+        }
+    }
+
+    if (currentBlock.isNotEmpty()) {
+        wordBlocks.add(currentBlock.toList())
+    }
+
+    wordBlocks.forEach { block ->
+        val blockWidth = block.sumOf { it.width.toDouble() }.toFloat()
+
+        if (currentLine.isEmpty() || currentLineWidth + blockWidth <= availableWidthPx) {
+            currentLine.addAll(block)
+            currentLineWidth += blockWidth
         } else {
-            if (currentLine.isNotEmpty()) {
-                lines.add(WrappedLine(currentLine.toList(), currentLineWidth))
-                currentLine.clear()
-                currentLineWidth = 0f
-            }
-            currentLine.add(layout)
-            currentLineWidth += layout.width
+            lines.add(WrappedLine(currentLine.toList(), currentLineWidth))
+            currentLine.clear()
+            currentLine.addAll(block)
+            currentLineWidth = blockWidth
         }
     }
 
@@ -230,7 +244,7 @@ private fun DrawScope.drawLyricsLine(
     isRtl: Boolean
 ) {
     rowRenderData.forEach { rowData ->
-        if (!selectedLine) {
+        if (currentTimeMs >= rowData.lastWordEnd && !selectedLine) {
             drawRowText(
                 rowLayouts = rowData.rowLayouts,
                 rowHeight = rowData.totalHeight,
@@ -250,7 +264,7 @@ private fun DrawScope.drawLyricsLine(
                 rowHeight = rowData.totalHeight,
                 drawColor = contentColor,
                 currentTimeMs = currentTimeMs,
-                shadowEffect = shadowEffect
+                shadowEffect = shadowEffect && selectedLine
             )
 
             val progressBrush = createLineGradientBrush(
@@ -282,7 +296,7 @@ private fun DrawScope.drawRowText(
     rowLayouts.forEach { syllableLayout ->
         val word = syllableLayout.word
 
-        val animationDuration = word.durationMillis.coerceIn(400L, 1000L).toFloat()
+        val animationDuration = word.durationMillis.coerceIn(300, 1000).toFloat()
 
         val startTime = word.startMillis
         val timeSinceStart = (currentTimeMs - startTime).toFloat()
@@ -298,7 +312,7 @@ private fun DrawScope.drawRowText(
             color = drawColor.copy(alpha = 0.4f),
             offset = Offset(0f, 2f * density),
             blurRadius = blurRadius
-        ) else null
+        ) else Shadow.None
 
         drawText(
             textLayoutResult = syllableLayout.textLayoutResult,
