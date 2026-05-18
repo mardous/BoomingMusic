@@ -41,17 +41,17 @@ fun Color.onThis(
     }
 }
 
-fun Bitmap.extractGradientColors(): List<Color> {
+fun Bitmap.extractGradientColors(fallbackColorArgb: Int): List<Color> {
     val extractedColors = Palette.from(this)
         .maximumColorCount(16)
         .generate()
         .swatches
         .associate { it.rgb to it.population }
 
-    val orderedColors = Score.score(extractedColors, 4, 0xff4285f4.toInt(), true)
-
-    return if (orderedColors.isNotEmpty())
+    val orderedColors = Score.score(extractedColors, 4, fallbackColorArgb, true)
+    return if (orderedColors.isNotEmpty()) {
         orderedColors.map { Color(it).darken(20.0) }
-    else
-        listOf(Color(0xFF262626), Color(0xFF1A1A1A), Color(0xFF0D0D0D))
+    } else {
+        emptyList()
+    }
 }

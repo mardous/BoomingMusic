@@ -33,6 +33,10 @@ data class SyncedLyrics(
         val isWordSynced = content.isWordSynced
 
         val hasBackgroundVocals = content.hasBackgroundVocals
+
+        val bgStartMillis = content.backgroundVocals.firstOrNull()?.startMillis ?: -1
+
+        val bgEndMillis = content.backgroundVocals.lastOrNull()?.endMillis  ?: -1
     }
 
     @Immutable

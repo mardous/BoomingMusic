@@ -49,15 +49,15 @@ import com.mardous.booming.extensions.utilities.isRtl
 @Composable
 fun KaraokeLineView(
     selectedLine: Boolean,
+    shadowEffect: Boolean,
     currentMillis: Long,
     syllables: List<SyncedLyrics.Word>,
     contentColor: Color,
-    shadowEffect: Boolean,
     style: TextStyle,
     align: TextAlign,
     modifier: Modifier = Modifier
 ) {
-    val isLineRtl = remember(syllables) { syllables.any { it.content.isRtl() } }
+    val isRtlContent = remember(syllables) { syllables.any { it.content.isRtl() } }
 
     val textMeasurer = rememberTextMeasurer()
     val density = LocalDensity.current
@@ -101,7 +101,7 @@ fun KaraokeLineView(
                 currentTimeMs = currentMillis,
                 contentColor = contentColor,
                 shadowEffect = shadowEffect,
-                isRtl = isLineRtl
+                rtlContent = isRtlContent
             )
         }
     }
@@ -241,7 +241,7 @@ private fun DrawScope.drawLyricsLine(
     currentTimeMs: Long,
     contentColor: Color,
     shadowEffect: Boolean,
-    isRtl: Boolean
+    rtlContent: Boolean
 ) {
     rowRenderData.forEach { rowData ->
         if (currentTimeMs >= rowData.lastWordEnd && !selectedLine) {
@@ -270,7 +270,7 @@ private fun DrawScope.drawLyricsLine(
             val progressBrush = createLineGradientBrush(
                 rowData = rowData,
                 currentTimeMs = currentTimeMs,
-                isRtl = isRtl,
+                rtlContent = rtlContent,
                 activeColor = contentColor,
                 inactiveColor = contentColor.copy(alpha = 0.4f)
             )
@@ -326,7 +326,7 @@ private fun DrawScope.drawRowText(
 private fun createLineGradientBrush(
     rowData: RowRenderData,
     currentTimeMs: Long,
-    isRtl: Boolean,
+    rtlContent: Boolean,
     activeColor: Color,
     inactiveColor: Color
 ): Brush {
@@ -357,7 +357,7 @@ private fun createLineGradientBrush(
                     ((currentTimeMs - activeWordLayout.word.startMillis).toFloat() / duration).coerceIn(0f, 1f)
                 } else 1f
                 
-                if (isRtl) {
+                if (rtlContent) {
                     activeWordLayout.position.x + activeWordLayout.width * (1f - wordProgress)
                 } else {
                     activeWordLayout.position.x + activeWordLayout.width * wordProgress
@@ -365,7 +365,7 @@ private fun createLineGradientBrush(
             }
             else -> {
                 val lastFinished = lineLayout.lastOrNull { currentTimeMs >= it.word.endMillis }
-                if (isRtl) {
+                if (rtlContent) {
                     lastFinished?.position?.x ?: totalMaxX
                 } else {
                     lastFinished?.let { it.position.x + it.width } ?: totalMinX
@@ -382,7 +382,7 @@ private fun createLineGradientBrush(
     val fadeStart = fadeCenter - fadeRange / 2f
     val fadeEnd = fadeCenter + fadeRange / 2f
 
-    val colorStops = if (isRtl) {
+    val colorStops = if (rtlContent) {
         arrayOf(
             0.0f to inactiveColor,
             fadeStart.coerceIn(0f, 1f) to inactiveColor,
