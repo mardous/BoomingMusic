@@ -10,6 +10,7 @@ Belangrijkste functies:
 * Teksten woord voor woord en vertaald (TTML, LRC)
 * Op Media3 gebaseerde afspeelengine met ondersteuning voor audio-offload
 * Bit-perfecte weergave en native ALAC-decodering
+* Ingebouwd ListenBrainz scrobblen
 * Adaptieve mini-speler en gebarenbediening
 * Aangepaste covers en beschrijvingen voor afspeellijsten
 * Tag-editor met directe bibliotheekupdates
