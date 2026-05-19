@@ -188,6 +188,9 @@ object Preferences : KoinComponent {
     val swipeOnCover: Boolean
         get() = preferences.getBoolean(SWIPE_ON_COVER, true)
 
+    val miniPlayerSwipeToSkip: Boolean
+        get() = preferences.getBoolean(MINI_PLAYER_SWIPE_TO_SKIP, true)
+
     var isQueueLocked: Boolean
         get() = preferences.getBoolean(LOCKED_QUEUE, false)
         set(value) = preferences.edit { putBoolean(LOCKED_QUEUE, value) }
@@ -564,6 +567,7 @@ const val SQUIGGLY_SEEK_BAR = "squiggly_seek_bar"
 const val SWIPE_DOWN_TO_DISMISS = "swipe_down_to_dismiss"
 const val LYRICS_ON_COVER = "lyrics_on_cover"
 const val SWIPE_ON_COVER = "swipe_on_cover"
+const val MINI_PLAYER_SWIPE_TO_SKIP = "mini_player_swipe_to_skip"
 const val NOW_PLAYING_SMALL_IMAGE = "now_playing_small_image"
 const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
 const val PLAYER_BLUR_RADIUS = "player_blur_radius"
