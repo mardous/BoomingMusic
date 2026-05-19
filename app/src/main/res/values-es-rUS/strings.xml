@@ -946,4 +946,7 @@
     <string name="cannot_edit_lyrics_file">No puedes editar el contenido del archivo directamente desde Booming Music.</string>
     <string name="preferred_lyrics_file_format_title">Formato de archivo preferido</string>
     <string name="preferred_lyrics_file_format_summary">Si una canción tiene archivos de letra en diferentes formatos, esta opción te permite elegir cuál tiene prioridad.</string>
+    <string name="lyrics_by_x">Letra por %s</string>
+    <string name="mini_player_swipe_to_skip_title">Deslizar mini reproductor para saltar</string>
+    <string name="mini_player_swipe_to_skip_summary">Deslizar a la izquierda o derecha en el mini reproductor para saltar entre canciones.</string>
 </resources>
