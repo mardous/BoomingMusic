@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import java.util.Locale
 
 class PlayCountCache(playCountDao: PlayCountDao) {
 
@@ -47,7 +48,7 @@ class PlayCountCache(playCountDao: PlayCountDao) {
 
     fun forGenreName(name: String): Int = byGenreName[name.normalizeGenreKey()] ?: 0
 
-    private fun String.normalizeGenreKey(): String = trim().lowercase()
+    private fun String.normalizeGenreKey(): String = trim().lowercase(Locale.ROOT)
 }
 
 private object PlayCountCacheHolder : KoinComponent {
