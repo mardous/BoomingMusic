@@ -533,6 +533,7 @@
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
     <string name="cannot_edit_lyrics_file">You cannot edit the file content directly from Booming Music.</string>
+    <string name="lyrics_by_x">Lyrics by %s</string>
 
     <!-- Scrobbling Service -->
     <string name="sign_in_to_x_title">Sign in to %s</string>
