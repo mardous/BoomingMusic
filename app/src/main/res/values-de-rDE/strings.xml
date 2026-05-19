@@ -930,4 +930,11 @@
     <string name="auto_theme_name">Auto</string>
     <string name="use_lyrically_provider_title">Lyrically Anbieter nutzen</string>
     <string name="use_lyrically_provider_summary">Umfangreiche Lyrics-API mit Karaoke- und Mehr-Personen-Unterstützung.</string>
+    <string name="file_lyrics">Datei</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LRC</string>
+    <string name="undo_changes">Änderungen zurücksetzen</string>
+    <string name="cannot_edit_lyrics_file">Du kannst die Dateiinhalte nicht direkt von Booming Music bearbeiten.</string>
+    <string name="preferred_lyrics_file_format_title">Bevorzugtes Dateiformat</string>
+    <string name="preferred_lyrics_file_format_summary">Wenn ein Lied Liedtextdateien in verschiedenen Formaten hat, lässt dich diese Option auswählen, welche Priorität haben soll.</string>
 </resources>
