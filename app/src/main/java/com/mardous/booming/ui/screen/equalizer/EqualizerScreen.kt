@@ -34,8 +34,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
@@ -108,6 +106,8 @@ import com.mardous.booming.ui.component.compose.SwitchCard
 import com.mardous.booming.ui.component.compose.TipView
 import com.mardous.booming.ui.component.compose.TitleShapedText
 import com.mardous.booming.ui.component.compose.TitledCard
+import com.mardous.booming.ui.component.compose.menu.MenuItem
+import com.mardous.booming.ui.component.compose.menu.TopAppBarMenu
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import java.util.Locale
 import kotlin.math.roundToInt
@@ -172,7 +172,6 @@ fun EqualizerScreen(
 
     val miniPlayerMargin by libraryViewModel.getMiniPlayerMargin().observeAsState(LibraryMargin(0))
 
-    var expandedMenu by remember { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
 
     val eqState by eqViewModel.eqState.collectAsState()
@@ -517,77 +516,54 @@ fun EqualizerScreen(
     CollapsibleAppBarScaffold(
         title = stringResource(R.string.equalizer_label),
         actions = {
-            if (!eqState.isDisabledByReason && hasSystemEqualizer) {
-                IconButton(onClick = { eqViewModel.openSystemEqualizer(context) }) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_equalizer_24dp),
-                        contentDescription = stringResource(R.string.action_external_eq)
-                    )
-                }
-            }
-
-            IconButton(onClick = { expandedMenu = !expandedMenu }) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_more_vert_24dp),
-                    contentDescription = stringResource(R.string.action_more)
-                )
-            }
-
-            DropdownMenu(
-                expanded = expandedMenu,
-                onDismissRequest = { expandedMenu = false }
-            ) {
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.share_profiles)) },
-                    enabled = eqState.isUsable && eqProfiles.isNotEmpty(),
-                    onClick = {
-                        showShareProfileDialog = true
-                        expandedMenu = false
-                    }
-                )
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.export_profiles)) },
-                    enabled = eqState.isUsable && eqProfiles.isNotEmpty(),
-                    onClick = {
-                        showExportDialog = true
-                        expandedMenu = false
-                    }
-                )
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.import_profiles)) },
-                    enabled = eqState.isUsable,
-                    onClick = {
-                        importProfiles(autoEq = false)
-                        expandedMenu = false
-                    }
-                )
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.import_autoeq_profile)) },
-                    enabled = eqState.isUsable,
-                    onClick = {
-                        importProfiles(autoEq = true)
-                        expandedMenu = false
-                    }
-                )
-                if (EqEngineMode.isSwitchingSupported()) {
-                    DropdownMenuItem(
-                        text = { Text(stringResource(R.string.set_eq_engine_title)) },
+            TopAppBarMenu(
+                items = listOf(
+                    MenuItem.Button.Action(
+                        text = stringResource(R.string.action_external_eq),
+                        icon = painterResource(R.drawable.ic_equalizer_24dp),
+                        onClick = { eqViewModel.openSystemEqualizer(context) },
+                        visible = !eqState.isDisabledByReason && hasSystemEqualizer
+                    ),
+                    MenuItem.Button.DropDown(
+                        text = stringResource(R.string.share_profiles),
+                        icon = painterResource(R.drawable.ic_share_24dp),
+                        onClick = { showShareProfileDialog = true },
+                        enabled = eqState.isUsable && eqProfiles.isNotEmpty()
+                    ),
+                    MenuItem.Button.DropDown(
+                        text = stringResource(R.string.export_profiles),
+                        icon = painterResource(R.drawable.ic_file_export_24dp),
+                        onClick = { showExportDialog = true },
+                        enabled = eqState.isUsable && eqProfiles.isNotEmpty()
+                    ),
+                    MenuItem.Button.DropDown(
+                        text = stringResource(R.string.import_profiles),
+                        icon = painterResource(R.drawable.ic_file_open_24dp),
+                        onClick = { importProfiles(autoEq = false) },
+                        enabled = eqState.isUsable
+                    ),
+                    MenuItem.Button.DropDown(
+                        text = stringResource(R.string.import_autoeq_profile),
+                        icon = painterResource(R.drawable.ic_graphic_eq_24dp),
+                        onClick = { importProfiles(autoEq = true) },
+                        enabled = eqState.isUsable
+                    ),
+                    MenuItem.Button.DropDown(
+                        text = stringResource(R.string.set_eq_engine_title),
+                        icon = painterResource(R.drawable.ic_equalizer_24dp),
+                        onClick = { showSetEngineDialog = true },
                         enabled = !eqState.isDisabledByReason,
-                        onClick = {
-                            showSetEngineDialog = true
-                            expandedMenu = false
-                        }
+                        visible = EqEngineMode.isSwitchingSupported()
+                    ),
+                    MenuItem.Button.DropDown(
+                        text = stringResource(R.string.reset_equalizer),
+                        icon = painterResource(R.drawable.ic_restart_alt_24dp),
+                        onClick = { showResetEqDialog = true },
+                        dangerous = true,
+                        enabled = eqState.isUsable
                     )
-                }
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.reset_equalizer)) },
-                    enabled = eqState.isUsable,
-                    onClick = {
-                        showResetEqDialog = true
-                        expandedMenu = false
-                    }
                 )
-            }
+            )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
         miniPlayerMargin = miniPlayerMargin.totalMargin,

@@ -32,7 +32,6 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
@@ -48,8 +47,6 @@ import androidx.compose.foundation.text.input.selectAll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
@@ -108,6 +105,9 @@ import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.webSearch
 import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.component.compose.MediaImage
+import com.mardous.booming.ui.component.compose.menu.MenuItem
+import com.mardous.booming.ui.component.compose.menu.OverflowMenu
+import com.mardous.booming.ui.component.compose.menu.TopAppBarMenu
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinActivityViewModel
@@ -384,17 +384,47 @@ fun LyricsEditorScreen(
                     }
                 },
                 actions = {
-                    TopAppBarActions(
-                        isLandscape = isLandscape,
-                        enabled = !uiState.isLoading && !isFileSource,
-                        downloadEnabled = isLyricsDownloadEnabled,
-                        onSaveClick = { saveContent() },
-                        onDownloadClick = { downloadLyrics() },
-                        onSearchClick = { showLyricsSearchDialog = true },
-                        onPasteClick = { pasteFromClipboard() },
-                        onUndoChangesClick = { undoChanges() },
-                        onSelectAllClick = { selectAllText() }
-                    )
+                    if (isLandscape) {
+                        TopAppBarMenu(
+                            showItemIcons = true,
+                            items = listOf(
+                                MenuItem.Button.Action(
+                                    text = stringResource(R.string.action_save),
+                                    icon = painterResource(R.drawable.ic_save_24dp),
+                                    enabled = !uiState.isLoading && !isFileSource,
+                                    onClick = { saveContent() }
+                                ),
+                                MenuItem.Button.Action(
+                                    text = stringResource(R.string.download_lyrics),
+                                    icon = painterResource(R.drawable.ic_download_24dp),
+                                    enabled = !uiState.isLoading && !isFileSource,
+                                    visible = isLyricsDownloadEnabled,
+                                    onClick = { downloadLyrics() }
+                                ),
+                                MenuItem.Button.DropDown(
+                                    text = stringResource(R.string.search_lyrics),
+                                    icon = painterResource(R.drawable.ic_search_24dp),
+                                    onClick = { showLyricsSearchDialog = true }
+                                ),
+                                MenuItem.Button.DropDown(
+                                    text = stringResource(android.R.string.paste),
+                                    icon = painterResource(R.drawable.ic_content_paste_24dp),
+                                    onClick = { pasteFromClipboard() }
+                                ),
+                                MenuItem.Button.DropDown(
+                                    text = stringResource(R.string.select_all_title),
+                                    icon = painterResource(R.drawable.ic_select_all_24dp),
+                                    onClick = { selectAllText() }
+                                ),
+                                MenuItem.Button.DropDown(
+                                    text = stringResource(R.string.undo_changes),
+                                    icon = painterResource(R.drawable.ic_restart_alt_24dp),
+                                    dangerous = true,
+                                    onClick = { undoChanges() }
+                                )
+                            )
+                        )
+                    }
                 }
             )
         },
@@ -687,7 +717,6 @@ private fun LyricsEditorBottomBar(
     onUndoChangesClick: () -> Unit,
     onSelectAllClick: () -> Unit
 ) {
-    var showMenu by remember { mutableStateOf(false) }
     FlexibleBottomAppBar {
         IconButton(
             onClick = onSearchClick,
@@ -729,154 +758,22 @@ private fun LyricsEditorBottomBar(
                 contentDescription = stringResource(android.R.string.paste)
             )
         }
-        Box {
-            IconButton(
-                onClick = { showMenu = true },
-                enabled = enabled
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_more_vert_24dp),
-                    contentDescription = stringResource(R.string.action_more)
+        OverflowMenu(
+            enabled = enabled,
+            items = listOf(
+                MenuItem.Button.DropDown(
+                    text = stringResource(R.string.select_all_title),
+                    icon = painterResource(R.drawable.ic_select_all_24dp),
+                    onClick = { onSelectAllClick() }
+                ),
+                MenuItem.Button.DropDown(
+                    text = stringResource(R.string.undo_changes),
+                    icon = painterResource(R.drawable.ic_restart_alt_24dp),
+                    dangerous = true,
+                    onClick = { onUndoChangesClick() }
                 )
-            }
-            DropdownMenu(
-                expanded = showMenu,
-                onDismissRequest = { showMenu = false }
-            ) {
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.select_all_title)) },
-                    onClick = {
-                        onSelectAllClick()
-                        showMenu = false
-                    },
-                    leadingIcon = {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_select_all_24dp),
-                            contentDescription = null
-                        )
-                    }
-                )
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.undo_changes)) },
-                    onClick = {
-                        onUndoChangesClick()
-                        showMenu = false
-                    },
-                    leadingIcon = {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_restart_alt_24dp),
-                            contentDescription = null
-                        )
-                    }
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun TopAppBarActions(
-    isLandscape: Boolean,
-    enabled: Boolean,
-    downloadEnabled: Boolean,
-    onSaveClick: () -> Unit,
-    onDownloadClick: () -> Unit,
-    onSearchClick: () -> Unit,
-    onPasteClick: () -> Unit,
-    onUndoChangesClick: () -> Unit,
-    onSelectAllClick: () -> Unit
-) {
-    var showMenu by remember { mutableStateOf(false) }
-    if (isLandscape) {
-        IconButton(
-            onClick = {
-                onSaveClick()
-                showMenu = false
-            },
-            enabled = enabled
-        ) {
-            Icon(
-                painter = painterResource(R.drawable.ic_save_24dp),
-                contentDescription = stringResource(R.string.action_save)
             )
-        }
-        if (downloadEnabled) {
-            IconButton(
-                onClick = onDownloadClick,
-                enabled = enabled
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_download_24dp),
-                    contentDescription = stringResource(R.string.download_lyrics)
-                )
-            }
-        }
-        IconButton(
-            onClick = { showMenu = true },
-            enabled = enabled
-        ) {
-            Icon(
-                painter = painterResource(R.drawable.ic_more_vert_24dp),
-                contentDescription = stringResource(R.string.action_more)
-            )
-        }
-        DropdownMenu(
-            expanded = showMenu,
-            onDismissRequest = { showMenu = false }
-        ) {
-            DropdownMenuItem(
-                text = { Text(stringResource(R.string.search_lyrics)) },
-                onClick = {
-                    onSearchClick()
-                    showMenu = false
-                },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_search_24dp),
-                        contentDescription = null
-                    )
-                }
-            )
-            DropdownMenuItem(
-                text = { Text(stringResource(android.R.string.paste)) },
-                onClick = {
-                    onPasteClick()
-                    showMenu = false
-                },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_content_paste_24dp),
-                        contentDescription = null
-                    )
-                }
-            )
-            DropdownMenuItem(
-                text = { Text(stringResource(R.string.select_all_title)) },
-                onClick = {
-                    onSelectAllClick()
-                    showMenu = false
-                },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_select_all_24dp),
-                        contentDescription = null
-                    )
-                }
-            )
-            DropdownMenuItem(
-                text = { Text(stringResource(R.string.undo_changes)) },
-                onClick = {
-                    onUndoChangesClick()
-                    showMenu = false
-                },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_restart_alt_24dp),
-                        contentDescription = null
-                    )
-                }
-            )
-        }
+        )
     }
 }
 
