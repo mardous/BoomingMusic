@@ -740,6 +740,8 @@
     <string name="circle_button_title">Circular play button</string>
     <string name="swipe_album_cover_title">Swipe on album cover</string>
     <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
+    <string name="mini_player_swipe_to_skip_title">Swipe mini player to skip</string>
+    <string name="mini_player_swipe_to_skip_summary">Swipe left or right on the mini player to skip between songs.</string>
     <string name="queue_height_title">Half-screen queue height</string>
     <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>

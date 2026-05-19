@@ -101,7 +101,9 @@ class MiniPlayerFragment : Fragment(R.layout.fragment_mini_player),
         setupImageStyle()
         setUpButtons()
         setUpProgressStyle()
-        view.setOnTouchListener { _, event -> flingPlayBackController.onTouchEvent(event) }
+        view.setOnTouchListener { _, event ->
+            Preferences.miniPlayerSwipeToSkip && flingPlayBackController.onTouchEvent(event)
+        }
     }
 
     fun setupImageStyle() {
