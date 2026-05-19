@@ -10,6 +10,7 @@ import com.mardous.booming.core.model.sort.DescendingItem
 import com.mardous.booming.core.model.sort.KeySortItem
 import com.mardous.booming.core.model.sort.SortItem
 import com.mardous.booming.core.model.sort.SortKey
+import com.mardous.booming.data.local.cache.playCount
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.model.*
 import com.mardous.booming.extensions.media.albumArtistName
@@ -129,6 +130,7 @@ sealed class SongSortMode(
             KeySortItem.DateAdded,
             KeySortItem.DateModified,
             KeySortItem.FileName,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -140,6 +142,7 @@ sealed class SongSortMode(
             KeySortItem.Title,
             KeySortItem.Track,
             KeySortItem.Duration,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -153,6 +156,7 @@ sealed class SongSortMode(
             KeySortItem.Duration,
             KeySortItem.Year,
             KeySortItem.DateAdded,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -165,6 +169,7 @@ sealed class SongSortMode(
             KeySortItem.Artist,
             KeySortItem.Album,
             KeySortItem.Duration,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -177,6 +182,7 @@ sealed class SongSortMode(
             KeySortItem.Artist,
             KeySortItem.Album,
             KeySortItem.Duration,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -192,6 +198,7 @@ sealed class SongSortMode(
             KeySortItem.DateAdded,
             KeySortItem.DateModified,
             KeySortItem.FileName,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -225,6 +232,7 @@ sealed class SongSortMode(
             SortKey.DateAdded -> sortedWith(compareBy { it.dateAdded })
             SortKey.DateModified -> sortedWith(compareBy { it.rawDateModified })
             SortKey.FileName -> sortedWith(compareBy { it.fileName })
+            SortKey.MostPlayed -> sortedWith(compareBy { it.playCount })
             else -> this
         }
         return if (selectedDescending) songs.reversed() else songs
@@ -246,6 +254,7 @@ sealed class AlbumSortMode(
             KeySortItem.Year,
             KeySortItem.SongCount,
             KeySortItem.DateAdded,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -258,6 +267,7 @@ sealed class AlbumSortMode(
             KeySortItem.Year,
             KeySortItem.SongCount,
             KeySortItem.DateAdded,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -270,6 +280,7 @@ sealed class AlbumSortMode(
             KeySortItem.Year,
             KeySortItem.SongCount,
             KeySortItem.DateAdded,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -287,6 +298,7 @@ sealed class AlbumSortMode(
             SortKey.Year -> sortedWith(compareBy { it.year })
             SortKey.SongCount -> sortedWith(compareBy { it.songCount })
             SortKey.DateAdded -> sortedWith(compareBy { it.dateAdded })
+            SortKey.MostPlayed -> sortedWith(compareBy { it.playCount })
             else -> this
         }
         return if (selectedDescending) albums.reversed() else albums
@@ -306,6 +318,7 @@ sealed class ArtistSortMode(
             KeySortItem.Title,
             KeySortItem.SongCount,
             KeySortItem.AlbumCount,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -317,6 +330,7 @@ sealed class ArtistSortMode(
             })
             SortKey.SongCount -> sortedWith(compareBy({ it.songCount }, { it.name.normalize() }))
             SortKey.AlbumCount -> sortedWith(compareBy({ it.albumCount }, { it.name.normalize() }))
+            SortKey.MostPlayed -> sortedWith(compareBy { it.playCount })
             else -> this
         }
         return if (selectedDescending) artists.reversed() else artists
@@ -335,6 +349,7 @@ sealed class GenreSortMode(
         items = listOf(
             KeySortItem.Title,
             KeySortItem.SongCount,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -346,6 +361,7 @@ sealed class GenreSortMode(
             })
 
             SortKey.SongCount -> sortedWith(compareBy { it.songCount })
+            SortKey.MostPlayed -> sortedWith(compareBy { it.playCount })
             else -> this
         }
         return if (selectedDescending) genres.reversed() else genres
@@ -364,6 +380,7 @@ sealed class YearSortMode(
         items = listOf(
             KeySortItem.Year,
             KeySortItem.SongCount,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -372,6 +389,7 @@ sealed class YearSortMode(
         val years = when (selectedKey) {
             SortKey.Year -> sortedWith(compareBy { it.year })
             SortKey.SongCount -> sortedWith(compareBy { it.songCount })
+            SortKey.MostPlayed -> sortedWith(compareBy { it.playCount })
             else -> this
         }
         return if (selectedDescending) years.reversed() else years
@@ -418,6 +436,7 @@ sealed class FileSortMode(
             KeySortItem.SongCount,
             KeySortItem.DateAdded,
             KeySortItem.DateModified,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -431,6 +450,7 @@ sealed class FileSortMode(
             KeySortItem.DateAdded,
             KeySortItem.DateModified,
             KeySortItem.FileName,
+            KeySortItem.MostPlayed,
             DescendingItem
         )
     )
@@ -442,6 +462,7 @@ sealed class FileSortMode(
                 SortKey.SongCount -> folders.sortedWith(compareBy { it.songCount })
                 SortKey.DateAdded -> folders.sortedWith(compareBy { it.fileDateAdded })
                 SortKey.DateModified -> folders.sortedWith(compareBy { it.fileDateModified })
+                SortKey.MostPlayed -> folders.sortedWith(compareBy { it.playCount })
                 else -> folders
             }
         }.let { folders ->
@@ -457,6 +478,7 @@ sealed class FileSortMode(
                 SortKey.DateAdded -> songs.sortedWith(compareBy { it.fileDateAdded })
                 SortKey.DateModified -> songs.sortedWith(compareBy { it.fileDateModified })
                 SortKey.FileName -> songs.sortedWith(compareBy { it.fileName })
+                SortKey.MostPlayed -> songs.sortedWith(compareBy { it.playCount })
                 else -> songs
             }
         }.let { songs ->

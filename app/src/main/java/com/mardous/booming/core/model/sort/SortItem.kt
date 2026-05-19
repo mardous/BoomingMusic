@@ -72,6 +72,12 @@ sealed class KeySortItem(id: Int, title: Int, val key: SortKey)
         R.string.sort_order_file_name,
         SortKey.FileName
     )
+
+    object MostPlayed : KeySortItem(
+        R.id.action_sort_order_play_count,
+        R.string.sort_order_play_count,
+        SortKey.MostPlayed
+    )
 }
 
 object DescendingItem : SortItem(

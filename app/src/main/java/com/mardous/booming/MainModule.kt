@@ -26,6 +26,7 @@ import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.data.local.AlbumCoverSaver
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
+import com.mardous.booming.data.local.cache.PlayCountCache
 import com.mardous.booming.data.local.repository.AlbumRepository
 import com.mardous.booming.data.local.repository.ArtistRepository
 import com.mardous.booming.data.local.repository.GenreRepository
@@ -235,6 +236,10 @@ private val dataModule = module {
             specialRepository = get()
         )
     } bind SearchRepository::class
+
+    single(createdAtStart = true) {
+        PlayCountCache(playCountDao = get())
+    }
 
     single {
         RealSmartRepository(

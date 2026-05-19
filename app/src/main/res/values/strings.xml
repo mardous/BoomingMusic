@@ -245,6 +245,7 @@
     <string name="sort_order_file_name">File name</string>
     <string name="sort_order_number_of_songs">Number of songs</string>
     <string name="sort_order_number_of_albums">Number of albums</string>
+    <string name="sort_order_play_count">Play count</string>
     <string name="sort_order_last_played_date">Last played date</string>
     <string name="sort_order_track_list">Track list</string>
     <string name="sort_order_descending">Descending</string>
