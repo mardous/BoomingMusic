@@ -87,8 +87,16 @@ object Preferences : KoinComponent {
 
     fun getDayNightMode(themeName: String = generalTheme) = when (themeName) {
         GeneralTheme.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
-        GeneralTheme.DARK,
-        GeneralTheme.BLACK -> AppCompatDelegate.MODE_NIGHT_YES
+        GeneralTheme.DARK -> AppCompatDelegate.MODE_NIGHT_YES
+        GeneralTheme.BLACK -> {
+            // When black mode is active but the base theme is Auto, follow the system so that
+            // light mode shows the light theme and dark mode shows pure black.
+            if (baseTheme == GeneralTheme.AUTO) {
+                if (hasQ()) AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM else AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
+            } else {
+                AppCompatDelegate.MODE_NIGHT_YES
+            }
+        }
         else -> if (hasQ()) {
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
         } else {
@@ -98,6 +106,9 @@ object Preferences : KoinComponent {
 
     val blackTheme: Boolean
         get() = preferences.getBoolean(BLACK_THEME, false)
+
+    val baseTheme: String
+        get() = preferences.requireString(GENERAL_THEME, GeneralTheme.AUTO)
 
     val isMaterialYouTheme: Boolean
         get() = preferences.getBoolean(MATERIAL_YOU, hasS())

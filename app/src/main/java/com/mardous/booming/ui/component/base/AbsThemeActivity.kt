@@ -73,6 +73,10 @@ abstract class AbsThemeActivity : AppCompatActivity() {
                 dynamicColorsOptions.setContentBasedSource(appTheme.seedColor)
             }
             DynamicColors.applyToActivityIfAvailable(this, dynamicColorsOptions.build())
+        } else if (appTheme.isBlackTheme && appTheme.themeRes == R.style.Theme_Booming_FollowSystem) {
+            // Auto+black without Material You: overlay applies black surfaces only in night mode
+            // because BlackThemeOverlay is defined in values-night/ resource qualifiers.
+            setTheme(R.style.BlackThemeOverlay)
         }
         if (Preferences.isCustomFont) {
             setTheme(R.style.CustomFontThemeOverlay)

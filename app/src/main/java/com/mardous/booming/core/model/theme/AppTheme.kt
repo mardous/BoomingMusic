@@ -47,7 +47,10 @@ class AppTheme private constructor(
     companion object {
         fun createAppTheme(context: Context): AppTheme {
             val generalTheme = Preferences.generalTheme
-            val themeMode = Preferences.getThemeMode(generalTheme)
+            // Auto+black: use FollowSystem so DayNight handles switching; BlackThemeOverlay
+            // is applied separately (night-qualified) to get pure black only in dark mode.
+            val isAutoBlack = Preferences.blackTheme && Preferences.baseTheme == GeneralTheme.AUTO
+            val themeMode = if (isAutoBlack) AppTheme.Mode.FollowSystem else Preferences.getThemeMode(generalTheme)
             if (DynamicColors.isDynamicColorAvailable()) {
                 if (Preferences.isMaterialYouTheme) {
                     return AppTheme(
