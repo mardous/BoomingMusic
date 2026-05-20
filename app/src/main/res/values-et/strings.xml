@@ -917,4 +917,7 @@
     <string name="cannot_edit_lyrics_file">Selle faili sisu ei saa otse Booming Musicust muuta.</string>
     <string name="preferred_lyrics_file_format_title">Eelistatud failivorming</string>
     <string name="preferred_lyrics_file_format_summary">Kui laulul leidub sõnu mitmes vormingus, siis siin saad valida neist eelistatud variandi.</string>
+    <string name="lyrics_by_x">Laulusõnad teenusest %s</string>
+    <string name="mini_player_swipe_to_skip_title">Lugude vahetamiseks viipa minipleierit</string>
+    <string name="mini_player_swipe_to_skip_summary">Lugude vahetamiseks viipa minipleierit vasakult paremale.</string>
 </resources>
