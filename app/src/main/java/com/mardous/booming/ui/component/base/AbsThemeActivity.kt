@@ -30,6 +30,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.color.DynamicColorsOptions
 import com.mardous.booming.R
+import com.mardous.booming.core.model.theme.AppTheme
 import com.mardous.booming.extensions.createAppTheme
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.resources.isColorLight
@@ -73,7 +74,7 @@ abstract class AbsThemeActivity : AppCompatActivity() {
                 dynamicColorsOptions.setContentBasedSource(appTheme.seedColor)
             }
             DynamicColors.applyToActivityIfAvailable(this, dynamicColorsOptions.build())
-        } else if (appTheme.isBlackTheme && appTheme.themeRes == R.style.Theme_Booming_FollowSystem) {
+        } else if (appTheme.isBlackTheme && appTheme.mode == AppTheme.Mode.FollowSystem) {
             // Auto+black without Material You: overlay applies black surfaces only in night mode
             // because BlackThemeOverlay is defined in values-night/ resource qualifiers.
             setTheme(R.style.BlackThemeOverlay)

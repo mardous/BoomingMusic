@@ -9,6 +9,9 @@
 
     <style name="Theme.Booming.FollowSystem" parent="Base.Theme.Booming.Adaptive"/>
 
+    <!-- No-op in light mode; values-night/ provides the black surface override -->
+    <style name="BlackThemeOverlay"/>
+
     <style name="Theme.Booming.SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
         <item name="android:statusBarColor">@android:color/transparent</item>

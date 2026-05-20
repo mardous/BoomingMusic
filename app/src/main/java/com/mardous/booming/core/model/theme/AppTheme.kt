@@ -28,11 +28,14 @@ import com.mardous.booming.util.Preferences
 
 class AppTheme private constructor(
     val id: String,
-    @StyleRes
-    val themeRes: Int,
+    val mode: Mode,
     val applyDynamicColors: Boolean,
     val seedColor: Int? = null
 ) {
+
+    @StyleRes
+    val themeRes: Int
+        get() = mode.themeRes
 
     val isBlackTheme: Boolean
         get() = id == GeneralTheme.BLACK
@@ -49,20 +52,19 @@ class AppTheme private constructor(
             val generalTheme = Preferences.generalTheme
             // Auto+black: use FollowSystem so DayNight handles switching; BlackThemeOverlay
             // is applied separately (night-qualified) to get pure black only in dark mode.
-            val isAutoBlack = Preferences.blackTheme && Preferences.baseTheme == GeneralTheme.AUTO
-            val themeMode = if (isAutoBlack) AppTheme.Mode.FollowSystem else Preferences.getThemeMode(generalTheme)
+            val themeMode = if (Preferences.isAutoBlackTheme) Mode.FollowSystem else Preferences.getThemeMode(generalTheme)
             if (DynamicColors.isDynamicColorAvailable()) {
                 if (Preferences.isMaterialYouTheme) {
                     return AppTheme(
                         id = generalTheme,
-                        themeRes = themeMode.themeRes,
+                        mode = themeMode,
                         applyDynamicColors = true
                     )
                 }
                 if (context is ContextThemeWrapper) {
                     return AppTheme(
                         id = generalTheme,
-                        themeRes = themeMode.themeRes,
+                        mode = themeMode,
                         applyDynamicColors = true,
                         seedColor = ContextCompat.getColor(context, R.color.md_theme_primary)
                     )
@@ -70,7 +72,7 @@ class AppTheme private constructor(
             }
             return AppTheme(
                 id = generalTheme,
-                themeRes = themeMode.themeRes,
+                mode = themeMode,
                 applyDynamicColors = false
             )
         }

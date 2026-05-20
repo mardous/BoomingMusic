@@ -91,7 +91,7 @@ object Preferences : KoinComponent {
         GeneralTheme.BLACK -> {
             // When black mode is active but the base theme is Auto, follow the system so that
             // light mode shows the light theme and dark mode shows pure black.
-            if (baseTheme == GeneralTheme.AUTO) {
+            if (isAutoBlackTheme) {
                 if (hasQ()) AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM else AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
             } else {
                 AppCompatDelegate.MODE_NIGHT_YES
@@ -109,6 +109,10 @@ object Preferences : KoinComponent {
 
     val baseTheme: String
         get() = preferences.requireString(GENERAL_THEME, GeneralTheme.AUTO)
+
+    /** True when Auto + Pure Black are active together, requiring FollowSystem night mode. */
+    val isAutoBlackTheme: Boolean
+        get() = blackTheme && baseTheme == GeneralTheme.AUTO
 
     val isMaterialYouTheme: Boolean
         get() = preferences.getBoolean(MATERIAL_YOU, hasS())
