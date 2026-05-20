@@ -94,6 +94,7 @@ class TagEditorViewModel(
                     discTotal = metadataReader.value(MetadataReader.DISC_TOTAL),
                     lyrics = metadataReader.value(MetadataReader.LYRICS),
                     lyricist = metadataReader.merge(MetadataReader.LYRICIST),
+                    arranger = metadataReader.merge(MetadataReader.ARRANGER),
                     comment = metadataReader.value(MetadataReader.COMMENT)
                 )
                 _tagResult.postValue(newValue)
