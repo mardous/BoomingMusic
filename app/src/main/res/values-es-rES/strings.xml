@@ -626,9 +626,9 @@
     <string name="extra_controls_title">Controles adicionales</string>
     <string name="extra_controls_summary">Añadir controles adicionales para el mini reproductor</string>
     <string name="adaptive_controls_title">Controles adaptativos</string>
-    <string name="adaptive_controls_summary">Los controles del minirreproductor cambian para adaptarse al estilo actual del reproductor.</string>
+    <string name="adaptive_controls_summary">Los controles del mini‐reproductor cambian para adaptarse al estilo actual del reproductor.</string>
     <string name="swipe_to_dismiss_title">Desliza hacia abajo para descartar</string>
-    <string name="swipe_to_dismiss_summary">Deslice el dedo hacia abajo sobre el minirreproductor para detener la reproducción y vaciar la cola.</string>
+    <string name="swipe_to_dismiss_summary">Deslice el dedo hacia abajo sobre el mini‐reproductor para detener la reproducción y vaciar la cola.</string>
     <string name="circle_button_title">Botón de reproducción circular</string>
     <string name="swipe_album_cover_title">Deslizar en portada del álbum</string>
     <string name="swipe_album_cover_summary">Deslice a la izquierda o a la derecha en la portada del álbum para saltar entre canciones.</string>
@@ -655,9 +655,9 @@
     <string name="display_extra_info_title">Mostrar información extra</string>
     <string name="display_extra_info_summary">Mostrar información adicional sobre la canción, como tasa de bits, formato, tasa de muestreo, etc.</string>
     <string name="display_next_song_title">Mostrar la siguiente canción</string>
-    <string name="display_next_song_summary">Mostrar la siguiente canción en los estilos Normal y Portada completa. Si lo desactiva, solo se podrá acceder a la cola de reproducción desde el menú de los tres puntos.</string>
+    <string name="display_next_song_summary">Mostrar la siguiente canción en los estilos Normal y Portada completa. Si lo desactiva, solo se podrá acceder a la cola de reproducción desde el menú de puntos suspensivos.</string>
     <string name="select_extra_info_title">Extra info</string>
-    <string name="select_extra_info_summary">Seleccione la información adicional para mostrar en el panel del reproductor.</string>
+    <string name="select_extra_info_summary">Seleccione la información adicional para exhibir en el panel del reproductor.</string>
     <string name="prefer_remaining_time_title">Preferir tiempo restante</string>
     <string name="prefer_remaining_time_summary">Mostrar el tiempo restante en lugar de la duración de la canción.</string>
     <string name="prefer_album_artist_name_title">Nombre del álbum preferido</string>
@@ -933,4 +933,13 @@
     <string name="use_lyrically_provider_summary">API de letras enriquecidas con mantenimiento para karaoke y varias personas.</string>
     <string name="auto_theme_name">Automático</string>
     <string name="listenbrainz_title">ListenBrainz</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="file_lyrics">Archivo</string>
+    <string name="undo_changes">Deshace cambios</string>
+    <string name="cannot_edit_lyrics_file">No puedes editar el contenido del archivo directamente desde Booming Music.</string>
+    <string name="lyrics_by_x">Letras por %s</string>
+    <string name="preferred_lyrics_file_format_title">Formato de archivo preferido</string>
+    <string name="preferred_lyrics_file_format_summary">Si una canción tiene archivos de letras en diferentes formatos, esta opción le permite elegir cuál es la prioridad.</string>
+    <string name="mini_player_swipe_to_skip_title">Intercambiar mini‐reproductor para omitir</string>
+    <string name="mini_player_swipe_to_skip_summary">Golpear izquierdo o derecho en el mini‐reproductor para omitir entre canciones.</string>
 </resources>
