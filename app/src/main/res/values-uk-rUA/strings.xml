@@ -96,7 +96,7 @@
     <string name="saving_changes">Збереження змін</string>
     <string name="changes_saved_successfully">Зміни успішно збережено.</string>
     <string name="could_not_save_some_changes">Не вдалося зберегти деякі зміни.</string>
-    <string name="web_search">Веб-пошук</string>
+    <string name="web_search">Вебпошук</string>
     <string name="where_do_you_want_to_search">Де ви бажаєте шукати?</string>
     <string name="configure_action">Налаштувати</string>
     <string name="blacklist_directory">Папка в чорному списку</string>
@@ -536,7 +536,7 @@
     <string name="send_invitation_message">Надіслати запрошення</string>
     <string name="invitation_message_content">Привіт. Спробуй Booming Music! Найкращий додаток для прослуховування локальної музики на Android. Ти можеш завантажити його тут: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Ви будете перенаправлені на веб-сайт трекера проблем.</string>
+    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Ви будете перенаправлені на вебсайт трекера проблем.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Потрібен доступ до сховища</string>
     <string name="saf_access_required_message">Booming Music потрібен доступ до цих файлів. Виберіть кореневу теку, де зберігаються ваші музичні файли.</string>
@@ -578,7 +578,7 @@
     <!-- Interface preferences -->
     <string name="general_theme_title">Загальна тема</string>
     <string name="pure_black_theme_title">Чистий чорний</string>
-    <string name="material_you_title">Виготовлення матеріалу</string>
+    <string name="material_you_title">Material You</string>
     <string name="use_custom_font_title">Використати власний шрифт</string>
     <string name="appbar_mode_title">Стиль заголовка</string>
     <string name="library_categories_title">Категорії бібліотеки</string>
@@ -587,7 +587,7 @@
     <string name="remember_last_page_summary">Переходити на останню відкриту сторінку при запуску.</string>
     <string name="start_page_title">Початкова сторінка</string>
     <string name="tab_mode_title">Режим заголовків вкладок</string>
-    <string name="hold_tab_to_search_title">Для пошуку утримуйте вкладку</string>
+    <string name="hold_tab_to_search_title">Для пошуку втримувати вкладку</string>
     <string name="hold_tab_to_search_summary">Утримуйте будь-яку вкладку з панелі навігації для відкриття екрана пошуку.</string>
     <string name="larger_header_image_title">Більше зображення заголовка</string>
     <string name="larger_header_image_summary">Показувати більше зображення обкладинки в деталях альбому, виконавця та списку відтворення.</string>
@@ -637,7 +637,7 @@
     <string name="scrolling_text_title">Увімкнути рухомий рядок</string>
     <string name="scrolling_text_summary">Гортає назви пісень, якщо вони занадто довгі. Може дещо швидше розряджати акумулятор.</string>
     <string name="extra_controls_title">Додаткові елементи керування</string>
-    <string name="extra_controls_summary">Додати додаткові елементи керування для міні-плеєра</string>
+    <string name="extra_controls_summary">Додати додаткові елементи керування для мініпрогравача</string>
     <string name="adaptive_controls_title">Адаптивне керування</string>
     <string name="adaptive_controls_summary">Елементи керування на мініпрогравачі змінюються відповідно до його поточного стилю.</string>
     <string name="swipe_to_dismiss_title">Проведіть униз, аби закрити</string>
@@ -688,14 +688,14 @@
     <string name="rewind_with_back_summary">Перемотати поточний трек до початку або перейти до попереднього треку, якщо поточний знаходиться на початку.</string>
     <string name="rewind_fast_forward_amount_title">Інтервал перемотування назад / вперед</string>
     <string name="rewind_fast_forward_amount_summary">Час (у секундах) для перемотування назад або вперед за допомогою інтерфейсу користувача або зовнішніх елементів керування.</string>
-    <string name="resume_on_connect_title">Відновити при підключенні</string>
-    <string name="resume_on_connect_summary">Відновлює відтворення при підключенні навушників.</string>
-    <string name="pause_on_disconnect_title">Пауза при відключенні</string>
-    <string name="pause_on_disconnect_summary">Призупиняє відтворення при відключенні навушників. Рекомендовано.</string>
-    <string name="resume_on_bluetooth_connect_title">Відновити при підключенні Bluetooth</string>
-    <string name="resume_on_bluetooth_connect_summary">Відновлює відтворення при підключенні Bluetooth A2DP-гарнітури.</string>
-    <string name="pause_on_bluetooth_disconnect_title">Пауза при відключенні Bluetooth</string>
-    <string name="pause_on_bluetooth_disconnect_summary">Призупиняє відтворення при відключенні Bluetooth A2DP-гарнітури. Рекомендовано.</string>
+    <string name="resume_on_connect_title">Відновити при з’єднанні</string>
+    <string name="resume_on_connect_summary">Відновлює відтворення при під’єднанні навушників.</string>
+    <string name="pause_on_disconnect_title">Пауза при від’єднанні</string>
+    <string name="pause_on_disconnect_summary">Призупиняє відтворення при від’єднанні навушників. Рекомендовано.</string>
+    <string name="resume_on_bluetooth_connect_title">Відновити при Bluetooth-з’єднанні</string>
+    <string name="resume_on_bluetooth_connect_summary">Відновлює відтворення при Bluetooth-з’єднанні A2DP-гарнітури.</string>
+    <string name="pause_on_bluetooth_disconnect_title">Пауза при Bluetooth-від’єднанні</string>
+    <string name="pause_on_bluetooth_disconnect_summary">Призупиняє відтворення при Bluetooth-від’єднанні A2DP-гарнітури. Рекомендовано.</string>
     <string name="ignore_audio_focus_title">Ігнорувати фокус аудіо</string>
     <string name="ignore_audio_focus_summary">Завжди відтворювати аудіо у фоновому режимі незалежно від іншого відтворення.</string>
     <string name="pause_on_zero_volume_title">Pause on zero volume</string>
@@ -737,8 +737,8 @@
     <!-- Library preferences -->
     <string name="ignore_articles_when_sorting_title">Ігнорувати артиклі при сортуванні</string>
     <string name="ignore_articles_when_sorting_summary">Пропускати артиклі («the», «a», «an») на початку, коли впорядковуєте елементи.</string>
-    <string name="trash_music_title">Надіслати до кошика</string>
-    <string name="trash_music_summary">Надсилати видалені файли до кошика.</string>
+    <string name="trash_music_title">Перемістити до кошика</string>
+    <string name="trash_music_summary">Переміщувати видалені файли до кошика.</string>
     <string name="recursive_folder_actions_title">Дії, що впливають на підтеки</string>
     <string name="recursive_folder_actions_summary">Виберіть, які дії також мають застосовуватися до підтек під час виконання операцій із текою.</string>
     <string name="enable_history_title">Увімкнути історію</string>
@@ -955,4 +955,7 @@
     <string name="use_lyrically_provider_title">Використовувати провайдера Lyrically</string>
     <string name="use_lyrically_provider_summary">API з розширеними текстами пісень, караоке та підтримкою кількох виконавців.</string>
     <string name="auto_theme_name">Авто</string>
+    <string name="lyrics_by_x">Текст пісні: %s</string>
+    <string name="mini_player_swipe_to_skip_title">Змахнути по мініпрогравачу, аби пропустити</string>
+    <string name="mini_player_swipe_to_skip_summary">Гортати вліво або вправо по мініпрогравачу, щоби перемикатися між піснями.</string>
 </resources>
