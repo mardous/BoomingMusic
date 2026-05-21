@@ -261,7 +261,7 @@
     <string name="label_file_path">Jalur file</string>
     <string name="size">Ukuran file</string>
     <string name="label_file_format">Format</string>
-    <string name="file_label">File</string>
+    <string name="file_label">Berkas</string>
     <string name="metadata_label">Metadata</string>
     <string name="title_and_artist">Judul dan Artis</string>
     <string name="song">Lagu</string>
@@ -890,9 +890,9 @@
     <string name="lastfm_biography_title">Unduh biografi artis dan album</string>
     <string name="lastfm_biography_summary">Ambil biografi artis dan album dari Last.fm.</string>
     <string name="use_lrclib_provider_title">Gunakan penyedia LRCLib</string>
-    <string name="use_lrclib_provider_summary">Izinkan lirik diunduh dari layanan LRCLib.</string>
+    <string name="use_lrclib_provider_summary">Basis data lirik yang digerakkan oleh komunitas.</string>
     <string name="use_betterlyrics_provider_title">Gunakan penyedia BetterLyrics</string>
-    <string name="use_betterlyrics_provider_summary">Izinkan lirik diunduh dari layanan BetterLyrics.</string>
+    <string name="use_betterlyrics_provider_summary">Lirik tersinkron kata demi kata.</string>
     <string name="search_playlists">Cari playlist</string>
     <string name="select_playlists_title">Pilih playlist</string>
     <string name="new_playlist_action">Baru</string>
@@ -919,4 +919,15 @@
     <string name="listenbrainz_scrobbling_summary">Secara otomatis kirimkan trek yang diputar ke riwayat pendengaran ListenBrainz Anda.</string>
     <string name="listenbrainz_now_playing_title">Perbarui sedang diputar di ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Tampilkan trek yang sedang diputar di profil ListenBrainz Anda secara waktu nyata.</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LRC</string>
+    <string name="undo_changes">Batalkan perubahan</string>
+    <string name="cannot_edit_lyrics_file">Anda tidak dapat mengedit isi berkas secara langsung dari Booming Music.</string>
+    <string name="lyrics_by_x">Lirik oleh %s</string>
+    <string name="preferred_lyrics_file_format_title">Format berkas yang diutamakan</string>
+    <string name="preferred_lyrics_file_format_summary">Jika sebuah lagu memiliki berkas lirik dalam format yang berbeda, opsi ini memungkinkan Anda memilih mana yang diprioritaskan.</string>
+    <string name="mini_player_swipe_to_skip_title">Geser pemutar mini untuk melewati lagu</string>
+    <string name="mini_player_swipe_to_skip_summary">Geser ke kiri atau kanan pada pemutar mini untuk berpindah antar lagu.</string>
+    <string name="use_lyrically_provider_title">Gunakan penyedia Lyrically</string>
+    <string name="use_lyrically_provider_summary">API lirik kaya dengan dukungan karaoke dan multi-penyanyi.</string>
 </resources>
