@@ -135,7 +135,7 @@
     <string name="grant_access_action">Atorga\'n l\'accés</string>
     <string name="action_grant">Atorga</string>
     <string name="granted">Atorgat</string>
-    <string name="hello_there">Hola, com va?</string>
+    <string name="hello_there">Hola!</string>
     <string name="welcome_to_x">Us donem la benvinguda a %s</string>
     <string name="get_started">Comença</string>
     <string name="select_storage_title">Selecciona l\'emmagatzematge</string>
@@ -937,4 +937,7 @@
     <string name="use_lrclib_provider_summary">Permet la descàrrega de lletres des del servei LRCLib.</string>
     <string name="use_betterlyrics_provider_summary">Permet la descàrrega de lletres des del servei BetterLyrics.</string>
     <string name="auto_theme_name">Auto</string>
+    <string name="file_lyrics">Fitxer</string>
+    <string name="undo_changes">Desfer els canvis</string>
+    <string name="cannot_edit_lyrics_file">No podeu editar el contingut del fitxer directament des de Booming Music.</string>
 </resources>
