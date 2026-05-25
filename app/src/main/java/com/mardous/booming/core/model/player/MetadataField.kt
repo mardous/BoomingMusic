@@ -49,6 +49,8 @@ class MetadataField(
         Composer(R.string.composer, MetadataReader.COMPOSER),
         Conductor(R.string.conductor, MetadataReader.PRODUCER),
         Publisher(R.string.publisher, MetadataReader.COPYRIGHT),
+        Lyricist(R.string.lyricist, MetadataReader.LYRICIST),
+        Arranger(R.string.arranger, MetadataReader.ARRANGER),
         Format(R.string.label_file_format, null),
         Bitrate(R.string.label_bit_rate, null),
         SampleRate(R.string.label_sampling_rate, null);
