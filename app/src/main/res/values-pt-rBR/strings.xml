@@ -949,4 +949,5 @@
     <string name="lyrics_by_x">Letra de %s</string>
     <string name="mini_player_swipe_to_skip_title">Deslize o mini player para pular</string>
     <string name="mini_player_swipe_to_skip_summary">Deslize o dedo para a esquerda ou para a direita no mini-reprodutor para pular entre as músicas.</string>
+    <string name="arranger">Arranjador</string>
 </resources>
