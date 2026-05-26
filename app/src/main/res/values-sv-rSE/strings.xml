@@ -940,4 +940,5 @@
     <string name="lyrics_by_x">Sångtext av %s</string>
     <string name="mini_player_swipe_to_skip_title">Svep minispelaren för att hoppa över</string>
     <string name="mini_player_swipe_to_skip_summary">Svep åt vänster eller höger på minispelaren för att hoppa mellan låtar.</string>
+    <string name="arranger">Kompositör</string>
 </resources>
