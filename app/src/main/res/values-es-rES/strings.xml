@@ -942,4 +942,5 @@
     <string name="preferred_lyrics_file_format_summary">Si una canción tiene archivos de letras en diferentes formatos, esta opción le permite elegir cuál es la prioridad.</string>
     <string name="mini_player_swipe_to_skip_title">Intercambiar mini‐reproductor para omitir</string>
     <string name="mini_player_swipe_to_skip_summary">Golpear izquierdo o derecho en el mini‐reproductor para omitir entre canciones.</string>
+    <string name="arranger">Organizador</string>
 </resources>
