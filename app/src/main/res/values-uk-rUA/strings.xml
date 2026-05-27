@@ -958,4 +958,5 @@
     <string name="lyrics_by_x">Текст пісні: %s</string>
     <string name="mini_player_swipe_to_skip_title">Змахнути по мініпрогравачу, аби пропустити</string>
     <string name="mini_player_swipe_to_skip_summary">Гортати вліво або вправо по мініпрогравачу, щоби перемикатися між піснями.</string>
+    <string name="arranger">Аранжувальник</string>
 </resources>
