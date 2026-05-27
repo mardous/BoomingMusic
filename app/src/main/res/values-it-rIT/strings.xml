@@ -633,14 +633,14 @@
     <string name="queue_height_summary">Blocca l\'altezza della coda di riproduzione a metà dello schermo.</string>
     <string name="single_tap_on_album_cover_title">Singolo tocco sulla copertina</string>
     <string name="double_tap_on_album_cover_title">Doppio tocco sulla copertina</string>
-    <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
-    <string name="double_tap_on_right_album_cover_title">Right album-cover edge double-tap</string>
+    <string name="double_tap_on_left_album_cover_title">Doppio tocco dell\'angolo della cover dell\'album</string>
+    <string name="double_tap_on_right_album_cover_title">Doppio tocco dell\'angolo della cover Album</string>
     <string name="long_press_on_album_cover_title">Pressione prolungata sulla copertina</string>
     <string name="small_image_title">Piccola immagine</string>
     <string name="small_image_summary">Riduce la grandezza della copertina in stili supportati.</string>
     <string name="now_playing_corner_radius_title">Raggio dell\'angolo dell\'immagine</string>
     <string name="now_playing_corner_radius_summary">Definisce quanto vengono arrotondati gli angoli delle copertine degli album.</string>
-    <string name="carousel_effect_title">Effetto carousel</string>
+    <string name="carousel_effect_title">Effetto a carosello</string>
     <string name="album_cover_effect_title">Effetto copertina album</string>
     <string name="animate_controls_title">Anima i controlli</string>
     <string name="animate_controls_summary">Viene riprodotto quando si apre il pannello di riproduzione.</string>
@@ -695,7 +695,7 @@
     <string name="on_song_click_play_only_this_song_summary">La coda corrente sarà cancellata e rimpiazzata dal brano selezionato.</string>
     <string name="on_song_click_play_whole_list_title">Riproduci tutta la lista</string>
     <string name="on_song_click_play_whole_list_summary">La coda corrente verrà rimpiazzata da tutti i brani della lista, album, o cartella corrente.</string>
-    <string name="on_song_click_queue_next_title">Metti in coda come brano successivo</string>
+    <string name="on_song_click_queue_next_title">Segna come prossimo in coda</string>
     <string name="on_song_click_queue_next_summary">Il brano selezionato verrà aggiunto nella posizione successiva nella coda.</string>
     <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
     <string name="on_song_click_enqueue_at_end_summary">Il brano selezionato verrà aggiunto alla fine della coda corrente.</string>
