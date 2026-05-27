@@ -629,7 +629,7 @@
     <string name="circle_button_title">Pulsante di riproduzione tondo</string>
     <string name="swipe_album_cover_title">Scorri nella copertina dell\'album</string>
     <string name="swipe_album_cover_summary">Scorri verso sinistra o destra nella copertina dell\'album per passare da un brano all\'altro.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
+    <string name="queue_height_title">Altezza della coda a metà schermo</string>
     <string name="queue_height_summary">Blocca l\'altezza della coda di riproduzione a metà dello schermo.</string>
     <string name="single_tap_on_album_cover_title">Singolo tocco sulla copertina</string>
     <string name="double_tap_on_album_cover_title">Doppio tocco sulla copertina</string>
@@ -697,7 +697,7 @@
     <string name="on_song_click_play_whole_list_summary">La coda corrente verrà rimpiazzata da tutti i brani della lista, album, o cartella corrente.</string>
     <string name="on_song_click_queue_next_title">Segna come prossimo in coda</string>
     <string name="on_song_click_queue_next_summary">Il brano selezionato verrà aggiunto nella posizione successiva nella coda.</string>
-    <string name="on_song_click_enqueue_at_end_title">Enqueue at end</string>
+    <string name="on_song_click_enqueue_at_end_title">Metti alla fine della coda</string>
     <string name="on_song_click_enqueue_at_end_summary">Il brano selezionato verrà aggiunto alla fine della coda corrente.</string>
     <string name="on_clear_queue_title">Alla cancellazione della coda</string>
     <string name="on_clear_queue_remove_all_songs_title">Rimuovi tutti i brani</string>
@@ -745,7 +745,7 @@
     <string name="backup_app_data_summary">Crea un file contenente i dati essenziali dell\'app e salvalo nella memoria esterna.</string>
     <string name="restore_backup_title">Ripristina backup</string>
     <string name="restore_backup_summary">Ripristina i dati (e lo stato) delle app da un backup precedente.</string>
-    <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
+    <string name="stop_when_closed_from_recents_title">Ferma quando chiuso dai recenti</string>
     <string name="stop_when_closed_from_recents_summary">La riproduzione viene fermata se l\'app viene chiusa dalla lista delle app recenti.</string>
     <string name="stop_when_closed_from_recents_note">Nota: alcuni dispositivi con una gestione aggressiva della memoria e/o della batteria potrebbero ignorare questa impostazione e fermare sempre l\'app quando rimossa dalla lista delle app recenti.</string>
     <string name="rotation_lock_title">Blocco rotazione</string>
@@ -765,9 +765,9 @@
     <string name="m3_style">M3</string>
     <string name="expressive_style">Espressivo</string>
     <string name="normal_style">Normal</string>
-    <string name="cascading">Cascading</string>
+    <string name="cascading">A cascata</string>
     <string name="depth">Profondità</string>
-    <string name="hinge">Hinge</string>
+    <string name="hinge">Cerniera</string>
     <string name="horizontal_flip">Capovolgimento Orizzontale</string>
     <string name="vertical_flip">Capovolgimento Verticale</string>
     <string name="zoom_out">Zoom Indietro</string>
