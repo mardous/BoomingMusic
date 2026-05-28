@@ -416,8 +416,8 @@
     <string name="save_profile_label">Save profile</string>
     <string name="edit_profile_label">Edit profile</string>
     <string name="delete_profile_label">Delete profile</string>
-    <string name="delete_profile_x">Delete profile \"%s\"?</string>
-    <string name="please_enter_a_name_for_this_profile">Please, enter a name for this profile.</string>
+    <string name="delete_profile_x">Xóa hồ sơ \"%s\"?</string>
+    <string name="please_enter_a_name_for_this_profile">Vui lòng nhập tên cho hồ sơ này.</string>
     <string name="replace_profile_with_same_name">Replace profile with same name</string>
     <string name="use_with_devices_title">Use with devices:</string>
     <string name="profile_name">Profile name</string>
@@ -430,16 +430,16 @@
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Amplifier</string>
-    <string name="sound_settings">Sound settings</string>
-    <string name="listening_on">Listening on</string>
+    <string name="sound_settings">Cài đặt âm thanh</string>
+    <string name="listening_on">Nghe trên</string>
     <string name="casting_to">Casting to</string>
     <string name="volume_label">Volume</string>
     <string name="reset_balance">Reset balance</string>
     <string name="speed_and_pitch_label">Speed and pitch</string>
     <string name="reset_tempo">Reset tempo</string>
     <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
-    <string name="balance_left">Left</string>
-    <string name="balance_right">Right</string>
+    <string name="balance_left">Trái</string>
+    <string name="balance_right">Phải</string>
     <string name="action_external_eq">External EQ</string>
     <string name="custom">Custom</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
@@ -451,7 +451,7 @@
     <string name="skip_silence_description">Automatically skip silent sections during playback. Ideal for podcasts and recordings.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Hiển thị lời bài hát</string>
-    <string name="action_hide_lyrics">Hide lyrics</string>
+    <string name="action_hide_lyrics">Ẩn lời bài hát</string>
     <string name="plain_lyrics">Plain</string>
     <string name="synced_lyrics">Synced</string>
     <string name="embedded_lyrics">Embedded</string>
@@ -888,4 +888,5 @@
     <string name="no_playlists_that_match_x">Không có danh sách phát nào khớp với \"%s\"</string>
     <string name="songs_added_to_playlists">Bản nhạc đã được thêm vào (các) danh sách phát.</string>
     <string name="no_playlists_label">Không có danh sách phát</string>
+    <string name="file_lyrics">Tệp</string>
 </resources>
