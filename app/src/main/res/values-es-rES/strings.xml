@@ -943,4 +943,11 @@
     <string name="mini_player_swipe_to_skip_title">Intercambiar mini‐reproductor para omitir</string>
     <string name="mini_player_swipe_to_skip_summary">Golpear izquierdo o derecho en el mini‐reproductor para omitir entre canciones.</string>
     <string name="arranger">Organizador</string>
+    <plurals name="x_playlists_selected">
+        <item quantity="one">%d playlist seleccionada</item>
+        <item quantity="many">%d playlist seleccionadas</item>
+        <item quantity="other">%d playlist seleccionadas</item>
+    </plurals>
+    <string name="lrc_file_lyrics">LRC</string>
+    <string name="listenbrainz_scrobbling_title">Habilitar el scrobbling en ListenBrainz</string>
 </resources>
