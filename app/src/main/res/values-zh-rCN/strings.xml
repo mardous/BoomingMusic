@@ -931,4 +931,5 @@
     <string name="mini_player_swipe_to_skip_title">滑动迷你播放器跳过曲目</string>
     <string name="mini_player_swipe_to_skip_summary">向左或向右滑动迷你播放器时在曲目间切换。</string>
     <string name="lyrics_by_x">歌词来自 %s</string>
+    <string name="arranger">编曲</string>
 </resources>
