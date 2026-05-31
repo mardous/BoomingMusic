@@ -25,6 +25,7 @@ import android.content.Intent
 import android.media.MediaScannerConnection
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import androidx.core.animation.doOnEnd
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
@@ -541,7 +542,7 @@ class LibraryViewModel(
         val uri = intent.data
         if (uri == null || uri.scheme == "glance-action") {
             emit(result.copy(handled = false))
-        } else {
+        } else try {
             if (uri.toString().isNotEmpty()) {
                 val songs = repository.songsByUri(uri)
                 emit(result.copy(songs = songs, failed = songs.isEmpty()))
@@ -579,6 +580,8 @@ class LibraryViewModel(
                     else -> emit(result.copy(handled = false))
                 }
             }
+        } catch (e: Exception) {
+            Log.e("LibraryViewModel", "handleIntent() failed; intent=$intent", e)
         }
     }
 
