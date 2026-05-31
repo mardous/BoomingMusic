@@ -949,4 +949,5 @@
     <string name="lyrics_by_x">Letra por %s</string>
     <string name="mini_player_swipe_to_skip_title">Deslizar mini reproductor para saltar</string>
     <string name="mini_player_swipe_to_skip_summary">Deslizar a la izquierda o derecha en el mini reproductor para saltar entre canciones.</string>
+    <string name="arranger">Organizador</string>
 </resources>
