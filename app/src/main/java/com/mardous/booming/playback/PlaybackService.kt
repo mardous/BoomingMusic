@@ -22,9 +22,11 @@ import android.os.HandlerThread
 import android.os.Looper
 import android.os.Process
 import android.util.Log
+import android.view.KeyEvent
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.core.content.ContextCompat
+import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
 import androidx.core.os.postDelayed
 import androidx.glance.appwidget.GlanceAppWidgetManager
@@ -166,6 +168,18 @@ class PlaybackService :
     private var pausedByZeroVolume = false
     private var hasSetUnshuffledOrder = false
     private var stopIndex = -1
+
+    private var headsetClickCount = 0
+    private val headsetClickRunnable = Runnable {
+        if (!::player.isInitialized) return@Runnable
+        val count = headsetClickCount
+        headsetClickCount = 0
+        when (count) {
+            1 -> if (player.isPlaying) player.pause() else player.play()
+            2 -> player.seekToNext()
+            3 -> player.seekToPrevious()
+        }
+    }
 
     private var lastPlaybackState: PlaybackState? = null
     private var widgetUpdateJob: Job? = null
@@ -339,6 +353,7 @@ class PlaybackService :
             headsetReceiverRegistered = false
         }
         eqStateHandler?.removeCallbacksAndMessages(null)
+        uiHandler.removeCallbacks(headsetClickRunnable)
         serviceScope.cancel()
         preferences.unregisterOnSharedPreferenceChangeListener(this)
         audioOutputObserver.stopObserver()
@@ -392,6 +407,27 @@ class PlaybackService :
             availableCommands.build(),
             connectionResult.availablePlayerCommands
         )
+    }
+
+    override fun onMediaButtonEvent(
+        session: MediaSession,
+        controllerInfo: MediaSession.ControllerInfo,
+        intent: Intent
+    ): Boolean {
+        val ke = IntentCompat.getParcelableExtra(intent, Intent.EXTRA_KEY_EVENT, KeyEvent::class.java)
+        if (ke != null && (ke.keyCode == KeyEvent.KEYCODE_HEADSETHOOK || ke.keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE)) {
+            if (ke.action == KeyEvent.ACTION_DOWN && ke.repeatCount == 0) {
+                headsetClickCount++
+                uiHandler.removeCallbacks(headsetClickRunnable)
+                if (headsetClickCount >= 3) {
+                    uiHandler.post(headsetClickRunnable)
+                } else {
+                    uiHandler.postDelayed(headsetClickRunnable, 300)
+                }
+            }
+            return true
+        }
+        return super.onMediaButtonEvent(session, controllerInfo, intent)
     }
 
     override fun onAudioSessionIdChanged(audioSessionId: Int) {
@@ -1101,6 +1137,7 @@ class PlaybackService :
 
     private fun updateEqualizerSessionState(isPlaying: Boolean) {
         eqStateHandler?.removeCallbacksAndMessages(null)
+        uiHandler.removeCallbacks(headsetClickRunnable)
         if (isPlaying) {
             equalizerManager.setSessionIsActive(true)
         } else {
