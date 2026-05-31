@@ -71,6 +71,7 @@ class SongTagEditorActivity : AbsTagEditorActivity() {
             songBinding.discTotal.setText(tagResult.discTotal)
             songBinding.lyrics.setText(tagResult.lyrics)
             songBinding.lyricist.setText(tagResult.lyricist)
+            songBinding.arranger.setText(tagResult.arranger)
             songBinding.comment.setText(tagResult.comment)
         }
         viewModel.loadContent()
@@ -140,6 +141,7 @@ class SongTagEditorActivity : AbsTagEditorActivity() {
             MetadataReader.DISC_TOTAL to songBinding.discTotal.text?.toString(),
             MetadataReader.LYRICS to songBinding.lyrics.text?.toString(),
             MetadataReader.LYRICIST to songBinding.lyricist.text?.toString(),
+            MetadataReader.ARRANGER to songBinding.arranger.text?.toString(),
             MetadataReader.COMMENT to songBinding.comment.text?.toString()
         )
 

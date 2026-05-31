@@ -930,4 +930,14 @@
     <string name="use_lyrically_provider_title">Lyrically-provider gebruiken</string>
     <string name="use_lyrically_provider_summary">Uitgebreide lyrieke-API met karaoke- en meerpersoonondersteuning.</string>
     <string name="auto_theme_name">Automatisch</string>
+    <string name="file_lyrics">Bestand</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LRC</string>
+    <string name="undo_changes">Ongedaan maken</string>
+    <string name="preferred_lyrics_file_format_title">Voorkeurs bestandsformaat</string>
+    <string name="cannot_edit_lyrics_file">U kan de bestandsinhoud niet direct via Booming Music aanpassen.</string>
+    <string name="preferred_lyrics_file_format_summary">Als een nummer songtekstbestanden in verschillende formaten heeft laat deze optie u kiezen welk formaat voorkeur heeft.</string>
+    <string name="lyrics_by_x">Songteksten door %s</string>
+    <string name="mini_player_swipe_to_skip_title">Sleep minispeler om over te slaan</string>
+    <string name="mini_player_swipe_to_skip_summary">Sleep links of rechts op de minispeler om liedjes over te slaan.</string>
 </resources>

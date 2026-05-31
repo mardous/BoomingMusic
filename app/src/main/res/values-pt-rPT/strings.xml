@@ -382,7 +382,7 @@
     <string name="shuffle_mode_combined_description">Mix com base nos seus favoritos, mais tocadas e recentes.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Equalizador</string>
-    <string name="autoeq_label">AutoEq</string>
+    <string name="autoeq_label">Eq automático</string>
     <string name="graphic_eq_label">Graphic EQ</string>
     <string name="graphic_eq_band_count">banda-%d</string>
     <string name="eq_profiles_title">Perfis de EQ</string>
@@ -932,4 +932,14 @@
     <string name="use_lyrically_provider_title">Use o provedor Lyrically</string>
     <string name="use_lyrically_provider_summary">API robusta de letras com karaokê e apoio multipessoa.</string>
     <string name="auto_theme_name">Padrão</string>
+    <string name="file_lyrics">Ficheiro</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LRC</string>
+    <string name="undo_changes">Desfazer alterações</string>
+    <string name="cannot_edit_lyrics_file">Não é possível editar o conteúdo do ficheiro diretamente no Booming Music.</string>
+    <string name="lyrics_by_x">Letra de %s</string>
+    <string name="preferred_lyrics_file_format_title">Formato de ficheiro preferido</string>
+    <string name="preferred_lyrics_file_format_summary">Se uma música tiver ficheiros de letras em formatos diferentes, esta opção permite que escolha qual terá prioridade.</string>
+    <string name="mini_player_swipe_to_skip_title">Deslize o mini reprodutor para pular</string>
+    <string name="mini_player_swipe_to_skip_summary">Deslize o dedo para a esquerda ou para a direita no mini reprodutor para pular entre as músicas.</string>
 </resources>
