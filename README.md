@@ -161,6 +161,8 @@ Your support is greatly appreciated and keeps me motivated to continue improving
 **[Bloodaxe](https://github.com/Bloodaxe95)**
 <br/>
 **Bernhard**
+<br/>
+**Andreas Hirth**
 
 </div>
 
