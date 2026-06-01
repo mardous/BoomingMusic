@@ -917,7 +917,7 @@
     <string name="widget_image_corner_radius_summary">Изменить скругление углов обложки альбома.</string>
     <string name="widget_third_line_summary">Выберите данные для отображения в третьей строке.</string>
     <string name="widget_third_line_title">Данные в третьей строке</string>
-    <string name="sleep_timer_x_secs">%d сек</string>
+    <string name="sleep_timer_x_secs">%d с</string>
     <string name="search_playlists">Искать плейлисты</string>
     <string name="select_playlists_title">Выбрать плейлисты</string>
     <string name="new_playlist_action">Новый</string>
@@ -958,4 +958,5 @@
     <string name="use_lyrically_provider_title">Использовать провайдера Lyrically</string>
     <string name="use_lyrically_provider_summary">Богатое текстами API с караоке и поддержкой нескольких человек.</string>
     <string name="auto_theme_name">Автоматически</string>
+    <string name="arranger">Аранжировщик</string>
 </resources>
