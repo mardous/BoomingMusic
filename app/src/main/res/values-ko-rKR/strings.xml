@@ -871,4 +871,12 @@
     <string name="sleep_timer_x_secs">%d 초</string>
     <string name="github">GitHub</string>
     <string name="telegram_community">텔레그램 커뮤니티</string>
+    <string name="app_widget_responsive">반응형</string>
+    <string name="app_widget_responsive_desc">다양한 크기에 맞춰 레이아웃이 조정되는 위젯</string>
+    <string name="app_widget_card">카드</string>
+    <string name="app_widget_card_desc">미니멀하고 간결한 스타일</string>
+    <string name="app_widget_full">가득한</string>
+    <string name="app_widget_full_desc">플레이어 화면이 데스크톱에 바로 표시됩니다</string>
+    <string name="new_playlist_action">새로운</string>
+    <string name="no_playlists_create_new">\"새로 만들기\" 버튼을 눌러 재생 목록을 만드세요</string>
 </resources>
