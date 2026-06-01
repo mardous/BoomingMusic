@@ -41,7 +41,7 @@
     <string name="delete_action">excluir</string>
     <string name="remove_action">Excluir</string>
     <string name="clear_action">Limpar</string>
-    <string name="close_action">FECHAR</string>
+    <string name="close_action">Fechar</string>
     <string name="continue_action">Continuar</string>
     <string name="select_all_title">Selecionar todos</string>
     <string name="x_selected">%d selecionado</string>
@@ -95,7 +95,7 @@
     <string name="action_tag_editor">Editor de Tags</string>
     <string name="saving_changes">Salvando alterações</string>
     <string name="changes_saved_successfully">Alterações salvas com sucesso.</string>
-    <string name="could_not_save_some_changes">Não foi possível salvar algumas alterações</string>
+    <string name="could_not_save_some_changes">Não foi possível salvar algumas alterações.</string>
     <string name="web_search">Pesquisar na Web</string>
     <string name="where_do_you_want_to_search">Onde você deseja procurar?</string>
     <string name="configure_action">Configurar</string>
@@ -163,8 +163,8 @@
     <string name="action_go_to_album">Ir para o álbum</string>
     <string name="action_go_to_artist">Ir para o Artista</string>
     <string name="action_go_to_genre">Ir para Gênero</string>
-    <string name="added_title_to_playing_queue">Adicionado 1 título à lista de reprodução</string>
-    <string name="added_x_titles_to_playing_queue">Títulos %1$d adicionados à fila de reprodução</string>
+    <string name="added_title_to_playing_queue">1 título adicionado à lista de reprodução.</string>
+    <string name="added_x_titles_to_playing_queue">%1$d títulos adicionados à fila de reprodução.</string>
     <string name="next_song_label">Próxima Música</string>
     <string name="next_song_x">Próximo • %1$s</string>
     <string name="next_song_x_by_artist_x">Próximo • %1$s por %2$s</string>
@@ -188,7 +188,7 @@
     <string name="album_artists_label">Artistas do álbum</string>
     <string name="genres_label">Géneros</string>
     <string name="folders_label">Pastas</string>
-    <string name="playlists_label">Playlists</string>
+    <string name="playlists_label">Listas de reprodução</string>
     <string name="playlist_label">Playlist</string>
     <string name="favorites_label">Atalhos</string>
     <string name="last_added_label">Última adicionada</string>
@@ -324,22 +324,27 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Música</item>
+        <item quantity="many">Músicas</item>
         <item quantity="other">Músicas</item>
     </plurals>
     <plurals name="albums">
         <item quantity="one">Álbum</item>
-        <item quantity="other">álbuns</item>
+        <item quantity="many">Álbuns</item>
+        <item quantity="other">Álbuns</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d música</item>
+        <item quantity="many">%d músicas</item>
         <item quantity="other">%d músicas</item>
     </plurals>
     <plurals name="x_albums">
-        <item quantity="one">Álbum %d</item>
+        <item quantity="one">%d álbum</item>
+        <item quantity="many">%d álbuns</item>
         <item quantity="other">%d álbuns</item>
     </plurals>
     <plurals name="x_artists">
-        <item quantity="one">Artista %d</item>
+        <item quantity="one">%d artista</item>
+        <item quantity="many">%d artistas</item>
         <item quantity="other">%d artistas</item>
     </plurals>
     <plurals name="x_times">
@@ -348,11 +353,13 @@
         <item quantity="other">%d vezes</item>
     </plurals>
     <plurals name="x_plays">
-        <item quantity="one">%d reprodução</item>
-        <item quantity="other">%d reproduções</item>
+        <item quantity="one">reprodução %d</item>
+        <item quantity="many">reproduções %d</item>
+        <item quantity="other">reproduções %d</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d item</item>
+        <item quantity="many">%d items</item>
         <item quantity="other">%d items</item>
     </plurals>
     <!-- Home -->
@@ -497,7 +504,7 @@
     <string name="app_shortcut_last_added_short">Últimas Adicionadas</string>
     <string name="app_shortcut_favorites_short">Favoritos</string>
     <!-- About page -->
-    <string name="action_about">SOBRE</string>
+    <string name="action_about">Sobre</string>
     <string name="changelog">Mudanças</string>
     <string name="faq">FAQ</string>
     <string name="licenses">Licenças</string>
@@ -544,7 +551,7 @@
     <string name="advanced_title">Avançado</string>
     <string name="advanced_summary">Idioma no aplicativo e outras configurações para usuários avançados.</string>
     <string name="update_title">Atualização</string>
-    <string name="about_title">SOBRE</string>
+    <string name="about_title">Sobre</string>
     <string name="about_summary">Booming Music %s, toque para obter mais informações.</string>
     <!-- Preference headers -->
     <string name="general_header">Gerais</string>
@@ -825,7 +832,7 @@
     <string name="the_app_is_up_to_date">O aplicativo está atualizado</string>
     <string name="update_available_title">Atualização disponível</string>
     <string name="more_info_action">Mais informações.</string>
-    <string name="download_action">BAIXAR</string>
+    <string name="download_action">Transferir</string>
     <string name="downloading_update">Baixando atualização do Booming.</string>
     <string name="uncaught_error_title">Ops! Algo inesperado aconteceu!</string>
     <string name="uncaught_error_message">Algo deu errado e a app foi encerrada inesperadamente. Enviar o relatório de erro por Telegram ou e-mail ajudaria-nos a resolver o problema.</string>
@@ -942,4 +949,5 @@
     <string name="preferred_lyrics_file_format_summary">Se uma música tiver ficheiros de letras em formatos diferentes, esta opção permite que escolha qual terá prioridade.</string>
     <string name="mini_player_swipe_to_skip_title">Deslize o mini reprodutor para pular</string>
     <string name="mini_player_swipe_to_skip_summary">Deslize o dedo para a esquerda ou para a direita no mini reprodutor para pular entre as músicas.</string>
+    <string name="arranger">Arranjador</string>
 </resources>
