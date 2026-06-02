@@ -37,14 +37,19 @@ data class SongInfo(
     val composer: String? = null,
     val conductor: String? = null,
     val publisher: String? = null,
+    val lyricist: String? = null,
+    val arranger: String? = null,
     val genre: String? = null,
     val replayGain: String? = null,
     val comment: String? = null
 ) {
+    // True only when every optional metadata field is absent; gates the metadata section in the UI.
+    // lyricist and arranger are included alongside composer/conductor/publisher for consistency:
+    // the section should appear whenever any credit or descriptive tag has content.
     val isMissingMetadata: Boolean = album.isNullOrEmpty() && albumArtist.isNullOrEmpty() &&
             albumYear.isNullOrEmpty() && trackNumber.isNullOrEmpty() && discNumber.isNullOrEmpty() &&
             composer.isNullOrEmpty() && conductor.isNullOrEmpty() && publisher.isNullOrEmpty() &&
-            genre.isNullOrEmpty()
+            lyricist.isNullOrEmpty() && arranger.isNullOrEmpty() && genre.isNullOrEmpty()
 
     companion object {
         val Empty = SongInfo()

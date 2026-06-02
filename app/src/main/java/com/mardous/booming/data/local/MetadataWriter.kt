@@ -169,6 +169,9 @@ class MetadataWriter : KoinComponent {
         }
 
         val newProperties = currentProperties
+            // Workaround for the bug that caused regeneration of REPLAYGAIN tags,
+            // resulting in duplicate entries in the audio file.
+            .filterKeys { !it.contains(Regex("(?i)REPLAYGAIN_(TRACK|ALBUM)_[A-Z0-7_]+")) }
             .filterValues { it.isNotEmpty() }
             .mapValuesTo(hashMapOf()) { it.value }
 

@@ -282,8 +282,7 @@ class EqualizerManager(
             }
             .launchIn(eqScope)
 
-        balanceState.filterNot { it == BalanceState.Unspecified }
-            .debounce(50)
+        balanceState.debounce(50)
             .onEach { balanceState ->
                 balanceProcessor.setBalance(balanceState.left, balanceState.right)
             }

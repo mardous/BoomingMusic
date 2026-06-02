@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import android.util.LruCache
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.MetadataWriter
@@ -52,6 +53,8 @@ class RealLyricsRepository(
     private val lyricsDao: LyricsDao
 ) : LyricsRepository {
 
+    private val memoryCache = LruCache<Long, Map<LyricsSource, RawLyrics>>(20)
+
     private val charsetDetector = UniversalDetector()
 
     private val lrcLyricsParser = LrcLyricsParser()
@@ -94,6 +97,7 @@ class RealLyricsRepository(
     }
 
     override suspend fun fileLyrics(song: Song): RawLyrics.File? {
+        getCachedLyrics<RawLyrics.File>(LyricsSource.File, song.id)?.let { return it }
         try {
             val preferredFormatValue =
                 preferences.requireString("preferred_lyrics_file_format", "ttml")
@@ -113,13 +117,15 @@ class RealLyricsRepository(
                 if (lyrics.isNotEmpty()) {
                     val rawLyrics = RawLyrics.File(file, lyrics)
                     if (file.format == preferredFormat) {
-                        return rawLyrics
+                        return cacheLyrics(song.id, rawLyrics)
                     }
                     rawLyricsList.add(rawLyrics)
                 }
             }
 
-            return rawLyricsList.firstOrNull()
+            return rawLyricsList.firstOrNull()?.let {
+                cacheLyrics(song.id, it)
+            }
         } catch (e: Exception) {
             Log.e(TAG, "Couldn't find/read lyrics files for song ${song.data}", e)
         }
@@ -128,13 +134,14 @@ class RealLyricsRepository(
 
     override suspend fun embeddedLyrics(song: Song): RawLyrics.Embedded? {
         if (song.id != Song.emptySong.id) {
+            getCachedLyrics<RawLyrics.Embedded>(LyricsSource.Embedded, song.id)?.let { return it }
             try {
                 val metadataReader = MetadataReader(song.uri)
                 var lyrics = metadataReader.value(MetadataReader.LYRICS)
                 if (lyrics.isNullOrEmpty()) {
                     lyrics = metadataReader.value("UNSYNCEDLYRICS")
                 }
-                return RawLyrics.Embedded(lyrics)
+                return cacheLyrics(song.id, RawLyrics.Embedded(lyrics))
             } catch (e: Exception) {
                 Log.e(TAG, "Couldn't read embedded lyrics for song ${song.data}", e)
             }
@@ -144,6 +151,7 @@ class RealLyricsRepository(
 
     override suspend fun storedLyrics(song: Song, allowDownload: Boolean): RawLyrics.Stored? {
         if (song.id != Song.emptySong.id) try {
+            getCachedLyrics<RawLyrics.Stored>(LyricsSource.Downloaded, song.id)?.let { return it }
             val storedLyrics = lyricsDao.getLyrics(song.id)
             if (storedLyrics == null && allowDownload) {
                 val storableLyrics = lyricsDownloadService.remoteLyrics(song)
@@ -162,14 +170,14 @@ class RealLyricsRepository(
                             )
                         )
                     }
-                    return storableLyrics
+                    return cacheLyrics(song.id, storableLyrics)
                 }
             } else if (storedLyrics != null) {
-                return RawLyrics.Stored(
+                return cacheLyrics(song.id, RawLyrics.Stored(
                     lyrics = storedLyrics.lyrics,
                     provider = storedLyrics.provider,
                     instrumental = storedLyrics.instrumental
-                )
+                ))
             }
         } catch (e: Exception) {
             Log.e(TAG, "Couldn't fetch/download lyrics for song ${song.data}", e)
@@ -224,7 +232,9 @@ class RealLyricsRepository(
                             val metadataWriter = MetadataWriter()
                             metadataWriter.propertyMap(hashMapOf(MetadataReader.LYRICS to it.newContent))
                             metadataWriter.write(this.context, EditTarget.song(song)).isSuccess
-                        }.getOrDefault(false)
+                        }.getOrDefault(false).also { success ->
+                            if (success) removeCachedLyrics(LyricsSource.Embedded, song.id)
+                        }
                     }
 
                     is RawLyrics.Stored -> {
@@ -238,7 +248,9 @@ class RealLyricsRepository(
                                 )
                             )
                             true
-                        }.getOrDefault(false)
+                        }.getOrDefault(false).also { success ->
+                            if (success) removeCachedLyrics(LyricsSource.Downloaded, song.id)
+                        }
                     }
 
                     else -> false
@@ -259,6 +271,41 @@ class RealLyricsRepository(
 
     override suspend fun deleteAllLyrics() {
         lyricsDao.removeLyrics()
+        memoryCache.evictAll()
+    }
+
+    private inline fun <reified T : RawLyrics> getCachedLyrics(
+        source: LyricsSource,
+        songId: Long
+    ): T? {
+        val cachedLyrics = memoryCache[songId]
+        if (cachedLyrics != null && cachedLyrics.containsKey(source)) {
+            return cachedLyrics[source] as? T
+        }
+        return null
+    }
+
+    private fun <T : RawLyrics> cacheLyrics(songId: Long, lyrics: T): T {
+        val source = when (lyrics) {
+            is RawLyrics.Embedded -> LyricsSource.Embedded
+            is RawLyrics.Stored -> LyricsSource.Downloaded
+            is RawLyrics.File -> LyricsSource.File
+            else -> null
+        }
+        if (source != null) {
+            val cachedLyrics = memoryCache[songId]?.toMutableMap() ?: mutableMapOf()
+            cachedLyrics[source] = lyrics
+            memoryCache.put(songId, cachedLyrics)
+        }
+        return lyrics
+    }
+
+    private fun removeCachedLyrics(source: LyricsSource, songId: Long) {
+        val cachedLyrics = memoryCache[songId]?.toMutableMap()
+        if (cachedLyrics != null) {
+            cachedLyrics.remove(source)
+            memoryCache.put(songId, cachedLyrics)
+        }
     }
 
     private fun findLyricsFiles(song: Song): List<LyricsFile> {

@@ -921,4 +921,14 @@
     <string name="listenbrainz_now_playing_summary">在您的 ListenBrainz 个人资料上实时显示正在播放的曲目。</string>
     <string name="use_lyrically_provider_title">使用 Lyrically 服务</string>
     <string name="use_lyrically_provider_summary">支持卡拉 OK 和多歌手的富文本歌词 API。</string>
+    <string name="file_lyrics">文件</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LRC</string>
+    <string name="undo_changes">撤销更改</string>
+    <string name="cannot_edit_lyrics_file">您无法在 Booming Music 中直接编辑文件内容。</string>
+    <string name="preferred_lyrics_file_format_title">首选文件格式</string>
+    <string name="preferred_lyrics_file_format_summary">如果一首曲目有不同格式的歌词文件，使用本选项选择优先使用的格式。</string>
+    <string name="mini_player_swipe_to_skip_title">滑动迷你播放器跳过曲目</string>
+    <string name="mini_player_swipe_to_skip_summary">向左或向右滑动迷你播放器时在曲目间切换。</string>
+    <string name="lyrics_by_x">歌词来自 %s</string>
 </resources>

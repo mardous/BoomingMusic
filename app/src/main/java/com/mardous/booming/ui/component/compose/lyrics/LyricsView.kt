@@ -4,35 +4,30 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.EaseInOut
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.StartOffset
 import androidx.compose.animation.core.StartOffsetType
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.plus
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -40,7 +35,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -51,6 +45,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -64,9 +59,12 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
@@ -77,13 +75,10 @@ import com.mardous.booming.core.model.lyrics.LyricsViewState
 import com.mardous.booming.data.model.lyrics.LyricsActor
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.extensions.hasS
-import com.mardous.booming.extensions.utilities.isRtl
 import com.mardous.booming.ui.component.compose.decoration.FadingEdges
 import com.mardous.booming.ui.component.compose.decoration.fadingEdges
 import kotlin.math.PI
 import kotlin.math.abs
-import kotlin.math.max
-import kotlin.math.min
 import kotlin.math.sin
 
 private val TextStyle.minimumPadding: Dp
@@ -102,6 +97,9 @@ fun LyricsView(
 ) {
     val density = LocalDensity.current
     val textStyle = settings.syncedStyle
+
+    val layoutDirection = LocalLayoutDirection.current
+    val isRtl = layoutDirection == LayoutDirection.Rtl
 
     val listState = rememberLazyListState()
     val isScrollInProgress = listState.isScrollInProgress
@@ -159,7 +157,6 @@ fun LyricsView(
     LazyColumn(
         state = listState,
         contentPadding = settings.contentPadding,
-        verticalArrangement = Arrangement.spacedBy(textStyle.minimumPadding * 4),
         modifier = modifier
             .nestedScroll(rememberNestedScrollInteropConnection())
             .fadingEdges(edges = fadingEdges)
@@ -173,7 +170,6 @@ fun LyricsView(
                 selectedLine = index == state.currentLineIndex,
                 isCenterHorizontally = settings.isCenterHorizontally,
                 enableSyllable = settings.enableSyllableLyrics && isPowerSaveMode.not(),
-                enableKaraokeStyle = settings.enableKaraokeStyle,
                 progressiveColoring = settings.progressiveColoring && isPowerSaveMode.not(),
                 enableBlurEffect = settings.blurEffect && disableBlurEffect.not(),
                 enableShadowEffect = settings.shadowEffect && disableAdvancedEffects.not(),
@@ -181,19 +177,21 @@ fun LyricsView(
                 position = state.position,
                 line = line,
                 textStyle = textStyle,
-                modifier = Modifier.animateItem(placementSpec = tween(durationMillis = 500)),
+                rtl = isRtl,
+                modifier = Modifier
+                    .animateItem(placementSpec = tween(durationMillis = 1000)),
                 onClick = { onLineClick(line) }
             )
         }
 
         val provider = state.lyrics?.provider
         if (settings.mode == LyricsViewSettings.Mode.Full && !provider.isNullOrEmpty()) {
-            item {
+            item("LyricsProvider") {
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
                         .fillParentMaxWidth()
-                        .padding(top = 48.dp)
+                        .padding(top = 56.dp)
                 ) {
                     Text(
                         text = stringResource(R.string.lyrics_by_x, provider),
@@ -213,7 +211,6 @@ private fun LyricsLineView(
     selectedLine: Boolean,
     isCenterHorizontally: Boolean,
     enableSyllable: Boolean,
-    enableKaraokeStyle: Boolean,
     progressiveColoring: Boolean,
     enableBlurEffect: Boolean,
     enableShadowEffect: Boolean,
@@ -221,17 +218,27 @@ private fun LyricsLineView(
     position: Long,
     line: SyncedLyrics.Line,
     textStyle: TextStyle,
+    rtl: Boolean,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
+    val animatedAlpha by animateFloatAsState(
+        targetValue = if (selectedLine) 1f else .5f,
+        animationSpec = tween(durationMillis = 400),
+        label = "current-line-alpha-animation"
+    )
+
+    val color = if (selectedLine) {
+        contentColor.copy(alpha = animatedAlpha)
+    } else {
+        contentColor.copy(alpha = 0.5f)
+    }
+
     val scale by animateFloatAsState(
         targetValue = if (selectedLine) 1.1f else 1f,
         animationSpec = tween(durationMillis = 700),
         label = "current-line-scale-animation"
     )
-
-    val showBackground = position in
-            min(line.startAt, line.bgStartMillis)..max(line.end, line.bgEndMillis)
 
     val textAlign = if (isCenterHorizontally) {
         TextAlign.Center
@@ -249,15 +256,16 @@ private fun LyricsLineView(
         }
     }
 
-    if (line.isEmpty) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .lyrics(textAlign)
-        ) {
+    LyricsLineBox(
+        style = textStyle,
+        align = textAlign,
+        rtl = rtl,
+        onClick = onClick
+    ) { transformOrigin ->
+        if (line.isEmpty) {
             BubblesLine(
                 selectedLine = selectedLine,
-                color = contentColor,
+                color = color,
                 fontSize = textStyle.fontSize,
                 position = position,
                 startMillis = line.startAt,
@@ -270,54 +278,45 @@ private fun LyricsLineView(
                     }
                 )
             )
-        }
-    } else {
-        Column(
-            horizontalAlignment = when (textAlign) {
-                TextAlign.End -> Alignment.End
-                TextAlign.Center -> Alignment.CenterHorizontally
-                else -> Alignment.Start
-            },
-            verticalArrangement = Arrangement.spacedBy(textStyle.minimumPadding - 6.dp),
-            modifier = modifier
-                .fillMaxWidth()
-                .clickable(
-                    indication = null,
-                    interactionSource = null,
-                    onClick = onClick
+        } else {
+            Column(
+                horizontalAlignment = when (textAlign) {
+                    TextAlign.End -> Alignment.End
+                    TextAlign.Center -> Alignment.CenterHorizontally
+                    else -> Alignment.Start
+                },
+                verticalArrangement = Arrangement.spacedBy(textStyle.minimumPadding - 4.dp),
+                modifier = modifier
+                    .fillMaxWidth()
+                    .graphicsLayer {
+                        this.transformOrigin = transformOrigin
+                        scaleX = scale
+                        scaleY = scale
+                    }
+            ) {
+                LyricsLineContentView(
+                    index = index,
+                    selectedIndex = selectedIndex,
+                    content = line.content,
+                    translatedContent = line.translation,
+                    backgroundContent = false,
+                    enableSyllable = enableSyllable,
+                    progressiveColoring = progressiveColoring,
+                    enableBlurEffect = enableBlurEffect,
+                    enableShadowEffect = enableShadowEffect,
+                    selectedLine = selectedLine,
+                    contentColor = color,
+                    position = position,
+                    startMillis = line.startAt,
+                    endMillis = line.end,
+                    style = textStyle,
+                    align = textAlign
                 )
-        ) {
-            LyricsLineContentView(
-                index = index,
-                selectedIndex = selectedIndex,
-                content = line.content,
-                translatedContent = line.translation,
-                backgroundContent = false,
-                enableSyllable = enableSyllable,
-                enableKaraokeStyle = enableKaraokeStyle,
-                progressiveColoring = progressiveColoring,
-                enableBlurEffect = enableBlurEffect,
-                enableShadowEffect = enableShadowEffect,
-                selectedLine = selectedLine,
-                contentColor = contentColor,
-                currentMillis = position,
-                startMillis = line.startAt,
-                endMillis = line.end,
-                scale = scale,
-                style = textStyle,
-                align = textAlign
-            )
 
-            if (line.content.hasBackgroundVocals) {
-                AnimatedVisibility(
-                    visible = showBackground,
-                    enter = slideInVertically(
-                        animationSpec = spring(stiffness = Spring.StiffnessLow)
-                    ) + fadeIn(tween(400)),
-                    exit = slideOutVertically(
-                        animationSpec = spring(stiffness = Spring.StiffnessLow)
-                    ) + fadeOut(tween(400))
-                ) {
+                if (line.content.hasBackgroundVocals) {
+                    if (line.translation?.isEmpty == false) {
+                        Spacer(modifier = Modifier.height(textStyle.minimumPadding * 2))
+                    }
                     LyricsLineContentView(
                         index = index,
                         selectedIndex = selectedIndex,
@@ -325,18 +324,16 @@ private fun LyricsLineView(
                         translatedContent = line.translation,
                         backgroundContent = true,
                         enableSyllable = enableSyllable,
-                        enableKaraokeStyle = enableKaraokeStyle,
                         progressiveColoring = progressiveColoring,
                         enableBlurEffect = enableBlurEffect,
                         enableShadowEffect = enableShadowEffect,
                         selectedLine = selectedLine,
-                        contentColor = contentColor,
-                        currentMillis = position,
+                        contentColor = color,
+                        position = position,
                         startMillis = line.startAt,
                         endMillis = line.end,
-                        scale = scale,
                         style = textStyle.copy(
-                            fontSize = textStyle.fontSize / 1.60f,
+                            fontSize = textStyle.fontSize / 1.40f,
                             fontWeight = FontWeight.Normal
                         ),
                         align = textAlign
@@ -354,31 +351,23 @@ fun LyricsLineContentView(
     content: SyncedLyrics.TextContent,
     translatedContent: SyncedLyrics.TextContent?,
     enableSyllable: Boolean,
-    enableKaraokeStyle: Boolean,
     backgroundContent: Boolean,
     progressiveColoring: Boolean,
     enableBlurEffect: Boolean,
     enableShadowEffect: Boolean,
     selectedLine: Boolean,
     contentColor: Color,
-    currentMillis: Long,
+    position: Long,
     startMillis: Long,
     endMillis: Long,
-    scale: Float,
     style: TextStyle,
     align: TextAlign,
     modifier: Modifier = Modifier
 ) {
-    fun getLayoutDirection(isRtl: Boolean) = if (isRtl) {
-        LayoutDirection.Rtl
-    } else {
-        LayoutDirection.Ltr
-    }
-
     val progressFraction = when {
-        currentMillis < startMillis -> 0f
-        currentMillis > endMillis -> 1f
-        else -> ((currentMillis - startMillis).toFloat() / (endMillis - startMillis).toFloat()).coerceIn(0f, 1f)
+        position < startMillis -> 0f
+        position > endMillis -> 1f
+        else -> ((position - startMillis).toFloat() / (endMillis - startMillis).toFloat()).coerceIn(0f, 1f)
     }
 
     val effectDuration = ((endMillis - startMillis) / 2).coerceAtMost(500).toInt()
@@ -401,22 +390,21 @@ fun LyricsLineContentView(
     val mainVocals = content.getVocals(backgroundContent)
     val mainText = content.getText(backgroundContent)
 
-    val mainIsRtl = mainText.isRtl()
     if (enableSyllable && mainVocals.isNotEmpty()) {
-        WordSyncedText(
-            karaokeStyle = enableKaraokeStyle,
+        SyllableText(
             selectedLine = selectedLine,
-            currentMillis = currentMillis,
-            syllables = mainVocals,
-            contentColor = contentColor,
             shadowEffect = enableShadowEffect,
+            position = position,
+            words = mainVocals,
+            contentColor = contentColor,
             style = style,
             align = align,
-            layoutDirection = getLayoutDirection(mainIsRtl),
-            modifier = modifier.lyrics(blurEffect, align, scale, mainIsRtl)
+            modifier = modifier.graphicsLayer {
+                renderEffect = blurEffect
+            }
         )
     } else {
-        LineSyncedText(
+        LyricsTextView(
             selectedLine = selectedLine,
             progressiveColoring = progressiveColoring,
             shadowEffect = enableShadowEffect,
@@ -426,36 +414,32 @@ fun LyricsLineContentView(
             color = contentColor,
             style = style,
             align = align,
-            layoutDirection = getLayoutDirection(mainIsRtl),
-            modifier = modifier.lyrics(blurEffect, align, scale, mainIsRtl)
+            modifier = modifier.graphicsLayer {
+                renderEffect = blurEffect
+            }
         )
     }
-
     if (translatedContent != null && !translatedContent.isEmpty) {
         val translatedVocals = translatedContent.getVocals(backgroundContent)
         val translatedText = translatedContent.getText(backgroundContent)
-
-        val translatedIsRtl = translatedText.isRtl()
-        val translationStyle = style.copy(
-            fontSize = style.fontSize / 1.40,
-            fontWeight = FontWeight.Normal
-        )
-
         if (enableSyllable && translatedVocals.isNotEmpty()) {
-            WordSyncedText(
-                karaokeStyle = enableKaraokeStyle,
+            SyllableText(
                 selectedLine = selectedLine,
-                currentMillis = currentMillis,
-                syllables = translatedVocals,
-                contentColor = contentColor,
                 shadowEffect = enableShadowEffect,
-                style = translationStyle,
+                position = position,
+                words = translatedVocals,
+                contentColor = contentColor,
+                style = style.copy(
+                    fontSize = style.fontSize / 1.40,
+                    fontWeight = FontWeight.Normal
+                ),
                 align = align,
-                layoutDirection = getLayoutDirection(translatedIsRtl),
-                modifier = modifier.lyrics(blurEffect, align, scale, translatedIsRtl)
+                modifier = modifier.graphicsLayer {
+                    renderEffect = blurEffect
+                }
             )
         } else {
-            LineSyncedText(
+            LyricsTextView(
                 selectedLine = selectedLine,
                 progressiveColoring = progressiveColoring && mainVocals.isEmpty(),
                 shadowEffect = enableShadowEffect,
@@ -468,15 +452,16 @@ fun LyricsLineContentView(
                     fontWeight = FontWeight.Normal
                 ),
                 align = align,
-                layoutDirection = getLayoutDirection(translatedIsRtl),
-                modifier = modifier.lyrics(blurEffect, align, scale, translatedIsRtl)
+                modifier = modifier.graphicsLayer {
+                    renderEffect = blurEffect
+                }
             )
         }
     }
 }
 
 @Composable
-private fun LineSyncedText(
+private fun LyricsTextView(
     selectedLine: Boolean,
     progressiveColoring: Boolean,
     shadowEffect: Boolean,
@@ -486,16 +471,9 @@ private fun LineSyncedText(
     color: Color,
     style: TextStyle,
     align: TextAlign,
-    layoutDirection: LayoutDirection,
     modifier: Modifier = Modifier
 ) {
     var textHeight by remember { mutableFloatStateOf(0f) }
-
-    val animatedAlpha by animateFloatAsState(
-        targetValue = if (selectedLine) 1f else .4f,
-        animationSpec = tween(durationMillis = 400),
-        label = "current-line-alpha-animation"
-    )
 
     val animatedOrigin by animateFloatAsState(
         targetValue = if (selectedLine) progressFraction * textHeight else 0f,
@@ -521,76 +499,146 @@ private fun LineSyncedText(
             if (progressiveColoring) {
                 style.copy(
                     brush = Brush.verticalGradient(
-                        colors = listOf(color, color.copy(alpha = 0.4f)),
+                        colors = listOf(color, color.copy(alpha = color.alpha / 2)),
                         startY = animatedOrigin - 10f,
                         endY = animatedOrigin + 10f
                     )
                 )
             } else {
-                style.copy(
-                    color = if (selectedLine) {
-                        color.copy(alpha = animatedAlpha)
-                    } else {
-                        color.copy(alpha = .4f)
-                    }
-                )
+                style.copy(color = color)
             }
         }
     }
 
-    CompositionLocalProvider(LocalLayoutDirection provides layoutDirection) {
-        Text(
-            text = content,
-            style = textStyle.copy(shadow = shadow),
-            textAlign = align,
-            modifier = modifier
-                .onGloballyPositioned {
-                    textHeight = it.size.height.toFloat()
-                }
-        )
-    }
+    Text(
+        text = content,
+        style = textStyle.copy(shadow = shadow),
+        textAlign = align,
+        modifier = modifier
+            .onGloballyPositioned {
+                textHeight = it.size.height.toFloat()
+            }
+    )
 }
 
 @Composable
-private fun WordSyncedText(
-    karaokeStyle: Boolean,
+private fun SyllableText(
     selectedLine: Boolean,
-    currentMillis: Long,
-    syllables: List<SyncedLyrics.Word>,
-    contentColor: Color,
     shadowEffect: Boolean,
+    position: Long,
+    words: List<SyncedLyrics.Word>,
+    contentColor: Color,
     style: TextStyle,
     align: TextAlign,
-    layoutDirection: LayoutDirection,
     modifier: Modifier = Modifier
 ) {
-    CompositionLocalProvider(LocalLayoutDirection provides layoutDirection) {
-        if (karaokeStyle && layoutDirection == LayoutDirection.Ltr) {
-            KaraokeLineView(
-                selectedLine = selectedLine,
-                shadowEffect = shadowEffect,
-                currentMillis = currentMillis,
-                syllables = syllables,
-                contentColor = contentColor,
-                style = style,
-                align = align,
-                modifier = modifier
-            )
-        } else {
-            SpannedWordText(
-                selectedLine = selectedLine,
-                shadowEffect = shadowEffect,
-                currentMillis = currentMillis,
-                syllables = syllables,
-                contentColor = contentColor,
-                style = style,
-                align = align,
-                modifier = modifier
-            )
+    // Original code from Metrolist (https://github.com/mostafaalagamy/Metrolist)
+    val styledText = buildAnnotatedString {
+        words.forEach { word ->
+            val wordStartMs = word.startMillis
+            val wordEndMs = word.endMillis
+            val wordDuration = word.durationMillis
+
+            val isWordActive = selectedLine && position >= wordStartMs && position <= wordEndMs
+            val hasWordPassed = selectedLine && position > wordEndMs
+
+            val fadeProgress = if (isWordActive && wordDuration > 0) {
+                val timeElapsed = position - wordStartMs
+                val linear = (timeElapsed.toFloat() / wordDuration.toFloat()).coerceIn(0f, 1f)
+                // Smooth cubic easing
+                linear * linear * (3f - 2f * linear)
+            } else if (hasWordPassed) 1f else 0f
+
+            val wordAlpha = when {
+                !selectedLine -> 0.5f
+                hasWordPassed -> 1f
+                isWordActive -> 0.4f + (0.6f * fadeProgress)
+                else -> 0.4f
+            }
+            val wordShadow = when {
+                shadowEffect && isWordActive && fadeProgress > 0.2f -> Shadow(
+                    color = contentColor.copy(alpha = 0.35f * fadeProgress),
+                    offset = Offset.Zero,
+                    blurRadius = 10f * fadeProgress
+                )
+                shadowEffect && hasWordPassed -> Shadow(
+                    color = contentColor.copy(alpha = 0.15f),
+                    offset = Offset.Zero,
+                    blurRadius = 6f
+                )
+                else -> null
+            }
+            val wordColor = contentColor.copy(alpha = wordAlpha)
+
+            withStyle(
+                style = SpanStyle(
+                    color = wordColor,
+                    shadow = wordShadow
+                )
+            ) {
+                append(word.content)
+            }
         }
+    }
+    Text(
+        text = styledText,
+        style = style,
+        textAlign = align,
+        modifier = modifier
+    )
+}
+
+@Composable
+private fun LyricsLineBox(
+    style: TextStyle,
+    align: TextAlign,
+    rtl: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    content: @Composable BoxScope.(transformOrigin: TransformOrigin) -> Unit
+) {
+    val transformOrigin = when (align) {
+        TextAlign.End -> if (rtl) TransformOrigin(0f, 1f) else TransformOrigin(1f, 1f)
+        TextAlign.Start -> if (rtl) TransformOrigin(1f, 1f) else TransformOrigin(0f, 1f)
+        else -> TransformOrigin.Center
+    }
+
+    val verticalPadding = style.minimumPadding * 2
+    val paddingValues = when (align) {
+        TextAlign.End -> PaddingValues(
+            start = 32.dp,
+            top = verticalPadding,
+            end = 8.dp,
+            bottom = verticalPadding
+        )
+
+        TextAlign.Start -> PaddingValues(
+            start = 8.dp,
+            top = verticalPadding,
+            end = 32.dp,
+            bottom = verticalPadding
+        )
+
+        else -> PaddingValues(horizontal = 32.dp, vertical = verticalPadding)
+    }
+
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(
+                indication = null,
+                interactionSource = null,
+                onClick = onClick
+            )
+            .padding(paddingValues)
+    ) {
+        content(transformOrigin)
     }
 }
 
+/**
+ * From [Lotus music player](https://github.com/dn0ne/lotus)
+ */
 @Composable
 private fun BubblesLine(
     selectedLine: Boolean,
@@ -780,39 +828,4 @@ private fun Bubble(
                 )
             }
     )
-}
-
-private fun Modifier.lyrics(
-    align: TextAlign
-): Modifier {
-    val verticalPadding = PaddingValues()
-    val paddingValues = when (align) {
-        TextAlign.End -> PaddingValues(start = 32.dp, end = 8.dp) + verticalPadding
-        TextAlign.Start -> PaddingValues(start = 8.dp, end = 32.dp) + verticalPadding
-        else -> PaddingValues(horizontal = 32.dp) + verticalPadding
-    }
-    return padding(paddingValues)
-}
-
-private fun Modifier.lyrics(
-    blurEffect: BlurEffect?,
-    align: TextAlign,
-    scale: Float,
-    rtl: Boolean
-): Modifier {
-    val modifier = Modifier
-        .lyrics(align)
-        .graphicsLayer {
-            renderEffect = blurEffect
-
-            scaleY = scale
-            scaleX = scale
-
-            transformOrigin = when (align) {
-                TextAlign.End -> if (rtl) TransformOrigin(0f, 1f) else TransformOrigin(1f, 1f)
-                TextAlign.Start -> if (rtl) TransformOrigin(1f, 1f) else TransformOrigin(0f, 1f)
-                else -> TransformOrigin.Center
-            }
-        }
-    return then(modifier)
 }

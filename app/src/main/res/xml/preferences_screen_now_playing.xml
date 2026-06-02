@@ -98,6 +98,15 @@
 
         <SwitchPreferenceCompat
             app:iconSpaceReserved="true"
+            app:title="@string/mini_player_swipe_to_skip_title"
+            app:summary="@string/mini_player_swipe_to_skip_summary"
+            app:defaultValue="true"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="mini_player_swipe_to_skip" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="true"
             app:title="@string/swipe_up_queue_title"
             app:summary="@string/swipe_up_queue_summary"
             app:defaultValue="false"

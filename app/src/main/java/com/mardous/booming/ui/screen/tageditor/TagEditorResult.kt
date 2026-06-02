@@ -33,6 +33,7 @@ data class TagEditorResult(
     val discTotal: String? = null,
     val lyrics: String? = null,
     val lyricist: String? = null,
+    val arranger: String? = null,
     val comment: String? = null
 )
 

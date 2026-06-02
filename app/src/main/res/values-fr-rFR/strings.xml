@@ -933,4 +933,14 @@
     <string name="listenbrainz_now_playing_summary">Affichez en temps réel le titre en cours de lecture sur votre profil ListenBrainz.</string>
     <string name="use_lyrically_provider_title">Utiliser le fournisseur Lyrically</string>
     <string name="use_lyrically_provider_summary">API de paroles enrichies avec prise en charge du karaoké et de plusieurs personnes.</string>
+    <string name="file_lyrics">Fichier</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LRC</string>
+    <string name="undo_changes">Annuler les modifications</string>
+    <string name="cannot_edit_lyrics_file">Vous ne pouvez pas modifier le contenu du fichier directement depuis Booming Music.</string>
+    <string name="preferred_lyrics_file_format_title">Format de fichier préféré</string>
+    <string name="preferred_lyrics_file_format_summary">Si un titre comporte des fichiers de paroles dans différents formats, cette option vous permet de choisir celui qui doit être privilégié.</string>
+    <string name="lyrics_by_x">Paroles de %s</string>
+    <string name="mini_player_swipe_to_skip_title">Faites glisser le mini-lecteur pour passer</string>
+    <string name="mini_player_swipe_to_skip_summary">Balayez vers la gauche ou vers la droite sur le mini-lecteur pour passer d\'un titre à l\'autre.</string>
 </resources>

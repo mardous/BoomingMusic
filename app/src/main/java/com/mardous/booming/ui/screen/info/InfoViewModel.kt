@@ -121,6 +121,8 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                 val composer = metadataReader.merge(MetadataReader.COMPOSER)
                 val conductor = metadataReader.merge(MetadataReader.PRODUCER)
                 val publisher = metadataReader.merge(MetadataReader.COPYRIGHT)
+                val lyricist = metadataReader.merge(MetadataReader.LYRICIST)
+                val arranger = metadataReader.merge(MetadataReader.ARRANGER)
                 val genre = metadataReader.merge(MetadataReader.GENRE)
                 val comment = metadataReader.value(MetadataReader.COMMENT)
 
@@ -143,6 +145,8 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                     composer = composer,
                     conductor = conductor,
                     publisher = publisher,
+                    lyricist = lyricist,
+                    arranger = arranger,
                     genre = genre,
                     replayGain = replayGain,
                     comment = comment

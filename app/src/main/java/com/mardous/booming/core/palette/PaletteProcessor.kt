@@ -3,6 +3,7 @@ package com.mardous.booming.core.palette
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.util.Log
 import androidx.core.graphics.scale
 import androidx.palette.graphics.Palette
 import com.kyant.m3color.quantize.QuantizerCelebi
@@ -46,81 +47,86 @@ object PaletteProcessor {
         bitmap: Bitmap,
         colorAccuracy: Boolean = true
     ): PaletteColor = withContext(Dispatchers.Default) {
-        if (bitmap.isRecycled) {
-            return@withContext PaletteColor.errorColor(context)
-        }
-
-        val requestedSize = if (colorAccuracy) 64 else 16
-        val workingBitmap =
-            if (bitmap.width > requestedSize || bitmap.height > requestedSize)
-                bitmap.scale(requestedSize, requestedSize)
-            else bitmap
-
-        val bitmapWidth = workingBitmap.width
-        val bitmapHeight = workingBitmap.height
-        if (bitmapWidth <= 0 || bitmapHeight <= 0) {
-            if (workingBitmap !== bitmap) workingBitmap.recycle()
-            return@withContext PaletteColor.errorColor(context)
-        }
-
-        // extract vibrant color using Celebi
-        val vibrantColor = getVibrantColor(workingBitmap)
-
-        // extraction for background
-        val paletteBuilder = Palette.from(workingBitmap)
-            .setRegion(0, 0, bitmapWidth / 2, bitmapHeight)
-            .clearFilters()
-            .resizeBitmapArea(RESIZE_BITMAP_AREA)
-
-        var palette = paletteBuilder.generate()
-        val backgroundColorAndFilter = findBackgroundColorAndFilter(palette)
-
-        // extraction for foreground
-        paletteBuilder.setRegion((bitmapWidth * 0.4f).toInt(), 0, bitmapWidth, bitmapHeight)
-
-        backgroundColorAndFilter.second?.let { backgroundHsl ->
-            paletteBuilder.addFilter { _: Int, hsl: FloatArray ->
-                val diff = abs(hsl[0] - backgroundHsl[0])
-                diff > 10 && diff < 350
+        try {
+            if (bitmap.isRecycled) {
+                return@withContext PaletteColor.errorColor(context)
             }
-        }
 
-        paletteBuilder.addFilter(mBlackWhiteFilter)
-        palette = paletteBuilder.generate()
+            val requestedSize = if (colorAccuracy) 64 else 16
+            val workingBitmap =
+                if (bitmap.width > requestedSize || bitmap.height > requestedSize)
+                    bitmap.scale(requestedSize, requestedSize)
+                else bitmap
 
-        val backgroundColor = backgroundColorAndFilter.first
-        val foregroundColor = if (backgroundColor.isColorLight) {
-            selectForegroundColorForSwatches(
-                palette.darkVibrantSwatch,
-                palette.vibrantSwatch,
-                palette.darkMutedSwatch,
-                palette.mutedSwatch,
-                palette.dominantSwatch,
-                Color.BLACK
+            val bitmapWidth = workingBitmap.width
+            val bitmapHeight = workingBitmap.height
+            if (bitmapWidth <= 0 || bitmapHeight <= 0) {
+                if (workingBitmap !== bitmap) workingBitmap.recycle()
+                return@withContext PaletteColor.errorColor(context)
+            }
+
+            // extract vibrant color using Celebi
+            val vibrantColor = getVibrantColor(workingBitmap)
+
+            // extraction for background
+            val paletteBuilder = Palette.from(workingBitmap)
+                .setRegion(0, 0, bitmapWidth / 2, bitmapHeight)
+                .clearFilters()
+                .resizeBitmapArea(RESIZE_BITMAP_AREA)
+
+            var palette = paletteBuilder.generate()
+            val backgroundColorAndFilter = findBackgroundColorAndFilter(palette)
+
+            // extraction for foreground
+            paletteBuilder.setRegion((bitmapWidth * 0.4f).toInt(), 0, bitmapWidth, bitmapHeight)
+
+            backgroundColorAndFilter.second?.let { backgroundHsl ->
+                paletteBuilder.addFilter { _: Int, hsl: FloatArray ->
+                    val diff = abs(hsl[0] - backgroundHsl[0])
+                    diff > 10 && diff < 350
+                }
+            }
+
+            paletteBuilder.addFilter(mBlackWhiteFilter)
+            palette = paletteBuilder.generate()
+
+            val backgroundColor = backgroundColorAndFilter.first
+            val foregroundColor = if (backgroundColor.isColorLight) {
+                selectForegroundColorForSwatches(
+                    palette.darkVibrantSwatch,
+                    palette.vibrantSwatch,
+                    palette.darkMutedSwatch,
+                    palette.mutedSwatch,
+                    palette.dominantSwatch,
+                    Color.BLACK
+                )
+            } else {
+                selectForegroundColorForSwatches(
+                    palette.lightVibrantSwatch,
+                    palette.vibrantSwatch,
+                    palette.lightMutedSwatch,
+                    palette.mutedSwatch,
+                    palette.dominantSwatch,
+                    Color.WHITE
+                )
+            }
+
+            val foregroundColors = ensureColors(backgroundColor, foregroundColor)
+
+            if (workingBitmap !== bitmap) {
+                workingBitmap.recycle()
+            }
+
+            PaletteColor(
+                backgroundColor = backgroundColor,
+                primaryColor = vibrantColor,
+                primaryTextColor = foregroundColors.first,
+                secondaryTextColor = foregroundColors.second
             )
-        } else {
-            selectForegroundColorForSwatches(
-                palette.lightVibrantSwatch,
-                palette.vibrantSwatch,
-                palette.lightMutedSwatch,
-                palette.mutedSwatch,
-                palette.dominantSwatch,
-                Color.WHITE
-            )
+        } catch (t: Throwable) {
+            Log.e("PaletteProcessor", "Failed to extract palette colors from bitmap", t)
+            PaletteColor.errorColor(context)
         }
-
-        val foregroundColors = ensureColors(backgroundColor, foregroundColor)
-
-        if (workingBitmap !== bitmap) {
-            workingBitmap.recycle()
-        }
-
-        PaletteColor(
-            backgroundColor = backgroundColor,
-            primaryColor = vibrantColor,
-            primaryTextColor = foregroundColors.first,
-            secondaryTextColor = foregroundColors.second
-        )
     }
 
     private fun findBackgroundColorAndFilter(palette: Palette): Pair<Int, FloatArray?> {
