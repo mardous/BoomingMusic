@@ -222,17 +222,22 @@ private fun LyricsLineView(
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
+    val distance = abs(index - selectedIndex)
+    val targetAlpha = if (selectedLine) {
+        1f
+    } else if (enableBlurEffect && selectedIndex >= 0) {
+        (0.5f - (distance - 1) * 0.10f).coerceIn(0.1f, 0.5f)
+    } else {
+        0.5f
+    }
+
     val animatedAlpha by animateFloatAsState(
-        targetValue = if (selectedLine) 1f else .5f,
+        targetValue = targetAlpha,
         animationSpec = tween(durationMillis = 400),
         label = "current-line-alpha-animation"
     )
 
-    val color = if (selectedLine) {
-        contentColor.copy(alpha = animatedAlpha)
-    } else {
-        contentColor.copy(alpha = 0.5f)
-    }
+    val color = contentColor.copy(alpha = animatedAlpha)
 
     val scale by animateFloatAsState(
         targetValue = if (selectedLine) 1.1f else 1f,
@@ -391,11 +396,11 @@ fun LyricsLineContentView(
     val mainText = content.getText(backgroundContent)
 
     if (enableSyllable && mainVocals.isNotEmpty()) {
-        SyllableText(
+        KaraokeLineView(
             selectedLine = selectedLine,
             shadowEffect = enableShadowEffect,
-            position = position,
-            words = mainVocals,
+            currentMillis = position,
+            syllables = mainVocals,
             contentColor = contentColor,
             style = style,
             align = align,
@@ -423,11 +428,11 @@ fun LyricsLineContentView(
         val translatedVocals = translatedContent.getVocals(backgroundContent)
         val translatedText = translatedContent.getText(backgroundContent)
         if (enableSyllable && translatedVocals.isNotEmpty()) {
-            SyllableText(
+            KaraokeLineView(
                 selectedLine = selectedLine,
                 shadowEffect = enableShadowEffect,
-                position = position,
-                words = translatedVocals,
+                currentMillis = position,
+                syllables = translatedVocals,
                 contentColor = contentColor,
                 style = style.copy(
                     fontSize = style.fontSize / 1.40,
