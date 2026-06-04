@@ -39,7 +39,12 @@ sealed class NetworkFeature(
     sealed class Lyrics(preferenceKey: String, isOnByDefault: Boolean) :
         NetworkFeature(preferenceKey, isOnByDefault) {
         object BetterLyrics : Lyrics(BETTERLYRICS_ENABLED_KEY, false)
-        object Lyrically : Lyrics(LYRICALLY_ENABLED_KEY, false)
+        object Lyrically : Lyrics(LYRICALLY_ENABLED_KEY, false) {
+            override fun isAvailable(context: Context, requireBeOnline: Boolean): Boolean {
+                val isProviderEnabled = context.resources.getBoolean(R.bool.enable_lyrically_provider)
+                return isProviderEnabled && super.isAvailable(context, requireBeOnline)
+            }
+        }
         object LRCLib : Lyrics(LRCLIB_ENABLED_KEY, true)
     }
 

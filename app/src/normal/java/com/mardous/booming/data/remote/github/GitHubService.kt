@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Christians Martínez Alvarado
+ * Copyright (c) 2026 Christians Martínez Alvarado
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,11 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.mardous.booming.data.remote.github
 
 import android.content.Context
 import com.mardous.booming.data.remote.github.model.GitHubRelease
+import com.mardous.booming.util.Constants.GITHUB_API_URL
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -37,10 +37,10 @@ class GitHubService(private val context: Context, private val client: HttpClient
     }
 
     private suspend fun fetchStableRelease(user: String, repo: String): GitHubRelease =
-        get("https://api.github.com/repos/$user/$repo/releases/latest").body()
+        get("${GITHUB_API_URL}repos/$user/$repo/releases/latest").body()
 
     private suspend fun fetchAllReleases(user: String, repo: String, page: Int = 1, limit: Int = 20): List<GitHubRelease> =
-        get("https://api.github.com/repos/$user/$repo/releases?page=$page&per_page=$limit").body()
+        get("${GITHUB_API_URL}repos/$user/$repo/releases?page=$page&per_page=$limit").body()
 
     @OptIn(ExperimentalTime::class)
     suspend fun latestRelease(user: String = DEFAULT_USER, repo: String = DEFAULT_REPO, allowExperimental: Boolean = true): GitHubRelease {
@@ -59,7 +59,7 @@ class GitHubService(private val context: Context, private val client: HttpClient
     }
 
     companion object {
-        const val DEFAULT_USER = "mardous"
-        const val DEFAULT_REPO = "BoomingMusic"
+        private const val DEFAULT_USER = "mardous"
+        private const val DEFAULT_REPO = "BoomingMusic"
     }
 }

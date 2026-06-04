@@ -99,9 +99,25 @@ android {
         create("fdroid") {
             dimension = "version"
         }
+        create("playstore") {
+            dimension = "version"
+        }
+    }
+
+    sourceSets {
+        getByName("normal") {
+            java.directories += "src/normal/java"
+        }
+        getByName("fdroid") {
+            java.directories += "src/normal/java"
+        }
+        getByName("playstore") {
+            java.directories += "src/playstore/java"
+        }
     }
 
     val signingProperties = getProperties("keystore.properties")
+
     val releaseSigning = if (signingProperties != null) {
         signingConfigs.create("release") {
             keyAlias = signingProperties.property("keyAlias")
@@ -163,14 +179,14 @@ android {
 
 androidComponents {
     onVariants { variant ->
-        val isNormalVariant = variant.flavorName == "normal"
+        val canUseLastFm = variant.flavorName == "normal" || variant.flavorName == "playstore"
 
-        val localProperties = if (isNormalVariant) getProperties("local.properties") else null
-        val lastFmKey = if (isNormalVariant) {
+        val localProperties = if (canUseLastFm) getProperties("local.properties") else null
+        val lastFmKey = if (canUseLastFm) {
             localProperties?.getProperty("LASTFM_API_KEY") ?: System.getenv("LASTFM_API_KEY") ?: ""
         } else ""
 
-        val lastFmSecret = if (isNormalVariant) {
+        val lastFmSecret = if (canUseLastFm) {
             localProperties?.getProperty("LASTFM_SECRET") ?: System.getenv("LASTFM_SECRET") ?: ""
         } else ""
 

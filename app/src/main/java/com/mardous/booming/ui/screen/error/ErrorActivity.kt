@@ -15,7 +15,7 @@ import com.mardous.booming.extensions.files.asFormattedFileTime
 import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.component.base.AbsThemeActivity
-import com.mardous.booming.ui.screen.about.ISSUE_TRACKER_LINK
+import com.mardous.booming.util.Constants.ISSUE_TRACKER_LINK
 import java.io.File
 
 /**

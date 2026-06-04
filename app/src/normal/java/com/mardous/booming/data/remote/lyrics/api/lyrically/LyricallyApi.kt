@@ -18,7 +18,6 @@
 package com.mardous.booming.data.remote.lyrics.api.lyrically
 
 import android.util.Log
-import com.mardous.booming.BuildConfig
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.network.NetworkFeature
@@ -26,6 +25,7 @@ import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.model.AppleMusicSearchResponse
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricText
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricsResponse
+import com.mardous.booming.util.Constants.USER_AGENT
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder
@@ -267,8 +267,6 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
 
         private const val LYRICS_URL = "https://lyrics.paxsenix.org"
         private const val SEARCH_URL = "https://amp-api.music.apple.com/v1/catalog/us"
-
-        private const val USER_AGENT = "BoomingMusic/${BuildConfig.VERSION_NAME}"
 
         private val JW_SIMILARITY = JaroWinklerSimilarity()
     }
