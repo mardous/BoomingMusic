@@ -105,14 +105,14 @@ android {
     }
 
     sourceSets {
-        getByName("normal") {
-            java.directories += "src/normal/java"
+        named("normal") {
+            kotlin.srcDirs("src/normal/java")
         }
-        getByName("fdroid") {
-            java.directories += "src/normal/java"
+        named("fdroid") {
+            kotlin.srcDirs("src/normal/java")
         }
-        getByName("playstore") {
-            java.directories += "src/playstore/java"
+        named("playstore") {
+            kotlin.srcDirs("src/playstore/java")
         }
     }
 
