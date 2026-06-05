@@ -292,6 +292,7 @@ class PlaybackService :
             build()
         }
 
+        setForegroundServiceTimeoutMs(FOREGROUND_SERVICE_TIMEOUT)
         setMediaNotificationProvider(
             DefaultMediaNotificationProvider(
                 this,
@@ -1228,5 +1229,7 @@ class PlaybackService :
         private const val MAX_RETRY_COUNT_AFTER_ERROR = 3
         private const val WIDGET_UPDATE_DEBOUNCE = 300L
         private const val REWIND_INSTEAD_PREVIOUS_MILLIS = 5000L
+
+        private const val FOREGROUND_SERVICE_TIMEOUT = (60 * 1000) * 2L
     }
 }
