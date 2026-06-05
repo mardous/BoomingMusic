@@ -39,6 +39,7 @@ import androidx.media3.common.PlaybackException
 import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import androidx.media3.common.Timeline
+import androidx.media3.common.Tracks
 import androidx.media3.common.TrackSelectionParameters.AudioOffloadPreferences
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
@@ -832,6 +833,24 @@ class PlaybackService :
                 )
             }
         }
+    }
+
+    override fun onTracksChanged(tracks: Tracks) {
+        var sampleRate = -1
+        var channelCount = -1
+        for (group in tracks.groups) {
+            if (group.type == C.TRACK_TYPE_AUDIO) {
+                for (i in 0 until group.length) {
+                    if (group.isTrackSelected(i)) {
+                        val format = group.getTrackFormat(i)
+                        sampleRate = format.sampleRate
+                        channelCount = format.channelCount
+                        break
+                    }
+                }
+            }
+        }
+        audioOutputObserver.updatePlaybackFormat(sampleRate, channelCount)
     }
 
     override fun onSharedPreferenceChanged(preferences: SharedPreferences, key: String?) {

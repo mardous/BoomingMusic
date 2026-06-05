@@ -67,6 +67,8 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     private var isObserving = false
     
     private var userEnabledBitPerfect = false
+    private var activeSampleRate: Int = -1
+    private var activeChannelCount: Int = -1
 
     init {
         requestVolume()
@@ -143,6 +145,16 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
         }
     }
 
+    fun updatePlaybackFormat(sampleRate: Int, channelCount: Int) {
+        if (activeSampleRate != sampleRate || activeChannelCount != channelCount) {
+            activeSampleRate = sampleRate
+            activeChannelCount = channelCount
+            if (userEnabledBitPerfect) {
+                checkAndConfigureBitPerfect()
+            }
+        }
+    }
+
     fun configureDeviceForBitPerfect(device: AudioDeviceInfo): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             Log.w(TAG, "Bit-perfect mode requires Android 14+")
@@ -207,11 +219,31 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
                 return false
             }
 
-            val bitPerfectAttribute = supportedAttributes
+            val bitPerfectAttributes = supportedAttributes
                 .filter { it.mixerBehavior == AudioMixerAttributes.MIXER_BEHAVIOR_BIT_PERFECT }
-                .maxByOrNull { attr ->
+
+            if (bitPerfectAttributes.isEmpty()) {
+                Log.w(TAG, "No bit-perfect mixer attributes found for device: ${device.productName}")
+                disableBitPerfect()
+                return false
+            }
+
+            var bitPerfectAttribute: AudioMixerAttributes? = null
+            if (activeSampleRate > 0 && activeChannelCount > 0) {
+                bitPerfectAttribute = bitPerfectAttributes.firstOrNull { attr ->
+                    attr.format.sampleRate == activeSampleRate &&
+                            attr.format.channelCount == activeChannelCount
+                }
+                if (bitPerfectAttribute == null) {
+                    Log.i(TAG, "No exact bit-perfect match for ${activeSampleRate}Hz, ${activeChannelCount}ch; falling back to maximum supported attributes")
+                }
+            }
+
+            if (bitPerfectAttribute == null) {
+                bitPerfectAttribute = bitPerfectAttributes.maxByOrNull { attr ->
                     attr.format.sampleRate * attr.format.channelCount
                 }
+            }
 
             if (bitPerfectAttribute == null) {
                 Log.w(TAG, "No bit-perfect mixer attribute found for device: ${device.productName}")
