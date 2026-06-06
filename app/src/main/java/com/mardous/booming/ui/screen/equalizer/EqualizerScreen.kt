@@ -100,6 +100,7 @@ import com.mardous.booming.ui.component.compose.DialogCheckBox
 import com.mardous.booming.ui.component.compose.DialogListItemWithCheckBox
 import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.component.compose.EmptyView
+import com.mardous.booming.ui.component.compose.EqualizerWaveform
 import com.mardous.booming.ui.component.compose.InputDialog
 import com.mardous.booming.ui.component.compose.MaterialSwitch
 import com.mardous.booming.ui.component.compose.SwitchCard
@@ -184,7 +185,21 @@ fun EqualizerScreen(
     val virtualizer by eqViewModel.virtualizerState.collectAsState()
     val bassBoost by eqViewModel.bassBoostState.collectAsState()
     val loudnessGain by eqViewModel.loudnessGainState.collectAsState()
+    val compressor by eqViewModel.compressorState.collectAsState()
+    val limiter by eqViewModel.limiterState.collectAsState()
     val replayGain by eqViewModel.replayGainState.collectAsState()
+
+    val availableBandCounts = remember(eqBandCapabilities, eqState.proMode) {
+        eqBandCapabilities.getAvailableBandCounts(eqState.proMode)
+    }
+
+    val bandResponseValues = remember(eqBands) {
+        mutableStateListOf<Float>().also { values ->
+            eqBands.forEach { band ->
+                values.add(band.value)
+            }
+        }
+    }
 
     var editProfileState by remember { mutableStateOf<Pair<EqProfile, Boolean>?>(null) }
     var deleteProfileState by remember { mutableStateOf<Pair<EqProfile, Boolean>?>(null) }
@@ -555,6 +570,14 @@ fun EqualizerScreen(
                         enabled = !eqState.isDisabledByReason,
                         visible = EqEngineMode.isSwitchingSupported()
                     ),
+                    MenuItem.Button.Checkable(
+                        text = stringResource(R.string.eq_pro_mode),
+                        icon = painterResource(R.drawable.ic_instant_mix_24dp),
+                        onCheckedChange = { eqViewModel.setProMode(it) },
+                        isChecked = eqState.proMode,
+                        enabled = eqState.isUsable,
+                        visible = eqState.engineMode.supportsProMode
+                    ),
                     MenuItem.Button.DropDown(
                         text = stringResource(R.string.reset_equalizer),
                         icon = painterResource(R.drawable.ic_restart_alt_24dp),
@@ -697,7 +720,7 @@ fun EqualizerScreen(
                                 ) {
                                     ButtonGroup(
                                         onSelected = { changeBandCountState = Pair(it, true) },
-                                        buttonItems = eqBandCapabilities.availableBandCounts,
+                                        buttonItems = availableBandCounts,
                                         buttonStateResolver = { it == eqState.preferredBandCount },
                                         modifier = Modifier.padding(
                                             vertical = 8.dp,
@@ -707,11 +730,21 @@ fun EqualizerScreen(
                                 }
 
                                 if (eqBands.isNotEmpty()) {
-                                    eqBands.forEach { band ->
+                                    EqualizerWaveform(
+                                        bands = bandResponseValues,
+                                        valueRange = eqBandCapabilities.bandRange,
+                                        enabled = eqState.isUsable,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(100.dp)
+                                            .padding(vertical = 8.dp)
+                                    )
+                                    eqBands.forEachIndexed { index, band ->
                                         EQBandSlider(
                                             enabled = eqState.isUsable,
                                             band = band,
-                                            onValueChange = { bandGain ->
+                                            onValueChange = { bandResponseValues[index] = it },
+                                            onValueChangeFinished = { bandGain ->
                                                 eqViewModel.setCustomProfileBandGain(
                                                     band.index,
                                                     bandGain
@@ -842,6 +875,158 @@ fun EqualizerScreen(
                             }
                         }
                     }
+
+                    if (eqState.proMode) {
+                        item {
+                            SwitchCard(
+                                onCheckedChange = { eqViewModel.setCompressor(enabled = it) },
+                                checked = compressor.enabled && eqState.enabled,
+                                title = stringResource(R.string.compressor_label),
+                                iconRes = R.drawable.ic_instant_mix_24dp,
+                                enabled = eqState.isUsable
+                            ) { cardContentPadding ->
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.padding(cardContentPadding)
+                                ) {
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_threshold),
+                                        value = compressor.threshold,
+                                        range = compressor.thresholdRange,
+                                        onValueChangeFinished = { eqViewModel.setCompressor(threshold = it) },
+                                        unit = " dB",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_ratio),
+                                        value = compressor.ratio,
+                                        range = compressor.ratioRange,
+                                        onValueChangeFinished = { eqViewModel.setCompressor(ratio = it) },
+                                        format = "%.1f:1",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_attack_time),
+                                        value = compressor.attackTimeMs,
+                                        range = compressor.attackTimeRange,
+                                        onValueChangeFinished = { eqViewModel.setCompressor(attackTimeMs = it) },
+                                        unit = " ms",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_release_time),
+                                        value = compressor.releaseTimeMs,
+                                        range = compressor.releaseTimeRange,
+                                        onValueChangeFinished = { eqViewModel.setCompressor(releaseTimeMs = it) },
+                                        unit = " ms",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_knee_width),
+                                        value = compressor.kneeWidth,
+                                        range = compressor.kneeWidthRange,
+                                        onValueChangeFinished = { eqViewModel.setCompressor(kneeWidth = it) },
+                                        unit = " dB",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_noise_gate),
+                                        value = compressor.noiseGateThreshold,
+                                        range = compressor.noiseGateThresholdRange,
+                                        onValueChangeFinished = { eqViewModel.setCompressor(noiseGateThreshold = it) },
+                                        unit = " dB",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_pre_gain),
+                                        value = compressor.preGain,
+                                        range = compressor.preGainRange,
+                                        onValueChangeFinished = { eqViewModel.setCompressor(preGain = it) },
+                                        unit = " dB",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_post_gain),
+                                        value = compressor.postGain,
+                                        range = compressor.postGainRange,
+                                        onValueChangeFinished = { eqViewModel.setCompressor(postGain = it) },
+                                        unit = " dB",
+                                        enabled = eqState.isUsable
+                                    )
+                                    Spacer(Modifier.height(4.dp))
+                                    ResetButton(
+                                        onClick = {
+                                            eqViewModel.resetCompressor()
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
+
+                    if (eqState.proMode) {
+                        item {
+                            SwitchCard(
+                                onCheckedChange = { eqViewModel.setLimiter(enabled = it) },
+                                checked = limiter.enabled && eqState.enabled,
+                                title = stringResource(R.string.limiter_label),
+                                iconRes = R.drawable.ic_instant_mix_24dp,
+                                enabled = eqState.isUsable
+                            ) { cardContentPadding ->
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.padding(cardContentPadding)
+                                ) {
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_threshold),
+                                        value = limiter.threshold,
+                                        range = limiter.thresholdRange,
+                                        onValueChangeFinished = { eqViewModel.setLimiter(threshold = it) },
+                                        unit = " dB",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_ratio),
+                                        value = limiter.ratio,
+                                        range = limiter.ratioRange,
+                                        onValueChangeFinished = { eqViewModel.setLimiter(ratio = it) },
+                                        format = "%.1f:1",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_attack_time),
+                                        value = limiter.attackTimeMs,
+                                        range = limiter.attackTimeRange,
+                                        onValueChangeFinished = { eqViewModel.setLimiter(attackTimeMs = it) },
+                                        unit = " ms",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_release_time),
+                                        value = limiter.releaseTimeMs,
+                                        range = limiter.releaseTimeRange,
+                                        onValueChangeFinished = { eqViewModel.setLimiter(releaseTimeMs = it) },
+                                        unit = " ms",
+                                        enabled = eqState.isUsable
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.eq_post_gain),
+                                        value = limiter.postGain,
+                                        range = limiter.postGainRange,
+                                        onValueChangeFinished = { eqViewModel.setLimiter(postGain = it) },
+                                        unit = " dB",
+                                        enabled = eqState.isUsable
+                                    )
+                                    Spacer(Modifier.height(4.dp))
+                                    ResetButton(
+                                        onClick = {
+                                            eqViewModel.resetLimiter()
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
 
                 item {
@@ -917,6 +1102,7 @@ private fun EQBandSlider(
     enabled: Boolean,
     band: EqBand,
     onValueChange: (Float) -> Unit,
+    onValueChangeFinished: (Float) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var bandLevel by remember(band.value) {
@@ -940,8 +1126,11 @@ private fun EQBandSlider(
 
         Slider(
             value = bandLevel,
-            onValueChange = { bandLevel = it },
-            onValueChangeFinished = { onValueChange(bandLevel) },
+            onValueChange = {
+                bandLevel = it
+                onValueChange(it)
+            },
+            onValueChangeFinished = { onValueChangeFinished(bandLevel) },
             valueRange = band.valueRange,
             enabled = enabled,
             modifier = Modifier.weight(1f)
@@ -1447,6 +1636,44 @@ private fun ReplayGainModeSelector(
 }
 
 @Composable
+private fun ParameterSlider(
+    label: String,
+    value: Float,
+    range: ClosedFloatingPointRange<Float>,
+    onValueChangeFinished: (Float) -> Unit,
+    format: String = "%.1f",
+    unit: String = "",
+    enabled: Boolean = true
+) {
+    var paramLevel by remember(value) {
+        mutableFloatStateOf(value)
+    }
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(vertical = 4.dp)
+    ) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.width(72.dp)
+        )
+        Slider(
+            value = paramLevel,
+            onValueChange = { paramLevel = it },
+            onValueChangeFinished = { onValueChangeFinished(paramLevel) },
+            valueRange = range,
+            enabled = enabled,
+            modifier = Modifier.weight(1f)
+        )
+        EQValueText(
+            text = (format + unit).format(Locale.ROOT, paramLevel)
+        )
+    }
+}
+
+@Composable
 private fun EQValueText(
     text: String,
     modifier: Modifier = Modifier
@@ -1460,4 +1687,16 @@ private fun EQValueText(
         textAlign = TextAlign.Center,
         modifier = modifier.width(56.dp)
     )
+}
+
+@Composable
+private fun ResetButton(onClick: () -> Unit) {
+    TextButton(onClick = onClick) {
+        Icon(
+            painter = painterResource(R.drawable.ic_restart_alt_24dp),
+            contentDescription = null
+        )
+        Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+        Text(stringResource(R.string.reset_action))
+    }
 }

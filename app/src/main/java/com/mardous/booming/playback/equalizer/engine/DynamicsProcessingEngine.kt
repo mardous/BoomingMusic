@@ -17,7 +17,7 @@ class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessio
     private var compressorState: CompressorState? = null
     private var limiterState: LimiterState? = null
 
-    override val isMBCSupported: Boolean = false // disabled for now
+    override val isMBCSupported: Boolean = true
     override val isLimiterSupported: Boolean = true
 
     override val isEnabled: Boolean
@@ -26,9 +26,10 @@ class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessio
     override val bandCapabilities: EqBandCapabilities
         get() = EqBandCapabilities(
             bandRange = BAND_RANGE,
-            bandConfigurations = arrayOf(5, 10, 15).mapTo(mutableSetOf()) {
+            bandConfigurations = arrayOf(5, 10, 15, 32).mapTo(mutableSetOf()) {
                 BandConfiguration(it, getFreqInHzByBandCount(it))
-            }
+            },
+            maxBandCountInNormalMode = 15
         )
 
     override fun setEnabled(isEnabled: Boolean) {
@@ -63,12 +64,14 @@ class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessio
         execOpCatching(dynamicsProcessing, Unit) { dp ->
             for (channelIndex in 0 until dp.channelCount) {
                 val preEq = dp.getPreEqByChannelIndex(channelIndex)
-                val band = preEq.getBand(bandIndex)
-                if (band.gain != bandGainInDecibels) {
-                    band.gain = bandGainInDecibels
-                    preEq.setBand(bandIndex, band)
+                if (bandIndex < preEq.bandCount) {
+                    val band = preEq.getBand(bandIndex)
+                    if (band.gain != bandGainInDecibels) {
+                        band.gain = bandGainInDecibels
+                        preEq.setBand(bandIndex, band)
+                    }
+                    dp.setPreEqByChannelIndex(channelIndex, preEq)
                 }
-                dp.setPreEqByChannelIndex(channelIndex, preEq)
             }
         }
     }
@@ -105,9 +108,8 @@ class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessio
             this.compressorState = state
 
             execOpCatching(dynamicsProcessing, false) { dp ->
-                for (channelIndex in 0 until CHANNEL_COUNT) {
-                    val channel = dp.getChannelByChannelIndex(channelIndex)
-                    val mbc = DynamicsProcessing.Mbc(channel.mbc)
+                for (channelIndex in 0 until dp.channelCount) {
+                    val mbc = dp.getMbcByChannelIndex(channelIndex)
 
                     if (mbc.isEnabled != state.enabled)
                         mbc.isEnabled = state.enabled
@@ -132,9 +134,10 @@ class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessio
                             band.kneeWidth = state.kneeWidth
                         if (band.noiseGateThreshold != state.noiseGateThreshold)
                             band.noiseGateThreshold = state.noiseGateThreshold
+                        mbc.setBand(bandIndex, band)
                     }
 
-                    channel.mbc = mbc
+                    dp.setMbcByChannelIndex(channelIndex, mbc)
                 }
                 true
             }
@@ -146,9 +149,8 @@ class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessio
             this.limiterState = state
 
             execOpCatching(dynamicsProcessing, false) { dp ->
-                for (channelIndex in 0 until CHANNEL_COUNT) {
-                    val channel = dp.getChannelByChannelIndex(channelIndex)
-                    val limiter = DynamicsProcessing.Limiter(channel.limiter)
+                for (channelIndex in 0 until dp.channelCount) {
+                    val limiter = dp.getLimiterByChannelIndex(channelIndex)
 
                     if (limiter.isEnabled != state.enabled)
                         limiter.isEnabled = state.enabled
@@ -163,7 +165,7 @@ class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessio
                     if (limiter.postGain != state.postGain)
                         limiter.postGain = state.postGain
 
-                    channel.limiter = limiter
+                    dp.setLimiterByChannelIndex(channelIndex, limiter)
                 }
                 true
             }
@@ -186,27 +188,41 @@ class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessio
                 /* channelCount */ CHANNEL_COUNT,
                 /* preEqInUse */ true,
                 /* preEqBandCount */ bandCount,
-                /* mbcInUse */ false,
-                /* mbcBandCount */ 0,
+                /* mbcInUse */ true,
+                /* mbcBandCount */ bandCount,
                 /* postEqInUse */ false,
                 /* postEqBandCount */ 0,
-                /* limiterInUse */ false //disabled for now
+                /* limiterInUse */ true
             )
             DynamicsProcessing(0, sessionId, builder.build()).also { dp ->
                 for (channelIndex in 0 until dp.channelCount) {
                     val preEq = dp.getPreEqByChannelIndex(channelIndex)
-                    val freqInHz = getFreqInHzByBandCount(preEq.bandCount)
-                    for (bandIndex in 0 until preEq.bandCount) {
-                        preEq.getBand(bandIndex).isEnabled = true
-                        preEq.getBand(bandIndex).cutoffFrequency = freqInHz[bandIndex].toFloat()
+                    val mbc = dp.getMbcByChannelIndex(channelIndex)
+                    val freqInHz = getFreqInHzByBandCount(bandCount)
+                    for (bandIndex in 0 until bandCount) {
+                        preEq.getBand(bandIndex).apply {
+                            isEnabled = true
+                            cutoffFrequency = freqInHz[bandIndex].toFloat()
+                        }
+                        mbc.getBand(bandIndex).apply {
+                            isEnabled = true
+                            cutoffFrequency = freqInHz[bandIndex].toFloat()
+                        }
                     }
                     preEq.isEnabled = true
+                    mbc.isEnabled = true
                     dp.setPreEqByChannelIndex(channelIndex, preEq)
+                    dp.setMbcByChannelIndex(channelIndex, mbc)
+
+                    val limiter = dp.getLimiterByChannelIndex(channelIndex)
+                    limiter.isEnabled = true
+                    dp.setLimiterByChannelIndex(channelIndex, limiter)
                 }
             }
         }
 
     private fun getFreqInHzByBandCount(bandCount: Int) = when (bandCount) {
+        32 -> BAND_FREQUENCIES_IN_HZ_32
         15 -> BAND_FREQUENCIES_IN_HZ_15
         10 -> BAND_FREQUENCIES_IN_HZ_10
         else -> BAND_FREQUENCIES_IN_HZ_5
@@ -225,6 +241,10 @@ class DynamicsProcessingEngine(sessionId: Int, bandCount: Int) : EQEngine(sessio
         private val BAND_FREQUENCIES_IN_HZ_15 = intArrayOf(
             25, 40, 63, 100, 160, 250, 400, 630, 1000,
             1600, 2500, 4000, 6300, 10000, 16000
+        )
+        private val BAND_FREQUENCIES_IN_HZ_32 = intArrayOf(
+            16, 20, 25, 31, 40, 50, 63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000,
+            1250, 1600, 2000, 2500, 3150, 4000, 5000, 6300, 8000, 10000, 12500, 16000, 20000
         )
     }
 }

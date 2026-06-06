@@ -14,8 +14,10 @@ import com.mardous.booming.R
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.AutoEqTxtParser
 import com.mardous.booming.core.model.audiodevice.AudioDeviceType
+import com.mardous.booming.core.model.equalizer.CompressorState
 import com.mardous.booming.core.model.equalizer.EqEngineMode
 import com.mardous.booming.core.model.equalizer.EqProfile
+import com.mardous.booming.core.model.equalizer.LimiterState
 import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
 import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
@@ -48,6 +50,8 @@ class EqualizerViewModel(
     val bassBoostState = equalizerManager.bassBoostState
     val virtualizerState = equalizerManager.virtualizerState
     val loudnessGainState = equalizerManager.loudnessGainState
+    val compressorState = equalizerManager.compressorState
+    val limiterState = equalizerManager.limiterState
     val balanceState = equalizerManager.balanceState
     val tempoState = equalizerManager.tempoState
     val replayGainState = equalizerManager.replayGainState
@@ -218,6 +222,66 @@ class EqualizerViewModel(
                 preampWithoutGain = preampWithoutGain
             )
         )
+    }
+
+    fun setCompressor(
+        enabled: Boolean = compressorState.value.enabled,
+        attackTimeMs: Float = compressorState.value.attackTimeMs,
+        releaseTimeMs: Float = compressorState.value.releaseTimeMs,
+        kneeWidth: Float = compressorState.value.kneeWidth,
+        noiseGateThreshold: Float = compressorState.value.noiseGateThreshold,
+        preGain: Float = compressorState.value.preGain,
+        postGain: Float = compressorState.value.postGain,
+        ratio: Float = compressorState.value.ratio,
+        expanderRatio: Float = compressorState.value.expanderRatio,
+        threshold: Float = compressorState.value.threshold
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setCompressor(
+            compressorState.value.copy(
+                enabled = enabled,
+                attackTimeMs = attackTimeMs,
+                releaseTimeMs = releaseTimeMs,
+                kneeWidth = kneeWidth,
+                noiseGateThreshold = noiseGateThreshold,
+                preGain = preGain,
+                postGain = postGain,
+                ratio = ratio,
+                expanderRatio = expanderRatio,
+                threshold = threshold
+            )
+        )
+    }
+
+    fun resetCompressor() = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setCompressor(CompressorState.Unspecified.copy(enabled = true))
+    }
+
+    fun setLimiter(
+        enabled: Boolean = limiterState.value.enabled,
+        attackTimeMs: Float = limiterState.value.attackTimeMs,
+        releaseTimeMs: Float = limiterState.value.releaseTimeMs,
+        postGain: Float = limiterState.value.postGain,
+        ratio: Float = limiterState.value.ratio,
+        threshold: Float = limiterState.value.threshold
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setLimiter(
+            limiterState.value.copy(
+                enabled = enabled,
+                attackTimeMs = attackTimeMs,
+                releaseTimeMs = releaseTimeMs,
+                postGain = postGain,
+                ratio = ratio,
+                threshold = threshold
+            )
+        )
+    }
+
+    fun resetLimiter() = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setLimiter(LimiterState.Unspecified.copy(enabled = true))
+    }
+
+    fun setProMode(enabled: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        equalizerManager.setProMode(enabled)
     }
 
     fun showOutputDeviceSelector(context: Context) {
