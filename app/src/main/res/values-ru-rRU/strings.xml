@@ -959,4 +959,7 @@
     <string name="use_lyrically_provider_summary">Богатое текстами API с караоке и поддержкой нескольких человек.</string>
     <string name="auto_theme_name">Автоматически</string>
     <string name="arranger">Аранжировщик</string>
+    <string name="eq_pro_mode">Режим Эксперта</string>
+    <string name="compressor_label">Компрессор</string>
+    <string name="limiter_label">Ограничитель</string>
 </resources>
