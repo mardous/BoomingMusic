@@ -18,6 +18,12 @@
     "contrib_image": "ttop.png"
   },
   {
+    "contrib_name": "Lenard",
+    "contrib_description": "Website Designer & Developer",
+    "contrib_url": "https://github.com/lenardflx",
+    "contrib_image": "lenard.png"
+  },
+  {
     "contrib_name": "Alex",
     "contrib_description": "Lyrically API Developer & Collab.",
     "contrib_url": "https://github.com/Paxsenix0",
