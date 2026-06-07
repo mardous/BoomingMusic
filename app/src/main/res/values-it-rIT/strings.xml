@@ -942,4 +942,16 @@
     <string name="use_lyrically_provider_title">Usa provider Lyrically</string>
     <string name="use_lyrically_provider_summary">Ricca API per i testi delle canzoni, con supporto karaoke e supporto per più utenti.</string>
     <string name="auto_theme_name">Auto</string>
+    <string name="eq_pro_mode">Modalità esperto</string>
+    <string name="compressor_label">Compressore</string>
+    <string name="limiter_label">Limitatore</string>
+    <string name="eq_attack_time">Attacco</string>
+    <string name="eq_release_time">Rilascio</string>
+    <string name="eq_threshold">Soglia</string>
+    <string name="eq_ratio">Rapporto</string>
+    <string name="eq_expander_ratio">Rapporto di espansione</string>
+    <string name="eq_knee_width">Ampiezza curvatura</string>
+    <string name="eq_noise_gate">Gate del rumore</string>
+    <string name="eq_pre_gain">Pre-gain</string>
+    <string name="eq_post_gain">Post-gain</string>
 </resources>
