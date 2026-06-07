@@ -944,4 +944,16 @@
     <string name="mini_player_swipe_to_skip_title">Faites glisser le mini-lecteur pour passer</string>
     <string name="mini_player_swipe_to_skip_summary">Balayez vers la gauche ou vers la droite sur le mini-lecteur pour passer d\'un titre à l\'autre.</string>
     <string name="arranger">Arrangeur</string>
+    <string name="eq_pro_mode">Mode Expert</string>
+    <string name="compressor_label">Compresseur</string>
+    <string name="limiter_label">Limiter</string>
+    <string name="eq_attack_time">Attaque</string>
+    <string name="eq_release_time">Communiqué</string>
+    <string name="eq_threshold">Seuil</string>
+    <string name="eq_ratio">Ratio</string>
+    <string name="eq_expander_ratio">Rapport d\'expansion</string>
+    <string name="eq_knee_width">Largeur des genoux</string>
+    <string name="eq_noise_gate">Porte de bruit</string>
+    <string name="eq_pre_gain">Préamplification</string>
+    <string name="eq_post_gain">Post-amplification</string>
 </resources>
