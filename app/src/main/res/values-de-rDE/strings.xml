@@ -941,4 +941,16 @@
     <string name="mini_player_swipe_to_skip_title">Wische Mini-Player um den Song zu wechseln</string>
     <string name="mini_player_swipe_to_skip_summary">Wische links oder rechts auf dem Mini-Player um zwischen Songs zu wechseln.</string>
     <string name="arranger">Arrangeur</string>
+    <string name="eq_pro_mode">Expertenmodus</string>
+    <string name="compressor_label">Kompressor</string>
+    <string name="limiter_label">Begrenzer</string>
+    <string name="eq_attack_time">Attack</string>
+    <string name="eq_release_time">Release</string>
+    <string name="eq_threshold">Schwellenwert</string>
+    <string name="eq_ratio">Verhältnis</string>
+    <string name="eq_expander_ratio">Expansionsverhältnis</string>
+    <string name="eq_knee_width">Knee Weite</string>
+    <string name="eq_noise_gate">Noise Gate</string>
+    <string name="eq_pre_gain">Vor-Gain</string>
+    <string name="eq_post_gain">Nach-Gain</string>
 </resources>
