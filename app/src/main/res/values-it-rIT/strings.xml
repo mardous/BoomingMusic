@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">Riproduci</string>
+    <string name="action_play">Play</string>
     <string name="action_play_all">Riproduci tutti</string>
     <string name="action_shuffle_play">Riproduzione casuale</string>
-    <string name="action_queue_next">Coda successiva</string>
-    <string name="shuffle_all_label">Riproduci casualmente tutti i brani</string>
+    <string name="action_queue_next">Prossimo</string>
+    <string name="shuffle_all_label">Riproduci tutti i brani in modo casuale</string>
     <string name="shuffle_mode">Modalità Casuale</string>
     <string name="repeat_mode">Modalità a Ripetizione</string>
     <string name="shuffle_button_tip">Premi per riproduzione casuale. Tieni premuto per opzioni avanzate.</string>
@@ -844,9 +844,9 @@
     <string name="no_playlists_that_match_x">Non ci sono playlist che corrispondono a \"%s\"</string>
     <string name="songs_added_to_playlists">Brani aggiunti alla playlist.</string>
     <string name="no_playlists_label">Nessuna playlist</string>
-    <string name="app_widget_responsive">Reattivo</string>
+    <string name="app_widget_responsive">Responsive</string>
     <string name="app_widget_full">Completo</string>
-    <string name="app_widget_full_desc">La schermata del player direttamente sul desktop</string>
+    <string name="app_widget_full_desc">La schermata del player direttamente nel desktop</string>
     <string name="channel_mono">Mono</string>
     <string name="channel_stereo">Stereo</string>
     <string name="channel_stereo_2_1">Stereo 2.1</string>
@@ -952,6 +952,6 @@
     <string name="eq_expander_ratio">Rapporto di espansione</string>
     <string name="eq_knee_width">Ampiezza curvatura</string>
     <string name="eq_noise_gate">Gate del rumore</string>
-    <string name="eq_pre_gain">Pre-gain</string>
-    <string name="eq_post_gain">Post-gain</string>
+    <string name="eq_pre_gain">Pre-Valutazione</string>
+    <string name="eq_post_gain">Post-valutazione</string>
 </resources>
