@@ -462,7 +462,7 @@
     <string name="action_hide_lyrics">Liedtext ausblenden</string>
     <string name="plain_lyrics">Einfach</string>
     <string name="synced_lyrics">Synchron</string>
-    <string name="embedded_lyrics">Integriert</string>
+    <string name="embedded_lyrics">Eingebettet</string>
     <string name="downloaded_lyrics">Heruntergeladen</string>
     <string name="cannot_download_lyrics">Booming Music konnte den Liedtext für diesen Titel nicht finden. Möchtest Du manuell suchen?</string>
     <string name="search_lyrics">Liedtext suchen</string>
