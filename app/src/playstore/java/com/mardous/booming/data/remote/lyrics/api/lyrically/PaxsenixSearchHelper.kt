@@ -14,22 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.mardous.booming.data.remote.github
 
-import android.content.Context
-import com.mardous.booming.data.remote.github.model.GitHubRelease
+package com.mardous.booming.data.remote.lyrics.api.lyrically
+
+import com.mardous.booming.data.remote.lyrics.model.AppleMusicSearchResponse
 import io.ktor.client.HttpClient
+import kotlinx.serialization.json.Json
 
-class GitHubService(
-    private val context: Context,
+class PaxsenixSearchHelper(
     private val client: HttpClient,
-    private val authToken: String? = null
+    private val tokenManager: TokenManager,
+    private val json: Json
 ) {
-    suspend fun latestRelease(
-        user: String = "",
-        repo: String = "",
-        allowExperimental: Boolean = true
-    ): GitHubRelease {
-        throw UnsupportedOperationException()
+    suspend fun getAppleMusicSearchResponse(
+        songTitle: String,
+        artistName: String
+    ): AppleMusicSearchResponse? {
+        return null
     }
 }

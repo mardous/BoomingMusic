@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <bool name="enable_network_features">true</bool>
-    <bool name="enable_app_update">true</bool>
-    <bool name="enable_lyrically_provider">true</bool>
-</resources>

@@ -4,7 +4,7 @@
     <SwitchPreferenceCompat
         app:icon="@drawable/ic_language_24dp"
         app:title="@string/network_features_title"
-        app:defaultValue="@bool/enable_network_features"
+        app:defaultValue="@bool/network_features_enabled_by_default"
         app:layout="@layout/list_item_view"
         app:widgetLayout="@layout/preference_switch"
         app:key="network_features"/>
@@ -176,7 +176,7 @@
     <PreferenceCategory
         app:title="@string/update_title"
         app:layout="@layout/preference_category_title"
-        app:isPreferenceVisible="@bool/enable_app_update">
+        app:isPreferenceVisible="@bool/enable_builtin_updater">
 
         <ListPreference
             app:layout="@layout/list_item_view"
@@ -185,7 +185,7 @@
             app:entryValues="@array/pref_update_mode_values"
             app:useSimpleSummaryProvider="true"
             app:defaultValue="weekly"
-            app:isPreferenceVisible="@bool/enable_app_update"
+            app:isPreferenceVisible="@bool/enable_builtin_updater"
             app:key="update_search_mode"/>
 
         <SwitchPreferenceCompat
@@ -194,7 +194,7 @@
             app:defaultValue="false"
             app:layout="@layout/list_item_view"
             app:widgetLayout="@layout/preference_switch"
-            app:isPreferenceVisible="@bool/enable_app_update"
+            app:isPreferenceVisible="@bool/enable_builtin_updater"
             app:key="experimental_updates"/>
 
         <com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
@@ -202,7 +202,7 @@
             app:persistent="false"
             app:layout="@layout/list_item_view"
             app:widgetLayout="@layout/preference_progressbar"
-            app:isPreferenceVisible="@bool/enable_app_update"
+            app:isPreferenceVisible="@bool/enable_builtin_updater"
             app:key="search_for_update"/>
 
     </PreferenceCategory>

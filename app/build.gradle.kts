@@ -95,24 +95,33 @@ android {
     productFlavors {
         create("normal") {
             dimension = "version"
+
+            resValue("bool", "network_features_enabled_by_default", "true")
+            resValue("bool", "enable_builtin_updater", "true")
+            resValue("bool", "enable_lyrically_provider", "true")
         }
         create("fdroid") {
             dimension = "version"
+
+            resValue("bool", "network_features_enabled_by_default", "false")
+            resValue("bool", "enable_builtin_updater", "false")
+            resValue("bool", "enable_lyrically_provider", "true")
         }
         create("playstore") {
             dimension = "version"
+
+            resValue("bool", "network_features_enabled_by_default", "false")
+            resValue("bool", "enable_builtin_updater", "false")
+            resValue("bool", "enable_lyrically_provider", "false")
         }
     }
 
     sourceSets {
         named("normal") {
-            kotlin.srcDirs("src/normal/java")
+            kotlin.directories.add("src/shared/java")
         }
         named("fdroid") {
-            kotlin.srcDirs("src/normal/java")
-        }
-        named("playstore") {
-            kotlin.srcDirs("src/playstore/java")
+            kotlin.directories.add("src/shared/java")
         }
     }
 
@@ -179,6 +188,14 @@ android {
 
 androidComponents {
     onVariants { variant ->
+        val flavorProps = loadFlavorProperties(variant.flavorName)
+        flavorProps.forEach { (key, value) ->
+            variant.buildConfigFields?.put(
+                key.toString(),
+                BuildConfigField("String", "\"$value\"", "Property from ${variant.flavorName ?: "base"}")
+            )
+        }
+
         val canUseLastFm = variant.flavorName == "normal" || variant.flavorName == "playstore"
 
         val localProperties = if (canUseLastFm) getProperties("local.properties") else null
@@ -225,6 +242,15 @@ fun getProperties(fileName: String): Properties? {
             file.inputStream().use { properties.load(it) }
         }
     } else null
+}
+
+fun loadFlavorProperties(flavorName: String?): Properties {
+    val props = Properties()
+    getProperties("properties/base.properties")?.let { props.putAll(it) }
+    if (!flavorName.isNullOrEmpty()) {
+        getProperties("properties/$flavorName.properties")?.let { props.putAll(it) }
+    }
+    return props
 }
 
 fun Properties.property(key: String) =
