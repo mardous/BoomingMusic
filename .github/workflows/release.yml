@@ -39,18 +39,26 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
-      - name: Build app
+      - name: Build APKs
         env:
           BUILD_VARIANT: ${{ matrix.variant == 'normal' && 'Normal' || 'Fdroid' }}
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
           LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
         run: ./gradlew assemble${{ env.BUILD_VARIANT }}Release
 
-      - name: Upload APKs
+      - name: Build app bundle
+        env:
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
+        run: ./gradlew bundlePlaystoreRelease
+
+      - name: Upload APKs & bundle
         uses: actions/upload-artifact@v7
         with:
-          name: apk-${{ matrix.variant }}-release
-          path: app/build/outputs/apk/*/release/BoomingMusic-*.apk
+          name: artifact-${{ matrix.variant }}-release
+          path: |
+            app/build/outputs/apk/*/release/BoomingMusic-*.apk
+            app/build/outputs/bundle/playstore/release/app-playstore-release.aab
 
   publish-release:
     needs: build
@@ -61,11 +69,11 @@ jobs:
       !contains(github.ref_name, 'rc')
 
     steps:
-      - name: Download APKs
+      - name: Download APKs & bundle
         uses: actions/download-artifact@v8
         with:
           path: release-apks
-          pattern: apk-*-release
+          pattern: artifact-*-release
           merge-multiple: true
 
       - name: Set prerelease flag
