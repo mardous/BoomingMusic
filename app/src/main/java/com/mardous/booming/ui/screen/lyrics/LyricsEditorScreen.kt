@@ -54,6 +54,7 @@ import androidx.compose.material3.FlexibleBottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -103,6 +104,7 @@ import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.webSearch
+import com.mardous.booming.ui.component.compose.ButtonGroup
 import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.component.compose.MediaImage
 import com.mardous.booming.ui.component.compose.menu.MenuItem
@@ -550,7 +552,8 @@ fun LyricsSelectorDialog(
                     onClick = {
                         selectedMode = LyricsMode.Plain
                     },
-                    isSelected = selectedMode == LyricsMode.Plain
+                    isSelected = selectedMode == LyricsMode.Plain,
+                    modifier = Modifier.fillMaxWidth()
                 )
 
                 DialogListItemWithRadio(
@@ -558,7 +561,8 @@ fun LyricsSelectorDialog(
                     onClick = {
                         selectedMode = LyricsMode.Synced
                     },
-                    isSelected = selectedMode == LyricsMode.Synced
+                    isSelected = selectedMode == LyricsMode.Synced,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         },
@@ -603,7 +607,8 @@ private fun LyricsSearchDialog(
                     onValueChange = { searchTitle = it },
                     label = { Text(stringResource(R.string.title)) },
                     placeholder = { Text(song.title) },
-                    singleLine = true
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
                 )
 
                 OutlinedTextField(
@@ -614,7 +619,8 @@ private fun LyricsSearchDialog(
                     keyboardOptions = KeyboardOptions(
                         capitalization = KeyboardCapitalization.Words
                     ),
-                    singleLine = true
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         },
@@ -646,7 +652,7 @@ fun LyricsSourceSelector(
     modifier: Modifier = Modifier,
     enabled: Boolean = true
 ) {
-    com.mardous.booming.ui.component.compose.ButtonGroup(
+    ButtonGroup(
         onSelected = onSourceSelected,
         buttonItems = LyricsSource.entries,
         buttonStateResolver = { source -> source == selectedSource },
@@ -670,37 +676,79 @@ private fun LyricsEditorHeader(
     isLoading: Boolean,
     modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        MediaImage(
-            model = song,
-            modifier = Modifier
-                .size(72.dp)
-                .clip(MaterialTheme.shapes.small),
-        )
+    val configuration = LocalConfiguration.current
+    if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE &&
+        configuration.smallestScreenWidthDp >= 600) {
+        Column(
+            modifier = modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            MediaImage(
+                model = song,
+                modifier = Modifier
+                    .size(148.dp)
+                    .clip(MaterialTheme.shapes.medium),
+            )
 
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = song.title,
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(
-                text = song.displayArtistName(),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = song.title,
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = song.displayArtistName(),
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            if (isLoading) {
+                LinearWavyProgressIndicator(Modifier.fillMaxWidth())
+            }
         }
+    } else {
+        Row(
+            modifier = modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            MediaImage(
+                model = song,
+                modifier = Modifier
+                    .size(72.dp)
+                    .clip(MaterialTheme.shapes.small),
+            )
 
-        if (isLoading) {
-            CircularProgressIndicator(Modifier.size(24.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = song.title,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = song.displayArtistName(),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            if (isLoading) {
+                CircularProgressIndicator(Modifier.size(24.dp))
+            }
         }
     }
 }
