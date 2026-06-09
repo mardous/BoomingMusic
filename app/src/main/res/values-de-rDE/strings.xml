@@ -668,7 +668,7 @@
     <string name="remember_shuffle_mode_summary">Zufallswiedergabe-Modus bleibt bei Auswahl einer neuen Titel-Liste erhalten.</string>
     <string name="album_shuffle_mode_title">Album-Zufallswiedergabe-Modus</string>
     <string name="artist_shuffle_mode_title">Interpreten-Zufallswiedergabe-Modus</string>
-    <string name="rewind_with_back_title">Mit \"Vorheriger\" zurückspulen</string>
+    <string name="rewind_with_back_title">Mit \"Zurückspringen\" zurückspulen</string>
     <string name="rewind_with_back_summary">Spule den wiedergegebenen Titel zurück oder springe zum vorherigen, wenn der Anfang erreicht ist.</string>
     <string name="rewind_fast_forward_amount_title">Rück-/Vorspulgröße</string>
     <string name="rewind_fast_forward_amount_summary">Zeit (in Sekunden) zum Zurückspulen oder Vorspulen mithilfe der Benutzeroberfläche oder externer Steuerelemente.</string>
@@ -745,7 +745,7 @@
     <string name="backup_app_data_summary">Sichere eine Datei mit den wichtigsten App-Daten auf Deinem Gerät.</string>
     <string name="restore_backup_title">App-Daten wiederherstellen</string>
     <string name="restore_backup_summary">Stelle die wichtigsten App-Daten aus einer vorherigen Sicherung wieder her.</string>
-    <string name="stop_when_closed_from_recents_title">Beenden, wenn aus den zuletzt verwendeten Programmen geschlossen</string>
+    <string name="stop_when_closed_from_recents_title">Beenden, wenn aus den zuletzt verwendeten Apps geschlossen</string>
     <string name="stop_when_closed_from_recents_summary">Die Wiedergabe wird angehalten, wenn die App aus der Liste der zuletzt verwendeten Apps geschlossen wird.</string>
     <string name="stop_when_closed_from_recents_note">Hinweis: Einige Geräte mit aggressivem Arbeitsspeicher- oder Akku-Management ignorieren diese Einstellung möglicherweise und beenden die App immer, wenn sie aus den zuletzt verwendeten Apps entfernt wird.</string>
     <string name="rotation_lock_title">Rotationssperre</string>
