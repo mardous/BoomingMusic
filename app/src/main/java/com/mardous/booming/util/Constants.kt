@@ -55,5 +55,4 @@ object Constants {
 
     // App basics
     const val USER_AGENT = "BoomingMusic/${BuildConfig.VERSION_NAME} ($GITHUB_URL)"
-    const val LYRICALLY_REQUEST_REFERRER = BuildConfig.LYRICALLY_REQUEST_REFERRER
 }
