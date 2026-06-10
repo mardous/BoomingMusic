@@ -78,6 +78,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -1034,24 +1035,6 @@ fun EqualizerScreen(
                     TitledCard(
                         title = stringResource(R.string.replay_gain),
                         iconRes = R.drawable.ic_sound_sampler_24dp,
-                        titleEndContent = {
-                            AnimatedVisibility(
-                                visible = replayGain.mode.isOn,
-                                enter = fadeIn(),
-                                exit = fadeOut()
-                            ) {
-                                IconButton(
-                                    onClick = {
-                                        eqViewModel.setReplayGain(preamp = 0f, preampWithoutGain = 0f)
-                                    }
-                                ) {
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_restart_alt_24dp),
-                                        contentDescription = null
-                                    )
-                                }
-                            }
-                        },
                         modifier = Modifier.fillMaxWidth()
                     ) { cardContentPadding ->
                         Column(
@@ -1066,6 +1049,7 @@ fun EqualizerScreen(
                                 modifier = Modifier.padding(top = 8.dp)
                             ) {
                                 Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     ParameterSlider(
@@ -1078,7 +1062,6 @@ fun EqualizerScreen(
                                         format = "%+.1f",
                                         unit = " dB"
                                     )
-
                                     ParameterSlider(
                                         label = stringResource(R.string.rg_without_tag),
                                         value = replayGain.preampWithoutGain,
@@ -1088,6 +1071,15 @@ fun EqualizerScreen(
                                         },
                                         format = "%+.1f",
                                         unit = " dB"
+                                    )
+                                    Spacer(Modifier.height(4.dp))
+                                    ResetButton(
+                                        onClick = {
+                                            eqViewModel.setReplayGain(
+                                                preamp = 0f,
+                                                preampWithoutGain = 0f
+                                            )
+                                        }
                                     )
                                 }
                             }
