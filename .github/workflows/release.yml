@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        variant: [ normal, fdroid ]
+        variant: [ normal, fdroid, playstore ]
 
     steps:
       - uses: actions/checkout@v6
@@ -39,26 +39,26 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
-      - name: Build APKs
+      - name: Build app
         env:
-          BUILD_VARIANT: ${{ matrix.variant == 'normal' && 'Normal' || 'Fdroid' }}
+          VARIANT: ${{ matrix.variant }}
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
           LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
-        run: ./gradlew assemble${{ env.BUILD_VARIANT }}Release
+        run: |
+          CAP_VARIANT="$(echo ${VARIANT:0:1} | tr '[:lower:]' '[:upper:]')${VARIANT:1}"
+          if [ "$VARIANT" == "playstore" ]; then
+            ./gradlew bundle${CAP_VARIANT}Release
+          else
+            ./gradlew assemble${CAP_VARIANT}Release
+          fi
 
-      - name: Build app bundle
-        env:
-          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
-          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
-        run: ./gradlew bundlePlaystoreRelease
-
-      - name: Upload APKs & bundle
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: artifact-${{ matrix.variant }}-release
+          name: artifacts-${{ matrix.variant }}-release
           path: |
             app/build/outputs/apk/*/release/BoomingMusic-*.apk
-            app/build/outputs/bundle/playstore/release/app-playstore-release.aab
+            app/build/outputs/bundle/*/*.aab
 
   publish-release:
     needs: build
@@ -69,11 +69,11 @@ jobs:
       !contains(github.ref_name, 'rc')
 
     steps:
-      - name: Download APKs & bundle
+      - name: Download Artifacts
         uses: actions/download-artifact@v8
         with:
-          path: release-apks
-          pattern: artifact-*-release
+          path: release-artifacts
+          pattern: artifacts-*-release
           merge-multiple: true
 
       - name: Set prerelease flag
@@ -92,4 +92,4 @@ jobs:
           prerelease: ${{ steps.prerelease.outputs.value }}
           generate_release_notes: true
           files: |
-            release-apks/*/release/BoomingMusic-*.apk
+            release-artifacts/*/release/BoomingMusic-*.apk
