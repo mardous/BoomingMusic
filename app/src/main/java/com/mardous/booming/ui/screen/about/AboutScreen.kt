@@ -404,14 +404,12 @@ private fun AboutSupportSection(
                 summary = stringResource(R.string.help_with_translations_summary),
                 onClick = onTranslateClick
             )
-            if (!App.isPlayStoreBuild()) {
-                AboutListItem(
-                    iconRes = R.drawable.ic_telegram_24dp,
-                    title = stringResource(R.string.telegram_community),
-                    summary = stringResource(R.string.telegram_community_summary),
-                    onClick = onJoinChatClick
-                )
-            }
+            AboutListItem(
+                iconRes = R.drawable.ic_telegram_24dp,
+                title = stringResource(R.string.telegram_community),
+                summary = stringResource(R.string.telegram_community_summary),
+                onClick = onJoinChatClick
+            )
             AboutListItem(
                 iconRes = R.drawable.ic_share_24dp,
                 title = stringResource(R.string.share_app),
