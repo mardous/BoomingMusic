@@ -509,6 +509,8 @@
     <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
     <string name="balance_left">Left</string>
     <string name="balance_right">Right</string>
+    <string name="rg_with_tag">With tag</string>
+    <string name="rg_without_tag">Without tag</string>
     <string name="action_external_eq">External EQ</string>
     <string name="custom">Custom</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>

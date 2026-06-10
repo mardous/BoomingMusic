@@ -10,6 +10,8 @@ import androidx.activity.result.contract.ActivityResultContracts.CreateDocument
 import androidx.activity.result.contract.ActivityResultContracts.OpenDocument
 import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -111,7 +113,6 @@ import com.mardous.booming.ui.component.compose.menu.MenuItem
 import com.mardous.booming.ui.component.compose.menu.TopAppBarMenu
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import java.util.Locale
-import kotlin.math.roundToInt
 
 private const val PRESET_NAME_MAX_LENGTH = 48
 
@@ -1030,20 +1031,25 @@ fun EqualizerScreen(
                 }
 
                 item {
-                    var replayGainPreamp by remember(replayGain.preamp) {
-                        mutableFloatStateOf(replayGain.preamp)
-                    }
                     TitledCard(
                         title = stringResource(R.string.replay_gain),
                         iconRes = R.drawable.ic_sound_sampler_24dp,
                         titleEndContent = {
-                            AnimatedVisibility(visible = replayGain.mode.isOn) {
-                                TitleShapedText(
-                                    "%+.1f dB".format(
-                                        Locale.ROOT,
-                                        replayGainPreamp
+                            AnimatedVisibility(
+                                visible = replayGain.mode.isOn,
+                                enter = fadeIn(),
+                                exit = fadeOut()
+                            ) {
+                                IconButton(
+                                    onClick = {
+                                        eqViewModel.setReplayGain(preamp = 0f, preampWithoutGain = 0f)
+                                    }
+                                ) {
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_restart_alt_24dp),
+                                        contentDescription = null
                                     )
-                                )
+                                }
                             }
                         },
                         modifier = Modifier.fillMaxWidth()
@@ -1059,33 +1065,29 @@ fun EqualizerScreen(
                                 visible = replayGain.mode.isOn,
                                 modifier = Modifier.padding(top = 8.dp)
                             ) {
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    verticalAlignment = Alignment.CenterVertically
+                                Column(
+                                    modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    IconButton(
-                                        onClick = {
-                                            replayGainPreamp = 0f
-                                            eqViewModel.setReplayGain(preamp = replayGainPreamp)
-                                        }
-                                    ) {
-                                        Icon(
-                                            painter = painterResource(R.drawable.ic_restart_alt_24dp),
-                                            contentDescription = null
-                                        )
-                                    }
-
-                                    Slider(
-                                        steps = 29,
-                                        value = replayGainPreamp,
-                                        valueRange = -15f..15f,
-                                        onValueChange = {
-                                            replayGainPreamp = (it / 0.2f).roundToInt() * 0.2f
-                                        },
+                                    ParameterSlider(
+                                        label = stringResource(R.string.rg_with_tag),
+                                        value = replayGain.preamp,
+                                        range = -15f..15f,
                                         onValueChangeFinished = {
-                                            eqViewModel.setReplayGain(preamp = replayGainPreamp)
+                                            eqViewModel.setReplayGain(preamp = it)
                                         },
-                                        modifier = Modifier.fillMaxWidth()
+                                        format = "%+.1f",
+                                        unit = " dB"
+                                    )
+
+                                    ParameterSlider(
+                                        label = stringResource(R.string.rg_without_tag),
+                                        value = replayGain.preampWithoutGain,
+                                        range = -15f..15f,
+                                        onValueChangeFinished = {
+                                            eqViewModel.setReplayGain(preampWithoutGain = it)
+                                        },
+                                        format = "%+.1f",
+                                        unit = " dB"
                                     )
                                 }
                             }
@@ -1657,6 +1659,7 @@ private fun ParameterSlider(
             text = label,
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
+            overflow = TextOverflow.Ellipsis,
             modifier = Modifier.width(72.dp)
         )
         Slider(
