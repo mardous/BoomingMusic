@@ -34,6 +34,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -580,6 +581,7 @@ fun LyricsSelectorDialog(
                         selectedMode = LyricsMode.Plain
                     },
                     isSelected = selectedMode == LyricsMode.Plain,
+                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
                     modifier = Modifier.fillMaxWidth()
                 )
 
@@ -589,6 +591,7 @@ fun LyricsSelectorDialog(
                         selectedMode = LyricsMode.Synced
                     },
                     isSelected = selectedMode == LyricsMode.Synced,
+                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
                     modifier = Modifier.fillMaxWidth()
                 )
             }
