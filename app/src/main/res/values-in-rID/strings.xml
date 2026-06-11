@@ -930,4 +930,18 @@
     <string name="mini_player_swipe_to_skip_summary">Geser ke kiri atau kanan pada pemutar mini untuk berpindah antar lagu.</string>
     <string name="use_lyrically_provider_title">Gunakan penyedia Lyrically</string>
     <string name="use_lyrically_provider_summary">API lirik kaya dengan dukungan karaoke dan multi-penyanyi.</string>
+    <string name="arranger">Aransemen</string>
+    <string name="eq_pro_mode">Mode Expert</string>
+    <string name="compressor_label">Compressor</string>
+    <string name="limiter_label">Limiter</string>
+    <string name="eq_attack_time">Attack</string>
+    <string name="eq_release_time">Release</string>
+    <string name="eq_threshold">Threshold</string>
+    <string name="eq_ratio">Rasio</string>
+    <string name="eq_expander_ratio">Rasio expander</string>
+    <string name="eq_knee_width">Lebar knee</string>
+    <string name="eq_noise_gate">Noise gate</string>
+    <string name="eq_pre_gain">Pre-gain</string>
+    <string name="eq_post_gain">Post-gain</string>
+    <string name="file_lyrics">Berkas</string>
 </resources>
