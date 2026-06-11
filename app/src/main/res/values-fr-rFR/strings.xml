@@ -956,4 +956,6 @@
     <string name="eq_noise_gate">Porte de bruit</string>
     <string name="eq_pre_gain">Préamplification</string>
     <string name="eq_post_gain">Post-amplification</string>
+    <string name="rg_with_tag">Avec balise</string>
+    <string name="rg_without_tag">Sans balise</string>
 </resources>
