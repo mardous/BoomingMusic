@@ -102,6 +102,7 @@ import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
+import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.webSearch
 import com.mardous.booming.ui.component.compose.ButtonGroup
@@ -113,6 +114,7 @@ import com.mardous.booming.ui.component.compose.menu.TopAppBarMenu
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinActivityViewModel
+import java.net.URLEncoder
 
 private val SnapshotMapSaver = Saver<SnapshotStateMap<LyricsSource, String>, Bundle>(
     save = { map ->
@@ -204,6 +206,7 @@ fun LyricsEditorScreen(
     }
 
     var showNoConnectionDialog by remember { mutableStateOf(false) }
+    var showManualSearchDialog by remember { mutableStateOf(false) }
     var showLyricsDownloadDialog by remember { mutableStateOf(false) }
     var showLyricsSearchDialog by remember { mutableStateOf(false) }
     var downloadedLyricsForSelector by rememberSaveable { mutableStateOf<RawLyrics.Remote?>(null) }
@@ -229,6 +232,8 @@ fun LyricsEditorScreen(
                 textFieldState.setContent(it.plain?.lyrics)
             } else if (it.hasSynced) {
                 textFieldState.setContent(it.synced?.lyrics)
+            } else {
+                showManualSearchDialog = true
             }
         }
     }
@@ -284,6 +289,28 @@ fun LyricsEditorScreen(
                     }
                 }
                 downloadedLyricsForSelector = null
+            }
+        )
+    }
+
+    if (showManualSearchDialog) {
+        AlertDialog(
+            onDismissRequest = { showManualSearchDialog = false },
+            text = { Text(stringResource(R.string.cannot_download_lyrics)) },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        context.openUrl(viewModel.getSearchUrl(song))
+                        showManualSearchDialog = false
+                    }
+                ) {
+                    Text(stringResource(R.string.yes))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showManualSearchDialog = false }) {
+                    Text(stringResource(R.string.close_action))
+                }
             }
         )
     }
