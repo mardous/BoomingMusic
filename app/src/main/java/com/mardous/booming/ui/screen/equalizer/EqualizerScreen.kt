@@ -1642,29 +1642,34 @@ private fun ParameterSlider(
     var paramLevel by remember(value) {
         mutableFloatStateOf(value)
     }
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.padding(vertical = 4.dp)
+    Column(
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+        modifier = Modifier.padding(vertical = 8.dp)
     ) {
         Text(
             text = label,
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.width(72.dp)
+            overflow = TextOverflow.Ellipsis
         )
-        Slider(
-            value = paramLevel,
-            onValueChange = { paramLevel = it },
-            onValueChangeFinished = { onValueChangeFinished(paramLevel) },
-            valueRange = range,
-            enabled = enabled,
-            modifier = Modifier.weight(1f)
-        )
-        EQValueText(
-            text = (format + unit).format(Locale.ROOT, paramLevel)
-        )
+
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Slider(
+                value = paramLevel,
+                onValueChange = { paramLevel = it },
+                onValueChangeFinished = { onValueChangeFinished(paramLevel) },
+                valueRange = range,
+                enabled = enabled,
+                modifier = Modifier.weight(1f)
+            )
+
+            EQValueText(
+                text = (format + unit).format(Locale.ROOT, paramLevel)
+            )
+        }
     }
 }
 
