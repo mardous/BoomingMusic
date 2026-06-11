@@ -115,7 +115,7 @@ import com.mardous.booming.ui.component.compose.menu.TopAppBarMenu
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinActivityViewModel
-import java.net.URLEncoder
+import kotlin.time.Duration.Companion.milliseconds
 
 private val SnapshotMapSaver = Saver<SnapshotStateMap<LyricsSource, String>, Bundle>(
     save = { map ->
@@ -178,7 +178,7 @@ fun LyricsEditorScreen(
     }
 
     LaunchedEffect(Unit) {
-        delay(1000) // Wait until the editor is fully visible
+        delay(500.milliseconds) // Wait until the editor is fully visible
         viewModel.preparePermissionRequest(song)
     }
 
