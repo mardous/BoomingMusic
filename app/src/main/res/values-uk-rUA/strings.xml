@@ -971,4 +971,6 @@
     <string name="eq_noise_gate">Шумозаглушувач</string>
     <string name="eq_pre_gain">Передпідсилення</string>
     <string name="eq_post_gain">Після підсилення</string>
+    <string name="rg_with_tag">З тегом</string>
+    <string name="rg_without_tag">Без тегу</string>
 </resources>
