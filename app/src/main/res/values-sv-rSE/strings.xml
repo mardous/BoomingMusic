@@ -953,4 +953,6 @@
     <string name="eq_noise_gate">Brusgrind</string>
     <string name="eq_pre_gain">Förförstärkning</string>
     <string name="eq_post_gain">Efterförstärkning</string>
+    <string name="rg_with_tag">Med tagg</string>
+    <string name="rg_without_tag">Utan tagg</string>
 </resources>
