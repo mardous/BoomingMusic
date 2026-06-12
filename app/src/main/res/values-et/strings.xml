@@ -924,4 +924,6 @@
     <string name="eq_pro_mode">Režiim asjatundjatele</string>
     <string name="compressor_label">Kompressor</string>
     <string name="limiter_label">Piiraja</string>
+    <string name="rg_without_tag">Ilma sildita</string>
+    <string name="rg_with_tag">Sildiga</string>
 </resources>
