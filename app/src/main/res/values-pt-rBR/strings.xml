@@ -952,4 +952,16 @@
     <string name="arranger">Arranjador</string>
     <string name="eq_pro_mode">Modo esperto</string>
     <string name="compressor_label">Compressor</string>
+    <string name="limiter_label">Limitador</string>
+    <string name="eq_attack_time">Ataque</string>
+    <string name="eq_release_time">Lançamento</string>
+    <string name="eq_threshold">Limite</string>
+    <string name="eq_ratio">Razão</string>
+    <string name="eq_expander_ratio">Proporção do expansor</string>
+    <string name="eq_knee_width">Largura do joelho</string>
+    <string name="eq_noise_gate">Portão de ruído</string>
+    <string name="eq_pre_gain">Pré-ganho</string>
+    <string name="eq_post_gain">Pós-ganho</string>
+    <string name="rg_with_tag">Com etiqueta</string>
+    <string name="rg_without_tag">Sem etiqueta</string>
 </resources>
