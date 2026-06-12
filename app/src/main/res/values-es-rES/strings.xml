@@ -757,7 +757,7 @@
     <string name="light_theme_name">Claro</string>
     <string name="dark_theme_name">Oscuro</string>
     <string name="labeled">Etiquetado</string>
-    <string name="unlabeled">Sin etiqueta</string>
+    <string name="unlabeled">No etiquetado</string>
     <string name="selected">Seleccionado</string>
     <string name="compact">Compacto</string>
     <string name="expanded">Ampliado</string>
@@ -950,4 +950,18 @@
     </plurals>
     <string name="lrc_file_lyrics">LRC</string>
     <string name="listenbrainz_scrobbling_title">Habilitar el scrobbling en ListenBrainz</string>
+    <string name="eq_pro_mode">Modo experto</string>
+    <string name="compressor_label">Compresor</string>
+    <string name="limiter_label">Limitador</string>
+    <string name="eq_attack_time">Ataque</string>
+    <string name="eq_release_time">Liberación</string>
+    <string name="eq_threshold">Umbral</string>
+    <string name="eq_ratio">Proporción</string>
+    <string name="eq_expander_ratio">Proporción de expansión</string>
+    <string name="eq_knee_width">Ancho de rodilla</string>
+    <string name="eq_noise_gate">Portón de ruido</string>
+    <string name="eq_pre_gain">Anticipo</string>
+    <string name="eq_post_gain">Beneficio posterior</string>
+    <string name="rg_with_tag">Con etiqueta</string>
+    <string name="rg_without_tag">Sin etiqueta</string>
 </resources>
