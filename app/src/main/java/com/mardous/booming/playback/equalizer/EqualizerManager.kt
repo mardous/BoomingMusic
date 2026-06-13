@@ -34,12 +34,14 @@ import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.core.model.equalizer.BalanceState
 import com.mardous.booming.core.model.equalizer.BassBoostState
+import com.mardous.booming.core.model.equalizer.CompressorState
 import com.mardous.booming.core.model.equalizer.EqBandCapabilities
 import com.mardous.booming.core.model.equalizer.EqEngineMode
 import com.mardous.booming.core.model.equalizer.EqProfile
 import com.mardous.booming.core.model.equalizer.EqSession
 import com.mardous.booming.core.model.equalizer.EqSession.SessionType
 import com.mardous.booming.core.model.equalizer.EqState
+import com.mardous.booming.core.model.equalizer.LimiterState
 import com.mardous.booming.core.model.equalizer.LoudnessGainState
 import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.core.model.equalizer.TempoState
@@ -107,7 +109,8 @@ class EqualizerManager(
                 enabled = prefs[Keys.EQ_ENABLED] ?: false,
                 disableReason = disableReason,
                 preferredBandCount = prefs[Keys.EQ_BAND_COUNT] ?: engineMode.defaultBandCount,
-                engineMode = engineMode
+                engineMode = engineMode,
+                proMode = prefs[Keys.EQ_PRO_MODE_ENABLED] ?: false
             )
         }
         .stateIn(eqScope, SharingStarted.Eagerly, EqState.Unspecified)
@@ -235,6 +238,50 @@ class EqualizerManager(
             )
         }
         .stateIn(eqScope, SharingStarted.Eagerly, ReplayGainState.Unspecified)
+
+    val compressorState = context.eqDataStore.data
+        .map { prefs ->
+            CompressorState(
+                enabled = prefs[Keys.COMPRESSOR_ENABLED] ?: false,
+                attackTimeMs = prefs[Keys.COMPRESSOR_ATTACK] ?: CompressorState.Unspecified.attackTimeMs,
+                attackTimeRange = CompressorState.Unspecified.attackTimeRange,
+                releaseTimeMs = prefs[Keys.COMPRESSOR_RELEASE] ?: CompressorState.Unspecified.releaseTimeMs,
+                releaseTimeRange = CompressorState.Unspecified.releaseTimeRange,
+                kneeWidth = prefs[Keys.COMPRESSOR_KNEE] ?: CompressorState.Unspecified.kneeWidth,
+                kneeWidthRange = CompressorState.Unspecified.kneeWidthRange,
+                noiseGateThreshold = prefs[Keys.COMPRESSOR_NOISE_GATE] ?: CompressorState.Unspecified.noiseGateThreshold,
+                noiseGateThresholdRange = CompressorState.Unspecified.noiseGateThresholdRange,
+                preGain = prefs[Keys.COMPRESSOR_PRE_GAIN] ?: CompressorState.Unspecified.preGain,
+                preGainRange = CompressorState.Unspecified.preGainRange,
+                postGain = prefs[Keys.COMPRESSOR_POST_GAIN] ?: CompressorState.Unspecified.postGain,
+                postGainRange = CompressorState.Unspecified.postGainRange,
+                ratio = prefs[Keys.COMPRESSOR_RATIO] ?: CompressorState.Unspecified.ratio,
+                ratioRange = CompressorState.Unspecified.ratioRange,
+                expanderRatio = prefs[Keys.COMPRESSOR_EXPANDER_RATIO] ?: CompressorState.Unspecified.expanderRatio,
+                expanderRatioRange = CompressorState.Unspecified.expanderRatioRange,
+                threshold = prefs[Keys.COMPRESSOR_THRESHOLD] ?: CompressorState.Unspecified.threshold,
+                thresholdRange = CompressorState.Unspecified.thresholdRange
+            )
+        }
+        .stateIn(eqScope, SharingStarted.Eagerly, CompressorState.Unspecified)
+
+    val limiterState = context.eqDataStore.data
+        .map { prefs ->
+            LimiterState(
+                enabled = prefs[Keys.LIMITER_ENABLED] ?: false,
+                attackTimeMs = prefs[Keys.LIMITER_ATTACK] ?: LimiterState.Unspecified.attackTimeMs,
+                attackTimeRange = LimiterState.Unspecified.attackTimeRange,
+                releaseTimeMs = prefs[Keys.LIMITER_RELEASE] ?: LimiterState.Unspecified.releaseTimeMs,
+                releaseTimeRange = LimiterState.Unspecified.releaseTimeRange,
+                postGain = prefs[Keys.LIMITER_POST_GAIN] ?: LimiterState.Unspecified.postGain,
+                postGainRange = LimiterState.Unspecified.postGainRange,
+                ratio = prefs[Keys.LIMITER_RATIO] ?: LimiterState.Unspecified.ratio,
+                ratioRange = LimiterState.Unspecified.ratioRange,
+                threshold = prefs[Keys.LIMITER_THRESHOLD] ?: LimiterState.Unspecified.threshold,
+                thresholdRange = LimiterState.Unspecified.thresholdRange
+            )
+        }
+        .stateIn(eqScope, SharingStarted.Eagerly, LimiterState.Unspecified)
 
     val bitPerfectAudio = context.eqDataStore.data
         .map { prefs -> prefs[Keys.BIT_PERFECT] ?: false }
@@ -673,6 +720,7 @@ class EqualizerManager(
             prefs[Keys.EQ_ENABLED] = state.enabled
             prefs[Keys.EQ_ENGINE_MODE] = state.engineMode.ordinal
             prefs[Keys.EQ_BAND_COUNT] = state.preferredBandCount
+            prefs[Keys.EQ_PRO_MODE_ENABLED] = state.proMode
             if (newProfile != null) {
                 val serializedProfile = Json.encodeToString(newProfile)
                 prefs[Keys.PRESET] = serializedProfile
@@ -686,6 +734,21 @@ class EqualizerManager(
         } else {
             applyChangesToEngine(state = state)
         }
+    }
+
+    suspend fun setProMode(proModeEnabled: Boolean) {
+        if (!proModeEnabled) {
+            val newBandCount = minOf(
+                eqState.value.preferredBandCount,
+                bandCapabilities.value.maxBandCountInNormalMode
+            )
+            setBandCount(newBandCount)
+        }
+        setEqualizerState(
+            state = eqState.value.copy(
+                proMode = proModeEnabled
+            )
+        )
     }
 
     suspend fun setLoudnessGain(state: LoudnessGainState) {
@@ -787,6 +850,34 @@ class EqualizerManager(
         }
     }
 
+    suspend fun setCompressor(state: CompressorState) {
+        context.eqDataStore.edit { prefs ->
+            prefs[Keys.COMPRESSOR_ENABLED] = state.enabled
+            prefs[Keys.COMPRESSOR_ATTACK] = state.attackTimeMs
+            prefs[Keys.COMPRESSOR_RELEASE] = state.releaseTimeMs
+            prefs[Keys.COMPRESSOR_KNEE] = state.kneeWidth
+            prefs[Keys.COMPRESSOR_NOISE_GATE] = state.noiseGateThreshold
+            prefs[Keys.COMPRESSOR_PRE_GAIN] = state.preGain
+            prefs[Keys.COMPRESSOR_POST_GAIN] = state.postGain
+            prefs[Keys.COMPRESSOR_RATIO] = state.ratio
+            prefs[Keys.COMPRESSOR_EXPANDER_RATIO] = state.expanderRatio
+            prefs[Keys.COMPRESSOR_THRESHOLD] = state.threshold
+        }
+        applyChangesToEngine(compressorState = state)
+    }
+
+    suspend fun setLimiter(state: LimiterState) {
+        context.eqDataStore.edit { prefs ->
+            prefs[Keys.LIMITER_ENABLED] = state.enabled
+            prefs[Keys.LIMITER_ATTACK] = state.attackTimeMs
+            prefs[Keys.LIMITER_RELEASE] = state.releaseTimeMs
+            prefs[Keys.LIMITER_POST_GAIN] = state.postGain
+            prefs[Keys.LIMITER_RATIO] = state.ratio
+            prefs[Keys.LIMITER_THRESHOLD] = state.threshold
+        }
+        applyChangesToEngine(limiterState = state)
+    }
+
     suspend fun setEngineMode(engineMode: EqEngineMode) {
         resetConfigurationWithNewEngineMode(engineMode)
     }
@@ -881,7 +972,9 @@ class EqualizerManager(
         profile: EqProfile = this.eqCurrentProfile.value,
         bassBoostState: BassBoostState = this.bassBoostState.value,
         virtualizerState: VirtualizerState = this.virtualizerState.value,
-        loudnessGainState: LoudnessGainState = this.loudnessGainState.value
+        loudnessGainState: LoudnessGainState = this.loudnessGainState.value,
+        compressorState: CompressorState = this.compressorState.value,
+        limiterState: LimiterState = this.limiterState.value
     ) {
         engine?.let {
             applyEngine(
@@ -890,7 +983,9 @@ class EqualizerManager(
                 profile = profile,
                 bassBoostState = bassBoostState,
                 virtualizerState = virtualizerState,
-                loudnessGainState = loudnessGainState
+                loudnessGainState = loudnessGainState,
+                compressorState = compressorState,
+                limiterState = limiterState
             )
         }
     }
@@ -901,7 +996,9 @@ class EqualizerManager(
         profile: EqProfile,
         bassBoostState: BassBoostState,
         virtualizerState: VirtualizerState,
-        loudnessGainState: LoudnessGainState
+        loudnessGainState: LoudnessGainState,
+        compressorState: CompressorState,
+        limiterState: LimiterState
     ) {
         runCatching {
             if (state.isUsable) {
@@ -935,11 +1032,31 @@ class EqualizerManager(
                         engine.setLoudnessGainState(LoudnessGainState.Unspecified)
                     }
                 }.onFailure { Log.e(TAG, "Error setting up loudness enhancer!", it) }
+
+                // Apply Compressor
+                runCatching {
+                    if (engine.isMBCSupported && compressorState.enabled && state.proMode) {
+                        engine.setCompressorState(compressorState)
+                    } else {
+                        engine.setCompressorState(CompressorState.Unspecified)
+                    }
+                }.onFailure { Log.e(TAG, "Error setting up compressor!", it) }
+
+                // Apply Limiter
+                runCatching {
+                    if (engine.isLimiterSupported && limiterState.enabled && state.proMode) {
+                        engine.setLimiterState(limiterState)
+                    } else {
+                        engine.setLimiterState(LimiterState.Unspecified)
+                    }
+                }.onFailure { Log.e(TAG, "Error setting up limiter!", it) }
             } else {
                 engine.setEnabled(false)
                 engine.setVirtualizerState(VirtualizerState.Unspecified)
                 engine.setBassBoostState(BassBoostState.Unspecified)
                 engine.setLoudnessGainState(LoudnessGainState.Unspecified)
+                engine.setCompressorState(CompressorState.Unspecified)
+                engine.setLimiterState(LimiterState.Unspecified)
             }
         }.onFailure {
             Log.e(TAG, "Error setting up EQ engine", it)
@@ -967,6 +1084,7 @@ class EqualizerManager(
             val EQ_SUPPORTED = booleanPreferencesKey("eq.supported")
             val EQ_BAND_COUNT = intPreferencesKey("eq.band.count")
             val EQ_ENGINE_MODE = intPreferencesKey("eq.engine")
+            val EQ_PRO_MODE_ENABLED = booleanPreferencesKey("eq.pro.enabled")
             val VIRTUALIZER_SUPPORTED = booleanPreferencesKey("eq.virtualizer.supported")
             val VIRTUALIZER_ENABLED = booleanPreferencesKey("eq.virtualizer.enabled")
             val VIRTUALIZER_STRENGTH = floatPreferencesKey("eq.virtualizer.strength")
@@ -992,6 +1110,24 @@ class EqualizerManager(
             val SPEED = floatPreferencesKey("eq.speed")
             val PITCH = floatPreferencesKey("eq.pitch")
             val IS_FIXED_PITCH = booleanPreferencesKey("eq.pitch.fixed")
+
+            val COMPRESSOR_ENABLED = booleanPreferencesKey("eq.compressor.enabled")
+            val COMPRESSOR_ATTACK = floatPreferencesKey("eq.compressor.attack")
+            val COMPRESSOR_RELEASE = floatPreferencesKey("eq.compressor.release")
+            val COMPRESSOR_KNEE = floatPreferencesKey("eq.compressor.knee")
+            val COMPRESSOR_NOISE_GATE = floatPreferencesKey("eq.compressor.noisegate")
+            val COMPRESSOR_PRE_GAIN = floatPreferencesKey("eq.compressor.pregain")
+            val COMPRESSOR_POST_GAIN = floatPreferencesKey("eq.compressor.postgain")
+            val COMPRESSOR_RATIO = floatPreferencesKey("eq.compressor.ratio")
+            val COMPRESSOR_EXPANDER_RATIO = floatPreferencesKey("eq.compressor.expanderratio")
+            val COMPRESSOR_THRESHOLD = floatPreferencesKey("eq.compressor.threshold")
+
+            val LIMITER_ENABLED = booleanPreferencesKey("eq.limiter.enabled")
+            val LIMITER_ATTACK = floatPreferencesKey("eq.limiter.attack")
+            val LIMITER_RELEASE = floatPreferencesKey("eq.limiter.release")
+            val LIMITER_POST_GAIN = floatPreferencesKey("eq.limiter.postgain")
+            val LIMITER_RATIO = floatPreferencesKey("eq.limiter.ratio")
+            val LIMITER_THRESHOLD = floatPreferencesKey("eq.limiter.threshold")
         }
     }
 

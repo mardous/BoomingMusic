@@ -931,4 +931,17 @@
     <string name="mini_player_swipe_to_skip_title">滑动迷你播放器跳过曲目</string>
     <string name="mini_player_swipe_to_skip_summary">向左或向右滑动迷你播放器时在曲目间切换。</string>
     <string name="lyrics_by_x">歌词来自 %s</string>
+    <string name="arranger">编曲</string>
+    <string name="eq_pro_mode">专家模式</string>
+    <string name="compressor_label">压缩器</string>
+    <string name="limiter_label">限制器</string>
+    <string name="eq_attack_time">建立时间</string>
+    <string name="eq_release_time">释放时间</string>
+    <string name="eq_threshold">门限</string>
+    <string name="eq_ratio">比例</string>
+    <string name="eq_expander_ratio">扩展比</string>
+    <string name="eq_knee_width">拐点宽度</string>
+    <string name="eq_noise_gate">噪声门</string>
+    <string name="eq_pre_gain">前置增益</string>
+    <string name="eq_post_gain">后置增益</string>
 </resources>

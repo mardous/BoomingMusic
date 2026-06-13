@@ -70,10 +70,11 @@ sealed class Version(
         }
 }
 
-val currentVersion: Version = Version.Stable(
+val currentVersion: Version = Version.Beta(
     versionMajor = 1,
     versionMinor = 3,
-    versionPatch = 0
+    versionPatch = 1,
+    versionBuild = 1
 )
 val currentVersionCode = currentVersion.code
 
@@ -86,7 +87,7 @@ android {
         targetSdk = 36
 
         applicationId = namespace
-        versionCode = 1300300
+        versionCode = 1310101
         versionName = currentVersion.name
         check(versionCode == currentVersionCode)
     }
@@ -95,13 +96,38 @@ android {
     productFlavors {
         create("normal") {
             dimension = "version"
+
+            resValue("bool", "network_features_enabled_by_default", "true")
+            resValue("bool", "enable_builtin_updater", "true")
+            resValue("bool", "enable_lyrically_provider", "true")
         }
         create("fdroid") {
             dimension = "version"
+
+            resValue("bool", "network_features_enabled_by_default", "false")
+            resValue("bool", "enable_builtin_updater", "false")
+            resValue("bool", "enable_lyrically_provider", "true")
+        }
+        create("playstore") {
+            dimension = "version"
+
+            resValue("bool", "network_features_enabled_by_default", "false")
+            resValue("bool", "enable_builtin_updater", "false")
+            resValue("bool", "enable_lyrically_provider", "false")
+        }
+    }
+
+    sourceSets {
+        named("normal") {
+            kotlin.directories.add("src/shared/java")
+        }
+        named("fdroid") {
+            kotlin.directories.add("src/shared/java")
         }
     }
 
     val signingProperties = getProperties("keystore.properties")
+
     val releaseSigning = if (signingProperties != null) {
         signingConfigs.create("release") {
             keyAlias = signingProperties.property("keyAlias")
@@ -136,7 +162,18 @@ android {
     }
     splits {
         abi {
-            isEnable = true
+            // Detect app bundle and conditionally disable split abis
+            // This is needed due to a "Sequence contains more than one matching element" error
+            // present since AGP 8.9.0, for more info see:
+            // https://issuetracker.google.com/issues/402800800
+
+            // AppBundle tasks usually contain "bundle" in their name
+            //noinspection WrongGradleMethod
+            val isBuildingBundle = gradle.startParameter.taskNames.any { it.lowercase().contains("bundle") }
+
+            // Disable split abis when building app bundle
+            isEnable = !isBuildingBundle
+
             reset()
             include("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
             isUniversalApk = true
@@ -163,14 +200,22 @@ android {
 
 androidComponents {
     onVariants { variant ->
-        val isNormalVariant = variant.flavorName == "normal"
+        val flavorProps = loadFlavorProperties(variant.flavorName)
+        flavorProps.forEach { (key, value) ->
+            variant.buildConfigFields?.put(
+                key.toString(),
+                BuildConfigField("String", "\"$value\"", "Property from ${variant.flavorName ?: "base"}")
+            )
+        }
 
-        val localProperties = if (isNormalVariant) getProperties("local.properties") else null
-        val lastFmKey = if (isNormalVariant) {
+        val canUseLastFm = variant.flavorName == "normal" || variant.flavorName == "playstore"
+
+        val localProperties = if (canUseLastFm) getProperties("local.properties") else null
+        val lastFmKey = if (canUseLastFm) {
             localProperties?.getProperty("LASTFM_API_KEY") ?: System.getenv("LASTFM_API_KEY") ?: ""
         } else ""
 
-        val lastFmSecret = if (isNormalVariant) {
+        val lastFmSecret = if (canUseLastFm) {
             localProperties?.getProperty("LASTFM_SECRET") ?: System.getenv("LASTFM_SECRET") ?: ""
         } else ""
 
@@ -209,6 +254,15 @@ fun getProperties(fileName: String): Properties? {
             file.inputStream().use { properties.load(it) }
         }
     } else null
+}
+
+fun loadFlavorProperties(flavorName: String?): Properties {
+    val props = Properties()
+    getProperties("properties/base.properties")?.let { props.putAll(it) }
+    if (!flavorName.isNullOrEmpty()) {
+        getProperties("properties/$flavorName.properties")?.let { props.putAll(it) }
+    }
+    return props
 }
 
 fun Properties.property(key: String) =

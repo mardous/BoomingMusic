@@ -958,4 +958,17 @@
     <string name="lyrics_by_x">Текст пісні: %s</string>
     <string name="mini_player_swipe_to_skip_title">Змахнути по мініпрогравачу, аби пропустити</string>
     <string name="mini_player_swipe_to_skip_summary">Гортати вліво або вправо по мініпрогравачу, щоби перемикатися між піснями.</string>
+    <string name="arranger">Аранжувальник</string>
+    <string name="eq_pro_mode">Режим експерта</string>
+    <string name="compressor_label">Стискач</string>
+    <string name="limiter_label">Обмежувач</string>
+    <string name="eq_attack_time">ADSR-обвідна</string>
+    <string name="eq_release_time">Відновлення</string>
+    <string name="eq_threshold">Поріг</string>
+    <string name="eq_ratio">Коефіцієнт</string>
+    <string name="eq_expander_ratio">Коефіцієнт розширення</string>
+    <string name="eq_knee_width">Ширина перегину</string>
+    <string name="eq_noise_gate">Шумозаглушувач</string>
+    <string name="eq_pre_gain">Передпідсилення</string>
+    <string name="eq_post_gain">Після підсилення</string>
 </resources>

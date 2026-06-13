@@ -34,6 +34,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -54,6 +55,7 @@ import androidx.compose.material3.FlexibleBottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -101,8 +103,10 @@ import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
+import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.webSearch
+import com.mardous.booming.ui.component.compose.ButtonGroup
 import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.component.compose.MediaImage
 import com.mardous.booming.ui.component.compose.menu.MenuItem
@@ -111,6 +115,7 @@ import com.mardous.booming.ui.component.compose.menu.TopAppBarMenu
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinActivityViewModel
+import kotlin.time.Duration.Companion.milliseconds
 
 private val SnapshotMapSaver = Saver<SnapshotStateMap<LyricsSource, String>, Bundle>(
     save = { map ->
@@ -173,7 +178,7 @@ fun LyricsEditorScreen(
     }
 
     LaunchedEffect(Unit) {
-        delay(1000) // Wait until the editor is fully visible
+        delay(500.milliseconds) // Wait until the editor is fully visible
         viewModel.preparePermissionRequest(song)
     }
 
@@ -202,6 +207,7 @@ fun LyricsEditorScreen(
     }
 
     var showNoConnectionDialog by remember { mutableStateOf(false) }
+    var showManualSearchDialog by remember { mutableStateOf(false) }
     var showLyricsDownloadDialog by remember { mutableStateOf(false) }
     var showLyricsSearchDialog by remember { mutableStateOf(false) }
     var downloadedLyricsForSelector by rememberSaveable { mutableStateOf<RawLyrics.Remote?>(null) }
@@ -227,6 +233,8 @@ fun LyricsEditorScreen(
                 textFieldState.setContent(it.plain?.lyrics)
             } else if (it.hasSynced) {
                 textFieldState.setContent(it.synced?.lyrics)
+            } else {
+                showManualSearchDialog = true
             }
         }
     }
@@ -282,6 +290,28 @@ fun LyricsEditorScreen(
                     }
                 }
                 downloadedLyricsForSelector = null
+            }
+        )
+    }
+
+    if (showManualSearchDialog) {
+        AlertDialog(
+            onDismissRequest = { showManualSearchDialog = false },
+            text = { Text(stringResource(R.string.cannot_download_lyrics)) },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        context.openUrl(viewModel.getSearchUrl(song))
+                        showManualSearchDialog = false
+                    }
+                ) {
+                    Text(stringResource(R.string.yes))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showManualSearchDialog = false }) {
+                    Text(stringResource(R.string.close_action))
+                }
             }
         )
     }
@@ -550,7 +580,9 @@ fun LyricsSelectorDialog(
                     onClick = {
                         selectedMode = LyricsMode.Plain
                     },
-                    isSelected = selectedMode == LyricsMode.Plain
+                    isSelected = selectedMode == LyricsMode.Plain,
+                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
+                    modifier = Modifier.fillMaxWidth()
                 )
 
                 DialogListItemWithRadio(
@@ -558,7 +590,9 @@ fun LyricsSelectorDialog(
                     onClick = {
                         selectedMode = LyricsMode.Synced
                     },
-                    isSelected = selectedMode == LyricsMode.Synced
+                    isSelected = selectedMode == LyricsMode.Synced,
+                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         },
@@ -603,7 +637,8 @@ private fun LyricsSearchDialog(
                     onValueChange = { searchTitle = it },
                     label = { Text(stringResource(R.string.title)) },
                     placeholder = { Text(song.title) },
-                    singleLine = true
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
                 )
 
                 OutlinedTextField(
@@ -614,7 +649,8 @@ private fun LyricsSearchDialog(
                     keyboardOptions = KeyboardOptions(
                         capitalization = KeyboardCapitalization.Words
                     ),
-                    singleLine = true
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         },
@@ -646,7 +682,7 @@ fun LyricsSourceSelector(
     modifier: Modifier = Modifier,
     enabled: Boolean = true
 ) {
-    com.mardous.booming.ui.component.compose.ButtonGroup(
+    ButtonGroup(
         onSelected = onSourceSelected,
         buttonItems = LyricsSource.entries,
         buttonStateResolver = { source -> source == selectedSource },
@@ -670,37 +706,79 @@ private fun LyricsEditorHeader(
     isLoading: Boolean,
     modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        MediaImage(
-            model = song,
-            modifier = Modifier
-                .size(72.dp)
-                .clip(MaterialTheme.shapes.small),
-        )
+    val configuration = LocalConfiguration.current
+    if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE &&
+        configuration.smallestScreenWidthDp >= 600) {
+        Column(
+            modifier = modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            MediaImage(
+                model = song,
+                modifier = Modifier
+                    .size(148.dp)
+                    .clip(MaterialTheme.shapes.medium),
+            )
 
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = song.title,
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(
-                text = song.displayArtistName(),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = song.title,
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = song.displayArtistName(),
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            if (isLoading) {
+                LinearWavyProgressIndicator(Modifier.fillMaxWidth())
+            }
         }
+    } else {
+        Row(
+            modifier = modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            MediaImage(
+                model = song,
+                modifier = Modifier
+                    .size(72.dp)
+                    .clip(MaterialTheme.shapes.small),
+            )
 
-        if (isLoading) {
-            CircularProgressIndicator(Modifier.size(24.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = song.title,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = song.displayArtistName(),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            if (isLoading) {
+                CircularProgressIndicator(Modifier.size(24.dp))
+            }
         }
     }
 }

@@ -949,4 +949,17 @@
     <string name="lyrics_by_x">Letra por %s</string>
     <string name="mini_player_swipe_to_skip_title">Deslizar mini reproductor para saltar</string>
     <string name="mini_player_swipe_to_skip_summary">Deslizar a la izquierda o derecha en el mini reproductor para saltar entre canciones.</string>
+    <string name="arranger">Organizador</string>
+    <string name="eq_pro_mode">Modo Experto</string>
+    <string name="compressor_label">Compresor</string>
+    <string name="limiter_label">Limitador</string>
+    <string name="eq_attack_time">Ataque</string>
+    <string name="eq_release_time">Liberación</string>
+    <string name="eq_threshold">Umbral</string>
+    <string name="eq_ratio">Proporción</string>
+    <string name="eq_expander_ratio">Proporción del expansor</string>
+    <string name="eq_knee_width">Ancho del codo</string>
+    <string name="eq_noise_gate">Puerta de ruido</string>
+    <string name="eq_pre_gain">Pre-ganancia</string>
+    <string name="eq_post_gain">Post-ganancia</string>
 </resources>

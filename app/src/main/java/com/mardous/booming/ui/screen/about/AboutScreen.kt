@@ -67,6 +67,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import coil3.compose.AsyncImage
+import com.mardous.booming.App
 import com.mardous.booming.R
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
@@ -76,18 +77,19 @@ import com.mardous.booming.extensions.tryStartActivity
 import com.mardous.booming.ui.component.compose.ActionButton
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
 import com.mardous.booming.ui.component.compose.ShapedText
+import com.mardous.booming.util.Constants.AUTHOR_GITHUB_URL
+import com.mardous.booming.util.Constants.COMMUNITY_LINK
+import com.mardous.booming.util.Constants.DONATION_LINK
+import com.mardous.booming.util.Constants.DOWNLOAD_URL
+import com.mardous.booming.util.Constants.FAQ_LINK
+import com.mardous.booming.util.Constants.GITHUB_URL
+import com.mardous.booming.util.Constants.ISSUE_TRACKER_LINK
+import com.mardous.booming.util.Constants.RELEASES_LINK
+import com.mardous.booming.util.Constants.SUPPORT_EMAIL
+import com.mardous.booming.util.Constants.TELEGRAM_COMMUNITY_LINK
+import com.mardous.booming.util.Constants.TRANSLATIONS_LINK
 import dev.jeziellago.compose.markdowntext.MarkdownText
 import org.koin.androidx.compose.koinViewModel
-
-private const val AUTHOR_GITHUB_URL = "https://www.github.com/mardous"
-private const val GITHUB_URL = "$AUTHOR_GITHUB_URL/BoomingMusic"
-private const val RELEASES_LINK = "$GITHUB_URL/releases"
-const val ISSUE_TRACKER_LINK = "$GITHUB_URL/issues"
-private const val COMMUNITY_LINK = "$GITHUB_URL/wiki/Community"
-private const val FAQ_LINK = "$GITHUB_URL/wiki/FAQ"
-private const val APP_TELEGRAM_LINK = "https://t.me/mardousdev"
-private const val TRANSLATIONS_LINK = "https://hosted.weblate.org/engage/booming-music/"
-private const val DONATE_LINK = "https://ko-fi.com/christiaam"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -115,7 +117,7 @@ fun AboutScreen(
     }
 
     val sendInvitationTitle = stringResource(R.string.send_invitation_message)
-    val invitationMessage = stringResource(R.string.invitation_message_content, RELEASES_LINK)
+    val invitationMessage = stringResource(R.string.invitation_message_content, DOWNLOAD_URL)
 
     CollapsibleAppBarScaffold(
         title = stringResource(R.string.about_title),
@@ -155,12 +157,12 @@ fun AboutScreen(
                     context.tryStartActivity(
                         Intent(Intent.ACTION_SENDTO)
                             .setData("mailto:".toUri())
-                            .putExtra(Intent.EXTRA_EMAIL, arrayOf("mardous.contact@gmail.com"))
+                            .putExtra(Intent.EXTRA_EMAIL, arrayOf(SUPPORT_EMAIL))
                             .putExtra(Intent.EXTRA_SUBJECT, "Booming Music - Support & questions")
                     )
                 },
                 onDonateClick = {
-                    context.openUrl(DONATE_LINK)
+                    context.openUrl(DONATION_LINK)
                 }
             )
 
@@ -198,7 +200,7 @@ fun AboutScreen(
                     )
                 },
                 onJoinChatClick = {
-                    context.openUrl(APP_TELEGRAM_LINK)
+                    context.openUrl(TELEGRAM_COMMUNITY_LINK)
                 }
             )
         }
@@ -248,12 +250,14 @@ private fun AboutHeader(
         }
 
         Row(modifier = Modifier.fillMaxWidth()) {
-            ActionButton(
-                icon = R.drawable.ic_history_24dp,
-                label = stringResource(R.string.changelog),
-                modifier = Modifier.weight(1f),
-                onClick = onChangelogClick
-            )
+            if (!App.isPlayStoreBuild()) {
+                ActionButton(
+                    icon = R.drawable.ic_history_24dp,
+                    label = stringResource(R.string.changelog),
+                    modifier = Modifier.weight(1f),
+                    onClick = onChangelogClick
+                )
+            }
 
             ActionButton(
                 icon = R.drawable.ic_help_24dp,
@@ -325,16 +329,18 @@ private fun AboutAuthorSection(
                     .wrapContentSize()
                     .padding(8.dp)
             ) {
-                Button(
-                    onClick = onDonateClick,
-                    modifier = Modifier.wrapContentSize()
-                ) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_volunteer_activism_24dp),
-                        contentDescription = null
-                    )
-                    Spacer(Modifier.width(ButtonDefaults.IconSpacing))
-                    Text(stringResource(R.string.support_my_work))
+                if (!App.isPlayStoreBuild()) {
+                    Button(
+                        onClick = onDonateClick,
+                        modifier = Modifier.wrapContentSize()
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_volunteer_activism_24dp),
+                            contentDescription = null
+                        )
+                        Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+                        Text(stringResource(R.string.support_my_work))
+                    }
                 }
 
                 IconButton(

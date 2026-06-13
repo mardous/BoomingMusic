@@ -442,7 +442,7 @@
     <string name="listening_on">Lyssna på</string>
     <string name="casting_to">Strömma till</string>
     <string name="volume_label">Volym</string>
-    <string name="reset_balance">Reset balance</string>
+    <string name="reset_balance">Återställ balans</string>
     <string name="speed_and_pitch_label">Hastighet och tonhöjd</string>
     <string name="reset_tempo">Återställ tempo</string>
     <string name="unlock_pitch_adjustment">Aktivera tonhöjdsjustering</string>
@@ -940,4 +940,17 @@
     <string name="lyrics_by_x">Sångtext av %s</string>
     <string name="mini_player_swipe_to_skip_title">Svep minispelaren för att hoppa över</string>
     <string name="mini_player_swipe_to_skip_summary">Svep åt vänster eller höger på minispelaren för att hoppa mellan låtar.</string>
+    <string name="arranger">Kompositör</string>
+    <string name="eq_pro_mode">Expertläge</string>
+    <string name="compressor_label">Kompressor</string>
+    <string name="limiter_label">Begränsare</string>
+    <string name="eq_attack_time">Attack</string>
+    <string name="eq_release_time">Avslut</string>
+    <string name="eq_threshold">Tröskelvärde</string>
+    <string name="eq_ratio">Ratio</string>
+    <string name="eq_expander_ratio">Expander-ratio</string>
+    <string name="eq_knee_width">Knäbredd</string>
+    <string name="eq_noise_gate">Brusgrind</string>
+    <string name="eq_pre_gain">Förförstärkning</string>
+    <string name="eq_post_gain">Efterförstärkning</string>
 </resources>

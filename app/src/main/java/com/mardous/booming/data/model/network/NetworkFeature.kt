@@ -21,7 +21,7 @@ sealed class NetworkFeature(
     protected val preferences: SharedPreferences by inject()
 
     open fun isAvailable(context: Context, requireBeOnline: Boolean = true): Boolean {
-        val networkFeaturesEnabled = context.resources.getBoolean(R.bool.enable_network_features)
+        val networkFeaturesEnabled = context.resources.getBoolean(R.bool.network_features_enabled_by_default)
         if (preferences.getBoolean(NETWORK_FEATURES_KEY, networkFeaturesEnabled)) {
             if (isOnline(context) || !requireBeOnline) {
                 return preferences.getBoolean(preferenceKey, isOnByDefault)
@@ -39,7 +39,12 @@ sealed class NetworkFeature(
     sealed class Lyrics(preferenceKey: String, isOnByDefault: Boolean) :
         NetworkFeature(preferenceKey, isOnByDefault) {
         object BetterLyrics : Lyrics(BETTERLYRICS_ENABLED_KEY, false)
-        object Lyrically : Lyrics(LYRICALLY_ENABLED_KEY, false)
+        object Lyrically : Lyrics(LYRICALLY_ENABLED_KEY, false) {
+            override fun isAvailable(context: Context, requireBeOnline: Boolean): Boolean {
+                val isProviderEnabled = context.resources.getBoolean(R.bool.enable_lyrically_provider)
+                return isProviderEnabled && super.isAvailable(context, requireBeOnline)
+            }
+        }
         object LRCLib : Lyrics(LRCLIB_ENABLED_KEY, true)
     }
 
@@ -63,7 +68,7 @@ sealed class NetworkFeature(
 
     data object Updater : NetworkFeature(UPDATE_SEARCH_MODE_KEY, false) {
         override fun isAvailable(context: Context, requireBeOnline: Boolean): Boolean {
-            if (!context.resources.getBoolean(R.bool.enable_app_update))
+            if (!context.resources.getBoolean(R.bool.enable_builtin_updater))
                 return false
 
             val updateMode = preferences.getString(preferenceKey, UpdateSearchMode.WEEKLY)

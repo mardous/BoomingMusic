@@ -462,7 +462,7 @@
     <string name="action_hide_lyrics">Liedtext ausblenden</string>
     <string name="plain_lyrics">Einfach</string>
     <string name="synced_lyrics">Synchron</string>
-    <string name="embedded_lyrics">Integriert</string>
+    <string name="embedded_lyrics">Eingebettet</string>
     <string name="downloaded_lyrics">Heruntergeladen</string>
     <string name="cannot_download_lyrics">Booming Music konnte den Liedtext für diesen Titel nicht finden. Möchtest Du manuell suchen?</string>
     <string name="search_lyrics">Liedtext suchen</string>
@@ -668,7 +668,7 @@
     <string name="remember_shuffle_mode_summary">Zufallswiedergabe-Modus bleibt bei Auswahl einer neuen Titel-Liste erhalten.</string>
     <string name="album_shuffle_mode_title">Album-Zufallswiedergabe-Modus</string>
     <string name="artist_shuffle_mode_title">Interpreten-Zufallswiedergabe-Modus</string>
-    <string name="rewind_with_back_title">Mit \"Vorheriger\" zurückspulen</string>
+    <string name="rewind_with_back_title">Mit \"Zurückspringen\" zurückspulen</string>
     <string name="rewind_with_back_summary">Spule den wiedergegebenen Titel zurück oder springe zum vorherigen, wenn der Anfang erreicht ist.</string>
     <string name="rewind_fast_forward_amount_title">Rück-/Vorspulgröße</string>
     <string name="rewind_fast_forward_amount_summary">Zeit (in Sekunden) zum Zurückspulen oder Vorspulen mithilfe der Benutzeroberfläche oder externer Steuerelemente.</string>
@@ -745,7 +745,7 @@
     <string name="backup_app_data_summary">Sichere eine Datei mit den wichtigsten App-Daten auf Deinem Gerät.</string>
     <string name="restore_backup_title">App-Daten wiederherstellen</string>
     <string name="restore_backup_summary">Stelle die wichtigsten App-Daten aus einer vorherigen Sicherung wieder her.</string>
-    <string name="stop_when_closed_from_recents_title">Beenden, wenn aus den zuletzt verwendeten Programmen geschlossen</string>
+    <string name="stop_when_closed_from_recents_title">Beenden, wenn aus den zuletzt verwendeten Apps geschlossen</string>
     <string name="stop_when_closed_from_recents_summary">Die Wiedergabe wird angehalten, wenn die App aus der Liste der zuletzt verwendeten Apps geschlossen wird.</string>
     <string name="stop_when_closed_from_recents_note">Hinweis: Einige Geräte mit aggressivem Arbeitsspeicher- oder Akku-Management ignorieren diese Einstellung möglicherweise und beenden die App immer, wenn sie aus den zuletzt verwendeten Apps entfernt wird.</string>
     <string name="rotation_lock_title">Rotationssperre</string>
@@ -940,4 +940,17 @@
     <string name="lyrics_by_x">Songtexte von %s</string>
     <string name="mini_player_swipe_to_skip_title">Wische Mini-Player um den Song zu wechseln</string>
     <string name="mini_player_swipe_to_skip_summary">Wische links oder rechts auf dem Mini-Player um zwischen Songs zu wechseln.</string>
+    <string name="arranger">Arrangeur</string>
+    <string name="eq_pro_mode">Expertenmodus</string>
+    <string name="compressor_label">Kompressor</string>
+    <string name="limiter_label">Begrenzer</string>
+    <string name="eq_attack_time">Attack</string>
+    <string name="eq_release_time">Release</string>
+    <string name="eq_threshold">Schwellenwert</string>
+    <string name="eq_ratio">Verhältnis</string>
+    <string name="eq_expander_ratio">Expansionsverhältnis</string>
+    <string name="eq_knee_width">Knee Weite</string>
+    <string name="eq_noise_gate">Noise Gate</string>
+    <string name="eq_pre_gain">Vor-Gain</string>
+    <string name="eq_post_gain">Nach-Gain</string>
 </resources>

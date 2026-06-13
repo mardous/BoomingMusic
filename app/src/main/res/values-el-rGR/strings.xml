@@ -3,11 +3,11 @@
     <string name="action_play">Αναπαραγωγή</string>
     <string name="action_play_all">Αναπαραγωγή όλων</string>
     <string name="action_shuffle_play">Τυχαία αναπαραγωγή</string>
-    <string name="action_queue_next">Επόμενη ουρά</string>
+    <string name="action_queue_next">Επόμενο στην ουρά</string>
     <string name="shuffle_all_label">Τυχαία αναπαραγωγή όλων</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="shuffle_button_tip">Tap για τυχαία αναπαραγωγή. παρατεταμένο πάτημα για περισσότερες επιλογές</string>
     <string name="action_play_pause">Αναπαραγωγή/Παύση</string>
     <string name="action_pause">Παύση</string>
     <string name="action_next">Επόμενο</string>
@@ -838,4 +838,8 @@
     <string name="app_widget_full">Πλήρες</string>
     <string name="telegram_community">Κοινότητα στο Telegram</string>
     <string name="telegram_community_summary">Συνδεθείτε στην κοινότητά μας στο Telegram για να μένετε ενημερωμένοι για νέες εκδόσεις και νέα.</string>
+    <string name="app_widget_card">Κάρτα</string>
+    <string name="app_widget_responsive">αποκριτικό</string>
+    <string name="app_widget_responsive_desc">Ένα widget που αλλάζει ανάλογα με το μέγεθος του layout</string>
+    <string name="app_widget_full_desc">Η οθόνη του παίκτη αναμεταδίδεται στην οθόνη σας</string>
 </resources>

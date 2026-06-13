@@ -39,6 +39,7 @@ import androidx.media3.common.PlaybackException
 import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import androidx.media3.common.Timeline
+import androidx.media3.common.Tracks
 import androidx.media3.common.TrackSelectionParameters.AudioOffloadPreferences
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
@@ -292,6 +293,7 @@ class PlaybackService :
             build()
         }
 
+        setForegroundServiceTimeoutMs(FOREGROUND_SERVICE_TIMEOUT)
         setMediaNotificationProvider(
             DefaultMediaNotificationProvider(
                 this,
@@ -833,6 +835,24 @@ class PlaybackService :
         }
     }
 
+    override fun onTracksChanged(tracks: Tracks) {
+        var sampleRate = -1
+        var channelCount = -1
+        for (group in tracks.groups) {
+            if (group.type == C.TRACK_TYPE_AUDIO) {
+                for (i in 0 until group.length) {
+                    if (group.isTrackSelected(i)) {
+                        val format = group.getTrackFormat(i)
+                        sampleRate = format.sampleRate
+                        channelCount = format.channelCount
+                        break
+                    }
+                }
+            }
+        }
+        audioOutputObserver.updatePlaybackFormat(sampleRate, channelCount)
+    }
+
     override fun onSharedPreferenceChanged(preferences: SharedPreferences, key: String?) {
         when (key) {
             QUEUE_NEXT_MODE -> {
@@ -1228,5 +1248,7 @@ class PlaybackService :
         private const val MAX_RETRY_COUNT_AFTER_ERROR = 3
         private const val WIDGET_UPDATE_DEBOUNCE = 300L
         private const val REWIND_INSTEAD_PREVIOUS_MILLIS = 5000L
+
+        private const val FOREGROUND_SERVICE_TIMEOUT = (60 * 1000) * 2L
     }
 }

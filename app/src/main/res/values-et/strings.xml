@@ -920,4 +920,8 @@
     <string name="lyrics_by_x">Laulusõnad teenusest %s</string>
     <string name="mini_player_swipe_to_skip_title">Lugude vahetamiseks viipa minipleierit</string>
     <string name="mini_player_swipe_to_skip_summary">Lugude vahetamiseks viipa minipleierit vasakult paremale.</string>
+    <string name="arranger">Aranžeerija</string>
+    <string name="eq_pro_mode">Režiim asjatundjatele</string>
+    <string name="compressor_label">Kompressor</string>
+    <string name="limiter_label">Piiraja</string>
 </resources>

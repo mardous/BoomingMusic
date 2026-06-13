@@ -88,7 +88,7 @@
     <string name="playlist_created">La liste de lecture %s a été créée avec succès.</string>
     <string name="remove_song_from_playlist_title">Supprimer le titre de la liste de lecture</string>
     <string name="remove_songs_from_playlist_title">Supprimer les titres de la liste de lecture</string>
-    <string name="remove_song_x_from_playlist"><![CDATA[Supprimer le titre <b>%1$s</b> de la playlist ?]]></string>
+    <string name="remove_song_x_from_playlist"><![CDATA[Supprimer le titre <b>%1$s</b> de la liste de lecture ?]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[Supprimer <b>%1$d</b> titres de la liste de lecture ?]]></string>
     <string name="playlist_empty_text">Liste de lecture vide</string>
     <string name="action_lyrics_editor">Éditeur de paroles</string>
@@ -150,11 +150,11 @@
     <string name="added_to_favorites_label">Ajouté aux favoris</string>
     <string name="removed_from_favorites_label">Supprimé des Favoris</string>
     <string name="toggle_favorite">Ajouter/Supprimer des Favoris</string>
-    <string name="action_add_to_playlist">Ajouter à la playlist</string>
-    <string name="action_remove_from_playlist">Retirer de la playlist</string>
+    <string name="action_add_to_playlist">Ajouter à la liste de lecture</string>
+    <string name="action_remove_from_playlist">Retirer de la liste de lecture</string>
     <string name="action_add_to_playing_queue">Ajouter à la file d\'attente</string>
     <string name="action_remove_from_playing_queue">Retirer de la file d\'attente</string>
-    <string name="put_after_current_track">Mettre après le titre actuel</string>
+    <string name="put_after_current_track">Placer après le titre actuel</string>
     <string name="set_artist_image">Définir l\'image de l\'artiste</string>
     <string name="reset_artist_image">Réinitialiser l\'image de l\'artiste</string>
     <string name="there_is_nothing_to_reset">Il n\'y a rien à réinitialiser.</string>
@@ -188,10 +188,10 @@
     <string name="album_artists_label">Artistes de l\'album</string>
     <string name="genres_label">Genres</string>
     <string name="folders_label">Dossiers</string>
-    <string name="playlists_label">Playlists</string>
-    <string name="playlist_label">Playlist</string>
+    <string name="playlists_label">Listes de lecture</string>
+    <string name="playlist_label">Liste de lecture</string>
     <string name="favorites_label">Favoris</string>
-    <string name="last_added_label">Ajout récent</string>
+    <string name="last_added_label">Dernier ajout</string>
     <string name="top_tracks_label">Meilleurs titres</string>
     <string name="history_label">Historique</string>
     <string name="not_recently_played">Pas joué récemment</string>
@@ -301,15 +301,15 @@
     <string name="backup_settings">Paramètres</string>
     <string name="backup_synced_lyrics">Paroles synchronisées</string>
     <string name="backup_artist_images">Images d\'artistes</string>
-    <string name="backup_playlists">Playlists</string>
+    <string name="backup_playlists">Listes de lecture</string>
     <string name="backup_successful">Sauvegarde réussie !</string>
     <string name="backup_failed">Échec de la sauvegarde.</string>
     <string name="select_content_to_restore">Sélectionner le contenu à restaurer :</string>
     <string name="could_not_restore_data">Impossible de restaurer les données. Vérifiez le fichier de sauvegarde et réessayez.</string>
     <string name="data_restored_successfully">Données restaurées avec succès.</string>
-    <string name="action_toggle_playlist_lock">Verrouiller/Déverrouiller la playlist</string>
-    <string name="playlist_locked">Playlist verrouillée</string>
-    <string name="playlist_unlocked">Playlist déverrouillée</string>
+    <string name="action_toggle_playlist_lock">Verrouiller/Déverrouiller la liste de lecture</string>
+    <string name="playlist_locked">Liste de lecture verrouillée</string>
+    <string name="playlist_unlocked">Liste de lecture déverrouillée</string>
     <string name="action_toggle_queue_lock">Verrouiller/Déverrouiller la file d\'attente</string>
     <string name="queue_locked">File d\'attente verrouillée</string>
     <string name="queue_unlocked">File d\'attente déverrouillée</string>
@@ -365,7 +365,7 @@
     <string name="recent_albums">Albums récents</string>
     <string name="no_suggestions">Il n\'y a aucune suggestion pour vous</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">Pur hasard</string>
+    <string name="shuffle_mode_pure_random">Seulement en aléatoire</string>
     <string name="shuffle_mode_most_played">Les plus joués</string>
     <string name="shuffle_mode_most_played_artists">Artistes les plus joués</string>
     <string name="shuffle_mode_most_played_albums">Albums les plus joués</string>
@@ -437,7 +437,7 @@
     <string name="autoeq_profile_imported_successfully">Profil AutoEq importé avec succès.</string>
     <string name="profile_x_deleted">Profil \"%s\" supprimé.</string>
     <string name="autoeq_profile_x_deleted">Profil AutoEq \"%s\" supprimé.</string>
-    <string name="bassboost_label">BassBoost</string>
+    <string name="bassboost_label">Amplificateur de basses</string>
     <string name="virtualizer_label">Virtualiseur</string>
     <string name="loudness_enhancer">Amplificateur</string>
     <string name="sound_settings">Paramètres du son</string>
@@ -457,7 +457,7 @@
     <string name="enable_audio_offload_description">Lecture accélérée par le matériel pour réduire l\'utilisation du processeur et économiser la batterie. Redémarrage de l\'application requis.</string>
     <string name="enable_audio_float_output_title">Sortie audio de haute précision</string>
     <string name="enable_audio_float_output_description">Active la sortie en virgule flottante 32 bits pour une fidélité optimale. Un redémarrage de l\'application est nécessaire.</string>
-    <string name="skip_silence_title">Ignorance de silence</string>
+    <string name="skip_silence_title">Passer les silences</string>
     <string name="skip_silence_description">Détecte et supprime automatiquement les passages silencieux. Idéal pour les podcasts et les enregistrements vocaux.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Afficher les paroles</string>
@@ -511,7 +511,7 @@
     <string name="contributors_title">Contributeurs</string>
     <string name="contributors_summary">Liste des utilisateurs ayant contribué au projet d\'une manière ou d\'une autre.</string>
     <string name="view_profile_on_github">Voir le profil sur GitHub</string>
-    <string name="write_an_email">Écrire un e-mail</string>
+    <string name="write_an_email">Rédiger un courriel</string>
     <string name="support_development">Soutenir le développement</string>
     <string name="help_with_translations">Aide à la traduction</string>
     <string name="help_with_translations_summary">Vous pouvez contribuer au projet en aidant à traduire Booming Music dans d\'autres langues.</string>
@@ -904,17 +904,17 @@
     <string name="bit_perfect_is_active">Bit-perfect est actif</string>
     <string name="bit_perfect_description">Transmettre le signal audio directement vers un DAC USB sans rééchantillonnage du système.</string>
     <string name="sleep_timer_x_secs">%d secondes</string>
-    <string name="search_playlists">Rechercher des playlists</string>
-    <string name="select_playlists_title">Sélectionner des playlists</string>
+    <string name="search_playlists">Rechercher des listes de lecture</string>
+    <string name="select_playlists_title">Sélectionner des listes de lecture</string>
     <string name="new_playlist_action">Nouvelle</string>
-    <string name="no_playlists_create_new">Cliquez sur le bouton « Nouvelle » pour créer une playlist</string>
-    <string name="no_playlists_that_match_x">Il n\'y a aucune playlist correspondant à « %s ».</string>
-    <string name="songs_added_to_playlists">Titres ajoutés aux playlists</string>
-    <string name="no_playlists_label">Aucune playlist</string>
+    <string name="no_playlists_create_new">Cliquez sur le bouton « Nouvelle » pour créer une liste de lecture</string>
+    <string name="no_playlists_that_match_x">Il n\'y a aucune liste de lecture correspondant à « %s ».</string>
+    <string name="songs_added_to_playlists">Titres ajoutés aux listes de lecture</string>
+    <string name="no_playlists_label">Aucune liste de lecture</string>
     <plurals name="x_playlists_selected">
-        <item quantity="one">%d playlist sélectionnée</item>
-        <item quantity="many">%d playlists sélectionnées</item>
-        <item quantity="other">%d playlists sélectionnées</item>
+        <item quantity="one">%d liste de lecture sélectionnée</item>
+        <item quantity="many">%d listes de lecture sélectionnées</item>
+        <item quantity="other">%d listes de lecture sélectionnées</item>
     </plurals>
     <string name="auto_theme_name">Auto</string>
     <string name="sign_in_to_x_title">Se connecter à %s</string>
@@ -943,4 +943,17 @@
     <string name="lyrics_by_x">Paroles de %s</string>
     <string name="mini_player_swipe_to_skip_title">Faites glisser le mini-lecteur pour passer</string>
     <string name="mini_player_swipe_to_skip_summary">Balayez vers la gauche ou vers la droite sur le mini-lecteur pour passer d\'un titre à l\'autre.</string>
+    <string name="arranger">Arrangeur</string>
+    <string name="eq_pro_mode">Mode Expert</string>
+    <string name="compressor_label">Compresseur</string>
+    <string name="limiter_label">Limiter</string>
+    <string name="eq_attack_time">Attaque</string>
+    <string name="eq_release_time">Communiqué</string>
+    <string name="eq_threshold">Seuil</string>
+    <string name="eq_ratio">Ratio</string>
+    <string name="eq_expander_ratio">Rapport d\'expansion</string>
+    <string name="eq_knee_width">Largeur des genoux</string>
+    <string name="eq_noise_gate">Porte de bruit</string>
+    <string name="eq_pre_gain">Préamplification</string>
+    <string name="eq_post_gain">Post-amplification</string>
 </resources>

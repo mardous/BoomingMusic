@@ -1,9 +1,10 @@
 package com.mardous.booming.data.remote.listenbrainz
 
-import com.mardous.booming.BuildConfig
 import com.mardous.booming.data.remote.listenbrainz.model.ListenBrainzResponse
 import com.mardous.booming.data.remote.listenbrainz.model.ListenBrainzSubmission
 import com.mardous.booming.data.remote.listenbrainz.model.ListenBrainzTokenValidationResponse
+import com.mardous.booming.util.Constants.LISTENBRAINZ_API_URL
+import com.mardous.booming.util.Constants.USER_AGENT
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -18,24 +19,19 @@ import io.ktor.http.userAgent
 class ListenBrainzService(private val client: HttpClient) {
 
     suspend fun validateToken(token: String): ListenBrainzTokenValidationResponse {
-        return client.get("${BASE_URL}validate-token") {
+        return client.get("${LISTENBRAINZ_API_URL}validate-token") {
             userAgent(USER_AGENT)
             parameter("token", token)
         }.body()
     }
 
     suspend fun submitListen(token: String, submission: ListenBrainzSubmission): ListenBrainzResponse {
-        val response = client.post("${BASE_URL}submit-listens") {
+        val response = client.post("${LISTENBRAINZ_API_URL}submit-listens") {
             userAgent(USER_AGENT)
             header("Authorization", "Token $token")
             contentType(ContentType.Application.Json)
             setBody(submission)
         }
         return response.body()
-    }
-
-    companion object {
-        private const val BASE_URL = "https://api.listenbrainz.org/1/"
-        private const val USER_AGENT = "Booming Music/${BuildConfig.VERSION_NAME} (https://github.com/mardous/BoomingMusic)"
     }
 }

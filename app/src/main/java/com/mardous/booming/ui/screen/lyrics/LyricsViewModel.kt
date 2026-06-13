@@ -28,6 +28,7 @@ import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.BetterLyrics
 import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.LRCLib
 import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.Lyrically
+import com.mardous.booming.extensions.media.isArtistNameUnknown
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -64,7 +65,7 @@ class LyricsViewModel(
     private val _saveEvent = Channel<LyricsEditorResult>(Channel.BUFFERED)
     val saveEvent = _saveEvent.receiveAsFlow()
 
-    private val _downloadEvent = Channel<RawLyrics.Remote?>(Channel.BUFFERED)
+    private val _downloadEvent = Channel<RawLyrics.Remote>(Channel.BUFFERED)
     val downloadEvent = _downloadEvent.receiveAsFlow()
 
     private val _permissionRequestEvent = Channel<List<Uri>>(Channel.BUFFERED)
@@ -87,6 +88,13 @@ class LyricsViewModel(
         lyricsJob?.cancel()
         preferences.unregisterOnSharedPreferenceChangeListener(this)
         super.onCleared()
+    }
+
+    fun getSearchUrl(song: Song): String {
+        val url = "https://lrclib.net/search/"
+        val query = if (song.isArtistNameUnknown()) song.title
+        else "${song.artistName} ${song.title}"
+        return url + Uri.encode(query)
     }
 
     fun loadEditorContent(song: Song) = viewModelScope.launch(IO) {
@@ -146,7 +154,7 @@ class LyricsViewModel(
                 if (onlineLyrics != null) {
                     _downloadEvent.send(onlineLyrics)
                 } else {
-                    _downloadEvent.send(null)
+                    _downloadEvent.send(RawLyrics.Remote())
                 }
                 _lyricsEditorUiState.value = uiState.copy(isLoading = false)
             }

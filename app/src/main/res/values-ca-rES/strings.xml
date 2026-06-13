@@ -135,7 +135,7 @@
     <string name="grant_access_action">Atorga\'n l\'accés</string>
     <string name="action_grant">Atorga</string>
     <string name="granted">Atorgat</string>
-    <string name="hello_there">Hola, com va?</string>
+    <string name="hello_there">Hola!</string>
     <string name="welcome_to_x">Us donem la benvinguda a %s</string>
     <string name="get_started">Comença</string>
     <string name="select_storage_title">Selecciona l\'emmagatzematge</string>
@@ -862,8 +862,8 @@
     <string name="network_features_title">Activa les funcionalitats de xarxa</string>
     <string name="use_lrclib_provider_title">Usa el proveïdor LRCLib</string>
     <string name="use_betterlyrics_provider_title">Usa el proveïdor BetterLyrics</string>
-    <string name="app_widget_responsive">Sensible</string>
-    <string name="app_widget_responsive_desc">Un widget que s\'adapta a mides diferents</string>
+    <string name="app_widget_responsive">Responsiu</string>
+    <string name="app_widget_responsive_desc">Un widget que adapta el seu disseny a diferents mides</string>
     <string name="app_widget_card">Targeta</string>
     <string name="app_widget_card_desc">Estil minimalista i simplificat</string>
     <string name="app_widget_full">Complet</string>
@@ -934,7 +934,20 @@
     <string name="listenbrainz_scrobbling_summary">Envia automàticament les pistes reproduïdes al vostre historial d\'escolta de ListenBrainz.</string>
     <string name="listenbrainz_now_playing_title">Actualitza l\'ara sona a ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Mostra al vostre perfil de ListenBrainz la pista que es reprodueix en temps real.</string>
-    <string name="use_lrclib_provider_summary">Permet la descàrrega de lletres des del servei LRCLib.</string>
-    <string name="use_betterlyrics_provider_summary">Permet la descàrrega de lletres des del servei BetterLyrics.</string>
+    <string name="use_lrclib_provider_summary">Base de dades de lletres impulsada per la comunitat.</string>
+    <string name="use_betterlyrics_provider_summary">Lletra sincronitzada paraula per paraula.</string>
     <string name="auto_theme_name">Auto</string>
+    <string name="file_lyrics">Fitxer</string>
+    <string name="undo_changes">Desfer els canvis</string>
+    <string name="cannot_edit_lyrics_file">No podeu editar el contingut del fitxer directament des de Booming Music.</string>
+    <string name="arranger">Organitzador</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LCR</string>
+    <string name="lyrics_by_x">Lletra de %s</string>
+    <string name="preferred_lyrics_file_format_title">Format de fitxer preferit</string>
+    <string name="preferred_lyrics_file_format_summary">Si una cançó té fitxers de lletres en diferents formats, aquesta opció et permet triar quin té prioritat.</string>
+    <string name="mini_player_swipe_to_skip_title">Llisca el minireproductor per saltar</string>
+    <string name="mini_player_swipe_to_skip_summary">Llisca cap a l\'esquerra o la dreta al minireproductor per saltar entre cançons.</string>
+    <string name="use_lyrically_provider_title">Utilitza el proveïdor Lyrically</string>
+    <string name="use_lyrically_provider_summary">API de lletres enriquides amb karaoke i compatibilitat amb diverses persones.</string>
 </resources>
