@@ -713,7 +713,7 @@
     <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
     <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
     <string name="lyrics_karaoke_style_title">Karaoke-style lyrics</string>
-    <string name="lyrics_karaoke_style_summary">Enables a Karaoke-style effect for word-by-word synced lyrics.</string>
+    <string name="lyrics_karaoke_style_summary">Enables a Karaoke-style effect for word-by-word synced lyrics. Please note that this is an experimental feature.</string>
     <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
     <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
     <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
