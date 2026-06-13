@@ -45,14 +45,19 @@ fun Modifier.animatedGradient(
     LaunchedEffect(animating) {
         if (animating) {
             val period = (2 * Math.PI * 10).toFloat() // 20 * PI
-            val speed = period / 120000.0 // units per millisecond
-            val startTime = System.currentTimeMillis()
-            val startVal = time.value
+            val speed = period / 120000.0f // units per millisecond
+            var lastFrameTimeMillis: Long? = null
+
             while (isActive) {
-                val elapsed = System.currentTimeMillis() - startTime
-                val currentVal = (startVal + elapsed * speed) % period
-                time.snapTo(currentVal.toFloat())
-                withFrameMillis { }
+                withFrameMillis { frameTimeMillis ->
+                    val previousTime = lastFrameTimeMillis ?: frameTimeMillis
+                    val deltaMillis = frameTimeMillis - previousTime
+                    lastFrameTimeMillis = frameTimeMillis
+
+                    val delta = deltaMillis * speed
+                    val newValue = (time.value + delta) % period
+                    time.snapTo(newValue)
+                }
             }
         }
     }
