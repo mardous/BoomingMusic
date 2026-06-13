@@ -325,7 +325,7 @@ internal class TtmlNodeTree {
 
                     lines.add(
                         SyncedLyrics.Line(
-                            startAt = line.begin,
+                            start = line.begin,
                             end = line.end,
                             durationMillis = line.dur,
                             content = SyncedLyrics.TextContent(
@@ -343,7 +343,7 @@ internal class TtmlNodeTree {
                 } else {
                     lines.add(
                         SyncedLyrics.Line(
-                            startAt = line.begin,
+                            start = line.begin,
                             end = line.end,
                             durationMillis = line.dur,
                             content = SyncedLyrics.TextContent(
@@ -362,16 +362,16 @@ internal class TtmlNodeTree {
             val linesWithOffset = lines
                 .distinctBy { it.id }
                 .toMutableList().apply {
-                    sortBy { it.startAt }
+                    sortBy { it.start }
                 }
 
             if (linesWithOffset.isNotEmpty()) {
                 val firstLine = linesWithOffset.first()
-                if (firstLine.startAt > SyncedLyrics.MIN_OFFSET_TIME) {
+                if (firstLine.start > SyncedLyrics.MIN_OFFSET_TIME) {
                     linesWithOffset.add(0,
                         SyncedLyrics.Line(
-                            startAt = 0,
-                            end = firstLine.startAt,
+                            start = 0,
+                            end = firstLine.start,
                             content = SyncedLyrics.EmptyContent,
                             translation = null,
                             actor = firstLine.actor

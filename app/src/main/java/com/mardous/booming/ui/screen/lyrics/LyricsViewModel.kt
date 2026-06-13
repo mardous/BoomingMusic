@@ -348,13 +348,14 @@ class LyricsViewModel(
         } else {
             preferences.getInt(Key.UNSYNCED_FONT_SIZE_FULL, 20)
         }
+        val syncedBoldFont = preferences.getBoolean(Key.SYNCED_BOLD_FONT, false)
         val syncedStyle = TextStyle(
             fontFamily = fontFamily,
             fontSize = syncedFontSize.sp,
-            fontWeight = FontWeight.SemiBold,
+            fontWeight = if (syncedBoldFont) FontWeight.Bold else FontWeight.Normal,
             lineHeight = (1f + (lineSpacing / 100f)).em
         )
-        val unsyncedBoldFont = preferences.getBoolean(Key.UNSYNCED_BOLD_FONT, true)
+        val unsyncedBoldFont = preferences.getBoolean(Key.UNSYNCED_BOLD_FONT, false)
         val unsyncedStyle = TextStyle(
             fontFamily = fontFamily,
             fontSize = unsyncedFontSize.sp,
@@ -372,7 +373,8 @@ class LyricsViewModel(
             blurEffect = blurEffect,
             shadowEffect = shadowEffect,
             syncedStyle = syncedStyle,
-            unsyncedStyle = unsyncedStyle
+            unsyncedStyle = unsyncedStyle,
+            lineSpacing = ((lineSpacing / 2) + 8).coerceIn(8, 48)
         )
     }
 
@@ -395,6 +397,7 @@ class LyricsViewModel(
             Key.BACKGROUND_EFFECT,
             Key.BLUR_EFFECT,
             Key.SHADOW_EFFECT,
+            Key.SYNCED_BOLD_FONT,
             Key.UNSYNCED_BOLD_FONT -> {
                 _playerLyricsViewSettings.value = createViewSettings(LyricsViewMode.Player)
                 _fullLyricsViewSettings.value = createViewSettings(LyricsViewMode.Full)

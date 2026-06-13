@@ -131,7 +131,7 @@ class LrcLyricsParser : LyricsParser {
                         nextEntryNonNull.start
                     } else {
                         val firstLine = lines.values.firstOrNull()
-                        if (firstLine != null && firstLine.startAt == nextEntryNonNull.start) {
+                        if (firstLine != null && firstLine.start == nextEntryNonNull.start) {
                             length
                         } else {
                             error("Malformed LRC file")
@@ -165,7 +165,7 @@ class LrcLyricsParser : LyricsParser {
                             var newDuration = existing.durationMillis
                             val newEnd = if (existing.end == 0L) entry.end else existing.end
                             if (newEnd != existing.end) {
-                                newDuration = (newEnd - existing.startAt)
+                                newDuration = (newEnd - existing.start)
                             }
                             if (translationContent.isWordSynced && !existing.isWordSynced) {
                                 // It appears we are dealing with an edge case in which the second
@@ -198,16 +198,16 @@ class LrcLyricsParser : LyricsParser {
                 .filterNotNull()
                 .distinctBy { it.id }
                 .toMutableList().apply {
-                    sortBy { it.startAt }
+                    sortBy { it.start }
                 }
 
             if (linesWithOffset.isNotEmpty()) {
                 val firstLine = linesWithOffset.first()
-                if (firstLine.startAt > SyncedLyrics.MIN_OFFSET_TIME) {
+                if (firstLine.start > SyncedLyrics.MIN_OFFSET_TIME) {
                     linesWithOffset.add(0,
                         SyncedLyrics.Line(
-                            startAt = 0,
-                            end = firstLine.startAt,
+                            start = 0,
+                            end = firstLine.start,
                             content = SyncedLyrics.EmptyContent,
                             translation = null,
                             actor = firstLine.actor
