@@ -625,11 +625,10 @@ private fun DrawScope.drawRowText(
                 val yPos = syllableLayout.position.y + charBox.top + floatOffset
 
                 val bounceVal = Bounce.transform(awesomeProgress).coerceAtLeast(0f)
-                val blurRadius = 10f * bounceVal * density
-                val shadow = if (shadowEffect && bounceVal > 0f) Shadow(
-                    color = drawColor.copy(alpha = 0.4f * bounceVal),
-                    offset = Offset(0f, 2f * bounceVal * density),
-                    blurRadius = blurRadius
+                val shadow = if (shadowEffect) Shadow(
+                    color = drawColor.copy(alpha = 0.4f + (0.2f * bounceVal)),
+                    offset = Offset(0f, (2f + 2f * bounceVal) * density),
+                    blurRadius = (4f + 6f * bounceVal) * density
                 ) else Shadow.None
 
                 withTransform({ scale(scale = scale, pivot = syllableLayout.wordPivot) }) {
