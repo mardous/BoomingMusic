@@ -494,8 +494,8 @@ private fun calculateRowRenderData(
         val minY = rowLayouts.minOf { it.position.y }
         val totalHeight = rowLayouts.maxOf { it.textLayoutResult.size.height }.toFloat()
 
-        val verticalPadding = (totalHeight * 0.1f) * density
-        val horizontalPadding = ((totalMaxX - totalMinX) * 0.1f) * density
+        val verticalPadding = totalHeight * 0.1f
+        val horizontalPadding = totalWidth * 0.1f
         val edgePaddingPx = 8f * density
 
         RowRenderData(
