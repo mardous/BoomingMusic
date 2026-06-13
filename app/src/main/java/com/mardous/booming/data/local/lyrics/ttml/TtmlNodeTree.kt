@@ -1,5 +1,6 @@
 package com.mardous.booming.data.local.lyrics.ttml
 
+import com.mardous.booming.data.model.lyrics.LyricsActor
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import java.util.Locale
 
@@ -20,6 +21,7 @@ internal class TtmlNodeTree {
 
     private var rootNode: TtmlNode? = null
     private var translations = mutableSetOf<TtmlTranslation>()
+    private var agents = mutableSetOf<TtmlAgent>()
 
     private var openNodes = mutableMapOf<Int, TtmlNode?>()
 
@@ -62,6 +64,15 @@ internal class TtmlNodeTree {
             rootNode = node
         }
         return hasRoot
+    }
+
+    fun addAgent(id: String, type: String): Boolean {
+        val agent = TtmlAgent(id, type)
+        return agents.add(agent)
+    }
+
+    fun getAgent(id: String): TtmlAgent? {
+        return agents.firstOrNull { it.id == id }
     }
 
     fun openSection(node: TtmlNode): Boolean {
@@ -226,8 +237,46 @@ internal class TtmlNodeTree {
         if (lineNodes.isNotEmpty()) {
             val lines = mutableListOf<SyncedLyrics.Line>()
             val lastLineIndex = lineNodes.lastIndex
+
+            var lastLateralActor: LyricsActor = LyricsActor.Voice1
+            var lastAgentId: String? = null
+            var lateralDefined = false
+
             for (i in lineNodes.indices) {
                 val line = lineNodes[i]
+
+                val actor: LyricsActor? = line.agent?.let { agent ->
+                    when (agent.type) {
+                        TtmlAgent.Type.Person -> {
+                            if (lastAgentId == null) {
+                                lastLateralActor = LyricsActor.Voice1
+                                lateralDefined = true
+                            } else if (agent.id != lastAgentId) {
+                                lastLateralActor = if (lastLateralActor == LyricsActor.Voice1)
+                                    LyricsActor.Voice2
+                                else LyricsActor.Voice1
+                            }
+                            lastAgentId = agent.id
+                            lastLateralActor
+                        }
+
+                        TtmlAgent.Type.Other -> {
+                            if (!lateralDefined) {
+                                lastLateralActor = LyricsActor.Voice2
+                                lateralDefined = true
+                            } else {
+                                lastLateralActor = if (lastLateralActor == LyricsActor.Voice1)
+                                    LyricsActor.Voice2
+                                else LyricsActor.Voice1
+                            }
+                            lastAgentId = agent.id
+                            lastLateralActor
+                        }
+
+                        TtmlAgent.Type.Group -> LyricsActor.Group
+                    }
+                }
+
                 if (line.end == -1L) {
                     line.end = (if (i < lastLineIndex) lineNodes[i + 1].begin else duration)
                 }
@@ -259,7 +308,7 @@ internal class TtmlNodeTree {
                                     endMillis = word.end,
                                     endIndex = endIndex,
                                     durationMillis = word.dur,
-                                    actor = line.actor?.asBackground(word.background)
+                                    actor = actor?.asBackground(word.background)
                                 )
                             )
                         }
@@ -288,7 +337,7 @@ internal class TtmlNodeTree {
                                 words = words
                             ),
                             translation = translation?.get(line.key),
-                            actor = line.actor
+                            actor = actor
                         )
                     )
                 } else {
@@ -304,7 +353,7 @@ internal class TtmlNodeTree {
                                 words = emptyList()
                             ),
                             translation = translation?.get(line.key),
-                            actor = line.actor
+                            actor = actor
                         )
                     )
                 }

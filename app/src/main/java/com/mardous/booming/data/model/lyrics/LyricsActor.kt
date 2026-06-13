@@ -13,7 +13,7 @@ enum class LyricsActor(val value: String, val isBackground: Boolean) {
             if (this.isBackground) {
                 return this
             }
-            return LyricsActor.entries.first {
+            LyricsActor.entries.first {
                 it.value == this.value && it.isBackground
             }
         } else this

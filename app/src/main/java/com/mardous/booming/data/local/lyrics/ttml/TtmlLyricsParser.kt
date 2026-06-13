@@ -3,7 +3,6 @@ package com.mardous.booming.data.local.lyrics.ttml
 import android.util.Log
 import com.mardous.booming.data.LyricsParser
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
-import com.mardous.booming.data.model.lyrics.LyricsActor
 import com.mardous.booming.data.model.lyrics.LyricsFile
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
@@ -69,6 +68,13 @@ class TtmlLyricsParser : LyricsParser {
                             continue
                         }
                         when (name) {
+                            TtmlNode.TAG_AGENT -> {
+                                nodeTree.addAgent(
+                                    id = parser.getAttributeValue(null, "xml:id"),
+                                    type = parser.getAttributeValue(null, "type")
+                                )
+                            }
+
                             TtmlNode.TAG_TRANSLATION -> {
                                 val newTranslation = nodeTree.createNewTranslation(
                                     type = parser.getAttributeValue(null, "type"),
@@ -105,13 +111,14 @@ class TtmlLyricsParser : LyricsParser {
                             }
 
                             TtmlNode.TAG_PARAGRAPH -> {
+                                val agentAttribute = parser.getAttributeValue(null, "ttm:agent")
                                 val openLine = nodeTree.openLine(
                                     TtmlNode.buildLine(
                                         begin = parser.getTimeAttribute("begin"),
                                         end = parser.getTimeAttribute("end"),
                                         dur = parser.getTimeAttribute("dur"),
                                         key = parser.getAttributeValue(null, "itunes:key"),
-                                        actor = parser.getAgentAttribute("ttm:agent")
+                                        agent = agentAttribute?.let { nodeTree.getAgent(it) }
                                     )
                                 )
                                 if (!openLine && nodeTree.hasRoot) break
@@ -181,14 +188,6 @@ class TtmlLyricsParser : LyricsParser {
     }
 
     private fun isSupportedTag(name: String?) = TtmlNode.isSupportedTag(name)
-
-    private fun XmlPullParser.getAgentAttribute(name: String): LyricsActor? {
-        val attribute = getAttributeValue(null, name)
-        if (attribute != null) {
-            return LyricsActor.getActorFromValue(attribute)
-        }
-        return null
-    }
 
     private fun XmlPullParser.getTimeAttribute(name: String): Long {
         try {
