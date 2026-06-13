@@ -339,9 +339,9 @@ class LyricsViewModel(
         }
         val lineSpacing = preferences.getInt(Key.LINE_SPACING, 40)
         val syncedFontSize = if (mode == LyricsViewMode.Player) {
-            preferences.getInt(Key.SYNCED_FONT_SIZE_PLAYER, 24)
+            preferences.getInt(Key.SYNCED_FONT_SIZE_PLAYER, 20)
         } else {
-            preferences.getInt(Key.SYNCED_FONT_SIZE_FULL, 30)
+            preferences.getInt(Key.SYNCED_FONT_SIZE_FULL, 24)
         }
         val unsyncedFontSize = if (mode == LyricsViewMode.Player) {
             preferences.getInt(Key.UNSYNCED_FONT_SIZE_PLAYER, 16)
