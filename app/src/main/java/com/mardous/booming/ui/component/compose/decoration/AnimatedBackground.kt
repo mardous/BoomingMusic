@@ -33,7 +33,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import kotlin.math.cos
 import kotlin.math.sin
-import kotlinx.coroutines.isActive
 
 @Composable
 fun Modifier.animatedGradient(
@@ -44,23 +43,23 @@ fun Modifier.animatedGradient(
 
     LaunchedEffect(animating) {
         if (animating) {
-            val period = (2 * Math.PI * 10).toFloat() // 20 * PI
-            val speed = period / 120000.0f // units per millisecond
-            var lastFrameTimeMillis: Long? = null
+            val period = (2f * Math.PI.toFloat() * 10f)
+            val speed = period / 120000f
+            var lastFrameTime = -1L
 
-            while (isActive) {
-                withFrameMillis { frameTimeMillis ->
-                    val previousTime = lastFrameTimeMillis ?: frameTimeMillis
-                    val deltaMillis = frameTimeMillis - previousTime
-                    lastFrameTimeMillis = frameTimeMillis
-
-                    val delta = deltaMillis * speed
-                    val newValue = (time.value + delta) % period
-                    time.snapTo(newValue)
+            while (true) {
+                val frameTime = withFrameMillis { it }
+                if (lastFrameTime != -1L) {
+                    val deltaMillis = frameTime - lastFrameTime
+                    val nextValue = (time.value + (deltaMillis * speed)) % period
+                    time.snapTo(nextValue)
                 }
+                lastFrameTime = frameTime
             }
         }
     }
+
+    val effectiveTime = time.value
 
     val safeSize = colors.size.coerceAtLeast(1)
     val rawBase = colors.getOrNull(0) ?: Color.Transparent
@@ -90,11 +89,10 @@ fun Modifier.animatedGradient(
         if (baseColor == Color.Transparent && color1 == Color.Transparent && 
             color2 == Color.Transparent && color3 == Color.Transparent) return@drawBehind
 
-        val t = time.value
         drawRect(baseColor)
 
-        val x1 = (0.5f + 0.35f * sin(t * 0.5f)).coerceIn(0f, 1f)
-        val y1 = (0.5f + 0.35f * cos(t * 0.3f)).coerceIn(0f, 1f)
+        val x1 = (0.5f + 0.35f * sin(effectiveTime * 0.5f)).coerceIn(0f, 1f)
+        val y1 = (0.5f + 0.35f * cos(effectiveTime * 0.3f)).coerceIn(0f, 1f)
         drawCircle(
             brush = Brush.radialGradient(
                 colors = listOf(color1.copy(alpha = 0.8f), Color.Transparent),
@@ -105,8 +103,8 @@ fun Modifier.animatedGradient(
             radius = size.minDimension * 0.9f
         )
 
-        val x2 = (0.5f + 0.4f * cos(t * 0.2f)).coerceIn(0f, 1f)
-        val y2 = (0.5f + 0.4f * sin(t * 0.4f)).coerceIn(0f, 1f)
+        val x2 = (0.5f + 0.4f * cos(effectiveTime * 0.2f)).coerceIn(0f, 1f)
+        val y2 = (0.5f + 0.4f * sin(effectiveTime * 0.4f)).coerceIn(0f, 1f)
         drawCircle(
             brush = Brush.radialGradient(
                 colors = listOf(color2.copy(alpha = 0.7f), Color.Transparent),
@@ -117,8 +115,8 @@ fun Modifier.animatedGradient(
             radius = size.minDimension * 1.1f
         )
 
-        val x3 = (0.5f + 0.3f * sin(t * 0.7f + 2f)).coerceIn(0f, 1f)
-        val y3 = (0.5f + 0.3f * cos(t * 0.6f + 1f)).coerceIn(0f, 1f)
+        val x3 = (0.5f + 0.3f * sin(effectiveTime * 0.7f + 2f)).coerceIn(0f, 1f)
+        val y3 = (0.5f + 0.3f * cos(effectiveTime * 0.6f + 1f)).coerceIn(0f, 1f)
         drawCircle(
             brush = Brush.radialGradient(
                 colors = listOf(color3.copy(alpha = 0.6f), Color.Transparent),
