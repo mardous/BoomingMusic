@@ -436,10 +436,26 @@ private fun calculateStaticLineLayout(
 
     layoutsByWord.forEach { (wordId, layouts) ->
         if (layouts.first().useAwesomeAnimation) {
+            val wordStartTime = layouts.minOf { it.word.startMillis }
+            val wordEndTime = layouts.maxOf { it.word.endMillis }
+            val wordContent = layouts.joinToString("") { it.word.content }
+            val wordDuration = wordEndTime - wordStartTime
+
+            val fastCharAnimationThresholdMs = 200f
+            val numCharsInWord = wordContent.length
+            val animationIntensityBase =
+                ((wordDuration.toFloat() - fastCharAnimationThresholdMs * numCharsInWord) / 1000f)
+
+            val dipAndRise = DipAndRise(dip = (0.5 * animationIntensityBase.toDouble()).coerceIn(0.0, 0.5))
+            val swell = Swell((0.1 * animationIntensityBase.toDouble()).coerceIn(0.0, 0.1))
+
             animInfoByWord[wordId] = WordAnimationInfo(
-                wordStartTime = layouts.minOf { it.word.startMillis },
-                wordEndTime = layouts.maxOf { it.word.endMillis },
-                wordContent = layouts.joinToString("") { it.word.content }
+                wordStartTime = wordStartTime,
+                wordEndTime = wordEndTime,
+                wordContent = wordContent,
+                wordDuration = wordDuration,
+                dipAndRise = dipAndRise,
+                swell = swell
             )
             var runningCharOffset = 0
             layouts.forEach { layout ->
@@ -575,7 +591,6 @@ private fun DrawScope.drawRowText(
         val wordAnimInfo = syllableLayout.wordAnimInfo
 
         if (wordAnimInfo != null) {
-            val fastCharAnimationThresholdMs = 200f
             val awesomeDuration = wordAnimInfo.wordDuration * 0.8f
 
             val charLayouts = syllableLayout.charLayouts ?: emptyList()
@@ -584,10 +599,8 @@ private fun DrawScope.drawRowText(
             val numCharsInWord = wordAnimInfo.wordContent.length
             val earliestStartTime = wordAnimInfo.wordStartTime
             val latestStartTime = wordAnimInfo.wordEndTime - awesomeDuration
-            val animationIntensityBase =
-                ((wordAnimInfo.wordDuration.toFloat() - fastCharAnimationThresholdMs * numCharsInWord) / 1000f)
-            val dipAndRise = DipAndRise(dip = (0.5 * animationIntensityBase.toDouble()).coerceIn(0.0, 0.5))
-            val swell = Swell((0.1 * animationIntensityBase.toDouble()).coerceIn(0.0, 0.1))
+            val dipAndRise = wordAnimInfo.dipAndRise
+            val swell = wordAnimInfo.swell
 
             syllableLayout.word.content.forEachIndexed { charIndex, _ ->
                 val singleCharLayoutResult =
@@ -776,7 +789,9 @@ internal data class WordAnimationInfo(
     val wordStartTime: Long,
     val wordEndTime: Long,
     val wordContent: String,
-    val wordDuration: Long = wordEndTime - wordStartTime
+    val wordDuration: Long = wordEndTime - wordStartTime,
+    val dipAndRise: NewtonPolynomialInterpolationEasing,
+    val swell: NewtonPolynomialInterpolationEasing
 )
 
 @Stable
