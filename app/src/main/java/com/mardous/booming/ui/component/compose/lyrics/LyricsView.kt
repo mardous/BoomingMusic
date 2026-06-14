@@ -305,7 +305,6 @@ private fun LyricsLineView(
                         enableBlurEffect = enableBlurEffect,
                         enableShadowEffect = enableShadowEffect,
                         selectedLine = selectedLine,
-                        mayBeActive = progressMillis in line.start..line.end,
                         contentColor = contentColor,
                         progressMillis = progressMillis,
                         startMillis = line.start,
@@ -330,7 +329,6 @@ private fun LyricsLineView(
                             enableBlurEffect = enableBlurEffect,
                             enableShadowEffect = enableShadowEffect,
                             selectedLine = selectedLine,
-                            mayBeActive = progressMillis in line.backgroundStart..line.backgroundEnd,
                             contentColor = contentColor,
                             progressMillis = progressMillis,
                             startMillis = line.start,
@@ -361,7 +359,6 @@ fun LyricsLineContentView(
     enableBlurEffect: Boolean,
     enableShadowEffect: Boolean,
     selectedLine: Boolean,
-    mayBeActive: Boolean,
     contentColor: Color,
     progressMillis: Long,
     startMillis: Long,
@@ -413,7 +410,6 @@ fun LyricsLineContentView(
     } else {
         LineSyncedView(
             selectedLine = selectedLine,
-            mayBeActive = mayBeActive,
             progressiveColoring = progressiveColoring,
             shadowEffect = enableShadowEffect,
             effectDuration = effectDuration,
@@ -450,7 +446,6 @@ fun LyricsLineContentView(
         } else {
             LineSyncedView(
                 selectedLine = selectedLine,
-                mayBeActive = mayBeActive,
                 progressiveColoring = progressiveColoring && mainVocals.isEmpty(),
                 shadowEffect = enableShadowEffect,
                 effectDuration = effectDuration,
@@ -473,7 +468,6 @@ fun LyricsLineContentView(
 @Composable
 private fun LineSyncedView(
     selectedLine: Boolean,
-    mayBeActive: Boolean,
     progressiveColoring: Boolean,
     shadowEffect: Boolean,
     effectDuration: Int,
@@ -487,13 +481,13 @@ private fun LineSyncedView(
     var textHeight by remember { mutableFloatStateOf(0f) }
 
     val animatedAlpha by animateFloatAsState(
-        targetValue = if (mayBeActive) 1f else .4f,
+        targetValue = if (selectedLine) 1f else .4f,
         animationSpec = tween(durationMillis = 400),
         label = "current-line-alpha-animation"
     )
 
     val animatedOrigin by animateFloatAsState(
-        targetValue = if (mayBeActive) progressFraction * textHeight else 0f,
+        targetValue = if (selectedLine) progressFraction * textHeight else 0f,
         label = "line-gradient-origin"
     )
 
