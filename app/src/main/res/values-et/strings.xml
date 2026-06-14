@@ -926,4 +926,10 @@
     <string name="limiter_label">Piiraja</string>
     <string name="rg_without_tag">Ilma sildita</string>
     <string name="rg_with_tag">Sildiga</string>
+    <string name="lyrics_bold_synced_summary">Kasuta sünkroonitud laulusõnade jaoks paksu kirjatüüpi.</string>
+    <string name="lyrics_bold_synced_title">Sünkroonitud laulusõnade paks kirjatüüp</string>
+    <string name="lyrics_karaoke_style_summary">Lülitab sisse karaoke-stiilis efekti sõnahaaval sünkroonitud laulusõnade kuvamiseks. Palun arvesta, et see on katseline funktsionaalsus.</string>
+    <string name="lyrics_karaoke_style_title">Karaoke-stiilis laulusõnad</string>
+    <string name="eq_pre_gain">Eelvõimendus</string>
+    <string name="eq_post_gain">Järelvõimendus</string>
 </resources>
