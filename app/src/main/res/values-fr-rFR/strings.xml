@@ -958,4 +958,8 @@
     <string name="eq_post_gain">Post-amplification</string>
     <string name="rg_with_tag">Avec balise</string>
     <string name="rg_without_tag">Sans balise</string>
+    <string name="lyrics_karaoke_style_title">Paroles en mode karaoké</string>
+    <string name="lyrics_karaoke_style_summary">Active un effet de type karaoké pour afficher les paroles synchronisées mot à mot. Veuillez noter qu\'il s\'agit d\'une fonctionnalité expérimentale.</string>
+    <string name="lyrics_bold_synced_title">Caractères en gras pour les paroles synchronisées</string>
+    <string name="lyrics_bold_synced_summary">Afficher les paroles synchronisées en caractères gras.</string>
 </resources>
