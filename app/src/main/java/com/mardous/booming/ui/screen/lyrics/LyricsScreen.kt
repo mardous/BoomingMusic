@@ -62,12 +62,14 @@ import com.mardous.booming.core.model.lyrics.LyricsViewState
 import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.extensions.isPowerSaveMode
+import com.mardous.booming.extensions.resolveColor
 import com.mardous.booming.ui.component.compose.AnimatedEqBars
 import com.mardous.booming.ui.component.compose.color.extractGradientColors
 import com.mardous.booming.ui.component.compose.decoration.FadingEdges
 import com.mardous.booming.ui.component.compose.decoration.animatedGradient
 import com.mardous.booming.ui.component.compose.decoration.fadingEdges
 import com.mardous.booming.ui.component.compose.lyrics.LyricsView
+import com.mardous.booming.ui.component.views.PlaceholderDrawable
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.theme.PlayerTheme
@@ -118,7 +120,9 @@ fun LyricsScreen(
                         .build()
                 )
                 gradientColors = if (result is SuccessResult) {
-                    result.image.toBitmap().extractGradientColors()
+                    result.image.toBitmap().extractGradientColors(
+                        context.resolveColor(PlaceholderDrawable.BACKGROUND_COLOR)
+                    )
                 } else {
                     emptyList()
                 }
@@ -208,7 +212,7 @@ fun LyricsScreen(
                 isPlaying = isPlaying,
                 isPowerSaveMode = isPowerSaveMode,
                 hasBackgroundEffects = hasBackgroundEffects,
-                onSeekToLine = { playerViewModel.seekTo(it.startAt) },
+                onSeekToLine = { playerViewModel.seekTo(it.start) },
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding)
@@ -247,7 +251,7 @@ fun CoverLyricsScreen(
                 isPlaying = isPlaying,
                 isPowerSaveMode = isPowerSaveMode,
                 hasBackgroundEffects = false,
-                onSeekToLine = { playerViewModel.seekTo(it.startAt) },
+                onSeekToLine = { playerViewModel.seekTo(it.start) },
                 modifier = Modifier.fillMaxSize(),
             )
 

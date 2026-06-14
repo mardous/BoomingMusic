@@ -12,27 +12,31 @@ data class SyncedLyrics(
 
     init {
         for (line in lines) {
-            require(line.startAt >= 0) { "startAt in the LyricsLine must >= 0" }
+            require(line.start >= 0) { "startAt in the LyricsLine must >= 0" }
             require(line.durationMillis >= 0) { "durationMillis in the LyricsLine >= 0" }
         }
     }
 
     @Immutable
     data class Line(
-        val startAt: Long,
+        val start: Long,
         val end: Long,
-        val durationMillis: Long = (end - startAt),
+        val durationMillis: Long = (end - start),
         val content: TextContent,
         val translation: TextContent?,
         val actor: LyricsActor?
     ) {
-        val id: Long = 31 * (31 * startAt + durationMillis) + content.hashCode()
+        val id: Long = 31 * (31 * start + durationMillis) + content.hashCode()
 
         val isEmpty = content.isEmpty
 
         val isWordSynced = content.isWordSynced
 
         val hasBackgroundVocals = content.hasBackgroundVocals
+
+        val backgroundStart = content.backgroundVocals.firstOrNull()?.startMillis ?: -1
+
+        val backgroundEnd = content.backgroundVocals.lastOrNull()?.endMillis  ?: -1
     }
 
     @Immutable

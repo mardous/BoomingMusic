@@ -46,7 +46,7 @@ class LyricsViewState(val lyrics: SyncedLyrics?) {
         if (position < 0 || lyrics == null) return -1
         val lines = lyrics.lines
         for (i in lines.lastIndex downTo 0) {
-            if (position >= lines[i].startAt) {
+            if (position >= lines[i].start) {
                 return i
             }
         }

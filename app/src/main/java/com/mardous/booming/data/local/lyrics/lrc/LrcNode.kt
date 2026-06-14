@@ -92,7 +92,7 @@ internal class LrcNode(
             return null
         }
         return SyncedLyrics.Line(
-            startAt = start,
+            start = start,
             end = end,
             durationMillis = (end - start),
             content = getTextContent(),
