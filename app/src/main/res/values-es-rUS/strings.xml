@@ -962,4 +962,10 @@
     <string name="eq_noise_gate">Puerta de ruido</string>
     <string name="eq_pre_gain">Pre-ganancia</string>
     <string name="eq_post_gain">Post-ganancia</string>
+    <string name="rg_with_tag">Con etiqueta</string>
+    <string name="rg_without_tag">Sin etiqueta</string>
+    <string name="lyrics_karaoke_style_title">Letras estilo karaoke</string>
+    <string name="lyrics_karaoke_style_summary">Habilita un efecto de karaoke para letras sincronizadas palabra por palabra. Ten en cuenta que esta es una función experimental.</string>
+    <string name="lyrics_bold_synced_title">Resaltar las letras sincronizadas</string>
+    <string name="lyrics_bold_synced_summary">Aplica una fuente negrita para las letras sincronizadas.</string>
 </resources>
