@@ -168,7 +168,7 @@ fun LyricsScreen(
                     }
 
                     effect.isBlur -> {
-                        val backgroundColor = MaterialTheme.colorScheme.surface
+                        val backgroundColor = Color(0xFF1A1A1A)
 
                         Box(modifier = Modifier.fillMaxSize()) {
                             AsyncImage(
