@@ -973,4 +973,8 @@
     <string name="eq_post_gain">Після підсилення</string>
     <string name="rg_with_tag">З тегом</string>
     <string name="rg_without_tag">Без тегу</string>
+    <string name="lyrics_karaoke_style_title">Текст пісні у форматі караоке</string>
+    <string name="lyrics_karaoke_style_summary">Умикає ефект у форматі караоке для синхронізації тексту пісні слово за словом. Зверніть увагу, що ця функція є експериментальною.</string>
+    <string name="lyrics_bold_synced_title">Жирний шрифт для синхронізованих текстів</string>
+    <string name="lyrics_bold_synced_summary">Показує синхронізовані тексти пісень жирним шрифтом.</string>
 </resources>
