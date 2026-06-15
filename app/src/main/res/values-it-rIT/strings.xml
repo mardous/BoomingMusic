@@ -597,9 +597,9 @@
     <string name="lyrics_line_spacing_title">Spaziatura interlinea</string>
     <string name="lyrics_line_spacing_summary">Aggiusta lo spazio interlinea del testo.</string>
     <string name="synced_font_size_player_title">Dimensione del font dei testi sincronizzati (riproduttore)</string>
-    <string name="synced_font_size_player_summary">Aggiusta la dimensione del font per i testi sincronizzati mostrati sopra la copertina dell\'album nella schermata del riproduttore.</string>
+    <string name="synced_font_size_player_summary">Regola la dimensione del font per i testi sincronizzati mostrati sopra la copertina dell\'album nella schermata del riproduttore.</string>
     <string name="unsynced_font_size_player_title">Dimensione del font di testi non sincronizzati (riproduttore)</string>
-    <string name="unsynced_font_size_player_summary">Modifica la dimensione del font per testi non sincronizzati mostrati sopra la copertina dell\'album nella schermata del riproduttore.</string>
+    <string name="unsynced_font_size_player_summary">Regola la dimensione del font per testi non sincronizzati mostrati sopra la copertina dell\'album nella schermata del riproduttore.</string>
     <string name="synced_font_size_full_title">Dimensione del font dei testi sincronizzati (vista completa)</string>
     <string name="synced_font_size_full_summary">Regola la dimensione del carattere del testo sincronizzato nella schermata del testo completo.</string>
     <string name="unsynced_font_size_full_title">Dimensione carattere testo non sincronizzato (vista completa)</string>
@@ -954,4 +954,10 @@
     <string name="eq_noise_gate">Gate del rumore</string>
     <string name="eq_pre_gain">Pre-Valutazione</string>
     <string name="eq_post_gain">Post-valutazione</string>
+    <string name="rg_with_tag">Con tag</string>
+    <string name="rg_without_tag">Senza tag</string>
+    <string name="lyrics_karaoke_style_title">Testi in stile karaoke</string>
+    <string name="lyrics_karaoke_style_summary">Abilita un effetto in stile karaoke per i testi sincronizzati parola per parola. Nota: questa è una funzione sperimentale.</string>
+    <string name="lyrics_bold_synced_title">Grassetto per i testi sincronizzati</string>
+    <string name="lyrics_bold_synced_summary">Mostra i testi sincronizzati con carattere grassetto.</string>
 </resources>
