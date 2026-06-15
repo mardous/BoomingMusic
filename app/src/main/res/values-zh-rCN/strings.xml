@@ -944,4 +944,10 @@
     <string name="eq_noise_gate">噪声门</string>
     <string name="eq_pre_gain">前置增益</string>
     <string name="eq_post_gain">后置增益</string>
+    <string name="rg_with_tag">带有标签</string>
+    <string name="rg_without_tag">不带标签</string>
+    <string name="lyrics_karaoke_style_title">卡拉 OK 风格歌词</string>
+    <string name="lyrics_karaoke_style_summary">为逐词同步歌词启用卡拉 OK 风格效果。请注意，本功能为试验性功能。</string>
+    <string name="lyrics_bold_synced_title">同步歌词显示为粗体</string>
+    <string name="lyrics_bold_synced_summary">以粗体显示同步歌词。</string>
 </resources>
