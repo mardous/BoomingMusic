@@ -953,4 +953,10 @@
     <string name="eq_noise_gate">Noise Gate</string>
     <string name="eq_pre_gain">Vor-Gain</string>
     <string name="eq_post_gain">Nach-Gain</string>
+    <string name="rg_with_tag">Mit Tag</string>
+    <string name="rg_without_tag">Ohne Tag</string>
+    <string name="lyrics_karaoke_style_title">Karaoke-Stil Liedtexte</string>
+    <string name="lyrics_karaoke_style_summary">Aktiviert einen Karaoke-Stil für Wort-für-Wort synchronisierte Liedtexte. Bitte beachten Sie, dass es sich hierbei um eine experimentelle Funktion handelt.</string>
+    <string name="lyrics_bold_synced_title">Fette Schrift für synchronisierte Liedtexte</string>
+    <string name="lyrics_bold_synced_summary">Stellt synchronisierte Liedtexte fett dar.</string>
 </resources>
