@@ -950,4 +950,22 @@
     <string name="mini_player_swipe_to_skip_title">Deslize o mini reprodutor para pular</string>
     <string name="mini_player_swipe_to_skip_summary">Deslize o dedo para a esquerda ou para a direita no mini reprodutor para pular entre as músicas.</string>
     <string name="arranger">Arranjador</string>
+    <string name="eq_pro_mode">Modo Avançado</string>
+    <string name="compressor_label">Compressor</string>
+    <string name="limiter_label">Limitador</string>
+    <string name="eq_attack_time">Atacar</string>
+    <string name="eq_release_time">Libertar</string>
+    <string name="eq_threshold">Limite</string>
+    <string name="eq_ratio">Rácio</string>
+    <string name="eq_expander_ratio">Expansor de rácio</string>
+    <string name="eq_knee_width">Largura do joelho</string>
+    <string name="eq_noise_gate">Porta de ruído</string>
+    <string name="eq_pre_gain">Pré-ganho</string>
+    <string name="eq_post_gain">Pós-ganho</string>
+    <string name="rg_with_tag">Com etiqueta</string>
+    <string name="rg_without_tag">Sem etiqueta</string>
+    <string name="lyrics_karaoke_style_title">Letra em estilo karaoke</string>
+    <string name="lyrics_karaoke_style_summary">Ativa um efeito estilo Karaoke para letra sincronizada palavra a palavra. Por favor note que isto é uma funcionalidade experimental.</string>
+    <string name="lyrics_bold_synced_title">Fonte em negrito para letra sincronizada</string>
+    <string name="lyrics_bold_synced_summary">Exibir letra sincronizada em fonte de negrito.</string>
 </resources>
