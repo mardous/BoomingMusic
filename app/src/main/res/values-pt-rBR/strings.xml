@@ -964,4 +964,8 @@
     <string name="eq_post_gain">Pós-ganho</string>
     <string name="rg_with_tag">Com etiqueta</string>
     <string name="rg_without_tag">Sem etiqueta</string>
+    <string name="lyrics_karaoke_style_title">Letras no estilo karaokê</string>
+    <string name="lyrics_karaoke_style_summary">Ativa um efeito estilo karaokê para letras sincronizadas palavra por palavra. Observe que este é um recurso experimental.</string>
+    <string name="lyrics_bold_synced_title">Fonte em negrito para letras sincronizadas</string>
+    <string name="lyrics_bold_synced_summary">Exibir letras sincronizadas em negrito.</string>
 </resources>
