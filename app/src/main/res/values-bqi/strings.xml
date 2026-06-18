@@ -73,4 +73,19 @@
     <string name="rename_playlist_title">آلشت نوم نومگه پشک</string>
     <string name="action_edit_playlist">آلشت نومگه پشک</string>
     <string name="action_delete">پاک کردن نومگه پشک</string>
+    <string name="action_clear_history">روفتن ویرگار</string>
+    <string name="history_cleared">ویرگار روفته وابی</string>
+    <string name="playlist_name_empty">نوم نومگه پشک</string>
+    <string name="playlist_updated">نومگه پشک ورۊ وابی.</string>
+    <string name="failed_to_save_playlist">نومگه پشک زفت نوابی.</string>
+    <string name="delete_playlist_title">پاک کردن نومگه پشک</string>
+    <string name="delete_playlists_title">پاک کردن نومگه یل پشک</string>
+    <string name="action_lyrics_editor">آلشتگر هؽل آرنگ</string>
+    <string name="action_tag_editor">آلشتگر برچسب</string>
+    <string name="saving_changes">زفت کردن آلشتکاریا</string>
+    <string name="web_search">پیتینیڌن وب</string>
+    <string name="action_delete_from_device">پاک کردن ز دسگا</string>
+    <string name="deleted_one_song">ی آرنگ پاک وابی</string>
+    <string name="delete_song_title">پاک کردن آرنگ</string>
+    <string name="delete_songs_title">پاک کردن آرنگا</string>
 </resources>
