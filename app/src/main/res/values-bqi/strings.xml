@@ -88,4 +88,13 @@
     <string name="deleted_one_song">ی آرنگ پاک وابی</string>
     <string name="delete_song_title">پاک کردن آرنگ</string>
     <string name="delete_songs_title">پاک کردن آرنگا</string>
+    <string name="granted">داڌه وابیڌه</string>
+    <string name="action_grant">گرانت</string>
+    <string name="empty_label">پتی</string>
+    <string name="artists_label">هونرمندووݩ</string>
+    <string name="album_artists_label">هونرمندووݩ آلبوم</string>
+    <string name="genres_label">ژانرا</string>
+    <string name="folders_label">دوبلگه یل</string>
+    <string name="history_label">ویرگار</string>
+    <string name="play_info">دووسمندیا پشک</string>
 </resources>
