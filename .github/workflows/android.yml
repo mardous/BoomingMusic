@@ -2,9 +2,27 @@ name: Android CI
 
 on:
   push:
-    branches: [ "master", "stable" ]
+    branches: [ "master" ]
+    paths-ignore:
+      - ".github/**"
+      - "!.github/workflows/**"
+      - ".idea/"
+      - "assets/"
+      - "metadata/"
+      - '.gitignore'
+      - "*.md"
+      - "LICENSE.txt"
   pull_request:
-    branches: [ "master", "stable" ]
+    branches: [ "master" ]
+    paths-ignore:
+      - ".github/**"
+      - "!.github/workflows/**"
+      - ".idea/"
+      - "assets/"
+      - "metadata/"
+      - '.gitignore'
+      - "*.md"
+      - "LICENSE.txt"
 
 jobs:
   check:
@@ -24,6 +42,7 @@ jobs:
         run: ./gradlew lint
 
   build:
+    needs: check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
@@ -37,11 +56,51 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./gradlew assemble
+      if: github.event_name != 'pull_request'
+      run: ./gradlew assembleRelease
+      env:
+        RELEASE_TYPE: "CI"
+
+    - name: Build with Gradle for pull request
+      if: github.event_name == 'pull_request'
+      run: ./gradlew assembleDebug
+
+    - name: Create Changelog
+      id: changelog
+      if: github.event_name != 'pull_request'
+      uses: actions/github-script@v9
+      env:
+        COMMITS: ${{ toJSON(github.event.commits) }}
+      with:
+        result-encoding: string
+        script: |
+          const commits = JSON.parse(process.env.COMMITS);
+
+          return commits
+            .map(commit => `- ${commit.message.split("\n")[0]}`)
+            .join("\n");
+
+    - name: Send files to Telegram
+      if: github.event_name != 'pull_request'
+      uses: xz-dev/TelegramFileUploader@v1
+      with:
+        to-who: ${{ secrets.TG_CHAT_ID }}
+        message: |
+          🚀 **New CI build available!**
+
+          📋 **Changelog:**
+          ${{ env.CHANGELOG }}
+        files: |
+          app/build/outputs/apk/normal/release/BoomingMusic-*-universal.apk
+      env:
+        CHANGELOG: ${{ steps.changelog.outputs.result }}
+        API_ID: ${{ secrets.TG_API_ID }}
+        API_HASH: ${{ secrets.TG_API_HASH }}
+        BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
 
     - name: Upload PR artifacts
       if: github.event_name == 'pull_request'
       uses: actions/upload-artifact@v7
       with:
         name: release-apk
-        path: app/build/outputs/apk/*/release/BoomingMusic-*.apk
+        path: app/build/outputs/apk/*/BoomingMusic-*.apk

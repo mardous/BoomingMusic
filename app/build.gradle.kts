@@ -200,6 +200,20 @@ android {
 
 androidComponents {
     onVariants { variant ->
+        val gitHash = runGitCommand("git rev-parse --short=7 HEAD")
+
+        val isCI = System.getenv("RELEASE_TYPE") == "CI"
+        if (isCI && variant.buildType == "release" && gitHash.isNotEmpty()) {
+            variant.outputs.forEach { output ->
+                val currentVersionName = output.versionName.get().substringBefore("-")
+                output.versionName.set("$currentVersionName.$gitHash")
+            }
+        }
+
+        variant.buildConfigFields?.putAll(
+            mapOf("IS_CI_BUILD" to BuildConfigField("boolean", isCI, null))
+        )
+
         val flavorProps = loadFlavorProperties(variant.flavorName)
         flavorProps.forEach { (key, value) ->
             variant.buildConfigFields?.put(
@@ -246,27 +260,6 @@ kotlin {
     }
     jvmToolchain(21)
 }
-
-fun getProperties(fileName: String): Properties? {
-    val file = rootProject.file(fileName)
-    return if (file.exists()) {
-        Properties().also { properties ->
-            file.inputStream().use { properties.load(it) }
-        }
-    } else null
-}
-
-fun loadFlavorProperties(flavorName: String?): Properties {
-    val props = Properties()
-    getProperties("properties/base.properties")?.let { props.putAll(it) }
-    if (!flavorName.isNullOrEmpty()) {
-        getProperties("properties/$flavorName.properties")?.let { props.putAll(it) }
-    }
-    return props
-}
-
-fun Properties.property(key: String) =
-    this.getProperty(key) ?: "$key missing"
 
 dependencies {
     implementation(libs.material.components)
@@ -327,4 +320,35 @@ dependencies {
     implementation(libs.versioncompare)
     implementation(libs.commons.text)
     implementation(libs.juniversalchardet)
+}
+
+fun getProperties(fileName: String): Properties? {
+    val file = rootProject.file(fileName)
+    return if (file.exists()) {
+        Properties().also { properties ->
+            file.inputStream().use { properties.load(it) }
+        }
+    } else null
+}
+
+fun loadFlavorProperties(flavorName: String?): Properties {
+    val props = Properties()
+    getProperties("properties/base.properties")?.let { props.putAll(it) }
+    if (!flavorName.isNullOrEmpty()) {
+        getProperties("properties/$flavorName.properties")?.let { props.putAll(it) }
+    }
+    return props
+}
+
+fun Properties.property(key: String) =
+    this.getProperty(key) ?: "$key missing"
+
+fun runGitCommand(command: String): String {
+    return try {
+        providers.exec {
+            commandLine(command.split(" "))
+        }.standardOutput.asText.get().trim()
+    } catch (e: Exception) {
+        ""
+    }
 }
