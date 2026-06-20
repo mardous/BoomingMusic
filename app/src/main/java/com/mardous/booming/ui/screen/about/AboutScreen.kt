@@ -68,6 +68,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import coil3.compose.AsyncImage
 import com.mardous.booming.App
+import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
 import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
@@ -76,7 +77,6 @@ import com.mardous.booming.extensions.toChooser
 import com.mardous.booming.extensions.tryStartActivity
 import com.mardous.booming.ui.component.compose.ActionButton
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
-import com.mardous.booming.ui.component.compose.ShapedText
 import com.mardous.booming.util.Constants.AUTHOR_GITHUB_URL
 import com.mardous.booming.util.Constants.COMMUNITY_LINK
 import com.mardous.booming.util.Constants.DONATION_LINK
@@ -239,14 +239,32 @@ private fun AboutHeader(
                 fontWeight = FontWeight.Bold,
                 maxLines = 1
             )
-            Spacer(modifier = Modifier.height(4.dp))
-            ShapedText(
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
                 text = version,
-                style = MaterialTheme.typography.bodySmall.copy(
-                    fontWeight = FontWeight.SemiBold
-                ),
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.secondary
             )
+            if (BuildConfig.IS_CI_BUILD) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_construction_24dp),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.secondary,
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Text(
+                        text = "CI build",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.secondary,
+                        maxLines = 1
+                    )
+                }
+            }
         }
 
         Row(modifier = Modifier.fillMaxWidth()) {
