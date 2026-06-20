@@ -17,7 +17,6 @@
 
 package com.mardous.booming.ui.component.compose.lyrics
 
-import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
@@ -39,8 +38,6 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.drawscope.scale
-import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextMeasurer
@@ -50,13 +47,7 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
-import com.mardous.booming.extensions.utilities.isArabic
 import com.mardous.booming.extensions.utilities.isRtl
-import kotlin.math.pow
-
-private const val FixedSimpleAnimationDurationMs = 700f
-private const val MaxSimpleFloatOffsetY = 1.5f
-private val SimpleFloatEasing = CubicBezierEasing(0.0f, 0.0f, 0.2f, 1.0f)
 
 private val LayerPaint = Paint()
 
@@ -169,21 +160,8 @@ private fun measureSyllablesAndDetermineAnimation(
     spaceWidth: Float
 ): List<SyllableLayout> {
     val words = groupIntoWords(syllables)
-    val fastCharAnimationThresholdMs = 200f
 
     return words.flatMapIndexed { wordIndex, word ->
-        val wordContent = word.joinToString("") { it.content }
-        val wordDuration = if (word.isNotEmpty()) word.last().endMillis - word.first().startMillis else 0L
-        val perCharDuration = if (wordContent.isNotEmpty() && wordDuration > 0) {
-            wordDuration.toFloat() / wordContent.length
-        } else {
-            0f
-        }
-
-        val useAwesomeAnimation =
-            perCharDuration > fastCharAnimationThresholdMs && wordDuration >= 1000L
-                    && !wordContent.shouldUseSimpleAnimation()
-
         word.map { syllable ->
             val layoutResult = textMeasurer.measure(syllable.content, style)
 
@@ -196,28 +174,11 @@ private fun measureSyllablesAndDetermineAnimation(
                 }
             }
 
-            val finalWidth = layoutWidth
-
-            val (charLayouts, charBounds) = if (useAwesomeAnimation) {
-                val layouts = syllable.content.map { char ->
-                    textMeasurer.measure(char.toString(), style)
-                }
-                val bounds = syllable.content.indices.map { index ->
-                    layoutResult.getBoundingBox(index)
-                }
-                layouts to bounds
-            } else {
-                null to null
-            }
-
             SyllableLayout(
                 word = syllable,
                 textLayoutResult = layoutResult,
                 wordId = wordIndex,
-                useAwesomeAnimation = useAwesomeAnimation,
-                width = finalWidth,
-                charLayouts = charLayouts,
-                charOriginalBounds = charBounds,
+                width = layoutWidth,
                 firstBaseline = layoutResult.firstBaseline
             )
         }
@@ -293,58 +254,6 @@ private fun calculateGreedyWrappedLines(
     return lines
 }
 
-private fun calculateBalancedLines(
-    syllableLayouts: List<SyllableLayout>,
-    availableWidthPx: Float,
-    textMeasurer: TextMeasurer,
-    style: TextStyle
-): List<WrappedLine> {
-    if (syllableLayouts.isEmpty()) return emptyList()
-
-    val n = syllableLayouts.size
-    val costs = DoubleArray(n + 1) { Double.POSITIVE_INFINITY }
-    val breaks = IntArray(n + 1)
-    costs[0] = 0.0
-
-    for (i in 1..n) {
-        var currentLineWidth = 0f
-        for (j in i downTo 1) {
-            if (j > 1 && syllableLayouts[j - 2].wordId == syllableLayouts[j - 1].wordId) {
-                currentLineWidth += syllableLayouts[j - 1].width
-                if (currentLineWidth > availableWidthPx) break
-                continue
-            }
-
-            currentLineWidth += syllableLayouts[j - 1].width
-
-            if (currentLineWidth > availableWidthPx) break
-
-            val badness = (availableWidthPx - currentLineWidth).toDouble().pow(2)
-
-            if (costs[j - 1] != Double.POSITIVE_INFINITY && costs[j - 1] + badness < costs[i]) {
-                costs[i] = costs[j - 1] + badness
-                breaks[i] = j - 1
-            }
-        }
-    }
-
-    if (costs[n] == Double.POSITIVE_INFINITY) {
-        return calculateGreedyWrappedLines(syllableLayouts, availableWidthPx, textMeasurer, style)
-    }
-
-    val lines = mutableListOf<WrappedLine>()
-    var currentIndex = n
-    while (currentIndex > 0) {
-        val startIndex = breaks[currentIndex]
-        val lineSyllables = syllableLayouts.subList(startIndex, currentIndex)
-        val trimmedLine = trimDisplayLineTrailingSpaces(lineSyllables, textMeasurer, style)
-        lines.add(0, trimmedLine)
-        currentIndex = startIndex
-    }
-
-    return lines
-}
-
 private fun trimDisplayLineTrailingSpaces(
     displayLineSyllables: List<SyllableLayout>, textMeasurer: TextMeasurer, style: TextStyle
 ): WrappedLine {
@@ -393,9 +302,7 @@ private fun calculateStaticLineLayout(
     lineHeight: Float,
     isRtl: Boolean
 ): List<List<SyllableLayout>> {
-    val layoutsByWord = mutableMapOf<Int, MutableList<SyllableLayout>>()
-
-    val positionedLines = wrappedLines.mapIndexed { lineIndex, wrappedLine ->
+    return wrappedLines.mapIndexed { lineIndex, wrappedLine ->
         val maxBaselineInLine = wrappedLine.syllables.maxOfOrNull { it.firstBaseline } ?: 0f
         val rowTopY = lineIndex * lineHeight
 
@@ -418,8 +325,6 @@ private fun calculateStaticLineLayout(
             val verticalOffset = maxBaselineInLine - initialLayout.firstBaseline
             val positionY = rowTopY + verticalOffset
             val positionedLayout = initialLayout.copy(position = Offset(positionX, positionY))
-            layoutsByWord.getOrPut(positionedLayout.wordId) { mutableListOf() }
-                .add(positionedLayout)
 
             if (isRtl) {
                 currentX -= positionedLayout.width
@@ -428,55 +333,6 @@ private fun calculateStaticLineLayout(
             }
 
             positionedLayout
-        }
-    }
-
-    val animInfoByWord = mutableMapOf<Int, WordAnimationInfo>()
-    val charOffsetsBySyllable = mutableMapOf<SyllableLayout, Int>()
-
-    layoutsByWord.forEach { (wordId, layouts) ->
-        if (layouts.first().useAwesomeAnimation) {
-            val wordStartTime = layouts.minOf { it.word.startMillis }
-            val wordEndTime = layouts.maxOf { it.word.endMillis }
-            val wordContent = layouts.joinToString("") { it.word.content }
-            val wordDuration = wordEndTime - wordStartTime
-
-            val fastCharAnimationThresholdMs = 200f
-            val numCharsInWord = wordContent.length
-            val animationIntensityBase =
-                ((wordDuration.toFloat() - fastCharAnimationThresholdMs * numCharsInWord) / 1000f)
-
-            val dipAndRise = DipAndRise(dip = (0.5 * animationIntensityBase.toDouble()).coerceIn(0.0, 0.5))
-            val swell = Swell((0.1 * animationIntensityBase.toDouble()).coerceIn(0.0, 0.1))
-
-            animInfoByWord[wordId] = WordAnimationInfo(
-                wordStartTime = wordStartTime,
-                wordEndTime = wordEndTime,
-                wordContent = wordContent,
-                wordDuration = wordDuration,
-                dipAndRise = dipAndRise,
-                swell = swell
-            )
-            var runningCharOffset = 0
-            layouts.forEach { layout ->
-                charOffsetsBySyllable[layout] = runningCharOffset
-                runningCharOffset += layout.word.content.length
-            }
-        }
-    }
-
-    return positionedLines.map { line ->
-        line.map { positionedLayout ->
-            val wordLayouts = layoutsByWord.getValue(positionedLayout.wordId)
-            val minX = wordLayouts.minOf { it.position.x }
-            val maxX = wordLayouts.maxOf { it.position.x + it.width }
-            val bottomY = wordLayouts.maxOf { it.position.y + it.textLayoutResult.size.height }
-
-            positionedLayout.copy(
-                wordPivot = Offset(x = (minX + maxX) / 2f, y = bottomY),
-                wordAnimInfo = animInfoByWord[positionedLayout.wordId],
-                charOffsetInWord = charOffsetsBySyllable[positionedLayout] ?: 0
-            )
         }
     }
 }
@@ -535,7 +391,6 @@ private fun DrawScope.drawLyricsLine(
             drawRowText(
                 rowLayouts = rowData.rowLayouts,
                 drawColor = contentColor.copy(alpha = animatedAlpha),
-                currentTimeMs = currentTimeMs,
                 shadowEffect = false
             )
             return@forEach
@@ -545,7 +400,6 @@ private fun DrawScope.drawLyricsLine(
             drawRowText(
                 rowLayouts = rowData.rowLayouts,
                 drawColor = contentColor,
-                currentTimeMs = currentTimeMs,
                 shadowEffect = shadowEffect && effectivelySelected
             )
             return@forEach
@@ -558,7 +412,6 @@ private fun DrawScope.drawLyricsLine(
             drawRowText(
                 rowLayouts = rowData.rowLayouts,
                 drawColor = contentColor,
-                currentTimeMs = currentTimeMs,
                 shadowEffect = shadowEffect && effectivelySelected
             )
 
@@ -584,101 +437,21 @@ private fun DrawScope.drawLyricsLine(
 private fun DrawScope.drawRowText(
     rowLayouts: List<SyllableLayout>,
     drawColor: Color,
-    currentTimeMs: Long,
     shadowEffect: Boolean
 ) {
-    rowLayouts.forEachIndexed { index, syllableLayout ->
-        val wordAnimInfo = syllableLayout.wordAnimInfo
+    rowLayouts.forEach { syllableLayout ->
+        val shadow = if (shadowEffect) Shadow(
+            color = drawColor.copy(alpha = 0.4f),
+            offset = Offset(0f, 2f * density),
+            blurRadius = 4f * density
+        ) else Shadow.None
 
-        if (wordAnimInfo != null) {
-            val awesomeDuration = wordAnimInfo.wordDuration * 0.8f
-
-            val charLayouts = syllableLayout.charLayouts ?: emptyList()
-            val charBounds = syllableLayout.charOriginalBounds ?: emptyList()
-
-            val numCharsInWord = wordAnimInfo.wordContent.length
-            val earliestStartTime = wordAnimInfo.wordStartTime
-            val latestStartTime = wordAnimInfo.wordEndTime - awesomeDuration
-            val dipAndRise = wordAnimInfo.dipAndRise
-            val swell = wordAnimInfo.swell
-
-            syllableLayout.word.content.forEachIndexed { charIndex, _ ->
-                val singleCharLayoutResult =
-                    charLayouts.getOrNull(charIndex) ?: return@forEachIndexed
-                val charBox = charBounds.getOrNull(charIndex) ?: return@forEachIndexed
-
-                val absoluteCharIndex = syllableLayout.charOffsetInWord + charIndex
-                val charRatio =
-                    if (numCharsInWord > 1) absoluteCharIndex.toFloat() / (numCharsInWord - 1) else 0.5f
-                val awesomeStartTime =
-                    (earliestStartTime + (latestStartTime - earliestStartTime) * charRatio).toLong()
-                val awesomeProgress =
-                    ((currentTimeMs - awesomeStartTime).toFloat() / awesomeDuration).coerceIn(
-                        0f, 1f
-                    )
-
-                val floatOffset = 1.5f * dipAndRise.transform(1.0f - awesomeProgress) * density
-                val scale = 1f + swell.transform(awesomeProgress)
-
-                val centeredOffsetX = (charBox.width - singleCharLayoutResult.size.width) / 2f
-                val xPos = syllableLayout.position.x + charBox.left + centeredOffsetX
-                val yPos = syllableLayout.position.y + charBox.top + floatOffset
-
-                val bounceVal = Bounce.transform(awesomeProgress).coerceAtLeast(0f)
-                val shadow = if (shadowEffect) Shadow(
-                    color = drawColor.copy(alpha = 0.4f + (0.2f * bounceVal)),
-                    offset = Offset(0f, (2f + 2f * bounceVal) * density),
-                    blurRadius = (4f + 6f * bounceVal) * density
-                ) else Shadow.None
-
-                withTransform({ scale(scale = scale, pivot = syllableLayout.wordPivot) }) {
-                    drawText(
-                        textLayoutResult = singleCharLayoutResult,
-                        color = drawColor,
-                        topLeft = Offset(xPos, yPos),
-                        shadow = shadow
-                    )
-                }
-            }
-        } else {
-            val driverLayout = if (syllableLayout.word.content.trim().isPunctuation()) {
-                var searchIndex = index - 1
-                while (searchIndex >= 0) {
-                    val candidate = rowLayouts[searchIndex]
-                    if (!candidate.word.content.trim().isPunctuation()) {
-                        break
-                    }
-                    searchIndex--
-                }
-                if (searchIndex < 0) syllableLayout else rowLayouts[searchIndex]
-            } else {
-                syllableLayout
-            }
-
-            val timeSinceStart = currentTimeMs - driverLayout.word.startMillis
-            val animationProgress =
-                (timeSinceStart.toFloat() / FixedSimpleAnimationDurationMs).coerceIn(0f, 1f)
-
-            val floatCurveValue = SimpleFloatEasing.transform(1f - animationProgress)
-            val floatOffset = MaxSimpleFloatOffsetY * floatCurveValue * density
-
-            val finalPosition = syllableLayout.position.copy(
-                y = syllableLayout.position.y + floatOffset
-            )
-
-            val shadow = if (shadowEffect) Shadow(
-                color = drawColor.copy(alpha = 0.4f),
-                offset = Offset(0f, 2f * density),
-                blurRadius = 4f * density
-            ) else Shadow.None
-
-            drawText(
-                textLayoutResult = syllableLayout.textLayoutResult,
-                color = drawColor,
-                topLeft = finalPosition,
-                shadow = shadow
-            )
-        }
+        drawText(
+            textLayoutResult = syllableLayout.textLayoutResult,
+            color = drawColor,
+            topLeft = syllableLayout.position,
+            shadow = shadow
+        )
     }
 }
 
@@ -772,25 +545,9 @@ internal data class SyllableLayout(
     val word: SyncedLyrics.Word,
     val textLayoutResult: TextLayoutResult,
     val wordId: Int,
-    val useAwesomeAnimation: Boolean,
     val width: Float,
     val position: Offset = Offset.Zero,
-    val wordPivot: Offset = Offset.Zero,
-    val wordAnimInfo: WordAnimationInfo? = null,
-    val charOffsetInWord: Int = 0,
-    val charLayouts: List<TextLayoutResult>? = null,
-    val charOriginalBounds: List<Rect>? = null,
     val firstBaseline: Float = 0f
-)
-
-@Stable
-internal data class WordAnimationInfo(
-    val wordStartTime: Long,
-    val wordEndTime: Long,
-    val wordContent: String,
-    val wordDuration: Long = wordEndTime - wordStartTime,
-    val dipAndRise: NewtonPolynomialInterpolationEasing,
-    val swell: NewtonPolynomialInterpolationEasing
 )
 
 @Stable
@@ -809,116 +566,3 @@ internal data class RowRenderData(
     val lastWordEnd: Long,
     val layerBounds: Rect
 )
-
-internal class NewtonPolynomialInterpolationEasing(points: List<Pair<Double, Double>>) : androidx.compose.animation.core.Easing {
-    constructor(vararg points: Pair<Double, Double>) : this(points.toList())
-
-    private val dividedDifferences: List<Double>
-    private val xValues: List<Double>
-
-    init {
-        require(points.map { it.first }.toSet().size == points.size) {
-            "All x-coordinates of the points must be unique."
-        }
-
-        val n = points.size
-        xValues = points.map { it.first }
-
-        val table = Array(n) { DoubleArray(n) }
-
-        for (i in 0 until n) {
-            table[i][0] = points[i].second
-        }
-
-        for (j in 1 until n) {
-            for (i in j until n) {
-                table[i][j] = (table[i][j - 1] - table[i - 1][j - 1]) / (xValues[i] - xValues[i - j])
-            }
-        }
-
-        dividedDifferences = List(n) { i -> table[i][i] }
-    }
-
-    override fun transform(fraction: Float): Float {
-        val x = fraction.toDouble()
-        val n = xValues.size - 1
-        var result = dividedDifferences[n]
-
-        for (i in (n - 1) downTo 0) {
-            result = result * (x - xValues[i]) + dividedDifferences[i]
-        }
-        return result.toFloat()
-    }
-}
-
-private fun DipAndRise(
-    dip: Double = 0.5,
-    rose: Double = 1.0
-): NewtonPolynomialInterpolationEasing {
-    return NewtonPolynomialInterpolationEasing(
-        0.0 to 0.0,
-        0.5 to -dip,
-        1.0 to rose
-    )
-}
-
-private fun Swell(
-    swell: Double = 0.1,
-): NewtonPolynomialInterpolationEasing {
-    return NewtonPolynomialInterpolationEasing(
-        0.0 to 0.0,
-        0.5 to swell,
-        1.0 to 0.0
-    )
-}
-
-private val Bounce = NewtonPolynomialInterpolationEasing(
-    0.0 to 0.0,
-    0.7 to 1.0,
-    1.0 to 0.0
-)
-
-private fun Char.isCjk(): Boolean {
-    val block = Character.UnicodeBlock.of(this) ?: return false
-    return block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS ||
-            block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A ||
-            block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B ||
-            block == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS ||
-            block == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT
-}
-
-private fun Char.isDevanagari(): Boolean {
-    val block = Character.UnicodeBlock.of(this) ?: return false
-    return block == Character.UnicodeBlock.DEVANAGARI ||
-            block == Character.UnicodeBlock.DEVANAGARI_EXTENDED
-}
-
-private fun String.isPureCjk(): Boolean {
-    val cleanedStr = this.filter { it != ' ' && it != ',' && it != '\n' && it != '\r' }
-    if (cleanedStr.isEmpty()) {
-        return false
-    }
-    return cleanedStr.all { it.isCjk() }
-}
-
-private fun String.isPunctuation(): Boolean {
-    return isNotEmpty() && all { char ->
-        char.isWhitespace() ||
-                char in ".,!?;:\"'()[]{}…—–-、。，！？；：\"\"''（）【】《》～·" ||
-                Character.getType(char) in setOf(
-            Character.CONNECTOR_PUNCTUATION.toInt(),
-            Character.DASH_PUNCTUATION.toInt(),
-            Character.END_PUNCTUATION.toInt(),
-            Character.FINAL_QUOTE_PUNCTUATION.toInt(),
-            Character.INITIAL_QUOTE_PUNCTUATION.toInt(),
-            Character.OTHER_PUNCTUATION.toInt(),
-            Character.START_PUNCTUATION.toInt()
-        )
-    }
-}
-
-private fun String.shouldUseSimpleAnimation(): Boolean {
-    val cleanedStr = this.filter { !it.isWhitespace() && !it.toString().isPunctuation() }
-    if (cleanedStr.isEmpty()) return false
-    return cleanedStr.isPureCjk() || cleanedStr.any { it.isArabic() || it.isDevanagari() }
-}
