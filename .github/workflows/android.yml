@@ -80,6 +80,20 @@ jobs:
             .map(commit => `- ${commit.message.split("\n")[0]}`)
             .join("\n");
 
+    - name: Find APK (CI build)
+      if: github.event_name != 'pull_request'
+      run: |
+        APK_PATH=$(find app/build/outputs/apk/normal/release -name '*-universal.apk' -o -name '*.apk' | head -n 1)
+        echo "APK_FILE=$APK_PATH" >> $GITHUB_ENV
+        echo "APK_FILE_NAME=$(basename $APK_PATH .apk)" >> $GITHUB_ENV
+
+    - name: Find APK (PR)
+      if: github.event_name == 'pull_request'
+      run: |
+        APK_PATH=$(find app/build/outputs/apk/normal/debug -name '*-universal.apk' | head -n 1)
+        echo "APK_FILE=$APK_PATH" >> $GITHUB_ENV
+        echo "APK_FILE_NAME=$(basename $APK_PATH .apk)" >> $GITHUB_ENV
+
     - name: Send files to Telegram
       if: github.event_name != 'pull_request'
       uses: xz-dev/TelegramFileUploader@v1
@@ -91,16 +105,24 @@ jobs:
           📋 **Changelog:**
           ${{ env.CHANGELOG }}
         files: |
-          app/build/outputs/apk/normal/release/BoomingMusic-*-universal.apk
+          ${{ env.APK_FILE }}
       env:
         CHANGELOG: ${{ steps.changelog.outputs.result }}
         API_ID: ${{ secrets.TG_API_ID }}
         API_HASH: ${{ secrets.TG_API_HASH }}
         BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
 
-    - name: Upload PR artifacts
+    - name: Upload apk (CI build)
+      if: github.event_name != 'pull_request'
+      uses: actions/upload-artifact@v7
+      with:
+        name: ${{ env.APK_FILE_NAME }}
+        path: ${{ env.APK_FILE }}
+        archive: false
+
+    - name: Upload apk (PR)
       if: github.event_name == 'pull_request'
       uses: actions/upload-artifact@v7
       with:
-        name: release-apk
-        path: app/build/outputs/apk/*/BoomingMusic-*.apk
+        name: ${{ env.APK_FILE_NAME }}
+        path: ${{ env.APK_FILE }}
