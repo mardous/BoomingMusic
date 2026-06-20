@@ -53,6 +53,7 @@ jobs:
         cache: gradle
 
     - name: Create files for signing
+      if: github.event_name != 'pull_request'
       env:
         SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
         SIGNING_PROPERTIES: ${{ secrets.SIGNING_PROPERTIES }}
