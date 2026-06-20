@@ -169,10 +169,11 @@ android {
 
             // AppBundle tasks usually contain "bundle" in their name
             //noinspection WrongGradleMethod
+            val isCI = System.getenv("RELEASE_TYPE") == "CI"
             val isBuildingBundle = gradle.startParameter.taskNames.any { it.lowercase().contains("bundle") }
 
             // Disable split abis when building app bundle
-            isEnable = !isBuildingBundle
+            isEnable = !isCI && !isBuildingBundle
 
             reset()
             include("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
