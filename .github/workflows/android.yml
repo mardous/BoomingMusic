@@ -52,6 +52,14 @@ jobs:
         distribution: 'zulu'
         cache: gradle
 
+    - name: Create files for signing
+      env:
+        SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+        SIGNING_PROPERTIES: ${{ secrets.SIGNING_PROPERTIES }}
+      run: |
+        echo $SIGNING_KEY | base64 -di > ./booming_keystore.jks
+        echo $SIGNING_PROPERTIES | base64 -di > ./keystore.properties
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
@@ -100,8 +108,6 @@ jobs:
       with:
         to-who: ${{ secrets.TG_CHAT_ID }}
         message: |
-          🚀 **New CI build available!**
-
           📋 **Changelog:**
           ${{ env.CHANGELOG }}
         files: |

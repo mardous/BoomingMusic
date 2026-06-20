@@ -148,7 +148,6 @@ android {
         debug {
             applicationIdSuffix = ".debug"
             versionNameSuffix = " DEBUG"
-            signingConfig = releaseSigning
         }
     }
     buildFeatures {
