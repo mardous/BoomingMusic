@@ -278,7 +278,7 @@
     <string name="length">Uzunluk</string>
     <string name="label_last_modified">Son değiştirilme</string>
     <string name="label_channels">Kanallar</string>
-    <string name="label_variable_bitrate">Değişken Bit Hızı</string>
+    <string name="label_variable_bitrate">D[eğişken] B[it] H[ızı] DBH</string>
     <string name="label_loss_less">Kayıpsız</string>
     <string name="label_bit_rate">Bit hızı</string>
     <string name="label_sampling_rate">Örnekleme hızı</string>
@@ -332,18 +332,18 @@
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d şarkı</item>
-        <item quantity="other">%d şarkı</item>
+        <item quantity="other">%d şarkılar</item>
     </plurals>
     <plurals name="x_albums">
         <item quantity="one">%d albüm</item>
-        <item quantity="other">%d albüm</item>
+        <item quantity="other">%d albümler</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d sanatçı</item>
-        <item quantity="other">%d sanatçı</item>
+        <item quantity="other">%d sanatçılar</item>
     </plurals>
     <plurals name="x_times">
-        <item quantity="one">%d kez</item>
+        <item quantity="one">%d\'uncu kez</item>
         <item quantity="other">%d kez</item>
     </plurals>
     <plurals name="x_plays">
@@ -845,4 +845,13 @@
     <string name="app_widget_card">Kart</string>
     <string name="app_widget_card_desc">Minimalist ve basitleştirilmiş tarz</string>
     <string name="app_widget_full">Tam</string>
+    <string name="app_widget_responsive">Duyarlı</string>
+    <string name="select_playlists_title">Oynatma listelerini seç</string>
+    <string name="no_playlists_that_match_x">\"%#\" adında bir oynatma listeniz yok.</string>
+    <string name="songs_added_to_playlists">Oynatma listelerine şarkılar eklendi.</string>
+    <string name="no_playlists_label">Oynatma listesi yok</string>
+    <string name="channel_surround_7_1">7.1 Uzamsal</string>
+    <string name="channel_surround_9_1">9.1 Uzamsal</string>
+    <string name="channel_surround_11_1">11.1 Uzamsal</string>
+    <string name="channel_surround_13_1">13.1 Uzamsal</string>
 </resources>
