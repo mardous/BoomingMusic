@@ -147,7 +147,7 @@ android {
         }
         debug {
             applicationIdSuffix = ".debug"
-            versionNameSuffix = " DEBUG"
+            versionNameSuffix = ".debug"
         }
     }
     buildFeatures {
