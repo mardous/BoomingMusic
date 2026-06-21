@@ -13,7 +13,7 @@ body:
     attributes:
       label: App version
       description: What version of Booming Music are you using?
-      placeholder: e.g. v1.0.0-beta1
+      placeholder: e.g. v1.3.0
     validations:
       required: true
 
@@ -44,5 +44,5 @@ body:
       label: Checklist
       options:
         - label: I have checked if this feature request already exists
-        - label: I am using the latest version available
+        - label: I have checked that this feature is not already implemented in the latest CI build
         - label: I agree to follow this project's [Code of Conduct](CODE_OF_CONDUCT.md)
