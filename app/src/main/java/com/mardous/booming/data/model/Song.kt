@@ -20,12 +20,13 @@ package com.mardous.booming.data.model
 import android.content.ContentUris
 import android.net.Uri
 import android.os.Parcelable
-import androidx.core.net.toUri
+import android.provider.MediaStore
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.data.local.repository.RealSongRepository.Companion.getAudioContentUri
+import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.media.songInfo
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
@@ -48,14 +49,22 @@ open class Song(
     open val artistId: Long,
     open val artistName: String,
     open val albumArtistName: String?,
-    open val genreName: String?
+    open val genreName: String?,
+    open val volumeName: String? = null
 ) : Parcelable, FileSystemItem {
 
     val uri: Uri
-        get() = ContentUris.withAppendedId(getAudioContentUri(), id)
-
-    val albumCoverUri: Uri
-        get() = ContentUris.withAppendedId("content://media/external/audio/albumart".toUri(), albumId)
+        get() = if (hasQ()) {
+            volumeName.let { volume ->
+                if (volume != null && volume != MediaStore.VOLUME_EXTERNAL) {
+                    ContentUris.withAppendedId(MediaStore.Audio.Media.getContentUri(volume), id)
+                } else {
+                    ContentUris.withAppendedId(getAudioContentUri(), id)
+                }
+            }
+        } else {
+            ContentUris.withAppendedId(getAudioContentUri(), id)
+        }
 
     @IgnoredOnParcel
     val dateModified by lazy { Date(rawDateModified * 1000) }
@@ -87,7 +96,8 @@ open class Song(
         song.artistId,
         song.artistName,
         song.albumArtistName,
-        song.genreName
+        song.genreName,
+        song.volumeName
     )
 
     fun toMediaItem(itemId: String = id.toString()): MediaItem =
@@ -134,7 +144,8 @@ open class Song(
         if (data != song.data) return false
         if (title != song.title) return false
         if (albumArtistName != song.albumArtistName) return false
-        return genreName == song.genreName
+        if (genreName != song.genreName) return false
+        return volumeName == song.volumeName
     }
 
     override fun hashCode(): Int {
@@ -153,7 +164,8 @@ open class Song(
             artistId,
             artistName,
             albumArtistName,
-            genreName
+            genreName,
+            volumeName
         )
     }
 
@@ -174,10 +186,11 @@ open class Song(
                 ", artistName='" + artistName + '\'' +
                 ", albumArtistName='" + albumArtistName + '\'' +
                 ", genreName='" + genreName + '\'' +
+                ", volumeName='" + volumeName + '\'' +
                 '}'
     }
 
     companion object {
-        val emptySong = Song(-1, "", "", -1, -1, -1, -1, -1, -1, -1, "", -1, "", "", "")
+        val emptySong = Song(-1, "", "", -1, -1, -1, -1, -1, -1, -1, "", -1, "", "", "", null)
     }
 }

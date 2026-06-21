@@ -313,6 +313,7 @@ class RealSongRepository(
         val artistName = cursor.getStringSafe(AudioColumns.ARTIST) ?: ""
         val albumArtistName = cursor.getStringSafe(AudioColumns.ALBUM_ARTIST)
         val genreName = cursor.getStringSafe(AudioColumns.GENRE)
+        val volumeName = cursor.getStringSafe(AudioColumns.VOLUME_NAME)
         return Song(
             id,
             data,
@@ -328,7 +329,8 @@ class RealSongRepository(
             artistId,
             artistName,
             albumArtistName,
-            genreName
+            genreName,
+            volumeName
         )
     }
 
@@ -364,6 +366,9 @@ class RealSongRepository(
             var baseProjection = BASE_PROJECTION
             if (hasR()) {
                 baseProjection += AudioColumns.GENRE
+            }
+            if (hasQ()) {
+                baseProjection += AudioColumns.VOLUME_NAME
             }
             if (idColumn != AudioColumns._ID) {
                 return baseProjection.copyOf().apply { set(0, idColumn) }

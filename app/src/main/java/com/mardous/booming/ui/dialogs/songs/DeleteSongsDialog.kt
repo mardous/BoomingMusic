@@ -92,11 +92,19 @@ class DeleteSongsDialog : DialogFragment(), SAFDialog.SAFResultListener {
                     }
                 }
 
-            val pendingIntent = createDeleteRequest(songs.map { it.uri })
-            deleteResultLauncher.launch(IntentSenderRequest.Builder(pendingIntent.intentSender).build())
-            return MaterialAlertDialogBuilder(requireContext())
-                .setView(R.layout.dialog_deleting_songs)
-                .create()
+            try {
+                val pendingIntent = createDeleteRequest(songs.map { it.uri })
+                deleteResultLauncher.launch(
+                    IntentSenderRequest.Builder(pendingIntent.intentSender).build()
+                )
+                return MaterialAlertDialogBuilder(requireContext())
+                    .setView(R.layout.dialog_deleting_songs)
+                    .create()
+            } catch (t: Throwable) {
+                return MaterialAlertDialogBuilder(requireContext())
+                    .setMessage("Failed to delete songs: ${t.localizedMessage}")
+                    .create()
+            }
         } else {
             val titleRes: Int
             val message: CharSequence
