@@ -854,4 +854,13 @@
     <string name="channel_surround_9_1">9.1 Uzamsal</string>
     <string name="channel_surround_11_1">11.1 Uzamsal</string>
     <string name="channel_surround_13_1">13.1 Uzamsal</string>
+    <string name="app_widget_full_desc">Oyuncu ekranı doğrudan masaüstünüzde</string>
+    <string name="search_playlists">Oynatma listelerini ara</string>
+    <string name="new_playlist_action">Yeni bir çalma listesi oluştururken kullanılır. ( Yeni)</string>
+    <string name="no_playlists_create_new">Yeni bir çalma listesi oluşturmak için \'Yeni\' düğmesine tıklayın</string>
+    <string name="arranger">Düzenleyici</string>
+    <string name="channel_quadraphonic">Kuadrafonik</string>
+    <string name="channel_surround_5_0">5.0 Çevresel Ses</string>
+    <string name="channel_surround_5_1">5.1 Çevresel Ses.</string>
+    <string name="channel_surround_6_1">6.1 Çevresel Ses</string>
 </resources>
