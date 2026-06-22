@@ -945,7 +945,7 @@
     <string name="arranger">Organizador</string>
     <plurals name="x_playlists_selected">
         <item quantity="one">%d playlist seleccionada</item>
-        <item quantity="many">%d playlist seleccionadas</item>
+        <item quantity="many">%d playlist seleccionada</item>
         <item quantity="other">%d playlist seleccionadas</item>
     </plurals>
     <string name="lrc_file_lyrics">LRC</string>
@@ -964,4 +964,8 @@
     <string name="eq_post_gain">Beneficio posterior</string>
     <string name="rg_with_tag">Con etiqueta</string>
     <string name="rg_without_tag">Sin etiqueta</string>
+    <string name="lyrics_karaoke_style_title">Letras al estilo Karaoke</string>
+    <string name="lyrics_karaoke_style_summary">Habilita un efecto al estilo Karaoke para letras sincronizadas palabra-a-palabra. Note que esto es una característica experimental.</string>
+    <string name="lyrics_bold_synced_title">Negrita para letras sincronizadas</string>
+    <string name="lyrics_bold_synced_summary">Exhibe letras sincronizadas en formato negrita.</string>
 </resources>
