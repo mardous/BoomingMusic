@@ -51,9 +51,7 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
     override val networkFeature = NetworkFeature.Lyrics.Lyrically
 
     private val tokenManager = TokenManager()
-    private val json = Json {
-        ignoreUnknownKeys = true
-    }
+    private val json = Json { ignoreUnknownKeys = true }
 
     private val searchHelper = PaxsenixSearchHelper(client, tokenManager, json)
 

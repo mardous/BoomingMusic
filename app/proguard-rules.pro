@@ -77,6 +77,8 @@
 -keep class com.mardous.booming.data.local.room.LyricsEntity { *; }
 -keep class com.mardous.booming.data.remote.deezer.model.** { *; }
 -keep class com.mardous.booming.data.remote.lastfm.model.** { *; }
+-keep class com.mardous.booming.data.remote.listenbrainz.model.** { *; }
+-keep class com.mardous.booming.data.remote.lyrics.model.** { *; }
 -keep class com.mardous.booming.data.local.search.** { *; }
 -keep class com.mardous.booming.data.model.search.** { *; }
 -keep class com.mardous.booming.data.model.replaygain.** { *; }
