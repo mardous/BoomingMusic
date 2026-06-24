@@ -38,6 +38,9 @@ private val arabicBlocks: Set<Character.UnicodeBlock> by lazy {
         }
     }
 }
+
+fun String?.isWhitespace() = this != null && this.length == 1 && this[0] == ' '
+
 fun String.collapseSpaces() = trim().replace(SPACES_REGEX, " ")
 
 fun String.normalize(): String =

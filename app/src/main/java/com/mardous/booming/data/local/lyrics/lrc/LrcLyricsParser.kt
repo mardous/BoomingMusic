@@ -209,6 +209,7 @@ class LrcLyricsParser : LyricsParser {
                             start = 0,
                             end = firstLine.start,
                             content = SyncedLyrics.EmptyContent,
+                            transliteration = null,
                             translation = null,
                             actor = firstLine.actor
                         )

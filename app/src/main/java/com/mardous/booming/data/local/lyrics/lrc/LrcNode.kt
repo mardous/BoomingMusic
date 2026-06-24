@@ -96,6 +96,7 @@ internal class LrcNode(
             end = end,
             durationMillis = (end - start),
             content = getTextContent(),
+            transliteration = null,
             translation = null,
             actor = actor
         )

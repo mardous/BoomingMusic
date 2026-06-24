@@ -2,8 +2,8 @@ package com.mardous.booming.data.local.lyrics.ttml
 
 import android.util.Log
 import com.mardous.booming.data.LyricsParser
-import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.data.model.lyrics.LyricsFile
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import org.xmlpull.v1.XmlPullParserFactory
@@ -75,26 +75,32 @@ class TtmlLyricsParser : LyricsParser {
                                 )
                             }
 
+                            TtmlNode.TAG_TRANSLITERATION -> {
+                                val lang = parser.getAttributeValue(null, "xml:lang")
+                                if (nodeTree.createTransliteration(lang) == null) {
+                                    throw XmlPullParserException("transliteration format isn't valid")
+                                }
+                            }
+
                             TtmlNode.TAG_TRANSLATION -> {
-                                val newTranslation = nodeTree.createNewTranslation(
-                                    type = parser.getAttributeValue(null, "type"),
-                                    language = parser.getAttributeValue(null, "xml:lang")
-                                )
-                                if (newTranslation == null) break
+                                val type = parser.getAttributeValue(null, "type")
+                                if (type != "subtitle") {
+                                    throw XmlPullParserException("unknown translation type: $type")
+                                }
+                                val lang = parser.getAttributeValue(null, "xml:lang")
+                                if (nodeTree.createTranslation(lang) == null) {
+                                    throw XmlPullParserException("translation format isn't valid")
+                                }
                             }
 
                             TtmlNode.TAG_TEXT -> {
-                                val preparedTranslation = nodeTree.prepareTranslation(
-                                    key = parser.getAttributeValue(null, "for")
-                                )
-                                if (!preparedTranslation) break
+                                val key = parser.getAttributeValue(null, "for")
+                                if (!nodeTree.prepareAccompanimentText(key)) break
                             }
 
                             TtmlNode.TAG_BODY -> {
                                 val hasRoot = nodeTree.addRoot(
-                                    TtmlNode.buildBody(
-                                        dur = parser.getTimeAttribute("dur")
-                                    )
+                                    TtmlNode.buildBody(parser.getTimeAttribute("dur"))
                                 )
                                 if (!hasRoot) break
                             }
@@ -157,8 +163,9 @@ class TtmlLyricsParser : LyricsParser {
                             continue
                         }
                         when (name) {
-                            TtmlNode.TAG_TRANSLATION -> if (!nodeTree.closeCurrentTranslation()) break
-                            TtmlNode.TAG_TEXT -> if (!nodeTree.finishTranslation()) break
+                            TtmlNode.TAG_TRANSLITERATION,
+                            TtmlNode.TAG_TRANSLATION -> if (!nodeTree.closeAccompaniment()) break
+                            TtmlNode.TAG_TEXT -> if (!nodeTree.finishAccompanimentText()) break
                             TtmlNode.TAG_BODY -> if (!nodeTree.closeNode(TtmlNode.NODE_BODY)) break
                             TtmlNode.TAG_DIV -> if (!nodeTree.closeNode(TtmlNode.NODE_SECTION)) break
                             TtmlNode.TAG_PARAGRAPH -> if (!nodeTree.closeNode(TtmlNode.NODE_LINE)) break

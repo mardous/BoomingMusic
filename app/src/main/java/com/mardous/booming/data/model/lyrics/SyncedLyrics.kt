@@ -23,6 +23,7 @@ data class SyncedLyrics(
         val end: Long,
         val durationMillis: Long = (end - start),
         val content: TextContent,
+        val transliteration: TextContent?,
         val translation: TextContent?,
         val actor: LyricsActor?
     ) {
@@ -33,10 +34,6 @@ data class SyncedLyrics(
         val isWordSynced = content.isWordSynced
 
         val hasBackgroundVocals = content.hasBackgroundVocals
-
-        val backgroundStart = content.backgroundVocals.firstOrNull()?.startMillis ?: -1
-
-        val backgroundEnd = content.backgroundVocals.lastOrNull()?.endMillis  ?: -1
     }
 
     @Immutable
