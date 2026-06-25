@@ -10,8 +10,6 @@ import androidx.activity.result.contract.ActivityResultContracts.CreateDocument
 import androidx.activity.result.contract.ActivityResultContracts.OpenDocument
 import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -78,7 +76,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -455,7 +452,7 @@ fun EqualizerScreen(
     var changeBandCountState by remember { mutableStateOf<Pair<Int, Boolean>?>(null) }
     val changeBandCountEvent by eqViewModel.changeBandCountEvent.collectAsState(null)
     LaunchedEffect(changeBandCountEvent) {
-        changeBandCountEvent?.let { success ->
+        changeBandCountEvent?.let { (success, _) ->
             if (success) {
                 context.showToast(R.string.band_configuration_changed_successfully)
             } else {
@@ -721,7 +718,11 @@ fun EqualizerScreen(
                                     visible = eqState.enabled && showBandCountSelector
                                 ) {
                                     ButtonGroup(
-                                        onSelected = { changeBandCountState = Pair(it, true) },
+                                        onSelected = { newBandCount ->
+                                            if (newBandCount != eqState.preferredBandCount) {
+                                                changeBandCountState = Pair(newBandCount, true)
+                                            }
+                                        },
                                         buttonItems = availableBandCounts,
                                         buttonStateResolver = { it == eqState.preferredBandCount },
                                         modifier = Modifier.padding(

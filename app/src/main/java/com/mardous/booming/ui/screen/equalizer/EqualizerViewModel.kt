@@ -101,8 +101,8 @@ class EqualizerViewModel(
     private val _deleteResultEvent = Channel<ProfileDeletionResult>(Channel.BUFFERED)
     val deleteResultEvent: Flow<ProfileDeletionResult> = _deleteResultEvent.receiveAsFlow()
 
-    private val _changeBandCountEvent = Channel<Boolean>(Channel.BUFFERED)
-    val changeBandCountEvent: Flow<Boolean> = _changeBandCountEvent.receiveAsFlow()
+    private val _changeBandCountEvent = Channel<Pair<Boolean, Int>>(Channel.BUFFERED)
+    val changeBandCountEvent: Flow<Pair<Boolean, Int>> = _changeBandCountEvent.receiveAsFlow()
 
     fun setEqualizerState(isEnabled: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -153,7 +153,7 @@ class EqualizerViewModel(
     }
 
     fun setBandCount(bandCount: Int) = viewModelScope.launch(Dispatchers.IO) {
-        _changeBandCountEvent.send(equalizerManager.setBandCount(bandCount))
+        _changeBandCountEvent.send(equalizerManager.setBandCount(bandCount) to bandCount)
     }
 
     fun setEqualizerProfile(eqProfile: EqProfile) = viewModelScope.launch(Dispatchers.IO) {
