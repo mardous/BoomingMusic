@@ -500,7 +500,7 @@ private fun LineTextView(
             align = align,
             modifier = modifier
         )
-    } else {
+    } else if (plainText.isNotBlank()) {
         LineSyncedView(
             selectedLine = selectedLine,
             progressiveColoring = progressiveColoring,
