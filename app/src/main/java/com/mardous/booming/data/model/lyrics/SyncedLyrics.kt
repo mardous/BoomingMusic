@@ -13,7 +13,7 @@ data class SyncedLyrics(
     init {
         for (line in lines) {
             require(line.start >= 0) { "startAt in the LyricsLine must >= 0" }
-            require(line.durationMillis >= 0) { "durationMillis in the LyricsLine >= 0" }
+            require(line.duration >= 0) { "durationMillis in the LyricsLine >= 0" }
         }
     }
 
@@ -21,29 +21,29 @@ data class SyncedLyrics(
     data class Line(
         val start: Long,
         val end: Long,
-        val durationMillis: Long = (end - start),
+        val duration: Long = (end - start),
         val content: TextContent,
         val transliteration: TextContent?,
         val translation: TextContent?,
         val actor: LyricsActor?
     ) {
-        val id: Long = 31 * (31 * start + durationMillis) + content.hashCode()
+        val id: Long = 31 * (31 * start + duration) + content.hashCode()
 
         val isEmpty = content.isEmpty
 
         val isWordSynced = content.isWordSynced
 
-        val hasBackgroundVocals = content.hasBackgroundVocals
+        val hasBackgroundVocals = content.hasBackgroundSyllables
     }
 
     @Immutable
     data class Word(
         val content: String,
-        val startMillis: Long,
+        val start: Long,
         val startIndex: Int,
-        val endMillis: Long,
+        val end: Long,
         val endIndex: Int,
-        val durationMillis: Long,
+        val duration: Long,
         val actor: LyricsActor?
     ) {
         val isBackground = actor?.isBackground == true
@@ -54,19 +54,19 @@ data class SyncedLyrics(
         val content: String,
         val backgroundContent: String?,
         val rawContent: String?,
-        val words: List<Word>
+        val syllables: List<Word>
     ) {
         val isEmpty = content.isBlank()
 
-        val isWordSynced = words.isNotEmpty()
+        val isWordSynced = syllables.isNotEmpty()
 
-        val mainVocals = words.filterNot { it.isBackground }
+        val mainSyllables = syllables.filterNot { it.isBackground }
 
-        val backgroundVocals = words.filter { it.isBackground }
+        val backgroundSyllables = syllables.filter { it.isBackground }
 
-        val hasBackgroundVocals = backgroundVocals.isNotEmpty() && !backgroundContent.isNullOrBlank()
+        val hasBackgroundSyllables = backgroundSyllables.isNotEmpty() && !backgroundContent.isNullOrBlank()
 
-        fun getVocals(background: Boolean) = if (background) backgroundVocals else mainVocals
+        fun getSyllables(background: Boolean) = if (background) backgroundSyllables else mainSyllables
 
         fun getText(background: Boolean) = if (background) backgroundContent.orEmpty() else content
     }

@@ -108,9 +108,7 @@ class LrcLyricsParser : LyricsParser {
             ?: trackLength
 
         try {
-            for (i in 0 until rawLines.size) {
-                val entry = rawLines[i]
-
+            for ((i, entry) in rawLines.withIndex()) {
                 if (entry.start > length) {
                     // This is likely due to a metadata error or a corrupted audio file,
                     // resulting in a total duration shorter than the actual duration of the lyrics.
@@ -162,7 +160,7 @@ class LrcLyricsParser : LyricsParser {
                         // add any real value as a translation.
                         val translationContent = entry.getTextContent()
                         if (translationContent.content != existing.content.content) {
-                            var newDuration = existing.durationMillis
+                            var newDuration = existing.duration
                             val newEnd = if (existing.end == 0L) entry.end else existing.end
                             if (newEnd != existing.end) {
                                 newDuration = (newEnd - existing.start)
@@ -173,7 +171,7 @@ class LrcLyricsParser : LyricsParser {
                                 // is the translation.
                                 lines[entry.start] = existing.copy(
                                     end = newEnd,
-                                    durationMillis = newDuration,
+                                    duration = newDuration,
                                     content = translationContent,
                                     translation = existing.content,
                                     actor = entry.actor ?: existing.actor
@@ -181,7 +179,7 @@ class LrcLyricsParser : LyricsParser {
                             } else {
                                 lines[entry.start] = existing.copy(
                                     end = newEnd,
-                                    durationMillis = newDuration,
+                                    duration = newDuration,
                                     translation = translationContent
                                 )
                             }

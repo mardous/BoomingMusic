@@ -346,30 +346,26 @@ internal class TtmlNodeTree {
                     val words = nodesToWords(line, wordNodes, actor)
 
                     lines.add(
-                        SyncedLyrics.Line(
-                            start = line.begin,
-                            end = line.end,
-                            durationMillis = line.dur,
-                            content = wordsToTextContent(words),
-                            transliteration = accompanimentToTextContent(line, transliteration),
-                            translation = accompanimentToTextContent(line, translation),
+                        createSyncedLine(
+                            line = line,
+                            transliteration = transliteration,
+                            translation = translation,
+                            mainContent = wordsToTextContent(words),
                             actor = actor
                         )
                     )
                 } else {
                     lines.add(
-                        SyncedLyrics.Line(
-                            start = line.begin,
-                            end = line.end,
-                            durationMillis = line.dur,
-                            content = SyncedLyrics.TextContent(
+                        createSyncedLine(
+                            line = line,
+                            transliteration = transliteration,
+                            translation = translation,
+                            mainContent = SyncedLyrics.TextContent(
                                 content = line.text.orEmpty(),
                                 backgroundContent = null,
                                 rawContent = null,
-                                words = emptyList()
+                                syllables = emptyList()
                             ),
-                            transliteration = accompanimentToTextContent(line, transliteration),
-                            translation = accompanimentToTextContent(line, translation),
                             actor = actor
                         )
                     )
@@ -398,11 +394,39 @@ internal class TtmlNodeTree {
                 }
             }
 
-            return SyncedLyrics(
-                lines = linesWithOffset
-            )
+            return SyncedLyrics(linesWithOffset)
         }
         return null
+    }
+
+    private fun createSyncedLine(
+        line: TtmlNode,
+        transliteration: TtmlTransliteration?,
+        translation: TtmlTranslation?,
+        mainContent: SyncedLyrics.TextContent,
+        actor: LyricsActor?
+    ): SyncedLyrics.Line {
+        fun resolveAccompaniment(acc: TtmlAccompaniment?): SyncedLyrics.TextContent? =
+            accompanimentToTextContent(line, acc, actor)?.let { content ->
+                val resolved = if (content.backgroundContent == mainContent.backgroundContent) {
+                    content.copy(
+                        backgroundContent = null,
+                        syllables = content.syllables.filterNot { it.isBackground }
+                    )
+                } else content
+
+                resolved.takeUnless { it.content == mainContent.content && it.backgroundContent == null }
+            }
+
+        return SyncedLyrics.Line(
+            start = line.begin,
+            end = line.end,
+            duration = line.dur,
+            content = mainContent,
+            transliteration = resolveAccompaniment(transliteration),
+            translation = resolveAccompaniment(translation),
+            actor = actor
+        )
     }
 
     private fun nodesToWords(
@@ -428,11 +452,11 @@ internal class TtmlNodeTree {
                 words.add(
                     SyncedLyrics.Word(
                         content = text,
-                        startMillis = word.begin,
+                        start = word.begin,
                         startIndex = startIndex,
-                        endMillis = word.end,
+                        end = word.end,
                         endIndex = endIndex,
-                        durationMillis = word.dur,
+                        duration = word.dur,
                         actor = actor?.asBackground(word.background)
                     )
                 )
@@ -457,27 +481,28 @@ internal class TtmlNodeTree {
             content = content,
             backgroundContent = backgroundContent,
             rawContent = null,
-            words = syllables
+            syllables = syllables
         )
     }
 
     private fun accompanimentToTextContent(
         line: TtmlNode,
-        accompaniment: TtmlAccompaniment?
+        accompaniment: TtmlAccompaniment?,
+        actor: LyricsActor?
     ): SyncedLyrics.TextContent? {
         if (accompaniment == null) return null
 
         val text = accompaniment[line.key]
         if (text != null) {
             if (text.syllables.isNotEmpty()) {
-                val words = nodesToWords(line, text.syllables, null)
+                val words = nodesToWords(line, text.syllables, actor)
                 return wordsToTextContent(words)
             } else {
                 return SyncedLyrics.TextContent(
                     content = text.content,
                     backgroundContent = text.backgroundContent,
                     rawContent = null,
-                    words = emptyList()
+                    syllables = emptyList()
                 )
             }
         }

@@ -44,9 +44,9 @@ fun SpannedWordText(
     // Original code from Metrolist (https://github.com/mostafaalagamy/Metrolist)
     val styledText = buildAnnotatedString {
         syllables.forEach { word ->
-            val wordStartMs = word.startMillis
-            val wordEndMs = word.endMillis
-            val wordDuration = word.durationMillis
+            val wordStartMs = word.start
+            val wordEndMs = word.end
+            val wordDuration = word.duration
 
             val isWordActive = selectedLine && currentMillis >= wordStartMs && currentMillis <= wordEndMs
             val hasWordPassed = selectedLine && currentMillis > wordEndMs

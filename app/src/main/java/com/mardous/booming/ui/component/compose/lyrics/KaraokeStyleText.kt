@@ -359,8 +359,8 @@ private fun calculateRowRenderData(
             totalMinX = totalMinX,
             totalMaxX = totalMaxX,
             totalWidth = totalWidth,
-            firstWordStart = rowLayouts.first().word.startMillis,
-            lastWordEnd = rowLayouts.last().word.endMillis,
+            firstWordStart = rowLayouts.first().word.start,
+            lastWordEnd = rowLayouts.last().word.end,
             layerBounds = Rect(
                 left = totalMinX - horizontalPadding,
                 top = minY - verticalPadding - edgePaddingPx,
@@ -470,7 +470,7 @@ private fun createLineGradientBrush(
     val totalWidth = rowData.totalWidth
 
     if (totalWidth <= 0f) {
-        val isFinished = currentTimeMs >= lineLayout.last().word.endMillis
+        val isFinished = currentTimeMs >= lineLayout.last().word.end
         return SolidColor(if (isFinished) activeColor else inactiveColor)
     }
 
@@ -479,14 +479,14 @@ private fun createLineGradientBrush(
         if (currentTimeMs >= rowData.lastWordEnd) return@run if (rtlContent) 0f else 1f
 
         val activeWordLayout = lineLayout.find {
-            currentTimeMs in it.word.startMillis until it.word.endMillis
+            currentTimeMs in it.word.start until it.word.end
         }
 
         val currentPixelPosition = when {
             activeWordLayout != null -> {
-                val duration = activeWordLayout.word.durationMillis
+                val duration = activeWordLayout.word.duration
                 val wordProgress = if (duration > 0) {
-                    ((currentTimeMs - activeWordLayout.word.startMillis).toFloat() / duration).coerceIn(0f, 1f)
+                    ((currentTimeMs - activeWordLayout.word.start).toFloat() / duration).coerceIn(0f, 1f)
                 } else 1f
 
                 if (rtlContent) {
@@ -496,7 +496,7 @@ private fun createLineGradientBrush(
                 }
             }
             else -> {
-                val lastFinished = lineLayout.lastOrNull { currentTimeMs >= it.word.endMillis }
+                val lastFinished = lineLayout.lastOrNull { currentTimeMs >= it.word.end }
                 if (rtlContent) {
                     lastFinished?.position?.x ?: totalMaxX
                 } else {

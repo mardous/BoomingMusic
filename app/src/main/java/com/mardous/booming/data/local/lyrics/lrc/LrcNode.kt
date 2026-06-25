@@ -34,11 +34,11 @@ internal class LrcNode(
         val wordText = if (trimEnd) text.trimEnd() else text
         return SyncedLyrics.Word(
             content = wordText,
-            startMillis = start,
+            start = start,
             startIndex = startIndex,
-            endMillis = end,
+            end = end,
             endIndex = startIndex + (wordText.length - 1),
-            durationMillis = (end - start),
+            duration = (end - start),
             actor = actor
         )
     }
@@ -75,14 +75,14 @@ internal class LrcNode(
                 backgroundContent = words.filter { it.isBackground }
                     .joinToString(separator = "") { it.content }.trim(),
                 rawContent = rawLine.orEmpty(),
-                words = words
+                syllables = words
             )
         } else {
             SyncedLyrics.TextContent(
                 content = text.orEmpty(),
                 backgroundContent = null,
                 rawContent = rawLine.orEmpty(),
-                words = emptyList()
+                syllables = emptyList()
             )
         }
     }
@@ -94,7 +94,7 @@ internal class LrcNode(
         return SyncedLyrics.Line(
             start = start,
             end = end,
-            durationMillis = (end - start),
+            duration = (end - start),
             content = getTextContent(),
             transliteration = null,
             translation = null,

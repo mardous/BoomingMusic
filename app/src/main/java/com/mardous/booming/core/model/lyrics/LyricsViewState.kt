@@ -55,9 +55,9 @@ class LyricsViewState(val lyrics: SyncedLyrics?) {
 
     private fun findWordIndexAt(position: Long, lineIndex: Int): Int {
         if (lyrics == null || lineIndex !in lyrics.lines.indices) return -1
-        val words = lyrics.lines[lineIndex].content.mainVocals
+        val words = lyrics.lines[lineIndex].content.mainSyllables
         for (i in words.indices) {
-            if (position < words[i].startMillis) {
+            if (position < words[i].start) {
                 return i - 1
             }
         }
@@ -68,9 +68,9 @@ class LyricsViewState(val lyrics: SyncedLyrics?) {
         if (lyrics == null || lineIndex !in lyrics.lines.indices) return -1
         val line = lyrics.lines[lineIndex]
         if (!line.hasBackgroundVocals) return -1
-        val backgrounds = line.content.backgroundVocals
+        val backgrounds = line.content.backgroundSyllables
         for (i in backgrounds.indices) {
-            if (position < backgrounds[i].startMillis) {
+            if (position < backgrounds[i].start) {
                 return i - 1
             }
         }
