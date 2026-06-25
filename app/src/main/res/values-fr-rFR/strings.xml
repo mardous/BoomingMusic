@@ -246,7 +246,7 @@
     <string name="download_image">Télécharger l\'image</string>
     <string name="pick_from_local_storage">Choisir depuis le stockage local</string>
     <string name="about_x_title">À propos de %s</string>
-    <string name="listeners_label">Écouteurs</string>
+    <string name="listeners_label">Auditeurs</string>
     <string name="scrobbles_label">Scrobbles</string>
     <string name="save_cover">Enregistrer la couverture de l\'album</string>
     <string name="saving_cover_please_wait">Enregistrement de la couverture, attendez…</string>
@@ -324,6 +324,7 @@
     <!-- Plurals -->
     <plurals name="songs">
         <item quantity="one">Titre</item>
+        <item quantity="many">Titres</item>
         <item quantity="other">Titres</item>
     </plurals>
     <plurals name="albums">
@@ -333,6 +334,7 @@
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d titre</item>
+        <item quantity="many">%d titres</item>
         <item quantity="other">%d titres</item>
     </plurals>
     <plurals name="x_albums">
@@ -342,18 +344,22 @@
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d artiste</item>
+        <item quantity="many">%d artistes</item>
         <item quantity="other">%d artistes</item>
     </plurals>
     <plurals name="x_times">
         <item quantity="one">%d fois</item>
+        <item quantity="many">%d fois</item>
         <item quantity="other">%d fois</item>
     </plurals>
     <plurals name="x_plays">
         <item quantity="one">%d lecture</item>
+        <item quantity="many">%d lectures</item>
         <item quantity="other">%d lectures</item>
     </plurals>
     <plurals name="x_items">
         <item quantity="one">%d élément</item>
+        <item quantity="many">%d éléments</item>
         <item quantity="other">%d éléments</item>
     </plurals>
     <!-- Home -->
@@ -613,7 +619,7 @@
     <string name="ignore_blank_lines_title">Ignorer les lignes vides</string>
     <string name="ignore_blank_lines_summary">Ignorez les lignes vides dans les fichiers LRC au lieu d\'afficher des bulles animées.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Traiter tous les fichiers de paroles comme UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">Supposons que tous les fichiers utilisent l\'encodage UTF-8. Cela optimise l\'analyse des fichiers, mais peut parfois entraîner l\'apparition de caractères inhabituels dans les paroles des chansons. Un redémarrage de l\'application peut être nécessaire.</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">Partons du principe que tous les fichiers utilisent l\'encodage UTF-8. Cela optimise le processus d\'analyse des fichiers, mais peut, dans certains cas, entraîner l\'apparition de caractères inhabituels dans les paroles des chansons. Un redémarrage de l\'application peut s\'avérer nécessaire.</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">Style</string>
     <string name="open_on_play_title">Ouvrir lors de la lecture</string>
@@ -908,8 +914,8 @@
     <string name="select_playlists_title">Sélectionner des listes de lecture</string>
     <string name="new_playlist_action">Nouvelle</string>
     <string name="no_playlists_create_new">Cliquez sur le bouton « Nouvelle » pour créer une liste de lecture</string>
-    <string name="no_playlists_that_match_x">Il n\'y a aucune liste de lecture correspondant à « %s ».</string>
-    <string name="songs_added_to_playlists">Titres ajoutés aux listes de lecture</string>
+    <string name="no_playlists_that_match_x">Il n\'y a aucune playlist correspondant à « %s ».</string>
+    <string name="songs_added_to_playlists">Titres ajoutés aux playlists</string>
     <string name="no_playlists_label">Aucune liste de lecture</string>
     <plurals name="x_playlists_selected">
         <item quantity="one">%d liste de lecture sélectionnée</item>
