@@ -116,7 +116,7 @@
     <string name="song_x_of_x">%1$d / %2$d • %3$s</string>
     <string name="no_equalizer">未找到均衡器。</string>
     <string name="audio_focus_denied">音訊焦點被拒絕。</string>
-    <string name="no_audio_ID">錯誤的音訊ID。</string>
+    <string name="no_audio_ID">錯誤的音訊 ID。</string>
     <string name="playback_error_code">音樂面板錯誤 (%s)。</string>
     <string name="unplayable_file">無法播放這首歌曲。</string>
     <string name="permission_external_storage_title">存儲訪問</string>
@@ -126,7 +126,7 @@
     <string name="permission_bluetooth_description">此應用需要附近的設備權限來檢查藍牙設備</string>
     <string name="permission_bluetooth_denied">附近設備權限被拒絕。</string>
     <string name="permission_read_images_title">查看圖片（可選）</string>
-    <string name="permission_read_images_summary">為了幫您自動查找並顯示歌曲的專輯封面，Booming Music需要獲取訪問您音樂資料夾的權限。 您可以根據需要決定是否授予此權限。</string>
+    <string name="permission_read_images_summary">為了幫您自動查找並顯示歌曲的專輯封面，Booming Music 需要獲取訪問您音樂資料夾的權限。 您可以根據需要決定是否授予此權限。</string>
     <string name="permission_read_images_denied">您需要授予訪問所有檔案的權限以允許軟體讀取封面圖片。</string>
     <string name="permission_exact_alarms_title">設定精確鬧鐘(可選)</string>
     <string name="permission_exact_alarms_description">睡眠計時器需獲取設定精確鬧鐘的權限才能正常工作</string>
@@ -235,7 +235,7 @@
     <string name="new_start_directory">新建起始目錄: %s</string>
     <string name="action_scan">掃描</string>
     <string name="scan_media">掃描媒體</string>
-    <string name="scan_media_message">Android系統通常會自動檢測並索引您設備上的媒體檔案，所以一般情況下您不需要手動掃描媒體。</string>
+    <string name="scan_media_message">Android 系統通常會自動檢測並索引您設備上的媒體檔案，所以一般情況下您不需要手動掃描媒體。</string>
     <string name="scan_media_positive">仍進行掃描</string>
     <string name="scan_finished">掃描已完成。</string>
     <string name="album_or_artist_empty">標題或藝術家是空的。</string>
@@ -411,7 +411,7 @@
     <string name="eq_engine_precision_description">High-fidelity processing with up to 15-band control for ultimate acoustic shaping.</string>
     <string name="set_eq_engine_reset_warning">Changing the equalization engine will reset the equalizer settings, including custom profiles.</string>
     <string name="eq_empty_bands">The equalization engine did not return any band configurations.</string>
-    <string name="enable_equalizer">啟用EQ</string>
+    <string name="enable_equalizer">啟用 EQ</string>
     <string name="select_profile">Select profile</string>
     <string name="save_profile_label">Save profile</string>
     <string name="edit_profile_label">Edit profile</string>
@@ -440,7 +440,7 @@
     <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
     <string name="balance_left">左</string>
     <string name="balance_right">Right</string>
-    <string name="action_external_eq">外部EQ</string>
+    <string name="action_external_eq">外部 EQ</string>
     <string name="custom">自訂</string>
     <string name="audio_offload_is_enabled">Audio Offload is Enabled</string>
     <string name="enable_audio_offload_title">音訊硬體加速</string>
@@ -456,7 +456,7 @@
     <string name="synced_lyrics">同步歌詞</string>
     <string name="embedded_lyrics">內嵌歌詞</string>
     <string name="downloaded_lyrics">已下載</string>
-    <string name="cannot_download_lyrics">Booming Music無法找到這首歌的歌詞。您想手動搜尋嗎？</string>
+    <string name="cannot_download_lyrics">Booming Music 無法找到這首歌的歌詞。您想手動搜尋嗎？</string>
     <string name="search_lyrics">搜尋歌詞</string>
     <string name="choose_lyrics">選擇歌詞類型</string>
     <string name="download_lyrics">下載歌詞</string>
@@ -497,25 +497,25 @@
     <string name="contributors">貢獻者</string>
     <string name="acknowledgments_title">致謝</string>
     <string name="translators_title">譯者</string>
-    <string name="translators_summary">感謝那些為Booming Music提供多種語言的人們。</string>
+    <string name="translators_summary">感謝那些為 Booming Music 提供多種語言的人們。</string>
     <string name="contributors_title">貢獻者</string>
     <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="view_profile_on_github">在 GitHub 上查看個人資料</string>
     <string name="write_an_email">電子郵件</string>
     <string name="support_development">支援開發</string>
     <string name="help_with_translations">幫助翻譯</string>
-    <string name="help_with_translations_summary">您可以通過幫助將Booming Music翻譯成其他語言來為該項目做出貢獻。</string>
+    <string name="help_with_translations_summary">您可以通過幫助將 Booming Music 翻譯成其他語言來為該項目做出貢獻。</string>
     <string name="report_bugs">報告錯誤</string>
     <string name="report_bugs_summary">報告錯誤或請求新功能。</string>
     <string name="share_app">分享此應用</string>
     <string name="share_app_summary">如果你與朋友分享，你可以幫助這個應用的發展。</string>
     <string name="send_invitation_message">發送邀請訊息</string>
-    <string name="invitation_message_content">您好。看看Booming Music！在Android上聆聽本地音樂的最佳應用程式。您可以從這裡下載它： %s</string>
+    <string name="invitation_message_content">您好。看看 Booming Music！在 Android 上聆聽本地音樂的最佳應用程式。您可以從這裡下載它： %s</string>
     <!-- Bug report -->
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">即將跳轉到問題跟蹤網站。</string>
     <!-- SAF -->
     <string name="saf_access_required_title">需要存儲訪問</string>
-    <string name="saf_access_required_message">Booming Music需要訪問這些檔案的權限。請選擇您存儲音樂檔案的根資料夾。</string>
+    <string name="saf_access_required_message">Booming Music 需要訪問這些檔案的權限。請選擇您存儲音樂檔案的根資料夾。</string>
     <string name="saf_show_files_button">顯示檔案</string>
     <string name="saf_error_uri">無法獲取 SAF URI</string>
     <string name="saf_write_failed">檔案寫入失敗： %s</string>
@@ -602,7 +602,7 @@
     <string name="instrumental_tracks_mark_by_title_summary">在搜尋識別資料時，還將考慮曲目標題。</string>
     <string name="ignore_blank_lines_title">忽略空白行</string>
     <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
-    <string name="treat_all_lyrics_files_as_utf8_title">將所有歌詞檔案視為UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">將所有歌詞檔案視為 UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding. This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics. It might require an app restart</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">樣式</string>
@@ -676,8 +676,8 @@
     <string name="ignore_audio_focus_summary">總是在後臺播放音訊，不管是否播放任何其他音訊。</string>
     <string name="pause_on_zero_volume_title">在靜音時停止播放</string>
     <string name="pause_on_zero_volume_summary">當音量下降為零時暫停歌曲，並在音量上升時恢復播放。同時支援在應用程式外工作。</string>
-    <string name="mp3_index_seeking_title">MP3索引定位</string>
-    <string name="mp3_index_seeking_summary">將整個MP3檔案載入到記憶體中，以便跳轉而不是依賴Xing 頭部訊息。 只在跳轉部分VBR檔案失敗時使用。 需要重啟應用程式。</string>
+    <string name="mp3_index_seeking_title">MP3 索引定位</string>
+    <string name="mp3_index_seeking_summary">將整個 MP3 檔案載入到記憶體中，以便跳轉而不是依賴 Xing 頭部訊息。 只在跳轉部分 VBR 檔案失敗時使用。 需要重啟應用程式。</string>
     <string name="play_option_always_visible_title">Keep \"Play\" option visible</string>
     <string name="play_option_always_visible_summary">If enabled, the \"Play\" option will always appear in a song\'s menu, regardless of tap behavior settings.</string>
     <string name="play_option_whole_list_title">\"Play\" option plays whole list</string>
@@ -699,7 +699,7 @@
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
     <!-- Metadata preferences -->
-    <string name="ignore_media_store_album_covers_title">忽略MediaStore提供的封面</string>
+    <string name="ignore_media_store_album_covers_title">忽略 MediaStore 提供的封面</string>
     <string name="ignore_media_store_album_covers_summary">這可能有助於提高圖片品質，但需要更多記憶體。</string>
     <string name="use_folder_album_cover_title">使用資料夾圖像</string>
     <string name="use_folder_album_cover_summary">如果音訊檔案不包含嵌入封面。圖像可能需要一些時間才能載入。</string>
@@ -754,7 +754,7 @@
     <string name="gradient_style">漸層</string>
     <string name="peek_style">Peek</string>
     <string name="plain_style">樸素</string>
-    <string name="m3_style">M3風格</string>
+    <string name="m3_style">M3 風格</string>
     <string name="expressive_style">Expressive</string>
     <string name="normal_style">普通</string>
     <string name="cascading">卡片翻轉</string>
@@ -798,7 +798,7 @@
     <string name="player_color_mode_vibrant_color_title">亮色</string>
     <string name="player_color_mode_vibrant_color_description">將專輯顏色應用於提示背景、文字和模組</string>
     <string name="player_color_mode_material_you_title">Material You</string>
-    <string name="player_color_mode_material_you_description">啟用基於專輯封面顏色的Material You配色</string>
+    <string name="player_color_mode_material_you_description">啟用基於專輯封面顏色的 Material You 配色</string>
     <string name="player_color_mode_blur_title">模糊</string>
     <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
     <!-- Update -->
@@ -824,7 +824,7 @@
     <string name="uncaught_error_report">錯誤報告</string>
     <string name="uncaught_error_report_copied">已複製錯誤報告到剪貼簿。</string>
     <string name="uncaught_error_restart_app">重啟應用</string>
-    <string name="uncaught_error_github">在GitHub上回饋問題</string>
+    <string name="uncaught_error_github">在 GitHub 上回饋問題</string>
     <string name="uncaught_error_send">發送報告</string>
     <string name="app_widget_responsive">響應式</string>
     <string name="app_widget_responsive_desc">一個能夠根據不同尺寸調整版面的小工具</string>

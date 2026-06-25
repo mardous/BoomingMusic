@@ -116,7 +116,7 @@
     <string name="song_x_of_x">%1$d / %2$d • %3$s</string>
     <string name="no_equalizer">未找到均衡器。</string>
     <string name="audio_focus_denied">音频焦点被拒绝。</string>
-    <string name="no_audio_ID">错误的音频ID。</string>
+    <string name="no_audio_ID">错误的音频 ID。</string>
     <string name="playback_error_code">播放错误 （%s）。</string>
     <string name="unplayable_file">无法播放这首歌曲。</string>
     <string name="permission_external_storage_title">存储访问</string>
@@ -126,7 +126,7 @@
     <string name="permission_bluetooth_description">此应用需要附近的设备权限来检查蓝牙设备</string>
     <string name="permission_bluetooth_denied">附近设备权限被拒绝。</string>
     <string name="permission_read_images_title">查看图片（可选）</string>
-    <string name="permission_read_images_summary">为了帮您自动查找并显示歌曲的专辑封面，Booming Music需要获取访问您音乐文件夹的权限。 您可以根据需要决定是否授予此权限。</string>
+    <string name="permission_read_images_summary">为了帮您自动查找并显示歌曲的专辑封面，Booming Music 需要获取访问您音乐文件夹的权限。 您可以根据需要决定是否授予此权限。</string>
     <string name="permission_read_images_denied">您需要授予访问所有文件的权限以允许软件读取封面图片。</string>
     <string name="permission_exact_alarms_title">设置精确闹钟(可选)</string>
     <string name="permission_exact_alarms_description">睡眠计时器需要获取设置精确闹钟的权限才能正常工作</string>
@@ -235,7 +235,7 @@
     <string name="new_start_directory">新建起始目录: %s</string>
     <string name="action_scan">扫描</string>
     <string name="scan_media">扫描媒体</string>
-    <string name="scan_media_message">Android系统通常会自动检测并索引您设备上的媒体文件，所以一般情况下您不需要手动扫描媒体。</string>
+    <string name="scan_media_message">Android 系统通常会自动检测并索引您设备上的媒体文件，所以一般情况下您不需要手动扫描媒体。</string>
     <string name="scan_media_positive">仍进行扫描</string>
     <string name="scan_finished">扫描已完成。</string>
     <string name="album_or_artist_empty">标题或艺术家是空的。</string>
@@ -406,9 +406,9 @@
     <string name="not_supported">不支持</string>
     <string name="set_eq_engine_title">设置均衡引擎</string>
     <string name="eq_engine_basic_title">传统引擎</string>
-    <string name="eq_engine_basic_description">5频段经典配置，设备兼容性更好。</string>
+    <string name="eq_engine_basic_description">5 频段经典配置，设备兼容性更好。</string>
     <string name="eq_engine_precision_title">精密引擎</string>
-    <string name="eq_engine_precision_description">高保真处理引擎，最高支持15频段调节，声效塑造效果更好。</string>
+    <string name="eq_engine_precision_description">高保真处理引擎，最高支持 15 频段调节，声效塑造效果更好。</string>
     <string name="set_eq_engine_reset_warning">更改均衡引擎将重置均衡器设置，包括自定义配置。</string>
     <string name="eq_empty_bands">均衡引擎未返回任何频段配置。</string>
     <string name="enable_equalizer">启用均衡器</string>
@@ -456,7 +456,7 @@
     <string name="synced_lyrics">同步歌词</string>
     <string name="embedded_lyrics">内嵌歌词</string>
     <string name="downloaded_lyrics">已下载</string>
-    <string name="cannot_download_lyrics">Booming Music无法找到这首歌的歌词。您想手动搜索吗？</string>
+    <string name="cannot_download_lyrics">Booming Music 无法找到这首歌的歌词。您想手动搜索吗？</string>
     <string name="search_lyrics">搜索歌词</string>
     <string name="choose_lyrics">选择歌词类型</string>
     <string name="download_lyrics">下载歌词</string>
@@ -473,9 +473,9 @@
     <string name="sleep_timer_cancel_current_timer">取消</string>
     <string name="sleep_timer_set_action">设置</string>
     <string name="sleep_timer_x_mins">%d分钟</string>
-    <string name="sleep_timer_15_mins">15分钟</string>
-    <string name="sleep_timer_45_mins">45分钟</string>
-    <string name="sleep_timer_1_hour">1小时</string>
+    <string name="sleep_timer_15_mins">15 分钟</string>
+    <string name="sleep_timer_45_mins">45 分钟</string>
+    <string name="sleep_timer_1_hour">1 小时</string>
     <string name="sleep_timer_2_hour">2 小时</string>
     <string name="sleep_timer_finish_current_music">播放完最后一首</string>
     <string name="sleep_timer_music_fades_out">逐渐减弱音乐音量</string>
@@ -497,25 +497,25 @@
     <string name="contributors">贡献者</string>
     <string name="acknowledgments_title">致谢</string>
     <string name="translators_title">译者</string>
-    <string name="translators_summary">感谢那些为Booming Music提供多种语言的人们。</string>
+    <string name="translators_summary">感谢那些为 Booming Music 提供多种语言的人们。</string>
     <string name="contributors_title">贡献者</string>
     <string name="contributors_summary">以各种方式参与贡献该项目的用户清单。</string>
     <string name="view_profile_on_github">在 GitHub 上查看个人资料</string>
     <string name="write_an_email">电子邮件</string>
     <string name="support_development">支持开发</string>
     <string name="help_with_translations">帮助翻译</string>
-    <string name="help_with_translations_summary">您可以通过帮助将Booming Music翻译成其他语言来为该项目做出贡献。</string>
+    <string name="help_with_translations_summary">您可以通过帮助将 Booming Music 翻译成其他语言来为该项目做出贡献。</string>
     <string name="report_bugs">报告错误</string>
     <string name="report_bugs_summary">报告错误或请求新功能。</string>
     <string name="share_app">分享此应用</string>
     <string name="share_app_summary">您可以与朋友分享本应用，帮助它成长壮大。</string>
     <string name="send_invitation_message">发送邀请信息</string>
-    <string name="invitation_message_content">你好，来看看Booming Music吧！这是Android平台最好的本地音乐播放器。下载链接： %s</string>
+    <string name="invitation_message_content">你好，来看看 Booming Music 吧！这是 Android 平台最好的本地音乐播放器。下载链接： %s</string>
     <!-- Bug report -->
     <string name="you_will_be_forwarded_to_the_issue_tracker_website">即将跳转到问题跟踪网站。</string>
     <!-- SAF -->
     <string name="saf_access_required_title">需要存储访问</string>
-    <string name="saf_access_required_message">Booming Music需要访问这些文件的权限。请选择您存储音乐文件的根文件夹。</string>
+    <string name="saf_access_required_message">Booming Music 需要访问这些文件的权限。请选择您存储音乐文件的根文件夹。</string>
     <string name="saf_show_files_button">显示文件</string>
     <string name="saf_error_uri">无法获取 SAF URI</string>
     <string name="saf_write_failed">文件写入失败： %s</string>
@@ -602,7 +602,7 @@
     <string name="instrumental_tracks_mark_by_title_summary">识别纯音乐时一并在曲目标题中查找纯音乐判断词。</string>
     <string name="ignore_blank_lines_title">忽略空行</string>
     <string name="ignore_blank_lines_summary">忽略 LRC 文件中的空行，而不将其显示为气泡动画。</string>
-    <string name="treat_all_lyrics_files_as_utf8_title">将所有歌词文件视为UTF-8</string>
+    <string name="treat_all_lyrics_files_as_utf8_title">将所有歌词文件视为 UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">强制以 UTF-8 编码读取音频文件。 这优化了文件解析过程，但在某些情况下可能导致歌曲歌词中出现异常字符。 可能需要重启应用</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">样式</string>
@@ -676,8 +676,8 @@
     <string name="ignore_audio_focus_summary">无视正在播放的任何其他音频，始终保持音频后台播放。</string>
     <string name="pause_on_zero_volume_title">在静音时停止播放</string>
     <string name="pause_on_zero_volume_summary">当音量下降为零时暂停歌曲，并在音量上升时恢复播放。同时支持在应用程序外工作。</string>
-    <string name="mp3_index_seeking_title">MP3索引定位</string>
-    <string name="mp3_index_seeking_summary">将整个MP3文件加载到内存中，以便跳转而不是依赖Xing 头部信息。 只在跳转部分VBR文件失败时使用。 需要重启应用程序。</string>
+    <string name="mp3_index_seeking_title">MP3 索引定位</string>
+    <string name="mp3_index_seeking_summary">将整个 MP3 文件加载到内存中，以便跳转而不是依赖 Xing 头部信息。 只在跳转部分 VBR 文件失败时使用。 需要重启应用程序。</string>
     <string name="play_option_always_visible_title">始终显示“播放”选项</string>
     <string name="play_option_always_visible_summary">如果启用该选项，无论点击行为设置为何，“播放”按钮将一直出现在歌曲菜单中。</string>
     <string name="play_option_whole_list_title">“播放”选项播放整个列表</string>
@@ -699,7 +699,7 @@
     <string name="clear_queue_on_completion_title">播放完毕时清空队列</string>
     <string name="clear_queue_on_completion_summary">在最后一曲播完后，自动从播放队列中移除所有曲目。</string>
     <!-- Metadata preferences -->
-    <string name="ignore_media_store_album_covers_title">忽略MediaStore提供的封面</string>
+    <string name="ignore_media_store_album_covers_title">忽略 MediaStore 提供的封面</string>
     <string name="ignore_media_store_album_covers_summary">这可能有助于提高图像质量，但需要更多内存。</string>
     <string name="use_folder_album_cover_title">使用文件夹图像</string>
     <string name="use_folder_album_cover_summary">如果音频文件不包含嵌入封面。图像可能需要一些时间才能加载。</string>
@@ -754,7 +754,7 @@
     <string name="gradient_style">渐变</string>
     <string name="peek_style">灵动</string>
     <string name="plain_style">简洁</string>
-    <string name="m3_style">M3风格</string>
+    <string name="m3_style">M3 风格</string>
     <string name="expressive_style">丰富</string>
     <string name="normal_style">默认</string>
     <string name="cascading">卡片翻转</string>
@@ -798,7 +798,7 @@
     <string name="player_color_mode_vibrant_color_title">鲜艳色彩</string>
     <string name="player_color_mode_vibrant_color_description">将专辑颜色应用于提示背景、文本和控件</string>
     <string name="player_color_mode_material_you_title">Material You</string>
-    <string name="player_color_mode_material_you_description">启用基于专辑封面颜色的Material You配色</string>
+    <string name="player_color_mode_material_you_description">启用基于专辑封面颜色的 Material You 配色</string>
     <string name="player_color_mode_blur_title">模糊</string>
     <string name="player_color_mode_blur_description">使用 Material You 色彩模糊背景</string>
     <!-- Update -->
@@ -824,7 +824,7 @@
     <string name="uncaught_error_report">错误报告</string>
     <string name="uncaught_error_report_copied">已复制错误报告到剪贴板。</string>
     <string name="uncaught_error_restart_app">重启应用</string>
-    <string name="uncaught_error_github">在GitHub上反馈问题</string>
+    <string name="uncaught_error_github">在 GitHub 上反馈问题</string>
     <string name="uncaught_error_send">发送报告</string>
     <string name="support_my_work">支持我的作品</string>
     <string name="lastfm_login_username">用户名</string>
@@ -872,7 +872,7 @@
     <string name="channel_surround_13_1">13.1 声道环绕声</string>
     <string name="lyrics_center_horizontally_title">歌词横向居中</string>
     <string name="lyrics_center_horizontally_summary">将每行歌词对齐到屏幕的水平线中心。</string>
-    <string name="bit_perfect_info">Bit Perfect信息：%1$s|%2$s</string>
+    <string name="bit_perfect_info">Bit Perfect 信息：%1$s|%2$s</string>
     <string name="bit_perfect_title">Bit-perfect 音频</string>
     <string name="app_widget_responsive">响应式</string>
     <string name="app_widget_responsive_desc">根据大小自动适配小部件布局</string>
@@ -909,8 +909,8 @@
     <string name="login_action">登录</string>
     <string name="logout_action">退出登录</string>
     <string name="sign_in_to_x_title">登录到%s</string>
-    <string name="error_listenbrainz_generic">ListenBrainz发生了错误。</string>
-    <string name="error_listenbrainz_invalid_token">无效的ListenBrainz凭据。</string>
+    <string name="error_listenbrainz_generic">ListenBrainz 发生了错误。</string>
+    <string name="error_listenbrainz_invalid_token">无效的 ListenBrainz 凭据。</string>
     <string name="listenbrainz_token_label">用户凭据</string>
     <string name="listenbrainz_title">ListenBrainz</string>
     <string name="listenbrainz_login_title">登录 ListenBrainz</string>
