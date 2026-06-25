@@ -163,6 +163,8 @@ Your support is greatly appreciated and keeps me motivated to continue improving
 **Bernhard**
 <br/>
 **Andreas Hirth**
+<br/>
+**Revolver327**
 
 </div>
 
