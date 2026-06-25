@@ -66,7 +66,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
@@ -109,6 +108,7 @@ import com.mardous.booming.extensions.webSearch
 import com.mardous.booming.ui.component.compose.ButtonGroup
 import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.component.compose.MediaImage
+import com.mardous.booming.ui.component.compose.ObserveAsEvent
 import com.mardous.booming.ui.component.compose.menu.MenuItem
 import com.mardous.booming.ui.component.compose.menu.OverflowMenu
 import com.mardous.booming.ui.component.compose.menu.TopAppBarMenu
@@ -212,38 +212,29 @@ fun LyricsEditorScreen(
     var showLyricsSearchDialog by remember { mutableStateOf(false) }
     var downloadedLyricsForSelector by rememberSaveable { mutableStateOf<RawLyrics.Remote?>(null) }
 
-    val saveEvent by viewModel.saveEvent.collectAsState(null)
-    LaunchedEffect(saveEvent) {
-        saveEvent?.let {
-            val toastMessage = when (it) {
-                LyricsEditorResult.NoChanges -> context.getString(R.string.there_are_no_changes_to_save)
-                LyricsEditorResult.Failed -> context.getString(R.string.could_not_save_some_changes)
-                LyricsEditorResult.Success -> context.getString(R.string.changes_saved_successfully)
-            }
-            context.showToast(toastMessage)
+    ObserveAsEvent(viewModel.saveEvent) { saveResult ->
+        val toastMessage = when (saveResult) {
+            LyricsEditorResult.NoChanges -> context.getString(R.string.there_are_no_changes_to_save)
+            LyricsEditorResult.Failed -> context.getString(R.string.could_not_save_some_changes)
+            LyricsEditorResult.Success -> context.getString(R.string.changes_saved_successfully)
+        }
+        context.showToast(toastMessage)
+    }
+
+    ObserveAsEvent(viewModel.downloadEvent) { downloadedLyrics ->
+        if (downloadedLyrics.hasBoth) {
+            downloadedLyricsForSelector = downloadedLyrics
+        } else if (downloadedLyrics.hasPlain) {
+            textFieldState.setContent(downloadedLyrics.plain?.lyrics)
+        } else if (downloadedLyrics.hasSynced) {
+            textFieldState.setContent(downloadedLyrics.synced?.lyrics)
+        } else {
+            showManualSearchDialog = true
         }
     }
 
-    val downloadEvent by viewModel.downloadEvent.collectAsState(null)
-    LaunchedEffect(downloadEvent) {
-        downloadEvent?.let {
-            if (it.hasBoth) {
-                downloadedLyricsForSelector = it
-            } else if (it.hasPlain) {
-                textFieldState.setContent(it.plain?.lyrics)
-            } else if (it.hasSynced) {
-                textFieldState.setContent(it.synced?.lyrics)
-            } else {
-                showManualSearchDialog = true
-            }
-        }
-    }
-
-    val permissionRequestEvent by viewModel.permissionRequestEvent.collectAsState(null)
-    LaunchedEffect(permissionRequestEvent) {
-        permissionRequestEvent?.let {
-            requestWritePermissions(it)
-        }
+    ObserveAsEvent(viewModel.permissionRequestEvent) { uris ->
+        requestWritePermissions(uris)
     }
 
     LaunchedEffect(Unit) {
