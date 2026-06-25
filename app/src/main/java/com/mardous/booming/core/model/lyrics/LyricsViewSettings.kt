@@ -16,6 +16,8 @@ class LyricsViewSettings(
     val backgroundEffect: BackgroundEffect,
     val blurEffect: Boolean,
     val shadowEffect: Boolean,
+    val showTranslation: Boolean,
+    val showTransliteration: Boolean,
     val syncedStyle: TextStyle,
     val unsyncedStyle: TextStyle,
     val lineSpacing: Int
@@ -53,6 +55,8 @@ class LyricsViewSettings(
             const val LINE_SPACING = "lyrics_line_spacing"
             const val PROGRESSIVE_COLORING = "lyrics_progressive_coloring"
             const val BACKGROUND_EFFECT = "lyrics_background_effect"
+            const val SHOW_TRANSLATION = "lyrics_show_translation"
+            const val SHOW_TRANSLITERATION = "lyrics_show_transliteration"
             const val BLUR_EFFECT = "lyrics_text_blur"
             const val SHADOW_EFFECT = "lyrics_text_shadow"
             const val SYNCED_BOLD_FONT = "synced_lyrics_bold_font"

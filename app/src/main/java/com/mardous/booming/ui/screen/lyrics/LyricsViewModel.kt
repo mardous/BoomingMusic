@@ -321,6 +321,8 @@ class LyricsViewModel(
         val enableSyllableLyrics = preferences.getBoolean(Key.ENABLE_SYLLABLE_LYRICS, false)
         val enableKaraokeStyle = preferences.getBoolean(Key.ENABLE_KARAOKE_STYLE, false)
         val progressiveColoring = preferences.getBoolean(Key.PROGRESSIVE_COLORING, false)
+        val showTranslation = preferences.getBoolean(Key.SHOW_TRANSLATION, true)
+        val showTransliteration = preferences.getBoolean(Key.SHOW_TRANSLITERATION, false)
         val blurEffect = !background.isNone && preferences.getBoolean(Key.BLUR_EFFECT, false)
         val shadowEffect = !background.isNone && preferences.getBoolean(Key.SHADOW_EFFECT, false)
         val fontFamily: FontFamily = if (preferences.getBoolean(Key.USE_CUSTOM_FONT, false)) {
@@ -372,6 +374,8 @@ class LyricsViewModel(
             backgroundEffect = background,
             blurEffect = blurEffect,
             shadowEffect = shadowEffect,
+            showTranslation = showTranslation,
+            showTransliteration = showTransliteration,
             syncedStyle = syncedStyle,
             unsyncedStyle = unsyncedStyle,
             lineSpacing = ((lineSpacing / 2) + 8).coerceIn(8, 48)
@@ -394,6 +398,8 @@ class LyricsViewModel(
             Key.SELECTED_CUSTOM_FONT,
             Key.LINE_SPACING,
             Key.PROGRESSIVE_COLORING,
+            Key.SHOW_TRANSLATION,
+            Key.SHOW_TRANSLITERATION,
             Key.BACKGROUND_EFFECT,
             Key.BLUR_EFFECT,
             Key.SHADOW_EFFECT,

@@ -13,6 +13,24 @@
         app:key="enable_syllable_lyrics" />
 
     <SwitchPreferenceCompat
+        app:iconSpaceReserved="true"
+        app:title="@string/lyrics_show_translation_title"
+        app:summary="@string/lyrics_show_translation_summary"
+        app:defaultValue="true"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:key="lyrics_show_translation" />
+
+    <SwitchPreferenceCompat
+        app:iconSpaceReserved="true"
+        app:title="@string/lyrics_show_transliteration_title"
+        app:summary="@string/lyrics_show_transliteration_summary"
+        app:defaultValue="false"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:key="lyrics_show_transliteration" />
+
+    <SwitchPreferenceCompat
         app:icon="@drawable/ic_align_center_24dp"
         app:title="@string/lyrics_center_current_line_title"
         app:summary="@string/lyrics_center_current_line_summary"
