@@ -21,7 +21,7 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
-import com.mardous.booming.data.remote.lyrics.model.AppleMusicSearchResponse
+import com.mardous.booming.data.remote.lyrics.model.ITunesSearchResponse
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricText
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricsResponse
 import com.mardous.booming.util.Constants.LYRICALLY_API_URL
@@ -35,7 +35,6 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.http.HttpHeaders
 import io.ktor.http.userAgent
-import kotlinx.serialization.json.Json
 import org.apache.commons.text.similarity.JaroWinklerSimilarity
 import kotlin.math.abs
 
@@ -50,10 +49,7 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
     override val name: String = "Lyrically"
     override val networkFeature = NetworkFeature.Lyrics.Lyrically
 
-    private val tokenManager = TokenManager()
-    private val json = Json { ignoreUnknownKeys = true }
-
-    private val searchHelper = PaxsenixSearchHelper(client, tokenManager, json)
+    private val searchHelper = PaxsenixSearchHelper(client)
 
     override suspend fun downloadLyrics(
         song: Song,
@@ -61,7 +57,7 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
         artist: String
     ): RawLyrics.Remote? {
         val searchResponse = searchHelper.getAppleMusicSearchResponse(title, artist)
-        if (searchResponse != null) {
+        if (searchResponse != null && searchResponse.size > 0) {
             var lyrics: RawLyrics.Remote? = null
 
             val scoredIds = getScoredAppleMusicIds(title, artist, song.duration, searchResponse)
@@ -159,32 +155,25 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
         songTitle: String,
         songArtist: String,
         songDurationInMillis: Long,
-        searchResponse: AppleMusicSearchResponse
-    ): List<Pair<String, Double>> {
-        val songs = searchResponse.results.songs?.data
-            ?: return emptyList()
-
-        return songs.mapNotNull { song ->
+        searchResponse: ITunesSearchResponse
+    ): List<Pair<Long, Double>> {
+        return searchResponse.results.map { song ->
             val songId = song.id
-            val songDetail = searchResponse.resources?.songs?.get(songId)
-            if (songDetail != null) {
-                val attributes = songDetail.attributes
 
-                val titleScore = JW_SIMILARITY.apply(songTitle, attributes.name)
-                val artistScore = JW_SIMILARITY.apply(songArtist, attributes.artistName)
+            val titleScore = JW_SIMILARITY.apply(songTitle, song.name)
+            val artistScore = JW_SIMILARITY.apply(songArtist, song.artist)
 
-                val durationDiff = attributes.durationInMillis
-                    ?.let { duration -> abs(duration - songDurationInMillis) } ?: 0
+            val durationDiff = song.durationInMillis
+                ?.let { duration -> abs(duration - songDurationInMillis) } ?: 0
 
-                val durationScore = when {
-                    durationDiff <= 2000 -> 1.0 // Excellent match
-                    durationDiff <= 5000 -> 0.6 // Good match
-                    durationDiff <= 10000 -> 0.2 // Acceptable match
-                    else -> -1.0 // Likely wrong version
-                }
+            val durationScore = when {
+                durationDiff <= 2000 -> 1.0 // Excellent match
+                durationDiff <= 5000 -> 0.6 // Good match
+                durationDiff <= 10000 -> 0.2 // Acceptable match
+                else -> -1.0 // Likely wrong version
+            }
 
-                songId to (artistScore + titleScore + durationScore)
-            } else null
+            songId to (artistScore + titleScore + durationScore)
         }.sortedByDescending { it.second }
     }
 

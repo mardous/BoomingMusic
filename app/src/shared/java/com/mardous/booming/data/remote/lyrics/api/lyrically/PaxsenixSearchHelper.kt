@@ -18,61 +18,37 @@
 package com.mardous.booming.data.remote.lyrics.api.lyrically
 
 import android.util.Log
-import com.mardous.booming.data.remote.lyrics.model.AppleMusicSearchResponse
+import com.mardous.booming.data.remote.lyrics.model.ITunesSearchResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.header
+import io.ktor.client.request.parameter
 import io.ktor.client.statement.bodyAsText
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import io.ktor.http.HttpHeaders
 import kotlinx.serialization.json.Json
-import java.net.URLEncoder
 
 class PaxsenixSearchHelper(
-    private val client: HttpClient,
-    private val tokenManager: TokenManager,
-    private val json: Json
+    private val client: HttpClient
 ) {
+
+    private val json = Json { ignoreUnknownKeys = true }
+
     suspend fun getAppleMusicSearchResponse(
         songTitle: String,
         artistName: String
-    ): AppleMusicSearchResponse? {
-        val search = withContext(Dispatchers.IO) {
-            URLEncoder.encode("$songTitle $artistName", Charsets.UTF_8.toString())
-        }
-        val token = tokenManager.getToken(client)
-        val response = client.get(
-            "${SEARCH_URL}/search?" +
-                    "term=$search&" +
-                    "types=songs&" +
-                    "limit=25&" +
-                    "l=en-US&" +
-                    "platform=web&" +
-                    "format[resources]=map&" +
-                    "include[songs]=artists&" +
-                    "extend=artistUrl"
-        ) {
-            header("Authorization", "Bearer $token")
-            header("Origin", "https://music.apple.com/")
-            header("Referer", "https://music.apple.com/")
-            header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:95.0) Gecko/20100101 Firefox/95.0")
-            header("Accept", "application/json")
-            header("Accept-Language", "en-US,en;q=0.5")
-            header("x-apple-renewal", "true")
+    ): ITunesSearchResponse? {
+        val response = client.get("${SEARCH_URL}/search") {
+            header(HttpHeaders.Accept, "application/json")
+            header(HttpHeaders.UserAgent, ITUNES_USER_AGENT)
+            parameter("media", "music")
+            parameter("entity", "song")
+            parameter("limit", "10")
+            url.encodedParameters.append("term", "$songTitle $artistName")
         }
 
         val responseBody = response.bodyAsText(Charsets.UTF_8)
-
-        if (response.status.value !in 200..299) {
-            // Token might be expired, clear it and retry once
-            if (response.status.value == 401) {
-                tokenManager.clearToken()
-            }
-            return null
-        }
-
         val searchResponse = try {
-            json.decodeFromString<AppleMusicSearchResponse>(responseBody)
+            json.decodeFromString<ITunesSearchResponse>(responseBody)
         } catch (e: Exception) {
             Log.e("PaxsenixSearchHelper", "Failed to decode search response", e)
             return null
@@ -81,6 +57,7 @@ class PaxsenixSearchHelper(
     }
 
     companion object {
-        private const val SEARCH_URL = "https://amp-api.music.apple.com/v1/catalog/us"
+        private const val SEARCH_URL = "https://itunes.apple.com"
+        private const val ITUNES_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
     }
 }

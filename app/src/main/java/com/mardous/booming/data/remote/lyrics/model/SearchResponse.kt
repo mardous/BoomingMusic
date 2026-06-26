@@ -17,47 +17,28 @@
 
 package com.mardous.booming.data.remote.lyrics.model
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AppleMusicSearchResponse(
-    val results: AppleMusicResults,
-    val resources: AppleMusicResources? = null
+data class ITunesSearchResponse(
+    @SerialName("resultCount")
+    val size: Int,
+    val results: List<ITunesSearchResult>
 )
 
 @Serializable
-data class AppleMusicResults(
-    val songs: AppleMusicSongsResult? = null
-)
-
-@Serializable
-data class AppleMusicSongsResult(
-    val data: List<AppleMusicSongData>
-)
-
-@Serializable
-data class AppleMusicSongData(
-    val id: String,
+data class ITunesSearchResult(
+    @SerialName("trackId")
+    val id: Long,
+    @SerialName("wrapperType")
     val type: String,
-    val href: String
-)
-
-@Serializable
-data class AppleMusicResources(
-    val songs: Map<String, AppleMusicSongDetail>? = null
-)
-
-@Serializable
-data class AppleMusicSongDetail(
-    val id: String,
-    val type: String,
-    val attributes: AppleMusicSongAttributes
-)
-
-@Serializable
-data class AppleMusicSongAttributes(
+    @SerialName("trackName")
     val name: String,
-    val artistName: String,
-    val albumName: String,
+    @SerialName("artistName")
+    val artist: String,
+    @SerialName("collectionName")
+    val album: String,
+    @SerialName("trackTimeMillis")
     val durationInMillis: Long? = null
 )

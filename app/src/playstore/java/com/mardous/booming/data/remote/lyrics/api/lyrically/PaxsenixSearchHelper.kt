@@ -17,19 +17,16 @@
 
 package com.mardous.booming.data.remote.lyrics.api.lyrically
 
-import com.mardous.booming.data.remote.lyrics.model.AppleMusicSearchResponse
+import com.mardous.booming.data.remote.lyrics.model.ITunesSearchResponse
 import io.ktor.client.HttpClient
-import kotlinx.serialization.json.Json
 
 class PaxsenixSearchHelper(
-    private val client: HttpClient,
-    private val tokenManager: TokenManager,
-    private val json: Json
+    private val client: HttpClient
 ) {
     suspend fun getAppleMusicSearchResponse(
         songTitle: String,
         artistName: String
-    ): AppleMusicSearchResponse? {
+    ): ITunesSearchResponse? {
         return null
     }
 }
