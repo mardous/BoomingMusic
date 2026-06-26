@@ -10,11 +10,26 @@ import org.xmlpull.v1.XmlPullParserFactory
 import java.io.Reader
 import java.util.regex.Pattern
 
+/**
+ * Parser for TTML (Timed Text Markup Language) format.
+ *
+ * This parser is designed to handle Apple Music-style TTML lyrics, including:
+ * - Hierarchical structure: `<body>` -> `<div>` (sections) -> `<p>` (lines) -> `<span>` (words/background)
+ * - Word-level synchronization using `<span>` tags with `begin`, `end`, or `dur`.
+ * - Multiple agents (actors) defined in the `<head>` and referenced by `ttm:agent`.
+ * - Background vocals identified by `ttm:role="x-bg"`.
+ * - Translations and transliterations.
+ * - Various time expressions (clock time and offset time).
+ */
 class TtmlLyricsParser : LyricsParser {
 
     override fun handles(file: LyricsFile): Boolean =
         file.format == LyricsFile.Format.TTML
 
+    /**
+     * Quickly checks if the reader content is a valid TTML lyrics file.
+     * It verifies the presence of the `<tt>` root tag and at least one `<div>` inside `<body>`.
+     */
     override fun handles(reader: Reader): Boolean {
         return try {
             val parser = XmlPullParserFactory.newInstance().newPullParser().apply {
@@ -52,6 +67,11 @@ class TtmlLyricsParser : LyricsParser {
         }
     }
 
+    /**
+     * Main entry point for parsing TTML content using [XmlPullParser].
+     * It builds a [TtmlNodeTree] by processing start and end tags.
+     * The tree is then converted into [SyncedLyrics].
+     */
     override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): SyncedLyrics? {
         try {
             val parser = XmlPullParserFactory.newInstance().newPullParser()
@@ -69,6 +89,7 @@ class TtmlLyricsParser : LyricsParser {
                         }
                         when (name) {
                             TtmlNode.TAG_AGENT -> {
+                                // Agents define the performers of the lyrics
                                 nodeTree.addAgent(
                                     id = parser.getAttributeValue(null, "xml:id"),
                                     type = parser.getAttributeValue(null, "type")
@@ -94,6 +115,7 @@ class TtmlLyricsParser : LyricsParser {
                             }
 
                             TtmlNode.TAG_TEXT -> {
+                                // Associated with accompaniment (translation/transliteration)
                                 val key = parser.getAttributeValue(null, "for")
                                 if (!nodeTree.prepareAccompanimentText(key)) break
                             }
@@ -106,6 +128,7 @@ class TtmlLyricsParser : LyricsParser {
                             }
 
                             TtmlNode.TAG_DIV -> {
+                                // Sections (div) group multiple lines together
                                 val openSection = nodeTree.openSection(
                                     TtmlNode.buildSection(
                                         begin = parser.getTimeAttribute("begin"),
@@ -117,6 +140,7 @@ class TtmlLyricsParser : LyricsParser {
                             }
 
                             TtmlNode.TAG_PARAGRAPH -> {
+                                // Paragraphs (p) represent a single line of lyrics
                                 val agentAttribute = parser.getAttributeValue(null, "ttm:agent")
                                 val openLine = nodeTree.openLine(
                                     TtmlNode.buildLine(
@@ -131,9 +155,11 @@ class TtmlLyricsParser : LyricsParser {
                             }
 
                             TtmlNode.TAG_SPAN -> {
+                                // Spans can be words (timed), background vocals, or inline translations
                                 val role = parser.getAttributeValue(null, "ttm:role")
                                 val lang = parser.getAttributeValue(null, "xml:lang")
                                 if (role == null) {
+                                    // Default span is treated as a word
                                     val openWord = nodeTree.openWord(
                                         TtmlNode.buildWord(
                                             begin = parser.getTimeAttribute("begin"),
@@ -208,6 +234,13 @@ class TtmlLyricsParser : LyricsParser {
         return -1
     }
 
+    /**
+     * Parses time expressions from TTML attributes.
+     * Supports:
+     * - Simple seconds: `12.34`
+     * - Complex clock time: `00:12:34.56`
+     * - Offset time with units: `100ms`, `2.5s`, `1m`
+     */
     @Throws(XmlPullParserException::class)
     private fun parseTimeExpression(time: String?): Long {
         if (time == null) return -1

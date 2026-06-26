@@ -8,12 +8,28 @@ import com.mardous.booming.data.model.lyrics.LyricsFile
 import java.io.Reader
 import java.util.Locale
 
+/**
+ * Parser for LRC format.
+ *
+ * This parser supports:
+ * - Standard LRC format: `[mm:ss.xx] line content`
+ * - Enhanced LRC format (Word-sync): `[mm:ss.xx] <mm:ss.xx> word <mm:ss.xx> word...`
+ * - Metadata attributes: `[ar:Artist]`, `[ti:Title]`, `[offset:milliseconds]`, etc.
+ * - Multiple timestamps for the same line: `[mm:ss.xx][mm:ss.yy] line content`
+ * - Background vocals: `[bg:Background content]` or inline `[00:12.34] Line [bg:Background]`
+ * - Translations: Identified by matching timestamps across different lines.
+ */
 class LrcLyricsParser : LyricsParser {
 
     override fun handles(file: LyricsFile): Boolean {
         return file.format == LyricsFile.Format.LRC
     }
 
+    /**
+     * Quickly checks if the reader content looks like LRC.
+     * It scans for lines that have both a timestamp and actual text content,
+     * while ignoring metadata attribute lines.
+     */
     override fun handles(reader: Reader): Boolean {
         val content = reader.buffered().use { it.readText() }
         return content
@@ -34,6 +50,11 @@ class LrcLyricsParser : LyricsParser {
             }
     }
 
+    /**
+     * Main entry point for parsing LRC content.
+     * First pass: Extracts all raw lines and attributes, handling multiple timestamps per line.
+     * Second pass: Sorts and converts raw nodes into [SyncedLyrics], resolving overlaps and durations.
+     */
     override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): SyncedLyrics? {
         val attributes = hashMapOf<String, String>()
         val rawLines = mutableListOf<LrcNode>()
@@ -44,6 +65,7 @@ class LrcLyricsParser : LyricsParser {
                     val line = br.readLine() ?: break
                     if (line.isBlank()) continue
 
+                    // Check for metadata attributes like [ti:Title]
                     val attrMatcher = ATTRIBUTE_PATTERN.find(line)
                     if (attrMatcher != null) {
                         val attr = attrMatcher.groupValues[1].lowercase(Locale.getDefault()).trim()
@@ -53,6 +75,7 @@ class LrcLyricsParser : LyricsParser {
 
                         attributes[attr] = value
                     } else {
+                        // Check for lyric lines with timestamps
                         val lineResult = LINE_PATTERN.find(line)
                         if (lineResult != null) {
                             val base = lineResult.groupValues[1].trim()
@@ -62,6 +85,7 @@ class LrcLyricsParser : LyricsParser {
                                 .takeIf { it.isNotEmpty() }
 
                             var foundAny = false
+                            // Extract all timestamps from the line (LRC allows multiple timestamps for one line)
                             val timeMatches = LINE_TIME_PATTERN.findAll(base)
                             for (time in timeMatches) {
                                 val timeMs = parseTime(time)
@@ -71,6 +95,7 @@ class LrcLyricsParser : LyricsParser {
                                 }
                             }
 
+                            // Special case: Background-only line that might refer to the previous line
                             if (!foundAny) {
                                 val backgroundMatcher = BACKGROUND_ONLY_PATTERN.find(line)
                                 if (rawLines.isNotEmpty() && backgroundMatcher != null) {
@@ -91,10 +116,16 @@ class LrcLyricsParser : LyricsParser {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+        // LRC nodes can appear out of order in the file, especially with multi-timestamp lines
         rawLines.sortBy { it.start }
         return parse(attributes, rawLines, trackLength, ignoreBlankLines)
     }
 
+    /**
+     * Converts a list of raw [LrcNode]s into the final [SyncedLyrics] structure.
+     * This method calculates durations by looking at the next line's timestamp
+     * and handles translation merging for lines sharing the same start time.
+     */
     private fun parse(
         attributes: Map<String, String>,
         rawLines: List<LrcNode>,
@@ -118,6 +149,8 @@ class LrcLyricsParser : LyricsParser {
                     break
                 }
 
+                // Calculate the end time based on the next line's start time.
+                // If there are multiple entries at the same start time, find the next one with a different start.
                 var nextStep = 1
                 var nextEntry = rawLines.getOrNull(i + nextStep)
                 while (nextEntry != null && entry.start == nextEntry.start) {
@@ -128,6 +161,7 @@ class LrcLyricsParser : LyricsParser {
                     if (nextEntryNonNull.start >= entry.start) {
                         nextEntryNonNull.start
                     } else {
+                        // Safety check for malformed files where timestamps might go backwards
                         val firstLine = lines.values.firstOrNull()
                         if (firstLine != null && firstLine.start == nextEntryNonNull.start) {
                             length
@@ -165,10 +199,10 @@ class LrcLyricsParser : LyricsParser {
                             if (newEnd != existing.end) {
                                 newDuration = (newEnd - existing.start)
                             }
+
+                            // Heuristic: if the new entry has word-sync tags and the existing one doesn't,
+                            // swap them so the word-synced one is the main content.
                             if (translationContent.isWordSynced && !existing.isWordSynced) {
-                                // It appears we are dealing with an edge case in which the second
-                                // line actually represents the main content and the first line
-                                // is the translation.
                                 lines[entry.start] = existing.copy(
                                     end = newEnd,
                                     duration = newDuration,
@@ -185,7 +219,7 @@ class LrcLyricsParser : LyricsParser {
                             }
                         }
                     } else {
-                        // It's a new line, we just add it to the list.
+                        // It's a brand new line at this timestamp.
                         addChildren(entry, null)
                         lines[entry.start] = entry.toLine()
                     }
@@ -225,13 +259,20 @@ class LrcLyricsParser : LyricsParser {
         return null
     }
 
+    /**
+     * Parses word-sync tags and actor prefixes within a line.
+     * Example: `V1: <00:12.00>Hello <00:12.50>world`
+     * Also handles background tags: `[bg:<00:13.00>ooh]`
+     */
     private fun addChildren(entry: LrcNode, actor: LyricsActor?) {
         check(!entry.text.isNullOrBlank())
 
+        // Extract actor prefix if present (e.g., "M:", "F:", "V1:")
         val matchResult = LINE_ACTOR_PATTERN.find(entry.text)
         entry.actor = actor ?: LyricsActor.getActorFromValue(matchResult?.groupValues?.get(1))
 
         val text = matchResult?.groupValues?.get(2) ?: entry.text
+        // Extract words with their relative timestamps
         LINE_WORD_PATTERN.findAll(text).forEach { match ->
             entry.addChild(
                 start = parseTime(match),
@@ -240,6 +281,7 @@ class LrcLyricsParser : LyricsParser {
             )
         }
 
+        // Handle word-sync within background text
         entry.bgText?.let {
             LINE_WORD_PATTERN.findAll(it).forEach { match ->
                 entry.addChild(
