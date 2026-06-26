@@ -82,6 +82,15 @@
         app:layout="@layout/preference_category_title">
 
         <SwitchPreferenceCompat
+            app:icon="@drawable/ic_play_24dp"
+            app:title="@string/lyrics_resume_on_seek_title"
+            app:summary="@string/lyrics_resume_on_seek_summary"
+            app:defaultValue="false"
+            app:layout="@layout/list_item_view"
+            app:widgetLayout="@layout/preference_switch"
+            app:key="lyrics_resume_on_seek" />
+
+        <SwitchPreferenceCompat
             app:icon="@drawable/ic_format_bold_24dp"
             app:title="@string/lyrics_bold_synced_title"
             app:summary="@string/lyrics_bold_synced_summary"

@@ -323,6 +323,7 @@ class LyricsViewModel(
         val progressiveColoring = preferences.getBoolean(Key.PROGRESSIVE_COLORING, false)
         val showTranslation = preferences.getBoolean(Key.SHOW_TRANSLATION, true)
         val showTransliteration = preferences.getBoolean(Key.SHOW_TRANSLITERATION, false)
+        val resumeOnSeek = preferences.getBoolean(Key.RESUME_ON_SEEK, false)
         val blurEffect = !background.isNone && preferences.getBoolean(Key.BLUR_EFFECT, false)
         val shadowEffect = !background.isNone && preferences.getBoolean(Key.SHADOW_EFFECT, false)
         val fontFamily: FontFamily = if (preferences.getBoolean(Key.USE_CUSTOM_FONT, false)) {
@@ -376,6 +377,7 @@ class LyricsViewModel(
             shadowEffect = shadowEffect,
             showTranslation = showTranslation,
             showTransliteration = showTransliteration,
+            resumeOnSeek = resumeOnSeek,
             syncedStyle = syncedStyle,
             unsyncedStyle = unsyncedStyle,
             lineSpacing = ((lineSpacing / 2) + 8).coerceIn(8, 48)
@@ -400,6 +402,7 @@ class LyricsViewModel(
             Key.PROGRESSIVE_COLORING,
             Key.SHOW_TRANSLATION,
             Key.SHOW_TRANSLITERATION,
+            Key.RESUME_ON_SEEK,
             Key.BACKGROUND_EFFECT,
             Key.BLUR_EFFECT,
             Key.SHADOW_EFFECT,

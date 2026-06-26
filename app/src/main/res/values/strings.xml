@@ -720,6 +720,8 @@
     <string name="lyrics_show_transliteration_summary">Display transliterated lyrics if available.</string>
     <string name="lyrics_bold_synced_title">Bold font for synced lyrics</string>
     <string name="lyrics_bold_synced_summary">Display synced lyrics in bold font.</string>
+    <string name="lyrics_resume_on_seek_title">Resume on seek</string>
+    <string name="lyrics_resume_on_seek_summary">Automatically resume playback when clicking on a line.</string>
     <string name="lyrics_bold_unsynced_title">Bold font for normal lyrics</string>
     <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
     <string name="lyrics_line_spacing_title">Line spacing</string>

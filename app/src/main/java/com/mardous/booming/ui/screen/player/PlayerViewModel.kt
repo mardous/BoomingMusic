@@ -342,6 +342,10 @@ class PlayerViewModel(
         }
     }
 
+    fun play() {
+        mediaController?.play()
+    }
+
     fun seekToNext() {
         mediaController?.seekToNext()
     }

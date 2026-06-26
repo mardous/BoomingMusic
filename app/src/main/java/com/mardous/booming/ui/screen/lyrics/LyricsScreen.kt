@@ -214,7 +214,12 @@ fun LyricsScreen(
                 isPlaying = isPlaying,
                 isPowerSaveMode = isPowerSaveMode,
                 hasBackgroundEffects = hasBackgroundEffects,
-                onSeekToLine = { playerViewModel.seekTo(it.start) },
+                onSeekToLine = {
+                    playerViewModel.seekTo(it.start)
+                    if (lyricsViewSettings.resumeOnSeek) {
+                        playerViewModel.play()
+                    }
+                },
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding)
@@ -254,7 +259,12 @@ fun CoverLyricsScreen(
                 isPlaying = isPlaying,
                 isPowerSaveMode = isPowerSaveMode,
                 hasBackgroundEffects = false,
-                onSeekToLine = { playerViewModel.seekTo(it.start) },
+                onSeekToLine = {
+                    playerViewModel.seekTo(it.start)
+                    if (lyricsViewSettings.resumeOnSeek) {
+                        playerViewModel.play()
+                    }
+                },
                 modifier = Modifier.fillMaxSize(),
             )
 
