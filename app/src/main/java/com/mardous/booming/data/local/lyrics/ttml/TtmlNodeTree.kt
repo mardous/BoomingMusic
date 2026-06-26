@@ -22,9 +22,8 @@ internal class TtmlNodeTree {
     private var rootNode: TtmlNode? = null
 
     private val accompaniments = linkedMapOf<TtmlAccompaniment.Type, TtmlAccompaniment>()
-
-    private val translations = mutableSetOf<TtmlTranslation>()
     private val agents = mutableSetOf<TtmlAgent>()
+    private var openNodes = mutableMapOf<Int, TtmlNode?>()
 
     private var lastTransliterationType: TtmlAccompaniment.Type.Transliteration? = null
     private val openTransliteration: TtmlTransliteration?
@@ -34,12 +33,11 @@ internal class TtmlNodeTree {
     private val openTranslation: TtmlTranslation?
         get() = getOpenAccompaniment(lastTranslationType)
 
-    private var openNodes = mutableMapOf<Int, TtmlNode?>()
-
     private var background = false
     private var closed = false
 
-    var isInTransliteration: Boolean = false
+    private var isInTransliteration: Boolean = false
+
     val hasRoot: Boolean
         get() = rootNode?.type == TtmlNode.NODE_BODY && rootNode?.closed == false
 
@@ -223,7 +221,10 @@ internal class TtmlNodeTree {
         if (openLine != null && openLine.key != null) {
             var openTranslation = this.openTranslation
             if (openTranslation == null || openTranslation.type.lang != lang) {
-                openTranslation = getOpenAccompaniment(TtmlAccompaniment.Type.Translation(lang))
+                openTranslation = accompaniments.values
+                    .firstNotNullOfOrNull { acc ->
+                        if (acc is TtmlTranslation && acc.type.lang == lang) acc else null
+                    }
             }
             if (openTranslation == null) {
                 openTranslation = createTranslation(lang, inLine = true)
@@ -263,8 +264,11 @@ internal class TtmlNodeTree {
             val closed = openNode.close()
             openNodes.remove(type)
             if (openNode.type == TtmlNode.NODE_BODY) {
-                translations.filter { it.isInLine }
-                    .forEach { it.close() }
+                for (acc in accompaniments.values) {
+                    if (acc is TtmlTranslation && acc.isInLine) {
+                        acc.close()
+                    }
+                }
             }
             return closed
         }
