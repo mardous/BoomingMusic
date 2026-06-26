@@ -61,7 +61,6 @@ fun provideOkHttp(context: Context): OkHttpClient {
 }
 
 fun jsonHttpClient(okHttpClient: OkHttpClient) = HttpClient(OkHttp) {
-    expectSuccess = true
     engine {
         preconfigured = okHttpClient
     }
