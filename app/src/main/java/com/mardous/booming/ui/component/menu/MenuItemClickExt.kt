@@ -37,7 +37,7 @@ import com.mardous.booming.extensions.navigation.genreDetailArgs
 import com.mardous.booming.extensions.navigation.songDetailArgs
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.toChooser
-import com.mardous.booming.playback.shuffle.OpenShuffleMode
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.component.base.AbsTagEditorActivity
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.DeletePlaylistDialog

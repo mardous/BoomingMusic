@@ -62,7 +62,7 @@ import com.mardous.booming.extensions.resources.removeHorizontalMarginIfRequired
 import com.mardous.booming.extensions.resources.setupStatusBarForeground
 import com.mardous.booming.extensions.resources.surfaceColor
 import com.mardous.booming.extensions.setSupportActionBar
-import com.mardous.booming.playback.shuffle.OpenShuffleMode
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.ISongCallback

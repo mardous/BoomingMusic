@@ -25,7 +25,7 @@ import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.library.MediaIDs
-import com.mardous.booming.playback.shuffle.OpenShuffleMode
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IScrollHelper
 import com.mardous.booming.ui.component.base.AbsSlidingMusicPanelActivity
 import com.mardous.booming.ui.screen.update.UpdateDialog

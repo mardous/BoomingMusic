@@ -37,8 +37,8 @@ import com.mardous.booming.data.model.QueuePosition
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.getQueueItems
-import com.mardous.booming.playback.progress.ProgressObserver
-import com.mardous.booming.playback.shuffle.OpenShuffleMode
+import com.mardous.booming.playback.ProgressObserver
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.playback.shuffle.ShuffleManager
 import com.mardous.booming.playback.toMediaItems
 import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO

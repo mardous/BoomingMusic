@@ -56,7 +56,7 @@ import com.mardous.booming.extensions.resources.removeHorizontalMarginIfRequired
 import com.mardous.booming.extensions.resources.surfaceColor
 import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.extensions.showToast
-import com.mardous.booming.playback.shuffle.OpenShuffleMode
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.PlaylistSongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
