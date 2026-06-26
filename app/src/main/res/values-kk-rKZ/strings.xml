@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">Play</string>
-    <string name="action_play_all">Play all</string>
-    <string name="action_shuffle_play">Shuffle play</string>
-    <string name="action_queue_next">Queue next</string>
+    <string name="action_play">Ойнату</string>
+    <string name="action_play_all">Бәрін ойнату</string>
+    <string name="action_shuffle_play">Кездейсоқ ретпен ойнату</string>
+    <string name="action_queue_next">Келесі болып кезекке қосу</string>
     <string name="shuffle_all_label">Shuffle all</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
@@ -834,4 +834,10 @@
     <string name="uncaught_error_restart_app">Restart app</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
+    <string name="app_widget_responsive">Бейімделетін</string>
+    <string name="app_widget_responsive_desc">Әртүрлі өлшемдерге қарай орналасуын бейімдейтін виджет</string>
+    <string name="app_widget_card">Карта</string>
+    <string name="app_widget_card_desc">Минималистік әрі ықшам стиль</string>
+    <string name="app_widget_full">Толық</string>
+    <string name="app_widget_full_desc">Плеер экраны тікелей жұмыс үстелінде</string>
 </resources>
