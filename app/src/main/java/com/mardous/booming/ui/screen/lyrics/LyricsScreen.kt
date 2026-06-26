@@ -7,6 +7,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.add
 import androidx.compose.foundation.layout.fillMaxSize
@@ -207,6 +208,7 @@ fun LyricsScreen(
                 playerViewModel = playerViewModel,
                 uiState = uiState,
                 settings = lyricsViewSettings,
+                PaddingValues(vertical = 96.dp, horizontal = 16.dp),
                 fadingEdges = FadingEdges(top = 56.dp, bottom = 32.dp),
                 textAlign = TextAlign.Start,
                 isPlaying = isPlaying,
@@ -246,6 +248,7 @@ fun CoverLyricsScreen(
                 uiState = uiState,
                 playerViewModel = playerViewModel,
                 settings = lyricsViewSettings,
+                contentPadding = PaddingValues(vertical = 72.dp, horizontal = 12.dp),
                 fadingEdges = FadingEdges(top = 72.dp, bottom = 64.dp),
                 textAlign = TextAlign.Center,
                 isPlaying = isPlaying,
@@ -281,6 +284,7 @@ private fun LyricsSurface(
     playerViewModel: PlayerViewModel,
     uiState: LyricsUiState,
     settings: LyricsViewSettings,
+    contentPadding: PaddingValues,
     fadingEdges: FadingEdges,
     textAlign: TextAlign?,
     isPlaying: Boolean,
@@ -342,7 +346,7 @@ private fun LyricsSurface(
                         .nestedScroll(rememberNestedScrollInteropConnection())
                         .fadingEdges(fadingEdges)
                         .verticalScroll(scrollState)
-                        .padding(settings.contentPadding)
+                        .padding(contentPadding)
                 ) {
                     Text(
                         text = uiState.lyrics,
@@ -365,6 +369,7 @@ private fun LyricsSurface(
                 LyricsView(
                     state = lyricsViewState,
                     settings = settings,
+                    contentPadding = contentPadding,
                     fadingEdges = fadingEdges,
                     contentColor = contentColor,
                     isPowerSaveMode = isPowerSaveMode,

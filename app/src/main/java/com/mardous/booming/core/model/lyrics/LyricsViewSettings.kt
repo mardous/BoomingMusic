@@ -1,9 +1,7 @@
 package com.mardous.booming.core.model.lyrics
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.dp
 
 @Immutable
 class LyricsViewSettings(
@@ -22,11 +20,6 @@ class LyricsViewSettings(
     val unsyncedStyle: TextStyle,
     val lineSpacing: Int
 ) {
-
-    val contentPadding: PaddingValues = when (mode) {
-        Mode.Full -> PaddingValues(vertical = 96.dp, horizontal = 16.dp)
-        Mode.Player -> PaddingValues(vertical = 72.dp, horizontal = 8.dp)
-    }
 
     enum class Mode {
         Player, Full;

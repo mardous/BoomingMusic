@@ -82,6 +82,7 @@ import kotlin.math.sin
 fun LyricsView(
     state: LyricsViewState,
     settings: LyricsViewSettings,
+    contentPadding: PaddingValues,
     fadingEdges: FadingEdges,
     contentColor: Color,
     isPowerSaveMode: Boolean,
@@ -109,7 +110,7 @@ fun LyricsView(
             if (!isInDragGesture && !isScrollInProgress) {
                 val layoutInfo = listState.layoutInfo
                 val viewportHeight = with(layoutInfo) { viewportEndOffset - viewportStartOffset }
-                val bottomPadding = with(density) { settings.contentPadding.calculateBottomPadding().toPx() }
+                val bottomPadding = with(density) { contentPadding.calculateBottomPadding().toPx() }
                 val activeItem = layoutInfo.visibleItemsInfo.find { it.index == state.currentLineIndex }
                 if (activeItem != null) {
                     val itemSize = activeItem.size
@@ -149,7 +150,7 @@ fun LyricsView(
 
     LazyColumn(
         state = listState,
-        contentPadding = settings.contentPadding,
+        contentPadding = contentPadding,
         verticalArrangement = Arrangement.spacedBy(settings.lineSpacing.dp),
         modifier = modifier
             .nestedScroll(rememberNestedScrollInteropConnection())
