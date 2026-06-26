@@ -968,4 +968,10 @@
     <string name="lyrics_karaoke_style_summary">Habilita un efecto de karaoke para letras sincronizadas palabra por palabra. Ten en cuenta que esta es una función experimental.</string>
     <string name="lyrics_bold_synced_title">Resaltar las letras sincronizadas</string>
     <string name="lyrics_bold_synced_summary">Aplica una fuente negrita para las letras sincronizadas.</string>
+    <string name="lyrics_show_translation_title">Mostrar traducción</string>
+    <string name="lyrics_show_translation_summary">Muestra la traducción de la letra si está disponible.</string>
+    <string name="lyrics_show_transliteration_title">Mostrar transliteración</string>
+    <string name="lyrics_show_transliteration_summary">Muestra la transliteración de la letra si está disponible.</string>
+    <string name="lyrics_resume_on_seek_title">Resumir al buscar</string>
+    <string name="lyrics_resume_on_seek_summary">Resume la reproducción automáticamente al tocar una línea.</string>
 </resources>
