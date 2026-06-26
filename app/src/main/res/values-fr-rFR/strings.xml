@@ -968,4 +968,10 @@
     <string name="lyrics_karaoke_style_summary">Active un effet de type karaoké pour afficher les paroles synchronisées mot à mot. Veuillez noter qu\'il s\'agit d\'une fonctionnalité expérimentale.</string>
     <string name="lyrics_bold_synced_title">Caractères en gras pour les paroles synchronisées</string>
     <string name="lyrics_bold_synced_summary">Afficher les paroles synchronisées en caractères gras.</string>
+    <string name="lyrics_show_translation_title">Afficher la traduction</string>
+    <string name="lyrics_show_translation_summary">Afficher les paroles traduites si elles sont disponibles.</string>
+    <string name="lyrics_show_transliteration_title">Afficher la translittération</string>
+    <string name="lyrics_show_transliteration_summary">Afficher les paroles translittérées si elles sont disponibles.</string>
+    <string name="lyrics_resume_on_seek_title">Reprendre la recherche</string>
+    <string name="lyrics_resume_on_seek_summary">Reprendre automatiquement la lecture lorsque l\'on clique sur une ligne.</string>
 </resources>
