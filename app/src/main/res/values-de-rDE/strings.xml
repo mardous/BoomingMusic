@@ -959,4 +959,10 @@
     <string name="lyrics_karaoke_style_summary">Aktiviert einen Karaoke-Stil für Wort-für-Wort synchronisierte Liedtexte. Bitte beachten Sie, dass es sich hierbei um eine experimentelle Funktion handelt.</string>
     <string name="lyrics_bold_synced_title">Fette Schrift für synchronisierte Liedtexte</string>
     <string name="lyrics_bold_synced_summary">Stellt synchronisierte Liedtexte fett dar.</string>
+    <string name="lyrics_show_translation_title">Übersetzung anzeigen</string>
+    <string name="lyrics_show_translation_summary">Übersetzte Liedtexte anzeigen, wenn verfügbar.</string>
+    <string name="lyrics_show_transliteration_title">Transliteration anzeigen</string>
+    <string name="lyrics_show_transliteration_summary">Transliterierte Liedtexte anzeigen, wenn verfügbar.</string>
+    <string name="lyrics_resume_on_seek_title">Nach Suche fortsetzen</string>
+    <string name="lyrics_resume_on_seek_summary">Wiedergabe automatisch fortgesetzen, wenn auf eine Zeile geklickt wird.</string>
 </resources>
