@@ -959,4 +959,6 @@
     <string name="lyrics_show_translation_summary">Visa översatta sångtexter om sådana finns.</string>
     <string name="lyrics_show_transliteration_title">Visa translitteration</string>
     <string name="lyrics_show_transliteration_summary">Visa translittererade sångtexter om sådana finns.</string>
+    <string name="lyrics_resume_on_seek_title">Återuppta vid sökning</string>
+    <string name="lyrics_resume_on_seek_summary">Återuppta uppspelningen automatiskt när man klickar på en rad.</string>
 </resources>
