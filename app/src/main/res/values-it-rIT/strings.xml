@@ -957,4 +957,5 @@
     <string name="lyrics_bold_synced_title">Grassetto per i testi sincronizzati</string>
     <string name="lyrics_bold_synced_summary">Mostra i testi sincronizzati con carattere grassetto.</string>
     <string name="lyrics_show_translation_title">Visualizza traduzione</string>
+    <string name="lyrics_show_transliteration_title">Mostra translitterazione</string>
 </resources>
