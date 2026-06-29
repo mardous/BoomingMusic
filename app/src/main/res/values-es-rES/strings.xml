@@ -964,4 +964,10 @@
     <string name="lyrics_karaoke_style_summary">Habilita un efecto al estilo Karaoke para letras sincronizadas palabra-a-palabra. Note que esto es una característica experimental.</string>
     <string name="lyrics_bold_synced_title">Negrita para letras sincronizadas</string>
     <string name="lyrics_bold_synced_summary">Exhibe letras sincronizadas en formato negrita.</string>
+    <string name="lyrics_show_translation_title">Mostrar traducción</string>
+    <string name="lyrics_show_translation_summary">Exhibir letra traducidas si están disponibles.</string>
+    <string name="lyrics_show_transliteration_title">Mostrar trasnliteración</string>
+    <string name="lyrics_show_transliteration_summary">Exhibe letras transliteradas si están disponibles.</string>
+    <string name="lyrics_resume_on_seek_title">Reanudar al buscar</string>
+    <string name="lyrics_resume_on_seek_summary">Reanudar automáticamente la reproducción al pulsar en una línea.</string>
 </resources>
