@@ -63,7 +63,7 @@ object BackupHelper : KoinComponent {
         withContext(Dispatchers.IO) {
             runCatching {
                 output.zipOutputStream().use { out ->
-                    out.setComment(context.getString(R.string.app_name_long))
+                    out.setComment(context.getString(R.string.app_name))
                     for (zipItem in zipItems) {
                         if (zipItem.filePath != null) {
                             File(zipItem.filePath).inputStream().buffered().use { origin ->

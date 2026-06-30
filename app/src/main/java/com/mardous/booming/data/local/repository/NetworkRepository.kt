@@ -69,7 +69,7 @@ class NetworkRepositoryImpl(
     private val listenBrainzLoginStateFlow = MutableStateFlow<LoginState>(LoginState.Empty)
     private val listenBrainzLoginState get() = listenBrainzLoginStateFlow.value
 
-    private val appName = context.getString(R.string.app_name_long)
+    private val appName = context.getString(R.string.app_name)
 
     init {
         val lastFmSessionInfo = getLastFmSessionInfo()

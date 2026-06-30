@@ -100,7 +100,7 @@ class PermissionsActivity : AbsBaseActivity() {
     }
 
     private fun setupAppTitle() {
-        val appName = getString(R.string.app_name_long).trim()
+        val appName = getString(R.string.app_name).trim()
         val styledAppName = SpannableStringBuilder(getString(R.string.welcome_to_x, appName).trim()).apply {
             setSpan(StyleSpan(Typeface.BOLD), this.indexOf(appName), length, SPAN_INCLUSIVE_INCLUSIVE)
             setSpan(ForegroundColorSpan(primaryColor()), this.lastIndexOf(" "), length, SPAN_EXCLUSIVE_EXCLUSIVE)

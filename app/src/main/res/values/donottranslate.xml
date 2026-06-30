@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name" translatable="false">Booming Music</string>
-	<string name="app_name_long" translatable="false">Booming Music</string>
 
 	<string name="mardous" translatable="false">Christians Martínez A.</string>
 
