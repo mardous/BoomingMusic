@@ -950,4 +950,10 @@
     <string name="lyrics_karaoke_style_summary">为逐词同步歌词启用卡拉 OK 风格效果。请注意，本功能为试验性功能。</string>
     <string name="lyrics_bold_synced_title">同步歌词显示为粗体</string>
     <string name="lyrics_bold_synced_summary">以粗体显示同步歌词。</string>
+    <string name="lyrics_show_translation_title">显示翻译</string>
+    <string name="lyrics_show_translation_summary">若有已翻译歌词，将在此显示。</string>
+    <string name="lyrics_show_transliteration_title">显示音译</string>
+    <string name="lyrics_show_transliteration_summary">若有已音译歌词，将在此显示。</string>
+    <string name="lyrics_resume_on_seek_title">跳转后继续播放</string>
+    <string name="lyrics_resume_on_seek_summary">点击歌词时恢复播放。</string>
 </resources>
