@@ -216,10 +216,7 @@ androidComponents {
 
         val flavorProps = loadFlavorProperties(variant.flavorName)
         flavorProps.forEach { (key, value) ->
-            variant.buildConfigFields?.put(
-                key.toString(),
-                BuildConfigField("String", "\"$value\"", "Property from ${variant.flavorName ?: "base"}")
-            )
+            variant.buildConfigFields?.put(key.toString(), BuildConfigField("String", "\"$value\"", null))
         }
 
         val canUseLastFm = variant.flavorName == "normal" || variant.flavorName == "playstore"

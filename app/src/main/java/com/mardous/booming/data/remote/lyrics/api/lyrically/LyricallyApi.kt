@@ -64,7 +64,7 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
             for ((result, score) in scoredIds.take(5)) {
                 if (score <= 0.0) continue
 
-                val lyricsResponse = client.paxsenix("${LYRICALLY_API_URL}/apple-music/lyrics") {
+                val lyricsResponse = client.paxsenix(LYRICALLY_API_URL) {
                     parameter("id", result)
                 }.body<LyricallyLyricsResponse>()
 
@@ -207,8 +207,6 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
     }
 
     companion object {
-        private const val TAG = "LyricallyApi"
-
         private val JW_SIMILARITY = JaroWinklerSimilarity()
     }
 }
