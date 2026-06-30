@@ -9,8 +9,9 @@ Main features:
 * Automatic lyric download and in-app lyric editor
 * Word-by-word and translated lyrics (TTML, LRC)
 * Media3-based playback engine with audio offload support
-* Bit-perfect playback support and native ALAC decoding
-* Native ListenBrainz scrobbling
+* ReplayGain for consistent volume across tracks
+* Native ALAC decoding
+* ListenBrainz scrobbling
 * Adaptive mini player and gesture controls
 * Custom covers and descriptions for playlists
 * Tag editor with instant library updates

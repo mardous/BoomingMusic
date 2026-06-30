@@ -21,7 +21,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.hardware.usb.UsbManager
 import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
@@ -73,12 +72,13 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     init {
         requestVolume()
         requestAudioDevice()
-        scanForBitPerfectDevices()
+        //scanForBitPerfectDevices()
     }
 
     override fun onReceive(context: Context, intent: Intent?) {
         val action = intent?.action ?: return
         when (action) {
+            /*
             UsbManager.ACTION_USB_DEVICE_ATTACHED -> {
                 scanForBitPerfectDevices()
                 checkAndConfigureBitPerfect()
@@ -89,13 +89,16 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
                     disableBitPerfect()
                 }
             }
+             */
             Intent.ACTION_HEADSET_PLUG -> {
+                /*
                 val state = intent.getIntExtra("state", -1)
                 if (state == 1) {
                     checkAndConfigureBitPerfect()
                 } else if (state == 0) {
                     disableBitPerfect()
                 }
+                 */
                 requestVolume()
             }
             VOLUME_CHANGED_ACTION -> {
@@ -109,8 +112,8 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
             val filter = IntentFilter().apply {
                 addAction(VOLUME_CHANGED_ACTION)
                 addAction(Intent.ACTION_HEADSET_PLUG)
-                addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
-                addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
+                //addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
+                //addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
             }
             ContextCompat.registerReceiver(context, this, filter, ContextCompat.RECEIVER_EXPORTED)
             audioManager?.registerAudioDeviceCallback(audioDeviceCallback, null)
@@ -172,7 +175,7 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     /**
      * Scan and update the list of available bit-perfect capable devices.
      */
-    fun scanForBitPerfectDevices() {
+    private fun scanForBitPerfectDevices() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             _availableBitPerfectDevices.value = emptyList()
             return
@@ -363,16 +366,16 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
 
     private val audioDeviceCallback: AudioDeviceCallback = object : AudioDeviceCallback() {
         override fun onAudioDevicesAdded(addedDevices: Array<out AudioDeviceInfo>?) {
-            scanForBitPerfectDevices()
+            //scanForBitPerfectDevices()
             requestAudioDevice()
             requestVolume()
-            if (userEnabledBitPerfect) {
-                checkAndConfigureBitPerfect()
-            }
+            //if (userEnabledBitPerfect) {
+            //    checkAndConfigureBitPerfect()
+            //}
         }
 
         override fun onAudioDevicesRemoved(removedDevices: Array<out AudioDeviceInfo>?) {
-            scanForBitPerfectDevices()
+            //scanForBitPerfectDevices()
             requestAudioDevice()
             requestVolume()
         }

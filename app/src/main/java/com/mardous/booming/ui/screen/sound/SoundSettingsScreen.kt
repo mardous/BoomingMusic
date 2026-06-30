@@ -1,6 +1,5 @@
 package com.mardous.booming.ui.screen.sound
 
-import android.os.Build
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -477,6 +476,11 @@ fun SoundSettingsSheet(
                                 .fillMaxWidth()
                                 .padding(bottom = 16.dp)
                         ) {
+                            /*
+                            Bit-perfect is temporarily disabled due to incompatibilities
+                            experienced by some users. While the necessary fixes are being made,
+                            the feature will remain disabled for users.
+
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
                                 LabeledSwitch(
                                     checked = bitPerfect,
@@ -486,6 +490,7 @@ fun SoundSettingsSheet(
                                     viewModel.setEnableBitPerfect(checked)
                                 }
                             }
+                             */
 
                             LabeledSwitch(
                                 checked = audioOffload,
