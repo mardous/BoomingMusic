@@ -152,19 +152,22 @@ Your support is greatly appreciated and keeps me motivated to continue improving
 
 ### ❤️ Supporters
 
-**mbeezy** (first donor)
-<br/>
-**[KKTweex](https://github.com/Qoojoe)**
-<br/>
-**[FabiRich](https://github.com/FabiRich)**
-<br/>
-**[Bloodaxe](https://github.com/Bloodaxe95)**
-<br/>
-**Bernhard**
-<br/>
-**Andreas Hirth**
-<br/>
-**Revolver327**
+<table>
+  <tr>
+    <td>
+      <b>mbeezy</b><br/>
+      <b><a href="https://github.com/Qoojoe">KKTweex</a></b><br/>
+      <b><a href="https://github.com/FabiRich">FabiRich</a></b><br/>
+      <b><a href="https://github.com/Bloodaxe95">Bloodaxe</a></b>
+    </td>
+    <td>
+      <b>Bernhard</b><br/>
+      <b>Andreas Hirth</b><br/>
+      <b>Revolver327</b><br/>
+      <b>Peter Smith</b>
+    </td>
+  </tr>
+</table>
 
 </div>
 
