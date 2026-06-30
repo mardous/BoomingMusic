@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2026 Christians Martínez Alvarado
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <!-- Dawid -->
+    <string name="contributor_dawid" translatable="false">Dawid</string>
+    <string name="contributor_dawid_description">Core contributor and designer of several key app features.</string>
+
+    <!-- Ray Cadle -->
+    <string name="contributor_ray" translatable="false">Ray Cadle</string>
+    <string name="contributor_ray_description">Contributed several exciting and key features.</string>
+
+    <!-- TheTerminatorOfProgramming -->
+    <string name="contributor_ttop" translatable="false">TTOP</string>
+    <string name="contributor_ttop_description">The project\'s very first contributor and tester.</string>
+
+    <!-- Lenard -->
+    <string name="contributor_lenard" translatable="false">Lenard</string>
+    <string name="contributor_lenard_description">Developer of the app website and contributor.</string>
+
+    <!-- Alex -->
+    <string name="contributor_alex" translatable="false">Alex</string>
+    <string name="contributor_alex_description">Longtime friend of the project who provided access to essential APIs.</string>
+</resources>

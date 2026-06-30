@@ -511,11 +511,8 @@
     <string name="author">Autor</string>
     <string name="mardous_summary">Desenvolupador principal</string>
     <string name="contributors">Col·laboradors</string>
-    <string name="acknowledgments_title">Agraïments</string>
     <string name="translators_title">Traductors</string>
     <string name="translators_summary">Gràcies a tothom que fa possible que Booming Music estigui disponible en tants idiomes.</string>
-    <string name="contributors_title">Col·laboradors</string>
-    <string name="contributors_summary">Una llista d\'usuaris que han contribuït en el projecte d\'alguna manera.</string>
     <string name="view_profile_on_github">Mostra el perfil a Github</string>
     <string name="write_an_email">Escriviu un correu electrònic</string>
     <string name="support_development">Suport al desenvolupament</string>
@@ -528,7 +525,6 @@
     <string name="send_invitation_message">Envia missatge d\'invitació</string>
     <string name="invitation_message_content">Ei. Fes un cop d\'ull a Booming Music! La millor aplicació per escoltar música sense connexió a Android. Pots descarregar-la aquí: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Se us enviarà al lloc web de seguiment de problemes.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Cal accés a l’emmagatzematge</string>
     <string name="saf_access_required_message">Cal permís per accedir a aquells fitxers. Seleccioneu una adreça on tingueu els fitxers de música.</string>

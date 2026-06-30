@@ -511,11 +511,8 @@
     <string name="author">Autor</string>
     <string name="mardous_summary">Programador Líder</string>
     <string name="contributors">Colaboradores</string>
-    <string name="acknowledgments_title">Reconhecimento</string>
     <string name="translators_title">Tradutores</string>
     <string name="translators_summary">Obrigado a todos que fazem Booming Music disponível em vários idiomas.</string>
-    <string name="contributors_title">Colaboradores</string>
-    <string name="contributors_summary">Uma lista de utilizadores que contribuíram para o projeto de alguma forma.</string>
     <string name="view_profile_on_github">Ver perfil no GitHub</string>
     <string name="write_an_email">Escreva um e-mail</string>
     <string name="support_development">Apoie o desenvolvimento</string>
@@ -528,7 +525,6 @@
     <string name="send_invitation_message">Enviar mensagem de convite</string>
     <string name="invitation_message_content">Oi. Confira o Booming Music! O melhor aplicativo para ouvir música local no Android. Você pode baixá-lo aqui: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Você será encaminhado para o site de registro de erros.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Acesso ao armazenamento necessário</string>
     <string name="saf_access_required_message">O Booming Music requer permissão para acessar esses arquivos. Por favor, selecione a pasta onde os seus arquivos de música são armazenados.</string>

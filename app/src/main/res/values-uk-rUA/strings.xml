@@ -519,11 +519,8 @@
     <string name="author">Автор</string>
     <string name="mardous_summary">Провідний розробник</string>
     <string name="contributors">Співавтори</string>
-    <string name="acknowledgments_title">Підтвердження</string>
     <string name="translators_title">Перекладачі</string>
     <string name="translators_summary">Дякуємо тим, хто робить Booming Music доступним багатьма мовами.</string>
-    <string name="contributors_title">Вкладники</string>
-    <string name="contributors_summary">Перелік користувачів, які так чи інакше долучилися до проєкту.</string>
     <string name="view_profile_on_github">Переглянути профіль на GitHub</string>
     <string name="write_an_email">Написати листа</string>
     <string name="support_development">Підтримка розробки</string>
@@ -536,7 +533,6 @@
     <string name="send_invitation_message">Надіслати запрошення</string>
     <string name="invitation_message_content">Привіт. Спробуй Booming Music! Найкращий додаток для прослуховування локальної музики на Android. Ти можеш завантажити його тут: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Ви будете перенаправлені на вебсайт трекера проблем.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Потрібен доступ до сховища</string>
     <string name="saf_access_required_message">Booming Music потрібен доступ до цих файлів. Виберіть кореневу теку, де зберігаються ваші музичні файли.</string>

@@ -517,11 +517,8 @@
     <string name="author">نویسنده</string>
     <string name="mardous_summary">توسعه دهنده اصلی</string>
     <string name="contributors">مشارکت کنندگان</string>
-    <string name="acknowledgments_title">تصدیق</string>
     <string name="translators_title">مترجمان</string>
     <string name="translators_summary">با تشکر از کسانی که Booming Music را به زبان های مختلف در دسترس قرار می دهند.</string>
-    <string name="contributors_title">مشارکت کنندگان</string>
-    <string name="contributors_summary">لیستی از کاربرانی که به نوعی در پروژه مشارکت داشته اند.</string>
     <string name="telegram_community">انجمن تلگرام</string>
     <string name="telegram_community_summary">به انجمن تلگرام ما بپیوندید تا از اخبار و اخبار جدید با خبر شوید.</string>
     <string name="view_profile_on_github">نمایه را در GitHub مشاهده کنید</string>
@@ -536,7 +533,6 @@
     <string name="share_app_summary">اگر این برنامه را با دوستان خود به اشتراک بگذارید، می توانید به رشد آن کمک کنید.</string>
     <string name="send_invitation_message">ارسال پیام دعوت</string>
     <string name="invitation_message_content">سلام موسیقی پررونق را بررسی کنید! بهترین برنامه برای گوش دادن به موسیقی محلی در اندروید. می توانید آن را از اینجا دانلود کنید: %s</string>
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">شما به وب سایت ردیاب مشکل هدایت می شوید.</string>
     <string name="saf_access_required_title">دسترسی به فضای ذخیره سازی مورد نیاز است</string>
     <string name="saf_access_required_message">Booming Music برای دسترسی به این فایل‌ها به مجوز نیاز دارد. لطفاً پوشه ریشه ای که فایل های موسیقی شما در آن ذخیره می شوند را انتخاب کنید.</string>
     <string name="saf_show_files_button">نمایش فایل ها</string>

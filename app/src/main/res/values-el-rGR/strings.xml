@@ -503,11 +503,8 @@
     <string name="author">Συγγραφέας</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">Contributors</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Ευχαριστούμε όσους κάνουν την Booming Music διαθέσιμη σε πολλές γλώσσες.</string>
-    <string name="contributors_title">Συνεισφέροντες</string>
-    <string name="contributors_summary">Μια λίστα από χρήστες που έχουνε συνεισφέρει στο έργο μας με κάποιον τρόπο.</string>
     <string name="view_profile_on_github">Προβολή προφίλ στο GitHub</string>
     <string name="write_an_email">Γράψτε ένα email</string>
     <string name="support_development">Ανάπτυξη υποστήριξης</string>
@@ -520,7 +517,6 @@
     <string name="send_invitation_message">Αποστολή μηνύματος πρόσκλησης</string>
     <string name="invitation_message_content">Γεια σας. Ρίξτε μια ματιά στο Booming Music! Η καλύτερη εφαρμογή για να ακούσετε τοπική μουσική στο Android. Μπορείτε να το κατεβάσετε από εδώ: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Θα μεταφερθείτε στην ιστοσελίδα του ανιχνευτή προβλημάτων.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Απαιτείται Πρόσβαση Χώρου Αποθήκευσης</string>
     <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>

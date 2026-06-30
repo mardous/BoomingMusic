@@ -495,11 +495,8 @@
     <string name="author">작성자</string>
     <string name="mardous_summary">리드 개발자</string>
     <string name="contributors">기여자</string>
-    <string name="acknowledgments_title">감사의 말</string>
     <string name="translators_title">번역가</string>
     <string name="translators_summary">여러 언어로 번역해주신 분들께 감사드립니다.</string>
-    <string name="contributors_title">참여자</string>
-    <string name="contributors_summary">프로젝트에 기여해주신 사용자 목록입니다.</string>
     <string name="view_profile_on_github">GitHub 프로필 보기</string>
     <string name="write_an_email">이메일 쓰기</string>
     <string name="support_development">개발 지원</string>
@@ -512,7 +509,6 @@
     <string name="send_invitation_message">초대 메시지 보내기</string>
     <string name="invitation_message_content">안녕! 로컬 음악을 듣기에 최고의 앱인 Booming Music을 확인해봐. 여기서 다운로드할 수 있어: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">이슈 트래커 웹사이트로 이동합니다.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">저장공간 권한 필요</string>
     <string name="saf_access_required_message">파일 액세스 권한이 필요합니다. 음악 파일이 저장된 루트 폴더를 선택해 주세요.</string>

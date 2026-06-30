@@ -1,23 +1,43 @@
 [
   {
+    "contrib_name": "Arabic (Saudi Arabia)",
+    "contrib_description": "[WESAM ALSHAMMRY](https://hosted.weblate.org/user/wsaamalshmry/)"
+  },
+  {
+    "contrib_name": "Belarusian",
+    "contrib_description": "[Aliaksandr Kliujeŭ](https://hosted.weblate.org/user/PlagaMedicum/)"
+  },
+  {
     "contrib_name": "Catalan",
-    "contrib_description": "[Andreu Silvestre](https://hosted.weblate.org/user/andreu.silvestre), [Adolfo Jayme-Barrientos](https://github.com/fitojb), [Mikote111](https://github.com/Mikote111)"
+    "contrib_description": "[Andreu Silvestre Pla](https://hosted.weblate.org/user/andreu.silvestre/), [Adolfo Jayme Barrientos](https://hosted.weblate.org/user/Fito/), [Gusdlcj](https://hosted.weblate.org/user/Gusdlcj/), [Bernat](https://hosted.weblate.org/user/Bernat/)"
   },
   {
-    "contrib_name": "Chinese Simplified",
-    "contrib_description": "[dwughjsd](https://github.com/dwughjsd), [reducedradius](https://github.com/flytothehighest), [Rongxuan](https://crowdin.com/profile/rongxuan2333), [LuDreamst](https://crowdin.com/profile/ludreamst), [Remelens](https://crowdin.com/profile/remelens), [Evan Ruan](https://crowdin.com/profile/borcolasky), [wangyi](https://crowdin.com/profile/wangyi2839792050), Ranpo Doyle"
+    "contrib_name": "Chinese (Simplified Han script)",
+    "contrib_description": "[dwughjsd](https://hosted.weblate.org/user/dwughjsd/), [reducedradius](https://hosted.weblate.org/user/flytothehighest/), [eNoWater](https://hosted.weblate.org/user/Rf_sun/)"
   },
   {
-    "contrib_name": "Chinese Traditional",
-    "contrib_description": "[Oliver Tzeng](https://github.com/olivertzeng)"
+    "contrib_name": "Chinese (Traditional Han script)",
+    "contrib_description": "[HUGOALH](https://hosted.weblate.org/user/hugoalh/)"
+  },
+  {
+    "contrib_name": "Croatian",
+    "contrib_description": "[razorblade23](https://hosted.weblate.org/user/razorblade23/), [marin-19](https://hosted.weblate.org/user/marin-19/)"
   },
   {
     "contrib_name": "Dutch",
-    "contrib_description": "[Anne Jan Brouwer](https://github.com/annejan), [Watchman89](https://github.com/Watchman89), [Contributor](https://github.com/Waaromdoejemoeiteomdittelezen), [Myrdincx](https://crowdin.com/profile/myrdincx)"
+    "contrib_description": "[Watchman89](https://hosted.weblate.org/user/Watchman89/), [Anne Jan Brouwer](https://hosted.weblate.org/user/annejan/), [Olle Pierik](https://hosted.weblate.org/user/Rolliepiek/), [unables222](https://hosted.weblate.org/user/unables222/)"
+  },
+  {
+    "contrib_name": "English",
+    "contrib_description": "[Neko Edges](https://hosted.weblate.org/user/nekoedgesxd/), [Efraim Sundelin](https://hosted.weblate.org/user/efraim.sundelin/), [Wolf Wolf](https://hosted.weblate.org/user/wolfatom1/), [Adolfo Jayme Barrientos](https://hosted.weblate.org/user/Fito/), [Cataphract](https://hosted.weblate.org/user/Cataphract0/), [VICTOR HUGO CUBINES](https://hosted.weblate.org/user/ROTCIVOGUH741/), [12 ICT B Cabria, John Paulo B.](https://hosted.weblate.org/user/johnpaulocabria410/)"
   },
   {
     "contrib_name": "Estonian",
     "contrib_description": "[Priit Jõerüüt](https://hosted.weblate.org/user/jrthwlate/)"
+  },
+  {
+    "contrib_name": "Filipino",
+    "contrib_description": "[Wacky Wars](https://hosted.weblate.org/user/wackycreeper/), [12 ICT B Cabria, John Paulo B.](https://hosted.weblate.org/user/johnpaulocabria410/)"
   },
   {
     "contrib_name": "Finnish",
@@ -25,70 +45,94 @@
   },
   {
     "contrib_name": "French",
-    "contrib_description": "[Mickael81](https://github.com/Mickael81), [Error-Cezar](https://github.com/Error-Cezar), [LeMalgache](https://crowdin.com/profile/lemalgache), [Leo-Tinkeam](https://crowdin.com/profile/leo-tinkeam)"
+    "contrib_description": "[Mickaël Binos](https://hosted.weblate.org/user/Mickael81/), [Myrano](https://hosted.weblate.org/user/Myrano/)"
+  },
+  {
+    "contrib_name": "Galician",
+    "contrib_description": "[Blue Unity Scratch](https://hosted.weblate.org/user/gomgo/)"
   },
   {
     "contrib_name": "German",
-    "contrib_description": "[Lenard Felix](https://crowdin.com/profile/lenard.flx), [FabiRich](https://github.com/FabiRich), [Merlan1](https://github.com/Merlan1), [elea11](https://crowdin.com/profile/elea11), [Milo Thomas](https://crowdin.com/profile/tmh), [Jonathan](https://crowdin.com/profile/jonmor.rhs)"
+    "contrib_description": "[FabiRich](https://hosted.weblate.org/user/FabiRich/), [Merlin](https://hosted.weblate.org/user/MikeMaulwurf/), [Paul](https://hosted.weblate.org/user/pschell/), [Ina](https://hosted.weblate.org/user/inchen_he/), [Dominik Henkel](https://hosted.weblate.org/user/Domi_1887/)"
+  },
+  {
+    "contrib_name": "Greek",
+    "contrib_description": "[chrisandreou-sys](https://hosted.weblate.org/user/chrisandreou-sys/), [Savvas Karakizas](https://hosted.weblate.org/user/savvas09/)"
   },
   {
     "contrib_name": "Hebrew",
-    "contrib_description": "[elid1](https://crowdin.com/profile/elid1), [Walbeg Tronael](https://crowdin.com/profile/tronael)"
-  },
-  {
-    "contrib_name": "Hindi",
-    "contrib_description": "[Lucky Mehra](https://crowdin.com/profile/luckymehra776)"
+    "contrib_description": "[Omer I.S.](https://hosted.weblate.org/user/omeritzics/)"
   },
   {
     "contrib_name": "Indonesian",
-    "contrib_description": "[Arif Budiman](https://github.com/arifpedia), [Vierilukmantia](https://github.com/Vierilukmantia), [exodius](https://crowdin.com/profile/exodius)"
+    "contrib_description": "[Arif Budiman](https://hosted.weblate.org/user/arifpedia/), [Franz Sanford](https://hosted.weblate.org/user/tangkaisirna11/), [MAS VERI](https://hosted.weblate.org/user/vierilukmantia6/)"
   },
   {
     "contrib_name": "Italian",
-    "contrib_description": "[hemoy55327](https://crowdin.com/profile/hemoy55327)"
+    "contrib_description": "[Nicola Bortoletto](https://hosted.weblate.org/user/mochkoli/), [Andrea Mor](https://hosted.weblate.org/user/el90moro/), [scudo](https://hosted.weblate.org/user/scudo005/), [Tomiri EXPT](https://hosted.weblate.org/user/tomiriexpt/), [Carlos Balarezo](https://hosted.weblate.org/user/BalFaz/), [rob la](https://hosted.weblate.org/user/cuscino1231/)"
   },
   {
     "contrib_name": "Japanese",
-    "contrib_description": "[Renorari](https://github.com/renorari), [keikun13](https://crowdin.com/profile/keikun13), morukanu1"
+    "contrib_description": "[Renorari](https://hosted.weblate.org/user/renorari/)"
+  },
+  {
+    "contrib_name": "Kazakh",
+    "contrib_description": "[Алкуат Базарбеков](https://hosted.weblate.org/user/alkuat666/)"
   },
   {
     "contrib_name": "Korean",
-    "contrib_description": "[JungHee Lee](https://github.com/MarongHappy)"
+    "contrib_description": "[Heeheon Ryu](https://hosted.weblate.org/user/ryu_001/), [이정희](https://hosted.weblate.org/user/MarongHappy/), [Gusdlcj](https://hosted.weblate.org/user/Gusdlcj/)"
+  },
+  {
+    "contrib_name": "Luri (Bakhtiari)",
+    "contrib_description": "[hosêyň abāspanā](https://hosted.weblate.org/user/hosseinabaspanah/)"
+  },
+  {
+    "contrib_name": "Persian",
+    "contrib_description": "[Danial Shirali](https://hosted.weblate.org/user/danialshirali16/)"
   },
   {
     "contrib_name": "Polish",
-    "contrib_description": "[HackZy](https://crowdin.com/profile/hackzy), [Szuwax](https://crowdin.com/profile/szuwax)"
+    "contrib_description": "[Przemek](https://hosted.weblate.org/user/przemek1505/)"
   },
   {
-    "contrib_name": "Portuguese",
-    "contrib_description": "[Matt](https://crowdin.com/profile/me-at-the-age-of-git)"
+    "contrib_name": "Portuguese (Brazil)",
+    "contrib_description": "[n-qber](https://hosted.weblate.org/user/n-qber/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/), [VICTOR HUGO CUBINES](https://hosted.weblate.org/user/ROTCIVOGUH741/), [Matheus Ribeiro Rodrigues](https://hosted.weblate.org/user/mathoo/), [Hamilton Zanini](https://hosted.weblate.org/user/hrszanini/), [Thiago Papageorgiou](https://hosted.weblate.org/user/tnpapa/), [Isaki23](https://hosted.weblate.org/user/isqbx23ia/), [Fúlvio Leo](https://hosted.weblate.org/user/Penfore/), [Hilmez](https://hosted.weblate.org/user/Hilmez/)"
   },
   {
-    "contrib_name": "Portuguese (Brazilian)",
-    "contrib_description": "[Matt](https://crowdin.com/profile/me-at-the-age-of-git), [wbellato](https://crowdin.com/profile/wbellato), [Walbeg Tronael](https://crowdin.com/profile/tronael)"
+    "contrib_name": "Portuguese (Portugal)",
+    "contrib_description": "[ssantos](https://hosted.weblate.org/user/ssantos/), [António Oliveira](https://hosted.weblate.org/user/antonio.oliveira/)"
   },
   {
     "contrib_name": "Russian",
-    "contrib_description": "[tnvdeveloper](https://github.com/tnvdeveloper), [Horizon](https://github.com/BlueGradientHorizon), [Shlerspet](https://crowdin.com/profile/shlerspet), [Anton](https://crowdin.com/profile/antoon334), [Axus Wizix](https://crowdin.com/profile/axuswizix), elixcat"
+    "contrib_description": "[PONYATIN](https://hosted.weblate.org/user/PONYATIN/), [Horizon](https://hosted.weblate.org/user/BlueGradientHorizon/), [Neko Edges](https://hosted.weblate.org/user/nekoedgesxd/), [Dmitry Warkentin](https://hosted.weblate.org/user/xmeanwhile/), [tnvdeveloper](https://hosted.weblate.org/user/tnvdeveloper/), [Артур](https://hosted.weblate.org/user/Bodr1yar/), [Andrei Stepanov](https://hosted.weblate.org/user/adem/), [FatAndrews](https://hosted.weblate.org/user/FatAndrews/), [Wolf Wolf](https://hosted.weblate.org/user/wolfatom1/), elixcat"
   },
   {
     "contrib_name": "Spanish",
-    "contrib_description": "[Adolfo Jayme-Barrientos](https://github.com/fitojb), [salvador-pena](https://github.com/salvador-pena), [Agustina Araya Lucato](https://crowdin.com/profile/agustt170), [Irina Berenguer Tretter](https://crowdin.com/profile/a55pirina)"
+    "contrib_description": "[Adolfo Jayme Barrientos](https://hosted.weblate.org/user/Fito/), [Libre](https://hosted.weblate.org/user/Libertad/), [Salvador Peña](https://hosted.weblate.org/user/sal/), [fsadfsdfs](https://hosted.weblate.org/user/Arena2134/), [LordTenebrous](https://hosted.weblate.org/user/LordTenebrous/)"
+  },
+  {
+    "contrib_name": "Spanish (American)",
+    "contrib_description": "[Gusdlcj](https://hosted.weblate.org/user/Gusdlcj/), [Salvador Peña](https://hosted.weblate.org/user/sal/), [Matheus Ribeiro Rodrigues](https://hosted.weblate.org/user/mathoo/)"
   },
   {
     "contrib_name": "Swedish",
-    "contrib_description": "[Maurycy](https://github.com/XCOM-HUB), [Luna Jernberg](https://github.com/bittin)"
+    "contrib_description": "[Maurycy](https://hosted.weblate.org/user/XCOM-HUB/), [bittin1ddc447d824349b2](https://hosted.weblate.org/user/bittin1ddc447d824349b2/), [Efraim Sundelin](https://hosted.weblate.org/user/efraim.sundelin/)"
+  },
+  {
+    "contrib_name": "Tamil",
+    "contrib_description": "[தமிழ்நேரம்](https://hosted.weblate.org/user/TamilNeram/)"
   },
   {
     "contrib_name": "Turkish",
-    "contrib_description": "[Kehribar](https://github.com/dpentx), [muhaco](https://github.com/muhaco), [Alperen Turan](https://github.com/acimasizburger), [Holi](https://crowdin.com/profile/mikropsoft)"
+    "contrib_description": "[muhaco](https://hosted.weblate.org/user/muhaco/), [Berk Çelik](https://hosted.weblate.org/user/gr33ns3a/), [Kadir Korkut](https://hosted.weblate.org/user/kadirlo027/), [Kehribar](https://hosted.weblate.org/user/dpentx/), [Cataphract](https://hosted.weblate.org/user/Cataphract0/), [Alperen Turan](https://hosted.weblate.org/user/acimasizburger/)"
   },
   {
     "contrib_name": "Ukrainian",
-    "contrib_description": "[Yulia Kaminska](https://crowdin.com/profile/ulia.kaminska15), elixcat"
+    "contrib_description": "[Dan](https://hosted.weblate.org/user/kefir2105/), [YaroslavYath](https://hosted.weblate.org/user/Natmers/)"
   },
   {
     "contrib_name": "Vietnamese",
-    "contrib_description": "[An Tư Nhất](https://github.com/antunhat3546), [Zanei Nguyen](https://crowdin.com/profile/zanei), [Krist-OVSL](https://crowdin.com/profile/krist-ovsl)"
+    "contrib_description": "[Zanei Nguyen](https://hosted.weblate.org/user/danhn4286/), [Tran Quoc Vinh](https://hosted.weblate.org/user/tranquocvinh2828/), [An Tư Nhất](https://hosted.weblate.org/user/tunhat3546/), [abx5512](https://hosted.weblate.org/user/abx5512/), [Thế Anh Hoàng](https://hosted.weblate.org/user/the.anh.ls/)"
   }
 ]

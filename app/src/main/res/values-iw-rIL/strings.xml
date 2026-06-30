@@ -511,11 +511,8 @@
     <string name="author">יוצר</string>
     <string name="mardous_summary">מפתח ראשי</string>
     <string name="contributors">תורמים</string>
-    <string name="acknowledgments_title">הכרה</string>
     <string name="translators_title">מתרגמים</string>
     <string name="translators_summary">תודה לאלו שעוזרים להפוך את Booming Music לזמין בשפות רבות.</string>
-    <string name="contributors_title">תורמים</string>
-    <string name="contributors_summary">רשימת משתמשים שתרמו למיזם בדרך כלשהי.</string>
     <string name="view_profile_on_github">צפה בפרופיל ב-GitHub</string>
     <string name="write_an_email">כתוב אימייל</string>
     <string name="support_development">תמיכה בפיתוח</string>
@@ -528,7 +525,6 @@
     <string name="send_invitation_message">שלח הודעת הזמנה</string>
     <string name="invitation_message_content">אהלן. למה לא לבדוק את Booming Music! זה היישום הכי טוב להאזנה למוזיקה מקומית במכשירי אנדרואיד. אפשר להוריד אותו מכאן: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">תועברו לאתר האינטרנט למעקב הבעיות.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">נדרש גישה לאחסון</string>
     <string name="saf_access_required_message">האפליקציה Booming Music דורשת הרשאה לגישה לקבצים אלו. אנא בחר את התיקייה הראשית שבה מאוחסנים קבצי המוזיקה שלך.</string>

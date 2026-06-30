@@ -567,11 +567,8 @@
     <string name="author">நூலாசிரியர்</string>
     <string name="mardous_summary">முன்னணி உருவாக்குபவர்</string>
     <string name="contributors">பங்களிப்பாளர்கள்</string>
-    <string name="acknowledgments_title">ஏற்பு</string>
     <string name="translators_title">மொழிபெயர்ப்பாளர்கள்</string>
     <string name="translators_summary">பூமிங் இசையை பல மொழிகளில் கிடைக்கச் செய்தவர்களுக்கு நன்றி.</string>
-    <string name="contributors_title">பங்களிப்பாளர்கள்</string>
-    <string name="contributors_summary">ஏதோ ஒரு வகையில் திட்டத்தில் பங்களித்த பயனர்களின் பட்டியல்.</string>
     <string name="telegram_community">தந்தி சமூகம்</string>
     <string name="telegram_community_summary">புதிய வெளியீடுகள் மற்றும் செய்திகளை உடனுக்குடன் தெரிந்துகொள்ள எங்கள் டெலிகிராம் சமூகத்தில் சேரவும்.</string>
     <string name="view_profile_on_github">GitHub இல் சுயவிவரத்தைக் காண்க</string>
@@ -586,7 +583,6 @@
     <string name="share_app_summary">இந்த செயலியை நண்பர்களுடன் பகிர்ந்து கொண்டால் அதை வளர உதவலாம்.</string>
     <string name="send_invitation_message">அழைப்பு செய்தியை அனுப்பவும்</string>
     <string name="invitation_message_content">வணக்கம். பூமிங் இசையைப் பாருங்கள்! ஆண்ட்ராய்டு இல் உள்ளக இசையைக் கேட்க சிறந்த பயன்பாடு. நீங்கள் அதை இங்கிருந்து பதிவிறக்கம் செய்யலாம்: %s</string>
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">சிக்கல் கண்காணிப்பு இணையதளத்திற்கு நீங்கள் அனுப்பப்படுவீர்கள்.</string>
     <string name="saf_access_required_title">சேமிப்பக அணுகல் தேவை</string>
     <string name="saf_access_required_message">பூமிங் இசைக்கு இந்தக் கோப்புகளை அணுக இசைவு தேவை. உங்கள் இசைக் கோப்புகள் சேமிக்கப்பட்டுள்ள ரூட் கோப்புறையைத் தேர்ந்தெடுக்கவும்.</string>
     <string name="saf_show_files_button">கோப்புகளைக் காட்டு</string>

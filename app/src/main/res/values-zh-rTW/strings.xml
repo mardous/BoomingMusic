@@ -495,11 +495,8 @@
     <string name="author">作者</string>
     <string name="mardous_summary">主要開發者</string>
     <string name="contributors">貢獻者</string>
-    <string name="acknowledgments_title">致謝</string>
     <string name="translators_title">譯者</string>
     <string name="translators_summary">感謝那些為 Booming Music 提供多種語言的人們。</string>
-    <string name="contributors_title">貢獻者</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="view_profile_on_github">在 GitHub 上查看個人資料</string>
     <string name="write_an_email">電子郵件</string>
     <string name="support_development">支援開發</string>
@@ -512,7 +509,6 @@
     <string name="send_invitation_message">發送邀請訊息</string>
     <string name="invitation_message_content">您好。看看 Booming Music！在 Android 上聆聽本地音樂的最佳應用程式。您可以從這裡下載它： %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">即將跳轉到問題跟蹤網站。</string>
     <!-- SAF -->
     <string name="saf_access_required_title">需要存儲訪問</string>
     <string name="saf_access_required_message">Booming Music 需要訪問這些檔案的權限。請選擇您存儲音樂檔案的根資料夾。</string>

@@ -190,11 +190,8 @@
     <string name="author">Autor</string>
     <string name="mardous_summary">Juhtiv arendaja</string>
     <string name="contributors">Kaasautorid</string>
-    <string name="acknowledgments_title">Tänuavaldused</string>
     <string name="translators_title">Tõlkijad</string>
     <string name="translators_summary">Tänud kõigile, kes on Booming Musicu teinud saadavaks paljudes keeltes.</string>
-    <string name="contributors_title">Kaasautorid</string>
-    <string name="contributors_summary">Kasutajad, kes on selles projektis mõnelgi viisil osalenud.</string>
     <string name="telegram_community">Kogukond Telegramis</string>
     <string name="telegram_community_summary">Liitu meie kogukonnaga Telegramis ning näed viimaseid uudised ja teavet uute versioonide kohta.</string>
     <string name="view_profile_on_github">Vaata profiili GitHubis</string>
@@ -209,7 +206,6 @@
     <string name="share_app_summary">Kui jagad teavet selle rakenduse kohta, siis aitad kaasa tema laiemale levikule.</string>
     <string name="send_invitation_message">Saada kutse</string>
     <string name="invitation_message_content">Hei! Palun vaata Booming Musicut - see on parim rakendus kuulamaks Androidi nutiseadmes leiduvaid muusikafaile. Võid ta alla laadida siit: %s</string>
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Suuname päringu edasi meie veahalduse veebisaiti.</string>
     <string name="saf_access_required_title">Ligipääs andmeruumile on nõutav</string>
     <string name="search_for_update_title">Kontrolli uuenduste olemasolu</string>
     <string name="last_update_search_x">Viimane kontroll: %s</string>

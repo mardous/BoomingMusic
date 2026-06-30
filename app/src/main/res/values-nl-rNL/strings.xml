@@ -503,11 +503,8 @@
     <string name="author">Auteur</string>
     <string name="mardous_summary">Hoofdontwikkelaar</string>
     <string name="contributors">Bijdragers</string>
-    <string name="acknowledgments_title">Bevestiging</string>
     <string name="translators_title">Vertalers</string>
     <string name="translators_summary">Dank aan degenen die Booming Music in veel talen beschikbaar maken.</string>
-    <string name="contributors_title">Contributeurs</string>
-    <string name="contributors_summary">Een lijat gebruikers die op een of andere manier hebben bijgedagen aan het project.</string>
     <string name="view_profile_on_github">Bekijk profiel op GitHub</string>
     <string name="write_an_email">Schrijf een email</string>
     <string name="support_development">Ondersteun ontwikkeling</string>
@@ -520,7 +517,6 @@
     <string name="send_invitation_message">Stuur uitnodigingsbericht</string>
     <string name="invitation_message_content">Hoi. Bekijk Booming Music! De beste app om lokale muziek te beluisteren op Android. Je kunt deze hier downloaden: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">U wordt doorgestuurd naar de probleemtracker website.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Opslagtoegang vereist</string>
     <string name="saf_access_required_message">Booming Music vereist toestemming te krijgen tot deze bestanden. Selecteer de hoofdmap waar je muziekbestanden opgeslagen worden.</string>

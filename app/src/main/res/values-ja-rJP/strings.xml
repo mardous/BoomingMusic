@@ -495,11 +495,8 @@
     <string name="author">作成者</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">コントリビューター</string>
-    <string name="acknowledgments_title">謝辞</string>
     <string name="translators_title">翻訳者</string>
     <string name="translators_summary">Booming Musicを多くの言語で利用可能にしてくれた人たちに感謝します。</string>
-    <string name="contributors_title">貢献者</string>
-    <string name="contributors_summary">プロジェクトに何らかの方法で貢献したユーザーのリスト。</string>
     <string name="view_profile_on_github">GitHubでプロフィールを表示</string>
     <string name="write_an_email">メールを書く</string>
     <string name="support_development">開発を支援する</string>
@@ -512,7 +509,6 @@
     <string name="send_invitation_message">招待メッセージを送信</string>
     <string name="invitation_message_content">こんにちは！ Androidでローカルミュージックを聴くのに最適なアプリ、『Booming Music』をぜひチェックしてみてください！ こちらからダウンロードできます: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">バグ管理システムのウェブサイトに移動します。</string>
     <!-- SAF -->
     <string name="saf_access_required_title">ストレージアクセスが必要です</string>
     <string name="saf_access_required_message">Booming Musicはこれらのファイルへのアクセス許可を必要としています。音楽ファイルが保存されているルートフォルダを選択してください。</string>

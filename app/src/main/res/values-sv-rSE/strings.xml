@@ -503,11 +503,8 @@
     <string name="author">Författare</string>
     <string name="mardous_summary">Huvudutvecklare</string>
     <string name="contributors">Bidragsgivare</string>
-    <string name="acknowledgments_title">Bekräftelse</string>
     <string name="translators_title">Översättare</string>
     <string name="translators_summary">Tack till dem som gör Booming Music tillgänglig på många språk.</string>
-    <string name="contributors_title">Bidragsgivare</string>
-    <string name="contributors_summary">En lista över användare som på något sätt har bidragit till projektet.</string>
     <string name="view_profile_on_github">Visa profil på GitHub</string>
     <string name="write_an_email">Skriv en e-postadress</string>
     <string name="support_development">Stöd utvecklingen</string>
@@ -520,7 +517,6 @@
     <string name="send_invitation_message">Skicka inbjudningsmeddelande</string>
     <string name="invitation_message_content">Hej. Kolla in Booming Music! Den bästa appen för att lyssna på lokal musik på Android. Du kan ladda ner den här: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Du kommer att vidarebefordras till ärendehanterarens webbplats.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Tillgång till lagring krävs</string>
     <string name="saf_access_required_message">Booming Music kräver behörighet att komma åt dessa filer. Välj rotmappen där dina musikfiler lagras.</string>

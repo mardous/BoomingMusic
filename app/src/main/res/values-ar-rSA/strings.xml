@@ -535,11 +535,8 @@
     <string name="author">المؤلف</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">المساهمون</string>
-    <string name="acknowledgments_title">تنويه</string>
     <string name="translators_title">المترجمون</string>
     <string name="translators_summary">شكراً لأولئك الذين يجعلون الموسيقى المزدهرة متاحة بعدة لغات.</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="view_profile_on_github">عرض الملف الشخصي على GitHub</string>
     <string name="write_an_email">كتابة بريد إلكتروني</string>
     <string name="support_development">دعم التطوير</string>
@@ -552,7 +549,6 @@
     <string name="send_invitation_message">إرسال رسالة الدعوة</string>
     <string name="invitation_message_content">مرحبًا. تحقق من الموسيقى المزدهرة! أفضل تطبيق للاستماع إلى الموسيقى المحلية على أندرويد. يمكنك تنزيلها من هنا: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">سيتم إعادة توجيهك إلى موقع تتبع المشكلة.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">مطلوب الوصول إلى التخزين</string>
     <string name="saf_access_required_message">يتطلب ازدهار الموسيقى الإذن للوصول إلى هذه الملفات. الرجاء تحديد المجلد الجذر حيث يتم تخزين ملفات الموسيقى الخاصة بك.</string>

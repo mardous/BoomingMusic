@@ -503,11 +503,8 @@
     <string name="author">Tekijä</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">Avustajat</string>
-    <string name="acknowledgments_title">Tunnustus</string>
     <string name="translators_title">Kääntäjät</string>
     <string name="translators_summary">Kiitos niille, jotka tekevät Booming musiikkia saatavilla monilla kielillä.</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="view_profile_on_github">Näytä profiili GitHubissa</string>
     <string name="write_an_email">Kirjoita sähköposti</string>
     <string name="support_development">Tue kehitystä</string>
@@ -520,7 +517,6 @@
     <string name="send_invitation_message">Lähetä kutsu viesti</string>
     <string name="invitation_message_content">Hei. Tsekkaa Booming Music! Paras sovellus kuunnella paikallista musiikkia Androidissa. Voit ladata sen täältä: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Sinut välitetään edelleen ongelman seurannan verkkosivuille.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Tallennustilan Käyttö Vaaditaan</string>
     <string name="saf_access_required_message">Booming Music vaatii luvan käyttää näitä tiedostoja. Valitse pääkansio johon musiikkitiedostot on tallennettu.</string>

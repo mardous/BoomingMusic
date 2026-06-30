@@ -519,11 +519,8 @@
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">Přispěvatelé</string>
-    <string name="acknowledgments_title">Potvrzení</string>
     <string name="translators_title">Překladatelé</string>
     <string name="translators_summary">Díky těm, kteří zpřístupňují Booming Music v mnoha jazycích.</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="view_profile_on_github">Zobrazit profil na GitHub</string>
     <string name="write_an_email">Napsat e-mail</string>
     <string name="support_development">Podpořte vývoj</string>
@@ -536,7 +533,6 @@
     <string name="send_invitation_message">Odeslat pozvánku</string>
     <string name="invitation_message_content">Ahoj. Podívejte se na Booming Musice! Nejlepší aplikace pro poslech místní hudby na Android. Můžete si ji stáhnout zde: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Budete přesměrováni na webovou stránku pro sledování problémů.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Vyžadován přístup k úložišti</string>
     <string name="saf_access_required_message">Booming Music vyžaduje oprávnění pro přístup k těmto souborům. Prosím vyberte kořenovou složku, kde jsou vaše hudební soubory uloženy.</string>

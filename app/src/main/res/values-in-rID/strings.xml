@@ -495,11 +495,8 @@
     <string name="author">Penulis</string>
     <string name="mardous_summary">Pengembang Utama</string>
     <string name="contributors">Kontributor</string>
-    <string name="acknowledgments_title">Pengakuan</string>
     <string name="translators_title">Penerjemah</string>
     <string name="translators_summary">Terima kasih kepada mereka yang membuat Booming Music tersedia dalam berbagai bahasa.</string>
-    <string name="contributors_title">Kontributor</string>
-    <string name="contributors_summary">Daftar pengguna yang telah berkontribusi pada proyek ini dengan berbagai cara.</string>
     <string name="view_profile_on_github">Lihat profil di GitHub</string>
     <string name="write_an_email">Tulis email</string>
     <string name="support_development">Dukung pengembangan</string>
@@ -512,7 +509,6 @@
     <string name="send_invitation_message">Kirim pesan undangan</string>
     <string name="invitation_message_content">Hai. Coba Booming Music! Aplikasi terbaik untuk mendengarkan musik lokal di Android. Anda dapat mengunduhnya di sini: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Anda akan diarahkan ke situs web pelacak masalah.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Akses Penyimpanan Diperlukan</string>
     <string name="saf_access_required_message">Booming Music memerlukan izin untuk mengakses file-file ini. Silakan pilih folder utama tempat file musik Anda disimpan.</string>

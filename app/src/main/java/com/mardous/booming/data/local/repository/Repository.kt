@@ -21,7 +21,6 @@ import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.media3.common.MediaItem
-import com.mardous.booming.core.model.about.Contribution
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
 import com.mardous.booming.data.SearchFilter
 import com.mardous.booming.data.local.room.PlayCountEntity
@@ -148,8 +147,6 @@ interface Repository {
     suspend fun deezerAlbum(artist: String, name: String): DeezerAlbum?
     suspend fun artistInfo(name: String, lang: String?, cache: String?): LastFmArtist?
     suspend fun albumInfo(artist: String, album: String, lang: String?): LastFmAlbum?
-    suspend fun contributors(): List<Contribution>
-    suspend fun translators(): List<Contribution>
 }
 
 class RealRepository(
@@ -465,9 +462,4 @@ class RealRepository(
     override suspend fun albumInfo(artist: String, album: String, lang: String?) =
         networkRepository.albumInfo(artist, album, lang)
 
-    override suspend fun contributors(): List<Contribution> =
-        Contribution.loadContributions(context, "contributors.json")
-
-    override suspend fun translators(): List<Contribution> =
-        Contribution.loadContributions(context, "translators.json")
 }
