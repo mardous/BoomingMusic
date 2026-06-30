@@ -928,4 +928,12 @@
     <string name="lyrics_karaoke_style_title">Karaoke-stiilis laulusõnad</string>
     <string name="eq_pre_gain">Eelvõimendus</string>
     <string name="eq_post_gain">Järelvõimendus</string>
+    <string name="eq_threshold">Lävend</string>
+    <string name="eq_ratio">Suhtarv</string>
+    <string name="lyrics_show_translation_title">Näita tõlget</string>
+    <string name="lyrics_show_translation_summary">Kui saadaval on tõlgitud laulusõnad, siis näita neid.</string>
+    <string name="lyrics_show_transliteration_summary">Kui saadaval on translitereeritud laulusõnad, siis näita neid.</string>
+    <string name="lyrics_show_transliteration_title">Näita transliteratsiooni</string>
+    <string name="lyrics_resume_on_seek_title">Kerimisel jätka</string>
+    <string name="lyrics_resume_on_seek_summary">Rea klõpsamisel jätka sealt taasesitust.</string>
 </resources>
