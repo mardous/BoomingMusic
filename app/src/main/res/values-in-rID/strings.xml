@@ -940,4 +940,20 @@
     <string name="eq_pre_gain">Pre-gain</string>
     <string name="eq_post_gain">Post-gain</string>
     <string name="file_lyrics">Berkas</string>
+    <string name="rg_with_tag">Dengan tag</string>
+    <string name="rg_without_tag">Tanpa tag</string>
+    <string name="app_version_x">Versi %s</string>
+    <string name="app_description">Desain modern. Suara murni. Sepenuhnya milik Anda.</string>
+    <string name="more_contributors_title">Kontributor lainnya</string>
+    <string name="more_contributors_summary">Anda dapat melihat daftar lengkap kontributor di GitHub.</string>
+    <string name="lyrics_karaoke_style_title">Lirik bergaya karaoke</string>
+    <string name="lyrics_karaoke_style_summary">Mengaktifkan efek bergaya karaoke untuk lirik yang tersinkron kata demi kata. Harap diperhatikan bahwa ini adalah fitur eksperimental.</string>
+    <string name="lyrics_show_translation_title">Tampilkan terjemahan</string>
+    <string name="lyrics_show_translation_summary">Tampilkan lirik terjemahan jika tersedia.</string>
+    <string name="lyrics_show_transliteration_title">Tampilkan transliterasi</string>
+    <string name="lyrics_show_transliteration_summary">Tampilkan lirik hasil transliterasi jika tersedia.</string>
+    <string name="lyrics_bold_synced_title">Font tebal untuk lirik tersinkron</string>
+    <string name="lyrics_bold_synced_summary">Tampilkan lirik tersinkron dengan font tebal.</string>
+    <string name="lyrics_resume_on_seek_title">Lanjutkan saat seek</string>
+    <string name="lyrics_resume_on_seek_summary">Lanjutkan pemutaran secara otomatis saat mengklik sebuah baris.</string>
 </resources>
