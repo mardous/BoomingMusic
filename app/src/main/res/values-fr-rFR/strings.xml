@@ -970,4 +970,8 @@
     <string name="lyrics_show_transliteration_summary">Afficher les paroles translittérées si elles sont disponibles.</string>
     <string name="lyrics_resume_on_seek_title">Reprendre la recherche</string>
     <string name="lyrics_resume_on_seek_summary">Reprendre automatiquement la lecture lorsque l\'on clique sur une ligne.</string>
+    <string name="app_version_x">Version %s</string>
+    <string name="app_description">Un design moderne. Un son pur. Entièrement à vous.</string>
+    <string name="more_contributors_title">D\'autres contributeurs</string>
+    <string name="more_contributors_summary">Vous pouvez consulter la liste complète des contributeurs sur GitHub.</string>
 </resources>
