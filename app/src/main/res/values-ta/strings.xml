@@ -935,4 +935,18 @@
     <string name="uncaught_error_restart_app">பயன்பாட்டை மறுதொடக்கம் செய்யுங்கள்</string>
     <string name="uncaught_error_github">GitHub இல் சிக்கலைத் திறக்கவும்</string>
     <string name="uncaught_error_send">அறிக்கை அனுப்பவும்</string>
+    <string name="lyrics_show_transliteration_title"></string>
+    <string name="lyrics_show_translation_title"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="lyrics_resume_on_seek_summary"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="lyrics_show_transliteration_summary"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="lyrics_resume_on_seek_title"></string>
+    <string name="lyrics_show_translation_summary"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
