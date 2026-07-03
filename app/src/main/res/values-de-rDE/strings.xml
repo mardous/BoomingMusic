@@ -961,4 +961,12 @@
     <string name="lyrics_show_transliteration_summary">Transliterierte Liedtexte anzeigen, wenn verfügbar.</string>
     <string name="lyrics_resume_on_seek_title">Nach Suche fortsetzen</string>
     <string name="lyrics_resume_on_seek_summary">Wiedergabe automatisch fortgesetzen, wenn auf eine Zeile geklickt wird.</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
