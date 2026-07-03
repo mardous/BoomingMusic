@@ -1,10 +1,9 @@
 package com.mardous.booming.data.local.lyrics.lrc
 
-import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 
-internal class LrcNode(
-    val rawIndex: Int,
+data class LrcNode(
     val start: Long,
     val text: String?,
     var bgText: String?,
@@ -15,16 +14,17 @@ internal class LrcNode(
 
     var end: Long = INVALID_DURATION
 
-    fun addChild(start: Long, text: String?, actor: LyricsActor?): Boolean {
+    fun addChild(start: Long, end: Long = INVALID_DURATION, text: String?, actor: LyricsActor?): Boolean {
         if (start > INVALID_DURATION) {
-            return children.add(LrcNode(
-                rawIndex = -1,
+            val node = LrcNode(
                 start = start,
                 text = text,
                 bgText = null,
                 rawLine = null,
                 actor = actor
-            ))
+            )
+            node.end = end
+            return children.add(node)
         }
         return false
     }
@@ -47,9 +47,13 @@ internal class LrcNode(
         return if (children.isNotEmpty()) {
             children.sortBy { it.start }
             for (i in 0 until children.lastIndex) {
-                children[i].end = children[i + 1].start
+                if (children[i].end == INVALID_DURATION) {
+                    children[i].end = children[i + 1].start
+                }
             }
-            children[children.lastIndex].end = end
+            if (children[children.lastIndex].end == INVALID_DURATION) {
+                children[children.lastIndex].end = end
+            }
 
             var nextWordStartIndex = 0
             val lastWordIndex = children.lastIndex

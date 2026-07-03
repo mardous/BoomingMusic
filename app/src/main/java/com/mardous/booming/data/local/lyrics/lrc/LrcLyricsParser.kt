@@ -2,9 +2,9 @@ package com.mardous.booming.data.local.lyrics.lrc
 
 import android.util.Log
 import com.mardous.booming.data.LyricsParser
-import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
 import com.mardous.booming.data.model.lyrics.LyricsFile
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import java.io.Reader
 import java.util.Locale
 
@@ -60,20 +60,34 @@ class LrcLyricsParser : LyricsParser {
         val rawLines = mutableListOf<LrcNode>()
         try {
             reader.buffered().use { br ->
-                var rawIndex = 0
                 while (true) {
                     val line = br.readLine() ?: break
                     if (line.isBlank()) continue
 
                     // Check for metadata attributes like [ti:Title]
-                    val attrMatcher = ATTRIBUTE_PATTERN.find(line)
-                    if (attrMatcher != null) {
-                        val attr = attrMatcher.groupValues[1].lowercase(Locale.getDefault()).trim()
-                        val value = attrMatcher.groupValues[2].lowercase(Locale.getDefault())
+                    val attrResult = ATTRIBUTE_PATTERN.find(line)
+                    // Special case: Karaoke word-sync line or Background-only line
+                    val karaokeMatcher = KARAOKE_LINE_PATTERN.find(line)
+                    if (attrResult != null) {
+                        val attr = attrResult.groupValues[1].lowercase(Locale.getDefault()).trim()
+                        val value = attrResult.groupValues[2].lowercase(Locale.getDefault())
                             .trim()
                             .takeUnless { it.isEmpty() } ?: continue
 
                         attributes[attr] = value
+                    } else if (karaokeMatcher != null && rawLines.isNotEmpty()) {
+                        val lastNode = rawLines.last()
+                        val matches = KARAOKE_WORD_PATTERN.findAll(karaokeMatcher.groupValues[1]).toList()
+                        matches.forEachIndexed { index, match ->
+                            var wordText = match.groupValues[1]
+                            if (index < matches.lastIndex && !wordText.endsWith(" ")) {
+                                wordText += " "
+                            }
+                            val startMs = (match.groupValues[2].toFloat() * 1000).toLong()
+                            val endMs = (match.groupValues[3].toFloat() * 1000).toLong()
+
+                            lastNode.addChild(startMs, endMs, wordText, lastNode.actor)
+                        }
                     } else {
                         // Check for lyric lines with timestamps
                         val lineResult = LINE_PATTERN.find(line)
@@ -86,19 +100,18 @@ class LrcLyricsParser : LyricsParser {
 
                             var foundAny = false
                             // Extract all timestamps from the line (LRC allows multiple timestamps for one line)
-                            val timeMatches = LINE_TIME_PATTERN.findAll(base)
-                            for (time in timeMatches) {
-                                val timeMs = parseTime(time)
+                            LINE_TIME_PATTERN.findAll(base).forEach { match ->
+                                val timeMs = parseTime(match)
                                 if (timeMs > LrcNode.INVALID_DURATION) {
-                                    rawLines.add(LrcNode(rawIndex++, timeMs, text, bgText, line))
+                                    rawLines.add(LrcNode(timeMs, text, bgText, line))
                                     foundAny = true
                                 }
                             }
 
-                            // Special case: Background-only line that might refer to the previous line
+                            // Special case: Background-only line
                             if (!foundAny) {
                                 val backgroundMatcher = BACKGROUND_ONLY_PATTERN.find(line)
-                                if (rawLines.isNotEmpty() && backgroundMatcher != null) {
+                                if (backgroundMatcher != null && rawLines.isNotEmpty()) {
                                     val bgText = backgroundMatcher.groupValues.getOrNull(1)?.trim()
                                     if (!bgText.isNullOrEmpty()) {
                                         val lastNode = rawLines.last()
@@ -325,5 +338,7 @@ class LrcLyricsParser : LyricsParser {
         private val LINE_WORD_PATTERN = Regex("<${TIME_PATTERN.pattern}>([^<]*)")
         private val BACKGROUND_ONLY_PATTERN = Regex("^\\[bg:(.*?)]\\s*$")
         private val ATTRIBUTE_PATTERN = Regex("\\[(offset|ti|ar|al|length|by):(.+)]", RegexOption.IGNORE_CASE)
+        private val KARAOKE_LINE_PATTERN = Regex("^<(.*)>$")
+        private val KARAOKE_WORD_PATTERN = Regex("([^:|]+):(\\d+(?:\\.\\d+)?):(\\d+(?:\\.\\d+)?)")
     }
 }
