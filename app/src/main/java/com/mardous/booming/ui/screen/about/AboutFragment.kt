@@ -23,7 +23,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.ui.theme.BoomingMusicTheme
@@ -43,9 +42,6 @@ class AboutFragment : Fragment() {
                     AboutScreen(
                         onBackClick = {
                             getOnBackPressedDispatcher().onBackPressed()
-                        },
-                        onNavigateToId = { destinationId ->
-                            findNavController().navigate(destinationId)
                         }
                     )
                 }
