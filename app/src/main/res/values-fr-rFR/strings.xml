@@ -920,7 +920,7 @@
     </plurals>
     <string name="auto_theme_name">Auto</string>
     <string name="sign_in_to_x_title">Se connecter à %s</string>
-    <string name="connected_account_label">Compte associé :</string>
+    <string name="connected_account_label">Compte associé :</string>
     <string name="login_action">Connexion</string>
     <string name="logout_action">Déconnexion</string>
     <string name="listenbrainz_token_label">Jeton d\'utilisateur</string>
