@@ -970,4 +970,12 @@
     <string name="lyrics_show_transliteration_summary">Afficher les paroles translittérées si elles sont disponibles.</string>
     <string name="lyrics_resume_on_seek_title">Reprendre la recherche</string>
     <string name="lyrics_resume_on_seek_summary">Reprendre automatiquement la lecture lorsque l\'on clique sur une ligne.</string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="grid_size_5" translatable="false"></string>
 </resources>
