@@ -958,33 +958,4 @@
     <string name="eq_pro_mode">Режим Эксперта</string>
     <string name="compressor_label">Компрессор</string>
     <string name="limiter_label">Ограничитель</string>
-    <string name="lyrics_show_transliteration_title"></string>
-    <string name="lyrics_show_translation_title"></string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="lyrics_bold_synced_summary"></string>
-    <string name="eq_pre_gain"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="lyrics_karaoke_style_summary"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="eq_expander_ratio"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="lyrics_resume_on_seek_summary"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="rg_without_tag"></string>
-    <string name="eq_release_time"></string>
-    <string name="lyrics_show_transliteration_summary"></string>
-    <string name="lyrics_karaoke_style_title"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="eq_attack_time"></string>
-    <string name="rg_with_tag"></string>
-    <string name="eq_knee_width"></string>
-    <string name="lyrics_bold_synced_title"></string>
-    <string name="lyrics_resume_on_seek_title"></string>
-    <string name="lyrics_show_translation_summary"></string>
-    <string name="eq_post_gain"></string>
-    <string name="grid_size_5" translatable="false"></string>
-    <string name="eq_ratio"></string>
-    <string name="eq_noise_gate"></string>
-    <string name="eq_threshold"></string>
 </resources>
