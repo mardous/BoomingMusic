@@ -556,7 +556,7 @@
     <string name="advanced_summary">Язык приложения и другие настройки для опытных пользователей.</string>
     <string name="update_title">Обновление</string>
     <string name="about_title">О программе</string>
-    <string name="about_summary">Booming Music %s, коснитесь для получения дополнительной информации.</string>
+    <string name="about_summary">Booming Music %s, нажмите для получения дополнительной информации.</string>
     <!-- Preference headers -->
     <string name="general_header">Общие положения</string>
     <string name="library_header">Библиотека</string>
@@ -958,4 +958,29 @@
     <string name="eq_pro_mode">Режим Эксперта</string>
     <string name="compressor_label">Компрессор</string>
     <string name="limiter_label">Ограничитель</string>
+    <string name="eq_release_time">Восстановление</string>
+    <string name="eq_threshold">Порог</string>
+    <string name="eq_ratio">Соотношение</string>
+    <string name="eq_expander_ratio">Соотношение экспандера</string>
+    <string name="eq_knee_width">Ширина колена</string>
+    <string name="eq_noise_gate">Шумовой гейт</string>
+    <string name="eq_pre_gain">Входное усиление</string>
+    <string name="eq_post_gain">Выходное усиление</string>
+    <string name="rg_with_tag">По тегам</string>
+    <string name="rg_without_tag">Без тегов</string>
+    <string name="app_version_x">Версия %s</string>
+    <string name="lyrics_resume_on_seek_summary">Автоматически возобновлять воспроизведение при нажатии на строку.</string>
+    <string name="eq_attack_time">Время атаки</string>
+    <string name="app_description">Современный дизайн. Чистый звук. Полностью ваш.</string>
+    <string name="more_contributors_title">Другие участники</string>
+    <string name="more_contributors_summary">Полный список участников можно посмотреть на GitHub.</string>
+    <string name="lyrics_karaoke_style_title">Текст в стиле караоке</string>
+    <string name="lyrics_karaoke_style_summary">Включает эффект караоке для текста с пословесной синхронизацией. Обратите внимание, что это экспериментальная функция.</string>
+    <string name="lyrics_show_translation_title">Отображать перевод</string>
+    <string name="lyrics_show_translation_summary">Показывать перевод текста, если он доступен.</string>
+    <string name="lyrics_show_transliteration_title">Отображать транслитерацию</string>
+    <string name="lyrics_show_transliteration_summary">Показывать транслитерацию текста, если она доступна.</string>
+    <string name="lyrics_bold_synced_title">Жирный шрифт для синхронизированного текста</string>
+    <string name="lyrics_bold_synced_summary">Отображать синхронизированный текст жирным шрифтом.</string>
+    <string name="lyrics_resume_on_seek_title">Возобновление при перемотке текста</string>
 </resources>
