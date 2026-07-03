@@ -1,5 +1,6 @@
 package com.mardous.booming.ui.screen.lyrics
 
+import android.os.SystemClock
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -28,12 +29,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -61,6 +65,7 @@ import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings.BackgroundEffect
 import com.mardous.booming.core.model.lyrics.LyricsViewState
 import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.extensions.isPowerSaveMode
 import com.mardous.booming.extensions.resolveColor
@@ -75,7 +80,9 @@ import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.theme.PlayerTheme
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withContext
+import org.koin.compose.viewmodel.koinActivityViewModel
 
 sealed class LyricsUiState(open val id: Long) {
     data class Loading(override val id: Long) : LyricsUiState(id)
@@ -91,11 +98,36 @@ private fun rememberLyricsViewState(lyrics: SyncedLyrics): LyricsViewState {
 }
 
 @Composable
+fun rememberSmoothPlaybackPosition(
+    playerPosition: Long,
+    playbackSpeed: Float,
+    isPlaying: Boolean
+): State<Long> {
+    val position = remember { mutableLongStateOf(playerPosition) }
+    LaunchedEffect(playerPosition, isPlaying) {
+        val baseRealtime = SystemClock.elapsedRealtime()
+        if (!isPlaying) {
+            position.longValue = playerPosition
+            return@LaunchedEffect
+        }
+
+        while (isActive) {
+            withFrameNanos {
+                val elapsed = SystemClock.elapsedRealtime() - baseRealtime
+                position.longValue = playerPosition + (elapsed * playbackSpeed).toLong()
+            }
+        }
+    }
+
+    return position
+}
+
+@Composable
 fun LyricsScreen(
-    libraryViewModel: LibraryViewModel,
-    lyricsViewModel: LyricsViewModel,
-    playerViewModel: PlayerViewModel,
-    onEditClick: () -> Unit
+    libraryViewModel: LibraryViewModel = koinActivityViewModel(),
+    lyricsViewModel: LyricsViewModel = koinActivityViewModel(),
+    playerViewModel: PlayerViewModel = koinActivityViewModel(),
+    onEditClick: (Song) -> Unit
 ) {
     val context = LocalContext.current
     val isPowerSaveMode = context.isPowerSaveMode()
@@ -117,7 +149,7 @@ fun LyricsScreen(
             withContext(Dispatchers.Default) {
                 val result = SingletonImageLoader.get(context).execute(
                     ImageRequest.Builder(context)
-                        .data(playerViewModel.currentSong)
+                        .data(song)
                         .build()
                 )
                 gradientColors = if (result is SuccessResult) {
@@ -139,7 +171,7 @@ fun LyricsScreen(
             .add(WindowInsets(bottom = miniPlayerMargin.totalMargin)),
         floatingActionButton = {
             FloatingActionButton(
-                onClick = onEditClick,
+                onClick = { onEditClick(song) },
                 containerColor = MaterialTheme.colorScheme.surface,
                 contentColor = MaterialTheme.colorScheme.onSurface
             ) {
@@ -371,9 +403,17 @@ private fun LyricsSurface(
             is LyricsUiState.Synced -> {
                 val lyricsViewState = rememberLyricsViewState(uiState.syncedLyrics)
 
-                val progress by playerViewModel.progressFlow.collectAsStateWithLifecycle()
-                LaunchedEffect(progress) {
-                    lyricsViewState.updatePosition(progress)
+                val playerPosition by playerViewModel.progressFlow.collectAsStateWithLifecycle()
+                val playbackSpeed by playerViewModel.playbackSpeed.collectAsStateWithLifecycle()
+
+                val smoothProgress by rememberSmoothPlaybackPosition(
+                    playerPosition = playerPosition,
+                    playbackSpeed = playbackSpeed,
+                    isPlaying = isPlaying
+                )
+
+                LaunchedEffect(playerPosition) {
+                    lyricsViewState.updatePosition(smoothProgress)
                 }
 
                 LyricsView(

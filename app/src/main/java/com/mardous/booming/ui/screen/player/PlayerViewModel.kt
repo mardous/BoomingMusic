@@ -9,6 +9,7 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
+import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import androidx.media3.common.Player.REPEAT_MODE_OFF
 import androidx.media3.common.Timeline
@@ -25,6 +26,7 @@ import com.mardous.booming.core.model.player.MetadataField
 import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.core.model.player.PlayerColorSchemeMode
 import com.mardous.booming.core.model.shuffle.GroupShuffleMode
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.core.model.shuffle.ShuffleOperationState
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
 import com.mardous.booming.core.sort.SongSortMode
@@ -36,9 +38,8 @@ import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.QueuePosition
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.playback.Playback
-import com.mardous.booming.playback.getQueueItems
 import com.mardous.booming.playback.ProgressObserver
-import com.mardous.booming.core.model.shuffle.OpenShuffleMode
+import com.mardous.booming.playback.getQueueItems
 import com.mardous.booming.playback.shuffle.ShuffleManager
 import com.mardous.booming.playback.toMediaItems
 import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
@@ -98,6 +99,9 @@ class PlayerViewModel(
     private val _durationFlow = MutableStateFlow(C.TIME_UNSET)
     val durationFlow = _durationFlow.asStateFlow()
     val duration get() = durationFlow.value
+
+    private val _playbackSpeed = MutableStateFlow(1f)
+    val playbackSpeed = _playbackSpeed.asStateFlow()
 
     private val _repeatModeFlow = MutableStateFlow(REPEAT_MODE_OFF)
     val repeatModeFlow = _repeatModeFlow.asStateFlow()
@@ -320,6 +324,10 @@ class PlayerViewModel(
         if (events.contains(Player.EVENT_TIMELINE_CHANGED)) {
             onGenerateQueue(player)
         }
+    }
+
+    override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {
+        _playbackSpeed.value = playbackParameters.speed
     }
 
     fun toggleFavorite() {
