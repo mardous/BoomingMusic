@@ -93,10 +93,8 @@ import com.mardous.booming.util.Constants.FAQ_LINK
 import com.mardous.booming.util.Constants.GITHUB_URL
 import com.mardous.booming.util.Constants.RELEASES_LINK
 import com.mardous.booming.util.Constants.SUPPORT_EMAIL
-import com.mikepenz.aboutlibraries.ui.compose.LibraryDefaults
 import com.mikepenz.aboutlibraries.ui.compose.android.produceLibraries
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
-import com.mikepenz.aboutlibraries.ui.compose.m3.libraryColors
 import dev.jeziellago.compose.markdowntext.MarkdownText
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
@@ -159,15 +157,7 @@ fun AboutScreen(
             ) {
                 LibrariesContainer(
                     libraries = libraries,
-                    showDescription = true,
                     licenseDialogConfirmText = stringResource(R.string.close_action),
-                    colors = LibraryDefaults.libraryColors(
-                        libraryBackgroundColor = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = .8f)
-                    ),
-                    dimensions = LibraryDefaults.libraryDimensions(
-                        itemSpacing = ListItemDefaults.SegmentedGap
-                    ),
-                    libraryModifier = Modifier.clip(RoundedCornerShape(4.dp)),
                     modifier = Modifier
                         .fillMaxSize()
                         .clip(RoundedCornerShape(16.dp))

@@ -6,7 +6,7 @@ kotlin = "2.3.21"
 kotlinDatetime = "0.8.0"
 kotlinCoroutines = "1.11.0"
 material = "1.14.0"
-core = "1.18.0"
+core = "1.19.0"
 coreSplashscreen = "1.2.0"
 concurrent = "1.3.0"
 appcompat = "1.7.1"
@@ -21,23 +21,23 @@ swiperefreshlayout = "1.2.0"
 recyclerview = "1.4.0"
 cardview = "1.0.0"
 viewpager = "1.1.0"
-lifecycle = "2.10.0"
+lifecycle = "2.11.0"
 room = "2.8.4"
 navigation = "2.9.8"
-compose = "2026.05.01"
-composeM3 = "1.5.0-alpha20"
+compose = "2026.06.01"
+composeM3 = "1.5.0-alpha23"
 glance = "1.1.1"
 
-koin = "4.2.1"
-coil = "3.4.0"
-ktor = "3.5.0"
+koin = "4.2.2"
+coil = "3.5.0"
+ktor = "3.5.1"
 
 markwon = "4.6.2"
 m3color = "2026.1"
 coilTransformations = "3.0.0"
 balloon = "1.7.6"
 composeMarkdown = "0.6.0"
-aboutlibraries = "14.2.1"
+aboutlibraries = "15.0.3"
 fadingedgelayout = "1.0.0"
 advrecyclerview = "1.0.0"
 fastscroll = "1.3.0"
@@ -69,7 +69,6 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
 kotlinx-coroutines-guava = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-guava", version.ref = "kotlinCoroutines" }
 
-lifecycle-common = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycle" }
 lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
 lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
 lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
@@ -141,7 +140,7 @@ juniversalchardet = { module = "com.github.albfernandez:juniversalchardet", vers
 
 [bundles]
 kotlinx = ["kotlinx-datetime", "kotlinx-coroutines-android", "kotlinx-coroutines-guava"]
-lifecycle = ["lifecycle-common", "lifecycle-runtime", "lifecycle-livedata", "lifecycle-viewmodel", "lifecycle-viewmodel-compose"]
+lifecycle = ["lifecycle-runtime", "lifecycle-livedata", "lifecycle-viewmodel", "lifecycle-viewmodel-compose"]
 media3 = ["media3-session", "media3-exoplayer", "media3-exoplayer-midi", "media3-exoplayer-ffmpeg", "media3-ui-compose"]
 navigation = ["navigation-common", "navigation-runtime", "navigation-fragment", "navigation-ui"]
 glance = ["glance-appwidget", "glance-appwidget-preview", "glance-material3"]
