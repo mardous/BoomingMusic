@@ -59,7 +59,7 @@ class LyricsViewModel(
     private val _lyricsEditorUiState = MutableStateFlow<LyricsEditorUiState>(LyricsEditorUiState.Disposed)
     val lyricsEditorUiState = _lyricsEditorUiState.asStateFlow()
 
-    private val _lyricsDownloadEnabled = MutableStateFlow(isLyricsDownloadEnabled(application))
+    private val _lyricsDownloadEnabled = MutableStateFlow(isLyricsDownloadEnabled())
     val lyricsDownloadEnabled = _lyricsDownloadEnabled.asStateFlow()
 
     private val _saveEvent = Channel<LyricsEditorResult>(Channel.BUFFERED)
@@ -384,10 +384,8 @@ class LyricsViewModel(
         )
     }
 
-    private fun isLyricsDownloadEnabled(context: Context): Boolean {
-        return BetterLyrics.isAvailable(context, false) ||
-                Lyrically.isAvailable(context, false) ||
-                LRCLib.isAvailable(context, false)
+    private fun isLyricsDownloadEnabled(): Boolean {
+        return BetterLyrics.isEnabled || Lyrically.isEnabled || LRCLib.isEnabled
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
@@ -423,7 +421,7 @@ class LyricsViewModel(
             NetworkFeature.BETTERLYRICS_ENABLED_KEY,
             NetworkFeature.LYRICALLY_ENABLED_KEY,
             NetworkFeature.LRCLIB_ENABLED_KEY -> {
-                _lyricsDownloadEnabled.value = isLyricsDownloadEnabled(getApplication())
+                _lyricsDownloadEnabled.value = isLyricsDownloadEnabled()
             }
             INSTRUMENTAL_TRACK_IDENTIFIERS,
             MARK_INSTRUMENTAL_BY_TITLE -> {

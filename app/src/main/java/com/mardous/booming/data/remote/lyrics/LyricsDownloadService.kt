@@ -17,10 +17,10 @@
 
 package com.mardous.booming.data.remote.lyrics
 
-import android.content.Context
 import android.util.Log
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
+import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.betterlyrics.BetterLyricsApi
 import com.mardous.booming.data.remote.lyrics.api.lrclib.LrcLibApi
 import com.mardous.booming.data.remote.lyrics.api.lyrically.LyricallyApi
@@ -29,7 +29,7 @@ import com.mardous.booming.extensions.media.extractMainArtistName
 import io.ktor.client.HttpClient
 import java.io.IOException
 
-class LyricsDownloadService(private val context: Context, client: HttpClient) {
+class LyricsDownloadService(client: HttpClient) {
 
     private val lyricsApi = listOf(
         LyricallyApi(client),
@@ -41,17 +41,19 @@ class LyricsDownloadService(private val context: Context, client: HttpClient) {
     suspend fun remoteLyrics(
         song: Song,
         title: String = song.title,
-        artist: String = song.albumArtistName()
+        artist: String = song.albumArtistName(),
+        fromUser: Boolean = false
     ): RawLyrics.Remote {
         var result = RawLyrics.Remote()
 
-        if (song == Song.emptySong) return result
+        if (song == Song.emptySong || !NetworkFeature.isOnline(ignoreWifiSetting = fromUser))
+            return result
 
         try {
             val cleanedTitle = cleanTitle(title)
             val cleanedArtist = artist.extractMainArtistName()
             for (api in lyricsApi) {
-                if (!api.networkFeature.isAvailable(context))
+                if (!api.networkFeature.isEnabled)
                     continue
 
                 val apiResult = runCatching { api.downloadLyrics(song, cleanedTitle, cleanedArtist) }

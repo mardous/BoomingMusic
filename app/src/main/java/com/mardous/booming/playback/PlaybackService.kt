@@ -765,10 +765,10 @@ class PlaybackService :
                 if (preferences.getBoolean(ENABLE_HISTORY, true)) {
                     repository.upsertSongInHistory(newSong)
                 }
-                if (NetworkFeature.Lastfm.NowPlaying.isAvailable(this@PlaybackService)) {
+                if (NetworkFeature.Lastfm.NowPlaying.isAvailable) {
                     launch { repository.updateNowPlaying(ScrobblingService.Lastfm, newSong) }
                 }
-                if (NetworkFeature.ListenBrainz.NowPlaying.isAvailable(this@PlaybackService)) {
+                if (NetworkFeature.ListenBrainz.NowPlaying.isAvailable) {
                     launch { repository.updateNowPlaying(ScrobblingService.ListenBrainz, newSong) }
                 }
             }
@@ -780,10 +780,10 @@ class PlaybackService :
                         song = previousSong,
                         timePlayed = timestampMillis
                     )
-                    if (NetworkFeature.Lastfm.Scrobbling.isAvailable(this@PlaybackService)) {
+                    if (NetworkFeature.Lastfm.Scrobbling.isAvailable) {
                         launch { repository.scrobble(ScrobblingService.Lastfm, previousSong, timestampSeconds) }
                     }
-                    if (NetworkFeature.ListenBrainz.Scrobbling.isAvailable(this@PlaybackService)) {
+                    if (NetworkFeature.ListenBrainz.Scrobbling.isAvailable) {
                         launch { repository.scrobble(ScrobblingService.ListenBrainz, previousSong, timestampSeconds) }
                     }
                 } else if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK) {

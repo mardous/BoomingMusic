@@ -101,7 +101,7 @@ val networkModule = module {
         ListenBrainzService(client = get())
     }
     single {
-        LyricsDownloadService(context = get(), client = get())
+        LyricsDownloadService(client = get())
     }
 }
 

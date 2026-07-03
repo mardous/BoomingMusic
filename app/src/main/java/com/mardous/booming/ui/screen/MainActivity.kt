@@ -254,7 +254,7 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
             }
             updateEvent?.peekContent().let { updateState ->
                 if (updateState == null || updateState.state == UpdateSearchResult.State.Idle) {
-                    if (NetworkFeature.Updater.isAvailable(this@MainActivity)) {
+                    if (NetworkFeature.Updater.isAvailable) {
                         searchForUpdate(false)
                     }
                 }

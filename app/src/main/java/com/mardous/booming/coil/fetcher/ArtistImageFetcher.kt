@@ -53,7 +53,7 @@ class ArtistImageFetcher(
             }
         }
 
-        if (!image.isNameUnknown && NetworkFeature.Images.Artists.isAvailable(options.context)) {
+        if (!image.isNameUnknown && NetworkFeature.Images.Artists.isAvailable) {
             var pageIndex = 0
             var revisedResults = 0
             var deezerArtist = repository.deezerArtist(image.name, MAX_RESULT_PER_PAGE, pageIndex)

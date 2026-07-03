@@ -194,7 +194,7 @@ class RealLyricsRepository(
             return null
         }
         return try {
-            lyricsDownloadService.remoteLyrics(song, searchTitle, searchArtist)
+            lyricsDownloadService.remoteLyrics(song, searchTitle, searchArtist, fromUser = true)
         } catch (_: Exception) {
             null
         }
