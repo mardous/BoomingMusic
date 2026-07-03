@@ -903,4 +903,60 @@
     <string name="listenbrainz_token_label">Token người dùng</string>
     <string name="auto_theme_name">Tự động</string>
     <string name="eq_pro_mode">Chế độ chuyên gia</string>
+    <string name="lyrics_show_transliteration_title"></string>
+    <string name="lyrics_show_translation_title"></string>
+    <string name="preferred_lyrics_file_format_title"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="eq_pre_gain"></string>
+    <plurals name="x_playlists_selected">
+    </plurals>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="listenbrainz_scrobbling_title"></string>
+    <string name="eq_expander_ratio"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="lyrics_resume_on_seek_summary"></string>
+    <string name="cannot_edit_lyrics_file"></string>
+    <string name="lrc_file_lyrics"></string>
+    <string name="limiter_label"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="listenbrainz_title"></string>
+    <string name="compressor_label"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="rg_without_tag"></string>
+    <string name="eq_release_time"></string>
+    <string name="listenbrainz_now_playing_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="preferred_lyrics_file_format_summary"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="lyrics_show_transliteration_summary"></string>
+    <string name="mini_player_swipe_to_skip_title"></string>
+    <string name="error_listenbrainz_generic"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="eq_attack_time"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="rg_with_tag"></string>
+    <string name="eq_knee_width"></string>
+    <string name="use_lyrically_provider_summary"></string>
+    <string name="listenbrainz_now_playing_title"></string>
+    <string name="lyrics_resume_on_seek_title"></string>
+    <string name="lyrics_show_translation_summary"></string>
+    <string name="arranger"></string>
+    <string name="eq_post_gain"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="eq_ratio"></string>
+    <string name="eq_noise_gate"></string>
+    <string name="listenbrainz_scrobbling_summary"></string>
+    <string name="listenbrainz_login_summary"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="eq_threshold"></string>
+    <string name="ttml_file_lyrics"></string>
+    <string name="use_lyrically_provider_title"></string>
 </resources>
