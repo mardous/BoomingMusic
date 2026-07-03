@@ -158,13 +158,14 @@ Your support is greatly appreciated and keeps me motivated to continue improving
       <b>mbeezy</b><br/>
       <b><a href="https://github.com/Qoojoe">KKTweex</a></b><br/>
       <b><a href="https://github.com/FabiRich">FabiRich</a></b><br/>
-      <b><a href="https://github.com/Bloodaxe95">Bloodaxe</a></b>
+      <b><a href="https://github.com/Bloodaxe95">Bloodaxe</a></b><br/>
+      <b>Bernhard</b>
     </td>
     <td>
-      <b>Bernhard</b><br/>
       <b>Andreas Hirth</b><br/>
       <b>Revolver327</b><br/>
-      <b>Peter Smith</b>
+      <b>Peter Smith</b><br/>
+      <b>Michele Simoncelli</b>
     </td>
   </tr>
 </table>
