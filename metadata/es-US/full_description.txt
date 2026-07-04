@@ -9,7 +9,8 @@ Características principales:
 * Descarga automática y editor de letras integrado
 * Letras palabra por palabra y traducidas (TTML, LRC)
 * Motor Media3 con soporte para Audio Offload
-* Reproducción Bit-perfect y decodificación nativa ALAC
+* ReplayGain para volumen consistente entre pistas
+* Decodificación nativa de ALAC
 * Scrobbling nativo con ListenBrainz
 * Mini reproductor adaptable y controles gestuales
 * Portadas y descripciones personalizadas en listas
