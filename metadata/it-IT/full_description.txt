@@ -9,8 +9,10 @@ Caratteristiche principali:
 * Download automatico dei testi e lettore/editor di testi integrato nell'app
 * Testi sincronizzati parola per parola e testi tradotti (TTML, LRC)
 * Motore di riproduzione basato su Media3 con supporto audio offload
-* Supporto per la riproduzione bit-perfect e decodifica ALAC nativa
-Scrobbling ListenBrainz nativo
+* Supporto per la riproduzione bit-perfect
+* Volume uniforme tra i brani grazie a ReplayGain
+* Decodifica ALAC nativa
+Scrobbling ListenBrainz
 * Mini player adattivo e controlli tramite gesture
 * Copertine e descrizioni personalizzate per le playlist
 * Editor di tag con aggiornamenti istantanei della libreria
