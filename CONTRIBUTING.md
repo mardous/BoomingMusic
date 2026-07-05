@@ -30,6 +30,11 @@ We will evaluate all pull requests we receive, however, take the following point
 * Each pull request you open must address a specific feature or point of the app. In other words, don't try to implement different functionalities or modify different parts of the app under the same PR.
 * Pull requests that solve bugs or serious problems will always have higher priority than others.
 
+> [!IMPORTANT]
+> We are currently not accepting new pull requests that modify, redesign, or add new features to the app's UI.
+> We are in the middle of a massive rewrite of the entire user interface using Jetpack Compose.
+> To avoid merge conflicts and wasted effort, UI contributions are frozen until the migration is complete. Bug fixes for core logic are still welcome!
+
 ## License
 By contributing to this project:
 * You agree that your contribution will be licensed under the terms of the [GNU General Public License](LICENSE.txt).
