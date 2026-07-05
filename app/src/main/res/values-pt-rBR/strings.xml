@@ -957,4 +957,14 @@
     <string name="lyrics_karaoke_style_summary">Ativa um efeito estilo karaokê para letras sincronizadas palavra por palavra. Observe que este é um recurso experimental.</string>
     <string name="lyrics_bold_synced_title">Fonte em negrito para letras sincronizadas</string>
     <string name="lyrics_bold_synced_summary">Exibir letras sincronizadas em negrito.</string>
+    <string name="app_version_x">Versão %s</string>
+    <string name="app_description">Design moderno. Som puro. Totalmente seu.</string>
+    <string name="more_contributors_title">Mais colaboradores</string>
+    <string name="more_contributors_summary">Você pode ver a lista completa de colaboradores no GitHub.</string>
+    <string name="lyrics_show_translation_title">Mostrar tradução</string>
+    <string name="lyrics_show_translation_summary">Exibir a letra traduzida, se disponível.</string>
+    <string name="lyrics_show_transliteration_title">Mostrar transliteração</string>
+    <string name="lyrics_show_transliteration_summary">Exibir letra transliterada, se disponível.</string>
+    <string name="lyrics_resume_on_seek_title">Retomar a partir da posição atual</string>
+    <string name="lyrics_resume_on_seek_summary">Retomar a reprodução automaticamente ao clicar em uma linha.</string>
 </resources>
