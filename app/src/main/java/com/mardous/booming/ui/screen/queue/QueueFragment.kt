@@ -128,7 +128,6 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
 
         layoutManager = LinearLayoutManager(requireContext())
         popupMenu = newPopupMenu(binding.currentItem.menu, R.menu.menu_playing_queue)
-        popupMenu!!.setForceShowIcon(true)
         popupMenu!!.setOnMenuItemClickListener(this)
 
         binding.currentItem.dragView.setOnClickListener(this)
@@ -239,10 +238,8 @@ class QueueFragment : BottomSheetDialogFragment(R.layout.fragment_queue),
             R.id.action_lock -> {
                 Preferences.isQueueLocked = !Preferences.isQueueLocked
                 if (Preferences.isQueueLocked) {
-                    item.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_lock_24dp)
                     showToast(ContextCompat.getString(requireContext(), R.string.queue_locked))
                 }else {
-                    item.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_lock_open_24dp)
                     showToast(ContextCompat.getString(requireContext(), R.string.queue_unlocked))
                 }
                 playingQueueAdapter?.notifyDataSetChanged()
