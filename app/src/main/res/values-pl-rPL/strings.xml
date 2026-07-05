@@ -246,8 +246,6 @@
     <string name="download_image">Pobierz obraz</string>
     <string name="pick_from_local_storage">Wybierz z pamięci lokalnej</string>
     <string name="about_x_title">Na temat %s</string>
-    <string name="listeners_label">Słuchacze</string>
-    <string name="scrobbles_label">Zakrzywianie</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
     <string name="keyboard">Pokaż klawiaturę</string>

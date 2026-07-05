@@ -246,8 +246,6 @@
     <string name="download_image">Afbeelding downloaden</string>
     <string name="pick_from_local_storage">Kies uit lokale opslag</string>
     <string name="about_x_title">Over %s</string>
-    <string name="listeners_label">Luisteraars</string>
-    <string name="scrobbles_label">Scrobbels</string>
     <string name="yes">Ja</string>
     <string name="no">Neen</string>
     <string name="keyboard">Toetsenbord</string>

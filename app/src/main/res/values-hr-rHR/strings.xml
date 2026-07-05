@@ -246,8 +246,6 @@
     <string name="download_image">Download image</string>
     <string name="pick_from_local_storage">Pick from local storage</string>
     <string name="about_x_title">About %s</string>
-    <string name="listeners_label">Listeners</string>
-    <string name="scrobbles_label">Scrobbles</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="keyboard">Keyboard</string>

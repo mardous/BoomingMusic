@@ -246,8 +246,6 @@
     <string name="download_image">Descarcă imaginea</string>
     <string name="pick_from_local_storage">Alege din stocarea locală</string>
     <string name="about_x_title">Despre %s</string>
-    <string name="listeners_label">Ascultători</string>
-    <string name="scrobbles_label">Fructuri</string>
     <string name="yes">Da</string>
     <string name="no">Nr</string>
     <string name="keyboard">Keyboard</string>

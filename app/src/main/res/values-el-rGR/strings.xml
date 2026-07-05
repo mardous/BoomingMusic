@@ -246,8 +246,6 @@
     <string name="download_image">Λήψη εικόνας</string>
     <string name="pick_from_local_storage">Επιλογή από τοπική αποθήκευση</string>
     <string name="about_x_title">Περί %s</string>
-    <string name="listeners_label">Ακροατές</string>
-    <string name="scrobbles_label">Scrobbles</string>
     <string name="yes">Ναι</string>
     <string name="no">Όχι</string>
     <string name="keyboard">Keyboard</string>

@@ -246,8 +246,6 @@
     <string name="download_image">Scarica immagine</string>
     <string name="pick_from_local_storage">Scegli dalla memoria interna</string>
     <string name="about_x_title">Informazioni su %s</string>
-    <string name="listeners_label">Ascoltatori</string>
-    <string name="scrobbles_label">Scrobbling</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
     <string name="keyboard">Tastiera</string>

@@ -246,8 +246,6 @@
     <string name="download_image">Stáhnout obrázek</string>
     <string name="pick_from_local_storage">Vybrat z místního úložiště</string>
     <string name="about_x_title">O %s</string>
-    <string name="listeners_label">Posluchači</string>
-    <string name="scrobbles_label">Scrobble</string>
     <string name="yes">Ano</string>
     <string name="no">Ne</string>
     <string name="keyboard">Keyboard</string>

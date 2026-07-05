@@ -246,8 +246,6 @@
     <string name="download_image">चित्र डाउनलोड करें</string>
     <string name="pick_from_local_storage">लोकल स्टोरेज से चुनें</string>
     <string name="about_x_title">%s के बारे में</string>
-    <string name="listeners_label">श्रोतागण</string>
-    <string name="scrobbles_label">स्क्रॉब्ल्स</string>
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
     <string name="keyboard">कीबोर्ड</string>

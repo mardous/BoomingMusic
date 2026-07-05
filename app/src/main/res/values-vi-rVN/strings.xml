@@ -246,8 +246,6 @@
     <string name="download_image">Tải hình ảnh</string>
     <string name="pick_from_local_storage">Chọn từ bộ nhớ cục bộ</string>
     <string name="about_x_title">Về %s</string>
-    <string name="listeners_label">Người nghe</string>
-    <string name="scrobbles_label">Lượt nghe</string>
     <string name="yes">Đồng ý</string>
     <string name="no">Từ chối</string>
     <string name="keyboard">Bàn phím</string>

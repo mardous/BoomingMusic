@@ -246,8 +246,6 @@
     <string name="download_image">이미지 다운로드</string>
     <string name="pick_from_local_storage">로컬 저장공간에서 선택</string>
     <string name="about_x_title">%s 정보</string>
-    <string name="listeners_label">청취자</string>
-    <string name="scrobbles_label">스크로블</string>
     <string name="yes">예</string>
     <string name="no">아니요</string>
     <string name="keyboard">키보드</string>

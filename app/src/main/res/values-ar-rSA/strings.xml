@@ -246,8 +246,6 @@
     <string name="download_image">تحميل الصورة</string>
     <string name="pick_from_local_storage">اختر من التخزين المحلي</string>
     <string name="about_x_title">حول %s</string>
-    <string name="listeners_label">المستمعون</string>
-    <string name="scrobbles_label">تمرير</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="keyboard">Keyboard</string>

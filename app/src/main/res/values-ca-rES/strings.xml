@@ -246,8 +246,6 @@
     <string name="download_image">Descarrega la imatge</string>
     <string name="pick_from_local_storage">Tria des de l\'emmagatzematge intern</string>
     <string name="about_x_title">Quant a %s</string>
-    <string name="listeners_label">Oients</string>
-    <string name="scrobbles_label">Activitat d\'escolta</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="keyboard">Teclat</string>

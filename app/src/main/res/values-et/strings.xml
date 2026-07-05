@@ -113,8 +113,6 @@
     <string name="sort_order_descending">Järjesta kahanevalt</string>
     <string name="action_details">Üksikasjad</string>
     <string name="action_scan">Skaneeri</string>
-    <string name="listeners_label">Kuulajaid</string>
-    <string name="scrobbles_label">Kraasimisi</string>
     <string name="yes">Jah</string>
     <string name="no">Ei</string>
     <string name="keyboard">Klahvistik</string>

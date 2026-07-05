@@ -246,8 +246,6 @@
     <string name="download_image">Завантажити зображення</string>
     <string name="pick_from_local_storage">Вибрати з локального сховища</string>
     <string name="about_x_title">Про програму %s</string>
-    <string name="listeners_label">Слухачі</string>
-    <string name="scrobbles_label">Персоналізація</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="keyboard">Клавіатура</string>

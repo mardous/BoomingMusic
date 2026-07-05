@@ -246,8 +246,6 @@
     <string name="download_image">Загрузить изображение</string>
     <string name="pick_from_local_storage">Выбрать из локального хранилища</string>
     <string name="about_x_title">О программе %s</string>
-    <string name="listeners_label">Слушатели</string>
-    <string name="scrobbles_label">Скробблинги</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="keyboard">Клавиатура</string>

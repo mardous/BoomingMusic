@@ -246,8 +246,6 @@
     <string name="download_image">הורדת תמונה</string>
     <string name="pick_from_local_storage">בחר מאחסון מקומי</string>
     <string name="about_x_title">‮אודות ‭%s</string>
-    <string name="listeners_label">מאזינים</string>
-    <string name="scrobbles_label">סקרובלינגס</string>
     <string name="yes">כן</string>
     <string name="no">לא</string>
     <string name="keyboard">מקלדת</string>

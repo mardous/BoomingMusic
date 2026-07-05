@@ -246,8 +246,6 @@
     <string name="download_image">Descargar imagen</string>
     <string name="pick_from_local_storage">Seleccionar desde el almacenamiento interno</string>
     <string name="about_x_title">Acerca de %s</string>
-    <string name="listeners_label">Oyentes</string>
-    <string name="scrobbles_label">Envíos</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="keyboard">Teclado</string>

@@ -246,8 +246,6 @@
     <string name="download_image">Görseli indir</string>
     <string name="pick_from_local_storage">Yerel depolamadan seç</string>
     <string name="about_x_title">%s Hakkında</string>
-    <string name="listeners_label">Dinleyiciler</string>
-    <string name="scrobbles_label">Scrobble\'lar</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="keyboard">Klavye</string>

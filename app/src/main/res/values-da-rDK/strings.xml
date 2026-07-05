@@ -246,8 +246,6 @@
     <string name="download_image">Download billede</string>
     <string name="pick_from_local_storage">Vælg fra lokalt lager</string>
     <string name="about_x_title">Om %s</string>
-    <string name="listeners_label">Lytter</string>
-    <string name="scrobbles_label">Scrobbler</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="keyboard">Keyboard</string>

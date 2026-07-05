@@ -259,8 +259,6 @@
     <string name="download_image">دانلود تصویر</string>
     <string name="pick_from_local_storage">از فضای ذخیره‌سازی محلی انتخاب کنید</string>
     <string name="about_x_title">درباره %s</string>
-    <string name="listeners_label">شنوندگان</string>
-    <string name="scrobbles_label">حکاکی ها</string>
     <string name="yes">بله</string>
     <string name="no">خیر</string>
     <string name="keyboard">صفحه کلید</string>

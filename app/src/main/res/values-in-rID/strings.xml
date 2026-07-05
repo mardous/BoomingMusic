@@ -246,8 +246,6 @@
     <string name="download_image">Unduh gambar</string>
     <string name="pick_from_local_storage">Pilih dari penyimpanan lokal</string>
     <string name="about_x_title">Tentang %s</string>
-    <string name="listeners_label">Pendengar</string>
-    <string name="scrobbles_label">Scrobble</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="keyboard">Keyboard</string>

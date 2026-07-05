@@ -243,8 +243,6 @@
     <string name="download_image">Descargar imagen</string>
     <string name="pick_from_local_storage">Elegir del almacenamiento local</string>
     <string name="about_x_title">Acerca de %s</string>
-    <string name="listeners_label">Oyentes</string>
-    <string name="scrobbles_label">Scrobbles</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="label_file_path">Ruta del archivo</string>

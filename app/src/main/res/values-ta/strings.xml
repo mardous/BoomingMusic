@@ -259,8 +259,6 @@
     <string name="download_image">படத்தைப் பதிவிறக்கவும்</string>
     <string name="pick_from_local_storage">உள்ளக சேமிப்பகத்திலிருந்து தேர்ந்தெடுக்கவும்</string>
     <string name="about_x_title">சுமார் %s</string>
-    <string name="listeners_label">கேட்போர்</string>
-    <string name="scrobbles_label">ச்க்ரோபிள்ச்</string>
     <string name="yes">ஆம்</string>
     <string name="no">இல்லை</string>
     <string name="keyboard">விசைப்பலகை</string>

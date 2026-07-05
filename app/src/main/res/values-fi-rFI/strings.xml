@@ -246,8 +246,6 @@
     <string name="download_image">Lataa kuva</string>
     <string name="pick_from_local_storage">Valitse paikallisesta tallennustilasta</string>
     <string name="about_x_title">Tietoja %s</string>
-    <string name="listeners_label">Kuuntelijat</string>
-    <string name="scrobbles_label">Scrobbles</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
     <string name="keyboard">Näppäimistö</string>

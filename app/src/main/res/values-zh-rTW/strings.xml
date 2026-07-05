@@ -246,8 +246,6 @@
     <string name="download_image">下載圖像</string>
     <string name="pick_from_local_storage">從本地存儲中選取</string>
     <string name="about_x_title">關於 %s</string>
-    <string name="listeners_label">監聽器</string>
-    <string name="scrobbles_label">滾動條</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="keyboard">鍵盤</string>
