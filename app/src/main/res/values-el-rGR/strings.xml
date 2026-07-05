@@ -248,13 +248,6 @@
     <string name="about_x_title">Περί %s</string>
     <string name="listeners_label">Ακροατές</string>
     <string name="scrobbles_label">Scrobbles</string>
-    <string name="save_cover">Αποθήκευση εξωφύλλου άλμπουμ</string>
-    <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_error">Αποτυχία αποθήκευσης εξωφύλλου στην τοπική αποθήκευση</string>
-    <string name="save_artwork_success">Το εξώφυλλο άλμπουμ αποθηκεύτηκε</string>
-    <string name="save_artwork_view_action">Προβολή</string>
-    <string name="save_artwork_copyright_info_title">Ειδοποίηση πνευματικών δικαιωμάτων</string>
-    <string name="save_artwork_copyright_info_message">Μερικά εξώφυλλα άλμπουμ (ή όλα αυτά) μπορεί να προστατεύονται από τους νόμους περί πνευματικής ιδιοκτησίας. Δεν μπορείτε να χρησιμοποιήσετε τέτοιες εικόνες για εμπορικούς ή διαφημιστικούς σκοπούς. \n\nΜόνο εσείς έχετε πλήρη ευθύνη για τη χρήση των αποθηκευμένων εξωφύλλων άλμπουμ.</string>
     <string name="yes">Ναι</string>
     <string name="no">Όχι</string>
     <string name="keyboard">Keyboard</string>

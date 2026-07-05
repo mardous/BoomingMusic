@@ -222,11 +222,6 @@
     <string name="pick_from_local_storage">ز جاگه زفت کردنی مهلی پسند کۊنین</string>
     <string name="about_x_title">زبار %s</string>
     <string name="scrobbles_label">هکاکی یل</string>
-    <string name="save_cover">زفت کردن کاور آلبوم</string>
-    <string name="saving_cover_please_wait">هونی کاور ن زفت اکونه، مندیر بۊین…</string>
-    <string name="save_artwork_error">کاور من ویرگه مهلی زفت نوابی</string>
-    <string name="save_artwork_success">کاور آلبوم زفت وابی</string>
-    <string name="save_artwork_view_action">نیشتن</string>
     <string name="yes">هری</string>
     <string name="no">ن</string>
     <string name="keyboard">تخته کیلیت</string>

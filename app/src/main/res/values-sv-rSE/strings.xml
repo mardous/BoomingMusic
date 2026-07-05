@@ -248,13 +248,6 @@
     <string name="about_x_title">Om %s</string>
     <string name="listeners_label">Lyssnare</string>
     <string name="scrobbles_label">Scrobbla</string>
-    <string name="save_cover">Spara albumomslag</string>
-    <string name="saving_cover_please_wait">Sparar omslag, vänta…</string>
-    <string name="save_artwork_error">Det gick inte att spara omslaget till lokal lagring</string>
-    <string name="save_artwork_success">Skivomslag sparat</string>
-    <string name="save_artwork_view_action">Visa</string>
-    <string name="save_artwork_copyright_info_title">Meddelande om upphovsrätt</string>
-    <string name="save_artwork_copyright_info_message">Vissa skivomslag (eller alla av dem) kan skyddas av upphovsrättslagar. Du kan inte använda sådana bilder för kommersiella eller reklamändamål. \n\nBara du har totalansvar för din användning av sparade skivomslag.</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="keyboard">Tangentbord</string>

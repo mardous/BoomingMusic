@@ -260,7 +260,7 @@ object Preferences : KoinComponent {
         get() = preferences.enumValue(COVER_RIGHT_DOUBLE_TAP_ACTION, NowPlayingAction.SeekForward)
 
     val coverLongPressAction: NowPlayingAction
-        get() = preferences.enumValue(COVER_LONG_PRESS_ACTION, NowPlayingAction.SaveAlbumCover)
+        get() = preferences.enumValue(COVER_LONG_PRESS_ACTION, NowPlayingAction.SleepTimer)
 
     val animateControls: Boolean
         get() = preferences.getBoolean(ANIMATE_PLAYER_CONTROL, true)

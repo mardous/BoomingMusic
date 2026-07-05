@@ -248,13 +248,6 @@
     <string name="about_x_title">About %s</string>
     <string name="listeners_label">Listeners</string>
     <string name="scrobbles_label">Scrobbles</string>
-    <string name="save_cover">Save album cover</string>
-    <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_error">Failed to save cover to local storage</string>
-    <string name="save_artwork_success">Album cover saved</string>
-    <string name="save_artwork_view_action">View</string>
-    <string name="save_artwork_copyright_info_title">Copyright notice</string>
-    <string name="save_artwork_copyright_info_message">Some album covers (or all of them) might be protected by Copyright laws. You can not use such images for commercial or advertisement purposes. \n\nOnly you have total responsibility over your usage of saved album covers.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="keyboard">Keyboard</string>

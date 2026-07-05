@@ -248,13 +248,6 @@
     <string name="about_x_title">Sobre %s</string>
     <string name="listeners_label">Ouvintes</string>
     <string name="scrobbles_label">Deslocamentos</string>
-    <string name="save_cover">Salvar capa do álbum</string>
-    <string name="saving_cover_please_wait">Salvando capa, aguarde…</string>
-    <string name="save_artwork_error">Não foi possível salvar a capa no armazenamento local</string>
-    <string name="save_artwork_success">Capa do álbum salva</string>
-    <string name="save_artwork_view_action">Visualizar</string>
-    <string name="save_artwork_copyright_info_title">Aviso de direitos autorais</string>
-    <string name="save_artwork_copyright_info_message">Algumas capas de álbuns (ou todas) podem ser protegidas por leis de direitos autorais. Não é possível usar tais imagens para fins comerciais e publicitários. \n\n Somente você tem total responsabilidade sobre o uso das capas de álbuns salvas.</string>
     <string name="yes">sim</string>
     <string name="no">Não</string>
     <string name="keyboard">Teclado</string>

@@ -248,13 +248,6 @@
     <string name="about_x_title">À propos de %s</string>
     <string name="listeners_label">Auditeurs</string>
     <string name="scrobbles_label">Scrobbles</string>
-    <string name="save_cover">Enregistrer la couverture de l\'album</string>
-    <string name="saving_cover_please_wait">Enregistrement de la couverture, attendez…</string>
-    <string name="save_artwork_error">Impossible d\'enregistrer la couverture dans le stockage local</string>
-    <string name="save_artwork_success">Couverture de l\'album enregistrée</string>
-    <string name="save_artwork_view_action">Voir</string>
-    <string name="save_artwork_copyright_info_title">Avis de droit d\'auteur</string>
-    <string name="save_artwork_copyright_info_message">Certaines couvertures d\'album (ou toutes) peuvent être protégées par le droit d\'auteur. Vous ne pouvez pas utiliser ces images à des fins commerciales ou publicitaires. \n\nL\'utilisation de la couverture est sous votre responsabilité.</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="keyboard">Clavier</string>

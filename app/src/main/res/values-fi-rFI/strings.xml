@@ -248,13 +248,6 @@
     <string name="about_x_title">Tietoja %s</string>
     <string name="listeners_label">Kuuntelijat</string>
     <string name="scrobbles_label">Scrobbles</string>
-    <string name="save_cover">Tallenna albumin kansi</string>
-    <string name="saving_cover_please_wait">Tallennetaan kansikuvaa, odota…</string>
-    <string name="save_artwork_error">Kansion tallentaminen paikalliseen tallennustilaan epäonnistui</string>
-    <string name="save_artwork_success">Albumin kansi tallennettu</string>
-    <string name="save_artwork_view_action">Näytä</string>
-    <string name="save_artwork_copyright_info_title">Tekijänoikeuden ilmoitus</string>
-    <string name="save_artwork_copyright_info_message">Jotkut albumin kannet (tai kaikki ne) saattavat olla suojattu tekijänoikeuslaeilla. Et voi käyttää tällaisia kuvia kaupallisiin tai mainostarkoituksiin. \n\nVain sinulla on täysi vastuu tallennettujen albumikansien käytöstä.</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
     <string name="keyboard">Näppäimistö</string>

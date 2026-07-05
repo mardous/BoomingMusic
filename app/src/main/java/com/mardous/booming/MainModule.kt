@@ -23,7 +23,6 @@ import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.BoomingDatabase
 import com.mardous.booming.core.audio.AudioOutputObserver
-import com.mardous.booming.data.local.AlbumCoverSaver
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.data.local.repository.AlbumRepository
@@ -131,9 +130,6 @@ private val mainModule = module {
     }
     single {
         MediaStoreWriter(context = androidContext(), contentResolver = get())
-    }
-    single {
-        AlbumCoverSaver(context = androidContext(), mediaStoreWriter = get())
     }
     single {
         CustomArtistImageManager(context = androidContext())
@@ -276,7 +272,7 @@ private val viewModule = module {
     }
 
     viewModel {
-        PlayerViewModel(preferences = get(), repository = get(), albumCoverSaver = get())
+        PlayerViewModel(preferences = get(), repository = get())
     }
 
     viewModel {

@@ -248,13 +248,6 @@
     <string name="about_x_title">Despre %s</string>
     <string name="listeners_label">Ascultători</string>
     <string name="scrobbles_label">Fructuri</string>
-    <string name="save_cover">Salvează coperta de album</string>
-    <string name="saving_cover_please_wait">Se salvează coperta, așteptați…</string>
-    <string name="save_artwork_error">Salvarea coperții la stocarea locală a eșuat</string>
-    <string name="save_artwork_success">Copertă album salvată</string>
-    <string name="save_artwork_view_action">Vizualizare</string>
-    <string name="save_artwork_copyright_info_title">Drepturi de autor</string>
-    <string name="save_artwork_copyright_info_message">Unele coperte de album (sau toate acestea) ar putea fi protejate de legile drepturilor de autor. Nu puteți folosi astfel de imagini în scopuri comerciale sau publicitare. \n\nDoar tu ai responsabilitatea totală pentru utilizarea copertelor de album salvate.</string>
     <string name="yes">Da</string>
     <string name="no">Nr</string>
     <string name="keyboard">Keyboard</string>

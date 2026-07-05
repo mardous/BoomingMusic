@@ -31,7 +31,6 @@ import com.mardous.booming.core.model.shuffle.ShuffleOperationState
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.SongProvider
-import com.mardous.booming.data.local.AlbumCoverSaver
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.mapper.toSongs
@@ -72,8 +71,7 @@ const val QUEUE_DEBOUNCE = 100L
 @androidx.annotation.OptIn(UnstableApi::class)
 class PlayerViewModel(
     private val preferences: SharedPreferences,
-    private val repository: Repository,
-    private val albumCoverSaver: AlbumCoverSaver
+    private val repository: Repository
 ) : ViewModel(), Player.Listener {
 
     private val queueMutex = Mutex()
@@ -691,12 +689,6 @@ class PlayerViewModel(
         } else if (result.isFailure) {
             Log.e(TAG, "Failed to load color scheme", result.exceptionOrNull())
         }
-    }
-
-    fun saveCover(song: Song) = liveData(IO) {
-        emit(SaveCoverResult(true))
-        val uri = albumCoverSaver.saveArtwork(song)
-        emit(SaveCoverResult(false, uri))
     }
 
     companion object {

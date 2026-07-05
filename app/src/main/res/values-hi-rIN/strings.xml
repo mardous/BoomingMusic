@@ -248,13 +248,6 @@
     <string name="about_x_title">%s के बारे में</string>
     <string name="listeners_label">श्रोतागण</string>
     <string name="scrobbles_label">स्क्रॉब्ल्स</string>
-    <string name="save_cover">एल्बम कवर सेव करें</string>
-    <string name="saving_cover_please_wait">सेविंग कवर, इंतज़ार करें…</string>
-    <string name="save_artwork_error">लोकल स्टोरेज में कवर सेव करने में फेल हो गया</string>
-    <string name="save_artwork_success">एल्बम कवर सेव कर लिया</string>
-    <string name="save_artwork_view_action">दृश्य</string>
-    <string name="save_artwork_copyright_info_title">कॉपीराइट सूचना</string>
-    <string name="save_artwork_copyright_info_message">कुछ एल्बम कवर (या उनमें से सभी) कॉपीराइट कानूनों से सुरक्षित हो सकते हैं। आप ऐसी छवियों का उपयोग व्यावसायिक या विज्ञापन उद्देश्यों के लिए नहीं कर सकते।आपके द्वारा सहेजे गए एल्बम कवर के उपयोग पर पूरी जिम्मेदारी केवल आपकी है।</string>
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
     <string name="keyboard">कीबोर्ड</string>

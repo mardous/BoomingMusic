@@ -248,13 +248,6 @@
     <string name="about_x_title">关于 %s</string>
     <string name="listeners_label">监听器</string>
     <string name="scrobbles_label">滚动条</string>
-    <string name="save_cover">保存专辑封面</string>
-    <string name="saving_cover_please_wait">保存中，请稍等…</string>
-    <string name="save_artwork_error">保存封面到本地存储失败</string>
-    <string name="save_artwork_success">已保存专辑封面</string>
-    <string name="save_artwork_view_action">查看</string>
-    <string name="save_artwork_copyright_info_title">版权提醒</string>
-    <string name="save_artwork_copyright_info_message">部分（或全部）专辑封面可能受到版权法的保护。您不能将此类图像用于商业或广告目的。 \n\n您使用保存的专辑封面时需承担全部责任。</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="keyboard">键盘</string>

@@ -245,13 +245,6 @@
     <string name="about_x_title">Acerca de %s</string>
     <string name="listeners_label">Oyentes</string>
     <string name="scrobbles_label">Scrobbles</string>
-    <string name="save_cover">Guardar portada del álbum</string>
-    <string name="saving_cover_please_wait">Guardando portada; espere…</string>
-    <string name="save_artwork_error">No se pudo guardar la portada en el almacenamiento local</string>
-    <string name="save_artwork_success">Portada del álbum guardada</string>
-    <string name="save_artwork_view_action">Ver</string>
-    <string name="save_artwork_copyright_info_title">Aviso de derechos de autor</string>
-    <string name="save_artwork_copyright_info_message">Es posible que algunas portadas de álbumes (o todas ellas) estén protegidas por leyes de derechos de autor. No puede usar esas imágenes con fines comerciales o publicitarios.\n\nSolo usted es totalmente responsable del uso que haga de las portadas de álbumes guardadas.</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="label_file_path">Ruta del archivo</string>

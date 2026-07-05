@@ -248,13 +248,6 @@
     <string name="about_x_title">Quant a %s</string>
     <string name="listeners_label">Oients</string>
     <string name="scrobbles_label">Activitat d\'escolta</string>
-    <string name="save_cover">Desa la portada d\'àlbum</string>
-    <string name="saving_cover_please_wait">S\'està desant la portada, espereu…</string>
-    <string name="save_artwork_error">No s\'ha pogut desar la portada a l\'emmagatzematge</string>
-    <string name="save_artwork_success">S\'ha desat la portada de l\'àlbum</string>
-    <string name="save_artwork_view_action">Mostra</string>
-    <string name="save_artwork_copyright_info_title">Avís de drets d\'autor</string>
-    <string name="save_artwork_copyright_info_message">Algunes portades d\'àlbums (o totes) podrien estar protegides per lleis de drets d\'autor. No podeu fer servir aquelles imatges amb finalitats lucratives o publicitàries. \n\nSou plenament responsable del vostre ús de les portades d\'àlbum desades.</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="keyboard">Teclat</string>

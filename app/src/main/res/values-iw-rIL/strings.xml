@@ -248,13 +248,6 @@
     <string name="about_x_title">‮אודות ‭%s</string>
     <string name="listeners_label">מאזינים</string>
     <string name="scrobbles_label">סקרובלינגס</string>
-    <string name="save_cover">שמור עטיפת אלבום</string>
-    <string name="saving_cover_please_wait">שומר עטיפה, המתן…</string>
-    <string name="save_artwork_error">שמירת העטיפה באחסון המקומי נכשלה</string>
-    <string name="save_artwork_success">עטיפת אלבום נשמרה</string>
-    <string name="save_artwork_view_action">הצג</string>
-    <string name="save_artwork_copyright_info_title">הודעת זכויות יוצרים</string>
-    <string name="save_artwork_copyright_info_message">ייתכן שחלק מעטיפות האלבומים (או כולן) מוגנות על ידי חוקי זכויות היוצרים. אין לך רשות להשתמש בתמונות אלה למטרות מסחריות או פרסומיות.\n\nהאחריות המלאה על השימוש בעטיפות האלבומים השמורות חלה עליך בלבד.</string>
     <string name="yes">כן</string>
     <string name="no">לא</string>
     <string name="keyboard">מקלדת</string>

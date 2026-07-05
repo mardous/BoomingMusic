@@ -248,13 +248,6 @@
     <string name="about_x_title">%s について</string>
     <string name="listeners_label">リスナー</string>
     <string name="scrobbles_label">Scrobbles</string>
-    <string name="save_cover">アルバムカバーを保存</string>
-    <string name="saving_cover_please_wait">カバーをセーブしています。お待ち下さい…</string>
-    <string name="save_artwork_error">ローカルストレージにカバーを保存できませんでした</string>
-    <string name="save_artwork_success">アルバムカバーを保存しました</string>
-    <string name="save_artwork_view_action">表示</string>
-    <string name="save_artwork_copyright_info_title">著作権通知</string>
-    <string name="save_artwork_copyright_info_message">アルバムカバーの一部（または全部）は、著作権法によって保護されている場合があります。これらの画像を商業目的または広告目的で使用することはできません。 \n\n保存したアルバムカバーの使用に関しては、利用者個人の責任となります。</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
     <string name="keyboard">キーボード</string>

@@ -80,10 +80,6 @@ enum class NowPlayingAction(
         iconRes = R.drawable.ic_search_24dp,
         titleRes = R.string.web_search
     ),
-    SaveAlbumCover(
-        iconRes = R.drawable.ic_image_24dp,
-        titleRes = R.string.save_cover
-    ),
     SeekBackward(
         iconRes = R.drawable.ic_fast_rewind_24dp,
         titleRes = R.string.action_seek_backward

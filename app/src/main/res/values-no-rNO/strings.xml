@@ -248,13 +248,6 @@
     <string name="about_x_title">Om %s</string>
     <string name="listeners_label">Lyttere</string>
     <string name="scrobbles_label">Scrobbler</string>
-    <string name="save_cover">Lagre albumomslag</string>
-    <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_error">Kunne ikke lagre forsiden på lokal lagring</string>
-    <string name="save_artwork_success">Albumforsidebilde lagret</string>
-    <string name="save_artwork_view_action">Vis</string>
-    <string name="save_artwork_copyright_info_title">Copyright anmerkning</string>
-    <string name="save_artwork_copyright_info_message">Visse albumomslag (eller alt av dem) kan være beskyttet av opphavsretter. Du kan ikke bruke slike bilder for kommersielle eller reklameformål. \n\nhar du bare det totale ansvaret over din bruk av lagrede albumomslag.</string>
     <string name="yes">Ja</string>
     <string name="no">Nei</string>
     <string name="keyboard">Keyboard</string>

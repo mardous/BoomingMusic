@@ -248,13 +248,6 @@
     <string name="about_x_title">關於 %s</string>
     <string name="listeners_label">監聽器</string>
     <string name="scrobbles_label">滾動條</string>
-    <string name="save_cover">儲存專輯封面</string>
-    <string name="saving_cover_please_wait">儲存中，請稍等…</string>
-    <string name="save_artwork_error">儲存封面到本地存儲失敗</string>
-    <string name="save_artwork_success">已儲存專輯封面</string>
-    <string name="save_artwork_view_action">查看</string>
-    <string name="save_artwork_copyright_info_title">版權聲明</string>
-    <string name="save_artwork_copyright_info_message">某些專輯封面 (或全部)可能受到版權法的保護。您不能將此圖像用於商業或廣告目的。 \n\n只有您對您儲存的相簿封面的使用承擔全部責任。</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="keyboard">鍵盤</string>

@@ -261,13 +261,6 @@
     <string name="about_x_title">சுமார் %s</string>
     <string name="listeners_label">கேட்போர்</string>
     <string name="scrobbles_label">ச்க்ரோபிள்ச்</string>
-    <string name="save_cover">ஆல்பத்தின் அட்டையைச் சேமிக்கவும்</string>
-    <string name="saving_cover_please_wait">அட்டையைச் சேமிக்கிறது, காத்திருக்கவும்…</string>
-    <string name="save_artwork_error">உள்ளக சேமிப்பகத்தில் கவர் சேமிக்க முடியவில்லை</string>
-    <string name="save_artwork_success">ஆல்பம் கவர் சேமிக்கப்பட்டது</string>
-    <string name="save_artwork_view_action">பார்வை</string>
-    <string name="save_artwork_copyright_info_title">காப்புரிமை அறிவிப்பு</string>
-    <string name="save_artwork_copyright_info_message">சில ஆல்பம் அட்டைகள் (அல்லது அவை அனைத்தும்) பதிப்புரிமைச் சட்டங்களால் பாதுகாக்கப்படலாம். வணிக அல்லது விளம்பர நோக்கங்களுக்காக இதுபோன்ற படங்களை நீங்கள் பயன்படுத்த முடியாது. \n\nசேமித்த ஆல்பம் அட்டைகளைப் பயன்படுத்துவதில் உங்களுக்கு மட்டுமே முழுப் பொறுப்பு உள்ளது.</string>
     <string name="yes">ஆம்</string>
     <string name="no">இல்லை</string>
     <string name="keyboard">விசைப்பலகை</string>

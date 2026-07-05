@@ -248,13 +248,6 @@
     <string name="about_x_title">%s 정보</string>
     <string name="listeners_label">청취자</string>
     <string name="scrobbles_label">스크로블</string>
-    <string name="save_cover">앨범 커버 저장</string>
-    <string name="saving_cover_please_wait">커버 저장 중, 잠시만 기다려 주세요…</string>
-    <string name="save_artwork_error">로컬 저장공간에 커버를 저장하지 못했습니다</string>
-    <string name="save_artwork_success">앨범 커버가 저장되었습니다</string>
-    <string name="save_artwork_view_action">보기</string>
-    <string name="save_artwork_copyright_info_title">저작권 고지</string>
-    <string name="save_artwork_copyright_info_message">일부 또는 모든 앨범 커버는 저작권법의 보호를 받을 수 있습니다. 상업적 또는 광고 목적으로 사용할 수 없습니다.\n\n저장된 앨범 커버 사용에 대한 책임은 전적으로 사용자에게 있습니다.</string>
     <string name="yes">예</string>
     <string name="no">아니요</string>
     <string name="keyboard">키보드</string>

@@ -248,13 +248,6 @@
     <string name="about_x_title">Over %s</string>
     <string name="listeners_label">Luisteraars</string>
     <string name="scrobbles_label">Scrobbels</string>
-    <string name="save_cover">Albumhoes opslaan</string>
-    <string name="saving_cover_please_wait">Albumcover aan het opslaan, gelieve te wachten…</string>
-    <string name="save_artwork_error">Opslaan omslag in lokale opslag mislukt</string>
-    <string name="save_artwork_success">Albumhoes opgeslagen</string>
-    <string name="save_artwork_view_action">Bekijken</string>
-    <string name="save_artwork_copyright_info_title">Copyright melding</string>
-    <string name="save_artwork_copyright_info_message">Sommige albumcovers (of allemaal) zijn mogelijk beschermd door auteursrechtwetgeving. Je kunt dergelijke afbeeldingen niet gebruiken voor commerciële doeleinden of advertenties. \n\nAlleen u hebt totale verantwoordelijkheid over uw gebruik van opgeslagen albumcovers.</string>
     <string name="yes">Ja</string>
     <string name="no">Neen</string>
     <string name="keyboard">Toetsenbord</string>

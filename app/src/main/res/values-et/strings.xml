@@ -115,7 +115,6 @@
     <string name="action_scan">Skaneeri</string>
     <string name="listeners_label">Kuulajaid</string>
     <string name="scrobbles_label">Kraasimisi</string>
-    <string name="save_artwork_view_action">Vaata</string>
     <string name="yes">Jah</string>
     <string name="no">Ei</string>
     <string name="keyboard">Klahvistik</string>
@@ -242,7 +241,6 @@
     <string name="top_tracks_label">Populaarsed lood</string>
     <string name="action_sort_order">Järjestus</string>
     <string name="sort_order_ignore_articles">Eira artikleid</string>
-    <string name="save_cover">Salvesta albumi kaanepilt</string>
     <string name="title_and_artist">Pealkiri ja esitaja</string>
     <string name="scan_media_positive">Skaneeri ikkagi</string>
     <string name="scan_finished">Skaneerimine on lõppenud.</string>
@@ -254,7 +252,6 @@
     <string name="download_image">Laadi pilt alla</string>
     <string name="pick_from_local_storage">Vali kohalikust andmeruumist</string>
     <string name="about_x_title">Rakenduse teave: %s</string>
-    <string name="saving_cover_please_wait">Salvesta albumi kaanepilti, oota hetk…</string>
     <string name="scan_media">Skaneeri meediumi</string>
     <string name="sort_order_date_added">Lisamise kuupäev</string>
     <string name="sort_order_date_modified">Muutmise kuupäev</string>
@@ -263,10 +260,6 @@
     <string name="sort_order_number_of_albums">Albumite arv</string>
     <string name="sort_order_last_played_date">Viimase esitamise kuupäev</string>
     <string name="sort_order_track_list">Lugude loend</string>
-    <string name="save_artwork_error">Kaanepildi salvestamine kohalikku andmeruumi ei õnnestunud</string>
-    <string name="save_artwork_success">Albumi kaanepilt on salvestatud</string>
-    <string name="save_artwork_copyright_info_title">Autoriõiguste märge</string>
-    <string name="save_artwork_copyright_info_message">Mõned albumite kaanepildi (või kõik) võivad olla autoriõigustega kaitstud. Selliseid pilte ei tohi kasutada ärilistel ega reklaami eesmärkidel.\n\nAinult sina vastutad täielikult salvestatud albumite kaanepiltide kasutamise eest.</string>
     <string name="label_file_path">Faili asukoht</string>
     <string name="size">Faili suurus</string>
     <string name="remove_song_x_from_playlist"><![CDATA[Kas eemaldad <b>%1$s</b> loo esitusloendist?]]></string>

@@ -19,8 +19,6 @@ package com.mardous.booming.ui.component.base
 
 import android.animation.AnimatorSet
 import android.app.Activity
-import android.content.ActivityNotFoundException
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
@@ -53,8 +51,6 @@ import coil3.size.Scale
 import com.commit451.coiltransformations.BlurTransformation
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
 import com.mardous.booming.R
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.PaletteColor
@@ -74,7 +70,6 @@ import com.mardous.booming.extensions.navigation.albumDetailArgs
 import com.mardous.booming.extensions.navigation.artistDetailArgs
 import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.navigation.genreDetailArgs
-import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.resources.animateBackgroundColor
 import com.mardous.booming.extensions.resources.animateTintColor
 import com.mardous.booming.extensions.resources.inflateMenu
@@ -462,11 +457,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 true
             }
 
-            NowPlayingAction.SaveAlbumCover -> {
-                requestSaveCover()
-                true
-            }
-
             NowPlayingAction.DeleteFromDevice -> {
                 DeleteSongsDialog.create(currentSong).show(childFragmentManager, "DELETE_SONGS")
                 true
@@ -645,44 +635,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             }
         } else {
             getString(R.string.list_end)
-        }
-    }
-
-    private fun requestSaveCover() {
-        if (!Preferences.savedArtworkCopyrightNoticeShown) {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle(R.string.save_artwork_copyright_info_title)
-                .setMessage(R.string.save_artwork_copyright_info_message)
-                .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
-                    Preferences.savedArtworkCopyrightNoticeShown = true
-                    requestSaveCover()
-                }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
-        } else {
-            playerViewModel.saveCover(playerViewModel.currentSong).observe(viewLifecycleOwner) { result ->
-                requestView { view ->
-                    if (result.isWorking) {
-                        Snackbar.make(view, R.string.saving_cover_please_wait, Snackbar.LENGTH_SHORT)
-                            .show()
-                    } else if (result.uri != null) {
-                        Snackbar.make(view, R.string.save_artwork_success, Snackbar.LENGTH_SHORT)
-                            .setAction(R.string.save_artwork_view_action) {
-                                try {
-                                    startActivity(
-                                        Intent(Intent.ACTION_VIEW)
-                                            .setDataAndType(result.uri, "image/jpeg")
-                                            .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                                    )
-                                } catch (_: ActivityNotFoundException) {}
-                            }
-                            .show()
-                    } else {
-                        Snackbar.make(view, R.string.save_artwork_error, Snackbar.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-            }
         }
     }
 }

@@ -25,8 +25,6 @@ import java.io.File
 
 object FileUtil : KoinComponent {
 
-    // Publicly accessible directories
-    const val BOOMING_ARTWORK_DIRECTORY_NAME = "Booming Artwork"
     const val PLAYLISTS_DIRECTORY_NAME = "Playlists"
 
     // Directories that are accessible only for Booming
@@ -41,9 +39,6 @@ object FileUtil : KoinComponent {
             Environment.getExternalStoragePublicDirectory(dirType)
         }
     }
-
-    fun imagesDirectory(dirName: String) =
-        externalStorageDirectory(Environment.DIRECTORY_PICTURES).resolve(dirName).ensureDirectory()
 
     fun playlistsDirectory() =
         externalStorageDirectory().resolve(PLAYLISTS_DIRECTORY_NAME).ensureDirectory()

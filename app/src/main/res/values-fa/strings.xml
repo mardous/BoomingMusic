@@ -261,13 +261,6 @@
     <string name="about_x_title">درباره %s</string>
     <string name="listeners_label">شنوندگان</string>
     <string name="scrobbles_label">حکاکی ها</string>
-    <string name="save_cover">ذخیره جلد آلبوم</string>
-    <string name="saving_cover_please_wait">در حال ذخیره جلد، صبر کنید…</string>
-    <string name="save_artwork_error">پوشش در حافظه محلی ذخیره نشد</string>
-    <string name="save_artwork_success">جلد آلبوم ذخیره شد</string>
-    <string name="save_artwork_view_action">مشاهده کنید</string>
-    <string name="save_artwork_copyright_info_title">اعلامیه حق چاپ</string>
-    <string name="save_artwork_copyright_info_message">برخی از جلدهای آلبوم (یا همه آنها) ممکن است توسط قوانین حق نسخه برداری محافظت شوند. شما نمی توانید از چنین تصاویری برای مقاصد تجاری یا تبلیغاتی استفاده کنید. \n\nفقط شما مسئولیت کامل استفاده از جلدهای آلبوم ذخیره شده را دارید.</string>
     <string name="yes">بله</string>
     <string name="no">خیر</string>
     <string name="keyboard">صفحه کلید</string>

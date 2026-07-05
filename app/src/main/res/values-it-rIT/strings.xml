@@ -248,13 +248,6 @@
     <string name="about_x_title">Informazioni su %s</string>
     <string name="listeners_label">Ascoltatori</string>
     <string name="scrobbles_label">Scrobbling</string>
-    <string name="save_cover">Salva copertina album</string>
-    <string name="saving_cover_please_wait">Salvataggio copertura, attendere…</string>
-    <string name="save_artwork_error">Impossibile salvare la copertina nella memoria interna</string>
-    <string name="save_artwork_success">Copertina album salvata</string>
-    <string name="save_artwork_view_action">Visualizza</string>
-    <string name="save_artwork_copyright_info_title">Avviso sul copyright</string>
-    <string name="save_artwork_copyright_info_message">Alcune o tutte le copertine degli album potrebbero essere protette dalle leggi sul copyright. Non è possibile utilizzare tali immagini per scopi commerciali o pubblicitari. \n\nSolo tu sei totalmente responsabile dell\'utilizzo delle copertine salvate.</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
     <string name="keyboard">Tastiera</string>

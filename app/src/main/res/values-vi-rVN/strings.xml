@@ -248,13 +248,6 @@
     <string name="about_x_title">Về %s</string>
     <string name="listeners_label">Người nghe</string>
     <string name="scrobbles_label">Lượt nghe</string>
-    <string name="save_cover">Lưu ảnh bìa album</string>
-    <string name="saving_cover_please_wait">Đang lưu ảnh bìa, vui lòng chờ…</string>
-    <string name="save_artwork_error">Không thể lưu ảnh bìa vào bộ nhớ cục bộ</string>
-    <string name="save_artwork_success">Ảnh bìa album đã được lưu</string>
-    <string name="save_artwork_view_action">Xem</string>
-    <string name="save_artwork_copyright_info_title">Thông báo bản quyền</string>
-    <string name="save_artwork_copyright_info_message">Một số ảnh bìa album (hoặc tất cả chúng) có thể được bảo vệ bởi luật Bản quyền. Bạn không được sử dụng những hình ảnh đó cho mục đích thương mại hoặc quảng cáo.\n\nBạn hoàn toàn chịu trách nhiệm về việc sử dụng các ảnh bìa album đã lưu.</string>
     <string name="yes">Đồng ý</string>
     <string name="no">Từ chối</string>
     <string name="keyboard">Bàn phím</string>

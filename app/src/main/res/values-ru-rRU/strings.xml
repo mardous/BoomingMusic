@@ -248,13 +248,6 @@
     <string name="about_x_title">О программе %s</string>
     <string name="listeners_label">Слушатели</string>
     <string name="scrobbles_label">Скробблинги</string>
-    <string name="save_cover">Сохранить обложку альбома</string>
-    <string name="saving_cover_please_wait">Сохранение обложки, подождите…</string>
-    <string name="save_artwork_error">Не удалось сохранить обложку в локальное хранилище</string>
-    <string name="save_artwork_success">Обложка альбома сохранена</string>
-    <string name="save_artwork_view_action">Посмотреть</string>
-    <string name="save_artwork_copyright_info_title">Уведомление об авторских правах</string>
-    <string name="save_artwork_copyright_info_message">Некоторые обложки альбомов (или все) могут быть защищены авторскими правами. Вы не можете использовать такие изображения в коммерческих или рекламных целях.\n\nВы несете полную ответственность за использование сохраненных обложек альбомов.</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="keyboard">Клавиатура</string>

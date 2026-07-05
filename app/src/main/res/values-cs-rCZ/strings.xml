@@ -248,13 +248,6 @@
     <string name="about_x_title">O %s</string>
     <string name="listeners_label">Posluchači</string>
     <string name="scrobbles_label">Scrobble</string>
-    <string name="save_cover">Uložit obal alba</string>
-    <string name="saving_cover_please_wait">Ukládání krytu, počkejte…</string>
-    <string name="save_artwork_error">Nepodařilo se uložit obal do místního úložiště</string>
-    <string name="save_artwork_success">Obal alba byl uložen</string>
-    <string name="save_artwork_view_action">Zobrazit</string>
-    <string name="save_artwork_copyright_info_title">Autorská práva oznámení</string>
-    <string name="save_artwork_copyright_info_message">Některé obálky alba (nebo všechny obálky) mohou být chráněny autorským právem. Takové obrázky nelze použít pro komerční nebo reklamní účely. \n\nPouze vy máte celkovou odpovědnost za používání uložených obalů alba.</string>
     <string name="yes">Ano</string>
     <string name="no">Ne</string>
     <string name="keyboard">Keyboard</string>
