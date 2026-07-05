@@ -13,12 +13,6 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?style=for-the-badge&logo=contributorcovenant)](CODE_OF_CONDUCT.md)
 [![Telegram Channel](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/mardousdev)
 
-<a href="https://github.com/mardous/BoomingMusic/releases"><img src="assets/badge-github.png" height="60" alt="GitHub Release"></a>
-<a href="https://f-droid.org/packages/com.mardous.booming/"><img src="assets/badge-fdroid.png" height="60" alt="F-Droid"></a>
-<a href="https://apt.izzysoft.de/packages/com.mardous.booming/"><img src="assets/badge-izzyondroid.png" height="60" alt="IzzyOnDroid"></a>
-<a href="https://www.openapk.net/boomingmusic/com.mardous.booming/"><img src="assets/badge-openapk.png" height="60" alt="OpenAPK"></a>
-<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/"><img src="assets/badge-obtainium.png" height="60" alt="Obtainium"></a>
-
 </div>
 
 ## 🗂️ Table of Contents
@@ -78,7 +72,24 @@
 </table>
 </div>
 
-### 💻 Tech Stack
+## 📥 Download & Install
+
+Booming Music is available for download from various sources:
+
+<div align="center">
+
+|                                                                                   Source                                                                                    | Details                                   |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------|
+|                               [<img src="assets/badge-playstore.png" alt="Play Store" height="50">](https://github.com/mardous/BoomingMusic)                                | Coming soon!                              |                                     |
+|                      [<img src="assets/badge-github.png" alt="GitHub Releases" height="50">](https://github.com/mardous/BoomingMusic/releases/latest)                       | Direct APK download                       |
+|                              [<img src="assets/badge-fdroid.png" alt="F-Droid" height="50">](https://f-droid.org/packages/com.mardous.booming)                              | Fully FOSS version                        |
+|                       [<img src="assets/badge-izzyondroid.png" alt="IzzyOnDroid" height="50">](https://apt.izzysoft.de/packages/com.mardous.booming/)                       | Just like F-Droid but with faster updates |                         |
+| [<img src="assets/badge-obtainium.png" alt="Obtainium" height="50">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/) | Automatic updates from GitHub             |
+|                         [<img src="assets/badge-openapk.png" alt="OpenAPK" height="50">](https://www.openapk.net/boomingmusic/com.mardous.booming/)                         | Alternative APK source                    |
+
+</div>
+
+## 💻 Tech Stack
 
 | Layer                   | Technology                                                     |
 |:------------------------|:---------------------------------------------------------------|
@@ -88,7 +99,7 @@
 | ⚙️ Dependency Injection | [Koin](https://insert-koin.io/)                                |
 | 🧵 Async                | Kotlin Coroutines & Flow                                       |
 | 🧩 UI                   | Android Views + Jetpack Compose (hybrid)                       |
-| 🖼️ Image Loading        | [Coil](https://coil-kt.github.io/coil/)                        |
+| 🖼️ Image Loading       | [Coil](https://coil-kt.github.io/coil/)                        |
 | 🎨 Design               | Material 3 / Material You                                      |
 | 🗣️ Language            | Kotlin                                                         |
 
