@@ -947,9 +947,13 @@
     <string name="lyrics_bold_synced_title">同步歌词显示为粗体</string>
     <string name="lyrics_bold_synced_summary">以粗体显示同步歌词。</string>
     <string name="lyrics_show_translation_title">显示翻译</string>
-    <string name="lyrics_show_translation_summary">若有已翻译歌词，将在此显示。</string>
+    <string name="lyrics_show_translation_summary">显示可用的歌词翻译。</string>
     <string name="lyrics_show_transliteration_title">显示音译</string>
-    <string name="lyrics_show_transliteration_summary">若有已音译歌词，将在此显示。</string>
+    <string name="lyrics_show_transliteration_summary">显示可用的歌词音译。</string>
     <string name="lyrics_resume_on_seek_title">跳转后继续播放</string>
     <string name="lyrics_resume_on_seek_summary">点击歌词时恢复播放。</string>
+    <string name="app_version_x">版本 %s</string>
+    <string name="app_description">现代设计 · 纯净听感 · 由你定义</string>
+    <string name="more_contributors_title">更多贡献者</string>
+    <string name="more_contributors_summary">您可以在 GitHub 上查看完整的贡献者名单。</string>
 </resources>

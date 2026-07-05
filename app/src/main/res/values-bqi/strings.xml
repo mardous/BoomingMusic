@@ -249,4 +249,23 @@
     <string name="label_last_modified">آلشت دیندایی</string>
     <string name="label_channels">تورگه یل</string>
     <string name="label_variable_bitrate">VBR</string>
+    <string name="playlist_description_hint">توزیهات نومگه پشک (اختیاری)</string>
+    <string name="permission_read_images_summary">ای موجوز سی Booming Music لازوم هڌ تا فایلا هونری آلبوم ن من دوبلگه یل آرنگ ایسا بجۊره. ٱر نؽخۊین ای ویژیی ن و کار بوورین، ترین ای موجوز ن نڌین.</string>
+    <string name="permission_read_images_denied">سی خوندن شؽواتا ز دسگا وا موجوز ن بڌین.</string>
+    <string name="permission_exact_alarms_title">زمووݩ بندی هوشدار دییق (اختیاری)</string>
+    <string name="permission_exact_alarms_description">سی یو ک تایمر خاو و خۊوی کار کونه، موجوز برنومه رؽڌن هوشدارا دییق لازوم هڌ</string>
+    <string name="select_storage_title">جاگه زفت کردنی ن پسند کۊنین</string>
+    <string name="now_playing">هیم سکو پشک</string>
+    <string name="playing_queue_label">هونی سف ن پشک اکونه</string>
+    <string name="list_start">ناهاڌن پا نومگه</string>
+    <string name="list_end">دیندا نومگه</string>
+    <string name="clear_queue">پاک کردن سف</string>
+    <string name="action_move_to_current_track">نشووݩ داڌن آرنگ هیم سکویی</string>
+    <string name="action_add_to_favorites">و مووردا دلخا ازاف کۊنین</string>
+    <string name="action_remove_from_favorites">پاک کردن ز مووردا دلخا</string>
+    <string name="added_to_favorites_label">و مووردا دلخا ازاف وابی</string>
+    <string name="removed_from_favorites_label">ز مووردا دلخا پاک وابی</string>
+    <string name="toggle_favorite">ٱووردن/پاک کردن ز مووردا دلخا</string>
+    <string name="action_add_to_playlist">و نومگه پشک ازاف کۊنین</string>
+    <string name="favorites_label">مووردا دلخا</string>
 </resources>
