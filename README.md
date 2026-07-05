@@ -80,12 +80,12 @@ Booming Music is available for download from various sources:
 
 |                                                                                   Source                                                                                    | Details                                   |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------|
-|                               [<img src="assets/badge-playstore.png" alt="Play Store" height="50">](https://github.com/mardous/BoomingMusic)                                | Coming soon!                              |                                     |
-|                      [<img src="assets/badge-github.png" alt="GitHub Releases" height="50">](https://github.com/mardous/BoomingMusic/releases/latest)                       | Direct APK download                       |
-|                              [<img src="assets/badge-fdroid.png" alt="F-Droid" height="50">](https://f-droid.org/packages/com.mardous.booming)                              | Fully FOSS version                        |
-|                       [<img src="assets/badge-izzyondroid.png" alt="IzzyOnDroid" height="50">](https://apt.izzysoft.de/packages/com.mardous.booming/)                       | Just like F-Droid but with faster updates |                         |
-| [<img src="assets/badge-obtainium.png" alt="Obtainium" height="50">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/) | Automatic updates from GitHub             |
-|                         [<img src="assets/badge-openapk.png" alt="OpenAPK" height="50">](https://www.openapk.net/boomingmusic/com.mardous.booming/)                         | Alternative APK source                    |
+|                               [<img src="assets/badge-playstore.png" alt="Play Store" height="35">](https://github.com/mardous/BoomingMusic)                                | Coming soon!                              |                                     |
+|                      [<img src="assets/badge-github.png" alt="GitHub Releases" height="35">](https://github.com/mardous/BoomingMusic/releases/latest)                       | Direct APK download                       |
+|                              [<img src="assets/badge-fdroid.png" alt="F-Droid" height="35">](https://f-droid.org/packages/com.mardous.booming)                              | Fully FOSS version                        |
+|                       [<img src="assets/badge-izzyondroid.png" alt="IzzyOnDroid" height="35">](https://apt.izzysoft.de/packages/com.mardous.booming/)                       | Just like F-Droid but with faster updates |                         |
+| [<img src="assets/badge-obtainium.png" alt="Obtainium" height="35">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/) | Automatic updates from GitHub             |
+|                         [<img src="assets/badge-openapk.png" alt="OpenAPK" height="35">](https://www.openapk.net/boomingmusic/com.mardous.booming/)                         | Alternative APK source                    |
 
 </div>
 
