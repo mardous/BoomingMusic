@@ -838,6 +838,8 @@
     <string name="on_clear_queue_remove_all_songs_except_current_summary">Only the currently playing song will remain in the queue.</string>
     <string name="clear_queue_on_completion_title">Clear queue when playback finishes</string>
     <string name="clear_queue_on_completion_summary">Automatically remove all songs from the queue after the last track finishes playing.</string>
+    <string name="play_all_songs_when_searching_title">Play all songs when searching</string>
+    <string name="play_all_songs_when_searching_summary">When enabled, selecting a searched song queues the entire library. Subject to the "When selecting a song" setting.</string>
 
     <!-- Metadata preferences -->
     <string name="ignore_media_store_album_covers_title">Ignore Media Store covers</string>

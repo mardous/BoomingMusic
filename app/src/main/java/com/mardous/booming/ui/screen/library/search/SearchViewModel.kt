@@ -61,9 +61,19 @@ class SearchViewModel(private val repository: Repository) : ViewModel() {
     }
 
     fun songClick(song: Song, results: List<Any>) = viewModelScope.launch(Dispatchers.IO) {
-        val songs = results.filterIsInstance<Song>()
-        val startPos = songs.indexOfSong(song.id).coerceAtLeast(0)
-        _queueFlow.emit(Triple(songs, startPos, Preferences.songClickAction))
+        val songs = if (Preferences.playAllSongsWhenSearching) {
+            repository.allSongs()
+        } else {
+            results.filterIsInstance<Song>()
+        }
+        val startPos = if (songs.size == 1) {
+            if (songs.singleOrNull { it.id == song.id } != null) 0 else -1
+        } else {
+            songs.indexOfSong(song.id).coerceAtLeast(0)
+        }
+        if (startPos != -1) {
+            _queueFlow.emit(Triple(songs, startPos, Preferences.songClickAction))
+        }
     }
 
     fun refresh() {
