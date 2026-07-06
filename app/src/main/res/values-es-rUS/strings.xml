@@ -530,7 +530,7 @@
     <string name="now_playing_summary">Personalice la pantalla de reproducción en curso.</string>
     <string name="lyrics_preferences_title">Letras</string>
     <string name="lyrics_preferences_summary">Ajusta la fuente, el interlineado y otras opciones para personalizar la vista de letras.</string>
-    <string name="playback_title">Audio</string>
+    <string name="playback_title">Reproducción</string>
     <string name="playback_summary">Cambie los ajustes de sonido, de audífonos, etc.</string>
     <string name="metadata_title">Metadatos</string>
     <string name="library_title">Biblioteca</string>
@@ -965,4 +965,6 @@
     <string name="app_description">Diseño moderno. Sonido puro. Totalmente tuyo.</string>
     <string name="more_contributors_title">Más colaboradores</string>
     <string name="more_contributors_summary">Puedes ver la lista completa de colaboradores en GitHub.</string>
+    <string name="play_all_songs_when_searching_title">Reproducir todas las canciones al buscar</string>
+    <string name="play_all_songs_when_searching_summary">Si está activado, al seleccionar una canción en la búsqueda, se añadirá a la cola toda la biblioteca. Depende de la opción \"Al seleccionar una canción\".</string>
 </resources>
