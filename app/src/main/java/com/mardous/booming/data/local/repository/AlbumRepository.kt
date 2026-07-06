@@ -105,11 +105,37 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) : Albu
     }
 
     private fun getAlbumFromSongs(id: Long, songs: List<Song>): Album {
+        var artistName: String? = null
+        var albumArtistName: String? = null
+        var minYear = Int.MAX_VALUE
+        var minTrackNumber = Int.MAX_VALUE
+        var firstSongIndex = 0
+
+        songs.forEachIndexed { index, song ->
+            if (artistName == null) {
+                artistName = song.artistName
+            }
+
+            if (albumArtistName == null && song.albumArtistName != null) {
+                albumArtistName = song.albumArtistName
+            }
+
+            if (song.year in 1..<minYear) {
+                minYear = song.year
+            }
+
+            if (song.trackNumber > -1 && song.trackNumber < minTrackNumber) {
+                minTrackNumber = song.trackNumber
+                firstSongIndex = index
+            }
+        }
+
         return Album(
             id = id,
-            artistName = songs.firstNotNullOfOrNull { song -> song.artistName } ?: Artist.UNKNOWN,
-            albumArtistName = songs.firstNotNullOfOrNull { song -> song.albumArtistName },
-            year = songs.filter { song -> song.year > 0 }.minOfOrNull { song -> song.year } ?: 0,
+            artistName = artistName ?: Artist.UNKNOWN,
+            albumArtistName = albumArtistName,
+            year = if (minYear == Int.MAX_VALUE) 0 else minYear,
+            firstSongIndex = firstSongIndex.coerceAtLeast(0),
             songs = songs
         )
     }

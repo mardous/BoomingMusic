@@ -26,6 +26,7 @@ data class Album(
     val artistName: String,
     val albumArtistName: String?,
     val year: Int,
+    val firstSongIndex: Int,
     override val songs: List<Song>
 ) : SongProvider {
 
@@ -49,7 +50,7 @@ data class Album(
         get() = id.asAlbumCoverUri()
 
     fun safeGetFirstSong(): Song {
-        return songs.firstOrNull() ?: Song.emptySong
+        return songs.getOrNull(firstSongIndex) ?: Song.emptySong
     }
 
     override fun equals(other: Any?): Boolean {
@@ -70,6 +71,6 @@ data class Album(
     companion object {
         const val UNKNOWN_ALBUM_DISPLAY_NAME = "Unknown Album"
 
-        val empty = Album(-1, "", "", -1, arrayListOf())
+        val empty = Album(-1, "", "", -1, -1, arrayListOf())
     }
 }
