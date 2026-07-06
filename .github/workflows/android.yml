@@ -103,14 +103,14 @@ jobs:
     - name: Find APK (CI build)
       if: github.event_name != 'pull_request'
       run: |
-        APK_PATH=$(find app/build/outputs/apk/normal/release -name '*.apk')
+        APK_PATH=$(find app/build/outputs/apk/github/release -name '*.apk')
         echo "APK_FILE=$APK_PATH" >> $GITHUB_ENV
         echo "APK_FILE_NAME=$(basename $APK_PATH .apk)" >> $GITHUB_ENV
 
     - name: Find APK (PR)
       if: github.event_name == 'pull_request'
       run: |
-        APK_PATH=$(find app/build/outputs/apk/normal/debug -name '*.apk')
+        APK_PATH=$(find app/build/outputs/apk/github/debug -name '*.apk')
         echo "APK_FILE=$APK_PATH" >> $GITHUB_ENV
         echo "APK_FILE_NAME=$(basename $APK_PATH .apk)" >> $GITHUB_ENV
 

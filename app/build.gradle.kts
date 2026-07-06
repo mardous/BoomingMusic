@@ -94,7 +94,7 @@ android {
 
     flavorDimensions += "version"
     productFlavors {
-        create("normal") {
+        create("github") {
             dimension = "version"
 
             resValue("bool", "network_features_enabled_by_default", "true")
@@ -118,7 +118,7 @@ android {
     }
 
     sourceSets {
-        named("normal") {
+        named("github") {
             kotlin.directories.add("src/shared/java")
         }
         named("fdroid") {
@@ -219,7 +219,7 @@ androidComponents {
             variant.buildConfigFields?.put(key.toString(), BuildConfigField("String", "\"$value\"", null))
         }
 
-        val canUseLastFm = variant.flavorName == "normal" || variant.flavorName == "playstore"
+        val canUseLastFm = variant.flavorName == "github" || variant.flavorName == "playstore"
 
         val localProperties = if (canUseLastFm) getProperties("local.properties") else null
         val lastFmKey = if (canUseLastFm) {

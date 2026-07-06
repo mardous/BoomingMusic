@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        variant: [ normal, fdroid, playstore ]
+        variant: [ github, fdroid, playstore ]
 
     steps:
       - uses: actions/checkout@v6
