@@ -965,4 +965,6 @@
     <string name="app_description">Un design moderne. Un son pur. Entièrement à vous.</string>
     <string name="more_contributors_title">D\'autres contributeurs</string>
     <string name="more_contributors_summary">Vous pouvez consulter la liste complète des contributeurs sur GitHub.</string>
+    <string name="play_all_songs_when_searching_title">Lire tous les titres lors de la recherche</string>
+    <string name="play_all_songs_when_searching_summary">Lorsque cette option est activée, le fait de sélectionner un titre trouvé dans les résultats de recherche ajoute l\'intégralité de la bibliothèque à la file d\'attente. Sous réserve du paramètre « Lors de la sélection d\'un titre ».</string>
 </resources>
