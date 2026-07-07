@@ -965,4 +965,5 @@
     <string name="app_description">Diseño moderno. Sonido puro. Completamente suyo.</string>
     <string name="more_contributors_title">Más colaboradores</string>
     <string name="more_contributors_summary">Puedes consultar la lista completa de colaboradores en GitHub.</string>
+    <string name="play_all_songs_when_searching_title">Reproducir todas las canciones cuando busques</string>
 </resources>
