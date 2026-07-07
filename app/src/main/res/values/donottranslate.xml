@@ -16,4 +16,10 @@
 	<string name="lastfm" translatable="false">Last.fm</string>
 	<string name="wikipedia" translatable="false">Wikipedia</string>
 	<string name="youtube" translatable="false">YouTube</string>
+
+    <string name="contributor_dawid" translatable="false">Dawid</string>
+    <string name="contributor_ray" translatable="false">Ray Cadle</string>
+    <string name="contributor_ttop" translatable="false">TTOP</string>
+    <string name="contributor_lenard" translatable="false">Lenard</string>
+    <string name="contributor_alex" translatable="false">Alex</string>
 </resources>
