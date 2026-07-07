@@ -328,17 +328,26 @@ fun getProperties(fileName: String): Properties? {
     } else null
 }
 
-fun loadFlavorProperties(flavorName: String?): Properties {
-    val props = Properties()
-    getProperties("properties/base.properties")?.let { props.putAll(it) }
-    if (!flavorName.isNullOrEmpty()) {
-        getProperties("properties/$flavorName.properties")?.let { props.putAll(it) }
-    }
-    return props
-}
-
 fun Properties.property(key: String) =
     this.getProperty(key) ?: "$key missing"
+
+fun loadFlavorProperties(flavorName: String?): Properties {
+    val finalProps = Properties()
+    val publicProperties = getProperties("public.properties")
+    if (publicProperties != null) {
+        for ((key, value) in publicProperties.entries) {
+            val keySplit = key.toString().split(".")
+            if (keySplit.size == 2) {
+                if (keySplit[0].equals(flavorName, ignoreCase = true)) {
+                    finalProps[keySplit[1]] = value
+                }
+            } else {
+                finalProps[key] = value
+            }
+        }
+    }
+    return finalProps
+}
 
 fun runGitCommand(command: String): String {
     return try {

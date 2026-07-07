@@ -25,7 +25,6 @@ import com.mardous.booming.data.remote.lastfm.model.LastFmSessionResponse
 import com.mardous.booming.data.remote.lastfm.model.LastFmUserResponse
 import com.mardous.booming.data.remote.lastfm.model.NowPlayingResponse
 import com.mardous.booming.data.remote.lastfm.model.ScrobbleResponse
-import com.mardous.booming.util.Constants.LASTFM_API_URL
 import com.mardous.booming.util.Constants.USER_AGENT
 import com.mardous.booming.util.encodeMd5
 import io.ktor.client.HttpClient
@@ -157,6 +156,8 @@ class LastFmService(private val client: HttpClient) {
     }
 
     companion object {
+        private const val LASTFM_API_URL = "https://ws.audioscrobbler.com/2.0/"
+
         private const val API_KEY = BuildConfig.LASTFM_API_KEY
         private const val API_SECRET = BuildConfig.LASTFM_SECRET
     }

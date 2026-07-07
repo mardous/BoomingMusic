@@ -17,6 +17,7 @@
 
 package com.mardous.booming.data.remote.lyrics.api.lyrically
 
+import com.mardous.booming.BuildConfig
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.network.NetworkFeature
@@ -24,7 +25,6 @@ import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.model.ITunesSearchResponse
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricText
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricsResponse
-import com.mardous.booming.util.Constants.LYRICALLY_API_URL
 import com.mardous.booming.util.Constants.USER_AGENT
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -207,6 +207,7 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
     }
 
     companion object {
+        private const val LYRICALLY_API_URL = BuildConfig.LYRICALLY_API_URL
         private val JW_SIMILARITY = JaroWinklerSimilarity()
     }
 }

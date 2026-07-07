@@ -3,7 +3,6 @@ package com.mardous.booming.data.remote.listenbrainz
 import com.mardous.booming.data.remote.listenbrainz.model.ListenBrainzResponse
 import com.mardous.booming.data.remote.listenbrainz.model.ListenBrainzSubmission
 import com.mardous.booming.data.remote.listenbrainz.model.ListenBrainzTokenValidationResponse
-import com.mardous.booming.util.Constants.LISTENBRAINZ_API_URL
 import com.mardous.booming.util.Constants.USER_AGENT
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -33,5 +32,9 @@ class ListenBrainzService(private val client: HttpClient) {
             setBody(submission)
         }
         return response.body()
+    }
+
+    companion object {
+        private const val LISTENBRAINZ_API_URL = "https://api.listenbrainz.org/1/"
     }
 }

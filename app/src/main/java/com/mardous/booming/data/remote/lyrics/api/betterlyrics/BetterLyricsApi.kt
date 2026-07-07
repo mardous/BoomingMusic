@@ -5,7 +5,6 @@ import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.model.BetterLyricsResponse
-import com.mardous.booming.util.Constants.BETTERLYRICS_API_URL
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.timeout
@@ -43,5 +42,9 @@ class BetterLyricsApi(private val client: HttpClient) : LyricsApi {
             }
         }
         return null
+    }
+
+    companion object {
+        private const val BETTERLYRICS_API_URL = "https://lyrics-api.boidu.dev/getLyrics"
     }
 }

@@ -5,7 +5,6 @@ import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.model.LRCLibResponse
-import com.mardous.booming.util.Constants.LRCLIB_API_URL
 import com.mardous.booming.util.Constants.USER_AGENT
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -48,5 +47,9 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
                 instrumental = matchingLyrics.instrumental
             )
         }
+    }
+
+    companion object {
+        private const val LRCLIB_API_URL = "https://lrclib.net/api/search"
     }
 }

@@ -22,23 +22,29 @@ import com.mardous.booming.R
 import java.net.URLEncoder
 import java.util.Locale
 
-import com.mardous.booming.util.Constants.GOOGLE_SEARCH_URL
-import com.mardous.booming.util.Constants.LASTFM_LOCALIZED_MUSIC_URL
-import com.mardous.booming.util.Constants.LASTFM_MUSIC_URL
-import com.mardous.booming.util.Constants.WIKIPEDIA_LOCALIZED_SEARCH_URL
-import com.mardous.booming.util.Constants.WIKIPEDIA_SEARCH_URL
-import com.mardous.booming.util.Constants.YOUTUBE_SEARCH_URL
-
 enum class WebSearchEngine(
     @StringRes val nameRes: Int,
     private val baseUrl: String,
     private val localizedUrl: String? = null
 ) {
-    Google(R.string.google, GOOGLE_SEARCH_URL),
-    LastFm(R.string.lastfm, LASTFM_MUSIC_URL, LASTFM_LOCALIZED_MUSIC_URL),
-    Wikipedia(R.string.wikipedia, WIKIPEDIA_SEARCH_URL, WIKIPEDIA_LOCALIZED_SEARCH_URL),
-    YouTube(R.string.youtube, YOUTUBE_SEARCH_URL);
-
+    Google(
+        nameRes = R.string.google,
+        baseUrl = "https://www.google.com/search?q="
+    ),
+    LastFm(
+        nameRes = R.string.lastfm,
+        baseUrl = "https://www.last.fm/music/",
+        localizedUrl = "https://www.last.fm/%s/music/"
+    ),
+    Wikipedia(
+        nameRes = R.string.wikipedia,
+        baseUrl = "https://www.wikipedia.org/wiki/Special:Search?search=",
+        localizedUrl = "https://%s.wikipedia.org/wiki/Special:Search?search="
+    ),
+    YouTube(
+        nameRes = R.string.youtube,
+        baseUrl = "https://www.youtube.com/results?search_query="
+    );
 
     fun getURLForQuery(query: String, locale: Locale = Locale.getDefault()): String {
         val url = if (locale != Locale.ENGLISH && localizedUrl != null) {
