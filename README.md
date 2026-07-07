@@ -19,10 +19,12 @@
 
 - [✨ Key Features](#-key-features)
 - [📸 Screenshots](#-screenshots)
+- [📥 Download & Install](#-download--install)
 - [💻 Tech Stack](#-tech-stack)
 - [🧩 Roadmap](#-roadmap)
 - [🔗 Useful Links](#-useful-links)
 - [🤝 Contributing](#-contributing)
+- [💖 Support Development](#-support-development)
 - [🙌 Credits](#-credits)
 - [⚖️ License](#-license)
 
@@ -80,28 +82,28 @@ Booming Music is available for download from various sources:
 
 |                                                                                   Source                                                                                    | Details                                   |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------|
-|                               [<img src="assets/badge-playstore.png" alt="Play Store" height="35">](https://github.com/mardous/BoomingMusic)                                | Coming soon!                              |                                     |
-|                      [<img src="assets/badge-github.png" alt="GitHub Releases" height="35">](https://github.com/mardous/BoomingMusic/releases/latest)                       | Direct APK download                       |
-|                              [<img src="assets/badge-fdroid.png" alt="F-Droid" height="35">](https://f-droid.org/packages/com.mardous.booming)                              | Fully FOSS version                        |
-|                       [<img src="assets/badge-izzyondroid.png" alt="IzzyOnDroid" height="35">](https://apt.izzysoft.de/packages/com.mardous.booming/)                       | Just like F-Droid but with faster updates |                         |
-| [<img src="assets/badge-obtainium.png" alt="Obtainium" height="35">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/) | Automatic updates from GitHub             |
-|                         [<img src="assets/badge-openapk.png" alt="OpenAPK" height="35">](https://www.openapk.net/boomingmusic/com.mardous.booming/)                         | Alternative APK source                    |
+|                               [<img src="assets/badge-playstore.png" alt="Play Store" height="40">](https://github.com/mardous/BoomingMusic)                                | Coming soon!                              |                                     |
+|                      [<img src="assets/badge-github.png" alt="GitHub Releases" height="40">](https://github.com/mardous/BoomingMusic/releases/latest)                       | Direct APK download                       |
+|                              [<img src="assets/badge-fdroid.png" alt="F-Droid" height="40">](https://f-droid.org/packages/com.mardous.booming)                              | Fully FOSS version                        |
+|                       [<img src="assets/badge-izzyondroid.png" alt="IzzyOnDroid" height="40">](https://apt.izzysoft.de/packages/com.mardous.booming/)                       | Just like F-Droid but with faster updates |                         |
+| [<img src="assets/badge-obtainium.png" alt="Obtainium" height="40">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/) | Automatic updates from GitHub             |
+|                         [<img src="assets/badge-openapk.png" alt="OpenAPK" height="40">](https://www.openapk.net/boomingmusic/com.mardous.booming/)                         | Alternative APK source                    |
 
 </div>
 
 ## 💻 Tech Stack
 
-| Layer                   | Technology                                                     |
-|:------------------------|:---------------------------------------------------------------|
-| 🎧 Audio Engine         | [Media3 ExoPlayer](https://developer.android.com/media/media3) |
-| 🧱 Architecture         | MVVM + Repository Pattern                                      |
-| 💾 Persistence          | Room Database                                                  |
-| ⚙️ Dependency Injection | [Koin](https://insert-koin.io/)                                |
-| 🧵 Async                | Kotlin Coroutines & Flow                                       |
-| 🧩 UI                   | Android Views + Jetpack Compose (hybrid)                       |
-| 🖼️ Image Loading       | [Coil](https://coil-kt.github.io/coil/)                        |
-| 🎨 Design               | Material 3 / Material You                                      |
-| 🗣️ Language            | Kotlin                                                         |
+| Layer                   | Technology                                                      |
+|:------------------------|:----------------------------------------------------------------|
+| 🎧 Audio Engine         | [Media3 ExoPlayer](https://developer.android.com/media/media3)  |
+| 🧱 Architecture         | MVVM + Repository Pattern                                       |
+| 💾 Persistence          | Room Database + DataStore + SharedPreferences                   |
+| ⚙️ Dependency Injection | [Koin](https://insert-koin.io/)                                 |
+| 🧵 Async                | Kotlin Coroutines & Flow                                        |
+| 🧩 UI                   | Android Views + Jetpack Compose (hybrid)                        |
+| 🖼️ Image Loading       | [Coil 3](https://coil-kt.github.io/coil/)                       |
+| 🎨 Design               | Material 3 / Material You                                       |
+| 🗣️ Language            | Kotlin                                                          |
 
 ## 🧩 Roadmap
 
