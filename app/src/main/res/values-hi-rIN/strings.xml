@@ -821,4 +821,15 @@
     <string name="uncaught_error_restart_app">ऐप को पुनः प्रारंभ करें</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
+    <string name="app_widget_card">कार्ड</string>
+    <string name="app_widget_full">पूर्ण</string>
+    <string name="search_playlists">प्लेलिस्ट खोजें</string>
+    <string name="select_playlists_title">प्लेलिस्ट चुनें</string>
+    <string name="no_playlists_create_new">प्लेलिस्ट बनाने के लिए \"नई\" बटन दबाएं</string>
+    <string name="new_playlist_action">नई</string>
+    <string name="no_playlists_that_match_x">\"%s\" से मेल खाती कोई प्लेलिस्ट नहीं है</string>
+    <string name="songs_added_to_playlists">प्लेलिस्ट में जोड़े गए गाने।</string>
+    <string name="no_playlists_label">कोई प्लेलिस्ट नहीं</string>
+    <string name="channel_stereo">स्टीरियो</string>
+    <string name="channel_stereo_2_1">2.1 स्टीरियो</string>
 </resources>
