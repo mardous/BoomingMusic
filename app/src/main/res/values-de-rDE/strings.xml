@@ -126,7 +126,7 @@
     <string name="permission_bluetooth_description">Die App benötigt Zugriff auf Geräte in der Nähe, um Bluetooth-Geräte zu finden</string>
     <string name="permission_bluetooth_denied">Zugriff auf Geräte in der Nähe verweigert.</string>
     <string name="permission_read_images_title">Bilder lesen (optional)</string>
-    <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in Ihren Musikordnern finden kann. Wenn Sie diese Funktion nicht nutzen möchten, können Sie die Berechtigung verweigern.</string>
+    <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in deinen Musikordnern finden kann. Wenn du diese Funktion nicht nutzen möchten, kannst du die Berechtigung verweigern.</string>
     <string name="permission_read_images_denied">Sie müssen die Berechtigung zum Lesen von Bildern auf diesem Gerät erteilen.</string>
     <string name="permission_exact_alarms_title">Genaue Erinnerungen planen (optional)</string>
     <string name="permission_exact_alarms_description">Die Erlaubnis, genaue Erinnerungen zu planen, ist erforderlich, damit der Sleeptimer richtig funktioniert</string>
@@ -578,7 +578,7 @@
     <string name="lyrics_shadow_effect_title">Schatten-Effekt</string>
     <string name="lyrics_shadow_effect_summary">Fügt einen Schatten unter der aktuellen Zeile hinzu, um die Lesbarkeit zu verbessern.</string>
     <string name="lyrics_progressive_coloring_title">Progressive Liedtext Färbung</string>
-    <string name="lyrics_progressive_coloring_summary">Animieren Sie aktive Zeilen mit einem allmählichen Farbübergang, anstatt sie sofort einzufärben.</string>
+    <string name="lyrics_progressive_coloring_summary">Animiere aktive Zeilen mit einem allmählichen Farbübergang, anstatt sie sofort einzufärben.</string>
     <string name="lyrics_bold_unsynced_title">Fettgedruckte Schrift für nicht synchronisierte Liedtexte</string>
     <string name="lyrics_bold_unsynced_summary">Unsynchronisierte Liedtexte in Fettschrift anzeigen.</string>
     <string name="lyrics_line_spacing_title">Zeilenabstand</string>
@@ -586,11 +586,11 @@
     <string name="synced_font_size_player_title">Schriftgröße der synchronisierten Liedtexte (Player)</string>
     <string name="synced_font_size_player_summary">Passen Sie die Schriftgröße für synchronisierte Liedtexte an, die über dem Albumcover auf dem Player-Bildschirm angezeigt werden.</string>
     <string name="unsynced_font_size_player_title">Schriftgröße von nicht synchronisierten Liedtexten (Player)</string>
-    <string name="unsynced_font_size_player_summary">Passen Sie die Schriftgröße für nicht synchronisierte Liedtexte an, die über dem Albumcover auf dem Player-Bildschirm angezeigt werden.</string>
+    <string name="unsynced_font_size_player_summary">Passe die Schriftgröße für nicht synchronisierte Liedtexte an, die über dem Albumcover auf dem Player-Bildschirm angezeigt werden.</string>
     <string name="synced_font_size_full_title">Schriftgröße der synchronisierten Liedtexte (Vollbild)</string>
     <string name="synced_font_size_full_summary">Passen Sie die Schriftgröße für synchronisierte Liedtexte im Vollbildmodus an.</string>
     <string name="unsynced_font_size_full_title">Schriftgröße von nicht synchronisierten Liedtexten (Vollbild)</string>
-    <string name="unsynced_font_size_full_summary">Passen Sie die Schriftgröße für nicht synchronisierte Liedtexte im Vollbildmodus an.</string>
+    <string name="unsynced_font_size_full_summary">Passe die Schriftgröße für nicht synchronisierte Liedtexte im Vollbildmodus an.</string>
     <string name="instrumental_tracks_identifiers_title">Erkennung für Instrumentalstücke</string>
     <string name="instrumental_tracks_identifiers_summary">Wenn ein Liedtext nur aus einem oder mehreren dieser Indikatoren besteht, wird er als Instrumentalspur markiert (getrennt mit Komma).</string>
     <string name="instrumental_tracks_mark_by_title_title">Nach Titel sortieren</string>
@@ -612,7 +612,7 @@
     <string name="adaptive_controls_title">Adaptive Steuerungen</string>
     <string name="adaptive_controls_summary">Die Steuerelemente des Mini-Players passen sich dem aktuellen Player-Stil an.</string>
     <string name="swipe_to_dismiss_title">Zum Schließen nach unten wischen</string>
-    <string name="swipe_to_dismiss_summary">Wischen Sie auf dem Mini-Player nach unten, um die Wiedergabe zu beenden und die Wiedergabeliste zu löschen.</string>
+    <string name="swipe_to_dismiss_summary">Wische auf dem Mini-Player nach unten, um die Wiedergabe zu beenden und die Wiedergabeliste zu löschen.</string>
     <string name="circle_button_title">Runde Wiedergabetaste</string>
     <string name="swipe_album_cover_title">Auf dem Albumcover wischen</string>
     <string name="swipe_album_cover_summary">Wischen Sie auf dem Albumcover nach links oder rechts, um zwischen den Songs zu wechseln.</string>
@@ -634,7 +634,7 @@
     <string name="swipe_anywhere_title">Titel durch Wischen an einer beliebigen Stelle wechseln</string>
     <string name="swipe_anywhere_summary">Wischen Sie auf einer beliebigen freien Fläche des aktuellen Wiedergabebildschirms nach links oder rechts, um zwischen den Titeln zu wechseln.</string>
     <string name="swipe_up_queue_title">Nach oben wischen, um die Warteschlange zu öffnen</string>
-    <string name="swipe_up_queue_summary">Wischen Sie auf einer beliebigen freien Fläche des aktuellen Wiedergabebildschirms nach oben, um die Warteschlange zu öffnen.</string>
+    <string name="swipe_up_queue_summary">Wische auf einer beliebigen freien Fläche des aktuellen Wiedergabebildschirms nach oben, um die Warteschlange zu öffnen.</string>
     <string name="display_album_name_title">Album-Titel anzeigen</string>
     <string name="display_extra_info_title">Zusätzliche Informationen anzeigen</string>
     <string name="display_extra_info_summary">Zeigt zusätzliche Titel-Informationen an, wie Bitrate, Format, Abtastrate usw.</string>
@@ -736,7 +736,7 @@
     <string name="stop_when_closed_from_recents_summary">Die Wiedergabe wird angehalten, wenn die App aus der Liste der zuletzt verwendeten Apps geschlossen wird.</string>
     <string name="stop_when_closed_from_recents_note">Hinweis: Einige Geräte mit aggressivem Arbeitsspeicher- oder Akku-Management ignorieren diese Einstellung möglicherweise und beenden die App immer, wenn sie aus den zuletzt verwendeten Apps entfernt wird.</string>
     <string name="rotation_lock_title">Rotationssperre</string>
-    <string name="rotation_lock_summary">Sperren Sie die Ausrichtung des Geräts. Nützlich in Fällen, in denen die Musikwiedergabe aufgrund bestimmter Herstellerrichtlinien beim Drehen des Geräts unterbrochen wird.</string>
+    <string name="rotation_lock_summary">Sperre die Ausrichtung des Geräts. Nützlich in Fällen, in denen die Musikwiedergabe aufgrund bestimmter Herstellerrichtlinien beim Drehen des Geräts unterbrochen wird.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Hell</string>
     <string name="dark_theme_name">Dunkel</string>
@@ -815,7 +815,7 @@
     <string name="download_action">Download</string>
     <string name="downloading_update">Lädt das Update für Booming Music herunter.</string>
     <string name="uncaught_error_title">Hoppla! Das sollte eigentlich nicht passieren!</string>
-    <string name="uncaught_error_message">Es scheint, dass etwas schiefgelaufen ist und die App abgestürzt ist. Es wäre hilfreich, wenn Sie uns den Fehlerbericht an unsere Telegram-Gruppe oder per E-Mail senden könnten.</string>
+    <string name="uncaught_error_message">Es scheint, dass etwas schiefgelaufen ist und die App abgestürzt ist. Es wäre hilfreich, wenn du uns den Fehlerbericht in unsere Telegram-Gruppe oder per E-Mail senden könntest.</string>
     <string name="uncaught_error_report">Fehlerbericht</string>
     <string name="uncaught_error_report_copied">Fehlerbericht in die Zwischenablage kopiert.</string>
     <string name="uncaught_error_restart_app">App neu starten</string>
@@ -952,4 +952,8 @@
     <string name="lyrics_show_transliteration_summary">Transliterierte Liedtexte anzeigen, wenn verfügbar.</string>
     <string name="lyrics_resume_on_seek_title">Nach Suche fortsetzen</string>
     <string name="lyrics_resume_on_seek_summary">Wiedergabe automatisch fortgesetzen, wenn auf eine Zeile geklickt wird.</string>
+    <string name="app_version_x">Version %s</string>
+    <string name="app_description">Modernes Design. Purer Klang. Nur für dich.</string>
+    <string name="more_contributors_title">Weitere Mitwirkende</string>
+    <string name="more_contributors_summary">Die vollständige Liste der Mitwirkenden findest du auf GitHub.</string>
 </resources>
