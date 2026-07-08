@@ -714,7 +714,7 @@
     <string name="blacklist_summary">黑名單資料夾中的內容會從曲庫中隱藏。</string>
     <string name="artist_min_songs_title">藝人最少歌曲數</string>
     <string name="artist_min_songs_summary">藝人至少要有幾首歌曲才會顯示在曲庫中。</string>
-    <string name="album_min_songs_title">專輯最小歌曲計數</string>
+    <string name="album_min_songs_title">專輯最少歌曲數</string>
     <string name="album_min_songs_summary">專輯至少要有幾首歌才會顯示在曲庫中。</string>
     <string name="min_song_duration_title">最小歌曲持續時間</string>
     <string name="min_song_duration_summary">只有長度至少達到指定秒數的歌曲才會顯示在曲庫中。</string>
