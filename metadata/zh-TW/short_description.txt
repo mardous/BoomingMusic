@@ -1,1 +1,1 @@
-A modern, Material 3 local music player built for smooth offline listening
+乾淨、流暢、以 Material 設計為核心的強大音樂播放器
