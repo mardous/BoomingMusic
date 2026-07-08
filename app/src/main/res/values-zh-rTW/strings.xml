@@ -28,7 +28,7 @@
     <string name="search_artist_x_label">搜尋藝人：%s</string>
     <string name="search_album_x_label">搜尋專輯：%s</string>
     <string name="search_list_x_label">搜尋列表：%s</string>
-    <string name="search_from_x_label">從 \"%s \" 搜尋</string>
+    <string name="search_from_x_label">在「%s」中搜尋</string>
     <string name="search_year_x_label">搜尋年份: %s</string>
     <string name="search_in_folder_x">在資料夾中搜尋：%s</string>
     <string name="search_last_added">搜尋最新音樂</string>
