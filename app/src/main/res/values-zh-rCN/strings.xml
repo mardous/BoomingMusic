@@ -28,7 +28,7 @@
     <string name="search_artist_x_label">搜索艺人：%s</string>
     <string name="search_album_x_label">搜索专辑：%s</string>
     <string name="search_list_x_label">搜索列表：%s</string>
-    <string name="search_from_x_label">从 \"%s \" 搜索</string>
+    <string name="search_from_x_label">在“%s”中搜索</string>
     <string name="search_year_x_label">搜索年份: %s</string>
     <string name="search_in_folder_x">在文件夹中搜索：%s</string>
     <string name="search_last_added">搜索最新音乐</string>
@@ -947,4 +947,11 @@
     <string name="app_description">现代设计 · 纯净听感 · 由你定义</string>
     <string name="more_contributors_title">更多贡献者</string>
     <string name="more_contributors_summary">您可以在 GitHub 上查看完整的贡献者名单。</string>
+    <string name="contributor_dawid_description">多项关键应用功能的核心贡献者与设计者。</string>
+    <string name="contributor_ray_description">贡献了多项亮眼的关键功能。</string>
+    <string name="contributor_ttop_description">项目最初的贡献者兼测试员。</string>
+    <string name="contributor_lenard_description">应用官网开发者兼贡献者。</string>
+    <string name="contributor_alex_description">项目的老朋友，为各项核心 API 提供了访问支持。</string>
+    <string name="play_all_songs_when_searching_title">搜索时播放全部歌曲</string>
+    <string name="play_all_songs_when_searching_summary">启用后，选中搜索结果中的歌曲会将全部本地音乐加入播放队列。仅在“当选中曲目时”设定为“播放整个列表”时生效。</string>
 </resources>
