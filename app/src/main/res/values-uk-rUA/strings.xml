@@ -970,4 +970,15 @@
     <string name="lyrics_show_transliteration_summary">Показувати транслітерацію тексту пісні, якщо вона доступна.</string>
     <string name="lyrics_resume_on_seek_title">Відновити пошук</string>
     <string name="lyrics_resume_on_seek_summary">Автоматично відновлювати відтворення при натисканні на рядок.</string>
+    <string name="app_version_x">Версія %s</string>
+    <string name="app_description">Сучасний дизайн. Чистий звук. Повністю ваш.</string>
+    <string name="more_contributors_title">Більше вкладників</string>
+    <string name="more_contributors_summary">Повний список вкладників можна переглянути на GitHub.</string>
+    <string name="contributor_dawid_description">Ключовий розробник і дизайнер кількох основних функцій застосунку.</string>
+    <string name="contributor_ray_description">Зробив внесок у розробку кількох захопливих і ключових функцій.</string>
+    <string name="contributor_ttop_description">Найперший учасник та тестувальник проєкту.</string>
+    <string name="contributor_lenard_description">Розробник вебсайту застосунку та учасник проєкту.</string>
+    <string name="contributor_alex_description">Давній друг проєкту, який надав доступ до основних API.</string>
+    <string name="play_all_songs_when_searching_title">Відтворювати всі пісні під час пошуку</string>
+    <string name="play_all_songs_when_searching_summary">Якщо цей параметр увімкнено, вибір пісні через пошук додає до черги всю медіатеку. Залежить від налаштування «При виборі пісні».</string>
 </resources>
