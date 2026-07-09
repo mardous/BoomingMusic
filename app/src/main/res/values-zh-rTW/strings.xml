@@ -32,8 +32,8 @@
     <string name="search_year_x_label">搜尋年份：%s</string>
     <string name="search_in_folder_x">在資料夾中搜尋：%s</string>
     <string name="search_last_added">搜尋最新音樂</string>
-    <string name="shuffle_mode_album">專輯隨機播放</string>
-    <string name="shuffle_mode_artist">藝人隨機播放</string>
+    <string name="shuffle_mode_album">按專輯隨機</string>
+    <string name="shuffle_mode_artist">按藝人隨機</string>
     <string name="action_share">分享</string>
     <string name="action_save">儲存</string>
     <string name="back_action">返回</string>
@@ -114,7 +114,7 @@
     <string name="delete_the_song_x">刪除歌曲 %s？</string>
     <string name="deleting_songs">正在刪除歌曲，稍等…</string>
     <string name="song_x_of_x">%1$d / %2$d • %3$s</string>
-    <string name="no_equalizer">未找到等化器。</string>
+    <string name="no_equalizer">找不到等化器。</string>
     <string name="audio_focus_denied">音訊焦點被拒絕。</string>
     <string name="no_audio_ID">錯誤的音訊 ID。</string>
     <string name="playback_error_code">播放錯誤（%s）。</string>
@@ -347,21 +347,21 @@
     <string name="no_suggestions">目前沒有推薦內容</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全隨機</string>
-    <string name="shuffle_mode_most_played">隨機最多播放單曲</string>
-    <string name="shuffle_mode_most_played_artists">隨機最多播放藝人</string>
-    <string name="shuffle_mode_most_played_albums">隨機最多播放專輯</string>
-    <string name="shuffle_mode_favorite_songs">我的最愛優先</string>
-    <string name="shuffle_mode_forgotten_songs">隨機未播放歌曲</string>
-    <string name="shuffle_mode_recently_added">隨機最近新增歌曲</string>
-    <string name="shuffle_mode_combined">智慧隨機</string>
+    <string name="shuffle_mode_most_played">常聽單曲</string>
+    <string name="shuffle_mode_most_played_artists">常聽藝人</string>
+    <string name="shuffle_mode_most_played_albums">常聽專輯</string>
+    <string name="shuffle_mode_favorite_songs">我的最愛</string>
+    <string name="shuffle_mode_forgotten_songs">許久未聽</string>
+    <string name="shuffle_mode_recently_added">最近新增</string>
+    <string name="shuffle_mode_combined">智慧混合</string>
     <string name="shuffle_mode_pure_random_description">完全隨機播放歌曲。</string>
-    <string name="shuffle_mode_most_played_description">優先隨機播放最常聽的歌曲。</string>
-    <string name="shuffle_mode_most_played_artists_description">優先播放最常聽的藝人。</string>
-    <string name="shuffle_mode_most_played_albums_description">優先播放最常聽的專輯。</string>
-    <string name="shuffle_mode_favorite_songs_description">偏向最喜歡的歌曲。</string>
-    <string name="shuffle_mode_forgotten_songs_description">偏向有一段時間未播放的歌曲。</string>
-    <string name="shuffle_mode_recently_added_description">偏向近期新增到曲庫的歌曲。</string>
-    <string name="shuffle_mode_combined_description">根據收藏、播放紀錄和近期播放混合播放。</string>
+    <string name="shuffle_mode_most_played_description">優先播放最常聽的歌曲。</string>
+    <string name="shuffle_mode_most_played_artists_description">優先播放常聽藝人的歌曲。</string>
+    <string name="shuffle_mode_most_played_albums_description">優先播放常聽專輯中的歌曲。</string>
+    <string name="shuffle_mode_favorite_songs_description">優先播放我的最愛歌曲。</string>
+    <string name="shuffle_mode_forgotten_songs_description">優先播放近期較少播放的歌曲。</string>
+    <string name="shuffle_mode_recently_added_description">優先播放最近新增到曲庫的歌曲。</string>
+    <string name="shuffle_mode_combined_description">根據我的最愛、播放次數和新增時間混合播放。</string>
     <!-- Equalizer -->
     <string name="equalizer_label">等化器</string>
     <string name="autoeq_label">AutoEq</string>
@@ -390,7 +390,7 @@
     <string name="imported_x_profiles">已匯入 %d 個設定檔。</string>
     <string name="no_profile_imported">沒有匯入任何設定檔。</string>
     <string name="import_autoeq_profile">匯入 AutoEq 設定檔</string>
-    <string name="select_a_file_containing_autoeq_params">請選擇包含 AutoEq （圖形式等化器）參數的檔案。</string>
+    <string name="select_a_file_containing_autoeq_params">請選擇包含 AutoEq（圖形式等化器）參數的檔案。</string>
     <string name="no_autoeq_profiles">未匯入 AutoEq 設定檔。</string>
     <string name="reset_equalizer">重設等化器</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">確定要重設等化器嗎？ \n\n這會清除所有設定檔。</string>
@@ -505,8 +505,8 @@
     <string name="saf_access_required_message">Booming Music 需要存取這些檔案的權限。請選擇儲存音樂檔案的根資料夾。</string>
     <string name="saf_show_files_button">顯示檔案</string>
     <string name="saf_error_uri">無法取得 SAF URI</string>
-    <string name="saf_write_failed">檔案寫入失敗： %s</string>
-    <string name="saf_delete_failed">檔案刪除失敗： %s</string>
+    <string name="saf_write_failed">檔案寫入失敗：%s</string>
+    <string name="saf_delete_failed">檔案刪除失敗：%s</string>
     <string name="settings_title">設定</string>
     <string name="appearance_title">外觀</string>
     <string name="appearance_summary">變更應用的主題和其他視覺設定。</string>
@@ -555,7 +555,7 @@
     <string name="larger_header_image_title">較大的封面圖片</string>
     <string name="larger_header_image_summary">在專輯、藝人和播放清單詳細資訊中顯示較大的封面圖片。</string>
     <string name="lyrics_center_current_line_title">目前歌詞置中</string>
-    <string name="lyrics_center_current_line_summary">將目前歌詞行置於畫面中央，而不是對齊頂端。</string>
+    <string name="lyrics_center_current_line_summary">將目前歌詞行置於畫面中央，而不是頂端。</string>
     <string name="lyrics_custom_font_title">自訂歌詞字型</string>
     <string name="lyrics_custom_font_summary">匯入並使用自訂歌詞字型。</string>
     <string name="lyrics_import_custom_font_title">匯入自訂字型</string>
