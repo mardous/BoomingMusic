@@ -7,7 +7,7 @@
     <string name="shuffle_all_label">全部随机</string>
     <string name="shuffle_mode">随机播放模式</string>
     <string name="repeat_mode">循环模式</string>
-    <string name="shuffle_button_tip">点击启用默认随机模式，长按图标以使用偏好的随机模式。</string>
+    <string name="shuffle_button_tip">点按启用默认随机模式，长按图标以使用偏好的随机模式。</string>
     <string name="action_play_pause">播放/暂停</string>
     <string name="action_pause">暂停</string>
     <string name="action_next">下一首</string>
@@ -114,7 +114,7 @@
     <string name="delete_the_song_x">删除歌曲 %s？</string>
     <string name="deleting_songs">正在删除歌曲，请稍候…</string>
     <string name="song_x_of_x">%1$d / %2$d • %3$s</string>
-    <string name="no_equalizer">未找到均衡器。</string>
+    <string name="no_equalizer">找不到均衡器。</string>
     <string name="audio_focus_denied">音频焦点被拒绝。</string>
     <string name="no_audio_ID">错误的音频 ID。</string>
     <string name="playback_error_code">播放错误（%s）。</string>
@@ -126,7 +126,7 @@
     <string name="permission_bluetooth_description">此应用需要附近的设备权限来检查蓝牙设备</string>
     <string name="permission_bluetooth_denied">附近设备权限被拒绝。</string>
     <string name="permission_read_images_title">查看图像（可选）</string>
-    <string name="permission_read_images_summary">为了自动查找并显示歌曲的专辑封面，Booming Music 需要获取访问音乐文件夹的权限。 你可以根据需要决定是否授予此权限。</string>
+    <string name="permission_read_images_summary">为了自动查找并显示歌曲的专辑封面，Booming Music 需要获取访问音乐文件夹的权限。你可以根据需要决定是否授予此权限。</string>
     <string name="permission_read_images_denied">需要授予访问所有文件的权限以允许应用读取封面图像。</string>
     <string name="permission_exact_alarms_title">设置精确闹钟(可选)</string>
     <string name="permission_exact_alarms_description">睡眠计时器需要获取设置精确闹钟的权限才能正常工作</string>
@@ -240,11 +240,11 @@
     <string name="scan_finished">扫描已完成。</string>
     <string name="album_or_artist_empty">标题或艺人是空的。</string>
     <string name="update_image">更新图像</string>
-    <string name="restore_default">恢复默认</string>
+    <string name="restore_default">还原默认</string>
     <string name="remove_cover">移除封面</string>
     <string name="could_not_download_album_cover">无法下载匹配的相册封面。</string>
     <string name="download_image">下载图像</string>
-    <string name="pick_from_local_storage">从本地存储中选取</string>
+    <string name="pick_from_local_storage">从本地存储中选择</string>
     <string name="about_x_title">关于 %s</string>
     <string name="yes">是</string>
     <string name="no">否</string>
@@ -295,9 +295,9 @@
     <string name="backup_playlists">播放列表</string>
     <string name="backup_successful">备份成功！</string>
     <string name="backup_failed">备份失败。</string>
-    <string name="select_content_to_restore">选择要恢复的内容：</string>
-    <string name="could_not_restore_data">无法恢复数据。请验证备份文件并重试。</string>
-    <string name="data_restored_successfully">数据已成功恢复。</string>
+    <string name="select_content_to_restore">选择要还原的内容：</string>
+    <string name="could_not_restore_data">无法还原数据。请验证备份文件并重试。</string>
+    <string name="data_restored_successfully">数据已成功还原。</string>
     <string name="action_toggle_playlist_lock">锁定/解锁播放列表</string>
     <string name="playlist_locked">播放列表已锁定</string>
     <string name="playlist_unlocked">播放列表已解锁</string>
@@ -371,7 +371,7 @@
     <string name="autoeq_profiles_title">AutoEq 预设</string>
     <string name="eq_profile_title">预设</string>
     <string name="change_band_count_title">更改频段数量</string>
-    <string name="change_band_count_message">更改频段数量会将当前预设重置为初始状态。为当前频段数量保存的其他配置将无法用于新的频段数量。\n\n要继续吗？</string>
+    <string name="change_band_count_message">更改频段数量会将当前预设重置为初始状态。为当前频段数量保存的其他预设将无法用于新的频段数量。\n\n要继续吗？</string>
     <string name="band_configuration_changed_successfully">频段配置更改成功。</string>
     <string name="band_configuration_could_not_be_changed">错误：频段配置无法更改。</string>
     <string name="share_eq_profiles">分享均衡器预设</string>
@@ -435,7 +435,7 @@
     <string name="custom">自定义</string>
     <string name="audio_offload_is_enabled">硬件加速已启用</string>
     <string name="enable_audio_offload_title">音频硬件加速</string>
-    <string name="enable_audio_offload_description">使用播放硬件加速，从而降低 CPU 使用率并减少电池电量消耗。 重启应用后生效。</string>
+    <string name="enable_audio_offload_description">使用播放硬件加速，从而降低 CPU 使用率并减少电池电量消耗。重启应用后生效。</string>
     <string name="enable_audio_float_output_title">高精度音频输出</string>
     <string name="enable_audio_float_output_description">启用 32 位浮点音频输出，提升保真度。需重启应用生效。</string>
     <string name="skip_silence_title">跳过静音部分</string>
@@ -523,7 +523,7 @@
     <string name="advanced_summary">高级用户的应用内语言和其他设置。</string>
     <string name="update_title">更新</string>
     <string name="about_title">关于</string>
-    <string name="about_summary">Booming Music %s，触摸以获取更多信息。</string>
+    <string name="about_summary">Booming Music %s，点按以查看更多信息。</string>
     <!-- Preference headers -->
     <string name="general_header">常规</string>
     <string name="library_header">曲库</string>
@@ -536,7 +536,7 @@
     <string name="audio_focus_header">音频焦点</string>
     <string name="shuffle_mode_header">随机模式</string>
     <string name="display_header">显示</string>
-    <string name="backup_restore_header">备份/恢复</string>
+    <string name="backup_restore_header">备份/还原</string>
     <string name="visuals_header">视觉效果</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">一般主题</string>
@@ -550,7 +550,7 @@
     <string name="remember_last_page_summary">在启动时转到最后打开的页面。</string>
     <string name="start_page_title">开始页面</string>
     <string name="tab_mode_title">标签标题模式</string>
-    <string name="hold_tab_to_search_title">按住标签以搜索</string>
+    <string name="hold_tab_to_search_title">长按标签以搜索</string>
     <string name="hold_tab_to_search_summary">长按任意导航栏选项卡打开搜索界面。</string>
     <string name="larger_header_image_title">更大的封面图像</string>
     <string name="larger_header_image_summary">在专辑、艺人和播放列表的详细信息中显示更大的封面图像。</string>
@@ -590,7 +590,7 @@
     <string name="ignore_blank_lines_title">忽略空行</string>
     <string name="ignore_blank_lines_summary">忽略 LRC 文件中的空行，而不将其显示为气泡动画。</string>
     <string name="treat_all_lyrics_files_as_utf8_title">将所有歌词文件视为 UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">强制以 UTF-8 编码读取歌词。 这优化了解析过程，但在某些情况下可能导致出现异常字符。 可能需要重启应用</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">强制以 UTF-8 编码读取歌词文件。这会优化解析流程，但在某些情况下可能导致出现异常字符。可能需要重启应用。</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">样式</string>
     <string name="open_on_play_title">播放时打开</string>
@@ -664,12 +664,12 @@
     <string name="pause_on_zero_volume_title">在静音时停止播放</string>
     <string name="pause_on_zero_volume_summary">当音量下降为零时暂停歌曲，并在音量上升时恢复播放。同时支持在应用外工作。</string>
     <string name="mp3_index_seeking_title">MP3 索引定位</string>
-    <string name="mp3_index_seeking_summary">将整个 MP3 文件加载到内存中以便跳转，而不是依赖 Xing 头部信息。 仅应在跳转部分 VBR 文件失败时启用。 需要重启应用。</string>
+    <string name="mp3_index_seeking_summary">将整个 MP3 文件加载到内存中以便跳转，而不是依赖 Xing 标头信息。仅应在跳转部分 VBR 文件失败时启用。需要重启应用。</string>
     <string name="play_option_always_visible_title">始终显示“播放”选项</string>
-    <string name="play_option_always_visible_summary">如果启用该选项，无论点击行为设置为何，“播放”按钮将一直出现在歌曲菜单中。</string>
+    <string name="play_option_always_visible_summary">如果启用该选项，无论点按行为设置为何，“播放”按钮将一直出现在歌曲菜单中。</string>
     <string name="play_option_whole_list_title">“播放”选项播放整个列表</string>
-    <string name="play_option_whole_list_summary">启用后，从菜单中点击播放将开始播放整个播放列表，而不是仅播放当前歌曲。</string>
-    <string name="on_song_click_title">当选中歌曲时</string>
+    <string name="play_option_whole_list_summary">启用后，从菜单中点按播放将开始播放整个播放列表，而不是仅播放当前歌曲。</string>
+    <string name="on_song_click_title">选择歌曲时</string>
     <string name="on_song_click_play_only_this_song_title">仅播放这首歌</string>
     <string name="on_song_click_play_only_this_song_summary">播放队列将被清空，替换为选择的歌曲。</string>
     <string name="on_song_click_play_whole_list_title">播放整个列表</string>
@@ -779,7 +779,7 @@
     <string name="label_nothing">无</string>
     <string name="label_none">无</string>
     <string name="player_color_mode_app_theme_title">应用主题</string>
-    <string name="player_color_mode_app_theme_description">使用该应用的配色方案</string>
+    <string name="player_color_mode_app_theme_description">使用本应用的配色方案</string>
     <string name="player_color_mode_simple_color_title">简洁配色</string>
     <string name="player_color_mode_simple_color_description">提取专辑颜色并应用到某些控件</string>
     <string name="player_color_mode_vibrant_color_title">鲜艳色彩</string>
@@ -807,7 +807,7 @@
     <string name="download_action">下载</string>
     <string name="downloading_update">正在下载 Booming Music 更新。</string>
     <string name="uncaught_error_title">哎呀！出现了意料之外的事！</string>
-    <string name="uncaught_error_message">似乎出了些问题，导致本应用崩溃。 如果你能将错误报告发到我们的 Telegram 群组或邮箱，将有助于解决。</string>
+    <string name="uncaught_error_message">似乎出了些问题，导致本应用崩溃。如果你能将错误报告发到我们的 Telegram 群组或邮箱，将有助于解决。</string>
     <string name="uncaught_error_report">错误报告</string>
     <string name="uncaught_error_report_copied">已复制错误报告到剪贴板。</string>
     <string name="uncaught_error_restart_app">重启应用</string>
@@ -819,7 +819,7 @@
     <string name="lastfm_login_toggle_password_visibility">切换显示/隐藏密码</string>
     <string name="error_lastfm_auth">登录状态已过期或登录信息无效。请重新登录。</string>
     <string name="error_lastfm_credentials">登录信息无效。请核对后再试一次。</string>
-    <string name="error_lastfm_params">参数无效。这可能是本应用方面的问题。</string>
+    <string name="error_lastfm_params">参数无效。可能是本应用端发生错误。</string>
     <string name="error_lastfm_service">Last.fm 现在处于故障或维护状态。请稍后再试。</string>
     <string name="error_lastfm_rate_limit">请求数量过多。请稍等一段时间再重新上传记录。</string>
     <string name="error_lastfm_generic">Last.fm 发生意外错误。请重试。</string>
@@ -884,7 +884,7 @@
     <string name="select_playlists_title">选择播放列表</string>
     <string name="new_playlist_action">新建</string>
     <string name="no_playlists_create_new">点按“新建”创建播放列表</string>
-    <string name="no_playlists_that_match_x">未找到匹配“%s”的播放列表</string>
+    <string name="no_playlists_that_match_x">找不到匹配“%s”的播放列表</string>
     <string name="songs_added_to_playlists">歌曲已添加到播放列表。</string>
     <string name="no_playlists_label">无播放列表</string>
     <plurals name="x_playlists_selected">
@@ -942,7 +942,7 @@
     <string name="lyrics_show_transliteration_title">显示音译</string>
     <string name="lyrics_show_transliteration_summary">显示可用的歌词音译。</string>
     <string name="lyrics_resume_on_seek_title">跳转后继续播放</string>
-    <string name="lyrics_resume_on_seek_summary">点击歌词时恢复播放。</string>
+    <string name="lyrics_resume_on_seek_summary">点按歌词时恢复播放。</string>
     <string name="app_version_x">版本 %s</string>
     <string name="app_description">现代设计 · 纯净听感 · 由你定义</string>
     <string name="more_contributors_title">更多贡献者</string>
@@ -953,5 +953,5 @@
     <string name="contributor_lenard_description">应用官网开发者兼贡献者。</string>
     <string name="contributor_alex_description">项目的老朋友，为各项核心 API 提供了访问支持。</string>
     <string name="play_all_songs_when_searching_title">搜索时播放全部歌曲</string>
-    <string name="play_all_songs_when_searching_summary">启用后，选中搜索结果中的歌曲会将全部本地音乐加入播放队列。受“当选中歌曲时”设定影响。</string>
+    <string name="play_all_songs_when_searching_summary">启用后，选择中搜索结果中的歌曲会将全部本地音乐加入播放队列。受“选择歌曲时”设定影响。</string>
 </resources>
