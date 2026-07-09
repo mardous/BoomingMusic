@@ -7,7 +7,7 @@
     <string name="shuffle_all_label">全部隨機</string>
     <string name="shuffle_mode">隨機播放模式</string>
     <string name="repeat_mode">循環模式</string>
-    <string name="shuffle_button_tip">點擊啟用預設隨機模式，長按圖示以使用偏好的隨機模式。</string>
+    <string name="shuffle_button_tip">點按啟用預設隨機模式，長按圖示以使用偏好的隨機模式。</string>
     <string name="action_play_pause">播放/暫停</string>
     <string name="action_pause">暫停</string>
     <string name="action_next">下一首</string>
@@ -195,7 +195,7 @@
     <string name="top_tracks_label">熱門曲目</string>
     <string name="history_label">歷史紀錄</string>
     <string name="not_recently_played">無最近播放</string>
-    <string name="play_info">播放訊息</string>
+    <string name="play_info">播放資訊</string>
     <string name="track_play_counts">曲目播放次數</string>
     <string name="song_stat_never_label">從未播放</string>
     <string name="song_stat_one_time_label">在 %s 上播放過一次</string>
@@ -227,7 +227,7 @@
     <string name="sort_order_track_list">曲目清單</string>
     <string name="sort_order_descending">遞減</string>
     <string name="sort_order_ignore_articles">排序時忽略開頭的冠詞 (如 The/A/An 等)</string>
-    <string name="action_details">詳細訊息</string>
+    <string name="action_details">詳細資訊</string>
     <string name="action_set_as_start_directory">設定為起始目錄</string>
     <string name="start_directory_set">起始目錄已設定為 %s</string>
     <string name="action_go_to_start_directory">轉到起始目錄</string>
@@ -240,11 +240,11 @@
     <string name="scan_finished">掃描已完成。</string>
     <string name="album_or_artist_empty">標題或藝人是空的。</string>
     <string name="update_image">更新圖片</string>
-    <string name="restore_default">恢復預設</string>
+    <string name="restore_default">還原預設</string>
     <string name="remove_cover">移除封面</string>
     <string name="could_not_download_album_cover">無法下載匹配的相簿封面。</string>
     <string name="download_image">下載圖片</string>
-    <string name="pick_from_local_storage">從本地存儲中選取</string>
+    <string name="pick_from_local_storage">從本機儲存空間選擇</string>
     <string name="about_x_title">關於 %s</string>
     <string name="yes">是</string>
     <string name="no">否</string>
@@ -253,7 +253,7 @@
     <string name="size">檔案大小</string>
     <string name="label_file_format">格式</string>
     <string name="file_label">檔案</string>
-    <string name="metadata_label">元數據</string>
+    <string name="metadata_label">中繼資料</string>
     <string name="title_and_artist">標題和藝人</string>
     <string name="song">歌曲</string>
     <string name="title">標題</string>
@@ -262,17 +262,17 @@
     <string name="album_artist">專輯藝人</string>
     <string name="composer">作曲家</string>
     <string name="conductor">指揮</string>
-    <string name="publisher">發佈者</string>
+    <string name="publisher">發行者</string>
     <string name="genre">流派</string>
     <string name="year">年份</string>
     <string name="release_years_label">年</string>
     <string name="length">時長</string>
     <string name="label_last_modified">最後修改</string>
-    <string name="label_channels">頻道</string>
-    <string name="label_variable_bitrate">變動位元速率</string>
+    <string name="label_channels">聲道</string>
+    <string name="label_variable_bitrate">可變位元率</string>
     <string name="label_loss_less">無損</string>
-    <string name="label_bit_rate">位速率</string>
-    <string name="label_sampling_rate">採樣率</string>
+    <string name="label_bit_rate">位元率</string>
+    <string name="label_sampling_rate">取樣率</string>
     <string name="replay_gain">重放增益</string>
     <string name="comment">評論</string>
     <string name="last_played">上次播放</string>
@@ -284,7 +284,7 @@
     <string name="disc_total">總盤片</string>
     <string name="lyrics">歌詞</string>
     <string name="lyricist">作詞人</string>
-    <string name="could_not_load_the_song_information">無法載入歌曲訊息。</string>
+    <string name="could_not_load_the_song_information">無法載入歌曲資訊。</string>
     <string name="no_results">沒有結果</string>
     <string name="connection_unavailable">連線無法使用。</string>
     <string name="you_have_to_select_at_least_one_category">至少需要選擇一個類別</string>
@@ -295,9 +295,9 @@
     <string name="backup_playlists">播放清單</string>
     <string name="backup_successful">備份成功！</string>
     <string name="backup_failed">備份失敗。</string>
-    <string name="select_content_to_restore">選擇要恢復的內容：</string>
-    <string name="could_not_restore_data">無法恢復數據。請驗證備份檔案並重試。</string>
-    <string name="data_restored_successfully">數據已成功恢復。</string>
+    <string name="select_content_to_restore">選擇要還原的內容：</string>
+    <string name="could_not_restore_data">無法還原資料。請驗證備份檔案並重試。</string>
+    <string name="data_restored_successfully">資料已成功還原。</string>
     <string name="action_toggle_playlist_lock">鎖定/解鎖播放清單</string>
     <string name="playlist_locked">播放清單已鎖定</string>
     <string name="playlist_unlocked">播放清單已解鎖</string>
@@ -347,7 +347,7 @@
     <string name="no_suggestions">目前沒有推薦內容</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全隨機</string>
-    <string name="shuffle_mode_most_played">常聽曲目</string>
+    <string name="shuffle_mode_most_played">常聽歌曲</string>
     <string name="shuffle_mode_most_played_artists">常聽藝人</string>
     <string name="shuffle_mode_most_played_albums">常聽專輯</string>
     <string name="shuffle_mode_favorite_songs">我的最愛</string>
@@ -495,8 +495,8 @@
     <string name="help_with_translations_summary">你可以協助將 Booming Music 翻譯成其他語言，為此專案做出貢獻。</string>
     <string name="report_bugs">報告錯誤</string>
     <string name="report_bugs_summary">報告錯誤或請求新功能。</string>
-    <string name="share_app">分享此應用</string>
-    <string name="share_app_summary">如果你與朋友分享，可以幫助這個應用的發展。</string>
+    <string name="share_app">分享此應用程式</string>
+    <string name="share_app_summary">如果你與朋友分享，可以幫助這個應用程式的發展。</string>
     <string name="send_invitation_message">傳送邀請訊息</string>
     <string name="invitation_message_content">嗨，來看看 Booming Music！這是在 Android 上聆聽本機音樂的最佳應用程式。你可以從這裡下載：%s</string>
     <!-- Bug report -->
@@ -509,7 +509,7 @@
     <string name="saf_delete_failed">檔案刪除失敗：%s</string>
     <string name="settings_title">設定</string>
     <string name="appearance_title">外觀</string>
-    <string name="appearance_summary">變更應用的主題和其他視覺設定。</string>
+    <string name="appearance_summary">變更應用程式的主題和其他視覺設定。</string>
     <string name="now_playing_title">正在播放</string>
     <string name="now_playing_summary">自訂正在播放畫面。</string>
     <string name="lyrics_preferences_title">歌詞</string>
@@ -550,7 +550,7 @@
     <string name="remember_last_page_summary">啟動時前往最後開啟的頁面。</string>
     <string name="start_page_title">開始頁面</string>
     <string name="tab_mode_title">標籤標題模式</string>
-    <string name="hold_tab_to_search_title">按住標籤以搜尋</string>
+    <string name="hold_tab_to_search_title">長按標籤以搜尋</string>
     <string name="hold_tab_to_search_summary">長按任何導覽列分頁以開啟搜尋畫面。</string>
     <string name="larger_header_image_title">較大的封面圖片</string>
     <string name="larger_header_image_summary">在專輯、藝人和播放清單詳細資訊中顯示較大的封面圖片。</string>
@@ -590,7 +590,7 @@
     <string name="ignore_blank_lines_title">忽略空白行</string>
     <string name="ignore_blank_lines_summary">忽略 LRC 檔案中的空白行，而不是顯示動畫泡泡。</string>
     <string name="treat_all_lyrics_files_as_utf8_title">將所有歌詞檔案視為 UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">強制以 UTF-8 編碼讀取歌詞。這可最佳化解析流程，但在某些情況下可能會出現異常字元。可能需要重新啟動應用程式</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">強制以 UTF-8 編碼讀取歌詞。這可最佳化解析流程，但在某些情況下可能會出現異常字元。可能需要重新啟動應用程式。</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">樣式</string>
     <string name="open_on_play_title">播放時開啟</string>
@@ -775,11 +775,11 @@
     <string name="play_on_startup_mode_minimized">是，最小化播放面板</string>
     <string name="play_on_startup_mode_expanded">是，同時展開播放器面板</string>
     <string name="system_default">系統預設</string>
-    <string name="label_never">從不使用</string>
+    <string name="label_never">從未</string>
     <string name="label_nothing">無</string>
     <string name="label_none">無</string>
-    <string name="player_color_mode_app_theme_title">應用主題</string>
-    <string name="player_color_mode_app_theme_description">使用該應用的配色方案</string>
+    <string name="player_color_mode_app_theme_title">應用程式主題</string>
+    <string name="player_color_mode_app_theme_description">使用此應用程式的配色方案</string>
     <string name="player_color_mode_simple_color_title">簡潔配色</string>
     <string name="player_color_mode_simple_color_description">擷取專輯色彩並套用到部分控制項</string>
     <string name="player_color_mode_vibrant_color_title">亮色</string>
@@ -794,7 +794,7 @@
     <string name="weekly">每週</string>
     <string name="every_fifteen_days">每十五天</string>
     <string name="monthly">每月</string>
-    <string name="never">從不使用</string>
+    <string name="never">永不</string>
     <string name="receive_experimental_updates_title">接收實驗性更新</string>
     <string name="receive_experimental_updates_summary">請注意，這些更新通常不穩定，僅建議有經驗的使用者使用。</string>
     <string name="search_for_update_title">搜尋更新</string>
@@ -879,7 +879,7 @@
     <string name="rg_with_tag">有標籤</string>
     <string name="rg_without_tag">無標籤</string>
     <string name="bit_perfect_is_active">Bit-perfect 已啟用</string>
-    <string name="bit_perfect_info">Bit-Perfect 訊息：%1$s | %2$s</string>
+    <string name="bit_perfect_info">Bit-Perfect 資訊：%1$s | %2$s</string>
     <string name="bit_perfect_description">不經系統重新取樣，直接將音訊輸出到 USB DAC。</string>
     <string name="undo_changes">復原變更</string>
     <string name="cannot_edit_lyrics_file">無法直接在 Booming Music 中編輯檔案內容。</string>
@@ -926,7 +926,7 @@
     <string name="lyrics_bold_synced_title">同步歌詞使用粗體</string>
     <string name="lyrics_bold_synced_summary">以粗體顯示同步歌詞。</string>
     <string name="lyrics_resume_on_seek_title">跳轉後繼續播放</string>
-    <string name="lyrics_resume_on_seek_summary">點選某行歌詞時自動恢復播放。</string>
+    <string name="lyrics_resume_on_seek_summary">點按某行歌詞時自動恢復播放。</string>
     <string name="preferred_lyrics_file_format_summary">如果同一首歌有不同格式的歌詞檔案，可在此選擇優先使用的格式。</string>
     <string name="mini_player_swipe_to_skip_title">滑動迷你播放器切歌</string>
     <string name="mini_player_swipe_to_skip_summary">在迷你播放器上向左或向右滑動以切換歌曲。</string>
