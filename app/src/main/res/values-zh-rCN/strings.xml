@@ -112,7 +112,7 @@
     <string name="delete_songs_title">删除多首歌曲</string>
     <string name="delete_x_songs">删除 %d 首歌曲吗？</string>
     <string name="delete_the_song_x">删除歌曲 %s？</string>
-    <string name="deleting_songs">正在删除歌曲，稍等…</string>
+    <string name="deleting_songs">正在删除歌曲，请稍候…</string>
     <string name="song_x_of_x">%1$d / %2$d • %3$s</string>
     <string name="no_equalizer">未找到均衡器。</string>
     <string name="audio_focus_denied">音频焦点被拒绝。</string>
@@ -347,7 +347,7 @@
     <string name="no_suggestions">暂无推荐内容</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全随机</string>
-    <string name="shuffle_mode_most_played">常听单曲</string>
+    <string name="shuffle_mode_most_played">常听歌曲</string>
     <string name="shuffle_mode_most_played_artists">常听艺人</string>
     <string name="shuffle_mode_most_played_albums">常听专辑</string>
     <string name="shuffle_mode_favorite_songs">收藏夹</string>
@@ -371,12 +371,12 @@
     <string name="autoeq_profiles_title">AutoEq 预设</string>
     <string name="eq_profile_title">预设</string>
     <string name="change_band_count_title">更改频段数量</string>
-    <string name="change_band_count_message">更改频段数量会将当前配置重置为初始状态。为当前频段数量保存的其他配置将无法用于新的频段数量。\n\n要继续吗？</string>
+    <string name="change_band_count_message">更改频段数量会将当前预设重置为初始状态。为当前频段数量保存的其他配置将无法用于新的频段数量。\n\n要继续吗？</string>
     <string name="band_configuration_changed_successfully">频段配置更改成功。</string>
     <string name="band_configuration_could_not_be_changed">错误：频段配置无法更改。</string>
     <string name="share_eq_profiles">分享均衡器预设</string>
-    <string name="there_is_nothing_to_export">无可导出的配置。</string>
-    <string name="there_is_nothing_to_import">无可导入的配置。</string>
+    <string name="there_is_nothing_to_export">无可导出的预设。</string>
+    <string name="there_is_nothing_to_import">无可导入的预设。</string>
     <string name="an_unexpected_error_occurred">发生了意外的错误。</string>
     <string name="share_profiles">分享预设</string>
     <string name="select_profiles_to_share">选择要分享的预设：</string>
@@ -390,7 +390,7 @@
     <string name="imported_x_profiles">导入了 %d 个预设。</string>
     <string name="no_profile_imported">没有预设被导入。</string>
     <string name="import_autoeq_profile">导入 AutoEq 预设</string>
-    <string name="select_a_file_containing_autoeq_params">请选择包含 AutoEq（图形化均衡器）参数的文件。</string>
+    <string name="select_a_file_containing_autoeq_params">请选择包含 AutoEq（图形均衡器）参数的文件。</string>
     <string name="no_autoeq_profiles">未导入 AutoEq 预设。</string>
     <string name="reset_equalizer">重置均衡器</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">确定要重置均衡器吗？ \n\n这将清除所有预设。</string>
@@ -407,7 +407,7 @@
     <string name="save_profile_label">保存预设</string>
     <string name="edit_profile_label">编辑预设</string>
     <string name="delete_profile_label">删除预设</string>
-    <string name="delete_profile_x">删除预设 “%s”？</string>
+    <string name="delete_profile_x">删除预设“%s”？</string>
     <string name="please_enter_a_name_for_this_profile">请输入预设名称。</string>
     <string name="replace_profile_with_same_name">替换重名的预设</string>
     <string name="use_with_devices_title">选择设备：</string>
@@ -415,7 +415,7 @@
     <string name="that_name_is_already_in_use">该名称已被使用。</string>
     <string name="profile_saved_successfully">成功保存预设。</string>
     <string name="the_profile_could_not_be_saved">预设保存失败。</string>
-    <string name="autoeq_profile_imported_successfully">AutoEq 导入成功。</string>
+    <string name="autoeq_profile_imported_successfully">AutoEq 预设导入成功。</string>
     <string name="profile_x_deleted">预设“%s”已被删除。</string>
     <string name="autoeq_profile_x_deleted">AutoEq 预设“%s”已被删除。</string>
     <string name="bassboost_label">低音增强</string>
@@ -498,22 +498,22 @@
     <string name="share_app">分享此应用</string>
     <string name="share_app_summary">你可以与朋友分享本应用，帮助它成长壮大。</string>
     <string name="send_invitation_message">发送邀请信息</string>
-    <string name="invitation_message_content">你好，来看看 Booming Music 吧！这是 Android 平台最好的本地音乐播放器。下载链接： %s</string>
+    <string name="invitation_message_content">你好，来看看 Booming Music 吧！这是 Android 平台最好的本地音乐播放器。下载链接：%s</string>
     <!-- Bug report -->
     <!-- SAF -->
     <string name="saf_access_required_title">需要存储访问</string>
     <string name="saf_access_required_message">Booming Music 需要访问这些文件的权限。请选择存储音乐文件的根文件夹。</string>
     <string name="saf_show_files_button">显示文件</string>
     <string name="saf_error_uri">无法获取 SAF URI</string>
-    <string name="saf_write_failed">文件写入失败： %s</string>
-    <string name="saf_delete_failed">文件删除失败： %s</string>
+    <string name="saf_write_failed">文件写入失败：%s</string>
+    <string name="saf_delete_failed">文件删除失败：%s</string>
     <string name="settings_title">设置</string>
     <string name="appearance_title">外观</string>
     <string name="appearance_summary">更改应用的主题和其他视觉设置。</string>
     <string name="now_playing_title">正在播放</string>
     <string name="now_playing_summary">自定义正在播放界面。</string>
     <string name="lyrics_preferences_title">歌词</string>
-    <string name="lyrics_preferences_summary">调整字体、 间距和其他选项以自定义歌词视图。</string>
+    <string name="lyrics_preferences_summary">调整字体、间距和其他选项以自定义歌词视图。</string>
     <string name="playback_title">播放</string>
     <string name="playback_summary">更改声音设置，蓝牙耳机等。</string>
     <string name="metadata_title">元数据</string>
@@ -554,8 +554,8 @@
     <string name="hold_tab_to_search_summary">长按任意导航栏选项卡打开搜索界面。</string>
     <string name="larger_header_image_title">更大的封面图像</string>
     <string name="larger_header_image_summary">在专辑、艺人和播放列表的详细信息中显示更大的封面图像。</string>
-    <string name="lyrics_center_current_line_title">居中当前歌词</string>
-    <string name="lyrics_center_current_line_summary">将当前歌词行置于画面中央，而不是顶部。</string>
+    <string name="lyrics_center_current_line_title">居中当前歌词行</string>
+    <string name="lyrics_center_current_line_summary">将当前歌词行居中显示，而不是靠上显示。</string>
     <string name="lyrics_custom_font_title">自定义歌词字体</string>
     <string name="lyrics_custom_font_summary">导入并使用自定义歌词字体。</string>
     <string name="lyrics_import_custom_font_title">导入自定义字体</string>
@@ -637,7 +637,7 @@
     <string name="prefer_remaining_time_title">显示剩余时间</string>
     <string name="prefer_remaining_time_summary">显示歌曲剩余时间，而不是全长。</string>
     <string name="prefer_album_artist_name_title">优先显示专辑艺人名称</string>
-    <string name="prefer_album_artist_name_summary">若有专辑艺人名称，则显示专辑艺人而非单曲艺人。</string>
+    <string name="prefer_album_artist_name_summary">若有专辑艺人名称，则显示专辑艺人而非歌曲艺人。</string>
     <string name="player_blur_intensity_title">模糊强度</string>
     <string name="player_blur_intensity_summary">调整模糊主题中的背景模糊强度。调低数值可能会提升性能。</string>
     <!-- Playback preferences -->
@@ -669,20 +669,20 @@
     <string name="play_option_always_visible_summary">如果启用该选项，无论点击行为设置为何，“播放”按钮将一直出现在歌曲菜单中。</string>
     <string name="play_option_whole_list_title">“播放”选项播放整个列表</string>
     <string name="play_option_whole_list_summary">启用后，从菜单中点击播放将开始播放整个播放列表，而不是仅播放当前歌曲。</string>
-    <string name="on_song_click_title">当选中曲目时</string>
-    <string name="on_song_click_play_only_this_song_title">仅播放此曲目</string>
-    <string name="on_song_click_play_only_this_song_summary">播放队列将被清空，替换为选择的曲目。</string>
+    <string name="on_song_click_title">当选中歌曲时</string>
+    <string name="on_song_click_play_only_this_song_title">仅播放这首歌</string>
+    <string name="on_song_click_play_only_this_song_summary">播放队列将被清空，替换为选择的歌曲。</string>
     <string name="on_song_click_play_whole_list_title">播放整个列表</string>
     <string name="on_song_click_play_whole_list_summary">当前播放队列将替换为播放选择的播放列表/专辑/文件夹中的所有歌曲。</string>
     <string name="on_song_click_queue_next_title">下一首播放</string>
-    <string name="on_song_click_queue_next_summary">选择的曲目将添加到播放队列的下一位。</string>
+    <string name="on_song_click_queue_next_summary">选择的歌曲将被添加到播放队列的下一位。</string>
     <string name="on_song_click_enqueue_at_end_title">在末尾加入队列</string>
-    <string name="on_song_click_enqueue_at_end_summary">选择的曲目将添加到播放队列末尾。</string>
+    <string name="on_song_click_enqueue_at_end_summary">选择的歌曲将被添加到播放队列末尾。</string>
     <string name="on_clear_queue_title">当清空队列时</string>
-    <string name="on_clear_queue_remove_all_songs_title">移除所有曲目</string>
+    <string name="on_clear_queue_remove_all_songs_title">移除所有歌曲</string>
     <string name="on_clear_queue_remove_all_songs_summary">播放队列将被清空。</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_title">移除当前曲目以外的所有曲目</string>
-    <string name="on_clear_queue_remove_all_songs_except_current_summary">只有当前播放曲目会保留在队列中。</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_title">移除当前歌曲以外的所有歌曲</string>
+    <string name="on_clear_queue_remove_all_songs_except_current_summary">只有当前播放的歌曲会保留在队列中。</string>
     <string name="clear_queue_on_completion_title">播放完毕时清空队列</string>
     <string name="clear_queue_on_completion_summary">在最后一曲播完后，自动从播放队列中移除所有曲目。</string>
     <!-- Metadata preferences -->
@@ -705,7 +705,7 @@
     <string name="recursive_folder_actions_title">影响子文件夹的操作</string>
     <string name="recursive_folder_actions_summary">当对文件夹执行操作时，选择哪些操作也应作用于子文件夹。</string>
     <string name="enable_history_title">启用播放历史</string>
-    <string name="enable_history_summary">允许应用记录听过的曲目。若禁用该选项，所有历史记录将被清除。</string>
+    <string name="enable_history_summary">允许应用记录听过的歌曲。若禁用该选项，所有历史记录将被清除。</string>
     <string name="history_interval_title">历史间隔</string>
     <string name="last_added_interval_title">最新添加时间间隔</string>
     <string name="whitelist_title">白名单</string>
@@ -713,11 +713,11 @@
     <string name="blacklist_title">黑名单</string>
     <string name="blacklist_summary">黑名单文件夹中的内容不会显示在曲库中。</string>
     <string name="artist_min_songs_title">艺人最少歌曲数</string>
-    <string name="artist_min_songs_summary">艺人需要至少有多少曲目才会显示在曲库中。</string>
+    <string name="artist_min_songs_summary">艺人需要至少有多少首歌才会显示在曲库中。</string>
     <string name="album_min_songs_title">专辑最少歌曲数</string>
-    <string name="album_min_songs_summary">专辑需要至少有多少曲目才会显示在曲库中。</string>
+    <string name="album_min_songs_summary">专辑需要至少有多少首歌才会显示在曲库中。</string>
     <string name="min_song_duration_title">歌曲最短时长</string>
-    <string name="min_song_duration_summary">曲目时长需要至少有多少秒才会显示在曲库中。</string>
+    <string name="min_song_duration_summary">歌曲时长需要至少有多少秒才会显示在曲库中。</string>
     <!-- Remote preferences -->
     <string name="app_language_title">应用语言</string>
     <string name="backup_data_title">备份应用数据</string>
@@ -818,7 +818,7 @@
     <string name="lastfm_login_password">密码</string>
     <string name="lastfm_login_toggle_password_visibility">切换显示/隐藏密码</string>
     <string name="error_lastfm_auth">登录状态已过期或登录信息无效。请重新登录。</string>
-    <string name="error_lastfm_credentials">凭据无效。请核对后再试一次。</string>
+    <string name="error_lastfm_credentials">登录信息无效。请核对后再试一次。</string>
     <string name="error_lastfm_params">参数无效。这可能是本应用方面的问题。</string>
     <string name="error_lastfm_service">Last.fm 现在处于故障或维护状态。请稍后再试。</string>
     <string name="error_lastfm_rate_limit">请求数量过多。请稍等一段时间再重新上传记录。</string>
@@ -914,9 +914,9 @@
     <string name="undo_changes">撤销更改</string>
     <string name="cannot_edit_lyrics_file">无法在 Booming Music 中直接编辑文件内容。</string>
     <string name="preferred_lyrics_file_format_title">首选文件格式</string>
-    <string name="preferred_lyrics_file_format_summary">如果一首曲目有不同格式的歌词文件，使用本选项选择优先使用的格式。</string>
+    <string name="preferred_lyrics_file_format_summary">如果一首歌有不同格式的歌词文件，使用本选项选择优先使用的格式。</string>
     <string name="mini_player_swipe_to_skip_title">滑动迷你播放器切歌</string>
-    <string name="mini_player_swipe_to_skip_summary">向左或向右滑动迷你播放器时在曲目间切换。</string>
+    <string name="mini_player_swipe_to_skip_summary">向左或向右滑动迷你播放器时在歌曲间切换。</string>
     <string name="lyrics_by_x">歌词来自 %s</string>
     <string name="arranger">编曲</string>
     <string name="eq_pro_mode">专家模式</string>
@@ -953,5 +953,5 @@
     <string name="contributor_lenard_description">应用官网开发者兼贡献者。</string>
     <string name="contributor_alex_description">项目的老朋友，为各项核心 API 提供了访问支持。</string>
     <string name="play_all_songs_when_searching_title">搜索时播放全部歌曲</string>
-    <string name="play_all_songs_when_searching_summary">启用后，选中搜索结果中的歌曲会将全部本地音乐加入播放队列。受“当选中曲目时”设定影响。</string>
+    <string name="play_all_songs_when_searching_summary">启用后，选中搜索结果中的歌曲会将全部本地音乐加入播放队列。受“当选中歌曲时”设定影响。</string>
 </resources>
