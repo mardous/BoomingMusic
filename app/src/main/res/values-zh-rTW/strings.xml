@@ -347,7 +347,7 @@
     <string name="no_suggestions">目前沒有推薦內容</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全隨機</string>
-    <string name="shuffle_mode_most_played">常聽單曲</string>
+    <string name="shuffle_mode_most_played">常聽曲目</string>
     <string name="shuffle_mode_most_played_artists">常聽藝人</string>
     <string name="shuffle_mode_most_played_albums">常聽專輯</string>
     <string name="shuffle_mode_favorite_songs">我的最愛</string>
@@ -375,8 +375,8 @@
     <string name="band_configuration_changed_successfully">頻段設定已成功變更。</string>
     <string name="band_configuration_could_not_be_changed">無法變更頻段設定。</string>
     <string name="share_eq_profiles">分享等化器設定檔</string>
-    <string name="there_is_nothing_to_export">沒有什麼可匯出。</string>
-    <string name="there_is_nothing_to_import">沒有可以匯入的內容。</string>
+    <string name="there_is_nothing_to_export">沒有可以匯出的設定檔。</string>
+    <string name="there_is_nothing_to_import">沒有可以匯入的設定檔。</string>
     <string name="an_unexpected_error_occurred">發生意外錯誤。</string>
     <string name="share_profiles">分享設定檔</string>
     <string name="select_profiles_to_share">選擇要分享的設定檔：</string>
@@ -390,7 +390,7 @@
     <string name="imported_x_profiles">已匯入 %d 個設定檔。</string>
     <string name="no_profile_imported">沒有匯入任何設定檔。</string>
     <string name="import_autoeq_profile">匯入 AutoEq 設定檔</string>
-    <string name="select_a_file_containing_autoeq_params">請選擇包含 AutoEq（圖形式等化器）參數的檔案。</string>
+    <string name="select_a_file_containing_autoeq_params">請選擇包含 AutoEq（圖形等化器）參數的檔案。</string>
     <string name="no_autoeq_profiles">未匯入 AutoEq 設定檔。</string>
     <string name="reset_equalizer">重設等化器</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">確定要重設等化器嗎？ \n\n這會清除所有設定檔。</string>
@@ -554,8 +554,8 @@
     <string name="hold_tab_to_search_summary">長按任何導覽列分頁以開啟搜尋畫面。</string>
     <string name="larger_header_image_title">較大的封面圖片</string>
     <string name="larger_header_image_summary">在專輯、藝人和播放清單詳細資訊中顯示較大的封面圖片。</string>
-    <string name="lyrics_center_current_line_title">目前歌詞置中</string>
-    <string name="lyrics_center_current_line_summary">將目前歌詞行置於畫面中央，而不是頂端。</string>
+    <string name="lyrics_center_current_line_title">目前歌詞行置中</string>
+    <string name="lyrics_center_current_line_summary">將目前歌詞行置中顯示，而不是靠上顯示。</string>
     <string name="lyrics_custom_font_title">自訂歌詞字型</string>
     <string name="lyrics_custom_font_summary">匯入並使用自訂歌詞字型。</string>
     <string name="lyrics_import_custom_font_title">匯入自訂字型</string>
@@ -670,7 +670,7 @@
     <string name="play_option_whole_list_title">「播放」選項播放整份清單</string>
     <string name="play_option_whole_list_summary">啟用後，從歌曲選單選擇「播放」會開始播放整份播放清單。停用後只會播放選取的歌曲。</string>
     <string name="on_song_click_title">選取歌曲時</string>
-    <string name="on_song_click_play_only_this_song_title">僅播放此曲目</string>
+    <string name="on_song_click_play_only_this_song_title">僅播放這首歌</string>
     <string name="on_song_click_play_only_this_song_summary">目前佇列會被清除，並以選取的歌曲取代。</string>
     <string name="on_song_click_play_whole_list_title">播放整份清單</string>
     <string name="on_song_click_play_whole_list_summary">目前佇列會被清單、專輯或資料夾中的所有歌曲取代。</string>
@@ -713,7 +713,7 @@
     <string name="blacklist_title">黑名單</string>
     <string name="blacklist_summary">黑名單資料夾中的內容不會顯示在曲庫中。</string>
     <string name="artist_min_songs_title">藝人最少歌曲數</string>
-    <string name="artist_min_songs_summary">藝人至少要有幾首歌曲才會顯示在曲庫中。</string>
+    <string name="artist_min_songs_summary">藝人至少要有幾首歌才會顯示在曲庫中。</string>
     <string name="album_min_songs_title">專輯最少歌曲數</string>
     <string name="album_min_songs_summary">專輯至少要有幾首歌才會顯示在曲庫中。</string>
     <string name="min_song_duration_title">歌曲最短長度</string>
