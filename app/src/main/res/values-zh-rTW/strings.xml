@@ -62,17 +62,17 @@
     <string name="action_import_playlist">匯入播放清單…</string>
     <string name="new_playlist_title">新播放清單</string>
     <string name="add_playlist_title">新增到播放清單</string>
-    <string name="rename_playlist_title">重命名播放清單</string>
+    <string name="rename_playlist_title">重新命名播放清單</string>
     <string name="action_edit_playlist">編輯播放清單</string>
     <string name="action_delete">刪除播放清單</string>
-    <string name="action_export_playlist">匯出歌單至檔案</string>
+    <string name="action_export_playlist">將播放清單匯出至檔案</string>
     <string name="action_clear_history">清除歷史紀錄</string>
     <string name="history_cleared">歷史紀錄已清除</string>
     <string name="create_a_playlist">建立一個空播放清單。稍後可新增歌曲。</string>
     <string name="create_a_playlist_with_one_song">建立一個播放清單並新增一首歌曲。</string>
     <string name="create_a_playlist_with_x_songs">建立一個播放清單並自動向其中新增 %d 首歌曲。</string>
     <string name="playlist_name_empty">播放清單名稱</string>
-    <string name="playlist_description_hint">播放清單描述(可選)</string>
+    <string name="playlist_description_hint">播放清單描述（可選）</string>
     <string name="saved_playlist_x">已儲存播放清單 %s。</string>
     <string name="playlist_updated">播放清單已更新。</string>
     <string name="failed_to_save_playlist">播放清單儲存失敗。</string>
@@ -93,8 +93,8 @@
     <string name="playlist_empty_text">空的播放清單</string>
     <string name="action_lyrics_editor">歌詞編輯器</string>
     <string name="action_tag_editor">標籤編輯器</string>
-    <string name="saving_changes">正在儲存更改</string>
-    <string name="changes_saved_successfully">更改已成功儲存。</string>
+    <string name="saving_changes">正在儲存變更</string>
+    <string name="changes_saved_successfully">變更已成功儲存。</string>
     <string name="could_not_save_some_changes">無法儲存某些修改。</string>
     <string name="web_search">網頁搜尋</string>
     <string name="where_do_you_want_to_search">你想在哪裡搜尋？</string>
@@ -117,7 +117,7 @@
     <string name="no_equalizer">未找到等化器。</string>
     <string name="audio_focus_denied">音訊焦點被拒絕。</string>
     <string name="no_audio_ID">錯誤的音訊 ID。</string>
-    <string name="playback_error_code">音樂面板錯誤 (%s)。</string>
+    <string name="playback_error_code">播放錯誤（%s）。</string>
     <string name="unplayable_file">無法播放這首歌曲。</string>
     <string name="permission_external_storage_title">儲存空間存取</string>
     <string name="permission_external_storage_description">此應用程式需要存取裝置儲存空間的權限才能播放音樂</string>
@@ -154,7 +154,7 @@
     <string name="action_remove_from_playlist">從播放清單移除</string>
     <string name="action_add_to_playing_queue">新增至佇列</string>
     <string name="action_remove_from_playing_queue">從播放佇列移除</string>
-    <string name="put_after_current_track">置於當前曲目之後</string>
+    <string name="put_after_current_track">置於目前曲目之後</string>
     <string name="set_artist_image">設定藝人圖片</string>
     <string name="reset_artist_image">重設藝人圖片</string>
     <string name="there_is_nothing_to_reset">沒有要重設的內容。</string>
@@ -238,12 +238,12 @@
     <string name="scan_media_message">Android 系統通常會自動檢測並索引裝置上的媒體檔案，所以一般情況下不需要手動掃描媒體。</string>
     <string name="scan_media_positive">仍進行掃描</string>
     <string name="scan_finished">掃描已完成。</string>
-    <string name="album_or_artist_empty">標題或藝術家是空的。</string>
-    <string name="update_image">更新圖像</string>
+    <string name="album_or_artist_empty">標題或藝人是空的。</string>
+    <string name="update_image">更新圖片</string>
     <string name="restore_default">恢復預設</string>
     <string name="remove_cover">移除封面</string>
     <string name="could_not_download_album_cover">無法下載匹配的相簿封面。</string>
-    <string name="download_image">下載圖像</string>
+    <string name="download_image">下載圖片</string>
     <string name="pick_from_local_storage">從本地存儲中選取</string>
     <string name="about_x_title">關於 %s</string>
     <string name="yes">是</string>
@@ -291,7 +291,7 @@
     <string name="you_cannot_select_more_than_five_categories">不能選擇超過五個類別。</string>
     <string name="backup_settings">設定</string>
     <string name="backup_synced_lyrics">同步歌詞</string>
-    <string name="backup_artist_images">藝人圖像</string>
+    <string name="backup_artist_images">藝人圖片</string>
     <string name="backup_playlists">播放清單</string>
     <string name="backup_successful">備份成功！</string>
     <string name="backup_failed">備份失敗。</string>
@@ -348,7 +348,7 @@
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全隨機</string>
     <string name="shuffle_mode_most_played">隨機最多播放單曲</string>
-    <string name="shuffle_mode_most_played_artists">隨機最多播放藝術家</string>
+    <string name="shuffle_mode_most_played_artists">隨機最多播放藝人</string>
     <string name="shuffle_mode_most_played_albums">隨機最多播放專輯</string>
     <string name="shuffle_mode_favorite_songs">我的最愛優先</string>
     <string name="shuffle_mode_forgotten_songs">隨機未播放歌曲</string>
@@ -386,11 +386,11 @@
     <string name="profiles_exported_successfully">設定檔匯出成功。</string>
     <string name="import_profiles">匯入設定檔</string>
     <string name="select_profiles_to_import">選擇要匯入的設定檔：</string>
-    <string name="select_a_file_containing_booming_eq_profiles">請選擇一個包含有效 Booming Music 等化器設定的設定檔。</string>
+    <string name="select_a_file_containing_booming_eq_profiles">請選擇包含 Booming Music 等化器設定檔的檔案。</string>
     <string name="imported_x_profiles">已匯入 %d 個設定檔。</string>
     <string name="no_profile_imported">沒有匯入任何設定檔。</string>
     <string name="import_autoeq_profile">匯入 AutoEq 設定檔</string>
-    <string name="select_a_file_containing_autoeq_params">請選擇含 AutoEq （圖形式等化器）參數的檔案。</string>
+    <string name="select_a_file_containing_autoeq_params">請選擇包含 AutoEq （圖形式等化器）參數的檔案。</string>
     <string name="no_autoeq_profiles">未匯入 AutoEq 設定檔。</string>
     <string name="reset_equalizer">重設等化器</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">確定要重設等化器嗎？ \n\n這會清除所有設定檔。</string>
@@ -455,7 +455,7 @@
     <string name="no_lyrics_found">沒有找到歌詞</string>
     <string name="lyrics_were_updated_successfully">歌詞更新成功。</string>
     <string name="failed_to_update_lyrics">更新歌詞失敗。</string>
-    <string name="there_are_no_changes_to_save">沒有要儲存的更改。</string>
+    <string name="there_are_no_changes_to_save">沒有要儲存的變更。</string>
     <string name="font_imported_successfully">字型已成功匯入。</string>
     <string name="could_not_import_font">無法匯入字型。</string>
     <!-- Sleep timer -->
@@ -509,7 +509,7 @@
     <string name="saf_delete_failed">檔案刪除失敗： %s</string>
     <string name="settings_title">設定</string>
     <string name="appearance_title">外觀</string>
-    <string name="appearance_summary">更改應用的主題和其他視覺設定。</string>
+    <string name="appearance_summary">變更應用的主題和其他視覺設定。</string>
     <string name="now_playing_title">正在播放</string>
     <string name="now_playing_summary">自訂正在播放畫面。</string>
     <string name="lyrics_preferences_title">歌詞</string>
@@ -888,7 +888,7 @@
     <string name="connected_account_label">已連結帳號：</string>
     <string name="lastfm_login_toggle_password_visibility">切換密碼顯示狀態</string>
     <string name="listenbrainz_token_label">使用者 Token</string>
-    <string name="error_lastfm_auth">工作階段已過期或登入資訊無效。請重新登入。</string>
+    <string name="error_lastfm_auth">登入狀態已過期，或登入資訊無效。請重新登入。</string>
     <string name="error_lastfm_credentials">登入資訊無效。請確認後再試一次。</string>
     <string name="error_lastfm_params">參數無效。這可能是本應用程式端發生錯誤。</string>
     <string name="error_lastfm_service">Last.fm 目前暫停服務或正在維護。請稍後再試。</string>
