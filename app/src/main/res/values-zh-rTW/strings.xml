@@ -17,7 +17,7 @@
     <string name="action_seek_forward">向前跳轉</string>
     <string name="action_cycle_repeat">循環播放模式</string>
     <string name="action_toggle_shuffle">切換隨機播放模式</string>
-    <string name="reset_action">重置</string>
+    <string name="reset_action">重設</string>
     <string name="action_more">更多</string>
     <string name="import_action">匯入</string>
     <string name="create_action">建立</string>
@@ -98,7 +98,7 @@
     <string name="could_not_save_some_changes">無法儲存某些修改。</string>
     <string name="web_search">網頁搜尋</string>
     <string name="where_do_you_want_to_search">你想在哪裡搜尋？</string>
-    <string name="configure_action">配置</string>
+    <string name="configure_action">設定</string>
     <string name="blacklist_directory">黑名單目錄</string>
     <string name="add_directory">新增目錄</string>
     <string name="remove_from_blacklist">你想要從黑名單中移除此目錄嗎？</string>
@@ -157,7 +157,7 @@
     <string name="put_after_current_track">置於當前曲目之後</string>
     <string name="set_artist_image">設定藝人圖片</string>
     <string name="reset_artist_image">重設藝人圖片</string>
-    <string name="there_is_nothing_to_reset">沒有要重置的內容。</string>
+    <string name="there_is_nothing_to_reset">沒有要重設的內容。</string>
     <string name="add_to_label">新增到</string>
     <string name="go_to_label">轉至</string>
     <string name="action_go_to_album">轉至專輯</string>
@@ -202,9 +202,9 @@
     <string name="song_stat_label">播放了 %1$d 次，最後一次在 %2$s</string>
     <string name="horizontal_albums">橫向相簿</string>
     <string name="ignore_singles">排除單曲</string>
-    <string name="compact_song_view">緊湊的歌曲視圖</string>
+    <string name="compact_song_view">精簡歌曲檢視</string>
     <string name="show_total_duration">顯示總長度</string>
-    <string name="action_view_type">視圖類型</string>
+    <string name="action_view_type">檢視類型</string>
     <string name="view_type_normal">普通</string>
     <string name="view_type_card">卡片</string>
     <string name="view_type_colored_card">彩色卡片</string>
@@ -231,7 +231,7 @@
     <string name="action_set_as_start_directory">設定為起始目錄</string>
     <string name="start_directory_set">起始目錄已設定為 %s</string>
     <string name="action_go_to_start_directory">轉到起始目錄</string>
-    <string name="action_hierarchy_view">層級視圖</string>
+    <string name="action_hierarchy_view">階層檢視</string>
     <string name="new_start_directory">新建起始目錄：%s</string>
     <string name="action_scan">掃描</string>
     <string name="scan_media">掃描媒體</string>
@@ -286,7 +286,7 @@
     <string name="lyricist">作詞人</string>
     <string name="could_not_load_the_song_information">無法載入歌曲訊息。</string>
     <string name="no_results">沒有結果</string>
-    <string name="connection_unavailable">連接不可用。</string>
+    <string name="connection_unavailable">連線無法使用。</string>
     <string name="you_have_to_select_at_least_one_category">至少需要選擇一個類別</string>
     <string name="you_cannot_select_more_than_five_categories">不能選擇超過五個類別。</string>
     <string name="backup_settings">設定</string>
@@ -361,7 +361,7 @@
     <string name="shuffle_mode_favorite_songs_description">偏向最喜歡的歌曲。</string>
     <string name="shuffle_mode_forgotten_songs_description">偏向有一段時間未播放的歌曲。</string>
     <string name="shuffle_mode_recently_added_description">偏向近期新增到曲庫的歌曲。</string>
-    <string name="shuffle_mode_combined_description">根據收藏、播放記錄和近期播放混合播放。</string>
+    <string name="shuffle_mode_combined_description">根據收藏、播放紀錄和近期播放混合播放。</string>
     <!-- Equalizer -->
     <string name="equalizer_label">等化器</string>
     <string name="autoeq_label">AutoEq</string>
@@ -371,7 +371,7 @@
     <string name="autoeq_profiles_title">AutoEq 設定檔</string>
     <string name="eq_profile_title">設定檔</string>
     <string name="change_band_count_title">變更頻段數量</string>
-    <string name="change_band_count_message">變更頻段數量將會把目前的設定檔重設為初始狀態。 針對目前頻段設定所儲存的其他設定檔將無法在新的頻段設定中使用。 \n\n要繼續嗎？</string>
+    <string name="change_band_count_message">變更頻段數量會將目前設定檔重設為初始狀態。為目前頻段設定儲存的其他設定檔，將無法搭配新的頻段設定使用。\n\n要繼續嗎？</string>
     <string name="band_configuration_changed_successfully">頻段設定已成功變更。</string>
     <string name="band_configuration_could_not_be_changed">無法變更頻段設定。</string>
     <string name="share_eq_profiles">分享等化器設定檔</string>
@@ -392,8 +392,8 @@
     <string name="import_autoeq_profile">匯入 AutoEq 設定檔</string>
     <string name="select_a_file_containing_autoeq_params">請選擇含 AutoEq （圖形式等化器）參數的檔案。</string>
     <string name="no_autoeq_profiles">未匯入 AutoEq 設定檔。</string>
-    <string name="reset_equalizer">重置等化器</string>
-    <string name="are_you_sure_you_want_to_reset_the_equalizer">確定要重設均衡器嗎？ \n\n這會清除所有設定檔。</string>
+    <string name="reset_equalizer">重設等化器</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">確定要重設等化器嗎？ \n\n這會清除所有設定檔。</string>
     <string name="not_supported">不支援</string>
     <string name="set_eq_engine_title">Set EQ engine</string>
     <string name="eq_engine_basic_title">傳統引擎</string>
@@ -427,7 +427,7 @@
     <string name="volume_label">音量</string>
     <string name="reset_balance">重設平衡</string>
     <string name="speed_and_pitch_label">速度與音高</string>
-    <string name="reset_tempo">重設節奏</string>
+    <string name="reset_tempo">重設速度與音高</string>
     <string name="unlock_pitch_adjustment">解鎖音高綁定</string>
     <string name="balance_left">左</string>
     <string name="balance_right">右</string>
@@ -490,7 +490,7 @@
     <string name="translators_summary">感謝協助讓 Booming Music 支援多種語言的所有人。</string>
     <string name="view_profile_on_github">在 GitHub 上查看個人資料</string>
     <string name="write_an_email">撰寫電子郵件</string>
-    <string name="support_development">支援開發</string>
+    <string name="support_development">支持開發</string>
     <string name="help_with_translations">幫助翻譯</string>
     <string name="help_with_translations_summary">你可以協助將 Booming Music 翻譯成其他語言，為此專案做出貢獻。</string>
     <string name="report_bugs">報告錯誤</string>
@@ -590,7 +590,7 @@
     <string name="ignore_blank_lines_title">忽略空白行</string>
     <string name="ignore_blank_lines_summary">忽略 LRC 檔案中的空白行，而不是顯示動畫泡泡。</string>
     <string name="treat_all_lyrics_files_as_utf8_title">將所有歌詞檔案視為 UTF-8</string>
-    <string name="treat_all_lyrics_files_as_utf8_summary">強制以 UTF-8 編碼讀取音訊文件。這可最佳化檔案解析流程，但在某些情況下可能會讓歌詞出現異常字元。可能需要重新啟動應用程式</string>
+    <string name="treat_all_lyrics_files_as_utf8_summary">強制以 UTF-8 編碼讀取歌詞。這可最佳化解析流程，但在某些情況下可能會出現異常字元。可能需要重新啟動應用程式</string>
     <!-- Now playing preferences -->
     <string name="now_playing_screen_title">樣式</string>
     <string name="open_on_play_title">播放時開啟</string>
@@ -651,12 +651,12 @@
     <string name="rewind_with_back_summary">若目前曲目仍在開頭，按下「上一首」會倒回曲目開頭還是切換到上一首。</string>
     <string name="rewind_fast_forward_amount_title">倒回/快轉長度</string>
     <string name="rewind_fast_forward_amount_summary">使用介面或外部控制項倒回/快轉的時間（秒）。</string>
-    <string name="resume_on_connect_title">連接後恢復播放</string>
-    <string name="resume_on_connect_summary">連接耳機時恢復播放。</string>
+    <string name="resume_on_connect_title">連線後恢復播放</string>
+    <string name="resume_on_connect_summary">耳機連線時恢復播放。</string>
     <string name="pause_on_disconnect_title">中斷連線時暫停</string>
     <string name="pause_on_disconnect_summary">耳機中斷連線時暫停播放。建議啟用。</string>
     <string name="resume_on_bluetooth_connect_title">藍牙連線時恢復播放</string>
-    <string name="resume_on_bluetooth_connect_summary">連接 A2DP 藍牙裝置時恢復播放。</string>
+    <string name="resume_on_bluetooth_connect_summary">A2DP 藍牙裝置連線時恢復播放。</string>
     <string name="pause_on_bluetooth_disconnect_title">藍牙中斷連線時暫停</string>
     <string name="pause_on_bluetooth_disconnect_summary">A2DP 藍牙裝置中斷連線時暫停播放。建議啟用。</string>
     <string name="ignore_audio_focus_title">忽略音訊焦點</string>
@@ -711,24 +711,24 @@
     <string name="whitelist_title">白名單</string>
     <string name="whitelist_summary">只有白名單資料夾的內容會顯示在曲庫中。</string>
     <string name="blacklist_title">黑名單</string>
-    <string name="blacklist_summary">黑名單資料夾中的內容會從曲庫中隱藏。</string>
+    <string name="blacklist_summary">黑名單資料夾中的內容不會顯示在曲庫中。</string>
     <string name="artist_min_songs_title">藝人最少歌曲數</string>
     <string name="artist_min_songs_summary">藝人至少要有幾首歌曲才會顯示在曲庫中。</string>
     <string name="album_min_songs_title">專輯最少歌曲數</string>
     <string name="album_min_songs_summary">專輯至少要有幾首歌才會顯示在曲庫中。</string>
-    <string name="min_song_duration_title">最小歌曲持續時間</string>
+    <string name="min_song_duration_title">歌曲最短長度</string>
     <string name="min_song_duration_summary">只有長度至少達到指定秒數的歌曲才會顯示在曲庫中。</string>
     <!-- Remote preferences -->
     <string name="app_language_title">語言</string>
     <string name="backup_data_title">備份所有資料</string>
-    <string name="backup_app_data_summary">建立此應用程式的檔案並儲存到外部儲存空間。</string>
+    <string name="backup_app_data_summary">建立包含重要應用程式資料的檔案，並儲存到外部儲存空間。</string>
     <string name="restore_backup_title">還原備份</string>
-    <string name="restore_backup_summary">從以前的備份中還原所有資料與狀態。</string>
+    <string name="restore_backup_summary">從先前備份還原應用程式資料與狀態。</string>
     <string name="stop_when_closed_from_recents_title">在「最近」關閉應用程式後停止播放</string>
     <string name="stop_when_closed_from_recents_summary">在「最近」總覽關閉此應用程式後停止播放歌曲。</string>
-    <string name="stop_when_closed_from_recents_note">注意：某些記憶體管理或電池管理較為嚴格的裝置可能會忽略此設定，並在從最近使用的應用清單中移除時始終停止該應用。</string>
+    <string name="stop_when_closed_from_recents_note">注意：某些記憶體或電池管理較嚴格的裝置可能會忽略此設定，並在應用程式從最近使用清單移除時一律停止播放。</string>
     <string name="rotation_lock_title">旋轉鎖定</string>
-    <string name="rotation_lock_summary">鎖定裝置顯示方向，防止某些系統下因螢幕旋轉導致音樂播放中斷。</string>
+    <string name="rotation_lock_summary">鎖定裝置顯示方向，避免在某些系統政策下因旋轉裝置而中斷音樂播放。</string>
     <!-- Preference values -->
     <string name="light_theme_name">亮色</string>
     <string name="dark_theme_name">深色</string>
@@ -736,13 +736,13 @@
     <string name="unlabeled">取消標籤</string>
     <string name="selected">已選擇</string>
     <string name="compact">緊湊</string>
-    <string name="expanded">擴展</string>
+    <string name="expanded">展開</string>
     <string name="full_cover_style">全版面</string>
     <string name="gradient_style">漸層</string>
     <string name="peek_style">靈動</string>
     <string name="plain_style">樸素</string>
     <string name="m3_style">M3 風格</string>
-    <string name="expressive_style">豐富</string>
+    <string name="expressive_style">表現力</string>
     <string name="normal_style">普通</string>
     <string name="cascading">卡片翻轉</string>
     <string name="depth">深淺切換</string>
@@ -768,9 +768,9 @@
     <string name="this_month">本月</string>
     <string name="past_three_months">過去三個月</string>
     <string name="this_year">今年</string>
-    <string name="image_size_large">大 (較慢)</string>
-    <string name="image_size_medium">中等(預設, 推薦)</string>
-    <string name="image_size_small">小(快速，低品質)</string>
+    <string name="image_size_large">大（較慢）</string>
+    <string name="image_size_medium">中等（預設，推薦）</string>
+    <string name="image_size_small">小（快速，低品質）</string>
     <string name="play_on_startup_mode_never">啟動時從不播放</string>
     <string name="play_on_startup_mode_minimized">是，最小化播放面板</string>
     <string name="play_on_startup_mode_expanded">是，同時展開播放器面板</string>
@@ -781,11 +781,11 @@
     <string name="player_color_mode_app_theme_title">應用主題</string>
     <string name="player_color_mode_app_theme_description">使用該應用的配色方案</string>
     <string name="player_color_mode_simple_color_title">簡潔配色</string>
-    <string name="player_color_mode_simple_color_description">提取專輯顏色並應用到某些模組</string>
+    <string name="player_color_mode_simple_color_description">擷取專輯色彩並套用到部分控制項</string>
     <string name="player_color_mode_vibrant_color_title">亮色</string>
-    <string name="player_color_mode_vibrant_color_description">將專輯顏色應用於提示背景、文字和模組</string>
+    <string name="player_color_mode_vibrant_color_description">將專輯色彩套用到背景、文字和控制項</string>
     <string name="player_color_mode_material_you_title">Material You</string>
-    <string name="player_color_mode_material_you_description">啟用基於專輯封面顏色的 Material You 配色</string>
+    <string name="player_color_mode_material_you_description">使用以專輯色彩為基礎的 Material You 色調</string>
     <string name="player_color_mode_blur_title">模糊</string>
     <string name="player_color_mode_blur_description">使用 Material You 色彩的模糊背景</string>
     <!-- Update -->
@@ -796,21 +796,21 @@
     <string name="monthly">每月</string>
     <string name="never">從不使用</string>
     <string name="receive_experimental_updates_title">接收實驗性更新</string>
-    <string name="receive_experimental_updates_summary">請注意，這些更新常常不穩定，僅針對有經驗的用戶。</string>
+    <string name="receive_experimental_updates_summary">請注意，這些更新通常不穩定，僅建議有經驗的使用者使用。</string>
     <string name="search_for_update_title">搜尋更新</string>
     <string name="last_update_search_x">上次檢查：%s</string>
     <string name="checking_please_wait">正在檢索，請等待…</string>
     <string name="could_not_check_for_updates">無法檢查更新。</string>
-    <string name="the_app_is_up_to_date">應用程式已更至最新</string>
+    <string name="the_app_is_up_to_date">應用程式已是最新版本</string>
     <string name="update_available_title">有可用更新</string>
-    <string name="more_info_action">更多訊息。</string>
+    <string name="more_info_action">更多資訊。</string>
     <string name="download_action">下載</string>
     <string name="downloading_update">正在下載 Booming Music 更新。</string>
     <string name="uncaught_error_title">哎呀！出現了意料之外的事！</string>
     <string name="uncaught_error_message">似乎出了些問題並導致應用程式當機。如果你能將錯誤報告傳送到我們的 Telegram 群組或透過電子郵件寄給我們，會很有幫助。</string>
     <string name="uncaught_error_report">錯誤報告</string>
     <string name="uncaught_error_report_copied">已複製錯誤報告到剪貼簿。</string>
-    <string name="uncaught_error_restart_app">重啟應用</string>
+    <string name="uncaught_error_restart_app">重新啟動應用程式</string>
     <string name="uncaught_error_github">在 GitHub 上回饋問題</string>
     <string name="uncaught_error_send">傳送報告</string>
     <string name="app_widget_responsive">響應式</string>
@@ -894,7 +894,7 @@
     <string name="error_lastfm_service">Last.fm 目前暫停服務或正在維護。請稍後再試。</string>
     <string name="error_lastfm_rate_limit">請求次數過多。請稍候再上傳播放紀錄。</string>
     <string name="error_lastfm_generic">Last.fm 發生未預期的錯誤。請再試一次。</string>
-    <string name="error_network_timeout">連線逾時。請檢查網際網路連線後再試一次。</string>
+    <string name="error_network_timeout">連線逾時。請檢查網路連線後再試一次。</string>
     <string name="error_listenbrainz_generic">ListenBrainz 發生錯誤。</string>
     <string name="error_listenbrainz_invalid_token">ListenBrainz Token 無效。</string>
     <string name="app_version_x">版本 %s</string>
@@ -902,13 +902,13 @@
     <string name="more_contributors_title">更多貢獻者</string>
     <string name="more_contributors_summary">你可以在 GitHub 上查看完整的貢獻者名單。</string>
     <string name="telegram_community_summary">加入我們的 Telegram 社群，接收版本更新與最新消息。</string>
-    <string name="support_my_work">支持我的開發</string>
+    <string name="support_my_work">支持我的開發工作</string>
     <string name="contributor_dawid_description">多項關鍵功能的核心貢獻者與設計者。</string>
     <string name="contributor_ray_description">參與開發多項令人期待的關鍵功能。</string>
     <string name="contributor_ttop_description">本專案最早的貢獻者與測試人員。</string>
     <string name="contributor_lenard_description">應用程式網站開發者與貢獻者。</string>
     <string name="contributor_alex_description">本專案長期友人，協助提供重要 API 存取權。</string>
-    <string name="network_summary">管理 Last.fm 整合、歌詞提供者與中繼資料下載等網路功能。</string>
+    <string name="network_summary">管理 Last.fm 整合、歌詞來源與中繼資料下載等網路功能。</string>
     <string name="widget_small_layout_style_title">小型小工具版面樣式</string>
     <string name="widget_dynamic_colors_summary">讓小工具色彩配合目前曲目的封面。</string>
     <string name="widget_image_corner_radius_title">圖片圓角半徑</string>
@@ -937,7 +937,7 @@
     <string name="lastfm_login_title">登入 Last.fm</string>
     <string name="lastfm_login_summary">使用 Last.fm 帳號授權，以啟用播放紀錄上傳和正在播放資訊更新。</string>
     <string name="lastfm_scrobbling_title">啟用 Last.fm 播放紀錄上傳</string>
-    <string name="lastfm_scrobbling_summary">自動將已播放曲目提交到你的 Last.fm 聆聽記錄。</string>
+    <string name="lastfm_scrobbling_summary">自動將已播放曲目提交到你的 Last.fm 聆聽紀錄。</string>
     <string name="lastfm_now_playing_title">在 Last.fm 更新正在播放</string>
     <string name="lastfm_now_playing_summary">在你的 Last.fm 個人資料即時顯示目前播放的曲目。</string>
     <string name="lastfm_biography_title">下載藝人與專輯介紹</string>
@@ -945,7 +945,7 @@
     <string name="listenbrainz_login_title">登入 ListenBrainz</string>
     <string name="listenbrainz_login_summary">使用你的使用者 Token 授權，以啟用播放紀錄上傳和正在播放資訊更新。你可以在 ListenBrainz 個人資料設定中找到 Token。</string>
     <string name="listenbrainz_scrobbling_title">啟用 ListenBrainz 播放紀錄上傳</string>
-    <string name="listenbrainz_scrobbling_summary">自動將已播放曲目提交到你的 ListenBrainz 聆聽記錄。</string>
+    <string name="listenbrainz_scrobbling_summary">自動將已播放曲目提交到你的 ListenBrainz 聆聽紀錄。</string>
     <string name="listenbrainz_now_playing_title">在 ListenBrainz 更新正在播放</string>
     <string name="listenbrainz_now_playing_summary">在 ListenBrainz 個人資料即時顯示目前播放的曲目。</string>
     <string name="use_lrclib_provider_title">使用 LRCLib 歌詞來源</string>
