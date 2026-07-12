@@ -69,7 +69,6 @@ import com.mardous.booming.ui.component.compose.ShapedText
 import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.theme.SliderTokens
-import com.mardous.booming.ui.theme.SurfaceColorTokens
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
@@ -535,9 +534,7 @@ private fun AudioDeviceInfo(
     Card(
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(
-                alpha = SurfaceColorTokens.SurfaceVariantAlpha
-            )
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
         ),
         modifier = Modifier.fillMaxWidth()
     ) {
