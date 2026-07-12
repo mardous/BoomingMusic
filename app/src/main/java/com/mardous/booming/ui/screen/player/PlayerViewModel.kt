@@ -35,6 +35,7 @@ import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.QueuePosition
+import com.mardous.booming.data.model.QueueSong
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.ProgressObserver
@@ -64,6 +65,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlin.time.Duration.Companion.milliseconds
 
 const val QUEUE_DEBOUNCE = 100L
 
@@ -109,7 +111,7 @@ class PlayerViewModel(
     val shuffleModeFlow = _shuffleModeFlow.asStateFlow()
     val shuffleModeEnabled get() = shuffleModeFlow.value
 
-    private val _queueFlow = MutableStateFlow(emptyList<Song>())
+    private val _queueFlow = MutableStateFlow(emptyList<QueueSong>())
     val queueFlow = _queueFlow.asStateFlow()
     val queue get() = queueFlow.value
 
@@ -140,7 +142,6 @@ class PlayerViewModel(
     override fun onCleared() {
         progressObserver.stop()
         cancelInternalJobs()
-        super.onCleared()
     }
 
     fun setMediaController(mediaController: MediaController?) {
@@ -163,13 +164,13 @@ class PlayerViewModel(
 
             internalJobs += mediaEvent
                 .filter { it == MediaEvent.MediaContentChanged }
-                .debounce(500)
-                .onEach { event -> onGenerateQueue(mediaController) }
+                .debounce(500.milliseconds)
+                .onEach { _ -> onGenerateQueue(mediaController, mediaContentChanged = true) }
                 .launchIn(viewModelScope)
 
             internalJobs += combine(queueFlow, positionFlow)
             { queue, position -> Pair(queue, position) }
-                .debounce(QUEUE_DEBOUNCE)
+                .debounce(QUEUE_DEBOUNCE.milliseconds)
                 .onEach { (queue, position) ->
                     _currentSongFlow.value = queue.getOrElse(position.current) { Song.emptySong }
                     _nextSongFlow.value = queue.getOrElse(position.next) { Song.emptySong }
@@ -177,7 +178,7 @@ class PlayerViewModel(
                 .launchIn(viewModelScope)
 
             internalJobs += currentSongFlow
-                .debounce(500)
+                .debounce(500.milliseconds)
                 .distinctUntilChangedBy { it.id }
                 .onEach { song -> onGenerateExtraInfo(song) }
                 .launchIn(viewModelScope)
@@ -212,7 +213,8 @@ class PlayerViewModel(
 
     private fun onGenerateQueue(
         player: Player,
-        timeline: Timeline = player.currentTimeline
+        timeline: Timeline = player.currentTimeline,
+        mediaContentChanged: Boolean = false
     ) = viewModelScope.launch {
         queueMutex.withLock {
             // If the timeline is empty, reset the queue and exit early.
@@ -226,42 +228,70 @@ class PlayerViewModel(
             val playerIndex = player.currentMediaItemIndex
 
             val queueItems = player.getQueueItems(shuffle)
-            val indicesInTimeline = queueItems.map { it.indexInTimeline }.toIntArray()
+
+            val (mediaItems, indicesInTimeline, queuePositionIndex) = withContext(Dispatchers.Default) {
+                val mediaItems = ArrayList<MediaItem>(queueItems.size)
+                val indices = IntArray(queueItems.size)
+                var currentPos = -1
+
+                for (i in queueItems.indices) {
+                    val (item, timelineIndex) = queueItems[i]
+                    mediaItems.add(item)
+                    indices[i] = timelineIndex
+                    if (timelineIndex == playerIndex) {
+                        currentPos = i
+                    }
+                }
+                Triple(mediaItems, indices, currentPos)
+            }
+
             val queuePosition = QueuePosition(
-                current = indicesInTimeline.indexOf(playerIndex),
+                current = queuePositionIndex,
                 indicesInTimeline = indicesInTimeline
             )
 
             // Retrieve existing songs for the given MediaItems and detect missing ones.
             val (songs, missingMediaItems) = withContext(IO) {
-                repository.songsByMediaItems(queueItems.map { it.mediaItem })
+                val result = repository.songsByMediaItems(mediaItems)
+                val occurrences = mutableMapOf<Long, Int>()
+
+                val queueSongs = result.first.map { song ->
+                    val count = occurrences.getOrDefault(song.id, 0)
+                    occurrences[song.id] = count + 1
+                    QueueSong(key = song.id to count, song)
+                }
+                queueSongs to result.second
             }
 
-            // Build a set of IDs representing missing (deleted) MediaItems.
-            val missingIds = missingMediaItems.mapTo(HashSet()) { it.mediaId }
-            if (missingIds.isNotEmpty()) {
-                // Identify contiguous ranges of missing items to remove them in grouped batches.
-                val ranges = mutableListOf<IntRange>()
-                var start = -1
+            if (mediaContentChanged && missingMediaItems.isNotEmpty()) {
+                withContext(Dispatchers.Default) {
+                    // Build a set of IDs representing missing (deleted) MediaItems.
+                    val missingIds = missingMediaItems.mapTo(HashSet()) { it.mediaId }
 
-                for (i in queueItems.indices) {
-                    val missing = queueItems[i].mediaItem.mediaId in missingIds
-                    if (missing && start == -1) {
-                        // Beginning of a new missing range.
-                        start = i
-                    } else if (!missing && start != -1) {
-                        // End of the current missing range.
-                        ranges += (start until i)
-                        start = -1
+                    // Identify contiguous ranges of missing items to remove them in grouped batches.
+                    val ranges = mutableListOf<IntRange>()
+                    var start = -1
+
+                    for (i in queueItems.indices) {
+                        val isMissing = queueItems[i].first.mediaId in missingIds
+                        if (isMissing && start == -1) {
+                            // Beginning of a new missing range.
+                            start = i
+                        } else if (!isMissing && start != -1) {
+                            // End of the current missing range.
+                            ranges += (start until i)
+                            start = -1
+                        }
                     }
-                }
+                    // If the last range extends to the end of the list, close it.
+                    if (start != -1) ranges += (start until queueItems.size)
 
-                // If the last range extends to the end of the list, close it.
-                if (start != -1) ranges += (start until queueItems.size)
-
-                // Remove ranges in reverse order to avoid index shifting issues.
-                for (range in ranges.asReversed()) {
-                    player.removeMediaItems(range.first, range.last + 1)
+                    withContext(Dispatchers.Main) {
+                        // Remove ranges in reverse order to avoid index shifting issues.
+                        for (range in ranges.asReversed()) {
+                            player.removeMediaItems(range.first, range.last + 1)
+                        }
+                    }
                 }
             }
 

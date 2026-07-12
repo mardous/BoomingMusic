@@ -148,21 +148,47 @@ class RealSongRepository(
     override suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>> {
         if (mediaItems.isEmpty()) return (emptyList<Song>() to mediaItems)
 
+        // Preload whitelist and blacklist if enabled to avoid redundant Room queries in the loop
+        val whitelistedPaths = if (Preferences.whitelistEnabled) {
+            inclExclDao.whitelistPaths().map { it.path }
+        } else null
+
+        val blacklistedPaths = if (Preferences.blacklistEnabled) {
+            inclExclDao.blackListPaths().map { it.path }
+        } else null
+
         val ids = mediaItems.map { it.mediaId }
         val allSongs = buildList {
             ids.chunked(900).forEach { chunk ->
                 val selection = "${AudioColumns._ID} IN (${chunk.joinToString(",") { "?" }})"
                 val selectionArgs = chunk.toTypedArray()
-                addAll(songs(makeSongCursor(selection = selection, selectionValues = selectionArgs)))
+                addAll(
+                    songs(
+                        makeSongCursor(
+                            selection = selection,
+                            selectionValues = selectionArgs,
+                            whitelistedPaths = whitelistedPaths,
+                            blacklistedPaths = blacklistedPaths
+                        )
+                    )
+                )
             }
         }
 
         val songMap = allSongs.associateBy { it.id.toString() }
-        val (found, missing) = mediaItems.partition { item ->
-            songMap[item.mediaId]?.takeIf { it != Song.emptySong } != null
+
+        val resultSongs = ArrayList<Song>(mediaItems.size)
+        val missing = ArrayList<MediaItem>()
+
+        for (item in mediaItems) {
+            val song = songMap[item.mediaId]
+            if (song != null && song != Song.emptySong) {
+                resultSongs.add(song)
+            } else {
+                missing.add(item)
+            }
         }
 
-        val resultSongs = found.mapNotNull { songMap[it.mediaId] }
         return resultSongs to missing
     }
 
@@ -203,7 +229,12 @@ class RealSongRepository(
         }
     }
 
-    fun makeSongCursor(queryDispatcher: MediaQueryDispatcher, ignoreBlacklist: Boolean = false): Cursor? {
+    fun makeSongCursor(
+        queryDispatcher: MediaQueryDispatcher,
+        ignoreBlacklist: Boolean = false,
+        whitelistedPaths: List<String>? = null,
+        blacklistedPaths: List<String>? = null
+    ): Cursor? {
         val minimumSongDuration = Preferences.minimumSongDuration
         if (minimumSongDuration > 0) {
             queryDispatcher.addSelection("${AudioColumns.DURATION} >= ${minimumSongDuration * 1000}")
@@ -212,7 +243,7 @@ class RealSongRepository(
         if (!ignoreBlacklist) {
             // Whitelist
             if (Preferences.whitelistEnabled) {
-                val whitelisted = inclExclDao.whitelistPaths().map { it.path }
+                val whitelisted = whitelistedPaths ?: inclExclDao.whitelistPaths().map { it.path }
                 if (whitelisted.isNotEmpty()) {
                     queryDispatcher.addSelection(generateWhitelistSelection(whitelisted.size))
                     queryDispatcher.addArguments(*addLibrarySelectionValues(whitelisted))
@@ -221,7 +252,7 @@ class RealSongRepository(
 
             // Blacklist
             if (Preferences.blacklistEnabled) {
-                val blacklisted = inclExclDao.blackListPaths().map { it.path }
+                val blacklisted = blacklistedPaths ?: inclExclDao.blackListPaths().map { it.path }
                 if (blacklisted.isNotEmpty()) {
                     queryDispatcher.addSelection(generateBlacklistSelection(blacklisted.size))
                     queryDispatcher.addArguments(*addLibrarySelectionValues(blacklisted))
@@ -241,7 +272,9 @@ class RealSongRepository(
         selection: String?,
         selectionValues: Array<String>?,
         sortOrder: String? = null,
-        ignoreBlacklist: Boolean = false
+        ignoreBlacklist: Boolean = false,
+        whitelistedPaths: List<String>? = null,
+        blacklistedPaths: List<String>? = null
     ): Cursor? {
         val queryDispatcher = MediaQueryDispatcher()
             .setProjection(getBaseProjection())
@@ -249,7 +282,7 @@ class RealSongRepository(
             .setSelectionArguments(selectionValues)
             .addSelection(selection)
             .setSortOrder(sortOrder ?: MediaStore.Audio.Media.DEFAULT_SORT_ORDER)
-        return makeSongCursor(queryDispatcher, ignoreBlacklist)
+        return makeSongCursor(queryDispatcher, ignoreBlacklist, whitelistedPaths, blacklistedPaths)
     }
 
     private fun generateWhitelistSelection(pathCount: Int): String =
