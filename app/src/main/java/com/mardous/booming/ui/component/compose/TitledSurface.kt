@@ -1,6 +1,5 @@
 package com.mardous.booming.ui.component.compose
 
-import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,6 +8,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -25,10 +25,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.mardous.booming.ui.theme.SurfaceColorTokens
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -37,9 +36,9 @@ fun SwitchCard(
     checked: Boolean,
     title: String,
     modifier: Modifier = Modifier,
+    icon: Painter? = null,
     style: TextStyle? = null,
-    @DrawableRes iconRes: Int? = null,
-    containerColor: Color? = null,
+    color: Color? = null,
     enabled: Boolean = true,
     content: @Composable (PaddingValues) -> Unit
 ) {
@@ -55,8 +54,8 @@ fun SwitchCard(
                 onCheckedChange = null
             )
         },
-        iconRes = iconRes,
-        containerColor = containerColor,
+        icon = icon,
+        color = color,
         modifier = modifier,
         content = content
     )
@@ -67,9 +66,9 @@ fun SwitchCard(
 fun TitledCard(
     title: String,
     modifier: Modifier = Modifier,
+    icon: Painter? = null,
     style: TextStyle? = null,
-    @DrawableRes iconRes: Int? = null,
-    containerColor: Color? = null,
+    color: Color? = null,
     collapsible: Boolean = false,
     titleEndContent: @Composable RowScope.() -> Unit = {},
     content: @Composable (PaddingValues) -> Unit
@@ -83,8 +82,8 @@ fun TitledCard(
         title = title,
         titleEndContent = titleEndContent,
         style = style,
-        iconRes = iconRes,
-        containerColor = containerColor,
+        icon = icon,
+        color = color,
         modifier = modifier,
         content = content
     )
@@ -98,17 +97,16 @@ private fun TitledCard(
     collapsible: Boolean,
     title: String,
     modifier: Modifier = Modifier,
+    icon: Painter? = null,
     style: TextStyle? = null,
-    @DrawableRes iconRes: Int? = null,
-    containerColor: Color? = null,
+    color: Color? = null,
     titleEndContent: @Composable RowScope.() -> Unit = {},
     content: @Composable (PaddingValues) -> Unit
 ) {
     Card(
+        shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
-            containerColor = containerColor ?: MaterialTheme.colorScheme.surfaceVariant.copy(
-                alpha = SurfaceColorTokens.SurfaceVariantAlpha
-            )
+            containerColor = color ?: MaterialTheme.colorScheme.surfaceContainerHigh
         ),
         modifier = modifier
     ) {
@@ -119,14 +117,15 @@ private fun TitledCard(
                 .clickable(enabled = collapsible, onClick = onTitleClick)
                 .padding(16.dp)
         ) {
-            if (iconRes != null) {
+            if (icon != null) {
                 Icon(
-                    painter = painterResource(iconRes),
+                    painter = icon,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(20.dp)
                 )
 
-                Spacer(Modifier.width(16.dp))
+                Spacer(Modifier.width(8.dp))
             }
 
             Text(

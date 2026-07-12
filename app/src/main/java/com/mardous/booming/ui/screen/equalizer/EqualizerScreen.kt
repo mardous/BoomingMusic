@@ -12,6 +12,8 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -28,19 +30,19 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.ListItemShapes
 import androidx.compose.material3.MaterialTheme
@@ -103,9 +105,9 @@ import com.mardous.booming.ui.component.compose.EmptyView
 import com.mardous.booming.ui.component.compose.EqualizerWaveform
 import com.mardous.booming.ui.component.compose.InputDialog
 import com.mardous.booming.ui.component.compose.MaterialSwitch
+import com.mardous.booming.ui.component.compose.ShapedText
 import com.mardous.booming.ui.component.compose.SwitchCard
 import com.mardous.booming.ui.component.compose.TipView
-import com.mardous.booming.ui.component.compose.TitleShapedText
 import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.component.compose.menu.MenuItem
 import com.mardous.booming.ui.component.compose.menu.TopAppBarMenu
@@ -628,11 +630,11 @@ fun EqualizerScreen(
                     item {
                         TitledCard(
                             title = stringResource(R.string.eq_profile_title),
-                            iconRes = R.drawable.ic_equalizer_24dp
+                            icon = painterResource(R.drawable.ic_equalizer_24dp),
+                            color = MaterialTheme.colorScheme.surfaceContainerLow
                         ) { cardContentPadding ->
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                verticalAlignment = Alignment.CenterVertically,
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(12.dp),
                                 modifier = Modifier.padding(cardContentPadding)
                             ) {
                                 val containerColor = if (eqState.isUsable) {
@@ -653,8 +655,7 @@ fun EqualizerScreen(
                                             enabled = eqState.isUsable,
                                             onClick = { showProfileSelectorDialog = true }
                                         )
-                                        .padding(horizontal = 16.dp, vertical = 8.dp)
-                                        .weight(1f)
+                                        .padding(horizontal = 16.dp, vertical = 12.dp)
                                 ) {
                                     Text(
                                         text = eqCurrentProfile.getName(context),
@@ -672,17 +673,52 @@ fun EqualizerScreen(
                                     )
                                 }
 
-                                FilledIconButton(
-                                    enabled = eqState.isUsable && eqCurrentProfile.isCustom,
-                                    colors = IconButtonDefaults.filledIconButtonColors(
-                                        containerColor = MaterialTheme.colorScheme.tertiaryContainer
-                                    ),
-                                    onClick = { showProfileSaverDialog = true }
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(ButtonGroupDefaults.ConnectedSpaceBetween),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_save_24dp),
-                                        contentDescription = stringResource(R.string.save_profile_label)
-                                    )
+                                    val deleteInteractionSource = remember { MutableInteractionSource() }
+                                    val deleteIsPressed by deleteInteractionSource.collectIsPressedAsState()
+                                    Button(
+                                        onClick = { deleteProfileState = Pair(eqCurrentProfile, true) },
+                                        colors = ButtonDefaults.buttonColors(
+                                            containerColor = MaterialTheme.colorScheme.errorContainer,
+                                            contentColor = MaterialTheme.colorScheme.onErrorContainer
+                                        ),
+                                        shape = if (deleteIsPressed) {
+                                            ButtonGroupDefaults.connectedLeadingButtonPressShape
+                                        } else {
+                                            ButtonGroupDefaults.connectedLeadingButtonShape
+                                        },
+                                        contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
+                                        enabled = eqState.isUsable && !eqCurrentProfile.isCustom,
+                                        interactionSource = deleteInteractionSource,
+                                        modifier = Modifier.weight(1f)
+                                    ) {
+                                        Icon(painterResource(R.drawable.ic_delete_24dp), null)
+                                        Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+                                        Text(stringResource(R.string.delete_action))
+                                    }
+
+                                    val saveInteractionSource = remember { MutableInteractionSource() }
+                                    val saveIsPressed by saveInteractionSource.collectIsPressedAsState()
+                                    Button(
+                                        onClick = { showProfileSaverDialog = true },
+                                        shape = if (saveIsPressed) {
+                                            ButtonGroupDefaults.connectedTrailingButtonPressShape
+                                        } else {
+                                            ButtonGroupDefaults.connectedTrailingButtonShape
+                                        },
+                                        contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
+                                        enabled = eqState.isUsable && eqCurrentProfile.isCustom,
+                                        interactionSource = saveInteractionSource,
+                                        modifier = Modifier.weight(1f)
+                                    ) {
+                                        Icon(painterResource(R.drawable.ic_save_24dp), null)
+                                        Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+                                        Text(stringResource(R.string.action_save))
+                                    }
                                 }
                             }
                         }
@@ -691,21 +727,25 @@ fun EqualizerScreen(
                     item {
                         TitledCard(
                             title = stringResource(R.string.graphic_eq_label),
-                            iconRes = R.drawable.ic_graphic_eq_24dp,
+                            icon = painterResource(R.drawable.ic_graphic_eq_24dp),
                             titleEndContent = {
                                 if (eqBandCapabilities.hasMultipleBandConfigurations) {
-                                    TitleShapedText(
+                                    ShapedText(
                                         text = stringResource(
                                             R.string.graphic_eq_band_count,
                                             eqState.preferredBandCount
                                         ),
+                                        style = MaterialTheme.typography.bodySmallEmphasized,
+                                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                        shape = CircleShape,
                                         enabled = eqState.isUsable,
                                         onClick = {
                                             showBandCountSelector = showBandCountSelector.not()
                                         }
                                     )
                                 }
-                            }
+                            },
+                            color = MaterialTheme.colorScheme.surfaceContainerLow
                         ) { cardContentPadding ->
                             Column(
                                 verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -776,7 +816,8 @@ fun EqualizerScreen(
                                 onCheckedChange = { eqViewModel.setVirtualizer(enabled = it) },
                                 checked = virtualizer.enabled && eqState.enabled,
                                 title = stringResource(R.string.virtualizer_label),
-                                iconRes = R.drawable.ic_headphones_24dp,
+                                icon = painterResource(R.drawable.ic_headphones_24dp),
+                                color = MaterialTheme.colorScheme.surfaceContainerLow,
                                 enabled = eqState.isUsable
                             ) { cardContentPadding ->
                                 Row(
@@ -813,7 +854,8 @@ fun EqualizerScreen(
                                 onCheckedChange = { eqViewModel.setBassBoost(enabled = it) },
                                 checked = bassBoost.enabled && eqState.enabled,
                                 title = stringResource(R.string.bassboost_label),
-                                iconRes = R.drawable.ic_edit_audio_24dp,
+                                icon = painterResource(R.drawable.ic_edit_audio_24dp),
+                                color = MaterialTheme.colorScheme.surfaceContainerLow,
                                 enabled = eqState.isUsable
                             ) { cardContentPadding ->
                                 Row(
@@ -850,7 +892,8 @@ fun EqualizerScreen(
                                 onCheckedChange = { eqViewModel.setLoudnessGain(enabled = it) },
                                 checked = loudnessGain.enabled && eqState.enabled,
                                 title = stringResource(R.string.loudness_enhancer),
-                                iconRes = R.drawable.ic_volume_up_24dp,
+                                icon = painterResource(R.drawable.ic_volume_up_24dp),
+                                color = MaterialTheme.colorScheme.surfaceContainerLow,
                                 enabled = eqState.isUsable
                             ) { cardContentPadding ->
                                 Row(
@@ -885,7 +928,8 @@ fun EqualizerScreen(
                                 onCheckedChange = { eqViewModel.setCompressor(enabled = it) },
                                 checked = compressor.enabled && eqState.enabled,
                                 title = stringResource(R.string.compressor_label),
-                                iconRes = R.drawable.ic_instant_mix_24dp,
+                                icon = painterResource(R.drawable.ic_instant_mix_24dp),
+                                color = MaterialTheme.colorScheme.surfaceContainerLow,
                                 enabled = eqState.isUsable
                             ) { cardContentPadding ->
                                 Column(
@@ -973,7 +1017,8 @@ fun EqualizerScreen(
                                 onCheckedChange = { eqViewModel.setLimiter(enabled = it) },
                                 checked = limiter.enabled && eqState.enabled,
                                 title = stringResource(R.string.limiter_label),
-                                iconRes = R.drawable.ic_instant_mix_24dp,
+                                icon = painterResource(R.drawable.ic_instant_mix_24dp),
+                                color = MaterialTheme.colorScheme.surfaceContainerLow,
                                 enabled = eqState.isUsable
                             ) { cardContentPadding ->
                                 Column(
@@ -1035,7 +1080,8 @@ fun EqualizerScreen(
                 item {
                     TitledCard(
                         title = stringResource(R.string.replay_gain),
-                        iconRes = R.drawable.ic_sound_sampler_24dp,
+                        icon = painterResource(R.drawable.ic_sound_sampler_24dp),
+                        color = MaterialTheme.colorScheme.surfaceContainerLow,
                         modifier = Modifier.fillMaxWidth()
                     ) { cardContentPadding ->
                         Column(

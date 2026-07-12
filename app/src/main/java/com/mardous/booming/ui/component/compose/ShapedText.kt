@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.contentColorFor
@@ -48,25 +47,4 @@ fun ShapedText(
             textAlign = TextAlign.Center
         )
     }
-}
-
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
-@Composable
-fun TitleShapedText(
-    text: String,
-    containerColor: Color = MaterialTheme.colorScheme.primaryContainer,
-    color: Color = contentColorFor(containerColor),
-    enabled: Boolean = true,
-    onClick: () -> Unit = {},
-    modifier: Modifier = Modifier
-) {
-    ShapedText(
-        text = text,
-        style = MaterialTheme.typography.bodyMediumEmphasized,
-        color = color,
-        containerColor = containerColor,
-        enabled = enabled,
-        onClick = onClick,
-        modifier = modifier
-    )
 }
