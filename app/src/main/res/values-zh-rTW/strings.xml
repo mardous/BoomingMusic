@@ -338,7 +338,7 @@
         <item quantity="other">%d 項</item>
     </plurals>
     <!-- Home -->
-    <string name="home_label">Home</string>
+    <string name="home_label">首頁</string>
     <string name="shuffle_action">隨機播放</string>
     <string name="top_artists">頂尖藝人</string>
     <string name="top_albums">熱門專輯</string>
@@ -359,7 +359,7 @@
     <string name="shuffle_mode_most_played_artists_description">優先播放常聽藝人的歌曲。</string>
     <string name="shuffle_mode_most_played_albums_description">優先播放常聽專輯中的歌曲。</string>
     <string name="shuffle_mode_favorite_songs_description">優先播放我的最愛歌曲。</string>
-    <string name="shuffle_mode_forgotten_songs_description">優先播放近期較少播放的歌曲。</string>
+    <string name="shuffle_mode_forgotten_songs_description">優先播放有一段時間未播的歌曲。</string>
     <string name="shuffle_mode_recently_added_description">優先播放最近新增到曲庫的歌曲。</string>
     <string name="shuffle_mode_combined_description">根據我的最愛、播放次數和新增時間混合播放。</string>
     <!-- Equalizer -->
@@ -395,14 +395,14 @@
     <string name="reset_equalizer">重設等化器</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">確定要重設等化器嗎？ \n\n這會清除所有設定檔。</string>
     <string name="not_supported">不支援</string>
-    <string name="set_eq_engine_title">Set EQ engine</string>
+    <string name="set_eq_engine_title">設定等化引擎</string>
     <string name="eq_engine_basic_title">傳統引擎</string>
     <string name="eq_engine_basic_description">5 頻段傳統設定，設計上以最高裝置相容性為優先。</string>
     <string name="eq_engine_precision_title">精密引擎</string>
     <string name="eq_engine_precision_description">高傳真處理，最多支援 15 頻段控制，提供更細緻的聲音塑形。</string>
     <string name="set_eq_engine_reset_warning">變更等化引擎會重設等化器設定，包括自訂設定檔。</string>
     <string name="eq_empty_bands">等化引擎未傳回任何頻段設定。</string>
-    <string name="enable_equalizer">啟用 EQ</string>
+    <string name="enable_equalizer">啟用等化器</string>
     <string name="select_profile">選擇設定檔</string>
     <string name="save_profile_label">儲存設定檔</string>
     <string name="edit_profile_label">編輯設定檔</string>
@@ -431,7 +431,7 @@
     <string name="unlock_pitch_adjustment">解鎖音高綁定</string>
     <string name="balance_left">左</string>
     <string name="balance_right">右</string>
-    <string name="action_external_eq">外部 EQ</string>
+    <string name="action_external_eq">外部等化器</string>
     <string name="custom">自訂</string>
     <string name="audio_offload_is_enabled">音訊硬體加速已啟用</string>
     <string name="enable_audio_offload_title">音訊硬體加速</string>
