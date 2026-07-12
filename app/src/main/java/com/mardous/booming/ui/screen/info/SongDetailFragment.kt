@@ -25,6 +25,7 @@ import android.view.ViewGroup
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -38,8 +39,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
@@ -63,7 +62,6 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -81,6 +79,7 @@ import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
 import com.mardous.booming.ui.component.compose.ErrorView
 import com.mardous.booming.ui.component.compose.ShapedText
 import com.mardous.booming.ui.component.compose.SmallHeader
+import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
 import com.mardous.booming.ui.theme.BoomingMusicTheme
@@ -281,7 +280,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
         InfoSection(
             icon = painterResource(R.drawable.ic_info_24dp),
             title = stringResource(R.string.metadata_label),
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier
         ) {
             InfoView(
                 title = stringResource(R.string.album),
@@ -345,7 +344,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
         InfoSection(
             icon = painterResource(R.drawable.ic_play_circle_24dp),
             title = stringResource(R.string.play_info),
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier
         ) {
             InfoView(
                 title = stringResource(R.string.played),
@@ -369,7 +368,7 @@ class SongDetailFragment : BottomSheetDialogFragment() {
         InfoSection(
             icon = painterResource(R.drawable.ic_audio_file_24dp),
             title = stringResource(R.string.file_label),
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier
         ) {
             FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -492,39 +491,16 @@ class SongDetailFragment : BottomSheetDialogFragment() {
         icon: Painter,
         title: String,
         modifier: Modifier = Modifier,
-        content: @Composable () -> Unit
+        content: @Composable ColumnScope.() -> Unit
     ) {
-        Card(
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
-            ),
+        TitledCard(
+            title = title,
+            icon = icon,
             modifier = modifier
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(16.dp)
-            ) {
-                Icon(
-                    painter = icon,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(20.dp)
-                )
-                Text(
-                    text = title,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    fontWeight = FontWeight.SemiBold,
-                    style = MaterialTheme.typography.bodyLarge
-                )
-            }
-
+        ) { contentPadding ->
             Column(
                 verticalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .padding(bottom = 16.dp)
+                modifier = Modifier.padding(contentPadding)
             ) {
                 content()
             }
