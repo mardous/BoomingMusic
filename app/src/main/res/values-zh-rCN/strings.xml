@@ -359,19 +359,19 @@
     <string name="shuffle_mode_most_played_artists_description">优先播放常听艺人的歌曲。</string>
     <string name="shuffle_mode_most_played_albums_description">优先播放常听专辑中的歌曲。</string>
     <string name="shuffle_mode_favorite_songs_description">优先播放收藏夹中的歌曲。</string>
-    <string name="shuffle_mode_forgotten_songs_description">优先播放近期较少播放的歌曲。</string>
+    <string name="shuffle_mode_forgotten_songs_description">优先播放有一段时间未播的歌曲。</string>
     <string name="shuffle_mode_recently_added_description">优先播放最近添加到曲库的歌曲。</string>
     <string name="shuffle_mode_combined_description">根据收藏、播放次数和添加时间混合播放。</string>
     <!-- Equalizer -->
     <string name="equalizer_label">均衡器</string>
     <string name="autoeq_label">AutoEq</string>
-    <string name="graphic_eq_label">图形化均衡器</string>
-    <string name="graphic_eq_band_count">%d 频段均衡器</string>
+    <string name="graphic_eq_label">图形均衡器</string>
+    <string name="graphic_eq_band_count">%d 频段</string>
     <string name="eq_profiles_title">均衡器预设</string>
     <string name="autoeq_profiles_title">AutoEq 预设</string>
     <string name="eq_profile_title">预设</string>
     <string name="change_band_count_title">更改频段数量</string>
-    <string name="change_band_count_message">更改频段数量会将当前预设重置为初始状态。为当前频段数量保存的其他预设将无法用于新的频段数量。\n\n要继续吗？</string>
+    <string name="change_band_count_message">更改频段数量会将当前预设重置为初始状态。为当前频段配置保存的其他预设将无法用于新的频段配置。\n\n要继续吗？</string>
     <string name="band_configuration_changed_successfully">频段配置更改成功。</string>
     <string name="band_configuration_could_not_be_changed">错误：频段配置无法更改。</string>
     <string name="share_eq_profiles">分享均衡器预设</string>
@@ -423,7 +423,7 @@
     <string name="loudness_enhancer">放大器</string>
     <string name="sound_settings">声音设置</string>
     <string name="listening_on">播放设备</string>
-    <string name="casting_to">投送设备</string>
+    <string name="casting_to">投送到</string>
     <string name="volume_label">音量</string>
     <string name="reset_balance">重置平衡</string>
     <string name="speed_and_pitch_label">速度与音高</string>
@@ -953,5 +953,5 @@
     <string name="contributor_lenard_description">应用官网开发者兼贡献者。</string>
     <string name="contributor_alex_description">项目的老朋友，为各项核心 API 提供了访问支持。</string>
     <string name="play_all_songs_when_searching_title">搜索时播放全部歌曲</string>
-    <string name="play_all_songs_when_searching_summary">启用后，选择中搜索结果中的歌曲会将全部本地音乐加入播放队列。受“选择歌曲时”设定影响。</string>
+    <string name="play_all_songs_when_searching_summary">启用后，选择搜索结果中的歌曲会将整个曲库加入播放队列。受“选择歌曲时”设置影响。</string>
 </resources>
