@@ -38,7 +38,7 @@ fun ShapedText(
                 enabled = enabled && onClick != null,
                 onClick = { onClick?.invoke() }
             )
-            .padding(horizontal = 4.dp, vertical = 4.dp)
+            .padding(horizontal = 10.dp, vertical = 8.dp)
     ) {
         Text(
             text = text,
