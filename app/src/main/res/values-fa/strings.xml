@@ -316,8 +316,6 @@
     <string name="playlist_locked">لیست پخش قفل شد</string>
     <string name="playlist_unlocked">لیست پخش باز شد</string>
     <string name="action_toggle_queue_lock">قفل / باز کردن صف</string>
-    <string name="queue_locked">صف قفل شد</string>
-    <string name="queue_unlocked">قفل صف باز شد</string>
     <string name="channel_mono">مونونوکلئوز</string>
     <string name="channel_stereo">استریو</string>
     <string name="channel_stereo_2_1">2.1 استریو</string>
@@ -648,8 +646,6 @@
     <string name="swipe_album_cover_summary">برای رد شدن از بین آهنگ ها، روی جلد آلبوم به چپ یا راست بکشید.</string>
     <string name="mini_player_swipe_to_skip_title">برای رد شدن، مینی پلیر را بکشید</string>
     <string name="mini_player_swipe_to_skip_summary">برای رد شدن از بین آهنگ ها، روی پخش کننده کوچک به چپ یا راست بکشید.</string>
-    <string name="queue_height_title">ارتفاع صف نصف صفحه</string>
-    <string name="queue_height_summary">ارتفاع صف پخش را به نصف صفحه ثابت کنید.</string>
     <string name="single_tap_on_album_cover_title">یک ضربه روی جلد</string>
     <string name="double_tap_on_album_cover_title">روی جلد دوبار ضربه بزنید</string>
     <string name="double_tap_on_left_album_cover_title">لبه جلد آلبوم سمت چپ دو بار ضربه بزنید</string>

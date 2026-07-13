@@ -302,8 +302,6 @@
     <string name="playlist_locked">プレイリストはロックされました</string>
     <string name="playlist_unlocked">プレイリストのロックは解除されました</string>
     <string name="action_toggle_queue_lock">キューのロック/ロック解除</string>
-    <string name="queue_locked">キューはロックされました</string>
-    <string name="queue_unlocked">キューのロックは解除されました</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Auxライン</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -608,8 +606,6 @@
     <string name="circle_button_title">丸い再生ボタン</string>
     <string name="swipe_album_cover_title">アルバムカバーのスワイプ</string>
     <string name="swipe_album_cover_summary">アルバムカバーを左右にスワイプして曲間をスキップできるようになります</string>
-    <string name="queue_height_title">キューの高さを半分にする</string>
-    <string name="queue_height_summary">再生キューの高さを画面の半分に固定します。</string>
     <string name="single_tap_on_album_cover_title">カバーをシングルタップ</string>
     <string name="double_tap_on_album_cover_title">カバーをダブルタップする</string>
     <string name="double_tap_on_left_album_cover_title">アルバムカバーの左端をダブルタップ</string>

@@ -302,8 +302,6 @@
     <string name="playlist_locked">قائمة التشغيل مقفلة</string>
     <string name="playlist_unlocked">قائمة التشغيل مفتوحة</string>
     <string name="action_toggle_queue_lock">قفل/فتح قائمة الانتظار</string>
-    <string name="queue_locked">قائمة الانتظار مقفلة</string>
-    <string name="queue_unlocked">تم فتح قائمة الانتظار</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">سطر Aux</string>
     <string name="audio_device_bluetooth_a2dp">البلوتوث A2DP</string>
@@ -648,8 +646,6 @@
     <string name="circle_button_title">زر التشغيل الدائري</string>
     <string name="swipe_album_cover_title">مرر على غلاف الألبوم</string>
     <string name="swipe_album_cover_summary">اسحب لليسار أو لليمين على غلاف الألبوم لتخطي بين الأغاني.</string>
-    <string name="queue_height_title">ارتفاع قائمة الانتظار نصف الشاشة</string>
-    <string name="queue_height_summary">إصلاح ارتفاع قائمة انتظار التشغيل إلى نصف الشاشة.</string>
     <string name="single_tap_on_album_cover_title">ضغطة واحدة على الغلاف</string>
     <string name="double_tap_on_album_cover_title">انقر نقراً مزدوجاً على الغلاف</string>
     <string name="double_tap_on_left_album_cover_title">ضغطتين على حافة غلاف الألبوم الأيسر</string>

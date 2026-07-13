@@ -302,8 +302,6 @@
     <string name="playlist_locked">Daftar putar dikunci</string>
     <string name="playlist_unlocked">Daftar putar dibuka kuncinya</string>
     <string name="action_toggle_queue_lock">Kunci/buka kunci antrean</string>
-    <string name="queue_locked">Antrean dikunci</string>
-    <string name="queue_unlocked">Antrean dibuka kuncinya</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Jalur Aux</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -608,8 +606,6 @@
     <string name="circle_button_title">Tombol putar melingkar</string>
     <string name="swipe_album_cover_title">Geser pada sampul album</string>
     <string name="swipe_album_cover_summary">Geser ke kiri atau kanan pada sampul album untuk berpindah antar lagu.</string>
-    <string name="queue_height_title">Tinggi antrean setengah layar</string>
-    <string name="queue_height_summary">Tetapkan tinggi antrean pemutaran menjadi setengah layar.</string>
     <string name="single_tap_on_album_cover_title">Ketuk sekali pada sampul</string>
     <string name="double_tap_on_album_cover_title">Ketuk dua kali pada sampul</string>
     <string name="double_tap_on_left_album_cover_title">Ketuk dua kali tepi kiri sampul album</string>

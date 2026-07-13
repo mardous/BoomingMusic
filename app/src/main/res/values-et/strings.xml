@@ -306,8 +306,6 @@
     <string name="added_title_to_playing_queue">1 lugu on lisatud esitusjärjekorda.</string>
     <string name="added_x_titles_to_playing_queue">Lisasin %1$d lugu esitusjärjekorda.</string>
     <string name="action_toggle_queue_lock">Lukusta või ava esitusjärjekord</string>
-    <string name="queue_locked">Esitusjärjekord on lukus</string>
-    <string name="queue_unlocked">Esitusjärjekord on avatud</string>
     <string name="on_song_click_queue_next_title">Lisa järgmiseks esitusjärjekorda</string>
     <string name="on_song_click_queue_next_summary">Valitud lugu lisatakse esitusjärjekorda esitamiseks järgmisena.</string>
     <plurals name="songs">
@@ -741,8 +739,6 @@
     <string name="circle_button_title">Ümmargune „Esita“ nupp</string>
     <string name="swipe_album_cover_title">Esituse juhtimine kaanepildi viipamisega</string>
     <string name="swipe_album_cover_summary">Kaanepildi viipamisel saad esitada eelmist või järgmist lugu.</string>
-    <string name="queue_height_title">Poole ekraani kõrgune esitusloend</string>
-    <string name="queue_height_summary">Määra esitusloendi kõrguseks pool ekraani kõrgust.</string>
     <string name="single_tap_on_album_cover_title">Üks klõps kaanepildil</string>
     <string name="double_tap_on_album_cover_title">Topeltklõps kaanepildil</string>
     <string name="double_tap_on_left_album_cover_title">Topeltklõps kaanepildi vasakul äärel</string>

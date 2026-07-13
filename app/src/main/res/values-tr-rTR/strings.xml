@@ -302,8 +302,6 @@
     <string name="playlist_locked">Çalma listesi kilitlendi</string>
     <string name="playlist_unlocked">Çalma listesinin kilidi açıldı</string>
     <string name="action_toggle_queue_lock">Sırayı kilitle/aç</string>
-    <string name="queue_locked">Sıra kilitlendi</string>
-    <string name="queue_unlocked">Sıra kilidi açıldı</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Kablosu</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -616,8 +614,6 @@
     <string name="circle_button_title">Dairesel oynatma düğmesi</string>
     <string name="swipe_album_cover_title">Albüm kapağında kaydırın</string>
     <string name="swipe_album_cover_summary">Şarkılar arasında geçiş yapmak için albüm kapağını sola veya sağa kaydırın.</string>
-    <string name="queue_height_title">Yarım ekran sıra yüksekliği</string>
-    <string name="queue_height_summary">Çalma sırasının yüksekliğini ekranın yarısına sabitleyin.</string>
     <string name="single_tap_on_album_cover_title">Kapağa tek dokun</string>
     <string name="double_tap_on_album_cover_title">Kapağa çift dokunun</string>
     <string name="double_tap_on_left_album_cover_title">Albüm kapağının sol kenarına çift dokunma</string>

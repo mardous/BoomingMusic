@@ -297,8 +297,6 @@
     <string name="playlist_locked">Lista de reproducción bloqueada</string>
     <string name="playlist_unlocked">Lista de reproducción desbloqueada</string>
     <string name="action_toggle_queue_lock">Cola de bloqueo/desbloqueo</string>
-    <string name="queue_locked">Cola bloqueada</string>
-    <string name="queue_unlocked">Cola desbloqueada</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Línea auxiliar</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -619,8 +617,6 @@
     <string name="circle_button_title">Botón de reproducción circular</string>
     <string name="swipe_album_cover_title">Deslizar en portada del álbum</string>
     <string name="swipe_album_cover_summary">Deslice a la izquierda o a la derecha en la portada del álbum para saltar entre canciones.</string>
-    <string name="queue_height_title">Altura de la cola de pantallas</string>
-    <string name="queue_height_summary">Corregir la altura de la cola de reproducción a la mitad de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Toque único en la portada</string>
     <string name="double_tap_on_album_cover_title">Doble toque en la portada</string>
     <string name="double_tap_on_left_album_cover_title">Bordes de cubierta izquierda doble toque</string>

@@ -302,8 +302,6 @@
     <string name="playlist_locked">Danh sách phát đã bị khoá</string>
     <string name="playlist_unlocked">Danh sách phát đã mở khoá</string>
     <string name="action_toggle_queue_lock">Khoá/Mở khoá hàng đợi</string>
-    <string name="queue_locked">Hàng đợi đã khoá</string>
-    <string name="queue_unlocked">Hàng đợi đã mở khoá</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Cổng Aux</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -608,8 +606,6 @@
     <string name="circle_button_title">Nút phát dạng tròn</string>
     <string name="swipe_album_cover_title">Swipe on album cover</string>
     <string name="swipe_album_cover_summary">Vuốt trái hoặc phải trên bìa album để chuyển bài.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Nhấn một lần vào ảnh bìa</string>
     <string name="double_tap_on_album_cover_title">Nhấn đúp vào ảnh bìa</string>
     <string name="double_tap_on_left_album_cover_title">Nhấn đúp cạnh trái bìa album</string>

@@ -302,8 +302,6 @@
     <string name="playlist_locked">재생목록 잠김</string>
     <string name="playlist_unlocked">재생목록 잠금 해제</string>
     <string name="action_toggle_queue_lock">대기열 잠금/해제</string>
-    <string name="queue_locked">대기열 잠김</string>
-    <string name="queue_unlocked">대기열 잠금 해제</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux 라인</string>
     <string name="audio_device_bluetooth_a2dp">블루투스 A2DP</string>
@@ -608,8 +606,6 @@
     <string name="circle_button_title">원형 재생 버튼</string>
     <string name="swipe_album_cover_title">앨범 커버 스와이프</string>
     <string name="swipe_album_cover_summary">앨범 커버를 좌우로 밀어 곡을 변경합니다.</string>
-    <string name="queue_height_title">절반 높이 대기열</string>
-    <string name="queue_height_summary">대기열 높이를 화면의 절반으로 고정합니다.</string>
     <string name="single_tap_on_album_cover_title">커버 한 번 탭</string>
     <string name="double_tap_on_album_cover_title">커버 두 번 탭</string>
     <string name="double_tap_on_left_album_cover_title">커버 왼쪽 가장자리 두 번 탭</string>

@@ -302,8 +302,6 @@
     <string name="playlist_locked">Soittolista lukittu</string>
     <string name="playlist_unlocked">Soittolista avattu</string>
     <string name="action_toggle_queue_lock">Lukitus/avaa jono</string>
-    <string name="queue_locked">Jono lukittu</string>
-    <string name="queue_unlocked">Jono avattu</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Viiva</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -616,8 +614,6 @@
     <string name="circle_button_title">Pyöreä toistopainike</string>
     <string name="swipe_album_cover_title">Pyyhkäise albumin kannessa</string>
     <string name="swipe_album_cover_summary">Pyyhkäise albumin kansiosassa vasemmalle tai oikealle ohittaaksesi kappaleiden välillä.</string>
-    <string name="queue_height_title">Puolinäytön jonon korkeus</string>
-    <string name="queue_height_summary">Korjaa toiston jonon korkeus puoleen näytöstä.</string>
     <string name="single_tap_on_album_cover_title">Yksi napautus kannessa</string>
     <string name="double_tap_on_album_cover_title">Kaksoisnapautus kannessa</string>
     <string name="double_tap_on_left_album_cover_title">Albumikansi reuna kaksinkertainen napautus</string>

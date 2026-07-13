@@ -50,6 +50,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -60,6 +61,7 @@ import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.guava.await
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
@@ -136,6 +138,9 @@ class PlayerViewModel(
 
     private val _extraInfoFlow = MutableStateFlow<String?>(null)
     val extraInfoFlow = _extraInfoFlow.asStateFlow()
+
+    private val _stopAfterPosition = Channel<Pair<String?, Boolean>>(Channel.BUFFERED)
+    val stopAfterPosition = _stopAfterPosition.receiveAsFlow()
 
     private val internalJobs = mutableListOf<Job>()
 
@@ -645,7 +650,7 @@ class PlayerViewModel(
     }
 
     @androidx.annotation.OptIn(UnstableApi::class)
-    fun stopAt(stopPosition: Int) = liveData {
+    fun stopAt(stopPosition: Int) = viewModelScope.launch {
         mediaController?.let { controller ->
             if (stopPosition >= 0 && stopPosition < controller.mediaItemCount) {
                 val stopIndex = position.getIndexForPosition(stopPosition)
@@ -663,9 +668,9 @@ class PlayerViewModel(
                     .getOrDefault(SessionResult(SessionError.ERROR_UNKNOWN))
                 if (result.resultCode == SessionResult.RESULT_SUCCESS) {
                     val canceled = result.extras.getBoolean("canceled", false)
-                    emit(mediaItem.mediaMetadata.title to canceled)
+                    _stopAfterPosition.send(mediaItem.mediaMetadata.title?.toString() to canceled)
                 } else {
-                    emit(null to false)
+                    _stopAfterPosition.send(null to false)
                 }
             }
         }

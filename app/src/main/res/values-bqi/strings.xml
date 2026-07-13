@@ -282,8 +282,6 @@
     <string name="playlist_locked">نومگه پشک چفت وابی</string>
     <string name="playlist_unlocked">نومگه پشک گوئشست</string>
     <string name="action_toggle_queue_lock">چفت/گۊشیڌن چفت سف</string>
-    <string name="queue_locked">سف چفت وابی</string>
-    <string name="queue_unlocked">چفت سف گوئشست</string>
     <string name="channel_mono">مونو</string>
     <string name="channel_stereo">استریو</string>
     <string name="channel_stereo_2_1">2.1 استریو</string>

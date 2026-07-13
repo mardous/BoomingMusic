@@ -302,8 +302,6 @@
     <string name="playlist_locked">Spellista låst</string>
     <string name="playlist_unlocked">Spellista upplåst</string>
     <string name="action_toggle_queue_lock">Lås/låsa upp kö</string>
-    <string name="queue_locked">Kön är låst</string>
-    <string name="queue_unlocked">Kön är upplåst</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Linje</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -616,8 +614,6 @@
     <string name="circle_button_title">Cirkulär uppspelningsknapp</string>
     <string name="swipe_album_cover_title">Svep på skivomslaget</string>
     <string name="swipe_album_cover_summary">Svep åt vänster eller höger på skivomslaget för att hoppa mellan låtarna.</string>
-    <string name="queue_height_title">Halvskärm köhöjd</string>
-    <string name="queue_height_summary">Fixa uppspelningskön höjd till hälften av skärmen.</string>
     <string name="single_tap_on_album_cover_title">Enkeltryck på omslaget</string>
     <string name="double_tap_on_album_cover_title">Dubbeltryck på omslaget</string>
     <string name="double_tap_on_left_album_cover_title">Vänster album-täckkant dubbeltryck</string>

@@ -302,8 +302,6 @@
     <string name="playlist_locked">播放列表已锁定</string>
     <string name="playlist_unlocked">播放列表已解锁</string>
     <string name="action_toggle_queue_lock">锁定/解锁队列</string>
-    <string name="queue_locked">队列已锁定</string>
-    <string name="queue_unlocked">队列已解锁</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux 线路</string>
     <string name="audio_device_bluetooth_a2dp">蓝牙 A2DP</string>
@@ -608,8 +606,6 @@
     <string name="circle_button_title">圆形播放按钮</string>
     <string name="swipe_album_cover_title">专辑封面滑动切歌</string>
     <string name="swipe_album_cover_summary">在播放器模式下的专辑封面上左/右滑动以切换到上一首/下一首。</string>
-    <string name="queue_height_title">半屏队列高度</string>
-    <string name="queue_height_summary">将播放队列页面固定为占据半屏大小。</string>
     <string name="single_tap_on_album_cover_title">单击封面</string>
     <string name="double_tap_on_album_cover_title">双击封面</string>
     <string name="double_tap_on_left_album_cover_title">双击专辑封面左侧</string>

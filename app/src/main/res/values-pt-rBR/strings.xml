@@ -302,8 +302,6 @@
     <string name="playlist_locked">Playlist Bloqueada</string>
     <string name="playlist_unlocked">Playlist Desbloqueada</string>
     <string name="action_toggle_queue_lock">Bloquear/desbloquear fila</string>
-    <string name="queue_locked">Fila bloqueada</string>
-    <string name="queue_unlocked">Fila desbloqueada</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Entrada Auxiliar</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -624,8 +622,6 @@
     <string name="circle_button_title">Botão de reprodução redondo</string>
     <string name="swipe_album_cover_title">Deslize sobre a capa do álbum</string>
     <string name="swipe_album_cover_summary">Deslize para a esquerda ou para a direita na capa do álbum para mudar de música.</string>
-    <string name="queue_height_title">Altura da fila em meia-tela</string>
-    <string name="queue_height_summary">Define a altura da fila de reprodução para metade da tela.</string>
     <string name="single_tap_on_album_cover_title">Toque único na capa</string>
     <string name="double_tap_on_album_cover_title">Toque duplo na capa</string>
     <string name="double_tap_on_left_album_cover_title">Toque duplo na borda esquerda da capa</string>

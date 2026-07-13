@@ -302,8 +302,6 @@
     <string name="playlist_locked">Afspeellijst vergrendeld</string>
     <string name="playlist_unlocked">Afspeellijst ontgrendeld</string>
     <string name="action_toggle_queue_lock">Vergrendel/ontgrendel wachtrij</string>
-    <string name="queue_locked">Wachtrij vergrendeld</string>
-    <string name="queue_unlocked">Wachtrij ontgrendeld</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Lijn</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -616,8 +614,6 @@
     <string name="circle_button_title">Circulaire afspeelknop</string>
     <string name="swipe_album_cover_title">Veeg over de albumhoes</string>
     <string name="swipe_album_cover_summary">Veeg naar links of rechts over de albumhoes om tussen nummers over te slaan.</string>
-    <string name="queue_height_title">Half-scherm wachtrijhoogte</string>
-    <string name="queue_height_summary">Repareer de hoogte van de afspeelwachtrij naar de helft van het scherm.</string>
     <string name="single_tap_on_album_cover_title">Enkele tik op cover</string>
     <string name="double_tap_on_album_cover_title">Dubbele tik op de afdekking</string>
     <string name="double_tap_on_left_album_cover_title">Album-omslagrand links dubbeltikken</string>

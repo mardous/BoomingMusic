@@ -302,8 +302,6 @@
     <string name="playlist_locked">Playlist bloccata</string>
     <string name="playlist_unlocked">Playlist sbloccata</string>
     <string name="action_toggle_queue_lock">Blocca/sblocca coda</string>
-    <string name="queue_locked">Coda bloccata</string>
-    <string name="queue_unlocked">Coda sbloccata</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Linea Aux</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -616,8 +614,6 @@
     <string name="circle_button_title">Pulsante di riproduzione tondo</string>
     <string name="swipe_album_cover_title">Scorri nella copertina dell\'album</string>
     <string name="swipe_album_cover_summary">Scorri verso sinistra o destra nella copertina dell\'album per passare da un brano all\'altro.</string>
-    <string name="queue_height_title">Altezza della coda a metà schermo</string>
-    <string name="queue_height_summary">Blocca l\'altezza della coda di riproduzione a metà dello schermo.</string>
     <string name="single_tap_on_album_cover_title">Singolo tocco sulla copertina</string>
     <string name="double_tap_on_album_cover_title">Doppio tocco sulla copertina</string>
     <string name="double_tap_on_left_album_cover_title">Doppio tocco dell\'angolo della cover dell\'album</string>

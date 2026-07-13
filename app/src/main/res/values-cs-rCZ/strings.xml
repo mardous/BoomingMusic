@@ -302,8 +302,6 @@
     <string name="playlist_locked">Seznam skladeb uzamčen</string>
     <string name="playlist_unlocked">Seznam skladeb odemknut</string>
     <string name="action_toggle_queue_lock">Zamknout/odemknout frontu</string>
-    <string name="queue_locked">Fronta uzamčena</string>
-    <string name="queue_unlocked">Fronta odemčena</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Automatická čára</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -632,8 +630,6 @@
     <string name="circle_button_title">Kruhové tlačítko přehrávání</string>
     <string name="swipe_album_cover_title">Přejeďte přes obal alba</string>
     <string name="swipe_album_cover_summary">Přejeďte prstem vlevo nebo vpravo na obal alba pro přeskočení mezi skladbami.</string>
-    <string name="queue_height_title">Výška poloobrazovky fronty</string>
-    <string name="queue_height_summary">Opravte výšku fronty přehrávání do poloviny obrazovky.</string>
     <string name="single_tap_on_album_cover_title">Jedním klepnutím na úvodní fotku</string>
     <string name="double_tap_on_album_cover_title">Dvojím poklepáním na obal</string>
     <string name="double_tap_on_left_album_cover_title">Dvojitým klepnutím na levý albový kryt</string>

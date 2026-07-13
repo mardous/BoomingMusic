@@ -302,8 +302,6 @@
     <string name="playlist_locked">Плейлист заблокирован</string>
     <string name="playlist_unlocked">Плейлист разблокирован</string>
     <string name="action_toggle_queue_lock">Заблокировать/разблокировать очередь</string>
-    <string name="queue_locked">Очередь заблокирована</string>
-    <string name="queue_unlocked">Очередь разблокирована</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Строка Aux</string>
     <string name="audio_device_bluetooth_a2dp">A2DP Bluetooth</string>
@@ -632,8 +630,6 @@
     <string name="circle_button_title">Круглая кнопка воспроизведения</string>
     <string name="swipe_album_cover_title">Свайп по обложке</string>
     <string name="swipe_album_cover_summary">Свайп влево или вправо по обложке для переключения песен.</string>
-    <string name="queue_height_title">Очередь на пол-экрана</string>
-    <string name="queue_height_summary">Зафиксировать высоту очереди воспроизведения на половину экрана.</string>
     <string name="single_tap_on_album_cover_title">Однократное нажатие на обложку</string>
     <string name="double_tap_on_album_cover_title">Двойное нажатие на обложку</string>
     <string name="double_tap_on_left_album_cover_title">Двойное нажатие по левому краю обложки</string>

@@ -302,8 +302,6 @@
     <string name="playlist_locked">Afspilningsliste låst</string>
     <string name="playlist_unlocked">Afspilningsliste låst op</string>
     <string name="action_toggle_queue_lock">Lås/oplåsningskø</string>
-    <string name="queue_locked">Køen er låst</string>
-    <string name="queue_unlocked">Kø låst op</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Linje</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -616,8 +614,6 @@
     <string name="circle_button_title">Cirkulær afspilningsknap</string>
     <string name="swipe_album_cover_title">Stryg på albumcover</string>
     <string name="swipe_album_cover_summary">Stryg til venstre eller højre på albumcoveret for at springe over mellem sange.</string>
-    <string name="queue_height_title">Halvskærmshøjde i kø</string>
-    <string name="queue_height_summary">Fix afspilningskø højde til halvdelen af skærmen.</string>
     <string name="single_tap_on_album_cover_title">Enkelt tryk på coveret</string>
     <string name="double_tap_on_album_cover_title">Dobbelttryk på coveret</string>
     <string name="double_tap_on_left_album_cover_title">Dobbelttryk på venstre album-cover kant</string>

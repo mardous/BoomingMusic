@@ -302,8 +302,6 @@
     <string name="playlist_locked">רשימת ההשמעה ננעלה</string>
     <string name="playlist_unlocked">רשימת ההשמעה נפתחה</string>
     <string name="action_toggle_queue_lock">נעל/פתח תור השמעה</string>
-    <string name="queue_locked">תור ההשמעה ננעל</string>
-    <string name="queue_unlocked">תור ההשמעה נפתח</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Line</string>
     <string name="audio_device_bluetooth_a2dp">בלוטות׳ A2DP</string>
@@ -624,8 +622,6 @@
     <string name="circle_button_title">כפתור ניגון עגול</string>
     <string name="swipe_album_cover_title">החלק על עטיפת האלבום</string>
     <string name="swipe_album_cover_summary">החלק שמאלה או ימינה על עטיפת האלבום כדי לדלג בין שירים.</string>
-    <string name="queue_height_title">גובה תור חצי-מסך</string>
-    <string name="queue_height_summary">קבע את גובה רשימת ההשמעה לחצי מגובה המסך.</string>
     <string name="single_tap_on_album_cover_title">הקשה אחת על העטיפה</string>
     <string name="double_tap_on_album_cover_title">הקשה כפולה על העטיפה</string>
     <string name="double_tap_on_left_album_cover_title">לחיצה כפולה בקצה השמאלי של עטיפת האלבום</string>

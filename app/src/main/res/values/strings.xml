@@ -154,6 +154,9 @@
     <string name="select_storage_title">Select storage</string>
     <string name="now_playing">Now playing</string>
     <string name="playing_queue_label">Playing queue</string>
+    <string name="up_next">Up Next</string>
+    <string name="reorder_action">Reorder</string>
+    <string name="go_to_current_track">Go to current track</string>
     <string name="list_start">List start</string>
     <string name="list_end">List end</string>
     <string name="clear_queue">Clear queue</string>
@@ -325,8 +328,6 @@
     <string name="playlist_locked">Playlist locked</string>
     <string name="playlist_unlocked">Playlist unlocked</string>
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
     <string name="channel_mono">Mono</string>
     <string name="channel_stereo">Stereo</string>
     <string name="channel_stereo_2_1">2.1 Stereo</string>
@@ -762,8 +763,6 @@
     <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
     <string name="mini_player_swipe_to_skip_title">Swipe mini player to skip</string>
     <string name="mini_player_swipe_to_skip_summary">Swipe left or right on the mini player to skip between songs.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Double tap on cover</string>
     <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>

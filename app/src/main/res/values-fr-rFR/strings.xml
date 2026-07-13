@@ -302,8 +302,6 @@
     <string name="playlist_locked">Liste de lecture verrouillée</string>
     <string name="playlist_unlocked">Liste de lecture déverrouillée</string>
     <string name="action_toggle_queue_lock">Verrouiller/Déverrouiller la file d\'attente</string>
-    <string name="queue_locked">File d\'attente verrouillée</string>
-    <string name="queue_unlocked">File d\'attente déverrouillée</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Ligne Aux</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -624,8 +622,6 @@
     <string name="circle_button_title">Bouton de lecture circulaire</string>
     <string name="swipe_album_cover_title">Glisser la couverture de l\'album</string>
     <string name="swipe_album_cover_summary">Balayez vers la gauche ou vers la droite sur la couverture de l\'album pour passer d\'un titre à l\'autre.</string>
-    <string name="queue_height_title">Hauteur de la file d\'attente en demi-écran</string>
-    <string name="queue_height_summary">Changer la hauteur de la file de lecture en demi-écran.</string>
     <string name="single_tap_on_album_cover_title">Appuyez une fois sur la couverture</string>
     <string name="double_tap_on_album_cover_title">Appuyez deux fois sur la couverture</string>
     <string name="double_tap_on_left_album_cover_title">Double-clic sur le bord gauche de la pochette</string>

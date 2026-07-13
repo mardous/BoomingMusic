@@ -302,8 +302,6 @@
     <string name="playlist_locked">S\'ha fixat la llista</string>
     <string name="playlist_unlocked">S\'ha alliberat la llista</string>
     <string name="action_toggle_queue_lock">Fixa/allibera la cua</string>
-    <string name="queue_locked">S\'ha fixat la cua</string>
-    <string name="queue_unlocked">S\'ha alliberat la cua</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Línia auxiliar</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -624,8 +622,6 @@
     <string name="circle_button_title">Botó de reproducció circular</string>
     <string name="swipe_album_cover_title">Llisca a la portada de l\'àlbum</string>
     <string name="swipe_album_cover_summary">Llisqueu a l\'esquerra o la dreta a la portada de l\'àlbum per passar entre les cançons.</string>
-    <string name="queue_height_title">Cua de mitja pantalla d\'alçària</string>
-    <string name="queue_height_summary">La cua de reproducció ocuparà la meitat de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Un clic a la portada</string>
     <string name="double_tap_on_album_cover_title">Dos clics a la portada</string>
     <string name="double_tap_on_left_album_cover_title">Doble toc a la vora esquerra de la portada de l\'àlbum</string>

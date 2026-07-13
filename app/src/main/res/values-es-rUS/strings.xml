@@ -302,8 +302,6 @@
     <string name="playlist_locked">Playlist bloqueada</string>
     <string name="playlist_unlocked">Playlist desbloqueada</string>
     <string name="action_toggle_queue_lock">Bloquear/desbloquear cola</string>
-    <string name="queue_locked">Cola bloqueada</string>
-    <string name="queue_unlocked">Cola desbloqueada</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Línea auxiliar</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -624,8 +622,6 @@
     <string name="circle_button_title">Botón \"Reproducir\" circular</string>
     <string name="swipe_album_cover_title">Deslizamiento sobre la carátula</string>
     <string name="swipe_album_cover_summary">Deslice hacia la izquierda o la derecha sobre la carátula para saltar canciones.</string>
-    <string name="queue_height_title">Altura de la cola a media pantalla</string>
-    <string name="queue_height_summary">Fija la altura de la cola de reproducción a la mitad de la pantalla.</string>
     <string name="single_tap_on_album_cover_title">Toque único en la carátula</string>
     <string name="double_tap_on_album_cover_title">Doble toque en la carátula</string>
     <string name="double_tap_on_left_album_cover_title">Doble toque en el borde izquierdo de la carátula</string>

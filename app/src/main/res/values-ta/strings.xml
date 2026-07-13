@@ -316,8 +316,6 @@
     <string name="playlist_locked">பிளேலிச்ட் பூட்டப்பட்டது</string>
     <string name="playlist_unlocked">பிளேலிச்ட் திறக்கப்பட்டது</string>
     <string name="action_toggle_queue_lock">பூட்டு/திறத்தல் வரிசை</string>
-    <string name="queue_locked">வரிசை பூட்டப்பட்டது</string>
-    <string name="queue_unlocked">வரிசை திறக்கப்பட்டது</string>
     <string name="channel_mono">மோனோ</string>
     <string name="channel_stereo">ச்டீரியோ</string>
     <string name="channel_stereo_2_1">2.1 ச்டீரியோ</string>
@@ -702,8 +700,6 @@
     <string name="swipe_album_cover_summary">பாடல்களுக்கு இடையில் தவிர்க்க ஆல்பத்தின் அட்டையில் இடது அல்லது வலதுபுறமாக ச்வைப் செய்யவும்.</string>
     <string name="mini_player_swipe_to_skip_title">தவிர்க்க மினி பிளேயரை ச்வைப் செய்யவும்</string>
     <string name="mini_player_swipe_to_skip_summary">பாடல்களுக்கு இடையில் தவிர்க்க மினி பிளேயரில் இடது அல்லது வலதுபுறமாக ச்வைப் செய்யவும்.</string>
-    <string name="queue_height_title">அரை-திரை வரிசை உயரம்</string>
-    <string name="queue_height_summary">பிளேபேக் வரிசையின் உயரத்தை திரையின் பாதியாக சரிசெய்யவும்.</string>
     <string name="single_tap_on_album_cover_title">அட்டையில் ஒருமுறை தட்டவும்</string>
     <string name="double_tap_on_album_cover_title">அட்டையில் இருமுறை தட்டவும்</string>
     <string name="double_tap_on_left_album_cover_title">இடது ஆல்பம்-கவர் விளிம்பில் இருமுறை தட்டவும்</string>

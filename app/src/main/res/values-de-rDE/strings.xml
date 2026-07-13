@@ -302,8 +302,6 @@
     <string name="playlist_locked">Wiedergabeliste sperrt</string>
     <string name="playlist_unlocked">Wiedergabeliste entsperrt</string>
     <string name="action_toggle_queue_lock">Sperr/Entsperr die Wiedergabeliste</string>
-    <string name="queue_locked">Warteschlange gesperrt</string>
-    <string name="queue_unlocked">Warteschlange entsperrt</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux-Kabel</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -616,8 +614,6 @@
     <string name="circle_button_title">Runde Wiedergabetaste</string>
     <string name="swipe_album_cover_title">Auf dem Albumcover wischen</string>
     <string name="swipe_album_cover_summary">Wischen Sie auf dem Albumcover nach links oder rechts, um zwischen den Songs zu wechseln.</string>
-    <string name="queue_height_title">Warteschlange auf Höhe der Hälfte des Bildschirms</string>
-    <string name="queue_height_summary">Die Höhe der Wiedergabeliste auf die Hälfte des Bildschirms festlegen.</string>
     <string name="single_tap_on_album_cover_title">Auf Albumcover einzeltippen</string>
     <string name="double_tap_on_album_cover_title">Auf Albumcover doppeltippen</string>
     <string name="double_tap_on_left_album_cover_title">Doppeltippen auf den linken Rand des Albumcovers</string>
