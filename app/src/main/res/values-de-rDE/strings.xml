@@ -956,4 +956,11 @@
     <string name="app_description">Modernes Design. Purer Klang. Nur für dich.</string>
     <string name="more_contributors_title">Weitere Mitwirkende</string>
     <string name="more_contributors_summary">Die vollständige Liste der Mitwirkenden findest du auf GitHub.</string>
+    <string name="contributor_dawid_description">Haupt-Mitwirkende und Entwickler mehrerer wichtiger App-Funktionen.</string>
+    <string name="contributor_ray_description">Haben mehrere spannende und wichtige Funktionen beigetragen.</string>
+    <string name="contributor_ttop_description">Die allerersten Mitwirkenden und Tester des Projekts.</string>
+    <string name="contributor_lenard_description">Entwickler der App-Website und Mitwirkender.</string>
+    <string name="contributor_alex_description">Langjähriger Freund des Projekts, der uns Zugang zu wichtigen APIs verschafft hat.</string>
+    <string name="play_all_songs_when_searching_title">Bei der Suche alle Titel abspielen</string>
+    <string name="play_all_songs_when_searching_summary">Wenn aktiviert, wird durch die Auswahl eines gesuchten Titels die gesamte Bibliothek in die Warteschlange gestellt. Betrifft die Einstellung Bei Auswahl eines Titels.</string>
 </resources>
