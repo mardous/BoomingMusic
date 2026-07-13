@@ -950,4 +950,7 @@
     <string name="use_betterlyrics_provider_summary">逐字同步歌詞服務。</string>
     <string name="use_lyrically_provider_title">使用 Lyrically 歌詞來源</string>
     <string name="use_lyrically_provider_summary">功能豐富的歌詞 API，支援卡拉 OK 與多人聲部。</string>
+    <string name="up_next">接下來</string>
+    <string name="reorder_action">重新排序</string>
+    <string name="go_to_current_track">轉到當前曲目</string>
 </resources>
