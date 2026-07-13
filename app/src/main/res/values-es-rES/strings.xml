@@ -953,7 +953,7 @@
     <string name="lyrics_bold_synced_summary">Exhibe letras sincronizadas en formato negrita.</string>
     <string name="lyrics_show_translation_title">Mostrar traducción</string>
     <string name="lyrics_show_translation_summary">Exhibir letra traducidas si están disponibles.</string>
-    <string name="lyrics_show_transliteration_title">Mostrar trasnliteración</string>
+    <string name="lyrics_show_transliteration_title">Mostrar transliteración</string>
     <string name="lyrics_show_transliteration_summary">Exhibe letras transliteradas si están disponibles.</string>
     <string name="lyrics_resume_on_seek_title">Reanudar al buscar</string>
     <string name="lyrics_resume_on_seek_summary">Reanudar automáticamente la reproducción al pulsar en una línea.</string>
@@ -962,4 +962,10 @@
     <string name="more_contributors_title">Más colaboradores</string>
     <string name="more_contributors_summary">Puedes consultar la lista completa de colaboradores en GitHub.</string>
     <string name="play_all_songs_when_searching_title">Reproducir todas las canciones cuando busques</string>
+    <string name="contributor_dawid_description">Contribuyente principal y diseñador de varias funciones clave de la aplicación.</string>
+    <string name="contributor_ray_description">Aportó varias funciones clave e innovadoras.</string>
+    <string name="contributor_ttop_description">El primerísimo colaborador y tester del proyecto.</string>
+    <string name="contributor_lenard_description">Desarrollador del sitio web de la aplicación y colaborador.</string>
+    <string name="contributor_alex_description">Amigo del proyecto desde hace mucho tiempo que facilitó el acceso a APIs esenciales.</string>
+    <string name="play_all_songs_when_searching_summary">Cuando está activado, al seleccionar una canción buscada se añade toda la biblioteca a la cola. Sujeto a la configuración \"Al seleccionar una canción\".</string>
 </resources>

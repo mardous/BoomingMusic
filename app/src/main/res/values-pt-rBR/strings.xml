@@ -961,4 +961,11 @@
     <string name="lyrics_show_transliteration_summary">Exibir letra transliterada, se disponível.</string>
     <string name="lyrics_resume_on_seek_title">Retomar a partir da posição atual</string>
     <string name="lyrics_resume_on_seek_summary">Retomar a reprodução automaticamente ao clicar em uma linha.</string>
+    <string name="contributor_dawid_description">Colaborador principal e designer de vários recursos importantes do aplicativo.</string>
+    <string name="contributor_ray_description">Contribuiu com vários recursos importantes e empolgantes.</string>
+    <string name="contributor_ttop_description">O primeiro colaborador e testador do projeto.</string>
+    <string name="contributor_lenard_description">Desenvolvedor do site do aplicativo e colaborador.</string>
+    <string name="contributor_alex_description">Amigo de longa data do projeto que forneceu acesso a APIs essenciais.</string>
+    <string name="play_all_songs_when_searching_title">Reproduzir todas as músicas ao pesquisar</string>
+    <string name="play_all_songs_when_searching_summary">Quando ativado, selecionar uma música pesquisada coloca toda a biblioteca na fila. Sujeito à configuração \"Ao selecionar uma música\".</string>
 </resources>

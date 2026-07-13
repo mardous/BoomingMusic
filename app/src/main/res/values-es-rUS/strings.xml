@@ -963,4 +963,9 @@
     <string name="more_contributors_summary">Puedes ver la lista completa de colaboradores en GitHub.</string>
     <string name="play_all_songs_when_searching_title">Reproducir todas las canciones al buscar</string>
     <string name="play_all_songs_when_searching_summary">Si está activado, al seleccionar una canción en la búsqueda, se añadirá a la cola toda la biblioteca. Depende de la opción \"Al seleccionar una canción\".</string>
+    <string name="contributor_dawid_description">Colaborador principal y diseñador de varias funciones clave de la aplicación.</string>
+    <string name="contributor_ray_description">Aportó varias características interesantes y clave.</string>
+    <string name="contributor_ttop_description">El primer colaborador y probador del proyecto.</string>
+    <string name="contributor_lenard_description">Desarrollador del sitio web de la aplicación y colaborador.</string>
+    <string name="contributor_alex_description">Amigo del proyecto que facilitó el acceso a las API esenciales.</string>
 </resources>

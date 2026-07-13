@@ -914,7 +914,7 @@
     <string name="lyrics_karaoke_style_summary">Lülitab sisse karaoke-stiilis efekti sõnahaaval sünkroonitud laulusõnade kuvamiseks. Palun arvesta, et see on katseline funktsionaalsus.</string>
     <string name="lyrics_karaoke_style_title">Karaoke-stiilis laulusõnad</string>
     <string name="eq_pre_gain">Eelvõimendus</string>
-    <string name="eq_post_gain">Järelvõimendus</string>
+    <string name="eq_post_gain">Järelvõimendus (väljundvõimendus)</string>
     <string name="eq_threshold">Lävend</string>
     <string name="eq_ratio">Suhtarv</string>
     <string name="lyrics_show_translation_title">Näita tõlget</string>
@@ -923,4 +923,20 @@
     <string name="lyrics_show_transliteration_title">Näita transliteratsiooni</string>
     <string name="lyrics_resume_on_seek_title">Kerimisel jätka</string>
     <string name="lyrics_resume_on_seek_summary">Rea klõpsamisel jätka sealt taasesitust.</string>
+    <string name="app_version_x">Versioon %s</string>
+    <string name="app_description">Moodne kujundus. Puhas heli. Täitsa sinu oma.</string>
+    <string name="more_contributors_title">Veel kaasautoreid</string>
+    <string name="more_contributors_summary">Kaasautorite täisloendi leiad GitHubist.</string>
+    <string name="contributor_dawid_description">Põhiline kaasautor ja rakenduse paljude võtmefunktsionaalsuste arendaja.</string>
+    <string name="contributor_ray_description">On teinud kaastööd paljude põnevate ja oluliste funktsionaalsuste lisamisel.</string>
+    <string name="contributor_ttop_description">Projekti esimene kaasautor ja testija.</string>
+    <string name="contributor_lenard_description">Rakenduse veebisaidi arendaja ja kaasautor.</string>
+    <string name="contributor_alex_description">Projekti pikaajaline sõber, kes on aidanud korraldada ligipääsu olulistele API-dele.</string>
+    <string name="play_all_songs_when_searching_title">Otsimise ajal esita kõiki lugusid</string>
+    <string name="play_all_songs_when_searching_summary">Kui see eelistus on sisse lülitatud, lisatakse otsitud laulu valimisel kogu muusikakogu järjekorda. Sõltub seadistusest „Millal“ tingimusest loo valimisel.</string>
+    <string name="eq_attack_time">Rakendumisaeg</string>
+    <string name="eq_release_time">Taastumisaeg</string>
+    <string name="eq_expander_ratio">Ekspanderi suhtarv</string>
+    <string name="eq_knee_width">Põlve laius</string>
+    <string name="eq_noise_gate">Müralukk</string>
 </resources>
