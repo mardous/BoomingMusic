@@ -125,7 +125,7 @@ fun QueueScreen(
     val isPlaying by playerViewModel.isPlayingFlow.collectAsState()
     val currentSong by playerViewModel.currentSongFlow.collectAsState()
     val position by playerViewModel.positionFlow.collectAsState()
-    val playQueue by playerViewModel.queueFlow.collectAsState(emptyList())
+    val playQueue by playerViewModel.queueFlow.collectAsState()
     val repeatMode by playerViewModel.repeatModeFlow.collectAsState()
     val shuffleMode by playerViewModel.shuffleModeFlow.collectAsState()
 
@@ -176,6 +176,9 @@ fun QueueScreen(
         if (shouldLocateCurrentTrackOnUpdate ||
             listState.firstVisibleItemIndex == position.previous) {
             listState.animateScrollToItem(position.current)
+            if (shouldLocateCurrentTrackOnUpdate) {
+                shouldLocateCurrentTrackOnUpdate = false
+            }
         }
     }
 
