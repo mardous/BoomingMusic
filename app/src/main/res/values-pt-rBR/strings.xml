@@ -968,4 +968,7 @@
     <string name="contributor_alex_description">Amigo de longa data do projeto que forneceu acesso a APIs essenciais.</string>
     <string name="play_all_songs_when_searching_title">Reproduzir todas as músicas ao pesquisar</string>
     <string name="play_all_songs_when_searching_summary">Quando ativado, selecionar uma música pesquisada coloca toda a biblioteca na fila. Sujeito à configuração \"Ao selecionar uma música\".</string>
+    <string name="up_next">A seguir</string>
+    <string name="reorder_action">Reordenar</string>
+    <string name="go_to_current_track">Ir para a faixa atual</string>
 </resources>
