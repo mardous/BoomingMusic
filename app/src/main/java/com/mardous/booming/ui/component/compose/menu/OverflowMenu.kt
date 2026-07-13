@@ -7,14 +7,17 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -24,21 +27,67 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.isSpecified
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.R
 
+object MenuDefaults {
+    val OverflowIcon: Painter
+        @Composable get() = painterResource(R.drawable.ic_more_vert_24dp)
+
+    val OverflowDescription: String
+        @Composable get() = stringResource(R.string.action_more)
+
+    @Composable
+    fun topAppBarMenuColors(
+        containerColor: Color = MaterialTheme.colorScheme.surfaceContainer,
+        actionContainerColor: Color = Color.Unspecified,
+        actionContentColor: Color = contentColorFor(actionContainerColor),
+        overflowContainerColor: Color = Color.Unspecified,
+        overflowIconColor: Color = contentColorFor(overflowContainerColor)
+    ) = MenuColors(
+        containerColor = containerColor,
+        actionContainerColor = actionContainerColor,
+        actionContentColor = actionContentColor,
+        overflowContainerColor = overflowContainerColor,
+        overflowIconColor = overflowIconColor
+    )
+
+    @Composable
+    fun dropDownMenuColors(
+        containerColor: Color = MaterialTheme.colorScheme.surfaceContainer,
+        overflowContainerColor: Color = Color.Unspecified,
+        overflowIconColor: Color = contentColorFor(overflowContainerColor)
+    ) = MenuColors(
+        containerColor = containerColor,
+        actionContainerColor = Color.Unspecified,
+        actionContentColor = Color.Unspecified,
+        overflowContainerColor = overflowContainerColor,
+        overflowIconColor = overflowIconColor
+    )
+}
+
+class MenuColors(
+    val containerColor: Color,
+    val actionContainerColor: Color,
+    val actionContentColor: Color,
+    val overflowContainerColor: Color,
+    val overflowIconColor: Color
+)
+
 @Composable
 fun TopAppBarMenu(
-    items: List<MenuItem>,
+    items: Collection<MenuItem>,
     modifier: Modifier = Modifier,
     showItemIcons: Boolean = false,
+    overflowIcon: Painter = MenuDefaults.OverflowIcon,
+    overflowDescription: String = MenuDefaults.OverflowDescription,
+    colors: MenuColors = MenuDefaults.topAppBarMenuColors(),
     state: MutableState<Boolean> = remember { mutableStateOf(false) }
 ) {
-    var expanded by state
-
     val actionItems = items.filterIsInstance<MenuItem.Button.Action>().toSet()
     val dropDownItems = (items - actionItems).toSet()
 
@@ -49,11 +98,26 @@ fun TopAppBarMenu(
         actionItems.forEach { action ->
             if (action.visible) {
                 if (action.icon != null) {
-                    IconButton(onClick = action.onClick) {
-                        Icon(
-                            painter = action.icon,
-                            contentDescription = action.text
-                        )
+                    if (colors.actionContainerColor.isSpecified) {
+                        FilledIconButton(
+                            onClick = action.onClick,
+                            colors = IconButtonDefaults.filledIconButtonColors(
+                                containerColor = colors.actionContainerColor,
+                                contentColor = colors.actionContentColor
+                            )
+                        ) {
+                            Icon(
+                                painter = action.icon,
+                                contentDescription = action.text
+                            )
+                        }
+                    } else {
+                        IconButton(onClick = action.onClick) {
+                            Icon(
+                                painter = action.icon,
+                                contentDescription = action.text
+                            )
+                        }
                     }
                 } else {
                     TextButton(onClick = action.onClick) {
@@ -68,50 +132,68 @@ fun TopAppBarMenu(
         }
 
         if (dropDownItems.isNotEmpty()) {
-            IconButton(onClick = { expanded = !expanded }) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_more_vert_24dp),
-                    contentDescription = stringResource(R.string.action_more)
-                )
-            }
-
-            DropDownMenuInternal(
+            OverflowMenu(
                 items = dropDownItems,
-                expanded = expanded,
-                showIcons = showItemIcons
-            ) { expanded = false }
+                showItemIcons = showItemIcons,
+                colors = colors,
+                icon = overflowIcon,
+                contentDescription = overflowDescription,
+                state = state
+            )
         }
     }
 }
 
 @Composable
 fun OverflowMenu(
-    items: List<MenuItem>,
+    items: Collection<MenuItem>,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     showItemIcons: Boolean = true,
-    icon: Painter = painterResource(R.drawable.ic_more_vert_24dp),
-    contentDescription: String? = stringResource(R.string.action_more),
-    state: MutableState<Boolean> = remember { mutableStateOf(false) },
+    icon: Painter = MenuDefaults.OverflowIcon,
+    contentDescription: String? = MenuDefaults.OverflowDescription,
+    colors: MenuColors = MenuDefaults.dropDownMenuColors(),
+    state: MutableState<Boolean> = remember { mutableStateOf(false) }
 ) {
     var expanded by state
 
-    Box(modifier = modifier) {
-        IconButton(
-            onClick = { expanded = !expanded },
-            enabled = enabled
-        ) {
-            Icon(
-                painter = icon,
-                contentDescription = contentDescription
-            )
+    Box(
+        contentAlignment = Alignment.CenterEnd,
+        modifier = modifier
+    ) {
+        if (colors.overflowContainerColor.isSpecified) {
+            FilledIconButton(
+                onClick = { expanded = !expanded },
+                colors = IconButtonDefaults.filledIconButtonColors(
+                    containerColor = colors.overflowContainerColor,
+                    contentColor = colors.overflowIconColor
+                ),
+                enabled = enabled
+            ) {
+                Icon(
+                    painter = icon,
+                    contentDescription = contentDescription
+                )
+            }
+        } else {
+            IconButton(
+                onClick = { expanded = !expanded },
+                enabled = enabled
+            ) {
+                Icon(
+                    painter = icon,
+                    contentDescription = contentDescription
+                )
+            }
         }
 
         DropDownMenuInternal(
             items = items,
             expanded = expanded,
-            showIcons = showItemIcons
-        ) { expanded = false }
+            showIcons = showItemIcons,
+            onDismissRequest = { expanded = false },
+            colors = colors
+        )
     }
 }
 
@@ -120,10 +202,12 @@ private fun DropDownMenuInternal(
     items: Collection<MenuItem>,
     expanded: Boolean,
     showIcons: Boolean,
-    onDismissRequest: () -> Unit
+    onDismissRequest: () -> Unit,
+    colors: MenuColors
 ) {
     DropdownMenu(
         shape = RoundedCornerShape(16.dp),
+        containerColor = colors.containerColor,
         expanded = expanded,
         onDismissRequest = onDismissRequest
     ) {
