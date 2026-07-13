@@ -939,4 +939,7 @@
     <string name="eq_expander_ratio">Ekspanderi suhtarv</string>
     <string name="eq_knee_width">Põlve laius</string>
     <string name="eq_noise_gate">Müralukk</string>
+    <string name="up_next">Järgmisena</string>
+    <string name="reorder_action">Telli uuesti</string>
+    <string name="go_to_current_track">Mine praeguse loo juurde</string>
 </resources>
