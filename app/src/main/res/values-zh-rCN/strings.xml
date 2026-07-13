@@ -950,4 +950,7 @@
     <string name="contributor_alex_description">项目的老朋友，为各项核心 API 提供了访问支持。</string>
     <string name="play_all_songs_when_searching_title">搜索时播放全部歌曲</string>
     <string name="play_all_songs_when_searching_summary">启用后，选择搜索结果中的歌曲会将整个曲库加入播放队列。受“选择歌曲时”设置影响。</string>
+    <string name="up_next">接下来</string>
+    <string name="reorder_action">重新排序</string>
+    <string name="go_to_current_track">转到当前曲目</string>
 </resources>
