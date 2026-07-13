@@ -959,4 +959,7 @@
     <string name="contributor_alex_description">Langjähriger Freund des Projekts, der uns Zugang zu wichtigen APIs verschafft hat.</string>
     <string name="play_all_songs_when_searching_title">Bei der Suche alle Titel abspielen</string>
     <string name="play_all_songs_when_searching_summary">Wenn aktiviert, wird durch die Auswahl eines gesuchten Titels die gesamte Bibliothek in die Warteschlange gestellt. Betrifft die Einstellung Bei Auswahl eines Titels.</string>
+    <string name="up_next">Als Nächstes</string>
+    <string name="reorder_action">Erneut bestellen</string>
+    <string name="go_to_current_track">Zum aktuellen Titel</string>
 </resources>
