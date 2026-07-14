@@ -968,4 +968,7 @@
     <string name="contributor_lenard_description">Desarrollador del sitio web de la aplicación y colaborador.</string>
     <string name="contributor_alex_description">Amigo del proyecto desde hace mucho tiempo que facilitó el acceso a APIs esenciales.</string>
     <string name="play_all_songs_when_searching_summary">Cuando está activado, al seleccionar una canción buscada se añade toda la biblioteca a la cola. Sujeto a la configuración \"Al seleccionar una canción\".</string>
+    <string name="up_next">A continuación</string>
+    <string name="reorder_action">Reordenar</string>
+    <string name="go_to_current_track">Ir a la pista actual</string>
 </resources>
