@@ -230,7 +230,7 @@
     <string name="action_details">详细信息</string>
     <string name="action_set_as_start_directory">设置为起始目录</string>
     <string name="start_directory_set">起始目录已设为 %s</string>
-    <string name="action_go_to_start_directory">转到起始目录</string>
+    <string name="action_go_to_start_directory">转至起始目录</string>
     <string name="action_hierarchy_view">层级视图</string>
     <string name="new_start_directory">新建起始目录：%s</string>
     <string name="action_scan">扫描</string>
@@ -545,7 +545,7 @@
     <string name="library_categories_title">曲库分类</string>
     <string name="library_categories_summary">配置曲库分类的可见性和顺序。</string>
     <string name="remember_last_page_title">记住最后一个页面</string>
-    <string name="remember_last_page_summary">在启动时转到最后打开的页面。</string>
+    <string name="remember_last_page_summary">启动时转至最后打开的页面。</string>
     <string name="start_page_title">开始页面</string>
     <string name="tab_mode_title">标签标题模式</string>
     <string name="hold_tab_to_search_title">长按标签以搜索</string>
@@ -950,7 +950,7 @@
     <string name="contributor_alex_description">项目的老朋友，为各项核心 API 提供了访问支持。</string>
     <string name="play_all_songs_when_searching_title">搜索时播放全部歌曲</string>
     <string name="play_all_songs_when_searching_summary">启用后，选择搜索结果中的歌曲会将整个曲库加入播放队列。受“选择歌曲时”设置影响。</string>
-    <string name="up_next">接下来</string>
+    <string name="up_next">接下来播放</string>
     <string name="reorder_action">重新排序</string>
-    <string name="go_to_current_track">转到当前曲目</string>
+    <string name="go_to_current_track">转至当前曲目</string>
 </resources>
