@@ -968,4 +968,7 @@
     <string name="contributor_ttop_description">Le tout premier contributeur et testeur du projet.</string>
     <string name="contributor_lenard_description">Développeur du site web de l\'application et contributeur.</string>
     <string name="contributor_alex_description">Un ami de longue date du projet qui nous a permis d\'accéder à des API essentielles.</string>
+    <string name="up_next">À suivre</string>
+    <string name="reorder_action">Réorganiser</string>
+    <string name="go_to_current_track">Aller à la piste en cours</string>
 </resources>
