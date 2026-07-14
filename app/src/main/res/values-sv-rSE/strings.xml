@@ -952,4 +952,14 @@
     <string name="app_description">Modern design. Rent ljud. Helt och hållet din.</string>
     <string name="more_contributors_title">Fler bidragsgivare</string>
     <string name="more_contributors_summary">Du kan se den fullständiga listan över bidragsgivare på GitHub.</string>
+    <string name="up_next">Härnäst</string>
+    <string name="reorder_action">Beställ igen</string>
+    <string name="go_to_current_track">Gå till aktuellt spår</string>
+    <string name="contributor_dawid_description">Nyckelbidragsgivare och designer av flera centrala appfunktioner.</string>
+    <string name="contributor_ray_description">Bidrog med flera spännande och viktiga funktioner.</string>
+    <string name="contributor_ttop_description">Projektets allra första bidragsgivare och testare.</string>
+    <string name="contributor_lenard_description">Utvecklare av appens webbplats och bidragsgivare.</string>
+    <string name="contributor_alex_description">Långvarig vän till projektet som gav tillgång till viktiga API:er.</string>
+    <string name="play_all_songs_when_searching_title">Spela upp alla låtar vid sökning</string>
+    <string name="play_all_songs_when_searching_summary">När funktionen är aktiverad läggs hela biblioteket i kön när du väljer en låt du sökt fram. Detta styrs av inställningen för val av låt.</string>
 </resources>
