@@ -39,6 +39,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings.Mode as LyricsViewMode
 
@@ -251,10 +252,10 @@ class LyricsViewModel(
     private suspend fun getBestLyricsFromSources(
         song: Song,
         sources: List<LyricsSource>
-    ): LyricsUiState {
+    ): LyricsUiState = withContext(IO) {
         var plainLyrics: String? = null
         if (instrumentalDetector.byTitle(song.title)) {
-            return LyricsUiState.Instrumental(song.id)
+            return@withContext LyricsUiState.Instrumental(song.id)
         }
         for (source in sources) {
             when (source) {
@@ -263,7 +264,7 @@ class LyricsViewModel(
                     if (fileLyrics != null) {
                         val lyrics = repository.parseRawLyrics(song, fileLyrics)
                         if (lyrics?.hasContent == true) {
-                            return LyricsUiState.Synced(song.id, lyrics)
+                            return@withContext LyricsUiState.Synced(song.id, lyrics)
                         }
                     }
                 }
@@ -272,11 +273,11 @@ class LyricsViewModel(
                     val embeddedLyrics = repository.embeddedLyrics(song)
                     if (embeddedLyrics != null) {
                         if (instrumentalDetector.byLyrics(embeddedLyrics.lyrics)) {
-                            return LyricsUiState.Instrumental(song.id)
+                            return@withContext LyricsUiState.Instrumental(song.id)
                         }
                         val lyrics = repository.parseRawLyrics(song, embeddedLyrics)
                         if (lyrics?.hasContent == true) {
-                            return LyricsUiState.Synced(song.id, lyrics)
+                            return@withContext LyricsUiState.Synced(song.id, lyrics)
                         } else {
                             if (plainLyrics.isNullOrEmpty()) {
                                 plainLyrics = embeddedLyrics.lyrics
@@ -289,11 +290,11 @@ class LyricsViewModel(
                     val downloadedLyrics = repository.storedLyrics(song, true)
                     if (downloadedLyrics != null) {
                         if (downloadedLyrics.instrumental) {
-                            return LyricsUiState.Instrumental(song.id)
+                            return@withContext LyricsUiState.Instrumental(song.id)
                         }
                         val lyrics = repository.parseRawLyrics(song, downloadedLyrics)
                         if (lyrics?.hasContent == true) {
-                            return LyricsUiState.Synced(song.id, lyrics)
+                            return@withContext LyricsUiState.Synced(song.id, lyrics)
                         } else {
                             if (plainLyrics.isNullOrEmpty()) {
                                 plainLyrics = downloadedLyrics.lyrics
@@ -304,9 +305,9 @@ class LyricsViewModel(
             }
         }
         if (!plainLyrics.isNullOrEmpty()) {
-            return LyricsUiState.Plain(song.id, plainLyrics)
+            return@withContext LyricsUiState.Plain(song.id, plainLyrics)
         }
-        return LyricsUiState.Empty(song.id)
+        return@withContext LyricsUiState.Empty(song.id)
     }
 
     private fun createViewSettings(mode: LyricsViewMode): LyricsViewSettings {
