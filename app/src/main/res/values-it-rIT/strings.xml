@@ -945,4 +945,22 @@
     <string name="lyrics_bold_synced_summary">Mostra i testi sincronizzati con carattere grassetto.</string>
     <string name="lyrics_show_translation_title">Visualizza traduzione</string>
     <string name="lyrics_show_transliteration_title">Mostra translitterazione</string>
+    <string name="up_next">Prossimamente</string>
+    <string name="reorder_action">Riordina</string>
+    <string name="go_to_current_track">Vai al brano corrente</string>
+    <string name="app_version_x">Versione %s</string>
+    <string name="app_description">Design moderno. Suono puro. Interamente tuo.</string>
+    <string name="more_contributors_title">Altri collaboratori</string>
+    <string name="more_contributors_summary">Puoi visualizzare l\'elenco completo dei collaboratori su GitHub.</string>
+    <string name="contributor_dawid_description">Collaboratore chiave e progettista di diverse funzionalità fondamentali dell\'app.</string>
+    <string name="contributor_ray_description">Ha contribuito con diverse funzionalità chiave ed entusiasmanti.</string>
+    <string name="contributor_ttop_description">Il primissimo collaboratore e tester del progetto.</string>
+    <string name="contributor_lenard_description">Sviluppatore del sito web dell\'app e collaboratore.</string>
+    <string name="contributor_alex_description">Amico di lunga data del progetto che ha fornito l\'accesso ad API essenziali.</string>
+    <string name="lyrics_show_translation_summary">Visualizza il testo tradotto, se disponibile.</string>
+    <string name="lyrics_show_transliteration_summary">Visualizza il testo traslitterato, se disponibile.</string>
+    <string name="lyrics_resume_on_seek_title">Riprendi la ricerca</string>
+    <string name="lyrics_resume_on_seek_summary">Riprendi automaticamente la riproduzione quando si fa clic su una riga.</string>
+    <string name="play_all_songs_when_searching_title">Riproduci tutti i brani durante la ricerca</string>
+    <string name="play_all_songs_when_searching_summary">Se l\'opzione è attiva, selezionando un brano cercato viene messa in coda l\'intera libreria. Soggetto all\'impostazione relativa alla selezione dei brani.</string>
 </resources>
