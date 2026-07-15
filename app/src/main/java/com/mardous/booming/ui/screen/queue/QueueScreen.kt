@@ -96,13 +96,16 @@ import com.mardous.booming.ui.component.compose.menu.MenuDefaults
 import com.mardous.booming.ui.component.compose.menu.MenuItem
 import com.mardous.booming.ui.component.compose.menu.OverflowMenu
 import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.ui.screen.player.QUEUE_DEBOUNCE
 import com.mardous.booming.util.LOCKED_QUEUE
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import my.nanihadesuka.compose.LazyColumnScrollbar
 import my.nanihadesuka.compose.ScrollbarSettings
 import org.koin.compose.viewmodel.koinActivityViewModel
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
+import kotlin.time.Duration.Companion.milliseconds
 
 @SuppressLint("LocalContextGetResourceValueCall")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -135,7 +138,7 @@ fun QueueScreen(
     var showLocateCurrentTrack by remember { mutableStateOf(false) }
 
     var reorderInfo by remember { mutableStateOf<Pair<Int, Int>?>(null) }
-    var reorderingQueue by remember(playQueue) { mutableStateOf<List<QueueSong>?>(null) }
+    var reorderingQueue by remember { mutableStateOf<List<QueueSong>?>(null) }
 
     val listBottomPadding by animateDpAsState(
         targetValue = if (showLocateCurrentTrack) 96.dp else 16.dp,
@@ -170,6 +173,11 @@ fun QueueScreen(
         } else {
             hapticFeedback.performHapticFeedback(HapticFeedbackType.ToggleOff)
         }
+    }
+
+    LaunchedEffect(playQueue) {
+        delay(QUEUE_DEBOUNCE.milliseconds)
+        reorderingQueue = null
     }
 
     LaunchedEffect(position, playQueue) {
