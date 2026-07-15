@@ -331,6 +331,7 @@ fun QueueScreen(
                 state = listState,
                 settings = ScrollbarSettings(
                     hideDelayMillis = 3000,
+                    thumbMaxLength = 0.1f,
                     thumbSelectedColor = themeColors.primary,
                     thumbUnselectedColor = themeColors.primary
                 )
