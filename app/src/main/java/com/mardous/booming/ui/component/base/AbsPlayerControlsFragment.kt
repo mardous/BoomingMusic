@@ -26,6 +26,7 @@ import android.os.Looper
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
+import android.view.ViewConfiguration
 import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
@@ -377,6 +378,7 @@ class SkipButtonTouchHandler(
     private val handler = Handler(Looper.getMainLooper())
     private var isHolding = false
     private var touchedViewRef: WeakReference<View>? = null
+    private var touchSlop: Int = -1
 
     private val repeatRunnable = object : Runnable {
         override fun run() {
@@ -393,6 +395,10 @@ class SkipButtonTouchHandler(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(view: View, event: MotionEvent): Boolean {
+        if (touchSlop < 0) {
+            touchSlop = ViewConfiguration.get(view.context).scaledTouchSlop
+        }
+
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 touchedViewRef = WeakReference(view)
@@ -402,12 +408,21 @@ class SkipButtonTouchHandler(
                 return true
             }
 
+            MotionEvent.ACTION_MOVE -> {
+                if (!isPointInsideView(event.x, event.y, view)) {
+                    cancel()
+                }
+            }
+
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 handler.removeCallbacks(repeatRunnable)
+                val wasPressed = view.isPressed
                 view.isPressed = false
 
-                if (!isHolding) {
-                    callback.onSkipButtonTap(direction)
+                if (event.action == MotionEvent.ACTION_UP && !isHolding && wasPressed) {
+                    if (isPointInsideView(event.x, event.y, view)) {
+                        callback.onSkipButtonTap(direction)
+                    }
                 }
 
                 touchedViewRef?.clear()
@@ -417,6 +432,11 @@ class SkipButtonTouchHandler(
             }
         }
         return false
+    }
+
+    private fun isPointInsideView(x: Float, y: Float, view: View): Boolean {
+        return x >= -touchSlop && x <= view.width + touchSlop &&
+                y >= -touchSlop && y <= view.height + touchSlop
     }
 
     private fun cancel() {
