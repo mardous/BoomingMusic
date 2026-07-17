@@ -17,11 +17,15 @@
 
 package com.mardous.booming.util
 
+import android.security.keystore.KeyGenParameterSpec
+import android.security.keystore.KeyProperties
 import android.util.Base64
+import java.security.KeyStore
 import java.security.MessageDigest
 import javax.crypto.Cipher
-import javax.crypto.spec.IvParameterSpec
-import javax.crypto.spec.SecretKeySpec
+import javax.crypto.KeyGenerator
+import javax.crypto.SecretKey
+import javax.crypto.spec.GCMParameterSpec
 
 fun String.encodeMd5(): String {
     val md = MessageDigest.getInstance("MD5")
@@ -30,28 +34,59 @@ fun String.encodeMd5(): String {
 }
 
 /**
- * Basic encryption for sensitive strings using a static key.
- * For production, consider using Android Keystore for better security.
+ * Secure encryption for sensitive strings using Android Keystore.
  */
 object CryptoUtil {
 
-    private const val ALGORITHM = "AES/CBC/PKCS5Padding"
+    private const val ANDROID_KEY_STORE = "AndroidKeyStore"
+    private const val KEY_ALIAS = "BoomingMusicCryptoKey"
+    private const val ALGORITHM = KeyProperties.KEY_ALGORITHM_AES
+    private const val BLOCK_MODE = KeyProperties.BLOCK_MODE_GCM
+    private const val PADDING = KeyProperties.ENCRYPTION_PADDING_NONE
+    private const val TRANSFORMATION = "$ALGORITHM/$BLOCK_MODE/$PADDING"
 
-    private val keySpec = SecretKeySpec("BoomingMusic_CUC".toByteArray(), "AES")
-    private val ivSpec = IvParameterSpec("1234567890123456".toByteArray())
+    private fun getSecretKey(): SecretKey {
+        val keyStore = KeyStore.getInstance(ANDROID_KEY_STORE).apply { load(null) }
+        keyStore.getKey(KEY_ALIAS, null)?.let { return it as SecretKey }
+
+        val keyGenerator = KeyGenerator.getInstance(ALGORITHM, ANDROID_KEY_STORE)
+        keyGenerator.init(
+            KeyGenParameterSpec.Builder(KEY_ALIAS, KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT)
+                .setBlockModes(BLOCK_MODE)
+                .setEncryptionPaddings(PADDING)
+                .build()
+        )
+        return keyGenerator.generateKey()
+    }
 
     fun encrypt(value: String): String {
-        val cipher = Cipher.getInstance(ALGORITHM)
-        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec)
+        val cipher = Cipher.getInstance(TRANSFORMATION)
+        cipher.init(Cipher.ENCRYPT_MODE, getSecretKey())
+        val iv = cipher.iv
         val encrypted = cipher.doFinal(value.toByteArray())
-        return Base64.encodeToString(encrypted, Base64.DEFAULT)
+
+        // Combine IV and encrypted data
+        val combined = ByteArray(iv.size + encrypted.size)
+        System.arraycopy(iv, 0, combined, 0, iv.size)
+        System.arraycopy(encrypted, 0, combined, iv.size, encrypted.size)
+
+        return Base64.encodeToString(combined, Base64.DEFAULT)
     }
 
     fun decrypt(value: String): String {
-        val cipher = Cipher.getInstance(ALGORITHM)
-        cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec)
-        val decoded = Base64.decode(value, Base64.DEFAULT)
-        val decrypted = cipher.doFinal(decoded)
+        val combined = Base64.decode(value, Base64.DEFAULT)
+        val cipher = Cipher.getInstance(TRANSFORMATION)
+
+        // Default IV size for GCM on Android is 12 bytes
+        val ivSize = 12
+        if (combined.size < ivSize) throw IllegalArgumentException("Invalid encrypted data")
+
+        val iv = combined.copyOfRange(0, ivSize)
+        val encrypted = combined.copyOfRange(ivSize, combined.size)
+
+        val spec = GCMParameterSpec(128, iv)
+        cipher.init(Cipher.DECRYPT_MODE, getSecretKey(), spec)
+        val decrypted = cipher.doFinal(encrypted)
         return String(decrypted)
     }
 }
