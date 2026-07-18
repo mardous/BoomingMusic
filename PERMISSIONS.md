@@ -18,4 +18,4 @@ Booming Music requests the following permissions:
 | **WAKE\_LOCK**               | Prevents the device from sleeping during playback.                                          | All             |
 | **VIBRATE**                  | To provide haptic feedback when interacting with certain UI components.                     | All             |
 
-If you still have questions about the permissions requested by the app, or if we have missed placing any on this list, feel free to contact us through this email: mardous.contact@gmail.com
+If you still have questions about the permissions requested by the app, or if we have missed placing any on this list, feel free to contact us through this email: support@boomingmusic.org

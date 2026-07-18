@@ -21,7 +21,7 @@ import com.mardous.booming.BuildConfig
 
 object Constants {
     // Support Email
-    const val SUPPORT_EMAIL = "mardous.contact@gmail.com"
+    const val SUPPORT_EMAIL = "support@boomingmusic.org"
 
     // App-related URLs
     const val AUTHOR_GITHUB_URL = "https://www.github.com/mardous"
