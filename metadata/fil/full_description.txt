@@ -1,20 +1,22 @@
-Ang Booming Music ay isang moderno at mabisang local music player para sa android, dinisenyo para sa maayos, customizable, at kaakit-akit sa paningin na karanasan. Binuo kasama ang Material You design at pinapagana ng Media3, pinagsasama nito ang pagiging simple na may advanced na playback features.
+Ang Booming Music ay isang moderno at makapangyarihang local music player para sa Android, na idinisenyo para sa maayos, nako-customize, at kaakit-akit na karanasan. Binuo gamit ang Material You na disenyo at pinapagana ng Media3, pinagsasama nito ang pagiging simple at mga advanced na feature sa pag-playback.
 
-Tangkilikin ang iyong mga paboritong kanta na may kasamang word-by-word synced lyrics, translated lyric support (TTML/LRC), at isang makabagong Now Playing interface na may enchanced visuals, mas smoother na transitions, at malaking customization options.
+Tangkilikin ang iyong mga paboritong kanta na may lyrics na naka-sync bawat salita, suporta para sa mga isinaling lyrics (TTML/LRC), at magandang "Now Playing" interface na nagtatampok ng pinahusay na visuals, maayos na transitions, at malawak na opsyon sa pag-customize.
 
-I-fine tune ang iyong pakikinig gamit ang built-in equalizer, ReplayGAin, Audio Offload, at gapless playback para sa seamless transitions. Ayusin ang iyong music sa iyong kagustuhan gamit ang smart playlist, customizable sorting, at ang bagong hierachiral folder view.
+I-fine-tune ang iyong pakikinig gamit ang built-in na equalizer, ReplayGain, Audio Offload, at gapless playback para sa tuluy-tuloy na transitions. Ayusin ang iyong musika ayon sa gusto mo gamit ang smart playlists, nako-customize na pag-aayos (sorting), at hierarchical folder view.
 
-Main features
+Mga pangunahing feature:
 
-* Automatic lyric download and in-app lyric editor
-* Word-by-word and translated lyrics (TTML, LRC)
-* Media3-based playback engine with audio offload support
-* Bit-perfect playback support and native ALAC decoding
-* Adaptive mini player and gesture controls
-* Custom covers and descriptions for playlists
-* Tag editor with instant library updates
+* Awtomatikong pag-download ng lyrics at in-app na lyric editor
+* Lyrics na naka-sync bawat salita at may mga salin (TTML, LRC)
+* Playback engine na nakabase sa Media3 na may suporta sa audio offload
+* ReplayGain para sa pare-parehong volume sa mga track
+* Native ALAC decoding
+* ListenBrainz scrobbling
+* Adaptive mini player at gesture controls
+* Mga custom na cover at paglalarawan para sa mga playlist
+* Tag editor na may agarang pag-update sa library
 * Smart auto playlists (Recently Played, Most Played, History)
-* Sleep timer, widgets, and Android Auto support
-* Material You theming with dark and black modes
-* Multi-language suppor
-* Lightweight, open-source, and ad-free
+* Sleep timer, widgets, at suporta sa Android Auto
+* Material You na tema na may dark at black modes
+* Suporta sa maraming wika
+* Magaan, open-source, at walang mga ad
