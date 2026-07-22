@@ -924,4 +924,5 @@
     <string name="mini_player_swipe_to_skip_title">Sleep minispeler om over te slaan</string>
     <string name="mini_player_swipe_to_skip_summary">Sleep links of rechts op de minispeler om liedjes over te slaan.</string>
     <string name="arranger">Regelaar</string>
+    <string name="up_next">Volgend</string>
 </resources>
