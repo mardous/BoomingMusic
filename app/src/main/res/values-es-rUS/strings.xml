@@ -968,4 +968,7 @@
     <string name="contributor_ttop_description">El primer colaborador y probador del proyecto.</string>
     <string name="contributor_lenard_description">Desarrollador del sitio web de la aplicación y colaborador.</string>
     <string name="contributor_alex_description">Amigo del proyecto que facilitó el acceso a las API esenciales.</string>
+    <string name="up_next">A continuación</string>
+    <string name="reorder_action">Reordenar</string>
+    <string name="go_to_current_track">Ir a la pista actual</string>
 </resources>

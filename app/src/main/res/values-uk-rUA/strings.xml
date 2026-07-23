@@ -977,4 +977,7 @@
     <string name="contributor_alex_description">Давній друг проєкту, який надав доступ до основних API.</string>
     <string name="play_all_songs_when_searching_title">Відтворювати всі пісні під час пошуку</string>
     <string name="play_all_songs_when_searching_summary">Якщо цей параметр увімкнено, вибір пісні через пошук додає до черги всю медіатеку. Залежить від налаштування «При виборі пісні».</string>
+    <string name="up_next">Далі</string>
+    <string name="reorder_action">Змінити порядок</string>
+    <string name="go_to_current_track">Перейти до поточного треку</string>
 </resources>

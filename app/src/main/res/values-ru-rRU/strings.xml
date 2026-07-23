@@ -970,4 +970,14 @@
     <string name="lyrics_bold_synced_title">Жирный шрифт для синхронизированного текста</string>
     <string name="lyrics_bold_synced_summary">Отображать синхронизированный текст жирным шрифтом.</string>
     <string name="lyrics_resume_on_seek_title">Возобновление при перемотке текста</string>
+    <string name="up_next">Далее</string>
+    <string name="reorder_action">Изменить порядок</string>
+    <string name="go_to_current_track">Перейти к текущему треку</string>
+    <string name="contributor_dawid_description">Один из основных разработчиков и проектировщик ряда ключевых функций приложения.</string>
+    <string name="contributor_ray_description">Внёс вклад в реализацию ряда важных и интересных функций.</string>
+    <string name="contributor_ttop_description">Самый первый участник и тестировщик проекта.</string>
+    <string name="contributor_lenard_description">Разработчик сайта приложения и участник проекта.</string>
+    <string name="contributor_alex_description">Давний друг проекта, предоставивший доступ к важным API.</string>
+    <string name="play_all_songs_when_searching_title">Воспроизводить все песни при поиске</string>
+    <string name="play_all_songs_when_searching_summary">Если эта функция включена, выбор найденной композиции ставит в очередь всю медиатеку. Действие функции зависит от настройки, определяющей поведение при выборе композиции.</string>
 </resources>

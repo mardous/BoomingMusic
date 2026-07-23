@@ -394,8 +394,8 @@
     <string name="eq_profile_title">Profil</string>
     <string name="change_band_count_title">Zmiana liczby pasm</string>
     <string name="change_band_count_message">Zmiana liczby pasm przywróci domyślne ustawienia obecnego profilu. Inne zapisane wcześniej profile nie będą mogły być użyte z nową konfiguracją pasm. \n\nCzy chcesz kontynuować?</string>
-    <string name="band_configuration_changed_successfully">The band configuration was successfully changed.</string>
-    <string name="band_configuration_could_not_be_changed">The band configuration could not be changed.</string>
+    <string name="band_configuration_changed_successfully">Zaktualizowano konfigurację pasm.</string>
+    <string name="band_configuration_could_not_be_changed">Nie udało się zmienić konfiguracji pasm.</string>
     <string name="share_eq_profiles">Udostępnij profile EQ</string>
     <string name="there_is_nothing_to_export">Nie ma nic do eksportu.</string>
     <string name="there_is_nothing_to_import">Nie ma nic do zaimportowania.</string>
@@ -441,10 +441,10 @@
     <string name="profile_x_deleted">Usunięto profil \"%s\".</string>
     <string name="autoeq_profile_x_deleted">Profil AutoEq \"%s\" został usunięty.</string>
     <string name="bassboost_label">Wzmocnienie basu</string>
-    <string name="virtualizer_label">Virtualizer</string>
+    <string name="virtualizer_label">Wirtualizator</string>
     <string name="loudness_enhancer">Wzmocnienie dźwięku</string>
     <string name="sound_settings">Ustawienia dźwięku</string>
-    <string name="listening_on">Listening on</string>
+    <string name="listening_on">Odtwarzanie na</string>
     <string name="casting_to">Przesyłanie do</string>
     <string name="volume_label">Głośność</string>
     <string name="reset_balance">Zresetuj balans</string>
@@ -461,7 +461,7 @@
     <string name="enable_audio_float_output_title">Precyzyjne wyjście audio</string>
     <string name="enable_audio_float_output_description">Włącza 32-bitowe wyjście zmiennoprzecinkowe dla maksymalnej wierności dźwięku. Wymagany restart aplikacji.</string>
     <string name="skip_silence_title">Pomiń ciszę między utworami</string>
-    <string name="skip_silence_description">Automatycznie pomija ciszę podczas odtwarzania. Idealne na podcasty i nagrania.</string>
+    <string name="skip_silence_description">Automatycznie wykrywa i pomija ciszę podczas odtwarzania. Idealne na podcasty i nagrania.</string>
     <!-- Lyrics viewer -->
     <string name="action_show_lyrics">Pokaż tekst utworu</string>
     <string name="action_hide_lyrics">Ukryj teksty</string>
@@ -815,8 +815,8 @@
     <string name="every_fifteen_days">Co piętnaście dni</string>
     <string name="monthly">Co miesiąc</string>
     <string name="never">Nigdy</string>
-    <string name="receive_experimental_updates_title">Otrzymuj eksperymentalne aktualizacje</string>
-    <string name="receive_experimental_updates_summary">Uwaga: te aktualizacje są często niestabilne i przeznaczone dla zaawansowanych użytkowników.</string>
+    <string name="receive_experimental_updates_title">Eksperymentalne aktualizacje</string>
+    <string name="receive_experimental_updates_summary">Uwaga: Bywają często niestabilne i są przeznaczone dla zaawansowanych użytkowników.</string>
     <string name="search_for_update_title">Sprawdź dostępność aktualizacji</string>
     <string name="last_update_search_x">Ostatnio sprawdzono: %s</string>
     <string name="checking_please_wait">Sprawdzanie, proszę czekać…</string>
@@ -936,4 +936,11 @@
     <string name="lyrics_show_transliteration_title">Pokaż transliterację</string>
     <string name="lyrics_show_transliteration_summary">Wyświetl przetransliterowany tekst, jeśli jest dostępny.</string>
     <string name="lyrics_bold_synced_title">Pogrubiona czcionka dla zsynchronizowanego tekstu</string>
+    <string name="search_playlists">Szukaj w playlistach</string>
+    <string name="reorder_action">Zmień kolejność</string>
+    <string name="lastfm_login_title">Zaloguj się do Last.fm</string>
+    <string name="listenbrainz_login_title">Zaloguj się do ListenBrainz</string>
+    <string name="listenbrainz_scrobbling_title">Włącz scrobblowanie ListenBrainz</string>
+    <string name="arranger">Aranżer</string>
+    <string name="widget_third_line_summary">Wybierz, co wyświetlić w trzecim wierszu.</string>
 </resources>
