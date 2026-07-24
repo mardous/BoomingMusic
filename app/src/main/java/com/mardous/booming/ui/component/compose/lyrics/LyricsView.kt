@@ -88,7 +88,7 @@ fun LyricsView(
     isPowerSaveMode: Boolean,
     hasBackgroundEffects: Boolean,
     modifier: Modifier = Modifier,
-    onLineClick: (SyncedLyrics.Line) -> Unit
+    onSeekTo: (Long) -> Unit
 ) {
     val density = LocalDensity.current
     val textStyle = settings.syncedStyle
@@ -178,7 +178,7 @@ fun LyricsView(
                 lineSpacing = lineSpacing,
                 modifier = Modifier
                     .animateItem(placementSpec = tween(durationMillis = 500)),
-                onClick = { onLineClick(line) }
+                onClick = { onSeekTo(line.start - (state.lyrics?.offset ?: 0)) }
             )
         }
 

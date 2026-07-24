@@ -240,14 +240,14 @@ fun LyricsScreen(
                 playerViewModel = playerViewModel,
                 uiState = uiState,
                 settings = lyricsViewSettings,
-                PaddingValues(vertical = 96.dp, horizontal = 16.dp),
+                contentPadding = PaddingValues(vertical = 96.dp, horizontal = 16.dp),
                 fadingEdges = FadingEdges(top = 56.dp, bottom = 32.dp),
                 textAlign = TextAlign.Start,
                 isPlaying = isPlaying,
                 isPowerSaveMode = isPowerSaveMode,
                 hasBackgroundEffects = hasBackgroundEffects,
-                onSeekToLine = {
-                    playerViewModel.seekTo(it.start)
+                onSeekTo = { position ->
+                    playerViewModel.seekTo(position)
                     if (lyricsViewSettings.resumeOnSeek) {
                         playerViewModel.play()
                     }
@@ -291,8 +291,8 @@ fun CoverLyricsScreen(
                 isPlaying = isPlaying,
                 isPowerSaveMode = isPowerSaveMode,
                 hasBackgroundEffects = false,
-                onSeekToLine = {
-                    playerViewModel.seekTo(it.start)
+                onSeekTo = { position ->
+                    playerViewModel.seekTo(position)
                     if (lyricsViewSettings.resumeOnSeek) {
                         playerViewModel.play()
                     }
@@ -332,7 +332,7 @@ private fun LyricsSurface(
     isPlaying: Boolean,
     isPowerSaveMode: Boolean,
     hasBackgroundEffects: Boolean,
-    onSeekToLine: (SyncedLyrics.Line) -> Unit,
+    onSeekTo: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val colorScheme = MaterialTheme.colorScheme
@@ -424,7 +424,7 @@ private fun LyricsSurface(
                     contentColor = contentColor,
                     isPowerSaveMode = isPowerSaveMode,
                     hasBackgroundEffects = hasBackgroundEffects,
-                    onLineClick = { onSeekToLine(it) }
+                    onSeekTo = onSeekTo
                 )
             }
         }
