@@ -178,7 +178,7 @@ Your support is greatly appreciated and keeps me motivated to continue improving
       <b>Andreas Hirth</b><br/>
       <b>Revolver327</b><br/>
       <b>Peter Smith</b><br/>
-      <b>Michele Simoncelli</b>
+      <b>Michele Simoncelli</b><br/>
       <b>Kristof Lengyel</b>
     </td>
   </tr>
