@@ -13,11 +13,11 @@
   },
   {
     "contrib_name": "Chinese (Simplified Han script)",
-    "contrib_description": "[dwughjsd](https://hosted.weblate.org/user/dwughjsd/), [reducedradius](https://hosted.weblate.org/user/flytothehighest/), [eNoWater](https://hosted.weblate.org/user/Rf_sun/)"
+    "contrib_description": "[WluhWluh](https://hosted.weblate.org/user/WluhWluh/), [dwughjsd](https://hosted.weblate.org/user/dwughjsd/), [reducedradius](https://hosted.weblate.org/user/flytothehighest/), [eNoWater](https://hosted.weblate.org/user/Rf_sun/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/)"
   },
   {
     "contrib_name": "Chinese (Traditional Han script)",
-    "contrib_description": "[HUGOALH](https://hosted.weblate.org/user/hugoalh/)"
+    "contrib_description": "[WluhWluh](https://hosted.weblate.org/user/WluhWluh/), [HUGOALH](https://hosted.weblate.org/user/hugoalh/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/)"
   },
   {
     "contrib_name": "Croatian",
@@ -25,19 +25,15 @@
   },
   {
     "contrib_name": "Dutch",
-    "contrib_description": "[Watchman89](https://hosted.weblate.org/user/Watchman89/), [Anne Jan Brouwer](https://hosted.weblate.org/user/annejan/), [Olle Pierik](https://hosted.weblate.org/user/Rolliepiek/), [unables222](https://hosted.weblate.org/user/unables222/)"
-  },
-  {
-    "contrib_name": "English",
-    "contrib_description": "[Neko Edges](https://hosted.weblate.org/user/nekoedgesxd/), [Efraim Sundelin](https://hosted.weblate.org/user/efraim.sundelin/), [Wolf Wolf](https://hosted.weblate.org/user/wolfatom1/), [Adolfo Jayme Barrientos](https://hosted.weblate.org/user/Fito/), [Cataphract](https://hosted.weblate.org/user/Cataphract0/), [VICTOR HUGO CUBINES](https://hosted.weblate.org/user/ROTCIVOGUH741/), [12 ICT B Cabria, John Paulo B.](https://hosted.weblate.org/user/johnpaulocabria410/)"
+    "contrib_description": "[Watchman89](https://hosted.weblate.org/user/Watchman89/), [Anne Jan Brouwer](https://hosted.weblate.org/user/annejan/), [Olle Pierik](https://hosted.weblate.org/user/Rolliepiek/), [unables222](https://hosted.weblate.org/user/unables222/), [Kevin Ramharak](https://hosted.weblate.org/user/kevin0ed2037e848c4817/)"
   },
   {
     "contrib_name": "Estonian",
-    "contrib_description": "[Priit Jõerüüt](https://hosted.weblate.org/user/jrthwlate/)"
+    "contrib_description": "[Priit Jõerüüt](https://hosted.weblate.org/user/jrthwlate/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/)"
   },
   {
     "contrib_name": "Filipino",
-    "contrib_description": "[Wacky Wars](https://hosted.weblate.org/user/wackycreeper/), [12 ICT B Cabria, John Paulo B.](https://hosted.weblate.org/user/johnpaulocabria410/)"
+    "contrib_description": "[Wacky Wars](https://hosted.weblate.org/user/wackycreeper/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/), [12 ICT B Cabria, John Paulo B.](https://hosted.weblate.org/user/johnpaulocabria410/)"
   },
   {
     "contrib_name": "Finnish",
@@ -45,7 +41,7 @@
   },
   {
     "contrib_name": "French",
-    "contrib_description": "[Mickaël Binos](https://hosted.weblate.org/user/Mickael81/), [Myrano](https://hosted.weblate.org/user/Myrano/)"
+    "contrib_description": "[Mickaël Binos](https://hosted.weblate.org/user/Mickael81/), [Myrano](https://hosted.weblate.org/user/Myrano/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/)"
   },
   {
     "contrib_name": "Galician",
@@ -53,7 +49,7 @@
   },
   {
     "contrib_name": "German",
-    "contrib_description": "[FabiRich](https://hosted.weblate.org/user/FabiRich/), [Merlin](https://hosted.weblate.org/user/MikeMaulwurf/), [Paul](https://hosted.weblate.org/user/pschell/), [Ina](https://hosted.weblate.org/user/inchen_he/), [Dominik Henkel](https://hosted.weblate.org/user/Domi_1887/)"
+    "contrib_description": "[FabiRich](https://hosted.weblate.org/user/FabiRich/), [Merlin](https://hosted.weblate.org/user/MikeMaulwurf/), [Paul](https://hosted.weblate.org/user/pschell/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/), [Dominik Henkel](https://hosted.weblate.org/user/Domi_1887/)"
   },
   {
     "contrib_name": "Greek",
@@ -64,12 +60,16 @@
     "contrib_description": "[Omer I.S.](https://hosted.weblate.org/user/omeritzics/)"
   },
   {
+    "contrib_name": "Hindi",
+    "contrib_description": "[Anupam Malhotra](https://hosted.weblate.org/user/AnupamM/)"
+  },
+  {
     "contrib_name": "Indonesian",
-    "contrib_description": "[Arif Budiman](https://hosted.weblate.org/user/arifpedia/), [Franz Sanford](https://hosted.weblate.org/user/tangkaisirna11/), [MAS VERI](https://hosted.weblate.org/user/vierilukmantia6/)"
+    "contrib_description": "[Arif Budiman](https://hosted.weblate.org/user/arifpedia/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/), [Franz Sanford](https://hosted.weblate.org/user/tangkaisirna11/), [MAS VERI](https://hosted.weblate.org/user/vierilukmantia6/)"
   },
   {
     "contrib_name": "Italian",
-    "contrib_description": "[Nicola Bortoletto](https://hosted.weblate.org/user/mochkoli/), [Andrea Mor](https://hosted.weblate.org/user/el90moro/), [scudo](https://hosted.weblate.org/user/scudo005/), [Tomiri EXPT](https://hosted.weblate.org/user/tomiriexpt/), [Carlos Balarezo](https://hosted.weblate.org/user/BalFaz/), [rob la](https://hosted.weblate.org/user/cuscino1231/)"
+    "contrib_description": "[Nicola Bortoletto](https://hosted.weblate.org/user/mochkoli/), [Andrea Mor](https://hosted.weblate.org/user/el90moro/), [scudo](https://hosted.weblate.org/user/scudo005/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/), [Tomiri EXPT](https://hosted.weblate.org/user/tomiriexpt/), [Carlos Balarezo](https://hosted.weblate.org/user/BalFaz/), [rob la](https://hosted.weblate.org/user/cuscino1231/)"
   },
   {
     "contrib_name": "Japanese",
@@ -93,11 +93,11 @@
   },
   {
     "contrib_name": "Polish",
-    "contrib_description": "[Przemek](https://hosted.weblate.org/user/przemek1505/)"
+    "contrib_description": "[Szuwax](https://hosted.weblate.org/user/Szuwax/), [bitzy](https://hosted.weblate.org/user/bitzy/), [Przemek](https://hosted.weblate.org/user/przemek1505/)"
   },
   {
     "contrib_name": "Portuguese (Brazil)",
-    "contrib_description": "[n-qber](https://hosted.weblate.org/user/n-qber/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/), [VICTOR HUGO CUBINES](https://hosted.weblate.org/user/ROTCIVOGUH741/), [Matheus Ribeiro Rodrigues](https://hosted.weblate.org/user/mathoo/), [Hamilton Zanini](https://hosted.weblate.org/user/hrszanini/), [Thiago Papageorgiou](https://hosted.weblate.org/user/tnpapa/), [Isaki23](https://hosted.weblate.org/user/isqbx23ia/), [Fúlvio Leo](https://hosted.weblate.org/user/Penfore/), [Hilmez](https://hosted.weblate.org/user/Hilmez/)"
+    "contrib_description": "[n-qber](https://hosted.weblate.org/user/n-qber/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/), [VICTOR HUGO CUBINES](https://hosted.weblate.org/user/ROTCIVOGUH741/), [Matheus Ribeiro Rodrigues](https://hosted.weblate.org/user/mathoo/), [Hamilton Zanini](https://hosted.weblate.org/user/hrszanini/), [Thiago Papageorgiou](https://hosted.weblate.org/user/tnpapa/), [Isaki23](https://hosted.weblate.org/user/isqbx23ia/), [Hilmez](https://hosted.weblate.org/user/Hilmez/)"
   },
   {
     "contrib_name": "Portuguese (Portugal)",
@@ -105,31 +105,35 @@
   },
   {
     "contrib_name": "Russian",
-    "contrib_description": "[PONYATIN](https://hosted.weblate.org/user/PONYATIN/), [Horizon](https://hosted.weblate.org/user/BlueGradientHorizon/), [Neko Edges](https://hosted.weblate.org/user/nekoedgesxd/), [Dmitry Warkentin](https://hosted.weblate.org/user/xmeanwhile/), [tnvdeveloper](https://hosted.weblate.org/user/tnvdeveloper/), [Артур](https://hosted.weblate.org/user/Bodr1yar/), [Andrei Stepanov](https://hosted.weblate.org/user/adem/), [FatAndrews](https://hosted.weblate.org/user/FatAndrews/), [Wolf Wolf](https://hosted.weblate.org/user/wolfatom1/), elixcat"
+    "contrib_description": "[PONYATIN](https://hosted.weblate.org/user/PONYATIN/), [Horizon](https://hosted.weblate.org/user/BlueGradientHorizon/), [Neko Edges](https://hosted.weblate.org/user/nekoedgesxd/), [Hans Knelz](https://hosted.weblate.org/user/Veynamer/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/), [Dmitry Warkentin](https://hosted.weblate.org/user/xmeanwhile/), [tnvdeveloper](https://hosted.weblate.org/user/tnvdeveloper/), [Артур](https://hosted.weblate.org/user/Bodr1yar/), [Andrei Stepanov](https://hosted.weblate.org/user/adem/), [FatAndrews](https://hosted.weblate.org/user/FatAndrews/)"
   },
   {
     "contrib_name": "Spanish",
-    "contrib_description": "[Adolfo Jayme Barrientos](https://hosted.weblate.org/user/Fito/), [Libre](https://hosted.weblate.org/user/Libertad/), [Salvador Peña](https://hosted.weblate.org/user/sal/), [fsadfsdfs](https://hosted.weblate.org/user/Arena2134/), [LordTenebrous](https://hosted.weblate.org/user/LordTenebrous/)"
+    "contrib_description": "[Adolfo Jayme Barrientos](https://hosted.weblate.org/user/Fito/), [Libre](https://hosted.weblate.org/user/Libertad/), [Salvador Peña](https://hosted.weblate.org/user/sal/), [Champiñon Traductor](https://hosted.weblate.org/user/champiñon_traduc/), [fsadfsdfs](https://hosted.weblate.org/user/Arena2134/), [LordTenebrous](https://hosted.weblate.org/user/LordTenebrous/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/)"
   },
   {
     "contrib_name": "Spanish (American)",
-    "contrib_description": "[Gusdlcj](https://hosted.weblate.org/user/Gusdlcj/), [Salvador Peña](https://hosted.weblate.org/user/sal/), [Matheus Ribeiro Rodrigues](https://hosted.weblate.org/user/mathoo/)"
+    "contrib_description": "[Matheus Ribeiro Rodrigues](https://hosted.weblate.org/user/mathoo/), [Salvador Peña](https://hosted.weblate.org/user/sal/), [Gusdlcj](https://hosted.weblate.org/user/Gusdlcj/)"
   },
   {
     "contrib_name": "Swedish",
-    "contrib_description": "[Maurycy](https://hosted.weblate.org/user/XCOM-HUB/), [bittin1ddc447d824349b2](https://hosted.weblate.org/user/bittin1ddc447d824349b2/), [Efraim Sundelin](https://hosted.weblate.org/user/efraim.sundelin/)"
+    "contrib_description": "[Maurycy](https://hosted.weblate.org/user/XCOM-HUB/), [bittin1ddc447d824349b2](https://hosted.weblate.org/user/bittin1ddc447d824349b2/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/), [Efraim Sundelin](https://hosted.weblate.org/user/efraim.sundelin/)"
   },
   {
     "contrib_name": "Tamil",
     "contrib_description": "[தமிழ்நேரம்](https://hosted.weblate.org/user/TamilNeram/)"
   },
   {
+    "contrib_name": "Tatar",
+    "contrib_description": "[Azat Can](https://hosted.weblate.org/user/KuSoCheck/)"
+  },
+  {
     "contrib_name": "Turkish",
-    "contrib_description": "[muhaco](https://hosted.weblate.org/user/muhaco/), [Berk Çelik](https://hosted.weblate.org/user/gr33ns3a/), [Kadir Korkut](https://hosted.weblate.org/user/kadirlo027/), [Kehribar](https://hosted.weblate.org/user/dpentx/), [Cataphract](https://hosted.weblate.org/user/Cataphract0/), [Alperen Turan](https://hosted.weblate.org/user/acimasizburger/)"
+    "contrib_description": "[muhaco](https://hosted.weblate.org/user/muhaco/), [Berk Çelik](https://hosted.weblate.org/user/gr33ns3a/), [Kadir Korkut](https://hosted.weblate.org/user/kadirlo027/), [Cataphract](https://hosted.weblate.org/user/Cataphract0/), [Kehribar](https://hosted.weblate.org/user/dpentx/), [Alperen Turan](https://hosted.weblate.org/user/acimasizburger/)"
   },
   {
     "contrib_name": "Ukrainian",
-    "contrib_description": "[Dan](https://hosted.weblate.org/user/kefir2105/), [YaroslavYath](https://hosted.weblate.org/user/Natmers/)"
+    "contrib_description": "[Dan](https://hosted.weblate.org/user/kefir2105/), [YaroslavYath](https://hosted.weblate.org/user/Natmers/), [Gabriel](https://hosted.weblate.org/user/Gabriel26/)"
   },
   {
     "contrib_name": "Vietnamese",
