@@ -177,6 +177,8 @@
         <item>Danish</item>
         <item>Dutch</item>
         <item>English (US)</item>
+        <item>Estonian</item>
+        <item>Filipino</item>
         <item>Finnish</item>
         <item>French</item>
         <item>Galician</item>
@@ -191,6 +193,7 @@
         <item>Korean</item>
         <item>Luri Bakhtiari</item>
         <item>Norwegian</item>
+        <item>Persian</item>
         <item>Polish</item>
         <item>Portuguese</item>
         <item>Portuguese (Brazilian)</item>
@@ -199,6 +202,8 @@
         <item>Spanish</item>
         <item>Spanish (Latin America)</item>
         <item>Swedish</item>
+        <item>Tamil</item>
+        <item>Tatar</item>
         <item>Turkish</item>
         <item>Ukrainian</item>
         <item>Vietnamese</item>
@@ -216,6 +221,8 @@
         <item>da</item>
         <item>nl</item>
         <item>en</item>
+        <item>et</item>
+        <item>fa</item>
         <item>fi</item>
         <item>fr</item>
         <item>gl</item>
@@ -230,6 +237,7 @@
         <item>ko</item>
         <item>bqi</item>
         <item>no</item>
+        <item>fil</item>
         <item>pl</item>
         <item>pt</item>
         <item>pt-BR</item>
@@ -238,6 +246,8 @@
         <item>es</item>
         <item>es-419</item>
         <item>sv</item>
+        <item>ta</item>
+        <item>tt</item>
         <item>tr</item>
         <item>uk</item>
         <item>vi</item>
