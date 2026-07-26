@@ -258,19 +258,12 @@ private fun BoomingMusicHeader(
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
-        Spacer(Modifier.height(24.dp))
-        Box(
-            modifier = Modifier
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.app_version_x, version),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimaryContainer
-            )
-        }
+        Spacer(Modifier.height(16.dp))
+        ShapedText(
+            text = stringResource(R.string.app_version_x, version),
+            style = MaterialTheme.typography.bodySmall,
+            shape = CircleShape
+        )
         if (BuildConfig.IS_CI_BUILD) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -343,70 +336,73 @@ private fun AuthorSection(
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-                .padding(top = 16.dp, bottom = 8.dp)
+                .padding(16.dp)
         ) {
-            AboutContributorImage(
-                username = "mardous",
-                modifier = Modifier.size(88.dp)
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                AboutContributorImage(
+                    username = "mardous",
+                    modifier = Modifier.size(88.dp)
+                )
 
-            Spacer(Modifier.height(16.dp))
+                Spacer(Modifier.height(16.dp))
 
-            Text(
-                text = stringResource(R.string.mardous),
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
-            )
+                Text(
+                    text = stringResource(R.string.mardous),
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold
+                )
 
-            Text(
-                text = stringResource(R.string.mardous_summary),
-                style = MaterialTheme.typography.bodyLarge
-            )
-        }
+                Text(
+                    text = stringResource(R.string.mardous_summary),
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
 
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .wrapContentSize()
-                .padding(8.dp)
-        ) {
-            if (!App.isPlayStoreBuild()) {
-                Button(
-                    onClick = onDonateClick,
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .wrapContentSize()
+            ) {
+                if (!App.isPlayStoreBuild()) {
+                    Button(
+                        onClick = onDonateClick,
+                        modifier = Modifier.wrapContentSize()
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_volunteer_activism_24dp),
+                            contentDescription = null
+                        )
+                        Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+                        Text(stringResource(R.string.support_my_work))
+                    }
+                }
+
+                IconButton(
+                    onClick = onGitHubClick,
                     modifier = Modifier.wrapContentSize()
                 ) {
                     Icon(
-                        painter = painterResource(R.drawable.ic_volunteer_activism_24dp),
-                        contentDescription = null
+                        painter = painterResource(R.drawable.ic_github_circle_24dp),
+                        contentDescription = "GitHub profile"
                     )
-                    Spacer(Modifier.width(ButtonDefaults.IconSpacing))
-                    Text(stringResource(R.string.support_my_work))
                 }
-            }
 
-            IconButton(
-                onClick = onGitHubClick,
-                modifier = Modifier.wrapContentSize()
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_github_circle_24dp),
-                    contentDescription = "GitHub profile"
-                )
-            }
-
-            IconButton(
-                onClick = onEmailClick,
-                modifier = Modifier.wrapContentSize()
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_email_24dp),
-                    contentDescription = "Write an email"
-                )
+                IconButton(
+                    onClick = onEmailClick,
+                    modifier = Modifier.wrapContentSize()
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_email_24dp),
+                        contentDescription = "Write an email"
+                    )
+                }
             }
         }
     }
