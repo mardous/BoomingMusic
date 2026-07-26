@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (c) 2026 Christians Martínez Alvarado
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="288dp"
+    android:height="288dp"
+    android:viewportWidth="288"
+    android:viewportHeight="288">
+    <path
+        android:pathData="m78.66,197.38c0,3.68 0.69,7.22 2,10.48C74.66,204.32 70.39,197.84 70.39,189.9L70.39,101.8C70.39,93.85 74.66,87.37 80.66,83.83c-1.31,3.26 -2,6.81 -2,10.48z"
+        android:fillColor="@color/splash_logo_color_1"/>
+    <path
+        android:pathData="M106.2,69.85C93.6,70.05 82.12,80.18 82.12,94.31L82.12,197.38c0,18.84 20.41,30.57 36.66,21.14L208,166.99c16.26,-9.32 16.26,-32.88 0,-42.29L118.79,73.17c-4.06,-2.36 -8.39,-3.39 -12.59,-3.32zM138.37,110.33l0.19,0a5.45,5.45 0,0 1,5.45 5.45l0,56.44a5.45,5.45 0,0 1,-5.45 5.45l-0.19,0a5.45,5.45 0,0 1,-5.45 -5.45L132.92,115.78a5.45,5.45 0,0 1,5.45 -5.45zM121.93,122.25l0.19,0a5.45,5.45 135,0 1,5.45 5.45l0,32.61a5.45,5.45 0,0 1,-5.45 5.45l-0.19,0a5.45,5.45 0,0 1,-5.45 -5.45l0,0.86c-0.01,-0.1 -0.01,-0.21 -0.01,-0.32L116.47,129.64c0,-0.1 0,-0.21 0.01,-0.31l0,-1.64a5.45,5.45 0,0 1,5.45 -5.45zM154.8,124.09l0.19,0a5.45,5.45 0,0 1,5.45 5.45l0,28.92a5.45,5.45 0,0 1,-5.45 5.45l-0.19,0a5.45,5.45 0,0 1,-5.45 -5.45L149.36,129.54a5.45,5.45 0,0 1,5.45 -5.45zM171.24,132.5l0.18,0a5.45,5.45 0,0 1,5.45 5.45l0,12.47a5.45,5.45 0,0 1,-5.45 5.45l-0.18,0a5.45,5.45 0,0 1,-5.45 -5.45l0,-12.47a5.45,5.45 0,0 1,5.45 -5.45z"
+        android:fillColor="@color/splash_logo_color_2"/>
+</vector>

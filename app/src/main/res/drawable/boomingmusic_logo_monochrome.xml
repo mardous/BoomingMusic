@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (c) 2026 Christians Martínez Alvarado
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="192dp"
+    android:height="192dp"
+    android:viewportWidth="192"
+    android:viewportHeight="192">
+  <path
+      android:pathData="m50.83,135.58c0,2.82 0.53,5.55 1.54,8.05C47.76,140.91 44.48,135.93 44.48,129.83L44.48,62.17C44.48,56.07 47.76,51.09 52.36,48.38c-1.01,2.5 -1.54,5.23 -1.54,8.05z"
+      android:fillColor="#000000"/>
+  <path
+      android:pathData="M71.98,37.63C62.3,37.79 53.49,45.57 53.49,56.42L53.49,135.58c0,14.47 15.67,23.48 28.16,16.24L150.16,112.24c12.48,-7.16 12.48,-25.25 0,-32.48L81.65,40.19c-3.12,-1.81 -6.44,-2.6 -9.67,-2.55zM96.68,68.73l0.14,0a4.18,4.18 0,0 1,4.18 4.18l0,43.34a4.18,4.18 0,0 1,-4.18 4.18l-0.14,0a4.18,4.18 0,0 1,-4.18 -4.18L92.5,72.91a4.18,4.18 0,0 1,4.18 -4.18zM84.06,77.88l0.14,0a4.18,4.18 0,0 1,4.18 4.18l0,25.04a4.18,4.18 0,0 1,-4.18 4.18l-0.14,0a4.18,4.18 0,0 1,-4.18 -4.18l0,0.66c-0,-0.08 -0.01,-0.16 -0.01,-0.24L79.87,83.56c0,-0.08 0,-0.16 0.01,-0.24l0,-1.26a4.18,4.18 0,0 1,4.18 -4.18zM109.3,79.3l0.14,0a4.18,4.18 0,0 1,4.18 4.18l0,22.21a4.18,4.18 0,0 1,-4.18 4.18l-0.14,0a4.18,4.18 0,0 1,-4.18 -4.18L105.12,83.48a4.18,4.18 0,0 1,4.18 -4.18zM121.93,85.75l0.14,0a4.18,4.18 0,0 1,4.18 4.18l0,9.58a4.18,4.18 0,0 1,-4.18 4.18l-0.14,0a4.18,4.18 0,0 1,-4.18 -4.18l0,-9.58a4.18,4.18 0,0 1,4.18 -4.18z"
+      android:fillColor="#000000"/>
+</vector>

@@ -24,6 +24,9 @@
     <color name="app_shortcut_default_foreground">#2D276A</color>
     <color name="app_shortcut_default_background">@color/ic_launcher_background</color>
 
+    <color name="splash_logo_color_1">#ffbbe2ff</color>
+    <color name="splash_logo_color_2">#ff3186ff</color>
+
     <color name="md_theme_primary">#4D5C92</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
     <color name="md_theme_primaryContainer">#DCE1FF</color>

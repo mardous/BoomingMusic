@@ -19,7 +19,6 @@ package com.mardous.booming.ui.screen.about
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -86,12 +85,13 @@ import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.toChooser
 import com.mardous.booming.extensions.tryStartActivity
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
+import com.mardous.booming.ui.component.compose.ShapedText
+import com.mardous.booming.util.Constants.APP_GITHUB_URL
 import com.mardous.booming.util.Constants.AUTHOR_GITHUB_URL
 import com.mardous.booming.util.Constants.COMMUNITY_LINK
 import com.mardous.booming.util.Constants.DONATION_LINK
 import com.mardous.booming.util.Constants.DOWNLOAD_URL
 import com.mardous.booming.util.Constants.FAQ_LINK
-import com.mardous.booming.util.Constants.APP_GITHUB_URL
 import com.mardous.booming.util.Constants.ISSUE_TRACKER_LINK
 import com.mardous.booming.util.Constants.RELEASES_LINK
 import com.mardous.booming.util.Constants.SUPPORT_EMAIL
@@ -240,13 +240,18 @@ private fun BoomingMusicHeader(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth()
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.icon_web),
-            contentDescription = null,
-            modifier = Modifier.size(88.dp),
-            contentScale = ContentScale.Inside
-        )
-        Spacer(Modifier.height(8.dp))
+        Surface(
+            shape = CircleShape,
+            color = LocalContentColor.current.copy(alpha = 0.1f)
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.boomingmusic_logo_monochrome),
+                tint = LocalContentColor.current,
+                contentDescription = null,
+                modifier = Modifier.size(88.dp)
+            )
+        }
+        Spacer(Modifier.height(16.dp))
         Text(
             text = stringResource(R.string.app_name),
             style = MaterialTheme.typography.headlineMedium,

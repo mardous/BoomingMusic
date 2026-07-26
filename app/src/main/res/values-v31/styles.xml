@@ -37,8 +37,8 @@
     </style>
 
     <style name="Theme.Booming.SplashScreen" parent="Theme.SplashScreen">
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_splash</item>
-        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/boomingmusic_logo_splash</item>
+        <item name="windowSplashScreenBackground">@color/splash_background_color</item>
     </style>
 
     <style name="Theme.AppWidget" parent="@style/Theme.Material3Expressive.DynamicColors.DayNight"/>
