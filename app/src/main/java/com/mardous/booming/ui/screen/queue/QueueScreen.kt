@@ -73,6 +73,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.edit
@@ -181,6 +182,7 @@ fun QueueScreen(
     }
 
     LaunchedEffect(position, playQueue) {
+        delay(QUEUE_DEBOUNCE.milliseconds)
         if (shouldLocateCurrentTrackOnUpdate ||
             listState.firstVisibleItemIndex == position.previous) {
             listState.animateScrollToItem(position.current)
@@ -286,13 +288,26 @@ fun QueueScreen(
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(horizontal = 16.dp)
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .clip(RoundedCornerShape(16.dp))
+                .background(themeColors.surfaceContainerLowest.copy(alpha = .6f))
+                .padding(vertical = 12.dp)
+                .padding(start = 16.dp, end = 8.dp)
         ) {
+            Icon(
+                painterResource(R.drawable.ic_queue_music_24dp),
+                tint = themeColors.secondary,
+                contentDescription = null
+            )
+
             Column(Modifier.weight(1f)) {
                 Text(
                     text = stringResource(R.string.up_next),
-                    style = MaterialTheme.typography.titleMediumEmphasized,
-                    color = themeColors.primary,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = themeColors.secondary,
+                    fontWeight = FontWeight.SemiBold,
                     maxLines = 1
                 )
 
@@ -301,8 +316,8 @@ fun QueueScreen(
                         playQueue.songCountStr(context),
                         playQueue.songsDurationStr()
                     ),
-                    style = MaterialTheme.typography.titleSmall,
-                    color = themeColors.onSurface
+                    style = MaterialTheme.typography.bodySmall,
+                    color = themeColors.onSurfaceVariant
                 )
             }
 
@@ -324,7 +339,7 @@ fun QueueScreen(
             )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         Box {
             LazyColumnScrollbar(
