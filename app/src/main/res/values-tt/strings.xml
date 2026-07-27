@@ -34,7 +34,7 @@
     <string name="search_artist_x_label">Артист буенча эзләү: %s</string>
     <string name="search_album_x_label">Альбом буенча эзләү: %s</string>
     <string name="search_list_x_label">Исемлек буенча эзләү: %s</string>
-    <string name="search_from_x_label">\"%s\"нан эзләү</string>
+    <string name="search_from_x_label">\"%s\" эченнән эзләү</string>
     <string name="search_year_x_label">Ел буенча эзләү: %s</string>
     <string name="search_in_folder_x">Папкада эзләү: %s</string>
     <string name="search_last_added">Соңгы өстәлгән музыканы эзләү</string>
@@ -42,7 +42,7 @@
     <string name="shuffle_mode_album">Альбом болгатырга</string>
     <string name="shuffle_mode_artist">Артист болгатырга</string>
     <string name="action_share">Бүлешү</string>
-    <string name="action_save">Склау</string>
+    <string name="action_save">Саклау</string>
     <string name="back_action">Артка</string>
     <string name="add_action">Өстәү</string>
     <string name="delete_action">Бетерү</string>
@@ -86,7 +86,7 @@
     <string name="playlist_updated">Плейлист яңартырган.</string>
     <string name="failed_to_save_playlist">Плейлистне сакларга чыкмады.</string>
     <string name="saved_x_playlists">%1$d плейлистны саклаган.</string>
-    <string name="saved_x_playlists_failed_to_save_x">%1$d Плейлистны саклаган, %2$d Плейлистне сакларга чыкмады.</string>
+    <string name="saved_x_playlists_failed_to_save_x">%1$d плейлистны саклаган, %2$d плейлистне сакларга чыкмады.</string>
     <string name="delete_playlist_title">Плейлист бетерү</string>
     <string name="delete_playlists_title">Плейлисларны бетерү</string>
     <string name="delete_playlist_x"><![CDATA[<b>%s</b> плейлистны бетерергәме?]]></string>
@@ -94,7 +94,7 @@
     <string name="created_playlist_x">\'%1$s\' плейлист ясалган.</string>
     <string name="could_not_create_playlist">Плейлист ясарга чыкмады.</string>
     <string name="no_playlists_create_new">Плейлист булдыру өчен \"Яңа\" төймәсен басыгыз</string>
-    <string name="no_playlists_that_match_x">\"%s\"га туры килү плейлистлар юк</string>
+    <string name="no_playlists_that_match_x">\"%s\" туры килү плейлистлар юк</string>
     <string name="songs_added_to_playlists">Җырлар плейлистка өстәлгән.</string>
     <string name="playlist_exists">%s плейлист инде бар.</string>
     <string name="playlist_created">%s плейлист уңышлы ясалган.</string>
@@ -125,7 +125,7 @@
     <string name="delete_x_songs">%d җырны бетерергәме?</string>
     <string name="delete_the_song_x">%s җырны бетерергәме?</string>
     <string name="deleting_songs">Җырларны бетерү, туктагыз…</string>
-    <string name="song_x_of_x">%1$dнаң %2$d • %3$s</string>
+    <string name="song_x_of_x">%1$d/%2$d • %3$s</string>
     <string name="no_equalizer">Эквалайзер тапмаган.</string>
     <string name="audio_focus_denied">Аудиога керү мөмкинлеге кире кагылды.</string>
     <string name="no_audio_ID">Ялгышлы аудио ID.</string>
@@ -182,10 +182,10 @@
     <string name="added_x_titles_to_playing_queue">%1$d трек чиратка өстәлгән.</string>
     <string name="next_song_label">Киләсе җыр</string>
     <string name="next_song_x">Киләсе • %1$s</string>
-    <string name="next_song_x_by_artist_x">Киләсе • %1$s %2$sнан</string>
+    <string name="next_song_x_by_artist_x">Киләсе • %1$s - %2$s</string>
     <string name="similar_artists">Охшаш артистлар</string>
     <string name="label_more_from_artist">Артисттан күбрәк</string>
-    <string name="label_more_from_x">%sтнан күбрәк</string>
+    <string name="label_more_from_x">%s белән чагыштырганда күбрәк</string>
     <string name="various_artists">Төрле артистлар</string>
     <string name="unknown_artist">Билгесез артист</string>
     <string name="unknown_genre">Билгесез жанр</string>
@@ -532,7 +532,7 @@
     <string name="choose_lyrics">Текстның төр сайлау</string>
     <string name="download_lyrics">Җырның текст йөкләнергә</string>
     <string name="cannot_edit_lyrics_file">Сез файлның эчтәлеген турыдан туры Booming Musicтан үзгәртә алмыйсыз.</string>
-    <string name="lyrics_by_x">Текст %sны эше</string>
+    <string name="lyrics_by_x">Текст %s эше</string>
     <string name="sign_in_to_x_title">%s керү</string>
     <string name="connected_account_label">Берләштерелгән аккаунт:</string>
     <string name="login_action">Керү</string>
