@@ -50,7 +50,7 @@ class AudioCoverFetcher(
 
         if (stream == null &&
             !cover.artistName.isArtistNameUnknown() &&
-            NetworkFeature.Images.Albums.isAvailable) {
+            NetworkFeature.Images.Albums.isEnabled) {
             val imageUrl = if (cover.isAlbum) {
                 repository.deezerAlbum(cover.artistName, cover.albumName)?.getBestImage(cover.albumName, imageSize)
                     ?: repository.deezerTrack(cover.artistName, cover.title)?.getBestImage(imageSize)

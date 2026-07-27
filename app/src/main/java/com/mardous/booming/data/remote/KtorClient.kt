@@ -26,6 +26,7 @@ import io.ktor.http.ContentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import okhttp3.Cache
+import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import java.io.File
@@ -37,6 +38,48 @@ private fun provideDefaultCache(context: Context): Cache? {
         return Cache(cacheDir, 1024 * 1024 * 10)
     }
     return null
+}
+
+private fun cacheInterceptor(): Interceptor {
+    return Interceptor { chain ->
+        val originalRequest = chain.request()
+        val url = originalRequest.url.toString()
+
+        val response = chain.proceed(originalRequest)
+
+        // Only cache Deezer and Last.fm API responses
+        if (url.contains("api.deezer.com") || url.contains("ws.audioscrobbler.com")) {
+            val cacheControl = CacheControl.Builder()
+                .maxAge(4, TimeUnit.DAYS)
+                .build()
+
+            response.newBuilder()
+                .header("Cache-Control", cacheControl.toString())
+                .build()
+        } else {
+            response
+        }
+    }
+}
+
+private fun offlineCacheInterceptor(): Interceptor {
+    return Interceptor { chain ->
+        var request = chain.request()
+        val url = request.url.toString()
+
+        if ((url.contains("api.deezer.com") || url.contains("ws.audioscrobbler.com")) &&
+            !com.mardous.booming.data.model.network.NetworkFeature.isOnline(ignoreWifiSetting = true)
+        ) {
+            val cacheControl = CacheControl.Builder()
+                .onlyIfCached()
+                .maxStale(28, TimeUnit.DAYS)
+                .build()
+            request = request.newBuilder()
+                .cacheControl(cacheControl)
+                .build()
+        }
+        chain.proceed(request)
+    }
 }
 
 private fun headerInterceptor(context: Context): Interceptor {
@@ -54,6 +97,8 @@ private fun headerInterceptor(context: Context): Interceptor {
 fun provideOkHttp(context: Context): OkHttpClient {
     return OkHttpClient.Builder()
         .addInterceptor(headerInterceptor(context))
+        .addInterceptor(offlineCacheInterceptor())
+        .addNetworkInterceptor(cacheInterceptor())
         .connectTimeout(5, TimeUnit.SECONDS)
         .readTimeout(5, TimeUnit.SECONDS)
         .cache(provideDefaultCache(context))
