@@ -213,7 +213,6 @@
     <string name="action_grid_size">網格大小</string>
     <string name="action_grid_size_land">網格大小（橫向）</string>
     <string name="action_sort_order">排序方式</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">藝人</string>
     <string name="sort_order_album">專輯</string>
     <string name="sort_order_year">年份</string>

@@ -213,7 +213,6 @@
     <string name="action_grid_size">גודל הרשת</string>
     <string name="action_grid_size_land">גודל הרשת (קרקע)</string>
     <string name="action_sort_order">מיון לפי</string>
-    <string name="sort_order_az">א-ת</string>
     <string name="sort_order_artist">אומן</string>
     <string name="sort_order_album">אלבום</string>
     <string name="sort_order_year">שנה</string>

@@ -238,7 +238,7 @@
     <string name="grid_size_7" translatable="false">7</string>
     <string name="grid_size_8" translatable="false">8</string>
     <string name="action_sort_order">Sort by</string>
-    <string name="sort_order_az">A-Z</string>
+    <string name="sort_order_name">Name</string>
     <string name="sort_order_artist">Artist</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">Year</string>

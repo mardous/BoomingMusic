@@ -226,7 +226,6 @@
     <string name="action_grid_size">اندازه شبکه</string>
     <string name="action_grid_size_land">اندازه شبکه (زمین)</string>
     <string name="action_sort_order">مرتب سازی بر اساس</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">هنرمند</string>
     <string name="sort_order_album">آلبوم</string>
     <string name="sort_order_year">سال</string>

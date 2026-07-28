@@ -18,9 +18,11 @@
 package com.mardous.booming.data.local.repository
 
 import android.provider.MediaStore.Audio.AudioColumns
+import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.core.sort.YearSortMode
+import com.mardous.booming.core.sort.sortingCollator
 import com.mardous.booming.data.model.Folder
 import com.mardous.booming.data.model.ReleaseYear
 import com.mardous.booming.data.model.Song
@@ -38,6 +40,8 @@ interface SpecialRepository {
 }
 
 class RealSpecialRepository(private val songRepository: RealSongRepository) : SpecialRepository {
+
+    private val collator by lazy { sortingCollator() }
 
     override suspend fun releaseYears(): List<ReleaseYear> {
         val songs = songRepository.songs(
@@ -93,15 +97,17 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
     }
 
     override suspend fun songsByFolder(path: String, includeSubfolders: Boolean): List<Song> {
-        if (includeSubfolders) {
+        val songs = if (includeSubfolders) {
             val dirPath = path.takeIf { it.endsWith("/") } ?: "$path/"
             val cursor = songRepository.makeSongCursor(
                 selection = "${AudioColumns.DATA} LIKE ?",
                 selectionValues = arrayOf("$dirPath%")
             )
-            return songRepository.songs(cursor)
+            songRepository.songs(cursor)
+        } else {
+            songRepository.songs().filter { song -> path == song.folderPath() }
         }
-        return songRepository.songs().filter { song -> path == song.folderPath() }
+        return with(SongSortMode.FolderSongs) { songs.sorted() }
     }
 
     override suspend fun songsByFolder(path: String, query: String): List<Song> {
@@ -159,7 +165,9 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
         val children = buildList {
             addAll(subfolders)
             addAll(songsInThisFolder)
-        }.sortedWith(compareBy({ it is Song }, { it.fileName.lowercase() }))
+        }.sortedWith(
+            compareBy<FileSystemItem> { it is Song }.thenBy(collator) { it.fileName }
+        )
 
         return FileSystemQuery(name, path, parentPath, children)
     }

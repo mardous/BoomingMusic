@@ -213,7 +213,6 @@
     <string name="action_grid_size">Μέγεθος πλέγματος</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Ταξινόμηση κατά</string>
-    <string name="sort_order_az">Α-Ω</string>
     <string name="sort_order_artist">Καλλιτέχνης</string>
     <string name="sort_order_album">Άλμπουμ</string>
     <string name="sort_order_year">Έτος</string>

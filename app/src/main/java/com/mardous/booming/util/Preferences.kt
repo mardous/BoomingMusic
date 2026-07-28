@@ -142,6 +142,9 @@ object Preferences : KoinComponent {
     val holdTabToSearch: Boolean
         get() = preferences.getBoolean(HOLD_TAB_TO_SEARCH, true)
 
+    val ignoreArticlesWhenSorting: Boolean
+        get() = preferences.getBoolean(IGNORE_ARTICLES_WHEN_SORTING, false)
+
     var lockedPlaylists: Boolean
         get() = preferences.getBoolean(LOCKED_PLAYLISTS, false)
         set(value) = preferences.edit { putBoolean(LOCKED_PLAYLISTS, value) }
@@ -557,6 +560,7 @@ const val LIBRARY_CATEGORIES = "library_categories"
 const val REMEMBER_LAST_PAGE = "remember_last_page"
 const val TAB_TITLES_MODE = "tab_titles_mode"
 const val HOLD_TAB_TO_SEARCH = "hold_tab_to_search"
+const val IGNORE_ARTICLES_WHEN_SORTING = "ignore_articles_when_sorting"
 const val LAST_PAGE = "last_page"
 const val LARGER_HEADER_IMAGE = "larger_header_image"
 const val HORIZONTAL_ARTIST_ALBUMS = "horizontal_artist_albums"

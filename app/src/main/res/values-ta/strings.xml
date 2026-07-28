@@ -226,7 +226,6 @@
     <string name="action_grid_size">கட்ட அளவு</string>
     <string name="action_grid_size_land">கட்ட அளவு (நிலம்)</string>
     <string name="action_sort_order">வரிசைப்படுத்து</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">கலைஞர்</string>
     <string name="sort_order_album">தொகுப்பு</string>
     <string name="sort_order_year">ஆண்டு</string>

@@ -232,7 +232,6 @@
     <string name="lyrics_show_translation_title">Тәрҗемә күрсәтергә</string>
     <string name="action_grid_size">Челтәр күләме</string>
     <string name="action_grid_size_land">Челтәр күләме (ландшафт)</string>
-    <string name="sort_order_az">А-Я</string>
     <string name="sort_order_artist">Артист</string>
     <string name="sort_order_album">Альбом</string>
     <string name="sort_order_year">Ел</string>

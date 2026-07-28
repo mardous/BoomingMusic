@@ -213,7 +213,6 @@
     <string name="action_grid_size">Størrelse på rutenett</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Sorter etter</string>
-    <string name="sort_order_az">A-Å</string>
     <string name="sort_order_artist">Kunstner</string>
     <string name="sort_order_album">album</string>
     <string name="sort_order_year">År</string>

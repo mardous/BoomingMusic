@@ -213,7 +213,6 @@
     <string name="action_grid_size">ग्रिड आकार</string>
     <string name="action_grid_size_land">ग्रिड का साइज (जगह)</string>
     <string name="action_sort_order">क्रमबद्ध करें</string>
-    <string name="sort_order_az">A से Z तक</string>
     <string name="sort_order_artist">कलाकार</string>
     <string name="sort_order_album">एल्बम</string>
     <string name="sort_order_year">साल</string>
