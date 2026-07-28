@@ -151,9 +151,11 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     val isBottomSheetHidden: Boolean
         get() = panelState == STATE_COLLAPSED && bottomSheetBehavior.peekHeight == 0
 
-    /** Set by destinations that want no sheet. Stored as a var,
-     because reopening (e.g. external links), used to reset this value */
-    private var keepBottomSheetHidden = false
+    /**
+     * Set while a destination is holding the sheet down.
+     * Queue changes must not slide the mini player back in until the next destination.
+     */
+    private var isHiddenByDestination = false
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -199,7 +201,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
         launchAndRepeatWithViewLifecycle {
             playerViewModel.queueFlow.collect { queue ->
-                if (!keepBottomSheetHidden) {
+                if (!isHiddenByDestination) {
                     hideBottomSheet(queue.isEmpty())
                 }
             }
@@ -298,12 +300,15 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         })
     }
 
+    /**
+     * @param hideBottomSheet `true` hides the sheet. `null` lets the queue decide
+     */
     fun setBottomNavVisibility(
         visible: Boolean,
         animate: Boolean = false,
         hideBottomSheet: Boolean? = null,
     ) {
-        keepBottomSheetHidden = (hideBottomSheet == true)
+        isHiddenByDestination = (hideBottomSheet == true)
         val hide = hideBottomSheet ?: playerViewModel.queue.isEmpty()
         if (isInOneTabMode) {
             hideBottomSheet(hide = hide, animate = animate, isBottomNavVisible = false)
