@@ -54,6 +54,7 @@ import com.mardous.booming.data.remote.jsonHttpClient
 import com.mardous.booming.data.remote.lastfm.LastFmService
 import com.mardous.booming.data.remote.listenbrainz.ListenBrainzService
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
+import com.mardous.booming.data.remote.musicbrainz.MusicBrainzService
 import com.mardous.booming.data.remote.provideOkHttp
 import com.mardous.booming.playback.SleepTimer
 import com.mardous.booming.playback.equalizer.EqualizerManager
@@ -98,6 +99,9 @@ val networkModule = module {
     }
     single {
         ListenBrainzService(client = get())
+    }
+    single {
+        MusicBrainzService(client = get())
     }
     single {
         LyricsDownloadService(client = get())
@@ -261,7 +265,8 @@ private val dataModule = module {
             preferences = get(),
             lastFmService = get(),
             listenBrainzService = get(),
-            deezerService = get()
+            deezerService = get(),
+            musicBrainzService = get()
         )
     } bind NetworkRepository::class
 }

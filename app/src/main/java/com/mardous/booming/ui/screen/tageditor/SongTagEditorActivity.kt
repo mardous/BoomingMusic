@@ -20,11 +20,16 @@ package com.mardous.booming.ui.screen.tageditor
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.ViewGroup
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.toBitmap
+import com.mardous.booming.data.remote.musicbrainz.model.MusicBrainzRecording
+import com.mardous.booming.databinding.DialogMusicbrainzSearchBinding
 import com.mardous.booming.databinding.TagEditorSongFieldBinding
 import com.mardous.booming.extensions.resources.getResized
 import com.mardous.booming.extensions.showToast
@@ -83,6 +88,90 @@ class SongTagEditorActivity : AbsTagEditorActivity() {
                 selectDefaultGenre()
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_song_tag_editor, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_auto_fill) {
+            showMusicBrainzSearchDialog()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun showMusicBrainzSearchDialog() {
+        val binding = DialogMusicbrainzSearchBinding.inflate(layoutInflater)
+        binding.title.setText(songBinding.title.text)
+        binding.artist.setText(songBinding.artist.text)
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.musicbrainz_search_title)
+            .setView(binding.root)
+            .setPositiveButton(R.string.search_label) { _, _ ->
+                val title = binding.title.text?.toString()
+                val artist = binding.artist.text?.toString()
+                if (!title.isNullOrBlank() && !artist.isNullOrBlank()) {
+                    searchMusicBrainz(title, artist)
+                    return@setPositiveButton
+                }
+                showToast(R.string.album_or_artist_empty)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    private fun searchMusicBrainz(title: String, artist: String) {
+        showToast(R.string.searching)
+        viewModel.fetchMusicBrainzTags(title, artist).observe(this) { response ->
+            if (response == null || response.recordings.isEmpty()) {
+                showToast(R.string.musicbrainz_no_results)
+                return@observe
+            }
+            showRecordingSelectionDialog(response.recordings)
+        }
+    }
+
+    private fun showRecordingSelectionDialog(recordings: List<MusicBrainzRecording>) {
+        val titles = recordings.map { recording ->
+            val artist = recording.artistCredit.joinToString("; ") { it.name }
+            val release = recording.releases.firstOrNull()?.title ?: "Unknown Album"
+            "$artist - ${recording.title} ($release)"
+        }.toTypedArray()
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.musicbrainz_select_recording)
+            .setItems(titles) { _, which ->
+                val selectedRecording = recordings[which]
+                viewModel.fetchMusicBrainzRecordingDetails(selectedRecording).observe(this) { tagResult ->
+                    if (tagResult != null) {
+                        applyMusicBrainzTags(tagResult)
+                    }
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    private fun applyMusicBrainzTags(mbContent: Pair<String?, TagEditorResult>) {
+        val (imageUrl, tags) = mbContent
+        if (imageUrl != null) loadImageFromUrl(imageUrl)
+        if (tags.title != null) songBinding.title.setText(tags.title)
+        if (tags.artist != null) songBinding.artist.setText(tags.artist)
+        if (tags.album != null) songBinding.album.setText(tags.album)
+        if (tags.albumArtist != null) songBinding.albumArtist.setText(tags.albumArtist)
+        if (tags.composer != null) songBinding.composer.setText(tags.composer)
+        if (tags.genre != null) songBinding.genre.setText(tags.genre)
+        if (tags.year != null) songBinding.year.setText(tags.year)
+        if (tags.trackNumber != null) songBinding.trackNumber.setText(tags.trackNumber)
+        if (tags.trackTotal != null) songBinding.trackTotal.setText(tags.trackTotal)
+        if (tags.discNumber != null) songBinding.discNumber.setText(tags.discNumber)
+        if (tags.discTotal != null) songBinding.discTotal.setText(tags.discTotal)
+        if (tags.lyricist != null) songBinding.lyricist.setText(tags.lyricist)
+        if (tags.comment != null) songBinding.comment.setText(tags.comment)
     }
 
     override fun onDefaultGenreSelection(genre: String) {

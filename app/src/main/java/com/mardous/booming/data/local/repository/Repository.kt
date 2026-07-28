@@ -46,6 +46,8 @@ import com.mardous.booming.data.remote.deezer.model.DeezerArtist
 import com.mardous.booming.data.remote.deezer.model.DeezerTrack
 import com.mardous.booming.data.remote.lastfm.model.LastFmAlbum
 import com.mardous.booming.data.remote.lastfm.model.LastFmArtist
+import com.mardous.booming.data.remote.musicbrainz.model.MusicBrainzRecording
+import com.mardous.booming.data.remote.musicbrainz.model.MusicBrainzSearchResponse
 import kotlinx.coroutines.flow.Flow
 import java.io.File
 
@@ -145,6 +147,8 @@ interface Repository {
     suspend fun deezerTrack(artist: String, title: String): DeezerTrack?
     suspend fun deezerArtist(name: String, limit: Int, index: Int): DeezerArtist?
     suspend fun deezerAlbum(artist: String, name: String): DeezerAlbum?
+    suspend fun musicBrainzRecording(title: String, artist: String): MusicBrainzSearchResponse?
+    suspend fun musicBrainzRecordingDetails(id: String): MusicBrainzRecording?
     suspend fun artistInfo(name: String, lang: String?, cache: String?): LastFmArtist?
     suspend fun albumInfo(artist: String, album: String, lang: String?): LastFmAlbum?
 }
@@ -455,6 +459,12 @@ class RealRepository(
 
     override suspend fun deezerAlbum(artist: String, name: String) =
         networkRepository.deezerAlbum(artist, name)
+
+    override suspend fun musicBrainzRecording(title: String, artist: String) =
+        networkRepository.musicBrainzRecording(title, artist)
+
+    override suspend fun musicBrainzRecordingDetails(id: String) =
+        networkRepository.musicBrainzRecordingDetails(id)
 
     override suspend fun artistInfo(name: String, lang: String?, cache: String?) =
         networkRepository.artistInfo(name, lang, cache)

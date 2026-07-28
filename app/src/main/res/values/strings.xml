@@ -105,6 +105,12 @@
     <string name="playlist_empty_text">Empty playlist</string>
     <string name="action_lyrics_editor">Lyrics editor</string>
     <string name="action_tag_editor">Tag editor</string>
+    <string name="action_auto_fill_from_musicbrainz">Auto-fill from MusicBrainz</string>
+    <string name="searching">Searching…</string>
+    <string name="musicbrainz_search_title">MusicBrainz search</string>
+    <string name="musicbrainz_search_message">Search for song metadata on MusicBrainz using the title and artist.</string>
+    <string name="musicbrainz_no_results">No results found on MusicBrainz.</string>
+    <string name="musicbrainz_select_recording">Select a recording</string>
     <string name="saving_changes">Saving changes</string>
     <string name="changes_saved_successfully">Changes saved successfully.</string>
     <string name="could_not_save_some_changes">Couldn\'t save some changes.</string>

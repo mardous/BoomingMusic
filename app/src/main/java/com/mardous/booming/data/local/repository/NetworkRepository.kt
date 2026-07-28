@@ -29,6 +29,9 @@ import com.mardous.booming.data.remote.listenbrainz.model.ListenBrainzListen
 import com.mardous.booming.data.remote.listenbrainz.model.ListenBrainzSubmission
 import com.mardous.booming.data.remote.listenbrainz.model.ListenBrainzTrackAdditionalInfo
 import com.mardous.booming.data.remote.listenbrainz.model.ListenBrainzTrackMetadata
+import com.mardous.booming.data.remote.musicbrainz.MusicBrainzService
+import com.mardous.booming.data.remote.musicbrainz.model.MusicBrainzRecording
+import com.mardous.booming.data.remote.musicbrainz.model.MusicBrainzSearchResponse
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.util.CryptoUtil
 import io.ktor.client.plugins.ClientRequestException
@@ -53,6 +56,8 @@ interface NetworkRepository {
     suspend fun deezerTrack(artist: String, title: String): DeezerTrack?
     suspend fun deezerArtist(name: String, limit: Int, index: Int): DeezerArtist?
     suspend fun deezerAlbum(artist: String, name: String): DeezerAlbum?
+    suspend fun musicBrainzRecording(title: String, artist: String): MusicBrainzSearchResponse?
+    suspend fun musicBrainzRecordingDetails(id: String): MusicBrainzRecording?
 }
 
 class NetworkRepositoryImpl(
@@ -60,7 +65,8 @@ class NetworkRepositoryImpl(
     private val preferences: SharedPreferences,
     private val lastFmService: LastFmService,
     private val listenBrainzService: ListenBrainzService,
-    private val deezerService: DeezerService
+    private val deezerService: DeezerService,
+    private val musicBrainzService: MusicBrainzService
 ) : NetworkRepository {
 
     private val lastFmLoginStateFlow = MutableStateFlow<LoginState>(LoginState.Empty)
@@ -177,6 +183,24 @@ class NetworkRepositoryImpl(
             deezerService.album(artist, name)
         } catch (e: Exception) {
             Log.e(TAG, "Deezer: album info couldn't be retrieved!", e)
+            null
+        }
+    }
+
+    override suspend fun musicBrainzRecording(title: String, artist: String): MusicBrainzSearchResponse? {
+        return try {
+            musicBrainzService.searchRecording(title, artist)
+        } catch (e: Exception) {
+            Log.e(TAG, "MusicBrainz: recording info couldn't be retrieved!", e)
+            null
+        }
+    }
+
+    override suspend fun musicBrainzRecordingDetails(id: String): MusicBrainzRecording? {
+        return try {
+            musicBrainzService.getRecordingDetails(id)
+        } catch (e: Exception) {
+            Log.e(TAG, "MusicBrainz: recording details couldn't be retrieved!", e)
             null
         }
     }

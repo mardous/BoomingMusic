@@ -62,6 +62,15 @@ fun CharSequence.sanitize(): String {
         .replace("&", "_")
 }
 
+fun String.capitalize(): String {
+    return this.split(" ")
+        .joinToString(" ") { word ->
+            word.lowercase().replaceFirstChar { char ->
+                if (char.isLowerCase()) char.titlecase() else char.toString()
+            }
+        }
+}
+
 fun Char.isArabic(): Boolean {
     val unicodeBlock = Character.UnicodeBlock.of(this) ?: return false
     return unicodeBlock in arabicBlocks

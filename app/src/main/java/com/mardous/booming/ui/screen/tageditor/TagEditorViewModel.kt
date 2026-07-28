@@ -16,9 +16,13 @@ import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.MetadataWriter
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.remote.musicbrainz.artworkUrl
+import com.mardous.booming.data.remote.musicbrainz.model.MusicBrainzRecording
+import com.mardous.booming.extensions.utilities.capitalize
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * @author Christians M. A. (mardous)
@@ -137,6 +141,90 @@ class TagEditorViewModel(
 
     fun getTrackInfo(artistName: String, title: String) = liveData(Dispatchers.IO) {
         emit(repository.deezerTrack(artistName, title))
+    }
+
+    fun fetchMusicBrainzTags(title: String, artist: String) = liveData(Dispatchers.IO) {
+        emit(repository.musicBrainzRecording(title, artist))
+    }
+
+    fun fetchMusicBrainzRecordingDetails(recording: MusicBrainzRecording) = liveData(Dispatchers.IO) {
+        val details = repository.musicBrainzRecordingDetails(recording.id)
+        emit(mapRecordingToTags(details ?: recording))
+    }
+
+    private suspend fun mapRecordingToTags(recording: MusicBrainzRecording) = withContext(Dispatchers.Default) {
+        val title = recording.title
+        val artist = recording.artistCredit.joinToString("; ") { it.name }
+
+        val firstRelease = recording.releases.firstOrNull()
+        val genres = recording.genres.ifEmpty { firstRelease?.genres.orEmpty() }
+            .map { it.name.capitalize() }
+            .distinct()
+            .take(5)
+            .joinToString("; ")
+
+        val composers = mutableListOf<String>()
+        val lyricists = mutableListOf<String>()
+
+        recording.relations.forEach { rel ->
+            if (rel.targetType == "artist") {
+                when (rel.type) {
+                    "composer" -> rel.artist?.name?.let { composers.add(it) }
+                    "lyricist" -> rel.artist?.name?.let { lyricists.add(it) }
+                }
+            } else if (rel.targetType == "work") {
+                rel.work?.relations?.forEach { workRel ->
+                    if (workRel.targetType == "artist") {
+                        when (workRel.type) {
+                            "composer" -> workRel.artist?.name?.let { composers.add(it) }
+                            "lyricist" -> workRel.artist?.name?.let { lyricists.add(it) }
+                        }
+                    }
+                }
+            }
+        }
+
+        var album: String? = null
+        var albumArtist: String? = null
+        var year: String? = null
+        var trackTotal: String? = null
+        var discNumber: String? = null
+        var discTotal: String? = null
+        var trackNumber: String? = null
+
+        if (firstRelease != null) {
+            album = firstRelease.title
+            albumArtist = firstRelease.artistCredit.joinToString("; ") { it.name }
+
+            val date = firstRelease.date ?: recording.firstReleaseDate
+            if (!date.isNullOrBlank()) {
+                year = date.split("-").firstOrNull()
+            }
+
+            val firstMedia = firstRelease.media.firstOrNull()
+            if (firstMedia != null) {
+                discNumber = firstMedia.position?.toString()
+                discTotal = firstRelease.media.size.toString()
+                trackNumber = firstMedia.tracks.firstOrNull()?.number
+                trackTotal = firstMedia.trackCount?.toString()
+            }
+        }
+
+        firstRelease?.artworkUrl to TagEditorResult(
+            title = title,
+            album = album,
+            artist = artist,
+            albumArtist = if (!albumArtist.isNullOrBlank()) albumArtist else null,
+            composer = if (composers.isNotEmpty()) composers.distinct().joinToString("; ") else null,
+            genre = genres.ifBlank { null },
+            year = year,
+            trackNumber = trackNumber,
+            trackTotal = trackTotal,
+            discNumber = discNumber,
+            discTotal = discTotal,
+            lyricist = if (lyricists.isNotEmpty()) lyricists.distinct().joinToString("; ") else null,
+            comment = if (!recording.disambiguation.isNullOrBlank()) recording.disambiguation else null
+        )
     }
 
     fun requestArtist(): LiveData<Artist> = liveData(Dispatchers.IO) {
