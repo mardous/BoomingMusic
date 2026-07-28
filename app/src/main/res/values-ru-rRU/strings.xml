@@ -213,7 +213,6 @@
     <string name="action_grid_size">Размер сетки</string>
     <string name="action_grid_size_land">Размер сетки (ландшафт)</string>
     <string name="action_sort_order">Сортировать по</string>
-    <string name="sort_order_az">А-Я</string>
     <string name="sort_order_artist">Исполнитель</string>
     <string name="sort_order_album">Альбом</string>
     <string name="sort_order_year">Год</string>

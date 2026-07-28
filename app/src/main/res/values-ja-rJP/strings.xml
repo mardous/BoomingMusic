@@ -213,7 +213,6 @@
     <string name="action_grid_size">グリッドサイズ</string>
     <string name="action_grid_size_land">グリッドサイズ (横)</string>
     <string name="action_sort_order">並び替え</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">アーティスト</string>
     <string name="sort_order_album">アルバム</string>
     <string name="sort_order_year">年</string>

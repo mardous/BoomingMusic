@@ -213,7 +213,6 @@
     <string name="action_grid_size">Ruudukon koko</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Järjestä</string>
-    <string name="sort_order_az">AZ</string>
     <string name="sort_order_artist">Esittäjä</string>
     <string name="sort_order_album">Albumi</string>
     <string name="sort_order_year">Vuosi</string>

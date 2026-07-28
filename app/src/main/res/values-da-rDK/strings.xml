@@ -213,7 +213,6 @@
     <string name="action_grid_size">Gitter størrelse</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Sorter efter</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Kunstner</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">År</string>

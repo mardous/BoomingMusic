@@ -105,7 +105,6 @@
     <string name="metadata_label">Metateave</string>
     <string name="configure_action">Seadista</string>
     <string name="view_type_image">Pildivaade</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Esitaja</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">Aasta</string>

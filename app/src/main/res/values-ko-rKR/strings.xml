@@ -213,7 +213,6 @@
     <string name="action_grid_size">그리드 크기</string>
     <string name="action_grid_size_land">그리드 크기 (가로)</string>
     <string name="action_sort_order">정렬 기준</string>
-    <string name="sort_order_az">이름순</string>
     <string name="sort_order_artist">아티스트순</string>
     <string name="sort_order_album">앨범순</string>
     <string name="sort_order_year">연도순</string>

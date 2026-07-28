@@ -213,7 +213,6 @@
     <string name="action_grid_size">Dimensiune grilă</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Sortează după</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Artist</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">An</string>

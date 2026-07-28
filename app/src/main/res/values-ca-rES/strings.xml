@@ -213,7 +213,6 @@
     <string name="action_grid_size">Mida de la quadrícula</string>
     <string name="action_grid_size_land">Mida de la quadrícula (apaïsada)</string>
     <string name="action_sort_order">Ordena per</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Artista</string>
     <string name="sort_order_album">Àlbum</string>
     <string name="sort_order_year">Any</string>

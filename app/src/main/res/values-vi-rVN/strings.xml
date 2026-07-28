@@ -213,7 +213,6 @@
     <string name="action_grid_size">Kích thước lưới</string>
     <string name="action_grid_size_land">Kích thước lưới (ngang)</string>
     <string name="action_sort_order">Sắp xếp theo</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Nghệ sĩ</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">Năm</string>

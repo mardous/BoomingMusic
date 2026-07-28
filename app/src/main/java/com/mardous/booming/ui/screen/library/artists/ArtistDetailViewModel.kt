@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import com.mardous.booming.core.sort.sortedByMediaName
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.network.NetworkFeature
@@ -37,7 +38,7 @@ class ArtistDetailViewModel(
     }
 
     fun getSimilarArtists(artist: Artist): LiveData<List<Artist>> = liveData(Dispatchers.IO) {
-        emit(repository.similarAlbumArtists(artist).sortedBy { it.name })
+        emit(repository.similarAlbumArtists(artist).sortedByMediaName { it.name })
     }
 
     fun getArtistBio(

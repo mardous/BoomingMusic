@@ -63,7 +63,7 @@ class ArtistListFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, 
             playerViewModel.openShuffle(
                 providers = it,
                 mode = Preferences.artistShuffleMode,
-                sortMode = SongSortMode.Dynamic(SortKey.AZ)
+                sortMode = SongSortMode.Dynamic(SortKey.Name)
             ).observe(viewLifecycleOwner) { success ->
                 if (success) {
                     showToast(R.string.artists_shuffle)

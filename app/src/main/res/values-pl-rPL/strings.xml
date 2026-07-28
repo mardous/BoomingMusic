@@ -213,7 +213,6 @@
     <string name="action_grid_size">Rozmiar siatki</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Sortuj według</string>
-    <string name="sort_order_az">Nazwa</string>
     <string name="sort_order_artist">Wykonawca</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">Rok</string>

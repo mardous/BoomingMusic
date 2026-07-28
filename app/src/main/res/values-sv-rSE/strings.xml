@@ -213,7 +213,6 @@
     <string name="action_grid_size">Storlek på rutnät</string>
     <string name="action_grid_size_land">Rutnätets storlek (land)</string>
     <string name="action_sort_order">Sortera efter</string>
-    <string name="sort_order_az">A-Ö</string>
     <string name="sort_order_artist">Konstnären</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">År</string>

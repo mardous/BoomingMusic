@@ -213,7 +213,6 @@
     <string name="action_grid_size">Taille de la grille</string>
     <string name="action_grid_size_land">Taille de la grille (paysage)</string>
     <string name="action_sort_order">Trier par</string>
-    <string name="sort_order_az">A à Z</string>
     <string name="sort_order_artist">Artiste</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">Année</string>

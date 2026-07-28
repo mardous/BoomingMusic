@@ -210,7 +210,6 @@
     <string name="view_type_image">Imagen</string>
     <string name="action_grid_size">Tamaño de cuadrícula</string>
     <string name="action_sort_order">Ordenar por</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Artista</string>
     <string name="sort_order_album">Álbum</string>
     <string name="sort_order_year">Año</string>

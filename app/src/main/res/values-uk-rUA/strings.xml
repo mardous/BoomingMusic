@@ -213,7 +213,6 @@
     <string name="action_grid_size">Розмір сітки</string>
     <string name="action_grid_size_land">Розмір сітки (ландшафт)</string>
     <string name="action_sort_order">Сортувати за</string>
-    <string name="sort_order_az">А-Я</string>
     <string name="sort_order_artist">Виконавець</string>
     <string name="sort_order_album">Альбом</string>
     <string name="sort_order_year">Рік</string>
