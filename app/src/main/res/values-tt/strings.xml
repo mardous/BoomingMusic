@@ -185,7 +185,7 @@
     <string name="next_song_x_by_artist_x">Киләсе • %1$s - %2$s</string>
     <string name="similar_artists">Охшаш артистлар</string>
     <string name="label_more_from_artist">Артисттан күбрәк</string>
-    <string name="label_more_from_x">%s белән чагыштырганда күбрәк</string>
+    <string name="label_more_from_x">%s тан күбрәк</string>
     <string name="various_artists">Төрле артистлар</string>
     <string name="unknown_artist">Билгесез артист</string>
     <string name="unknown_genre">Билгесез жанр</string>
