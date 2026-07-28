@@ -980,4 +980,5 @@
     <string name="legal">Legal</string>
     <string name="terms_of_service">Términos de servicio</string>
     <string name="privacy_policy">Política de privacidad</string>
+    <string name="sort_order_name">Nombre</string>
 </resources>
