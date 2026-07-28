@@ -27,7 +27,8 @@ sealed class SortMode(
     private val items: List<SortItem>
 ) : KoinComponent {
 
-    protected val collator: Collator by lazy { sortingCollator() }
+    protected val collator: Collator
+        get() = sortingCollator()
 
     val ignoreArticles: Boolean
         get() = Preferences.ignoreArticlesWhenSorting

@@ -41,8 +41,6 @@ interface SpecialRepository {
 
 class RealSpecialRepository(private val songRepository: RealSongRepository) : SpecialRepository {
 
-    private val collator by lazy { sortingCollator() }
-
     override suspend fun releaseYears(): List<ReleaseYear> {
         val songs = songRepository.songs(
             songRepository.makeSongCursor("${AudioColumns.YEAR} > 0", null)
@@ -166,7 +164,7 @@ class RealSpecialRepository(private val songRepository: RealSongRepository) : Sp
             addAll(subfolders)
             addAll(songsInThisFolder)
         }.sortedWith(
-            compareBy<FileSystemItem> { it is Song }.thenBy(collator) { it.fileName }
+            compareBy<FileSystemItem> { it is Song }.thenBy(sortingCollator()) { it.fileName }
         )
 
         return FileSystemQuery(name, path, parentPath, children)
