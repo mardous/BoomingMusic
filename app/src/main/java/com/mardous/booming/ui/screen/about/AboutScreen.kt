@@ -19,6 +19,7 @@ package com.mardous.booming.ui.screen.about
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -93,10 +94,13 @@ import com.mardous.booming.util.Constants.DONATION_LINK
 import com.mardous.booming.util.Constants.DOWNLOAD_URL
 import com.mardous.booming.util.Constants.FAQ_LINK
 import com.mardous.booming.util.Constants.ISSUE_TRACKER_LINK
+import com.mardous.booming.util.Constants.PRIVACY_POLICY_LINK
 import com.mardous.booming.util.Constants.RELEASES_LINK
 import com.mardous.booming.util.Constants.SUPPORT_EMAIL
 import com.mardous.booming.util.Constants.TELEGRAM_LINK
+import com.mardous.booming.util.Constants.TERMS_OF_SERVICE_LINK
 import com.mardous.booming.util.Constants.TRANSLATIONS_LINK
+import com.mardous.booming.util.Constants.WEBSITE_LINK
 import com.mikepenz.aboutlibraries.ui.compose.android.produceLibraries
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
 import dev.jeziellago.compose.markdowntext.MarkdownText
@@ -170,7 +174,8 @@ fun AboutScreen(
     }
 
     val sections = getAboutSections(
-        onTranslatorsClick = { showTranslatorsDialog = true }
+        onTranslatorsClick = { showTranslatorsDialog = true },
+        onLicensesClick = { showLicensesDialog = true }
     )
 
     CollapsibleAppBarScaffold(
@@ -184,15 +189,7 @@ fun AboutScreen(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
         ) {
-            item {
-                BoomingMusicHeader(
-                    version = appVersion,
-                    onChangelogClick = { context.openUrl(RELEASES_LINK) },
-                    onForkClick = { context.openUrl(APP_GITHUB_URL) },
-                    onFAQClick = { context.openUrl(FAQ_LINK) },
-                    onLicensesClick = { showLicensesDialog = true }
-                )
-            }
+            item { BoomingMusicHeader(version = appVersion) }
 
             item { AboutSectionTitle(stringResource(R.string.author)) }
 
@@ -229,13 +226,8 @@ fun AboutScreen(
 }
 
 @Composable
-private fun BoomingMusicHeader(
-    version: String,
-    onChangelogClick: () -> Unit,
-    onForkClick: () -> Unit,
-    onLicensesClick: () -> Unit,
-    onFAQClick: () -> Unit
-) {
+private fun BoomingMusicHeader(version: String) {
+    val context = LocalContext.current
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth()
@@ -298,7 +290,7 @@ private fun BoomingMusicHeader(
                     icon = R.drawable.ic_history_24dp,
                     label = stringResource(R.string.changelog),
                     modifier = Modifier.weight(1f),
-                    onClick = onChangelogClick
+                    onClick = { context.openUrl(RELEASES_LINK) }
                 )
             }
 
@@ -306,21 +298,21 @@ private fun BoomingMusicHeader(
                 icon = R.drawable.ic_github_circle_24dp,
                 label = stringResource(R.string.github),
                 modifier = Modifier.weight(1f),
-                onClick = onForkClick
+                onClick = { context.openUrl(APP_GITHUB_URL) }
             )
 
             AboutHeaderButton(
                 icon = R.drawable.ic_help_24dp,
                 label = stringResource(R.string.faq),
                 modifier = Modifier.weight(1f),
-                onClick = onFAQClick
+                onClick = { context.openUrl(FAQ_LINK) }
             )
 
             AboutHeaderButton(
-                icon = R.drawable.ic_description_24dp,
-                label = stringResource(R.string.licenses),
+                icon = R.drawable.ic_language_24dp,
+                label = stringResource(R.string.website),
                 modifier = Modifier.weight(1f),
-                onClick = onLicensesClick
+                onClick = { context.openUrl(WEBSITE_LINK) }
             )
         }
     }
@@ -492,9 +484,24 @@ private fun AboutHeaderButton(
     }
 }
 
+/** Table of all contributors */
+private enum class Contributor(
+    @StringRes val title: Int,
+    @StringRes val description: Int,
+    val avatar: String,
+    val githubUser: String
+) {
+    Dawid(R.string.contributor_dawid, R.string.contributor_dawid_description, "dawid", "hackzy01"),
+    Lenard(R.string.contributor_lenard, R.string.contributor_lenard_description, "lenard", "lenardflx"),
+    TTop(R.string.contributor_ttop, R.string.contributor_ttop_description, "ttop", "TheTerminatorOfProgramming"),
+    Ray(R.string.contributor_ray, R.string.contributor_ray_description, "ray", "raycadle"),
+    Alex(R.string.contributor_alex, R.string.contributor_alex_description, "alex", "Paxsenix0")
+}
+
 @Composable
 private fun getAboutSections(
-    onTranslatorsClick: () -> Unit
+    onTranslatorsClick: () -> Unit,
+    onLicensesClick: () -> Unit
 ): List<Pair<String, List<AboutItemData>>> {
     val context = LocalContext.current
 
@@ -506,62 +513,19 @@ private fun getAboutSections(
     }
 
     return listOf(
-        stringResource(R.string.contributors) to listOf(
+        stringResource(R.string.contributors) to Contributor.entries.map { contributor ->
             AboutItemData(
                 icon = {
                     AboutContributorImage(
-                        username = "dawid",
+                        username = contributor.avatar,
                         modifier = Modifier.size(48.dp)
                     )
                 },
-                title = stringResource(R.string.contributor_dawid),
-                summary = stringResource(R.string.contributor_dawid_description),
-                onClick = { openGithubProfile("hackzy01") }
-            ),
-            AboutItemData(
-                icon = {
-                    AboutContributorImage(
-                        username = "lenard",
-                        modifier = Modifier.size(48.dp)
-                    )
-                },
-                title = stringResource(R.string.contributor_lenard),
-                summary = stringResource(R.string.contributor_lenard_description),
-                onClick = { openGithubProfile("lenardflx") }
-            ),
-            AboutItemData(
-                icon = {
-                    AboutContributorImage(
-                        username = "ttop",
-                        modifier = Modifier.size(48.dp)
-                    )
-                },
-                title = stringResource(R.string.contributor_ttop),
-                summary = stringResource(R.string.contributor_ttop_description),
-                onClick = { openGithubProfile("TheTerminatorOfProgramming") }
-            ),
-            AboutItemData(
-                icon = {
-                    AboutContributorImage(
-                        username = "ray",
-                        modifier = Modifier.size(48.dp)
-                    )
-                },
-                title = stringResource(R.string.contributor_ray),
-                summary = stringResource(R.string.contributor_ray_description),
-                onClick = { openGithubProfile("raycadle") }
-            ),
-            AboutItemData(
-                icon = {
-                    AboutContributorImage(
-                        username = "alex",
-                        modifier = Modifier.size(48.dp)
-                    )
-                },
-                title = stringResource(R.string.contributor_alex),
-                summary = stringResource(R.string.contributor_alex_description),
-                onClick = { openGithubProfile("Paxsenix0") }
-            ),
+                title = stringResource(contributor.title),
+                summary = stringResource(contributor.description),
+                onClick = { openGithubProfile(contributor.githubUser) }
+            )
+        } + listOf(
             AboutItemData(
                 icon = { AboutItemIcon(painterResource(R.drawable.ic_translate_24dp)) },
                 title = stringResource(R.string.translators_title),
@@ -606,6 +570,23 @@ private fun getAboutSections(
                             .toChooser(sendInvitationTitle)
                     )
                 }
+            )
+        ),
+        stringResource(R.string.legal) to listOf(
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_description_24dp)) },
+                title = stringResource(R.string.licenses),
+                onClick = onLicensesClick
+            ),
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_description_24dp)) },
+                title = stringResource(R.string.terms_of_service),
+                onClick = { context.openUrl(TERMS_OF_SERVICE_LINK) }
+            ),
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_description_24dp)) },
+                title = stringResource(R.string.privacy_policy),
+                onClick = { context.openUrl(PRIVACY_POLICY_LINK) }
             )
         )
     )
