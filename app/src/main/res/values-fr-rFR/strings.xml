@@ -970,4 +970,15 @@
     <string name="up_next">À suivre</string>
     <string name="reorder_action">Réorganiser</string>
     <string name="go_to_current_track">Aller à la piste en cours</string>
+    <string name="action_auto_fill_from_musicbrainz">Remplissage automatique à partir de MusicBrainz</string>
+    <string name="searching">Recherche en cours…</string>
+    <string name="musicbrainz_search_title">Recherche sur MusicBrainz</string>
+    <string name="musicbrainz_search_message">Recherchez les métadonnées d\'un morceau sur MusicBrainz à l\'aide du titre et du nom de l\'artiste.</string>
+    <string name="musicbrainz_no_results">Aucun résultat trouvé sur MusicBrainz.</string>
+    <string name="musicbrainz_select_recording">Sélectionnez un enregistrement</string>
+    <string name="sort_order_name">Nom</string>
+    <string name="website">Site web</string>
+    <string name="legal">Mentions légales</string>
+    <string name="terms_of_service">Conditions d\'utilisation</string>
+    <string name="privacy_policy">Politique de confidentialité</string>
 </resources>
