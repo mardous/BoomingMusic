@@ -44,7 +44,7 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
     override val playerControlsFragment: AbsPlayerControlsFragment
         get() = controlsFragment
 
-    override val playerToolbar: Toolbar
+    override val playerToolbar: Toolbar?
         get() = binding.playerToolbar
 
     override val blurView: ImageView
@@ -112,7 +112,8 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
                 }
             }
         }
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v: View, insets: WindowInsetsCompat ->
+        val insetsConsumer = binding.insetsConsumer ?: binding.root
+        ViewCompat.setOnApplyWindowInsetsListener(insetsConsumer) { v: View, insets: WindowInsetsCompat ->
             val systemBars = insets.getInsets(Type.systemBars())
             v.updatePadding(top = systemBars.top, bottom = systemBars.bottom)
             val displayCutout = insets.getInsets(Type.displayCutout())
@@ -133,7 +134,7 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
     }
 
     private fun setupToolbar() {
-        playerToolbar.setNavigationOnClickListener {
+        playerToolbar?.setNavigationOnClickListener {
             getOnBackPressedDispatcher().onBackPressed()
         }
     }
@@ -195,7 +196,7 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
         }
         return listOfNotNull(
             binding.root.surfaceTintTarget(scheme.surfaceColor),
-            binding.playerToolbar.tintTarget(oldIconColor, scheme.onSurfaceColor),
+            binding.playerToolbar?.tintTarget(oldIconColor, scheme.onSurfaceColor),
             binding.title.tintTarget(oldPrimaryTextColor, scheme.onSurfaceColor),
             binding.text.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
             binding.songInfo.tintTarget(oldSecondaryTextColor, scheme.onSurfaceVariantColor),
