@@ -7,6 +7,8 @@ import android.content.Context
 import android.content.Intent
 import android.media.audiofx.AudioEffect
 import android.net.Uri
+import android.util.JsonReader
+import android.util.JsonToken
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -365,14 +367,10 @@ class EqualizerViewModel(
         } else {
             val result = runCatching {
                 mediaStoreWriter.toContentResolver(null, data) { stream ->
-                    when {
-                        content.isNotEmpty() -> {
-                            stream.bufferedWriter().use { it.write(content) }
-                            true
-                        }
-
-                        else -> false
-                    }
+                    if (content.isNotEmpty()) {
+                        stream.bufferedWriter().use { bfw -> bfw.write(content) }
+                        true
+                    } else false
                 }
             }
 
@@ -391,12 +389,31 @@ class EqualizerViewModel(
     }
 
     fun requestImport(data: Uri?) = viewModelScope.launch(Dispatchers.IO) {
-        val result = if (data == null || data.path?.endsWith(".json") == false) {
+        val result = if (data == null) {
             ProfileImportRequest(false, R.string.there_is_nothing_to_import)
         } else {
+            val mimeType = contentResolver.getType(data)
             val parseResult = runCatching {
+                if (mimeType == null || (
+                            mimeType != "application/json" &&
+                            mimeType != "text/plain" &&
+                            !mimeType.startsWith("application/"))) {
+                    throw IllegalArgumentException("Invalid MIME type: $mimeType")
+                }
+
+                // First, check if it starts as a JSON array without reading everything into memory
                 contentResolver.openInputStream(data)?.use { stream ->
-                    Json.decodeFromString<List<EqProfile>>(stream.readString())
+                    JsonReader(stream.bufferedReader()).use { reader ->
+                        if (reader.peek() != JsonToken.BEGIN_ARRAY) {
+                            throw IllegalArgumentException("Not a JSON array")
+                        }
+                    }
+                }
+
+                // If check passed, read and decode
+                contentResolver.openInputStream(data)?.use { stream ->
+                    val content = stream.readString()
+                    Json.decodeFromString<List<EqProfile>>(content)
                 }
             }
             val profiles = parseResult.getOrNull()
