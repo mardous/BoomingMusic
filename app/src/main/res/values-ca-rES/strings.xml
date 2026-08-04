@@ -253,7 +253,6 @@
     <string name="label_file_format">Format</string>
     <string name="file_label">Fitxer</string>
     <string name="metadata_label">Metadades</string>
-    <string name="title_and_artist">Títol i Artista</string>
     <string name="song">Cançó</string>
     <string name="title">Títol</string>
     <string name="album">Àlbum</string>
@@ -844,12 +843,8 @@
     <string name="network_features_title">Activa les funcionalitats de xarxa</string>
     <string name="use_lrclib_provider_title">Usa el proveïdor LRCLib</string>
     <string name="use_betterlyrics_provider_title">Usa el proveïdor BetterLyrics</string>
-    <string name="app_widget_responsive">Responsiu</string>
-    <string name="app_widget_responsive_desc">Un widget que adapta el seu disseny a diferents mides</string>
     <string name="app_widget_card">Targeta</string>
     <string name="app_widget_card_desc">Estil minimalista i simplificat</string>
-    <string name="app_widget_full">Complet</string>
-    <string name="app_widget_full_desc">La pantalla del reproductor directa al vostre escriptori</string>
     <string name="channel_mono">Monoaural</string>
     <string name="bit_perfect_info">Bit a bit: %1$s | %2$s</string>
     <string name="lastfm_login_toggle_password_visibility">Alterna la visibilitat de la contrasenya</string>
@@ -887,16 +882,8 @@
     <string name="telegram_community_summary">Uniu-vos a la nostra comunitat de Telegram per estar al dia d\'actualitzacions i notícies.</string>
     <string name="support_my_work">Dona\'m suport</string>
     <string name="network_summary">Gestioneu funcions d\'internet com ara la integració de Last.fm, els proveïdors de lletres i descàrregues de metadades.</string>
-    <string name="widgets_header">Widgets de l\'aplicació</string>
-    <string name="widget_small_layout_style_title">Aparença minimalista</string>
-    <string name="widget_small_layout_classic">Clàssic</string>
-    <string name="widget_small_layout_simplified">Simplificat</string>
     <string name="widget_dynamic_colors_title">Colors dinàmics</string>
     <string name="widget_dynamic_colors_summary">Adapta els colors del widget a la portada de la pista actual.</string>
-    <string name="widget_image_corner_radius_title">Radi del cantó de la imatge</string>
-    <string name="widget_image_corner_radius_summary">Canvia l\'arrodoniment de l\'art de l\'àlbum.</string>
-    <string name="widget_third_line_title">Tercera línia d\'informació</string>
-    <string name="widget_third_line_summary">Tria què mostrar a la tercera fila de text.</string>
     <string name="lyrics_center_horizontally_title">Centra la lletra horitzontalment</string>
     <string name="lyrics_center_horizontally_summary">Alinea cada línia de lletra al centre horitzontal de la pantalla.</string>
     <string name="wifi_only_network_features_title">Fer ús de funcions de xarxa només amb wifi</string>

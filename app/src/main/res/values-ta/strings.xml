@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_widget_responsive">பதிலளிக்கக்கூடியது</string>
-    <string name="app_widget_responsive_desc">வெவ்வேறு அளவுகளில் அதன் அமைப்பை மாற்றியமைக்கும் விட்செட்</string>
     <string name="app_widget_card">அட்டை</string>
     <string name="app_widget_card_desc">குறைந்தபட்ச மற்றும் எளிமைப்படுத்தப்பட்ட பாணி</string>
-    <string name="app_widget_full">முழு</string>
-    <string name="app_widget_full_desc">பிளேயர் திரை உங்கள் டெச்க்டாப்பில் நேரடியாக</string>
     <string name="action_play">விளையாடு</string>
     <string name="action_play_all">அனைத்தையும் விளையாடு</string>
     <string name="action_shuffle_play">கலக்கி விளையாடு</string>
@@ -266,7 +262,6 @@
     <string name="label_file_format">வடிவம்</string>
     <string name="file_label">கோப்பு</string>
     <string name="metadata_label">மேனிலை தரவு</string>
-    <string name="title_and_artist">தலைப்பு மற்றும் கலைஞர்</string>
     <string name="song">பாடல்</string>
     <string name="title">தலைப்பு</string>
     <string name="album">ஆல்பம்</string>
@@ -605,7 +600,6 @@
     <string name="audio_focus_header">ஆடியோ கவனம்</string>
     <string name="shuffle_mode_header">கலக்கு முறை</string>
     <string name="display_header">காட்சி</string>
-    <string name="widgets_header">பயன்பாட்டு விட்செட்டுகள்</string>
     <string name="backup_restore_header">காப்பு/மீட்டமை</string>
     <string name="visuals_header">காட்சிகள்</string>
     <string name="update_title">புதுப்பிப்பு</string>
@@ -627,15 +621,8 @@
     <string name="hold_tab_to_search_summary">தேடல் திரையைத் திறக்க, எந்த வழிசெலுத்தல் பட்டி தாவலையும் நீண்ட நேரம் அழுத்தவும்.</string>
     <string name="larger_header_image_title">பெரிய தலைப்பு படம்</string>
     <string name="larger_header_image_summary">ஆல்பம், கலைஞர் மற்றும் பிளேலிச்ட் விவரங்களில் பெரிய அட்டைப் படத்தைக் காட்டு.</string>
-    <string name="widget_small_layout_style_title">சிறிய தளவமைப்பு பாணி</string>
-    <string name="widget_small_layout_classic">கிளாசிக்</string>
-    <string name="widget_small_layout_simplified">எளிமைப்படுத்தப்பட்டது</string>
     <string name="widget_dynamic_colors_title">மாறும் நிறங்கள்</string>
     <string name="widget_dynamic_colors_summary">தற்போதைய டிராக் கலைப்படைப்புக்கு விட்செட் வண்ணங்களை மாற்றியமைக்கவும்.</string>
-    <string name="widget_image_corner_radius_title">படத்தின் மூலையின் ஆரம்</string>
-    <string name="widget_image_corner_radius_summary">ஆல்பம் கலைக்கான ரவுண்டிங்கை மாற்றவும்.</string>
-    <string name="widget_third_line_title">மூன்றாவது செய்தி வரி</string>
-    <string name="widget_third_line_summary">உரையின் மூன்றாவது வரிசையில் எதைக் காட்ட வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்.</string>
     <string name="lyrics_center_current_line_title">மைய நடப்பு வரி</string>
     <string name="lyrics_center_current_line_summary">தற்போதைய பாடல் வரியை மேலே சீரமைக்காமல் திரையில் மையமாக வைத்திருங்கள்.</string>
     <string name="lyrics_center_horizontally_title">பாடல் வரிகளை கிடைமட்டமாக மையப்படுத்தவும்</string>

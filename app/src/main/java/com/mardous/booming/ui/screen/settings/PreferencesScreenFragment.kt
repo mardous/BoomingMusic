@@ -103,8 +103,6 @@ import com.mardous.booming.util.TRASH_MUSIC_FILES
 import com.mardous.booming.util.USE_CUSTOM_FONT
 import com.mardous.booming.util.USE_FOLDER_ART
 import com.mardous.booming.util.WHITELIST_ENABLED
-import com.mardous.booming.util.WIDGET_IMAGE_CORNER_RADIUS
-import com.mardous.booming.util.WIDGET_THIRD_LINE_CONTENT
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -265,7 +263,6 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             true
         }
 
-        findPreference<Preference>(WIDGET_IMAGE_CORNER_RADIUS)?.isVisible = hasS()
         findPreference<Preference>(ADD_EXTRA_CONTROLS)?.isVisible = !resources.isTablet
 
         findPreference<ListPreference>(LyricsViewSettings.Key.BACKGROUND_EFFECT)?.apply {
@@ -411,8 +408,7 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             val dialogFragment: DialogFragment? = when (preference.key) {
                 LIBRARY_CATEGORIES -> CategoriesPreferenceDialog()
                 NOW_PLAYING_SCREEN -> NowPlayingScreenPreferenceDialog()
-                NOW_PLAYING_EXTRA_INFO -> ExtraInfoPreferenceDialog.nowPlaying(requireContext())
-                WIDGET_THIRD_LINE_CONTENT -> ExtraInfoPreferenceDialog.appWidgets(requireContext())
+                NOW_PLAYING_EXTRA_INFO -> ExtraInfoPreferenceDialog.nowPlaying()
                 ON_SONG_CLICK_ACTION -> SongClickActionPreferenceDialog()
                 ON_CLEAR_QUEUE_ACTION -> ClearQueueActionPreferenceDialog()
                 COVER_DOUBLE_TAP_ACTION,

@@ -253,7 +253,6 @@
     <string name="label_file_format">Formato</string>
     <string name="file_label">File</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">Titolo e Artista</string>
     <string name="song">Brano</string>
     <string name="title">Titolo</string>
     <string name="album">Album</string>
@@ -816,7 +815,6 @@
     <string name="uncaught_error_restart_app">Riavvia app</string>
     <string name="uncaught_error_github">Apri issue su GitHub</string>
     <string name="uncaught_error_send">Send report</string>
-    <string name="app_widget_responsive_desc">Un widget che adatta il suo layout a varie dimensioni</string>
     <string name="app_widget_card">Scheda</string>
     <string name="app_widget_card_desc">Stile minimalista e semplificato</string>
     <string name="search_playlists">Cerca playlist</string>
@@ -826,9 +824,6 @@
     <string name="no_playlists_that_match_x">Non ci sono playlist che corrispondono a \"%s\"</string>
     <string name="songs_added_to_playlists">Brani aggiunti alla playlist.</string>
     <string name="no_playlists_label">Nessuna playlist</string>
-    <string name="app_widget_responsive">Responsive</string>
-    <string name="app_widget_full">Completo</string>
-    <string name="app_widget_full_desc">La schermata del player direttamente nel desktop</string>
     <string name="channel_mono">Mono</string>
     <string name="channel_stereo">Stereo</string>
     <string name="channel_stereo_2_1">Stereo 2.1</string>
@@ -882,17 +877,10 @@
     <string name="lyrics_by_x">Testo di %s</string>
     <string name="lyrics_center_horizontally_title">Centra il testo orizzontalmente</string>
     <string name="lyrics_center_horizontally_summary">Allinea ogni riga del testo al centro orizzontale dello schermo.</string>
-    <string name="widgets_header">Widget dell\'app</string>
     <string name="images_title">Immagini</string>
     <string name="lastfm_title">Last.fm</string>
-    <string name="widget_small_layout_style_title">Stile di layout piccolo</string>
-    <string name="widget_small_layout_classic">Classico</string>
-    <string name="widget_small_layout_simplified">Semplificato</string>
     <string name="widget_dynamic_colors_title">Colori dinamici</string>
     <string name="widget_dynamic_colors_summary">Adatta il widget alla copertina della traccia corrente.</string>
-    <string name="widget_image_corner_radius_title">Raggio del raccordo dell\'immagine</string>
-    <string name="widget_third_line_title">Terza linea per informazioni</string>
-    <string name="widget_third_line_summary">Selezione cosa mostrare nella terza linea di testo.</string>
     <string name="preferred_lyrics_file_format_title">Formato file preferito</string>
     <string name="preferred_lyrics_file_format_summary">Se la canzone ha testi in formati differenti, questa opzione di consente di stabilire quello prioritario.</string>
     <string name="mini_player_swipe_to_skip_title">Striscia il mini riproduttore per saltare</string>
@@ -904,7 +892,6 @@
     <string name="lastfm_login_summary">Autenticati con il tuo account Last.fm per abilitare lo scrobbling e l\'aggiornamento del brano in riproduzione.</string>
     <string name="lastfm_scrobbling_title">Abilita lo scrobbling Last.fm</string>
     <string name="arranger">Arrangiatore</string>
-    <string name="widget_image_corner_radius_summary">Cambia l\'arrotondamento per la copertina dell\'album.</string>
     <string name="lastfm_scrobbling_summary">Invia automaticamente i brani riprodotti alla tua storia di riproduzione Last.fm.</string>
     <string name="lastfm_now_playing_title">Aggiorna brano corrente su Last.fm</string>
     <string name="lastfm_now_playing_summary">Mostra il brano in riproduzione sul tuo profilo Last.fm in tempo reale.</string>

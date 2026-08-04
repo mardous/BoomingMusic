@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_widget_responsive">Mabilis</string>
-    <string name="app_widget_responsive_desc">Isang Widget na inaangkop ang layouts sa iba\'t-ibang laki</string>
     <string name="app_widget_card">Card</string>
     <string name="app_widget_card_desc">Minimalist at simplified style</string>
-    <string name="app_widget_full">Full</string>
-    <string name="app_widget_full_desc">Ang player screen direkta sa iyong desktop</string>
     <string name="action_play">Play</string>
     <string name="action_play_all">Play all</string>
     <string name="action_shuffle_play">Shuffle play</string>

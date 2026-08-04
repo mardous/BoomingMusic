@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_widget_responsive">جواوگو</string>
-    <string name="app_widget_responsive_desc">ویجتی ک شؽوات خوسه وا هندا یل موختلف ی جۊر اکونه</string>
     <string name="app_widget_card">کارت</string>
     <string name="app_widget_card_desc">سبک مینیمالیستی وو ساڌه وابیڌه</string>
     <string name="action_play_all">پوی ن پشک کۊنین</string>
@@ -58,9 +56,7 @@
     <string name="no_device_playlists">نومگه پشک وۊجۊڌ نڌاره</string>
     <string name="select_songs_title">آرنگا ن پسند کۊنین</string>
     <string name="playlist_x_is_empty">نومگه پشک %s پتی هڌ.</string>
-    <string name="app_widget_full_desc">بلگه پسک کوننده موستقیم ری دسکتاپ ایسا</string>
     <string name="action_play">بازی کۊنین</string>
-    <string name="app_widget_full">کامل</string>
     <string name="playlist_name_cannot_be_empty">نوم نومگه پشک نؽبۊ ک پتی بۊ</string>
     <string name="could_not_import_the_playlist_x">نومگه پشک «%s» و من نووڌ</string>
     <string name="there_are_no_importable_playlists">هیچ نومگه پشک قابل و وورگندنی وۊجۊڌ نڌاره.</string>
@@ -227,7 +223,6 @@
     <string name="size">هندا فایل</string>
     <string name="label_file_format">فورمت</string>
     <string name="file_label">فایل</string>
-    <string name="title_and_artist">عونوان وو هونرمند</string>
     <string name="song">آرنگ</string>
     <string name="title">عونوان</string>
     <string name="album">آلبوم</string>

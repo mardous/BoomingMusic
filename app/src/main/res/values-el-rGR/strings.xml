@@ -253,7 +253,6 @@
     <string name="label_file_format">Μορφή</string>
     <string name="file_label">File</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">Τίτλος και Καλλιτέχνης</string>
     <string name="song">Τραγούδι</string>
     <string name="title">Τίτλος</string>
     <string name="album">Άλμπουμ</string>
@@ -817,11 +816,7 @@
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
     <string name="app_widget_card_desc">Εξιδανικευμένο και απλοποιημένο στυλ</string>
-    <string name="app_widget_full">Πλήρες</string>
     <string name="telegram_community">Κοινότητα στο Telegram</string>
     <string name="telegram_community_summary">Συνδεθείτε στην κοινότητά μας στο Telegram για να μένετε ενημερωμένοι για νέες εκδόσεις και νέα.</string>
     <string name="app_widget_card">Κάρτα</string>
-    <string name="app_widget_responsive">αποκριτικό</string>
-    <string name="app_widget_responsive_desc">Ένα widget που αλλάζει ανάλογα με το μέγεθος του layout</string>
-    <string name="app_widget_full_desc">Η οθόνη του παίκτη αναμεταδίδεται στην οθόνη σας</string>
 </resources>

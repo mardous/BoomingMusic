@@ -253,7 +253,6 @@
     <string name="label_file_format">التنسيق</string>
     <string name="file_label">ملف</string>
     <string name="metadata_label">بيانات التعريف</string>
-    <string name="title_and_artist">العنوان والفنان</string>
     <string name="song">أغنية</string>
     <string name="title">العنوان</string>
     <string name="album">ألبوم</string>
@@ -848,12 +847,8 @@
     <string name="uncaught_error_restart_app">إعادة تشغيل التطبيق</string>
     <string name="uncaught_error_github">فتح المشكلة على GitHub</string>
     <string name="uncaught_error_send">إرسال التقرير</string>
-    <string name="app_widget_responsive_desc">أداة يتكيف تصميمها مع أحجام مختلفة</string>
     <string name="app_widget_card">بطاقة عنصر واجهة المستخدم للتطبيق</string>
     <string name="app_widget_card_desc">تصميم التطبيق</string>
-    <string name="app_widget_full">النمط الكامل</string>
-    <string name="app_widget_full_desc">شاشة المشغل مباشرة على سطح المكتب الخاص بك</string>
-    <string name="app_widget_responsive">أداة تُكيّف تصميمها مع الأحجام المختلفة</string>
     <string name="channel_mono">ستيريو</string>
     <string name="channel_stereo">ستيريو 2.1</string>
     <string name="channel_stereo_2_1">رباعي الصوت</string>

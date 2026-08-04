@@ -22,7 +22,6 @@ import com.mardous.booming.playback.toMediaItems
 import com.mardous.booming.util.Preferences
 
 class LibraryProvider(private val repository: Repository) {
-
     @Volatile
     private var lastSearch: Pair<Int, List<MediaItem>>? = null
 
@@ -417,7 +416,15 @@ class LibraryProvider(private val repository: Repository) {
         return mediaItems
     }
 
-    private suspend fun getPlayableSongs(
+    // Use id-only DAO queries where possible to avoid loading artwork and metadata for widgets.
+    internal suspend fun getPlayableSongIds(parentId: String, limit: Int): List<Long> =
+        when (parentId) {
+            MediaIDs.RECENT_SONGS -> repository.historySongIds(limit)
+            MediaIDs.TOP_TRACKS -> repository.playCountSongIds(limit)
+            else -> getPlayableSongs(parentId).asSequence().take(limit).map { it.id }.toList()
+        }
+
+    internal suspend fun getPlayableSongs(
         parentId: String,
         childId: String? = null
     ): List<Song> {

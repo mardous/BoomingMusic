@@ -253,7 +253,6 @@
     <string name="label_file_format">פורמט</string>
     <string name="file_label">קובץ</string>
     <string name="metadata_label">נתוני על</string>
-    <string name="title_and_artist">כותרת ואומן</string>
     <string name="song">שיר</string>
     <string name="title">כותרת</string>
     <string name="album">אלבום</string>
@@ -824,11 +823,8 @@
     <string name="uncaught_error_restart_app">הפעל מחדש את האפליקציה</string>
     <string name="uncaught_error_github">פתח דיווח בעיות ב‑GitHub</string>
     <string name="uncaught_error_send">שלח דוח</string>
-    <string name="app_widget_responsive">גמיש</string>
-    <string name="app_widget_responsive_desc">יישומון שפריסתו מתגמשת לפי גדלים שונים</string>
     <string name="app_widget_card">כרטיס</string>
     <string name="app_widget_card_desc">סגנון מינימליסטי ופשוט</string>
-    <string name="app_widget_full">מלא</string>
     <string name="search_playlists">חיפוש ברשימות ההשמעה</string>
     <string name="select_playlists_title">בחירת רשימות השמעה</string>
     <string name="songs_added_to_playlists">השירים נוספו לרשימות ההשמעה.</string>

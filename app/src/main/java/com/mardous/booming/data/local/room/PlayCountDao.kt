@@ -70,6 +70,9 @@ interface PlayCountDao {
     @Query("SELECT * FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC LIMIT :limit")
     fun playCountSongsFlow(limit: Int = PLAY_COUNT_LIMIT): Flow<List<PlayCountEntity>>
 
+    @Query("SELECT id FROM PlayCountEntity WHERE play_count > 0 ORDER BY play_count DESC LIMIT :limit")
+    suspend fun playCountSongIds(limit: Int = PLAY_COUNT_LIMIT): List<Long>
+
     @Query("DELETE FROM PlayCountEntity")
     suspend fun clearPlayCount()
 }

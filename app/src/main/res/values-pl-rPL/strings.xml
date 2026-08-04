@@ -253,7 +253,6 @@
     <string name="label_file_format">Format</string>
     <string name="file_label">Plik</string>
     <string name="metadata_label">Metadane</string>
-    <string name="title_and_artist">Tytuł i wykonawca</string>
     <string name="song">Utwór</string>
     <string name="title">Tytuł</string>
     <string name="album">Album</string>
@@ -832,12 +831,8 @@
     <string name="uncaught_error_restart_app">Uruchom ponownie aplikację</string>
     <string name="uncaught_error_github">Zgłoś problem na GitHub</string>
     <string name="uncaught_error_send">Wyślij raport błędu</string>
-    <string name="app_widget_responsive">Responsywny</string>
-    <string name="app_widget_responsive_desc">Widżet, który dostosowuje swój wygląd zależnie od rozmiaru</string>
     <string name="app_widget_card">Karta</string>
     <string name="app_widget_card_desc">Minimalistyczny, uproszczony styl</string>
-    <string name="app_widget_full">pełny</string>
-    <string name="app_widget_full_desc">Ekran odtwarzacza na pulpicie</string>
     <string name="select_playlists_title">Wybierz playlisty</string>
     <string name="new_playlist_action">Nowa</string>
     <string name="no_playlists_create_new">Dotknij guzik \"Nowa\" by utworzyć playlistę</string>
@@ -916,17 +911,11 @@
     <string name="network_title">Sieć</string>
     <string name="ttml_file_lyrics">TTML</string>
     <string name="network_summary">Zarządzaj funkcjami internetowymi, takimi jak Last.fm, dostawcy tekstów piosenek i pobieranie metadanych.</string>
-    <string name="widgets_header">Widżety aplikacji</string>
     <string name="images_title">Obrazy</string>
     <string name="lastfm_title">Last.fm</string>
-    <string name="widget_small_layout_style_title">Styl kompaktowy</string>
-    <string name="widget_small_layout_classic">Klasyk</string>
-    <string name="widget_small_layout_simplified">Uproszczony</string>
     <string name="widget_dynamic_colors_title">Dynamiczne kolory</string>
     <string name="error_lastfm_params">Nieprawidłowe parametry. Może to wynikać z błędu po naszej stronie.</string>
     <string name="widget_dynamic_colors_summary">Dostosuj kolory widżetu do okładki utworu.</string>
-    <string name="widget_image_corner_radius_title">Zaokrąglenie rogów obrazu</string>
-    <string name="widget_image_corner_radius_summary">Zmień zaokrąglenie okładki albumu.</string>
     <string name="lyrics_center_horizontally_title">Wyśrodkuj tekst w poziomie</string>
     <string name="lyrics_karaoke_style_title">Słowa w stylu karaoke</string>
     <string name="lyrics_karaoke_style_summary">Włącza efekt w stylu karaoke dla tekstów zsynchronizowanych słowo po słowie. Pamiętaj, że to funkcja eksperymentalna.</string>
@@ -941,5 +930,4 @@
     <string name="listenbrainz_login_title">Zaloguj się do ListenBrainz</string>
     <string name="listenbrainz_scrobbling_title">Włącz scrobblowanie ListenBrainz</string>
     <string name="arranger">Aranżer</string>
-    <string name="widget_third_line_summary">Wybierz, co wyświetlić w trzecim wierszu.</string>
 </resources>

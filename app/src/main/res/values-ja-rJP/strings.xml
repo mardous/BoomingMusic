@@ -253,7 +253,6 @@
     <string name="label_file_format">フォーマット</string>
     <string name="file_label">ファイル</string>
     <string name="metadata_label">メタデータ</string>
-    <string name="title_and_artist">タイトルとアーティスト</string>
     <string name="song">曲</string>
     <string name="title">タイトル</string>
     <string name="album">アルバム</string>

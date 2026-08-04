@@ -253,7 +253,6 @@
     <string name="label_file_format">Format</string>
     <string name="file_label">File</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">Title and Artist</string>
     <string name="song">Song</string>
     <string name="title">Title</string>
     <string name="album">Album</string>
@@ -816,5 +815,4 @@
     <string name="uncaught_error_restart_app">Restart app</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
-    <string name="app_widget_responsive">Flexible</string>
 </resources>

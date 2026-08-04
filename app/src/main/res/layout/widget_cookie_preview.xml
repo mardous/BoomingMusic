@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.AppWidget"
+    tools:ignore="UselessLeaf">
+    <!-- Spacers are FrameLayouts, not Space: RemoteViews only inflates @RemoteView classes and Space
+         is not one, so lint's UselessLeaf suggestion would break this layout as an initialLayout. -->
+
+    <RelativeLayout
+        android:layout_width="168dp"
+        android:layout_height="168dp"
+        android:layout_centerInParent="true">
+
+
+        <ImageView
+            style="@style/Widget.Booming.AppWidget.Preview.Control"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_music_note_24dp"
+            android:background="@drawable/widget_shape_scallop"
+            android:contentDescription="@null" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:orientation="horizontal">
+
+            <ImageView
+            style="@style/Widget.Booming.AppWidget.Preview.Control"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_previous_m3_24dp"
+                android:background="@drawable/widget_shape_stadium"
+                android:contentDescription="@string/action_previous" />
+
+            <FrameLayout
+                android:layout_width="4dp"
+                android:layout_height="34dp" />
+
+            <ImageView
+            style="@style/Widget.Booming.AppWidget.Preview.Control"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_next_m3_24dp"
+                android:background="@drawable/widget_shape_stadium"
+                android:contentDescription="@string/action_next" />
+        </LinearLayout>
+
+        <ImageView
+            style="@style/Widget.Booming.AppWidget.Preview.Accent"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_play_24dp"
+            android:background="@drawable/widget_shape_stadium"
+            android:contentDescription="@string/action_play_pause" />
+    </RelativeLayout>
+</RelativeLayout>

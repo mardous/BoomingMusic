@@ -3,148 +3,70 @@ package com.mardous.booming.core.appwidgets
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.util.TypedValue
 import android.view.KeyEvent
-import androidx.annotation.ColorInt
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.unit.Dp
-import androidx.glance.GlanceTheme
+import androidx.core.net.toUri
+import androidx.glance.GlanceModifier
+import androidx.glance.LocalContext
 import androidx.glance.action.Action
+import androidx.glance.action.actionStartActivity
+import androidx.glance.action.clickable
+import androidx.glance.appwidget.action.actionSendBroadcast
+import androidx.glance.appwidget.action.actionStartActivity as actionStartActivityIntent
 import androidx.glance.appwidget.action.actionStartService
-import androidx.glance.color.ColorProvider
-import androidx.glance.color.ColorProviders
-import androidx.glance.color.colorProviders
-import com.mardous.booming.core.appwidgets.state.WidgetTheme
+import com.mardous.booming.core.appwidgets.config.SongSource
 import com.mardous.booming.playback.PlaybackService
-import com.mardous.booming.ui.theme.PaletteStyle
-import com.mardous.booming.ui.theme.dynamicColorSchemes
-
-fun Dp.toPx(context: Context): Int {
-    return TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,
-        this.value,
-        context.resources.displayMetrics
-    ).toInt()
-}
-
-fun WidgetTheme(
-    @ColorInt
-    sourceColor: Int,
-    style: PaletteStyle = PaletteStyle.Fidelity
-): WidgetTheme {
-    val colorSchemes = dynamicColorSchemes(
-        keyColor = Color(sourceColor),
-        style = style,
-        contrastLevel = 0.75
-    )
-    return WidgetTheme(
-        lightSurfaceColor = colorSchemes.lightColorScheme.surface.toArgb(),
-        lightOnSurfaceColor = colorSchemes.lightColorScheme.onSurface.toArgb(),
-        lightOnSurfaceVariantColor = colorSchemes.lightColorScheme.onSurfaceVariant.toArgb(),
-        lightPrimaryColor = colorSchemes.lightColorScheme.primary.toArgb(),
-        lightOnPrimaryColor = colorSchemes.lightColorScheme.onPrimary.toArgb(),
-        lightPrimaryContainerColor = colorSchemes.lightColorScheme.primaryContainer.toArgb(),
-        lightOnPrimaryContainerColor = colorSchemes.lightColorScheme.onPrimaryContainer.toArgb(),
-        lightTertiaryContainerColor = colorSchemes.lightColorScheme.tertiaryContainer.toArgb(),
-        lightOnTertiaryContainerColor = colorSchemes.lightColorScheme.onTertiaryContainer.toArgb(),
-        darkSurfaceColor = colorSchemes.darkColorScheme.surface.toArgb(),
-        darkOnSurfaceColor = colorSchemes.darkColorScheme.onSurface.toArgb(),
-        darkOnSurfaceVariantColor = colorSchemes.darkColorScheme.onSurfaceVariant.toArgb(),
-        darkPrimaryColor = colorSchemes.darkColorScheme.primary.toArgb(),
-        darkOnPrimaryColor = colorSchemes.darkColorScheme.onPrimary.toArgb(),
-        darkPrimaryContainerColor = colorSchemes.darkColorScheme.primaryContainer.toArgb(),
-        darkOnPrimaryContainerColor = colorSchemes.darkColorScheme.onPrimaryContainer.toArgb(),
-        darkTertiaryContainerColor = colorSchemes.darkColorScheme.tertiaryContainer.toArgb(),
-        darkOnTertiaryContainerColor = colorSchemes.lightColorScheme.onTertiaryContainer.toArgb()
-    )
-}
-
-@Composable
-fun WidgetTheme?.getColors(): ColorProviders {
-    val themeColors = GlanceTheme.colors
-    return if (this == null) themeColors else {
-        colorProviders(
-            primary = ColorProvider(
-                day = Color(lightPrimaryColor),
-                night = Color(darkPrimaryColor)
-            ),
-            onPrimary = ColorProvider(
-                day = Color(lightOnPrimaryColor),
-                night = Color(darkOnPrimaryColor)
-            ),
-            primaryContainer = ColorProvider(
-                day = Color(lightPrimaryContainerColor),
-                night = Color(darkPrimaryContainerColor)
-            ),
-            onPrimaryContainer = ColorProvider(
-                day = Color(lightOnPrimaryContainerColor),
-                night = Color(darkOnPrimaryContainerColor)
-            ),
-            secondary = themeColors.secondary,
-            onSecondary = themeColors.onSecondary,
-            secondaryContainer = themeColors.secondaryContainer,
-            onSecondaryContainer = themeColors.onSecondaryContainer,
-            tertiary = themeColors.tertiary,
-            onTertiary = themeColors.onTertiary,
-            tertiaryContainer = ColorProvider(
-                day = Color(lightTertiaryContainerColor),
-                night = Color(darkTertiaryContainerColor)
-            ),
-            onTertiaryContainer = ColorProvider(
-                day = Color(lightOnTertiaryContainerColor),
-                night = Color(darkOnTertiaryContainerColor)
-            ),
-            error = themeColors.error,
-            errorContainer = themeColors.errorContainer,
-            onError = themeColors.onError,
-            onErrorContainer = themeColors.onErrorContainer,
-            background = themeColors.background,
-            onBackground = themeColors.onBackground,
-            surface = ColorProvider(
-                day = Color(lightSurfaceColor),
-                night = Color(darkSurfaceColor)
-            ),
-            onSurface = ColorProvider(
-                day = Color(lightOnSurfaceColor),
-                night = Color(darkOnSurfaceColor)
-            ),
-            surfaceVariant = themeColors.surfaceVariant,
-            onSurfaceVariant = ColorProvider(
-                day = Color(lightOnSurfaceVariantColor),
-                night = Color(darkOnSurfaceVariantColor)
-            ),
-            outline = themeColors.outline,
-            inverseOnSurface = themeColors.inverseOnSurface,
-            inverseSurface = themeColors.inverseSurface,
-            inversePrimary = themeColors.inversePrimary,
-            widgetBackground = themeColors.widgetBackground
-        )
-    }
-}
+import com.mardous.booming.ui.screen.MainActivity
 
 fun playbackAction(context: Context, mediaKeyCode: Int): Action {
     val intent = Intent(Intent.ACTION_MEDIA_BUTTON)
-    intent.setComponent(ComponentName(context, PlaybackService::class.java))
+    intent.component = ComponentName(context, PlaybackService::class.java)
     intent.putExtra(Intent.EXTRA_KEY_EVENT, KeyEvent(KeyEvent.ACTION_DOWN, mediaKeyCode))
     return actionStartService(intent, true)
 }
 
-fun toggleShuffleAction(context: Context): Action {
-    val intent = Intent(PlaybackService.ACTION_TOGGLE_SHUFFLE)
-    intent.setComponent(ComponentName(context, PlaybackService::class.java))
-    return actionStartService(intent)
+fun toggleShuffleAction(context: Context): Action =
+    widgetAction(context, WidgetActionReceiver.ACTION_TOGGLE_SHUFFLE)
+
+fun cycleRepeatAction(context: Context): Action =
+    widgetAction(context, WidgetActionReceiver.ACTION_CYCLE_REPEAT)
+
+fun toggleFavoriteAction(context: Context): Action =
+    widgetAction(context, WidgetActionReceiver.ACTION_TOGGLE_FAVORITE)
+
+private fun widgetAction(context: Context, action: String): Action {
+    val intent = Intent(action)
+    intent.component = ComponentName(context, WidgetActionReceiver::class.java)
+    return actionSendBroadcast(intent)
 }
 
-fun cycleRepeatAction(context: Context): Action {
-    val intent = Intent(PlaybackService.ACTION_CYCLE_REPEAT)
-    intent.setComponent(ComponentName(context, PlaybackService::class.java))
-    return actionStartService(intent)
+fun GlanceModifier.openApp(): GlanceModifier = clickable(actionStartActivity<MainActivity>())
+
+/** Opens the list itself */
+@Composable
+fun GlanceModifier.openList(source: SongSource): GlanceModifier =
+    clickable(openListAction(LocalContext.current, source))
+
+private fun openListAction(context: Context, source: SongSource): Action {
+    val intent = Intent(MainActivity.ACTION_SHOW_CONTENT)
+    intent.component = ComponentName(context, MainActivity::class.java)
+    intent.putExtra(MainActivity.EXTRA_CONTENT_TYPE, source.contentType.name)
+    intent.data = "booming://widget/list/${source.name}".toUri()
+    return actionStartActivityIntent(intent)
 }
 
-fun toggleFavoriteAction(context: Context): Action {
-    val intent = Intent(PlaybackService.ACTION_TOGGLE_FAVORITE)
-    intent.setComponent(ComponentName(context, PlaybackService::class.java))
-    return actionStartService(intent)
+
+@Composable
+fun GlanceModifier.playSong(songId: Long, source: SongSource): GlanceModifier =
+    clickable(playSongAction(LocalContext.current, songId, source))
+
+private fun playSongAction(context: Context, songId: Long, source: SongSource): Action {
+    val intent = Intent(PlaybackService.ACTION_PLAY_SONG)
+    intent.component = ComponentName(context, PlaybackService::class.java)
+    intent.putExtra(PlaybackService.EXTRA_SONG_ID, songId)
+    intent.putExtra(PlaybackService.EXTRA_SONG_SOURCE, source.name)
+    // Distinct data prevents PendingIntent reuse across covers
+    intent.data = "booming://widget/play/${source.name}/$songId".toUri()
+    // Starts the service directly
+    return actionStartService(intent, true)
 }

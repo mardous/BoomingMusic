@@ -253,7 +253,6 @@
     <string name="label_file_format">फॉर्मेट</string>
     <string name="file_label">File</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">शीर्षक और कलाकार</string>
     <string name="song">गाना</string>
     <string name="title">शीर्षक</string>
     <string name="album">एल्बम</string>
@@ -817,7 +816,6 @@
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
     <string name="app_widget_card">कार्ड</string>
-    <string name="app_widget_full">पूर्ण</string>
     <string name="search_playlists">प्लेलिस्ट खोजें</string>
     <string name="select_playlists_title">प्लेलिस्ट चुनें</string>
     <string name="no_playlists_create_new">प्लेलिस्ट बनाने के लिए \"नई\" बटन दबाएं</string>

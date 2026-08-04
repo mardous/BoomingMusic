@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- configuration_optional is API 31; below that the host opens the settings screen once
+     when the widget is placed. Backing out still keeps it. -->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/app_widget_card_desc"
+    android:initialLayout="@layout/widget_card_preview"
+    android:previewLayout="@layout/widget_card_preview"
+    android:minWidth="280dp"
+    android:minHeight="130dp"
+    android:minResizeWidth="180dp"
+    android:minResizeHeight="56dp"
+    android:resizeMode="horizontal|vertical"
+    android:targetCellWidth="4"
+    android:targetCellHeight="2"
+    android:updatePeriodMillis="0"
+    android:configure="com.mardous.booming.ui.screen.widgets.WidgetSettingsActivity"
+    android:widgetFeatures="reconfigurable|configuration_optional"
+    android:widgetCategory="home_screen" />

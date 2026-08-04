@@ -149,7 +149,7 @@ class ExpressivePlayerFragment : AbsPlayerFragment(R.layout.fragment_expressive_
     override fun onLongClick(view: View): Boolean {
         if (binding.songInfo == view) {
             ExtraInfoPreferenceDialog
-                .nowPlaying(requireContext())
+                .nowPlaying()
                 .show(childFragmentManager, "NOW_PLAYING_EXTRA_INFO")
             return true
         }

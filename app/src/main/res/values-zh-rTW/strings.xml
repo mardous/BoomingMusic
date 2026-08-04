@@ -253,7 +253,6 @@
     <string name="label_file_format">格式</string>
     <string name="file_label">檔案</string>
     <string name="metadata_label">中繼資料</string>
-    <string name="title_and_artist">標題和藝人</string>
     <string name="song">歌曲</string>
     <string name="title">標題</string>
     <string name="album">專輯</string>
@@ -808,12 +807,8 @@
     <string name="uncaught_error_restart_app">重新啟動應用程式</string>
     <string name="uncaught_error_github">在 GitHub 上回饋問題</string>
     <string name="uncaught_error_send">傳送報告</string>
-    <string name="app_widget_responsive">響應式</string>
-    <string name="app_widget_responsive_desc">一個能夠根據不同尺寸調整版面的小工具</string>
     <string name="app_widget_card">卡片</string>
     <string name="app_widget_card_desc">極簡風格</string>
-    <string name="app_widget_full">完整</string>
-    <string name="app_widget_full_desc">播放器螢幕直接顯示在桌面上</string>
     <string name="search_playlists">搜尋播放清單</string>
     <string name="select_playlists_title">選擇播放清單</string>
     <string name="new_playlist_action">新增</string>
@@ -826,8 +821,6 @@
     <string name="channel_mono">單聲道</string>
     <string name="channel_stereo">立體聲</string>
     <string name="channel_quadraphonic">四聲道</string>
-    <string name="widget_small_layout_classic">經典</string>
-    <string name="widget_small_layout_simplified">簡化</string>
     <string name="auto_theme_name">自動</string>
     <string name="logout_action">登出</string>
     <string name="listenbrainz_title">ListenBrainz</string>
@@ -845,7 +838,6 @@
     <string name="channel_surround_11_1">11.1 環繞聲</string>
     <string name="channel_surround_13_1">13.1 環繞聲</string>
     <string name="bit_perfect_title">位元完美音訊</string>
-    <string name="widgets_header">應用程式小工具</string>
     <string name="widget_dynamic_colors_title">動態色彩</string>
     <string name="advanced_settings">進階設定</string>
     <string name="sleep_timer_x_secs">%d 秒</string>
@@ -904,12 +896,7 @@
     <string name="contributor_lenard_description">應用程式網站開發者與貢獻者。</string>
     <string name="contributor_alex_description">本專案長期友人，協助提供重要 API 存取權。</string>
     <string name="network_summary">管理 Last.fm 整合、歌詞來源與中繼資料下載等網路功能。</string>
-    <string name="widget_small_layout_style_title">小型小工具版面樣式</string>
     <string name="widget_dynamic_colors_summary">讓小工具色彩配合目前曲目的封面。</string>
-    <string name="widget_image_corner_radius_title">圖片圓角半徑</string>
-    <string name="widget_image_corner_radius_summary">調整專輯封面的圓角程度。</string>
-    <string name="widget_third_line_title">第三行資訊</string>
-    <string name="widget_third_line_summary">選擇文字第三行要顯示的內容。</string>
     <string name="lyrics_center_horizontally_title">歌詞水平置中</string>
     <string name="lyrics_center_horizontally_summary">將每行歌詞對齊到螢幕水平中央。</string>
     <string name="lyrics_karaoke_style_title">卡拉 OK 風格歌詞</string>
