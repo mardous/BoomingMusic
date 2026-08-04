@@ -136,7 +136,7 @@ customactivityoncrash = { module = "cat.ereza:customactivityoncrash", version.re
 keyboardvisibilityevent = { module = "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent", version.ref = "keyboardvisibilityevent" }
 
 taglib = { module = "io.github.kyant0:taglib", version.ref = "taglib" }
-jaudiotagger = { module = "com.github.Adonai:jaudiotagger", version.ref = "jaudiotagger" }
+jaudiotagger = { module = "com.github.mardous:jaudiotagger", version.ref = "jaudiotagger" }
 
 versioncompare = { module = "io.github.g00fy2:versioncompare", version.ref = "versioncompare" }
 commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text" }
