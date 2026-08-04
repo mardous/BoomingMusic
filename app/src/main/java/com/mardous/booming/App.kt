@@ -18,6 +18,7 @@
 package com.mardous.booming
 
 import android.app.Application
+import android.content.Context
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.os.StrictMode.VmPolicy
@@ -60,13 +61,17 @@ import org.koin.core.context.startKoin
 
 class App : Application(), SingletonImageLoader.Factory {
 
-    override fun onCreate() {
-        super.onCreate()
+    // ContentProviders are installed and can already be queried before Application.onCreate() runs
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
         startKoin {
             androidContext(this@App)
             modules(appModules)
         }
+    }
 
+    override fun onCreate() {
+        super.onCreate()
         if (BuildConfig.DEBUG) enableStrictMode()
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
