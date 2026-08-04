@@ -23,10 +23,14 @@ import com.mardous.booming.util.Preferences
 
 class LibraryProvider(private val repository: Repository) {
 
-    private val _searchResult = mutableListOf<MediaItem>()
-    val searchResult: List<MediaItem> get() = _searchResult
+    @Volatile
+    private var lastSearch: Pair<Int, List<MediaItem>>? = null
+
+    fun searchResult(callerUid: Int): List<MediaItem> =
+        lastSearch?.takeIf { it.first == callerUid }?.second.orEmpty()
 
     suspend fun getMediaItemsForPlayback(
+        callerUid: Int,
         mediaItems: List<MediaItem>,
         tryToResolveComplexPaths: Boolean = false
     ): List<MediaItem> {
@@ -48,7 +52,7 @@ class LibraryProvider(private val repository: Repository) {
                 emptyList()
             }
             if (complexMediaItems.isNotEmpty()) {
-                getMediaItemsForAAOSPlayback(complexMediaItems)?.first?.forEach {
+                getMediaItemsForAAOSPlayback(callerUid, complexMediaItems)?.first?.forEach {
                     resolvedMediaItems.add(it)
                 }
             } else {
@@ -65,6 +69,7 @@ class LibraryProvider(private val repository: Repository) {
     }
 
     suspend fun getMediaItemsForAAOSPlayback(
+        callerUid: Int,
         mediaItems: List<MediaItem>
     ): Pair<List<MediaItem>, Int>? {
         val single = mediaItems.singleOrNull()
@@ -73,8 +78,9 @@ class LibraryProvider(private val repository: Repository) {
             when (path.firstOrNull()) {
                 SEARCH -> {
                     val id = path.getOrNull(1)
-                    if (id == null || searchResult.isEmpty()) return null
-                    val transformedMediaItems = searchResult.map { it.buildUpon().setMediaId(id).build() }
+                    val results = searchResult(callerUid)
+                    if (id == null || results.isEmpty()) return null
+                    val transformedMediaItems = results.map { it.buildUpon().setMediaId(id).build() }
                     Pair(
                         transformedMediaItems,
                         transformedMediaItems.indexOfFirst { it.mediaId == id }.coerceAtLeast(0)
@@ -279,10 +285,10 @@ class LibraryProvider(private val repository: Repository) {
         return repository.songById(songId).toAutoMediaItem()
     }
 
-    suspend fun search(query: String): List<MediaItem> {
-        _searchResult.clear()
-        _searchResult.addAll(repository.searchSongs(query).map { it.toAutoMediaItem(SEARCH) })
-        return _searchResult
+    suspend fun search(callerUid: Int, query: String): List<MediaItem> {
+        val result = repository.searchSongs(query).map { it.toAutoMediaItem(SEARCH) }
+        lastSearch = callerUid to result
+        return result
     }
 
     private suspend fun getRootChildren(context: Context): List<MediaItem> {

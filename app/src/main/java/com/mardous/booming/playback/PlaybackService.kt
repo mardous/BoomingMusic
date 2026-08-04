@@ -394,15 +394,19 @@ class PlaybackService :
         controller: MediaSession.ControllerInfo
     ): MediaSession.ConnectionResult {
         val connectionResult = super.onConnect(session, controller)
-        val availableCommands = MediaSession.ConnectionResult.DEFAULT_SESSION_AND_LIBRARY_COMMANDS
-            .buildUpon()
+        val trusted = session.isTrustedController(controller)
+        val availableCommands = if (trusted) {
+            MediaSession.ConnectionResult.DEFAULT_SESSION_AND_LIBRARY_COMMANDS.buildUpon()
+        } else {
+            MediaSession.ConnectionResult.DEFAULT_SESSION_COMMANDS.buildUpon()
+        }
 
         availableCommands.add(SessionCommand(Playback.CYCLE_REPEAT, Bundle.EMPTY))
         availableCommands.add(SessionCommand(Playback.TOGGLE_SHUFFLE, Bundle.EMPTY))
-        availableCommands.add(SessionCommand(Playback.TOGGLE_FAVORITE, Bundle.EMPTY))
-        availableCommands.add(SessionCommand(Playback.RESTORE_PLAYBACK, Bundle.EMPTY))
-        availableCommands.add(SessionCommand(Playback.SET_UNSHUFFLED_ORDER, Bundle.EMPTY))
-        availableCommands.add(SessionCommand(Playback.SET_STOP_POSITION, Bundle.EMPTY))
+
+        if (trusted) {
+            MUTATING_COMMANDS.forEach { availableCommands.add(SessionCommand(it, Bundle.EMPTY)) }
+        }
 
         return MediaSession.ConnectionResult.accept(
             availableCommands.build(),
@@ -445,32 +449,17 @@ class PlaybackService :
             .setRecent(true)
             .setSuggested(false)
             .build()
-        val mediaItem = when {
-            params?.isRecent == true -> {
-                MediaItem.Builder()
-                    .setMediaId(MediaIDs.RECENT_SONGS)
-                    .setMediaMetadata(
-                        MediaMetadata.Builder()
-                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                            .setIsBrowsable(true)
-                            .setIsPlayable(false)
-                            .build()
-                    )
+        // The root itself tells a caller nothing; everything under it is gated per request.
+        val mediaItem = MediaItem.Builder()
+            .setMediaId(if (params?.isRecent == true) MediaIDs.RECENT_SONGS else MediaIDs.ROOT)
+            .setMediaMetadata(
+                MediaMetadata.Builder()
+                    .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                    .setIsBrowsable(true)
+                    .setIsPlayable(false)
                     .build()
-            }
-            else -> {
-                MediaItem.Builder()
-                    .setMediaId(MediaIDs.ROOT)
-                    .setMediaMetadata(
-                        MediaMetadata.Builder()
-                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                            .setIsBrowsable(true)
-                            .setIsPlayable(false)
-                            .build()
-                    )
-                    .build()
-            }
-        }
+            )
+            .build()
         return Futures.immediateFuture(LibraryResult.ofItem(mediaItem, libraryParams))
     }
 
@@ -482,6 +471,9 @@ class PlaybackService :
         pageSize: Int,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
+        // getChildren resolves any id it is handed, so FAVORITES and HISTORY are reachable without ever
+        // appearing in a root listing.
+        session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val result = runCatching {
                 libraryProvider.getChildren(this@PlaybackService, parentId)
@@ -499,6 +491,7 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         mediaId: String
     ): ListenableFuture<LibraryResult<MediaItem>> {
+        session.denyUntrusted<MediaItem>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val mediaItem = runCatching { libraryProvider.getItem(mediaId) }
                 .getOrDefault(MediaItem.EMPTY)
@@ -516,8 +509,9 @@ class PlaybackService :
         query: String,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<Void>> {
+        session.denyUntrusted<Void>(browser)?.let { return it }
         return serviceScope.future(IO) {
-            runCatching { libraryProvider.search(query) }
+            runCatching { libraryProvider.search(browser.uid, query) }
                 .onSuccess { session.notifySearchResultChanged(browser, query, it.size, params) }
 
             LibraryResult.ofVoid()
@@ -532,8 +526,9 @@ class PlaybackService :
         pageSize: Int,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
+        session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
         return Futures.immediateFuture(
-            LibraryResult.ofItemList(libraryProvider.searchResult, params)
+            LibraryResult.ofItemList(libraryProvider.searchResult(browser.uid), params)
         )
     }
 
@@ -543,7 +538,7 @@ class PlaybackService :
         mediaItems: List<MediaItem>
     ): ListenableFuture<List<MediaItem>> {
         return serviceScope.future(IO) {
-            runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
+            runCatching { libraryProvider.getMediaItemsForPlayback(controller.uid, mediaItems) }
                 .getOrDefault(emptyList())
         }
     }
@@ -572,7 +567,7 @@ class PlaybackService :
         return serviceScope.future(IO) {
             if (mediaSession.isAutomotiveController(controller) ||
                 mediaSession.isAutoCompanionController(controller)) {
-                runCatching { libraryProvider.getMediaItemsForAAOSPlayback(mediaItems) }
+                runCatching { libraryProvider.getMediaItemsForAAOSPlayback(controller.uid, mediaItems) }
                     .getOrNull()
                     .let {
                         MediaItemsWithStartPosition(
@@ -584,6 +579,7 @@ class PlaybackService :
             } else {
                 runCatching {
                     libraryProvider.getMediaItemsForPlayback(
+                        controller.uid,
                         mediaItems = mediaItems,
                         tryToResolveComplexPaths = true
                     )
@@ -603,6 +599,12 @@ class PlaybackService :
             }, ContextCompat.getMainExecutor(this))
         }
     }
+
+    private fun <T : Any> MediaSession.denyUntrusted(
+        controller: MediaSession.ControllerInfo
+    ): ListenableFuture<LibraryResult<T>>? =
+        if (isTrustedController(controller)) null
+        else Futures.immediateFuture(LibraryResult.ofError<T>(SessionError.ERROR_PERMISSION_DENIED))
 
     override fun onCustomCommand(
         session: MediaSession,
@@ -1238,6 +1240,13 @@ class PlaybackService :
 
     companion object {
         private const val PACKAGE_NAME = "com.mardous.booming"
+
+        private val MUTATING_COMMANDS = setOf(
+            Playback.TOGGLE_FAVORITE,
+            Playback.RESTORE_PLAYBACK,
+            Playback.SET_UNSHUFFLED_ORDER,
+            Playback.SET_STOP_POSITION
+        )
 
         const val ACTION_TOGGLE_SHUFFLE = "$PACKAGE_NAME.action.ACTION_TOGGLE_SHUFFLE"
         const val ACTION_CYCLE_REPEAT = "$PACKAGE_NAME.action.ACTION_CYCLE_REPEAT"

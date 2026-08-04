@@ -22,6 +22,12 @@ internal fun MediaSession.isRemoteController(controller: MediaSession.Controller
             isAutomotiveController(controller)
 }
 
+/** Whether a controller may browse the library and issue commands that change stored data */
+@OptIn(UnstableApi::class)
+internal fun MediaSession.isTrustedController(controller: MediaSession.ControllerInfo): Boolean {
+    return controller.isTrusted || isRemoteController(controller)
+}
+
 val Player.mediaItems: List<MediaItem>
     get() = (0 until mediaItemCount).map { getMediaItemAt(it) }
 
