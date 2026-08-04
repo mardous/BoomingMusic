@@ -28,6 +28,7 @@ import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
+import androidx.core.os.bundleOf
 import androidx.core.os.postDelayed
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
@@ -120,9 +121,11 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.guava.future
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import java.io.ByteArrayOutputStream
+import kotlin.coroutines.resume
 import kotlin.random.Random
 
 @OptIn(UnstableApi::class)
@@ -169,13 +172,21 @@ class PlaybackService :
     private var hasSetUnshuffledOrder = false
     private var stopIndex = -1
 
+    private fun resumePlayback() {
+        when (player.playbackState) {
+            Player.STATE_IDLE -> player.prepare()
+            Player.STATE_ENDED -> player.seekTo(player.currentMediaItemIndex, C.TIME_UNSET)
+        }
+        player.play()
+    }
+
     private var headsetClickCount = 0
     private val headsetClickRunnable = Runnable {
         if (!::player.isInitialized) return@Runnable
         val count = headsetClickCount
         headsetClickCount = 0
         when (count) {
-            1 -> if (player.isPlaying) player.pause() else player.play()
+            1 -> if (player.isPlaying) player.pause() else resumePlayback()
             2 -> player.seekToNext()
             3 -> player.seekToPrevious()
         }
@@ -370,7 +381,7 @@ class PlaybackService :
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when (intent?.action) {
             ACTION_TOGGLE_FAVORITE -> {
-                toggleFavorite()
+                serviceScope.launch { toggleFavorite() }
                 return START_STICKY
             }
             ACTION_TOGGLE_SHUFFLE -> {
@@ -613,19 +624,24 @@ class PlaybackService :
         args: Bundle
     ): ListenableFuture<SessionResult> {
         return when (customCommand.customAction) {
-            Playback.TOGGLE_SHUFFLE -> {
+            Playback.TOGGLE_SHUFFLE -> serviceScope.future(Main) {
+                awaitRestoration()
                 toggleShuffle()
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
+                awaitSavedState()
+                SessionResult(SessionResult.RESULT_SUCCESS, modesBundle())
             }
 
-            Playback.CYCLE_REPEAT -> {
+            Playback.CYCLE_REPEAT -> serviceScope.future(Main) {
+                awaitRestoration()
                 cycleRepeat()
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
+                awaitSavedState()
+                SessionResult(SessionResult.RESULT_SUCCESS, modesBundle())
             }
 
-            Playback.TOGGLE_FAVORITE -> {
+            Playback.TOGGLE_FAVORITE -> serviceScope.future(Main) {
+                awaitRestoration()
                 toggleFavorite()
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
+                SessionResult(SessionResult.RESULT_SUCCESS)
             }
 
             Playback.RESTORE_PLAYBACK -> {
@@ -897,17 +913,28 @@ class PlaybackService :
     }
 
     private fun cycleRepeat() {
-        val currentRepeatMode = player.repeatMode
-        player.repeatMode = when (currentRepeatMode) {
-            Player.REPEAT_MODE_OFF -> Player.REPEAT_MODE_ALL
-            Player.REPEAT_MODE_ALL -> Player.REPEAT_MODE_ONE
-            else -> Player.REPEAT_MODE_OFF
-        }
+        player.repeatMode = nextRepeatMode(player.repeatMode)
     }
 
-    private fun toggleFavorite() = serviceScope.launch {
+    /** A command issued before the saved state lands has nothing to act on */
+    private suspend fun awaitRestoration() = suspendCancellableCoroutine { continuation ->
+        persistentStorage.waitForRestoration { continuation.resume(Unit) }
+    }
+
+    /** The write is debounced */
+    private suspend fun awaitSavedState() {
+        persistentStorage.saveState()
+        persistentStorage.awaitPendingSave()
+    }
+
+    private fun modesBundle() = bundleOf(
+        Playback.EXTRA_SHUFFLE_MODE to player.shuffleModeEnabled,
+        Playback.EXTRA_REPEAT_MODE to player.repeatMode
+    )
+
+    private suspend fun toggleFavorite() {
         val currentMediaItem = player.currentMediaItem
-            ?: return@launch
+            ?: return
 
         withContext(IO) {
             val song = repository.songByMediaItem(currentMediaItem)

@@ -28,6 +28,13 @@ internal fun MediaSession.isTrustedController(controller: MediaSession.Controlle
     return controller.isTrusted || isRemoteController(controller)
 }
 
+/** The order the repeat button cycles through */
+internal fun nextRepeatMode(current: Int): Int = when (current) {
+    Player.REPEAT_MODE_OFF -> Player.REPEAT_MODE_ALL
+    Player.REPEAT_MODE_ALL -> Player.REPEAT_MODE_ONE
+    else -> Player.REPEAT_MODE_OFF
+}
+
 val Player.mediaItems: List<MediaItem>
     get() = (0 until mediaItemCount).map { getMediaItemAt(it) }
 
