@@ -37,6 +37,11 @@ class AppTheme private constructor(
     val isBlackTheme: Boolean
         get() = id == GeneralTheme.BLACK
 
+    @get:StyleRes
+    // Dynamic colors override black-theme surfaces, so the overlay is applied afterward
+    val dynamicColorOverlay: Int?
+        get() = if (isBlackTheme) R.style.BlackThemeOverlay else null
+
     enum class Mode(@StyleRes val themeRes: Int) {
         Light(R.style.Theme_Booming_Light),
         Dark(R.style.Theme_Booming),
