@@ -28,6 +28,7 @@ import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.BetterLyrics
 import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.LRCLib
 import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.Lyrically
+import com.mardous.booming.extensions.files.belongsTo
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.utilities.sanitize
 import kotlinx.coroutines.Dispatchers.IO
@@ -209,7 +210,7 @@ class LyricsViewModel(
 
             // 3. Resolve destination and verify containment
             val outFile = File(fontsDir, fileName)
-            if (!outFile.canonicalPath.startsWith(fontsDir.canonicalPath + File.separator)) {
+            if (!outFile.belongsTo(fontsDir)) {
                 emit(false)
                 return@liveData
             }

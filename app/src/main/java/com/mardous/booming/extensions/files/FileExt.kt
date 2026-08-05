@@ -72,6 +72,13 @@ fun File.getPrettyAbsolutePath(): String {
     return filePath
 }
 
+fun File.belongsTo(directory: File): Boolean {
+    val canonicalParent = directory.canonicalPath.let {
+        if (it.endsWith(File.separator)) it else "$it${File.separator}"
+    }
+    return this.canonicalPath.startsWith(canonicalParent)
+}
+
 fun File.getCanonicalPathSafe(): String = runCatching { canonicalPath }.getOrDefault(absolutePath)
 
 fun File.getHumanReadableSize() = length().asReadableFileSize()
