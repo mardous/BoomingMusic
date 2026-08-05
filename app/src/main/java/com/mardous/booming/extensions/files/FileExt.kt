@@ -76,7 +76,7 @@ fun File.getCanonicalPathSafe(): String = runCatching { canonicalPath }.getOrDef
 
 fun File.getHumanReadableSize() = length().asReadableFileSize()
 
-fun File.getContentUri(context: Context): Uri =
+fun File.getFileProviderUri(context: Context): Uri =
     FileProvider.getUriForFile(context, context.fileProviderAuthority, this)
 
 fun File.toAudioFile(): AudioFile? = runCatching { AudioFileIO.read(this) }.getOrNull()

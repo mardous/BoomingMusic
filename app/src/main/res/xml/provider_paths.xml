@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
-    <external-path
-        name="external"
-        path="." />
-
+    <!-- For sharing crash logs -->
     <files-path
-        name="files"
-        path="." />
+        name="crash_logs"
+        path="logs/" />
 
-    <external-files-path
-        name="external_files"
-        path="."/>
-
-    <root-path
-        name="root"
-        path="/storage/"/>
+    <!-- For sharing exported equalizer profiles -->
+    <external-cache-path
+        name="exported_profiles"
+        path="exports/" />
 </paths>

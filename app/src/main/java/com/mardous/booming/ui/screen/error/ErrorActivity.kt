@@ -4,14 +4,13 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.os.Bundle
 import androidx.core.app.ShareCompat
-import androidx.core.content.FileProvider
 import androidx.core.content.getSystemService
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash
 import com.mardous.booming.R
 import com.mardous.booming.databinding.ActivityErrorBinding
 import com.mardous.booming.extensions.applyWindowInsets
-import com.mardous.booming.extensions.fileProviderAuthority
 import com.mardous.booming.extensions.files.asFormattedFileTime
+import com.mardous.booming.extensions.files.getFileProviderUri
 import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.component.base.AbsThemeActivity
@@ -35,7 +34,8 @@ class ErrorActivity : AbsThemeActivity() {
         }
         val errorReport = CustomActivityOnCrash.getAllErrorDetailsFromIntent(this, intent)
         val nameFromTime = System.currentTimeMillis().asFormattedFileTime()
-        val errorReportFile = File(filesDir, "Crash_${nameFromTime}.log")
+        val logsDir = File(filesDir, "logs").apply { if (!exists()) mkdirs() }
+        val errorReportFile = File(logsDir, "Crash_${nameFromTime}.log")
         if (!errorReportFile.exists() || errorReportFile.delete()) {
             errorReportFile.writeText(errorReport)
         }
@@ -68,7 +68,7 @@ class ErrorActivity : AbsThemeActivity() {
             .setSubject("${getString(R.string.app_name)} - crash log")
             .setText("Please, add a description of the problem")
             .setType("*/*")
-            .setStream(FileProvider.getUriForFile(this, fileProviderAuthority, file))
+            .setStream(file.getFileProviderUri(this))
             .setChooserTitle(R.string.uncaught_error_send)
             .createChooserIntent()
 
