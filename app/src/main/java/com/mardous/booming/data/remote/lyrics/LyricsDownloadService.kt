@@ -87,17 +87,19 @@ class LyricsDownloadService(client: HttpClient) {
     companion object {
         private const val TAG = "LyricsDownloadService"
 
+        private const val KEYWORDS = "official|video|audio|lyrics|lyric|visualizer|hd|hq|4k|remaster|remix|live|acoustic|version|edit|extended|radio|clean|explicit"
+
         private val TITLE_CLEANUP_PATTERNS = listOf(
-            Regex("""\s*\(.*?(official|video|audio|lyrics|lyric|visualizer|hd|hq|4k|remaster|remix|live|acoustic|version|edit|extended|radio|clean|explicit).*?\)""", RegexOption.IGNORE_CASE),
-            Regex("""\s*\[.*?(official|video|audio|lyrics|lyric|visualizer|hd|hq|4k|remaster|remix|live|acoustic|version|edit|extended|radio|clean|explicit).*?\]""", RegexOption.IGNORE_CASE),
-            Regex("""\s*【.*?】"""),
+            Regex("""\s*\((?>[^)]*?(?:$KEYWORDS)[^)]*?)\)""", RegexOption.IGNORE_CASE),
+            Regex("""\s*\[(?>[^\]]*?(?:$KEYWORDS)[^\]]*?)\]""", RegexOption.IGNORE_CASE),
+            Regex("""\s*【(?>[^】]*?)】"""),
             Regex("""\s*\|.*$"""),
-            Regex("""\s*-\s*(official|video|audio|lyrics|lyric|visualizer).*$""", RegexOption.IGNORE_CASE),
-            Regex("""\s*\(feat\..*?\)""", RegexOption.IGNORE_CASE),
-            Regex("""\s*\(ft\..*?\)""", RegexOption.IGNORE_CASE),
+            Regex("""\s*-\s*(?:official|video|audio|lyrics|lyric|visualizer).*$""", RegexOption.IGNORE_CASE),
+            Regex("""\s*\((?>feat\.[^)]*?)\)""", RegexOption.IGNORE_CASE),
+            Regex("""\s*\((?>ft\.[^)]*?)\)""", RegexOption.IGNORE_CASE),
             Regex("""\s*feat\..*$""", RegexOption.IGNORE_CASE),
             Regex("""\s*ft\..*$""", RegexOption.IGNORE_CASE),
-            Regex("""\s*\([^)]*\d{4}[^)]*\)""", RegexOption.IGNORE_CASE),
+            Regex("""\s*\((?>[^)]*?\d{4}[^)]*?)\)""", RegexOption.IGNORE_CASE),
         )
     }
 }
