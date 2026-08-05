@@ -74,13 +74,7 @@
 
         <activity android:name=".ui.screen.permissions.PermissionsActivity"/>
 
-        <activity
-            android:name=".ui.screen.error.ErrorActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="cat.ereza.customactivityoncrash.RESTART"/>
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.screen.error.ErrorActivity"/>
 
         <!-- In order not to break compatibility with icon-packs -->
         <activity-alias
