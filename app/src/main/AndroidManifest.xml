@@ -249,7 +249,9 @@
         <provider
             android:name=".coil.CoverProvider"
             android:authorities="${applicationId}.cover"
-            android:exported="true" />
+            android:exported="true"
+            android:grantUriPermissions="true"
+            tools:ignore="ExportedContentProvider" />
 
         <meta-data
             android:name="android.max_aspect"
