@@ -1,8 +1,12 @@
 package com.mardous.booming.playback.library
 
 import android.content.Context
+import android.os.Bundle
+import androidx.annotation.OptIn
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.session.MediaConstants
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoverProvider.Companion.ALBUM_ARTIST_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.ALBUM_COVER_PATH
@@ -285,10 +289,15 @@ class LibraryProvider(private val repository: Repository) {
         return _searchResult
     }
 
+    @OptIn(UnstableApi::class)
     private suspend fun getRootChildren(context: Context): List<MediaItem> {
         val resources = context.resources
         val mediaItems: MutableList<MediaItem> = ArrayList()
         val libraryCategories = Preferences.libraryCategories
+        val gridExtras = Bundle().apply {
+            putInt(MediaConstants.EXTRAS_KEY_CONTENT_STYLE_BROWSABLE, MediaConstants.EXTRAS_VALUE_CONTENT_STYLE_GRID_ITEM)
+            putInt(MediaConstants.EXTRAS_KEY_CONTENT_STYLE_PLAYABLE, MediaConstants.EXTRAS_VALUE_CONTENT_STYLE_GRID_ITEM)
+        }
         libraryCategories.forEach { categoryInfo ->
             if (categoryInfo.visible) {
                 when (categoryInfo.category) {
@@ -318,6 +327,7 @@ class LibraryProvider(private val repository: Repository) {
                                         .setIsBrowsable(true)
                                         .setIsPlayable(false)
                                         .setTitle(resources.getString(categoryInfo.category.titleRes))
+                                        .setExtras(gridExtras)
                                         .build()
                                 )
                                 .build()
@@ -335,6 +345,7 @@ class LibraryProvider(private val repository: Repository) {
                                             .setIsBrowsable(true)
                                             .setIsPlayable(false)
                                             .setTitle(resources.getString(R.string.album_artists_label))
+                                            .setExtras(gridExtras)
                                             .build()
                                     )
                                     .build()
@@ -349,6 +360,7 @@ class LibraryProvider(private val repository: Repository) {
                                             .setIsBrowsable(true)
                                             .setIsPlayable(false)
                                             .setTitle(resources.getString(R.string.artists_label))
+                                            .setExtras(gridExtras)
                                             .build()
                                     )
                                     .build()
