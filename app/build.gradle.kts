@@ -128,7 +128,14 @@ android {
 
     val signingProperties = getProperties("keystore.properties")
 
-    val releaseSigning = if (signingProperties != null) {
+    val releaseSigning = if (System.getenv("KEYSTORE_FILE") != null) {
+        signingConfigs.create("release") {
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
+            storePassword = System.getenv("STORE_PASSWORD")
+            storeFile = file(System.getenv("KEYSTORE_FILE"))
+        }
+    } else if (signingProperties != null) {
         signingConfigs.create("release") {
             keyAlias = signingProperties.property("keyAlias")
             keyPassword = signingProperties.property("keyPassword")
