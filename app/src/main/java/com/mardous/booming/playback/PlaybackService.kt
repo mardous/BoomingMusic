@@ -457,31 +457,36 @@ class PlaybackService :
             .setOffline(true)
             .setExtras(outExtras)
             .build()
-        val mediaItem = when {
-            params?.isRecent == true -> {
-                MediaItem.Builder()
-                    .setMediaId(MediaIDs.RECENT_SONGS)
-                    .setMediaMetadata(
-                        MediaMetadata.Builder()
-                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                            .setIsBrowsable(true)
-                            .setIsPlayable(false)
-                            .build()
-                    )
-                    .build()
+        val mediaItem = if (isKnownCaller) {
+            when {
+                params?.isRecent == true -> {
+                    MediaItem.Builder()
+                        .setMediaId(MediaIDs.RECENT_SONGS)
+                        .setMediaMetadata(
+                            MediaMetadata.Builder()
+                                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                                .setIsBrowsable(true)
+                                .setIsPlayable(false)
+                                .build()
+                        )
+                        .build()
+                }
+
+                else -> {
+                    MediaItem.Builder()
+                        .setMediaId(MediaIDs.ROOT)
+                        .setMediaMetadata(
+                            MediaMetadata.Builder()
+                                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                                .setIsBrowsable(true)
+                                .setIsPlayable(false)
+                                .build()
+                        )
+                        .build()
+                }
             }
-            else -> {
-                MediaItem.Builder()
-                    .setMediaId(MediaIDs.ROOT)
-                    .setMediaMetadata(
-                        MediaMetadata.Builder()
-                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                            .setIsBrowsable(true)
-                            .setIsPlayable(false)
-                            .build()
-                    )
-                    .build()
-            }
+        } else {
+            MediaItem.EMPTY
         }
         return Futures.immediateFuture(LibraryResult.ofItem(mediaItem, libraryParams))
     }
