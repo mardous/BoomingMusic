@@ -21,13 +21,12 @@ import android.content.ContentUris
 import android.net.Uri
 import android.os.Parcelable
 import android.provider.MediaStore
+import androidx.core.os.bundleOf
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
-import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.data.local.repository.RealSongRepository.Companion.getAudioContentUri
 import com.mardous.booming.extensions.hasQ
-import com.mardous.booming.extensions.media.songInfo
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import java.util.Date
@@ -50,7 +49,8 @@ open class Song(
     open val artistName: String,
     open val albumArtistName: String?,
     open val genreName: String?,
-    open val volumeName: String? = null
+    open val volumeName: String? = null,
+    open val resolvedFromFile: Boolean = false
 ) : Parcelable, FileSystemItem {
 
     val uri: Uri
@@ -100,31 +100,22 @@ open class Song(
         song.volumeName
     )
 
-    fun toMediaItem(itemId: String = id.toString()): MediaItem =
+    fun toMediaItem(): MediaItem =
         if (this == emptySong) {
             MediaItem.EMPTY
         } else {
             MediaItem.Builder()
-                .setUri(uri)
-                .setMediaId(itemId)
+                .setMediaId(id.toString())
                 .setMediaMetadata(
                     MediaMetadata.Builder()
-                        .setIsPlayable(true)
-                        .setIsBrowsable(false)
-                        .setArtworkUri(CoverProvider.getImageUri(CoverProvider.SONG_COVER_PATH, id))
-                        .setTitle(title)
-                        .setSubtitle(songInfo())
-                        .setAlbumTitle(albumName)
-                        .setArtist(artistName)
-                        .setAlbumArtist(albumArtistName)
-                        .setGenre(genreName)
-                        .setTrackNumber(trackNumber)
-                        .setReleaseYear(year)
-                        .setDurationMs(duration.coerceAtLeast(0))
+                        .setExtras(buildExtras())
                         .build()
                 )
                 .build()
         }
+
+    private fun buildExtras() =
+        bundleOf().apply { putBoolean("resolved_from_file", resolvedFromFile) }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

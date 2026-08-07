@@ -39,8 +39,6 @@ fun Player.getQueueItems(shuffleMode: Boolean = this.shuffleModeEnabled): List<Q
     return result
 }
 
-fun List<Song>.toMediaItems() = map { it.toMediaItem() }
-
 fun MediaItem.withExtras(consumer: Bundle.() -> Unit) = buildUpon()
     .setMediaMetadata(mediaMetadata.withExtras(consumer))
     .build()
@@ -50,6 +48,3 @@ fun MediaMetadata.withExtras(consumer: Bundle.() -> Unit) = buildUpon()
     .build()
 
 fun MediaMetadata.getOrCreateExtras() = extras ?: Bundle()
-
-val MediaItem?.song: Song
-    get() = (this?.localConfiguration?.tag as? Song) ?: Song.emptySong

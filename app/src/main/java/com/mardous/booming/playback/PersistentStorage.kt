@@ -15,6 +15,7 @@ import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.QueueDao
 import com.mardous.booming.data.local.room.QueueEntity
 import com.mardous.booming.playback.ImprovedShuffleOrder.SerializedOrder
+import com.mardous.booming.playback.library.LibraryProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -126,10 +127,8 @@ class PersistentStorage(
                 }
 
                 // Resolve valid items from repository
-                val (restoredMediaItems) = repository.songsByMediaItems(savedMediaItems)
-                    .let { (songs, missingMediaItems) ->
-                        songs.toMediaItems() to missingMediaItems
-                    }
+                val restoredMediaItems = repository.songsByMediaItems(savedMediaItems)
+                    .let { (songs, _) -> songs.map { LibraryProvider.buildPlayableMediaItem(it) } }
 
                 // Build session state object
                 val items = if (restoredMediaItems.isNotEmpty()) {
