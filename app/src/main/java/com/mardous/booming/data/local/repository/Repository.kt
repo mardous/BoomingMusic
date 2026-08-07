@@ -92,6 +92,7 @@ interface Repository {
     suspend fun deleteSongsInPlaylist(songs: List<SongEntity>)
     suspend fun deleteSong(songId: Long): Song
     suspend fun deleteSongs(songs: List<Song>)
+    fun updatePlaylistsContainingIds(songIds: List<Long>)
     suspend fun deleteMissingContent()
     suspend fun albumById(albumId: Long): Album
     suspend fun albumByIdAsync(albumId: Long): Album
@@ -285,6 +286,9 @@ class RealRepository(
         smartRepository.deleteSongsInPlayCount(deletableIds)
     }
 
+    override fun updatePlaylistsContainingIds(songIds: List<Long>) =
+        playlistRepository.updatePlaylistsContainingIds(songIds)
+
     override suspend fun deleteMissingContent() {
         // Clean up playlists
         val playlists = playlistRepository.playlistsWithSongs()
@@ -471,5 +475,4 @@ class RealRepository(
 
     override suspend fun albumInfo(artist: String, album: String, lang: String?) =
         networkRepository.albumInfo(artist, album, lang)
-
 }

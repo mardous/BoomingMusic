@@ -64,12 +64,13 @@ class TagEditorViewModel(
         }
         if (result.isSuccess) {
             val writeResult = result.getOrThrow()
+            if (writeResult.successIds.isNotEmpty()) {
+                repository.updatePlaylistsContainingIds(writeResult.successIds)
+            }
             emit(
                 SaveTagsResult(
                     isLoading = false,
-                    isSuccess = writeResult.isSuccess,
-                    scanned = writeResult.scanned,
-                    failed = writeResult.failed
+                    isSuccess = writeResult.isSuccess
                 )
             )
         } else {

@@ -31,14 +31,18 @@ import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.local.room.SongEntity
 import com.mardous.booming.data.mapper.toSongEntity
 import com.mardous.booming.data.mapper.toSongs
+import com.mardous.booming.data.mapper.updateMetadata
 import com.mardous.booming.data.model.Playlist
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.utilities.mapIfValid
 import com.mardous.booming.extensions.utilities.takeOrDefault
 import com.mardous.booming.util.cursor.SortedCursorUtil
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 interface PlaylistRepository {
@@ -74,6 +78,7 @@ interface PlaylistRepository {
     suspend fun deleteSongFromAllPlaylists(songId: Long)
     suspend fun deleteSongsFromPlaylist(songs: List<SongEntity>)
     suspend fun deleteSongsFromAllPlaylists(songsIds: List<Long>)
+    fun updatePlaylistsContainingIds(songIds: List<Long>)
 }
 
 class RealPlaylistRepository(
@@ -81,6 +86,8 @@ class RealPlaylistRepository(
     private val songRepository: SongRepository,
     private val playlistDao: PlaylistDao
 ) : PlaylistRepository {
+
+    private val repositoryScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
     override fun devicePlaylists(): List<Playlist> {
         return makePlaylistCursor().use {
@@ -266,6 +273,37 @@ class RealPlaylistRepository(
         if (songsIds.isEmpty()) return
         songsIds.chunked(MAX_ITEMS_PER_CHUNK).forEach { chunkIds ->
             playlistDao.deleteSongsFromAllPlaylists(chunkIds)
+        }
+    }
+
+    override fun updatePlaylistsContainingIds(songIds: List<Long>) {
+        if (songIds.isEmpty()) return
+        repositoryScope.launch {
+            // 1. Find all SongEntity instances in Room that match these IDs
+            val existingEntities = songIds.chunked(MAX_ITEMS_PER_CHUNK).flatMap { chunk ->
+                playlistDao.findSongsByIds(chunk)
+            }
+
+            if (existingEntities.isEmpty()) return@launch
+
+            // 2. Get the updated songs from MediaStore/Library
+            val updatedSongs = songRepository.songs(songIds).associateBy { it.id }
+
+            if (updatedSongs.isEmpty()) return@launch
+
+            // 3. Update the entities with new metadata
+            val entitiesToUpdate = existingEntities.mapNotNull { entity ->
+                updatedSongs[entity.id]?.let { updatedSong ->
+                    entity.updateMetadata(updatedSong)
+                }
+            }
+
+            // 4. Save updates back to Room
+            if (entitiesToUpdate.isNotEmpty()) {
+                entitiesToUpdate.chunked(MAX_ITEMS_PER_CHUNK).forEach { chunk ->
+                    playlistDao.updateSongs(chunk)
+                }
+            }
         }
     }
 

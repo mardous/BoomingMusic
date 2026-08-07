@@ -46,6 +46,7 @@ import okhttp3.internal.toLongOrDefault
 
 interface SongRepository {
     fun songs(): List<Song>
+    fun songs(songIds: List<Long>): List<Song>
     fun songs(query: String): List<Song>
     fun songs(cursor: Cursor?): List<Song>
     suspend fun songsByUri(uri: Uri): List<Song>
@@ -66,6 +67,12 @@ class RealSongRepository(
     override fun songs(): List<Song> {
         val songs = songs(makeSongCursor(null, null))
         return with(SongSortMode.AllSongs) { songs.sorted() }
+    }
+
+    override fun songs(songIds: List<Long>): List<Song> {
+        val selection = "${AudioColumns._ID} IN (${songIds.joinToString(",") { "?" }})"
+        val selectionArgs = songIds.map { it.toString() }.toTypedArray()
+        return songs(makeSongCursor(selection, selectionArgs))
     }
 
     override fun songs(query: String): List<Song> {

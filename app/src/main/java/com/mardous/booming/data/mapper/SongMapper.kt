@@ -101,6 +101,28 @@ fun SongEntity.toSong(): Song {
     )
 }
 
+fun SongEntity.updateMetadata(song: Song): SongEntity {
+    return SongEntity(
+        songPrimaryKey = songPrimaryKey,
+        playlistCreatorId = playlistCreatorId,
+        id = song.id,
+        data = song.data,
+        title = song.title,
+        trackNumber = song.trackNumber,
+        year = song.year,
+        size = song.size,
+        duration = song.duration,
+        dateAdded = song.dateAdded,
+        dateModified = song.rawDateModified,
+        albumId = song.albumId,
+        albumName = song.albumName,
+        artistId = song.artistId,
+        artistName = song.artistName,
+        albumArtist = song.albumArtistName,
+        genreName = song.genreName
+    )
+}
+
 fun PlayCountEntity.toSong(): Song {
     return Song(
         id = id,
