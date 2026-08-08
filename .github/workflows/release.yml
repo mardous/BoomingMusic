@@ -46,9 +46,9 @@ jobs:
         run: |
           # Extract signing properties
           echo "$SIGNING_PROPERTIES" | base64 -di > temp.properties
-          export KEY_ALIAS=$(grep keyAlias temp.properties | cut -d'=' -f2)
-          export KEY_PASSWORD=$(grep keyPassword temp.properties | cut -d'=' -f2)
-          export STORE_PASSWORD=$(grep storePassword temp.properties | cut -d'=' -f2)
+          export KEY_ALIAS=$(grep keyAlias temp.properties | cut -d'=' -f2 | tr -d '\r' | xargs)
+          export KEY_PASSWORD=$(grep keyPassword temp.properties | cut -d'=' -f2 | tr -d '\r' | xargs)
+          export STORE_PASSWORD=$(grep storePassword temp.properties | cut -d'=' -f2 | tr -d '\r' | xargs)
           export KEYSTORE_FILE="${{ runner.temp }}/booming_keystore.jks"
           rm temp.properties
 
