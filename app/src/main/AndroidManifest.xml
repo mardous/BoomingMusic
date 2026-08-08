@@ -72,20 +72,6 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="content" />
-                <data android:scheme="file" />
-                <data android:mimeType="audio/*" />
-                <data android:mimeType="application/ogg" />
-                <data android:mimeType="application/x-ogg" />
-                <data android:mimeType="application/x-flac" />
-                <data android:mimeType="application/itunes" />
-            </intent-filter>
-
             <intent-filter tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW"/>
 
@@ -112,6 +98,27 @@
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
+        </activity>
+
+        <activity
+            android:name=".ui.screen.AudioPreviewActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:theme="@style/Theme.Booming.AudioPreview">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="application/ogg" />
+                <data android:mimeType="application/x-ogg" />
+                <data android:mimeType="application/x-flac" />
+                <data android:mimeType="application/itunes" />
+            </intent-filter>
         </activity>
 
         <activity

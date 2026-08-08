@@ -771,25 +771,28 @@ class PlaybackService :
         val isPlaying = player.isPlaying
 
         serviceScope.launch(IO) {
-            val newSong = repository.songByMediaItem(mediaItem)
+            val newSong = repository.songByMediaItem(mediaItem, ignoreBlacklist = true)
+            if (newSong != Song.emptySong) {
+                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(newSong)
+            }
 
             val previousSong = songPlayCountHelper.song
             val shouldBumpPlayCount = songPlayCountHelper.shouldBumpPlayCount()
             songPlayCountHelper.notifySongChanged(newSong, isPlaying)
 
-            if (newSong != Song.emptySong) {
-                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(newSong)
+            val enableHistory = preferences.getBoolean(ENABLE_HISTORY, true)
+            if (enableHistory && newSong != Song.emptySong && !newSong.resolvedFromFile) {
                 if (preferences.getBoolean(ENABLE_HISTORY, true)) {
                     repository.upsertSongInHistory(newSong)
                 }
-                if (NetworkFeature.Lastfm.NowPlaying.isAvailable) {
+                if (!NetworkFeature.Lastfm.NowPlaying.isAvailable) {
                     launch { repository.updateNowPlaying(ScrobblingService.Lastfm, newSong) }
                 }
                 if (NetworkFeature.ListenBrainz.NowPlaying.isAvailable) {
                     launch { repository.updateNowPlaying(ScrobblingService.ListenBrainz, newSong) }
                 }
             }
-            if (previousSong != Song.emptySong) {
+            if (enableHistory && previousSong != Song.emptySong && !previousSong.resolvedFromFile) {
                 val timestampMillis = System.currentTimeMillis()
                 val timestampSeconds = (timestampMillis / 1000)
                 if (shouldBumpPlayCount) {
@@ -881,6 +884,7 @@ class PlaybackService :
                 if (!preferences.getBoolean(key, true)) {
                     serviceScope.launch(IO) {
                         repository.clearSongHistory()
+                        repository.clearPlayCount()
                     }
                 }
             }
@@ -925,7 +929,7 @@ class PlaybackService :
             ?: return@launch
 
         withContext(IO) {
-            val song = repository.songByMediaItem(currentMediaItem)
+            val song = repository.songByMediaItem(currentMediaItem, ignoreBlacklist = false)
             repository.toggleFavorite(song)
         }
 

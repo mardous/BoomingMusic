@@ -1,15 +1,11 @@
 package com.mardous.booming.playback.library
 
 import android.content.Context
-import android.net.Uri
-import android.os.Bundle
 import androidx.annotation.OptIn
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.session.MediaConstants
 import com.mardous.booming.R
-import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.coil.CoverProvider.Companion.ALBUM_ARTIST_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.ALBUM_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.ARTIST_COVER_PATH
@@ -24,7 +20,8 @@ import com.mardous.booming.extensions.media.albumInfo
 import com.mardous.booming.extensions.media.artistInfo
 import com.mardous.booming.extensions.media.asNumberOfSongs
 import com.mardous.booming.extensions.media.songCountStr
-import com.mardous.booming.extensions.media.songInfo
+import com.mardous.booming.playback.buildBrowsableMediaItem
+import com.mardous.booming.playback.buildPlayableMediaItem
 import com.mardous.booming.util.Preferences
 
 class LibraryProvider(private val repository: Repository) {
@@ -36,19 +33,21 @@ class LibraryProvider(private val repository: Repository) {
         mediaItems: List<MediaItem>,
         tryToResolveComplexPaths: Boolean = false
     ): List<MediaItem> {
-        val resolvedMediaItems = mediaItems.filter { item -> item.localConfiguration != null }
-            .toMutableList()
-        if (resolvedMediaItems.size == mediaItems.size) {
-            return resolvedMediaItems
-        }
-        val (songs, missingMediaItems) = (mediaItems - resolvedMediaItems.toSet()).let { invalidItems ->
-            repository.songsByMediaItems(invalidItems)
-        }
-        if (songs.isNotEmpty()) {
-            resolvedMediaItems.addAll(
-                songs.map { song -> song.toPlayableMediaItem() }
-            )
-        }
+        val resolvedMediaItems = mediaItems
+            .filterTo(arrayListOf()) { item -> item.localConfiguration != null }
+
+        // All the MediaItems had their playback settings configured; we can return them as is
+        if (resolvedMediaItems.size == mediaItems.size) return resolvedMediaItems
+
+        fun List<Song>.toPlayableMediaItems() = map { it.toPlayableMediaItem() }
+
+        // We resolve MediaItems from the repository based on their IDs
+        val (songs, missingMediaItems) = (mediaItems - resolvedMediaItems.toSet())
+            .let { invalidItems -> repository.songsByMediaItems(invalidItems, ignoreBlacklist = false) }
+
+        resolvedMediaItems.addAll(songs.toPlayableMediaItems())
+
+        // We must try to resolve any MediaItems that could not be found in the repository:
         if (missingMediaItems.isNotEmpty()) {
             val complexMediaItems = if (tryToResolveComplexPaths) {
                 missingMediaItems.filter { item -> item.mediaId.contains(":") }
@@ -56,8 +55,8 @@ class LibraryProvider(private val repository: Repository) {
                 emptyList()
             }
             if (complexMediaItems.isNotEmpty()) {
-                getMediaItemsForAAOSPlayback(complexMediaItems)?.first?.forEach {
-                    resolvedMediaItems.add(it)
+                getMediaItemsForAAOSPlayback(complexMediaItems)?.let { (result, _) ->
+                    resolvedMediaItems.addAll(result)
                 }
             } else {
                 missingMediaItems.forEach { missingMediaItem ->
@@ -383,72 +382,14 @@ class LibraryProvider(private val repository: Repository) {
                 )
             }
 
-    private fun Song.toPlayableMediaItem(parent: String? = null) = buildPlayableMediaItem(this, parent)
+    private fun Song.toPlayableMediaItem(parent: String? = null) =
+        buildPlayableMediaItem(
+            song = this,
+            id = if (parent.isNullOrEmpty()) this.id.toString() else MediaIDs.getPathId(parent, this.id)
+        )
 
     companion object {
         // Internal ID for search requests
         private const val SEARCH = "SEARCH"
-
-        @OptIn(UnstableApi::class)
-        fun buildBrowsableMediaItem(
-            type: Int,
-            id: String,
-            title: String,
-            subtitle: String? = null,
-            artworkUri: Uri? = null,
-            showAsGrid: Boolean = false
-        ): MediaItem {
-            val gridExtras = if (showAsGrid) {
-                Bundle().apply {
-                    putInt(MediaConstants.EXTRAS_KEY_CONTENT_STYLE_BROWSABLE,
-                        MediaConstants.EXTRAS_VALUE_CONTENT_STYLE_GRID_ITEM)
-                    putInt(MediaConstants.EXTRAS_KEY_CONTENT_STYLE_PLAYABLE,
-                        MediaConstants.EXTRAS_VALUE_CONTENT_STYLE_GRID_ITEM)
-                }
-            } else {
-                Bundle.EMPTY
-            }
-            return MediaItem.Builder()
-                .setMediaId(id)
-                .setMediaMetadata(
-                    MediaMetadata.Builder()
-                        .setMediaType(type)
-                        .setIsBrowsable(true)
-                        .setIsPlayable(false)
-                        .setArtworkUri(artworkUri)
-                        .setTitle(title)
-                        .setSubtitle(subtitle)
-                        .setExtras(gridExtras)
-                        .build()
-                )
-                .build()
-        }
-
-        fun buildPlayableMediaItem(song: Song, parent: String? = null): MediaItem {
-            val itemId = if (parent.isNullOrEmpty()) song.id.toString() else MediaIDs.getPathId(parent, song.id)
-            return MediaItem.Builder()
-                .setUri(song.uri)
-                .setMediaId(itemId)
-                .setMediaMetadata(
-                    MediaMetadata.Builder()
-                        .setIsPlayable(true)
-                        .setIsBrowsable(false)
-                        .setArtworkUri(getImageUri(CoverProvider.SONG_COVER_PATH, song.id))
-                        .setTitle(song.title)
-                        .setSubtitle(song.songInfo())
-                        .setAlbumTitle(song.albumName)
-                        .setArtist(song.artistName)
-                        .setAlbumArtist(song.albumArtistName)
-                        .setGenre(song.genreName)
-                        .setTrackNumber(song.trackNumber)
-                        .setReleaseYear(song.year)
-                        .setDurationMs(song.duration.coerceAtLeast(0))
-                        .setExtras(
-                            Bundle().apply { putBoolean("resolved_from_file", song.resolvedFromFile) }
-                        )
-                        .build()
-                )
-                .build()
-        }
     }
 }

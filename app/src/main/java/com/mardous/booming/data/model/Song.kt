@@ -21,12 +21,11 @@ import android.content.ContentUris
 import android.net.Uri
 import android.os.Parcelable
 import android.provider.MediaStore
-import androidx.core.os.bundleOf
 import androidx.media3.common.MediaItem
-import androidx.media3.common.MediaMetadata
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.data.local.repository.RealSongRepository.Companion.getAudioContentUri
 import com.mardous.booming.extensions.hasQ
+import com.mardous.booming.playback.buildPlayableMediaItem
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import java.util.Date
@@ -53,7 +52,7 @@ open class Song(
     open val resolvedFromFile: Boolean = false
 ) : Parcelable, FileSystemItem {
 
-    val uri: Uri
+    open val uri: Uri
         get() = if (hasQ()) {
             volumeName.let { volume ->
                 if (volume != null && volume != MediaStore.VOLUME_EXTERNAL) {
@@ -97,25 +96,53 @@ open class Song(
         song.artistName,
         song.albumArtistName,
         song.genreName,
-        song.volumeName
+        song.volumeName,
+        song.resolvedFromFile
     )
 
-    fun toMediaItem(): MediaItem =
+    fun copy(resolvedFromFile: Boolean): Song {
+        return Song(
+            id = id,
+            data = data,
+            title = title,
+            trackNumber = trackNumber,
+            year = year,
+            size = size,
+            duration = duration,
+            dateAdded = dateAdded,
+            rawDateModified = rawDateModified,
+            albumId = albumId,
+            albumName = albumName,
+            artistId = artistId,
+            artistName = artistName,
+            albumArtistName = albumArtistName,
+            genreName = genreName,
+            volumeName = volumeName,
+            resolvedFromFile = resolvedFromFile
+        )
+    }
+
+    open fun toMediaItem(): MediaItem =
         if (this == emptySong) {
             MediaItem.EMPTY
         } else {
-            MediaItem.Builder()
-                .setMediaId(id.toString())
-                .setMediaMetadata(
-                    MediaMetadata.Builder()
-                        .setExtras(buildExtras())
-                        .build()
-                )
-                .build()
+            if (resolvedFromFile) {
+                // resolvedFromFile=true means this song originated from
+                // a user request to play an audio file from an external app.
+                //
+                // In that scenario, we prefer to return a complete MediaItem so that
+                // LibraryProvider doesn't have to re-resolve the song by applying
+                // rules that are typically only applicable to the app's library,
+                // such as blacklist, minimum duration, etc.
+                buildPlayableMediaItem(song = this)
+            } else {
+                // In this case, we return a minimal MediaItem because LibraryProvider
+                // will handle it after resolving the complete data. This has several
+                // implications, the most important being reducing the amount of data
+                // sent through the Binder, making the transaction much more efficient.
+                buildPlayableMediaItem(id = id.toString())
+            }
         }
-
-    private fun buildExtras() =
-        bundleOf().apply { putBoolean("resolved_from_file", resolvedFromFile) }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
