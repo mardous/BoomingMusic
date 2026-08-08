@@ -23,7 +23,8 @@ fun DialogListItemWithRadio(
     modifier: Modifier = Modifier,
     isSelected: Boolean = false,
     subtitle: String? = null,
-    contentPadding: PaddingValues? = null
+    contentPadding: PaddingValues? = null,
+    leadingIcon: (@Composable () -> Unit)? = null
 ) {
     DialogListItem(
         title = title,
@@ -32,6 +33,7 @@ fun DialogListItemWithRadio(
                 selected = isSelected,
                 onClick = null
             )
+            leadingIcon?.invoke()
         },
         subtitle = subtitle,
         contentPadding = contentPadding,

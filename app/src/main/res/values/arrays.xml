@@ -165,53 +165,9 @@
         <item>never</item>
     </string-array>
 
-    <string-array name="pref_language_names">
-        <item>@string/system_default</item>
-        <item>Arabic</item>
-        <item>Belarusian</item>
-        <item>Catalan</item>
-        <item>Chinese Simplified</item>
-        <item>Chinese Traditional</item>
-        <item>Croatian</item>
-        <item>Czech</item>
-        <item>Danish</item>
-        <item>Dutch</item>
-        <item>English (US)</item>
-        <item>Estonian</item>
-        <item>Filipino</item>
-        <item>Finnish</item>
-        <item>French</item>
-        <item>Galician</item>
-        <item>German</item>
-        <item>Greek</item>
-        <item>Hebrew</item>
-        <item>Hindi</item>
-        <item>Indonesian</item>
-        <item>Italian</item>
-        <item>Japanese</item>
-        <item>Kazakh</item>
-        <item>Korean</item>
-        <item>Luri Bakhtiari</item>
-        <item>Norwegian</item>
-        <item>Persian</item>
-        <item>Polish</item>
-        <item>Portuguese</item>
-        <item>Portuguese (Brazilian)</item>
-        <item>Romanian</item>
-        <item>Russian</item>
-        <item>Spanish</item>
-        <item>Spanish (Latin America)</item>
-        <item>Swedish</item>
-        <item>Tamil</item>
-        <item>Tatar</item>
-        <item>Turkish</item>
-        <item>Ukrainian</item>
-        <item>Vietnamese</item>
-    </string-array>
-
     <string-array name="pref_language_codes">
         <item>auto</item>
-        <item>ar</item>
+        <item>ar-SA</item>
         <item>be</item>
         <item>ca</item>
         <item>zh-CN</item>
@@ -222,7 +178,7 @@
         <item>nl</item>
         <item>en</item>
         <item>et</item>
-        <item>fa</item>
+        <item>fil</item>
         <item>fi</item>
         <item>fr</item>
         <item>gl</item>
@@ -237,14 +193,14 @@
         <item>ko</item>
         <item>bqi</item>
         <item>no</item>
-        <item>fil</item>
+        <item>fa</item>
         <item>pl</item>
-        <item>pt</item>
+        <item>pt-PT</item>
         <item>pt-BR</item>
         <item>ro</item>
         <item>ru</item>
         <item>es</item>
-        <item>es-419</item>
+        <item>es-US</item>
         <item>sv</item>
         <item>ta</item>
         <item>tt</item>

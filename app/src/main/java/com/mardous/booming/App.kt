@@ -18,12 +18,14 @@
 package com.mardous.booming
 
 import android.app.Application
+import android.content.SharedPreferences
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.os.StrictMode.VmPolicy
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
+import androidx.core.os.LocaleListCompat
 import androidx.preference.PreferenceManager
 import cat.ereza.customactivityoncrash.config.CaocConfig
 import coil3.ImageLoader
@@ -53,10 +55,18 @@ import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.error.ErrorActivity
 import com.mardous.booming.ui.screen.settings.SettingsScreen
 import com.mardous.booming.util.EXPERIMENTAL_UPDATES
+import com.mardous.booming.util.LANGUAGE_NAME
 import com.mardous.booming.util.Preferences.getDayNightMode
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+
+// Migration map of language Tags
+private val legacyLanguageTags = mapOf(
+    "es-419" to "es-US",
+    "pt" to "pt-PT",
+    "ar" to "ar-SA"
+)
 
 class App : Application(), SingletonImageLoader.Factory {
 
@@ -81,6 +91,8 @@ class App : Application(), SingletonImageLoader.Factory {
             }
         }
 
+        migrateLanguageTag(prefs)
+
         // setting Error activity
         CaocConfig.Builder.create()
             .errorActivity(ErrorActivity::class.java)
@@ -88,6 +100,13 @@ class App : Application(), SingletonImageLoader.Factory {
             .apply()
 
         AppCompatDelegate.setDefaultNightMode(getDayNightMode())
+    }
+
+    private fun migrateLanguageTag(prefs: SharedPreferences) {
+        val current = prefs.getString(LANGUAGE_NAME, null) ?: return
+        val replacement = legacyLanguageTags[current] ?: return
+        prefs.edit { putString(LANGUAGE_NAME, replacement) }
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(replacement))
     }
 
     override fun newImageLoader(context: PlatformContext): ImageLoader {
