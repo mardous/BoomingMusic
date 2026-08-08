@@ -258,7 +258,7 @@ class PlayerViewModel(
 
             // Retrieve existing songs for the given MediaItems and detect missing ones.
             val (songs, missingMediaItems) = withContext(IO) {
-                val result = repository.songsByMediaItems(mediaItems)
+                val result = repository.songsByMediaItems(mediaItems, ignoreBlacklist = true)
                 val occurrences = mutableMapOf<Long, Int>()
 
                 val queueSongs = result.first.map { song ->
