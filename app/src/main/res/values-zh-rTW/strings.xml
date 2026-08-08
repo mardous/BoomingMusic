@@ -346,7 +346,7 @@
     <string name="shuffle_mode_most_played">常聽歌曲</string>
     <string name="shuffle_mode_most_played_artists">常聽藝人</string>
     <string name="shuffle_mode_most_played_albums">常聽專輯</string>
-    <string name="shuffle_mode_favorite_songs">我的最愛</string>
+    <string name="shuffle_mode_favorite_songs">重溫最愛</string>
     <string name="shuffle_mode_forgotten_songs">許久未聽</string>
     <string name="shuffle_mode_recently_added">最近新增</string>
     <string name="shuffle_mode_combined">智慧混合</string>
