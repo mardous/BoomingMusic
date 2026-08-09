@@ -113,7 +113,7 @@ jobs:
       if: github.event_name != 'pull_request'
       run: |
         APK_PATH=$(find app/build/outputs/apk/github/release -name '*.apk')
-        APK_NAME=$(basename "$APK_PATH" .apk)
+        APK_NAME=$(basename "$APK_PATH")
         echo "APK_FILE=$APK_PATH" >> $GITHUB_ENV
         echo "APK_FILE_NAME=$APK_NAME" >> $GITHUB_ENV
         echo "apk_name=$APK_NAME" >> $GITHUB_OUTPUT
@@ -123,7 +123,7 @@ jobs:
       run: |
         APK_PATH=$(find app/build/outputs/apk/github/debug -name '*.apk')
         echo "APK_FILE=$APK_PATH" >> $GITHUB_ENV
-        echo "APK_FILE_NAME=$(basename "$APK_PATH" .apk)" >> $GITHUB_ENV
+        echo "APK_FILE_NAME=$(basename "$APK_PATH")" >> $GITHUB_ENV
 
     - name: Upload apk (CI build)
       if: github.event_name != 'pull_request'
@@ -159,7 +159,7 @@ jobs:
           📋 **Changelog:**
           ${{ needs.build.outputs.changelog }}
         files: |
-          ./${{ needs.build.outputs.apk_file_name }}.apk
+          ./${{ needs.build.outputs.apk_file_name }}
       env:
         API_ID: ${{ secrets.TG_API_ID }}
         API_HASH: ${{ secrets.TG_API_HASH }}
