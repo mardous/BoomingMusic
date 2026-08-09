@@ -28,13 +28,11 @@ jobs:
       - name: Setup Android-SDK
         uses: android-actions/setup-android@v4
 
-      - name: Create files for signing
+      - name: Create signing key
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
-          SIGNING_PROPERTIES: ${{ secrets.SIGNING_PROPERTIES }}
         run: |
-          echo $SIGNING_KEY | base64 -di > ./booming_keystore.jks
-          echo $SIGNING_PROPERTIES | base64 -di > ./keystore.properties
+          echo $SIGNING_KEY | base64 -di > ${{ runner.temp }}/booming_keystore.jks
 
       - name: Make Gradle executable
         run: chmod +x ./gradlew
@@ -44,8 +42,18 @@ jobs:
           VARIANT: ${{ matrix.variant }}
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
           LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
+          SIGNING_PROPERTIES: ${{ secrets.SIGNING_PROPERTIES }}
         run: |
+          # Extract signing properties
+          echo "$SIGNING_PROPERTIES" | base64 -di > temp.properties
+          export KEY_ALIAS=$(grep keyAlias temp.properties | cut -d'=' -f2 | tr -d '\r' | xargs)
+          export KEY_PASSWORD=$(grep keyPassword temp.properties | cut -d'=' -f2 | tr -d '\r' | xargs)
+          export STORE_PASSWORD=$(grep storePassword temp.properties | cut -d'=' -f2 | tr -d '\r' | xargs)
+          export KEYSTORE_FILE="${{ runner.temp }}/booming_keystore.jks"
+          rm temp.properties
+
           CAP_VARIANT="$(echo ${VARIANT:0:1} | tr '[:lower:]' '[:upper:]')${VARIANT:1}"
+          
           if [ "$VARIANT" == "playstore" ]; then
             ./gradlew bundle${CAP_VARIANT}Release
           else

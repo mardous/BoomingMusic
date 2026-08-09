@@ -66,7 +66,6 @@ class MetadataWriter : KoinComponent {
             }
             if (result.isSuccess) {
                 results.add(result.getOrThrow())
-                contentResolver.notifyChange(content.uri, null)
             } else {
                 Log.e("MetadataWriter", "Failed to write metadata for ${content.uri}", result.exceptionOrNull())
             }
@@ -82,21 +81,26 @@ class MetadataWriter : KoinComponent {
                 contentResolver.deleteAlbumArt(target.artworkId)
             }
         }
-        val successContents = results.filter { it.isSuccess }
-            .map { it -> it.content }
+        val successContents = results.filter { it.isSuccess }.map { it.content }
         val paths = successContents.map { content -> content.path }.toTypedArray()
         if (paths.isNotEmpty()) {
             val total = paths.size
-            val scanned = suspendCancellableCoroutine { continuation ->
+            val successIds = suspendCancellableCoroutine { continuation ->
                 var progress = 0
-                MediaScannerConnection.scanFile(context, paths, null) { _, _ ->
+                val successIds = mutableListOf<Long>()
+                MediaScannerConnection.scanFile(context, paths, null) { _, insertedUri ->
+                    if (insertedUri != null) successIds.add(successContents[progress].id)
+
                     progress++
                     if (progress == total && continuation.isActive) {
-                        continuation.resume(total)
+                        continuation.resume(successIds)
                     }
                 }
             }
-            WriteResult(successContents, failed = total - scanned, scanned = scanned)
+            WriteResult(
+                contents = successContents,
+                successIds = successIds
+            )
         } else {
             WriteResult(emptyList())
         }
@@ -184,11 +188,10 @@ class MetadataWriter : KoinComponent {
 
     class WriteResult(
         val contents: List<EditTarget.Content>,
-        val failed: Int = 0,
-        val scanned: Int = 0
+        val successIds: List<Long> = emptyList()
     ) {
         val isSuccess: Boolean
-            get() = contents.isNotEmpty() && scanned == contents.size
+            get() = contents.isNotEmpty() && successIds.size == contents.size
     }
 
     private class WriteResultInternal(

@@ -928,4 +928,15 @@
     <string name="up_next">Järgmisena</string>
     <string name="reorder_action">Telli uuesti</string>
     <string name="go_to_current_track">Mine praeguse loo juurde</string>
+    <string name="action_auto_fill_from_musicbrainz">Täida automaatselt MusicBrainzi andmete alusel</string>
+    <string name="searching">Otsin…</string>
+    <string name="musicbrainz_search_title">Otsing MusicBrainzist</string>
+    <string name="musicbrainz_search_message">Otsi MusicBrainzist loo metaandmeid pealkirja ja esitaja alusel.</string>
+    <string name="musicbrainz_no_results">MusicBrainzis ei leidunud tulemusi.</string>
+    <string name="musicbrainz_select_recording">Vali salvestis</string>
+    <string name="sort_order_name">Nimi</string>
+    <string name="website">Veebisait</string>
+    <string name="legal">Juriidiline teave</string>
+    <string name="terms_of_service">Kasutustingimused</string>
+    <string name="privacy_policy">Andmekaitsepõhimõtted</string>
 </resources>

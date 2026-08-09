@@ -22,6 +22,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class QueueSong(
     val key: Pair<Long, Int>,
+    val isUnindexed: Boolean,
     override val id: Long,
     override val data: String,
     override val title: String,
@@ -58,6 +59,7 @@ class QueueSong(
 ) {
     constructor(key: Pair<Long, Int>, song: Song) : this(
         key = key,
+        isUnindexed = (song is UnindexedSong),
         id = song.id,
         data = song.data,
         title = song.title,

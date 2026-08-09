@@ -18,9 +18,11 @@
 package com.mardous.booming.data.local.repository
 
 import android.annotation.SuppressLint
+import android.content.ClipDescription
 import android.content.ContentResolver
 import android.content.Context
 import android.database.Cursor
+import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Environment
 import android.provider.DocumentsContract
@@ -34,26 +36,30 @@ import com.mardous.booming.data.local.MediaQueryDispatcher
 import com.mardous.booming.data.local.room.InclExclDao
 import com.mardous.booming.data.local.room.InclExclEntity
 import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.UnindexedSong
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.utilities.getStringSafe
 import com.mardous.booming.extensions.utilities.mapIfValid
 import com.mardous.booming.extensions.utilities.takeOrDefault
+import com.mardous.booming.playback.resolvedFromFile
 import com.mardous.booming.util.Preferences
 import okhttp3.internal.toLongOrDefault
 
 interface SongRepository {
+    fun song(songId: Long): Song
+    fun song(cursor: Cursor?): Song
     fun songs(): List<Song>
+    fun songs(songIds: List<Long>): List<Song>
     fun songs(query: String): List<Song>
     fun songs(cursor: Cursor?): List<Song>
     suspend fun songsByUri(uri: Uri): List<Song>
-    suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>>
-    suspend fun songByMediaItem(mediaItem: MediaItem?): Song
+    suspend fun songsByMediaItems(mediaItems: List<MediaItem>, ignoreBlacklist: Boolean): Pair<List<Song>, List<MediaItem>>
+    suspend fun songByMediaItem(mediaItem: MediaItem?, ignoreBlacklist: Boolean): Song
     fun songByFilePath(filePath: String, ignoreBlacklist: Boolean = false): Song
-    fun song(cursor: Cursor?): Song
-    fun song(songId: Long): Song
     suspend fun initializeBlacklist()
 }
 
@@ -63,9 +69,25 @@ class RealSongRepository(
     private val inclExclDao: InclExclDao
 ) : SongRepository {
 
+    private val nonIndexedFiles = mutableMapOf<String, UnindexedSong>()
+
+    override fun song(songId: Long): Song {
+        return resolveSongById(songId, false)
+    }
+
+    override fun song(cursor: Cursor?): Song {
+        return resolveSongFromCursor(cursor, false)
+    }
+
     override fun songs(): List<Song> {
         val songs = songs(makeSongCursor(null, null))
         return with(SongSortMode.AllSongs) { songs.sorted() }
+    }
+
+    override fun songs(songIds: List<Long>): List<Song> {
+        val selection = "${AudioColumns._ID} IN (${songIds.joinToString(",") { "?" }})"
+        val selectionArgs = songIds.map { it.toString() }.toTypedArray()
+        return songs(makeSongCursor(selection, selectionArgs))
     }
 
     override fun songs(query: String): List<Song> {
@@ -83,16 +105,6 @@ class RealSongRepository(
         }
     }
 
-    override fun song(cursor: Cursor?): Song {
-        return cursor.use {
-            it.takeOrDefault(Song.emptySong) { getSongFromCursorImpl(this) }
-        }
-    }
-
-    override fun song(songId: Long): Song {
-        return song(makeSongCursor("${AudioColumns._ID}=?", arrayOf(songId.toString())))
-    }
-
     override suspend fun songsByUri(uri: Uri): List<Song> {
         var songs: List<Song> = emptyList()
         if (uri.scheme == ContentResolver.SCHEME_CONTENT) {
@@ -101,7 +113,7 @@ class RealSongRepository(
                 MediaStore.AUTHORITY -> {
                     val songId = uri.lastPathSegment?.toLongOrNull()
                     if (songId != null) {
-                        songs = listOf(song(songId))
+                        songs = listOf(resolveSongById(songId, resolvedFromFile = true))
                     }
                 }
 
@@ -112,13 +124,13 @@ class RealSongRepository(
                             val id = MediaStore.getMediaUri(context, uri)
                                 ?.lastPathSegment?.toLongOrNull()
                             if (id != null) {
-                                songs = listOf(song(id))
+                                songs = listOf(resolveSongById(id, resolvedFromFile = true))
                             }
                         } else {
                             if (authority == "com.android.providers.media.documents") {
                                 val id = getSongIdFromMediaProvider(uri)
                                 if (id > -1) {
-                                    songs = listOf(song(id))
+                                    songs = listOf(resolveSongById(id, resolvedFromFile = true))
                                 }
                             }
                         }
@@ -135,17 +147,20 @@ class RealSongRepository(
         }
 
         if (songs.isEmpty() && uri.scheme == ContentResolver.SCHEME_CONTENT) {
-            songs = listOf(findSongFromFileProviderUri(uri))
+            songs = listOfNotNull(findSongFromFileProviderUri(uri))
         }
 
         if (songs.isEmpty()) {
             Log.e(TAG, "Couldn't resolve songs from Uri: $uri")
         }
 
-        return songs
+        return songs.filter { it != Song.emptySong }
     }
 
-    override suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>> {
+    override suspend fun songsByMediaItems(
+        mediaItems: List<MediaItem>,
+        ignoreBlacklist: Boolean
+    ): Pair<List<Song>, List<MediaItem>> {
         if (mediaItems.isEmpty()) return (emptyList<Song>() to mediaItems)
 
         // Preload whitelist and blacklist if enabled to avoid redundant Room queries in the loop
@@ -168,7 +183,8 @@ class RealSongRepository(
                             selection = selection,
                             selectionValues = selectionArgs,
                             whitelistedPaths = whitelistedPaths,
-                            blacklistedPaths = blacklistedPaths
+                            blacklistedPaths = blacklistedPaths,
+                            ignoreBlacklist = ignoreBlacklist
                         )
                     )
                 )
@@ -182,39 +198,56 @@ class RealSongRepository(
 
         for (item in mediaItems) {
             val song = songMap[item.mediaId]
+
+            val resolvedFromFile = item.resolvedFromFile
             if (song != null && song != Song.emptySong) {
-                resultSongs.add(song)
+                resultSongs.add(if (resolvedFromFile) song.copy(resolvedFromFile = true) else song)
             } else {
-                missing.add(item)
+                val nonIndexedFile = nonIndexedFiles[item.mediaId]
+                if (nonIndexedFile != null) {
+                    resultSongs.add(nonIndexedFile)
+                } else {
+                    missing.add(item)
+                }
             }
         }
 
         return resultSongs to missing
     }
 
-    override suspend fun songByMediaItem(mediaItem: MediaItem?): Song {
+    override suspend fun songByMediaItem(mediaItem: MediaItem?, ignoreBlacklist: Boolean): Song {
         if (mediaItem != null) {
-            var song = mediaItem.localConfiguration?.tag
-            if (song == null || song !is Song) {
-                song = song(
-                    makeSongCursor(
-                        selection = "${AudioColumns._ID}=?",
-                        selectionValues = arrayOf(mediaItem.mediaId)
-                    )
-                )
+            // If we get `resolvedFromFile=true`, we're dealing with a song coming
+            // from an external app. This could be, for example, a file explorer;
+            // in that case, the user might be trying to play an audio file from the
+            // blacklisted folders. We must ensure that this information is retained
+            // in the resulting song, which will also let PlaybackService know that
+            // this song shouldn't be included in scrobbling, history, or play counts.
+            val resolvedFromFile = mediaItem.resolvedFromFile
+            val song = resolveSongFromCursor(
+                cursor = makeSongCursor(
+                    selection = "${AudioColumns._ID}=?",
+                    selectionValues = arrayOf(mediaItem.mediaId),
+                    ignoreBlacklist = ignoreBlacklist
+                ),
+                resolvedFromFile = resolvedFromFile
+            )
+            if (song == Song.emptySong) {
+                val nonIndexedFile = nonIndexedFiles[mediaItem.mediaId]
+                if (nonIndexedFile != null) return nonIndexedFile
             }
-            return song
         }
         return Song.emptySong
     }
 
     override fun songByFilePath(filePath: String, ignoreBlacklist: Boolean): Song {
-        return song(
-            makeSongCursor(
+        return resolveSongFromCursor(
+            cursor = makeSongCursor(
                 selection = "${AudioColumns.DATA}=?",
                 selectionValues = arrayOf(filePath),
                 ignoreBlacklist = ignoreBlacklist
-            )
+            ),
+            resolvedFromFile = ignoreBlacklist
         )
     }
 
@@ -226,6 +259,19 @@ class RealSongRepository(
         )
         for (path in excludedPaths) {
             inclExclDao.insertPath(InclExclEntity(path.getCanonicalPathSafe(), InclExclDao.BLACKLIST))
+        }
+    }
+
+    private fun resolveSongById(songId: Long, resolvedFromFile: Boolean): Song {
+        return resolveSongFromCursor(
+            cursor = makeSongCursor("${AudioColumns._ID}=?", arrayOf(songId.toString())),
+            resolvedFromFile = resolvedFromFile
+        )
+    }
+
+    private fun resolveSongFromCursor(cursor: Cursor?, resolvedFromFile: Boolean): Song {
+        return cursor.use {
+            it.takeOrDefault(Song.emptySong) { getSongFromCursorImpl(this, resolvedFromFile) }
         }
     }
 
@@ -306,31 +352,62 @@ class RealSongRepository(
         return if (parts.size == 2) parts[1].toLongOrDefault(-1) else -1
     }
 
-    private fun getDisplayNameAndSize(uri: Uri): Pair<String, Long>? {
-        return MediaQueryDispatcher(uri)
-            .withColumns(OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE)
-            .dispatch()?.use { cursor ->
+    private fun findSongFromFileProviderUri(uri: Uri): Song? {
+        var song: Song? = null
+
+        var fileName: String? = null
+        var fileSize = 0L
+
+        try {
+            val columns = arrayOf(OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE)
+            context.contentResolver.query(uri, columns, null, null, null)?.use { cursor ->
                 if (cursor.moveToFirst()) {
-                    val name =
-                        cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME))
-                    val size = cursor.getLong(cursor.getColumnIndexOrThrow(OpenableColumns.SIZE))
-                    return name to size
-                } else null
+                    fileName = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME))
+                    fileSize = cursor.getLong(cursor.getColumnIndexOrThrow(OpenableColumns.SIZE))
+
+                    val selection = "${AudioColumns.DISPLAY_NAME} = ? AND ${AudioColumns.SIZE} = ?"
+                    val selectionArgs = arrayOf(fileName, fileSize.toString())
+
+                    val cursor = makeSongCursor(selection, selectionArgs, ignoreBlacklist = true)
+                    if (cursor != null && cursor.count > 0) {
+                        song = resolveSongFromCursor(cursor, resolvedFromFile = true)
+                    }
+                }
             }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to retrieve file info from FileProvider (uri: $uri)", e)
+        }
+
+        val uriPath = uri.path
+        if (song == null && fileName != null && fileSize > 0 && uriPath != null) {
+            val dataMimeType = context.contentResolver.getType(uri)
+            if (ClipDescription.compareMimeTypes(dataMimeType, "audio/*")) {
+                val retriever = MediaMetadataRetriever()
+                try {
+                    retriever.setDataSource(context, uri)
+
+                    val title = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)
+                        .orEmpty().ifEmpty { fileName }
+                    val artist = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)
+                        .orEmpty().ifEmpty { Artist.UNKNOWN }
+                    val album = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)
+                        .orEmpty().ifEmpty { Album.UNKNOWN_ALBUM_DISPLAY_NAME }
+                    val duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
+                        ?.toLongOrDefault(0) ?: 0L
+
+                    val id = (nonIndexedFiles.size + 1).toLong()
+                    song = UnindexedSong(uri, id, uriPath, title, fileSize, duration, album, artist)
+                        .also { nonIndexedFiles[uriPath] = it }
+                } catch (e: Exception) {
+                    Log.e(TAG, "Failed to retrieve file metadata (uri: $uri)", e)
+                }
+            }
+        }
+
+        return song
     }
 
-    private fun findSongFromFileProviderUri(uri: Uri): Song {
-        val (name, size) = getDisplayNameAndSize(uri)
-            ?: return Song.emptySong
-
-        val selection = "${AudioColumns.DISPLAY_NAME} = ? AND ${AudioColumns.SIZE} = ?"
-        val selectionArgs = arrayOf(name, size.toString())
-
-        val cursor = makeSongCursor(selection, selectionArgs, ignoreBlacklist = true)
-        return song(cursor)
-    }
-
-    private fun getSongFromCursorImpl(cursor: Cursor): Song {
+    private fun getSongFromCursorImpl(cursor: Cursor, resolvedFromFile: Boolean = false): Song {
         val id = cursor.getLong(0)
         val data = cursor.getString(cursor.getColumnIndexOrThrow(AudioColumns.DATA))
         val title = cursor.getString(cursor.getColumnIndexOrThrow(AudioColumns.TITLE))
@@ -348,22 +425,23 @@ class RealSongRepository(
         val genreName = cursor.getStringSafe(AudioColumns.GENRE)
         val volumeName = cursor.getStringSafe(AudioColumns.VOLUME_NAME)
         return Song(
-            id,
-            data,
-            title,
-            trackNumber,
-            year,
-            size,
-            duration,
-            dateAdded,
-            dateModified,
-            albumId,
-            albumName,
-            artistId,
-            artistName,
-            albumArtistName,
-            genreName,
-            volumeName
+            id = id,
+            data = data,
+            title = title,
+            trackNumber = trackNumber,
+            year = year,
+            size = size,
+            duration = duration,
+            dateAdded = dateAdded,
+            rawDateModified = dateModified,
+            albumId = albumId,
+            albumName = albumName,
+            artistId = artistId,
+            artistName = artistName,
+            albumArtistName = albumArtistName,
+            genreName = genreName,
+            volumeName = volumeName,
+            resolvedFromFile = resolvedFromFile
         )
     }
 

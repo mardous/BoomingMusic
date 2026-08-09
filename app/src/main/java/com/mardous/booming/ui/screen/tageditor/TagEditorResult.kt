@@ -39,7 +39,5 @@ data class TagEditorResult(
 
 class SaveTagsResult(
     val isLoading: Boolean,
-    val isSuccess: Boolean,
-    val scanned: Int = 0,
-    val failed: Int = 0
+    val isSuccess: Boolean
 )

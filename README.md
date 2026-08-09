@@ -195,6 +195,7 @@ Also thanks to:
 - [LRCLib](https://lrclib.net/)
 - [Better Lyrics](https://better-lyrics.boidu.dev/)
 - [Lyrically API](https://lyrics.paxsenix.org/) (by [Alex](https://github.com/Paxsenix0))
+- [Gramophone](https://github.com/FoedusProgramme/Gramophone)
 
 ## ⚖️ License
 

@@ -11,7 +11,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.session.*
+import androidx.media3.session.CommandButton
+import androidx.media3.session.MediaController
+import androidx.media3.session.SessionCommand
+import androidx.media3.session.SessionCommands
+import androidx.media3.session.SessionError
+import androidx.media3.session.SessionResult
+import androidx.media3.session.SessionToken
 import com.google.common.util.concurrent.ListenableFuture
 import com.mardous.booming.core.model.task.Event
 import com.mardous.booming.playback.PlaybackService
@@ -23,7 +29,8 @@ import kotlin.concurrent.atomics.ExperimentalAtomicApi
 @OptIn(ExperimentalAtomicApi::class)
 class MediaControllerOwner(
     private val context: Context,
-    private var listener: MediaController.Listener?
+    private var listener: MediaController.Listener?,
+    var isTransient: Boolean = false
 ) : MediaController.Listener, DefaultLifecycleObserver {
 
     private val currentState = AtomicReference(State.Idle)
@@ -96,9 +103,11 @@ class MediaControllerOwner(
     override fun onStop(owner: LifecycleOwner) {
         val oldState = currentState.exchange(State.Disconnected)
         if (oldState < State.Disconnected) {
-            controller?.release()
-            controller = null
-            controllerFuture?.cancel(true)
+            if (isTransient) {
+                controller?.stop()
+                controller?.clearMediaItems()
+            }
+            controllerFuture?.let { MediaController.releaseFuture(it) }
             controllerFuture = null
         }
     }

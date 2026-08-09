@@ -18,7 +18,14 @@
 package com.mardous.booming.data.local.room
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.RewriteQueriesToDropUnusedColumns
+import androidx.room.Transaction
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -109,4 +116,10 @@ interface PlaylistDao {
 
     @Query("SELECT EXISTS(SELECT * FROM SongEntity WHERE id = :songId AND playlist_creator_id = :playlistId)")
     fun checkSongExistInPlaylist(playlistId: Long, songId: Long): Boolean
+
+    @Query("SELECT * FROM SongEntity WHERE id IN (:songIds)")
+    suspend fun findSongsByIds(songIds: List<Long>): List<SongEntity>
+
+    @Update
+    suspend fun updateSongs(songs: List<SongEntity>)
 }

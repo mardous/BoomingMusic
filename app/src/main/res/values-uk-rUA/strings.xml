@@ -966,4 +966,15 @@
     <string name="up_next">Далі</string>
     <string name="reorder_action">Змінити порядок</string>
     <string name="go_to_current_track">Перейти до поточного треку</string>
+    <string name="action_auto_fill_from_musicbrainz">Автозаповнення з MusicBrainz</string>
+    <string name="searching">Пошук…</string>
+    <string name="musicbrainz_search_title">Пошук у MusicBrainz</string>
+    <string name="musicbrainz_search_message">Шукайте метадані пісні на MusicBrainz за назвою та виконавцем.</string>
+    <string name="musicbrainz_no_results">Пошук на MusicBrainz не дав результатів.</string>
+    <string name="musicbrainz_select_recording">Виберіть запис</string>
+    <string name="sort_order_name">Назва</string>
+    <string name="website">Вебсайт</string>
+    <string name="legal">Легально</string>
+    <string name="terms_of_service">Умови користування</string>
+    <string name="privacy_policy">Політика приватності</string>
 </resources>

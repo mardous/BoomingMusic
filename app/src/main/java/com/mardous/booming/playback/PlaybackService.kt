@@ -29,6 +29,9 @@ import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
 import androidx.core.os.bundleOf
 import androidx.core.os.postDelayed
+import androidx.glance.appwidget.GlanceAppWidgetManager
+import androidx.glance.appwidget.state.updateAppWidgetState
+import androidx.media.utils.MediaConstants
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -52,6 +55,7 @@ import androidx.media3.session.LibraryResult
 import androidx.media3.session.MediaLibraryService
 import androidx.media3.session.MediaLibraryService.MediaLibrarySession
 import androidx.media3.session.MediaSession
+import androidx.media3.session.MediaSession.ConnectionResult.AcceptedResultBuilder
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
 import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionError
@@ -92,6 +96,7 @@ import com.mardous.booming.util.IGNORE_AUDIO_FOCUS
 import com.mardous.booming.util.MP3_INDEX_SEEKING
 import com.mardous.booming.util.PAUSE_ON_ZERO_VOLUME
 import com.mardous.booming.util.PLAY_ON_STARTUP_MODE
+import com.mardous.booming.util.PackageValidator
 import com.mardous.booming.util.PlayOnStartupMode
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.Preferences.requireString
@@ -154,6 +159,7 @@ class PlaybackService :
     private val balanceProcessor: BalanceAudioProcessor by inject()
     private val replayGainProcessor: ReplayGainAudioProcessor by inject()
 
+    private lateinit var packageValidator: PackageValidator
     private lateinit var nm: NotificationManager
     private lateinit var persistentStorage: PersistentStorage
     private lateinit var customCommands: List<CommandButton>
@@ -225,6 +231,8 @@ class PlaybackService :
         nm = requireNotNull(getSystemService<NotificationManager>())
         createNotificationChannel()
 
+        packageValidator = PackageValidator(this, R.xml.allowed_media_browser_callers)
+
         customCommands = listOf(
             CommandButton.Builder(CommandButton.ICON_SHUFFLE_OFF)
                 .setDisplayName(getString(R.string.shuffle_mode))
@@ -289,12 +297,11 @@ class PlaybackService :
         player.setSequentialTimelineEnabled(sequentialTimeline)
         player.addListener(this)
 
-        mediaSession = with(MediaLibrarySession.Builder(this, player, this)) {
-            setId(packageName)
-            setSessionActivity(createSessionActivityIntent())
-            setBitmapLoader(CacheBitmapLoader(CoilBitmapLoader(this@PlaybackService)))
-            build()
-        }
+        mediaSession = MediaLibrarySession.Builder(this, player, this)
+            .setId(packageName)
+            .setSessionActivity(createSessionActivityIntent())
+            .setBitmapLoader(CacheBitmapLoader(CoilBitmapLoader(this@PlaybackService)))
+            .build()
 
         setForegroundServiceTimeoutMs(FOREGROUND_SERVICE_TIMEOUT)
         setMediaNotificationProvider(
@@ -388,31 +395,31 @@ class PlaybackService :
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? {
-        return mediaSession
+        return if ("android.media.session.MediaController" == controllerInfo.packageName
+            || packageValidator.isKnownCaller(controllerInfo.packageName, controllerInfo.uid)) {
+            mediaSession
+        } else null
     }
 
-    override fun onConnect(
+    override fun onConnectAsync(
         session: MediaSession,
         controller: MediaSession.ControllerInfo
-    ): MediaSession.ConnectionResult {
-        val connectionResult = super.onConnect(session, controller)
-        val trusted = session.isTrustedController(controller)
-        val availableCommands = if (trusted) {
-            MediaSession.ConnectionResult.DEFAULT_SESSION_AND_LIBRARY_COMMANDS.buildUpon()
-        } else {
-            MediaSession.ConnectionResult.DEFAULT_SESSION_COMMANDS.buildUpon()
+    ): ListenableFuture<MediaSession.ConnectionResult> {
+        val connectionResult = AcceptedResultBuilder(session, controller).build()
+        val availableSessionCommands = connectionResult.availableSessionCommands.buildUpon()
+        if (controller.uid == Process.myUid()) {
+            availableSessionCommands.add(SessionCommand(Playback.CYCLE_REPEAT, Bundle.EMPTY))
+            availableSessionCommands.add(SessionCommand(Playback.TOGGLE_SHUFFLE, Bundle.EMPTY))
+            availableSessionCommands.add(SessionCommand(Playback.TOGGLE_FAVORITE, Bundle.EMPTY))
+            availableSessionCommands.add(SessionCommand(Playback.RESTORE_PLAYBACK, Bundle.EMPTY))
+            availableSessionCommands.add(SessionCommand(Playback.SET_UNSHUFFLED_ORDER, Bundle.EMPTY))
+            availableSessionCommands.add(SessionCommand(Playback.SET_STOP_POSITION, Bundle.EMPTY))
         }
-
-        availableCommands.add(SessionCommand(Playback.CYCLE_REPEAT, Bundle.EMPTY))
-        availableCommands.add(SessionCommand(Playback.TOGGLE_SHUFFLE, Bundle.EMPTY))
-
-        if (trusted) {
-            MUTATING_COMMANDS.forEach { availableCommands.add(SessionCommand(it, Bundle.EMPTY)) }
-        }
-
-        return MediaSession.ConnectionResult.accept(
-            availableCommands.build(),
-            connectionResult.availablePlayerCommands
+        return Futures.immediateFuture(
+            MediaSession.ConnectionResult.accept(
+                availableSessionCommands.build(),
+                connectionResult.availablePlayerCommands
+            )
         )
     }
 
@@ -446,22 +453,45 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<MediaItem>> {
+        val isKnownCaller = packageValidator.isKnownCaller(browser.packageName, browser.uid)
+        val outExtras = Bundle().apply {
+            putBoolean(MediaConstants.BROWSER_SERVICE_EXTRAS_KEY_SEARCH_SUPPORTED, isKnownCaller)
+        }
         val libraryParams = LibraryParams.Builder()
             .setOffline(true)
-            .setRecent(true)
-            .setSuggested(false)
+            .setExtras(outExtras)
             .build()
-        // The root itself tells a caller nothing; everything under it is gated per request.
-        val mediaItem = MediaItem.Builder()
-            .setMediaId(if (params?.isRecent == true) MediaIDs.RECENT_SONGS else MediaIDs.ROOT)
-            .setMediaMetadata(
-                MediaMetadata.Builder()
-                    .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                    .setIsBrowsable(true)
-                    .setIsPlayable(false)
-                    .build()
-            )
-            .build()
+        val mediaItem = if (isKnownCaller) {
+            when {
+                params?.isRecent == true -> {
+                    MediaItem.Builder()
+                        .setMediaId(MediaIDs.RECENT_SONGS)
+                        .setMediaMetadata(
+                            MediaMetadata.Builder()
+                                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                                .setIsBrowsable(true)
+                                .setIsPlayable(false)
+                                .build()
+                        )
+                        .build()
+                }
+
+                else -> {
+                    MediaItem.Builder()
+                        .setMediaId(MediaIDs.ROOT)
+                        .setMediaMetadata(
+                            MediaMetadata.Builder()
+                                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                                .setIsBrowsable(true)
+                                .setIsPlayable(false)
+                                .build()
+                        )
+                        .build()
+                }
+            }
+        } else {
+            MediaItem.EMPTY
+        }
         return Futures.immediateFuture(LibraryResult.ofItem(mediaItem, libraryParams))
     }
 
@@ -773,25 +803,28 @@ class PlaybackService :
         val isPlaying = player.isPlaying
 
         serviceScope.launch(IO) {
-            val newSong = repository.songByMediaItem(mediaItem)
+            val newSong = repository.songByMediaItem(mediaItem, ignoreBlacklist = true)
+            if (newSong != Song.emptySong) {
+                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(newSong)
+            }
 
             val previousSong = songPlayCountHelper.song
             val shouldBumpPlayCount = songPlayCountHelper.shouldBumpPlayCount()
             songPlayCountHelper.notifySongChanged(newSong, isPlaying)
 
-            if (newSong != Song.emptySong) {
-                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(newSong)
+            val enableHistory = preferences.getBoolean(ENABLE_HISTORY, true)
+            if (enableHistory && newSong != Song.emptySong && !newSong.resolvedFromFile) {
                 if (preferences.getBoolean(ENABLE_HISTORY, true)) {
                     repository.upsertSongInHistory(newSong)
                 }
-                if (NetworkFeature.Lastfm.NowPlaying.isAvailable) {
+                if (!NetworkFeature.Lastfm.NowPlaying.isAvailable) {
                     launch { repository.updateNowPlaying(ScrobblingService.Lastfm, newSong) }
                 }
                 if (NetworkFeature.ListenBrainz.NowPlaying.isAvailable) {
                     launch { repository.updateNowPlaying(ScrobblingService.ListenBrainz, newSong) }
                 }
             }
-            if (previousSong != Song.emptySong) {
+            if (enableHistory && previousSong != Song.emptySong && !previousSong.resolvedFromFile) {
                 val timestampMillis = System.currentTimeMillis()
                 val timestampSeconds = (timestampMillis / 1000)
                 if (shouldBumpPlayCount) {
@@ -883,6 +916,7 @@ class PlaybackService :
                 if (!preferences.getBoolean(key, true)) {
                     serviceScope.launch(IO) {
                         repository.clearSongHistory()
+                        repository.clearPlayCount()
                     }
                 }
             }
@@ -931,7 +965,7 @@ class PlaybackService :
             ?: return
 
         withContext(IO) {
-            val song = repository.songByMediaItem(currentMediaItem)
+            val song = repository.songByMediaItem(currentMediaItem, ignoreBlacklist = false)
             repository.toggleFavorite(song)
         }
 

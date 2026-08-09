@@ -41,7 +41,6 @@ import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.ProgressObserver
 import com.mardous.booming.playback.getQueueItems
 import com.mardous.booming.playback.shuffle.ShuffleManager
-import com.mardous.booming.playback.toMediaItems
 import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.REMEMBER_SHUFFLE_MODE
@@ -72,6 +71,8 @@ import kotlin.time.Duration.Companion.milliseconds
 const val QUEUE_DEBOUNCE = 100L
 
 @OptIn(FlowPreview::class)
+private fun List<Song>.toMediaItems() = map { it.toMediaItem() }
+
 @androidx.annotation.OptIn(UnstableApi::class)
 class PlayerViewModel(
     private val preferences: SharedPreferences,
@@ -257,7 +258,7 @@ class PlayerViewModel(
 
             // Retrieve existing songs for the given MediaItems and detect missing ones.
             val (songs, missingMediaItems) = withContext(IO) {
-                val result = repository.songsByMediaItems(mediaItems)
+                val result = repository.songsByMediaItems(mediaItems, ignoreBlacklist = true)
                 val occurrences = mutableMapOf<Long, Int>()
 
                 val queueSongs = result.first.map { song ->

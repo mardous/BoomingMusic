@@ -28,7 +28,9 @@ import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.BetterLyrics
 import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.LRCLib
 import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.Lyrically
+import com.mardous.booming.extensions.files.belongsTo
 import com.mardous.booming.extensions.media.isArtistNameUnknown
+import com.mardous.booming.extensions.utilities.sanitize
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -171,44 +173,61 @@ class LyricsViewModel(
 
     fun importCustomFont(context: Context, uri: Uri) = liveData(IO) {
         try {
+            val defaultName = "custom_font_${System.currentTimeMillis()}.ttf"
             val fontsDir = File(context.filesDir, "fonts").apply { mkdirs() }
-            val fileName = context.contentResolver.query(uri, null, null, null, null)
+            val rawFileName = context.contentResolver.query(uri, null, null, null, null)
                 ?.use { cursor ->
                     if (cursor.moveToFirst()) {
                         val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
                         if (nameIndex != -1) cursor.getString(nameIndex) else null
                     } else null
-                } ?: "custom_font_${System.currentTimeMillis()}.ttf"
+                } ?: defaultName
 
-            val outFile = File(fontsDir, fileName)
+            // Sanitize the filename to prevent path traversal
+            val fileName = File(rawFileName).name.sanitize()
+                .ifBlank { defaultName }
 
+            // 1. Initial extension check
             var isValid = fileName.lowercase().endsWith(".ttf") || fileName.lowercase().endsWith(".otf")
+
+            // 2. Magic-byte check before choosing any destination path or writing
             if (isValid) {
                 context.contentResolver.openInputStream(uri)?.use { input ->
                     val header = ByteArray(4)
                     if (input.read(header) == 4) {
                         val hex = header.joinToString("") { "%02X".format(it) }
                         isValid = hex == "00010000" || hex == "4F54544F" // TTF or OTF
+                    } else {
+                        isValid = false
                     }
                 }
             }
 
-            if (isValid) {
-                context.contentResolver.openInputStream(uri)?.use { input ->
-                    outFile.outputStream().use { output ->
-                        input.copyTo(output)
-                    }
-                }
-
-                preferences.edit(commit = true) {
-                    putBoolean(Key.USE_CUSTOM_FONT, true)
-                    putString(Key.SELECTED_CUSTOM_FONT, outFile.absolutePath)
-                }
-            } else {
-                outFile.delete()
+            if (!isValid) {
+                emit(false)
+                return@liveData
             }
 
-            emit(isValid && outFile.length() > 0)
+            // 3. Resolve destination and verify containment
+            val outFile = File(fontsDir, fileName)
+            if (!outFile.belongsTo(fontsDir)) {
+                emit(false)
+                return@liveData
+            }
+
+            // 4. Perform the actual import
+            context.contentResolver.openInputStream(uri)?.use { input ->
+                outFile.outputStream().use { output ->
+                    input.copyTo(output)
+                }
+            }
+
+            preferences.edit(commit = true) {
+                putBoolean(Key.USE_CUSTOM_FONT, true)
+                putString(Key.SELECTED_CUSTOM_FONT, outFile.absolutePath)
+            }
+
+            emit(outFile.length() > 0)
         } catch (e: Exception) {
             e.printStackTrace()
             emit(false)

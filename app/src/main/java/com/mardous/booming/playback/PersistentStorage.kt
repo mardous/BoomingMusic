@@ -127,10 +127,8 @@ class PersistentStorage(
                 }
 
                 // Resolve valid items from repository
-                val (restoredMediaItems) = repository.songsByMediaItems(savedMediaItems)
-                    .let { (songs, missingMediaItems) ->
-                        songs.toMediaItems() to missingMediaItems
-                    }
+                val restoredMediaItems = repository.songsByMediaItems(savedMediaItems, ignoreBlacklist = false)
+                    .let { (songs, _) -> songs.map { buildPlayableMediaItem(it) } }
 
                 // Build session state object
                 val items = if (restoredMediaItems.isNotEmpty()) {
@@ -273,8 +271,10 @@ class PersistentStorage(
 
                         // Optionally save playlist order
                         if (savePlaylist) {
-                            val queueItems = mediaItems.mapIndexed { index, item ->
-                                QueueEntity(id = item.mediaId, order = index)
+                            val queueItems = mediaItems.mapIndexedNotNull { index, item ->
+                                if (item.mediaMetadata.extras?.getBoolean(RESOLVED_FROM_FILE) != true)
+                                    QueueEntity(id = item.mediaId, order = index)
+                                else null
                             }
                             if (isActive) {
                                 queueDao.replaceQueue(queueItems)

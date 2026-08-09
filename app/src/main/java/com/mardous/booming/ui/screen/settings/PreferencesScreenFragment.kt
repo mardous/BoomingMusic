@@ -40,7 +40,6 @@ import coil3.SingletonImageLoader
 import com.google.android.material.color.DynamicColors
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
-import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.data.local.room.InclExclDao
 import com.mardous.booming.data.model.network.ScrobblingService
@@ -68,8 +67,8 @@ import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.ReloadType
-import com.mardous.booming.ui.screen.scrobbling.ScrobblingServiceLoginFragment
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
+import com.mardous.booming.ui.screen.scrobbling.ScrobblingServiceLoginFragment
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
 import com.mardous.booming.util.ADD_EXTRA_CONTROLS
@@ -500,8 +499,6 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
 
     private fun clearImageLoaderCache() = lifecycleScope.launch(Dispatchers.IO) {
         try {
-            CoverProvider.clearCache(requireContext())
-
             val imageLoader = SingletonImageLoader.get(requireContext())
             imageLoader.memoryCache?.clear()
             imageLoader.diskCache?.clear()

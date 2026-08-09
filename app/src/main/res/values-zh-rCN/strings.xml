@@ -567,7 +567,7 @@
     <string name="lyrics_shadow_effect_summary">为当前歌词行添加阴影，以提升可读性。</string>
     <string name="lyrics_progressive_coloring_title">渐变歌词动画</string>
     <string name="lyrics_progressive_coloring_summary">使用渐变的文字颜色过渡为当前歌词添加动画效果。</string>
-    <string name="lyrics_bold_unsynced_title">粗体显示非同步歌词</string>
+    <string name="lyrics_bold_unsynced_title">粗体非同步歌词</string>
     <string name="lyrics_bold_unsynced_summary">以粗体显示非同步歌词。</string>
     <string name="lyrics_line_spacing_title">行距</string>
     <string name="lyrics_line_spacing_summary">调整歌词的行间距。</string>
@@ -917,7 +917,7 @@
     <string name="rg_without_tag">不带标签</string>
     <string name="lyrics_karaoke_style_title">卡拉 OK 风格歌词</string>
     <string name="lyrics_karaoke_style_summary">为逐词同步歌词启用卡拉 OK 风格效果。请注意，本功能为试验性功能。</string>
-    <string name="lyrics_bold_synced_title">同步歌词显示为粗体</string>
+    <string name="lyrics_bold_synced_title">粗体同步歌词</string>
     <string name="lyrics_bold_synced_summary">以粗体显示同步歌词。</string>
     <string name="lyrics_show_translation_title">显示翻译</string>
     <string name="lyrics_show_translation_summary">显示可用的歌词翻译。</string>
@@ -939,4 +939,15 @@
     <string name="up_next">接下来播放</string>
     <string name="reorder_action">重新排序</string>
     <string name="go_to_current_track">转至当前曲目</string>
+    <string name="action_auto_fill_from_musicbrainz">从 MusicBrainz 自动填充</string>
+    <string name="searching">正在搜索…</string>
+    <string name="musicbrainz_search_title">MusicBrainz 搜索</string>
+    <string name="musicbrainz_search_message">使用标题和艺人在 MusicBrainz 上搜索歌曲元数据。</string>
+    <string name="musicbrainz_no_results">在 MusicBrainz 上找不到结果。</string>
+    <string name="musicbrainz_select_recording">选择记录</string>
+    <string name="sort_order_name">标题</string>
+    <string name="website">网站</string>
+    <string name="legal">法律信息</string>
+    <string name="terms_of_service">服务条款</string>
+    <string name="privacy_policy">隐私政策</string>
 </resources>

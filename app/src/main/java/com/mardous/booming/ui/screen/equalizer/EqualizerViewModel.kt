@@ -25,7 +25,7 @@ import com.mardous.booming.data.local.MediaStoreWriter
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
-import com.mardous.booming.extensions.files.getContentUri
+import com.mardous.booming.extensions.files.getFileProviderUri
 import com.mardous.booming.extensions.files.readString
 import com.mardous.booming.extensions.resolveActivity
 import com.mardous.booming.extensions.showToast
@@ -485,15 +485,15 @@ class EqualizerViewModel(
         profiles: List<EqProfile>
     ) = viewModelScope.launch(Dispatchers.IO) {
         val result = if (profiles.isNotEmpty()) {
-            val cacheDir = context.externalCacheDir
-            if (cacheDir == null || (!cacheDir.exists() && !cacheDir.mkdirs())) {
+            val exportsDir = context.externalCacheDir?.resolve("exports")
+            if (exportsDir == null || (!exportsDir.exists() && !exportsDir.mkdirs())) {
                 ProfileExportResult(false, R.string.an_unexpected_error_occurred)
             } else {
                 val name = equalizerManager.getNewExportName()
                 val result = runCatching {
-                    File(cacheDir, name)
+                    File(exportsDir, name)
                         .also { it.writeText(Json.encodeToString(profiles)) }
-                        .getContentUri(context)
+                        .getFileProviderUri(context)
                 }
                 if (result.isSuccess) {
                     ProfileExportResult(

@@ -567,7 +567,7 @@
     <string name="lyrics_shadow_effect_summary">為目前歌詞行新增陰影，以提升可讀性。</string>
     <string name="lyrics_progressive_coloring_title">漸層歌詞動畫</string>
     <string name="lyrics_progressive_coloring_summary">使用漸層文字顏色轉換，為目前歌詞行新增動畫效果。</string>
-    <string name="lyrics_bold_unsynced_title">粗體顯示非同步歌詞</string>
+    <string name="lyrics_bold_unsynced_title">粗體非同步歌詞</string>
     <string name="lyrics_bold_unsynced_summary">以粗體顯示非同步歌詞。</string>
     <string name="lyrics_line_spacing_title">行距</string>
     <string name="lyrics_line_spacing_summary">調整歌詞的行間距。</string>
@@ -905,7 +905,7 @@
     <string name="lyrics_show_translation_summary">如有翻譯歌詞則顯示。</string>
     <string name="lyrics_show_transliteration_title">顯示音譯</string>
     <string name="lyrics_show_transliteration_summary">如有音譯歌詞則顯示。</string>
-    <string name="lyrics_bold_synced_title">同步歌詞使用粗體</string>
+    <string name="lyrics_bold_synced_title">粗體同步歌詞</string>
     <string name="lyrics_bold_synced_summary">以粗體顯示同步歌詞。</string>
     <string name="lyrics_resume_on_seek_title">跳轉後繼續播放</string>
     <string name="lyrics_resume_on_seek_summary">點按某行歌詞時自動恢復播放。</string>
@@ -939,4 +939,15 @@
     <string name="up_next">接下來播放</string>
     <string name="reorder_action">重新排序</string>
     <string name="go_to_current_track">轉至當前曲目</string>
+    <string name="action_auto_fill_from_musicbrainz">從 MusicBrainz 自動填充</string>
+    <string name="searching">正在搜尋…</string>
+    <string name="musicbrainz_search_title">MusicBrainz 搜尋</string>
+    <string name="musicbrainz_search_message">使用標題和藝人在 MusicBrainz 上搜尋歌曲中繼資料。</string>
+    <string name="musicbrainz_no_results">在 MusicBrainz 上找不到結果。</string>
+    <string name="musicbrainz_select_recording">選擇紀錄</string>
+    <string name="sort_order_name">標題</string>
+    <string name="website">網站</string>
+    <string name="legal">法律資訊</string>
+    <string name="terms_of_service">服務條款</string>
+    <string name="privacy_policy">隱私權政策</string>
 </resources>

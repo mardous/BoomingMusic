@@ -92,6 +92,7 @@ interface Repository {
     suspend fun deleteSongsInPlaylist(songs: List<SongEntity>)
     suspend fun deleteSong(songId: Long): Song
     suspend fun deleteSongs(songs: List<Song>)
+    fun updatePlaylistsContainingIds(songIds: List<Long>)
     suspend fun deleteMissingContent()
     suspend fun albumById(albumId: Long): Album
     suspend fun albumByIdAsync(albumId: Long): Album
@@ -107,8 +108,8 @@ interface Repository {
     suspend fun songsByYear(year: Int): List<Song>
     suspend fun folderByPath(path: String): Folder
     suspend fun songsByUri(uri: Uri): List<Song>
-    suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>>
-    suspend fun songByMediaItem(mediaItem: MediaItem?): Song
+    suspend fun songsByMediaItems(mediaItems: List<MediaItem>, ignoreBlacklist: Boolean): Pair<List<Song>, List<MediaItem>>
+    suspend fun songByMediaItem(mediaItem: MediaItem?, ignoreBlacklist: Boolean): Song
     suspend fun songsByFolder(folderPath: String, includeSubfolders: Boolean): List<Song>
     suspend fun songByFilePath(path: String, ignoreBlacklist: Boolean): Song
     suspend fun homeSuggestions(): List<Suggestion>
@@ -287,6 +288,9 @@ class RealRepository(
         smartRepository.deleteSongsInPlayCount(deletableIds)
     }
 
+    override fun updatePlaylistsContainingIds(songIds: List<Long>) =
+        playlistRepository.updatePlaylistsContainingIds(songIds)
+
     override suspend fun deleteMissingContent() {
         // Clean up playlists
         val playlists = playlistRepository.playlistsWithSongs()
@@ -328,11 +332,13 @@ class RealRepository(
 
     override suspend fun songsByUri(uri: Uri): List<Song> = songRepository.songsByUri(uri)
 
-    override suspend fun songsByMediaItems(mediaItems: List<MediaItem>): Pair<List<Song>, List<MediaItem>> =
-        songRepository.songsByMediaItems(mediaItems)
+    override suspend fun songsByMediaItems(
+        mediaItems: List<MediaItem>,
+        ignoreBlacklist: Boolean
+    ): Pair<List<Song>, List<MediaItem>> = songRepository.songsByMediaItems(mediaItems, ignoreBlacklist)
 
-    override suspend fun songByMediaItem(mediaItem: MediaItem?): Song =
-        songRepository.songByMediaItem(mediaItem)
+    override suspend fun songByMediaItem(mediaItem: MediaItem?, ignoreBlacklist: Boolean): Song =
+        songRepository.songByMediaItem(mediaItem, ignoreBlacklist)
 
     override suspend fun songsByFolder(folderPath: String, includeSubfolders: Boolean) =
         specialRepository.songsByFolder(folderPath, includeSubfolders)
@@ -479,5 +485,4 @@ class RealRepository(
 
     override suspend fun albumInfo(artist: String, album: String, lang: String?) =
         networkRepository.albumInfo(artist, album, lang)
-
 }
