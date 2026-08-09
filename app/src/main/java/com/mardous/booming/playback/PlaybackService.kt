@@ -29,8 +29,6 @@ import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
 import androidx.core.os.bundleOf
 import androidx.core.os.postDelayed
-import androidx.glance.appwidget.GlanceAppWidgetManager
-import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.media.utils.MediaConstants
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
@@ -68,9 +66,8 @@ import com.mardous.booming.R
 import com.mardous.booming.coil.CoilBitmapLoader
 import com.mardous.booming.core.appwidgets.WidgetData
 import com.mardous.booming.core.appwidgets.WidgetDataSource
-import com.mardous.booming.core.appwidgets.config.SongSource
-import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.core.appwidgets.WidgetPresenter
+import com.mardous.booming.core.appwidgets.config.SongSource
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.data.local.MediaStoreObserver
@@ -82,6 +79,7 @@ import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.playback.library.LibraryProvider
 import com.mardous.booming.playback.library.MediaIDs
@@ -1012,7 +1010,7 @@ class PlaybackService :
         }
         // On a cold start the restore is still in flight and ends in its own setMediaItems
         awaitRestoration()
-        player.setMediaItems(queue.toMediaItems(), index, C.TIME_UNSET)
+        player.setMediaItems(queue.map { song -> buildPlayableMediaItem(song) }, index, C.TIME_UNSET)
         player.playWhenReady = true
         player.prepare()
     }
