@@ -47,6 +47,7 @@ import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.isTablet
+import com.mardous.booming.extensions.languageEndonym
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.requestContext
@@ -60,6 +61,7 @@ import com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreferen
 import com.mardous.booming.ui.component.preferences.dialog.CategoriesPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.ClearQueueActionPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.ExtraInfoPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.LanguageSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.NowPlayingScreenPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.SingleSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPreferenceDialog
@@ -72,6 +74,7 @@ import com.mardous.booming.ui.screen.scrobbling.ScrobblingServiceLoginFragment
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
 import com.mardous.booming.util.ADD_EXTRA_CONTROLS
+import com.mardous.booming.util.AUTO_LANGUAGE
 import com.mardous.booming.util.BACKUP_DATA
 import com.mardous.booming.util.BLACKLIST_ENABLED
 import com.mardous.booming.util.BLACK_THEME
@@ -148,6 +151,14 @@ class NetworkPreferencesFragment : PreferenceScreenFragment() {
 class AdvancedPreferencesFragment : PreferenceScreenFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences_screen_advanced)
+        findPreference<ListPreference>(LANGUAGE_NAME)?.let { preference ->
+            preference.entries = preference.entryValues.map { entryValue ->
+                val tag = entryValue.toString()
+                if (tag == AUTO_LANGUAGE) {
+                    getString(R.string.system_default)
+                } else tag.languageEndonym()
+            }.toTypedArray()
+        }
     }
 }
 
@@ -337,12 +348,8 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             }
 
         findPreference<Preference>(LANGUAGE_NAME)?.setOnPreferenceChangeListener { _, newValue ->
-            val languageTag = (newValue as? String)
-            if (languageTag == null || languageTag == "auto") {
-                AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList())
-            } else {
-                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageTag))
-            }
+            val languageTag = (newValue as? String)?.takeIf { it != AUTO_LANGUAGE }
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageTag))
             true
         }
 
@@ -400,7 +407,9 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
     @Suppress("DEPRECATION")
     override fun onDisplayPreferenceDialog(preference: Preference) {
         if (preference is ListPreference) {
-            val dialogFragment = SingleSelectionDialog.newInstance(preference.key)
+            val dialogFragment = if (preference.key == LANGUAGE_NAME) {
+                LanguageSelectionDialog.newInstance(preference.key)
+            } else SingleSelectionDialog.newInstance(preference.key)
             dialogFragment.setTargetFragment(this, 0)
             dialogFragment.show(parentFragmentManager, "androidx.preference.PreferenceFragment.DIALOG")
         } else {

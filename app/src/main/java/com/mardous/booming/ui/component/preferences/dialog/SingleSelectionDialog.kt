@@ -24,13 +24,18 @@ import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 
-class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
+open class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
 
-    private val listPreference: ListPreference
+    protected val listPreference: ListPreference
         get() = getPreference() as ListPreference
 
     private var entries: Array<CharSequence>? = null
-    private var entryValues: Array<CharSequence>? = null
+    protected var entryValues: Array<CharSequence>? = null
+        private set
+
+    protected open fun subtitleFor(index: Int): String? = null
+
+    protected open fun leadingFor(index: Int): (@Composable () -> Unit)? = null
 
     private var clickedDialogEntryIndex: Int = 0
 
@@ -61,6 +66,7 @@ class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
     }
 
     override fun onCreateDialogView(context: Context): View {
+        val titles = entries?.map { it.toString() }.orEmpty()
         return ComposeView(context).apply {
             setViewCompositionStrategy(
                 ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
@@ -68,7 +74,7 @@ class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
             setContent {
                 BoomingMusicTheme {
                     DialogView(
-                        titles = entries?.map { it.toString() }.orEmpty(),
+                        titles = titles,
                         selectedIndex = clickedDialogEntryIndex,
                         onSelection = {
                             clickedDialogEntryIndex = it
@@ -122,7 +128,9 @@ class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
                 itemsIndexed(titles) { index, action ->
                     DialogListItemWithRadio(
                         title = action,
+                        subtitle = subtitleFor(index),
                         isSelected = selectedIndex == index,
+                        leadingIcon = leadingFor(index),
                         onClick = {
                             onSelection(index)
                         }

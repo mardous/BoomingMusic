@@ -24,6 +24,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -69,19 +70,23 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import coil3.compose.AsyncImage
 import com.mardous.booming.App
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
 import com.mardous.booming.core.model.about.AboutItemData
-import com.mardous.booming.core.model.about.Contribution
+import com.mardous.booming.core.model.about.loadTranslators
 import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
+import com.mardous.booming.extensions.languageFlagEmoji
+import com.mardous.booming.extensions.languageNameInEnglish
 import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.toChooser
 import com.mardous.booming.extensions.tryStartActivity
@@ -125,11 +130,12 @@ fun AboutScreen(
 
     var showTranslatorsDialog by remember { mutableStateOf(false) }
     val translators by produceState(emptyList()) {
-        value = Contribution.loadContributions(context, "translators.json").map {
+        value = loadTranslators(context).map { (tag, translators) ->
+            val flag = tag.languageFlagEmoji(context)
             AboutItemData(
-                icon = { AboutItemIcon(painterResource(R.drawable.ic_translate_24dp)) },
-                title = it.name,
-                markdown = it.description,
+                icon = { AboutItemIcon(flag) },
+                title = tag.languageNameInEnglish(),
+                markdown = translators,
                 onClick = {}
             )
         }
@@ -424,20 +430,43 @@ private fun AboutItemIcon(
     icon: Painter,
     modifier: Modifier = Modifier
 ) {
+    AboutItemIconSurface(modifier) {
+        Icon(
+            painter = icon,
+            contentDescription = null
+        )
+    }
+}
+
+@Composable
+private fun AboutItemIcon(
+    emoji: String,
+    modifier: Modifier = Modifier
+) {
+    AboutItemIconSurface(modifier) {
+        Text(
+            text = emoji,
+            fontSize = 24.sp,
+            modifier = Modifier.clearAndSetSemantics {}
+        )
+    }
+}
+
+@Composable
+private fun AboutItemIconSurface(
+    modifier: Modifier = Modifier,
+    content: @Composable BoxScope.() -> Unit
+) {
     Surface(
         shape = CircleShape,
         color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.5f),
         contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
         modifier = modifier.size(48.dp)
     ) {
-        Box {
-            Icon(
-                painter = icon,
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.Center)
-            )
-        }
+        Box(
+            contentAlignment = Alignment.Center,
+            content = content
+        )
     }
 }
 

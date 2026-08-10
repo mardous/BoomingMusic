@@ -22,4 +22,7 @@
     <string name="contributor_ttop" translatable="false">TTOP</string>
     <string name="contributor_lenard" translatable="false">Lenard</string>
     <string name="contributor_alex" translatable="false">Alex</string>
+
+    <string name="regionless_flag" translatable="false">&#x1F30E;</string>
+    <string name="system_language_flag" translatable="false">&#x1F310;</string>
 </resources>
