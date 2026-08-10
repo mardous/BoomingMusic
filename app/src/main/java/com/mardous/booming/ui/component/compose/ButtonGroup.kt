@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.FilledTonalToggleButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.TonalToggleButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
@@ -36,7 +36,7 @@ fun <T> ButtonGroup(
         buttonItems.forEachIndexed { index, item ->
             val isChecked = buttonStateResolver(item)
             val buttonWeight = if (isChecked) 1.5f else 1f
-            TonalToggleButton(
+            FilledTonalToggleButton(
                 enabled = enabled,
                 checked = isChecked,
                 onCheckedChange = { onSelected(item) },
