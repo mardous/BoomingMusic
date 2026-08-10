@@ -4,7 +4,6 @@
     <ListPreference
         app:icon="@drawable/ic_language_24dp"
         app:title="@string/app_language_title"
-        app:entries="@array/pref_language_names"
         app:entryValues="@array/pref_language_codes"
         app:negativeButtonText="@null"
         app:positiveButtonText="@null"
