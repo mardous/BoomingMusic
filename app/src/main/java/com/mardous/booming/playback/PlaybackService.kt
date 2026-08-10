@@ -14,13 +14,13 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
-import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.Looper
 import android.os.Process
+import android.service.media.MediaBrowserService
 import android.util.Log
 import android.view.KeyEvent
 import androidx.annotation.OptIn
@@ -29,8 +29,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
 import androidx.core.os.postDelayed
-import androidx.glance.appwidget.GlanceAppWidgetManager
-import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.media.utils.MediaConstants
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
@@ -60,25 +58,18 @@ import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
 import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionError
 import androidx.media3.session.SessionResult
-import coil3.SingletonImageLoader
-import coil3.request.ImageRequest
-import coil3.size.Scale
-import coil3.toBitmap
 import com.google.common.collect.ImmutableList
 import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.SettableFuture
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoilBitmapLoader
-import com.mardous.booming.core.appwidgets.BoomingGlanceWidget
-import com.mardous.booming.core.appwidgets.CardWidget
-import com.mardous.booming.core.appwidgets.FullWidget
-import com.mardous.booming.core.appwidgets.WidgetTheme
+import com.mardous.booming.core.appwidgets.WidgetData
+import com.mardous.booming.core.appwidgets.WidgetDataSource
+import com.mardous.booming.core.appwidgets.WidgetPresenter
+import com.mardous.booming.core.appwidgets.config.SongSource
 import com.mardous.booming.core.appwidgets.state.PlaybackState
-import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import com.mardous.booming.core.audio.AudioOutputObserver
-import com.mardous.booming.core.model.player.MetadataField
-import com.mardous.booming.core.palette.PaletteProcessor
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
@@ -88,6 +79,7 @@ import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.playback.library.LibraryProvider
 import com.mardous.booming.playback.library.MediaIDs
@@ -111,21 +103,17 @@ import com.mardous.booming.util.REWIND_WITH_BACK
 import com.mardous.booming.util.SEEK_INTERVAL
 import com.mardous.booming.util.STOP_WHEN_CLOSED_FROM_RECENTS
 import com.mardous.booming.util.SongPlayCountHelper
-import com.mardous.booming.util.WIDGET_DYNAMIC_COLORS
-import com.mardous.booming.util.WIDGET_IMAGE_CORNER_RADIUS
-import com.mardous.booming.util.WIDGET_SMALL_LAYOUT_STYLE
-import com.mardous.booming.util.WIDGET_THIRD_LINE_CONTENT
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.guava.future
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
-import java.io.ByteArrayOutputStream
+import kotlin.coroutines.resume
 import kotlin.random.Random
 
 @OptIn(UnstableApi::class)
@@ -138,8 +126,6 @@ class PlaybackService :
     private val serviceScope = CoroutineScope(Job() + Main)
     private val uiHandler = Handler(Looper.getMainLooper())
 
-    private val glanceManager by lazy { GlanceAppWidgetManager(applicationContext) }
-
     private val preferences: SharedPreferences by inject()
     private val sleepTimer: SleepTimer by inject()
     private val equalizerManager: EqualizerManager by inject()
@@ -149,11 +135,23 @@ class PlaybackService :
     private val libraryProvider = LibraryProvider(repository)
     private val songPlayCountHelper = SongPlayCountHelper()
     private val mediaStoreObserver = MediaStoreObserver(uiHandler) {
+        WidgetDataSource.invalidate()
         mediaSession?.broadcastCustomCommand(
             SessionCommand(Playback.EVENT_MEDIA_CONTENT_CHANGED, Bundle.EMPTY),
             Bundle.EMPTY
         )
     }
+
+    /** Ignore the transient unset duration a resumed player reports. */
+    private val currentDurationMs get() = player.duration.let { if (it == C.TIME_UNSET) 0L else it }
+    private val currentPositionMs get() = player.currentPosition.coerceAtLeast(0L)
+
+    private val widgets = WidgetPresenter(this, serviceScope, object : WidgetPresenter.Playback {
+        override val isPlaying get() = player.isPlaying
+        override val positionMs get() = currentPositionMs
+        override val durationMs get() = currentDurationMs
+        override suspend fun snapshot(needs: Set<WidgetData>) = buildPlaybackState(needs)
+    })
 
     private val playerThread = HandlerThread("Booming-ExoPlayer", Process.THREAD_PRIORITY_AUDIO)
     private val balanceProcessor: BalanceAudioProcessor by inject()
@@ -179,14 +177,20 @@ class PlaybackService :
         val count = headsetClickCount
         headsetClickCount = 0
         when (count) {
-            1 -> if (player.isPlaying) player.pause() else player.play()
+            1 -> if (player.isPlaying) player.pause() else resumePlayback()
             2 -> player.seekToNext()
             3 -> player.seekToPrevious()
         }
     }
 
-    private var lastPlaybackState: PlaybackState? = null
-    private var widgetUpdateJob: Job? = null
+    private fun resumePlayback() {
+        when (player.playbackState) {
+            Player.STATE_IDLE -> player.prepare()
+            Player.STATE_ENDED -> player.seekTo(player.currentMediaItemIndex, C.TIME_UNSET)
+        }
+        player.play()
+    }
+
     private var fadeOutAnimator: ValueAnimator? = null
 
     val isInTransientFocusLoss: Boolean
@@ -339,6 +343,7 @@ class PlaybackService :
 
         prepareEqualizerAndSoundSettings()
         registerReceivers()
+        widgets.start()
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
@@ -350,6 +355,7 @@ class PlaybackService :
 
     override fun onDestroy() {
         super.onDestroy()
+        widgets.stop()
         if (bluetoothConnectedRegistered) {
             unregisterReceiver(bluetoothReceiver)
             bluetoothConnectedRegistered = false
@@ -372,29 +378,37 @@ class PlaybackService :
         sleepTimer.release()
     }
 
+    // Stays on the service: only a foreground start begins playback from cold, which a broadcast cannot.
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        when (intent?.action) {
-            ACTION_TOGGLE_FAVORITE -> {
-                toggleFavorite()
-                return START_STICKY
+        if (intent?.action == ACTION_PLAY_SONG) {
+            val songId = intent.getLongExtra(EXTRA_SONG_ID, -1L)
+            if (songId != -1L) {
+                val source = intent.getStringExtra(EXTRA_SONG_SOURCE)?.toEnum<SongSource>()
+                    ?: SongSource.Recent
+                playSong(songId, source)
             }
-            ACTION_TOGGLE_SHUFFLE -> {
-                toggleShuffle()
-                return START_STICKY
-            }
-            ACTION_CYCLE_REPEAT -> {
-                cycleRepeat()
-                return START_STICKY
-            }
+            return START_NOT_STICKY
         }
         return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? {
-        return if ("android.media.session.MediaController" == controllerInfo.packageName
-            || packageValidator.isKnownCaller(controllerInfo.packageName, controllerInfo.uid)) {
-            mediaSession
-        } else null
+        val myPackageName = this.packageName
+        if (myPackageName == controllerInfo.packageName ||
+            controllerInfo.packageName == MediaBrowserService.SERVICE_INTERFACE ||
+            controllerInfo.packageName == MediaSession.ControllerInfo.LEGACY_CONTROLLER_PACKAGE_NAME) {
+            return mediaSession
+        }
+        val controllerType = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_CONTROLLER_INFO_TYPE)
+        if (controllerType == Intent.ACTION_MEDIA_BUTTON) {
+            val sessionId = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_SESSION_ID)
+            if (sessionId == this.packageName) {
+                return mediaSession
+            }
+        } else if (packageValidator.isKnownCaller(controllerInfo.packageName, controllerInfo.uid)) {
+            return mediaSession
+        }
+        return null
     }
 
     override fun onConnectAsync(
@@ -499,6 +513,9 @@ class PlaybackService :
         pageSize: Int,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
+        // getChildren resolves any id it is handed, so FAVORITES and HISTORY are reachable without ever
+        // appearing in a root listing.
+        session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val result = runCatching {
                 libraryProvider.getChildren(this@PlaybackService, parentId)
@@ -516,6 +533,7 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         mediaId: String
     ): ListenableFuture<LibraryResult<MediaItem>> {
+        session.denyUntrusted<MediaItem>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val mediaItem = runCatching { libraryProvider.getItem(mediaId) }
                 .getOrDefault(MediaItem.EMPTY)
@@ -533,8 +551,9 @@ class PlaybackService :
         query: String,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<Void>> {
+        session.denyUntrusted<Void>(browser)?.let { return it }
         return serviceScope.future(IO) {
-            runCatching { libraryProvider.search(query) }
+            runCatching { libraryProvider.search(browser.uid, query) }
                 .onSuccess { session.notifySearchResultChanged(browser, query, it.size, params) }
 
             LibraryResult.ofVoid()
@@ -549,8 +568,9 @@ class PlaybackService :
         pageSize: Int,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
+        session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
         return Futures.immediateFuture(
-            LibraryResult.ofItemList(libraryProvider.searchResult, params)
+            LibraryResult.ofItemList(libraryProvider.searchResult(browser.uid), params)
         )
     }
 
@@ -560,7 +580,7 @@ class PlaybackService :
         mediaItems: List<MediaItem>
     ): ListenableFuture<List<MediaItem>> {
         return serviceScope.future(IO) {
-            runCatching { libraryProvider.getMediaItemsForPlayback(mediaItems) }
+            runCatching { libraryProvider.getMediaItemsForPlayback(controller.uid, mediaItems) }
                 .getOrDefault(emptyList())
         }
     }
@@ -589,7 +609,7 @@ class PlaybackService :
         return serviceScope.future(IO) {
             if (mediaSession.isAutomotiveController(controller) ||
                 mediaSession.isAutoCompanionController(controller)) {
-                runCatching { libraryProvider.getMediaItemsForAAOSPlayback(mediaItems) }
+                runCatching { libraryProvider.getMediaItemsForAAOSPlayback(controller.uid, mediaItems) }
                     .getOrNull()
                     .let {
                         MediaItemsWithStartPosition(
@@ -601,6 +621,7 @@ class PlaybackService :
             } else {
                 runCatching {
                     libraryProvider.getMediaItemsForPlayback(
+                        controller.uid,
                         mediaItems = mediaItems,
                         tryToResolveComplexPaths = true
                     )
@@ -621,6 +642,12 @@ class PlaybackService :
         }
     }
 
+    private fun <T : Any> MediaSession.denyUntrusted(
+        controller: MediaSession.ControllerInfo
+    ): ListenableFuture<LibraryResult<T>>? =
+        if (isTrustedController(controller)) null
+        else Futures.immediateFuture(LibraryResult.ofError<T>(SessionError.ERROR_PERMISSION_DENIED))
+
     override fun onCustomCommand(
         session: MediaSession,
         controller: MediaSession.ControllerInfo,
@@ -628,19 +655,24 @@ class PlaybackService :
         args: Bundle
     ): ListenableFuture<SessionResult> {
         return when (customCommand.customAction) {
-            Playback.TOGGLE_SHUFFLE -> {
+            Playback.TOGGLE_SHUFFLE -> serviceScope.future(Main) {
+                awaitRestoration()
                 toggleShuffle()
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
+                awaitSavedState()
+                SessionResult(SessionResult.RESULT_SUCCESS, modesBundle())
             }
 
-            Playback.CYCLE_REPEAT -> {
+            Playback.CYCLE_REPEAT -> serviceScope.future(Main) {
+                awaitRestoration()
                 cycleRepeat()
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
+                awaitSavedState()
+                SessionResult(SessionResult.RESULT_SUCCESS, modesBundle())
             }
 
-            Playback.TOGGLE_FAVORITE -> {
+            Playback.TOGGLE_FAVORITE -> serviceScope.future(Main) {
+                awaitRestoration()
                 toggleFavorite()
-                Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
+                SessionResult(SessionResult.RESULT_SUCCESS)
             }
 
             Playback.RESTORE_PLAYBACK -> {
@@ -742,6 +774,16 @@ class PlaybackService :
         }
     }
 
+    override fun onPositionDiscontinuity(
+        oldPosition: Player.PositionInfo,
+        newPosition: Player.PositionInfo,
+        reason: Int
+    ) {
+        if (reason == Player.DISCONTINUITY_REASON_SEEK) {
+            widgets.refreshPosition()
+        }
+    }
+
     override fun onIsPlayingChanged(isPlaying: Boolean) {
         if (!isPlaying) {
             val currentDurationMs = player.mediaMetadata.durationMs ?: 0
@@ -752,17 +794,17 @@ class PlaybackService :
             }
         }
         songPlayCountHelper.notifyPlayStateChanged(isPlaying)
-        updateWidgets()
+        widgets.refresh()
     }
 
     override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {
-        updateWidgets()
+        widgets.refreshModes(shuffleModeEnabled, player.repeatMode)
         refreshMediaButtonCustomLayout()
         persistentStorage.saveState()
     }
 
     override fun onRepeatModeChanged(repeatMode: Int) {
-        updateWidgets()
+        widgets.refreshModes(player.shuffleModeEnabled, repeatMode)
         refreshMediaButtonCustomLayout()
         persistentStorage.saveState()
     }
@@ -817,7 +859,7 @@ class PlaybackService :
         }
 
         persistentStorage.saveState()
-        updateWidgets(force = true)
+        widgets.refresh()
     }
 
     override fun onPlayerError(error: PlaybackException) {
@@ -901,13 +943,6 @@ class PlaybackService :
                 player.exoPlayer.setSeekBackIncrementMs(seekInterval)
                 player.exoPlayer.setSeekForwardIncrementMs(seekInterval)
             }
-
-            WIDGET_DYNAMIC_COLORS,
-            WIDGET_SMALL_LAYOUT_STYLE,
-            WIDGET_IMAGE_CORNER_RADIUS,
-            WIDGET_THIRD_LINE_CONTENT -> {
-                updateWidgets()
-            }
         }
     }
 
@@ -916,25 +951,35 @@ class PlaybackService :
     }
 
     private fun cycleRepeat() {
-        val currentRepeatMode = player.repeatMode
-        player.repeatMode = when (currentRepeatMode) {
-            Player.REPEAT_MODE_OFF -> Player.REPEAT_MODE_ALL
-            Player.REPEAT_MODE_ALL -> Player.REPEAT_MODE_ONE
-            else -> Player.REPEAT_MODE_OFF
-        }
+        player.repeatMode = nextRepeatMode(player.repeatMode)
     }
 
-    private fun toggleFavorite() = serviceScope.launch {
+    /** A command issued before the saved state lands has nothing to act on */
+    private suspend fun awaitRestoration() = suspendCancellableCoroutine { continuation ->
+        persistentStorage.waitForRestoration { continuation.resume(Unit) }
+    }
+
+    /** The write is debounced */
+    private suspend fun awaitSavedState() {
+        persistentStorage.saveState()
+        persistentStorage.awaitPendingSave()
+    }
+
+    private fun modesBundle() = Bundle().apply {
+        putBoolean(Playback.EXTRA_SHUFFLE_MODE, player.shuffleModeEnabled)
+        putInt(Playback.EXTRA_REPEAT_MODE, player.repeatMode)
+    }
+
+    private suspend fun toggleFavorite() {
         val currentMediaItem = player.currentMediaItem
-            ?: return@launch
+            ?: return
 
         withContext(IO) {
             val song = repository.songByMediaItem(currentMediaItem, ignoreBlacklist = false)
             repository.toggleFavorite(song)
         }
 
-        updateWidgets()
-
+        widgets.refresh()
         refreshMediaButtonCustomLayout()
         mediaSession?.broadcastCustomCommand(
             SessionCommand(Playback.EVENT_FAVORITE_CONTENT_CHANGED, Bundle.EMPTY),
@@ -942,116 +987,45 @@ class PlaybackService :
         )
     }
 
-    private suspend fun buildPlaybackState(isForeground: Boolean): PlaybackState {
-        val mediaItem = player.currentMediaItem
-        val id = mediaItem?.mediaId?.toLongOrNull()
-        if (mediaItem == null || id == null) return PlaybackState.empty
+    /** Only the fields that genuinely come from the player; the rest is [WidgetDataSource]'s. */
+    private suspend fun buildPlaybackState(needs: Set<WidgetData>): PlaybackState {
+        val id = player.currentMediaItem?.mediaId?.toLongOrNull()
+            ?: return PlaybackState()
 
-        val isPlaying = player.isPlaying
-        val isShuffleMode = player.shuffleModeEnabled
-        val repeatMode = player.repeatMode
-        return withContext(IO) {
-            val song = repository.songById(id)
-            val isFavorite = repository.isSongFavorite(song.id)
-            val result = SingletonImageLoader.get(this@PlaybackService).execute(
-                ImageRequest.Builder(this@PlaybackService)
-                    .data(song)
-                    .scale(Scale.FILL)
-                    .size(300)
-                    .build()
-            )
-            val bitmap = result.image?.toBitmap(300, 300)
-            val artworkData = bitmap?.let {
-                val stream = ByteArrayOutputStream()
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    it.compress(Bitmap.CompressFormat.WEBP_LOSSY, 80, stream)
-                } else {
-                    it.compress(Bitmap.CompressFormat.JPEG, 85, stream)
-                }
-                stream.toByteArray()
-            }
-            val widgetTheme = if (preferences.getBoolean(WIDGET_DYNAMIC_COLORS, false)) {
-                val paletteColor = bitmap?.let {
-                    PaletteProcessor.getPaletteColor(this@PlaybackService, bitmap)
-                }
-                if (paletteColor != null) {
-                    WidgetTheme(paletteColor.backgroundColor)
-                } else null
-            } else null
-            val additionalInfo = MetadataField.getMetadataValue(
-                song = song,
-                fields = Preferences.getExtraInfoContent(
-                    key = WIDGET_THIRD_LINE_CONTENT,
-                    defaultContent = Preferences.getDefaultWidgetInfo()
-                )
-            )
-            PlaybackState(
-                isSimplifiedSmallLayout = preferences.getString(WIDGET_SMALL_LAYOUT_STYLE, null) == "simplified",
-                isForeground = isForeground,
-                isPlaying = isPlaying,
-                isFavorite = isFavorite,
-                isShuffleMode = isShuffleMode,
-                repeatMode = repeatMode,
-                currentTitle = song.title,
-                currentArtist = song.artistName,
-                additionalInfo = additionalInfo,
-                artworkData = artworkData,
-                widgetTheme = widgetTheme,
-                imageCornerRadius = preferences.getInt(WIDGET_IMAGE_CORNER_RADIUS, 8).toFloat()
-            )
-        }
+        val base = PlaybackState(
+            isPlaying = player.isPlaying,
+            songId = id,
+            positionMs = currentPositionMs,
+            durationMs = currentDurationMs,
+            isShuffleMode = player.shuffleModeEnabled,
+            repeatMode = player.repeatMode
+        )
+        return withContext(IO) { WidgetDataSource.enrich(this@PlaybackService, base, needs) }
     }
 
-    private fun updateWidgets(force: Boolean = false, isForeground: Boolean = isPlaybackOngoing) {
-        widgetUpdateJob?.cancel()
-        widgetUpdateJob = serviceScope.launch {
-            if (!force) delay(WIDGET_UPDATE_DEBOUNCE)
-
-            val state = buildPlaybackState(isForeground)
-            if (lastPlaybackState != state) {
-                lastPlaybackState = state
-                updateGlanceWidgets(state)
+    private fun playSong(songId: Long, source: SongSource) = serviceScope.launch {
+        // arrives as a foreground start, anything short of playing needs stopSelf() before timeout
+        val resolved = runCatching {
+            withContext(IO) {
+                val songs = libraryProvider.getPlayableSongs(source.mediaId)
+                val position = songs.indexOfFirst { it.id == songId }
+                if (position != -1) songs to position
+                else listOfNotNull(repository.songById(songId).takeIf { it != Song.emptySong }) to 0
             }
+        }.onFailure {
+            Log.e(TAG, "Couldn't resolve song $songId from ${source.mediaId}", it)
+        }.getOrNull()
+
+        val (queue, index) = resolved ?: run { stopSelf(); return@launch }
+        if (queue.isEmpty()) {
+            stopSelf()
+            return@launch
         }
-    }
-
-    private suspend fun updateGlanceWidgets(playbackState: PlaybackState) = withContext(IO) {
-        try {
-            val boomingWidget = BoomingGlanceWidget()
-            val boomingWidgetIds = glanceManager.getGlanceIds(boomingWidget.javaClass)
-            if (boomingWidgetIds.isNotEmpty()) {
-                boomingWidgetIds.forEach { id ->
-                    updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
-                        playbackState
-                    }
-                    boomingWidget.update(applicationContext, id)
-                }
-            }
-
-            val cardWidget = CardWidget()
-            val cardWidgetIds = glanceManager.getGlanceIds(cardWidget.javaClass)
-            if (cardWidgetIds.isNotEmpty()) {
-                cardWidgetIds.forEach { id ->
-                    updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
-                        playbackState
-                    }
-                    cardWidget.update(applicationContext, id)
-                }
-            }
-
-            val fullWidget = FullWidget()
-            val fullWidgetIds = glanceManager.getGlanceIds(fullWidget.javaClass)
-            if (fullWidgetIds.isNotEmpty()) {
-                fullWidgetIds.forEach { id ->
-                    updateAppWidgetState(applicationContext, PlaybackStateDefinition, id) {
-                        playbackState
-                    }
-                    fullWidget.update(applicationContext, id)
-                }
-            }
-        } catch (e: Exception) {
-            Log.e("PlaybackService", "Couldn't update Glance widgets", e)
-        }
+        // On a cold start the restore is still in flight and ends in its own setMediaItems
+        awaitRestoration()
+        player.setMediaItems(queue.map { song -> buildPlayableMediaItem(song) }, index, C.TIME_UNSET)
+        player.playWhenReady = true
+        player.prepare()
     }
 
     private fun createSessionActivityIntent(): PendingIntent {
@@ -1260,15 +1234,17 @@ class PlaybackService :
     companion object {
         private const val PACKAGE_NAME = "com.mardous.booming"
 
-        const val ACTION_TOGGLE_SHUFFLE = "$PACKAGE_NAME.action.ACTION_TOGGLE_SHUFFLE"
-        const val ACTION_CYCLE_REPEAT = "$PACKAGE_NAME.action.ACTION_CYCLE_REPEAT"
-        const val ACTION_TOGGLE_FAVORITE = "$PACKAGE_NAME.action.ACTION_TOGGLE_FAVORITE"
+        const val ACTION_PLAY_SONG = "$PACKAGE_NAME.action.ACTION_PLAY_SONG"
+        const val EXTRA_SONG_ID = "$PACKAGE_NAME.extra.SONG_ID"
+        const val EXTRA_SONG_SOURCE = "$PACKAGE_NAME.extra.SONG_SOURCE"
 
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "playing_notification"
 
+        private const val TAG = "PlaybackService"
+
         private const val MAX_RETRY_COUNT_AFTER_ERROR = 3
-        private const val WIDGET_UPDATE_DEBOUNCE = 300L
+
         private const val REWIND_INSTEAD_PREVIOUS_MILLIS = 5000L
 
         private const val FOREGROUND_SERVICE_TIMEOUT = (60 * 1000) * 2L

@@ -126,6 +126,7 @@ interface Repository {
     suspend fun recentAlbums(): List<Album>
     suspend fun playCountSongs(): List<Song>
     fun playCountSongsFlow(): Flow<List<Song>>
+    suspend fun playCountSongIds(limit: Int): List<Long>
     suspend fun findSongsInPlayCount(songs: List<Song>): List<PlayCountEntity>
     suspend fun findSongInPlayCount(songId: Long): PlayCountEntity?
     suspend fun insertOrIncrementPlayCount(song: Song, timePlayed: Long)
@@ -136,6 +137,7 @@ interface Repository {
     suspend fun clearSongHistory()
     suspend fun historySongs(): List<Song>
     fun historySongsFlow(): Flow<List<Song>>
+    suspend fun historySongIds(limit: Int): List<Long>
     suspend fun notRecentlyPlayedSongs(): List<Song>
     suspend fun initializeBlacklist()
     suspend fun search(query: SearchQuery, filter: SearchFilter?): List<Any>
@@ -401,6 +403,9 @@ class RealRepository(
 
     override fun playCountSongsFlow(): Flow<List<Song>> = smartRepository.playCountSongsFlow()
 
+    override suspend fun playCountSongIds(limit: Int): List<Long> =
+        smartRepository.playCountSongIds(limit)
+
     override suspend fun findSongsInPlayCount(songs: List<Song>): List<PlayCountEntity> =
         smartRepository.findSongsInPlayCount(songs)
 
@@ -429,6 +434,9 @@ class RealRepository(
 
     override fun historySongsFlow(): Flow<List<Song>> =
         smartRepository.historySongsFlow()
+
+    override suspend fun historySongIds(limit: Int): List<Long> =
+        smartRepository.historySongIds(limit)
 
     override suspend fun notRecentlyPlayedSongs(): List<Song> =
         smartRepository.notRecentlyPlayedSongs()

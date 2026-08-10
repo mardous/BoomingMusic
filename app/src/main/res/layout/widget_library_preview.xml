@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:theme="@style/Theme.AppWidget"
+    tools:ignore="UselessLeaf">
+    <!-- Spacers are FrameLayouts, not Space: RemoteViews only inflates @RemoteView classes and Space
+         is not one, so lint's UselessLeaf suggestion would break this layout as an initialLayout. -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        android:background="@drawable/widget_shape_card"
+        android:backgroundTint="?attr/colorSurfaceContainer">
+
+        <ImageView
+            style="@style/Widget.Booming.AppWidget.Preview.Control"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_back_24dp"
+            android:contentDescription="@string/widget_page_previous" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:text="@string/widget_source_recent"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="?attr/colorOnSurface" />
+
+        <ImageView
+            style="@style/Widget.Booming.AppWidget.Preview.Control"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_arrow_forward_24dp"
+            android:contentDescription="@string/widget_page_next" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="6dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <FrameLayout
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:background="@drawable/widget_shape_button"
+            android:backgroundTint="?attr/colorSurfaceContainer" />
+
+        <FrameLayout
+            android:layout_width="6dp"
+            android:layout_height="84dp" />
+
+        <FrameLayout
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:background="@drawable/widget_shape_button"
+            android:backgroundTint="?attr/colorSurfaceContainer" />
+
+        <FrameLayout
+            android:layout_width="6dp"
+            android:layout_height="84dp" />
+
+        <FrameLayout
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:background="@drawable/widget_shape_button"
+            android:backgroundTint="?attr/colorSurfaceContainer" />
+
+        <FrameLayout
+            android:layout_width="6dp"
+            android:layout_height="84dp" />
+
+        <FrameLayout
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:background="@drawable/widget_shape_button"
+            android:backgroundTint="?attr/colorSurfaceContainer" />
+    </LinearLayout>
+</LinearLayout>

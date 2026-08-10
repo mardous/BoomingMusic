@@ -10,6 +10,10 @@ object Playback {
     const val SET_UNSHUFFLED_ORDER = "com.mardous.booming.command.set.unshuffled_order"
     const val SET_STOP_POSITION = "com.mardous.booming.command.set.stop_position"
 
+    // Result extras reported back by TOGGLE_SHUFFLE and CYCLE_REPEAT
+    const val EXTRA_SHUFFLE_MODE = "com.mardous.booming.extra.shuffle_mode"
+    const val EXTRA_REPEAT_MODE = "com.mardous.booming.extra.repeat_mode"
+
     // Custom events
     const val EVENT_MEDIA_CONTENT_CHANGED = "com.mardous.booming.event.media_content_changed"
     const val EVENT_FAVORITE_CONTENT_CHANGED = "com.mardous.booming.event.favorite_content_changed"

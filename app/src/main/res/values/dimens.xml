@@ -44,5 +44,6 @@
 
     <!-- Glance App Widget -->
     <dimen name="glance_widget_background_radius">16dp</dimen>
-    <dimen name="glance_widget_inner_radius">8dp</dimen>
+    <dimen name="widget_shape_button_radius">24dp</dimen>
+    <dimen name="widget_shape_stadium_radius">1000dp</dimen>
 </resources>

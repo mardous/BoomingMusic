@@ -253,7 +253,6 @@
     <string name="label_file_format">Muoto</string>
     <string name="file_label">Tiedosto</string>
     <string name="metadata_label">Metatiedot</string>
-    <string name="title_and_artist">Otsikko ja esittäjä</string>
     <string name="song">Kappale</string>
     <string name="title">Otsikko</string>
     <string name="album">Albumi</string>

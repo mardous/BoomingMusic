@@ -253,7 +253,6 @@
     <string name="label_file_format">Biçim</string>
     <string name="file_label">File</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">Başlık ve Sanatçı</string>
     <string name="song">Şarkı</string>
     <string name="title">Başlık</string>
     <string name="album">Albüm</string>
@@ -823,11 +822,8 @@
     <string name="channel_stereo">Stereo</string>
     <string name="error_lastfm_auth">Oturumunuzun süresi doldu veya kimlik bilgileriniz geçersiz. Lütfen tekrar giriş yapın.</string>
     <string name="channel_stereo_2_1">2.1 Stereo</string>
-    <string name="app_widget_responsive_desc">Düzenini farklı boyutlara uyarlayan bir widget</string>
     <string name="app_widget_card">Kart</string>
     <string name="app_widget_card_desc">Minimalist ve basitleştirilmiş tarz</string>
-    <string name="app_widget_full">Tam</string>
-    <string name="app_widget_responsive">Duyarlı</string>
     <string name="select_playlists_title">Oynatma listelerini seç</string>
     <string name="no_playlists_that_match_x">\"%#\" adında bir oynatma listeniz yok.</string>
     <string name="songs_added_to_playlists">Oynatma listelerine şarkılar eklendi.</string>
@@ -836,7 +832,6 @@
     <string name="channel_surround_9_1">9.1 Uzamsal</string>
     <string name="channel_surround_11_1">11.1 Uzamsal</string>
     <string name="channel_surround_13_1">13.1 Uzamsal</string>
-    <string name="app_widget_full_desc">Oyuncu ekranı doğrudan masaüstünüzde</string>
     <string name="search_playlists">Oynatma listelerini ara</string>
     <string name="new_playlist_action">Yeni bir çalma listesi oluştururken kullanılır. ( Yeni)</string>
     <string name="no_playlists_create_new">Yeni bir çalma listesi oluşturmak için \'Yeni\' düğmesine tıklayın</string>

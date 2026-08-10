@@ -18,6 +18,7 @@ import com.mardous.booming.playback.ImprovedShuffleOrder.SerializedOrder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.Runnable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -218,8 +219,10 @@ class PersistentStorage(
                 shuffleOrder = null
             )
         } finally {
-            // Always mark as restored to unblock future listeners
+            // Always mark as restored to unblock future listeners, and release anyone already
+            // waiting
             state.store(RestorationState.Restored)
+            withContext(NonCancellable + Dispatchers.Main) { runSimpleListeners() }
         }
     }
 
@@ -285,12 +288,23 @@ class PersistentStorage(
         }
     }
 
+    /** Suspends until nothing is queued for writing */
+    suspend fun awaitPendingSave() {
+        repeat(MAX_SAVE_WAITS) {
+            val job = saveJob ?: return
+            job.join()
+            if (job === saveJob) return
+        }
+    }
+
     private suspend fun dispatchItems(
         callback: RestorationListener,
         items: MediaItemsWithStartPosition,
         shuffleOrder: ShuffleOrder?
     ) {
         withContext(Dispatchers.Main) {
+            // Before the listeners run, otherwise would be dropped by [saveState]
+            state.store(RestorationState.Restored)
             synchronized(lock) {
                 if (!mediaItemsListeners.contains(callback)) {
                     callback(items, shuffleOrder)
@@ -298,16 +312,25 @@ class PersistentStorage(
 
                 mediaItemsListeners.forEach { it(items, null) }
                 mediaItemsListeners.clear()
-
-                simpleListeners.forEach { it.run() }
-                simpleListeners.clear()
             }
+            runSimpleListeners()
         }
+    }
+
+    /** Runs after the queue is back in the player, so a waiter sees the restored state. */
+    private fun runSimpleListeners() {
+        val pending = synchronized(lock) {
+            simpleListeners.toList().also { simpleListeners.clear() }
+        }
+        pending.forEach { it.run() }
     }
 
     companion object {
         private const val TAG = "PersistentStorage"
         private const val PREFERENCE_NAME = "playback_state"
+
+        /** Guards [awaitPendingSave] against a player that keeps queueing new writes. */
+        private const val MAX_SAVE_WAITS = 5
 
         const val REPEAT_MODE = "repeat_mode"
         const val SHUFFLE_MODE = "shuffle_mode"

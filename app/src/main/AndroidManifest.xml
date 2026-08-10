@@ -148,6 +148,10 @@
         </service>
 
         <receiver
+            android:name=".core.appwidgets.WidgetActionReceiver"
+            android:exported="false" />
+
+        <receiver
             android:name="androidx.media3.session.MediaButtonReceiver"
             android:exported="true">
             <intent-filter>
@@ -156,20 +160,17 @@
             </intent-filter>
         </receiver>
 
-        <!-- Begin: App Widgets -->
-        <receiver
-            android:name=".core.appwidgets.BoomingGlanceWidgetReceiver"
-            android:label="@string/app_widget_responsive"
-            android:exported="false">
+        <activity
+            android:name=".ui.screen.widgets.WidgetSettingsActivity"
+            android:label="@string/widget_settings_title"
+            android:excludeFromRecents="true"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
+        </activity>
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/glance_responsive_widget_info"/>
-        </receiver>
-
+        <!-- Begin: App Widgets -->
         <receiver
             android:name=".core.appwidgets.CardWidgetReceiver"
             android:label="@string/app_widget_card"
@@ -180,12 +181,12 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/glance_card_widget_info"/>
+                android:resource="@xml/widget_card_info"/>
         </receiver>
 
         <receiver
-            android:name=".core.appwidgets.FullWidgetReceiver"
-            android:label="@string/app_widget_full"
+            android:name=".core.appwidgets.CircleWidgetReceiver"
+            android:label="@string/app_widget_circle"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -193,7 +194,46 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/glance_full_widget_info"/>
+                android:resource="@xml/widget_circle_info"/>
+        </receiver>
+
+        <receiver
+            android:name=".core.appwidgets.CookieWidgetReceiver"
+            android:label="@string/app_widget_cookie"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_cookie_info"/>
+        </receiver>
+
+        <receiver
+            android:name=".core.appwidgets.GridWidgetReceiver"
+            android:label="@string/app_widget_grid"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_grid_info"/>
+        </receiver>
+
+        <receiver
+            android:name=".core.appwidgets.LibraryWidgetReceiver"
+            android:label="@string/app_widget_library"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_library_info"/>
         </receiver>
         <!-- End: App Widgets -->
 

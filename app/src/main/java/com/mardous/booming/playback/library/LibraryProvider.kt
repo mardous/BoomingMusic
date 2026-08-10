@@ -25,11 +25,14 @@ import com.mardous.booming.playback.buildPlayableMediaItem
 import com.mardous.booming.util.Preferences
 
 class LibraryProvider(private val repository: Repository) {
+    @Volatile
+    private var lastSearch: Pair<Int, List<MediaItem>>? = null
 
-    private val _searchResult = mutableListOf<MediaItem>()
-    val searchResult: List<MediaItem> get() = _searchResult
+    fun searchResult(callerUid: Int): List<MediaItem> =
+        lastSearch?.takeIf { it.first == callerUid }?.second.orEmpty()
 
     suspend fun getMediaItemsForPlayback(
+        callerUid: Int,
         mediaItems: List<MediaItem>,
         tryToResolveComplexPaths: Boolean = false
     ): List<MediaItem> {
@@ -55,7 +58,7 @@ class LibraryProvider(private val repository: Repository) {
                 emptyList()
             }
             if (complexMediaItems.isNotEmpty()) {
-                getMediaItemsForAAOSPlayback(complexMediaItems)?.let { (result, _) ->
+                getMediaItemsForAAOSPlayback(callerUid, complexMediaItems)?.let { (result, _) ->
                     resolvedMediaItems.addAll(result)
                 }
             } else {
@@ -74,6 +77,7 @@ class LibraryProvider(private val repository: Repository) {
     }
 
     suspend fun getMediaItemsForAAOSPlayback(
+        callerUid: Int,
         mediaItems: List<MediaItem>
     ): Pair<List<MediaItem>, Int>? {
         val single = mediaItems.singleOrNull()
@@ -82,8 +86,9 @@ class LibraryProvider(private val repository: Repository) {
             when (path.firstOrNull()) {
                 SEARCH -> {
                     val id = path.getOrNull(1)
-                    if (id == null || searchResult.isEmpty()) return null
-                    val transformedMediaItems = searchResult.map { it.buildUpon().setMediaId(id).build() }
+                    val results = searchResult(callerUid)
+                    if (id == null || results.isEmpty()) return null
+                    val transformedMediaItems = results.map { it.buildUpon().setMediaId(id).build() }
                     Pair(
                         transformedMediaItems,
                         transformedMediaItems.indexOfFirst { it.mediaId == id }.coerceAtLeast(0)
@@ -258,10 +263,10 @@ class LibraryProvider(private val repository: Repository) {
         return repository.songById(songId).toPlayableMediaItem()
     }
 
-    suspend fun search(query: String): List<MediaItem> {
-        _searchResult.clear()
-        _searchResult.addAll(repository.searchSongs(query).map { it.toPlayableMediaItem(SEARCH) })
-        return _searchResult
+    suspend fun search(callerUid: Int, query: String): List<MediaItem> {
+        val result = repository.searchSongs(query).map { it.toPlayableMediaItem(SEARCH) }
+        lastSearch = callerUid to result
+        return result
     }
 
     @OptIn(UnstableApi::class)
@@ -342,7 +347,15 @@ class LibraryProvider(private val repository: Repository) {
         return mediaItems
     }
 
-    private suspend fun getPlayableSongs(
+    // Use id-only DAO queries where possible to avoid loading artwork and metadata for widgets.
+    internal suspend fun getPlayableSongIds(parentId: String, limit: Int): List<Long> =
+        when (parentId) {
+            MediaIDs.RECENT_SONGS -> repository.historySongIds(limit)
+            MediaIDs.TOP_TRACKS -> repository.playCountSongIds(limit)
+            else -> getPlayableSongs(parentId).asSequence().take(limit).map { it.id }.toList()
+        }
+
+    internal suspend fun getPlayableSongs(
         parentId: String,
         childId: String? = null
     ): List<Song> {

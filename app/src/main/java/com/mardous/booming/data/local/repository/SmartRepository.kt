@@ -48,6 +48,7 @@ interface SmartRepository {
     suspend fun notRecentlyPlayedSongs(): List<Song>
     suspend fun playCountSongs(): List<Song>
     fun playCountSongsFlow(): Flow<List<Song>>
+    suspend fun playCountSongIds(limit: Int): List<Long>
     suspend fun findSongsInPlayCount(songs: List<Song>): List<PlayCountEntity>
     suspend fun findSongInPlayCount(songId: Long): PlayCountEntity?
     suspend fun deleteSongInPlayCount(songId: Long)
@@ -57,6 +58,7 @@ interface SmartRepository {
     suspend fun clearPlayCount()
     suspend fun historySongs(): List<Song>
     fun historySongsFlow(): Flow<List<Song>>
+    suspend fun historySongIds(limit: Int): List<Long>
     suspend fun upsertSongInHistory(currentSong: Song)
     suspend fun deleteSongInHistory(songId: Long)
     suspend fun deleteSongsInHistory(songIds: List<Long>)
@@ -113,6 +115,9 @@ class RealSmartRepository(
     override suspend fun playCountSongs(): List<Song> = playCountDao.playCountSongs()
         .fromPlayCountToSongs()
 
+    override suspend fun playCountSongIds(limit: Int): List<Long> =
+        playCountDao.playCountSongIds(limit)
+
     override fun playCountSongsFlow(): Flow<List<Song>> =
         playCountDao.playCountSongsFlow().map { playCountEntities ->
             playCountEntities.fromPlayCountToSongs()
@@ -157,6 +162,9 @@ class RealSmartRepository(
     override fun historySongsFlow(): Flow<List<Song>> =
         historyDao.historySongsFlow(Preferences.getHistoryCutoff(context).interval)
             .map { historyEntities -> historyEntities.fromHistoryToSongs() }
+
+    override suspend fun historySongIds(limit: Int): List<Long> =
+        historyDao.playedSongIds(Preferences.getHistoryCutoff(context).interval, limit)
 
     override suspend fun upsertSongInHistory(currentSong: Song) =
         historyDao.upsertSongInHistory(currentSong.toHistoryEntity(System.currentTimeMillis()))

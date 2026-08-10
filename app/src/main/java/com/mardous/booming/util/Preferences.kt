@@ -297,11 +297,6 @@ object Preferences : KoinComponent {
             )
         }
 
-    fun getDefaultWidgetInfo(): List<MetadataField> =
-        MetadataField.Content.entries.map { tag ->
-            MetadataField(tag, tag == MetadataField.Content.Album)
-        }
-
     var preferRemainingTime: Boolean
         get() = preferences.getBoolean(PREFER_REMAINING_TIME, false)
         set(value) = preferences.edit { putBoolean(PREFER_REMAINING_TIME, value) }
@@ -590,10 +585,6 @@ const val ENABLE_SCROLLING_TEXT = "enable_scrolling_text"
 const val DISPLAY_ALBUM_TITLE = "display_album_title"
 const val DISPLAY_EXTRA_INFO = "display_extra_info"
 const val NOW_PLAYING_EXTRA_INFO = "now_playing_extra_info"
-const val WIDGET_DYNAMIC_COLORS = "widget_dynamic_colors"
-const val WIDGET_SMALL_LAYOUT_STYLE = "widget_small_layout_style"
-const val WIDGET_IMAGE_CORNER_RADIUS = "widget_image_corner_radius"
-const val WIDGET_THIRD_LINE_CONTENT = "widget_third_line_content"
 const val PREFER_REMAINING_TIME = "prefer_remaining_time"
 const val PREFER_ALBUM_ARTIST_NAME = "prefer_album_artist_name_on_np"
 const val REWIND_WITH_BACK = "rewind_with_back"

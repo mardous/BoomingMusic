@@ -238,7 +238,6 @@
     <string name="top_tracks_label">Populaarsed lood</string>
     <string name="action_sort_order">Järjestus</string>
     <string name="sort_order_ignore_articles">Eira artikleid</string>
-    <string name="title_and_artist">Pealkiri ja esitaja</string>
     <string name="scan_media_positive">Skaneeri ikkagi</string>
     <string name="scan_finished">Skaneerimine on lõppenud.</string>
     <string name="album_or_artist_empty">Pealkiri või esitaja on puudu.</string>
@@ -289,12 +288,8 @@
     <string name="unplayable_file">Selle loo esitamine ei õnnestunud.</string>
     <string name="permission_external_storage_title">Ligipääs andmeruumile</string>
     <string name="playing_queue_label">Esitusjärjekord on esitamisel</string>
-    <string name="app_widget_responsive">Kohanduv</string>
-    <string name="app_widget_responsive_desc">Vidin, mis kohandub eri mõõtu ekraanidele</string>
     <string name="app_widget_card">Vahekaart</string>
     <string name="app_widget_card_desc">Napp ja lihtsustatud lahendus</string>
-    <string name="app_widget_full">Täismahuline</string>
-    <string name="app_widget_full_desc">Meediaesitaja saab asuma otse sinu töölaual</string>
     <string name="select_storage_title">Vali andmeruum</string>
     <string name="hello_there">No tere kah!</string>
     <string name="welcome_to_x">Tere tulemast, see on %s</string>
@@ -394,7 +389,6 @@
     <string name="audio_focus_header">Helifookus</string>
     <string name="shuffle_mode_header">Lugude segamise viis</string>
     <string name="display_header">Ekraanivaade</string>
-    <string name="widgets_header">Rakenduse vidinad</string>
     <string name="backup_restore_header">Varundus ja taastamine</string>
     <string name="visuals_header">Visuaalsed efektid</string>
     <string name="appearance_title">Välimus</string>
@@ -466,8 +460,6 @@
     <string name="weekly">Iga nädal</string>
     <string name="monthly">Iga kuu</string>
     <string name="never">Ei iialgi</string>
-    <string name="widget_small_layout_classic">Klassikaline</string>
-    <string name="widget_small_layout_simplified">Lihtsustatud</string>
     <string name="permissions_denied">Õigused puuduvad</string>
     <string name="permissions_needed">Õigused on vajalikud</string>
     <string name="grant_access_action">Anna õigused</string>
@@ -547,8 +539,6 @@
     <string name="uncaught_error_report">Veateade</string>
     <string name="uncaught_error_message">Tundub, et midagi läks valesti ja rakendus jooksil kolinal kokku. Oleks abiks, kui saaksid meile saata veateate kas meie Telegram-gruppi või e-posti teel.</string>
     <string name="widget_dynamic_colors_summary">Kohanda vidina värve hetkel esitamisel loo kaanepildiga.</string>
-    <string name="widget_image_corner_radius_title">Pildi nurgaraadius</string>
-    <string name="widget_image_corner_radius_summary">Sellega saad muuta albumi kaanepildi ümarust.</string>
     <string name="widget_dynamic_colors_title">Dünaamilised värvid</string>
     <string name="search_lyrics">Otsi laulusõnu</string>
     <string name="choose_lyrics">Vali laulusõnade tüüp</string>
@@ -569,7 +559,6 @@
     <string name="saf_access_required_message">Booming Music vajab õigust lugeda neid faile. Palun vali juurkaust, kuhu sinu muusika- ja helifailid on salvestatud.</string>
     <string name="larger_header_image_title">Suurem päisepilt</string>
     <string name="larger_header_image_summary">Näita albumi, esitaja ja esitusloendi üksikasjalikus vaates suurt kaanepilti.</string>
-    <string name="widget_small_layout_style_title">Väike paigutus</string>
     <string name="action_move_to_current_track">Näita praegust lugu</string>
     <string name="action_add_to_favorites">Lisa lemmikuks</string>
     <string name="action_remove_from_favorites">Eemalda lemmikute seast</string>
@@ -659,8 +648,6 @@
     <string name="no_profile_imported">Ühtegi profiili pole imporditud.</string>
     <string name="not_supported">Tugi puudub</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Kas oled kindel, et soovid ekvalaiseri lähtestada? \n\nSellega eemaldad kõik oma profiilid.</string>
-    <string name="widget_third_line_title">Kolmas inforida</string>
-    <string name="widget_third_line_summary">Vali sisu, mida soovi kolmandas tekstireas kuvada.</string>
     <string name="squiggly_seek_bar_title">Vingerdav edenemisriba</string>
     <string name="squiggly_seek_bar_summary">Vaikimisi slaideri asemel kasuta vingerdavat edanemisriba/kerimisriba.</string>
     <string name="image_size_large">Suur (aeglasem)</string>

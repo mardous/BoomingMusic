@@ -21,6 +21,19 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="Widget.Booming.AppWidget.Preview.Control" parent="">
+        <item name="android:scaleType">center</item>
+        <item name="android:background">@drawable/widget_shape_button</item>
+        <item name="android:backgroundTint">?attr/colorTertiary</item>
+        <item name="android:tint">?attr/colorOnTertiary</item>
+    </style>
+
+
+    <style name="Widget.Booming.AppWidget.Preview.Accent" parent="Widget.Booming.AppWidget.Preview.Control">
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="android:tint">?attr/colorOnPrimary</item>
+    </style>
+
     <style name="Widget.Booming.Expressive.Button" parent="Widget.Material3Expressive.Button">
         <item name="iconGravity">textStart</item>
     </style>

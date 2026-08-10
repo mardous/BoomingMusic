@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_widget_responsive">Адаптивлы</string>
-    <string name="app_widget_responsive_desc">Үз макетын төрле зурлыкларга җайлаштыра торган виджет</string>
     <string name="app_widget_card">Карта</string>
     <string name="app_widget_card_desc">Минималистик һәм гадиләштерелгән стиль</string>
-    <string name="app_widget_full">Тулы канлы</string>
-    <string name="app_widget_full_desc">Уйнаучы экраны эш өстәлендә үк</string>
     <string name="action_play">Уйнау</string>
     <string name="action_play_all">Барсы да уйнарга</string>
     <string name="action_shuffle_play">Очраклы рәвештә уйнарга</string>
@@ -265,7 +261,6 @@
     <string name="label_file_format">Формат</string>
     <string name="file_label">Файл</string>
     <string name="metadata_label">Метамәгълүматлар</string>
-    <string name="title_and_artist">Башы исем һәм артист</string>
     <string name="song">Җыр</string>
     <string name="title">Исем</string>
     <string name="album">Альбом</string>
@@ -621,7 +616,6 @@
     <string name="exclusion_header">Чыгару очраклар</string>
     <string name="controls_header">Идарә итү</string>
     <string name="display_header">Күрсәтү</string>
-    <string name="widgets_header">Кушымтаның виджет</string>
     <string name="backup_restore_header">Бекап/торгызу</string>
     <string name="visuals_header">Визуаль эффектлар</string>
     <string name="update_title">Яңарту</string>
@@ -643,15 +637,8 @@
     <string name="hold_tab_to_search_summary">Эзләнү ачу өчен навигация панеленең теләсә нинди кертемен тотып калыгыз.</string>
     <string name="larger_header_image_title">Башта зурайтылган сурәт</string>
     <string name="larger_header_image_summary">Альбом, артист һәм плейлисте турындагы белешмәләрдә зурайтылган тышлыкны күрсәтү.</string>
-    <string name="widget_small_layout_style_title">Кечкенә макетның стиле</string>
-    <string name="widget_small_layout_classic">Классик</string>
-    <string name="widget_small_layout_simplified">Идарә ителгән</string>
     <string name="widget_dynamic_colors_title">Хәрәкәтчел төс</string>
     <string name="widget_dynamic_colors_summary">Агымдагы трек тышлыгына төсләр схемасын яраклаштырырга.</string>
-    <string name="widget_image_corner_radius_title">Рәсем почмакларының скругловкасы радусы</string>
-    <string name="widget_image_corner_radius_summary">Альбом тышлыгындагы почмакларның скругловкасын үзгәртергә.</string>
-    <string name="widget_third_line_title">Өченче мәгълүмат юл</string>
-    <string name="widget_third_line_summary">Өченче юлга сайлап алу өчен мәгълүматларны сайлагыз.</string>
     <string name="lyrics_center_current_line_title">Агымдагы юлны бәяләргә</string>
     <string name="lyrics_center_current_line_summary">Текстның агымдагы юлын экран үзәге буенча тотарга, ә өстән тигезләргә түгел.</string>
     <string name="lyrics_center_horizontally_title">Текст горизонт буенча төзәтергә</string>

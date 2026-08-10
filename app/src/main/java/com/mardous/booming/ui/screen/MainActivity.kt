@@ -18,10 +18,13 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.mardous.booming.R
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.MediaEvent
+import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.currentFragment
+import com.mardous.booming.extensions.navigation.detailArgs
 import com.mardous.booming.extensions.navigation.isValidCategory
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.library.MediaIDs
@@ -191,6 +194,14 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
 
     private fun handlePlaybackIntent(intent: Intent, canRestorePlayback: Boolean) {
         when (intent.action) {
+            ACTION_SHOW_CONTENT -> {
+                intent.getStringExtra(EXTRA_CONTENT_TYPE)?.toEnum<ContentType>()?.let { type ->
+                    whichFragment<NavHostFragment>(R.id.fragment_container).navController
+                        .navigate(R.id.nav_detail_list, detailArgs(type))
+                }
+                setIntent(Intent())
+            }
+
             APP_SHORTCUT_LAST_ADDED -> {
                 playerViewModel.playMediaId(MediaIDs.LAST_ADDED)
                 setIntent(Intent())
@@ -263,6 +274,9 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
     }
 
     companion object {
+        const val ACTION_SHOW_CONTENT = "com.mardous.booming.action.SHOW_CONTENT"
+        const val EXTRA_CONTENT_TYPE = "com.mardous.booming.extra.CONTENT_TYPE"
+
         private const val APP_SHORTCUT_LAST_ADDED = "com.mardous.booming.shortcut.LAST_ADDED"
         private const val APP_SHORTCUT_TOP_TRACKS = "com.mardous.booming.shortcut.TOP_TRACKS"
         private const val APP_SHORTCUT_SHUFFLE = "com.mardous.booming.shortcut.SHUFFLE"

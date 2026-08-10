@@ -207,7 +207,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     override fun onLongClick(view: View): Boolean {
         if (view.id == R.id.songInfo) {
             ExtraInfoPreferenceDialog
-                .nowPlaying(requireContext())
+                .nowPlaying()
                 .show(childFragmentManager, "NOW_PLAYING_EXTRA_INFO")
             return true
         }

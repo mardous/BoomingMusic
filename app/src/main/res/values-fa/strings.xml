@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_widget_responsive">پاسخگو</string>
-    <string name="app_widget_responsive_desc">ویجتی که چیدمان خود را با اندازه های مختلف تطبیق می دهد</string>
     <string name="app_widget_card">کارت</string>
     <string name="app_widget_card_desc">سبک مینیمالیستی و ساده شده</string>
-    <string name="app_widget_full">کامل</string>
-    <string name="app_widget_full_desc">صفحه پخش کننده مستقیماً روی دسکتاپ شما</string>
     <string name="action_play">بازی کنید</string>
     <string name="action_play_all">همه را پخش کنید</string>
     <string name="action_shuffle_play">پخش مختلط</string>
@@ -266,7 +262,6 @@
     <string name="label_file_format">قالب</string>
     <string name="file_label">فایل</string>
     <string name="metadata_label">فراداده</string>
-    <string name="title_and_artist">عنوان و هنرمند</string>
     <string name="song">آهنگ</string>
     <string name="title">عنوان</string>
     <string name="album">آلبوم</string>
@@ -555,7 +550,6 @@
     <string name="audio_focus_header">فوکوس صوتی</string>
     <string name="shuffle_mode_header">حالت مخلوط کردن</string>
     <string name="display_header">نمایش</string>
-    <string name="widgets_header">ویجت های برنامه</string>
     <string name="backup_restore_header">پشتیبان گیری/بازیابی</string>
     <string name="visuals_header">تصاویری</string>
     <string name="update_title">به روز رسانی</string>
@@ -577,15 +571,8 @@
     <string name="hold_tab_to_search_summary">هر برگه نوار پیمایش را طولانی فشار دهید تا صفحه جستجو باز شود.</string>
     <string name="larger_header_image_title">تصویر هدر بزرگتر</string>
     <string name="larger_header_image_summary">تصویر جلد بزرگتر را در جزئیات آلبوم، هنرمند و لیست پخش نشان دهید.</string>
-    <string name="widget_small_layout_style_title">سبک چیدمان کوچک</string>
-    <string name="widget_small_layout_classic">کلاسیک</string>
-    <string name="widget_small_layout_simplified">ساده شده</string>
     <string name="widget_dynamic_colors_title">رنگ های پویا</string>
     <string name="widget_dynamic_colors_summary">رنگ‌های ویجت را با آثار هنری آهنگ فعلی تطبیق دهید.</string>
-    <string name="widget_image_corner_radius_title">شعاع گوشه تصویر</string>
-    <string name="widget_image_corner_radius_summary">گرد کردن هنر آلبوم را تغییر دهید.</string>
-    <string name="widget_third_line_title">خط سوم اطلاعات</string>
-    <string name="widget_third_line_summary">انتخاب کنید چه چیزی در ردیف سوم متن نمایش داده شود.</string>
     <string name="lyrics_center_current_line_title">خط فعلی را در مرکز قرار دهید</string>
     <string name="lyrics_center_current_line_summary">خط غزل کنونی را به جای تراز کردن با بالا در مرکز صفحه نگه دارید.</string>
     <string name="lyrics_center_horizontally_title">وسط اشعار به صورت افقی</string>

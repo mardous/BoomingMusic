@@ -18,6 +18,7 @@
 package com.mardous.booming
 
 import android.app.Application
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
@@ -70,13 +71,17 @@ private val legacyLanguageTags = mapOf(
 
 class App : Application(), SingletonImageLoader.Factory {
 
-    override fun onCreate() {
-        super.onCreate()
+    // ContentProviders are installed and can already be queried before Application.onCreate() runs
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
         startKoin {
             androidContext(this@App)
             modules(appModules)
         }
+    }
 
+    override fun onCreate() {
+        super.onCreate()
         if (BuildConfig.DEBUG) enableStrictMode()
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
