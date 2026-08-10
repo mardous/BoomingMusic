@@ -957,4 +957,14 @@
     <string name="up_next">A continuación</string>
     <string name="reorder_action">Reordenar</string>
     <string name="go_to_current_track">Ir a la pista actual</string>
+    <string name="app_widget_circle">Círculo</string>
+    <string name="app_widget_circle_desc">Reproductor circular con controles a su alrededor</string>
+    <string name="app_widget_cookie">Galleta</string>
+    <string name="app_widget_cookie_desc">La carátula es una gran galleta, con controles alrededor</string>
+    <string name="app_widget_grid">Cuadrícula</string>
+    <string name="app_widget_grid_desc">La carátula y los botones de reproducir y saltar en cuatro celdas</string>
+    <string name="app_widget_library">Biblioteca</string>
+    <string name="app_widget_library_desc">Una cuadrícula de carátulas de una lista que tú elijas</string>
+    <string name="app_widget_nothing_playing">Nada en reproducción</string>
+    <string name="app_widget_tap_to_play">Toca para abrir Booming</string>
 </resources>
