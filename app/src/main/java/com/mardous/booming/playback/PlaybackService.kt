@@ -20,6 +20,7 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.os.Looper
 import android.os.Process
+import android.service.media.MediaBrowserService
 import android.util.Log
 import android.view.KeyEvent
 import androidx.annotation.OptIn
@@ -393,10 +394,21 @@ class PlaybackService :
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? {
-        return if ("android.media.session.MediaController" == controllerInfo.packageName
-            || packageValidator.isKnownCaller(controllerInfo.packageName, controllerInfo.uid)) {
-            mediaSession
-        } else null
+        val myPackageName = this.packageName
+        if (myPackageName == controllerInfo.packageName ||
+            myPackageName == MediaBrowserService.SERVICE_INTERFACE) {
+            return mediaSession
+        }
+        val controllerType = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_CONTROLLER_INFO_TYPE)
+        if (controllerType == Intent.ACTION_MEDIA_BUTTON) {
+            val sessionId = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_SESSION_ID)
+            if (sessionId == this.packageName) {
+                return mediaSession
+            }
+        } else if (packageValidator.isKnownCaller(controllerInfo.packageName, controllerInfo.uid)) {
+            return mediaSession
+        }
+        return null
     }
 
     override fun onConnectAsync(
