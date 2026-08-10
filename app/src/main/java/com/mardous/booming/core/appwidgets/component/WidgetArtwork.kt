@@ -28,7 +28,9 @@ fun WidgetArtwork(
     // The scallop is cut into the image the provider serves
     val baked = shape == WidgetShape.Scallop
     val uri = songId?.let {
-        CoverProvider.getImageUri(CoverProvider.SONG_COVER_PATH, it, if (baked) "cookie" else null)
+        CoverProvider.getImageUri(
+            CoverProvider.SONG_COVER_PATH, it, if (baked) CoverProvider.SHAPE_COOKIE else null
+        )
     }
 
     when {

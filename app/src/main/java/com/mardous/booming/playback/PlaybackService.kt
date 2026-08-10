@@ -28,7 +28,6 @@ import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
-import androidx.core.os.bundleOf
 import androidx.core.os.postDelayed
 import androidx.media.utils.MediaConstants
 import androidx.media3.common.AudioAttributes
@@ -396,7 +395,8 @@ class PlaybackService :
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? {
         val myPackageName = this.packageName
         if (myPackageName == controllerInfo.packageName ||
-            myPackageName == MediaBrowserService.SERVICE_INTERFACE) {
+            controllerInfo.packageName == MediaBrowserService.SERVICE_INTERFACE ||
+            controllerInfo.packageName == MediaSession.ControllerInfo.LEGACY_CONTROLLER_PACKAGE_NAME) {
             return mediaSession
         }
         val controllerType = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_CONTROLLER_INFO_TYPE)
@@ -965,10 +965,10 @@ class PlaybackService :
         persistentStorage.awaitPendingSave()
     }
 
-    private fun modesBundle() = bundleOf(
-        Playback.EXTRA_SHUFFLE_MODE to player.shuffleModeEnabled,
-        Playback.EXTRA_REPEAT_MODE to player.repeatMode
-    )
+    private fun modesBundle() = Bundle().apply {
+        putBoolean(Playback.EXTRA_SHUFFLE_MODE, player.shuffleModeEnabled)
+        putInt(Playback.EXTRA_REPEAT_MODE, player.repeatMode)
+    }
 
     private suspend fun toggleFavorite() {
         val currentMediaItem = player.currentMediaItem
@@ -1009,7 +1009,8 @@ class PlaybackService :
             withContext(IO) {
                 val songs = libraryProvider.getPlayableSongs(source.mediaId)
                 val position = songs.indexOfFirst { it.id == songId }
-                if (position != -1) songs to position else listOf(repository.songById(songId)) to 0
+                if (position != -1) songs to position
+                else listOfNotNull(repository.songById(songId).takeIf { it != Song.emptySong }) to 0
             }
         }.onFailure {
             Log.e(TAG, "Couldn't resolve song $songId from ${source.mediaId}", it)
@@ -1232,13 +1233,6 @@ class PlaybackService :
 
     companion object {
         private const val PACKAGE_NAME = "com.mardous.booming"
-
-        private val MUTATING_COMMANDS = setOf(
-            Playback.TOGGLE_FAVORITE,
-            Playback.RESTORE_PLAYBACK,
-            Playback.SET_UNSHUFFLED_ORDER,
-            Playback.SET_STOP_POSITION
-        )
 
         const val ACTION_PLAY_SONG = "$PACKAGE_NAME.action.ACTION_PLAY_SONG"
         const val EXTRA_SONG_ID = "$PACKAGE_NAME.extra.SONG_ID"
