@@ -131,7 +131,7 @@ fun AboutScreen(
     var showTranslatorsDialog by remember { mutableStateOf(false) }
     val translators by produceState(emptyList()) {
         value = loadTranslators(context).map { (tag, translators) ->
-            val flag = tag.languageFlagEmoji()
+            val flag = tag.languageFlagEmoji(context)
             AboutItemData(
                 icon = { AboutItemIcon(flag) },
                 title = tag.languageNameInEnglish(),

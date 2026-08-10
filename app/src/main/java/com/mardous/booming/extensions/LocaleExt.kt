@@ -3,6 +3,7 @@ package com.mardous.booming.extensions
 import android.content.Context
 import android.icu.util.ULocale
 import androidx.core.app.LocaleManagerCompat
+import com.mardous.booming.R
 import com.mardous.booming.util.AUTO_LANGUAGE
 import java.util.Locale
 
@@ -13,18 +14,22 @@ private val displayTagOverrides = mapOf(
     "zh-TW" to "zh-Hant"
 )
 
-private const val REGIONLESS_FLAG = "🌎"
-private const val SYSTEM_LANGUAGE_FLAG = "🌐"
+private val displayNameOverrides = mapOf(
+    "zh-Hans" to "中文（简体）",
+    "zh-Hant" to "中文（繁體）"
+)
+
 private const val REGIONAL_INDICATOR_A = 0x1F1E6
 
 class LanguageLabel(val flag: String, val name: String)
 
 fun Context.languageLabelOf(tag: String): LanguageLabel {
     if (tag == AUTO_LANGUAGE) {
-        val language = LocaleManagerCompat.getSystemLocales(this)[0]?.language.orEmpty()
-        return LanguageLabel(SYSTEM_LANGUAGE_FLAG, language.languageEndonym())
+        val language = LocaleManagerCompat.getSystemLocales(this)
+            .let { locales -> if (locales.isEmpty) null else locales[0]?.language }
+        return LanguageLabel(getString(R.string.system_language_flag), language.orEmpty().languageEndonym())
     }
-    return LanguageLabel(tag.languageFlagEmoji(), tag.languageNameInEnglish())
+    return LanguageLabel(tag.languageFlagEmoji(this), tag.languageNameInEnglish())
 }
 
 private val String.displayLocale: Locale
@@ -32,6 +37,8 @@ private val String.displayLocale: Locale
 
 fun String.languageEndonym(): String {
     val locale = displayLocale
+    displayNameOverrides[locale.toLanguageTag()]?.let { return it }
+
     val endonym = locale.getDisplayName(locale)
     if (endonym.equals(locale.toLanguageTag(), ignoreCase = true)) {
         return languageNameInEnglish()
@@ -41,11 +48,11 @@ fun String.languageEndonym(): String {
 
 fun String.languageNameInEnglish(): String = displayLocale.displayName(Locale.ENGLISH)
 
-fun String.languageFlagEmoji(): String {
+fun String.languageFlagEmoji(context: Context): String {
     val uLocale = ULocale.forLocale(displayLocale)
     val country = uLocale.country.ifEmpty { ULocale.addLikelySubtags(uLocale).country }
     if (country.length != 2 || !country.all { it in 'A'..'Z' }) {
-        return REGIONLESS_FLAG
+        return context.getString(R.string.regionless_flag)
     }
     return buildString {
         for (char in country) {
