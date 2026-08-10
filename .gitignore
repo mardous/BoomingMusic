@@ -78,4 +78,4 @@ Gemfile.lock
 local.properties
 /.kotlin/
 
-get_weblate_translators.py
+get_weblate_translators.*
