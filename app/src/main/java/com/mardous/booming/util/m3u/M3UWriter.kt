@@ -104,6 +104,7 @@ object M3UWriter : KoinComponent {
     @Throws(IOException::class)
     fun writeToDirectory(dir: File, playlist: PlaylistWithSongs): File {
         val fileName = playlist.playlistEntity.playlistName.sanitize()
+            .ifBlank { "playlist-${System.currentTimeMillis()}" }
         val exportFile = File(dir, "$fileName.${M3UConstants.EXTENSION}")
         if (exportFile.belongsTo(dir) && exportFile.createNewFile()) {
             exportFile.bufferedWriter().use {
