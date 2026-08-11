@@ -974,4 +974,18 @@
     <string name="widget_show_controls_title">Steuerelemente anzeigen</string>
     <string name="widget_show_controls_summary">Wiedergabetasten anzeigen.</string>
     <string name="widget_show_artist_title">Künstler anzeigen</string>
+    <string name="app_widget_circle_desc">Ein runder Player, um den sich die Steuerelemente drehen</string>
+    <string name="widget_show_artist_summary">Zeigt den Künstler unterhalb des Titels an.</string>
+    <string name="widget_show_navigation_title">Navigation anzeigen</string>
+    <string name="widget_show_navigation_summary">Eine Leiste anzeigen, um durch die Liste zu navigieren.</string>
+    <string name="widget_leading_action_title">Linke Taste</string>
+    <string name="widget_trailing_action_title">Rechte Taste</string>
+    <string name="widget_side_buttons_title">Seitentasten</string>
+    <string name="widget_side_buttons_skip">Zurück und vor</string>
+    <string name="widget_action_favourite">Favorit</string>
+    <string name="widget_action_repeat">Wiederholen</string>
+    <string name="widget_source_title">Anzeigen</string>
+    <string name="widget_source_recent">Zuletzt</string>
+    <string name="widget_page_previous">Vorherige Lieder</string>
+    <string name="widget_page_next">Nächste Lieder</string>
 </resources>
