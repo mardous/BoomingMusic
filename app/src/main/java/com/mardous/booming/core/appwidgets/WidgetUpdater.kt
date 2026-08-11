@@ -45,8 +45,10 @@ object WidgetUpdater {
             for ((receiverName, widget) in widgetsByReceiver) {
                 val component = ComponentName(context, receiverName)
                 for (appWidgetId in appWidgetManager.getAppWidgetIds(component)) {
+                    // Throws if the widget was removed since the id lookup
+                    val glanceId = runCatching { manager.getGlanceIdBy(appWidgetId) }
+                        .getOrNull() ?: continue
                     val config = WidgetConfigStore.read(context, appWidgetId, widget.settings)
-                    val glanceId = manager.getGlanceIdBy(appWidgetId)
                     add(Placed(widget, glanceId, config.dataNeeds(widget.settings)))
                 }
             }
