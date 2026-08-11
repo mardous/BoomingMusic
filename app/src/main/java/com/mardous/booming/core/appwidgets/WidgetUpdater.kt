@@ -1,6 +1,7 @@
 package com.mardous.booming.core.appwidgets
 
 import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -30,21 +31,22 @@ object WidgetUpdater {
 
     private val renderLock = Mutex()
 
-    private val widgets = widgetsByReceiver.values
-
     private class Placed(
         val widget: BoomingWidget,
         val glanceId: GlanceId,
         val needs: Set<WidgetData>
     )
 
-    private suspend fun placed(context: Context): List<Placed> {
+    /** Resolves widgets by receiver because R8 can merge widget classes. */
+    private fun placed(context: Context): List<Placed> {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
         val manager = GlanceAppWidgetManager(context)
         return buildList {
-            for (widget in widgets) {
-                for (glanceId in manager.getGlanceIds(widget.javaClass)) {
-                    val appWidgetId = manager.getAppWidgetId(glanceId)
+            for ((receiverName, widget) in widgetsByReceiver) {
+                val component = ComponentName(context, receiverName)
+                for (appWidgetId in appWidgetManager.getAppWidgetIds(component)) {
                     val config = WidgetConfigStore.read(context, appWidgetId, widget.settings)
+                    val glanceId = manager.getGlanceIdBy(appWidgetId)
                     add(Placed(widget, glanceId, config.dataNeeds(widget.settings)))
                 }
             }
