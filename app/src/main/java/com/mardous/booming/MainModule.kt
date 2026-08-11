@@ -133,7 +133,7 @@ private val mainModule = module {
         )
     }
     single {
-        MediaStoreWriter(context = androidContext(), contentResolver = get())
+        MediaStoreWriter(contentResolver = get())
     }
     single {
         CustomArtistImageManager(context = androidContext())
