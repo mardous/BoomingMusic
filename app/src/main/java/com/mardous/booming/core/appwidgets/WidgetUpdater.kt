@@ -1,6 +1,7 @@
 package com.mardous.booming.core.appwidgets
 
 import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -11,10 +12,15 @@ import com.mardous.booming.core.appwidgets.config.WidgetConfigStore
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+
+/** Survives service shutdown for pending widget writes. */
+internal val widgetScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
 object WidgetUpdater {
 
@@ -25,20 +31,23 @@ object WidgetUpdater {
 
     private val renderLock = Mutex()
 
-    private val widgets = widgetsByReceiver.values
-
     private class Placed(
         val widget: BoomingWidget,
         val glanceId: GlanceId,
         val needs: Set<WidgetData>
     )
 
-    private suspend fun placed(context: Context): List<Placed> {
+    /** Resolves widgets by receiver because R8 can merge widget classes. */
+    private fun placed(context: Context): List<Placed> {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
         val manager = GlanceAppWidgetManager(context)
         return buildList {
-            for (widget in widgets) {
-                for (glanceId in manager.getGlanceIds(widget.javaClass)) {
-                    val appWidgetId = manager.getAppWidgetId(glanceId)
+            for ((receiverName, widget) in widgetsByReceiver) {
+                val component = ComponentName(context, receiverName)
+                for (appWidgetId in appWidgetManager.getAppWidgetIds(component)) {
+                    // Throws if the widget was removed since the id lookup
+                    val glanceId = runCatching { manager.getGlanceIdBy(appWidgetId) }
+                        .getOrNull() ?: continue
                     val config = WidgetConfigStore.read(context, appWidgetId, widget.settings)
                     add(Placed(widget, glanceId, config.dataNeeds(widget.settings)))
                 }

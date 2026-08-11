@@ -10,6 +10,7 @@ import androidx.core.content.getSystemService
 import com.mardous.booming.core.appwidgets.component.progressTickInterval
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -83,6 +84,13 @@ class WidgetPresenter(
     fun refresh() {
         syncTicker()
         refreshJob?.cancel()
+        // Push immediately: service teardown can cancel a debounced stop update.
+        if (!playback.isPlaying) {
+            widgetScope.launch(Dispatchers.Main) {
+                WidgetUpdater.push(context) { needs -> playback.snapshot(needs) }
+            }
+            return
+        }
         refreshJob = scope.launch {
             delay(REFRESH_DEBOUNCE)
             WidgetUpdater.push(context) { needs -> playback.snapshot(needs) }
