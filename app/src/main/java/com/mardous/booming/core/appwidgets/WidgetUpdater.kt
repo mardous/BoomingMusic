@@ -11,10 +11,15 @@ import com.mardous.booming.core.appwidgets.config.WidgetConfigStore
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.state.PlaybackStateDefinition
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+
+/** Survives service shutdown for pending widget writes. */
+internal val widgetScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
 object WidgetUpdater {
 

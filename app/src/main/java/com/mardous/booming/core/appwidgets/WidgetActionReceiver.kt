@@ -11,9 +11,7 @@ import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionToken
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.PlaybackService
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.guava.await
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,8 +21,6 @@ import kotlin.time.Duration.Companion.milliseconds
 private const val TAG = "WidgetActionReceiver"
 
 private const val CONNECT_TIMEOUT_MS = 5_000L
-
-private val widgetScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
 /** Where widget buttons land */
 class WidgetActionReceiver : BroadcastReceiver() {
