@@ -70,9 +70,11 @@ import com.mardous.booming.core.appwidgets.WidgetPresenter
 import com.mardous.booming.core.appwidgets.config.SongSource
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.audio.AudioOutputObserver
+import com.mardous.booming.core.model.queue.QueuePosition
 import com.mardous.booming.data.local.MediaStoreObserver
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.model.QueueSong
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.model.network.ScrobblingService
@@ -108,15 +110,21 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.guava.future
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import kotlin.concurrent.atomics.AtomicBoolean
+import kotlin.concurrent.atomics.ExperimentalAtomicApi
 import kotlin.coroutines.resume
 import kotlin.random.Random
+import kotlin.time.Duration.Companion.milliseconds
 
 @OptIn(UnstableApi::class)
+@kotlin.OptIn(ExperimentalAtomicApi::class)
 class PlaybackService :
     MediaLibraryService(),
     MediaLibrarySession.Callback,
@@ -132,10 +140,15 @@ class PlaybackService :
     private val audioOutputObserver: AudioOutputObserver by inject()
     private val repository: Repository by inject()
 
+    private val queueStateHolder: QueueStateHolder by inject()
+    private val isInTimelineUpdate = AtomicBoolean(false)
+    private var generateQueueJob: Job? = null
+
     private val libraryProvider = LibraryProvider(repository)
     private val songPlayCountHelper = SongPlayCountHelper()
     private val mediaStoreObserver = MediaStoreObserver(uiHandler) {
         WidgetDataSource.invalidate()
+        dispatchPlayQueue(player)
         mediaSession?.broadcastCustomCommand(
             SessionCommand(Playback.EVENT_MEDIA_CONTENT_CHANGED, Bundle.EMPTY),
             Bundle.EMPTY
@@ -164,7 +177,7 @@ class PlaybackService :
     private lateinit var player: AdvancedForwardingPlayer
     private var mediaSession: MediaLibrarySession? = null
 
-    private var eqStateHandler: Handler? = Handler(Looper.getMainLooper())
+    private var eqStateHandler: Handler = Handler(Looper.getMainLooper())
 
     private var errorRecoveryRetryCount = 0
     private var pausedByZeroVolume = false
@@ -364,7 +377,7 @@ class PlaybackService :
             unregisterReceiver(headsetReceiver)
             headsetReceiverRegistered = false
         }
-        eqStateHandler?.removeCallbacksAndMessages(null)
+        eqStateHandler.removeCallbacksAndMessages(null)
         uiHandler.removeCallbacks(headsetClickRunnable)
         serviceScope.cancel()
         preferences.unregisterOnSharedPreferenceChangeListener(this)
@@ -761,7 +774,12 @@ class PlaybackService :
     }
 
     override fun onTimelineChanged(timeline: Timeline, reason: Int) {
-        persistentStorage.saveState(true)
+        if (reason == Player.TIMELINE_CHANGE_REASON_PLAYLIST_CHANGED) {
+            buildPlayQueue(player) { songs, position ->
+                queueStateHolder.submitQueue(songs, position)
+                persistentStorage.saveState(true)
+            }
+        }
     }
 
     override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
@@ -813,7 +831,7 @@ class PlaybackService :
         val isPlaying = player.isPlaying
 
         serviceScope.launch(IO) {
-            val newSong = repository.songByMediaItem(mediaItem, ignoreBlacklist = true)
+            val newSong = queueStateHolder.currentSong.first()
             if (newSong != Song.emptySong) {
                 replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(newSong)
             }
@@ -884,14 +902,28 @@ class PlaybackService :
             !events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION)) {
             updateEqualizerSessionState(player.isPlaying)
         }
-        if (events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED) &&
-            !events.contains(Player.EVENT_TIMELINE_CHANGED)) {
-            if (player.shuffleModeEnabled && persistentStorage.restorationState.isRestored) {
-                this.player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
-                    firstIndex = player.currentMediaItemIndex,
-                    length = player.mediaItemCount,
-                    randomSeed = Random.nextLong()
-                )
+        if (events.contains(Player.EVENT_REPEAT_MODE_CHANGED)) {
+            queueStateHolder.submitRepeatMode(player.repeatMode)
+        }
+        if (events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED)) {
+            queueStateHolder.submitShuffleMode(player.shuffleModeEnabled)
+            if (!events.contains(Player.EVENT_TIMELINE_CHANGED)) {
+                dispatchPlayQueue(player)
+                if (player.shuffleModeEnabled && persistentStorage.restorationState.isRestored) {
+                    this.player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
+                        firstIndex = player.currentMediaItemIndex,
+                        length = player.mediaItemCount,
+                        randomSeed = Random.nextLong()
+                    )
+                }
+            }
+        }
+        if (events.contains(Player.EVENT_POSITION_DISCONTINUITY) ||
+            events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION)) {
+            val isStructuralChange = events.contains(Player.EVENT_TIMELINE_CHANGED) &&
+                    player.currentTimeline.windowCount != queueStateHolder.queueSize
+            if (!isStructuralChange) {
+                queueStateHolder.setPlayerIndex(player.currentMediaItemIndex)
             }
         }
     }
@@ -971,12 +1003,9 @@ class PlaybackService :
     }
 
     private suspend fun toggleFavorite() {
-        val currentMediaItem = player.currentMediaItem
-            ?: return
-
         withContext(IO) {
-            val song = repository.songByMediaItem(currentMediaItem, ignoreBlacklist = false)
-            repository.toggleFavorite(song)
+            val song = queueStateHolder.currentSong.first()
+            if (song != Song.emptySong) repository.toggleFavorite(song)
         }
 
         widgets.refresh()
@@ -1001,6 +1030,68 @@ class PlaybackService :
             repeatMode = player.repeatMode
         )
         return withContext(IO) { WidgetDataSource.enrich(this@PlaybackService, base, needs) }
+    }
+
+    private fun dispatchPlayQueue(player: Player) {
+        buildPlayQueue(player) { songs, position ->
+            queueStateHolder.submitQueue(songs, position)
+        }
+    }
+
+    private fun buildPlayQueue(
+        player: Player,
+        onCompletion: (List<QueueSong>, QueuePosition) -> Unit
+    ) {
+        if (isInTimelineUpdate.load()) return
+
+        generateQueueJob?.cancel()
+        generateQueueJob = serviceScope.launch {
+            delay(QUEUE_DEBOUNCE.milliseconds)
+
+            val timeline = player.currentTimeline
+            if (timeline.isEmpty) {
+                onCompletion(emptyList(), QueuePosition.Undefined)
+                return@launch
+            }
+
+            val shuffleModeEnabled = player.shuffleModeEnabled
+            val currentMediaItemIndex = player.currentMediaItemIndex
+
+            val snapshot = player.captureQueueSnapshot(
+                timeline = timeline,
+                currentMediaItemIndex = currentMediaItemIndex,
+                shuffleMode = shuffleModeEnabled
+            )
+            val position = snapshot.createPosition()
+
+            val (songs, missingMediaItems) = withContext(IO) {
+                repository.songsByMediaItems(snapshot.mediaItems, ignoreBlacklist = true)
+                    .let { (songs, mediaItems) -> snapshot.deriveQueueSongs(songs) to mediaItems }
+            }
+
+            val missingIds = missingMediaItems.mapTo(mutableSetOf()) { it.mediaId }
+            withContext(Main) {
+                if (missingIds.isNotEmpty() &&
+                    isInTimelineUpdate.compareAndSet(false, newValue = true)) {
+                    player.removeMediaItemsById(missingIds)
+                }
+
+                if (isInTimelineUpdate.exchange(false)) {
+                    // The queue structure changed due to the removal of some elements,
+                    // so the last snapshot is no longer valid; what remains now is to
+                    // force a new capture to ensure consistency.
+                    buildPlayQueue(player, onCompletion)
+                    return@withContext
+                }
+
+                onCompletion(
+                    songs,
+                    position.copy(
+                        current = position.getPositionForIndex(player.currentMediaItemIndex)
+                    )
+                )
+            }
+        }
     }
 
     private fun playSong(songId: Long, source: SongSource) = serviceScope.launch {
@@ -1152,12 +1243,12 @@ class PlaybackService :
     }
 
     private fun updateEqualizerSessionState(isPlaying: Boolean) {
-        eqStateHandler?.removeCallbacksAndMessages(null)
+        eqStateHandler.removeCallbacksAndMessages(null)
         uiHandler.removeCallbacks(headsetClickRunnable)
         if (isPlaying) {
             equalizerManager.setSessionIsActive(true)
         } else {
-            eqStateHandler?.postDelayed(500) {
+            eqStateHandler.postDelayed(500) {
                 equalizerManager.setSessionIsActive(false)
             }
         }

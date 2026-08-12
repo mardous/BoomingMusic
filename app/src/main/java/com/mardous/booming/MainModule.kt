@@ -56,6 +56,7 @@ import com.mardous.booming.data.remote.listenbrainz.ListenBrainzService
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
 import com.mardous.booming.data.remote.musicbrainz.MusicBrainzService
 import com.mardous.booming.data.remote.provideOkHttp
+import com.mardous.booming.playback.QueueStateHolder
 import com.mardous.booming.playback.SleepTimer
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
@@ -82,30 +83,15 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val networkModule = module {
-    factory {
-        jsonHttpClient(okHttpClient = get())
-    }
-    factory {
-        provideOkHttp(context = get())
-    }
-    single {
-        GitHubService(context = androidContext(), client = get())
-    }
-    single {
-        DeezerService(client = get())
-    }
-    single {
-        LastFmService(client = get())
-    }
-    single {
-        ListenBrainzService(client = get())
-    }
-    single {
-        MusicBrainzService(client = get())
-    }
-    single {
-        LyricsDownloadService(client = get())
-    }
+    factory { jsonHttpClient(okHttpClient = get()) }
+    factory { provideOkHttp(context = get()) }
+    single { GitHubService(context = androidContext(), client = get()) }
+    single { DeezerService(client = get()) }
+    single { LastFmService(client = get()) }
+    single { ListenBrainzService(client = get()) }
+    single { MusicBrainzService(client = get()) }
+    single { LyricsDownloadService(client = get()) }
+    single { QueueStateHolder() }
 }
 
 private val mainModule = module {
@@ -277,7 +263,7 @@ private val viewModule = module {
     }
 
     viewModel {
-        PlayerViewModel(preferences = get(), repository = get())
+        PlayerViewModel(preferences = get(), queueStateHolder = get(), repository = get())
     }
 
     viewModel {

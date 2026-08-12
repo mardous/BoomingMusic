@@ -31,6 +31,7 @@ import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.Player
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.google.android.material.button.MaterialButton
@@ -58,9 +59,12 @@ import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.PREFER_ALBUM_ARTIST_NAME
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.SQUIGGLY_SEEK_BAR
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import java.lang.ref.WeakReference
 
@@ -355,7 +359,14 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             DISPLAY_ALBUM_TITLE,
             PREFER_ALBUM_ARTIST_NAME -> onSongInfoChanged(playerViewModel.currentSong, playerViewModel.nextSong)
             DISPLAY_EXTRA_INFO,
-            NOW_PLAYING_EXTRA_INFO -> playerViewModel.generateExtraInfo()
+            NOW_PLAYING_EXTRA_INFO -> {
+                lifecycleScope.launch {
+                    val extraInfo = withContext(Dispatchers.IO) {
+                        playerViewModel.getExtraInfo(playerViewModel.currentSong)
+                    }
+                    onExtraInfoChanged(extraInfo)
+                }
+            }
         }
     }
 

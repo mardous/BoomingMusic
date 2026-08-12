@@ -11,8 +11,6 @@ import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
-import androidx.media3.common.Player.REPEAT_MODE_OFF
-import androidx.media3.common.Timeline
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.session.MediaController
 import androidx.media3.session.SessionCommand
@@ -34,52 +32,48 @@ import com.mardous.booming.data.SongProvider
 import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.mapper.toSongs
-import com.mardous.booming.data.model.QueuePosition
-import com.mardous.booming.data.model.QueueSong
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.ProgressObserver
-import com.mardous.booming.playback.getQueueItems
+import com.mardous.booming.playback.QueueStateHolder
 import com.mardous.booming.playback.shuffle.ShuffleManager
 import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.REMEMBER_SHUFFLE_MODE
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChangedBy
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.guava.await
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlin.concurrent.atomics.ExperimentalAtomicApi
 import kotlin.time.Duration.Companion.milliseconds
 
-const val QUEUE_DEBOUNCE = 100L
+private fun List<Song>.toMediaItems() = mapNotNull { songs ->
+    songs.toMediaItem().takeUnless { item -> item == MediaItem.EMPTY }
+}
 
-@OptIn(FlowPreview::class)
-private fun List<Song>.toMediaItems() = map { it.toMediaItem() }
-
+@OptIn(FlowPreview::class, ExperimentalAtomicApi::class)
 @androidx.annotation.OptIn(UnstableApi::class)
 class PlayerViewModel(
     private val preferences: SharedPreferences,
-    private val repository: Repository
+    private val repository: Repository,
+    queueStateHolder: QueueStateHolder
 ) : ViewModel(), Player.Listener {
 
-    private val queueMutex = Mutex()
     private val progressObserver = ProgressObserver(intervalMs = 100)
     private val shuffleManager = ShuffleManager()
     private var mediaController: MediaController? = null
@@ -90,6 +84,29 @@ class PlayerViewModel(
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
     val mediaEvent = _mediaEvent.asSharedFlow()
+
+    val queueFlow = queueStateHolder.queue
+    val queue get() = queueFlow.value
+    val positionFlow = queueStateHolder.position
+    val position get() = positionFlow.value
+    val shuffleModeFlow = queueStateHolder.shuffleMode
+    val shuffleModeEnabled get() = shuffleModeFlow.value
+    val repeatModeFlow = queueStateHolder.repeatMode
+    val repeatMode get() = repeatModeFlow.value
+
+    val currentSongFlow = queueStateHolder.currentSong.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = Song.emptySong
+    )
+    val currentSong get() = currentSongFlow.value
+
+    val nextSongFlow = queueStateHolder.nextSong.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = Song.emptySong
+    )
+    val nextSong get() = nextSongFlow.value
 
     private val _isPlayingFlow = MutableStateFlow(false)
     val isPlayingFlow = _isPlayingFlow.asStateFlow()
@@ -106,29 +123,20 @@ class PlayerViewModel(
     private val _playbackSpeed = MutableStateFlow(1f)
     val playbackSpeed = _playbackSpeed.asStateFlow()
 
-    private val _repeatModeFlow = MutableStateFlow(REPEAT_MODE_OFF)
-    val repeatModeFlow = _repeatModeFlow.asStateFlow()
-    val repeatMode get() = repeatModeFlow.value
-
-    private val _shuffleModeFlow = MutableStateFlow(false)
-    val shuffleModeFlow = _shuffleModeFlow.asStateFlow()
-    val shuffleModeEnabled get() = shuffleModeFlow.value
-
-    private val _queueFlow = MutableStateFlow(emptyList<QueueSong>())
-    val queueFlow = _queueFlow.asStateFlow()
-    val queue get() = queueFlow.value
-
-    private val _positionFlow = MutableStateFlow(QueuePosition.Undefined)
-    val positionFlow = _positionFlow.asStateFlow()
-    val position get() = positionFlow.value
-
-    private val _currentSongFlow = MutableStateFlow(Song.emptySong)
-    val currentSongFlow = _currentSongFlow.asStateFlow()
-    val currentSong get() = currentSongFlow.value
-
-    private val _nextSongFlow = MutableStateFlow(Song.emptySong)
-    val nextSongFlow = _nextSongFlow.asStateFlow()
-    val nextSong get() = nextSongFlow.value
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val extraInfoFlow = currentSongFlow
+        .debounce(500.milliseconds)
+        .distinctUntilChangedBy { it.id }
+        .mapLatest { song ->
+            withContext(IO) {
+                getExtraInfo(song)
+            }
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = null
+        )
 
     private val _colorScheme = MutableStateFlow(PlayerColorScheme.Unspecified)
     val colorSchemeFlow = _colorScheme.asStateFlow()
@@ -137,61 +145,22 @@ class PlayerViewModel(
     private val _shuffleOperationState = MutableStateFlow(ShuffleOperationState())
     val shuffleOperationState = _shuffleOperationState.asStateFlow()
 
-    private val _extraInfoFlow = MutableStateFlow<String?>(null)
-    val extraInfoFlow = _extraInfoFlow.asStateFlow()
-
     private val _stopAfterPosition = Channel<Pair<String?, Boolean>>(Channel.BUFFERED)
     val stopAfterPosition = _stopAfterPosition.receiveAsFlow()
 
-    private val internalJobs = mutableListOf<Job>()
-
     override fun onCleared() {
         progressObserver.stop()
-        cancelInternalJobs()
     }
 
     fun setMediaController(mediaController: MediaController?) {
         if (this.mediaController == mediaController) return
-
         this.mediaController = mediaController
-        cancelInternalJobs()
-
         if (mediaController != null) {
-            _isPlayingFlow.value = mediaController.isPlaying
-            _repeatModeFlow.value = mediaController.repeatMode
-            _shuffleModeFlow.value = mediaController.shuffleModeEnabled
-
+            setIsPlaying(mediaController.isPlaying)
             if (progress == C.TIME_UNSET || duration == C.TIME_UNSET) {
                 _progressFlow.value = mediaController.contentPosition
                 _durationFlow.value = mediaController.contentDuration
             }
-
-            onGenerateQueue(mediaController)
-
-            internalJobs += mediaEvent
-                .filter { it == MediaEvent.MediaContentChanged }
-                .debounce(500.milliseconds)
-                .onEach { _ -> onGenerateQueue(mediaController, mediaContentChanged = true) }
-                .launchIn(viewModelScope)
-
-            internalJobs += combine(queueFlow, positionFlow)
-            { queue, position -> Pair(queue, position) }
-                .debounce(QUEUE_DEBOUNCE.milliseconds)
-                .onEach { (queue, position) ->
-                    _currentSongFlow.value = queue.getOrElse(position.current) { Song.emptySong }
-                    _nextSongFlow.value = queue.getOrElse(position.next) { Song.emptySong }
-                }
-                .launchIn(viewModelScope)
-
-            internalJobs += currentSongFlow
-                .debounce(500.milliseconds)
-                .distinctUntilChangedBy { it.id }
-                .onEach { song -> onGenerateExtraInfo(song) }
-                .launchIn(viewModelScope)
-
-            internalJobs += isPlayingFlow
-                .onEach { isPlaying -> onSetIsPlaying(isPlaying) }
-                .launchIn(viewModelScope)
         }
     }
 
@@ -199,12 +168,8 @@ class PlayerViewModel(
         _mediaEvent.tryEmit(mediaEvent)
     }
 
-    private fun cancelInternalJobs() {
-        internalJobs.forEach { it.cancel() }
-        internalJobs.clear()
-    }
-
-    private fun onSetIsPlaying(isPlaying: Boolean) {
+    private fun setIsPlaying(isPlaying: Boolean) {
+        _isPlayingFlow.value = isPlaying
         if (isPlaying) {
             progressObserver.start {
                 mediaController?.let { controller ->
@@ -217,98 +182,8 @@ class PlayerViewModel(
         }
     }
 
-    private fun onGenerateQueue(
-        player: Player,
-        timeline: Timeline = player.currentTimeline,
-        mediaContentChanged: Boolean = false
-    ) = viewModelScope.launch {
-        queueMutex.withLock {
-            // If the timeline is empty, reset the queue and exit early.
-            if (timeline.isEmpty) {
-                _queueFlow.value = emptyList()
-                return@launch
-            }
-
-            // Capture the player's current state.
-            val shuffle = player.shuffleModeEnabled
-            val playerIndex = player.currentMediaItemIndex
-
-            val queueItems = player.getQueueItems(shuffle)
-
-            val (mediaItems, indicesInTimeline, queuePositionIndex) = withContext(Dispatchers.Default) {
-                val mediaItems = ArrayList<MediaItem>(queueItems.size)
-                val indices = IntArray(queueItems.size)
-                var currentPos = -1
-
-                for (i in queueItems.indices) {
-                    val (item, timelineIndex) = queueItems[i]
-                    mediaItems.add(item)
-                    indices[i] = timelineIndex
-                    if (timelineIndex == playerIndex) {
-                        currentPos = i
-                    }
-                }
-                Triple(mediaItems, indices, currentPos)
-            }
-
-            val queuePosition = QueuePosition(
-                current = queuePositionIndex,
-                indicesInTimeline = indicesInTimeline
-            )
-
-            // Retrieve existing songs for the given MediaItems and detect missing ones.
-            val (songs, missingMediaItems) = withContext(IO) {
-                val result = repository.songsByMediaItems(mediaItems, ignoreBlacklist = true)
-                val occurrences = mutableMapOf<Long, Int>()
-
-                val queueSongs = result.first.map { song ->
-                    val count = occurrences.getOrDefault(song.id, 0)
-                    occurrences[song.id] = count + 1
-                    QueueSong(key = song.id to count, song)
-                }
-                queueSongs to result.second
-            }
-
-            if (mediaContentChanged && missingMediaItems.isNotEmpty()) {
-                withContext(Dispatchers.Default) {
-                    // Build a set of IDs representing missing (deleted) MediaItems.
-                    val missingIds = missingMediaItems.mapTo(HashSet()) { it.mediaId }
-
-                    // Identify contiguous ranges of missing items to remove them in grouped batches.
-                    val ranges = mutableListOf<IntRange>()
-                    var start = -1
-
-                    for (i in queueItems.indices) {
-                        val isMissing = queueItems[i].first.mediaId in missingIds
-                        if (isMissing && start == -1) {
-                            // Beginning of a new missing range.
-                            start = i
-                        } else if (!isMissing && start != -1) {
-                            // End of the current missing range.
-                            ranges += (start until i)
-                            start = -1
-                        }
-                    }
-                    // If the last range extends to the end of the list, close it.
-                    if (start != -1) ranges += (start until queueItems.size)
-
-                    withContext(Dispatchers.Main) {
-                        // Remove ranges in reverse order to avoid index shifting issues.
-                        for (range in ranges.asReversed()) {
-                            player.removeMediaItems(range.first, range.last + 1)
-                        }
-                    }
-                }
-            }
-
-            // Update the queue with the valid songs and current positions.
-            _queueFlow.value = songs
-            _positionFlow.value = queuePosition
-        }
-    }
-
-    private fun onGenerateExtraInfo(song: Song) = viewModelScope.launch(IO) {
-        _extraInfoFlow.value = if (Preferences.displayExtraInfo) {
+    fun getExtraInfo(song: Song): String? {
+        return if (Preferences.displayExtraInfo) {
             MetadataField.getMetadataValue(
                 song = song,
                 fields = Preferences.getExtraInfoContent(
@@ -326,37 +201,17 @@ class PlayerViewModel(
             Player.EVENT_PLAY_WHEN_READY_CHANGED
         )
         if (isPlayStateEvent) {
-            _isPlayingFlow.value = player.playWhenReady && player.isPlaying
+            setIsPlaying(player.playWhenReady && player.isPlaying)
             if (player.playbackState == Player.STATE_READY && !player.playWhenReady) {
                 _progressFlow.value = player.contentPosition
                 _durationFlow.value = player.contentDuration
             }
         }
-        if (events.contains(Player.EVENT_REPEAT_MODE_CHANGED)) {
-            _repeatModeFlow.value = player.repeatMode
-        }
-        if (events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED)) {
-            if (!events.contains(Player.EVENT_TIMELINE_CHANGED)) {
-                onGenerateQueue(player)
-            }
-            _shuffleModeFlow.value = player.shuffleModeEnabled
-        }
         if (events.contains(Player.EVENT_POSITION_DISCONTINUITY)) {
-            if (!events.contains(Player.EVENT_TIMELINE_CHANGED)) {
-                _positionFlow.value = position.setCurrentIndex(player.currentMediaItemIndex)
-            }
             if (!player.playWhenReady) {
                 _progressFlow.value = player.contentPosition
                 _durationFlow.value = player.contentDuration
             }
-        }
-        if (events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION)) {
-            if (!events.contains(Player.EVENT_TIMELINE_CHANGED)) {
-                _positionFlow.value = position.setCurrentIndex(player.currentMediaItemIndex)
-            }
-        }
-        if (events.contains(Player.EVENT_TIMELINE_CHANGED)) {
-            onGenerateQueue(player)
         }
     }
 
@@ -406,10 +261,6 @@ class PlayerViewModel(
 
     fun seekTo(positionMillis: Long) {
         mediaController?.seekTo(positionMillis)
-    }
-
-    fun generateExtraInfo() {
-        onGenerateExtraInfo(currentSong)
     }
 
     fun playSongAt(newPosition: Int) {

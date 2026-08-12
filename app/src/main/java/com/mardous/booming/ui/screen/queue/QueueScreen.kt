@@ -56,7 +56,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -77,6 +76,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.edit
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.media3.common.Player
 import androidx.preference.PreferenceManager
 import com.mardous.booming.R
@@ -89,6 +89,7 @@ import com.mardous.booming.extensions.media.songsDurationStr
 import com.mardous.booming.extensions.observeKeyAsState
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.buildInfoString
+import com.mardous.booming.playback.QUEUE_DEBOUNCE
 import com.mardous.booming.ui.component.compose.AnimatedEqBars
 import com.mardous.booming.ui.component.compose.MediaImage
 import com.mardous.booming.ui.component.compose.ObserveAsEvent
@@ -97,7 +98,6 @@ import com.mardous.booming.ui.component.compose.menu.MenuDefaults
 import com.mardous.booming.ui.component.compose.menu.MenuItem
 import com.mardous.booming.ui.component.compose.menu.OverflowMenu
 import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.ui.screen.player.QUEUE_DEBOUNCE
 import com.mardous.booming.util.LOCKED_QUEUE
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -126,12 +126,12 @@ fun QueueScreen(
 
     val themeColors = MaterialTheme.colorScheme
 
-    val isPlaying by playerViewModel.isPlayingFlow.collectAsState()
-    val currentSong by playerViewModel.currentSongFlow.collectAsState()
-    val position by playerViewModel.positionFlow.collectAsState()
-    val playQueue by playerViewModel.queueFlow.collectAsState()
-    val repeatMode by playerViewModel.repeatModeFlow.collectAsState()
-    val shuffleMode by playerViewModel.shuffleModeFlow.collectAsState()
+    val isPlaying by playerViewModel.isPlayingFlow.collectAsStateWithLifecycle()
+    val currentSong by playerViewModel.currentSongFlow.collectAsStateWithLifecycle()
+    val position by playerViewModel.positionFlow.collectAsStateWithLifecycle()
+    val playQueue by playerViewModel.queueFlow.collectAsStateWithLifecycle()
+    val repeatMode by playerViewModel.repeatModeFlow.collectAsStateWithLifecycle()
+    val shuffleMode by playerViewModel.shuffleModeFlow.collectAsStateWithLifecycle()
 
     val queueLocked by sharedPreferences.observeKeyAsState(LOCKED_QUEUE, false)
 

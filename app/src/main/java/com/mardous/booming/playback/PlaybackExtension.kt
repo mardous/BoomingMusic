@@ -13,6 +13,7 @@ import androidx.media3.session.MediaConstants
 import androidx.media3.session.MediaSession
 import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.coil.CoverProvider.Companion.getImageUri
+import com.mardous.booming.core.model.queue.QueueSnapshot
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.songInfo
 import kotlinx.coroutines.Dispatchers
@@ -23,11 +24,6 @@ import kotlinx.coroutines.withContext
  * opened from an external app.
  */
 const val RESOLVED_FROM_FILE = "resolved_from_file"
-
-/**
- * A Pair containing a MediaItem object and its index within the current Timeline.
- */
-typealias QueueItem = Pair<MediaItem, Int>
 
 @OptIn(UnstableApi::class)
 internal fun MediaSession.isRemoteController(controller: MediaSession.ControllerInfo): Boolean {
@@ -52,18 +48,42 @@ internal fun nextRepeatMode(current: Int): Int = when (current) {
 val Player.mediaItems: List<MediaItem>
     get() = (0 until mediaItemCount).map { getMediaItemAt(it) }
 
-fun Player.getQueueItems(shuffleMode: Boolean = this.shuffleModeEnabled): List<QueueItem> {
-    val timeline = currentTimeline
-    if (timeline.isEmpty) return emptyList()
+suspend fun Player.captureQueueSnapshot(
+    timeline: Timeline = this.currentTimeline,
+    currentMediaItemIndex: Int = this.currentMediaItemIndex,
+    shuffleMode: Boolean = this.shuffleModeEnabled
+): QueueSnapshot = withContext(Dispatchers.Default) {
+    if (timeline.isEmpty) {
+        QueueSnapshot.Empty
+    } else {
+        val windowCount = timeline.windowCount
 
-    val result = mutableListOf<QueueItem>()
-    var index = timeline.getFirstWindowIndex(shuffleMode)
-    while (index != C.INDEX_UNSET) {
-        result.add(QueueItem(getMediaItemAt(index), index))
-        index = timeline.getNextWindowIndex(index, Player.REPEAT_MODE_OFF, shuffleMode)
+        var queuePosition = -1
+        val mediaItems = ArrayList<MediaItem>(windowCount)
+        val indicesInTimeline = IntArray(windowCount)
+
+        var pos = 0
+        var windowIndex = timeline.getFirstWindowIndex(shuffleMode)
+        val window = Timeline.Window()
+
+        while (windowIndex != C.INDEX_UNSET && pos < windowCount) {
+            if (currentMediaItemIndex == windowIndex) queuePosition = pos
+
+            mediaItems.add(timeline.getWindow(windowIndex, window).mediaItem)
+            indicesInTimeline[pos] = windowIndex
+
+            pos++
+            windowIndex = timeline.getNextWindowIndex(windowIndex, Player.REPEAT_MODE_OFF, shuffleMode)
+        }
+
+        QueueSnapshot(mediaItems, indicesInTimeline, queuePosition)
     }
+}
 
-    return result
+fun Player.removeMediaItemsById(ids: Set<String>) {
+    for (index in mediaItemCount - 1 downTo 0) {
+        if (getMediaItemAt(index).mediaId in ids) removeMediaItem(index)
+    }
 }
 
 val MediaItem.resolvedFromFile: Boolean
