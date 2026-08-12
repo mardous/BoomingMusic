@@ -111,7 +111,7 @@ android {
         create("playstore") {
             dimension = "version"
 
-            resValue("bool", "network_features_enabled_by_default", "false")
+            resValue("bool", "network_features_enabled_by_default", "true")
             resValue("bool", "enable_builtin_updater", "false")
             resValue("bool", "enable_lyrically_provider", "false")
         }
