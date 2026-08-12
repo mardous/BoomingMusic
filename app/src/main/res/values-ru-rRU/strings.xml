@@ -966,4 +966,15 @@
     <string name="contributor_alex_description">Давний друг проекта, предоставивший доступ к важным API.</string>
     <string name="play_all_songs_when_searching_title">Воспроизводить все песни при поиске</string>
     <string name="play_all_songs_when_searching_summary">Если эта функция включена, выбор найденной композиции ставит в очередь всю медиатеку. Действие функции зависит от настройки, определяющей поведение при выборе композиции.</string>
+    <string name="action_auto_fill_from_musicbrainz">Автоматическое заполнение из MusicBrainz</string>
+    <string name="searching">Поиск…</string>
+    <string name="musicbrainz_search_title">MusicBrainz поиск</string>
+    <string name="musicbrainz_search_message">Найти метаданные песни на MusicBrainz, используя название и исполнителя.</string>
+    <string name="musicbrainz_no_results">Ничего не найдено на MusicBrainz.</string>
+    <string name="musicbrainz_select_recording">Выберите запись</string>
+    <string name="sort_order_name">Имя</string>
+    <string name="website">Сайт</string>
+    <string name="terms_of_service">Условия предоставления услуг</string>
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="legal">Правовое</string>
 </resources>

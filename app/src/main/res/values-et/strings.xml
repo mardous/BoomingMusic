@@ -133,7 +133,7 @@
     <string name="label_loss_less">Kadudeta</string>
     <string name="label_bit_rate">Bitikiirus</string>
     <string name="replay_gain">Esitusvaljuse tundlikkus</string>
-    <string name="comment">Komentaar</string>
+    <string name="comment">Kommentaar</string>
     <string name="played">Esitatud</string>
     <string name="skipped">Vahelejäetud</string>
     <string name="disc">Plaat</string>
